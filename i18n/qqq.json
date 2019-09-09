@@ -40,8 +40,8 @@
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
-	"abusefilter": "{{doc-special|AbuseFilter}}",
-	"abuselog": "{{doc-special|AbuseLog}}\n{{Identical|Abuse log}}",
+	"abusefilter": "Title of [[Special:AbuseFilter]]",
+	"abuselog": "Caption of [[Special:AbuseLog]]",
 	"abusefilter-intro": "Introduction text for the list of filter rules.",
 	"abusefilter-mustviewprivateoredit": "\"No access\" message shown when a user does not have access rights.",
 	"abusefilter-warning": "A warning message shown when a user tries to save an edit which matches some abuse filter rule. Parameters:\n* $1 is a short description of the abuse filter rule which triggered this action\n* $2 is the filter id",

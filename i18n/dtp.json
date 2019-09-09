@@ -6,8 +6,6 @@
 		]
 	},
 	"abusefilter-desc": "Pokianu huristik mimpoporion hilo niditan",
-	"abusefilter": "Manahas sinalaguno nuludan",
-	"abuselog": "Log sinalaguno",
 	"abusefilter-intro": "Kopiwosian mongoi id kouroso mangaraja Manahas Sinalaguno.\nManahas Sinalaguno nopo nga doungkaralano kumaraja  dit posusuangon momoripori iri numaan pokionuo id huristik mimpoporion montok oinsanan it maan.\nKouroso diti popokito do lis panahas potumboyo, om pabanar dilo do maan modipaito.",
 	"abusefilter-warning": "'''Ponorohon''': Kinaraja diti noporianan nointutunan do kikoligogon.\nNiditan di awu nopongo maan pogulio do tiinu,\nom opinsugutan nu nopo do awu momongo niditan nga karaag do akaun nu toi ko maan antabai porotokol intonit ''IP''nu.\nOtumbayaan ko nopo do nopongo iti niditannu, maai nopo kaagu kotiko Pootodo do papatatap dilo.\nKointalangan do sinalaguno diti kooturan di kohompit do niditannu nopo nga oboyo do: $1",
 	"abusefilter-disallowed": "Kinaraja diti noporianan nointutunan do kikoligogon, om ilo no do awu pasagaon.\nNiditan di awu nopongo maan pogulio do tiinu,\nOtumbayaan ko nopo do nopongo iti niditannu, maai gia sunudai it mintatamong  do nunu daa umbalan nu momonsoi. Kointalangan do sinalaguno diti kooturan di kohompit do kinarajanu nopo nga oboyo do: $1",

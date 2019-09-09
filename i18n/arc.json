@@ -5,10 +5,9 @@
 			"Michaelovic"
 		]
 	},
-	"abusefilter": "ܛܟܣ ܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ",
-	"abuselog": "ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ",
+	"abusefilter": "ܕܘܒܪܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ",
+	"abuselog": "ܣܓܠܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ",
 	"abusefilter-blocker": "ܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ",
-	"abusefilter-log": "ܣܓܠܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ",
 	"abusefilter-log-summary": "ܗܢܐ ܣܓܠܐ ܬܚܘܝ ܡܟܬܒܘܬܐ ܕܟܠ ܥܒܕ̈ܐ ܕܒܝܩܝܢ ܒܝܕ ܡܨܦܝܢܝܬ̈ܐ.",
 	"abusefilter-log-search": "ܒܨܝ ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ",
 	"abusefilter-log-search-user": "ܡܦܠܚܢܐ:",
@@ -25,7 +24,6 @@
 	"abusefilter-log-noactions": "ܠܐ ܡܕܡ",
 	"abusefilter-log-linkoncontribs": "ܡܟܬܒܘܬܐ ܕܚܘܒܠܐ",
 	"abusefilter-log-hide-reason": "ܥܠܬܐ:",
-	"abusefilter-management": "ܕܘܒܪܐ ܕܡܨܦܝܢܝܬܐ ܕܚܘܒܠܐ",
 	"abusefilter-list": "ܟܠ ܡܨܦܝܢܝܬ̈ܐ",
 	"abusefilter-list-id": "ܗܝܝܘܬܐ ܕܡܨܦܝܢܝܬܐ",
 	"abusefilter-list-status": "ܐܝܟܢܝܘܬܐ",

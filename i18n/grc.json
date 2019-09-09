@@ -6,10 +6,8 @@
 			"Omnipaedista"
 		]
 	},
-	"abusefilter": "Διαμόρφωσις διηθητηρίου καταχρήσεων",
-	"abuselog": "Κατάλογος καταχρήσεων",
+	"abuselog": "Κατάλογος διηθητηρίου καταχρήσεων",
 	"abusefilter-blocker": "Διηθητήριον καταχρήσεων",
-	"abusefilter-log": "Κατάλογος διηθητηρίου καταχρήσεων",
 	"abusefilter-log-search-user": "Χρώμενος:",
 	"abusefilter-log-search-title": "Ἐπιγραφή:",
 	"abusefilter-log-search-submit": "Ζητεῖν",

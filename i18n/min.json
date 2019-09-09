@@ -4,8 +4,7 @@
 			"Iwan Novirion"
 		]
 	},
-	"abusefilter": "Pangaturan panyariang panyalahgunoan",
-	"abuselog": "Log panyalahgunoan",
+	"abuselog": "Log panyariang panyalahgunoan",
 	"right-abusefilter-modify": "Maubah panyariang panyalahgunoan",
 	"right-abusefilter-view": "Manampilan panyariang panyalahgunoan",
 	"right-abusefilter-log": "Manampilan log panyalahgunoan",
@@ -17,7 +16,6 @@
 	"right-abusefilter-log-private": "Caliak log panyariang panyalahgunoan nan ditandoi privat",
 	"right-abusefilter-hide-log": "Suruakan entri dalam log panyariang pangalahgunoan",
 	"right-abusefilter-hidden-log": "Caliak log panyalahgunoan nan tasuruak",
-	"abusefilter-log": "Log panyariang panyalahgunoan",
 	"abusefilter-log-summary": "Log iko manunjuakan daftar tindakan nan ditangkok dek panyariang panyalahgunoan.",
 	"abusefilter-log-search": "Pancarian log panyalahgunoan",
 	"abusefilter-log-search-user": "Pangguno:",
@@ -73,7 +71,7 @@
 	"abusefilter-edit-main": "Parameter sariang",
 	"abusefilter-edit-done-subtitle": "Sariang lah disuntiang",
 	"abusefilter-edit-done": "Sanak barasil manyimpan parubahan panyariang $1.",
-	"abusefilter-edit-history": "Riwayaik:",
+	"abusefilter-edit-history": "Versi:",
 	"abusefilter-filter-log": "Parubahan panyariang tabaru",
 	"abusefilter-history": "Riwayaik parubahan Sariang Panyalahgunoan #$1",
 	"abusefilter-history-foruser": "Diubah dek $1",

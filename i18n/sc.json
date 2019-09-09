@@ -6,7 +6,7 @@
 			"Taxandru"
 		]
 	},
-	"abuselog": "Registru de is abusos",
+	"abuselog": "Registru de su filtru contra s'abusu",
 	"abusefilter-blocker": "Filtru contra s'abusu",
 	"right-abusefilter-modify": "Acontza is filtros contra s'abusu",
 	"right-abusefilter-view": "Ammustra is filtros contra s'abusu",
@@ -16,7 +16,6 @@
 	"action-abusefilter-view": "ammustra is filtros contra s'abusu",
 	"action-abusefilter-log": "ammustra su registru de is abusos",
 	"action-abusefilter-privatedetails": "ammustra is datos privados in su registru de is abusos",
-	"abusefilter-log": "Registru de su filtru contra s'abusu",
 	"abusefilter-log-search": "Chirca in su registru de su filtru contra s'abusu",
 	"abusefilter-log-search-user": "Impitadore:",
 	"abusefilter-log-search-filter": "ID filtru (separadas dae \"|\"):",

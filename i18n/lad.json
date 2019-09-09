@@ -5,8 +5,6 @@
 		]
 	},
 	"abusefilter-desc": "A los trocamientos, aplica maneras topadores (eurísticas)",
-	"abusefilter": "Konfiggurasyón del filtro contra-abusos",
-	"abuselog": "Rējistro del filtro antiabusos",
 	"abusefilter-intro": "Buenas venidas a la interfaz de administrasyón de filtros de trocamientos.\nEl filtro de trocamientos es un mekanismo de software otomatizado que aplica maneras topaderas (eurísticas) a todas las aksyones.\nEsta interfaz mostra una lista de filtros dēfinidos i da permisyón de trocarlos.",
 	"abusefilter-blocker": "Filtro contra-abusos",
 	"abusefilter-blockreason": "Bloqueado de sí para sí, de la parte del filtro contra-abusos.\nDeskripsyón del filtro alcançado: $1",

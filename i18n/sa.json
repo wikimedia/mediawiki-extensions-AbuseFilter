@@ -7,7 +7,7 @@
 			"NehalDaveND"
 		]
 	},
-	"abuselog": "दुरुपयुक्तम् अङ्कनम्",
+	"abusefilter": "दुरुपयुक्तशोधकस्य प्रबन्धनम्",
 	"abusefilter-blocker": "दुरुपयुक्तं शोधकम्",
 	"abusefilter-blockreason": "दुरुपयोगनिःस्यन्दकद्वारा स्वतः एव निरोधितम्।\nसङ्गतस्य नियमस्य वर्णनम्:$1",
 	"abusefilter-accountreserved": "दुरुपयुक्तस्य शोधकस्य कृते उपयोगाय इदं सदस्यनाम आरक्षितं वर्तते ।",
@@ -43,7 +43,6 @@
 	"abusefilter-log-details-hidden": "अस्य विवरणानि भवान् द्रष्टुं नार्हति यतः इदं सार्वजनिकवीक्षणात् गुहितम् ।",
 	"abusefilter-log-hide-hidden": "सार्वजनिकदर्शनात् अयं प्रवेशः विलोप्यताम्",
 	"abusefilter-log-hide-reason": "कारणम् :",
-	"abusefilter-management": "दुरुपयुक्तशोधकस्य प्रबन्धनम्",
 	"abusefilter-list": "सर्वे शोधकाः",
 	"abusefilter-list-id": "शोधकस्य अभिज्ञापकम् :",
 	"abusefilter-list-status": "स्थितिः",

@@ -4,6 +4,7 @@
 			"Jun Misugi"
 		]
 	},
+	"abusefilter": "Gisthioni di filthri d'abusu",
 	"abusefilter-blocker": "Filthru d'abusu",
 	"right-abusefilter-modify": "Mudifiggà filthri d'abusu",
 	"right-abusefilter-view": "Vidé filthri d'abusu",
@@ -38,7 +39,6 @@
 	"log-action-filter-abusefilter": "Tipu di lu ciambu di filthru:",
 	"log-action-filter-abusefilter-create": "Criazioni d'un nobu filthru",
 	"log-action-filter-abusefilter-modify": "Modìfica di filthru",
-	"abusefilter-management": "Gisthioni di filthri d'abusu",
 	"abusefilter-list": "Tutti li filthri",
 	"abusefilter-list-pattern": "Taurozza basi",
 	"abusefilter-list-visibility": "Visibiriddai",

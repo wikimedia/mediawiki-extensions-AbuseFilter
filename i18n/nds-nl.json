@@ -5,8 +5,7 @@
 		]
 	},
 	"abusefilter-desc": "Voert automaties heuristiese analyse uut op bewarkingen",
-	"abusefilter": "Filterinstellingen",
-	"abuselog": "Filterlogboek",
+	"abuselog": "Misbruukfilterlogboek",
 	"abusefilter-intro": "Welkom bie t beheerscharm veur bewarkingsfilters.\nt Filtersysteem past automatiese heuristiek toe op alle haandelingen.\nDit scharm löt alle in-estelden filters zien, en gif de meugelikheid ze an te passen.",
 	"abusefilter-warning": "'''Waorschuwing''': disse haandeling wörden automaties as schaolik ezien.\nOnkonstruktieve haandelingen wörden gauw weerummedreid, en herhaoldelik onkonstruktief bewarken eindigt in n blokkering van joew gebruker of IP-adres.\nA'j denken dat disse haandeling wel konstruktief is, bevestig joew haandeling dan nogmaols.\nn Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1",
 	"abusefilter-disallowed": "Disse haandeling wörden automaties as schaolik ezien, en is daorumme niet toe-estaon.\nA'j denken dat joew haandeling wel konstruktief was, meld dan an de beheerder wa'j probeerden te doon.\nn Korte beschrieving van de regel op baosis waorvan joew haandeling tegenehölden is: $1",
@@ -37,7 +36,6 @@
 	"action-abusefilter-modify-restricted": "misbruukfilters mit beteunden haandelingen wiezigen",
 	"action-abusefilter-revert": "alle wiezigingen deur n misbruukfilter weerummedreien",
 	"action-abusefilter-view-private": "misbruukfilters bekieken die as privee emarkeerd bin",
-	"abusefilter-log": "Misbruukfilterlogboek",
 	"abusefilter-log-summary": "Dit logboek löt n lieste zien van haandelingen die de filters op-evöngen hebben.",
 	"abusefilter-log-search": "t Misbruukfilterlogboek deurzeuken",
 	"abusefilter-log-search-user": "Gebruker:",

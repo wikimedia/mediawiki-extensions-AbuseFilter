@@ -6,7 +6,8 @@
 			"Mouse21",
 			"Okras",
 			"Vlad5250",
-			"Movses"
+			"Movses",
+			"Марио"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Проверьте, удовлетворяет ли фильтру злоупотреблений набор переменных или событие фильтра злоупотреблений, записанное редактором.\n\nПеременные vars, rcid и logid обязательны, однако только одна из них может быть использована.",
@@ -54,6 +55,7 @@
 	"apihelp-query+abuselog-example-2": "Показать последние записи в журнале [[API]]",
 	"apihelp-abuselogprivatedetails-description": "Просмотреть приватные данные записи журнала злоупотреблений.",
 	"apihelp-abuselogprivatedetails-summary": "Просмотреть приватные данные записи журнала злоупотреблений.",
+	"apihelp-abuselogprivatedetails-param-logid": "Идентификатор записи AbuseLog для проверки.",
 	"apierror-abusefilter-canttest": "У вас недостаточно прав для проверки фильтров злоупотреблений.",
 	"apierror-abusefilter-cantcheck": "У вас недостаточно прав для проверки синтаксиса фильтра злоупотреблений.",
 	"apierror-abusefilter-nosuchlogid": "Не существует записи в журнале злоупотреблений с идентификатором $1.",

@@ -7,8 +7,6 @@
 		]
 	},
 	"abusefilter-desc": "Applies automatic heuristics to edits",
-	"abusefilter": "Abuse filter configuration",
-	"abuselog": "Abuse log",
 	"right-abusefilter-modify": "Modify abuse filters",
 	"abusefilter-log-search-user": "User:",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalise confusable characters (ccnorm)",

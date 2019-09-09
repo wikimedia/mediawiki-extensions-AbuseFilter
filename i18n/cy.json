@@ -8,8 +8,7 @@
 		]
 	},
 	"abusefilter-desc": "Yn gosod tybiaethau i olygiadau'n awtomatig",
-	"abusefilter": "Ffurfweddiad hidlydd camddefnydd",
-	"abuselog": "Log camddefnydd",
+	"abuselog": "Log hidlydd camddefnydd",
 	"abusefilter-intro": "Croeso i'r rhyngwyneb rheoli'r Hidlydd Camddefnydd.\nMeddalwedd awtomatig sy'n ymateb yn dybiaethol i bobl gweithred yw'r Hildydd Camddefnydd.\nMae'r rhyngwyneb hwn yn arddangos rhestr o hidlyddion penodedig, sy'n eu galluogi i gael eu haddasu.",
 	"abusefilter-warning": "'''Rhybudd:''' Mae'r weithred hon wedi'i dyfarnu'n awtomatig fel gweithred niweidiol.\nBydd golygiadau anadeiladol yn cael eu gwrthdroi'n syth, a bydd cyfrif neu gyfeiriad IP defnyddwyr sy'n parhau i olygu'n anadeiladol yn cael eu blocio.\nOs ydych o'r farn fod y weithred hon yn adeiladol, gallwch ei chyflwyno unwaith eto er mwyn ei chadarnhau.\nDisgrifiad byr o'r rheol camddefnydd y mae'ch gweithred chi yn cyfateb ag ef yw: $1",
 	"abusefilter-disallowed": "Clustnododd y meddalwedd y weithred hon yn un niweidiol, felly ni weithredwyd hi.\nOs ydych yn meddwl bod y weithred o ddefnydd, rhowch wybod i weinyddwr am ddiben y weithred.\nDyma ddisgrifiad byr o'r rheol camddefnydd yr oedd y weithred yn cyfateb iddi: $1",
@@ -34,7 +33,6 @@
 	"action-abusefilter-modify-restricted": "addasu hidlyddion camddefnydd gyda gweithredoedd cyfyngedig.",
 	"action-abusefilter-revert": "gwrthdroi pob newid a wnaed gan hidlydd camddefnydd penodol",
 	"action-abusefilter-view-private": "gweler hidlyddion camddefnydd a nodwyd yn breifat",
-	"abusefilter-log": "Log hidlydd camddefnydd",
 	"abusefilter-log-summary": "Dengys y log hwn restr o'r holl weithredodd a nodwyd gan yr hidlyddion.",
 	"abusefilter-log-search": "Chwilier y log camddefnydd",
 	"abusefilter-log-search-user": "Defnyddiwr:",

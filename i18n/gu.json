@@ -10,8 +10,7 @@
 		]
 	},
 	"abusefilter-desc": "સંપાદનો પર સ્વચલિત સંશોધનાત્મક પ્રણાલી લાગુ કરે છે",
-	"abusefilter": "દુરુપયોગ ગળણી રૂપરેખા",
-	"abuselog": "દુરુપયોગ નોંધ",
+	"abuselog": "દુરુપયોગ ગળણી નોંધ",
 	"abusefilter-blocker": "દુરુપયોગ ગળણી",
 	"right-abusefilter-modify": "દુરુપયોગ ગાળકોમાં ફેરફાર કરો",
 	"right-abusefilter-view": "દુરુપયોગ ગળણી જુઓ",
@@ -23,7 +22,6 @@
 	"action-abusefilter-log": "દુરુપયોગ લોગ જુઓ",
 	"action-abusefilter-log-detail": "વિસ્તૃત દુરુપયોગ લોગ નોંધ જુઓ",
 	"action-abusefilter-privatedetails": "દુરુપયોગ લોગમાં ખાનગી માહિતી જુઓ",
-	"abusefilter-log": "દુરુપયોગ ગળણી નોંધ",
 	"abusefilter-log-search": "દુરુપયોગ નોંધ શોધો",
 	"abusefilter-log-search-user": "સભ્ય:",
 	"abusefilter-log-search-filter": "ગાળક ઓળખો (પાઇપ્સ વડે જુદી પાડેલ):",

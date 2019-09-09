@@ -4,7 +4,7 @@
 			"Rachitrali"
 		]
 	},
-	"abuselog": "غلط استعمالو لاگ ان کورے",
+	"abusefilter": "غلط استعمال فلٹرو انتظام",
 	"abusefilter-blocker": "غلط استعمالو فلٹر کورے",
 	"abusefilter-log-search-user": "یوزر",
 	"abusefilter-log-search-title": "عنوان:",
@@ -18,7 +18,6 @@
 	"abusefilter-log-details-privatedetails": "نجی اعداد و شمار",
 	"abusefilter-log-noactions": "کیاغ دی نیکی",
 	"abusefilter-log-hide-reason": "وجہ:",
-	"abusefilter-management": "غلط استعمال فلٹرو انتظام",
 	"abusefilter-list": "سف فلٹر",
 	"abusefilter-list-status": "حیثیت",
 	"abusefilter-list-visibility": "پوشیک",

@@ -4,7 +4,7 @@
 			"Codex Sinaiticus"
 		]
 	},
-	"abuselog": "የጥፋቶች መዝገብ",
+	"abuselog": "የጥፋት ማጣሪያዎች መዝገብ",
 	"abusefilter-blocker": "የጥፋቶች ማጣሪያ",
 	"right-abusefilter-modify": "የጥፋት ማጣሪያዎችን ለመቀይር",
 	"right-abusefilter-view": "የጥፋት ማጣሪያዎችን ለማየት",
@@ -12,7 +12,6 @@
 	"action-abusefilter-modify": "የጥፋት ማጣሪያዎችን ለመቀይር",
 	"action-abusefilter-view": "የጥፋት ማጣሪያዎችን ለማየት",
 	"action-abusefilter-log": "የጥፋትን መዝገብ ለማየት",
-	"abusefilter-log": "የጥፋት ማጣሪያዎች መዝገብ",
 	"abusefilter-log-search": "የጥፋቶች መዝገብ መፈልግ",
 	"abusefilter-log-search-user": "ተጠቃሚ:",
 	"abusefilter-log-search-filter": "የማጣሪያ መታወቂያ፦",

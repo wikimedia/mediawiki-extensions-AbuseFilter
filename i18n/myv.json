@@ -5,8 +5,7 @@
 			"Rueter"
 		]
 	},
-	"abusefilter": "А тевде сувтемень аравтомась",
-	"abuselog": "А тевде тешкстамот",
+	"abuselog": "А тевде сувтемень тешкстамот",
 	"abusefilter-blocker": "А тевде сувтеме",
 	"right-abusefilter-modify": "Лиякстомтомс а тевде сувтеметнень",
 	"right-abusefilter-view": "Ванномс а тевде сувтеметнень",
@@ -16,7 +15,6 @@
 	"action-abusefilter-modify": "лиякстомтомс а тевде сувтеметнень",
 	"action-abusefilter-view": "ванномс а тевде сувтеметнень",
 	"action-abusefilter-log": "ванномс а тевде сувтемень тешкстамотнень",
-	"abusefilter-log": "А тевде сувтемень тешкстамот",
 	"abusefilter-log-search": "Вешнемс а тевде сувтемень тешкстамотнестэ",
 	"abusefilter-log-search-user": "Теицясь:",
 	"abusefilter-log-search-filter": "Сувтемень ID-тне (явомс турбинесэ):",

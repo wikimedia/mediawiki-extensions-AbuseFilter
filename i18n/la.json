@@ -7,10 +7,8 @@
 			"Laurentianus"
 		]
 	},
-	"abusefilter": "Configuratio filtri iniuriarum",
-	"abuselog": "Acta iniuriarum",
+	"abuselog": "Acta filtri iniuriarum",
 	"abusefilter-blocker": "Filtrum iniuriarum",
-	"abusefilter-log": "Acta filtri iniuriarum",
 	"abusefilter-log-search-user": "Usor:",
 	"abusefilter-log-search-title": "Titulus:",
 	"abusefilter-log-search-submit": "Quaerere",

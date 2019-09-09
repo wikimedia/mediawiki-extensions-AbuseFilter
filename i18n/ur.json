@@ -9,8 +9,8 @@
 			"BukhariSaeed"
 		]
 	},
-	"abusefilter": "مقطر غلط کاری کی ترتیب",
-	"abuselog": "نوشتہ غلط کاری",
+	"abusefilter": "غلط استعمال فلٹر کا انتظام",
+	"abuselog": "نوشتہ مقطر غلط کاری",
 	"abusefilter-disallowed": "یہ عمل روک دیا گیا ہے کیونکہ خود کار طریقے سے نقصان دہ شناخت ہوا ہے۔\nاگر آپ کو یقین ہے کہ آپ کا عمل فائدہ مند تھا، تو براہ مہربانی آپ کسی منتظم کو مطلع کریں کہ آپ کیا کرنے کی کوشش کر رہے تھے۔\nآپ کے عمل کی رک جانے کی مختصر وجہ یہ ہے: $1",
 	"abusefilter-blocker": "مقطر غلط کاری",
 	"right-abusefilter-modify": "غلط کاری کے مقطروں میں ترمیم",
@@ -32,7 +32,6 @@
 	"action-abusefilter-modify-restricted": "محدود اعمال کے ساتھ غلط استعمال فلٹر میں ترمیم",
 	"action-abusefilter-revert": "کی طرف سے ایک دیا کے غلط استعمال کے فلٹر سب تبدیلیاں الٹا واپس",
 	"action-abusefilter-view-private": "قول کے غلط استعمال کے فلٹر کو ذاتی کے طور پر نشان",
-	"abusefilter-log": "نوشتہ مقطر غلط کاری",
 	"abusefilter-log-summary": "اس لاگ ان کے فلٹرز کی طرف سے پکڑے گئے سب اعمال کی فہرست کو ظاہر کرتا ہے.",
 	"abusefilter-log-search": "تلاش کے غلط استعمال لاگ ان کریں",
 	"abusefilter-log-search-user": "صارف:",
@@ -84,7 +83,6 @@
 	"log-action-filter-abusefilter-modify": "تبدیلی مقطر",
 	"logentry-abusefilterprivatedetails-access": "$1 نے $3 کی نجی تفصیلات تک {{GENDER:$2|رسائی حاصل کی}}",
 	"abusefilterprivatedetails-log-name": "نوشتہ رسائی برائے نجی مقطر غلط کاری",
-	"abusefilter-management": "غلط استعمال فلٹر کا انتظام",
 	"abusefilter-list": "سب فلٹر",
 	"abusefilter-list-id": "مقطر کا شناختی نمبر",
 	"abusefilter-list-pattern": "طرز",

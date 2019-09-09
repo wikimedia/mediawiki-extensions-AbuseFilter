@@ -4,6 +4,7 @@
 			"David1010"
 		]
 	},
+	"abusefilter": "ბოროტად გამოყენების ფილტრის მართვა",
 	"abusefilter-log-search-user": "მახვარებუეფი:",
 	"abusefilter-log-search-filter": "ფილტრის ID (ვერტიკალური ხაზით გაყოფილი):",
 	"abusefilter-log-search-title": "სათაური:",
@@ -30,7 +31,6 @@
 	"abusefilter-log-hide-hidden": "ამ ცვლილების დამალვა საზოგადოებისათვის",
 	"abusefilter-log-hide-reason": "სამანჯელი:",
 	"abusefilter-log-hide-forbidden": "თქვენ ბოროტად გამოყენების ფილტრის ჟურნალის ჩანაწერების დამალვის უფლება არა გაქვთ.",
-	"abusefilter-management": "ბოროტად გამოყენების ფილტრის მართვა",
 	"abusefilter-list": "ყველა ფილტრი",
 	"abusefilter-list-id": "ფილტრის ID",
 	"abusefilter-list-status": "სტატუსი",

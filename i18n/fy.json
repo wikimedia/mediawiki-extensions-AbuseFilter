@@ -9,11 +9,9 @@
 		]
 	},
 	"abusefilter-desc": "Fiert automatyske heuristyske analyse út op bewurkings",
-	"abusefilter": "Ynstellings foar it misbrûkfilter",
-	"abuselog": "Misbrûkloch",
+	"abuselog": "Misbrûkfilterloch",
 	"abusefilter-blocker": "Misbrûkfilter",
 	"abusefilter-accountreserved": "Dizze meidochnamme wurdt frijholden foar it misbrûkfilter.",
-	"abusefilter-log": "Misbrûkfilterloch",
 	"abusefilter-log-search-user": "Meidogger:",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",

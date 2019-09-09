@@ -9,8 +9,8 @@
 			"Daimona Eaytoy"
 		]
 	},
-	"abusefilter": "ការកំណត់រចនាសម្ព័ន្ឋ​តម្រងការបំពានច្បាប់",
-	"abuselog": "កំណត់ហេតុ​នៃ​ការបំពានច្បាប់",
+	"abusefilter": "គ្រប់គ្រងតម្រងការបំពានច្បាប់",
+	"abuselog": "កំណត់ហេតុនៃតម្រងការបំពានច្បាប់",
 	"abusefilter-blocker": "តម្រងការបំពានច្បាប់",
 	"abusefilter-blockreason": "ត្រូវបានរាំងខ្ទប់ជាស្វ័យប្រវត្តិ​ដោយតម្រងការបំពានច្បាប់។ ច្បាប់ចែងថា៖ $1",
 	"abusefilter-degroupreason": "សិទ្ឋិ​ដែលត្រូវបានដកហូតជាស្វ័យប្រវត្តិ​ដោយតម្រងការបំពានច្បាប់។ ច្បាប់ចែងថា៖ $1",
@@ -27,7 +27,6 @@
 	"action-abusefilter-log": "មើលកំណត់ហេតុ​នៃការបំពានច្បាប់",
 	"action-abusefilter-log-detail": "មើលកំណត់ហេតុលំអិតស្ដីពីការបំពានច្បាប់",
 	"action-abusefilter-privatedetails": "មើលទិន្នន័យឯកជន​នៅក្នុង​កំណត់ហេតុនៃការបំពានច្បាប់",
-	"abusefilter-log": "កំណត់ហេតុនៃតម្រងការបំពានច្បាប់",
 	"abusefilter-log-search": "ស្វែងរក​កំណត់ហេតុនៃការបំពានច្បាប់",
 	"abusefilter-log-search-user": "អ្នកប្រើប្រាស់៖",
 	"abusefilter-log-search-filter": "ID តម្រង៖",
@@ -49,7 +48,6 @@
 	"abusefilter-log-details-diff": "បន្លាស់ប្ដូរដែលបានធ្វើឡើងក្នុងការកែប្រែ",
 	"abusefilter-log-linkoncontribs": "កំណត់ហេតុ​នៃ​ការបំពានច្បាប់",
 	"abusefilter-log-hide-reason": "មូលហេតុ៖",
-	"abusefilter-management": "គ្រប់គ្រងតម្រងការបំពានច្បាប់",
 	"abusefilter-list": "តម្រងទាំងអស់",
 	"abusefilter-list-id": "ID តម្រង",
 	"abusefilter-list-status": "ស្ថានភាព",

@@ -4,7 +4,7 @@
 			"Jagwar"
 		]
 	},
-	"abuselog": "Tatitry ny Abuse Filter",
+	"abuselog": "Laogin'ny sivana manakam-panararaotana",
 	"abusefilter-blocker": "Sivana manakam-panararaotana",
 	"right-abusefilter-modify": "Hanova ny Abuse filter",
 	"right-abusefilter-view": "Hijery ny Abuse Filter",
@@ -24,7 +24,6 @@
 	"action-abusefilter-privatedetails": "Hijery ny fampahalalàna tsy sarababem-bahoaka ao amin'ny tatitry ny fanararaotana",
 	"action-abusefilter-privatedetails-log": "Hijery ny antsipirihany tsiambaratelon'ny laogim-pamakian'i AbuseFilter",
 	"action-abusefilter-revert": "mamafa ny fanovana araka ny filitra mpanakana fanararaotana nofidiana",
-	"abusefilter-log": "Laogin'ny sivana manakam-panararaotana",
 	"abusefilter-log-search-user": "Mpikambana :",
 	"abusefilter-log-search-title": "Lohateny:",
 	"abusefilter-log-search-wiki": "Wiki :",
