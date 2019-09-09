@@ -33,11 +33,6 @@ class AFPTreeParser {
 	const CACHE_VERSION = 2;
 
 	/**
-	 * @var bool[] Custom variable names, set of [ name => true ]
-	 */
-	private $variablesNames;
-
-	/**
 	 * @var BagOStuff Used to cache tokens
 	 */
 	protected $cache;
@@ -70,7 +65,6 @@ class AFPTreeParser {
 	public function resetState() {
 		$this->mTokens = [];
 		$this->mPos = 0;
-		$this->variablesNames = [];
 		$this->mFilter = null;
 	}
 
@@ -132,8 +126,7 @@ class AFPTreeParser {
 	 */
 	public function buildSyntaxTree() : AFPSyntaxTree {
 		$root = $this->doLevelEntry();
-		$variables = array_keys( $this->variablesNames );
-		return new AFPSyntaxTree( $variables, $root );
+		return new AFPSyntaxTree( $root );
 	}
 
 	/* Levels */
@@ -207,6 +200,7 @@ class AFPTreeParser {
 
 			// Speculatively parse the assignment statement assuming it can
 			// potentially be an assignment, but roll back if it isn't.
+			// @todo Use $this->getNextToken for clearer code
 			$initialState = $this->getState();
 			$this->move();
 
@@ -214,7 +208,6 @@ class AFPTreeParser {
 				$position = $this->mPos;
 				$this->move();
 				$value = $this->doLevelSet();
-				$this->variablesNames[ $varname ] = true;
 
 				return new AFPTreeNode( AFPTreeNode::ASSIGNMENT, [ $varname, $value ], $position );
 			}
@@ -240,7 +233,6 @@ class AFPTreeParser {
 					$position = $this->mPos;
 					$this->move();
 					$value = $this->doLevelSet();
-					$this->variablesNames[ $varname ] = true;
 					if ( $index === 'append' ) {
 						return new AFPTreeNode(
 							AFPTreeNode::ARRAY_APPEND, [ $varname, $value ], $position );
@@ -599,7 +591,6 @@ class AFPTreeParser {
 				) {
 					throw new AFPUserVisibleException( 'variablevariable', $this->mPos, [] );
 				} else {
-					$this->variablesNames[ $this->mCur->value ] = true;
 					$this->setState( $state );
 				}
 			}

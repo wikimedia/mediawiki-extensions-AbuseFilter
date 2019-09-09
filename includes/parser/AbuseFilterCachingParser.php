@@ -54,6 +54,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 */
 	public function intEval( $code ) : AFPData {
 		$tree = $this->getTree( $code );
+
 		$res = $this->evalTree( $tree );
 
 		if ( $res->getType() === AFPData::DUNDEFINED ) {
@@ -350,49 +351,21 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * or
 	 * if ( false ) then ( var := 'foo' ) else ( 1 ) end; var == 2
 	 * where `false` is something evaluated as false at runtime.
-	 * In the future, we may decide to always throw in those cases (for stability and parser speed),
-	 * but that's not good, at least as long as people don't have an on-wiki way to see if filters
-	 * are failing at runtime.
-	 * @todo Decide about that.
+	 *
+	 * @note This method doesn't check whether the variable exists in case of index assignments.
+	 *   Hence, in `false & (nonexistent[] := 2)`, `nonexistent` would be hoisted without errors.
+	 *   However, that would by caught by checkSyntax, so we can avoid checking here: we'd need
+	 *   way more context than we currently have.
 	 *
 	 * @param AFPTreeNode $node
 	 */
 	private function discardWithHoisting( AFPTreeNode $node ) {
-		if (
-			$node->type === AFPTreeNode::ASSIGNMENT &&
-			!$this->mVariables->varIsSet( $node->children[0] )
-		) {
-			$this->setUserVariable( $node->children[0], new AFPData( AFPData::DUNDEFINED ) );
-		} elseif (
-			$node->type === AFPTreeNode::INDEX_ASSIGNMENT ||
-			$node->type === AFPTreeNode::ARRAY_APPEND
-		) {
-			$varName = $node->children[0];
-			if ( !$this->mVariables->varIsSet( $varName ) ) {
-				throw new AFPUserVisibleException( 'unrecognisedvar', $node->position, [ $varName ] );
-			}
-			$this->setUserVariable( $varName, new AFPData( AFPData::DUNDEFINED ) );
-		} elseif (
-			$node->type === AFPTreeNode::FUNCTION_CALL &&
-			in_array( $node->children[0], [ 'set', 'set_var' ] ) &&
-			isset( $node->children[1] )
-		) {
-			$varnameNode = $node->children[1];
-			if ( $varnameNode->type !== AFPTreeNode::ATOM ) {
-				// Shouldn't happen since variable variables are not allowed
-				throw new AFPException( "Got non-atom type {$varnameNode->type} for set_var" );
-			}
-			$varname = $varnameNode->children->value;
-			if ( !$this->mVariables->varIsSet( $varname ) ) {
-				$this->setUserVariable( $varname, new AFPData( AFPData::DUNDEFINED ) );
-			}
-		} elseif ( $node->type === AFPTreeNode::ATOM ) {
-			return;
-		}
-		// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach ATOM case excluded above
-		foreach ( $node->children as $child ) {
-			if ( $child instanceof AFPTreeNode ) {
-				$this->discardWithHoisting( $child );
+		foreach ( $node->getInnerAssignments() as $name ) {
+			if (
+				!$this->mVariables->varIsSet( $name ) ||
+				$this->mVariables->getVar( $name )->getType() === AFPData::DARRAY
+			) {
+				$this->setUserVariable( $name, new AFPData( AFPData::DUNDEFINED ) );
 			}
 		}
 	}
