@@ -24,12 +24,7 @@ class AbuseFilterRightsLogFormatter extends LogFormatter {
 		if ( $this->entry->getSubType() === 'blockautopromote' ) {
 			$parameters = $this->entry->getParameters();
 			$duration = $parameters['7::duration'];
-			// @fixme Temporary for back-compat, all entries will have an int here
-			if ( is_int( $duration ) ) {
-				$ret[4] = $this->context->getLanguage()->formatDuration( $duration );
-			} else {
-				$ret[4] = $duration;
-			}
+			$ret[4] = $this->context->getLanguage()->formatDuration( $duration );
 		}
 		return $ret;
 	}
