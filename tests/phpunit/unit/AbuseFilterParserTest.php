@@ -206,6 +206,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testExpectedNotFoundException( $expr, $caller ) {
 		$this->exceptionTest( 'expectednotfound', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'expectednotfound', $expr, $caller );
 	}
 
 	/**
@@ -242,6 +243,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testUnexpectedAtEndException( $expr, $caller ) {
 		$this->exceptionTest( 'unexpectedatend', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'unexpectedatend', $expr, $caller );
 	}
 
 	/**
@@ -266,6 +268,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testUnrecognisedVarException( $expr, $caller ) {
 		$this->exceptionTest( 'unrecognisedvar', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'unrecognisedvar', $expr, $caller );
 	}
 
 	/**
@@ -292,6 +295,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testNotArrayException( $expr, $caller ) {
 		$this->exceptionTest( 'notarray', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'notarray', $expr, $caller );
 	}
 
 	/**
@@ -319,6 +323,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testOutOfBoundsException( $expr, $caller ) {
 		$this->exceptionTest( 'outofbounds', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'outofbounds', $expr, $caller );
 	}
 
 	/**
@@ -345,6 +350,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testUnrecognisedKeywordException( $expr, $caller ) {
 		$this->exceptionTest( 'unrecognisedkeyword', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'unrecognisedkeyword', $expr, $caller );
 	}
 
 	/**
@@ -369,6 +375,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testUnexpectedTokenException( $expr, $caller ) {
 		$this->exceptionTest( 'unexpectedtoken', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'unexpectedtoken', $expr, $caller );
 	}
 
 	/**
@@ -393,6 +400,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testDisabledVarException( $expr, $caller ) {
 		$this->exceptionTest( 'disabledvar', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'disabledvar', $expr, $caller );
 	}
 
 	/**
@@ -417,6 +425,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testVariableVariableException( $expr, $caller ) {
 		$this->exceptionTest( 'variablevariable', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'variablevariable', $expr, $caller );
 	}
 
 	/**
@@ -444,6 +453,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testOverrideBuiltinException( $expr, $caller ) {
 		$this->exceptionTest( 'overridebuiltin', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'overridebuiltin', $expr, $caller );
 	}
 
 	/**
@@ -473,6 +483,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testRegexFailureException( $expr, $caller ) {
 		$this->exceptionTest( 'regexfailure', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'regexfailure', $expr, $caller );
 	}
 
 	/**
@@ -499,6 +510,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testInvalidIPRangeException( $expr, $caller ) {
 		$this->exceptionTest( 'invalidiprange', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'invalidiprange', $expr, $caller );
 	}
 
 	/**
@@ -523,6 +535,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testNoParamsException( $func ) {
 		$this->exceptionTest( 'noparams', "$func()", 'checkArgCount' );
+		$this->exceptionTestInSkippedBlock( 'noparams', "$func()", 'checkArgCount' );
 	}
 
 	/**
@@ -566,6 +579,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		// of parameters before anything else.
 		$code = "$func('foo')";
 		$this->exceptionTest( 'notenoughargs', $code, 'checkArgCount' );
+		$this->exceptionTestInSkippedBlock( 'notenoughargs', $code, 'checkArgCount' );
 	}
 
 	/**
@@ -601,6 +615,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		// of parameters before anything else.
 		$code = "$func('foo', 'bar')";
 		$this->exceptionTest( 'notenoughargs', $code, 'checkArgCount' );
+		$this->exceptionTestInSkippedBlock( 'notenoughargs', $code, 'checkArgCount' );
 	}
 
 	/**
@@ -622,6 +637,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testTooManyArgumentsException( $code ) {
 		$this->markTestSkipped( 'Waiting for filters to be fixed in WMF production' );
 		$this->exceptionTest( 'toomanyargs', $code, 'checkArgCount' );
+		$this->exceptionTestInSkippedBlock( 'toomanyargs', $code, 'checkArgCount' );
 	}
 
 	/**
@@ -1044,6 +1060,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 */
 	public function testExtraCommasNotAllowed( $code ) {
 		$this->exceptionTest( 'unexpectedtoken', $code, 'doLevelAtom' );
+		$this->exceptionTestInSkippedBlock( 'unexpectedtoken', $code, 'doLevelAtom' );
 	}
 
 	/**

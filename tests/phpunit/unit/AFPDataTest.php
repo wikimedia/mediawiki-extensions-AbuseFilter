@@ -46,6 +46,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 */
 	public function testDivideByZeroException( $expr, $caller ) {
 		$this->exceptionTest( 'dividebyzero', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'dividebyzero', $expr, $caller );
 	}
 
 	/**

@@ -269,8 +269,8 @@ class AbuseFilterParser {
 
 	/**
 	 * @param string $filter
-	 * @return true|array True when successful, otherwise a two-element array with exception message
-	 *  and character position of the syntax error
+	 * @return true When successful
+	 * @throws AFPUserVisibleException
 	 */
 	public function checkSyntax( $filter ) {
 		$this->allowMissingVariables = true;
@@ -278,8 +278,6 @@ class AbuseFilterParser {
 		try {
 			$this->mAllowShort = false;
 			$this->intEval( $filter );
-		} catch ( AFPUserVisibleException $excep ) {
-			return [ $excep->getMessageObj()->text(), $excep->mPosition ];
 		} finally {
 			$this->mAllowShort = $origAS;
 			$this->allowMissingVariables = false;
