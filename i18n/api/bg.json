@@ -31,7 +31,7 @@
 	"apihelp-query+abuselog-param-end": "Времева отметка, при която да спира изчислението.",
 	"apihelp-query+abuselog-param-user": "Показване само на записи, свързани с даден потребител или IP адрес.",
 	"apihelp-query+abuselog-param-title": "Показване само на записи, свързани с определена страница.",
-	"apihelp-query+abuselog-param-filter": "Показване само записи, които отговарят на даден ID на филтър.",
+	"apihelp-query+abuselog-param-filter": "Показване само записи, които отговарят на даден ID на филтър. Разделени с вертикални черти, с префикс „$1“ за глобалните филтри.",
 	"apihelp-query+abuselog-param-limit": "Максимален брой записи в списъка.",
 	"apihelp-query+abuselog-param-prop": "Какви свойства трябва да се получат.",
 	"apihelp-query+abuselog-example-1": "Показване на последните записи в дневника",
