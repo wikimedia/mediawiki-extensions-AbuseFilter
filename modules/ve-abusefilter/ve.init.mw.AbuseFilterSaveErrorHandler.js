@@ -7,15 +7,17 @@ mw.libs.ve.targetLoader.addPlugin( function () {
 	ve.init.mw.AbuseFilterSaveErrorHandler.static.name = 'abuseFilter';
 
 	ve.init.mw.AbuseFilterSaveErrorHandler.static.matchFunction = function ( data ) {
-		return !!ve.getProp( data, 'visualeditoredit', 'edit', 'abusefilter' );
+		return data.errors && data.errors.some( function ( err ) {
+			return err.code === 'abusefilter-disallowed' || err.code === 'abusefilter-warning';
+		} );
 	};
 
 	ve.init.mw.AbuseFilterSaveErrorHandler.static.process = function ( data, target ) {
-		var
-			$message = $( $.parseHTML( ve.getProp( data, 'visualeditoredit', 'edit', 'warning' ) ) ),
-			isWarning = ve.getProp( data, 'visualeditoredit', 'edit', 'code' ) !== 'abusefilter-disallowed';
+		var isWarning = data.errors.every( function ( err ) {
+			return err.code === 'abusefilter-warning';
+		} );
 		// Handle warnings/errors from Extension:AbuseFilter
-		target.showSaveError( $message, isWarning, isWarning );
+		target.showSaveError( target.extractErrorMessages( data ), isWarning, isWarning );
 		// Emit event for tracking. TODO: This is a bad design
 		target.emit( 'saveErrorAbuseFilter' );
 	};
