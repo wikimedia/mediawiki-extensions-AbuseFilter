@@ -1162,7 +1162,7 @@ class AbuseFilterParser {
 		$flags = $this->allowMissingVariables
 			? AbuseFilterVariableHolder::GET_LAX
 			: AbuseFilterVariableHolder::GET_STRICT;
-		return $this->mVariables->getVar( $var, $flags );
+		return $this->mVariables->getVar( $var, $flags, $this->mFilter );
 	}
 
 	/**

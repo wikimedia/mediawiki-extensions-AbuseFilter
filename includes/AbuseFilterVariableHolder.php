@@ -105,9 +105,10 @@ class AbuseFilterVariableHolder {
 	 * @param int $flags If self::GET_STRICT is set, this will throw if
 	 *   the requested variable is not set. Otherwise it will return a DUNDEFINED AFPData.
 	 *   NOTE: For now, it will return DUNDEFINED even with GET_STRICT.
+	 * @param string|null $tempFilter Filter ID, if available; only used for debugging (temporarily)
 	 * @return AFPData
 	 */
-	public function getVar( $varName, $flags = self::GET_STRICT ) : AFPData {
+	public function getVar( $varName, $flags = self::GET_STRICT, $tempFilter = null ) : AFPData {
 		$varName = strtolower( $varName );
 		if ( $this->mVarsVersion === 1 && in_array( $varName, AbuseFilter::getDeprecatedVariables() ) ) {
 			// Variables are stored with old names, but the parser has given us
@@ -137,7 +138,14 @@ class AbuseFilterVariableHolder {
 		} elseif ( !( $flags & self::GET_STRICT ) ) {
 			return new AFPData( AFPData::DUNDEFINED );
 		} else {
-			$this->logger->warning( __METHOD__ . ": requested unset variable $varName in strict mode" );
+			$this->logger->warning(
+				__METHOD__ . ": requested unset variable {varname} in strict mode, filter: {filter}",
+				[
+					'varname' => $varName,
+					'trace' => ( new Exception )->getTraceAsString(),
+					'filter' => $tempFilter ?? 'unavailable'
+				]
+			);
 			// @todo change the line below to throw an exception in a future MW version
 			return new AFPData( AFPData::DUNDEFINED );
 		}
