@@ -240,7 +240,7 @@
 	"abusefilter-edit-throttle-period": "期間（秒）：",
 	"abusefilter-edit-throttle-groups": "群組受限依︰",
 	"abusefilter-edit-throttle-groups-help": "查看$1。",
-	"abusefilter-edit-throttle-groups-help-text": "在 mediawiki.org 上的文件",
+	"abusefilter-edit-throttle-groups-help-text": "在mediawiki.org上的文件",
 	"abusefilter-edit-throttle-hidden-placeholder": "用逗號分隔來與 AND 相接，並以換行來與 OR 相接。",
 	"abusefilter-edit-throttle-placeholder": "用逗號分隔來與 AND 相接，並逐一插入來與 OR 相接。",
 	"abusefilter-throttle-ip": "IP 位址",
