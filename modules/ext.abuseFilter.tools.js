@@ -110,6 +110,8 @@
 
 	$( function initialize() {
 		$( '#mw-abusefilter-submitexpr' ).on( 'click', doExprSubmit );
-		$( '#mw-abusefilter-reautoconfirmsubmit' ).on( 'click', doReautoSubmit );
+		if ( $( '#mw-abusefilter-reautoconfirmsubmit' ).length ) {
+			$( '#mw-abusefilter-reautoconfirmsubmit' ).on( 'click', doReautoSubmit );
+		}
 	} );
 }() );
