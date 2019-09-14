@@ -20,7 +20,7 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 
 		$block = $this->getUser()->getBlock();
 		if ( $block && $block->isSitewide() ) {
-			$this->dieWithError( 'apierror-blocked' );
+			$this->dieBlocked( $block );
 		}
 
 		$msg = $this->msg( 'abusefilter-tools-restoreautopromote' )->inContentLanguage()->text();
