@@ -425,7 +425,12 @@ class AbuseFilter {
 	 *  and character position of the syntax error
 	 */
 	public static function checkSyntax( $filter ) {
-		return self::getDefaultParser()->checkSyntax( $filter );
+		try {
+			$res = self::getDefaultParser()->checkSyntax( $filter );
+		} catch ( AFPUserVisibleException $excep ) {
+			$res = [ $excep->getMessageObj()->text(), $excep->mPosition ];
+		}
+		return $res;
 	}
 
 	/**

@@ -46,6 +46,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		$this->mVariables = new AbuseFilterVariableHolder;
 		$this->mCur = new AFPToken();
 		$this->mCondCount = 0;
+		$this->mAllowShort = true;
 	}
 
 	/**
@@ -248,7 +249,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				// Short-circuit.
 				if ( ( !$value && $op === '&' ) || ( $value && $op === '|' ) ) {
 					if ( $rightOperand instanceof AFPTreeNode ) {
-						$this->discardWithHoisting( $rightOperand );
+						$this->maybeDiscardNode( $rightOperand );
 					}
 					return $leftOperand;
 				}
@@ -261,11 +262,11 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$isTrue = $condition->getType() === AFPData::DUNDEFINED ? false : $condition->toBool();
 				if ( $isTrue ) {
 					if ( $valueIfFalse !== null ) {
-						$this->discardWithHoisting( $valueIfFalse );
+						$this->maybeDiscardNode( $valueIfFalse );
 					}
 					return $this->evalNode( $valueIfTrue );
 				} else {
-					$this->discardWithHoisting( $valueIfTrue );
+					$this->maybeDiscardNode( $valueIfTrue );
 					return $valueIfFalse !== null
 						? $this->evalNode( $valueIfFalse )
 						// We assume null as default if the else is missing
@@ -339,6 +340,21 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				// @codeCoverageIgnoreStart
 				throw new AFPException( "Unknown node type passed: {$node->type}" );
 				// @codeCoverageIgnoreEnd
+		}
+	}
+
+	/**
+	 * Given a node that we don't need to evaluate, decide what to do with it. The nodes passed in
+	 * will usually be discarded by short-circuit evaluation. If we allow it, then we just hoist
+	 * the variables assigned in any descendant of the node. Otherwise, we fully evaluate the node.
+	 *
+	 * @param AFPTreeNode $node
+	 */
+	private function maybeDiscardNode( AFPTreeNode $node ) {
+		if ( $this->mAllowShort ) {
+			$this->discardWithHoisting( $node );
+		} else {
+			$this->evalNode( $node );
 		}
 	}
 

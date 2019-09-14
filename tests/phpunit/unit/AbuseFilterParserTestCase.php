@@ -44,6 +44,36 @@ abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @param string $excep
+	 * @param string $expr
+	 * @param string $caller
+	 * @param bool $skippedBlock Whether we're testing code inside a short-circuited block
+	 */
+	private function exceptionTestInternal( $excep, $expr, $caller, $skippedBlock ) {
+		foreach ( $this->getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			$msg = "Exception $excep not thrown in $caller";
+			if ( $skippedBlock ) {
+				$msg .= " inside a short-circuited block";
+			}
+			$msg .= ". Parser: $pname.";
+			try {
+				if ( $skippedBlock ) {
+					// Skipped blocks are, well, skipped when actually parsing.
+					$parser->checkSyntax( $expr );
+				} else {
+					$parser->parse( $expr );
+				}
+			} catch ( AFPUserVisibleException $e ) {
+				$this->assertEquals( $excep, $e->mExceptionID, $msg . " Got instead:\n$e" );
+				continue;
+			}
+
+			$this->fail( $msg );
+		}
+	}
+
+	/**
 	 * Base method for testing exceptions
 	 *
 	 * @param string $excep Identifier of the exception (e.g. 'unexpectedtoken')
@@ -53,21 +83,21 @@ abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
 	 *  just used for debugging purposes.
 	 */
 	protected function exceptionTest( $excep, $expr, $caller ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			try {
-				$parser->parse( $expr );
-			} catch ( AFPUserVisibleException $e ) {
-				$this->assertEquals(
-					$excep,
-					$e->mExceptionID,
-					"Exception $excep not thrown in $caller. Parser: $pname."
-				);
-				continue;
-			}
+		$this->exceptionTestInternal( $excep, $expr, $caller, false );
+	}
 
-			$this->fail( "Exception $excep not thrown in $caller. Parser: $pname." );
-		}
+	/**
+	 * Same as self::exceptionTest, but wraps the given code in a block that will be short-circuited.
+	 * Note that this is executed using Parser::checkSyntax, as errors inside a skipped branch won't
+	 * ever be reported at runtime.
+	 *
+	 * @param string $excep
+	 * @param string $expr
+	 * @param string $caller
+	 */
+	protected function exceptionTestInSkippedBlock( $excep, $expr, $caller ) {
+		$expr = "false & ( $expr )";
+		$this->exceptionTestInternal( $excep, $expr, $caller, true );
 	}
 
 	/**
