@@ -280,8 +280,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'a[1] := 5', 'getVarValue' ],
 			[ 'a[] := 5', 'getVarValue' ],
 			[ 'a = 5', 'getVarValue' ],
-			[ 'false & ( nonexistent[1] := 2 )', 'skipOverBraces/discardWithHoisting' ],
-			[ 'false & ( nonexistent[] := 2 )', 'skipOverBraces/discardWithHoisting' ],
 		];
 	}
 
@@ -461,6 +459,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'added_lines[] := 1', 'doLevelSet' ],
 			[ 'added_lines[3] := 1', 'doLevelSet' ],
 			[ 'page_id[3] := 1', 'doLevelSet' ],
+			[ 'true | (added_lines := 1);','setUserVariable' ],
+			[ 'if(true) then 1 else (added_lines := 1) end;', 'setUserVariable' ],
 		];
 	}
 
@@ -839,9 +839,11 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function provideVarDeclarationInSkippedBlock() {
 		return [
 			[ "x := [5]; false & (1 == 1; y := 'b'; x[1] := 'x'; 3 < 4); y != 'b' & x[1] != 'x'" ],
-			[ "(var := [1]); false & ( var[] := 'baz' ); var contains 'baz'" ],
+			[ "(var := [1]); false & ( var[] := 'baz' ); count(var) > -1" ],
 			[ "(var := [1]); false & ( var[1] := 'baz' ); var[1] === 'baz'" ],
 			[ "false & (set('myvar', 1)); myvar contains 1" ],
+			[ "false & ( ( false & ( var := [1] ) ) | ( var[] := 2 ) ); var" ],
+			[ "false & ( ( false & ( var := [1] ); true ) | ( var[] := 2 ) ); var" ],
 			// The following tests are to ensure that we don't get a match
 			[ "false & ( var := 'foo'; x := get_matches( var, added_lines )[1] ); x != false" ],
 			[ "false & ( var := 'foo'); var !== null" ],
