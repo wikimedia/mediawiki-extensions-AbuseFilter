@@ -117,9 +117,27 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function provideEmptySyntax() {
 		return [
 			[ '' ],
-			[ '()' ],
 			[ ';;;;' ]
 		];
+	}
+
+	/**
+	 * Test a filter only containing a pair of empty parentheses. In the old parser, this should simply
+	 * return false. In the new parser, it will throw.
+	 */
+	public function testEmptyParenthesisOnly() {
+		$code = '()';
+		$constrArgs = [
+			$this->getLanguageMock(),
+			new EmptyBagOStuff(),
+			new NullLogger()
+		];
+
+		$parser = new AbuseFilterParser( ...$constrArgs );
+		$this->assertFalse( $parser->parse( $code ) );
+		$cachingParser = new AbuseFilterCachingParser( ...$constrArgs );
+		$this->setExpectedException( AFPUserVisibleException::class, 'unexpectedtoken' );
+		$cachingParser->parse( $code );
 	}
 
 	/**
@@ -227,7 +245,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'lcase = 3', 'doLevelFunction' ],
 			[ 'lcase( 3 = 1', 'doLevelFunction' ],
 			[ 'a := [1,2', 'doLevelAtom' ],
-			[ '1 = 1 | (', 'skipOverBraces' ],
+			[ '1 = 1 | (1', 'skipOverBraces/doLevelParenthesis' ],
 			[ 'a := [1,2,3]; 3 = a[5', 'doLevelArrayElements' ],
 			// `set` is the name of a function. It's unclear whether the following should be allowed.
 			[ 'set:= 1; set contains 1', 'doLevelFunction' ],
@@ -931,16 +949,15 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test that empty operands are correctly logged. Note that this test doesn't generate coverage
-	 * *intentionally*. This is so that if the logEmptyOperand method becomes covered, there's likely
-	 * a bug somewhere in the parser.
-	 * This test is only necessary for the "basic" parser
+	 * Test that empty operands are correctly logged in the old parser. Note that this test doesn't
+	 * generate coverage *intentionally*. This is so that if the logEmptyOperand method becomes
+	 * covered, there's likely a bug somewhere in the parser.
 	 *
 	 * @param string $code
 	 * @param string $operandType
 	 * @dataProvider provideEmptyOperands
 	 */
-	public function testEmptyOperands( $code, $operandType ) {
+	public function testEmptyOperandsOldParser( $code, $operandType ) {
 		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
 		$mock = $this->getMockBuilder( AbuseFilterParser::class )
 			->setConstructorArgs(
@@ -958,8 +975,26 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Data provider for testEmptyOperands
+	 * Test that empty operands raise an exception in the CachingParser
 	 *
+	 * @param string $code
+	 * @dataProvider provideEmptyOperands
+	 */
+	public function testEmptyOperandsCachingParser( $code ) {
+		static $parser = null;
+		if ( !$parser ) {
+			$parser = new AbuseFilterCachingParser(
+				$this->getLanguageMock(),
+				new EmptyBagOStuff(),
+				new NullLogger()
+			);
+			$parser->toggleConditionLimit( false );
+		}
+		$this->setExpectedException( AFPUserVisibleException::class, 'unexpectedtoken' );
+		$parser->parse( $code );
+	}
+
+	/**
 	 * @return array
 	 */
 	public function provideEmptyOperands() {
@@ -990,14 +1025,15 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "true ? false :", 'ternary else' ],
 			[ "-", 'unary operand' ],
 			[ "+", 'unary operand' ],
-			[ 'if () then (1) end', 'if condition' ],
-			[ 'if () then (1) else (1) end', 'if condition' ],
-			[ 'if (true) then () end', 'if body' ],
-			[ 'if (false) then () end', 'if body' ],
-			[ 'if (true) then () else (3) end', 'if body' ],
-			[ 'if (false) then () else (3) end', 'if body' ],
-			[ 'if (true) then (1) else () end', 'else body' ],
-			[ 'if (false) then (1) else () end', 'else body' ],
+			[ 'if () then (1) end', 'parenthesized expression' ],
+			[ 'if () then (1) else (1) end', 'parenthesized expression' ],
+			[ 'if (true) then () end', 'parenthesized expression' ],
+			[ 'if (false) then () end', 'parenthesized expression' ],
+			[ 'if (true) then () else (3) end', 'parenthesized expression' ],
+			[ 'if (false) then () else (3) end', 'parenthesized expression' ],
+			[ 'if (true) then (1) else () end', 'parenthesized expression' ],
+			[ 'if (false) then (1) else () end', 'parenthesized expression' ],
+			[ '()', 'parenthesized expression' ]
 		];
 	}
 

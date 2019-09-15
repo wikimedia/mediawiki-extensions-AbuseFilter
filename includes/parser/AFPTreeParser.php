@@ -536,6 +536,18 @@ class AFPTreeParser {
 	 */
 	protected function doLevelParenthesis() {
 		if ( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === '(' ) {
+			$next = $this->getNextToken();
+			if ( $next->type === AFPToken::TBRACE && $next->value === ')' ) {
+				// Empty parentheses are never allowed
+				throw new AFPUserVisibleException(
+					'unexpectedtoken',
+					$this->mPos,
+					[
+						$this->mCur->type,
+						$this->mCur->value
+					]
+				);
+			}
 			$result = $this->doLevelSemicolon();
 
 			if ( !( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === ')' ) ) {
