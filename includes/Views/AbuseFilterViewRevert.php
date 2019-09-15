@@ -38,6 +38,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			throw new PermissionsError( 'abusefilter-revert' );
 		}
 
+		$block = $user->getBlock();
+		if ( $block && $block->isSitewide() ) {
+			throw new UserBlockedError( $block );
+		}
+
 		$this->loadParameters();
 
 		if ( $this->attemptRevert() ) {
