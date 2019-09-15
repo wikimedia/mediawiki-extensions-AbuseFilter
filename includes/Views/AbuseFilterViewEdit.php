@@ -368,7 +368,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( AbuseFilter::canEdit( $user ) ) {
+			if ( AbuseFilter::canViewPrivate( $user ) ) {
 				// Test link
 				$tools .= Xml::tags(
 					'p', null,
