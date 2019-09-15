@@ -278,7 +278,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			}
 
 			$parser->setVariables( $vars );
-			$result = $parser->checkConditions( $this->testPattern );
+			$result = $parser->checkConditions( $this->testPattern )->getResult();
 
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item

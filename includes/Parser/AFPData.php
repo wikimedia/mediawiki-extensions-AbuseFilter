@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use InvalidArgumentException;
-use MWException;
+use RuntimeException;
 
 class AFPData {
 	// Datatypes
@@ -420,7 +420,7 @@ class AFPData {
 	/** Convert shorteners */
 
 	/**
-	 * @throws MWException
+	 * @throws RuntimeException
 	 * @return mixed
 	 */
 	public function toNative() {
@@ -447,7 +447,7 @@ class AFPData {
 				return null;
 			default:
 				// @codeCoverageIgnoreStart
-				throw new MWException( "Unknown type" );
+				throw new RuntimeException( "Unknown type" );
 				// @codeCoverageIgnoreEnd
 		}
 	}

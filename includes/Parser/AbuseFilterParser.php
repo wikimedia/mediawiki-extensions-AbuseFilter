@@ -9,7 +9,6 @@ use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MWException;
 use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
 use Sanitizer;
@@ -62,6 +61,10 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @var BagOStuff Used to cache the AST (in CachingParser) and the tokens
 	 */
 	protected $cache;
+	/**
+	 * @var bool Whether the AST was retrieved from cache (CachingParser only)
+	 */
+	protected $fromCache = false;
 	/**
 	 * @var LoggerInterface Used for debugging
 	 */
@@ -184,7 +187,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 	/**
 	 * @param int $val The amount to increase the conditions count of.
-	 * @throws MWException
+	 * @throws AFPException
 	 */
 	protected function raiseCondCount( $val = 1 ) {
 		global $wgAbuseFilterConditionLimit;
@@ -192,7 +195,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$this->mCondCount += $val;
 
 		if ( $this->condLimitEnabled && $this->mCondCount > $wgAbuseFilterConditionLimit ) {
-			throw new MWException( 'Condition limit reached.' );
+			throw new AFPException( 'Condition limit reached.' );
 		}
 	}
 
@@ -267,15 +270,13 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @param string $conds
 	 * @param bool $ignoreError
 	 * @param string|null $filter The ID of the filter being parsed
-	 * @return bool
-	 * @throws Exception
+	 * @return ParserStatus
+	 * @throws AFPException
 	 */
-	public function checkConditions( string $conds, $ignoreError = true, $filter = null ) : bool {
-		try {
-			$result = $this->parse( $conds );
-		} catch ( Exception $excep ) {
-			$result = false;
-
+	public function checkConditions( string $conds, $ignoreError = true, $filter = null ) : ParserStatus {
+		$result = $this->parseDetailed( $conds );
+		$excep = $result->getException();
+		if ( $excep !== null ) {
 			if ( $excep instanceof AFPUserVisibleException ) {
 				$msg = $excep->getMessageForLogs();
 				$excep->setLocalizedMessage();
@@ -389,6 +390,22 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	public function parse( $code ) {
 		return $this->intEval( $code )->toBool();
+	}
+
+	/**
+	 * Like self::parse(), but returns an object with additional info
+	 * @param string $code
+	 * @return ParserStatus
+	 */
+	public function parseDetailed( string $code ) : ParserStatus {
+		$excep = null;
+		try {
+			$res = $this->parse( $code );
+		} catch ( AFPException $excep ) {
+			$res = false;
+		} finally {
+			return new ParserStatus( $res, $this->fromCache, $excep );
+		}
 	}
 
 	/**

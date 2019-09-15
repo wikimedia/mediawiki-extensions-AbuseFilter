@@ -68,7 +68,7 @@ class CheckMatch extends ApiBase {
 		$parser->setVariables( $vars );
 		$result = [
 			ApiResult::META_BC_BOOLS => [ 'result' ],
-			'result' => $parser->checkConditions( $params['filter'] ),
+			'result' => $parser->checkConditions( $params['filter'] )->getResult(),
 		];
 
 		$this->getResult()->addValue(
