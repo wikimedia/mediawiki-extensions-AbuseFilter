@@ -366,6 +366,10 @@
 			"value": null,
 			"description": "Old standard block duration for anonymous users, $wgAbuseFilterBlockDuration will be used if null. Kept for backward compatibility after T32024."
 		},
+		"AbuseFilterBlockAutopromoteDuration": {
+			"value": 5,
+			"description": "Duration, in days, for which users' autopromotion is blocked by filters."
+		},
 		"AbuseFilterCustomActionsHandlers": {
 			"value": [],
 			"description": "Callback functions for custom actions"
