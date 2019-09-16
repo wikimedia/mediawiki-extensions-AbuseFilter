@@ -102,6 +102,7 @@ class AbuseFilterHooks {
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
 		Status $status, $summary, User $user, $minoredit, $slot = SlotRecord::MAIN
 	) {
+		$startTime = microtime( true );
 		// @todo is there any real point in passing this in?
 		$text = AbuseFilter::contentToString( $content );
 
@@ -112,6 +113,8 @@ class AbuseFilterHooks {
 			$filterResultApi = self::getApiStatus( $filterResult );
 			$status->merge( $filterResultApi );
 		}
+		MediaWikiServices::getInstance()->getStatsdDataFactory()
+			->timing( 'timing.editAbuseFilter', microtime( true ) - $startTime );
 	}
 
 	/**
@@ -1001,6 +1004,7 @@ class AbuseFilterHooks {
 	public static function onParserOutputStashForEdit(
 		WikiPage $page, Content $content, ParserOutput $output, $summary = '', $user = null
 	) {
+		$startTime = microtime( true );
 		$oldRevision = $page->getRevision();
 		if ( !$oldRevision ) {
 			return;
@@ -1021,15 +1025,30 @@ class AbuseFilterHooks {
 		$newRevision->setContent( $slot, $content );
 		$text = AbuseFilter::revisionToString( $newRevision, $user );
 
+		$outerTime = microtime( true ) - $startTime;
+
 		// Cache any resulting filter matches.
 		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
 		DeferredUpdates::addCallableUpdate(
-			function () use ( $user, $page, $summary, $content, $text, $oldContent, $oldAfText ) {
+			function () use (
+				$user,
+				$page,
+				$summary,
+				$content,
+				$text,
+				$oldContent,
+				$oldAfText,
+				$outerTime
+			) {
+				$startTime = microtime( true );
 				$vars = self::newVariableHolderForEdit(
 					$user, $page->getTitle(), $page, $summary, $content, $text, $oldAfText, $oldContent
 				);
 				$runner = new AbuseFilterRunner( $user, $page->getTitle(), $vars, 'default' );
 				$runner->runForStash();
+				$totalTime = $outerTime + ( microtime( true ) - $startTime );
+				MediaWikiServices::getInstance()->getStatsdDataFactory()
+					->timing( 'timing.stashAbuseFilter', $totalTime );
 			},
 			DeferredUpdates::PRESEND
 		);
