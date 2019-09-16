@@ -60,6 +60,10 @@ class AbuseFilterParser {
 	 * @var Language Content language, used for language-dependent functions
 	 */
 	protected $contLang;
+	/**
+	 * @var IBufferingStatsdDataFactory
+	 */
+	protected $statsd;
 
 	public static $mFunctions = [
 		'lcase' => 'funcLc',
@@ -175,6 +179,7 @@ class AbuseFilterParser {
 		$this->contLang = $contLang;
 		$this->cache = $cache;
 		$this->logger = $logger;
+		$this->statsd = new NullStatsdDataFactory;
 		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
@@ -200,6 +205,13 @@ class AbuseFilterParser {
 	 */
 	public function setLogger( LoggerInterface $logger ) {
 		$this->logger = $logger;
+	}
+
+	/**
+	 * @param IBufferingStatsdDataFactory $statsd
+	 */
+	public function setStatsd( IBufferingStatsdDataFactory $statsd ) {
+		$this->statsd = $statsd;
 	}
 
 	/**
@@ -396,6 +408,7 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	public function intEval( $code ) {
+		$startTime = microtime( true );
 		// Reset all class members to their default value
 		$tokenizer = new AbuseFilterTokenizer( $this->cache, $this->logger );
 		$this->mTokens = $tokenizer->getTokens( $code );
@@ -409,6 +422,7 @@ class AbuseFilterParser {
 			$result = new AFPData( AFPData::DBOOL, false );
 		}
 
+		$this->statsd->timing( 'abusefilter_oldparser_full', microtime( true ) - $startTime );
 		return $result;
 	}
 

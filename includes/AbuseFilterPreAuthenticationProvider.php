@@ -2,6 +2,7 @@
 
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\MediaWikiServices;
 
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
 	/**
@@ -35,6 +36,7 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 	 * @return StatusValue
 	 */
 	protected function testUser( $user, $creator, $autocreate ) {
+		$startTime = microtime( true );
 		if ( $user->getName() === wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
 			return StatusValue::newFatal( 'abusefilter-accountreserved' );
 		}
@@ -57,6 +59,9 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 			'default'
 		);
 		$status = $runner->run();
+
+		MediaWikiServices::getInstance()->getStatsdDataFactory()
+			->timing( 'timing.createaccountAbuseFilter', microtime( true ) - $startTime );
 
 		return $status->getStatusValue();
 	}

@@ -43,12 +43,23 @@ class AFPTreeParser {
 	protected $logger;
 
 	/**
+	 * @var IBufferingStatsdDataFactory
+	 */
+	protected $statsd;
+
+	/**
 	 * @param BagOStuff $cache
 	 * @param LoggerInterface $logger Used for debugging
+	 * @param IBufferingStatsdDataFactory $statsd
 	 */
-	public function __construct( BagOStuff $cache, LoggerInterface $logger ) {
+	public function __construct(
+		BagOStuff $cache,
+		LoggerInterface $logger,
+		IBufferingStatsdDataFactory $statsd
+	) {
 		$this->cache = $cache;
 		$this->logger = $logger;
+		$this->statsd = $statsd;
 		$this->resetState();
 	}
 
@@ -125,7 +136,9 @@ class AFPTreeParser {
 	 * @return AFPSyntaxTree
 	 */
 	public function buildSyntaxTree() : AFPSyntaxTree {
+		$startTime = microtime( true );
 		$root = $this->doLevelEntry();
+		$this->statsd->timing( 'abusefilter_cachingParser_buildtree', microtime( true ) - $startTime );
 		return new AFPSyntaxTree( $root );
 	}
 
