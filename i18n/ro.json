@@ -15,7 +15,8 @@
 			"Matma Rex",
 			"WebSourceContentRO",
 			"Fitoschido",
-			"Andrei Stroe"
+			"Andrei Stroe",
+			"GabiBil"
 		]
 	},
 	"abusefilter-desc": "Aplică euristici automate modificărilor.",
@@ -76,6 +77,7 @@
 	"abusefilter-log-details-vars": "Parametrii acțiunii",
 	"abusefilter-log-details-privatedetails": "Date private",
 	"abusefilter-log-details-ip": "Adresa IP de origine",
+	"abusefilter-log-details-checkuser": "Verifică utilizator",
 	"abusefilter-log-noactions": "nimic",
 	"abusefilter-log-details-diff": "Modificări făcute în modificare",
 	"abusefilter-log-linkoncontribs": "jurnal de abuzare",
