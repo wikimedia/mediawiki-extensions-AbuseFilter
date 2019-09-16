@@ -476,7 +476,7 @@ class AbuseFilterParser {
 				$checkEmpty = $result->getType() === AFPData::DEMPTY;
 				$this->doLevelSet( $result );
 				if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
-					$this->logEmptyOperand( 'var assignment', __METHOD__ );
+					$this->logEmptyOperand( 'var assignment' );
 				}
 				$this->setUserVariable( $varname, $result );
 
@@ -517,7 +517,7 @@ class AbuseFilterParser {
 					}
 					$this->move();
 					if ( $this->mCur->type === AFPToken::TNONE ) {
-						$this->logEmptyOperand( 'array assignment', __METHOD__ );
+						$this->logEmptyOperand( 'array assignment' );
 					}
 					$this->doLevelSet( $result );
 					if ( $array->getType() === AFPData::DARRAY ) {
@@ -645,7 +645,7 @@ class AbuseFilterParser {
 				}
 				$this->doLevelConditions( $r2 );
 				if ( $r2->getType() === AFPData::DEMPTY ) {
-					$this->logEmptyOperand( 'ternary else', __METHOD__ );
+					$this->logEmptyOperand( 'ternary else' );
 				}
 				if ( $isTrue ) {
 					$this->mShortCircuit = $scOrig;
@@ -679,7 +679,7 @@ class AbuseFilterParser {
 				$scOrig = wfSetVar( $this->mShortCircuit, $this->mAllowShort, true );
 				$this->doLevelCompares( $r2 );
 				if ( $r2->getType() === AFPData::DEMPTY ) {
-					$this->logEmptyOperand( 'bool operand', __METHOD__ );
+					$this->logEmptyOperand( 'bool operand' );
 				}
 				$this->mShortCircuit = $scOrig;
 				$result = new AFPData( AFPData::DBOOL, $curVal );
@@ -688,7 +688,7 @@ class AbuseFilterParser {
 
 			$this->doLevelCompares( $r2 );
 			if ( $r2->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'bool operand', __METHOD__ );
+				$this->logEmptyOperand( 'bool operand' );
 			}
 			$result = $result->boolOp( $r2, $op );
 		}
@@ -715,7 +715,7 @@ class AbuseFilterParser {
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelSumRels( $r2 );
 			if ( $r2->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'compare operand', __METHOD__ );
+				$this->logEmptyOperand( 'compare operand' );
 			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -740,7 +740,7 @@ class AbuseFilterParser {
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelMulRels( $r2 );
 			if ( $r2->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'sum operand', __METHOD__ );
+				$this->logEmptyOperand( 'sum operand' );
 			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -769,7 +769,7 @@ class AbuseFilterParser {
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelPow( $r2 );
 			if ( $r2->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'multiplication operand', __METHOD__ );
+				$this->logEmptyOperand( 'multiplication operand' );
 			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -791,7 +791,7 @@ class AbuseFilterParser {
 			$expanent = new AFPData( AFPData::DEMPTY );
 			$this->doLevelBoolInvert( $expanent );
 			if ( $expanent->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'power operand', __METHOD__ );
+				$this->logEmptyOperand( 'power operand' );
 			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -812,7 +812,7 @@ class AbuseFilterParser {
 			$checkEmpty = $result->getType() === AFPData::DEMPTY;
 			$this->doLevelSpecialWords( $result );
 			if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'bool inversion', __METHOD__ );
+				$this->logEmptyOperand( 'bool inversion' );
 			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -841,7 +841,7 @@ class AbuseFilterParser {
 			$this->doLevelUnarys( $r2 );
 
 			if ( $r2->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'keyword operand', __METHOD__ );
+				$this->logEmptyOperand( 'keyword operand' );
 			}
 
 			if ( $this->mShortCircuit ) {
@@ -872,7 +872,7 @@ class AbuseFilterParser {
 			$checkEmpty = $result->getType() === AFPData::DEMPTY;
 			$this->doLevelArrayElements( $result );
 			if ( $checkEmpty && $result->getType() === AFPData::DEMPTY ) {
-				$this->logEmptyOperand( 'unary operand', __METHOD__ );
+				$this->logEmptyOperand( 'unary operand' );
 			}
 			if ( $this->mShortCircuit ) {
 				// The result doesn't matter.
@@ -927,7 +927,7 @@ class AbuseFilterParser {
 		if ( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === '(' ) {
 			$next = $this->getNextToken();
 			if ( $next->type === AFPToken::TBRACE && $next->value === ')' ) {
-				$this->logEmptyOperand( 'parenthesized expression', __METHOD__ );
+				$this->logEmptyOperand( 'parenthesized expression' );
 				// We don't need DUNDEFINED here
 				$this->move();
 				$this->move();
@@ -1006,7 +1006,7 @@ class AbuseFilterParser {
 					$r = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $r );
 					if ( $r->getType() === AFPData::DEMPTY && !$this->functionIsVariadic( $fname ) ) {
-						$this->logEmptyOperand( 'function argument', __METHOD__ );
+						$this->logEmptyOperand( 'non-variadic function argument' );
 					}
 					$args[] = $r;
 				} while ( $this->mCur->type === AFPToken::TCOMMA );
@@ -1913,17 +1913,19 @@ class AbuseFilterParser {
 	 * Log empty operands for T156096
 	 *
 	 * @param string $type Type of the empty operand
-	 * @param string $fname Method where the empty operand is found
 	 */
-	protected function logEmptyOperand( $type, $fname ) {
-		$this->logger->info(
-			"Empty operand of type {type} at method {fname}. Filter: {filter}",
-			[
-				'type' => $type,
-				'fname' => $fname,
-				'filter' => $this->mFilter ?? 'unavailable'
-			]
-		);
+	protected function logEmptyOperand( $type ) {
+		if ( $this->mFilter !== null ) {
+			$this->logger->warning(
+				'DEPRECATED! Found empty operand of type `{op_type}` when parsing filter: {filter}. ' .
+					'This is deprecated since 1.34 and support will be discontinued soon. Please fix ' .
+					'the affected filter!',
+				[
+					'op_type' => $type,
+					'filter' => $this->mFilter
+				]
+			);
+		}
 	}
 
 	/**

@@ -1011,9 +1011,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ '1**', 'power operand' ],
 			[ '"string" contains', 'keyword operand' ],
 			[ '1 in', 'keyword operand' ],
-			[ "str_replace('a','b','c',)", 'function argument' ],
-			[ "count('a','b',)", 'function argument' ],
-			[ "ccnorm('a',)", 'function argument' ],
+			[ "str_replace('a','b','c',)", 'non-variadic function argument' ],
+			[ "count('a','b',)", 'non-variadic function argument' ],
+			[ "ccnorm('a',)", 'non-variadic function argument' ],
 			[ "(!)", 'bool inversion' ],
 			// `(false &!)` and `(true &!)`, originally reported in T156096,
 			// should be used in the future to test that they throw. However,
@@ -1053,7 +1053,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 
 		$mock->expects( $this->never() )
 			->method( 'logEmptyOperand' )
-			->with( 'function argument' );
+			->with( 'non-variadic function argument' );
 
 		$mock->toggleConditionLimit( false );
 		$mock->parse( $code );
