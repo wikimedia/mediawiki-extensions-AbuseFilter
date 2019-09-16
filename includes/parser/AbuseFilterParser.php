@@ -1217,11 +1217,21 @@ class AbuseFilterParser {
 				[ $func, $min, count( $args ) ]
 			);
 		} elseif ( count( $args ) > $max ) {
-			$this->logger->warning(
-				"Too many params to $func for filter: " . ( $this->mFilter ?? 'unavailable' )
-			);
+			if ( $this->mFilter !== null ) {
+				$this->logger->warning(
+					'DEPRECATED! Too many params passed to function `{func}`: got {actual_count}, ' .
+						'expected {max_count} when parsing filter: {filter}. This is deprecated since ' .
+						'1.34 and support will cease as of 1.35. Please fix the affected filter!',
+					[
+						'func' => $func,
+						'actual_count' => count( $args ),
+						'max_count' => $max,
+						'filter' => $this->mFilter
+					]
+				);
+			}
 			/*
-			 @todo Uncomment after fixing filters in WMF production
+			 @todo Uncomment in 1.35/36
 			throw new AFPUserVisibleException(
 				'toomanyargs',
 				$this->mCur->pos,
