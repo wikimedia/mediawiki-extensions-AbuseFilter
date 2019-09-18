@@ -54,6 +54,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @return AFPData
 	 */
 	public function intEval( $code ) : AFPData {
+		$startTime = microtime( true );
 		$tree = $this->getTree( $code );
 
 		$res = $this->evalTree( $tree );
@@ -61,6 +62,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		if ( $res->getType() === AFPData::DUNDEFINED ) {
 			$res = new AFPData( AFPData::DBOOL, false );
 		}
+		$this->statsd->timing( 'abusefilter_cachingParser_full', microtime( true ) - $startTime );
 		return $res;
 	}
 
@@ -77,7 +79,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			),
 			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
-				$parser = new AFPTreeParser( $this->cache, $this->logger );
+				$parser = new AFPTreeParser( $this->cache, $this->logger, $this->statsd );
 				$parser->setFilter( $this->mFilter );
 				return $parser->parse( $code );
 			}
@@ -89,13 +91,16 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @return AFPData
 	 */
 	private function evalTree( AFPSyntaxTree $tree ) : AFPData {
+		$startTime = microtime( true );
 		$root = $tree->getRoot();
 
 		if ( !$root ) {
 			return new AFPData( AFPData::DNULL );
 		}
 
-		return $this->evalNode( $root );
+		$ret = $this->evalNode( $root );
+		$this->statsd->timing( 'abusefilter_cachingParser_eval', microtime( true ) - $startTime );
+		return $ret;
 	}
 
 	/**
