@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @var stdClass|null An abuse_filter row describing a filter
@@ -358,7 +360,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== 'new' ) {
 			$tools = '';
-			if ( $user->isAllowed( 'abusefilter-revert' ) ) {
+			if ( MediaWikiServices::getInstance()->getPermissionManager()
+				->userHasRight( $user, 'abusefilter-revert' )
+			) {
 				$tools .= Xml::tags(
 					'p', null,
 					$this->linkRenderer->makeLink(
@@ -694,7 +698,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 
 				$buttonGroup = $previewButton;
-				if ( $user->isAllowed( 'editinterface' ) ) {
+				if ( MediaWikiServices::getInstance()->getPermissionManager()
+					->userHasRight( $user, 'editinterface' )
+				) {
 					$editButton =
 						new OOUI\ButtonInputWidget( [
 							// abusefilter-edit-warn-edit, abusefilter-edit-disallow-edit

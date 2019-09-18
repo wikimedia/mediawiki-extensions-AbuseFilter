@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Parent class for AbuseFilter special pages.
  */
@@ -18,7 +20,9 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 			'examine' => 'Special:AbuseFilter/examine',
 		];
 
-		if ( $user->isAllowed( 'abusefilter-log' ) ) {
+		if ( MediaWikiServices::getInstance()->getPermissionManager()
+			->userHasRight( $user, 'abusefilter-log' )
+		) {
 			$linkDefs = array_merge( $linkDefs, [
 				'log' => 'Special:AbuseLog'
 			] );

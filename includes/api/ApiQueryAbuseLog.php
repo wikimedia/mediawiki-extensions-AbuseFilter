@@ -67,7 +67,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
 		if ( $params['filter'] &&
-			!( AbuseFilter::canViewPrivate( $user ) || $user->isAllowed( 'abusefilter-log-private' ) )
+			!( AbuseFilter::canViewPrivate( $user ) ||
+				$this->getPermissionManager()->userHasRight( $user, 'abusefilter-log-private' ) )
 		) {
 			// A specific filter parameter is set but the user isn't allowed to view all filters
 			if ( !is_array( $params['filter'] ) ) {

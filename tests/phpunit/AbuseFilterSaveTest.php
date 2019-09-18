@@ -178,14 +178,9 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	 * @return User|MockObject
 	 */
 	private function getUserMock( $testPerms ) {
-		$defaultPerms = [
-			'abusefilter-modify' => true,
-			'abusefilter-modify-restricted' => false,
-			'abusefilter-modify-global' => false,
-		];
-		$perms = $testPerms + $defaultPerms;
+		$perms = array_merge( $testPerms, [ 'abusefilter-modify' ] );
 		$user = $this->getMockBuilder( User::class )
-			->setMethods( [ 'isAllowed', 'getBlock', 'getName', 'getId', 'getActorId' ] )
+			->setMethods( [ 'getBlock', 'getName', 'getId', 'getActorId' ] )
 			->getMock();
 
 		$user->expects( $this->any() )
@@ -197,13 +192,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		$user->expects( $this->any() )
 			->method( 'getActorId' )
 			->willReturn( 1 );
-		$user->expects( $this->any() )
-			->method( 'isAllowed' )
-			->willReturnCallback(
-				function ( $perm ) use ( $perms ) {
-					return $perms[$perm] ?? false;
-				}
-			);
+		$this->overrideUserPermissions( $user, $perms );
 		return $user;
 	}
 
@@ -400,7 +389,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
 						'shouldFail' => true,
 						'shouldBeSaved' => false,
-						'userPerms' => [ 'abusefilter-modify-global' => true ]
+						'userPerms' => [ 'abusefilter-modify-global' ]
 					]
 				]
 			],
@@ -417,7 +406,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
 						'shouldFail' => true,
 						'shouldBeSaved' => false,
-						'userPerms' => [ 'abusefilter-modify-global' => true ]
+						'userPerms' => [ 'abusefilter-modify-global' ]
 					]
 				]
 			],

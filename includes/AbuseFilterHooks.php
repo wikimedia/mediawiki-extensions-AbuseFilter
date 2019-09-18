@@ -788,7 +788,10 @@ class AbuseFilterHooks {
 	 */
 	public static function onContributionsToolLinks( $id, Title $nt, array &$tools, SpecialPage $sp ) {
 		$username = $nt->getText();
-		if ( $sp->getUser()->isAllowed( 'abusefilter-log' ) && !IP::isValidRange( $username ) ) {
+		if ( MediaWikiServices::getInstance()->getPermissionManager()
+				->userHasRight( $sp->getUser(), 'abusefilter-log' )
+			&& !IP::isValidRange( $username )
+		) {
 			$linkRenderer = $sp->getLinkRenderer();
 			$tools['abuselog'] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
@@ -811,7 +814,9 @@ class AbuseFilterHooks {
 		array &$links
 	) {
 		$user = $context->getUser();
-		if ( $user->isAllowed( 'abusefilter-log' ) ) {
+		if ( MediaWikiServices::getInstance()->getPermissionManager()
+			->userHasRight( $user, 'abusefilter-log' )
+		) {
 			$links[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkonhistory' )->text(),
@@ -832,7 +837,9 @@ class AbuseFilterHooks {
 		array &$links
 	) {
 		$user = $context->getUser();
-		if ( $user->isAllowed( 'abusefilter-log' ) ) {
+		if ( MediaWikiServices::getInstance()->getPermissionManager()
+			->userHasRight( $user, 'abusefilter-log' )
+		) {
 			$links[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkonundelete' )->text(),

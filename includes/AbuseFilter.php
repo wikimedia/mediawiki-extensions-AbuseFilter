@@ -1346,7 +1346,8 @@ class AbuseFilter {
 				array_filter( $restrictions ),
 				array_merge( $actions, $origActions )
 			) )
-			&& !$user->isAllowed( 'abusefilter-modify-restricted' )
+			&& !MediaWikiServices::getInstance()->getPermissionManager()
+				->userHasRight( $user, 'abusefilter-modify-restricted' )
 		) {
 			$validationStatus->error( 'abusefilter-edit-restricted' );
 			return $validationStatus;
@@ -2205,10 +2206,11 @@ class AbuseFilter {
 	 */
 	public static function canEdit( User $user ) {
 		$block = $user->getBlock();
+		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 
 		return (
 			!( $block && $block->isSitewide() ) &&
-			$user->isAllowed( 'abusefilter-modify' )
+			$permissionManager->userHasRight( $user, 'abusefilter-modify' )
 		);
 	}
 
@@ -2217,7 +2219,8 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function canEditGlobal( User $user ) {
-		return $user->isAllowed( 'abusefilter-modify-global' );
+		return MediaWikiServices::getInstance()->getPermissionManager()
+			->userHasRight( $user, 'abusefilter-modify-global' );
 	}
 
 	/**
@@ -2239,7 +2242,8 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function canViewPrivate( User $user ) {
-		return $user->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' );
+		return MediaWikiServices::getInstance()->getPermissionManager()
+			->userHasAnyRight( $user, 'abusefilter-modify', 'abusefilter-view-private' );
 	}
 
 	/**

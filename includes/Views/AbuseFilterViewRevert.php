@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/**
@@ -34,7 +35,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		if ( !$user->isAllowed( 'abusefilter-revert' ) ) {
+		if ( !MediaWikiServices::getInstance()->getPermissionManager()
+			->userHasRight( $user, 'abusefilter-revert' )
+		) {
 			throw new PermissionsError( 'abusefilter-revert' );
 		}
 
