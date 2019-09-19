@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Athena in Wonderland",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mansil alfalb"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Verificar se um filtro de abusos coincide com um conjunto de variáveis, uma edição, ou um evento do registo de abusos.\n\nÉ necessário um dos seguintes: vars, rcid ou logid (só um pode ser usado).",
@@ -42,7 +43,7 @@
 	"apihelp-query+abuselog-param-end": "A data e hora onde parar a enumeração.",
 	"apihelp-query+abuselog-param-user": "Mostrar só as entradas de um determinado utilizador ou endereço IP.",
 	"apihelp-query+abuselog-param-title": "Mostrar só as entradas de uma determinada página.",
-	"apihelp-query+abuselog-param-filter": "Mostrar só as entradas que foram detetadas por um determinado identificador de filtro.",
+	"apihelp-query+abuselog-param-filter": "Mostrar apenas as entradas que foram detetadas por um determinado identificador de filtro. Separe com \"pipes\", prefixo com \"$1\" para os filtros globais.",
 	"apihelp-query+abuselog-param-limit": "O número máximo de entradas que serão listadas.",
 	"apihelp-query+abuselog-param-prop": "Que propriedades obter.",
 	"apihelp-query+abuselog-param-wiki": "A wiki da qual mostra as visitas.",

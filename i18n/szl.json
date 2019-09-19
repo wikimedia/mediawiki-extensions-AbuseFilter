@@ -13,5 +13,7 @@
 	"abusefilter-disallowed": "Ta akcyjo bůła automatyczńy uznona szkodzůnco i uodćepńynto.\nEli uważosz, aże ta edycyjo bůła ajntlichowo, pedź uo tyj sytuacyji administratůrowi.\nKrůtki uopis regla zńyłużyćo, keremu bůła przipasowano twojo akcyjo: $1",
 	"abusefilter-blocker": "Filter nadużyć",
 	"right-abusefilter-modify": "Pomjyńańy filtrůw zńyłużyćůw",
-	"abusefilter-list-options-submit": "Aktualizacyjo"
+	"abusefilter-log-linkoncontribs": "regest nadużyć",
+	"abusefilter-list-options-submit": "Aktualizacyjo",
+	"abusefilter-log-name": "Regest filtra nadużyć"
 }
