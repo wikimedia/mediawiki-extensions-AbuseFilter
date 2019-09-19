@@ -90,6 +90,7 @@ class AbuseFilterRunner {
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
 		$this->parser = $this->getParser();
+		$this->parser->setStatsd( MediaWikiServices::getInstance()->getStatsdDataFactory() );
 		$this->profilingData = [];
 	}
 
