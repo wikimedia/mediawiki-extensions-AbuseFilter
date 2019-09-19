@@ -1028,7 +1028,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$diffLink = false;
 		$isHidden = self::isHidden( $row );
 
-		if ( !self::canSeeHidden( $user ) && $isHidden === true ) {
+		// @todo T224203 Try to show the details if the revision is deleted but the AbuseLog entry
+		// is not. However, watch out to avoid showing too much stuff.
+		if ( !self::canSeeHidden( $user ) && $isHidden ) {
 			return '';
 		}
 
