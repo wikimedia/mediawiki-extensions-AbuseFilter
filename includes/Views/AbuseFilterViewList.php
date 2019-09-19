@@ -88,13 +88,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		if ( $querypattern !== '' ) {
 			if ( $searchmode !== 'LIKE' ) {
-				// Check regex pattern validity
-				Wikimedia\suppressWarnings();
-				// @phan-suppress-next-line PhanParamSuspiciousOrder Just testing the regex
-				$validreg = preg_match( '/' . $querypattern . '/', null );
-				Wikimedia\restoreWarnings();
-
-				if ( $validreg === false ) {
+				if ( !StringUtils::isValidRegex( "/$querypattern/" ) ) {
 					$out->addHTML(
 						Xml::tags(
 							'p',
