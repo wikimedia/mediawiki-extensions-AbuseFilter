@@ -42,7 +42,7 @@
 	"apihelp-query+abuselog-param-end": "Časová značka, u které výčet skončí.",
 	"apihelp-query+abuselog-param-user": "Zobrazit pouze změny provedené daným uživatelem nebo z příslušné IP adresy.",
 	"apihelp-query+abuselog-param-title": "Zobrazit pouze změny, které se vyskytují na dané stránce.",
-	"apihelp-query+abuselog-param-filter": "Zobrazit pouze změny, které byly zachyceny daným filtrem.",
+	"apihelp-query+abuselog-param-filter": "Zobrazit pouze změny, které byly zachyceny daným filtrem. Oddělte je pomocí svislítka, před globální filtry přidejte „$1“.",
 	"apihelp-query+abuselog-param-limit": "Maximální počet změn k zobrazení.",
 	"apihelp-query+abuselog-param-prop": "Jaké vlastnosti získat.",
 	"apihelp-query+abuselog-param-wiki": "Wiki, na nichž došlo k zásahům filtrů.",
