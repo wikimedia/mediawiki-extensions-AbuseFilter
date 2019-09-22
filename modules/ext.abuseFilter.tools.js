@@ -101,7 +101,7 @@
 		api.post( {
 			action: 'abusefilterunblockautopromote',
 			user: name,
-			token: mw.user.tokens.get( 'editToken' )
+			token: mw.user.tokens.get( 'csrfToken' )
 		} )
 			.done( processReautoconfirm )
 			.fail( processReautoconfirmFailure );
