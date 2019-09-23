@@ -9,7 +9,8 @@
 			"Matma Rex",
 			"TomášPolonec",
 			"Patriccck",
-			"Robert Važan"
+			"Robert Važan",
+			"Luky001"
 		]
 	},
 	"abusefilter-desc": "Vykonáva automatickú heuristiku úprav.",
@@ -171,6 +172,7 @@
 	"abusefilter-edit-action-blockautopromote": "Odobrať používateľovi stav „zaregistrovaný”",
 	"abusefilter-edit-action-degroup": "Odstrániť používateľa zo všetkých privilegovaných skupín",
 	"abusefilter-edit-action-block": "Zablokovať úpravy používateľa a/alebo IP adresy",
+	"abusefilter-edit-action-blocktalk": "Zablokovať používateľovi a/alebo IP adrese možnosť úpravy vlastnej diskusnej stránky",
 	"abusefilter-edit-action-throttle": "Spustiť operáciu len ak používateľ dosiahne limit rýchlosti úprav",
 	"abusefilter-edit-action-rangeblock": "Zablokovať /16 rozsah, z ktorého pochádza adresa používateľa.",
 	"abusefilter-edit-action-tag": "Označiť úpravu na ďalšiu kontrolu.",
