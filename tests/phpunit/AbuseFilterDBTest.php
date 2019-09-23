@@ -58,33 +58,10 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @dataProvider provideVariables
 	 */
 	public function testVarDump( array $variables, array $expectedValues = null ) {
-		global $wgCompressRevisions, $wgDefaultExternalStore;
-
 		$holder = AbuseFilterVariableHolder::newFromArray( $variables );
 
 		$insertID = AbuseFilter::storeVarDump( $holder );
-
-		$flags = $this->db->selectField(
-			'text',
-			'old_flags',
-			'',
-			__METHOD__,
-			[ 'ORDER BY' => 'old_id DESC' ]
-		);
-		$this->assertNotFalse( $flags, 'The var dump has not been saved.' );
-		$flags = $flags === '' ? [] : explode( ',', $flags );
-
-		$expectedFlags = [ 'utf-8' ];
-		if ( $wgCompressRevisions ) {
-			$expectedFlags[] = 'gzip';
-		}
-		if ( $wgDefaultExternalStore ) {
-			$expectedFlags[] = 'external';
-		}
-
-		$this->assertEquals( $expectedFlags, $flags, 'The var dump does not have the correct flags' );
-
-		$dump = AbuseFilter::loadVarDump( "tt:$insertID" );
+		$dump = AbuseFilter::loadVarDump( $insertID );
 		$expected = $expectedValues ? AbuseFilterVariableHolder::newFromArray( $expectedValues ) : $holder;
 		$this->assertEquals( $expected, $dump, 'The var dump is not saved correctly' );
 	}

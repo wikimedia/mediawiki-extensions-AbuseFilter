@@ -199,7 +199,6 @@ class AbuseLogger {
 
 		$writeNewSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW;
 		$varDump = AbuseFilter::storeVarDump( $this->vars );
-		$varDump = "tt:$varDump";
 
 		$loggedIDs = [];
 		foreach ( $logRows as $data ) {
@@ -270,7 +269,6 @@ class AbuseLogger {
 	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) : array {
 		$this->vars->computeDBVars();
 		$globalVarDump = AbuseFilter::storeVarDump( $this->vars, true );
-		$globalVarDump = "tt:$globalVarDump";
 		foreach ( $centralLogRows as $index => $data ) {
 			$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
 		}

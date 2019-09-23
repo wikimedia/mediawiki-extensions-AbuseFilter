@@ -232,7 +232,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$storedID = AbuseFilter::storeVarDump( $vars );
 			$this->dbw->update(
 				'abuse_filter_log',
-				[ 'afl_var_dump' => "tt:$storedID" ],
+				[ 'afl_var_dump' => $storedID ],
 				[ 'afl_id' => $row->afl_id ],
 				__METHOD__
 			);
@@ -336,7 +336,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$newDump = AbuseFilter::storeVarDump( $holder );
 				$this->dbw->update(
 					'abuse_filter_log',
-					[ 'afl_var_dump' => "tt:$newDump" ],
+					[ 'afl_var_dump' => $newDump ],
 					[ 'afl_id' => $row->afl_id ],
 					__METHOD__
 				);
