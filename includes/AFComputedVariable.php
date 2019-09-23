@@ -120,14 +120,6 @@ class AFComputedVariable {
 	 * @throws AFPException
 	 */
 	public function compute( AbuseFilterVariableHolder $vars ) {
-		// phpcs:ignore MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgUser
-		global $wgUser;
-
-		// Used for parsing wikitext from saved revisions and checking for
-		// whether to show fields. Do not use $wgUser below here, in preparation
-		// for eventually injecting. See T246733
-		$computeForUser = $wgUser;
-
 		$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 		$parameters = $this->mParameters;
 		$result = null;
@@ -222,7 +214,7 @@ class AFComputedVariable {
 					$editInfo = $this->parseNonEditWikitext(
 						$wikitext,
 						$article,
-						$computeForUser
+						$parameters['contextUser']
 					);
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 				} else {
@@ -306,7 +298,7 @@ class AFComputedVariable {
 						$editInfo = $this->parseNonEditWikitext(
 							$text,
 							$article,
-							$computeForUser
+							$parameters['contextUser']
 						);
 						$result = $editInfo->output->getText();
 					}
@@ -406,7 +398,7 @@ class AFComputedVariable {
 				$revRec = $services
 					->getRevisionLookup()
 					->getRevisionById( $parameters['revid'] );
-				$result = AbuseFilter::revisionToString( $revRec, $computeForUser );
+				$result = AbuseFilter::revisionToString( $revRec, $parameters['contextUser'] );
 				break;
 			case 'get-wiki-name':
 				$result = WikiMap::getCurrentWikiDbDomain()->getId();

@@ -200,17 +200,17 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 
 		$this->vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
-			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ) ] );
+			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ), 'contextUser' => $this->contextUser ] );
 
 		$parentId = $this->rc->getAttribute( 'rc_last_oldid' );
 		if ( $parentId ) {
 			$this->vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-id',
-				[ 'revid' => $parentId ] );
+				[ 'revid' => $parentId, 'contextUser' => $this->contextUser ] );
 		} else {
 			$this->vars->setVar( 'old_wikitext', '' );
 		}
 
-		$this->addEditVars( $title, \WikiPage::factory( $title ) );
+		$this->addEditVars( $title, \WikiPage::factory( $title ), $this->contextUser );
 
 		return $this;
 	}

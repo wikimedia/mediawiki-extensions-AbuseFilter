@@ -60,7 +60,9 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$generator = new VariableGenerator( $baseVars );
-		$actual = $generator->addEditVars( $title, $page )->getVariableHolder()->exportAllVars( true );
+		$actual = $generator->addEditVars( $title, $page, $this->createMock( User::class ) )
+			->getVariableHolder()
+			->exportAllVars();
 
 		// Special case for new_html: avoid flaky tests, and only check containment
 		$this->assertStringContainsString( '<div class="mw-parser-output', $actual['new_html'] );

@@ -162,9 +162,15 @@ class VariableGenerator {
 	/**
 	 * @param Title $title
 	 * @param WikiPage $page
+	 * @param User|null $user The current user, null FOR BC ONLY!
 	 * @return $this For chaining
 	 */
-	public function addEditVars( Title $title, WikiPage $page ) : self {
+	public function addEditVars( Title $title, WikiPage $page, User $user = null ) : self {
+		if ( !$user ) {
+			// phpcs:ignore MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgUser
+			global $wgUser;
+			$user = $wgUser;
+		}
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
@@ -195,13 +201,15 @@ class VariableGenerator {
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
 				'text-var' => 'new_wikitext',
-				'article' => $page
+				'article' => $page,
+				'contextUser' => $user
 			] );
 		$this->vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
 			[
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
-				'text-var' => 'old_wikitext'
+				'text-var' => 'old_wikitext',
+				'contextUser' => $user
 			] );
 		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
 			[
@@ -210,13 +218,15 @@ class VariableGenerator {
 				'wikitext-var' => 'new_wikitext',
 				'article' => $page,
 				'pst' => true,
+				'contextUser' => $user
 			] );
 		$this->vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
 			[
 				'namespace' => $title->getNamespace(),
 				'title' => $title->getText(),
 				'wikitext-var' => 'new_wikitext',
-				'article' => $page
+				'article' => $page,
+				'contextUser' => $user
 			] );
 
 		return $this;

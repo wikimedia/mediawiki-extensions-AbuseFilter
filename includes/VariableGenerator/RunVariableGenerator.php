@@ -141,7 +141,7 @@ class RunVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'new_content_model', $newcontent->getModel() );
 		$this->vars->setVar( 'old_wikitext', $oldtext );
 		$this->vars->setVar( 'new_wikitext', $text );
-		$this->addEditVars( $this->title, $page );
+		$this->addEditVars( $this->title, $page, $this->user );
 
 		return $this->vars;
 	}
@@ -287,7 +287,7 @@ class RunVariableGenerator extends VariableGenerator {
 			$this->vars->setVar( 'old_wikitext', $oldtext );
 			$this->vars->setVar( 'new_wikitext', $text );
 			// TODO: set old_content and new_content vars, use them
-			$this->addEditVars( $this->title, $page );
+			$this->addEditVars( $this->title, $page, $this->user );
 		}
 		return $this->vars;
 	}
