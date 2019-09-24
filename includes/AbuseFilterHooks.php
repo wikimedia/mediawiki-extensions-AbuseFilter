@@ -999,10 +999,10 @@ class AbuseFilterHooks {
 	 * @param Content $content
 	 * @param ParserOutput $output
 	 * @param string $summary
-	 * @param User|null $user
+	 * @param User $user
 	 */
 	public static function onParserOutputStashForEdit(
-		WikiPage $page, Content $content, ParserOutput $output, $summary = '', $user = null
+		WikiPage $page, Content $content, ParserOutput $output, $summary, User $user
 	) {
 		$startTime = microtime( true );
 		$oldRevision = $page->getRevision();
@@ -1011,7 +1011,6 @@ class AbuseFilterHooks {
 		}
 
 		$oldContent = $oldRevision->getContent( Revision::RAW );
-		$user = $user ?: RequestContext::getMain()->getUser();
 		$oldAfText = AbuseFilter::revisionToString( $oldRevision, $user );
 
 		// XXX: This makes the assumption that this method is only ever called for the main slot.
