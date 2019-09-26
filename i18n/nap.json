@@ -63,5 +63,6 @@
 	"abusefilter-list-edit": "Càgna",
 	"abusefilter-unhidden": "Pubbreco",
 	"abusefilter-enabled": "Attivato",
-	"abusefilter-deleted": "Canciellato"
+	"abusefilter-deleted": "Canciellato",
+	"abusefilter-edit-builder-vars-user-groups": "Gruppe 'e ll'utente"
 }
