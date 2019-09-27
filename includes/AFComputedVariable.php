@@ -147,17 +147,12 @@ class AFComputedVariable {
 		}
 
 		$dbr = wfGetDB( DB_REPLICA );
-		$res = $dbr->select(
+		return $dbr->selectFieldValues(
 			'externallinks',
-			[ 'el_to' ],
+			'el_to',
 			[ 'el_from' => $id ],
 			__METHOD__
 		);
-		$links = [];
-		foreach ( $res as $row ) {
-			$links[] = $row->el_to;
-		}
-		return $links;
 	}
 
 	/**
