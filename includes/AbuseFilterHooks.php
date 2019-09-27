@@ -661,6 +661,18 @@ class AbuseFilterHooks {
 				$updater->addExtensionUpdate( [ 'dropField', 'abuse_filter_log',
 					'afl_log_id', "$dir/db_patches/patch-drop_afl_log_id.sqlite.sql", true ] );
 			}
+
+			if ( $updater->getDB()->getType() == 'mysql' ) {
+				$updater->addExtensionUpdate( [
+					'addIndex', 'abuse_filter_log', 'filter_timestamp_full',
+					"$dir/db_patches/patch-split-afl_filter.sql", true
+				] );
+			} else {
+				$updater->addExtensionUpdate( [
+					'addIndex', 'abuse_filter_log', 'filter_timestamp_full',
+					"$dir/db_patches/patch-split-afl_filter.sqlite.sql", true
+				] );
+			}
 		} elseif ( $updater->getDB()->getType() === 'postgres' ) {
 			$updater->addExtensionUpdate( [
 				'addTable', 'abuse_filter', "$dir/abusefilter.tables.pg.sql", true ] );
@@ -736,6 +748,16 @@ class AbuseFilterHooks {
 			] );
 			$updater->addExtensionUpdate( [
 				'dropPgField', 'abuse_filter_log', 'afl_log_id' ] );
+			$updater->addExtensionUpdate( [
+				'setDefault', 'abuse_filter_log', 'afl_filter', ''
+			] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_global', 'SMALLINT NOT NULL DEFAULT 0' ] );
+			$updater->addExtensionUpdate( [
+				'addPgField', 'abuse_filter_log', 'afl_filter_id', 'INTEGER NOT NULL DEFAULT 0' ] );
+			$updater->addExtensionUpdate( [
+				'addPgIndex', 'abuse_filter_log', 'abuse_filter_log_filter_timestamp_full',
+				'(afl_global, afl_filter_id, afl_timestamp)' ] );
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
