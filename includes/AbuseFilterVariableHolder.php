@@ -221,21 +221,10 @@ class AbuseFilterVariableHolder {
 		if ( !$includeUserVars ) {
 			// Compile a list of all variables set by the extension to be able
 			// to filter user set ones by name
-			global $wgRestrictionTypes;
-
 			$activeVariables = array_keys( AbuseFilter::getBuilderValues()['vars'] );
 			$deprecatedVariables = array_keys( AbuseFilter::getDeprecatedVariables() );
 			$disabledVariables = array_keys( AbuseFilter::DISABLED_VARS );
 			$coreVariables = array_merge( $activeVariables, $deprecatedVariables, $disabledVariables );
-
-			// @todo _restrictions variables should be handled in builderValues as well.
-			$prefixes = [ 'moved_from', 'moved_to', 'page' ];
-			foreach ( $wgRestrictionTypes as $action ) {
-				foreach ( $prefixes as $prefix ) {
-					$coreVariables[] = "{$prefix}_restrictions_$action";
-				}
-			}
-
 			$coreVariables = array_map( 'strtolower', $coreVariables );
 		}
 

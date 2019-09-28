@@ -118,8 +118,10 @@ class VariableGenerator {
 		$this->vars->setVar( $prefix . '_title', $title->getText() );
 		$this->vars->setVar( $prefix . '_prefixedtitle', $title->getPrefixedText() );
 
-		global $wgRestrictionTypes;
-		foreach ( $wgRestrictionTypes as $action ) {
+		// We only support the default values in $wgRestrictionTypes. Custom restrictions wouldn't
+		// have i18n messages. If a restriction is not enabled we'll just return the empty array.
+		$types = [ 'edit', 'move', 'create', 'upload' ];
+		foreach ( $types as $action ) {
 			$this->vars->setLazyLoadVar( "{$prefix}_restrictions_$action", 'get-page-restrictions',
 				[ 'title' => $title->getText(),
 					'namespace' => $title->getNamespace(),

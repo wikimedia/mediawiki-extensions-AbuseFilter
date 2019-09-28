@@ -27,11 +27,8 @@ use Wikimedia\TestingAccessWrapper;
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterParser
- *
- * @todo Use MediaWikiUnitTestCase. Impossible until I321ad6e07f8243200af67a581b6e485970efd3ce
- *   is merged.
  */
-class AbuseFilterVariableHolderTest extends \PHPUnit\Framework\TestCase {
+class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers AbuseFilterVariableHolder::__construct
 	 * @covers AbuseFilterVariableHolder::setLogger
