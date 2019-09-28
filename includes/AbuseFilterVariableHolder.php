@@ -115,9 +115,14 @@ class AbuseFilterVariableHolder {
 			// a new name. Translate it back.
 			$varName = array_search( $varName, AbuseFilter::getDeprecatedVariables() );
 		}
-		if ( array_key_exists( $varName, AbuseFilter::$disabledVars ) ) {
+		if ( array_key_exists( $varName, AbuseFilter::$disabledVars ) && $tempFilter ) {
 			$this->logger->warning(
-				"Disabled variable $varName requested. Please fix the filter as this will be removed soon."
+				"DEPRECATED! Using disabled variables is deprecated as of 1.34 and won't be supported " .
+					"in 1.35. Found use of {var_name} at filter {filter}. Please fix the affected filter.",
+				[
+					'var_name' => $varName,
+					'filter' => $tempFilter
+				]
 			);
 		}
 
