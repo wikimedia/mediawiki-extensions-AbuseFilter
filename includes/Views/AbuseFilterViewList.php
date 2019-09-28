@@ -88,7 +88,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		if ( $querypattern !== '' ) {
 			if ( $searchmode !== 'LIKE' ) {
-				if ( !StringUtils::isValidRegex( "/$querypattern/" ) ) {
+				if ( !StringUtils::isValidPCRERegex( "/$querypattern/" ) ) {
 					$out->addHTML(
 						Xml::tags(
 							'p',
