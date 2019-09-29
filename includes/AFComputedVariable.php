@@ -167,14 +167,7 @@ class AFComputedVariable {
 				// This should ONLY be used when sharing a parse operation with the edit.
 
 				/** @var WikiPage $article */
-				if ( isset( $parameters['article'] ) ) {
-					$article = $parameters['article'];
-				} else {
-					$article = $this->pageFromTitle(
-						$parameters['namespace'],
-						$parameters['title']
-					);
-				}
+				$article = $parameters['article'];
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					// Shared with the edit, don't count it in profiling
 					$startTime = microtime( true );
@@ -183,14 +176,14 @@ class AFComputedVariable {
 					$new_text = $vars->getVar( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
 					$editInfo = $article->prepareContentForEdit( $content );
-					$links = array_keys( $editInfo->output->getExternalLinks() );
-					$result = $links;
+					$result = array_keys( $editInfo->output->getExternalLinks() );
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
 				}
 				// Otherwise fall back to database
-			case 'links-from-wikitext-nonedit':
 			case 'links-from-wikitext-or-database':
+				// Recreate the Page from namespace and title; this discards the $article
+				// used in links-from-wikitext.
 				// TODO: use Content object instead, if available!
 				$article = $this->pageFromTitle(
 					$parameters['namespace'],
@@ -241,14 +234,8 @@ class AFComputedVariable {
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
-				if ( isset( $parameters['article'] ) ) {
-					$article = $parameters['article'];
-				} else {
-					$article = $this->pageFromTitle(
-						$parameters['namespace'],
-						$parameters['title']
-					);
-				}
+				/* @var WikiPage $article */
+				$article = $parameters['article'];
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					// Shared with the edit, don't count it in profiling
 					$startTime = microtime( true );
@@ -270,8 +257,9 @@ class AFComputedVariable {
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
 				}
+
 				// Otherwise fall back to database
-			case 'parse-wikitext-nonedit':
+
 				// TODO: use Content object instead, if available!
 				$article = $this->pageFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
@@ -308,16 +296,10 @@ class AFComputedVariable {
 				break;
 			case 'load-recent-authors':
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
-				if ( !$title->exists() ) {
-					$result = '';
-					break;
-				}
-
 				$result = self::getLastPageAuthors( $title );
 				break;
 			case 'load-first-author':
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
-
 				$revision = $services->getRevisionLookup()->getFirstRevision( $title );
 				if ( $revision ) {
 					$user = $revision->getUser();
@@ -325,7 +307,6 @@ class AFComputedVariable {
 				} else {
 					$result = '';
 				}
-
 				break;
 			case 'get-page-restrictions':
 				$action = $parameters['action'];
