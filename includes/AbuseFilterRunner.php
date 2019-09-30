@@ -781,17 +781,8 @@ class AbuseFilterRunner {
 		// longest block duration is, so we can issue the block if
 		// maxExpiry has been changed.
 		if ( $maxExpiry !== -1 ) {
-			$this->doAbuseFilterBlock(
-				[
-					'desc' => $blockValues[0],
-					'number' => $blockValues[1]
-				],
-				$this->user->getName(),
-				$maxExpiry,
-				true,
-				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-				$blockValues[2]
-			);
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			$this->doBlock( $blockValues[0], $blockValues[1], $maxExpiry, $blockValues[2] );
 			$message = [
 				'abusefilter-blocked-display',
 				$blockValues[0],
@@ -929,22 +920,7 @@ class AbuseFilterRunner {
 				$message = [ $msg, $ruleDescription, $ruleNumber ];
 				break;
 			case 'rangeblock':
-				global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
-
-				$ip = RequestContext::getMain()->getRequest()->getIP();
-				$type = IPUtils::isIPv6( $ip ) ? 'IPv6' : 'IPv4';
-				$CIDRsize = max( $wgAbuseFilterRangeBlockSize[$type], $wgBlockCIDRLimit[$type] );
-				$blockCIDR = $ip . '/' . $CIDRsize;
-
-				$this->doAbuseFilterBlock(
-					[
-						'desc' => $ruleDescription,
-						'number' => $ruleNumber
-					],
-					IPUtils::sanitizeRange( $blockCIDR ),
-					'1 week',
-					false
-				);
+				$this->doRangeBlock( $ruleDescription, $ruleNumber, '1 week' );
 
 				$message = [
 					'abusefilter-blocked-display',
@@ -1064,24 +1040,56 @@ class AbuseFilterRunner {
 	}
 
 	/**
+	 * @param string $ruleDesc
+	 * @param string|int $ruleNumber
+	 * @param string $expiry
+	 */
+	private function doRangeBlock( $ruleDesc, $ruleNumber, $expiry ) {
+		global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
+
+		$ip = RequestContext::getMain()->getRequest()->getIP();
+		$type = IPUtils::isIPv6( $ip ) ? 'IPv6' : 'IPv4';
+		$CIDRsize = max( $wgAbuseFilterRangeBlockSize[$type], $wgBlockCIDRLimit[$type] );
+		$blockCIDR = $ip . '/' . $CIDRsize;
+
+		$target = IPUtils::sanitizeRange( $blockCIDR );
+		$autoblock = false;
+		$this->doBlockInternal( $ruleDesc, $ruleNumber, $target, $expiry, $autoblock, false );
+	}
+
+	/**
+	 * @param string $ruleDesc
+	 * @param string|int $ruleNumber
+	 * @param string $expiry
+	 * @param bool $preventsTalk
+	 */
+	private function doBlock( $ruleDesc, $ruleNumber, $expiry, $preventsTalk ) {
+		$target = $this->user->getName();
+		$autoblock = true;
+		$this->doBlockInternal( $ruleDesc, $ruleNumber, $target, $expiry, $autoblock, $preventsTalk );
+	}
+
+	/**
 	 * Perform a block by the AbuseFilter system user
-	 * @param array $rule should have 'desc' and 'number'
+	 * @param string $ruleDesc
+	 * @param int|string $ruleNumber
 	 * @param string $target
 	 * @param string $expiry
 	 * @param bool $isAutoBlock
 	 * @param bool $preventEditOwnUserTalk
 	 */
-	private function doAbuseFilterBlock(
-		array $rule,
+	private function doBlockInternal(
+		$ruleDesc,
+		$ruleNumber,
 		$target,
 		$expiry,
 		$isAutoBlock,
-		$preventEditOwnUserTalk = false
+		$preventEditOwnUserTalk
 	) {
 		$filterUser = AbuseFilter::getFilterUser();
 		$reason = wfMessage(
 			'abusefilter-blockreason',
-			$rule['desc'], $rule['number']
+			$ruleDesc, $ruleNumber
 		)->inContentLanguage()->text();
 
 		$block = new DatabaseBlock();
