@@ -30,7 +30,8 @@
 			"درفش کاویانی",
 			"Alireza Ivaz",
 			"FarsiNevis",
-			"Ahmad252"
+			"Ahmad252",
+			"Arian Ar"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -398,7 +399,7 @@
 	"abusefilter-edit-builder-vars-all-links": "تمام پیوندهای خارجی در متن تازه",
 	"abusefilter-edit-builder-vars-added-links": "تمام پیوندهای خارجی اضافه شده در ویرایش",
 	"abusefilter-edit-builder-vars-removed-links": "تمام پیوندهای خارجی حذف شده در ویرایش",
-	"abusefilter-edit-builder-vars-old-wikitext": "ویکی‌متن قدیمی صفحه، قبل از ویرایش (دیگر استفاده نمی‌شود)",
+	"abusefilter-edit-builder-vars-old-wikitext": "ویکی‌متن قدیمی صفحه، قبل از ویرایش",
 	"abusefilter-edit-builder-vars-new-wikitext": "ویکی‌متن تازه صفحه، بعد از ویرایش",
 	"abusefilter-edit-builder-vars-new-pst": "صفحهٔ تازه ویکی‌متن، پیش از ذخیره تغییر یافت",
 	"abusefilter-edit-builder-vars-diff-pst": "یکی کردن تفاوت تغییرات ساخته شده توسط ویرایش، از قبل ذخیره شده تبدیل شده",
@@ -414,7 +415,7 @@
 	"abusefilter-edit-builder-vars-old-text": "متن قبلی صفحه، بدون نشانه‌گذاری‌ها",
 	"abusefilter-edit-builder-vars-old-links": "پیوندهای صفحه، قبل از ویرایش",
 	"abusefilter-edit-builder-vars-old-html": "ویکی‌متن قدیمی صفحه، تجزیه شده به اچ‌تی‌ام‌ال (دیگر استفاده نمی‌شود)",
-	"abusefilter-edit-builder-vars-minor-edit": "نشانه‌گذاری شدن ویرایش به عنوان جزئی",
+	"abusefilter-edit-builder-vars-minor-edit": "نشانه‌گذاری شدن ویرایش به عنوان جزئی (دیگر استفاده نمی‌شود)",
 	"abusefilter-edit-builder-vars-file-sha1": "درهم‌سازی محتویات پرونده با SHA1",
 	"abusefilter-edit-builder-vars-file-size": "اندازهٔ پرونده به بایت",
 	"abusefilter-edit-builder-vars-file-mime": "نوع MIME پرونده",
@@ -455,7 +456,7 @@
 	"abusefilter-exception-dividebyzero": "تلاش غیر مجاز برای تقسیم $2 بر صفر در نویسهٔ $1.",
 	"abusefilter-exception-unrecognisedvar": "متغیر ناشناختهٔ $2 در نویسهٔ $1.",
 	"abusefilter-exception-notenoughargs": "پارامترهای داده‌شده به تابع $2 در نویسهٔ $1 کافی نبود.\nانتظار $3 {{PLURAL:$3|پارامتر}} می‌رفت، $4 پارامتر به‌دست آمد",
-	"abusefilter-exception-regexfailure": "خطا در عبارات باقاعده «$3» در نویسهٔ $1: «$2»",
+	"abusefilter-exception-regexfailure": "خطا در عبارت باقاعده «$2» در نویسهٔ $1.",
 	"abusefilter-exception-overridebuiltin": "رونویسی غیر مجاز متغیر توکار «$2» در نویسه $1.",
 	"abusefilter-exception-outofbounds": "درخواست مورد ناموجود $2 از فهرست (اندازهٔ فهرست = $3) در نویسهٔ $1.",
 	"abusefilter-exception-notarray": "درخواست مورد آرایه از غیر آرایه در نویسه $1.",
