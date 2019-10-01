@@ -1142,4 +1142,32 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "contains_any(1,2,,3,)" ],
 		];
 	}
+
+	/**
+	 * Ensure that any error in the arguments to a keyword or function is reported when
+	 * checking syntax (T234339)
+	 * @param string $code
+	 * @param string $expID Expected exception ID
+	 * @dataProvider provideArgsErrorsInSyntaxCheck
+	 */
+	public function testArgsErrorsInSyntaxCheck( $code, $expID ) {
+		$caller = '[unavailable]';
+		$this->exceptionTest( $expID, $code, $caller );
+		$this->exceptionTestInSkippedBlock( $expID, $code, $caller );
+	}
+
+	/**
+	 * @return array
+	 */
+	public function provideArgsErrorsInSyntaxCheck() {
+		return [
+			[ 'accountname rlike "("', 'regexfailure' ],
+			[ 'contains_any( new_wikitext, "foo", 3/0 )', 'dividebyzero' ],
+			[ 'rcount( "(", added_lines )', 'regexfailure' ],
+			[ 'get_matches( "(", new_wikitext )', 'regexfailure' ],
+			[ 'added_lines contains string(3/0)', 'dividebyzero' ],
+			[ 'norm(new_text) irlike ")"', 'regexfailure' ],
+			[ 'ip_in_range( user_name, "foobar" )', 'invalidiprange' ]
+		];
+	}
 }

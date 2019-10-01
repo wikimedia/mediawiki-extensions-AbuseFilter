@@ -1250,14 +1250,20 @@ class AbuseFilterParser {
 		} else {
 			$this->checkArgCount( $args, $fname );
 			$this->raiseCondCount();
+
+			// Any undefined argument should be special-cased by the function, but that would be too
+			// much overhead. We also cannot skip calling the handler in case it's making further
+			// validation (T234339). So temporarily replace the DUNDEFINED with a DNULL.
+			// @todo This is subpar.
 			$hasUndefinedArg = false;
-			foreach ( $args as $arg ) {
+			foreach ( $args as $i => $arg ) {
 				if ( $arg->type === AFPData::DUNDEFINED ) {
+					$args[$i] = new AFPData( AFPData::DNULL );
 					$hasUndefinedArg = true;
-					break;
 				}
 			}
 			if ( $hasUndefinedArg ) {
+				$this->$funcHandler( $args );
 				$result = new AFPData( AFPData::DUNDEFINED );
 			} else {
 				$result = $this->$funcHandler( $args );
@@ -1284,11 +1290,24 @@ class AbuseFilterParser {
 	 */
 	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs ) : AFPData {
 		$func = self::$mKeywords[$kname];
+		$this->raiseCondCount();
 
-		if ( $lhs->getType() === AFPData::DUNDEFINED || $rhs->getType() === AFPData::DUNDEFINED ) {
-			return new AFPData( AFPData::DUNDEFINED );
+		$hasUndefinedOperand = false;
+		if ( $lhs->getType() === AFPData::DUNDEFINED ) {
+			$lhs = new AFPData( AFPData::DNULL );
+			$hasUndefinedOperand = true;
+		}
+		if ( $rhs->getType() === AFPData::DUNDEFINED ) {
+			$rhs = new AFPData( AFPData::DNULL );
+			$hasUndefinedOperand = true;
+		}
+		if ( $hasUndefinedOperand ) {
+			// We need to run the handler with bogus args, see the comment in self::callFunc (T234339)
+			// @todo Likewise, this is subpar.
+			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
+			$this->$func( $lhs, $rhs, $this->mCur->pos );
+			$result = new AFPData( AFPData::DUNDEFINED );
 		} else {
-			$this->raiseCondCount();
 			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
 			$result = $this->$func( $lhs, $rhs, $this->mCur->pos );
 		}
