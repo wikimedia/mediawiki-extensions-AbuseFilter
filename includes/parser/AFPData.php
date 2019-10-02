@@ -99,20 +99,13 @@ class AFPData {
 	}
 
 	/**
-	 * @return AFPData
-	 */
-	private function dup() {
-		return new AFPData( $this->type, $this->data );
-	}
-
-	/**
 	 * @param AFPData $orig
 	 * @param string $target
 	 * @return AFPData
 	 */
 	public static function castTypes( AFPData $orig, $target ) {
 		if ( $orig->type === $target ) {
-			return $orig->dup();
+			return $orig;
 		}
 		if ( $orig->type === self::DUNDEFINED ) {
 			// This case should be handled at a higher level, to avoid implicitly relying on what
