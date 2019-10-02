@@ -1067,7 +1067,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
-			$this->logger->debug( "AbuseFilter: deprecated variable $var used." );
+			if ( $this->logsDeprecatedVars() ) {
+				$this->logger->debug( "Deprecated variable $var used in filter {$this->mFilter}." );
+			}
 			$var = $deprecatedVars[ $var ];
 		}
 		if ( array_key_exists( $var, AbuseFilter::DISABLED_VARS ) ) {
@@ -1090,6 +1092,14 @@ class AbuseFilterParser extends AFPTransitionBase {
 			? AbuseFilterVariableHolder::GET_LAX
 			: AbuseFilterVariableHolder::GET_STRICT;
 		return $this->mVariables->getVar( $var, $flags, $this->mFilter );
+	}
+
+	/**
+	 * Whether this parser should log deprecated vars use.
+	 * @return bool
+	 */
+	protected function logsDeprecatedVars() {
+		return true;
 	}
 
 	/**

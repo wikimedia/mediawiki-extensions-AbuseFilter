@@ -390,4 +390,12 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			}
 		}
 	}
+
+	/**
+	 * @inheritDoc
+	 * This parser should not log, because that's handled in AFPTreeParser
+	 */
+	protected function logsDeprecatedVars() {
+		return false;
+	}
 }

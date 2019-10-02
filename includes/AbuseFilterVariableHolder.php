@@ -110,10 +110,11 @@ class AbuseFilterVariableHolder {
 	 */
 	public function getVar( $varName, $flags = self::GET_STRICT, $tempFilter = null ) : AFPData {
 		$varName = strtolower( $varName );
-		if ( $this->mVarsVersion === 1 && in_array( $varName, AbuseFilter::getDeprecatedVariables() ) ) {
+		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
+		if ( $this->mVarsVersion === 1 && in_array( $varName, $deprecatedVars ) ) {
 			// Variables are stored with old names, but the parser has given us
 			// a new name. Translate it back.
-			$varName = array_search( $varName, AbuseFilter::getDeprecatedVariables() );
+			$varName = array_search( $varName, $deprecatedVars );
 		}
 
 		if ( $this->varIsSet( $varName ) ) {

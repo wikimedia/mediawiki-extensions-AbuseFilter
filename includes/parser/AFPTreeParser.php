@@ -672,6 +672,8 @@ class AFPTreeParser extends AFPTransitionBase {
 		$tok = $this->mCur->value;
 		switch ( $this->mCur->type ) {
 			case AFPToken::TID:
+				$this->checkLogDeprecatedVar( strtolower( $tok ) );
+				// Fallthrough intended
 			case AFPToken::TSTRING:
 			case AFPToken::TFLOAT:
 			case AFPToken::TINT:
@@ -730,5 +732,17 @@ class AFPTreeParser extends AFPTransitionBase {
 
 		$this->move();
 		return $result;
+	}
+
+	/**
+	 * Given a variable name, check if the variable is deprecated. If it is, log the use.
+	 * Do that here, and not every time the AST is eval'ed. This means less logging, but more
+	 * performance.
+	 * @param string $varname
+	 */
+	protected function checkLogDeprecatedVar( $varname ) {
+		if ( array_key_exists( $varname, AbuseFilter::getDeprecatedVariables() ) ) {
+			$this->logger->debug( "Deprecated variable $varname used in filter {$this->mFilter}." );
+		}
 	}
 }

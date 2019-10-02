@@ -819,7 +819,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			// Check that the use has been logged
 			$found = false;
 			foreach ( $loggerBuffer as $entry ) {
-				$check = preg_match( '/AbuseFilter: deprecated variable/', $entry[1] );
+				$check = preg_match( '/^Deprecated variable/', $entry[1] );
 				if ( $check ) {
 					$found = true;
 					break;
