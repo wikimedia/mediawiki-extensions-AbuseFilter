@@ -101,9 +101,8 @@ class AbuseFilterParser {
 	/**
 	 * The minimum and maximum amount of arguments required by each function.
 	 * @var int[][]
-	 * @todo Make constant once we drop HHVM support
 	 */
-	public static $funcArgCount = [
+	const FUNC_ARG_COUNT = [
 		'lcase' => [ 1, 1 ],
 		'ucase' => [ 1, 1 ],
 		'length' => [ 1, 1 ],
@@ -1206,10 +1205,10 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function checkArgCount( $args, $func ) {
-		if ( !array_key_exists( $func, self::$funcArgCount ) ) {
+		if ( !array_key_exists( $func, self::FUNC_ARG_COUNT ) ) {
 			throw new InvalidArgumentException( "$func is not a valid function." );
 		}
-		list( $min, $max ) = self::$funcArgCount[ $func ];
+		list( $min, $max ) = self::FUNC_ARG_COUNT[ $func ];
 		if ( count( $args ) < $min ) {
 			throw new AFPUserVisibleException(
 				$min === 1 ? 'noparams' : 'notenoughargs',
@@ -1922,9 +1921,9 @@ class AbuseFilterParser {
 	 * @see AFPTreeParser::functionIsVariadic
 	 */
 	protected function functionIsVariadic( $fname ) {
-		if ( !array_key_exists( $fname, self::$funcArgCount ) ) {
+		if ( !array_key_exists( $fname, self::FUNC_ARG_COUNT ) ) {
 			throw new InvalidArgumentException( "Function $fname is not valid" );
 		}
-		return self::$funcArgCount[$fname][1] === INF;
+		return self::FUNC_ARG_COUNT[$fname][1] === INF;
 	}
 }

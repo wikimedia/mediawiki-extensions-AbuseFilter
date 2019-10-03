@@ -46,10 +46,9 @@ class AbuseFilter {
 
 	/**
 	 * @var string[] The FULL list of fields in the abuse_filter table
-	 * @todo Make a const once we get rid of HHVM
 	 * @internal
 	 */
-	public static $allAbuseFilterFields = [
+	const ALL_ABUSE_FILTER_FIELDS = [
 		'af_id',
 		'af_pattern',
 		'af_user',
@@ -707,7 +706,7 @@ class AbuseFilter {
 
 			$row = $dbr->selectRow(
 				'abuse_filter',
-				self::$allAbuseFilterFields,
+				self::ALL_ABUSE_FILTER_FIELDS,
 				[ 'af_id' => $filterID ],
 				__METHOD__
 			);
@@ -728,8 +727,8 @@ class AbuseFilter {
 		// row will return partial data.
 		$actual = array_keys( get_object_vars( $row ) );
 
-		if ( count( $actual ) !== count( self::$allAbuseFilterFields )
-			|| array_diff( self::$allAbuseFilterFields, $actual )
+		if ( count( $actual ) !== count( self::ALL_ABUSE_FILTER_FIELDS )
+			|| array_diff( self::ALL_ABUSE_FILTER_FIELDS, $actual )
 		) {
 			throw new UnexpectedValueException( 'The specified row must be a full abuse_filter row.' );
 		}

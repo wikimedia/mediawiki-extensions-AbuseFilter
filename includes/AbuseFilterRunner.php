@@ -329,7 +329,7 @@ class AbuseFilterRunner {
 		$dbr = wfGetDB( DB_REPLICA );
 		$res = $dbr->select(
 			'abuse_filter',
-			AbuseFilter::$allAbuseFilterFields,
+			AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
 			[
 				'af_enabled' => 1,
 				'af_deleted' => 0,
@@ -355,7 +355,7 @@ class AbuseFilterRunner {
 
 					return iterator_to_array( $fdb->select(
 						'abuse_filter',
-						AbuseFilter::$allAbuseFilterFields,
+						AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
 						[
 							'af_enabled' => 1,
 							'af_deleted' => 0,

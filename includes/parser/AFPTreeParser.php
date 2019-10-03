@@ -746,10 +746,10 @@ class AFPTreeParser {
 	 * should be avoided when merging the parsers.
 	 */
 	protected function checkArgCount( $args, $func ) {
-		if ( !array_key_exists( $func, AbuseFilterParser::$funcArgCount ) ) {
+		if ( !array_key_exists( $func, AbuseFilterParser::FUNC_ARG_COUNT ) ) {
 			throw new InvalidArgumentException( "$func is not a valid function." );
 		}
-		list( $min, $max ) = AbuseFilterParser::$funcArgCount[ $func ];
+		list( $min, $max ) = AbuseFilterParser::FUNC_ARG_COUNT[ $func ];
 		if ( count( $args ) < $min ) {
 			throw new AFPUserVisibleException(
 				$min === 1 ? 'noparams' : 'notenoughargs',
@@ -777,9 +777,9 @@ class AFPTreeParser {
 	 * @see AbuseFilterParser::functionIsVariadic
 	 */
 	protected function functionIsVariadic( $fname ) {
-		if ( !array_key_exists( $fname, AbuseFilterParser::$funcArgCount ) ) {
+		if ( !array_key_exists( $fname, AbuseFilterParser::FUNC_ARG_COUNT ) ) {
 			throw new InvalidArgumentException( "Function $fname is not valid" );
 		}
-		return AbuseFilterParser::$funcArgCount[$fname][1] === INF;
+		return AbuseFilterParser::FUNC_ARG_COUNT[$fname][1] === INF;
 	}
 }
