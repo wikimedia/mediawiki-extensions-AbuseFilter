@@ -53,6 +53,7 @@
 	"apihelp-query+abuselog-param-wiki": "Wiki del cual mostrar las detecciones.",
 	"apihelp-query+abuselog-example-1": "Mostrar entradas recientes del registro",
 	"apihelp-query+abuselog-example-2": "Mostrar entradas recientes del registro para [[API]]",
+	"apihelp-abuselogprivatedetails-param-reason": "Razón para realizar la verificación.",
 	"apierror-abusefilter-canttest": "No tienes permiso para probar filtros antiabusos.",
 	"apierror-abusefilter-cantcheck": "No tienes permiso para comprobar la sintaxis de los filtros antiabusos.",
 	"apierror-abusefilter-nosuchlogid": "No existe ninguna entrada en el registro de abusos con la ID $1.",

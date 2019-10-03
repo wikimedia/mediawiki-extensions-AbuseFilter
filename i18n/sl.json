@@ -5,7 +5,8 @@
 			"Eleassar",
 			"Emperyan",
 			"Matma Rex",
-			"Janezdrilc"
+			"Janezdrilc",
+			"Upwinxp"
 		]
 	},
 	"abusefilter-desc": "Pri urejanjih uporabi samodejno hevristiko",
@@ -167,7 +168,7 @@
 	"abusefilter-edit-consequences": "Dejanja za izvedbo ob ujemanju",
 	"abusefilter-edit-action-warn": "Sproži ta dejanja po opozoritvi uporabnika",
 	"abusefilter-edit-action-disallow": "Prepreči uporabniku izvesti vprašljivo dejanje",
-	"abusefilter-edit-action-blockautopromote": "Odvzami uporabnikovo stanje samodejne potrditve",
+	"abusefilter-edit-action-blockautopromote": "Odvzemi uporabnikovo stanje samodejne potrditve",
 	"abusefilter-edit-action-degroup": "Odstrani uporabnika iz vseh priviligiranih skupin",
 	"abusefilter-edit-action-block": "Uporabniku in/ali IP-naslovu prepreči urejanje",
 	"abusefilter-edit-action-blocktalk": "Blokiraj uporabnika in /ali IP naslov za urejanje njihovih lastnih pogovornih strani",
@@ -418,6 +419,7 @@
 	"abusefilter-topnav-import": "Uvozi filter",
 	"abusefilter-log-name": "Dnevnik filtrov zlorab",
 	"abusefilter-log-header": "Ta dnevnik prikazuje povzetek sprememb filtrov.\nZa vse podrobnosti si oglejte [[Special:AbuseFilter/history|seznam]] zadnjih sprememb filtrov.",
+	"abusefilter-logentry-modify": "$1 je {{GENDER:$2|spremenil|spremenila}} $4 ($5)",
 	"abusefilter-log-noresults": "Ni zadetkov",
 	"abusefilter-diff-title": "Razlike med različicami",
 	"abusefilter-diff-item": "Postavka",
