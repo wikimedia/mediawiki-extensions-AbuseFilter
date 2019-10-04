@@ -148,14 +148,23 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 						// @codeCoverageIgnoreEnd
 				}
 			case AFPTreeNode::ARRAY_DEFINITION:
-				$items = array_map( [ $this, 'evalNode' ], $node->children );
+				$items = [];
+				// Foreach is usually faster than array_map
+				// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach children is array here
+				foreach ( $node->children as $el ) {
+					$items[] = $this->evalNode( $el );
+				}
 				return new AFPData( AFPData::DARRAY, $items );
 
 			case AFPTreeNode::FUNCTION_CALL:
 				$functionName = $node->children[0];
 				$args = array_slice( $node->children, 1 );
 
-				$dataArgs = array_map( [ $this, 'evalNode' ], $args );
+				$dataArgs = [];
+				// Foreach is usually faster than array_map
+				foreach ( $args as $arg ) {
+					$dataArgs[] = $this->evalNode( $arg );
+				}
 
 				return $this->callFunc( $functionName, $dataArgs );
 			case AFPTreeNode::ARRAY_INDEX:
