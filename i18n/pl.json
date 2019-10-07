@@ -30,7 +30,8 @@
 			"DeRudySoulStorm",
 			"CiaPan",
 			"PiotrekD",
-			"Rail"
+			"Rail",
+			"FunPL"
 		]
 	},
 	"abusefilter-desc": "Zastosowanie automatycznej heurystyki do edycji",
@@ -276,7 +277,7 @@
 	"abusefilter-edit-history": "Historia",
 	"abusefilter-edit-check": "Sprawdź składnię",
 	"abusefilter-edit-badfilter": "Podany filtr nie istnieje",
-	"abusefilter-edit-revert": "Anuluj działania podjęte przez ten filtr",
+	"abusefilter-edit-revert": "Cofnij działania podjęte przez ten filtr",
 	"abusefilter-edit-tools": "Narzędzia",
 	"abusefilter-edit-test-link": "Sprawdź ten filtr na ostatnich zmianach",
 	"abusefilter-edit-export": "Eksportuj filtr do innej wiki",
@@ -453,7 +454,7 @@
 	"abusefilter-action-degroup": "Usuń z grup",
 	"abusefilter-action-rangeblock": "Blokuj zakres",
 	"abusefilter-action-disallow": "Odrzuć",
-	"abusefilter-revert-title": "Anuluj wszystkie zmiany zrobione przez filtr $1",
+	"abusefilter-revert-title": "Cofnij wszystkie zmiany zrobione przez filtr $1",
 	"abusefilter-revert-intro": "Formularz pozwala anulować wszystkie zmiany zrobione przez filtr nadużyć $1.\nNależy ostrożnie korzystać z tego narzędzia.",
 	"abusefilter-revert-preview-item": "$1: $2 {{GENDER:$7|wykonał|wykonała|wykonał(a)}} $3 na $4.\nDziałania, które zostaną anulowane: $5 ($6)",
 	"abusefilter-revert-search-legend": "Wybierz działania filtru nadużyć, które mają zostać anulowane",

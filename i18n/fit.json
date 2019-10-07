@@ -4,5 +4,6 @@
 			"Pyscowicz"
 		]
 	},
-	"abusefilter-throttle-user": "käyttäjäkonttu"
+	"abusefilter-throttle-user": "käyttäjäkonttu",
+	"abusefilter-history-foruser": "Käyttäjän $1 mookkaukset"
 }
