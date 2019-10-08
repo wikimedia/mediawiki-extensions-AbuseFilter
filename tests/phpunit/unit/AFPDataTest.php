@@ -71,7 +71,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 */
 	public function testNewFromPHPVar( $raw, $expected ) {
 		if ( $expected === null ) {
-			$this->setExpectedException( AFPException::class );
+			$this->expectException( AFPException::class );
 		}
 		$this->assertEquals( $expected, AFPData::newFromPHPVar( $raw ) );
 	}
@@ -117,7 +117,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 */
 	public function testMissingCastTypes( $orig, $newType, $expected ) {
 		if ( $expected === null ) {
-			$this->setExpectedException( AFPException::class );
+			$this->expectException( AFPException::class );
 		}
 		$this->assertEquals( $expected, AFPData::castTypes( $orig, $newType ) );
 	}

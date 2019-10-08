@@ -136,7 +136,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		$parser = new AbuseFilterParser( ...$constrArgs );
 		$this->assertFalse( $parser->parse( $code ) );
 		$cachingParser = new AbuseFilterCachingParser( ...$constrArgs );
-		$this->setExpectedException( AFPUserVisibleException::class, 'unexpectedtoken' );
+		$this->expectException( AFPUserVisibleException::class );
+		$this->expectExceptionMessage( 'unexpectedtoken' );
 		$cachingParser->parse( $code );
 	}
 
@@ -990,7 +991,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			);
 			$parser->toggleConditionLimit( false );
 		}
-		$this->setExpectedException( AFPUserVisibleException::class, 'unexpectedtoken' );
+		$this->expectException( AFPUserVisibleException::class );
+		$this->expectExceptionMessage( 'unexpectedtoken' );
 		$parser->parse( $code );
 	}
 
