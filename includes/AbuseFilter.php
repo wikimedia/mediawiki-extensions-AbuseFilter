@@ -584,7 +584,8 @@ class AbuseFilter {
 
 	/**
 	 * @param string[] $filters
-	 * @return array[][]
+	 * @return (string|array)[][][]
+	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>
 	 */
 	public static function getConsequencesForFilters( $filters ) {
 		$globalFilters = [];
@@ -624,7 +625,8 @@ class AbuseFilter {
 	 * @param IDatabase $dbr
 	 * @param string[] $filters
 	 * @param string $prefix
-	 * @return array[][]
+	 * @return (string|array)[][][]
+	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>
 	 */
 	public static function loadConsequencesFromDB( IDatabase $dbr, $filters, $prefix = '' ) {
 		$actionsByFilter = [];

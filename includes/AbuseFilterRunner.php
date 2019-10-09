@@ -34,10 +34,8 @@ class AbuseFilterRunner {
 
 	/**
 	 * @var array Data from per-filter profiling. Shape:
-	 *
-	 *     [
-	 *         filterID => [ 'time' => timeTaken, 'conds' => condsUsed, 'result' => result ]
-	 *     ]
+	 *   [ filterName => [ 'time' => float, 'conds' => int, 'result' => bool ] ]
+	 * @phan-var array<string,array{time:float,conds:int,result:bool}>
 	 *
 	 * Where 'timeTaken' is in seconds, 'result' is a boolean indicating whether the filter matched
 	 * the action, and 'filterID' is "{prefix}-{ID}" ; Prefix should be empty for local
@@ -465,6 +463,7 @@ class AbuseFilterRunner {
 	 * Record per-filter profiling, for all filters
 	 *
 	 * @param array $data Profiling data, as stored in $this->profilingData
+	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
 	 */
 	protected function recordPerFilterProfiling( array $data ) {
 		global $wgAbuseFilterSlowFilterRuntimeLimit;

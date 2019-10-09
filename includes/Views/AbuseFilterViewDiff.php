@@ -1,12 +1,14 @@
 <?php
-
+/**
+ * @phan-file-suppress PhanTypeArraySuspiciousNullable Some confusion with class members
+ */
 class AbuseFilterViewDiff extends AbuseFilterView {
 	/**
-	 * @var array|null The old version of the filter
+	 * @var (string|array)[]|null The old version of the filter
 	 */
 	public $mOldVersion = null;
 	/**
-	 * @var array|null The new version of the filter
+	 * @var (string|array)[]|null The new version of the filter
 	 */
 	public $mNewVersion = null;
 	/**
@@ -112,7 +114,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
 
-		if ( is_null( $this->mOldVersion ) || is_null( $this->mNewVersion ) ) {
+		if ( $this->mOldVersion === null || $this->mNewVersion === null ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
 			return false;
 		}
@@ -151,7 +153,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	/**
 	 * @param string $spec
 	 * @param string $otherSpec
-	 * @return array|null
+	 * @return (string|array)[]|null
 	 */
 	public function loadSpec( $spec, $otherSpec ) {
 		static $dependentSpecs = [ 'prev', 'next' ];
@@ -229,7 +231,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 	/**
 	 * @param stdClass $row
-	 * @return array
+	 * @return (string|array)[]
 	 */
 	public function loadFromHistoryRow( $row ) {
 		return [

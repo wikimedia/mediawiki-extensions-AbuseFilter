@@ -5,6 +5,7 @@
  * evaluating it into different passes, allowing the parse tree to be cached.
  *
  * @file
+ * @phan-file-suppress PhanPossiblyInfiniteRecursionSameParams Recursion controlled by class props
  */
 
 use Psr\Log\LoggerInterface;

@@ -171,7 +171,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	}
 
 	/**
-	 * @return array
+	 * @return array[]
 	 */
 	public function doLookup() {
 		$periodStart = $this->mPeriodStart;
