@@ -528,5 +528,5 @@
 	"abusefilter-log-ip-not-available": "Ei saatavissa",
 	"abusefilter-tag-reserved": "Tämä <code>abusefilter-condition-limit</code> merkintä on varattu Väärinkäyttösuodattimen sisäiseen käyttöön.",
 	"tag-abusefilter-condition-limit": "ehtojen raja-arvo on saavutettu",
-	"tag-abusefilter-condition-limit-description": "Muokkaukset tai muut tapahtumat, joita ei voitu tarkistaa kaikilla aktiivisilla [[Special:AbuseFilter|väärinkäyttösuodattimilla]] ([[mw:Extension:AbuseFilter/Conditions|ohje]])."
+	"tag-abusefilter-condition-limit-description": "Muokkaukset tai muut tapahtumat, joita ei voitu käydä läpi kaikilla aktiivisilla [[Special:AbuseFilter|väärinkäyttösuodattimilla]] ([[mw:Extension:AbuseFilter/Conditions|ohje]])."
 }
