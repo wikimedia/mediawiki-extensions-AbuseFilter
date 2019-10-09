@@ -42,7 +42,7 @@ class AbuseFilterTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function tearDown() {
+	protected function tearDown() : void {
 		MWTimestamp::setFakeTime( false );
 		parent::tearDown();
 	}
