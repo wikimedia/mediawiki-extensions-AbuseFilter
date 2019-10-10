@@ -22,7 +22,8 @@
 			"Максим Підліснюк",
 			"Avatar6",
 			"Vlad5250",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"Movses"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -110,6 +111,8 @@
 	"abusefilter-log-linkoncontribs-text": "Журнал зловживань {{GENDER:$1|цього користувача|цієї користувачки}}",
 	"abusefilter-log-linkonhistory": "журнал зловживань",
 	"abusefilter-log-linkonhistory-text": "Показати журнали зловживань для цієї сторінки",
+	"abusefilter-log-linkonundelete": "перегляд журналу зловживань",
+	"abusefilter-log-linkonundelete-text": "Показати журнали зловживань для цієї сторінки",
 	"abusefilter-log-hidden-implicit": "(приховано, бо версію було вилучено)",
 	"abusefilter-log-cannot-see-details": "Ви не маєте дозволу на перегляд відомостей про цей запис.",
 	"abusefilter-log-cannot-see-privatedetails": "У Вас немає прав на перегляд приватних даних для цього запису.",
@@ -456,6 +459,7 @@
 	"abusefilter-exception-dividebyzero": "Ділення $2 на нуль на позиції $1.",
 	"abusefilter-exception-unrecognisedvar": "Неопізнана змінна $2 на позиції $1",
 	"abusefilter-exception-notenoughargs": "Замало аргументів для функції $2, що викликається на позиції $1.\nОчікується $3 {{PLURAL:$3|аргумент|аргументи|аргументів}}, а вказано $4",
+	"abusefilter-exception-toomanyargs": "Забагато аргументів для функції $2, що викликається на позиції $1.\nОчікується максимум $3 {{PLURAL:$3|аргумент|аргументи|аргументів}}, а вказано $4",
 	"abusefilter-exception-regexfailure": "Помилка в регулярному виразі «$2» на позиції $1.",
 	"abusefilter-exception-overridebuiltin": "Недопустиме перевизначення вбудованої змінної «$2» на позиції $1.",
 	"abusefilter-exception-outofbounds": "Запит на неіснуючий елемент масиву $2 (розмір масиву = $3) на позиції $1.",
