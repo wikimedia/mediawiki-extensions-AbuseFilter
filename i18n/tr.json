@@ -21,7 +21,8 @@
 			"TmY e12",
 			"By erdo can",
 			"Fitoschido",
-			"ToprakM"
+			"ToprakM",
+			"BaRaN6161 TURK"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -197,6 +198,7 @@
 	"abusefilter-edit-action-blockautopromote": "Kullanıcının otomatik onaylı durumunu iptal et",
 	"abusefilter-edit-action-degroup": "Kullanıcıyı tüm ayrıcalıklı gruplardan çıkar",
 	"abusefilter-edit-action-block": "Kullanıcıyı ve/veya IP adresini değişiklik yapmaya engelle",
+	"abusefilter-edit-action-blocktalk": "Kullanıcının ve / veya IP adresinin kendi konuşma sayfasını düzenlemesini engelle",
 	"abusefilter-edit-action-throttle": "Eylemleri sadece, eğer kullanıcı bir derece sınırına takılırsa tetikle",
 	"abusefilter-edit-action-rangeblock": "Kullanıcının geldiği /16 aralığını engelle",
 	"abusefilter-edit-action-tag": "İleride gözden geçirme için değişikliği etiketle.",

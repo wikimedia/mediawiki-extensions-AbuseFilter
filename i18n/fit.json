@@ -5,5 +5,6 @@
 		]
 	},
 	"abusefilter-throttle-user": "käyttäjäkonttu",
-	"abusefilter-history-foruser": "Käyttäjän $1 mookkaukset"
+	"abusefilter-history-foruser": "Käyttäjän $1 mookkaukset",
+	"abusefilter-group-default": "Ylheinen"
 }

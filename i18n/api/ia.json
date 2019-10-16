@@ -40,7 +40,7 @@
 	"apihelp-query+abuselog-param-end": "Le data e hora al qual cessar de enumerar.",
 	"apihelp-query+abuselog-param-user": "Monstrar solmente entratas facite per un usator o adresse IP date.",
 	"apihelp-query+abuselog-param-title": "Monstrar solmente entratas que occurre in un pagina date.",
-	"apihelp-query+abuselog-param-filter": "Monstrar solmente entratas detegite per un ID de filtro date.",
+	"apihelp-query+abuselog-param-filter": "Monstrar solmente entratas detegite per le filtros con le IDs specificate. Separar con barras vertical. Prefixar \"$1\" pro monstrar filtros global.",
 	"apihelp-query+abuselog-param-limit": "Le numero maxime de entratas a listar.",
 	"apihelp-query+abuselog-param-prop": "Qual proprietates obtener.",
 	"apihelp-query+abuselog-example-1": "Monstrar entratas recente de registro",
