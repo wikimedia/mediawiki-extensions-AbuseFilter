@@ -1071,19 +1071,19 @@ class AbuseFilterRunner {
 		$block = new DatabaseBlock();
 		$block->setTarget( $target );
 		$block->setBlocker( $filterUser );
-		$block->mReason = $reason;
+		$block->setReason( $reason );
 		$block->isHardblock( false );
 		$block->isAutoblocking( $isAutoBlock );
 		$block->isCreateAccountBlocked( true );
 		$block->isUsertalkEditAllowed( !$preventEditOwnUserTalk );
-		$block->mExpiry = SpecialBlock::parseExpiryInput( $expiry );
+		$block->setExpiry( SpecialBlock::parseExpiryInput( $expiry ) );
 
 		$success = $block->insert();
 
 		if ( $success ) {
 			// Log it only if the block was successful
 			$logParams = [];
-			$logParams['5::duration'] = ( $block->mExpiry === 'infinity' )
+			$logParams['5::duration'] = ( $block->getExpiry() === 'infinity' )
 				? 'indefinite'
 				: $expiry;
 			$flags = [ 'nocreate' ];
