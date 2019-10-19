@@ -123,7 +123,7 @@ class AFPData {
 			} elseif ( $target === self::DFLOAT ) {
 				return new AFPData( self::DFLOAT, floatval( count( $orig->data ) ) );
 			} elseif ( $target === self::DINT ) {
-				return new AFPData( self::DINT, intval( count( $orig->data ) ) );
+				return new AFPData( self::DINT, count( $orig->data ) );
 			} elseif ( $target === self::DSTRING ) {
 				$s = '';
 				foreach ( $orig->data as $item ) {

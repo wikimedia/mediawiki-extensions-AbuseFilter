@@ -479,9 +479,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$output = '';
 
 		foreach ( $enabledActions as $action => $_ ) {
-			$params = $actions[$action] ?? null;
-			$output .= $this->buildConsequenceSelector(
-				$action, $setActions[$action], $row, $params );
+			if ( array_key_exists( $action, $actions ) ) {
+				$output .= $this->buildConsequenceSelector(
+					$action, $setActions[$action], $row, $actions[$action] );
+			}
 		}
 
 		return $output;
@@ -491,16 +492,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string $action The action to build an editor for
 	 * @param bool $set Whether or not the action is activated
 	 * @param stdClass $row abuse_filter row object
-	 * @param array|null $parameters Action parameters
+	 * @param array $parameters Action parameters
 	 * @return string|\OOUI\FieldLayout
 	 */
-	private function buildConsequenceSelector( $action, $set, $row, array $parameters = null ) {
+	private function buildConsequenceSelector( $action, $set, $row, array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
-		$actions = $config->get( 'AbuseFilterActions' );
-		if ( empty( $actions[$action] ) ) {
-			return '';
-		}
 
 		$readOnly = !AbuseFilter::canEditFilter( $user, $row );
 

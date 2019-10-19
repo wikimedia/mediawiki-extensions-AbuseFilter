@@ -906,6 +906,7 @@ class AbuseFilterParser {
 					throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
 						[ $idx, count( $result->getData() ) ] );
 				}
+				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable Guaranteed to be array
 				$result = $result->getData()[$idx];
 			} elseif ( $result->getType() === AFPData::DUNDEFINED ) {
 				$result = new AFPData( AFPData::DUNDEFINED );
