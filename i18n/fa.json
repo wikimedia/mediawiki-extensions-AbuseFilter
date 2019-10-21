@@ -546,7 +546,7 @@
 	"abusefilter-log-name": "سیاههٔ پالایهٔ خرابکاری",
 	"abusefilter-log-header": "این سیاهه خلاصه‌ای از تغییرات پالایه‌ها را نمایش می‌دهد.\nبرای جزئیات کامل [[Special:AbuseFilter/history|فهرست]] تغییرات اخیر پالایه‌ها را ببینید.",
 	"abusefilter-logentry-create": "$1 $4 را {{GENDER:$2|ایجاد کرد}} ($5)",
-	"abusefilter-logentry-modify": "$1 {{GENDER:$2|تغییر داد}} $4 ($5)",
+	"abusefilter-logentry-modify": "$1 $4 را {{GENDER:$2|تغییر داد}} ($5)",
 	"abusefilter-log-invalid-filter": "برخی از شناسه‌های مشخص‌شدهٔ پالایه نامعتبر هستند.",
 	"abusefilter-log-noresults": "بدون نتیجه",
 	"abusefilter-diff-title": "تفاوت بین نسخه‌ها",

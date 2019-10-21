@@ -54,6 +54,7 @@
 	"apihelp-abuselogprivatedetails-summary": "צפייה במידע פרטי של רשומת יומן השחתה.",
 	"apihelp-abuselogprivatedetails-param-logid": "המזהה של רשומת יומן השחתה שצריך לבדוק.",
 	"apihelp-abuselogprivatedetails-param-reason": "סיבה תקינה לביצוע הבדיקה.",
+	"apihelp-abuselogprivatedetails-example-1": "קבלת מידע פרטי על רשומת יומן מסנן השחתות בעלת המזהה 1, עם הסיבה \"example\".",
 	"apierror-abusefilter-canttest": "אין לך הרשאה לבחון מסנני השחתות.",
 	"apierror-abusefilter-cantcheck": "אין לך הרשאה לבדוק את התחביר של מסנני השחתות.",
 	"apierror-abusefilter-nosuchlogid": "אין רשומה ביומן ההשחתות עם המזהה $1.",

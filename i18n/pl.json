@@ -139,6 +139,7 @@
 	"log-action-filter-abusefilter": "Rodzaj zmiany filtra:",
 	"log-action-filter-abusefilter-create": "Utworzenie nowego filtra",
 	"log-action-filter-abusefilter-modify": "Modyfikacja filtra",
+	"log-action-filter-suppress-abuselog": "Ukrywanie rejestru nadużyć",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|uzyskał|uzyskała}} dostęp do prywatnych szczegółów $3",
 	"abusefilterprivatedetails-log-name": "Rejestr dostępu do prywatnych szczegółów filtru nadużyć",
 	"abusefilter-list": "Wszystkie filtry",
