@@ -181,7 +181,7 @@
 	"abusefilter-list-options-scope-global": "Endast globala regler",
 	"abusefilter-list-options-scope-all": "Lokala och globala regler",
 	"abusefilter-list-options-further-options": "Ytterligare alternativ:",
-	"abusefilter-list-options-hidedisabled": "Göm avaktiverade filter",
+	"abusefilter-list-options-hidedisabled": "Dölj inaktiverade filter",
 	"abusefilter-list-options-hideprivate": "Dölj privata filter",
 	"abusefilter-list-options-searchfield": "Sök inom regler:",
 	"abusefilter-list-options-searchpattern": "Ange ett mönster",
