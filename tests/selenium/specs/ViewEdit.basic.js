@@ -24,5 +24,11 @@ describe( 'Special:AbuseFilter/new', function () {
 			'',
 			'the hidden rules editor should be empty'
 		);
+
+		// @todo This assumes that warn is enabled in the config, but it usually is
+		assert.ok(
+			ViewEditPage.warnParams,
+			'Warn action parameters should be on the page'
+		);
 	} );
 } );

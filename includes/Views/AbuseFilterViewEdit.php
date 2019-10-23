@@ -479,10 +479,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$output = '';
 
 		foreach ( $enabledActions as $action => $_ ) {
-			if ( array_key_exists( $action, $actions ) ) {
-				$output .= $this->buildConsequenceSelector(
-					$action, $setActions[$action], $row, $actions[$action] );
-			}
+			$params = $actions[$action] ?? null;
+			$output .= $this->buildConsequenceSelector(
+				$action, $setActions[$action], $row, $params );
 		}
 
 		return $output;
@@ -492,12 +491,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string $action The action to build an editor for
 	 * @param bool $set Whether or not the action is activated
 	 * @param stdClass $row abuse_filter row object
-	 * @param array $parameters Action parameters
+	 * @param array|null $parameters Action parameters
 	 * @return string|\OOUI\FieldLayout
 	 */
-	private function buildConsequenceSelector( $action, $set, $row, array $parameters ) {
+	private function buildConsequenceSelector( $action, $set, $row, ?array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
+		$actions = $config->get( 'AbuseFilterActions' );
+		if ( empty( $actions[$action] ) ) {
+			return '';
+		}
 
 		$readOnly = !AbuseFilter::canEditFilter( $user, $row );
 
@@ -525,6 +528,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$throttleFields = [];
 
 				if ( $set ) {
+					// @phan-suppress-next-line PhanTypeArraySuspiciousNullable $parameters is array here
 					list( $throttleCount, $throttlePeriod ) = explode( ',', $parameters[1], 2 );
 
 					$throttleGroups = array_slice( $parameters, 2 );
@@ -795,6 +799,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				} else {
 					if ( $set && count( $parameters ) === 1 ) {
 						// Only blocktalk available
+						// @phan-suppress-next-line PhanTypeArraySuspiciousNullable $parameters is array here
 						$blockTalk = $parameters[0];
 					}
 					if ( $config->get( 'AbuseFilterAnonBlockDuration' ) ) {
