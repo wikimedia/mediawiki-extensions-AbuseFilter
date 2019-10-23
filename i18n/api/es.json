@@ -7,7 +7,8 @@
 			"Macofe",
 			"MarcoAurelio",
 			"Ryo567",
-			"Agusbou2015"
+			"Agusbou2015",
+			"Ihojose"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Comprueba si el filtro antiabusos coincide con un conjunto de variables, una edición o un evento del registro del editor antiabusos.\n\nSe necesita \"vars\", \"rcid\" o \"logid\", pero solo se utiliza uno.",
@@ -47,13 +48,17 @@
 	"apihelp-query+abuselog-param-end": "El sello de tiempo para detener la enumeración.",
 	"apihelp-query+abuselog-param-user": "Mostrar solo entradas correspondientes a un usuario o IP determinado.",
 	"apihelp-query+abuselog-param-title": "Mostrar solo entradas correspondientes a una página determinada.",
-	"apihelp-query+abuselog-param-filter": "Mostrar solo entradas capturadas por un identificador de filtro determinado.",
+	"apihelp-query+abuselog-param-filter": "Mostrar solo las entradas que fueron capturadas por los ID de filtro de datos. Separar con pipes, el prefijo con \"$1\" para filtros globales.",
 	"apihelp-query+abuselog-param-limit": "La cantidad máxima de entradas que aparecerán.",
 	"apihelp-query+abuselog-param-prop": "Qué propiedades se obtendrán.",
 	"apihelp-query+abuselog-param-wiki": "Wiki del cual mostrar las detecciones.",
 	"apihelp-query+abuselog-example-1": "Mostrar entradas recientes del registro",
 	"apihelp-query+abuselog-example-2": "Mostrar entradas recientes del registro para [[API]]",
+	"apihelp-abuselogprivatedetails-description": "Ver detalles privados de una entrada de AbuseLog (registro de abuso).",
+	"apihelp-abuselogprivatedetails-summary": "Ver detalles privados de una entrada de AbuseLog (registro de abuso).",
+	"apihelp-abuselogprivatedetails-param-logid": "ID de la entrada de AbuseLog por verificar.",
 	"apihelp-abuselogprivatedetails-param-reason": "Razón para realizar la verificación.",
+	"apihelp-abuselogprivatedetails-example-1": "Obtener los detalles privados para la entrada de AbuseLog con el ID 1, usando el razón \"ejemplo\".",
 	"apierror-abusefilter-canttest": "No tienes permiso para probar filtros antiabusos.",
 	"apierror-abusefilter-cantcheck": "No tienes permiso para comprobar la sintaxis de los filtros antiabusos.",
 	"apierror-abusefilter-nosuchlogid": "No existe ninguna entrada en el registro de abusos con la ID $1.",
