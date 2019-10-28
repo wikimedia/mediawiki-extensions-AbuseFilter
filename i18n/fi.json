@@ -25,7 +25,8 @@
 			"Valtlait",
 			"Rueter",
 			"Vlad5250",
-			"Kyykaarme"
+			"Kyykaarme",
+			"Cxz"
 		]
 	},
 	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
@@ -217,6 +218,7 @@
 	"abusefilter-edit-throttle-period": "Aikaväli (sekunteina):",
 	"abusefilter-edit-throttle-groups": "Ryhmän määritys:",
 	"abusefilter-edit-throttle-groups-help": "Katso $1.",
+	"abusefilter-edit-throttle-groups-help-text": "ohjeistus sivustolta mediawiki.org",
 	"abusefilter-throttle-ip": "IP-osoite",
 	"abusefilter-throttle-user": "käyttäjätunnus",
 	"abusefilter-throttle-range": "/16-alue",

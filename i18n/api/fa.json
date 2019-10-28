@@ -4,11 +4,12 @@
 			"Alirezaaa",
 			"Huji",
 			"Ladsgroup",
-			"Reza1615"
+			"Reza1615",
+			"Ahmad252"
 		]
 	},
-	"apihelp-abusefiltercheckmatch-description": "بررسی کنید تا ببینید اگر پالایهٔ خرابکاری با مجموعه‌ای از متغییرها، یک ویرایش، یا یک رویداد سیاههٔ پالایهٔ خرابکاری کاربر مطابق است.\n\n متغییر، شناسهٔ تغییرات اخیر یا شناسهٔ ورود مورد نیاز است، اما فقط یکی از این سه می‌تواند استفاده شود.",
-	"apihelp-abusefiltercheckmatch-summary": "بررسی کنید اگر یک پالایهٔ خرابکاری با مجموعه‌ای از متغیرها مطابقت داشت، editor logged AbuseFilter event.",
+	"apihelp-abusefiltercheckmatch-description": "بررسی کنید تا ببینید پالایهٔ خرابکاری با مجموعه‌ای از متغیرها، یک ویرایش، یا یک رویداد سیاههٔ پالایهٔ خرابکاری کاربر مطابق است یا خیر.\n\nمتغیر، شناسهٔ تغییرات اخیر یا شناسهٔ ورود مورد نیاز است، اما فقط یکی از این سه می‌تواند استفاده شود.",
+	"apihelp-abusefiltercheckmatch-summary": "بررسی کنید تا ببینید پالایهٔ خرابکاری با مجموعه‌ای از متغیرها، یک ویرایش، یا یک رویداد سیاههٔ پالایهٔ ویرایش کاربر مطابق است یا خیر.",
 	"apihelp-abusefiltercheckmatch-extended-description": "vars، rcid، یا logid لازم است هرچند یکی از آنها استفاده می‌شود.",
 	"apihelp-abusefiltercheckmatch-param-filter": "متن کامل پالایه برای بررسی یک مورد مطابقت‌یافته.",
 	"apihelp-abusefiltercheckmatch-param-vars": "آرایه رمزگذاری شدهٔ به صورت جی‌سان از متغیرها برای آزمایش کردن.",
