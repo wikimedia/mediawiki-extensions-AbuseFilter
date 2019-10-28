@@ -5,6 +5,7 @@
 		<exclude name="MediaWiki.VariableAnalysis.ForbiddenGlobalVariables.ForbiddenGlobal$wgTitle" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
 		<exclude name="Squiz.Scope.MethodScope.Missing" />
+		<exclude name="MediaWiki.Commenting.FunctionComment.DefaultNullTypeParam" />
 	</rule>
 	<rule ref="Generic.Files.LineLength">
 		<exclude-pattern>AbuseFilter\.alias\.php</exclude-pattern>

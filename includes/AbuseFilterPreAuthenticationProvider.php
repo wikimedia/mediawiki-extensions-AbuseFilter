@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
-use MediaWiki\Auth\AuthenticationRequest;
 
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
 	public function testForAccountCreation( $user, $creator, array $reqs ) {

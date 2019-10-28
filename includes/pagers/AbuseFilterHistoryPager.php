@@ -92,15 +92,36 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = $display_actions;
 				break;
 			case 'afh_id':
+				// Set a link to a diff with the previous version if this isn't the first edit to the filter.
+				// Like in AbuseFilterViewDiff, don't show it if the user cannot see private filters and any
+				// of the versions is hidden.
 				$formatted = '';
 				if ( AbuseFilter::getFirstFilterChange( $row->afh_filter ) != $value ) {
-					// Set a link to a diff with the previous version if this isn't the first edit to the filter
-					$title = $this->mPage->getTitle(
-								'history/' . $row->afh_filter . "/diff/prev/$value" );
-					$formatted = $this->linkRenderer->makeLink(
-						$title,
-						new HtmlArmor( $this->msg( 'abusefilter-history-diff' )->parse() )
+					// @todo This is subpar, it should be cached at least. Should we also hide actions?
+					$dbr = wfGetDB( DB_REPLICA );
+					$oldFlags = $dbr->selectField(
+						'abuse_filter_history',
+						'afh_flags',
+						[
+							'afh_filter' => $row->afh_filter,
+							'afh_id <' . $dbr->addQuotes( $row->afh_id ),
+						],
+						__METHOD__,
+						[ 'ORDER BY' => 'afh_id DESC' ]
 					);
+					if ( AbuseFilterView::canViewPrivate() ||
+						(
+							!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
+							!in_array( 'hidden', explode( ',', $oldFlags ) )
+						)
+					) {
+						$title = $this->mPage->getTitle(
+							'history/' . $row->afh_filter . "/diff/prev/$value" );
+						$formatted = $this->linkRenderer->makeLink(
+							$title,
+							new HtmlArmor( $this->msg( 'abusefilter-history-diff' )->parse() )
+						);
+					}
 				}
 				break;
 			default:

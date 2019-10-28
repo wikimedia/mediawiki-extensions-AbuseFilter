@@ -64,18 +64,21 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$newSpec = $this->mParams[4];
 		$this->mFilter = $this->mParams[1];
 
-		if ( AbuseFilter::filterHidden( $this->mFilter )
-			&& !$this->getUser()->isAllowedAny( 'abusefilter-modify', 'abusefilter-view-private' )
-		) {
-			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
-			return false;
-		}
-
 		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
 
 		if ( is_null( $this->mOldVersion ) || is_null( $this->mNewVersion ) ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
+			return false;
+		}
+
+		if ( !self::canViewPrivate() &&
+			(
+				in_array( 'hidden', explode( ',', $this->mOldVersion['info']['flags'] ) ) ||
+				in_array( 'hidden', explode( ',', $this->mNewVersion['info']['flags'] ) )
+			)
+		) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return false;
 		}
 
