@@ -217,6 +217,7 @@
 	"abusefilter-edit-disallow-edit": "Vytvoriť/upraviť vybranú správu",
 	"abusefilter-edit-tag-tag": "Označiť nasledovnými značkami (jednu na riadok):",
 	"abusefilter-block-anon": "Blokovať anonymných používateľov",
+	"abusefilter-block-talk": "diskusná stránka zablokovaná",
 	"abusefilter-edit-denied": "Nemôžete zobraziť podrobnosti toho filtra, pretože jeho verejné zobrazovanie je vypnuté",
 	"abusefilter-edit-main": "Parametre filtra",
 	"abusefilter-edit-done-subtitle": "Filter bol upravený",
