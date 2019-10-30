@@ -321,6 +321,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				}
 
 				$array = $this->getVarValue( $varName );
+				$value = $this->evalNode( $value );
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
@@ -328,7 +329,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					}
 
 					$array = $array->toArray();
-					$array[] = $this->evalNode( $value );
+					$array[] = $value;
 					$this->setUserVariable( $varName, new AFPData( AFPData::DARRAY, $array ) );
 				}
 				return $value;
