@@ -54,7 +54,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$scope === 'global' );
 
 		if ( $searchEnabled ) {
-			$querypattern = $request->getVal( 'querypattern' );
+			$querypattern = $request->getVal( 'querypattern', '' );
 			$searchmode = $request->getVal( 'searchoption', 'LIKE' );
 		} else {
 			$querypattern = '';
@@ -84,51 +84,31 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_global'] = 1;
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
-
 		if ( $querypattern !== '' ) {
-			if ( $searchmode !== 'LIKE' ) {
-				if ( !StringUtils::isValidPCRERegex( "/$querypattern/" ) ) {
-					$out->addHTML(
-						Xml::tags(
-							'p',
-							null,
-							Html::errorBox( $this->msg( 'abusefilter-list-regexerror' )->parse() )
-						)
-					);
-					$this->showList(
-						[ 'af_deleted' => 0 ],
-						compact(
-							'deleted',
-							'furtherOptions',
-							'querypattern',
-							'searchmode',
-							'scope',
-							'searchEnabled'
-						)
-					);
-					return;
-				}
-				if ( $searchmode === 'RLIKE' ) {
-					$conds[] = 'af_pattern RLIKE ' .
-						$dbr->addQuotes( $querypattern );
-				} else {
-					$conds[] = 'LOWER( CAST( af_pattern AS char ) ) RLIKE ' .
-						strtolower( $dbr->addQuotes( $querypattern ) );
-				}
-			} else {
-				// Build like query escaping tokens and encapsulating in % to search everywhere
-				$conds[] = 'LOWER( CAST( af_pattern AS char ) ) ' .
-					$dbr->buildLike(
-						$dbr->anyString(),
-						strtolower( $querypattern ),
-						$dbr->anyString()
-					);
+			// Check the search pattern. Filtering the results is done in AbuseFilterPager
+			$error = null;
+			if ( !in_array( $searchmode, [ 'LIKE', 'RLIKE', 'IRLIKE' ] ) ) {
+				$error = 'abusefilter-list-invalid-searchmode';
+			} elseif ( $searchmode !== 'LIKE' && !StringUtils::isValidPCRERegex( "/$querypattern/" ) ) {
+				$error = 'abusefilter-list-regexerror';
+			}
+
+			if ( $error !== null ) {
+				$out->addHTML(
+					Xml::tags(
+						'p',
+						null,
+						Html::errorBox( $this->msg( $error )->escaped() )
+					)
+				);
+
+				// Reset the conditions in case of error
+				$conds = [ 'af_deleted' => 0 ];
+				$querypattern = '';
 			}
 		}
 
 		$this->showList(
-			$conds,
 			compact(
 				'deleted',
 				'furtherOptions',
@@ -136,15 +116,16 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'searchmode',
 				'scope',
 				'searchEnabled'
-			)
+			),
+			$conds
 		);
 	}
 
 	/**
-	 * @param array $conds
 	 * @param array $optarray
+	 * @param array $conds
 	 */
-	public function showList( $conds = [ 'af_deleted' => 0 ], $optarray = [] ) {
+	private function showList( array $optarray, array $conds = [ 'af_deleted' => 0 ] ) {
 		$config = $this->getConfig();
 		$this->getOutput()->addHTML(
 			Xml::tags( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
@@ -172,7 +153,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 				$this,
 				$conds,
 				$this->linkRenderer,
-				[ $querypattern, $searchmode ]
+				$querypattern,
+				$searchmode
 			);
 		}
 
