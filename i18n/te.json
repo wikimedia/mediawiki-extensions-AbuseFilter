@@ -393,7 +393,7 @@
 	"abusefilter-history-select-user": "వాడుకరి:",
 	"abusefilter-history-select-submit": "మెరుగుపరచు",
 	"abusefilter-history-diff": "మార్పులు",
-	"abusefilter-history-error-hidden": "మీరు అభ్యర్థించిన వడపోత దాచబడి ఉంది, మరియు మీరు దాని చరిత్రని చూడలేరు.",
+	"abusefilter-history-error-hidden": "మీరు అభ్యర్థించిన వడపోత దాచబడి ఉంది. మీరు దాని చరిత్రని చూడజాలరు.",
 	"abusefilter-exception-unexpectedatend": "$1 వ అక్షరం దగ్గర \"$2\" ని ఊహించలేదు.",
 	"abusefilter-exception-expectednotfound": "$1 అక్షరం వద్ద $2 ఉండాలి, కానీ లేదు (దానిబదులుగా $3 $4 ఉంది).",
 	"abusefilter-exception-unrecognisedkeyword": "$1వ అక్షరం వద్ద గుర్తుతెలియని కీపదం $2.",
