@@ -292,15 +292,14 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				}
 				$array = $this->getVarValue( $varName );
 
-				$value = $this->evalNode( $value );
+				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
+					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
+				}
+
+				$offset = $this->evalNode( $offset )->toInt();
+
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
-					if ( $array->getType() !== AFPData::DARRAY ) {
-						throw new AFPUserVisibleException( 'notarray', $node->position, [] );
-					}
-
-					$offset = $this->evalNode( $offset )->toInt();
-
 					$array = $array->toArray();
 					if ( count( $array ) <= $offset ) {
 						throw new AFPUserVisibleException( 'outofbounds', $node->position,
@@ -309,8 +308,11 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 						throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
 					}
 
+					$value = $this->evalNode( $value );
 					$array[$offset] = $value;
 					$this->setUserVariable( $varName, new AFPData( AFPData::DARRAY, $array ) );
+				} else {
+					$value = $this->evalNode( $value );
 				}
 
 				return $value;
