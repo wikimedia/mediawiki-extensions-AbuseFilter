@@ -159,6 +159,7 @@
 	"abusefilter-list-options-search-like": "Plain query",
 	"abusefilter-list-options-search-rlike": "Regular expression",
 	"abusefilter-list-options-search-irlike": "Case-insensitive regular expression",
+	"abusefilter-list-invalid-searchmode": "The specified search mode is not valid.",
 	"abusefilter-list-regexerror": "An error has occurred while searching: Regular expression syntax error.",
 	"abusefilter-list-options-submit": "Update",
 	"abusefilter-tools-text": "Here are some tools which may be useful in formulating and debugging abuse filters.",

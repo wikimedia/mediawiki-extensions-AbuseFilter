@@ -21,23 +21,33 @@ class AbuseFilterPager extends TablePager {
 	 */
 	public $mConds;
 	/**
-	 * @var string[] Info used for searching patterns. The first element is the specified pattern,
-	 *   the second is the search mode (LIKE, RLIKE or IRLIKE)
+	 * @var string The pattern being searched
 	 */
-	public $mQuery;
+	private $mSearchPattern;
+	/**
+	 * @var string The pattern search mode (LIKE, RLIKE or IRLIKE)
+	 */
+	private $mSearchMode;
 
 	/**
 	 * @param AbuseFilterViewList $page
 	 * @param array $conds
 	 * @param LinkRenderer $linkRenderer
-	 * @param array $query
+	 * @param string $searchPattern Empty string if no pattern was specified
+	 * @param string $searchMode
 	 */
-	public function __construct( AbuseFilterViewList $page, $conds, LinkRenderer $linkRenderer,
-		$query ) {
+	public function __construct(
+		AbuseFilterViewList $page,
+		$conds,
+		LinkRenderer $linkRenderer,
+		string $searchPattern,
+		string $searchMode
+	) {
 		$this->mPage = $page;
 		$this->mConds = $conds;
 		$this->linkRenderer = $linkRenderer;
-		$this->mQuery = $query;
+		$this->mSearchPattern = $searchPattern;
+		$this->mSearchMode = $searchMode;
 		parent::__construct( $this->mPage->getContext() );
 	}
 
@@ -69,6 +79,61 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
+	 * @inheritDoc
+	 * This is the same as the parent implementation if no search pattern was specified.
+	 * Otherwise, it does a query with no limit and then slices the results à la ContribsPager.
+	 */
+	public function reallyDoQuery( $offset, $limit, $order ) {
+		if ( !strlen( $this->mSearchPattern ) ) {
+			return parent::reallyDoQuery( $offset, $limit, $order );
+		}
+
+		list( $tables, $fields, $conds, $fname, $options, $join_conds ) =
+			$this->buildQueryInfo( $offset, $limit, $order );
+
+		unset( $options['LIMIT'] );
+		$res = $this->mDb->select( $tables, $fields, $conds, $fname, $options, $join_conds );
+
+		$filtered = [];
+		foreach ( $res as $row ) {
+			if ( $this->matchesPattern( $row->af_pattern ) ) {
+				$filtered[ $row->af_id ] = $row;
+			}
+		}
+
+		// sort results and enforce limit like ContribsPager
+		if ( $order === self::QUERY_ASCENDING ) {
+			ksort( $filtered );
+		} else {
+			krsort( $filtered );
+		}
+		$filtered = array_slice( $filtered, 0, $limit );
+		$filtered = array_values( $filtered );
+		return new FakeResultWrapper( $filtered );
+	}
+
+	/**
+	 * Check whether $subject matches the given $pattern.
+	 *
+	 * @param string $subject
+	 * @return bool
+	 * @throws LogicException
+	 */
+	private function matchesPattern( $subject ) {
+		$pattern = $this->mSearchPattern;
+		switch ( $this->mSearchMode ) {
+			case 'RLIKE':
+				return (bool)preg_match( "/$pattern/u", $subject );
+			case 'IRLIKE':
+				return (bool)preg_match( "/$pattern/ui", $subject );
+			case 'LIKE':
+				return mb_stripos( $subject, $pattern ) !== false;
+			default:
+				throw new LogicException( "Unknown search type {$this->mSearchMode}" );
+		}
+	}
+
+	/**
 	 * @see Pager::getFieldNames()
 	 * @return array
 	 */
@@ -93,7 +158,7 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( AbuseFilter::canViewPrivate( $user ) && !empty( $this->mQuery[0] ) ) {
+		if ( AbuseFilter::canViewPrivate( $user ) && $this->mSearchPattern !== '' ) {
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
 
@@ -125,60 +190,7 @@ class AbuseFilterPager extends TablePager {
 					$lang->formatNum( intval( $value ) )
 				);
 			case 'af_pattern':
-				if ( $this->mQuery[1] === 'LIKE' ) {
-					$position = mb_stripos( $row->af_pattern, $this->mQuery[0] );
-					if ( $position === false ) {
-						// This may happen due to problems with character encoding
-						// which aren't easy to solve
-						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50 ) );
-					}
-					$length = mb_strlen( $this->mQuery[0] );
-				} else {
-					$regex = '/' . $this->mQuery[0] . '/u';
-					if ( $this->mQuery[1] === 'IRLIKE' ) {
-						$regex .= 'i';
-					}
-
-					$matches = [];
-					Wikimedia\suppressWarnings();
-					$check = preg_match(
-						$regex,
-						$row->af_pattern,
-						$matches
-					);
-					Wikimedia\restoreWarnings();
-					// This may happen in case of catastrophic backtracking
-					if ( $check === false ) {
-						return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50 ) );
-					}
-
-					$length = mb_strlen( $matches[0] );
-					$position = mb_strpos( $row->af_pattern, $matches[0] );
-				}
-
-				$remaining = 50 - $length;
-				if ( $remaining <= 0 ) {
-					// Truncate the filter pattern and only show the first 50 characters of the match
-					$pattern = '<b>' .
-						htmlspecialchars( mb_substr( $row->af_pattern, $position, 50 ) ) .
-						'</b>';
-				} else {
-					// Center the snippet on the matched string
-					$minoffset = max( $position - round( $remaining / 2 ), 0 );
-					$pattern = mb_substr( $row->af_pattern, $minoffset, 50 );
-					$pattern =
-						htmlspecialchars( mb_substr( $pattern, 0, $position - $minoffset ) ) .
-						'<b>' .
-						htmlspecialchars( mb_substr( $pattern, $position - $minoffset, $length ) ) .
-						'</b>' .
-						htmlspecialchars( mb_substr(
-							$pattern,
-							$position - $minoffset + $length,
-							$remaining - ( $position - $minoffset + $length )
-							)
-						);
-				}
-				return $pattern;
+				return $this->getHighlightedPattern( $row );
 			case 'af_public_comments':
 				return $this->linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
@@ -257,12 +269,71 @@ class AbuseFilterPager extends TablePager {
 						)
 					)->params(
 						wfEscapeWikiText( $row->af_user_text )
-				)->parse();
+					)->parse();
 			case 'af_group':
 				return AbuseFilter::nameGroup( $value );
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}
+	}
+
+	/**
+	 * Get the filter pattern with <b> elements surrounding the searched pattern
+	 *
+	 * @param stdClass $row
+	 * @return string
+	 */
+	private function getHighlightedPattern( stdClass $row ) {
+		$maxLen = 50;
+		if ( $this->mSearchMode === 'LIKE' ) {
+			$position = mb_stripos( $row->af_pattern, $this->mSearchPattern );
+			$length = mb_strlen( $this->mSearchPattern );
+		} else {
+			$regex = '/' . $this->mSearchPattern . '/u';
+			if ( $this->mSearchMode === 'IRLIKE' ) {
+				$regex .= 'i';
+			}
+
+			$matches = [];
+			Wikimedia\suppressWarnings();
+			$check = preg_match(
+				$regex,
+				$row->af_pattern,
+				$matches
+			);
+			Wikimedia\restoreWarnings();
+			// This may happen in case of catastrophic backtracking, or regexps matching
+			// the empty string.
+			if ( $check === false || strlen( $matches[0] ) === 0 ) {
+				return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50 ) );
+			}
+
+			$length = mb_strlen( $matches[0] );
+			$position = mb_strpos( $row->af_pattern, $matches[0] );
+		}
+
+		$remaining = $maxLen - $length;
+		if ( $remaining <= 0 ) {
+			$pattern = '<b>' .
+				htmlspecialchars( mb_substr( $row->af_pattern, $position, $maxLen ) ) .
+				'</b>';
+		} else {
+			// Center the snippet on the matched string
+			$minoffset = max( $position - round( $remaining / 2 ), 0 );
+			$pattern = mb_substr( $row->af_pattern, $minoffset, $maxLen );
+			$pattern =
+				htmlspecialchars( mb_substr( $pattern, 0, $position - $minoffset ) ) .
+				'<b>' .
+				htmlspecialchars( mb_substr( $pattern, $position - $minoffset, $length ) ) .
+				'</b>' .
+				htmlspecialchars( mb_substr(
+						$pattern,
+						$position - $minoffset + $length,
+						$remaining - ( $position - $minoffset + $length )
+					)
+				);
+		}
+		return $pattern;
 	}
 
 	/**

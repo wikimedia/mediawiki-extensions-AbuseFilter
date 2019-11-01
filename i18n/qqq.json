@@ -193,6 +193,7 @@
 	"abusefilter-list-options-search-like": "Radio button label in filter form.",
 	"abusefilter-list-options-search-rlike": "Radio button label in filter form. See [[w:en:regular expression]]",
 	"abusefilter-list-options-search-irlike": "Radio button label in filter form. See [[w:en:regular expression]]",
+	"abusefilter-list-invalid-searchmode": "Error message text.",
 	"abusefilter-list-regexerror": "Error message text.",
 	"abusefilter-list-options-submit": "Submit button text in filter form to update a filtered list.\n{{Identical|Update}}",
 	"abusefilter-tools-text": "Introduction test for abuse filter tools.",
