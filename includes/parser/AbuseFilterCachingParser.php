@@ -285,7 +285,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::INDEX_ASSIGNMENT:
 				list( $varName, $offset, $value ) = $node->children;
 
-				if ( $this->isBuiltinVar( $varName ) ) {
+				if ( $this->isReservedIdentifier( $varName ) ) {
 					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
 				}
 				$array = $this->getVarValue( $varName );
@@ -316,7 +316,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			case AFPTreeNode::ARRAY_APPEND:
 				list( $varName, $value ) = $node->children;
 
-				if ( $this->isBuiltinVar( $varName ) ) {
+				if ( $this->isReservedIdentifier( $varName ) ) {
 					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
 				}
 
