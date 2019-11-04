@@ -505,6 +505,8 @@ class AbuseFilterParser {
 						if ( count( $array->toArray() ) <= $idx ) {
 							throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
 								[ $idx, count( $array->getData() ) ] );
+						} elseif ( $idx < 0 ) {
+							throw new AFPUserVisibleException( 'negativeindex', $this->mCur->pos, [ $idx ] );
 						}
 					}
 				}
@@ -905,6 +907,8 @@ class AbuseFilterParser {
 				if ( count( $result->getData() ) <= $idx ) {
 					throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
 						[ $idx, count( $result->getData() ) ] );
+				} elseif ( $idx < 0 ) {
+					throw new AFPUserVisibleException( 'negativeindex', $this->mCur->pos, [ $idx ] );
 				}
 				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable Guaranteed to be array
 				$result = $result->getData()[$idx];

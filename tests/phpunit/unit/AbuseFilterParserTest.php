@@ -361,6 +361,34 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
+	 * Test the 'negativeindex' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @param string $caller The function where the exception is thrown
+	 * @dataProvider negativeIndex
+	 */
+	public function testNegativeIndexException( $expr, $caller ) {
+		$this->exceptionTest( 'negativeindex', $expr, $caller );
+		$this->exceptionTestInSkippedBlock( 'negativeindex', $expr, $caller );
+	}
+
+	/**
+	 * Data provider for testNegativeIndexException
+	 * The second parameter is the function where the exception is raised.
+	 * One expression for each throw.
+	 *
+	 * @return array
+	 */
+	public function negativeIndex() {
+		return [
+			[ '[0][-1]', '' ],
+			[ "x := ['foo']; x[-1]", '' ],
+			[ "x := ['foo']; x[-1] := 2; x[-1] == 2", '' ],
+			[ "x := ['foo']; x[-5] := 2;", '' ]
+		];
+	}
+
+	/**
 	 * Test the 'unrecognisedkeyword' exception
 	 *
 	 * @param string $expr The expression to test

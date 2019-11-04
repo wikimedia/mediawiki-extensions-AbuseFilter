@@ -186,6 +186,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				if ( count( $array ) <= $offset ) {
 					throw new AFPUserVisibleException( 'outofbounds', $node->position,
 						[ $offset, count( $array ) ] );
+				} elseif ( $offset < 0 ) {
+					throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
 				}
 
 				return $array[$offset];
@@ -314,6 +316,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					if ( count( $array ) <= $offset ) {
 						throw new AFPUserVisibleException( 'outofbounds', $node->position,
 							[ $offset, count( $array ) ] );
+					} elseif ( $offset < 0 ) {
+						throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
 					}
 
 					$array[$offset] = $value;
