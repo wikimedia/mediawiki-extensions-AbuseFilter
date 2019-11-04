@@ -183,6 +183,7 @@
 	"abusefilter-list-options-search-like": "Proste zapytanie",
 	"abusefilter-list-options-search-rlike": "Wyrażenie regularne",
 	"abusefilter-list-options-search-irlike": "Wyrażenie regularne niewrażliwe na wielkość liter",
+	"abusefilter-list-invalid-searchmode": "Wybrany tryb wyszukiwania jest nieprawidłowy.",
 	"abusefilter-list-regexerror": "Wystąpił błąd podczas wyszukiwania: Błąd składni wyrażenia regularnego.",
 	"abusefilter-list-options-submit": "Aktualizuj",
 	"abusefilter-tools-text": "Oto kilka narzędzi, które mogą być przydatne w opracowywaniu i śledzeniu pracy filtrów nadużyć.",

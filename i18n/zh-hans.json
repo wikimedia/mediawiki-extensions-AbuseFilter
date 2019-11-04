@@ -54,7 +54,8 @@
 			"佛壁灯",
 			"VulpesVulpes825",
 			"Looong",
-			"Xiplus"
+			"Xiplus",
+			"飞舞回堂前"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -70,7 +71,7 @@
 	"abusefilter-blocker": "滥用过滤器",
 	"abusefilter-blockreason": "被滥用过滤器自动封禁。匹配的规则的说明：$1",
 	"abusefilter-degroupreason": "权限被滥用过滤器自动剥夺。规则说明：$1",
-	"abusefilter-blockautopromotereason": "自动提示功能在滥用过滤器的时候会被自动延迟显示。\n规则描述:$1",
+	"abusefilter-blockautopromotereason": "自动提升被滥用过滤器自动延迟。规则描述：$1",
 	"abusefilter-accountreserved": "此帐户已由防滥用过滤器保留使用。",
 	"right-abusefilter-modify": "修改防滥用过滤器",
 	"right-abusefilter-view": "查看滥用过滤器",

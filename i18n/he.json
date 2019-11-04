@@ -171,6 +171,7 @@
 	"abusefilter-list-options-search-like": "שאילתה רגילה",
 	"abusefilter-list-options-search-rlike": "ביטוי רגולרי",
 	"abusefilter-list-options-search-irlike": "ביטוי רגולרי שאינו תלוי־רישיות",
+	"abusefilter-list-invalid-searchmode": "מצב החיפוש שצוין אינו תקין.",
 	"abusefilter-list-regexerror": "אירעה שגיאה בעת החיפוש: שגיאה בתחביר הביטוי הרגולרי.",
 	"abusefilter-list-options-submit": "עדכון",
 	"abusefilter-tools-text": "להלן מספר כלים שעשויים להיות שימושיים בניסוח ובניפוי השגיאות של מסנני ההשחתות.",

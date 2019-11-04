@@ -178,6 +178,7 @@
 	"abusefilter-list-options-search-like": "순수 쿼리",
 	"abusefilter-list-options-search-rlike": "정규 표현식",
 	"abusefilter-list-options-search-irlike": "대소문자 구별을 하지 않는 정규 표현식",
+	"abusefilter-list-invalid-searchmode": "지정된 검색 모드는 유효하지 않습니다.",
 	"abusefilter-list-regexerror": "검색 중 오류가 발생했습니다: 정규 표현식 문법 오류.",
 	"abusefilter-list-options-submit": "적용",
 	"abusefilter-tools-text": "편집 필터를 제작하고 디버그하는 데 유용한 도구입니다.",

@@ -162,6 +162,7 @@
 	"abusefilter-list-options-search-like": "Prosto pretraživanje",
 	"abusefilter-list-options-search-rlike": "Regularni izraz",
 	"abusefilter-list-options-search-irlike": "Veličinskorazličivački regularni izraz",
+	"abusefilter-list-invalid-searchmode": "Ukazani način bretrage je nevažeći.",
 	"abusefilter-list-regexerror": "Došlo je do greške pri pretraživanju: Greška u sintaksi regularnog izraza.",
 	"abusefilter-list-options-submit": "Ažuriraj",
 	"abusefilter-tools-text": "Ovde se nalaze alatke koje su korisne za ispravljanje grešaka na filteru protiv zloupotrebe.",

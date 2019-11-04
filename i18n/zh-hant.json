@@ -193,6 +193,7 @@
 	"abusefilter-list-options-search-like": "純文字查詢",
 	"abusefilter-list-options-search-rlike": "正規表達式",
 	"abusefilter-list-options-search-irlike": "不區分大小寫的正規表達式",
+	"abusefilter-list-invalid-searchmode": "指定的搜尋模式無效。",
 	"abusefilter-list-regexerror": "搜尋時發生錯誤：正規表達式語法錯誤。",
 	"abusefilter-list-options-submit": "更新",
 	"abusefilter-tools-text": "本頁提供可協助您製訂與檢測防濫用過濾器的工具。",

@@ -185,6 +185,7 @@
 	"abusefilter-list-options-search-like": "Consulta simples",
 	"abusefilter-list-options-search-rlike": "Expressão regular",
 	"abusefilter-list-options-search-irlike": "Expressão regular insensível a maiúsculas",
+	"abusefilter-list-invalid-searchmode": "O modo de pesquisa especificado não é válido.",
 	"abusefilter-list-regexerror": "Ocorreu um erro durante a pesquisa: Erro de sintaxe de expressão regular.",
 	"abusefilter-list-options-submit": "Atualizar",
 	"abusefilter-tools-text": "Aqui estão algumas ferramentas que poderão ser úteis na formulação e depuração dos filtros de abuso.",

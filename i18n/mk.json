@@ -162,6 +162,7 @@
 	"abusefilter-list-options-search-like": "Просто пребарување",
 	"abusefilter-list-options-search-rlike": "Регуларен израз",
 	"abusefilter-list-options-search-irlike": "Големинскоразликувачки регуларен израз",
+	"abusefilter-list-invalid-searchmode": "Укажаниот начин на бребарување е неважечки.",
 	"abusefilter-list-regexerror": "Се појави грешка при пребарувањето: Грешка во синтаксата на регуларниот израз.",
 	"abusefilter-list-options-submit": "Поднови",
 	"abusefilter-tools-text": "Еве некои алатки кои можат да помогнат со форматирање и отстранување грешки во филтрите за злоупотреби.",

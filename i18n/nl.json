@@ -27,7 +27,8 @@
 			"Kippenvlees1",
 			"Bdijkstra",
 			"Xbaked potatox",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"Elroy"
 		]
 	},
 	"abusefilter-desc": "Voert automatisch heuristische analyse uit op bewerkingen",
@@ -181,6 +182,7 @@
 	"abusefilter-list-options-searchoptions": "Zoekmodus:",
 	"abusefilter-list-options-search-rlike": "Reguliere expressie",
 	"abusefilter-list-options-search-irlike": "Hoofdletter-ongevoelige reguliere expressie",
+	"abusefilter-list-invalid-searchmode": "De opgegeven zoekmodus is ongeldig.",
 	"abusefilter-list-regexerror": "Er trad een fout op tijdens het zoeken: Syntaxfout in de reguliere expressie.",
 	"abusefilter-list-options-submit": "Bijwerken",
 	"abusefilter-tools-text": "Dit zijn een aantal hulpmiddelen die van pas kunnen komen bij het formuleren en debuggen van filters.",

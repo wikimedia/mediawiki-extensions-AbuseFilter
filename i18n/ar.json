@@ -182,6 +182,7 @@
 	"abusefilter-list-options-search-like": "استعلام عادي",
 	"abusefilter-list-options-search-rlike": "تعبير نمطي",
 	"abusefilter-list-options-search-irlike": "تعبير نمطي غير حساس لحالة الأحرف",
+	"abusefilter-list-invalid-searchmode": "وضع البحث المحدد غير صالح.",
 	"abusefilter-list-regexerror": "حدث خطأ أثناء البحث: خطأ في صياغة التعبير النمطي.",
 	"abusefilter-list-options-submit": "تحديث",
 	"abusefilter-tools-text": "هنا بعض الأدوات التي ربما تكون مفيدة في صياغة وتصليح مرشحات الإساءة.",

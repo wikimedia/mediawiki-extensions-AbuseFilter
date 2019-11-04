@@ -162,6 +162,7 @@
 	"abusefilter-list-options-search-like": "'Nderrogazione semblice",
 	"abusefilter-list-options-search-rlike": "Espressione regolare",
 	"abusefilter-list-options-search-irlike": "Espressione regolare senze penzà a maiuscole e minuscole",
+	"abusefilter-list-invalid-searchmode": "'U mode de recerche specificate non g'è valide.",
 	"abusefilter-list-regexerror": "Ave assute 'n'errore duranne 'a recerche: errore de sindasse jndr'à l'espressione regolare.",
 	"abusefilter-list-options-submit": "Aggiorne",
 	"abusefilter-tools-text": "Aqquà se iacchiene quacche strumènde ca pòtene essere utile jndr'à formulazziune e jndr'ô debugging de le filtre de le abbuse.",
