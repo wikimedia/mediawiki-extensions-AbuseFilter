@@ -189,8 +189,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		if ( $history_id ) {
+			$oldWarningMessage = AbuseFilter::canEditFilter( $user, $row )
+				? 'abusefilter-edit-oldwarning'
+				: 'abusefilter-view-oldwarning';
 			$out->addWikiMsg(
-				'abusefilter-edit-oldwarning', $history_id, $filter );
+				$oldWarningMessage,
+				$history_id,
+				$filter
+			);
 		}
 
 		if ( $error ) {
@@ -458,8 +464,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addHTML( $form );
 
 		if ( $history_id ) {
-			$out->addWikiMsg(
-				'abusefilter-edit-oldwarning', $history_id, $filter );
+			$out->addWikiMsg( $oldWarningMessage, $history_id, $filter );
 		}
 	}
 
