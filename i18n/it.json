@@ -465,7 +465,7 @@
 	"abusefilter-exception-toomanyargs": "Troppi parametri passati alla funzione $2 chiamata al carattere $1.\n{{PLURAL:$3|Previsto|Previsti}} al più $3 {{PLURAL:$3|parametro|parametri}}, ricevuti $4",
 	"abusefilter-exception-regexfailure": "Errore nell'espressione regolare \"$2\" al carattere $1.",
 	"abusefilter-exception-overridebuiltin": "Sovrascrittura illegale di variabile predefinita \"$2\" al carattere $1.",
-	"abusefilter-exception-outofbounds": "Richiesta di voce inesistente dell'array $2 (dimensione array = $3) al carattere $1.",
+	"abusefilter-exception-outofbounds": "Richiesta di elemento inesistente dell'array $2 (dimensione array = $3) al carattere $1.",
 	"abusefilter-exception-notarray": "Richiesta di un elemento di array da un non array al carattere $1.",
 	"abusefilter-exception-unclosedcomment": "Commento non chiuso in corrispondenza del carattere $1.",
 	"abusefilter-exception-invalidiprange": "Intervallo IP \"$2\" non valido al carattere $1",

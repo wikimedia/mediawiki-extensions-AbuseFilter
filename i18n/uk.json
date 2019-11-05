@@ -180,6 +180,7 @@
 	"abusefilter-list-options-search-like": "Простий запит",
 	"abusefilter-list-options-search-rlike": "Регулярний вираз",
 	"abusefilter-list-options-search-irlike": "Нечутливий до регістру регулярний вираз",
+	"abusefilter-list-invalid-searchmode": "Вказано недопустимий режим пошуку.",
 	"abusefilter-list-regexerror": "Сталася помилка при пошуку: синтаксична помилка регулярного виразу.",
 	"abusefilter-list-options-submit": "Оновити",
 	"abusefilter-tools-text": "Тут є деякі засоби, які можуть пригодитися у формулюванні та налагодженні фільтрів редагувань.",
