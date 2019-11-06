@@ -301,6 +301,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'a[1] := 5', 'getVarValue' ],
 			[ 'a[] := 5', 'getVarValue' ],
 			[ 'a = 5', 'getVarValue' ],
+			[ 'timestamp[a]', 'getVarValue' ],
+			[ 'x := []; x[a] := 1', 'getVarValue' ],
 		];
 	}
 

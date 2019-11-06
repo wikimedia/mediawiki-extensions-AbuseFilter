@@ -171,6 +171,9 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				list( $array, $offset ) = $node->children;
 
 				$array = $this->evalNode( $array );
+				// Note: we MUST evaluate the offset to ensure it is valid, regardless
+				// of $array!
+				$offset = $this->evalNode( $offset )->toInt();
 
 				if ( $array->getType() === AFPData::DUNDEFINED ) {
 					return new AFPData( AFPData::DUNDEFINED );
@@ -179,8 +182,6 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				if ( $array->getType() !== AFPData::DARRAY ) {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
-
-				$offset = $this->evalNode( $offset )->toInt();
 
 				$array = $array->toArray();
 				if ( count( $array ) <= $offset ) {
