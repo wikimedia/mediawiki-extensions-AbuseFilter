@@ -431,7 +431,13 @@ class AFPData {
 	 * @return int|float
 	 */
 	public function toNumber() {
-		return $this->type === self::DINT ? $this->toInt() : $this->toFloat();
+		// Types that can be cast to int
+		$intLikeTypes = [
+			self::DINT,
+			self::DBOOL,
+			self::DNULL
+		];
+		return in_array( $this->type, $intLikeTypes, true ) ? $this->toInt() : $this->toFloat();
 	}
 
 	/**
