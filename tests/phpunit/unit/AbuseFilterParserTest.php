@@ -1167,7 +1167,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'get_matches( "(", new_wikitext )', 'regexfailure' ],
 			[ 'added_lines contains string(3/0)', 'dividebyzero' ],
 			[ 'norm(new_text) irlike ")"', 'regexfailure' ],
-			[ 'ip_in_range( user_name, "foobar" )', 'invalidiprange' ]
+			[ 'ip_in_range( user_name, "foobar" )', 'invalidiprange' ],
+			[ 'timestamp % 0', 'dividebyzero' ],
+			[ 'timestamp / 0.0', 'dividebyzero' ],
 		];
 	}
 }

@@ -303,15 +303,24 @@ class AFPData {
 	 * @throws AFPException
 	 */
 	public function mulRel( AFPData $b, $op, $pos ) {
-		if ( $this->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
+		if ( $b->type === self::DUNDEFINED ) {
+			// The LHS type is checked later, because we first need to ensure we're not
+			// dividing or taking modulo by 0 (and that should throw regardless of whether
+			// the LHS is undefined).
 			return new AFPData( self::DUNDEFINED );
 		}
-		$a = $this->toNumber();
+
 		$b = $b->toNumber();
 
 		if ( $op !== '*' && (float)$b === 0.0 ) {
-			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $a ] );
+			$lhs = $this->type === self::DUNDEFINED ? 0 : $this->toNumber();
+			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $lhs ] );
 		}
+
+		if ( $this->type === self::DUNDEFINED ) {
+			return new AFPData( self::DUNDEFINED );
+		}
+		$a = $this->toNumber();
 
 		if ( $op === '*' ) {
 			$data = $a * $b;
