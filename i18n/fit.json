@@ -4,7 +4,9 @@
 			"Pyscowicz"
 		]
 	},
+	"abusefilter-log-detailslink": "tarkat tiot",
 	"abusefilter-throttle-user": "käyttäjäkonttu",
 	"abusefilter-history-foruser": "Käyttäjän $1 mookkaukset",
+	"abusefilter-diff-info": "Perustiot",
 	"abusefilter-group-default": "Ylheinen"
 }

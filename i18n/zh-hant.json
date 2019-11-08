@@ -477,6 +477,7 @@
 	"abusefilter-exception-regexfailure": "於第 $1 個字元處的正規表示法「$2」錯誤。",
 	"abusefilter-exception-overridebuiltin": "於第 $1 個字元處非法覆蓋內建的變數 \"$2\"。",
 	"abusefilter-exception-outofbounds": "於第 $1 個字元處使用了不存在的陣列項目 $2（陣列大小 = $3）。",
+	"abusefilter-exception-negativeindex": "陣列裡不允許負值索引，在位置$1的字元出現為「$2」的索引。",
 	"abusefilter-exception-notarray": "於第 $1 個字元處於非陣列中使用了陣列項目。",
 	"abusefilter-exception-unclosedcomment": "在第 $1 字元有未關閉評論。",
 	"abusefilter-exception-invalidiprange": "在字元 $1 提供了無效 IP 範圍 \"$2\"。",

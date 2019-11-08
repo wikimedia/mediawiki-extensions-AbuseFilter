@@ -466,6 +466,7 @@
 	"abusefilter-exception-regexfailure": "خطأ في التعبير المنتظم \"$2\" عند الحرف $1.",
 	"abusefilter-exception-overridebuiltin": "تجاوز غير قانوني لمتغير موجود مسبقا \"$2\" عند الحرف $1.",
 	"abusefilter-exception-outofbounds": "طلب عنصر مصفوفة غير موجود $2 (حجم المصفوفة = $3) عند الحرف $1.",
+	"abusefilter-exception-negativeindex": "المؤشرات السالبة غير مسموح بها في المصفوفات، حصلت على المؤشر \"$2\" في الحرف $1.",
 	"abusefilter-exception-notarray": "طلب مدخلة مصفوفة لغير مصفوفة عند الحرف $1.",
 	"abusefilter-exception-unclosedcomment": "تعليق غير مغلق في الحرف $1.",
 	"abusefilter-exception-invalidiprange": "نطاق عنوان أيبي غير صالح \"$2\" متوفر بالحرف $1.",
