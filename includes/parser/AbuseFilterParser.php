@@ -836,7 +836,6 @@ class AbuseFilterParser {
 		if ( $this->mCur->type === AFPToken::TKEYWORD
 			&& isset( self::$mKeywords[$keyword] )
 		) {
-			$func = self::$mKeywords[$keyword];
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
 			$this->doLevelUnarys( $r2 );
@@ -850,14 +849,7 @@ class AbuseFilterParser {
 				return;
 			}
 
-			if ( $result->getType() === AFPData::DUNDEFINED || $r2->getType() === AFPData::DUNDEFINED ) {
-				$result = new AFPData( AFPData::DUNDEFINED );
-			} else {
-				$this->raiseCondCount();
-
-				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-				$result = $this->$func( $result, $r2, $this->mCur->pos );
-			}
+			$result = $this->callKeyword( $keyword, $result, $r2 );
 		}
 	}
 
@@ -1277,6 +1269,28 @@ class AbuseFilterParser {
 			// @codeCoverageIgnoreStart
 			$this->clearFuncCache();
 			// @codeCoverageIgnoreEnd
+		}
+		return $result;
+	}
+
+	/**
+	 * Helper to invoke a built-in keyword. Note that this assumes that $kname is
+	 * a valid keyword name.
+	 *
+	 * @param string $kname
+	 * @param AFPData $lhs
+	 * @param AFPData $rhs
+	 * @return AFPData
+	 */
+	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs ) : AFPData {
+		$func = self::$mKeywords[$kname];
+
+		if ( $lhs->getType() === AFPData::DUNDEFINED || $rhs->getType() === AFPData::DUNDEFINED ) {
+			return new AFPData( AFPData::DUNDEFINED );
+		} else {
+			$this->raiseCondCount();
+			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
+			$result = $this->$func( $lhs, $rhs, $this->mCur->pos );
 		}
 		return $result;
 	}

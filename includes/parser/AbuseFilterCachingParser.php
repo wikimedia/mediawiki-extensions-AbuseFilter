@@ -202,23 +202,10 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 
 			case AFPTreeNode::KEYWORD_OPERATOR:
 				list( $keyword, $leftOperand, $rightOperand ) = $node->children;
-				$func = self::$mKeywords[$keyword];
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
 
-				if (
-					$leftOperand->getType() === AFPData::DUNDEFINED ||
-					$rightOperand->getType() === AFPData::DUNDEFINED
-				) {
-					$result = new AFPData( AFPData::DUNDEFINED );
-				} else {
-					$this->raiseCondCount();
-
-					// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-					$result = $this->$func( $leftOperand, $rightOperand, $node->position );
-				}
-
-				return $result;
+				return $this->callKeyword( $keyword, $leftOperand, $rightOperand );
 			case AFPTreeNode::BOOL_INVERT:
 				list( $argument ) = $node->children;
 				$argument = $this->evalNode( $argument );
