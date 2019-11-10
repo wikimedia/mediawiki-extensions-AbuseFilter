@@ -312,7 +312,10 @@ class AFPData {
 
 		$b = $b->toNumber();
 
-		if ( $op !== '*' && (float)$b === 0.0 ) {
+		if (
+			( $op === '/' && (float)$b === 0.0 ) ||
+			( $op === '%' && (int)$b === 0 )
+		) {
 			$lhs = $this->type === self::DUNDEFINED ? 0 : $this->toNumber();
 			throw new AFPUserVisibleException( 'dividebyzero', $pos, [ $lhs ] );
 		}

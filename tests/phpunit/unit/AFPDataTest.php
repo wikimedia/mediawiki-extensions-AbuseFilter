@@ -50,7 +50,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Data provider for testRegexFailureException
+	 * Data provider for testDivideByZeroException
 	 * The second parameter is the function where the exception is raised.
 	 * One expression for each throw.
 	 *
@@ -60,6 +60,11 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 		return [
 			[ '1/0', 'mulRel' ],
 			[ '1/0.0', 'mulRel' ],
+			[ '1/(-0.0)', 'mulRel' ],
+			[ '1%0', 'mulRel' ],
+			[ '1%0.0', 'mulRel' ],
+			[ '1%0.3', 'mulRel' ],
+			[ '1%(-0.7)', 'mulRel' ],
 		];
 	}
 
