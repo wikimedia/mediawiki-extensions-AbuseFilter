@@ -446,6 +446,7 @@
 	"abusefilter-exception-regexfailure": "Грешка во регуларниот израз „$2“ кај знакот $1.",
 	"abusefilter-exception-overridebuiltin": "Недозволено поклопување на вградена променлива „$2“ кај знакот $1.",
 	"abusefilter-exception-outofbounds": "Барање за непостоечка ставка во стројот $2 (големина на стројот = $3) кај знакот $1.",
+	"abusefilter-exception-negativeindex": "Негативните индекси не се дозволени во низите. Добив индекс „$2“ во знакот $1.",
 	"abusefilter-exception-notarray": "Барање на елемент од стројот за објект кој не е строј кај знакот $1.",
 	"abusefilter-exception-unclosedcomment": "Незатворена прибелешка кај знакот $1.",
 	"abusefilter-exception-invalidiprange": "Укажан неважечки IP-опсег „$2“ кај знакот $1.",

@@ -482,6 +482,7 @@
 	"abusefilter-exception-regexfailure": "Erreur dans l'expression régulière « $2 » au caractère $1 .",
 	"abusefilter-exception-overridebuiltin": "Écrasement interdit de la variable disponible par défaut « $2 » au caractère $1.",
 	"abusefilter-exception-outofbounds": "Demande d’élément de tableau $2 inexistant (taille du tableau = $3) au caractère $1.",
+	"abusefilter-exception-negativeindex": "Les indices négatifs ne sont pas autorisés dans les tableaux. Indice « $2 » obtenu au caractère $1.",
 	"abusefilter-exception-notarray": "Demande d'un élément de tableau appliquée à un non-tableau au caractère $1.",
 	"abusefilter-exception-unclosedcomment": "Commentaire non fermé au caractère $1.",
 	"abusefilter-exception-invalidiprange": "Intervalle d'adresses IP fourni invalide \"$2\" au caractère $1.",

@@ -454,6 +454,7 @@
 	"abusefilter-exception-regexfailure": "שגיאה בביטוי הרגולרי \"$2\" בתו מספר $1.",
 	"abusefilter-exception-overridebuiltin": "דריסה בלתי־תקינה של המשתנה המובנה \"$2\" בתו מספר $1.",
 	"abusefilter-exception-outofbounds": "בקשת פריט מערך בלתי קיים $2 (גודל המערך = $3) בתו מספר $1.",
+	"abusefilter-exception-negativeindex": "אינדקסים שליליים אינם מותרים במערכים. הגיע אינדקס \"$2\" בתו $1.",
 	"abusefilter-exception-notarray": "ביקשו פריט מערך מלא־מערך בתו מספר $1.",
 	"abusefilter-exception-unclosedcomment": "הערה בלתי־סגורה בתו מספר $1.",
 	"abusefilter-exception-invalidiprange": "טווח IP שגוי \"$2\" בתו מספר $1.",

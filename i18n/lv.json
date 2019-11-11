@@ -209,7 +209,7 @@
 	"abusefilter-edit-builder-misc-contains": "Kreisā virkne satur labo virkni (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Simbolu virkne (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Ternārs operators (X ? Y : Z)",
-	"abusefilter-edit-builder-misc-cond": "Nosacījums (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond": "Nosacījums (if X then Y else Z end)",
 	"abusefilter-edit-builder-group-funcs": "Funkcijas",
 	"abusefilter-edit-builder-funcs-length": "Virknes garums (length)",
 	"abusefilter-edit-builder-funcs-lcase": "Ar mazajiem burtiem (lcase)",

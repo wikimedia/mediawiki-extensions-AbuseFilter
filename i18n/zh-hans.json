@@ -55,7 +55,8 @@
 			"VulpesVulpes825",
 			"Looong",
 			"Xiplus",
-			"飞舞回堂前"
+			"飞舞回堂前",
+			"Ywang"
 		]
 	},
 	"abusefilter-desc": "对编辑行为自动进行条件判定",
@@ -494,6 +495,7 @@
 	"abusefilter-exception-regexfailure": "字符$1处的正则表达式“$2”存在错误。",
 	"abusefilter-exception-overridebuiltin": "字符$1处非法覆盖内建变量“$2”。",
 	"abusefilter-exception-outofbounds": "字符$1正在请求不存在的数组项$2（数组大小 = $3）。",
+	"abusefilter-exception-negativeindex": "禁止在数组中使用小于0的项目编号。在“$2”处收到项目编号“$1”。",
 	"abusefilter-exception-notarray": "字符$1正在请求非数组的数组项。",
 	"abusefilter-exception-unclosedcomment": "字符$1处有未闭合注释。",
 	"abusefilter-exception-invalidiprange": "字符$1处提供了无效的IP地址段“$2”。",

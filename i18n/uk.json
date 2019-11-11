@@ -464,6 +464,7 @@
 	"abusefilter-exception-regexfailure": "Помилка в регулярному виразі «$2» на позиції $1.",
 	"abusefilter-exception-overridebuiltin": "Недопустиме перевизначення вбудованої змінної «$2» на позиції $1.",
 	"abusefilter-exception-outofbounds": "Запит на неіснуючий елемент масиву $2 (розмір масиву = $3) на позиції $1.",
+	"abusefilter-exception-negativeindex": "Негативні індекси не дозволені у масивах. Відноситься до індексу \"$2\" на позиції $1.",
 	"abusefilter-exception-notarray": "Запит на елемент масиву для об'єкта, що не є масивом, на позиції $1.",
 	"abusefilter-exception-unclosedcomment": "Незакритий коментар на позиції $1.",
 	"abusefilter-exception-invalidiprange": "Недійсний IP-діапазон «$2», поданий на позиції $1.",

@@ -446,6 +446,7 @@
 	"abusefilter-exception-regexfailure": "Błąd w wyrażeniu regularnym „$2” na znaku $1.",
 	"abusefilter-exception-overridebuiltin": "Nielegalne nadpisanie wbudowanej zmiennej „$2” – znak $1.",
 	"abusefilter-exception-outofbounds": "Żądanie nieistniejącego elementu tablicy $2 (rozmiar tablicy = $3) – znak $1.",
+	"abusefilter-exception-negativeindex": "Ujemne indeksy są niedozwolone w tablicach. Otrzymano indeks „$2” w $1.",
 	"abusefilter-exception-notarray": "Żądanie elementu tablicy od zmiennej nietablicowej – znak $1.",
 	"abusefilter-exception-disabledvar": "Zmienna $2 przy znaku $1 nie jest już używana.",
 	"abusefilter-action-tag": "Znacznik",
