@@ -317,6 +317,7 @@
 	"abusefilter-edit-builder-misc-stringlit": "מחרוזת מילולית (\"\")",
 	"abusefilter-edit-builder-misc-tern": "האופרטור המשולש (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "תנאי (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond-short": "תנאי קצר (if X then Y end)",
 	"abusefilter-edit-builder-group-funcs": "פונקציות",
 	"abusefilter-edit-builder-funcs-length": "אורך המחרוזת (length)",
 	"abusefilter-edit-builder-funcs-lcase": "המרה לאותיות קטנות (lcase)",
