@@ -159,16 +159,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Ensure that AbuseFilterTokenizer::RADIX_RE matches the contents
-	 * and order of AbuseFilterTokenizer::$bases.
-	 */
-	public function testRadixRe() {
-		$baseClass = implode( '', array_keys( AbuseFilterTokenizer::BASES ) );
-		$radixRe = "/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([$baseClass])?(?![a-z])/Au";
-		$this->assertEquals( $radixRe, AbuseFilterTokenizer::RADIX_RE );
-	}
-
-	/**
 	 * Ensure the number of conditions counted for given expressions is right.
 	 *
 	 * @param string $rule The rule to parse

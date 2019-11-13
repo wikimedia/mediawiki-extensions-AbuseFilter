@@ -7,19 +7,15 @@ use Psr\Log\LoggerInterface;
  */
 class AbuseFilterTokenizer {
 	/** @var int Tokenizer cache version. Increment this when changing the syntax. */
-	public const CACHE_VERSION = 3;
+	public const CACHE_VERSION = 4;
 	private const COMMENT_START_RE = '/\s*\/\*/A';
 	private const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
 	public const OPERATOR_RE =
 		'/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
-	/** @deprecated In favour of V2 */
-	public const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?(?![a-z])/Au';
 	private const BASE = '0(?<base>[xbo])';
 	private const DIGIT = '[0-9A-Fa-f]';
 	private const DIGITS = self::DIGIT . '+' . '(?:\.\d*)?|\.\d+';
-	// New numbers regex. Note that the last lookahead can be changed to (?!self::DIGIT) once we
-	// drop the old syntax
-	private const RADIX_RE_V2 = '/(?:' . self::BASE . ')?(?<input>' . self::DIGITS . ')(?!\w)/Au';
+	private const RADIX_RE = '/(?:' . self::BASE . ')?(?<input>' . self::DIGITS . ')(?!\w)/Au';
 	private const WHITESPACE = "\011\012\013\014\015\040";
 
 	// Order is important. The punctuation-matching regex requires that
@@ -188,52 +184,12 @@ class AbuseFilterTokenizer {
 
 		// Numbers
 		$matchesv2 = [];
-		if ( preg_match( self::RADIX_RE_V2, $code, $matchesv2, 0, $offset ) ) {
-			// Experimental new syntax for non-decimal numbers, T212730
+		if ( preg_match( self::RADIX_RE, $code, $matchesv2, 0, $offset ) ) {
 			$token = $matchesv2[0];
 			$baseChar = $matchesv2['base'];
 			$input = $matchesv2['input'];
 			$base = $baseChar ? self::BASES[$baseChar] : 10;
 			if ( preg_match( self::BASE_CHARS_RES[$base], $input ) ) {
-				if ( $base !== 10 ) {
-					// This is to check that the new syntax is working. Remove when removing the old syntax
-					$this->logger->info(
-						'Successfully parsed a non-decimal number with new syntax. ' .
-						'Base: {number_base}, number: {number_input}',
-						[ 'number_base' => $base, 'number_input' => $input ]
-					);
-				}
-				$num = $base !== 10 ? base_convert( $input, $base, 10 ) : $input;
-				$offset += strlen( $token );
-				return ( strpos( $input, '.' ) !== false )
-					? new AFPToken( AFPToken::TFLOAT, floatval( $num ), $start )
-					: new AFPToken( AFPToken::TINT, intval( $num ), $start );
-			}
-		}
-		if ( preg_match( self::RADIX_RE, $code, $matches, 0, $offset ) ) {
-			list( $token, $input ) = $matches;
-			$baseChar = $matches[2] ?? null;
-			// Sometimes the base char gets mixed in with the rest of it because
-			// the regex targets hex, too.
-			// This mostly happens with binary
-			if ( !$baseChar && !empty( self::BASES[ substr( $input, - 1 ) ] ) ) {
-				$baseChar = substr( $input, - 1, 1 );
-				$input = substr( $input, 0, - 1 );
-			}
-
-			$base = $baseChar ? self::BASES[$baseChar] : 10;
-
-			// Check against the appropriate character class for input validation
-			if ( preg_match( self::BASE_CHARS_RES[$base], $input ) ) {
-				if ( $base !== 10 ) {
-					// Old syntax, this is deprecated
-					$this->logger->warning(
-						'DEPRECATED! This syntax for non-decimal numbers has been deprecated in 1.34 and will ' .
-						'be removed in 1.35. Please switch to the new syntax, which is the same ' .
-						'as PHP\'s. Found number with base: {number_base}, integer part: {number_input}.',
-						[ 'number_base' => $base, 'number_input' => $input ]
-					);
-				}
 				$num = $base !== 10 ? base_convert( $input, $base, 10 ) : $input;
 				$offset += strlen( $token );
 				return ( strpos( $input, '.' ) !== false )
