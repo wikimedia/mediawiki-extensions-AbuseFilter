@@ -201,6 +201,7 @@
 	"abusefilter-edit-subtitle-new": "أنشئ مُرشِّحًا",
 	"abusefilter-edit-token-not-match": "لم يتم حفظ التعديل! يُرجَى الحفظ مرة أخرى.",
 	"abusefilter-edit-oldwarning": "<strong>أنت تعدل نسخة قديمة من هذا المرشح.\nالإحصاءات الموجودة هي لأحدث نسخة من المرشح.\nلو أنك حفظت تغييراتك، فستكتب على كل التغييرات منذ المراجعة التي تعدلها.</strong> &bull; [[Special:AbuseFilter/history/$2|رجوع إلى تاريخ هذا المرشح]]",
+	"abusefilter-view-oldwarning": "<strong>أنت تعرض نسخة قديمة من هذا المرشح\nالإحصاءات المقتبسة تخص أحدث إصدار من المرشح.</strong> &bull;\n[[Special:AbuseFilter/history/$2|ارجع إلى سجل هذا المرشح]].",
 	"abusefilter-edit-status-label": "إحصاءات:",
 	"abusefilter-edit-status": "من آخر $1 {{PLURAL:$1|تعديل}}، هذا المرشح طابق $2 ($3%).\nفي المتوسط​​، تبلغ مدة تشغيله $4 مللي ثانية، ويستهلك $5 {{PLURAL:$5|شرط|شروط}} لحد الشرط.",
 	"abusefilter-edit-throttled-warning": "'''تحذير:'''تم التعليم على هذا المرشح تلقائيا على أنه ضار; كتدبير أمان، لن يتم تنفيذ الإجراءات التالية ($1)، تُرجَى مراجعة و[[mw:Extension:AbuseFilter/Conditions|تحسين]] شروطك لإزالة هذا التقييد",
