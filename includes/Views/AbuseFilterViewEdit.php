@@ -392,7 +392,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Load from request OR database.
 		list( $row, $actions ) = $this->loadRequest( $filter, $history_id );
 
-		if ( !$row ) {
+		if (
+			!$row ||
+			// @fixme Temporary stopgap for T237887
+			( $history_id && $row->af_id !== $filter )
+		) {
 			$out->addWikiMsg( 'abusefilter-edit-badfilter' );
 			$out->addHTML( $this->linkRenderer->makeLink( $this->getTitle(),
 				$this->msg( 'abusefilter-return' )->text() ) );
