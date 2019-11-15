@@ -181,6 +181,7 @@
 	"abusefilter-edit-subtitle-new": "Stoche a creje 'nu filtre",
 	"abusefilter-edit-token-not-match": "'U cangiamende non g'a state reggistrate! Pruève arrete.",
 	"abusefilter-edit-oldwarning": "<strong>Tu stè a cangianne 'na versiune vècchie de quiste filtre.\nLe statisteche citate sonde pè 'a versiune cchiù recende de quiste filtre.\nCe tu salve le cangiaminde toje, tu pòte sovrascrivere totte le cangiaminde combiute d'a revisione ca tu stè a cangià.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Torne sus 'a storie de quiste filtre]].",
+	"abusefilter-view-oldwarning": "<strong>Ste 'ndruche 'na versiona vecchie de stu filtre.\nLe statisteche elengate sò d'a versione cchiù nove d'u filtre.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Tuèrne a 'u cunde de stu filtre]].",
 	"abusefilter-edit-status-label": "Statisteche:",
 	"abusefilter-edit-status": "De le urteme $1 {{PLURAL:$1|azione|aziune}}, stu filtre ave accocchiate $2 ($3%).\nJndr'à medie, 'u tiembe sue jè de $4ms, e cunzume $5 {{PLURAL:$5|condizione|condiziune}} d'u limite de condiziune.",
 	"abusefilter-edit-throttled-warning": "'''Attenziò:''' Stu filtre ha state signate automaticamende cumme pericolose. Cumme mesure de securezze, le aziune seguende non ge avénene eseguite ($1). Pe piacere condrolle e [[mw:Extension:AbuseFilter/Conditions|ottimizze]] le condiziune tune pe luà sta restrizzione",

@@ -201,6 +201,7 @@
 	"abusefilter-edit-subtitle-new": "Tworzenie filtru",
 	"abusefilter-edit-token-not-match": "Edycja nie została zapisana! Zapisz ją ponownie.",
 	"abusefilter-edit-oldwarning": "<strong>Edytujesz starą wersję tego filtru. Statystyki są notowane dla najnowszej wersji filtru. Jeśli zapiszesz zmiany, zostaną nadpisane wszystkie późniejsze wersje od tej, którą edytujesz.</strong> &bull; [[Special:AbuseFilter/history/$2|Powrót do historii filtru]]",
+	"abusefilter-view-oldwarning": "<strong>Oglądasz starsza wersję tego filtra.\nPodane statystyki dotyczą jego aktualnej wersji</strong> &bull;\n[[Special:AbuseFilter/history/$2|Wróć do historii filtra]]",
 	"abusefilter-edit-status-label": "Statystyki:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).\nŚredni czas wykonania wyniósł $4 ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.",
 	"abusefilter-edit-throttled-warning": "'''Uwaga:''' Ten filtr został automatyczne oznaczony jako groźny. Ze względu bezpieczeństwa, te akcje nie zostaną wykonane ($1). Przejrzyj i [[mw:Extension:AbuseFilter/Conditions|zoptymalizuj]] swoje warunki, aby usunąć to ograniczenie",
