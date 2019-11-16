@@ -66,7 +66,7 @@ class AbuseFilter {
 		'af_group'
 	];
 
-	public static $history_mappings = [
+	public const HISTORY_MAPPINGS = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',
 		'af_user_text' => 'afh_user_text',
@@ -77,7 +77,7 @@ class AbuseFilter {
 		'af_id' => 'afh_filter',
 		'af_group' => 'afh_group',
 	];
-	public static $builderValues = [
+	public const BUILDER_VALUES = [
 		'op-arithmetic' => [
 			'+' => 'addition',
 			'-' => 'subtraction',
@@ -214,13 +214,13 @@ class AbuseFilter {
 	];
 
 	/** @var array Old vars which aren't in use anymore */
-	public static $disabledVars = [
+	public const DISABLED_VARS = [
 		'old_text' => 'old-text',
 		'old_html' => 'old-html',
 		'minor_edit' => 'minor-edit'
 	];
 
-	public static $deprecatedVars = [
+	public const DEPRECATED_VARS = [
 		'article_text' => 'page_title',
 		'article_prefixedtext' => 'page_prefixedtitle',
 		'article_namespace' => 'page_namespace',
@@ -301,7 +301,7 @@ class AbuseFilter {
 			return $realValues;
 		}
 
-		$realValues = self::$builderValues;
+		$realValues = self::BUILDER_VALUES;
 
 		Hooks::run( 'AbuseFilter-builder', [ &$realValues ] );
 
@@ -318,7 +318,7 @@ class AbuseFilter {
 			return $deprecatedVars;
 		}
 
-		$deprecatedVars = self::$deprecatedVars;
+		$deprecatedVars = self::DEPRECATED_VARS;
 
 		Hooks::run( 'AbuseFilter-deprecatedVariables', [ &$deprecatedVars ] );
 
@@ -1082,16 +1082,16 @@ class AbuseFilter {
 		$deprecatedVars = self::getDeprecatedVariables();
 
 		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
-		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::$mFunctions ) );
-		// AbuseFilterTokenizer::$keywords also includes constants (true, false and null),
+		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::FUNCTIONS ) );
+		// AbuseFilterTokenizer::KEYWORDS also includes constants (true, false and null),
 		// but Ace redefines these constants afterwards so this will not be an issue
-		$builderKeywords = implode( '|', AbuseFilterTokenizer::$keywords );
+		$builderKeywords = implode( '|', AbuseFilterTokenizer::KEYWORDS );
 		// Extract operators from tokenizer like we do in AbuseFilterParserTest
 		$operators = implode( '|', array_map( function ( $op ) {
 			return preg_quote( $op, '/' );
-		}, AbuseFilterTokenizer::$operators ) );
+		}, AbuseFilterTokenizer::OPERATORS ) );
 		$deprecatedVariables = implode( '|', array_keys( $deprecatedVars ) );
-		$disabledVariables = implode( '|', array_keys( self::$disabledVars ) );
+		$disabledVariables = implode( '|', array_keys( self::DISABLED_VARS ) );
 
 		return [
 			'variables' => $builderVariables,
@@ -1447,7 +1447,7 @@ class AbuseFilter {
 		// Create a history row
 		$afh_row = [];
 
-		foreach ( self::$history_mappings as $af_col => $afh_col ) {
+		foreach ( self::HISTORY_MAPPINGS as $af_col => $afh_col ) {
 			$afh_row[$afh_col] = $newRow[$af_col];
 		}
 
@@ -1582,7 +1582,7 @@ class AbuseFilter {
 		// Manually translate into an abuse_filter row.
 		$af_row = new stdClass;
 
-		foreach ( self::$history_mappings as $af_col => $afh_col ) {
+		foreach ( self::HISTORY_MAPPINGS as $af_col => $afh_col ) {
 			$af_row->$af_col = $row->$afh_col;
 		}
 
@@ -1936,8 +1936,8 @@ class AbuseFilter {
 				$mapping = $variableMessageMappings[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
 					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
-			} elseif ( !empty( self::$disabledVars[$key] ) ) {
-				$mapping = self::$disabledVars[$key];
+			} elseif ( !empty( self::DISABLED_VARS[$key] ) ) {
+				$mapping = self::DISABLED_VARS[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
 					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
 			} else {

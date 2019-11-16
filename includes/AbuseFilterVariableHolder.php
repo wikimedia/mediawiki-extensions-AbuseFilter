@@ -228,7 +228,7 @@ class AbuseFilterVariableHolder {
 
 			$activeVariables = array_keys( AbuseFilter::getBuilderValues()['vars'] );
 			$deprecatedVariables = array_keys( AbuseFilter::getDeprecatedVariables() );
-			$disabledVariables = array_keys( AbuseFilter::$disabledVars );
+			$disabledVariables = array_keys( AbuseFilter::DISABLED_VARS );
 			$coreVariables = array_merge( $activeVariables, $deprecatedVariables, $disabledVariables );
 
 			// @todo _restrictions variables should be handled in builderValues as well.

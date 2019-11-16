@@ -31,8 +31,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			self::CACHE_VERSION,
 			AFPTreeParser::CACHE_VERSION,
 			AbuseFilterTokenizer::CACHE_VERSION,
-			array_keys( AbuseFilterParser::$mFunctions ),
-			array_keys( AbuseFilterParser::$mKeywords ),
+			array_keys( AbuseFilterParser::FUNCTIONS ),
+			array_keys( AbuseFilterParser::KEYWORDS ),
 		];
 		$version = hash( 'sha256', serialize( $versionKey ) );
 

@@ -25,7 +25,7 @@ class AbuseFilterTokenizer {
 	// Order is important. The punctuation-matching regex requires that
 	// ** comes before *, etc. They are sorted to make it easy to spot
 	// such errors.
-	public static $operators = [
+	public const OPERATORS = [
 		// Inequality
 		'!==', '!=', '!',
 		// Multiplication/exponentiation
@@ -46,7 +46,7 @@ class AbuseFilterTokenizer {
 		'===', '==', '=',
 	];
 
-	public static $punctuation = [
+	public const PUNCTUATION = [
 		',' => AFPToken::TCOMMA,
 		'(' => AFPToken::TBRACE,
 		')' => AFPToken::TBRACE,
@@ -55,20 +55,20 @@ class AbuseFilterTokenizer {
 		';' => AFPToken::TSTATEMENTSEPARATOR,
 	];
 
-	public static $bases = [
+	public const BASES = [
 		'b' => 2,
 		'x' => 16,
 		'o' => 8
 	];
 
-	public static $baseCharsRe = [
+	public const BASE_CHARS_RES = [
 		2  => '/^[01]+$/',
 		8  => '/^[0-7]+$/',
 		16 => '/^[0-9A-Fa-f]+$/',
 		10 => '/^[0-9.]+$/',
 	];
 
-	public static $keywords = [
+	public const KEYWORDS = [
 		'in', 'like', 'true', 'false', 'null', 'contains', 'matches',
 		'rlike', 'irlike', 'regex', 'if', 'then', 'else', 'end',
 	];
@@ -167,9 +167,9 @@ class AbuseFilterTokenizer {
 		$chr = $code[$offset];
 
 		// Punctuation
-		if ( isset( self::$punctuation[$chr] ) ) {
+		if ( isset( self::PUNCTUATION[$chr] ) ) {
 			$offset++;
-			return new AFPToken( self::$punctuation[$chr], $chr, $start );
+			return new AFPToken( self::PUNCTUATION[$chr], $chr, $start );
 		}
 
 		// String literal
@@ -193,8 +193,8 @@ class AbuseFilterTokenizer {
 			$token = $matchesv2[0];
 			$baseChar = $matchesv2['base'];
 			$input = $matchesv2['input'];
-			$base = $baseChar ? self::$bases[$baseChar] : 10;
-			if ( preg_match( self::$baseCharsRe[$base], $input ) ) {
+			$base = $baseChar ? self::BASES[$baseChar] : 10;
+			if ( preg_match( self::BASE_CHARS_RES[$base], $input ) ) {
 				if ( $base !== 10 ) {
 					// This is to check that the new syntax is working. Remove when removing the old syntax
 					$this->logger->info(
@@ -216,15 +216,15 @@ class AbuseFilterTokenizer {
 			// Sometimes the base char gets mixed in with the rest of it because
 			// the regex targets hex, too.
 			// This mostly happens with binary
-			if ( !$baseChar && !empty( self::$bases[ substr( $input, - 1 ) ] ) ) {
+			if ( !$baseChar && !empty( self::BASES[ substr( $input, - 1 ) ] ) ) {
 				$baseChar = substr( $input, - 1, 1 );
 				$input = substr( $input, 0, - 1 );
 			}
 
-			$base = $baseChar ? self::$bases[$baseChar] : 10;
+			$base = $baseChar ? self::BASES[$baseChar] : 10;
 
 			// Check against the appropriate character class for input validation
-			if ( preg_match( self::$baseCharsRe[$base], $input ) ) {
+			if ( preg_match( self::BASE_CHARS_RES[$base], $input ) ) {
 				if ( $base !== 10 ) {
 					// Old syntax, this is deprecated
 					$this->logger->warning(
@@ -247,7 +247,7 @@ class AbuseFilterTokenizer {
 		if ( preg_match( self::ID_SYMBOL_RE, $code, $matches, 0, $offset ) ) {
 			$token = $matches[0];
 			$offset += strlen( $token );
-			$type = in_array( $token, self::$keywords )
+			$type = in_array( $token, self::KEYWORDS )
 				? AFPToken::TKEYWORD
 				: AFPToken::TID;
 			return new AFPToken( $type, $token, $start );

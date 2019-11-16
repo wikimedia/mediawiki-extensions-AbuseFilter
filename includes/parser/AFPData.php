@@ -18,7 +18,7 @@ class AFPData {
 	 * Derived from <http://www.php.net/manual/en/function.fnmatch.php#100207>
 	 * @internal
 	 */
-	public static $wildcardMap = [
+	public const WILDCARD_MAP = [
 		'\*' => '.*',
 		'\+' => '\+',
 		'\-' => '\-',
