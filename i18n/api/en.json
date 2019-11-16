@@ -52,6 +52,7 @@
 	"apihelp-query+abuselog-example-2": "Show recent log entries for [[API]]",
 	"apierror-abusefilter-canttest": "You don't have permission to test abuse filters.",
 	"apierror-abusefilter-cantcheck": "You don't have permission to check syntax of abuse filters.",
+	"apierror-abusefilter-canteval": "You don't have permission to evaluate AbuseFilter expressions.",
 	"apierror-abusefilter-nosuchlogid": "There is no abuselog entry with the id $1.",
 	"apierror-abusefilter-badsyntax": "The filter has invalid syntax."
 }
