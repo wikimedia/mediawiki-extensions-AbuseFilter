@@ -18,7 +18,7 @@
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
 	"abusefilter": "İdareyê parzûnê tecizi",
-	"abuselog": "Rocekê filtreyê peyêgoşieştışi",
+	"abuselog": "Rocekê parzûnê tecizi",
 	"abusefilter-intro": "Îdareyê filitreyê abuseyî şima xeyr ameyî.\nFilitreyê abuseyî yew softwareyê otomatikî ke otomatik heuristics applikasyon keno.\nEna pele yew listeyê filitreyî mucneno u vurnayîşan rê destur dano.",
 	"abusefilter-warning": "'''Balantış''': Eno hereket otomatikmen zerarın tesbit bi yo.\nVurnayışê zerarıni be lez do peyd bıgêri yo,\nu vurnayışo xırabın ya zi zerarın neticey xo hesabê şıma de vêneno ya zi afresa IP ya şıma bloqe bena.\nŞıma ke fıkıriyenê no vurnayış hewlo, şenê be tesdiq kerdış ney qeyd kerê.\nSuistımal kerdışê qeydey sero yew arezekerdışo kılmo ke hereketê şıma eyar keno: $1",
 	"abusefilter-disallowed": "Eno kerdış otomatikmên zey zerarın ameyo motış u coka izıne nêameya gırewtış.\nEger şıma bawer kenê ke enê kerdış biyo hewl, şıma se kerdêne , reca bena ke yew admin ra xebere bıdê.\nYew şınasnayışo kılmo ke be ixlalê şıma ra bestiyeno, zey wıni mocniyeno: $1",

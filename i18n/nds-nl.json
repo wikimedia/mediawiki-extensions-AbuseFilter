@@ -175,5 +175,6 @@
 	"abusefilter-revert-periodstart": "Begin periode:",
 	"abusefilter-revert-periodend": "Einde periode:",
 	"abusefilter-revert-search": "Maotregels selekteren",
-	"abusefilter-revert-filter": "Filter:"
+	"abusefilter-revert-filter": "Filter:",
+	"abusefilter-examine-user": "Gebruker:"
 }
