@@ -53,6 +53,7 @@
 	"abusefilter-log-search-group-any": "Any",
 	"abusefilter-log-search-filter": "Filter IDs:",
 	"abusefilter-log-search-filter-help": "Separate with pipes, prefix with \"$1\" for global filters",
+	"abusefilter-log-search-filter-help-central": "Separate with pipes",
 	"abusefilter-log-search-title": "Title:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Impact:",

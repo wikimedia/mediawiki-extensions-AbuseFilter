@@ -304,6 +304,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			];
 			$params['prop'][ApiBase::PARAM_DFLT] .= '|wiki';
 			$params['prop'][ApiBase::PARAM_TYPE][] = 'wiki';
+			$params['filter'][ApiBase::PARAM_HELP_MSG] = 'apihelp-query+abuselog-param-filter-central';
 		}
 		return $params;
 	}

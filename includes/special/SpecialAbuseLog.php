@@ -297,12 +297,15 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		if ( self::canSeeDetails( $user ) ) {
+			$helpmsg = $this->getConfig()->get( 'AbuseFilterIsCentral' )
+				? $this->msg( 'abusefilter-log-search-filter-help' )
+					->params( AbuseFilter::GLOBAL_FILTER_PREFIX )->escaped()
+				: $this->msg( 'abusefilter-log-search-filter-help-central' )->escaped();
 			$formDescriptor['SearchFilter'] = [
 				'label-message' => 'abusefilter-log-search-filter',
 				'type' => 'text',
 				'default' => $this->mSearchFilter,
-				'help' => $this->msg( 'abusefilter-log-search-filter-help' )
-					->params( AbuseFilter::GLOBAL_FILTER_PREFIX )->escaped()
+				'help' => $helpmsg
 			];
 		}
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
