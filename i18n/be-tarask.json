@@ -306,7 +306,7 @@
 	"abusefilter-edit-builder-misc-contains": "Левы радок ўтрымлівае правы радок (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Радок сымбаляў (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Тэрнарны апэратар (X ? Y : Z)",
-	"abusefilter-edit-builder-misc-cond": "Умова (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond": "Умова (if X then Y else Z end)",
 	"abusefilter-edit-builder-group-funcs": "Функцыі",
 	"abusefilter-edit-builder-funcs-length": "Даўжыня радку (length)",
 	"abusefilter-edit-builder-funcs-lcase": "У малыя літары (lcase)",

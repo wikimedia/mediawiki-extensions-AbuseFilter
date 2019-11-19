@@ -6,6 +6,8 @@
 			"Renessaince"
 		]
 	},
+	"apihelp-abusefiltercheckmatch-description": "Праверце, ці адпавядае Фільтру злоўжываньняў набор зьменных, рэдагаваньне ці запратакаляваная падзея Фільтру.",
+	"apihelp-abusefiltercheckmatch-summary": "Праверце, ці адпавядае Фільтру злоўжываньняў набор зьменных, рэдагаваньне ці запратакаляваная падзея Фільтру.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Паўнатэкставы фільтар для праверкі на адпаведнасьць.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Ідэнтыфікатар у нядаўніх зьменах, на аснове якога будзе зьдзейсьненая праверка.",
 	"apihelp-abusefilterchecksyntax-description": "Праверыць сынтаксыс асобнага фільтру злоўжываньняў.",
