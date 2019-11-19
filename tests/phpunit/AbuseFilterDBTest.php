@@ -323,7 +323,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		$this->assertNotFalse( $flags, 'The var dump has not been saved.' );
 		$flags = explode( ',', $flags );
 
-		$expectedFlags = [ 'nativeDataArray' ];
+		$expectedFlags = [ 'nativeDataArray', 'utf-8' ];
 		if ( $wgCompressRevisions ) {
 			$expectedFlags[] = 'gzip';
 		}

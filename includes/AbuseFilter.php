@@ -756,7 +756,7 @@ class AbuseFilter {
 
 		// Vars is an array with native PHP data types (non-objects) now
 		$text = serialize( $vars );
-		$flags = [ 'nativeDataArray' ];
+		$flags = [ 'nativeDataArray', 'utf-8' ];
 
 		if ( $wgCompressRevisions && function_exists( 'gzdeflate' ) ) {
 			$text = gzdeflate( $text );
