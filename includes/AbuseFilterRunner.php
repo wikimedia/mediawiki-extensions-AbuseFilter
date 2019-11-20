@@ -729,7 +729,7 @@ class AbuseFilterRunner {
 				}
 
 				$currentExpiry = SpecialBlock::parseExpiryInput( $expiry );
-				if ( $currentExpiry > SpecialBlock::parseExpiryInput( $maxExpiry ) ) {
+				if ( $maxExpiry === -1 || $currentExpiry > SpecialBlock::parseExpiryInput( $maxExpiry ) ) {
 					// Save the parameters to issue the block with
 					$maxExpiry = $expiry;
 					$blockValues = [
