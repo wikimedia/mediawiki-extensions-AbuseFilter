@@ -23,7 +23,7 @@ class AFPSyntaxTree {
 	/**
 	 * @return AFPTreeNode|null
 	 */
-	public function getRoot() {
+	public function getRoot(): ?AFPTreeNode {
 		return $this->rootNode;
 	}
 }

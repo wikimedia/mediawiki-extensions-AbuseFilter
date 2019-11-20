@@ -92,9 +92,10 @@ abstract class AFPTransitionBase {
 	 *
 	 * @param array $args The arguments supplied to the function
 	 * @param string $func The function name
+	 * @param int $position
 	 * @throws UserVisibleException
 	 */
-	protected function checkArgCount( $args, $func ) {
+	protected function checkArgCount( $args, $func, int $position ) {
 		if ( !array_key_exists( $func, self::FUNC_ARG_COUNT ) ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "$func is not a valid function." );
@@ -104,13 +105,13 @@ abstract class AFPTransitionBase {
 		if ( count( $args ) < $min ) {
 			throw new UserVisibleException(
 				$min === 1 ? 'noparams' : 'notenoughargs',
-				$this->mPos,
+				$position,
 				[ $func, $min, count( $args ) ]
 			);
 		} elseif ( count( $args ) > $max ) {
 			throw new UserVisibleException(
 				'toomanyargs',
-				$this->mPos,
+				$position,
 				[ $func, $max, count( $args ) ]
 			);
 		}

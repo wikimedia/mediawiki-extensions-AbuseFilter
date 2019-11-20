@@ -128,16 +128,12 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 * @return Language|MockObject
 	 */
 	protected function getLanguageMock() {
-		$lang = $this->getMockBuilder( LanguageEn::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$lang->expects( $this->any() )
-			->method( 'uc' )
+		$lang = $this->createMock( LanguageEn::class );
+		$lang->method( 'uc' )
 			->willReturnCallback( static function ( $x ) {
 				return mb_strtoupper( $x );
 			} );
-		$lang->expects( $this->any() )
-			->method( 'lc' )
+		$lang->method( 'lc' )
 			->willReturnCallback( static function ( $x ) {
 				return mb_strtolower( $x );
 			} );

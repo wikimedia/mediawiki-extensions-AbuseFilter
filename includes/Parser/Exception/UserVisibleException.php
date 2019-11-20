@@ -60,7 +60,8 @@ class UserVisibleException extends ExceptionBase {
 		// abusefilter-exception-notarray, abusefilter-exception-unclosedcomment
 		// abusefilter-exception-invalidiprange, abusefilter-exception-disabledvar
 		// abusefilter-exception-variablevariable, abusefilter-exception-toomanyargs
-		// abusefilter-exception-negativeoffset
+		// abusefilter-exception-negativeoffset, abusefilter-exception-unusedvars
+		// abusefilter-exception-unknownfunction, abusefilter-exception-usebuiltin
 		return new Message(
 			'abusefilter-exception-' . $this->mExceptionID,
 			array_merge( [ $this->mPosition ], $this->mParams )
