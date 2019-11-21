@@ -57,6 +57,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Get private details for the AbuseLog entry with ID 1, using the reason \"example\".",
 	"apierror-abusefilter-canttest": "You don't have permission to test abuse filters.",
 	"apierror-abusefilter-cantcheck": "You don't have permission to check syntax of abuse filters.",
+	"apierror-abusefilter-canteval": "You don't have permission to evaluate AbuseFilter expressions.",
 	"apierror-abusefilter-nosuchlogid": "There is no abuselog entry with the id $1.",
 	"apierror-abusefilter-badsyntax": "The filter has invalid syntax."
 }
