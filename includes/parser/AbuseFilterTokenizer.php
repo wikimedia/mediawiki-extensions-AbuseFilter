@@ -7,7 +7,7 @@ use Psr\Log\LoggerInterface;
  */
 class AbuseFilterTokenizer {
 	/** @var int Tokenizer cache version. Increment this when changing the syntax. **/
-	const CACHE_VERSION = 2;
+	const CACHE_VERSION = 3;
 	const COMMENT_START_RE = '/\s*\/\*/A';
 	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
 	const OPERATOR_RE =
@@ -307,7 +307,7 @@ class AbuseFilterTokenizer {
 							// \xXX -- 2 done later
 							$offset += 2;
 						} else {
-							$token .= 'x';
+							$token .= '\\x';
 						}
 						break;
 					default:
