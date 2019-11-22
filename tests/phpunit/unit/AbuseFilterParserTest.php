@@ -1172,4 +1172,16 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'timestamp / 0.0', 'dividebyzero' ],
 		];
 	}
+
+	/**
+	 * Ensure that every function in AbuseFilterParser::FUNCTIONS is also listed in
+	 * AbuseFilterParser::FUNC_ARG_COUNT
+	 */
+	public function testAllFunctionsHaveArgCount() {
+		$funcs = array_keys( AbuseFilterParser::FUNCTIONS );
+		sort( $funcs );
+		$argsCount = array_keys( AbuseFilterParser::FUNC_ARG_COUNT );
+		sort( $argsCount );
+		$this->assertSame( $funcs, $argsCount );
+	}
 }
