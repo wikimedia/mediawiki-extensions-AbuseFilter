@@ -65,7 +65,7 @@ class AbuseFilterParser {
 	 */
 	protected $statsd;
 
-	public static $mFunctions = [
+	public const FUNCTIONS = [
 		'lcase' => 'funcLc',
 		'ucase' => 'funcUc',
 		'length' => 'funcLen',
@@ -136,11 +136,11 @@ class AbuseFilterParser {
 	];
 
 	// Functions that affect parser state, and shouldn't be cached.
-	public static $ActiveFunctions = [
+	public const ACTIVE_FUNCTIONS = [
 		'funcSetVar',
 	];
 
-	public static $mKeywords = [
+	public const KEYWORDS = [
 		'in' => 'keywordIn',
 		'like' => 'keywordLike',
 		'matches' => 'keywordLike',
@@ -834,7 +834,7 @@ class AbuseFilterParser {
 		$this->doLevelUnarys( $result );
 		$keyword = strtolower( $this->mCur->value );
 		if ( $this->mCur->type === AFPToken::TKEYWORD
-			&& isset( self::$mKeywords[$keyword] )
+			&& isset( self::KEYWORDS[$keyword] )
 		) {
 			$this->move();
 			$r2 = new AFPData( AFPData::DEMPTY );
@@ -955,7 +955,7 @@ class AbuseFilterParser {
 	 * @throws AFPUserVisibleException
 	 */
 	protected function doLevelFunction( &$result ) {
-		if ( $this->mCur->type === AFPToken::TID && isset( self::$mFunctions[$this->mCur->value] ) ) {
+		if ( $this->mCur->type === AFPToken::TID && isset( self::FUNCTIONS[$this->mCur->value] ) ) {
 			$fname = $this->mCur->value;
 			$this->move();
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== '(' ) {
@@ -1144,7 +1144,7 @@ class AbuseFilterParser {
 			$this->logger->debug( "AbuseFilter: deprecated variable $var used." );
 			$var = $deprecatedVars[ $var ];
 		}
-		if ( array_key_exists( $var, AbuseFilter::$disabledVars ) ) {
+		if ( array_key_exists( $var, AbuseFilter::DISABLED_VARS ) ) {
 			throw new AFPUserVisibleException(
 				'disabledvar',
 				$this->mCur->pos,
@@ -1178,7 +1178,7 @@ class AbuseFilterParser {
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 
 		return array_key_exists( $varname, $builderValues['vars'] ) ||
-			array_key_exists( $varname, AbuseFilter::$disabledVars ) ||
+			array_key_exists( $varname, AbuseFilter::DISABLED_VARS ) ||
 			array_key_exists( $varname, $deprecatedVars );
 	}
 
@@ -1246,15 +1246,15 @@ class AbuseFilterParser {
 	 * @throws InvalidArgumentException if given an invalid func
 	 */
 	protected function callFunc( $fname, array $args ) : AFPData {
-		if ( !array_key_exists( $fname, self::$mFunctions ) ) {
+		if ( !array_key_exists( $fname, self::FUNCTIONS ) ) {
 			throw new InvalidArgumentException( "$fname is not a valid function." );
 		}
 
-		$funcHandler = self::$mFunctions[$fname];
+		$funcHandler = self::FUNCTIONS[$fname];
 		$funcHash = md5( $funcHandler . serialize( $args ) );
 
 		if ( isset( $this->funcCache[$funcHash] ) &&
-			!in_array( $funcHandler, self::$ActiveFunctions )
+			!in_array( $funcHandler, self::ACTIVE_FUNCTIONS )
 		) {
 			$result = $this->funcCache[$funcHash];
 		} else {
@@ -1299,7 +1299,7 @@ class AbuseFilterParser {
 	 * @return AFPData
 	 */
 	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs ) : AFPData {
-		$func = self::$mKeywords[$kname];
+		$func = self::KEYWORDS[$kname];
 		$this->raiseCondCount();
 
 		$hasUndefinedOperand = false;
@@ -1860,7 +1860,7 @@ class AbuseFilterParser {
 	 */
 	protected function keywordLike( AFPData $str, AFPData $pattern ) {
 		$str = $str->toString();
-		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), AFPData::$wildcardMap ) . '$#u';
+		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), AFPData::WILDCARD_MAP ) . '$#u';
 		Wikimedia\suppressWarnings();
 		$result = preg_match( $pattern, $str );
 		Wikimedia\restoreWarnings();

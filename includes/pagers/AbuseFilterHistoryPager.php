@@ -239,7 +239,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 */
 	public function getCellAttrs( $field, $value ) {
 		$row = $this->mCurrentRow;
-		$mappings = array_flip( AbuseFilter::$history_mappings ) +
+		$mappings = array_flip( AbuseFilter::HISTORY_MAPPINGS ) +
 			[ 'afh_actions' => 'actions', 'afh_id' => 'id' ];
 		$changed = explode( ',', $row->afh_changed_fields );
 
