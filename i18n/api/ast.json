@@ -54,6 +54,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Ver los detalles privaos de la entrada d'AbuseLog con ID 1, usando'l motivu \"example\".",
 	"apierror-abusefilter-canttest": "Nun tienes permisu pa probar peñeres d'abusu.",
 	"apierror-abusefilter-cantcheck": "Nun tienes permisu pa comprobar la sintaxis de les peñeres d'abusu.",
+	"apierror-abusefilter-canteval": "Nun tienes permisu pa evaluar espresiones d'AbuseFilter.",
 	"apierror-abusefilter-nosuchlogid": "Nun hai nenguna entrada nos rexistros de les peñeres d'abusu con id $1.",
 	"apierror-abusefilter-badsyntax": "El filtru tien una sintaxis inválida."
 }

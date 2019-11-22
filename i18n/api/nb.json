@@ -54,6 +54,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Hent private detaljer fra misbruksloggoppføringen med ID 1, med årsaken «example».",
 	"apierror-abusefilter-canttest": "Du har ikke tillatelse til å teste misbruksfiltre.",
 	"apierror-abusefilter-cantcheck": "Du har ikke tillatelse til å sjekke syntaksen til misbruksfiltre.",
+	"apierror-abusefilter-canteval": "Du har ikke tillatelse til å evaluere misbruksfilteruttrykk.",
 	"apierror-abusefilter-nosuchlogid": "Det er ingen misbruksloggoppføring med ID $1.",
 	"apierror-abusefilter-badsyntax": "Filteret har ugyldig syntaks."
 }

@@ -57,6 +57,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "קבלת מידע פרטי על רשומת יומן מסנן השחתות בעלת המזהה 1, עם הסיבה \"example\".",
 	"apierror-abusefilter-canttest": "אין לך הרשאה לבחון מסנני השחתות.",
 	"apierror-abusefilter-cantcheck": "אין לך הרשאה לבדוק את התחביר של מסנני השחתות.",
+	"apierror-abusefilter-canteval": "אין לך הרשאה להעריך ביטויי מסנן השחתות.",
 	"apierror-abusefilter-nosuchlogid": "אין רשומה ביומן ההשחתות עם המזהה $1.",
 	"apierror-abusefilter-badsyntax": "המסנן מכיל תחביר בלתי תקין."
 }
