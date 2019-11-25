@@ -58,6 +58,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Obtenha detalhes privados para a entrada do registro de abusos com ID 1, usando o motivo \"exemplo\".",
 	"apierror-abusefilter-canttest": "Você não tem permissão para testar filtros de edições.",
 	"apierror-abusefilter-cantcheck": "Você não tem permissão para conferir a sintaxe de filtros de edições.",
+	"apierror-abusefilter-canteval": "Você não tem permissão para avaliar expressões do AbuseFilter.",
 	"apierror-abusefilter-nosuchlogid": "Não há entrada no registro de abusos com o id $1.",
 	"apierror-abusefilter-badsyntax": "O filtro tem sintaxe inválida."
 }

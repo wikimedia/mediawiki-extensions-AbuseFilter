@@ -4,7 +4,8 @@
 			"Inkowik",
 			"MGChecker",
 			"Metalhead64",
-			"ToBeFree"
+			"ToBeFree",
+			"Schmackes"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-extended-description": "Es ist vars, rcid oder logid erforderlich, jedoch kann nur eines verwendet werden.",
@@ -47,6 +48,7 @@
 	"apihelp-query+abuselog-example-2": "Zeigt die letzten Logbucheinträge für [[API]]",
 	"apierror-abusefilter-canttest": "Du hast keine Berechtigung, Missbrauchsfilter zu testen.",
 	"apierror-abusefilter-cantcheck": "Du hast keine Berechtigung, die Syntax von Missbrauchsfiltern zu überprüfen.",
+	"apierror-abusefilter-canteval": "Du hast keine Berechtigung zum Auswerten von AbuseFilter-Ausdrücken.",
 	"apierror-abusefilter-nosuchlogid": "Es gibt keinen Missbrauchsfilter-Logbuch-Eintrag mit der Kennung $1.",
 	"apierror-abusefilter-badsyntax": "Der Filter hat eine ungültige Syntax."
 }

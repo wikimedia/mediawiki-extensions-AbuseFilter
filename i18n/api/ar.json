@@ -56,6 +56,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "احصل على تفاصيل خاصة لإدخال سجل الإساءة بالمعرف 1، باستخدام السبب \"مثال\".",
 	"apierror-abusefilter-canttest": "ليست لديك الصلاحية لاختبار مرشحات الإساءة.",
 	"apierror-abusefilter-cantcheck": "ليست لديك الصلاحية للتحقق من بناء مرشحات الإساءة.",
+	"apierror-abusefilter-canteval": "ليست لديك صلاحية لتقييم تعبيرات مرشح الإساءة",
 	"apierror-abusefilter-nosuchlogid": "ليس هناك إدخال سجل إساءة بالمعرف $1.",
 	"apierror-abusefilter-badsyntax": "يحتوي المرشح على بنية غير صالحة."
 }
