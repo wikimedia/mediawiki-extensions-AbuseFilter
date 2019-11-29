@@ -17,7 +17,8 @@
 			"Surfo",
 			"Fitoschido",
 			"Mirin",
-			"Taylor"
+			"Taylor",
+			"Zarisi"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -130,8 +131,8 @@
 	"abusefilter-list-options-deleted-hide": "Kaŝi forigitajn filtrilojn",
 	"abusefilter-list-options-deleted-show": "Inkluzivi forigitajn filtrilojn",
 	"abusefilter-list-options-scope": "Montri filtrilojn el:",
-	"abusefilter-list-options-scope-local": "Loka vikio",
-	"abusefilter-list-options-scope-global": "Ĝeneralaj reguloj",
+	"abusefilter-list-options-scope-local": "Lokaj reguloj nur",
+	"abusefilter-list-options-scope-global": "Ĝeneralaj reguloj nur",
 	"abusefilter-list-options-further-options": "Aliaj opcioj:",
 	"abusefilter-list-options-hidedisabled": "Kaŝi malŝaltitajn filtrilojn",
 	"abusefilter-list-options-hideprivate": "Kaŝi privatajn filtrilojn",

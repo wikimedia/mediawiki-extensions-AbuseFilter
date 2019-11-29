@@ -60,6 +60,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Ottieni i dettagli privati per la voce del registro anti abusi con ID 1, utilizzando la motivazione \"example\".",
 	"apierror-abusefilter-canttest": "Non disponi dei permessi necessari per provare i filtri anti abusi.",
 	"apierror-abusefilter-cantcheck": "Non disponi dei permessi necessari per controllare la sintassi dei filtri anti abusi.",
+	"apierror-abusefilter-canteval": "Non disponi dei permessi necessari per valutare espressioni del filtro anti abusi.",
 	"apierror-abusefilter-nosuchlogid": "Non esiste una voce nel registro anti abusi con ID $1.",
 	"apierror-abusefilter-badsyntax": "Il filtro contiene sintassi non valida."
 }
