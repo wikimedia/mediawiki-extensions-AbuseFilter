@@ -231,7 +231,7 @@
 	"abusefilter-edit-throttle-placeholder": "Split with commas to join with AND, and insert one by one to join with OR",
 	"abusefilter-throttle-ip": "IP address",
 	"abusefilter-throttle-user": "user account",
-	"abusefilter-throttle-range": "/16 range",
+	"abusefilter-throttle-range": "IP range",
 	"abusefilter-throttle-creationdate": "account creation date",
 	"abusefilter-throttle-editcount": "edit count",
 	"abusefilter-throttle-site": "whole site",

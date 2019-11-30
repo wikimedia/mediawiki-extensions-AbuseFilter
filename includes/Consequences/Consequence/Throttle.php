@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use BagOStuff;
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedException;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\User\UserEditTracker;
@@ -156,18 +157,18 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 
 		if ( $this->parameters->getIsGlobalFilter() && !$this->filterIsCentral ) {
 			return $this->mainStash->makeGlobalKey(
-				'abusefilter', 'throttle', $this->centralDB, $this->throttleParams['id'], $type, $identifier
+				'abusefilter', 'throttle', $this->centralDB, $this->throttleParams['id'], $identifier
 			);
 		}
 
-		return $this->mainStash->makeKey( 'abusefilter', 'throttle', $this->throttleParams['id'], $type, $identifier );
+		return $this->mainStash->makeKey( 'abusefilter', 'throttle', $this->throttleParams['id'], $identifier );
 	}
 
 	/**
 	 * @param string $type
-	 * @return int|string
+	 * @return string
 	 */
-	private function throttleIdentifier( string $type ) {
+	private function throttleIdentifier( string $type ): string {
 		$user = $this->parameters->getUser();
 		$title = Title::castFromLinkTarget( $this->parameters->getTarget() );
 		switch ( $type ) {
@@ -175,10 +176,12 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				$identifier = $this->requestIP;
 				break;
 			case 'user':
+				// NOTE: This is always 0 for anons. Is this good/wanted?
 				$identifier = $user->getId();
 				break;
 			case 'range':
-				$identifier = substr( IPUtils::toHex( $this->requestIP ), 0, 4 );
+				$range = IPUtils::isIPv6( $this->requestIP ) ? 64 : 16;
+				$identifier = IPUtils::sanitizeRange( "{$this->requestIP}/$range" );
 				break;
 			case 'creationdate':
 				// TODO Inject a proper service, not UserFactory, once getRegistration is moved away from User
@@ -199,10 +202,10 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 			default:
 				// Should never happen
 				// @codeCoverageIgnoreStart
-				$identifier = 0;
+				throw new InvalidArgumentException( "Invalid throttle type $type." );
 				// @codeCoverageIgnoreEnd
 		}
 
-		return $identifier;
+		return "$type-$identifier";
 	}
 }
