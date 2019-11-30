@@ -3,15 +3,11 @@
 use Psr\Log\LoggerInterface;
 use Wikimedia\Equivset\Equivset;
 
-class AbuseFilterParser {
+class AbuseFilterParser extends AFPTransitionBase {
 	/**
 	 * @var array[] Contains the AFPTokens for the code being parsed
 	 */
 	public $mTokens;
-	/**
-	 * @var int The position of the current token
-	 */
-	public $mPos;
 	/**
 	 * @var bool Are we inside a short circuit evaluation?
 	 */
@@ -64,76 +60,6 @@ class AbuseFilterParser {
 	 * @var IBufferingStatsdDataFactory
 	 */
 	protected $statsd;
-
-	public const FUNCTIONS = [
-		'lcase' => 'funcLc',
-		'ucase' => 'funcUc',
-		'length' => 'funcLen',
-		'string' => 'castString',
-		'int' => 'castInt',
-		'float' => 'castFloat',
-		'bool' => 'castBool',
-		'norm' => 'funcNorm',
-		'ccnorm' => 'funcCCNorm',
-		'ccnorm_contains_any' => 'funcCCNormContainsAny',
-		'ccnorm_contains_all' => 'funcCCNormContainsAll',
-		'specialratio' => 'funcSpecialRatio',
-		'rmspecials' => 'funcRMSpecials',
-		'rmdoubles' => 'funcRMDoubles',
-		'rmwhitespace' => 'funcRMWhitespace',
-		'count' => 'funcCount',
-		'rcount' => 'funcRCount',
-		'get_matches' => 'funcGetMatches',
-		'ip_in_range' => 'funcIPInRange',
-		'contains_any' => 'funcContainsAny',
-		'contains_all' => 'funcContainsAll',
-		'equals_to_any' => 'funcEqualsToAny',
-		'substr' => 'funcSubstr',
-		'strlen' => 'funcLen',
-		'strpos' => 'funcStrPos',
-		'str_replace' => 'funcStrReplace',
-		'rescape' => 'funcStrRegexEscape',
-		'set' => 'funcSetVar',
-		'set_var' => 'funcSetVar',
-		'sanitize' => 'funcSanitize',
-	];
-
-	/**
-	 * The minimum and maximum amount of arguments required by each function.
-	 * @var int[][]
-	 */
-	const FUNC_ARG_COUNT = [
-		'lcase' => [ 1, 1 ],
-		'ucase' => [ 1, 1 ],
-		'length' => [ 1, 1 ],
-		'string' => [ 1, 1 ],
-		'int' => [ 1, 1 ],
-		'float' => [ 1, 1 ],
-		'bool' => [ 1, 1 ],
-		'norm' => [ 1, 1 ],
-		'ccnorm' => [ 1, 1 ],
-		'ccnorm_contains_any' => [ 2, INF ],
-		'ccnorm_contains_all' => [ 2, INF ],
-		'specialratio' => [ 1, 1 ],
-		'rmspecials' => [ 1, 1 ],
-		'rmdoubles' => [ 1, 1 ],
-		'rmwhitespace' => [ 1, 1 ],
-		'count' => [ 1, 2 ],
-		'rcount' => [ 1, 2 ],
-		'get_matches' => [ 2, 2 ],
-		'ip_in_range' => [ 2, 2 ],
-		'contains_any' => [ 2, INF ],
-		'contains_all' => [ 2, INF ],
-		'equals_to_any' => [ 2, INF ],
-		'substr' => [ 2, 3 ],
-		'strlen' => [ 1, 1 ],
-		'strpos' => [ 2, 3 ],
-		'str_replace' => [ 3, 3 ],
-		'rescape' => [ 1, 1 ],
-		'set' => [ 2, 2 ],
-		'set_var' => [ 2, 2 ],
-		'sanitize' => [ 1, 1 ],
-	];
 
 	// Functions that affect parser state, and shouldn't be cached.
 	public const ACTIVE_FUNCTIONS = [
@@ -1167,37 +1093,6 @@ class AbuseFilterParser {
 	}
 
 	/**
-	 * Check whether the given name refers to a built-in variable, including
-	 * deprecated and disabled variables.
-	 *
-	 * @param string $varname
-	 * @return bool
-	 */
-	protected function isBuiltinVar( $varname ) {
-		$builderValues = AbuseFilter::getBuilderValues();
-		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
-
-		return array_key_exists( $varname, $builderValues['vars'] ) ||
-			array_key_exists( $varname, AbuseFilter::DISABLED_VARS ) ||
-			array_key_exists( $varname, $deprecatedVars );
-	}
-
-	/**
-	 * Check whether the given name is a reserved identifier, e.g. the name of a built-in variable,
-	 * function, or keyword.
-	 *
-	 * @param string $name
-	 * @return bool
-	 */
-	protected function isReservedIdentifier( $name ) {
-		return $this->isBuiltinVar( $name ) ||
-			array_key_exists( $name, self::FUNCTIONS ) ||
-			// We need to check for true, false, if/then/else etc. because, even if they have a different
-			// AFPToken type, they may be used inside set/set_var()
-			in_array( $name, AbuseFilterTokenizer::KEYWORDS, true );
-	}
-
-	/**
 	 * @param string $name
 	 * @param mixed $value
 	 * @throws AFPUserVisibleException
@@ -1207,33 +1102,6 @@ class AbuseFilterParser {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
 		$this->mVariables->setVar( $name, $value );
-	}
-
-	/**
-	 * Check that a built-in function has been provided the right amount of arguments
-	 *
-	 * @param array $args The arguments supplied to the function
-	 * @param string $func The function name
-	 * @throws AFPUserVisibleException
-	 */
-	protected function checkArgCount( $args, $func ) {
-		if ( !array_key_exists( $func, self::FUNC_ARG_COUNT ) ) {
-			throw new InvalidArgumentException( "$func is not a valid function." );
-		}
-		list( $min, $max ) = self::FUNC_ARG_COUNT[ $func ];
-		if ( count( $args ) < $min ) {
-			throw new AFPUserVisibleException(
-				$min === 1 ? 'noparams' : 'notenoughargs',
-				$this->mCur->pos,
-				[ $func, $min, count( $args ) ]
-			);
-		} elseif ( count( $args ) > $max ) {
-			throw new AFPUserVisibleException(
-				'toomanyargs',
-				$this->mCur->pos,
-				[ $func, $max, count( $args ) ]
-			);
-		}
 	}
 
 	/**
@@ -1964,15 +1832,4 @@ class AbuseFilterParser {
 		}
 	}
 
-	/**
-	 * @param string $fname
-	 * @return bool
-	 * @see AFPTreeParser::functionIsVariadic
-	 */
-	protected function functionIsVariadic( $fname ) {
-		if ( !array_key_exists( $fname, self::FUNC_ARG_COUNT ) ) {
-			throw new InvalidArgumentException( "Function $fname is not valid" );
-		}
-		return self::FUNC_ARG_COUNT[$fname][1] === INF;
-	}
 }

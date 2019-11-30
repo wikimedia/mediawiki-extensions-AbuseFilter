@@ -30,6 +30,7 @@ use Psr\Log\NullLogger;
  *
  * @covers AbuseFilterCachingParser
  * @covers AFPTreeParser
+ * @covers AFPTransitionBase
  * @covers AFPTreeNode
  * @covers AFPParserState
  * @covers AbuseFilterParser
