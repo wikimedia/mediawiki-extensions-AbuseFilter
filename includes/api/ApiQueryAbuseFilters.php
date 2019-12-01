@@ -104,14 +104,15 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 		$count = 0;
 		foreach ( $res as $row ) {
+			$filterId = intval( $row->af_id );
 			if ( ++$count > $params['limit'] ) {
 				// We've had enough
-				$this->setContinueEnumParameter( 'startid', $row->af_id );
+				$this->setContinueEnumParameter( 'startid', $filterId );
 				break;
 			}
 			$entry = [];
 			if ( $fld_id ) {
-				$entry['id'] = intval( $row->af_id );
+				$entry['id'] = $filterId;
 			}
 			if ( $fld_desc ) {
 				$entry['description'] = $row->af_public_comments;
@@ -149,7 +150,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 			if ( $entry ) {
 				$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $entry );
 				if ( !$fit ) {
-					$this->setContinueEnumParameter( 'startid', $row->af_id );
+					$this->setContinueEnumParameter( 'startid', $filterId );
 					break;
 				}
 			}
