@@ -56,6 +56,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Hämta privata detaljer för posten i missbruksloggen med ID 1, som har anledningen \"example\".",
 	"apierror-abusefilter-canttest": "Du har inte behörighet att testa missbruksfilter.",
 	"apierror-abusefilter-cantcheck": "Du har inte behörighet att kolla syntaxen för missbruksfilter.",
+	"apierror-abusefilter-canteval": "Du har inte behörighet att utvärdera missbruksfilteruttryck.",
 	"apierror-abusefilter-nosuchlogid": "Det finns ingen post i missbruksloggen med ID $1.",
 	"apierror-abusefilter-badsyntax": "Filtret har ogiltig syntax."
 }

@@ -288,7 +288,7 @@
 	"abusefilter-edit-builder-misc-contains": "Vasakpoolne sõne sisaldab parempoolset sõne (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Sõneliteraal (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Kolmendoperaator (X ? Y : Z)",
-	"abusefilter-edit-builder-misc-cond": "Loogikaavaldis (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond": "Loogikaavaldis (if X then Y else Z end)",
 	"abusefilter-edit-builder-group-funcs": "Funktsioonid",
 	"abusefilter-edit-builder-funcs-length": "Sõne pikkus (length)",
 	"abusefilter-edit-builder-funcs-lcase": "Väiketähesta (lcase)",
