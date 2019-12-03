@@ -512,7 +512,7 @@ class AbuseFilterParser {
 				}
 				$this->move();
 				if ( $this->mCur->type === AFPToken::TOP && $this->mCur->value === ':=' ) {
-					if ( $this->isBuiltinVar( $varname ) ) {
+					if ( $this->isReservedIdentifier( $varname ) ) {
 						// Ideally we should've aborted before trying to parse the index
 						throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $varname ] );
 					}
@@ -1183,12 +1183,27 @@ class AbuseFilterParser {
 	}
 
 	/**
+	 * Check whether the given name is a reserved identifier, e.g. the name of a built-in variable,
+	 * function, or keyword.
+	 *
+	 * @param string $name
+	 * @return bool
+	 */
+	protected function isReservedIdentifier( $name ) {
+		return $this->isBuiltinVar( $name ) ||
+			array_key_exists( $name, self::FUNCTIONS ) ||
+			// We need to check for true, false, if/then/else etc. because, even if they have a different
+			// AFPToken type, they may be used inside set/set_var()
+			in_array( $name, AbuseFilterTokenizer::KEYWORDS, true );
+	}
+
+	/**
 	 * @param string $name
 	 * @param mixed $value
 	 * @throws AFPUserVisibleException
 	 */
 	protected function setUserVariable( $name, $value ) {
-		if ( $this->isBuiltinVar( $name ) ) {
+		if ( $this->isReservedIdentifier( $name ) ) {
 			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
 		$this->mVariables->setVar( $name, $value );

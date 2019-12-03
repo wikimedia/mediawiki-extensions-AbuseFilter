@@ -248,8 +248,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'a := [1,2', 'doLevelAtom' ],
 			[ '1 = 1 | (1', 'skipOverBraces/doLevelParenthesis' ],
 			[ 'a := [1,2,3]; 3 = a[5', 'doLevelArrayElements' ],
-			// `set` is the name of a function. It's unclear whether the following should be allowed.
-			[ 'set:= 1; set contains 1', 'doLevelFunction' ],
+			[ 'if[3] := 1', 'doLevelConditions' ],
 		];
 	}
 
@@ -410,6 +409,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function unrecognisedKeyword() {
 		return [
 			[ '5 = rlike', 'doLevelAtom' ],
+			[ 'then := 45', 'doLevelAtom' ],
 		];
 	}
 
@@ -518,7 +518,33 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'page_id[3] := 1', 'doLevelSet' ],
 			[ 'true | (added_lines := 1);','setUserVariable' ],
 			[ 'if(true) then 1 else (added_lines := 1) end;', 'setUserVariable' ],
+			[ 'length := 45', 'setUserVariable' ],
+			[ 'set("added_lines", 45)', 'setUserVariable' ],
+			[ 'set("length", 45)', 'setUserVariable' ],
+			[ 'set("true", true)', 'setUserVariable' ],
 		];
+	}
+
+	/**
+	 * Test for overriding a function name. The parsers cannot agree on this: the old parser
+	 * will try to get the value of the variable before knowing that it's parsing an assignment,
+	 * hence throwing unrecognisedvar. The new parser already knows it's an assignment and immediately
+	 * throws an overridebuiltin (which is more correct).
+	 * @todo Merge this into testOverrideBuiltin as soon as the old parser is deleted
+	 */
+	public function testOverrideFuncName() {
+		$code = 'contains_any[1] := "foo"';
+		foreach ( $this->getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			$exc = $parser instanceof AbuseFilterCachingParser ? 'overridebuiltin' : 'unrecognisedvar';
+			try {
+				$parser->parse( $code );
+			} catch ( AFPException $e ) {
+				$this->assertEquals( $exc, $e->mExceptionID, "Wrong exception with parser $pname, got:\n$e" );
+				continue;
+			}
+			$this->fail( "Exception $exc not thrown with parser $pname." );
+		}
 	}
 
 	/**

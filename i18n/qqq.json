@@ -477,7 +477,7 @@
 	"abusefilter-exception-notenoughargs": "Error message from the abuse filter parser. Parameters:\n* $1 - position in the string (numeral)\n* $2 - a function name\n* $3 - the number of expected arguments\n* $4 - the number of passed arguments (also supports PLURAL)",
 	"abusefilter-exception-toomanyargs": "Error message from the abuse filter parser. Parameters:\n* $1 - position in the string (numeral)\n* $2 - a function name\n* $3 - the number of expected arguments\n* $4 - the number of passed arguments (also supports PLURAL)",
 	"abusefilter-exception-regexfailure": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Regular expression",
-	"abusefilter-exception-overridebuiltin": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Built-in variable",
+	"abusefilter-exception-overridebuiltin": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Built-in identifier",
 	"abusefilter-exception-outofbounds": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Index\n* $3 - Number of items in array",
 	"abusefilter-exception-negativeindex": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string\n* $2 - Index",
 	"abusefilter-exception-notarray": "Error message from the abuse filter parser. Parameters:\n* $1 - Position in the string",
