@@ -708,7 +708,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @dataProvider tooManyArgsFuncs
 	 */
 	public function testTooManyArgumentsException( $code ) {
-		$this->markTestSkipped( 'Waiting for filters to be fixed in WMF production' );
 		$this->exceptionTest( 'toomanyargs', $code, 'checkArgCount' );
 		$this->exceptionTestInSkippedBlock( 'toomanyargs', $code, 'checkArgCount' );
 	}
@@ -1067,9 +1066,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ '1**', 'power operand' ],
 			[ '"string" contains', 'keyword operand' ],
 			[ '1 in', 'keyword operand' ],
-			[ "str_replace('a','b','c',)", 'non-variadic function argument' ],
-			[ "count('a','b',)", 'non-variadic function argument' ],
-			[ "ccnorm('a',)", 'non-variadic function argument' ],
+			[ "str_replace('a','b',)", 'non-variadic function argument' ],
+			[ "count('a',)", 'non-variadic function argument' ],
 			[ "(!)", 'bool inversion' ],
 			// `(false &!)` and `(true &!)`, originally reported in T156096,
 			// should be used in the future to test that they throw. However,
