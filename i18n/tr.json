@@ -400,7 +400,7 @@
 	"abusefilter-exception-unrecognisedvar": "$1 karakterinde tanınmayan değişken $2",
 	"abusefilter-exception-notenoughargs": "$1 karakterinde çağrılan $2 fonksiyonu için yeterli değişken yok.\n$3 {{PLURAL:$3|değişken|değişken}} bekleniyordu, $4 alındı",
 	"abusefilter-exception-regexfailure": "\"$2\" düzenli ifadesinin $1 karakterinde hata.",
-	"abusefilter-exception-overridebuiltin": "$1 karakterinde \"$2\" yerleşik değişkeninin kuraldışı geçersiz kılınması.",
+	"abusefilter-exception-overridebuiltin": "$1 karakterindeki \"$2\" yerleşik tanıtıcısının geçersiz kılınması.",
 	"abusefilter-exception-outofbounds": "$1 karakterindeki mevcut olmayan liste öğesi $2 (liste boyutu = $3) isteniyor.",
 	"abusefilter-exception-notarray": "$1 karakterinde dizi olmayan dizi öğesi isteniyor.",
 	"abusefilter-action-tag": "Etiketle",

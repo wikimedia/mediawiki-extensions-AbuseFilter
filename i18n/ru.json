@@ -49,7 +49,8 @@
 			"ЛингвоЧел",
 			"Sobloku",
 			"Dmsm",
-			"Daimona Eaytoy"
+			"Daimona Eaytoy",
+			"Kreal39"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -206,6 +207,7 @@
 	"abusefilter-list-options-search-like": "Простой запрос",
 	"abusefilter-list-options-search-rlike": "Регулярное выражение",
 	"abusefilter-list-options-search-irlike": "Нечувствительное к регистру регулярное выражение",
+	"abusefilter-list-invalid-searchmode": "Режим «Спецпоиск» не дейвствителен",
 	"abusefilter-list-regexerror": "Во время поиска произошла ошибка: Синтаксическая ошибка регулярного выражения.",
 	"abusefilter-list-options-submit": "Обновить",
 	"abusefilter-tools-text": "Здесь находятся некоторые инструменты, которые могут помочь в формулировании и отладке фильтров злоупотреблений.",

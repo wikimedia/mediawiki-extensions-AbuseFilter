@@ -463,7 +463,7 @@
 	"abusefilter-exception-notenoughargs": "Funksjonskallet $2 ved tegn $1 hadde ikke nok argumenter.\nForventet {{PLURAL:$3|ett argument|$3 argumenter}}, fikk $4",
 	"abusefilter-exception-toomanyargs": "For mange argumenter til funksjonen $2 kalt ved tegn $1.\nForventet maksimalt $3 {{PLURAL:$3|argument|argumenter}}, fikk $4.",
 	"abusefilter-exception-regexfailure": "Feil i det regulære uttrykket «$2» ved tegn $1.",
-	"abusefilter-exception-overridebuiltin": "Ulovlig overstyring av innebygd variabel «$2» ved tegn $1.",
+	"abusefilter-exception-overridebuiltin": "Ulovlig overstyring av innebygd identifikator «$2» ved tegn $1.",
 	"abusefilter-exception-outofbounds": "Ber om ikke-eksisterende listeelement $2 (listestørrelse = $3) ved tegn $1.",
 	"abusefilter-exception-negativeindex": "Negative søk tillates ikke i tabeller. Fikk indeksen «$2» ved tegn $1.",
 	"abusefilter-exception-notarray": "Ber om tabellelement fra en ikke-tabell ved tegn $1.",

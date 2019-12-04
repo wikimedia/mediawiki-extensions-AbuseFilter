@@ -482,7 +482,7 @@
 	"abusefilter-exception-notenoughargs": "Pas assez de paramètres pour la fonction $2 appelée au caractère nº $1.\n$3 argument{{PLURAL:$3||s}} demandé{{PLURAL:$3||s}}, $4 obtenu{{PLURAL:$4||s}}.",
 	"abusefilter-exception-toomanyargs": "Trop d’arguments pour la fonction $2 appelée au caractère $1.\n$3 {{PLURAL:$3|argument|arguments}} au plus attendus, $4 obtenus",
 	"abusefilter-exception-regexfailure": "Erreur dans l’expression rationnelle « $2 » au caractère nº $1 .",
-	"abusefilter-exception-overridebuiltin": "Écrasement interdit de la variable prédéfinie « $2 » au caractère nº $1.",
+	"abusefilter-exception-overridebuiltin": "Écrasement interdit de l’identifiant prédéfini « $2 » au caractère nº $1.",
 	"abusefilter-exception-outofbounds": "Demande d’élément de tableau $2 inexistant (taille du tableau = $3) au caractère nº $1.",
 	"abusefilter-exception-negativeindex": "Les indices négatifs ne sont pas autorisés dans les tableaux. Indice « $2 » obtenu au caractère $1.",
 	"abusefilter-exception-notarray": "Demande d’un élément de tableau pour un non-tableau au caractère nº $1.",
