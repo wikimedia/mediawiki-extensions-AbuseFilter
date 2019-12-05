@@ -466,7 +466,7 @@
 	"abusefilter-exception-notenoughargs": "لا محددات كافية للدالة $2 المطلوبة عند الحرف $1.\nتوقع $3 {{PLURAL:$3|محدد|محدد}}، حصل على $4",
 	"abusefilter-exception-toomanyargs": " تم استدعاءالعديد من الوسيطات للدالة $2 في الحرف $1.\nمن المتوقع بحد أقصى $3 {{PLURAL:$3|وسيط|وسائط}}، حصلت على $4",
 	"abusefilter-exception-regexfailure": "خطأ في التعبير المنتظم \"$2\" عند الحرف $1.",
-	"abusefilter-exception-overridebuiltin": "تجاوز غير قانوني لمتغير موجود مسبقا \"$2\" عند الحرف $1.",
+	"abusefilter-exception-overridebuiltin": "تجاوز غير قانوني لمعرف مدمج في \"$2\" عند الحرف $1.",
 	"abusefilter-exception-outofbounds": "طلب عنصر مصفوفة غير موجود $2 (حجم المصفوفة = $3) عند الحرف $1.",
 	"abusefilter-exception-negativeindex": "المؤشرات السالبة غير مسموح بها في المصفوفات، حصلت على المؤشر \"$2\" في الحرف $1.",
 	"abusefilter-exception-notarray": "طلب مدخلة مصفوفة لغير مصفوفة عند الحرف $1.",
