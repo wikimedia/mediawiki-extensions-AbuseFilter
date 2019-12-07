@@ -167,6 +167,7 @@ class AbuseFilterRunner {
 				'profiling' => $this->profilingData
 			];
 		}
+		'@phan-var array{matches:array,runtime:int,condCount:int,profiling:array} $result';
 
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 		$allFilters = array_keys( $result['matches'] );
@@ -647,6 +648,8 @@ class AbuseFilterRunner {
 				$parameters = $actions['throttle']['parameters'];
 				$throttleId = array_shift( $parameters );
 				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
+				$rateCount = (int)$rateCount;
+				$ratePeriod = (int)$ratePeriod;
 
 				$hitThrottle = false;
 
@@ -744,6 +747,7 @@ class AbuseFilterRunner {
 			foreach ( $actions as $action => $info ) {
 				$newMsg = $this->takeConsequenceAction(
 					$action,
+					// @phan-suppress-next-line PhanTypeArraySuspiciousNullable False positive
 					$info['parameters'],
 					AbuseFilter::getFilter( $filter )->af_public_comments,
 					$filter
@@ -786,12 +790,18 @@ class AbuseFilterRunner {
 	/**
 	 * @param string $throttleId
 	 * @param string $types
-	 * @param string $rateCount
-	 * @param string $ratePeriod
+	 * @param int $rateCount
+	 * @param int $ratePeriod
 	 * @param bool $global
 	 * @return bool
 	 */
-	protected function isThrottled( $throttleId, $types, $rateCount, $ratePeriod, $global = false ) {
+	protected function isThrottled(
+		$throttleId,
+		$types,
+		int $rateCount,
+		int $ratePeriod,
+		$global = false
+	) {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$key = $this->throttleKey( $throttleId, $types, $global );
 		$count = intval( $stash->get( $key ) );
@@ -869,12 +879,12 @@ class AbuseFilterRunner {
 				$identifier = substr( IP::toHex( $request->getIP() ), 0, 4 );
 				break;
 			case 'creationdate':
-				$reg = $this->user->getRegistration();
+				$reg = (int)$this->user->getRegistration();
 				$identifier = $reg - ( $reg % 86400 );
 				break;
 			case 'editcount':
 				// Hack for detecting different single-purpose accounts.
-				$identifier = $this->user->getEditCount();
+				$identifier = (int)$this->user->getEditCount();
 				break;
 			case 'site':
 				$identifier = 1;
@@ -1348,7 +1358,7 @@ class AbuseFilterRunner {
 			$matchCount = $filterProfile['matches'] ?? 1;
 
 			// Figure out if the filter is subject to being throttled.
-			$filterAge = wfTimestamp( TS_UNIX, AbuseFilter::getFilter( $filter )->af_timestamp );
+			$filterAge = (int)wfTimestamp( TS_UNIX, AbuseFilter::getFilter( $filter )->af_timestamp );
 			$exemptTime = $filterAge + $maxAge;
 
 			if ( $totalActions && $exemptTime > time() && $matchCount > $hitCountLimit &&
@@ -1387,6 +1397,7 @@ class AbuseFilterRunner {
 			$username = $this->vars->getVar( 'accountname' )->toString();
 			$actionTitle = Title::makeTitleSafe( NS_USER, $username );
 		}
+		'@phan-var Title $actionTitle';
 
 		return AbuseFilter::getTaggingActionId( $action, $actionTitle, $username );
 	}

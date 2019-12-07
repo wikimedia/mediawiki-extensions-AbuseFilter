@@ -33,6 +33,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
 		$furtherOptions = $request->getArray( 'furtheroptions', [] );
+		'@phan-var array $furtherOptions';
 		// Backward compatibility with old links
 		if ( $request->getBool( 'hidedisabled' ) ) {
 			$furtherOptions[] = 'hidedisabled';

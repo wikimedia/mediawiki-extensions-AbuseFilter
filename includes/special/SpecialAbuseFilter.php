@@ -7,7 +7,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 */
 	public $mFilter;
 	/**
-	 * @var string|null The history ID of the current version
+	 * @var int|null The history ID of the current version
 	 */
 	public $mHistoryID;
 
@@ -112,7 +112,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 				$this->mFilter = $params[1];
 			} elseif ( count( $params ) === 4 && $params[2] === 'item' ) {
 				$this->mFilter = $params[1];
-				$this->mHistoryID = $params[3];
+				$this->mHistoryID = (int)$params[3];
 				$view = 'AbuseFilterViewEdit';
 			} elseif ( count( $params ) === 5 && $params[2] === 'diff' ) {
 				// Special:AbuseFilter/history/<filter>/diff/<oldid>/<newid>

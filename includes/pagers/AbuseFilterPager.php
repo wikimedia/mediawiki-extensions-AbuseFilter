@@ -186,14 +186,14 @@ class AbuseFilterPager extends TablePager {
 		switch ( $name ) {
 			case 'af_id':
 				return $this->linkRenderer->makeLink(
-					SpecialPage::getTitleFor( 'AbuseFilter', intval( $value ) ),
+					SpecialPage::getTitleFor( 'AbuseFilter', $value ),
 					$lang->formatNum( intval( $value ) )
 				);
 			case 'af_pattern':
 				return $this->getHighlightedPattern( $row );
 			case 'af_public_comments':
 				return $this->linkRenderer->makeLink(
-					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->af_id ) ),
+					SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ),
 					$value
 				);
 			case 'af_actions':

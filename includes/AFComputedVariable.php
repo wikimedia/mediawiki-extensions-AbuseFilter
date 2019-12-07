@@ -416,13 +416,13 @@ class AFComputedVariable {
 				$asOf = $parameters['asof'];
 				$obj = self::getUserObject( $user );
 
-				if ( $obj->getId() === 0 ) {
-					$result = 0;
-					break;
-				}
-
 				$registration = $obj->getRegistration();
-				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $registration );
+
+				if ( $obj->getId() === 0 || $registration === null ) {
+					$result = 0;
+				} else {
+					$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $registration );
+				}
 				break;
 			case 'page-age':
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
@@ -434,7 +434,7 @@ class AFComputedVariable {
 				}
 
 				$asOf = $parameters['asof'];
-				$result = wfTimestamp( TS_UNIX, $asOf ) - wfTimestampOrNull( TS_UNIX, $firstRevisionTime );
+				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $firstRevisionTime );
 				break;
 			case 'user-groups':
 				// Deprecated but needed by old log entries

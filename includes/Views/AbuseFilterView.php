@@ -8,7 +8,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 */
 	public $mFilter;
 	/**
-	 * @var string The history ID of the current filter
+	 * @var int|null The history ID of the current filter
 	 */
 	public $mHistoryID;
 	/**
@@ -41,7 +41,7 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
-	 * @param string $subpage
+	 * @param string|int $subpage
 	 * @return Title
 	 */
 	public function getTitle( $subpage = '' ) {
