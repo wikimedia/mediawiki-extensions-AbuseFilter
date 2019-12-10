@@ -163,14 +163,12 @@ class AbuseFilterHooks {
 			$articleCacheKey = $title->getNamespace() . ':' . $title->getText();
 			AFComputedVariable::$articleCache[$articleCacheKey] = $page;
 
-			// Don't trigger for null edits.
-			if ( $oldContent ) {
-				// Compare Content objects if available
-				if ( $content->equals( $oldContent ) ) {
-					return null;
-				}
-			} elseif ( strcmp( $oldAfText, $text ) === 0 ) {
-				// Otherwise, compare strings
+			// Don't trigger for null edits. Compare Content objects if available, but check the
+			// stringified contents as well, e.g. for line endings normalization (T240115)
+			if (
+				( $oldContent && $content->equals( $oldContent ) ) ||
+				strcmp( $oldAfText, $text ) === 0
+			) {
 				return null;
 			}
 		} else {
@@ -314,7 +312,9 @@ class AbuseFilterHooks {
 	) {
 		$curTitle = $wikiPage->getTitle()->getPrefixedText();
 		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) ||
-			$wikiPage !== self::$lastEditPage
+			$wikiPage !== self::$lastEditPage ||
+			// Null edit. Too bad that there's no other way to recognize them.
+			$status->hasMessage( 'edit-no-change' )
 		) {
 			// This isn't the edit AbuseFilter::$logIds was set for
 			AbuseFilter::$logIds = [];
