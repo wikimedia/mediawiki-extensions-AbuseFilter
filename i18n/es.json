@@ -53,7 +53,8 @@
 			"Jelou",
 			"Tiberius1701",
 			"Marcelo9987",
-			"PoLuX124"
+			"PoLuX124",
+			"Ninovolador"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -355,7 +356,8 @@
 	"abusefilter-edit-builder-misc-contains": "La cadena izquierda contiene la cadena derecha (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Cadena de caracteres literal (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Operador ternario (X ? Y : Z)",
-	"abusefilter-edit-builder-misc-cond": "Condicional (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond": "Condicional (if X then Y else Z end)",
+	"abusefilter-edit-builder-misc-cond-short": "Condicional corto (if X then Y end)",
 	"abusefilter-edit-builder-group-funcs": "Funciones",
 	"abusefilter-edit-builder-funcs-length": "Longitud de la cadena de caracteres (length)",
 	"abusefilter-edit-builder-funcs-lcase": "A minúsculas (lcase)",
