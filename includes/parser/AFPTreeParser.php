@@ -13,7 +13,7 @@ use Psr\Log\LoggerInterface;
 /**
  * A parser that transforms the text of the filter into a parse tree.
  */
-class AFPTreeParser {
+class AFPTreeParser extends AFPTransitionBase {
 	/**
 	 * @var array[] Contains the AFPTokens for the code being parsed
 	 */
@@ -22,10 +22,6 @@ class AFPTreeParser {
 	 * @var AFPToken The current token
 	 */
 	public $mCur;
-	/**
-	 * @var int The position of the current token
-	 */
-	public $mPos;
 	/**
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
@@ -734,47 +730,5 @@ class AFPTreeParser {
 
 		$this->move();
 		return $result;
-	}
-
-	/**
-	 * Check that a built-in function has been provided the right amount of arguments
-	 *
-	 * @param array $args The arguments supplied to the function
-	 * @param string $func The function name
-	 * @throws AFPUserVisibleException
-	 * @see AbuseFilterParser::checkArgCount()
-	 * @todo This is a duplicate of AbuseFilter::checkEnoughArguments, and such duplication
-	 * should be avoided when merging the parsers.
-	 */
-	protected function checkArgCount( $args, $func ) {
-		if ( !array_key_exists( $func, AbuseFilterParser::FUNC_ARG_COUNT ) ) {
-			throw new InvalidArgumentException( "$func is not a valid function." );
-		}
-		list( $min, $max ) = AbuseFilterParser::FUNC_ARG_COUNT[ $func ];
-		if ( count( $args ) < $min ) {
-			throw new AFPUserVisibleException(
-				$min === 1 ? 'noparams' : 'notenoughargs',
-				$this->mCur->pos,
-				[ $func, $min, count( $args ) ]
-			);
-		} elseif ( count( $args ) > $max ) {
-			throw new AFPUserVisibleException(
-				'toomanyargs',
-				$this->mCur->pos,
-				[ $func, $max, count( $args ) ]
-			);
-		}
-	}
-
-	/**
-	 * @param string $fname
-	 * @return bool
-	 * @see AbuseFilterParser::functionIsVariadic
-	 */
-	protected function functionIsVariadic( $fname ) {
-		if ( !array_key_exists( $fname, AbuseFilterParser::FUNC_ARG_COUNT ) ) {
-			throw new InvalidArgumentException( "Function $fname is not valid" );
-		}
-		return AbuseFilterParser::FUNC_ARG_COUNT[$fname][1] === INF;
 	}
 }
