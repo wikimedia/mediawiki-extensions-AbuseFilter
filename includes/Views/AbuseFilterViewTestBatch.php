@@ -34,6 +34,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 * @var string The action (performed by the user) we want to search for
 	 */
 	public $mTestAction;
+	/**
+	 * @var string The text of the rule to test changes against
+	 */
+	private $testPattern;
 
 	/**
 	 * Shows the page
@@ -55,7 +59,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$output = '';
 		$output .=
 			$this->buildEditBox(
-				$this->mFilter,
+				$this->testPattern,
 				true,
 				true,
 				false
@@ -151,7 +155,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
-		$result = AbuseFilter::checkSyntax( $this->mFilter );
+		$result = AbuseFilter::checkSyntax( $this->testPattern );
 		if ( $result !== true ) {
 			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
@@ -193,7 +197,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$conds[] = $this->buildTestConditions( $dbr, $action );
 
 		// Get our ChangesList
-		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mFilter );
+		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );
 		$output = $changesList->beginRecentChangesList();
 
 		$rcQuery = RecentChange::getQueryInfo();
@@ -217,7 +221,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 			$parser = AbuseFilter::getDefaultParser( $vars );
 			$parser->toggleConditionLimit( false );
-			$result = AbuseFilter::checkConditions( $this->mFilter, $parser );
+			$result = AbuseFilter::checkConditions( $this->testPattern, $parser );
 
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item
@@ -240,7 +244,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function loadParameters() {
 		$request = $this->getRequest();
 
-		$this->mFilter = $request->getText( 'wpFilterRules' );
+		$this->testPattern = $request->getText( 'wpFilterRules' );
 		$this->mShowNegative = $request->getBool( 'wpShowNegative' );
 		$testUsername = $request->getText( 'wpTestUser' );
 		$this->mTestPeriodEnd = $request->getText( 'wpTestPeriodEnd' );
@@ -249,12 +253,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->mExcludeBots = $request->getBool( 'wpExcludeBots' );
 		$this->mTestAction = $request->getText( 'wpTestAction' );
 
-		if ( !$this->mFilter
+		if ( !$this->testPattern
 			&& count( $this->mParams ) > 1
 			&& is_numeric( $this->mParams[1] )
 		) {
 			$dbr = wfGetDB( DB_REPLICA );
-			$this->mFilter = $dbr->selectField( 'abuse_filter',
+			$this->testPattern = $dbr->selectField( 'abuse_filter',
 				'af_pattern',
 				[ 'af_id' => $this->mParams[1] ],
 				__METHOD__
