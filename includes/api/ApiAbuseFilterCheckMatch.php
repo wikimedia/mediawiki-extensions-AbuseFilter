@@ -51,7 +51,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			throw new LogicException( 'Impossible.' );
 		}
 
-		$parser = AbuseFilter::getDefaultParser();
+		$parser = AbuseFilterServices::getParserFactory()->newParser();
 		if ( $parser->checkSyntax( $params[ 'filter' ] ) !== true ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}

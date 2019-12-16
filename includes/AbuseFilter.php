@@ -177,7 +177,7 @@ class AbuseFilter {
 		$group = 'default',
 		$mode = 'execute'
 	) {
-		$parser = self::getDefaultParser( $vars );
+		$parser = AbuseFilterServices::getParserFactory()->newParser( $vars );
 		$user = RequestContext::getMain()->getUser();
 
 		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
@@ -710,7 +710,8 @@ class AbuseFilter {
 		$validationStatus = Status::newGood();
 
 		// Check the syntax
-		$syntaxerr = self::getDefaultParser()->checkSyntax( $newRow->af_pattern );
+		$parser = AbuseFilterServices::getParserFactory()->newParser();
+		$syntaxerr = $parser->checkSyntax( $newRow->af_pattern );
 		if ( $syntaxerr !== true ) {
 			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
 			return $validationStatus;
@@ -1393,34 +1394,6 @@ class AbuseFilter {
 		}
 
 		return $firstChanges[$filterID];
-	}
-
-	/**
-	 * Get a parser instance using default options. This should mostly be intended as a wrapper
-	 * around $wgAbuseFilterParserClass and for choosing the right type of cache. It also has the
-	 * benefit of typehinting the return value, thus making IDEs and static analysis tools happier.
-	 *
-	 * @param AbuseFilterVariableHolder|null $vars
-	 * @return AbuseFilterParser
-	 * @throws InvalidArgumentException if $wgAbuseFilterParserClass is not valid
-	 */
-	public static function getDefaultParser(
-		AbuseFilterVariableHolder $vars = null
-	) : AbuseFilterParser {
-		global $wgAbuseFilterParserClass;
-
-		$allowedValues = [ AbuseFilterParser::class, AbuseFilterCachingParser::class ];
-		if ( !in_array( $wgAbuseFilterParserClass, $allowedValues ) ) {
-			throw new InvalidArgumentException(
-				"Invalid value $wgAbuseFilterParserClass for \$wgAbuseFilterParserClass."
-			);
-		}
-
-		$contLang = MediaWikiServices::getInstance()->getContentLanguage();
-		$cache = ObjectCache::getLocalServerInstance( 'hash' );
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$keywordsManager = AbuseFilterServices::getKeywordsManager();
-		return new $wgAbuseFilterParserClass( $contLang, $cache, $logger, $keywordsManager, $vars );
 	}
 
 	/**

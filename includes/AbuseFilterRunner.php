@@ -135,7 +135,7 @@ class AbuseFilterRunner {
 	 * @return AbuseFilterParser
 	 */
 	protected function getParser() : AbuseFilterParser {
-		return AbuseFilter::getDefaultParser( $this->vars );
+		return AbuseFilterServices::getParserFactory()->newParser( $this->vars );
 	}
 
 	/**
