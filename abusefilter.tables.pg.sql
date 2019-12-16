@@ -48,7 +48,7 @@ CREATE TABLE abuse_filter_log (
     afl_title        TEXT        NOT NULL,
     afl_wiki         TEXT            NULL,
     afl_deleted      SMALLINT    NOT NULL             DEFAULT 0,
-    afl_patrolled_by INTEGER         NULL,
+    afl_patrolled_by INTEGER     NOT NULL             DEFAULT 0,
     afl_rev_id       INTEGER         NULL,
     afl_global       SMALLINT    NOT NULL             DEFAULT 0,
     afl_filter_id    INTEGER     NOT NULL             DEFAULT 0
