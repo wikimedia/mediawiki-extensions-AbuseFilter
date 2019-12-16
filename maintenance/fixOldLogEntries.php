@@ -48,9 +48,9 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 		$dbr = wfGetDB( DB_REPLICA, 'vslow' );
 		$newFormatLike = $dbr->buildLike( $dbr->anyString(), 'historyId', $dbr->anyString() );
 		// Select all non-legacy entries
-		$res = $dbr->select(
+		$res = $dbr->selectFieldValues(
 			'logging',
-			[ 'log_params' ],
+			'log_params',
 			[
 				'log_type' => 'abusefilter',
 				"log_params $newFormatLike"
@@ -58,9 +58,13 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 			__METHOD__
 		);
 
+		if ( !$res ) {
+			return [];
+		}
+
 		$legacyParams = [];
-		foreach ( $res as $row ) {
-			$params = unserialize( $row->log_params );
+		foreach ( $res as $logParams ) {
+			$params = unserialize( $logParams );
 			// The script always inserted duplicates with the wrong '\n'
 			$legacyParams[] = $params['historyId'] . '\n' . $params['newId'];
 		}
@@ -76,7 +80,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 			__METHOD__
 		);
 
-		if ( !$this->dryRun ) {
+		if ( !$this->dryRun && $deleteIDs ) {
 			// Note that we delete entries with legacy format, which are the ones erroneously inserted
 			// by the script.
 			wfGetDB( DB_MASTER )->delete(
