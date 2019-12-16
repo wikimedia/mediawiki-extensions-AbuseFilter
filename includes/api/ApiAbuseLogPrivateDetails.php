@@ -51,7 +51,7 @@ class ApiAbuseLogPrivateDetails extends ApiBase {
 		$user = $this->getUser();
 
 		if ( !SpecialAbuseLog::canSeePrivateDetails( $user ) ) {
-			$this->dieWithError( 'abusefilter-log-cannot-see-private-details' );
+			$this->dieWithError( 'abusefilter-log-cannot-see-privatedetails' );
 		}
 		$params = $this->extractRequestParams();
 
