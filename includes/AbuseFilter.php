@@ -211,6 +211,8 @@ class AbuseFilter {
 			'file_width' => 'file-width',
 			'file_height' => 'file-height',
 			'file_bits_per_channel' => 'file-bits-per-channel',
+			'wiki_name' => 'wiki-name',
+			'wiki_language' => 'wiki-language',
 		],
 	];
 

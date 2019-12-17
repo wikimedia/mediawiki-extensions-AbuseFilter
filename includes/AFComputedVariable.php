@@ -474,6 +474,12 @@ class AFComputedVariable {
 				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
 				$result = AbuseFilter::revisionToString( $rev, $wgUser );
 				break;
+			case 'get-wiki-name':
+				$result = WikiMap::getCurrentWikiDbDomain()->getId();
+				break;
+			case 'get-wiki-language':
+				$result = MediaWikiServices::getInstance()->getContentLanguage()->getCode();
+				break;
 			default:
 				if ( Hooks::run( 'AbuseFilter-computeVariable',
 									[ $this->mMethod, $vars, $parameters, &$result ] ) ) {

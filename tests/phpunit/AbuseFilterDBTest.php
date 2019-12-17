@@ -478,4 +478,48 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			[ 'my_tag', null ],
 		];
 	}
+
+	/**
+	 * Test for the wiki_name variable.
+	 *
+	 * @covers AbuseFilter::generateGenericVars
+	 * @covers AFComputedVariable::compute
+	 */
+	public function testWikiNameVar() {
+		$name = 'foo';
+		$prefix = 'bar';
+		$this->setMwGlobals( [
+			'wgDBname' => $name,
+			'wgDBprefix' => $prefix
+		] );
+
+		$vars = new AbuseFilterVariableHolder();
+		$vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
+		$this->assertSame(
+			"$name-$prefix",
+			$vars->getVar( 'wiki_name' )->toNative()
+		);
+	}
+
+	/**
+	 * Test for the wiki_language variable.
+	 *
+	 * @covers AbuseFilter::generateGenericVars
+	 * @covers AFComputedVariable::compute
+	 */
+	public function testWikiLanguageVar() {
+		$fakeCode = 'foobar';
+		$fakeLang = $this->getMockBuilder( Language::class )
+			->setMethods( [ 'getCode' ] )
+			->getMock();
+		$fakeLang->method( 'getCode' )->willReturn( $fakeCode );
+		$this->setService( 'ContentLanguage', $fakeLang );
+
+		$vars = new AbuseFilterVariableHolder();
+		$vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
+		$this->assertSame(
+			$fakeCode,
+			$vars->getVar( 'wiki_language' )->toNative()
+		);
+	}
 }
