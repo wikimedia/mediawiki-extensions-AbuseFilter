@@ -441,7 +441,7 @@
 	"abusefilter-exception-notenoughargs": "Non satis de parametros pro le function $2 appellate al character $1.\nExpectava $3 {{PLURAL:$3|parametro|parametros}}, recipeva $4.",
 	"abusefilter-exception-toomanyargs": "Troppo de parametros pro le function $2 appellate al character $1.\nExpectava un maximo de $3 {{PLURAL:$3|parametro|parametros}}, recipeva $4.",
 	"abusefilter-exception-regexfailure": "Error in le expression regular \"$2\" al character $1.",
-	"abusefilter-exception-overridebuiltin": "Supplantation invalide del variabile incorporate \"$2\" al character $1.",
+	"abusefilter-exception-overridebuiltin": "Impossibile supplantar le identificator interne \"$2\" al character $1.",
 	"abusefilter-exception-outofbounds": "Requesta de un elemento de array non existente $2 (dimension del array = $3) al character $1.",
 	"abusefilter-exception-negativeindex": "Le indices negative non es permittite in arrays. Indice \"$2\" incontrate al character $1.",
 	"abusefilter-exception-notarray": "Requesta de un elemento de array ab un variabile non array al character $1.",

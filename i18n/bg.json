@@ -424,7 +424,7 @@
 	"abusefilter-exception-unrecognisedvar": "Неразпозната променлива $2 при знака $1",
 	"abusefilter-exception-notenoughargs": "Недостатъчно аргументи за изпълнението на функция $2, извикана на знак $1.\n{{PLURAL:$3|Очакван е|Очаквани са}} $3 {{PLURAL:$3|аргумент|аргумента}}, {{PLURAL:$4|получен е|получени са}} $4",
 	"abusefilter-exception-regexfailure": "Грешка в регулярния израз „$2“ при знак $1.",
-	"abusefilter-exception-overridebuiltin": "Непозволено предефиниране на вградената променлива „$2“ при знак $1.",
+	"abusefilter-exception-overridebuiltin": "Непозволено предефиниране на вградения идентификатор „$2“ при знак $1.",
 	"abusefilter-exception-outofbounds": "Опит да се осъществи достъп до несъществуващ елемент $2 на масив (елементи в масива $3) при знак $1.",
 	"abusefilter-exception-notarray": "Неуспешен опит за извикане на елемент от масив при знак $1.",
 	"abusefilter-exception-unclosedcomment": "Незатворен коментар, започващ от знак $1.",
