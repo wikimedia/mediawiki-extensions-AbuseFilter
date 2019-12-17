@@ -34,14 +34,16 @@ class VariableGenerator {
 	}
 
 	/**
-	 * Computes all variables unrelated to title and user. In general, these variables are known
+	 * Computes all variables unrelated to title and user. In general, these variables may be known
 	 * even without an ongoing action.
 	 *
+	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
+	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addStaticVars() : self {
+	public function addGenericVars( RCDatabaseLogEntry $entry = null ) : self {
 		// For now, we don't have variables to add; other extensions could.
-		Hooks::run( 'AbuseFilter-generateStaticVars', [ $this->vars ] );
+		Hooks::run( 'AbuseFilter-generateGenericVars', [ $this->vars, $entry ] );
 		return $this;
 	}
 
