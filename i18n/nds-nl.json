@@ -59,7 +59,7 @@
 	"abusefilter-log-details-ip": "IP-adres",
 	"abusefilter-log-noactions": "gien",
 	"abusefilter-log-details-diff": "Wiezigingen in de bewarking",
-	"abusefilter-log-linkoncontribs": "filterlogboek",
+	"abusefilter-log-linkoncontribs": "misbruuklogbook",
 	"abusefilter-log-hide-legend": "Logboekregel verbargen",
 	"abusefilter-log-hide-id": "Logboekmeldingsnummer:",
 	"abusefilter-log-hide-reason": "Reden:",
@@ -176,5 +176,6 @@
 	"abusefilter-revert-periodend": "Einde periode:",
 	"abusefilter-revert-search": "Maotregels selekteren",
 	"abusefilter-revert-filter": "Filter:",
-	"abusefilter-examine-user": "Gebruker:"
+	"abusefilter-examine-user": "Gebruker:",
+	"abusefilter-topnav-log": "Misbruuklogbook"
 }
