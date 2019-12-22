@@ -214,6 +214,7 @@
 	"abusefilter-list-options-search-like": "纯文本查询",
 	"abusefilter-list-options-search-rlike": "正则表达式",
 	"abusefilter-list-options-search-irlike": "不区分大小写的正则表达式",
+	"abusefilter-list-invalid-searchmode": "指定的搜索模式无效。",
 	"abusefilter-list-regexerror": "搜索时发生错误：正则表达式语法错误。",
 	"abusefilter-list-options-submit": "更新",
 	"abusefilter-tools-text": "这里提供了一些实用的制作和测试防滥用过滤器的工具。",

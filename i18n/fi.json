@@ -522,7 +522,7 @@
 	"abusefilter-import-submit": "Tuo tiedot",
 	"abusefilter-group-default": "Yleinen",
 	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1.",
-	"abusefilter-view-privatedetails-submit": "Näytä yksityiskohdat",
+	"abusefilter-view-privatedetails-submit": "Näytä yksityiset tiedot",
 	"abusefilter-view-privatedetails-legend": "Näytä yksityiskohdat",
 	"abusefilter-view-privatedetails-reason": "Syy yksityiskohtien näyttämiseen:",
 	"abusefilter-log-details-id": "Lokin tunnistenumero",
