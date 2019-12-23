@@ -195,7 +195,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $history_id ) {
 			$oldWarningMessage = AbuseFilter::canEditFilter( $user, $row )
 				? 'abusefilter-edit-oldwarning'
-				: 'abusefilter-view-oldwarning';
+				: 'abusefilter-edit-oldwarning-view';
 			$out->addWikiMsg(
 				$oldWarningMessage,
 				$history_id,
