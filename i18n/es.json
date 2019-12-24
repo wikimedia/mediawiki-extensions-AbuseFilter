@@ -54,7 +54,8 @@
 			"Tiberius1701",
 			"Marcelo9987",
 			"PoLuX124",
-			"Ninovolador"
+			"Ninovolador",
+			"DannyS712"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -493,7 +494,7 @@
 	"abusefilter-exception-notenoughargs": "No se han proporcionado todos los argumentos necesarios a la función $2, que fue llamada en el carácter $1.\nSe {{PLURAL:$3|esperaba|esperaban}} $3 {{PLURAL:$3|argumento|argumentos}} y se {{PLURAL:$4|ha|han}} proporcionado $4.",
 	"abusefilter-exception-toomanyargs": "Demasiados argumentos para la función $2 llamada en el carácter $1.\nSe espera como máximo $3 {{PLURAL:$3|argumento|argumentos}}, se {{PLURAL:$4|proporcionó|proporcionaron}} $4",
 	"abusefilter-exception-regexfailure": "Error en la expresión regular «$2» en el carácter $1.",
-	"abusefilter-exception-overridebuiltin": "Anulación incorrecta de la variable «$2» en el carácter $1.",
+	"abusefilter-exception-overridebuiltin": "Anulación incorrecta de el identificador «$2» en el carácter $1.",
 	"abusefilter-exception-outofbounds": "Solicitando un elemento inexistente $2 en la matriz (tamaño de la matriz = $3) en el carácter $1.",
 	"abusefilter-exception-notarray": "Solicitando un objeto de matriz en un objeto que no es una matriz, en el carácter $1.",
 	"abusefilter-exception-unclosedcomment": "Comentario sin cerrar en el carácter $1.",

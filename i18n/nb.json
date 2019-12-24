@@ -199,7 +199,7 @@
 	"abusefilter-edit-subtitle-new": "Oppretter filter",
 	"abusefilter-edit-token-not-match": "Redigeringen ble ikke lagret! Lagre på nytt.",
 	"abusefilter-edit-oldwarning": "<strong>Du redigerer på en gammel versjon av dette filteret. Statistikken oppgitt er for siste versjon av filteret. Hvis du lagrer dine endringer, vil du overskrive alle endringer siden den revisjonen du redigerer</strong> &bull; [[Special:AbuseFilter/history/$2|Gå tilbake til filterets historikk]]",
-	"abusefilter-view-oldwarning": "<strong>Du viser en gammel versjon av dette filteret.\nStatistikken som siteres gjelder den nyligste versjonen av filteret.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Tilbake til filterets historikk]].",
+	"abusefilter-edit-oldwarning-view": "<strong>Du viser en gammel versjon av dette filteret.\nStatistikken som siteres gjelder den nyligste versjonen av filteret.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Tilbake til filterets historikk]].",
 	"abusefilter-edit-status-label": "Statistikk:",
 	"abusefilter-edit-status": "Av {{PLURAL:$1|den siste handlingen|de siste $1 handlingene}} har dette filteret matchet $2 ($3 %).\nI gjennomsnitt er kjøretiden $4 ms, og det bruker $5 {{PLURAL:$5|vilkår}} av vilkårsgrensen.",
 	"abusefilter-edit-throttled-warning": "'''Advarsel:''' Dette filteret ble automatisk flagget som skadefullt. Av sikkerhetsårsaker vil følgende handlinger ikke bli utført ($1). Gå gjennom og [[mw:Extension:AbuseFilter/Conditions|optimer]] betingelsene for å fjerne denne begrensningen",
