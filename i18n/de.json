@@ -324,7 +324,7 @@
 	"abusefilter-edit-builder-misc-contains": "Linke Zeichenkette beinhaltet rechte Zeichenkette (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Feste Zeichenkette (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Kurze Operatoren (X ? Y : Z)",
-	"abusefilter-edit-builder-misc-cond": "Konditional (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond": "Konditional (if X then Y else Z end)",
 	"abusefilter-edit-builder-group-funcs": "Funktionen",
 	"abusefilter-edit-builder-funcs-length": "Länge der Zeichenfolge (length)",
 	"abusefilter-edit-builder-funcs-lcase": "In Kleinbuchstaben konvertieren (lcase)",

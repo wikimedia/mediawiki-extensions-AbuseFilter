@@ -453,7 +453,7 @@
 	"abusefilter-exception-unclosedcomment": "Commende apirte in corrispondenze d'u carattere $1.",
 	"abusefilter-exception-invalidiprange": "Indervalle IP \"$2\" non valide a 'u carattere $1",
 	"abusefilter-exception-disabledvar": "Variabbile $2 a 'u carattere $1 non ge se po ausà cchiù.",
-	"abusefilter-exception-variablevariable": "'A variabbele de le variabbele non g'è permesse, acchiate a 'u carattere $1.",
+	"abusefilter-exception-variablevariable": "set e set_var s'aspettane ca 'u prime argomende adda essere 'na stringhe letterale, acchiate a 'u carattere $1.",
 	"abusefilter-action-tag": "Tag",
 	"abusefilter-action-throttle": "Annullate",
 	"abusefilter-action-warn": "Avvertì",

@@ -323,7 +323,7 @@
 	"abusefilter-edit-builder-misc-contains": "Lewy ciąg znaków zawiera prawy (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Łańcuch znaków (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Operator warunkowy (X ? Y : Z)",
-	"abusefilter-edit-builder-misc-cond": "Warunkowo (if X then Y else Z)",
+	"abusefilter-edit-builder-misc-cond": "Warunkowo (if X then Y else Z end)",
 	"abusefilter-edit-builder-group-funcs": "Funkcje",
 	"abusefilter-edit-builder-funcs-length": "Długość ciągu znaków (length)",
 	"abusefilter-edit-builder-funcs-lcase": "Na małe litery (lcase)",

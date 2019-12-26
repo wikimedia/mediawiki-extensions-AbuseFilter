@@ -473,7 +473,7 @@
 	"abusefilter-exception-unclosedcomment": "تعليق غير مغلق في الحرف $1.",
 	"abusefilter-exception-invalidiprange": "نطاق عنوان أيبي غير صالح \"$2\" متوفر بالحرف $1.",
 	"abusefilter-exception-disabledvar": "لم يعد المتغير $2 عند الحرف $1 قيد الاستخدام.",
-	"abusefilter-exception-variablevariable": "المتغيرات المتغيرة غير مسموح بها، موجودة في الحرف $1.",
+	"abusefilter-exception-variablevariable": "set وset_var يتوقعان أن تكون الوسيطة الأولى عبارة عن سلسلة حرفية، موجودة في الحرف $1.",
 	"abusefilter-action-tag": "وسم",
 	"abusefilter-action-throttle": "حد",
 	"abusefilter-action-warn": "تحذير",

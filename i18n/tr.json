@@ -469,7 +469,7 @@
 	"abusefilter-exception-unclosedcomment": "$1 karakterindeki açıklanmamış yorum.",
 	"abusefilter-exception-invalidiprange": "$1 karakterinde geçersiz IP aralığı \"$2\" verildi.",
 	"abusefilter-exception-disabledvar": "$1 karakterindeki $2 değişkeni artık kullanımda değil.",
-	"abusefilter-exception-variablevariable": "$1 karakterinde değişken değişkenlere izin verilmez.",
+	"abusefilter-exception-variablevariable": "set ve set_var ilk argümanın $1 karakterinde bulunan bir dizgi değişmezi olmasını bekler.",
 	"abusefilter-action-tag": "Etiketle",
 	"abusefilter-action-throttle": "Kısıtla",
 	"abusefilter-action-warn": "Uyar",
