@@ -164,10 +164,11 @@ class AbuseFilterHooks {
 			AFComputedVariable::$articleCache[$articleCacheKey] = $page;
 
 			// Don't trigger for null edits. Compare Content objects if available, but check the
-			// stringified contents as well, e.g. for line endings normalization (T240115)
+			// stringified contents as well, e.g. for line endings normalization (T240115).
+			// Don't treat content model change as null edit though.
 			if (
 				( $oldContent && $content->equals( $oldContent ) ) ||
-				strcmp( $oldAfText, $text ) === 0
+				( $oldContent->getModel() === $content->getModel() && strcmp( $oldAfText, $text ) === 0 )
 			) {
 				return null;
 			}
