@@ -476,7 +476,7 @@
 	"abusefilter-exception-unclosedcomment": "Comentário por fechar, no caráter $1.",
 	"abusefilter-exception-invalidiprange": "Foi fornecida uma gama IP inválida \"$2\" no carácter $1.",
 	"abusefilter-exception-disabledvar": "A variável $2 na posição $1 deixou de ser usada.",
-	"abusefilter-exception-variablevariable": "Variáveis variáveis não são permitidas, encontradas no caractere $1.",
+	"abusefilter-exception-variablevariable": "set e set_var esperam que o primeiro argumento seja uma string literal, encontrada no caractere $1.",
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitador",
 	"abusefilter-action-warn": "Avisar",

@@ -181,6 +181,7 @@
 	"abusefilter-list-options-searchfield": "Zoeken binnen de regels:",
 	"abusefilter-list-options-searchpattern": "Patroon invoegen",
 	"abusefilter-list-options-searchoptions": "Zoekmodus:",
+	"abusefilter-list-options-search-like": "Normale zoekopdracht",
 	"abusefilter-list-options-search-rlike": "Reguliere expressie",
 	"abusefilter-list-options-search-irlike": "Hoofdletter-ongevoelige reguliere expressie",
 	"abusefilter-list-invalid-searchmode": "De opgegeven zoekmodus is ongeldig.",
