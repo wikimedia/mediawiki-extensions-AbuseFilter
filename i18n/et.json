@@ -423,7 +423,7 @@
 	"abusefilter-exception-unrecognisedvar": "Tundmatu muutuja \"$2\" $1. märgi juures",
 	"abusefilter-exception-notenoughargs": "Funktsiooni $2 jaoks ei kutsutud märgi $1 juures piisavalt argumente.\nOodati {{PLURAL:$3|üht|$3}} argumenti, oli aga $4",
 	"abusefilter-exception-regexfailure": "Tõrge regulaaravaldises \"$2\" $1. märgi juures.",
-	"abusefilter-exception-overridebuiltin": "Sisseehitatud muutuja \"$2\" reeglitevastane ülekirjutus märgi $1 juures.",
+	"abusefilter-exception-overridebuiltin": "Sisseehitatud identifikaatori \"$2\" reeglitevastane ülekirjutus märgi $1 juures.",
 	"abusefilter-exception-outofbounds": "Päring olematu massiiviüksuse $2 (massiivi suurus: $3) kohta $1. märgi juures.",
 	"abusefilter-action-tag": "Märgista",
 	"abusefilter-action-throttle": "Pärsi",

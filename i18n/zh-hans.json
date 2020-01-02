@@ -169,7 +169,7 @@
 	"log-action-filter-abusefilter-modify": "过滤器修改",
 	"log-action-filter-suppress-abuselog": "滥用日志监督",
 	"log-action-filter-rights-blockautopromote": "自动升级模块",
-	"log-action-filter-rights-restoreautopromote": "自动提示存储",
+	"log-action-filter-rights-restoreautopromote": "自动提升还原",
 	"logentry-abusefilterprivatedetails-access": "$1{{GENDER:$2|访问了}}$3的私有详情",
 	"logentry-rights-blockautopromote": "$1{{GENDER:$2|限制}}{{GENDER:$4|$3}}$5内的自动权限提升",
 	"logentry-rights-restoreautopromote": "$1{{GENDER:$2|存储}}{{GENDER:$4|$3}}的自动提示能力",

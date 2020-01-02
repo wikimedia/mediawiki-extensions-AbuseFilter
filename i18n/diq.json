@@ -466,5 +466,6 @@
 	"abusefilter-group-default": "Hesabiyaye",
 	"abusefilter-http-error": "Yew xırabeya HTTP'i biyo: $1",
 	"abusefilter-view-privatedetails-submit": "Detayanê xısusiya bıvênê",
+	"abusefilter-log-details-id": "Kamiya qeydi",
 	"tag-abusefilter-condition-limit": "reşt sinorê şerti"
 }
