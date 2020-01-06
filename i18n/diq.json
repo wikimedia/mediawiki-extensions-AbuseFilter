@@ -56,7 +56,7 @@
 	"abusefilter-log-search-user": "Karber:",
 	"abusefilter-log-search-group": "Parzûnê grube:",
 	"abusefilter-log-search-group-any": "Qet",
-	"abusefilter-log-search-filter": "Kamiya parzûni (boriyan ra ciya):",
+	"abusefilter-log-search-filter": "Kamiya parzûni:",
 	"abusefilter-log-search-title": "Sername:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Tesir:",
@@ -205,6 +205,7 @@
 	"abusefilter-throttle-user": "Hesabê karberi",
 	"abusefilter-throttle-range": "/16 sope",
 	"abusefilter-throttle-creationdate": "Tarixê hesab akerdışi",
+	"abusefilter-throttle-editcount": "hesabi bıvurne",
 	"abusefilter-throttle-page": "Pele",
 	"abusefilter-throttle-none": "(çıniyo)",
 	"abusefilter-edit-warn-message": "Mesajê sistemî ke qe îkaz kerdişî viraziyo:",
@@ -364,6 +365,7 @@
 	"abusefilter-history-filterid": "Parzûn",
 	"abusefilter-history-select-legend": "Cı geyrayışi amyayeney fi",
 	"abusefilter-history-select-user": "Karber:",
+	"abusefilter-history-select-filter": "Kamiya parzûni:",
 	"abusefilter-history-select-submit": "Amyayeney fi",
 	"abusefilter-history-diff": "Vurnayışi",
 	"abusefilter-history-error-hidden": "filtreya ke şıma waşto nımteyo u şıma nêeşkeni hal-verinê aye bıvini.",
@@ -467,5 +469,6 @@
 	"abusefilter-http-error": "Yew xırabeya HTTP'i biyo: $1",
 	"abusefilter-view-privatedetails-submit": "Detayanê xısusiya bıvênê",
 	"abusefilter-log-details-id": "Kamiya qeydi",
+	"abusefilter-log-ip-not-available": "Çıniyo",
 	"tag-abusefilter-condition-limit": "reşt sinorê şerti"
 }
