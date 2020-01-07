@@ -794,31 +794,18 @@ class AbuseFilterRunner {
 	protected function isThrottled( $throttleId, $types, $rateCount, $ratePeriod, $global = false ) {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$key = $this->throttleKey( $throttleId, $types, $global );
-		$count = intval( $stash->get( $key ) );
+		$count = (int)$stash->get( $key );
 
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		$logger->debug( "Got value $count for throttle key $key" );
 
-		if ( $count > 0 ) {
-			$stash->incr( $key );
-			$count++;
-			$logger->debug( "Incremented throttle key $key" );
-		} else {
-			$logger->debug( "Added throttle key $key with value 1" );
-			$stash->add( $key, 1, $ratePeriod );
-			$count = 1;
-		}
+		$count = $stash->incrWithInit( $key, $ratePeriod );
 
 		if ( $count > $rateCount ) {
 			$logger->debug( "Throttle $key hit value $count -- maximum is $rateCount." );
-
-			// THROTTLED
 			return true;
 		}
-
 		$logger->debug( "Throttle $key not hit!" );
-
-		// NOT THROTTLED
 		return false;
 	}
 
