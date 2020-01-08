@@ -1,7 +1,8 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	/**
@@ -186,8 +187,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' ) {
-			$rev = Revision::newFromId( $row->afl_rev_id );
-			if ( !$rev->userCan( RevisionRecord::SUPPRESSED_ALL, $user ) ) {
+			$revRec = MediaWikiServices::getInstance()
+				->getRevisionLookup()
+				->getRevisionById( (int)$row->afl_rev_id );
+			if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
 				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 				return;
 			}

@@ -358,14 +358,14 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @param RevisionRecord $rev The revision being converted
+	 * @param RevisionRecord|null $rev The revision being converted
 	 * @param bool $sysop Whether the user should be a sysop (i.e. able to see deleted stuff)
 	 * @param string $expected The expected textual representation of the Revision
 	 * @covers AbuseFilter::revisionToString
 	 * @dataProvider provideRevisionToString
 	 * @todo This should be a unit test...
 	 */
-	public function testRevisionToString( $rev, $sysop, $expected ) {
+	public function testRevisionToString( ?RevisionRecord $rev, bool $sysop, string $expected ) {
 		/** @var MockObject|User $user */
 		$user = $this->getMockBuilder( User::class )
 			->setMethods( [ 'getEffectiveGroups' ] )
@@ -397,11 +397,6 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		$title = Title::newFromText( __METHOD__ );
 		$revRec = new MutableRevisionRecord( $title );
 		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
-		yield 'Revision instance' => [
-			new Revision( $revRec ),
-			false,
-			'Main slot text.'
-		];
 
 		yield 'RevisionRecord instance' => [
 			$revRec,
@@ -521,5 +516,40 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			$fakeCode,
 			$vars->getVar( 'wiki_language' )->toNative()
 		);
+	}
+
+	/**
+	 * @param RevisionRecord $revRec
+	 * @param bool $privileged
+	 * @param bool $expected
+	 * @dataProvider provideUserCanViewRev
+	 * @covers AbuseFilter::userCanViewRev
+	 */
+	public function testUserCanViewRev( RevisionRecord $revRec, bool $privileged, bool $expected ) {
+		$user = $privileged
+			? $this->getTestUser( 'suppress' )->getUser()
+			: $this->getTestUser()->getUser();
+		$this->assertSame( $expected, AbuseFilter::userCanViewRev( $revRec, $user ) );
+	}
+
+	/**
+	 * @return Generator|array
+	 */
+	public function provideUserCanViewRev() {
+		$title = Title::newFromText( __METHOD__ );
+
+		$visible = new MutableRevisionRecord( $title );
+		yield 'Visible, not privileged' => [ $visible, false, true ];
+		yield 'Visible, privileged' => [ $visible, true, true ];
+
+		$userSup = new MutableRevisionRecord( $title );
+		$userSup->setVisibility( RevisionRecord::SUPPRESSED_USER );
+		yield 'User suppressed, not privileged' => [ $userSup, false, false ];
+		yield 'User suppressed, privileged' => [ $userSup, true, true ];
+
+		$allSupp = new MutableRevisionRecord( $title );
+		$allSupp->setVisibility( RevisionRecord::SUPPRESSED_ALL );
+		yield 'All suppressed, not privileged' => [ $allSupp, false, false ];
+		yield 'All suppressed, privileged' => [ $allSupp, true, true ];
 	}
 }
