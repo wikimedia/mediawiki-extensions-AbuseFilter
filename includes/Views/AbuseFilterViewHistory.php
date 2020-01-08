@@ -94,10 +94,6 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 
 		$pager = new AbuseFilterHistoryPager( $filter, $this, $user, $this->linkRenderer );
 
-		$out->addHTML(
-			$pager->getNavigationBar() .
-			$pager->getBody() .
-			$pager->getNavigationBar()
-		);
+		$out->addParserOutputContent( $pager->getFullOutput() );
 	}
 }
