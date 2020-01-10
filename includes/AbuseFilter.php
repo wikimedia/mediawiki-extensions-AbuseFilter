@@ -241,11 +241,11 @@ class AbuseFilter {
 
 	/**
 	 * @param User $user
-	 * @param null|stdClass $rcRow If the variables should be generated for an RC row, this is the row.
-	 *   Null if it's for the current action being filtered.
+	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
+	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateUserVars( User $user, $rcRow = null ) {
+	public static function generateUserVars( User $user, RCDatabaseLogEntry $entry = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->setLazyLoadVar(
@@ -286,7 +286,7 @@ class AbuseFilter {
 			[ 'user' => $user ]
 		);
 
-		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user, $rcRow ] );
+		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user, $entry ] );
 
 		return $vars;
 	}
@@ -355,11 +355,11 @@ class AbuseFilter {
 	/**
 	 * @param Title|null $title
 	 * @param string $prefix
-	 * @param null|stdClass $rcRow If the variables should be generated for an RC row, this is the row.
-	 *   Null if it's for the current action being filtered.
+	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
+	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateTitleVars( $title, $prefix, $rcRow = null ) {
+	public static function generateTitleVars( $title, $prefix, RCDatabaseLogEntry $entry = null ) {
 		$vars = new AbuseFilterVariableHolder;
 
 		if ( !$title ) {
@@ -400,7 +400,7 @@ class AbuseFilter {
 				'namespace' => $title->getNamespace()
 			] );
 
-		Hooks::run( 'AbuseFilter-generateTitleVars', [ $vars, $title, $prefix, $rcRow ] );
+		Hooks::run( 'AbuseFilter-generateTitleVars', [ $vars, $title, $prefix, $entry ] );
 
 		return $vars;
 	}
@@ -1632,22 +1632,31 @@ class AbuseFilter {
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public static function getVarsFromRCRow( $row ) {
-		if ( $row->rc_log_type === 'move' ) {
-			$vars = self::getMoveVarsFromRCRow( $row );
-		} elseif ( $row->rc_log_type === 'newusers' ) {
-			$vars = self::getCreateVarsFromRCRow( $row );
-		} elseif ( $row->rc_log_type === 'delete' ) {
-			$vars = self::getDeleteVarsFromRCRow( $row );
-		} elseif ( $row->rc_log_type == 'upload' ) {
-			$vars = self::getUploadVarsFromRCRow( $row );
-		} elseif ( $row->rc_this_oldid ) {
+		$entry = DatabaseLogEntry::newFromRow( $row );
+
+		if ( !( $entry instanceof RCDatabaseLogEntry ) ) {
+			throw new LogicException( '$row must be a recentchanges row' );
+		}
+
+		if ( $entry->getType() === 'move' ) {
+			$vars = self::getMoveVarsFromRCEntry( $entry );
+		} elseif ( $entry->getType() === 'newusers' ) {
+			$vars = self::getCreateVarsFromRCEntry( $entry );
+		} elseif ( $entry->getType() === 'delete' ) {
+			$vars = self::getDeleteVarsFromRCEntry( $entry );
+		} elseif ( $entry->getType() === 'upload' ) {
+			$vars = self::getUploadVarsFromRCEntry( $entry );
+		} elseif ( $entry->getAssociatedRevId() ) {
 			// It's an edit.
-			$vars = self::getEditVarsFromRCRow( $row );
+			$vars = self::getEditVarsFromRCEntry( $entry );
 		} else {
 			return null;
 		}
 		if ( $vars ) {
-			$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX, $row->rc_timestamp ) );
+			$vars->setVar(
+				'timestamp',
+				MWTimestamp::convert( TS_UNIX, $entry->getTimestamp() )
+			);
 			$vars->addHolders( self::generateStaticVars() );
 		}
 
@@ -1655,21 +1664,22 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param stdClass $row
+	 * @param RCDatabaseLogEntry $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getCreateVarsFromRCRow( $row ) {
+	private static function getCreateVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
 		$vars = new AbuseFilterVariableHolder;
 
-		$vars->setVar( 'action', ( $row->rc_log_action === 'autocreate' ) ?
-			'autocreateaccount' :
-			'createaccount' );
+		$vars->setVar(
+			'action',
+			$entry->getSubtype() === 'autocreate' ? 'autocreateaccount' : 'createaccount'
+		);
 
-		$name = Title::makeTitle( $row->rc_namespace, $row->rc_title )->getText();
+		$name = $entry->getTarget()->getText();
 		// Add user data if the account was created by a registered user
-		if ( $row->rc_user && $name !== $row->rc_user_text ) {
-			$user = User::newFromName( $row->rc_user_text );
-			$vars->addHolders( self::generateUserVars( $user, $row ) );
+		$user = $entry->getPerformer();
+		if ( !$user->isAnon() && $name !== $user->getName() ) {
+			$vars->addHolders( self::generateUserVars( $user, $entry ) );
 		}
 
 		$vars->setVar( 'accountname', $name );
@@ -1678,55 +1688,45 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param stdClass $row
+	 * @param RCDatabaseLogEntry $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getDeleteVarsFromRCRow( $row ) {
+	private static function getDeleteVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
 		$vars = new AbuseFilterVariableHolder;
-		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 
-		if ( $row->rc_user ) {
-			$user = User::newFromName( $row->rc_user_text );
-		} else {
-			$user = new User;
-			$user->setName( $row->rc_user_text );
-		}
+		$title = $entry->getTarget();
+		$user = $entry->getPerformer();
 
 		$vars->addHolders(
-			self::generateUserVars( $user, $row ),
-			self::generateTitleVars( $title, 'page', $row )
+			self::generateUserVars( $user, $entry ),
+			self::generateTitleVars( $title, 'page', $entry )
 		);
 
 		$vars->setVar( 'action', 'delete' );
-		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'summary', $entry->getComment() );
 
 		return $vars;
 	}
 
 	/**
-	 * @param stdClass $row
+	 * @param RCDatabaseLogEntry $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getUploadVarsFromRCRow( $row ) {
+	private static function getUploadVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
 		$vars = new AbuseFilterVariableHolder;
-		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 
-		if ( $row->rc_user ) {
-			$user = User::newFromName( $row->rc_user_text );
-		} else {
-			$user = new User;
-			$user->setName( $row->rc_user_text );
-		}
+		$title = $entry->getTarget();
+		$user = $entry->getPerformer();
 
 		$vars->addHolders(
-			self::generateUserVars( $user, $row ),
-			self::generateTitleVars( $title, 'page', $row )
+			self::generateUserVars( $user, $entry ),
+			self::generateTitleVars( $title, 'page', $entry )
 		);
 
 		$vars->setVar( 'action', 'upload' );
-		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'summary', $entry->getComment() );
 
-		$time = LogEntryBase::extractParams( $row->rc_params )['img_timestamp'];
+		$time = $entry->getParameters()['img_timestamp'];
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
 			$title, [ 'time' => $time, 'private' => true ]
 		);
@@ -1758,35 +1758,30 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param stdClass $row
+	 * @param RCDatabaseLogEntry $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getEditVarsFromRCRow( $row ) {
+	private static function getEditVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
 		$vars = new AbuseFilterVariableHolder;
-		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title );
 
-		if ( $row->rc_user ) {
-			$user = User::newFromName( $row->rc_user_text );
-		} else {
-			$user = new User;
-			$user->setName( $row->rc_user_text );
-		}
+		$title = $entry->getTarget();
+		$user = $entry->getPerformer();
 
 		$vars->addHolders(
-			self::generateUserVars( $user, $row ),
-			self::generateTitleVars( $title, 'page', $row )
+			self::generateUserVars( $user, $entry ),
+			self::generateTitleVars( $title, 'page', $entry )
 		);
 		// @todo Set old_content_model and new_content_model
 
 		$vars->setVar( 'action', 'edit' );
-		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'summary', $entry->getComment() );
 
 		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
-			[ 'revid' => $row->rc_this_oldid ] );
+			[ 'revid' => $entry->getAssociatedRevId() ] );
 
-		if ( $row->rc_last_oldid ) {
+		if ( $entry->getParentRevId() ) {
 			$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-id',
-				[ 'revid' => $row->rc_last_oldid ] );
+				[ 'revid' => $entry->getParentRevId() ] );
 		} else {
 			$vars->setVar( 'old_wikitext', '' );
 		}
@@ -1797,29 +1792,24 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param stdClass $row
+	 * @param RCDatabaseLogEntry $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function getMoveVarsFromRCRow( $row ) {
-		if ( $row->rc_user ) {
-			$user = User::newFromId( $row->rc_user );
-		} else {
-			$user = new User;
-			$user->setName( $row->rc_user_text );
-		}
+	private static function getMoveVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
+		$user = $entry->getPerformer();
 
-		$params = array_values( DatabaseLogEntry::newFromRow( $row )->getParameters() );
+		$params = array_values( $entry->getParameters() );
 
-		$oldTitle = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+		$oldTitle = $entry->getTarget();
 		$newTitle = Title::newFromText( $params[0] );
 
 		$vars = AbuseFilterVariableHolder::merge(
-			self::generateUserVars( $user, $row ),
-			self::generateTitleVars( $oldTitle, 'moved_from', $row ),
-			self::generateTitleVars( $newTitle, 'moved_to', $row )
+			self::generateUserVars( $user, $entry ),
+			self::generateTitleVars( $oldTitle, 'moved_from', $entry ),
+			self::generateTitleVars( $newTitle, 'moved_to', $entry )
 		);
 
-		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
+		$vars->setVar( 'summary', $entry->getComment() );
 		$vars->setVar( 'action', 'move' );
 
 		return $vars;
