@@ -40,6 +40,8 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers AbuseFilter
  * @covers AbuseFilterRunner
  * @covers AbuseFilterHooks
+ * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
+ * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers AbuseFilterPreAuthenticationProvider
  * @covers AbuseFilterParser
  * @todo Add upload actions everywhere

@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
 	 * @var int The limit of changes to test, hard coded for now
@@ -213,7 +215,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$counter = 1;
 
 		foreach ( $res as $row ) {
-			$vars = AbuseFilter::getVarsFromRCRow( $row );
+			$vars = RCVariableGenerator::getVarsFromRCRow( $row );
 
 			if ( !$vars ) {
 				continue;

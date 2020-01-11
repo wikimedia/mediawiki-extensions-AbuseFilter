@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+
 class ApiAbuseFilterCheckMatch extends ApiBase {
 	/**
 	 * @see ApiBase::execute
@@ -33,7 +35,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
-			$vars = AbuseFilter::getVarsFromRCRow( $row );
+			$vars = RCVariableGenerator::getVarsFromRCRow( $row );
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
