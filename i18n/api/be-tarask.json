@@ -56,5 +56,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Атрымаць асабістыя дадзеныя для запісу ў AbuseLog з ідэнтыфікатарам 1, выкарыстоўваючы прычыну \"прыклад\".",
 	"apierror-abusefilter-canttest": "У вас няма дазволу на тэставаньне фільтараў злоўжыванняў.",
 	"apierror-abusefilter-cantcheck": "У вас няма дазволу на праверку сынтаксысу фільтараў злоўжываньняў.",
+	"apierror-abusefilter-canteval": "У вас няма дазволу на ацэнку выразаў AbuseFilter.",
+	"apierror-abusefilter-nosuchlogid": "Няма ніякага запісу часопіса злоўжываньняў з ідэнтыфікатарам $1.",
 	"apierror-abusefilter-badsyntax": "Сынтаксычная памылка ў фільтры."
 }
