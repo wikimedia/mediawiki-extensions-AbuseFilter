@@ -207,13 +207,12 @@ class AFComputedVariable {
 				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
 				$line_prefix = $parameters['line-prefix'];
 				$diff_lines = explode( "\n", $diff );
-				$interest_lines = [];
+				$result = [];
 				foreach ( $diff_lines as $line ) {
 					if ( substr( $line, 0, 1 ) === $line_prefix ) {
-						$interest_lines[] = substr( $line, strlen( $line_prefix ) );
+						$result[] = substr( $line, strlen( $line_prefix ) );
 					}
 				}
-				$result = $interest_lines;
 				break;
 			case 'links-from-wikitext':
 				// This should ONLY be used when sharing a parse operation with the edit.
@@ -326,7 +325,9 @@ class AFComputedVariable {
 						$newHTML = $editInfo->output->getText();
 						// Kill the PP limit comments. Ideally we'd just remove these by not setting the
 						// parser option, but then we can't share a parse operation with the edit, which is bad.
-						$result = preg_replace( '/<!--\s*NewPP limit report[^>]*-->\s*$/si', '', $newHTML );
+						// @fixme No awfulness scale can measure how awful this hack is.
+						$re = '/<!--\s*NewPP limit [^>]*-->\s*(?:<!--\s*Transclusion [^>]+-->\s*)?(?:<\/div>\s*)?$/i';
+						$result = preg_replace( $re, '', $newHTML );
 					}
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
@@ -357,7 +358,11 @@ class AFComputedVariable {
 			case 'strip-html':
 				$htmlVar = $parameters['html-var'];
 				$html = $vars->getVar( $htmlVar )->toString();
-				$result = StringUtils::delimiterReplace( '<', '>', '', $html );
+				$stripped = StringUtils::delimiterReplace( '<', '>', '', $html );
+				// We strip extra spaces to the right because the stripping above
+				// could leave a lot of whitespace.
+				// @fixme Find a better way to do this.
+				$result = TextContent::normalizeLineEndings( $stripped );
 				break;
 			case 'load-recent-authors':
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );

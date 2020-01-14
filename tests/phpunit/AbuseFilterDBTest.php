@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -109,186 +108,129 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Given the name of a variable, naturally sets it to a determined amount
-	 *
-	 * @param string $old The old wikitext of the page
-	 * @param string $new The new wikitext of the page
-	 * @param WikiPage $page The page to use
-	 * @param string $summary
-	 * @return array First position is an AbuseFilterVariableHolder filled with base vars
-	 *   (old/new_wikitext and summary) to be passed to the tested code. Second position is the
-	 *   array of values we expect for all variables.
-	 */
-	private function computeExpectedEditVariable( $old, $new, WikiPage $page, $summary ) {
-		$popts = ParserOptions::newCanonical();
-		// Order matters here. Some variables rely on other ones.
-		$variables = [
-			'new_html',
-			'new_pst',
-			'new_text',
-			'edit_diff',
-			'edit_diff_pst',
-			'new_size',
-			'old_size',
-			'edit_delta',
-			'added_lines',
-			'removed_lines',
-			'added_lines_pst',
-			'all_links',
-			'old_links',
-			'added_links',
-			'removed_links'
-		];
-
-		$computedVariables = [];
-		$baseVars = new AbuseFilterVariableHolder();
-
-		// Set required variables
-		$baseVars->setVar( 'old_wikitext', $old );
-		$computedVariables['old_wikitext'] = $old;
-		$baseVars->setVar( 'new_wikitext', $new );
-		$computedVariables['new_wikitext'] = $new;
-		$baseVars->setVar( 'summary', $summary );
-		$computedVariables['summary'] = $summary;
-
-		foreach ( $variables as $varName ) {
-			// Reset text variables since some operations are changing them.
-			$oldText = $old;
-			$newText = $new;
-			switch ( $varName ) {
-				case 'edit_diff_pst':
-					$newText = $computedVariables['new_pst'];
-				// Intentional fall-through
-				case 'edit_diff':
-					$diffs = new Diff( explode( "\n", $oldText ), explode( "\n", $newText ) );
-					$format = new UnifiedDiffFormatter();
-					$result = $format->format( $diffs );
-					break;
-				case 'new_size':
-					$result = strlen( $newText );
-					break;
-				case 'old_size':
-					$result = strlen( $oldText );
-					break;
-				case 'edit_delta':
-					$result = strlen( $newText ) - strlen( $oldText );
-					break;
-				case 'added_lines_pst':
-				case 'added_lines':
-				case 'removed_lines':
-					$diffVariable = $varName === 'added_lines_pst' ? 'edit_diff_pst' : 'edit_diff';
-					$diff = $computedVariables[$diffVariable];
-					$line_prefix = $varName === 'removed_lines' ? '-' : '+';
-					$diff_lines = explode( "\n", $diff );
-					$interest_lines = [];
-					foreach ( $diff_lines as $line ) {
-						if ( substr( $line, 0, 1 ) === $line_prefix ) {
-							$interest_lines[] = substr( $line, strlen( $line_prefix ) );
-						}
-					}
-					$result = $interest_lines;
-					break;
-				case 'new_text':
-					$newHtml = $computedVariables['new_html'];
-					$result = StringUtils::delimiterReplace( '<', '>', '', $newHtml );
-					break;
-				case 'new_pst':
-				case 'new_html':
-					$content = ContentHandler::makeContent( $newText, $page->getTitle() );
-					$editInfo = $page->prepareContentForEdit( $content );
-
-					if ( $varName === 'new_pst' ) {
-						$result = $editInfo->pstContent->serialize( $editInfo->format );
-					} else {
-						$result = $editInfo->output->getText();
-					}
-					break;
-				case 'all_links':
-					$content = ContentHandler::makeContent( $newText, $page->getTitle() );
-					$editInfo = $page->prepareContentForEdit( $content );
-					$result = array_keys( $editInfo->output->getExternalLinks() );
-					break;
-				case 'old_links':
-					$popts->setTidy( true );
-					$parser = MediaWikiServices::getInstance()->getParser();
-					$edit = $parser->parse( $oldText, $page->getTitle(), $popts );
-					$result = array_keys( $edit->getExternalLinks() );
-					break;
-				case 'added_links':
-				case 'removed_links':
-					$oldLinks = $computedVariables['old_links'];
-					$newLinks = $computedVariables['all_links'];
-
-					if ( $varName === 'added_links' ) {
-						$result = array_diff( $newLinks, $oldLinks );
-					} else {
-						$result = array_diff( $oldLinks, $newLinks );
-					}
-					break;
-				default:
-					throw new Exception( "Given unknown edit variable $varName." );
-			}
-			$computedVariables[$varName] = $result;
-		}
-		return [ $baseVars, $computedVariables ];
-	}
-
-	/**
 	 * Check that the generated variables for edits are correct
 	 *
 	 * @param string $oldText The old wikitext of the page
 	 * @param string $newText The new wikitext of the page
+	 * @param string $summary
+	 * @param array $expected Expected edit vars
 	 * @covers AbuseFilter::getEditVars
+	 * @covers AFComputedVariable
 	 * @dataProvider provideEditVars
 	 */
-	public function testGetEditVars( $oldText, $newText ) {
-		$pageName = $summary = __METHOD__;
+	public function testGetEditVars( $oldText, $newText, $summary, array $expected ) {
+		$pageName = __METHOD__;
 		$title = Title::makeTitle( 0, $pageName );
 		$page = WikiPage::factory( $title );
 
 		$this->editPage( $pageName, $oldText, 'Creating the test page' );
 		$this->editPage( $pageName, $newText, $summary );
 
-		list( $baseVars, $expected ) =
-			$this->computeExpectedEditVariable( $oldText, $newText, $page, $summary );
+		$baseVars = AbuseFilterVariableHolder::newFromArray( [
+			'old_wikitext' => $oldText,
+			'new_wikitext' => $newText,
+			'summary' => $summary
+		] );
 
 		$baseVars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
 		$actual = $baseVars->exportAllVars( true );
+
+		// Special case for new_html: avoid flaky tests, and only check containment
+		$this->assertStringContainsString( '<div class="mw-parser-output', $actual['new_html'] );
+		$this->assertNotRegExp( "/<!--\s*NewPP limit/", $actual['new_html'] );
+		$this->assertNotRegExp( "/<!--\s*Transclusion/", $actual['new_html'] );
+		foreach ( $expected['new_html'] as $needle ) {
+			$this->assertStringContainsString( $needle, $actual['new_html'], 'Checking new_html' );
+		}
+		unset( $actual['new_html'], $expected['new_html'] );
 
 		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
 	 * Data provider for testGetEditVars
-	 * @return array
+	 * @return Generator|array
 	 */
 	public function provideEditVars() {
-		return [
-			[
-				'[https://www.mediawiki.it/wiki/Extension:AbuseFilter AbuseFilter] test page',
-				'Adding something to compute edit variables. Here are some diacritics to make sure ' .
-				"the test behaves well with unicode: Là giù cascherò io altresì.\n名探偵コナン.\n" .
-				"[[Help:Pre Save Transform|]] should make the difference as well.\n" .
-				'Instead, [https://www.mediawiki.it this] is an external link.'
-			],
-			[
-				'Adding something to compute edit variables. Here are some diacritics to make sure ' .
-				"the test behaves well with unicode: Là giù cascherò io altresì.\n名探偵コナン.\n" .
-				"[[Help:Pre Save Transform|]] should make the difference as well.\n" .
-				'Instead, [https://www.mediawiki.it this] is an external link.',
-				'[https://www.mediawiki.it/wiki/Extension:AbuseFilter AbuseFilter] test page'
-			],
-			[
-				"A '''foo''' is not a ''bar''.",
-				"Actually, according to [http://en.wikipedia.org ''Wikipedia''], a '''''foo''''' " .
-				'is <small>more or less</small> the same as a <b>bar</b>, except that a foo is ' .
-				'usually provided together with a [[cellar door|]] to make it work<ref>Yes, really</ref>.'
-			],
-			[
-				'This edit will be pretty smll',
-				'This edit will be pretty small'
-			]
+		$summary = __METHOD__;
+
+		// phpcs:disable Generic.Files.LineLength
+		$old = '[https://a.com Test] foo';
+		$new = "'''Random'''.\nSome ''special'' chars: àèìòù 名探偵コナン.\n[[Help:PST|]] test, [//www.b.com link]";
+		$expected = [
+			'old_wikitext' => $old,
+			'new_wikitext' => $new,
+			'summary' => $summary,
+			'new_html' => [ '<p><b>Random</b>', '<i>special</i>', 'PST</a>', 'link</a>' ],
+			'new_pst' => "'''Random'''.\nSome ''special'' chars: àèìòù 名探偵コナン.\n[[Help:PST|PST]] test, [//www.b.com link]",
+			'new_text' => "Random.\nSome special chars: àèìòù 名探偵コナン.\nPST test, link",
+			'edit_diff' => "@@ -1,1 +1,3 @@\n-[https://a.com Test] foo\n+'''Random'''.\n+Some ''special'' chars: àèìòù 名探偵コナン.\n+[[Help:PST|]] test, [//www.b.com link]\n",
+			'edit_diff_pst' => "@@ -1,1 +1,3 @@\n-[https://a.com Test] foo\n+'''Random'''.\n+Some ''special'' chars: àèìòù 名探偵コナン.\n+[[Help:PST|PST]] test, [//www.b.com link]\n",
+			'new_size' => strlen( $new ),
+			'old_size' => strlen( $old ),
+			'edit_delta' => strlen( $new ) - strlen( $old ),
+			'added_lines' => explode( "\n", $new ),
+			'removed_lines' => [ $old ],
+			'added_lines_pst' => [ "'''Random'''.", "Some ''special'' chars: àèìòù 名探偵コナン.", '[[Help:PST|PST]] test, [//www.b.com link]' ],
+			'all_links' => [ '//www.b.com' ],
+			'old_links' => [ 'https://a.com' ],
+			'added_links' => [ '//www.b.com' ],
+			'removed_links' => [ 'https://a.com' ]
 		];
+
+		yield 'PST and special chars' => [ $old, $new, $summary, $expected ];
+
+		$old = "'''Random'''.\nSome ''special'' chars: àèìòù 名探偵コナン.\n[[Help:PST|]] test, [//www.b.com link]";
+		$new = '[https://a.com Test] foo';
+		$expected = [
+			'old_wikitext' => $old,
+			'new_wikitext' => $new,
+			'summary' => $summary,
+			'new_html' => [ 'Test</a>' ],
+			'new_pst' => '[https://a.com Test] foo',
+			'new_text' => 'Test foo',
+			'edit_diff' => "@@ -1,3 +1,1 @@\n-'''Random'''.\n-Some ''special'' chars: àèìòù 名探偵コナン.\n-[[Help:PST|]] test, [//www.b.com link]\n+[https://a.com Test] foo\n",
+			'edit_diff_pst' => "@@ -1,3 +1,1 @@\n-'''Random'''.\n-Some ''special'' chars: àèìòù 名探偵コナン.\n-[[Help:PST|]] test, [//www.b.com link]\n+[https://a.com Test] foo\n",
+			'new_size' => strlen( $new ),
+			'old_size' => strlen( $old ),
+			'edit_delta' => strlen( $new ) - strlen( $old ),
+			'added_lines' => [ $new ],
+			'removed_lines' => explode( "\n", $old ),
+			'added_lines_pst' => [ $new ],
+			'all_links' => [ 'https://a.com' ],
+			'old_links' => [ '//www.b.com' ],
+			'added_links' => [ 'https://a.com' ],
+			'removed_links' => [ '//www.b.com' ]
+		];
+
+		yield 'PST and special chars, reverse' => [ $old, $new, $summary, $expected ];
+		// phpcs:enable Generic.Files.LineLength
+
+		$old = 'This edit will be pretty smal';
+		$new = $old . 'l';
+
+		$expected = [
+			'old_wikitext' => $old,
+			'new_wikitext' => $new,
+			'summary' => $summary,
+			'new_html' => [ "<p>This edit will be pretty small\n</p>" ],
+			'new_pst' => $new,
+			'new_text' => $new,
+			'edit_diff' => "@@ -1,1 +1,1 @@\n-$old\n+$new\n",
+			'edit_diff_pst' => "@@ -1,1 +1,1 @@\n-$old\n+$new\n",
+			'new_size' => strlen( $new ),
+			'old_size' => strlen( $old ),
+			'edit_delta' => 1,
+			'added_lines' => [ $new ],
+			'removed_lines' => [ $old ],
+			'added_lines_pst' => [ $new ],
+			'all_links' => [],
+			'old_links' => [],
+			'added_links' => [],
+			'removed_links' => []
+		];
+
+		yield 'Small edit' => [ $old, $new, $summary, $expected ];
 	}
 
 	/**
