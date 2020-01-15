@@ -20,6 +20,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 /**
  * Tests that require Equivset, separated from the parser unit tests.
  *
@@ -51,10 +53,11 @@ class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$contLang = new LanguageEn();
 			$cache = new EmptyBagOStuff();
 			$logger = new \Psr\Log\NullLogger();
+			$keywordsManager = AbuseFilterServices::getKeywordsManager();
 
-			$parser = new AbuseFilterParser( $contLang, $cache, $logger );
+			$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager );
 			$parser->toggleConditionLimit( false );
-			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger );
+			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager );
 			$cachingParser->toggleConditionLimit( false );
 			$parsers = [ $parser, $cachingParser ];
 		} else {

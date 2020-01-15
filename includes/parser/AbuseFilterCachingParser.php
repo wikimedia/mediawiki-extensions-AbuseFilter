@@ -43,7 +43,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * Resets the state of the parser
 	 */
 	public function resetState() {
-		$this->mVariables = new AbuseFilterVariableHolder;
+		$this->mVariables = new AbuseFilterVariableHolder( $this->keywordsManager );
 		$this->mCur = new AFPToken();
 		$this->mCondCount = 0;
 		$this->mAllowShort = true;
@@ -79,7 +79,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			),
 			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
-				$parser = new AFPTreeParser( $this->cache, $this->logger, $this->statsd );
+				$parser = new AFPTreeParser( $this->cache, $this->logger, $this->statsd, $this->keywordsManager );
 				$parser->setFilter( $this->mFilter );
 				return $parser->parse( $code );
 			}

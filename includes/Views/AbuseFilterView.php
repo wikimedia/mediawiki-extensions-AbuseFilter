@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
@@ -120,8 +121,9 @@ abstract class AbuseFilterView extends ContextSource {
 		$rulesContainer .= Xml::textarea( 'wpFilterRules', $rules, 40, 15, $editorAttribs );
 
 		if ( $isUserAllowed ) {
+			$keywordsManager = AbuseFilterServices::getKeywordsManager();
 			// Generate builder drop-down
-			$rawDropDown = AbuseFilter::getBuilderValues();
+			$rawDropDown = $keywordsManager->getBuilderValues();
 
 			// The array needs to be rearranged to be understood by OOUI. It comes with the format
 			// [ group-msg-key => [ text-to-add => text-msg-key ] ] and we need it as

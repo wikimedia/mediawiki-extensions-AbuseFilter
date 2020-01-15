@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use Psr\Log\LoggerInterface;
 
 class AbuseFilterVariableHolder {
@@ -10,6 +12,9 @@ class AbuseFilterVariableHolder {
 	public const GET_LAX = 0;
 	public const GET_STRICT = 1;
 	public const GET_BC = 2;
+
+	/** @var KeywordsManager */
+	private $keywordsManager;
 
 	/** @var LoggerInterface */
 	private $logger;
@@ -31,9 +36,11 @@ class AbuseFilterVariableHolder {
 	public $mVarsVersion = 2;
 
 	/**
-	 * To avoid injecting a logger directly, since it's here only temporarily.
+	 * @param KeywordsManager|null $keywordsManager Optional for BC
 	 */
-	public function __construct() {
+	public function __construct( KeywordsManager $keywordsManager = null ) {
+		$this->keywordsManager = $keywordsManager ?? AbuseFilterServices::getKeywordsManager();
+		// Avoid injecting a Logger, as it's just temporary
 		$this->logger = new Psr\Log\NullLogger();
 	}
 
@@ -48,10 +55,14 @@ class AbuseFilterVariableHolder {
 	 * Utility function to translate an array with shape [ varname => value ] into a self instance
 	 *
 	 * @param array $vars
+	 * @param KeywordsManager|null $keywordsManager Optional for BC
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function newFromArray( array $vars ) : AbuseFilterVariableHolder {
-		$ret = new self;
+	public static function newFromArray(
+		array $vars,
+		KeywordsManager $keywordsManager = null
+	) : AbuseFilterVariableHolder {
+		$ret = new self( $keywordsManager );
 		foreach ( $vars as $var => $value ) {
 			$ret->setVar( $var, $value );
 		}
@@ -113,7 +124,7 @@ class AbuseFilterVariableHolder {
 	 */
 	public function getVar( $varName, $mode = self::GET_STRICT, $tempFilter = null ) : AFPData {
 		$varName = strtolower( $varName );
-		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
+		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
 		if ( $this->mVarsVersion === 1 && in_array( $varName, $deprecatedVars ) ) {
 			// Variables are stored with old names, but the parser has given us
 			// a new name. Translate it back.
@@ -158,17 +169,6 @@ class AbuseFilterVariableHolder {
 			default:
 				throw new LogicException( "Mode '$mode' not recognized." );
 		}
-	}
-
-	/**
-	 * @param AbuseFilterVariableHolder ...$holders
-	 * @return AbuseFilterVariableHolder
-	 */
-	public static function merge( AbuseFilterVariableHolder ...$holders ) {
-		$newHolder = new AbuseFilterVariableHolder;
-		$newHolder->addHolders( ...$holders );
-
-		return $newHolder;
 	}
 
 	/**
@@ -228,9 +228,9 @@ class AbuseFilterVariableHolder {
 		if ( !$includeUserVars ) {
 			// Compile a list of all variables set by the extension to be able
 			// to filter user set ones by name
-			$activeVariables = array_keys( AbuseFilter::getBuilderValues()['vars'] );
-			$deprecatedVariables = array_keys( AbuseFilter::getDeprecatedVariables() );
-			$disabledVariables = array_keys( AbuseFilter::DISABLED_VARS );
+			$activeVariables = array_keys( $this->keywordsManager->getVarsMappings() );
+			$deprecatedVariables = array_keys( $this->keywordsManager->getDeprecatedVariables() );
+			$disabledVariables = array_keys( $this->keywordsManager->getDisabledVariables() );
 			$coreVariables = array_merge( $activeVariables, $deprecatedVariables, $disabledVariables );
 			$coreVariables = array_map( 'strtolower', $coreVariables );
 		}
@@ -286,5 +286,13 @@ class AbuseFilterVariableHolder {
 				$this->setVar( $name, $value );
 			}
 		}
+	}
+
+	/**
+	 * @fixme Back-compat hack for old objects serialized and stored in the DB.
+	 * Remove this once T213006 is done.
+	 */
+	public function __wakeup() {
+		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
 	}
 }

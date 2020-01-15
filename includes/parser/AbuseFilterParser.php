@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use Psr\Log\LoggerInterface;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Equivset\Equivset;
@@ -63,6 +64,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	protected $statsd;
 
+	/** @var KeywordsManager */
+	protected $keywordsManager;
+
 	// Functions that affect parser state, and shouldn't be cached.
 	public const ACTIVE_FUNCTIONS = [
 		'funcSetVar',
@@ -94,19 +98,22 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @param Language $contLang Content language, used for language-dependent function
 	 * @param BagOStuff $cache Used to cache the AST (in CachingParser) and the tokens
 	 * @param LoggerInterface $logger Used for debugging
+	 * @param KeywordsManager $keywordsManager
 	 * @param AbuseFilterVariableHolder|null $vars
 	 */
 	public function __construct(
 		Language $contLang,
 		BagOStuff $cache,
 		LoggerInterface $logger,
+		KeywordsManager $keywordsManager,
 		AbuseFilterVariableHolder $vars = null
 	) {
-		$this->resetState();
 		$this->contLang = $contLang;
 		$this->cache = $cache;
 		$this->logger = $logger;
 		$this->statsd = new NullStatsdDataFactory;
+		$this->keywordsManager = $keywordsManager;
+		$this->resetState();
 		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
@@ -183,7 +190,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	public function resetState() {
 		$this->mTokens = [];
-		$this->mVariables = new AbuseFilterVariableHolder;
+		$this->mVariables = new AbuseFilterVariableHolder( $this->keywordsManager );
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
@@ -414,7 +421,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 				if (
 					$array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED
 					// NOTE: we cannot throw for overridebuiltin yet, in case this turns out not to be an assignment.
-					&& !$this->isBuiltinVar( $varname )
+					&& !$this->keywordsManager->varExists( $varname )
 				) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
@@ -1057,9 +1064,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @return bool
 	 */
 	protected function varExists( $varname ) {
-		$builderValues = AbuseFilter::getBuilderValues();
-
-		return array_key_exists( $varname, $builderValues['vars'] ) ||
+		return $this->keywordsManager->isVarInUse( $varname ) ||
 			$this->mVariables->varIsSet( $varname );
 	}
 
@@ -1070,7 +1075,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	protected function getVarValue( $var ) {
 		$var = strtolower( $var );
-		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
+		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
 
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
 			if ( $this->logsDeprecatedVars() ) {
@@ -1078,7 +1083,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 			}
 			$var = $deprecatedVars[ $var ];
 		}
-		if ( array_key_exists( $var, AbuseFilter::DISABLED_VARS ) ) {
+		if ( $this->keywordsManager->isVarDisabled( $var ) ) {
 			throw new AFPUserVisibleException(
 				'disabledvar',
 				$this->mCur->pos,

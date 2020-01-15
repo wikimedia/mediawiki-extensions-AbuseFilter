@@ -164,6 +164,8 @@
 		"TableDiffFormatterFullContext": "includes/TableDiffFormatterFullContext.php",
 		"AbuseFilterViewImport": "includes/Views/AbuseFilterViewImport.php",
 		"AbuseFilterVariableHolder": "includes/AbuseFilterVariableHolder.php",
+		"MediaWiki\\Extension\\AbuseFilter\\KeywordsManager": "includes/KeywordsManager.php",
+		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
@@ -287,6 +289,9 @@
 		"UnitTestsAfterDatabaseSetup": "AbuseFilterHooks::onUnitTestsAfterDatabaseSetup",
 		"UnitTestsBeforeDatabaseTeardown": "AbuseFilterHooks::onUnitTestsBeforeDatabaseTeardown"
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"config": {
 		"AbuseFilterActions": {
 			"value": {
