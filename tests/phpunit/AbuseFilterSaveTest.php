@@ -232,7 +232,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 					"Save failed with status: $status"
 				);
 				$value = $status->getValue();
-				$this->assertInternalType( 'array', $value );
+				$this->assertIsArray( $value );
 				$this->assertCount( 2, $value );
 				$this->assertContainsOnly( 'int', $value );
 			} else {
