@@ -44,7 +44,7 @@
 	"apihelp-query+abuselog-param-filter": "Yalnızca verilen filtre kimlikleri tarafından yakalanan girişleri göster. Borularla ayırın, genel filtreler için \"$1\" ile önek koyun.",
 	"apihelp-query+abuselog-param-limit": "Listelenecek maksimum giriş sayısı.",
 	"apihelp-query+abuselog-param-prop": "Hangi özellikleri elde etmek.",
-	"apihelp-query+abuselog-param-wiki": "Wiki kaynağını gösterecek.",
+	"apihelp-query+abuselog-param-wiki": "Viki kaynağını gösterecek.",
 	"apihelp-query+abuselog-example-1": "En son günlük girişlerini göster",
 	"apihelp-query+abuselog-example-2": "[[API]] için son günlük girişlerini göster",
 	"apihelp-abuselogprivatedetails-description": "Bir AbuseLog girişinin özel ayrıntılarını görüntüleyin.",
