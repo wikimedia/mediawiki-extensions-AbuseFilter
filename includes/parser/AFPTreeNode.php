@@ -99,7 +99,7 @@ class AFPTreeNode {
 
 	/**
 	 * @param string $type
-	 * @param AFPTreeNode[]|string[]|AFPToken $children
+	 * @param (AFPTreeNode|null)[]|string[]|AFPToken $children
 	 * @param int $position
 	 */
 	public function __construct( $type, $children, $position ) {

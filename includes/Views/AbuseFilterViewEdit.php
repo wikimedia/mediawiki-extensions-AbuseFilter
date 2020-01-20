@@ -504,7 +504,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string $action The action to build an editor for
 	 * @param bool $set Whether or not the action is activated
 	 * @param stdClass $row abuse_filter row object
-	 * @param array|null $parameters Action parameters
+	 * @param string[]|null $parameters Action parameters. Null iff $set is false.
 	 * @return string|\OOUI\FieldLayout
 	 */
 	private function buildConsequenceSelector( $action, $set, $row, ?array $parameters ) {
@@ -750,11 +750,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 				return $output;
 			case 'tag':
-				if ( $set ) {
-					$tags = $parameters;
-				} else {
-					$tags = [];
-				}
+				$tags = $set ? $parameters : [];
+				'@phan-var string[] $parameters';
 				$output = '';
 
 				$checkbox =
@@ -973,9 +970,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Find other messages.
 			$dbr = wfGetDB( DB_REPLICA );
 			$pageTitlePrefix = "Abusefilter-$action";
-			$res = $dbr->select(
+			$titles = $dbr->selectFieldValues(
 				'page',
-				[ 'page_title' ],
+				'page_title',
 				[
 					'page_namespace' => 8,
 					'page_title LIKE ' . $dbr->addQuotes( $pageTitlePrefix . '%' )
@@ -984,19 +981,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 
 			$lang = $this->getLanguage();
-			foreach ( $res as $row ) {
-				if ( $lang->lcfirst( $row->page_title ) === $lang->lcfirst( $warnMsg ) ) {
+			foreach ( $titles as $title ) {
+				if ( $lang->lcfirst( $title ) === $lang->lcfirst( $warnMsg ) ) {
 					$existingSelector->setValue( $lang->lcfirst( $warnMsg ) );
 				}
 
-				if ( $row->page_title !== "Abusefilter-$action" ) {
-					$options += [ $lang->lcfirst( $row->page_title ) => $lang->lcfirst( $row->page_title ) ];
+				if ( $title !== "Abusefilter-$action" ) {
+					$options[ $lang->lcfirst( $title ) ] = $lang->lcfirst( $title );
 				}
 			}
 		}
 
 		// abusefilter-edit-warn-other, abusefilter-edit-disallow-other
-		$options += [ $this->msg( "abusefilter-edit-$formId-other" )->text() => 'other' ];
+		$options[ $this->msg( "abusefilter-edit-$formId-other" )->text() ] = 'other';
 
 		$options = Xml::listDropDownOptionsOoui( $options );
 		$existingSelector->setOptions( $options );

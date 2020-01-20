@@ -123,7 +123,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$args = explode( '/', $parameter );
 
 		if ( count( $args ) === 2 && $args[0] === 'private' ) {
-			$this->showPrivateDetails( $args[1] );
+			$this->showPrivateDetails( (int)$args[1] );
 		} elseif ( count( $args ) === 1 && $args[0] !== '' ) {
 			if ( $args[0] === 'private' ) {
 				$out->addWikiMsg( 'abusefilter-invalid-request-noid' );
@@ -313,7 +313,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
-	 * @param string $id
+	 * @param int $id
 	 */
 	public function showHideForm( $id ) {
 		$output = $this->getOutput();
@@ -375,7 +375,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Show suppress log for this entry
 		$suppressLogPage = new LogPage( 'suppress' );
 		$output->addHTML( "<h2>" . $suppressLogPage->getName()->escaped() . "</h2>\n" );
-		LogEventsList::showLogExtract( $output, 'suppress', $this->getPageTitle( $id ) );
+		LogEventsList::showLogExtract( $output, 'suppress', $this->getPageTitle( (string)$id ) );
 	}
 
 	/**
@@ -597,7 +597,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
-	 * @param string $id
+	 * @param string|int $id
 	 */
 	public function showDetails( $id ) {
 		$out = $this->getOutput();
@@ -897,7 +897,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
-	 * @param string $id
+	 * @param int $id
 	 * @return void
 	 */
 	public function showPrivateDetails( $id ) {
@@ -968,7 +968,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @return void
 	 */
 	public static function addPrivateDetailsAccessLogEntry( $logID, $reason, User $user ) {
-		$target = self::getTitleFor( 'AbuseLog', $logID );
+		$target = self::getTitleFor( 'AbuseLog', (string)$logID );
 
 		$logEntry = new ManualLogEntry( 'abusefilterprivatedetails', 'access' );
 		$logEntry->setPerformer( $user );

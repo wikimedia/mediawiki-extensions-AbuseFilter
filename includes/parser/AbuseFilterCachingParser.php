@@ -342,6 +342,8 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					$lastValue = $this->evalNode( $statement );
 				}
 
+				// @phan-suppress-next-next-line PhanTypeMismatchReturnNullable Can never be null because
+				// empty statements are discarded in AFPTreeParser
 				return $lastValue;
 			default:
 				// @codeCoverageIgnoreStart

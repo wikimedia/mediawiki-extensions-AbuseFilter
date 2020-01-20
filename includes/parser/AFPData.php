@@ -181,6 +181,7 @@ class AFPData {
 	 *  only returns a boolean, and thus the type of the result has already been decided and cannot
 	 *  be changed to be a DUNDEFINED from here.
 	 * @internal
+	 * @suppress PhanSuspiciousValueComparison Lots of false positives for self::DARRAY
 	 */
 	public function equals( AFPData $d2, $strict = false ) {
 		if ( $this->type === self::DUNDEFINED || $d2->type === self::DUNDEFINED ) {

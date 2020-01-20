@@ -510,7 +510,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param int $filter
+	 * @param int|string $filter
 	 * @internal
 	 */
 	public static function resetFilterProfile( $filter ) {
@@ -1045,7 +1045,7 @@ class AbuseFilter {
 	/**
 	 * @return User
 	 */
-	public static function getFilterUser() {
+	public static function getFilterUser() : User {
 		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newSystemUser( $username, [ 'steal' => true ] );
 
@@ -1061,6 +1061,7 @@ class AbuseFilter {
 			$defaultName = wfMessage( 'abusefilter-blocker' )->inLanguage( 'en' )->text();
 			$user = User::newSystemUser( $defaultName, [ 'steal' => true ] );
 		}
+		'@phan-var User $user';
 
 		// Promote user to 'sysop' so it doesn't look
 		// like an unprivileged account is blocking users
@@ -1419,6 +1420,7 @@ class AbuseFilter {
 		if ( $is_new ) {
 			$new_id = $dbw->insertId();
 		}
+		'@phan-var int $new_id';
 
 		$availableActions = $context->getConfig()->get( 'AbuseFilterActions' );
 		$actionsRows = [];
@@ -1502,7 +1504,9 @@ class AbuseFilter {
 		$subtype = $filter === 'new' ? 'create' : 'modify';
 		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
 		$logEntry->setPerformer( $user );
-		$logEntry->setTarget( SpecialPage::getTitleFor( SpecialAbuseFilter::PAGE_NAME, $new_id ) );
+		$logEntry->setTarget(
+			SpecialPage::getTitleFor( SpecialAbuseFilter::PAGE_NAME, (string)$new_id )
+		);
 		$logEntry->setParameters( [
 			'historyId' => $history_id,
 			'newId' => $new_id

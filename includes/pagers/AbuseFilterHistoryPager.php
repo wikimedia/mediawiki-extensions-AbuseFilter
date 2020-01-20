@@ -4,7 +4,7 @@ use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterHistoryPager extends TablePager {
 	/**
-	 * @var string The filter ID
+	 * @var int The filter ID
 	 */
 	public $mFilter;
 	/**
@@ -27,7 +27,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @param string $user User name
 	 * @param LinkRenderer $linkRenderer
 	 */
-	public function __construct( $filter, AbuseFilterViewHistory $page, $user,
+	public function __construct( int $filter, AbuseFilterViewHistory $page, $user,
 		LinkRenderer $linkRenderer ) {
 		$this->mFilter = $filter;
 		$this->mPage = $page;
@@ -83,7 +83,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		switch ( $name ) {
 			case 'afh_filter':
 				$formatted = $this->linkRenderer->makeLink(
-					SpecialPage::getTitleFor( 'AbuseFilter', intval( $row->afh_filter ) ),
+					SpecialPage::getTitleFor( 'AbuseFilter', $row->afh_filter ),
 					$lang->formatNum( $row->afh_filter )
 				);
 				break;

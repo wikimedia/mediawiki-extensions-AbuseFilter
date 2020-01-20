@@ -13,11 +13,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 */
 	public $origPeriodEnd;
 	/**
-	 * @var string The same as $origPeriodStart
+	 * @var string|null The same as $origPeriodStart
 	 */
 	public $mPeriodStart;
 	/**
-	 * @var string The same as $origPeriodEnd
+	 * @var string|null The same as $origPeriodEnd
 	 */
 	public $mPeriodEnd;
 	/**
@@ -61,8 +61,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$max = wfTimestampNow();
 		$filterLink =
 			$this->linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseFilter', intval( $filter ) ),
-				$lang->formatNum( intval( $filter ) )
+				SpecialPage::getTitleFor( 'AbuseFilter', $filter ),
+				$lang->formatNum( $filter )
 			);
 		$searchFields = [];
 		$searchFields['filterid'] = [
@@ -185,10 +185,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$dbr = wfGetDB( DB_REPLICA );
 
-		if ( $periodStart ) {
+		if ( $periodStart !== null ) {
 			$conds[] = 'afl_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
 		}
-		if ( $periodEnd ) {
+		if ( $periodEnd !== null ) {
 			$conds[] = 'afl_timestamp <= ' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 		}
 
@@ -240,10 +240,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$request = $this->getRequest();
 
 		$this->origPeriodStart = $request->getText( 'wpPeriodStart' );
-		$this->mPeriodStart = strtotime( $this->origPeriodStart );
+		$this->mPeriodStart = strtotime( $this->origPeriodStart ) ?: null;
 		$this->origPeriodEnd = $request->getText( 'wpPeriodEnd' );
-		$this->mPeriodEnd = strtotime( $this->origPeriodEnd );
-		$this->mSubmit = $request->getVal( 'submit' );
+		$this->mPeriodEnd = strtotime( $this->origPeriodEnd ) ?: null;
+		$this->mSubmit = $request->getBool( 'submit' );
 		$this->mReason = $request->getVal( 'wpReason' );
 	}
 

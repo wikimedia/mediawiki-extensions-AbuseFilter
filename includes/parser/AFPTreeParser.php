@@ -206,7 +206,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 */
 	protected function doLevelSet() {
 		if ( $this->mCur->type === AFPToken::TID ) {
-			$varname = $this->mCur->value;
+			$varname = (string)$this->mCur->value;
 
 			// Speculatively parse the assignment statement assuming it can
 			// potentially be an assignment, but roll back if it isn't.
@@ -731,6 +731,7 @@ class AFPTreeParser extends AFPTransitionBase {
 		}
 
 		$this->move();
+		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Until phan can understand the switch
 		return $result;
 	}
 
