@@ -79,7 +79,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 		$this->addWhereRange( 'af_id', $params['dir'], $params['startid'], $params['endid'] );
 
-		if ( !is_null( $params['show'] ) ) {
+		if ( $params['show'] !== null ) {
 			$show = array_flip( $params['show'] );
 
 			/* Check for conflicting parameters. */

@@ -1141,7 +1141,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$actions = self::$mLoadedActions;
 		$request = $this->getRequest();
 
-		if ( !is_null( $actions ) && !is_null( $row ) ) {
+		if ( $actions !== null && $row !== null ) {
 			return [ $row, $actions ];
 		} elseif ( $request->wasPosted() ) {
 			// Nothing, we do it all later

@@ -6,7 +6,7 @@ use Psr\Log\LoggerInterface;
  * Tokenizer for AbuseFilter rules.
  */
 class AbuseFilterTokenizer {
-	/** @var int Tokenizer cache version. Increment this when changing the syntax. **/
+	/** @var int Tokenizer cache version. Increment this when changing the syntax. */
 	const CACHE_VERSION = 3;
 	const COMMENT_START_RE = '/\s*\/\*/A';
 	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';

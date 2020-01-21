@@ -7,13 +7,12 @@
 		"selenium-test": "wdio tests/selenium/wdio.conf.js"
 	},
 	"devDependencies": {
-		"eslint-config-wikimedia": "0.13.1",
+		"eslint-config-wikimedia": "0.15.0",
 		"grunt": "1.0.4",
 		"grunt-banana-checker": "0.8.1",
 		"grunt-eslint": "22.0.0",
-		"grunt-stylelint": "0.11.1",
-		"stylelint": "10.1.0",
-		"stylelint-config-wikimedia": "0.6.0",
+		"grunt-stylelint": "0.13.0",
+		"stylelint-config-wikimedia": "0.8.0",
 		"wdio-mediawiki": "0.4.0",
 		"wdio-mocha-framework": "0.6.4",
 		"wdio-spec-reporter": "0.1.5",

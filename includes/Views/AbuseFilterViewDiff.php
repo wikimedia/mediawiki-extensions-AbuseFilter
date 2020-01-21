@@ -69,7 +69,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				] );
 			}
 
-			if ( !is_null( $this->mNextHistoryId ) ) {
+			if ( $this->mNextHistoryId !== null ) {
 				// Create a "next change" link if this isn't the last change of the given filter
 				$href = $this->getTitle(
 					'history/' . $this->mFilter . '/diff/prev/' . $this->mNextHistoryId

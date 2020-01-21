@@ -1,8 +1,8 @@
 <?php
 
-use Wikimedia\Rdbms\Database;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\Database;
 
 class AFComputedVariable {
 	/**

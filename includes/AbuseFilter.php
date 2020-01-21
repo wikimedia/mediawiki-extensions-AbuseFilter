@@ -1,10 +1,10 @@
 <?php
 
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\IDatabase;
+use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\Rdbms\DBError;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of
@@ -1948,7 +1948,7 @@ class AbuseFilter {
 				$keyDisplay = Xml::element( 'code', null, $key );
 			}
 
-			if ( is_null( $value ) ) {
+			if ( $value === null ) {
 				$value = '';
 			}
 			$value = Xml::element( 'div', [ 'class' => 'mw-abuselog-var-value' ], $value, false );

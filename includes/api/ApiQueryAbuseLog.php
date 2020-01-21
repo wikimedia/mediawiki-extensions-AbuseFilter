@@ -146,9 +146,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		}
 
 		$title = $params['title'];
-		if ( !is_null( $title ) ) {
+		if ( $title !== null ) {
 			$titleObj = Title::newFromText( $title );
-			if ( is_null( $titleObj ) ) {
+			if ( $titleObj === null ) {
 				$this->dieWithError( [ 'apierror-invalidtitle', wfEscapeWikiText( $title ) ] );
 			}
 			$this->addWhereFld( 'afl_namespace', $titleObj->getNamespace() );
@@ -204,7 +204,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			if ( $fld_result ) {
 				$entry['result'] = $row->afl_actions;
 			}
-			if ( $fld_revid && !is_null( $row->afl_rev_id ) ) {
+			if ( $fld_revid && $row->afl_rev_id !== null ) {
 				$entry['revid'] = $canSeeDetails ? $row->afl_rev_id : '';
 			}
 			if ( $fld_timestamp ) {
