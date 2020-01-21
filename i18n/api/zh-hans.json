@@ -3,7 +3,8 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Yfdyh000",
-			"Looong"
+			"Looong",
+			"Wenyuan Liu"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "检查以查看防滥用过滤器是否匹配某个变量集、某次编辑或某条日志记载的过滤器活动。\n\nvars、rcid或logid是必须的，然而只有一个会被使用。",
@@ -43,7 +44,7 @@
 	"apihelp-query+abuselog-param-end": "枚举的结束时间戳。",
 	"apihelp-query+abuselog-param-user": "只显示由指定的用户或IP地址完成的记录。",
 	"apihelp-query+abuselog-param-title": "只显示在指定页面上发生过的条项。",
-	"apihelp-query+abuselog-param-filter": "只显示被指定过滤器ID捕获过的记录。",
+	"apihelp-query+abuselog-param-filter": "只显示被指定过滤器ID捕获过的记录。使用管道字符分离，以“$1”开始以表示为公共过滤器。",
 	"apihelp-query+abuselog-param-limit": "列出日志记录的最大数量。",
 	"apihelp-query+abuselog-param-prop": "要获得的属性。",
 	"apihelp-query+abuselog-param-wiki": "显示触发来自的Wiki。",
@@ -56,6 +57,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "使用“例子”这个原因，可以获取到带有ID 1 的AbuseLog入口的私有信息。",
 	"apierror-abusefilter-canttest": "您没有权限测试防滥用过滤器。",
 	"apierror-abusefilter-cantcheck": "您没有权限检查防滥用过滤器的语法。",
+	"apierror-abusefilter-canteval": "您没有计算 AbuseFilter 表达式的权限。",
 	"apierror-abusefilter-nosuchlogid": "没有id为$1的滥用日志记录。",
 	"apierror-abusefilter-badsyntax": "过滤器存在语法错误。"
 }

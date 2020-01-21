@@ -37,7 +37,8 @@
 			"Kly",
 			"Sanmosa",
 			"Xiplus",
-			"Sunny00217"
+			"Sunny00217",
+			"VulpesVulpes825"
 		]
 	},
 	"abusefilter-desc": "對編輯行為自動進行條件判定",
@@ -485,7 +486,7 @@
 	"abusefilter-exception-unclosedcomment": "在第 $1 字元有未關閉評論。",
 	"abusefilter-exception-invalidiprange": "在字元 $1 提供了無效 IP 範圍 \"$2\"。",
 	"abusefilter-exception-disabledvar": "在 $1 字元上的變數 $2  已不使用。",
-	"abusefilter-exception-variablevariable": "set 與 set_var 的第一個參數應為字串文字，在字元 $1 處找到。",
+	"abusefilter-exception-variablevariable": "set 與 set_var 的第一個參數應為字面常數，在字元 $1 處找到。",
 	"abusefilter-action-tag": "標籤",
 	"abusefilter-action-throttle": "受限",
 	"abusefilter-action-warn": "警告",
