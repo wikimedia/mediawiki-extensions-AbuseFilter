@@ -27,7 +27,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 */
 	protected $mFilter;
 
-	const CACHE_VERSION = 2;
+	public const CACHE_VERSION = 2;
 
 	/**
 	 * @var BagOStuff Used to cache tokens

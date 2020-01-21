@@ -50,9 +50,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	private $user;
 	/** To be used as fake timestamp in several tests */
-	const MAGIC_TIMESTAMP = 2051222400;
+	private const MAGIC_TIMESTAMP = 2051222400;
 	/** Prefix for tables to emulate an external DB */
-	const DB_EXTERNAL_PREFIX = 'external_';
+	public const DB_EXTERNAL_PREFIX = 'external_';
 	/** Tables to create in the external DB */
 	public static $externalTables = [
 		'abuse_filter',

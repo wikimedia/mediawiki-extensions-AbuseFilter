@@ -10,7 +10,7 @@ class AFPTreeNode {
 
 	// SEMICOLON is a many-children node, denoting that the nodes have to be
 	// evaluated in order and the last value has to be returned.
-	const SEMICOLON = 'SEMICOLON';
+	public const SEMICOLON = 'SEMICOLON';
 
 	// ASSIGNMENT (formerly known as SET) is a node which is responsible for
 	// assigning values to variables.  ASSIGNMENT is a (variable name [string],
@@ -18,47 +18,47 @@ class AFPTreeNode {
 	// values at array offsets) is a (variable name [string], index [tree node],
 	// value [tree node]) tuple, and ARRAY_APPEND has the form of (variable name
 	// [string], value [tree node]).
-	const ASSIGNMENT = 'ASSIGNMENT';
-	const INDEX_ASSIGNMENT = 'INDEX_ASSIGNMENT';
-	const ARRAY_APPEND = 'ARRAY_APPEND';
+	public const ASSIGNMENT = 'ASSIGNMENT';
+	public const INDEX_ASSIGNMENT = 'INDEX_ASSIGNMENT';
+	public const ARRAY_APPEND = 'ARRAY_APPEND';
 
 	// CONDITIONAL represents both a ternary operator and an if-then-else-end
 	// construct.  The format is (condition, evaluated-if-true, evaluated-in-false).
 	// The first two are tree nodes, the last one can be a node, or null if there's no else.
-	const CONDITIONAL = 'CONDITIONAL';
+	public const CONDITIONAL = 'CONDITIONAL';
 
 	// LOGIC is a logic operator accepted by AFPData::boolOp.  The format is
 	// (operation, left operand, right operand).
-	const LOGIC = 'LOGIC';
+	public const LOGIC = 'LOGIC';
 
 	// COMPARE is a comparison operator accepted by AFPData::boolOp.  The format is
 	// (operation, left operand, right operand).
-	const COMPARE = 'COMPARE';
+	public const COMPARE = 'COMPARE';
 
 	// SUM_REL is either '+' or '-'.  The format is (operation, left operand,
 	// right operand).
-	const SUM_REL = 'SUM_REL';
+	public const SUM_REL = 'SUM_REL';
 
 	// MUL_REL is a multiplication-related operation accepted by AFPData::mulRel.
 	// The format is (operation, left operand, right operand).
-	const MUL_REL = 'MUL_REL';
+	public const MUL_REL = 'MUL_REL';
 
 	// POW is an exponentiation operator.  The format is (base, exponent).
-	const POW = 'POW';
+	public const POW = 'POW';
 
 	// BOOL_INVERT is a boolean inversion operator.  The format is (operand).
-	const BOOL_INVERT = 'BOOL_INVERT';
+	public const BOOL_INVERT = 'BOOL_INVERT';
 
 	// KEYWORD_OPERATOR is one of the binary keyword operators supported by the
 	// filter language.  The format is (keyword, left operand, right operand).
-	const KEYWORD_OPERATOR = 'KEYWORD_OPERATOR';
+	public const KEYWORD_OPERATOR = 'KEYWORD_OPERATOR';
 
 	// UNARY is either unary minus or unary plus.  The format is (operator, operand).
-	const UNARY = 'UNARY';
+	public const UNARY = 'UNARY';
 
 	// ARRAY_INDEX is an operation of accessing an array by an offset.  The format
 	// is (array, offset).
-	const ARRAY_INDEX = 'ARRAY_INDEX';
+	public const ARRAY_INDEX = 'ARRAY_INDEX';
 
 	// Since parenthesis only manipulate precedence of the operators, they are
 	// not explicitly represented in the tree.
@@ -66,15 +66,15 @@ class AFPTreeNode {
 	// FUNCTION_CALL is an invocation of built-in function.  The format is a
 	// tuple where the first element is a function name, and all subsequent
 	// elements are the arguments.
-	const FUNCTION_CALL = 'FUNCTION_CALL';
+	public const FUNCTION_CALL = 'FUNCTION_CALL';
 
 	// ARRAY_DEFINITION is an array literal.  The $children field contains tree
 	// nodes for the values of each of the array element used.
-	const ARRAY_DEFINITION = 'ARRAY_DEFINITION';
+	public const ARRAY_DEFINITION = 'ARRAY_DEFINITION';
 
 	// ATOM is a node representing a literal.  The only element of $children is a
 	// token corresponding to the literal.
-	const ATOM = 'ATOM';
+	public const ATOM = 'ATOM';
 
 	/** @var string Type of the node, one of the constants above */
 	public $type;

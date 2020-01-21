@@ -6,8 +6,8 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Used in self::getVar() to determine what to do if the requested variable is missing
 	 */
-	const GET_LAX = 0;
-	const GET_STRICT = 1;
+	public const GET_LAX = 0;
+	public const GET_STRICT = 1;
 
 	/** @var LoggerInterface */
 	private $logger;

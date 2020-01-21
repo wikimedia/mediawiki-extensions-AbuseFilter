@@ -1,7 +1,7 @@
 <?php
 
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {
-	const PAGE_NAME = 'AbuseFilter';
+	public const PAGE_NAME = 'AbuseFilter';
 	/**
 	 * @var int|string|null The current filter
 	 */

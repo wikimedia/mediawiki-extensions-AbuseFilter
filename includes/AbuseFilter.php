@@ -23,7 +23,7 @@ class AbuseFilter {
 	private static $filterCache = [];
 
 	/** @var string The prefix to use for global filters */
-	const GLOBAL_FILTER_PREFIX = 'global-';
+	public const GLOBAL_FILTER_PREFIX = 'global-';
 
 	/*
 	 * @var array Map of (action ID => string[])
@@ -42,13 +42,13 @@ class AbuseFilter {
 	 * A future improvement could be to make this customizable on a per-filter basis.
 	 * @var int
 	 */
-	const BLOCKAUTOPROMOTE_DURATION = 5 * 86400;
+	private const BLOCKAUTOPROMOTE_DURATION = 5 * 86400;
 
 	/**
 	 * @var string[] The FULL list of fields in the abuse_filter table
 	 * @internal
 	 */
-	const ALL_ABUSE_FILTER_FIELDS = [
+	public const ALL_ABUSE_FILTER_FIELDS = [
 		'af_id',
 		'af_pattern',
 		'af_user',

@@ -2,16 +2,16 @@
 
 class AFPData {
 	// Datatypes
-	const DINT = 'int';
-	const DSTRING = 'string';
-	const DNULL = 'null';
-	const DBOOL = 'bool';
-	const DFLOAT = 'float';
-	const DARRAY = 'array';
+	public const DINT = 'int';
+	public const DSTRING = 'string';
+	public const DNULL = 'null';
+	public const DBOOL = 'bool';
+	public const DFLOAT = 'float';
+	public const DARRAY = 'array';
 	// Special purpose type for non-initialized stuff
-	const DUNDEFINED = 'undefined';
+	public const DUNDEFINED = 'undefined';
 	// Special purpose for creating instances that will be populated later
-	const DEMPTY = 'empty';
+	public const DEMPTY = 'empty';
 
 	/**
 	 * Translation table mapping shell-style wildcards to PCRE equivalents.

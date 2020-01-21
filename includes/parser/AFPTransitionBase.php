@@ -42,7 +42,7 @@ abstract class AFPTransitionBase {
 	 * The minimum and maximum amount of arguments required by each function.
 	 * @var int[][]
 	 */
-	const FUNC_ARG_COUNT = [
+	public const FUNC_ARG_COUNT = [
 		'lcase' => [ 1, 1 ],
 		'ucase' => [ 1, 1 ],
 		'length' => [ 1, 1 ],

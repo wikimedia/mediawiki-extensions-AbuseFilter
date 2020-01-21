@@ -37,7 +37,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  */
 class AbuseFilterTest extends MediaWikiIntegrationTestCase {
 	/** A fake timestamp to use in several time-related tests. */
-	const FAKE_TIME = 1514700000;
+	private const FAKE_TIME = 1514700000;
 
 	/**
 	 * @inheritDoc

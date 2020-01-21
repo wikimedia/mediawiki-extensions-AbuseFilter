@@ -36,17 +36,17 @@
  * * Atom (A) - return value
  */
 class AFPToken {
-	const TNONE = 'T_NONE';
-	const TID = 'T_ID';
-	const TKEYWORD = 'T_KEYWORD';
-	const TSTRING = 'T_STRING';
-	const TINT = 'T_INT';
-	const TFLOAT = 'T_FLOAT';
-	const TOP = 'T_OP';
-	const TBRACE = 'T_BRACE';
-	const TSQUAREBRACKET = 'T_SQUARE_BRACKET';
-	const TCOMMA = 'T_COMMA';
-	const TSTATEMENTSEPARATOR = 'T_STATEMENT_SEPARATOR';
+	public const TNONE = 'T_NONE';
+	public const TID = 'T_ID';
+	public const TKEYWORD = 'T_KEYWORD';
+	public const TSTRING = 'T_STRING';
+	public const TINT = 'T_INT';
+	public const TFLOAT = 'T_FLOAT';
+	public const TOP = 'T_OP';
+	public const TBRACE = 'T_BRACE';
+	public const TSQUAREBRACKET = 'T_SQUARE_BRACKET';
+	public const TCOMMA = 'T_COMMA';
+	public const TSTATEMENTSEPARATOR = 'T_STATEMENT_SEPARATOR';
 
 	/**
 	 * @var string One of the T* constant from this class

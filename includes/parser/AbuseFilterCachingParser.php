@@ -13,7 +13,7 @@
  *   Otherwise, people may be able to save a broken filter without the syntax check reporting that.
  */
 class AbuseFilterCachingParser extends AbuseFilterParser {
-	const CACHE_VERSION = 1;
+	private const CACHE_VERSION = 1;
 
 	/**
 	 * Return the generated version of the parser for cache invalidation

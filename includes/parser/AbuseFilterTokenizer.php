@@ -7,20 +7,20 @@ use Psr\Log\LoggerInterface;
  */
 class AbuseFilterTokenizer {
 	/** @var int Tokenizer cache version. Increment this when changing the syntax. */
-	const CACHE_VERSION = 3;
-	const COMMENT_START_RE = '/\s*\/\*/A';
-	const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
-	const OPERATOR_RE =
+	public const CACHE_VERSION = 3;
+	private const COMMENT_START_RE = '/\s*\/\*/A';
+	private const ID_SYMBOL_RE = '/[0-9A-Za-z_]+/A';
+	public const OPERATOR_RE =
 		'/(\!\=\=|\!\=|\!|\*\*|\*|\/|\+|\-|%|&|\||\^|\:\=|\?|\:|\<\=|\<|\>\=|\>|\=\=\=|\=\=|\=)/A';
 	/** @deprecated In favour of V2 */
-	const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?(?![a-z])/Au';
-	const BASE = '0(?<base>[xbo])';
-	const DIGIT = '[0-9A-Fa-f]';
-	const DIGITS = self::DIGIT . '+' . '(?:\.\d*)?|\.\d+';
+	public const RADIX_RE = '/([0-9A-Fa-f]+(?:\.\d*)?|\.\d+)([bxo])?(?![a-z])/Au';
+	private const BASE = '0(?<base>[xbo])';
+	private const DIGIT = '[0-9A-Fa-f]';
+	private const DIGITS = self::DIGIT . '+' . '(?:\.\d*)?|\.\d+';
 	// New numbers regex. Note that the last lookahead can be changed to (?!self::DIGIT) once we
 	// drop the old syntax
-	const RADIX_RE_V2 = '/(?:' . self::BASE . ')?(?<input>' . self::DIGITS . ')(?!\w)/Au';
-	const WHITESPACE = "\011\012\013\014\015\040";
+	private const RADIX_RE_V2 = '/(?:' . self::BASE . ')?(?<input>' . self::DIGITS . ')(?!\w)/Au';
+	private const WHITESPACE = "\011\012\013\014\015\040";
 
 	// Order is important. The punctuation-matching regex requires that
 	// ** comes before *, etc. They are sorted to make it easy to spot

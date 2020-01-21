@@ -9,7 +9,7 @@ use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
 class AbuseFilterHooks {
-	const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
+	private const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
 
 	/** @var WikiPage|null Make sure edit filter & edit save hooks match */
 	private static $lastEditPage = null;
@@ -511,7 +511,7 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param array $tags
+	 * @param array &$tags
 	 * @param bool $enabled
 	 */
 	private static function fetchAllTags( array &$tags, $enabled ) {
