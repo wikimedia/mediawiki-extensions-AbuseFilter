@@ -418,9 +418,14 @@ class AFComputedVariable {
 
 				$registration = $obj->getRegistration();
 
-				if ( $obj->getId() === 0 || $registration === null ) {
+				if ( $obj->getId() === 0 ) {
 					$result = 0;
 				} else {
+					// HACK: If there's no registration date, assume 2008-01-15, Wikipedia Day
+					// in the year before the new user log was created. See T243469.
+					if ( $registration === null ) {
+						$registration = "20080115000000";
+					}
 					$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $registration );
 				}
 				break;
