@@ -5,6 +5,7 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Storage\RevisionRecord;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
@@ -149,7 +150,7 @@ class AbuseFilterHooks {
 				return null;
 			}
 
-			$oldContent = $oldRevision->getContent( Revision::RAW );
+			$oldContent = $oldRevision->getContent( RevisionRecord::RAW );
 			$oldAfText = AbuseFilter::revisionToString( $oldRevision, $user );
 
 			// XXX: Recreate what the new revision will probably be so we can get the full AF
@@ -340,7 +341,7 @@ class AbuseFilterHooks {
 			$fdb = AbuseFilter::getCentralDB( DB_MASTER );
 			$fdb->update( 'abuse_filter_log',
 				[ 'afl_rev_id' => $revision->getId() ],
-				[ 'afl_id' => $logs['global'], 'afl_wiki' => wfWikiID() ],
+				[ 'afl_id' => $logs['global'], 'afl_wiki' => WikiMap::getCurrentWikiDbDomain()->getId() ],
 				__METHOD__
 			);
 		}
@@ -946,7 +947,7 @@ class AbuseFilterHooks {
 					return null;
 				}
 
-				$oldcontent = $revision->getContent( Revision::RAW );
+				$oldcontent = $revision->getContent( RevisionRecord::RAW );
 				$oldtext = AbuseFilter::contentToString( $oldcontent );
 
 				// Cache article object so we can share a parse operation
@@ -1040,7 +1041,7 @@ class AbuseFilterHooks {
 			return;
 		}
 
-		$oldContent = $oldRevision->getContent( Revision::RAW );
+		$oldContent = $oldRevision->getContent( RevisionRecord::RAW );
 		$oldAfText = AbuseFilter::revisionToString( $oldRevision, $user );
 
 		// XXX: This makes the assumption that this method is only ever called for the main slot.

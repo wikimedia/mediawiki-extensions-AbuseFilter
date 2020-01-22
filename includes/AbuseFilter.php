@@ -1727,7 +1727,9 @@ class AbuseFilter {
 		$vars->setVar( 'summary', CommentStore::getStore()->getComment( 'rc_comment', $row )->text );
 
 		$time = LogEntryBase::extractParams( $row->rc_params )['img_timestamp'];
-		$file = wfFindFile( $title, [ 'time' => $time, 'private' => true ] );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
+			$title, [ 'time' => $time, 'private' => true ]
+		);
 		if ( !$file ) {
 			// FixMe This shouldn't happen!
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );

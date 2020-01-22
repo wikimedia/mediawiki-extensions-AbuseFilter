@@ -2,6 +2,7 @@
 
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Storage\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
@@ -449,7 +450,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		if ( $this->mSearchWiki ) {
-			if ( $this->mSearchWiki === wfWikiID() ) {
+			if ( $this->mSearchWiki === WikiMap::getCurrentWikiDbDomain()->getId() ) {
 				$conds['afl_wiki'] = null;
 			} else {
 				$conds['afl_wiki'] = $this->mSearchWiki;
@@ -632,7 +633,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			} elseif ( self::isHidden( $row ) === 'implicit' ) {
 				$rev = Revision::newFromId( $row->afl_rev_id );
 				// The log is visible, but refers to a deleted revision
-				if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $user ) ) {
+				if ( !$rev->userCan( RevisionRecord::SUPPRESSED_ALL, $user ) ) {
 					$error = 'abusefilter-log-details-hidden-implicit';
 				}
 			}

@@ -537,7 +537,7 @@ class AbuseFilterRunner {
 		$logger->info(
 			'Edit filter {filter_id} on {wiki} is taking longer than expected',
 			[
-				'wiki' => wfWikiID(),
+				'wiki' => WikiMap::getCurrentWikiDbDomain()->getId(),
 				'filter_id' => $filterId,
 				'title' => $this->title->getPrefixedText(),
 				'runtime' => $runtime,
@@ -608,7 +608,7 @@ class AbuseFilterRunner {
 	 * @param float $runtime
 	 */
 	protected function recordRuntimeProfilingResult( $totalFilters, $totalConditions, $runtime ) {
-		$keyPrefix = 'abusefilter.runtime-profile.' . wfWikiID() . '.';
+		$keyPrefix = 'abusefilter.runtime-profile.' . WikiMap::getCurrentWikiDbDomain()->getId() . '.';
 
 		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
 		$statsd->timing( $keyPrefix . 'runtime', $runtime );
@@ -1178,7 +1178,7 @@ class AbuseFilterRunner {
 		$dbw = wfGetDB( DB_MASTER );
 		$logTemplate = $this->buildLogTemplate();
 		$centralLogTemplate = [
-			'afl_wiki' => wfWikiID(),
+			'afl_wiki' => WikiMap::getCurrentWikiDbDomain()->getId(),
 		];
 
 		$logRows = [];

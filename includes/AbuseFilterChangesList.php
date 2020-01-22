@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Storage\RevisionRecord;
+
 class AbuseFilterChangesList extends OldChangesList {
 
 	/**
@@ -25,7 +27,7 @@ class AbuseFilterChangesList extends OldChangesList {
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		if ( (int)$rc->getAttribute( 'rc_deleted' ) !== 0 ) {
 			$s .= ' ' . $this->msg( 'abusefilter-log-hidden-implicit' )->parse();
-			if ( !$this->userCan( $rc, Revision::SUPPRESSED_ALL ) ) {
+			if ( !$this->userCan( $rc, RevisionRecord::SUPPRESSED_ALL ) ) {
 				return;
 			}
 		}
@@ -70,8 +72,8 @@ class AbuseFilterChangesList extends OldChangesList {
 				$rc->getAttribute( 'rc_user_text' ) ) .
 				Linker::userToolLinks( $rc->getAttribute( 'rc_user' ), $rc->getAttribute( 'rc_user_text' ) );
 
-		if ( $this->isDeleted( $rc, Revision::DELETED_USER ) ) {
-			if ( $this->userCan( $rc, Revision::DELETED_USER ) ) {
+		if ( $this->isDeleted( $rc, RevisionRecord::DELETED_USER ) ) {
+			if ( $this->userCan( $rc, RevisionRecord::DELETED_USER ) ) {
 				$s .= ' <span class="history-deleted">' . $links . '</span>';
 			} else {
 				$s .= ' <span class="history-deleted">' .
@@ -88,8 +90,8 @@ class AbuseFilterChangesList extends OldChangesList {
 	 * @return string
 	 */
 	public function insertComment( $rc ) {
-		if ( $this->isDeleted( $rc, Revision::DELETED_COMMENT ) ) {
-			if ( $this->userCan( $rc, Revision::DELETED_COMMENT ) ) {
+		if ( $this->isDeleted( $rc, RevisionRecord::DELETED_COMMENT ) ) {
+			if ( $this->userCan( $rc, RevisionRecord::DELETED_COMMENT ) ) {
 				return ' <span class="history-deleted">' .
 					Linker::commentBlock( $rc->getAttribute( 'rc_comment' ), $rc->getTitle() ) . '</span>';
 			} else {

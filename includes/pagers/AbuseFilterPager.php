@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Linker\LinkRenderer;
+use Wikimedia\AtEase\AtEase;
 
 /**
  * Class to build paginated filter list
@@ -295,13 +296,13 @@ class AbuseFilterPager extends TablePager {
 			}
 
 			$matches = [];
-			Wikimedia\suppressWarnings();
+			AtEase::suppressWarnings();
 			$check = preg_match(
 				$regex,
 				$row->af_pattern,
 				$matches
 			);
-			Wikimedia\restoreWarnings();
+			AtEase::restoreWarnings();
 			// This may happen in case of catastrophic backtracking, or regexps matching
 			// the empty string.
 			if ( $check === false || strlen( $matches[0] ) === 0 ) {

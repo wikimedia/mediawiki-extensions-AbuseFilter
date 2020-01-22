@@ -1,6 +1,7 @@
 <?php
 
 use Psr\Log\LoggerInterface;
+use Wikimedia\AtEase\AtEase;
 use Wikimedia\Equivset\Equivset;
 
 class AbuseFilterParser extends AFPTransitionBase {
@@ -1299,9 +1300,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 			$needle = "/$needle/u";
 
 			// Suppress and restore needed per T177744
-			Wikimedia\suppressWarnings();
+			AtEase::suppressWarnings();
 			$count = preg_match_all( $needle, $haystack );
-			Wikimedia\restoreWarnings();
+			AtEase::restoreWarnings();
 
 			if ( $count === false ) {
 				throw new AFPUserVisibleException(
@@ -1346,9 +1347,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$needle = "/$needle/u";
 
 		// Suppress and restore are here for the same reason as T177744
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$check = preg_match( $needle, $haystack, $matches );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 
 		if ( $check === false ) {
 			throw new AFPUserVisibleException(
@@ -1738,9 +1739,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	protected function keywordLike( AFPData $str, AFPData $pattern ) {
 		$str = $str->toString();
 		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), AFPData::WILDCARD_MAP ) . '$#u';
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$result = preg_match( $pattern, $str );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 
 		return new AFPData( AFPData::DBOOL, (bool)$result );
 	}
@@ -1764,9 +1765,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 			$pattern .= 'i';
 		}
 
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$result = preg_match( $pattern, $str );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 		if ( $result === false ) {
 			throw new AFPUserVisibleException(
 				'regexfailure',

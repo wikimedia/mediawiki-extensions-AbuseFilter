@@ -23,6 +23,8 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\Storage\RevisionRecord;
+
 /**
  * Query module to list abuse log entries.
  *
@@ -169,7 +171,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				continue;
 			} elseif ( $hidden === 'implicit' ) {
 				$rev = Revision::newFromId( $row->afl_rev_id );
-				if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $user ) ) {
+				if ( !$rev->userCan( RevisionRecord::SUPPRESSED_ALL, $user ) ) {
 					continue;
 				}
 			}

@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Storage\RevisionRecord;
+
 class AbuseFilterViewExamine extends AbuseFilterView {
 	/**
 	 * @var int Line number of the row, see RecentChange::$counter
@@ -127,7 +129,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( !ChangesList::userCan( RecentChange::newFromRow( $row ), Revision::SUPPRESSED_ALL ) ) {
+		if ( !ChangesList::userCan( RecentChange::newFromRow( $row ), RevisionRecord::SUPPRESSED_ALL ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 			return;
 		}
@@ -180,7 +182,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' ) {
 			$rev = Revision::newFromId( $row->afl_rev_id );
-			if ( !$rev->userCan( Revision::SUPPRESSED_ALL, $user ) ) {
+			if ( !$rev->userCan( RevisionRecord::SUPPRESSED_ALL, $user ) ) {
 				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 				return;
 			}
