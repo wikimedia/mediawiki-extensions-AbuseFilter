@@ -428,7 +428,7 @@ class AbuseFilterRunner {
 	protected function profileExecution( array $result, array $matchedFilters, array $allFilters ) {
 		$this->checkResetProfiling( $allFilters );
 		$this->recordRuntimeProfilingResult(
-			count( $matchedFilters ),
+			count( $allFilters ),
 			$result['condCount'],
 			$result['runtime']
 		);
