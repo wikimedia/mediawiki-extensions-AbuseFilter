@@ -24,6 +24,7 @@
  */
 
 use MediaWiki\Storage\RevisionRecord;
+use Wikimedia\IPUtils;
 
 /**
  * Query module to list abuse log entries.
@@ -120,9 +121,9 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				// Username normalisation
 				$params['user'] = $u->getName();
 				$userId = $u->getId();
-			} elseif ( IP::isIPAddress( $params['user'] ) ) {
+			} elseif ( IPUtils::isIPAddress( $params['user'] ) ) {
 				// It's an IP, sanitize it
-				$params['user'] = IP::sanitizeIP( $params['user'] );
+				$params['user'] = IPUtils::sanitizeIP( $params['user'] );
 				$userId = 0;
 			}
 

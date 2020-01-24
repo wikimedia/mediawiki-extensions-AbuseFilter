@@ -3,6 +3,7 @@
 use Psr\Log\LoggerInterface;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Equivset\Equivset;
+use Wikimedia\IPUtils;
 
 class AbuseFilterParser extends AFPTransitionBase {
 	/**
@@ -1374,7 +1375,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
 
-		if ( !IP::isValidRange( $range ) ) {
+		if ( !IPUtils::isValidRange( $range ) ) {
 			throw new AFPUserVisibleException(
 				'invalidiprange',
 				$this->mCur->pos,
@@ -1382,7 +1383,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 			);
 		}
 
-		$result = IP::isInRange( $ip, $range );
+		$result = IPUtils::isInRange( $ip, $range );
 
 		return new AFPData( AFPData::DBOOL, $result );
 	}

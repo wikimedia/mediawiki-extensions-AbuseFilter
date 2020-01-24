@@ -6,6 +6,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\RevisionRecord;
+use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
@@ -792,7 +793,7 @@ class AbuseFilterHooks {
 		$username = $nt->getText();
 		if ( MediaWikiServices::getInstance()->getPermissionManager()
 				->userHasRight( $sp->getUser(), 'abusefilter-log' )
-			&& !IP::isValidRange( $username )
+			&& !IPUtils::isValidRange( $username )
 		) {
 			$linkRenderer = $sp->getLinkRenderer();
 			$tools['abuselog'] = $linkRenderer->makeLink(

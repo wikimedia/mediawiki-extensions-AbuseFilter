@@ -2,6 +2,7 @@
 
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\Database;
 
 class AFComputedVariable {
@@ -89,7 +90,7 @@ class AFComputedVariable {
 
 		if ( $user instanceof User ) {
 			$ret = $user;
-		} elseif ( IP::isIPAddress( $username ) ) {
+		} elseif ( IPUtils::isIPAddress( $username ) ) {
 			$ret = new User;
 			$ret->setName( $username );
 		} else {

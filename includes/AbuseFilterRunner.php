@@ -4,6 +4,7 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
+use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -863,7 +864,7 @@ class AbuseFilterRunner {
 				$identifier = $this->user->getId();
 				break;
 			case 'range':
-				$identifier = substr( IP::toHex( $request->getIP() ), 0, 4 );
+				$identifier = substr( IPUtils::toHex( $request->getIP() ), 0, 4 );
 				break;
 			case 'creationdate':
 				$reg = (int)$this->user->getRegistration();
@@ -913,7 +914,7 @@ class AbuseFilterRunner {
 				global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
 
 				$ip = RequestContext::getMain()->getRequest()->getIP();
-				$type = IP::isIPv6( $ip ) ? 'IPv6' : 'IPv4';
+				$type = IPUtils::isIPv6( $ip ) ? 'IPv6' : 'IPv4';
 				$CIDRsize = max( $wgAbuseFilterRangeBlockSize[$type], $wgBlockCIDRLimit[$type] );
 				$blockCIDR = $ip . '/' . $CIDRsize;
 
@@ -922,7 +923,7 @@ class AbuseFilterRunner {
 						'desc' => $ruleDescription,
 						'number' => $ruleNumber
 					],
-					IP::sanitizeRange( $blockCIDR ),
+					IPUtils::sanitizeRange( $blockCIDR ),
 					'1 week',
 					false
 				);
@@ -1084,7 +1085,7 @@ class AbuseFilterRunner {
 				? 'indefinite'
 				: $expiry;
 			$flags = [ 'nocreate' ];
-			if ( !$block->isAutoblocking() && !IP::isIPAddress( $target ) ) {
+			if ( !$block->isAutoblocking() && !IPUtils::isIPAddress( $target ) ) {
 				// Conditionally added same as SpecialBlock
 				$flags[] = 'noautoblock';
 			}
