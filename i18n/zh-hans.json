@@ -497,6 +497,7 @@
 	"abusefilter-exception-dividebyzero": "字符$1处非法将$2除以零。",
 	"abusefilter-exception-unrecognisedvar": "字符$1处存在无法识别的变量$2。",
 	"abusefilter-exception-notenoughargs": "字符$1处调用的函数$2未得到足够的参数。预期有$3个参数，得到了$4个。",
+	"abusefilter-exception-toomanyargs": "字符$1处调用的函数$2传入过多参数。预期最多应有有$3个参数，却得到了$4个。",
 	"abusefilter-exception-regexfailure": "字符$1处的正则表达式“$2”存在错误。",
 	"abusefilter-exception-overridebuiltin": "字符$1处非法覆盖内建变量“$2”。",
 	"abusefilter-exception-outofbounds": "字符$1正在请求不存在的数组项$2（数组大小 = $3）。",
