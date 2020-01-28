@@ -468,6 +468,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addHTML( $form );
 
 		if ( $history_id ) {
+			// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
 			$out->addWikiMsg( $oldWarningMessage, $history_id, $filter );
 		}
 	}

@@ -773,6 +773,7 @@ class AbuseFilterRunner {
 				$this->user->getName(),
 				$maxExpiry,
 				true,
+				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 				$blockValues[2]
 			);
 			$message = [
@@ -782,6 +783,7 @@ class AbuseFilterRunner {
 			];
 			// Manually add the message. If we're here, there is one.
 			$messages[] = $message;
+			// @phan-suppress-next-line PhanTypeMismatchDimAssignment
 			$actionsTaken[$blockValues[1]][] = 'block';
 		}
 

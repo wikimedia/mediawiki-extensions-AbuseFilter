@@ -476,6 +476,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 *
 	 * @param AFPData &$result
 	 * @throws AFPUserVisibleException
+	 * @suppress PhanPossiblyUndeclaredVariable
 	 */
 	protected function doLevelConditions( &$result ) {
 		if ( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'if' ) {

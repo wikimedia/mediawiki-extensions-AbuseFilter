@@ -731,6 +731,7 @@ class AFPTreeParser extends AFPTransitionBase {
 		}
 
 		$this->move();
+		// @phan-suppress-next-next-line PhanPossiblyUndeclaredVariable
 		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Until phan can understand the switch
 		return $result;
 	}
