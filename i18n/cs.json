@@ -96,6 +96,7 @@
 	"abusefilter-log-details-var": "Proměnná",
 	"abusefilter-log-details-val": "Hodnota",
 	"abusefilter-log-details-vars": "Parametry akce",
+	"abusefilter-log-details-privatedetails": "Soukromé detaily",
 	"abusefilter-log-details-ip": "Zdrojová IP adresa",
 	"abusefilter-log-details-checkuser": "Zkontrolovat uživatele",
 	"abusefilter-log-noactions": "žádná",

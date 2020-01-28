@@ -437,7 +437,7 @@
 	"abusefilter-exception-unclosedstring": "สายอักขระยังไม่ปิดซึ่งเริ่มที่อักขระ $1",
 	"abusefilter-exception-invalidoperator": "ตัวดำเนินการไม่สมเหตุสมผล \"$2\" ณ อักขระ $1",
 	"abusefilter-exception-unrecognisedtoken": "โทเค็นไม่คาดหมาย \"$2\" ณ อักขระ $1",
-	"abusefilter-action-tag": "ป้ายระบุ",
+	"abusefilter-action-tag": "ป้ายกำกับ",
 	"abusefilter-action-throttle": "ตรงเฉพาะเมื่อเกินขีดจำกัด",
 	"abusefilter-action-warn": "เตือน",
 	"abusefilter-action-blockautopromote": "บล็อกการแต่งตั้งอัตโนมัติ",
