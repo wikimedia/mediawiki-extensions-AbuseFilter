@@ -24,16 +24,6 @@
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterParser
- *
- * @covers AFPData
- * @covers AbuseFilterTokenizer
- * @covers AFPToken
- * @covers AFPUserVisibleException
- * @covers AFPException
- * @covers AbuseFilterParser
- * @covers AbuseFilterCachingParser
- * @covers AFPTreeParser
- * @covers AFPTreeNode
  */
 class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
@@ -42,6 +32,10 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers AFPData::mulRel
+	 * @covers AbuseFilterParser
+	 * @covers AbuseFilterCachingParser
+	 * @covers AFPTreeParser
+	 *
 	 * @dataProvider divideByZero
 	 */
 	public function testDivideByZeroException( $expr, $caller ) {
@@ -65,6 +59,8 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 			[ '1%0.0', 'mulRel' ],
 			[ '1%0.3', 'mulRel' ],
 			[ '1%(-0.7)', 'mulRel' ],
+			'DUNDEFINED numerator 1' => [ 'timestamp % 0', 'mulRel' ],
+			'DUNDEFINED numerator 2' => [ 'timestamp / 0.0', 'mulRel' ],
 		];
 	}
 
@@ -177,28 +173,36 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test a couple of toNative cases which aren't already covered in other tests.
-	 *
 	 * @param AFPData $orig
 	 * @param mixed $expected
 	 * @covers AFPData::toNative
-	 * @dataProvider provideMissingToNative
+	 * @dataProvider provideToNative
 	 */
-	public function testMissingToNative( $orig, $expected ) {
+	public function testToNative( $orig, $expected ) {
 		$this->assertEquals( $expected, $orig->toNative() );
 	}
 
 	/**
-	 * Data provider for testMissingToNative
+	 * Data provider for testToNative
 	 *
 	 * @return array
 	 */
-	public function provideMissingToNative() {
+	public function provideToNative() {
 		return [
 			[ new AFPData( AFPData::DFLOAT, 1.2345 ), 1.2345 ],
 			[ new AFPData( AFPData::DFLOAT, 0.1 ), 0.1 ],
 			[ new AFPData( AFPData::DUNDEFINED ), null ],
 			[ new AFPData( AFPData::DNULL, null ), null ],
+			[ new AFPData( AFPData::DBOOL, false ), false ],
+			[ new AFPData( AFPData::DSTRING, '12' ), '12' ],
+			[ new AFPData( AFPData::DINT, 123 ), 123 ],
+			[
+				new AFPData(
+					AFPData::DARRAY,
+					[ new AFPData( AFPData::DSTRING, 'foo' ), new AFPData( AFPData::DBOOL, true ) ]
+				),
+				[ 'foo', true ]
+			],
 		];
 	}
 
@@ -206,8 +210,10 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 * Ensure that we don't allow DUNDEFINED in AFPData::equals
 	 *
 	 * @param AFPData $lhs
-	 * @param AFPData $lhs
+	 * @param AFPData $rhs
 	 * @dataProvider provideDUNDEFINEDEquals
+	 *
+	 * @covers AFPData::equals
 	 */
 	public function testNoDUNDEFINEDEquals( $lhs, $rhs ) {
 		$this->expectException( AFPException::class );
@@ -231,9 +237,23 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 
 	/**
 	 * Test that DUNDEFINED can only have null value
+	 *
+	 * @covers AFPData::__construct
 	 */
 	public function testDUNDEFINEDRequiresNullValue() {
 		$this->expectException( InvalidArgumentException::class );
 		new AFPData( AFPData::DUNDEFINED, 'non-null' );
+	}
+
+	/**
+	 * Test that casting DUNDEFINED to something else is forbidden
+	 *
+	 * @covers AFPData::castTypes
+	 */
+	public function testDUNDEFINEDCannotBeCast() {
+		$data = new AFPData( AFPData::DUNDEFINED );
+		$this->expectException( AFPException::class );
+		$this->expectExceptionMessage( 'Refusing to cast' );
+		AFPData::castTypes( $data, AFPData::DNULL );
 	}
 }

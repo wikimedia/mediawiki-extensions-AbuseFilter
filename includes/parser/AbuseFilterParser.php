@@ -159,7 +159,6 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * For use in batch scripts and the like
 	 *
 	 * @param bool $enable True to enable the limit, false to disable it
-	 * @codeCoverageIgnore
 	 */
 	public function toggleConditionLimit( $enable ) {
 		$this->condLimitEnabled = $enable;
@@ -1127,7 +1126,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	protected function callFunc( $fname, array $args ) : AFPData {
 		if ( !array_key_exists( $fname, self::FUNCTIONS ) ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "$fname is not a valid function." );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$funcHandler = self::FUNCTIONS[$fname];

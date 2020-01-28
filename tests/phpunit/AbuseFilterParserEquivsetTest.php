@@ -23,10 +23,15 @@
 /**
  * Tests that require Equivset, separated from the parser unit tests.
  *
+ * @group Test
+ * @group AbuseFilter
+ * @group AbuseFilterParser
+ *
  * @covers AbuseFilterCachingParser
  * @covers AFPTreeParser
  * @covers AFPTransitionBase
  * @covers AFPTreeNode
+ * @covers AFPSyntaxTree
  * @covers AFPParserState
  * @covers AbuseFilterParser
  * @covers AbuseFilterTokenizer
@@ -98,7 +103,7 @@ class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	public function testVariadicFuncsArbitraryArgsAllowed( $func ) {
 		$argsList = str_repeat( ', "arg"', 50 );
 		$code = "$func( 'arg' $argsList )";
-		foreach ( self::getParsers() as $parser ) {
+		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
 			try {
 				$parser->parse( $code );

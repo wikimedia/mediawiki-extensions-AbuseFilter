@@ -24,15 +24,6 @@
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterParser
- *
- * @covers AbuseFilterTokenizer
- * @covers AFPToken
- * @covers AbuseFilterParser
- * @covers AbuseFilterCachingParser
- * @covers AFPTreeParser
- * @covers AFPTreeNode
- * @covers AFPUserVisibleException
- * @covers AFPException
  */
 class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	/**
@@ -40,7 +31,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AbuseFilterTokenizer::nextToken
+	 * @covers AbuseFilterTokenizer
 	 * @dataProvider unclosedComment
 	 */
 	public function testUnclosedCommentException( $expr, $caller ) {
@@ -65,7 +56,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AbuseFilterTokenizer::nextToken
+	 * @covers AbuseFilterTokenizer
 	 * @dataProvider unrecognisedToken
 	 */
 	public function testUnrecognisedTokenException( $expr, $caller ) {
@@ -90,7 +81,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AbuseFilterTokenizer::readStringLiteral
+	 * @covers AbuseFilterTokenizer
 	 * @dataProvider unclosedString
 	 */
 	public function testUnclosedStringException( $expr, $caller ) {

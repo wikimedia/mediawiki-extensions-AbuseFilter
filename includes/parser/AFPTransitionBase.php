@@ -89,7 +89,9 @@ abstract class AFPTransitionBase {
 	 */
 	protected function checkArgCount( $args, $func ) {
 		if ( !array_key_exists( $func, self::FUNC_ARG_COUNT ) ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "$func is not a valid function." );
+			// @codeCoverageIgnoreEnd
 		}
 		list( $min, $max ) = self::FUNC_ARG_COUNT[ $func ];
 		if ( count( $args ) < $min ) {
@@ -144,7 +146,9 @@ abstract class AFPTransitionBase {
 	 */
 	protected function functionIsVariadic( $fname ) {
 		if ( !array_key_exists( $fname, self::FUNC_ARG_COUNT ) ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "Function $fname is not valid" );
+			// @codeCoverageIgnoreEnd
 		}
 		return self::FUNC_ARG_COUNT[$fname][1] === INF;
 	}

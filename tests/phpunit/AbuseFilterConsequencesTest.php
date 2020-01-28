@@ -551,12 +551,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				break;
 			case 'createaccount':
 				$user = User::newFromName( $params['username'] );
-				$provider = new AbuseFilterPreAuthenticationProvider();
-				$status = $provider->testForAccountCreation( $user, $user, [] );
-
 				// A creatable username must exist to be passed to $logEntry->setPerformer(),
 				// so create the account.
 				$user->addToDatabase();
+
+				$provider = new AbuseFilterPreAuthenticationProvider();
+				$status = $provider->testForAccountCreation( $user, $user, [] );
 
 				$logEntry = new ManualLogEntry( 'newusers', 'create' );
 				$logEntry->setPerformer( $user );
@@ -1135,7 +1135,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	public function testThrottleLimit( $createIds, $actionParams ) {
 		$this->createFilters( $createIds );
-		$this->setMwGlobals( [ 'wgAbuseFilterEmergencyDisableCount' => [ 'default' => -1 ] ] );
+		$this->setMwGlobals( [
+			'wgAbuseFilterEmergencyDisableCount' => [ 'default' => -1 ],
+			'wgAbuseFilterEmergencyDisableThreshold' => [ 'default' => -1 ],
+		] );
 		// We don't care about consequences here
 		$this->doAction( $actionParams );
 
@@ -1152,7 +1155,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			}
 		}
 
-		$this->assertEquals( $createIds, $throttled, 'Some filters were\'nt automatically throttled.' );
+		$this->assertEquals( $createIds, $throttled, 'Some filters weren\'t automatically throttled.' );
 	}
 
 	/**

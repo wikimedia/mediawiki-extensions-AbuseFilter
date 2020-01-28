@@ -22,6 +22,7 @@
  */
 
 use Psr\Log\NullLogger;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Test
@@ -32,6 +33,7 @@ use Psr\Log\NullLogger;
  * @covers AFPTreeParser
  * @covers AFPTransitionBase
  * @covers AFPTreeNode
+ * @covers AFPSyntaxTree
  * @covers AFPParserState
  * @covers AbuseFilterParser
  * @covers AbuseFilterTokenizer
@@ -39,7 +41,6 @@ use Psr\Log\NullLogger;
  * @covers AFPUserVisibleException
  * @covers AFPException
  * @covers AFPData
- * @covers AbuseFilterVariableHolder
  * @covers AFComputedVariable
  */
 class AbuseFilterParserTest extends AbuseFilterParserTestCase {
@@ -305,6 +306,18 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'timestamp[a]', 'getVarValue' ],
 			[ 'x := []; x[a] := 1', 'getVarValue' ],
 		];
+	}
+
+	/**
+	 * Special case, cannot use exceptionTestInSkippedBlock because that calls checkSyntax
+	 */
+	public function testUnrecognisedArrayInSkippedBlock() {
+		$code = 'false & ( nonex[1] := 2 )';
+		// Old parser only
+		$parser = $this->getParsers()[0];
+		$this->expectException( AFPUserVisibleException::class );
+		$this->expectExceptionMessage( 'unrecognisedvar' );
+		$parser->parse( $code );
 	}
 
 	/**
@@ -803,6 +816,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @param string $old The old name of the variable
 	 * @param string $new The new name of the variable
 	 * @dataProvider provideDeprecatedVars
+	 *
+	 * @covers AbuseFilterParser::getVarValue
+	 * @covers AFPTreeParser::checkLogDeprecatedVar
 	 */
 	public function testDeprecatedVars( $old, $new ) {
 		// Set it under the new name, and check that the old name points to it
@@ -997,6 +1013,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "false & (var := [ 1,2,3 ]); var === [ 1,2,3 ]" ],
 			[ "page_age - user_editcount !== 1234567 - page_namespace" ],
 			[ "added_lines contains 'foo' ? 'foo' : false" ],
+			[ "timestamp / 12345 !== 'foobar'" ],
 			// Refuse to modify a DUNDEFINED offset as if it were an array
 			[ "false & (var := [ 1,2,3 ]); var[0] := true; var[0] === true" ],
 			[ "false & (var := [ 1,2,3 ]); var[] := 'baz'; 'baz' in var" ],
@@ -1195,8 +1212,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'added_lines contains string(3/0)', 'dividebyzero' ],
 			[ 'norm(new_text) irlike ")"', 'regexfailure' ],
 			[ 'ip_in_range( user_name, "foobar" )', 'invalidiprange' ],
-			[ 'timestamp % 0', 'dividebyzero' ],
-			[ 'timestamp / 0.0', 'dividebyzero' ],
 		];
 	}
 
@@ -1210,5 +1225,110 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		$argsCount = array_keys( AbuseFilterParser::FUNC_ARG_COUNT );
 		sort( $argsCount );
 		$this->assertSame( $funcs, $argsCount );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::__construct
+	 */
+	public function testConstructorInitsVars() {
+		$lang = $this->getLanguageMock();
+		$cache = $this->createMock( BagOStuff::class );
+		$logger = new NullLogger();
+		$vars = new AbuseFilterVariableHolder();
+
+		$parser = new AbuseFilterParser( $lang, $cache, $logger, $vars );
+		$this->assertSame( $vars, $parser->mVariables, 'Variables should be initialized' );
+		$pVars = TestingAccessWrapper::newFromObject( $parser->mVariables );
+		$this->assertSame( $logger, $pVars->logger, 'VarHolder logger should be initialized' );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::setFilter
+	 */
+	public function testSetFilter() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$this->assertNull( $parser->mFilter, 'precondition' );
+		$filter = 42;
+		$parser->setFilter( $filter );
+		$this->assertSame( $filter, $parser->mFilter );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::setCache
+	 */
+	public function testSetCache() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$cache = $this->createMock( BagOStuff::class );
+		$parser->setCache( $cache );
+		$this->assertSame( $cache, $parser->cache );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::setLogger
+	 */
+	public function testSetLogger() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$logger = new NullLogger();
+		$parser->setLogger( $logger );
+		$this->assertSame( $logger, $parser->logger );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::setStatsd
+	 */
+	public function testSetStatsd() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$statsd = $this->createMock( IBufferingStatsdDataFactory::class );
+		$parser->setStatsd( $statsd );
+		$this->assertSame( $statsd, $parser->statsd );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::getCondCount
+	 * @covers AbuseFilterParser::resetCondCount
+	 */
+	public function testCondCountMethods() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$this->assertSame( 0, $parser->mCondCount, 'precondition' );
+		$val = 42;
+		$parser->mCondCount = $val;
+		$this->assertSame( $val, $parser->getCondCount(), 'after set' );
+		$parser->resetCondCount( $val );
+		$this->assertSame( 0, $parser->getCondCount(), 'after reset' );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::toggleConditionLimit
+	 */
+	public function testToggleConditionLimit() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+
+		$parser->toggleConditionLimit( false );
+		$this->assertFalse( $parser->condLimitEnabled );
+
+		$parser->toggleConditionLimit( true );
+		$this->assertTrue( $parser->condLimitEnabled );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::clearFuncCache
+	 */
+	public function testClearFuncCache() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+
+		$parser->funcCache = [ 1, 2, 3 ];
+
+		$parser->clearFuncCache();
+		$this->assertSame( [], $parser->funcCache );
+	}
+
+	/**
+	 * @covers AbuseFilterParser::setVariables
+	 */
+	public function testSetVariables() {
+		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$vars = new AbuseFilterVariableHolder();
+		$parser->setVariables( $vars );
+		$this->assertSame( $vars, $parser->mVariables );
 	}
 }

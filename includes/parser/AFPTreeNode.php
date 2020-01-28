@@ -136,7 +136,9 @@ class AFPTreeNode {
 			$varnameNode = $this->children[1];
 			if ( $varnameNode->type !== self::ATOM ) {
 				// Shouldn't happen since variable variables are not allowed
+				// @codeCoverageIgnoreStart
 				throw new AFPException( "Got non-atom type {$varnameNode->type} for set_var" );
+				// @codeCoverageIgnoreEnd
 			}
 			$this->innerAssignments = [ $varnameNode->children->value ];
 		}
