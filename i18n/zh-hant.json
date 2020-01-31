@@ -445,7 +445,7 @@
 	"abusefilter-edit-builder-vars-file-height": "檔案高度（像素）",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "檔案位元色板",
 	"abusefilter-filter-log": "最近過濾器變更",
-	"abusefilter-history": "防濫用過濾器 #$1 的修訂歷史",
+	"abusefilter-history": "防濫用過濾器#$1的修訂歷史",
 	"abusefilter-history-foruser": "由 $1 所作的變更",
 	"abusefilter-history-hidden": "已隱藏",
 	"abusefilter-history-enabled": "已開啟",
