@@ -29,7 +29,8 @@
 			"Daimona Eaytoy",
 			"ToBeFree",
 			"FriedhelmW",
-			"WikiBayer"
+			"WikiBayer",
+			"Mglaser"
 		]
 	},
 	"abusefilter-desc": "Wendet Heuristiken automatisch auf Bearbeitungen an",
@@ -181,6 +182,7 @@
 	"abusefilter-list-options-search-like": "Einfache Anfrage",
 	"abusefilter-list-options-search-rlike": "Regulärer Ausdruck",
 	"abusefilter-list-options-search-irlike": "Schreibungsunabhängiger regulärer Ausdruck",
+	"abusefilter-list-invalid-searchmode": "Der angegebene Suchmodus ist ungültig.",
 	"abusefilter-list-regexerror": "Bei der Suche ist ein Fehler aufgetreten: Syntaxfehler im regulären Ausdruck.",
 	"abusefilter-list-options-submit": "Aktualisieren",
 	"abusefilter-tools-text": "Auf dieser Seite finden sich einige Werkzeuge, die beim Erstellen von Missbrauchsfiltern und bei der Fehlersuche hilfreich sein können.",
