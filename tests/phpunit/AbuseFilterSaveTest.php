@@ -112,7 +112,8 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 					'af_enabled' => 1,
 					'af_hidden' => 0,
 					'af_global' => 0,
-					'af_throttled' => 0
+					'af_throttled' => 0,
+					'af_hit_count' => 0,
 				],
 				[]
 			];

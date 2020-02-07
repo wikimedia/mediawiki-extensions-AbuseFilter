@@ -1065,19 +1065,23 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Loads filter data from the database by ID.
-	 * @param int $id The filter's ID number
-	 * @return array|null Either an associative array representing the filter,
+	 * @param int|string $id The filter's ID number, or 'new'
+	 * @return array|null Either a [ DB row, actions ] array representing the filter,
 	 *  or NULL if the filter does not exist.
 	 */
 	public function loadFilterData( $id ) {
 		if ( $id === 'new' ) {
-			$obj = new stdClass;
-			$obj->af_pattern = '';
-			$obj->af_enabled = 1;
-			$obj->af_hidden = 0;
-			$obj->af_global = 0;
-			$obj->af_throttled = 0;
-			return [ $obj, [] ];
+			return [
+				(object)[
+					'af_pattern' => '',
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_throttled' => 0,
+					'af_hit_count' => 0
+				],
+				[]
+			];
 		}
 
 		// Load from master to avoid unintended reversions where there's replication lag.
@@ -1150,7 +1154,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Load data from the already-POSTed HTTP request.
 	 *
-	 * @throws BadMethodCallException If called without the request being POSTed
+	 * @throws BadMethodCallException If called without the request being POSTed or when trying
+	 *   to import a filter but $filter is not 'new'
 	 * @param int|string $filter The filter ID being requested.
 	 * @return array
 	 */
@@ -1162,18 +1167,31 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// We need some details like last editor
-		list( $row, $origActions ) = $this->loadFilterData( $filter );
+		list( $origRow, $origActions ) = $this->loadFilterData( $filter );
 
-		$row->mOriginalRow = clone $row;
+		// Default values
+		$row = (object)[
+			'af_throttled' => $origRow->af_throttled,
+			'af_hit_count' => $origRow->af_hit_count
+		];
+		$row->mOriginalRow = $origRow;
 		$row->mOriginalActions = $origActions;
 
 		// Check for importing
 		$import = $request->getVal( 'wpImportText' );
 		if ( $import ) {
+			if ( $filter !== 'new' ) {
+				// Sanity
+				throw new BadMethodCallException( __METHOD__ . ' called for importing on existing filter.' );
+			}
 			$data = FormatJson::decode( $import );
 
 			$importRow = $data->row;
 			$actions = wfObjectToArray( $data->actions );
+
+			// Some more default values
+			$row->af_group = 'default';
+			$row->af_global = 0;
 
 			$copy = [
 				'af_public_comments',
