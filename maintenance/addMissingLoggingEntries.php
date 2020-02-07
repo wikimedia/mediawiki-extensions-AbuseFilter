@@ -16,7 +16,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 	public function __construct() {
 		parent::__construct();
 
-		$this->mDescription = 'Add missing logging entries for abusefilter-modify T54919';
+		$this->addDescription( 'Add missing logging entries for abusefilter-modify T54919' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
 		$this->addOption( 'verbose', 'Print a list of affected afh_id' );
 		$this->requireExtension( 'Abuse Filter' );
@@ -108,20 +108,26 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 				$factory->waitForReplication();
 			}
 			$user = User::newFromAnyId( $row->afh_user, $row->afh_user_text, null );
-			$dbw->insert(
-				'logging',
-				[
-					'log_type' => 'abusefilter',
-					'log_action' => 'modify',
-					'log_timestamp' => $row->afh_timestamp,
-					'log_namespace' => -1,
-					'log_title' => SpecialPageFactory::getLocalNameFor( 'AbuseFilter' ) . '/' . $row->afh_filter,
-					'log_params' => $row->afh_id . "\n" . $row->afh_filter,
-					'log_deleted' => $row->afh_deleted,
-				] + CommentStore::getStore()->insert( $dbw, 'log_comment', '' )
-					+ ActorMigration::newMigration()->getInsertValues( $dbw, 'log_user', $user ),
-				__METHOD__
+
+			if ( $user === null ) {
+				// This isn't supposed to happen.
+				continue;
+			}
+
+			// This copies the code in AbuseFilter::doSaveFilter
+			$logEntry = new ManualLogEntry( 'abusefilter', 'modify' );
+			$logEntry->setPerformer( $user );
+			$logEntry->setTarget(
+				SpecialPage::getTitleFor( SpecialAbuseFilter::PAGE_NAME, $row->afh_filter )
 			);
+			// Use the new format!
+			$logEntry->setParameters( [
+				'historyId' => $row->afh_id,
+				'newId' => $row->afh_filter
+			] );
+			$logEntry->setTimestamp( $row->afh_timestamp );
+			$logEntry->insert( $dbw );
+
 			$count++;
 		}
 
