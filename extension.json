@@ -121,6 +121,9 @@
 	"ExtensionMessagesFiles": {
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\AbuseFilter\\VariableGenerator\\": "includes/VariableGenerator/"
+	},
 	"AutoloadClasses": {
 		"AbuseFilter": "includes/AbuseFilter.php",
 		"AbuseFilterCachingParser" : "includes/parser/AbuseFilterCachingParser.php",

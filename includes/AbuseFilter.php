@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -240,55 +241,13 @@ class AbuseFilter {
 	];
 
 	/**
+	 * @deprecated Use AbuseFilterVariableGenerator
 	 * @param User $user
-	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
-	 *   this is the entry. Null if it's for the current action being filtered.
+	 * @param RCDatabaseLogEntry|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateUserVars( User $user, RCDatabaseLogEntry $entry = null ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		$vars->setLazyLoadVar(
-			'user_editcount',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getEditCount' ]
-		);
-
-		$vars->setVar( 'user_name', $user->getName() );
-
-		$vars->setLazyLoadVar(
-			'user_emailconfirm',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getEmailAuthenticationTimestamp' ]
-		);
-
-		$vars->setLazyLoadVar(
-			'user_age',
-			'user-age',
-			[ 'user' => $user, 'asof' => wfTimestampNow() ]
-		);
-
-		$vars->setLazyLoadVar(
-			'user_groups',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getEffectiveGroups' ]
-		);
-
-		$vars->setLazyLoadVar(
-			'user_rights',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getRights' ]
-		);
-
-		$vars->setLazyLoadVar(
-			'user_blocked',
-			'user-block',
-			[ 'user' => $user ]
-		);
-
-		Hooks::run( 'AbuseFilter-generateUserVars', [ $vars, $user, $entry ] );
-
-		return $vars;
+		return VariableGenerator::generateUserVars( $user, $entry );
 	}
 
 	/**
@@ -353,6 +312,7 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @deprecated Use AbuseFilterVariableGenerator
 	 * @param Title|null $title
 	 * @param string $prefix
 	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
@@ -360,63 +320,15 @@ class AbuseFilter {
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateTitleVars( $title, $prefix, RCDatabaseLogEntry $entry = null ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		if ( !$title ) {
-			return $vars;
-		}
-
-		$vars->setVar( $prefix . '_id', $title->getArticleID() );
-		$vars->setVar( $prefix . '_namespace', $title->getNamespace() );
-		$vars->setVar( $prefix . '_title', $title->getText() );
-		$vars->setVar( $prefix . '_prefixedtitle', $title->getPrefixedText() );
-
-		global $wgRestrictionTypes;
-		foreach ( $wgRestrictionTypes as $action ) {
-			$vars->setLazyLoadVar( "{$prefix}_restrictions_$action", 'get-page-restrictions',
-				[ 'title' => $title->getText(),
-					'namespace' => $title->getNamespace(),
-					'action' => $action
-				]
-			);
-		}
-
-		$vars->setLazyLoadVar( "{$prefix}_recent_contributors", 'load-recent-authors',
-			[
-				'title' => $title->getText(),
-				'namespace' => $title->getNamespace()
-			] );
-
-		$vars->setLazyLoadVar( "{$prefix}_age", 'page-age',
-			[
-				'title' => $title->getText(),
-				'namespace' => $title->getNamespace(),
-				'asof' => wfTimestampNow()
-			] );
-
-		$vars->setLazyLoadVar( "{$prefix}_first_contributor", 'load-first-author',
-			[
-				'title' => $title->getText(),
-				'namespace' => $title->getNamespace()
-			] );
-
-		Hooks::run( 'AbuseFilter-generateTitleVars', [ $vars, $title, $prefix, $entry ] );
-
-		return $vars;
+		return VariableGenerator::generateTitleVars( $title, $prefix, $entry );
 	}
 
 	/**
-	 * Computes all variables unrelated to title and user. In general, these variables are known
-	 * even without an ongoing action.
-	 *
+	 * @deprecated Use AbuseFilterVariableGenerator
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateStaticVars() {
-		$vars = new AbuseFilterVariableHolder();
-
-		// For now, we don't have variables to add; other extensions could.
-		Hooks::run( 'AbuseFilter-generateStaticVars', [ $vars ] );
-		return $vars;
+		return VariableGenerator::generateStaticVars();
 	}
 
 	/**
@@ -1628,261 +1540,13 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param stdClass $row
-	 * @return AbuseFilterVariableHolder|null
-	 */
-	public static function getVarsFromRCRow( $row ) {
-		$entry = DatabaseLogEntry::newFromRow( $row );
-
-		if ( !( $entry instanceof RCDatabaseLogEntry ) ) {
-			throw new LogicException( '$row must be a recentchanges row' );
-		}
-
-		if ( $entry->getType() === 'move' ) {
-			$vars = self::getMoveVarsFromRCEntry( $entry );
-		} elseif ( $entry->getType() === 'newusers' ) {
-			$vars = self::getCreateVarsFromRCEntry( $entry );
-		} elseif ( $entry->getType() === 'delete' ) {
-			$vars = self::getDeleteVarsFromRCEntry( $entry );
-		} elseif ( $entry->getType() === 'upload' ) {
-			$vars = self::getUploadVarsFromRCEntry( $entry );
-		} elseif ( $entry->getAssociatedRevId() ) {
-			// It's an edit.
-			$vars = self::getEditVarsFromRCEntry( $entry );
-		} else {
-			return null;
-		}
-		if ( $vars ) {
-			$vars->setVar(
-				'timestamp',
-				MWTimestamp::convert( TS_UNIX, $entry->getTimestamp() )
-			);
-			$vars->addHolders( self::generateStaticVars() );
-		}
-
-		return $vars;
-	}
-
-	/**
-	 * @param RCDatabaseLogEntry $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	private static function getCreateVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		$vars->setVar(
-			'action',
-			$entry->getSubtype() === 'autocreate' ? 'autocreateaccount' : 'createaccount'
-		);
-
-		$name = $entry->getTarget()->getText();
-		// Add user data if the account was created by a registered user
-		$user = $entry->getPerformer();
-		if ( !$user->isAnon() && $name !== $user->getName() ) {
-			$vars->addHolders( self::generateUserVars( $user, $entry ) );
-		}
-
-		$vars->setVar( 'accountname', $name );
-
-		return $vars;
-	}
-
-	/**
-	 * @param RCDatabaseLogEntry $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	private static function getDeleteVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		$title = $entry->getTarget();
-		$user = $entry->getPerformer();
-
-		$vars->addHolders(
-			self::generateUserVars( $user, $entry ),
-			self::generateTitleVars( $title, 'page', $entry )
-		);
-
-		$vars->setVar( 'action', 'delete' );
-		$vars->setVar( 'summary', $entry->getComment() );
-
-		return $vars;
-	}
-
-	/**
-	 * @param RCDatabaseLogEntry $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	private static function getUploadVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		$title = $entry->getTarget();
-		$user = $entry->getPerformer();
-
-		$vars->addHolders(
-			self::generateUserVars( $user, $entry ),
-			self::generateTitleVars( $title, 'page', $entry )
-		);
-
-		$vars->setVar( 'action', 'upload' );
-		$vars->setVar( 'summary', $entry->getComment() );
-
-		$time = $entry->getParameters()['img_timestamp'];
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
-			$title, [ 'time' => $time, 'private' => true ]
-		);
-		if ( !$file ) {
-			// FixMe This shouldn't happen!
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->debug( "Cannot find file from RC row with title $title" );
-			return $vars;
-		}
-
-		// This is the same as AbuseFilterHooks::filterUpload, but from a different source
-		$vars->setVar( 'file_sha1', Wikimedia\base_convert( $file->getSha1(), 36, 16, 40 ) );
-		$vars->setVar( 'file_size', $file->getSize() );
-
-		$vars->setVar( 'file_mime', $file->getMimeType() );
-		$vars->setVar(
-			'file_mediatype',
-			MediaWikiServices::getInstance()->getMimeAnalyzer()
-				->getMediaType( null, $file->getMimeType() )
-		);
-		$vars->setVar( 'file_width', $file->getWidth() );
-		$vars->setVar( 'file_height', $file->getHeight() );
-
-		$mwProps = new MWFileProps( MediaWikiServices::getInstance()->getMimeAnalyzer() );
-		$bits = $mwProps->getPropsFromPath( $file->getLocalRefPath(), true )['bits'];
-		$vars->setVar( 'file_bits_per_channel', $bits );
-
-		return $vars;
-	}
-
-	/**
-	 * @param RCDatabaseLogEntry $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	private static function getEditVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		$title = $entry->getTarget();
-		$user = $entry->getPerformer();
-
-		$vars->addHolders(
-			self::generateUserVars( $user, $entry ),
-			self::generateTitleVars( $title, 'page', $entry )
-		);
-		// @todo Set old_content_model and new_content_model
-
-		$vars->setVar( 'action', 'edit' );
-		$vars->setVar( 'summary', $entry->getComment() );
-
-		$vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
-			[ 'revid' => $entry->getAssociatedRevId() ] );
-
-		if ( $entry->getParentRevId() ) {
-			$vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-id',
-				[ 'revid' => $entry->getParentRevId() ] );
-		} else {
-			$vars->setVar( 'old_wikitext', '' );
-		}
-
-		$vars->addHolders( self::getEditVars( $title ) );
-
-		return $vars;
-	}
-
-	/**
-	 * @param RCDatabaseLogEntry $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	private static function getMoveVarsFromRCEntry( RCDatabaseLogEntry $entry ) {
-		$user = $entry->getPerformer();
-
-		$params = array_values( $entry->getParameters() );
-
-		$oldTitle = $entry->getTarget();
-		$newTitle = Title::newFromText( $params[0] );
-
-		$vars = AbuseFilterVariableHolder::merge(
-			self::generateUserVars( $user, $entry ),
-			self::generateTitleVars( $oldTitle, 'moved_from', $entry ),
-			self::generateTitleVars( $newTitle, 'moved_to', $entry )
-		);
-
-		$vars->setVar( 'summary', $entry->getComment() );
-		$vars->setVar( 'action', 'move' );
-
-		return $vars;
-	}
-
-	/**
+	 * @deprecated Use AbuseFilterVariableGenerator
 	 * @param Title $title
 	 * @param Page|null $page
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVars( Title $title, Page $page = null ) {
-		$vars = new AbuseFilterVariableHolder;
-
-		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
-		if ( !$page && $title->canExist() ) {
-			$page = WikiPage::factory( $title );
-		}
-
-		$vars->setLazyLoadVar( 'edit_diff', 'diff-array',
-			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
-		$vars->setLazyLoadVar( 'edit_diff_pst', 'diff-array',
-			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_pst' ] );
-		$vars->setLazyLoadVar( 'new_size', 'length', [ 'length-var' => 'new_wikitext' ] );
-		$vars->setLazyLoadVar( 'old_size', 'length', [ 'length-var' => 'old_wikitext' ] );
-		$vars->setLazyLoadVar( 'edit_delta', 'subtract-int',
-			[ 'val1-var' => 'new_size', 'val2-var' => 'old_size' ] );
-
-		// Some more specific/useful details about the changes.
-		$vars->setLazyLoadVar( 'added_lines', 'diff-split',
-			[ 'diff-var' => 'edit_diff', 'line-prefix' => '+' ] );
-		$vars->setLazyLoadVar( 'removed_lines', 'diff-split',
-			[ 'diff-var' => 'edit_diff', 'line-prefix' => '-' ] );
-		$vars->setLazyLoadVar( 'added_lines_pst', 'diff-split',
-			[ 'diff-var' => 'edit_diff_pst', 'line-prefix' => '+' ] );
-
-		// Links
-		$vars->setLazyLoadVar( 'added_links', 'link-diff-added',
-			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
-		$vars->setLazyLoadVar( 'removed_links', 'link-diff-removed',
-			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
-		$vars->setLazyLoadVar( 'new_text', 'strip-html',
-			[ 'html-var' => 'new_html' ] );
-
-		$vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'text-var' => 'new_wikitext',
-				'article' => $page
-			] );
-		$vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
-			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'text-var' => 'old_wikitext'
-			] );
-		$vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
-			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'wikitext-var' => 'new_wikitext',
-				'article' => $page,
-				'pst' => true,
-			] );
-		$vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
-			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
-				'wikitext-var' => 'new_wikitext',
-				'article' => $page
-			] );
-
-		return $vars;
+		return VariableGenerator::generateEditVars( $title, $page );
 	}
 
 	/**

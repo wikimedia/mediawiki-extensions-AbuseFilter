@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Storage\RevisionRecord;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
@@ -134,7 +135,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		$vars = AbuseFilter::getVarsFromRCRow( $row );
+		$vars = RCVariableGenerator::getVarsFromRCRow( $row );
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $vars->dumpAllVars( true ),
 			'abuseFilterExamine' => [ 'type' => 'rc', 'id' => $rcid ]
