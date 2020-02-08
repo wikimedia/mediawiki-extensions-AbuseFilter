@@ -8,5 +8,6 @@ class ViewEditPage extends Page {
 	open( id ) {
 		super.openTitle( 'Special:AbuseFilter/' + id );
 	}
+	get error() { return browser.element( '.errorbox' ); }
 }
 module.exports = new ViewEditPage();

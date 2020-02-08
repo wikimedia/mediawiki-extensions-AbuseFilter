@@ -3,6 +3,12 @@ var assert = require( 'assert' ),
 	ViewEditPage = require( '../pageobjects/viewedit.page' );
 
 describe( 'Special:AbuseFilter/new', function () {
+	it( 'logged-out users cannot edit filters', function () {
+		ViewEditPage.open( 'new' );
+
+		assert.ok( ViewEditPage.error );
+	} );
+
 	it( 'the main elements should be correct', function () {
 		LoginPage.loginAdmin();
 		ViewEditPage.open( 'new' );

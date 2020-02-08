@@ -37,7 +37,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$history_id = $this->mHistoryID;
 		if ( $this->mHistoryID ) {
 			$dbr = wfGetDB( DB_REPLICA );
-			$row = $dbr->selectRow(
+			$lastID = (int)$dbr->selectField(
 				'abuse_filter_history',
 				'afh_id',
 				[
@@ -47,7 +47,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				[ 'ORDER BY' => 'afh_id DESC' ]
 			);
 			// change $history_id to null if it's current version id
-			if ( $row->afh_id === $this->mHistoryID ) {
+			if ( $lastID === $this->mHistoryID ) {
 				$history_id = null;
 			}
 		}
@@ -55,7 +55,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Add the default warning and disallow messages in a JS variable
 		$this->exposeMessages();
 
-		if ( $filter === 'new' && !AbuseFilter::canEdit( $user ) ) {
+		$canEdit = AbuseFilter::canEdit( $user );
+
+		if ( $filter === 'new' && !$canEdit ) {
 			$out->addHTML(
 				Xml::tags(
 					'p',
@@ -71,21 +73,39 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$editToken, [ 'abusefilter', $filter ], $request );
 		$isImport = $request->getRawVal( 'wpImportText' ) !== null;
 
-		if ( !$request->wasPosted() || !AbuseFilter::canEdit( $user ) || !$tokenMatches || $isImport ) {
-			// Either the user is just viewing the filter, they cannot edit it, they lost the
-			// abusefilter-modify right with the page open, the token is invalid, or they're viewing
-			// the result of importing a filter
-			if ( $request->wasPosted() && !$isImport && !$tokenMatches ) {
-				// Special case for when the token has expired with the page open, warn to retry
-				$out->addHTML(
-					Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->escaped() )
-				);
-			}
-
-			$this->buildFilterEditor( null, $filter, $isImport, $history_id );
+		if ( $request->wasPosted() && $canEdit && $tokenMatches ) {
+			$this->saveCurrentFilter( $filter, $history_id );
 			return;
 		}
 
+		if ( $request->wasPosted() && !$isImport && !$tokenMatches ) {
+			// Special case for when the token has expired with the page open, warn to retry
+			$out->addHTML(
+				Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->escaped() )
+			);
+		}
+
+		if ( $isImport || ( $request->wasPosted() && !$tokenMatches ) ) {
+			// Make sure to load from HTTP if the token doesn't match!
+			$data = $this->loadRequest( $filter );
+		} else {
+			$data = $this->loadFromDatabase( $filter, $history_id );
+		}
+
+		list( $row, $actions ) = $data ?? [ null, [] ];
+
+		// Either the user is just viewing the filter, they cannot edit it, they lost the
+		// abusefilter-modify right with the page open, the token is invalid, or they're viewing
+		// the result of importing a filter
+		$this->buildFilterEditor( null, $row, $actions, $filter, $history_id );
+	}
+
+	/**
+	 * @param int|string $filter The filter ID or 'new'.
+	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
+	 */
+	private function saveCurrentFilter( $filter, $history_id ) : void {
+		$out = $this->getOutput();
 		list( $newRow, $actions ) = $this->loadRequest( $filter );
 		$dbw = wfGetDB( DB_MASTER );
 		$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions, $dbw );
@@ -98,11 +118,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				// Fixable error, show the editing interface
 				$this->buildFilterEditor(
 					$this->msg( $msg, $params )->parseAsBlock(),
-					$filter,
-					false,
-					$history_id,
 					$newRow,
-					$actions
+					$actions,
+					$filter,
+					$history_id
 				);
 			} else {
 				// Permission-related error
@@ -131,19 +150,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * passed in (for instance if there was a failure during save) to avoid searching the DB.
 	 *
 	 * @param string|null $error An error message to show above the filter box.
+	 * @param stdClass|null $row abuse_filter row representing this filter, null if it doesn't exist
+	 * @param array $actions Actions enabled and their parameters
 	 * @param int|string $filter The filter ID or 'new'.
-	 * @param bool $isImport Whether the filter is being imported
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
-	 * @param stdClass|null $row The abuse_filter row representing this filter, avoids DB lookup
-	 * @param array|null $actions Actions enabled and their parameters, avoids DB lookup
 	 */
 	protected function buildFilterEditor(
 		$error,
+		?stdClass $row,
+		array $actions,
 		$filter,
-		$isImport,
-		$history_id = null,
-		$row = null,
-		$actions = null
+		$history_id
 	) {
 		if ( $filter === null ) {
 			return;
@@ -156,14 +173,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 
-		if ( $isImport ) {
-			list( $row, $actions ) = $this->loadRequest( $filter );
-		} elseif ( !$row && !$actions ) {
-			list( $row, $actions ) = $this->loadFromDatabase( $filter, $history_id );
-		}
-
 		if (
-			!$row ||
+			$row === null ||
 			// @fixme Temporary stopgap for T237887
 			( $history_id && $row->af_id !== $filter )
 		) {
@@ -1143,7 +1154,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.
 	 */
-	public function loadFromDatabase( $filter, $history_id = null ) {
+	private function loadFromDatabase( $filter, $history_id = null ) {
 		if ( $history_id ) {
 			return $this->loadHistoryItem( $history_id );
 		} else {
@@ -1296,11 +1307,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Loads historical data in a form that the editor can understand.
 	 * @param int $id History ID
-	 * @return array|bool False if the history ID is not valid, otherwise array in the usual format:
+	 * @return array|null Null if the history ID is not valid, otherwise array in the usual format:
 	 * First element contains the abuse_filter row (as it was).
 	 * Second element contains an array of abuse_filter_action rows.
 	 */
-	public function loadHistoryItem( $id ) {
+	private function loadHistoryItem( $id ) : ?array {
 		$dbr = wfGetDB( DB_REPLICA );
 
 		$row = $dbr->selectRow( 'abuse_filter_history',
@@ -1310,7 +1321,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		);
 
 		if ( !$row ) {
-			return false;
+			return null;
 		}
 
 		return AbuseFilter::translateFromHistory( $row );
