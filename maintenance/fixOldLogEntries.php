@@ -142,7 +142,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 		);
 		// Don't pass an empty array to makeList
 		$extraConds = $this->dryRun && $deleted ?
-			[ 'log_id NOT IN ' . $dbr->makeList( $deleted ) ] :
+			[ 'log_id NOT IN (' . $dbr->makeList( $deleted ) . ')' ] :
 			[];
 		do {
 			$ids = $dbr->selectFieldValues(
@@ -197,7 +197,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 
 		// Don't pass an empty array to makeList
 		$extraConds = $this->dryRun && $deleted ?
-			[ 'log_id NOT IN ' . $dbr->makeList( $deleted ) ] :
+			[ 'log_id NOT IN (' . $dbr->makeList( $deleted ) . ')' ] :
 			[];
 		do {
 			// 'log_page IS NULL' is guaranteed to return all and only the entries created by the script
