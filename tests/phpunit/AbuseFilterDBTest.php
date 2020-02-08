@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -91,7 +92,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * Test _recent_contributors variables. They perform a custom DB query and thus are tested
 	 * here instead of in AbuseFilterTest.
 	 *
-	 * @covers AbuseFilter::generateTitleVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addTitleVars
 	 */
 	public function testRecentContributors() {
 		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
@@ -101,7 +102,9 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			$title = Title::newFromText( $pageName );
 
 			$expected = $this->computeRecentContributors( $title );
-			$vars = AbuseFilter::generateTitleVars( $title, $prefix );
+			$vars = new AbuseFilterVariableHolder;
+			$generator = new VariableGenerator( $vars );
+			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
 			$actual = $vars->getVar( $varName )->toNative();
 			$this->assertSame( $expected, $actual, "Prefix: $prefix" );
 		}
@@ -114,11 +117,11 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @param string $newText The new wikitext of the page
 	 * @param string $summary
 	 * @param array $expected Expected edit vars
-	 * @covers AbuseFilter::getEditVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addEditVars
 	 * @covers AFComputedVariable
 	 * @dataProvider provideEditVars
 	 */
-	public function testGetEditVars( $oldText, $newText, $summary, array $expected ) {
+	public function testAddEditVars( $oldText, $newText, $summary, array $expected ) {
 		$pageName = __METHOD__;
 		$title = Title::makeTitle( 0, $pageName );
 		$page = WikiPage::factory( $title );
@@ -132,8 +135,8 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			'summary' => $summary
 		] );
 
-		$baseVars->addHolders( AbuseFilter::getEditVars( $title, $page ) );
-		$actual = $baseVars->exportAllVars( true );
+		$generator = new VariableGenerator( $baseVars );
+		$actual = $generator->addEditVars( $title, $page )->getVariableHolder()->exportAllVars( true );
 
 		// Special case for new_html: avoid flaky tests, and only check containment
 		$this->assertStringContainsString( '<div class="mw-parser-output', $actual['new_html'] );
@@ -148,7 +151,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Data provider for testGetEditVars
+	 * Data provider for testAddEditVars
 	 * @return Generator|array
 	 */
 	public function provideEditVars() {

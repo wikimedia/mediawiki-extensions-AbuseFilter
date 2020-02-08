@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
@@ -84,7 +85,8 @@ class AbuseFilterRunner {
 		// Add vars from extensions
 		Hooks::run( 'AbuseFilter-filterAction', [ &$this->vars, $this->title ] );
 		Hooks::run( 'AbuseFilterAlterVariables', [ &$this->vars, $this->title, $this->user ] );
-		$this->vars->addHolders( AbuseFilter::generateStaticVars() );
+		$generator = new VariableGenerator( $this->vars );
+		$this->vars = $generator->addStaticVars()->getVariableHolder();
 
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );

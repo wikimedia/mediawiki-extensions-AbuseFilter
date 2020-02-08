@@ -241,13 +241,15 @@ class AbuseFilter {
 	];
 
 	/**
-	 * @deprecated Use AbuseFilterVariableGenerator
+	 * @deprecated Use VariableGenerator::addUserVars()
 	 * @param User $user
 	 * @param RCDatabaseLogEntry|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateUserVars( User $user, RCDatabaseLogEntry $entry = null ) {
-		return VariableGenerator::generateUserVars( $user, $entry );
+		$vars = new AbuseFilterVariableHolder();
+		$generator = new VariableGenerator( $vars );
+		return $generator->addUserVars( $user, $entry )->getVariableHolder();
 	}
 
 	/**
@@ -312,23 +314,29 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated Use AbuseFilterVariableGenerator
+	 * @deprecated Use VariableGenerator::addTitleVars
 	 * @param Title|null $title
 	 * @param string $prefix
-	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
-	 *   this is the entry. Null if it's for the current action being filtered.
+	 * @param RCDatabaseLogEntry|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateTitleVars( $title, $prefix, RCDatabaseLogEntry $entry = null ) {
-		return VariableGenerator::generateTitleVars( $title, $prefix, $entry );
+		$vars = new AbuseFilterVariableHolder();
+		if ( !( $title instanceof Title ) ) {
+			return $vars;
+		}
+		$generator = new VariableGenerator( $vars );
+		return $generator->addTitleVars( $title, $prefix, $entry )->getVariableHolder();
 	}
 
 	/**
-	 * @deprecated Use AbuseFilterVariableGenerator
+	 * @deprecated Use VariableGenerator::addStaticVars
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateStaticVars() {
-		return VariableGenerator::generateStaticVars();
+		$vars = new AbuseFilterVariableHolder();
+		$generator = new VariableGenerator( $vars );
+		return $generator->addStaticVars()->getVariableHolder();
 	}
 
 	/**
@@ -354,8 +362,10 @@ class AbuseFilter {
 			return 'BADSYNTAX';
 		}
 
+		$vars = new AbuseFilterVariableHolder();
 		// Static vars are the only ones available
-		$vars = self::generateStaticVars();
+		$generator = new VariableGenerator( $vars );
+		$vars = $generator->addStaticVars()->getVariableHolder();
 		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
 		$parser = self::getDefaultParser( $vars );
 
@@ -1545,13 +1555,15 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated Use AbuseFilterVariableGenerator
+	 * @deprecated Use VariableGenerator::addEditVars
 	 * @param Title $title
 	 * @param Page|null $page
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function getEditVars( Title $title, Page $page = null ) {
-		return VariableGenerator::generateEditVars( $title, $page );
+		$vars = new AbuseFilterVariableHolder();
+		$generator = new VariableGenerator( $vars );
+		return $generator->addEditVars( $title, $page )->getVariableHolder();
 	}
 
 	/**
@@ -1764,6 +1776,7 @@ class AbuseFilter {
 	 * discussion.
 	 *
 	 * @internal
+	 * @todo Move elsewhere. VariableGenerator is a good candidate
 	 *
 	 * @param Revision|RevisionRecord|null $revision a valid revision
 	 * @param User $user the user instance to check for privileged access
@@ -1802,6 +1815,7 @@ class AbuseFilter {
 	 * behavior.
 	 *
 	 * @internal
+	 * @todo Move elsewhere. VariableGenerator is a good candidate
 	 *
 	 * @param Content $content
 	 *

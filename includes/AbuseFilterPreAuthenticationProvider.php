@@ -2,6 +2,7 @@
 
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
@@ -41,23 +42,13 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 			return StatusValue::newFatal( 'abusefilter-accountreserved' );
 		}
 
-		$vars = new AbuseFilterVariableHolder;
-
-		// generateUserVars records $creator->getName() which would be the IP for unregistered users
-		if ( $creator->isLoggedIn() ) {
-			$vars->addHolders( AbuseFilter::generateUserVars( $creator ) );
-		}
-
-		$vars->setVar( 'action', $autocreate ? 'autocreateaccount' : 'createaccount' );
-		$vars->setVar( 'accountname', $user->getName() );
+		$title = SpecialPage::getTitleFor( 'Userlogin' );
+		$vars = new AbuseFilterVariableHolder();
+		$builder = new RunVariableGenerator( $vars, $creator, $title );
+		$vars = $builder->getAccountCreationVars( $user, $autocreate );
 
 		// pass creator in explicitly to prevent recording the current user on autocreation - T135360
-		$runner = new AbuseFilterRunner(
-			$creator,
-			SpecialPage::getTitleFor( 'Userlogin' ),
-			$vars,
-			'default'
-		);
+		$runner = new AbuseFilterRunner( $creator, $title, $vars, 'default' );
 		$status = $runner->run();
 
 		MediaWikiServices::getInstance()->getStatsdDataFactory()

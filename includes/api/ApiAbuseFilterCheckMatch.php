@@ -35,7 +35,11 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
-			$vars = RCVariableGenerator::getVarsFromRCRow( $row );
+			$vars = new AbuseFilterVariableHolder();
+			$entry = DatabaseLogEntry::newFromRow( $row );
+			'@phan-var RCDatabaseLogEntry $entry';
+			$varGenerator = new RCVariableGenerator( $vars, $entry );
+			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
