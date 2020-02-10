@@ -1183,7 +1183,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Default values
 		$row = (object)[
 			'af_throttled' => $origRow->af_throttled,
-			'af_hit_count' => $origRow->af_hit_count
+			'af_hit_count' => $origRow->af_hit_count,
 		];
 		$row->mOriginalRow = $origRow;
 		$row->mOriginalActions = $origActions;
@@ -1217,6 +1217,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$row->$name = $importRow->$name;
 			}
 		} else {
+			if ( $filter !== 'new' ) {
+				// These aren't needed when saving the filter, but they are otherwise (e.g. if
+				// saving fails and we need to show the edit interface again).
+				$row->af_user = $origRow->af_user;
+				$row->af_user_text = $origRow->af_user_text;
+				$row->af_timestamp = $origRow->af_timestamp;
+			}
+
 			$textLoads = [
 				'af_public_comments' => 'wpFilterDescription',
 				'af_pattern' => 'wpFilterRules',
