@@ -209,7 +209,11 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		$existing = isset( $args['testData']['existing'] );
 		$viewEdit = $this->getViewEdit( $user, $params, $existing );
 
-		list( $newRow, $actions ) = $viewEdit->loadRequest( $filter );
+		$reqStatus = $viewEdit->loadRequest( $filter );
+		if ( !$reqStatus->isGood() ) {
+			$this->fail( 'Cannot retrieve request data correctly' );
+		}
+		list( $newRow, $actions ) = $reqStatus->getValue();
 
 		/** @var IDatabase|MockObject $dbw */
 		$dbw = $this->getMockForAbstractClass( IDatabase::class );

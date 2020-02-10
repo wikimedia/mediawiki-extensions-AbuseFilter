@@ -87,7 +87,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $isImport || ( $request->wasPosted() && !$tokenMatches ) ) {
 			// Make sure to load from HTTP if the token doesn't match!
-			$data = $this->loadRequest( $filter );
+			$status = $this->loadRequest( $filter );
+			if ( !$status->isGood() ) {
+				$out->addHTML(
+					Xml::tags(
+						'p',
+						null,
+						Html::errorBox( $status->getMessage()->parse() )
+					)
+				);
+				return;
+			}
+			$data = $status->getValue();
 		} else {
 			$data = $this->loadFromDatabase( $filter, $history_id );
 		}
@@ -106,7 +117,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 */
 	private function saveCurrentFilter( $filter, $history_id ) : void {
 		$out = $this->getOutput();
-		list( $newRow, $actions ) = $this->loadRequest( $filter );
+		$reqStatus = $this->loadRequest( $filter );
+		if ( !$reqStatus->isGood() ) {
+			// In the current implementation, this cannot happen.
+			throw new LogicException( 'Should always be able to retrieve data for saving' );
+		}
+		list( $newRow, $actions ) = $reqStatus->getValue();
 		$dbw = wfGetDB( DB_MASTER );
 		$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions, $dbw );
 
@@ -1168,9 +1184,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @throws BadMethodCallException If called without the request being POSTed or when trying
 	 *   to import a filter but $filter is not 'new'
 	 * @param int|string $filter The filter ID being requested.
-	 * @return array
+	 * @return Status If good, the value is the array [ row, actions ]. If not, it contains an
+	 * error message.
 	 */
-	public function loadRequest( $filter ): array {
+	public function loadRequest( $filter ): Status {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
@@ -1196,6 +1213,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				throw new BadMethodCallException( __METHOD__ . ' called for importing on existing filter.' );
 			}
 			$data = FormatJson::decode( $import );
+
+			if ( !$this->isValidImportData( $data ) ) {
+				return Status::newFatal( 'abusefilter-import-invalid-data' );
+			}
 
 			$importRow = $data->row;
 			$actions = wfObjectToArray( $data->actions );
@@ -1309,7 +1330,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$row->af_actions = implode( ',', array_keys( $actions ) );
 
-		return [ $row, $actions ];
+		return Status::newGood( [ $row, $actions ] );
 	}
 
 	/**
@@ -1347,5 +1368,43 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'wgAbuseFilterDefaultDisallowMessage',
 			$this->getConfig()->get( 'AbuseFilterDefaultDisallowMessage' )
 		);
+	}
+
+	/**
+	 * Perform basic validation on the JSON-decoded import data. This doesn't check if parameters
+	 * are valid etc., but only if the shape of the object is right.
+	 *
+	 * @param mixed $data Already JSON-decoded
+	 * @return bool
+	 */
+	private function isValidImportData( $data ) {
+		global $wgAbuseFilterActions;
+
+		if ( !is_object( $data ) ) {
+			return false;
+		}
+
+		$arr = get_object_vars( $data );
+
+		$expectedKeys = [ 'row' => true, 'actions' => true ];
+		if ( count( $arr ) !== count( $expectedKeys ) || array_diff_key( $arr, $expectedKeys ) ) {
+			return false;
+		}
+
+		if ( !is_object( $arr['row'] ) || !is_object( $arr['actions'] ) ) {
+			return false;
+		}
+
+		foreach ( $arr['actions'] as $action => $params ) {
+			if ( !array_key_exists( $action, $wgAbuseFilterActions ) || !is_array( $params ) ) {
+				return false;
+			}
+		}
+
+		if ( !AbuseFilter::isFullAbuseFilterRow( $arr['row'] ) ) {
+			return false;
+		}
+
+		return true;
 	}
 }

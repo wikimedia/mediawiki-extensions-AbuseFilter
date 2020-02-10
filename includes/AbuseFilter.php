@@ -642,6 +642,23 @@ class AbuseFilter {
 	}
 
 	/**
+	 * Checks whether the given object represents a full abuse_filter DB row
+	 * @param stdClass $row
+	 * @return bool
+	 */
+	public static function isFullAbuseFilterRow( stdClass $row ) {
+		$actual = array_keys( get_object_vars( $row ) );
+
+		if (
+			count( $actual ) !== count( self::ALL_ABUSE_FILTER_FIELDS )
+			|| array_diff( self::ALL_ABUSE_FILTER_FIELDS, $actual )
+		) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
 	 * Saves an abuse_filter row in cache
 	 * @param string $id Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
 	 * @param stdClass $row A full abuse_filter row to save
@@ -650,11 +667,7 @@ class AbuseFilter {
 	public static function cacheFilter( $id, $row ) {
 		// Check that all fields have been passed, otherwise using self::getFilter for this
 		// row will return partial data.
-		$actual = array_keys( get_object_vars( $row ) );
-
-		if ( count( $actual ) !== count( self::ALL_ABUSE_FILTER_FIELDS )
-			|| array_diff( self::ALL_ABUSE_FILTER_FIELDS, $actual )
-		) {
+		if ( !self::isFullAbuseFilterRow( $row ) ) {
 			throw new UnexpectedValueException( 'The specified row must be a full abuse_filter row.' );
 		}
 		self::$filterCache[$id] = $row;
