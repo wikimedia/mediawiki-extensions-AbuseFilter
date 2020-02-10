@@ -42,7 +42,11 @@ class VariableGenerator {
 	 * @return $this For chaining
 	 */
 	public function addGenericVars( RCDatabaseLogEntry $entry = null ) : self {
-		// For now, we don't have variables to add; other extensions could.
+		// These are lazy-loaded just to reduce the amount of preset variables, but they
+		// shouldn't be expensive.
+		$this->vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
+		$this->vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
+
 		Hooks::run( 'AbuseFilter-generateGenericVars', [ $this->vars, $entry ] );
 		return $this;
 	}
