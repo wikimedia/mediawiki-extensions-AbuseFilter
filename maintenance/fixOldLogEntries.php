@@ -162,7 +162,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 			$prevID = $curID + 1;
 			$curID += $batchSize;
 
-			if ( !$this->dryRun ) {
+			if ( !$this->dryRun && $ids ) {
 				// Keep the entries legacy
 				$dbw->update(
 					'logging',
@@ -218,7 +218,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 			$prevID = $curID + 1;
 			$curID += $batchSize;
 
-			if ( !$this->dryRun ) {
+			if ( !$this->dryRun && $legacyIDs ) {
 				$dbw->update(
 					'logging',
 					[
