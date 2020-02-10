@@ -86,7 +86,7 @@ class RCVariableGenerator extends VariableGenerator {
 			return null;
 		}
 
-		$this->addStaticVars();
+		$this->addGenericVars();
 		$this->vars->setVar(
 			'timestamp',
 			MWTimestamp::convert( TS_UNIX, $this->entry->getTimestamp() )

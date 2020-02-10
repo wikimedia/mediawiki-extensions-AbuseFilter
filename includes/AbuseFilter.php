@@ -330,13 +330,13 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated Use VariableGenerator::addStaticVars
+	 * @deprecated Use VariableGenerator::addGenericVars
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateStaticVars() {
+	public static function generateGenericVars() {
 		$vars = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $vars );
-		return $generator->addStaticVars()->getVariableHolder();
+		return $generator->addGenericVars()->getVariableHolder();
 	}
 
 	/**
@@ -363,9 +363,9 @@ class AbuseFilter {
 		}
 
 		$vars = new AbuseFilterVariableHolder();
-		// Static vars are the only ones available
+		// Generic vars are the only ones available
 		$generator = new VariableGenerator( $vars );
-		$vars = $generator->addStaticVars()->getVariableHolder();
+		$vars = $generator->addGenericVars()->getVariableHolder();
 		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
 		$parser = self::getDefaultParser( $vars );
 

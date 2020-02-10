@@ -86,7 +86,7 @@ class AbuseFilterRunner {
 		Hooks::run( 'AbuseFilter-filterAction', [ &$this->vars, $this->title ] );
 		Hooks::run( 'AbuseFilterAlterVariables', [ &$this->vars, $this->title, $this->user ] );
 		$generator = new VariableGenerator( $this->vars );
-		$this->vars = $generator->addStaticVars()->getVariableHolder();
+		$this->vars = $generator->addGenericVars()->getVariableHolder();
 
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
