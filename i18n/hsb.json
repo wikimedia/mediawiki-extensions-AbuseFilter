@@ -344,6 +344,7 @@
 	"abusefilter-test-shownegative": "Změny pokazać, kotrež filtrej njewotpowěduja",
 	"abusefilter-test-syntaxerr": "Filter, kotryž sy zapodał, je syntaksowy zmylk wobsahował.\nPřez kliknjenje na tłóčatko \"{{int:abusefilter-edit-check}}\" móžeš połne wujasnjenje dóstać.",
 	"abusefilter-test-badtitle": "Titul strony, kotryž sy zapodał, je njepłaćiwy był. Wobsahuje snano znamješka, kotrež njehodźa so w titulu wužiwać.",
+	"abusefilter-test-search-type-upload": "Nahrate dataje",
 	"abusefilter-changeslist-examine": "přepytować",
 	"abusefilter-examine": "Jednotliwe změny přepytować",
 	"abusefilter-examine-intro": "Tuta strona ći zmóžnja wariable přepytać, kotrež buchu wot znjewužiwanskeho filtra za jednotliwu změnu spłodźene a ju přećiwo filtram testować.",
