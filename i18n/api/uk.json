@@ -60,6 +60,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Отримати деталі запису з ідентифікатором \"1\", вказав причиною \"example\".",
 	"apierror-abusefilter-canttest": "Ви не маєте дозволу тестувати фільтри зловживань.",
 	"apierror-abusefilter-cantcheck": "Ви не маєте дозволу перевіряти синтаксис фільтрів зловживань.",
+	"apierror-abusefilter-canteval": "У вас немає прав на оцінювання виразів AbuseFilter.",
 	"apierror-abusefilter-nosuchlogid": "Немає запису зловживання з id $1.",
 	"apierror-abusefilter-badsyntax": "Фільтр має неправильний синтаксис."
 }

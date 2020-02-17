@@ -27,7 +27,8 @@
 			"Garam",
 			"렌즈",
 			"Son77391",
-			"Jango"
+			"Jango",
+			"Hwangjy9"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -426,6 +427,8 @@
 	"abusefilter-edit-builder-vars-file-width": "파일의 너비 (단위: 픽셀)",
 	"abusefilter-edit-builder-vars-file-height": "파일의 높이 (단위: 픽셀)",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "파일의 컬러 채널 당 비트",
+	"abusefilter-edit-builder-vars-wiki-name": "위키의 데이터베이스 이름",
+	"abusefilter-edit-builder-vars-wiki-language": "위키의 언어 코드",
 	"abusefilter-filter-log": "최근 필터의 바뀜",
 	"abusefilter-history": "편집 필터 #$1의 편집 역사",
 	"abusefilter-history-foruser": "$1의 편집",
@@ -550,6 +553,7 @@
 	"abusefilter-diff-next": "다음 바뀜",
 	"abusefilter-import-intro": "이 양식을 통해 다른 위키에서 필터를 가져올 수 있습니다.\n필터가 있는 위키에서 필터 편집 화면의 \"{{int:abusefilter-edit-tools}}\"에서 \"{{int:abusefilter-edit-export}}\"를 클릭하십시오.\n나타나는 글상자의 내용을 복사한 후 붙여넣고, \"{{int:abusefilter-import-submit}}\"를 클릭하십시오.",
 	"abusefilter-import-submit": "데이터 가져오기",
+	"abusefilter-import-invalid-data": "가져오려는 데이터가 유효하지 않습니다",
 	"abusefilter-group-default": "기본값",
 	"abusefilter-http-error": "HTTP 오류가 발생했습니다: $1",
 	"abusefilter-view-privatedetails-submit": "비공개 상세 정보 보기",
