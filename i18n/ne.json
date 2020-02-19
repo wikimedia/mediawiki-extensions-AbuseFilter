@@ -186,6 +186,7 @@
 	"abusefilter-edit-builder-vars-restrictions-edit": "पृष्ठको सुरक्षा स्तर सम्पादन गर्ने",
 	"abusefilter-edit-builder-vars-restrictions-move": "पृष्ठको सुरक्षा स्तर सम्पादन हटाउने",
 	"abusefilter-edit-builder-vars-file-size": "फाइलको आकार बाइटसमा",
+	"abusefilter-edit-builder-vars-wiki-language": "विकिकाे भाषिक अङ्क",
 	"abusefilter-filter-log": "भर्खरका फिल्टर परिवर्तनहरू",
 	"abusefilter-history": "दुर्व्यवहार फिल्टर #$1को निम्ति इतिहास परिवर्तन गर्ने",
 	"abusefilter-history-foruser": "$1द्वारा परिवर्तन",
