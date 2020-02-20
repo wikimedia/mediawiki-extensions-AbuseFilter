@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use AbuseFilterVariableHolder;
 use Hooks;
-use Page;
 use RCDatabaseLogEntry;
 use Title;
 use User;
@@ -154,10 +153,10 @@ class VariableGenerator {
 
 	/**
 	 * @param Title $title
-	 * @param Page|null $page
+	 * @param WikiPage|null $page
 	 * @return $this For chaining
 	 */
-	public function addEditVars( Title $title, Page $page = null ) : self {
+	public function addEditVars( Title $title, WikiPage $page = null ) : self {
 		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
 		if ( !$page && $title->canExist() ) {
 			// TODO: The caller should do this!
