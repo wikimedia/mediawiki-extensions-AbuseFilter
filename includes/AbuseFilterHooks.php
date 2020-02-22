@@ -798,7 +798,7 @@ class AbuseFilterHooks {
 	 * @param User $user
 	 */
 	public static function onParserOutputStashForEdit(
-		WikiPage $page, Content $content, ParserOutput $output, $summary, User $user
+		WikiPage $page, Content $content, ParserOutput $output, string $summary, User $user
 	) {
 		// XXX: This makes the assumption that this method is only ever called for the main slot.
 		// Which right now holds true, but any more fancy MCR stuff will likely break here...
