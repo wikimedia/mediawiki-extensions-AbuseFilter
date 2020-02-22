@@ -23,10 +23,12 @@
 			expression: expr
 		} )
 			.fail( function showError( error, details ) {
-				var msg = error === 'http' ? 'abusefilter-http-error' : 'unknown-error';
 				$.removeSpinner( 'abusefilter-expr' );
 				$( '#mw-abusefilter-expr-result' )
-					.text( mw.msg( msg, details.exception ) );
+					.text( mw.msg(
+						error === 'http' ? 'abusefilter-http-error' : 'unknown-error',
+						details.exception
+					) );
 			} )
 			.done( function showResult( data ) {
 				$.removeSpinner( 'abusefilter-expr' );

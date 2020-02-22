@@ -118,9 +118,11 @@
 	 * @param {Object} details Details about the error
 	 */
 	function processSyntaxResultFailure( error, details ) {
-		var msg = error === 'http' ? 'abusefilter-http-error' : 'unknown-error';
 		processSyntaxResultAlways(
-			mw.msg( msg, details && details.exception ),
+			mw.msg(
+				error === 'http' ? 'abusefilter-http-error' : 'unknown-error',
+				details && details.exception
+			),
 			'mw-abusefilter-syntaxresult-error',
 			false
 		);
@@ -398,7 +400,9 @@
 				allowArbitrary: true,
 				allowEditTags: true,
 				selected: config.values,
-				// abusefilter-edit-throttle-placeholder, abusefilter-edit-tag-placeholder
+				// The following messages are used here:
+				// * abusefilter-edit-throttle-placeholder
+				// * abusefilter-edit-tag-placeholder
 				placeholder: OO.ui.msg( 'abusefilter-edit-' + action + '-placeholder' ),
 				disabled: config.disabled
 			} );
