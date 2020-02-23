@@ -2,7 +2,6 @@
 
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\PageEditStash;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -594,51 +593,32 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 *
 	 * @param array $actionParams As given by the data provider
 	 * @return string[] The applied tags
-	 * @fixme This method is pretty hacky. A clean alternative from core would be nice.
 	 */
 	private function getActionTags( $actionParams ) {
 		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
 			$page = WikiPage::factory( Title::newFromText( $actionParams['target'] ) );
-			$where = [ 'ct_rev_id' => $page->getLatest() ];
-		} else {
-			$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
-			$logAction = $logType === 'newusers' ? 'create' : $logType;
-			$title = Title::newFromText( $actionParams['target'] );
-			$id = $this->db->selectField(
-				'logging',
-				'log_id',
-				[
-					'log_title' => $title->getDBkey(),
-					'log_type' => $logType,
-					'log_action' => $logAction
-				],
-				__METHOD__,
-				[],
-				[ 'ORDER BY' => 'log_id DESC' ]
-			);
-			if ( !$id ) {
-				$this->fail( 'Could not find the action in the logging table.' );
-			}
-			$where = [ 'ct_log_id' => $id ];
+			return ChangeTags::getTags( $this->db, null, $page->getLatest() );
 		}
 
-		$changeTagDefStore = MediaWikiServices::getInstance()->getChangeTagDefStore();
-		$tagIds = $this->db->selectFieldValues(
-			'change_tag',
-			'ct_tag_id',
-			$where,
-			__METHOD__
+		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
+		$logAction = $logType === 'newusers' ? 'create' : $logType;
+		$title = Title::newFromText( $actionParams['target'] );
+		$id = $this->db->selectField(
+			'logging',
+			'log_id',
+			[
+				'log_title' => $title->getDBkey(),
+				'log_type' => $logType,
+				'log_action' => $logAction
+			],
+			__METHOD__,
+			[],
+			[ 'ORDER BY' => 'log_id DESC' ]
 		);
-		$appliedTags = [];
-		foreach ( $tagIds as $tagId ) {
-			try {
-				$appliedTags[] = $changeTagDefStore->getName( (int)$tagId );
-			} catch ( NameTableAccessException $exception ) {
-				continue;
-			}
+		if ( !$id ) {
+			$this->fail( 'Could not find the action in the logging table.' );
 		}
-
-		return $appliedTags;
+		return ChangeTags::getTags( $this->db, null, null, $id );
 	}
 
 	/**
