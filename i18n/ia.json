@@ -448,7 +448,7 @@
 	"abusefilter-exception-unclosedcomment": "Commento non claudite al character $1.",
 	"abusefilter-exception-invalidiprange": "Intervallo IP \"$2\" non valide al character $1.",
 	"abusefilter-exception-disabledvar": "Le variabile $2 al character $1 non es plus in uso.",
-	"abusefilter-exception-variablevariable": "Le variabiles variabile non es permittite, trovate al character $1.",
+	"abusefilter-exception-variablevariable": "set e set_var require que le prime argumento es un catena litteral, trovate al character $1.",
 	"abusefilter-action-tag": "Etiquettar",
 	"abusefilter-action-throttle": "Limitator",
 	"abusefilter-action-warn": "Advertir",
