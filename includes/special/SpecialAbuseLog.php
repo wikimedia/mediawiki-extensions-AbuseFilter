@@ -341,7 +341,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		$hideReasonsOther = $this->msg( 'revdelete-reasonotherlist' )->text();
-		$hideReasons = $this->msg( 'revdelete-reason-dropdown' )->inContentLanguage()->text();
+		$hideReasons = $this->msg( 'revdelete-reason-dropdown-suppress' )->inContentLanguage()->text();
 		$hideReasons = Xml::listDropDownOptions( $hideReasons, [ 'other' => $hideReasonsOther ] );
 
 		$formInfo = [
