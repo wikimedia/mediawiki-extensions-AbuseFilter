@@ -4,9 +4,11 @@
 			"Pyscowicz"
 		]
 	},
-	"abusefilter-log-detailslink": "tarkat tiot",
+	"abusefilter-log-detailslink": "tarkat tieot",
+	"abusefilter-edit-action-tag": "Markeeraa mookkaus lisätarkastelun kohteeksi",
 	"abusefilter-throttle-user": "käyttäjäkonttu",
 	"abusefilter-history-foruser": "Käyttäjän $1 mookkaukset",
+	"abusefilter-action-tag": "Markeeraa",
 	"abusefilter-diff-info": "Perustiot",
 	"abusefilter-group-default": "Ylheinen"
 }
