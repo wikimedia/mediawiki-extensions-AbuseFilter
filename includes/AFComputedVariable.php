@@ -177,6 +177,7 @@ class AFComputedVariable {
 				? $result : AFPData::newFromPHPVar( $result );
 		}
 
+		$services = MediaWikiServices::getInstance();
 		switch ( $this->mMethod ) {
 			case 'diff':
 				// Currently unused. Kept for backwards compatibility since it remains
@@ -464,21 +465,24 @@ class AFComputedVariable {
 				$result = $v1 - $v2;
 				break;
 			case 'revision-text-by-id':
-				$rev = Revision::newFromId( $parameters['revid'] );
-				$result = AbuseFilter::revisionToString( $rev, $wgUser );
+				$revRec = $services
+					->getRevisionLookup()
+					->getRevisionById( $parameters['revid'] );
+				$result = AbuseFilter::revisionToString( $revRec, $wgUser );
 				break;
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
-				$dbr = wfGetDB( DB_REPLICA );
-				$rev = Revision::loadFromTimestamp( $dbr, $title, $timestamp );
-				$result = AbuseFilter::revisionToString( $rev, $wgUser );
+				$revRec = $services
+					->getRevisionStore()
+					->getRevisionByTimestamp( $title, $timestamp );
+				$result = AbuseFilter::revisionToString( $revRec, $wgUser );
 				break;
 			case 'get-wiki-name':
 				$result = WikiMap::getCurrentWikiDbDomain()->getId();
 				break;
 			case 'get-wiki-language':
-				$result = MediaWikiServices::getInstance()->getContentLanguage()->getCode();
+				$result = $services->getContentLanguage()->getCode();
 				break;
 			default:
 				if ( Hooks::run( 'AbuseFilter-computeVariable',
@@ -510,7 +514,7 @@ class AFComputedVariable {
 				$dbr = wfGetDB( DB_REPLICA );
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
-				$revQuery = Revision::getQueryInfo();
+				$revQuery = MediaWikiServices::getInstance()->getRevisionStore()->getQueryInfo();
 				$revAuthors = $dbr->selectFieldValues(
 					$revQuery['tables'],
 					$revQuery['fields']['rev_user_text'],

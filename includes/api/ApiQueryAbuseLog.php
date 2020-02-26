@@ -23,7 +23,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\MediaWikiServices;
 use Wikimedia\IPUtils;
 
 /**
@@ -170,9 +170,12 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$hidden = SpecialAbuseLog::isHidden( $row );
 			if ( $hidden === true && !SpecialAbuseLog::canSeeHidden( $user ) ) {
 				continue;
-			} elseif ( $hidden === 'implicit' ) {
-				$rev = Revision::newFromId( $row->afl_rev_id );
-				if ( !$rev->userCan( RevisionRecord::SUPPRESSED_ALL, $user ) ) {
+			}
+			if ( $hidden === 'implicit' ) {
+				$revRec = MediaWikiServices::getInstance()
+					->getRevisionLookup()
+					->getRevisionById( (int)$row->afl_rev_id );
+				if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
 					continue;
 				}
 			}

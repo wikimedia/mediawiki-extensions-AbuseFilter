@@ -2,7 +2,6 @@
 
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Storage\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
@@ -631,9 +630,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			} elseif ( self::isHidden( $row ) === true && !self::canSeeHidden( $user ) ) {
 				$error = 'abusefilter-log-details-hidden';
 			} elseif ( self::isHidden( $row ) === 'implicit' ) {
-				$rev = Revision::newFromId( $row->afl_rev_id );
-				// The log is visible, but refers to a deleted revision
-				if ( !$rev->userCan( RevisionRecord::SUPPRESSED_ALL, $user ) ) {
+				$revRec = MediaWikiServices::getInstance()
+					->getRevisionLookup()
+					->getRevisionById( (int)$row->afl_rev_id );
+				if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
+					// The log is visible, but refers to a deleted revision
 					$error = 'abusefilter-log-details-hidden-implicit';
 				}
 			}
@@ -1226,7 +1227,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return true;
 		}
 		if ( $row->afl_rev_id ) {
-			$revision = Revision::newFromId( $row->afl_rev_id );
+			$revision = MediaWikiServices::getInstance()
+				->getRevisionLookup()
+				->getRevisionById( $row->afl_rev_id );
 			if ( $revision && $revision->getVisibility() !== 0 ) {
 				return 'implicit';
 			}

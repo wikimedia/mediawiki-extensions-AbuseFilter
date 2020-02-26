@@ -9,6 +9,7 @@ use Content;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Revision\SlotRecord;
 use MWException;
 use MWFileProps;
 use Title;
@@ -69,6 +70,7 @@ class RunVariableGenerator extends VariableGenerator {
 
 	/**
 	 * Get the text of an edit to be used for filtering
+	 * @todo Full support for multi-slots
 	 *
 	 * @param WikiPage $page
 	 * @param Content $content
@@ -76,17 +78,16 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @return array|null
 	 */
 	protected function getEditTextForFiltering( WikiPage $page, Content $content, $slot ) : ?array {
-		$oldRevision = $page->getRevision();
-		if ( !$oldRevision ) {
+		$oldRevRecord = $page->getRevisionRecord();
+		if ( !$oldRevRecord ) {
 			return null;
 		}
 
-		$oldContent = $oldRevision->getContent( RevisionRecord::RAW );
-		$oldAfText = AbuseFilter::revisionToString( $oldRevision, $this->user );
+		$oldContent = $oldRevRecord->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
+		$oldAfText = AbuseFilter::revisionToString( $oldRevRecord, $this->user );
 
 		// XXX: Recreate what the new revision will probably be so we can get the full AF
 		// text for all slots
-		$oldRevRecord = $oldRevision->getRevisionRecord();
 		$newRevision = MutableRevisionRecord::newFromParentRevision( $oldRevRecord );
 		$newRevision->setContent( $slot, $content );
 		$text = AbuseFilter::revisionToString( $newRevision, $this->user );
@@ -263,12 +264,12 @@ class RunVariableGenerator extends VariableGenerator {
 			// This block is adapted from self::getTextForFiltering()
 			if ( $this->title->exists() ) {
 				$page = WikiPage::factory( $this->title );
-				$revision = $page->getRevision();
-				if ( !$revision ) {
+				$revRec = $page->getRevisionRecord();
+				if ( !$revRec ) {
 					return null;
 				}
 
-				$oldcontent = $revision->getContent( RevisionRecord::RAW );
+				$oldcontent = $revRec->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
 				$oldtext = AbuseFilter::contentToString( $oldcontent );
 
 				// Cache article object so we can share a parse operation

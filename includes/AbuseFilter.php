@@ -1798,16 +1798,13 @@ class AbuseFilter {
 	 * @internal
 	 * @todo Move elsewhere. VariableGenerator is a good candidate
 	 *
-	 * @param Revision|RevisionRecord|null $revision a valid revision
+	 * @param RevisionRecord|null $revision a valid revision
 	 * @param User $user the user instance to check for privileged access
 	 * @return string the content of the revision as some kind of string,
 	 *        or an empty string if it can not be found
 	 */
-	public static function revisionToString( $revision, User $user ) {
-		if ( $revision instanceof Revision ) {
-			$revision = $revision->getRevisionRecord();
-		}
-		if ( !$revision instanceof RevisionRecord ) {
+	public static function revisionToString( ?RevisionRecord $revision, User $user ) {
+		if ( !$revision ) {
 			return '';
 		}
 
@@ -1971,5 +1968,23 @@ class AbuseFilter {
 		$cache = ObjectCache::getLocalServerInstance( 'hash' );
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		return new $wgAbuseFilterParserClass( $contLang, $cache, $logger, $vars );
+	}
+
+	/**
+	 * Shortcut for checking whether $user can view the given revision, with mask
+	 *  SUPPRESSED_ALL.
+	 *
+	 * @note This assumes that a revision with the given ID exists
+	 *
+	 * @param RevisionRecord $revRec
+	 * @param User $user
+	 * @return bool
+	 */
+	public static function userCanViewRev( RevisionRecord $revRec, User $user ) : bool {
+		return $revRec->audienceCan(
+			RevisionRecord::SUPPRESSED_ALL,
+			RevisionRecord::FOR_THIS_USER,
+			$user
+		);
 	}
 }

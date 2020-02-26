@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 
 class AbuseFilterChangesList extends OldChangesList {
 
