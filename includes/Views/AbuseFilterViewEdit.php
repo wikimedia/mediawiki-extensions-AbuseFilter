@@ -1241,6 +1241,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			if ( $filter !== 'new' ) {
 				// These aren't needed when saving the filter, but they are otherwise (e.g. if
 				// saving fails and we need to show the edit interface again).
+				$row->af_id = $origRow->af_id;
 				$row->af_user = $origRow->af_user;
 				$row->af_user_text = $origRow->af_user_text;
 				$row->af_timestamp = $origRow->af_timestamp;

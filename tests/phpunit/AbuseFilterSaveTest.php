@@ -104,7 +104,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			->getMock();
 
 		if ( $existing ) {
-			$origValues = [ (object)self::$defaultFilterRow, [] ];
+			$origValues = [ (object)( self::$defaultFilterRow + [ 'af_id' => 1 ] ), [] ];
 		} else {
 			$origValues = [
 				(object)[
