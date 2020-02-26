@@ -1208,8 +1208,7 @@ class AbuseFilterRunner {
 
 		// Only store the var dump if we're actually going to add log rows.
 		$varDump = AbuseFilter::storeVarDump( $this->vars );
-		// To distinguish from stuff stored directly
-		$varDump = "stored-text:$varDump";
+		$varDump = "tt:$varDump";
 
 		$localLogIDs = [];
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
@@ -1272,7 +1271,7 @@ class AbuseFilterRunner {
 		if ( count( $loggedGlobalFilters ) ) {
 			$this->vars->computeDBVars();
 			$globalVarDump = AbuseFilter::storeVarDump( $this->vars, true );
-			$globalVarDump = "stored-text:$globalVarDump";
+			$globalVarDump = "tt:$globalVarDump";
 			foreach ( $centralLogRows as $index => $data ) {
 				$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
 			}

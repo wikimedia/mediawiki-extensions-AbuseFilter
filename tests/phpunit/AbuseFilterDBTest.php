@@ -248,10 +248,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	public function testVarDump( $variables ) {
 		global $wgCompressRevisions, $wgDefaultExternalStore;
 
-		$holder = new AbuseFilterVariableHolder();
-		foreach ( $variables as $name => $value ) {
-			$holder->setVar( $name, $value );
-		}
+		$holder = AbuseFilterVariableHolder::newFromArray( $variables );
 		if ( array_intersect_key( AbuseFilter::getDeprecatedVariables(), $variables ) ) {
 			$holder->mVarsVersion = 1;
 		}
@@ -266,9 +263,9 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			[ 'ORDER BY' => 'old_id DESC' ]
 		);
 		$this->assertNotFalse( $flags, 'The var dump has not been saved.' );
-		$flags = explode( ',', $flags );
+		$flags = $flags === '' ? [] : explode( ',', $flags );
 
-		$expectedFlags = [ 'nativeDataArray', 'utf-8' ];
+		$expectedFlags = [ 'utf-8' ];
 		if ( $wgCompressRevisions ) {
 			$expectedFlags[] = 'gzip';
 		}
@@ -291,12 +288,14 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		return [
 			'Only basic variables' => [
 				[
+					'action' => 'edit',
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text'
 				]
 			],
-			[
+			'Normal case' => [
 				[
+					'action' => 'edit',
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text',
 					'user_editcount' => 15,
@@ -305,22 +304,16 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			],
 			'Deprecated variables' => [
 				[
+					'action' => 'edit',
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text',
 					'article_articleid' => 11745,
 					'article_first_contributor' => 'Good guy'
 				]
 			],
-			[
+			'Move action' => [
 				[
-					'old_wikitext' => 'Old text',
-					'new_wikitext' => 'New text',
-					'page_title' => 'Some title',
-					'summary' => 'Fooooo'
-				]
-			],
-			[
-				[
+					'action' => 'move',
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text',
 					'all_links' => [ 'https://en.wikipedia.org' ],
@@ -329,7 +322,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 					'new_content_model' => CONTENT_MODEL_JAVASCRIPT
 				]
 			],
-			[
+			'Delete action' => [
 				[
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text',
@@ -338,20 +331,19 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 					'page_namespace' => 114
 				]
 			],
-			[
-				[
-					'old_wikitext' => 'Old text',
-					'new_wikitext' => 'New text',
-					'new_html' => 'Foo <small>bar</small> <s>lol</s>.',
-					'new_pst' => '[[Link|link]] test {{blah}}.'
-				]
-			],
 			'Disabled vars' => [
 				[
+					'action' => 'edit',
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text',
 					'old_html' => 'Foo <small>bar</small> <s>lol</s>.',
 					'old_text' => 'Foobar'
+				]
+			],
+			'Account creation' => [
+				[
+					'action' => 'createaccount',
+					'accountname' => 'XXX'
 				]
 			]
 		];
