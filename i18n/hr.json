@@ -386,6 +386,7 @@
 	"abusefilter-examine-noresults": "Ništa nije pronađeno za parametre pretraživanja koje ste unijeli.",
 	"abusefilter-topnav": "'''Navigacija filtra zloporaba'''",
 	"abusefilter-topnav-home": "Početna stranica",
+	"abusefilter-topnav-recentchanges": "Nedavne promjene filtra",
 	"abusefilter-topnav-test": "Testiranje",
 	"abusefilter-topnav-examine": "Pregledajte prošla uređivanja",
 	"abusefilter-topnav-log": "Evidencija zlouporaba",

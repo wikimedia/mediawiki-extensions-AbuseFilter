@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"JinJian"
+			"JinJian",
+			"Harvzsf"
 		]
 	},
 	"abuselog": "talaan hin panara hin abusado",
@@ -27,7 +28,7 @@
 	"abusefilter-log-summary": "Ini nga talaan in nagpapakita hin lista han ngatanan nga mga ginbuhat nga nadakpan han mga panara.",
 	"abusefilter-log-search": "Pamilnga ha talaan hin abusado",
 	"abusefilter-log-search-user": "Gumaramit:",
-	"abusefilter-log-search-filter": "Mga ID hit panara (nakabulag pinaagi hin mga patukdaw nga bagis):",
+	"abusefilter-log-search-filter": "Mga ID hit panara:",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Pamilnga",
@@ -35,7 +36,7 @@
 	"abusefilter-log-detailedentry-local": "panara $1",
 	"abusefilter-log-detailslink": "mga detalye",
 	"abusefilter-log-diff": "kaibhan",
-	"abusefilter-log-details-privatedetails": "Pribado nga datos",
+	"abusefilter-log-details-privatedetails": "Pribado nga detalye hin talaan",
 	"abusefilter-log-details-ip": "Gintikangan nga IP address",
 	"abusefilter-log-noactions": "Waray",
 	"abusefilter-log-linkoncontribs": "log han pag-abuso",
@@ -59,8 +60,8 @@
 	"abusefilter-list-options-deleted-only": "Igpakita la an mga ginpara nga panara",
 	"abusefilter-list-options-deleted-hide": "Igtago an mga ginpara nga panara",
 	"abusefilter-list-options-deleted-show": "Iglakip an mga ginpara nga panara",
-	"abusefilter-list-options-scope": "Igpakita an mga panara tikang:",
-	"abusefilter-list-options-scope-local": "Lokal nga wiki",
+	"abusefilter-list-options-scope": "Igpakita an mga panara:",
+	"abusefilter-list-options-scope-local": "Lokal nga mga panurundon là",
 	"abusefilter-list-options-hidedisabled": "Igtago an mga ginparong nga mga panara",
 	"abusefilter-list-options-submit": "Igpayana",
 	"abusefilter-tools-reautoconfirm-user": "Gumaramit:",
@@ -72,8 +73,8 @@
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "Pagpilo-pilo (*)",
 	"abusefilter-edit-builder-op-arithmetic-divide": "Pagtunga-tunga (/)",
 	"abusefilter-edit-builder-op-arithmetic-modulo": "Modulo (%)",
-	"abusefilter-edit-builder-op-comparison-equal": "Pareho ha (==)",
-	"abusefilter-edit-builder-op-comparison-notequal": "Diri pareho ha (!=)",
+	"abusefilter-edit-builder-op-comparison-equal": "Balor pareho ha (==)",
+	"abusefilter-edit-builder-op-comparison-notequal": "Balor diri pareho ha (!=)",
 	"abusefilter-edit-builder-op-comparison-lt": "ubos ha (<)",
 	"abusefilter-edit-builder-op-comparison-gt": "Labaw ha (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "Ubos ha o pareho ha (<=)",
