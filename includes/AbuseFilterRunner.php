@@ -325,56 +325,14 @@ class AbuseFilterRunner {
 		// Ensure that we start fresh, see T193374
 		$this->parser->resetCondCount();
 
-		// Fetch filters to check from the database.
 		$matchedFilters = [];
 
-		$dbr = wfGetDB( DB_REPLICA );
-		$res = $dbr->select(
-			'abuse_filter',
-			AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
-			[
-				'af_enabled' => 1,
-				'af_deleted' => 0,
-				'af_group' => $this->group,
-			],
-			__METHOD__
-		);
-
-		foreach ( $res as $row ) {
+		foreach ( $this->getLocalFilters() as $row ) {
 			$matchedFilters[$row->af_id] = $this->checkFilter( $row );
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-			// Global filters
-			$globalRulesKey = AbuseFilter::getGlobalRulesKey( $this->group );
-
-			$fname = __METHOD__;
-			$res = MediaWikiServices::getInstance()->getMainWANObjectCache()->getWithSetCallback(
-				$globalRulesKey,
-				WANObjectCache::TTL_WEEK,
-				function () use ( $fname ) {
-					$fdb = AbuseFilter::getCentralDB( DB_REPLICA );
-
-					return iterator_to_array( $fdb->select(
-						'abuse_filter',
-						AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
-						[
-							'af_enabled' => 1,
-							'af_deleted' => 0,
-							'af_global' => 1,
-							'af_group' => $this->group,
-						],
-						$fname
-					) );
-				},
-				[
-					'checkKeys' => [ $globalRulesKey ],
-					'lockTSE' => 300,
-					'version' => 1
-				]
-			);
-
-			foreach ( $res as $row ) {
+			foreach ( $this->getGlobalFilters() as $row ) {
 				$matchedFilters[ AbuseFilter::buildGlobalName( $row->af_id ) ] =
 					$this->checkFilter( $row, true );
 			}
@@ -387,6 +345,55 @@ class AbuseFilterRunner {
 		}
 
 		return $matchedFilters;
+	}
+
+	/**
+	 * @return array abuse_filter DB rows
+	 */
+	protected function getLocalFilters() : array {
+		return iterator_to_array( wfGetDB( DB_REPLICA )->select(
+			'abuse_filter',
+			AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
+			[
+				'af_enabled' => 1,
+				'af_deleted' => 0,
+				'af_group' => $this->group,
+			],
+			__METHOD__
+		) );
+	}
+
+	/**
+	 * @return array abuse_filter rows from the foreign DB
+	 */
+	protected function getGlobalFilters() : array {
+		$globalRulesKey = AbuseFilter::getGlobalRulesKey( $this->group );
+		$fname = __METHOD__;
+
+		return MediaWikiServices::getInstance()->getMainWANObjectCache()->getWithSetCallback(
+			$globalRulesKey,
+			WANObjectCache::TTL_WEEK,
+			function () use ( $fname ) {
+				$fdb = AbuseFilter::getCentralDB( DB_REPLICA );
+
+				return iterator_to_array( $fdb->select(
+					'abuse_filter',
+					AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
+					[
+						'af_enabled' => 1,
+						'af_deleted' => 0,
+						'af_global' => 1,
+						'af_group' => $this->group,
+					],
+					$fname
+				) );
+			},
+			[
+				'checkKeys' => [ $globalRulesKey ],
+				'lockTSE' => 300,
+				'version' => 1
+			]
+		);
 	}
 
 	/**
