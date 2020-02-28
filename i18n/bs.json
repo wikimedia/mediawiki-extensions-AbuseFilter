@@ -166,7 +166,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Oznake]] za primjenu (jedna po redu):",
 	"abusefilter-edit-denied": "Možda nećete vidjeti detalje ovog filtera, zato što su sakriveni za javni pregled.",
 	"abusefilter-edit-main": "Parametri filtera",
-	"abusefilter-edit-done-subtitle": "Filter izmjenjen",
+	"abusefilter-edit-done-subtitle": "Filter je izmijenjen",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše izmjene]] na [[Special:AbuseFilter/$1|filteru $3]] su sačuvane.",
 	"abusefilter-edit-badsyntax": "Sintaksna greška u filteru koji ste označili. Posljednji izgled gramatičke definicije bio je:\n<pre>$1</pre>",
 	"abusefilter-edit-restricted": "Ne možete uređivati ovaj filter, jer on sadrži jednu ili više ograničenih akcija.\nZamolite korisnika sa dopuštenjima za dodavanje ograničenih akcija da napravi izmjene umjesto Vas.",
