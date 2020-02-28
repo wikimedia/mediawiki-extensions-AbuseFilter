@@ -613,6 +613,7 @@ class AbuseFilterHooks {
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
 		$updater->addPostDatabaseUpdateMaintenance( 'NormalizeThrottleParameters' );
+		$updater->addPostDatabaseUpdateMaintenance( 'FixOldLogEntries' );
 	}
 
 	/**
