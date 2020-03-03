@@ -221,11 +221,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				$entry['details'] = [];
 				if ( $canSeeDetails ) {
 					$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
-					if ( $vars instanceof AbuseFilterVariableHolder ) {
-						$entry['details'] = $vars->exportAllVars();
-					} else {
-						$entry['details'] = array_change_key_case( $vars, CASE_LOWER );
-					}
+					$entry['details'] = $vars->exportAllVars();
 				}
 			}
 
