@@ -659,7 +659,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 
 		// Diff, if available
-		if ( $vars && $row->afl_action === 'edit' ) {
+		if ( $row->afl_action === 'edit' ) {
 			$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 			$old_wikitext = $vars->getVar( 'old_wikitext' )->toString();
 			$new_wikitext = $vars->getVar( 'new_wikitext' )->toString();

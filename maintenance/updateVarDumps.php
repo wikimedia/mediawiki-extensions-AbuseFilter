@@ -26,6 +26,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private $dryRun = false;
 	/** @var int Count of rows in the abuse_filter_log table */
 	private $allRowsCount;
+	/** @var bool Whether to print progress markers */
+	private $progressMarkers;
 
 	/**
 	 * @inheritDoc
@@ -36,8 +38,9 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->addDescription( 'Update AbuseFilter var dumps - T213006' );
 		$this->addOption( 'dry-run-verbose', 'Perform a verbose dry run' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
+		$this->addOption( 'progress-markers', 'Print progress markers' );
 		$this->requireExtension( 'Abuse Filter' );
-		$this->setBatchSize( 200 );
+		$this->setBatchSize( 500 );
 	}
 
 	/**
@@ -55,6 +58,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			// This way the script can be called with dry-run-verbose only and we can check for dry-run
 			$this->dryRun = true;
 		}
+		$this->progressMarkers = $this->hasOption( 'progress-markers' );
 
 		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
 		$this->dbr = wfGetDB( DB_REPLICA );
@@ -103,6 +107,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$curID = $batchSize;
 		$deleted = $rebuilt = 0;
 		do {
+			$this->maybePrintProgress( $prevID );
 			$brokenRows = $this->dbr->select(
 				'abuse_filter_log',
 				'*',
@@ -219,6 +224,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$curID = $batchSize;
 		$changeRows = $truncatedDumps = 0;
 		do {
+			$this->maybePrintProgress( $prevID );
 			$res = $this->dbr->select(
 				'abuse_filter_log',
 				[ 'afl_id', 'afl_var_dump' ],
@@ -429,6 +435,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 
 		$dumpLike = $this->dbr->buildLike( 'stored-text:', $this->dbr->anyString() );
 		do {
+			$this->maybePrintProgress( $prevID );
 			$res = $this->dbr->select(
 				[ 'text', 'abuse_filter_log' ],
 				[ 'old_id', 'old_text', 'old_flags' ],
@@ -479,33 +486,28 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 					in_array( 'nativeDataArray', $oldFlags, true )
 				) {
 					// Sanity
-					$this->fatalError( 'Found a JSON-encoded rows with wrong flags.' );
+					$this->fatalError( "Row {$row->old_id} is JSON-encoded with wrong flags: {$row->old_flags}" );
 				}
 				continue;
 			}
 
 			$obj = unserialize( $text );
 
-			if ( $obj instanceof AbuseFilterVariableHolder ) {
-				$newFlags = [ 'utf-8' ];
-				// Convert to array via dumpAllVars and re-store.
-				$varArray = $this->updateVariables( $obj->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] ) );
-				// This is copied from AbuseFilter::storeVarDump
-				$toStore = FormatJson::encode( $varArray );
-				if ( in_array( 'gzip', $oldFlags ) && function_exists( 'gzdeflate' ) ) {
-					$toStore = gzdeflate( $toStore );
-					$newFlags[] = 'gzip';
-				}
-				if ( in_array( 'external', $oldFlags ) ) {
-					$toStore = ExternalStore::insert( $row->old_text, $toStore );
-					$newFlags[] = 'external';
-				}
-			} else {
-				// Just remove the nativeDataArray flag (will be the default) and re-store as JSON
-				$toStore = FormatJson::encode( $this->updateVariables( $obj ) );
-				$newFlags = array_diff( $oldFlags, [ 'nativeDataArray' ] );
-				// Add utf-8 per T34478
-				$newFlags[] = 'utf-8';
+			$varArray = $obj instanceof AbuseFilterVariableHolder
+				? $obj->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] )
+				: $obj;
+			$varArray = $this->updateVariables( $varArray );
+			// Recreating flags will also ensure that we don't add 'nativeDataArray'
+			$newFlags = [ 'utf-8' ];
+			// This is copied from AbuseFilter::storeVarDump
+			$toStore = FormatJson::encode( $varArray );
+			if ( in_array( 'gzip', $oldFlags ) && function_exists( 'gzdeflate' ) ) {
+				$toStore = gzdeflate( $toStore );
+				$newFlags[] = 'gzip';
+			}
+			if ( in_array( 'external', $oldFlags ) ) {
+				$toStore = ExternalStore::insert( $row->old_text, $toStore );
+				$newFlags[] = 'external';
 			}
 
 			$this->dbw->update(
@@ -601,6 +603,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$curID = $batchSize;
 		$numRows = 0;
 		do {
+			$this->maybePrintProgress( $prevID );
 			$args = [
 				'abuse_filter_log',
 				[ "afl_var_dump = $newIdSQL" ],
@@ -627,6 +630,18 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$this->output( "...would change afl_var_dump for $numRows rows.\n" );
 		} else {
 			$this->output( "...updated afl_var_dump prefix for $numRows rows.\n" );
+		}
+	}
+
+	/**
+	 * Print a progress marker if the respective option is enabled
+	 *
+	 * @param int $start
+	 */
+	private function maybePrintProgress( int $start ) : void {
+		if ( $this->progressMarkers ) {
+			$end = $start + $this->getBatchSize();
+			$this->output( "...Doing range $start - $end\n" );
 		}
 	}
 }

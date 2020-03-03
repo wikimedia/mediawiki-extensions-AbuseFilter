@@ -734,9 +734,9 @@ class AbuseFilter {
 	 *
 	 * @param string $stored_dump
 	 *
-	 * @return AbuseFilterVariableHolder|array
+	 * @return AbuseFilterVariableHolder
 	 */
-	public static function loadVarDump( $stored_dump ) {
+	public static function loadVarDump( $stored_dump ) : AbuseFilterVariableHolder {
 		// Backward compatibility for (old) blobs stored in the abuse_filter_log table
 		if ( !is_numeric( $stored_dump ) &&
 			substr( $stored_dump, 0, strlen( 'stored-text:' ) ) !== 'stored-text:' &&
