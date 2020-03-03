@@ -61,6 +61,7 @@
 	"abusefilter-log-linkoncontribs": "दुर्व्यवहार लग",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1याे प्रयाेगकर्ता|}}काे दुरुपयोग लग",
 	"abusefilter-log-linkonhistory": "दुरुपयोग लग हेर्नुहोस्",
+	"abusefilter-log-linkonundelete": "दुरुपयोग लग हेर्नुहोस्",
 	"abusefilter-log-hidden-implicit": "(लुकाइएको छ किनभने संसोधन मेटिएको छ)",
 	"abusefilter-log-cannot-see-details": "तपाईंलाई यस इन्ट्रीको विवरण हेर्ने अनुमति छैन।",
 	"abusefilter-log-hide-legend": "लग प्रविष्टि लुकाउने",
