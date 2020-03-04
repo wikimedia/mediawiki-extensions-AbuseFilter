@@ -514,6 +514,7 @@
 	"abusefilter-diff-next": "По-нова промяна",
 	"abusefilter-import-intro": "Можете да използвате този интерфейс, за да импортирате филтри от други уикита.\nВ уикито-източник щракнете връзката \"{{int:abusefilter-edit-export}}\" под заглавието \"{{int:abusefilter-edit-tools}}\" в интерфейса за редактиране.\nКопирайте съдържанието от текстовата кутия, която ще се появи, и го поставете в тази текстова кутия. След това щракнете на \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Внасяне на данни",
+	"abusefilter-import-invalid-data": "Данните, които опитвате да внесете, не са валидни",
 	"abusefilter-group-default": "По подразбиране",
 	"abusefilter-http-error": "Възникна HTTP грешка: $1",
 	"abusefilter-view-privatedetails-submit": "Преглед на личните данни",
