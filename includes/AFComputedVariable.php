@@ -41,10 +41,11 @@ class AFComputedVariable {
 	 *
 	 * @param string $wikitext
 	 * @param WikiPage $article
+	 * @param User $user Context user
 	 *
 	 * @return object
 	 */
-	public function parseNonEditWikitext( $wikitext, WikiPage $article ) {
+	public function parseNonEditWikitext( $wikitext, WikiPage $article, User $user ) {
 		static $cache = [];
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
@@ -54,7 +55,7 @@ class AFComputedVariable {
 		}
 
 		$edit = (object)[];
-		$options = new ParserOptions;
+		$options = ParserOptions::newFromUser( $user );
 		$options->setTidy( true );
 		$parser = MediaWikiServices::getInstance()->getParser();
 		$edit->output = $parser->parse( $wikitext, $article->getTitle(), $options );
@@ -266,7 +267,11 @@ class AFComputedVariable {
 					$textVar = $parameters['text-var'];
 
 					$wikitext = $vars->getVar( $textVar )->toString();
-					$editInfo = $this->parseNonEditWikitext( $wikitext, $article );
+					$editInfo = $this->parseNonEditWikitext(
+						$wikitext,
+						$article,
+						$wgUser
+					);
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 				} else {
 					// TODO: Get links from Content object. But we don't have the content object.
@@ -346,7 +351,11 @@ class AFComputedVariable {
 						$result = $vars->getVar( $textVar )->toString();
 					} else {
 						$text = $vars->getVar( $textVar )->toString();
-						$editInfo = $this->parseNonEditWikitext( $text, $article );
+						$editInfo = $this->parseNonEditWikitext(
+							$text,
+							$article,
+							$wgUser
+						);
 						$result = $editInfo->output->getText();
 					}
 				} else {
