@@ -397,7 +397,7 @@
 	"abusefilter-edit-builder-vars-all-links": "Yeni metindeki tüm dış bağlantılar",
 	"abusefilter-edit-builder-vars-added-links": "Değişiklikte eklenen tüm dış bağlantılar",
 	"abusefilter-edit-builder-vars-removed-links": "Değişiklikte çıkarılan tüm dış bağlantılar",
-	"abusefilter-edit-builder-vars-old-wikitext": "Eski sayfa wiki metin, düzenlemeden önce",
+	"abusefilter-edit-builder-vars-old-wikitext": "Eski sayfa vikimetin, düzenlemeden önce",
 	"abusefilter-edit-builder-vars-new-wikitext": "Yeni sayfa vikimetin, düzenlemeden sonra",
 	"abusefilter-edit-builder-vars-new-pst": "Yeni sayfa vikimetni, ön kayıt dönüştürüldü",
 	"abusefilter-edit-builder-vars-diff-pst": "Düzenleme tarafından yapılan değişikliklerin birleştirilmiş fark, dönüştürülmüş ön-kaydet",

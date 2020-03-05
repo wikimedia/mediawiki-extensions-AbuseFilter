@@ -54,6 +54,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Obtener le detalios private del entrata del registro de abusos con ID 1, usante le motivo \"exemplo\".",
 	"apierror-abusefilter-canttest": "Tu non ha le permission de testar le filtros anti-abuso.",
 	"apierror-abusefilter-cantcheck": "Tu non ha le permission de verificar le syntaxe de filtros anti-abuso.",
+	"apierror-abusefilter-canteval": "Tu non ha le permission de evalutar le expressiones del filtro anti-abuso.",
 	"apierror-abusefilter-nosuchlogid": "Il non ha un entrata con ID $1 in le registro de abusos.",
 	"apierror-abusefilter-badsyntax": "Le filtro ha un syntaxe invalide."
 }
