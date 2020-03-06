@@ -1832,7 +1832,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		if ( $this->mFilter !== null ) {
 			$this->logger->warning(
 				'DEPRECATED! Found empty operand of type `{op_type}` when parsing filter: {filter}. ' .
-					'This is deprecated since 1.34 and support will be discontinued soon. Please fix ' .
+					'This is deprecated since 1.34 and support will be discontinued in 1.36. Please fix ' .
 					'the affected filter!',
 				[
 					'op_type' => $type,
