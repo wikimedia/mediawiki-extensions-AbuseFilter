@@ -33,6 +33,10 @@ class AbuseFilterRunner {
 	 * @var string The group of filters to check (as defined in $wgAbuseFilterValidGroups)
 	 */
 	protected $group;
+	/**
+	 * @var string The action we're filtering
+	 */
+	protected $action;
 
 	/**
 	 * @var array Data from per-filter profiling. Shape:
@@ -71,11 +75,15 @@ class AbuseFilterRunner {
 		if ( !in_array( $group, $wgAbuseFilterValidGroups ) ) {
 			throw new InvalidArgumentException( '$group must be defined in $wgAbuseFilterValidGroups' );
 		}
+		if ( !$vars->varIsSet( 'action' ) ) {
+			throw new InvalidArgumentException( "The 'action' variable is not set." );
+		}
 		$this->user = $user;
 		$this->title = $title;
 		$this->vars = $vars;
 		$this->vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 		$this->group = $group;
+		$this->action = $vars->getVar( 'action' )->toString();
 	}
 
 	/**
@@ -119,8 +127,6 @@ class AbuseFilterRunner {
 		$this->executed = true;
 		$this->init();
 
-		$action = $this->vars->getVar( 'action' )->toString();
-
 		$skipReasons = [];
 		$shouldFilter = Hooks::run(
 			'AbuseFilterShouldFilterAction',
@@ -128,11 +134,14 @@ class AbuseFilterRunner {
 		);
 		if ( !$shouldFilter ) {
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->info( "Skipping action $action. Reasons provided: " . implode( ', ', $skipReasons ) );
+			$logger->info(
+				'Skipping action {action}. Reasons provided: {reasons}',
+				[ 'action' => $this->action, 'reasons' => implode( ', ', $skipReasons ) ]
+			);
 			return Status::newGood();
 		}
 
-		$useStash = $allowStash && $action === 'edit';
+		$useStash = $allowStash && $this->action === 'edit';
 
 		$fromCache = false;
 		$result = [];
@@ -198,10 +207,9 @@ class AbuseFilterRunner {
 	 * @return Status Always a good status, since we're only saving data.
 	 */
 	public function runForStash() : Status {
-		$action = $this->vars->getVar( 'action' )->toString();
-		if ( $action !== 'edit' ) {
+		if ( $this->action !== 'edit' ) {
 			throw new InvalidArgumentException(
-				__METHOD__ . " can only be called for edits, called for action $action."
+				__METHOD__ . " can only be called for edits, called for action {$this->action}."
 			);
 		}
 
@@ -682,11 +690,10 @@ class AbuseFilterRunner {
 
 			if ( !empty( $actions['warn'] ) ) {
 				$parameters = $actions['warn']['parameters'];
-				$action = $this->vars->getVar( 'action' )->toString();
 				// Generate a unique key to determine whether the user has already been warned.
 				// We'll warn again if one of these changes: session, page, triggered filter or action
 				$warnKey = 'abusefilter-warned-' . md5( $this->title->getPrefixedText() ) .
-					'-' . $filter . '-' . $action;
+					'-' . $filter . '-' . $this->action;
 
 				// Make sure the session is started prior to using it
 				$session = SessionManager::getGlobalSession();
@@ -1146,7 +1153,6 @@ class AbuseFilterRunner {
 		global $wgAbuseFilterLogIP;
 
 		$request = RequestContext::getMain()->getRequest();
-		$action = $this->vars->getVar( 'action' )->toString();
 		// If $this->user isn't safe to load (e.g. a failure during
 		// AbortAutoAccount), create a dummy anonymous user instead.
 		$user = $this->user->isSafeToLoad() ? $this->user : new User;
@@ -1157,11 +1163,14 @@ class AbuseFilterRunner {
 			'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp(),
 			'afl_namespace' => $this->title->getNamespace(),
 			'afl_title' => $this->title->getDBkey(),
-			'afl_action' => $action,
+			'afl_action' => $this->action,
 			'afl_ip' => $wgAbuseFilterLogIP ? $request->getIP() : ''
 		];
 		// Hack to avoid revealing IPs of people creating accounts
-		if ( !$user->getId() && ( $action === 'createaccount' || $action === 'autocreateaccount' ) ) {
+		if (
+			!$user->getId() &&
+			( $this->action === 'createaccount' || $this->action === 'autocreateaccount' )
+		) {
 			$logTemplate['afl_user_text'] = $this->vars->getVar( 'accountname' )->toString();
 		}
 		return $logTemplate;
@@ -1387,8 +1396,7 @@ class AbuseFilterRunner {
 	 * @return string
 	 */
 	protected function getTaggingID() {
-		$action = $this->vars->getVar( 'action' )->toString();
-		if ( strpos( $action, 'createaccount' ) === false ) {
+		if ( strpos( $this->action, 'createaccount' ) === false ) {
 			$username = $this->user->getName();
 			$actionTitle = $this->title;
 		} else {
@@ -1397,6 +1405,6 @@ class AbuseFilterRunner {
 		}
 		'@phan-var Title $actionTitle';
 
-		return AbuseFilter::getTaggingActionId( $action, $actionTitle, $username );
+		return AbuseFilter::getTaggingActionId( $this->action, $actionTitle, $username );
 	}
 }
