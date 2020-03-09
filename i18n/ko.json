@@ -28,7 +28,8 @@
 			"렌즈",
 			"Son77391",
 			"Jango",
-			"Hwangjy9"
+			"Hwangjy9",
+			"Ktrst"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -138,6 +139,7 @@
 	"log-action-filter-abusefilter-create": "새 필터 만들기",
 	"log-action-filter-abusefilter-modify": "필터 수정",
 	"log-action-filter-suppress-abuselog": "악용 기록 숨기기",
+	"log-action-filter-rights-blockautopromote": "자동처리 차단",
 	"logentry-abusefilterprivatedetails-access": "$1님이 $3의 비공개 상세 정보에 {{GENDER:$2|접근하였습니다}}",
 	"abusefilterprivatedetails-log-name": "편집 필터 비공개 상세 정보 접근 기록",
 	"abusefilter-list": "모든 필터",
