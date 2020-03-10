@@ -421,6 +421,7 @@
 	"abusefilter-edit-builder-vars-file-width": "ファイルのピクセル単位での幅",
 	"abusefilter-edit-builder-vars-file-height": "ファイルのピクセル単位での高さ",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "ファイルのカラーチャネル毎のビット数",
+	"abusefilter-edit-builder-vars-wiki-name": "ウィキのデータベース名",
 	"abusefilter-edit-builder-vars-wiki-language": "Wikiの言語コード",
 	"abusefilter-filter-log": "フィルターの最近の更新",
 	"abusefilter-history": "不正利用フィルター #$1 の変更履歴",
