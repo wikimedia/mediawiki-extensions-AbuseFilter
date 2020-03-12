@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IResultWrapper;
@@ -22,12 +23,16 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private $dbr;
 	/** @var Database A connection to the master */
 	private $dbw;
+	/** @var ExternalStoreAccess */
+	private $esAccess;
 	/** @var bool Whether we're performing a dry run */
 	private $dryRun = false;
 	/** @var int Count of rows in the abuse_filter_log table */
 	private $allRowsCount;
 	/** @var bool Whether to print progress markers */
 	private $progressMarkers;
+	/** @var bool */
+	private $printOrphaned;
 
 	/**
 	 * @inheritDoc
@@ -39,8 +44,13 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->addOption( 'dry-run-verbose', 'Perform a verbose dry run' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
 		$this->addOption( 'progress-markers', 'Print progress markers' );
+		$this->addOption(
+			'print-orphaned-records',
+			'Print ExternalStore urls of orphaned ExternalStore records (if any)'
+		);
 		$this->requireExtension( 'Abuse Filter' );
 		$this->setBatchSize( 500 );
+		$this->esAccess = MediaWikiServices::getInstance()->getExternalStoreAccess();
 	}
 
 	/**
@@ -59,6 +69,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$this->dryRun = true;
 		}
 		$this->progressMarkers = $this->hasOption( 'progress-markers' );
+		$this->printOrphaned = $this->hasOption( 'print-orphaned-records' );
 
 		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
 		$this->dbr = wfGetDB( DB_REPLICA );
@@ -421,6 +432,9 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->output(
 			"...Re-storing serialized dumps as JSON-encoded arrays for all rows (3/4).\n"
 		);
+		if ( $this->printOrphaned ) {
+			$this->output( "Printing orphaned records.\n" );
+		}
 
 		$batchSize = $this->getBatchSize();
 		$prevID = 0;
@@ -468,12 +482,13 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	 * @param IResultWrapper $res text rows
 	 */
 	private function doUpdateText( IResultWrapper $res ) {
+		$orphaned = [];
 		foreach ( $res as $row ) {
 			// This is copied from AbuseFilter::loadVarDump
 			$oldFlags = explode( ',', $row->old_flags );
 			$text = $row->old_text;
 			if ( in_array( 'external', $oldFlags ) ) {
-				$text = ExternalStore::fetchFromURL( $row->old_text );
+				$text = $this->esAccess->fetchFromURL( $row->old_text );
 			}
 			if ( in_array( 'gzip', $oldFlags ) ) {
 				$text = gzinflate( $text );
@@ -506,7 +521,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$newFlags[] = 'gzip';
 			}
 			if ( in_array( 'external', $oldFlags ) ) {
-				$toStore = ExternalStore::insert( $row->old_text, $toStore );
+				$orphaned[] = $row->old_text;
+				$toStore = $this->esAccess->insert( $toStore );
 				$newFlags[] = 'external';
 			}
 
@@ -519,6 +535,9 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				[ 'old_id' => $row->old_id ],
 				__METHOD__
 			);
+		}
+		if ( $this->printOrphaned && $orphaned ) {
+			$this->output( implode( ', ', $orphaned ) . "\n" );
 		}
 	}
 
