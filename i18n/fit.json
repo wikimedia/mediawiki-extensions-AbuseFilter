@@ -8,8 +8,9 @@
 	"abusefilter-edit-status-label": "Statistiikit:",
 	"abusefilter-edit-action-tag": "Markeeraa mookkaus lisätarkastelun kohteeksi",
 	"abusefilter-throttle-user": "käyttäjäkonttu",
+	"abusefilter-edit-builder-vars-wiki-language": "Wikin kielikooti",
 	"abusefilter-history-foruser": "Käyttäjän $1 mookkaukset",
 	"abusefilter-action-tag": "Markeeraa",
-	"abusefilter-diff-info": "Perustiot",
+	"abusefilter-diff-info": "Perustieot",
 	"abusefilter-group-default": "Ylheinen"
 }
