@@ -29,7 +29,8 @@
 			"Yuukin0248",
 			"Kkairri",
 			"Reiwa period",
-			"Marine-Blue"
+			"Marine-Blue",
+			"Whym"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -354,7 +355,7 @@
 	"abusefilter-edit-builder-vars-action": "操作",
 	"abusefilter-edit-builder-vars-addedlines": "編集で追加された行",
 	"abusefilter-edit-builder-vars-delta": "編集による変更サイズ",
-	"abusefilter-edit-builder-vars-diff": "編集による変更の統一差分",
+	"abusefilter-edit-builder-vars-diff": "編集で変更された部分の Unified diff 形式差分",
 	"abusefilter-edit-builder-vars-newsize": "新しいページのサイズ",
 	"abusefilter-edit-builder-vars-oldsize": "古いページのサイズ",
 	"abusefilter-edit-builder-vars-old-content-model": "古いコンテンツモデル",
@@ -394,7 +395,7 @@
 	"abusefilter-edit-builder-vars-old-wikitext": "編集前の古いウィキテキスト",
 	"abusefilter-edit-builder-vars-new-wikitext": "編集後の新しいウィキテキスト",
 	"abusefilter-edit-builder-vars-new-pst": "保存前変換適用後の新しいウィキテキスト",
-	"abusefilter-edit-builder-vars-diff-pst": "編集による変更のUnified diff 形式差分 (pre-saveの変換前)",
+	"abusefilter-edit-builder-vars-diff-pst": "編集で変更された部分の Unified diff 形式差分（pre-save変換前）",
 	"abusefilter-edit-builder-vars-addedlines-pst": "編集で追加された行 (pre-saveの変換前)",
 	"abusefilter-edit-builder-vars-new-text": "マークアップを除く新しい本文",
 	"abusefilter-edit-builder-vars-new-html": "新しい版のパース済みHTMLソース",
