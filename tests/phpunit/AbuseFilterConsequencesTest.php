@@ -548,7 +548,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				break;
 			case 'delete':
 				$page = $this->getExistingTestPage( $target );
-				$status = $page->doDeleteArticleReal( 'Testing deletion in AbuseFilter' );
+				$status = $page->doDeleteArticleReal(
+					'Testing deletion in AbuseFilter',
+					$this->user
+				);
 				break;
 			case 'createaccount':
 				$user = User::newFromName( $params['username'] );
