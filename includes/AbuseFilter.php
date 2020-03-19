@@ -1587,23 +1587,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated Use VariableGenerator::addEditVars
-	 * @param Title $title
-	 * @param WikiPage|\Article|null $page
-	 * @return AbuseFilterVariableHolder
-	 */
-	public static function getEditVars( Title $title, object $page = null ) {
-		if ( $page !== null && !$page instanceof WikiPage ) {
-			$page = $page->getPage();
-		}
-
-		$vars = new AbuseFilterVariableHolder();
-		$generator = new VariableGenerator( $vars );
-
-		return $generator->addEditVars( $title, $page )->getVariableHolder();
-	}
-
-	/**
 	 * @param AbuseFilterVariableHolder|array $vars
 	 * @param IContextSource $context
 	 * @return string
