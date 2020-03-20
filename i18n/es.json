@@ -387,7 +387,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizar entidades HTML en caracteres unicode (sanitize)",
 	"abusefilter-edit-builder-group-vars": "Variables",
 	"abusefilter-edit-builder-vars-accountname": "Nombre de usuario (en la creación de la cuenta)",
-	"abusefilter-edit-builder-vars-timestamp": "Hora Unix del cambio",
+	"abusefilter-edit-builder-vars-timestamp": "Cronomarcador Unix del cambio",
 	"abusefilter-edit-builder-vars-timestamp-expanded": "Fecha y hora del registro",
 	"abusefilter-edit-builder-vars-action": "Acción",
 	"abusefilter-edit-builder-vars-addedlines": "Líneas añadidas en la edición",
