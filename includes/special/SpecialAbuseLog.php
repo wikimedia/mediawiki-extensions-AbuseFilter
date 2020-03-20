@@ -1027,7 +1027,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @param stdClass $row
 	 * @param bool $isListItem
-	 * @return String
+	 * @return string
 	 */
 	public function formatRow( $row, $isListItem = true ) {
 		$user = $this->getUser();
