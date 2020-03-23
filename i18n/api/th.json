@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Aefgh39622"
+		]
+	},
+	"apihelp-abusefiltercheckmatch-extended-description": "ต้องการ vars, rcid หรือ logid แต่สามารถใช้ได้เพียงอย่างเดียว",
+	"apihelp-abusefiltercheckmatch-param-filter": "ข้อความตัวกรองแบบเต็มที่จะตรวจหารายการที่ตรงกัน",
+	"apihelp-abusefiltercheckmatch-param-vars": "แถวลำดับที่เข้ารหัสแล้วของ JSON ของตัวแปรที่จะนำมาใช้ทดสอบ",
+	"apihelp-abusefiltercheckmatch-param-rcid": "ไอดีการเปลี่ยนแปลงล่าสุดที่จะนำมาใช้ตรวจสอบ",
+	"apihelp-abusefiltercheckmatch-param-logid": "ไอดีปูมตัวกรองการละเมิดกฎที่จะนำมาใช้ตรวจสอบ",
+	"apihelp-abusefiltercheckmatch-example-1": "ทดสอบว่าไอดีการเปลี่ยนแปลงล่าสุด 15 ตรงกับตัวกรองอย่างง่าย",
+	"apihelp-abusefilterchecksyntax-description": "ตรวจสอบไวยากรณ์ของตัวกรอง AbuseFilter",
+	"apihelp-abusefilterchecksyntax-summary": "ตรวจสอบไวยากรณ์ของตัวกรอง AbuseFilter",
+	"apihelp-abusefilterchecksyntax-param-filter": "ข้อความตัวกรองแบบเต็มที่จะตรวจสอบไวยากรณ์",
+	"apihelp-abusefilterchecksyntax-example-1": "ตรวจสอบไวยากรณ์ของตัวกรองที่ถูกต้อง",
+	"apihelp-abusefilterchecksyntax-example-2": "ตรวจสอบไวยากรณ์ของตัวกรองที่ไม่ถูกต้อง",
+	"apihelp-abusefilterevalexpression-description": "ประเมินนิพจน์ AbuseFilter expression",
+	"apihelp-abusefilterevalexpression-summary": "ประเมินนิพจน์ AbuseFilter expression"
+}
