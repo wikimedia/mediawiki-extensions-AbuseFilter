@@ -430,11 +430,19 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @return string The status of the operation, as returned by the API.
 	 */
 	private function stashEdit( $title, $text, $summary ) {
+		// Temporarily disable tests that use this function prior to the new
+		// PageEditStash constructor being merged
+		$rm = new ReflectionMethod( PageEditStash::class, '__construct' );
+		if ( count( $rm->getParameters() ) < 6 ) {
+			$this->markTestSkipped( 'Requires Id442b0dbe43aba84bd5cf801d86dedc768b082c7' );
+		}
+
 		$editStash = new PageEditStash(
 			new HashBagOStuff( [] ),
 			MediaWikiServices::getInstance()->getDBLoadBalancer(),
 			new Psr\Log\NullLogger(),
 			new NullStatsdDataFactory(),
+			MediaWikiServices::getInstance()->getHookContainer(),
 			PageEditStash::INITIATOR_USER
 		);
 		return $editStash->parseAndCache(
