@@ -2,13 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"2nd-player",
-			"Otokoume",
-			"Suyama",
-			"Yusuke1109",
-			"Shirayuki",
-			"Omotecho",
+			"Aefgh39622",
 			"Kkairri",
-			"Aefgh39622"
+			"Omotecho",
+			"Otokoume",
+			"Shirayuki",
+			"Suyama",
+			"Yusuke1109"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-extended-description": "vars、rcid、またはlogidが必要です。 ただし、使用できるのは1つだけです。",

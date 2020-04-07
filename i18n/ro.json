@@ -1,10 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Andrei Stroe",
 			"Cin",
 			"Ervinutz",
 			"Firilacroco",
+			"Fitoschido",
+			"GabiBil",
 			"KlaudiuMihaila",
+			"Matma Rex",
 			"Mihai",
 			"Minisarm",
 			"Misterr",
@@ -12,11 +16,7 @@
 			"Silviubogan",
 			"Stelistcristi",
 			"Strainu",
-			"Matma Rex",
-			"WebSourceContentRO",
-			"Fitoschido",
-			"Andrei Stroe",
-			"GabiBil"
+			"WebSourceContentRO"
 		]
 	},
 	"abusefilter-desc": "Aplică euristici automate modificărilor.",

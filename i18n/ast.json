@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mr.Ajedrez",
-			"Xuacu",
-			"Matma Rex",
+			"Enolp",
 			"Fitoschido",
-			"Enolp"
+			"Matma Rex",
+			"Mr.Ajedrez",
+			"Xuacu"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automática a les ediciones.",

@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Brad Jorsch",
-			"Matěj Suchánek",
+			"Amire80",
+			"Ankam",
 			"Aotake",
 			"Bennylin",
+			"Brad Jorsch",
 			"ChrisiPK",
 			"Darth Kule",
 			"EugeneZelenko",
@@ -16,12 +17,16 @@
 			"Krenair",
 			"Krinkle",
 			"Kwj2772",
+			"Legoktm",
 			"Lejonel",
+			"Liuxinyu970226",
 			"Lloffiwr",
+			"Matěj Suchánek",
 			"McDutchie",
 			"Meno25",
 			"Mormegil",
 			"Nemo bis",
+			"Pikne",
 			"Praveenp",
 			"Purodha",
 			"Pxos",
@@ -31,12 +36,7 @@
 			"The Evil IP address",
 			"Translationista",
 			"Umherirrender",
-			"Yekrats",
-			"Liuxinyu970226",
-			"Legoktm",
-			"Pikne",
-			"Amire80",
-			"Ankam"
+			"Yekrats"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "{{doc-apihelp-description|abusefiltercheckmatch}}",

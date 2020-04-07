@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joachim Mos",
-			"Slomox",
-			"Matma Rex",
 			"Fitoschido",
-			"Servien"
+			"Joachim Mos",
+			"Matma Rex",
+			"Servien",
+			"Slomox"
 		]
 	},
 	"abusefilter-desc": "Föhrt automaatsch heuristische Analysen op Ännern ut",

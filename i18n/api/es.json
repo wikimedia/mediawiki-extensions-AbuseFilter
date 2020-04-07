@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agusbou2015",
 			"Ciencia Al Poder",
 			"Dgstranz",
 			"Fitoschido",
+			"Ihojose",
 			"Macofe",
 			"MarcoAurelio",
-			"Ryo567",
-			"Agusbou2015",
-			"Ihojose"
+			"Ryo567"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Comprueba si el filtro antiabusos coincide con un conjunto de variables, una edición o un evento del registro del editor antiabusos.\n\nSe necesita \"vars\", \"rcid\" o \"logid\", pero solo se utiliza uno.",

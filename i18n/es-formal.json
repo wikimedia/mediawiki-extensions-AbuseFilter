@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"MarcoAurelio",
-			"Fitoschido"
+			"Fitoschido",
+			"MarcoAurelio"
 		]
 	},
 	"abusefilter-intro": "Sea bienvenido a la interfaz de administración del filtro antiabusos.\nEl filtro antiabusos es un programa que aplica heurística a todas las ediciones.\nLa intrerfaz muestra una lista de filtros definidos, y le permite modificarlos.",

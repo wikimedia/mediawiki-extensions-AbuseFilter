@@ -1,15 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elisardojm",
-			"Toliño",
 			"Banjo",
-			"Matma Rex",
-			"Navhy",
-			"Maria zaos",
+			"Breogan2008",
+			"Elisardojm",
 			"Fitoschido",
 			"Iváns",
-			"Breogan2008"
+			"Maria zaos",
+			"Matma Rex",
+			"Toliño"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",

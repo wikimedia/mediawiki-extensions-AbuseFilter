@@ -2,19 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Daimona Eaytoy",
+			"Esh77",
 			"Guycn2",
+			"Inkbug",
+			"Matma Rex",
 			"Ofrahod",
 			"Rotemliss",
 			"StuB",
 			"YaronSh",
 			"Yonidebest",
 			"אור שפירא",
+			"דגש חזק",
 			"דולב",
-			"ערן",
-			"Inkbug",
-			"Matma Rex",
-			"Esh77",
-			"Daimona Eaytoy"
+			"ערן"
 		]
 	},
 	"abusefilter-desc": "החלת בדיקות אוטומטיות על עריכות",
@@ -213,7 +214,7 @@
 	"abusefilter-edit-lastmod-text": "$1 על־ידי $2",
 	"abusefilter-edit-hitcount": "פעולות שסוננו:",
 	"abusefilter-edit-consequences": "אילו פעולות לבצע בעת ההתאמה",
-	"abusefilter-edit-action-warn": "לגרום לביצוע הפעולות האלה לאחר הזהרת המשתמש",
+	"abusefilter-edit-action-warn": "לגרום לביצוע הפעולות האלה לאחר אזהרת המשתמש",
 	"abusefilter-edit-action-disallow": "למנוע מהמשתמש לבצע את הפעולה הזאת",
 	"abusefilter-edit-action-blockautopromote": "לשלול מהמשתמש את הרשאות המשתמש הוותיק",
 	"abusefilter-edit-action-degroup": "לשלול את כל ההרשאות של המשתמש",

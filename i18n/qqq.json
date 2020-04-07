@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
+			"Ankam",
 			"Aotake",
+			"Bdijkstra",
 			"Bennylin",
 			"ChrisiPK",
+			"Daimona Eaytoy",
 			"Darth Kule",
 			"EugeneZelenko",
 			"Fryed-peach",
@@ -14,12 +18,15 @@
 			"Krenair",
 			"Krinkle",
 			"Kwj2772",
+			"Legoktm",
 			"Lejonel",
+			"Liuxinyu970226",
 			"Lloffiwr",
 			"McDutchie",
 			"Meno25",
 			"Mormegil",
 			"Nemo bis",
+			"Pikne",
 			"Praveenp",
 			"Purodha",
 			"Pxos",
@@ -29,14 +36,7 @@
 			"The Evil IP address",
 			"Translationista",
 			"Umherirrender",
-			"Yekrats",
-			"Liuxinyu970226",
-			"Legoktm",
-			"Pikne",
-			"Amire80",
-			"Ankam",
-			"Daimona Eaytoy",
-			"Bdijkstra"
+			"Yekrats"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",

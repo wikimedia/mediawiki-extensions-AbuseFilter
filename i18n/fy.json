@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pyt",
-			"Snakesteuben",
-			"Robin0van0der0vliet",
 			"PiefPafPier",
-			"Robin van der Vliet"
+			"Pyt",
+			"Robin van der Vliet",
+			"Robin0van0der0vliet",
+			"Snakesteuben"
 		]
 	},
 	"abusefilter-desc": "Fiert automatyske heuristyske analyse út op bewurkings",

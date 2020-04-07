@@ -4,10 +4,10 @@
 			"AS",
 			"Base",
 			"DonDrakon",
-			"Piramidion",
-			"Ата",
 			"Movses",
-			"Vlad5250"
+			"Piramidion",
+			"Vlad5250",
+			"Ата"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Перевірте, чи AbuseFilter має збіги з набором змінних, редагуванням чи подією в журналі AbuseFilter.\n\nПотрібні vars, rcid або logid, але використати можна лише один.",

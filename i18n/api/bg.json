@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"StanProg",
-			"Vodnokon4e",
-			"Vlad5250"
+			"Vlad5250",
+			"Vodnokon4e"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-param-filter": "Пълния текст на филтър за проверка за съвпадение.",

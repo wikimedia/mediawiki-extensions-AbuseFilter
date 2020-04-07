@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"LexArt",
-			"Тест",
-			"Mikalai Udodau",
-			"Дзяніс Тутэйшы",
 			"Artsiom91",
+			"LexArt",
+			"Mikalai Udodau",
 			"Movses",
-			"Vlad5250"
+			"Vlad5250",
+			"Дзяніс Тутэйшы",
+			"Тест"
 		]
 	},
 	"abusefilter-desc": "Прымяняе аўтаматычную эўрыстыку да правак.",

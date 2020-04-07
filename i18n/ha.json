@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"abusefilter-log-search-submit": "Nema",
 	"abusefilter-log-hide-reason": "Dalili:",
 	"abusefilter-examine-submit": "Nema"

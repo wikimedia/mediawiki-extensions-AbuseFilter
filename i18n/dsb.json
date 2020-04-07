@@ -2,9 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Derbeth",
-			"Michawiki",
 			"Matma Rex",
-			"Matěj Suchánek"
+			"Matěj Suchánek",
+			"Michawiki"
 		]
 	},
 	"abusefilter-desc": "Nałožujo awtomatisku heuristiku na změny.",

@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bencemac",
 			"Dj",
-			"Wolf Rex",
-			"Bencemac"
+			"Wolf Rex"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "vars, rcid vagy logid szükséges, de csak egyet lehet használni.",

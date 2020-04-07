@@ -2,11 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Orlodrim",
-			"Urhixidur",
-			"Wladek92",
 			"Manu1400",
-			"Thibaut120094"
+			"Orlodrim",
+			"Thibaut120094",
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Cocher pour voir si un AbuseFilter correspond à un ensemble de variables, une modification, ou un événement AbuseFilter du journal.\n\nvars, rcid ou logid est obligatoire, mais un seul d’entre-eux doit être utilisé.",

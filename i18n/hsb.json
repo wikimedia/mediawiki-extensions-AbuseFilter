@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Michawiki",
 			"J budissin",
-			"Matma Rex"
+			"Matma Rex",
+			"Michawiki"
 		]
 	},
 	"abusefilter-desc": "Nałožuje awtomatisku heuristiku na změny.",

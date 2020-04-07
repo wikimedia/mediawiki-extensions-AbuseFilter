@@ -1,26 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aldnonymous",
+			"Arifin.wijaya",
+			"ArlandGa",
 			"Bennylin",
+			"C5st4wr6ch",
 			"Farras",
+			"Fitoschido",
+			"Hidayatsrf",
 			"Irwangatot",
 			"IvanLanin",
 			"Iwan Novirion",
+			"J Nia30",
 			"Kenrick95",
-			"Rex",
-			"Rv77ax",
-			"C5st4wr6ch",
-			"Arifin.wijaya",
 			"Matma Rex",
+			"Pebaryan",
 			"Rachmat.Wahidi",
 			"Rachmat04",
-			"Hidayatsrf",
-			"J Nia30",
-			"Aldnonymous",
-			"Pebaryan",
-			"Fitoschido",
-			"Veracious",
-			"ArlandGa"
+			"Rex",
+			"Rv77ax",
+			"Veracious"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",

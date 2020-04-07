@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Albe Albe460",
 			"Beta16",
 			"Chiara.Graziani1991",
 			"Daimona Eaytoy",
 			"F. Cosoleto",
 			"Ricordisamoa",
-			"Wim b",
-			"Albe Albe460"
+			"Wim b"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Controlla se un filtro anti abusi viene attivato da un insieme di variabili, una modifica o un evento nel registro abusi.\n\nÈ richiesto uno e un solo parametro tra vars, rcid e logid.",

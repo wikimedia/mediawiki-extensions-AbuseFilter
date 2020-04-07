@@ -2,19 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Bdamokos",
+			"Bencemac",
 			"Bináris",
+			"Csega",
 			"Dani",
 			"Dj",
 			"Dunee",
 			"Glanthor Reviol",
+			"Matma Rex",
 			"Misibacsi",
+			"Samat",
 			"Tacsipacsi",
 			"Tgr",
-			"Samat",
-			"Matma Rex",
-			"Wolf Rex",
-			"Bencemac",
-			"Csega"
+			"Wolf Rex"
 		]
 	},
 	"abusefilter-desc": "Automatikus heurisztikát alkalmaz a szerkesztésekre.",
