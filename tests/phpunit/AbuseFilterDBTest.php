@@ -52,8 +52,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		'text',
 		'abuse_filter',
 		'abuse_filter_history',
-		'abuse_filter_log',
-		'abuse_filter_actions'
+		'abuse_filter_log'
 	];
 
 	/**
