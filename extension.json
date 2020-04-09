@@ -218,7 +218,6 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
-				"mediawiki.notify",
 				"user.options",
 				"jquery.spinner"
 			]
