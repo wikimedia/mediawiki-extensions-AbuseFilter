@@ -384,6 +384,8 @@
 	"abusefilter-edit-builder-vars-file-width": "Herayeya pikselê dosya",
 	"abusefilter-edit-builder-vars-file-height": "Berzeya pikselê dosya",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Şo reng kenala dosya",
+	"abusefilter-edit-builder-vars-wiki-name": "Database namey wiki",
+	"abusefilter-edit-builder-vars-wiki-language": "Kodê zıwanê wiki",
 	"abusefilter-filter-log": "Vurnayışê parzûniyê peyêni",
 	"abusefilter-history": "qey filtreya suistimali #$1vurnayişê hal-verini",
 	"abusefilter-history-foruser": "$1 ra vurnayîşan",
@@ -509,6 +511,7 @@
 	"abusefilter-http-error": "Yew xırabeya HTTP'i biyo: $1",
 	"abusefilter-view-privatedetails-submit": "Detayanê xısusiya bıvênê",
 	"abusefilter-view-privatedetails-legend": "Detayanê xısusiya bıvinê",
+	"abusefilter-view-privatedetails-reason": "Sebebê resayışê detayanê xısusiya:",
 	"abusefilter-log-details-id": "Kamiya qeydi",
 	"abusefilter-log-ip-not-available": "Çıniyo",
 	"tag-abusefilter-condition-limit": "reşt sinorê şerti"
