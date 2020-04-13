@@ -50,7 +50,7 @@
 	"abusefilter-blockautopromotereason": "تأییدشدگی خودکار برای این کاربر به تأخیر انداخته شد.\nتوضیح قانون: $1",
 	"abusefilter-accountreserved": "این نام کاربری برای استفاده توسط پالایهٔ خرابکاری کنار گذاشته شده‌است.",
 	"right-abusefilter-modify": "تغییر پالایهٔ خرابکاری",
-	"right-abusefilter-view": "مشاهدهٔ پالایهٔ خرابکاری",
+	"right-abusefilter-view": "مشاهدهٔ پالایه‌های خرابکاری",
 	"right-abusefilter-log": "مشاهدهٔ سیاههٔ خرابکاری",
 	"right-abusefilter-log-detail": "مشاهدهٔ سیاههٔ خرابکاری به همراه جزئیات",
 	"right-abusefilter-privatedetails": "مشاهدهٔ اطلاعات خصوصی در سیاههٔ خرابکاری",

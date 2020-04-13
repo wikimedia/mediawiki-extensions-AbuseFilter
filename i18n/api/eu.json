@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joseba"
+		]
+	},
+	"apihelp-abusefilterchecksyntax-example-1": "Berrikusi iragazki baliogarri baten sintaxia",
+	"apihelp-abusefilterchecksyntax-example-2": "Berrikusi iragazki baliogabe baten sintaxia",
+	"apihelp-query+abusefilters-example-1": "Iragazki publiko baimenduak zerrendatu",
+	"apihelp-query+abusefilters-example-2": "erakutsi iragazkien zehaztasunak"
+}

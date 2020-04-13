@@ -116,5 +116,6 @@
 	"abusefilter-topnav-import": "Importar filtrilo",
 	"abusefilter-log-header": "Ca protokolo ('log') montras rezumo di modifikuri en la filtrili.\nPor plusa detali, videz [[Special:AbuseFilter/history|la listo di recenta chanji en la filtrili]].",
 	"abusefilter-log-noresults": "Nula rezulti",
-	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2"
+	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2",
+	"abusefilter-group-default": "Normala"
 }
