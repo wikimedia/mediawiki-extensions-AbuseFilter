@@ -10,6 +10,8 @@
 	"abusefilter-list-options": "ኣማራጺታት",
 	"abusefilter-list-options-submit": "ኣሐዲስ",
 	"abusefilter-edit-status-label": "ስታቲስቲክስ፥",
+	"abusefilter-history-diff": "ለውጥታት",
 	"abusefilter-topnav-home": "ቤት",
-	"abusefilter-diff-item": "ውልቀ ነገር"
+	"abusefilter-diff-item": "ውልቀ ነገር",
+	"abusefilter-log-ip-not-available": "ኣይርከብን"
 }
