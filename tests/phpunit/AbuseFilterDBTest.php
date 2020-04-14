@@ -2,8 +2,10 @@
 
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Revision\MutableRevisionRecord;
+use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserIdentityValue;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -463,6 +465,49 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			[ 'abusefilter-condition-limit', 'abusefilter-tag-reserved' ],
 			[ 'my_tag', null ],
 		];
+	}
+
+	/**
+	 * Test for the page_first_contributor variable.
+	 *
+	 * @covers AbuseFilter::generateGenericVars
+	 * @covers AFComputedVariable::compute
+	 */
+	public function testFirstContributorVar() {
+		$username = 'foobar';
+
+		$fakeUser = $this->getMockBuilder( UserIdentityValue::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'getName' ] )
+			->getMock();
+		$fakeUser->method( 'getName' )->willReturn( $username );
+
+		$fakeRevRecord = $this->getMockBuilder( RevisionRecord::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'getUser' ] )
+			->getMockForAbstractClass();
+		$fakeRevRecord->method( 'getUser' )->willReturn( $fakeUser );
+
+		$fakeRevLookup = $this->getMockBuilder( RevisionLookup::class )
+			->setMethods( [ 'getFirstRevision' ] )
+			->getMockForAbstractClass();
+		$fakeRevLookup->method( 'getFirstRevision' )->willReturn( $fakeRevRecord );
+
+		$this->setService( 'RevisionLookup', $fakeRevLookup );
+
+		$vars = new AbuseFilterVariableHolder();
+		$vars->setLazyLoadVar(
+			'page_first_contributor',
+			'load-first-author',
+			[
+				'namespace' => 0,
+				'title' => 'pageName',
+			]
+		);
+		$this->assertSame(
+			$username,
+			$vars->getVar( 'page_first_contributor' )->toNative()
+		);
 	}
 
 	/**

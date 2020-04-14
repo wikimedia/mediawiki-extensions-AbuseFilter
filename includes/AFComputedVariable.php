@@ -378,9 +378,10 @@ class AFComputedVariable {
 			case 'load-first-author':
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 
-				$revision = $title->getFirstRevision();
+				$revision = $services->getRevisionLookup()->getFirstRevision( $title );
 				if ( $revision ) {
-					$result = $revision->getUserText();
+					$user = $revision->getUser();
+					$result = $user === null ? '' : $user->getName();
 				} else {
 					$result = '';
 				}

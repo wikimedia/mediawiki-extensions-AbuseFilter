@@ -197,17 +197,7 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 				$title = $this->getTitleWithMockedMethod( 'getRestrictions', $result );
 				break;
 			// case '_recent_contributors' handled in AbuseFilterDBTest
-			case '_first_contributor':
-				$result = 'Fake username';
-				$revision = $this->getMockBuilder( Revision::class )
-					->disableOriginalConstructor()
-					->setMethods( [ 'getUserText' ] )
-					->getMock();
-				$revision->expects( $this->atLeastOnce() )
-					->method( 'getUserText' )
-					->willReturn( $result );
-				$title = $this->getTitleWithMockedMethod( 'getFirstRevision', $revision );
-				break;
+			// case '_first_contributor' is handled in AbuseFilterDBTest
 			case '_age':
 				$result = 123;
 				MWTimestamp::setFakeTime( self::FAKE_TIME );
@@ -274,7 +264,6 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 			'_restrictions_edit',
 			'_restrictions_move',
 			'_restrictions_upload',
-			'_first_contributor',
 			'_age'
 		];
 		foreach ( $prefixes as $prefix ) {
