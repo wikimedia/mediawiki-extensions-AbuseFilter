@@ -1374,7 +1374,7 @@ class AbuseFilter {
 		$newRow['af_deleted'] = (int)$newRow['af_deleted'];
 		$newRow['af_global'] = (int)$newRow['af_global'];
 
-		$dbw->replace( 'abuse_filter', [ 'af_id' ], $newRow, __METHOD__ );
+		$dbw->replace( 'abuse_filter', 'af_id', $newRow, __METHOD__ );
 
 		if ( $is_new ) {
 			$new_id = $dbw->insertId();
