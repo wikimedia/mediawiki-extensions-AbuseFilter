@@ -376,6 +376,42 @@ class AFPData {
 		return new AFPData( $type, $res );
 	}
 
+	/**
+	 * Check whether this instance contains the DUNDEFINED type, recursively
+	 * @return bool
+	 */
+	public function hasUndefined() : bool {
+		if ( $this->type === self::DUNDEFINED ) {
+			return true;
+		}
+		if ( $this->type === self::DARRAY ) {
+			foreach ( $this->data as $el ) {
+				if ( $el->hasUndefined() ) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Return a clone of this instance where DUNDEFINED is replaced with DNULL
+	 * @return $this
+	 */
+	public function cloneAsUndefinedReplacedWithNull() : self {
+		if ( $this->type === self::DUNDEFINED ) {
+			return new self( self::DNULL );
+		}
+		if ( $this->type === self::DARRAY ) {
+			$data = [];
+			foreach ( $this->data as $el ) {
+				$data[] = $el->cloneAsUndefinedReplacedWithNull();
+			}
+			return new self( self::DARRAY, $data );
+		}
+		return clone $this;
+	}
+
 	/** Convert shorteners */
 
 	/**

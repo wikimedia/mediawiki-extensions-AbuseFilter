@@ -256,4 +256,65 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 		$this->expectExceptionMessage( 'Refusing to cast' );
 		AFPData::castTypes( $data, AFPData::DNULL );
 	}
+
+	/**
+	 * @param AFPData $obj
+	 * @param bool $expected
+	 * @covers AFPData::hasUndefined
+	 * @dataProvider provideHasUndefined
+	 */
+	public function testHasUndefined( AFPData $obj, bool $expected ) {
+		$this->assertSame( $expected, $obj->hasUndefined() );
+	}
+
+	/**
+	 * Provider for testHasUndefined
+	 */
+	public function provideHasUndefined() {
+		return [
+			[ new AFPData( AFPData::DUNDEFINED ), true ],
+			[ new AFPData( AFPData::DNULL ), false ],
+			[ new AFPData( AFPData::DSTRING, '' ), false ],
+			[ new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DUNDEFINED ) ] ), true ],
+			[ new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DNULL ) ] ), false ],
+		];
+	}
+
+	/**
+	 * @param AFPData $obj
+	 * @param AFPData $expected
+	 * @covers AFPData::cloneAsUndefinedReplacedWithNull
+	 * @dataProvider provideCloneAsUndefinedReplacedWithNull
+	 */
+	public function testCloneAsUndefinedReplacedWithNull( AFPData $obj, AFPData $expected ) {
+		$this->assertEquals( $expected, $obj->cloneAsUndefinedReplacedWithNull() );
+	}
+
+	/**
+	 * Provider for testHasUndefined
+	 */
+	public function provideCloneAsUndefinedReplacedWithNull() {
+		return [
+			[
+				new AFPData( AFPData::DUNDEFINED ),
+				new AFPData( AFPData::DNULL )
+			],
+			[
+				new AFPData( AFPData::DNULL ),
+				new AFPData( AFPData::DNULL )
+			],
+			[
+				new AFPData( AFPData::DSTRING, '' ),
+				new AFPData( AFPData::DSTRING, '' )
+			],
+			[
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DUNDEFINED ) ] ),
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DNULL ) ] )
+			],
+			[
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DNULL ) ] ),
+				new AFPData( AFPData::DARRAY, [ new AFPData( AFPData::DNULL ) ] )
+			],
+		];
+	}
 }

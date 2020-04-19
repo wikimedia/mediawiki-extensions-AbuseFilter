@@ -1009,6 +1009,12 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ "false & (var := [ 1,2,3 ]); var[] := 'baz'; 'baz' in var" ],
 			// But allow overwriting the whole variable
 			[ "false & (var := [ 1,2,3 ]); var := [4,5,6]; var !== [4,5,6]" ],
+			// Recursive DUNDEFINED replacement, T250570
+			[ '"x" in [ user_name ]' ],
+			[ 'string(user_name) in [ user_name ]' ],
+			[ 'string(user_name) in [ "x" ]' ],
+			[ '[ [ user_name ] ] in [ [ user_name ] ]' ],
+			[ 'equals_to_any( [ user_name ], [ user_name ] )' ],
 		];
 	}
 
@@ -1197,6 +1203,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 		return [
 			[ 'accountname rlike "("', 'regexfailure' ],
 			[ 'contains_any( new_wikitext, "foo", 3/0 )', 'dividebyzero' ],
+			[ 'contains_any( added_lines, [ user_name, [ 3/0 ] ] )', 'dividebyzero' ],
 			[ 'rcount( "(", added_lines )', 'regexfailure' ],
 			[ 'get_matches( "(", new_wikitext )', 'regexfailure' ],
 			[ 'added_lines contains string(3/0)', 'dividebyzero' ],

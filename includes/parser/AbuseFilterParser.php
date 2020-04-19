@@ -1148,8 +1148,8 @@ class AbuseFilterParser extends AFPTransitionBase {
 			// @todo This is subpar.
 			$hasUndefinedArg = false;
 			foreach ( $args as $i => $arg ) {
-				if ( $arg->type === AFPData::DUNDEFINED ) {
-					$args[$i] = new AFPData( AFPData::DNULL );
+				if ( $arg->hasUndefined() ) {
+					$args[$i] = $arg->cloneAsUndefinedReplacedWithNull();
 					$hasUndefinedArg = true;
 				}
 			}
@@ -1184,12 +1184,12 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$this->raiseCondCount();
 
 		$hasUndefinedOperand = false;
-		if ( $lhs->getType() === AFPData::DUNDEFINED ) {
-			$lhs = new AFPData( AFPData::DNULL );
+		if ( $lhs->hasUndefined() ) {
+			$lhs = $lhs->cloneAsUndefinedReplacedWithNull();
 			$hasUndefinedOperand = true;
 		}
-		if ( $rhs->getType() === AFPData::DUNDEFINED ) {
-			$rhs = new AFPData( AFPData::DNULL );
+		if ( $rhs->hasUndefined() ) {
+			$rhs = $rhs->cloneAsUndefinedReplacedWithNull();
 			$hasUndefinedOperand = true;
 		}
 		if ( $hasUndefinedOperand ) {
