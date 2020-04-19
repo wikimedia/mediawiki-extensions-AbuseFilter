@@ -20,7 +20,7 @@
 	"abusefilter-degroupreason": "Rights automatically stripped by abuse filter.\nRule description: $1",
 	"abusefilter-blockautopromotereason": "Autopromotion automatically delayed by abuse filter.\nRule description: $1",
 	"abusefilter-accountreserved": "This account name is reserved for use by the abuse filter.",
-	"right-abusefilter-modify": "Modify abuse filters",
+	"right-abusefilter-modify": "Create or modify abuse filters",
 	"right-abusefilter-view": "View abuse filters",
 	"right-abusefilter-log": "View the abuse log",
 	"right-abusefilter-log-detail": "View detailed abuse log entries",
