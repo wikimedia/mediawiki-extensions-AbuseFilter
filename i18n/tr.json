@@ -40,7 +40,7 @@
 	"abusefilter-degroupreason": "Haklar, suistimal filtresi tarafından otomatik olarak kısıtlandı.\nKural açıklaması: $1",
 	"abusefilter-blockautopromotereason": "Kötüye kullanım filtresi tarafından otomatik olarak otomatik ilerleme.\nKural açıklaması: $1",
 	"abusefilter-accountreserved": "Bu hesap adı, kötüye kullanım süzgeci tarafından kullanım için ayrıldı.",
-	"right-abusefilter-modify": "Kötüye kullanım süzgeçlerini değiştir",
+	"right-abusefilter-modify": "Kötüye kullanım filtreleri oluştur veya değiştir",
 	"right-abusefilter-view": "Kötüye kullanım süzgeçlerini gör",
 	"right-abusefilter-log": "Kötüye kullanım günlüğünü gör",
 	"right-abusefilter-log-detail": "Ayrıntılı suistimal girdilerini gör",

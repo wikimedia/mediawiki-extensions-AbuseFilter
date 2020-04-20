@@ -60,7 +60,7 @@
 	"abusefilter-degroupreason": "Droits automatiquement retirés par le filtre anti-abus.\nDescription de la règle associée : $1",
 	"abusefilter-blockautopromotereason": "Autopromotion automatiquement différée par le filtre anti-abus.\nDescription de la règle : $1",
 	"abusefilter-accountreserved": "Ce nom de compte est réservé à l’usage du filtre anti-abus.",
-	"right-abusefilter-modify": "Modifier les filtres anti-abus",
+	"right-abusefilter-modify": "Créer ou modifier les filtres anti-abus",
 	"right-abusefilter-view": "Voir les filtres anti-abus",
 	"right-abusefilter-log": "Voir le journal des filtres anti-abus",
 	"right-abusefilter-log-detail": "Voir les entrées détaillées du journal anti-abus",

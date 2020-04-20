@@ -49,7 +49,7 @@
 	"abusefilter-degroupreason": "Deine Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.\nBeschreibung der Regel: $1",
 	"abusefilter-blockautopromotereason": "Autopromotion automatisch durch Missbrauchsfilter verzögert.\nRegelbeschreibung: $1",
 	"abusefilter-accountreserved": "Dieser Benutzername ist für den Missbrauchsfilter reserviert.",
-	"right-abusefilter-modify": "Missbrauchsfilter bearbeiten",
+	"right-abusefilter-modify": "Missbrauchsfilter erstellen oder bearbeiten",
 	"right-abusefilter-view": "Missbrauchsfilter ansehen",
 	"right-abusefilter-log": "Missbrauchsfilter-Logbuch einsehen",
 	"right-abusefilter-log-detail": "Erweitertes Missbrauchsfilter-Logbuch einsehen",

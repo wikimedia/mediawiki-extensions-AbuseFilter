@@ -18,6 +18,7 @@
 			"Siddhartha Ghai",
 			"Smtchahal",
 			"Wikiuser13",
+			"गोपाल",
 			"संजीव कुमार"
 		]
 	},
@@ -34,7 +35,7 @@
 	"abusefilter-blockreason": "दुरुपयोग फ़िल्टर द्वारा स्वचालित रूप से अवरुद्ध।\nपकड़ने वाले नियम का संक्षिप्त विवरण है: $1",
 	"abusefilter-degroupreason": "सदस्य अधिकार दुरुपयोग फ़िल्टर द्वारा स्वचालित रूप से वापिस ले लिये गए हैं।\nपकड़ने वाले नियम का संक्षिप्त विवरण है: $1",
 	"abusefilter-accountreserved": "यह सदस्य नाम दुरुपयोग फ़िल्टर के उपयोग के लिए आरक्षित है।",
-	"right-abusefilter-modify": "दुरुपयोग फ़िल्टर संशोधित करें",
+	"right-abusefilter-modify": "दुरुपयोग फ़िल्टर बनाएँ अथवा संशोधित करें",
 	"right-abusefilter-view": "दुरुपयोग फ़िल्टर देखें",
 	"right-abusefilter-log": "दुरुपयोग लॉग देखें",
 	"right-abusefilter-log-detail": "दुरुपयोग लॉग की प्रविष्टियाँ विस्तार में देखें",
