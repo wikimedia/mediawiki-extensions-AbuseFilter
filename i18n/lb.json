@@ -20,7 +20,7 @@
 	"abusefilter-blockreason": "Automatesch gespaart duerch de Mëssbrauchsfilter. Beschreiwung vun der Reegel déi benotzt gouf: $1",
 	"abusefilter-degroupreason": "Rechter goufen automatesch duerch de Mëssbrauchsfilter ewechgeholl. Beschreiwung vun der Reegel: $1",
 	"abusefilter-accountreserved": "Dësen Numm fir e Benotzerkont ass reservéiert fir vum Mëssbrauchsfilter benotzt ze ginn.",
-	"right-abusefilter-modify": "Mëssbrauchsfilteren änneren",
+	"right-abusefilter-modify": "Mëssbrauchsfilteren uleeën oder änneren",
 	"right-abusefilter-view": "Mëssbrauchs-Filtere weisen",
 	"right-abusefilter-log": "Lëscht vum Mëssbrauch weisen",
 	"right-abusefilter-log-detail": "Detailléiert Versioun vum Mëssbrauchslog weisen",

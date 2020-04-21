@@ -24,7 +24,7 @@
 	"abusefilter-blockreason": "Automatski ste blokirani filtrom protiv zloporabe.\nOpis pravila koje kršite: $1",
 	"abusefilter-degroupreason": "Prava automatski poništena filtrom zloporabe.\nOpis pravila: $1",
 	"abusefilter-accountreserved": "Ovaj je suradnički račun rezerviran za uporabu filtra zloporaba.",
-	"right-abusefilter-modify": "Izmijeni filtre zloporaba",
+	"right-abusefilter-modify": "Stvaranje ili promjena filtara zloporaba",
 	"right-abusefilter-view": "Prikaži filtre zloporabe",
 	"right-abusefilter-log": "Vidi evidenciju zloporaba",
 	"right-abusefilter-log-detail": "Vidi detaljni pregled evidencije zloporaba",

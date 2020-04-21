@@ -41,7 +41,7 @@
 	"abusefilter-degroupreason": "Права автоматично відібрані фільтром редагувань. Опис правила: $1",
 	"abusefilter-blockautopromotereason": "Автопросування було автоматично відкладено фільтром зловживань.\nОпис правила: $1",
 	"abusefilter-accountreserved": "Цей обліковий запис є зарезервованим для використання фільтром редагувань.",
-	"right-abusefilter-modify": "Зміна фільтрів редагувань",
+	"right-abusefilter-modify": "Створення або зміна фільтрів зловживань",
 	"right-abusefilter-view": "Перегляд фільтрів редагувань",
 	"right-abusefilter-log": "Перегляд журналу зловживань",
 	"right-abusefilter-log-detail": "Перегляд детальних записів журналу зловживань",

@@ -46,7 +46,7 @@
 	"abusefilter-degroupreason": "Direitos automaticamente retirados pelo filtro de abusos.\nDescrição da regra: $1",
 	"abusefilter-blockautopromotereason": "Autopromoção automaticamente atrasado pelo filtro de abuso.\nDescrição da regra: $1",
 	"abusefilter-accountreserved": "Este nome de conta está reservado para uso pelo filtro de abusos.",
-	"right-abusefilter-modify": "Modificar filtros de abusos",
+	"right-abusefilter-modify": "Criar ou modificar filtros de abuso",
 	"right-abusefilter-view": "Ver filtros de abusos",
 	"right-abusefilter-log": "Ver o registro de abusos",
 	"right-abusefilter-log-detail": "Ver entradas detalhadas do registro de abusos",

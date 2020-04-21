@@ -48,7 +48,7 @@
 	"abusefilter-blockreason": "Automatycznie zablokowany przez filtr nadużyć. Opis dopasowanej reguły: $1",
 	"abusefilter-degroupreason": "Uprawnienia automatycznie odebrane przez filtr nadużyć. Opis reguły: $1",
 	"abusefilter-accountreserved": "Ta nazwa konta jest zarezerwowana do użycia przez filtr nadużyć.",
-	"right-abusefilter-modify": "Modyfikowanie filtrów nadużyć",
+	"right-abusefilter-modify": "Tworzenie lub modyfikowanie filtrów nadużyć",
 	"right-abusefilter-view": "Podgląd filtrów nadużyć",
 	"right-abusefilter-log": "Podgląd rejestru nadużyć",
 	"right-abusefilter-log-detail": "Podgląd szczegółów wpisów w rejestrze nadużyć",

@@ -44,7 +44,7 @@
 	"abusefilter-degroupreason": "Diritti rimossi automaticamente dal filtro anti abusi. Descrizione della regola: $1",
 	"abusefilter-blockautopromotereason": "Autopromozione ritardata automaticamente dal filtro anti abusi.\nDescrizione della regola: $1",
 	"abusefilter-accountreserved": "Questo nome utente è riservato al filtro anti abusi.",
-	"right-abusefilter-modify": "Modifica i filtri anti abusi",
+	"right-abusefilter-modify": "Crea o modifica i filtri anti abusi",
 	"right-abusefilter-view": "Visualizza i filtri anti abusi",
 	"right-abusefilter-log": "Visualizza il registro del filtro anti abusi",
 	"right-abusefilter-log-detail": "Visualizza voci dettagliate del registro del filtro anti abusi",

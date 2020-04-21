@@ -57,7 +57,7 @@
 	"abusefilter-degroupreason": "防濫用篩選器自動移除權限。規則描述︰$1",
 	"abusefilter-blockautopromotereason": "自動提升被防濫用過濾器自動延遲。規則描述：$1",
 	"abusefilter-accountreserved": "此帳號名稱已保留給防濫用過濾器使用。",
-	"right-abusefilter-modify": "修改防濫用過濾器",
+	"right-abusefilter-modify": "建立或修改防濫用過濾器",
 	"right-abusefilter-view": "檢視防濫用過濾器",
 	"right-abusefilter-log": "檢視濫用日誌",
 	"right-abusefilter-log-detail": "檢視濫用日誌詳細資料",
