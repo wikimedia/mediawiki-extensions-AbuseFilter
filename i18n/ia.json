@@ -20,7 +20,7 @@
 	"abusefilter-degroupreason": "Derectos automaticamente retirate per le filtro anti-abuso. Description del regula: $1",
 	"abusefilter-blockautopromotereason": "Autopromotion automaticamente differite per le filtro anti-abuso. Description del regula: $1",
 	"abusefilter-accountreserved": "Le nomine de iste conto es reservate pro uso per le filtro anti-abuso.",
-	"right-abusefilter-modify": "Modificar filtros anti-abuso",
+	"right-abusefilter-modify": "Crear o modificar filtros anti-abuso",
 	"right-abusefilter-view": "Vider filtros anti-abuso",
 	"right-abusefilter-log": "Vider le registro de abusos",
 	"right-abusefilter-log-detail": "Vider entratas detaliate del registro de abusos",

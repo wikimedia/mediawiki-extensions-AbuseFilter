@@ -49,7 +49,7 @@
 	"abusefilter-degroupreason": "不正利用フィルターによる自動的な権限の剥奪。\n規則の説明: $1",
 	"abusefilter-blockautopromotereason": "不正利用フィルターによる自動承認される権限の承認延長。\n規則の説明: $1",
 	"abusefilter-accountreserved": "このアカウントは不正利用フィルターによる使用のため予約されています。",
-	"right-abusefilter-modify": "不正利用フィルターを変更",
+	"right-abusefilter-modify": "不正利用フィルターを作成/変更",
 	"right-abusefilter-view": "不正利用フィルターを閲覧",
 	"right-abusefilter-log": "不正利用記録を閲覧",
 	"right-abusefilter-log-detail": "不正利用記録の詳細項目を閲覧",
