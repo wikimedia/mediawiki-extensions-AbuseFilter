@@ -25,7 +25,7 @@
 	"abusefilter-blocker": "অপব্যবহার ছাঁকনি",
 	"abusefilter-blockreason": "অপব্যবহার ছাঁকনি দ্বারা স্বয়ংক্রিয়ভাবে অবরুদ্ধ করা হয়েছে।\nমিলে যাওয়া নিয়মের বিবরণ: $1",
 	"abusefilter-accountreserved": "অপব্যবহার ছাঁকনির জন্য এই একাউন্ট নামটি সংরক্ষিত।",
-	"right-abusefilter-modify": "অপব্যবহার ছাঁকনি পরিবর্তন",
+	"right-abusefilter-modify": "অপব্যবহার ছাঁকনি তৈরি বা পরিবর্তন করা",
 	"right-abusefilter-view": "অপব্যবহার ছাঁকনি দেখুন",
 	"right-abusefilter-log": "অপব্যবহার লগ দেখা",
 	"right-abusefilter-log-detail": "অপব্যবহার লগটি বিস্তারিতভাবে দেখাও",
