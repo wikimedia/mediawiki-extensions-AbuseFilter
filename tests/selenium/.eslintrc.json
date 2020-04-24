@@ -7,11 +7,7 @@
 		"mocha": true
 	},
 	"globals": {
-		"browser": false,
-		"mw": false
-	},
-	"rules": {
-		"no-console": "off",
-		"prefer-template": "off"
+		"browser": "readonly",
+		"mw": "readonly"
 	}
 }
