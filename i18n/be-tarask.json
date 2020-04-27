@@ -9,6 +9,7 @@
 			"Nerogaf",
 			"Red Winged Duck",
 			"Renessaince",
+			"StasDash",
 			"Wizardist",
 			"Zedlik"
 		]
@@ -416,7 +417,7 @@
 	"abusefilter-edit-builder-vars-file-height": "Вышыня файлу ў піксэлях",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Глыбіня колеру ў файле",
 	"abusefilter-edit-builder-vars-wiki-name": "Імя базы дадзеных вікі-сайту",
-	"abusefilter-edit-builder-vars-wiki-language": "Мова кода вікі",
+	"abusefilter-edit-builder-vars-wiki-language": "Код мовы на wiki",
 	"abusefilter-filter-log": "Апошнія зьмены фільтру",
 	"abusefilter-history": "Гісторыя зьменаў фільтру злоўжываньняў $1",
 	"abusefilter-history-foruser": "Зьмены зробленыя $1",

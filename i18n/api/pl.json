@@ -24,6 +24,7 @@
 	"apihelp-query+abusefilters-example-1": "Lista uruchomionych filtrów publicznych",
 	"apihelp-query+abusefilters-example-2": "Pokaż szczegóły dotyczące filtrów",
 	"apihelp-query+abuselog-description": "Pokaż zdarzenia wyłapane przez jeden z filtrów nadużyć.",
+	"apihelp-query+abuselog-summary": "Pokaż zdarzenia, które zostały złapane przez jeden z filtrów nadużyć.",
 	"apihelp-query+abuselog-param-start": "Znacznik czasu, od którego zacząć wyliczanie.",
 	"apihelp-query+abuselog-param-end": "Znacznik czasu, na którym zakończyć wyliczanie.",
 	"apihelp-query+abuselog-param-prop": "Jakie właściwości uzyskać.",
