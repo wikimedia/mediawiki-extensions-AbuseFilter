@@ -233,7 +233,7 @@
 	"abusefilter-edit-throttle-count": "İzin verilen eylem sayısı:",
 	"abusefilter-edit-throttle-period": "Zaman periyodu (saniye):",
 	"abusefilter-edit-throttle-groups": "Grup kısma yapan:",
-	"abusefilter-edit-throttle-groups-help": "Bkz $1.",
+	"abusefilter-edit-throttle-groups-help": "$1 sayfasına bakın.",
 	"abusefilter-edit-throttle-groups-help-text": "mediawiki.org adresindeki belgeler",
 	"abusefilter-edit-throttle-hidden-placeholder": "AND ile katılmak için virgüllerle ve OR ile katılmak için çizgi satırlarıyla bölün",
 	"abusefilter-edit-throttle-placeholder": "AND ile katılmak için virgülle bölün ve OR ile katılmak için tek tek ekleyin",

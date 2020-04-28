@@ -25,7 +25,7 @@
 	"abusefilter-degroupreason": "Pravice so samodejno odstranjene s strani filtra zlorab.\nOpis pravila: $1",
 	"abusefilter-blockautopromotereason": "Samodejno napredovanje zakasnjeno zaradi filtra proti zlorabam.\nRazlog: $1",
 	"abusefilter-accountreserved": "To ime računa je rezervirano za uporabo s filtrom zlorab.",
-	"right-abusefilter-modify": "Spreminjanje filtrov zlorab",
+	"right-abusefilter-modify": "Ustvarjanje ali spreminjanje filtrov zlorab",
 	"right-abusefilter-view": "Ogled filtrov zlorab",
 	"right-abusefilter-log": "Ogled dnevnika zlorab",
 	"right-abusefilter-log-detail": "Ogled podrobnosti dnevniška vnosa zlorabe",

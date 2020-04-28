@@ -76,7 +76,7 @@
 	"abusefilter-degroupreason": "权限被滥用过滤器自动剥夺。规则说明：$1",
 	"abusefilter-blockautopromotereason": "自动提升被滥用过滤器自动延迟。规则描述：$1",
 	"abusefilter-accountreserved": "此帐户已由防滥用过滤器保留使用。",
-	"right-abusefilter-modify": "修改防滥用过滤器",
+	"right-abusefilter-modify": "创建或修改滥用过滤器",
 	"right-abusefilter-view": "查看滥用过滤器",
 	"right-abusefilter-log": "查看滥用日志",
 	"right-abusefilter-log-detail": "查看详细滥用日志",
