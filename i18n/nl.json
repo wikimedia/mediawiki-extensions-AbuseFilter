@@ -47,7 +47,7 @@
 	"abusefilter-degroupreason": "Rechten zijn automatisch verwijderd door het filter. Regelbeschrijving: $1",
 	"abusefilter-blockautopromotereason": "Automatisch promoveren is uitgesteld door het filter.\nRegelbeschrijving: $1",
 	"abusefilter-accountreserved": "Deze gebruiker is gereserveerd voor het filter.",
-	"right-abusefilter-modify": "Filters wijzigen",
+	"right-abusefilter-modify": "Filters aanmaken of aanpassen",
 	"right-abusefilter-view": "Filters bekijken",
 	"right-abusefilter-log": "Het filterlogboek bekijken",
 	"right-abusefilter-log-detail": "Details van filterlogboekregels bekijken",

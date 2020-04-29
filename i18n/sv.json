@@ -51,7 +51,7 @@
 	"abusefilter-degroupreason": "Behörigheter borttagna automatiskt av missbruksfilter. Regelbeskrivning: $1",
 	"abusefilter-blockautopromotereason": "Autobefordring fördröjdes automatiskt av missbruksfilter. Regelbeskrivning: $1",
 	"abusefilter-accountreserved": "Detta konto är reserverat för användning av missbruksfiltret.",
-	"right-abusefilter-modify": "Ändra missbruksfilter",
+	"right-abusefilter-modify": "Skapa eller ändra missbruksfilter",
 	"right-abusefilter-view": "Visa missbruksfilter",
 	"right-abusefilter-log": "Visa missbruksloggen",
 	"right-abusefilter-log-detail": "Visa detaljerade element i missbruksloggen",
