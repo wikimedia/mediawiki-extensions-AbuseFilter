@@ -214,6 +214,7 @@
 				"abusefilter-reautoconfirm-none",
 				"abusefilter-reautoconfirm-done",
 				"abusefilter-http-error",
+				"abusefilter-tools-syntax-error",
 				"unknown-error"
 			],
 			"dependencies": [

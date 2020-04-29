@@ -171,8 +171,16 @@ ul li.mw-abusefilter-changeslist-match {
 	display: inline;
 }
 
+#mw-abusefilter-expr-result {
+	word-break: break-all;
+}
+
 .mw-abusefilter-history-buttons {
 	text-align: center;
+}
+
+.mw-abusefilter-tools-error {
+	color: #f00;
 }
 
 /* Ace highlight customisation */

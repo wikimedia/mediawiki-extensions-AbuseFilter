@@ -170,20 +170,14 @@ class AbuseFilterVariableHolder {
 	}
 
 	/**
-	 * Export all variables stored in this object.
+	 * Export all variables stored in this object with their native (PHP) types.
 	 *
-	 * @param bool $nativeTypes If true, variables will be exported with native types, otherwise
-	 * they'll be cast to strings.
 	 * @return array
 	 */
-	public function exportAllVars( $nativeTypes = false ) {
+	public function exportAllVars() {
 		$exported = [];
 		foreach ( array_keys( $this->mVars ) as $varName ) {
-			if ( $nativeTypes ) {
-				$exported[ $varName ] = $this->getVar( $varName )->toNative();
-			} else {
-				$exported[ $varName ] = $this->getVar( $varName )->toString();
-			}
+			$exported[ $varName ] = $this->getVar( $varName )->toNative();
 		}
 
 		return $exported;

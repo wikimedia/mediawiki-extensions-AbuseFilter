@@ -165,6 +165,7 @@
 	"abusefilter-tools-text": "Here are some tools which may be useful in formulating and debugging abuse filters.",
 	"abusefilter-tools-expr": "Expression tester",
 	"abusefilter-tools-submitexpr": "Evaluate",
+	"abusefilter-tools-syntax-error": "The filter has invalid syntax.",
 	"abusefilter-tools-reautoconfirm": "Restore autoconfirmed status",
 	"abusefilter-tools-reautoconfirm-user": "User:",
 	"abusefilter-tools-reautoconfirm-submit": "Re-autoconfirm",

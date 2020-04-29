@@ -357,11 +357,11 @@ class AbuseFilter {
 
 	/**
 	 * @param string $expr
-	 * @return string
+	 * @return Status
 	 */
 	public static function evaluateExpression( $expr ) {
 		if ( self::checkSyntax( $expr ) !== true ) {
-			return 'BADSYNTAX';
+			return Status::newFatal( 'abusefilter-tools-syntax-error' );
 		}
 
 		$vars = new AbuseFilterVariableHolder();
@@ -371,7 +371,7 @@ class AbuseFilter {
 		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
 		$parser = self::getDefaultParser( $vars );
 
-		return $parser->evaluateExpression( $expr );
+		return Status::newGood( $parser->evaluateExpression( $expr ) );
 	}
 
 	/**
@@ -1587,6 +1587,35 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @param mixed $var
+	 * @param string $indent
+	 * @return string
+	 */
+	public static function formatVar( $var, string $indent = '' ) {
+		if ( $var === [] ) {
+			return '[]';
+		} elseif ( is_array( $var ) ) {
+			$ret = '[';
+			$indent .= "\t";
+			foreach ( $var as $key => $val ) {
+				$ret .= "\n$indent" . self::formatVar( $key, $indent ) .
+					' => ' . self::formatVar( $val, $indent ) . ',';
+			}
+			// Strip trailing commas
+			return substr( $ret, 0, -1 ) . "\n" . substr( $indent, 0, -1 ) . ']';
+		} elseif ( is_string( $var ) ) {
+			// Don't escape the string (specifically backslashes) to avoid displaying wrong stuff
+			return "'$var'";
+		} elseif ( $var === null ) {
+			return 'null';
+		} elseif ( is_float( $var ) ) {
+			// Don't let float precision produce weirdness
+			return (string)$var;
+		}
+		return var_export( $var, true );
+	}
+
+	/**
 	 * @param AbuseFilterVariableHolder|array $vars
 	 * @param IContextSource $context
 	 * @return string
@@ -1632,19 +1661,23 @@ class AbuseFilter {
 			if ( !empty( $variableMessageMappings[$key] ) ) {
 				$mapping = $variableMessageMappings[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
-					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
+					' ' . Html::element( 'code', [], $context->msg( 'parentheses' )->rawParams( $key )->text() );
 			} elseif ( !empty( self::DISABLED_VARS[$key] ) ) {
 				$mapping = self::DISABLED_VARS[$key];
 				$keyDisplay = $context->msg( "abusefilter-edit-builder-vars-$mapping" )->parse() .
-					' ' . Xml::element( 'code', null, $context->msg( 'parentheses' )->rawParams( $key )->text() );
+					' ' . Html::element( 'code', [], $context->msg( 'parentheses' )->rawParams( $key )->text() );
 			} else {
-				$keyDisplay = Xml::element( 'code', null, $key );
+				$keyDisplay = Html::element( 'code', [], $key );
 			}
 
 			if ( $value === null ) {
 				$value = '';
 			}
-			$value = Xml::element( 'div', [ 'class' => 'mw-abuselog-var-value' ], $value, false );
+			$value = Html::element(
+				'div',
+				[ 'class' => 'mw-abuselog-var-value' ],
+				self::formatVar( $value )
+			);
 
 			$trow =
 				Xml::tags( 'td', [ 'class' => 'mw-abuselog-var' ], $keyDisplay ) .
