@@ -23,8 +23,6 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private $dbr;
 	/** @var Database A connection to the master */
 	private $dbw;
-	/** @var ExternalStoreAccess */
-	private $esAccess;
 	/** @var bool Whether we're performing a dry run */
 	private $dryRun = false;
 	/** @var int Count of rows in the abuse_filter_log table */
@@ -50,7 +48,6 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		);
 		$this->requireExtension( 'Abuse Filter' );
 		$this->setBatchSize( 500 );
-		$this->esAccess = MediaWikiServices::getInstance()->getExternalStoreAccess();
 	}
 
 	/**
@@ -448,6 +445,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		) );
 
 		$dumpLike = $this->dbr->buildLike( 'stored-text:', $this->dbr->anyString() );
+		$esAccess = MediaWikiServices::getInstance()->getExternalStoreAccess();
 		do {
 			$this->maybePrintProgress( $prevID );
 			$res = $this->dbr->select(
@@ -468,7 +466,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$count += $res->numRows();
 
 			if ( !$this->dryRun ) {
-				$this->doUpdateText( $res );
+				$this->doUpdateText( $res, $esAccess );
 			}
 		} while ( $prevID <= $this->allRowsCount );
 
@@ -480,15 +478,16 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 
 	/**
 	 * @param IResultWrapper $res text rows
+	 * @param ExternalStoreAccess $esAccess
 	 */
-	private function doUpdateText( IResultWrapper $res ) {
+	private function doUpdateText( IResultWrapper $res, ExternalStoreAccess $esAccess ) {
 		$orphaned = [];
 		foreach ( $res as $row ) {
 			// This is copied from AbuseFilter::loadVarDump
 			$oldFlags = explode( ',', $row->old_flags );
 			$text = $row->old_text;
 			if ( in_array( 'external', $oldFlags ) ) {
-				$text = $this->esAccess->fetchFromURL( $row->old_text );
+				$text = $esAccess->fetchFromURL( $row->old_text );
 			}
 			if ( in_array( 'gzip', $oldFlags ) ) {
 				$text = gzinflate( $text );
@@ -522,7 +521,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			}
 			if ( in_array( 'external', $oldFlags ) ) {
 				$orphaned[] = $row->old_text;
-				$toStore = $this->esAccess->insert( $toStore );
+				$toStore = $esAccess->insert( $toStore );
 				$newFlags[] = 'external';
 			}
 
