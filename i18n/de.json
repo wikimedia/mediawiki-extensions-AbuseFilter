@@ -194,6 +194,7 @@
 	"abusefilter-tools-text": "Auf dieser Seite finden sich einige Werkzeuge, die beim Erstellen von Missbrauchsfiltern und bei der Fehlersuche hilfreich sein können.",
 	"abusefilter-tools-expr": "Expression-Tester",
 	"abusefilter-tools-submitexpr": "Prüfen",
+	"abusefilter-tools-syntax-error": "Der Filter hat eine ungültige Syntax.",
 	"abusefilter-tools-reautoconfirm": "„Automatisch bestätigte Benutzer“-Status wiederherstellen",
 	"abusefilter-tools-reautoconfirm-user": "Benutzer:",
 	"abusefilter-tools-reautoconfirm-submit": "Wieder zum automatisch bestätigten Benutzer machen",

@@ -73,7 +73,7 @@
 	"abusefilter-degroupreason": "Permisos de usuario automáticamente revocados por el filtro antiabusos.\nDescripción de la regla disparada: $1",
 	"abusefilter-blockautopromotereason": "El filtro antiabusos ha demorado la recepción automática de ciertos permisos de usuario.\nDescripción de la regla que se ha disparado: $1",
 	"abusefilter-accountreserved": "Este nombre de cuenta está reservado para su uso por el filtro antiabusos.",
-	"right-abusefilter-modify": "Modificar filtros antiabusos",
+	"right-abusefilter-modify": "Crear o modificar filtros antiabusos",
 	"right-abusefilter-view": "Ver filtros antiabusos",
 	"right-abusefilter-log": "Ver el registro del filtro antiabusos",
 	"right-abusefilter-log-detail": "Ver entradas del registro detalladas del filtro antiabusos",
