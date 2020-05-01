@@ -189,6 +189,7 @@
 	"abusefilter-tools-text": "Di seguito sono riportati alcuni strumenti utili per la costruzione e la verifica dei filtri anti abusi.",
 	"abusefilter-tools-expr": "Verifica espressioni",
 	"abusefilter-tools-submitexpr": "Valuta",
+	"abusefilter-tools-syntax-error": "La sintassi del filtro non è valida.",
 	"abusefilter-tools-reautoconfirm": "Ripristina lo stato di autoconfirmed",
 	"abusefilter-tools-reautoconfirm-user": "Utente:",
 	"abusefilter-tools-reautoconfirm-submit": "Ripristina autoconfirm",

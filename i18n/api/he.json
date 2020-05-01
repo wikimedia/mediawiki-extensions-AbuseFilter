@@ -23,7 +23,9 @@
 	"apihelp-abusefilterevalexpression-description": "הערכת ביטוי מסנן השחתות.",
 	"apihelp-abusefilterevalexpression-summary": "הערכת ביטוי מסנן השחתות.",
 	"apihelp-abusefilterevalexpression-param-expression": "איזה ביטוי להעריך.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "האם התוצאה צריכה להיות מודפסת יפה.",
 	"apihelp-abusefilterevalexpression-example-1": "הערכת ביטוי פשוט",
+	"apihelp-abusefilterevalexpression-example-2": "הערכת ביטוח פשוט, עם תוצאה מעוצבת",
 	"apihelp-abusefilterunblockautopromote-description": "ביטול מניעה ממשתמש לקבל קידום אוטומטי בעקבות תוצאה של פעולת מסנן השחתות.",
 	"apihelp-abusefilterunblockautopromote-summary": "מסיר ממשתמש את החסימה מפני קבלת קידום אוטומטי כתוצאה מפעולת מסנן השחתות.",
 	"apihelp-abusefilterunblockautopromote-param-user": "שם של משתמש שברצונך ליטול ממנו את המניעה.",
@@ -59,5 +61,5 @@
 	"apierror-abusefilter-cantcheck": "אין לך הרשאה לבדוק את התחביר של מסנני השחתות.",
 	"apierror-abusefilter-canteval": "אין לך הרשאה להעריך ביטויי מסנן השחתות.",
 	"apierror-abusefilter-nosuchlogid": "אין רשומה ביומן ההשחתות עם המזהה $1.",
-	"apierror-abusefilter-badsyntax": "המסנן מכיל תחביר בלתי תקין."
+	"apierror-abusefilter-badsyntax": "המסנן מכיל תחביר בלתי־תקין."
 }

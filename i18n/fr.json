@@ -205,6 +205,7 @@
 	"abusefilter-tools-text": "Voici quelques outils qui peuvent être utiles dans la formulation et le débogage des filtres anti-abus.",
 	"abusefilter-tools-expr": "Testeur d’expressions",
 	"abusefilter-tools-submitexpr": "Évaluer",
+	"abusefilter-tools-syntax-error": "Le filtre a une syntaxe non valide.",
 	"abusefilter-tools-reautoconfirm": "Rétablir l’état autoconfirmé",
 	"abusefilter-tools-reautoconfirm-user": "Utilisateur :",
 	"abusefilter-tools-reautoconfirm-submit": "Autoconfirmer à nouveau",

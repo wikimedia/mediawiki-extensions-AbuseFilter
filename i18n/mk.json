@@ -168,6 +168,7 @@
 	"abusefilter-tools-text": "Еве некои алатки кои можат да помогнат со форматирање и отстранување грешки во филтрите за злоупотреби.",
 	"abusefilter-tools-expr": "Проверка на изрази",
 	"abusefilter-tools-submitexpr": "Провери",
+	"abusefilter-tools-syntax-error": "Филтерот има неважечка синтакса.",
 	"abusefilter-tools-reautoconfirm": "Врати автопотврден статус",
 	"abusefilter-tools-reautoconfirm-user": "Корисник:",
 	"abusefilter-tools-reautoconfirm-submit": "Преавтопотврда",

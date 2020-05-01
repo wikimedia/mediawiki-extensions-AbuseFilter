@@ -191,6 +191,7 @@
 	"abusefilter-tools-text": "Aqui estão algumas ferramentas que poderão ser úteis na formulação e depuração dos filtros de abuso.",
 	"abusefilter-tools-expr": "Testador de expressões",
 	"abusefilter-tools-submitexpr": "Calcular",
+	"abusefilter-tools-syntax-error": "O filtro tem sintaxe inválida.",
 	"abusefilter-tools-reautoconfirm": "Restaurar estatuto autoconfirmado",
 	"abusefilter-tools-reautoconfirm-user": "Usuário:",
 	"abusefilter-tools-reautoconfirm-submit": "Re-autoconfirmar",

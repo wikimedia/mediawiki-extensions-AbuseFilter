@@ -202,6 +202,7 @@
 	"abusefilter-tools-text": "本頁提供可協助您製訂與檢測防濫用過濾器的工具。",
 	"abusefilter-tools-expr": "表示法測試器",
 	"abusefilter-tools-submitexpr": "評估",
+	"abusefilter-tools-syntax-error": "此過濾器含有無效語法。",
 	"abusefilter-tools-reautoconfirm": "還原自動確認狀態",
 	"abusefilter-tools-reautoconfirm-user": "使用者：",
 	"abusefilter-tools-reautoconfirm-submit": "重新自動確認",

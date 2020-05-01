@@ -179,6 +179,7 @@
 	"abusefilter-tools-text": "להלן מספר כלים שעשויים להיות שימושיים בניסוח ובניפוי השגיאות של מסנני ההשחתות.",
 	"abusefilter-tools-expr": "בודק הביטויים",
 	"abusefilter-tools-submitexpr": "הערכה",
+	"abusefilter-tools-syntax-error": "המסנן מכיל תחביר בלתי־תקין.",
 	"abusefilter-tools-reautoconfirm": "סימון המשתמש מחדש כמשתמש ותיק",
 	"abusefilter-tools-reautoconfirm-user": "משתמש:",
 	"abusefilter-tools-reautoconfirm-submit": "סימון מחדש",

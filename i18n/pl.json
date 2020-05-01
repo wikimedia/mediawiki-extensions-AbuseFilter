@@ -189,6 +189,7 @@
 	"abusefilter-tools-text": "Oto kilka narzędzi, które mogą być przydatne w opracowywaniu i śledzeniu pracy filtrów nadużyć.",
 	"abusefilter-tools-expr": "Tester wyrażeń",
 	"abusefilter-tools-submitexpr": "Testuj",
+	"abusefilter-tools-syntax-error": "Filtr ma nieprawidłową składnię.",
 	"abusefilter-tools-reautoconfirm": "Przywróć status automatycznego zatwierdzenia",
 	"abusefilter-tools-reautoconfirm-user": "Użytkownik",
 	"abusefilter-tools-reautoconfirm-submit": "Ponowne automatyczne zatwierdzenie",

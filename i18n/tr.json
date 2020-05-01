@@ -185,6 +185,7 @@
 	"abusefilter-tools-text": "Burada suistimal filtrelerini formüle ederken ve hata ayıklarken yararlı olabilecek bazı araçlar bulunmaktadır.",
 	"abusefilter-tools-expr": "İfade testi",
 	"abusefilter-tools-submitexpr": "Değerlendir",
+	"abusefilter-tools-syntax-error": "Filtre geçersiz sözdizimine sahip.",
 	"abusefilter-tools-reautoconfirm": "Otomatik onaylı durumu geri getir",
 	"abusefilter-tools-reautoconfirm-user": "Kullanıcı:",
 	"abusefilter-tools-reautoconfirm-submit": "Yeniden oto-onayla",
