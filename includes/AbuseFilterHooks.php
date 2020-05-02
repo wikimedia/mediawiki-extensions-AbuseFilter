@@ -453,14 +453,13 @@ class AbuseFilterHooks {
 			if ( $updater->getDB()->getType() === 'mysql' ) {
 				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter',
 					"$dir/abusefilter.tables.sql", true ] );
-				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter_history',
-					"$dir/db_patches/patch-abuse_filter_history.sql", true ] );
 			} else {
 				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter',
 					"$dir/abusefilter.tables.sqlite.sql", true ] );
-				$updater->addExtensionUpdate( [ 'addTable', 'abuse_filter_history',
-					"$dir/db_patches/patch-abuse_filter_history.sqlite.sql", true ] );
 			}
+			$updater->addExtensionTable( 'abuse_filter_history',
+				"$dir/db_patches/patch-abuse_filter_history.sql" );
+
 			$updater->addExtensionUpdate( [
 				'addField', 'abuse_filter_history', 'afh_changed_fields',
 				"$dir/db_patches/patch-afh_changed_fields.sql", true
@@ -486,20 +485,17 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter',
 				'af_group', "$dir/db_patches/patch-af_group.sql", true ] );
 
+			$updater->addExtensionIndex(
+				'abuse_filter_log', 'afl_wiki_timestamp',
+				"$dir/db_patches/patch-global_logging_wiki-index.sql"
+			);
+
 			if ( $updater->getDB()->getType() === 'mysql' ) {
-				$updater->addExtensionUpdate( [
-					'addIndex', 'abuse_filter_log', 'wiki_timestamp',
-					"$dir/db_patches/patch-global_logging_wiki-index.sql", true
-				] );
 				$updater->addExtensionUpdate( [
 					'modifyField', 'abuse_filter_log', 'afl_namespace',
 					"$dir/db_patches/patch-afl-namespace_int.sql", true
 				] );
 			} else {
-				$updater->addExtensionUpdate( [
-					'addIndex', 'abuse_filter_log', 'afl_wiki_timestamp',
-					"$dir/db_patches/patch-global_logging_wiki-index.sqlite.sql", true
-				] );
 				$updater->addExtensionUpdate( [
 					'modifyField', 'abuse_filter_log', 'afl_namespace',
 					"$dir/db_patches/patch-afl-namespace_int.sqlite.sql", true
