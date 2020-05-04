@@ -35,7 +35,7 @@
 	"abusefilter-degroupreason": "Práva automaticky odebrána filtrem zneužití.\nPopis pravidla: $1",
 	"abusefilter-blockautopromotereason": "Automatické potvrzení automaticky pozastaveno filtrem zneužití.\nPopis pravidla: $1",
 	"abusefilter-accountreserved": "Toto uživatelské jméno je vyhrazeno pro filtr zneužití.",
-	"right-abusefilter-modify": "Upravování filtrů zneužití",
+	"right-abusefilter-modify": "Vytváření nebo upravování filtrů zneužití",
 	"right-abusefilter-view": "Prohlížení filtrů zneužití",
 	"right-abusefilter-log": "Prohlížení protokolu zneužití",
 	"right-abusefilter-log-detail": "Prohlížení podrobností v protokolu zneužití",

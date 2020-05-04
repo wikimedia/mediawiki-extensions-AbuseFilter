@@ -22,6 +22,7 @@
 	"apihelp-abusefilterevalexpression-description": "Utvärdera ett AbuseFilter-uttryck.",
 	"apihelp-abusefilterevalexpression-summary": "Utvärderar uttryck i ett missbruksfilter.",
 	"apihelp-abusefilterevalexpression-param-expression": "Uttrycket att utvärdera.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "Om resultatet bör formateras.",
 	"apihelp-abusefilterevalexpression-example-1": "Beräkna en enkel formel",
 	"apihelp-abusefilterunblockautopromote-description": "Upphäver blockering för en användare från att få automatiska befordringar p.g.a. konsekvenser från ett missbruksfilter.",
 	"apihelp-abusefilterunblockautopromote-summary": "Upphäver blockering för en användare från att få automatiska befordringar p.g.a. konsekvenser från ett missbruksfilter.",

@@ -196,6 +196,7 @@
 	"abusefilter-tools-text": "Här är några verktyg som kan vara användbara för att skapa och felsöka missbruksfilter.",
 	"abusefilter-tools-expr": "Uttryckstestare",
 	"abusefilter-tools-submitexpr": "Utvärdera",
+	"abusefilter-tools-syntax-error": "Filtret har ogiltig syntax.",
 	"abusefilter-tools-reautoconfirm": "Återställ status som automatiskt bekräftad",
 	"abusefilter-tools-reautoconfirm-user": "Användare:",
 	"abusefilter-tools-reautoconfirm-submit": "Åter-automatbekräfta",

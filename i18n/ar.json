@@ -432,6 +432,7 @@
 	"abusefilter-edit-builder-vars-file-height": "ارتفاع الملف بالبكسل",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "بت لكل قناة لون للملف",
 	"abusefilter-edit-builder-vars-wiki-name": "اسم قاعدة البيانات للويكي",
+	"abusefilter-edit-builder-vars-wiki-language": "كود اللغة للويكي",
 	"abusefilter-filter-log": "تغييرات المرشح الأخيرة",
 	"abusefilter-history": "غير التاريخ لمرشح الإساءة #$1",
 	"abusefilter-history-foruser": "تغييرات من قبل $1",
