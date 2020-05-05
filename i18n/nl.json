@@ -191,6 +191,7 @@
 	"abusefilter-tools-text": "Dit zijn een aantal hulpmiddelen die van pas kunnen komen bij het formuleren en debuggen van filters.",
 	"abusefilter-tools-expr": "Expressietester",
 	"abusefilter-tools-submitexpr": "Evalueren",
+	"abusefilter-tools-syntax-error": "Het filter heeft een ongeldige syntax.",
 	"abusefilter-tools-reautoconfirm": "Automatisch bevestigde status opnieuw instellen",
 	"abusefilter-tools-reautoconfirm-user": "Gebruiker:",
 	"abusefilter-tools-reautoconfirm-submit": "Opnieuw automatisch bevestigen",

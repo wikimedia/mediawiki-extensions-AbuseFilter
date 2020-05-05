@@ -21,6 +21,7 @@
 	"apihelp-abusefilterevalexpression-description": "Evalueert een misbruikfilterexpressie.",
 	"apihelp-abusefilterevalexpression-summary": "Evalueert een misbruikfilterexpressie.",
 	"apihelp-abusefilterevalexpression-param-expression": "De te evalueren expressie.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "Of het resultaat opgemaakt moet worden.",
 	"apihelp-abusefilterevalexpression-example-1": "Evalueer een eenvoudige expressie",
 	"apihelp-abusefilterunblockautopromote-description": "Sta een gebruiker toe automatische promoties te krijgen als gevolg van een misbruikfilterregel.",
 	"apihelp-abusefilterunblockautopromote-summary": "Sta een gebruiker toe automatische promoties te krijgen als gevolg van een misbruikfilterregel.",

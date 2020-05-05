@@ -133,6 +133,7 @@
 	"abusefilter-tools-text": "Εδώ βρίσκονται κάποια εργαλεία τα οποία ενδέχεται να είναι χρἠσιμα στην διατύπωση και την εκσφαλμἀτωση φίλτρων καταχρἠσεων.",
 	"abusefilter-tools-expr": "Ελεγκτής εκφράσεων",
 	"abusefilter-tools-submitexpr": "Εκτίμηση",
+	"abusefilter-tools-syntax-error": "Το φίλτρο έχει μη έγκυρη σύνταξη.",
 	"abusefilter-tools-reautoconfirm": "αποκατάσταση αυτομάτως επιβεβαιωμένης κατάστασης",
 	"abusefilter-tools-reautoconfirm-user": "Χρήστης:",
 	"abusefilter-tools-reautoconfirm-submit": "Αυτόματη επιβεβαίωση ξανά",

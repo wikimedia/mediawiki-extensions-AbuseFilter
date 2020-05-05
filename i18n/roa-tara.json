@@ -168,6 +168,7 @@
 	"abusefilter-tools-text": "Aqquà se iacchiene quacche strumènde ca pòtene essere utile jndr'à formulazziune e jndr'ô debugging de le filtre de le abbuse.",
 	"abusefilter-tools-expr": "Test de le espressiune",
 	"abusefilter-tools-submitexpr": "Valute",
+	"abusefilter-tools-syntax-error": "'U filtre tène 'na sindasse invalide.",
 	"abusefilter-tools-reautoconfirm": "Repristenà 'u state autoconfirmate",
 	"abusefilter-tools-reautoconfirm-user": "Utende:",
 	"abusefilter-tools-reautoconfirm-submit": "Re-autoconfirme",
