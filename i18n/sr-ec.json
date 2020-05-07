@@ -159,6 +159,7 @@
 	"abusefilter-tools-text": "Овде се налазе алатке које су корисне за исправљање грешака на филтеру против злоупотребе.",
 	"abusefilter-tools-expr": "Тестирање филтера",
 	"abusefilter-tools-submitexpr": "Процени",
+	"abusefilter-tools-syntax-error": "Филтер има неважећу синтаксу.",
 	"abusefilter-tools-reautoconfirm": "Врати самопотврђени статус",
 	"abusefilter-tools-reautoconfirm-user": "Корисник:",
 	"abusefilter-tools-reautoconfirm-submit": "Потврди",
