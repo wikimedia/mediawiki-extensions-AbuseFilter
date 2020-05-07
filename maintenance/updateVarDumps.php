@@ -133,6 +133,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$res = $this->doFixMissingDumps( $brokenRows );
 			$deleted += $res['deleted'];
 			$rebuilt += $res['rebuilt'];
+			MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
 		} while ( $prevID <= $this->allRowsCount );
 
 		if ( $this->dryRun ) {
@@ -258,6 +259,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$result = $this->doMoveToText( $res );
 			$changeRows += $result['change'];
 			$truncatedDumps += $result['truncated'];
+			MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
 		} while ( $prevID <= $this->allRowsCount );
 
 		$msg = $this->dryRun ?
@@ -467,6 +469,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 
 			if ( !$this->dryRun ) {
 				$this->doUpdateText( $res, $esAccess );
+				MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
 			}
 		} while ( $prevID <= $this->allRowsCount );
 
@@ -638,6 +641,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			} else {
 				$this->dbw->update( ...$args );
 				$numRows += $this->dbw->affectedRows();
+				MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
 			}
 
 			$prevID = $curID;
