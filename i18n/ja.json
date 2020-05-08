@@ -195,6 +195,7 @@
 	"abusefilter-tools-text": "不正利用フィルターの作成およびデバッグに役立つ場合があるツールです。",
 	"abusefilter-tools-expr": "式の試験ツール",
 	"abusefilter-tools-submitexpr": "評価",
+	"abusefilter-tools-syntax-error": "フィルターの構文が無効です。",
 	"abusefilter-tools-reautoconfirm": "自動承認ステータスを復元",
 	"abusefilter-tools-reautoconfirm-user": "利用者:",
 	"abusefilter-tools-reautoconfirm-submit": "再自動承認",

@@ -189,6 +189,7 @@
 	"abusefilter-tools-text": "편집 필터를 제작하고 디버그하는 데 유용한 도구입니다.",
 	"abusefilter-tools-expr": "구문 검사기",
 	"abusefilter-tools-submitexpr": "시험",
+	"abusefilter-tools-syntax-error": "필터에 유효하지 않은 문법이 있습니다.",
 	"abusefilter-tools-reautoconfirm": "자동 인증 상태를 복구",
 	"abusefilter-tools-reautoconfirm-user": "사용자:",
 	"abusefilter-tools-reautoconfirm-submit": "자동 인증 상태 복구",
