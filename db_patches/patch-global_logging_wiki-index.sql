@@ -1,3 +1,3 @@
--- Add abuse_filter_log idex for afl_wiki.
+-- Add abuse_filter_log index for afl_wiki.
 
-ALTER TABLE /*_*/abuse_filter_log ADD KEY wiki_timestamp (afl_wiki, afl_timestamp);
+CREATE INDEX afl_wiki_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_wiki, afl_timestamp);
