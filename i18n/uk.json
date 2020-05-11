@@ -186,6 +186,7 @@
 	"abusefilter-tools-text": "Тут є деякі засоби, які можуть пригодитися у формулюванні та налагодженні фільтрів редагувань.",
 	"abusefilter-tools-expr": "Випробувач виразів",
 	"abusefilter-tools-submitexpr": "Випробувати",
+	"abusefilter-tools-syntax-error": "Синтаксична помилка у фільтрі.",
 	"abusefilter-tools-reautoconfirm": "Відновити статус автопідтвердження",
 	"abusefilter-tools-reautoconfirm-user": "Користувач:",
 	"abusefilter-tools-reautoconfirm-submit": "Повторне автопідтвердження",
