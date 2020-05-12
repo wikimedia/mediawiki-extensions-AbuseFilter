@@ -292,7 +292,6 @@
 				"degroup": false,
 				"tag": true
 			},
-			"merge_strategy": "array_plus",
 			"description": "Array of enabled actions in the form [action name => is enabled?]. At the end of setup, false values will be filtered out"
 		},
 		"AbuseFilterConditionLimit": {
@@ -307,21 +306,18 @@
 			"value": {
 				"default": 0.05
 			},
-			"merge_strategy": "array_plus",
 			"description": "Disable potentially dangerous actions (AbuseFilterRestrictions) of a filter if it matches more than X actions, constituting more than Y% (e.g. 0.05 = 5%) of the last Z actions, and the filter has been modified in the last S seconds. X is AbuseFilterEmergencyDisableCount, Y is AbuseFilterEmergencyDisableThreshold, S is AbuseFilterEmergencyDisableAge and Z is a number between 1 and AbuseFilterProfileActionsCap."
 		},
 		"AbuseFilterEmergencyDisableCount": {
 			"value": {
 				"default": 2
 			},
-			"merge_strategy": "array_plus",
 			"description": "See description for AbuseFilterEmergencyDisableThreshold"
 		},
 		"AbuseFilterEmergencyDisableAge": {
 			"value": {
 				"default": 86400
 			},
-			"merge_strategy": "array_plus",
 			"description": "See description for AbuseFilterEmergencyDisableThreshold"
 		},
 		"AbuseFilterRestrictions": {
@@ -335,7 +331,6 @@
 				"degroup": true,
 				"tag": false
 			},
-			"merge_strategy": "array_plus",
 			"description":  "Do users need 'abusefilter-modify-restricted' user right as well as 'abusefilter-modify' in order to create or modify filters which carry out this action? Array like [action name => is restricted?]"
 		},
 		"AbuseFilterNotifications": {
@@ -378,15 +373,13 @@
 			"value": {
 				"default": "abusefilter-warning"
 			},
-			"merge_strategy": "array_plus",
 			"description": "Default warning messages, per filter group"
 		},
 		"AbuseFilterDefaultDisallowMessage": {
 			"value": {
 				"default": "abusefilter-disallowed"
 			},
-			"description": "Default disallow messages, per filter group",
-			"merge_strategy": "array_plus"
+			"description": "Default disallow messages, per filter group"
 		},
 		"AbuseFilterLogIPMaxAge": {
 			"value": 7776000,
