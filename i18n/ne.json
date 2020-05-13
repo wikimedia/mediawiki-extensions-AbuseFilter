@@ -235,7 +235,7 @@
 	"abusefilter-exception-unexpectedatend": "$1चरित्रमा \"$2\" अप्रत्यासित भएको",
 	"abusefilter-exception-expectednotfound": "$1 चरित्रमा एउटा $2 प्रत्यासित भएको,  पाइएन ( $3 $4 स्थानमा पाइयो).",
 	"abusefilter-exception-unrecognisedkeyword": "$1 चरित्रको नचिनिने $2 शव्दकुञ्जी।",
-	"abusefilter-action-tag": "ट्याग",
+	"abusefilter-action-tag": "चिनो",
 	"abusefilter-action-throttle": "थ्रोटल",
 	"abusefilter-action-warn": "चेतावनी",
 	"abusefilter-action-block": "रोक्ने",
