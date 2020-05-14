@@ -401,7 +401,7 @@
 	"abusefilter-diff-pattern": "Литтаран хьал",
 	"abusefilter-diff-invalid": "Йохуш йолу версеш схьаэца цало",
 	"abusefilter-diff-backhistory": "ЮхагӀо литтаран истори йолче",
-	"abusefilter-diff-prev": "Шира хийцамаш",
+	"abusefilter-diff-prev": "Хьалхара нисдар",
 	"abusefilter-diff-next": "Керла хийцамаш",
 	"abusefilter-import-intro": "ХӀокху агӀонехь хьан йиш ю кхечу вики чура литтарш импорт дан.\nДӀайолалун вики чохь  «{{int:abusefilter-edit-tools}}» чохь тӀетаӀе «{{int:abusefilter-edit-export}}».\nЧулацаман копи якхкхе хӀокху агӀона чу йилина тӀетаӀе «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Хаамаш импорт бе",
