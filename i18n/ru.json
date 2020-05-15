@@ -216,6 +216,7 @@
 	"abusefilter-tools-text": "Здесь находятся некоторые инструменты, которые могут помочь в формулировании и отладке фильтров злоупотреблений.",
 	"abusefilter-tools-expr": "Проверка выражения",
 	"abusefilter-tools-submitexpr": "Опробовать",
+	"abusefilter-tools-syntax-error": "Синтаксическая ошибка в фильтре.",
 	"abusefilter-tools-reautoconfirm": "Восстановить статус «autoconfirmed»",
 	"abusefilter-tools-reautoconfirm-user": "Участник:",
 	"abusefilter-tools-reautoconfirm-submit": "Переавтоподтверждение",
