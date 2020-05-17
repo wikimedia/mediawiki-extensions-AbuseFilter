@@ -59,9 +59,12 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 				"$dir/patch-afl_action_id.sql"
 			);
 
+			$filterTimestampIdxName = $dbType === 'mysql'
+				? 'filter_timestamp'
+				: 'afl_filter_timestamp';
 			$updater->addExtensionIndex(
 				'abuse_filter_log',
-				'filter_timestamp',
+				$filterTimestampIdxName,
 				"$dir/$dbType/patch-fix-indexes.sql"
 			);
 

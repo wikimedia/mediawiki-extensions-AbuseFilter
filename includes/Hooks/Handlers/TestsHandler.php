@@ -25,12 +25,23 @@ class TestsHandler implements UnitTestsAfterDatabaseSetupHook, UnitTestsBeforeDa
 
 		foreach ( AbuseFilterConsequencesTest::$externalTables as $table ) {
 			// Don't create them as temporary, as we'll access the DB via another connection
-			$db->duplicateTableStructure(
-				"$prefix$table",
-				"$prefix$externalPrefix$table",
-				false,
-				__METHOD__
-			);
+			if ( $db->getType() === 'sqlite' ) {
+				// SQLite definitions don't have the prefix, ref T251967
+				$db->duplicateTableStructure(
+					$table,
+					"$prefix$externalPrefix$table",
+					true,
+					__METHOD__
+				);
+				$db->query( "INSERT INTO $prefix$externalPrefix$table SELECT * FROM $prefix$table" );
+			} else {
+				$db->duplicateTableStructure(
+					"$prefix$table",
+					"$prefix$externalPrefix$table",
+					false,
+					__METHOD__
+				);
+			}
 		}
 	}
 
