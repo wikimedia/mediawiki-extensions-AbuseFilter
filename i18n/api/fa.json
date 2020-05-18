@@ -3,6 +3,7 @@
 		"authors": [
 			"Ahmad252",
 			"Alirezaaa",
+			"FarsiNevis",
 			"Huji",
 			"Ladsgroup",
 			"Reza1615"
@@ -51,6 +52,7 @@
 	"apihelp-query+abuselog-param-wiki": "ویکی برای نمایش تأثیر گرفته از آن",
 	"apihelp-query+abuselog-example-1": "نمایش سیاههٔ آخرین ورودی‌ها",
 	"apihelp-query+abuselog-example-2": "نمایش آخرین موارد سیاهه از [[API]]",
+	"apihelp-abuselogprivatedetails-param-reason": "دلیلی معتبر برای اجرای این وارسی.",
 	"apierror-abusefilter-canttest": "شما اجازهٔ آزمایش پالایه‌های خرابکاری را ندارید.",
 	"apierror-abusefilter-cantcheck": "شما اجازهٔ آزمایش نحوی پالایه‌های خرابکاری را ندارید.",
 	"apierror-abusefilter-nosuchlogid": "هیچ موردی در سیاههٔ خرابکاری با شناسهٔ $1 وجود ندارد.",
