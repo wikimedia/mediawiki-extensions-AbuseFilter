@@ -27,7 +27,7 @@ describe( 'Special:AbuseFilter/new', function () {
 
 		assert.equal(
 			ViewEditPage.hiddenEditor.getAttribute( 'value' ),
-			'',
+			null,
 			'the hidden rules editor should be empty'
 		);
 
