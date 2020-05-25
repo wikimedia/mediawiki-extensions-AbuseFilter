@@ -24,6 +24,7 @@
 	"apihelp-abusefilterevalexpression-description": "편집 필터의 식을 검사합니다.",
 	"apihelp-abusefilterevalexpression-summary": "편집 필터의 식을 검사합니다.",
 	"apihelp-abusefilterevalexpression-param-expression": "검사할 표현식.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "결과를 예쁘게 출력해야 하는지의 여부입니다.",
 	"apihelp-abusefilterevalexpression-example-1": "간단한 표현식 검사",
 	"apihelp-abusefilterunblockautopromote-description": "편집 필터 동작으로 인해 자동 인증을 받지 못하도록 제한된 사용자의 제한을 해제합니다.",
 	"apihelp-abusefilterunblockautopromote-summary": "편집 필터 동작으로 인해 자동 인증을 받지 못하도록 제한된 사용자의 제한을 해제합니다.",
