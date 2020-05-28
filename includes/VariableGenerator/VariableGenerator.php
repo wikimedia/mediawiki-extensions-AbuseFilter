@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use AbuseFilterVariableHolder;
 use Hooks;
-use RCDatabaseLogEntry;
+use RecentChange;
 use Title;
 use User;
 use WikiPage;
@@ -36,27 +36,27 @@ class VariableGenerator {
 	 * Computes all variables unrelated to title and user. In general, these variables may be known
 	 * even without an ongoing action.
 	 *
-	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
+	 * @param RecentChange|null $rc If the variables should be generated for an RC entry,
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addGenericVars( RCDatabaseLogEntry $entry = null ) : self {
+	public function addGenericVars( RecentChange $rc = null ) : self {
 		// These are lazy-loaded just to reduce the amount of preset variables, but they
 		// shouldn't be expensive.
 		$this->vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
 		$this->vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
 
-		Hooks::run( 'AbuseFilter-generateGenericVars', [ $this->vars, $entry ] );
+		Hooks::run( 'AbuseFilter-generateGenericVars', [ $this->vars, $rc ] );
 		return $this;
 	}
 
 	/**
 	 * @param User $user
-	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
+	 * @param RecentChange|null $rc If the variables should be generated for an RC entry,
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addUserVars( User $user, RCDatabaseLogEntry $entry = null ) : self {
+	public function addUserVars( User $user, RecentChange $rc = null ) : self {
 		$this->vars->setLazyLoadVar(
 			'user_editcount',
 			'simple-user-accessor',
@@ -95,7 +95,7 @@ class VariableGenerator {
 			[ 'user' => $user ]
 		);
 
-		Hooks::run( 'AbuseFilter-generateUserVars', [ $this->vars, $user, $entry ] );
+		Hooks::run( 'AbuseFilter-generateUserVars', [ $this->vars, $user, $rc ] );
 
 		return $this;
 	}
@@ -103,14 +103,14 @@ class VariableGenerator {
 	/**
 	 * @param Title $title
 	 * @param string $prefix
-	 * @param RCDatabaseLogEntry|null $entry If the variables should be generated for an RC entry,
+	 * @param RecentChange|null $rc If the variables should be generated for an RC entry,
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
 	public function addTitleVars(
 		Title $title,
 		string $prefix,
-		RCDatabaseLogEntry $entry = null
+		RecentChange $rc = null
 	) : self {
 		$this->vars->setVar( $prefix . '_id', $title->getArticleID() );
 		$this->vars->setVar( $prefix . '_namespace', $title->getNamespace() );
@@ -148,7 +148,7 @@ class VariableGenerator {
 				'namespace' => $title->getNamespace()
 			] );
 
-		Hooks::run( 'AbuseFilter-generateTitleVars', [ $this->vars, $title, $prefix, $entry ] );
+		Hooks::run( 'AbuseFilter-generateTitleVars', [ $this->vars, $title, $prefix, $rc ] );
 
 		return $this;
 	}

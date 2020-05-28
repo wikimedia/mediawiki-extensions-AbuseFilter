@@ -3,15 +3,12 @@
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use AbuseFilterVariableHolder;
-use DatabaseLogEntry;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWFileProps;
 use MWTimestamp;
-use RCDatabaseLogEntry;
 use RecentChange;
 use Title;
-use Wikimedia\Rdbms\IDatabase;
 
 /**
  * This class contains the logic used to create AbuseFilterVariableHolder objects used to
@@ -19,18 +16,18 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class RCVariableGenerator extends VariableGenerator {
 	/**
-	 * @var RCDatabaseLogEntry
+	 * @var RecentChange
 	 */
-	protected $entry;
+	protected $rc;
 
 	/**
 	 * @param AbuseFilterVariableHolder $vars
-	 * @param RCDatabaseLogEntry $entry
+	 * @param RecentChange $rc
 	 */
-	public function __construct( AbuseFilterVariableHolder $vars, RCDatabaseLogEntry $entry ) {
+	public function __construct( AbuseFilterVariableHolder $vars, RecentChange $rc ) {
 		parent::__construct( $vars );
 
-		$this->entry = $entry;
+		$this->rc = $rc;
 	}
 
 	/**
@@ -38,47 +35,42 @@ class RCVariableGenerator extends VariableGenerator {
 	 *
 	 * @param int $id
 	 * @param AbuseFilterVariableHolder $vars
-	 * @param IDatabase $db
 	 * @return self|null
-	 * @todo This could be greatly simplified, if only RCDatabaseLogEntry implemented its
-	 *   own newFromId method
 	 */
 	public static function newFromId(
 		int $id,
-		AbuseFilterVariableHolder $vars,
-		IDatabase $db
+		AbuseFilterVariableHolder $vars
 	) : ?self {
-		$rcQuery = RecentChange::getQueryInfo();
-		$row = $db->selectRow(
-			$rcQuery['tables'],
-			$rcQuery['fields'],
-			[ 'rc_id' => $id ],
-			__METHOD__,
-			[],
-			$rcQuery['joins']
-		);
+		$rc = RecentChange::newFromId( $id );
 
-		if ( !$row ) {
+		if ( !$rc ) {
 			return null;
 		}
-		$entry = DatabaseLogEntry::newFromRow( $row );
-		'@phan-var RCDatabaseLogEntry $entry';
-		return new self( $vars, $entry );
+		return new self( $vars, $rc );
 	}
 
 	/**
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public function getVars() : ?AbuseFilterVariableHolder {
-		if ( $this->entry->getType() === 'move' ) {
-			$this->addMoveVars();
-		} elseif ( $this->entry->getType() === 'newusers' ) {
-			$this->addCreateAccountVars();
-		} elseif ( $this->entry->getType() === 'delete' ) {
-			$this->addDeleteVars();
-		} elseif ( $this->entry->getType() === 'upload' ) {
-			$this->addUploadVars();
-		} elseif ( $this->entry->getAssociatedRevId() ) {
+		if ( $this->rc->getAttribute( 'rc_type' ) == RC_LOG ) {
+			switch ( $this->rc->getAttribute( 'rc_log_type' ) ) {
+				case 'move':
+					$this->addMoveVars();
+					break;
+				case 'newusers':
+					$this->addCreateAccountVars();
+					break;
+				case 'delete':
+					$this->addDeleteVars();
+					break;
+				case 'upload':
+					$this->addUploadVars();
+					break;
+				default:
+					return null;
+			}
+		} elseif ( $this->rc->getAttribute( 'rc_last_oldid' ) ) {
 			// It's an edit.
 			$this->addEditVarsForRow();
 		} else {
@@ -89,7 +81,7 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->addGenericVars();
 		$this->vars->setVar(
 			'timestamp',
-			MWTimestamp::convert( TS_UNIX, $this->entry->getTimestamp() )
+			MWTimestamp::convert( TS_UNIX, $this->rc->getAttribute( 'rc_timestamp' ) )
 		);
 
 		return $this->vars;
@@ -99,18 +91,16 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addMoveVars() : self {
-		$user = $this->entry->getPerformer();
+		$user = $this->rc->getPerformer();
 
-		$params = array_values( $this->entry->getParameters() );
+		$oldTitle = $this->rc->getTitle();
+		$newTitle = Title::newFromText( $this->rc->getParam( '4::target' ) );
 
-		$oldTitle = $this->entry->getTarget();
-		$newTitle = Title::newFromText( $params[0] );
+		$this->addUserVars( $user, $this->rc )
+			->addTitleVars( $oldTitle, 'moved_from', $this->rc )
+			->addTitleVars( $newTitle, 'moved_to', $this->rc );
 
-		$this->addUserVars( $user, $this->entry )
-			->addTitleVars( $oldTitle, 'moved_from', $this->entry )
-			->addTitleVars( $newTitle, 'moved_to', $this->entry );
-
-		$this->vars->setVar( 'summary', $this->entry->getComment() );
+		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 		$this->vars->setVar( 'action', 'move' );
 
 		return $this;
@@ -122,14 +112,16 @@ class RCVariableGenerator extends VariableGenerator {
 	private function addCreateAccountVars() : self {
 		$this->vars->setVar(
 			'action',
-			$this->entry->getSubtype() === 'autocreate' ? 'autocreateaccount' : 'createaccount'
+			$this->rc->getAttribute( 'rc_log_action' ) === 'autocreate'
+				? 'autocreateaccount'
+				: 'createaccount'
 		);
 
-		$name = $this->entry->getTarget()->getText();
+		$name = $this->rc->getTitle()->getText();
 		// Add user data if the account was created by a registered user
-		$user = $this->entry->getPerformer();
+		$user = $this->rc->getPerformer();
 		if ( !$user->isAnon() && $name !== $user->getName() ) {
-			$this->addUserVars( $user, $this->entry );
+			$this->addUserVars( $user, $this->rc );
 		}
 
 		$this->vars->setVar( 'accountname', $name );
@@ -141,14 +133,14 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addDeleteVars() : self {
-		$title = $this->entry->getTarget();
-		$user = $this->entry->getPerformer();
+		$title = $this->rc->getTitle();
+		$user = $this->rc->getPerformer();
 
-		$this->addUserVars( $user, $this->entry )
-			->addTitleVars( $title, 'page', $this->entry );
+		$this->addUserVars( $user, $this->rc )
+			->addTitleVars( $title, 'page', $this->rc );
 
 		$this->vars->setVar( 'action', 'delete' );
-		$this->vars->setVar( 'summary', $this->entry->getComment() );
+		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 
 		return $this;
 	}
@@ -157,16 +149,16 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addUploadVars() : self {
-		$title = $this->entry->getTarget();
-		$user = $this->entry->getPerformer();
+		$title = $this->rc->getTitle();
+		$user = $this->rc->getPerformer();
 
-		$this->addUserVars( $user, $this->entry )
-			->addTitleVars( $title, 'page', $this->entry );
+		$this->addUserVars( $user, $this->rc )
+			->addTitleVars( $title, 'page', $this->rc );
 
 		$this->vars->setVar( 'action', 'upload' );
-		$this->vars->setVar( 'summary', $this->entry->getComment() );
+		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 
-		$time = $this->entry->getParameters()['img_timestamp'];
+		$time = $this->rc->getParam( 'img_timestamp' );
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
 			$title, [ 'time' => $time, 'private' => true ]
 		);
@@ -201,22 +193,23 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addEditVarsForRow() : self {
-		$title = $this->entry->getTarget();
-		$user = $this->entry->getPerformer();
+		$title = $this->rc->getTitle();
+		$user = $this->rc->getPerformer();
 
-		$this->addUserVars( $user, $this->entry )
-			->addTitleVars( $title, 'page', $this->entry );
+		$this->addUserVars( $user, $this->rc )
+			->addTitleVars( $title, 'page', $this->rc );
 
 		// @todo Set old_content_model and new_content_model
 		$this->vars->setVar( 'action', 'edit' );
-		$this->vars->setVar( 'summary', $this->entry->getComment() );
+		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 
 		$this->vars->setLazyLoadVar( 'new_wikitext', 'revision-text-by-id',
-			[ 'revid' => $this->entry->getAssociatedRevId() ] );
+			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ) ] );
 
-		if ( $this->entry->getParentRevId() ) {
+		$parentId = $this->rc->getAttribute( 'rc_last_oldid' );
+		if ( $parentId ) {
 			$this->vars->setLazyLoadVar( 'old_wikitext', 'revision-text-by-id',
-				[ 'revid' => $this->entry->getParentRevId() ] );
+				[ 'revid' => $parentId ] );
 		} else {
 			$this->vars->setVar( 'old_wikitext', '' );
 		}

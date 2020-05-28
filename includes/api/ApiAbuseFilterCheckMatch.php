@@ -20,25 +20,15 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$pairs = FormatJson::decode( $params['vars'], true );
 			$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
 		} elseif ( $params['rcid'] ) {
-			$dbr = wfGetDB( DB_REPLICA );
-			$rcQuery = RecentChange::getQueryInfo();
-			$row = $dbr->selectRow(
-				$rcQuery['tables'],
-				$rcQuery['fields'],
-				[ 'rc_id' => $params['rcid'] ],
-				__METHOD__,
-				[],
-				$rcQuery['joins']
-			);
+			$rc = RecentChange::newFromId( $params['rcid'] );
 
-			if ( !$row ) {
+			if ( !$rc ) {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
 			$vars = new AbuseFilterVariableHolder();
-			$entry = DatabaseLogEntry::newFromRow( $row );
-			'@phan-var RCDatabaseLogEntry $entry';
-			$varGenerator = new RCVariableGenerator( $vars, $entry );
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
+			$varGenerator = new RCVariableGenerator( $vars, $rc );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );

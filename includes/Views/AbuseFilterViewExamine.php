@@ -115,31 +115,20 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function showExaminerForRC( $rcid ) {
 		// Get data
-		$dbr = wfGetDB( DB_REPLICA );
-		$rcQuery = RecentChange::getQueryInfo();
-		$row = $dbr->selectRow(
-			$rcQuery['tables'],
-			$rcQuery['fields'],
-			[ 'rc_id' => $rcid ],
-			__METHOD__,
-			[],
-			$rcQuery['joins']
-		);
+		$rc = RecentChange::newFromId( $rcid );
 		$out = $this->getOutput();
-		if ( !$row ) {
+		if ( !$rc ) {
 			$out->addWikiMsg( 'abusefilter-examine-notfound' );
 			return;
 		}
 
-		if ( !ChangesList::userCan( RecentChange::newFromRow( $row ), RevisionRecord::SUPPRESSED_ALL ) ) {
+		if ( !ChangesList::userCan( $rc, RevisionRecord::SUPPRESSED_ALL ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 			return;
 		}
 
 		$vars = new AbuseFilterVariableHolder();
-		$entry = DatabaseLogEntry::newFromRow( $row );
-		'@phan-var RCDatabaseLogEntry $entry';
-		$varGenerator = new RCVariableGenerator( $vars, $entry );
+		$varGenerator = new RCVariableGenerator( $vars, $rc );
 		$vars = $varGenerator->getVars();
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $vars->dumpAllVars( true ),

@@ -216,9 +216,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		foreach ( $res as $row ) {
 			$vars = new AbuseFilterVariableHolder();
-			$entry = DatabaseLogEntry::newFromRow( $row );
-			'@phan-var RCDatabaseLogEntry $entry';
-			$varGenerator = new RCVariableGenerator( $vars, $entry );
+			$rc = RecentChange::newFromRow( $row );
+			$varGenerator = new RCVariableGenerator( $vars, $rc );
 			$vars = $varGenerator->getVars();
 
 			if ( !$vars ) {
@@ -231,7 +230,6 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item
-				$rc = RecentChange::newFromRow( $row );
 				// @phan-suppress-next-line PhanUndeclaredProperty not a big deal
 				$rc->filterResult = $result;
 				$rc->counter = $counter++;

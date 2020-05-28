@@ -245,10 +245,10 @@ class AbuseFilter {
 	/**
 	 * @deprecated Use VariableGenerator::addUserVars()
 	 * @param User $user
-	 * @param RCDatabaseLogEntry|null $entry
+	 * @param RecentChange|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateUserVars( User $user, RCDatabaseLogEntry $entry = null ) {
+	public static function generateUserVars( User $user, RecentChange $entry = null ) {
 		$vars = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $vars );
 		return $generator->addUserVars( $user, $entry )->getVariableHolder();
@@ -319,10 +319,10 @@ class AbuseFilter {
 	 * @deprecated Use VariableGenerator::addTitleVars
 	 * @param Title|null $title
 	 * @param string $prefix
-	 * @param RCDatabaseLogEntry|null $entry
+	 * @param RecentChange|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function generateTitleVars( $title, $prefix, RCDatabaseLogEntry $entry = null ) {
+	public static function generateTitleVars( $title, $prefix, RecentChange $entry = null ) {
 		$vars = new AbuseFilterVariableHolder();
 		if ( !( $title instanceof Title ) ) {
 			return $vars;
