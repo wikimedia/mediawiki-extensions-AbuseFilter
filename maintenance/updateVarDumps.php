@@ -29,8 +29,10 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private $allRowsCount;
 	/** @var bool Whether to print progress markers */
 	private $progressMarkers;
-	/** @var bool */
-	private $printOrphaned;
+	/** @var string|null */
+	private $printOrphanedFile;
+	/** @var int|null How many seconds to sleep after each batch. */
+	private $sleep;
 
 	/**
 	 * @inheritDoc
@@ -41,11 +43,15 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->addDescription( 'Update AbuseFilter var dumps - T213006' );
 		$this->addOption( 'dry-run-verbose', 'Perform a verbose dry run' );
 		$this->addOption( 'dry-run', 'Perform a dry run' );
-		$this->addOption( 'progress-markers', 'Print progress markers' );
+		$this->addOption( 'progress-markers', 'Print progress markers every 10 batches' );
 		$this->addOption(
-			'print-orphaned-records',
-			'Print ExternalStore urls of orphaned ExternalStore records (if any)'
+			'print-orphaned-records-to',
+			'Print ExternalStore urls of orphaned ExternalStore records (if any) ' .
+			'to the given file. Can use stdout, but it\'s not recommended for big databases.',
+			false,
+			true
 		);
+		$this->addOption( 'sleep', 'Sleep this many seconds after each batch', false, true );
 		$this->requireExtension( 'Abuse Filter' );
 		$this->setBatchSize( 500 );
 	}
@@ -66,7 +72,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$this->dryRun = true;
 		}
 		$this->progressMarkers = $this->hasOption( 'progress-markers' );
-		$this->printOrphaned = $this->hasOption( 'print-orphaned-records' );
+		$this->printOrphanedFile = $this->getOption( 'print-orphaned-records-to' );
+		$this->sleep = $this->getOption( 'sleep' );
 
 		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
 		$this->dbr = wfGetDB( DB_REPLICA );
@@ -134,6 +141,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$deleted += $res['deleted'];
 			$rebuilt += $res['rebuilt'];
 			MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
+			$this->maybeSleep();
 		} while ( $prevID <= $this->allRowsCount );
 
 		if ( $this->dryRun ) {
@@ -260,6 +268,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$changeRows += $result['change'];
 			$truncatedDumps += $result['truncated'];
 			MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
+			$this->maybeSleep();
 		} while ( $prevID <= $this->allRowsCount );
 
 		$msg = $this->dryRun ?
@@ -431,8 +440,13 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->output(
 			"...Re-storing serialized dumps as JSON-encoded arrays for all rows (3/4).\n"
 		);
-		if ( $this->printOrphaned ) {
-			$this->output( "Printing orphaned records.\n" );
+		if ( $this->printOrphanedFile !== null && !$this->dryRun ) {
+			$this->output( "Printing orphaned records to $this->printOrphanedFile.\n" );
+			file_put_contents(
+				$this->printOrphanedFile,
+				"Records orphaned by AbuseFilter's updateVarDumps sccript\n",
+				FILE_APPEND
+			);
 		}
 
 		$batchSize = $this->getBatchSize();
@@ -471,6 +485,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$this->doUpdateText( $res, $esAccess );
 				MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->waitForReplication();
 			}
+			$this->maybeSleep();
 		} while ( $prevID <= $this->allRowsCount );
 
 		$msg = $this->dryRun
@@ -538,8 +553,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				__METHOD__
 			);
 		}
-		if ( $this->printOrphaned && $orphaned ) {
-			$this->output( implode( ', ', $orphaned ) . "\n" );
+		if ( $this->printOrphanedFile !== null && $orphaned ) {
+			file_put_contents( $this->printOrphanedFile, implode( ', ', $orphaned ) . "\n", FILE_APPEND );
 		}
 	}
 
@@ -646,6 +661,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 
 			$prevID = $curID;
 			$curID += $batchSize;
+			$this->maybeSleep();
 		} while ( $prevID <= $this->allRowsCount );
 
 		if ( $this->dryRun ) {
@@ -661,9 +677,19 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	 * @param int $start
 	 */
 	private function maybePrintProgress( int $start ) : void {
-		if ( $this->progressMarkers ) {
+		if ( $this->progressMarkers && $start % ( 10 * $this->getBatchSize() ) === 0 ) {
 			$end = $start + $this->getBatchSize();
 			$this->output( "...Doing range $start - $end\n" );
+		}
+	}
+
+	/**
+	 * Sleep for a while, if required. Note: checking the value is several
+	 * orders of magnitude faster than calling sleep(0).
+	 */
+	private function maybeSleep() : void {
+		if ( $this->sleep ) {
+			sleep( $this->sleep );
 		}
 	}
 }
