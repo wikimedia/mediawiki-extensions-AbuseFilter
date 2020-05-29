@@ -7,6 +7,7 @@
 		]
 	},
 	"apihelp-abusefilterchecksyntax-description": "Tarkista väärinkäyttösuodattimen syntaksi.",
+	"apihelp-abusefilterchecksyntax-summary": "Tarkista väärinkäyttösuodattimen syntaksi.",
 	"apihelp-abusefilterchecksyntax-example-1": "Tarkasta kelvollisen suodattimen ehtolauserakenne",
 	"apihelp-abusefilterchecksyntax-example-2": "Tarkasta epäkelvon suodattimen ehtolauserakenne",
 	"apihelp-abusefilterevalexpression-description": "Arvioi väärinkäyttösuodattimen lauseketta.",
