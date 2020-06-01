@@ -16,5 +16,6 @@
 	"abusefilter-list-options-deleted-hide": "Ascondi i filtri scassæ",
 	"abusefilter-list-options-deleted-show": "Includdi i filtri scassæ",
 	"abusefilter-list-options-hidedisabled": "Ascondi i filtri disattivæ",
-	"abusefilter-status": "Fra i urtime $1 {{PLURAL:$1|açion|açioin}}, $2 ($3 %) {{PLURAL:$2|o l'ha|han}} razonto o limmite de $4 condiçioin e $5 ($6 %) {{PLURAL:$5|o l'ha|han}} attivou un di filtri attoalmente attivi."
+	"abusefilter-status": "Fra i urtime $1 {{PLURAL:$1|açion|açioin}}, $2 ($3 %) {{PLURAL:$2|o l'ha|han}} razonto o limmite de $4 condiçioin e $5 ($6 %) {{PLURAL:$5|o l'ha|han}} attivou un di filtri attoalmente attivi.",
+	"abusefilter-log-name": "Fìltro anti abûxi"
 }
