@@ -1571,7 +1571,7 @@ class AbuseFilter {
 
 	/**
 	 * @param string $action
-	 * @return string
+	 * @return string HTML
 	 */
 	public static function getActionDisplay( $action ) {
 		// Give grep a chance to find the usages:
@@ -1579,7 +1579,7 @@ class AbuseFilter {
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
 		// abusefilter-action-rangeblock, abusefilter-action-disallow
 		$display = wfMessage( "abusefilter-action-$action" )->escaped();
-		$display = wfMessage( "abusefilter-action-$action", $display )->isDisabled()
+		$display = wfMessage( "abusefilter-action-$action" )->rawParams( $display )->isDisabled()
 			? htmlspecialchars( $action )
 			: $display;
 

@@ -40,11 +40,11 @@ class AbuseLogHitFormatter extends LogFormatter {
 			) );
 		}
 
-		$actions_taken = $entry['actions'];
-		if ( !strlen( trim( $actions_taken ) ) ) {
+		$actions_takenRaw = $entry['actions'];
+		if ( !strlen( trim( $actions_takenRaw ) ) ) {
 			$actions_taken = $this->msg( 'abusefilter-log-noactions' );
 		} else {
-			$actions = explode( ',', $actions_taken );
+			$actions = explode( ',', $actions_takenRaw );
 			$displayActions = [];
 
 			foreach ( $actions as $action ) {
@@ -52,7 +52,7 @@ class AbuseLogHitFormatter extends LogFormatter {
 			}
 			$actions_taken = $this->context->getLanguage()->commaList( $displayActions );
 		}
-		$params[5] = $actions_taken;
+		$params[5] = Message::rawParam( $actions_taken );
 
 		// Bad things happen if the numbers are not in correct order
 		ksort( $params );

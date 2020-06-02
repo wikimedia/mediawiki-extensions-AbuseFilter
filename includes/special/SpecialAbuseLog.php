@@ -1079,13 +1079,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
 		}
 
-		$timestamp = $lang->timeanddate( $row->afl_timestamp, true );
+		$timestamp = htmlspecialchars( $lang->timeanddate( $row->afl_timestamp, true ) );
 
-		$actions_taken = $row->afl_actions;
-		if ( !strlen( trim( $actions_taken ) ) ) {
+		$actions_takenRaw = $row->afl_actions;
+		if ( !strlen( trim( $actions_takenRaw ) ) ) {
 			$actions_taken = $this->msg( 'abusefilter-log-noactions' )->escaped();
 		} else {
-			$actions = explode( ',', $actions_taken );
+			$actions = explode( ',', $actions_takenRaw );
 			$displayActions = [];
 
 			foreach ( $actions as $action ) {
@@ -1158,7 +1158,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$timestamp,
 				$userLink,
 				$filterLink,
-				$row->afl_action,
+				htmlspecialchars( $row->afl_action ),
 				$pageLink,
 				$actions_taken,
 				$escaped_comments,
@@ -1173,7 +1173,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$description = $this->msg( $msg )->rawParams(
 				$timestamp,
 				$userLink,
-				$row->afl_action,
+				htmlspecialchars( $row->afl_action ),
 				$pageLink,
 				$actions_taken,
 				$escaped_comments,
