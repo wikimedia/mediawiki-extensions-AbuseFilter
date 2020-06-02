@@ -3,6 +3,7 @@
 		"authors": [
 			"Liuxinyu970226",
 			"Looong",
+			"VulpesVulpes825",
 			"Wenyuan Liu",
 			"Yfdyh000"
 		]
@@ -23,7 +24,9 @@
 	"apihelp-abusefilterevalexpression-description": "评估防滥用过滤器的表达式。",
 	"apihelp-abusefilterevalexpression-summary": "评估防滥用过滤器的表达式。",
 	"apihelp-abusefilterevalexpression-param-expression": "要评估的表达式。",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "是否美化输出结果",
 	"apihelp-abusefilterevalexpression-example-1": "评估一个简单的表达式",
+	"apihelp-abusefilterevalexpression-example-2": "评价一个简单表达式，对结果进行格式化处理",
 	"apihelp-abusefilterunblockautopromote-description": "从由于防滥用过滤器的结果而接受的autopromotions解封用户。",
 	"apihelp-abusefilterunblockautopromote-summary": "从由于防滥用过滤器的结果而接受的autopromotions解封用户。",
 	"apihelp-abusefilterunblockautopromote-param-user": "您希望解封的用户的用户名。",
