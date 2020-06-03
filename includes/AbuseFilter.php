@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -267,7 +268,7 @@ class AbuseFilter {
 
 		$realValues = self::BUILDER_VALUES;
 
-		Hooks::run( 'AbuseFilter-builder', [ &$realValues ] );
+		AbuseFilterHookRunner::getRunner()->onAbuseFilterBuilder( $realValues );
 
 		return $realValues;
 	}
@@ -284,7 +285,7 @@ class AbuseFilter {
 
 		$deprecatedVars = self::DEPRECATED_VARS;
 
-		Hooks::run( 'AbuseFilter-deprecatedVariables', [ &$deprecatedVars ] );
+		AbuseFilterHookRunner::getRunner()->onAbuseFilterDeprecatedVariables( $deprecatedVars );
 
 		return $deprecatedVars;
 	}
@@ -1877,7 +1878,11 @@ class AbuseFilter {
 	public static function contentToString( Content $content ) {
 		$text = null;
 
-		if ( Hooks::run( 'AbuseFilter-contentToString', [ $content, &$text ] ) ) {
+		$hookRunner = AbuseFilterHookRunner::getRunner();
+		if ( $hookRunner->onAbuseFilterContentToString(
+			$content,
+			$text
+		) ) {
 			$text = $content instanceof TextContent
 				? $content->getText()
 				: $content->getTextForSearchIndex();

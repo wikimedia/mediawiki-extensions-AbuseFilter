@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use AbuseFilterVariableHolder;
-use Hooks;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use RecentChange;
 use Title;
 use User;
@@ -18,11 +18,17 @@ class VariableGenerator {
 	 */
 	protected $vars;
 
+	/** @var AbuseFilterHookRunner */
+	private $hookRunner;
+
 	/**
 	 * @param AbuseFilterVariableHolder $vars
 	 */
 	public function __construct( AbuseFilterVariableHolder $vars ) {
 		$this->vars = $vars;
+
+		// TODO this class is constructed in other extensions; make this a parameter
+		$this->hookRunner = AbuseFilterHookRunner::getRunner();
 	}
 
 	/**
@@ -46,7 +52,7 @@ class VariableGenerator {
 		$this->vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
 		$this->vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
 
-		Hooks::run( 'AbuseFilter-generateGenericVars', [ $this->vars, $rc ] );
+		$this->hookRunner->onAbuseFilterGenerateGenericVars( $this->vars, $rc );
 		return $this;
 	}
 
@@ -95,7 +101,7 @@ class VariableGenerator {
 			[ 'user' => $user ]
 		);
 
-		Hooks::run( 'AbuseFilter-generateUserVars', [ $this->vars, $user, $rc ] );
+		$this->hookRunner->onAbuseFilterGenerateUserVars( $this->vars, $user, $rc );
 
 		return $this;
 	}
@@ -148,7 +154,7 @@ class VariableGenerator {
 				'namespace' => $title->getNamespace()
 			] );
 
-		Hooks::run( 'AbuseFilter-generateTitleVars', [ $this->vars, $title, $prefix, $rc ] );
+		$this->hookRunner->onAbuseFilterGenerateTitleVars( $this->vars, $title, $prefix, $rc );
 
 		return $this;
 	}
