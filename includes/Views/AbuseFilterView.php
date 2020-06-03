@@ -237,7 +237,7 @@ abstract class AbuseFilterView extends ContextSource {
 
 	/**
 	 * @param IDatabase $db
-	 * @param string|bool $action 'edit', 'move', 'createaccount', 'delete' or false for all
+	 * @param string|false $action 'edit', 'move', 'createaccount', 'delete' or false for all
 	 * @return string
 	 */
 	public function buildTestConditions( IDatabase $db, $action = false ) {
@@ -279,6 +279,7 @@ abstract class AbuseFilterView extends ContextSource {
 				// Done later
 				break;
 			default:
+				// @phan-suppress-next-line PhanTypeSuspiciousStringExpression False does not reach here
 				throw new MWException( __METHOD__ . ' called with invalid action: ' . $action );
 		}
 
