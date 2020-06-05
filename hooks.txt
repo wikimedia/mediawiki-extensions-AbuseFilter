@@ -45,16 +45,16 @@ $user: User object performer of the action
 $vars: AbuseFilterVariableHolder
 $title: Title object
 $prefix: Variable name prefix
-$rc: RCDatabaseLogEntry|null If the variables should be generated for an RC entry, this is the entry. Null if it's for the current action being filtered.
+$rc: RecentChange|null If the variables should be generated for an RC entry, this is the entry. Null if it's for the current action being filtered.
 
 'AbuseFilter-generateUserVars': Allows altering the variables generated for a specific user
 $vars: AbuseFilterVariableHolder
 $user: User object
-$rc: RCDatabaseLogEntry|null If the variables should be generated for an RC entry, this is the entry. Null if it's for the current action being filtered.
+$rc: RecentChange|null If the variables should be generated for an RC entry, this is the entry. Null if it's for the current action being filtered.
 
 'AbuseFilter-generateGenericVars': Allows altering generic variables, i.e. independent from page and user
 $vars: AbuseFilterVariableHolder
-$rcRow: If the variables should be generated for an RC row, this is the row. Null if it's for the current action being filtered.
+$rc: RecentChange|null If the variables should be generated for an RC entry, this is the entry. Null if it's for the current action being filtered.
 
 'AbuseFilter-interceptVariable': Called before a variable is set in AFComputedVariable::compute to be able to set
 it before the core code runs. Return false to make the function return right after.
