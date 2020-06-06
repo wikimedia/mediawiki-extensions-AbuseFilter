@@ -838,7 +838,7 @@ class AbuseFilterHooks {
 	 */
 	public static function onUnitTestsAfterDatabaseSetup( IMaintainableDatabase $db, $prefix ) {
 		$externalPrefix = AbuseFilterConsequencesTest::DB_EXTERNAL_PREFIX;
-		if ( $db->tableExists( $externalPrefix . AbuseFilterConsequencesTest::$externalTables[0] ) ) {
+		if ( $db->tableExists( $externalPrefix . AbuseFilterConsequencesTest::$externalTables[0], __METHOD__ ) ) {
 			// Check a random table to avoid unnecessary table creations. See T155147.
 			return;
 		}

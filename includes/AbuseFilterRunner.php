@@ -1285,7 +1285,8 @@ class AbuseFilterRunner {
 						[ 'af_id' => $loggedLocalFilters ],
 						$method
 					);
-				}
+				},
+				$method
 			);
 		}
 
@@ -1314,7 +1315,8 @@ class AbuseFilterRunner {
 						[ 'af_id' => $loggedGlobalFilters ],
 						$method
 					);
-				}
+				},
+				$method
 			);
 		}
 
