@@ -10,7 +10,8 @@
 
 	/**
 	 * Submits the expression to be evaluated.
-	 * @context HTMLElement
+	 *
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function doExprSubmit() {
@@ -95,7 +96,8 @@
 
 	/**
 	 * Submits a call to reautoconfirm a user.
-	 * @context HTMLElement
+	 *
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 * @return {boolean} False to prevent form submission
 	 */

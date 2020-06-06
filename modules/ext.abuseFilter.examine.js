@@ -72,7 +72,7 @@
 	/**
 	 * Tests the filter against an rc event or abuse log entry.
 	 *
-	 * @context HTMLElement
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function examinerTestFilter() {
