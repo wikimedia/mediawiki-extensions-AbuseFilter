@@ -21,6 +21,7 @@
 			"Rachmat04",
 			"Rex",
 			"Rv77ax",
+			"Sumbukompor",
 			"Veracious"
 		]
 	},
@@ -199,6 +200,7 @@
 	"abusefilter-edit-throttle-count": "Jumlah tindakan yang diizinkan:",
 	"abusefilter-edit-throttle-period": "Periode waktu (detik):",
 	"abusefilter-edit-throttle-groups": "Kelompokkan katup menurut:\n:''(satu per baris, kombinasi dengan koma)''",
+	"abusefilter-edit-throttle-groups-help": "Lihat $1.",
 	"abusefilter-throttle-ip": "Alamat IP",
 	"abusefilter-throttle-user": "akun pengguna",
 	"abusefilter-throttle-range": "/16 range",
@@ -206,6 +208,7 @@
 	"abusefilter-throttle-editcount": "Jumlah suntingan",
 	"abusefilter-throttle-site": "Keseluruhan situs",
 	"abusefilter-throttle-page": "laman",
+	"abusefilter-throttle-none": "(tidak ada)",
 	"abusefilter-edit-warn-message": "Pesan sistem yang digunakan untuk memberi peringatan:",
 	"abusefilter-edit-warn-other": "Pesan lainnya",
 	"abusefilter-edit-warn-other-label": "Nama halaman dari pesan lain;\n:''(tanpa awalan ''MediaWiki:'')''",
@@ -401,7 +404,7 @@
 	"abusefilter-revert-periodstart": "Periode mulai:",
 	"abusefilter-revert-periodend": "Periode selesai:",
 	"abusefilter-revert-search": "Pilih tindakan",
-	"abusefilter-revert-filter": "Penyaring:",
+	"abusefilter-revert-filter": "ID filter:",
 	"abusefilter-revert-preview-intro": "Berikut adalah tindakan yang dilakukan oleh filter penyalahgunaan yang akan dikembalikan oleh tindakan ini.\nHarap periksa dengan saksama, dan klik \"{{int:abusefilter-revert-confirm}}\" untuk mengkonfirmasikan pilihan Anda.",
 	"abusefilter-revert-confirm": "Konfirmasi",
 	"abusefilter-revert-success": "Anda telah mengembalikan semua tindakan yang dilakukan filter penyalahgunaan karena [[Special:AbuseFilter/$1|filter $2]].",

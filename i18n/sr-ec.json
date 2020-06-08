@@ -441,7 +441,7 @@
 	"abusefilter-test-search-type-createaccount": "Отварања налога",
 	"abusefilter-changeslist-examine": "прегледај",
 	"abusefilter-examine": "Испитај појединачне измене",
-	"abusefilter-examine-intro": "Ова страница омогућава испитивање променљивих које је генерисао филтер злоупотреба за одређену измену и испробавање на филтерима.",
+	"abusefilter-examine-intro": "Ова страница вам омогућава да испитате променљиве филтера злоупотребе на појединачне измене и да их тестирате на филтерима.",
 	"abusefilter-examine-legend": "Изаберите промене",
 	"abusefilter-examine-diff": "Адреса разлике:",
 	"abusefilter-examine-user": "Корисник:",
