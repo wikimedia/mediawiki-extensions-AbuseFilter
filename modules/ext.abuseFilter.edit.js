@@ -131,7 +131,7 @@
 	/**
 	 * Sends the current filter text to be checked for syntax issues.
 	 *
-	 * @context HTMLElement
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function doSyntaxCheck() {
@@ -176,7 +176,7 @@
 	/**
 	 * Fetches a filter from the API and inserts it into the filter box.
 	 *
-	 * @context HTMLElement
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function fetchFilter() {
@@ -294,7 +294,7 @@
 	/**
 	 * Called if the filter group (#mw-abusefilter-edit-group-input select) is changed.
 	 *
-	 * @context HTMLELement
+	 * @this HTMLELement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterGroupChange() {
@@ -351,7 +351,7 @@
 	/**
 	 * Called if the user presses a key in the load filter field.
 	 *
-	 * @context HTMLELement
+	 * @this HTMLELement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterKeypress( e ) {
