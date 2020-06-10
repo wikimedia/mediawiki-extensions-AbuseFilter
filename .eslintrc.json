@@ -5,9 +5,6 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
-	"globals": {
-		"OO": false
-	},
 	"rules": {
 		"no-jquery/no-global-selector": "off"
 	}
