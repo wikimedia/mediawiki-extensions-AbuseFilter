@@ -202,7 +202,7 @@
 	"abusefilter-edit-action-rangeblock": "Блокирај /16 опсег IP адреса корисника",
 	"abusefilter-edit-action-tag": "Означи измену за будући преглед",
 	"abusefilter-edit-throttle-count": "Број дозвољених радњи:",
-	"abusefilter-edit-throttle-period": "Временски период (у секундама):",
+	"abusefilter-edit-throttle-period": "Период (у секундама):",
 	"abusefilter-edit-throttle-groups": "Групно успоравање према:",
 	"abusefilter-edit-throttle-groups-help": "Погледајте $1.",
 	"abusefilter-edit-throttle-groups-help-text": "документацију на сајту mediawiki.org",
