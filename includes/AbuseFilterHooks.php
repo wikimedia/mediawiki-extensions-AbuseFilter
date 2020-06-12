@@ -485,6 +485,10 @@ class AbuseFilterHooks {
 			$updater->addExtensionUpdate( [ 'addField', 'abuse_filter',
 				'af_group', "$dir/db_patches/patch-af_group.sql", true ] );
 
+			$updater->dropExtensionIndex(
+				'abuse_filter_log', 'wiki_timestamp',
+				"$dir/db_patches/patch-drop-wiki_timestamp-index.sql"
+			);
 			$updater->addExtensionIndex(
 				'abuse_filter_log', 'afl_wiki_timestamp',
 				"$dir/db_patches/patch-global_logging_wiki-index.sql"
