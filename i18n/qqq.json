@@ -120,6 +120,7 @@
 	"abusefilter-log-details-ip": "Row label in private log details.",
 	"abusefilter-log-details-checkuser": "Text to use as link to [[Special:Checkuser]] for the given IP.\n{{Identical|Check user}}",
 	"abusefilter-log-noactions": "Text displayed in Special:AbuseLog when a rule was triggered, but no action was taken.\n{{Identical|None}}",
+	"abusefilter-log-noactions-filter": "Text displayed in the dropdown menu on Special:AbuseLog when a user tries fo filter the logs for those where a rule was triggered, but no action was taken.\n{{Identical|None}}",
 	"abusefilter-log-details-diff": "Header for differences between two edits in log details.",
 	"abusefilter-log-linkoncontribs": "Link text added on [[Special:Contributions]] and other relevant special pages.\n{{Identical|Abuse log}}",
 	"abusefilter-log-linkoncontribs-text": "Title for link added on [[Special:Contributions]] and other relevant special pages. Parameters:\n* $1 is the target user name used for GENDER.",
