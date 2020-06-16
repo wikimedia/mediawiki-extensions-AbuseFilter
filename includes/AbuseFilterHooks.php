@@ -4,7 +4,9 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserIdentity;
 use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IMaintainableDatabase;
@@ -197,30 +199,39 @@ class AbuseFilterHooks {
 
 	/**
 	 * @param WikiPage $wikiPage
-	 * @param User $user
-	 * @param string $content Content
+	 * @param UserIdentity $userIdentity
 	 * @param string $summary
-	 * @param bool $minoredit
-	 * @param bool $watchthis
-	 * @param string $sectionanchor
 	 * @param int $flags
-	 * @param Revision $revision
-	 * @param Status $status
+	 * @param RevisionRecord $revisionRecord
 	 * @param int $baseRevId
 	 */
-	public static function onPageContentSaveComplete(
-		WikiPage $wikiPage, User $user, $content, $summary, $minoredit, $watchthis, $sectionanchor,
-		$flags, Revision $revision, Status $status, $baseRevId
+	public static function onPageSaveComplete(
+		WikiPage $wikiPage,
+		UserIdentity $userIdentity,
+		string $summary,
+		int $flags,
+		RevisionRecord $revisionRecord,
+		int $baseRevId
 	) {
 		$curTitle = $wikiPage->getTitle()->getPrefixedText();
 		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) ||
-			$wikiPage !== self::$lastEditPage ||
-			// Null edit. Too bad that there's no other way to recognize them.
-			$status->hasMessage( 'edit-no-change' )
+			$wikiPage !== self::$lastEditPage
 		) {
 			// This isn't the edit AbuseFilter::$logIds was set for
 			AbuseFilter::$logIds = [];
 			return;
+		}
+
+		// Ignore null edit.
+		$parentRevId = $revisionRecord->getParentId();
+		if ( $parentRevId !== null ) {
+			$parentRev = MediaWikiServices::getInstance()
+				->getRevisionLookup()
+				->getRevisionById( $parentRevId );
+			if ( $parentRev && $revisionRecord->hasSameContent( $parentRev ) ) {
+				AbuseFilter::$logIds = [];
+				return;
+			}
 		}
 
 		self::$lastEditPage = null;
@@ -231,7 +242,7 @@ class AbuseFilterHooks {
 			$dbw = wfGetDB( DB_MASTER );
 
 			$dbw->update( 'abuse_filter_log',
-				[ 'afl_rev_id' => $revision->getId() ],
+				[ 'afl_rev_id' => $revisionRecord->getId() ],
 				[ 'afl_id' => $logs['local'] ],
 				__METHOD__
 			);
@@ -240,7 +251,7 @@ class AbuseFilterHooks {
 		if ( $logs[ 'global' ] ) {
 			$fdb = AbuseFilter::getCentralDB( DB_MASTER );
 			$fdb->update( 'abuse_filter_log',
-				[ 'afl_rev_id' => $revision->getId() ],
+				[ 'afl_rev_id' => $revisionRecord->getId() ],
 				[ 'afl_id' => $logs['global'], 'afl_wiki' => WikiMap::getCurrentWikiDbDomain()->getId() ],
 				__METHOD__
 			);
