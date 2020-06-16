@@ -274,7 +274,7 @@
 		"UndeletePageToolLinks": "AbuseFilterHooks::onUndeletePageToolLinks",
 		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
 		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
-		"PageContentSaveComplete": "AbuseFilterHooks::onPageContentSaveComplete",
+		"PageSaveComplete": "AbuseFilterHooks::onPageSaveComplete",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
 		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
 		"UnitTestsAfterDatabaseSetup": "AbuseFilterHooks::onUnitTestsAfterDatabaseSetup",
