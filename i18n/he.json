@@ -469,7 +469,7 @@
 	"abusefilter-exception-invalidiprange": "טווח IP שגוי \"$2\" בתו מספר $1.",
 	"abusefilter-exception-disabledvar": "המשתנה $2 בתו מספר $1 אינו בשימוש יותר.",
 	"abusefilter-exception-variablevariable": "set ו־set_var מצפים לכך שהארגומנט הראשון יהיה מחרוזת מפורשת, נמצאו בתו $1.",
-	"abusefilter-action-tag": "לתייג",
+	"abusefilter-action-tag": "תיוג",
 	"abusefilter-action-throttle": "הגבלת תדירות פעולה",
 	"abusefilter-action-warn": "אזהרה",
 	"abusefilter-action-blockautopromote": "ביטול שיוך אוטומטי לקבוצות",
