@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Erdemaslancan"
+			"Erdemaslancan",
+			"Patriot Kur"
 		]
 	},
+	"abusefilter-list-edit": "Dəqiş karde",
 	"abusefilter-list-options": "Кукон",
 	"abusefilter-history-comments": "Мындәриҹот"
 }

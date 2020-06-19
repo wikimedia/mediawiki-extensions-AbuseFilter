@@ -31,6 +31,7 @@
 			"The Polish",
 			"Ty221",
 			"Vengir",
+			"WaldiSt",
 			"Woytecr"
 		]
 	},
@@ -335,6 +336,8 @@
 	"abusefilter-edit-builder-funcs-lcase": "Na małe litery (lcase)",
 	"abusefilter-edit-builder-funcs-ucase": "Na duże litery (ucase)",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalizacja kłopotliwych znaków (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalizowanie i wyszukiwanie ciągu dla wielu podciągów w trybie OR (ccnorm_contains_any)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalizuj i wyszukaj ciąg dla wielu podciągów w trybie AND (ccnorm_contains_all)",
 	"abusefilter-edit-builder-funcs-rmdoubles": "Usuwanie powtarzających się znaków (rmdoubles)",
 	"abusefilter-edit-builder-funcs-specialratio": "Znaki specjalne / suma znaków (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normalizacja (norm)",

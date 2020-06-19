@@ -29,7 +29,7 @@
 	"abusefilter-degroupreason": "Práva automaticky odobral filter zneužívania. Popis pravidla: $1",
 	"abusefilter-blockautopromotereason": "Automatické potvrdenie automaticky pozastaveno filtrom zneužití.\nPopis pravidla: $1",
 	"abusefilter-accountreserved": "Tento názov účtu je vyhradený pre použitie filtrom zneužití.",
-	"right-abusefilter-modify": "Zmeniť filtre zneužití",
+	"right-abusefilter-modify": "Vytvoriť alebo upraviť filtre zneužití",
 	"right-abusefilter-view": "Zobraziť filtre zneužití",
 	"right-abusefilter-log": "Zobraziť záznam zneužití",
 	"right-abusefilter-log-detail": "Zobraziť podrobnosti položiek záznamu zneužití",
@@ -174,6 +174,7 @@
 	"abusefilter-tools-text": "Tu sa nachádzajú niektoré nástroje, ktoré možno využiť pri tvorbe a ladení filtrov zneužitia.",
 	"abusefilter-tools-expr": "Tester výrazov",
 	"abusefilter-tools-submitexpr": "Vyhodnotiť",
+	"abusefilter-tools-syntax-error": "Filter má neplatnú syntax.",
 	"abusefilter-tools-reautoconfirm": "Obnoviť stav zaregistrovaný",
 	"abusefilter-tools-reautoconfirm-user": "Používateľ:",
 	"abusefilter-tools-reautoconfirm-submit": "Potvrdiť zaregistrovanie",
@@ -546,5 +547,6 @@
 	"abusefilter-view-privatedetails-submit": "Zobraziť súkromné detaily",
 	"abusefilter-view-privatedetails-legend": "Zobraziť súkromné detaily",
 	"abusefilter-view-privatedetails-reason": "Dôvod prístupu k súkromným detailom:",
-	"abusefilter-log-details-id": "ID záznamu"
+	"abusefilter-log-details-id": "ID záznamu",
+	"abusefilter-log-ip-not-available": "Nedostupné"
 }
