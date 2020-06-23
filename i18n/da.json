@@ -327,6 +327,7 @@
 	"abusefilter-edit-builder-vars-file-mediatype": "Filens medietype",
 	"abusefilter-edit-builder-vars-file-width": "Filens bredde i pixels",
 	"abusefilter-edit-builder-vars-file-height": "Filens højde i pixels",
+	"abusefilter-edit-builder-vars-wiki-language": "Sprogkoden for wikien",
 	"abusefilter-filter-log": "Seneste filterændringer",
 	"abusefilter-history": "Ændringshistorik for misbrugsfilter #$1",
 	"abusefilter-history-foruser": "Ændringer af $1",
