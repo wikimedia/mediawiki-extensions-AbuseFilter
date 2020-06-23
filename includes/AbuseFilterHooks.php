@@ -203,15 +203,13 @@ class AbuseFilterHooks {
 	 * @param string $summary
 	 * @param int $flags
 	 * @param RevisionRecord $revisionRecord
-	 * @param int $baseRevId
 	 */
 	public static function onPageSaveComplete(
 		WikiPage $wikiPage,
 		UserIdentity $userIdentity,
 		string $summary,
 		int $flags,
-		RevisionRecord $revisionRecord,
-		int $baseRevId
+		RevisionRecord $revisionRecord
 	) {
 		$curTitle = $wikiPage->getTitle()->getPrefixedText();
 		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) ||
