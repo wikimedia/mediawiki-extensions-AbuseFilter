@@ -1529,12 +1529,8 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @return bool
 	 */
 	protected static function equalsToAny( $string, $values ) {
-		$string = $string->toString();
-
 		foreach ( $values as $needle ) {
-			$needle = $needle->toString();
-
-			if ( $string === $needle ) {
+			if ( $string->equals( $needle, true ) ) {
 				return true;
 			}
 		}
