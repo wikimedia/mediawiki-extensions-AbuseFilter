@@ -14,6 +14,7 @@
 	"abusefilter-disallowed": "Quest'açion a l'è stæta aotomaticamente identificâ comme dannoza e quindi impedia.\nSe ti creddi che a to açion a l'ea construtiva, informa un aministratô de quello che ti çercavi de fâ.\nQuesta a l'è una breve descriçion da reggola de segueça ch'a l'è stæta violâ: $1",
 	"abusefilter-blocked-display": "Quest'açion a l'è stæta aotomaticamente identificâ comme dannoza e t'è stæto impedio de compîla.\nDe ciu, pe proteze {{SITENAME}}, a to utença e tutti i adressi IP associæ son stæti bloccæ da-o fâ modiffiche.\nSe l'è stæto un errô, pe piaxei contatta un aministratô.\nQuesta a l'è una breve descriçion da reggola de segueça ch'a l'è stæta violâ: $1",
 	"abusefilter-blocker": "Fìltro anti abûxi",
+	"abusefilter-log-linkoncontribs": "fìltro anti abûxi",
 	"abusefilter-log-hide-reason": "Motîvo:",
 	"abusefilter-list-public": "Descriçion pubbrica",
 	"abusefilter-list-options-deleted-hide": "Ascondi i filtri scassæ",
