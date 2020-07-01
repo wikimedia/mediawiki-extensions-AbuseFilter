@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hidayatsrf"
+		]
+	},
+	"apihelp-abusefilterunblockautopromote-param-user": "Nama pengguna dari pengguna yang ingin Anda buka pemblokirannya",
+	"apihelp-query+abusefilters-description": "Tampilkan detail filter penyalahgunaan.",
+	"apihelp-query+abusefilters-summary": "Tampilkan detail filter penyalahgunaan.",
+	"apihelp-query+abuselog-example-1": "Tampilkan entri log terkini",
+	"apierror-abusefilter-canttest": "Anda tidak memiliki izin untuk menguji filter penyalahgunaan",
+	"apierror-abusefilter-cantcheck": "Anda tidak memiliki izin untuk memeriksa sintaksis filter penyalahgunaan",
+	"apierror-abusefilter-badsyntax": "Filter berisi sintaksis yang tidak sah"
+}
