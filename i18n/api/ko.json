@@ -3,6 +3,7 @@
 		"authors": [
 			"Jerrykim306",
 			"Kwj2772",
+			"MemphisA5",
 			"Revi",
 			"Ykhwong",
 			"아라"
@@ -46,7 +47,7 @@
 	"apihelp-query+abuselog-param-end": "나열을 끝낼 타임스탬프.",
 	"apihelp-query+abuselog-param-user": "주어진 사용자 또는 IP 주소에 의한 기록만을 보여줍니다.",
 	"apihelp-query+abuselog-param-title": "주어진 문서에서 발생한 기록만을 보여줍니다.",
-	"apihelp-query+abuselog-param-filter": "주어진 필터 ID에서 발생한 기록만을 보여 줍니다.",
+	"apihelp-query+abuselog-param-filter": "주어진 필터 ID에서 발생한 기록만을 보여 줍니다. 파이프로 구분되며, 전역 필터의 접두사는 \"$1\"입니다.",
 	"apihelp-query+abuselog-param-limit": "나열할 기록의 최대 양.",
 	"apihelp-query+abuselog-param-prop": "가져올 속성입니다.",
 	"apihelp-query+abuselog-example-1": "최근 기록 보기",

@@ -1,8 +1,40 @@
 {
 	"@metadata": {
 		"authors": [
-			"Babamamadidiane"
+			"Babamamadidiane",
+			"Lancine.kounfantoh.fofana"
 		]
 	},
-	"abusefilter-log-nonexistent": "ߡߍ߲ ߟߊߘߏ߲߬ߣߍ߲߫ ߡߊ߬ߟߐ߲߬ߞߏ ߘߐ߫ ߏ߬ ߕߴߦߋ߲߬"
+	"abusefilter-log-search-user": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ",
+	"abusefilter-log-search-group": "ߛߍ߲ߛߍ߲ߟߊ߲ ߞߙߎ:",
+	"abusefilter-log-search-group-any": "ߝߏߛߌ߬",
+	"abusefilter-log-search-filter": "ߛߍ߲ߛߍ߲ߟߊ߲ IDs:",
+	"abusefilter-log-search-title": "ߞߎ߲߬ߕߐ߮:",
+	"abusefilter-log-search-wiki": "ߥߞߌ:",
+	"abusefilter-log-search-impact-all": "ߞߍߟߌ ߟߎ߬ ߓߍ߯",
+	"abusefilter-log-search-impact-saved": "ߡߊ߬ߝߊ߬ߟߋ߲߬ߠߌ߲߬ ߟߊߞߎ߲߬ߘߎ߬ߣߍ߲ ߠߎ߫ ߘߐߙߐ߲߫",
+	"abusefilter-log-search-impact-not-saved": "ߡߝߊ߬ߟߋ߲߬ߠߌ߲߬ ߟߊߞߎ߲߬ߘߎ߬ߣߍ߲ ߠߎ߫ ߛߋ߲߬ ߕߴߊ߬ ߘߐ߫",
+	"abusefilter-log-search-entries-label": "ߦߋߟߌ:",
+	"abusefilter-log-search-entries-all": "ߟߊ߬ߘߏ߲߬ߠߌ߲ ߠߎ߬ ߓߍ߯",
+	"abusefilter-log-search-entries-hidden": "ߟߊ߬ߘߏ߲߬ߠߌ߲߬ ߢߡߊߘߏ߱ߣߍ߲ ߠߎ߬ ߘߐߙߐ߲߫",
+	"abusefilter-log-search-entries-visible": "ߟߊ߬ߘߏ߲߬ߠߌ߲߬ ߦߋߕߊ ߟߎ߬ ߘߐߙߐ߲߫",
+	"abusefilter-log-search-action-other": "ߘߏ߫ ߜߘߍ߫",
+	"abusefilter-log-search-action-any": "ߝߏߛߌ߬",
+	"abusefilter-log-search-action-taken-label": "ߞߍߟߌ ߕߊ߬ߟߌ:",
+	"abusefilter-log-search-action-taken-any": "ߝߏߛߌ߬",
+	"abusefilter-log-search-submit": "ߢߌߣߌ߲ߠߌ߲",
+	"abusefilter-log-detailedentry-local": "ߛߍ߲ߛߍ߲ߟߊ߲ $1",
+	"abusefilter-log-detailslink": "ߝߊߙߊ߲ߝߊ߯ߛߟߌ",
+	"abusefilter-log-hidelink": "ߦߋߟߌ ߝߙߊ߬",
+	"abusefilter-log-details-val": "ߡߐ߬ߟߐ߲",
+	"abusefilter-log-details-vars": "ߞߍߟߌ ߟߊ߬ߓߍ߲߬ߢߐ߲߰ߡߦߊ߬ߘߊ ߟߎ߬",
+	"abusefilter-log-details-checkuser": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߝߛߍ߬ߝߛߍ߬",
+	"abusefilter-log-details-diff": "ߡߊ߬ߝߊ߬ߟߋ߲߬ߠߌ߲ ߡߍ߲ ߠߎ߬ ߛߌ߲ߘߌߣߍ߲߫ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߘߐ߫",
+	"abusefilter-log-nonexistent": "ߡߍ߲ ߟߊߘߏ߲߬ߣߍ߲߫ ߡߊ߬ߟߐ߲߬ߞߏ ߘߐ߫ ߏ߬ ߕߴߦߋ߲߬",
+	"abusefilter-list": "ߛߍ߲ߛߍ߲ߟߊ߲ ߠߎ߬ ߓߍ߯",
+	"abusefilter-list-id": "ߛߍ߲ߛߍ߲ߟߊ߲ ID",
+	"abusefilter-tools-reautoconfirm-user": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ:",
+	"abusefilter-edit-subtitle": "ߛߍ߲ߛߍ߲ߟߊ߲ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ $1",
+	"abusefilter-edit-subtitle-new": "ߛߍ߲ߛߍ߲ߟߊ߲ ߛߌ߲ߘߟߌ",
+	"abusefilter-edit-token-not-match": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߊ߫ ߟߊߞߎ߲߬ߘߎ߫ ߘߋ߬߹ ߊ߬ ߟߊߞߎ߲߬ߘߎ߬ ߌߞߐ߫ ߖߊ߰ߣߌ߲߫."
 }
