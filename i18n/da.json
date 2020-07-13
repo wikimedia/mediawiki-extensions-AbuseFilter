@@ -134,6 +134,7 @@
 	"abusefilter-list-options-scope-local": "Kun lokale regler",
 	"abusefilter-list-options-scope-global": "Kun globale regler",
 	"abusefilter-list-options-scope-all": "Lokale og globale regler",
+	"abusefilter-list-options-further-options": "Yderligere indstillinger:",
 	"abusefilter-list-options-hidedisabled": "Skjul deaktiverede filtre",
 	"abusefilter-list-options-searchpattern": "Indsæt et mønster",
 	"abusefilter-list-options-submit": "Opdatér",

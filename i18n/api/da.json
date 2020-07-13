@@ -4,5 +4,7 @@
 			"Saederup92"
 		]
 	},
-	"apihelp-query+abusefilters-param-prop": "Hvilke egenskaber at få."
+	"apihelp-abusefilterunblockautopromote-param-user": "Brugernavnet åp brugeren du ønsker at fjerne blokeringen fra.",
+	"apihelp-query+abusefilters-param-prop": "Hvilke egenskaber at få.",
+	"apihelp-query+abuselog-param-prop": "Hvilke egenskaber der skal hentes."
 }
