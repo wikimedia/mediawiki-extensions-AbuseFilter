@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Akansha",
 			"Ansumang",
 			"ArmouredCyborg",
@@ -59,6 +60,7 @@
 	"abusefilter-log-summary": "यह लॉग फ़िल्टरों द्वारा पकड़े गए सभी कार्यों की सूची दिखाता है।",
 	"abusefilter-log-search": "दुरुपयोग लॉग खोज",
 	"abusefilter-log-search-user": "सदस्य:",
+	"abusefilter-log-search-group-any": "कोई",
 	"abusefilter-log-search-filter": "फ़िल्टर IDs (पाइप के साथ अलग):",
 	"abusefilter-log-search-title": "शीर्षक:",
 	"abusefilter-log-search-wiki": "विकी:",
@@ -66,6 +68,8 @@
 	"abusefilter-log-search-entries-label": "दृश्यता:",
 	"abusefilter-log-search-entries-all": "सभी प्रविष्टियाँ",
 	"abusefilter-log-search-entries-hidden": "केवल छुपी प्रविष्टियां",
+	"abusefilter-log-search-action-other": "अन्य",
+	"abusefilter-log-search-action-any": "कोई भी",
 	"abusefilter-log-search-action-taken-any": "कोई",
 	"abusefilter-log-search-submit": "खोज",
 	"abusefilter-log-entry": "$1: $2 द्वारा $4 पर किये कार्य \"$3\" को दुरुपयोग फ़िल्टर ने पकड़ा।\nफ़िल्टर द्वारा उठाया गया कदम: $5;\nफ़िल्टर विवरण: $6",
