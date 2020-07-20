@@ -209,6 +209,7 @@
 	"abusefilter-edit-test-link": "সাম্প্রতিক সম্পাদনাগুলির সাথে এই ছাঁকনি পরীক্ষা করুন",
 	"abusefilter-edit-export": "এই ছাঁকনিটি অন্য উইকিতে রপ্তানি করুন",
 	"abusefilter-edit-syntaxok": "কোন শব্দবিন্যাস ত্রুটি পাওয়া যায়নি।",
+	"abusefilter-edit-syntaxerr": "সিনট্যাক্স ত্রুটি সনাক্ত হয়েছে: $1",
 	"abusefilter-edit-builder-op-arithmetic-addition": "যোগ (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "বিয়োগ (-)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "গুন (*)",

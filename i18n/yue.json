@@ -6,6 +6,7 @@
 			"Hello903hello",
 			"Horacewai2",
 			"Matma Rex",
+			"Moon0319",
 			"Shinjiman",
 			"Waihorace",
 			"Wong128hk"
@@ -151,7 +152,7 @@
 	"abusefilter-edit-check": "檢查語法",
 	"abusefilter-edit-badfilter": "你所指定嘅過濾器唔存在",
 	"abusefilter-edit-revert": "還原由呢個過濾器嘅動作",
-	"abusefilter-edit-tools": "工具:",
+	"abusefilter-edit-tools": "架撐:",
 	"abusefilter-edit-test-link": "用呢個過濾器試最近嘅編輯",
 	"abusefilter-edit-export": "倒出呢個過濾器到另一個wiki",
 	"abusefilter-edit-syntaxok": "偵測到無語法錯誤。",
