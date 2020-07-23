@@ -3,7 +3,8 @@
 		"authors": [
 			"Bikarhêner",
 			"George Animal",
-			"Ghybu"
+			"Ghybu",
+			"Guherto"
 		]
 	},
 	"abusefilter-log-search-user": "Bikarhêner:",
@@ -72,7 +73,7 @@
 	"abusefilter-action-block": "Asteng bike",
 	"abusefilter-action-degroup": "Ji koman rake",
 	"abusefilter-action-disallow": "Nehêle",
-	"abusefilter-revert-filter": "Fîltre:",
+	"abusefilter-revert-filter": "IDya Fîltreyê:",
 	"abusefilter-revert-confirm": "Pesend bike",
 	"abusefilter-revert-reasonfield": "Sedem:",
 	"abusefilter-test-submit": "Test",
