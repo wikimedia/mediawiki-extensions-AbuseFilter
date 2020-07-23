@@ -138,7 +138,7 @@ class AbuseFilterVariableHolder {
 				__METHOD__ . ": requested unset variable {varname} in strict mode, filter: {filter}",
 				[
 					'varname' => $varName,
-					'trace' => ( new Exception )->getTraceAsString(),
+					'exception' => new RuntimeException(),
 					'filter' => $tempFilter ?? 'unavailable'
 				]
 			);
