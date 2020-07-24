@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bjh21",
 			"Caliburn",
 			"Chase me ladies, I'm the Cavalry",
 			"Shirayuki"
 		]
 	},
 	"abusefilter-desc": "Applies automatic heuristics to edits",
-	"right-abusefilter-modify": "Modify abuse filters",
+	"right-abusefilter-modify": "Create or modify abuse filters",
 	"abusefilter-log-search-user": "User:",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalise confusable characters (ccnorm)",
 	"abusefilter-edit-builder-funcs-norm": "Normalise (norm)",

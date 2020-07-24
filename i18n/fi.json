@@ -42,7 +42,7 @@
 	"abusefilter-blocker": "Väärinkäyttösuodatin",
 	"abusefilter-blockreason": "Automaattisesti estetty väärinkäyttösuodattimella.\nToimintoa vastaavan säännön kuvaus: $1",
 	"abusefilter-degroupreason": "Oikeudet automaattisesti poistettu väärinkäyttösuodattimen toimesta.\nSäännön kuvaus: $1",
-	"abusefilter-accountreserved": "Tämä käyttäjätunnus on varattu väärinkäyttösuodattimen käyttöön.",
+	"abusefilter-accountreserved": "Tämä käyttäjänimi on varattu väärinkäyttösuodattimen käyttöön.",
 	"right-abusefilter-modify": "Luoda tai muokata väärinkäyttösuodattimia",
 	"right-abusefilter-view": "Nähdä väärinkäyttösuodattimien sisältö",
 	"right-abusefilter-log": "Nähdä väärinkäyttöloki",
