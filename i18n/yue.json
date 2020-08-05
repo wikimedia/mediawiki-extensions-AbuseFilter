@@ -7,6 +7,7 @@
 			"Horacewai2",
 			"Matma Rex",
 			"Moon0319",
+			"Roy17",
 			"Shinjiman",
 			"Waihorace",
 			"Wong128hk"
@@ -64,7 +65,7 @@
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|爾位用戶}}嘅濫用紀錄",
 	"abusefilter-log-linkonhistory": "去睇濫用過濾器紀錄",
 	"abusefilter-log-linkonhistory-text": "睇呢頁嘅濫用過濾器紀錄",
-	"abusefilter-list": "冚唪唥嘅過濾器",
+	"abusefilter-list": "全部過濾器",
 	"abusefilter-list-id": "過濾器ID",
 	"abusefilter-list-status": "狀態",
 	"abusefilter-list-public": "公共描述",
