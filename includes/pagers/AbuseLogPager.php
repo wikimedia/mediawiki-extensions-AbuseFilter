@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Cache\LinkBatchFactory;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class AbuseLogPager extends ReverseChronologicalPager {
@@ -13,14 +14,19 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public $mConds;
 
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/**
 	 * @param SpecialAbuseLog $form
 	 * @param array $conds
+	 * @param LinkBatchFactory $linkBatchFactory
 	 */
-	public function __construct( SpecialAbuseLog $form, $conds = [] ) {
+	public function __construct( SpecialAbuseLog $form, $conds, LinkBatchFactory $linkBatchFactory ) {
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		parent::__construct();
+		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
 	/**
@@ -65,7 +71,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			return;
 		}
 
-		$lb = new LinkBatch();
+		$lb = $this->linkBatchFactory->newLinkBatch();
 		$lb->setCaller( __METHOD__ );
 		foreach ( $result as $row ) {
 			// Only for local wiki results

@@ -63,7 +63,12 @@
 		}
 	},
 	"SpecialPages": {
-		"AbuseLog": "SpecialAbuseLog",
+		"AbuseLog": {
+			"class": "SpecialAbuseLog",
+			"services": [
+				"LinkBatchFactory"
+			]
+		},
 		"AbuseFilter": "SpecialAbuseFilter"
 	},
 	"LogTypes": [

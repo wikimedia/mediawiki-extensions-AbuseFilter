@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
@@ -58,11 +59,15 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var string The filter group to search, as defined in $wgAbuseFilterValidGroups */
 	protected $mSearchGroup;
 
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/**
-	 * @inheritDoc
+	 * @param LinkBatchFactory $linkBatchFactory
 	 */
-	public function __construct() {
+	public function __construct( LinkBatchFactory $linkBatchFactory ) {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
+		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
 	/**
@@ -585,7 +590,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 		}
 
-		$pager = new AbuseLogPager( $this, $conds );
+		$pager = new AbuseLogPager( $this, $conds, $this->linkBatchFactory );
 		$pager->doQuery();
 		$result = $pager->getResult();
 		if ( $result && $result->numRows() !== 0 ) {
