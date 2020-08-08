@@ -26,7 +26,7 @@ class AbuseFilter {
 	/** @var string The prefix to use for global filters */
 	public const GLOBAL_FILTER_PREFIX = 'global-';
 
-	/*
+	/**
 	 * @var array Map of (action ID => string[])
 	 * @fixme avoid global state here
 	 */
