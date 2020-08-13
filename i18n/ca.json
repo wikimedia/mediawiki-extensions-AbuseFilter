@@ -350,7 +350,7 @@
 	"abusefilter-edit-builder-vars-file-mime": "Tipus MIME del fitxer",
 	"abusefilter-edit-builder-vars-file-mediatype": "Tipus de mitjà del fitxer",
 	"abusefilter-edit-builder-vars-file-width": "Amplada del fitxer en píxels",
-	"abusefilter-edit-builder-vars-file-height": "Alçada del fitxer en píxels",
+	"abusefilter-edit-builder-vars-file-height": "Alçària del fitxer en píxels",
 	"abusefilter-filter-log": "Canvis recents als filtres",
 	"abusefilter-history": "Historial de les modificacions del filtre d'abusos #$1",
 	"abusefilter-history-foruser": "Canvis per $1",
