@@ -56,7 +56,6 @@ class AFComputedVariable {
 
 		$edit = (object)[];
 		$options = ParserOptions::newFromUser( $user );
-		$options->setTidy( true );
 		$parser = MediaWikiServices::getInstance()->getParser();
 		$edit->output = $parser->parse( $wikitext, $article->getTitle(), $options );
 		$cache[$cacheKey] = $edit;
