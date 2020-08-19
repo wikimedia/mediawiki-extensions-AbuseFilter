@@ -481,6 +481,11 @@ class AFComputedVariable {
 				break;
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
+				if ( $timestamp === null ) {
+					// Temporary BC for T246539#6388362
+					$result = '[Revision text not available]';
+					break;
+				}
 				$title = $this->buildTitle( $parameters['namespace'], $parameters['title'] );
 				$revRec = $services
 					->getRevisionStore()
