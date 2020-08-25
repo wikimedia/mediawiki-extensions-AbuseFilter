@@ -34,8 +34,9 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 			case 'af_actions':
 				$actions = explode( ',', $value );
 				$displayActions = [];
+				$context = $this->getContext();
 				foreach ( $actions as $action ) {
-					$displayActions[] = AbuseFilter::getActionDisplay( $action );
+					$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
 				}
 				return $lang->commaList( $displayActions );
 			case 'af_enabled':

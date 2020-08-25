@@ -105,10 +105,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$results = $this->doLookup();
 			$list = [];
 
+			$context = $this->getContext();
 			foreach ( $results as $result ) {
-				$displayActions = array_map(
-					[ 'AbuseFilter', 'getActionDisplay' ],
-					$result['actions'] );
+				$displayActions = [];
+				foreach ( $result['actions'] as $action ) {
+					$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
+				}
 
 				$msg = $this->msg( 'abusefilter-revert-preview-item' )
 					->params(

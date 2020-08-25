@@ -256,8 +256,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'default' => 'any',
 		];
 		$options = [];
+		$context = $this->getContext();
 		foreach ( $this->getAllActions() as $action ) {
-			$key = AbuseFilter::getActionDisplay( $action );
+			$key = AbuseFilter::getActionDisplay( $action, $context );
 			$options[$key] = $action;
 		}
 		ksort( $options );
@@ -1104,8 +1105,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$actions = explode( ',', $actions_takenRaw );
 			$displayActions = [];
 
+			$context = $this->getContext();
 			foreach ( $actions as $action ) {
-				$displayActions[] = AbuseFilter::getActionDisplay( $action );
+				$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
 			}
 			$actions_taken = $lang->commaList( $displayActions );
 		}
