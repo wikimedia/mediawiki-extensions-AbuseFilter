@@ -243,12 +243,13 @@ class AbuseFilter {
 	];
 
 	/**
-	 * @deprecated Use VariableGenerator::addUserVars()
+	 * @deprecated Since 1.35 Use VariableGenerator::addUserVars()
 	 * @param User $user
 	 * @param RecentChange|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateUserVars( User $user, RecentChange $entry = null ) {
+		wfDeprecated( __METHOD__, '1.35' );
 		$vars = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $vars );
 		return $generator->addUserVars( $user, $entry )->getVariableHolder();
@@ -316,13 +317,14 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated Use VariableGenerator::addTitleVars
+	 * @deprecated Since 1.35 Use VariableGenerator::addTitleVars
 	 * @param Title|null $title
 	 * @param string $prefix
 	 * @param RecentChange|null $entry
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateTitleVars( $title, $prefix, RecentChange $entry = null ) {
+		wfDeprecated( __METHOD__, '1.35' );
 		$vars = new AbuseFilterVariableHolder();
 		if ( !( $title instanceof Title ) ) {
 			return $vars;
@@ -332,10 +334,11 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated Use VariableGenerator::addGenericVars
+	 * @deprecated Since 1.35 Use VariableGenerator::addGenericVars
 	 * @return AbuseFilterVariableHolder
 	 */
 	public static function generateGenericVars() {
+		wfDeprecated( __METHOD__, '1.35' );
 		$vars = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $vars );
 		return $generator->addGenericVars()->getVariableHolder();
