@@ -908,7 +908,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$user = $this->getUser();
 
 		if ( !self::canSeePrivateDetails( $user ) ) {
-			$out->addWikiMsg( 'abusefilter-log-cannot-see-private-details' );
+			$out->addWikiMsg( 'abusefilter-log-cannot-see-privatedetails' );
 
 			return;
 		}
