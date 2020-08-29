@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
-
 /**
  * This class formats abuse log notifications.
  *
@@ -14,7 +12,7 @@ class AbuseLogHitFormatter extends LogFormatter {
 	 */
 	protected function getMessageParameters() {
 		$entry = $this->entry->getParameters();
-		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+		$linkRenderer = $this->getLinkRenderer();
 		$params = parent::getMessageParameters();
 
 		$filter_title = SpecialPage::getTitleFor( 'AbuseFilter', $entry['filter'] );
