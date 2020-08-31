@@ -1050,7 +1050,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$linkRenderer = $this->getLinkRenderer();
 
 		if ( !$row->afl_wiki ) {
-			$pageLink = $linkRenderer->makeLink( $title );
+			$pageLink = $linkRenderer->makeLink(
+				$title,
+				null,
+				[],
+				[ 'redirect' => 'no' ]
+			);
 			if ( $row->afl_rev_id && $title->exists() ) {
 				$diffLink = $linkRenderer->makeKnownLink(
 					$title,
