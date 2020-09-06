@@ -201,7 +201,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Bu filtrenin eski bir sürümünü değiştiriyorsunuz.\nGösterilen istatistikler bu filtrenin en güncel sürümü içindir.\nEğer değişikliklerinizi kaydederseniz, değişiklik yaptığınız revizyondan itibaren tüm değişikliklerin üzerine yazacaksınız.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrenin geçmişine geri dön]].",
 	"abusefilter-edit-oldwarning-view": "<strong>Bu filtrenin eski bir sürümünü görüntülüyorsunuz.\nAlıntılanan istatistikler filtrenin en son sürümleri içindir.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrenin geçmişine dön]].",
 	"abusefilter-edit-status-label": "İstatistikler:",
-	"abusefilter-edit-status": "Son $1{{PLURAL:$1|işlem|işlem}} içinden, bu filtre $2 (%$3) ile eşleşmiştir.\nOrtalama olarak, çalışma süresi $4 ms'dir ve koşul sınırının $5 {{PLURAL:$5|şart|şart}} harcar.",
+	"abusefilter-edit-status": "Bu süzgeç son $1 işlemden $2 tanesi (%$3) ile eşleşmiştir.\nÇalışma süresi ortalama $4 ms'dir ve koşul sınırının $5 koşulunu tüketmektedir.",
 	"abusefilter-edit-throttled-warning": "'''Uyarı:''' Bu filtre otomatik olarak zararlı olarak işaretlendi. Bir güvenlik önlemi olarak, aşağıdaki eylemler yürütülmeyecektir ($1). Lütfen bu kısıtlamayı kaldırmak için koşullarınızı gözden geçirin ve [[mw:Extension:AbuseFilter/Conditions|optimize]] edinin",
 	"abusefilter-edit-new": "Yeni süzgeç",
 	"abusefilter-edit-save": "Süzgeci kaydet",

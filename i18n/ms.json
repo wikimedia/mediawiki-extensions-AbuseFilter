@@ -53,6 +53,7 @@
 	"abusefilter-log-search-filter": "ID penapis (asingkan dengan tanda paip \"|\"):",
 	"abusefilter-log-search-title": "Tajuk:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-entries-all": "Semua masukan",
 	"abusefilter-log-search-submit": "Cari",
 	"abusefilter-log-entry": "$1: $2 mencetuskan penapis salah guna, melakukan tindakan \"$3\" pada $4.\nTindakan diambil: $5;\nHuraian penapis: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 telah mencetuskan penapis salah guna dengan melakukan tindakan \"$3\" di $4.\nTindakan diambil: $5;\nKeterangan penapis: $6 ($7)",
@@ -80,8 +81,10 @@
 	"abusefilter-log-hide-id": "ID entri log:",
 	"abusefilter-log-hide-hidden": "Sorokkan entri ini daripada tatapan umum",
 	"abusefilter-log-hide-reason": "Sebab:",
+	"abusefilter-log-hide-reason-other": "Sebab lain/tambahan:",
 	"abusefilter-log-hide-forbidden": "Anda tiada kebenaran untuk menyorokkan entri log penyalahgunaan.",
 	"logentry-abusefilter-hit": "$1 mencetuskan $4, melakukan tindakan \"$5\" pada $3. Tindakan yang diambil: $6 ($7)",
+	"log-action-filter-abusefilter": "Jenis perubahan penapis:",
 	"abusefilter-list": "Semua penapis",
 	"abusefilter-list-id": "ID penapis",
 	"abusefilter-list-pattern": "Corak",
@@ -162,6 +165,7 @@
 	"abusefilter-edit-throttle-groups-help-text": "pendokumenan di mediawiki.org",
 	"abusefilter-throttle-ip": "Alamat IP",
 	"abusefilter-throttle-user": "akaun pengguna",
+	"abusefilter-throttle-site": "seluruh tapak",
 	"abusefilter-throttle-page": "laman",
 	"abusefilter-throttle-none": "(tiada)",
 	"abusefilter-edit-warn-message": "Pesanan sistem yang digunakan untuk amaran:",
@@ -362,6 +366,7 @@
 	"abusefilter-test-syntaxerr": "Penapis yang anda isikan itu ada ralat sintaks.\nAnda boleh menerima penjelasan penuh dengan mengklik butang \"{{int:abusefilter-edit-check}}\".",
 	"abusefilter-test-badtitle": "Tajuk halaman yang anda isikan itu tidak sah. Ia mungkin mengandungi aksara yang tidak boleh digunakan dalam tajuk.",
 	"abusefilter-test-search-type-edit": "Suntingan",
+	"abusefilter-test-search-type-upload": "Muat naik",
 	"abusefilter-changeslist-examine": "periksa",
 	"abusefilter-examine": "Periksa perubahan satu demi satu",
 	"abusefilter-examine-intro": "Laman ini membolehkan anda memeriksa pembolehubah yang dijana oleh Penapis Salah Guna untuk satu perubahan tertentu, dan mengujinya dengan penapis.",
@@ -401,5 +406,7 @@
 	"abusefilter-import-intro": "Anda boleh menggunakan antara muka ini untuk mengimport penapis dari wiki lain.\nDalam wiki sumber, klik \"{{int:abusefilter-edit-export}}\" di bawah \"{{int:abusefilter-edit-tools}}\" di antara muka penyuntingan.\nSalin dari ruangan teks yang muncul, kemudian tampalkannya ke dalam ruangan teks ini, kemudian klik \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Import data",
 	"abusefilter-group-default": "Asali",
-	"abusefilter-http-error": "Berlakunya ralat HTTP: $1."
+	"abusefilter-http-error": "Berlakunya ralat HTTP: $1.",
+	"abusefilter-view-privatedetails-submit": "Lihat butiran peribadi",
+	"abusefilter-view-privatedetails-legend": "Lihat butiran peribadi"
 }
