@@ -151,6 +151,7 @@
 	"abusefilter-enabled": "Käytössä",
 	"abusefilter-deleted": "Poistettu",
 	"abusefilter-disabled": "Poistettu käytöstä",
+	"abusefilter-throttled": "rajoitettu",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|osuma|osumaa}}",
 	"abusefilter-new": "Luo uusi suodatin",
 	"abusefilter-return": "Palaa suodattimien hallintaan",
