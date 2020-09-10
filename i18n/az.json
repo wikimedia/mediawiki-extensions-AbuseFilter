@@ -9,7 +9,8 @@
 			"Toghrul Rahimli",
 			"Vago",
 			"Vugar 1981",
-			"Wertuose"
+			"Wertuose",
+			"Şeyx Şamil"
 		]
 	},
 	"abusefilter-desc": "Düzəlişlərə evristik filtrlərin tətbiq olunmasına imkan verir.",
@@ -221,6 +222,7 @@
 	"abusefilter-test-period-start": "Dəyişikliklər bundan sonra edilib:",
 	"abusefilter-test-period-end": "Dəyişikliklər bundan əvvəl edilib:",
 	"abusefilter-test-page": "Dəyişikliklər bu səhifədə edilib:",
+	"abusefilter-test-search-type-edit": "Redaktələr",
 	"abusefilter-examine-legend": "Dəyişiklikləri seçilməsi",
 	"abusefilter-examine-diff": "URL-in fərqi:",
 	"abusefilter-examine-user": "İstifadəçi:",
