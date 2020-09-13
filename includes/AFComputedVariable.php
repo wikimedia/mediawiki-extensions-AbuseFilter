@@ -166,6 +166,11 @@ class AFComputedVariable {
 		// TODO: find a way to inject the User object from hook parameters.
 		global $wgUser;
 
+		// Used for parsing wikitext from saved revisions and checking for
+		// whether to show fields. Do not use $wgUser below here, in preparation
+		// for eventually injecting. See T246733
+		$computeForUser = $wgUser;
+
 		$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 		$parameters = $this->mParameters;
 		$result = null;
@@ -269,7 +274,7 @@ class AFComputedVariable {
 					$editInfo = $this->parseNonEditWikitext(
 						$wikitext,
 						$article,
-						$wgUser
+						$computeForUser
 					);
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 				} else {
@@ -353,7 +358,7 @@ class AFComputedVariable {
 						$editInfo = $this->parseNonEditWikitext(
 							$text,
 							$article,
-							$wgUser
+							$computeForUser
 						);
 						$result = $editInfo->output->getText();
 					}
@@ -477,7 +482,7 @@ class AFComputedVariable {
 				$revRec = $services
 					->getRevisionLookup()
 					->getRevisionById( $parameters['revid'] );
-				$result = AbuseFilter::revisionToString( $revRec, $wgUser );
+				$result = AbuseFilter::revisionToString( $revRec, $computeForUser );
 				break;
 			case 'revision-text-by-timestamp':
 				$timestamp = $parameters['timestamp'];
@@ -490,7 +495,7 @@ class AFComputedVariable {
 				$revRec = $services
 					->getRevisionStore()
 					->getRevisionByTimestamp( $title, $timestamp );
-				$result = AbuseFilter::revisionToString( $revRec, $wgUser );
+				$result = AbuseFilter::revisionToString( $revRec, $computeForUser );
 				break;
 			case 'get-wiki-name':
 				$result = WikiMap::getCurrentWikiDbDomain()->getId();
