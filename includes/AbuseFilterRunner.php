@@ -1261,6 +1261,8 @@ class AbuseFilterRunner {
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' )
 				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false
 			) {
+				global $wgCheckUserLogAdditionalRights;
+				$wgCheckUserLogAdditionalRights[] = 'abusefilter-view';
 				$rc = $entry->getRecentChange();
 				CheckUserHooks::updateCheckUserData( $rc );
 			}
