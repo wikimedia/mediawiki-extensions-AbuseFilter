@@ -701,10 +701,12 @@ class AbuseFilterHooks {
 		LinkRenderer $linkRenderer,
 		array &$links
 	) {
-		$user = $context->getUser();
-		if ( MediaWikiServices::getInstance()->getPermissionManager()
-			->userHasRight( $user, 'abusefilter-log' )
-		) {
+		$pm = MediaWikiServices::getInstance()->getPermissionManager();
+		$show = $pm->userHasRight( $context->getUser(), 'abusefilter-log' );
+		$action = $context->getRequest()->getVal( 'action', 'view' );
+
+		// For 'history action', the link would be added by HistoryPageToolLinks hook.
+		if ( $show && $action !== 'history' ) {
 			$links[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkonundelete' )->text(),
