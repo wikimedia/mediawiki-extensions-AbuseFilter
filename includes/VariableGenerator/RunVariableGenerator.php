@@ -223,7 +223,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param UploadBase $upload
 	 * @param string|null $summary
 	 * @param string|null $text
-	 * @param array $props
+	 * @param array|null $props
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public function getUploadVars(
@@ -231,7 +231,7 @@ class RunVariableGenerator extends VariableGenerator {
 		UploadBase $upload,
 		?string $summary,
 		?string $text,
-		array $props
+		?array $props
 	) : ?AbuseFilterVariableHolder {
 		$mimeAnalyzer = MediaWikiServices::getInstance()->getMimeAnalyzer();
 		if ( !$props ) {

@@ -43,7 +43,6 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers AbuseFilterPreAuthenticationProvider
  * @covers AbuseFilterParser
- * @todo Add upload actions everywhere
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	/**
@@ -297,6 +296,17 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'actions' => [
 				'blockautopromote' => []
 			]
+		],
+		22 => [
+			'af_pattern' => 'action contains "upload" & "Block me" in added_lines & file_size > 0 & ' .
+				'file_mime contains "/" & file_width + file_height > 0 & summary !== ""',
+			'af_public_comments' => 'Filter for uploads',
+			'actions' => [
+				'warn' => [
+					'abusefilter-random-upload'
+				],
+				'blockautopromote' => []
+			]
 		]
 	];
 	// phpcs:enable Generic.Files.LineLength
@@ -360,6 +370,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	protected function tearDown() : void {
 		// Paranoia: ensure no fake timestamp leftover
 		MWTimestamp::setFakeTime( false );
+		// Clear any upload
+		$_FILES = [];
 		parent::tearDown();
 	}
 
@@ -507,6 +519,35 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * Upload a file. This is based on ApiUploadTestCase::fakeUploadFile
+	 * @param string $fileName
+	 * @param string $pageText
+	 * @param string $summary
+	 * @return Status
+	 */
+	private function doUpload( string $fileName, string $pageText, string $summary ) : Status {
+		$imgGen = new RandomImageGenerator();
+		// Use SVG, since the ImageGenerator doesn't need anything special to create it
+		$format = 'svg';
+		$mime = 'image/svg+xml';
+		$filePath = $imgGen->writeImages( 1, $format, $this->getNewTempDirectory() )[0];
+		clearstatcache();
+		$_FILES[ 'wpUploadFile' ] = [
+			'name' => $fileName,
+			'type' => $mime,
+			'tmp_name' => $filePath,
+			'error' => UPLOAD_ERR_OK,
+			'size' => filesize( $filePath ),
+		];
+		$request = new FauxRequest( [
+			'wpDestFile' => $fileName
+		] );
+		$ub = UploadBase::createFromRequest( $request );
+		$ub->verifyUpload();
+		return $ub->performUpload( $summary, $pageText, false, $this->user );
+	}
+
+	/**
 	 * Executes an action to filter
 	 *
 	 * @param array $params Parameters of the action
@@ -568,6 +609,13 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				$logEntry->setTarget( $user->getUserPage() );
 				$logid = $logEntry->insert();
 				$logEntry->publish( $logid );
+				break;
+			case 'upload':
+				$status = $this->doUpload(
+					$params['target'],
+					$params['newText'] ?? 'AbuseFilter test upload',
+					$params['summary'] ?? 'Test'
+				);
 				break;
 			default:
 				throw new UnexpectedValueException( 'Unrecognized action ' . $params['action'] );
@@ -966,6 +1014,24 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'summary' => ''
 				],
 				[]
+			],
+			'Test upload action' => [
+				[ 5 ],
+				[
+					'action' => 'upload',
+					'target' => 'MyFile.jpg',
+				],
+				[ 'tag' => [ 5 ] ]
+			],
+			'Test upload action 2' => [
+				[ 22 ],
+				[
+					'action' => 'upload',
+					'target' => 'MyFile.jpg',
+					'newText' => 'Block me please!',
+					'summary' => 'Asking to be blocked'
+				],
+				[ 'warn' => [ 22 ] ]
 			],
 		];
 	}
