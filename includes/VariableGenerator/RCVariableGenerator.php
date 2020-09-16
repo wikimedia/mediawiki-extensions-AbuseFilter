@@ -41,29 +41,6 @@ class RCVariableGenerator extends VariableGenerator {
 	}
 
 	/**
-	 * Get an instance for a given rc_id.
-	 *
-	 * @todo FIXME this method doesn't appear to have any uses
-	 *
-	 * @param int $id
-	 * @param AbuseFilterVariableHolder $vars
-	 * @param User $contextUser
-	 * @return self|null
-	 */
-	public static function newFromId(
-		int $id,
-		AbuseFilterVariableHolder $vars,
-		User $contextUser
-	) : ?self {
-		$rc = RecentChange::newFromId( $id );
-
-		if ( !$rc ) {
-			return null;
-		}
-		return new self( $vars, $rc, $contextUser );
-	}
-
-	/**
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public function getVars() : ?AbuseFilterVariableHolder {
@@ -89,8 +66,10 @@ class RCVariableGenerator extends VariableGenerator {
 			$this->addEditVarsForRow();
 		} else {
 			// @todo Ensure this cannot happen, and throw if it does
+			// @codeCoverageIgnoreStart
 			wfLogWarning( 'Cannot understand the given recentchanges row!' );
 			return null;
+			// @codeCoverageIgnoreEnd
 		}
 
 		$this->addGenericVars();
@@ -178,10 +157,12 @@ class RCVariableGenerator extends VariableGenerator {
 			$title, [ 'time' => $time, 'private' => $this->contextUser ]
 		);
 		if ( !$file ) {
-			// FixMe This shouldn't happen!
+			// @fixme Ensure this cannot happen!
+			// @codeCoverageIgnoreStart
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->debug( "Cannot find file from RC row with title $title" );
+			$logger->warning( "Cannot find file from RC row with title $title" );
 			return $this;
+			// @codeCoverageIgnoreEnd
 		}
 
 		// This is the same as AbuseFilterHooks::filterUpload, but from a different source

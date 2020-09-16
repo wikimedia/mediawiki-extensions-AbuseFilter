@@ -12,12 +12,17 @@ use MediaWiki\MediaWikiServices;
  * @group Database
  */
 class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
+	use AbuseFilterCreateAccountTestTrait;
+	use AbuseFilterUploadTestTrait;
+
 	protected $tablesUsed = [
 		'page',
 		'text',
 		'page_restrictions',
 		'user',
 		'recentchanges',
+		'image',
+		'oldimage',
 	];
 
 	/**
@@ -25,6 +30,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 */
 	protected function tearDown() : void {
 		MWTimestamp::setFakeTime( false );
+		$this->clearUploads();
 		parent::tearDown();
 	}
 
@@ -259,7 +265,8 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		$expectedValues = [
 			'user_name' => $user->getName(),
 			'action' => $action,
-			'summary' => $summary
+			'summary' => $summary,
+			'timestamp' => $timestamp
 		];
 
 		switch ( $type ) {
@@ -269,13 +276,11 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			case 'edit':
 				$newText = 'Some new text for testing RC vars.';
 				$this->editPage( $title->getText(), $newText, $summary, $title->getNamespace(), $user );
-
 				$expectedValues += [
 					'page_id' => $page->getId(),
 					'page_namespace' => $title->getNamespace(),
 					'page_title' => $title->getText(),
-					'page_prefixedtitle' => $title->getPrefixedText(),
-					'timestamp' => $timestamp
+					'page_prefixedtitle' => $title->getPrefixedText()
 				];
 				break;
 			case 'move':
@@ -293,8 +298,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 					'moved_to_id' => $newID,
 					'moved_to_namespace' => $newTitle->getNamespace(),
 					'moved_to_title' => $newTitle->getText(),
-					'moved_to_prefixedtitle' => $newTitle->getPrefixedText(),
-					'timestamp' => $timestamp
+					'moved_to_prefixedtitle' => $newTitle->getPrefixedText()
 				];
 				break;
 			case 'delete':
@@ -303,24 +307,12 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 					'page_id' => $page->getId(),
 					'page_namespace' => $title->getNamespace(),
 					'page_title' => $title->getText(),
-					'page_prefixedtitle' => $title->getPrefixedText(),
-					'timestamp' => $timestamp
+					'page_prefixedtitle' => $title->getPrefixedText()
 				];
 				break;
 			case 'newusers':
-				// FIXME AuthManager doesn't expose the method for doing this. And mocking AuthManager
-				// and everything here seems overkill.
 				$accountName = 'AbuseFilter dummy user';
-				$subType = $action === 'createaccount' ? 'create2' : 'autocreate';
-				$logEntry = new \ManualLogEntry( 'newusers', $subType );
-				$logEntry->setPerformer( $user );
-				$logEntry->setTarget( Title::makeTitle( NS_USER, $accountName ) );
-				$logEntry->setComment( 'Fooobarcomment' );
-				$logEntry->setParameters( [
-					'4::userid' => $user->getId(),
-				] );
-				$logid = $logEntry->insert();
-				$logEntry->publish( $logid );
+				$this->createAccount( $accountName, $user, $action === 'autocreateaccount' );
 
 				$expectedValues = [
 					'action' => $action,
@@ -330,9 +322,29 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 				];
 				break;
 			case 'upload':
-				// TODO Same problem as AuthManager, but worse because here we'd really have to
-				// upload a file (addUploadVars immediately tries reading the file)
-				$this->markTestIncomplete( 'Implement "upload" case!' );
+				$fileName = 'My File.svg';
+				$destTitle = Title::makeTitle( NS_FILE, $fileName );
+				$page = WikiPage::factory( $destTitle );
+				[ $status, $this->clearPath ] = $this->doUpload( $user, $fileName, 'Some text', $summary );
+				if ( !$status->isGood() ) {
+					throw new LogicException( "Cannot upload file:\n$status" );
+				}
+
+				// Since the SVG is randomly generated, we need to read some properties live
+				$file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->newFile( $destTitle );
+				$expectedValues += [
+					'page_id' => $page->getId(),
+					'page_namespace' => $destTitle->getNamespace(),
+					'page_title' => $destTitle->getText(),
+					'page_prefixedtitle' => $destTitle->getPrefixedText(),
+					'file_sha1' => \Wikimedia\base_convert( $file->getSha1(), 36, 16, 40 ),
+					'file_size' => $file->getSize(),
+					'file_mime' => 'image/svg+xml',
+					'file_mediatype' => 'DRAWING',
+					'file_width' => $file->getWidth(),
+					'file_height' => $file->getHeight(),
+					'file_bits_per_channel' => $file->getBitDepth(),
+				];
 				break;
 			default:
 				throw new LogicException( "Type $type not recognized!" );

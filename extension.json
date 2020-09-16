@@ -189,7 +189,9 @@
 	},
 	"TestAutoloadClasses": {
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
-		"AbuseFilterParserTestCase": "tests/phpunit/unit/AbuseFilterParserTestCase.php"
+		"AbuseFilterParserTestCase": "tests/phpunit/unit/AbuseFilterParserTestCase.php",
+		"AbuseFilterUploadTestTrait": "tests/phpunit/AbuseFilterUploadTestTrait.php",
+		"AbuseFilterCreateAccountTestTrait": "tests/phpunit/AbuseFilterCreateAccountTestTrait.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {
