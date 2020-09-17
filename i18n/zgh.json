@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hakim1bal",
 			"Mdb897"
 		]
 	},
-	"abusefilter-edit-throttle-creationdate": "ⴰⴽⵓⴷ ⵏ ⵓⵎⴰⴽⴽⴰⵢ ⴷⴰⵔ ⵜⵓⴳⵉ ⵏ ⵓⵎⵉⴹⴰⵏ"
+	"abusefilter-log-search-title": "ⴰⵣⵡⵍ:",
+	"abusefilter-log-search-wiki": "ⵡⵉⴽⵉ:"
 }
