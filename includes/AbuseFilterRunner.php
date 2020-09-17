@@ -920,7 +920,7 @@ class AbuseFilterRunner {
 	 *         containing the message key followed by any message parameters.
 	 */
 	protected function takeConsequenceAction( $action, $parameters, $ruleDescription, $ruleNumber ) {
-		global $wgAbuseFilterCustomActionsHandlers;
+		global $wgAbuseFilterCustomActionsHandlers, $wgAbuseFilterBlockAutopromoteDuration;
 
 		$message = null;
 
@@ -988,21 +988,23 @@ class AbuseFilterRunner {
 				break;
 			case 'blockautopromote':
 				if ( !$this->user->isAnon() ) {
-					// Block for 5 days
+					$duration = $wgAbuseFilterBlockAutopromoteDuration * 86400;
 					$blocked = AbuseFilter::blockAutoPromote(
 						$this->user,
 						wfMessage(
 							'abusefilter-blockautopromotereason',
 							$ruleDescription,
 							$ruleNumber
-						)->inContentLanguage()->text()
+						)->inContentLanguage()->text(),
+						$duration
 					);
 
 					if ( $blocked ) {
 						$message = [
 							'abusefilter-autopromote-blocked',
 							$ruleDescription,
-							$ruleNumber
+							$ruleNumber,
+							$duration
 						];
 					} else {
 						$logger = LoggerFactory::getInstance( 'AbuseFilter' );

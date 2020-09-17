@@ -40,13 +40,6 @@ class AbuseFilter {
 	public static $logIds = [];
 
 	/**
-	 * Duration for the blockautopromote action.
-	 * A future improvement could be to make this customizable on a per-filter basis.
-	 * @var int
-	 */
-	private const BLOCKAUTOPROMOTE_DURATION = 5 * 86400;
-
-	/**
 	 * @var string[] The FULL list of fields in the abuse_filter table
 	 * @internal
 	 */
@@ -877,14 +870,15 @@ class AbuseFilter {
 	 *
 	 * @param User $target
 	 * @param string $msg The message to show in the log
+	 * @param int $duration Duration for which autopromotion is blocked, in seconds
 	 * @return bool True on success, false on failure
 	 */
-	public static function blockAutoPromote( User $target, $msg ) {
+	public static function blockAutoPromote( User $target, $msg, int $duration ) {
 		$store = ObjectCache::getInstance( 'db-replicated' );
 		if ( !$store->set(
 			self::autoPromoteBlockKey( $store, $target ),
 			1,
-			self::BLOCKAUTOPROMOTE_DURATION
+			$duration
 		) ) {
 			// Failed to set key
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
@@ -900,7 +894,7 @@ class AbuseFilter {
 		$logEntry->setTarget( $target->getUserPage() );
 
 		$logEntry->setParameters( [
-			'7::duration' => self::BLOCKAUTOPROMOTE_DURATION,
+			'7::duration' => $duration,
 			// These parameters are unused in our message, but some parts of the code check for them
 			'4::oldgroups' => [],
 			'5::newgroups' => []
