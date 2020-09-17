@@ -28,4 +28,15 @@ class AbuseFilterRightsLogFormatter extends LogFormatter {
 		}
 		return $ret;
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMessageParameters() {
+		$params = parent::getMessageParameters();
+		// remove "User:" prefix
+		$params[2] = $this->formatParameterValue( 'user-link', $this->entry->getTarget()->getText() );
+		return $params;
+	}
+
 }
