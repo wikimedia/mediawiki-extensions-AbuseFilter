@@ -243,23 +243,29 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		];
 		$filterableActions = $this->getAllFilterableActions();
 		$actions = array_combine( $filterableActions, $filterableActions );
-		$actions[ $this->msg( 'abusefilter-log-search-action-other' )->text() ] = 'other';
-		$actions[ $this->msg( 'abusefilter-log-search-action-any' )->text() ] = 'any';
+		ksort( $actions );
+		$actions = array_merge(
+			[ $this->msg( 'abusefilter-log-search-action-any' )->text() => 'any' ],
+			$actions,
+			[ $this->msg( 'abusefilter-log-search-action-other' )->text() => 'other' ]
+		);
 		$formDescriptor['SearchAction'] = [
 			'label-message' => 'abusefilter-log-search-action-label',
 			'type' => 'select',
 			'options' => $actions,
 			'default' => 'any',
 		];
-		$options = [
-			$this->msg( 'abusefilter-log-noactions' )->text() => 'noactions',
-			$this->msg( 'abusefilter-log-search-action-taken-any' )->text() => '',
-		];
+		$options = [];
 		foreach ( $this->getAllActions() as $action ) {
 			$key = AbuseFilter::getActionDisplay( $action );
 			$options[$key] = $action;
 		}
 		ksort( $options );
+		$options = array_merge(
+			[ $this->msg( 'abusefilter-log-search-action-taken-any' )->text() => '' ],
+			$options,
+			[ $this->msg( 'abusefilter-log-noactions-filter' )->text() => 'noactions' ]
+		);
 		$formDescriptor['SearchActionTaken'] = [
 			'label-message' => 'abusefilter-log-search-action-taken-label',
 			'type' => 'select',
