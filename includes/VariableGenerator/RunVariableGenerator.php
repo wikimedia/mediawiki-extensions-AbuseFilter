@@ -110,7 +110,7 @@ class RunVariableGenerator extends VariableGenerator {
 	}
 
 	/**
-	 * @param WikiPage|null $page
+	 * @param WikiPage $page
 	 * @param string $summary
 	 * @param Content $newcontent
 	 * @param string $text
@@ -120,7 +120,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @throws MWException
 	 */
 	private function newVariableHolderForEdit(
-		?WikiPage $page,
+		WikiPage $page,
 		string $summary,
 		Content $newcontent,
 		string $text,
@@ -153,7 +153,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $text
 	 * @param string $summary
 	 * @param string $slot
-	 * @param WikiPage|null $page
+	 * @param WikiPage $page
 	 * @return AbuseFilterVariableHolder|null
 	 */
 	public function getEditVars(
@@ -161,17 +161,17 @@ class RunVariableGenerator extends VariableGenerator {
 		string $text,
 		string $summary,
 		$slot,
-		WikiPage $page = null
+		WikiPage $page
 	) : ?AbuseFilterVariableHolder {
-		$oldContent = null;
-
-		if ( $page !== null ) {
+		if ( $this->title->exists() ) {
 			$filterText = $this->getEditTextForFiltering( $page, $content, $slot );
 			if ( $filterText === null ) {
 				return null;
 			}
 			list( $oldContent, $oldAfText, $text ) = $filterText;
 		} else {
+			// Optimization
+			$oldContent = null;
 			$oldAfText = '';
 		}
 
@@ -262,8 +262,8 @@ class RunVariableGenerator extends VariableGenerator {
 		// We only have the upload comment and page text when using the UploadVerifyUpload hook
 		if ( $summary !== null && $text !== null ) {
 			// This block is adapted from self::getTextForFiltering()
+			$page = WikiPage::factory( $this->title );
 			if ( $this->title->exists() ) {
-				$page = WikiPage::factory( $this->title );
 				$revRec = $page->getRevisionRecord();
 				if ( !$revRec ) {
 					return null;
@@ -279,7 +279,6 @@ class RunVariableGenerator extends VariableGenerator {
 				// Page text is ignored for uploads when the page already exists
 				$text = $oldtext;
 			} else {
-				$page = null;
 				$oldtext = '';
 			}
 

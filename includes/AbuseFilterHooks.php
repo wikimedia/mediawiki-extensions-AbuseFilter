@@ -166,19 +166,20 @@ class AbuseFilterHooks {
 		$text = AbuseFilter::contentToString( $content );
 
 		$title = $context->getTitle();
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		if ( $title === null ) {
 			// T144265: This *should* never happen.
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 			$logger->warning( __METHOD__ . ' received a null title.' );
 			return Status::newGood();
 		}
-
-		if ( $title->canExist() && $title->exists() ) {
-			// Make sure we load the latest text saved in database (bug 31656)
-			$page = $context->getWikiPage();
-		} else {
-			$page = null;
+		if ( !$title->canExist() ) {
+			// This also should be handled in EditPage or whoever is calling the hook.
+			$logger->warning( __METHOD__ . ' received a Title that cannot exist.' );
+			// Note that if the title cannot exist, there's no much point in filtering the edit anyway
+			return Status::newGood();
 		}
+
+		$page = $context->getWikiPage();
 
 		$vars = new AbuseFilterVariableHolder();
 		$builder = new RunVariableGenerator( $vars, $user, $title );
