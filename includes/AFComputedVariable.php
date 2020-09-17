@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\IPUtils;
@@ -175,9 +176,14 @@ class AFComputedVariable {
 		$parameters = $this->mParameters;
 		$result = null;
 
-		if ( !Hooks::run( 'AbuseFilter-interceptVariable',
-							[ $this->mMethod, $vars, $parameters, &$result ] ) ) {
-			// @phan-suppress-next-line PhanImpossibleCondition False positive due to hook reference
+		$hookRunner = AbuseFilterHookRunner::getRunner();
+
+		if ( !$hookRunner->onAbuseFilterInterceptVariable(
+			$this->mMethod,
+			$vars,
+			$parameters,
+			$result
+		) ) {
 			return $result instanceof AFPData
 				? $result : AFPData::newFromPHPVar( $result );
 		}
@@ -504,8 +510,12 @@ class AFComputedVariable {
 				$result = $services->getContentLanguage()->getCode();
 				break;
 			default:
-				if ( Hooks::run( 'AbuseFilter-computeVariable',
-									[ $this->mMethod, $vars, $parameters, &$result ] ) ) {
+				if ( $hookRunner->onAbuseFilterComputeVariable(
+					$this->mMethod,
+					$vars,
+					$parameters,
+					$result
+				) ) {
 					throw new AFPException( 'Unknown variable compute type ' . $this->mMethod );
 				}
 		}

@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -62,6 +63,9 @@ class AbuseFilterRunner {
 	 */
 	private $executed = false;
 
+	/** @var AbuseFilterHookRunner */
+	private $hookRunner;
+
 	/**
 	 * @param User $user The user who performed the action being filtered
 	 * @param Title $title The title where the action being filtered was performed
@@ -84,6 +88,7 @@ class AbuseFilterRunner {
 		$this->vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
 		$this->group = $group;
 		$this->action = $vars->getVar( 'action' )->toString();
+		$this->hookRunner = AbuseFilterHookRunner::getRunner();
 	}
 
 	/**
@@ -91,8 +96,15 @@ class AbuseFilterRunner {
 	 */
 	private function init() {
 		// Add vars from extensions
-		Hooks::run( 'AbuseFilter-filterAction', [ &$this->vars, $this->title ] );
-		Hooks::run( 'AbuseFilterAlterVariables', [ &$this->vars, $this->title, $this->user ] );
+		$this->hookRunner->onAbuseFilterFilterAction(
+			$this->vars,
+			$this->title
+		);
+		$this->hookRunner->onAbuseFilterAlterVariables(
+			$this->vars,
+			$this->title,
+			$this->user
+		);
 		$generator = new VariableGenerator( $this->vars );
 		$this->vars = $generator->addGenericVars()->getVariableHolder();
 
@@ -128,9 +140,8 @@ class AbuseFilterRunner {
 		$this->init();
 
 		$skipReasons = [];
-		$shouldFilter = Hooks::run(
-			'AbuseFilterShouldFilterAction',
-			[ $this->vars, $this->title, $this->user, &$skipReasons ]
+		$shouldFilter = $this->hookRunner->onAbuseFilterShouldFilterAction(
+			$this->vars, $this->title, $this->user, $skipReasons
 		);
 		if ( !$shouldFilter ) {
 			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
@@ -216,9 +227,8 @@ class AbuseFilterRunner {
 		$this->init();
 
 		$skipReasons = [];
-		$shouldFilter = Hooks::run(
-			'AbuseFilterShouldFilterAction',
-			[ $this->vars, $this->title, $this->user, &$skipReasons ]
+		$shouldFilter = $this->hookRunner->onAbuseFilterShouldFilterAction(
+			$this->vars, $this->title, $this->user, $skipReasons
 		);
 		if ( !$shouldFilter ) {
 			// Don't log it yet
