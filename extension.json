@@ -66,7 +66,8 @@
 		"AbuseLog": {
 			"class": "SpecialAbuseLog",
 			"services": [
-				"LinkBatchFactory"
+				"LinkBatchFactory",
+				"PermissionManager"
 			]
 		},
 		"AbuseFilter": "SpecialAbuseFilter"
