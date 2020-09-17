@@ -23,7 +23,7 @@ class AbuseFilterHooks {
 	public static function onRegistration() {
 		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
 			$wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
-			$wgGroupPermissions;
+			$wgGroupPermissions, $wgAbuseFilterParserClass;
 
 		// @todo Remove this in a future release (added in 1.33)
 		if ( isset( $wgAbuseFilterProfile ) || isset( $wgAbuseFilterProfiling ) ) {
@@ -66,6 +66,15 @@ class AbuseFilterHooks {
 			wfWarn( 'The group permissions "abusefilter-private-log" and "abusefilter-private" have ' .
 				'been renamed, respectively, to "abusefilter-privatedetails-log" and ' .
 				'"abusefilter-privatedetails". Please update the names in your settings.'
+			);
+		}
+
+		// Using the old parser is deprecated as of 1.35
+		if ( $wgAbuseFilterParserClass === AbuseFilterParser::class ) {
+			wfWarn( 'Setting $wgAbuseFilterParserClass to "' . AbuseFilterParser::class . '" was ' .
+				'deprecated in 1.35. Please fix all filters emitting a "Found empty operand" warning, ' .
+				'then set $wgAbuseFilterParserClass to "' . AbuseFilterCachingParser::class . '". The ' .
+				'old parser will be removed in 1.36. See https://phabricator.wikimedia.org/T239990 for more.'
 			);
 		}
 
