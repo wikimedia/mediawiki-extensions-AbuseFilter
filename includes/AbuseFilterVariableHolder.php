@@ -4,10 +4,12 @@ use Psr\Log\LoggerInterface;
 
 class AbuseFilterVariableHolder {
 	/**
-	 * Used in self::getVar() to determine what to do if the requested variable is missing
+	 * Used in self::getVar() to determine what to do if the requested variable is missing. See
+	 * the docs of that method for an explanation.
 	 */
 	public const GET_LAX = 0;
 	public const GET_STRICT = 1;
+	public const GET_BC = 2;
 
 	/** @var LoggerInterface */
 	private $logger;
@@ -102,13 +104,14 @@ class AbuseFilterVariableHolder {
 	 * Get a variable from the current object
 	 *
 	 * @param string $varName The variable name
-	 * @param int $flags If self::GET_STRICT is set, this will throw if
-	 *   the requested variable is not set. Otherwise it will return a DUNDEFINED AFPData.
-	 *   NOTE: For now, it will return DUNDEFINED even with GET_STRICT.
+	 * @param int $mode One of the self::GET_* constants, determines how to behave when the variable is unset:
+	 *  - GET_STRICT -> In the future, this will throw an exception. For now it returns a DUNDEFINED and logs a warning
+	 *  - GET_LAX -> Return a DUNDEFINED AFPData
+	 *  - GET_BC -> Return a DNULL AFPData (this should only be used for BC, see T230256)
 	 * @param string|null $tempFilter Filter ID, if available; only used for debugging (temporarily)
 	 * @return AFPData
 	 */
-	public function getVar( $varName, $flags = self::GET_STRICT, $tempFilter = null ) : AFPData {
+	public function getVar( $varName, $mode = self::GET_STRICT, $tempFilter = null ) : AFPData {
 		$varName = strtolower( $varName );
 		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
 		if ( $this->mVarsVersion === 1 && in_array( $varName, $deprecatedVars ) ) {
@@ -131,19 +134,29 @@ class AbuseFilterVariableHolder {
 					"Variable $varName has unexpected type " . gettype( $variable )
 				);
 			}
-		} elseif ( !( $flags & self::GET_STRICT ) ) {
-			return new AFPData( AFPData::DUNDEFINED );
-		} else {
-			$this->logger->warning(
-				__METHOD__ . ": requested unset variable {varname} in strict mode, filter: {filter}",
-				[
-					'varname' => $varName,
-					'exception' => new RuntimeException(),
-					'filter' => $tempFilter ?? 'unavailable'
-				]
-			);
-			// @todo change the line below to throw an exception in a future MW version
-			return new AFPData( AFPData::DUNDEFINED );
+		}
+
+		// The variable is not set.
+		switch ( $mode ) {
+			case self::GET_STRICT:
+				$this->logger->warning(
+					__METHOD__ . ": requested unset variable {varname} in strict mode, filter: {filter}",
+					[
+						'varname' => $varName,
+						'exception' => new RuntimeException(),
+						'filter' => $tempFilter ?? 'unavailable'
+					]
+				);
+				// @todo change the line below to throw an exception in a future MW version
+				return new AFPData( AFPData::DUNDEFINED );
+			case self::GET_LAX:
+				return new AFPData( AFPData::DUNDEFINED );
+			case self::GET_BC:
+				// Old behaviour, which can sometimes lead to unexpected results (e.g.
+				// `edit_delta < -5000` will match any non-edit action).
+				return new AFPData( AFPData::DNULL );
+			default:
+				throw new LogicException( "Mode '$mode' not recognized." );
 		}
 	}
 
