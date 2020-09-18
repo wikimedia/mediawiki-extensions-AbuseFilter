@@ -1569,15 +1569,17 @@ class AbuseFilter {
 
 	/**
 	 * @param string $action
+	 * @param MessageLocalizer|null $localizer
 	 * @return string HTML
 	 */
-	public static function getActionDisplay( $action ) {
+	public static function getActionDisplay( $action, MessageLocalizer $localizer = null ) {
+		$msgCallback = $localizer != null ? [ $localizer, 'msg' ] : 'wfMessage';
 		// Give grep a chance to find the usages:
 		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
 		// abusefilter-action-rangeblock, abusefilter-action-disallow
-		$display = wfMessage( "abusefilter-action-$action" )->escaped();
-		$display = wfMessage( "abusefilter-action-$action" )->rawParams( $display )->isDisabled()
+		$display = $msgCallback( "abusefilter-action-$action" )->escaped();
+		$display = $msgCallback( "abusefilter-action-$action" )->rawParams( $display )->isDisabled()
 			? htmlspecialchars( $action )
 			: $display;
 

@@ -46,7 +46,7 @@ class AbuseLogHitFormatter extends LogFormatter {
 			$displayActions = [];
 
 			foreach ( $actions as $action ) {
-				$displayActions[] = AbuseFilter::getActionDisplay( $action );
+				$displayActions[] = AbuseFilter::getActionDisplay( $action, $this->context );
 			}
 			$actions_taken = $this->context->getLanguage()->commaList( $displayActions );
 		}
