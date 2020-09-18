@@ -47,6 +47,7 @@
 	"apihelp-query+abuselog-param-user": "Show only entries done by a given user or IP address.",
 	"apihelp-query+abuselog-param-title": "Show only entries occurring on a given page.",
 	"apihelp-query+abuselog-param-filter": "Show only entries that were caught by the given filter IDs. Separate with pipes, prefix with \"$1\" for global filters.",
+	"apihelp-query+abuselog-param-filter-central": "Show only entries that were caught by the given filter IDs. Separate with pipes.",
 	"apihelp-query+abuselog-param-limit": "The maximum amount of entries to list.",
 	"apihelp-query+abuselog-param-prop": "Which properties to get.",
 	"apihelp-query+abuselog-param-wiki": "Wiki to show hits from.",
