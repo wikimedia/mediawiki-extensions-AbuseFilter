@@ -14,6 +14,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$request = $this->getRequest();
 		$config = $this->getConfig();
 		$user = $this->getUser();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
 		// Show filter performance statistics
 		$this->showStatus();
@@ -21,7 +22,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-intro' );
 
 		// New filter button
-		if ( AbuseFilter::canEdit( $user ) ) {
+		if ( $afPermManager->canEdit( $user ) ) {
 			$out->enableOOUI();
 			$buttons = new OOUI\HorizontalLayout( [
 				'items' => [
@@ -57,7 +58,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 		$scope = $request->getVal( 'rulescope', $defaultscope );
 
-		$searchEnabled = AbuseFilter::canViewPrivate( $user ) && !(
+		$searchEnabled = $afPermManager->canViewPrivateFilters( $user ) && !(
 			$config->get( 'AbuseFilterCentralDB' ) !== null &&
 			!$config->get( 'AbuseFilterIsCentral' ) &&
 			$scope === 'global' );
@@ -211,7 +212,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'default' => $furtherOptions
 		];
 
-		if ( AbuseFilter::canViewPrivate( $user ) ) {
+		if ( AbuseFilterServices::getPermissionManager()->canViewPrivateFilters( $user ) ) {
 			$globalEnabled = $centralDB !== null && !$dbIsCentral;
 			$formDescriptor['querypattern'] = [
 				'name' => 'querypattern',

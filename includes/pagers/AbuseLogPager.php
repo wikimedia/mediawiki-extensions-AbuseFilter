@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class AbuseLogPager extends ReverseChronologicalPager {
@@ -51,6 +52,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$conds = $this->mConds;
 
 		$info = [
@@ -91,7 +93,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			];
 		}
 
-		if ( !$this->mForm->canSeeHidden( $this->getUser() ) ) {
+		if ( !$afPermManager->canSeeHiddenLogEntries( $this->getUser() ) ) {
 			$info['conds']['afl_deleted'] = 0;
 		}
 

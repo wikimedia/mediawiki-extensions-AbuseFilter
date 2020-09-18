@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
@@ -665,11 +666,9 @@ class AbuseFilterHooks {
 	 * @param SpecialPage $sp for context
 	 */
 	public static function onContributionsToolLinks( $id, Title $nt, array &$tools, SpecialPage $sp ) {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$username = $nt->getText();
-		if ( MediaWikiServices::getInstance()->getPermissionManager()
-				->userHasRight( $sp->getUser(), 'abusefilter-log' )
-			&& !IPUtils::isValidRange( $username )
-		) {
+		if ( $afPermManager->canViewAbuseLog( $sp->getUser() ) && !IPUtils::isValidRange( $username ) ) {
 			$linkRenderer = $sp->getLinkRenderer();
 			$tools['abuselog'] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
@@ -691,10 +690,9 @@ class AbuseFilterHooks {
 		LinkRenderer $linkRenderer,
 		array &$links
 	) {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$user = $context->getUser();
-		if ( MediaWikiServices::getInstance()->getPermissionManager()
-			->userHasRight( $user, 'abusefilter-log' )
-		) {
+		if ( $afPermManager->canViewAbuseLog( $user ) ) {
 			$links[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$context->msg( 'abusefilter-log-linkonhistory' )->text(),
@@ -714,8 +712,8 @@ class AbuseFilterHooks {
 		LinkRenderer $linkRenderer,
 		array &$links
 	) {
-		$pm = MediaWikiServices::getInstance()->getPermissionManager();
-		$show = $pm->userHasRight( $context->getUser(), 'abusefilter-log' );
+		$afPermManager = AbuseFilterServices::getPermissionManager();
+		$show = $afPermManager->canViewAbuseLog( $context->getUser() );
 		$action = $context->getRequest()->getVal( 'action', 'view' );
 
 		// For 'history action', the link would be added by HistoryPageToolLinks hook.

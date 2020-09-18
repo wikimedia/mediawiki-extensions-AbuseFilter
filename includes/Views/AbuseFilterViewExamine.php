@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -147,6 +148,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$dbr = wfGetDB( DB_REPLICA );
 		$user = $this->getUser();
 		$out = $this->getOutput();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
 		$row = $dbr->selectRow(
 			'abuse_filter_log',
@@ -166,12 +168,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-		if ( !SpecialAbuseLog::canSeeDetails( $user, $filterID, $global ) ) {
+		if ( !$afPermManager->canSeeLogDetails( $user, $filterID, $global ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
 
-		if ( $row->afl_deleted && !SpecialAbuseLog::canSeeHidden( $user ) ) {
+		if ( $row->afl_deleted && !$afPermManager->canSeeHiddenLogEntries( $user ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
@@ -198,6 +200,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function showExaminer( $vars ) {
 		$output = $this->getOutput();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$output->enableOOUI();
 
 		if ( !$vars ) {
@@ -214,7 +217,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
-		if ( AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( $afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
 			$tester .= $this->buildEditBox( $this->mTestFilter, false, false, false );
 			$tester .= $this->buildFilterLoader();

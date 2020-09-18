@@ -1,13 +1,16 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 class ApiAbuseFilterCheckSyntax extends ApiBase {
 
 	/**
 	 * @see ApiBase::execute
 	 */
 	public function execute() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		// "Anti-DoS"
-		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-cantcheck', 'permissiondenied' );
 		}
 

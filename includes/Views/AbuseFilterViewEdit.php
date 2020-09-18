@@ -27,6 +27,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$user = $this->getUser();
 		$out = $this->getOutput();
 		$request = $this->getRequest();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
@@ -62,7 +63,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Add the default warning and disallow messages in a JS variable
 		$this->exposeMessages();
 
-		$canEdit = AbuseFilter::canEdit( $user );
+		$canEdit = $afPermManager->canEdit( $user );
 
 		if ( $filter === null && !$canEdit ) {
 			$out->addHTML(
@@ -194,6 +195,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addJsConfigVars( 'isFilterEditor', true );
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
 		if (
 			$row === null ||
@@ -225,16 +227,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Hide hidden filters.
 		if (
 			( $row->af_hidden || ( $filter !== null && AbuseFilter::filterHidden( $filter ) ) ) &&
-			!AbuseFilter::canViewPrivate( $user )
+			!$afPermManager->canViewPrivateFilters( $user )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
 		}
 
+		$readOnly = !$afPermManager->canEditFilter( $user, $row );
+
 		if ( $history_id ) {
-			$oldWarningMessage = AbuseFilter::canEditFilter( $user, $row )
-				? 'abusefilter-edit-oldwarning'
-				: 'abusefilter-edit-oldwarning-view';
+			$oldWarningMessage = $readOnly
+				? 'abusefilter-edit-oldwarning-view'
+				: 'abusefilter-edit-oldwarning';
 			$out->addWikiMsg(
 				$oldWarningMessage,
 				$history_id,
@@ -245,8 +249,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $error ) {
 			$out->addHTML( Html::errorBox( $error ) );
 		}
-
-		$readOnly = !AbuseFilter::canEditFilter( $user, $row );
 
 		$fields = [];
 
@@ -288,7 +290,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Hit count display
-		if ( !empty( $row->af_hit_count ) && SpecialAbuseLog::canSeeDetails( $user ) ) {
+		if ( !empty( $row->af_hit_count ) && $afPermManager->canSeeLogDetails( $user ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
 				->numParams( (int)$row->af_hit_count )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
@@ -379,7 +381,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'align' => 'inline',
 			];
 
-			if ( $checkboxId === 'global' && !AbuseFilter::canEditGlobal( $user ) ) {
+			if ( $checkboxId === 'global' && !$afPermManager->canEditGlobal( $user ) ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -409,9 +411,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== null ) {
 			$tools = '';
-			if ( MediaWikiServices::getInstance()->getPermissionManager()
-				->userHasRight( $user, 'abusefilter-revert' )
-			) {
+			if ( $afPermManager->canRevertFilterActions( $user ) ) {
 				$tools .= Xml::tags(
 					'p', null,
 					$this->linkRenderer->makeLink(
@@ -421,7 +421,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( AbuseFilter::canViewPrivate( $user ) ) {
+			if ( $afPermManager->canViewPrivateFilters( $user ) ) {
 				// Test link
 				$tools .= Xml::tags(
 					'p', null,
@@ -480,7 +480,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$this->buildConsequenceEditor( $row, $actions )
 		);
 
-		if ( AbuseFilter::canEditFilter( $user, $row ) ) {
+		if ( !$readOnly ) {
 			$form .=
 				new OOUI\ButtonInputWidget( [
 					'type' => 'submit',
@@ -551,12 +551,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private function buildConsequenceSelector( $action, $set, $row, ?array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$actions = $config->get( 'AbuseFilterActions' );
 		if ( empty( $actions[$action] ) ) {
 			return '';
 		}
 
-		$readOnly = !AbuseFilter::canEditFilter( $user, $row );
+		$readOnly = !$afPermManager->canEditFilter( $user, $row );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -890,7 +891,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'name' => 'wpBlockAnonDuration',
 						'options' => $suggestedBlocks,
 						'value' => $defaultAnonDuration,
-						'disabled' => !AbuseFilter::canEditFilter( $user, $row )
+						'disabled' => $readOnly
 					] );
 
 				$userDuration =
@@ -898,7 +899,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'name' => 'wpBlockUserDuration',
 						'options' => $suggestedBlocks,
 						'value' => $defaultUserDuration,
-						'disabled' => !AbuseFilter::canEditFilter( $user, $row )
+						'disabled' => $readOnly
 					] );
 
 				$blockOptions = [];

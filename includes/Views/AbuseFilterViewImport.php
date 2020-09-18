@@ -1,12 +1,15 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 class AbuseFilterViewImport extends AbuseFilterView {
 	/**
 	 * Shows the page
 	 */
 	public function show() {
 		$out = $this->getOutput();
-		if ( !AbuseFilter::canEdit( $this->getUser() ) ) {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
+		if ( !$afPermManager->canEdit( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
 		}

@@ -16,6 +16,8 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 /**
  * API module to allow accessing private details (the user's IP) from AbuseLog entries
  *
@@ -49,8 +51,9 @@ class ApiAbuseLogPrivateDetails extends ApiBase {
 	 */
 	public function execute() {
 		$user = $this->getUser();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
-		if ( !SpecialAbuseLog::canSeePrivateDetails( $user ) ) {
+		if ( !$afPermManager->canSeePrivateDetails( $user ) ) {
 			$this->dieWithError( 'abusefilter-log-cannot-see-privatedetails' );
 		}
 		$params = $this->extractRequestParams();

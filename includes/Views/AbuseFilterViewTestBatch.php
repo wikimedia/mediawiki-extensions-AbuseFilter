@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
@@ -46,8 +47,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 */
 	public function show() {
 		$out = $this->getOutput();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
-		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}

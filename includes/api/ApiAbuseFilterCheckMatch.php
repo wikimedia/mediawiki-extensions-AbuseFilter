@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 
 class ApiAbuseFilterCheckMatch extends ApiBase {
@@ -7,11 +8,12 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 	 * @see ApiBase::execute
 	 */
 	public function execute() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
 		// "Anti-DoS"
-		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canttest', 'permissiondenied' );
 		}
 

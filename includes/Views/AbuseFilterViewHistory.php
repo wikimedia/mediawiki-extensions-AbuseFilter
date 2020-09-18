@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 class AbuseFilterViewHistory extends AbuseFilterView {
 	/**
 	 * @param SpecialAbuseFilter $page
@@ -15,6 +17,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	 */
 	public function show() {
 		$out = $this->getOutput();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getText( 'filter' ) ?: $this->mFilter;
 		// Ensure the parameter is a valid filter ID
@@ -27,7 +30,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		}
 
 		if ( $filter && AbuseFilter::filterHidden( $filter )
-			&& !AbuseFilter::canViewPrivate( $this->getUser() )
+			&& !$afPermManager->canViewPrivateFilters( $this->getUser() )
 		) {
 			$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return;

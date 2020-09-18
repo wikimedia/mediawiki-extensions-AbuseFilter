@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterHistoryPager extends TablePager {
@@ -120,6 +121,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = '';
 				if ( AbuseFilter::getFirstFilterChange( $row->afh_filter ) != $value ) {
 					// @todo This is subpar, it should be cached at least. Should we also hide actions?
+					$afPermManager = AbuseFilterServices::getPermissionManager();
 					$dbr = wfGetDB( DB_REPLICA );
 					$oldFlags = $dbr->selectField(
 						'abuse_filter_history',
@@ -131,7 +133,7 @@ class AbuseFilterHistoryPager extends TablePager {
 						__METHOD__,
 						[ 'ORDER BY' => 'afh_id DESC' ]
 					);
-					if ( AbuseFilter::canViewPrivate( $this->getUser() ) ||
+					if ( $afPermManager->canViewPrivateFilters( $this->getUser() ) ||
 						(
 							!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
 							!in_array( 'hidden', explode( ',', $oldFlags ) )
@@ -158,6 +160,8 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
+
 		$info = [
 			'tables' => [ 'abuse_filter_history', 'abuse_filter' ],
 			// All fields but afh_deleted on abuse_filter_history
@@ -193,7 +197,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			$info['conds']['afh_filter'] = $this->mFilter;
 		}
 
-		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			// Hide data the user can't see.
 			$info['conds']['af_hidden'] = 0;
 		}

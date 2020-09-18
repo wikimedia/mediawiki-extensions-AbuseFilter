@@ -20,4 +20,11 @@ class AbuseFilterServices {
 	public static function getFilterProfiler() : FilterProfiler {
 		return MediaWikiServices::getInstance()->getService( FilterProfiler::SERVICE_NAME );
 	}
+
+	/**
+	 * @return AbuseFilterPermissionManager
+	 */
+	public static function getPermissionManager() : AbuseFilterPermissionManager {
+		return MediaWikiServices::getInstance()->getService( AbuseFilterPermissionManager::SERVICE_NAME );
+	}
 }

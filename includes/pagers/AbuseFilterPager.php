@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Linker\LinkRenderer;
 use Wikimedia\AtEase\AtEase;
 
@@ -134,6 +135,8 @@ class AbuseFilterPager extends TablePager {
 	 * @return array
 	 */
 	public function getFieldNames() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
+
 		$headers = [
 			'af_id' => 'abusefilter-list-id',
 			'af_public_comments' => 'abusefilter-list-public',
@@ -144,11 +147,11 @@ class AbuseFilterPager extends TablePager {
 		];
 
 		$user = $this->getUser();
-		if ( SpecialAbuseLog::canSeeDetails( $user ) ) {
+		if ( $afPermManager->canSeeLogDetails( $user ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( AbuseFilter::canViewPrivate( $user ) && $this->mSearchMode !== null ) {
+		if ( $afPermManager->canViewPrivateFilters( $user ) && $this->mSearchMode !== null ) {
 			// This is also excluded in the default view
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
@@ -221,7 +224,8 @@ class AbuseFilterPager extends TablePager {
 				// Global here is used to determine whether the log entry is for an external, global
 				// filter, but all filters shown on Special:AbuseFilter are local.
 				$global = false;
-				if ( SpecialAbuseLog::canSeeDetails( $user, $row->af_id, $global, $row->af_hidden ) ) {
+				$afPermManager = AbuseFilterServices::getPermissionManager();
+				if ( $afPermManager->canSeeLogDetails( $user, $row->af_id, $global, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $linkRenderer->makeKnownLink(
@@ -366,6 +370,8 @@ class AbuseFilterPager extends TablePager {
 	 * @return bool
 	 */
 	public function isFieldSortable( $name ) {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
+
 		$sortable_fields = [
 			'af_id',
 			'af_enabled',
@@ -373,7 +379,7 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden',
 			'af_group',
 		];
-		if ( SpecialAbuseLog::canSeeDetails( $this->getUser() ) ) {
+		if ( $afPermManager->canSeeLogDetails( $this->getUser() ) ) {
 			$sortable_fields[] = 'af_hit_count';
 			$sortable_fields[] = 'af_public_comments';
 		}

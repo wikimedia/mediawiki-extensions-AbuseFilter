@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 class AbuseFilterViewTools extends AbuseFilterView {
 	/**
 	 * Shows the page
@@ -9,8 +11,9 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$out->enableOOUI();
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$request = $this->getRequest();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
-		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}
@@ -42,7 +45,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 
 		$out->addModules( 'ext.abuseFilter.tools' );
 
-		if ( AbuseFilter::canEdit( $this->getUser() ) ) {
+		if ( $afPermManager->canEdit( $this->getUser() ) ) {
 			// Hacky little box to re-enable autoconfirmed if it got disabled
 			$formDescriptor = [
 				'RestoreAutoconfirmed' => [
