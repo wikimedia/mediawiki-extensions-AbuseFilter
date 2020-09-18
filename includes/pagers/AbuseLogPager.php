@@ -22,10 +22,10 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @param array $conds
 	 * @param LinkBatchFactory $linkBatchFactory
 	 */
-	public function __construct( SpecialAbuseLog $form, $conds, LinkBatchFactory $linkBatchFactory ) {
+	public function __construct( SpecialAbuseLog $form, array $conds, LinkBatchFactory $linkBatchFactory ) {
+		parent::__construct( $form->getContext(), $form->getLinkRenderer() );
 		$this->mForm = $form;
 		$this->mConds = $conds;
-		parent::__construct();
 		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
@@ -44,16 +44,27 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		$conds = $this->mConds;
 
 		$info = [
-			'tables' => [ 'abuse_filter_log', 'abuse_filter' ],
-			'fields' => '*',
+			'tables' => [ 'abuse_filter_log', 'abuse_filter', 'revision' ],
+			'fields' => [
+				$this->mDb->tableName( 'abuse_filter_log' ) . '.*',
+				$this->mDb->tableName( 'abuse_filter' ) . '.*',
+				'rev_id',
+			],
 			'conds' => $conds,
-			'join_conds' =>
-				[ 'abuse_filter' =>
-					[
-						'LEFT JOIN',
-						'af_id=afl_filter',
-					],
+			'join_conds' => [
+				'abuse_filter' => [
+					'LEFT JOIN',
+					'af_id=afl_filter',
 				],
+				'revision' => [
+					'LEFT JOIN',
+					[
+						'afl_wiki IS NULL',
+						'afl_rev_id IS NOT NULL',
+						'rev_id=afl_rev_id',
+					]
+				],
+			],
 		];
 
 		if ( !$this->mForm->canSeeHidden( $this->getUser() ) ) {

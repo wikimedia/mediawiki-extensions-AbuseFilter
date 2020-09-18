@@ -614,20 +614,28 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 	/**
 	 * @param string|int $id
+	 * @suppress SecurityCheck-SQLInjection
 	 */
 	public function showDetails( $id ) {
 		$out = $this->getOutput();
 		$user = $this->getUser();
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$pager = new AbuseLogPager( $this, [], $this->linkBatchFactory );
 
+		[
+			'tables' => $tables,
+			'fields' => $fields,
+			'join_conds' => $join_conds,
+		] = $pager->getQueryInfo();
+
+		$dbr = wfGetDB( DB_REPLICA );
 		$row = $dbr->selectRow(
-			[ 'abuse_filter_log', 'abuse_filter' ],
-			'*',
+			$tables,
+			$fields,
 			[ 'afl_id' => $id ],
 			__METHOD__,
 			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', 'af_id=afl_filter' ] ]
+			$join_conds
 		);
 
 		$error = null;
@@ -1071,12 +1079,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				[],
 				[ 'redirect' => 'no' ]
 			);
-			if ( $row->afl_rev_id && $title->exists() ) {
+			if ( $row->rev_id ) {
 				$diffLink = $linkRenderer->makeKnownLink(
 					$title,
 					new HtmlArmor( $this->msg( 'abusefilter-log-diff' )->parse() ),
 					[],
-					[ 'diff' => 'prev', 'oldid' => $row->afl_rev_id ] );
+					[ 'diff' => 'prev', 'oldid' => $row->rev_id ]
+				);
 			}
 		} else {
 			$pageLink = WikiMap::makeForeignLink( $row->afl_wiki, $row->afl_title );
