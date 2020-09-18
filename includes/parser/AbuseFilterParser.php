@@ -411,7 +411,11 @@ class AbuseFilterParser extends AFPTransitionBase {
 				// We allow builtin variables to both check for override (e.g. added_lines[] :='x')
 				// and for T198531
 				$array = $this->getVarValue( $varname );
-				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
+				if (
+					$array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED
+					// NOTE: we cannot throw for overridebuiltin yet, in case this turns out not to be an assignment.
+					&& !$this->isBuiltinVar( $varname )
+				) {
 					throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );
 				}
 
@@ -1092,7 +1096,8 @@ class AbuseFilterParser extends AFPTransitionBase {
 		// It's a built-in, non-disabled variable (either set or unset), or a set custom variable
 		$flags = $this->allowMissingVariables
 			? AbuseFilterVariableHolder::GET_LAX
-			: AbuseFilterVariableHolder::GET_STRICT;
+			// TODO: This should be GET_STRICT, but that's going to be very hard (see T230256)
+			: AbuseFilterVariableHolder::GET_BC;
 		return $this->mVariables->getVar( $var, $flags, $this->mFilter );
 	}
 
