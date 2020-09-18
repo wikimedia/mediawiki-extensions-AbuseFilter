@@ -123,6 +123,7 @@
 	"abusefilter-log-details-ip": "來源 IP 位址",
 	"abusefilter-log-details-checkuser": "查核使用者",
 	"abusefilter-log-noactions": "無",
+	"abusefilter-log-noactions-filter": "無",
 	"abusefilter-log-details-diff": "在編輯中所做的變更",
 	"abusefilter-log-linkoncontribs": "濫用日誌",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|此使用者}}的濫用日誌",

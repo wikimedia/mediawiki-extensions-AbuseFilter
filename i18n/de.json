@@ -114,6 +114,7 @@
 	"abusefilter-log-details-ip": "IP-Adresse des Verursachers",
 	"abusefilter-log-details-checkuser": "Benutzer prüfen",
 	"abusefilter-log-noactions": "keine",
+	"abusefilter-log-noactions-filter": "Keine",
 	"abusefilter-log-details-diff": "Änderungen durch diese Bearbeitung",
 	"abusefilter-log-linkoncontribs": "Missbrauchsfilter-Logbuch",
 	"abusefilter-log-linkoncontribs-text": "Missbrauchsfilter-Logbuch für {{GENDER:$1|diesen Benutzer|diese Benutzerin}}",

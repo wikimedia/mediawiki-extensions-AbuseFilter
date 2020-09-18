@@ -111,6 +111,7 @@
 	"abusefilter-log-details-ip": "Endereço de IP de origem",
 	"abusefilter-log-details-checkuser": "Verificar usuário",
 	"abusefilter-log-noactions": "nenhum",
+	"abusefilter-log-noactions-filter": "Nenhum",
 	"abusefilter-log-details-diff": "Alterações feitas na edição",
 	"abusefilter-log-linkoncontribs": "registro de abusos",
 	"abusefilter-log-linkoncontribs-text": "Registro de abuso para {{GENDER:$1|este usuário}}",
