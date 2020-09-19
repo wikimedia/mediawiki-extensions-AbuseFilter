@@ -157,8 +157,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
-		$result = AbuseFilter::checkSyntax( $this->testPattern );
-		if ( $result !== true ) {
+		$parser = AbuseFilter::getDefaultParser();
+
+		$validSyntax = $parser->checkSyntax( $this->testPattern );
+		if ( $validSyntax !== true ) {
 			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
@@ -215,6 +217,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$counter = 1;
 
 		$contextUser = $this->getUser();
+		$parser->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
 			$vars = new AbuseFilterVariableHolder();
 			$rc = RecentChange::newFromRow( $row );
@@ -225,9 +228,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				continue;
 			}
 
-			$parser = AbuseFilter::getDefaultParser( $vars );
-			$parser->toggleConditionLimit( false );
-			$result = AbuseFilter::checkConditions( $this->testPattern, $parser );
+			$parser->setVariables( $vars );
+			$result = $parser->checkConditions( $this->testPattern );
 
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item

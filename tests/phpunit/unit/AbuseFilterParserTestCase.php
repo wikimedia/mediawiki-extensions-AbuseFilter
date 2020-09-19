@@ -60,7 +60,7 @@ abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
 			try {
 				if ( $skippedBlock ) {
 					// Skipped blocks are, well, skipped when actually parsing.
-					$parser->checkSyntax( $expr );
+					$parser->checkSyntaxThrow( $expr );
 				} else {
 					$parser->parse( $expr );
 				}

@@ -45,15 +45,19 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 			$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
 		}
+		if ( $vars === null ) {
+			throw new LogicException( 'Impossible.' );
+		}
 
-		if ( AbuseFilter::checkSyntax( $params[ 'filter' ] ) !== true ) {
+		$parser = AbuseFilter::getDefaultParser();
+		if ( $parser->checkSyntax( $params[ 'filter' ] ) !== true ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 
-		$parser = AbuseFilter::getDefaultParser( $vars );
+		$parser->setVariables( $vars );
 		$result = [
 			ApiResult::META_BC_BOOLS => [ 'result' ],
-			'result' => AbuseFilter::checkConditions( $params['filter'], $parser ),
+			'result' => $parser->checkConditions( $params['filter'] ),
 		];
 
 		$this->getResult()->addValue(

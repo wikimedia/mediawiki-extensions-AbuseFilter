@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+
 class ApiAbuseFilterEvalExpression extends ApiBase {
 	/**
 	 * @see ApiBase::execute()
@@ -12,7 +14,7 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 
 		$params = $this->extractRequestParams();
 
-		$status = AbuseFilter::evaluateExpression( $params['expression'] );
+		$status = $this->evaluateExpression( $params['expression'] );
 		if ( !$status->isGood() ) {
 			$this->dieWithError( $status->getErrors()[0] );
 		} else {
@@ -24,6 +26,26 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 				ApiResult::addMetadataToResultVars( [ 'result' => $res ] )
 			);
 		}
+	}
+
+	/**
+	 * @param string $expr
+	 * @return Status
+	 */
+	private function evaluateExpression( string $expr ) : Status {
+		$parser = AbuseFilter::getDefaultParser();
+		if ( $parser->checkSyntax( $expr ) !== true ) {
+			return Status::newFatal( 'abusefilter-tools-syntax-error' );
+		}
+
+		$vars = new AbuseFilterVariableHolder();
+		// Generic vars are the only ones available
+		$generator = new VariableGenerator( $vars );
+		$vars = $generator->addGenericVars()->getVariableHolder();
+		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
+		$parser->setVariables( $vars );
+
+		return Status::newGood( $parser->evaluateExpression( $expr ) );
 	}
 
 	/**
