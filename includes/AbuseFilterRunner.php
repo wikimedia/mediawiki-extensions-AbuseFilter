@@ -500,9 +500,11 @@ class AbuseFilterRunner {
 		$maxExpiry = -1;
 
 		foreach ( $actionsByFilter as $filter => $actions ) {
-			$filterPublicComments = AbuseFilter::getFilter( $filter )->af_public_comments;
+			[ $filterID, $isGlobalFilter ] = AbuseFilter::splitGlobalName( $filter );
+			$filterObj = AbuseFilter::getFilterObject( $filterID, $isGlobalFilter );
+			$filterPublicComments = $filterObj->getName();
 
-			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
+			$isGlobalFilter = $filterObj->isGlobal();
 
 			if ( $isGlobalFilter ) {
 				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterLocallyDisabledGlobalActions ) );
@@ -1249,7 +1251,8 @@ class AbuseFilterRunner {
 			$matchCount = $filterProfile['matches'] + 1;
 
 			// Figure out if the filter is subject to being throttled.
-			$filterAge = (int)wfTimestamp( TS_UNIX, AbuseFilter::getFilter( $filter )->af_timestamp );
+			$filterObj = AbuseFilter::getFilterObject( (int)$filter, false );
+			$filterAge = (int)wfTimestamp( TS_UNIX, $filterObj->getTimestamp() );
 			$exemptTime = $filterAge + $maxAge;
 
 			if ( $totalActions && $exemptTime > time() && $matchCount > $hitCountLimit &&

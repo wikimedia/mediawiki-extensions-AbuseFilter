@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
@@ -15,7 +16,7 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class AbuseFilter {
 	/**
-	 * @var array [filter ID => stdClass|null] as retrieved from self::getFilter. ID could be either
+	 * @var Filter[] As retrieved from self::getFilterObject. The keys could be either
 	 *   an integer or "<GLOBAL_FILTER_PREFIX><integer>"
 	 */
 	private static $filterCache = [];
@@ -112,25 +113,13 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function filterHidden( $filterID, $global = false ) {
-		if ( $global ) {
-			try {
-				$dbr = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
-			} catch ( CentralDBNotAvailableException $_ ) {
-				// DWIM
-				return false;
-			}
-		} else {
-			$dbr = wfGetDB( DB_REPLICA );
+		try {
+			$obj = self::getFilterObject( $filterID, $global );
+		} catch ( CentralDBNotAvailableException | LogicException $_ ) {
+			// DWIM if no central DB is available or the filter doesn't exist
+			return false;
 		}
-
-		$hidden = $dbr->selectField(
-			'abuse_filter',
-			'af_hidden',
-			[ 'af_id' => $filterID ],
-			__METHOD__
-		);
-
-		return (bool)$hidden;
+		return $obj->isHidden();
 	}
 
 	/**
@@ -336,12 +325,24 @@ class AbuseFilter {
 	}
 
 	/**
+	 * @deprecated since 1.36 Use self::getFilterObject()
 	 * @param string $filter Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
 	 * @return stdClass DB row
 	 */
-	public static function getFilter( $filter ) : stdClass {
-		if ( !isset( self::$filterCache[$filter] ) ) {
-			list( $filterID, $global ) = self::splitGlobalName( $filter );
+	public static function getFilter( $filter ) {
+		[ $filterID, $global ] = self::splitGlobalName( $filter );
+		return self::getFilterObject( $filterID, $global )->toDatabaseRow();
+	}
+
+	/**
+	 * @param int $filterID
+	 * @param bool $global
+	 * @return Filter
+	 * @internal Temporary method
+	 */
+	public static function getFilterObject( int $filterID, bool $global ) : Filter {
+		$cacheKey = self::buildGlobalName( $filterID, $global );
+		if ( !isset( self::$filterCache[$cacheKey] ) ) {
 			if ( $global ) {
 				$dbr = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
 			} else {
@@ -355,13 +356,14 @@ class AbuseFilter {
 				[ 'af_id' => $filterID ],
 				__METHOD__
 			);
+
 			if ( !$row ) {
-				throw new LogicException( "Requested filter that doesn't exist: $filter" );
+				throw new LogicException( "Requested filter that doesn't exist: $cacheKey" );
 			}
-			self::$filterCache[$filter] = $row;
+			self::$filterCache[$cacheKey] = Filter::newFromRow( $row );
 		}
 
-		return self::$filterCache[$filter];
+		return self::$filterCache[$cacheKey];
 	}
 
 	/**
@@ -393,7 +395,7 @@ class AbuseFilter {
 		if ( !self::isFullAbuseFilterRow( $row ) ) {
 			throw new UnexpectedValueException( 'The specified row must be a full abuse_filter row.' );
 		}
-		self::$filterCache[$id] = $row;
+		self::$filterCache[$id] = Filter::newFromRow( $row );
 	}
 
 	/**
