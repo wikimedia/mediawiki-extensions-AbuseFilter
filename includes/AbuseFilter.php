@@ -445,32 +445,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $type The value to get, either "threshold", "count" or "age"
-	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return mixed
-	 */
-	public static function getEmergencyValue( $type, $group ) {
-		switch ( $type ) {
-			case 'threshold':
-				global $wgAbuseFilterEmergencyDisableThreshold;
-				$value = $wgAbuseFilterEmergencyDisableThreshold;
-				break;
-			case 'count':
-				global $wgAbuseFilterEmergencyDisableCount;
-				$value = $wgAbuseFilterEmergencyDisableCount;
-				break;
-			case 'age':
-				global $wgAbuseFilterEmergencyDisableAge;
-				$value = $wgAbuseFilterEmergencyDisableAge;
-				break;
-			default:
-				throw new InvalidArgumentException( '$type must be either "threshold", "count" or "age"' );
-		}
-
-		return $value[$group] ?? $value['default'];
-	}
-
-	/**
 	 * Checks whether user input for the filter editing form is valid and if so saves the filter.
 	 * Returns a Status object which can be:
 	 *  - Good with [ new_filter_id, history_id ] as value if the filter was successfully saved

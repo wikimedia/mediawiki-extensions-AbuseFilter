@@ -6,8 +6,8 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterServices {
+
 	/**
-	 * Conveniency wrapper for strong typing
 	 * @return KeywordsManager
 	 */
 	public static function getKeywordsManager() : KeywordsManager {
@@ -15,7 +15,6 @@ class AbuseFilterServices {
 	}
 
 	/**
-	 * Conveniency wrapper for strong typing
 	 * @return FilterProfiler
 	 */
 	public static function getFilterProfiler() : FilterProfiler {
@@ -76,6 +75,13 @@ class AbuseFilterServices {
 	 */
 	public static function getFilterLookup() : FilterLookup {
 		return MediaWikiServices::getInstance()->getService( FilterLookup::SERVICE_NAME );
+	}
+
+	/**
+	 * @return EmergencyWatcher
+	 */
+	public static function getEmergencyWatcher() : EmergencyWatcher {
+		return MediaWikiServices::getInstance()->getService( EmergencyWatcher::SERVICE_NAME );
 	}
 
 	/**

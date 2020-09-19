@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -87,6 +88,17 @@ return [
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
+		);
+	},
+	EmergencyWatcher::SERVICE_NAME => function ( MediaWikiServices $services ): EmergencyWatcher {
+		return new EmergencyWatcher(
+			$services->getService( FilterProfiler::SERVICE_NAME ),
+			$services->getDBLoadBalancer(),
+			$services->getService( FilterLookup::SERVICE_NAME ),
+			new ServiceOptions(
+				EmergencyWatcher::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
 		);
 	},
 	FilterValidator::SERVICE_NAME => function ( MediaWikiServices $services ): FilterValidator {

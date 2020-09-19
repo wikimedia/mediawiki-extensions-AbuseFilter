@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -79,6 +80,9 @@ class AbuseFilterRunner {
 	/** @var FilterLookup */
 	private $filterLookup;
 
+	/** @var EmergencyWatcher */
+	private $emergencyWatcher;
+
 	/**
 	 * @param User $user The user who performed the action being filtered
 	 * @param Title $title The title where the action being filtered was performed
@@ -106,6 +110,7 @@ class AbuseFilterRunner {
 		$this->changeTagger = AbuseFilterServices::getChangeTagger();
 		$this->filterUser = AbuseFilterServices::getFilterUser()->getUser();
 		$this->filterLookup = AbuseFilterServices::getFilterLookup();
+		$this->emergencyWatcher = AbuseFilterServices::getEmergencyWatcher();
 	}
 
 	/**
@@ -1063,7 +1068,7 @@ class AbuseFilterRunner {
 			'global' => $globalLogIDs
 		];
 
-		$this->checkEmergencyDisable( $loggedLocalFilters );
+		$this->emergencyWatcher->checkFilters( $loggedLocalFilters, $this->group );
 	}
 
 	/**
@@ -1183,55 +1188,6 @@ class AbuseFilterRunner {
 			DeferredUpdates::POSTSEND,
 			$dbw
 		);
-	}
-
-	/**
-	 * Determine whether a filter must be throttled, i.e. its potentially dangerous
-	 *  actions must be disabled.
-	 *
-	 * @param string[] $filters The filters to check
-	 */
-	protected function checkEmergencyDisable( array $filters ) {
-		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
-		// reliability of this number may strongly vary. We should instead use a fixed one.
-		$groupProfile = $this->filterProfiler->getGroupProfile( $this->group );
-		$totalActions = $groupProfile['total'];
-
-		foreach ( $filters as $filter ) {
-			$threshold = AbuseFilter::getEmergencyValue( 'threshold', $this->group );
-			$hitCountLimit = AbuseFilter::getEmergencyValue( 'count', $this->group );
-			$maxAge = AbuseFilter::getEmergencyValue( 'age', $this->group );
-
-			$filterProfile = $this->filterProfiler->getFilterProfile( $filter );
-			// xxx: should this increment be here?
-			$matchCount = $filterProfile['matches'] + 1;
-
-			// Figure out if the filter is subject to being throttled.
-			$filterObj = $this->filterLookup->getFilter( (int)$filter, false );
-			$filterAge = (int)wfTimestamp( TS_UNIX, $filterObj->getTimestamp() );
-			$exemptTime = $filterAge + $maxAge;
-
-			if ( $totalActions && $exemptTime > time() && $matchCount > $hitCountLimit &&
-				( $matchCount / $totalActions ) > $threshold
-			) {
-				// More than $wgAbuseFilterEmergencyDisableCount matches, constituting more than
-				// $threshold (a fraction) of last few edits. Disable it.
-				DeferredUpdates::addUpdate(
-					new AutoCommitUpdate(
-						wfGetDB( DB_MASTER ),
-						__METHOD__,
-						function ( IDatabase $dbw, $fname ) use ( $filter ) {
-							$dbw->update(
-								'abuse_filter',
-								[ 'af_throttled' => 1 ],
-								[ 'af_id' => $filter ],
-								$fname
-							);
-						}
-					)
-				);
-			}
-		}
 	}
 
 	/**

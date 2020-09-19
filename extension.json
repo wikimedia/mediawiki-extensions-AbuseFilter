@@ -167,6 +167,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\FilterLookup": "includes/FilterLookup.php",
 		"MediaWiki\\Extension\\AbuseFilter\\KeywordsManager": "includes/KeywordsManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPermissionManager": "includes/AbuseFilterPermissionManager.php",
+		"MediaWiki\\Extension\\AbuseFilter\\EmergencyWatcher": "includes/EmergencyWatcher.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterProfiler": "includes/FilterProfiler.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ChangeTagger": "includes/ChangeTagger.php",
