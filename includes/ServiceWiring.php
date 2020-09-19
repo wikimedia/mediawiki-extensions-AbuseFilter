@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
@@ -126,6 +127,17 @@ return [
 				FilterImporter::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			)
+		);
+	},
+	FilterStore::SERVICE_NAME => function ( MediaWikiServices $services ): FilterStore {
+		return new FilterStore(
+			$services->getMainConfig()->get( 'AbuseFilterActions' ),
+			$services->getDBLoadBalancer(),
+			$services->get( FilterProfiler::SERVICE_NAME ),
+			$services->get( FilterLookup::SERVICE_NAME ),
+			$services->get( ChangeTagsManager::SERVICE_NAME ),
+			$services->get( FilterValidator::SERVICE_NAME ),
+			$services->get( FilterCompare::SERVICE_NAME )
 		);
 	},
 ];

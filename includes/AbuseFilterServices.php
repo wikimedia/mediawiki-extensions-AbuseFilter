@@ -104,4 +104,11 @@ class AbuseFilterServices {
 	public static function getFilterImporter() : FilterImporter {
 		return MediaWikiServices::getInstance()->getService( FilterImporter::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterStore
+	 */
+	public static function getFilterStore() : FilterStore {
+		return MediaWikiServices::getInstance()->getService( FilterStore::SERVICE_NAME );
+	}
 }

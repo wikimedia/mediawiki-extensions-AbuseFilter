@@ -31,7 +31,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
-use MediaWiki\MediaWikiServices;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Test
@@ -67,7 +67,13 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function createFilter( int $id ) : void {
 		$filter = $this->getFilterFromSpecs( [ 'id' => $id ] + self::DEFAULT_VALUES );
-		wfGetDB( DB_MASTER )->insert( 'abuse_filter', get_object_vars( $filter->toDatabaseRow() ) );
+		// Use some black magic to bypass checks
+		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
+		wfGetDB( DB_MASTER )->insert(
+			'abuse_filter',
+			get_object_vars( $filterStore->filterToDatabaseRow( $filter ) ),
+			__METHOD__
+		);
 	}
 
 	/**
@@ -104,7 +110,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilter::saveFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
 	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
 	 */
 	public function testSaveFilter_valid() {
@@ -119,9 +125,8 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		$origFilter = MutableFilter::newDefault();
 		$newFilter = $this->getFilterFromSpecs( $row );
 
-		$status = AbuseFilter::saveFilter(
-			$this->getTestSysop()->getUser(), $row['id'], $newFilter, $origFilter,
-			wfGetDB( DB_MASTER ), MediaWikiServices::getInstance()->getMainConfig()
+		$status = AbuseFilterServices::getFilterStore()->saveFilter(
+			$this->getTestSysop()->getUser(), $row['id'], $newFilter, $origFilter
 		);
 
 		$this->assertTrue( $status->isGood(), "Save failed with status: $status" );
@@ -132,7 +137,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilter::saveFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
 	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
 	 */
 	public function testSaveFilter_invalid() {
@@ -154,10 +159,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		$user = $this->getTestUser()->getUser();
 		// Assign -modify and -modify-global, but not -modify-restricted
 		$this->overrideUserPermissions( $user, [ 'abusefilter-modify' ] );
-		$status = AbuseFilter::saveFilter(
-			$user, $row['id'], $newFilter, $origFilter,
-			wfGetDB( DB_MASTER ), MediaWikiServices::getInstance()->getMainConfig()
-		);
+		$status = AbuseFilterServices::getFilterStore()->saveFilter( $user, $row['id'], $newFilter, $origFilter );
 
 		$this->assertFalse( $status->isGood(), 'The filter validation returned a valid status.' );
 		$actual = $status->getErrors()[0]['message'];
@@ -165,7 +167,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilter::saveFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
 	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
 	 */
 	public function testSaveFilter_noChange() {
@@ -180,9 +182,8 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		$origFilter = AbuseFilterServices::getFilterLookup()->getFilter( $filter, false );
 		$newFilter = $this->getFilterFromSpecs( $row );
 
-		$status = AbuseFilter::saveFilter(
-			$this->getTestSysop()->getUser(), $filter, $newFilter, $origFilter,
-			wfGetDB( DB_MASTER ), MediaWikiServices::getInstance()->getMainConfig()
+		$status = AbuseFilterServices::getFilterStore()->saveFilter(
+			$this->getTestSysop()->getUser(), $filter, $newFilter, $origFilter
 		);
 
 		$this->assertTrue( $status->isGood(), "Got a non-good status: $status" );
