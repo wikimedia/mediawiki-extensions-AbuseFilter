@@ -855,7 +855,7 @@ class AbuseFilter {
 	 *  - Fatal in case of a permission-related error
 	 *
 	 * @param User $user
-	 * @param int|string $filter
+	 * @param int|null $filter
 	 * @param stdClass $newRow
 	 * @param array $actions
 	 * @param stdClass $originalRow
@@ -867,7 +867,7 @@ class AbuseFilter {
 	 */
 	public static function saveFilter(
 		User $user,
-		$filter,
+		?int $filter,
 		stdClass $newRow,
 		array $actions,
 		stdClass $originalRow,
@@ -1003,7 +1003,7 @@ class AbuseFilter {
 	 * @param User $user
 	 * @param stdClass $newRow
 	 * @param array $differences
-	 * @param int|string $filter
+	 * @param int|null $filter
 	 * @param array $actions
 	 * @param bool $wasGlobal
 	 * @param IDatabase $dbw DB_MASTER where the filter will be saved
@@ -1014,7 +1014,7 @@ class AbuseFilter {
 		User $user,
 		$newRow,
 		$differences,
-		$filter,
+		?int $filter,
 		$actions,
 		$wasGlobal,
 		IDatabase $dbw,
@@ -1031,13 +1031,8 @@ class AbuseFilter {
 		$dbw->startAtomic( __METHOD__ );
 
 		// Insert MAIN row.
-		if ( $filter === 'new' ) {
-			$new_id = null;
-			$is_new = true;
-		} else {
-			$new_id = $filter;
-			$is_new = false;
-		}
+		$is_new = $filter === null;
+		$new_id = $filter;
 
 		// Reset throttled marker, if we're re-enabling it.
 		$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
@@ -1065,7 +1060,7 @@ class AbuseFilter {
 
 			if ( $enabled ) {
 				$parameters = $actions[$action];
-				if ( $action === 'throttle' && $parameters[0] === 'new' ) {
+				if ( $action === 'throttle' && $parameters[0] === null ) {
 					// FIXME: Do we really need to keep the filter ID inside throttle parameters?
 					// We'd save space, keep things simpler and avoid this hack. Note: if removing
 					// it, a maintenance script will be necessary to clean up the table.
@@ -1113,7 +1108,7 @@ class AbuseFilter {
 		// Do the update
 		$dbw->insert( 'abuse_filter_history', $afh_row, __METHOD__ );
 		$history_id = $dbw->insertId();
-		if ( $filter !== 'new' ) {
+		if ( $filter !== null ) {
 			$dbw->delete(
 				'abuse_filter_action',
 				[ 'afa_filter' => $filter ],
@@ -1136,7 +1131,7 @@ class AbuseFilter {
 		}
 
 		// Logging
-		$subtype = $filter === 'new' ? 'create' : 'modify';
+		$subtype = $filter === null ? 'create' : 'modify';
 		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
 		$logEntry->setPerformer( $user );
 		$logEntry->setTarget(

@@ -97,12 +97,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	public function loadData() {
 		$oldSpec = $this->mParams[3];
 		$newSpec = $this->mParams[4];
-		$this->mFilter = $this->mParams[1];
 
-		if ( !is_numeric( $this->mFilter ) ) {
+		if ( !is_numeric( $this->mParams[1] ) ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
 			return false;
 		}
+		$this->mFilter = (int)$this->mParams[1];
 
 		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );

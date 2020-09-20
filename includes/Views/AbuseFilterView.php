@@ -5,7 +5,7 @@ use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
 	/**
-	 * @var string|null The ID of the current filter
+	 * @var string|int|null The ID of the current filter, null if new
 	 */
 	public $mFilter;
 	/**

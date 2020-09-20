@@ -91,11 +91,16 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		}
 
 		if ( is_numeric( $subpage ) || $subpage === 'new' ) {
-			return [ AbuseFilterViewEdit::class, 'edit', [ 'filter' => $subpage ] ];
+			return [
+				AbuseFilterViewEdit::class,
+				'edit',
+				[ 'filter' => is_numeric( $subpage ) ? (int)$subpage : null ]
+			];
 		}
 
 		if ( $params ) {
 			if ( count( $params ) === 2 && $params[0] === 'revert' && is_numeric( $params[1] ) ) {
+				$params[1] = (int)$params[1];
 				return [ AbuseFilterViewRevert::class, 'revert', $params ];
 			}
 
@@ -109,13 +114,16 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
 			if ( $params[0] === 'history' || $params[0] === 'log' ) {
 				if ( count( $params ) <= 2 ) {
+					if ( isset( $params[1] ) ) {
+						$params[1] = (int)$params[1];
+					}
 					return [ AbuseFilterViewHistory::class, 'recentchanges', $params ];
 				}
 				if ( count( $params ) === 4 && $params[2] === 'item' ) {
 					return [
 						AbuseFilterViewEdit::class,
 						'',
-						[ 'filter' => $params[1], 'history' => (int)$params[3] ]
+						[ 'filter' => (int)$params[1], 'history' => (int)$params[3] ]
 					];
 				}
 				if ( count( $params ) === 5 && $params[2] === 'diff' ) {

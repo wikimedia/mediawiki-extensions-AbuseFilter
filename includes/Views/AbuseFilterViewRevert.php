@@ -62,8 +62,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$max = wfTimestampNow();
 		$filterLink =
 			$this->linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseFilter', $filter ),
-				$lang->formatNum( $filter )
+				SpecialPage::getTitleFor( 'AbuseFilter', (string)$filter ),
+				$lang->formatNum( (string)$filter )
 			);
 		$searchFields = [];
 		$searchFields['filterid'] = [

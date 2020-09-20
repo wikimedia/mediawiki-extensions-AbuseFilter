@@ -31,7 +31,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
 		$filter = $this->mFilter;
-		if ( !is_numeric( $filter ) && $filter !== 'new' ) {
+		if ( !is_numeric( $filter ) && $filter !== null ) {
 			$out->addHTML(
 				Xml::tags(
 					'p',
@@ -64,7 +64,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$canEdit = AbuseFilter::canEdit( $user );
 
-		if ( $filter === 'new' && !$canEdit ) {
+		if ( $filter === null && !$canEdit ) {
 			$out->addHTML(
 				Xml::tags(
 					'p',
@@ -120,10 +120,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param int|string $filter The filter ID or 'new'.
+	 * @param int|null $filter The filter ID or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
-	private function saveCurrentFilter( $filter, $history_id ) : void {
+	private function saveCurrentFilter( ?int $filter, $history_id ) : void {
 		$out = $this->getOutput();
 		$reqStatus = $this->loadRequest( $filter );
 		if ( !$reqStatus->isGood() ) {
@@ -179,21 +179,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string|null $error An error message to show above the filter box.
 	 * @param stdClass|null $row abuse_filter row representing this filter, null if it doesn't exist
 	 * @param array $actions Actions enabled and their parameters
-	 * @param int|string $filter The filter ID or 'new'.
+	 * @param int|null $filter The filter ID, or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
 	protected function buildFilterEditor(
 		$error,
 		?stdClass $row,
 		array $actions,
-		$filter,
+		?int $filter,
 		$history_id
 	) {
-		if ( $filter === null ) {
-			return;
-		}
-
-		// Build the edit form
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$out->addJsConfigVars( 'isFilterEditor', true );
@@ -203,7 +198,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if (
 			$row === null ||
 			// @fixme Temporary stopgap for T237887
-			( $history_id && $row->af_id !== $filter )
+			( $history_id && (int)$row->af_id !== $filter )
 		) {
 			$out->addHTML(
 				Xml::tags(
@@ -222,14 +217,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$out->addSubtitle( $this->msg(
-			$filter === 'new' ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
-			$filter === 'new' ? $filter : $this->getLanguage()->formatNum( $filter ),
+			$filter === null ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
+			$filter === null ? $filter : $this->getLanguage()->formatNum( $filter ),
 			$history_id
 		)->parse() );
 
 		// Hide hidden filters.
 		if (
-			( $row->af_hidden || ( $filter !== 'new' && AbuseFilter::filterHidden( $filter ) ) ) &&
+			( $row->af_hidden || ( $filter !== null && AbuseFilter::filterHidden( $filter ) ) ) &&
 			!AbuseFilter::canViewPrivate( $user )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
@@ -256,9 +251,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields = [];
 
 		$fields['abusefilter-edit-id'] =
-			$this->mFilter === 'new' ?
+			$this->mFilter === null ?
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
-				$lang->formatNum( $filter );
+				$lang->formatNum( (string)$filter );
 		$fields['abusefilter-edit-description'] =
 			new OOUI\TextInputWidget( [
 				'name' => 'wpFilterDescription',
@@ -306,7 +301,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-hitcount'] = $hitCount;
 		}
 
-		if ( $filter !== 'new' && $row->af_enabled ) {
+		if ( $filter !== null && $row->af_enabled ) {
 			// Statistics
 			list( $totalCount, $matchesCount, $avgTime, $avgCond ) =
 				AbuseFilterServices::getFilterProfiler()->getFilterProfile( $filter );
@@ -412,7 +407,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$fields['abusefilter-edit-flags'] = $flags;
 
-		if ( $filter !== 'new' ) {
+		if ( $filter !== null ) {
 			$tools = '';
 			if ( MediaWikiServices::getInstance()->getPermissionManager()
 				->userHasRight( $user, 'abusefilter-revert' )
@@ -500,9 +495,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 		}
 
+		$urlFilter = $filter === null ? 'new' : (string)$filter;
 		$form = Xml::tags( 'form',
 			[
-				'action' => $this->getTitle( $filter )->getFullURL(),
+				'action' => $this->getTitle( $urlFilter )->getFullURL(),
 				'method' => 'post',
 				'id' => 'mw-abusefilter-editing-form'
 			],
@@ -1104,12 +1100,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Loads filter data from the database by ID.
-	 * @param int|string $id The filter's ID number, or 'new'
+	 * @param int|null $id The filter's ID number, or null for a new filter
 	 * @return array|null Either a [ DB row, actions ] array representing the filter,
 	 *  or NULL if the filter does not exist.
 	 */
-	public function loadFilterData( $id ) {
-		if ( $id === 'new' ) {
+	public function loadFilterData( ?int $id ) {
+		if ( $id === null ) {
 			return [
 				(object)[
 					'af_pattern' => '',
@@ -1176,13 +1172,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Load filter data to show in the edit view from the DB.
-	 * @param int|string $filter The filter ID being requested or 'new'.
+	 * @param int|null $filter The filter ID being requested or null for a new filter
 	 * @param int|null $history_id If any, the history ID being requested.
 	 * @return array|null Array with filter data if available, otherwise null.
 	 * The first element contains the abuse_filter database row,
 	 *  the second element is an array of related abuse_filter_action rows.
 	 */
-	private function loadFromDatabase( $filter, $history_id = null ) {
+	private function loadFromDatabase( ?int $filter, $history_id = null ) {
 		if ( $history_id ) {
 			return $this->loadHistoryItem( $history_id );
 		} else {
@@ -1194,12 +1190,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * Load data from the already-POSTed HTTP request.
 	 *
 	 * @throws BadMethodCallException If called without the request being POSTed or when trying
-	 *   to import a filter but $filter is not 'new'
-	 * @param int|string $filter The filter ID being requested.
+	 *   to import a filter but $filter is not null
+	 * @param int|null $filter The filter ID being requested, or null for a new filter
 	 * @return Status If good, the value is the array [ row, actions ]. If not, it contains an
 	 * error message.
 	 */
-	public function loadRequest( $filter ): Status {
+	public function loadRequest( ?int $filter ): Status {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
@@ -1218,7 +1214,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Check for importing
 		$import = $request->getVal( 'wpImportText' );
 		if ( $import ) {
-			if ( $filter !== 'new' ) {
+			if ( $filter !== null ) {
 				// Sanity
 				throw new BadMethodCallException( __METHOD__ . ' called for importing on existing filter.' );
 			}
@@ -1248,7 +1244,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$row->$name = $importRow->$name;
 			}
 		} else {
-			if ( $filter !== 'new' ) {
+			if ( $filter !== null ) {
 				// These aren't needed when saving the filter, but they are otherwise (e.g. if
 				// saving fails and we need to show the edit interface again).
 				$row->af_id = $origRow->af_id;

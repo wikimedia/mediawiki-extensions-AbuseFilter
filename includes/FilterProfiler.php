@@ -77,10 +77,10 @@ class FilterProfiler {
 	/**
 	 * Retrieve per-filter statistics.
 	 *
-	 * @param string $filter
+	 * @param string|int $filter
 	 * @return array
 	 */
-	public function getFilterProfile( string $filter ) : array {
+	public function getFilterProfile( $filter ) : array {
 		$profile = $this->objectStash->get( $this->filterProfileKey( $filter ) );
 
 		if ( $profile !== false ) {

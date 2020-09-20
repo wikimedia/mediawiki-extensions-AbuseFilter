@@ -126,7 +126,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	public function testSaveFilter( $args ) {
 		$user = $this->getUserMock( $args['testData']['userPerms'] ?? [] );
 
-		$filter = $args['row']['af_id'] = $args['row']['af_id'] ?? 'new';
+		$filter = $args['row']['af_id'] = $args['row']['af_id'] ?? null;
 		[ $newRow, $actions, $origRow, $origActions ] = $this->getRowAndActionsFromTestSpecs( $args );
 
 		/** @var IDatabase|MockObject $dbw */
@@ -374,7 +374,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 						'af_comments' => 'Throttle... Again',
 					],
 					'actions' => [
-						'throttle' => [ 'new', '11,111', "user\nfoo" ]
+						'throttle' => [ null, '11,111', "user\nfoo" ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-throttlegroups',
