@@ -128,7 +128,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		$vars = new AbuseFilterVariableHolder();
-		$varGenerator = new RCVariableGenerator( $vars, $rc );
+		$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
 		$vars = $varGenerator->getVars();
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $vars ? $vars->dumpAllVars( true ) : [],
