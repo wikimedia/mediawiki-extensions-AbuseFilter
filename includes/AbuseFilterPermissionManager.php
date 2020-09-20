@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
-use stdClass;
 use User;
 
 /**
@@ -48,13 +48,13 @@ class AbuseFilterPermissionManager {
 	 * Whether the user can edit the given filter.
 	 *
 	 * @param User $user
-	 * @param stdClass $row Filter row
+	 * @param Filter $filter
 	 * @return bool
 	 */
-	public function canEditFilter( User $user, stdClass $row ) : bool {
+	public function canEditFilter( User $user, Filter $filter ) : bool {
 		return (
 			$this->canEdit( $user ) &&
-			!( isset( $row->af_global ) && $row->af_global && !$this->canEditGlobal( $user ) )
+			!( $filter->isGlobal() && !$this->canEditGlobal( $user ) )
 		);
 	}
 

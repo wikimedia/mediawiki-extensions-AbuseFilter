@@ -23,6 +23,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+
 /**
  * @group Test
  * @group AbuseFilter
@@ -32,23 +34,33 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 	/**
 	 * Check that version comparing works well
 	 *
-	 * @param array $firstVersion [ stdClass, array ]
-	 * @param array $secondVersion [ stdClass, array ]
+	 * @param stdClass $firstVersion
+	 * @param array $firstActions
+	 * @param stdClass $secondVersion
+	 * @param array $secondActions
 	 * @param array $expected The differences
 	 * @covers AbuseFilter::compareVersions
 	 * @dataProvider provideVersions
 	 */
-	public function testCompareVersions( $firstVersion, $secondVersion, $expected ) {
+	public function testCompareVersions(
+		stdClass $firstVersion,
+		array $firstActions,
+		stdClass $secondVersion,
+		array $secondActions,
+		array $expected
+	) {
 		$allActions = [
 			'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'rangeblock', 'degroup', 'tag'
 		];
-		$differences = AbuseFilter::compareVersions( $firstVersion, $secondVersion, $allActions );
-
-		$this->assertSame(
-			$expected,
-			$differences,
-			'AbuseFilter::compareVersions did not output the expected result.'
+		$differences = AbuseFilter::compareVersions(
+			Filter::newFromRow( $firstVersion ),
+			$firstActions,
+			Filter::newFromRow( $secondVersion ),
+			$secondActions,
+			$allActions
 		);
+
+		$this->assertSame( $expected, $differences );
 	}
 
 	/**
@@ -56,38 +68,37 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 	 * @return array
 	 */
 	public function provideVersions() {
+		$baseRow = [
+			'af_actions' => '',
+			'af_user' => 1,
+			'af_user_text' => 'Foo',
+			'af_timestamp' => '20181016155634',
+			'af_id' => 42
+		];
 		return [
 			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'OtherComments',
-						'af_pattern' => '/*Other pattern*/',
-						'af_comments' => 'Other comments',
-						'af_deleted' => 1,
-						'af_enabled' => 0,
-						'af_hidden' => 1,
-						'af_global' => 1,
-						'af_group' => 'flow'
-					],
-					[
-						'disallow' => []
-					]
-				],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
+				(object)( [
+					'af_public_comments' => 'OtherComments',
+					'af_pattern' => '/*Other pattern*/',
+					'af_comments' => 'Other comments',
+					'af_deleted' => 1,
+					'af_enabled' => 0,
+					'af_hidden' => 1,
+					'af_global' => 1,
+					'af_group' => 'flow'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
 				[
 					'af_public_comments',
 					'af_pattern',
@@ -100,102 +111,78 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 				]
 			],
 			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
 				[]
 			],
 			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'degroup' => []
-					]
-				],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'degroup' => [] ],
 				[ 'actions' ]
 			],
 			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'OtherComments',
-						'af_pattern' => '/*Other pattern*/',
-						'af_comments' => 'Other comments',
-						'af_deleted' => 1,
-						'af_enabled' => 0,
-						'af_hidden' => 1,
-						'af_global' => 1,
-						'af_group' => 'flow'
-					],
-					[
-						'blockautopromote' => []
-					]
-				],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
+				(object)( [
+					'af_public_comments' => 'OtherComments',
+					'af_pattern' => '/*Other pattern*/',
+					'af_comments' => 'Other comments',
+					'af_deleted' => 1,
+					'af_enabled' => 0,
+					'af_hidden' => 1,
+					'af_global' => 1,
+					'af_group' => 'flow'
+				] + $baseRow ),
+				[ 'blockautopromote' => [] ],
 				[
 					'af_public_comments',
 					'af_pattern',
@@ -209,148 +196,106 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 				]
 			],
 			[
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-warning' ] ],
+				[ 'actions' ]
+			],
+			[
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-warning' ] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'disallow' => [] ],
+				[ 'actions' ]
+			],
+			[
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-warning' ] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
 				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'warn' => [
-							'abusefilter-warning'
-						]
-					]
+					'warn' => [ 'abusefilter-my-best-warning' ],
+					'degroup' => []
 				],
 				[ 'actions' ]
 			],
 			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'warn' => [
-							'abusefilter-warning'
-						]
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'disallow' => []
-					]
-				],
-				[ 'actions' ]
-			],
-			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'warn' => [
-							'abusefilter-warning'
-						]
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'warn' => [
-							'abusefilter-my-best-warning'
-						],
-						'degroup' => []
-					]
-				],
-				[ 'actions' ]
-			],
-			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'warn' => [
-							'abusefilter-warning'
-						]
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Other Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 1,
-						'af_global' => 0,
-						'af_group' => 'flow'
-					],
-					[
-						'warn' => [
-							'abusefilter-my-best-warning'
-						]
-					]
-				],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-warning' ] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Other Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 1,
+					'af_global' => 0,
+					'af_group' => 'flow'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-my-best-warning' ] ],
 				[
 					'af_pattern',
 					'af_hidden',
@@ -359,40 +304,28 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 				]
 			],
 			[
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'default'
-					],
-					[
-						'warn' => [
-							'abusefilter-beautiful-warning'
-						]
-					]
-				],
-				[
-					(object)[
-						'af_public_comments' => 'Comments',
-						'af_pattern' => '/*Pattern*/',
-						'af_comments' => 'Comments',
-						'af_deleted' => 0,
-						'af_enabled' => 1,
-						'af_hidden' => 0,
-						'af_global' => 0,
-						'af_group' => 'flow'
-					],
-					[
-						'warn' => [
-							'abusefilter-my-best-warning'
-						]
-					]
-				],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'default'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-beautiful-warning' ] ],
+				(object)( [
+					'af_public_comments' => 'Comments',
+					'af_pattern' => '/*Pattern*/',
+					'af_comments' => 'Comments',
+					'af_deleted' => 0,
+					'af_enabled' => 1,
+					'af_hidden' => 0,
+					'af_global' => 0,
+					'af_group' => 'flow'
+				] + $baseRow ),
+				[ 'warn' => [ 'abusefilter-my-best-warning' ] ],
 				[
 					'af_group',
 					'actions'
@@ -412,6 +345,8 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 	public function testTranslateFromHistory( $row, $expected ) {
 		$actual = AbuseFilter::translateFromHistory( $row );
 
+		$actual[0] = $actual[0]->toDatabaseRow();
+		unset( $actual[0]->af_throttled, $actual[0]->af_hit_count, $actual[0]->af_actions );
 		$this->assertEquals( $expected, $actual );
 	}
 

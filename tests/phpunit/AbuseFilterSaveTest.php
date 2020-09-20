@@ -22,6 +22,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -95,25 +97,18 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	 * @param array $args
 	 * @return array
 	 */
-	private function getRowAndActionsFromTestSpecs( array $args ) : array {
+	private function getFilterAndActionsFromTestSpecs( array $args ) : array {
 		$newRow = (object)( $args['row'] + self::DEFAULT_ABUSE_FILTER_ROW );
 		$actions = $args['actions'] ?? [];
 
 		$existing = isset( $args['testData']['existing'] );
 		if ( $existing ) {
-			$origRow = (object)( self::DEFAULT_ABUSE_FILTER_ROW + [ 'af_id' => 1 ] );
+			$origRow = Filter::newFromRow( (object)( self::DEFAULT_ABUSE_FILTER_ROW + [ 'af_id' => 1 ] ) );
 		} else {
-			$origRow = (object)[
-				'af_pattern' => '',
-				'af_enabled' => 1,
-				'af_hidden' => 0,
-				'af_global' => 0,
-				'af_throttled' => 0,
-				'af_hit_count' => 0,
-			];
+			$origRow = MutableFilter::newDefault();
 		}
 
-		return [ $newRow, $actions, $origRow, [] ];
+		return [ Filter::newFromRow( $newRow ), $actions, $origRow, [] ];
 	}
 
 	/**
@@ -127,7 +122,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		$user = $this->getUserMock( $args['testData']['userPerms'] ?? [] );
 
 		$filter = $args['row']['af_id'] = $args['row']['af_id'] ?? null;
-		[ $newRow, $actions, $origRow, $origActions ] = $this->getRowAndActionsFromTestSpecs( $args );
+		[ $newFilter, $actions, $origFilter, $origActions ] = $this->getFilterAndActionsFromTestSpecs( $args );
 
 		/** @var IDatabase|MockObject $dbw */
 		$dbw = $this->createMock( IDatabase::class );
@@ -135,7 +130,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		// This is needed because of the ManualLogEntry usage
 		$dbw->method( 'selectRow' )->willReturn( (object)[ 'actor_id' => '1' ] );
 		$status = AbuseFilter::saveFilter(
-			$user, $filter, $newRow, $actions, $origRow,
+			$user, $filter, $newFilter, $actions, $origFilter,
 			$origActions, $dbw, $this->getConfig()
 		);
 

@@ -1,6 +1,11 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 
@@ -94,16 +99,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		} else {
 			// The request wasn't posted (i.e. just viewing the filter) or the user cannot edit
-			$data = $this->loadFromDatabase( $filter, $history_id );
-			if ( $data === null || ( $history_id && (int)$data[0]->af_id !== $filter ) ) {
+			try {
+				$data = $this->loadFromDatabase( $filter, $history_id );
+			} catch ( MWException $_ ) {
+				$data = null;
+			}
+			if ( $data === null || ( $history_id && (int)$data[0]->getID() !== $filter ) ) {
 				$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
 				return;
 			}
 		}
 
-		list( $row, $actions ) = $data;
+		list( $filterObj, $actions ) = $data;
 
-		$this->buildFilterEditor( null, $row, $actions, $filter, $history_id );
+		$this->buildFilterEditor( null, $filterObj, $actions, $filter, $history_id );
 	}
 
 	/**
@@ -115,7 +124,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$request = $this->getRequest();
 		$user = $this->getUser();
 
-		[ $newRow, $actions, $origRow, $origActions ] = $this->loadRequest( $filter );
+		[ $newFilter, $actions, $origFilter, $origActions ] = $this->loadRequest( $filter );
 
 		$tokenFilter = $filter === null ? 'new' : (string)$filter;
 		$editToken = $request->getVal( 'wpEditToken' );
@@ -125,14 +134,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( !$tokenMatches ) {
 			// Token invalid or expired while the page was open, warn to retry
 			$error = Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->parseAsBlock() );
-			$this->buildFilterEditor( $error, $newRow, $actions, $filter, $history_id );
+			$this->buildFilterEditor( $error, $newFilter, $actions, $filter, $history_id );
 			return;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
 		$status = AbuseFilter::saveFilter(
-			$user, $filter, $newRow, $actions,
-			$origRow, $origActions, $dbw, $this->getConfig()
+			$user, $filter, $newFilter, $actions,
+			$origFilter, $origActions, $dbw, $this->getConfig()
 		);
 
 		if ( !$status->isGood() ) {
@@ -141,7 +150,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			if ( $status->isOK() ) {
 				// Fixable error, show the editing interface
 				$error = Html::errorBox( $this->msg( $msg, $params )->parseAsBlock() );
-				$this->buildFilterEditor( $error, $newRow, $actions, $filter, $history_id );
+				$this->buildFilterEditor( $error, $newFilter, $actions, $filter, $history_id );
 			} else {
 				$this->showUnrecoverableError( $msg );
 			}
@@ -179,27 +188,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * Normalize an abuse_filter row given to buildFilterEditor, to avoid isset-like checks later.
-	 *
-	 * @param stdClass $row
-	 * @return stdClass
-	 */
-	private function normalizeRow( stdClass $row ) : stdClass {
-		// These fields are unset when creating a new filter
-		$row->af_public_comments = $row->af_public_comments ?? '';
-		$row->af_group = $row->af_group ?? 'default';
-		$row->af_comments = $row->af_comments ?? '';
-		// These are also unset when creating a new filter, and also when viewing an old version of a filter,
-		// saving the filter failed (and the filter wasn't current), or importing a filter.
-		$row->af_hit_count = $row->af_hit_count ?? null;
-		$row->af_throttled = $row->af_throttled ?? null;
-
-		return $row;
-	}
-
-	/**
 	 * Builds the full form for edit filters, adding it to the OutputPage. This method can be called in 5 different
-	 * situations, for a total of 5 different data sources for $row and $actions:
+	 * situations, for a total of 5 different data sources for $filterObj and $actions:
 	 *  1 - View the result of importing a filter
 	 *  2 - Create a new filter
 	 *  3 - Load the current version of an existing filter
@@ -207,14 +197,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *  5 - Show the user input again if saving fails after one of the steps above
 	 *
 	 * @param string|null $error An error message to show above the filter box (HTML).
-	 * @param stdClass $row abuse_filter row representing this filter
+	 * @param Filter $filterObj
 	 * @param array $actions Actions enabled and their parameters
 	 * @param int|null $filter The filter ID, or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
 	protected function buildFilterEditor(
 		$error,
-		stdClass $row,
+		Filter $filterObj,
 		array $actions,
 		?int $filter,
 		$history_id
@@ -224,7 +214,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$row = $this->normalizeRow( $row );
 
 		$out->addSubtitle( $this->msg(
 			$filter === null ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
@@ -235,14 +224,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// We use filterHidden() to ensure that if a public filter is made private, the public
 		// revision is also hidden.
 		if (
-			( $row->af_hidden || ( $filter !== null && AbuseFilter::filterHidden( $filter ) ) ) &&
+			( $filterObj->isHidden() || ( $filter !== null && AbuseFilter::filterHidden( $filter ) ) ) &&
 			!$afPermManager->canViewPrivateFilters( $user )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
 		}
 
-		$readOnly = !$afPermManager->canEditFilter( $user, $row );
+		$readOnly = !$afPermManager->canEditFilter( $user, $filterObj );
 
 		if ( $history_id ) {
 			$oldWarningMessage = $readOnly
@@ -264,7 +253,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-description'] =
 			new OOUI\TextInputWidget( [
 				'name' => 'wpFilterDescription',
-				'value' => $row->af_public_comments,
+				'value' => $filterObj->getName(),
 				'readOnly' => $readOnly
 				]
 			);
@@ -275,7 +264,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				new OOUI\DropdownInputWidget( [
 					'name' => 'wpFilterGroup',
 					'id' => 'mw-abusefilter-edit-group-input',
-					'value' => $row->af_group,
+					'value' => $filterObj->getGroup(),
 					'disabled' => $readOnly
 				] );
 
@@ -291,20 +280,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Hit count display
-		if ( $row->af_hit_count !== null && $afPermManager->canSeeLogDetails( $user ) ) {
+		if ( $filterObj->getHitCount() !== null && $afPermManager->canSeeLogDetails( $user ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
-				->numParams( (int)$row->af_hit_count )->text();
+				->numParams( $filterObj->getHitCount() )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$count_display,
 				[],
-				[ 'wpSearchFilter' => $row->af_id ]
+				[ 'wpSearchFilter' => $filterObj->getID() ]
 			);
 
 			$fields['abusefilter-edit-hitcount'] = $hitCount;
 		}
 
-		if ( $filter !== null && $row->af_enabled ) {
+		if ( $filter !== null && $filterObj->isEnabled() ) {
 			// Statistics
 			[
 				'count' => $totalCount,
@@ -325,13 +314,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$fields['abusefilter-edit-rules'] = $this->buildEditBox(
-			$row->af_pattern,
+			$filterObj->getRules(),
 			true
 		);
 		$fields['abusefilter-edit-notes'] =
 			new OOUI\MultilineTextInputWidget( [
 				'name' => 'wpFilterNotes',
-				'value' => $row->af_comments . "\n",
+				'value' => $filterObj->getComments() . "\n",
 				'rows' => 15,
 				'readOnly' => $readOnly,
 				'id' => 'mw-abusefilter-notes-editor'
@@ -345,10 +334,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$checkboxes[] = 'global';
 		}
 
-		if ( $row->af_throttled ) {
-			$filterActions = explode( ',', $row->af_actions );
+		if ( $filterObj->isThrottled() ) {
 			$throttledActions = array_intersect(
-				$filterActions,
+				$filterObj->getActionsNames(),
 				AbuseFilter::getDangerousActions()
 			);
 
@@ -376,13 +364,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// * abusefilter-edit-hidden
 			// * abusefilter-edit-global
 			$message = "abusefilter-edit-$checkboxId";
-			$dbField = "af_$checkboxId";
+			// isEnabled(), isDeleted(), isHidden(), isGlobal()
+			$method = 'is' . ucfirst( $checkboxId );
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
 
 			$checkboxAttribs = [
 				'name' => $postVar,
 				'id' => $postVar,
-				'selected' => $row->$dbField,
+				'selected' => $filterObj->$method(),
 				'disabled' => $readOnly
 			];
 			$labelAttribs = [
@@ -395,7 +384,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Set readonly on deleted if the filter isn't disabled
-			if ( $checkboxId === 'deleted' && $row->af_enabled ) {
+			if ( $checkboxId === 'deleted' && $filterObj->isEnabled() ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -442,26 +431,26 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 			// Last modification details
 			$userLink =
-				Linker::userLink( $row->af_user, $row->af_user_text ) .
-				Linker::userToolLinks( $row->af_user, $row->af_user_text );
+				Linker::userLink( $filterObj->getUserID(), $filterObj->getUserName() ) .
+				Linker::userToolLinks( $filterObj->getUserID(), $filterObj->getUserName() );
 			$fields['abusefilter-edit-lastmod'] =
 				$this->msg( 'abusefilter-edit-lastmod-text' )
 				->rawParams(
 					$this->getLinkToLatestDiff(
 						$filter,
-						$lang->timeanddate( $row->af_timestamp, true )
+						$lang->timeanddate( $filterObj->getTimestamp(), true )
 					),
 					$userLink,
 					$this->getLinkToLatestDiff(
 						$filter,
-						$lang->date( $row->af_timestamp, true )
+						$lang->date( $filterObj->getTimestamp(), true )
 					),
 					$this->getLinkToLatestDiff(
 						$filter,
-						$lang->time( $row->af_timestamp, true )
+						$lang->time( $filterObj->getTimestamp(), true )
 					)
 				)->params(
-					wfEscapeWikiText( $row->af_user_text )
+					wfEscapeWikiText( $filterObj->getUserName() )
 				)->parse();
 			$history_display = new HtmlArmor( $this->msg( 'abusefilter-edit-viewhistory' )->parse() );
 			$fields['abusefilter-edit-history'] =
@@ -469,7 +458,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Add export
 			$exportRow = (object)array_diff_key(
-				get_object_vars( $row ),
+				get_object_vars( $filterObj->toDatabaseRow() ),
 				array_fill_keys( self::EXPORT_EXCLUDED_PROPS, 1 )
 			);
 			$exportText = FormatJson::encode( [ 'row' => $exportRow, 'actions' => $actions ] );
@@ -490,7 +479,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$form = Xml::fieldset( $this->msg( 'abusefilter-edit-main' )->text(), $form );
 		$form .= Xml::fieldset(
 			$this->msg( 'abusefilter-edit-consequences' )->text(),
-			$this->buildConsequenceEditor( $row, $actions )
+			$this->buildConsequenceEditor( $filterObj, $actions )
 		);
 
 		$urlFilter = $filter === null ? 'new' : (string)$filter;
@@ -528,12 +517,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 	/**
 	 * Builds the "actions" editor for a given filter.
-	 * @param stdClass $row A row from the abuse_filter table.
+	 * @param Filter $filterObj
 	 * @param array[] $actions Array of rows from the abuse_filter_action table
-	 *  corresponding to the abuse filter held in $row.
+	 *  corresponding to the filter object
 	 * @return string HTML text for an action editor.
 	 */
-	private function buildConsequenceEditor( stdClass $row, array $actions ) {
+	private function buildConsequenceEditor( Filter $filterObj, array $actions ) {
 		$enabledActions = array_filter(
 			$this->getConfig()->get( 'AbuseFilterActions' )
 		);
@@ -548,7 +537,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		foreach ( $enabledActions as $action => $_ ) {
 			$params = $actions[$action] ?? null;
 			$output .= $this->buildConsequenceSelector(
-				$action, $setActions[$action], $row, $params );
+				$action, $setActions[$action], $filterObj, $params );
 		}
 
 		return $output;
@@ -557,11 +546,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @param string $action The action to build an editor for
 	 * @param bool $set Whether or not the action is activated
-	 * @param stdClass $row abuse_filter row object
+	 * @param Filter $filterObj
 	 * @param string[]|null $parameters Action parameters. Null iff $set is false.
 	 * @return string|\OOUI\FieldLayout
 	 */
-	private function buildConsequenceSelector( $action, $set, stdClass $row, ?array $parameters ) {
+	private function buildConsequenceSelector( $action, $set, $filterObj, ?array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
@@ -570,7 +559,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return '';
 		}
 
-		$readOnly = !$afPermManager->canEditFilter( $user, $row );
+		$readOnly = !$afPermManager->canEditFilter( $user, $filterObj );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -713,11 +702,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				if ( $set && isset( $parameters[0] ) ) {
 					$msg = $parameters[0];
 				} elseif (
-					( $action === 'warn' && isset( $defaultWarnMsg[$row->af_group] ) ) ||
-					( $action === 'disallow' && isset( $defaultDisallowMsg[$row->af_group] ) )
+					( $action === 'warn' && isset( $defaultWarnMsg[$filterObj->getGroup()] ) ) ||
+					( $action === 'disallow' && isset( $defaultDisallowMsg[$filterObj->getGroup()] ) )
 				) {
-					$msg = $action === 'warn' ? $defaultWarnMsg[$row->af_group] :
-						$defaultDisallowMsg[$row->af_group];
+					$msg = $action === 'warn' ? $defaultWarnMsg[$filterObj->getGroup()] :
+						$defaultDisallowMsg[$filterObj->getGroup()];
 				} else {
 					$msg = $action === 'warn' ? 'abusefilter-warning' : 'abusefilter-disallowed';
 				}
@@ -1112,21 +1101,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Loads filter data from the database by ID.
 	 * @param int|null $id The filter's ID number, or null for a new filter
-	 * @return array|null Either a [ DB row, actions ] array representing the filter,
+	 * @return array|null Either a [ Filter, actions ] array representing the filter,
 	 *  or NULL if the filter does not exist.
+	 * @phan-return array{0:Filter,1:array}
 	 */
-	public function loadFilterData( ?int $id ) {
+	public function loadFilterData( ?int $id ) : array {
 		if ( $id === null ) {
-			return [
-				(object)[
-					'af_pattern' => '',
-					'af_enabled' => 1,
-					'af_hidden' => 0,
-					'af_global' => 0,
-					'af_deleted' => 0
-				],
-				[]
-			];
+			return [ MutableFilter::newDefault(), [] ];
 		}
 
 		// Load from master to avoid unintended reversions where there's replication lag.
@@ -1141,8 +1122,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$row = $dbr->selectRow( 'abuse_filter', AbuseFilter::ALL_ABUSE_FILTER_FIELDS, [ 'af_id' => $id ], __METHOD__ );
 
 		if ( !$row ) {
-			return null;
+			throw new MWException( "Filter $id not found." );
 		}
+
+		$filter = Filter::newFromRow( $row );
 
 		// Load the actions
 		$res = $dbr->select(
@@ -1158,16 +1141,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				array_filter( explode( "\n", $actionRow->afa_parameters ) );
 		}
 
-		return [ $row, $actions ];
+		return [ $filter, $actions ];
 	}
 
 	/**
 	 * Load filter data to show in the edit view from the DB.
 	 * @param int|null $filter The filter ID being requested or null for a new filter
 	 * @param int|null $history_id If any, the history ID being requested.
-	 * @return array|null Array with filter data if available, otherwise null.
-	 * The first element contains the abuse_filter database row,
-	 *  the second element is an array of related abuse_filter_action rows.
+	 * @return array|null Either a [ Filter, actions ] array representing the filter,
+	 *  or NULL if the filter does not exist.
+	 * @phan-return array{0:Filter,1:array}|null
 	 */
 	private function loadFromDatabase( ?int $filter, $history_id = null ) {
 		if ( $history_id ) {
@@ -1189,38 +1172,43 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
-		list( $origRow, $origActions ) = $this->loadFilterData( $filter );
+		/** @var Filter $origFilter */
+		list( $origFilter, $origActions ) = $this->loadFilterData( $filter );
 
-		$row = new stdClass();
+		$newFilter = $origFilter instanceof MutableFilter
+			? clone $origFilter
+			: MutableFilter::newFromParentFilter( $origFilter );
 
 		if ( $filter !== null ) {
 			// Unchangeable values
-			$row->af_throttled = $origRow->af_throttled;
-			$row->af_hit_count = $origRow->af_hit_count;
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			$newFilter->setThrottled( $origFilter->isThrottled() );
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			$newFilter->setHitCount( $origFilter->getHitCount() );
 			// These are needed if the save fails and the filter is not new
-			$row->af_id = $origRow->af_id;
-			$row->af_user = $origRow->af_user;
-			$row->af_user_text = $origRow->af_user_text;
-			$row->af_timestamp = $origRow->af_timestamp;
+			$newFilter->setID( $origFilter->getID() );
+			$newFilter->setUserID( $origFilter->getUserID() );
+			$newFilter->setUserName( $origFilter->getUserName() );
+			$newFilter->setTimestamp( $origFilter->getTimestamp() );
 		}
 
-		$row->af_public_comments = trim( $request->getVal( 'wpFilterDescription' ) );
-		$row->af_pattern = trim( $request->getVal( 'wpFilterRules' ) );
-		$row->af_comments = trim( $request->getVal( 'wpFilterNotes' ) );
+		$newFilter->setName( trim( $request->getVal( 'wpFilterDescription' ) ) );
+		$newFilter->setRules( trim( $request->getVal( 'wpFilterRules' ) ) );
+		$newFilter->setComments( trim( $request->getVal( 'wpFilterNotes' ) ) );
 
-		$row->af_group = $request->getVal( 'wpFilterGroup', 'default' );
+		$newFilter->setGroup( $request->getVal( 'wpFilterGroup', 'default' ) );
 
-		$row->af_deleted = $request->getCheck( 'wpFilterDeleted' );
-		$row->af_enabled = $request->getCheck( 'wpFilterEnabled' );
-		$row->af_hidden = $request->getCheck( 'wpFilterHidden' );
-		$row->af_global = $request->getCheck( 'wpFilterGlobal' )
-			&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
+		$newFilter->setDeleted( $request->getCheck( 'wpFilterDeleted' ) );
+		$newFilter->setEnabled( $request->getCheck( 'wpFilterEnabled' ) );
+		$newFilter->setHidden( $request->getCheck( 'wpFilterHidden' ) );
+		$newFilter->setGlobal( $request->getCheck( 'wpFilterGlobal' )
+			&& $this->getConfig()->get( 'AbuseFilterIsCentral' ) );
 
 		$actions = $this->loadActions();
 
-		$row->af_actions = implode( ',', array_keys( $actions ) );
+		$newFilter->setActionsNames( array_keys( $actions ) );
 
-		return [ $row, $actions, $origRow, $origActions ];
+		return [ $newFilter, $actions, $origFilter, $origActions ];
 	}
 
 	/**
@@ -1243,21 +1231,34 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$importRow = $importData->row;
 		$actions = wfObjectToArray( $importData->actions );
 
-		$row = new stdClass();
-		// Keep the group only if it exists on this wiki
-		$row->af_group = in_array( $importRow->af_group, $validGroups, true ) ? $importRow->af_group : 'default';
-		// And also make it global only if global filters are enabled here
-		$row->af_global = intval( $importRow->af_global && $globalFiltersEnabled );
+		$filter = new MutableFilter(
+			new Specs(
+				$importRow->af_pattern,
+				$importRow->af_comments,
+				$importRow->af_public_comments,
+				array_keys( $actions ),
+				// Keep the group only if it exists on this wiki
+				in_array( $importRow->af_group, $validGroups, true ) ? $importRow->af_group : 'default'
+			),
+			new Flags(
+				(bool)$importRow->af_enabled,
+				(bool)$importRow->af_deleted,
+				(bool)$importRow->af_hidden,
+				// And also make it global only if global filters are enabled here
+				$importRow->af_global && $globalFiltersEnabled
+			),
+			function () {
+				// @phan-suppress-previous-line PhanTypeMismatchArgument
+				throw new LogicException( 'Not implemented' );
+			},
+			new LastEditInfo(
+				0,
+				'',
+				''
+			)
+		);
 
-		$row->af_public_comments = $importRow->af_public_comments;
-		$row->af_pattern = $importRow->af_pattern;
-		$row->af_comments = $importRow->af_comments;
-		$row->af_deleted = $importRow->af_deleted;
-		$row->af_enabled = $importRow->af_enabled;
-		$row->af_hidden = $importRow->af_hidden;
-		$row->af_actions = implode( ',', array_keys( $actions ) );
-
-		return [ $row, $actions ];
+		return [ $filter, $actions ];
 	}
 
 	/**
@@ -1333,9 +1334,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Loads historical data in a form that the editor can understand.
 	 * @param int $id History ID
-	 * @return array|null Null if the history ID is not valid, otherwise array in the usual format:
-	 * First element contains the abuse_filter row (as it was).
-	 * Second element contains an array of abuse_filter_action rows.
+	 * @return array|null Null if the history ID is not valid, otherwise array [ Filter, actions ]
+	 * @phan-return array{0:Filter,1:array}|null
 	 */
 	private function loadHistoryItem( $id ) : ?array {
 		$dbr = wfGetDB( DB_REPLICA );

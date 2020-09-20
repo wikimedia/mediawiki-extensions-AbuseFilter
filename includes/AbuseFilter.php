@@ -689,9 +689,9 @@ class AbuseFilter {
 	 *
 	 * @param User $user
 	 * @param int|null $filter
-	 * @param stdClass $newRow
+	 * @param Filter $newFilter
 	 * @param array $actions
-	 * @param stdClass $originalRow
+	 * @param Filter $originalFilter
 	 * @param array $originalActions
 	 * @param IDatabase $dbw DB_MASTER Where the filter should be saved
 	 * @param Config $config
@@ -701,9 +701,9 @@ class AbuseFilter {
 	public static function saveFilter(
 		User $user,
 		?int $filter,
-		stdClass $newRow,
+		Filter $newFilter,
 		array $actions,
-		stdClass $originalRow,
+		Filter $originalFilter,
 		array $originalActions,
 		IDatabase $dbw,
 		Config $config
@@ -713,17 +713,17 @@ class AbuseFilter {
 
 		// Check the syntax
 		$parser = AbuseFilterServices::getParserFactory()->newParser();
-		$syntaxerr = $parser->checkSyntax( $newRow->af_pattern );
+		$syntaxerr = $parser->checkSyntax( $newFilter->getRules() );
 		if ( $syntaxerr !== true ) {
 			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
 			return $validationStatus;
 		}
 		// Check for missing required fields (title and pattern)
 		$missing = [];
-		if ( !$newRow->af_pattern || trim( $newRow->af_pattern ) === '' ) {
+		if ( trim( $newFilter->getRules() ) === '' ) {
 			$missing[] = new Message( 'abusefilter-edit-field-conditions' );
 		}
-		if ( !$newRow->af_public_comments ) {
+		if ( !$newFilter->getName() ) {
 			$missing[] = new Message( 'abusefilter-edit-field-description' );
 		}
 		if ( count( $missing ) !== 0 ) {
@@ -735,7 +735,7 @@ class AbuseFilter {
 		}
 
 		// Don't allow setting as deleted an active filter
-		if ( $newRow->af_enabled && $newRow->af_deleted ) {
+		if ( $newFilter->isEnabled() && $newFilter->isDeleted() ) {
 			$validationStatus->error( 'abusefilter-edit-deleting-enabled' );
 			return $validationStatus;
 		}
@@ -780,23 +780,23 @@ class AbuseFilter {
 			array_filter( $config->get( 'AbuseFilterActions' ) )
 		);
 		$differences = self::compareVersions(
-			[ $newRow, $actions ],
-			[ $originalRow, $originalActions ],
+			$newFilter, $actions,
+			$originalFilter, $originalActions,
 			$availableActions
 		);
 
 		// Don't allow adding a new global rule, or updating a
 		// rule that is currently global, without permissions.
 		if (
-			!$afPermManager->canEditFilter( $user, $newRow ) ||
-			!$afPermManager->canEditFilter( $user, $originalRow )
+			!$afPermManager->canEditFilter( $user, $newFilter ) ||
+			!$afPermManager->canEditFilter( $user, $originalFilter )
 		) {
 			$validationStatus->fatal( 'abusefilter-edit-notallowed-global' );
 			return $validationStatus;
 		}
 
 		// Don't allow custom messages on global rules
-		if ( $newRow->af_global == 1 && (
+		if ( $newFilter->isGlobal() && (
 				( isset( $actions['warn'] ) && $actions['warn'][0] !== 'abusefilter-warning' ) ||
 				( isset( $actions['disallow'] ) && $actions['disallow'][0] !== 'abusefilter-disallowed' )
 		) ) {
@@ -804,7 +804,7 @@ class AbuseFilter {
 			return $validationStatus;
 		}
 
-		$wasGlobal = (bool)$originalRow->af_global;
+		$wasGlobal = $originalFilter->isGlobal();
 
 		// Check for non-changes
 		if ( !count( $differences ) ) {
@@ -826,7 +826,7 @@ class AbuseFilter {
 
 		// Everything went fine, so let's save the filter
 		list( $new_id, $history_id ) =
-			self::doSaveFilter( $user, $newRow, $differences, $filter, $actions, $wasGlobal, $dbw, $config );
+			self::doSaveFilter( $user, $newFilter, $differences, $filter, $actions, $wasGlobal, $dbw, $config );
 		$validationStatus->setResult( true, [ $new_id, $history_id ] );
 		return $validationStatus;
 	}
@@ -835,7 +835,7 @@ class AbuseFilter {
 	 * Saves new filter's info to DB
 	 *
 	 * @param User $user
-	 * @param stdClass $newRow
+	 * @param Filter $newFilter
 	 * @param array $differences
 	 * @param int|null $filter
 	 * @param array $actions
@@ -846,7 +846,7 @@ class AbuseFilter {
 	 */
 	private static function doSaveFilter(
 		User $user,
-		$newRow,
+		Filter $newFilter,
 		$differences,
 		?int $filter,
 		$actions,
@@ -854,8 +854,8 @@ class AbuseFilter {
 		IDatabase $dbw,
 		Config $config
 	) {
-		// Convert from object to array
-		$newRow = get_object_vars( $newRow );
+		// TODO This code shouldn't be here
+		$newRow = get_object_vars( $newFilter->toDatabaseRow() );
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp();
@@ -874,13 +874,6 @@ class AbuseFilter {
 		// This is null when creating a new filter, but the DB field is NOT NULL
 		$newRow['af_hit_count'] = $newRow['af_hit_count'] ?? 0;
 		$newRow['af_id'] = $new_id;
-
-		// T67807: integer 1's & 0's might be better understood than booleans
-		$newRow['af_enabled'] = (int)$newRow['af_enabled'];
-		$newRow['af_hidden'] = (int)$newRow['af_hidden'];
-		$newRow['af_throttled'] = (int)$newRow['af_throttled'];
-		$newRow['af_deleted'] = (int)$newRow['af_deleted'];
-		$newRow['af_global'] = (int)$newRow['af_global'];
 
 		$dbw->replace( 'abuse_filter', 'af_id', $newRow, __METHOD__ );
 
@@ -991,45 +984,48 @@ class AbuseFilter {
 	 * Each version is expected to be an array( $row, $actions )
 	 * Returns an array of fields that are different.
 	 *
-	 * @param array $version_1
-	 * @param array $version_2
+	 * @param Filter $firstFilter
+	 * @param array $firstActions
+	 * @param Filter $secondFilter
+	 * @param array $secondActions
 	 * @param string[] $availableActions All actions enabled in the AF config
 	 *
 	 * @return array
 	 */
 	public static function compareVersions(
-		array $version_1,
-		array $version_2,
+		Filter $firstFilter,
+		array $firstActions,
+		Filter $secondFilter,
+		array $secondActions,
 		array $availableActions
 	) {
-		$compareFields = [
-			'af_public_comments',
-			'af_pattern',
-			'af_comments',
-			'af_deleted',
-			'af_enabled',
-			'af_hidden',
-			'af_global',
-			'af_group',
+		// TODO: Avoid DB references here
+		$methods = [
+			'af_public_comments' => 'getName',
+			'af_pattern' => 'getRules',
+			'af_comments' => 'getComments',
+			'af_deleted' => 'isDeleted',
+			'af_enabled' => 'isEnabled',
+			'af_hidden' => 'isHidden',
+			'af_global' => 'isGlobal',
+			'af_group' => 'getGroup',
 		];
+
 		$differences = [];
 
-		list( $row1, $actions1 ) = $version_1;
-		list( $row2, $actions2 ) = $version_2;
-
-		foreach ( $compareFields as $field ) {
-			if ( !isset( $row2->$field ) || $row1->$field != $row2->$field ) {
+		foreach ( $methods as $field => $method ) {
+			if ( $firstFilter->$method() !== $secondFilter->$method() ) {
 				$differences[] = $field;
 			}
 		}
 
 		foreach ( $availableActions as $action ) {
-			if ( !isset( $actions1[$action] ) && !isset( $actions2[$action] ) ) {
+			if ( !isset( $firstActions[$action] ) && !isset( $secondActions[$action] ) ) {
 				// They're both unset
-			} elseif ( isset( $actions1[$action] ) && isset( $actions2[$action] ) ) {
+			} elseif ( isset( $firstActions[$action] ) && isset( $secondActions[$action] ) ) {
 				// They're both set. Double check needed, e.g. per T180194
-				if ( array_diff( $actions1[$action], $actions2[$action] ) ||
-					array_diff( $actions2[$action], $actions1[$action] ) ) {
+				if ( array_diff( $firstActions[$action], $secondActions[$action] ) ||
+					array_diff( $secondActions[$action], $firstActions[$action] ) ) {
 					// Different parameters
 					$differences[] = 'actions';
 				}
@@ -1045,8 +1041,9 @@ class AbuseFilter {
 	/**
 	 * @param stdClass $row
 	 * @return array
+	 * @phan-return array{0:Filter,1:array}
 	 */
-	public static function translateFromHistory( $row ) {
+	public static function translateFromHistory( stdClass $row ) : array {
 		// Manually translate into an abuse_filter row.
 		$af_row = new stdClass;
 
@@ -1064,7 +1061,10 @@ class AbuseFilter {
 		$actionsRaw = unserialize( $row->afh_actions );
 		$actionsOutput = is_array( $actionsRaw ) ? $actionsRaw : [];
 
-		return [ $af_row, $actionsOutput ];
+		$af_row->af_actions = implode( ',', array_keys( $actionsOutput ) );
+
+		$filter = Filter::newFromRow( $af_row );
+		return [ $filter, $actionsOutput ];
 	}
 
 	/**
