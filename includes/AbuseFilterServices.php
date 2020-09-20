@@ -12,4 +12,12 @@ class AbuseFilterServices {
 	public static function getKeywordsManager() : KeywordsManager {
 		return MediaWikiServices::getInstance()->getService( KeywordsManager::SERVICE_NAME );
 	}
+
+	/**
+	 * Conveniency wrapper for strong typing
+	 * @return FilterProfiler
+	 */
+	public static function getFilterProfiler() : FilterProfiler {
+		return MediaWikiServices::getInstance()->getService( FilterProfiler::SERVICE_NAME );
+	}
 }

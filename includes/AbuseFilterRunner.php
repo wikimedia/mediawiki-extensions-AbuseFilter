@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
@@ -66,6 +68,9 @@ class AbuseFilterRunner {
 	/** @var AbuseFilterHookRunner */
 	private $hookRunner;
 
+	/** @var FilterProfiler */
+	private $filterProfiler;
+
 	/**
 	 * @param User $user The user who performed the action being filtered
 	 * @param Title $title The title where the action being filtered was performed
@@ -89,6 +94,7 @@ class AbuseFilterRunner {
 		$this->group = $group;
 		$this->action = $vars->getVar( 'action' )->toString();
 		$this->hookRunner = AbuseFilterHookRunner::getRunner();
+		$this->filterProfiler = AbuseFilterServices::getFilterProfiler();
 	}
 
 	/**
@@ -454,194 +460,19 @@ class AbuseFilterRunner {
 	 * @param string[] $allFilters
 	 */
 	protected function profileExecution( array $result, array $matchedFilters, array $allFilters ) {
-		$this->checkResetProfiling( $allFilters );
-		$this->recordRuntimeProfilingResult(
+		$this->filterProfiler->checkResetProfiling( $this->group, $allFilters );
+		$this->filterProfiler->recordRuntimeProfilingResult(
 			count( $allFilters ),
 			$result['condCount'],
 			$result['runtime']
 		);
-		$this->recordPerFilterProfiling( $result['profiling'] );
-		$this->recordStats( $result['condCount'], $result['runtime'], (bool)$matchedFilters );
-	}
-
-	/**
-	 * Check if profiling data for all filters is lesser than the limit. If not, delete it and
-	 * also delete per-filter profiling for all filters. Note that we don't need to reset it for
-	 * disabled filters too, as their profiling data will be reset upon re-enabling anyway.
-	 *
-	 * @param array $allFilters
-	 */
-	protected function checkResetProfiling( array $allFilters ) {
-		global $wgAbuseFilterProfileActionsCap;
-
-		$profileKey = AbuseFilter::filterProfileGroupKey( $this->group );
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-
-		$profile = $stash->get( $profileKey );
-		$total = $profile['total'] ?? 0;
-
-		if ( $total > $wgAbuseFilterProfileActionsCap ) {
-			$stash->delete( $profileKey );
-			foreach ( $allFilters as $filter ) {
-				AbuseFilter::resetFilterProfile( $filter );
-			}
-		}
-	}
-
-	/**
-	 * Record per-filter profiling, for all filters
-	 *
-	 * @param array $data Profiling data, as stored in $this->profilingData
-	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
-	 */
-	protected function recordPerFilterProfiling( array $data ) {
-		global $wgAbuseFilterSlowFilterRuntimeLimit;
-
-		foreach ( $data as $filterName => $params ) {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filterName );
-			if ( !$global ) {
-				// @todo Maybe add a parameter to recordProfilingResult to record global filters
-				// data separately (in the foreign wiki)
-				$this->recordProfilingResult( $filterID, $params['time'], $params['conds'], $params['result'] );
-			}
-
-			if ( $params['time'] > $wgAbuseFilterSlowFilterRuntimeLimit ) {
-				$this->recordSlowFilter( $filterName, $params['time'], $params['conds'], $params['result'] );
-			}
-		}
-	}
-
-	/**
-	 * Record per-filter profiling data
-	 *
-	 * @param int $filter
-	 * @param float $time Time taken, in milliseconds
-	 * @param int $conds
-	 * @param bool $matched
-	 */
-	protected function recordProfilingResult( $filter, $time, $conds, $matched ) {
-		// Defer updates to avoid massive (~1 second) edit time increases
-		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds, $matched ) {
-			$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-			$profileKey = AbuseFilter::filterProfileKey( $filter );
-			$profile = $stash->get( $profileKey );
-
-			if ( $profile !== false ) {
-				// Number of observed executions of this filter
-				$profile['count']++;
-				if ( $matched ) {
-					// Number of observed matches of this filter
-					$profile['matches']++;
-				}
-				// Total time spent on this filter from all observed executions
-				$profile['total-time'] += $time;
-				// Total number of conditions for this filter from all executions
-				$profile['total-cond'] += $conds;
-			} else {
-				$profile = [
-					'count' => 1,
-					'matches' => (int)$matched,
-					'total-time' => $time,
-					'total-cond' => $conds
-				];
-			}
-			// Note: It is important that all key information be stored together in a single
-			// memcache entry to avoid race conditions where competing Apache instances
-			// partially overwrite the stats.
-			$stash->set( $profileKey, $profile, 3600 );
-		} );
-	}
-
-	/**
-	 * Logs slow filter's runtime data for later analysis
-	 *
-	 * @param string $filterId
-	 * @param float $runtime
-	 * @param int $totalConditions
-	 * @param bool $matched
-	 */
-	protected function recordSlowFilter( $filterId, $runtime, $totalConditions, $matched ) {
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->info(
-			'Edit filter {filter_id} on {wiki} is taking longer than expected',
-			[
-				'wiki' => WikiMap::getCurrentWikiDbDomain()->getId(),
-				'filter_id' => $filterId,
-				'title' => $this->title->getPrefixedText(),
-				'runtime' => $runtime,
-				'matched' => $matched,
-				'total_conditions' => $totalConditions
-			]
+		$this->filterProfiler->recordPerFilterProfiling( $this->title, $result['profiling'] );
+		$this->filterProfiler->recordStats(
+			$this->group,
+			$result['condCount'],
+			$result['runtime'],
+			(bool)$matchedFilters
 		);
-	}
-
-	/**
-	 * Update global statistics
-	 *
-	 * @param int $condsUsed The amount of used conditions
-	 * @param float $totalTime Time taken, in milliseconds
-	 * @param bool $anyMatch Whether at least one filter matched the action
-	 */
-	protected function recordStats( $condsUsed, $totalTime, $anyMatch ) {
-		$profileKey = AbuseFilter::filterProfileGroupKey( $this->group );
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-
-		// Note: All related data is stored in a single memcache entry and updated via merge()
-		// to avoid race conditions where partial updates on competing instances corrupt the data.
-		$stash->merge(
-			$profileKey,
-			function ( $cache, $key, $profile ) use ( $condsUsed, $totalTime, $anyMatch ) {
-				global $wgAbuseFilterConditionLimit;
-
-				if ( $profile === false ) {
-					$profile = [
-						// Total number of actions observed
-						'total' => 0,
-						// Number of actions ending by exceeding condition limit
-						'overflow' => 0,
-						// Total time of execution of all observed actions
-						'total-time' => 0,
-						// Total number of conditions from all observed actions
-						'total-cond' => 0,
-						// Total number of filters matched
-						'matches' => 0
-					];
-				}
-
-				$profile['total']++;
-				$profile['total-time'] += $totalTime;
-				$profile['total-cond'] += $condsUsed;
-
-				// Increment overflow counter, if our condition limit overflowed
-				if ( $condsUsed > $wgAbuseFilterConditionLimit ) {
-					$profile['overflow']++;
-				}
-
-				// Increment counter by 1 if there was at least one match
-				if ( $anyMatch ) {
-					$profile['matches']++;
-				}
-
-				return $profile;
-			},
-			AbuseFilter::$statsStoragePeriod
-		);
-	}
-
-	/**
-	 * Record runtime profiling data for all filters together
-	 *
-	 * @param int $totalFilters
-	 * @param int $totalConditions
-	 * @param float $runtime
-	 */
-	protected function recordRuntimeProfilingResult( $totalFilters, $totalConditions, $runtime ) {
-		$keyPrefix = 'abusefilter.runtime-profile.' . WikiMap::getCurrentWikiDbDomain()->getId() . '.';
-
-		$statsd = MediaWikiServices::getInstance()->getStatsdDataFactory();
-		$statsd->timing( $keyPrefix . 'runtime', $runtime );
-		$statsd->timing( $keyPrefix . 'total_filters', $totalFilters );
-		$statsd->timing( $keyPrefix . 'total_conditions', $totalConditions );
 	}
 
 	/**
@@ -1374,10 +1205,9 @@ class AbuseFilterRunner {
 	 * @param string[] $filters The filters to check
 	 */
 	protected function checkEmergencyDisable( array $filters ) {
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
 		// reliability of this number may strongly vary. We should instead use a fixed one.
-		$groupProfile = $stash->get( AbuseFilter::filterProfileGroupKey( $this->group ) );
+		$groupProfile = $this->filterProfiler->getGroupProfile( $this->group );
 		$totalActions = $groupProfile['total'];
 
 		foreach ( $filters as $filter ) {
@@ -1385,8 +1215,8 @@ class AbuseFilterRunner {
 			$hitCountLimit = AbuseFilter::getEmergencyValue( 'count', $this->group );
 			$maxAge = AbuseFilter::getEmergencyValue( 'age', $this->group );
 
-			$filterProfile = $stash->get( AbuseFilter::filterProfileKey( $filter ) );
-			$matchCount = $filterProfile['matches'] ?? 1;
+			$filterProfile = $this->filterProfiler->getFilterProfile( $filter );
+			$matchCount = ( $filterProfile['matches'] ?? 0 ) + 1;
 
 			// Figure out if the filter is subject to being throttled.
 			$filterAge = (int)wfTimestamp( TS_UNIX, AbuseFilter::getFilter( $filter )->af_timestamp );

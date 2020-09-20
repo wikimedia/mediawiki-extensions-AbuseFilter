@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
 /**
  * The default view used in Special:AbuseFilter
@@ -263,13 +263,13 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * Generates a summary of filter activity using the internal statistics.
 	 */
 	public function showStatus() {
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+		$filterProfiler = AbuseFilterServices::getFilterProfiler();
 
 		$totalCount = 0;
 		$matchCount = 0;
 		$overflowCount = 0;
 		foreach ( $this->getConfig()->get( 'AbuseFilterValidGroups' ) as $group ) {
-			$profile = $stash->get( AbuseFilter::filterProfileGroupKey( $group ) );
+			$profile = $filterProfiler->getGroupProfile( $group );
 			if ( $profile !== false ) {
 				$totalCount += $profile[ 'total' ];
 				$overflowCount += $profile[ 'overflow' ];
