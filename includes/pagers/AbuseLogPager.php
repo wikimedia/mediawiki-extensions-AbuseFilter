@@ -17,16 +17,26 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
+	/** @var bool */
+	private $joinWithArchive;
+
 	/**
 	 * @param SpecialAbuseLog $form
 	 * @param array $conds
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param bool $joinWithArchive
 	 */
-	public function __construct( SpecialAbuseLog $form, array $conds, LinkBatchFactory $linkBatchFactory ) {
+	public function __construct(
+		SpecialAbuseLog $form,
+		array $conds,
+		LinkBatchFactory $linkBatchFactory,
+		bool $joinWithArchive = false
+	) {
 		parent::__construct( $form->getContext(), $form->getLinkRenderer() );
 		$this->mForm = $form;
 		$this->mConds = $conds;
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->joinWithArchive = $joinWithArchive;
 	}
 
 	/**
@@ -66,6 +76,20 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				],
 			],
 		];
+
+		if ( $this->joinWithArchive ) {
+			$info['tables'][] = 'archive';
+			$info['fields'][] = 'ar_timestamp';
+			$info['join_conds']['archive'] = [
+				'LEFT JOIN',
+				[
+					'afl_wiki IS NULL',
+					'afl_rev_id IS NOT NULL',
+					'rev_id IS NULL',
+					'ar_rev_id=afl_rev_id',
+				]
+			];
+		}
 
 		if ( !$this->mForm->canSeeHidden( $this->getUser() ) ) {
 			$info['conds']['afl_deleted'] = 0;
