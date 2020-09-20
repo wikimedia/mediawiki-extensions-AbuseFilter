@@ -23,7 +23,10 @@
  */
 
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -33,21 +36,21 @@ use Wikimedia\Rdbms\IDatabase;
  * @group AbuseFilterSave
  */
 class AbuseFilterSaveTest extends MediaWikiTestCase {
-	private const DEFAULT_ABUSE_FILTER_ROW = [
-		'af_pattern' => '/**/',
-		'af_user' => 0,
-		'af_user_text' => 'FilterTester',
-		'af_timestamp' => '20190826000000',
-		'af_enabled' => 1,
-		'af_comments' => '',
-		'af_public_comments' => 'Mock filter',
-		'af_hidden' => 0,
-		'af_hit_count' => 0,
-		'af_throttled' => 0,
-		'af_deleted' => 0,
-		'af_actions' => '',
-		'af_global' => 0,
-		'af_group' => 'default'
+	private const DEFAULT_VALUES = [
+		'rules' => '/**/',
+		'user' => 0,
+		'user_text' => 'FilterTester',
+		'timestamp' => '20190826000000',
+		'enabled' => 1,
+		'comments' => '',
+		'name' => 'Mock filter',
+		'hidden' => 0,
+		'hit_count' => 0,
+		'throttled' => 0,
+		'deleted' => 0,
+		'actions' => [],
+		'global' => 0,
+		'group' => 'default'
 	];
 
 	/**
@@ -94,21 +97,52 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @param array $args
-	 * @return array
+	 * @param array $filterSpecs
+	 * @return Filter
 	 */
-	private function getFilterAndActionsFromTestSpecs( array $args ) : array {
-		$newRow = (object)( $args['row'] + self::DEFAULT_ABUSE_FILTER_ROW );
-		$actions = $args['actions'] ?? [];
+	private function getFilterFromSpecs( array $filterSpecs ) : Filter {
+		return new Filter(
+			new Specs(
+				$filterSpecs['rules'],
+				$filterSpecs['comments'],
+				$filterSpecs['name'],
+				array_keys( $filterSpecs['actions'] ),
+				$filterSpecs['group']
+			),
+			new Flags(
+				$filterSpecs['enabled'],
+				$filterSpecs['deleted'],
+				$filterSpecs['hidden'],
+				$filterSpecs['global']
+			),
+			$filterSpecs['actions'],
+			new LastEditInfo(
+				$filterSpecs['user'],
+				$filterSpecs['user_text'],
+				$filterSpecs['timestamp']
+			),
+			$filterSpecs['id'],
+			$filterSpecs['hit_count'],
+			$filterSpecs['throttled']
+		);
+	}
+
+	/**
+	 * @param array $args
+	 * @return Filter[]
+	 */
+	private function getFilterFromTestSpecs( array $args ) : array {
+		$filterSpecs = $args['filter'] + self::DEFAULT_VALUES;
+		$newFilter = $this->getFilterFromSpecs( $filterSpecs );
 
 		$existing = isset( $args['testData']['existing'] );
 		if ( $existing ) {
-			$origRow = Filter::newFromRow( (object)( self::DEFAULT_ABUSE_FILTER_ROW + [ 'af_id' => 1 ] ) );
+			$origFilter = $this->getFilterFromSpecs( self::DEFAULT_VALUES + [ 'id' => 1 ] );
 		} else {
-			$origRow = MutableFilter::newDefault();
+			$origFilter = MutableFilter::newDefault();
 		}
 
-		return [ Filter::newFromRow( $newRow ), $actions, $origRow, [] ];
+		return [ $newFilter, $origFilter ];
 	}
 
 	/**
@@ -121,8 +155,8 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	public function testSaveFilter( $args ) {
 		$user = $this->getUserMock( $args['testData']['userPerms'] ?? [] );
 
-		$filter = $args['row']['af_id'] = $args['row']['af_id'] ?? null;
-		[ $newFilter, $actions, $origFilter, $origActions ] = $this->getFilterAndActionsFromTestSpecs( $args );
+		$filter = $args['filter']['id'] = $args['filter']['id'] ?? null;
+		[ $newFilter, $origFilter ] = $this->getFilterFromTestSpecs( $args );
 
 		/** @var IDatabase|MockObject $dbw */
 		$dbw = $this->createMock( IDatabase::class );
@@ -130,8 +164,8 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		// This is needed because of the ManualLogEntry usage
 		$dbw->method( 'selectRow' )->willReturn( (object)[ 'actor_id' => '1' ] );
 		$status = AbuseFilter::saveFilter(
-			$user, $filter, $newFilter, $actions, $origFilter,
-			$origActions, $dbw, $this->getConfig()
+			$user, $filter, $newFilter, $origFilter,
+			$dbw, $this->getConfig()
 		);
 
 		if ( $args['testData']['shouldFail'] ) {
@@ -165,12 +199,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		return [
 			'Fail due to empty description and rules' => [
 				[
-					'row' => [
-						'af_pattern' => '',
-						'af_public_comments' => '',
-					],
-					'actions' => [
-						'blockautopromote' => []
+					'filter' => [
+						'rules' => '',
+						'name' => '',
+						'actions' => [
+							'blockautopromote' => []
+						]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-missingfields',
@@ -181,11 +215,11 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Success for only rules and description' => [
 				[
-					'row' => [
-						'af_pattern' => '/* My rules */',
-						'af_public_comments' => 'Some new filter',
-						'af_enabled' => false,
-						'af_deleted' => true
+					'filter' => [
+						'rules' => '/* My rules */',
+						'name' => 'Some new filter',
+						'enabled' => false,
+						'deleted' => true
 					],
 					'testData' => [
 						'shouldFail' => false,
@@ -195,12 +229,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to syntax error' => [
 				[
-					'row' => [
-						'af_pattern' => 'rlike',
-						'af_public_comments' => 'This syntax aint good',
-					],
-					'actions' => [
-						'block' => [ true, '8 hours', '8 hours' ]
+					'filter' => [
+						'rules' => 'rlike',
+						'name' => 'This syntax aint good',
+						'actions' => [
+							'block' => [ true, '8 hours', '8 hours' ]
+						]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-badsyntax',
@@ -211,13 +245,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to both "enabled" and "deleted" selected' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Enabled and deleted',
-						'af_deleted' => true
-					],
-					'actions' => [
-						'block' => [ true, '8 hours', '8 hours' ]
+					'filter' => [
+						'rules' => '1==1',
+						'names' => 'Enabled and deleted',
+						'deleted' => true,
+						'actions' => [
+							'block' => [ true, '8 hours', '8 hours' ]
+						]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-deleting-enabled',
@@ -228,14 +262,14 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to a reserved tag' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Reserved tag',
-						'af_comments' => 'Some notes',
-						'af_hidden' => true
-					],
-					'actions' => [
-						'tag' => [ 'mw-undo' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Reserved tag',
+						'comments' => 'Some notes',
+						'hidden' => true,
+						'actions' => [
+							'tag' => [ 'mw-undo' ]
+						]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-bad-tags',
@@ -246,13 +280,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to an invalid tag' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Invalid tag',
-						'af_comments' => 'Some notes',
-					],
-					'actions' => [
-						'tag' => [ 'invalid|tag' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Invalid tag',
+						'comments' => 'Some notes',
+						'actions' => [
+							'tag' => [ 'invalid|tag' ]
+						]
 					],
 					'testData' => [
 						'expectedMessage' => 'tags-create-invalid-chars',
@@ -263,13 +297,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to an empty tag' => [
 				[
-					'row' => [
-						'af_pattern' => '1!=0',
-						'af_public_comments' => 'Empty tag',
-						'af_comments' => '',
-					],
-					'actions' => [
-						'tag' => [ '' ]
+					'filter' => [
+						'rules' => '1!=0',
+						'name' => 'Empty tag',
+						'comments' => '',
+						'actions' => [
+							'tag' => [ '' ]
+						]
 					],
 					'testData' => [
 						'expectedMessage' => 'tags-create-no-name',
@@ -280,13 +314,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to lack of modify-global right' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Global without perms',
-						'af_global' => true,
-					],
-					'actions' => [
-						'disallow' => [ 'abusefilter-disallowed' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Global without perms',
+						'global' => true,
+						'actions' => [
+							'disallow' => [ 'abusefilter-disallowed' ]
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-notallowed-global',
@@ -297,13 +331,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to custom warn message on global filter' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Global with invalid warn message',
-						'af_global' => true,
-					],
-					'actions' => [
-						'warn' => [ 'abusefilter-beautiful-warning' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Global with invalid warn message',
+						'global' => true,
+						'actions' => [
+							'warn' => [ 'abusefilter-beautiful-warning' ]
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
@@ -315,13 +349,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to custom disallow message on global filter' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Global with invalid disallow message',
-						'af_global' => true,
-					],
-					'actions' => [
-						'disallow' => [ 'abusefilter-disallowed-something' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Global with invalid disallow message',
+						'global' => true,
+						'actions' => [
+							'disallow' => [ 'abusefilter-disallowed-something' ]
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
@@ -333,12 +367,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to a restricted action' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Restricted action',
-					],
-					'actions' => [
-						'degroup' => []
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Restricted action',
+						'actions' => [
+							'degroup' => []
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-restricted',
@@ -349,10 +383,10 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Pass validation but do not save when there are no changes' => [
 				[
-					'row' => [
-						'af_id' => '1',
-						'af_pattern' => '/**/',
-						'af_public_comments' => 'Mock filter'
+					'filter' => [
+						'id' => '1',
+						'rules' => '/**/',
+						'name' => 'Mock filter'
 					],
 					'testData' => [
 						'shouldFail' => false,
@@ -363,13 +397,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to invalid throttle groups' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Invalid throttle groups',
-						'af_comments' => 'Throttle... Again',
-					],
-					'actions' => [
-						'throttle' => [ null, '11,111', "user\nfoo" ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Invalid throttle groups',
+						'comments' => 'Throttle... Again',
+						'actions' => [
+							'throttle' => [ null, '11,111', "user\nfoo" ]
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-throttlegroups',
@@ -380,12 +414,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to empty warning message' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Empty warning message',
-					],
-					'actions' => [
-						'warn' => [ '' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Empty warning message',
+						'actions' => [
+							'warn' => [ '' ]
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-warn-message',
@@ -396,12 +430,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to empty disallow message' => [
 				[
-					'row' => [
-						'af_pattern' => '1==1',
-						'af_public_comments' => 'Empty disallow message',
-					],
-					'actions' => [
-						'disallow' => [ '' ]
+					'filter' => [
+						'rules' => '1==1',
+						'name' => 'Empty disallow message',
+						'actions' => [
+							'disallow' => [ '' ]
+						],
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-disallow-message',

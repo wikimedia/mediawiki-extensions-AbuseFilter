@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Filter;
 
 use BadMethodCallException;
-use LogicException;
 
 /**
  * Value object representing a filter that can be mutated (i.e. provides setters); this representation can
@@ -31,10 +30,7 @@ class MutableFilter extends Filter {
 				false,
 				false
 			),
-			function () {
-				// @phan-suppress-previous-line PhanTypeMismatchArgument
-				throw new LogicException( 'Not yet implemented!' );
-			},
+			[],
 			new LastEditInfo(
 				0,
 				'',
@@ -51,10 +47,8 @@ class MutableFilter extends Filter {
 		return new self(
 			$filter->getSpecs(),
 			$filter->getFlags(),
-			function () {
-				// @phan-suppress-previous-line PhanTypeMismatchArgument
-				throw new LogicException( 'Not yet implemented!' );
-			},
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable One is guaranteed to be set
+			$filter->actions ?? $filter->actionsCallback,
 			$filter->getLastEditInfo(),
 			$filter->getID(),
 			$filter->getHitCount(),

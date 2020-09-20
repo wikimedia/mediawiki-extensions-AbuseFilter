@@ -2,8 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Filter;
 
-use LogicException;
-
 /**
  * Immutable value object representing a "complete" filter. This can be used to represent filters
  * that already exist in the database.
@@ -42,43 +40,6 @@ class Filter extends AbstractFilter {
 		$this->id = $id;
 		$this->hitCount = $hitCount;
 		$this->throttled = $throttled;
-	}
-
-	/**
-	 * TEMPORARY HACK.
-	 * @param \stdClass $row
-	 * @return static
-	 * @codeCoverageIgnore
-	 */
-	public static function newFromRow( \stdClass $row ): self {
-		return new self(
-			new Specs(
-				trim( $row->af_pattern ),
-				// FIXME: Make the DB fields for these NOT NULL (T263324)
-				(string)$row->af_comments,
-				(string)$row->af_public_comments,
-				$row->af_actions !== '' ? explode( ',', $row->af_actions ) : [],
-				$row->af_group
-			),
-			new Flags(
-				(bool)$row->af_enabled,
-				(bool)$row->af_deleted,
-				(bool)$row->af_hidden,
-				(bool)$row->af_global
-			),
-			function () {
-				// @phan-suppress-previous-line PhanTypeMismatchArgument
-				throw new LogicException( 'Not yet implemented!' );
-			},
-			new LastEditInfo(
-				(int)$row->af_user,
-				$row->af_user_text,
-				$row->af_timestamp
-			),
-			(int)$row->af_id,
-			isset( $row->af_hit_count ) ? (int)$row->af_hit_count : null,
-			isset( $row->af_throttled ) ? (bool)$row->af_throttled : null
-		);
 	}
 
 	/**

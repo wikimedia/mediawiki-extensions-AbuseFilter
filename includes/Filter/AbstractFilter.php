@@ -15,10 +15,13 @@ class AbstractFilter {
 	protected $flags;
 	/**
 	 * @var array[]|null Actions and parameters, can be lazy-loaded with $actionsCallback
-	 * @warning This is still NOT implemented
 	 */
 	protected $actions;
-	/** @var callable|null */
+	/**
+	 * @var callable|null
+	 * @todo Evaluate whether this can be avoided, e.g. by using a JOIN. This property also makes
+	 *   the class not serializable.
+	 */
 	protected $actionsCallback;
 
 	/**
@@ -126,6 +129,8 @@ class AbstractFilter {
 	public function getActions() : array {
 		if ( $this->actions === null ) {
 			$this->setActions( call_user_func( $this->actionsCallback ) );
+			// This is to ease testing
+			$this->actionsCallback = null;
 		}
 		return $this->actions;
 	}

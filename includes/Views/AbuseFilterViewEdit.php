@@ -2,10 +2,13 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 
@@ -92,27 +95,25 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		if ( $isImport ) {
-			$data = $this->loadImportRequest();
-			if ( $data === null ) {
+			$filterObj = $this->loadImportRequest();
+			if ( $filterObj === null ) {
 				$this->showUnrecoverableError( 'abusefilter-import-invalid-data' );
 				return;
 			}
 		} else {
 			// The request wasn't posted (i.e. just viewing the filter) or the user cannot edit
 			try {
-				$data = $this->loadFromDatabase( $filter, $history_id );
-			} catch ( MWException $_ ) {
-				$data = null;
+				$filterObj = $this->loadFromDatabase( $filter, $history_id );
+			} catch ( FilterNotFoundException $_ ) {
+				$filterObj = null;
 			}
-			if ( $data === null || ( $history_id && (int)$data[0]->getID() !== $filter ) ) {
+			if ( $filterObj === null || ( $history_id && (int)$filterObj->getID() !== $filter ) ) {
 				$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
 				return;
 			}
 		}
 
-		list( $filterObj, $actions ) = $data;
-
-		$this->buildFilterEditor( null, $filterObj, $actions, $filter, $history_id );
+		$this->buildFilterEditor( null, $filterObj, $filter, $history_id );
 	}
 
 	/**
@@ -124,7 +125,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$request = $this->getRequest();
 		$user = $this->getUser();
 
-		[ $newFilter, $actions, $origFilter, $origActions ] = $this->loadRequest( $filter );
+		[ $newFilter, $origFilter ] = $this->loadRequest( $filter );
 
 		$tokenFilter = $filter === null ? 'new' : (string)$filter;
 		$editToken = $request->getVal( 'wpEditToken' );
@@ -134,14 +135,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( !$tokenMatches ) {
 			// Token invalid or expired while the page was open, warn to retry
 			$error = Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->parseAsBlock() );
-			$this->buildFilterEditor( $error, $newFilter, $actions, $filter, $history_id );
+			$this->buildFilterEditor( $error, $newFilter, $filter, $history_id );
 			return;
 		}
 
 		$dbw = wfGetDB( DB_MASTER );
 		$status = AbuseFilter::saveFilter(
-			$user, $filter, $newFilter, $actions,
-			$origFilter, $origActions, $dbw, $this->getConfig()
+			$user, $filter, $newFilter,
+			$origFilter, $dbw, $this->getConfig()
 		);
 
 		if ( !$status->isGood() ) {
@@ -150,7 +151,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			if ( $status->isOK() ) {
 				// Fixable error, show the editing interface
 				$error = Html::errorBox( $this->msg( $msg, $params )->parseAsBlock() );
-				$this->buildFilterEditor( $error, $newFilter, $actions, $filter, $history_id );
+				$this->buildFilterEditor( $error, $newFilter, $filter, $history_id );
 			} else {
 				$this->showUnrecoverableError( $msg );
 			}
@@ -198,14 +199,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *
 	 * @param string|null $error An error message to show above the filter box (HTML).
 	 * @param Filter $filterObj
-	 * @param array $actions Actions enabled and their parameters
 	 * @param int|null $filter The filter ID, or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
 	protected function buildFilterEditor(
 		$error,
 		Filter $filterObj,
-		array $actions,
 		?int $filter,
 		$history_id
 	) {
@@ -214,6 +213,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
+		$actions = $filterObj->getActions();
 
 		$out->addSubtitle( $this->msg(
 			$filter === null ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
@@ -1101,60 +1101,36 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Loads filter data from the database by ID.
 	 * @param int|null $id The filter's ID number, or null for a new filter
-	 * @return array|null Either a [ Filter, actions ] array representing the filter,
-	 *  or NULL if the filter does not exist.
-	 * @phan-return array{0:Filter,1:array}
+	 * @return Filter
+	 * @throws FilterNotFoundException
 	 */
-	public function loadFilterData( ?int $id ) : array {
+	private function loadFilterData( ?int $id ) : Filter {
 		if ( $id === null ) {
-			return [ MutableFilter::newDefault(), [] ];
+			return MutableFilter::newDefault();
 		}
 
-		// Load from master to avoid unintended reversions where there's replication lag.
-		$dbr = $this->getRequest()->wasPosted()
-			? wfGetDB( DB_MASTER )
-			: wfGetDB( DB_REPLICA );
+		$filterLookup = AbuseFilterServices::getFilterLookup();
+		$flags = $this->getRequest()->wasPosted()
+			// Load from master to avoid unintended reversions where there's replication lag.
+			? FilterLookup::READ_LATEST
+			: FilterLookup::READ_NORMAL;
 
-		// Load certain fields only. This prevents a condition seen on Wikimedia where
-		// a schema change adding a new field caused that extra field to be selected.
-		// Since the selected row may be inserted back into the database, this will cause
-		// an SQL error if, say, one server has the updated schema but another does not.
-		$row = $dbr->selectRow( 'abuse_filter', AbuseFilter::ALL_ABUSE_FILTER_FIELDS, [ 'af_id' => $id ], __METHOD__ );
-
-		if ( !$row ) {
-			throw new MWException( "Filter $id not found." );
-		}
-
-		$filter = Filter::newFromRow( $row );
-
-		// Load the actions
-		$res = $dbr->select(
-			'abuse_filter_action',
-			[ 'afa_consequence', 'afa_parameters' ],
-			[ 'afa_filter' => $id ],
-			__METHOD__
-		);
-
-		$actions = [];
-		foreach ( $res as $actionRow ) {
-			$actions[$actionRow->afa_consequence] =
-				array_filter( explode( "\n", $actionRow->afa_parameters ) );
-		}
-
-		return [ $filter, $actions ];
+		return $filterLookup->getFilter( $id, false, $flags );
 	}
 
 	/**
 	 * Load filter data to show in the edit view from the DB.
 	 * @param int|null $filter The filter ID being requested or null for a new filter
 	 * @param int|null $history_id If any, the history ID being requested.
-	 * @return array|null Either a [ Filter, actions ] array representing the filter,
-	 *  or NULL if the filter does not exist.
-	 * @phan-return array{0:Filter,1:array}|null
+	 * @return Filter|null Null if the filter does not exist.
 	 */
-	private function loadFromDatabase( ?int $filter, $history_id = null ) {
+	private function loadFromDatabase( ?int $filter, $history_id = null ) : ?Filter {
 		if ( $history_id ) {
-			return $this->loadHistoryItem( $history_id );
+			try {
+				return AbuseFilterServices::getFilterLookup()->getFilterVersion( $history_id );
+			} catch ( FilterVersionNotFoundException $_ ) {
+				return null;
+			}
 		} else {
 			return $this->loadFilterData( $filter );
 		}
@@ -1163,7 +1139,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Load data from the HTTP request. Used for saving the filter, and when the token doesn't match
 	 * @param int|null $filter
-	 * @return array
+	 * @return Filter[]
 	 */
 	private function loadRequest( ?int $filter ) : array {
 		$request = $this->getRequest();
@@ -1172,8 +1148,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
-		/** @var Filter $origFilter */
-		list( $origFilter, $origActions ) = $this->loadFilterData( $filter );
+		$origFilter = $this->loadFilterData( $filter );
 
 		$newFilter = $origFilter instanceof MutableFilter
 			? clone $origFilter
@@ -1206,15 +1181,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$actions = $this->loadActions();
 
-		$newFilter->setActionsNames( array_keys( $actions ) );
+		$newFilter->setActions( $actions );
 
-		return [ $newFilter, $actions, $origFilter, $origActions ];
+		return [ $newFilter, $origFilter ];
 	}
 
 	/**
-	 * @return array|null
+	 * @return Filter|null
 	 */
-	private function loadImportRequest() : ?array {
+	private function loadImportRequest() : ?Filter {
 		$validGroups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
 		$globalFiltersEnabled = $this->getConfig()->get( 'AbuseFilterIsCentral' );
 		$request = $this->getRequest();
@@ -1231,7 +1206,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$importRow = $importData->row;
 		$actions = wfObjectToArray( $importData->actions );
 
-		$filter = new MutableFilter(
+		return new MutableFilter(
 			new Specs(
 				$importRow->af_pattern,
 				$importRow->af_comments,
@@ -1247,18 +1222,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				// And also make it global only if global filters are enabled here
 				$importRow->af_global && $globalFiltersEnabled
 			),
-			function () {
-				// @phan-suppress-previous-line PhanTypeMismatchArgument
-				throw new LogicException( 'Not implemented' );
-			},
+			$actions,
 			new LastEditInfo(
 				0,
 				'',
 				''
 			)
 		);
-
-		return [ $filter, $actions ];
 	}
 
 	/**
@@ -1329,28 +1299,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 		return $actions;
-	}
-
-	/**
-	 * Loads historical data in a form that the editor can understand.
-	 * @param int $id History ID
-	 * @return array|null Null if the history ID is not valid, otherwise array [ Filter, actions ]
-	 * @phan-return array{0:Filter,1:array}|null
-	 */
-	private function loadHistoryItem( $id ) : ?array {
-		$dbr = wfGetDB( DB_REPLICA );
-
-		$row = $dbr->selectRow( 'abuse_filter_history',
-			'*',
-			[ 'afh_id' => $id ],
-			__METHOD__
-		);
-
-		if ( !$row ) {
-			return null;
-		}
-
-		return AbuseFilter::translateFromHistory( $row );
 	}
 
 	/**

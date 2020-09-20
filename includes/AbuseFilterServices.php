@@ -70,4 +70,11 @@ class AbuseFilterServices {
 	public static function getParserFactory() : ParserFactory {
 		return MediaWikiServices::getInstance()->getService( ParserFactory::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterLookup
+	 */
+	public static function getFilterLookup() : FilterLookup {
+		return MediaWikiServices::getInstance()->getService( FilterLookup::SERVICE_NAME );
+	}
 }

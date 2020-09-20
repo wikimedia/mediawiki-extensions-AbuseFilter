@@ -164,6 +164,7 @@
 		"TableDiffFormatterFullContext": "includes/TableDiffFormatterFullContext.php",
 		"AbuseFilterViewImport": "includes/Views/AbuseFilterViewImport.php",
 		"AbuseFilterVariableHolder": "includes/AbuseFilterVariableHolder.php",
+		"MediaWiki\\Extension\\AbuseFilter\\FilterLookup": "includes/FilterLookup.php",
 		"MediaWiki\\Extension\\AbuseFilter\\KeywordsManager": "includes/KeywordsManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPermissionManager": "includes/AbuseFilterPermissionManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
@@ -199,7 +200,8 @@
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
 		"AbuseFilterParserTestCase": "tests/phpunit/unit/AbuseFilterParserTestCase.php",
 		"AbuseFilterUploadTestTrait": "tests/phpunit/AbuseFilterUploadTestTrait.php",
-		"AbuseFilterCreateAccountTestTrait": "tests/phpunit/AbuseFilterCreateAccountTestTrait.php"
+		"AbuseFilterCreateAccountTestTrait": "tests/phpunit/AbuseFilterCreateAccountTestTrait.php",
+		"AbuseFilterRowsAndFiltersTestTrait": "tests/phpunit/AbuseFilterRowsAndFiltersTestTrait.php"
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {

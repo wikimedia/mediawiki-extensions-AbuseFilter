@@ -2,6 +2,8 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
@@ -74,6 +76,9 @@ class AbuseFilterRunner {
 	/** @var UserIdentity */
 	private $filterUser;
 
+	/** @var FilterLookup */
+	private $filterLookup;
+
 	/**
 	 * @param User $user The user who performed the action being filtered
 	 * @param Title $title The title where the action being filtered was performed
@@ -100,6 +105,7 @@ class AbuseFilterRunner {
 		$this->filterProfiler = AbuseFilterServices::getFilterProfiler();
 		$this->changeTagger = AbuseFilterServices::getChangeTagger();
 		$this->filterUser = AbuseFilterServices::getFilterUser()->getUser();
+		$this->filterLookup = AbuseFilterServices::getFilterLookup();
 	}
 
 	/**
@@ -357,15 +363,16 @@ class AbuseFilterRunner {
 		$this->parser->resetCondCount();
 
 		$matchedFilters = [];
-
-		foreach ( $this->getLocalFilters() as $row ) {
-			$matchedFilters[$row->af_id] = $this->checkFilter( $row );
+		foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, false ) as $filter ) {
+			// @phan-suppress-next-line PhanTypeMismatchDimAssignment
+			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter );
 		}
 
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-			foreach ( $this->getGlobalFilters() as $row ) {
-				$matchedFilters[ AbuseFilter::buildGlobalName( $row->af_id ) ] =
-					$this->checkFilter( $row, true );
+			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
+				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+				$matchedFilters[ AbuseFilter::buildGlobalName( $filter->getID() ) ] =
+					$this->checkFilter( $filter, true );
 			}
 		}
 
@@ -376,74 +383,22 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * @return array abuse_filter DB rows
-	 */
-	protected function getLocalFilters() : array {
-		return iterator_to_array( wfGetDB( DB_REPLICA )->select(
-			'abuse_filter',
-			AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
-			[
-				'af_enabled' => 1,
-				'af_deleted' => 0,
-				'af_group' => $this->group,
-			],
-			__METHOD__
-		) );
-	}
-
-	/**
-	 * @return array abuse_filter rows from the foreign DB
-	 */
-	protected function getGlobalFilters() : array {
-		$globalRulesKey = AbuseFilter::getGlobalRulesKey( $this->group );
-		$fname = __METHOD__;
-
-		return MediaWikiServices::getInstance()->getMainWANObjectCache()->getWithSetCallback(
-			$globalRulesKey,
-			WANObjectCache::TTL_WEEK,
-			function () use ( $fname ) {
-				$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
-
-				return iterator_to_array( $fdb->select(
-					'abuse_filter',
-					AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
-					[
-						'af_enabled' => 1,
-						'af_deleted' => 0,
-						'af_global' => 1,
-						'af_group' => $this->group,
-					],
-					$fname
-				) );
-			},
-			[
-				'checkKeys' => [ $globalRulesKey ],
-				'lockTSE' => 300,
-				'version' => 1
-			]
-		);
-	}
-
-	/**
 	 * Check the conditions of a single filter, and profile it if $this->executeMode is true
 	 *
-	 * @param stdClass $row
+	 * @param Filter $filter
 	 * @param bool $global
 	 * @return bool
 	 */
-	protected function checkFilter( $row, $global = false ) {
-		$filterName = AbuseFilter::buildGlobalName( $row->af_id, $global );
+	protected function checkFilter( Filter $filter, $global = false ) {
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+		$filterName = AbuseFilter::buildGlobalName( $filter->getID(), $global );
 
 		$startConds = $this->parser->getCondCount();
 		$startTime = microtime( true );
 		$origExtraTime = AFComputedVariable::$profilingExtraTime;
 
-		// Store the row somewhere convenient
-		AbuseFilter::cacheFilter( $filterName, $row );
-
-		$pattern = trim( $row->af_pattern );
 		$this->parser->setFilter( $filterName );
-		$result = $this->parser->checkConditions( $pattern, true, $filterName );
+		$result = $this->parser->checkConditions( $filter->getRules(), true, $filterName );
 
 		$actualExtra = AFComputedVariable::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
@@ -501,7 +456,7 @@ class AbuseFilterRunner {
 
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			[ $filterID, $isGlobalFilter ] = AbuseFilter::splitGlobalName( $filter );
-			$filterObj = AbuseFilter::getFilterObject( $filterID, $isGlobalFilter );
+			$filterObj = $this->filterLookup->getFilter( $filterID, $isGlobalFilter );
 			$filterPublicComments = $filterObj->getName();
 
 			$isGlobalFilter = $filterObj->isGlobal();
@@ -1251,7 +1206,7 @@ class AbuseFilterRunner {
 			$matchCount = $filterProfile['matches'] + 1;
 
 			// Figure out if the filter is subject to being throttled.
-			$filterObj = AbuseFilter::getFilterObject( (int)$filter, false );
+			$filterObj = $this->filterLookup->getFilter( (int)$filter, false );
 			$filterAge = (int)wfTimestamp( TS_UNIX, $filterObj->getTimestamp() );
 			$exemptTime = $filterAge + $maxAge;
 

@@ -20,7 +20,8 @@ class AbuseFilterCentralDBManagerTest extends MediaWikiUnitTestCase {
 			CentralDBManager::class,
 			new CentralDBManager(
 				$this->createMock( LBFactory::class ),
-				'foo'
+				'foo',
+				true
 			)
 		);
 	}
@@ -34,7 +35,7 @@ class AbuseFilterCentralDBManagerTest extends MediaWikiUnitTestCase {
 		$lb->method( 'getConnectionRef' )->willReturn( $expected );
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getMainLB' )->willReturn( $lb );
-		$dbManager = new CentralDBManager( $lbFactory, 'foo' );
+		$dbManager = new CentralDBManager( $lbFactory, 'foo', true );
 		$this->assertSame( $expected, $dbManager->getConnection( DB_REPLICA ) );
 	}
 
@@ -43,8 +44,46 @@ class AbuseFilterCentralDBManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetConnection_invalid() {
 		$lbFactory = $this->createMock( LBFactory::class );
-		$dbManager = new CentralDBManager( $lbFactory, null );
+		$dbManager = new CentralDBManager( $lbFactory, null, true );
 		$this->expectException( CentralDBNotAvailableException::class );
 		$dbManager->getConnection( DB_REPLICA );
+	}
+
+	/**
+	 * @covers ::getCentralDBName
+	 */
+	public function testGetCentralDBName() {
+		$expected = 'foobar';
+		$lbFactory = $this->createMock( LBFactory::class );
+		$dbManager = new CentralDBManager( $lbFactory, $expected, true );
+		$this->assertSame( $expected, $dbManager->getCentralDBName() );
+	}
+
+	/**
+	 * @covers ::getCentralDBName
+	 */
+	public function testGetCentralDBName_invalid() {
+		$lbFactory = $this->createMock( LBFactory::class );
+		$dbManager = new CentralDBManager( $lbFactory, null, true );
+		$this->expectException( CentralDBNotAvailableException::class );
+		$dbManager->getCentralDBName();
+	}
+
+	/**
+	 * @param bool $value
+	 * @covers ::filterIsCentral
+	 * @dataProvider provideIsCentral
+	 */
+	public function testFilterIsCentral( bool $value ) {
+		$lbFactory = $this->createMock( LBFactory::class );
+		$dbManager = new CentralDBManager( $lbFactory, 'foo', $value );
+		$this->assertSame( $value, $dbManager->filterIsCentral() );
+	}
+
+	public function provideIsCentral() {
+		return [
+			'central' => [ true ],
+			'not central' => [ false ]
+		];
 	}
 }

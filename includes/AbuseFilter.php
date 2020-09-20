@@ -3,10 +3,10 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -15,11 +15,6 @@ use Wikimedia\Rdbms\IDatabase;
  * static functions for generic use (mostly utility functions).
  */
 class AbuseFilter {
-	/**
-	 * @var Filter[] As retrieved from self::getFilterObject. The keys could be either
-	 *   an integer or "<GLOBAL_FILTER_PREFIX><integer>"
-	 */
-	private static $filterCache = [];
 
 	/** @var string The prefix to use for global filters */
 	public const GLOBAL_FILTER_PREFIX = 'global-';
@@ -111,15 +106,16 @@ class AbuseFilter {
 	 * @param int $filterID The ID of the filter
 	 * @param bool|int $global Whether the filter is global
 	 * @return bool
+	 * @deprecated Call ::isHidden on a Filter object
 	 */
 	public static function filterHidden( $filterID, $global = false ) {
+		$lookup = AbuseFilterServices::getFilterLookup();
 		try {
-			$obj = self::getFilterObject( $filterID, $global );
-		} catch ( CentralDBNotAvailableException | LogicException $_ ) {
+			return $lookup->getFilter( $filterID, $global )->isHidden();
+		} catch ( CentralDBNotAvailableException | FilterNotFoundException $_ ) {
 			// DWIM if no central DB is available or the filter doesn't exist
 			return false;
 		}
-		return $obj->isHidden();
 	}
 
 	/**
@@ -325,45 +321,14 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated since 1.36 Use self::getFilterObject()
+	 * @deprecated since 1.36 Use FilterLookup
 	 * @param string $filter Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
 	 * @return stdClass DB row
 	 */
 	public static function getFilter( $filter ) {
 		[ $filterID, $global ] = self::splitGlobalName( $filter );
-		return self::getFilterObject( $filterID, $global )->toDatabaseRow();
-	}
-
-	/**
-	 * @param int $filterID
-	 * @param bool $global
-	 * @return Filter
-	 * @internal Temporary method
-	 */
-	public static function getFilterObject( int $filterID, bool $global ) : Filter {
-		$cacheKey = self::buildGlobalName( $filterID, $global );
-		if ( !isset( self::$filterCache[$cacheKey] ) ) {
-			if ( $global ) {
-				$dbr = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
-			} else {
-				// Local wiki filter
-				$dbr = wfGetDB( DB_REPLICA );
-			}
-
-			$row = $dbr->selectRow(
-				'abuse_filter',
-				self::ALL_ABUSE_FILTER_FIELDS,
-				[ 'af_id' => $filterID ],
-				__METHOD__
-			);
-
-			if ( !$row ) {
-				throw new LogicException( "Requested filter that doesn't exist: $cacheKey" );
-			}
-			self::$filterCache[$cacheKey] = Filter::newFromRow( $row );
-		}
-
-		return self::$filterCache[$cacheKey];
+		$lookup = AbuseFilterServices::getFilterLookup();
+		return $lookup->getFilter( $filterID, $global )->toDatabaseRow();
 	}
 
 	/**
@@ -381,21 +346,6 @@ class AbuseFilter {
 			return false;
 		}
 		return true;
-	}
-
-	/**
-	 * Saves an abuse_filter row in cache
-	 * @param string $id Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
-	 * @param stdClass $row A full abuse_filter row to save
-	 * @throws UnexpectedValueException if the row is not full
-	 */
-	public static function cacheFilter( $id, $row ) {
-		// Check that all fields have been passed, otherwise using self::getFilter for this
-		// row will return partial data.
-		if ( !self::isFullAbuseFilterRow( $row ) ) {
-			throw new UnexpectedValueException( 'The specified row must be a full abuse_filter row.' );
-		}
-		self::$filterCache[$id] = Filter::newFromRow( $row );
 	}
 
 	/**
@@ -522,21 +472,6 @@ class AbuseFilter {
 		}
 
 		return $obj;
-	}
-
-	/**
-	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return string
-	 */
-	public static function getGlobalRulesKey( $group ) {
-		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
-
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		if ( !$wgAbuseFilterIsCentral ) {
-			return $cache->makeGlobalKey( 'abusefilter', 'rules', $wgAbuseFilterCentralDB, $group );
-		}
-
-		return $cache->makeKey( 'abusefilter', 'rules', $group );
 	}
 
 	/**
@@ -690,9 +625,7 @@ class AbuseFilter {
 	 * @param User $user
 	 * @param int|null $filter
 	 * @param Filter $newFilter
-	 * @param array $actions
 	 * @param Filter $originalFilter
-	 * @param array $originalActions
 	 * @param IDatabase $dbw DB_MASTER Where the filter should be saved
 	 * @param Config $config
 	 * @return Status
@@ -702,9 +635,7 @@ class AbuseFilter {
 		User $user,
 		?int $filter,
 		Filter $newFilter,
-		array $actions,
 		Filter $originalFilter,
-		array $originalActions,
 		IDatabase $dbw,
 		Config $config
 	) {
@@ -720,7 +651,7 @@ class AbuseFilter {
 		}
 		// Check for missing required fields (title and pattern)
 		$missing = [];
-		if ( trim( $newFilter->getRules() ) === '' ) {
+		if ( $newFilter->getRules() === '' ) {
 			$missing[] = new Message( 'abusefilter-edit-field-conditions' );
 		}
 		if ( !$newFilter->getName() ) {
@@ -740,6 +671,7 @@ class AbuseFilter {
 			return $validationStatus;
 		}
 
+		$actions = $newFilter->getActions();
 		// If we've activated the 'tag' option, check the arguments for validity.
 		if ( isset( $actions['tag'] ) ) {
 			if ( count( $actions['tag'] ) === 0 ) {
@@ -779,11 +711,7 @@ class AbuseFilter {
 		$availableActions = array_keys(
 			array_filter( $config->get( 'AbuseFilterActions' ) )
 		);
-		$differences = self::compareVersions(
-			$newFilter, $actions,
-			$originalFilter, $originalActions,
-			$availableActions
-		);
+		$differences = self::compareVersions( $newFilter, $originalFilter, $availableActions );
 
 		// Don't allow adding a new global rule, or updating a
 		// rule that is currently global, without permissions.
@@ -816,7 +744,7 @@ class AbuseFilter {
 		$restrictions = $config->get( 'AbuseFilterActionRestrictions' );
 		if ( count( array_intersect_key(
 				array_filter( $restrictions ),
-				array_merge( $actions, $originalActions )
+				array_merge( $actions, $originalFilter->getActions() )
 			) )
 			&& !$afPermManager->canEditFilterWithRestrictedActions( $user )
 		) {
@@ -956,8 +884,7 @@ class AbuseFilter {
 				$group = $newRow['af_group'];
 			}
 
-			$globalRulesKey = self::getGlobalRulesKey( $group );
-			MediaWikiServices::getInstance()->getMainWANObjectCache()->touchCheckKey( $globalRulesKey );
+			AbuseFilterServices::getFilterLookup()->purgeGroupWANCache( $group );
 		}
 
 		// Logging
@@ -981,24 +908,16 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Each version is expected to be an array( $row, $actions )
-	 * Returns an array of fields that are different.
-	 *
 	 * @param Filter $firstFilter
-	 * @param array $firstActions
 	 * @param Filter $secondFilter
-	 * @param array $secondActions
 	 * @param string[] $availableActions All actions enabled in the AF config
-	 *
-	 * @return array
+	 * @return array Fields that are different
 	 */
 	public static function compareVersions(
 		Filter $firstFilter,
-		array $firstActions,
 		Filter $secondFilter,
-		array $secondActions,
 		array $availableActions
-	) {
+	) : array {
 		// TODO: Avoid DB references here
 		$methods = [
 			'af_public_comments' => 'getName',
@@ -1019,6 +938,8 @@ class AbuseFilter {
 			}
 		}
 
+		$firstActions = $firstFilter->getActions();
+		$secondActions = $secondFilter->getActions();
 		foreach ( $availableActions as $action ) {
 			if ( !isset( $firstActions[$action] ) && !isset( $secondActions[$action] ) ) {
 				// They're both unset
@@ -1036,35 +957,6 @@ class AbuseFilter {
 		}
 
 		return array_unique( $differences );
-	}
-
-	/**
-	 * @param stdClass $row
-	 * @return array
-	 * @phan-return array{0:Filter,1:array}
-	 */
-	public static function translateFromHistory( stdClass $row ) : array {
-		// Manually translate into an abuse_filter row.
-		$af_row = new stdClass;
-
-		foreach ( self::HISTORY_MAPPINGS as $af_col => $afh_col ) {
-			$af_row->$af_col = $row->$afh_col;
-		}
-
-		// Process flags
-		$flags = $row->afh_flags ? explode( ',', $row->afh_flags ) : [];
-		foreach ( [ 'enabled', 'hidden', 'deleted', 'global' ] as $flag ) {
-			$af_row->{"af_$flag"} = (int)in_array( $flag, $flags, true );
-		}
-
-		// Process actions
-		$actionsRaw = unserialize( $row->afh_actions );
-		$actionsOutput = is_array( $actionsRaw ) ? $actionsRaw : [];
-
-		$af_row->af_actions = implode( ',', array_keys( $actionsOutput ) );
-
-		$filter = Filter::newFromRow( $af_row );
-		return [ $filter, $actionsOutput ];
 	}
 
 	/**

@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
@@ -50,7 +51,8 @@ return [
 	CentralDBManager::SERVICE_NAME => function ( MediaWikiServices $services ): CentralDBManager {
 		return new CentralDBManager(
 			$services->getDBLoadBalancerFactory(),
-			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )
+			$services->getMainConfig()->get( 'AbuseFilterCentralDB' ),
+			$services->getMainConfig()->get( 'AbuseFilterIsCentral' )
 		);
 	},
 	BlockAutopromoteStore::SERVICE_NAME => function ( MediaWikiServices $services ): BlockAutopromoteStore {
@@ -76,6 +78,13 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->getMainConfig()->get( 'AbuseFilterParserClass' )
+		);
+	},
+	FilterLookup::SERVICE_NAME => function ( MediaWikiServices $services ): FilterLookup {
+		return new FilterLookup(
+			$services->getDBLoadBalancer(),
+			$services->getMainWANObjectCache(),
+			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
 ];
