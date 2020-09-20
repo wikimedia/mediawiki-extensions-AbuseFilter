@@ -959,7 +959,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Tests for the AFPData::DUNDEFINED type. No exceptions should be thrown, and nothing should match
+	 * Tests for the AFPData::DUNDEFINED type. No exceptions should be thrown.
 	 *
 	 * @param string $code To be parsed
 	 * @dataProvider provideDUNDEFINED
@@ -967,14 +967,10 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testDUNDEFINED( $code ) {
 		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
-			try {
-				$this->assertFalse(
-					$parser->parse( $code ),
-					"Parser: $pname"
-				);
-			} catch ( AFPException $e ) {
-				$this->fail( "Got exception with parser: $pname\n$e" );
-			}
+			// Note that some of the data sets will actually match at runtime, even if the variable
+			// they refer to is not set, due to the parser using GET_BC rather than GET_STRICT.
+			// TODO: Once T230256 is done, this can be changed to $this->assertFalse( $parser->parse( $code ) )
+			$this->assertTrue( $parser->checkSyntax( $code ), "Parser: $pname" );
 		}
 	}
 
@@ -1015,6 +1011,39 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'string(user_name) in [ "x" ]' ],
 			[ '[ [ user_name ] ] in [ [ user_name ] ]' ],
 			[ 'equals_to_any( [ user_name ], [ user_name ] )' ],
+		];
+	}
+
+	/**
+	 * Test accessing builtin variables as arrays. This is always allowed when checking syntax, even
+	 * if the variable is not an array (e.g. new_wikitext), but should fail when parsing.
+	 *
+	 * @param string $code
+	 * @dataProvider provideBuiltinArrays
+	 */
+	public function testBuiltinArrays( string $code ) {
+		foreach ( $this->getParsers() as $parser ) {
+			$pname = get_class( $parser );
+			$this->assertTrue( $parser->checkSyntax( $code ), "Parser: $pname" );
+
+			try {
+				$parser->parse( $code );
+				$this->fail( "Got no exception at parse-time. Parser: $pname" );
+			} catch ( AFPException $e ) {
+				$this->assertSame( 'notarray', $e->getMessage(), "Parser: $pname" );
+			}
+		}
+	}
+
+	/**
+	 * Data provider for testBuiltinArrays
+	 * @return array
+	 */
+	public function provideBuiltinArrays() {
+		return [
+			[ "removed_lines[1] == 2" ],
+			[ "added_lines[0] contains 'x'" ],
+			[ "new_wikitext[1] !== 'xxx'" ]
 		];
 	}
 

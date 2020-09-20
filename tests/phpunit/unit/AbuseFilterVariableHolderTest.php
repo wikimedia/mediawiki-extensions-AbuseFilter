@@ -151,9 +151,10 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 
 		$name = 'not-set';
 		$expected = new AFPData( AFPData::DUNDEFINED );
-		yield 'unset, not strict' => [ $vars, $name, AbuseFilterVariableHolder::GET_LAX, $expected ];
-		// For now, it's the same.
+		yield 'unset, lax' => [ $vars, $name, AbuseFilterVariableHolder::GET_LAX, $expected ];
+		// For now, strict is the same as lax.
 		yield 'unset, strict' => [ $vars, $name, AbuseFilterVariableHolder::GET_STRICT, $expected ];
+		yield 'unset, bc' => [ $vars, $name, AbuseFilterVariableHolder::GET_BC, new AFPData( AFPData::DNULL ) ];
 
 		$vars->mVarsVersion = 1;
 		$expected = new AFPData( AFPData::DSTRING, 'foo' );
