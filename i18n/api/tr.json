@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"MuratTheTurkish"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Bir AbuseFilter'ın bir değişkenler kümesiyle mi, bir düzenleme ile mi yoksa günlüğe kaydedilen bir AbuseFilter olayıyla eşleştiğini kontrol edin.\n\nvars, rcid veya logid gereklidir, ancak yalnızca biri kullanılabilir.",
@@ -44,6 +45,7 @@
 	"apihelp-query+abuselog-param-user": "Yalnızca belirli bir kullanıcı veya IP adresi tarafından yapılan girişleri göster.",
 	"apihelp-query+abuselog-param-title": "Yalnızca belirli bir sayfada gerçekleşen girişleri göster.",
 	"apihelp-query+abuselog-param-filter": "Yalnızca verilen filtre kimlikleri tarafından yakalanan girişleri göster. Borularla ayırın, genel filtreler için \"$1\" ile önek koyun.",
+	"apihelp-query+abuselog-param-filter-central": "Yalnızca verilen filtre kimlikleri tarafından yakalanan girişleri gösterin. Borularla ayırın.",
 	"apihelp-query+abuselog-param-limit": "Listelenecek maksimum giriş sayısı.",
 	"apihelp-query+abuselog-param-prop": "Hangi özellikleri elde etmek.",
 	"apihelp-query+abuselog-param-wiki": "Viki kaynağını gösterecek.",

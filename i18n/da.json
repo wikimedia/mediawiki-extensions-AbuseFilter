@@ -88,6 +88,7 @@
 	"abusefilter-log-details-privatedetails": "Privat log information",
 	"abusefilter-log-details-ip": "Ophavs-IP",
 	"abusefilter-log-noactions": "ingen",
+	"abusefilter-log-noactions-filter": "Ingen",
 	"abusefilter-log-details-diff": "Ændringer udført i redigeringen",
 	"abusefilter-log-linkoncontribs": "misbrugslog",
 	"abusefilter-log-linkoncontribs-text": "Misbrugslog for {{GENDER:$1|denne bruger}}",

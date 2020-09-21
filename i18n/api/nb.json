@@ -44,6 +44,7 @@
 	"apihelp-query+abuselog-param-user": "Vis bare oppføringer gjort av en gitt bruker eller IP-adresse.",
 	"apihelp-query+abuselog-param-title": "Vis bare oppføringer på ei gitt side.",
 	"apihelp-query+abuselog-param-filter": "Vis bare oppføringer som ble fanget av en gitt filter-ID. Atskill med vertikalstreker, bruk prefikset «$1» for globale filtre.",
+	"apihelp-query+abuselog-param-filter-central": "Vis kun oppføringer som ble fanget opp med de gitte filter-ID-ene. Atskill med vertikalstreker.",
 	"apihelp-query+abuselog-param-limit": "Maksimalt antall oppføringer som skal listes opp.",
 	"apihelp-query+abuselog-param-prop": "Hvilke egenskaper som skal hentes.",
 	"apihelp-query+abuselog-param-wiki": "Wiki det skal vises treff fra.",

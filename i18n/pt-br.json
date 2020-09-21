@@ -79,6 +79,7 @@
 	"abusefilter-log-search-group-any": "Qualquer",
 	"abusefilter-log-search-filter": "ID dos filtros:",
 	"abusefilter-log-search-filter-help": "Separar com barras verticais e prefixar filtros globais com \"$1\".",
+	"abusefilter-log-search-filter-help-central": "Separe com tubos",
 	"abusefilter-log-search-title": "Título:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Impacto:",

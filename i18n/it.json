@@ -109,6 +109,7 @@
 	"abusefilter-log-details-ip": "Indirizzo IP di origine",
 	"abusefilter-log-details-checkuser": "Check user",
 	"abusefilter-log-noactions": "nessuna",
+	"abusefilter-log-noactions-filter": "Nessuno",
 	"abusefilter-log-details-diff": "Modifiche effettuate",
 	"abusefilter-log-linkoncontribs": "filtro anti abusi",
 	"abusefilter-log-linkoncontribs-text": "Registro del filtro anti abusi relativo a {{GENDER:$1|questo utente}}",

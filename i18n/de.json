@@ -82,6 +82,7 @@
 	"abusefilter-log-search-group-any": "Alle",
 	"abusefilter-log-search-filter": "Filterkennungen:",
 	"abusefilter-log-search-filter-help": "$1 - Das von globalen Filtern verwendete Präfix",
+	"abusefilter-log-search-filter-help-central": "Getrennt mit Pipes",
 	"abusefilter-log-search-title": "Titel:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Auswirkung:",

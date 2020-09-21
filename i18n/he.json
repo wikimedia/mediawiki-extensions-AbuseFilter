@@ -69,6 +69,7 @@
 	"abusefilter-log-search-group-any": "הכול",
 	"abusefilter-log-search-filter": "מספרי מסננים:",
 	"abusefilter-log-search-filter-help": "יש להפריד עם תווי מקל, ועם תחילית \"$1\" למסננים גלובליים",
+	"abusefilter-log-search-filter-help-central": "להפריד בתווי מקל",
 	"abusefilter-log-search-title": "כותרת:",
 	"abusefilter-log-search-wiki": "אתר ויקי:",
 	"abusefilter-log-search-impact": "השפעה:",

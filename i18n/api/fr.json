@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Florian COLLIN",
 			"Gomoko",
 			"Manu1400",
 			"Orlodrim",
@@ -49,6 +50,7 @@
 	"apihelp-query+abuselog-param-user": "Afficher uniquement les entrées faites par un utilisateur ou une adresse IP donné.",
 	"apihelp-query+abuselog-param-title": "Afficher uniquement les entrées se produisant sur une page donnée.",
 	"apihelp-query+abuselog-param-filter": "Afficher uniquement les entrées capturées par un des ID de filtre donnés. Séparés avec des barres verticales, préfixés par « $1 » pour les filtres globaux.",
+	"apihelp-query+abuselog-param-filter-central": "Afficher uniquement les entrées qui ont été capturées par les ID de filtre donnés. Séparez avec des tuyaux.",
 	"apihelp-query+abuselog-param-limit": "Le nombre maximal d’entrées à lister.",
 	"apihelp-query+abuselog-param-prop": "Quelles propriétés obtenir.",
 	"apihelp-query+abuselog-param-wiki": "Wiki duquel afficher les visites.",

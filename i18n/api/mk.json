@@ -45,6 +45,7 @@
 	"apihelp-query+abuselog-param-user": "Прикажи само ставки за даден корисник или IP-адреса.",
 	"apihelp-query+abuselog-param-title": "Прикажи само ставки што се однесуваат на дадена страница.",
 	"apihelp-query+abuselog-param-filter": "Прикажи само ставки за настани фатени од дадена филтерска назнака. Одделувајте со прави црти; и претставката „$1“ за глобални филтри.",
+	"apihelp-query+abuselog-param-filter-central": "Прикажи само ставки зафатени од укажаните филтерски назнаки. Одделете со прави црти.",
 	"apihelp-query+abuselog-param-limit": "Највеќе ставки во списоците.",
 	"apihelp-query+abuselog-param-prop": "Кои својства да се дадат.",
 	"apihelp-query+abuselog-param-wiki": "Од кое вики да се прикажуваат погодоци.",

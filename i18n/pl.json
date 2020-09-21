@@ -84,6 +84,7 @@
 	"abusefilter-log-search-group-any": "Dowolna",
 	"abusefilter-log-search-filter": "Identyfikatory filtru:",
 	"abusefilter-log-search-filter-help": "Oddzielaj znakami pionowej kreski, dodaj prefiks „$1” dla globalnych filtrów",
+	"abusefilter-log-search-filter-help-central": "Oddzielaj znakiem pionowej kreski",
 	"abusefilter-log-search-title": "Tytuł:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Wpływ:",

@@ -39,6 +39,7 @@
 	"right-abusefilter-log": "Vizualizează jurnalul de abuzuri",
 	"right-abusefilter-log-detail": "Vizualizează intrări detaliate în jurnalul de abuzuri",
 	"right-abusefilter-privatedetails": "Vizualizează datele private din jurnalul de abuzuri",
+	"right-abusefilter-privatedetails-log": "Vizualizează jurnalul de acces la date private al filtrului de abuz",
 	"right-abusefilter-modify-restricted": "Modifică filtrele de abuz cu acțiuni restricționate",
 	"right-abusefilter-revert": "Revine asupra tuturor modificărilor corespunzătoare unui filtru de abuz dat",
 	"right-abusefilter-view-private": "Vizualizează filtrele de abuz marcate ca private",

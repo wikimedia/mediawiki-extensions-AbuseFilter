@@ -74,6 +74,7 @@
 	"abusefilter-log-search-group-any": "Herhangi",
 	"abusefilter-log-search-filter": "Filtre kimlikleri:",
 	"abusefilter-log-search-filter-help": "Borularla ayrı, genel filtreler için \"$1\" öneki",
+	"abusefilter-log-search-filter-help-central": "Borularla ayırın",
 	"abusefilter-log-search-title": "Başlık:",
 	"abusefilter-log-search-wiki": "Viki:",
 	"abusefilter-log-search-impact": "Etki:",
