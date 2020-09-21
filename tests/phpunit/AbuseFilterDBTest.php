@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -50,18 +49,16 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * Test storing and loading the var dump. See also AbuseFilterConsequencesTest::testVarDump
 	 *
 	 * @param array $variables Map of [ name => value ] to build an AbuseFilterVariableHolder with
+	 * @param ?array $expectedValues Null to use $variables
 	 * @covers AbuseFilter::storeVarDump
 	 * @covers AbuseFilter::loadVarDump
 	 * @covers AbuseFilterVariableHolder::dumpAllVars
 	 * @dataProvider provideVariables
 	 */
-	public function testVarDump( $variables ) {
+	public function testVarDump( array $variables, array $expectedValues = null ) {
 		global $wgCompressRevisions, $wgDefaultExternalStore;
 
 		$holder = AbuseFilterVariableHolder::newFromArray( $variables );
-		if ( array_intersect_key( AbuseFilterServices::getKeywordsManager()->getDeprecatedVariables(), $variables ) ) {
-			$holder->mVarsVersion = 1;
-		}
 
 		$insertID = AbuseFilter::storeVarDump( $holder );
 
@@ -86,7 +83,8 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		$this->assertEquals( $expectedFlags, $flags, 'The var dump does not have the correct flags' );
 
 		$dump = AbuseFilter::loadVarDump( "stored-text:$insertID" );
-		$this->assertEquals( $holder, $dump, 'The var dump is not saved correctly' );
+		$expected = $expectedValues ? AbuseFilterVariableHolder::newFromArray( $expectedValues ) : $holder;
+		$this->assertEquals( $expected, $dump, 'The var dump is not saved correctly' );
 	}
 
 	/**
@@ -119,6 +117,13 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 					'new_wikitext' => 'New text',
 					'article_articleid' => 11745,
 					'article_first_contributor' => 'Good guy'
+				],
+				[
+					'action' => 'edit',
+					'old_wikitext' => 'Old text',
+					'new_wikitext' => 'New text',
+					'page_id' => 11745,
+					'page_first_contributor' => 'Good guy'
 				]
 			],
 			'Move action' => [
