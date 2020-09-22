@@ -30,7 +30,8 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			Xml::tags( 'p', null,
 				new OOUI\ButtonInputWidget( [
 					'label' => $this->msg( 'abusefilter-tools-submitexpr' )->text(),
-					'id' => 'mw-abusefilter-submitexpr'
+					'id' => 'mw-abusefilter-submitexpr',
+					'flags' => [ 'primary', 'progressive' ]
 				] )
 			);
 		$eval .= Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' );

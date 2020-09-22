@@ -173,6 +173,8 @@ ul li.mw-abusefilter-changeslist-match {
 
 #mw-abusefilter-expr-result {
 	word-break: break-all;
+	/* Shown dinamically via JS */
+	display: none;
 }
 
 .mw-abusefilter-history-buttons {

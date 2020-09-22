@@ -39,14 +39,16 @@
 					// Message keys are listed above
 					// eslint-disable-next-line mediawiki/msg-doc
 					.text( mw.msg( msg, details.exception ) )
-					.addClass( 'mw-abusefilter-tools-error' );
+					.addClass( 'mw-abusefilter-tools-error' )
+					.show();
 			} )
 			.done( function showResult( data ) {
 				$.removeSpinner( 'abusefilter-expr' );
 
 				$( '#mw-abusefilter-expr-result' )
 					.text( data.abusefilterevalexpression.result )
-					.removeClass( 'mw-abusefilter-tools-error' );
+					.removeClass( 'mw-abusefilter-tools-error' )
+					.show();
 			} );
 	}
 
