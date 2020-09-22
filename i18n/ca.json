@@ -98,6 +98,7 @@
 	"abusefilter-log-details-ip": "Adreça IP d'origen",
 	"abusefilter-log-details-checkuser": "Verifica l'usuari",
 	"abusefilter-log-noactions": "cap",
+	"abusefilter-log-noactions-filter": "Cap",
 	"abusefilter-log-details-diff": "Canvis fets en l'edició",
 	"abusefilter-log-linkoncontribs": "registre d'abusos",
 	"abusefilter-log-linkoncontribs-text": "Registre d'abusos d'{{GENDER:$1|aquest usuari|aquesta usuària}}",
