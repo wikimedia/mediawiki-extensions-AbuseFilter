@@ -9,11 +9,6 @@ use Wikimedia\AtEase\AtEase;
 class AbuseFilterPager extends TablePager {
 
 	/**
-	 * @var LinkRenderer
-	 */
-	protected $linkRenderer;
-
-	/**
 	 * @var AbuseFilterViewList The associated page
 	 */
 	public $mPage;
@@ -46,10 +41,11 @@ class AbuseFilterPager extends TablePager {
 	) {
 		$this->mPage = $page;
 		$this->mConds = $conds;
-		$this->linkRenderer = $linkRenderer;
 		$this->mSearchPattern = $searchPattern;
 		$this->mSearchMode = $searchMode;
-		parent::__construct( $this->mPage->getContext() );
+		// needs to be at the end, some attributes are needed by methods
+		// called from ancestors' constructors
+		parent::__construct( $page->getContext(), $linkRenderer );
 	}
 
 	/**
@@ -154,7 +150,7 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden' => 'abusefilter-list-visibility',
 		];
 
-		$user = $this->mPage->getUser();
+		$user = $this->getUser();
 		if ( SpecialAbuseLog::canSeeDetails( $user ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
@@ -182,18 +178,19 @@ class AbuseFilterPager extends TablePager {
 	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
+		$linkRenderer = $this->getLinkRenderer();
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
 			case 'af_id':
-				return $this->linkRenderer->makeLink(
+				return $linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', $value ),
 					$lang->formatNum( intval( $value ) )
 				);
 			case 'af_pattern':
 				return $this->getHighlightedPattern( $row );
 			case 'af_public_comments':
-				return $this->linkRenderer->makeLink(
+				return $linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ),
 					$value
 				);
@@ -233,7 +230,7 @@ class AbuseFilterPager extends TablePager {
 				if ( SpecialAbuseLog::canSeeDetails( $user, $row->af_id, $global, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
-					$link = $this->linkRenderer->makeKnownLink(
+					$link = $linkRenderer->makeKnownLink(
 						SpecialPage::getTitleFor( 'AbuseLog' ),
 						$count_display,
 						[],
@@ -379,7 +376,7 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden',
 			'af_group',
 		];
-		if ( SpecialAbuseLog::canSeeDetails( $this->mPage->getUser() ) ) {
+		if ( SpecialAbuseLog::canSeeDetails( $this->getUser() ) ) {
 			$sortable_fields[] = 'af_hit_count';
 			$sortable_fields[] = 'af_public_comments';
 		}
