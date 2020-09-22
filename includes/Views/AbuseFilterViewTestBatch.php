@@ -214,10 +214,11 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$counter = 1;
 
+		$contextUser = $this->getUser();
 		foreach ( $res as $row ) {
 			$vars = new AbuseFilterVariableHolder();
 			$rc = RecentChange::newFromRow( $row );
-			$varGenerator = new RCVariableGenerator( $vars, $rc );
+			$varGenerator = new RCVariableGenerator( $vars, $rc, $contextUser );
 			$vars = $varGenerator->getVars();
 
 			if ( !$vars ) {

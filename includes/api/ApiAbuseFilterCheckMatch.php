@@ -28,7 +28,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 
 			$vars = new AbuseFilterVariableHolder();
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$varGenerator = new RCVariableGenerator( $vars, $rc );
+			$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );

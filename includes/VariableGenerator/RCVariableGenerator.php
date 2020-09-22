@@ -9,6 +9,7 @@ use MWFileProps;
 use MWTimestamp;
 use RecentChange;
 use Title;
+use User;
 
 /**
  * This class contains the logic used to create AbuseFilterVariableHolder objects used to
@@ -20,33 +21,46 @@ class RCVariableGenerator extends VariableGenerator {
 	 */
 	protected $rc;
 
+	/** @var User */
+	private $contextUser;
+
 	/**
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param RecentChange $rc
+	 * @param User $contextUser
 	 */
-	public function __construct( AbuseFilterVariableHolder $vars, RecentChange $rc ) {
+	public function __construct(
+		AbuseFilterVariableHolder $vars,
+		RecentChange $rc,
+		User $contextUser
+	) {
 		parent::__construct( $vars );
 
 		$this->rc = $rc;
+		$this->contextUser = $contextUser;
 	}
 
 	/**
 	 * Get an instance for a given rc_id.
 	 *
+	 * @todo FIXME this method doesn't appear to have any uses
+	 *
 	 * @param int $id
 	 * @param AbuseFilterVariableHolder $vars
+	 * @param User $contextUser
 	 * @return self|null
 	 */
 	public static function newFromId(
 		int $id,
-		AbuseFilterVariableHolder $vars
+		AbuseFilterVariableHolder $vars,
+		User $contextUser
 	) : ?self {
 		$rc = RecentChange::newFromId( $id );
 
 		if ( !$rc ) {
 			return null;
 		}
-		return new self( $vars, $rc );
+		return new self( $vars, $rc, $contextUser );
 	}
 
 	/**
@@ -160,7 +174,7 @@ class RCVariableGenerator extends VariableGenerator {
 
 		$time = $this->rc->getParam( 'img_timestamp' );
 		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
-			$title, [ 'time' => $time, 'private' => true ]
+			$title, [ 'time' => $time, 'private' => $this->contextUser ]
 		);
 		if ( !$file ) {
 			// FixMe This shouldn't happen!
