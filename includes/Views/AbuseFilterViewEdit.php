@@ -36,6 +36,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	public function show() {
 		$user = $this->getUser();
 		$out = $this->getOutput();
+		$out->enableOOUI();
 		$request = $this->getRequest();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
@@ -43,13 +44,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$filter = $this->filter;
 		if ( !is_numeric( $filter ) && $filter !== null ) {
-			$out->addHTML(
-				Xml::tags(
-					'p',
-					null,
-					Html::errorBox( $this->msg( 'abusefilter-edit-badfilter' )->parse() )
-				)
-			);
+			$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
 			return;
 		}
 		$history_id = $this->historyID;
@@ -76,48 +71,35 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$canEdit = $afPermManager->canEdit( $user );
 
 		if ( $filter === null && !$canEdit ) {
-			$out->addHTML(
-				Xml::tags(
-					'p',
-					null,
-					Html::errorBox( $this->msg( 'abusefilter-edit-notallowed' )->parse() )
-				)
-			);
+			// Special case: Special:AbuseFilter/new is certainly not usable if the user cannot edit
+			$this->showUnrecoverableError( 'abusefilter-edit-notallowed' );
 			return;
 		}
 
-		$editToken = $request->getVal( 'wpEditToken' );
-		$tokenMatches = $user->matchEditToken(
-			$editToken, [ 'abusefilter', $filter ], $request );
 		$isImport = $request->wasPosted() && $request->getRawVal( 'wpImportText' ) !== null;
 
-		if ( $request->wasPosted() && $canEdit && $tokenMatches ) {
-			$this->saveCurrentFilter( $filter, $history_id );
+		if ( !$isImport && $request->wasPosted() && $canEdit ) {
+			$this->attemptSave( $filter, $history_id );
 			return;
 		}
 
 		if ( $isImport ) {
 			$data = $this->loadImportRequest();
 			if ( $data === null ) {
-				$out->addHTML( Html::errorBox( $this->msg( 'abusefilter-import-invalid-data' )->parseAsBlock() ) );
+				$this->showUnrecoverableError( 'abusefilter-import-invalid-data' );
 				return;
 			}
-		} elseif ( $request->wasPosted() && !$tokenMatches ) {
-			// Token invalid or expired while the page was open, warn to retry
-			$out->addHTML(
-				Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->escaped() )
-			);
-			// Make sure to load from HTTP if the token doesn't match!
-			$data = $this->loadRequest( $filter );
 		} else {
-			$data = $this->loadFromDatabase( $filter, $history_id ) ?? [ null, [] ];
+			// The request wasn't posted (i.e. just viewing the filter) or the user cannot edit
+			$data = $this->loadFromDatabase( $filter, $history_id );
+			if ( $data === null || ( $history_id && (int)$data[0]->af_id !== $filter ) ) {
+				$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
+				return;
+			}
 		}
 
 		list( $row, $actions ) = $data;
 
-		// Either the user is just viewing the filter, they cannot edit it, they lost the
-		// abusefilter-modify right with the page open, the token is invalid, or they're viewing
-		// the result of importing a filter
 		$this->buildFilterEditor( null, $row, $actions, $filter, $history_id );
 	}
 
@@ -125,31 +107,39 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param int|null $filter The filter ID or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
-	private function saveCurrentFilter( ?int $filter, $history_id ) : void {
+	private function attemptSave( ?int $filter, $history_id ) : void {
 		$out = $this->getOutput();
+		$request = $this->getRequest();
+		$user = $this->getUser();
+
 		[ $newRow, $actions, $origRow, $origActions ] = $this->loadRequest( $filter );
+
+		$editToken = $request->getVal( 'wpEditToken' );
+		$tokenMatches = $user->matchEditToken(
+			$editToken, [ 'abusefilter', $filter ], $request );
+
+		if ( !$tokenMatches ) {
+			// Token invalid or expired while the page was open, warn to retry
+			$error = Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->parseAsBlock() );
+			$this->buildFilterEditor( $error, $newRow, $actions, $filter, $history_id );
+			return;
+		}
+
 		$dbw = wfGetDB( DB_MASTER );
 		$status = AbuseFilter::saveFilter(
-			$this->getUser(), $filter, $newRow, $actions,
+			$user, $filter, $newRow, $actions,
 			$origRow, $origActions, $dbw, $this->getConfig()
 		);
 
 		if ( !$status->isGood() ) {
-			$err = $status->getErrors();
-			$msg = $err[0]['message'];
-			$params = $err[0]['params'];
+			$errors = $status->getErrors();
+			[ 'message' => $msg, 'params' => $params ] = $errors[0];
 			if ( $status->isOK() ) {
 				// Fixable error, show the editing interface
-				$this->buildFilterEditor(
-					$this->msg( $msg, $params )->parseAsBlock(),
-					$newRow,
-					$actions,
-					$filter,
-					$history_id
-				);
+				$error = Html::errorBox( $this->msg( $msg, $params )->parseAsBlock() );
+				$this->buildFilterEditor( $error, $newRow, $actions, $filter, $history_id );
 			} else {
-				// Permission-related error
-				$out->addWikiMsg( $msg );
+				$this->showUnrecoverableError( $msg );
 			}
 		} elseif ( $status->getValue() === false ) {
 			// No change
@@ -170,49 +160,43 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
+	 * @param string $msgKey
+	 */
+	private function showUnrecoverableError( string $msgKey ) : void {
+		$out = $this->getOutput();
+
+		$out->addHTML( Html::errorBox( $this->msg( $msgKey )->parseAsBlock() ) );
+		$href = $this->getTitle()->getFullURL();
+		$btn = new OOUI\ButtonWidget( [
+			'label' => $this->msg( 'abusefilter-return' )->text(),
+			'href' => $href
+		] );
+		$out->addHTML( $btn );
+	}
+
+	/**
 	 * Builds the full form for edit filters, adding it to the OutputPage. $row and $actions can be
 	 * passed in (for instance if there was a failure during save) to avoid searching the DB.
 	 *
-	 * @param string|null $error An error message to show above the filter box.
-	 * @param stdClass|null $row abuse_filter row representing this filter, null if it doesn't exist
+	 * @param string|null $error An error message to show above the filter box (HTML).
+	 * @param stdClass $row abuse_filter row representing this filter
 	 * @param array $actions Actions enabled and their parameters
 	 * @param int|null $filter The filter ID, or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
+	 * @todo There are a lot of isset/empty/?? checks to account for many different scenarios, which is hard to follow
 	 */
 	protected function buildFilterEditor(
 		$error,
-		?stdClass $row,
+		stdClass $row,
 		array $actions,
 		?int $filter,
 		$history_id
 	) {
 		$out = $this->getOutput();
-		$out->enableOOUI();
 		$out->addJsConfigVars( 'isFilterEditor', true );
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
-
-		if (
-			$row === null ||
-			// @fixme Temporary stopgap for T237887
-			( $history_id && (int)$row->af_id !== $filter )
-		) {
-			$out->addHTML(
-				Xml::tags(
-					'p',
-					null,
-					Html::errorBox( $this->msg( 'abusefilter-edit-badfilter' )->parse() )
-				)
-			);
-			$href = $this->getTitle()->getFullURL();
-			$btn = new OOUI\ButtonWidget( [
-					'label' => $this->msg( 'abusefilter-return' )->text(),
-					'href' => $href
-			] );
-			$out->addHTML( $btn );
-			return;
-		}
 
 		$out->addSubtitle( $this->msg(
 			$filter === null ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
@@ -235,21 +219,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$oldWarningMessage = $readOnly
 				? 'abusefilter-edit-oldwarning-view'
 				: 'abusefilter-edit-oldwarning';
-			$out->addWikiMsg(
-				$oldWarningMessage,
-				$history_id,
-				$filter
-			);
+			$out->addWikiMsg( $oldWarningMessage, $history_id, $filter );
 		}
 
-		if ( $error ) {
-			$out->addHTML( Html::errorBox( $error ) );
+		if ( $error !== null ) {
+			$out->addHTML( $error );
 		}
 
 		$fields = [];
 
 		$fields['abusefilter-edit-id'] =
-			$this->filter === null ?
+			$filter === null ?
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
 				$lang->formatNum( (string)$filter );
 		$fields['abusefilter-edit-description'] =
@@ -370,7 +350,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$checkboxAttribs = [
 				'name' => $postVar,
 				'id' => $postVar,
-				'selected' => $row->$dbField ?? false,
+				'selected' => $row->$dbField,
 				'disabled' => $readOnly
 			];
 			$labelAttribs = [
@@ -383,7 +363,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Set readonly on deleted if the filter isn't disabled
-			if ( $checkboxId === 'deleted' && $row->af_enabled == 1 ) {
+			if ( $checkboxId === 'deleted' && $row->af_enabled ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -517,7 +497,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *  corresponding to the abuse filter held in $row.
 	 * @return string HTML text for an action editor.
 	 */
-	private function buildConsequenceEditor( $row, array $actions ) {
+	private function buildConsequenceEditor( stdClass $row, array $actions ) {
 		$enabledActions = array_filter(
 			$this->getConfig()->get( 'AbuseFilterActions' )
 		);
@@ -545,7 +525,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string[]|null $parameters Action parameters. Null iff $set is false.
 	 * @return string|\OOUI\FieldLayout
 	 */
-	private function buildConsequenceSelector( $action, $set, $row, ?array $parameters ) {
+	private function buildConsequenceSelector( $action, $set, stdClass $row, ?array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
@@ -697,8 +677,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				if ( $set && isset( $parameters[0] ) ) {
 					$msg = $parameters[0];
 				} elseif (
-					$row &&
-					isset( $row->af_group ) && $row->af_group && (
+					isset( $row->af_group ) && (
 						( $action === 'warn' && isset( $defaultWarnMsg[$row->af_group] ) ) ||
 						( $action === 'disallow' && isset( $defaultDisallowMsg[$row->af_group] ) )
 					)
@@ -1110,8 +1089,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'af_enabled' => 1,
 					'af_hidden' => 0,
 					'af_global' => 0,
-					'af_throttled' => 0,
-					'af_hit_count' => 0
+					'af_deleted' => 0
 				],
 				[]
 			];
