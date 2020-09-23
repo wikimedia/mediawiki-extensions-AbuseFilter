@@ -544,7 +544,7 @@
 	"abusefilter-examine-diff": "Used somewhere on [[Special:AbuseFilter/examine]]",
 	"abusefilter-examine-user": "{{Identical|User}}",
 	"abusefilter-examine-title": "{{Identical|Page title}}",
-	"abusefilter-examine-submit": "",
+	"abusefilter-examine-submit": "Used as submit button on [[Special:AbuseFilter/examine]]",
 	"abusefilter-examine-vars": "Used as header on [[Special:AbuseFilter/examine]]",
 	"abusefilter-examine-test": "Used as header on [[Special:AbuseFilter/examine]]",
 	"abusefilter-examine-test-button": "Used as button text on [[Special:AbuseFilter/examine]]",
