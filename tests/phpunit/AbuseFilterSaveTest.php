@@ -220,6 +220,11 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		$dbw->expects( $this->any() )
 			->method( 'insertId' )
 			->willReturn( 1 );
+		$row = new stdClass();
+		$row->actor_id = '1';
+		$dbw->expects( $this->any() )
+			->method( 'selectRow' )
+			->willReturn( $row );
 		$status = AbuseFilter::saveFilter( $viewEdit, $filter, $newRow, $actions, $dbw );
 
 		if ( $args['testData']['shouldFail'] ) {
