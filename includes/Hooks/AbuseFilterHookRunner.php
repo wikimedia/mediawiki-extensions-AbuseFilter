@@ -214,7 +214,7 @@ class AbuseFilterHookRunner implements
 		?RecentChange $rc
 	) {
 		return $this->hookContainer->run(
-			'AbuseFilter-generateTitleVars',
+			'AbuseFilter-generateUserVars',
 			[ $vars, $user, $rc ]
 		);
 	}
