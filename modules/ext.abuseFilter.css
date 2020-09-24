@@ -135,6 +135,11 @@ div.mw-abusefilter-editor {
 	max-width: unset; /* OOUI's default of 50em is too low for this field */
 }
 
+#mw-abusefilter-switcheditor {
+	/* Hidden until the click handler is installed */
+	display: none;
+}
+
 fieldset.mw-abusefilter-edit-buttons {
 	margin-top: 1em;
 }
