@@ -204,4 +204,11 @@ class AbuseFilterServices {
 	public static function getSpecsFormatter() : SpecsFormatter {
 		return MediaWikiServices::getInstance()->getService( SpecsFormatter::SERVICE_NAME );
 	}
+
+	/**
+	 * @return LazyVariableComputer
+	 */
+	public static function getLazyVariableComputer() : LazyVariableComputer {
+		return MediaWikiServices::getInstance()->getService( LazyVariableComputer::SERVICE_NAME );
+	}
 }

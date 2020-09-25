@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use AbuseFilterVariableHolder;
-use AFComputedVariable;
 use BadMethodCallException;
 use BagOStuff;
 use IBufferingStatsdDataFactory;
@@ -220,12 +219,12 @@ class FilterRunner {
 		if ( !$fromCache ) {
 			$startTime = microtime( true );
 			// Ensure there's no extra time leftover
-			AFComputedVariable::$profilingExtraTime = 0;
+			LazyVariableComputer::$profilingExtraTime = 0;
 
 			$hitCondLimit = false;
 			// This also updates $this->profilingData and $this->parser->mCondCount used later
 			$matches = $this->checkAllFilters( $hitCondLimit );
-			$timeTaken = ( microtime( true ) - $startTime - AFComputedVariable::$profilingExtraTime ) * 1000;
+			$timeTaken = ( microtime( true ) - $startTime - LazyVariableComputer::$profilingExtraTime ) * 1000;
 			$result = [
 				'hitCondLimit' => $hitCondLimit,
 				'matches' => $matches,
@@ -303,7 +302,7 @@ class FilterRunner {
 
 		$startTime = microtime( true );
 		// Ensure there's no extra time leftover
-		AFComputedVariable::$profilingExtraTime = 0;
+		LazyVariableComputer::$profilingExtraTime = 0;
 
 		$hitCondLimit = false;
 		$matchedFilters = $this->checkAllFilters( $hitCondLimit );
@@ -312,7 +311,7 @@ class FilterRunner {
 			'matches' => $matchedFilters,
 			'hitCondLimit' => $hitCondLimit,
 			'condCount' => $this->parser->getCondCount(),
-			'runtime' => ( microtime( true ) - $startTime - AFComputedVariable::$profilingExtraTime ) * 1000,
+			'runtime' => ( microtime( true ) - $startTime - LazyVariableComputer::$profilingExtraTime ) * 1000,
 			'vars' => $this->vars->dumpAllVars(),
 			'profiling' => $this->profilingData
 		];
@@ -439,12 +438,12 @@ class FilterRunner {
 
 		$startConds = $this->parser->getCondCount();
 		$startTime = microtime( true );
-		$origExtraTime = AFComputedVariable::$profilingExtraTime;
+		$origExtraTime = LazyVariableComputer::$profilingExtraTime;
 
 		$this->parser->setFilter( $filterName );
 		$result = $this->parser->checkConditions( $filter->getRules(), true, $filterName )->getResult();
 
-		$actualExtra = AFComputedVariable::$profilingExtraTime - $origExtraTime;
+		$actualExtra = LazyVariableComputer::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
 		$condsUsed = $this->parser->getCondCount() - $startConds;
 

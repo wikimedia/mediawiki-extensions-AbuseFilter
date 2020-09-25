@@ -180,6 +180,7 @@ class AbuseFilter {
 	 * @param User $user the user instance to check for privileged access
 	 * @return string the content of the revision as some kind of string,
 	 *        or an empty string if it can not be found
+	 * @return-taint none
 	 */
 	public static function revisionToString( ?RevisionRecord $revision, User $user ) {
 		if ( !$revision ) {

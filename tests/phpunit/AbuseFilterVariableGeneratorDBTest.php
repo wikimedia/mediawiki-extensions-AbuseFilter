@@ -43,7 +43,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 * @param string $summary
 	 * @param array $expected Expected edit vars
 	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addEditVars
-	 * @covers AFComputedVariable
+	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer
 	 * @dataProvider provideEditVars
 	 */
 	public function testAddEditVars( $oldText, $newText, $summary, array $expected ) {
@@ -200,7 +200,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 * here instead of in AbuseFilterTest.
 	 *
 	 * @covers MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addTitleVars
-	 * @covers AFComputedVariable::getLastPageAuthors
+	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::getLastPageAuthors
 	 */
 	public function testRecentContributors() {
 		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
@@ -222,7 +222,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 * Test for the page_first_contributor variable.
 	 *
 	 * @covers MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addTitleVars
-	 * @covers AFComputedVariable::compute
+	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
 	 */
 	public function testFirstContributorVar() {
 		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
