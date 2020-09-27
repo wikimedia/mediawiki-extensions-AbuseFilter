@@ -16,6 +16,8 @@ class ViewEditPage extends Page {
 	get warnCheckbox() { return $( 'input[name="wpFilterActionWarn"]' ); }
 	get warnOtherMessage() { return $( 'input[name="wpFilterWarnMessageOther"]' ); }
 
+	get exportData() { return $( '#mw-abusefilter-export textarea' ).getValue(); }
+
 	get submitButton() { return $( '#mw-abusefilter-editing-form input[type="submit"]' ); }
 
 	get error() { return $( '.errorbox' ); }
