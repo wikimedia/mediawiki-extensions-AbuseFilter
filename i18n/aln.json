@@ -4,6 +4,7 @@
 			"Mdupont"
 		]
 	},
+	"abusefilter-import-button": "filtër Import",
 	"abusefilter-edit-global": "Apliko këtë filtër globalisht",
 	"abusefilter-edit-throttle-count": "Numri i veprimeve të lejojë:",
 	"abusefilter-edit-throttle-period": "Periudha kohore:",
@@ -63,7 +64,6 @@
 	"abusefilter-topnav-examine": "Ekzaminimi i redaktimet e kaluara",
 	"abusefilter-topnav-log": "Abuse Hyni",
 	"abusefilter-topnav-tools": "Debugging tools",
-	"abusefilter-topnav-import": "filtër Import",
 	"abusefilter-log-name": "log Abuse Filter",
 	"abusefilter-log-header": "Kjo log tregon një përmbledhje të ndryshimet e bëra në filtra. Për hollësi të plota, shikoni [[Special:AbuseFilter/history|lista]] filtër të ndryshimeve të fundit.",
 	"abusefilter-diff-title": "Dallimet midis versioneve",

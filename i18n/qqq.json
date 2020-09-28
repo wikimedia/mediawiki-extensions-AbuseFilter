@@ -179,7 +179,7 @@
 	"abusefilter-throttled": "Abuse filter status where some actions have been automatically disabled. See {{msg-mw|abusefilter-edit-throttled-warning}}",
 	"abusefilter-hitcount": "Indicates number of times an abuse filter was triggered. Parameters:\n* $1 is the number of hits.",
 	"abusefilter-new": "Button text for creating a new abuse filter.",
-	"abusefilter-import-button": "Button text for importing an abuse filter.",
+	"abusefilter-import-button": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseLog]].",
 	"abusefilter-return": "Link displayed when filtering abuse filters without results.",
 	"abusefilter-status-global": "Abuse filter status. Means that it is active on all wikis in a farm.\n{{Identical|Global}}",
 	"abusefilter-list-options": "Fieldset legend for abuse filter filter options.\n{{Identical|Options}}",
