@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -58,7 +59,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		global $wgCompressRevisions, $wgDefaultExternalStore;
 
 		$holder = AbuseFilterVariableHolder::newFromArray( $variables );
-		if ( array_intersect_key( AbuseFilter::getDeprecatedVariables(), $variables ) ) {
+		if ( array_intersect_key( AbuseFilterServices::getKeywordsManager()->getDeprecatedVariables(), $variables ) ) {
 			$holder->mVarsVersion = 1;
 		}
 

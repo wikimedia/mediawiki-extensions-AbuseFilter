@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\Database;
@@ -33,6 +35,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private $printOrphanedFile;
 	/** @var int|null How many seconds to sleep after each batch. */
 	private $sleep;
+	/** @var KeywordsManager */
+	private $keywordsManager;
 
 	/**
 	 * @inheritDoc
@@ -54,6 +58,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->addOption( 'sleep', 'Sleep this many seconds after each batch', false, true );
 		$this->requireExtension( 'Abuse Filter' );
 		$this->setBatchSize( 500 );
+		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
 	}
 
 	/**
@@ -577,11 +582,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			if ( $lowerName !== $oldName && array_key_exists( $lowerName, $builtinVars ) ) {
 				$oldName = $lowerName;
 			}
-			if ( array_key_exists( $oldName, AbuseFilter::getDeprecatedVariables() ) ) {
-				$newName = AbuseFilter::getDeprecatedVariables()[$oldName];
-			} else {
-				$newName = $oldName;
-			}
+			$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
+			$newName = $deprecatedVars[$oldName] ?? $oldName;
 			$newVars[$newName] = $value;
 		}
 		return $newVars;
@@ -600,9 +602,9 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			return $coreVariables;
 		}
 
-		$activeVariables = array_keys( AbuseFilter::getBuilderValues()['vars'] );
-		$deprecatedVariables = array_keys( AbuseFilter::getDeprecatedVariables() );
-		$disabledVariables = array_keys( AbuseFilter::DISABLED_VARS );
+		$activeVariables = array_keys( $this->keywordsManager->getVarsMappings() );
+		$deprecatedVariables = array_keys( $this->keywordsManager->getDeprecatedVariables() );
+		$disabledVariables = array_keys( $this->keywordsManager->getDisabledVariables() );
 		$coreVariables = array_merge( $activeVariables, $deprecatedVariables, $disabledVariables );
 
 		$prefixes = [ 'moved_from', 'moved_to', 'page' ];

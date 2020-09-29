@@ -8,6 +8,10 @@ use Wikimedia\TestingAccessWrapper;
  * @group Database
  * @coversDefaultClass UpdateVarDumps
  * @property TestingAccessWrapper|UpdateVarDumps $maintenance
+ *
+ * NOTE: This test is likely going to break once we remove the BC code after T213006 is done.
+ * Since maintaining the test would be expensive, and the script was single-use anyway, this
+ * test can be just removed (and the script marked as codeCoverageIgnore) as soon as it starts breaking.
  */
 class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 	private const TIMESTAMP = '20000102030405';
@@ -44,6 +48,17 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 		'accountname' => null,
 		'user_groups' => [ 'x', 'y' ]
 	];
+
+	/**
+	 * A serialized AbuseFilterVariableHolder object holding self::VARS. Don't try serializing
+	 * the object in tests, because that's going to break too easily.
+	 */
+	private const SERIALIZED_VH = 'O:25:"AbuseFilterVariableHolder":3:{s:5:"mVars";a:5:{s:6:"action";O:7:"AFPData":' .
+		'2:{s:4:"type";s:6:"string";s:4:"data";s:4:"edit";}s:7:"page_id";O:7:"AFPData":2:{s:4:"type";s:3:"int";s:4:' .
+		'"data";i:12;}s:12:"user_blocked";O:7:"AFPData":2:{s:4:"type";s:4:"bool";s:4:"data";b:1;}s:11:"accountname";' .
+		'O:7:"AFPData":2:{s:4:"type";s:4:"null";s:4:"data";N;}s:11:"user_groups";O:7:"AFPData":2:{s:4:"type";s:5:' .
+		'"array";s:4:"data";a:2:{i:0;O:7:"AFPData":2:{s:4:"type";s:6:"string";s:4:"data";s:1:"x";}i:1;O:7:"AFPData"' .
+		':2:{s:4:"type";s:6:"string";s:4:"data";s:1:"y";}}}}s:9:"forFilter";b:0;s:12:"mVarsVersion";i:2;}';
 
 	/**
 	 * @inheritDoc
@@ -247,7 +262,6 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 	 */
 	private function insertMoveToText() : array {
 		$serializedArr = serialize( self::VARS );
-		$serializedVH = serialize( AbuseFilterVariableHolder::newFromArray( self::VARS ) );
 
 		$truncatedArr = substr( $serializedArr, 0, -5 );
 		$expectedTruncated = FormatJson::encode( array_diff_key( self::VARS, [ 'user_groups' => 1 ] ) );
@@ -256,7 +270,7 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 			'Truncated arr' => [ 'afl_id' => 1, 'afl_var_dump' => $truncatedArr ] + self::$aflRow,
 			'Serialized array' => [ 'afl_id' => 2, 'afl_var_dump' => $serializedArr ] + self::$aflRow,
 			'Serialized VariableHolder' =>
-				[ 'afl_id' => 3, 'afl_var_dump' => $serializedVH ] + self::$aflRow,
+				[ 'afl_id' => 3, 'afl_var_dump' => self::SERIALIZED_VH ] + self::$aflRow,
 		];
 		$this->db->insert( 'abuse_filter_log', array_values( $insertRows ), __METHOD__ );
 		$expected = [
@@ -306,10 +320,9 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 	 * @return array
 	 */
 	public function provideMoveToTextUnexpectedTypes() {
-		$serializedVH = serialize( AbuseFilterVariableHolder::newFromArray( self::VARS ) );
 		return [
 			'Truncated obj' => [
-				[ 'afl_id' => 1, 'afl_var_dump' => substr( $serializedVH, 0, -5 ) ] + self::$aflRow
+				[ 'afl_id' => 1, 'afl_var_dump' => substr( self::SERIALIZED_VH, 0, -5 ) ] + self::$aflRow
 			],
 			'Wrong type' => [
 				[ 'afl_id' => 3, 'afl_var_dump' => serialize( 'foo bar baz' ) ] + self::$aflRow
@@ -380,11 +393,10 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 	 */
 	private function insertUpdateText() {
 		$serializedArr = serialize( self::VARS );
-		$serializedVH = serialize( AbuseFilterVariableHolder::newFromArray( self::VARS ) );
 		$jsonArr = FormatJson::encode( self::VARS );
 
 		$textRows = [
-			'Serialized VH' => [ 'old_text' => $serializedVH ] + self::TEXT_ROW,
+			'Serialized VH' => [ 'old_text' => self::SERIALIZED_VH ] + self::TEXT_ROW,
 			'Serialized array' =>
 				[ 'old_text' => $serializedArr, 'old_flags' => 'nativeDataArray' ] + self::TEXT_ROW,
 			'JSON array' => [ 'old_text' => $jsonArr, 'old_flags' => 'utf-8' ] + self::TEXT_ROW,

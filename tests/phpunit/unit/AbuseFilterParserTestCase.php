@@ -20,6 +20,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -35,10 +37,11 @@ abstract class AbuseFilterParserTestCase extends MediaWikiUnitTestCase {
 		$contLang = $this->getLanguageMock();
 		$cache = new EmptyBagOStuff();
 		$logger = new \Psr\Log\NullLogger();
+		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 
-		$parser = new AbuseFilterParser( $contLang, $cache, $logger );
+		$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager );
 		$parser->toggleConditionLimit( false );
-		$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger );
+		$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager );
 		$cachingParser->toggleConditionLimit( false );
 		return [ $parser, $cachingParser ];
 	}

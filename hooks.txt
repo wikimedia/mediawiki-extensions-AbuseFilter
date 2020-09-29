@@ -7,7 +7,8 @@ directory and read docs/hooks.txt.
 This is a list of known events and parameters; please add to it if you're going
 to add events to the AbuseFilter extension.
 
-'AbuseFilter-builder': Allows overwriting of the builder values returned by AbuseFilter::getBuilderValues
+'AbuseFilter-builder': Allows overwriting of the builder values, i.e. names and descriptions of
+the AbuseFilter language like variables.
 &$realValues: Builder values
 
 'AbuseFilter-deprecatedVariables': Allows adding deprecated variables. If a filter uses an old variable, the parser

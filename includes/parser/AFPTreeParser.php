@@ -8,6 +8,7 @@
  * @phan-file-suppress PhanPossiblyInfiniteRecursionSameParams Recursion controlled by class props
  */
 
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -44,19 +45,25 @@ class AFPTreeParser extends AFPTransitionBase {
 	 */
 	protected $statsd;
 
+	/** @var KeywordsManager */
+	protected $keywordsManager;
+
 	/**
 	 * @param BagOStuff $cache
 	 * @param LoggerInterface $logger Used for debugging
 	 * @param IBufferingStatsdDataFactory $statsd
+	 * @param KeywordsManager $keywordsManager
 	 */
 	public function __construct(
 		BagOStuff $cache,
 		LoggerInterface $logger,
-		IBufferingStatsdDataFactory $statsd
+		IBufferingStatsdDataFactory $statsd,
+		KeywordsManager $keywordsManager
 	) {
 		$this->cache = $cache;
 		$this->logger = $logger;
 		$this->statsd = $statsd;
+		$this->keywordsManager = $keywordsManager;
 		$this->resetState();
 	}
 
@@ -743,7 +750,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * @param string $varname
 	 */
 	protected function checkLogDeprecatedVar( $varname ) {
-		if ( array_key_exists( $varname, AbuseFilter::getDeprecatedVariables() ) ) {
+		if ( $this->keywordsManager->isVarDeprecated( $varname ) ) {
 			$this->logger->debug( "Deprecated variable $varname used in filter {$this->mFilter}." );
 		}
 	}

@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -94,7 +96,8 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 	public function testAddUserVars( $varName ) {
 		list( $user, $computed ) = $this->getUserAndExpectedVariable( $varName );
 
-		$variableHolder = new AbuseFilterVariableHolder();
+		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
+		$variableHolder = new AbuseFilterVariableHolder( $keywordsManager );
 		$generator = new VariableGenerator( $variableHolder );
 		$variableHolder = $generator->addUserVars( $user )->getVariableHolder();
 		$actual = $variableHolder->getVar( $varName )->toNative();
@@ -198,7 +201,9 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 		$varName = $prefix . $suffix;
 		list( $title, $computed ) = $this->getTitleAndExpectedVariable( $prefix, $suffix, $restricted );
 
+		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		$variableHolder = $this->getMockBuilder( AbuseFilterVariableHolder::class )
+			->setConstructorArgs( [ $keywordsManager ] )
 			->setMethods( [ 'getLazyLoader' ] )
 			->getMock();
 

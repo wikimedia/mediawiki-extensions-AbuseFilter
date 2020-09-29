@@ -1,8 +1,12 @@
 <?php
+
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+
 /**
  * Base parse-related class to be used while the old parser is being phased out
  *
  * @internal This is a temporary class until things are settled down
+ * @property KeywordsManager $keywordsManager
  */
 abstract class AFPTransitionBase {
 	public const FUNCTIONS = [
@@ -117,27 +121,11 @@ abstract class AFPTransitionBase {
 	 * @return bool
 	 */
 	protected function isReservedIdentifier( $name ) {
-		return $this->isBuiltinVar( $name ) ||
+		return $this->keywordsManager->varExists( $name ) ||
 			array_key_exists( $name, self::FUNCTIONS ) ||
 			// We need to check for true, false, if/then/else etc. because, even if they have a different
 			// AFPToken type, they may be used inside set/set_var()
 			in_array( $name, AbuseFilterTokenizer::KEYWORDS, true );
-	}
-
-	/**
-	 * Check whether the given name refers to a built-in variable, including
-	 * deprecated and disabled variables.
-	 *
-	 * @param string $varname
-	 * @return bool
-	 */
-	protected function isBuiltinVar( $varname ) {
-		$builderValues = AbuseFilter::getBuilderValues();
-		$deprecatedVars = AbuseFilter::getDeprecatedVariables();
-
-		return array_key_exists( $varname, $builderValues['vars'] ) ||
-			array_key_exists( $varname, AbuseFilter::DISABLED_VARS ) ||
-			array_key_exists( $varname, $deprecatedVars );
 	}
 
 	/**
