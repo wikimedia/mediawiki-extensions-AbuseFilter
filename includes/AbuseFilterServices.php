@@ -218,4 +218,11 @@ class AbuseFilterServices {
 	public static function getLazyVariableComputer() : LazyVariableComputer {
 		return MediaWikiServices::getInstance()->getService( LazyVariableComputer::SERVICE_NAME );
 	}
+
+	/**
+	 * @return TextExtractor
+	 */
+	public static function getTextExtractor() : TextExtractor {
+		return MediaWikiServices::getInstance()->getService( TextExtractor::SERVICE_NAME );
+	}
 }

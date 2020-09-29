@@ -3,6 +3,7 @@
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionStore;
@@ -104,6 +105,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		// as if the handler handled the event, so use the actual runner.
 		$hookRunner = AbuseFilterHookRunner::getRunner();
 		$computer = new LazyVariableComputer(
+			$this->createMock( TextExtractor::class ),
 			$hookRunner,
 			$this->createMock( TitleFactory::class ),
 			new NullLogger(),
@@ -231,6 +233,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		$hookRunner = AbuseFilterHookRunner::getRunner();
 		/** @var LazyVariableComputer|MockObject $computer */
 		$computer = new LazyVariableComputer(
+			$this->createMock( TextExtractor::class ),
 			$hookRunner,
 			$titleFactory,
 			new NullLogger(),

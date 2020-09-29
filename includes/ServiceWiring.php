@@ -30,6 +30,7 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
@@ -282,6 +283,7 @@ return [
 	},
 	LazyVariableComputer::SERVICE_NAME => function ( MediaWikiServices $services ): LazyVariableComputer {
 		return new LazyVariableComputer(
+			$services->get( TextExtractor::SERVICE_NAME ),
 			AbuseFilterHookRunner::getRunner(),
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
@@ -294,6 +296,11 @@ return [
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
+	TextExtractor::SERVICE_NAME => function ( MediaWikiServices $services ): TextExtractor {
+		return new TextExtractor(
+			new AbuseFilterHookRunner( $services->getHookContainer() )
+		);
+	}
 ];
 
 // @codeCoverageIgnoreEnd

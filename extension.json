@@ -169,6 +169,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\SpecsFormatter": "includes/SpecsFormatter.php",
 		"MediaWiki\\Extension\\AbuseFilter\\VariablesFormatter": "includes/VariablesFormatter.php",
 		"MediaWiki\\Extension\\AbuseFilter\\LazyVariableComputer": "includes/LazyVariableComputer.php",
+		"MediaWiki\\Extension\\AbuseFilter\\TextExtractor": "includes/TextExtractor.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterProfiler": "includes/FilterProfiler.php",
 		"MediaWiki\\Extension\\AbuseFilter\\BlockAutopromoteStore": "includes/BlockAutopromoteStore.php",
