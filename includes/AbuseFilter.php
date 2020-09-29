@@ -3,8 +3,6 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Storage\BlobAccessException;
-use MediaWiki\Storage\BlobStore;
 
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of
@@ -67,57 +65,6 @@ class AbuseFilter {
 	) {
 		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
 		return $runner->run();
-	}
-
-	/**
-	 * Store a var dump to a BlobStore.
-	 *
-	 * @param AbuseFilterVariableHolder $vars
-	 * @param bool $global
-	 *
-	 * @return string Address of the record
-	 */
-	public static function storeVarDump( AbuseFilterVariableHolder $vars, $global = false ) {
-		global $wgAbuseFilterCentralDB;
-
-		// Get all variables yet set and compute old and new wikitext if not yet done
-		// as those are needed for the diff view on top of the abuse log pages
-		$vars = $vars->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] );
-
-		// Vars is an array with native PHP data types (non-objects) now
-		$text = FormatJson::encode( $vars );
-
-		$blobStoreFactory = \MediaWiki\MediaWikiServices::getInstance()->getBlobStoreFactory();
-		$dbDomain = $global ? $wgAbuseFilterCentralDB : false;
-		$blobStore = $blobStoreFactory->newBlobStore( $dbDomain );
-
-		$hints = [
-			BlobStore::DESIGNATION_HINT => 'AbuseFilter',
-			BlobStore::MODEL_HINT => 'AbuseFilter',
-		];
-		return $blobStore->storeBlob( $text, $hints );
-	}
-
-	/**
-	 * Retrieve a var dump from a BlobStore.
-	 *
-	 * @param string $address
-	 *
-	 * @return AbuseFilterVariableHolder
-	 */
-	public static function loadVarDump( string $address ) : AbuseFilterVariableHolder {
-		$blobStore = \MediaWiki\MediaWikiServices::getInstance()->getBlobStore();
-
-		try {
-			$blob = $blobStore->getBlob( $address );
-		} catch ( BlobAccessException $ex ) {
-			return new AbuseFilterVariableHolder;
-		}
-
-		$vars = FormatJson::decode( $blob, true );
-		$obj = AbuseFilterVariableHolder::newFromArray( $vars );
-		$obj->translateDeprecatedVars();
-		return $obj;
 	}
 
 	/**

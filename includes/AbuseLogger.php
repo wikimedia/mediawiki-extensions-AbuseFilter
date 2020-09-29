@@ -35,6 +35,8 @@ class AbuseLogger {
 	private $centralDBManager;
 	/** @var FilterLookup */
 	private $filterLookup;
+	/** @var VariablesBlobStore */
+	private $varBlobStore;
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 	/** @var ServiceOptions */
@@ -47,6 +49,7 @@ class AbuseLogger {
 	/**
 	 * @param CentralDBManager $centralDBManager
 	 * @param FilterLookup $filterLookup
+	 * @param VariablesBlobStore $varBlobStore
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ServiceOptions $options
 	 * @param string $wikiID
@@ -58,6 +61,7 @@ class AbuseLogger {
 	public function __construct(
 		CentralDBManager $centralDBManager,
 		FilterLookup $filterLookup,
+		VariablesBlobStore $varBlobStore,
 		ILoadBalancer $loadBalancer,
 		ServiceOptions $options,
 		string $wikiID,
@@ -71,6 +75,7 @@ class AbuseLogger {
 		}
 		$this->centralDBManager = $centralDBManager;
 		$this->filterLookup = $filterLookup;
+		$this->varBlobStore = $varBlobStore;
 		$this->loadBalancer = $loadBalancer;
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
@@ -198,7 +203,7 @@ class AbuseLogger {
 		global $wgAbuseFilterAflFilterMigrationStage;
 
 		$writeNewSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW;
-		$varDump = AbuseFilter::storeVarDump( $this->vars );
+		$varDump = $this->varBlobStore->storeVarDump( $this->vars );
 
 		$loggedIDs = [];
 		foreach ( $logRows as $data ) {
@@ -268,7 +273,7 @@ class AbuseLogger {
 	 */
 	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) : array {
 		$this->vars->computeDBVars();
-		$globalVarDump = AbuseFilter::storeVarDump( $this->vars, true );
+		$globalVarDump = $this->varBlobStore->storeVarDump( $this->vars, true );
 		foreach ( $centralLogRows as $index => $data ) {
 			$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
 		}

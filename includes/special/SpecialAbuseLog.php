@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
+use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -78,23 +79,29 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
+	/** @var VariablesBlobStore */
+	private $varBlobStore;
+
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
 	 * @param AbuseFilterPermissionManager $afPermissionManager
 	 * @param ConsequencesRegistry $consequencesRegistry
+	 * @param VariablesBlobStore $varBlobStore
 	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
 		PermissionManager $permissionManager,
 		AbuseFilterPermissionManager $afPermissionManager,
-		ConsequencesRegistry $consequencesRegistry
+		ConsequencesRegistry $consequencesRegistry,
+		VariablesBlobStore $varBlobStore
 	) {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permissionManager;
 		$this->afPermissionManager = $afPermissionManager;
 		$this->consequencesRegistry = $consequencesRegistry;
+		$this->varBlobStore = $varBlobStore;
 	}
 
 	/**
@@ -675,7 +682,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$output .= Xml::tags( 'p', null, $pager->doFormatRow( $row, false ) );
 
 		// Load data
-		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
+		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
 
 		// Diff, if available

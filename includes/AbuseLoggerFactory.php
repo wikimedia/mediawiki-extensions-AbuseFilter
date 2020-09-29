@@ -15,6 +15,8 @@ class AbuseLoggerFactory {
 	private $centralDBManager;
 	/** @var FilterLookup */
 	private $filterLookup;
+	/** @var VariablesBlobStore */
+	private $varBlobStore;
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 	/** @var ServiceOptions */
@@ -27,6 +29,7 @@ class AbuseLoggerFactory {
 	/**
 	 * @param CentralDBManager $centralDBManager
 	 * @param FilterLookup $filterLookup
+	 * @param VariablesBlobStore $varBlobStore
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ServiceOptions $options
 	 * @param string $wikiID
@@ -35,6 +38,7 @@ class AbuseLoggerFactory {
 	public function __construct(
 		CentralDBManager $centralDBManager,
 		FilterLookup $filterLookup,
+		VariablesBlobStore $varBlobStore,
 		ILoadBalancer $loadBalancer,
 		ServiceOptions $options,
 		string $wikiID,
@@ -42,6 +46,7 @@ class AbuseLoggerFactory {
 	) {
 		$this->centralDBManager = $centralDBManager;
 		$this->filterLookup = $filterLookup;
+		$this->varBlobStore = $varBlobStore;
 		$this->loadBalancer = $loadBalancer;
 		$this->options = $options;
 		$this->wikiID = $wikiID;
@@ -62,6 +67,7 @@ class AbuseLoggerFactory {
 		return new AbuseLogger(
 			$this->centralDBManager,
 			$this->filterLookup,
+			$this->varBlobStore,
 			$this->loadBalancer,
 			$this->options,
 			$this->wikiID,

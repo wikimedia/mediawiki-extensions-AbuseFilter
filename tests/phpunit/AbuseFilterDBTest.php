@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Revision\MutableRevisionRecord;
@@ -52,16 +53,16 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 *
 	 * @param array $variables Map of [ name => value ] to build an AbuseFilterVariableHolder with
 	 * @param ?array $expectedValues Null to use $variables
-	 * @covers AbuseFilter::storeVarDump
-	 * @covers AbuseFilter::loadVarDump
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesBlobStore
 	 * @covers AbuseFilterVariableHolder::dumpAllVars
 	 * @dataProvider provideVariables
 	 */
 	public function testVarDump( array $variables, array $expectedValues = null ) {
+		$varBlobStore = AbuseFilterServices::getVariablesBlobStore();
 		$holder = AbuseFilterVariableHolder::newFromArray( $variables );
 
-		$insertID = AbuseFilter::storeVarDump( $holder );
-		$dump = AbuseFilter::loadVarDump( $insertID );
+		$insertID = $varBlobStore->storeVarDump( $holder );
+		$dump = $varBlobStore->loadVarDump( $insertID );
 		$expected = $expectedValues ? AbuseFilterVariableHolder::newFromArray( $expectedValues ) : $holder;
 		$this->assertEquals( $expected, $dump, 'The var dump is not saved correctly' );
 	}
