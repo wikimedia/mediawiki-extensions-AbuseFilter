@@ -213,11 +213,12 @@ class AbuseFilterParser extends AFPTransitionBase {
 	}
 
 	/**
+	 * Check the syntax of $filter, throwing an exception if invalid
 	 * @param string $filter
 	 * @return true When successful
 	 * @throws AFPUserVisibleException
 	 */
-	public function checkSyntax( $filter ) {
+	public function checkSyntaxThrow( string $filter ) {
 		$this->allowMissingVariables = true;
 		$origAS = $this->mAllowShort;
 		try {
@@ -229,6 +230,57 @@ class AbuseFilterParser extends AFPTransitionBase {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Check the syntax of $filter, without throwing
+	 *
+	 * @param string $filter
+	 * @return true|array True when successful, otherwise a two-element array with exception message
+	 *  and character position of the syntax error
+	 */
+	public function checkSyntax( string $filter ) {
+		try {
+			$res = $this->checkSyntaxThrow( $filter );
+		} catch ( AFPUserVisibleException $excep ) {
+			$res = [ $excep->getMessageObj()->text(), $excep->mPosition ];
+		}
+		return $res;
+	}
+
+	/**
+	 * This is the main entry point. It checks the given conditions and returns whether
+	 * they match. In case of bad syntax, this is always logged, and $ignoreError can
+	 * be used to determine whether this method should throw.
+	 *
+	 * @param string $conds
+	 * @param bool $ignoreError
+	 * @param string|null $filter The ID of the filter being parsed
+	 * @return bool
+	 * @throws Exception
+	 */
+	public function checkConditions( string $conds, $ignoreError = true, $filter = null ) : bool {
+		try {
+			$result = $this->parse( $conds );
+		} catch ( Exception $excep ) {
+			$result = false;
+
+			if ( $excep instanceof AFPUserVisibleException ) {
+				$msg = $excep->getMessageForLogs();
+				$excep->setLocalizedMessage();
+			} else {
+				$msg = $excep->getMessage();
+			}
+
+			$extraInfo = $filter !== null ? " for filter $filter" : '';
+			$this->logger->warning( "AbuseFilter parser error$extraInfo: $msg" );
+
+			if ( !$ignoreError ) {
+				throw $excep;
+			}
+		}
+
+		return $result;
 	}
 
 	/**

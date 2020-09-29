@@ -12,7 +12,7 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-		$result = AbuseFilter::checkSyntax( $params[ 'filter' ] );
+		$result = AbuseFilter::getDefaultParser()->checkSyntax( $params[ 'filter' ] );
 
 		$r = [];
 		if ( $result === true ) {

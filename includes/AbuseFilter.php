@@ -143,74 +143,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $filter
-	 * @return true|array True when successful, otherwise a two-element array with exception message
-	 *  and character position of the syntax error
-	 */
-	public static function checkSyntax( $filter ) {
-		try {
-			$res = self::getDefaultParser()->checkSyntax( $filter );
-		} catch ( AFPUserVisibleException $excep ) {
-			$res = [ $excep->getMessageObj()->text(), $excep->mPosition ];
-		}
-		return $res;
-	}
-
-	/**
-	 * @param string $expr
-	 * @return Status
-	 */
-	public static function evaluateExpression( $expr ) {
-		if ( self::checkSyntax( $expr ) !== true ) {
-			return Status::newFatal( 'abusefilter-tools-syntax-error' );
-		}
-
-		$vars = new AbuseFilterVariableHolder();
-		// Generic vars are the only ones available
-		$generator = new VariableGenerator( $vars );
-		$vars = $generator->addGenericVars()->getVariableHolder();
-		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
-		$parser = self::getDefaultParser( $vars );
-
-		return Status::newGood( $parser->evaluateExpression( $expr ) );
-	}
-
-	/**
-	 * @param string $conds
-	 * @param AbuseFilterParser $parser The parser instance to use.
-	 * @param bool $ignoreError
-	 * @param string|null $filter The ID of the filter being parsed
-	 * @return bool
-	 * @throws Exception
-	 */
-	public static function checkConditions(
-		$conds, AbuseFilterParser $parser, $ignoreError = true, $filter = null
-	) {
-		try {
-			$result = $parser->parse( $conds );
-		} catch ( Exception $excep ) {
-			$result = false;
-
-			if ( $excep instanceof AFPUserVisibleException ) {
-				$msg = $excep->getMessageForLogs();
-				$excep->setLocalizedMessage();
-			} else {
-				$msg = $excep->getMessage();
-			}
-
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$extraInfo = $filter !== null ? " for filter $filter" : '';
-			$logger->warning( "AbuseFilter parser error$extraInfo: $msg" );
-
-			if ( !$ignoreError ) {
-				throw $excep;
-			}
-		}
-
-		return $result;
-	}
-
-	/**
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @param AbuseFilterVariableHolder $vars
@@ -1003,7 +935,7 @@ class AbuseFilter {
 		$user = $context->getUser();
 
 		// Check the syntax
-		$syntaxerr = self::checkSyntax( $request->getVal( 'wpFilterRules' ) );
+		$syntaxerr = self::getDefaultParser()->checkSyntax( $request->getVal( 'wpFilterRules' ) );
 		if ( $syntaxerr !== true ) {
 			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
 			return $validationStatus;

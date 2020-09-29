@@ -433,7 +433,7 @@ class AbuseFilterRunner {
 
 		$pattern = trim( $row->af_pattern );
 		$this->parser->setFilter( $filterName );
-		$result = AbuseFilter::checkConditions( $pattern, $this->parser, true, $filterName );
+		$result = $this->parser->checkConditions( $pattern, true, $filterName );
 
 		$actualExtra = AFComputedVariable::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
