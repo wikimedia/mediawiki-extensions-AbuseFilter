@@ -123,8 +123,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'furtherOptions',
 				'querypattern',
 				'searchmode',
-				'scope',
-				'searchEnabled'
+				'scope'
 			),
 			$conds
 		);
@@ -135,7 +134,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * @param array $conds
 	 */
 	private function showList( array $optarray, array $conds = [ 'af_deleted' => 0 ] ) {
+		$user = $this->getUser();
 		$config = $this->getConfig();
+		$centralDB = $config->get( 'AbuseFilterCentralDB' );
+		$dbIsCentral = $config->get( 'AbuseFilterIsCentral' );
 		$this->getOutput()->addHTML(
 			Xml::tags( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
 		);
@@ -143,15 +145,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$deleted = $optarray['deleted'];
 		$furtherOptions = $optarray['furtherOptions'];
 		$scope = $optarray['scope'];
-		$searchEnabled = $optarray['searchEnabled'];
 		$querypattern = $optarray['querypattern'];
 		$searchmode = $optarray['searchmode'];
 
-		if (
-			$config->get( 'AbuseFilterCentralDB' ) !== null
-			&& !$config->get( 'AbuseFilterIsCentral' )
-			&& $scope === 'global'
-		) {
+		if ( $centralDB !== null && !$dbIsCentral && $scope === 'global' ) {
 			$pager = new GlobalAbuseFilterPager(
 				$this,
 				$conds,
@@ -169,25 +166,13 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		// Options form
 		$formDescriptor = [];
-		$formDescriptor['deletedfilters'] = [
-			'name' => 'deletedfilters',
-			'type' => 'radio',
-			'flatlist' => true,
-			'label-message' => 'abusefilter-list-options-deleted',
-			'options-messages' => [
-				'abusefilter-list-options-deleted-show' => 'show',
-				'abusefilter-list-options-deleted-hide' => 'hide',
-				'abusefilter-list-options-deleted-only' => 'only',
-			],
-			'default' => $deleted,
-		];
 
-		if ( $config->get( 'AbuseFilterCentralDB' ) !== null ) {
+		if ( $centralDB !== null ) {
 			$optionsMsg = [
 				'abusefilter-list-options-scope-local' => 'local',
 				'abusefilter-list-options-scope-global' => 'global',
 			];
-			if ( $config->get( 'AbuseFilterIsCentral' ) ) {
+			if ( $dbIsCentral ) {
 				// For central wiki: add third scope option
 				$optionsMsg['abusefilter-list-options-scope-all'] = 'all';
 			}
@@ -201,6 +186,19 @@ class AbuseFilterViewList extends AbuseFilterView {
 			];
 		}
 
+		$formDescriptor['deletedfilters'] = [
+			'name' => 'deletedfilters',
+			'type' => 'radio',
+			'flatlist' => true,
+			'label-message' => 'abusefilter-list-options-deleted',
+			'options-messages' => [
+				'abusefilter-list-options-deleted-show' => 'show',
+				'abusefilter-list-options-deleted-hide' => 'hide',
+				'abusefilter-list-options-deleted-only' => 'only',
+			],
+			'default' => $deleted,
+		];
+
 		$formDescriptor['furtheroptions'] = [
 			'name' => 'furtheroptions',
 			'type' => 'multiselect',
@@ -213,11 +211,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'default' => $furtherOptions
 		];
 
-		// ToDo: Since this is only for saving space, we should convert it to use a 'hide-if'
-		if ( $searchEnabled ) {
+		if ( AbuseFilter::canViewPrivate( $user ) ) {
+			$globalEnabled = $centralDB !== null && !$dbIsCentral;
 			$formDescriptor['querypattern'] = [
 				'name' => 'querypattern',
 				'type' => 'text',
+				'hide-if' => $globalEnabled ? [ '===', 'rulescope', 'global' ] : [],
 				'label-message' => 'abusefilter-list-options-searchfield',
 				'placeholder' => $this->msg( 'abusefilter-list-options-searchpattern' )->text(),
 				'default' => $querypattern
@@ -228,7 +227,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'type' => 'radio',
 				'flatlist' => true,
 				'label-message' => 'abusefilter-list-options-searchoptions',
-				'hide-if' => [ '===', 'querypattern', '' ],
+				'hide-if' => $globalEnabled ?
+					[ 'OR', [ '===', 'querypattern', '' ], $formDescriptor['querypattern']['hide-if'] ] :
+					[ '===', 'querypattern', '' ],
 				'options-messages' => [
 					'abusefilter-list-options-search-like' => 'LIKE',
 					'abusefilter-list-options-search-rlike' => 'RLIKE',
