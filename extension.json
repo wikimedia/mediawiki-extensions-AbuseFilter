@@ -284,6 +284,7 @@
 		"UploadVerifyUpload": "AbuseFilterHooks::onUploadVerifyUpload",
 		"UploadStashFile": "AbuseFilterHooks::onUploadStashFile",
 		"PageSaveComplete": "AbuseFilterHooks::onPageSaveComplete",
+		"RenameUserSQL": "AbuseFilterHooks::onRenameUserSQL",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
 		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
 		"UnitTestsAfterDatabaseSetup": "AbuseFilterHooks::onUnitTestsAfterDatabaseSetup",
