@@ -528,11 +528,7 @@ class AbuseFilter {
 		) {
 			$vars = $obj;
 			$obj = AbuseFilterVariableHolder::newFromArray( $vars );
-			$deprecatedVars = AbuseFilterServices::getKeywordsManager()->getDeprecatedVariables();
-			// If old variable names are used, make sure to keep them
-			if ( array_intersect_key( $deprecatedVars, $obj->getVars() ) ) {
-				$obj->mVarsVersion = 1;
-			}
+			$obj->translateDeprecatedVars();
 		}
 
 		return $obj;

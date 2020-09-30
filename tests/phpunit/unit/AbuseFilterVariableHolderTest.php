@@ -86,6 +86,28 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers AbuseFilterVariableHolder::translateDeprecatedVars
+	 */
+	public function testTranslateDeprecatedVars() {
+		$varsMap = [
+			'timestamp' => new AFPData( AFPData::DSTRING, '123' ),
+			'added_lines' => new AFPData( AFPData::DSTRING, 'foobar' ),
+			'article_text' => new AFPData( AFPData::DSTRING, 'FOO' ),
+			'article_articleid' => new AFPData( AFPData::DINT, 42 )
+		];
+		$translatedVarsMap = [
+			'timestamp' => $varsMap['timestamp'],
+			'added_lines' => $varsMap['added_lines'],
+			'page_title' => $varsMap['article_text'],
+			'page_id' => $varsMap['article_articleid']
+		];
+		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
+		$holder = AbuseFilterVariableHolder::newFromArray( $varsMap, $keywordsManager );
+		$holder->translateDeprecatedVars();
+		$this->assertEquals( $translatedVarsMap, $holder->getVars() );
+	}
+
+	/**
 	 * @param string $name
 	 * @param mixed $val
 	 * @param mixed $expected
@@ -167,11 +189,6 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 		// For now, strict is the same as lax.
 		yield 'unset, strict' => [ $vars, $name, AbuseFilterVariableHolder::GET_STRICT, $expected ];
 		yield 'unset, bc' => [ $vars, $name, AbuseFilterVariableHolder::GET_BC, new AFPData( AFPData::DNULL ) ];
-
-		$vars->mVarsVersion = 1;
-		$expected = new AFPData( AFPData::DSTRING, 'foo' );
-		$vars->setVar( 'article_text', $expected );
-		yield 'deprecated, with new name' => [ $vars, 'page_title', 0, $expected ];
 	}
 
 	/**

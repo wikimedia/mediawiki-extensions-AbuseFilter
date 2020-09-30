@@ -29,12 +29,6 @@ class AbuseFilterVariableHolder {
 	/** @var bool Whether this object is being used for an ongoing action being filtered */
 	public $forFilter = false;
 
-	/** @var int 2 is the default and means that new variables names (from T173889) should be used.
-	 *    1 means that the old ones should be used, e.g. if this object is constructed from an
-	 *    afl_var_dump which still bears old variables.
-	 */
-	public $mVarsVersion = 2;
-
 	/**
 	 * @param KeywordsManager|null $keywordsManager Optional for BC
 	 */
@@ -67,6 +61,20 @@ class AbuseFilterVariableHolder {
 			$ret->setVar( $var, $value );
 		}
 		return $ret;
+	}
+
+	/**
+	 * Checks whether any deprecated variable is stored with the old name, and replaces it with
+	 * the new name. This should normally only happen when a DB dump is retrieved from the DB.
+	 */
+	public function translateDeprecatedVars() : void {
+		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
+		foreach ( $this->mVars as $name => $value ) {
+			if ( array_key_exists( $name, $deprecatedVars ) ) {
+				$this->mVars[ $deprecatedVars[$name] ] = $value;
+				unset( $this->mVars[$name] );
+			}
+		}
 	}
 
 	/**
@@ -124,13 +132,6 @@ class AbuseFilterVariableHolder {
 	 */
 	public function getVar( $varName, $mode = self::GET_STRICT, $tempFilter = null ) : AFPData {
 		$varName = strtolower( $varName );
-		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
-		if ( $this->mVarsVersion === 1 && in_array( $varName, $deprecatedVars ) ) {
-			// Variables are stored with old names, but the parser has given us
-			// a new name. Translate it back.
-			$varName = array_search( $varName, $deprecatedVars );
-		}
-
 		if ( $this->varIsSet( $varName ) ) {
 			/** @var $variable AFComputedVariable|AFPData */
 			$variable = $this->mVars[$varName];
