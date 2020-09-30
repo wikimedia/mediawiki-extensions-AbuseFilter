@@ -13,6 +13,9 @@ require_once "$IP/maintenance/Maintenance.php";
  * and T228655.
  * It also fixes a problem which caused addMissingLoggingEntries to insert duplicate rows foreach
  * non-legacy entries
+ *
+ * @codeCoverageIgnore
+ * No need to cover: old, single-use script.
  */
 class FixOldLogEntries extends LoggedUpdateMaintenance {
 	/** @var bool */

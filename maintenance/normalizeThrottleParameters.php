@@ -27,6 +27,8 @@ require_once "$IP/maintenance/Maintenance.php";
 
 /**
  * Normalizes throttle parameters, see T203587
+ * @codeCoverageIgnore
+ * No need to cover: old, single-use script.
  */
 class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	public function __construct() {

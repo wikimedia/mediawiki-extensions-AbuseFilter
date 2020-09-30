@@ -11,6 +11,8 @@ use MediaWiki\MediaWikiServices;
 
 /**
  * Adds rows missing per T54919
+ * @codeCoverageIgnore
+ * No need to cover: old, single-use script.
  */
 class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 	public function __construct() {
