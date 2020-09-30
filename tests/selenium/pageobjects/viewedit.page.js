@@ -16,12 +16,13 @@ class ViewEditPage extends Page {
 	get warnCheckbox() { return $( 'input[name="wpFilterActionWarn"]' ); }
 	get warnOtherMessage() { return $( 'input[name="wpFilterWarnMessageOther"]' ); }
 
-	get submitButton() { return $( 'input[type="submit"]' ); }
+	get submitButton() { return $( '#mw-abusefilter-editing-form input[type="submit"]' ); }
 
 	get error() { return $( '.errorbox' ); }
 	get warning() { return $( '.warningbox' ); }
 
 	submit() {
+		this.submitButton.waitForClickable();
 		this.submitButton.click();
 	}
 
@@ -31,7 +32,7 @@ class ViewEditPage extends Page {
 	 */
 	switchEditor() {
 		const button = $( '#mw-abusefilter-switcheditor' );
-		button.waitForDisplayed();
+		button.waitForClickable();
 		button.click();
 	}
 
@@ -41,7 +42,7 @@ class ViewEditPage extends Page {
 	}
 
 	invalidateToken() {
-		$( 'input[name="wpEditToken"]' ).setValue( '' );
+		$( '#mw-abusefilter-editing-form input[name="wpEditToken"]' ).setValue( '' );
 	}
 
 	open( subpage ) {
