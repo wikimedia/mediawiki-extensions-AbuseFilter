@@ -435,6 +435,7 @@
 			isFilterEditor = mw.config.get( 'isFilterEditor' ),
 			tagConfig = mw.config.get( 'tagConfig' ),
 			throttleConfig = mw.config.get( 'throttleConfig' ),
+			$switchEditorBtn = $( '#mw-abusefilter-switcheditor' ),
 			cbEnabled, cbDeleted;
 
 		if ( isFilterEditor ) {
@@ -499,7 +500,8 @@
 					$plainTextBox.val( filterEditor.getSession().getValue() );
 				} );
 
-				$( '#mw-abusefilter-switcheditor' ).on( 'click', switchEditor );
+				$switchEditorBtn.on( 'click', switchEditor );
+				$switchEditorBtn.show();
 			} );
 		}
 
