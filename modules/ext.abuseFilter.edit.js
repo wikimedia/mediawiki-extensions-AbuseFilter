@@ -135,14 +135,13 @@
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function doSyntaxCheck() {
-		var filter = $plainTextBox.val(),
-			api = new mw.Api();
+		var filter = $plainTextBox.val();
 
 		$( this )
 			.prop( 'disabled', true )
 			.injectSpinner( { id: 'abusefilter-syntaxcheck', size: 'large' } );
 
-		api.post( {
+		new mw.Api().post( {
 			action: 'abusefilterchecksyntax',
 			filter: filter
 		} )
@@ -180,8 +179,7 @@
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function fetchFilter() {
-		var filterId = $( '#mw-abusefilter-load-filter input' ).val().trim(),
-			api;
+		var filterId = $( '#mw-abusefilter-load-filter input' ).val().trim();
 
 		if ( filterId === '' ) {
 			return;
@@ -190,8 +188,7 @@
 		$( this ).injectSpinner( { id: 'fetch-spinner', size: 'large' } );
 
 		// We just ignore errors or unexisting filters over here
-		api = new mw.Api();
-		api.get( {
+		new mw.Api().get( {
 			action: 'query',
 			list: 'abusefilters',
 			abfprop: 'pattern',
@@ -238,7 +235,7 @@
 	 * @param {string} action The action the message refers to
 	 */
 	function previewMessage( action ) {
-		var api = new mw.Api(),
+		var api,
 			args = [
 				'<nowiki>' + $( 'input[name=wpFilterDescription]' ).val() + '</nowiki>',
 				$( '#mw-abusefilter-edit-id' ).children().last().text()
@@ -252,6 +249,7 @@
 			$element.hide();
 			previewButton.setFlags( { destructive: false, progressive: true } );
 		} else {
+			api = new mw.Api();
 			api.get( {
 				action: 'query',
 				meta: 'allmessages',
@@ -394,18 +392,17 @@
 			separator = action === 'throttle' ? '\n' : ',',
 			selector, field, fieldOpts, hiddenField;
 
-		selector =
-			new OO.ui.TagMultiselectWidget( {
-				inputPosition: 'outline',
-				allowArbitrary: true,
-				allowEditTags: true,
-				selected: config.values,
-				// The following messages are used here:
-				// * abusefilter-edit-throttle-placeholder
-				// * abusefilter-edit-tag-placeholder
-				placeholder: OO.ui.msg( 'abusefilter-edit-' + action + '-placeholder' ),
-				disabled: config.disabled
-			} );
+		selector = new OO.ui.TagMultiselectWidget( {
+			inputPosition: 'outline',
+			allowArbitrary: true,
+			allowEditTags: true,
+			selected: config.values,
+			// The following messages are used here:
+			// * abusefilter-edit-throttle-placeholder
+			// * abusefilter-edit-tag-placeholder
+			placeholder: OO.ui.msg( 'abusefilter-edit-' + action + '-placeholder' ),
+			disabled: config.disabled
+		} );
 
 		fieldOpts = {
 			label: $( $.parseHTML( config.label ) ),
