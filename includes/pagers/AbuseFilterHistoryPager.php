@@ -54,7 +54,6 @@ class AbuseFilterHistoryPager extends TablePager {
 		if ( !$this->mFilter ) {
 			// awful hack
 			$headers = [ 'afh_filter' => 'abusefilter-history-filterid' ] + $headers;
-			unset( $headers['afh_comments'] );
 		}
 
 		foreach ( $headers as &$msg ) {
