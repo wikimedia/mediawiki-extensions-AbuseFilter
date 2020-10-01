@@ -112,6 +112,7 @@
 	"abusefilter-log-details-ip": "IP-adres",
 	"abusefilter-log-details-checkuser": "Gebruiker controleren",
 	"abusefilter-log-noactions": "geen",
+	"abusefilter-log-noactions-filter": "Geen",
 	"abusefilter-log-details-diff": "Wijzigingen in de bewerking",
 	"abusefilter-log-linkoncontribs": "filterlogboek",
 	"abusefilter-log-linkoncontribs-text": "Filterlogboek voor {{GENDER:$1|deze gebruiker}}",
