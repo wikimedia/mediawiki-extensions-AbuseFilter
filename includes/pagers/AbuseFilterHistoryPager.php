@@ -17,11 +17,6 @@ class AbuseFilterHistoryPager extends TablePager {
 	public $mUser;
 
 	/**
-	 * @var LinkRenderer
-	 */
-	protected $linkRenderer;
-
-	/**
 	 * @param int $filter
 	 * @param AbuseFilterViewHistory $page
 	 * @param string $user User name
@@ -29,12 +24,11 @@ class AbuseFilterHistoryPager extends TablePager {
 	 */
 	public function __construct( int $filter, AbuseFilterViewHistory $page, $user,
 		LinkRenderer $linkRenderer ) {
+		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mFilter = $filter;
 		$this->mPage = $page;
 		$this->mUser = $user;
 		$this->mDefaultDirection = true;
-		$this->linkRenderer = $linkRenderer;
-		parent::__construct( $this->mPage->getContext() );
 	}
 
 	/**
@@ -77,12 +71,13 @@ class AbuseFilterHistoryPager extends TablePager {
 	 */
 	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
+		$linkRenderer = $this->getLinkRenderer();
 
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
 			case 'afh_filter':
-				$formatted = $this->linkRenderer->makeLink(
+				$formatted = $linkRenderer->makeLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', $row->afh_filter ),
 					$lang->formatNum( $row->afh_filter )
 				);
@@ -90,7 +85,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			case 'afh_timestamp':
 				$title = SpecialPage::getTitleFor( 'AbuseFilter',
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
-				$formatted = $this->linkRenderer->makeLink(
+				$formatted = $linkRenderer->makeLink(
 					$title,
 					$lang->timeanddate( $row->afh_timestamp, true )
 				);
@@ -145,7 +140,7 @@ class AbuseFilterHistoryPager extends TablePager {
 					) {
 						$title = $this->mPage->getTitle(
 							'history/' . $row->afh_filter . "/diff/prev/$value" );
-						$formatted = $this->linkRenderer->makeLink(
+						$formatted = $linkRenderer->makeLink(
 							$title,
 							new HtmlArmor( $this->msg( 'abusefilter-history-diff' )->parse() )
 						);
