@@ -63,11 +63,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$scope === 'global' );
 
 		if ( $searchEnabled ) {
-			$querypattern = $request->getVal( 'querypattern', '' );
-			$searchmode = $request->getVal( 'searchoption', 'LIKE' );
+			$querypattern = $request->getVal( 'querypattern', null );
+			$searchmode = $request->getVal( 'searchoption', null );
 		} else {
-			$querypattern = '';
-			$searchmode = '';
+			$querypattern = null;
+			$searchmode = null;
 		}
 
 		if ( $deleted === 'show' ) {
@@ -93,7 +93,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_global'] = 1;
 		}
 
-		if ( $querypattern !== '' ) {
+		if ( $searchmode !== null ) {
 			// Check the search pattern. Filtering the results is done in AbuseFilterPager
 			$error = null;
 			if ( !in_array( $searchmode, [ 'LIKE', 'RLIKE', 'IRLIKE' ] ) ) {
@@ -113,7 +113,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 				// Reset the conditions in case of error
 				$conds = [ 'af_deleted' => 0 ];
-				$querypattern = '';
+				$querypattern = null;
 			}
 		}
 
