@@ -44,6 +44,7 @@
 	"apihelp-query+abuselog-param-user": "Fà vedè sulamende le vôsce fatte da 'nu date utende o indirizze IP.",
 	"apihelp-query+abuselog-param-title": "Fà vedè sulamende le vôsce ca iessene sus a 'na data pàgene.",
 	"apihelp-query+abuselog-param-filter": "Fà 'ndrucà sulamende le vôsce ca sò azzeccate da 'nu specifiche ID de filtre. Separate da le barre verticale (|), 'u prefisse cu \"$1\" pe le filtre globbale.",
+	"apihelp-query+abuselog-param-filter-central": "Fà 'ndrucà sulamende le vôsce ca onne state pigghiate da 'u filtre ID. Separate cu le | (pipe).",
 	"apihelp-query+abuselog-param-limit": "'U numere massime de vôsce jndr'à l'elenghe.",
 	"apihelp-query+abuselog-param-prop": "Quale probbietà a pigghià.",
 	"apihelp-query+abuselog-param-wiki": "Uicchi da fà 'ndrucà le visite.",
