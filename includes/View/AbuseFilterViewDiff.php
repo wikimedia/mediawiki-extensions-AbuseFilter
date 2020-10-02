@@ -5,7 +5,11 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use AbuseFilter;
 use Diff;
 use DifferenceEngine;
+use IContextSource;
 use Linker;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use stdClass;
 use TableDiffFormatterFullContext;
@@ -31,6 +35,31 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @var int|null The ID of the filter
 	 */
 	private $filter;
+	/**
+	 * @var SpecsFormatter
+	 */
+	private $specsFormatter;
+
+	/**
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param SpecsFormatter $specsFormatter
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
+	 * @param array $params
+	 */
+	public function __construct(
+		AbuseFilterPermissionManager $afPermManager,
+		SpecsFormatter $specsFormatter,
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->specsFormatter = $specsFormatter;
+		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
+	}
 
 	/**
 	 * Shows the page
@@ -338,14 +367,14 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		) {
 			$info .= $this->getDiffRow(
 				'abusefilter-edit-group',
-				AbuseFilter::nameGroup( $oldVersion['info']['group'] ),
-				AbuseFilter::nameGroup( $newVersion['info']['group'] )
+				$this->specsFormatter->nameGroup( $oldVersion['info']['group'] ),
+				$this->specsFormatter->nameGroup( $newVersion['info']['group'] )
 			);
 		}
 		$info .= $this->getDiffRow(
 			'abusefilter-edit-flags',
-			AbuseFilter::formatFlags( $oldVersion['info']['flags'], $this->getLanguage() ),
-			AbuseFilter::formatFlags( $newVersion['info']['flags'], $this->getLanguage() )
+			$this->specsFormatter->formatFlags( $oldVersion['info']['flags'], $this->getLanguage() ),
+			$this->specsFormatter->formatFlags( $newVersion['info']['flags'], $this->getLanguage() )
 		);
 
 		$info .= $this->getDiffRow(
@@ -397,7 +426,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		ksort( $actions );
 		foreach ( $actions as $action => $parameters ) {
-			$lines[] = AbuseFilter::formatAction( $action, $parameters, $this->getLanguage() );
+			$lines[] = $this->specsFormatter->formatAction( $action, $parameters, $this->getLanguage() );
 		}
 
 		return $lines;

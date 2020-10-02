@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use AbuseFilter;
 use HtmlArmor;
 use IContextSource;
 use Linker;
@@ -166,9 +165,10 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$actions = explode( ',', $actions_takenRaw );
 			$displayActions = [];
 
-			$context = $this->getContext();
+			$specsFormatter = AbuseFilterServices::getSpecsFormatter();
+			$specsFormatter->setMessageLocalizer( $this->getContext() );
 			foreach ( $actions as $action ) {
-				$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
+				$displayActions[] = $specsFormatter->getActionDisplay( $action );
 			}
 			$actions_taken = $lang->commaList( $displayActions );
 		}

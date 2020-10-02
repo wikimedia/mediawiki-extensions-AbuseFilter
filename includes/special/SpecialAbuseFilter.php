@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterView;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
@@ -35,6 +36,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	private const SERVICES_PER_VIEW = [
 		AbuseFilterViewDiff::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
+			SpecsFormatter::SERVICE_NAME,
 		],
 		AbuseFilterViewEdit::class => [
 			'PermissionManager',
@@ -45,6 +47,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			FilterStore::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,
 			ConsequencesRegistry::SERVICE_NAME,
+			SpecsFormatter::SERVICE_NAME,
 		],
 		AbuseFilterViewExamine::class => [
 			'RevisionLookup',
@@ -70,6 +73,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			BlockAutopromoteStore::SERVICE_NAME,
 			FilterUser::SERVICE_NAME,
 			VariablesBlobStore::SERVICE_NAME,
+			SpecsFormatter::SERVICE_NAME,
 		],
 		AbuseFilterViewTestBatch::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,

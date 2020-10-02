@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use AbuseFilter;
 use FakeResultWrapper;
 use Linker;
 use LogicException;
@@ -187,6 +186,8 @@ class AbuseFilterPager extends TablePager {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$linkRenderer = $this->getLinkRenderer();
+		$specsFormatter = AbuseFilterServices::getSpecsFormatter();
+		$specsFormatter->setMessageLocalizer( $this->getContext() );
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
@@ -205,9 +206,8 @@ class AbuseFilterPager extends TablePager {
 			case 'af_actions':
 				$actions = explode( ',', $value );
 				$displayActions = [];
-				$context = $this->getContext();
 				foreach ( $actions as $action ) {
-					$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
+					$displayActions[] = $specsFormatter->getActionDisplay( $action );
 				}
 				return $lang->commaList( $displayActions );
 			case 'af_enabled':
@@ -276,7 +276,7 @@ class AbuseFilterPager extends TablePager {
 						wfEscapeWikiText( $row->af_user_text )
 					)->parse();
 			case 'af_group':
-				return AbuseFilter::nameGroup( $value );
+				return $specsFormatter->nameGroup( $value );
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}

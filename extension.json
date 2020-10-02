@@ -70,7 +70,8 @@
 				"PermissionManager",
 				"AbuseFilterPermissionManager",
 				"AbuseFilterConsequencesRegistry",
-				"AbuseFilterVariablesBlobStore"
+				"AbuseFilterVariablesBlobStore",
+				"AbuseFilterSpecsFormatter"
 			]
 		},
 		"AbuseFilter": {
@@ -164,6 +165,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPermissionManager": "includes/AbuseFilterPermissionManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\EchoNotifier": "includes/EchoNotifier.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ThrottleFilterPresentationModel": "includes/ThrottleFilterPresentationModel.php",
+		"MediaWiki\\Extension\\AbuseFilter\\SpecsFormatter": "includes/SpecsFormatter.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterProfiler": "includes/FilterProfiler.php",
 		"MediaWiki\\Extension\\AbuseFilter\\BlockAutopromoteStore": "includes/BlockAutopromoteStore.php",

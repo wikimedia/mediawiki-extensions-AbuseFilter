@@ -69,21 +69,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param string $action
-	 * @param MessageLocalizer|null $localizer
-	 * @return string HTML
-	 */
-	public static function getActionDisplay( $action, MessageLocalizer $localizer = null ) {
-		$msgCallback = $localizer != null ? [ $localizer, 'msg' ] : 'wfMessage';
-		// Give grep a chance to find the usages:
-		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
-		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
-		// abusefilter-action-rangeblock, abusefilter-action-disallow
-		$msg = $msgCallback( "abusefilter-action-$action" );
-		return $msg->isDisabled() ? htmlspecialchars( $action ) : $msg->escaped();
-	}
-
-	/**
 	 * @param mixed $var
 	 * @param string $indent
 	 * @return string
@@ -175,99 +160,6 @@ class AbuseFilter {
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 
 		return $output;
-	}
-
-	/**
-	 * @param string $action
-	 * @param string[] $parameters
-	 * @param Language $lang
-	 * @return string
-	 */
-	public static function formatAction( $action, $parameters, $lang ) {
-		if ( count( $parameters ) === 0 ||
-			( $action === 'block' && count( $parameters ) !== 3 ) ) {
-			$displayAction = self::getActionDisplay( $action );
-		} else {
-			if ( $action === 'block' ) {
-				// Needs to be treated separately since the message is more complex
-				$messages = [
-					wfMessage( 'abusefilter-block-anon' )->escaped() .
-					wfMessage( 'colon-separator' )->escaped() .
-					$lang->translateBlockExpiry( $parameters[1] ),
-					wfMessage( 'abusefilter-block-user' )->escaped() .
-					wfMessage( 'colon-separator' )->escaped() .
-					$lang->translateBlockExpiry( $parameters[2] )
-				];
-				if ( $parameters[0] === 'blocktalk' ) {
-					$messages[] = wfMessage( 'abusefilter-block-talk' )->escaped();
-				}
-				$displayAction = $lang->commaList( $messages );
-			} elseif ( $action === 'throttle' ) {
-				array_shift( $parameters );
-				list( $actions, $time ) = explode( ',', array_shift( $parameters ) );
-
-				// Join comma-separated groups in a commaList with a final "and", and convert to messages.
-				// Messages used here: abusefilter-throttle-ip, abusefilter-throttle-user,
-				// abusefilter-throttle-site, abusefilter-throttle-creationdate, abusefilter-throttle-editcount
-				// abusefilter-throttle-range, abusefilter-throttle-page, abusefilter-throttle-none
-				foreach ( $parameters as &$val ) {
-					if ( strpos( $val, ',' ) !== false ) {
-						$subGroups = explode( ',', $val );
-						foreach ( $subGroups as &$group ) {
-							$msg = wfMessage( "abusefilter-throttle-$group" );
-							// We previously accepted literally everything in this field, so old entries
-							// may have weird stuff.
-							$group = $msg->exists() ? $msg->text() : $group;
-						}
-						unset( $group );
-						$val = $lang->listToText( $subGroups );
-					} else {
-						$msg = wfMessage( "abusefilter-throttle-$val" );
-						$val = $msg->exists() ? $msg->text() : $val;
-					}
-				}
-				unset( $val );
-				$groups = $lang->semicolonList( $parameters );
-
-				$displayAction = self::getActionDisplay( $action ) .
-				wfMessage( 'colon-separator' )->escaped() .
-				wfMessage( 'abusefilter-throttle-details' )->params( $actions, $time, $groups )->escaped();
-			} else {
-				$displayAction = self::getActionDisplay( $action ) .
-				wfMessage( 'colon-separator' )->escaped() .
-				$lang->semicolonList( array_map( 'htmlspecialchars', $parameters ) );
-			}
-		}
-
-		return $displayAction;
-	}
-
-	/**
-	 * @param string $value
-	 * @param Language $lang
-	 * @return string
-	 */
-	public static function formatFlags( $value, $lang ) {
-		$flags = array_filter( explode( ',', $value ) );
-		$flags_display = [];
-		foreach ( $flags as $flag ) {
-			$flags_display[] = wfMessage( "abusefilter-history-$flag" )->escaped();
-		}
-
-		return $lang->commaList( $flags_display );
-	}
-
-	/**
-	 * Gives either the user-specified name for a group,
-	 * or spits the input back out
-	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @return string A name for that filter group, or the input.
-	 */
-	public static function nameGroup( $group ) {
-		// Give grep a chance to find the usages: abusefilter-group-default
-		$msg = "abusefilter-group-$group";
-
-		return wfMessage( $msg )->exists() ? wfMessage( $msg )->escaped() : $group;
 	}
 
 	/**

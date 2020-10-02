@@ -197,4 +197,11 @@ class AbuseFilterServices {
 	public static function getFilterRunnerFactory() : FilterRunnerFactory {
 		return MediaWikiServices::getInstance()->getService( FilterRunnerFactory::SERVICE_NAME );
 	}
+
+	/**
+	 * @return SpecsFormatter
+	 */
+	public static function getSpecsFormatter() : SpecsFormatter {
+		return MediaWikiServices::getInstance()->getService( SpecsFormatter::SERVICE_NAME );
+	}
 }

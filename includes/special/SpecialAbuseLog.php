@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\Logger\LoggerFactory;
@@ -82,19 +83,24 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var VariablesBlobStore */
 	private $varBlobStore;
 
+	/** @var SpecsFormatter */
+	private $specsFormatter;
+
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
 	 * @param AbuseFilterPermissionManager $afPermissionManager
 	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param VariablesBlobStore $varBlobStore
+	 * @param SpecsFormatter $specsFormatter
 	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
 		PermissionManager $permissionManager,
 		AbuseFilterPermissionManager $afPermissionManager,
 		ConsequencesRegistry $consequencesRegistry,
-		VariablesBlobStore $varBlobStore
+		VariablesBlobStore $varBlobStore,
+		SpecsFormatter $specsFormatter
 	) {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 		$this->linkBatchFactory = $linkBatchFactory;
@@ -102,6 +108,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->afPermissionManager = $afPermissionManager;
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->varBlobStore = $varBlobStore;
+		$this->specsFormatter = $specsFormatter;
+		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
 	}
 
 	/**
@@ -274,9 +282,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'default' => 'any',
 		];
 		$options = [];
-		$context = $this->getContext();
 		foreach ( $this->consequencesRegistry->getAllActionNames() as $action ) {
-			$key = AbuseFilter::getActionDisplay( $action, $context );
+			$key = $this->specsFormatter->getActionDisplay( $action );
 			$options[$key] = $action;
 		}
 		ksort( $options );

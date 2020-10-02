@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilter;
 use BadMethodCallException;
 use Html;
 use HtmlArmor;
@@ -20,6 +19,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\PermissionManager;
 use MWException;
@@ -57,6 +57,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
+	/** @var SpecsFormatter */
+	private $specsFormatter;
+
 	/**
 	 * @param PermissionManager $permissionManager
 	 * @param AbuseFilterPermissionManager $afPermManager
@@ -66,6 +69,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param FilterStore $filterStore
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
 	 * @param ConsequencesRegistry $consequencesRegistry
+	 * @param SpecsFormatter $specsFormatter
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -80,6 +84,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		FilterStore $filterStore,
 		EditBoxBuilderFactory $boxBuilderFactory,
 		ConsequencesRegistry $consequencesRegistry,
+		SpecsFormatter $specsFormatter,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -93,6 +98,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$this->filterStore = $filterStore;
 		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->consequencesRegistry = $consequencesRegistry;
+		$this->specsFormatter = $specsFormatter;
+		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
 		$this->filter = $this->mParams['filter'];
 		$this->historyID = $this->mParams['history'] ?? null;
 	}
@@ -321,7 +328,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			$options = [];
 			foreach ( $validGroups as $group ) {
-				$options += [ AbuseFilter::nameGroup( $group ) => $group ];
+				$options += [ $this->specsFormatter->nameGroup( $group ) => $group ];
 			}
 
 			$options = Xml::listDropDownOptionsOoui( $options );

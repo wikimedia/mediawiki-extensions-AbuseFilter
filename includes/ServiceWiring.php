@@ -28,6 +28,7 @@ use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
@@ -261,6 +262,12 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getStatsdDataFactory(),
 			$services->getMainConfig()->get( 'AbuseFilterValidGroups' )
+		);
+	},
+	SpecsFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): SpecsFormatter {
+		return new SpecsFormatter(
+			// TODO: Use a proper MessageLocalizer once available (T247127)
+			RequestContext::getMain()
 		);
 	},
 ];

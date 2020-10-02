@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilter;
 use HTMLForm;
 use IContextSource;
 use Linker;
@@ -11,6 +10,7 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\User\UserGroupManager;
@@ -64,11 +64,17 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	private $varBlobStore;
 
 	/**
+	 * @var SpecsFormatter
+	 */
+	private $specsFormatter;
+
+	/**
 	 * @param UserGroupManager $userGroupManager
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param BlockAutopromoteStore $blockAutopromoteStore
 	 * @param FilterUser $filterUser
 	 * @param VariablesBlobStore $varBlobStore
+	 * @param SpecsFormatter $specsFormatter
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -80,6 +86,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		BlockAutopromoteStore $blockAutopromoteStore,
 		FilterUser $filterUser,
 		VariablesBlobStore $varBlobStore,
+		SpecsFormatter $specsFormatter,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -90,6 +97,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$this->blockAutopromoteStore = $blockAutopromoteStore;
 		$this->filterUser = $filterUser;
 		$this->varBlobStore = $varBlobStore;
+		$this->specsFormatter = $specsFormatter;
+		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
 	}
 
 	/**
@@ -186,11 +195,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-intro' )->parseAsBlock() );
 		$list = [];
 
-		$context = $this->getContext();
 		foreach ( $results as $result ) {
 			$displayActions = [];
 			foreach ( $result['actions'] as $action ) {
-				$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
+				$displayActions[] = $this->specsFormatter->getActionDisplay( $action );
 			}
 
 			$msg = $this->msg( 'abusefilter-revert-preview-item' )
