@@ -40,7 +40,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		$request = $this->getRequest();
 
 		$out->addModuleStyles( 'ext.abuseFilter' );
-		$view = 'AbuseFilterViewList';
+		$view = AbuseFilterViewList::class;
 
 		$this->setHeaders();
 		$this->addHelpLink( 'Extension:AbuseFilter' );
@@ -77,25 +77,25 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		$params = array_values( $params );
 
 		if ( $subpage === 'tools' ) {
-			$view = 'AbuseFilterViewTools';
+			$view = AbuseFilterViewTools::class;
 			$pageType = 'tools';
 			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
 		if ( count( $params ) === 2 && $params[0] === 'revert' && is_numeric( $params[1] ) ) {
 			$this->mFilter = $params[1];
-			$view = 'AbuseFilterViewRevert';
+			$view = AbuseFilterViewRevert::class;
 			$pageType = 'revert';
 		}
 
 		if ( count( $params ) && $params[0] === 'test' ) {
-			$view = 'AbuseFilterViewTestBatch';
+			$view = AbuseFilterViewTestBatch::class;
 			$pageType = 'test';
 			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
 
 		if ( count( $params ) && $params[0] === 'examine' ) {
-			$view = 'AbuseFilterViewExamine';
+			$view = AbuseFilterViewExamine::class;
 			$pageType = 'examine';
 			$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		}
@@ -103,31 +103,31 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		if ( !empty( $params[0] ) && ( $params[0] === 'history' || $params[0] === 'log' ) ) {
 			$pageType = '';
 			if ( count( $params ) === 1 ) {
-				$view = 'AbuseFilterViewHistory';
+				$view = AbuseFilterViewHistory::class;
 				$pageType = 'recentchanges';
 			} elseif ( count( $params ) === 2 ) {
 				// Second param is a filter ID
-				$view = 'AbuseFilterViewHistory';
+				$view = AbuseFilterViewHistory::class;
 				$pageType = 'recentchanges';
 				$this->mFilter = $params[1];
 			} elseif ( count( $params ) === 4 && $params[2] === 'item' ) {
 				$this->mFilter = $params[1];
 				$this->mHistoryID = (int)$params[3];
-				$view = 'AbuseFilterViewEdit';
+				$view = AbuseFilterViewEdit::class;
 			} elseif ( count( $params ) === 5 && $params[2] === 'diff' ) {
 				// Special:AbuseFilter/history/<filter>/diff/<oldid>/<newid>
-				$view = 'AbuseFilterViewDiff';
+				$view = AbuseFilterViewDiff::class;
 			}
 		}
 
 		if ( is_numeric( $subpage ) || $subpage === 'new' ) {
 			$this->mFilter = $subpage;
-			$view = 'AbuseFilterViewEdit';
+			$view = AbuseFilterViewEdit::class;
 			$pageType = 'edit';
 		}
 
 		if ( $subpage === 'import' ) {
-			$view = 'AbuseFilterViewImport';
+			$view = AbuseFilterViewImport::class;
 			$pageType = 'import';
 		}
 
