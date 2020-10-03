@@ -33,8 +33,78 @@ use Wikimedia\IPUtils;
  *   amount of runtime-only exceptions, and try to detect them in the AFPTreeParser instead.
  *   Otherwise, people may be able to save a broken filter without the syntax check reporting that.
  */
-class AbuseFilterCachingParser extends AFPTransitionBase {
+class AbuseFilterCachingParser {
 	private const CACHE_VERSION = 1;
+
+	public const FUNCTIONS = [
+		'lcase' => 'funcLc',
+		'ucase' => 'funcUc',
+		'length' => 'funcLen',
+		'string' => 'castString',
+		'int' => 'castInt',
+		'float' => 'castFloat',
+		'bool' => 'castBool',
+		'norm' => 'funcNorm',
+		'ccnorm' => 'funcCCNorm',
+		'ccnorm_contains_any' => 'funcCCNormContainsAny',
+		'ccnorm_contains_all' => 'funcCCNormContainsAll',
+		'specialratio' => 'funcSpecialRatio',
+		'rmspecials' => 'funcRMSpecials',
+		'rmdoubles' => 'funcRMDoubles',
+		'rmwhitespace' => 'funcRMWhitespace',
+		'count' => 'funcCount',
+		'rcount' => 'funcRCount',
+		'get_matches' => 'funcGetMatches',
+		'ip_in_range' => 'funcIPInRange',
+		'contains_any' => 'funcContainsAny',
+		'contains_all' => 'funcContainsAll',
+		'equals_to_any' => 'funcEqualsToAny',
+		'substr' => 'funcSubstr',
+		'strlen' => 'funcLen',
+		'strpos' => 'funcStrPos',
+		'str_replace' => 'funcStrReplace',
+		'rescape' => 'funcStrRegexEscape',
+		'set' => 'funcSetVar',
+		'set_var' => 'funcSetVar',
+		'sanitize' => 'funcSanitize',
+	];
+
+	/**
+	 * The minimum and maximum amount of arguments required by each function.
+	 * @var int[][]
+	 */
+	public const FUNC_ARG_COUNT = [
+		'lcase' => [ 1, 1 ],
+		'ucase' => [ 1, 1 ],
+		'length' => [ 1, 1 ],
+		'string' => [ 1, 1 ],
+		'int' => [ 1, 1 ],
+		'float' => [ 1, 1 ],
+		'bool' => [ 1, 1 ],
+		'norm' => [ 1, 1 ],
+		'ccnorm' => [ 1, 1 ],
+		'ccnorm_contains_any' => [ 2, INF ],
+		'ccnorm_contains_all' => [ 2, INF ],
+		'specialratio' => [ 1, 1 ],
+		'rmspecials' => [ 1, 1 ],
+		'rmdoubles' => [ 1, 1 ],
+		'rmwhitespace' => [ 1, 1 ],
+		'count' => [ 1, 2 ],
+		'rcount' => [ 1, 2 ],
+		'get_matches' => [ 2, 2 ],
+		'ip_in_range' => [ 2, 2 ],
+		'contains_any' => [ 2, INF ],
+		'contains_all' => [ 2, INF ],
+		'equals_to_any' => [ 2, INF ],
+		'substr' => [ 2, 3 ],
+		'strlen' => [ 1, 1 ],
+		'strpos' => [ 2, 3 ],
+		'str_replace' => [ 3, 3 ],
+		'rescape' => [ 1, 1 ],
+		'set' => [ 2, 2 ],
+		'set_var' => [ 2, 2 ],
+		'sanitize' => [ 1, 1 ],
+	];
 
 	// Functions that affect parser state, and shouldn't be cached.
 	public const ACTIVE_FUNCTIONS = [
@@ -55,10 +125,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @var bool Are we allowed to use short-circuit evaluation?
 	 */
 	public $mAllowShort;
-	/**
-	 * @var AFPToken The current token
-	 */
-	public $mCur;
+
 	/**
 	 * @var VariableHolder
 	 */
@@ -263,7 +330,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 */
 	public function resetState() {
 		$this->mVariables = new VariableHolder();
-		$this->mCur = new AFPToken();
 		$this->mCondCount = 0;
 		$this->mAllowShort = true;
 		$this->mFilter = null;
@@ -436,12 +502,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @throws MWException
 	 */
 	private function evalNode( AFPTreeNode $node ) {
-		// A lot of features in the old parser would rely on $this->mCur->pos or
-		// $this->mPos for error reporting.
-		// FIXME: Remove this hack!
-		$this->mPos = $node->position;
-		$this->mCur->pos = $node->position;
-
 		switch ( $node->type ) {
 			case AFPTreeNode::ATOM:
 				$tok = $node->children;
@@ -490,7 +550,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 					$dataArgs[] = $this->evalNode( $arg );
 				}
 
-				return $this->callFunc( $functionName, $dataArgs );
+				return $this->callFunc( $functionName, $dataArgs, $node->position );
 			case AFPTreeNode::ARRAY_INDEX:
 				list( $array, $offset ) = $node->children;
 
@@ -536,7 +596,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
 
-				return $this->callKeyword( $keyword, $leftOperand, $rightOperand );
+				return $this->callKeyword( $keyword, $leftOperand, $rightOperand, $node->position );
 			case AFPTreeNode::BOOL_INVERT:
 				list( $argument ) = $node->children;
 				$argument = $this->evalNode( $argument );
@@ -691,10 +751,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 *
 	 * @param string $fname The name of the function as found in the filter code
 	 * @param AFPData[] $args Arguments for the function
+	 * @param int $position
 	 * @return AFPData The return value of the function
 	 * @throws InvalidArgumentException if given an invalid func
 	 */
-	protected function callFunc( $fname, array $args ): AFPData {
+	protected function callFunc( $fname, array $args, int $position ): AFPData {
 		if ( !array_key_exists( $fname, self::FUNCTIONS ) ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "$fname is not a valid function." );
@@ -723,10 +784,12 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				}
 			}
 			if ( $hasUndefinedArg ) {
-				$this->$funcHandler( $args );
+				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
+				$this->$funcHandler( $args, $position );
 				$result = new AFPData( AFPData::DUNDEFINED );
 			} else {
-				$result = $this->$funcHandler( $args );
+				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
+				$result = $this->$funcHandler( $args, $position );
 			}
 			$this->funcCache[$funcHash] = $result;
 		}
@@ -746,9 +809,10 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string $kname
 	 * @param AFPData $lhs
 	 * @param AFPData $rhs
+	 * @param int $position
 	 * @return AFPData
 	 */
-	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs ): AFPData {
+	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs, int $position ): AFPData {
 		$func = self::KEYWORDS[$kname];
 		$this->raiseCondCount();
 
@@ -765,11 +829,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 			// We need to run the handler with bogus args, see the comment in self::callFunc (T234339)
 			// @todo Likewise, this is subpar.
 			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-			$this->$func( $lhs, $rhs, $this->mCur->pos );
+			$this->$func( $lhs, $rhs, $position );
 			$result = new AFPData( AFPData::DUNDEFINED );
 		} else {
 			// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
-			$result = $this->$func( $lhs, $rhs, $this->mCur->pos );
+			$result = $this->$func( $lhs, $rhs, $position );
 		}
 		return $result;
 	}
@@ -903,10 +967,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 
 	/**
 	 * @param array $args
+	 * @param int $position
 	 * @return AFPData
 	 * @throws UserVisibleException
 	 */
-	protected function funcRCount( $args ) {
+	protected function funcRCount( $args, int $position ) {
 		if ( count( $args ) === 1 ) {
 			$count = count( explode( ',', $args[0]->toString() ) );
 		} else {
@@ -917,14 +982,14 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 
 			// Suppress and restore needed per T177744
 			AtEase::suppressWarnings();
-			$this->checkRegexMatchesEmpty( $args[0], $needle );
+			$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
 			$count = preg_match_all( $needle, $haystack );
 			AtEase::restoreWarnings();
 
 			if ( $count === false ) {
 				throw new UserVisibleException(
 					'regexfailure',
-					$this->mCur->pos,
+					$position,
 					[ $needle ]
 				);
 			}
@@ -938,10 +1003,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * the other ones for every capturing group.
 	 *
 	 * @param array $args
+	 * @param int $position
 	 * @return AFPData An array of matches.
 	 * @throws UserVisibleException
 	 */
-	protected function funcGetMatches( $args ) {
+	protected function funcGetMatches( $args, int $position ) {
 		$needle = $args[0]->toString();
 		$haystack = $args[1]->toString();
 
@@ -963,14 +1029,14 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 
 		// Suppress and restore are here for the same reason as T177744
 		AtEase::suppressWarnings();
-		$this->checkRegexMatchesEmpty( $args[0], $needle );
+		$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
 		$check = preg_match( $needle, $haystack, $matches );
 		AtEase::restoreWarnings();
 
 		if ( $check === false ) {
 			throw new UserVisibleException(
 				'regexfailure',
-				$this->mCur->pos,
+				$position,
 				[ $needle ]
 			);
 		}
@@ -983,17 +1049,18 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 
 	/**
 	 * @param array $args
+	 * @param int $position
 	 * @return AFPData
 	 * @throws UserVisibleException
 	 */
-	protected function funcIPInRange( $args ) {
+	protected function funcIPInRange( $args, int $position ) {
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
 
 		if ( !IPUtils::isValidRange( $range ) && !IPUtils::isIPAddress( $range ) ) {
 			throw new UserVisibleException(
 				'invalidiprange',
-				$this->mCur->pos,
+				$position,
 				[ $range ]
 			);
 		}
@@ -1381,7 +1448,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		}
 
 		AtEase::suppressWarnings();
-		$this->checkRegexMatchesEmpty( $regex, $pattern );
+		$this->checkRegexMatchesEmpty( $regex, $pattern, $pos );
 		$result = preg_match( $pattern, $str );
 		AtEase::restoreWarnings();
 		if ( $result === false ) {
@@ -1471,8 +1538,9 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 *
 	 * @param AFPData $regex TODO Can we avoid passing this in?
 	 * @param string $pattern Already munged
+	 * @param int $position
 	 */
-	protected function checkRegexMatchesEmpty( AFPData $regex, string $pattern ): void {
+	protected function checkRegexMatchesEmpty( AFPData $regex, string $pattern, int $position ): void {
 		if ( $regex->getType() === AFPData::DUNDEFINED ) {
 			// We can't tell, and toString() would return the empty string (T273809)
 			return;
@@ -1481,7 +1549,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		if ( preg_match( $pattern, '' ) === 1 ) {
 			$this->warnings[] = new UserVisibleWarning(
 				'match-empty-regex',
-				$this->mCur->pos,
+				$position,
 				[]
 			);
 		}

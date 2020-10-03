@@ -12,6 +12,7 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use BagOStuff;
 use IBufferingStatsdDataFactory;
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use Psr\Log\LoggerInterface;
@@ -19,7 +20,7 @@ use Psr\Log\LoggerInterface;
 /**
  * A parser that transforms the text of the filter into a parse tree.
  */
-class AFPTreeParser extends AFPTransitionBase {
+class AFPTreeParser {
 	/**
 	 * @var array[] Contains the AFPTokens for the code being parsed
 	 */
@@ -28,6 +29,9 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * @var AFPToken The current token
 	 */
 	public $mCur;
+	/** @var int The position of the current token */
+	private $mPos;
+
 	/**
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
@@ -727,5 +731,18 @@ class AFPTreeParser extends AFPTransitionBase {
 		if ( $this->keywordsManager->isVarDeprecated( $varname ) ) {
 			$this->logger->debug( "Deprecated variable $varname used in filter {$this->mFilter}." );
 		}
+	}
+
+	/**
+	 * @param string $fname
+	 * @return bool
+	 */
+	protected function functionIsVariadic( string $fname ): bool {
+		if ( !array_key_exists( $fname, AbuseFilterCachingParser::FUNC_ARG_COUNT ) ) {
+			// @codeCoverageIgnoreStart
+			throw new InvalidArgumentException( "Function $fname is not valid" );
+			// @codeCoverageIgnoreEnd
+		}
+		return AbuseFilterCachingParser::FUNC_ARG_COUNT[$fname][1] === INF;
 	}
 }

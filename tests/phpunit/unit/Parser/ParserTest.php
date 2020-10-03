@@ -44,7 +44,6 @@ use Wikimedia\TestingAccessWrapper;
  *
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTransitionBase
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPParserState

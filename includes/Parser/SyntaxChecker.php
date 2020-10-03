@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
+use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
@@ -26,7 +27,7 @@ use Message;
  * In the future, it could subsume the current Check Syntax, and could be
  * extended to perform type checking or type inference.
  */
-class SyntaxChecker extends AFPTransitionBase {
+class SyntaxChecker {
 	/**
 	 * @var AFPTreeNode|null Root of the AST to check
 	 */
@@ -631,5 +632,50 @@ class SyntaxChecker extends AFPTransitionBase {
 				[ $var ]
 			);
 		}
+	}
+
+	/**
+	 * Check that a built-in function has been provided the right amount of arguments
+	 *
+	 * @param array $args The arguments supplied to the function
+	 * @param string $func The function name
+	 * @param int $position
+	 * @throws UserVisibleException
+	 */
+	protected function checkArgCount( array $args, string $func, int $position ): void {
+		if ( !array_key_exists( $func, AbuseFilterCachingParser::FUNC_ARG_COUNT ) ) {
+			// @codeCoverageIgnoreStart
+			throw new InvalidArgumentException( "$func is not a valid function." );
+			// @codeCoverageIgnoreEnd
+		}
+		list( $min, $max ) = AbuseFilterCachingParser::FUNC_ARG_COUNT[ $func ];
+		if ( count( $args ) < $min ) {
+			throw new UserVisibleException(
+				$min === 1 ? 'noparams' : 'notenoughargs',
+				$position,
+				[ $func, $min, count( $args ) ]
+			);
+		} elseif ( count( $args ) > $max ) {
+			throw new UserVisibleException(
+				'toomanyargs',
+				$position,
+				[ $func, $max, count( $args ) ]
+			);
+		}
+	}
+
+	/**
+	 * Check whether the given name is a reserved identifier, e.g. the name of a built-in variable,
+	 * function, or keyword.
+	 *
+	 * @param string $name
+	 * @return bool
+	 */
+	protected function isReservedIdentifier( string $name ): bool {
+		return $this->keywordsManager->varExists( $name ) ||
+			array_key_exists( $name, AbuseFilterCachingParser::FUNCTIONS ) ||
+			// We need to check for true, false, if/then/else etc. because, even if they have a different
+			// AFPToken type, they may be used inside set/set_var()
+			in_array( $name, AbuseFilterTokenizer::KEYWORDS, true );
 	}
 }
