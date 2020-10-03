@@ -32,6 +32,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'abusefilter-examine' ) );
+		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$out->addWikiMsg( 'abusefilter-examine-intro' );
 
 		$this->loadParameters();

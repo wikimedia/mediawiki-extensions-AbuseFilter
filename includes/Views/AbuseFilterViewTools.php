@@ -7,6 +7,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 		$out->enableOOUI();
+		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$request = $this->getRequest();
 
 		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
