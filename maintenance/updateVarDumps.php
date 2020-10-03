@@ -58,7 +58,6 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->addOption( 'sleep', 'Sleep this many seconds after each batch', false, true );
 		$this->requireExtension( 'Abuse Filter' );
 		$this->setBatchSize( 500 );
-		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
 	}
 
 	/**
@@ -79,6 +78,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->progressMarkers = $this->hasOption( 'progress-markers' );
 		$this->printOrphanedFile = $this->getOption( 'print-orphaned-records-to' );
 		$this->sleep = $this->getOption( 'sleep' );
+
+		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
 
 		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
 		$this->dbr = wfGetDB( DB_REPLICA );

@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\TestingAccessWrapper;
@@ -54,11 +55,11 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 	 * the object in tests, because that's going to break too easily.
 	 */
 	private const SERIALIZED_VH = 'O:25:"AbuseFilterVariableHolder":3:{s:5:"mVars";a:5:{s:6:"action";O:7:"AFPData":' .
-		'2:{s:4:"type";s:6:"string";s:4:"data";s:4:"edit";}s:7:"page_id";O:7:"AFPData":2:{s:4:"type";s:3:"int";s:4:' .
-		'"data";i:12;}s:12:"user_blocked";O:7:"AFPData":2:{s:4:"type";s:4:"bool";s:4:"data";b:1;}s:11:"accountname";' .
-		'O:7:"AFPData":2:{s:4:"type";s:4:"null";s:4:"data";N;}s:11:"user_groups";O:7:"AFPData":2:{s:4:"type";s:5:' .
-		'"array";s:4:"data";a:2:{i:0;O:7:"AFPData":2:{s:4:"type";s:6:"string";s:4:"data";s:1:"x";}i:1;O:7:"AFPData"' .
-		':2:{s:4:"type";s:6:"string";s:4:"data";s:1:"y";}}}}s:9:"forFilter";b:0;s:12:"mVarsVersion";i:2;}';
+	'2:{s:4:"type";s:6:"string";s:4:"data";s:4:"edit";}s:7:"page_id";O:7:"AFPData":2:{s:4:"type";s:3:"int";s:4:' .
+	'"data";i:12;}s:12:"user_blocked";O:7:"AFPData":2:{s:4:"type";s:4:"bool";s:4:"data";b:1;}s:11:"accountname";' .
+	'O:7:"AFPData":2:{s:4:"type";s:4:"null";s:4:"data";N;}s:11:"user_groups";O:7:"AFPData":2:{s:4:"type";s:5:' .
+	'"array";s:4:"data";a:2:{i:0;O:7:"AFPData":2:{s:4:"type";s:6:"string";s:4:"data";s:1:"x";}i:1;O:7:"AFPData"' .
+	':2:{s:4:"type";s:6:"string";s:4:"data";s:1:"y";}}}}s:9:"forFilter";b:0;s:12:"mVarsVersion";i:2;}';
 
 	/**
 	 * @inheritDoc
@@ -79,6 +80,7 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 	public function setUp(): void {
 		parent::setUp();
 		$this->maintenance->dbr = $this->maintenance->dbw = $this->db;
+		$this->maintenance->keywordsManager = AbuseFilterServices::getKeywordsManager();
 		// This isn't really necessary
 		$this->maintenance->allRowsCount = 50;
 	}
@@ -207,27 +209,27 @@ class UpdateVarDumpsTest extends MaintenanceBaseTestCase {
 				[
 					'old_id' => 1,
 					'old_text' => FormatJson::encode( $baseVars + [
-						'action' => 'edit',
-						'user_name' => self::$aflRow['afl_user_text'],
-						'page_title' => self::$aflRow['afl_title'],
-						'page_prefixedtitle' => $title->getPrefixedText()
-					] )
+							'action' => 'edit',
+							'user_name' => self::$aflRow['afl_user_text'],
+							'page_title' => self::$aflRow['afl_title'],
+							'page_prefixedtitle' => $title->getPrefixedText()
+						] )
 				],
 				[
 					'old_id' => 2,
 					'old_text' => FormatJson::encode( $baseVars + [
-						'action' => 'createaccount',
+							'action' => 'createaccount',
 							'accountname' => self::$aflRow['afl_user_text']
-					] )
+						] )
 				],
 				[
 					'old_id' => 3,
 					'old_text' => FormatJson::encode( $baseVars + [
-						'action' => 'move',
-						'user_name' => self::$aflRow['afl_user_text'],
-						'moved_from_title' => self::$aflRow['afl_title'],
-						'moved_from_prefixedtitle' => $title->getPrefixedText()
-					] )
+							'action' => 'move',
+							'user_name' => self::$aflRow['afl_user_text'],
+							'moved_from_title' => self::$aflRow['afl_title'],
+							'moved_from_prefixedtitle' => $title->getPrefixedText()
+						] )
 				],
 			]
 		];
