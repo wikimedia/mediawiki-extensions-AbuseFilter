@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
@@ -9,14 +10,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @var int|null The history ID of the current filter
 	 */
 	private $historyID;
+	/** @var int|string */
+	private $filter;
 
 	/**
-	 * @param SpecialAbuseFilter $page
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
 	 * @param array $params
 	 */
-	public function __construct( SpecialAbuseFilter $page, array $params ) {
-		parent::__construct( $page, $params );
-		$this->mFilter = $this->mParams['filter'];
+	public function __construct( IContextSource $context, LinkRenderer $linkRenderer, array $params ) {
+		parent::__construct( $context, $linkRenderer, $params );
+		$this->filter = $this->mParams['filter'];
 		$this->historyID = $this->mParams['history'] ?? null;
 	}
 
@@ -31,7 +35,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
-		$filter = $this->mFilter;
+		$filter = $this->filter;
 		if ( !is_numeric( $filter ) && $filter !== null ) {
 			$out->addHTML(
 				Xml::tags(
@@ -253,7 +257,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields = [];
 
 		$fields['abusefilter-edit-id'] =
-			$this->mFilter === null ?
+			$this->filter === null ?
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
 				$lang->formatNum( (string)$filter );
 		$fields['abusefilter-edit-description'] =
@@ -1297,7 +1301,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							}
 						}
 
-						$parameters[0] = $this->mFilter;
+						$parameters[0] = $this->filter;
 						$parameters[1] = "$throttleCount,$throttlePeriod";
 						$parameters = array_merge( $parameters, $throttleGroups );
 					} elseif ( $action === 'warn' ) {

@@ -4,6 +4,8 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
+	/** @var int */
+	private $filter;
 	/**
 	 * @var string The start time of the lookup period
 	 */
@@ -50,7 +52,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			return;
 		}
 
-		$filter = $this->mFilter;
+		$filter = $this->filter;
 
 		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
 		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter ) );
@@ -61,8 +63,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$max = wfTimestampNow();
 		$filterLink =
 			$this->linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseFilter', (string)$filter ),
-				$lang->formatNum( (string)$filter )
+				$this->getTitle( $filter ),
+				$lang->formatNum( $filter )
 			);
 		$searchFields = [];
 		$searchFields['filterid'] = [
@@ -181,7 +183,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	public function doLookup() {
 		$periodStart = $this->mPeriodStart;
 		$periodEnd = $this->mPeriodEnd;
-		$filter = $this->mFilter;
+		$filter = $this->filter;
 
 		$conds = [ 'afl_filter' => $filter ];
 
@@ -241,7 +243,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	public function loadParameters() {
 		$request = $this->getRequest();
 
-		$this->mFilter = $this->mParams[1];
+		$this->filter = (int)$this->mParams[1];
 		$this->origPeriodStart = $request->getText( 'wpPeriodStart' );
 		$this->mPeriodStart = strtotime( $this->origPeriodStart ) ?: null;
 		$this->origPeriodEnd = $request->getText( 'wpPeriodEnd' );
@@ -254,7 +256,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return bool
 	 */
 	public function attemptRevert() {
-		$filter = $this->mFilter;
+		$filter = $this->filter;
 		$token = $this->getRequest()->getVal( 'editToken' );
 		if ( !$this->getUser()->matchEditToken( $token, "abusefilter-revert-$filter" ) ) {
 			return false;
@@ -298,7 +300,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$logEntry->setTarget( Title::makeTitle( NS_USER, $result['user'] ) );
 				$logEntry->setComment(
 					$this->msg(
-						'abusefilter-revert-reason', $this->mFilter, $this->mReason
+						'abusefilter-revert-reason', $this->filter, $this->mReason
 					)->inContentLanguage()->text()
 				);
 				$logEntry->setPerformer( $this->getUser() );
@@ -307,7 +309,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			case 'blockautopromote':
 				$target = User::newFromId( $result['userid'] );
 				$msg = $this->msg(
-					'abusefilter-revert-reason', $this->mFilter, $this->mReason
+					'abusefilter-revert-reason', $this->filter, $this->mReason
 				)->inContentLanguage()->text();
 
 				return AbuseFilter::unblockAutopromote( $target, $this->getUser(), $msg );
@@ -344,7 +346,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$logEntry->setComment(
 					$this->msg(
 						'abusefilter-revert-reason',
-						$this->mFilter,
+						$this->filter,
 						$this->mReason
 					)->inContentLanguage()->text()
 				);

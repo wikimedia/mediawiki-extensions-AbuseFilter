@@ -1,15 +1,20 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterViewHistory extends AbuseFilterView {
+	/** @var int|null */
+	private $filter;
+
 	/**
-	 * @param SpecialAbuseFilter $page
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
 	 * @param array $params
 	 */
-	public function __construct( SpecialAbuseFilter $page, $params ) {
-		parent::__construct( $page, $params );
-		$this->mFilter = $this->mParams['filter'] ?? null;
+	public function __construct( IContextSource $context, LinkRenderer $linkRenderer, array $params ) {
+		parent::__construct( $context, $linkRenderer, $params );
+		$this->filter = $this->mParams['filter'] ?? null;
 	}
 
 	/**
@@ -19,7 +24,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out = $this->getOutput();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$out->enableOOUI();
-		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->mFilter;
+		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
 
 		if ( $filter ) {
 			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );

@@ -21,7 +21,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	/**
 	 * @var int|null The ID of the filter
 	 */
-	public $mFilter = null;
+	private $filter;
 
 	/**
 	 * Shows the page
@@ -33,11 +33,11 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$out->addModuleStyles( [ 'oojs-ui.styles.icons-movement' ] );
 
 		$links = [];
-		if ( $this->mFilter ) {
+		if ( $this->filter ) {
 			$links['abusefilter-history-backedit'] =
-				$this->getTitle( $this->mFilter )->getFullURL();
+				$this->getTitle( $this->filter )->getFullURL();
 			$links['abusefilter-diff-backhistory'] =
-				$this->getTitle( 'history/' . $this->mFilter )->getFullURL();
+				$this->getTitle( 'history/' . $this->filter )->getFullURL();
 		}
 
 		foreach ( $links as $msg => $href ) {
@@ -58,12 +58,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$out->addHTML( $this->formatDiff() );
 			// Next and previous change links
 			$buttons = [];
-			if ( AbuseFilter::getFirstFilterChange( $this->mFilter ) !=
+			if ( AbuseFilter::getFirstFilterChange( $this->filter ) !=
 				$this->mOldVersion['meta']['history_id']
 			) {
 				// Create a "previous change" link if this isn't the first change of the given filter
 				$href = $this->getTitle(
-					'history/' . $this->mFilter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
+					'history/' . $this->filter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
 				)->getFullURL();
 				$buttons[] = new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'abusefilter-diff-prev' )->text(),
@@ -75,7 +75,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			if ( $this->mNextHistoryId !== null ) {
 				// Create a "next change" link if this isn't the last change of the given filter
 				$href = $this->getTitle(
-					'history/' . $this->mFilter . '/diff/prev/' . $this->mNextHistoryId
+					'history/' . $this->filter . '/diff/prev/' . $this->mNextHistoryId
 				)->getFullURL();
 				$buttons[] = new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'abusefilter-diff-next' )->text(),
@@ -105,7 +105,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
 			return false;
 		}
-		$this->mFilter = (int)$this->mParams[1];
+		$this->filter = (int)$this->mParams[1];
 
 		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
 		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
@@ -145,7 +145,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			'abuse_filter_history',
 			'afh_id',
 			[
-				'afh_filter' => $this->mFilter,
+				'afh_filter' => $this->filter,
 				'afh_id > ' . $dbr->addQuotes( $historyId ),
 			],
 			__METHOD__,
@@ -189,14 +189,14 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				$selectFields,
-				[ 'afh_id' => $spec, 'afh_filter' => $this->mFilter ],
+				[ 'afh_id' => $spec, 'afh_filter' => $this->filter ],
 				__METHOD__
 			);
 		} elseif ( $spec === 'cur' ) {
 			$row = $dbr->selectRow(
 				'abuse_filter_history',
 				$selectFields,
-				[ 'afh_filter' => $this->mFilter ],
+				[ 'afh_filter' => $this->filter ],
 				__METHOD__,
 				[ 'ORDER BY' => 'afh_timestamp desc' ]
 			);
@@ -212,7 +212,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				'abuse_filter_history',
 				$selectFields,
 				[
-					'afh_filter' => $this->mFilter,
+					'afh_filter' => $this->filter,
 					"afh_id $comparison" . $dbr->addQuotes( $other['meta']['history_id'] ),
 				],
 				__METHOD__,
@@ -221,7 +221,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 			if ( $other && !$row ) {
 				$t = $this->getTitle(
-					'history/' . $this->mFilter . '/item/' . $other['meta']['history_id'] );
+					'history/' . $this->filter . '/item/' . $other['meta']['history_id'] );
 				$this->getOutput()->redirect( $t->getFullURL() );
 				return null;
 			}
@@ -265,7 +265,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @return string
 	 */
 	public function formatVersionLink( $timestamp, $history_id ) {
-		$filter = $this->mFilter;
+		$filter = $this->filter;
 		$text = $this->getLanguage()->timeanddate( $timestamp, true );
 		$title = $this->getTitle( "history/$filter/item/$history_id" );
 
