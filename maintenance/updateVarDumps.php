@@ -528,7 +528,14 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				continue;
 			}
 
+			AtEase::suppressWarnings();
 			$obj = unserialize( $text );
+			AtEase::restoreWarnings();
+
+			if ( !$obj ) {
+				// Under certain conditions, there might be a truncated dump here, see T264513
+				$obj = $this->restoreTruncatedDump( $text );
+			}
 
 			$varArray = $obj instanceof AbuseFilterVariableHolder
 				? $obj->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] )

@@ -524,7 +524,7 @@ class AbuseFilter {
 		if ( in_array( 'nativeDataArray', $flags ) ||
 			// Temporary condition: we don't add the flag anymore, but the updateVarDump
 			// script could be still running and we cannot assume that this branch is the default.
-			( is_array( $obj ) && array_key_exists( 'action', $obj ) )
+			is_array( $obj )
 		) {
 			$vars = $obj;
 			$obj = AbuseFilterVariableHolder::newFromArray( $vars );
