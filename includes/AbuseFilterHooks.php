@@ -1,14 +1,11 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
-use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
-use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
@@ -656,74 +653,6 @@ class AbuseFilterHooks {
 			$updater->insertUpdateRow( 'create abusefilter-blocker-user' );
 			// Promote user so it doesn't look too crazy.
 			$user->addGroup( 'sysop' );
-		}
-	}
-
-	/**
-	 * @param int $id
-	 * @param Title $nt
-	 * @param array &$tools
-	 * @param SpecialPage $sp for context
-	 */
-	public static function onContributionsToolLinks( $id, Title $nt, array &$tools, SpecialPage $sp ) {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$username = $nt->getText();
-		if ( $afPermManager->canViewAbuseLog( $sp->getUser() ) && !IPUtils::isValidRange( $username ) ) {
-			$linkRenderer = $sp->getLinkRenderer();
-			$tools['abuselog'] = $linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
-				$sp->msg( 'abusefilter-log-linkoncontribs' )->text(),
-				[ 'title' => $sp->msg( 'abusefilter-log-linkoncontribs-text',
-					$username )->text() ],
-				[ 'wpSearchUser' => $username ]
-			);
-		}
-	}
-
-	/**
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string[] &$links
-	 */
-	public static function onHistoryPageToolLinks(
-		IContextSource $context,
-		LinkRenderer $linkRenderer,
-		array &$links
-	) {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$user = $context->getUser();
-		if ( $afPermManager->canViewAbuseLog( $user ) ) {
-			$links[] = $linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
-				$context->msg( 'abusefilter-log-linkonhistory' )->text(),
-				[ 'title' => $context->msg( 'abusefilter-log-linkonhistory-text' )->text() ],
-				[ 'wpSearchTitle' => $context->getTitle()->getPrefixedText() ]
-			);
-		}
-	}
-
-	/**
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string[] &$links
-	 */
-	public static function onUndeletePageToolLinks(
-		IContextSource $context,
-		LinkRenderer $linkRenderer,
-		array &$links
-	) {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$show = $afPermManager->canViewAbuseLog( $context->getUser() );
-		$action = $context->getRequest()->getVal( 'action', 'view' );
-
-		// For 'history action', the link would be added by HistoryPageToolLinks hook.
-		if ( $show && $action !== 'history' ) {
-			$links[] = $linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
-				$context->msg( 'abusefilter-log-linkonundelete' )->text(),
-				[ 'title' => $context->msg( 'abusefilter-log-linkonundelete-text' )->text() ],
-				[ 'wpSearchTitle' => $context->getTitle()->getPrefixedText() ]
-			);
 		}
 	}
 
