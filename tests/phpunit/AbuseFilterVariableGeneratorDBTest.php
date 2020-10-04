@@ -1,6 +1,9 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @group Test
@@ -14,7 +17,16 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		'text',
 		'page_restrictions',
 		'user',
+		'recentchanges',
 	];
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function tearDown() : void {
+		MWTimestamp::setFakeTime( false );
+		parent::tearDown();
+	}
 
 	/**
 	 * Check that the generated variables for edits are correct
@@ -224,5 +236,162 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			$actual = $vars->getVar( $varName )->toNative();
 			$this->assertSame( $expected, $actual, "Prefix: $prefix" );
 		}
+	}
+
+	/**
+	 * Check all methods used to retrieve variables from an RC row
+	 *
+	 * @param string $type Type of the action the row refers to
+	 * @param string $action Same as the 'action' variable
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator
+	 * @covers AbuseFilterVariableHolder
+	 * @dataProvider provideRCRowTypes
+	 */
+	public function testGetVarsFromRCRow( string $type, string $action ) {
+		$timestamp = '1514700000';
+		MWTimestamp::setFakeTime( $timestamp );
+		$user = $this->getMutableTestUser()->getUser();
+		$title = Title::newFromText( 'AbuseFilter testing page' );
+		$page = $type === 'create' ? WikiPage::factory( $title ) : $this->getExistingTestPage( $title );
+		$page->clear();
+
+		$summary = 'Abuse Filter summary for RC tests';
+		$expectedValues = [
+			'user_name' => $user->getName(),
+			'action' => $action,
+			'summary' => $summary
+		];
+
+		switch ( $type ) {
+			case 'create':
+				$expectedValues['old_wikitext'] = '';
+				// Fallthrough
+			case 'edit':
+				$newText = 'Some new text for testing RC vars.';
+				$this->editPage( $title->getText(), $newText, $summary, $title->getNamespace(), $user );
+
+				$expectedValues += [
+					'page_id' => $page->getId(),
+					'page_namespace' => $title->getNamespace(),
+					'page_title' => $title->getText(),
+					'page_prefixedtitle' => $title->getPrefixedText(),
+					'timestamp' => $timestamp
+				];
+				break;
+			case 'move':
+				$newTitle = Title::newFromText( 'Another AbuseFilter testing page' );
+				$mpf = MediaWikiServices::getInstance()->getMovePageFactory();
+				$mp = $mpf->newMovePage( $title, $newTitle );
+				$mp->move( $user, $summary, false );
+				$newID = WikiPage::factory( $newTitle )->getId();
+
+				$expectedValues += [
+					'moved_from_id' => $page->getId(),
+					'moved_from_namespace' => $title->getNamespace(),
+					'moved_from_title' => $title->getText(),
+					'moved_from_prefixedtitle' => $title->getPrefixedText(),
+					'moved_to_id' => $newID,
+					'moved_to_namespace' => $newTitle->getNamespace(),
+					'moved_to_title' => $newTitle->getText(),
+					'moved_to_prefixedtitle' => $newTitle->getPrefixedText(),
+					'timestamp' => $timestamp
+				];
+				break;
+			case 'delete':
+				$page->doDeleteArticleReal( $summary, $user );
+				$expectedValues += [
+					'page_id' => $page->getId(),
+					'page_namespace' => $title->getNamespace(),
+					'page_title' => $title->getText(),
+					'page_prefixedtitle' => $title->getPrefixedText(),
+					'timestamp' => $timestamp
+				];
+				break;
+			case 'newusers':
+				// FIXME AuthManager doesn't expose the method for doing this. And mocking AuthManager
+				// and everything here seems overkill.
+				$accountName = 'AbuseFilter dummy user';
+				$subType = $action === 'createaccount' ? 'create2' : 'autocreate';
+				$logEntry = new \ManualLogEntry( 'newusers', $subType );
+				$logEntry->setPerformer( $user );
+				$logEntry->setTarget( Title::makeTitle( NS_USER, $accountName ) );
+				$logEntry->setComment( 'Fooobarcomment' );
+				$logEntry->setParameters( [
+					'4::userid' => $user->getId(),
+				] );
+				$logid = $logEntry->insert();
+				$logEntry->publish( $logid );
+
+				$expectedValues = [
+					'action' => $action,
+					'accountname' => $accountName,
+					'user_name' => $user->getName(),
+					'timestamp' => $timestamp
+				];
+				break;
+			case 'upload':
+				// TODO Same problem as AuthManager, but worse because here we'd really have to
+				// upload a file (addUploadVars immediately tries reading the file)
+				$this->markTestIncomplete( 'Implement "upload" case!' );
+				break;
+			default:
+				throw new LogicException( "Type $type not recognized!" );
+		}
+
+		if ( $type === 'edit' ) {
+			$where = [ 'rc_source' => 'mw.edit' ];
+		} elseif ( $type === 'create' ) {
+			$where = [ 'rc_source' => 'mw.new' ];
+		} else {
+			$where = [ 'rc_log_type' => $type ];
+		}
+		$rcQuery = RecentChange::getQueryInfo();
+		$row = $this->db->selectRow(
+			$rcQuery['tables'],
+			$rcQuery['fields'],
+			$where,
+			__METHOD__,
+			[ 'ORDER BY rc_id DESC' ],
+			$rcQuery['joins']
+		);
+
+		$rc = RecentChange::newFromRow( $row );
+		$varGenerator = new RCVariableGenerator(
+			new AbuseFilterVariableHolder(),
+			$rc,
+			$this->getTestSysop()->getUser()
+		);
+		$actual = $varGenerator->getVars()->getVars();
+
+		// Convert PHP variables to AFPData
+		$expected = array_map( [ 'AFPData', 'newFromPHPVar' ], $expectedValues );
+
+		// Remove lazy variables (covered in other tests) and variables coming
+		// from other extensions (may not be generated, depending on the test environment)
+		$coreVariables = AbuseFilterServices::getKeywordsManager()->getCoreVariables();
+		foreach ( $actual as $var => $value ) {
+			if ( !in_array( $var, $coreVariables, true ) || $value instanceof AFComputedVariable ) {
+				unset( $actual[ $var ] );
+			}
+		}
+
+		// Not assertSame because we're comparing different AFPData objects
+		$this->assertEquals( $expected, $actual );
+	}
+
+	/**
+	 * Data provider for testGetVarsFromRCRow
+	 * @return array
+	 */
+	public function provideRCRowTypes() {
+		return [
+			'edit' => [ 'edit', 'edit' ],
+			'create' => [ 'create', 'edit' ],
+			'move' => [ 'move', 'move' ],
+			'delete' => [ 'delete', 'delete' ],
+			'createaccount' => [ 'newusers', 'createaccount' ],
+			'autocreateaccount' => [ 'newusers', 'autocreateaccount' ],
+			'upload' => [ 'upload', 'upload' ],
+		];
 	}
 }

@@ -84,11 +84,12 @@ class RCVariableGenerator extends VariableGenerator {
 				default:
 					return null;
 			}
-		} elseif ( $this->rc->getAttribute( 'rc_last_oldid' ) ) {
+		} elseif ( $this->rc->getAttribute( 'rc_this_oldid' ) ) {
 			// It's an edit.
 			$this->addEditVarsForRow();
 		} else {
 			// @todo Ensure this cannot happen, and throw if it does
+			wfLogWarning( 'Cannot understand the given recentchanges row!' );
 			return null;
 		}
 
