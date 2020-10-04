@@ -17,11 +17,11 @@ class AbuseFilterPager extends TablePager {
 	 */
 	public $mConds;
 	/**
-	 * @var string The pattern being searched
+	 * @var string|null The pattern being searched
 	 */
 	private $mSearchPattern;
 	/**
-	 * @var string The pattern search mode (LIKE, RLIKE or IRLIKE)
+	 * @var string|null The pattern search mode (LIKE, RLIKE or IRLIKE)
 	 */
 	private $mSearchMode;
 
@@ -29,23 +29,21 @@ class AbuseFilterPager extends TablePager {
 	 * @param AbuseFilterViewList $page
 	 * @param array $conds
 	 * @param LinkRenderer $linkRenderer
-	 * @param string $searchPattern Empty string if no pattern was specified
-	 * @param string $searchMode
+	 * @param ?string $searchPattern Null if no pattern was specified
+	 * @param ?string $searchMode
 	 */
 	public function __construct(
 		AbuseFilterViewList $page,
 		$conds,
 		LinkRenderer $linkRenderer,
-		string $searchPattern,
-		string $searchMode
+		?string $searchPattern,
+		?string $searchMode
 	) {
+		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mPage = $page;
 		$this->mConds = $conds;
 		$this->mSearchPattern = $searchPattern;
 		$this->mSearchMode = $searchMode;
-		// needs to be at the end, some attributes are needed by methods
-		// called from ancestors' constructors
-		parent::__construct( $page->getContext(), $linkRenderer );
 	}
 
 	/**
@@ -81,7 +79,7 @@ class AbuseFilterPager extends TablePager {
 	 * Otherwise, it does a query with no limit and then slices the results à la ContribsPager.
 	 */
 	public function reallyDoQuery( $offset, $limit, $order ) {
-		if ( !strlen( $this->mSearchPattern ) ) {
+		if ( $this->mSearchMode === null ) {
 			return parent::reallyDoQuery( $offset, $limit, $order );
 		}
 
@@ -131,16 +129,11 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
+	 * Note: this method is called by parent::__construct
 	 * @see Pager::getFieldNames()
 	 * @return array
 	 */
 	public function getFieldNames() {
-		static $headers = null;
-
-		if ( !empty( $headers ) ) {
-			return $headers;
-		}
-
 		$headers = [
 			'af_id' => 'abusefilter-list-id',
 			'af_public_comments' => 'abusefilter-list-public',
@@ -155,7 +148,8 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( AbuseFilter::canViewPrivate( $user ) && $this->mSearchPattern !== '' ) {
+		if ( AbuseFilter::canViewPrivate( $user ) && $this->mSearchMode !== null ) {
+			// This is also excluded in the default view
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
 
@@ -283,6 +277,9 @@ class AbuseFilterPager extends TablePager {
 	 * @return string
 	 */
 	private function getHighlightedPattern( stdClass $row ) {
+		if ( $this->mSearchMode === null ) {
+			throw new LogicException( 'Cannot search without a mode.' );
+		}
 		$maxLen = 50;
 		if ( $this->mSearchMode === 'LIKE' ) {
 			$position = mb_stripos( $row->af_pattern, $this->mSearchPattern );
