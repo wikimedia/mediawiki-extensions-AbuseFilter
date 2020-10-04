@@ -91,90 +91,102 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		];
 
 		HTMLForm::factory( 'ooui', $searchFields, $this->getContext() )
-			->addHiddenField( 'submit', 1 )
 			->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
 			->setWrapperLegendMsg( 'abusefilter-revert-search-legend' )
 			->setSubmitTextMsg( 'abusefilter-revert-search' )
-			->setMethod( 'post' )
-			->prepareForm()
-			->displayForm( false );
+			->setMethod( 'get' )
+			->setFormIdentifier( 'revert-select-date' )
+			->setSubmitCallback( [ $this, 'showRevertableActions' ] )
+			->showAlways();
+	}
 
-		if ( $this->mSubmit ) {
-			// Add a summary of everything that will be reversed.
-			$out->addWikiMsg( 'abusefilter-revert-preview-intro' );
+	/**
+	 * Show revertable actions, called as submit callback by HTMLForm
+	 * @param array $formData
+	 * @param HTMLForm $dateForm
+	 * @return bool
+	 */
+	public function showRevertableActions( array $formData, HTMLForm $dateForm ) : bool {
+		$lang = $this->getLanguage();
+		$user = $this->getUser();
+		$filter = $this->filter;
 
-			// Look up all of them.
-			$results = $this->doLookup();
-			$list = [];
+		// Add a summary of everything that will be reversed.
+		$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-intro' )->parseAsBlock() );
 
-			$context = $this->getContext();
-			foreach ( $results as $result ) {
-				$displayActions = [];
-				foreach ( $result['actions'] as $action ) {
-					$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
-				}
+		// Look up all of them.
+		$results = $this->doLookup();
+		$list = [];
 
-				$msg = $this->msg( 'abusefilter-revert-preview-item' )
-					->params(
-						$lang->timeanddate( $result['timestamp'], true )
-					)->rawParams(
-						Linker::userLink( $result['userid'], $result['user'] )
-					)->params(
-						$result['action']
-					)->rawParams(
-						$this->linkRenderer->makeLink( $result['title'] )
-					)->params(
-						$lang->commaList( $displayActions )
-					)->rawParams(
-						$this->linkRenderer->makeLink(
-							SpecialPage::getTitleFor( 'AbuseLog' ),
-							$this->msg( 'abusefilter-log-detailslink' )->text(),
-							[],
-							[ 'details' => $result['id'] ]
-						)
-					)->params( $result['user'] )->parse();
-				$list[] = Xml::tags( 'li', null, $msg );
+		$context = $this->getContext();
+		foreach ( $results as $result ) {
+			$displayActions = [];
+			foreach ( $result['actions'] as $action ) {
+				$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
 			}
 
-			$out->addHTML( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
-
-			// Add a button down the bottom.
-			$confirmForm = [];
-			$confirmForm['edittoken'] = [
-				'type' => 'hidden',
-				'name' => 'editToken',
-				'default' => $user->getEditToken( "abusefilter-revert-$filter" )
-			];
-			$confirmForm['title'] = [
-				'type' => 'hidden',
-				'name' => 'title',
-				'default' => $this->getTitle( "revert/$filter" )->getPrefixedDBkey()
-			];
-			$confirmForm['wpPeriodStart'] = [
-				'type' => 'hidden',
-				'name' => 'wpPeriodStart',
-				'default' => $this->origPeriodStart
-			];
-			$confirmForm['wpPeriodEnd'] = [
-				'type' => 'hidden',
-				'name' => 'wpPeriodEnd',
-				'default' => $this->origPeriodEnd
-			];
-			$confirmForm['reason'] = [
-				'type' => 'text',
-				'label-message' => 'abusefilter-revert-reasonfield',
-				'name' => 'wpReason',
-				'id' => 'wpReason',
-			];
-			HTMLForm::factory( 'ooui', $confirmForm, $this->getContext() )
-				->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
-				->setWrapperLegendMsg( 'abusefilter-revert-confirm-legend' )
-				->setSubmitTextMsg( 'abusefilter-revert-confirm' )
-				->setMethod( 'post' )
-				->prepareForm()
-				->displayForm( false );
-
+			$msg = $this->msg( 'abusefilter-revert-preview-item' )
+				->params(
+					$lang->timeanddate( $result['timestamp'], true )
+				)->rawParams(
+					Linker::userLink( $result['userid'], $result['user'] )
+				)->params(
+					$result['action']
+				)->rawParams(
+					$this->linkRenderer->makeLink( $result['title'] )
+				)->params(
+					$lang->commaList( $displayActions )
+				)->rawParams(
+					$this->linkRenderer->makeLink(
+						SpecialPage::getTitleFor( 'AbuseLog' ),
+						$this->msg( 'abusefilter-log-detailslink' )->text(),
+						[],
+						[ 'details' => $result['id'] ]
+					)
+				)->params( $result['user'] )->parse();
+			$list[] = Xml::tags( 'li', null, $msg );
 		}
+
+		$dateForm->addPostText( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
+
+		// Add a button down the bottom.
+		$confirmForm = [];
+		$confirmForm['edittoken'] = [
+			'type' => 'hidden',
+			'name' => 'editToken',
+			'default' => $user->getEditToken( "abusefilter-revert-$filter" )
+		];
+		$confirmForm['title'] = [
+			'type' => 'hidden',
+			'name' => 'title',
+			'default' => $this->getTitle( "revert/$filter" )->getPrefixedDBkey()
+		];
+		$confirmForm['wpPeriodStart'] = [
+			'type' => 'hidden',
+			'name' => 'wpPeriodStart',
+			'default' => $this->origPeriodStart
+		];
+		$confirmForm['wpPeriodEnd'] = [
+			'type' => 'hidden',
+			'name' => 'wpPeriodEnd',
+			'default' => $this->origPeriodEnd
+		];
+		$confirmForm['reason'] = [
+			'type' => 'text',
+			'label-message' => 'abusefilter-revert-reasonfield',
+			'name' => 'wpReason',
+			'id' => 'wpReason',
+		];
+
+		$revertForm = HTMLForm::factory( 'ooui', $confirmForm, $this->getContext() )
+			->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
+			->setWrapperLegendMsg( 'abusefilter-revert-confirm-legend' )
+			->setSubmitTextMsg( 'abusefilter-revert-confirm' )
+			->prepareForm()
+			->getHTML( true );
+		$dateForm->addPostText( $revertForm );
+
+		return true;
 	}
 
 	/**
@@ -248,7 +260,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$this->mPeriodStart = strtotime( $this->origPeriodStart ) ?: null;
 		$this->origPeriodEnd = $request->getText( 'wpPeriodEnd' );
 		$this->mPeriodEnd = strtotime( $this->origPeriodEnd ) ?: null;
-		$this->mSubmit = $request->getBool( 'submit' );
 		$this->mReason = $request->getVal( 'wpReason' );
 	}
 
