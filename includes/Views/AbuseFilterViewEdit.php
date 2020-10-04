@@ -3,14 +3,20 @@
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
+
+	/**
+	 * @var int|null The history ID of the current filter
+	 */
+	private $historyID;
+
 	/**
 	 * @param SpecialAbuseFilter $page
 	 * @param array $params
 	 */
 	public function __construct( SpecialAbuseFilter $page, array $params ) {
 		parent::__construct( $page, $params );
-		$this->mFilter = $page->mFilter;
-		$this->mHistoryID = $page->mHistoryID;
+		$this->mFilter = $this->mParams['filter'];
+		$this->historyID = $this->mParams['history'] ?? null;
 	}
 
 	/**
@@ -34,8 +40,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 			return;
 		}
-		$history_id = $this->mHistoryID;
-		if ( $this->mHistoryID ) {
+		$history_id = $this->historyID;
+		if ( $this->historyID ) {
 			$dbr = wfGetDB( DB_REPLICA );
 			$lastID = (int)$dbr->selectField(
 				'abuse_filter_history',
@@ -47,7 +53,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				[ 'ORDER BY' => 'afh_id DESC' ]
 			);
 			// change $history_id to null if it's current version id
-			if ( $lastID === $this->mHistoryID ) {
+			if ( $lastID === $this->historyID ) {
 				$history_id = null;
 			}
 		}

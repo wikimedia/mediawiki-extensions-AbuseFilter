@@ -91,7 +91,6 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 
 		$special->setContext( $context );
 		$filter = $params['id'];
-		$special->mFilter = $filter;
 		/** @var LinkRenderer|MockObject $lr */
 		$lr = $this->getMockBuilder( LinkRenderer::class )
 			->disableOriginalConstructor()
@@ -99,7 +98,7 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 		$special->setLinkRenderer( $lr );
 		/** @var AbuseFilterViewEdit|MockObject $viewEdit */
 		$viewEdit = $this->getMockBuilder( AbuseFilterViewEdit::class )
-			->setConstructorArgs( [ $special, [ $filter ] ] )
+			->setConstructorArgs( [ $special, [ 'filter' => $filter ] ] )
 			->setMethods( [ 'loadFilterData' ] )
 			->getMock();
 

@@ -55,6 +55,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->loadParameters();
 
 		$out->setPageTitle( $this->msg( 'abusefilter-test' ) );
+		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
 		$out->enableOOUI();
 
