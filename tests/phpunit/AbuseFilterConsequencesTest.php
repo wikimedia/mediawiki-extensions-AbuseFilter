@@ -45,6 +45,9 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers AbuseFilterParser
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
+	use AbuseFilterCreateAccountTestTrait;
+	use AbuseFilterUploadTestTrait;
+
 	/**
 	 * @var User The user performing actions
 	 */
@@ -74,7 +77,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		'logging',
 		'change_tag',
 		'user',
-		'text'
+		'text',
+		'image',
+		'oldimage',
 	];
 
 	// phpcs:disable Generic.Files.LineLength
@@ -370,8 +375,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	protected function tearDown() : void {
 		// Paranoia: ensure no fake timestamp leftover
 		MWTimestamp::setFakeTime( false );
-		// Clear any upload
-		$_FILES = [];
+		$this->clearUploads();
 		parent::tearDown();
 	}
 
@@ -519,35 +523,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Upload a file. This is based on ApiUploadTestCase::fakeUploadFile
-	 * @param string $fileName
-	 * @param string $pageText
-	 * @param string $summary
-	 * @return Status
-	 */
-	private function doUpload( string $fileName, string $pageText, string $summary ) : Status {
-		$imgGen = new RandomImageGenerator();
-		// Use SVG, since the ImageGenerator doesn't need anything special to create it
-		$format = 'svg';
-		$mime = 'image/svg+xml';
-		$filePath = $imgGen->writeImages( 1, $format, $this->getNewTempDirectory() )[0];
-		clearstatcache();
-		$_FILES[ 'wpUploadFile' ] = [
-			'name' => $fileName,
-			'type' => $mime,
-			'tmp_name' => $filePath,
-			'error' => UPLOAD_ERR_OK,
-			'size' => filesize( $filePath ),
-		];
-		$request = new FauxRequest( [
-			'wpDestFile' => $fileName
-		] );
-		$ub = UploadBase::createFromRequest( $request );
-		$ub->verifyUpload();
-		return $ub->performUpload( $summary, $pageText, false, $this->user );
-	}
-
-	/**
 	 * Executes an action to filter
 	 *
 	 * @param array $params Parameters of the action
@@ -596,22 +571,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				);
 				break;
 			case 'createaccount':
-				$user = User::newFromName( $params['username'] );
-				// A creatable username must exist to be passed to $logEntry->setPerformer(),
-				// so create the account.
-				$user->addToDatabase();
-
-				$provider = new AbuseFilterPreAuthenticationProvider();
-				$status = $provider->testForAccountCreation( $user, $user, [] );
-
-				$logEntry = new ManualLogEntry( 'newusers', 'create' );
-				$logEntry->setPerformer( $user );
-				$logEntry->setTarget( $user->getUserPage() );
-				$logid = $logEntry->insert();
-				$logEntry->publish( $logid );
+				$status = $this->createAccount( $params['username'] );
 				break;
 			case 'upload':
-				$status = $this->doUpload(
+				[ $status, $this->clearPath ] = $this->doUpload(
+					$this->user,
 					$params['target'],
 					$params['newText'] ?? 'AbuseFilter test upload',
 					$params['summary'] ?? 'Test'
@@ -653,7 +617,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		}
 
 		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
-		$logAction = $logType === 'newusers' ? 'create' : $logType;
+		$logAction = $logType === 'newusers' ? 'create2' : $logType;
 		$title = Title::newFromText( $actionParams['target'] );
 		$id = $this->db->selectField(
 			'logging',
@@ -1019,7 +983,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 5 ],
 				[
 					'action' => 'upload',
-					'target' => 'MyFile.jpg',
+					'target' => 'MyFile.svg',
 				],
 				[ 'tag' => [ 5 ] ]
 			],
@@ -1027,7 +991,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 22 ],
 				[
 					'action' => 'upload',
-					'target' => 'MyFile.jpg',
+					'target' => 'MyFile.svg',
 					'newText' => 'Block me please!',
 					'summary' => 'Asking to be blocked'
 				],
