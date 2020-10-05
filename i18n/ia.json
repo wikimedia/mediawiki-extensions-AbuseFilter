@@ -53,6 +53,7 @@
 	"abusefilter-log-search-group-any": "Qualcunque",
 	"abusefilter-log-search-filter": "IDs de filtro:",
 	"abusefilter-log-search-filter-help": "Separar con barras vertical, prefixar \"$1\" pro filtros global",
+	"abusefilter-log-search-filter-help-central": "Separar con barras vertical",
 	"abusefilter-log-search-title": "Titulo:",
 	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-impact": "Impacto:",
