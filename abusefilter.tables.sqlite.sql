@@ -45,7 +45,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_title varbinary(255) NOT NULL,
 	afl_wiki varbinary(64) NULL,
 	afl_deleted tinyint(1) NOT NULL DEFAULT 0,
-	afl_patrolled_by int unsigned NULL,
+	afl_patrolled_by int unsigned NOT NULL DEFAULT 0,
 	afl_rev_id int unsigned
 ) /*$wgDBTableOptions*/;
 CREATE INDEX afl_filter_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_filter,afl_timestamp);

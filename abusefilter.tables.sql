@@ -47,7 +47,7 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_title varchar(255) binary NOT NULL,
 	afl_wiki varchar(64) binary NULL,
 	afl_deleted tinyint(1) NOT NULL DEFAULT 0,
-	afl_patrolled_by int unsigned NULL,
+	afl_patrolled_by int unsigned NOT NULL DEFAULT 0,
 	afl_rev_id int unsigned,
 
 	PRIMARY KEY (afl_id),
