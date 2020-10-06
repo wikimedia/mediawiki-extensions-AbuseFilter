@@ -1,1 +1,1 @@
-lcase("FÁmí") = "fámí"
+lcase("FÁmí") === "fámí"

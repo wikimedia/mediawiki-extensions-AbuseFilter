@@ -1,1 +1,1 @@
-ucase("FÁmí") = "FÁMÍ"
+ucase("FÁmí") === "FÁMÍ"

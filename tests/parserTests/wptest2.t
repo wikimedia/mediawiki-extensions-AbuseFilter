@@ -16,6 +16,6 @@ removed_lines_test := ['<ref name="bah">test</ref><ref name="wah">test2</ref>'];
 /*Counts of more reference tags are removed than added */
 & (rcount("(<ref>|<ref\sname|</ref>)",removed_lines_test) > rcount("(<ref>|<ref\sname|</ref>)",added_lines_test))
 /*Excludes changing to the named reference format and removing closing tags attached to formerly named refs. Unequality is to account for closing the first named tag */
-& !(rcount("<ref>",removed_lines_test) = rcount("<ref\sname",added_lines_test) | rcount("</ref>",removed_lines_test) <= rcount("<ref\sname",added_lines_test))
+& !(rcount("<ref>",removed_lines_test) === rcount("<ref\sname",added_lines_test) | rcount("</ref>",removed_lines_test) <= rcount("<ref\sname",added_lines_test))
 /*Excludes removal of references to Wikipedia itself */
 & !(count("http://en.wikipedia.org",string(removed_lines_test)) > count("http://en.wikipedia.org",string(added_lines_test)))
