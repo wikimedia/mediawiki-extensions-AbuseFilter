@@ -1399,7 +1399,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return false;
 		}
 
-		if ( !is_object( $arr['row'] ) || !is_object( $arr['actions'] ) ) {
+		if ( !is_object( $arr['row'] ) || !( is_object( $arr['actions'] ) || $arr['actions'] === [] ) ) {
 			return false;
 		}
 
