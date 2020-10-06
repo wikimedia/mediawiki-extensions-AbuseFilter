@@ -1312,12 +1312,8 @@ class AbuseFilter {
 		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
 		// abusefilter-action-rangeblock, abusefilter-action-disallow
-		$display = $msgCallback( "abusefilter-action-$action" )->escaped();
-		$display = $msgCallback( "abusefilter-action-$action" )->rawParams( $display )->isDisabled()
-			? htmlspecialchars( $action )
-			: $display;
-
-		return $display;
+		$msg = $msgCallback( "abusefilter-action-$action" );
+		return $msg->isDisabled() ? htmlspecialchars( $action ) : $msg->escaped();
 	}
 
 	/**
