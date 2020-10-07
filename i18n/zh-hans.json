@@ -175,7 +175,7 @@
 	"log-action-filter-rights-restoreautopromote": "自动提升还原",
 	"logentry-abusefilterprivatedetails-access": "$1{{GENDER:$2|访问了}}$3的私有详情",
 	"logentry-rights-blockautopromote": "$1{{GENDER:$2|禁止}}{{GENDER:$4|$3}}于$5内获得自动授权",
-	"logentry-rights-restoreautopromote": "$1{{GENDER:$2|存储}}{{GENDER:$4|$3}}的自动提示能力",
+	"logentry-rights-restoreautopromote": "$1{{GENDER:$2|允许}}{{GENDER:$4|$3}}获自动授权",
 	"abusefilterprivatedetails-log-name": "防滥用过滤器私有详情访问日志",
 	"abusefilter-list": "所有过滤器",
 	"abusefilter-list-id": "过滤器ID",
