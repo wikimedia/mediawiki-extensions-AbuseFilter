@@ -31,14 +31,6 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				return $lang->formatNum( intval( $value ) );
 			case 'af_public_comments':
 				return $this->getOutput()->parseInlineAsInterface( $value );
-			case 'af_actions':
-				$actions = explode( ',', $value );
-				$displayActions = [];
-				$context = $this->getContext();
-				foreach ( $actions as $action ) {
-					$displayActions[] = AbuseFilter::getActionDisplay( $action, $context );
-				}
-				return $lang->commaList( $displayActions );
 			case 'af_enabled':
 				$statuses = [];
 				if ( $row->af_deleted ) {
@@ -53,9 +45,6 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				}
 
 				return $lang->commaList( $statuses );
-			case 'af_hidden':
-				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
-				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
 				// If the rule is hidden, don't show it, even to priviledged local admins
 				if ( $row->af_hidden ) {
@@ -76,7 +65,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				// If this is global, local name probably doesn't exist, but try
 				return AbuseFilter::nameGroup( $value );
 			default:
-				throw new MWException( "Unknown row type $name!" );
+				return parent::formatValue( $name, $value );
 		}
 	}
 }
