@@ -1,5 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\LogFormatter;
+
+use AbuseFilter;
+use LogFormatter;
+use Message;
+use SpecialPage;
+
 /**
  * This class formats abuse log notifications.
  *

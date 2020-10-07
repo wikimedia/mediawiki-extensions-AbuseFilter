@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\LogFormatter;
+
+use LogFormatter;
+
 class AbuseFilterSuppressLogFormatter extends LogFormatter {
 
 	/**

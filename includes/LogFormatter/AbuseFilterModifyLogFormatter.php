@@ -1,5 +1,11 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\LogFormatter;
+
+use LogFormatter;
+use Message;
+use SpecialPage;
+
 class AbuseFilterModifyLogFormatter extends LogFormatter {
 
 	/**

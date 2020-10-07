@@ -84,14 +84,14 @@
 		"abusefilter": "abusefilter-log-header"
 	},
 	"LogActionsHandlers": {
-		"abusefilter/hit": "AbuseLogHitFormatter",
-		"abusefilter/modify": "AbuseFilterModifyLogFormatter",
-		"abusefilter/create": "AbuseFilterModifyLogFormatter",
+		"abusefilter/hit": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseLogHitFormatter",
+		"abusefilter/modify": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterModifyLogFormatter",
+		"abusefilter/create": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterModifyLogFormatter",
 		"abusefilterprivatedetails/access": "LogFormatter",
-		"suppress/hide-afl": "AbuseFilterSuppressLogFormatter",
-		"suppress/unhide-afl": "AbuseFilterSuppressLogFormatter",
-		"rights/blockautopromote": "AbuseFilterRightsLogFormatter",
-		"rights/restoreautopromote": "AbuseFilterRightsLogFormatter"
+		"suppress/hide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
+		"suppress/unhide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
+		"rights/blockautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter",
+		"rights/restoreautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"abusefilter": {
@@ -129,7 +129,8 @@
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\AbuseFilter\\VariableGenerator\\": "includes/VariableGenerator/",
-		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/"
+		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/",
+		"MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\": "includes/LogFormatter/"
 	},
 	"AutoloadClasses": {
 		"AbuseFilter": "includes/AbuseFilter.php",
@@ -143,10 +144,6 @@
 		"SpecialAbuseLog": "includes/special/SpecialAbuseLog.php",
 		"AbuseLogPager": "includes/pagers/AbuseLogPager.php",
 		"SpecialAbuseFilter": "includes/special/SpecialAbuseFilter.php",
-		"AbuseLogHitFormatter": "includes/AbuseLogHitFormatter.php",
-		"AbuseFilterModifyLogFormatter": "includes/AbuseFilterModifyLogFormatter.php",
-		"AbuseFilterSuppressLogFormatter": "includes/AbuseFilterSuppressLogFormatter.php",
-		"AbuseFilterRightsLogFormatter": "includes/AbuseFilterRightsLogFormatter.php",
 		"AbuseFilterViewList": "includes/Views/AbuseFilterViewList.php",
 		"AbuseFilterPager": "includes/pagers/AbuseFilterPager.php",
 		"GlobalAbuseFilterPager": "includes/pagers/GlobalAbuseFilterPager.php",
