@@ -281,6 +281,12 @@
 		"ChangeTags": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ChangeTagsHandler",
 			"services": [ "AbuseFilterChangeTagsManager" ]
+		},
+		"Tests": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\TestsHandler"
+		},
+		"SchemaChanges": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler"
 		}
 	},
 	"Hooks": {
@@ -291,7 +297,7 @@
 		"RecentChange_save": "AbuseFilterHooks::onRecentChangeSave",
 		"ListDefinedTags": "ChangeTags",
 		"ChangeTagsListActive": "ChangeTags",
-		"LoadExtensionSchemaUpdates": "AbuseFilterHooks::onLoadExtensionSchemaUpdates",
+		"LoadExtensionSchemaUpdates": "SchemaChanges",
 		"ContributionsToolLinks": "ToolLinks",
 		"HistoryPageToolLinks": "ToolLinks",
 		"UndeletePageToolLinks": "ToolLinks",
@@ -301,8 +307,8 @@
 		"RenameUserSQL": "AbuseFilterHooks::onRenameUserSQL",
 		"UserMergeAccountFields": "AbuseFilterHooks::onUserMergeAccountFields",
 		"ParserOutputStashForEdit": "AbuseFilterHooks::onParserOutputStashForEdit",
-		"UnitTestsAfterDatabaseSetup": "AbuseFilterHooks::onUnitTestsAfterDatabaseSetup",
-		"UnitTestsBeforeDatabaseTeardown": "AbuseFilterHooks::onUnitTestsBeforeDatabaseTeardown"
+		"UnitTestsAfterDatabaseSetup": "Tests",
+		"UnitTestsBeforeDatabaseTeardown": "Tests"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
