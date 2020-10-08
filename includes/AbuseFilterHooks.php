@@ -381,13 +381,13 @@ class AbuseFilterHooks {
 		$cache = $services->getMainWANObjectCache();
 		$fname = __METHOD__;
 
-		$tags = $cache->getWithSetCallback(
+		$afTags = $cache->getWithSetCallback(
 			// Key to store the cached value under
 			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, (int)$enabled ),
 			// Time-to-live (in seconds)
 			$cache::TTL_MINUTE,
 			// Function that derives the new key value
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $tags, $fname ) {
+			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $fname ) {
 				global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
 
 				$dbr = wfGetDB( DB_REPLICA );
@@ -409,9 +409,11 @@ class AbuseFilterHooks {
 					[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
 				);
 
+				$tags = [];
 				foreach ( $res as $row ) {
-					$tags = array_filter(
-						array_merge( explode( "\n", $row->afa_parameters ), $tags )
+					$tags = array_merge(
+						array_filter( explode( "\n", $row->afa_parameters ) ),
+						$tags
 					);
 				}
 
@@ -427,17 +429,19 @@ class AbuseFilterHooks {
 					);
 
 					foreach ( $res as $row ) {
-						$tags = array_filter(
-							array_merge( explode( "\n", $row->afa_parameters ), $tags )
+						$tags = array_merge(
+							array_filter( explode( "\n", $row->afa_parameters ) ),
+							$tags
 						);
 					}
 				}
 
-				return $tags;
+				return array_unique( $tags );
 			}
 		);
 
-		$tags[] = 'abusefilter-condition-limit';
+		$afTags[] = 'abusefilter-condition-limit';
+		$tags = array_merge( $tags, $afTags );
 	}
 
 	/**
