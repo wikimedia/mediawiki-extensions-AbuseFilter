@@ -58,7 +58,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 */
 	protected $mSearchImpact;
 
-	/** @var string The filter group to search, as defined in $wgAbuseFilterValidGroups */
+	/** @var string|null The filter group to search, as defined in $wgAbuseFilterValidGroups */
 	protected $mSearchGroup;
 
 	/** @var LinkBatchFactory */
@@ -168,16 +168,18 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
 		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
 		$this->mSearchTitle = $request->getText( 'wpSearchTitle' );
-		if ( count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ) {
-			$this->mSearchGroup = $request->getText( 'wpSearchGroup' );
-		}
+
 		$this->mSearchFilter = null;
-		$this->mSearchAction = $request->getText( 'wpSearchAction' );
-		$this->mSearchActionTaken = $request->getText( 'wpSearchActionTaken' );
+		$this->mSearchGroup = null;
 		if ( self::canSeeDetails( $this->getUser() ) ) {
 			$this->mSearchFilter = $request->getText( 'wpSearchFilter' );
+			if ( count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ) {
+				$this->mSearchGroup = $request->getText( 'wpSearchGroup' );
+			}
 		}
 
+		$this->mSearchAction = $request->getText( 'wpSearchAction' );
+		$this->mSearchActionTaken = $request->getText( 'wpSearchActionTaken' );
 		$this->mSearchEntries = $request->getText( 'wpSearchEntries' );
 		$this->mSearchImpact = $request->getText( 'wpSearchImpact' );
 	}
@@ -291,20 +293,19 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			];
 		}
 
-		$groups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
-		if ( count( $groups ) > 1 ) {
-			$options = array_merge(
-				[ $this->msg( 'abusefilter-log-search-group-any' )->text() => 0 ],
-				array_combine( $groups, $groups )
-			);
-			$formDescriptor['SearchGroup'] = [
-				'label-message' => 'abusefilter-log-search-group',
-				'type' => 'select',
-				'options' => $options
-			];
-		}
-
 		if ( self::canSeeDetails( $user ) ) {
+			$groups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
+			if ( count( $groups ) > 1 ) {
+				$options = array_merge(
+					[ $this->msg( 'abusefilter-log-search-group-any' )->text() => 0 ],
+					array_combine( $groups, $groups )
+				);
+				$formDescriptor['SearchGroup'] = [
+					'label-message' => 'abusefilter-log-search-group',
+					'type' => 'select',
+					'options' => $options
+				];
+			}
 			$helpmsg = $this->getConfig()->get( 'AbuseFilterIsCentral' )
 				? $this->msg( 'abusefilter-log-search-filter-help-central' )->escaped()
 				: $this->msg( 'abusefilter-log-search-filter-help' )
