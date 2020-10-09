@@ -412,7 +412,7 @@ class AbuseFilterHooks {
 				$tags = [];
 				foreach ( $res as $row ) {
 					$tags = array_merge(
-						array_filter( explode( "\n", $row->afa_parameters ) ),
+						$row->afa_parameters ? explode( "\n", $row->afa_parameters ) : [],
 						$tags
 					);
 				}
@@ -430,7 +430,7 @@ class AbuseFilterHooks {
 
 					foreach ( $res as $row ) {
 						$tags = array_merge(
-							array_filter( explode( "\n", $row->afa_parameters ) ),
+							$row->afa_parameters ? explode( "\n", $row->afa_parameters ) : [],
 							$tags
 						);
 					}
