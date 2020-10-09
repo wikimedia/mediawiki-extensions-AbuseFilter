@@ -7,7 +7,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	 */
 	public function __construct( SpecialAbuseFilter $page, $params ) {
 		parent::__construct( $page, $params );
-		$this->mFilter = $this->mParams[1] ?? null;
+		$this->mFilter = $this->mParams['filter'] ?? null;
 	}
 
 	/**
@@ -16,9 +16,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 		$out->enableOOUI();
-		$filter = $this->getRequest()->getText( 'filter' ) ?: $this->mFilter;
-		// Ensure the parameter is a valid filter ID
-		$filter = (int)$filter;
+		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->mFilter;
 
 		if ( $filter ) {
 			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
