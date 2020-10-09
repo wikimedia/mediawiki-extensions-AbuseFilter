@@ -22,7 +22,6 @@
  * @license GPL-2.0-or-later
  */
 
-use MediaWiki\Linker\LinkRenderer;
 use PHPUnit\Framework\MockObject\MockObject;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -30,12 +29,9 @@ use Wikimedia\Rdbms\IDatabase;
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterSave
- *
- * @covers AbuseFilter
- * @covers AbuseFilterViewEdit
  */
 class AbuseFilterSaveTest extends MediaWikiTestCase {
-	private static $defaultFilterRow = [
+	private const DEFAULT_ABUSE_FILTER_ROW = [
 		'af_pattern' => '/**/',
 		'af_user' => 0,
 		'af_user_text' => 'FilterTester',
@@ -53,18 +49,9 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	];
 
 	/**
-	 * Gets an instance of AbuseFilterViewEdit ready for creating or editing filter
-	 *
-	 * @param User $user
-	 * @param array $params
-	 * @param bool $existing Whether the filter already exists
-	 * @return AbuseFilterViewEdit|MockObject
+	 * @return HashConfig
 	 */
-	private function getViewEdit( User $user, array $params, $existing ) {
-		$special = new SpecialAbuseFilter();
-		$context = new RequestContext();
-		$context->setRequest( $this->getRequest( $params ) );
-		$context->setUser( $user );
+	private function getConfig() : HashConfig {
 		$cfgOpts = [
 			'LanguageCode' => 'en',
 			'AbuseFilterActions' => [
@@ -86,111 +73,47 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'AbuseFilterIsCentral' => true,
 		];
-
-		$context->setConfig( new HashConfig( $cfgOpts ) );
-
-		$special->setContext( $context );
-		$filter = $params['id'];
-		/** @var LinkRenderer|MockObject $lr */
-		$lr = $this->getMockBuilder( LinkRenderer::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$special->setLinkRenderer( $lr );
-		/** @var AbuseFilterViewEdit|MockObject $viewEdit */
-		$viewEdit = $this->getMockBuilder( AbuseFilterViewEdit::class )
-			->setConstructorArgs( [ $special, [ 'filter' => $filter ] ] )
-			->setMethods( [ 'loadFilterData' ] )
-			->getMock();
-
-		if ( $existing ) {
-			$origValues = [ (object)( self::$defaultFilterRow + [ 'af_id' => 1 ] ), [] ];
-		} else {
-			$origValues = [
-				(object)[
-					'af_pattern' => '',
-					'af_enabled' => 1,
-					'af_hidden' => 0,
-					'af_global' => 0,
-					'af_throttled' => 0,
-					'af_hit_count' => 0,
-				],
-				[]
-			];
-		}
-		$viewEdit->expects( $this->once() )
-			->method( 'loadFilterData' )
-			->willReturn( $origValues );
-
-		return $viewEdit;
-	}
-
-	/**
-	 * Creates a FauxRequest object
-	 *
-	 * @param array $params
-	 * @return FauxRequest
-	 */
-	private function getRequest( array $params ) {
-		$reqParams = [
-			'wpFilterRules' => $params['rules'],
-			'wpFilterDescription' => $params['description'],
-			'wpFilterNotes' => $params['notes'] ?? '',
-			'wpFilterGroup' => $params['group'] ?? 'default',
-			'wpFilterEnabled' => $params['enabled'] ?? true,
-			'wpFilterHidden' => $params['hidden'] ?? false,
-			'wpFilterDeleted' => $params['deleted'] ?? false,
-			'wpFilterGlobal' => $params['global'] ?? false,
-			'wpFilterActionThrottle' => $params['throttleEnabled'] ?? false,
-			'wpFilterThrottleCount' => $params['throttleCount'] ?? 0,
-			'wpFilterThrottlePeriod' => $params['throttlePeriod'] ?? 0,
-			'wpFilterThrottleGroups' => $params['throttleGroups'] ?? '',
-			'wpFilterActionWarn' => $params['warnEnabled'] ?? false,
-			'wpFilterWarnMessage' => $params['warnMessage'] ?? 'abusefilter-warning',
-			'wpFilterWarnMessageOther' => $params['warnMessageOther'] ?? '',
-			'wpFilterActionDisallow' => $params['disallowEnabled'] ?? false,
-			'wpFilterDisallowMessage' => $params['disallowMessage'] ?? 'abusefilter-disallowed',
-			'wpFilterDisallowMessageOther' => $params['disallowMessageOther'] ?? '',
-			'wpFilterActionBlockautopromote' => $params['blockautopromoteEnabled'] ?? false,
-			'wpFilterActionDegroup' => $params['degroupEnabled'] ?? false,
-			'wpFilterActionBlock' => $params['blockEnabled'] ?? false,
-			'wpFilterBlockTalk' => $params['blockTalk'] ?? false,
-			'wpBlockAnonDuration' => $params['blockAnons'] ?? 'infinity',
-			'wpBlockUserDuration' => $params['blockUsers'] ?? 'infinity',
-			'wpFilterActionRangeblock' => $params['rangeblockEnabled'] ?? false,
-			'wpFilterActionTag' => $params['tagEnabled'] ?? false,
-			'wpFilterTags' => $params['tagTags'] ?? '',
-		];
-
-		// Checkboxes aren't included at all if they aren't selected. We can remove them
-		// this way (instead of iterating a hardcoded list) since they're the only false values
-		$reqParams = array_filter( $reqParams, function ( $el ) {
-			return $el !== false;
-		} );
-
-		return new FauxRequest( $reqParams, true );
+		return new HashConfig( $cfgOpts );
 	}
 
 	/**
 	 * @param array $testPerms
 	 * @return User|MockObject
 	 */
-	private function getUserMock( $testPerms ) {
+	private function getUserMock( array $testPerms ) {
 		$perms = array_merge( $testPerms, [ 'abusefilter-modify' ] );
-		$user = $this->getMockBuilder( User::class )
-			->setMethods( [ 'getBlock', 'getName', 'getId', 'getActorId' ] )
-			->getMock();
-
-		$user->expects( $this->any() )
-			->method( 'getName' )
-			->willReturn( 'FilterUser' );
-		$user->expects( $this->any() )
-			->method( 'getId' )
-			->willReturn( 1 );
-		$user->expects( $this->any() )
-			->method( 'getActorId' )
-			->willReturn( 1 );
+		/** @var User|MockObject $user */
+		$user = $this->createMock( User::class );
+		$user->method( 'getName' )->willReturn( 'FilterUser' );
+		$user->method( 'getId' )->willReturn( 1 );
+		$user->method( 'getActorId' )->willReturn( 1 );
 		$this->overrideUserPermissions( $user, $perms );
 		return $user;
+	}
+
+	/**
+	 * @param array $args
+	 * @return array
+	 */
+	private function getRowAndActionsFromTestSpecs( array $args ) : array {
+		$newRow = (object)( $args['row'] + self::DEFAULT_ABUSE_FILTER_ROW );
+		$actions = $args['actions'] ?? [];
+
+		$existing = isset( $args['testData']['existing'] );
+		if ( $existing ) {
+			$origRow = (object)( self::DEFAULT_ABUSE_FILTER_ROW + [ 'af_id' => 1 ] );
+		} else {
+			$origRow = (object)[
+				'af_pattern' => '',
+				'af_enabled' => 1,
+				'af_hidden' => 0,
+				'af_global' => 0,
+				'af_throttled' => 0,
+				'af_hit_count' => 0,
+			];
+		}
+
+		return [ $newRow, $actions, $origRow, [] ];
 	}
 
 	/**
@@ -203,51 +126,39 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	public function testSaveFilter( $args ) {
 		$user = $this->getUserMock( $args['testData']['userPerms'] ?? [] );
 
-		$params = $args['filterParameters'];
-		$filter = $params['id'] = $params['id'] ?? 'new';
-		$existing = isset( $args['testData']['existing'] );
-		$viewEdit = $this->getViewEdit( $user, $params, $existing );
-
-		$reqStatus = $viewEdit->loadRequest( $filter );
-		if ( !$reqStatus->isGood() ) {
-			$this->fail( 'Cannot retrieve request data correctly' );
-		}
-		list( $newRow, $actions ) = $reqStatus->getValue();
+		$filter = $args['row']['af_id'] = $args['row']['af_id'] ?? 'new';
+		[ $newRow, $actions, $origRow, $origActions ] = $this->getRowAndActionsFromTestSpecs( $args );
 
 		/** @var IDatabase|MockObject $dbw */
-		$dbw = $this->getMockForAbstractClass( IDatabase::class );
-		$dbw->expects( $this->any() )
-			->method( 'insertId' )
-			->willReturn( 1 );
-		$row = new stdClass();
-		$row->actor_id = '1';
-		$dbw->expects( $this->any() )
-			->method( 'selectRow' )
-			->willReturn( $row );
-		$status = AbuseFilter::saveFilter( $viewEdit, $filter, $newRow, $actions, $dbw );
+		$dbw = $this->createMock( IDatabase::class );
+		$dbw->method( 'insertId' )->willReturn( 1 );
+		// This is needed because of the ManualLogEntry usage
+		$dbw->method( 'selectRow' )->willReturn( (object)[ 'actor_id' => '1' ] );
+		$status = AbuseFilter::saveFilter(
+			$user, $filter, $newRow, $actions, $origRow,
+			$origActions, $dbw, $this->getConfig()
+		);
 
 		if ( $args['testData']['shouldFail'] ) {
 			$this->assertFalse( $status->isGood(), 'The filter validation returned a valid status.' );
 			$actual = $status->getErrors()[0]['message'];
 			$expected = $args['testData']['expectedMessage'];
 			$this->assertEquals( $expected, $actual );
+		} elseif ( $args['testData']['shouldBeSaved'] ) {
+			$this->assertTrue(
+				$status->isGood(),
+				"Save failed with status: $status"
+			);
+			$value = $status->getValue();
+			$this->assertIsArray( $value );
+			$this->assertCount( 2, $value );
+			$this->assertContainsOnly( 'int', $value );
 		} else {
-			if ( $args['testData']['shouldBeSaved'] ) {
-				$this->assertTrue(
-					$status->isGood(),
-					"Save failed with status: $status"
-				);
-				$value = $status->getValue();
-				$this->assertIsArray( $value );
-				$this->assertCount( 2, $value );
-				$this->assertContainsOnly( 'int', $value );
-			} else {
-				$this->assertTrue(
-					$status->isGood(),
-					"Got a non-good status: $status"
-				);
-				$this->assertFalse( $status->getValue(), 'Status value should be false' );
-			}
+			$this->assertTrue(
+				$status->isGood(),
+				"Got a non-good status: $status"
+			);
+			$this->assertFalse( $status->getValue(), 'Status value should be false' );
 		}
 	}
 
@@ -255,14 +166,16 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 	 * Data provider for creating and editing filters.
 	 * @return array
 	 */
-	public function provideFilters() {
+	public function provideFilters() : array {
 		return [
 			'Fail due to empty description and rules' => [
 				[
-					'filterParameters' => [
-						'rules' => '',
-						'description' => '',
-						'blockautopromoteEnabled' => true,
+					'row' => [
+						'af_pattern' => '',
+						'af_public_comments' => '',
+					],
+					'actions' => [
+						'blockautopromote' => []
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-missingfields',
@@ -273,11 +186,11 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Success for only rules and description' => [
 				[
-					'filterParameters' => [
-						'rules' => '/* My rules */',
-						'description' => 'Some new filter',
-						'enabled' => false,
-						'deleted' => true,
+					'row' => [
+						'af_pattern' => '/* My rules */',
+						'af_public_comments' => 'Some new filter',
+						'af_enabled' => false,
+						'af_deleted' => true
 					],
 					'testData' => [
 						'shouldFail' => false,
@@ -287,12 +200,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to syntax error' => [
 				[
-					'filterParameters' => [
-						'rules' => 'rlike',
-						'description' => 'This syntax aint good',
-						'blockEnabled' => true,
-						'blockTalk' => true,
-						'blockAnons' => '8 hours',
+					'row' => [
+						'af_pattern' => 'rlike',
+						'af_public_comments' => 'This syntax aint good',
+					],
+					'actions' => [
+						'block' => [ true, '8 hours', '8 hours' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-badsyntax',
@@ -303,13 +216,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to both "enabled" and "deleted" selected' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Enabled and deleted',
-						'deleted' => true,
-						'blockEnabled' => true,
-						'blockTalk' => true,
-						'blockAnons' => '8 hours',
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Enabled and deleted',
+						'af_deleted' => true
+					],
+					'actions' => [
+						'block' => [ true, '8 hours', '8 hours' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-deleting-enabled',
@@ -320,13 +233,14 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to a reserved tag' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Reserved tag',
-						'notes' => 'Some notes',
-						'hidden' => true,
-						'tagEnabled' => true,
-						'tagTags' => 'mw-undo'
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Reserved tag',
+						'af_comments' => 'Some notes',
+						'af_hidden' => true
+					],
+					'actions' => [
+						'tag' => [ 'mw-undo' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-bad-tags',
@@ -337,12 +251,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to an invalid tag' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Invalid tag',
-						'notes' => 'Some notes',
-						'tagEnabled' => true,
-						'tagTags' => 'some|tag'
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Invalid tag',
+						'af_comments' => 'Some notes',
+					],
+					'actions' => [
+						'tag' => [ 'invalid|tag' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'tags-create-invalid-chars',
@@ -353,12 +268,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to an empty tag' => [
 				[
-					'filterParameters' => [
-						'rules' => '1!=0',
-						'description' => 'Empty tag',
-						'notes' => '',
-						'tagEnabled' => true,
-						'tagTags' => ''
+					'row' => [
+						'af_pattern' => '1!=0',
+						'af_public_comments' => 'Empty tag',
+						'af_comments' => '',
+					],
+					'actions' => [
+						'tag' => [ '' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'tags-create-no-name',
@@ -369,11 +285,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to lack of modify-global right' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Global without perms',
-						'global' => true,
-						'disallowEnabled' => true,
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Global without perms',
+						'af_global' => true,
+					],
+					'actions' => [
+						'disallow' => [ 'abusefilter-disallowed' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-notallowed-global',
@@ -384,12 +302,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to custom warn message on global filter' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Global with invalid warn message',
-						'global' => true,
-						'warnEnabled' => true,
-						'warnMessage' => 'abusefilter-beautiful-warning',
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Global with invalid warn message',
+						'af_global' => true,
+					],
+					'actions' => [
+						'warn' => [ 'abusefilter-beautiful-warning' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
@@ -401,12 +320,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to custom disallow message on global filter' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Global with invalid disallow message',
-						'global' => true,
-						'disallowEnabled' => true,
-						'disallowMessage' => 'abusefilter-disallowed-something',
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Global with invalid disallow message',
+						'af_global' => true,
+					],
+					'actions' => [
+						'disallow' => [ 'abusefilter-disallowed-something' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-notallowed-global-custom-msg',
@@ -418,10 +338,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to a restricted action' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Restricted action',
-						'degroupEnabled' => true,
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Restricted action',
+					],
+					'actions' => [
+						'degroup' => []
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-restricted',
@@ -432,10 +354,10 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Pass validation but do not save when there are no changes' => [
 				[
-					'filterParameters' => [
-						'id' => '1',
-						'rules' => '/**/',
-						'description' => 'Mock filter',
+					'row' => [
+						'af_id' => '1',
+						'af_pattern' => '/**/',
+						'af_public_comments' => 'Mock filter'
 					],
 					'testData' => [
 						'shouldFail' => false,
@@ -446,14 +368,13 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to invalid throttle groups' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Invalid throttle groups',
-						'notes' => 'Throttle... Again',
-						'throttleEnabled' => true,
-						'throttleCount' => 11,
-						'throttlePeriod' => 111,
-						'throttleGroups' => 'user\nfoo'
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Invalid throttle groups',
+						'af_comments' => 'Throttle... Again',
+					],
+					'actions' => [
+						'throttle' => [ 'new', '11,111', "user\nfoo" ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-throttlegroups',
@@ -464,11 +385,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to empty warning message' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Empty warning message',
-						'warnEnabled' => true,
-						'warnMessage' => '',
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Empty warning message',
+					],
+					'actions' => [
+						'warn' => [ '' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-warn-message',
@@ -479,11 +401,12 @@ class AbuseFilterSaveTest extends MediaWikiTestCase {
 			],
 			'Fail due to empty disallow message' => [
 				[
-					'filterParameters' => [
-						'rules' => '1==1',
-						'description' => 'Empty disallow message',
-						'disallowEnabled' => true,
-						'disallowMessage' => '',
+					'row' => [
+						'af_pattern' => '1==1',
+						'af_public_comments' => 'Empty disallow message',
+					],
+					'actions' => [
+						'disallow' => [ '' ]
 					],
 					'testData' => [
 						'expectedMessage' => 'abusefilter-edit-invalid-disallow-message',

@@ -912,47 +912,53 @@ class AbuseFilter {
 	 *  - OK with errors if a validation error occurred
 	 *  - Fatal in case of a permission-related error
 	 *
-	 * @param ContextSource $context
+	 * @param User $user
 	 * @param int|string $filter
 	 * @param stdClass $newRow
 	 * @param array $actions
+	 * @param stdClass $originalRow
+	 * @param array $originalActions
 	 * @param IDatabase $dbw DB_MASTER Where the filter should be saved
+	 * @param Config $config
 	 * @return Status
+	 * @internal
 	 */
 	public static function saveFilter(
-		ContextSource $context,
+		User $user,
 		$filter,
-		$newRow,
-		$actions,
-		IDatabase $dbw
+		stdClass $newRow,
+		array $actions,
+		stdClass $originalRow,
+		array $originalActions,
+		IDatabase $dbw,
+		Config $config
 	) {
 		$validationStatus = Status::newGood();
-		$request = $context->getRequest();
-		$user = $context->getUser();
 
 		// Check the syntax
-		$syntaxerr = self::getDefaultParser()->checkSyntax( $request->getVal( 'wpFilterRules' ) );
+		$syntaxerr = self::getDefaultParser()->checkSyntax( $newRow->af_pattern );
 		if ( $syntaxerr !== true ) {
 			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
 			return $validationStatus;
 		}
 		// Check for missing required fields (title and pattern)
 		$missing = [];
-		if ( !$request->getVal( 'wpFilterRules' ) ||
-			trim( $request->getVal( 'wpFilterRules' ) ) === '' ) {
-			$missing[] = $context->msg( 'abusefilter-edit-field-conditions' )->escaped();
+		if ( !$newRow->af_pattern || trim( $newRow->af_pattern ) === '' ) {
+			$missing[] = new Message( 'abusefilter-edit-field-conditions' );
 		}
-		if ( !$request->getVal( 'wpFilterDescription' ) ) {
-			$missing[] = $context->msg( 'abusefilter-edit-field-description' )->escaped();
+		if ( !$newRow->af_public_comments ) {
+			$missing[] = new Message( 'abusefilter-edit-field-description' );
 		}
 		if ( count( $missing ) !== 0 ) {
-			$missing = $context->getLanguage()->commaList( $missing );
-			$validationStatus->error( 'abusefilter-edit-missingfields', $missing );
+			$validationStatus->error(
+				'abusefilter-edit-missingfields',
+				Message::listParam( $missing, 'comma' )
+			);
 			return $validationStatus;
 		}
 
 		// Don't allow setting as deleted an active filter
-		if ( $request->getCheck( 'wpFilterEnabled' ) && $request->getCheck( 'wpFilterDeleted' ) ) {
+		if ( $newRow->af_enabled && $newRow->af_deleted ) {
 			$validationStatus->error( 'abusefilter-edit-deleting-enabled' );
 			return $validationStatus;
 		}
@@ -994,11 +1000,11 @@ class AbuseFilter {
 		}
 
 		$availableActions = array_keys(
-			array_filter( $context->getConfig()->get( 'AbuseFilterActions' ) )
+			array_filter( $config->get( 'AbuseFilterActions' ) )
 		);
 		$differences = self::compareVersions(
 			[ $newRow, $actions ],
-			[ $newRow->mOriginalRow, $newRow->mOriginalActions ],
+			[ $originalRow, $originalActions ],
 			$availableActions
 		);
 
@@ -1006,7 +1012,7 @@ class AbuseFilter {
 		// rule that is currently global, without permissions.
 		if (
 			!self::canEditFilter( $user, $newRow ) ||
-			!self::canEditFilter( $user, $newRow->mOriginalRow )
+			!self::canEditFilter( $user, $originalRow )
 		) {
 			$validationStatus->fatal( 'abusefilter-edit-notallowed-global' );
 			return $validationStatus;
@@ -1014,18 +1020,14 @@ class AbuseFilter {
 
 		// Don't allow custom messages on global rules
 		if ( $newRow->af_global == 1 && (
-				$request->getVal( 'wpFilterWarnMessage' ) !== 'abusefilter-warning' ||
-				$request->getVal( 'wpFilterDisallowMessage' ) !== 'abusefilter-disallowed'
+				( isset( $actions['warn'] ) && $actions['warn'][0] !== 'abusefilter-warning' ) ||
+				( isset( $actions['disallow'] ) && $actions['disallow'][0] !== 'abusefilter-disallowed' )
 		) ) {
 			$validationStatus->fatal( 'abusefilter-edit-notallowed-global-custom-msg' );
 			return $validationStatus;
 		}
 
-		$origActions = $newRow->mOriginalActions;
-		$wasGlobal = (bool)$newRow->mOriginalRow->af_global;
-
-		unset( $newRow->mOriginalRow );
-		unset( $newRow->mOriginalActions );
+		$wasGlobal = (bool)$originalRow->af_global;
 
 		// Check for non-changes
 		if ( !count( $differences ) ) {
@@ -1034,10 +1036,10 @@ class AbuseFilter {
 		}
 
 		// Check for restricted actions
-		$restrictions = $context->getConfig()->get( 'AbuseFilterRestrictions' );
+		$restrictions = $config->get( 'AbuseFilterRestrictions' );
 		if ( count( array_intersect_key(
 				array_filter( $restrictions ),
-				array_merge( $actions, $origActions )
+				array_merge( $actions, $originalActions )
 			) )
 			&& !MediaWikiServices::getInstance()->getPermissionManager()
 				->userHasRight( $user, 'abusefilter-modify-restricted' )
@@ -1048,7 +1050,7 @@ class AbuseFilter {
 
 		// Everything went fine, so let's save the filter
 		list( $new_id, $history_id ) =
-			self::doSaveFilter( $newRow, $differences, $filter, $actions, $wasGlobal, $context, $dbw );
+			self::doSaveFilter( $user, $newRow, $differences, $filter, $actions, $wasGlobal, $dbw, $config );
 		$validationStatus->setResult( true, [ $new_id, $history_id ] );
 		return $validationStatus;
 	}
@@ -1056,26 +1058,26 @@ class AbuseFilter {
 	/**
 	 * Saves new filter's info to DB
 	 *
+	 * @param User $user
 	 * @param stdClass $newRow
 	 * @param array $differences
 	 * @param int|string $filter
 	 * @param array $actions
 	 * @param bool $wasGlobal
-	 * @param ContextSource $context
 	 * @param IDatabase $dbw DB_MASTER where the filter will be saved
+	 * @param Config $config
 	 * @return int[] first element is new ID, second is history ID
 	 */
 	private static function doSaveFilter(
+		User $user,
 		$newRow,
 		$differences,
 		$filter,
 		$actions,
 		$wasGlobal,
-		ContextSource $context,
-		IDatabase $dbw
+		IDatabase $dbw,
+		Config $config
 	) {
-		$user = $context->getUser();
-
 		// Convert from object to array
 		$newRow = get_object_vars( $newRow );
 
@@ -1113,7 +1115,7 @@ class AbuseFilter {
 		}
 		'@phan-var int $new_id';
 
-		$availableActions = $context->getConfig()->get( 'AbuseFilterActions' );
+		$availableActions = $config->get( 'AbuseFilterActions' );
 		$actionsRows = [];
 		foreach ( array_filter( $availableActions ) as $action => $_ ) {
 			// Check if it's set

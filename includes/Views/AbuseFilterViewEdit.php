@@ -104,6 +104,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 				return;
 			}
+			// Note, this is [ $row, $actions, $originalRow, $originalActions ]
 			$data = $status->getValue();
 		} else {
 			$data = $this->loadFromDatabase( $filter, $history_id );
@@ -128,9 +129,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// In the current implementation, this cannot happen.
 			throw new LogicException( 'Should always be able to retrieve data for saving' );
 		}
-		list( $newRow, $actions ) = $reqStatus->getValue();
+		[ $newRow, $actions, $origRow, $origActions ] = $reqStatus->getValue();
 		$dbw = wfGetDB( DB_MASTER );
-		$status = AbuseFilter::saveFilter( $this, $filter, $newRow, $actions, $dbw );
+		$status = AbuseFilter::saveFilter(
+			$this->getUser(), $filter, $newRow, $actions,
+			$origRow, $origActions, $dbw, $this->getConfig()
+		);
 
 		if ( !$status->isGood() ) {
 			$err = $status->getErrors();
@@ -1209,8 +1213,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'af_throttled' => $origRow->af_throttled,
 			'af_hit_count' => $origRow->af_hit_count,
 		];
-		$row->mOriginalRow = $origRow;
-		$row->mOriginalActions = $origActions;
 
 		// Check for importing
 		$import = $request->getVal( 'wpImportText' );
@@ -1338,7 +1340,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$row->af_actions = implode( ',', array_keys( $actions ) );
 
-		return Status::newGood( [ $row, $actions ] );
+		return Status::newGood( [ $row, $actions, $origRow, $origActions ] );
 	}
 
 	/**
