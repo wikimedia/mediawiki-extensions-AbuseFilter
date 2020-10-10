@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\PageEditStash;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -1033,7 +1034,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @covers AbuseFilterRunner::checkFilter
-	 * @covers AbuseFilterRunner::recordSlowFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::recordSlowFilter
 	 * @dataProvider provideFiltersNoConsequences
 	 */
 	public function testTimeLimit( $createIds, $actionParams ) {
@@ -1782,11 +1783,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $expectedGlobal Expected global stats
 	 * @param array $expectedPerFilter Expected stats for every created filter
-	 * @covers AbuseFilter::filterProfileKey
-	 * @covers AbuseFilter::filterProfileGroupKey
-	 * @covers AbuseFilter::getFilterProfile
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::filterProfileKey
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::filterProfileGroupKey
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::getFilterProfile
 	 * @covers AbuseFilterRunner::checkAllFilters
-	 * @covers AbuseFilterRunner::recordStats
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::recordStats
 	 * @dataProvider provideProfilingFilters
 	 */
 	public function testProfiling( $createIds, $actionParams, $expectedGlobal, $expectedPerFilter ) {
@@ -1806,9 +1807,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$this->doAction( $actionParams );
 		MWTimestamp::setFakeTime( false );
 
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+		$profiler = AbuseFilterServices::getFilterProfiler();
 		// Global stats shown on the top of Special:AbuseFilter
-		$globalStats = $stash->get( AbuseFilter::filterProfileGroupKey( 'default' ) );
+		$globalStats = $profiler->getGroupProfile( 'default' );
 		$actualGlobalStats = [
 			'totalMatches' => $globalStats['matches'],
 			'totalActions' => $globalStats['total'],
@@ -1822,7 +1823,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		// Per-filter stats shown on the top of Special:AbuseFilter/xxx
 		foreach ( $createIds as $id ) {
-			list( $totalActions, $matches, , $conds ) = AbuseFilter::getFilterProfile( $id );
+			list( $totalActions, $matches, , $conds ) = $profiler->getFilterProfile( $id );
 			$actualStats = [
 				'matches' => $matches,
 				'actions' => $totalActions,

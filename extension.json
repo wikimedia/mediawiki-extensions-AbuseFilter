@@ -163,6 +163,7 @@
 		"AbuseFilterVariableHolder": "includes/AbuseFilterVariableHolder.php",
 		"MediaWiki\\Extension\\AbuseFilter\\KeywordsManager": "includes/KeywordsManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
+		"MediaWiki\\Extension\\AbuseFilter\\FilterProfiler": "includes/FilterProfiler.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",

@@ -167,42 +167,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param int|string $filter
-	 * @internal
-	 */
-	public static function resetFilterProfile( $filter ) {
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$profileKey = self::filterProfileKey( $filter );
-
-		$stash->delete( $profileKey );
-	}
-
-	/**
-	 * Retrieve per-filter statistics.
-	 *
-	 * @param string $filter
-	 * @return array
-	 */
-	public static function getFilterProfile( $filter ) {
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$profile = $stash->get( self::filterProfileKey( $filter ) );
-
-		if ( $profile !== false ) {
-			$curCount = $profile['count'];
-			$curTotalTime = $profile['total-time'];
-			$curTotalConds = $profile['total-cond'];
-		} else {
-			return [ 0, 0, 0, 0 ];
-		}
-
-		// Return in milliseconds, rounded to 2dp
-		$avgTime = round( $curTotalTime / $curCount, 2 );
-		$avgCond = round( $curTotalConds / $curCount, 1 );
-
-		return [ $curCount, $profile['matches'], $avgTime, $avgCond ];
-	}
-
-	/**
 	 * Utility function to split "<GLOBAL_FILTER_PREFIX>$index" to an array [ $id, $global ], where
 	 * $id is $index casted to int, and $global is a boolean: true if the filter is global,
 	 * false otherwise (i.e. if the $filter === $index). Note that the $index
@@ -706,28 +670,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Get the memcache access key used to store per-filter profiling data.
-	 *
-	 * @param string|int $filter
-	 * @return string
-	 */
-	public static function filterProfileKey( $filter ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		return $cache->makeKey( 'abusefilter-profile', 'v3', $filter );
-	}
-
-	/**
-	 * Memcache access key used to store overall profiling data for rule groups
-	 *
-	 * @param string $group
-	 * @return string
-	 */
-	public static function filterProfileGroupKey( $group ) {
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
-		return $cache->makeKey( 'abusefilter-profile', 'group', $group );
-	}
-
-	/**
 	 * @return User
 	 */
 	public static function getFilterUser() : User {
@@ -1212,7 +1154,7 @@ class AbuseFilter {
 			AbuseFilterHooks::purgeTagCache();
 		}
 
-		self::resetFilterProfile( $new_id );
+		AbuseFilterServices::getFilterProfiler()->resetFilterProfile( $new_id );
 		return [ $new_id, $history_id ];
 	}
 

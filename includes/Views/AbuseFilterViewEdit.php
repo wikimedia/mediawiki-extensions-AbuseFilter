@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
@@ -308,7 +309,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $filter !== 'new' && $row->af_enabled ) {
 			// Statistics
 			list( $totalCount, $matchesCount, $avgTime, $avgCond ) =
-				AbuseFilter::getFilterProfile( $filter );
+				AbuseFilterServices::getFilterProfiler()->getFilterProfile( $filter );
 
 			if ( $totalCount > 0 ) {
 				$matchesPercent = round( 100 * $matchesCount / $totalCount, 2 );
