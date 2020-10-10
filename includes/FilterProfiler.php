@@ -27,7 +27,7 @@ class FilterProfiler {
 	/**
 	 * @var int How long to keep profiling data in cache (in seconds)
 	 */
-	private const STATS_STORAGE_PERIOD = 86400;
+	private const STATS_STORAGE_PERIOD = BagOStuff::TTL_DAY;
 
 	/** @var BagOStuff */
 	private $objectStash;
@@ -83,13 +83,13 @@ class FilterProfiler {
 	public function getFilterProfile( $filter ) : array {
 		$profile = $this->objectStash->get( $this->filterProfileKey( $filter ) );
 
-		if ( $profile !== false ) {
-			$curCount = $profile['count'];
-			$curTotalTime = $profile['total-time'];
-			$curTotalConds = $profile['total-cond'];
-		} else {
+		if ( $profile === false ) {
 			return [ 0, 0, 0, 0 ];
 		}
+
+		$curCount = $profile['count'];
+		$curTotalTime = $profile['total-time'];
+		$curTotalConds = $profile['total-cond'];
 
 		// Return in milliseconds, rounded to 2dp
 		$avgTime = round( $curTotalTime / $curCount, 2 );
@@ -119,32 +119,37 @@ class FilterProfiler {
 	private function recordProfilingResult( int $filter, float $time, int $conds, bool $matched ) : void {
 		// Defer updates to avoid massive (~1 second) edit time increases
 		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds, $matched ) {
-			$profileKey = $this->filterProfileKey( $filter );
-			$profile = $this->objectStash->get( $profileKey );
-
-			if ( $profile !== false ) {
-				// Number of observed executions of this filter
-				$profile['count']++;
-				if ( $matched ) {
-					// Number of observed matches of this filter
-					$profile['matches']++;
-				}
-				// Total time spent on this filter from all observed executions
-				$profile['total-time'] += $time;
-				// Total number of conditions for this filter from all executions
-				$profile['total-cond'] += $conds;
-			} else {
-				$profile = [
-					'count' => 1,
-					'matches' => (int)$matched,
-					'total-time' => $time,
-					'total-cond' => $conds
-				];
-			}
 			// Note: It is important that all key information be stored together in a single
 			// memcache entry to avoid race conditions where competing Apache instances
 			// partially overwrite the stats.
-			$this->objectStash->set( $profileKey, $profile, 3600 );
+			$profileKey = $this->filterProfileKey( $filter );
+			$this->objectStash->merge(
+				$profileKey,
+				function ( $cache, $key, $profile ) use ( $time, $conds, $matched ) {
+					if ( $profile === false ) {
+						$profile = [
+							// Number of observed executions of this filter
+							'count' => 0,
+							// Number of observed matches of this filter
+							'matches' => 0,
+							// Total time spent on this filter from all observed executions
+							'total-time' => 0,
+							// Total number of conditions for this filter from all executions
+							'total-cond' => 0
+						];
+					}
+
+					$profile['count']++;
+					if ( $matched ) {
+						$profile['matches']++;
+					}
+					$profile['total-time'] += $time;
+					$profile['total-cond'] += $conds;
+
+					return $profile;
+				},
+				BagOStuff::TTL_HOUR
+			);
 		} );
 	}
 
