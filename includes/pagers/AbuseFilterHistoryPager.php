@@ -204,13 +204,6 @@ class AbuseFilterHistoryPager extends TablePager {
 	/**
 	 * @return string
 	 */
-	public function getIndexField() {
-		return 'afh_timestamp';
-	}
-
-	/**
-	 * @return string
-	 */
 	public function getDefaultSort() {
 		return 'afh_timestamp';
 	}
@@ -220,8 +213,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @return bool
 	 */
 	public function isFieldSortable( $name ) {
-		$sortable_fields = [ 'afh_timestamp', 'afh_user_text' ];
-		return in_array( $name, $sortable_fields );
+		return $name === 'afh_timestamp';
 	}
 
 	/**
