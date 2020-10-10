@@ -114,9 +114,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
 			if ( $params[0] === 'history' || $params[0] === 'log' ) {
 				if ( count( $params ) <= 2 ) {
-					if ( isset( $params[1] ) ) {
-						$params[1] = (int)$params[1];
-					}
+					$params = isset( $params[1] ) ? [ 'filter' => (int)$params[1] ] : [];
 					return [ AbuseFilterViewHistory::class, 'recentchanges', $params ];
 				}
 				if ( count( $params ) === 4 && $params[2] === 'item' ) {
