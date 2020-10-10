@@ -389,45 +389,6 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * Check that throttle parameters validation works fine
-	 *
-	 * @param array $params Throttle parameters
-	 * @param string|null $error The expected error message. Null if validations should pass
-	 * @covers AbuseFilter::checkThrottleParameters
-	 * @dataProvider provideThrottleParameters
-	 */
-	public function testCheckThrottleParameters( $params, $error ) {
-		$result = AbuseFilter::checkThrottleParameters( $params );
-		$this->assertSame( $error, $result, 'Throttle parameter validation does not work as expected.' );
-	}
-
-	/**
-	 * Data provider for testCheckThrottleParameters
-	 * @return array
-	 */
-	public function provideThrottleParameters() {
-		return [
-			[ [ '1', '5,23', 'user', 'ip', 'page,range', 'ip,user', 'range,ip' ], null ],
-			[ [ '1', '5.3,23', 'user', 'ip' ], 'abusefilter-edit-invalid-throttlecount' ],
-			[ [ '1', '-3,23', 'user', 'ip' ], 'abusefilter-edit-invalid-throttlecount' ],
-			[ [ '1', '5,2.3', 'user', 'ip' ], 'abusefilter-edit-invalid-throttleperiod' ],
-			[ [ '1', '4,-14', 'user', 'ip' ], 'abusefilter-edit-invalid-throttleperiod' ],
-			[ [ '1', '3,33,44', 'user', 'ip' ], 'abusefilter-edit-invalid-throttleperiod' ],
-			[ [ '1', '3,33' ], 'abusefilter-edit-empty-throttlegroups' ],
-			[ [ '1', '3,33', 'user', 'ip,foo,user' ], 'abusefilter-edit-invalid-throttlegroups' ],
-			[ [ '1', '3,33', 'foo', 'ip,user' ], 'abusefilter-edit-invalid-throttlegroups' ],
-			[ [ '1', '3,33', 'foo', 'ip,user,bar' ], 'abusefilter-edit-invalid-throttlegroups' ],
-			[ [ '1', '3,33', 'user', 'ip,page,user' ], null ],
-			[
-				[ '1', '3,33', 'ip', 'user','user,ip', 'ip,user', 'user,ip,user', 'user', 'ip,ip,user' ],
-				'abusefilter-edit-duplicated-throttlegroups'
-			],
-			[ [ '1', '3,33', 'ip,ip,user' ], 'abusefilter-edit-duplicated-throttlegroups' ],
-			[ [ '1', '3,33', 'user,ip', 'ip,user' ], 'abusefilter-edit-duplicated-throttlegroups' ],
-		];
-	}
-
-	/**
 	 * @param $var
 	 * @param string $expected
 	 * @covers AbuseFilter::formatVar

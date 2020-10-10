@@ -77,4 +77,11 @@ class AbuseFilterServices {
 	public static function getFilterLookup() : FilterLookup {
 		return MediaWikiServices::getInstance()->getService( FilterLookup::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterValidator
+	 */
+	public static function getFilterValidator() : FilterValidator {
+		return MediaWikiServices::getInstance()->getService( FilterValidator::SERVICE_NAME );
+	}
 }

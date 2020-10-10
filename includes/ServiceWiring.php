@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
@@ -85,6 +86,15 @@ return [
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
+		);
+	},
+	FilterValidator::SERVICE_NAME => function ( MediaWikiServices $services ): FilterValidator {
+		return new FilterValidator(
+			$services->get( ChangeTagsManager::SERVICE_NAME ),
+			$services->get( ParserFactory::SERVICE_NAME ),
+			$services->get( PermManager::SERVICE_NAME ),
+			// Pass the cleaned list of enabled restrictions
+			array_keys( array_filter( $services->getMainConfig()->get( 'AbuseFilterActionRestrictions' ) ) )
 		);
 	},
 ];

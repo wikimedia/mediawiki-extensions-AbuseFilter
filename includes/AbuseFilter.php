@@ -501,120 +501,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Check whether a filter is allowed to use a tag
-	 *
-	 * @param string $tag Tag name
-	 * @return Status
-	 */
-	public static function isAllowedTag( $tag ) {
-		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
-
-		if ( !$tagNameStatus->isGood() ) {
-			return $tagNameStatus;
-		}
-
-		$finalStatus = Status::newGood();
-
-		$canAddStatus =
-			ChangeTags::canAddTagsAccompanyingChange(
-				[ $tag ]
-			);
-
-		if ( $canAddStatus->isGood() ) {
-			return $finalStatus;
-		}
-
-		if ( $tag === 'abusefilter-condition-limit' ) {
-			$finalStatus->fatal( 'abusefilter-tag-reserved' );
-			return $finalStatus;
-		}
-
-		// note: these are both local and global
-		$alreadyDefinedTags = AbuseFilterServices::getChangeTagsManager()
-			->getTagsDefinedByFilters();
-
-		if ( in_array( $tag, $alreadyDefinedTags, true ) ) {
-			return $finalStatus;
-		}
-
-		$canCreateTagStatus = ChangeTags::canCreateTag( $tag );
-		if ( $canCreateTagStatus->isGood() ) {
-			return $finalStatus;
-		}
-
-		$finalStatus->fatal( 'abusefilter-edit-bad-tags' );
-		return $finalStatus;
-	}
-
-	/**
-	 * Validate throttle parameters
-	 *
-	 * @param array $params Throttle parameters
-	 * @return null|string Null on success, a string with the error message on failure
-	 */
-	public static function checkThrottleParameters( $params ) {
-		list( $throttleCount, $throttlePeriod ) = explode( ',', $params[1], 2 );
-		$throttleGroups = array_slice( $params, 2 );
-		$validGroups = [
-			'ip',
-			'user',
-			'range',
-			'creationdate',
-			'editcount',
-			'site',
-			'page'
-		];
-
-		$error = null;
-		if ( preg_match( '/^[1-9][0-9]*$/', $throttleCount ) === 0 ) {
-			$error = 'abusefilter-edit-invalid-throttlecount';
-		} elseif ( preg_match( '/^[1-9][0-9]*$/', $throttlePeriod ) === 0 ) {
-			$error = 'abusefilter-edit-invalid-throttleperiod';
-		} elseif ( !$throttleGroups ) {
-			$error = 'abusefilter-edit-empty-throttlegroups';
-		} else {
-			$valid = true;
-			// Groups should be unique in three ways: no direct duplicates like 'user' and 'user',
-			// no duplicated subgroups, not even shuffled ('ip,user' and 'user,ip') and no duplicates
-			// within subgroups ('user,ip,user')
-			$uniqueGroups = [];
-			$uniqueSubGroups = true;
-			// Every group should be valid, and subgroups should have valid groups inside
-			foreach ( $throttleGroups as $group ) {
-				if ( strpos( $group, ',' ) !== false ) {
-					$subGroups = explode( ',', $group );
-					if ( $subGroups !== array_unique( $subGroups ) ) {
-						$uniqueSubGroups = false;
-						break;
-					}
-					foreach ( $subGroups as $subGroup ) {
-						if ( !in_array( $subGroup, $validGroups ) ) {
-							$valid = false;
-							break 2;
-						}
-					}
-					sort( $subGroups );
-					$uniqueGroups[] = implode( ',', $subGroups );
-				} else {
-					if ( !in_array( $group, $validGroups ) ) {
-						$valid = false;
-						break;
-					}
-					$uniqueGroups[] = $group;
-				}
-			}
-
-			if ( !$valid ) {
-				$error = 'abusefilter-edit-invalid-throttlegroups';
-			} elseif ( !$uniqueSubGroups || $uniqueGroups !== array_unique( $uniqueGroups ) ) {
-				$error = 'abusefilter-edit-duplicated-throttlegroups';
-			}
-		}
-
-		return $error;
-	}
-
-	/**
 	 * Checks whether user input for the filter editing form is valid and if so saves the filter.
 	 * Returns a Status object which can be:
 	 *  - Good with [ new_filter_id, history_id ] as value if the filter was successfully saved
@@ -639,124 +525,29 @@ class AbuseFilter {
 		IDatabase $dbw,
 		Config $config
 	) {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$validationStatus = Status::newGood();
+		$validator = AbuseFilterServices::getFilterValidator();
 
-		// Check the syntax
-		$parser = AbuseFilterServices::getParserFactory()->newParser();
-		$syntaxerr = $parser->checkSyntax( $newFilter->getRules() );
-		if ( $syntaxerr !== true ) {
-			$validationStatus->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
-			return $validationStatus;
-		}
-		// Check for missing required fields (title and pattern)
-		$missing = [];
-		if ( $newFilter->getRules() === '' ) {
-			$missing[] = new Message( 'abusefilter-edit-field-conditions' );
-		}
-		if ( !$newFilter->getName() ) {
-			$missing[] = new Message( 'abusefilter-edit-field-description' );
-		}
-		if ( count( $missing ) !== 0 ) {
-			$validationStatus->error(
-				'abusefilter-edit-missingfields',
-				Message::listParam( $missing, 'comma' )
-			);
-			return $validationStatus;
-		}
-
-		// Don't allow setting as deleted an active filter
-		if ( $newFilter->isEnabled() && $newFilter->isDeleted() ) {
-			$validationStatus->error( 'abusefilter-edit-deleting-enabled' );
-			return $validationStatus;
-		}
-
-		$actions = $newFilter->getActions();
-		// If we've activated the 'tag' option, check the arguments for validity.
-		if ( isset( $actions['tag'] ) ) {
-			if ( count( $actions['tag'] ) === 0 ) {
-				$validationStatus->error( 'tags-create-no-name' );
-				return $validationStatus;
-			}
-			foreach ( $actions['tag'] as $tag ) {
-				$status = self::isAllowedTag( $tag );
-
-				if ( !$status->isGood() ) {
-					$err = $status->getErrors();
-					$msg = $err[0]['message'];
-					$validationStatus->error( $msg );
-					return $validationStatus;
-				}
-			}
-		}
-
-		// Warning and disallow message cannot be empty
-		if ( isset( $actions['warn'] ) && $actions['warn'][0] === '' ) {
-			$validationStatus->error( 'abusefilter-edit-invalid-warn-message' );
-			return $validationStatus;
-		} elseif ( isset( $actions['disallow'] ) && $actions['disallow'][0] === '' ) {
-			$validationStatus->error( 'abusefilter-edit-invalid-disallow-message' );
-			return $validationStatus;
-		}
-
-		// If 'throttle' is selected, check its parameters
-		if ( isset( $actions['throttle'] ) ) {
-			$throttleCheck = self::checkThrottleParameters( $actions['throttle'] );
-			if ( $throttleCheck !== null ) {
-				$validationStatus->error( $throttleCheck );
-				return $validationStatus;
-			}
-		}
-
-		$availableActions = array_keys(
-			array_filter( $config->get( 'AbuseFilterActions' ) )
-		);
-		$differences = self::compareVersions( $newFilter, $originalFilter, $availableActions );
-
-		// Don't allow adding a new global rule, or updating a
-		// rule that is currently global, without permissions.
-		if (
-			!$afPermManager->canEditFilter( $user, $newFilter ) ||
-			!$afPermManager->canEditFilter( $user, $originalFilter )
-		) {
-			$validationStatus->fatal( 'abusefilter-edit-notallowed-global' );
-			return $validationStatus;
-		}
-
-		// Don't allow custom messages on global rules
-		if ( $newFilter->isGlobal() && (
-				( isset( $actions['warn'] ) && $actions['warn'][0] !== 'abusefilter-warning' ) ||
-				( isset( $actions['disallow'] ) && $actions['disallow'][0] !== 'abusefilter-disallowed' )
-		) ) {
-			$validationStatus->error( 'abusefilter-edit-notallowed-global-custom-msg' );
+		$validationStatus = $validator->checkAll( $newFilter, $originalFilter, $user );
+		if ( !$validationStatus->isGood() ) {
 			return $validationStatus;
 		}
 
 		$wasGlobal = $originalFilter->isGlobal();
 
 		// Check for non-changes
+		$availableActions = array_keys(
+			array_filter( $config->get( 'AbuseFilterActions' ) )
+		);
+		$actions = $newFilter->getActions();
+		$differences = self::compareVersions( $newFilter, $originalFilter, $availableActions );
 		if ( !count( $differences ) ) {
-			$validationStatus->setResult( true, false );
-			return $validationStatus;
-		}
-
-		// Check for restricted actions
-		$restrictions = $config->get( 'AbuseFilterActionRestrictions' );
-		if ( count( array_intersect_key(
-				array_filter( $restrictions ),
-				array_merge( $actions, $originalFilter->getActions() )
-			) )
-			&& !$afPermManager->canEditFilterWithRestrictedActions( $user )
-		) {
-			$validationStatus->error( 'abusefilter-edit-restricted' );
-			return $validationStatus;
+			return Status::newGood( false );
 		}
 
 		// Everything went fine, so let's save the filter
 		list( $new_id, $history_id ) =
 			self::doSaveFilter( $user, $newFilter, $differences, $filter, $actions, $wasGlobal, $dbw, $config );
-		$validationStatus->setResult( true, [ $new_id, $history_id ] );
-		return $validationStatus;
+		return Status::newGood( [ $new_id, $history_id ] );
 	}
 
 	/**
