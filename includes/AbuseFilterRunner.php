@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
@@ -773,13 +772,14 @@ class AbuseFilterRunner {
 				break;
 			case 'degroup':
 				if ( !$this->user->isAnon() ) {
+					$userGroupsManager = MediaWikiServices::getInstance()->getUserGroupManager();
 					// Pull the groups from the VariableHolder, so that they will always be computed.
 					// This allow us to pull the groups from the VariableHolder to undo the degroup
 					// via Special:AbuseFilter/revert.
 					$groups = $this->vars->getVar( 'user_groups', AbuseFilterVariableHolder::GET_LAX );
 					if ( $groups->type !== AFPData::DARRAY ) {
 						// Somehow, the variable wasn't set
-						$groups = $this->user->getEffectiveGroups();
+						$groups = $userGroupsManager->getUserEffectiveGroups( $this->user );
 						$this->vars->setVar( 'user_groups', $groups );
 					} else {
 						$groups = $groups->toNative();
@@ -787,7 +787,7 @@ class AbuseFilterRunner {
 					$this->vars->setVar( 'user_groups', $groups );
 
 					foreach ( $groups as $group ) {
-						$this->user->removeGroup( $group );
+						$userGroupsManager->removeUserFromGroup( $this->user, $group );
 					}
 
 					$message = [
@@ -931,49 +931,25 @@ class AbuseFilterRunner {
 		$isAutoBlock,
 		$preventEditOwnUserTalk
 	) {
+		$blockUserFactory = MediaWikiServices::getInstance()->getBlockUserFactory();
 		$filterUser = AbuseFilter::getFilterUser();
 		$reason = wfMessage(
 			'abusefilter-blockreason',
 			$ruleDesc, $ruleNumber
 		)->inContentLanguage()->text();
 
-		$block = new DatabaseBlock();
-		$block->setTarget( $target );
-		$block->setBlocker( $filterUser );
-		$block->setReason( $reason );
-		$block->isHardblock( false );
-		$block->isAutoblocking( $isAutoBlock );
-		$block->isCreateAccountBlocked( true );
-		$block->isUsertalkEditAllowed( !$preventEditOwnUserTalk );
-		$block->setExpiry( SpecialBlock::parseExpiryInput( $expiry ) );
-
-		$success = $block->insert();
-
-		if ( $success ) {
-			// Log it only if the block was successful
-			$logParams = [];
-			$logParams['5::duration'] = ( $block->getExpiry() === 'infinity' )
-				? 'indefinite'
-				: $expiry;
-			$flags = [ 'nocreate' ];
-			if ( !$block->isAutoblocking() && !IPUtils::isIPAddress( $target ) ) {
-				// Conditionally added same as SpecialBlock
-				$flags[] = 'noautoblock';
-			}
-			if ( $preventEditOwnUserTalk === true ) {
-				$flags[] = 'nousertalk';
-			}
-			$logParams['6::flags'] = implode( ',', $flags );
-
-			$logEntry = new ManualLogEntry( 'block', 'block' );
-			$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
-			$logEntry->setComment( $reason );
-			$logEntry->setPerformer( $filterUser );
-			$logEntry->setParameters( $logParams );
-			$blockIds = array_merge( [ $success['id'] ], $success['autoIds'] );
-			$logEntry->setRelations( [ 'ipb_id' => $blockIds ] );
-			$logEntry->publish( $logEntry->insert() );
-		}
+		$blockUserFactory->newBlockUser(
+			$target,
+			$filterUser,
+			$expiry,
+			$reason,
+			[
+				'isHardBlock' => false,
+				'isAutoblocking' => $isAutoBlock,
+				'isCreateAccountBlocked' => true,
+				'isUserTalkEditBlocked' => $preventEditOwnUserTalk
+			]
+		)->placeBlockUnsafe();
 	}
 
 	/**
