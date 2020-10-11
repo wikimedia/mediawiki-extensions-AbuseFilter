@@ -134,7 +134,8 @@
 		"MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\": "includes/LogFormatter/",
 		"MediaWiki\\Extension\\AbuseFilter\\Parser\\": "includes/ParserNS/",
 		"MediaWiki\\Extension\\AbuseFilter\\Filter\\": "includes/Filter/",
-		"MediaWiki\\Extension\\AbuseFilter\\Watcher\\": "includes/Watcher/"
+		"MediaWiki\\Extension\\AbuseFilter\\Watcher\\": "includes/Watcher/",
+		"MediaWiki\\Extension\\AbuseFilter\\Consequence\\": "includes/Consequence/"
 	},
 	"AutoloadClasses": {
 		"AbuseFilter": "includes/AbuseFilter.php",
@@ -181,6 +182,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\FilterImporter": "includes/FilterImporter.php",
 		"MediaWiki\\Extension\\AbuseFilter\\InvalidImportDataException": "includes/InvalidImportDataException.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterStore": "includes/FilterStore.php",
+		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesFactory": "includes/ConsequencesFactory.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",

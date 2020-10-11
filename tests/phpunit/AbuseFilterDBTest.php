@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -317,13 +319,13 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 
 	/**
 	 * @param array $rawConsequences A raw, unfiltered list of consequences
-	 * @param array $expected The expected, filtered list
+	 * @param array $expectedKeys
 	 * @param Title $title
 	 * @covers AbuseFilterRunner::getFilteredConsequences
-	 * @covers AbuseFilterRunner::removeRedundantConsequences
+	 * @covers AbuseFilterRunner::replaceArraysWithConsequences
 	 * @dataProvider provideConsequences
 	 */
-	public function testGetFilteredConsequences( $rawConsequences, $expected, Title $title ) {
+	public function testGetFilteredConsequences( $rawConsequences, $expectedKeys, Title $title ) {
 		$this->setMwGlobals( [
 			'wgAbuseFilterLocallyDisabledGlobalActions' => [
 				'flag' => false,
@@ -337,12 +339,22 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 				'tag' => false
 			]
 		] );
+		$fakeFilter = $this->createMock( Filter::class );
+		$fakeFilter->method( 'getName' )->willReturn( 'unused name' );
+		$fakeLookup = $this->createMock( FilterLookup::class );
+		$fakeLookup->method( 'getFilter' )->willReturn( $fakeFilter );
+		$this->setService( FilterLookup::SERVICE_NAME, $fakeLookup );
 		$user = $this->getTestUser()->getUser();
 		$vars = AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] );
 		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
-		$actual = $runner->getFilteredConsequences( $runner->removeRedundantConsequences( $rawConsequences ) );
+		$actual = $runner->getFilteredConsequences( $runner->replaceArraysWithConsequences( $rawConsequences ) );
 
-		$this->assertEquals( $expected, $actual );
+		$actualKeys = [];
+		foreach ( $actual as $filter => $actions ) {
+			$actualKeys[$filter] = array_keys( $actions );
+		}
+
+		$this->assertEquals( $expectedKeys, $actualKeys );
 	}
 
 	/**
@@ -379,24 +391,9 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 					]
 				],
 				[
-					2 => [
-						'warn' => [
-							'msg' => 'abusefilter-warning',
-							'shouldWarn' => true
-						]
-					],
-					13 => [
-						'throttle' => [
-							'throttled' => false,
-							'id' => '13',
-							'types' => [ 'user' ],
-							'period' => 15,
-							'global' => false
-						]
-					],
-					168 => [
-						'degroup' => []
-					]
+					2 => [ 'warn' ],
+					13 => [ 'throttle' ],
+					168 => [ 'degroup' ]
 				],
 				$title
 			],
@@ -423,23 +420,9 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 					]
 				],
 				[
-					3 => [
-						'tag' => [
-							'some tag'
-						]
-					],
-					'global-2' => [
-						'warn' => [
-							'msg' => 'abusefilter-beautiful-warning',
-							'shouldWarn' => true
-						]
-					],
-					4 => [
-						'block' => [
-							'expiry' => 'indefinite',
-							'blocktalk' => true
-						]
-					]
+					3 => [ 'tag' ],
+					'global-2' => [ 'warn' ],
+					4 => [ 'block' ]
 				],
 				$title
 			],
@@ -472,13 +455,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 				[
 					'global-1' => [],
 					1 => [],
-					2 => [
-						'degroup' => [],
-						'block' => [
-							'expiry' => 'never',
-							'blocktalk' => true
-						]
-					]
+					2 => [ 'degroup', 'block' ]
 				],
 				$title
 			],

@@ -2,6 +2,11 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\Consequence\BCConsequence;
+use MediaWiki\Extension\AbuseFilter\Consequence\Consequence;
+use MediaWiki\Extension\AbuseFilter\Consequence\ConsequencesDisablerConsequence;
+use MediaWiki\Extension\AbuseFilter\Consequence\HookAborterConsequence;
+use MediaWiki\Extension\AbuseFilter\Consequence\Parameters;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -10,9 +15,6 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Session\SessionManager;
-use MediaWiki\User\UserIdentity;
-use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -74,9 +76,6 @@ class AbuseFilterRunner {
 	/** @var ChangeTagger */
 	private $changeTagger;
 
-	/** @var UserIdentity */
-	private $filterUser;
-
 	/** @var FilterLookup */
 	private $filterLookup;
 
@@ -108,7 +107,6 @@ class AbuseFilterRunner {
 		$this->hookRunner = AbuseFilterHookRunner::getRunner();
 		$this->filterProfiler = AbuseFilterServices::getFilterProfiler();
 		$this->changeTagger = AbuseFilterServices::getChangeTagger();
-		$this->filterUser = AbuseFilterServices::getFilterUser()->getUser();
 		$this->filterLookup = AbuseFilterServices::getFilterLookup();
 		// TODO Inject, add a hook for custom watchers
 		$this->watchers = [ AbuseFilterServices::getEmergencyWatcher() ];
@@ -451,30 +449,19 @@ class AbuseFilterRunner {
 	 */
 	protected function executeFilterActions( array $filters ) : Status {
 		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
-		$consequences = $this->removeRedundantConsequences( $actionsByFilter );
+		$consequences = $this->replaceArraysWithConsequences( $actionsByFilter );
 		$actionsToTake = $this->getFilteredConsequences( $consequences );
 		$actionsTaken = array_fill_keys( $filters, [] );
 
 		$messages = [];
-
 		foreach ( $actionsToTake as $filter => $actions ) {
-			[ $filterID, $isGlobalFilter ] = AbuseFilter::splitGlobalName( $filter );
-			$filterObj = $this->filterLookup->getFilter( $filterID, $isGlobalFilter );
-			$filterPublicComments = $filterObj->getName();
 			foreach ( $actions as $action => $info ) {
-				$newMsg = $this->takeConsequenceAction(
-					$action,
-					$info,
-					$filterPublicComments,
-					$filter
-				);
+				[ $executed, $newMsg ] = $this->takeConsequenceAction( $info );
 
 				if ( $newMsg !== null ) {
 					$messages[] = $newMsg;
 				}
-				// Don't add it if throttle limit has been reached, or if the warning has already been shown
-				if ( ( $action !== 'throttle' || !$info['throttled'] ) &&
-					( $action !== 'warn' || $info['shouldWarn'] ) ) {
+				if ( $executed ) {
 					$actionsTaken[$filter][] = $action;
 				}
 			}
@@ -484,76 +471,17 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * Pre-check any "special" consequence and remove any further actions prevented by them. Specifically:
-	 * should be actually executed. Normalizations done here:
-	 * - For every filter with "throttle" enabled, remove other actions if the throttle counter hasn't been reached
-	 * - For every filter with "warn" enabled, remove other actions if the warning hasn't been shown
-	 *
-	 * @param array[] $actionsByFilter
-	 * @return array[]
-	 * @internal Temporary method
-	 */
-	public function getFilteredConsequences( array $actionsByFilter ) : array {
-		foreach ( $actionsByFilter as $filter => &$actions ) {
-			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
-
-			if ( isset( $actions['throttle'] ) ) {
-				$parameters = $actions['throttle'];
-				$throttleId = array_shift( $parameters );
-				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
-				$rateCount = (int)$rateCount;
-				$ratePeriod = (int)$ratePeriod;
-
-				$hitThrottle = false;
-
-				// The rest are throttle groups
-				foreach ( $parameters as $throttleType ) {
-					$hitThrottle = $this->isThrottled( $throttleId, $throttleType, $rateCount, $isGlobalFilter )
-						|| $hitThrottle;
-				}
-
-				$newParams = [
-					'throttled' => $hitThrottle,
-					'id' => $throttleId,
-					'types' => $parameters,
-					'period' => $ratePeriod,
-					'global' => $isGlobalFilter
-				];
-
-				$actions['throttle'] = $newParams;
-				if ( !$hitThrottle ) {
-					$actions = [ 'throttle' => $actions['throttle'] ];
-					continue;
-				}
-			}
-
-			if ( isset( $actions['warn'] ) ) {
-				$parameters = $actions['warn'];
-				$shouldWarn = $this->shouldBeWarned( $filter );
-				$msg = $parameters[0] ?? 'abusefilter-warning';
-				$actions['warn'] = [ 'msg' => $msg, 'shouldWarn' => $shouldWarn ];
-				if ( $shouldWarn ) {
-					$actions = [ 'warn' => $actions['warn'] ];
-					continue;
-				}
-			}
-		}
-		unset( $actions );
-
-		return $actionsByFilter;
-	}
-
-	/**
 	 * Remove consequences that we already know won't be executed. This includes:
 	 * - Only keep the longest block from all filters
 	 * - For global filters, remove locally disabled actions
 	 * - For every filter, remove "disallow" if a blocking action will be executed
+	 * Then, convert the remaining ones to Consequence objects.
 	 *
 	 * @param array[] $actionsByFilter
-	 * @return array[]
+	 * @return Consequence[][]
 	 * @internal Temporarily public
 	 */
-	public function removeRedundantConsequences( array $actionsByFilter ) : array {
+	public function replaceArraysWithConsequences( array $actionsByFilter ) : array {
 		global $wgAbuseFilterLocallyDisabledGlobalActions,
 			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 
@@ -574,40 +502,60 @@ class AbuseFilterRunner {
 				unset( $actions['disallow'] );
 			}
 
-			if ( isset( $actions['block'] ) ) {
-				$parameters = $actions['block'];
-				if ( count( $parameters ) === 3 ) {
-					// New type of filters with custom block
-					if ( $this->user->isAnon() ) {
-						$expiry = $parameters[1];
-					} else {
-						$expiry = $parameters[2];
-					}
-				} else {
-					// Old type with fixed expiry
-					if ( $this->user->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
-						// The user isn't logged in and the anon block duration
-						// doesn't default to $wgAbuseFilterBlockDuration.
-						$expiry = $wgAbuseFilterAnonBlockDuration;
-					} else {
-						$expiry = $wgAbuseFilterBlockDuration;
-					}
-				}
+			foreach ( $actions as $name => $parameters ) {
+				switch ( $name ) {
+					case 'throttle':
+					case 'warn':
+					case 'disallow':
+					case 'rangeblock':
+					case 'degroup':
+					case 'blockautopromote':
+					case 'tag':
+						$actions[$name] = $this->actionsParamsToConsequence( $name, $parameters, $filter );
+						break;
+					case 'block':
+						// TODO Move to a dedicated method and/or create a generic interface
+						if ( count( $parameters ) === 3 ) {
+							// New type of filters with custom block
+							if ( $this->user->isAnon() ) {
+								$expiry = $parameters[1];
+							} else {
+								$expiry = $parameters[2];
+							}
+						} else {
+							// Old type with fixed expiry
+							if ( $this->user->isAnon() && $wgAbuseFilterAnonBlockDuration !== null ) {
+								// The user isn't logged in and the anon block duration
+								// doesn't default to $wgAbuseFilterBlockDuration.
+								$expiry = $wgAbuseFilterAnonBlockDuration;
+							} else {
+								$expiry = $wgAbuseFilterBlockDuration;
+							}
+						}
 
-				$parsedExpiry = SpecialBlock::parseExpiryInput( $expiry );
-				if (
-					$maxBlock['expiry'] === -1 ||
-					$parsedExpiry > SpecialBlock::parseExpiryInput( $maxBlock['expiry'] )
-				) {
-					// Save the parameters to issue the block with
-					$maxBlock = [
-						'id' => $filter,
-						'expiry' => $expiry,
-						'blocktalk' => is_array( $parameters ) && in_array( 'blocktalk', $parameters )
-					];
+						$parsedExpiry = SpecialBlock::parseExpiryInput( $expiry );
+						if (
+							$maxBlock['expiry'] === -1 ||
+							$parsedExpiry > SpecialBlock::parseExpiryInput( $maxBlock['expiry'] )
+						) {
+							// Save the parameters to issue the block with
+							$maxBlock = [
+								'id' => $filter,
+								'expiry' => $expiry,
+								'blocktalk' => is_array( $parameters ) && in_array( 'blocktalk', $parameters )
+							];
+						}
+						// We'll re-add it later
+						unset( $actions['block'] );
+						break;
+					default:
+						$cons = $this->actionsParamsToConsequence( $name, $parameters, $filter );
+						if ( $cons !== null ) {
+							$actions[$name] = $cons;
+						} else {
+							unset( $actions[$name] );
+						}
 				}
-				// We'll re-add it later
-				unset( $actions['block'] );
 			}
 		}
 		unset( $actions );
@@ -615,398 +563,132 @@ class AbuseFilterRunner {
 		if ( $maxBlock['id'] !== null ) {
 			$id = $maxBlock['id'];
 			unset( $maxBlock['id'] );
-			$actionsByFilter[$id]['block'] = $maxBlock;
+			$actionsByFilter[$id]['block'] = $this->actionsParamsToConsequence( 'block', $maxBlock, $id );
 		}
 
 		return $actionsByFilter;
 	}
 
 	/**
-	 * Determines whether the throttle has been hit with the given parameters
-	 * @note If caching is disabled, incrWithInit will return false, so the throttle count will never be reached.
-	 *   This means that filters with 'throttle' enabled won't ever trigger any consequence.
-	 *
-	 * @param string $throttleId
-	 * @param string $types
-	 * @param int $rateCount
-	 * @param bool $global
-	 * @return bool
+	 * @param string $actionName
+	 * @param array $rawParams
+	 * @param int|string $filter
+	 * @return Consequence|null
 	 */
-	protected function isThrottled( string $throttleId, string $types, int $rateCount, bool $global = false ) : bool {
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$key = $this->throttleKey( $throttleId, $types, $global );
-		$newCount = (int)$stash->get( $key ) + 1;
+	private function actionsParamsToConsequence( string $actionName, array $rawParams, $filter ) : ?Consequence {
+		global $wgAbuseFilterBlockAutopromoteDuration, $wgAbuseFilterCustomActionsHandlers;
+		[ $filterID, $isGlobalFilter ] = AbuseFilter::splitGlobalName( $filter );
+		$filterObj = $this->filterLookup->getFilter( $filterID, $isGlobalFilter );
+		$consFactory = AbuseFilterServices::getConsequencesFactory();
 
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->debug(
-			'New value is {newCount} for throttle key {key}. Maximum is {rateCount}.',
-			[
-				'newCount' => $newCount,
-				'key' => $key,
-				'rateCount' => $rateCount,
-			]
+		$baseConsParams = new Parameters(
+			$filterObj,
+			$isGlobalFilter,
+			$this->user,
+			$this->title,
+			$this->action
 		);
 
-		return $newCount > $rateCount;
-	}
-
-	/**
-	 * Updates the throttle status with the given parameters
-	 *
-	 * @param string $throttleId
-	 * @param string $types
-	 * @param int $ratePeriod
-	 * @param bool $global
-	 */
-	protected function setThrottled( string $throttleId, string $types, int $ratePeriod, bool $global = false ) : void {
-		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
-		$key = $this->throttleKey( $throttleId, $types, $global );
-		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->debug(
-			'Increasing throttle key {key}',
-			[ 'key' => $key ]
-		);
-		$stash->incrWithInit( $key, $ratePeriod );
-	}
-
-	/**
-	 * @param string|int $filter
-	 * @return bool
-	 */
-	private function shouldBeWarned( $filter ) : bool {
-		// Make sure the session is started prior to using it
-		$session = SessionManager::getGlobalSession();
-		$session->persist();
-		$warnKey = $this->getWarnKey( $filter );
-		return ( !isset( $session[$warnKey] ) || !$session[$warnKey] );
-	}
-
-	/**
-	 * @param string|int $filter
-	 * @param bool $value
-	 */
-	private function setWarn( $filter, bool $value ) : void {
-		// Make sure the session is started prior to using it
-		$session = SessionManager::getGlobalSession();
-		$session->persist();
-		$warnKey = $this->getWarnKey( $filter );
-		$session[$warnKey] = $value;
-	}
-
-	/**
-	 * Generate a unique key to determine whether the user has already been warned.
-	 * We'll warn again if one of these changes: session, page, triggered filter, or action
-	 * @param string|int $filter
-	 * @return string
-	 */
-	private function getWarnKey( $filter ) : string {
-		return 'abusefilter-warned-' . md5( $this->title->getPrefixedText() ) .
-			'-' . $filter . '-' . $this->action;
-	}
-
-	/**
-	 * @param string $throttleId
-	 * @param string $type
-	 * @param bool $global
-	 * @return string
-	 */
-	protected function throttleKey( $throttleId, $type, $global = false ) {
-		global $wgAbuseFilterIsCentral, $wgAbuseFilterCentralDB;
-
-		$types = explode( ',', $type );
-
-		$identifiers = [];
-
-		foreach ( $types as $subtype ) {
-			$identifiers[] = $this->throttleIdentifier( $subtype );
-		}
-
-		$identifier = sha1( implode( ':', $identifiers ) );
-
-		$cache = MediaWikiServices::getInstance()->getMainObjectStash();
-		if ( $global && !$wgAbuseFilterIsCentral ) {
-			return $cache->makeGlobalKey(
-				'abusefilter', 'throttle', $wgAbuseFilterCentralDB, $throttleId, $type, $identifier
-			);
-		}
-
-		return $cache->makeKey( 'abusefilter', 'throttle', $throttleId, $type, $identifier );
-	}
-
-	/**
-	 * @param string $type
-	 * @return int|string
-	 */
-	protected function throttleIdentifier( $type ) {
-		$request = RequestContext::getMain()->getRequest();
-
-		switch ( $type ) {
-			case 'ip':
-				$identifier = $request->getIP();
-				break;
-			case 'user':
-				$identifier = $this->user->getId();
-				break;
-			case 'range':
-				$identifier = substr( IPUtils::toHex( $request->getIP() ), 0, 4 );
-				break;
-			case 'creationdate':
-				$reg = (int)$this->user->getRegistration();
-				$identifier = $reg - ( $reg % 86400 );
-				break;
-			case 'editcount':
-				// Hack for detecting different single-purpose accounts.
-				$identifier = (int)$this->user->getEditCount();
-				break;
-			case 'site':
-				$identifier = 1;
-				break;
-			case 'page':
-				$identifier = $this->title->getPrefixedText();
-				break;
-			default:
-				// Should never happen
-				// @codeCoverageIgnoreStart
-				$identifier = 0;
-				// @codeCoverageIgnoreEnd
-		}
-
-		return $identifier;
-	}
-
-	/**
-	 * @param string $action
-	 * @param array $parameters
-	 * @param string $ruleDescription
-	 * @param int|string $ruleNumber
-	 *
-	 * @return array|null a message describing the action that was taken,
-	 *         or null if no action was taken. The message is given as an array
-	 *         containing the message key followed by any message parameters.
-	 */
-	protected function takeConsequenceAction( $action, $parameters, $ruleDescription, $ruleNumber ) {
-		global $wgAbuseFilterCustomActionsHandlers, $wgAbuseFilterBlockAutopromoteDuration;
-
-		$message = null;
-
-		switch ( $action ) {
+		switch ( $actionName ) {
 			case 'throttle':
-				foreach ( $parameters['types'] as $type ) {
-					$this->setThrottled(
-						$parameters['id'],
-						$type,
-						$parameters['period'],
-						$parameters['global']
-					);
-				}
-				break;
+				$throttleId = array_shift( $rawParams );
+				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $rawParams ) );
+
+				$throttleParams = [
+					'id' => $throttleId,
+					'count' => (int)$rateCount,
+					'period' => (int)$ratePeriod,
+					'groups' => $rawParams,
+					'global' => $isGlobalFilter
+				];
+				return $consFactory->newThrottle( $baseConsParams, $throttleParams );
 			case 'warn':
-				$this->setWarn( $ruleNumber, $parameters[ 'shouldWarn' ] );
-				if ( !$parameters['shouldWarn'] ) {
-					break;
-				}
-
-				if ( isset( $parameters['msg'] ) && strlen( $parameters['msg'] ) ) {
-					$msg = $parameters['msg'];
-				} else {
-					$msg = 'abusefilter-warning';
-				}
-				$message = [ $msg, $ruleDescription, $ruleNumber ];
-				break;
+				return $consFactory->newWarn( $baseConsParams, $rawParams[0] ?? 'abusefilter-warning' );
 			case 'disallow':
-				$msg = $parameters[0] ?? 'abusefilter-disallowed';
-				$message = [ $msg, $ruleDescription, $ruleNumber ];
-				break;
+				return $consFactory->newDisallow( $baseConsParams, $rawParams[0] ?? 'abusefilter-disallowed' );
 			case 'rangeblock':
-				$this->doRangeBlock( $ruleDescription, $ruleNumber, '1 week' );
-
-				$message = [
-					'abusefilter-blocked-display',
-					$ruleDescription,
-					$ruleNumber
-				];
-				break;
+				return $consFactory->newRangeBlock( $baseConsParams, '1 week' );
 			case 'degroup':
-				if ( !$this->user->isAnon() ) {
-					$userGroupsManager = MediaWikiServices::getInstance()->getUserGroupManager();
-					// Pull the groups from the VariableHolder, so that they will always be computed.
-					// This allow us to pull the groups from the VariableHolder to undo the degroup
-					// via Special:AbuseFilter/revert.
-					$groups = $this->vars->getVar( 'user_groups', AbuseFilterVariableHolder::GET_LAX );
-					if ( $groups->type !== AFPData::DARRAY ) {
-						// Somehow, the variable wasn't set
-						$groups = $userGroupsManager->getUserEffectiveGroups( $this->user );
-						$this->vars->setVar( 'user_groups', $groups );
-					} else {
-						$groups = $groups->toNative();
-					}
-					$this->vars->setVar( 'user_groups', $groups );
-
-					$implicitGroups = $userGroupsManager->listAllImplicitGroups();
-					$removeGroups = array_diff( $groups, $implicitGroups );
-					foreach ( $removeGroups as $group ) {
-						$userGroupsManager->removeUserFromGroup( $this->user, $group );
-					}
-
-					$message = [
-						'abusefilter-degrouped',
-						$ruleDescription,
-						$ruleNumber
-					];
-
-					// Don't log it if there aren't any groups being removed!
-					if ( !count( $removeGroups ) ) {
-						break;
-					}
-
-					// TODO Core should provide a logging method
-					$logEntry = new ManualLogEntry( 'rights', 'rights' );
-					$logEntry->setPerformer( $this->filterUser );
-					$logEntry->setTarget( $this->user->getUserPage() );
-					$logEntry->setComment(
-						wfMessage(
-							'abusefilter-degroupreason',
-							$ruleDescription,
-							$ruleNumber
-						)->inContentLanguage()->text()
-					);
-					$logEntry->setParameters( [
-						'4::oldgroups' => $removeGroups,
-						'5::newgroups' => []
-					] );
-					$logEntry->publish( $logEntry->insert() );
-				}
-
-				break;
+				return $consFactory->newDegroup( $baseConsParams, $this->vars );
 			case 'blockautopromote':
-				if ( !$this->user->isAnon() ) {
-					$duration = $wgAbuseFilterBlockAutopromoteDuration * 86400;
-					$store = AbuseFilterServices::getBlockAutopromoteStore();
-					$blocked = $store->blockAutoPromote(
-						$this->user,
-						wfMessage(
-							'abusefilter-blockautopromotereason',
-							$ruleDescription,
-							$ruleNumber
-						)->inContentLanguage()->text(),
-						$duration
-					);
-
-					if ( $blocked ) {
-						$message = [
-							'abusefilter-autopromote-blocked',
-							$ruleDescription,
-							$ruleNumber,
-							$duration
-						];
-					}
-				}
-				break;
-
+				$duration = $wgAbuseFilterBlockAutopromoteDuration * 86400;
+				return $consFactory->newBlockAutopromote( $baseConsParams, $duration );
 			case 'block':
-				$this->doBlock( $ruleDescription, $ruleNumber, $parameters['expiry'], $parameters['blocktalk'] );
-				$message = [
-					'abusefilter-blocked-display',
-					$ruleDescription,
-					$ruleNumber
-				];
-				break;
-
+				return $consFactory->newBlock( $baseConsParams, $rawParams['expiry'], $rawParams['blocktalk'] );
 			case 'tag':
-				// Mark with a tag on recentchanges.
-				$this->changeTagger->addTags( $this->getSpecsForTagger(), $parameters );
-				break;
+				$accountName = $this->vars->getVar( 'accountname', AbuseFilterVariableHolder::GET_BC )->toNative();
+				return $consFactory->newTag( $baseConsParams, $accountName, $rawParams );
 			default:
-				if ( isset( $wgAbuseFilterCustomActionsHandlers[$action] ) ) {
-					$customFunction = $wgAbuseFilterCustomActionsHandlers[$action];
-					if ( is_callable( $customFunction ) ) {
-						$msg = call_user_func(
-							$customFunction,
-							$action,
-							$parameters,
-							$this->title,
-							$this->vars,
-							$ruleDescription,
-							$ruleNumber
-						);
-					}
-					if ( isset( $msg ) ) {
-						$message = [ $msg ];
-					}
+				if ( isset( $wgAbuseFilterCustomActionsHandlers[$actionName] ) ) {
+					$customFunction = $wgAbuseFilterCustomActionsHandlers[$actionName];
+					return new BCConsequence( $baseConsParams, $rawParams, $this->vars, $customFunction );
 				} else {
 					$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-					$logger->warning( "Unrecognised action $action" );
+					$logger->warning( "Unrecognised action $actionName" );
+					return null;
 				}
 		}
-
-		return $message;
 	}
 
 	/**
-	 * @param string $ruleDesc
-	 * @param string|int $ruleNumber
-	 * @param string $expiry
+	 * Pre-check any "special" consequence and remove any further actions prevented by them. Specifically:
+	 * should be actually executed. Normalizations done here:
+	 * - For every filter with "throttle" enabled, remove other actions if the throttle counter hasn't been reached
+	 * - For every filter with "warn" enabled, remove other actions if the warning hasn't been shown
+	 *
+	 * @param Consequence[][] $actionsByFilter
+	 * @return Consequence[][]
+	 * @internal Temporary method
 	 */
-	private function doRangeBlock( $ruleDesc, $ruleNumber, $expiry ) {
-		global $wgAbuseFilterRangeBlockSize, $wgBlockCIDRLimit;
+	public function getFilteredConsequences( array $actionsByFilter ) : array {
+		foreach ( $actionsByFilter as $filter => $actions ) {
+			/** @var ConsequencesDisablerConsequence[] $consequenceDisablers */
+			$consequenceDisablers = array_filter( $actions, function ( $el ) {
+				return $el instanceof ConsequencesDisablerConsequence;
+			} );
+			'@phan-var ConsequencesDisablerConsequence[] $consequenceDisablers';
+			uasort(
+				$consequenceDisablers,
+				function ( ConsequencesDisablerConsequence $x, ConsequencesDisablerConsequence $y ) {
+					return $x->getSort() - $y->getSort();
+				}
+			);
+			foreach ( $consequenceDisablers as $name => $consequence ) {
+				if ( $consequence->shouldDisableOtherConsequences() ) {
+					$actionsByFilter[$filter] = [ $name => $consequence ];
+					continue 2;
+				}
+			}
+		}
 
-		$ip = RequestContext::getMain()->getRequest()->getIP();
-		$type = IPUtils::isIPv6( $ip ) ? 'IPv6' : 'IPv4';
-		$CIDRsize = max( $wgAbuseFilterRangeBlockSize[$type], $wgBlockCIDRLimit[$type] );
-		$blockCIDR = $ip . '/' . $CIDRsize;
-
-		$target = IPUtils::sanitizeRange( $blockCIDR );
-		$autoblock = false;
-		$this->doBlockInternal( $ruleDesc, $ruleNumber, $target, $expiry, $autoblock, false );
+		return $actionsByFilter;
 	}
 
 	/**
-	 * @param string $ruleDesc
-	 * @param string|int $ruleNumber
-	 * @param string $expiry
-	 * @param bool $preventsTalk
+	 * @param Consequence $consequence
+	 * @return array [ Executed (bool), Message (?array) ] The message is given as an array
+	 *   containing the message key followed by any message parameters.
+	 * @todo Improve return value
 	 */
-	private function doBlock( $ruleDesc, $ruleNumber, $expiry, $preventsTalk ) {
-		$target = $this->user->getName();
-		$autoblock = true;
-		$this->doBlockInternal( $ruleDesc, $ruleNumber, $target, $expiry, $autoblock, $preventsTalk );
-	}
+	protected function takeConsequenceAction( Consequence $consequence ) : array {
+		// Special case
+		if ( $consequence instanceof BCConsequence ) {
+			$consequence->execute();
+			try {
+				$message = $consequence->getMessage();
+			} catch ( LogicException $_ ) {
+				// Swallow. Sigh.
+				$message = null;
+			}
+			return [ true, $message ];
+		}
 
-	/**
-	 * Perform a block by the AbuseFilter system user
-	 * @param string $ruleDesc
-	 * @param int|string $ruleNumber
-	 * @param string $target
-	 * @param string $expiry
-	 * @param bool $isAutoBlock
-	 * @param bool $preventEditOwnUserTalk
-	 */
-	private function doBlockInternal(
-		$ruleDesc,
-		$ruleNumber,
-		$target,
-		$expiry,
-		$isAutoBlock,
-		$preventEditOwnUserTalk
-	) {
-		$blockUserFactory = MediaWikiServices::getInstance()->getBlockUserFactory();
-		$reason = wfMessage(
-			'abusefilter-blockreason',
-			$ruleDesc, $ruleNumber
-		)->inContentLanguage()->text();
+		$res = $consequence->execute();
+		if ( $res && $consequence instanceof HookAborterConsequence ) {
+			$message = $consequence->getMessage();
+		}
 
-		$blockUserFactory->newBlockUser(
-			$target,
-			User::newFromIdentity( $this->filterUser ),
-			$expiry,
-			$reason,
-			[
-				'isHardBlock' => false,
-				'isAutoblocking' => $isAutoBlock,
-				'isCreateAccountBlocked' => true,
-				'isUserTalkEditBlocked' => $preventEditOwnUserTalk
-			]
-		)->placeBlockUnsafe();
+		return [ $res, $message ?? null ];
 	}
 
 	/**
@@ -1086,6 +768,7 @@ class AbuseFilterRunner {
 			$thisLog['afl_actions'] = implode( ',', $actions );
 
 			// Don't log if we were only throttling.
+			// TODO This check should be removed or rewritten using Consequence objects
 			if ( $thisLog['afl_actions'] !== 'throttle' ) {
 				$logRows[] = $thisLog;
 				// Global logging

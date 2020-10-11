@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -19,6 +20,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Session\SessionManager;
 
 // This file is actually covered by AbuseFilterServicesTest, but it's not possible to specify a path
 // in @covers annotations (https://github.com/sebastianbergmann/phpunit/issues/3794)
@@ -138,6 +140,23 @@ return [
 			$services->get( ChangeTagsManager::SERVICE_NAME ),
 			$services->get( FilterValidator::SERVICE_NAME ),
 			$services->get( FilterCompare::SERVICE_NAME )
+		);
+	},
+	ConsequencesFactory::SERVICE_NAME => function ( MediaWikiServices $services ): ConsequencesFactory {
+		return new ConsequencesFactory(
+			new ServiceOptions(
+				ConsequencesFactory::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->getBlockUserFactory(),
+			$services->getUserGroupManager(),
+			$services->getMainObjectStash(),
+			$services->get( ChangeTagger::SERVICE_NAME ),
+			$services->get( BlockAutopromoteStore::SERVICE_NAME ),
+			$services->get( FilterUser::SERVICE_NAME ),
+			SessionManager::getGlobalSession(),
+			RequestContext::getMain()->getRequest()->getIP()
 		);
 	},
 ];

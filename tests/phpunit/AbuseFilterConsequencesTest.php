@@ -46,6 +46,18 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Block
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\BlockAutopromote
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\BlockingConsequence
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Consequence
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Degroup
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Disallow
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Parameters
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\RangeBlock
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Tag
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Throttle
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Warn
+ * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesFactory
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	use AbuseFilterCreateAccountTestTrait;

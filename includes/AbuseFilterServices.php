@@ -112,4 +112,11 @@ class AbuseFilterServices {
 	public static function getFilterStore() : FilterStore {
 		return MediaWikiServices::getInstance()->getService( FilterStore::SERVICE_NAME );
 	}
+
+	/**
+	 * @return ConsequencesFactory
+	 */
+	public static function getConsequencesFactory() : ConsequencesFactory {
+		return MediaWikiServices::getInstance()->getService( ConsequencesFactory::SERVICE_NAME );
+	}
 }
