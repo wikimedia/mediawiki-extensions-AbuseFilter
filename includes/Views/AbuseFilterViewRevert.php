@@ -2,6 +2,7 @@
 
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/** @var int */
@@ -314,32 +315,25 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 				return AbuseFilter::unblockAutopromote( $target, $this->getUser(), $msg );
 			case 'degroup':
+				$userGroupsManager = MediaWikiServices::getInstance()->getUserGroupManager();
 				// Pull the user's groups from the vars.
-				$oldGroups = $result['vars']->getVar( 'user_groups' )->toNative();
-				$oldGroups = array_diff( $oldGroups, User::getImplicitGroups() );
+				$removedGroups = $result['vars']->getVar( 'user_groups' )->toNative();
+				$removedGroups = array_diff( $removedGroups, $userGroupsManager->listAllImplicitGroups() );
+				$user = User::newFromId( $result['userid'] );
+				$currentGroups = $userGroupsManager->getUserGroups( $user );
 
-				$rows = [];
-				foreach ( $oldGroups as $group ) {
-					$rows[] = [
-						'ug_user' => $result['userid'],
-						'ug_group' => $group
-					];
+				$done = false;
+				foreach ( $removedGroups as $group ) {
+					// TODO An addUserToGroups method with bulk updates would be nice
+					$done = $userGroupsManager->addUserToGroup( $user, $group ) || $done;
 				}
 
-				// Cheat a little bit. User::addGroup repeatedly is too slow.
-				$user = User::newFromId( $result['userid'] );
-				$currentGroups = $user->getGroups();
-				$newGroups = array_merge( $oldGroups, $currentGroups );
-
-				// Don't do anything if there are no groups to add.
-				if ( !count( array_diff( $newGroups, $currentGroups ) ) ) {
+				// Don't log if no groups were added.
+				if ( !$done ) {
 					return false;
 				}
 
-				$dbw = wfGetDB( DB_MASTER );
-				$dbw->insert( 'user_groups', $rows, __METHOD__, [ 'IGNORE' ] );
-				$user->invalidateCache();
-
+				// TODO Core should provide a logging method
 				$logEntry = new ManualLogEntry( 'rights', 'rights' );
 				$logEntry->setTarget( $user->getUserPage() );
 				$logEntry->setPerformer( $this->getUser() );
@@ -352,13 +346,13 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				);
 				$logEntry->setParameters( [
 					'4::oldgroups' => $currentGroups,
-					'5::newgroups' => $newGroups
+					'5::newgroups' => $userGroupsManager->getUserGroups( $user )
 				] );
 				$logEntry->publish( $logEntry->insert() );
 
 				return true;
 		}
 
-		throw new MWException( 'Invalid action' . $action );
+		throw new MWException( "Invalid action $action" );
 	}
 }

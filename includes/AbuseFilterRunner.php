@@ -803,6 +803,7 @@ class AbuseFilterRunner {
 						break;
 					}
 
+					// TODO Core should provide a logging method
 					$logEntry = new ManualLogEntry( 'rights', 'rights' );
 					$logEntry->setPerformer( AbuseFilter::getFilterUser() );
 					$logEntry->setTarget( $this->user->getUserPage() );
