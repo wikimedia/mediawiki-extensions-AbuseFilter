@@ -495,7 +495,7 @@ class AbuseFilterRunner {
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	protected function executeFilterActions( array $filters ) : Status {
-		global $wgMainCacheType, $wgAbuseFilterLocallyDisabledGlobalActions,
+		global $wgAbuseFilterLocallyDisabledGlobalActions,
 			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 
 		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters, false );
@@ -511,9 +511,7 @@ class AbuseFilterRunner {
 
 			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
 
-			// If the filter has "throttle" enabled and throttling is available via object
-			// caching, check to see if the user has hit the throttle.
-			if ( isset( $actions['throttle'] ) && $wgMainCacheType !== CACHE_NONE ) {
+			if ( isset( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle'];
 				$throttleId = array_shift( $parameters );
 				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
@@ -644,6 +642,8 @@ class AbuseFilterRunner {
 
 	/**
 	 * Determines whether the throttle has been hit with the given parameters
+	 * @note If caching is disabled, incrWithInit will return false, so the throttle count will never be reached.
+	 *   This means that filters with 'throttle' enabled won't ever trigger any consequence.
 	 *
 	 * @param string $throttleId
 	 * @param string $types
