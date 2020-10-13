@@ -117,6 +117,7 @@
 	"abusefilter-log-details-ip": "発信元のIPアドレス",
 	"abusefilter-log-details-checkuser": "利用者の調査",
 	"abusefilter-log-noactions": "なし",
+	"abusefilter-log-noactions-filter": "なし",
 	"abusefilter-log-details-diff": "編集でなされた変更",
 	"abusefilter-log-linkoncontribs": "不正利用記録",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|この利用者}}の不正利用記録",
