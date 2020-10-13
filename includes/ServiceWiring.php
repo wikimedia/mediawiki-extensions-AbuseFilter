@@ -2,6 +2,7 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
+use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
@@ -28,5 +29,8 @@ return [
 	},
 	PermManager::SERVICE_NAME => function ( MediaWikiServices $services ): PermManager {
 		return new PermManager( $services->getPermissionManager() );
+	},
+	ChangeTagger::SERVICE_NAME => function ( MediaWikiServices $services ) : ChangeTagger {
+		return new ChangeTagger();
 	},
 ];

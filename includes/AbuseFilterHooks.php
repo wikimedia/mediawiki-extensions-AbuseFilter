@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -327,28 +328,10 @@ class AbuseFilterHooks {
 	 * @param RecentChange $recentChange
 	 */
 	public static function onRecentChangeSave( RecentChange $recentChange ) {
-		$title = Title::makeTitle(
-			$recentChange->getAttribute( 'rc_namespace' ),
-			$recentChange->getAttribute( 'rc_title' )
-		);
-
-		$logType = $recentChange->getAttribute( 'rc_log_type' ) ?: 'edit';
-		if ( $logType === 'newusers' ) {
-			$action = $recentChange->getAttribute( 'rc_log_action' ) === 'autocreate' ?
-				'autocreateaccount' :
-				'createaccount';
-		} else {
-			$action = $logType;
-		}
-		$actionID = AbuseFilter::getTaggingActionId(
-			$action,
-			$title,
-			$recentChange->getAttribute( 'rc_user_text' )
-		);
-
-		if ( isset( AbuseFilter::$tagsToSet[$actionID] ) ) {
-			$recentChange->addTags( AbuseFilter::$tagsToSet[$actionID] );
-			unset( AbuseFilter::$tagsToSet[$actionID] );
+		$tagger = AbuseFilterServices::getChangeTagger();
+		$tags = $tagger->getTagsForRecentChange( $recentChange );
+		if ( $tags ) {
+			$recentChange->addTags( $tags );
 		}
 	}
 

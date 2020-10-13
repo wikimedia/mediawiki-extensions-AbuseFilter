@@ -44,6 +44,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers AbuseFilterPreAuthenticationProvider
  * @covers AbuseFilterParser
+ * @covers \MediaWiki\Extension\AbuseFilter\ChangeTagger
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	use AbuseFilterCreateAccountTestTrait;

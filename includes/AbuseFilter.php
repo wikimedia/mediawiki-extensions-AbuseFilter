@@ -29,12 +29,6 @@ class AbuseFilter {
 	public const GLOBAL_FILTER_PREFIX = 'global-';
 
 	/**
-	 * @var array Map of (action ID => string[])
-	 * @fixme avoid global state here
-	 */
-	public static $tagsToSet = [];
-
-	/**
 	 * @var array IDs of logged filters like [ page title => [ 'local' => [ids], 'global' => [ids] ] ].
 	 * @fixme avoid global state
 	 */
@@ -496,43 +490,6 @@ class AbuseFilter {
 		}
 
 		return $obj;
-	}
-
-	/**
-	 * Get an identifier for the given action to be used in self::$tagsToSet
-	 *
-	 * @param string $action The name of the current action, as used by AbuseFilter (e.g. 'edit'
-	 *   or 'createaccount')
-	 * @param Title $title The title where the current action is executed on. This is the user page
-	 *   for account creations.
-	 * @param string $username Of the user executing the action (as returned by User::getName()).
-	 *   For account creation, this is the name of the new account.
-	 * @return string
-	 */
-	public static function getTaggingActionId( $action, Title $title, $username ) {
-		return implode(
-			'-',
-			[
-				$title->getPrefixedText(),
-				$username,
-				$action
-			]
-		);
-	}
-
-	/**
-	 * @param array[] $tagsByAction Map of (integer => string[])
-	 */
-	public static function bufferTagsToSetByAction( array $tagsByAction ) {
-		foreach ( $tagsByAction as $actionID => $tags ) {
-			if ( !isset( self::$tagsToSet[ $actionID ] ) ) {
-				self::$tagsToSet[ $actionID ] = $tags;
-			} else {
-				self::$tagsToSet[ $actionID ] = array_unique(
-					array_merge( self::$tagsToSet[ $actionID ], $tags )
-				);
-			}
-		}
 	}
 
 	/**

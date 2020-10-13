@@ -27,4 +27,11 @@ class AbuseFilterServices {
 	public static function getPermissionManager() : AbuseFilterPermissionManager {
 		return MediaWikiServices::getInstance()->getService( AbuseFilterPermissionManager::SERVICE_NAME );
 	}
+
+	/**
+	 * @return ChangeTagger
+	 */
+	public static function getChangeTagger() : ChangeTagger {
+		return MediaWikiServices::getInstance()->getService( ChangeTagger::SERVICE_NAME );
+	}
 }

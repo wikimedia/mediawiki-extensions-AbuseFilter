@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
@@ -70,6 +71,9 @@ class AbuseFilterRunner {
 	/** @var FilterProfiler */
 	private $filterProfiler;
 
+	/** @var ChangeTagger */
+	private $changeTagger;
+
 	/**
 	 * @param User $user The user who performed the action being filtered
 	 * @param Title $title The title where the action being filtered was performed
@@ -94,6 +98,7 @@ class AbuseFilterRunner {
 		$this->action = $vars->getVar( 'action' )->toString();
 		$this->hookRunner = AbuseFilterHookRunner::getRunner();
 		$this->filterProfiler = AbuseFilterServices::getFilterProfiler();
+		$this->changeTagger = AbuseFilterServices::getChangeTagger();
 	}
 
 	/**
@@ -201,8 +206,7 @@ class AbuseFilterRunner {
 		$this->profileExecution( $result, $matchedFilters, $allFilters );
 
 		if ( $result['hitCondLimit'] ) {
-			$actionID = $this->getTaggingID();
-			AbuseFilter::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
+			$this->changeTagger->addConditionsLimitTag( $this->getSpecsForTagger() );
 		}
 
 		if ( count( $matchedFilters ) === 0 ) {
@@ -857,8 +861,7 @@ class AbuseFilterRunner {
 
 			case 'tag':
 				// Mark with a tag on recentchanges.
-				$actionID = $this->getTaggingID();
-				AbuseFilter::bufferTagsToSetByAction( [ $actionID => $parameters ] );
+				$this->changeTagger->addTags( $this->getSpecsForTagger(), $parameters );
 				break;
 			default:
 				if ( isset( $wgAbuseFilterCustomActionsHandlers[$action] ) ) {
@@ -1226,19 +1229,17 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * Helper function to get the ID used to identify an action for later tagging it.
-	 * @return string
+	 * @return array
 	 */
-	protected function getTaggingID() {
-		if ( strpos( $this->action, 'createaccount' ) === false ) {
-			$username = $this->user->getName();
-			$actionTitle = $this->title;
-		} else {
-			$username = $this->vars->getVar( 'accountname' )->toString();
-			$actionTitle = Title::makeTitleSafe( NS_USER, $username );
-		}
-		'@phan-var Title $actionTitle';
-
-		return AbuseFilter::getTaggingActionId( $this->action, $actionTitle, $username );
+	private function getSpecsForTagger() : array {
+		return [
+			'action' => $this->action,
+			'username' => $this->user->getName(),
+			'target' => $this->title,
+			'accountname' => $this->vars->getVar(
+				'accountname',
+				AbuseFilterVariableHolder::GET_BC
+			)->toNative()
+		];
 	}
 }

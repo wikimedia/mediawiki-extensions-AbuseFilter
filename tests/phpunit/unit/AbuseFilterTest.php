@@ -30,20 +30,6 @@
  */
 class AbuseFilterTest extends MediaWikiUnitTestCase {
 	/**
-	 * @covers AbuseFilter::bufferTagsToSetByAction
-	 */
-	public function testTagsToSetWillNotContainDuplicates() {
-		AbuseFilter::$tagsToSet = [];
-
-		$iterations = 3;
-		$actionID = wfRandomString( 30 );
-		while ( $iterations-- ) {
-			AbuseFilter::bufferTagsToSetByAction( [ $actionID => [ 'uniqueTag' ] ] );
-			$this->assertSame( [ 'uniqueTag' ], reset( AbuseFilter::$tagsToSet ) );
-		}
-	}
-
-	/**
 	 * Check that version comparing works well
 	 *
 	 * @param array $firstVersion [ stdClass, array ]
