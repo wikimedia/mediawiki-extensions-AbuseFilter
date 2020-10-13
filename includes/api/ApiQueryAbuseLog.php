@@ -23,6 +23,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\IPUtils;
 
@@ -45,6 +46,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		// Same check as in SpecialAbuseLog
 		$this->checkUserRightsAny( 'abusefilter-log' );
 
@@ -69,10 +71,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$this->checkUserRightsAny( 'abusefilter-log-detail' );
 		}
 		// Match permissions for viewing events on private filters to SpecialAbuseLog (bug 42814)
-		if ( $params['filter'] &&
-			!( AbuseFilter::canViewPrivate( $user ) ||
-				$this->getPermissionManager()->userHasRight( $user, 'abusefilter-log-private' ) )
-		) {
+		if ( $params['filter'] && !$afPermManager->canViewPrivateFiltersLogs( $user ) ) {
 			// A specific filter parameter is set but the user isn't allowed to view all filters
 			if ( !is_array( $params['filter'] ) ) {
 				$params['filter'] = [ $params['filter'] ];
@@ -142,7 +141,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 		if ( isset( $params['filter'] ) && $params['filter'] !== [] ) {
 			$this->addWhere( [ 'afl_filter' => $params['filter'] ] );
 		}
-		$this->addWhereIf( [ 'afl_deleted' => 0 ], !SpecialAbuseLog::canSeeHidden( $user ) );
+		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$afPermManager->canSeeHiddenLogEntries( $user ) );
 		if ( isset( $params['wiki'] ) ) {
 			// 'wiki' won't be set if $wgAbuseFilterIsCentral = false
 			$this->addWhereIf( [ 'afl_wiki' => $params['wiki'] ], $isCentral );
@@ -168,7 +167,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				break;
 			}
 			$hidden = SpecialAbuseLog::isHidden( $row );
-			if ( $hidden === true && !SpecialAbuseLog::canSeeHidden( $user ) ) {
+			if ( $hidden === true && !$afPermManager->canSeeHiddenLogEntries( $user ) ) {
 				continue;
 			}
 			if ( $hidden === 'implicit' ) {
@@ -180,7 +179,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				}
 			}
 			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-			$canSeeDetails = SpecialAbuseLog::canSeeDetails( $user, $filterID, $global );
+			$canSeeDetails = $afPermManager->canSeeLogDetails( $user, $filterID, $global );
 
 			$entry = [];
 			if ( $fld_ids ) {

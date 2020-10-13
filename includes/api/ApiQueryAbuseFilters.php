@@ -23,6 +23,8 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 /**
  * Query module to list abuse filter details.
  *
@@ -43,6 +45,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	 */
 	public function execute() {
 		$user = $this->getUser();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$this->checkUserRightsAny( 'abusefilter-view' );
 
 		$params = $this->extractRequestParams();
@@ -100,7 +103,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$showhidden = AbuseFilter::canViewPrivate( $user );
+		$showhidden = $afPermManager->canViewPrivateFilters( $user );
 
 		$count = 0;
 		foreach ( $res as $row ) {

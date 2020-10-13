@@ -875,6 +875,7 @@ class AbuseFilter {
 		IDatabase $dbw,
 		Config $config
 	) {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$validationStatus = Status::newGood();
 
 		// Check the syntax
@@ -953,8 +954,8 @@ class AbuseFilter {
 		// Don't allow adding a new global rule, or updating a
 		// rule that is currently global, without permissions.
 		if (
-			!self::canEditFilter( $user, $newRow ) ||
-			!self::canEditFilter( $user, $originalRow )
+			!$afPermManager->canEditFilter( $user, $newRow ) ||
+			!$afPermManager->canEditFilter( $user, $originalRow )
 		) {
 			$validationStatus->fatal( 'abusefilter-edit-notallowed-global' );
 			return $validationStatus;
@@ -983,8 +984,7 @@ class AbuseFilter {
 				array_filter( $restrictions ),
 				array_merge( $actions, $originalActions )
 			) )
-			&& !MediaWikiServices::getInstance()->getPermissionManager()
-				->userHasRight( $user, 'abusefilter-modify-restricted' )
+			&& !$afPermManager->canEditFilterWithRestrictedActions( $user )
 		) {
 			$validationStatus->error( 'abusefilter-edit-restricted' );
 			return $validationStatus;
@@ -1588,52 +1588,6 @@ class AbuseFilter {
 			->getDBLoadBalancerFactory()
 			->getMainLB( $wgAbuseFilterCentralDB )
 			->getConnectionRef( $index, [], $wgAbuseFilterCentralDB );
-	}
-
-	/**
-	 * @param User $user
-	 * @return bool
-	 */
-	public static function canEdit( User $user ) {
-		$block = $user->getBlock();
-		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
-
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$permissionManager->userHasRight( $user, 'abusefilter-modify' )
-		);
-	}
-
-	/**
-	 * @param User $user
-	 * @return bool
-	 */
-	public static function canEditGlobal( User $user ) {
-		return MediaWikiServices::getInstance()->getPermissionManager()
-			->userHasRight( $user, 'abusefilter-modify-global' );
-	}
-
-	/**
-	 * Whether the user can edit the given filter.
-	 *
-	 * @param User $user
-	 * @param object $row Filter row
-	 * @return bool
-	 */
-	public static function canEditFilter( User $user, $row ) {
-		return (
-			self::canEdit( $user ) &&
-			!( isset( $row->af_global ) && $row->af_global == 1 && !self::canEditGlobal( $user ) )
-		);
-	}
-
-	/**
-	 * @param User $user
-	 * @return bool
-	 */
-	public static function canViewPrivate( User $user ) {
-		return MediaWikiServices::getInstance()->getPermissionManager()
-			->userHasAnyRight( $user, 'abusefilter-modify', 'abusefilter-view-private' );
 	}
 
 	/**

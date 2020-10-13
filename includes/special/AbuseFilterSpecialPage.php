@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
 /**
  * Parent class for AbuseFilter special pages.
@@ -12,6 +12,7 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 	 * @param string $pageType
 	 */
 	protected function addNavigationLinks( $pageType ) {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$user = $this->getUser();
 
 		$linkDefs = [
@@ -20,15 +21,13 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 			'examine' => 'Special:AbuseFilter/examine',
 		];
 
-		if ( MediaWikiServices::getInstance()->getPermissionManager()
-			->userHasRight( $user, 'abusefilter-log' )
-		) {
+		if ( $afPermManager->canViewAbuseLog( $user ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'log' => 'Special:AbuseLog'
 			] );
 		}
 
-		if ( AbuseFilter::canViewPrivate( $user ) ) {
+		if ( $afPermManager->canViewPrivateFilters( $user ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'test' => 'Special:AbuseFilter/test',
 				'tools' => 'Special:AbuseFilter/tools'

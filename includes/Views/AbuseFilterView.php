@@ -66,14 +66,15 @@ abstract class AbuseFilterView extends ContextSource {
 	) {
 		$this->getOutput()->enableOOUI();
 		$user = $this->getUser();
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 
 		// Rules are in English
 		$editorAttribs = [ 'dir' => 'ltr' ];
 
 		$noTestAttrib = [];
 		$isUserAllowed = $needsModifyRights ?
-			AbuseFilter::canEdit( $user ) :
-			AbuseFilter::canViewPrivate( $user );
+			$afPermManager->canEdit( $user ) :
+			$afPermManager->canViewPrivateFilters( $user );
 		if ( !$isUserAllowed ) {
 			$noTestAttrib['disabled'] = 'disabled';
 			$addResultDiv = false;

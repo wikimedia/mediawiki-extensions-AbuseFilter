@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 
 class ApiAbuseFilterEvalExpression extends ApiBase {
@@ -7,8 +8,9 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 	 * @see ApiBase::execute()
 	 */
 	public function execute() {
+		$afPermManager = AbuseFilterServices::getPermissionManager();
 		// "Anti-DoS"
-		if ( !AbuseFilter::canViewPrivate( $this->getUser() ) ) {
+		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canteval', 'permissiondenied' );
 		}
 
