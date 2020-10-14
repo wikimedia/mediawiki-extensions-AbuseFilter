@@ -2,7 +2,7 @@
 
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
-	public const PAGE_NAME = 'AbuseFilter';
+	private const PAGE_NAME = 'AbuseFilter';
 
 	/**
 	 * @inheritDoc
@@ -59,7 +59,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		$this->addNavigationLinks( $pageType );
 
 		/** @var AbuseFilterView $v */
-		$v = new $view( $this, $params );
+		$v = new $view( $this->getContext(), $this->getLinkRenderer(), $params );
 		$v->show();
 	}
 
@@ -132,5 +132,15 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		}
 
 		return [ AbuseFilterViewList::class, 'home', [] ];
+	}
+
+	/**
+	 * Static variant to get the associated Title.
+	 *
+	 * @param string|int $subpage
+	 * @return Title
+	 */
+	public static function getTitleForSubpage( $subpage ) : Title {
+		return self::getTitleFor( self::PAGE_NAME, $subpage );
 	}
 }

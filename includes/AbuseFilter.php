@@ -1134,9 +1134,7 @@ class AbuseFilter {
 		$subtype = $filter === null ? 'create' : 'modify';
 		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
 		$logEntry->setPerformer( $user );
-		$logEntry->setTarget(
-			SpecialPage::getTitleFor( SpecialAbuseFilter::PAGE_NAME, (string)$new_id )
-		);
+		$logEntry->setTarget( SpecialAbuseFilter::getTitleForSubpage( (string)$new_id ) );
 		$logEntry->setParameters( [
 			'historyId' => $history_id,
 			'newId' => $new_id

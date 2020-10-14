@@ -1,40 +1,33 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Linker\LinkRenderer;
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
 	/**
-	 * @var string|int|null The ID of the current filter, null if new
-	 */
-	public $mFilter;
-	/**
 	 * @var bool Whether the form was submitted
 	 */
 	public $mSubmit;
-	/**
-	 * @var SpecialAbuseFilter The related special page object
-	 */
-	public $mPage;
 	/**
 	 * @var array The parameters of the current request
 	 */
 	public $mParams;
 
 	/**
-	 * @var \MediaWiki\Linker\LinkRenderer
+	 * @var LinkRenderer
 	 */
 	protected $linkRenderer;
 
 	/**
-	 * @param SpecialAbuseFilter $page
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
 	 * @param array $params
 	 */
-	public function __construct( SpecialAbuseFilter $page, $params ) {
-		$this->mPage = $page;
+	public function __construct( IContextSource $context, LinkRenderer $linkRenderer, array $params ) {
 		$this->mParams = $params;
-		$this->setContext( $this->mPage->getContext() );
-		$this->linkRenderer = $page->getLinkRenderer();
+		$this->setContext( $context );
+		$this->linkRenderer = $linkRenderer;
 	}
 
 	/**
@@ -42,7 +35,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @return Title
 	 */
 	public function getTitle( $subpage = '' ) {
-		return $this->mPage->getPageTitle( $subpage );
+		return SpecialAbuseFilter::getTitleForSubpage( $subpage );
 	}
 
 	/**
