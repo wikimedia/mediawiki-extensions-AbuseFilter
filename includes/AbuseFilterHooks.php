@@ -7,11 +7,9 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
-use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
 class AbuseFilterHooks {
-	private const FETCH_ALL_TAGS_KEY = 'abusefilter-fetch-all-tags';
 
 	/** @var WikiPage|null Make sure edit filter & edit save hooks match */
 	private static $lastEditPage = null;
@@ -338,107 +336,27 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * Purge all cache related to tags, both within AbuseFilter and in core
-	 */
-	public static function purgeTagCache() {
-		ChangeTags::purgeTagCacheAll();
-
-		$services = MediaWikiServices::getInstance();
-		$cache = $services->getMainWANObjectCache();
-
-		$cache->delete(
-			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, 0 )
-		);
-
-		$cache->delete(
-			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, 1 )
-		);
-	}
-
-	/**
-	 * @param array &$tags
-	 * @param bool $enabled
-	 */
-	private static function fetchAllTags( array &$tags, $enabled ) {
-		$services = MediaWikiServices::getInstance();
-		$cache = $services->getMainWANObjectCache();
-		$fname = __METHOD__;
-
-		$afTags = $cache->getWithSetCallback(
-			// Key to store the cached value under
-			$cache->makeKey( self::FETCH_ALL_TAGS_KEY, (int)$enabled ),
-			// Time-to-live (in seconds)
-			$cache::TTL_MINUTE,
-			// Function that derives the new key value
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled, $fname ) {
-				global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral;
-
-				$dbr = wfGetDB( DB_REPLICA );
-				// Account for any snapshot/replica DB lag
-				$setOpts += Database::getCacheSetOptions( $dbr );
-
-				// This is a pretty awful hack.
-
-				$where = [ 'afa_consequence' => 'tag', 'af_deleted' => false ];
-				if ( $enabled ) {
-					$where['af_enabled'] = true;
-				}
-				$res = $dbr->select(
-					[ 'abuse_filter_action', 'abuse_filter' ],
-					'afa_parameters',
-					$where,
-					$fname,
-					[],
-					[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
-				);
-
-				$tags = [];
-				foreach ( $res as $row ) {
-					$tags = array_merge(
-						$row->afa_parameters ? explode( "\n", $row->afa_parameters ) : [],
-						$tags
-					);
-				}
-
-				if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
-					$dbr = AbuseFilter::getCentralDB( DB_REPLICA );
-					$res = $dbr->select(
-						[ 'abuse_filter_action', 'abuse_filter' ],
-						'afa_parameters',
-						[ 'af_global' => 1 ] + $where,
-						$fname,
-						[],
-						[ 'abuse_filter' => [ 'INNER JOIN', 'afa_filter=af_id' ] ]
-					);
-
-					foreach ( $res as $row ) {
-						$tags = array_merge(
-							$row->afa_parameters ? explode( "\n", $row->afa_parameters ) : [],
-							$tags
-						);
-					}
-				}
-
-				return array_unique( $tags );
-			}
-		);
-
-		$afTags[] = 'abusefilter-condition-limit';
-		$tags = array_merge( $tags, $afTags );
-	}
-
-	/**
 	 * @param string[] &$tags
 	 */
 	public static function onListDefinedTags( array &$tags ) {
-		self::fetchAllTags( $tags, false );
+		$manager = AbuseFilterServices::getChangeTagsManager();
+		$tags = array_merge(
+			$tags,
+			$manager->getTagsDefinedByFilters(),
+			[ $manager->getCondsLimitTag() ]
+		);
 	}
 
 	/**
 	 * @param string[] &$tags
 	 */
 	public static function onChangeTagsListActive( array &$tags ) {
-		self::fetchAllTags( $tags, true );
+		$manager = AbuseFilterServices::getChangeTagsManager();
+		$tags = array_merge(
+			$tags,
+			$manager->getTagsDefinedByActiveFilters(),
+			[ $manager->getCondsLimitTag() ]
+		);
 	}
 
 	/**
