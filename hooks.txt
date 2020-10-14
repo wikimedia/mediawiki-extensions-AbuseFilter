@@ -1,7 +1,7 @@
 This document describes how event hooks work in the AbuseFilter extension.
 
 For a more comprehensive guide to hooks, navigate to your root MediaWiki
-directory and read docs/hooks.txt.
+directory and read docs/Hooks.md.
 
 == Events and parameters ==
 This is a list of known events and parameters; please add to it if you're going
