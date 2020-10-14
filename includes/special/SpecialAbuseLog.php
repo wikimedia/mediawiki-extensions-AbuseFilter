@@ -1080,8 +1080,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
 
-		$actionLinks = [];
-
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
 		$diffLink = false;
@@ -1165,8 +1163,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		if ( $global ) {
 			// Pull global filter description
-			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
-				AbuseFilter::getGlobalFilterDescription( $filterID ) );
+			$globalDesc = AbuseFilter::getGlobalFilterDescription( $filterID );
+			if ( $globalDesc !== null ) {
+				$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $globalDesc );
+			} else {
+				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
+			}
 			$filter_hidden = null;
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
@@ -1175,6 +1177,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		if ( $this->afPermissionManager->canSeeLogDetails( $user, $filterID, $global, $filter_hidden ) ) {
+			$actionLinks = [];
+
 			if ( $isListItem ) {
 				$detailsLink = $linkRenderer->makeKnownLink(
 					$this->getPageTitle( $row->afl_id ),
@@ -1206,13 +1210,18 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 
 			if ( $global ) {
-				$globalURL = WikiMap::getForeignURL(
-					$this->getConfig()->get( 'AbuseFilterCentralDB' ),
-					'Special:AbuseFilter/' . $filterID
-				);
-				$linkText = $this->msg( 'abusefilter-log-detailedentry-global' )
-					->numParams( $filterID )->text();
-				$filterLink = Linker::makeExternalLink( $globalURL, $linkText );
+				$centralDb = $this->getConfig()->get( 'AbuseFilterCentralDB' );
+				$linkMsg = $this->msg( 'abusefilter-log-detailedentry-global' )
+					->numParams( $filterID );
+				if ( $centralDb !== null ) {
+					$globalURL = WikiMap::getForeignURL(
+						$centralDb,
+						'Special:AbuseFilter/' . $filterID
+					);
+					$filterLink = Linker::makeExternalLink( $globalURL, $linkMsg->text() );
+				} else {
+					$filterLink = $linkMsg->escaped();
+				}
 			} else {
 				$title = SpecialPage::getTitleFor( 'AbuseFilter', $filterID );
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-local' )
