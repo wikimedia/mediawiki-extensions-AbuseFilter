@@ -117,6 +117,11 @@ li.mw-abusefilter-changeslist-nomatch {
 	width: 100%; /* So that we can use relative width for mw-abusefilter-editor */
 }
 
+#mw-abusefilter-editing-form .mw-label {
+	/* See T231962, the 100% width set above may squeeze the labels */
+	white-space: nowrap;
+}
+
 div.mw-abusefilter-editor {
 	width: 65%; /* Same as wpFilterRules and mw-abusefilter-notes-editor */
 	height: 30em; /* Similar to wpFilterRules */
