@@ -116,6 +116,7 @@
 	"abusefilter-log-detailslink": "Link text for a link to abuse filter log details.\n{{Identical|Detail}}",
 	"abusefilter-log-diff": "Diff link text to a revision associated with an AbuseFilter log entry\n{{Identical|Diff}}",
 	"abusefilter-log-hidelink": "Link text in abuse filter log line to hide (when visible) or show (when hidden) a link to the log entry details.",
+	"abusefilter-log-description-not-available": "Placeholder text for when a filter description could not be shown. Used as parameter $7 in {{msg-mw|Abusefilter-log-detailedentry-meta}}.",
 	"abusefilter-log-details-legend": "Legend for abuse filter log entry details. Parameters:\n* $1 is a filter ID.",
 	"abusefilter-log-details-var": "Caption of a column on a detail view of [[Special:AbuseLog]]\n{{Identical|Variable}}",
 	"abusefilter-log-details-val": "Caption of a column on a detail view of [[Special:AbuseLog]]\n{{Identical|Value}}",

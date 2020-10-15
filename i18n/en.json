@@ -78,6 +78,7 @@
 	"abusefilter-log-detailslink": "details",
 	"abusefilter-log-diff": "diff",
 	"abusefilter-log-hidelink": "adjust visibility",
+	"abusefilter-log-description-not-available": "not available",
 	"abusefilter-log-details-legend": "Details for log entry $1",
 	"abusefilter-log-details-var": "Variable",
 	"abusefilter-log-details-val": "Value",

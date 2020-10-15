@@ -1429,13 +1429,13 @@ class AbuseFilter {
 
 	/**
 	 * @param int $filterID
-	 * @return string
+	 * @return string|null
 	 */
-	public static function getGlobalFilterDescription( $filterID ) {
+	public static function getGlobalFilterDescription( $filterID ) : ?string {
 		global $wgAbuseFilterCentralDB;
 
 		if ( !$wgAbuseFilterCentralDB ) {
-			return '';
+			return null;
 		}
 
 		static $cache = [];
@@ -1445,7 +1445,7 @@ class AbuseFilter {
 
 		$fdb = self::getCentralDB( DB_REPLICA );
 
-		$cache[$filterID] = $fdb->selectField(
+		$cache[$filterID] = (string)$fdb->selectField(
 			'abuse_filter',
 			'af_public_comments',
 			[ 'af_id' => $filterID ],
