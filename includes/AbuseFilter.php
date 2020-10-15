@@ -24,28 +24,6 @@ class AbuseFilter {
 	public static $logIds = [];
 
 	/**
-	 * @var string[] The FULL list of fields in the abuse_filter table
-	 * @internal
-	 */
-	public const ALL_ABUSE_FILTER_FIELDS = [
-		'af_id',
-		'af_pattern',
-		'af_user',
-		'af_user_text',
-		'af_timestamp',
-		'af_enabled',
-		'af_comments',
-		'af_public_comments',
-		'af_hidden',
-		'af_hit_count',
-		'af_throttled',
-		'af_deleted',
-		'af_actions',
-		'af_global',
-		'af_group'
-	];
-
-	/**
 	 * @var array Actions which may harm the user. Only retrieve via self::getDangerousActions
 	 * @internal
 	 */
@@ -299,23 +277,6 @@ class AbuseFilter {
 		[ $filterID, $global ] = self::splitGlobalName( $filter );
 		$lookup = AbuseFilterServices::getFilterLookup();
 		return $lookup->getFilter( $filterID, $global )->toDatabaseRow();
-	}
-
-	/**
-	 * Checks whether the given object represents a full abuse_filter DB row
-	 * @param stdClass $row
-	 * @return bool
-	 */
-	public static function isFullAbuseFilterRow( stdClass $row ) {
-		$actual = array_keys( get_object_vars( $row ) );
-
-		if (
-			count( $actual ) !== count( self::ALL_ABUSE_FILTER_FIELDS )
-			|| array_diff( self::ALL_ABUSE_FILTER_FIELDS, $actual )
-		) {
-			return false;
-		}
-		return true;
 	}
 
 	/**

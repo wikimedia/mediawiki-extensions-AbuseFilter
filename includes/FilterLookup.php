@@ -23,6 +23,27 @@ class FilterLookup implements IDBAccessObject {
 	public const SERVICE_NAME = 'AbuseFilterFilterLookup';
 
 	/**
+	 * @var string[] The FULL list of fields in the abuse_filter table
+	 */
+	private const ALL_ABUSE_FILTER_FIELDS = [
+		'af_id',
+		'af_pattern',
+		'af_user',
+		'af_user_text',
+		'af_timestamp',
+		'af_enabled',
+		'af_comments',
+		'af_public_comments',
+		'af_hidden',
+		'af_hit_count',
+		'af_throttled',
+		'af_deleted',
+		'af_actions',
+		'af_global',
+		'af_group'
+	];
+
+	/**
 	 * @var Filter[] Individual filters cache. Keys can be integer IDs, or global names
 	 */
 	private $cache = [];
@@ -79,7 +100,7 @@ class FilterLookup implements IDBAccessObject {
 
 			$row = $dbr->selectRow(
 				'abuse_filter',
-				AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
+				self::ALL_ABUSE_FILTER_FIELDS,
 				[ 'af_id' => $filterID ],
 				__METHOD__,
 				$dbOptions
@@ -158,7 +179,7 @@ class FilterLookup implements IDBAccessObject {
 		// an occasion to refresh the cache later
 		$rows = $dbr->select(
 			'abuse_filter',
-			AbuseFilter::ALL_ABUSE_FILTER_FIELDS,
+			self::ALL_ABUSE_FILTER_FIELDS,
 			$where,
 			__METHOD__,
 			$dbOptions

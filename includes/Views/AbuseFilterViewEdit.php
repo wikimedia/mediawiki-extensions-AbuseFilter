@@ -4,19 +4,13 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
-use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
-use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
-	// Temporary hack
-	private const EXPORT_EXCLUDED_PROPS = [
-		'af_id', 'af_timestamp', 'af_user', 'af_user_text', 'af_hit_count', 'af_throttled'
-	];
 	/**
 	 * @var int|null The history ID of the current filter
 	 */
@@ -457,12 +451,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-history'] =
 				$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display );
 
-			// Add export
-			$exportRow = (object)array_diff_key(
-				get_object_vars( $filterObj->toDatabaseRow() ),
-				array_fill_keys( self::EXPORT_EXCLUDED_PROPS, 1 )
-			);
-			$exportText = FormatJson::encode( [ 'row' => $exportRow, 'actions' => $actions ] );
+			$importer = AbuseFilterServices::getFilterImporter();
+			$exportText = $importer->encodeData( $filterObj, $actions );
 			$tools .= Xml::tags( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
 				$this->msg( 'abusefilter-edit-export' )->parse() );
 			$tools .=
@@ -1191,45 +1181,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return Filter|null
 	 */
 	private function loadImportRequest() : ?Filter {
-		$validGroups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
-		$globalFiltersEnabled = $this->getConfig()->get( 'AbuseFilterIsCentral' );
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
 			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
-		$importData = FormatJson::decode( $request->getVal( 'wpImportText' ) );
-		if ( !$this->isValidImportData( $importData ) ) {
+		$importer = AbuseFilterServices::getFilterImporter();
+		try {
+			$filter = $importer->decodeData( $request->getVal( 'wpImportText' ) );
+		} catch ( InvalidImportDataException $_ ) {
 			return null;
 		}
 
-		$importRow = $importData->row;
-		$actions = wfObjectToArray( $importData->actions );
-
-		return new MutableFilter(
-			new Specs(
-				$importRow->af_pattern,
-				$importRow->af_comments,
-				$importRow->af_public_comments,
-				array_keys( $actions ),
-				// Keep the group only if it exists on this wiki
-				in_array( $importRow->af_group, $validGroups, true ) ? $importRow->af_group : 'default'
-			),
-			new Flags(
-				(bool)$importRow->af_enabled,
-				(bool)$importRow->af_deleted,
-				(bool)$importRow->af_hidden,
-				// And also make it global only if global filters are enabled here
-				$importRow->af_global && $globalFiltersEnabled
-			),
-			$actions,
-			new LastEditInfo(
-				0,
-				'',
-				''
-			)
-		);
+		return $filter;
 	}
 
 	/**
@@ -1314,48 +1279,5 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'wgAbuseFilterDefaultDisallowMessage',
 			$this->getConfig()->get( 'AbuseFilterDefaultDisallowMessage' )
 		);
-	}
-
-	/**
-	 * Perform basic validation on the JSON-decoded import data. This doesn't check if parameters
-	 * are valid etc., but only if the shape of the object is right.
-	 * @todo This should live in ViewImport, but that's nontrivial due to form action
-	 *
-	 * @param mixed $data Already JSON-decoded
-	 * @return bool
-	 */
-	private function isValidImportData( $data ) {
-		global $wgAbuseFilterActions;
-
-		if ( !is_object( $data ) ) {
-			return false;
-		}
-
-		$arr = get_object_vars( $data );
-
-		$expectedKeys = [ 'row' => true, 'actions' => true ];
-		if ( count( $arr ) !== count( $expectedKeys ) || array_diff_key( $arr, $expectedKeys ) ) {
-			return false;
-		}
-
-		if ( !is_object( $arr['row'] ) || !( is_object( $arr['actions'] ) || $arr['actions'] === [] ) ) {
-			return false;
-		}
-
-		foreach ( $arr['actions'] as $action => $params ) {
-			if ( !array_key_exists( $action, $wgAbuseFilterActions ) || !is_array( $params ) ) {
-				return false;
-			}
-		}
-
-		$completeRow = (object)array_merge(
-			get_object_vars( $arr['row'] ),
-			array_fill_keys( self::EXPORT_EXCLUDED_PROPS, 1 )
-		);
-		if ( !AbuseFilter::isFullAbuseFilterRow( $completeRow ) ) {
-			return false;
-		}
-
-		return true;
 	}
 }
