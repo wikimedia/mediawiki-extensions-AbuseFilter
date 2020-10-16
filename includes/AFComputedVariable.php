@@ -164,7 +164,7 @@ class AFComputedVariable {
 	 * @throws AFPException
 	 */
 	public function compute( AbuseFilterVariableHolder $vars ) {
-		// TODO: find a way to inject the User object from hook parameters.
+		// phpcs:ignore MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgUser
 		global $wgUser;
 
 		// Used for parsing wikitext from saved revisions and checking for
