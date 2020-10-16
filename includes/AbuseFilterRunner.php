@@ -138,7 +138,6 @@ class AbuseFilterRunner {
 	 * @return Status Good if no action has been taken, a fatal otherwise.
 	 */
 	public function run( $allowStash = true ) : Status {
-		global $wgAbuseFilterActions;
 		if ( $this->executed ) {
 			throw new BadMethodCallException( 'run() was already called on this instance.' );
 		}
@@ -165,13 +164,10 @@ class AbuseFilterRunner {
 		if ( $useStash ) {
 			$cacheData = $this->seekCache();
 			if ( $cacheData !== false ) {
-				if ( isset( $wgAbuseFilterActions['tag'] ) && $wgAbuseFilterActions['tag'] ) {
-					// Merge in any tags to apply to recent changes entries
-					AbuseFilter::bufferTagsToSetByAction( $cacheData['tags'] );
-				}
 				// Use cached vars (T176291) and profiling data (T191430)
 				$this->vars = AbuseFilterVariableHolder::newFromArray( $cacheData['vars'] );
 				$result = [
+					'hitCondLimit' => $cacheData['hitCondLimit'],
 					'matches' => $cacheData['matches'],
 					'runtime' => $cacheData['runtime'],
 					'condCount' => $cacheData['condCount'],
@@ -186,22 +182,29 @@ class AbuseFilterRunner {
 			// Ensure there's no extra time leftover
 			AFComputedVariable::$profilingExtraTime = 0;
 
+			$hitCondLimit = false;
 			// This also updates $this->profilingData and $this->parser->mCondCount used later
-			$matches = $this->checkAllFilters();
+			$matches = $this->checkAllFilters( $hitCondLimit );
 			$timeTaken = ( microtime( true ) - $startTime - AFComputedVariable::$profilingExtraTime ) * 1000;
 			$result = [
+				'hitCondLimit' => $hitCondLimit,
 				'matches' => $matches,
 				'runtime' => $timeTaken,
 				'condCount' => $this->parser->getCondCount(),
 				'profiling' => $this->profilingData
 			];
 		}
-		'@phan-var array{matches:array,runtime:int,condCount:int,profiling:array} $result';
+		'@phan-var array{hitCondLimit:bool,matches:array,runtime:int,condCount:int,profiling:array} $result';
 
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 		$allFilters = array_keys( $result['matches'] );
 
 		$this->profileExecution( $result, $matchedFilters, $allFilters );
+
+		if ( $result['hitCondLimit'] ) {
+			$actionID = $this->getTaggingID();
+			AbuseFilter::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
+		}
 
 		if ( count( $matchedFilters ) === 0 ) {
 			return Status::newGood();
@@ -248,11 +251,12 @@ class AbuseFilterRunner {
 		// Ensure there's no extra time leftover
 		AFComputedVariable::$profilingExtraTime = 0;
 
-		$matchedFilters = $this->checkAllFilters();
+		$hitCondLimit = false;
+		$matchedFilters = $this->checkAllFilters( $hitCondLimit );
 		// Save the filter stash result and do nothing further
 		$cacheData = [
 			'matches' => $matchedFilters,
-			'tags' => AbuseFilter::$tagsToSet,
+			'hitCondLimit' => $hitCondLimit,
 			'condCount' => $this->parser->getCondCount(),
 			'runtime' => ( microtime( true ) - $startTime - AFComputedVariable::$profilingExtraTime ) * 1000,
 			'vars' => $this->vars->dumpAllVars(),
@@ -341,9 +345,10 @@ class AbuseFilterRunner {
 	 *   You should either rely on $this->run() or subclass this class.
 	 * @todo This method should simply return an array with IDs of matched filters as values,
 	 *   since we always end up filtering it after calling this method.
+	 * @param bool|null &$hitCondLimit TEMPORARY
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
-	public function checkAllFilters() : array {
+	public function checkAllFilters( &$hitCondLimit = false ) : array {
 		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgAbuseFilterConditionLimit;
 
 		// Ensure that we start fresh, see T193374
@@ -363,10 +368,7 @@ class AbuseFilterRunner {
 		}
 
 		// Tag the action if the condition limit was hit
-		if ( $this->parser->getCondCount() > $wgAbuseFilterConditionLimit ) {
-			$actionID = $this->getTaggingID();
-			AbuseFilter::bufferTagsToSetByAction( [ $actionID => [ 'abusefilter-condition-limit' ] ] );
-		}
+		$hitCondLimit = $this->parser->getCondCount() > $wgAbuseFilterConditionLimit;
 
 		return $matchedFilters;
 	}
