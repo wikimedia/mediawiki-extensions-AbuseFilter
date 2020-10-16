@@ -10,10 +10,16 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	/**
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
 	 * @param array $params
 	 */
-	public function __construct( IContextSource $context, LinkRenderer $linkRenderer, array $params ) {
-		parent::__construct( $context, $linkRenderer, $params );
+	public function __construct(
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $context, $linkRenderer, $basePageName, $params );
 		$this->filter = $this->mParams['filter'] ?? null;
 	}
 
