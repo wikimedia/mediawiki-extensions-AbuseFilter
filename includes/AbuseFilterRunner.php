@@ -786,7 +786,9 @@ class AbuseFilterRunner {
 					}
 					$this->vars->setVar( 'user_groups', $groups );
 
-					foreach ( $groups as $group ) {
+					$implicitGroups = $userGroupsManager->listAllImplicitGroups();
+					$removeGroups = array_diff( $groups, $implicitGroups );
+					foreach ( $removeGroups as $group ) {
 						$userGroupsManager->removeUserFromGroup( $this->user, $group );
 					}
 
@@ -797,7 +799,7 @@ class AbuseFilterRunner {
 					];
 
 					// Don't log it if there aren't any groups being removed!
-					if ( !count( $groups ) ) {
+					if ( !count( $removeGroups ) ) {
 						break;
 					}
 
@@ -812,7 +814,7 @@ class AbuseFilterRunner {
 						)->inContentLanguage()->text()
 					);
 					$logEntry->setParameters( [
-						'4::oldgroups' => $groups,
+						'4::oldgroups' => $removeGroups,
 						'5::newgroups' => []
 					] );
 					$logEntry->publish( $logEntry->insert() );
