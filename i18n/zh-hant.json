@@ -117,6 +117,7 @@
 	"abusefilter-log-detailslink": "詳細資料",
 	"abusefilter-log-diff": "差異",
 	"abusefilter-log-hidelink": "調整公開/非公開",
+	"abusefilter-log-description-not-available": "不可用",
 	"abusefilter-log-details-legend": "日誌項目 $1 的詳細資料",
 	"abusefilter-log-details-var": "變數",
 	"abusefilter-log-details-val": "值",

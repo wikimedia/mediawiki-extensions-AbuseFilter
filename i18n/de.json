@@ -107,6 +107,7 @@
 	"abusefilter-log-detailslink": "Details",
 	"abusefilter-log-diff": "Unterschied",
 	"abusefilter-log-hidelink": "Sichtbarkeit ändern",
+	"abusefilter-log-description-not-available": "nicht verfügbar",
 	"abusefilter-log-details-legend": "Einzelheiten zum Logbuch-Eintrag $1",
 	"abusefilter-log-details-var": "Variable",
 	"abusefilter-log-details-val": "Wert",
