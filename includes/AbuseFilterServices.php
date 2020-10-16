@@ -55,4 +55,11 @@ class AbuseFilterServices {
 	public static function getFilterUser() : FilterUser {
 		return MediaWikiServices::getInstance()->getService( FilterUser::SERVICE_NAME );
 	}
+
+	/**
+	 * @return CentralDBManager
+	 */
+	public static function getCentralDBManager() : CentralDBManager {
+		return MediaWikiServices::getInstance()->getService( CentralDBManager::SERVICE_NAME );
+	}
 }

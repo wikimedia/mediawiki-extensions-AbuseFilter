@@ -276,7 +276,7 @@ class AbuseFilterHooks {
 		}
 
 		if ( $logs[ 'global' ] ) {
-			$fdb = AbuseFilter::getCentralDB( DB_MASTER );
+			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
 			$fdb->update( 'abuse_filter_log',
 				[ 'afl_rev_id' => $revisionRecord->getId() ],
 				[ 'afl_id' => $logs['global'], 'afl_wiki' => WikiMap::getCurrentWikiDbDomain()->getId() ],

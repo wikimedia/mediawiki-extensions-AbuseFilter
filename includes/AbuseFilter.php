@@ -1,12 +1,12 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
-use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -112,13 +112,13 @@ class AbuseFilter {
 	 * @return bool
 	 */
 	public static function filterHidden( $filterID, $global = false ) {
-		global $wgAbuseFilterCentralDB;
-
 		if ( $global ) {
-			if ( !$wgAbuseFilterCentralDB ) {
+			try {
+				$dbr = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
+			} catch ( CentralDBNotAvailableException $_ ) {
+				// DWIM
 				return false;
 			}
-			$dbr = self::getCentralDB( DB_REPLICA );
 		} else {
 			$dbr = wfGetDB( DB_REPLICA );
 		}
@@ -254,7 +254,7 @@ class AbuseFilter {
 
 		if ( count( $globalFilters ) ) {
 			$consequences += self::loadConsequencesFromDB(
-				self::getCentralDB( DB_REPLICA ),
+				AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA ),
 				$globalFilters,
 				self::GLOBAL_FILTER_PREFIX,
 				$legacy
@@ -337,19 +337,13 @@ class AbuseFilter {
 
 	/**
 	 * @param string $filter Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
-	 * @return stdClass|null DB row on success, null on failure
+	 * @return stdClass DB row
 	 */
-	public static function getFilter( $filter ) {
-		global $wgAbuseFilterCentralDB;
-
+	public static function getFilter( $filter ) : stdClass {
 		if ( !isset( self::$filterCache[$filter] ) ) {
 			list( $filterID, $global ) = self::splitGlobalName( $filter );
 			if ( $global ) {
-				// Global wiki filter
-				if ( !$wgAbuseFilterCentralDB ) {
-					return null;
-				}
-				$dbr = self::getCentralDB( DB_REPLICA );
+				$dbr = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
 			} else {
 				// Local wiki filter
 				$dbr = wfGetDB( DB_REPLICA );
@@ -361,7 +355,10 @@ class AbuseFilter {
 				[ 'af_id' => $filterID ],
 				__METHOD__
 			);
-			self::$filterCache[$filter] = $row ?: null;
+			if ( !$row ) {
+				throw new LogicException( "Requested filter that doesn't exist: $filter" );
+			}
+			self::$filterCache[$filter] = $row;
 		}
 
 		return self::$filterCache[$filter];
@@ -438,7 +435,7 @@ class AbuseFilter {
 
 		// Store to text table
 		if ( $global ) {
-			$dbw = self::getCentralDB( DB_MASTER );
+			$dbw = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
 		}
@@ -1272,7 +1269,7 @@ class AbuseFilter {
 			return $cache[$filterID];
 		}
 
-		$fdb = self::getCentralDB( DB_REPLICA );
+		$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
 
 		$cache[$filterID] = (string)$fdb->selectField(
 			'abuse_filter',
@@ -1396,25 +1393,6 @@ class AbuseFilter {
 		}
 
 		return $firstChanges[$filterID];
-	}
-
-	/**
-	 * @param int $index DB_MASTER/DB_REPLICA
-	 * @return IDatabase
-	 * @throws DBerror
-	 * @throws RuntimeException
-	 */
-	public static function getCentralDB( $index ) {
-		global $wgAbuseFilterCentralDB;
-
-		if ( !is_string( $wgAbuseFilterCentralDB ) ) {
-			throw new RuntimeException( '$wgAbuseFilterCentralDB is not configured' );
-		}
-
-		return MediaWikiServices::getInstance()
-			->getDBLoadBalancerFactory()
-			->getMainLB( $wgAbuseFilterCentralDB )
-			->getConnectionRef( $index, [], $wgAbuseFilterCentralDB );
 	}
 
 	/**

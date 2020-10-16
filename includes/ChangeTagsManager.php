@@ -4,10 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use ChangeTags;
 use IDatabase;
-use MediaWiki\Config\ServiceOptions;
 use WANObjectCache;
 use Wikimedia\Rdbms\Database;
-use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Database wrapper class which aids registering and reserving change tags
@@ -19,38 +18,28 @@ class ChangeTagsManager {
 	public const SERVICE_NAME = 'AbuseFilterChangeTagsManager';
 	private const CONDS_LIMIT_TAG = 'abusefilter-condition-limit';
 
-	public const CONSTRUCTOR_OPTIONS = [
-		'AbuseFilterCentralDB',
-		'AbuseFilterIsCentral',
-	];
-
-	/** @var LBFactory */
-	private $lbFactory;
+	/** @var ILoadBalancer */
+	private $loadBalancer;
 
 	/** @var WANObjectCache */
 	private $cache;
 
-	/** @var string|false */
-	private $centralDB;
-
-	/** @var bool */
-	private $isCentral;
+	/** @var CentralDBManager */
+	private $centralDBManager;
 
 	/**
-	 * @param LBFactory $lbFactory
+	 * @param ILoadBalancer $loadBalancer
 	 * @param WANObjectCache $cache
-	 * @param ServiceOptions $options
+	 * @param CentralDBManager $centralDBManager
 	 */
 	public function __construct(
-		LBFactory $lbFactory,
+		ILoadBalancer $loadBalancer,
 		WANObjectCache $cache,
-		ServiceOptions $options
+		CentralDBManager $centralDBManager
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->lbFactory = $lbFactory;
+		$this->loadBalancer = $loadBalancer;
 		$this->cache = $cache;
-		$this->centralDB = $options->get( 'AbuseFilterCentralDB' );
-		$this->isCentral = $options->get( 'AbuseFilterIsCentral' );
+		$this->centralDBManager = $centralDBManager;
 	}
 
 	/**
@@ -126,8 +115,12 @@ class ChangeTagsManager {
 			$this->getCacheKeyForStatus( $enabled ),
 			WANObjectCache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled ) {
-				$dbr = $this->lbFactory->getMainLB()->getConnectionRef( DB_REPLICA );
-				$globalDbr = $this->getGlobalDbConnection();
+				$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+				try {
+					$globalDbr = $this->centralDBManager->getConnection( DB_REPLICA );
+				} catch ( CentralDBNotAvailableException $_ ) {
+					$globalDbr = null;
+				}
 
 				if ( $globalDbr !== null ) {
 					// Account for any snapshot/replica DB lag
@@ -144,18 +137,6 @@ class ChangeTagsManager {
 				return array_unique( $tags );
 			}
 		);
-	}
-
-	/**
-	 * @return IDatabase|null
-	 */
-	private function getGlobalDbConnection() : ?IDatabase {
-		if ( $this->centralDB && !$this->isCentral ) {
-			return $this->lbFactory->getMainLB( $this->centralDB )
-				->getConnectionRef( DB_REPLICA, [], $this->centralDB );
-		} else {
-			return null;
-		}
 	}
 
 	/**

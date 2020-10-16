@@ -408,7 +408,7 @@ class AbuseFilterRunner {
 			$globalRulesKey,
 			WANObjectCache::TTL_WEEK,
 			function () use ( $fname ) {
-				$fdb = AbuseFilter::getCentralDB( DB_REPLICA );
+				$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
 
 				return iterator_to_array( $fdb->select(
 					'abuse_filter',
@@ -1169,7 +1169,7 @@ class AbuseFilterRunner {
 				$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
 			}
 
-			$fdb = AbuseFilter::getCentralDB( DB_MASTER );
+			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
 
 			foreach ( $centralLogRows as $row ) {
 				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
