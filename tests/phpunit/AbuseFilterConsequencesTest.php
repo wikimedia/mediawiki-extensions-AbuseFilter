@@ -59,6 +59,8 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Throttle
  * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Warn
  * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesFactory
+ * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesLookup
+ * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesExecutor
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	use AbuseFilterCreateAccountTestTrait;

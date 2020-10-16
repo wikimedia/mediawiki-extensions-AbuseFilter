@@ -172,4 +172,11 @@ class AbuseFilterServices {
 	public static function getVariablesBlobStore() : VariablesBlobStore {
 		return MediaWikiServices::getInstance()->getService( VariablesBlobStore::SERVICE_NAME );
 	}
+
+	/**
+	 * @return ConsequencesExecutorFactory
+	 */
+	public static function getConsequencesExecutorFactory() : ConsequencesExecutorFactory {
+		return MediaWikiServices::getInstance()->getService( ConsequencesExecutorFactory::SERVICE_NAME );
+	}
 }

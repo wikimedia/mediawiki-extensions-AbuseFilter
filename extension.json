@@ -182,6 +182,8 @@
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLogger": "includes/AbuseLogger.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLoggerFactory": "includes/AbuseLoggerFactory.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesRegistry": "includes/ConsequencesRegistry.php",
+		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesExecutor": "includes/ConsequencesExecutor.php",
+		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesExecutorFactory": "includes/ConsequencesExecutorFactory.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"FixOldLogEntries": "maintenance/fixOldLogEntries.php",
