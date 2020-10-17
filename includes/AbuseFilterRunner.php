@@ -506,11 +506,16 @@ class AbuseFilterRunner {
 		$maxExpiry = -1;
 
 		foreach ( $actionsByFilter as $filter => $actions ) {
-			// Special-case handling for warnings.
 			$filterPublicComments = AbuseFilter::getFilter( $filter )->af_public_comments;
 
 			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
 
+			if ( $isGlobalFilter ) {
+				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterLocallyDisabledGlobalActions ) );
+			}
+
+			// If the filter has "throttle" enabled and throttling is available via object
+			// caching, check to see if the user has hit the throttle.
 			if ( isset( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle'];
 				$throttleId = array_shift( $parameters );
@@ -520,7 +525,7 @@ class AbuseFilterRunner {
 
 				$hitThrottle = false;
 
-				// The rest are throttle-types.
+				// The rest are throttle groups
 				foreach ( $parameters as $throttleType ) {
 					$hitThrottle = $this->isThrottled( $throttleId, $throttleType, $rateCount, $isGlobalFilter )
 						|| $hitThrottle;
@@ -532,13 +537,6 @@ class AbuseFilterRunner {
 					$actionsTaken[$filter][] = 'throttle';
 					continue;
 				}
-			}
-
-			if ( $isGlobalFilter ) {
-				$actions = array_diff_key(
-					$actions,
-					array_filter( $wgAbuseFilterLocallyDisabledGlobalActions )
-				);
 			}
 
 			if ( isset( $actions['warn'] ) ) {
@@ -562,14 +560,13 @@ class AbuseFilterRunner {
 			}
 
 			// Don't show the disallow message if a blocking action is executed
-			if ( count( array_intersect( array_keys( $actions ), AbuseFilter::getDangerousActions() ) ) > 0
+			if ( array_intersect( array_keys( $actions ), AbuseFilter::getDangerousActions() )
 				&& isset( $actions['disallow'] )
 			) {
 				unset( $actions['disallow'] );
 			}
 
 			// Find out the max expiry to issue the longest triggered block.
-			// Need to check here since methods like user->getBlock() aren't available
 			if ( isset( $actions['block'] ) ) {
 				$parameters = $actions['block'];
 
@@ -596,7 +593,7 @@ class AbuseFilterRunner {
 					// Save the parameters to issue the block with
 					$maxExpiry = $expiry;
 					$blockValues = [
-						AbuseFilter::getFilter( $filter )->af_public_comments,
+						$filterPublicComments,
 						$filter,
 						is_array( $parameters ) && in_array( 'blocktalk', $parameters )
 					];
@@ -609,7 +606,7 @@ class AbuseFilterRunner {
 				$newMsg = $this->takeConsequenceAction(
 					$action,
 					$info,
-					AbuseFilter::getFilter( $filter )->af_public_comments,
+					$filterPublicComments,
 					$filter
 				);
 
