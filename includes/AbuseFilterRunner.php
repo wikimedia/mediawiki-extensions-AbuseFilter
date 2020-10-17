@@ -524,8 +524,9 @@ class AbuseFilterRunner {
 
 				// The rest are throttle-types.
 				foreach ( $parameters as $throttleType ) {
-					$hitThrottle = $hitThrottle || $this->isThrottled(
-							$throttleId, $throttleType, $rateCount, $ratePeriod, $isGlobalFilter );
+					$hitThrottle = $this->isThrottled( $throttleId, $throttleType, $rateCount, $isGlobalFilter )
+						|| $hitThrottle;
+					$this->setThrottled( $throttleId, $throttleType, $ratePeriod, $isGlobalFilter );
 				}
 
 				unset( $actions['throttle'] );
@@ -651,35 +652,49 @@ class AbuseFilterRunner {
 	}
 
 	/**
+	 * Determines whether the throttle has been hit with the given parameters
+	 *
 	 * @param string $throttleId
 	 * @param string $types
 	 * @param int $rateCount
-	 * @param int $ratePeriod
 	 * @param bool $global
 	 * @return bool
 	 */
-	protected function isThrottled(
-		$throttleId,
-		$types,
-		int $rateCount,
-		int $ratePeriod,
-		$global = false
-	) {
+	protected function isThrottled( string $throttleId, string $types, int $rateCount, bool $global = false ) : bool {
 		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
 		$key = $this->throttleKey( $throttleId, $types, $global );
-		$count = (int)$stash->get( $key );
+		$newCount = (int)$stash->get( $key ) + 1;
 
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-		$logger->debug( "Got value $count for throttle key $key" );
+		$logger->debug(
+			'New value is {newCount} for throttle key {key}. Maximum is {rateCount}.',
+			[
+				'newCount' => $newCount,
+				'key' => $key,
+				'rateCount' => $rateCount,
+			]
+		);
 
-		$count = $stash->incrWithInit( $key, $ratePeriod );
+		return $newCount > $rateCount;
+	}
 
-		if ( $count > $rateCount ) {
-			$logger->debug( "Throttle $key hit value $count -- maximum is $rateCount." );
-			return true;
-		}
-		$logger->debug( "Throttle $key not hit!" );
-		return false;
+	/**
+	 * Updates the throttle status with the given parameters
+	 *
+	 * @param string $throttleId
+	 * @param string $types
+	 * @param int $ratePeriod
+	 * @param bool $global
+	 */
+	protected function setThrottled( string $throttleId, string $types, int $ratePeriod, bool $global = false ) : void {
+		$stash = MediaWikiServices::getInstance()->getMainObjectStash();
+		$key = $this->throttleKey( $throttleId, $types, $global );
+		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
+		$logger->debug(
+			'Increasing throttle key {key}',
+			[ 'key' => $key ]
+		);
+		$stash->incrWithInit( $key, $ratePeriod );
 	}
 
 	/**
