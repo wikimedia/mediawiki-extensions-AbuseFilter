@@ -545,17 +545,9 @@ class AbuseFilterRunner {
 
 			if ( isset( $actions['warn'] ) ) {
 				$parameters = $actions['warn'];
-				// Generate a unique key to determine whether the user has already been warned.
-				// We'll warn again if one of these changes: session, page, triggered filter or action
-				$warnKey = 'abusefilter-warned-' . md5( $this->title->getPrefixedText() ) .
-					'-' . $filter . '-' . $this->action;
 
-				// Make sure the session is started prior to using it
-				$session = SessionManager::getGlobalSession();
-				$session->persist();
-
-				if ( !isset( $session[$warnKey] ) || !$session[$warnKey] ) {
-					$session[$warnKey] = true;
+				if ( $this->shouldBeWarned( $filter ) ) {
+					$this->setWarn( $filter, true );
 
 					$msg = $parameters[0] ?? 'abusefilter-warning';
 					$messages[] = [ $msg, $filterPublicComments, $filter ];
@@ -565,8 +557,7 @@ class AbuseFilterRunner {
 					// Don't do anything else.
 					continue;
 				} else {
-					// We already warned them
-					$session[$warnKey] = false;
+					$this->setWarn( $filter, false );
 				}
 
 				unset( $actions['warn'] );
@@ -695,6 +686,41 @@ class AbuseFilterRunner {
 			[ 'key' => $key ]
 		);
 		$stash->incrWithInit( $key, $ratePeriod );
+	}
+
+	/**
+	 * @param string|int $filter
+	 * @return bool
+	 */
+	private function shouldBeWarned( $filter ) : bool {
+		// Make sure the session is started prior to using it
+		$session = SessionManager::getGlobalSession();
+		$session->persist();
+		$warnKey = $this->getWarnKey( $filter );
+		return ( !isset( $session[$warnKey] ) || !$session[$warnKey] );
+	}
+
+	/**
+	 * @param string|int $filter
+	 * @param bool $value
+	 */
+	private function setWarn( $filter, bool $value ) : void {
+		// Make sure the session is started prior to using it
+		$session = SessionManager::getGlobalSession();
+		$session->persist();
+		$warnKey = $this->getWarnKey( $filter );
+		$session[$warnKey] = $value;
+	}
+
+	/**
+	 * Generate a unique key to determine whether the user has already been warned.
+	 * We'll warn again if one of these changes: session, page, triggered filter, or action
+	 * @param string|int $filter
+	 * @return string
+	 */
+	private function getWarnKey( $filter ) : string {
+		return 'abusefilter-warned-' . md5( $this->title->getPrefixedText() ) .
+			'-' . $filter . '-' . $this->action;
 	}
 
 	/**
