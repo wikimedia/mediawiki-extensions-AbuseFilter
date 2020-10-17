@@ -213,6 +213,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$afPermManager = AbuseFilterServices::getPermissionManager();
+		$lookup = AbuseFilterServices::getFilterLookup();
 		$actions = $filterObj->getActions();
 
 		$out->addSubtitle( $this->msg(
@@ -224,7 +225,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// We use filterHidden() to ensure that if a public filter is made private, the public
 		// revision is also hidden.
 		if (
-			( $filterObj->isHidden() || ( $filter !== null && AbuseFilter::filterHidden( $filter ) ) ) &&
+			( $filterObj->isHidden() || ( $filter !== null && $lookup->getFilter( $filter, false )->isHidden() ) ) &&
 			!$afPermManager->canViewPrivateFilters( $user )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );

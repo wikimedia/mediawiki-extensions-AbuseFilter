@@ -38,7 +38,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
-		if ( $filter && AbuseFilter::filterHidden( $filter )
+		if ( $filter && AbuseFilterServices::getFilterLookup()->getFilter( $filter, false )->isHidden()
 			&& !$afPermManager->canViewPrivateFilters( $this->getUser() )
 		) {
 			$out->addWikiMsg( 'abusefilter-history-error-hidden' );

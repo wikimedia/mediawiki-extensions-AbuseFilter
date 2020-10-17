@@ -3,6 +3,7 @@
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -529,7 +530,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			if ( !$this->afPermissionManager->canViewPrivateFiltersLogs( $user ) ) {
 				$searchedForPrivate = false;
 				foreach ( $filtersList as $index => $filterData ) {
-					if ( AbuseFilter::filterHidden( ...$filterData ) ) {
+					if ( AbuseFilterServices::getFilterLookup()->getFilter( ...$filterData )->isHidden() ) {
 						unset( $filtersList[$index] );
 						$searchedForPrivate = true;
 					}
@@ -1164,10 +1165,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		if ( $global ) {
 			// Pull global filter description
-			$globalDesc = AbuseFilter::getGlobalFilterDescription( $filterID );
-			if ( $globalDesc !== null ) {
+			$lookup = AbuseFilterServices::getFilterLookup();
+			try {
+				$globalDesc = $lookup->getFilter( $filterID, true )->getName();
 				$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $globalDesc );
-			} else {
+			} catch ( CentralDBNotAvailableException $_ ) {
 				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
 			}
 			$filter_hidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;

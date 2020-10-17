@@ -1,9 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
-use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
@@ -100,22 +98,6 @@ class AbuseFilter {
 			);
 		}
 		return $actions;
-	}
-
-	/**
-	 * @param int $filterID The ID of the filter
-	 * @param bool|int $global Whether the filter is global
-	 * @return bool
-	 * @deprecated Call ::isHidden on a Filter object
-	 */
-	public static function filterHidden( $filterID, $global = false ) {
-		$lookup = AbuseFilterServices::getFilterLookup();
-		try {
-			return $lookup->getFilter( $filterID, $global )->isHidden();
-		} catch ( CentralDBNotAvailableException | FilterNotFoundException $_ ) {
-			// DWIM if no central DB is available or the filter doesn't exist
-			return false;
-		}
 	}
 
 	/**
@@ -1146,34 +1128,6 @@ class AbuseFilter {
 		}
 
 		return $lang->commaList( $flags_display );
-	}
-
-	/**
-	 * @param int $filterID
-	 * @return string|null
-	 */
-	public static function getGlobalFilterDescription( $filterID ) : ?string {
-		global $wgAbuseFilterCentralDB;
-
-		if ( !$wgAbuseFilterCentralDB ) {
-			return null;
-		}
-
-		static $cache = [];
-		if ( isset( $cache[$filterID] ) ) {
-			return $cache[$filterID];
-		}
-
-		$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_REPLICA );
-
-		$cache[$filterID] = (string)$fdb->selectField(
-			'abuse_filter',
-			'af_public_comments',
-			[ 'af_id' => $filterID ],
-			__METHOD__
-		);
-
-		return $cache[$filterID];
 	}
 
 	/**
