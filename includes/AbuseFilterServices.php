@@ -136,4 +136,11 @@ class AbuseFilterServices {
 	public static function getEditBoxBuilderFactory() : EditBoxBuilderFactory {
 		return MediaWikiServices::getInstance()->getService( EditBoxBuilderFactory::SERVICE_NAME );
 	}
+
+	/**
+	 * @return ConsequencesLookup
+	 */
+	public static function getConsequencesLookup() : ConsequencesLookup {
+		return MediaWikiServices::getInstance()->getService( ConsequencesLookup::SERVICE_NAME );
+	}
 }
