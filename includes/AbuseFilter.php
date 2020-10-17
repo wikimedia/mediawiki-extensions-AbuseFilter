@@ -230,10 +230,11 @@ class AbuseFilter {
 
 	/**
 	 * @param string[] $filters
-	 * @return (string|array)[][][]
-	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>
+	 * @param bool $legacy TEMPORARY whether to get data in legacy format
+	 * @return (string|array)[][][]|array[][]
+	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>|array[][]
 	 */
-	public static function getConsequencesForFilters( $filters ) {
+	public static function getConsequencesForFilters( $filters, $legacy = true ) {
 		$globalFilters = [];
 		$localFilters = [];
 
@@ -253,14 +254,15 @@ class AbuseFilter {
 		$consequences = [];
 
 		if ( count( $localFilters ) ) {
-			$consequences = self::loadConsequencesFromDB( $dbr, $localFilters );
+			$consequences = self::loadConsequencesFromDB( $dbr, $localFilters, '', $legacy );
 		}
 
 		if ( count( $globalFilters ) ) {
 			$consequences += self::loadConsequencesFromDB(
 				self::getCentralDB( DB_REPLICA ),
 				$globalFilters,
-				self::GLOBAL_FILTER_PREFIX
+				self::GLOBAL_FILTER_PREFIX,
+				$legacy
 			);
 		}
 
@@ -271,10 +273,16 @@ class AbuseFilter {
 	 * @param IDatabase $dbr
 	 * @param string[] $filters
 	 * @param string $prefix
-	 * @return (string|array)[][][]
-	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>
+	 * @param bool $legacy TEMPORARY whether to get data in legacy format
+	 * @return (string|array)[][][]|array[][]
+	 * @phan-return array<string,array<string,array{action:string,parameters:string[]}>>|array[][]
 	 */
-	public static function loadConsequencesFromDB( IDatabase $dbr, $filters, $prefix = '' ) {
+	private static function loadConsequencesFromDB(
+		IDatabase $dbr,
+		$filters,
+		$prefix = '',
+		$legacy = true
+	) {
 		$actionsByFilter = [];
 		foreach ( $filters as $filter ) {
 			$actionsByFilter[$prefix . $filter] = [];
@@ -305,11 +313,12 @@ class AbuseFilter {
 				);
 			} elseif ( $row->afa_filter !== $row->af_id ) {
 				// We probably got a NULL, as it's a LEFT JOIN. Don't add it.
+				continue;
 			} else {
-				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = [
-					'action' => $row->afa_consequence,
-					'parameters' => array_filter( explode( "\n", $row->afa_parameters ) )
-				];
+				$params = array_filter( explode( "\n", $row->afa_parameters ) );
+				$actionsByFilter[$prefix . $row->afa_filter][$row->afa_consequence] = $legacy
+					? [ 'action' => $row->afa_consequence, 'parameters' => $params ]
+					: $params;
 			}
 		}
 

@@ -493,7 +493,7 @@ class AbuseFilterRunner {
 		global $wgMainCacheType, $wgAbuseFilterLocallyDisabledGlobalActions,
 			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 
-		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
+		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters, false );
 		$actionsTaken = array_fill_keys( $filters, [] );
 
 		$messages = [];
@@ -508,8 +508,8 @@ class AbuseFilterRunner {
 
 			// If the filter has "throttle" enabled and throttling is available via object
 			// caching, check to see if the user has hit the throttle.
-			if ( !empty( $actions['throttle'] ) && $wgMainCacheType !== CACHE_NONE ) {
-				$parameters = $actions['throttle']['parameters'];
+			if ( isset( $actions['throttle'] ) && $wgMainCacheType !== CACHE_NONE ) {
+				$parameters = $actions['throttle'];
 				$throttleId = array_shift( $parameters );
 				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $parameters ) );
 				$rateCount = (int)$rateCount;
@@ -537,8 +537,8 @@ class AbuseFilterRunner {
 				);
 			}
 
-			if ( !empty( $actions['warn'] ) ) {
-				$parameters = $actions['warn']['parameters'];
+			if ( isset( $actions['warn'] ) ) {
+				$parameters = $actions['warn'];
 				// Generate a unique key to determine whether the user has already been warned.
 				// We'll warn again if one of these changes: session, page, triggered filter or action
 				$warnKey = 'abusefilter-warned-' . md5( $this->title->getPrefixedText() ) .
@@ -568,15 +568,15 @@ class AbuseFilterRunner {
 
 			// Don't show the disallow message if a blocking action is executed
 			if ( count( array_intersect( array_keys( $actions ), AbuseFilter::getDangerousActions() ) ) > 0
-				&& !empty( $actions['disallow'] )
+				&& isset( $actions['disallow'] )
 			) {
 				unset( $actions['disallow'] );
 			}
 
 			// Find out the max expiry to issue the longest triggered block.
 			// Need to check here since methods like user->getBlock() aren't available
-			if ( !empty( $actions['block'] ) ) {
-				$parameters = $actions['block']['parameters'];
+			if ( isset( $actions['block'] ) ) {
+				$parameters = $actions['block'];
 
 				if ( count( $parameters ) === 3 ) {
 					// New type of filters with custom block
@@ -613,8 +613,7 @@ class AbuseFilterRunner {
 			foreach ( $actions as $action => $info ) {
 				$newMsg = $this->takeConsequenceAction(
 					$action,
-					// @phan-suppress-next-line PhanTypeArraySuspiciousNullable False positive
-					$info['parameters'],
+					$info,
 					AbuseFilter::getFilter( $filter )->af_public_comments,
 					$filter
 				);
