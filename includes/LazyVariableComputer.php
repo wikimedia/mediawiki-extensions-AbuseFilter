@@ -119,13 +119,17 @@ class LazyVariableComputer {
 	}
 
 	/**
+	 * XXX: $getVarCB is a hack to hide the cyclic dependency with VariablesManager. See T261069 for possible
+	 * solutions. This might also be merged into VariablesManager, but it would bring a ton of dependencies.
+	 *
 	 * @param AFComputedVariable $var
 	 * @param AbuseFilterVariableHolder $vars
+	 * @param callable $getVarCB
+	 * @phan-param callable(string $name):AFPData $getVarCB
 	 * @return AFPData
 	 * @throws AFPException
 	 */
-	public function compute( AFComputedVariable $var, AbuseFilterVariableHolder $vars ) {
-		$vars->setLogger( $this->logger );
+	public function compute( AFComputedVariable $var, AbuseFilterVariableHolder $vars, callable $getVarCB ) {
 		$parameters = $var->mParameters;
 		$result = null;
 
@@ -143,8 +147,8 @@ class LazyVariableComputer {
 			case 'diff':
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];
-				$text1 = $vars->getVar( $text1Var )->toString();
-				$text2 = $vars->getVar( $text2Var )->toString();
+				$text1 = $getVarCB( $text1Var )->toString();
+				$text2 = $getVarCB( $text2Var )->toString();
 				// T74329: if there's no text, don't return an array with the empty string
 				$text1 = $text1 === '' ? [] : explode( "\n", $text1 );
 				$text2 = $text2 === '' ? [] : explode( "\n", $text2 );
@@ -153,7 +157,7 @@ class LazyVariableComputer {
 				$result = $format->format( $diffs );
 				break;
 			case 'diff-split':
-				$diff = $vars->getVar( $parameters['diff-var'] )->toString();
+				$diff = $getVarCB( $parameters['diff-var'] )->toString();
 				$line_prefix = $parameters['line-prefix'];
 				$diff_lines = explode( "\n", $diff );
 				$result = [];
@@ -173,7 +177,7 @@ class LazyVariableComputer {
 					$startTime = microtime( true );
 					$textVar = $parameters['text-var'];
 
-					$new_text = $vars->getVar( $textVar )->toString();
+					$new_text = $getVarCB( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
 					$editInfo = $article->prepareContentForEdit( $content );
 					$result = array_keys( $editInfo->output->getExternalLinks() );
@@ -197,7 +201,7 @@ class LazyVariableComputer {
 					$this->logger->debug( 'Loading old links from Parser' );
 					$textVar = $parameters['text-var'];
 
-					$wikitext = $vars->getVar( $textVar )->toString();
+					$wikitext = $getVarCB( $textVar )->toString();
 					$editInfo = $this->parseNonEditWikitext(
 						$wikitext,
 						$article,
@@ -218,8 +222,8 @@ class LazyVariableComputer {
 				$oldLinkVar = $parameters['oldlink-var'];
 				$newLinkVar = $parameters['newlink-var'];
 
-				$oldLinks = $vars->getVar( $oldLinkVar )->toString();
-				$newLinks = $vars->getVar( $newLinkVar )->toString();
+				$oldLinks = $getVarCB( $oldLinkVar )->toString();
+				$newLinks = $getVarCB( $newLinkVar )->toString();
 
 				$oldLinks = explode( "\n", $oldLinks );
 				$newLinks = explode( "\n", $newLinks );
@@ -240,7 +244,7 @@ class LazyVariableComputer {
 					$startTime = microtime( true );
 					$textVar = $parameters['wikitext-var'];
 
-					$new_text = $vars->getVar( $textVar )->toString();
+					$new_text = $getVarCB( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
 					$editInfo = $article->prepareContentForEdit( $content );
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
@@ -266,9 +270,9 @@ class LazyVariableComputer {
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						// $textVar is already PSTed when it's not loaded from an ongoing edit.
-						$result = $vars->getVar( $textVar )->toString();
+						$result = $getVarCB( $textVar )->toString();
 					} else {
-						$text = $vars->getVar( $textVar )->toString();
+						$text = $getVarCB( $textVar )->toString();
 						$editInfo = $this->parseNonEditWikitext(
 							$text,
 							$article,
@@ -286,7 +290,7 @@ class LazyVariableComputer {
 				break;
 			case 'strip-html':
 				$htmlVar = $parameters['html-var'];
-				$html = $vars->getVar( $htmlVar )->toString();
+				$html = $getVarCB( $htmlVar )->toString();
 				$stripped = StringUtils::delimiterReplace( '<', '>', '', $html );
 				// We strip extra spaces to the right because the stripping above
 				// could leave a lot of whitespace.
@@ -353,12 +357,12 @@ class LazyVariableComputer {
 				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $firstRevisionTime );
 				break;
 			case 'length':
-				$s = $vars->getVar( $parameters['length-var'] )->toString();
+				$s = $getVarCB( $parameters['length-var'] )->toString();
 				$result = strlen( $s );
 				break;
 			case 'subtract-int':
-				$v1 = $vars->getVar( $parameters['val1-var'] )->toInt();
-				$v2 = $vars->getVar( $parameters['val2-var'] )->toInt();
+				$v1 = $getVarCB( $parameters['val1-var'] )->toInt();
+				$v2 = $getVarCB( $parameters['val2-var'] )->toInt();
 				$result = $v1 - $v2;
 				break;
 			case 'revision-text-by-id':

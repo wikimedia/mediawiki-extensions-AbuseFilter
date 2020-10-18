@@ -30,11 +30,13 @@ use Generator;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use PHPUnit;
 use Psr\Log\NullLogger;
 use TestLogger;
@@ -151,6 +153,7 @@ class ParserTest extends ParserTestCase {
 			new EmptyBagOStuff(),
 			new NullLogger(),
 			new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+			$this->createMock( VariablesManager::class ),
 			1000
 		];
 
@@ -789,6 +792,7 @@ class ParserTest extends ParserTestCase {
 			new EmptyBagOStuff(),
 			new NullLogger(),
 			$this->createMock( KeywordsManager::class ),
+			$this->createMock( VariablesManager::class ),
 			1000
 		);
 		$parser->toggleConditionLimit( false );
@@ -825,9 +829,8 @@ class ParserTest extends ParserTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser::checkLogDeprecatedVar
 	 */
 	public function testDeprecatedVars( $old, $new ) {
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		// Set it under the new name, and check that the old name points to it
-		$vars = AbuseFilterVariableHolder::newFromArray( [ $new => 'value' ], $keywordsManager );
+		$vars = AbuseFilterVariableHolder::newFromArray( [ $new => 'value' ] );
 
 		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
@@ -1075,13 +1078,19 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideEmptyOperands
 	 */
 	public function testEmptyOperandsOldParser( $code, $operandType ) {
+		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
 		$mock = $this->getMockBuilder( AbuseFilterParser::class )
 			->setConstructorArgs( [
 				$this->getLanguageMock(),
 				new EmptyBagOStuff(),
 				new NullLogger(),
-				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+				$keywordsManager,
+				new VariablesManager(
+					$keywordsManager,
+					$this->createMock( LazyVariableComputer::class ),
+					new NullLogger()
+				),
 				1000
 			] )
 			->setMethods( [ 'logEmptyOperand' ] )
@@ -1109,6 +1118,7 @@ class ParserTest extends ParserTestCase {
 				new EmptyBagOStuff(),
 				new NullLogger(),
 				$this->createMock( KeywordsManager::class ),
+				$this->createMock( VariablesManager::class ),
 				1000
 			);
 			$parser->toggleConditionLimit( false );
@@ -1173,6 +1183,7 @@ class ParserTest extends ParserTestCase {
 				new EmptyBagOStuff(),
 				new NullLogger(),
 				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+				$this->createMock( VariablesManager::class ),
 				1000
 			] )
 			->setMethods( [ 'logEmptyOperand' ] )
@@ -1289,12 +1300,11 @@ class ParserTest extends ParserTestCase {
 		$cache = $this->createMock( BagOStuff::class );
 		$logger = new NullLogger();
 		$keywordsManager = $this->createMock( KeywordsManager::class );
-		$vars = new AbuseFilterVariableHolder( $keywordsManager );
+		$varManager = $this->createMock( VariablesManager::class );
+		$vars = new AbuseFilterVariableHolder();
 
-		$parser = new AbuseFilterParser( $lang, $cache, $logger, $keywordsManager, 1000, $vars );
+		$parser = new AbuseFilterParser( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
 		$this->assertEquals( $vars, $parser->mVariables, 'Variables should be initialized' );
-		$pVars = TestingAccessWrapper::newFromObject( $parser->mVariables );
-		$this->assertSame( $logger, $pVars->logger, 'VarHolder logger should be initialized' );
 	}
 
 	/**
@@ -1382,8 +1392,7 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testSetVariables() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$vars = new AbuseFilterVariableHolder( $keywordsManager );
+		$vars = new AbuseFilterVariableHolder();
 		$parser->setVariables( $vars );
 		$this->assertSame( $vars, $parser->mVariables );
 	}

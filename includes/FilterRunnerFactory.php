@@ -31,6 +31,8 @@ class FilterRunnerFactory {
 	private $consExecutorFactory;
 	/** @var AbuseLoggerFactory */
 	private $abuseLoggerFactory;
+	/** @var VariablesManager */
+	private $varManager;
 	/** @var UpdateHitCountWatcher */
 	private $updateHitCountWatcher;
 	/** @var EmergencyWatcher */
@@ -50,6 +52,7 @@ class FilterRunnerFactory {
 	 * @param ParserFactory $parserFactory
 	 * @param ConsequencesExecutorFactory $consExecutorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
+	 * @param VariablesManager $varManager
 	 * @param UpdateHitCountWatcher $updateHitCountWatcher
 	 * @param EmergencyWatcher $emergencyWatcher
 	 * @param LoggerInterface $logger
@@ -64,6 +67,7 @@ class FilterRunnerFactory {
 		ParserFactory $parserFactory,
 		ConsequencesExecutorFactory $consExecutorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
+		VariablesManager $varManager,
 		UpdateHitCountWatcher $updateHitCountWatcher,
 		EmergencyWatcher $emergencyWatcher,
 		LoggerInterface $logger,
@@ -77,6 +81,7 @@ class FilterRunnerFactory {
 		$this->parserFactory = $parserFactory;
 		$this->consExecutorFactory = $consExecutorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
+		$this->varManager = $varManager;
 		$this->updateHitCountWatcher = $updateHitCountWatcher;
 		$this->emergencyWatcher = $emergencyWatcher;
 		$this->logger = $logger;
@@ -107,6 +112,7 @@ class FilterRunnerFactory {
 			$this->parserFactory,
 			$this->consExecutorFactory,
 			$this->abuseLoggerFactory,
+			$this->varManager,
 			$watchers,
 			$this->logger,
 			$this->statsdDataFactory,

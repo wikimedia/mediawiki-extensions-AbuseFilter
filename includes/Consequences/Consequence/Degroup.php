@@ -3,11 +3,12 @@
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use AbuseFilterVariableHolder;
+use AFComputedVariable;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use TitleValue;
@@ -59,9 +60,14 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 		// Pull the groups from the VariableHolder, so that they will always be computed.
 		// This allow us to pull the groups from the VariableHolder to undo the degroup
 		// via Special:AbuseFilter/revert.
-		$groupsVar = $this->vars->getVar( 'user_groups', AbuseFilterVariableHolder::GET_LAX );
-		if ( $groupsVar->type !== AFPData::DARRAY ) {
-			// Somehow, the variable wasn't set
+		try {
+			// No point in triggering a lazy-load, instead we compute it here if necessary
+			$groupsVar = $this->vars->getVarThrow( 'user_groups' );
+		} catch ( UnsetVariableException $_ ) {
+			$groupsVar = null;
+		}
+		if ( $groupsVar === null || $groupsVar instanceof AFComputedVariable ) {
+			// The variable is unset or not computed. Compute it and update the holder so we can use it for reverts
 			$groups = $this->userGroupManager->getUserEffectiveGroups( $user );
 			$this->vars->setVar( 'user_groups', $groups );
 		} else {

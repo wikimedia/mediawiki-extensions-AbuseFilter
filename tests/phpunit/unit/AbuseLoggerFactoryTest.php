@@ -8,8 +8,8 @@ use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWikiUnitTestCase;
 use Title;
 use User;
@@ -30,6 +30,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( CentralDBManager::class ),
 			$this->createMock( FilterLookup::class ),
 			$this->createMock( VariablesBlobStore::class ),
+			$this->createMock( VariablesManager::class ),
 			$this->createMock( ILoadBalancer::class ),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
@@ -45,10 +46,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 		$logger = $factory->newLogger(
 			$this->createMock( Title::class ),
 			$this->createMock( User::class ),
-			AbuseFilterVariableHolder::newFromArray(
-				[ 'action' => 'edit' ],
-				$this->createMock( KeywordsManager::class )
-			)
+			AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] )
 		);
 		$this->assertInstanceOf( AbuseLogger::class, $logger );
 	}

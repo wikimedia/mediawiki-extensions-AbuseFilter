@@ -56,7 +56,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @param array $variables Map of [ name => value ] to build an AbuseFilterVariableHolder with
 	 * @param ?array $expectedValues Null to use $variables
 	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesBlobStore
-	 * @covers AbuseFilterVariableHolder::dumpAllVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesManager::dumpAllVars
 	 * @dataProvider provideVariables
 	 */
 	public function testVarDump( array $variables, array $expectedValues = null ) {
@@ -161,9 +161,10 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 
 		$vars = new AbuseFilterVariableHolder();
 		$vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
+		$manager = AbuseFilterServices::getVariablesManager();
 		$this->assertSame(
 			"$name-$prefix",
-			$vars->getVar( 'wiki_name' )->toNative()
+			$manager->getVar( $vars, 'wiki_name' )->toNative()
 		);
 	}
 
@@ -182,9 +183,10 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 
 		$vars = new AbuseFilterVariableHolder();
 		$vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
+		$manager = AbuseFilterServices::getVariablesManager();
 		$this->assertSame(
 			$fakeCode,
-			$vars->getVar( 'wiki_language' )->toNative()
+			$manager->getVar( $vars, 'wiki_language' )->toNative()
 		);
 	}
 

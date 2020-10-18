@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ConsequencesDisable
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
 use Psr\Log\LoggerInterface;
 use Status;
 use Title;
@@ -226,7 +227,7 @@ class ConsequencesExecutor {
 			$isGlobalFilter,
 			$this->user,
 			$this->title,
-			$this->vars->getVar( 'action' )->toString()
+			$this->vars->getComputedVariable( 'action' )->toString()
 		);
 
 		switch ( $actionName ) {
@@ -256,7 +257,12 @@ class ConsequencesExecutor {
 			case 'block':
 				return $this->consFactory->newBlock( $baseConsParams, $rawParams['expiry'], $rawParams['blocktalk'] );
 			case 'tag':
-				$accountName = $this->vars->getVar( 'accountname', AbuseFilterVariableHolder::GET_BC )->toNative();
+				try {
+					// The variable is not lazy-loaded
+					$accountName = $this->vars->getComputedVariable( 'accountname' )->toNative();
+				} catch ( UnsetVariableException $_ ) {
+					$accountName = null;
+				}
 				return $this->consFactory->newTag( $baseConsParams, $accountName, $rawParams );
 			default:
 				$customHandlers = $this->options->get( 'AbuseFilterCustomActionsHandlers' );

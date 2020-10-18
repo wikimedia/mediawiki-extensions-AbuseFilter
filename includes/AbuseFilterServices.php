@@ -225,4 +225,11 @@ class AbuseFilterServices {
 	public static function getTextExtractor() : TextExtractor {
 		return MediaWikiServices::getInstance()->getService( TextExtractor::SERVICE_NAME );
 	}
+
+	/**
+	 * @return VariablesManager
+	 */
+	public static function getVariablesManager() : VariablesManager {
+		return MediaWikiServices::getInstance()->getService( VariablesManager::SERVICE_NAME );
+	}
 }

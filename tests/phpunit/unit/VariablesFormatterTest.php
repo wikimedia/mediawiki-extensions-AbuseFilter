@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
@@ -20,6 +21,7 @@ class VariablesFormatterTest extends MediaWikiUnitTestCase {
 			VariablesFormatter::class,
 			new VariablesFormatter(
 				$this->createMock( KeywordsManager::class ),
+				$this->createMock( VariablesManager::class ),
 				$this->createMock( MessageLocalizer::class )
 			)
 		);
@@ -31,6 +33,7 @@ class VariablesFormatterTest extends MediaWikiUnitTestCase {
 	public function testSetMessageLocalizer() {
 		$formatter = new VariablesFormatter(
 			$this->createMock( KeywordsManager::class ),
+			$this->createMock( VariablesManager::class ),
 			$this->createMock( MessageLocalizer::class )
 		);
 		$ml = $this->createMock( MessageLocalizer::class );

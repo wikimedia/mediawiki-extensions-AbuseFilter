@@ -17,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -62,6 +63,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @var VariablesFormatter
 	 */
 	private $variablesFormatter;
+	/**
+	 * @var VariablesManager
+	 */
+	private $varManager;
 
 	/**
 	 * @param RevisionLookup $revisionLookup
@@ -70,6 +75,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param VariablesFormatter $variablesFormatter
+	 * @param VariablesManager $varManager
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -82,6 +88,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		EditBoxBuilderFactory $boxBuilderFactory,
 		VariablesBlobStore $varBlobStore,
 		VariablesFormatter $variablesFormatter,
+		VariablesManager $varManager,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -94,6 +101,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->varBlobStore = $varBlobStore;
 		$this->variablesFormatter = $variablesFormatter;
 		$this->variablesFormatter->setMessageLocalizer( $context );
+		$this->varManager = $varManager;
 	}
 
 	/**
@@ -196,9 +204,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$vars = new AbuseFilterVariableHolder();
 		$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
-		$vars = $varGenerator->getVars();
+		$vars = $varGenerator->getVars() ?: new AbuseFilterVariableHolder();
 		$out->addJsConfigVars( [
-			'wgAbuseFilterVariables' => $vars ? $vars->dumpAllVars( true ) : [],
+			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
 			'abuseFilterExamine' => [ 'type' => 'rc', 'id' => $rcid ]
 		] );
 
@@ -268,7 +276,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( [
-			'wgAbuseFilterVariables' => $vars->dumpAllVars( true ),
+			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
 			'abuseFilterExamine' => [ 'type' => 'log', 'id' => $logid ]
 		] );
 		$this->showExaminer( $vars );

@@ -9,6 +9,7 @@ use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
 use Sanitizer;
@@ -81,6 +82,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	/** @var KeywordsManager */
 	protected $keywordsManager;
 
+	/** @var VariablesManager */
+	protected $varManager;
+
 	/** @var int */
 	private $conditionsLimit;
 
@@ -119,6 +123,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @param BagOStuff $cache Used to cache the AST (in CachingParser) and the tokens
 	 * @param LoggerInterface $logger Used for debugging
 	 * @param KeywordsManager $keywordsManager
+	 * @param VariablesManager $varManager
 	 * @param int $conditionsLimit
 	 * @param AbuseFilterVariableHolder|null $vars
 	 */
@@ -127,6 +132,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		BagOStuff $cache,
 		LoggerInterface $logger,
 		KeywordsManager $keywordsManager,
+		VariablesManager $varManager,
 		int $conditionsLimit,
 		AbuseFilterVariableHolder $vars = null
 	) {
@@ -135,12 +141,12 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$this->logger = $logger;
 		$this->statsd = new NullStatsdDataFactory;
 		$this->keywordsManager = $keywordsManager;
+		$this->varManager = $varManager;
 		$this->conditionsLimit = $conditionsLimit;
 		$this->resetState();
 		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
-		$this->mVariables->setLogger( $logger );
 	}
 
 	/**
@@ -211,7 +217,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	public function resetState() {
 		$this->mTokens = [];
-		$this->mVariables = new AbuseFilterVariableHolder( $this->keywordsManager );
+		$this->mVariables = new AbuseFilterVariableHolder();
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
@@ -1198,10 +1204,10 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 		// It's a built-in, non-disabled variable (either set or unset), or a set custom variable
 		$flags = $this->allowMissingVariables
-			? AbuseFilterVariableHolder::GET_LAX
+			? VariablesManager::GET_LAX
 			// TODO: This should be GET_STRICT, but that's going to be very hard (see T230256)
-			: AbuseFilterVariableHolder::GET_BC;
-		return $this->mVariables->getVar( $var, $flags, $this->mFilter );
+			: VariablesManager::GET_BC;
+		return $this->varManager->getVar( $this->mVariables, $var, $flags, $this->mFilter );
 	}
 
 	/**

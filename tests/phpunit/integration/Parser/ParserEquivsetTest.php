@@ -26,11 +26,13 @@ use EmptyBagOStuff;
 use Generator;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTestCase;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -65,10 +67,22 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$cache = new EmptyBagOStuff();
 			$logger = new \Psr\Log\NullLogger();
 			$keywordsManager = AbuseFilterServices::getKeywordsManager();
+			$varManager = new VariablesManager(
+				$keywordsManager,
+				$this->createMock( LazyVariableComputer::class ),
+				$logger
+			);
 
-			$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager, 1000 );
+			$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager, $varManager, 1000 );
 			$parser->toggleConditionLimit( false );
-			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager, 1000 );
+			$cachingParser = new AbuseFilterCachingParser(
+				$contLang,
+				$cache,
+				$logger,
+				$keywordsManager,
+				$varManager,
+				1000
+			);
 			$cachingParser->toggleConditionLimit( false );
 			$parsers = [ $parser, $cachingParser ];
 		} else {

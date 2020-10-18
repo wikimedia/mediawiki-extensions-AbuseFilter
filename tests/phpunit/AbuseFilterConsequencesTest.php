@@ -1347,7 +1347,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param string[] $usedVars The variables effectively computed by filters in $createIds.
 	 *   We'll search these in the stored dump.
 	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesBlobStore
-	 * @covers AbuseFilterVariableHolder::dumpAllVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesManager::dumpAllVars
 	 * @dataProvider provideFiltersAndVariables
 	 */
 	public function testVarDump( $createIds, $actionParams, $usedVars ) {

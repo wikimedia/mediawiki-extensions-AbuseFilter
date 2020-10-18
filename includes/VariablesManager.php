@@ -1,0 +1,235 @@
+<?php
+
+namespace MediaWiki\Extension\AbuseFilter;
+
+use AbuseFilterVariableHolder;
+use AFComputedVariable;
+use LogicException;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use Psr\Log\LoggerInterface;
+use RuntimeException;
+
+/**
+ * Service that allows manipulating a VariableHolder
+ */
+class VariablesManager {
+	public const SERVICE_NAME = 'AbuseFilterVariablesManager';
+	/**
+	 * Used in self::getVar() to determine what to do if the requested variable is missing. See
+	 * the docs of that method for an explanation.
+	 */
+	public const GET_LAX = 0;
+	public const GET_STRICT = 1;
+	public const GET_BC = 2;
+
+	/** @var KeywordsManager */
+	private $keywordsManager;
+	/** @var LazyVariableComputer */
+	private $lazyComputer;
+	/** @var LoggerInterface */
+	private $logger;
+
+	/**
+	 * @param KeywordsManager $keywordsManager
+	 * @param LazyVariableComputer $lazyComputer
+	 * @param LoggerInterface $logger
+	 */
+	public function __construct(
+		KeywordsManager $keywordsManager,
+		LazyVariableComputer $lazyComputer,
+		LoggerInterface $logger
+	) {
+		$this->keywordsManager = $keywordsManager;
+		$this->lazyComputer = $lazyComputer;
+		$this->logger = $logger;
+	}
+
+	/**
+	 * Checks whether any deprecated variable is stored with the old name, and replaces it with
+	 * the new name. This should normally only happen when a DB dump is retrieved from the DB.
+	 *
+	 * @param AbuseFilterVariableHolder $holder
+	 */
+	public function translateDeprecatedVars( AbuseFilterVariableHolder $holder ) : void {
+		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
+		foreach ( $holder->getVars() as $name => $value ) {
+			if ( array_key_exists( $name, $deprecatedVars ) ) {
+				$holder->setVar( $deprecatedVars[$name], $value );
+				$holder->removeVar( $name );
+			}
+		}
+	}
+
+	/**
+	 * Get a variable from the current object
+	 *
+	 * @param AbuseFilterVariableHolder $holder
+	 * @param string $varName The variable name
+	 * @param int $mode One of the self::GET_* constants, determines how to behave when the variable is unset:
+	 *  - GET_STRICT -> In the future, this will throw an exception. For now it returns a DUNDEFINED and logs a warning
+	 *  - GET_LAX -> Return a DUNDEFINED AFPData
+	 *  - GET_BC -> Return a DNULL AFPData (this should only be used for BC, see T230256)
+	 * @param string|null $tempFilter Filter ID, if available; only used for debugging (temporarily)
+	 * @return AFPData
+	 */
+	public function getVar(
+		AbuseFilterVariableHolder $holder,
+		string $varName,
+		$mode = self::GET_STRICT,
+		$tempFilter = null
+	) : AFPData {
+		$varName = strtolower( $varName );
+		if ( $holder->varIsSet( $varName ) ) {
+			/** @var $variable AFComputedVariable|AFPData */
+			$variable = $holder->getVarThrow( $varName );
+			if ( $variable instanceof AFComputedVariable ) {
+				$getVarCB = function ( string $varName ) use ( $holder ) : AFPData {
+					return $this->getVar( $holder, $varName );
+				};
+				$value = $this->lazyComputer->compute( $variable, $holder, $getVarCB );
+				$holder->setVar( $varName, $value );
+				return $value;
+			} elseif ( $variable instanceof AFPData ) {
+				return $variable;
+			} else {
+				// @codeCoverageIgnoreStart
+				throw new \UnexpectedValueException(
+					"Variable $varName has unexpected type " . gettype( $variable )
+				);
+				// @codeCoverageIgnoreEnd
+			}
+		}
+
+		// The variable is not set.
+		switch ( $mode ) {
+			case self::GET_STRICT:
+				$this->logger->warning(
+					__METHOD__ . ": requested unset variable {varname} in strict mode, filter: {filter}",
+					[
+						'varname' => $varName,
+						'exception' => new RuntimeException(),
+						'filter' => $tempFilter ?? 'unavailable'
+					]
+				);
+				// @todo change the line below to throw an exception in a future MW version
+				return new AFPData( AFPData::DUNDEFINED );
+			case self::GET_LAX:
+				return new AFPData( AFPData::DUNDEFINED );
+			case self::GET_BC:
+				// Old behaviour, which can sometimes lead to unexpected results (e.g.
+				// `edit_delta < -5000` will match any non-edit action).
+				return new AFPData( AFPData::DNULL );
+			default:
+				// @codeCoverageIgnoreStart
+				throw new LogicException( "Mode '$mode' not recognized." );
+				// @codeCoverageIgnoreEnd
+		}
+	}
+
+	/**
+	 * Dump all variables stored in the holder in their native types.
+	 * If you want a not yet set variable to be included in the results you can
+	 * either set $compute to an array with the name of the variable or set
+	 * $compute to true to compute all not yet set variables.
+	 *
+	 * @param AbuseFilterVariableHolder $holder
+	 * @param array|bool $compute Variables we should compute if not yet set
+	 * @param bool $includeUserVars Include user set variables
+	 * @return array
+	 */
+	public function dumpAllVars(
+		AbuseFilterVariableHolder $holder,
+		$compute = [],
+		bool $includeUserVars = false
+	) : array {
+		$coreVariables = [];
+
+		if ( !$includeUserVars ) {
+			// Compile a list of all variables set by the extension to be able
+			// to filter user set ones by name
+			$activeVariables = array_keys( $this->keywordsManager->getVarsMappings() );
+			$deprecatedVariables = array_keys( $this->keywordsManager->getDeprecatedVariables() );
+			$disabledVariables = array_keys( $this->keywordsManager->getDisabledVariables() );
+			$coreVariables = array_merge( $activeVariables, $deprecatedVariables, $disabledVariables );
+			$coreVariables = array_map( 'strtolower', $coreVariables );
+		}
+
+		$exported = [];
+		foreach ( array_keys( $holder->getVars() ) as $varName ) {
+			$computeThis = ( is_array( $compute ) && in_array( $varName, $compute ) ) || $compute === true;
+			if (
+				( $includeUserVars || in_array( strtolower( $varName ), $coreVariables ) ) &&
+				// Only include variables set in the extension in case $includeUserVars is false
+				( $computeThis || $holder->getVarThrow( $varName ) instanceof AFPData )
+			) {
+				$exported[$varName] = $this->getVar( $holder, $varName )->toNative();
+			}
+		}
+
+		return $exported;
+	}
+
+	/**
+	 * Compute all vars which need DB access. Useful for vars which are going to be saved
+	 * cross-wiki or used for offline analysis.
+	 *
+	 * @param AbuseFilterVariableHolder $holder
+	 */
+	public function computeDBVars( AbuseFilterVariableHolder $holder ) : void {
+		static $dbTypes = [
+			'links-from-wikitext-or-database',
+			'load-recent-authors',
+			'page-age',
+			'get-page-restrictions',
+			'simple-user-accessor',
+			'user-age',
+			'revision-text-by-id',
+		];
+
+		/** @var AFComputedVariable[] $missingVars */
+		$missingVars = array_filter( $holder->getVars(), function ( $el ) {
+			return ( $el instanceof AFComputedVariable );
+		} );
+		$getVarCB = function ( string $varName ) use ( $holder ) : AFPData {
+			return $this->getVar( $holder, $varName );
+		};
+		foreach ( $missingVars as $name => $var ) {
+			if ( in_array( $var->mMethod, $dbTypes ) ) {
+				$value = $this->lazyComputer->compute( $var, $holder, $getVarCB );
+				$holder->setVar( $name, $value );
+			}
+		}
+	}
+
+	/**
+	 * Export all variables stored in this object with their native (PHP) types.
+	 *
+	 * @param AbuseFilterVariableHolder $holder
+	 * @return array
+	 */
+	public function exportAllVars( AbuseFilterVariableHolder $holder ) : array {
+		$exported = [];
+		foreach ( array_keys( $holder->getVars() ) as $varName ) {
+			$exported[ $varName ] = $this->getVar( $holder, $varName )->toNative();
+		}
+
+		return $exported;
+	}
+
+	/**
+	 * Export all non-lazy variables stored in this object as string
+	 *
+	 * @param AbuseFilterVariableHolder $holder
+	 * @return string[]
+	 */
+	public function exportNonLazyVars( AbuseFilterVariableHolder $holder ) : array {
+		$exported = [];
+		foreach ( $holder->getVars() as $varName => $data ) {
+			if ( !( $data instanceof AFComputedVariable ) ) {
+				$exported[$varName] = $holder->getComputedVariable( $varName )->toString();
+			}
+		}
+
+		return $exported;
+	}
+}

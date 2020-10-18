@@ -15,15 +15,23 @@ class VariablesFormatter {
 
 	/** @var KeywordsManager */
 	private $keywordsManager;
+	/** @var VariablesManager */
+	private $varManager;
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
 	/**
 	 * @param KeywordsManager $keywordsManager
+	 * @param VariablesManager $variablesManager
 	 * @param MessageLocalizer $messageLocalizer
 	 */
-	public function __construct( KeywordsManager $keywordsManager, MessageLocalizer $messageLocalizer ) {
+	public function __construct(
+		KeywordsManager $keywordsManager,
+		VariablesManager $variablesManager,
+		MessageLocalizer $messageLocalizer
+	) {
 		$this->keywordsManager = $keywordsManager;
+		$this->varManager = $variablesManager;
 		$this->messageLocalizer = $messageLocalizer;
 	}
 
@@ -39,7 +47,7 @@ class VariablesFormatter {
 	 * @return string
 	 */
 	public function buildVarDumpTable( AbuseFilterVariableHolder $varHolder ) : string {
-		$vars = $varHolder->exportAllVars();
+		$vars = $this->varManager->exportAllVars( $varHolder );
 
 		$output = '';
 
@@ -69,6 +77,7 @@ class VariablesFormatter {
 					Html::element(
 						'code',
 						[],
+						// @phan-suppress-next-line SecurityCheck-XSS Keys are safe
 						$this->messageLocalizer->msg( 'parentheses' )->rawParams( $key )->text()
 					);
 			} else {

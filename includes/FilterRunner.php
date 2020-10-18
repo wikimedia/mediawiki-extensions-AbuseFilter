@@ -49,6 +49,8 @@ class FilterRunner {
 	private $logger;
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
+	/** @var VariablesManager */
+	private $varManager;
 
 	/**
 	 * @var AbuseFilterParser
@@ -97,6 +99,7 @@ class FilterRunner {
 	 * @param ParserFactory $parserFactory
 	 * @param ConsequencesExecutorFactory $consExecutorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
+	 * @param VariablesManager $varManager
 	 * @param Watcher[] $watchers
 	 * @param LoggerInterface $logger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
@@ -115,6 +118,7 @@ class FilterRunner {
 		ParserFactory $parserFactory,
 		ConsequencesExecutorFactory $consExecutorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
+		VariablesManager $varManager,
 		array $watchers,
 		LoggerInterface $logger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
@@ -131,6 +135,7 @@ class FilterRunner {
 		$this->parserFactory = $parserFactory;
 		$this->consExecutorFactory = $consExecutorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
+		$this->varManager = AbuseFilterServices::getVariablesManager();
 		$this->watchers = $watchers;
 		$this->logger = $logger;
 		$this->statsdDataFactory = $statsdDataFactory;
@@ -144,9 +149,8 @@ class FilterRunner {
 		$this->user = $user;
 		$this->title = $title;
 		$this->vars = $vars;
-		$this->vars->setLogger( $logger );
 		$this->group = $group;
-		$this->action = $vars->getVar( 'action' )->toString();
+		$this->action = $vars->getComputedVariable( 'action' )->toString();
 	}
 
 	/**
@@ -312,7 +316,7 @@ class FilterRunner {
 			'hitCondLimit' => $hitCondLimit,
 			'condCount' => $this->parser->getCondCount(),
 			'runtime' => ( microtime( true ) - $startTime - LazyVariableComputer::$profilingExtraTime ) * 1000,
-			'vars' => $this->vars->dumpAllVars(),
+			'vars' => $this->varManager->dumpAllVars( $this->vars ),
 			'profiling' => $this->profilingData
 		];
 
@@ -345,7 +349,7 @@ class FilterRunner {
 	 * @return string
 	 */
 	protected function getStashKey( BagOStuff $cache ) {
-		$inputVars = $this->vars->exportNonLazyVars();
+		$inputVars = $this->varManager->exportNonLazyVars( $this->vars );
 		// Exclude noisy fields that have superficial changes
 		$excludedVars = [
 			'old_html' => true,
@@ -485,9 +489,10 @@ class FilterRunner {
 			'action' => $this->action,
 			'username' => $this->user->getName(),
 			'target' => $this->title,
-			'accountname' => $this->vars->getVar(
+			'accountname' => $this->varManager->getVar(
+				$this->vars,
 				'accountname',
-				AbuseFilterVariableHolder::GET_BC
+				VariablesManager::GET_BC
 			)->toNative()
 		];
 	}

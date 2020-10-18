@@ -25,16 +25,9 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 use AbuseFilterVariableHolder;
 use AFComputedVariable;
 use Generator;
-use LogicException;
-use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
 use MediaWikiUnitTestCase;
-use Psr\Log\NullLogger;
-use TestLogger;
-use UnexpectedValueException;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Test
@@ -42,30 +35,6 @@ use Wikimedia\TestingAccessWrapper;
  * @group AbuseFilterParser
  */
 class VariableHolderTest extends MediaWikiUnitTestCase {
-	/**
-	 * Convenience wrapper
-	 * @return AbuseFilterVariableHolder
-	 */
-	private function getVariableHolder() : AbuseFilterVariableHolder {
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		return new AbuseFilterVariableHolder( $keywordsManager );
-	}
-
-	/**
-	 * @covers AbuseFilterVariableHolder::__construct
-	 * @covers AbuseFilterVariableHolder::setLogger
-	 */
-	public function testLogger() {
-		$vars = $this->getVariableHolder();
-		$tw = TestingAccessWrapper::newFromObject( $vars );
-		$this->assertInstanceOf( NullLogger::class, $tw->logger, 'Default logger is NullLogger' );
-
-		$loggerClass = TestLogger::class;
-		$logger = $this->createMock( $loggerClass );
-		$tw->setLogger( $logger );
-		$this->assertInstanceOf( $loggerClass, $tw->logger, 'Logger can be changed' );
-	}
-
 	/**
 	 * @covers AbuseFilterVariableHolder::newFromArray
 	 */
@@ -75,9 +44,8 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 			'bar' => [ 'x', 'y' ],
 			'baz' => false
 		];
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$actual = AbuseFilterVariableHolder::newFromArray( $vars, $keywordsManager );
-		$expected = $this->getVariableHolder();
+		$actual = AbuseFilterVariableHolder::newFromArray( $vars );
+		$expected = new AbuseFilterVariableHolder();
 		foreach ( $vars as $var => $value ) {
 			$expected->setVar( $var, $value );
 		}
@@ -89,33 +57,11 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 * @covers AbuseFilterVariableHolder::setVar
 	 */
 	public function testVarsAreLowercased() {
-		$vars = $this->getVariableHolder();
+		$vars = new AbuseFilterVariableHolder();
 		$this->assertCount( 0, $vars->getVars(), 'precondition' );
 		$vars->setVar( 'FOO', 42 );
 		$this->assertCount( 1, $vars->getVars(), 'variable should be set' );
 		$this->assertArrayHasKey( 'foo', $vars->getVars(), 'var should be lowercase' );
-	}
-
-	/**
-	 * @covers AbuseFilterVariableHolder::translateDeprecatedVars
-	 */
-	public function testTranslateDeprecatedVars() {
-		$varsMap = [
-			'timestamp' => new AFPData( AFPData::DSTRING, '123' ),
-			'added_lines' => new AFPData( AFPData::DSTRING, 'foobar' ),
-			'article_text' => new AFPData( AFPData::DSTRING, 'FOO' ),
-			'article_articleid' => new AFPData( AFPData::DINT, 42 )
-		];
-		$translatedVarsMap = [
-			'timestamp' => $varsMap['timestamp'],
-			'added_lines' => $varsMap['added_lines'],
-			'page_title' => $varsMap['article_text'],
-			'page_id' => $varsMap['article_articleid']
-		];
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$holder = AbuseFilterVariableHolder::newFromArray( $varsMap, $keywordsManager );
-		$holder->translateDeprecatedVars();
-		$this->assertEquals( $translatedVarsMap, $holder->getVars() );
 	}
 
 	/**
@@ -127,8 +73,8 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 *
 	 * @covers AbuseFilterVariableHolder::setVar
 	 */
-	public function testSetVar( $name, $val, $expected ) {
-		$vars = $this->getVariableHolder();
+	public function testSetVar( string $name, $val, $expected ) {
+		$vars = new AbuseFilterVariableHolder();
 		$vars->setVar( $name, $val );
 		$this->assertEquals( $expected, $vars->getVars()[$name] );
 	}
@@ -147,7 +93,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 * @covers AbuseFilterVariableHolder::getVars
 	 */
 	public function testGetVars() {
-		$vars = $this->getVariableHolder();
+		$vars = new AbuseFilterVariableHolder();
 		$this->assertSame( [], $vars->getVars(), 'precondition' );
 
 		$vars->setVar( 'foo', [ true ] );
@@ -163,55 +109,39 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $name
-	 * @param int $flags
-	 * @param AFPData $expected
-	 * @covers AbuseFilterVariableHolder::getVar
+	 * @param AFPData|AFComputedVariable $expected
+	 * @covers AbuseFilterVariableHolder::getVarThrow
 	 *
-	 * @dataProvider provideGetVar
+	 * @dataProvider provideGetVarThrow
 	 */
-	public function testGetVar( AbuseFilterVariableHolder $vars, $name, $flags, AFPData $expected ) {
-		$this->assertEquals( $expected, $vars->getVar( $name, $flags ) );
+	public function testGetVarThrow( AbuseFilterVariableHolder $vars, string $name, $expected ) {
+		$this->assertEquals( $expected, $vars->getVarThrow( $name ) );
 	}
 
 	/**
 	 * @return Generator|array
 	 */
-	public function provideGetVar() {
-		$vars = $this->getVariableHolder();
+	public function provideGetVarThrow() {
+		$vars = new AbuseFilterVariableHolder();
 
 		$name = 'foo';
-		$expected = new AFPData( AFPData::DSTRING, 'foobarbaz' );
-		$computer = $this->createMock( LazyVariableComputer::class );
-		$computer->method( 'compute' )->willReturn( $expected );
-		$afcv = new AFComputedVariable( '', [] );
-		$vars->setLazyComputer( $computer );
+		$afcv = new AFComputedVariable( 'method', [ 'param' ] );
 		$vars->setVar( $name, $afcv );
-		yield 'set, AFComputedVariable' => [ $vars, $name, 0, $expected ];
+		yield 'set, AFComputedVariable' => [ $vars, $name, $afcv ];
 
 		$name = 'afpd';
 		$afpd = new AFPData( AFPData::DINT, 42 );
 		$vars->setVar( $name, $afpd );
-		yield 'set, AFPData' => [ $vars, $name, 0, $afpd ];
-
-		$name = 'not-set';
-		$expected = new AFPData( AFPData::DUNDEFINED );
-		yield 'unset, lax' => [ $vars, $name, AbuseFilterVariableHolder::GET_LAX, $expected ];
-		// For now, strict is the same as lax.
-		yield 'unset, strict' => [ $vars, $name, AbuseFilterVariableHolder::GET_STRICT, $expected ];
-		yield 'unset, bc' => [ $vars, $name, AbuseFilterVariableHolder::GET_BC, new AFPData( AFPData::DNULL ) ];
+		yield 'set, AFPData' => [ $vars, $name, $afpd ];
 	}
 
 	/**
-	 * @covers AbuseFilterVariableHolder::getVar
+	 * @covers AbuseFilterVariableHolder::getVarThrow
 	 */
-	public function testGetVarInvalidType() {
-		$vars = $this->getVariableHolder();
-		$tw = TestingAccessWrapper::newFromObject( $vars );
-		$name = 'foo';
-		$tw->mVars = [ $name => 'INVALID TYPE' ];
-
-		$this->expectException( UnexpectedValueException::class );
-		$tw->getVar( $name );
+	public function testGetVarThrow_unset() {
+		$vars = new AbuseFilterVariableHolder();
+		$this->expectException( UnsetVariableException::class );
+		$vars->getVarThrow( 'unset-variable' );
 	}
 
 	/**
@@ -221,18 +151,17 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 *
 	 * @covers AbuseFilterVariableHolder::addHolders
 	 */
-	public function testAddHolders( $expected, AbuseFilterVariableHolder ...$holders ) {
-		$actual = $this->getVariableHolder();
+	public function testAddHolders( array $expected, AbuseFilterVariableHolder ...$holders ) {
+		$actual = new AbuseFilterVariableHolder();
 		$actual->addHolders( ...$holders );
 
 		$this->assertEquals( $expected, $actual->getVars() );
 	}
 
 	public function provideHoldersForAddition() {
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$v1 = AbuseFilterVariableHolder::newFromArray( [ 'a' => 1, 'b' => 2 ], $keywordsManager );
-		$v2 = AbuseFilterVariableHolder::newFromArray( [ 'b' => 3, 'c' => 4 ], $keywordsManager );
-		$v3 = AbuseFilterVariableHolder::newFromArray( [ 'c' => 5, 'd' => 6 ], $keywordsManager );
+		$v1 = AbuseFilterVariableHolder::newFromArray( [ 'a' => 1, 'b' => 2 ] );
+		$v2 = AbuseFilterVariableHolder::newFromArray( [ 'b' => 3, 'c' => 4 ] );
+		$v3 = AbuseFilterVariableHolder::newFromArray( [ 'c' => 5, 'd' => 6 ] );
 
 		$expected = [
 			'a' => new AFPData( AFPData::DINT, 1 ),
@@ -248,7 +177,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 * @covers AbuseFilterVariableHolder::varIsSet
 	 */
 	public function testVarIsSet() {
-		$vars = $this->getVariableHolder();
+		$vars = new AbuseFilterVariableHolder();
 		$vars->setVar( 'foo', null );
 		$this->assertTrue( $vars->varIsSet( 'foo' ), 'Set variable should be set' );
 		$this->assertFalse( $vars->varIsSet( 'foobarbaz' ), 'Unset variable should be unset' );
@@ -256,7 +185,6 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers AbuseFilterVariableHolder::setLazyLoadVar
-	 * @covers AbuseFilterVariableHolder::getLazyLoader
 	 */
 	public function testLazyLoader() {
 		$var = 'foobar';
@@ -264,163 +192,21 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 		$params = [ 'baz', 1 ];
 		$exp = new AFComputedVariable( $method, $params );
 
-		$vars = $this->getVariableHolder();
+		$vars = new AbuseFilterVariableHolder();
 		$vars->setLazyLoadVar( $var, $method, $params );
 		$this->assertEquals( $exp, $vars->getVars()[$var] );
 	}
 
 	/**
-	 * @covers AbuseFilterVariableHolder::exportAllVars
+	 * @covers AbuseFilterVariableHolder::removeVar
 	 */
-	public function testExportAllVars() {
-		$pairs = [
-			'foo' => 42,
-			'bar' => [ 'bar', 'baz' ],
-			'var' => false,
-			'boo' => null
-		];
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$vars = AbuseFilterVariableHolder::newFromArray( $pairs, $keywordsManager );
-
-		$this->assertSame( $pairs, $vars->exportAllVars() );
-	}
-
-	/**
-	 * @covers AbuseFilterVariableHolder::exportNonLazyVars
-	 */
-	public function testExportNonLazyVars() {
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$afcv = $this->createMock( AFComputedVariable::class );
-		$pairs = [
-			'lazy1' => $afcv,
-			'lazy2' => $afcv,
-			'native1' => 42,
-			'native2' => 'foo',
-			'native3' => null,
-			'afpd' => new AFPData( AFPData::DSTRING, 'hey' ),
-		];
-		$vars = AbuseFilterVariableHolder::newFromArray( $pairs, $keywordsManager );
-
-		$nonLazy = [
-			'native1' => '42',
-			'native2' => 'foo',
-			'native3' => '',
-			'afpd' => 'hey'
-		];
-
-		$this->assertSame( $nonLazy, $vars->exportNonLazyVars() );
-	}
-
-	/**
-	 * @param AbuseFilterVariableHolder $vars
-	 * @param array|bool $compute
-	 * @param bool $includeUser
-	 * @param array $expected
-	 * @dataProvider provideDumpAllVars
-	 *
-	 * @covers AbuseFilterVariableHolder::dumpAllVars
-	 */
-	public function testDumpAllVars( $vars, $compute, $includeUser, $expected ) {
-		$this->assertEquals( $expected, $vars->dumpAllVars( $compute, $includeUser ) );
-	}
-
-	/**
-	 * @return Generator|array
-	 */
-	public function provideDumpAllVars() {
-		$titleVal = 'title';
-		$preftitle = new AFComputedVariable( 'preftitle', [] );
-
-		$linesVal = 'lines';
-		$lines = new AFComputedVariable( 'lines', [] );
-
-		$computer = $this->createMock( LazyVariableComputer::class );
-		$computer->method( 'compute' )->willReturnCallback(
-			function ( AFComputedVariable $var ) use ( $titleVal, $linesVal ) {
-				switch ( $var->mMethod ) {
-					case 'preftitle':
-						return new AFPData( AFPData::DSTRING, $titleVal );
-					case 'lines':
-						return new AFPData( AFPData::DSTRING, $linesVal );
-					default:
-						throw new LogicException( 'Unrecognized value!' );
-				}
-			}
-		);
-
-		$pairs = [
-			'page_title' => 'foo',
-			'page_prefixedtitle' => $preftitle,
-			'added_lines' => $lines,
-			'user_name' => 'bar',
-			'custom-var' => 'foo'
-		];
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$vars = AbuseFilterVariableHolder::newFromArray( $pairs, $keywordsManager );
-		$vars->setLazyComputer( $computer );
-
-		$nonLazy = array_fill_keys( [ 'page_title', 'user_name', 'custom-var' ], 1 );
-		$nonLazyExpect = array_intersect_key( $pairs, $nonLazy );
-		yield 'lazy-loaded vars are excluded if not computed' => [
-			clone $vars,
-			[],
-			true,
-			$nonLazyExpect
-		];
-
-		$nonUserExpect = array_diff_key( $nonLazyExpect, [ 'custom-var' => 1 ] );
-		yield 'user-set vars are excluded' => [ clone $vars, [], false, $nonUserExpect ];
-
-		$allExpect = $pairs;
-		$allExpect['page_prefixedtitle'] = $titleVal;
-		$allExpect['added_lines'] = $linesVal;
-		yield 'all vars computed' => [ clone $vars, true, true, $allExpect ];
-
-		$titleOnlyComputed = array_merge( $nonLazyExpect, [ 'page_prefixedtitle' => $titleVal ] );
-		yield 'Only a specific var computed' => [
-			clone $vars,
-			[ 'page_prefixedtitle' ],
-			true,
-			$titleOnlyComputed
-		];
-	}
-
-	/**
-	 * @covers AbuseFilterVariableHolder::computeDBVars
-	 */
-	public function testComputeDBVars() {
-		$nonDBMet = [ 'unknown', 'certainly-not-db' ];
-		$dbMet = [ 'page-age', 'simple-user-accessor', 'load-recent-authors' ];
-		$methods = array_merge( $nonDBMet, $dbMet );
-		$objs = [];
-		foreach ( $methods as $method ) {
-			$cur = new AFComputedVariable( $method, [] );
-			$objs[$method] = $cur;
-		}
-
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$vars = AbuseFilterVariableHolder::newFromArray( $objs, $keywordsManager );
-		$computer = $this->createMock( LazyVariableComputer::class );
-		$computer->method( 'compute' )->willReturnCallback(
-			function ( AFComputedVariable $var ) {
-				return $var->mMethod;
-			}
-		);
-		$vars->setLazyComputer( $computer );
-		$vars->computeDBVars();
-
-		$expAFCV = array_intersect_key( $vars->getVars(), array_fill_keys( $nonDBMet, 1 ) );
-		$this->assertContainsOnlyInstancesOf(
-			AFComputedVariable::class,
-			$expAFCV,
-			"non-DB methods shouldn't have been computed"
-		);
-
-		$expComputed = array_intersect_key( $vars->getVars(), array_fill_keys( $dbMet, 1 ) );
-		$this->assertContainsOnlyInstancesOf(
-			AFPData::class,
-			$expComputed,
-			'DB methods should have been computed'
-		);
+	public function testRemoveVar() {
+		$vars = new AbuseFilterVariableHolder();
+		$varName = 'foo';
+		$vars->setVar( $varName, 'foobar' );
+		$this->assertInstanceOf( AFPData::class, $vars->getVarThrow( $varName ) );
+		$vars->removeVar( $varName );
+		$this->expectException( UnsetVariableException::class );
+		$vars->getVarThrow( $varName );
 	}
 }

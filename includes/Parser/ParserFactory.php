@@ -6,6 +6,7 @@ use AbuseFilterVariableHolder;
 use BagOStuff;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use Psr\Log\LoggerInterface;
 
 class ParserFactory {
@@ -23,6 +24,9 @@ class ParserFactory {
 	/** @var KeywordsManager */
 	private $keywordsManager;
 
+	/** @var VariablesManager */
+	private $varManager;
+
 	/** @var string */
 	private $parserClass;
 
@@ -34,6 +38,7 @@ class ParserFactory {
 	 * @param BagOStuff $cache
 	 * @param LoggerInterface $logger
 	 * @param KeywordsManager $keywordsManager
+	 * @param VariablesManager $varManager
 	 * @param string $parserClass
 	 * @param int $conditionsLimit
 	 */
@@ -42,6 +47,7 @@ class ParserFactory {
 		BagOStuff $cache,
 		LoggerInterface $logger,
 		KeywordsManager $keywordsManager,
+		VariablesManager $varManager,
 		string $parserClass,
 		int $conditionsLimit
 	) {
@@ -49,6 +55,7 @@ class ParserFactory {
 		$this->cache = $cache;
 		$this->logger = $logger;
 		$this->keywordsManager = $keywordsManager;
+		$this->varManager = $varManager;
 		$this->parserClass = $parserClass;
 		$this->conditionsLimit = $conditionsLimit;
 	}
@@ -64,6 +71,7 @@ class ParserFactory {
 			$this->cache,
 			$this->logger,
 			$this->keywordsManager,
+			$this->varManager,
 			$this->conditionsLimit,
 			$vars
 		);

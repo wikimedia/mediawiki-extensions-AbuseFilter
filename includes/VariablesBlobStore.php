@@ -14,6 +14,9 @@ use MediaWiki\Storage\BlobStoreFactory;
 class VariablesBlobStore {
 	public const SERVICE_NAME = 'AbuseFilterVariablesBlobStore';
 
+	/** @var VariablesManager */
+	private $varManager;
+
 	/** @var BlobStoreFactory */
 	private $blobStoreFactory;
 
@@ -24,11 +27,18 @@ class VariablesBlobStore {
 	private $centralDB;
 
 	/**
+	 * @param VariablesManager $varManager
 	 * @param BlobStoreFactory $blobStoreFactory
 	 * @param BlobStore $blobStore
 	 * @param string|null $centralDB
 	 */
-	public function __construct( BlobStoreFactory $blobStoreFactory, BlobStore $blobStore, ?string $centralDB ) {
+	public function __construct(
+		VariablesManager $varManager,
+		BlobStoreFactory $blobStoreFactory,
+		BlobStore $blobStore,
+		?string $centralDB
+	) {
+		$this->varManager = $varManager;
 		$this->blobStoreFactory = $blobStoreFactory;
 		$this->blobStore = $blobStore;
 		$this->centralDB = $centralDB;
@@ -45,7 +55,7 @@ class VariablesBlobStore {
 	public function storeVarDump( AbuseFilterVariableHolder $varsHolder, $global = false ) {
 		// Get all variables yet set and compute old and new wikitext if not yet done
 		// as those are needed for the diff view on top of the abuse log pages
-		$vars = $varsHolder->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] );
+		$vars = $this->varManager->dumpAllVars( $varsHolder, [ 'old_wikitext', 'new_wikitext' ] );
 
 		// Vars is an array with native PHP data types (non-objects) now
 		$text = FormatJson::encode( $vars );
@@ -76,7 +86,7 @@ class VariablesBlobStore {
 
 		$vars = FormatJson::decode( $blob, true );
 		$obj = AbuseFilterVariableHolder::newFromArray( $vars );
-		$obj->translateDeprecatedVars();
+		$this->varManager->translateDeprecatedVars( $obj );
 		return $obj;
 	}
 }

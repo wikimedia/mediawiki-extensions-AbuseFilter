@@ -50,7 +50,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * Resets the state of the parser
 	 */
 	public function resetState() {
-		$this->mVariables = new AbuseFilterVariableHolder( $this->keywordsManager );
+		$this->mVariables = new AbuseFilterVariableHolder();
 		$this->mCur = new AFPToken();
 		$this->mCondCount = 0;
 		$this->mAllowShort = true;
@@ -415,7 +415,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 		foreach ( $node->getInnerAssignments() as $name ) {
 			if (
 				!$this->mVariables->varIsSet( $name ) ||
-				$this->mVariables->getVar( $name )->getType() === AFPData::DARRAY
+				$this->varManager->getVar( $this->mVariables, $name )->getType() === AFPData::DARRAY
 			) {
 				$this->setUserVariable( $name, new AFPData( AFPData::DUNDEFINED ) );
 			}

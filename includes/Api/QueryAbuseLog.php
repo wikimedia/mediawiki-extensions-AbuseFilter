@@ -318,7 +318,8 @@ class QueryAbuseLog extends ApiQueryBase {
 				$entry['details'] = [];
 				if ( $canSeeDetails ) {
 					$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $row->afl_var_dump );
-					$entry['details'] = $vars->exportAllVars();
+					$varManager = AbuseFilterServices::getVariablesManager();
+					$entry['details'] = $varManager->exportAllVars( $vars );
 				}
 			}
 

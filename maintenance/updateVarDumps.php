@@ -548,9 +548,12 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$obj = $this->restoreTruncatedDump( $text );
 			}
 
-			$varArray = $obj instanceof AbuseFilterVariableHolder
-				? $obj->dumpAllVars( [ 'old_wikitext', 'new_wikitext' ] )
-				: $obj;
+			if ( $obj instanceof AbuseFilterVariableHolder ) {
+				$varManager = AbuseFilterServices::getVariablesManager();
+				$varArray = $varManager->dumpAllVars( $obj, [ 'old_wikitext', 'new_wikitext' ] );
+			} else {
+				$varArray = $obj;
+			}
 			$varArray = $this->updateVariables( $varArray );
 			// Recreating flags will also ensure that we don't add 'nativeDataArray'
 			$newFlags = [ 'utf-8' ];

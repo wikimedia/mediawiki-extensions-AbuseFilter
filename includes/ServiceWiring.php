@@ -33,6 +33,7 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
@@ -110,6 +111,7 @@ return [
 			ObjectCache::getLocalServerInstance( 'hash' ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
+			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->getMainConfig()->get( 'AbuseFilterParserClass' ),
 			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
@@ -218,6 +220,7 @@ return [
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
 			$services->get( VariablesBlobStore::SERVICE_NAME ),
+			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
@@ -235,6 +238,7 @@ return [
 	},
 	VariablesBlobStore::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesBlobStore {
 		return new VariablesBlobStore(
+			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->getBlobStoreFactory(),
 			$services->getBlobStore(),
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )
@@ -262,6 +266,7 @@ return [
 			$services->get( ParserFactory::SERVICE_NAME ),
 			$services->get( ConsequencesExecutorFactory::SERVICE_NAME ),
 			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
+			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( UpdateHitCountWatcher::SERVICE_NAME ),
 			$services->get( EmergencyWatcher::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
@@ -272,6 +277,7 @@ return [
 	VariablesFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesFormatter {
 		return new VariablesFormatter(
 			$services->get( KeywordsManager::SERVICE_NAME ),
+			$services->get( VariablesManager::SERVICE_NAME ),
 			// TODO: Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain()
 		);
@@ -301,7 +307,14 @@ return [
 		return new TextExtractor(
 			new AbuseFilterHookRunner( $services->getHookContainer() )
 		);
-	}
+	},
+	VariablesManager::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesManager {
+		return new VariablesManager(
+			$services->get( KeywordsManager::SERVICE_NAME ),
+			$services->get( LazyVariableComputer::SERVICE_NAME ),
+			LoggerFactory::getInstance( 'AbuseFilter' )
+		);
+	},
 ];
 
 // @codeCoverageIgnoreEnd

@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use AbuseFilter;
-use AbuseFilterVariableHolder;
 use DifferenceEngine;
 use ExtensionRegistry;
 use Html;
@@ -18,10 +17,11 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 use OOUI\ButtonInputWidget;
@@ -108,6 +108,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var VariablesFormatter */
 	private $variablesFormatter;
 
+	/** @var VariablesManager */
+	private $varManager;
+
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
@@ -116,6 +119,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param SpecsFormatter $specsFormatter
 	 * @param VariablesFormatter $variablesFormatter
+	 * @param VariablesManager $varManager
 	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
@@ -124,7 +128,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		ConsequencesRegistry $consequencesRegistry,
 		VariablesBlobStore $varBlobStore,
 		SpecsFormatter $specsFormatter,
-		VariablesFormatter $variablesFormatter
+		VariablesFormatter $variablesFormatter,
+		VariablesManager $varManager
 	) {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 		$this->linkBatchFactory = $linkBatchFactory;
@@ -136,6 +141,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
 		$this->variablesFormatter = $variablesFormatter;
 		$this->variablesFormatter->setMessageLocalizer( $this->getContext() );
+		$this->varManager = $varManager;
 	}
 
 	/**
@@ -716,14 +722,22 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
-		$out->addJsConfigVars( 'wgAbuseFilterVariables', $vars->dumpAllVars( true ) );
+		$out->addJsConfigVars( 'wgAbuseFilterVariables', $this->varManager->dumpAllVars( $vars, true ) );
 
 		// Diff, if available
 		if ( $row->afl_action === 'edit' ) {
-			$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
-			// GET_BC because these variables may be unset in case of data corruption (T264513)
-			$old_wikitext = $vars->getVar( 'old_wikitext', AbuseFilterVariableHolder::GET_BC )->toString();
-			$new_wikitext = $vars->getVar( 'new_wikitext', AbuseFilterVariableHolder::GET_BC )->toString();
+			// Guard for exception because these variables may be unset in case of data corruption (T264513)
+			// No need to lazy-load as these come from a DB dump.
+			try {
+				$old_wikitext = $vars->getComputedVariable( 'old_wikitext' )->toString();
+			} catch ( UnsetVariableException $_ ) {
+				$old_wikitext = '';
+			}
+			try {
+				$new_wikitext = $vars->getComputedVariable( 'new_wikitext' )->toString();
+			} catch ( UnsetVariableException $_ ) {
+				$new_wikitext = '';
+			}
 
 			$diffEngine = new DifferenceEngine( $this->getContext() );
 

@@ -61,9 +61,9 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$generator = new VariableGenerator( $baseVars );
-		$actual = $generator->addEditVars( $title, $page, $this->createMock( User::class ) )
-			->getVariableHolder()
-			->exportAllVars();
+		$actualHolder = $generator->addEditVars( $title, $page, $this->createMock( User::class ) )
+			->getVariableHolder();
+		$actual = AbuseFilterServices::getVariablesManager()->exportAllVars( $actualHolder );
 
 		// Special case for new_html: avoid flaky tests, and only check containment
 		$this->assertStringContainsString( '<div class="mw-parser-output', $actual['new_html'] );
@@ -213,7 +213,8 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			$vars = new AbuseFilterVariableHolder;
 			$generator = new VariableGenerator( $vars );
 			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-			$actual = $vars->getVar( $varName )->toNative();
+			$manager = AbuseFilterServices::getVariablesManager();
+			$actual = $manager->getVar( $vars, $varName )->toNative();
 			$this->assertSame( $expected, $actual, "Prefix: $prefix" );
 		}
 	}
@@ -242,7 +243,8 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			$vars = new AbuseFilterVariableHolder;
 			$generator = new VariableGenerator( $vars );
 			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-			$actual = $vars->getVar( $varName )->toNative();
+			$manager = AbuseFilterServices::getVariablesManager();
+			$actual = $manager->getVar( $vars, $varName )->toNative();
 			$this->assertSame( $expected, $actual, "Prefix: $prefix" );
 		}
 	}

@@ -5,6 +5,7 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\Extension\AbuseFilter\VariablesManager;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionStore;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -120,11 +121,15 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		list( $user, $computed ) = $this->getUserAndExpectedVariable( $varName );
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$variableHolder = new AbuseFilterVariableHolder( $keywordsManager );
-		$variableHolder->setLazyComputer( $computer );
+		$variableHolder = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $variableHolder );
 		$variableHolder = $generator->addUserVars( $user )->getVariableHolder();
-		$actual = $variableHolder->getVar( $varName )->toNative();
+		$varManager = new VariablesManager(
+			$keywordsManager,
+			$computer,
+			new NullLogger()
+		);
+		$actual = $varManager->getVar( $variableHolder, $varName )->toNative();
 		$this->assertSame( $computed, $actual );
 	}
 
@@ -226,7 +231,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		list( $title, $computed ) = $this->getTitleAndExpectedVariable( $prefix, $suffix, $restricted );
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$variableHolder = new AbuseFilterVariableHolder( $keywordsManager );
+		$variableHolder = new AbuseFilterVariableHolder();
 		$titleFactory = $this->createMock( TitleFactory::class );
 		$titleFactory->method( 'makeTitle' )->willReturn( $title );
 		// The mock would return null, which would be interpreted as if the handler handled the event
@@ -245,11 +250,15 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( Parser::class ),
 			''
 		);
-		$variableHolder->setLazyComputer( $computer );
 
 		$generator = new VariableGenerator( $variableHolder );
 		$variableHolder = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-		$actual = $variableHolder->getVar( $varName )->toNative();
+		$varManager = new VariablesManager(
+			$keywordsManager,
+			$computer,
+			new NullLogger()
+		);
+		$actual = $varManager->getVar( $variableHolder, $varName )->toNative();
 		$this->assertSame( $computed, $actual );
 	}
 

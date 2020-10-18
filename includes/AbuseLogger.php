@@ -37,6 +37,8 @@ class AbuseLogger {
 	private $filterLookup;
 	/** @var VariablesBlobStore */
 	private $varBlobStore;
+	/** @var VariablesManager */
+	private $varManager;
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 	/** @var ServiceOptions */
@@ -50,6 +52,7 @@ class AbuseLogger {
 	 * @param CentralDBManager $centralDBManager
 	 * @param FilterLookup $filterLookup
 	 * @param VariablesBlobStore $varBlobStore
+	 * @param VariablesManager $varManager
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ServiceOptions $options
 	 * @param string $wikiID
@@ -62,6 +65,7 @@ class AbuseLogger {
 		CentralDBManager $centralDBManager,
 		FilterLookup $filterLookup,
 		VariablesBlobStore $varBlobStore,
+		VariablesManager $varManager,
 		ILoadBalancer $loadBalancer,
 		ServiceOptions $options,
 		string $wikiID,
@@ -76,6 +80,7 @@ class AbuseLogger {
 		$this->centralDBManager = $centralDBManager;
 		$this->filterLookup = $filterLookup;
 		$this->varBlobStore = $varBlobStore;
+		$this->varManager = $varManager;
 		$this->loadBalancer = $loadBalancer;
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
@@ -84,7 +89,7 @@ class AbuseLogger {
 		$this->title = $title;
 		$this->user = $user;
 		$this->vars = $vars;
-		$this->action = $vars->getVar( 'action' )->toString();
+		$this->action = $vars->getComputedVariable( 'action' )->toString();
 	}
 
 	/**
@@ -189,7 +194,7 @@ class AbuseLogger {
 		];
 		// Hack to avoid revealing IPs of people creating accounts
 		if ( ( $this->action === 'createaccount' || $this->action === 'autocreateaccount' ) && !$user->getId() ) {
-			$logTemplate['afl_user_text'] = $this->vars->getVar( 'accountname' )->toString();
+			$logTemplate['afl_user_text'] = $this->vars->getComputedVariable( 'accountname' )->toString();
 		}
 		return $logTemplate;
 	}
@@ -272,7 +277,7 @@ class AbuseLogger {
 	 * @return array
 	 */
 	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) : array {
-		$this->vars->computeDBVars();
+		$this->varManager->computeDBVars( $this->vars );
 		$globalVarDump = $this->varBlobStore->storeVarDump( $this->vars, true );
 		foreach ( $centralLogRows as $index => $data ) {
 			$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;

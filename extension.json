@@ -72,7 +72,8 @@
 				"AbuseFilterConsequencesRegistry",
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterSpecsFormatter",
-				"AbuseFilterVariablesFormatter"
+				"AbuseFilterVariablesFormatter",
+				"AbuseFilterVariablesManager"
 			]
 		},
 		"AbuseFilter": {
@@ -186,6 +187,8 @@
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLoggerFactory": "includes/AbuseLoggerFactory.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterRunner": "includes/FilterRunner.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterRunnerFactory": "includes/FilterRunnerFactory.php",
+		"MediaWiki\\Extension\\AbuseFilter\\VariablesManager": "includes/VariablesManager.php",
+		"MediaWiki\\Extension\\AbuseFilter\\UnsetVariableException": "includes/UnsetVariableException.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"FixOldLogEntries": "maintenance/fixOldLogEntries.php",

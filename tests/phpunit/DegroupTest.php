@@ -5,7 +5,6 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
-use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
@@ -46,10 +45,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 
 		$degroup = new Degroup(
 			$params,
-			AbuseFilterVariableHolder::newFromArray(
-				[ 'user_groups' => [ '*', 'user', 'sysop' ] ],
-				$this->createMock( KeywordsManager::class )
-			),
+			AbuseFilterVariableHolder::newFromArray( [ 'user_groups' => [ '*', 'user', 'sysop' ] ] ),
 			$userGroupManager,
 			$filterUser
 		);
@@ -70,10 +66,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 
 		$degroup = new Degroup(
 			$params,
-			AbuseFilterVariableHolder::newFromArray(
-				[ 'user_groups' => [ '*', 'user' ] ],
-				$this->createMock( KeywordsManager::class )
-			),
+			AbuseFilterVariableHolder::newFromArray( [ 'user_groups' => [ '*', 'user' ] ] ),
 			$userGroupManager,
 			$this->createMock( FilterUser::class )
 		);
@@ -99,7 +92,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 
 		$degroup = new Degroup(
 			$params,
-			new AbuseFilterVariableHolder( $this->createMock( KeywordsManager::class ) ),
+			new AbuseFilterVariableHolder(),
 			$userGroupManager,
 			$filterUser
 		);
@@ -154,16 +147,13 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			} );
 		$degroup = new Degroup(
 			$params,
-			new AbuseFilterVariableHolder( $this->createMock( KeywordsManager::class ) ),
+			new AbuseFilterVariableHolder(),
 			$userGroupManager,
 			$this->createMock( FilterUser::class )
 		);
 
 		$info = [
-			'vars' => AbuseFilterVariableHolder::newFromArray(
-				[ 'user_groups' => $hadGroups ],
-				$this->createMock( KeywordsManager::class )
-			)
+			'vars' => AbuseFilterVariableHolder::newFromArray( [ 'user_groups' => $hadGroups ] )
 		];
 		$performer = $this->getTestUser()->getUser();
 		$this->assertSame(
