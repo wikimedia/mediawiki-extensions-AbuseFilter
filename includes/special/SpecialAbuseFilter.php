@@ -59,7 +59,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		$this->addNavigationLinks( $pageType );
 
 		/** @var AbuseFilterView $v */
-		$v = new $view( $this->getContext(), $this->getLinkRenderer(), $params );
+		$v = new $view( $this->getContext(), $this->getLinkRenderer(), self::PAGE_NAME, $params );
 		$v->show();
 	}
 

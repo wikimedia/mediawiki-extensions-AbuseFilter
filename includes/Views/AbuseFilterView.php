@@ -18,16 +18,25 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @var LinkRenderer
 	 */
 	protected $linkRenderer;
+	/** @var string */
+	private $basePageName;
 
 	/**
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
 	 * @param array $params
 	 */
-	public function __construct( IContextSource $context, LinkRenderer $linkRenderer, array $params ) {
+	public function __construct(
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
 		$this->mParams = $params;
 		$this->setContext( $context );
 		$this->linkRenderer = $linkRenderer;
+		$this->basePageName = $basePageName;
 	}
 
 	/**
@@ -35,7 +44,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @return Title
 	 */
 	public function getTitle( $subpage = '' ) {
-		return SpecialAbuseFilter::getTitleForSubpage( $subpage );
+		return SpecialPage::getTitleFor( $this->basePageName, $subpage );
 	}
 
 	/**
