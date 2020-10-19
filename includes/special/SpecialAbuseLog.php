@@ -711,8 +711,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Diff, if available
 		if ( $row->afl_action === 'edit' ) {
 			$vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
-			$old_wikitext = $vars->getVar( 'old_wikitext' )->toString();
-			$new_wikitext = $vars->getVar( 'new_wikitext' )->toString();
+			// GET_BC because these variables may be unset in case of data corruption (T264513)
+			$old_wikitext = $vars->getVar( 'old_wikitext', AbuseFilterVariableHolder::GET_BC )->toString();
+			$new_wikitext = $vars->getVar( 'new_wikitext', AbuseFilterVariableHolder::GET_BC )->toString();
 
 			$diffEngine = new DifferenceEngine( $this->getContext() );
 
