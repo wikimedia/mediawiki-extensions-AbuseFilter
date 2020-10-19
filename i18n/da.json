@@ -83,6 +83,7 @@
 	"abusefilter-log-detailslink": "detaljer",
 	"abusefilter-log-diff": "forskel",
 	"abusefilter-log-hidelink": "juster synlighed",
+	"abusefilter-log-description-not-available": "ikke tilgængelig",
 	"abusefilter-log-details-legend": "Detaljer for logpunkt $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Værdi",

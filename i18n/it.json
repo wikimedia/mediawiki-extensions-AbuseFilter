@@ -102,6 +102,7 @@
 	"abusefilter-log-detailslink": "dettagli",
 	"abusefilter-log-diff": "diff",
 	"abusefilter-log-hidelink": "regola visibilità",
+	"abusefilter-log-description-not-available": "non disponibile",
 	"abusefilter-log-details-legend": "Dettagli della voce di registro $1",
 	"abusefilter-log-details-var": "Variabile",
 	"abusefilter-log-details-val": "Valore",

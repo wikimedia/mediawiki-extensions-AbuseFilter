@@ -6,6 +6,7 @@
 			"Fitoschido",
 			"Jojit fb",
 			"Matma Rex",
+			"Mrkczr",
 			"Sky Harbor"
 		]
 	},
@@ -58,6 +59,7 @@
 	"abusefilter-log-detailslink": "mga detalye",
 	"abusefilter-log-diff": "pagkakaiba",
 	"abusefilter-log-hidelink": "ayusin ang pagkanakikita",
+	"abusefilter-log-description-not-available": "Hindi pwede",
 	"abusefilter-log-details-legend": "Mga detalye para sa ipinasok sa talang $1",
 	"abusefilter-log-details-var": "Pabagu-bago",
 	"abusefilter-log-details-val": "Halaga",

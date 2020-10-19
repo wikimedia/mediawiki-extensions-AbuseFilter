@@ -137,6 +137,7 @@
 	"abusefilter-log-detailslink": "详情",
 	"abusefilter-log-diff": "差异",
 	"abusefilter-log-hidelink": "调整公开级别",
+	"abusefilter-log-description-not-available": "不可用",
 	"abusefilter-log-details-legend": "日志详情：$1",
 	"abusefilter-log-details-var": "变量",
 	"abusefilter-log-details-val": "值",

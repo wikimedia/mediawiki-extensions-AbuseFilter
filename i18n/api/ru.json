@@ -3,6 +3,7 @@
 		"authors": [
 			"Cat1987",
 			"Facenapalm",
+			"Megakott",
 			"Mouse21",
 			"Movses",
 			"Okras",
@@ -27,6 +28,7 @@
 	"apihelp-abusefilterevalexpression-summary": "Вычисление выражения фильтра злоупотреблений",
 	"apihelp-abusefilterevalexpression-param-expression": "Вычисляемое выражение.",
 	"apihelp-abusefilterevalexpression-example-1": "Вычислить простое выражение",
+	"apihelp-abusefilterevalexpression-example-2": "Вычислить простое выражение, отформатировав результат",
 	"apihelp-abusefilterunblockautopromote-description": "Разблокировка получаемого автоповышения участника вследствие фильтра злоупотреблений.",
 	"apihelp-abusefilterunblockautopromote-summary": "Разблокировка получаемого автоповышения участника вследствие фильтра злоупотреблений.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Логин разблокируемого участника.",
@@ -48,6 +50,7 @@
 	"apihelp-query+abuselog-param-user": "Показать только записи, связанные с данным участником или IP-адресом.",
 	"apihelp-query+abuselog-param-title": "Показать только записи, связанные с данной страницей.",
 	"apihelp-query+abuselog-param-filter": "Показать только записи, связанные с фильтрами с данными идентификаторами. Идентификаторы разделяются вертикальной чертой, а префикс \"$1\" используется для глобальных фильтров.",
+	"apihelp-query+abuselog-param-filter-central": "Показывать только записи, которые были перехвачены заданными ID фильтров. Разделите вертикальной чертой.",
 	"apihelp-query+abuselog-param-limit": "Максимальное количество записей в списке.",
 	"apihelp-query+abuselog-param-prop": "Какие свойства необходимо получить.",
 	"apihelp-query+abuselog-param-wiki": "Вики, чтобы показывать хиты.",
@@ -56,8 +59,11 @@
 	"apihelp-abuselogprivatedetails-description": "Просмотреть приватные данные записи журнала злоупотреблений.",
 	"apihelp-abuselogprivatedetails-summary": "Просмотреть приватные данные записи журнала злоупотреблений.",
 	"apihelp-abuselogprivatedetails-param-logid": "Идентификатор записи AbuseLog для проверки.",
+	"apihelp-abuselogprivatedetails-param-reason": "Правильная причина для проведения проверки.",
+	"apihelp-abuselogprivatedetails-example-1": "Получить приватные данные для записи журнала злоупотреблений с ID 1, используя причину \"например\".",
 	"apierror-abusefilter-canttest": "У вас недостаточно прав для проверки фильтров злоупотреблений.",
 	"apierror-abusefilter-cantcheck": "У вас недостаточно прав для проверки синтаксиса фильтра злоупотреблений.",
+	"apierror-abusefilter-canteval": "У вас нет разрешения на оценку выражений фильтра злоупотреблений.",
 	"apierror-abusefilter-nosuchlogid": "Не существует записи в журнале злоупотреблений с идентификатором $1.",
 	"apierror-abusefilter-badsyntax": "Синтаксическая ошибка в фильтре."
 }

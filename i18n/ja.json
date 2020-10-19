@@ -111,6 +111,7 @@
 	"abusefilter-log-detailslink": "詳細",
 	"abusefilter-log-diff": "差分",
 	"abusefilter-log-hidelink": "閲覧レベルを調整",
+	"abusefilter-log-description-not-available": "利用できません",
 	"abusefilter-log-details-legend": "記録項目 $1 の詳細",
 	"abusefilter-log-details-var": "変数",
 	"abusefilter-log-details-val": "値",
