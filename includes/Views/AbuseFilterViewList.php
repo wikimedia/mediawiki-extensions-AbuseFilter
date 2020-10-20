@@ -64,8 +64,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$scope === 'global' );
 
 		if ( $searchEnabled ) {
-			$querypattern = $request->getVal( 'querypattern', null );
+			$querypattern = $request->getVal( 'querypattern', '' );
 			$searchmode = $request->getVal( 'searchoption', null );
+			if ( $querypattern === '' ) {
+				// Not specified or empty, that would error out
+				$querypattern = $searchmode = null;
+			}
 		} else {
 			$querypattern = null;
 			$searchmode = null;
@@ -114,7 +118,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 				// Reset the conditions in case of error
 				$conds = [ 'af_deleted' => 0 ];
-				$querypattern = null;
+				$searchmode = $querypattern = null;
 			}
 		}
 
