@@ -118,6 +118,7 @@
 	"abusefilter-log-detailslink": "détails",
 	"abusefilter-log-diff": "diff",
 	"abusefilter-log-hidelink": "ajuster la visibilité",
+	"abusefilter-log-description-not-available": "non disponible",
 	"abusefilter-log-details-legend": "Détails pour l’entrée $1 du journal",
 	"abusefilter-log-details-var": "Variable",
 	"abusefilter-log-details-val": "Valeur",

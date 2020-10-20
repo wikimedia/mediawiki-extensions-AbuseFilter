@@ -99,6 +99,7 @@
 	"abusefilter-log-detailslink": "detaljer",
 	"abusefilter-log-diff": "diff",
 	"abusefilter-log-hidelink": "juster synlighet",
+	"abusefilter-log-description-not-available": "ikke tilgjengelig",
 	"abusefilter-log-details-legend": "Detaljer for loggelement $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Verdi",
