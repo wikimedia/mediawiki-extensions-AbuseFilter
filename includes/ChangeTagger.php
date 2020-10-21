@@ -18,6 +18,18 @@ class ChangeTagger {
 	private static $tagsToSet = [];
 
 	/**
+	 * @var ChangeTagsManager
+	 */
+	private $changeTagsManager;
+
+	/**
+	 * @param ChangeTagsManager $changeTagsManager
+	 */
+	public function __construct( ChangeTagsManager $changeTagsManager ) {
+		$this->changeTagsManager = $changeTagsManager;
+	}
+
+	/**
 	 * Clear any buffered tag
 	 */
 	public function clearBuffer() : void {
@@ -29,7 +41,7 @@ class ChangeTagger {
 	 * @phan-param array{action:string,username:string,target:LinkTarget,accountname?:?string} $actionSpecs
 	 */
 	public function addConditionsLimitTag( array $actionSpecs ) : void {
-		$this->addTags( $actionSpecs, [ 'abusefilter-condition-limit' ] );
+		$this->addTags( $actionSpecs, [ $this->changeTagsManager->getCondsLimitTag() ] );
 	}
 
 	/**

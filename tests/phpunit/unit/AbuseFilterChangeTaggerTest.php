@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
 
 /**
  * @group Test
@@ -12,7 +13,9 @@ class AbuseFilterChangeTaggerTest extends MediaWikiUnitTestCase {
 	 * @return ChangeTagger
 	 */
 	private function getTagger() : ChangeTagger {
-		return new ChangeTagger();
+		$manager = $this->createMock( ChangeTagsManager::class );
+		$manager->method( 'getCondsLimitTag' )->willReturn( 'tag' );
+		return new ChangeTagger( $manager );
 	}
 
 	/**

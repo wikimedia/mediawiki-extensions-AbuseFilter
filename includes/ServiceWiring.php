@@ -32,7 +32,9 @@ return [
 		return new PermManager( $services->getPermissionManager() );
 	},
 	ChangeTagger::SERVICE_NAME => function ( MediaWikiServices $services ) : ChangeTagger {
-		return new ChangeTagger();
+		return new ChangeTagger(
+			$services->getService( ChangeTagsManager::SERVICE_NAME )
+		);
 	},
 	ChangeTagsManager::SERVICE_NAME => function ( MediaWikiServices $services ): ChangeTagsManager {
 		return new ChangeTagsManager(
