@@ -89,40 +89,31 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$editToken = $request->getVal( 'wpEditToken' );
 		$tokenMatches = $user->matchEditToken(
 			$editToken, [ 'abusefilter', $filter ], $request );
-		$isImport = $request->getRawVal( 'wpImportText' ) !== null;
+		$isImport = $request->wasPosted() && $request->getRawVal( 'wpImportText' ) !== null;
 
 		if ( $request->wasPosted() && $canEdit && $tokenMatches ) {
 			$this->saveCurrentFilter( $filter, $history_id );
 			return;
 		}
 
-		if ( $request->wasPosted() && !$isImport && !$tokenMatches ) {
-			// Special case for when the token has expired with the page open, warn to retry
+		if ( $isImport ) {
+			$data = $this->loadImportRequest();
+			if ( $data === null ) {
+				$out->addHTML( Html::errorBox( $this->msg( 'abusefilter-import-invalid-data' )->parseAsBlock() ) );
+				return;
+			}
+		} elseif ( $request->wasPosted() && !$tokenMatches ) {
+			// Token invalid or expired while the page was open, warn to retry
 			$out->addHTML(
 				Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->escaped() )
 			);
-		}
-
-		if ( $isImport || ( $request->wasPosted() && !$tokenMatches ) ) {
 			// Make sure to load from HTTP if the token doesn't match!
-			$status = $this->loadRequest( $filter );
-			if ( !$status->isGood() ) {
-				$out->addHTML(
-					Xml::tags(
-						'p',
-						null,
-						Html::errorBox( $status->getMessage()->parse() )
-					)
-				);
-				return;
-			}
-			// Note, this is [ $row, $actions, $originalRow, $originalActions ]
-			$data = $status->getValue();
+			$data = $this->loadRequest( $filter );
 		} else {
-			$data = $this->loadFromDatabase( $filter, $history_id );
+			$data = $this->loadFromDatabase( $filter, $history_id ) ?? [ null, [] ];
 		}
 
-		list( $row, $actions ) = $data ?? [ null, [] ];
+		list( $row, $actions ) = $data;
 
 		// Either the user is just viewing the filter, they cannot edit it, they lost the
 		// abusefilter-modify right with the page open, the token is invalid, or they're viewing
@@ -136,12 +127,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 */
 	private function saveCurrentFilter( ?int $filter, $history_id ) : void {
 		$out = $this->getOutput();
-		$reqStatus = $this->loadRequest( $filter );
-		if ( !$reqStatus->isGood() ) {
-			// In the current implementation, this cannot happen.
-			throw new LogicException( 'Should always be able to retrieve data for saving' );
-		}
-		[ $newRow, $actions, $origRow, $origActions ] = $reqStatus->getValue();
+		[ $newRow, $actions, $origRow, $origActions ] = $this->loadRequest( $filter );
 		$dbw = wfGetDB( DB_MASTER );
 		$status = AbuseFilter::saveFilter(
 			$this->getUser(), $filter, $newRow, $actions,
@@ -1198,157 +1184,157 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * Load data from the already-POSTed HTTP request.
-	 *
-	 * @throws BadMethodCallException If called without the request being POSTed or when trying
-	 *   to import a filter but $filter is not null
-	 * @param int|null $filter The filter ID being requested, or null for a new filter
-	 * @return Status If good, the value is the array [ row, actions ]. If not, it contains an
-	 * error message.
+	 * Load data from the HTTP request. Used for saving the filter, and when the token doesn't match
+	 * @param int|null $filter
+	 * @return array
 	 */
-	public function loadRequest( ?int $filter ): Status {
+	private function loadRequest( ?int $filter ) : array {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
 			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
-		// We need some details like last editor
 		list( $origRow, $origActions ) = $this->loadFilterData( $filter );
 
-		// Default values
+		// Unchangeable values
 		$row = (object)[
-			'af_throttled' => $origRow->af_throttled,
-			'af_hit_count' => $origRow->af_hit_count,
+			'af_throttled' => $filter === null ? 0 : $origRow->af_throttled,
+			'af_hit_count' => $filter === null ? 0 : $origRow->af_hit_count,
 		];
 
-		// Check for importing
-		$import = $request->getVal( 'wpImportText' );
-		if ( $import ) {
-			if ( $filter !== null ) {
-				// Sanity
-				throw new BadMethodCallException( __METHOD__ . ' called for importing on existing filter.' );
-			}
-			$data = FormatJson::decode( $import );
-
-			if ( !$this->isValidImportData( $data ) ) {
-				return Status::newFatal( 'abusefilter-import-invalid-data' );
-			}
-
-			$importRow = $data->row;
-			$actions = wfObjectToArray( $data->actions );
-
-			// Some more default values
-			$row->af_group = 'default';
-			$row->af_global = 0;
-
-			$copy = [
-				'af_public_comments',
-				'af_pattern',
-				'af_comments',
-				'af_deleted',
-				'af_enabled',
-				'af_hidden',
-			];
-
-			foreach ( $copy as $name ) {
-				$row->$name = $importRow->$name;
-			}
-		} else {
-			if ( $filter !== null ) {
-				// These aren't needed when saving the filter, but they are otherwise (e.g. if
-				// saving fails and we need to show the edit interface again).
-				$row->af_id = $origRow->af_id;
-				$row->af_user = $origRow->af_user;
-				$row->af_user_text = $origRow->af_user_text;
-				$row->af_timestamp = $origRow->af_timestamp;
-			}
-
-			$textLoads = [
-				'af_public_comments' => 'wpFilterDescription',
-				'af_pattern' => 'wpFilterRules',
-				'af_comments' => 'wpFilterNotes',
-			];
-
-			foreach ( $textLoads as $col => $field ) {
-				$row->$col = trim( $request->getVal( $field ) );
-			}
-
-			$row->af_group = $request->getVal( 'wpFilterGroup', 'default' );
-
-			$row->af_deleted = $request->getCheck( 'wpFilterDeleted' );
-			$row->af_enabled = $request->getCheck( 'wpFilterEnabled' );
-			$row->af_hidden = $request->getCheck( 'wpFilterHidden' );
-			$row->af_global = $request->getCheck( 'wpFilterGlobal' )
-				&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
-
-			$actions = [];
-			foreach ( array_filter( $this->getConfig()->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
-				// Check if it's set
-				$enabled = $request->getCheck( 'wpFilterAction' . ucfirst( $action ) );
-
-				if ( $enabled ) {
-					$parameters = [];
-
-					if ( $action === 'throttle' ) {
-						// We need to load the parameters
-						$throttleCount = $request->getIntOrNull( 'wpFilterThrottleCount' );
-						$throttlePeriod = $request->getIntOrNull( 'wpFilterThrottlePeriod' );
-						// First explode with \n, which is the delimiter used in the textarea
-						$rawGroups = explode( "\n", $request->getText( 'wpFilterThrottleGroups' ) );
-						// Trim any space, both as an actual group and inside subgroups
-						$throttleGroups = [];
-						foreach ( $rawGroups as $group ) {
-							if ( strpos( $group, ',' ) !== false ) {
-								$subGroups = explode( ',', $group );
-								$throttleGroups[] = implode( ',', array_map( 'trim', $subGroups ) );
-							} elseif ( trim( $group ) !== '' ) {
-								$throttleGroups[] = trim( $group );
-							}
-						}
-
-						$parameters[0] = $this->filter;
-						$parameters[1] = "$throttleCount,$throttlePeriod";
-						$parameters = array_merge( $parameters, $throttleGroups );
-					} elseif ( $action === 'warn' ) {
-						$specMsg = $request->getVal( 'wpFilterWarnMessage' );
-
-						if ( $specMsg === 'other' ) {
-							$specMsg = $request->getVal( 'wpFilterWarnMessageOther' );
-						}
-
-						$parameters[0] = $specMsg;
-					} elseif ( $action === 'block' ) {
-						$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
-							'blocktalk' : 'noTalkBlockSet';
-						$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
-						$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
-					} elseif ( $action === 'disallow' ) {
-						$specMsg = $request->getVal( 'wpFilterDisallowMessage' );
-
-						if ( $specMsg === 'other' ) {
-							$specMsg = $request->getVal( 'wpFilterDisallowMessageOther' );
-						}
-
-						$parameters[0] = $specMsg;
-					} elseif ( $action === 'tag' ) {
-						$parameters = explode( ',', trim( $request->getText( 'wpFilterTags' ) ) );
-						if ( $parameters === [ '' ] ) {
-							// Since it's not possible to manually add an empty tag, this only happens
-							// if the form is submitted without touching the tag input field.
-							// We pass an empty array so that the widget won't show an empty tag in the topbar
-							$parameters = [];
-						}
-					}
-
-					$actions[$action] = $parameters;
-				}
-			}
+		if ( $filter !== null ) {
+			// Needed if the save fails
+			$row->af_id = $origRow->af_id;
+			$row->af_user = $origRow->af_user;
+			$row->af_user_text = $origRow->af_user_text;
+			$row->af_timestamp = $origRow->af_timestamp;
 		}
+
+		$row->af_public_comments = trim( $request->getVal( 'wpFilterDescription' ) );
+		$row->af_pattern = trim( $request->getVal( 'wpFilterRules' ) );
+		$row->af_comments = trim( $request->getVal( 'wpFilterNotes' ) );
+
+		$row->af_group = $request->getVal( 'wpFilterGroup', 'default' );
+
+		$row->af_deleted = $request->getCheck( 'wpFilterDeleted' );
+		$row->af_enabled = $request->getCheck( 'wpFilterEnabled' );
+		$row->af_hidden = $request->getCheck( 'wpFilterHidden' );
+		$row->af_global = $request->getCheck( 'wpFilterGlobal' )
+			&& $this->getConfig()->get( 'AbuseFilterIsCentral' );
+
+		$actions = $this->loadActions();
 
 		$row->af_actions = implode( ',', array_keys( $actions ) );
 
-		return Status::newGood( [ $row, $actions, $origRow, $origActions ] );
+		return [ $row, $actions, $origRow, $origActions ];
+	}
+
+	/**
+	 * @return array|null
+	 */
+	private function loadImportRequest() : ?array {
+		$request = $this->getRequest();
+		if ( !$request->wasPosted() ) {
+			// Sanity
+			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
+		}
+
+		$importData = FormatJson::decode( $request->getVal( 'wpImportText' ) );
+		if ( !$this->isValidImportData( $importData ) ) {
+			return null;
+		}
+
+		// Default values
+		$row = (object)[
+			'af_throttled' => 0,
+			'af_hit_count' => 0,
+			'af_group' => 'default',
+			'af_global' => 0
+		];
+
+		$importRow = $importData->row;
+		$actions = wfObjectToArray( $importData->actions );
+
+		$row->af_public_comments = $importRow->af_public_comments;
+		$row->af_pattern = $importRow->af_pattern;
+		$row->af_comments = $importRow->af_comments;
+		$row->af_deleted = $importRow->af_deleted;
+		$row->af_enabled = $importRow->af_enabled;
+		$row->af_hidden = $importRow->af_hidden;
+		$row->af_actions = implode( ',', array_keys( $actions ) );
+
+		return [ $row, $actions ];
+	}
+
+	/**
+	 * @return array[]
+	 */
+	private function loadActions() : array {
+		$request = $this->getRequest();
+		$actions = [];
+		foreach ( array_filter( $this->getConfig()->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
+			// Check if it's set
+			$enabled = $request->getCheck( 'wpFilterAction' . ucfirst( $action ) );
+
+			if ( $enabled ) {
+				$parameters = [];
+
+				if ( $action === 'throttle' ) {
+					// We need to load the parameters
+					$throttleCount = $request->getIntOrNull( 'wpFilterThrottleCount' );
+					$throttlePeriod = $request->getIntOrNull( 'wpFilterThrottlePeriod' );
+					// First explode with \n, which is the delimiter used in the textarea
+					$rawGroups = explode( "\n", $request->getText( 'wpFilterThrottleGroups' ) );
+					// Trim any space, both as an actual group and inside subgroups
+					$throttleGroups = [];
+					foreach ( $rawGroups as $group ) {
+						if ( strpos( $group, ',' ) !== false ) {
+							$subGroups = explode( ',', $group );
+							$throttleGroups[] = implode( ',', array_map( 'trim', $subGroups ) );
+						} elseif ( trim( $group ) !== '' ) {
+							$throttleGroups[] = trim( $group );
+						}
+					}
+
+					$parameters[0] = $this->filter;
+					$parameters[1] = "$throttleCount,$throttlePeriod";
+					$parameters = array_merge( $parameters, $throttleGroups );
+				} elseif ( $action === 'warn' ) {
+					$specMsg = $request->getVal( 'wpFilterWarnMessage' );
+
+					if ( $specMsg === 'other' ) {
+						$specMsg = $request->getVal( 'wpFilterWarnMessageOther' );
+					}
+
+					$parameters[0] = $specMsg;
+				} elseif ( $action === 'block' ) {
+					$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
+						'blocktalk' : 'noTalkBlockSet';
+					$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
+					$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
+				} elseif ( $action === 'disallow' ) {
+					$specMsg = $request->getVal( 'wpFilterDisallowMessage' );
+
+					if ( $specMsg === 'other' ) {
+						$specMsg = $request->getVal( 'wpFilterDisallowMessageOther' );
+					}
+
+					$parameters[0] = $specMsg;
+				} elseif ( $action === 'tag' ) {
+					$parameters = explode( ',', trim( $request->getText( 'wpFilterTags' ) ) );
+					if ( $parameters === [ '' ] ) {
+						// Since it's not possible to manually add an empty tag, this only happens
+						// if the form is submitted without touching the tag input field.
+						// We pass an empty array so that the widget won't show an empty tag in the topbar
+						$parameters = [];
+					}
+				}
+
+				$actions[$action] = $parameters;
+			}
+		}
+		return $actions;
 	}
 
 	/**
@@ -1391,6 +1377,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Perform basic validation on the JSON-decoded import data. This doesn't check if parameters
 	 * are valid etc., but only if the shape of the object is right.
+	 * @todo This should live in ViewImport, but that's nontrivial due to form action
 	 *
 	 * @param mixed $data Already JSON-decoded
 	 * @return bool
