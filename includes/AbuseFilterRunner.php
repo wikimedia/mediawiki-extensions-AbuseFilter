@@ -830,7 +830,8 @@ class AbuseFilterRunner {
 			case 'blockautopromote':
 				if ( !$this->user->isAnon() ) {
 					$duration = $wgAbuseFilterBlockAutopromoteDuration * 86400;
-					$blocked = AbuseFilter::blockAutoPromote(
+					$store = AbuseFilterServices::getBlockAutopromoteStore();
+					$blocked = $store->blockAutoPromote(
 						$this->user,
 						wfMessage(
 							'abusefilter-blockautopromotereason',
@@ -847,12 +848,6 @@ class AbuseFilterRunner {
 							$ruleNumber,
 							$duration
 						];
-					} else {
-						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-						$logger->warning(
-							'Cannot block autopromotion to {target}',
-							[ 'target' => $this->user->getName() ]
-						);
 					}
 				}
 				break;

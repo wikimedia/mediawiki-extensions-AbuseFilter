@@ -41,4 +41,11 @@ class AbuseFilterServices {
 	public static function getChangeTagsManager() : ChangeTagsManager {
 		return MediaWikiServices::getInstance()->getService( ChangeTagsManager::SERVICE_NAME );
 	}
+
+	/**
+	 * @return BlockAutopromoteStore
+	 */
+	public static function getBlockAutopromoteStore() : BlockAutopromoteStore {
+		return MediaWikiServices::getInstance()->getService( BlockAutopromoteStore::SERVICE_NAME );
+	}
 }

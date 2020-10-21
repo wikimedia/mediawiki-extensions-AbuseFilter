@@ -305,7 +305,8 @@ class AbuseFilterHooks {
 				$quickCacheKey,
 				$cache::TTL_PROC_LONG,
 				function () use ( $user ) {
-					return AbuseFilter::getAutoPromoteBlockStatus( $user );
+					return AbuseFilterServices::getBlockAutopromoteStore()
+						->getAutoPromoteBlockStatus( $user );
 				}
 			);
 

@@ -45,6 +45,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers AbuseFilterPreAuthenticationProvider
  * @covers AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTagger
+ * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	use AbuseFilterCreateAccountTestTrait;
@@ -723,7 +724,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					case 'blockautopromote':
 						// Aborts the hook with 'abusefilter-autopromote-blocked' error and prevent promotion.
 						$expectedErrors['blockautopromote'][] = 'abusefilter-autopromote-blocked';
-						$value = AbuseFilter::getAutoPromoteBlockStatus( $this->user );
+						$value = AbuseFilterServices::getBlockAutopromoteStore()
+							->getAutoPromoteBlockStatus( $this->user );
 						if ( !$value ) {
 							$testErrorMessage = "The key for blocking autopromotion wasn't set.";
 						}
