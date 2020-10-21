@@ -263,7 +263,9 @@ class AbuseFilterHooks {
 	 * @param array &$promote
 	 */
 	public static function onGetAutoPromoteGroups( User $user, &$promote ) {
-		if ( $promote ) {
+		global $wgAbuseFilterActions;
+
+		if ( ( $wgAbuseFilterActions['blockautopromote'] ?? false ) && $promote ) {
 			$cache = ObjectCache::getInstance( 'hash' );
 			$key = AbuseFilter::autoPromoteBlockKey( $cache, $user );
 			$blocked = (bool)$cache->getWithSetCallback(
