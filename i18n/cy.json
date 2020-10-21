@@ -43,6 +43,7 @@
 	"abusefilter-log-detailedentry-global": "hidlydd eang $1",
 	"abusefilter-log-detailedentry-local": "hidlydd $1",
 	"abusefilter-log-detailslink": "manylion",
+	"abusefilter-log-description-not-available": "ddim ar gael",
 	"abusefilter-log-details-legend": "Manylion ar gyfer cofnodion log $1",
 	"abusefilter-log-details-var": "Newidyn",
 	"abusefilter-log-details-val": "Gwerth",
