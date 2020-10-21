@@ -336,30 +336,6 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param string[] &$tags
-	 */
-	public static function onListDefinedTags( array &$tags ) {
-		$manager = AbuseFilterServices::getChangeTagsManager();
-		$tags = array_merge(
-			$tags,
-			$manager->getTagsDefinedByFilters(),
-			[ $manager->getCondsLimitTag() ]
-		);
-	}
-
-	/**
-	 * @param string[] &$tags
-	 */
-	public static function onChangeTagsListActive( array &$tags ) {
-		$manager = AbuseFilterServices::getChangeTagsManager();
-		$tags = array_merge(
-			$tags,
-			$manager->getTagsDefinedByActiveFilters(),
-			[ $manager->getCondsLimitTag() ]
-		);
-	}
-
-	/**
 	 * @param DatabaseUpdater $updater
 	 * @throws MWException
 	 */

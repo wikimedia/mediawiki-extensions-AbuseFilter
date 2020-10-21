@@ -277,6 +277,10 @@
 		"ToolLinks": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ToolLinksHandler",
 			"services": [ "AbuseFilterPermissionManager" ]
+		},
+		"ChangeTags": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ChangeTagsHandler",
+			"services": [ "AbuseFilterChangeTagsManager" ]
 		}
 	},
 	"Hooks": {
@@ -285,8 +289,8 @@
 		"TitleMove": "AbuseFilterHooks::onTitleMove",
 		"ArticleDelete": "AbuseFilterHooks::onArticleDelete",
 		"RecentChange_save": "AbuseFilterHooks::onRecentChangeSave",
-		"ListDefinedTags": "AbuseFilterHooks::onListDefinedTags",
-		"ChangeTagsListActive": "AbuseFilterHooks::onChangeTagsListActive",
+		"ListDefinedTags": "ChangeTags",
+		"ChangeTagsListActive": "ChangeTags",
 		"LoadExtensionSchemaUpdates": "AbuseFilterHooks::onLoadExtensionSchemaUpdates",
 		"ContributionsToolLinks": "ToolLinks",
 		"HistoryPageToolLinks": "ToolLinks",
