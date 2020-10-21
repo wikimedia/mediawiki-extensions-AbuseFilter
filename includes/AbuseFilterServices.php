@@ -34,4 +34,11 @@ class AbuseFilterServices {
 	public static function getChangeTagger() : ChangeTagger {
 		return MediaWikiServices::getInstance()->getService( ChangeTagger::SERVICE_NAME );
 	}
+
+	/**
+	 * @return ChangeTagsManager
+	 */
+	public static function getChangeTagsManager() : ChangeTagsManager {
+		return MediaWikiServices::getInstance()->getService( ChangeTagsManager::SERVICE_NAME );
+	}
 }

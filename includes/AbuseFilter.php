@@ -719,8 +719,9 @@ class AbuseFilter {
 			return $finalStatus;
 		}
 
-		$alreadyDefinedTags = [];
-		AbuseFilterHooks::onListDefinedTags( $alreadyDefinedTags );
+		// note: these are both local and global
+		$alreadyDefinedTags = AbuseFilterServices::getChangeTagsManager()
+			->getTagsDefinedByFilters();
 
 		if ( in_array( $tag, $alreadyDefinedTags, true ) ) {
 			return $finalStatus;
@@ -1099,9 +1100,8 @@ class AbuseFilter {
 		$logid = $logEntry->insert( $dbw );
 		$logEntry->publish( $logid );
 
-		// Purge the tag list cache so the fetchAllTags hook applies tag changes
 		if ( isset( $actions['tag'] ) ) {
-			AbuseFilterHooks::purgeTagCache();
+			AbuseFilterServices::getChangeTagsManager()->purgeTagCache();
 		}
 
 		AbuseFilterServices::getFilterProfiler()->resetFilterProfile( $new_id );
