@@ -111,6 +111,7 @@
 	"abusefilter-log-detailslink": "detaljer",
 	"abusefilter-log-diff": "skillnad",
 	"abusefilter-log-hidelink": "justera synlighet",
+	"abusefilter-log-description-not-available": "ej tillgänglig",
 	"abusefilter-log-details-legend": "Detaljer för loggelement $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Värde",

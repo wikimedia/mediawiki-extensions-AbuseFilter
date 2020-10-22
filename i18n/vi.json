@@ -376,7 +376,7 @@
 	"abusefilter-exception-invalidoperator": "Toán tử “$2” không hợp lệ ở ký tự $1.",
 	"abusefilter-exception-unrecognisedtoken": "Không hiểu cụm từ “$2” tại ký tự $1.",
 	"abusefilter-exception-noparams": "Không đưa ra tham số cho hàm “$2” tại ký tự $1.",
-	"abusefilter-exception-dividebyzero": "Chia $2 cho zero tại ký tự $1.",
+	"abusefilter-exception-dividebyzero": "Chia $2 cho số không tại ký tự $1.",
 	"abusefilter-exception-unrecognisedvar": "Không hiểu biến $2 tại ký tự $1",
 	"abusefilter-exception-notenoughargs": "Không có đủ tham số khi gọi hàm $2 tại ký tự $1.\nCần $3 tham số, trong khi chỉ tìm thấy $4.",
 	"abusefilter-exception-regexfailure": "Lỗi trong biểu thức chính quy “$2” tại ký tự $1.",
