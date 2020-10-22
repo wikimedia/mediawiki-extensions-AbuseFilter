@@ -20,7 +20,8 @@ class AbuseFilterHooks {
 	public static function onRegistration() {
 		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
 			$wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
-			$wgGroupPermissions;
+			$wgGroupPermissions, $wgAbuseFilterRestrictions, $wgAbuseFilterDisallowGlobalLocalBlocks,
+			$wgAbuseFilterActionRestrictions, $wgAbuseFilterLocallyDisabledGlobalActions;
 
 		// @todo Remove this in a future release (added in 1.33)
 		if ( isset( $wgAbuseFilterProfile ) || isset( $wgAbuseFilterProfiling ) ) {
@@ -64,6 +65,35 @@ class AbuseFilterHooks {
 				'been renamed, respectively, to "abusefilter-privatedetails-log" and ' .
 				'"abusefilter-privatedetails". Please update the names in your settings.'
 			);
+		}
+
+		// @todo Remove this in a future release (added in 1.36)
+		if ( isset( $wgAbuseFilterDisallowGlobalLocalBlocks ) ) {
+			wfWarn( '$wgAbuseFilterDisallowGlobalLocalBlocks has been removed and replaced by ' .
+				'$wgAbuseFilterLocallyDisabledGlobalActions. You can now specify which actions to disable. ' .
+				'If you had set the former to true, you should set to true all of the actions in ' .
+				'$wgAbuseFilterRestrictions (if you were manually setting the variable) or ' .
+				'AbuseFilter::DANGEROUS_ACTIONS. ' .
+				'If you had set it to false (or left the default), just remove it from your wiki settings.'
+			);
+			if ( $wgAbuseFilterDisallowGlobalLocalBlocks === true ) {
+				$wgAbuseFilterLocallyDisabledGlobalActions = [
+					'throttle' => false,
+					'warn' => false,
+					'disallow' => false,
+					'blockautopromote' => true,
+					'block' => true,
+					'rangeblock' => true,
+					'degroup' => true,
+					'tag' => false
+				];
+			}
+		}
+
+		// @todo Remove this in a future release (added in 1.36)
+		if ( isset( $wgAbuseFilterRestrictions ) ) {
+			wfWarn( '$wgAbuseFilterRestrictions has been renamed to $wgAbuseFilterActionRestrictions.' );
+			$wgAbuseFilterActionRestrictions = $wgAbuseFilterRestrictions;
 		}
 
 		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [

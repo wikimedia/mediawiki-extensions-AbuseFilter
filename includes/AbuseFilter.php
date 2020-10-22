@@ -56,6 +56,17 @@ class AbuseFilter {
 		'af_group'
 	];
 
+	/**
+	 * @var array Actions which may harm the user. Only retrieve via self::getDangerousActions
+	 * @internal
+	 */
+	public const DANGEROUS_ACTIONS = [
+		'block',
+		'blockautopromote',
+		'degroup',
+		'rangeblock'
+	];
+
 	public const HISTORY_MAPPINGS = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',
@@ -79,6 +90,25 @@ class AbuseFilter {
 		$vars = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $vars );
 		return $generator->addUserVars( $user, $entry )->getVariableHolder();
+	}
+
+	/**
+	 * Get an array of action which harm the user.
+	 *
+	 * @return string[]
+	 * @internal Temporary hack
+	 */
+	public static function getDangerousActions() : array {
+		static $actions = null;
+
+		if ( !$actions ) {
+			$extActions = [];
+			AbuseFilterHookRunner::getRunner()->onAbuseFilterGetDangerousActions( $extActions );
+			$actions = array_unique(
+				array_merge( $extActions, self::DANGEROUS_ACTIONS )
+			);
+		}
+		return $actions;
 	}
 
 	/**
@@ -260,10 +290,9 @@ class AbuseFilter {
 		);
 
 		// Categorise consequences by filter.
-		global $wgAbuseFilterRestrictions;
 		foreach ( $res as $row ) {
 			if ( $row->af_throttled
-				&& !empty( $wgAbuseFilterRestrictions[$row->afa_consequence] )
+				&& in_array( $row->afa_consequence, self::getDangerousActions() )
 			) {
 				// Don't do the action, just log
 				$logger = LoggerFactory::getInstance( 'AbuseFilter' );
@@ -937,7 +966,7 @@ class AbuseFilter {
 		}
 
 		// Check for restricted actions
-		$restrictions = $config->get( 'AbuseFilterRestrictions' );
+		$restrictions = $config->get( 'AbuseFilterActionRestrictions' );
 		if ( count( array_intersect_key(
 				array_filter( $restrictions ),
 				array_merge( $actions, $originalActions )

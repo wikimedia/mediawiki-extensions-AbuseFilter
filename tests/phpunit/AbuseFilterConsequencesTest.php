@@ -649,7 +649,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @return array [ expected consequences, actual consequences ]
 	 */
 	private function checkConsequences( $result, $actionParams, $consequences ) {
-		global $wgAbuseFilterRestrictions;
+		global $wgAbuseFilterActionRestrictions;
 
 		$expectedErrors = [];
 		$testErrorMessage = false;
@@ -738,10 +738,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			}
 		}
 
-		if ( array_intersect_key( $expectedErrors, array_filter( $wgAbuseFilterRestrictions ) ) ) {
+		if ( array_intersect_key( $expectedErrors, array_filter( $wgAbuseFilterActionRestrictions ) ) ) {
 			$filteredExpected = array_intersect_key(
 				$expectedErrors,
-				array_filter( $wgAbuseFilterRestrictions )
+				array_filter( $wgAbuseFilterActionRestrictions )
 			);
 			$expected = [];
 			foreach ( $filteredExpected as $values ) {

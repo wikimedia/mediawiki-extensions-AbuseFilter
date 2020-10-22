@@ -25,7 +25,8 @@ class AbuseFilterHookRunner implements
 	AbuseFilterGenerateTitleVarsHook,
 	AbuseFilterGenerateUserVarsHook,
 	AbuseFilterInterceptVariableHook,
-	AbuseFilterShouldFilterActionHook
+	AbuseFilterShouldFilterActionHook,
+	AbuseFilterGetDangerousActionsHook
 {
 
 	/** @var HookContainer */
@@ -287,4 +288,14 @@ class AbuseFilterHookRunner implements
 		);
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function onAbuseFilterGetDangerousActions( array &$actions ) : void {
+		$this->hookContainer->run(
+			'AbuseFilterGetDangerousActions',
+			[ &$actions ],
+			[ 'abortable' => false ]
+		);
+	}
 }
