@@ -1,0 +1,50 @@
+<?php
+
+namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
+
+use AbuseFilterConsequencesTest;
+use MediaWiki\Hook\UnitTestsAfterDatabaseSetupHook;
+use MediaWiki\Hook\UnitTestsBeforeDatabaseTeardownHook;
+use Wikimedia\Rdbms\IMaintainableDatabase;
+
+class TestsHandler implements UnitTestsAfterDatabaseSetupHook, UnitTestsBeforeDatabaseTeardownHook {
+	/**
+	 * Setup tables to emulate global filters, used in AbuseFilterConsequencesTest.
+	 *
+	 * @param IMaintainableDatabase $db
+	 * @param string $prefix The prefix used in unit tests
+	 * @suppress PhanUndeclaredClassConstant AbuseFilterConsequencesTest is in AutoloadClasses
+	 * @suppress PhanUndeclaredClassStaticProperty AbuseFilterConsequencesTest is in AutoloadClasses
+	 */
+	public function onUnitTestsAfterDatabaseSetup( $db, $prefix ) {
+		$externalPrefix = AbuseFilterConsequencesTest::DB_EXTERNAL_PREFIX;
+		if ( $db->tableExists( $externalPrefix . AbuseFilterConsequencesTest::$externalTables[0], __METHOD__ ) ) {
+			// Check a random table to avoid unnecessary table creations. See T155147.
+			return;
+		}
+
+		foreach ( AbuseFilterConsequencesTest::$externalTables as $table ) {
+			// Don't create them as temporary, as we'll access the DB via another connection
+			$db->duplicateTableStructure(
+				"$prefix$table",
+				"$prefix$externalPrefix$table",
+				false,
+				__METHOD__
+			);
+		}
+	}
+
+	/**
+	 * Drop tables used for global filters in AbuseFilterConsequencesTest.
+	 *   Note: this has the same problem as T201290.
+	 *
+	 * @suppress PhanUndeclaredClassConstant AbuseFilterConsequencesTest is in AutoloadClasses
+	 * @suppress PhanUndeclaredClassStaticProperty AbuseFilterConsequencesTest is in AutoloadClasses
+	 */
+	public function onUnitTestsBeforeDatabaseTeardown() {
+		$db = wfGetDB( DB_MASTER );
+		foreach ( AbuseFilterConsequencesTest::$externalTables as $table ) {
+			$db->dropTable( AbuseFilterConsequencesTest::DB_EXTERNAL_PREFIX . $table );
+		}
+	}
+}
