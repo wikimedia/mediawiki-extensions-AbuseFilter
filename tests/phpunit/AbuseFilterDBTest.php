@@ -320,6 +320,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @param array $expected The expected, filtered list
 	 * @param Title $title
 	 * @covers AbuseFilterRunner::getFilteredConsequences
+	 * @covers AbuseFilterRunner::removeRedundantConsequences
 	 * @dataProvider provideConsequences
 	 */
 	public function testGetFilteredConsequences( $rawConsequences, $expected, Title $title ) {
@@ -334,13 +335,12 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 				'rangeblock' => true,
 				'degroup' => true,
 				'tag' => false
-			],
-			'wgMainCacheType' => 'hash'
+			]
 		] );
 		$user = $this->getTestUser()->getUser();
 		$vars = AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] );
 		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
-		$actual = $runner->getFilteredConsequences( $rawConsequences );
+		$actual = $runner->getFilteredConsequences( $runner->removeRedundantConsequences( $rawConsequences ) );
 
 		$this->assertEquals( $expected, $actual );
 	}
@@ -351,7 +351,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @return array
 	 */
 	public function provideConsequences() {
-		$pageName = __METHOD__;
+		$pageName = 'TestFilteredConsequences';
 		$title = $this->createMock( Title::class );
 		$title->method( 'getPrefixedText' )->willReturn( $pageName );
 

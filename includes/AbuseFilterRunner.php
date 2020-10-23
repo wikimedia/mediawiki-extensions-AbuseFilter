@@ -450,7 +450,8 @@ class AbuseFilterRunner {
 	 */
 	protected function executeFilterActions( array $filters ) : Status {
 		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
-		$actionsToTake = $this->getFilteredConsequences( $actionsByFilter );
+		$consequences = $this->removeRedundantConsequences( $actionsByFilter );
+		$actionsToTake = $this->getFilteredConsequences( $consequences );
 		$actionsTaken = array_fill_keys( $filters, [] );
 
 		$messages = [];
@@ -482,35 +483,19 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * Idempotent and pure method that, given a raw list of consequences, determines which ones
+	 * Pre-check any "special" consequence and remove any further actions prevented by them. Specifically:
 	 * should be actually executed. Normalizations done here:
-	 * - Only keep the longest block from all filters
-	 * - For global filters, remove locally disabled actions
 	 * - For every filter with "throttle" enabled, remove other actions if the throttle counter hasn't been reached
 	 * - For every filter with "warn" enabled, remove other actions if the warning hasn't been shown
-	 * - For every filter, remove "disallow" if a blocking action will be executed
-	 * - Rewrite parameters of "block", "warn" and "throttle"
 	 *
 	 * @param array[] $actionsByFilter
 	 * @return array[]
 	 * @internal Temporary method
 	 */
 	public function getFilteredConsequences( array $actionsByFilter ) : array {
-		global $wgAbuseFilterLocallyDisabledGlobalActions,
-			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
-
-		// Keep track of the longest block
-		$maxBlock = [ 'id' => null, 'expiry' => -1, 'blocktalk' => null ];
-
 		foreach ( $actionsByFilter as $filter => &$actions ) {
 			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
 
-			if ( $isGlobalFilter ) {
-				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterLocallyDisabledGlobalActions ) );
-			}
-
-			// If the filter has "throttle" enabled and throttling is available via object
-			// caching, check to see if the user has hit the throttle.
 			if ( isset( $actions['throttle'] ) ) {
 				$parameters = $actions['throttle'];
 				$throttleId = array_shift( $parameters );
@@ -551,6 +536,35 @@ class AbuseFilterRunner {
 					continue;
 				}
 			}
+		}
+		unset( $actions );
+
+		return $actionsByFilter;
+	}
+
+	/**
+	 * Remove consequences that we already know won't be executed. This includes:
+	 * - Only keep the longest block from all filters
+	 * - For global filters, remove locally disabled actions
+	 * - For every filter, remove "disallow" if a blocking action will be executed
+	 *
+	 * @param array[] $actionsByFilter
+	 * @return array[]
+	 * @internal Temporarily public
+	 */
+	public function removeRedundantConsequences( array $actionsByFilter ) : array {
+		global $wgAbuseFilterLocallyDisabledGlobalActions,
+			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
+
+		// Keep track of the longest block
+		$maxBlock = [ 'id' => null, 'expiry' => -1, 'blocktalk' => null ];
+
+		foreach ( $actionsByFilter as $filter => &$actions ) {
+			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
+
+			if ( $isGlobalFilter ) {
+				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterLocallyDisabledGlobalActions ) );
+			}
 
 			// Don't show the disallow message if a blocking action is executed
 			if ( array_intersect( array_keys( $actions ), AbuseFilter::getDangerousActions() )
@@ -561,7 +575,6 @@ class AbuseFilterRunner {
 
 			if ( isset( $actions['block'] ) ) {
 				$parameters = $actions['block'];
-
 				if ( count( $parameters ) === 3 ) {
 					// New type of filters with custom block
 					if ( $this->user->isAnon() ) {
@@ -580,9 +593,10 @@ class AbuseFilterRunner {
 					}
 				}
 
+				$parsedExpiry = SpecialBlock::parseExpiryInput( $expiry );
 				if (
 					$maxBlock['expiry'] === -1 ||
-					SpecialBlock::parseExpiryInput( $expiry ) > SpecialBlock::parseExpiryInput( $maxBlock['expiry'] )
+					$parsedExpiry > SpecialBlock::parseExpiryInput( $maxBlock['expiry'] )
 				) {
 					// Save the parameters to issue the block with
 					$maxBlock = [
@@ -600,7 +614,7 @@ class AbuseFilterRunner {
 		if ( $maxBlock['id'] !== null ) {
 			$id = $maxBlock['id'];
 			unset( $maxBlock['id'] );
-			$actionsByFilter[ $id ]['block'] = $maxBlock;
+			$actionsByFilter[$id]['block'] = $maxBlock;
 		}
 
 		return $actionsByFilter;
