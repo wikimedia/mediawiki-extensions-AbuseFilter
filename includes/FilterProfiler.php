@@ -79,12 +79,13 @@ class FilterProfiler {
 	 *
 	 * @param string|int $filter
 	 * @return array
+	 * @phan-return array{0:int,1:int,2:float,3:float}
 	 */
 	public function getFilterProfile( $filter ) : array {
 		$profile = $this->objectStash->get( $this->filterProfileKey( $filter ) );
 
 		if ( $profile === false ) {
-			return [ 0, 0, 0, 0 ];
+			return [ 0, 0, 0.0, 0.0 ];
 		}
 
 		$curCount = $profile['count'];
@@ -102,7 +103,7 @@ class FilterProfiler {
 	 * Retrieve per-group statistics
 	 * @param string $group
 	 * @return array|false
-	 * @phan-return array{total:int,overflow:int,matches:int}|false
+	 * @phan-return array{total:int,overflow:int,matches:int,total-time:float,total-cond:int}|false
 	 */
 	public function getGroupProfile( string $group ) {
 		return $this->objectStash->get( $this->filterProfileGroupKey( $group ) );
@@ -245,7 +246,7 @@ class FilterProfiler {
 	 * Record per-filter profiling, for all filters
 	 *
 	 * @param Title $title
-	 * @param array $data Profiling data, as stored in $this->profilingData
+	 * @param array $data Profiling data, as stored in AbuseFilterRunner::$profilingData
 	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
 	 */
 	public function recordPerFilterProfiling( Title $title, array $data ) : void {
