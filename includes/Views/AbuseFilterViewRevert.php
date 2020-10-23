@@ -1,8 +1,11 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\User\UserGroupManager;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/** @var int */
@@ -27,18 +30,55 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @var string|null The reason provided for the revert
 	 */
 	public $mReason;
+	/**
+	 * @var UserGroupManager
+	 */
+	private $userGroupsManager;
+	/**
+	 * @var BlockAutopromoteStore
+	 */
+	private $blockAutopromoteStore;
+	/**
+	 * @var FilterUser
+	 */
+	private $filterUser;
+
+	/**
+	 * @param UserGroupManager $userGroupManager
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param BlockAutopromoteStore $blockAutopromoteStore
+	 * @param FilterUser $filterUser
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
+	 * @param array $params
+	 */
+	public function __construct(
+		UserGroupManager $userGroupManager,
+		AbuseFilterPermissionManager $afPermManager,
+		BlockAutopromoteStore $blockAutopromoteStore,
+		FilterUser $filterUser,
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->userGroupsManager = $userGroupManager;
+		$this->blockAutopromoteStore = $blockAutopromoteStore;
+		$this->filterUser = $filterUser;
+	}
 
 	/**
 	 * Shows the page
 	 */
 	public function show() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$lang = $this->getLanguage();
 
 		$user = $this->getUser();
 		$out = $this->getOutput();
 
-		if ( !$afPermManager->canRevertFilterActions( $user ) ) {
+		if ( !$this->afPermManager->canRevertFilterActions( $user ) ) {
 			throw new PermissionsError( 'abusefilter-revert' );
 		}
 
@@ -307,7 +347,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		switch ( $action ) {
 			case 'block':
 				$block = DatabaseBlock::newFromTarget( $result['user'] );
-				$filterUser = AbuseFilterServices::getFilterUser()->getUser();
+				$filterUser = $this->filterUser->getUser();
 				if ( !( $block && $block->getBy() === $filterUser->getId() ) ) {
 					// Not blocked by abuse filter
 					return false;
@@ -329,20 +369,19 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'abusefilter-revert-reason', $this->filter, $this->mReason
 				)->inContentLanguage()->text();
 
-				return AbuseFilterServices::getBlockAutopromoteStore()
-					->unblockAutopromote( $target, $this->getUser(), $msg );
+				return $this->blockAutopromoteStore->unblockAutopromote( $target, $this->getUser(), $msg );
 			case 'degroup':
-				$userGroupsManager = MediaWikiServices::getInstance()->getUserGroupManager();
 				// Pull the user's groups from the vars.
 				$removedGroups = $result['vars']->getVar( 'user_groups' )->toNative();
-				$removedGroups = array_diff( $removedGroups, $userGroupsManager->listAllImplicitGroups() );
+				$removedGroups = array_diff( $removedGroups,
+					$this->userGroupsManager->listAllImplicitGroups() );
 				$user = User::newFromId( $result['userid'] );
-				$currentGroups = $userGroupsManager->getUserGroups( $user );
+				$currentGroups = $this->userGroupsManager->getUserGroups( $user );
 
 				$addedGroups = [];
 				foreach ( $removedGroups as $group ) {
 					// TODO An addUserToGroups method with bulk updates would be nice
-					if ( $userGroupsManager->addUserToGroup( $user, $group ) ) {
+					if ( $this->userGroupsManager->addUserToGroup( $user, $group ) ) {
 						$addedGroups[] = $group;
 					}
 				}

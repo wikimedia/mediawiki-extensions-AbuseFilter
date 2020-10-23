@@ -1,25 +1,35 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterViewHistory extends AbuseFilterView {
+
 	/** @var int|null */
 	private $filter;
 
+	/** @var FilterLookup */
+	private $filterLookup;
+
 	/**
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param FilterLookup $filterLookup
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
 	 * @param array $params
 	 */
 	public function __construct(
+		AbuseFilterPermissionManager $afPermManager,
+		FilterLookup $filterLookup,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
-		parent::__construct( $context, $linkRenderer, $basePageName, $params );
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->filterLookup = $filterLookup;
 		$this->filter = $this->mParams['filter'] ?? null;
 	}
 
@@ -28,7 +38,6 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	 */
 	public function show() {
 		$out = $this->getOutput();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
 
@@ -38,8 +47,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
-		if ( $filter && AbuseFilterServices::getFilterLookup()->getFilter( $filter, false )->isHidden()
-			&& !$afPermManager->canViewPrivateFilters( $this->getUser() )
+		if ( $filter && $this->filterLookup->getFilter( $filter, false )->isHidden()
+			&& !$this->afPermManager->canViewPrivateFilters( $this->getUser() )
 		) {
 			$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return;
@@ -104,7 +113,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			->prepareForm()
 			->displayForm( false );
 
-		$pager = new AbuseFilterHistoryPager( $filter, $this, $user, $this->linkRenderer );
+		$pager = new AbuseFilterHistoryPager(
+			$filter, $this, $user, $this->linkRenderer,
+			$this->afPermManager->canViewPrivateFilters( $this->getUser() )
+		);
 
 		$out->addParserOutputContent( $pager->getFullOutput() );
 	}

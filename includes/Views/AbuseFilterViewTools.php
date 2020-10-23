@@ -1,8 +1,36 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterViewTools extends AbuseFilterView {
+
+	/**
+	 * @var EditBoxBuilderFactory
+	 */
+	private $boxBuilderFactory;
+
+	/**
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param EditBoxBuilderFactory $boxBuilderFactory
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
+	 * @param array $params
+	 */
+	public function __construct(
+		AbuseFilterPermissionManager $afPermManager,
+		EditBoxBuilderFactory $boxBuilderFactory,
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->boxBuilderFactory = $boxBuilderFactory;
+	}
+
 	/**
 	 * Shows the page
 	 */
@@ -11,9 +39,8 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$out->enableOOUI();
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$request = $this->getRequest();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 
-		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}
@@ -21,8 +48,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		// Header
 		$out->addWikiMsg( 'abusefilter-tools-text' );
 
-		$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
-		$boxBuilder = $boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
+		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
 
 		// Expression evaluator
 		$eval = '';
@@ -48,7 +74,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 
 		$out->addModules( 'ext.abuseFilter.tools' );
 
-		if ( $afPermManager->canEdit( $this->getUser() ) ) {
+		if ( $this->afPermManager->canEdit( $this->getUser() ) ) {
 			// Hacky little box to re-enable autoconfirmed if it got disabled
 			$formDescriptor = [
 				'RestoreAutoconfirmed' => [

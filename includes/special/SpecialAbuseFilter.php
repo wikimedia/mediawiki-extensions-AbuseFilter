@@ -1,14 +1,78 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\FilterImporter;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\FilterStore;
+use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
+use Wikimedia\ObjectFactory;
+
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
 	private const PAGE_NAME = 'AbuseFilter';
 
 	/**
-	 * @inheritDoc
+	 * @var ObjectFactory
 	 */
-	public function __construct() {
+	private $objectFactory;
+
+	private const SERVICES_PER_VIEW = [
+		AbuseFilterViewDiff::class => [
+			AbuseFilterPermissionManager::SERVICE_NAME,
+		],
+		AbuseFilterViewEdit::class => [
+			'PermissionManager',
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			FilterProfiler::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
+			FilterImporter::SERVICE_NAME,
+			FilterStore::SERVICE_NAME,
+			EditBoxBuilderFactory::SERVICE_NAME,
+		],
+		AbuseFilterViewExamine::class => [
+			'RevisionLookup',
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
+			EditBoxBuilderFactory::SERVICE_NAME,
+		],
+		AbuseFilterViewHistory::class => [
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
+		],
+		AbuseFilterViewImport::class => [
+			AbuseFilterPermissionManager::SERVICE_NAME,
+		],
+		AbuseFilterViewList::class => [
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			FilterProfiler::SERVICE_NAME,
+		],
+		AbuseFilterViewRevert::class => [
+			'UserGroupManager',
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			BlockAutopromoteStore::SERVICE_NAME,
+			FilterUser::SERVICE_NAME,
+		],
+		AbuseFilterViewTestBatch::class => [
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			EditBoxBuilderFactory::SERVICE_NAME,
+			AfParserFactory::SERVICE_NAME,
+		],
+		AbuseFilterViewTools::class => [
+			AbuseFilterPermissionManager::SERVICE_NAME,
+			EditBoxBuilderFactory::SERVICE_NAME,
+		],
+	];
+
+	/**
+	 * @param ObjectFactory $objectFactory
+	 */
+	public function __construct( ObjectFactory $objectFactory ) {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-view' );
+		$this->objectFactory = $objectFactory;
 	}
 
 	/**
@@ -58,9 +122,26 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		// Links at the top
 		$this->addNavigationLinks( $pageType );
 
-		/** @var AbuseFilterView $v */
-		$v = new $view( $this->getContext(), $this->getLinkRenderer(), self::PAGE_NAME, $params );
-		$v->show();
+		$view = $this->instantiateView( $view, $params );
+		$view->show();
+	}
+
+	/**
+	 * Instantiate the view class
+	 *
+	 * @phan-param class-string $viewClass
+	 * @suppress PhanTypeInvalidCallableArraySize
+	 *
+	 * @param string $viewClass
+	 * @param array $params
+	 * @return AbuseFilterView
+	 */
+	public function instantiateView( string $viewClass, array $params ) : AbuseFilterView {
+		return $this->objectFactory->createObject( [
+			'class' => $viewClass,
+			'services' => self::SERVICES_PER_VIEW[$viewClass],
+			'args' => [ $this->getContext(), $this->getLinkRenderer(), self::PAGE_NAME, $params ]
+		] );
 	}
 
 	/**

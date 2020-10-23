@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\ObjectFactory;
+
 class SpecialAbuseFilterTest extends MediaWikiUnitTestCase {
 
 	/**
@@ -7,7 +9,7 @@ class SpecialAbuseFilterTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideGetViewClassAndPageType
 	 */
 	public function testGetViewClassAndPageType( $subpage, $view, $pageType, $params = [] ) {
-		$sp = new SpecialAbuseFilter();
+		$sp = new SpecialAbuseFilter( $this->createMock( ObjectFactory::class ) );
 		[ $viewClass, $type, $args ] = $sp->getViewClassAndPageType( $subpage );
 		$this->assertSame( $view, $viewClass );
 		$this->assertSame( $pageType, $type );

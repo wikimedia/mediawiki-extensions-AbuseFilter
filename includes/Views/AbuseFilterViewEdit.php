@@ -1,14 +1,18 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\PermissionManager;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
@@ -18,19 +22,57 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/** @var int|string */
 	private $filter;
 
+	/** @var PermissionManager */
+	private $permissionManager;
+
+	/** @var FilterProfiler */
+	private $filterProfiler;
+
+	/** @var FilterLookup */
+	private $filterLookup;
+
+	/** @var FilterImporter */
+	private $filterImporter;
+
+	/** @var FilterStore */
+	private $filterStore;
+
+	/** @var EditBoxBuilderFactory */
+	private $boxBuilderFactory;
+
 	/**
+	 * @param PermissionManager $permissionManager
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param FilterProfiler $filterProfiler
+	 * @param FilterLookup $filterLookup
+	 * @param FilterImporter $filterImporter
+	 * @param FilterStore $filterStore
+	 * @param EditBoxBuilderFactory $boxBuilderFactory
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
 	 * @param array $params
 	 */
 	public function __construct(
+		PermissionManager $permissionManager,
+		AbuseFilterPermissionManager $afPermManager,
+		FilterProfiler $filterProfiler,
+		FilterLookup $filterLookup,
+		FilterImporter $filterImporter,
+		FilterStore $filterStore,
+		EditBoxBuilderFactory $boxBuilderFactory,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
-		parent::__construct( $context, $linkRenderer, $basePageName, $params );
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->permissionManager = $permissionManager;
+		$this->filterProfiler = $filterProfiler;
+		$this->filterLookup = $filterLookup;
+		$this->filterImporter = $filterImporter;
+		$this->filterStore = $filterStore;
+		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->filter = $this->mParams['filter'];
 		$this->historyID = $this->mParams['history'] ?? null;
 	}
@@ -43,7 +85,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$request = $this->getRequest();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
@@ -73,7 +114,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// Add the default warning and disallow messages in a JS variable
 		$this->exposeMessages();
 
-		$canEdit = $afPermManager->canEdit( $user );
+		$canEdit = $this->afPermManager->canEdit( $user );
 
 		if ( $filter === null && !$canEdit ) {
 			// Special case: Special:AbuseFilter/new is certainly not usable if the user cannot edit
@@ -133,8 +174,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
-		$filterStore = AbuseFilterServices::getFilterStore();
-		$status = $filterStore->saveFilter( $user, $filter, $newFilter, $origFilter );
+		$status = $this->filterStore->saveFilter( $user, $filter, $newFilter, $origFilter );
 
 		if ( !$status->isGood() ) {
 			$errors = $status->getErrors();
@@ -203,8 +243,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->addJsConfigVars( 'isFilterEditor', true );
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$lookup = AbuseFilterServices::getFilterLookup();
 		$actions = $filterObj->getActions();
 
 		$out->addSubtitle( $this->msg(
@@ -216,14 +254,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// We use filterHidden() to ensure that if a public filter is made private, the public
 		// revision is also hidden.
 		if (
-			( $filterObj->isHidden() || ( $filter !== null && $lookup->getFilter( $filter, false )->isHidden() ) ) &&
-			!$afPermManager->canViewPrivateFilters( $user )
+			( $filterObj->isHidden() || (
+				$filter !== null && $this->filterLookup->getFilter( $filter, false )->isHidden() )
+			) && !$this->afPermManager->canViewPrivateFilters( $user )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
 		}
 
-		$readOnly = !$afPermManager->canEditFilter( $user, $filterObj );
+		$readOnly = !$this->afPermManager->canEditFilter( $user, $filterObj );
 
 		if ( $history_id ) {
 			$oldWarningMessage = $readOnly
@@ -272,7 +311,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Hit count display
-		if ( $filterObj->getHitCount() !== null && $afPermManager->canSeeLogDetails( $user ) ) {
+		if ( $filterObj->getHitCount() !== null && $this->afPermManager->canSeeLogDetails( $user ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
 				->numParams( $filterObj->getHitCount() )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
@@ -292,7 +331,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'matches' => $matchesCount,
 				'total-time' => $curTotalTime,
 				'total-cond' => $curTotalConds,
-			] = AbuseFilterServices::getFilterProfiler()->getFilterProfile( $filter );
+			] = $this->filterProfiler->getFilterProfile( $filter );
 
 			if ( $totalCount > 0 ) {
 				$matchesPercent = round( 100 * $matchesCount / $totalCount, 2 );
@@ -305,8 +344,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
-		$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
-		$boxBuilder = $boxBuilderFactory->newEditBoxBuilder( $this, $user, $out );
+		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $user, $out );
 
 		$fields['abusefilter-edit-rules'] = $boxBuilder->buildEditBox(
 			$filterObj->getRules(),
@@ -374,7 +412,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'align' => 'inline',
 			];
 
-			if ( $checkboxId === 'global' && !$afPermManager->canEditGlobal( $user ) ) {
+			if ( $checkboxId === 'global' && !$this->afPermManager->canEditGlobal( $user ) ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -404,7 +442,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== null ) {
 			$tools = '';
-			if ( $afPermManager->canRevertFilterActions( $user ) ) {
+			if ( $this->afPermManager->canRevertFilterActions( $user ) ) {
 				$tools .= Xml::tags(
 					'p', null,
 					$this->linkRenderer->makeLink(
@@ -414,7 +452,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( $afPermManager->canViewPrivateFilters( $user ) ) {
+			if ( $this->afPermManager->canViewPrivateFilters( $user ) ) {
 				// Test link
 				$tools .= Xml::tags(
 					'p', null,
@@ -451,8 +489,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-history'] =
 				$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display );
 
-			$importer = AbuseFilterServices::getFilterImporter();
-			$exportText = $importer->encodeData( $filterObj, $actions );
+			$exportText = $this->filterImporter->encodeData( $filterObj, $actions );
 			$tools .= Xml::tags( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
 				$this->msg( 'abusefilter-edit-export' )->parse() );
 			$tools .=
@@ -544,13 +581,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private function buildConsequenceSelector( $action, $set, $filterObj, ?array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$actions = $config->get( 'AbuseFilterActions' );
 		if ( empty( $actions[$action] ) ) {
 			return '';
 		}
 
-		$readOnly = !$afPermManager->canEditFilter( $user, $filterObj );
+		$readOnly = !$this->afPermManager->canEditFilter( $user, $filterObj );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -739,9 +775,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 
 				$buttonGroup = $previewButton;
-				if ( MediaWikiServices::getInstance()->getPermissionManager()
-					->userHasRight( $user, 'editinterface' )
-				) {
+				if ( $this->permissionManager->userHasRight( $user, 'editinterface' ) ) {
 					$editButton =
 						new OOUI\ButtonInputWidget( [
 							// abusefilter-edit-warn-edit, abusefilter-edit-disallow-edit
@@ -1100,13 +1134,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return MutableFilter::newDefault();
 		}
 
-		$filterLookup = AbuseFilterServices::getFilterLookup();
 		$flags = $this->getRequest()->wasPosted()
 			// Load from master to avoid unintended reversions where there's replication lag.
 			? FilterLookup::READ_LATEST
 			: FilterLookup::READ_NORMAL;
 
-		return $filterLookup->getFilter( $id, false, $flags );
+		return $this->filterLookup->getFilter( $id, false, $flags );
 	}
 
 	/**
@@ -1118,7 +1151,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private function loadFromDatabase( ?int $filter, $history_id = null ) : ?Filter {
 		if ( $history_id ) {
 			try {
-				return AbuseFilterServices::getFilterLookup()->getFilterVersion( $history_id );
+				return $this->filterLookup->getFilterVersion( $history_id );
 			} catch ( FilterVersionNotFoundException $_ ) {
 				return null;
 			}
@@ -1187,9 +1220,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
-		$importer = AbuseFilterServices::getFilterImporter();
 		try {
-			$filter = $importer->decodeData( $request->getVal( 'wpImportText' ) );
+			$filter = $this->filterImporter->decodeData( $request->getVal( 'wpImportText' ) );
 		} catch ( InvalidImportDataException $_ ) {
 			return null;
 		}

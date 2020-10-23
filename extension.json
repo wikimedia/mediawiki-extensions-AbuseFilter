@@ -71,7 +71,12 @@
 				"AbuseFilterPermissionManager"
 			]
 		},
-		"AbuseFilter": "SpecialAbuseFilter"
+		"AbuseFilter": {
+			"class": "SpecialAbuseFilter",
+			"services": [
+				"ObjectFactory"
+			]
+		}
 	},
 	"LogTypes": [
 		"abusefilter",

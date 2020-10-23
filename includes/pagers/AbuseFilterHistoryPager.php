@@ -1,6 +1,5 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterHistoryPager extends TablePager {
@@ -16,20 +15,31 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @var string The user whose changes we're looking up for
 	 */
 	public $mUser;
+	/**
+	 * @var bool
+	 */
+	private $canViewPrivateFilters;
 
 	/**
 	 * @param ?int $filter
 	 * @param AbuseFilterViewHistory $page
 	 * @param string $user User name
 	 * @param LinkRenderer $linkRenderer
+	 * @param bool $canViewPrivateFilters
 	 */
-	public function __construct( ?int $filter, AbuseFilterViewHistory $page, $user,
-		LinkRenderer $linkRenderer ) {
+	public function __construct(
+		?int $filter,
+		AbuseFilterViewHistory $page,
+		$user,
+		LinkRenderer $linkRenderer,
+		bool $canViewPrivateFilters = false
+	) {
 		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mFilter = $filter;
 		$this->mPage = $page;
 		$this->mUser = $user;
 		$this->mDefaultDirection = true;
+		$this->canViewPrivateFilters = $canViewPrivateFilters;
 	}
 
 	/**
@@ -121,7 +131,6 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = '';
 				if ( AbuseFilter::getFirstFilterChange( $row->afh_filter ) != $value ) {
 					// @todo This is subpar, it should be cached at least. Should we also hide actions?
-					$afPermManager = AbuseFilterServices::getPermissionManager();
 					$dbr = wfGetDB( DB_REPLICA );
 					$oldFlags = $dbr->selectField(
 						'abuse_filter_history',
@@ -133,7 +142,7 @@ class AbuseFilterHistoryPager extends TablePager {
 						__METHOD__,
 						[ 'ORDER BY' => 'afh_id DESC' ]
 					);
-					if ( $afPermManager->canViewPrivateFilters( $this->getUser() ) ||
+					if ( $this->canViewPrivateFilters ||
 						(
 							!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
 							!in_array( 'hidden', explode( ',', $oldFlags ) )
@@ -160,8 +169,6 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-
 		$info = [
 			'tables' => [ 'abuse_filter_history', 'abuse_filter' ],
 			// All fields but afh_deleted on abuse_filter_history
@@ -197,7 +204,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			$info['conds']['afh_filter'] = $this->mFilter;
 		}
 
-		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( !$this->canViewPrivateFilters ) {
 			// Hide data the user can't see.
 			$info['conds']['af_hidden'] = 0;
 		}

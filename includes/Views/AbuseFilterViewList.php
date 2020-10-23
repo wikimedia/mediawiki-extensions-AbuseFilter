@@ -1,11 +1,39 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Linker\LinkRenderer;
 
 /**
  * The default view used in Special:AbuseFilter
  */
 class AbuseFilterViewList extends AbuseFilterView {
+
+	/**
+	 * @var FilterProfiler
+	 */
+	private $filterProfiler;
+
+	/**
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param FilterProfiler $filterProfiler
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
+	 * @param array $params
+	 */
+	public function __construct(
+		AbuseFilterPermissionManager $afPermManager,
+		FilterProfiler $filterProfiler,
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->filterProfiler = $filterProfiler;
+	}
+
 	/**
 	 * Shows the page
 	 */
@@ -14,7 +42,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$request = $this->getRequest();
 		$config = $this->getConfig();
 		$user = $this->getUser();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 
 		// Show filter performance statistics
 		$this->showStatus();
@@ -22,7 +49,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-intro' );
 
 		// New filter button
-		if ( $afPermManager->canEdit( $user ) ) {
+		if ( $this->afPermManager->canEdit( $user ) ) {
 			$out->enableOOUI();
 			$buttons = new OOUI\HorizontalLayout( [
 				'items' => [
@@ -58,7 +85,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 		$scope = $request->getVal( 'rulescope', $defaultscope );
 
-		$searchEnabled = $afPermManager->canViewPrivateFilters( $user ) && !(
+		$searchEnabled = $this->afPermManager->canViewPrivateFilters( $user ) && !(
 			$config->get( 'AbuseFilterCentralDB' ) !== null &&
 			!$config->get( 'AbuseFilterIsCentral' ) &&
 			$scope === 'global' );
@@ -216,7 +243,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'default' => $furtherOptions
 		];
 
-		if ( AbuseFilterServices::getPermissionManager()->canViewPrivateFilters( $user ) ) {
+		if ( $this->afPermManager->canViewPrivateFilters( $user ) ) {
 			$globalEnabled = $centralDB !== null && !$dbIsCentral;
 			$formDescriptor['querypattern'] = [
 				'name' => 'querypattern',
@@ -268,13 +295,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * Generates a summary of filter activity using the internal statistics.
 	 */
 	public function showStatus() {
-		$filterProfiler = AbuseFilterServices::getFilterProfiler();
-
 		$totalCount = 0;
 		$matchCount = 0;
 		$overflowCount = 0;
 		foreach ( $this->getConfig()->get( 'AbuseFilterValidGroups' ) as $group ) {
-			$profile = $filterProfiler->getGroupProfile( $group );
+			$profile = $this->filterProfiler->getGroupProfile( $group );
 			$totalCount += $profile[ 'total' ];
 			$overflowCount += $profile[ 'overflow' ];
 			$matchCount += $profile[ 'matches' ];

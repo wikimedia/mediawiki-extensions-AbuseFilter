@@ -1,7 +1,10 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
@@ -41,15 +44,45 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 * @var string The text of the rule to test changes against
 	 */
 	private $testPattern;
+	/**
+	 * @var EditBoxBuilderFactory
+	 */
+	private $boxBuilderFactory;
+	/**
+	 * @var AfParserFactory
+	 */
+	private $parserFactory;
+
+	/**
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param EditBoxBuilderFactory $boxBuilderFactory
+	 * @param AfParserFactory $parserFactory
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
+	 * @param array $params
+	 */
+	public function __construct(
+		AbuseFilterPermissionManager $afPermManager,
+		EditBoxBuilderFactory $boxBuilderFactory,
+		AfParserFactory $parserFactory,
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->boxBuilderFactory = $boxBuilderFactory;
+		$this->parserFactory = $parserFactory;
+	}
 
 	/**
 	 * Shows the page
 	 */
 	public function show() {
 		$out = $this->getOutput();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 
-		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}
@@ -61,8 +94,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
 		$out->enableOOUI();
 
-		$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
-		$boxBuilder = $boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
+		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
 
 		$output = '';
 		$output .=
@@ -163,7 +195,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
-		$parser = AbuseFilterServices::getParserFactory()->newParser();
+		$parser = $this->parserFactory->newParser();
 
 		$validSyntax = $parser->checkSyntax( $this->testPattern );
 		if ( $validSyntax !== true ) {

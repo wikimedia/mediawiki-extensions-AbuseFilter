@@ -1,9 +1,16 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Linker\LinkRenderer;
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
+
+	/**
+	 * @var AbuseFilterPermissionManager
+	 */
+	protected $afPermManager;
+
 	/**
 	 * @var array The parameters of the current request
 	 */
@@ -13,16 +20,19 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @var LinkRenderer
 	 */
 	protected $linkRenderer;
+
 	/** @var string */
 	private $basePageName;
 
 	/**
+	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
 	 * @param array $params
 	 */
 	public function __construct(
+		AbuseFilterPermissionManager $afPermManager,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -32,6 +42,7 @@ abstract class AbuseFilterView extends ContextSource {
 		$this->setContext( $context );
 		$this->linkRenderer = $linkRenderer;
 		$this->basePageName = $basePageName;
+		$this->afPermManager = $afPermManager;
 	}
 
 	/**

@@ -1,7 +1,5 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-
 /**
  * @phan-file-suppress PhanTypeArraySuspiciousNullable Some confusion with class members
  */
@@ -115,8 +113,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) &&
+		if ( !$this->afPermManager->canViewPrivateFilters( $this->getUser() ) &&
 			(
 				in_array( 'hidden', explode( ',', $this->mOldVersion['info']['flags'] ) ) ||
 				in_array( 'hidden', explode( ',', $this->mNewVersion['info']['flags'] ) )

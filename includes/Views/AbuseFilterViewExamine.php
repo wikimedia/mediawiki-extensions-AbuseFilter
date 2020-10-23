@@ -1,8 +1,11 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
@@ -22,6 +25,44 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @var string The ID of the filter we're examinating
 	 */
 	public $mTestFilter;
+	/**
+	 * @var RevisionLookup
+	 */
+	private $revisionLookup;
+	/**
+	 * @var FilterLookup
+	 */
+	private $filterLookup;
+	/**
+	 * @var EditBoxBuilderFactory
+	 */
+	private $boxBuilderFactory;
+
+	/**
+	 * @param RevisionLookup $revisionLookup
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param FilterLookup $filterLookup
+	 * @param EditBoxBuilderFactory $boxBuilderFactory
+	 * @param IContextSource $context
+	 * @param LinkRenderer $linkRenderer
+	 * @param string $basePageName
+	 * @param array $params
+	 */
+	public function __construct(
+		RevisionLookup $revisionLookup,
+		AbuseFilterPermissionManager $afPermManager,
+		FilterLookup $filterLookup,
+		EditBoxBuilderFactory $boxBuilderFactory,
+		IContextSource $context,
+		LinkRenderer $linkRenderer,
+		string $basePageName,
+		array $params
+	) {
+		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->revisionLookup = $revisionLookup;
+		$this->filterLookup = $filterLookup;
+		$this->boxBuilderFactory = $boxBuilderFactory;
+	}
 
 	/**
 	 * Shows the page
@@ -140,7 +181,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$dbr = wfGetDB( DB_REPLICA );
 		$user = $this->getUser();
 		$out = $this->getOutput();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 
 		$row = $dbr->selectRow(
 			'abuse_filter_log',
@@ -160,21 +200,19 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		[ $filterID, $isGlobal ] = AbuseFilter::splitGlobalName( $row->afl_filter );
-		$isHidden = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $isGlobal )->isHidden();
-		if ( !$afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {
+		$isHidden = $this->filterLookup->getFilter( $filterID, $isGlobal )->isHidden();
+		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
 
-		if ( $row->afl_deleted && !$afPermManager->canSeeHiddenLogEntries( $user ) ) {
+		if ( $row->afl_deleted && !$this->afPermManager->canSeeHiddenLogEntries( $user ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
 			return;
 		}
 
 		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' ) {
-			$revRec = MediaWikiServices::getInstance()
-				->getRevisionLookup()
-				->getRevisionById( (int)$row->afl_rev_id );
+			$revRec = $this->revisionLookup->getRevisionById( (int)$row->afl_rev_id );
 			if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
 				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 				return;
@@ -193,7 +231,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function showExaminer( $vars ) {
 		$output = $this->getOutput();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$output->enableOOUI();
 
 		if ( !$vars ) {
@@ -210,9 +247,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
-		if ( $afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
-			$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
-			$boxBuilder = $boxBuilderFactory->newEditBoxBuilder(
+		if ( $this->afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+			$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder(
 				$this,
 				$this->getUser(),
 				$output
