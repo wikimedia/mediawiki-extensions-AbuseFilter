@@ -227,7 +227,28 @@ class AbuseFilterRunner {
 		$status = $this->executeFilterActions( $matchedFilters );
 		$actionsTaken = $status->getValue();
 
-		$this->addLogEntries( $actionsTaken );
+		$abuseLogger = AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
+			$this->title,
+			$this->user,
+			$this->vars
+		);
+		[
+			'local' => $loggedLocalFilters,
+			'global' => $loggedGlobalFilters
+		] = $abuseLogger->addLogEntries( $actionsTaken );
+
+		if ( count( $loggedLocalFilters ) ) {
+			$this->updateHitCounts( wfGetDB( DB_MASTER ), $loggedLocalFilters );
+		}
+
+		if ( count( $loggedGlobalFilters ) ) {
+			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
+			$this->updateHitCounts( $fdb, $loggedGlobalFilters );
+		}
+
+		foreach ( $this->watchers as $watcher ) {
+			$watcher->run( $loggedLocalFilters, $this->group );
+		}
 
 		return $status;
 	}
@@ -714,186 +735,11 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * Creates a template to use for logging taken actions
-	 *
-	 * @return array
-	 */
-	protected function buildLogTemplate() : array {
-		global $wgAbuseFilterLogIP;
-
-		$request = RequestContext::getMain()->getRequest();
-		// If $this->user isn't safe to load (e.g. a failure during
-		// AbortAutoAccount), create a dummy anonymous user instead.
-		$user = $this->user->isSafeToLoad() ? $this->user : new User;
-		// Create a template
-		$logTemplate = [
-			'afl_user' => $user->getId(),
-			'afl_user_text' => $user->getName(),
-			'afl_timestamp' => wfGetDB( DB_REPLICA )->timestamp(),
-			'afl_namespace' => $this->title->getNamespace(),
-			'afl_title' => $this->title->getDBkey(),
-			'afl_action' => $this->action,
-			'afl_ip' => $wgAbuseFilterLogIP ? $request->getIP() : ''
-		];
-		// Hack to avoid revealing IPs of people creating accounts
-		if (
-			!$user->getId() &&
-			( $this->action === 'createaccount' || $this->action === 'autocreateaccount' )
-		) {
-			$logTemplate['afl_user_text'] = $this->vars->getVar( 'accountname' )->toString();
-		}
-		return $logTemplate;
-	}
-
-	/**
-	 * Create and publish log entries for taken actions
-	 *
-	 * @param array[] $actionsTaken
-	 */
-	protected function addLogEntries( array $actionsTaken ) {
-		$dbw = wfGetDB( DB_MASTER );
-		$logTemplate = $this->buildLogTemplate();
-		$centralLogTemplate = [
-			'afl_wiki' => WikiMap::getCurrentWikiDbDomain()->getId(),
-		];
-
-		$logRows = [];
-		$centralLogRows = [];
-		$loggedLocalFilters = [];
-		$loggedGlobalFilters = [];
-
-		foreach ( $actionsTaken as $filter => $actions ) {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
-			$thisLog = $logTemplate;
-			$thisLog['afl_filter'] = $filter;
-			$thisLog['afl_actions'] = implode( ',', $actions );
-
-			// Don't log if we were only throttling.
-			// TODO This check should be removed or rewritten using Consequence objects
-			if ( $thisLog['afl_actions'] !== 'throttle' ) {
-				$logRows[] = $thisLog;
-				// Global logging
-				if ( $global ) {
-					$centralLog = $thisLog + $centralLogTemplate;
-					$centralLog['afl_filter'] = $filterID;
-					$centralLog['afl_title'] = $this->title->getPrefixedText();
-					$centralLog['afl_namespace'] = 0;
-
-					$centralLogRows[] = $centralLog;
-					$loggedGlobalFilters[] = $filterID;
-				} else {
-					$loggedLocalFilters[] = $filter;
-				}
-			}
-		}
-
-		if ( !count( $logRows ) ) {
-			return;
-		}
-
-		$localLogIDs = $this->insertLocalLogEntries( $logRows, $dbw );
-		if ( count( $loggedLocalFilters ) ) {
-			$this->updateHitCounts( $dbw, $loggedLocalFilters );
-		}
-
-		$globalLogIDs = [];
-		if ( count( $loggedGlobalFilters ) ) {
-			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
-			$globalLogIDs = $this->insertGlobalLogEntries( $centralLogRows, $fdb );
-			$this->updateHitCounts( $fdb, $loggedGlobalFilters );
-		}
-
-		AbuseFilter::$logIds[ $this->title->getPrefixedText() ] = [
-			'local' => $localLogIDs,
-			'global' => $globalLogIDs
-		];
-
-		foreach ( $this->watchers as $watcher ) {
-			$watcher->run( $loggedLocalFilters, $this->group );
-		}
-	}
-
-	/**
-	 * @param array[] $logRows
-	 * @param IDatabase $dbw
-	 * @return array
-	 */
-	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ) {
-		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
-
-		$lookup = AbuseFilterServices::getFilterLookup();
-		$varDump = AbuseFilter::storeVarDump( $this->vars );
-		$varDump = "tt:$varDump";
-
-		$loggedIDs = [];
-		foreach ( $logRows as $data ) {
-			$data['afl_var_dump'] = $varDump;
-			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
-			$loggedIDs[] = $data['afl_id'] = $dbw->insertId();
-			// Give grep a chance to find the usages:
-			// logentry-abusefilter-hit
-			$entry = new ManualLogEntry( 'abusefilter', 'hit' );
-			// Construct a user object
-			$user = User::newFromId( $data['afl_user'] );
-			$user->setName( $data['afl_user_text'] );
-			$entry->setPerformer( $user );
-			$entry->setTarget( $this->title );
-			// Additional info
-			$entry->setParameters( [
-				'action' => $data['afl_action'],
-				'filter' => $data['afl_filter'],
-				'actions' => $data['afl_actions'],
-				'log' => $data['afl_id'],
-			] );
-
-			// Send data to CheckUser if installed and we
-			// aren't already sending a notification to recentchanges
-			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' )
-				&& strpos( $wgAbuseFilterNotifications, 'rc' ) === false
-			) {
-				global $wgCheckUserLogAdditionalRights;
-				$wgCheckUserLogAdditionalRights[] = 'abusefilter-view';
-				$rc = $entry->getRecentChange();
-				CheckUserHooks::updateCheckUserData( $rc );
-			}
-
-			if ( $wgAbuseFilterNotifications !== false ) {
-				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $data['afl_filter'] );
-				if ( $lookup->getFilter( $filterID, $global )->isHidden() && !$wgAbuseFilterNotificationsPrivate ) {
-					continue;
-				}
-				$this->publishEntry( $dbw, $entry, $wgAbuseFilterNotifications );
-			}
-		}
-		return $loggedIDs;
-	}
-
-	/**
-	 * @param array[] $centralLogRows
-	 * @param IDatabase $fdb
-	 * @return array
-	 */
-	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) {
-		$this->vars->computeDBVars();
-		$globalVarDump = AbuseFilter::storeVarDump( $this->vars, true );
-		$globalVarDump = "tt:$globalVarDump";
-		foreach ( $centralLogRows as $index => $data ) {
-			$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
-		}
-
-		$loggedIDs = [];
-		foreach ( $centralLogRows as $row ) {
-			$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
-			$loggedIDs[] = $fdb->insertId();
-		}
-		return $loggedIDs;
-	}
-
-	/**
 	 * @param IDatabase $dbw
 	 * @param array $loggedFilters
+	 * @todo Move to a Watcher
 	 */
-	private function updateHitCounts( IDatabase $dbw, $loggedFilters ) {
+	private function updateHitCounts( IDatabase $dbw, array $loggedFilters ) : void {
 		$method = __METHOD__;
 		$dbw->onTransactionPreCommitOrIdle(
 			function () use ( $dbw, $loggedFilters, $method ) {
@@ -904,31 +750,6 @@ class AbuseFilterRunner {
 				);
 			},
 			$method
-		);
-	}
-
-	/**
-	 * Like ManualLogEntry::publish, but doesn't require an ID (which we don't have) and skips the
-	 * tagging part
-	 *
-	 * @param IDatabase $dbw To cancel the callback if the log insertion fails
-	 * @param ManualLogEntry $entry
-	 * @param string $to One of 'udp', 'rc' and 'rcandudp'
-	 */
-	private function publishEntry( IDatabase $dbw, ManualLogEntry $entry, $to ) {
-		DeferredUpdates::addCallableUpdate(
-			function () use ( $entry, $to ) {
-				$rc = $entry->getRecentChange();
-
-				if ( $to === 'rc' || $to === 'rcandudp' ) {
-					$rc->save( $rc::SEND_NONE );
-				}
-				if ( $to === 'udp' || $to === 'rcandudp' ) {
-					$rc->notifyRCFeeds();
-				}
-			},
-			DeferredUpdates::POSTSEND,
-			$dbw
 		);
 	}
 

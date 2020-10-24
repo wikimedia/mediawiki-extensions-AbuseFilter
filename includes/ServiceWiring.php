@@ -2,6 +2,8 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
+use MediaWiki\Extension\AbuseFilter\AbuseLogger;
+use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -179,6 +181,19 @@ return [
 			$services->getDBLoadBalancer(),
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' )
+		);
+	},
+	AbuseLoggerFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : AbuseLoggerFactory {
+		return new AbuseLoggerFactory(
+			$services->get( CentralDBManager::SERVICE_NAME ),
+			$services->get( FilterLookup::SERVICE_NAME ),
+			$services->getDBLoadBalancer(),
+			new ServiceOptions(
+				AbuseLogger::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			),
+			WikiMap::getCurrentWikiDbDomain()->getId(),
+			RequestContext::getMain()->getRequest()->getIP()
 		);
 	},
 ];

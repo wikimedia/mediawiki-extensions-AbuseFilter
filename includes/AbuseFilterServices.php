@@ -143,4 +143,11 @@ class AbuseFilterServices {
 	public static function getConsequencesLookup() : ConsequencesLookup {
 		return MediaWikiServices::getInstance()->getService( ConsequencesLookup::SERVICE_NAME );
 	}
+
+	/**
+	 * @return AbuseLoggerFactory
+	 */
+	public static function getAbuseLoggerFactory() : AbuseLoggerFactory {
+		return MediaWikiServices::getInstance()->getService( AbuseLoggerFactory::SERVICE_NAME );
+	}
 }

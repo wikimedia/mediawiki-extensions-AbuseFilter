@@ -181,6 +181,8 @@
 		"MediaWiki\\Extension\\AbuseFilter\\FilterStore": "includes/FilterStore.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesFactory": "includes/ConsequencesFactory.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesLookup": "includes/ConsequencesLookup.php",
+		"MediaWiki\\Extension\\AbuseFilter\\AbuseLogger": "includes/AbuseLogger.php",
+		"MediaWiki\\Extension\\AbuseFilter\\AbuseLoggerFactory": "includes/AbuseLoggerFactory.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
