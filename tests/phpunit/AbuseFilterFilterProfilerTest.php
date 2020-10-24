@@ -40,6 +40,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::getFilterProfile
 	 * @covers ::recordPerFilterProfiling
+	 * @covers ::filterProfileKey
 	 */
 	public function testGetFilterProfile() {
 		$profiler = $this->getFilterProfiler();
@@ -89,6 +90,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::recordPerFilterProfiling
+	 * @covers ::recordSlowFilter
 	 */
 	public function testRecordPerFilterProfiling_reportsSlowFilter() {
 		$logger = new TestLogger();
@@ -154,6 +156,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::recordStats
 	 * @covers ::getGroupProfile
+	 * @covers ::filterProfileGroupKey
 	 */
 	public function testGetGroupProfile_noData() {
 		$profiler = $this->getFilterProfiler();
@@ -161,22 +164,49 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
+	 * @param int $condsUsed
+	 * @param float $time
+	 * @param bool $matches
+	 * @param array $expected
 	 * @covers ::recordStats
 	 * @covers ::getGroupProfile
+	 * @covers ::filterProfileGroupKey
+	 * @dataProvider provideRecordStats
 	 */
-	public function testRecordStats() {
+	public function testRecordStats( int $condsUsed, float $time, bool $matches, array $expected ) {
 		$profiler = $this->getFilterProfiler();
-		$profiler->recordStats( 'default', 100, 333.3, true );
-		$this->assertSame(
-			[
-				'total' => 1,
-				'overflow' => 0,
-				'total-time' => 333.3,
-				'total-cond' => 100,
-				'matches' => 1
+		$group = 'default';
+		$profiler->recordStats( $group, $condsUsed, $time, $matches );
+		$this->assertSame( $expected, $profiler->getGroupProfile( $group ) );
+	}
+
+	public function provideRecordStats() : array {
+		return [
+			'No overflow' => [
+				100,
+				333.3,
+				true,
+				[
+					'total' => 1,
+					'overflow' => 0,
+					'total-time' => 333.3,
+					'total-cond' => 100,
+					'matches' => 1
+				]
 			],
-			$profiler->getGroupProfile( 'default' )
-		);
+			'Overflow' => [
+				10000,
+				20,
+				true,
+				[
+					'total' => 1,
+					'overflow' => 1,
+					'total-time' => 20.0,
+					'total-cond' => 10000,
+					'matches' => 1
+				]
+			]
+		];
 	}
 
 	/**
@@ -201,6 +231,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::checkResetProfiling
+	 * @covers ::filterProfileGroupKey
 	 */
 	public function testCheckResetProfiling() {
 		$profiler = $this->getFilterProfiler( [

@@ -55,8 +55,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @var User The user performing actions
 	 */
 	private $user;
-	/** To be used as fake timestamp in several tests */
-	private const MAGIC_TIMESTAMP = 2051222400;
 	/** Prefix for tables to emulate an external DB */
 	public const DB_EXTERNAL_PREFIX = 'external_';
 	/** Tables to create in the external DB */
@@ -258,17 +256,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				'disallow' => []
 			]
 		],
-		17 => [
-			'af_pattern' => 'timestamp = "' . self::MAGIC_TIMESTAMP . '" | 3 = 2 | 1 = 4 | 5 = 7 | 6 = 3',
-			'af_comments' => 'This will normally consume 5 conditions, unless the timestamp is set to' .
-				'the magic value of self::MAGIC_TIMESTAMP.',
-			'af_public_comments' => 'Test with variable conditions',
-			'actions' => [
-				'tag' => [
-					'testTagProfiling'
-				]
-			]
-		],
 		18 => [
 			'af_pattern' => '1 == 1',
 			'af_public_comments' => 'Global filter',
@@ -376,8 +363,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @inheritDoc
 	 */
 	protected function tearDown() : void {
-		// Paranoia: ensure no fake timestamp leftover
-		MWTimestamp::setFakeTime( false );
 		$this->clearUploads();
 		parent::tearDown();
 	}
@@ -1029,38 +1014,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$appliedTags,
 			"The action wasn't tagged with 'abusefilter-condition-limit' upon hitting the limit"
 		);
-	}
-
-	/**
-	 * Check that hitting the time limit is logged
-	 *
-	 * @param int[] $createIds IDs of the filters to create
-	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @covers AbuseFilterRunner::checkFilter
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::recordSlowFilter
-	 * @dataProvider provideFiltersNoConsequences
-	 */
-	public function testTimeLimit( $createIds, $actionParams ) {
-		$loggerMock = new TestLogger();
-		$loggerMock->setCollect( true );
-		$this->setLogger( 'AbuseFilter', $loggerMock );
-		$this->setMwGlobals( [ 'wgAbuseFilterSlowFilterRuntimeLimit' => -1 ] );
-
-		$this->createFilters( $createIds );
-		// We don't care about consequences here
-		$this->doAction( $actionParams );
-
-		// Ensure slow filters are logged
-		$loggerBuffer = $loggerMock->getBuffer();
-		$found = false;
-		foreach ( $loggerBuffer as $entry ) {
-			$check = preg_match( '/Edit filter [^ ]+ on [^ ]+ is taking longer than expected/', $entry[1] );
-			if ( $check ) {
-				$found = true;
-				break;
-			}
-		}
-		$this->assertTrue( $found, 'The time limit hit was not logged.' );
 	}
 
 	/**
@@ -1776,203 +1729,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$finalSets[] = array_merge( [ 'hit' ], $set );
 		}
 		return $finalSets;
-	}
-
-	/**
-	 * Test filter profiling, both for total and per-filter stats. NOTE: This test performs several
-	 * actions for every test set, and is thus HEAVY.
-	 *
-	 * @param int[] $createIds IDs of the filters to create
-	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @param array $expectedGlobal Expected global stats
-	 * @param array $expectedPerFilter Expected stats for every created filter
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::filterProfileKey
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::filterProfileGroupKey
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::getFilterProfile
-	 * @covers AbuseFilterRunner::checkAllFilters
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterProfiler::recordStats
-	 * @dataProvider provideProfilingFilters
-	 */
-	public function testProfiling( $createIds, $actionParams, $expectedGlobal, $expectedPerFilter ) {
-		$this->setMwGlobals( [
-			'wgAbuseFilterConditionLimit' => $actionParams[ 'condsLimit' ]
-		] );
-		$this->createFilters( $createIds );
-		for ( $i = 1; $i <= $actionParams['repeatAction'] - 1; $i++ ) {
-			// First make some other actions to increase stats
-			// @ToDo This doesn't works well with account creations
-			$this->doAction( $actionParams );
-			$actionParams['target'] .= $i;
-		}
-		// This is the magic value used by filter 16 to change the amount of used condition
-		MWTimestamp::setFakeTime( self::MAGIC_TIMESTAMP );
-		// We don't care about consequences here
-		$this->doAction( $actionParams );
-		MWTimestamp::setFakeTime( false );
-
-		$profiler = AbuseFilterServices::getFilterProfiler();
-		// Global stats shown on the top of Special:AbuseFilter
-		$globalStats = $profiler->getGroupProfile( 'default' );
-		$actualGlobalStats = [
-			'totalMatches' => $globalStats['matches'],
-			'totalActions' => $globalStats['total'],
-			'totalOverflows' => $globalStats['overflow']
-		];
-		$this->assertSame(
-			$expectedGlobal,
-			$actualGlobalStats,
-			'Global profiling stats are not computed correctly.'
-		);
-
-		// Per-filter stats shown on the top of Special:AbuseFilter/xxx
-		foreach ( $createIds as $id ) {
-			list( $totalActions, $matches, , $conds ) = $profiler->getFilterProfile( $id );
-			$actualStats = [
-				'matches' => $matches,
-				'actions' => $totalActions,
-				'averageConditions' => $conds
-			];
-			$this->assertSame(
-				$expectedPerFilter[ $id ],
-				$actualStats,
-				"Profiling stats are not computed correctly for filter $id."
-			);
-		}
-	}
-
-	/**
-	 * Data provider for testProfiling. We only want filters which let the edit pass, since
-	 * we'll perform multiple edits. How this test works: we repeat the action X times. For 1 to
-	 * X - 1, it would take 1 + 1 + 5 + 1 conditions, but it will overflow without checking filter
-	 * 19 (since the conds limit is 7). Then we perform the last execution using a trick that will
-	 * make filter 17 only consume 1 condition.
-	 *
-	 * @todo All these values should be more customizable, or just hardcoded in the test method.
-	 *
-	 * @return array
-	 */
-	public function provideProfilingFilters() {
-		return [
-			'Basic test for statistics recording on edit.' => [
-				[ 4, 5, 17, 19 ],
-				[
-					'action' => 'edit',
-					'target' => 'Some page',
-					'oldText' => 'Some old text',
-					'newText' => 'Some new text',
-					'summary' => 'Some summary',
-					'condsLimit' => 7,
-					'repeatAction' => 3
-				],
-				[
-					'totalMatches' => 3,
-					'totalActions' => 3,
-					'totalOverflows' => 2
-				],
-				[
-					4 => [
-						'matches' => 0,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-					5 => [
-						'matches' => 3,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-					17 => [
-						'matches' => 1,
-						'actions' => 3,
-						'averageConditions' => 3.7
-					],
-					19 => [
-						'matches' => 1,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-				]
-			],
-			'Test for statistics recording on a successfully stashed edit.' => [
-				[ 4, 5, 17, 19 ],
-				[
-					'action' => 'stashedit',
-					'target' => 'Some page',
-					'oldText' => 'Some old text',
-					'newText' => 'Some new text',
-					'summary' => 'Some summary',
-					'stashType' => 'hit',
-					'condsLimit' => 7,
-					'repeatAction' => 3
-				],
-				[
-					'totalMatches' => 3,
-					'totalActions' => 3,
-					'totalOverflows' => 2
-				],
-				[
-					4 => [
-						'matches' => 0,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-					5 => [
-						'matches' => 3,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-					17 => [
-						'matches' => 1,
-						'actions' => 3,
-						'averageConditions' => 3.7
-					],
-					19 => [
-						'matches' => 1,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-				]
-			],
-			'Test for statistics recording on an unsuccessfully stashed edit.' => [
-				[ 4, 5, 17, 19 ],
-				[
-					'action' => 'stashedit',
-					'target' => 'Some page',
-					'oldText' => 'Some old text',
-					'newText' => 'Some new text',
-					'summary' => 'Some summary',
-					'stashType' => 'miss',
-					'condsLimit' => 7,
-					'repeatAction' => 3
-				],
-				[
-					'totalMatches' => 3,
-					'totalActions' => 3,
-					'totalOverflows' => 2
-				],
-				[
-					4 => [
-						'matches' => 0,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-					5 => [
-						'matches' => 3,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-					17 => [
-						'matches' => 1,
-						'actions' => 3,
-						'averageConditions' => 3.7
-					],
-					19 => [
-						'matches' => 1,
-						'actions' => 3,
-						'averageConditions' => 1.0
-					],
-				]
-			]
-		];
 	}
 
 	/**
