@@ -294,9 +294,15 @@ class AbuseFilterHooks {
 
 		if ( ( $wgAbuseFilterActions['blockautopromote'] ?? false ) && $promote ) {
 			$cache = ObjectCache::getInstance( 'hash' );
-			$key = AbuseFilter::autoPromoteBlockKey( $cache, $user );
+			// Proxy the blockautopromote data to a faster backend, using an appropriate key
+			$quickCacheKey = $cache->makeKey(
+				'abusefilter',
+				'blockautopromote',
+				'quick',
+				$user->getId()
+			);
 			$blocked = (bool)$cache->getWithSetCallback(
-				$key,
+				$quickCacheKey,
 				$cache::TTL_PROC_LONG,
 				function () use ( $user ) {
 					return AbuseFilter::getAutoPromoteBlockStatus( $user );
