@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	/**
 	 * @see ApiBase::execute()
@@ -24,7 +26,8 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 		}
 
 		$msg = $this->msg( 'abusefilter-tools-restoreautopromote' )->inContentLanguage()->text();
-		$res = AbuseFilter::unblockAutopromote( $target, $this->getUser(), $msg );
+		$blockAutopromoteStore = AbuseFilterServices::getBlockAutopromoteStore();
+		$res = $blockAutopromoteStore->unblockAutopromote( $target, $this->getUser(), $msg );
 
 		if ( $res === false ) {
 			$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $target->getName() ], 'notsuspended' );

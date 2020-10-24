@@ -312,7 +312,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'abusefilter-revert-reason', $this->filter, $this->mReason
 				)->inContentLanguage()->text();
 
-				return AbuseFilter::unblockAutopromote( $target, $this->getUser(), $msg );
+				return AbuseFilterServices::getBlockAutopromoteStore()
+					->unblockAutopromote( $target, $this->getUser(), $msg );
 			case 'degroup':
 				// Pull the user's groups from the vars.
 				$oldGroups = $result['vars']->getVar( 'user_groups' )->toNative();

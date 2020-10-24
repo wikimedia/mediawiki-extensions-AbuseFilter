@@ -2,6 +2,7 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
+use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -44,6 +45,12 @@ return [
 				ChangeTagsManager::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			)
+		);
+	},
+	BlockAutopromoteStore::SERVICE_NAME => function ( MediaWikiServices $services ): BlockAutopromoteStore {
+		return new BlockAutopromoteStore(
+			ObjectCache::getInstance( 'db-replicated' ),
+			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
 ];
