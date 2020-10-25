@@ -169,6 +169,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\ChangeTagger": "includes/ChangeTagger.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ChangeTagsManager": "includes/ChangeTagsManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\BlockAutopromoteStore": "includes/BlockAutopromoteStore.php",
+		"MediaWiki\\Extension\\AbuseFilter\\FilterUser": "includes/FilterUser.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",

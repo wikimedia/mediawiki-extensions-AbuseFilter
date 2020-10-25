@@ -48,4 +48,11 @@ class AbuseFilterServices {
 	public static function getBlockAutopromoteStore() : BlockAutopromoteStore {
 		return MediaWikiServices::getInstance()->getService( BlockAutopromoteStore::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterUser
+	 */
+	public static function getFilterUser() : FilterUser {
+		return MediaWikiServices::getInstance()->getService( FilterUser::SERVICE_NAME );
+	}
 }

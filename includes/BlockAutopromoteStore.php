@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilter;
 use BagOStuff;
 use ManualLogEntry;
 use MediaWiki\User\UserIdentity;
@@ -26,13 +25,18 @@ class BlockAutopromoteStore {
 	 */
 	private $logger;
 
+	/** @var FilterUser */
+	private $filterUser;
+
 	/**
 	 * @param BagOStuff $store
 	 * @param LoggerInterface $logger
+	 * @param FilterUser $filterUser
 	 */
-	public function __construct( BagOStuff $store, LoggerInterface $logger ) {
+	public function __construct( BagOStuff $store, LoggerInterface $logger, FilterUser $filterUser ) {
 		$this->store = $store;
 		$this->logger = $logger;
+		$this->filterUser = $filterUser;
 	}
 
 	/**
@@ -71,8 +75,7 @@ class BlockAutopromoteStore {
 		}
 
 		$logEntry = new ManualLogEntry( 'rights', 'blockautopromote' );
-		$performer = AbuseFilter::getFilterUser();
-		$logEntry->setPerformer( $performer );
+		$logEntry->setPerformer( $this->filterUser->getUser() );
 		$logEntry->setTarget( new TitleValue( NS_USER, $target->getName() ) );
 
 		$logEntry->setParameters( [

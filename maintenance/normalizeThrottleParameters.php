@@ -18,6 +18,9 @@
  *
  * @ingroup Maintenance
  */
+
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
@@ -144,7 +147,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 * @return int Amount of normalized rows
 	 */
 	protected function normalizeParameters() {
-		$user = AbuseFilter::getFilterUser();
+		$user = AbuseFilterServices::getFilterUser()->getUser();
 		$dryRun = $this->hasOption( 'dry-run' );
 
 		// IDs of filters with invalid rate (count or period)
