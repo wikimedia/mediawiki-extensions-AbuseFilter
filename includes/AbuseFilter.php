@@ -869,7 +869,7 @@ class AbuseFilter {
 				( isset( $actions['warn'] ) && $actions['warn'][0] !== 'abusefilter-warning' ) ||
 				( isset( $actions['disallow'] ) && $actions['disallow'][0] !== 'abusefilter-disallowed' )
 		) ) {
-			$validationStatus->fatal( 'abusefilter-edit-notallowed-global-custom-msg' );
+			$validationStatus->error( 'abusefilter-edit-notallowed-global-custom-msg' );
 			return $validationStatus;
 		}
 
@@ -1121,16 +1121,9 @@ class AbuseFilter {
 		}
 
 		// Process flags
-		$af_row->af_deleted = 0;
-		$af_row->af_hidden = 0;
-		$af_row->af_enabled = 0;
-
-		if ( $row->afh_flags !== '' ) {
-			$flags = explode( ',', $row->afh_flags );
-			foreach ( $flags as $flag ) {
-				$col_name = "af_$flag";
-				$af_row->$col_name = 1;
-			}
+		$flags = $row->afh_flags ? explode( ',', $row->afh_flags ) : [];
+		foreach ( [ 'enabled', 'hidden', 'deleted', 'global' ] as $flag ) {
+			$af_row->{"af_$flag"} = (int)in_array( $flag, $flags, true );
 		}
 
 		// Process actions

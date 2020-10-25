@@ -451,7 +451,8 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 						'af_id' => 1,
 						'af_group' => 'default',
 						'af_hidden' => 1,
-						'af_enabled' => 1
+						'af_enabled' => 1,
+						'af_global' => 0
 					],
 					[
 						'degroup' => [],
@@ -492,7 +493,8 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 						'af_id' => 5,
 						'af_group' => 'flow',
 						'af_hidden' => 0,
-						'af_enabled' => 0
+						'af_enabled' => 0,
+						'af_global' => 0
 					],
 					[
 						'warn' => [
@@ -511,7 +513,7 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 					'afh_timestamp' => '20160511185604',
 					'afh_pattern' => 'added_lines irlike "lol" & summary == "ggwp"',
 					'afh_comments' => 'Show vandals no mercy, for you shall receive none.',
-					'afh_flags' => 'enabled,hidden',
+					'afh_flags' => 'enabled,hidden,global',
 					'afh_public_comments' => 'Whatever',
 					'afh_actions' => serialize( [
 						'warn' => [
@@ -541,7 +543,8 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 						'af_id' => 7,
 						'af_group' => 'default',
 						'af_hidden' => 1,
-						'af_enabled' => 1
+						'af_enabled' => 1,
+						'af_global' => 1
 					],
 					[
 						'warn' => [
@@ -594,7 +597,8 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 						'af_id' => 131,
 						'af_group' => 'default',
 						'af_hidden' => 1,
-						'af_enabled' => 0
+						'af_enabled' => 0,
+						'af_global' => 0
 					],
 					[
 						'throttle' => [
