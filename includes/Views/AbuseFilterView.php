@@ -105,7 +105,7 @@ abstract class AbuseFilterView extends ContextSource {
 			$rulesContainer .= Xml::element( 'div', $attribs, $rules );
 
 			// Add Ace configuration variable
-			$editorConfig = AbuseFilter::getAceConfig( $isUserAllowed );
+			$editorConfig = $this->getAceConfig( $isUserAllowed );
 			$this->getOutput()->addJsConfigVars( 'aceConfig', $editorConfig );
 		}
 
@@ -323,5 +323,39 @@ abstract class AbuseFilterView extends ContextSource {
 			$this->getTitle( "history/$id/diff/prev/cur" ),
 			$text
 		);
+	}
+
+	/**
+	 * Extract values for syntax highlight
+	 *
+	 * @param bool $canEdit
+	 * @return array
+	 */
+	private function getAceConfig( bool $canEdit ): array {
+		$keywordsManager = AbuseFilterServices::getKeywordsManager();
+		$values = $keywordsManager->getBuilderValues();
+		$deprecatedVars = $keywordsManager->getDeprecatedVariables();
+
+		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
+		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::FUNCTIONS ) );
+		// AbuseFilterTokenizer::KEYWORDS also includes constants (true, false and null),
+		// but Ace redefines these constants afterwards so this will not be an issue
+		$builderKeywords = implode( '|', AbuseFilterTokenizer::KEYWORDS );
+		// Extract operators from tokenizer like we do in AbuseFilterParserTest
+		$operators = implode( '|', array_map( function ( $op ) {
+			return preg_quote( $op, '/' );
+		}, AbuseFilterTokenizer::OPERATORS ) );
+		$deprecatedVariables = implode( '|', array_keys( $deprecatedVars ) );
+		$disabledVariables = implode( '|', array_keys( $keywordsManager->getDisabledVariables() ) );
+
+		return [
+			'variables' => $builderVariables,
+			'functions' => $builderFunctions,
+			'keywords' => $builderKeywords,
+			'operators' => $operators,
+			'deprecated' => $deprecatedVariables,
+			'disabled' => $disabledVariables,
+			'aceReadOnly' => !$canEdit
+		];
 	}
 }
