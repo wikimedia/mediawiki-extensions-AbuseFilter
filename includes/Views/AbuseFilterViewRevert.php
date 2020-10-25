@@ -323,14 +323,16 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$user = User::newFromId( $result['userid'] );
 				$currentGroups = $userGroupsManager->getUserGroups( $user );
 
-				$done = false;
+				$addedGroups = [];
 				foreach ( $removedGroups as $group ) {
 					// TODO An addUserToGroups method with bulk updates would be nice
-					$done = $userGroupsManager->addUserToGroup( $user, $group ) || $done;
+					if ( $userGroupsManager->addUserToGroup( $user, $group ) ) {
+						$addedGroups[] = $group;
+					}
 				}
 
 				// Don't log if no groups were added.
-				if ( !$done ) {
+				if ( !$addedGroups ) {
 					return false;
 				}
 
@@ -347,7 +349,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				);
 				$logEntry->setParameters( [
 					'4::oldgroups' => $currentGroups,
-					'5::newgroups' => $userGroupsManager->getUserGroups( $user )
+					'5::newgroups' => array_merge( $currentGroups, $addedGroups )
 				] );
 				$logEntry->publish( $logEntry->insert() );
 
