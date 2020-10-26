@@ -6,6 +6,7 @@
 			"Chiara.Graziani1991",
 			"Daimona Eaytoy",
 			"F. Cosoleto",
+			"Gianfranco",
 			"Ricordisamoa",
 			"Wim b"
 		]
@@ -50,6 +51,7 @@
 	"apihelp-query+abuselog-param-user": "Mostra solo le voci relative a un utente o IP indicato.",
 	"apihelp-query+abuselog-param-title": "Mostra solo le voci relative a una pagina indicata.",
 	"apihelp-query+abuselog-param-filter": "Mostra solo le voci relative ai filtri con gli ID indicati. Separare con barre verticali, utilizzando il prefisso \"$1\" per i filtri globali.",
+	"apihelp-query+abuselog-param-filter-central": "Mostra solo le modifiche che sono state individuate dai filtri ID indicati. Separa con pipe (|).",
 	"apihelp-query+abuselog-param-limit": "Il numero massimo di voci da elencare.",
 	"apihelp-query+abuselog-param-prop": "Quali proprietà ottenere.",
 	"apihelp-query+abuselog-param-wiki": "Wiki da cui mostrare le corrispondenze.",

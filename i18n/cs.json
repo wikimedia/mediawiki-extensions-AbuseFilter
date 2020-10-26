@@ -92,6 +92,7 @@
 	"abusefilter-log-detailslink": "podrobnosti",
 	"abusefilter-log-diff": "rozdíl",
 	"abusefilter-log-hidelink": "upravit viditelnost",
+	"abusefilter-log-description-not-available": "není dostupný",
 	"abusefilter-log-details-legend": "Podrobnosti záznamu $1",
 	"abusefilter-log-details-var": "Proměnná",
 	"abusefilter-log-details-val": "Hodnota",
