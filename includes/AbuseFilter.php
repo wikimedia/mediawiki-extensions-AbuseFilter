@@ -15,11 +15,6 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class AbuseFilter {
 	/**
-	 * @var int How long to keep profiling data in cache (in seconds)
-	 */
-	public static $statsStoragePeriod = 86400;
-
-	/**
 	 * @var array [filter ID => stdClass|null] as retrieved from self::getFilter. ID could be either
 	 *   an integer or "<GLOBAL_FILTER_PREFIX><integer>"
 	 */
@@ -599,40 +594,6 @@ class AbuseFilter {
 		}
 
 		return $user;
-	}
-
-	/**
-	 * Extract values for syntax highlight
-	 *
-	 * @param bool $canEdit
-	 * @return array
-	 */
-	public static function getAceConfig( bool $canEdit ): array {
-		$keywordsManager = AbuseFilterServices::getKeywordsManager();
-		$values = $keywordsManager->getBuilderValues();
-		$deprecatedVars = $keywordsManager->getDeprecatedVariables();
-
-		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
-		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::FUNCTIONS ) );
-		// AbuseFilterTokenizer::KEYWORDS also includes constants (true, false and null),
-		// but Ace redefines these constants afterwards so this will not be an issue
-		$builderKeywords = implode( '|', AbuseFilterTokenizer::KEYWORDS );
-		// Extract operators from tokenizer like we do in AbuseFilterParserTest
-		$operators = implode( '|', array_map( function ( $op ) {
-			return preg_quote( $op, '/' );
-		}, AbuseFilterTokenizer::OPERATORS ) );
-		$deprecatedVariables = implode( '|', array_keys( $deprecatedVars ) );
-		$disabledVariables = implode( '|', array_keys( $keywordsManager->getDisabledVariables() ) );
-
-		return [
-			'variables' => $builderVariables,
-			'functions' => $builderFunctions,
-			'keywords' => $builderKeywords,
-			'operators' => $operators,
-			'deprecated' => $deprecatedVariables,
-			'disabled' => $disabledVariables,
-			'aceReadOnly' => !$canEdit
-		];
 	}
 
 	/**
