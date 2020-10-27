@@ -24,6 +24,30 @@ class FilterProfiler {
 		'AbuseFilterSlowFilterRuntimeLimit',
 	];
 
+	private const NULL_FILTER_PROFILE = [
+		// Number of observed executions of this filter
+		'count' => 0,
+		// Number of observed matches of this filter
+		'matches' => 0,
+		// Total time spent on this filter from all observed executions (in milliseconds)
+		'total-time' => 0.0,
+		// Total number of conditions for this filter from all executions
+		'total-cond' => 0,
+	];
+
+	private const NULL_GROUP_PROFILE = [
+		// Total number of actions observed
+		'total' => 0,
+		// Number of actions ending by exceeding condition limit
+		'overflow' => 0,
+		// Total time of execution of all observed actions (in milliseconds)
+		'total-time' => 0.0,
+		// Total number of conditions from all observed actions
+		'total-cond' => 0,
+		// Total number of filters matched
+		'matches' => 0,
+	];
+
 	/**
 	 * @var int How long to keep profiling data in cache (in seconds)
 	 */
@@ -78,35 +102,24 @@ class FilterProfiler {
 	 * Retrieve per-filter statistics.
 	 *
 	 * @param string|int $filter
-	 * @return array
-	 * @phan-return array{0:int,1:int,2:float,3:float}
+	 * @return array See self::NULL_FILTER_PROFILE for the returned array structure
+	 * @phan-return array{count:int,matches:int,total-time:float,total-cond:int}
 	 */
 	public function getFilterProfile( $filter ) : array {
-		$profile = $this->objectStash->get( $this->filterProfileKey( $filter ) );
-
-		if ( $profile === false ) {
-			return [ 0, 0, 0.0, 0.0 ];
-		}
-
-		$curCount = $profile['count'];
-		$curTotalTime = $profile['total-time'];
-		$curTotalConds = $profile['total-cond'];
-
-		// Return in milliseconds, rounded to 2dp
-		$avgTime = round( $curTotalTime / $curCount, 2 );
-		$avgCond = round( $curTotalConds / $curCount, 1 );
-
-		return [ $curCount, $profile['matches'], $avgTime, $avgCond ];
+		return $this->objectStash->get( $this->filterProfileKey( $filter ) )
+			?: self::NULL_FILTER_PROFILE;
 	}
 
 	/**
-	 * Retrieve per-group statistics
+	 * Retrieve per-group statistics.
+	 *
 	 * @param string $group
-	 * @return array|false
-	 * @phan-return array{total:int,overflow:int,matches:int,total-time:float,total-cond:int}|false
+	 * @return array See self::NULL_GROUP_PROFILE for the returned array structure
+	 * @phan-return array{total:int,overflow:int,total-time:float,total-cond:int,matches:int}
 	 */
-	public function getGroupProfile( string $group ) {
-		return $this->objectStash->get( $this->filterProfileGroupKey( $group ) );
+	public function getGroupProfile( string $group ) : array {
+		return $this->objectStash->get( $this->filterProfileGroupKey( $group ) )
+			?: self::NULL_GROUP_PROFILE;
 	}
 
 	/**
@@ -128,16 +141,7 @@ class FilterProfiler {
 				$profileKey,
 				function ( $cache, $key, $profile ) use ( $time, $conds, $matched ) {
 					if ( $profile === false ) {
-						$profile = [
-							// Number of observed executions of this filter
-							'count' => 0,
-							// Number of observed matches of this filter
-							'matches' => 0,
-							// Total time spent on this filter from all observed executions
-							'total-time' => 0,
-							// Total number of conditions for this filter from all executions
-							'total-cond' => 0
-						];
+						$profile = self::NULL_FILTER_PROFILE;
 					}
 
 					$profile['count']++;
@@ -163,12 +167,11 @@ class FilterProfiler {
 	 * @param array $allFilters
 	 */
 	public function checkResetProfiling( string $group, array $allFilters ) : void {
-		$profileKey = $this->filterProfileGroupKey( $group );
-
-		$profile = $this->objectStash->get( $profileKey );
-		$total = $profile['total'] ?? 0;
+		$profile = $this->getGroupProfile( $group );
+		$total = $profile['total'];
 
 		if ( $total > $this->options->get( 'AbuseFilterProfileActionsCap' ) ) {
+			$profileKey = $this->filterProfileGroupKey( $group );
 			$this->objectStash->delete( $profileKey );
 			foreach ( $allFilters as $filter ) {
 				$this->resetFilterProfile( $filter );
@@ -193,18 +196,7 @@ class FilterProfiler {
 			$profileKey,
 			function ( $cache, $key, $profile ) use ( $condsUsed, $totalTime, $anyMatch ) {
 				if ( $profile === false ) {
-					$profile = [
-						// Total number of actions observed
-						'total' => 0,
-						// Number of actions ending by exceeding condition limit
-						'overflow' => 0,
-						// Total time of execution of all observed actions
-						'total-time' => 0,
-						// Total number of conditions from all observed actions
-						'total-cond' => 0,
-						// Total number of filters matched
-						'matches' => 0
-					];
+					$profile = self::NULL_GROUP_PROFILE;
 				}
 
 				$profile['total']++;

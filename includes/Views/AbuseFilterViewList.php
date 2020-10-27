@@ -275,11 +275,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$overflowCount = 0;
 		foreach ( $this->getConfig()->get( 'AbuseFilterValidGroups' ) as $group ) {
 			$profile = $filterProfiler->getGroupProfile( $group );
-			if ( $profile !== false ) {
-				$totalCount += $profile[ 'total' ];
-				$overflowCount += $profile[ 'overflow' ];
-				$matchCount += $profile[ 'matches' ];
-			}
+			$totalCount += $profile[ 'total' ];
+			$overflowCount += $profile[ 'overflow' ];
+			$matchCount += $profile[ 'matches' ];
 		}
 
 		if ( $totalCount > 0 ) {

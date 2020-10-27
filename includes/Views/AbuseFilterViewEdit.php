@@ -305,11 +305,18 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== null && $row->af_enabled ) {
 			// Statistics
-			list( $totalCount, $matchesCount, $avgTime, $avgCond ) =
-				AbuseFilterServices::getFilterProfiler()->getFilterProfile( $filter );
+			[
+				'count' => $totalCount,
+				'matches' => $matchesCount,
+				'total-time' => $curTotalTime,
+				'total-cond' => $curTotalConds,
+			] = AbuseFilterServices::getFilterProfiler()->getFilterProfile( $filter );
 
 			if ( $totalCount > 0 ) {
 				$matchesPercent = round( 100 * $matchesCount / $totalCount, 2 );
+				$avgTime = round( $curTotalTime / $totalCount, 2 );
+				$avgCond = round( $curTotalConds / $totalCount, 1 );
+
 				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
 					->numParams( $totalCount, $matchesCount, $matchesPercent, $avgTime, $avgCond )
 					->parse();

@@ -12,6 +12,21 @@ use Psr\Log\NullLogger;
  */
 class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 
+	private const NULL_FILTER_PROFILE = [
+		'count' => 0,
+		'matches' => 0,
+		'total-time' => 0.0,
+		'total-cond' => 0,
+	];
+
+	private const NULL_GROUP_PROFILE = [
+		'total' => 0,
+		'overflow' => 0,
+		'total-time' => 0.0,
+		'total-cond' => 0,
+		'matches' => 0,
+	];
+
 	private function getFilterProfiler( array $options = null, LoggerInterface $logger = null ) : FilterProfiler {
 		if ( $options === null ) {
 			$options = [
@@ -34,7 +49,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetFilterProfile_noData() {
 		$profiler = $this->getFilterProfiler();
-		$this->assertSame( [ 0, 0, 0.0, 0.0 ], $profiler->getFilterProfile( 1 ) );
+		$this->assertSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 1 ) );
 	}
 
 	/**
@@ -55,7 +70,15 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 			]
 		);
 		DeferredUpdates::doUpdates();
-		$this->assertSame( [ 1, 0, 12.3, 5.0 ], $profiler->getFilterProfile( 1 ) );
+		$this->assertSame(
+			[
+				'count' => 1,
+				'matches' => 0,
+				'total-time' => 12.3,
+				'total-cond' => 5
+			],
+			$profiler->getFilterProfile( 1 )
+		);
 	}
 
 	/**
@@ -85,7 +108,15 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 			]
 		);
 		DeferredUpdates::doUpdates();
-		$this->assertSame( [ 2, 1, 23.50, 4.0 ], $profiler->getFilterProfile( 1 ) );
+		$this->assertSame(
+			[
+				'count' => 2,
+				'matches' => 1,
+				'total-time' => 47.0,
+				'total-cond' => 8
+			],
+			$profiler->getFilterProfile( 1 )
+		);
 	}
 
 	/**
@@ -149,8 +180,8 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 		);
 		DeferredUpdates::doUpdates();
 		$profiler->resetFilterProfile( 1 );
-		$this->assertSame( [ 0, 0, 0.0, 0.0 ], $profiler->getFilterProfile( 1 ) );
-		$this->assertNotSame( [ 0, 0, 0.0, 0.0 ], $profiler->getFilterProfile( 2 ) );
+		$this->assertSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 1 ) );
+		$this->assertNotSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 2 ) );
 	}
 
 	/**
@@ -160,7 +191,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetGroupProfile_noData() {
 		$profiler = $this->getFilterProfiler();
-		$this->assertFalse( $profiler->getGroupProfile( 'default' ) );
+		$this->assertSame( self::NULL_GROUP_PROFILE, $profiler->getGroupProfile( 'default' ) );
 	}
 
 	/**
@@ -267,10 +298,10 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 
 		$profiler->checkResetProfiling( 'default', [ '1', '2' ] );
 
-		$this->assertFalse( $profiler->getGroupProfile( 'default' ) );
-		$this->assertSame( [ 0, 0, 0.0, 0.0 ], $profiler->getFilterProfile( 1 ) );
-		$this->assertSame( [ 0, 0, 0.0, 0.0 ], $profiler->getFilterProfile( 2 ) );
-		$this->assertNotFalse( $profiler->getFilterProfile( 3 ) );
+		$this->assertSame( self::NULL_GROUP_PROFILE, $profiler->getGroupProfile( 'default' ) );
+		$this->assertSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 1 ) );
+		$this->assertSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 2 ) );
+		$this->assertNotSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 3 ) );
 	}
 
 }
