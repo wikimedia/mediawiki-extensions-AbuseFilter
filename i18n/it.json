@@ -198,7 +198,7 @@
 	"abusefilter-tools-reautoconfirm-user": "Utente:",
 	"abusefilter-tools-reautoconfirm-submit": "Ripristina autoconfirm",
 	"abusefilter-tools-restoreautopromote": "Autopromozione ripristinata dagli strumenti del filtro anti abusi.",
-	"abusefilter-reautoconfirm-none": "{{GENDER:$1|All'utente|All'utente|Agli utenti}} non è stato sospeso lo status di autoconvalidato.",
+	"abusefilter-reautoconfirm-none": "{{GENDER:$1|All'utente|All'utente|All'utente}} non è stato sospeso lo status di autoconvalidato.",
 	"abusefilter-reautoconfirm-notallowed": "Non è consentito ripristinare lo stato di autoconvalidato.",
 	"abusefilter-reautoconfirm-done": "Lo stato di autoconvalidato dell'utenza è stato ripristinato",
 	"abusefilter-status": "Fra le ultime $1 {{PLURAL:$1|azione|azioni}}, $2 ($3 %) {{PLURAL:$2|ha|hanno}} raggiunto il limite di $4 condizioni e $5 ($6 %) {{PLURAL:$5|ha|hanno}} attivato almeno uno dei filtri attualmente attivi.",
