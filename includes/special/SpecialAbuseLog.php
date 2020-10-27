@@ -665,14 +665,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		if ( !$row ) {
 			$error = 'abusefilter-log-nonexistent';
 		} else {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			list( , $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 			if ( $global ) {
-				$filter_hidden = null;
+				$filter_hidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
 			} else {
 				$filter_hidden = $row->af_hidden;
 			}
 
-			if ( !$this->afPermissionManager->canSeeLogDetails( $user, $filterID, $global, $filter_hidden ) ) {
+			if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $user, $filter_hidden ) ) {
 				$error = 'abusefilter-log-cannot-see-details';
 			} elseif (
 				self::isHidden( $row ) === true &&
@@ -827,14 +827,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return $status;
 		}
 
-		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		list( , $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 		if ( $global ) {
-			$filterHidden = null;
+			$filterHidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
 		} else {
 			$filterHidden = $row->af_hidden;
 		}
 
-		if ( !$afPermManager->canSeeLogDetails( $user, $filterID, $global, $filterHidden ) ) {
+		if ( !$afPermManager->canSeeLogDetailsForFilter( $user, $filterHidden ) ) {
 			$status->fatal( 'abusefilter-log-cannot-see-details' );
 			return $status;
 		}
@@ -1170,14 +1170,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			} else {
 				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
 			}
-			$filter_hidden = null;
+			$filter_hidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
 				$row->af_public_comments );
 			$filter_hidden = $row->af_hidden;
 		}
 
-		if ( $this->afPermissionManager->canSeeLogDetails( $user, $filterID, $global, $filter_hidden ) ) {
+		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $user, $filter_hidden ) ) {
 			$actionLinks = [];
 
 			if ( $isListItem ) {

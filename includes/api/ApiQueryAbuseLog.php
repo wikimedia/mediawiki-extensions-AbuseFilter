@@ -179,7 +179,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 				}
 			}
 			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-			$canSeeDetails = $afPermManager->canSeeLogDetails( $user, $filterID, $global );
+			$isHidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
+			$canSeeDetails = $afPermManager->canSeeLogDetailsForFilter( $user, $isHidden );
 
 			$entry = [];
 			if ( $fld_ids ) {
