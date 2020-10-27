@@ -1197,7 +1197,7 @@ class AbuseFilterRunner {
 			$maxAge = AbuseFilter::getEmergencyValue( 'age', $this->group );
 
 			$filterProfile = $this->filterProfiler->getFilterProfile( $filter );
-			$matchCount = ( $filterProfile['matches'] ?? 0 ) + 1;
+			$matchCount = ( $filterProfile[1] ?? 0 ) + 1;
 
 			// Figure out if the filter is subject to being throttled.
 			$filterAge = (int)wfTimestamp( TS_UNIX, AbuseFilter::getFilter( $filter )->af_timestamp );
