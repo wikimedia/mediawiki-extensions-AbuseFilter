@@ -47,7 +47,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		return __CLASS__;
 	}
 
-	/** @var \Wikimedia\Rdbms\Database $dbw The master database */
+	/** @var \Wikimedia\Rdbms\Database The master database */
 	private $dbw;
 
 	/**
