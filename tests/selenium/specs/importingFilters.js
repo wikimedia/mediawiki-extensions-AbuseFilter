@@ -8,25 +8,41 @@ const assert = require( 'assert' ),
 
 describe( 'When importing a filter', function () {
 	const filterSpecs = {
-			name: 'My filter name',
-			comments: 'Notes go here.',
-			rules: 'true === false',
-			enabled: 1,
-			hidden: 1,
-			deleted: 0
-		},
-		warnMessage = 'abusefilter-warning-foobar';
-
-	function getImportData() {
-		return `{"row":{"af_id":"242","af_pattern":"${filterSpecs.rules}","af_user":"1","af_user_text":\
-"Daimona Eaytoy","af_timestamp":"20200924132008","af_enabled":"${filterSpecs.enabled}","af_comments":"\
-${filterSpecs.comments}","af_public_comments":"${filterSpecs.name}","af_hidden":"${filterSpecs.hidden}",\
-"af_hit_count":"0","af_throttled":"0","af_deleted":"${filterSpecs.deleted}","af_actions":"warn","af_global":\
-"0","af_group":"default"},"actions":{"warn":["${warnMessage}"]}}`;
-	}
+		name: 'My filter name',
+		comments: 'Notes go here.',
+		rules: 'true === false',
+		enabled: true,
+		hidden: true,
+		deleted: false,
+		warnMessage: 'abusefilter-warning-foobar'
+	};
+	let importData;
 
 	before( function () {
 		LoginPage.loginAdmin();
+
+		ViewEditPage.open( 'new' );
+		ViewEditPage.switchEditor();
+		ViewEditPage.name.setValue( filterSpecs.name );
+		ViewEditPage.rules.setValue( filterSpecs.rules );
+		ViewEditPage.comments.setValue( filterSpecs.comments );
+		if ( !filterSpecs.enabled ) {
+			ViewEditPage.enabled.click();
+		}
+		if ( filterSpecs.hidden ) {
+			ViewEditPage.hidden.click();
+		}
+		if ( filterSpecs.deleted ) {
+			ViewEditPage.deleted.click();
+		}
+		ViewEditPage.warnCheckbox.click();
+		ViewEditPage.setWarningMessage( filterSpecs.warnMessage );
+		ViewEditPage.submit();
+
+		assert( ViewListPage.filterSavedNotice.isDisplayed() );
+		const filterID = ViewListPage.savedFilterID;
+		ViewEditPage.open( filterID );
+		importData = ViewEditPage.exportData;
 	} );
 
 	it( 'the interface should be visible', function () {
@@ -45,7 +61,7 @@ ${filterSpecs.comments}","af_public_comments":"${filterSpecs.name}","af_hidden":
 
 	it( 'valid data shows the editing interface', function () {
 		ViewImportPage.open();
-		ViewImportPage.importText( getImportData() );
+		ViewImportPage.importText( importData );
 		assert( ViewEditPage.name.isDisplayed() );
 	} );
 
@@ -62,7 +78,7 @@ ${filterSpecs.comments}","af_public_comments":"${filterSpecs.name}","af_hidden":
 		} );
 		it( 'filter actions are copied', function () {
 			assert.strictEqual( ViewEditPage.warnCheckbox.isSelected(), true );
-			assert.strictEqual( ViewEditPage.warnOtherMessage.getValue(), warnMessage );
+			assert.strictEqual( ViewEditPage.warnOtherMessage.getValue(), filterSpecs.warnMessage );
 		} );
 
 		it( 'the imported data can be saved', function () {

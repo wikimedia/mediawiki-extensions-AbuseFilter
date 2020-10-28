@@ -898,8 +898,11 @@ class AbuseFilter {
 		$is_new = $filter === null;
 		$new_id = $filter;
 
-		// Reset throttled marker, if we're re-enabling it.
-		$newRow['af_throttled'] = $newRow['af_throttled'] && !$newRow['af_enabled'];
+		// Preserve the old throttled status (if any) only if disabling the filter.
+		// TODO: It might make more sense to check what was actually changed
+		$newRow['af_throttled'] = ( $newRow['af_throttled'] ?? false ) && !$newRow['af_enabled'];
+		// This is null when creating a new filter, but the DB field is NOT NULL
+		$newRow['af_hit_count'] = $newRow['af_hit_count'] ?? 0;
 		$newRow['af_id'] = $new_id;
 
 		// T67807: integer 1's & 0's might be better understood than booleans
