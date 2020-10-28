@@ -32,7 +32,7 @@ class ToolLinksHandler implements
 	 * @param array &$tools
 	 * @param SpecialPage $sp for context
 	 */
-	public function onContributionsToolLinks( $id, $nt, &$tools, $sp ) {
+	public function onContributionsToolLinks( $id, Title $nt, array &$tools, SpecialPage $sp ) {
 		$username = $nt->getText();
 		if ( $this->afPermManager->canViewAbuseLog( $sp->getUser() )
 			&& !IPUtils::isValidRange( $username )
@@ -53,7 +53,7 @@ class ToolLinksHandler implements
 	 * @param LinkRenderer $linkRenderer
 	 * @param string[] &$links
 	 */
-	public function onHistoryPageToolLinks( $context, $linkRenderer, &$links ) {
+	public function onHistoryPageToolLinks( IContextSource $context, LinkRenderer $linkRenderer, array &$links ) {
 		if ( $this->afPermManager->canViewAbuseLog( $context->getUser() ) ) {
 			$links[] = $linkRenderer->makeLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
@@ -69,7 +69,7 @@ class ToolLinksHandler implements
 	 * @param LinkRenderer $linkRenderer
 	 * @param string[] &$links
 	 */
-	public function onUndeletePageToolLinks( $context, $linkRenderer, &$links ) {
+	public function onUndeletePageToolLinks( IContextSource $context, LinkRenderer $linkRenderer, array &$links ) {
 		$show = $this->afPermManager->canViewAbuseLog( $context->getUser() );
 		$action = $context->getRequest()->getVal( 'action', 'view' );
 
