@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
+use MediaWiki\User\UserIdentity;
 use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -74,6 +75,9 @@ class AbuseFilterRunner {
 	/** @var ChangeTagger */
 	private $changeTagger;
 
+	/** @var UserIdentity */
+	private $filterUser;
+
 	/**
 	 * @param User $user The user who performed the action being filtered
 	 * @param Title $title The title where the action being filtered was performed
@@ -99,6 +103,7 @@ class AbuseFilterRunner {
 		$this->hookRunner = AbuseFilterHookRunner::getRunner();
 		$this->filterProfiler = AbuseFilterServices::getFilterProfiler();
 		$this->changeTagger = AbuseFilterServices::getChangeTagger();
+		$this->filterUser = AbuseFilterServices::getFilterUser()->getUser();
 	}
 
 	/**
@@ -811,7 +816,7 @@ class AbuseFilterRunner {
 
 					// TODO Core should provide a logging method
 					$logEntry = new ManualLogEntry( 'rights', 'rights' );
-					$logEntry->setPerformer( AbuseFilter::getFilterUser() );
+					$logEntry->setPerformer( $this->filterUser );
 					$logEntry->setTarget( $this->user->getUserPage() );
 					$logEntry->setComment(
 						wfMessage(
@@ -935,7 +940,6 @@ class AbuseFilterRunner {
 		$preventEditOwnUserTalk
 	) {
 		$blockUserFactory = MediaWikiServices::getInstance()->getBlockUserFactory();
-		$filterUser = AbuseFilter::getFilterUser();
 		$reason = wfMessage(
 			'abusefilter-blockreason',
 			$ruleDesc, $ruleNumber
@@ -943,7 +947,7 @@ class AbuseFilterRunner {
 
 		$blockUserFactory->newBlockUser(
 			$target,
-			$filterUser,
+			User::newFromIdentity( $this->filterUser ),
 			$expiry,
 			$reason,
 			[

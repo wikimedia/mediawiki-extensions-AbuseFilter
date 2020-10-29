@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Logger\LoggerFactory;
@@ -50,6 +51,15 @@ return [
 	BlockAutopromoteStore::SERVICE_NAME => function ( MediaWikiServices $services ): BlockAutopromoteStore {
 		return new BlockAutopromoteStore(
 			ObjectCache::getInstance( 'db-replicated' ),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->get( FilterUser::SERVICE_NAME )
+		);
+	},
+	FilterUser::SERVICE_NAME => function ( MediaWikiServices $services ): FilterUser {
+		return new FilterUser(
+			// TODO We need a proper MessageLocalizer, see T247127
+			RequestContext::getMain(),
+			$services->getUserGroupManager(),
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
