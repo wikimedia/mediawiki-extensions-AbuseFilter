@@ -7,6 +7,7 @@
 			"Ivi104",
 			"MaGa",
 			"Matma Rex",
+			"Neptune, the Mystic",
 			"Roberta F.",
 			"SpeedyGonsales",
 			"Vlad5250"
@@ -75,6 +76,7 @@
 	"abusefilter-log-detailslink": "detalji",
 	"abusefilter-log-diff": "razl",
 	"abusefilter-log-hidelink": "prilagodi vidljivost",
+	"abusefilter-log-description-not-available": "nije dostupno",
 	"abusefilter-log-details-legend": "Detalji zapisa $1",
 	"abusefilter-log-details-var": "Varijabla",
 	"abusefilter-log-details-val": "Vrijednost",
