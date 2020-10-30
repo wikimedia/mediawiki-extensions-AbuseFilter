@@ -716,7 +716,7 @@ class AbuseFilterRunner {
 
 		$identifier = sha1( implode( ':', $identifiers ) );
 
-		$cache = MediaWikiServices::getInstance()->getMainWANObjectCache();
+		$cache = MediaWikiServices::getInstance()->getMainObjectStash();
 		if ( $global && !$wgAbuseFilterIsCentral ) {
 			return $cache->makeGlobalKey(
 				'abusefilter', 'throttle', $wgAbuseFilterCentralDB, $throttleId, $type, $identifier
