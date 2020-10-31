@@ -7,10 +7,6 @@ use MediaWiki\Revision\RevisionRecord;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	/**
-	 * @var int Line number of the row, see RecentChange::$counter
-	 */
-	public $mCounter;
-	/**
 	 * @var string The user whose entries we're examinating
 	 */
 	public $mSearchUser;
@@ -98,16 +94,13 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function showResults() {
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mTestFilter );
-		$output = $changesList->beginRecentChangesList();
-		$this->mCounter = 1;
-
 		$pager = new AbuseFilterExaminePager( $this, $changesList );
 
-		$output .= $pager->getNavigationBar() .
-					$pager->getBody() .
-					$pager->getNavigationBar();
-
-		$output .= $changesList->endRecentChangesList();
+		$output = $changesList->beginRecentChangesList()
+			. $pager->getNavigationBar()
+			. $pager->getBody()
+			. $pager->getNavigationBar()
+			. $changesList->endRecentChangesList();
 
 		$this->getOutput()->addHTML( $output );
 	}

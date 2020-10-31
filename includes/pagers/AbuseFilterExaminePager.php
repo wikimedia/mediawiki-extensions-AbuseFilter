@@ -9,6 +9,10 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 * @var AbuseFilterViewExamine The associated view
 	 */
 	public $mPage;
+	/**
+	 * @var int Line number of the row, see RecentChange::$counter
+	 */
+	public $rcCounter;
 
 	/**
 	 * @param AbuseFilterViewExamine $page
@@ -18,6 +22,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		parent::__construct();
 		$this->mChangesList = $changesList;
 		$this->mPage = $page;
+		$this->rcCounter = 1;
 	}
 
 	/**
@@ -62,7 +67,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 */
 	public function formatRow( $row ) {
 		$rc = RecentChange::newFromRow( $row );
-		$rc->counter = $this->mPage->mCounter++;
+		$rc->counter = $this->rcCounter++;
 		return $this->mChangesList->recentChangesLine( $rc, false );
 	}
 
