@@ -54,7 +54,6 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 			'tables' => $rcQuery['tables'],
 			'fields' => $rcQuery['fields'],
 			'conds' => array_filter( $conds ),
-			'options' => [ 'ORDER BY' => 'rc_timestamp DESC' ],
 			'join_conds' => $rcQuery['joins'],
 		];
 
