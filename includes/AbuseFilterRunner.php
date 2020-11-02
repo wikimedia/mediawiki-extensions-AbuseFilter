@@ -1197,7 +1197,7 @@ class AbuseFilterRunner {
 	}
 
 	/**
-	 * Like LogEntry::publish, but doesn't require an ID (which we don't have) and skips the
+	 * Like ManualLogEntry::publish, but doesn't require an ID (which we don't have) and skips the
 	 * tagging part
 	 *
 	 * @param IDatabase $dbw To cancel the callback if the log insertion fails
