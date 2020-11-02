@@ -46,6 +46,7 @@
 	"apihelp-query+abuselog-param-user": "Mostrar só as entradas de um determinado utilizador ou endereço IP.",
 	"apihelp-query+abuselog-param-title": "Mostrar só as entradas de uma determinada página.",
 	"apihelp-query+abuselog-param-filter": "Mostrar só as entradas que foram detetadas pelos identificadores de filtros fornecidos. Separar com barra vertical (|), prefixar com \"$1\" para filtros globais.",
+	"apihelp-query+abuselog-param-filter-central": "Mostrar só as entradas capturadas pelos ID de filtro fornecidos. Separar com barras verticais.",
 	"apihelp-query+abuselog-param-limit": "O número máximo de entradas que serão listadas.",
 	"apihelp-query+abuselog-param-prop": "Que propriedades obter.",
 	"apihelp-query+abuselog-param-wiki": "A wiki da qual mostra as visitas.",
