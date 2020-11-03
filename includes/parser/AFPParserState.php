@@ -1,7 +1,10 @@
 <?php
 
 class AFPParserState {
-	public $pos, $token;
+	/** @var AFPToken */
+	public $token;
+	/** @var int */
+	public $pos;
 
 	/**
 	 * @param AFPToken $token

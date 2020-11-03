@@ -44,7 +44,7 @@ class AFComputedVariable {
 	 * @param WikiPage $article
 	 * @param User $user Context user
 	 *
-	 * @return object
+	 * @return stdClass
 	 */
 	public function parseNonEditWikitext( $wikitext, WikiPage $article, User $user ) {
 		static $cache = [];

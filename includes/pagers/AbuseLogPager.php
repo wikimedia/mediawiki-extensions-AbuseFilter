@@ -41,7 +41,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	}
 
 	/**
-	 * @param object $row
+	 * @param stdClass $row
 	 * @return string
 	 */
 	public function formatRow( $row ) {

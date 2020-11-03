@@ -246,7 +246,7 @@ class AbuseFilterTokenizer {
 					case $type:
 						$token .= $type;
 						break;
-					case 'n';
+					case 'n':
 						$token .= "\n";
 						break;
 					case 'r':

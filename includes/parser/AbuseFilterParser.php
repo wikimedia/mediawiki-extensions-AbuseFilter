@@ -1068,6 +1068,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 					// Handled at the entry level
 					return;
 				}
+				// Intentional fall-through
 			case AFPToken::TSQUAREBRACKET:
 				if ( $this->mCur->value === '[' ) {
 					$array = [];
@@ -1093,6 +1094,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 					$result = new AFPData( AFPData::DARRAY, $array );
 					break;
 				}
+				// Intentional fall-through
 			default:
 				throw new AFPUserVisibleException(
 					'unexpectedtoken',

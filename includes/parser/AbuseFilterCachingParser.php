@@ -147,6 +147,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 						throw new AFPException( "Unknown token provided in the ATOM node" );
 						// @codeCoverageIgnoreEnd
 				}
+				// Unreachable line
 			case AFPTreeNode::ARRAY_DEFINITION:
 				$items = [];
 				// Foreach is usually faster than array_map
@@ -238,7 +239,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 						throw new AFPException( "Unknown sum-related operator: {$op}" );
 						// @codeCoverageIgnoreEnd
 				}
-
+				// Unreachable line
 			case AFPTreeNode::COMPARE:
 				list( $op, $leftOperand, $rightOperand ) = $node->children;
 				$leftOperand = $this->evalNode( $leftOperand );
