@@ -160,8 +160,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
-		if ( !$afPermManager->canSeeLogDetails( $user, $filterID, $global ) ) {
+		$isHidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
+		if ( !$afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}

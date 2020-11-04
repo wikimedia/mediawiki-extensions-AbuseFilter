@@ -225,7 +225,7 @@ class AbuseFilterPager extends TablePager {
 				// filter, but all filters shown on Special:AbuseFilter are local.
 				$global = false;
 				$afPermManager = AbuseFilterServices::getPermissionManager();
-				if ( $afPermManager->canSeeLogDetails( $user, $row->af_id, $global, $row->af_hidden ) ) {
+				if ( $afPermManager->canSeeLogDetailsForFilter( $user, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $linkRenderer->makeKnownLink(

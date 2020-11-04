@@ -115,22 +115,23 @@ class AbuseFilterPermissionManager {
 
 	/**
 	 * @param UserIdentity $user
-	 * @param int|null $id The ID of the filter
-	 * @param bool|int $global Whether the filter is global
-	 * @param bool|int|null $filterHidden Whether the filter is hidden
+	 * @param bool|int $filterHidden Whether the filter is hidden
+	 * @todo Take a Filter parameter
 	 * @return bool
 	 */
-	public function canSeeLogDetails( UserIdentity $user, $id = null, $global = false, $filterHidden = null ) : bool {
-		if ( $id !== null ) {
-			if ( $filterHidden === null ) {
-				$filterHidden = \AbuseFilter::filterHidden( $id, $global );
-			}
-			if ( $filterHidden ) {
-				return $this->permissionManager->userHasRight( $user, 'abusefilter-log-detail' )
-					&& $this->canViewPrivateFiltersLogs( $user );
-			}
+	public function canSeeLogDetailsForFilter( UserIdentity $user, $filterHidden ) : bool {
+		if ( $filterHidden ) {
+			return $this->canSeeLogDetails( $user ) && $this->canViewPrivateFiltersLogs( $user );
 		}
 
+		return $this->canSeeLogDetails( $user );
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function canSeeLogDetails( UserIdentity $user ) : bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-log-detail' );
 	}
 
