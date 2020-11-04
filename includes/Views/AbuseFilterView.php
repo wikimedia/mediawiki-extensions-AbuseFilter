@@ -6,10 +6,6 @@ use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
 	/**
-	 * @var bool Whether the form was submitted
-	 */
-	public $mSubmit;
-	/**
 	 * @var array The parameters of the current request
 	 */
 	public $mParams;

@@ -78,21 +78,19 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		];
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm->setWrapperLegendMsg( 'abusefilter-examine-legend' )
-			->addHiddenField( 'submit', 1 )
 			->setSubmitTextMsg( 'abusefilter-examine-submit' )
-			->setMethod( 'get' )
-			->prepareForm()
-			->displayForm( false );
-
-		if ( $this->mSubmit ) {
-			$this->showResults();
-		}
+			->setFormIdentifier( 'examine-select-date' )
+			->setSubmitCallback( [ $this, 'showResults' ] )
+			->showAlways();
 	}
 
 	/**
-	 * Show search results
+	 * Show search results, called as submit callback by HTMLForm
+	 * @param array $formData
+	 * @param HTMLForm $form
+	 * @return bool
 	 */
-	public function showResults() {
+	public function showResults( array $formData, HTMLForm $form ) : bool {
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mTestFilter );
 		$pager = new AbuseFilterExaminePager( $this, $changesList );
 
@@ -102,7 +100,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			. $pager->getNavigationBar()
 			. $changesList->endRecentChangesList();
 
-		$this->getOutput()->addHTML( $output );
+		$form->addPostText( $output );
+		return true;
 	}
 
 	/**
@@ -250,7 +249,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$request = $this->getRequest();
 		$this->mSearchPeriodStart = $request->getText( 'wpSearchPeriodStart' );
 		$this->mSearchPeriodEnd = $request->getText( 'wpSearchPeriodEnd' );
-		$this->mSubmit = $request->getCheck( 'submit' );
 		$this->mTestFilter = $request->getText( 'testfilter' );
 
 		// Normalise username
