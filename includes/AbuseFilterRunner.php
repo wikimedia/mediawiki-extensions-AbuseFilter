@@ -15,10 +15,6 @@ use Wikimedia\Rdbms\IDatabase;
 /**
  * This class contains the logic for executing abuse filters and their actions. The entry points are
  * run() and runForStash(). Note that run() can only be executed once on a given instance.
- * @todo In a perfect world, every time this class gets constructed we should have a context
- *   source at hand. Unfortunately, this currently isn't true, as the hooks used for filtering
- *   don't pass a full context. If they did, this class would just extend ContextSource and use
- *   that to retrieve user, title, globals etc.
  */
 class AbuseFilterRunner {
 	/**
@@ -351,8 +347,6 @@ class AbuseFilterRunner {
 	 *
 	 * @protected Public for back compat only; this will actually be made protected in the future.
 	 *   You should either rely on $this->run() or subclass this class.
-	 * @todo This method should simply return an array with IDs of matched filters as values,
-	 *   since we always end up filtering it after calling this method.
 	 * @param bool|null &$hitCondLimit TEMPORARY
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
@@ -1054,7 +1048,6 @@ class AbuseFilterRunner {
 	 * Create and publish log entries for taken actions
 	 *
 	 * @param array[] $actionsTaken
-	 * @todo Split this method
 	 */
 	protected function addLogEntries( array $actionsTaken ) {
 		$dbw = wfGetDB( DB_MASTER );
@@ -1096,16 +1089,42 @@ class AbuseFilterRunner {
 			return;
 		}
 
-		// Only store the var dump if we're actually going to add log rows.
+		$localLogIDs = $this->insertLocalLogEntries( $logRows, $dbw );
+		if ( count( $loggedLocalFilters ) ) {
+			$this->updateHitCounts( $dbw, $loggedLocalFilters );
+		}
+
+		$globalLogIDs = [];
+		if ( count( $loggedGlobalFilters ) ) {
+			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
+			$globalLogIDs = $this->insertGlobalLogEntries( $centralLogRows, $fdb );
+			$this->updateHitCounts( $fdb, $loggedGlobalFilters );
+		}
+
+		AbuseFilter::$logIds[ $this->title->getPrefixedText() ] = [
+			'local' => $localLogIDs,
+			'global' => $globalLogIDs
+		];
+
+		$this->checkEmergencyDisable( $loggedLocalFilters );
+	}
+
+	/**
+	 * @param array[] $logRows
+	 * @param IDatabase $dbw
+	 * @return array
+	 */
+	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ) {
+		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
+
 		$varDump = AbuseFilter::storeVarDump( $this->vars );
 		$varDump = "tt:$varDump";
 
-		$localLogIDs = [];
-		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
+		$loggedIDs = [];
 		foreach ( $logRows as $data ) {
 			$data['afl_var_dump'] = $varDump;
 			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
-			$localLogIDs[] = $data['afl_id'] = $dbw->insertId();
+			$loggedIDs[] = $data['afl_id'] = $dbw->insertId();
 			// Give grep a chance to find the usages:
 			// logentry-abusefilter-hit
 			$entry = new ManualLogEntry( 'abusefilter', 'hit' );
@@ -1141,59 +1160,46 @@ class AbuseFilterRunner {
 				$this->publishEntry( $dbw, $entry, $wgAbuseFilterNotifications );
 			}
 		}
+		return $loggedIDs;
+	}
 
+	/**
+	 * @param array[] $centralLogRows
+	 * @param IDatabase $fdb
+	 * @return array
+	 */
+	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) {
+		$this->vars->computeDBVars();
+		$globalVarDump = AbuseFilter::storeVarDump( $this->vars, true );
+		$globalVarDump = "tt:$globalVarDump";
+		foreach ( $centralLogRows as $index => $data ) {
+			$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
+		}
+
+		$loggedIDs = [];
+		foreach ( $centralLogRows as $row ) {
+			$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
+			$loggedIDs[] = $fdb->insertId();
+		}
+		return $loggedIDs;
+	}
+
+	/**
+	 * @param IDatabase $dbw
+	 * @param array $loggedFilters
+	 */
+	private function updateHitCounts( IDatabase $dbw, $loggedFilters ) {
 		$method = __METHOD__;
-
-		if ( count( $loggedLocalFilters ) ) {
-			// Update hit-counter.
-			$dbw->onTransactionPreCommitOrIdle(
-				function () use ( $dbw, $loggedLocalFilters, $method ) {
-					$dbw->update( 'abuse_filter',
-						[ 'af_hit_count=af_hit_count+1' ],
-						[ 'af_id' => $loggedLocalFilters ],
-						$method
-					);
-				},
-				$method
-			);
-		}
-
-		$globalLogIDs = [];
-
-		// Global stuff
-		if ( count( $loggedGlobalFilters ) ) {
-			$this->vars->computeDBVars();
-			$globalVarDump = AbuseFilter::storeVarDump( $this->vars, true );
-			$globalVarDump = "tt:$globalVarDump";
-			foreach ( $centralLogRows as $index => $data ) {
-				$centralLogRows[$index]['afl_var_dump'] = $globalVarDump;
-			}
-
-			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
-
-			foreach ( $centralLogRows as $row ) {
-				$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
-				$globalLogIDs[] = $fdb->insertId();
-			}
-
-			$fdb->onTransactionPreCommitOrIdle(
-				function () use ( $fdb, $loggedGlobalFilters, $method ) {
-					$fdb->update( 'abuse_filter',
-						[ 'af_hit_count=af_hit_count+1' ],
-						[ 'af_id' => $loggedGlobalFilters ],
-						$method
-					);
-				},
-				$method
-			);
-		}
-
-		AbuseFilter::$logIds[ $this->title->getPrefixedText() ] = [
-			'local' => $localLogIDs,
-			'global' => $globalLogIDs
-		];
-
-		$this->checkEmergencyDisable( $loggedLocalFilters );
+		$dbw->onTransactionPreCommitOrIdle(
+			function () use ( $dbw, $loggedFilters, $method ) {
+				$dbw->update( 'abuse_filter',
+					[ 'af_hit_count=af_hit_count+1' ],
+					[ 'af_id' => $loggedFilters ],
+					$method
+				);
+			},
+			$method
+		);
 	}
 
 	/**
