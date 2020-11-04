@@ -35,7 +35,7 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 	 * @return Status
 	 */
 	private function evaluateExpression( string $expr ) : Status {
-		$parser = AbuseFilter::getDefaultParser();
+		$parser = AbuseFilterServices::getParserFactory()->newParser();
 		if ( $parser->checkSyntax( $expr ) !== true ) {
 			return Status::newFatal( 'abusefilter-tools-syntax-error' );
 		}

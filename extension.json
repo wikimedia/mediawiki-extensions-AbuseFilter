@@ -131,7 +131,8 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\AbuseFilter\\VariableGenerator\\": "includes/VariableGenerator/",
 		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/",
-		"MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\": "includes/LogFormatter/"
+		"MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\": "includes/LogFormatter/",
+		"MediaWiki\\Extension\\AbuseFilter\\Parser\\": "includes/ParserNS/"
 	},
 	"AutoloadClasses": {
 		"AbuseFilter": "includes/AbuseFilter.php",
@@ -337,7 +338,7 @@
 		},
 		"AbuseFilterParserClass": {
 			"value": "AbuseFilterParser",
-			"description": "Class of the parser to use. The only possible values are 'AbuseFilterParser' and 'AbuseFilterCachingParser' (experimental). The code should only use the wrapper AbuseFilter::getDefaultParser."
+			"description": "Class of the parser to use. The only possible values are 'AbuseFilterParser' and 'AbuseFilterCachingParser' (experimental). The code should only use the ParserFactory service."
 		},
 		"AbuseFilterEmergencyDisableThreshold": {
 			"value": {

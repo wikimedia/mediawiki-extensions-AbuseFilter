@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
@@ -65,6 +66,16 @@ return [
 			RequestContext::getMain(),
 			$services->getUserGroupManager(),
 			LoggerFactory::getInstance( 'AbuseFilter' )
+		);
+	},
+	ParserFactory::SERVICE_NAME => function ( MediaWikiServices $services ): ParserFactory {
+		return new ParserFactory(
+			$services->getContentLanguage(),
+			// We could use $services here, but we need the fallback
+			ObjectCache::getLocalServerInstance( 'hash' ),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->getService( KeywordsManager::SERVICE_NAME ),
+			$services->getMainConfig()->get( 'AbuseFilterParserClass' )
 		);
 	},
 ];

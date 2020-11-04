@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterServices {
@@ -61,5 +62,12 @@ class AbuseFilterServices {
 	 */
 	public static function getCentralDBManager() : CentralDBManager {
 		return MediaWikiServices::getInstance()->getService( CentralDBManager::SERVICE_NAME );
+	}
+
+	/**
+	 * @return ParserFactory
+	 */
+	public static function getParserFactory() : ParserFactory {
+		return MediaWikiServices::getInstance()->getService( ParserFactory::SERVICE_NAME );
 	}
 }

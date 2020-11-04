@@ -160,7 +160,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
-		$parser = AbuseFilter::getDefaultParser();
+		$parser = AbuseFilterServices::getParserFactory()->newParser();
 
 		$validSyntax = $parser->checkSyntax( $this->testPattern );
 		if ( $validSyntax !== true ) {
