@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use ChangeTags;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\User\UserIdentity;
@@ -16,8 +15,8 @@ use User;
 class FilterValidator {
 	public const SERVICE_NAME = 'AbuseFilterFilterValidator';
 
-	/** @var ChangeTagsManager */
-	private $changeTagsManager;
+	/** @var ChangeTagValidator */
+	private $changeTagValidator;
 
 	/** @var ParserFactory */
 	private $parserFactory;
@@ -29,18 +28,18 @@ class FilterValidator {
 	private $restrictedActions;
 
 	/**
-	 * @param ChangeTagsManager $changeTagsManager
+	 * @param ChangeTagValidator $changeTagValidator
 	 * @param ParserFactory $parserFactory
 	 * @param AbuseFilterPermissionManager $permManager
 	 * @param string[] $restrictedActions
 	 */
 	public function __construct(
-		ChangeTagsManager $changeTagsManager,
+		ChangeTagValidator $changeTagValidator,
 		ParserFactory $parserFactory,
 		AbuseFilterPermissionManager $permManager,
 		array $restrictedActions
 	) {
-		$this->changeTagsManager = $changeTagsManager;
+		$this->changeTagValidator = $changeTagValidator;
 		$this->parserFactory = $parserFactory;
 		$this->permManager = $permManager;
 		$this->restrictedActions = $restrictedActions;
@@ -168,7 +167,7 @@ class FilterValidator {
 			return $ret;
 		}
 		foreach ( $tags as $tag ) {
-			$curStatus = $this->isAllowedTag( $tag );
+			$curStatus = $this->changeTagValidator->validateTag( $tag );
 
 			if ( !$curStatus->isGood() ) {
 				// TODO Consider merging
@@ -176,41 +175,6 @@ class FilterValidator {
 			}
 		}
 		return $ret;
-	}
-
-	/**
-	 * Check whether a filter is allowed to use a tag
-	 *
-	 * @param string $tag Tag name
-	 * @return Status
-	 */
-	public function isAllowedTag( string $tag ) : Status {
-		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
-		if ( !$tagNameStatus->isGood() ) {
-			return $tagNameStatus;
-		}
-
-		$canAddStatus = ChangeTags::canAddTagsAccompanyingChange( [ $tag ] );
-		if ( $canAddStatus->isGood() ) {
-			return Status::newGood();
-		}
-
-		if ( $tag === 'abusefilter-condition-limit' ) {
-			return Status::newFatal( 'abusefilter-tag-reserved' );
-		}
-
-		// note: these are both local and global
-		$alreadyDefinedTags = $this->changeTagsManager->getTagsDefinedByFilters();
-		if ( in_array( $tag, $alreadyDefinedTags, true ) ) {
-			return Status::newGood();
-		}
-
-		$canCreateTagStatus = ChangeTags::canCreateTag( $tag );
-		if ( $canCreateTagStatus->isGood() ) {
-			return Status::newGood();
-		}
-
-		return Status::newFatal( 'abusefilter-edit-bad-tags' );
 	}
 
 	/**

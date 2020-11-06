@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
@@ -57,6 +58,11 @@ return [
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
+		);
+	},
+	ChangeTagValidator::SERVICE_NAME => function ( MediaWikiServices $services ): ChangeTagValidator {
+		return new ChangeTagValidator(
+			$services->getService( ChangeTagsManager::SERVICE_NAME )
 		);
 	},
 	CentralDBManager::SERVICE_NAME => function ( MediaWikiServices $services ): CentralDBManager {
@@ -111,7 +117,7 @@ return [
 	},
 	FilterValidator::SERVICE_NAME => function ( MediaWikiServices $services ): FilterValidator {
 		return new FilterValidator(
-			$services->get( ChangeTagsManager::SERVICE_NAME ),
+			$services->get( ChangeTagValidator::SERVICE_NAME ),
 			$services->get( ParserFactory::SERVICE_NAME ),
 			$services->get( PermManager::SERVICE_NAME ),
 			// Pass the cleaned list of enabled restrictions

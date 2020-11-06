@@ -1,7 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
@@ -37,7 +37,7 @@ class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
 			$permissionManager->method( 'canEditFilter' )->willReturn( true );
 		}
 		return new FilterValidator(
-			$this->createMock( ChangeTagsManager::class ),
+			$this->createMock( ChangeTagValidator::class ),
 			$parserFactory,
 			$permissionManager,
 			$restrictions

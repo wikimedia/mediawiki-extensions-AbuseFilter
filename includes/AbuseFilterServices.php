@@ -44,6 +44,13 @@ class AbuseFilterServices {
 	}
 
 	/**
+	 * @return ChangeTagValidator
+	 */
+	public static function getChangeTagValidator() : ChangeTagValidator {
+		return MediaWikiServices::getInstance()->getService( ChangeTagValidator::SERVICE_NAME );
+	}
+
+	/**
 	 * @return BlockAutopromoteStore
 	 */
 	public static function getBlockAutopromoteStore() : BlockAutopromoteStore {
