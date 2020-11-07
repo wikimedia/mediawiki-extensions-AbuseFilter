@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
@@ -95,6 +96,11 @@ return [
 			$services->get( PermManager::SERVICE_NAME ),
 			// Pass the cleaned list of enabled restrictions
 			array_keys( array_filter( $services->getMainConfig()->get( 'AbuseFilterActionRestrictions' ) ) )
+		);
+	},
+	FilterCompare::SERVICE_NAME => function ( MediaWikiServices $services ): FilterCompare {
+		return new FilterCompare(
+			array_keys( array_filter( $services->getMainConfig()->get( 'AbuseFilterActions' ) ) )
 		);
 	},
 ];

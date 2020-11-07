@@ -176,6 +176,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\CentralDBManager": "includes/CentralDBManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\CentralDBNotAvailableException": "includes/CentralDBNotAvailableException.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterValidator": "includes/FilterValidator.php",
+		"MediaWiki\\Extension\\AbuseFilter\\FilterCompare": "includes/FilterCompare.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",

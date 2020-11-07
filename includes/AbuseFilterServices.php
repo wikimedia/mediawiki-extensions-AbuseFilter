@@ -84,4 +84,11 @@ class AbuseFilterServices {
 	public static function getFilterValidator() : FilterValidator {
 		return MediaWikiServices::getInstance()->getService( FilterValidator::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterCompare
+	 */
+	public static function getFilterCompare() : FilterCompare {
+		return MediaWikiServices::getInstance()->getService( FilterCompare::SERVICE_NAME );
+	}
 }

@@ -505,18 +505,14 @@ class AbuseFilter {
 		$wasGlobal = $originalFilter->isGlobal();
 
 		// Check for non-changes
-		$availableActions = array_keys(
-			array_filter( $config->get( 'AbuseFilterActions' ) )
-		);
-		$actions = $newFilter->getActions();
-		$differences = self::compareVersions( $newFilter, $originalFilter, $availableActions );
+		$differences = AbuseFilterServices::getFilterCompare()->compareVersions( $newFilter, $originalFilter );
 		if ( !count( $differences ) ) {
 			return Status::newGood( false );
 		}
 
 		// Everything went fine, so let's save the filter
 		list( $new_id, $history_id ) =
-			self::doSaveFilter( $user, $newFilter, $differences, $filter, $actions, $wasGlobal, $dbw, $config );
+			self::doSaveFilter( $user, $newFilter, $differences, $filter, $wasGlobal, $dbw, $config );
 		return Status::newGood( [ $new_id, $history_id ] );
 	}
 
@@ -527,7 +523,6 @@ class AbuseFilter {
 	 * @param Filter $newFilter
 	 * @param array $differences
 	 * @param int|null $filter
-	 * @param array $actions
 	 * @param bool $wasGlobal
 	 * @param IDatabase $dbw DB_MASTER where the filter will be saved
 	 * @param Config $config
@@ -538,7 +533,6 @@ class AbuseFilter {
 		Filter $newFilter,
 		$differences,
 		?int $filter,
-		$actions,
 		$wasGlobal,
 		IDatabase $dbw,
 		Config $config
@@ -572,6 +566,7 @@ class AbuseFilter {
 		'@phan-var int $new_id';
 
 		$availableActions = $config->get( 'AbuseFilterActions' );
+		$actions = $newFilter->getActions();
 		$actionsRows = [];
 		foreach ( array_filter( $availableActions ) as $action => $_ ) {
 			// Check if it's set
@@ -666,58 +661,6 @@ class AbuseFilter {
 
 		AbuseFilterServices::getFilterProfiler()->resetFilterProfile( $new_id );
 		return [ $new_id, $history_id ];
-	}
-
-	/**
-	 * @param Filter $firstFilter
-	 * @param Filter $secondFilter
-	 * @param string[] $availableActions All actions enabled in the AF config
-	 * @return array Fields that are different
-	 */
-	public static function compareVersions(
-		Filter $firstFilter,
-		Filter $secondFilter,
-		array $availableActions
-	) : array {
-		// TODO: Avoid DB references here
-		$methods = [
-			'af_public_comments' => 'getName',
-			'af_pattern' => 'getRules',
-			'af_comments' => 'getComments',
-			'af_deleted' => 'isDeleted',
-			'af_enabled' => 'isEnabled',
-			'af_hidden' => 'isHidden',
-			'af_global' => 'isGlobal',
-			'af_group' => 'getGroup',
-		];
-
-		$differences = [];
-
-		foreach ( $methods as $field => $method ) {
-			if ( $firstFilter->$method() !== $secondFilter->$method() ) {
-				$differences[] = $field;
-			}
-		}
-
-		$firstActions = $firstFilter->getActions();
-		$secondActions = $secondFilter->getActions();
-		foreach ( $availableActions as $action ) {
-			if ( !isset( $firstActions[$action] ) && !isset( $secondActions[$action] ) ) {
-				// They're both unset
-			} elseif ( isset( $firstActions[$action] ) && isset( $secondActions[$action] ) ) {
-				// They're both set. Double check needed, e.g. per T180194
-				if ( array_diff( $firstActions[$action], $secondActions[$action] ) ||
-					array_diff( $secondActions[$action], $firstActions[$action] ) ) {
-					// Different parameters
-					$differences[] = 'actions';
-				}
-			} else {
-				// One's unset, one's set.
-				$differences[] = 'actions';
-			}
-		}
-
-		return array_unique( $differences );
 	}
 
 	/**
