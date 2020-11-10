@@ -474,6 +474,7 @@
 	"abusefilter-revert-periodend": "Period end:",
 	"abusefilter-revert-search": "Select actions",
 	"abusefilter-revert-filter": "Filter ID:",
+	"abusefilter-revert-preview-no-results": "The query did not find any actions that could be reverted.",
 	"abusefilter-revert-preview-intro": "Below are the actions taken by the abuse filter that will be reverted by this action.\nPlease check them carefully, and click \"{{int:abusefilter-revert-confirm}}\" to confirm your selection.",
 	"abusefilter-revert-confirm-legend": "Confirm the revert",
 	"abusefilter-revert-confirm": "Confirm",

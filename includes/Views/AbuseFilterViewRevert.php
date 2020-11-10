@@ -112,11 +112,15 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$user = $this->getUser();
 		$filter = $this->filter;
 
-		// Add a summary of everything that will be reversed.
-		$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-intro' )->parseAsBlock() );
-
 		// Look up all of them.
 		$results = $this->doLookup();
+		if ( $results === [] ) {
+			$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-no-results' )->escaped() );
+			return true;
+		}
+
+		// Add a summary of everything that will be reversed.
+		$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-intro' )->parseAsBlock() );
 		$list = [];
 
 		$context = $this->getContext();
