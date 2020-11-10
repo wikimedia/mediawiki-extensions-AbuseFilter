@@ -604,5 +604,8 @@
 	"abusefilter-log-ip-not-available": "Text shown when IP address is not available.\n{{Identical|Not available}}",
 	"abusefilter-tag-reserved": "Error message displayed on [[Special:Tags]] when a user attempts to manually create a change tag reserved by AbuseFilter.",
 	"tag-abusefilter-condition-limit": "Change tag for edits that reached the condition limit",
-	"tag-abusefilter-condition-limit-description": "Description for \"condition limit reached\" change tag"
+	"tag-abusefilter-condition-limit-description": "Description for \"condition limit reached\" change tag",
+	"notification-header-throttle-filter": "Header text for a notification when an abuse filter was throttled after the user edited it. Parameters:\n* $1 - the username of the viewing user, for use in GENDER\n* $2 - filter ID",
+	"notification-subject-throttle-filter": "Email subject line for email notice when an abuse filter was throttled after the user edited it. Parameters:\n* $1 - the username of the receiving user, for use in GENDER",
+	"notification-link-text-show-filter": "Label for button that links to the filter that was throttled."
 }

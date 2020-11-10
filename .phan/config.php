@@ -6,6 +6,7 @@ $cfg['directory_list'] = array_merge(
 	$cfg['directory_list'],
 	[
 		'../../extensions/CheckUser',
+		'../../extensions/Echo',
 		'../../extensions/Renameuser',
 	]
 );
@@ -14,6 +15,7 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 	$cfg['exclude_analysis_directory_list'],
 	[
 		'../../extensions/CheckUser',
+		'../../extensions/Echo',
 		'../../extensions/Renameuser',
 	]
 );

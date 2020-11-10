@@ -101,6 +101,13 @@ class AbuseFilterServices {
 	}
 
 	/**
+	 * @return EchoNotifier
+	 */
+	public static function getEchoNotifier() : EchoNotifier {
+		return MediaWikiServices::getInstance()->getService( EchoNotifier::SERVICE_NAME );
+	}
+
+	/**
 	 * @return FilterValidator
 	 */
 	public static function getFilterValidator() : FilterValidator {

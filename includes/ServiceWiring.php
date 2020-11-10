@@ -15,6 +15,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory as 
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
@@ -120,10 +121,17 @@ return [
 			$services->getService( FilterProfiler::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
 			$services->getService( FilterLookup::SERVICE_NAME ),
+			$services->getService( EchoNotifier::SERVICE_NAME ),
 			new ServiceOptions(
 				EmergencyWatcher::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			)
+		);
+	},
+	EchoNotifier::SERVICE_NAME => function ( MediaWikiServices $services ): EchoNotifier {
+		return new EchoNotifier(
+			$services->getService( FilterLookup::SERVICE_NAME ),
+			ExtensionRegistry::getInstance()->isLoaded( 'Echo' )
 		);
 	},
 	FilterValidator::SERVICE_NAME => function ( MediaWikiServices $services ): FilterValidator {

@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\EchoNotifier;
+use MediaWiki\Extension\AbuseFilter\ThrottleFilterPresentationModel;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -519,4 +521,29 @@ class AbuseFilterHooks {
 			DeferredUpdates::PRESEND
 		);
 	}
+
+	/**
+	 * @param array &$notifications
+	 * @param array &$notificationCategories
+	 * @param array &$icons
+	 */
+	public static function onBeforeCreateEchoEvent(
+		array &$notifications,
+		array &$notificationCategories,
+		array &$icons
+	) {
+		$notifications[ EchoNotifier::EVENT_TYPE ] = [
+			'category' => 'system',
+			'section' => 'alert',
+			'group' => 'negative',
+			'presentation-model' => ThrottleFilterPresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				[
+					[ EchoUserLocator::class, 'locateFromEventExtra' ],
+					[ 'user' ]
+				]
+			],
+		];
+	}
+
 }

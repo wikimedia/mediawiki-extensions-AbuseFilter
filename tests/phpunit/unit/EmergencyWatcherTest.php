@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -170,6 +171,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 			$this->getFilterProfiler( $profilerData ),
 			$this->createMock( ILoadBalancer::class ),
 			$this->getFilterLookup( $filterData ),
+			$this->createMock( EchoNotifier::class ),
 			$this->getOptions()
 		);
 		$toThrottle = $watcher->getFiltersToThrottle(
@@ -190,6 +192,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 			$this->createMock( FilterProfiler::class ),
 			$this->createMock( ILoadBalancer::class ),
 			$this->createMock( FilterLookup::class ),
+			$this->createMock( EchoNotifier::class ),
 			$this->getOptions()
 		);
 		$this->assertInstanceOf( EmergencyWatcher::class, $watcher );

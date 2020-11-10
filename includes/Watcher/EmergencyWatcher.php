@@ -6,6 +6,7 @@ use AutoCommitUpdate;
 use DeferredUpdates;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use Wikimedia\Rdbms\IDatabase;
@@ -35,6 +36,9 @@ class EmergencyWatcher implements Watcher {
 	/** @var FilterLookup */
 	private $filterLookup;
 
+	/** @var EchoNotifier */
+	private $notifier;
+
 	/** @var ServiceOptions */
 	private $options;
 
@@ -42,18 +46,21 @@ class EmergencyWatcher implements Watcher {
 	 * @param FilterProfiler $profiler
 	 * @param ILoadBalancer $loadBalancer
 	 * @param FilterLookup $filterLookup
+	 * @param EchoNotifier $notifier
 	 * @param ServiceOptions $options
 	 */
 	public function __construct(
 		FilterProfiler $profiler,
 		ILoadBalancer $loadBalancer,
 		FilterLookup $filterLookup,
+		EchoNotifier $notifier,
 		ServiceOptions $options
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->profiler = $profiler;
 		$this->loadBalancer = $loadBalancer;
 		$this->filterLookup = $filterLookup;
+		$this->notifier = $notifier;
 		$this->options = $options;
 	}
 
@@ -136,6 +143,11 @@ class EmergencyWatcher implements Watcher {
 				}
 			)
 		);
+		DeferredUpdates::addCallableUpdate( function () use ( $throttleFilters ) {
+			foreach ( $throttleFilters as $filter ) {
+				$this->notifier->notifyForFilter( $filter );
+			}
+		} );
 	}
 
 	/**
