@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ArenaL5",
 			"Banjo",
 			"Breogan2008",
 			"Elisardojm",
@@ -26,7 +27,7 @@
 	"abusefilter-degroupreason": "Os dereitos foron retirados automaticamente polo filtro de abusos. Descrición da regra: $1",
 	"abusefilter-blockautopromotereason": "Autopromoción atrasada automaticamente polo filtro de abusos. Descrición da regra: $1",
 	"abusefilter-accountreserved": "Este nome de conta está reservado para ser usado polo filtro de abusos.",
-	"right-abusefilter-modify": "Modificar os filtros de abusos",
+	"right-abusefilter-modify": "Crear ou modificar os filtros de abusos",
 	"right-abusefilter-view": "Ver os filtros de abusos",
 	"right-abusefilter-log": "Ver o rexistro de abusos",
 	"right-abusefilter-log-detail": "Ver os detalles das entradas do rexistro de abusos",
@@ -457,7 +458,7 @@
 	"abusefilter-exception-unclosedcomment": "Comentario por pechar, no carácter $1.",
 	"abusefilter-exception-invalidiprange": "Foi fornecida unha gama IP inválida \"$2\" no carácter $1.",
 	"abusefilter-exception-disabledvar": "A variable $2 na posición $1 deixou de ser usada.",
-	"abusefilter-exception-variablevariable": "Non son permitidas variables variantes; foron encontradas no carácter $1.",
+	"abusefilter-exception-variablevariable": "set e set_var esperan que o primer argumento sexa unha cadea de texto literal; atopado no carácter $1.",
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitar",
 	"abusefilter-action-warn": "Avisar",
