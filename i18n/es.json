@@ -132,6 +132,7 @@
 	"abusefilter-log-detailslink": "detalles",
 	"abusefilter-log-diff": "difs.",
 	"abusefilter-log-hidelink": "ajustar visibilidad",
+	"abusefilter-log-description-not-available": "no disponible",
 	"abusefilter-log-details-legend": "Detalles de la entrada del registro $1",
 	"abusefilter-log-details-var": "Variable",
 	"abusefilter-log-details-val": "Valor",

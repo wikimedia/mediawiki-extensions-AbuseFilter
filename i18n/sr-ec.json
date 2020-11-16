@@ -141,7 +141,7 @@
 	"abusefilter-throttled": "успорено",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|погодак|поготка|погодака}}",
 	"abusefilter-new": "Направи нови филтер",
-	"abusefilter-import-button": "увези филтер",
+	"abusefilter-import-button": "Увези филтер",
 	"abusefilter-return": "Назад на управљање филтерима",
 	"abusefilter-status-global": "Глобално",
 	"abusefilter-list-options": "Опције",
