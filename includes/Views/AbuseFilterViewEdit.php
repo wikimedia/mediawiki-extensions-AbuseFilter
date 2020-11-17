@@ -117,9 +117,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		[ $newRow, $actions, $origRow, $origActions ] = $this->loadRequest( $filter );
 
+		$tokenFilter = $filter === null ? 'new' : (string)$filter;
 		$editToken = $request->getVal( 'wpEditToken' );
 		$tokenMatches = $user->matchEditToken(
-			$editToken, [ 'abusefilter', $filter ], $request );
+			$editToken, [ 'abusefilter', $tokenFilter ], $request );
 
 		if ( !$tokenMatches ) {
 			// Token invalid or expired while the page was open, warn to retry
@@ -492,6 +493,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$this->buildConsequenceEditor( $row, $actions )
 		);
 
+		$urlFilter = $filter === null ? 'new' : (string)$filter;
 		if ( !$readOnly ) {
 			$form .=
 				new OOUI\ButtonInputWidget( [
@@ -503,11 +505,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				] );
 			$form .= Html::hidden(
 				'wpEditToken',
-				$user->getEditToken( [ 'abusefilter', $filter ] )
+				$user->getEditToken( [ 'abusefilter', $urlFilter ] )
 			);
 		}
 
-		$urlFilter = $filter === null ? 'new' : (string)$filter;
 		$form = Xml::tags( 'form',
 			[
 				'action' => $this->getTitle( $urlFilter )->getFullURL(),
