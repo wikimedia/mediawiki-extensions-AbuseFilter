@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
+use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
@@ -113,6 +114,14 @@ return [
 	FilterCompare::SERVICE_NAME => function ( MediaWikiServices $services ): FilterCompare {
 		return new FilterCompare(
 			array_keys( array_filter( $services->getMainConfig()->get( 'AbuseFilterActions' ) ) )
+		);
+	},
+	FilterImporter::SERVICE_NAME => function ( MediaWikiServices $services ): FilterImporter {
+		return new FilterImporter(
+			new ServiceOptions(
+				FilterImporter::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
 		);
 	},
 ];

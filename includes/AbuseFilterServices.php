@@ -97,4 +97,11 @@ class AbuseFilterServices {
 	public static function getFilterCompare() : FilterCompare {
 		return MediaWikiServices::getInstance()->getService( FilterCompare::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterImporter
+	 */
+	public static function getFilterImporter() : FilterImporter {
+		return MediaWikiServices::getInstance()->getService( FilterImporter::SERVICE_NAME );
+	}
 }

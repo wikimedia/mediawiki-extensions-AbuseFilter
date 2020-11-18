@@ -178,6 +178,8 @@
 		"MediaWiki\\Extension\\AbuseFilter\\CentralDBNotAvailableException": "includes/CentralDBNotAvailableException.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterValidator": "includes/FilterValidator.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterCompare": "includes/FilterCompare.php",
+		"MediaWiki\\Extension\\AbuseFilter\\FilterImporter": "includes/FilterImporter.php",
+		"MediaWiki\\Extension\\AbuseFilter\\InvalidImportDataException": "includes/InvalidImportDataException.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
