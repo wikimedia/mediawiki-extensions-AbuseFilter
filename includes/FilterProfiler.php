@@ -256,7 +256,14 @@ class FilterProfiler {
 			}
 
 			if ( $params['time'] > $this->options->get( 'AbuseFilterSlowFilterRuntimeLimit' ) ) {
-				$this->recordSlowFilter( $title, $filterName, $params['time'], $params['conds'], $params['result'] );
+				$this->recordSlowFilter(
+					$title,
+					$filterName,
+					$params['time'],
+					$params['conds'],
+					$params['result'],
+					$global
+				);
 			}
 		}
 	}
@@ -269,13 +276,15 @@ class FilterProfiler {
 	 * @param float $runtime
 	 * @param int $totalConditions
 	 * @param bool $matched
+	 * @param bool $global
 	 */
 	private function recordSlowFilter(
 		Title $title,
 		string $filterId,
 		float $runtime,
 		int $totalConditions,
-		bool $matched
+		bool $matched,
+		bool $global
 	) : void {
 		$this->logger->info(
 			'Edit filter {filter_id} on {wiki} is taking longer than expected',
@@ -285,7 +294,8 @@ class FilterProfiler {
 				'title' => $title->getPrefixedText(),
 				'runtime' => $runtime,
 				'matched' => $matched,
-				'total_conditions' => $totalConditions
+				'total_conditions' => $totalConditions,
+				'global' => $global
 			]
 		);
 	}
