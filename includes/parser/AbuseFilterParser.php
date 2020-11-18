@@ -486,17 +486,17 @@ class AbuseFilterParser extends AFPTransitionBase {
 					$this->move();
 					$idx = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $idx );
-					$idx = $idx->toInt();
 					if ( !( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) ) {
 						throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos,
 							[ ']', $this->mCur->type, $this->mCur->value ] );
 					}
-					if ( $array->getType() === AFPData::DARRAY ) {
-						if ( count( $array->toArray() ) <= $idx ) {
+					if ( $array->getType() === AFPData::DARRAY && $idx->getType() !== AFPData::DUNDEFINED ) {
+						$intIdx = $idx->toInt();
+						if ( count( $array->toArray() ) <= $intIdx ) {
 							throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
-								[ $idx, count( $array->getData() ) ] );
-						} elseif ( $idx < 0 ) {
-							throw new AFPUserVisibleException( 'negativeindex', $this->mCur->pos, [ $idx ] );
+								[ $intIdx, count( $array->getData() ) ] );
+						} elseif ( $intIdx < 0 ) {
+							throw new AFPUserVisibleException( 'negativeindex', $this->mCur->pos, [ $intIdx ] );
 						}
 					}
 				}
@@ -516,10 +516,14 @@ class AbuseFilterParser extends AFPTransitionBase {
 						$array = $array->toArray();
 						if ( $idx === 'new' ) {
 							$array[] = $result;
+							$array = new AFPData( AFPData::DARRAY, $array );
+						} elseif ( $idx->getType() === AFPData::DUNDEFINED ) {
+							$array = new AFPData( AFPData::DUNDEFINED );
 						} else {
-							$array[$idx] = $result;
+							$array[$idx->toInt()] = $result;
+							$array = new AFPData( AFPData::DARRAY, $array );
 						}
-						$this->setUserVariable( $varname, new AFPData( AFPData::DARRAY, $array ) );
+						$this->setUserVariable( $varname, $array );
 					}
 
 					return;
@@ -885,8 +889,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 				throw new AFPUserVisibleException( 'expectednotfound', $this->mCur->pos,
 					[ ']', $this->mCur->type, $this->mCur->value ] );
 			}
-			$idx = $idx->toInt();
-			if ( $result->getType() === AFPData::DARRAY ) {
+
+			if ( $result->getType() === AFPData::DARRAY && $idx->getType() !== AFPData::DUNDEFINED ) {
+				$idx = $idx->toInt();
 				if ( count( $result->getData() ) <= $idx ) {
 					throw new AFPUserVisibleException( 'outofbounds', $this->mCur->pos,
 						[ $idx, count( $result->getData() ) ] );
@@ -895,7 +900,10 @@ class AbuseFilterParser extends AFPTransitionBase {
 				}
 				// @phan-suppress-next-line PhanTypeArraySuspiciousNullable Guaranteed to be array
 				$result = $result->getData()[$idx];
-			} elseif ( $result->getType() === AFPData::DUNDEFINED ) {
+			} elseif (
+				$result->getType() === AFPData::DUNDEFINED ||
+				$idx->getType() === AFPData::DUNDEFINED
+			) {
 				$result = new AFPData( AFPData::DUNDEFINED );
 			} else {
 				throw new AFPUserVisibleException( 'notarray', $this->mCur->pos, [] );

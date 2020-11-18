@@ -1017,6 +1017,9 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'string(user_name) in [ "x" ]' ],
 			[ '[ [ user_name ] ] in [ [ user_name ] ]' ],
 			[ 'equals_to_any( [ user_name ], [ user_name ] )' ],
+			// DUNDEFINED offsets delete the whole array
+			[ "x := [true]; x[timestamp] := 1; x == x" ],
+			[ "x := [true]; x[timestamp * 0] !== 'foo'" ],
 		];
 	}
 

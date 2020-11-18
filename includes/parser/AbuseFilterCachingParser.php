@@ -174,7 +174,13 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				$array = $this->evalNode( $array );
 				// Note: we MUST evaluate the offset to ensure it is valid, regardless
 				// of $array!
-				$offset = $this->evalNode( $offset )->toInt();
+				$offset = $this->evalNode( $offset );
+				// @todo If $array has no elements we could already throw an outofbounds. We don't
+				// know what the index is, though.
+				if ( $offset->getType() === AFPData::DUNDEFINED ) {
+					return new AFPData( AFPData::DUNDEFINED );
+				}
+				$offset = $offset->toInt();
 
 				if ( $array->getType() === AFPData::DUNDEFINED ) {
 					return new AFPData( AFPData::DUNDEFINED );
@@ -296,21 +302,30 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
 				}
 
-				$offset = $this->evalNode( $offset )->toInt();
+				$offset = $this->evalNode( $offset );
+				// @todo If $array has no elements we could already throw an outofbounds. We don'tan
+				// know what the index is, though.
 
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
-					$array = $array->toArray();
-					if ( count( $array ) <= $offset ) {
-						throw new AFPUserVisibleException( 'outofbounds', $node->position,
-							[ $offset, count( $array ) ] );
-					} elseif ( $offset < 0 ) {
-						throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
-					}
+					if ( $offset->getType() !== AFPData::DUNDEFINED ) {
+						$offset = $offset->toInt();
+						$array = $array->toArray();
+						if ( count( $array ) <= $offset ) {
+							throw new AFPUserVisibleException( 'outofbounds', $node->position,
+								[ $offset, count( $array ) ] );
+						} elseif ( $offset < 0 ) {
+							throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
+						}
 
-					$value = $this->evalNode( $value );
-					$array[$offset] = $value;
-					$this->setUserVariable( $varName, new AFPData( AFPData::DARRAY, $array ) );
+						$value = $this->evalNode( $value );
+						$array[$offset] = $value;
+						$array = new AFPData( AFPData::DARRAY, $array );
+					} else {
+						$value = $this->evalNode( $value );
+						$array = new AFPData( AFPData::DUNDEFINED );
+					}
+					$this->setUserVariable( $varName, $array );
 				} else {
 					$value = $this->evalNode( $value );
 				}
