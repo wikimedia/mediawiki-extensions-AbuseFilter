@@ -502,6 +502,7 @@
 	"abusefilter-revert-periodend": "Ende des Zeitraums:",
 	"abusefilter-revert-search": "Aktionen auswählen:",
 	"abusefilter-revert-filter": "Filterkennung:",
+	"abusefilter-revert-preview-no-results": "Die Abfrage fand keine Aktionen, die rückgängig gemacht werden konnten.",
 	"abusefilter-revert-preview-intro": "Unten sind die Aktionen des Missbrauchsfilters angegeben, die hiermit rückgängig gemacht werden.\nBitte überprüfe sie sorgfältig und klicke dann auf „{{int:abusefilter-revert-confirm}}“, um deine Auswahl zu bestätigen.",
 	"abusefilter-revert-confirm-legend": "Die Zurücksetzung bestätigen",
 	"abusefilter-revert-confirm": "Bestätigen",

@@ -150,7 +150,7 @@
 	"abusefilter-deleted": "Esteriya",
 	"abusefilter-disabled": "Astengın",
 	"abusefilter-throttled": "veng bırna",
-	"abusefilter-hitcount": "$1 {{PLURAL:$1|tay pê |tay pê }}",
+	"abusefilter-hitcount": "$1 {{PLURAL:$1|tay pêyo |tay pêyê }}",
 	"abusefilter-new": "Yew filitreyê newî viraze",
 	"abusefilter-import-button": "Parzûni azere kerê",
 	"abusefilter-return": "Peyser şo idareyê parzûni",
