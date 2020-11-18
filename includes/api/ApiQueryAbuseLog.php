@@ -24,6 +24,7 @@
  */
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\IPUtils;
 
@@ -47,6 +48,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	 */
 	public function execute() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
+		$lookup = AbuseFilterServices::getFilterLookup();
 		// Same check as in SpecialAbuseLog
 		$this->checkUserRightsAny( 'abusefilter-log' );
 
@@ -78,7 +80,12 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			foreach ( $params['filter'] as $filter ) {
 				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
-				if ( AbuseFilter::filterHidden( $filterID, $global ) ) {
+				try {
+					$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
+				} catch ( CentralDBNotAvailableException $_ ) {
+					$isHidden = false;
+				}
+				if ( $isHidden ) {
 					$this->dieWithError(
 						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
 					);
@@ -189,7 +196,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			}
 			if ( $fld_filter ) {
 				if ( $global ) {
-					$entry['filter'] = AbuseFilter::getGlobalFilterDescription( $filterID );
+					$entry['filter'] = $lookup->getFilter( $filterID, true )->getName();
 				} else {
 					$entry['filter'] = $row->af_public_comments;
 				}

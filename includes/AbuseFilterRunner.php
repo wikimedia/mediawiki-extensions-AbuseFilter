@@ -1074,6 +1074,7 @@ class AbuseFilterRunner {
 	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ) {
 		global $wgAbuseFilterNotifications, $wgAbuseFilterNotificationsPrivate;
 
+		$lookup = AbuseFilterServices::getFilterLookup();
 		$varDump = AbuseFilter::storeVarDump( $this->vars );
 		$varDump = "tt:$varDump";
 
@@ -1111,7 +1112,7 @@ class AbuseFilterRunner {
 
 			if ( $wgAbuseFilterNotifications !== false ) {
 				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $data['afl_filter'] );
-				if ( AbuseFilter::filterHidden( $filterID, $global ) && !$wgAbuseFilterNotificationsPrivate ) {
+				if ( $lookup->getFilter( $filterID, $global )->isHidden() && !$wgAbuseFilterNotificationsPrivate ) {
 					continue;
 				}
 				$this->publishEntry( $dbw, $entry, $wgAbuseFilterNotifications );
