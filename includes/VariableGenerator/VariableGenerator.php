@@ -161,16 +161,10 @@ class VariableGenerator {
 
 	/**
 	 * @param Title $title
-	 * @param WikiPage|null $page
+	 * @param WikiPage $page
 	 * @return $this For chaining
 	 */
-	public function addEditVars( Title $title, WikiPage $page = null ) : self {
-		// NOTE: $page may end up remaining null, e.g. if $title points to a special page.
-		if ( !$page && $title->canExist() ) {
-			// TODO: The caller should do this!
-			$page = WikiPage::factory( $title );
-		}
-
+	public function addEditVars( Title $title, WikiPage $page ) : self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff-array',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff-array',
