@@ -678,9 +678,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		if ( !$row ) {
 			$error = 'abusefilter-log-nonexistent';
 		} else {
-			list( , $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 			if ( $global ) {
-				$filter_hidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
+				$filter_hidden = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global )->isHidden();
 			} else {
 				$filter_hidden = $row->af_hidden;
 			}
@@ -840,9 +840,10 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return $status;
 		}
 
-		list( , $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+		list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
 		if ( $global ) {
-			$filterHidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
+			$lookup = AbuseFilterServices::getFilterLookup();
+			$filterHidden = $lookup->getFilter( $filterID, $global )->isHidden();
 		} else {
 			$filterHidden = $row->af_hidden;
 		}
@@ -1184,7 +1185,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			} catch ( CentralDBNotAvailableException $_ ) {
 				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
 			}
-			$filter_hidden = AbuseFilter::getFilter( $row->afl_filter )->af_hidden;
+			$filter_hidden = $lookup->getFilter( $filterID, $global )->isHidden();
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
 				$row->af_public_comments );
