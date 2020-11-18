@@ -447,7 +447,7 @@ class AbuseFilterRunner {
 		global $wgAbuseFilterLocallyDisabledGlobalActions,
 			   $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 
-		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters, false );
+		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
 		$actionsTaken = array_fill_keys( $filters, [] );
 
 		$messages = [];
