@@ -4,6 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter\Filter;
 
 use RuntimeException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class FilterNotFoundException extends RuntimeException {
 	/**
 	 * @param int $filter

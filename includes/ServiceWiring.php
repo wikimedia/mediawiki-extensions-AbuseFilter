@@ -19,6 +19,10 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
+// This file is actually covered by AbuseFilterServicesTest, but it's not possible to specify a path
+// in @covers annotations (https://github.com/sebastianbergmann/phpunit/issues/3794)
+// @codeCoverageIgnoreStart
+
 return [
 	KeywordsManager::SERVICE_NAME => function ( MediaWikiServices $services ): KeywordsManager {
 		return new KeywordsManager(
@@ -125,3 +129,5 @@ return [
 		);
 	},
 ];
+
+// @codeCoverageIgnoreEnd
