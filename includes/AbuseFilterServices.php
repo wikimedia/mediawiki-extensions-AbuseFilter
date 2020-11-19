@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterServices {

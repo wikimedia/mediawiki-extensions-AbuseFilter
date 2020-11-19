@@ -2,12 +2,12 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
-use MediaWiki\Extension\AbuseFilter\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
@@ -80,8 +80,8 @@ class AbuseFilterRunner {
 	/** @var FilterLookup */
 	private $filterLookup;
 
-	/** @var EmergencyWatcher */
-	private $emergencyWatcher;
+	/** @var Watcher[] */
+	private $watchers;
 
 	/**
 	 * @param User $user The user who performed the action being filtered
@@ -110,7 +110,8 @@ class AbuseFilterRunner {
 		$this->changeTagger = AbuseFilterServices::getChangeTagger();
 		$this->filterUser = AbuseFilterServices::getFilterUser()->getUser();
 		$this->filterLookup = AbuseFilterServices::getFilterLookup();
-		$this->emergencyWatcher = AbuseFilterServices::getEmergencyWatcher();
+		// TODO Inject, add a hook for custom watchers
+		$this->watchers = [ AbuseFilterServices::getEmergencyWatcher() ];
 	}
 
 	/**
@@ -1123,7 +1124,9 @@ class AbuseFilterRunner {
 			'global' => $globalLogIDs
 		];
 
-		$this->emergencyWatcher->checkFilters( $loggedLocalFilters, $this->group );
+		foreach ( $this->watchers as $watcher ) {
+			$watcher->run( $loggedLocalFilters, $this->group );
+		}
 	}
 
 	/**

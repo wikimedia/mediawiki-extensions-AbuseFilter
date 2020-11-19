@@ -6,7 +6,6 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
-use MediaWiki\Extension\AbuseFilter\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -16,6 +15,7 @@ use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
