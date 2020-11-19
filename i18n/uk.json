@@ -122,7 +122,6 @@
 	"abusefilter-log-private-not-included": "Один або декілька ідентифікаторів фільтра, заданих вами, є приватними. Оскільки ви не можете переглядати відомості приватних фільтрів, ці фільтри не будуть використані при пошуку.",
 	"abusefilter-log-hide-legend": "Сховати запис у журналі",
 	"abusefilter-log-hide-id": "ID записи журналу:",
-	"abusefilter-log-hide-hidden": "Приховати цей запис від інших користувачів.",
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Інша/додаткова причина:",
 	"abusefilter-log-hide-forbidden": "У вас немає дозволу, щоб приховувати\nзаписи журналу зловживань.",

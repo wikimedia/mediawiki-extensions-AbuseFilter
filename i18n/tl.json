@@ -75,7 +75,6 @@
 	"abusefilter-log-details-hidden": "Hindi mo makikita ang mga detalye para sa ipinasok na ito dahil nakatago ito mula sa pagtanaw ng madla.",
 	"abusefilter-log-hide-legend": "Itago ang ipinasok sa tala",
 	"abusefilter-log-hide-id": "ID ng pagpasok sa tala:",
-	"abusefilter-log-hide-hidden": "Itago ang ipinasok na ito mula sa paningin ng madla",
 	"abusefilter-log-hide-reason": "Dahilan:",
 	"abusefilter-log-hide-forbidden": "Wala kang pahintulot na itago ang mga pagpapasok sa tala ng pang-aabuso.",
 	"logentry-abusefilter-hit": "Nakanti ni $1 ang $4, na nagsagawa ng kilos na \"$5\" doon sa $3. Mga kilos na ginawa: $6 ($7)",

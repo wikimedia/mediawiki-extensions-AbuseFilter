@@ -110,7 +110,6 @@
 	"abusefilter-log-private-not-included": "Una o més de les identificacions de filtre que va especificar són privades. A causa de que no se't permet veure els detalls dels filtres privats, no s'han buscat aquests filtres.",
 	"abusefilter-log-hide-legend": "Amaga entrada de registre",
 	"abusefilter-log-hide-id": "ID de l'entrada de registre:",
-	"abusefilter-log-hide-hidden": "Amaga aquesta entrada de la vista pública",
 	"abusefilter-log-hide-reason": "Motiu:",
 	"abusefilter-log-hide-reason-other": "Motiu diferent o addicional:",
 	"abusefilter-log-hide-forbidden": "No teniu permisos per ocultar entrades al registre d'abusos.",

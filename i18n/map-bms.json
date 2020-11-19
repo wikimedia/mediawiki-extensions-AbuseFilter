@@ -59,7 +59,6 @@
 	"abusefilter-log-details-hidden": "Rika ora teyeng ndeleng rinciane entri kiye jalaran anu wis diumpetna sekang publik.",
 	"abusefilter-log-hide-legend": "Umpetna entri log",
 	"abusefilter-log-hide-id": "ID entri log:",
-	"abusefilter-log-hide-hidden": "Umpetna entri kiye sekang publik",
 	"abusefilter-log-hide-reason": "Alesan:",
 	"abusefilter-log-hide-forbidden": "Rika ora duwe ijin nggo ngumpetna entri log planggaran.",
 	"logentry-abusefilter-hit": "$1 ngurubna $4, nglakokna tindakan \"$5\" nang $3. Tindakan sing dijikot: $6 ($7)",

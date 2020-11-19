@@ -120,7 +120,6 @@
 	"abusefilter-log-private-not-included": "חלק ממספרי המסננים שהגדרת פרטיים. מכיוון שאין לך הרשאה להציג נתונים של מסננים פרטיים, לא נעשה חיפוש במסננים האלה.",
 	"abusefilter-log-hide-legend": "הסתרת רשומת יומן",
 	"abusefilter-log-hide-id": "מספר רשומת היומן:",
-	"abusefilter-log-hide-hidden": "הסתרת רשומה זו מעיני הציבור",
 	"abusefilter-log-hide-reason": "סיבה:",
 	"abusefilter-log-hide-reason-other": "סיבה אחרת/נוספת:",
 	"abusefilter-log-hide-forbidden": "אין לך הרשאה להסתיר רשומות ביומן ההשחתות.",

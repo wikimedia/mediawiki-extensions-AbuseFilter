@@ -68,7 +68,6 @@
 	"abusefilter-log-details-hidden": "Du chasch d Detail vu däm Yytrag nit bschaue, wel si uusbländet sin fir d Effentligkeit.",
 	"abusefilter-log-hide-legend": "Logbuechyytrag verstecke",
 	"abusefilter-log-hide-id": "Logbuech-Yytrags-ID:",
-	"abusefilter-log-hide-hidden": "Dää Yytrag fir d Effentligkeit uusblände",
 	"abusefilter-log-hide-reason": "Grund:",
 	"abusefilter-log-hide-forbidden": "Du derfsch d Yytreg vum Missbruuchsfilter-Logbuech nit uusblände.",
 	"logentry-abusefilter-hit": "$1 het bim Ussfüere vo de Aktion „$5“ uff $3 de Filter $4 ussglöst. Usswirkig: $6 ($7)",

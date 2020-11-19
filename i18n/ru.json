@@ -159,7 +159,6 @@
 	"abusefilter-log-private-not-included": "Один или несколько заданных вами идентификатора принадлежат скрытым фильтрам. Поскольку вы не можете просматривать скрытые фильтры, они не будут отображены в поиске.",
 	"abusefilter-log-hide-legend": "Скрыть запись журнала",
 	"abusefilter-log-hide-id": "ID записи журнала:",
-	"abusefilter-log-hide-hidden": "Скрыть эту запись от публичного просмотра",
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Другая/дополнительная причина:",
 	"abusefilter-log-hide-forbidden": "У вас нет разрешения на сокрытие\nзаписей журнала злоупотреблений.",

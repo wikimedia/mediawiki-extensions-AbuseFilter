@@ -108,7 +108,6 @@
 	"abusefilter-log-private-not-included": "Adierazi dituzun irgazkien IDetako bat edo gehiago pribatua da. Iragazki pribatuen xehetasunak ikusteko baimenik ez daukazunez, ezin dituzu iragazki hauek bilatu.",
 	"abusefilter-log-hide-legend": "Ezkutatu sarrera erregistroa",
 	"abusefilter-log-hide-id": "Sarrera erregistro IDa:",
-	"abusefilter-log-hide-hidden": "Ezkutatu sarrera hau publikoki ikusi ez dadin",
 	"abusefilter-log-hide-reason": "Arrazoia:",
 	"abusefilter-log-hide-reason-other": "Beste arrazoiak/arrazoi gehigarriak",
 	"abusefilter-log-hide-forbidden": "Ez daukazu neurrigabekerizko erregistroak ezkutatzeko baimenik",

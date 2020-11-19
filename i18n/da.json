@@ -102,7 +102,6 @@
 	"abusefilter-log-details-hidden": "Du kan ikke se detaljerne for denne post, fordi den er skjult for offentligheden",
 	"abusefilter-log-hide-legend": "Skjul loghandlig",
 	"abusefilter-log-hide-id": "Loghandlings-id:",
-	"abusefilter-log-hide-hidden": "Skjul denne loghandling for offentligheden",
 	"abusefilter-log-hide-reason": "Årsag:",
 	"abusefilter-log-hide-forbidden": "Du har ikke rettigheder til at skjule poster i misbrugsfilteret",
 	"logentry-abusefilter-hit": "$1 udløste $4 med handlingen \"$5\" på $3. Tiltag: $6 ($7)",

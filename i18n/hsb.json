@@ -70,7 +70,6 @@
 	"abusefilter-log-private-not-included": "Jedyn filtrowy ID abo wjacore ID, kotrež sy podał, su priwatne. Dokelž njesměće sej podrobnosće priwatnch filtrow wobhladać, so tute filtry njepytaja.",
 	"abusefilter-log-hide-legend": "Protokolowy zapisk schować",
 	"abusefilter-log-hide-id": "ID protokoloweho zapiska:",
-	"abusefilter-log-hide-hidden": "Zapis před zjawnosću schować",
 	"abusefilter-log-hide-reason": "Přičina:",
 	"abusefilter-log-hide-forbidden": "Nimaš prawo zapiski znjewužiwanskeho protokola schować.",
 	"logentry-abusefilter-hit": "$1 je při wuwjedźenju akcije \"$5\" na $3 $4 zahibał. Skutkowanje: $6 ($7)",

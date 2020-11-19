@@ -115,7 +115,6 @@
 	"abusefilter-log-private-not-included": "Satu atau lebih filter ID yang Anda tentukan adalah pribadi. Karena Anda tidak diizinkan untuk melihat rincian filter pribadi, filter-filter ini tidak akan dicari.",
 	"abusefilter-log-hide-legend": "Sembunyikan entri log",
 	"abusefilter-log-hide-id": "ID entri log:",
-	"abusefilter-log-hide-hidden": "Sembunyikan entri ini dari publik",
 	"abusefilter-log-hide-reason": "Alasan:",
 	"abusefilter-log-hide-reason-other": "Alasan lain/tambahan:",
 	"abusefilter-log-hide-forbidden": "Anda tidak memiliki izin untuk menyembunyikan\nentri catatan penyalahgunaan.",

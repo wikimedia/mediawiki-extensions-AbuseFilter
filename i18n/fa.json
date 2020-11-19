@@ -134,7 +134,6 @@
 	"abusefilter-log-private-not-included": "یک یا چند مورد از شناسه‌های پالایه‌ای که انتخاب کرده‌اید خصوصی هستند. به این دلیل که شما مجاز به دیدن جزئیات پالایه‌های خصوصی نیستند، این فیلترها جستجو نشدند.",
 	"abusefilter-log-hide-legend": "پنهان کردن مورد در سیاهه",
 	"abusefilter-log-hide-id": "شناسه مورد در سیاهه:",
-	"abusefilter-log-hide-hidden": "پنهان کردن این مورد از دید عموم",
 	"abusefilter-log-hide-reason": "دلیل:",
 	"abusefilter-log-hide-reason-other": "دلیل دیگر/اضافی:",
 	"abusefilter-log-hide-forbidden": "شما دسترسی لازم برای پنهان کردن موارد سیاههٔ خرابکاری را ندارید.",

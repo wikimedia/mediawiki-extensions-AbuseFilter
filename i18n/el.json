@@ -94,7 +94,6 @@
 	"abusefilter-log-details-hidden": "Δεν μπορείτε να δείτε τις λεπτομέρειες για αυτήν την καταχώρηση, διότι είναι κρυμμένες από τη δημόσια θέα.",
 	"abusefilter-log-hide-legend": "Αποκρύψτε το αρχείο καταγραφής",
 	"abusefilter-log-hide-id": "Σύνδεση εισόδου ID:",
-	"abusefilter-log-hide-hidden": "Απόκρυψη αυτής της  εγγραφής από την κοινή θέα",
 	"abusefilter-log-hide-reason": "Αιτία:",
 	"abusefilter-log-hide-forbidden": "Δεν έχετε άδεια για να κρύψετε τις καταχωρήσεις κατάχρησης του αρχείου καταγραφής",
 	"abusefilter-list": "Όλα τα φίλτρα",

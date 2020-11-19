@@ -159,7 +159,6 @@
 	"abusefilter-log-private-not-included": "Uno o más de los identificadores de filtro que has especificado son privados. Debido a que no tienes permitido ver los detalles de los filtros privados, estos filtros no se han buscado.",
 	"abusefilter-log-hide-legend": "Ocultar entrada del registro",
 	"abusefilter-log-hide-id": "Id. de la entrada del registro:",
-	"abusefilter-log-hide-hidden": "Ocultar esta entrada de la vista pública",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Otro motivo:",
 	"abusefilter-log-hide-forbidden": "No tienes permiso para ocultar entradas del registro de abusos",

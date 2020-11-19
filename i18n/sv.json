@@ -137,7 +137,6 @@
 	"abusefilter-log-private-not-included": "En eller flera av de Filter-ID du angav är privata. Då du saknar tillstånd att se detaljer för privata filter, har dessa filter inte sökts.",
 	"abusefilter-log-hide-legend": "Dölj loggpost",
 	"abusefilter-log-hide-id": "Loggpost-ID:",
-	"abusefilter-log-hide-hidden": "Dölj denna posten från allmän visning",
 	"abusefilter-log-hide-reason": "Orsak:",
 	"abusefilter-log-hide-reason-other": "Annan/ytterligare anledning:",
 	"abusefilter-log-hide-forbidden": "Du har inte behörighet att dölja\nmissbrukslogg-poster.",

@@ -62,7 +62,6 @@
 	"abusefilter-log-details-hidden": "Бұл жазба барлық қатысушыларға көрінуі жасырылғандықтан  егжей-тегжейін көре алмайсыз.",
 	"abusefilter-log-hide-legend": "Журнал жазбасын жасыру",
 	"abusefilter-log-hide-id": "Журнал жазба ID-і:",
-	"abusefilter-log-hide-hidden": "Бұл жазбаны барлық қатысушыларға көрсетпеу",
 	"abusefilter-log-hide-reason": "Себебі:",
 	"abusefilter-log-hide-forbidden": "Қиянаттау журнал енгізілімдерін жасыруға рұқсатыңыз жоқ.",
 	"logentry-abusefilter-hit": "$1 $4 сүзгісін шақырды, $3 бетіндегі орындалу әрекеті: «$5».\nҚолданылған шара: $6 ($7)",

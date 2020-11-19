@@ -124,7 +124,6 @@
 	"abusefilter-log-private-not-included": "واحد أو أكثر من مرشحات الإساءة المحددة ذو إعداداتٍ خاصة، ولأنه غير مسموحٍ لك بعرض تفاصيل المرشحات الخاصة، لم يجري البحث عن هذه المرشحات.",
 	"abusefilter-log-hide-legend": "إخفاء السجل",
 	"abusefilter-log-hide-id": "هوية مدخلة لسجل:",
-	"abusefilter-log-hide-hidden": "إخفاء هذا المدخل من العرض العلني",
 	"abusefilter-log-hide-reason": "السبب:",
 	"abusefilter-log-hide-reason-other": "سبب آخر/إضافي:",
 	"abusefilter-log-hide-forbidden": "ليس لديك صلاحية لإخفاء إدخالات سجل الإساءة",

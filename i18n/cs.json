@@ -119,7 +119,6 @@
 	"abusefilter-log-private-not-included": "Jeden nebo více filtrů uvedených ID jsou tajné. Protože nemáte dovoleno prohlížet si podrobnosti tajných filtrů, nebyly tyto filtry prohledávány.",
 	"abusefilter-log-hide-legend": "Skrýt záznam protokolu",
 	"abusefilter-log-hide-id": "ID záznamu:",
-	"abusefilter-log-hide-hidden": "Skrýt tento záznam před veřejností",
 	"abusefilter-log-hide-reason": "Důvod:",
 	"abusefilter-log-hide-reason-other": "Jiný/další důvod:",
 	"abusefilter-log-hide-forbidden": "Nemáte oprávnění ke skrývání záznamů v protokolu zneužití.",

@@ -108,7 +108,6 @@
 	"abusefilter-log-private-not-included": "Една или повеќе од филтерските назнаки што ги укажавте се лични. Бидејќи не ви е дозволено да ги разгледувате подробностите за личните филтри, овие филтри не се употребени при пребарувањето.",
 	"abusefilter-log-hide-legend": "Скриј ставка",
 	"abusefilter-log-hide-id": "ID на записот:",
-	"abusefilter-log-hide-hidden": "Скриј го записов за јавноста",
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Друга/дополнителна причина:",
 	"abusefilter-log-hide-forbidden": "Немате дозвола да криете записи во дневникот на злоупотреби.",

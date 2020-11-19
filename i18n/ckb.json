@@ -63,7 +63,6 @@
 	"abusefilter-log-cannot-see-details": "ناتوانی وردەکارییەکانی ئەم بابەتە ببینی.",
 	"abusefilter-log-details-hidden": "ناتوانی وردەکارییەکانی ئەم بابەتە ببینی، چونکوو لەبەر چاوی گشتی شاردراوەتەوە.",
 	"abusefilter-log-hide-legend": "لوگی بابەت بشارەوە",
-	"abusefilter-log-hide-hidden": "وردەکارییەکانی ئەم بابەتە لە بەرچاوی گشتی لا ببە",
 	"abusefilter-log-hide-reason": "هۆکار:",
 	"abusefilter-log-hide-forbidden": "ناتوانی بابەتەکانی لۆگی کەڵکاوەژوو بشارییەوە.",
 	"logentry-abusefilter-hit": "$1 $4ی چالاککرد، خەریکی کردەوەی «$5» لەسەر $3 بوو. کردەوەی بەڕێوەچوو: $6 ($7)",

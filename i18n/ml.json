@@ -89,7 +89,6 @@
 	"abusefilter-log-private-not-included": "താങ്കൾ നൽകിയവയിൽ ഒന്നോ അതിലധികമോ അരിപ്പകളുടെ ഐ.ഡി.കൾ സ്വകാര്യമാണ്. സ്വകാര്യ അരിപ്പകളുടെ വിശദാംശങ്ങൾ കാണാൻ താങ്കൾക്ക് അനുവാദമില്ലാത്തതിനാൽ, ഈ അരിപ്പകൾ തിരയപ്പെടുന്നതല്ല.",
 	"abusefilter-log-hide-legend": "രേഖയിലെ ഉൾപ്പെടുത്തൽ മറയ്ക്കുക",
 	"abusefilter-log-hide-id": "രേഖയിൽ ഉൾപ്പെടുത്തിയതിന്റെ ഐ.ഡി.:",
-	"abusefilter-log-hide-hidden": "പൊതുജനദൃഷ്ടിയിൽ നിന്ന് ഈ വിവരം മറയ്ക്കുക",
 	"abusefilter-log-hide-reason": "കാരണം:",
 	"abusefilter-log-hide-reason-other": "മറ്റ്/കൂടുതൽ കാരണം:",
 	"abusefilter-log-hide-forbidden": "ദുരുപയോഗരേഖയിലെ വിവരങ്ങൾ മറയ്ക്കാനുള്ള അനുവാദം താങ്കൾക്കില്ല.",

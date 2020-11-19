@@ -106,7 +106,6 @@
 	"abusefilter-log-private-not-included": "Eden ali več filtrov je zasebnih. Ker nimate dovoljenja da si ogledate te vnose, niso navedeni v rezultatih iskanja.",
 	"abusefilter-log-hide-legend": "Skrij dnevniški vnos",
 	"abusefilter-log-hide-id": "ID dnevniškega vnosa:",
-	"abusefilter-log-hide-hidden": "Skrij ta vnos pred javnim vpogledom",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-reason-other": "Drug/dodaten razlog:",
 	"abusefilter-log-hide-forbidden": "Nimate dovoljenja za skrivanje dnevniških vnosov zlorab.",

@@ -106,7 +106,6 @@
 	"abusefilter-log-details-hidden-implicit": "Ne možete da vidite detalje ovog filtera jer su povezane izmene sakrivene za javni pregled.",
 	"abusefilter-log-hide-legend": "Sakrij stavku u dnevniku",
 	"abusefilter-log-hide-id": "ID stavke u dnevniku:",
-	"abusefilter-log-hide-hidden": "Sakrij ovu stavku od javnog pregleda",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-reason-other": "Drugi/dodatni razlog:",
 	"abusefilter-log-hide-forbidden": "Nemate dozvolu da sakrivate stavke u dnevniku zloupotreba.",

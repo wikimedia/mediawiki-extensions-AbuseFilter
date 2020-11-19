@@ -104,7 +104,6 @@
 	"abusefilter-log-private-not-included": "Määratud identifikaatoritest vähemalt üks vastab kinnisele filtrile. Kuna sul pole lubatud vaadata kinniste filtrite andmeid, siis neid filtreid ei otsitud.",
 	"abusefilter-log-hide-legend": "Peida logisissekanne",
 	"abusefilter-log-hide-id": "Logisissekande ID:",
-	"abusefilter-log-hide-hidden": "Peida see sissekanne üldsuse eest",
 	"abusefilter-log-hide-reason": "Põhjus:",
 	"abusefilter-log-hide-reason-other": "Muu või täiendav põhjus:",
 	"abusefilter-log-hide-forbidden": "Sul pole õigust peita väärtarvituslogi sissekandeid.",

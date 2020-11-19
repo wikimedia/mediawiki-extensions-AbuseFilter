@@ -28,7 +28,6 @@
 	"abusefilter-log-details-hidden": "თქვენ ვერ იხილავთ დამატებით ინფორმაციას ამ ფილტრის შესახებ, რადგანაც ის დამალულია ჩვეულებრივი მომხმარებლებისთვის.",
 	"abusefilter-log-hide-legend": "ჟურნალის ჩანაწერის დამალვა",
 	"abusefilter-log-hide-id": "ჟურნალის ჩანაწერების ID:",
-	"abusefilter-log-hide-hidden": "ამ ცვლილების დამალვა საზოგადოებისათვის",
 	"abusefilter-log-hide-reason": "სამანჯელი:",
 	"abusefilter-log-hide-forbidden": "თქვენ ბოროტად გამოყენების ფილტრის ჟურნალის ჩანაწერების დამალვის უფლება არა გაქვთ.",
 	"abusefilter-list": "ყველა ფილტრი",

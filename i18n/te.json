@@ -98,7 +98,6 @@
 	"abusefilter-log-private-not-included": "మీరిచ్చిన వడపోత ఐడీలు ఒకటి గాని అంత కంటే ఎక్కువ గానీ గోప్యమైనవి. గోప్య వడపోతల వివరాలను చూసే అనుమతి మీకు లేదు కాబట్టి, ఆ వడపోతల కోసం వెతకలేదు.",
 	"abusefilter-log-hide-legend": "చిట్టా పద్దుని దాచండి",
 	"abusefilter-log-hide-id": "చిట్టా పద్దు ID:",
-	"abusefilter-log-hide-hidden": "బహిరంగ వీక్షణం నుండి ఈ పద్దుని దాచు",
 	"abusefilter-log-hide-reason": "కారణం:",
 	"abusefilter-log-hide-reason-other": "ఇతర/అదనపు కారణం:",
 	"abusefilter-log-hide-forbidden": "దుర్వినియోగ చిట్టా పద్దులను దాచే అనుమతి మీకు లేదు.",

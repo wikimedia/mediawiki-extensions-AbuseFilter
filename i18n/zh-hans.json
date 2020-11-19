@@ -163,7 +163,6 @@
 	"abusefilter-log-private-not-included": "一个或多个您指定的过滤器ID是私有的。因为您不被允许查看私有过滤器的详情，所以这些过滤器未被寻找。",
 	"abusefilter-log-hide-legend": "隐藏日志条目",
 	"abusefilter-log-hide-id": "日志记录ID：",
-	"abusefilter-log-hide-hidden": "对公众隐藏此日志项目",
 	"abusefilter-log-hide-reason": "原因：",
 	"abusefilter-log-hide-reason-other": "其他/附加原因：",
 	"abusefilter-log-hide-forbidden": "您没有权限去隐藏此滥用记录条目。",

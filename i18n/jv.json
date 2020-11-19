@@ -81,7 +81,6 @@
 	"abusefilter-log-details-hidden": "Panjenengan ora bisa ndeleng rerincèn èntri iki amarga kuwi kadhelikaké saka umum.",
 	"abusefilter-log-hide-legend": "Dhelikaké èntri log",
 	"abusefilter-log-hide-id": "ID èntri log:",
-	"abusefilter-log-hide-hidden": "Dhelikaké èntri iki saka umum",
 	"abusefilter-log-hide-reason": "Alesan:",
 	"abusefilter-log-hide-forbidden": "Panjenengan ora kalilakaké ndhelikaké èntri log planggaran.",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|njalari}} $4, {{GENDER:$2|ngayahi}} \"$5\" ing $3. Tumindak diayahi: $6 ($7)",

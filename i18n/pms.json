@@ -71,7 +71,6 @@
 	"abusefilter-log-details-hidden": "It peule pa vardé ij detaj për sta vos përchè a l'é stërmà da la vista pùblica.",
 	"abusefilter-log-hide-legend": "Stërmé la vos ant ij registr",
 	"abusefilter-log-hide-id": "Identificativ ëd la vos dël registr:",
-	"abusefilter-log-hide-hidden": "Stërma sta vos da la vista pùblica",
 	"abusefilter-log-hide-reason": "Rason:",
 	"abusefilter-log-hide-forbidden": "It l'has pa ël përmess dë stërmé le vos dël registr ëd sicurëssa.",
 	"logentry-abusefilter-hit": "$1 a l'ha assionà $4, an fasend l'assion \"$5\" dzora $3. Assion fàite: $6 ($7)",

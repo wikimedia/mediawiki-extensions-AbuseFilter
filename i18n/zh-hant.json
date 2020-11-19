@@ -143,7 +143,6 @@
 	"abusefilter-log-private-not-included": "您指定一個或多個過濾器 ID 為非公開的。由於您未被允許檢視這些非公開過濾器，搜尋結果不會包含這些過濾器。",
 	"abusefilter-log-hide-legend": "隱藏日誌項目",
 	"abusefilter-log-hide-id": "日誌項目 ID：",
-	"abusefilter-log-hide-hidden": "隱藏此日誌項目",
 	"abusefilter-log-hide-reason": "原因：",
 	"abusefilter-log-hide-reason-other": "其它/額外的原因：",
 	"abusefilter-log-hide-forbidden": "您沒有權限隱藏濫用日誌項目。",

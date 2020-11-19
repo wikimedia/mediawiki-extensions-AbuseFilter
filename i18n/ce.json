@@ -87,7 +87,6 @@
 	"abusefilter-log-details-hidden": "Хьокху дӀаяздаре мадарра хьажа хьа таро яц и хьулдар бахьнехь.",
 	"abusefilter-log-hide-legend": "Къайладаккха тептар чура дӀаяздар",
 	"abusefilter-log-hide-id": "Тептаран ID дӀаяздарш:",
-	"abusefilter-log-hide-hidden": "Къайладаккха хӀара дӀаяздар",
 	"abusefilter-log-hide-reason": "Бахьана:",
 	"abusefilter-log-hide-forbidden": "Зуламан тептар чура дӀаяздарш къайладаха хьа бакъо яц.",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|къайладаьккхина}} $3",

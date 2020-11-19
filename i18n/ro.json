@@ -101,7 +101,6 @@
 	"abusefilter-log-private-not-included": "Unul sau mai multe dintre ID-urile de filtrare pe care le-ați specificat sunt private. Deoarece nu aveți permisiunea de a vedea detalii despre filtrele private, aceste filtre nu au fost căutate.",
 	"abusefilter-log-hide-legend": "Ascunde intrarea în jurnal",
 	"abusefilter-log-hide-id": "ID-ul intrării în jurnal:",
-	"abusefilter-log-hide-hidden": "Ascunde această intrare afișării publice",
 	"abusefilter-log-hide-reason": "Motiv:",
 	"abusefilter-log-hide-forbidden": "Nu aveți permisiunea să ascundeți intrările din jurnalul de abuzuri.",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|a declanșat}} $4 prin {{GENDER:$2|efectuarea}} acțiunii „$5” la $3. Acțiuni întreprinse: $6 ($7)",

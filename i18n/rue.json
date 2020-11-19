@@ -72,7 +72,6 @@
 	"abusefilter-log-details-hidden": "У того запису сі не можете посмотрити детайлы, бо были схованы перед публічном приступом.",
 	"abusefilter-log-hide-legend": "Сховати запис протоколу",
 	"abusefilter-log-hide-id": "ID запису:",
-	"abusefilter-log-hide-hidden": "Сховати тот запис перед публічным приступом",
 	"abusefilter-log-hide-reason": "Причіна:",
 	"abusefilter-log-hide-forbidden": "Не маєте права про схованя записів в протоколї знеужытя",
 	"logentry-abusefilter-hit": "$1 {{#gender:$1|выкликав|выкликала}} спрацовованя $4, выконуючі дїю \"$5\" на $3. Учінены крокы: $6 ($7)",

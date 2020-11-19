@@ -111,7 +111,6 @@
 	"abusefilter-log-private-not-included": "Един или повече идентификатори на филтъра, които посочихте, са скрити. Тъй като не е разрешено да видите детайли за скритите филтри, тези филтри не са включени в търсенето.",
 	"abusefilter-log-hide-legend": "Скриване на записа в дневника",
 	"abusefilter-log-hide-id": "Идентификатор на запис от дневника:",
-	"abusefilter-log-hide-hidden": "Скриване на този запис от публичен преглед",
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Друга/допълнителна причина:",
 	"abusefilter-log-hide-forbidden": "Нямате необходимите права да скривате записи от дневника на злоупотребите.",

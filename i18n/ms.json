@@ -79,7 +79,6 @@
 	"abusefilter-log-private-not-included": "Sekurang-kurangnya satu ID penapis yang anda nyatakan adalah peribadi (tidak terbuka kepada umum). Oleh sebab anda dilarang melihat perincian penapis peribadi, maka penapis-penapis berkenaan tidak dicari.",
 	"abusefilter-log-hide-legend": "Sorokkan entri log",
 	"abusefilter-log-hide-id": "ID entri log:",
-	"abusefilter-log-hide-hidden": "Sorokkan entri ini daripada tatapan umum",
 	"abusefilter-log-hide-reason": "Sebab:",
 	"abusefilter-log-hide-reason-other": "Sebab lain/tambahan:",
 	"abusefilter-log-hide-forbidden": "Anda tiada kebenaran untuk menyorokkan entri log penyalahgunaan.",

@@ -129,7 +129,6 @@
 	"abusefilter-log-private-not-included": "Een of meer van de opgegeven filter-ID's zijn persoonlijk. Omdat u de details van privéfilters niet mag zien, is er niet in deze filters gezocht.",
 	"abusefilter-log-hide-legend": "Logboekregel verbergen",
 	"abusefilter-log-hide-id": "Logboekmeldingsnummer:",
-	"abusefilter-log-hide-hidden": "Deze melding verbergen",
 	"abusefilter-log-hide-reason": "Reden:",
 	"abusefilter-log-hide-reason-other": "Overige/additionele reden:",
 	"abusefilter-log-hide-forbidden": "U hebt niet de juiste rechten om meldingen in het filterlogboek te verbergen.",

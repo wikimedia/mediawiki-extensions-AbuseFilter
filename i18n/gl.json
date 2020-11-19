@@ -108,7 +108,6 @@
 	"abusefilter-log-private-not-included": "Un ou varios dos filtros especificados son privados. Dado que non ten os permisos necesarios para consultar os detalles dos filtros privados, estes filtros non aparecen nos resultados da procura.",
 	"abusefilter-log-hide-legend": "Agochar a entrada no rexistro",
 	"abusefilter-log-hide-id": "ID da entrada no rexistro:",
-	"abusefilter-log-hide-hidden": "Agochar esta entrada da vista pública",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Outro motivo/motivo adicional:",
 	"abusefilter-log-hide-forbidden": "Non ten os permisos necesarios para agochar entradas do rexistro de abusos.",

@@ -99,7 +99,6 @@
 	"abusefilter-log-details-hidden": "Ne možete vidjeti detalje ovog unosa jer je skriven od javnog pogleda.",
 	"abusefilter-log-hide-legend": "Sakrij zapis u evidenciji",
 	"abusefilter-log-hide-id": "Identifikacijski broj zapisa:",
-	"abusefilter-log-hide-hidden": "Sakrij ovaj zapis od javnog pristupa",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-forbidden": "Nemate dopuštenje za skrivanje zapisa iz evidencije zloporaba.",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|skrio|skrila}} je $3",

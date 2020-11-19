@@ -116,7 +116,6 @@
 	"abusefilter-log-private-not-included": "Egy vagy több szűrőazonosító privát. Mivel nem engedélyezett számodra a privát szűrők részleteinek megtekintése, ezek a szűrők ki lettek hagyva a keresésből.",
 	"abusefilter-log-hide-legend": "Naplóbejegyzés elrejtése",
 	"abusefilter-log-hide-id": "A tétel azonosítója:",
-	"abusefilter-log-hide-hidden": "Ennek a tételnek az elrejtése a nyilvánosság elől.",
 	"abusefilter-log-hide-reason": "Indoklás:",
 	"abusefilter-log-hide-reason-other": "Más/további ok:",
 	"abusefilter-log-hide-forbidden": "Nincs jogosultságod elrejteni ezeket a tételeket.",

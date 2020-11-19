@@ -83,7 +83,6 @@
 	"abusefilter-log-details-hidden": "Du kan ikkje sjå detaljane for oppføringa sidan ho er gøymd frå ålmenn vising.",
 	"abusefilter-log-hide-legend": "Gøym loggoppføring",
 	"abusefilter-log-hide-id": "Loggoppførings-ID:",
-	"abusefilter-log-hide-hidden": "Gøym oppføringa frå ålmenn vising",
 	"abusefilter-log-hide-reason": "Årsak:",
 	"abusefilter-log-hide-forbidden": "Du har ikkje løyve til å gøyma oppføringar i misbruksloggen.",
 	"logentry-abusefilter-hit": "$1 utløyste $4, utførde handlinga «$5» på $3. Handlingar utførde: $6 ($7)",

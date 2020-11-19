@@ -104,7 +104,6 @@
 	"abusefilter-log-private-not-included": "Una o más de les IDs del filtru qu'especificasti ye privada. Como nun tienes permisu para ver los detalles de los filtros privaos, nun se buscó ente esos filtros.",
 	"abusefilter-log-hide-legend": "Anubrir entrada del rexistru",
 	"abusefilter-log-hide-id": "ID de la entrada del rexistru:",
-	"abusefilter-log-hide-hidden": "Anubrir esta entrada de la vista pública",
 	"abusefilter-log-hide-reason": "Motivu:",
 	"abusefilter-log-hide-reason-other": "Otru motivu:",
 	"abusefilter-log-hide-forbidden": "Nun tienes permisu p'anubrir entraes del rexistru d'abusos.",

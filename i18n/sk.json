@@ -110,7 +110,6 @@
 	"abusefilter-log-private-not-included": "Jeden alebo viac filtrov s uvedeným ID je neverejných. Keďže nemáte oprávnenie prezerať si podrobnosti neverejných filtrov, neboli tieto filtre prehľadávané.",
 	"abusefilter-log-hide-legend": "Skryť položku v zázname",
 	"abusefilter-log-hide-id": "ID položky záznamu:",
-	"abusefilter-log-hide-hidden": "Skryť túto položku pred verejnosťou",
 	"abusefilter-log-hide-reason": "Dôvod:",
 	"abusefilter-log-hide-reason-other": "Iný/ďalší dôvod:",
 	"abusefilter-log-hide-forbidden": "Nemáte oprávnenie skrývať položky záznamu zneužití.",

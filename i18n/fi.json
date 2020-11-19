@@ -122,7 +122,6 @@
 	"abusefilter-log-private-not-included": "Yksi tai useampi määrittämäsi suodattimen numero on suljettu ulkopuolisilta. Koska sinulla ei ole lupaa nähdä yksityisten suodattimien tietoja, näitä suodattimia ei ole haettu.",
 	"abusefilter-log-hide-legend": "Piilota lokitapahtuma",
 	"abusefilter-log-hide-id": "Lokimerkinnän tunnusnumero:",
-	"abusefilter-log-hide-hidden": "Piilota tämä merkintä julkiselta näkymiseltä",
 	"abusefilter-log-hide-reason": "Syy:",
 	"abusefilter-log-hide-reason-other": "Muu syy tai tarkennus:",
 	"abusefilter-log-hide-forbidden": "Sinulla ei ole oikeutta piilottaa väärinkäyttölokin merkintöjä.",

@@ -95,7 +95,6 @@
 	"abusefilter-log-details-hidden": "Vi ne rajtas vidi detalojn pri ĉi tiu protokolero, ĉar ĝi estas kaŝita de publika vido.",
 	"abusefilter-log-hide-legend": "Kaŝi protokoleron",
 	"abusefilter-log-hide-id": "Identigo de protokolero:",
-	"abusefilter-log-hide-hidden": "Kaŝi ĉi tiun protokoleron de publika vido",
 	"abusefilter-log-hide-reason": "Kialo:",
 	"abusefilter-log-hide-reason-other": "Alia/plua kialo:",
 	"abusefilter-log-hide-forbidden": "Vi ne havas permeson kaŝi liniojn en la protokolo de misuzado.",

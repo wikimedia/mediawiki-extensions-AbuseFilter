@@ -125,7 +125,6 @@
 	"abusefilter-log-private-not-included": "En eller flere ID-er for filtre er private. Fordi du mangler rettigheter til å se detaljer i private filtre, så er søket ikke utført for slike.",
 	"abusefilter-log-hide-legend": "Skjul loggoppføring",
 	"abusefilter-log-hide-id": "Loggoppførings-ID:",
-	"abusefilter-log-hide-hidden": "Skjul denne oppføringen fra offentlig visning",
 	"abusefilter-log-hide-reason": "Årsak:",
 	"abusefilter-log-hide-reason-other": "Annen/utdypened årsak:",
 	"abusefilter-log-hide-forbidden": "Du har ikke rettigheter til å skjule\nmisbruksloggoppføringer.",
