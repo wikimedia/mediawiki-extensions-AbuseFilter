@@ -11,8 +11,9 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @group AbuseFilterGeneric
  *
  * @covers AFComputedVariable::compute
+ * @fixme Make this a unit test once the class stops using MediaWikiServices
  */
-class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
+class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	/** A fake timestamp to use in several time-related tests. */
 	private const FAKE_TIME = 1514700000;
 
