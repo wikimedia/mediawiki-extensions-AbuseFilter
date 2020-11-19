@@ -276,7 +276,6 @@ abstract class AbuseFilterView extends ContextSource {
 				// Done later
 				break;
 			default:
-				// @phan-suppress-next-line PhanTypeSuspiciousStringExpression False does not reach here
 				throw new MWException( __METHOD__ . ' called with invalid action: ' . $action );
 		}
 
