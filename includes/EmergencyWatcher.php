@@ -86,19 +86,19 @@ class EmergencyWatcher {
 				continue;
 			}
 
-			// Figure out if the filter is subject to being throttled.
 			$filterAge = (int)wfTimestamp( TS_UNIX, $filterObj->getTimestamp() );
+			$exemptTime = $filterAge + $maxAge;
+
+			// Optimize for the common case when filters are well-established
+			if ( $exemptTime <= $time ) {
+				continue;
+			}
 
 			// TODO: this value might be stale, there is no guarantee the match
 			// has actually been recorded now
 			$matchCount = $this->profiler->getFilterProfile( $filter )['matches'];
 
-			$exemptTime = $filterAge + $maxAge;
-
-			if ( $exemptTime > $time
-				&& $matchCount > $hitCountLimit
-				&& ( $matchCount / $totalActions ) > $threshold
-			) {
+			if ( $matchCount > $hitCountLimit && ( $matchCount / $totalActions ) > $threshold ) {
 				// More than AbuseFilterEmergencyDisableCount matches, constituting more than
 				// AbuseFilterEmergencyDisableThreshold (a fraction) of last few edits.
 				// Disable it.
