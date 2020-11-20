@@ -104,6 +104,8 @@
 	"abusefilter-log-hide-id": "Loghandlings-id:",
 	"abusefilter-log-hide-reason": "Årsag:",
 	"abusefilter-log-hide-forbidden": "Du har ikke rettigheder til at skjule poster i misbrugsfilteret",
+	"abusefilter-log-hide-show": "Vis",
+	"abusefilter-log-hide-hide": "Skjul",
 	"logentry-abusefilter-hit": "$1 udløste $4 med handlingen \"$5\" på $3. Tiltag: $6 ($7)",
 	"abusefilterprivatedetails-log-name": "Misbrugsfilter for private oplysningers adgangslog",
 	"abusefilter-list": "Alle filtre",

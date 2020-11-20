@@ -62,6 +62,7 @@
 	"abusefilter-edit-builder-op-arithmetic-divide": "Divido (/)",
 	"abusefilter-edit-builder-op-comparison-notequal": "Diferanta de (!=)",
 	"abusefilter-edit-builder-op-comparison-lt": "Min kam (<)",
+	"abusefilter-edit-builder-op-comparison-gt": "Plu granda kam (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "Min kam od egal ad (<=)",
 	"abusefilter-edit-builder-op-comparison-gte": "Plu granda od egala ad (>=)",
 	"abusefilter-edit-builder-op-bool-not": "Ne (logika NOT) (!)",
