@@ -4,6 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use InvalidArgumentException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class InvalidImportDataException extends InvalidArgumentException {
 	/**
 	 * @param string $data That is not valid

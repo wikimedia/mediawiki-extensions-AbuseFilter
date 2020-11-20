@@ -225,6 +225,7 @@ class FilterProfiler {
 	 * @param int $totalFilters
 	 * @param int $totalConditions
 	 * @param float $runtime
+	 * @codeCoverageIgnore
 	 */
 	public function recordRuntimeProfilingResult( int $totalFilters, int $totalConditions, float $runtime ) : void {
 		$keyPrefix = 'abusefilter.runtime-profile.' . $this->localWikiID . '.';
