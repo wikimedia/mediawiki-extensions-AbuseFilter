@@ -269,17 +269,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @deprecated since 1.36 Use FilterLookup
-	 * @param string $filter Filter ID (integer or "<GLOBAL_FILTER_PREFIX><integer>")
-	 * @return stdClass DB row
-	 */
-	public static function getFilter( $filter ) {
-		[ $filterID, $global ] = self::splitGlobalName( $filter );
-		$lookup = AbuseFilterServices::getFilterLookup();
-		return $lookup->getFilter( $filterID, $global )->toDatabaseRow();
-	}
-
-	/**
 	 * Store a var dump to External Storage or the text table
 	 * Some of this code is stolen from Revision::insertOn and friends
 	 *
