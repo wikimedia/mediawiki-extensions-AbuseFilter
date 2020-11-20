@@ -114,26 +114,27 @@ class EmergencyWatcher {
 	 *
 	 * @param string[] $filters The filters to check
 	 * @param string $group
-	 * @todo Could this be a single update?
 	 */
 	public function checkFilters( array $filters, string $group ) : void {
 		$throttleFilters = $this->getFiltersToThrottle( $filters, $group );
-		foreach ( $throttleFilters as $filter ) {
-			DeferredUpdates::addUpdate(
-				new AutoCommitUpdate(
-					$this->loadBalancer->getConnection( DB_MASTER ),
-					__METHOD__,
-					function ( IDatabase $dbw, $fname ) use ( $filter ) {
-						$dbw->update(
-							'abuse_filter',
-							[ 'af_throttled' => 1 ],
-							[ 'af_id' => $filter ],
-							$fname
-						);
-					}
-				)
-			);
+		if ( !$throttleFilters ) {
+			return;
 		}
+
+		DeferredUpdates::addUpdate(
+			new AutoCommitUpdate(
+				$this->loadBalancer->getConnection( DB_MASTER ),
+				__METHOD__,
+				function ( IDatabase $dbw, $fname ) use ( $throttleFilters ) {
+					$dbw->update(
+						'abuse_filter',
+						[ 'af_throttled' => 1 ],
+						[ 'af_id' => $throttleFilters ],
+						$fname
+					);
+				}
+			)
+		);
 	}
 
 	/**
