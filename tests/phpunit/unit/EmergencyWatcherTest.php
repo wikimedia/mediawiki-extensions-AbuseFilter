@@ -1,14 +1,14 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EmergencyWatcher
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher
  */
 class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 

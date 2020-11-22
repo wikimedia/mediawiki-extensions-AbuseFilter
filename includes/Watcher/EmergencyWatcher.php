@@ -1,11 +1,13 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Watcher;
 
 use AutoCommitUpdate;
 use DeferredUpdates;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -15,7 +17,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
  *
  * @todo We should log throttling somewhere
  */
-class EmergencyWatcher {
+class EmergencyWatcher implements Watcher {
 	public const SERVICE_NAME = 'AbuseFilterEmergencyWatcher';
 
 	public const CONSTRUCTOR_OPTIONS = [
@@ -112,10 +114,9 @@ class EmergencyWatcher {
 	/**
 	 * Determine which a filters must be throttled and apply the throttling
 	 *
-	 * @param string[] $filters The filters to check
-	 * @param string $group
+	 * @inheritDoc
 	 */
-	public function checkFilters( array $filters, string $group ) : void {
+	public function run( array $filters, string $group ) : void {
 		$throttleFilters = $this->getFiltersToThrottle( $filters, $group );
 		if ( !$throttleFilters ) {
 			return;

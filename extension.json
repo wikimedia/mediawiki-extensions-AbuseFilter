@@ -133,7 +133,8 @@
 		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/",
 		"MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\": "includes/LogFormatter/",
 		"MediaWiki\\Extension\\AbuseFilter\\Parser\\": "includes/ParserNS/",
-		"MediaWiki\\Extension\\AbuseFilter\\Filter\\": "includes/Filter/"
+		"MediaWiki\\Extension\\AbuseFilter\\Filter\\": "includes/Filter/",
+		"MediaWiki\\Extension\\AbuseFilter\\Watcher\\": "includes/Watcher/"
 	},
 	"AutoloadClasses": {
 		"AbuseFilter": "includes/AbuseFilter.php",
@@ -167,7 +168,6 @@
 		"MediaWiki\\Extension\\AbuseFilter\\FilterLookup": "includes/FilterLookup.php",
 		"MediaWiki\\Extension\\AbuseFilter\\KeywordsManager": "includes/KeywordsManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPermissionManager": "includes/AbuseFilterPermissionManager.php",
-		"MediaWiki\\Extension\\AbuseFilter\\EmergencyWatcher": "includes/EmergencyWatcher.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterServices": "includes/AbuseFilterServices.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterProfiler": "includes/FilterProfiler.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ChangeTagger": "includes/ChangeTagger.php",
