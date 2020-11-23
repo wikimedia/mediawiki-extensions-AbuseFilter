@@ -162,6 +162,8 @@
 	"abusefilter-log-hide-reason": "Причина:",
 	"abusefilter-log-hide-reason-other": "Другая/дополнительная причина:",
 	"abusefilter-log-hide-forbidden": "У вас нет разрешения на сокрытие\nзаписей журнала злоупотреблений.",
+	"abusefilter-log-hide-show": "Показать",
+	"abusefilter-log-hide-hide": "Скрыть",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|скрыл|скрыла}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|открыл|открыла}} $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|вызвал|вызвала}} срабатывание фильтра $4, выполнив действие «$5» на странице $3. Предпринятые меры: $6 ($7)",

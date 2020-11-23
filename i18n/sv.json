@@ -140,6 +140,8 @@
 	"abusefilter-log-hide-reason": "Orsak:",
 	"abusefilter-log-hide-reason-other": "Annan/ytterligare anledning:",
 	"abusefilter-log-hide-forbidden": "Du har inte behörighet att dölja\nmissbrukslogg-poster.",
+	"abusefilter-log-hide-show": "Visa",
+	"abusefilter-log-hide-hide": "Dölj",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|dolde}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|återställde}} $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|utlöste}} $4, {{GENDER:$2|utförde}} åtgärden \"$5\" på  $3. Åtgärder: $6 ($7)",

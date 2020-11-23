@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chinamoonroll",
 			"NoiX180"
 		]
 	},
 	"abusefilter-log-search-impact-saved": "Wantah uahan maraksa",
+	"abusefilter-log-hide-show": "Sinahang",
 	"abusefilter-list-edit": "Uah"
 }

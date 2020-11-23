@@ -81,6 +81,8 @@
 	"abusefilter-log-hide-reason": "Grond:",
 	"abusefilter-log-hide-reason-other": "Aneren/zousätzleche Grond:",
 	"abusefilter-log-hide-forbidden": "Dir hutt net déi néideg Rechter fir Rubriken aus dem Mëssbrauchsfilter ze verstoppen.",
+	"abusefilter-log-hide-show": "Weisen",
+	"abusefilter-log-hide-hide": "Verstoppen",
 	"log-action-filter-abusefilter": "Typ vun der Ännerung vum Filter:",
 	"abusefilter-list": "All Filteren",
 	"abusefilter-list-id": "Nummer(ID) vum Filter",

@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Artsiom91",
+			"Kareyac",
 			"LexArt",
 			"Mikalai Udodau",
 			"Movses",
@@ -73,6 +74,8 @@
 	"abusefilter-log-hide-reason": "Прычына:",
 	"abusefilter-log-hide-reason-other": "Іншая/дадатковая прычына:",
 	"abusefilter-log-hide-forbidden": "Вы не маеце дазволу хаваць запісы ў журнале злоўжыванняў.",
+	"abusefilter-log-hide-show": "Паказаць",
+	"abusefilter-log-hide-hide": "Схаваць",
 	"log-action-filter-abusefilter": "Тып змены фільтра:",
 	"log-action-filter-abusefilter-create": "Стварэнне новага фільтра",
 	"log-action-filter-abusefilter-modify": "Змяненне фільтра",
