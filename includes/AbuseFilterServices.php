@@ -119,4 +119,11 @@ class AbuseFilterServices {
 	public static function getConsequencesFactory() : ConsequencesFactory {
 		return MediaWikiServices::getInstance()->getService( ConsequencesFactory::SERVICE_NAME );
 	}
+
+	/**
+	 * @return EditBoxBuilderFactory
+	 */
+	public static function getEditBoxBuilderFactory() : EditBoxBuilderFactory {
+		return MediaWikiServices::getInstance()->getService( EditBoxBuilderFactory::SERVICE_NAME );
+	}
 }

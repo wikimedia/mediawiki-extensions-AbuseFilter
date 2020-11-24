@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
+use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -157,6 +158,13 @@ return [
 			$services->get( FilterUser::SERVICE_NAME ),
 			SessionManager::getGlobalSession(),
 			RequestContext::getMain()->getRequest()->getIP()
+		);
+	},
+	EditBoxBuilderFactory::SERVICE_NAME => function ( MediaWikiServices $services ): EditBoxBuilderFactory {
+		return new EditBoxBuilderFactory(
+			$services->get( PermManager::SERVICE_NAME ),
+			$services->get( KeywordsManager::SERVICE_NAME ),
+			ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' )
 		);
 	},
 ];

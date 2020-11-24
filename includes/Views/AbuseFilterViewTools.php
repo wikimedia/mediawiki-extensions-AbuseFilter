@@ -21,9 +21,12 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		// Header
 		$out->addWikiMsg( 'abusefilter-tools-text' );
 
+		$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
+		$boxBuilder = $boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
+
 		// Expression evaluator
 		$eval = '';
-		$eval .= $this->buildEditBox(
+		$eval .= $boxBuilder->buildEditBox(
 			$request->getText( 'wpFilterRules' ),
 			true,
 			false,

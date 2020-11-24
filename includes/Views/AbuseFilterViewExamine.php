@@ -211,8 +211,15 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		// Add test bit
 		if ( $afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+			$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
+			$boxBuilder = $boxBuilderFactory->newEditBoxBuilder(
+				$this,
+				$this->getUser(),
+				$output
+			);
+
 			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
-			$tester .= $this->buildEditBox( $this->mTestFilter, false, false, false );
+			$tester .= $boxBuilder->buildEditBox( $this->mTestFilter, false, false, false );
 			$tester .= $this->buildFilterLoader();
 			$html .= Xml::tags( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
 			$html .= Xml::tags( 'p',

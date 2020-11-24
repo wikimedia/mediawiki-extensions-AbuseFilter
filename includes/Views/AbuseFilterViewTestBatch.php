@@ -61,9 +61,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
 		$out->enableOOUI();
 
+		$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
+		$boxBuilder = $boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
+
 		$output = '';
 		$output .=
-			$this->buildEditBox(
+			$boxBuilder->buildEditBox(
 				$this->testPattern,
 				true,
 				true,

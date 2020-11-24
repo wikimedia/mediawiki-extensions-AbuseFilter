@@ -305,7 +305,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
-		$fields['abusefilter-edit-rules'] = $this->buildEditBox(
+		$boxBuilderFactory = AbuseFilterServices::getEditBoxBuilderFactory();
+		$boxBuilder = $boxBuilderFactory->newEditBoxBuilder( $this, $user, $out );
+
+		$fields['abusefilter-edit-rules'] = $boxBuilder->buildEditBox(
 			$filterObj->getRules(),
 			true
 		);
