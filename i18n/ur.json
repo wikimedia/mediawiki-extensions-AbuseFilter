@@ -4,6 +4,7 @@
 			"Abdulq",
 			"BukhariSaeed",
 			"Muhammad Shuaib",
+			"Roovinn",
 			"Zainab Meher",
 			"عثمان خان شاہ",
 			"පසිඳු කාවින්ද"
@@ -77,6 +78,8 @@
 	"abusefilter-log-hide-reason": "وجہ:",
 	"abusefilter-log-hide-reason-other": "دیگر/اضافی وجہ:",
 	"abusefilter-log-hide-forbidden": "آپ غلط استعمال لاگ ان میں لکھے گئے مراسلے کو چھپانے کے لئے اجازت نہیں ہے.",
+	"abusefilter-log-hide-show": "دکھائیں",
+	"abusefilter-log-hide-hide": "چھپائیں",
 	"abusefilter-log-entry-suppress": "$1 نے $3 کو {{GENDER:$2|مخفی کیا}}",
 	"abusefilter-log-entry-unsuppress": "$1 نے $3 کو {{GENDER:$2|عام کیا}}",
 	"log-action-filter-abusefilter": "تبدیلئ مقطر کی نوعیت:",

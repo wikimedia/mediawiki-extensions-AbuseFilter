@@ -9,6 +9,7 @@
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Ratena Fiktrandê nengan dı têversanayış esto se, filtrey nengan de vurnayış vurnayışi kontrol kerê \n\nVurnayoğê RCID ya na LOGID eger ke icab krno se karêno",
+	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid yana logid lazımi, lakin teyna yewi şıma şenê bıgureyne.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Ful filtreya metini çımraravyarnayışi ke",
 	"apihelp-abusefiltercheckmatch-param-vars": "Vurnayerê kod kerdena JSON fına do test bo.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Têverşanaene rê vırnayışê IDy'o peyên",
