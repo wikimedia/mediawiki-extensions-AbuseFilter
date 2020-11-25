@@ -133,11 +133,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$status = AbuseFilter::saveFilter(
-			$user, $filter, $newFilter,
-			$origFilter, $dbw, $this->getConfig()
-		);
+		$filterStore = AbuseFilterServices::getFilterStore();
+		$status = $filterStore->saveFilter( $user, $filter, $newFilter, $origFilter );
 
 		if ( !$status->isGood() ) {
 			$errors = $status->getErrors();

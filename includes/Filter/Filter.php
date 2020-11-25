@@ -43,32 +43,6 @@ class Filter extends AbstractFilter {
 	}
 
 	/**
-	 * TEMPORARY HACK
-	 * @return \stdClass
-	 * @codeCoverageIgnore
-	 */
-	public function toDatabaseRow(): \stdClass {
-		// T67807: integer 1's & 0's might be better understood than booleans
-		return (object)[
-			'af_id' => $this->id,
-			'af_pattern' => $this->specs->getRules(),
-			'af_public_comments' => $this->specs->getName(),
-			'af_comments' => $this->specs->getComments(),
-			'af_group' => $this->specs->getGroup(),
-			'af_actions' => implode( ',', $this->specs->getActionsNames() ),
-			'af_enabled' => (int)$this->flags->getEnabled(),
-			'af_deleted' => (int)$this->flags->getDeleted(),
-			'af_hidden' => (int)$this->flags->getHidden(),
-			'af_global' => (int)$this->flags->getGlobal(),
-			'af_user' => $this->lastEditInfo->getUserID(),
-			'af_user_text' => $this->lastEditInfo->getUserName(),
-			'af_timestamp' => $this->lastEditInfo->getTimestamp(),
-			'af_hit_count' => $this->hitCount,
-			'af_throttled' => (int)$this->throttled,
-		];
-	}
-
-	/**
 	 * @return LastEditInfo
 	 */
 	public function getLastEditInfo(): LastEditInfo {

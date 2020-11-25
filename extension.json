@@ -180,6 +180,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\FilterCompare": "includes/FilterCompare.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterImporter": "includes/FilterImporter.php",
 		"MediaWiki\\Extension\\AbuseFilter\\InvalidImportDataException": "includes/InvalidImportDataException.php",
+		"MediaWiki\\Extension\\AbuseFilter\\FilterStore": "includes/FilterStore.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
