@@ -17,7 +17,7 @@
 	"abusefilter-log-diff": "cudahî",
 	"abusefilter-log-noactions": "tine",
 	"abusefilter-log-hide-reason": "Sedem:",
-	"log-action-filter-abusefilter": "Cureyê guhertina parzûnê:",
+	"log-action-filter-abusefilter": "Cureyê guhartina parzûnê:",
 	"abusefilter-list": "Hemû fîltreyan",
 	"abusefilter-list-status": "Rewş",
 	"abusefilter-list-edit": "Biguherîne",
@@ -62,7 +62,7 @@
 	"abusefilter-edit-builder-op-bool-or": "An (|)",
 	"abusefilter-edit-builder-vars-newsize": "Dirêjiya rûpela nû",
 	"abusefilter-edit-builder-vars-user-rights": "Mafên vî bikarhênerî",
-	"abusefilter-filter-log": "Guherandinên parzûnan yên dawî",
+	"abusefilter-filter-log": "Guhartinên parzûnan yên dawî",
 	"abusefilter-history-hidden": "Veşartî",
 	"abusefilter-history-global": "Global",
 	"abusefilter-history-timestamp": "Dem",
@@ -72,7 +72,7 @@
 	"abusefilter-history-deleted": "Hat jêbirin",
 	"abusefilter-history-filterid": "Fîltre",
 	"abusefilter-history-select-user": "Bikarhêner:",
-	"abusefilter-history-diff": "Guhertin",
+	"abusefilter-history-diff": "Guhartin",
 	"abusefilter-action-tag": "Nîşankirin",
 	"abusefilter-action-block": "Asteng bike",
 	"abusefilter-action-degroup": "Ji koman rake",
@@ -87,5 +87,5 @@
 	"abusefilter-examine-title": "Sernavê rûpelê:",
 	"abusefilter-examine-submit": "Lêgerîn",
 	"abusefilter-topnav-home": "Mal",
-	"abusefilter-topnav-recentchanges": "Guherandinên parzûnan yên dawî"
+	"abusefilter-topnav-recentchanges": "Guhartinên parzûnan yên dawî"
 }

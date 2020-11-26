@@ -102,6 +102,8 @@
 	"abusefilter-log-hide-reason": "কারণ:",
 	"abusefilter-log-hide-reason-other": "অন্যান্য/অতিরিক্ত কারণ:",
 	"abusefilter-log-hide-forbidden": "আপনার অপব্যবহার লগ সংযোজন লুকানোর অধিকার নেই।",
+	"abusefilter-log-hide-show": "দেখান",
+	"abusefilter-log-hide-hide": "আড়াল করুন",
 	"abusefilter-log-entry-suppress": "$1 $3 {{GENDER:$2|আড়াল করেছেন}}",
 	"log-action-filter-abusefilter": "ছাঁকনি পরিবর্তনের ধরন:",
 	"log-action-filter-abusefilter-create": "নতুন ছাঁকনি তৈরি",
