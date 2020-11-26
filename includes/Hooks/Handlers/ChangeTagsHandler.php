@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 
 class ChangeTagsHandler implements
 	\MediaWiki\ChangeTags\Hook\ListDefinedTagsHook,

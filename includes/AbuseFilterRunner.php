@@ -1,7 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequence\BCConsequence;
 use MediaWiki\Extension\AbuseFilter\Consequence\Consequence;
 use MediaWiki\Extension\AbuseFilter\Consequence\ConsequencesDisablerConsequence;

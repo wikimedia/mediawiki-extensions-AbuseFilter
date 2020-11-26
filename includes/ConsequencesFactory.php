@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 use BagOStuff;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequence\Block;
 use MediaWiki\Extension\AbuseFilter\Consequence\BlockAutopromote;
 use MediaWiki\Extension\AbuseFilter\Consequence\Degroup;

@@ -44,7 +44,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers AbuseFilterPreAuthenticationProvider
  * @covers AbuseFilterParser
- * @covers \MediaWiki\Extension\AbuseFilter\ChangeTagger
+ * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
  * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Block
  * @covers \MediaWiki\Extension\AbuseFilter\Consequence\BlockAutopromote

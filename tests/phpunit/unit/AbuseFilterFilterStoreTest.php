@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;

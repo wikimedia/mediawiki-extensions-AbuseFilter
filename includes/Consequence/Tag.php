@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequence;
 
-use MediaWiki\Extension\AbuseFilter\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 
 /**
  * Consequence that adds change tags once the edit is saved

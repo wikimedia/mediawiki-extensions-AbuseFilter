@@ -1,12 +1,12 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\ChangeTagger;
-use MediaWiki\Extension\AbuseFilter\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\ChangeTagger
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  */
 class AbuseFilterChangeTaggerTest extends MediaWikiUnitTestCase {
 	/**
