@@ -5,7 +5,12 @@ namespace MediaWiki\Extension\AbuseFilter;
 use AbuseFilterParser;
 use AbuseFilterTokenizer;
 use MessageLocalizer;
-use OOUI;
+use OOUI\ButtonWidget;
+use OOUI\DropdownInputWidget;
+use OOUI\FieldLayout;
+use OOUI\FieldsetLayout;
+use OOUI\HorizontalLayout;
+use OOUI\Widget;
 use OutputPage;
 use User;
 use Xml;
@@ -73,6 +78,7 @@ class EditBoxBuilder {
 		bool $needsModifyRights = true
 	) : string {
 		$this->output->enableOOUI();
+		$this->output->addModules( 'ext.abuseFilter.edit' );
 
 		// Rules are in English
 		$editorAttribs = [ 'dir' => 'ltr' ];
@@ -98,13 +104,12 @@ class EditBoxBuilder {
 			];
 			$attribs = array_merge( $editorAttribs, $aceAttribs );
 
-			$switchEditor =
-				new OOUI\ButtonWidget(
-					[
-						'label' => $this->localizer->msg( 'abusefilter-edit-switch-editor' )->text(),
-						'id' => 'mw-abusefilter-switcheditor'
-					] + $noTestAttrib
-				);
+			$switchEditor = new ButtonWidget(
+				[
+					'label' => $this->localizer->msg( 'abusefilter-edit-switch-editor' )->text(),
+					'id' => 'mw-abusefilter-switcheditor'
+				] + $noTestAttrib
+			);
 
 			$rulesContainer .= Xml::element( 'div', $attribs, $rules );
 
@@ -146,41 +151,42 @@ class EditBoxBuilder {
 					array_keys( $dropDownOptions[ $localisedGroup ] )
 				);
 				$dropDownOptions[ $localisedGroup ] = array_combine(
-					$newKeys, $dropDownOptions[ $localisedGroup ] );
+					$newKeys,
+					$dropDownOptions[ $localisedGroup ]
+				);
 			}
 
 			$dropDownList = Xml::listDropDownOptionsOoui( $dropDownOptions );
-			$dropDown = new OOUI\DropdownInputWidget( [
+			$dropDown = new DropdownInputWidget( [
 				'name' => 'wpFilterBuilder',
 				'inputId' => 'wpFilterBuilder',
 				'options' => $dropDownList
 			] );
 
-			$formElements = [ new OOUI\FieldLayout( $dropDown ) ];
+			$formElements = [ new FieldLayout( $dropDown ) ];
 
 			// Button for syntax check
-			$syntaxCheck =
-				new OOUI\ButtonWidget(
-					[
-						'label' => $this->localizer->msg( 'abusefilter-edit-check' )->text(),
-						'id' => 'mw-abusefilter-syntaxcheck'
-					] + $noTestAttrib
-				);
+			$syntaxCheck = new ButtonWidget(
+				[
+					'label' => $this->localizer->msg( 'abusefilter-edit-check' )->text(),
+					'id' => 'mw-abusefilter-syntaxcheck'
+				] + $noTestAttrib
+			);
 
 			// Button for switching editor (if Ace is used)
 			if ( $switchEditor !== null ) {
-				$formElements[] = new OOUI\FieldLayout(
-					new OOUI\Widget( [
-						'content' => new OOUI\HorizontalLayout( [
+				$formElements[] = new FieldLayout(
+					new Widget( [
+						'content' => new HorizontalLayout( [
 							'items' => [ $switchEditor, $syntaxCheck ]
 						] )
 					] )
 				);
 			} else {
-				$formElements[] = new OOUI\FieldLayout( $syntaxCheck );
+				$formElements[] = new FieldLayout( $syntaxCheck );
 			}
 
-			$fieldSet = new OOUI\FieldsetLayout( [
+			$fieldSet = new FieldsetLayout( [
 				'items' => $formElements,
 				'classes' => [ 'mw-abusefilter-edit-buttons', 'mw-abusefilter-javascript-tools' ]
 			] );
@@ -189,13 +195,12 @@ class EditBoxBuilder {
 		}
 
 		if ( $addResultDiv ) {
-			$rulesContainer .= Xml::element( 'div',
+			$rulesContainer .= Xml::element(
+				'div',
 				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ],
-				'&#160;' );
+				'&#160;'
+			);
 		}
-
-		// Add script
-		$this->output->addModules( 'ext.abuseFilter.edit' );
 
 		return $rulesContainer;
 	}
