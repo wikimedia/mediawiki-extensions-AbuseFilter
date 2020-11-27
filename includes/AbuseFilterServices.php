@@ -179,4 +179,11 @@ class AbuseFilterServices {
 	public static function getConsequencesExecutorFactory() : ConsequencesExecutorFactory {
 		return MediaWikiServices::getInstance()->getService( ConsequencesExecutorFactory::SERVICE_NAME );
 	}
+
+	/**
+	 * @return FilterRunnerFactory
+	 */
+	public static function getFilterRunnerFactory() : FilterRunnerFactory {
+		return MediaWikiServices::getInstance()->getService( FilterRunnerFactory::SERVICE_NAME );
+	}
 }

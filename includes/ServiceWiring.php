@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\ConsequencesExecutor;
+use MediaWiki\Extension\AbuseFilter\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\ConsequencesExecutorFactory as ConsExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
@@ -19,6 +20,7 @@ use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
@@ -235,6 +237,22 @@ return [
 				ConsequencesExecutor::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			)
+		);
+	},
+	FilterRunnerFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : FilterRunnerFactory {
+		return new FilterRunnerFactory(
+			AbuseFilterHookRunner::getRunner(),
+			$services->get( FilterProfiler::SERVICE_NAME ),
+			$services->get( ChangeTagger::SERVICE_NAME ),
+			$services->get( FilterLookup::SERVICE_NAME ),
+			$services->get( ParserFactory::SERVICE_NAME ),
+			$services->get( ConsequencesExecutorFactory::SERVICE_NAME ),
+			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
+			$services->get( UpdateHitCountWatcher::SERVICE_NAME ),
+			$services->get( EmergencyWatcher::SERVICE_NAME ),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->getStatsdDataFactory(),
+			$services->getMainConfig()->get( 'AbuseFilterValidGroups' )
 		);
 	},
 ];

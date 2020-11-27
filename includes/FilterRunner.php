@@ -1,23 +1,61 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+namespace MediaWiki\Extension\AbuseFilter;
+
+use AbuseFilterVariableHolder;
+use AFComputedVariable;
+use BadMethodCallException;
+use BagOStuff;
+use IBufferingStatsdDataFactory;
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
-use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\FilterProfiler;
-use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use NullStatsdDataFactory;
+use ObjectCache;
+use Psr\Log\LoggerInterface;
+use Status;
+use Title;
+use User;
 
 /**
  * This class contains the logic for executing abuse filters and their actions. The entry points are
  * run() and runForStash(). Note that run() can only be executed once on a given instance.
+ * @internal Not stable yet
  */
-class AbuseFilterRunner {
+class FilterRunner {
+	/** @var AbuseFilterHookRunner */
+	private $hookRunner;
+	/** @var FilterProfiler */
+	private $filterProfiler;
+	/** @var ChangeTagger */
+	private $changeTagger;
+	/** @var FilterLookup */
+	private $filterLookup;
+	/** @var ParserFactory */
+	private $parserFactory;
+	/** @var ConsequencesExecutorFactory */
+	private $consExecutorFactory;
+	/** @var AbuseLoggerFactory */
+	private $abuseLoggerFactory;
+	/** @var Watcher[] */
+	private $watchers;
+	/** @var LoggerInterface */
+	private $logger;
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
+	/**
+	 * @var AbuseFilterParser
+	 * @private Temporarily public for BC
+	 */
+	public $parser;
+
 	/**
 	 * @var User The user who performed the action being filtered
 	 */
@@ -52,44 +90,53 @@ class AbuseFilterRunner {
 	protected $profilingData;
 
 	/**
-	 * @var AbuseFilterParser The parser instance to use to check all filters
-	 * @protected Public for back-compat only, will be made protected. self::init already handles
-	 *  building a parser object.
+	 * @param AbuseFilterHookRunner $hookRunner
+	 * @param FilterProfiler $filterProfiler
+	 * @param ChangeTagger $changeTagger
+	 * @param FilterLookup $filterLookup
+	 * @param ParserFactory $parserFactory
+	 * @param ConsequencesExecutorFactory $consExecutorFactory
+	 * @param AbuseLoggerFactory $abuseLoggerFactory
+	 * @param Watcher[] $watchers
+	 * @param LoggerInterface $logger
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param array $validFilterGroups
+	 * @param User $user
+	 * @param Title $title
+	 * @param AbuseFilterVariableHolder $vars
+	 * @param string $group
+	 * @throws InvalidArgumentException If $group is invalid or the 'action' variable is unset
 	 */
-	public $parser;
-	/**
-	 * @var bool Whether a run() was already performed. Used to avoid multiple executions with the
-	 *   same members.
-	 */
-	private $executed = false;
+	public function __construct(
+		AbuseFilterHookRunner $hookRunner,
+		FilterProfiler $filterProfiler,
+		ChangeTagger $changeTagger,
+		FilterLookup $filterLookup,
+		ParserFactory $parserFactory,
+		ConsequencesExecutorFactory $consExecutorFactory,
+		AbuseLoggerFactory $abuseLoggerFactory,
+		array $watchers,
+		LoggerInterface $logger,
+		IBufferingStatsdDataFactory $statsdDataFactory,
+		array $validFilterGroups,
+		User $user,
+		Title $title,
+		AbuseFilterVariableHolder $vars,
+		string $group
+	) {
+		$this->hookRunner = $hookRunner;
+		$this->filterProfiler = $filterProfiler;
+		$this->changeTagger = $changeTagger;
+		$this->filterLookup = $filterLookup;
+		$this->parserFactory = $parserFactory;
+		$this->consExecutorFactory = $consExecutorFactory;
+		$this->abuseLoggerFactory = $abuseLoggerFactory;
+		$this->watchers = $watchers;
+		$this->logger = $logger;
+		$this->statsdDataFactory = $statsdDataFactory;
 
-	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
-
-	/** @var FilterProfiler */
-	private $filterProfiler;
-
-	/** @var ChangeTagger */
-	private $changeTagger;
-
-	/** @var FilterLookup */
-	private $filterLookup;
-
-	/** @var Watcher[] */
-	private $watchers;
-
-	/**
-	 * @param User $user The user who performed the action being filtered
-	 * @param Title $title The title where the action being filtered was performed
-	 * @param AbuseFilterVariableHolder $vars The variables for the current action
-	 * @param string $group The group of filters to check. It must be defined as so in
-	 *   $wgAbuseFilterValidGroups, or this will throw.
-	 * @throws InvalidArgumentException
-	 */
-	public function __construct( User $user, Title $title, AbuseFilterVariableHolder $vars, $group ) {
-		global $wgAbuseFilterValidGroups;
-		if ( !in_array( $group, $wgAbuseFilterValidGroups ) ) {
-			throw new InvalidArgumentException( '$group must be defined in $wgAbuseFilterValidGroups' );
+		if ( !in_array( $group, $validFilterGroups, true ) ) {
+			throw new InvalidArgumentException( "Group $group is not a valid group" );
 		}
 		if ( !$vars->varIsSet( 'action' ) ) {
 			throw new InvalidArgumentException( "The 'action' variable is not set." );
@@ -97,18 +144,9 @@ class AbuseFilterRunner {
 		$this->user = $user;
 		$this->title = $title;
 		$this->vars = $vars;
-		$this->vars->setLogger( LoggerFactory::getInstance( 'AbuseFilter' ) );
+		$this->vars->setLogger( $logger );
 		$this->group = $group;
 		$this->action = $vars->getVar( 'action' )->toString();
-		$this->hookRunner = AbuseFilterHookRunner::getRunner();
-		$this->filterProfiler = AbuseFilterServices::getFilterProfiler();
-		$this->changeTagger = AbuseFilterServices::getChangeTagger();
-		$this->filterLookup = AbuseFilterServices::getFilterLookup();
-		// TODO Inject, add a hook for custom watchers
-		$this->watchers = [
-			AbuseFilterServices::getUpdateHitCountWatcher(),
-			AbuseFilterServices::getEmergencyWatcher()
-		];
 	}
 
 	/**
@@ -130,17 +168,9 @@ class AbuseFilterRunner {
 
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
-		$this->parser = $this->getParser();
-		$this->parser->setStatsd( MediaWikiServices::getInstance()->getStatsdDataFactory() );
+		$this->parser = $this->parserFactory->newParser( $this->vars );
+		$this->parser->setStatsd( $this->statsdDataFactory );
 		$this->profilingData = [];
-	}
-
-	/**
-	 * Shortcut method, so that it can be overridden in mocks.
-	 * @return AbuseFilterParser
-	 */
-	protected function getParser() : AbuseFilterParser {
-		return AbuseFilterServices::getParserFactory()->newParser( $this->vars );
 	}
 
 	/**
@@ -151,11 +181,7 @@ class AbuseFilterRunner {
 	 * @throws BadMethodCallException If run() was already called on this instance
 	 * @return Status Good if no action has been taken, a fatal otherwise.
 	 */
-	public function run( $allowStash = true ) : Status {
-		if ( $this->executed ) {
-			throw new BadMethodCallException( 'run() was already called on this instance.' );
-		}
-		$this->executed = true;
+	public function run( $allowStash = true ): Status {
 		$this->init();
 
 		$skipReasons = [];
@@ -163,8 +189,7 @@ class AbuseFilterRunner {
 			$this->vars, $this->title, $this->user, $skipReasons
 		);
 		if ( !$shouldFilter ) {
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->info(
+			$this->logger->info(
 				'Skipping action {action}. Reasons provided: {reasons}',
 				[ 'action' => $this->action, 'reasons' => implode( ', ', $skipReasons ) ]
 			);
@@ -223,7 +248,7 @@ class AbuseFilterRunner {
 			return Status::newGood();
 		}
 
-		$executor = AbuseFilterServices::getConsequencesExecutorFactory()->newExecutor(
+		$executor = $this->consExecutorFactory->newExecutor(
 			$this->user,
 			$this->title,
 			$this->vars
@@ -231,11 +256,9 @@ class AbuseFilterRunner {
 		$status = $executor->executeFilterActions( $matchedFilters );
 		$actionsTaken = $status->getValue();
 
-		$abuseLogger = AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
-			$this->title,
-			$this->user,
-			$this->vars
-		);
+		// Note, it's important that we create an AbuseLogger now, after all lazy-loaded variables
+		// requested by active filters have been computed
+		$abuseLogger = $this->abuseLoggerFactory->newLogger( $this->title, $this->user, $this->vars );
 		[
 			'local' => $loggedLocalFilters,
 			'global' => $loggedGlobalFilters
@@ -362,7 +385,7 @@ class AbuseFilterRunner {
 		// Bots do not use edit stashing, so avoid distorting the stats
 		$statsd = $this->user->isBot()
 			? new NullStatsdDataFactory()
-			: MediaWikiServices::getInstance()->getStatsdDataFactory();
+			: $this->statsdDataFactory;
 
 		$logger->debug( __METHOD__ . ": cache $type for '{$this->title}' (key $key)." );
 		$statsd->increment( "abusefilter.check-stash.$type" );
