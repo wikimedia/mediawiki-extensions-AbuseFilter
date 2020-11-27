@@ -191,29 +191,24 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @todo Make this a unit test in AbuseFilterFilterValidatorTest once static methods
+	 * @todo Make this a unit test in AbuseFilterChangeTagValidatorTest once static methods
 	 *   in ChangeTags are moved to a service
 	 * @todo When the above is possible, use mocks to test canAddTagsAccompanyingChange and canCreateTag
 	 *
 	 * @param string $tag The tag to validate
 	 * @param string|null $expectedError
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator::isAllowedTag
+	 * @covers \MediaWiki\Extension\AbuseFilter\ChangeTagValidator::validateTag
 	 * @dataProvider provideTags
 	 */
-	public function testIsAllowedTag( string $tag, ?string $expectedError ) {
-		$validator = new FilterValidator(
-			AbuseFilterServices::getChangeTagsManager(),
-			$this->createMock( ParserFactory::class ),
-			$this->createMock( AbuseFilterPermissionManager::class ),
-			[]
-		);
-		$status = $validator->isAllowedTag( $tag );
+	public function testValidateTag( string $tag, ?string $expectedError ) {
+		$validator = AbuseFilterServices::getChangeTagValidator();
+		$status = $validator->validateTag( $tag );
 		$actualError = $status->isGood() ? null : $status->getErrors()[0]['message'];
 		$this->assertSame( $expectedError, $actualError );
 	}
 
 	/**
-	 * Data provider for testIsAllowedTag
+	 * Data provider for testValidateTag
 	 * @return array
 	 */
 	public function provideTags() {
@@ -234,7 +229,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testCheckAllTags( array $tags, ?string $expected ) {
 		$validator = new FilterValidator(
-			AbuseFilterServices::getChangeTagsManager(),
+			AbuseFilterServices::getChangeTagValidator(),
 			$this->createMock( ParserFactory::class ),
 			$this->createMock( AbuseFilterPermissionManager::class ),
 			[]
