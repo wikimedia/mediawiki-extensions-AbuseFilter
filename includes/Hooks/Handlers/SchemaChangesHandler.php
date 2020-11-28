@@ -3,8 +3,11 @@
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use DatabaseUpdater;
+use FixOldLogEntries;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MWException;
+use NormalizeThrottleParameters;
+use UpdateVarDumps;
 use User;
 
 class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
@@ -187,9 +190,9 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 		}
 
 		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
-		$updater->addPostDatabaseUpdateMaintenance( 'NormalizeThrottleParameters' );
-		$updater->addPostDatabaseUpdateMaintenance( 'FixOldLogEntries' );
-		$updater->addPostDatabaseUpdateMaintenance( 'UpdateVarDumps' );
+		$updater->addPostDatabaseUpdateMaintenance( NormalizeThrottleParameters::class );
+		$updater->addPostDatabaseUpdateMaintenance( FixOldLogEntries::class );
+		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );
 	}
 
 	/**
