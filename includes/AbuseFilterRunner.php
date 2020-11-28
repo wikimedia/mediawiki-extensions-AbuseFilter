@@ -15,7 +15,6 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use Wikimedia\Rdbms\IDatabase;
 
 /**
  * This class contains the logic for executing abuse filters and their actions. The entry points are
@@ -109,7 +108,10 @@ class AbuseFilterRunner {
 		$this->changeTagger = AbuseFilterServices::getChangeTagger();
 		$this->filterLookup = AbuseFilterServices::getFilterLookup();
 		// TODO Inject, add a hook for custom watchers
-		$this->watchers = [ AbuseFilterServices::getEmergencyWatcher() ];
+		$this->watchers = [
+			AbuseFilterServices::getUpdateHitCountWatcher(),
+			AbuseFilterServices::getEmergencyWatcher()
+		];
 	}
 
 	/**
@@ -237,17 +239,8 @@ class AbuseFilterRunner {
 			'global' => $loggedGlobalFilters
 		] = $abuseLogger->addLogEntries( $actionsTaken );
 
-		if ( count( $loggedLocalFilters ) ) {
-			$this->updateHitCounts( wfGetDB( DB_MASTER ), $loggedLocalFilters );
-		}
-
-		if ( count( $loggedGlobalFilters ) ) {
-			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
-			$this->updateHitCounts( $fdb, $loggedGlobalFilters );
-		}
-
 		foreach ( $this->watchers as $watcher ) {
-			$watcher->run( $loggedLocalFilters, $this->group );
+			$watcher->run( $loggedLocalFilters, $loggedGlobalFilters, $this->group );
 		}
 
 		return $status;
@@ -732,25 +725,6 @@ class AbuseFilterRunner {
 		}
 
 		return $status;
-	}
-
-	/**
-	 * @param IDatabase $dbw
-	 * @param array $loggedFilters
-	 * @todo Move to a Watcher
-	 */
-	private function updateHitCounts( IDatabase $dbw, array $loggedFilters ) : void {
-		$method = __METHOD__;
-		$dbw->onTransactionPreCommitOrIdle(
-			function () use ( $dbw, $loggedFilters, $method ) {
-				$dbw->update( 'abuse_filter',
-					[ 'af_hit_count=af_hit_count+1' ],
-					[ 'af_id' => $loggedFilters ],
-					$method
-				);
-			},
-			$method
-		);
 	}
 
 	/**

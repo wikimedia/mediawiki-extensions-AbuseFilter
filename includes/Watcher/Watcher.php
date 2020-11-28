@@ -7,8 +7,9 @@ namespace MediaWiki\Extension\AbuseFilter\Watcher;
  */
 interface Watcher {
 	/**
-	 * @param int[] $filters The filters that matched the action
+	 * @param int[] $localFilters The local filters that matched the action
+	 * @param int[] $globalFilters The global filters that matched the action
 	 * @param string $group
 	 */
-	public function run( array $filters, string $group ) : void;
+	public function run( array $localFilters, array $globalFilters, string $group ) : void;
 }

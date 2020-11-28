@@ -23,6 +23,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
+use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
@@ -194,6 +195,12 @@ return [
 			),
 			WikiMap::getCurrentWikiDbDomain()->getId(),
 			RequestContext::getMain()->getRequest()->getIP()
+		);
+	},
+	UpdateHitCountWatcher::SERVICE_NAME => function ( MediaWikiServices $services ): UpdateHitCountWatcher {
+		return new UpdateHitCountWatcher(
+			$services->getDBLoadBalancer(),
+			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
 ];
