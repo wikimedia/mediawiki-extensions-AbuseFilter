@@ -417,7 +417,7 @@
 		},
 		"AbuseFilterCustomActionsHandlers": {
 			"value": [],
-			"description": "Callback functions for custom actions"
+			"description": "Callback functions for custom actions. DEPRECATED since 1.36! Use the AbuseFilterCustomActions hook instead."
 		},
 		"AbuseFilterValidGroups": {
 			"value": [ "default" ],

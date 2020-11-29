@@ -635,7 +635,15 @@ class AbuseFilterRunner {
 				$accountName = $this->vars->getVar( 'accountname', AbuseFilterVariableHolder::GET_BC )->toNative();
 				return $consFactory->newTag( $baseConsParams, $accountName, $rawParams );
 			default:
-				if ( isset( $wgAbuseFilterCustomActionsHandlers[$actionName] ) ) {
+				$registry = AbuseFilterServices::getConsequencesRegistry();
+				if ( array_key_exists( $actionName, $registry->getCustomActions() ) ) {
+					$callback = $registry->getCustomActions()[$actionName];
+					return $callback( $baseConsParams, $rawParams );
+				} elseif ( isset( $wgAbuseFilterCustomActionsHandlers[$actionName] ) ) {
+					wfDeprecated(
+						'$wgAbuseFilterCustomActionsHandlers; use the AbuseFilterCustomActions hook instead',
+						'1.36'
+					);
 					$customFunction = $wgAbuseFilterCustomActionsHandlers[$actionName];
 					return new BCConsequence( $baseConsParams, $rawParams, $this->vars, $customFunction );
 				} else {

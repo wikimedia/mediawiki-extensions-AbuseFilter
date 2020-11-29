@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\Consequence\Consequence;
 use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 
@@ -27,9 +28,16 @@ class AbuseFilterConsequencesRegistryTest extends MediaWikiUnitTestCase {
 	public function testGetAllActionNames() {
 		$configActions = [ 'nothing' => false, 'rickroll' => true ];
 		$customHandlers = [ 'blahblah' => 'strlen' ];
-		$expected = [ 'nothing', 'rickroll', 'blahblah' ];
+		$customActionName = 'spell';
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
+			function ( &$actions ) use ( $customActionName ) {
+				$actions[$customActionName] = 'strlen';
+			}
+		);
+		$expected = [ 'nothing', 'rickroll', 'blahblah', 'spell' ];
 		$registry = new ConsequencesRegistry(
-			$this->createMock( AbuseFilterHookRunner::class ),
+			$hookRunner,
 			$configActions,
 			$customHandlers
 		);
@@ -42,9 +50,16 @@ class AbuseFilterConsequencesRegistryTest extends MediaWikiUnitTestCase {
 	public function testGetAllEnabledActionNames() {
 		$configActions = [ 'nothing' => false, 'rickroll' => true ];
 		$customHandlers = [ 'blahblah' => 'strlen' ];
-		$expected = [ 'rickroll', 'blahblah' ];
+		$customActionName = 'spell';
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
+			function ( &$actions ) use ( $customActionName ) {
+				$actions[$customActionName] = 'strlen';
+			}
+		);
+		$expected = [ 'rickroll', 'blahblah', 'spell' ];
 		$registry = new ConsequencesRegistry(
-			$this->createMock( AbuseFilterHookRunner::class ),
+			$hookRunner,
 			$configActions,
 			$customHandlers
 		);
@@ -76,5 +91,56 @@ class AbuseFilterConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		);
 		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
 		$this->assertContains( $extraDangerous, $registry->getDangerousActionNames() );
+	}
+
+	/**
+	 * @covers ::getCustomActions
+	 * @covers ::validateCustomActions
+	 */
+	public function testGetCustomActions() {
+		$customActionName = 'rickroll';
+		$customAction = 'strlen';
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
+			function ( &$actions ) use ( $customActionName, $customAction ) {
+				$actions[$customActionName] = $customAction;
+			}
+		);
+		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$this->assertSame( [ $customActionName => $customAction ], $registry->getCustomActions() );
+	}
+
+	/**
+	 * @covers ::getCustomActions
+	 * @covers ::validateCustomActions
+	 */
+	public function testGetCustomActions_invalidKey() {
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
+			function ( &$actions ) {
+				$invalidKey = 42;
+				$actions[$invalidKey] = $this->createMock( Consequence::class );
+			}
+		);
+		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$this->expectException( RuntimeException::class );
+		$registry->getCustomActions();
+	}
+
+	/**
+	 * @covers ::getCustomActions
+	 * @covers ::validateCustomActions
+	 */
+	public function testGetCustomActions_invalidValue() {
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
+			function ( &$actions ) {
+				$invalidValue = 42;
+				$actions['myaction'] = $invalidValue;
+			}
+		);
+		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$this->expectException( RuntimeException::class );
+		$registry->getCustomActions();
 	}
 }
