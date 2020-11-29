@@ -1,8 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use ContextSource;
+use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Linker\LinkRenderer;
+use MWException;
+use OOUI;
+use RecentChange;
+use SpecialPage;
+use Title;
 use Wikimedia\Rdbms\IDatabase;
+use Xml;
 
 abstract class AbuseFilterView extends ContextSource {
 

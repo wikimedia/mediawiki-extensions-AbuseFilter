@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
+
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**
 	 * @var AbuseFilterChangesList Our changes list

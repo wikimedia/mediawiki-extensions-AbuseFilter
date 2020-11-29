@@ -1,5 +1,14 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewImport;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use Wikimedia\ObjectFactory;
 
 class SpecialAbuseFilterTest extends MediaWikiUnitTestCase {

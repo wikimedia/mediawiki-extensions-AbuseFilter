@@ -1,5 +1,13 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use AbuseFilter;
+use BadMethodCallException;
+use Html;
+use HtmlArmor;
+use IContextSource;
+use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -13,6 +21,11 @@ use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\PermissionManager;
+use MWException;
+use OOUI;
+use SpecialBlock;
+use SpecialPage;
+use Xml;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**

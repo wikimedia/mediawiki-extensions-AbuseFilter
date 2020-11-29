@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
 use MediaWiki\Linker\LinkRenderer;
 
 class AbuseFilterHistoryPager extends TablePager {

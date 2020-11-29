@@ -1,8 +1,14 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use HTMLForm;
+use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Linker\LinkRenderer;
+use OOUI;
+use Xml;
 
 class AbuseFilterViewTools extends AbuseFilterView {
 

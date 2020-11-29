@@ -1,11 +1,26 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use AbuseFilter;
+use HTMLForm;
+use IContextSource;
+use Linker;
+use ManualLogEntry;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\User\UserGroupManager;
+use Message;
+use MWException;
+use PermissionsError;
+use SpecialPage;
+use Title;
+use User;
+use UserBlockedError;
+use Xml;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/** @var int */

@@ -9,6 +9,16 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterView;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewImport;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use Wikimedia\ObjectFactory;
 
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {

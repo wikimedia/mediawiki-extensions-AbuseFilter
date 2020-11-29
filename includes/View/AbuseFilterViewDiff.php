@@ -1,5 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use AbuseFilter;
+use Diff;
+use DifferenceEngine;
+use Linker;
+use OOUI;
+use stdClass;
+use TableDiffFormatterFullContext;
+use Xml;
+
 /**
  * @phan-file-suppress PhanTypeArraySuspiciousNullable Some confusion with class members
  */

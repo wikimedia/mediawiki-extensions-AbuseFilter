@@ -1,8 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use AbuseFilterPager;
+use GlobalAbuseFilterPager;
+use Html;
+use HTMLForm;
+use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Linker\LinkRenderer;
+use OOUI;
+use StringUtils;
+use Xml;
 
 /**
  * The default view used in Special:AbuseFilter

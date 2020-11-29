@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\View;
+
+use HTMLForm;
+
 class AbuseFilterViewImport extends AbuseFilterView {
 	/**
 	 * Shows the page
@@ -10,7 +14,7 @@ class AbuseFilterViewImport extends AbuseFilterView {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
 		}
-		$url = SpecialPage::getTitleFor( 'AbuseFilter', 'new' )->getFullURL();
+		$url = $this->getTitle( 'new' )->getFullURL();
 
 		$out->addWikiMsg( 'abusefilter-import-intro' );
 
