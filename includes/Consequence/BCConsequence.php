@@ -2,6 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequence;
 
+use AbuseFilterVariableHolder;
+use LogicException;
+use Title;
+
 /**
  * BC class for custom consequences specified via $wgAbuseFilterCustomActionsHandlers
  * @internal Temporary class
@@ -9,7 +13,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequence;
 class BCConsequence extends Consequence implements HookAborterConsequence {
 	/** @var array */
 	private $rawParams;
-	/** @var \AbuseFilterVariableHolder */
+	/** @var AbuseFilterVariableHolder */
 	private $vars;
 	/** @var callable */
 	private $callback;
@@ -20,13 +24,13 @@ class BCConsequence extends Consequence implements HookAborterConsequence {
 	/**
 	 * @param Parameters $parameters
 	 * @param array $rawParams Parameters as stored in the DB
-	 * @param \AbuseFilterVariableHolder $vars
+	 * @param AbuseFilterVariableHolder $vars
 	 * @param callable $cb
 	 */
 	public function __construct(
 		Parameters $parameters,
 		array $rawParams,
-		\AbuseFilterVariableHolder $vars,
+		AbuseFilterVariableHolder $vars,
 		callable $cb
 	) {
 		parent::__construct( $parameters );
@@ -43,7 +47,7 @@ class BCConsequence extends Consequence implements HookAborterConsequence {
 			$this->callback,
 			$this->parameters->getAction(),
 			$this->rawParams,
-			\Title::castFromLinkTarget( $this->parameters->getTarget() ),
+			Title::castFromLinkTarget( $this->parameters->getTarget() ),
 			$this->vars,
 			$this->parameters->getFilter()->getName(),
 			$this->parameters->getFilter()->getID()
@@ -57,7 +61,7 @@ class BCConsequence extends Consequence implements HookAborterConsequence {
 	 */
 	public function getMessage(): array {
 		if ( $this->message === null ) {
-			throw new \LogicException( 'No message, did you call execute()?' );
+			throw new LogicException( 'No message, did you call execute()?' );
 		}
 		return [ $this->message ];
 	}

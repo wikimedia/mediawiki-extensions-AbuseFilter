@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Consequence;
 
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use Psr\Log\LoggerInterface;
-use User;
 
 /**
  * Consequence that blocks/delays autopromotion of a registered user.
@@ -39,8 +38,8 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence {
 	 * @inheritDoc
 	 */
 	public function execute() : bool {
-		$target = User::newFromIdentity( $this->parameters->getUser() );
-		if ( $target->isAnon() ) {
+		$target = $this->parameters->getUser();
+		if ( !$target->isRegistered() ) {
 			return false;
 		}
 

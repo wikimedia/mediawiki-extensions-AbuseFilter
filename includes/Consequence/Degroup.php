@@ -7,7 +7,7 @@ use AFPData;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserGroupManager;
-use User;
+use TitleValue;
 
 /**
  * Consequence that removes all user groups from a user.
@@ -47,9 +47,9 @@ class Degroup extends Consequence implements HookAborterConsequence {
 	 * @inheritDoc
 	 */
 	public function execute() : bool {
-		$user = User::newFromIdentity( $this->parameters->getUser() );
+		$user = $this->parameters->getUser();
 
-		if ( $user->isAnon() ) {
+		if ( !$user->isRegistered() ) {
 			return false;
 		}
 
@@ -79,7 +79,7 @@ class Degroup extends Consequence implements HookAborterConsequence {
 		// TODO Core should provide a logging method
 		$logEntry = new ManualLogEntry( 'rights', 'rights' );
 		$logEntry->setPerformer( $this->filterUser->getUser() );
-		$logEntry->setTarget( $user->getUserPage() );
+		$logEntry->setTarget( new TitleValue( NS_USER, $user->getName() ) );
 		$logEntry->setComment(
 			wfMessage(
 				'abusefilter-degroupreason',

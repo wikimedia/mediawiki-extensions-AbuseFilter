@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequence;
 
+use AbuseFilter;
+
 /**
  * Consequence that simply disallows the ongoing action.
  */
@@ -34,7 +36,7 @@ class Disallow extends Consequence implements HookAborterConsequence {
 			$this->message,
 			$filter->getName(),
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-			\AbuseFilter::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
+			AbuseFilter::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}
 }
