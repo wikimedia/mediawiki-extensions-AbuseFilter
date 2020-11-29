@@ -1,12 +1,14 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 
 /**
@@ -41,15 +43,20 @@ class AbuseFilterFilterImporterTest extends MediaWikiUnitTestCase {
 		$groups = $groups ?? [ 'default' ];
 		$isCentral = $isCentral ?? false;
 		$actions = array_fill_keys( $actions ?? [ 'warn', 'disallow', 'block' ], true );
+		$registry = new ConsequencesRegistry(
+			$this->createMock( AbuseFilterHookRunner::class ),
+			$actions,
+			[]
+		);
 		return new FilterImporter(
 			new ServiceOptions(
 				FilterImporter::CONSTRUCTOR_OPTIONS,
 				[
 					'AbuseFilterValidGroups' => $groups,
-					'AbuseFilterIsCentral' => $isCentral,
-					'AbuseFilterActions' => $actions
+					'AbuseFilterIsCentral' => $isCentral
 				]
-			)
+			),
+			$registry
 		);
 	}
 
@@ -189,7 +196,10 @@ class AbuseFilterFilterImporterTest extends MediaWikiUnitTestCase {
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			FilterImporter::class,
-			new FilterImporter( $this->createMock( ServiceOptions::class ) )
+			new FilterImporter(
+				$this->createMock( ServiceOptions::class ),
+				$this->createMock( ConsequencesRegistry::class )
+			)
 		);
 	}
 }

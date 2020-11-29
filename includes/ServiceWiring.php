@@ -132,7 +132,7 @@ return [
 	},
 	FilterCompare::SERVICE_NAME => function ( MediaWikiServices $services ): FilterCompare {
 		return new FilterCompare(
-			array_keys( array_filter( $services->getMainConfig()->get( 'AbuseFilterActions' ) ) )
+			$services->get( ConsequencesRegistry::SERVICE_NAME )
 		);
 	},
 	FilterImporter::SERVICE_NAME => function ( MediaWikiServices $services ): FilterImporter {
@@ -140,12 +140,13 @@ return [
 			new ServiceOptions(
 				FilterImporter::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
-			)
+			),
+			$services->get( ConsequencesRegistry::SERVICE_NAME )
 		);
 	},
 	FilterStore::SERVICE_NAME => function ( MediaWikiServices $services ): FilterStore {
 		return new FilterStore(
-			$services->getMainConfig()->get( 'AbuseFilterActions' ),
+			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
 			$services->get( FilterProfiler::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),

@@ -18,8 +18,8 @@ use Wikimedia\Rdbms\ILoadBalancer;
 class FilterStore {
 	public const SERVICE_NAME = 'AbuseFilterFilterStore';
 
-	/** @var bool[] */
-	private $afActions;
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
@@ -40,7 +40,7 @@ class FilterStore {
 	private $filterCompare;
 
 	/**
-	 * @param bool[] $afActions
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param ILoadBalancer $loadBalancer
 	 * @param FilterProfiler $filterProfiler
 	 * @param FilterLookup $filterLookup
@@ -49,7 +49,7 @@ class FilterStore {
 	 * @param FilterCompare $filterCompare
 	 */
 	public function __construct(
-		array $afActions,
+		ConsequencesRegistry $consequencesRegistry,
 		ILoadBalancer $loadBalancer,
 		FilterProfiler $filterProfiler,
 		FilterLookup $filterLookup,
@@ -57,7 +57,7 @@ class FilterStore {
 		FilterValidator $filterValidator,
 		FilterCompare $filterCompare
 	) {
-		$this->afActions = $afActions;
+		$this->consequencesRegistry = $consequencesRegistry;
 		$this->loadBalancer = $loadBalancer;
 		$this->filterProfiler = $filterProfiler;
 		$this->filterLookup = $filterLookup;
@@ -148,7 +148,7 @@ class FilterStore {
 
 		$actions = $newFilter->getActions();
 		$actionsRows = [];
-		foreach ( array_filter( $this->afActions ) as $action => $_ ) {
+		foreach ( $this->consequencesRegistry->getAllEnabledActionNames() as $action ) {
 			// Check if it's set
 			$enabled = isset( $actions[$action] );
 

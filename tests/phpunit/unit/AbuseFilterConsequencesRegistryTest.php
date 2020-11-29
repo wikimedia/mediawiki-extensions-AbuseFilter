@@ -37,6 +37,21 @@ class AbuseFilterConsequencesRegistryTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::getAllEnabledActionNames
+	 */
+	public function testGetAllEnabledActionNames() {
+		$configActions = [ 'nothing' => false, 'rickroll' => true ];
+		$customHandlers = [ 'blahblah' => 'strlen' ];
+		$expected = [ 'rickroll', 'blahblah' ];
+		$registry = new ConsequencesRegistry(
+			$this->createMock( AbuseFilterHookRunner::class ),
+			$configActions,
+			$customHandlers
+		);
+		$this->assertSame( $expected, $registry->getAllEnabledActionNames() );
+	}
+
+	/**
 	 * @covers ::getDangerousActionNames
 	 */
 	public function testGetDangerousActionNames() {

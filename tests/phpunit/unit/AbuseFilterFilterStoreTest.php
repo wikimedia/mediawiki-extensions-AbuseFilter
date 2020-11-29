@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -22,7 +23,7 @@ class AbuseFilterFilterStoreTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			FilterStore::class,
 			new FilterStore(
-				[],
+				$this->createMock( ConsequencesRegistry::class ),
 				$this->createMock( ILoadBalancer::class ),
 				$this->createMock( FilterProfiler::class ),
 				$this->createMock( FilterLookup::class ),
