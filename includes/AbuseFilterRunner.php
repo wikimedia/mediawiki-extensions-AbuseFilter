@@ -502,6 +502,7 @@ class AbuseFilterRunner {
 
 		// Keep track of the longest block
 		$maxBlock = [ 'id' => null, 'expiry' => -1, 'blocktalk' => null ];
+		$dangerousActions = AbuseFilterServices::getConsequencesRegistry()->getDangerousActionNames();
 
 		foreach ( $actionsByFilter as $filter => &$actions ) {
 			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
@@ -511,7 +512,7 @@ class AbuseFilterRunner {
 			}
 
 			// Don't show the disallow message if a blocking action is executed
-			if ( array_intersect( array_keys( $actions ), AbuseFilter::getDangerousActions() )
+			if ( array_intersect( array_keys( $actions ), $dangerousActions )
 				&& isset( $actions['disallow'] )
 			) {
 				unset( $actions['disallow'] );

@@ -17,21 +17,26 @@ class ConsequencesLookup {
 	private $loadBalancer;
 	/** @var CentralDBManager */
 	private $centralDBManager;
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
 	/** @var LoggerInterface */
 	private $logger;
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param CentralDBManager $centralDBManager
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer,
 		CentralDBManager $centralDBManager,
+		ConsequencesRegistry $consequencesRegistry,
 		LoggerInterface $logger
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->centralDBManager = $centralDBManager;
+		$this->consequencesRegistry = $consequencesRegistry;
 		$this->logger = $logger;
 	}
 
@@ -94,7 +99,7 @@ class ConsequencesLookup {
 			[ 'abuse_filter_action' => [ 'LEFT JOIN', 'afa_filter=af_id' ] ]
 		);
 
-		$dangerousActions = AbuseFilter::getDangerousActions();
+		$dangerousActions = $this->consequencesRegistry->getDangerousActionNames();
 		// Categorise consequences by filter.
 		foreach ( $res as $row ) {
 			if ( $row->af_throttled

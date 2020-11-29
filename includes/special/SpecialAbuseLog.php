@@ -4,6 +4,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
@@ -73,20 +74,26 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var AbuseFilterPermissionManager */
 	private $afPermissionManager;
 
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
+
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
 	 * @param AbuseFilterPermissionManager $afPermissionManager
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
 		PermissionManager $permissionManager,
-		AbuseFilterPermissionManager $afPermissionManager
+		AbuseFilterPermissionManager $afPermissionManager,
+		ConsequencesRegistry $consequencesRegistry
 	) {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permissionManager;
 		$this->afPermissionManager = $afPermissionManager;
+		$this->consequencesRegistry = $consequencesRegistry;
 	}
 
 	/**
@@ -197,19 +204,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @return string[]
 	 */
-	private function getAllActions() {
-		$config = $this->getConfig();
-		return array_unique(
-			array_merge(
-				array_keys( $config->get( 'AbuseFilterActions' ) ),
-				array_keys( $config->get( 'AbuseFilterCustomActionsHandlers' ) )
-			)
-		);
-	}
-
-	/**
-	 * @return string[]
-	 */
 	private function getAllFilterableActions() {
 		return [
 			'edit',
@@ -276,7 +270,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		];
 		$options = [];
 		$context = $this->getContext();
-		foreach ( $this->getAllActions() as $action ) {
+		foreach ( $this->consequencesRegistry->getAllActionNames() as $action ) {
 			$key = AbuseFilter::getActionDisplay( $action, $context );
 			$options[$key] = $action;
 		}
@@ -592,7 +586,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		if ( $this->mSearchActionTaken ) {
-			if ( in_array( $this->mSearchActionTaken, $this->getAllActions() ) ) {
+			if ( in_array( $this->mSearchActionTaken, $this->consequencesRegistry->getAllActionNames() ) ) {
 				$list = [ 'afl_actions' => $this->mSearchActionTaken ];
 				$list[] = 'afl_actions' . $dbr->buildLike(
 					$this->mSearchActionTaken, ',', $dbr->anyString() );

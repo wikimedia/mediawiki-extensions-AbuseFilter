@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -42,6 +43,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			FilterImporter::SERVICE_NAME,
 			FilterStore::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,
+			ConsequencesRegistry::SERVICE_NAME,
 		],
 		AbuseFilterViewExamine::class => [
 			'RevisionLookup',

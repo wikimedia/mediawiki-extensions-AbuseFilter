@@ -9,6 +9,7 @@ use HtmlArmor;
 use IContextSource;
 use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
@@ -53,6 +54,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/** @var EditBoxBuilderFactory */
 	private $boxBuilderFactory;
 
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
+
 	/**
 	 * @param PermissionManager $permissionManager
 	 * @param AbuseFilterPermissionManager $afPermManager
@@ -61,6 +65,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param FilterImporter $filterImporter
 	 * @param FilterStore $filterStore
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -74,6 +79,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		FilterImporter $filterImporter,
 		FilterStore $filterStore,
 		EditBoxBuilderFactory $boxBuilderFactory,
+		ConsequencesRegistry $consequencesRegistry,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -86,6 +92,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$this->filterImporter = $filterImporter;
 		$this->filterStore = $filterStore;
 		$this->boxBuilderFactory = $boxBuilderFactory;
+		$this->consequencesRegistry = $consequencesRegistry;
 		$this->filter = $this->mParams['filter'];
 		$this->historyID = $this->mParams['history'] ?? null;
 	}
@@ -383,7 +390,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $filterObj->isThrottled() ) {
 			$throttledActions = array_intersect(
 				$filterObj->getActionsNames(),
-				AbuseFilter::getDangerousActions()
+				$this->consequencesRegistry->getDangerousActionNames()
 			);
 
 			if ( $throttledActions ) {

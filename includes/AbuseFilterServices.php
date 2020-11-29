@@ -146,6 +146,13 @@ class AbuseFilterServices {
 	}
 
 	/**
+	 * @return ConsequencesRegistry
+	 */
+	public static function getConsequencesRegistry() : ConsequencesRegistry {
+		return MediaWikiServices::getInstance()->getService( ConsequencesRegistry::SERVICE_NAME );
+	}
+
+	/**
 	 * @return AbuseLoggerFactory
 	 */
 	public static function getAbuseLoggerFactory() : AbuseLoggerFactory {

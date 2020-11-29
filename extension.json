@@ -68,7 +68,8 @@
 			"services": [
 				"LinkBatchFactory",
 				"PermissionManager",
-				"AbuseFilterPermissionManager"
+				"AbuseFilterPermissionManager",
+				"AbuseFilterConsequencesRegistry"
 			]
 		},
 		"AbuseFilter": {
@@ -179,6 +180,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesLookup": "includes/ConsequencesLookup.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLogger": "includes/AbuseLogger.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLoggerFactory": "includes/AbuseLoggerFactory.php",
+		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesRegistry": "includes/ConsequencesRegistry.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
