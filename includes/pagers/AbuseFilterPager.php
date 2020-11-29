@@ -221,9 +221,6 @@ class AbuseFilterPager extends TablePager {
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
-				// Global here is used to determine whether the log entry is for an external, global
-				// filter, but all filters shown on Special:AbuseFilter are local.
-				$global = false;
 				$afPermManager = AbuseFilterServices::getPermissionManager();
 				if ( $afPermManager->canSeeLogDetailsForFilter( $user, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
