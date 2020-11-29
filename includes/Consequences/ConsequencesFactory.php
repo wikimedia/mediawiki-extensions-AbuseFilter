@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use BagOStuff;
 use MediaWiki\Block\BlockUserFactory;
+use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -39,6 +40,9 @@ class ConsequencesFactory {
 	/** @var BlockUserFactory */
 	private $blockUserFactory;
 
+	/** @var DatabaseBlockStore */
+	private $databaseBlockStore;
+
 	/** @var UserGroupManager */
 	private $userGroupManager;
 
@@ -66,6 +70,7 @@ class ConsequencesFactory {
 	 * @param ServiceOptions $options
 	 * @param LoggerInterface $logger
 	 * @param BlockUserFactory $blockUserFactory
+	 * @param DatabaseBlockStore $databaseBlockStore
 	 * @param UserGroupManager $userGroupManager
 	 * @param BagOStuff $mainStash
 	 * @param ChangeTagger $changeTagger
@@ -78,6 +83,7 @@ class ConsequencesFactory {
 		ServiceOptions $options,
 		LoggerInterface $logger,
 		BlockUserFactory $blockUserFactory,
+		DatabaseBlockStore $databaseBlockStore,
 		UserGroupManager $userGroupManager,
 		BagOStuff $mainStash,
 		ChangeTagger $changeTagger,
@@ -90,6 +96,7 @@ class ConsequencesFactory {
 		$this->options = $options;
 		$this->logger = $logger;
 		$this->blockUserFactory = $blockUserFactory;
+		$this->databaseBlockStore = $databaseBlockStore;
 		$this->userGroupManager = $userGroupManager;
 		$this->mainStash = $mainStash;
 		$this->changeTagger = $changeTagger;
@@ -108,7 +115,14 @@ class ConsequencesFactory {
 	 * @return Block
 	 */
 	public function newBlock( Parameters $params, string $expiry, bool $preventsTalk ) : Block {
-		return new Block( $params, $expiry, $preventsTalk, $this->blockUserFactory, $this->filterUser );
+		return new Block(
+			$params,
+			$expiry,
+			$preventsTalk,
+			$this->blockUserFactory,
+			$this->databaseBlockStore,
+			$this->filterUser
+		);
 	}
 
 	/**

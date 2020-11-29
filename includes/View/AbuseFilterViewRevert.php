@@ -5,21 +5,20 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use HTMLForm;
 use IContextSource;
 use Linker;
-use ManualLogEntry;
-use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
-use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ReversibleConsequence;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\User\UserGroupManager;
+use MediaWiki\User\UserFactory;
 use Message;
 use MWException;
 use PermissionsError;
 use SpecialPage;
-use Title;
-use User;
+use TitleValue;
 use UserBlockedError;
 use Xml;
 
@@ -47,32 +46,31 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 */
 	public $mReason;
 	/**
-	 * @var UserGroupManager
+	 * @var UserFactory
 	 */
-	private $userGroupsManager;
+	private $userFactory;
 	/**
-	 * @var BlockAutopromoteStore
+	 * @var FilterLookup
 	 */
-	private $blockAutopromoteStore;
+	private $filterLookup;
 	/**
-	 * @var FilterUser
+	 * @var ConsequencesFactory
 	 */
-	private $filterUser;
+	private $consequencesFactory;
 	/**
 	 * @var VariablesBlobStore
 	 */
 	private $varBlobStore;
-
 	/**
 	 * @var SpecsFormatter
 	 */
 	private $specsFormatter;
 
 	/**
-	 * @param UserGroupManager $userGroupManager
+	 * @param UserFactory $userFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param BlockAutopromoteStore $blockAutopromoteStore
-	 * @param FilterUser $filterUser
+	 * @param FilterLookup $filterLookup
+	 * @param ConsequencesFactory $consequencesFactory
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param SpecsFormatter $specsFormatter
 	 * @param IContextSource $context
@@ -81,10 +79,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @param array $params
 	 */
 	public function __construct(
-		UserGroupManager $userGroupManager,
+		UserFactory $userFactory,
 		AbuseFilterPermissionManager $afPermManager,
-		BlockAutopromoteStore $blockAutopromoteStore,
-		FilterUser $filterUser,
+		FilterLookup $filterLookup,
+		ConsequencesFactory $consequencesFactory,
 		VariablesBlobStore $varBlobStore,
 		SpecsFormatter $specsFormatter,
 		IContextSource $context,
@@ -93,9 +91,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->userGroupsManager = $userGroupManager;
-		$this->blockAutopromoteStore = $blockAutopromoteStore;
-		$this->filterUser = $filterUser;
+		$this->userFactory = $userFactory;
+		$this->filterLookup = $filterLookup;
+		$this->consequencesFactory = $consequencesFactory;
 		$this->varBlobStore = $varBlobStore;
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
@@ -315,6 +313,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			}
 
 			$actions = explode( ',', $row->afl_actions );
+			// TODO: get the following from ConsequencesRegistry or sth else
 			$reversibleActions = [ 'block', 'blockautopromote', 'degroup' ];
 			$currentReversibleActions = array_intersect( $actions, $reversibleActions );
 			if ( count( $currentReversibleActions ) ) {
@@ -324,7 +323,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'user' => $row->afl_user_text,
 					'userid' => $row->afl_user,
 					'vars' => $this->varBlobStore->loadVarDump( $row->afl_var_dump ),
-					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ),
+					'title' => new TitleValue( (int)$row->afl_namespace, $row->afl_title ),
 					'action' => $row->afl_action,
 					'timestamp' => $row->afl_timestamp
 				];
@@ -377,79 +376,50 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	}
 
 	/**
+	 * Helper method for typing
+	 * @param string $action
+	 * @param array $result
+	 * @return ReversibleConsequence
+	 * @throws MWException
+	 */
+	private function getConsequence( string $action, array $result ) : ReversibleConsequence {
+		$params = new Parameters(
+			$this->filterLookup->getFilter( $this->filter, false ),
+			false,
+			$this->userFactory->newFromAnyId(
+				$result['userid'],
+				$result['user'],
+				null
+			),
+			$result['title'],
+			$result['action']
+		);
+
+		switch ( $action ) {
+			case 'block':
+				return $this->consequencesFactory->newBlock( $params, '', false );
+			case 'blockautopromote':
+				$duration = $this->getConfig()->get( 'AbuseFilterBlockAutopromoteDuration' ) * 86400;
+				return $this->consequencesFactory->newBlockAutopromote( $params, $duration );
+			case 'degroup':
+				return $this->consequencesFactory->newDegroup( $params, $result['vars'] );
+			default:
+				throw new MWException( "Invalid action $action" );
+		}
+	}
+
+	/**
 	 * @param string $action
 	 * @param array $result
 	 * @return bool
 	 * @throws MWException
 	 */
-	public function revertAction( $action, $result ) {
-		switch ( $action ) {
-			case 'block':
-				$block = DatabaseBlock::newFromTarget( $result['user'] );
-				$filterUser = $this->filterUser->getUser();
-				if ( !( $block && $block->getBy() === $filterUser->getId() ) ) {
-					// Not blocked by abuse filter
-					return false;
-				}
-				$block->delete();
-				$logEntry = new ManualLogEntry( 'block', 'unblock' );
-				$logEntry->setTarget( Title::makeTitle( NS_USER, $result['user'] ) );
-				$logEntry->setComment(
-					$this->msg(
-						'abusefilter-revert-reason', $this->filter, $this->mReason
-					)->inContentLanguage()->text()
-				);
-				$logEntry->setPerformer( $this->getUser() );
-				$logEntry->publish( $logEntry->insert() );
-				return true;
-			case 'blockautopromote':
-				$target = User::newFromId( $result['userid'] );
-				$msg = $this->msg(
-					'abusefilter-revert-reason', $this->filter, $this->mReason
-				)->inContentLanguage()->text();
+	public function revertAction( string $action, array $result ) : bool {
+		$message = $this->msg(
+			'abusefilter-revert-reason', $this->filter, $this->mReason
+		)->inContentLanguage()->text();
 
-				return $this->blockAutopromoteStore->unblockAutopromote( $target, $this->getUser(), $msg );
-			case 'degroup':
-				// Pull the user's groups from the vars.
-				$removedGroups = $result['vars']->getVar( 'user_groups' )->toNative();
-				$removedGroups = array_diff( $removedGroups,
-					$this->userGroupsManager->listAllImplicitGroups() );
-				$user = User::newFromId( $result['userid'] );
-				$currentGroups = $this->userGroupsManager->getUserGroups( $user );
-
-				$addedGroups = [];
-				foreach ( $removedGroups as $group ) {
-					// TODO An addUserToGroups method with bulk updates would be nice
-					if ( $this->userGroupsManager->addUserToGroup( $user, $group ) ) {
-						$addedGroups[] = $group;
-					}
-				}
-
-				// Don't log if no groups were added.
-				if ( !$addedGroups ) {
-					return false;
-				}
-
-				// TODO Core should provide a logging method
-				$logEntry = new ManualLogEntry( 'rights', 'rights' );
-				$logEntry->setTarget( $user->getUserPage() );
-				$logEntry->setPerformer( $this->getUser() );
-				$logEntry->setComment(
-					$this->msg(
-						'abusefilter-revert-reason',
-						$this->filter,
-						$this->mReason
-					)->inContentLanguage()->text()
-				);
-				$logEntry->setParameters( [
-					'4::oldgroups' => $currentGroups,
-					'5::newgroups' => array_merge( $currentGroups, $addedGroups )
-				] );
-				$logEntry->publish( $logEntry->insert() );
-
-				return true;
-		}
-
-		throw new MWException( "Invalid action $action" );
+		$consequence = $this->getConsequence( $action, $result );
+		return $consequence->revert( $result, $this->getUser(), $message );
 	}
 }

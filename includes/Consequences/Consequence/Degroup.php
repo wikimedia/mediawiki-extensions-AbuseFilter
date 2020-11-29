@@ -8,12 +8,13 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\User\UserGroupManager;
+use MediaWiki\User\UserIdentity;
 use TitleValue;
 
 /**
  * Consequence that removes all user groups from a user.
  */
-class Degroup extends Consequence implements HookAborterConsequence {
+class Degroup extends Consequence implements HookAborterConsequence, ReversibleConsequence {
 	/**
 	 * @var AbuseFilterVariableHolder
 	 * @todo This dependency is subpar
@@ -92,6 +93,47 @@ class Degroup extends Consequence implements HookAborterConsequence {
 			'5::newgroups' => []
 		] );
 		$logEntry->publish( $logEntry->insert() );
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function revert( $info, UserIdentity $performer, string $reason ): bool {
+		$user = $this->parameters->getUser();
+		$currentGroups = $this->userGroupManager->getUserGroups( $user );
+		// Pull the user's original groups from the vars.
+		$removedGroups = $info['vars']->getVar( 'user_groups' )->toNative();
+		$removedGroups = array_diff(
+			$removedGroups,
+			$this->userGroupManager->listAllImplicitGroups(),
+			$currentGroups
+		);
+
+		$addedGroups = [];
+		foreach ( $removedGroups as $group ) {
+			// TODO An addUserToGroups method with bulk updates would be nice
+			if ( $this->userGroupManager->addUserToGroup( $user, $group ) ) {
+				$addedGroups[] = $group;
+			}
+		}
+
+		// Don't log if no groups were added.
+		if ( !$addedGroups ) {
+			return false;
+		}
+
+		// TODO Core should provide a logging method
+		$logEntry = new ManualLogEntry( 'rights', 'rights' );
+		$logEntry->setTarget( new TitleValue( NS_USER, $user->getName() ) );
+		$logEntry->setPerformer( $performer );
+		$logEntry->setComment( $reason );
+		$logEntry->setParameters( [
+			'4::oldgroups' => $currentGroups,
+			'5::newgroups' => array_merge( $currentGroups, $addedGroups )
+		] );
+		$logEntry->publish( $logEntry->insert() );
+
 		return true;
 	}
 

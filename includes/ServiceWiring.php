@@ -177,6 +177,7 @@ return [
 			),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getBlockUserFactory(),
+			$services->getDatabaseBlockStore(),
 			$services->getUserGroupManager(),
 			$services->getMainObjectStash(),
 			$services->get( ChangeTagger::SERVICE_NAME ),

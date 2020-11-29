@@ -4,11 +4,12 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Consequence that blocks/delays autopromotion of a registered user.
  */
-class BlockAutopromote extends Consequence implements HookAborterConsequence {
+class BlockAutopromote extends Consequence implements HookAborterConsequence, ReversibleConsequence {
 	/** @var int */
 	private $duration;
 	/** @var BlockAutopromoteStore */
@@ -47,6 +48,17 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence {
 				$this->parameters->getFilter()->getID()
 			)->inContentLanguage()->text(),
 			$this->duration
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function revert( $info, UserIdentity $performer, string $reason ): bool {
+		return $this->blockAutopromoteStore->unblockAutopromote(
+			$this->parameters->getUser(),
+			$performer,
+			$reason
 		);
 	}
 

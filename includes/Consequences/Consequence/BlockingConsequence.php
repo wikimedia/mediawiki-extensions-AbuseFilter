@@ -16,7 +16,7 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 	private $blockUserFactory;
 
 	/** @var FilterUser */
-	private $filterUser;
+	protected $filterUser;
 
 	/** @var string Expiry of the block */
 	protected $expiry;

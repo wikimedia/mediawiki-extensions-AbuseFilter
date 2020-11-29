@@ -1,14 +1,13 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
-use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
@@ -68,10 +67,10 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			FilterProfiler::SERVICE_NAME,
 		],
 		AbuseFilterViewRevert::class => [
-			'UserGroupManager',
+			'UserFactory',
 			AbuseFilterPermissionManager::SERVICE_NAME,
-			BlockAutopromoteStore::SERVICE_NAME,
-			FilterUser::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
+			ConsequencesFactory::SERVICE_NAME,
 			VariablesBlobStore::SERVICE_NAME,
 			SpecsFormatter::SERVICE_NAME,
 		],

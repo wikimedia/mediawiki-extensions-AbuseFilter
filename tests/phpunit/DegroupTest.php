@@ -42,11 +42,6 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 		$userGroupManager->expects( $this->once() )
 			->method( 'removeUserFromGroup' )
 			->with( $user, 'sysop' );
-		/*
-		$filterUser = $this->createMock( FilterUser::class );
-		$filterUser->method( 'getUser' )
-			->willReturn( new UserIdentityValue( 2, 'FilterUser', 3 ) );
-		*/
 		$filterUser = AbuseFilterServices::getFilterUser();
 
 		$degroup = new Degroup(
@@ -100,11 +95,6 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 		$userGroupManager->expects( $this->once() )
 			->method( 'removeUserFromGroup' )
 			->with( $user, 'sysop' );
-		/*
-		$filterUser = $this->createMock( FilterUser::class );
-		$filterUser->method( 'getUser' )
-			->willReturn( new UserIdentityValue( 2, 'FilterUser', 3 ) );
-		*/
 		$filterUser = AbuseFilterServices::getFilterUser();
 
 		$degroup = new Degroup(
@@ -134,6 +124,52 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$filterUser
 		);
 		$this->assertFalse( $degroup->execute() );
+	}
+
+	public function provideRevert() : array {
+		return [
+			[ true, [ '*', 'user', 'sysop' ] ],
+			[ true, [ '*', 'user', 'canceled', 'sysop' ] ],
+			[ false, [ '*', 'user', 'sysop' ], [ 'sysop' ] ],
+			[ false, [ '*', 'user', 'canceled' ] ],
+		];
+	}
+
+	/**
+	 * @covers ::revert
+	 * @dataProvider provideRevert
+	 */
+	public function testRevert( bool $success, array $hadGroups, array $hasGroups = [] ) {
+		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
+		$params = $this->getParameters( $user );
+		$userGroupManager = $this->createMock( UserGroupManager::class );
+		$userGroupManager->method( 'listAllImplicitGroups' )
+			->willReturn( [ '*', 'user' ] );
+		$userGroupManager->method( 'getUserGroups' )
+			->with( $user )
+			->willReturn( $hasGroups );
+		$userGroupManager->method( 'addUserToGroup' )
+			->willReturnCallback( function ( $_, $group ) use ( $hasGroups ) {
+				return $group === 'sysop';
+			} );
+		$degroup = new Degroup(
+			$params,
+			new AbuseFilterVariableHolder( $this->createMock( KeywordsManager::class ) ),
+			$userGroupManager,
+			$this->createMock( FilterUser::class )
+		);
+
+		$info = [
+			'vars' => AbuseFilterVariableHolder::newFromArray(
+				[ 'user_groups' => $hadGroups ],
+				$this->createMock( KeywordsManager::class )
+			)
+		];
+		$performer = $this->getTestUser()->getUser();
+		$this->assertSame(
+			$success,
+			$degroup->revert( $info, $performer, 'reason' )
+		);
 	}
 
 }
