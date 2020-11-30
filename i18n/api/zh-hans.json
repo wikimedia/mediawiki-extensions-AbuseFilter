@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Func",
 			"Liuxinyu970226",
 			"Looong",
 			"SomeyaMako",
@@ -49,6 +50,7 @@
 	"apihelp-query+abuselog-param-user": "只显示由指定的用户或IP地址完成的记录。",
 	"apihelp-query+abuselog-param-title": "只显示在指定页面上发生过的条项。",
 	"apihelp-query+abuselog-param-filter": "只显示被指定过滤器ID捕获过的记录。使用管道字符分离，以“$1”开始以表示为公共过滤器。",
+	"apihelp-query+abuselog-param-filter-central": "仅显示由提供的过滤器ID捕获的项目。使用管道符分开。",
 	"apihelp-query+abuselog-param-limit": "列出日志记录的最大数量。",
 	"apihelp-query+abuselog-param-prop": "要获得的属性。",
 	"apihelp-query+abuselog-param-wiki": "显示触发来自的Wiki。",

@@ -113,6 +113,8 @@
 	"abusefilter-log-hide-reason": "Motiu:",
 	"abusefilter-log-hide-reason-other": "Motiu diferent o addicional:",
 	"abusefilter-log-hide-forbidden": "No teniu permisos per ocultar entrades al registre d'abusos.",
+	"abusefilter-log-hide-show": "Mostra",
+	"abusefilter-log-hide-hide": "Amaga",
 	"log-action-filter-abusefilter": "Tipus de canvi de filtre:",
 	"log-action-filter-abusefilter-create": "Creació d’un filtre nou",
 	"log-action-filter-abusefilter-modify": "Modificació de filtre",
