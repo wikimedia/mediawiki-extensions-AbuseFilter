@@ -199,6 +199,7 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Şımayê versiyonê kehanê nê parzûni vinenê. İstatistikê gıroteki seba parzûnanê versiyonê peyêniyê.</strong> &bull;\n[[Special:AbuseFilter/history/$2| Peyser şırê verorê nê parzûni]].",
 	"abusefilter-edit-status-label": "İstatistiki:",
 	"abusefilter-edit-status": "$1 {{PLURAL:$1|Karo peyên|Karê peyêni}} miyan de, no filtre $2 (%$3) ra ameyo pê.\nNısbeten, zemanê guriyayışi $4 ms'yo u sindorê şerti texmini $5 {{PLURAL:$5|şert|şerti}} xerc kenê.",
+	"abusefilter-edit-throttled-warning": "'''İqaz:''' no parzûn otomatikmen zerarın nışan biyo. Seba itimadi fiilê cêri do nêcıneyê ($1). Kerem kerê nê kemeyiye wedardışi rê şertanê ho çıö ra raviyarnê u [[mw:Extension:AbuseFilter/Conditions|optimize]] bıkerê",
 	"abusefilter-edit-new": "Parzûno newe",
 	"abusefilter-edit-save": "Parzumi qeyd ke",
 	"abusefilter-edit-id": "Kamiya parzûni:",
