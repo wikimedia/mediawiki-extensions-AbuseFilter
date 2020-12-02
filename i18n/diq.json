@@ -340,6 +340,7 @@
 	"abusefilter-edit-builder-funcs-rmspecials": "Karekteranê xasî wedarne (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Eka IP range de?  (ip_in_range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Kodê OR yewra zêde bın ratek de rateka cıgeyrayışi (contains_any)",
+	"abusefilter-edit-builder-funcs-contains-all": "Kodê OR yewra zêde bın ratek de rateka cıgeyrayışi (contains_all)",
 	"abusefilter-edit-builder-funcs-substr": "Substring (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Lay de caygey bınlayan (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Pê stringî, substringî degiş bike (str_replace)",

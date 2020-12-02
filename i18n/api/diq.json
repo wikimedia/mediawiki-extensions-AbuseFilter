@@ -9,6 +9,7 @@
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Ratena Fiktrandê nengan dı têversanayış esto se, filtrey nengan de vurnayış vurnayışi kontrol kerê \n\nVurnayoğê RCID ya na LOGID eger ke icab krno se karêno",
+	"apihelp-abusefiltercheckmatch-summary": "Nê AbuseFilter'i de be kumey vurnayoği ra,i yew vurnayış yana rocekê qeydê AbuseFilter pêameyışi kontrol kerê",
 	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid yana logid lazımi, lakin teyna yewi şıma şenê bıgureyne.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Ful filtreya metini çımraravyarnayışi ke",
 	"apihelp-abusefiltercheckmatch-param-vars": "Vurnayerê kod kerdena JSON fına do test bo.",
@@ -47,6 +48,7 @@
 	"apihelp-query+abuselog-param-user": "Teyna qeydé dekerdena grotena IP adresa karberi bıvin",
 	"apihelp-query+abuselog-param-title": "Dekerdenanê perer teyna bıvin",
 	"apihelp-query+abuselog-param-filter": "Teyna dekerdenanê kamiya filtrande tepêştena grotışa bıvin. Pey blokana abırne u parzûnê $1ya verole cıkuye",
+	"apihelp-query+abuselog-param-filter-central": "Teyna deyaye be terefê kamiya parzûnana tepêşiyaye qeydan bımocne. Boriyana pêra abırne",
 	"apihelp-query+abuselog-param-limit": "Azami miktarê dekerdena liste ke",
 	"apihelp-query+abuselog-param-prop": "Kamci xısusiyeta ke gê no",
 	"apihelp-query+abuselog-param-wiki": "Wiki ra isabetê ke bımocniyê.",
@@ -56,6 +58,7 @@
 	"apihelp-abuselogprivatedetails-summary": "Yew cıkewtışê xısusiyê detayanê AbuseLogi bımocne",
 	"apihelp-abuselogprivatedetails-param-logid": "Kontrol bıyaye cıkewtışê kamiya AbuseLogi",
 	"apihelp-abuselogprivatedetails-param-reason": "Seba kontrol kerdışi rê yew sebeb",
+	"apihelp-abuselogprivatedetails-example-1": "Be gurenayışê sebebê \"example\" ya, numrey 1 qeydê AbuseLog xısusi detayan bıgêrê.",
 	"apierror-abusefilter-canttest": "Testê qeydê nengan rê izinê şıma çıni yo.",
 	"apierror-abusefilter-cantcheck": "rêz kerdena qeydanê nengan rê izinê şıma çıni yo.",
 	"apierror-abusefilter-canteval": "Ercnayışê ifadeyanê AbuseFilteri re mısadey to çıniyo",
