@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
+use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
@@ -171,6 +172,13 @@ return [
 			$services->get( PermManager::SERVICE_NAME ),
 			$services->get( KeywordsManager::SERVICE_NAME ),
 			ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' )
+		);
+	},
+	ConsequencesLookup::SERVICE_NAME => function ( MediaWikiServices $services ) : ConsequencesLookup {
+		return new ConsequencesLookup(
+			$services->getDBLoadBalancer(),
+			$services->get( CentralDBManager::SERVICE_NAME ),
+			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
 ];

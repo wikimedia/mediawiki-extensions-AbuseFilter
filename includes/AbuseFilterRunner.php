@@ -448,7 +448,8 @@ class AbuseFilterRunner {
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	protected function executeFilterActions( array $filters ) : Status {
-		$actionsByFilter = AbuseFilter::getConsequencesForFilters( $filters );
+		$consLookup = AbuseFilterServices::getConsequencesLookup();
+		$actionsByFilter = $consLookup->getConsequencesForFilters( $filters );
 		$consequences = $this->replaceArraysWithConsequences( $actionsByFilter );
 		$actionsToTake = $this->getFilteredConsequences( $consequences );
 		$actionsTaken = array_fill_keys( $filters, [] );

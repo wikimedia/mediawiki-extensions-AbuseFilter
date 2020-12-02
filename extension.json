@@ -184,6 +184,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\InvalidImportDataException": "includes/InvalidImportDataException.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterStore": "includes/FilterStore.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesFactory": "includes/ConsequencesFactory.php",
+		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesLookup": "includes/ConsequencesLookup.php",
 		"AFComputedVariable": "includes/AFComputedVariable.php",
 		"AFPData": "includes/parser/AFPData.php",
 		"AFPException": "includes/parser/AFPException.php",
