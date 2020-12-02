@@ -173,11 +173,11 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 			$this->getOptions()
 		);
 		$toThrottle = $watcher->getFiltersToThrottle(
-			[ '1' ],
+			[ 1 ],
 			$group
 		);
 		$this->assertSame(
-			$willThrottle ? [ '1' ] : [],
+			$willThrottle ? [ 1 ] : [],
 			$toThrottle
 		);
 	}

@@ -91,9 +91,9 @@ class FilterProfiler {
 	}
 
 	/**
-	 * @param int|string $filter
+	 * @param int $filter
 	 */
-	public function resetFilterProfile( $filter ) : void {
+	public function resetFilterProfile( int $filter ) : void {
 		$profileKey = $this->filterProfileKey( $filter );
 		$this->objectStash->delete( $profileKey );
 	}
@@ -101,11 +101,11 @@ class FilterProfiler {
 	/**
 	 * Retrieve per-filter statistics.
 	 *
-	 * @param string|int $filter
+	 * @param int $filter
 	 * @return array See self::NULL_FILTER_PROFILE for the returned array structure
 	 * @phan-return array{count:int,matches:int,total-time:float,total-cond:int}
 	 */
-	public function getFilterProfile( $filter ) : array {
+	public function getFilterProfile( int $filter ) : array {
 		return $this->objectStash->get( $this->filterProfileKey( $filter ) )
 			?: self::NULL_FILTER_PROFILE;
 	}
@@ -164,7 +164,7 @@ class FilterProfiler {
 	 * disabled filters too, as their profiling data will be reset upon re-enabling anyway.
 	 *
 	 * @param string $group
-	 * @param array $allFilters
+	 * @param string[] $allFilters
 	 */
 	public function checkResetProfiling( string $group, array $allFilters ) : void {
 		$profile = $this->getGroupProfile( $group );
@@ -174,7 +174,10 @@ class FilterProfiler {
 			$profileKey = $this->filterProfileGroupKey( $group );
 			$this->objectStash->delete( $profileKey );
 			foreach ( $allFilters as $filter ) {
-				$this->resetFilterProfile( $filter );
+				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
+				if ( $global === false ) {
+					$this->resetFilterProfile( $filterID );
+				}
 			}
 		}
 	}
@@ -304,10 +307,10 @@ class FilterProfiler {
 	/**
 	 * Get the memcache access key used to store per-filter profiling data.
 	 *
-	 * @param string|int $filter
+	 * @param int $filter
 	 * @return string
 	 */
-	private function filterProfileKey( $filter ) : string {
+	private function filterProfileKey( int $filter ) : string {
 		return $this->objectStash->makeKey( 'abusefilter-profile', 'v3', $filter );
 	}
 

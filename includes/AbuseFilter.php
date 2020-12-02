@@ -138,6 +138,7 @@ class AbuseFilter {
 	 *
 	 * @param string|int $filter
 	 * @return array
+	 * @phan-return array{0:int,1:bool}
 	 * @throws InvalidArgumentException
 	 */
 	public static function splitGlobalName( $filter ) {

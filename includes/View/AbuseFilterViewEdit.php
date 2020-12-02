@@ -101,11 +101,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
-		$filter = $this->filter;
-		if ( !is_numeric( $filter ) && $filter !== null ) {
+		if ( !is_numeric( $this->filter ) && $this->filter !== null ) {
 			$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
 			return;
 		}
+		$filter = $this->filter ? (int)$this->filter : null;
 		$history_id = $this->historyID;
 		if ( $this->historyID ) {
 			$dbr = wfGetDB( DB_REPLICA );

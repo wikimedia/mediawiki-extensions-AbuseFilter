@@ -61,9 +61,9 @@ class EmergencyWatcher implements Watcher {
 	 * Determine which filters must be throttled, i.e. their potentially dangerous
 	 *  actions must be disabled.
 	 *
-	 * @param string[] $filters The filters to check
+	 * @param int[] $filters The filters to check
 	 * @param string $group Group the filters belong to
-	 * @return string[] Array of filters to be throttled
+	 * @return int[] Array of filters to be throttled
 	 */
 	public function getFiltersToThrottle( array $filters, string $group ) : array {
 		$groupProfile = $this->profiler->getGroupProfile( $group );
@@ -83,7 +83,7 @@ class EmergencyWatcher implements Watcher {
 
 		$throttleFilters = [];
 		foreach ( $filters as $filter ) {
-			$filterObj = $this->filterLookup->getFilter( (int)$filter, false );
+			$filterObj = $this->filterLookup->getFilter( $filter, false );
 			if ( $filterObj->isThrottled() ) {
 				continue;
 			}
