@@ -23,6 +23,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+
 /**
  * @group Test
  * @group AbuseFilter
@@ -33,16 +35,16 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 	 * @param string $name The name of a filter
 	 * @param array|null $expected If array, the expected result like [ id, isGlobal ].
 	 *   If null it means that we're expecting an exception.
-	 * @covers AbuseFilter::splitGlobalName
+	 * @covers \MediaWiki\Extension\AbuseFilter\GlobalNameUtils::splitGlobalName
 	 * @dataProvider provideGlobalNames
 	 */
 	public function testSplitGlobalName( $name, $expected ) {
 		if ( $expected !== null ) {
-			$actual = AbuseFilter::splitGlobalName( $name );
+			$actual = GlobalNameUtils::splitGlobalName( $name );
 			$this->assertSame( $expected, $actual );
 		} else {
 			$this->expectException( InvalidArgumentException::class );
-			AbuseFilter::splitGlobalName( $name );
+			GlobalNameUtils::splitGlobalName( $name );
 		}
 	}
 

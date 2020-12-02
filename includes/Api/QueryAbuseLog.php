@@ -32,6 +32,7 @@ use ApiQueryBase;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use SpecialAbuseLog;
@@ -99,7 +100,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			$foundInvalid = false;
 			foreach ( $params['filter'] as $filter ) {
 				try {
-					$searchFilters[] = AbuseFilter::splitGlobalName( $filter );
+					$searchFilters[] = GlobalNameUtils::splitGlobalName( $filter );
 				} catch ( InvalidArgumentException $e ) {
 					$foundInvalid = true;
 					continue;
@@ -222,7 +223,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				// SCHEMA_COMPAT_READ_OLD
 				$names = [];
 				foreach ( $searchFilters as $filter ) {
-					$names[] = AbuseFilter::buildGlobalName( ...$filter );
+					$names[] = GlobalNameUtils::buildGlobalName( ...$filter );
 				}
 				$conds = [ 'afl_filter' => $names ];
 			}
@@ -269,10 +270,10 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
 				$filterID = $row->afl_filter_id;
 				$global = $row->afl_global;
-				$fullName = AbuseFilter::buildGlobalName( $filterID, $global );
+				$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
 			} else {
 				// SCHEMA_COMPAT_READ_OLD
-				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
 				$fullName = $row->afl_filter;
 			}
 			$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
@@ -367,7 +368,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				ApiBase::PARAM_ISMULTI => true,
 				ApiBase::PARAM_HELP_MSG => [
 					'apihelp-query+abuselog-param-filter',
-					AbuseFilter::GLOBAL_FILTER_PREFIX
+					GlobalNameUtils::GLOBAL_FILTER_PREFIX
 				]
 			],
 			'limit' => [

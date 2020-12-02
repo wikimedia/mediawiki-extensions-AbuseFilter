@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Consequence\Parameters;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
@@ -390,7 +391,7 @@ class AbuseFilterRunner {
 		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
 				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-				$matchedFilters[ AbuseFilter::buildGlobalName( $filter->getID() ) ] =
+				$matchedFilters[GlobalNameUtils::buildGlobalName( $filter->getID() )] =
 					$this->checkFilter( $filter, true );
 			}
 		}
@@ -410,7 +411,7 @@ class AbuseFilterRunner {
 	 */
 	protected function checkFilter( Filter $filter, $global = false ) {
 		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-		$filterName = AbuseFilter::buildGlobalName( $filter->getID(), $global );
+		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
 
 		$startConds = $this->parser->getCondCount();
 		$startTime = microtime( true );
@@ -506,7 +507,7 @@ class AbuseFilterRunner {
 		$dangerousActions = AbuseFilterServices::getConsequencesRegistry()->getDangerousActionNames();
 
 		foreach ( $actionsByFilter as $filter => &$actions ) {
-			$isGlobalFilter = AbuseFilter::splitGlobalName( $filter )[1];
+			$isGlobalFilter = GlobalNameUtils::splitGlobalName( $filter )[1];
 
 			if ( $isGlobalFilter ) {
 				$actions = array_diff_key( $actions, array_filter( $wgAbuseFilterLocallyDisabledGlobalActions ) );
@@ -594,7 +595,7 @@ class AbuseFilterRunner {
 	 */
 	private function actionsParamsToConsequence( string $actionName, array $rawParams, $filter ) : ?Consequence {
 		global $wgAbuseFilterBlockAutopromoteDuration, $wgAbuseFilterCustomActionsHandlers;
-		[ $filterID, $isGlobalFilter ] = AbuseFilter::splitGlobalName( $filter );
+		[ $filterID, $isGlobalFilter ] = GlobalNameUtils::splitGlobalName( $filter );
 		$filterObj = $this->filterLookup->getFilter( $filterID, $isGlobalFilter );
 		$consFactory = AbuseFilterServices::getConsequencesFactory();
 

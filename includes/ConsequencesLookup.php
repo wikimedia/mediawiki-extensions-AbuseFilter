@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilter;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -49,7 +48,7 @@ class ConsequencesLookup {
 		$localFilters = [];
 
 		foreach ( $filters as $filter ) {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
+			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filter );
 
 			if ( $global ) {
 				$globalFilters[] = $filterID;
@@ -71,7 +70,7 @@ class ConsequencesLookup {
 			$consequences += $this->loadConsequencesFromDB(
 				$this->centralDBManager->getConnection( DB_REPLICA ),
 				$globalFilters,
-				AbuseFilter::GLOBAL_FILTER_PREFIX
+				GlobalNameUtils::GLOBAL_FILTER_PREFIX
 			);
 		}
 

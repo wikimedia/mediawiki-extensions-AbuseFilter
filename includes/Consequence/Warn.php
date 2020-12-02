@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequence;
 
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Session\Session;
 use Title;
 
@@ -63,7 +64,7 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 			$this->message,
 			$filter->getName(),
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
-			\AbuseFilter::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
+			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}
 
@@ -91,8 +92,8 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	 * @return string
 	 */
 	private function getWarnKey() : string {
-		$globalFilterName = \AbuseFilter::buildGlobalName(
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+		$globalFilterName = GlobalNameUtils::buildGlobalName(
+		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			$this->parameters->getFilter()->getID(),
 			$this->parameters->getIsGlobalFilter()
 		);

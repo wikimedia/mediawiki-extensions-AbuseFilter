@@ -374,6 +374,6 @@ class FilterLookup implements IDBAccessObject {
 	 * @return string
 	 */
 	private function getCacheKey( int $filterID, bool $global ) : string {
-		return AbuseFilter::buildGlobalName( $filterID, $global );
+		return GlobalNameUtils::buildGlobalName( $filterID, $global );
 	}
 }

@@ -11,6 +11,7 @@ use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Linker\LinkRenderer;
@@ -228,7 +229,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$isGlobal = $row->afl_global;
 		} else {
 			// SCHEMA_COMPAT_READ_OLD
-			[ $filterID, $isGlobal ] = AbuseFilter::splitGlobalName( $row->afl_filter );
+			[ $filterID, $isGlobal ] = GlobalNameUtils::splitGlobalName( $row->afl_filter );
 		}
 		$isHidden = $this->filterLookup->getFilter( $filterID, $isGlobal )->isHidden();
 		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {

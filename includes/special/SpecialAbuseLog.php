@@ -4,6 +4,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\Logger\LoggerFactory;
@@ -309,7 +310,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$helpmsg = $this->getConfig()->get( 'AbuseFilterIsCentral' )
 				? $this->msg( 'abusefilter-log-search-filter-help-central' )->escaped()
 				: $this->msg( 'abusefilter-log-search-filter-help' )
-					->params( AbuseFilter::GLOBAL_FILTER_PREFIX )->escaped();
+					->params( GlobalNameUtils::GLOBAL_FILTER_PREFIX )->escaped();
 			$formDescriptor['SearchFilter'] = [
 				'label-message' => 'abusefilter-log-search-filter',
 				'type' => 'text',
@@ -408,7 +409,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$foundInvalid = false;
 			foreach ( $rawFilters as $filter ) {
 				try {
-					$filtersList[] = AbuseFilter::splitGlobalName( $filter );
+					$filtersList[] = GlobalNameUtils::splitGlobalName( $filter );
 				} catch ( InvalidArgumentException $e ) {
 					$foundInvalid = true;
 					continue;
@@ -443,7 +444,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 
 			foreach ( $filtersList as $filterData ) {
-				$searchFilters[] = AbuseFilter::buildGlobalName( ...$filterData );
+				$searchFilters[] = GlobalNameUtils::buildGlobalName( ...$filterData );
 			}
 		}
 
@@ -465,7 +466,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
 				$filterConds = [ 'local' => [], 'global' => [] ];
 				foreach ( $searchIDs as $filter ) {
-					list( $filterID, $isGlobal ) = AbuseFilter::splitGlobalName( $filter );
+					list( $filterID, $isGlobal ) = GlobalNameUtils::splitGlobalName( $filter );
 					$key = $isGlobal ? 'global' : 'local';
 					$filterConds[$key][] = $filterID;
 				}
@@ -614,7 +615,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$global = $row->afl_global;
 			} else {
 				// SCHEMA_COMPAT_READ_OLD
-				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
 			}
 
 			if ( $global ) {
@@ -758,7 +759,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$global = $row->afl_global;
 		} else {
 			// SCHEMA_COMPAT_READ_OLD
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
 		}
 
 		if ( $global ) {

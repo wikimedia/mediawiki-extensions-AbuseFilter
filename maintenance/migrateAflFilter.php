@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\MediaWikiServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
@@ -48,7 +49,7 @@ class MigrateAflFilter extends LoggedUpdateMaintenance {
 		$dryRun = $this->hasOption( 'dry-run' );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$dbw = $lbFactory->getMainLB()->getConnection( DB_MASTER );
-		$globalPrefix = AbuseFilter::GLOBAL_FILTER_PREFIX;
+		$globalPrefix = GlobalNameUtils::GLOBAL_FILTER_PREFIX;
 
 		$batchSize = $this->getBatchSize();
 		$updated = 0;
@@ -92,7 +93,7 @@ class MigrateAflFilter extends LoggedUpdateMaintenance {
 			}
 
 			if ( !$dryRun ) {
-				// Use native SQL functions instead of AbuseFilter::splitGlobalName so that we can update
+				// Use native SQL functions instead of GlobalNameUtils::splitGlobalName so that we can update
 				// all rows at the same time.
 				$newIdSQL = $dbw->buildIntegerCast( $dbw->strreplace(
 					'afl_filter',

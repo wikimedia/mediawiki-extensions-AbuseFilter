@@ -158,6 +158,7 @@
 		"AbuseFilterChangesList": "includes/AbuseFilterChangesList.php",
 		"TableDiffFormatterFullContext": "includes/TableDiffFormatterFullContext.php",
 		"AbuseFilterVariableHolder": "includes/AbuseFilterVariableHolder.php",
+		"MediaWiki\\Extension\\AbuseFilter\\GlobalNameUtils": "includes/GlobalNameUtils.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterLookup": "includes/FilterLookup.php",
 		"MediaWiki\\Extension\\AbuseFilter\\KeywordsManager": "includes/KeywordsManager.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPermissionManager": "includes/AbuseFilterPermissionManager.php",

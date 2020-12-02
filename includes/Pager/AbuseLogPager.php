@@ -10,6 +10,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Permissions\PermissionManager;
@@ -169,7 +170,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$global = $row->afl_global;
 		} else {
 			// SCHEMA_COMPAT_READ_OLD
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $row->afl_filter );
+			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
 		}
 
 		if ( $global ) {

@@ -106,7 +106,7 @@ class AbuseLogger {
 		$writeNewSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW;
 		$writeOldSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_OLD;
 		foreach ( $actionsTaken as $filter => $actions ) {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
+			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filter );
 			$thisLog = $logTemplate;
 			if ( $writeOldSchema ) {
 				$thisLog['afl_filter'] = $filter;
@@ -215,7 +215,7 @@ class AbuseLogger {
 			$entry->setPerformer( $user );
 			$entry->setTarget( $this->title );
 			if ( $writeNewSchema ) {
-				$filterName = AbuseFilter::buildGlobalName(
+				$filterName = GlobalNameUtils::buildGlobalName(
 					$data['afl_filter_id'],
 					$data['afl_global'] === 1
 				);
@@ -248,7 +248,7 @@ class AbuseLogger {
 					$global = $data['afl_global'];
 				} else {
 					// SCHEMA_COMPAT_WRITE_OLD
-					list( $filterID, $global ) = AbuseFilter::splitGlobalName( $data['afl_filter'] );
+					list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $data['afl_filter'] );
 				}
 				if (
 					!$this->options->get( 'AbuseFilterNotificationsPrivate' ) &&

@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilter;
 use BagOStuff;
 use DeferredUpdates;
 use IBufferingStatsdDataFactory;
@@ -174,7 +173,7 @@ class FilterProfiler {
 			$profileKey = $this->filterProfileGroupKey( $group );
 			$this->objectStash->delete( $profileKey );
 			foreach ( $allFilters as $filter ) {
-				list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filter );
+				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filter );
 				if ( $global === false ) {
 					$this->resetFilterProfile( $filterID );
 				}
@@ -247,7 +246,7 @@ class FilterProfiler {
 	 */
 	public function recordPerFilterProfiling( Title $title, array $data ) : void {
 		foreach ( $data as $filterName => $params ) {
-			list( $filterID, $global ) = AbuseFilter::splitGlobalName( $filterName );
+			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filterName );
 			if ( !$global ) {
 				// @todo Maybe add a parameter to recordProfilingResult to record global filters
 				// data separately (in the foreign wiki)
