@@ -312,6 +312,11 @@ class FilterLookup implements IDBAccessObject {
 	private function getFilterFromHistory( stdClass $row ) : Filter {
 		$af_row = new stdClass;
 
+		if ( $row->afh_group === null ) {
+			// FIXME Make the field NOT NULL and add default (T263324)
+			$row->afh_group = 'default';
+		}
+
 		foreach ( AbuseFilter::HISTORY_MAPPINGS as $af_col => $afh_col ) {
 			$af_row->$af_col = $row->$afh_col;
 		}
