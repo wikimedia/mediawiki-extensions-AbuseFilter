@@ -335,8 +335,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$results = $this->doLookup();
 		foreach ( $results as $result ) {
-			$actions = $result['actions'];
-			foreach ( $actions as $action ) {
+			foreach ( $result['actions'] as $action ) {
 				$this->revertAction( $action, $result );
 			}
 		}

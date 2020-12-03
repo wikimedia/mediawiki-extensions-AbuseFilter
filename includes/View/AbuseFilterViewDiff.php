@@ -308,8 +308,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$newVersion['meta']['modified_by_text']
 		);
 
-		$headings = '';
-		$headings .= Xml::tags( 'th', null,
+		$headings = Xml::tags( 'th', null,
 			$this->msg( 'abusefilter-diff-item' )->parse() );
 		$headings .= Xml::tags( 'th', null,
 			$this->msg( 'abusefilter-diff-version' )
@@ -328,9 +327,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$body = '';
 		// Basic info
-		$infoHeader = $this->getHeaderRow( 'abusefilter-diff-info' );
-		$info = '';
-		$info .= $this->getDiffRow(
+		$info = $this->getDiffRow(
 			'abusefilter-edit-description',
 			$oldVersion['info']['description'],
 			$newVersion['info']['description']
@@ -358,35 +355,27 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		);
 
 		if ( $info !== '' ) {
-			$body .= $infoHeader . $info;
+			$body .= $this->getHeaderRow( 'abusefilter-diff-info' ) . $info;
 		}
 
-		$patternHeader = $this->getHeaderRow( 'abusefilter-diff-pattern' );
-		$pattern = '';
-		$pattern .= $this->getDiffRow(
+		$pattern = $this->getDiffRow(
 			'abusefilter-edit-rules',
 			$oldVersion['pattern'],
 			$newVersion['pattern']
 		);
 
 		if ( $pattern !== '' ) {
-			$body .= $patternHeader . $pattern;
+			$body .= $this->getHeaderRow( 'abusefilter-diff-pattern' ) . $pattern;
 		}
 
-		$actionsHeader = $this->getHeaderRow( 'abusefilter-edit-consequences' );
-		$actions = '';
-
-		$oldActions = $this->stringifyActions( $oldVersion['actions'] );
-		$newActions = $this->stringifyActions( $newVersion['actions'] );
-
-		$actions .= $this->getDiffRow(
+		$actions = $this->getDiffRow(
 			'abusefilter-edit-consequences',
-			$oldActions,
-			$newActions
+			$this->stringifyActions( $oldVersion['actions'] ),
+			$this->stringifyActions( $newVersion['actions'] )
 		);
 
 		if ( $actions !== '' ) {
-			$body .= $actionsHeader . $actions;
+			$body .= $this->getHeaderRow( 'abusefilter-edit-consequences' ) . $actions;
 		}
 
 		$html = "<table class='wikitable'>

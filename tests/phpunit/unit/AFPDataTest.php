@@ -99,7 +99,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 				] )
 			],
 			// Invalid data types
-			[ new stdClass, null ],
+			[ (object)[], null ],
 			[ new AFPData( AFPData::DUNDEFINED ), null ]
 		];
 	}
