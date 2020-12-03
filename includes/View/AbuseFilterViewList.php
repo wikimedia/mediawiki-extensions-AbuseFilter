@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilterPager;
-use GlobalAbuseFilterPager;
 use Html;
 use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterPager;
+use MediaWiki\Extension\AbuseFilter\Pager\GlobalAbuseFilterPager;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use StringUtils;

@@ -1,8 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Pager;
+
+use AbuseFilter;
+use FakeResultWrapper;
+use Linker;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
+use MWException;
+use SpecialPage;
+use stdClass;
+use TablePager;
 use Wikimedia\AtEase\AtEase;
 
 /**
@@ -94,7 +104,7 @@ class AbuseFilterPager extends TablePager {
 		$filtered = [];
 		foreach ( $res as $row ) {
 			if ( $this->matchesPattern( $row->af_pattern ) ) {
-				$filtered[ $row->af_id ] = $row;
+				$filtered[$row->af_id] = $row;
 			}
 		}
 
@@ -132,8 +142,8 @@ class AbuseFilterPager extends TablePager {
 
 	/**
 	 * Note: this method is called by parent::__construct
-	 * @see Pager::getFieldNames()
 	 * @return array
+	 * @see Pager::getFieldNames()
 	 */
 	public function getFieldNames() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
@@ -349,9 +359,9 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
-	 * @see TablePager::getRowClass()
 	 * @param stdClass $row
 	 * @return string
+	 * @see TablePager::getRowClass()
 	 */
 	public function getRowClass( $row ) {
 		if ( $row->af_enabled ) {
@@ -385,8 +395,8 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
-	 * @see IndexPager::getExtraSortFields
 	 * @return array
+	 * @see IndexPager::getExtraSortFields
 	 */
 	public function getExtraSortFields() {
 		return [ 'af_enabled' => 'af_deleted' ];

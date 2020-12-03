@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 
 use AbuseFilter;
 use AbuseFilterChangesList;
-use AbuseFilterExaminePager;
 use AbuseFilterVariableHolder;
 use ChangesList;
 use HTMLForm;
@@ -12,6 +11,7 @@ use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionLookup;

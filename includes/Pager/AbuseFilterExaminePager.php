@@ -1,6 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Pager;
+
+use AbuseFilterChangesList;
+use ActorMigration;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
+use RecentChange;
+use ReverseChronologicalPager;
+use stdClass;
+use Title;
+use User;
 
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**

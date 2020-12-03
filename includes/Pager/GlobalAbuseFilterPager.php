@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Pager;
+
+use AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
 
