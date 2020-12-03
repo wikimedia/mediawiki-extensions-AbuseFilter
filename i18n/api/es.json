@@ -53,6 +53,7 @@
 	"apihelp-query+abuselog-param-user": "Mostrar solo entradas correspondientes a un usuario o IP determinado.",
 	"apihelp-query+abuselog-param-title": "Mostrar solo entradas correspondientes a una página determinada.",
 	"apihelp-query+abuselog-param-filter": "Mostrar solo las entradas que fueron capturadas por los ID de filtro de datos. Separar con pipes, el prefijo con \"$1\" para filtros globales.",
+	"apihelp-query+abuselog-param-filter-central": "Mostrar solo las entradas que se capturaron con los identificadores de filtro proporcionados. Sepárense con plecas.",
 	"apihelp-query+abuselog-param-limit": "La cantidad máxima de entradas que aparecerán.",
 	"apihelp-query+abuselog-param-prop": "Qué propiedades se obtendrán.",
 	"apihelp-query+abuselog-param-wiki": "Wiki del cual mostrar las detecciones.",
