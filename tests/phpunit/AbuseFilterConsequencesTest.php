@@ -450,8 +450,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Stash the edit.
-	 *
 	 * @param Title $title Title of the page to edit
 	 * @param string $text The new content of the page
 	 * @param string $summary The summary of the edit

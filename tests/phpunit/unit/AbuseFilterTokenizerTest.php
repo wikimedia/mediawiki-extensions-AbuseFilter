@@ -27,8 +27,6 @@
  */
 class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	/**
-	 * Test the 'unclosedcomment' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers AbuseFilterTokenizer
@@ -52,8 +50,6 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test the 'unrecognisedtoken' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers AbuseFilterTokenizer
@@ -77,8 +73,6 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test the 'unclosedstring' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers AbuseFilterTokenizer

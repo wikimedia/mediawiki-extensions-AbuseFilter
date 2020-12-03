@@ -474,8 +474,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test the 'variablevariable' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @dataProvider variableVariable
@@ -502,8 +500,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test the 'overridebuiltin' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @dataProvider overrideBuiltin
@@ -558,8 +554,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test the 'regexfailure' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @dataProvider regexFailure
@@ -585,8 +579,6 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Test the 'invalidiprange' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @dataProvider invalidIPRange

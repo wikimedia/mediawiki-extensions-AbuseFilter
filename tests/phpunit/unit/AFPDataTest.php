@@ -27,8 +27,6 @@
  */
 class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
-	 * Test the 'dividebyzero' exception
-	 *
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers AFPData::mulRel
