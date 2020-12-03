@@ -1,8 +1,11 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Api;
+
+use ApiBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
-class ApiAbuseFilterCheckSyntax extends ApiBase {
+class CheckSyntax extends ApiBase {
 
 	/**
 	 * @inheritDoc
@@ -15,7 +18,7 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-		$result = AbuseFilterServices::getParserFactory()->newParser()->checkSyntax( $params[ 'filter' ] );
+		$result = AbuseFilterServices::getParserFactory()->newParser()->checkSyntax( $params['filter'] );
 
 		$r = [];
 		if ( $result === true ) {
@@ -33,8 +36,8 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getAllowedParams
 	 * @return array
+	 * @see ApiBase::getAllowedParams
 	 */
 	public function getAllowedParams() {
 		return [
@@ -45,8 +48,8 @@ class ApiAbuseFilterCheckSyntax extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
 	 * @return array
+	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
 		return [

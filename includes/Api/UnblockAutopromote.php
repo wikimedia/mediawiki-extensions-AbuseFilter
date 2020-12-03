@@ -1,8 +1,12 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+namespace MediaWiki\Extension\AbuseFilter\Api;
 
-class ApiAbuseFilterUnblockAutopromote extends ApiBase {
+use ApiBase;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use User;
+
+class UnblockAutopromote extends ApiBase {
 	/**
 	 * @inheritDoc
 	 */
@@ -38,24 +42,24 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::mustBePosted()
 	 * @return bool
+	 * @see ApiBase::mustBePosted()
 	 */
 	public function mustBePosted() {
 		return true;
 	}
 
 	/**
-	 * @see ApiBase::isWriteMode()
 	 * @return bool
+	 * @see ApiBase::isWriteMode()
 	 */
 	public function isWriteMode() {
 		return true;
 	}
 
 	/**
-	 * @see ApiBase::getAllowedParams()
 	 * @return array
+	 * @see ApiBase::getAllowedParams()
 	 */
 	public function getAllowedParams() {
 		return [
@@ -68,16 +72,16 @@ class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::needsToken()
 	 * @return string
+	 * @see ApiBase::needsToken()
 	 */
 	public function needsToken() {
 		return 'csrf';
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
 	 * @return array
+	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
 		return [

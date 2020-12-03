@@ -16,7 +16,11 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Api;
+
+use ApiBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use SpecialAbuseLog;
 
 /**
  * API module to allow accessing private details (the user's IP) from AbuseLog entries
@@ -24,7 +28,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
  * @ingroup API
  * @ingroup Extensions
  */
-class ApiAbuseLogPrivateDetails extends ApiBase {
+class AbuseLogPrivateDetails extends ApiBase {
 	/**
 	 * @inheritDoc
 	 */
