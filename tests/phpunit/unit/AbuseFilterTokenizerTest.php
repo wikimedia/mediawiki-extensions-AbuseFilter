@@ -20,6 +20,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
+
 /**
  * @group Test
  * @group AbuseFilter
@@ -29,7 +31,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AbuseFilterTokenizer
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
 	 * @dataProvider unclosedComment
 	 */
 	public function testUnclosedCommentException( $expr, $caller ) {
@@ -52,7 +54,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AbuseFilterTokenizer
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
 	 * @dataProvider unrecognisedToken
 	 */
 	public function testUnrecognisedTokenException( $expr, $caller ) {
@@ -75,7 +77,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AbuseFilterTokenizer
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
 	 * @dataProvider unclosedString
 	 */
 	public function testUnclosedStringException( $expr, $caller ) {
@@ -100,7 +102,7 @@ class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
 	 *
 	 * @param string $code To be tokenized
 	 * @dataProvider provideCode
-	 * @covers AbuseFilterTokenizer::getTokens
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer::getTokens
 	 */
 	public function testCaching( $code ) {
 		$cache = new HashBagOStuff();

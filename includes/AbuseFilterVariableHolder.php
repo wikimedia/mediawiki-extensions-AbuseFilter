@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use Psr\Log\LoggerInterface;
 
 class AbuseFilterVariableHolder {

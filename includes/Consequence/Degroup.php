@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter\Consequence;
 
 use AbuseFilterVariableHolder;
-use AFPData;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\User\UserGroupManager;
 use TitleValue;
 

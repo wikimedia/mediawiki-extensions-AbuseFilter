@@ -23,6 +23,11 @@
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
 
@@ -31,18 +36,18 @@ use Wikimedia\TestingAccessWrapper;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @covers AbuseFilterCachingParser
- * @covers AFPTreeParser
- * @covers AFPTransitionBase
- * @covers AFPTreeNode
- * @covers AFPSyntaxTree
- * @covers AFPParserState
- * @covers AbuseFilterParser
- * @covers AbuseFilterTokenizer
- * @covers AFPToken
- * @covers AFPUserVisibleException
- * @covers AFPException
- * @covers AFPData
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTransitionBase
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPParserState
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPException
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
  * @covers AFComputedVariable
  */
 class AbuseFilterParserTest extends AbuseFilterParserTestCase {
@@ -804,8 +809,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	 * @param string $new The new name of the variable
 	 * @dataProvider provideDeprecatedVars
 	 *
-	 * @covers AbuseFilterParser::getVarValue
-	 * @covers AFPTreeParser::checkLogDeprecatedVar
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::getVarValue
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser::checkLogDeprecatedVar
 	 */
 	public function testDeprecatedVars( $old, $new ) {
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
@@ -1262,7 +1267,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::__construct
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::__construct
 	 */
 	public function testConstructorInitsVars() {
 		$lang = $this->getLanguageMock();
@@ -1278,7 +1283,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::setFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setFilter
 	 */
 	public function testSetFilter() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1289,7 +1294,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::setCache
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setCache
 	 */
 	public function testSetCache() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1299,7 +1304,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::setLogger
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setLogger
 	 */
 	public function testSetLogger() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1309,7 +1314,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::setStatsd
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setStatsd
 	 */
 	public function testSetStatsd() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1319,8 +1324,8 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::getCondCount
-	 * @covers AbuseFilterParser::resetCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::getCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::resetCondCount
 	 */
 	public function testCondCountMethods() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1333,7 +1338,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::toggleConditionLimit
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::toggleConditionLimit
 	 */
 	public function testToggleConditionLimit() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1346,7 +1351,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::clearFuncCache
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::clearFuncCache
 	 */
 	public function testClearFuncCache() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
@@ -1358,7 +1363,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterParser::setVariables
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setVariables
 	 */
 	public function testSetVariables() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );

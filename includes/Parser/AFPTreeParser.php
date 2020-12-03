@@ -8,6 +8,10 @@
  * @phan-file-suppress PhanPossiblyInfiniteRecursionSameParams Recursion controlled by class props
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
+use BagOStuff;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use Psr\Log\LoggerInterface;
 

@@ -1,6 +1,8 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\Database;

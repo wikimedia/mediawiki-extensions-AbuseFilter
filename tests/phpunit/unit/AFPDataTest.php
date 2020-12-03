@@ -20,19 +20,22 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+
 /**
  * @group Test
  * @group AbuseFilter
- * @group AbuseFilterParser
+ * @group MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  */
 class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
-	 * @covers AFPData::mulRel
-	 * @covers AbuseFilterParser
-	 * @covers AbuseFilterCachingParser
-	 * @covers AFPTreeParser
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::mulRel
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
 	 *
 	 * @dataProvider divideByZero
 	 */
@@ -65,7 +68,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param mixed $raw
 	 * @param AFPData|null $expected If null, we expect an exception due to unsupported data type
-	 * @covers AFPData::newFromPHPVar
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::newFromPHPVar
 	 * @dataProvider providePHPVars
 	 */
 	public function testNewFromPHPVar( $raw, $expected ) {
@@ -109,9 +112,9 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	 * filters. Other casts are already covered in parserTests.
 	 *
 	 * @param AFPData $orig
-	 * @param string $newType One of the AFPData::D* constants
+	 * @param string $newType One of the MediaWiki\Extension\AbuseFilter\Parser\AFPData::D* constants
 	 * @param AFPData|null $expected If null, we expect an exception due to unsupported data type
-	 * @covers AFPData::castTypes
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::castTypes
 	 * @dataProvider provideMissingCastTypes
 	 */
 	public function testMissingCastTypes( $orig, $newType, $expected ) {
@@ -173,7 +176,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param AFPData $orig
 	 * @param mixed $expected
-	 * @covers AFPData::toNative
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::toNative
 	 * @dataProvider provideToNative
 	 */
 	public function testToNative( $orig, $expected ) {
@@ -205,13 +208,13 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	}
 
 	/**
-	 * Ensure that we don't allow DUNDEFINED in AFPData::equals
+	 * Ensure that we don't allow DUNDEFINED in MediaWiki\Extension\AbuseFilter\Parser\AFPData::equals
 	 *
 	 * @param AFPData $lhs
 	 * @param AFPData $rhs
 	 * @dataProvider provideDUNDEFINEDEquals
 	 *
-	 * @covers AFPData::equals
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::equals
 	 */
 	public function testNoDUNDEFINEDEquals( $lhs, $rhs ) {
 		$this->expectException( AFPException::class );
@@ -236,7 +239,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * Test that DUNDEFINED can only have null value
 	 *
-	 * @covers AFPData::__construct
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::__construct
 	 */
 	public function testDUNDEFINEDRequiresNullValue() {
 		$this->expectException( InvalidArgumentException::class );
@@ -246,7 +249,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * Test that casting DUNDEFINED to something else is forbidden
 	 *
-	 * @covers AFPData::castTypes
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::castTypes
 	 */
 	public function testDUNDEFINEDCannotBeCast() {
 		$data = new AFPData( AFPData::DUNDEFINED );
@@ -258,7 +261,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param AFPData $obj
 	 * @param bool $expected
-	 * @covers AFPData::hasUndefined
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::hasUndefined
 	 * @dataProvider provideHasUndefined
 	 */
 	public function testHasUndefined( AFPData $obj, bool $expected ) {
@@ -281,7 +284,7 @@ class AFPDataTest extends AbuseFilterParserTestCase {
 	/**
 	 * @param AFPData $obj
 	 * @param AFPData $expected
-	 * @covers AFPData::cloneAsUndefinedReplacedWithNull
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::cloneAsUndefinedReplacedWithNull
 	 * @dataProvider provideCloneAsUndefinedReplacedWithNull
 	 */
 	public function testCloneAsUndefinedReplacedWithNull( AFPData $obj, AFPData $expected ) {

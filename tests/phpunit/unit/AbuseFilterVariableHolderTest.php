@@ -22,6 +22,7 @@
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
 

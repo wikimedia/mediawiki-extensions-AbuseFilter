@@ -21,6 +21,9 @@
  */
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.
@@ -29,16 +32,16 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @covers AbuseFilterCachingParser
- * @covers AFPTreeParser
- * @covers AFPTransitionBase
- * @covers AFPTreeNode
- * @covers AFPSyntaxTree
- * @covers AFPParserState
- * @covers AbuseFilterParser
- * @covers AbuseFilterTokenizer
- * @covers AFPToken
- * @covers AFPData
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTransitionBase
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPParserState
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
  */
 class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**

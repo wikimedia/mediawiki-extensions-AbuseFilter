@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
 class AFPParserState {
 	/** @var AFPToken */
 	public $token;

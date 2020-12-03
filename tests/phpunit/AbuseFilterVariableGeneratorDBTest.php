@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\MediaWikiServices;
@@ -376,7 +377,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		$actual = $varGenerator->getVars()->getVars();
 
 		// Convert PHP variables to AFPData
-		$expected = array_map( [ 'AFPData', 'newFromPHPVar' ], $expectedValues );
+		$expected = array_map( [ AFPData::class, 'newFromPHPVar' ], $expectedValues );
 
 		// Remove lazy variables (covered in other tests) and variables coming
 		// from other extensions (may not be generated, depending on the test environment)

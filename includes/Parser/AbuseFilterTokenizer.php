@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
+use BagOStuff;
 use Psr\Log\LoggerInterface;
 
 /**
