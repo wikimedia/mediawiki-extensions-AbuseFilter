@@ -1,7 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Pager;
+
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use ReverseChronologicalPager;
+use SpecialAbuseLog;
+use stdClass;
 use Wikimedia\Rdbms\IResultWrapper;
 
 class AbuseLogPager extends ReverseChronologicalPager {
@@ -114,7 +119,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			// Only for local wiki results
 			if ( !$row->afl_wiki ) {
 				$lb->add( $row->afl_namespace, $row->afl_title );
-				$lb->add( NS_USER,  $row->afl_user );
+				$lb->add( NS_USER, $row->afl_user );
 				$lb->add( NS_USER_TALK, $row->afl_user_text );
 			}
 		}

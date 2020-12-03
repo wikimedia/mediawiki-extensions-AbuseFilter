@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilterHistoryPager;
 use HTMLForm;
 use IContextSource;
 use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterHistoryPager;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use User;

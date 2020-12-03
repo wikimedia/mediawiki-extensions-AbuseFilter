@@ -1,7 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Pager;
+
+use AbuseFilter;
+use HtmlArmor;
+use Linker;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
 use MediaWiki\Linker\LinkRenderer;
+use SpecialPage;
+use TablePager;
+use Title;
+use Xml;
 
 class AbuseFilterHistoryPager extends TablePager {
 	/**
@@ -44,8 +53,8 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	/**
-	 * @see Pager::getFieldNames()
 	 * @return array
+	 * @see Pager::getFieldNames()
 	 */
 	public function getFieldNames() {
 		static $headers = null;
@@ -189,12 +198,12 @@ class AbuseFilterHistoryPager extends TablePager {
 			],
 			'conds' => [],
 			'join_conds' => [
-					'abuse_filter' =>
-						[
-							'LEFT JOIN',
-							'afh_filter=af_id',
-						],
-				],
+				'abuse_filter' =>
+					[
+						'LEFT JOIN',
+						'afh_filter=af_id',
+					],
+			],
 		];
 
 		if ( $this->mUser ) {
@@ -229,11 +238,11 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	/**
-	 * @see TablePager::getCellAttrs
-	 *
 	 * @param string $field
 	 * @param string $value
 	 * @return array
+	 * @see TablePager::getCellAttrs
+	 *
 	 */
 	public function getCellAttrs( $field, $value ) {
 		$row = $this->mCurrentRow;

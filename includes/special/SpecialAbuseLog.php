@@ -4,6 +4,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
