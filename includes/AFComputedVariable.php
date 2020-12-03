@@ -230,7 +230,7 @@ class AFComputedVariable {
 			case 'links-from-wikitext':
 				// This should ONLY be used when sharing a parse operation with the edit.
 
-				/* @var WikiPage $article */
+				/** @var WikiPage $article */
 				if ( isset( $parameters['article'] ) ) {
 					$article = $parameters['article'];
 				} else {

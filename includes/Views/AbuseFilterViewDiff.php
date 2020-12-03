@@ -392,8 +392,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	}
 
 	/**
-	 * @param array $actions
-	 * @return array
+	 * @param string[][] $actions
+	 * @return string[]
 	 */
 	public function stringifyActions( $actions ) {
 		$lines = [];

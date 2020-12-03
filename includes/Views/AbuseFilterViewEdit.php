@@ -1046,8 +1046,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @todo Maybe we should also check if global values belong to $durations
 	 * and determine the right point to add them if missing.
 	 *
-	 * @param array $durations
-	 * @return array
+	 * @param string[] $durations
+	 * @return string[]
 	 */
 	protected static function normalizeBlocks( array $durations ) {
 		global $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
