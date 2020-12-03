@@ -19,7 +19,7 @@ class PurgeOldLogIPData extends Maintenance {
 	}
 
 	/**
-	 * @see Maintenance:execute()
+	 * @inheritDoc
 	 */
 	public function execute() {
 		$this->output( "Purging old IP Address data from abuse_filter_log...\n" );

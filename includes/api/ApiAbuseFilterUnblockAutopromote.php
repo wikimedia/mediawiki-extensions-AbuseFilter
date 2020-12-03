@@ -4,7 +4,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
 class ApiAbuseFilterUnblockAutopromote extends ApiBase {
 	/**
-	 * @see ApiBase::execute()
+	 * @inheritDoc
 	 */
 	public function execute() {
 		$this->checkUserRightsAny( 'abusefilter-modify' );

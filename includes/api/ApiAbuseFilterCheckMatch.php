@@ -5,7 +5,7 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 
 class ApiAbuseFilterCheckMatch extends ApiBase {
 	/**
-	 * @see ApiBase::execute
+	 * @inheritDoc
 	 */
 	public function execute() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();

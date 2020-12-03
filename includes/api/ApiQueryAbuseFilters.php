@@ -41,7 +41,7 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	}
 
 	/**
-	 * @see ApiQueryBase::execute()
+	 * @inheritDoc
 	 */
 	public function execute() {
 		$user = $this->getUser();
