@@ -2,7 +2,6 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
 
@@ -31,47 +30,6 @@ class AbuseFilter {
 	];
 
 	/**
-	 * @deprecated Since 1.35 Use VariableGenerator::addUserVars()
-	 * @param User $user
-	 * @param RecentChange|null $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	public static function generateUserVars( User $user, RecentChange $entry = null ) {
-		wfDeprecated( __METHOD__, '1.35' );
-		$vars = new AbuseFilterVariableHolder();
-		$generator = new VariableGenerator( $vars );
-		return $generator->addUserVars( $user, $entry )->getVariableHolder();
-	}
-
-	/**
-	 * @deprecated Since 1.35 Use VariableGenerator::addTitleVars
-	 * @param Title|null $title
-	 * @param string $prefix
-	 * @param RecentChange|null $entry
-	 * @return AbuseFilterVariableHolder
-	 */
-	public static function generateTitleVars( $title, $prefix, RecentChange $entry = null ) {
-		wfDeprecated( __METHOD__, '1.35' );
-		$vars = new AbuseFilterVariableHolder();
-		if ( !( $title instanceof Title ) ) {
-			return $vars;
-		}
-		$generator = new VariableGenerator( $vars );
-		return $generator->addTitleVars( $title, $prefix, $entry )->getVariableHolder();
-	}
-
-	/**
-	 * @deprecated Since 1.35 Use VariableGenerator::addGenericVars
-	 * @return AbuseFilterVariableHolder
-	 */
-	public static function generateGenericVars() {
-		wfDeprecated( __METHOD__, '1.35' );
-		$vars = new AbuseFilterVariableHolder();
-		$generator = new VariableGenerator( $vars );
-		return $generator->addGenericVars()->getVariableHolder();
-	}
-
-	/**
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @param AbuseFilterVariableHolder $vars
@@ -93,26 +51,6 @@ class AbuseFilter {
 		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
 		$runner->parser = $parser;
 		return $runner->checkAllFilters();
-	}
-
-	/**
-	 * @deprecated Use GlobalNameUtils
-	 * @param string|int $filter
-	 * @return array
-	 * @phan-return array{0:int,1:bool}
-	 * @throws InvalidArgumentException
-	 */
-	public static function splitGlobalName( $filter ) {
-		return MediaWiki\Extension\AbuseFilter\GlobalNameUtils::splitGlobalName( $filter );
-	}
-
-	/**
-	 * @param string[] $filters
-	 * @return array[][]
-	 * @deprecated since 1.36 Use ConsequencesLookup
-	 */
-	public static function getConsequencesForFilters( $filters ) {
-		return AbuseFilterServices::getConsequencesLookup()->getConsequencesForFilters( $filters );
 	}
 
 	/**

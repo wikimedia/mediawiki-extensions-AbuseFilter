@@ -241,7 +241,6 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test for the wiki_name variable.
 	 *
-	 * @covers AbuseFilter::generateGenericVars
 	 * @covers AFComputedVariable::compute
 	 */
 	public function testWikiNameVar() {
@@ -263,7 +262,6 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test for the wiki_language variable.
 	 *
-	 * @covers AbuseFilter::generateGenericVars
 	 * @covers AFComputedVariable::compute
 	 */
 	public function testWikiLanguageVar() {
