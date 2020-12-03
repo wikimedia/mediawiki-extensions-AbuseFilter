@@ -1239,7 +1239,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					$filterLink = $linkMsg->escaped();
 				}
 			} else {
-				$title = SpecialPage::getTitleFor( 'AbuseFilter', $filterID );
+				$title = SpecialPage::getTitleFor( 'AbuseFilter', (string)$filterID );
 				$linkText = $this->msg( 'abusefilter-log-detailedentry-local' )
 					->numParams( $filterID )->text();
 				$filterLink = $linkRenderer->makeKnownLink( $title, $linkText );
