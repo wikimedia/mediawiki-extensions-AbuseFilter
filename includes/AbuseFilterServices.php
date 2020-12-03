@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
+use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterServices {
@@ -149,5 +150,12 @@ class AbuseFilterServices {
 	 */
 	public static function getAbuseLoggerFactory() : AbuseLoggerFactory {
 		return MediaWikiServices::getInstance()->getService( AbuseLoggerFactory::SERVICE_NAME );
+	}
+
+	/**
+	 * @return UpdateHitCountWatcher
+	 */
+	public static function getUpdateHitCountWatcher() : UpdateHitCountWatcher {
+		return MediaWikiServices::getInstance()->getService( UpdateHitCountWatcher::SERVICE_NAME );
 	}
 }

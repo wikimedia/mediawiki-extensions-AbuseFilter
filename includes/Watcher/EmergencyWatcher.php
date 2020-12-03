@@ -116,8 +116,8 @@ class EmergencyWatcher implements Watcher {
 	 *
 	 * @inheritDoc
 	 */
-	public function run( array $filters, string $group ) : void {
-		$throttleFilters = $this->getFiltersToThrottle( $filters, $group );
+	public function run( array $localFilters, array $globalFilters, string $group ) : void {
+		$throttleFilters = $this->getFiltersToThrottle( $localFilters, $group );
 		if ( !$throttleFilters ) {
 			return;
 		}
