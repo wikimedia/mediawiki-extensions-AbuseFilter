@@ -1096,7 +1096,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string[] $durations
 	 * @return string[]
 	 */
-	protected static function normalizeBlocks( array $durations ) {
+	private static function normalizeBlocks( array $durations ) {
 		global $wgAbuseFilterBlockDuration, $wgAbuseFilterAnonBlockDuration;
 		// We need to have same values since it may happen that ipblocklist
 		// and one (or both) of the global variables use different wording

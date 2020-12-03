@@ -370,8 +370,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$actions = $this->getDiffRow(
 			'abusefilter-edit-consequences',
-			$this->stringifyActions( $oldVersion['actions'] ),
-			$this->stringifyActions( $newVersion['actions'] )
+			$this->stringifyActions( $oldVersion['actions'] ) ?: [ '' ],
+			$this->stringifyActions( $newVersion['actions'] ) ?: [ '' ]
 		);
 
 		if ( $actions !== '' ) {
@@ -392,16 +392,12 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param string[][] $actions
 	 * @return string[]
 	 */
-	public function stringifyActions( $actions ) {
+	private function stringifyActions( array $actions ) : array {
 		$lines = [];
 
 		ksort( $actions );
 		foreach ( $actions as $action => $parameters ) {
 			$lines[] = AbuseFilter::formatAction( $action, $parameters, $this->getLanguage() );
-		}
-
-		if ( !count( $lines ) ) {
-			$lines[] = '';
 		}
 
 		return $lines;
