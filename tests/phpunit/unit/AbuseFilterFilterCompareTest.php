@@ -1,10 +1,12 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 
 /**
  * @group Test
@@ -27,7 +29,9 @@ class AbuseFilterFilterCompareTest extends MediaWikiUnitTestCase {
 		$allActions = [
 			'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'rangeblock', 'degroup', 'tag'
 		];
-		$compare = new FilterCompare( $allActions );
+		$allActions = array_fill_keys( $allActions, true );
+		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), $allActions, [] );
+		$compare = new FilterCompare( $registry );
 
 		$this->assertSame( $expected, $compare->compareVersions( $firstVersion, $secondVersion ) );
 	}
@@ -335,7 +339,7 @@ class AbuseFilterFilterCompareTest extends MediaWikiUnitTestCase {
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			FilterCompare::class,
-			new FilterCompare( [] )
+			new FilterCompare( $this->createMock( ConsequencesRegistry::class ) )
 		);
 	}
 }

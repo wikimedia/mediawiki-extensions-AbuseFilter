@@ -66,4 +66,17 @@ class ConsequencesRegistry {
 			)
 		);
 	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getAllEnabledActionNames() : array {
+		$disabledActions = array_keys( array_filter(
+			$this->configActions,
+			function ( $el ) {
+				return $el === false;
+			}
+		) );
+		return array_values( array_diff( $this->getAllActionNames(), $disabledActions ) );
+	}
 }

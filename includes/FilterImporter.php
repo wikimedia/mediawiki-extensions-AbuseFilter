@@ -23,7 +23,6 @@ class FilterImporter {
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterValidGroups',
 		'AbuseFilterIsCentral',
-		'AbuseFilterActions',
 	];
 
 	private const TEMPLATE_KEYS = [
@@ -41,12 +40,17 @@ class FilterImporter {
 	/** @var ServiceOptions */
 	private $options;
 
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
+
 	/**
 	 * @param ServiceOptions $options
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 */
-	public function __construct( ServiceOptions $options ) {
+	public function __construct( ServiceOptions $options, ConsequencesRegistry $consequencesRegistry ) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
+		$this->consequencesRegistry = $consequencesRegistry;
 	}
 
 	/**
@@ -141,8 +145,9 @@ class FilterImporter {
 			return false;
 		}
 
+		$allActions = $this->consequencesRegistry->getAllActionNames();
 		foreach ( $arr['actions'] as $action => $params ) {
-			if ( !array_key_exists( $action, $this->options->get( 'AbuseFilterActions' ) ) || !is_array( $params ) ) {
+			if ( !in_array( $action, $allActions, true ) || !is_array( $params ) ) {
 				return false;
 			}
 		}

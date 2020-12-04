@@ -571,18 +571,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return string HTML text for an action editor.
 	 */
 	private function buildConsequenceEditor( Filter $filterObj, array $actions ) {
-		$enabledActions = array_filter(
-			$this->getConfig()->get( 'AbuseFilterActions' )
-		);
+		$enabledActions = $this->consequencesRegistry->getAllEnabledActionNames();
 
 		$setActions = [];
-		foreach ( $enabledActions as $action => $_ ) {
+		foreach ( $enabledActions as $action ) {
 			$setActions[$action] = array_key_exists( $action, $actions );
 		}
 
 		$output = '';
 
-		foreach ( $enabledActions as $action => $_ ) {
+		foreach ( $enabledActions as $action ) {
 			$params = $actions[$action] ?? null;
 			$output .= $this->buildConsequenceSelector(
 				$action, $setActions[$action], $filterObj, $params );
@@ -601,8 +599,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private function buildConsequenceSelector( $action, $set, $filterObj, ?array $parameters ) {
 		$config = $this->getConfig();
 		$user = $this->getUser();
-		$actions = $config->get( 'AbuseFilterActions' );
-		if ( empty( $actions[$action] ) ) {
+		$actions = $this->consequencesRegistry->getAllEnabledActionNames();
+		if ( !in_array( $action, $actions, true ) ) {
 			return '';
 		}
 
@@ -1254,8 +1252,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 */
 	private function loadActions() : array {
 		$request = $this->getRequest();
+		$allActions = $this->consequencesRegistry->getAllEnabledActionNames();
 		$actions = [];
-		foreach ( array_filter( $this->getConfig()->get( 'AbuseFilterActions' ) ) as $action => $_ ) {
+		foreach ( $allActions as $action ) {
 			// Check if it's set
 			$enabled = $request->getCheck( 'wpFilterAction' . ucfirst( $action ) );
 

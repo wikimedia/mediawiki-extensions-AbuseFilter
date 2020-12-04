@@ -12,14 +12,14 @@ use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 class FilterCompare {
 	public const SERVICE_NAME = 'AbuseFilterFilterCompare';
 
-	/** @var string[] */
-	private $availableActions;
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
 
 	/**
-	 * @param string[] $availableActions
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 */
-	public function __construct( array $availableActions ) {
-		$this->availableActions = $availableActions;
+	public function __construct( ConsequencesRegistry $consequencesRegistry ) {
+		$this->consequencesRegistry = $consequencesRegistry;
 	}
 
 	/**
@@ -50,7 +50,7 @@ class FilterCompare {
 
 		$firstActions = $firstFilter->getActions();
 		$secondActions = $secondFilter->getActions();
-		foreach ( $this->availableActions as $action ) {
+		foreach ( $this->consequencesRegistry->getAllEnabledActionNames() as $action ) {
 			if ( !isset( $firstActions[$action] ) && !isset( $secondActions[$action] ) ) {
 				// They're both unset
 			} elseif ( isset( $firstActions[$action] ) && isset( $secondActions[$action] ) ) {
