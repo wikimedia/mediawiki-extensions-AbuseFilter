@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
@@ -181,7 +182,15 @@ return [
 		return new ConsequencesLookup(
 			$services->getDBLoadBalancer(),
 			$services->get( CentralDBManager::SERVICE_NAME ),
+			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' )
+		);
+	},
+	ConsequencesRegistry::SERVICE_NAME => function ( MediaWikiServices $services ): ConsequencesRegistry {
+		return new ConsequencesRegistry(
+			AbuseFilterHookRunner::getRunner(),
+			$services->getMainConfig()->get( 'AbuseFilterActions' ),
+			$services->getMainConfig()->get( 'AbuseFilterCustomActionsHandlers' )
 		);
 	},
 	AbuseLoggerFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : AbuseLoggerFactory {

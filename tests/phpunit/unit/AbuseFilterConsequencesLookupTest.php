@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
+use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -21,6 +22,7 @@ class AbuseFilterConsequencesLookupTest extends MediaWikiUnitTestCase {
 			new ConsequencesLookup(
 				$this->createMock( ILoadBalancer::class ),
 				$this->createMock( CentralDBManager::class ),
+				$this->createMock( ConsequencesRegistry::class ),
 				new NullLogger()
 			)
 		);

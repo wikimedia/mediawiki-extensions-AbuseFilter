@@ -21,17 +21,6 @@ class AbuseFilter {
 	 */
 	public static $logIds = [];
 
-	/**
-	 * @var array Actions which may harm the user. Only retrieve via self::getDangerousActions
-	 * @internal
-	 */
-	public const DANGEROUS_ACTIONS = [
-		'block',
-		'blockautopromote',
-		'degroup',
-		'rangeblock'
-	];
-
 	public const HISTORY_MAPPINGS = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',
@@ -55,25 +44,6 @@ class AbuseFilter {
 		$vars = new AbuseFilterVariableHolder();
 		$generator = new VariableGenerator( $vars );
 		return $generator->addUserVars( $user, $entry )->getVariableHolder();
-	}
-
-	/**
-	 * Get an array of action which harm the user.
-	 *
-	 * @return string[]
-	 * @internal Temporary hack
-	 */
-	public static function getDangerousActions() : array {
-		static $actions = null;
-
-		if ( !$actions ) {
-			$extActions = [];
-			AbuseFilterHookRunner::getRunner()->onAbuseFilterGetDangerousActions( $extActions );
-			$actions = array_unique(
-				array_merge( $extActions, self::DANGEROUS_ACTIONS )
-			);
-		}
-		return $actions;
 	}
 
 	/**
