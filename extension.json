@@ -115,15 +115,15 @@
 		"abusefilterprivatedetails": "abusefilter-privatedetails-log"
 	},
 	"APIModules": {
-		"abusefilterchecksyntax": "ApiAbuseFilterCheckSyntax",
-		"abusefilterevalexpression": "ApiAbuseFilterEvalExpression",
-		"abusefilterunblockautopromote": "ApiAbuseFilterUnblockAutopromote",
-		"abusefiltercheckmatch": "ApiAbuseFilterCheckMatch",
-		"abuselogprivatedetails": "ApiAbuseLogPrivateDetails"
+		"abusefilterchecksyntax": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckSyntax",
+		"abusefilterevalexpression": "MediaWiki\\Extension\\AbuseFilter\\Api\\EvalExpression",
+		"abusefilterunblockautopromote": "MediaWiki\\Extension\\AbuseFilter\\Api\\UnblockAutopromote",
+		"abusefiltercheckmatch": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckMatch",
+		"abuselogprivatedetails": "MediaWiki\\Extension\\AbuseFilter\\Api\\AbuseLogPrivateDetails"
 	},
 	"APIListModules": {
-		"abuselog": "ApiQueryAbuseLog",
-		"abusefilters": "ApiQueryAbuseFilters"
+		"abuselog": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseLog",
+		"abusefilters": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseFilters"
 	},
 	"MessagesDirs": {
 		"AbuseFilter": [
@@ -135,6 +135,7 @@
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
 	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\AbuseFilter\\Api\\": "includes/Api/",
 		"MediaWiki\\Extension\\AbuseFilter\\VariableGenerator\\": "includes/VariableGenerator/",
 		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/",
 		"MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\": "includes/LogFormatter/",
@@ -191,13 +192,6 @@
 		"AFPSyntaxTree": "includes/parser/AFPSyntaxTree.php",
 		"AFPTreeParser": "includes/parser/AFPTreeParser.php",
 		"AFPUserVisibleException": "includes/parser/AFPUserVisibleException.php",
-		"ApiQueryAbuseLog": "includes/api/ApiQueryAbuseLog.php",
-		"ApiQueryAbuseFilters": "includes/api/ApiQueryAbuseFilters.php",
-		"ApiAbuseFilterCheckSyntax": "includes/api/ApiAbuseFilterCheckSyntax.php",
-		"ApiAbuseFilterEvalExpression": "includes/api/ApiAbuseFilterEvalExpression.php",
-		"ApiAbuseFilterUnblockAutopromote": "includes/api/ApiAbuseFilterUnblockAutopromote.php",
-		"ApiAbuseFilterCheckMatch": "includes/api/ApiAbuseFilterCheckMatch.php",
-		"ApiAbuseLogPrivateDetails": "includes/api/ApiAbuseLogPrivateDetails.php",
 		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
 		"FixOldLogEntries": "maintenance/fixOldLogEntries.php",
 		"UpdateVarDumps": "maintenance/updateVarDumps.php"

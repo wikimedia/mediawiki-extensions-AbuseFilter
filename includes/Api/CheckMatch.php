@@ -1,9 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Api;
+
+use AbuseFilter;
+use AbuseFilterVariableHolder;
+use ApiBase;
+use ApiResult;
+use FormatJson;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use RecentChange;
 
-class ApiAbuseFilterCheckMatch extends ApiBase {
+class CheckMatch extends ApiBase {
 	/**
 	 * @inheritDoc
 	 */
@@ -52,7 +61,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 		}
 
 		$parser = AbuseFilterServices::getParserFactory()->newParser();
-		if ( $parser->checkSyntax( $params[ 'filter' ] ) !== true ) {
+		if ( $parser->checkSyntax( $params['filter'] ) !== true ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 
@@ -70,8 +79,8 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getAllowedParams
 	 * @return array
+	 * @see ApiBase::getAllowedParams
 	 */
 	public function getAllowedParams() {
 		return [
@@ -89,8 +98,8 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
 	 * @return array
+	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
 		return [

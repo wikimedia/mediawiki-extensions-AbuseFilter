@@ -23,9 +23,19 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Api;
+
+use AbuseFilter;
+use ApiBase;
+use ApiQuery;
+use ApiQueryBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\MediaWikiServices;
+use MWTimestamp;
+use SpecialAbuseLog;
+use Title;
+use User;
 use Wikimedia\IPUtils;
 
 /**
@@ -34,7 +44,7 @@ use Wikimedia\IPUtils;
  * @ingroup API
  * @ingroup Extensions
  */
-class ApiQueryAbuseLog extends ApiQueryBase {
+class QueryAbuseLog extends ApiQueryBase {
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
@@ -112,7 +122,7 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
 			$this->addJoinConds( [ 'abuse_filter' => [ 'LEFT JOIN',
-					'af_id=afl_filter' ] ] );
+				'af_id=afl_filter' ] ] );
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
@@ -249,8 +259,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	}
 
 	/**
-	 * @see ApiQueryBase::getAllowedParams()
 	 * @return array
+	 * @see ApiQueryBase::getAllowedParams()
 	 */
 	public function getAllowedParams() {
 		$params = [
@@ -317,8 +327,8 @@ class ApiQueryAbuseLog extends ApiQueryBase {
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
 	 * @return array
+	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
 		return [

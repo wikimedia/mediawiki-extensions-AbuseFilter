@@ -23,7 +23,13 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Api;
+
+use ApiBase;
+use ApiQuery;
+use ApiQueryBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MWTimestamp;
 
 /**
  * Query module to list abuse filter details.
@@ -31,7 +37,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
  * @ingroup API
  * @ingroup Extensions
  */
-class ApiQueryAbuseFilters extends ApiQueryBase {
+class QueryAbuseFilters extends ApiQueryBase {
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
@@ -162,8 +168,8 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	}
 
 	/**
-	 * @see ApiQueryBase::getAllowedParams()
 	 * @return array
+	 * @see ApiQueryBase::getAllowedParams()
 	 */
 	public function getAllowedParams() {
 		return [
@@ -219,8 +225,8 @@ class ApiQueryAbuseFilters extends ApiQueryBase {
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
 	 * @return array
+	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
 		return [

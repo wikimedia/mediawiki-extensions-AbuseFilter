@@ -1,9 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Api;
+
+use AbuseFilter;
+use AbuseFilterVariableHolder;
+use ApiBase;
+use ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use Status;
 
-class ApiAbuseFilterEvalExpression extends ApiBase {
+class EvalExpression extends ApiBase {
 	/**
 	 * @inheritDoc
 	 */
@@ -34,7 +41,7 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 	 * @param string $expr
 	 * @return Status
 	 */
-	private function evaluateExpression( string $expr ) : Status {
+	private function evaluateExpression( string $expr ): Status {
 		$parser = AbuseFilterServices::getParserFactory()->newParser();
 		if ( $parser->checkSyntax( $expr ) !== true ) {
 			return Status::newFatal( 'abusefilter-tools-syntax-error' );
@@ -51,8 +58,8 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getAllowedParams()
 	 * @return array
+	 * @see ApiBase::getAllowedParams()
 	 */
 	public function getAllowedParams() {
 		return [
@@ -66,8 +73,8 @@ class ApiAbuseFilterEvalExpression extends ApiBase {
 	}
 
 	/**
-	 * @see ApiBase::getExamplesMessages()
 	 * @return array
+	 * @see ApiBase::getExamplesMessages()
 	 */
 	protected function getExamplesMessages() {
 		return [
