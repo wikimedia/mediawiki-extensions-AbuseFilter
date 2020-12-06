@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
+use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -122,15 +123,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 *
 	 * An array of size 1: either the URL is like Special:AbuseLog/id where
 	 * the id is log identifier, in which case the details of the log except for
-	 * private bits (e.g. IP address) are shown, or the URL is incomplete as in
-	 * Special:AbuseLog/private (without speciying id), in which case a warning
-	 * is shown to the user
+	 * private bits (e.g. IP address) are shown, or Special:AbuseLog/hide for hiding entries,
+	 * or the URL is incomplete as in Special:AbuseLog/private (without speciying id),
+	 * in which case a warning is shown to the user
 	 *
 	 * An array of size 0 when URL is like Special:AbuseLog or an array of size
 	 * 1 when the URL is like Special:AbuseFilter/ (i.e. without anything after
-	 * the slash). In this case, if the parameter `hide` was passed, it will be
-	 * used as the identifier of the log entry that we want to hide; otherwise,
-	 * the abuse logs are shown as a list, with a search form above the list.
+	 * the slash). Otherwise, the abuse logs are shown as a list, with a search form above the list.
 	 *
 	 * @param string|null $parameter URL parameters
 	 */
@@ -150,7 +149,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$this->checkPermissions();
 
-		$hideid = $request->getIntOrNull( 'hide' );
 		$args = explode( '/', $parameter );
 
 		if ( count( $args ) === 2 && $args[0] === 'private' ) {
@@ -158,11 +156,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		} elseif ( count( $args ) === 1 && $args[0] !== '' ) {
 			if ( $args[0] === 'private' ) {
 				$out->addWikiMsg( 'abusefilter-invalid-request-noid' );
+			} elseif ( $args[0] === 'hide' ) {
+				$this->showHideView();
 			} else {
 				$this->showDetails( $args[0] );
 			}
-		} elseif ( $hideid ) {
-			$this->showHideForm( $hideid );
 		} else {
 			$this->searchForm();
 			$this->showList();
@@ -340,110 +338,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			->displayForm( false );
 	}
 
-	/**
-	 * @param int $id
-	 */
-	public function showHideForm( $id ) {
-		$output = $this->getOutput();
-		if ( !$this->afPermissionManager->canHideAbuseLog( $this->getUser() ) ) {
-			$output->addWikiMsg( 'abusefilter-log-hide-forbidden' );
-
-			return;
-		}
-
-		$dbr = wfGetDB( DB_REPLICA );
-
-		$deleted = $dbr->selectField(
-			'abuse_filter_log',
-			'afl_deleted',
-			[ 'afl_id' => $id ],
-			__METHOD__
+	private function showHideView() {
+		$view = new HideAbuseLog(
+			$this->afPermissionManager,
+			$this->getContext(),
+			$this->getLinkRenderer(),
+			'AbuseLog'
 		);
-
-		if ( $deleted === false ) {
-			$output->addWikiMsg( 'abusefilter-log-nonexistent' );
-			return;
-		}
-
-		$hideReasonsOther = $this->msg( 'revdelete-reasonotherlist' )->text();
-		$hideReasons = $this->msg( 'revdelete-reason-dropdown-suppress' )->inContentLanguage()->text();
-		$hideReasons = Xml::listDropDownOptions( $hideReasons, [ 'other' => $hideReasonsOther ] );
-
-		$formInfo = [
-			'showorhide' => [
-				'type' => 'radio',
-				'label-message' => 'abusefilter-log-hide-set-visibility',
-				'options-messages' => [
-					'abusefilter-log-hide-show' => 'show',
-					'abusefilter-log-hide-hide' => 'hide'
-				],
-				'default' => (int)$deleted === 0 ? 'show' : 'hide',
-				'flatlist' => true
-			],
-			'logid' => [
-				'type' => 'info',
-				'default' => (string)$id,
-				'label-message' => 'abusefilter-log-hide-id',
-			],
-			'dropdownreason' => [
-				'type' => 'select',
-				'options' => $hideReasons,
-				'label-message' => 'abusefilter-log-hide-reason'
-			],
-			'reason' => [
-				'type' => 'text',
-				'label-message' => 'abusefilter-log-hide-reason-other',
-			],
-		];
-
-		HTMLForm::factory( 'ooui', $formInfo, $this->getContext() )
-			->setTitle( $this->getPageTitle() )
-			->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() )
-			->addHiddenField( 'hide', $id )
-			->setSubmitCallback( [ $this, 'saveHideForm' ] )
-			->show();
-
-		// Show suppress log for this entry
-		$suppressLogPage = new LogPage( 'suppress' );
-		$output->addHTML( "<h2>" . $suppressLogPage->getName()->escaped() . "</h2>\n" );
-		LogEventsList::showLogExtract( $output, 'suppress', $this->getPageTitle( (string)$id ) );
-	}
-
-	/**
-	 * @param array $fields
-	 * @return bool
-	 */
-	public function saveHideForm( $fields ) {
-		$logid = $this->getRequest()->getVal( 'hide' );
-
-		$newValue = $fields['showorhide'] === 'hide' ? 1 : 0;
-		$dbw = wfGetDB( DB_MASTER );
-
-		$dbw->update(
-			'abuse_filter_log',
-			[ 'afl_deleted' => $newValue ],
-			[ 'afl_id' => $logid ],
-			__METHOD__
-		);
-
-		$reason = $fields['dropdownreason'];
-		if ( $reason === 'other' ) {
-			$reason = $fields['reason'];
-		} elseif ( $fields['reason'] !== '' ) {
-			$reason .=
-				$this->msg( 'colon-separator' )->inContentLanguage()->text() . $fields['reason'];
-		}
-
-		$action = $fields['showorhide'] === 'hide' ? 'hide-afl' : 'unhide-afl';
-		$logEntry = new ManualLogEntry( 'suppress', $action );
-		$logEntry->setPerformer( $this->getUser() );
-		$logEntry->setTarget( $this->getPageTitle( $logid ) );
-		$logEntry->setComment( $reason );
-		$logEntry->insert();
-
-		$this->getOutput()->redirect( SpecialPage::getTitleFor( 'AbuseLog' )->getFullURL() );
-
-		return true;
+		$view->show();
 	}
 
 	/**
@@ -1279,10 +1181,10 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 			if ( $this->afPermissionManager->canHideAbuseLog( $user ) ) {
 				$hideLink = $linkRenderer->makeKnownLink(
-					$this->getPageTitle(),
+					$this->getPageTitle( 'hide' ),
 					$this->msg( 'abusefilter-log-hidelink' )->text(),
 					[],
-					[ 'hide' => $row->afl_id ]
+					[ 'id' => $row->afl_id ]
 				);
 
 				$actionLinks[] = $hideLink;
