@@ -74,3 +74,8 @@ $user: User object performer of the action
 'AbuseFilterGetDangerousActions': Allows specifying custom consequences which can harm the user and prevent
 the edit from being saved.
 &$actions: Array (string[]) of dangerous actions
+
+'AbuseFilterCustomActions': Allows specifying custom actions. Callers should append to $actions, using the action name
+as (string) key, and the value should be a callable that takes two parameters, a MediaWiki\Extension\AbuseFilter\Consequence\Parameters
+and an array of raw action parameters, and returns a Consequence object.
+&$actions: Array (callable[]) of actions

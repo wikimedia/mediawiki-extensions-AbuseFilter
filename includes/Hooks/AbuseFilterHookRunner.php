@@ -19,6 +19,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterBuilderHook,
 	AbuseFilterComputeVariableHook,
 	AbuseFilterContentToStringHook,
+	AbuseFilterCustomActionsHook,
 	AbuseFilterDeprecatedVariablesHook,
 	AbuseFilterFilterActionHook,
 	AbuseFilterGenerateGenericVarsHook,
@@ -294,6 +295,17 @@ class AbuseFilterHookRunner implements
 	public function onAbuseFilterGetDangerousActions( array &$actions ) : void {
 		$this->hookContainer->run(
 			'AbuseFilterGetDangerousActions',
+			[ &$actions ],
+			[ 'abortable' => false ]
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onAbuseFilterCustomActions( array &$actions ) : void {
+		$this->hookContainer->run(
+			'AbuseFilterCustomActions',
 			[ &$actions ],
 			[ 'abortable' => false ]
 		);
