@@ -1175,12 +1175,16 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			// Pull global filter description
 			$lookup = AbuseFilterServices::getFilterLookup();
 			try {
-				$globalDesc = $lookup->getFilter( $filterID, true )->getName();
+				$filterObj = $lookup->getFilter( $filterID, true );
+				$globalDesc = $filterObj->getName();
 				$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $globalDesc );
+				$filter_hidden = $filterObj->isHidden();
 			} catch ( CentralDBNotAvailableException $_ ) {
 				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
+				// either hide all filters, including not hidden, or show all, including hidden
+				// we choose the former
+				$filter_hidden = true;
 			}
-			$filter_hidden = $lookup->getFilter( $filterID, $global )->isHidden();
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
 				$row->af_public_comments );
