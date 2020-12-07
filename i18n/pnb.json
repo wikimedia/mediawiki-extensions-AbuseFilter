@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abbas dhothar",
 			"BukhariSaeed"
 		]
 	},
+	"abusefilter-edit-builder-vars-file-size": "بائیٹاں وچ فائل دا سائز",
 	"abusefilter-history-diff": "تبدیلیاں"
 }
