@@ -479,7 +479,6 @@
 				readOnly = mw.config.get( 'aceConfig' ).aceReadOnly;
 
 				filterEditor.setTheme( 'ace/theme/textmate' );
-				filterEditor.session.setOption( 'useWorker', false );
 				filterEditor.setReadOnly( readOnly );
 				filterEditor.$blockScrolling = Infinity;
 

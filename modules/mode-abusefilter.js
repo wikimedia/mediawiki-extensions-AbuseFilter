@@ -90,11 +90,12 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 	exports.AFHighlightRules = AFHighlightRules;
 } );
 
-ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/abusefilter_highlight_rules' ], function ( require, exports ) {
+ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/oop', 'ace/mode/text', 'ace/mode/abusefilter_highlight_rules', 'ace/worker/worker_client' ], function ( require, exports ) {
 	'use strict';
 
 	var oop = require( 'ace/lib/oop' ),
 		TextMode = require( './text' ).Mode,
+		WorkerClient = require( 'ace/worker/worker_client' ).WorkerClient,
 		AFHighlightRules = require( './abusefilter_highlight_rules' ).AFHighlightRules,
 		MatchingBraceOutdent = require( './matching_brace_outdent' ).MatchingBraceOutdent,
 		Mode = function () {
@@ -120,7 +121,28 @@ ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/o
 			this.$outdent.autoOutdent( doc, row );
 		};
 
-		this.$id = 'ace/mode/abusefilter';
+		this.createWorker = function ( session ) {
+			var extPath = mw.config.get( 'wgExtensionAssetsPath' ),
+				worker;
+			ace.config.set( 'workerPath', extPath + '/AbuseFilter/modules' );
+			worker = new WorkerClient( [ 'ace' ], 'ace/mode/abusefilter_worker', 'AbuseFilterWorker' );
+
+			worker.$worker.postMessage( {
+				apipath: mw.config.get( 'wgServer' ) + new mw.Api().defaults.ajax.url
+			} );
+
+			worker.attachToDocument( session.getDocument() );
+
+			worker.on( 'annotate', function ( results ) {
+				session.setAnnotations( results.data );
+			} );
+
+			worker.on( 'terminate', function () {
+				session.clearAnnotations();
+			} );
+
+			return worker;
+		};
 	} )
 		.call( Mode.prototype );
 
