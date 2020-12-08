@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kambai Akau"
+		]
+	},
+	"abusefilter-log-search-user": "A̠tyuta̠m:",
+	"abusefilter-log-search-group-any": "Kuzang",
+	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-impact-all": "A̠mgba̠m nta̠m",
+	"abusefilter-log-search-entries-label": "Cet ghwughwu:",
+	"abusefilter-log-search-action-other": "Á̠ghyang",
+	"abusefilter-log-search-action-any": "Kuzang",
+	"abusefilter-log-search-action-taken-any": "Kuzang",
+	"abusefilter-log-search-submit": "Zop",
+	"abusefilter-log-hidelink": "jhyuk cet ghwughwu",
+	"abusefilter-log-description-not-available": "nshyia̠ bah",
+	"abusefilter-log-details-val": "A̠fi̠ng",
+	"abusefilter-log-details-checkuser": "Nwuan a̠tyuta̠m",
+	"abusefilter-log-hide-reason": "Jat:",
+	"abusefilter-log-hide-reason-other": "Jhyang/jat jhyang:",
+	"abusefilter-log-hide-show": "Tyiaat",
+	"abusefilter-log-hide-hide": "Ta̠kup",
+	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|ta̠k}} $3",
+	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|nwaita̠k}} $3",
+	"abusefilter-list-status": "Yong"
+}
