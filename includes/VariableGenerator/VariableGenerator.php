@@ -162,15 +162,10 @@ class VariableGenerator {
 	/**
 	 * @param Title $title
 	 * @param WikiPage $page
-	 * @param User|null $user The current user, null FOR BC ONLY!
+	 * @param User $user The current user
 	 * @return $this For chaining
 	 */
-	public function addEditVars( Title $title, WikiPage $page, User $user = null ) : self {
-		if ( !$user ) {
-			// phpcs:ignore MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgUser
-			global $wgUser;
-			$user = $wgUser;
-		}
+	public function addEditVars( Title $title, WikiPage $page, User $user ) : self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
