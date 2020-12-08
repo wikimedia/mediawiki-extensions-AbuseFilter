@@ -3,7 +3,6 @@
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\Database;
 
 class AFComputedVariable {
@@ -15,10 +14,6 @@ class AFComputedVariable {
 	 * @var array Parameters to be used with the specified method
 	 */
 	public $mParameters;
-	/**
-	 * @var User[] Cache containing User objects already constructed
-	 */
-	public static $userCache = [];
 	/**
 	 * @var WikiPage[] Cache containing Page objects already constructed
 	 */
@@ -62,45 +57,6 @@ class AFComputedVariable {
 		$cache[$cacheKey] = $edit;
 
 		return $edit;
-	}
-
-	/**
-	 * For backwards compatibility: Get the user object belonging to a certain name
-	 * in case a user name is given as argument. Nowadays user objects are passed
-	 * directly but many old log entries rely on this.
-	 *
-	 * @param string|User $user
-	 * @return User
-	 */
-	public static function getUserObject( $user ) {
-		if ( $user instanceof User ) {
-			$username = $user->getName();
-		} else {
-			$username = $user;
-			if ( isset( self::$userCache[$username] ) ) {
-				return self::$userCache[$username];
-			}
-
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->debug( "Couldn't find user $username in cache" );
-		}
-
-		if ( count( self::$userCache ) > 1000 ) {
-			self::$userCache = [];
-		}
-
-		if ( $user instanceof User ) {
-			$ret = $user;
-		} elseif ( IPUtils::isIPAddress( $username ) ) {
-			$ret = new User;
-			$ret->setName( $username );
-		} else {
-			$ret = User::newFromName( $username );
-			$ret->load();
-		}
-		self::$userCache[$username] = $ret;
-
-		return $ret;
 	}
 
 	/**
@@ -402,17 +358,7 @@ class AFComputedVariable {
 				$user = $parameters['user'];
 				$method = $parameters['method'];
 
-				if ( !$user ) {
-					throw new MWException( 'No user parameter given.' );
-				}
-
-				$obj = self::getUserObject( $user );
-
-				if ( !$obj ) {
-					throw new MWException( "Invalid username $user" );
-				}
-
-				$result = call_user_func( [ $obj, $method ] );
+				$result = $user->$method();
 				break;
 			case 'user-block':
 				// @todo Support partial blocks
@@ -422,13 +368,11 @@ class AFComputedVariable {
 			case 'user-age':
 				$user = $parameters['user'];
 				$asOf = $parameters['asof'];
-				$obj = self::getUserObject( $user );
 
-				$registration = $obj->getRegistration();
-
-				if ( $obj->getId() === 0 ) {
+				if ( $user->getId() === 0 ) {
 					$result = 0;
 				} else {
+					$registration = $user->getRegistration();
 					// HACK: If there's no registration date, assume 2008-01-15, Wikipedia Day
 					// in the year before the new user log was created. See T243469.
 					if ( $registration === null ) {
