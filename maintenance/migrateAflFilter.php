@@ -100,7 +100,8 @@ class MigrateAflFilter extends LoggedUpdateMaintenance {
 					$dbw->addQuotes( '' )
 				) );
 				$globalSQL = $dbw->buildIntegerCast(
-					'(' . $dbw->buildSubstring( 'afl_filter', 1, strlen( $globalPrefix ) ) . " = $globalPrefix )"
+					'(' . $dbw->buildSubstring( 'afl_filter', 1, strlen( $globalPrefix ) ) . ' =  ' .
+					$dbw->addQuotes( $globalPrefix ) . ' )'
 				);
 
 				$dbw->update(
