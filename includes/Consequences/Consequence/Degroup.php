@@ -65,7 +65,6 @@ class Degroup extends Consequence implements HookAborterConsequence {
 		} else {
 			$groups = $groupsVar->toNative();
 		}
-		$this->vars->setVar( 'user_groups', $groups );
 
 		$implicitGroups = $this->userGroupManager->listAllImplicitGroups();
 		$removeGroups = array_diff( $groups, $implicitGroups );

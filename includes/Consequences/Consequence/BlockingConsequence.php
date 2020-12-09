@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use Status;
 use User;
 
 /**
@@ -46,6 +47,7 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 	 * @param string $expiry
 	 * @param bool $isAutoBlock
 	 * @param bool $preventEditOwnUserTalk
+	 * @return Status
 	 */
 	protected function doBlockInternal(
 		string $ruleDesc,
@@ -54,10 +56,10 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 		string $expiry,
 		bool $isAutoBlock,
 		bool $preventEditOwnUserTalk
-	) : void {
+	) : Status {
 		$reason = wfMessage( 'abusefilter-blockreason', $ruleDesc, $ruleNumber )->inContentLanguage()->text();
 
-		$this->blockUserFactory->newBlockUser(
+		return $this->blockUserFactory->newBlockUser(
 			$target,
 			// TODO: Avoid User here (T266409)
 			User::newFromIdentity( $this->filterUser->getUser() ),

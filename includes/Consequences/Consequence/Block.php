@@ -35,7 +35,7 @@ class Block extends BlockingConsequence {
 	 * @inheritDoc
 	 */
 	public function execute() : bool {
-		$this->doBlockInternal(
+		$status = $this->doBlockInternal(
 			$this->parameters->getFilter()->getName(),
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			$this->parameters->getFilter()->getID(),
@@ -44,7 +44,7 @@ class Block extends BlockingConsequence {
 			$autoblock = true,
 			$this->preventsTalkEdit
 		);
-		return true;
+		return $status->isOK();
 	}
 
 	/**

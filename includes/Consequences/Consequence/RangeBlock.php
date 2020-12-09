@@ -51,7 +51,7 @@ class RangeBlock extends BlockingConsequence {
 		$blockCIDR = $this->requestIP . '/' . $CIDRsize;
 
 		$target = IPUtils::sanitizeRange( $blockCIDR );
-		$this->doBlockInternal(
+		$status = $this->doBlockInternal(
 			$this->parameters->getFilter()->getName(),
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			$this->parameters->getFilter()->getID(),
@@ -60,7 +60,7 @@ class RangeBlock extends BlockingConsequence {
 			$autoblock = false,
 			$preventTalk = false
 		);
-		return true;
+		return $status->isOK();
 	}
 
 	/**
