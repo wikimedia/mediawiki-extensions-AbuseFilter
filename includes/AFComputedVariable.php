@@ -180,15 +180,8 @@ class AFComputedVariable {
 
 					$new_text = $vars->getVar( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
-					try {
-						// @fixme TEMPORARY WORKAROUND FOR T187153
-						$editInfo = $article->prepareContentForEdit( $content );
-						$links = array_keys( $editInfo->output->getExternalLinks() );
-					} catch ( Error $e ) {
-						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-						$logger->warning( 'Caught Error, case 1 - T187153' );
-						$links = [];
-					}
+					$editInfo = $article->prepareContentForEdit( $content );
+					$links = array_keys( $editInfo->output->getExternalLinks() );
 					$result = $links;
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
@@ -261,15 +254,7 @@ class AFComputedVariable {
 
 					$new_text = $vars->getVar( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
-					try {
-						// @fixme TEMPORARY WORKAROUND FOR T187153
-						$editInfo = $article->prepareContentForEdit( $content );
-					} catch ( Error $e ) {
-						$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-						$logger->warning( 'Caught Error, case 2 - T187153' );
-						$result = '';
-						break;
-					}
+					$editInfo = $article->prepareContentForEdit( $content );
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
 					} else {
