@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 
 /**

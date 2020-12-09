@@ -1,4 +1,7 @@
 <?php
+
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
 /**
  * Represents a node of a parser tree.
  */

@@ -1,4 +1,11 @@
 <?php
+
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
+use AbuseFilterVariableHolder;
+use BagOStuff;
+use MWException;
+
 /**
  * AbuseFilterCachingParser is the version of AbuseFilterParser which parses
  * the code into an abstract syntax tree before evaluating it, and caches that

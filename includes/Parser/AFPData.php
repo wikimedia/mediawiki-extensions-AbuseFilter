@@ -1,5 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
+use InvalidArgumentException;
+use MWException;
+
 class AFPData {
 	// Datatypes
 	public const DINT = 'int';

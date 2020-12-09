@@ -2,6 +2,7 @@
 
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\PageEditStash;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -43,7 +44,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers AbuseFilterPreAuthenticationProvider
- * @covers AbuseFilterParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
  * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Block
@@ -1016,8 +1017,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @covers AbuseFilterParser::getCondCount
-	 * @covers AbuseFilterParser::raiseCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::getCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::raiseCondCount
 	 * @covers AbuseFilterRunner::checkAllFilters
 	 * @dataProvider provideFiltersNoConsequences
 	 */

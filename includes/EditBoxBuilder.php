@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilterParser;
-use AbuseFilterTokenizer;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
 use OOUI\DropdownInputWidget;

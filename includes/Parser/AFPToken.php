@@ -1,4 +1,7 @@
 <?php
+
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
 /**
  * Abuse filter parser.
  * Copyright © Victor Vasiliev, 2008.

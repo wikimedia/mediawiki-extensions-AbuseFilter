@@ -1,7 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Parser;
+
+use AbuseFilterVariableHolder;
+use BagOStuff;
+use Exception;
+use IBufferingStatsdDataFactory;
+use InvalidArgumentException;
+use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MWException;
+use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
+use Sanitizer;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\IPUtils;
