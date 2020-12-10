@@ -5,6 +5,12 @@
 			"BukhariSaeed"
 		]
 	},
+	"abusefilter-log-search-impact-saved": "صرف تبدیلیاں محفوظ کرو",
+	"abusefilter-log-detailedentry-local": "فلٹر $1",
+	"abusefilter-log-hide-hide": "لُکاؤ",
+	"abusefilter-list-options-deleted-hide": "مٹائے فلٹر لُکاؤ",
+	"abusefilter-edit-status-label": "آنکڑے:",
 	"abusefilter-edit-builder-vars-file-size": "بائیٹاں وچ فائل دا سائز",
-	"abusefilter-history-diff": "تبدیلیاں"
+	"abusefilter-history-diff": "تبدیلیاں",
+	"abusefilter-test-nobots": "بوٹ تبدیلیاں لُکاؤ"
 }

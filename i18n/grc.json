@@ -3,7 +3,8 @@
 		"authors": [
 			"Crazymadlover",
 			"LeighvsOptimvsMaximvs",
-			"Omnipaedista"
+			"Omnipaedista",
+			"PastelKos"
 		]
 	},
 	"abuselog": "Κατάλογος διηθητηρίου καταχρήσεων",
@@ -19,6 +20,8 @@
 	"abusefilter-log-details-privatedetails": "Ἰδιωτικὰ δεδομένα",
 	"abusefilter-log-noactions": "οὐδέν",
 	"abusefilter-log-linkoncontribs": "κατάλογος καταχρήσεων",
+	"abusefilter-log-hide-show": "Δεικνύναι",
+	"abusefilter-log-hide-hide": "Κρύπτειν",
 	"abusefilter-list": "Ἅπαντα τὰ διηθητήρια",
 	"abusefilter-list-status": "Καθεστώς",
 	"abusefilter-list-visibility": "Ὁρατότης",
