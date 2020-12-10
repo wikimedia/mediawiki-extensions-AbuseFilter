@@ -56,13 +56,13 @@ class Degroup extends Consequence implements HookAborterConsequence {
 		// Pull the groups from the VariableHolder, so that they will always be computed.
 		// This allow us to pull the groups from the VariableHolder to undo the degroup
 		// via Special:AbuseFilter/revert.
-		$groups = $this->vars->getVar( 'user_groups', AbuseFilterVariableHolder::GET_LAX );
-		if ( $groups->type !== AFPData::DARRAY ) {
+		$groupsVar = $this->vars->getVar( 'user_groups', AbuseFilterVariableHolder::GET_LAX );
+		if ( $groupsVar->type !== AFPData::DARRAY ) {
 			// Somehow, the variable wasn't set
 			$groups = $this->userGroupManager->getUserEffectiveGroups( $user );
 			$this->vars->setVar( 'user_groups', $groups );
 		} else {
-			$groups = $groups->toNative();
+			$groups = $groupsVar->toNative();
 		}
 		$this->vars->setVar( 'user_groups', $groups );
 

@@ -523,6 +523,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-tools'] = $tools;
 		}
 
+		// @phan-suppress-next-line SecurityCheck-DoubleEscaped taint-check still tracks keys and values together
 		$form = Xml::buildForm( $fields );
 		$form = Xml::fieldset( $this->msg( 'abusefilter-edit-main' )->text(), $form );
 		$form .= Xml::fieldset(
