@@ -936,6 +936,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 				$this->logEmptyOperand( 'parenthesized expression' );
 				// We don't need DUNDEFINED here
 				$this->move();
+				// @phan-suppress-next-line PhanPluginDuplicateAdjacentStatement
 				$this->move();
 			} else {
 				if ( $this->mShortCircuit ) {
