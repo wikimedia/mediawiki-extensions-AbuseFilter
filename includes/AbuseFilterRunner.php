@@ -417,7 +417,7 @@ class AbuseFilterRunner {
 		$origExtraTime = AFComputedVariable::$profilingExtraTime;
 
 		$this->parser->setFilter( $filterName );
-		$result = $this->parser->checkConditions( $filter->getRules(), true, $filterName );
+		$result = $this->parser->checkConditions( $filter->getRules(), true, $filterName )->getResult();
 
 		$actualExtra = AFComputedVariable::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );

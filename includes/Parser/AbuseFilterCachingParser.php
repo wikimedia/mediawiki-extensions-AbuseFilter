@@ -78,6 +78,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * @return AFPSyntaxTree
 	 */
 	private function getTree( $code ) : AFPSyntaxTree {
+		$this->fromCache = true;
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeGlobalKey(
 				__CLASS__,
@@ -86,6 +87,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 			),
 			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
+				$this->fromCache = false;
 				$parser = new AFPTreeParser( $this->cache, $this->logger, $this->statsd, $this->keywordsManager );
 				$parser->setFilter( $this->mFilter );
 				return $parser->parse( $code );
