@@ -21,7 +21,6 @@ class AbuseFilterModifyLogFormatter extends LogFormatter {
 
 	/**
 	 * @return array
-	 * @suppress SecurityCheck-DoubleEscaped taint-check false positives
 	 */
 	protected function extractParameters() {
 		$parameters = $this->entry->getParameters();
