@@ -364,7 +364,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 
 		// Make sure that the config we're using is the one we're expecting
 		$this->setMwGlobals( [
-			'wgUser' => $this->user,
 			// Exclude noisy creation log
 			'wgPageCreationLog' => false,
 			'wgAbuseFilterActions' => [
