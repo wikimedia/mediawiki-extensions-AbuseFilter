@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Seipinne",
 			"Yupik"
 		]
 	},
+	"abusefilter-log-hide-hide": "Čievâ",
 	"abusefilter-list-lastmodified": "Majemustáá nubástittum",
 	"abusefilter-edit-throttle-groups-help": "Keejâ $1."
 }
