@@ -11,6 +11,7 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\User\UserGroupManager;
 use Message;
@@ -57,12 +58,17 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @var FilterUser
 	 */
 	private $filterUser;
+	/**
+	 * @var VariablesBlobStore
+	 */
+	private $varBlobStore;
 
 	/**
 	 * @param UserGroupManager $userGroupManager
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param BlockAutopromoteStore $blockAutopromoteStore
 	 * @param FilterUser $filterUser
+	 * @param VariablesBlobStore $varBlobStore
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -73,6 +79,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		AbuseFilterPermissionManager $afPermManager,
 		BlockAutopromoteStore $blockAutopromoteStore,
 		FilterUser $filterUser,
+		VariablesBlobStore $varBlobStore,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -82,6 +89,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$this->userGroupsManager = $userGroupManager;
 		$this->blockAutopromoteStore = $blockAutopromoteStore;
 		$this->filterUser = $filterUser;
+		$this->varBlobStore = $varBlobStore;
 	}
 
 	/**
@@ -307,7 +315,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					'actions' => $currentReversibleActions,
 					'user' => $row->afl_user_text,
 					'userid' => $row->afl_user,
-					'vars' => AbuseFilter::loadVarDump( $row->afl_var_dump ),
+					'vars' => $this->varBlobStore->loadVarDump( $row->afl_var_dump ),
 					'title' => Title::makeTitle( $row->afl_namespace, $row->afl_title ),
 					'action' => $row->afl_action,
 					'timestamp' => $row->afl_timestamp

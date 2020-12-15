@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -52,12 +53,17 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @var EditBoxBuilderFactory
 	 */
 	private $boxBuilderFactory;
+	/**
+	 * @var VariablesBlobStore
+	 */
+	private $varBlobStore;
 
 	/**
 	 * @param RevisionLookup $revisionLookup
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterLookup $filterLookup
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
+	 * @param VariablesBlobStore $varBlobStore
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -68,6 +74,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		AbuseFilterPermissionManager $afPermManager,
 		FilterLookup $filterLookup,
 		EditBoxBuilderFactory $boxBuilderFactory,
+		VariablesBlobStore $varBlobStore,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -77,6 +84,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->revisionLookup = $revisionLookup;
 		$this->filterLookup = $filterLookup;
 		$this->boxBuilderFactory = $boxBuilderFactory;
+		$this->varBlobStore = $varBlobStore;
 	}
 
 	/**
@@ -249,7 +257,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				return;
 			}
 		}
-		$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
+		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $vars->dumpAllVars( true ),
 			'abuseFilterExamine' => [ 'type' => 'log', 'id' => $logid ]

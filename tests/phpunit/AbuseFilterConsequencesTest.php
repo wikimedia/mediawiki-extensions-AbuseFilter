@@ -1347,8 +1347,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param string[] $usedVars The variables effectively computed by filters in $createIds.
 	 *   We'll search these in the stored dump.
-	 * @covers AbuseFilter::storeVarDump
-	 * @covers AbuseFilter::loadVarDump
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesBlobStore
 	 * @covers AbuseFilterVariableHolder::dumpAllVars
 	 * @dataProvider provideFiltersAndVariables
 	 */
@@ -1366,7 +1365,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			[ 'ORDER BY' => 'afl_timestamp DESC' ]
 		);
 
-		$vars = AbuseFilter::loadVarDump( $dumpID )->getVars();
+		$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $dumpID )->getVars();
 
 		$interestingVars = array_intersect_key( $vars, array_fill_keys( $usedVars, true ) );
 

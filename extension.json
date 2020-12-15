@@ -69,7 +69,8 @@
 				"LinkBatchFactory",
 				"PermissionManager",
 				"AbuseFilterPermissionManager",
-				"AbuseFilterConsequencesRegistry"
+				"AbuseFilterConsequencesRegistry",
+				"AbuseFilterVariablesBlobStore"
 			]
 		},
 		"AbuseFilter": {
@@ -177,6 +178,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\FilterStore": "includes/FilterStore.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesFactory": "includes/ConsequencesFactory.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesLookup": "includes/ConsequencesLookup.php",
+		"MediaWiki\\Extension\\AbuseFilter\\VariablesBlobStore": "includes/VariablesBlobStore.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLogger": "includes/AbuseLogger.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLoggerFactory": "includes/AbuseLoggerFactory.php",
 		"MediaWiki\\Extension\\AbuseFilter\\ConsequencesRegistry": "includes/ConsequencesRegistry.php",

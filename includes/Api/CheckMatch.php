@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
-use AbuseFilter;
 use AbuseFilterVariableHolder;
 use ApiBase;
 use ApiResult;
@@ -54,7 +53,7 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
-			$vars = AbuseFilter::loadVarDump( $row->afl_var_dump );
+			$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $row->afl_var_dump );
 		}
 		if ( $vars === null ) {
 			throw new LogicException( 'Impossible.' );

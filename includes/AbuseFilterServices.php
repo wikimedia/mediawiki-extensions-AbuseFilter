@@ -165,4 +165,11 @@ class AbuseFilterServices {
 	public static function getUpdateHitCountWatcher() : UpdateHitCountWatcher {
 		return MediaWikiServices::getInstance()->getService( UpdateHitCountWatcher::SERVICE_NAME );
 	}
+
+	/**
+	 * @return VariablesBlobStore
+	 */
+	public static function getVariablesBlobStore() : VariablesBlobStore {
+		return MediaWikiServices::getInstance()->getService( VariablesBlobStore::SERVICE_NAME );
+	}
 }

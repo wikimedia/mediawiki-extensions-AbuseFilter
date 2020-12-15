@@ -23,6 +23,7 @@ use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
@@ -198,6 +199,7 @@ return [
 		return new AbuseLoggerFactory(
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
+			$services->get( VariablesBlobStore::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
@@ -211,6 +213,13 @@ return [
 		return new UpdateHitCountWatcher(
 			$services->getDBLoadBalancer(),
 			$services->get( CentralDBManager::SERVICE_NAME )
+		);
+	},
+	VariablesBlobStore::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesBlobStore {
+		return new VariablesBlobStore(
+			$services->getBlobStoreFactory(),
+			$services->getBlobStore(),
+			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )
 		);
 	},
 ];

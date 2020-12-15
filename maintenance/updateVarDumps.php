@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\Database;
@@ -43,6 +44,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private $sleep;
 	/** @var KeywordsManager */
 	private $keywordsManager;
+	/** @var VariablesBlobStore */
+	private $varBlobStore;
 
 	/**
 	 * @inheritDoc
@@ -86,6 +89,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->sleep = $this->getOption( 'sleep' );
 
 		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
+		$this->varBlobStore = AbuseFilterServices::getVariablesBlobStore();
 
 		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
 		$this->dbr = wfGetDB( DB_REPLICA );
@@ -229,7 +233,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				}
 			}
 
-			$storedID = AbuseFilter::storeVarDump( $vars );
+			$storedID = $this->varBlobStore->storeVarDump( $vars );
 			$this->dbw->update(
 				'abuse_filter_log',
 				[ 'afl_var_dump' => $storedID ],
@@ -333,7 +337,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			if ( !$this->dryRun ) {
 				$holder = is_array( $stored ) ? AbuseFilterVariableHolder::newFromArray( $stored ) : $stored;
 				// Note: this will upgrade to the new JSON format, so we use tt:
-				$newDump = AbuseFilter::storeVarDump( $holder );
+				$newDump = $this->varBlobStore->storeVarDump( $holder );
 				$this->dbw->update(
 					'abuse_filter_log',
 					[ 'afl_var_dump' => $newDump ],
