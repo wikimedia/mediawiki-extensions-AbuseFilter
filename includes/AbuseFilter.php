@@ -2,8 +2,9 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\BlobAccessException;
+use MediaWiki\Storage\BlobStore;
 
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of
@@ -69,16 +70,15 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Store a var dump to External Storage or the text table
-	 * Some of this code is stolen from Revision::insertOn and friends
+	 * Store a var dump to a BlobStore.
 	 *
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param bool $global
 	 *
-	 * @return int The insert ID.
+	 * @return string Address of the record
 	 */
 	public static function storeVarDump( AbuseFilterVariableHolder $vars, $global = false ) {
-		global $wgCompressRevisions;
+		global $wgAbuseFilterCentralDB;
 
 		// Get all variables yet set and compute old and new wikitext if not yet done
 		// as those are needed for the diff view on top of the abuse log pages
@@ -86,78 +86,35 @@ class AbuseFilter {
 
 		// Vars is an array with native PHP data types (non-objects) now
 		$text = FormatJson::encode( $vars );
-		$flags = [ 'utf-8' ];
 
-		if ( $wgCompressRevisions && function_exists( 'gzdeflate' ) ) {
-			$text = gzdeflate( $text );
-			$flags[] = 'gzip';
-		}
+		$blobStoreFactory = \MediaWiki\MediaWikiServices::getInstance()->getBlobStoreFactory();
+		$dbDomain = $global ? $wgAbuseFilterCentralDB : false;
+		$blobStore = $blobStoreFactory->newBlobStore( $dbDomain );
 
-		// Store to ExternalStore if applicable
-		global $wgDefaultExternalStore, $wgAbuseFilterCentralDB;
-		if ( $wgDefaultExternalStore ) {
-			if ( $global ) {
-				$text = ExternalStore::insertToForeignDefault( $text, $wgAbuseFilterCentralDB );
-			} else {
-				$text = ExternalStore::insertToDefault( $text );
-			}
-
-			$flags[] = 'external';
-		}
-
-		// Store to text table
-		if ( $global ) {
-			$dbw = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
-		} else {
-			$dbw = wfGetDB( DB_MASTER );
-		}
-		$dbw->insert( 'text',
-			[
-				'old_text' => $text,
-				'old_flags' => implode( ',', $flags ),
-			], __METHOD__
-		);
-
-		return $dbw->insertId();
+		$hints = [
+			BlobStore::DESIGNATION_HINT => 'AbuseFilter',
+			BlobStore::MODEL_HINT => 'AbuseFilter',
+		];
+		return $blobStore->storeBlob( $text, $hints );
 	}
 
 	/**
-	 * Retrieve a var dump from External Storage or the text table
-	 * Some of this code is stolen from Revision::loadText et al
+	 * Retrieve a var dump from a BlobStore.
 	 *
-	 * @param string $storedID "tt:/$id"
+	 * @param string $address
 	 *
 	 * @return AbuseFilterVariableHolder
 	 */
-	public static function loadVarDump( $storedID ) : AbuseFilterVariableHolder {
-		$textID = (int)str_replace( 'tt:', '', $storedID );
+	public static function loadVarDump( string $address ) : AbuseFilterVariableHolder {
+		$blobStore = \MediaWiki\MediaWikiServices::getInstance()->getBlobStore();
 
-		$dbr = wfGetDB( DB_REPLICA );
-		$text_row = $dbr->selectRow(
-			'text',
-			[ 'old_text', 'old_flags' ],
-			[ 'old_id' => $textID ],
-			__METHOD__
-		);
-
-		if ( !$text_row ) {
-			$logger = LoggerFactory::getInstance( 'AbuseFilter' );
-			$logger->warning( __METHOD__ . ": no text row found for input $storedID." );
+		try {
+			$blob = $blobStore->getBlob( $address );
+		} catch ( BlobAccessException $ex ) {
 			return new AbuseFilterVariableHolder;
 		}
 
-		$flags = $text_row->old_flags === '' ? [] : explode( ',', $text_row->old_flags );
-		$text = $text_row->old_text;
-
-		if ( in_array( 'external', $flags ) ) {
-			$text = ExternalStore::fetchFromURL( $text );
-		}
-
-		if ( in_array( 'gzip', $flags ) ) {
-			$text = gzinflate( $text );
-		}
-
-		$vars = FormatJson::decode( $text, true );
+		$vars = FormatJson::decode( $blob, true );
 		$obj = AbuseFilterVariableHolder::newFromArray( $vars );
 		$obj->translateDeprecatedVars();
 		return $obj;
