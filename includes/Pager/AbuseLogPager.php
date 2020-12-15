@@ -43,6 +43,11 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	private $basePageName;
 
 	/**
+	 * @var string[] Map of [ id => show|hide ], for entries that we're currently (un)hiding
+	 */
+	private $hideEntries;
+
+	/**
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param array $conds
@@ -50,6 +55,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @param PermissionManager $permManager
 	 * @param AbuseFilterPermissionManager $afPermissionManager
 	 * @param string $basePageName
+	 * @param string[] $hideEntries
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -58,7 +64,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		LinkBatchFactory $linkBatchFactory,
 		PermissionManager $permManager,
 		AbuseFilterPermissionManager $afPermissionManager,
-		string $basePageName
+		string $basePageName,
+		array $hideEntries = []
 	) {
 		parent::__construct( $context, $linkRenderer );
 		$this->mConds = $conds;
@@ -66,6 +73,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		$this->permissionManager = $permManager;
 		$this->afPermissionManager = $afPermissionManager;
 		$this->basePageName = $basePageName;
+		$this->hideEntries = $hideEntries;
 	}
 
 	/**
@@ -215,17 +223,6 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$actionLinks[] = $diffLink;
 			}
 
-			if ( $this->afPermissionManager->canHideAbuseLog( $user ) ) {
-				$hideLink = $linkRenderer->makeKnownLink(
-					SpecialPage::getTitleFor( $this->basePageName, 'hide' ),
-					$this->msg( 'abusefilter-log-hidelink' )->text(),
-					[],
-					[ 'id' => $row->afl_id ]
-				);
-
-				$actionLinks[] = $hideLink;
-			}
-
 			if ( $global ) {
 				$centralDb = $this->getConfig()->get( 'AbuseFilterCentralDB' );
 				$linkMsg = $this->msg( 'abusefilter-log-detailedentry-global' )
@@ -274,11 +271,20 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		$attribs = null;
-		if ( $isHidden === true ) {
+		if (
+			$this->isHidingEntry( $row ) === true ||
+			// If isHidingEntry is false, we've just unhidden the row
+			( $this->isHidingEntry( $row ) === null && $isHidden === true )
+		) {
 			$attribs = [ 'class' => 'mw-abusefilter-log-hidden-entry' ];
-		} elseif ( $isHidden === 'implicit' ) {
+		}
+		if ( $isHidden === 'implicit' ) {
 			$description .= ' ' .
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
+		}
+
+		if ( !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
+			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . $description;
 		}
 
 		if ( $isListItem ) {
@@ -407,6 +413,21 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 		$lb->execute();
 		$result->seek( 0 );
+	}
+
+	/**
+	 * Check whether the entry passed in is being currently hidden/unhidden.
+	 * This is used to format the entries list shown when updating visibility, and is necessary because
+	 * when we decide whether to display the entry as hidden the DB hasn't been updated yet.
+	 *
+	 * @param stdClass $row
+	 * @return bool|null True if just hidden, false if just unhidden, null if untouched
+	 */
+	private function isHidingEntry( stdClass $row ) : ?bool {
+		if ( isset( $this->hideEntries[ $row->afl_id ] ) ) {
+			return $this->hideEntries[ $row->afl_id ] === 'hide';
+		}
+		return null;
 	}
 
 	/**

@@ -2,19 +2,23 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
+use DeferredUpdates;
+use Html;
 use HTMLForm;
 use IContextSource;
 use LogEventsList;
 use LogPage;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\MediaWikiServices;
 use Xml;
 
 class HideAbuseLog extends AbuseFilterView {
 
-	/** @var int */
-	private $hideID;
+	/** @var int[] */
+	private $hideIDs;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
@@ -29,7 +33,7 @@ class HideAbuseLog extends AbuseFilterView {
 		string $basePageName
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, [] );
-		$this->hideID = $this->getRequest()->getIntOrNull( 'id' );
+		$this->hideIDs = array_keys( $this->getRequest()->getArray( 'hideids', [] ) );
 	}
 
 	/**
@@ -44,19 +48,36 @@ class HideAbuseLog extends AbuseFilterView {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
-
-		$deleted = $dbr->selectField(
-			'abuse_filter_log',
-			'afl_deleted',
-			[ 'afl_id' => $this->hideID ],
-			__METHOD__
-		);
-
-		if ( $deleted === false ) {
-			$output->addWikiMsg( 'abusefilter-log-nonexistent' );
+		if ( !$this->hideIDs ) {
+			$output->addWikiMsg( 'abusefilter-log-hide-no-selected' );
 			return;
 		}
+
+		// TODO DI
+		$pager = new AbuseLogPager(
+			$this->getContext(),
+			MediaWikiServices::getInstance()->getLinkRenderer(),
+			[ 'afl_id' => $this->hideIDs ],
+			MediaWikiServices::getInstance()->getLinkBatchFactory(),
+			MediaWikiServices::getInstance()->getPermissionManager(),
+			$this->afPermManager,
+			$this->basePageName,
+			array_fill_keys( $this->hideIDs, $this->getRequest()->getVal( 'wpshoworhide' ) )
+		);
+		$pager->doQuery();
+		if ( $pager->getResult()->numRows() === 0 ) {
+			$output->addWikiMsg( 'abusefilter-log-hide-no-selected' );
+			return;
+		}
+
+		$output->wrapWikiMsg(
+			"<strong>$1</strong>",
+			[
+				'abusefilter-log-hide-selected',
+				$this->getLanguage()->formatNum( count( $this->hideIDs ) )
+			]
+		);
+		$output->addHTML( Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) );
 
 		$hideReasonsOther = $this->msg( 'revdelete-reasonotherlist' )->text();
 		$hideReasons = $this->msg( 'revdelete-reason-dropdown-suppress' )->inContentLanguage()->text();
@@ -70,13 +91,8 @@ class HideAbuseLog extends AbuseFilterView {
 					'abusefilter-log-hide-show' => 'show',
 					'abusefilter-log-hide-hide' => 'hide'
 				],
-				'default' => (int)$deleted === 0 ? 'show' : 'hide',
+				'default' => 'hide',
 				'flatlist' => true
-			],
-			'logid' => [
-				'type' => 'info',
-				'default' => (string)$this->hideID,
-				'label-message' => 'abusefilter-log-hide-id',
 			],
 			'dropdownreason' => [
 				'type' => 'select',
@@ -89,51 +105,90 @@ class HideAbuseLog extends AbuseFilterView {
 			],
 		];
 
+		$actionURL = $this->getTitle( 'hide' )->getFullURL( [ 'hideids' => array_fill_keys( $this->hideIDs, 1 ) ] );
 		HTMLForm::factory( 'ooui', $formInfo, $this->getContext() )
-			->setAction( $this->getTitle( 'hide' )->getFullURL( [ 'id' => $this->hideID ] ) )
+			->setAction( $actionURL )
 			->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() )
-			->addHiddenField( 'hide', $this->hideID )
 			->setSubmitCallback( [ $this, 'saveHideForm' ] )
 			->showAlways();
 
-		// Show suppress log for this entry
-		$suppressLogPage = new LogPage( 'suppress' );
-		$output->addHTML( "<h2>" . $suppressLogPage->getName()->escaped() . "</h2>\n" );
-		LogEventsList::showLogExtract( $output, 'suppress', $this->getTitle( (string)$this->hideID ) );
+		// Show suppress log for this entry. Hack: since every suppression is performed on a
+		// totally different page (i.e. Special:AbuseLog/xxx), we use showLogExtract without
+		// specifying a title and then adding it in conds.
+		// This isn't shown if the request was posted because we update visibility in a DeferredUpdate, so it would
+		// display outdated info that might confuse the user.
+		// TODO Can we improve this somehow?
+		if ( !$this->getRequest()->wasPosted() ) {
+			$suppressLogPage = new LogPage( 'suppress' );
+			$output->addHTML( "<h2>" . $suppressLogPage->getName()->escaped() . "</h2>\n" );
+			$searchTitles = [];
+			foreach ( $this->hideIDs as $id ) {
+				$searchTitles[] = $this->getTitle( (string)$id )->getDBKey();
+			}
+			$conds = [ 'log_namespace' => NS_SPECIAL, 'log_title' => $searchTitles ];
+			LogEventsList::showLogExtract( $output, 'suppress', '', '', [ 'conds' => $conds ] );
+		}
 	}
 
 	/**
+	 * Process the hide form after submission. This performs the actual visibility update. Used as callback by HTMLForm
+	 *
 	 * @param array $fields
-	 * @return bool
+	 * @return bool|array True on success, array of error message keys otherwise
 	 */
-	public function saveHideForm( array $fields ) : bool {
-		$logid = $this->getRequest()->getVal( 'hide' );
-
-		$newValue = $fields['showorhide'] === 'hide' ? 1 : 0;
+	public function saveHideForm( array $fields ) {
+		// Determine which rows actually have to be changed
 		$dbw = wfGetDB( DB_MASTER );
+		$newValue = $fields['showorhide'] === 'hide' ? 1 : 0;
+		$actualIDs = $dbw->selectFieldValues(
+			'abuse_filter_log',
+			'afl_id',
+			[ 'afl_id' => $this->hideIDs, "afl_deleted != $newValue" ],
+			__METHOD__
+		);
+		if ( !count( $actualIDs ) ) {
+			return [ 'abusefilter-log-hide-no-change' ];
+		}
 
 		$dbw->update(
 			'abuse_filter_log',
 			[ 'afl_deleted' => $newValue ],
-			[ 'afl_id' => $logid ],
+			[ 'afl_id' => $actualIDs ],
 			__METHOD__
 		);
 
-		$reason = $fields['dropdownreason'];
-		if ( $reason === 'other' ) {
-			$reason = $fields['reason'];
-		} elseif ( $fields['reason'] !== '' ) {
-			$reason .=
-				$this->msg( 'colon-separator' )->inContentLanguage()->text() . $fields['reason'];
-		}
+		// Log in a DeferredUpdates to avoid potential flood
+		DeferredUpdates::addCallableUpdate( function () use ( $fields, $actualIDs ) {
+			$reason = $fields['dropdownreason'];
+			if ( $reason === 'other' ) {
+				$reason = $fields['reason'];
+			} elseif ( $fields['reason'] !== '' ) {
+				$reason .=
+					$this->msg( 'colon-separator' )->inContentLanguage()->text() . $fields['reason'];
+			}
 
-		$action = $fields['showorhide'] === 'hide' ? 'hide-afl' : 'unhide-afl';
-		$logEntry = new ManualLogEntry( 'suppress', $action );
-		$logEntry->setPerformer( $this->getUser() );
-		$logEntry->setTarget( $this->getTitle( $logid ) );
-		$logEntry->setComment( $reason );
-		$logEntry->insert();
+			$action = $fields['showorhide'] === 'hide' ? 'hide-afl' : 'unhide-afl';
+			foreach ( $actualIDs as $logid ) {
+				$logEntry = new ManualLogEntry( 'suppress', $action );
+				$logEntry->setPerformer( $this->getUser() );
+				$logEntry->setTarget( $this->getTitle( $logid ) );
+				$logEntry->setComment( $reason );
+				$logEntry->insert();
+			}
+		} );
+
+		$count = count( $actualIDs );
+		$this->getOutput()->prependHTML(
+			Html::successBox(
+				$this->msg( 'abusefilter-log-hide-done' )->params(
+					$this->getLanguage()->formatNum( $count ),
+					// Messages used: abusefilter-log-hide-done-hide, abusefilter-log-hide-done-show
+					$this->msg( 'abusefilter-log-hide-done-' . $fields['showorhide'] )->numParams( $count )->text()
+				)->escaped()
+			)
+		);
 
 		return true;
 	}
+
 }

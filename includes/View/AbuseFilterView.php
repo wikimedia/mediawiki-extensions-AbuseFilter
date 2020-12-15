@@ -32,7 +32,7 @@ abstract class AbuseFilterView extends ContextSource {
 	protected $linkRenderer;
 
 	/** @var string */
-	private $basePageName;
+	protected $basePageName;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager

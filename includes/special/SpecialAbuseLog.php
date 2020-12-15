@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
+use OOUI\ButtonInputWidget;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
@@ -559,9 +560,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'form',
 			[
 				'method' => 'GET',
-				'action' => $this->getPageTitle()->getLocalURL()
+				'action' => $this->getPageTitle( 'hide' )->getLocalURL()
 			],
-			Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() )
+			$this->getDeleteButton() .
+				Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) .
+				$this->getDeleteButton()
 		);
 
 		if ( $result && $result->numRows() !== 0 ) {
@@ -569,6 +572,21 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		} else {
 			$out->addWikiMsg( 'abusefilter-log-noresults' );
 		}
+	}
+
+	/**
+	 * Returns the HTML for a button to hide selected entries
+	 *
+	 * @return string|ButtonInputWidget
+	 */
+	private function getDeleteButton() {
+		if ( !$this->afPermissionManager->canHideAbuseLog( $this->getUser() ) ) {
+			return '';
+		}
+		return new ButtonInputWidget( [
+			'label' => $this->msg( 'abusefilter-log-hide-entries' )->text(),
+			'type' => 'submit'
+		] );
 	}
 
 	/**
