@@ -112,7 +112,7 @@
 	"abusefilter-log-hide-show": "Show",
 	"abusefilter-log-hide-hide": "Hide",
 	"abusefilter-log-hide-no-change": "All of the selected IDs already have the desired visibility.",
-	"abusefilter-log-hide-done": "Visibility updated successfully: $1 {{PLURAL:$1|entry|entries}} $2.",
+	"abusefilter-log-hide-done": "Visibility updated: $1 {{PLURAL:$1|entry|entries}} $2.",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|hidden}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|unhidden}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|hid}} $3",
