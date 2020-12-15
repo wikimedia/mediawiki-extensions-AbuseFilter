@@ -278,6 +278,11 @@
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ToolLinksHandler",
 			"services": [ "AbuseFilterPermissionManager" ]
 		},
+		"AutoPromoteGroups": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\AutoPromoteGroupsHandler",
+			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\AutoPromoteGroupsHandler::factory",
+			"services": [ "AbuseFilterConsequencesRegistry", "AbuseFilterBlockAutopromoteStore" ]
+		},
 		"ChangeTags": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ChangeTagsHandler",
 			"services": [ "AbuseFilterChangeTagsManager" ]
@@ -291,7 +296,7 @@
 	},
 	"Hooks": {
 		"EditFilterMergedContent": "AbuseFilterHooks::onEditFilterMergedContent",
-		"GetAutoPromoteGroups": "AbuseFilterHooks::onGetAutoPromoteGroups",
+		"GetAutoPromoteGroups": "AutoPromoteGroups",
 		"TitleMove": "AbuseFilterHooks::onTitleMove",
 		"ArticleDelete": "AbuseFilterHooks::onArticleDelete",
 		"RecentChange_save": "AbuseFilterHooks::onRecentChangeSave",

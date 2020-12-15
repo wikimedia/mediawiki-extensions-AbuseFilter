@@ -310,37 +310,6 @@ class AbuseFilterHooks {
 	}
 
 	/**
-	 * @param User $user
-	 * @param array &$promote
-	 */
-	public static function onGetAutoPromoteGroups( User $user, &$promote ) {
-		global $wgAbuseFilterActions;
-
-		if ( ( $wgAbuseFilterActions['blockautopromote'] ?? false ) && $promote ) {
-			$cache = ObjectCache::getInstance( 'hash' );
-			// Proxy the blockautopromote data to a faster backend, using an appropriate key
-			$quickCacheKey = $cache->makeKey(
-				'abusefilter',
-				'blockautopromote',
-				'quick',
-				$user->getId()
-			);
-			$blocked = (bool)$cache->getWithSetCallback(
-				$quickCacheKey,
-				$cache::TTL_PROC_LONG,
-				function () use ( $user ) {
-					return AbuseFilterServices::getBlockAutopromoteStore()
-						->getAutoPromoteBlockStatus( $user );
-				}
-			);
-
-			if ( $blocked ) {
-				$promote = [];
-			}
-		}
-	}
-
-	/**
 	 * @param Title $oldTitle
 	 * @param Title $newTitle
 	 * @param User $user
