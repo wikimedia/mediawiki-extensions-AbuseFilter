@@ -157,7 +157,7 @@
 	"abusefilter-log-details-hidden": "No puedes ver detalles de esta entrada porque su acceso público está restringido.",
 	"abusefilter-log-details-hidden-implicit": "No puedes ver los detalles para esta entrada porque su revisión asociada no es visible al público.",
 	"abusefilter-log-private-not-included": "Uno o más de los identificadores de filtro que has especificado son privados. Debido a que no tienes permitido ver los detalles de los filtros privados, estos filtros no se han buscado.",
-	"abusefilter-log-hide-legend": "Ocultar entrada del registro",
+	"abusefilter-log-hide-legend": "cambiar visibilidad",
 	"abusefilter-log-hide-set-visibility": "Seleccionar visibilidad para las entradas seleccionadas:",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Otro motivo:",

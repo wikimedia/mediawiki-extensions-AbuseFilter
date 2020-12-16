@@ -141,7 +141,7 @@
 	"abusefilter-log-hide-show": "Anzeigen",
 	"abusefilter-log-hide-hide": "Verstecken",
 	"abusefilter-log-hide-no-change": "Alle ausgewählten IDs haben bereits die gewünschte Sichtbarkeit.",
-	"abusefilter-log-hide-done": "Sichtbarkeit erfolgreich aktualisiert: $1 {{PLURAL:$1|Eintrag|Einträge}} $2.",
+	"abusefilter-log-hide-done": "Sichtbarkeit aktualisiert: $1 {{PLURAL:$1|Eintrag|Einträge}} $2.",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|versteckt}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|nicht länger versteckt}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|versteckte}} $3",
