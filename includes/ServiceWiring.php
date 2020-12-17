@@ -9,6 +9,8 @@ use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
+use MediaWiki\Extension\AbuseFilter\ConsequencesExecutor;
+use MediaWiki\Extension\AbuseFilter\ConsequencesExecutorFactory as ConsExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
@@ -220,6 +222,19 @@ return [
 			$services->getBlobStoreFactory(),
 			$services->getBlobStore(),
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )
+		);
+	},
+	ConsExecutorFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : ConsExecutorFactory {
+		return new ConsExecutorFactory(
+			$services->get( ConsequencesLookup::SERVICE_NAME ),
+			$services->get( ConsequencesFactory::SERVICE_NAME ),
+			$services->get( ConsequencesRegistry::SERVICE_NAME ),
+			$services->get( FilterLookup::SERVICE_NAME ),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			new ServiceOptions(
+				ConsequencesExecutor::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
 		);
 	},
 ];

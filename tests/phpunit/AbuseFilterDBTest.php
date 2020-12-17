@@ -1,12 +1,16 @@
 <?php
 
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\ConsequencesExecutor;
+use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\NullLogger;
 
 /**
  * Generic tests for utility functions in AbuseFilter that require DB access
@@ -297,24 +301,25 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @param array $rawConsequences A raw, unfiltered list of consequences
 	 * @param array $expectedKeys
 	 * @param Title $title
-	 * @covers AbuseFilterRunner::getFilteredConsequences
-	 * @covers AbuseFilterRunner::replaceArraysWithConsequences
+	 * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesExecutor
 	 * @dataProvider provideConsequences
 	 */
 	public function testGetFilteredConsequences( $rawConsequences, $expectedKeys, Title $title ) {
-		$this->setMwGlobals( [
-			'wgAbuseFilterLocallyDisabledGlobalActions' => [
-				'flag' => false,
-				'throttle' => false,
-				'warn' => false,
-				'disallow' => false,
-				'blockautopromote' => true,
-				'block' => true,
-				'rangeblock' => true,
-				'degroup' => true,
-				'tag' => false
-			]
-		] );
+		$locallyDisabledActions = [
+			'flag' => false,
+			'throttle' => false,
+			'warn' => false,
+			'disallow' => false,
+			'blockautopromote' => true,
+			'block' => true,
+			'rangeblock' => true,
+			'degroup' => true,
+			'tag' => false
+		];
+		$options = $this->createMock( ServiceOptions::class );
+		$options->method( 'get' )
+			->with( 'AbuseFilterLocallyDisabledGlobalActions' )
+			->willReturn( $locallyDisabledActions );
 		$fakeFilter = $this->createMock( Filter::class );
 		$fakeFilter->method( 'getName' )->willReturn( 'unused name' );
 		$fakeLookup = $this->createMock( FilterLookup::class );
@@ -322,8 +327,19 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		$this->setService( FilterLookup::SERVICE_NAME, $fakeLookup );
 		$user = $this->getTestUser()->getUser();
 		$vars = AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] );
-		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
-		$actual = $runner->getFilteredConsequences( $runner->replaceArraysWithConsequences( $rawConsequences ) );
+		$executor = new ConsequencesExecutor(
+			$this->createMock( ConsequencesLookup::class ),
+			AbuseFilterServices::getConsequencesFactory(),
+			AbuseFilterServices::getConsequencesRegistry(),
+			$fakeLookup,
+			new NullLogger,
+			$options,
+			$user,
+			$title,
+			$vars
+		);
+		$actual = $executor->getFilteredConsequences(
+			$executor->replaceArraysWithConsequences( $rawConsequences ) );
 
 		$actualKeys = [];
 		foreach ( $actual as $filter => $actions ) {
