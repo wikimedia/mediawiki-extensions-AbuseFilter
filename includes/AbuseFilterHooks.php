@@ -211,7 +211,8 @@ class AbuseFilterHooks {
 			// We don't have to filter the edit
 			return Status::newGood();
 		}
-		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+		$runner = $runnerFactory->newRunner( $user, $title, $vars, 'default' );
 		$filterResult = $runner->run();
 		if ( !$filterResult->isOK() ) {
 			return $filterResult;
@@ -357,7 +358,8 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder();
 		$builder = new RunVariableGenerator( $vars, $user, $oldTitle );
 		$vars = $builder->getMoveVars( $newTitle, $reason );
-		$runner = new AbuseFilterRunner( $user, $oldTitle, $vars, 'default' );
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+		$runner = $runnerFactory->newRunner( $user, $oldTitle, $vars, 'default' );
 		$result = $runner->run();
 		$status->merge( $result );
 	}
@@ -375,7 +377,8 @@ class AbuseFilterHooks {
 		$vars = new AbuseFilterVariableHolder();
 		$builder = new RunVariableGenerator( $vars, $user, $article->getTitle() );
 		$vars = $builder->getDeleteVars( $reason );
-		$runner = new AbuseFilterRunner( $user, $article->getTitle(), $vars, 'default' );
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+		$runner = $runnerFactory->newRunner( $user, $article->getTitle(), $vars, 'default' );
 		$filterResult = $runner->run();
 
 		$status->merge( $filterResult );
@@ -459,7 +462,8 @@ class AbuseFilterHooks {
 		if ( $vars === null ) {
 			return true;
 		}
-		$runner = new AbuseFilterRunner( $user, $title, $vars, 'default' );
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+		$runner = $runnerFactory->newRunner( $user, $title, $vars, 'default' );
 		$filterResult = $runner->run();
 
 		if ( !$filterResult->isOK() ) {
@@ -536,7 +540,8 @@ class AbuseFilterHooks {
 				if ( !$vars ) {
 					return;
 				}
-				$runner = new AbuseFilterRunner( $user, $page->getTitle(), $vars, 'default' );
+				$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+				$runner = $runnerFactory->newRunner( $user, $page->getTitle(), $vars, 'default' );
 				$runner->runForStash();
 				$totalTime = microtime( true ) - $startTime;
 				MediaWikiServices::getInstance()->getStatsdDataFactory()

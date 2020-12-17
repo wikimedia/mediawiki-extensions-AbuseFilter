@@ -39,7 +39,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @group Large
  *
  * @covers AbuseFilter
- * @covers AbuseFilterRunner
+ * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner
  * @covers AbuseFilterHooks
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
@@ -1020,7 +1020,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::getCondCount
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::raiseCondCount
-	 * @covers AbuseFilterRunner::checkAllFilters
+	 * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner::checkAllFilters
 	 * @dataProvider provideFiltersNoConsequences
 	 */
 	public function testCondsLimit( $createIds, $actionParams ) {
@@ -1591,10 +1591,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		// the given namespace has been localized and thus wouldn't match.
 		$pageName = Title::newFromText( $actionParams['target'] )->getPrefixedText();
 		foreach ( $loggerMock->getBuffer() as $entry ) {
-			if ( preg_match( "/AbuseFilterRunner::logCache: cache $type for '$pageName'/", $entry[1] ) ) {
+			if ( preg_match( "/FilterRunner::logCache: cache $type for '$pageName'/", $entry[1] ) ) {
 				$foundHitOrMiss = true;
 			}
-			if ( preg_match( "/AbuseFilterRunner::logCache: cache store for '$pageName'/", $entry[1] ) ) {
+			if ( preg_match( "/FilterRunner::logCache: cache store for '$pageName'/", $entry[1] ) ) {
 				$foundStore = true;
 			}
 			if ( $foundStore && $foundHitOrMiss ) {

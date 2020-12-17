@@ -2,6 +2,7 @@
 
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
 use MediaWiki\MediaWikiServices;
 
@@ -47,8 +48,9 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 		$builder = new RunVariableGenerator( $vars, $creator, $title );
 		$vars = $builder->getAccountCreationVars( $user, $autocreate );
 
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		// pass creator in explicitly to prevent recording the current user on autocreation - T135360
-		$runner = new AbuseFilterRunner( $creator, $title, $vars, 'default' );
+		$runner = $runnerFactory->newRunner( $creator, $title, $vars, 'default' );
 		$status = $runner->run();
 
 		MediaWikiServices::getInstance()->getStatsdDataFactory()

@@ -36,7 +36,7 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool[] Map of (integer filter ID => bool)
-	 * @deprecated Since 1.34 See comment on AbuseFilterRunner::checkAllFilters
+	 * @deprecated Since 1.34 See comment on FilterRunner::checkAllFilters
 	 */
 	public static function checkAllFilters(
 		AbuseFilterVariableHolder $vars,
@@ -46,8 +46,8 @@ class AbuseFilter {
 	) {
 		$parser = AbuseFilterServices::getParserFactory()->newParser( $vars );
 		$user = RequestContext::getMain()->getUser();
-
-		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+		$runner = $runnerFactory->newRunner( $user, $title, $vars, $group );
 		$runner->parser = $parser;
 		return $runner->checkAllFilters();
 	}
@@ -58,12 +58,13 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param User $user The user performing the action
 	 * @return Status
-	 * @deprecated Since 1.34 Build an AbuseFilterRunner instance and call run() on that.
+	 * @deprecated Since 1.34 Build a FilterRunner instance and call run() on that.
 	 */
 	public static function filterAction(
 		AbuseFilterVariableHolder $vars, Title $title, $group, User $user
 	) {
-		$runner = new AbuseFilterRunner( $user, $title, $vars, $group );
+		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
+		$runner = $runnerFactory->newRunner( $user, $title, $vars, $group );
 		return $runner->run();
 	}
 
