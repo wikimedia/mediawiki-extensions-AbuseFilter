@@ -128,7 +128,7 @@
 	"abusefilter-log-hide-show": "הצגה",
 	"abusefilter-log-hide-hide": "הסתרה",
 	"abusefilter-log-hide-no-change": "לכל המזהים שנבחרו כבר הוגדר מצב התצוגה המבוקש.",
-	"abusefilter-log-hide-done": "מצב התצוגה עודכן בהצלחה: $2 {{PLURAL:$1|רשומה אחת|$1 רשומות}}",
+	"abusefilter-log-hide-done": "מצב התצוגה עודכן: $2 {{PLURAL:$1|רשומה אחת|$1 רשומות}}",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|הוסתרה|הוסתרו}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|הוצגה|הוצגו}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|הסתיר|הסתירה}} את $3",

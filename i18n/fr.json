@@ -152,7 +152,7 @@
 	"abusefilter-log-hide-show": "Afficher",
 	"abusefilter-log-hide-hide": "Cacher",
 	"abusefilter-log-hide-no-change": "Tous les ID sélectionnés ont déjà la visibilité souhaitée.",
-	"abusefilter-log-hide-done": "Mise à jour de la visibilité réussie : $1 {{PLURAL:$1|entrée|entrées}} $2.",
+	"abusefilter-log-hide-done": "Mise à jour de la visibilité : $1 {{PLURAL:$1|entrée|entrées}} $2.",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|masqué}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|non masqué}}",
 	"abusefilter-log-entry-suppress": "$1{{GENDER:$2|}} a masqué $3",
