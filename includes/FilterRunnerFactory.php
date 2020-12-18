@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 use AbuseFilterVariableHolder;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;

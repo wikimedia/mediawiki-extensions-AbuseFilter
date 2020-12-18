@@ -2,8 +2,8 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\ConsequencesExecutor;
-use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Revision\MutableRevisionRecord;
@@ -301,7 +301,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 * @param array $rawConsequences A raw, unfiltered list of consequences
 	 * @param array $expectedKeys
 	 * @param Title $title
-	 * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesExecutor
+	 * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor
 	 * @dataProvider provideConsequences
 	 */
 	public function testGetFilteredConsequences( $rawConsequences, $expectedKeys, Title $title ) {

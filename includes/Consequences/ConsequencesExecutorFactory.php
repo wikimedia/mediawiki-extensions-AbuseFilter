@@ -1,9 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use AbuseFilterVariableHolder;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use Psr\Log\LoggerInterface;
 use Title;
 use User;

@@ -1,9 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use AbuseFilterVariableHolder;
 use LogicException;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use Title;
 
 /**
