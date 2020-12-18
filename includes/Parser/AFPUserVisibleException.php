@@ -12,9 +12,9 @@ class AFPUserVisibleException extends AFPException {
 	/** @var string */
 	public $mExceptionID;
 	/** @var int */
-	public $mPosition;
+	protected $mPosition;
 	/** @var array */
-	public $mParams;
+	protected $mParams;
 
 	/**
 	 * @param string $exception_id
@@ -27,6 +27,13 @@ class AFPUserVisibleException extends AFPException {
 		$this->mParams = $params;
 
 		parent::__construct( $exception_id );
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPosition() : int {
+		return $this->mPosition;
 	}
 
 	/**

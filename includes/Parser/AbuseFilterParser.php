@@ -81,6 +81,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	/** @var KeywordsManager */
 	protected $keywordsManager;
 
+	/** @var UserVisibleWarning[] */
+	protected $warnings = [];
+
 	// Functions that affect parser state, and shouldn't be cached.
 	public const ACTIVE_FUNCTIONS = [
 		'funcSetVar',
@@ -210,6 +213,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$this->mAllowShort = true;
 		$this->mCondCount = 0;
 		$this->mFilter = null;
+		$this->warnings = [];
 	}
 
 	/**
@@ -232,7 +236,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @return true When successful
 	 * @throws AFPUserVisibleException
 	 */
-	public function checkSyntaxThrow( string $filter ) {
+	public function checkSyntaxThrow( string $filter ) : bool {
 		$this->allowMissingVariables = true;
 		$origAS = $this->mAllowShort;
 		try {
@@ -250,16 +254,16 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * Check the syntax of $filter, without throwing
 	 *
 	 * @param string $filter
-	 * @return true|array True when successful, otherwise a two-element array with exception message
-	 *  and character position of the syntax error
+	 * @return ParserStatus The result indicates whether the syntax is valid
 	 */
-	public function checkSyntax( string $filter ) {
+	public function checkSyntax( string $filter ) : ParserStatus {
 		try {
-			$res = $this->checkSyntaxThrow( $filter );
+			$valid = $this->checkSyntaxThrow( $filter );
 		} catch ( AFPUserVisibleException $excep ) {
-			$res = [ $excep->getMessageObj()->text(), $excep->mPosition ];
+			$valid = false;
 		}
-		return $res;
+		// @phan-suppress-next-line PhanCoalescingNeverUndefined
+		return new ParserStatus( $valid, $this->fromCache, $excep ?? null, $this->warnings );
 	}
 
 	/**
@@ -404,7 +408,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		} catch ( AFPException $excep ) {
 			$res = false;
 		} finally {
-			return new ParserStatus( $res, $this->fromCache, $excep );
+			return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings );
 		}
 	}
 
@@ -1405,6 +1409,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 			// Suppress and restore needed per T177744
 			AtEase::suppressWarnings();
+			$this->checkRegexMatchesEmpty( $needle );
 			$count = preg_match_all( $needle, $haystack );
 			AtEase::restoreWarnings();
 
@@ -1452,6 +1457,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 		// Suppress and restore are here for the same reason as T177744
 		AtEase::suppressWarnings();
+		$this->checkRegexMatchesEmpty( $needle );
 		$check = preg_match( $needle, $haystack, $matches );
 		AtEase::restoreWarnings();
 
@@ -1866,6 +1872,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		}
 
 		AtEase::suppressWarnings();
+		$this->checkRegexMatchesEmpty( $pattern );
 		$result = preg_match( $pattern, $str );
 		AtEase::restoreWarnings();
 		if ( $result === false ) {
@@ -1943,4 +1950,20 @@ class AbuseFilterParser extends AFPTransitionBase {
 		}
 	}
 
+	/**
+	 * Check whether the provided regex matches the empty string.
+	 * @note This method can generate a PHP notice if the regex is invalid
+	 *
+	 * @param string $regex
+	 */
+	protected function checkRegexMatchesEmpty( string $regex ) : void {
+		// @phan-suppress-next-line PhanParamSuspiciousOrder
+		if ( preg_match( $regex, '' ) === 1 ) {
+			$this->warnings[] = new UserVisibleWarning(
+				'match-empty-regex',
+				$this->mCur->pos,
+				[]
+			);
+		}
+	}
 }

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
@@ -115,9 +116,13 @@ class FilterValidator {
 	public function checkValidSyntax( AbstractFilter $filter ) : Status {
 		$ret = Status::newGood();
 		$parser = $this->parserFactory->newParser();
-		$syntaxerr = $parser->checkSyntax( $filter->getRules() );
-		if ( $syntaxerr !== true ) {
-			$ret->error( 'abusefilter-edit-badsyntax', $syntaxerr[0] );
+		$syntaxStatus = $parser->checkSyntax( $filter->getRules() );
+		if ( $syntaxStatus->getResult() !== true ) {
+			$excep = $syntaxStatus->getException();
+			$errMsg = $excep instanceof AFPUserVisibleException
+				? $excep->getMessageObj()->text()
+				: $excep->getMessage();
+			$ret->error( 'abusefilter-edit-badsyntax', $errMsg );
 		}
 		return $ret;
 	}

@@ -973,7 +973,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			// Note that some of the data sets will actually match at runtime, even if the variable
 			// they refer to is not set, due to the parser using GET_BC rather than GET_STRICT.
 			// TODO: Once T230256 is done, this can be changed to $this->assertFalse( $parser->parse( $code ) )
-			$this->assertTrue( $parser->checkSyntax( $code ), "Parser: $pname" );
+			$this->assertTrue( $parser->checkSyntax( $code )->getResult(), "Parser: $pname" );
 		}
 	}
 
@@ -1030,7 +1030,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 	public function testBuiltinArrays( string $code ) {
 		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
-			$this->assertTrue( $parser->checkSyntax( $code ), "Parser: $pname" );
+			$this->assertTrue( $parser->checkSyntax( $code )->getResult(), "Parser: $pname" );
 
 			try {
 				$parser->parse( $code );

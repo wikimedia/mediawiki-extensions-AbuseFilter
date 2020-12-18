@@ -1467,34 +1467,41 @@ ace.define( 'ace/mode/abusefilter_worker', [ 'require', 'exports', 'module', 'ac
 			// API error, pretend everything is fine.
 			return true;
 		}
-		data = data.abusefilterchecksyntax;
-
-		if ( data.status === 'ok' ) {
-			return true;
-		} else {
-			return data;
-		}
+		return data.abusefilterchecksyntax;
 	};
 
 	( function () {
 		this.onUpdate = function () {
 			var results = parseCode( this.doc.getValue() ),
-				errors,
+				errors = [],
+				warning,
 				position;
 
 			if ( results === true ) {
-				errors = [];
-			} else {
+				// API error or something similar.
+				this.sender.emit( 'annotate', [] );
+				return;
+			}
+			for ( warning in results.warnings || {} ) {
+				position = this.doc.indexToPosition( results.warnings[ warning ].character );
+				errors.push( {
+					row: position.row,
+					column: position.column,
+					text: results.warnings[ warning ].message,
+					type: 'warning'
+				} );
+			}
+			if ( results.status !== 'ok' ) {
 				position = this.doc.indexToPosition( results.character );
 				// Note, we can put more things in here if the parser is changed to
 				// report all of them
-				errors = [ {
+				errors.push( {
 					row: position.row,
 					column: position.column,
 					text: results.message,
 					// Can also be "warning" or "info"
 					type: 'error'
-				} ];
+				} );
 			}
 			this.sender.emit( 'annotate', errors );
 		};

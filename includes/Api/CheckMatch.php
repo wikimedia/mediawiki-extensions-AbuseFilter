@@ -60,7 +60,7 @@ class CheckMatch extends ApiBase {
 		}
 
 		$parser = AbuseFilterServices::getParserFactory()->newParser();
-		if ( $parser->checkSyntax( $params['filter'] ) !== true ) {
+		if ( $parser->checkSyntax( $params['filter'] )->getResult() !== true ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 

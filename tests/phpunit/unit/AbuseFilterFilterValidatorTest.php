@@ -5,7 +5,9 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use PHPUnit\Framework\MockObject\MockObject;
 
 /**
@@ -29,7 +31,9 @@ class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
 	) : FilterValidator {
 		if ( !$parser ) {
 			$parser = $this->createMock( AbuseFilterParser::class );
-			$parser->method( 'checkSyntax' )->willReturn( true );
+			$parser->method( 'checkSyntax' )->willReturn(
+				new ParserStatus( true, true, null, [] )
+			);
 		}
 		$parserFactory = $this->createMock( ParserFactory::class );
 		$parserFactory->method( 'newParser' )->willReturn( $parser );
@@ -75,7 +79,8 @@ class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCheckValidSyntax( bool $valid, ?string $expected ) {
 		$parser = $this->createMock( AbuseFilterParser::class );
-		$parser->method( 'checkSyntax' )->willReturn( $valid ?: [ 'x' ] );
+		$syntaxStatus = new ParserStatus( $valid, true, $valid ? null : new AFPException(), [] );
+		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		$validator = $this->getFilterValidator( null, $parser );
 
 		$this->assertStatusMessage(
@@ -353,7 +358,8 @@ class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
 		$noopFilter->method( 'isEnabled' )->willReturn( true );
 
 		$parser = $this->createMock( AbuseFilterParser::class );
-		$parser->method( 'checkSyntax' )->willReturn( [ 'x' ] );
+		$syntaxStatus = new ParserStatus( false, true, new AFPException(), [] );
+		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		yield 'invalid syntax' => [ $noopFilter, 'abusefilter-edit-badsyntax', null, $parser ];
 
 		$missingFieldsFilter = $this->createMock( AbstractFilter::class );

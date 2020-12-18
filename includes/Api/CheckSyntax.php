@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 
 class CheckSyntax extends ApiBase {
 
@@ -21,14 +22,29 @@ class CheckSyntax extends ApiBase {
 		$result = AbuseFilterServices::getParserFactory()->newParser()->checkSyntax( $params['filter'] );
 
 		$r = [];
-		if ( $result === true ) {
+		$warnings = [];
+		foreach ( $result->getWarnings() as $warning ) {
+			$warnings[] = [
+				'message' => $warning->getMessageObj()->text(),
+				'character' => $warning->getPosition()
+			];
+		}
+		if ( $warnings ) {
+			$r['warnings'] = $warnings;
+		}
+
+		if ( $result->getResult() === true ) {
 			// Everything went better than expected :)
 			$r['status'] = 'ok';
 		} else {
+			// TODO: Improve the type here.
+			/** @var AFPUserVisibleException $excep */
+			$excep = $result->getException();
+			'@phan-var AFPUserVisibleException $excep';
 			$r = [
 				'status' => 'error',
-				'message' => $result[0],
-				'character' => $result[1],
+				'message' => $excep->getMessageObj()->text(),
+				'character' => $excep->getPosition(),
 			];
 		}
 
