@@ -1,9 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use AbuseFilterVariableHolder;
 use ManualLogEntry;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\User\UserGroupManager;

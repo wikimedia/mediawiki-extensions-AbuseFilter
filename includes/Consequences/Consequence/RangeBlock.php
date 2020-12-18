@@ -1,8 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use MediaWiki\Block\BlockUserFactory;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use Wikimedia\IPUtils;
 

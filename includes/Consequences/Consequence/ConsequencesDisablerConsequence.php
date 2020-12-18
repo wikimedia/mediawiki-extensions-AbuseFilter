@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 /**
  * Interface for consequences that are checked first, and can disable every other consequence (including

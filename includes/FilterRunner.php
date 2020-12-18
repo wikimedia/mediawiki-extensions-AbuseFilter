@@ -9,6 +9,7 @@ use BagOStuff;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;

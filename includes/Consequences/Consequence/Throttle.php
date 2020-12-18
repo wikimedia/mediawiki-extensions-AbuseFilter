@@ -1,8 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use BagOStuff;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedException;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use Psr\Log\LoggerInterface;
 use Title;
 use User;

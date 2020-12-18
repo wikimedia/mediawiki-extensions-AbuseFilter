@@ -1,7 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
+use MediaWiki\Extension\AbuseFilter\CentralDBManager;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;

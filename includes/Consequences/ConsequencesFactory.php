@@ -1,20 +1,21 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use BagOStuff;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
-use MediaWiki\Extension\AbuseFilter\Consequence\Block;
-use MediaWiki\Extension\AbuseFilter\Consequence\BlockAutopromote;
-use MediaWiki\Extension\AbuseFilter\Consequence\Degroup;
-use MediaWiki\Extension\AbuseFilter\Consequence\Disallow;
-use MediaWiki\Extension\AbuseFilter\Consequence\Parameters;
-use MediaWiki\Extension\AbuseFilter\Consequence\RangeBlock;
-use MediaWiki\Extension\AbuseFilter\Consequence\Tag;
-use MediaWiki\Extension\AbuseFilter\Consequence\Throttle;
-use MediaWiki\Extension\AbuseFilter\Consequence\Warn;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockAutopromote;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Disallow;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Tag;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn;
+use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Session\Session;
 use MediaWiki\User\UserGroupManager;
 use Psr\Log\LoggerInterface;

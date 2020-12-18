@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 use AbuseFilter;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use SpecialAbuseFilter;
 use Status;

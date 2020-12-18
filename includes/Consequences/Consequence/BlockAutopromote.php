@@ -1,8 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use Psr\Log\LoggerInterface;
 
 /**

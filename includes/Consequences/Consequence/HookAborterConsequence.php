@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 /**
  * Interface for consequences that can abort an action hook with an error message

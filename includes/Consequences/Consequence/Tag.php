@@ -1,8 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
+use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 
 /**
  * Consequence that adds change tags once the edit is saved

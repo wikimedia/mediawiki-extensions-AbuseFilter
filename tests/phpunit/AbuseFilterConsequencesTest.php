@@ -47,20 +47,20 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Block
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\BlockAutopromote
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\BlockingConsequence
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Consequence
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Degroup
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Disallow
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Parameters
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\RangeBlock
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Tag
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Throttle
- * @covers \MediaWiki\Extension\AbuseFilter\Consequence\Warn
- * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesFactory
- * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesLookup
- * @covers \MediaWiki\Extension\AbuseFilter\ConsequencesExecutor
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockAutopromote
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockingConsequence
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Disallow
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Parameters
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Tag
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor
  */
 class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	use AbuseFilterCreateAccountTestTrait;

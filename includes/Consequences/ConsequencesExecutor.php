@@ -1,15 +1,16 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use AbuseFilterVariableHolder;
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\Consequence\BCConsequence;
-use MediaWiki\Extension\AbuseFilter\Consequence\Consequence;
-use MediaWiki\Extension\AbuseFilter\Consequence\ConsequencesDisablerConsequence;
-use MediaWiki\Extension\AbuseFilter\Consequence\HookAborterConsequence;
-use MediaWiki\Extension\AbuseFilter\Consequence\Parameters;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BCConsequence;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ConsequencesDisablerConsequence;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use Psr\Log\LoggerInterface;
 use Status;
 use Title;

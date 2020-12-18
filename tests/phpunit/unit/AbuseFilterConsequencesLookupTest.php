@@ -1,15 +1,15 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
-use MediaWiki\Extension\AbuseFilter\ConsequencesLookup;
-use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use Psr\Log\NullLogger;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\ConsequencesLookup
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup
  * @todo Write unit tests (non-trivial because the class is tied to a DB)
  */
 class AbuseFilterConsequencesLookupTest extends MediaWikiUnitTestCase {

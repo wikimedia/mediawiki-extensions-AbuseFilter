@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use BagOStuff;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
-use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\User\Hook\GetAutoPromoteGroupsHook;
 use MediaWiki\User\UserIdentity;
 use ObjectCache;

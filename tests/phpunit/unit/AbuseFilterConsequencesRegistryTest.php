@@ -1,13 +1,13 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\Consequence\Consequence;
-use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\ConsequencesRegistry
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry
  */
 class AbuseFilterConsequencesRegistryTest extends MediaWikiUnitTestCase {
 

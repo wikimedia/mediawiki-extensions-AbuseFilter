@@ -1,11 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
-// phpcs:disable MediaWiki.Classes.UnusedUseStatement.UnusedUse
-use MediaWiki\Extension\AbuseFilter\Consequence\Consequence;
-use MediaWiki\Extension\AbuseFilter\Consequence\Parameters;
-// phpcs:enable MediaWiki.Classes.UnusedUseStatement.UnusedUse
+// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
+use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use RuntimeException;
 

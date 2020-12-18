@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Consequence;
+namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Linker\LinkTarget;

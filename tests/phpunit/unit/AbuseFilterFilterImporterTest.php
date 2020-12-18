@@ -1,7 +1,7 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
