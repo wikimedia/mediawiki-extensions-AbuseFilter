@@ -143,7 +143,7 @@
 	"abusefilter-log-details-hidden-implicit": "Vous ne pouvez pas afficher les détails de cette entrée parce que sa révision associée est cachée à la vue du public.",
 	"abusefilter-log-private-not-included": "Un ou plusieurs IDs de filtre que vous avez spécifiés sont privés. Comme vous n’êtes pas autorisé à voir les détails des filtres privés, ces filtres n’ont pas été inclus dans la recherche.",
 	"abusefilter-log-hide-no-selected": "Aucune entrée sélectionnée",
-	"abusefilter-log-hide-selected": "{{PLURAL:$1|Entrée de AbuseLog sélectionnée|Entrées de AbuseLog sélectionnées}} :",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Entrée de AbuseLog sélectionnée|Entrées de AbuseLog sélectionnées}} :",
 	"abusefilter-log-hide-legend": "Modifier la visibilité",
 	"abusefilter-log-hide-set-visibility": "Définir la visibilité pour les entrées sélectionnées :",
 	"abusefilter-log-hide-reason": "Motif :",

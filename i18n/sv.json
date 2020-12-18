@@ -517,7 +517,7 @@
 	"abusefilter-test-intro": "Denna sida låter dig kolla upp ett filter inlagt i rutan nedan mot {{PLURAL:$1|den senaste $1 ändringen|de senaste $1 ändringarna}}.\nFör att ladda ett existerande filter, skriv dess filter-ID i rutan nedanför redigerings-boxen, och klicka på knappen \"{{int:abusefilter-test-load}}\".",
 	"abusefilter-test-legend": "Filtertestande",
 	"abusefilter-test-load-filter": "Ladda filter-ID:",
-	"abusefilter-test-submit": "Test",
+	"abusefilter-test-submit": "Testa",
 	"abusefilter-test-load": "Ladda",
 	"abusefilter-test-user": "Ändringar av användare:",
 	"abusefilter-test-nobots": "Dölj botredigeringar",
