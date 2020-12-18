@@ -304,7 +304,7 @@ class RunVariableGenerator extends VariableGenerator {
 		bool $autocreate
 	) : AbuseFilterVariableHolder {
 		// generateUserVars records $this->user->getName() which would be the IP for unregistered users
-		if ( $this->user->isLoggedIn() ) {
+		if ( $this->user->isRegistered() ) {
 			$this->addUserVars( $this->user );
 		}
 
