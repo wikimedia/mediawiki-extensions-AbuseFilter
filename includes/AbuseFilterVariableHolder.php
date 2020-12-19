@@ -186,6 +186,7 @@ class AbuseFilterVariableHolder {
 	 * Export all variables stored in this object with their native (PHP) types.
 	 *
 	 * @return array
+	 * @return-taint none
 	 */
 	public function exportAllVars() {
 		$exported = [];
