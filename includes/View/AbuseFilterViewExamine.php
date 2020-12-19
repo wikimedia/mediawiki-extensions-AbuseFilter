@@ -277,8 +277,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		$vars = $vars->exportAllVars();
-
 		$html = '';
 
 		$output->addModules( 'ext.abuseFilter.examine' );

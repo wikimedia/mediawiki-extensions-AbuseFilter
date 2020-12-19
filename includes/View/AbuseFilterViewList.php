@@ -141,6 +141,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			if ( !in_array( $searchmode, [ 'LIKE', 'RLIKE', 'IRLIKE' ] ) ) {
 				$error = 'abusefilter-list-invalid-searchmode';
 			} elseif ( $searchmode !== 'LIKE' && !StringUtils::isValidPCRERegex( "/$querypattern/" ) ) {
+				// @phan-suppress-previous-line SecurityCheck-ReDoS Yes, I know...
 				$error = 'abusefilter-list-regexerror';
 			}
 

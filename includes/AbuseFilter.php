@@ -113,15 +113,12 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder|array $vars
+	 * @param AbuseFilterVariableHolder $varHolder
 	 * @param IContextSource $context
 	 * @return string
 	 */
-	public static function buildVarDumpTable( $vars, IContextSource $context ) {
-		// Export all values
-		if ( $vars instanceof AbuseFilterVariableHolder ) {
-			$vars = $vars->exportAllVars();
-		}
+	public static function buildVarDumpTable( AbuseFilterVariableHolder $varHolder, IContextSource $context ) {
+		$vars = $varHolder->exportAllVars();
 
 		$output = '';
 
