@@ -31,6 +31,26 @@ use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
  * @group AbuseFilterGeneric
  */
 class AbuseFilterTest extends MediaWikiUnitTestCase {
+
+	/**
+	 * @covers \MediaWiki\Extension\AbuseFilter\GlobalNameUtils::splitGlobalName
+	 * @covers \MediaWiki\Extension\AbuseFilter\GlobalNameUtils::buildGlobalName
+	 * @dataProvider provideBuildGlobalName
+	 */
+	public function testBuildGlobalName( int $id, bool $global, string $expected ) {
+		$name = GlobalNameUtils::buildGlobalName( $id, $global );
+		$filterDef = GlobalNameUtils::splitGlobalName( $name );
+		$this->assertSame( $expected, $name );
+		$this->assertSame( [ $id, $global ], $filterDef );
+	}
+
+	public function provideBuildGlobalName() : array {
+		return [
+			[ 1, false, '1' ],
+			[ 2, true, 'global-2' ],
+		];
+	}
+
 	/**
 	 * @param string $name The name of a filter
 	 * @param array|null $expected If array, the expected result like [ id, isGlobal ].

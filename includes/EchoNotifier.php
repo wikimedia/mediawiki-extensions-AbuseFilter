@@ -67,11 +67,13 @@ class EchoNotifier {
 	 * Send notification about a filter being throttled
 	 *
 	 * @param int $filter
+	 * @return EchoEvent|false
 	 */
-	public function notifyForFilter( int $filter ) : void {
+	public function notifyForFilter( int $filter ) {
 		if ( $this->isEchoLoaded ) {
-			EchoEvent::create( $this->getDataForEvent( $filter ) );
+			return EchoEvent::create( $this->getDataForEvent( $filter ) );
 		}
+		return false;
 	}
 
 }
