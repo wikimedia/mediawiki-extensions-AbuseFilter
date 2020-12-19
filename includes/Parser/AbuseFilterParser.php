@@ -407,9 +407,8 @@ class AbuseFilterParser extends AFPTransitionBase {
 			$res = $this->parse( $code );
 		} catch ( AFPException $excep ) {
 			$res = false;
-		} finally {
-			return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings );
 		}
+		return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings );
 	}
 
 	/**
