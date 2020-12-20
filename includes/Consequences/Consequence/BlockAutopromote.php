@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use Psr\Log\LoggerInterface;
 
 /**
  * Consequence that blocks/delays autopromotion of a registered user.
@@ -14,25 +13,20 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence {
 	private $duration;
 	/** @var BlockAutopromoteStore */
 	private $blockAutopromoteStore;
-	/** @var LoggerInterface */
-	private $logger;
 
 	/**
 	 * @param Parameters $params
 	 * @param int $duration
 	 * @param BlockAutopromoteStore $blockAutopromoteStore
-	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		Parameters $params,
 		int $duration,
-		BlockAutopromoteStore $blockAutopromoteStore,
-		LoggerInterface $logger
+		BlockAutopromoteStore $blockAutopromoteStore
 	) {
 		parent::__construct( $params );
 		$this->duration = $duration;
 		$this->blockAutopromoteStore = $blockAutopromoteStore;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -44,8 +38,9 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence {
 			return false;
 		}
 
-		$blocked = $this->blockAutopromoteStore->blockAutoPromote(
+		return $this->blockAutopromoteStore->blockAutoPromote(
 			$target,
+			// TODO: inject MessageLocalizer
 			wfMessage(
 				'abusefilter-blockautopromotereason',
 				$this->parameters->getFilter()->getName(),
@@ -53,16 +48,6 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence {
 			)->inContentLanguage()->text(),
 			$this->duration
 		);
-
-		if ( $blocked ) {
-			return true;
-		}
-
-		$this->logger->warning(
-			'Cannot block autopromotion to {target}',
-			[ 'target' => $target->getName() ]
-		);
-		return false;
 	}
 
 	/**

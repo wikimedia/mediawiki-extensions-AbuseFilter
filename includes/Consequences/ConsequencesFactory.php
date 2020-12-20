@@ -143,7 +143,7 @@ class ConsequencesFactory {
 	 * @return BlockAutopromote
 	 */
 	public function newBlockAutopromote( Parameters $params, int $duration ) : BlockAutopromote {
-		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore, $this->logger );
+		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore );
 	}
 
 	/**
