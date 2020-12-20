@@ -36,8 +36,10 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideDataForEvent
-	 * @covers ::getDataForEvent
 	 * @covers ::__construct
+	 * @covers ::getDataForEvent
+	 * @covers ::getLastUserIDForFilter
+	 * @covers ::getTitleForFilter
 	 */
 	public function testGetDataForEvent( bool $loaded, int $filter, int $userID ) {
 		$notifier = new EchoNotifier( $this->getFilterLookup(), $loaded );
@@ -50,9 +52,30 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( EchoNotifier::EVENT_TYPE, $type );
 		$this->assertInstanceOf( Title::class, $title );
 		$this->assertSame( -1, $title->getNamespace() );
-		[ $page, $subpage ] = explode( '/', $title->getText(), 2 );
+		[ , $subpage ] = explode( '/', $title->getText(), 2 );
 		$this->assertSame( (string)$filter, $subpage );
 		$this->assertSame( [ 'user' => $userID ], $extra );
+	}
+
+	/**
+	 * @covers ::notifyForFilter
+	 */
+	public function testNotifyForFilter() {
+		if ( !class_exists( EchoEvent::class ) ) {
+			$this->markTestSkipped( 'Echo not loaded' );
+		}
+		$notifier = new EchoNotifier( $this->getFilterLookup(), true );
+		$this->assertInstanceOf( EchoEvent::class, $notifier->notifyForFilter( 1 ) );
+	}
+
+	/**
+	 * @covers ::notifyForFilter
+	 */
+	public function testNotifyForFilter_EchoNotLoaded() {
+		$lookup = $this->createMock( FilterLookup::class );
+		$lookup->expects( $this->never() )->method( $this->anything() );
+		$notifier = new EchoNotifier( $lookup, false );
+		$this->assertFalse( $notifier->notifyForFilter( 1 ) );
 	}
 
 }

@@ -322,6 +322,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			->willReturn( $locallyDisabledActions );
 		$fakeFilter = $this->createMock( Filter::class );
 		$fakeFilter->method( 'getName' )->willReturn( 'unused name' );
+		$fakeFilter->method( 'getID' )->willReturn( 1 );
 		$fakeLookup = $this->createMock( FilterLookup::class );
 		$fakeLookup->method( 'getFilter' )->willReturn( $fakeFilter );
 		$this->setService( FilterLookup::SERVICE_NAME, $fakeLookup );
