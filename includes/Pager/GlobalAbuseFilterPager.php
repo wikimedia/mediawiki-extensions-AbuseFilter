@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use AbuseFilter;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
 
@@ -28,6 +28,8 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 	 */
 	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
+		$specsFormatter = AbuseFilterServices::getSpecsFormatter();
+		$specsFormatter->setMessageLocalizer( $this->getContext() );
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
@@ -67,7 +69,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				)->parse();
 			case 'af_group':
 				// If this is global, local name probably doesn't exist, but try
-				return AbuseFilter::nameGroup( $value );
+				return $specsFormatter->nameGroup( $value );
 			default:
 				return parent::formatValue( $name, $value );
 		}
