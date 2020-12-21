@@ -279,7 +279,9 @@ return [
 			$services->get( VariableGeneratorFactory::SERVICE_NAME ),
 			$services->get( UpdateHitCountWatcher::SERVICE_NAME ),
 			$services->get( EmergencyWatcher::SERVICE_NAME ),
+			ObjectCache::getLocalClusterInstance(),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
+			LoggerFactory::getInstance( 'StashEdit' ),
 			$services->getStatsdDataFactory(),
 			new ServiceOptions(
 				FilterRunner::CONSTRUCTOR_OPTIONS,

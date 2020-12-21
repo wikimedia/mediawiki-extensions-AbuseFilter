@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use BagOStuff;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -13,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
+use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
 use Title;
 use User;
@@ -42,8 +44,12 @@ class FilterRunnerFactory {
 	private $updateHitCountWatcher;
 	/** @var EmergencyWatcher */
 	private $emergencyWatcher;
+	/** @var BagOStuff */
+	private $localCache;
 	/** @var LoggerInterface */
 	private $logger;
+	/** @var LoggerInterface */
+	private $editStashLogger;
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
 	/** @var ServiceOptions */
@@ -61,7 +67,9 @@ class FilterRunnerFactory {
 	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param UpdateHitCountWatcher $updateHitCountWatcher
 	 * @param EmergencyWatcher $emergencyWatcher
+	 * @param BagOStuff $localCache
 	 * @param LoggerInterface $logger
+	 * @param LoggerInterface $editStashLogger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ServiceOptions $options
 	 */
@@ -77,7 +85,9 @@ class FilterRunnerFactory {
 		VariableGeneratorFactory $varGeneratorFactory,
 		UpdateHitCountWatcher $updateHitCountWatcher,
 		EmergencyWatcher $emergencyWatcher,
+		BagOStuff $localCache,
 		LoggerInterface $logger,
+		LoggerInterface $editStashLogger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		ServiceOptions $options
 	) {
@@ -92,7 +102,9 @@ class FilterRunnerFactory {
 		$this->varGeneratorFactory = $varGeneratorFactory;
 		$this->updateHitCountWatcher = $updateHitCountWatcher;
 		$this->emergencyWatcher = $emergencyWatcher;
+		$this->localCache = $localCache;
 		$this->logger = $logger;
+		$this->editStashLogger = $editStashLogger;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->options = $options;
 	}
@@ -123,6 +135,15 @@ class FilterRunnerFactory {
 			$this->varManager,
 			$this->varGeneratorFactory,
 			$watchers,
+			new EditStashCache(
+				$this->localCache,
+				// Bots do not use edit stashing, so avoid distorting the stats
+				$user->isBot() ? $this->statsdDataFactory : new NullStatsdDataFactory(),
+				$this->varManager,
+				$this->editStashLogger,
+				$title,
+				$group
+			),
 			$this->logger,
 			$this->statsdDataFactory,
 			$this->options,
