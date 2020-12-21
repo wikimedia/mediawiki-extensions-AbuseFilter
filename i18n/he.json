@@ -480,6 +480,7 @@
 	"abusefilter-exception-invalidiprange": "טווח IP שגוי \"$2\" בתו מספר $1.",
 	"abusefilter-exception-disabledvar": "המשתנה $2 בתו מספר $1 אינו בשימוש יותר.",
 	"abusefilter-exception-variablevariable": "set ו־set_var מצפים לכך שהארגומנט הראשון יהיה מחרוזת מפורשת, נמצאו בתו $1.",
+	"abusefilter-warning-match-empty-regex": "הביטוי הרגולרי הזה מתאים למחרוזת הריקה, בתו $1",
 	"abusefilter-action-tag": "תיוג",
 	"abusefilter-action-throttle": "הגבלת תדירות פעולה",
 	"abusefilter-action-warn": "אזהרה",
@@ -579,5 +580,8 @@
 	"abusefilter-log-ip-not-available": "לא זמין",
 	"abusefilter-tag-reserved": "התגית <code>abusefilter-condition-limit</code> שמורה לשימוש פנימי של מסנן ההשחתות.",
 	"tag-abusefilter-condition-limit": "חריגה מתנאי ההגבלה",
-	"tag-abusefilter-condition-limit-description": "עריכות או פעולות אחרות שלא ניתן היה לבדוק אותן באמצעות כל [[Special:AbuseFilter|מסנני ההשחתות]] הפעילים ([[mw:Extension:AbuseFilter/Conditions|עזרה]])."
+	"tag-abusefilter-condition-limit-description": "עריכות או פעולות אחרות שלא ניתן היה לבדוק אותן באמצעות כל [[Special:AbuseFilter|מסנני ההשחתות]] הפעילים ([[mw:Extension:AbuseFilter/Conditions|עזרה]]).",
+	"notification-header-throttle-filter": "מסנן השחתות $2 {{GENDER:$1|שערכת}} לאחרונה הוגבל.",
+	"notification-subject-throttle-filter": "מסנן השחתות {{GENDER:$1|שערכת}} הוגבל באתר {{SITENAME}}.",
+	"notification-link-text-show-filter": "הצגת המסנן"
 }

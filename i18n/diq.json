@@ -115,7 +115,7 @@
 	"abusefilter-log-private-not-included": "Nışanyaye kamiya filtreyan bağseyê. Şıma wazenê ke detayanê fiktreya bıvinê yana Cıgeyre se eno mıkum niyo,  çıkı cı geyrayış red biyo icazet nêdeya yo",
 	"abusefilter-log-hide-no-selected": "Dekewtış nêweçineya",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|weçineya cıkewtışê AbuseLog|weçineyaye cıkewtışê AbuseLog}}:",
-	"abusefilter-log-hide-legend": "Asayışi bıvune",
+	"abusefilter-log-hide-legend": "Asayışi bıvurne",
 	"abusefilter-log-hide-set-visibility": "Weçineyaye dekewtan rê asayışi eyar ke:",
 	"abusefilter-log-hide-reason": "Sebeb:",
 	"abusefilter-log-hide-reason-other": "Sebebo bin/ilaweyın:",

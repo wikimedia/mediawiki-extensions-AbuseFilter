@@ -3,6 +3,7 @@
 		"authors": [
 			"0x010C",
 			"Alno",
+			"Cantons-de-l'Est",
 			"ChrisPtDe",
 			"Cquoi",
 			"Crochet.david",
@@ -504,6 +505,7 @@
 	"abusefilter-exception-invalidiprange": "Plage d’adresses IP fournie non valide « $2 » au caractère nº $1.",
 	"abusefilter-exception-disabledvar": "La variable $2 au caractère nº $1 n’est plus utilisée.",
 	"abusefilter-exception-variablevariable": "set et set_var s’attendent à ce que le premier argument soit une chaîne littérale, trouvée au caractère $1.",
+	"abusefilter-warning-match-empty-regex": "Cette expression rationnelle correspond à la chaîne vide, à la position $1",
 	"abusefilter-action-tag": "Baliser",
 	"abusefilter-action-throttle": "Limiter les modifications",
 	"abusefilter-action-warn": "Avertir l’utilisateur",
@@ -603,5 +605,6 @@
 	"abusefilter-log-ip-not-available": "Non disponible",
 	"abusefilter-tag-reserved": "La balise <code>abusefilter-condition-limit</code> est réservée à l’usage interne du filtre anti-abus.",
 	"tag-abusefilter-condition-limit": "Limite de condition atteinte",
-	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]])."
+	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]]).",
+	"notification-link-text-show-filter": "Afficher le filtre"
 }

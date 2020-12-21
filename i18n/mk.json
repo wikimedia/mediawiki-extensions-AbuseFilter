@@ -469,6 +469,7 @@
 	"abusefilter-exception-invalidiprange": "Укажан неважечки IP-опсег „$2“ кај знакот $1.",
 	"abusefilter-exception-disabledvar": "Променливата $2 кај знакот $1 повеќе не се користи.",
 	"abusefilter-exception-variablevariable": "set и set_var очекуваат првиот аргумент да биде буквална низа, кај знакот $1.",
+	"abusefilter-warning-match-empty-regex": "Овој регуларен израз се совпаѓа со празната низа, во знакот $1",
 	"abusefilter-action-tag": "Ознака",
 	"abusefilter-action-throttle": "Стесни",
 	"abusefilter-action-warn": "Предупреди",
@@ -568,5 +569,8 @@
 	"abusefilter-log-ip-not-available": "Недостапна",
 	"abusefilter-tag-reserved": "Ознаката <code>abusefilter-condition-limit</code> е резервирана за внатрешна употреба во Филтерот на злоупотреби.",
 	"tag-abusefilter-condition-limit": "достигната условната граница",
-	"tag-abusefilter-condition-limit-description": "Уредувањата или другите настани не можеа да се проверат од сите активни [[Special:AbuseFilter|филтри на злоупотреби]] ([[mw:Extension:AbuseFilter/Conditions|помош]])."
+	"tag-abusefilter-condition-limit-description": "Уредувањата или другите настани не можеа да се проверат од сите активни [[Special:AbuseFilter|филтри на злоупотреби]] ([[mw:Extension:AbuseFilter/Conditions|помош]]).",
+	"notification-header-throttle-filter": "Филтер за злоупотреби $2 кој неодамна {{GENDER:$1|го}} изменивте беше стеснет.",
+	"notification-subject-throttle-filter": "Филтер за злоупотреби кој неодамна {{GENDER:$1|го}} изменивте беше стеснет на{{SITENAME}}",
+	"notification-link-text-show-filter": "Прикажи филтер"
 }

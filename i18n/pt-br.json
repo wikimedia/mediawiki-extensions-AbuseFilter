@@ -494,6 +494,7 @@
 	"abusefilter-exception-invalidiprange": "Foi fornecida uma gama IP inválida \"$2\" no carácter $1.",
 	"abusefilter-exception-disabledvar": "A variável $2 na posição $1 deixou de ser usada.",
 	"abusefilter-exception-variablevariable": "set e set_var esperam que o primeiro argumento seja uma string literal, encontrada no caractere $1.",
+	"abusefilter-warning-match-empty-regex": "Esta expressão regular corresponde à string vazia, no caractere $1",
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitador",
 	"abusefilter-action-warn": "Avisar",
@@ -593,5 +594,8 @@
 	"abusefilter-log-ip-not-available": "Não disponível",
 	"abusefilter-tag-reserved": "A etiqueta <code>abusefilter-condition-limit</code> é reservado para uso interno pelo Filtro de Abuso.",
 	"tag-abusefilter-condition-limit": "limite de condições atingido",
-	"tag-abusefilter-condition-limit-description": "Edições ou outros acontecimentos que não puderam ser verificados por todos os [[Special:AbuseFilter|filtros de abuso]] ativos ([[mw:Extension:AbuseFilter/Conditions|ajuda]])."
+	"tag-abusefilter-condition-limit-description": "Edições ou outros acontecimentos que não puderam ser verificados por todos os [[Special:AbuseFilter|filtros de abuso]] ativos ([[mw:Extension:AbuseFilter/Conditions|ajuda]]).",
+	"notification-header-throttle-filter": "O filtro de abuso $2 que {{GENDER:$1|você}} editou recentemente foi limitado.",
+	"notification-subject-throttle-filter": "Um filtro de abuso que {{GENDER:$1|você}} editou foi limitado em {{SITENAME}}",
+	"notification-link-text-show-filter": "Mostrar filtro"
 }

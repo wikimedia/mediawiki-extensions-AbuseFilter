@@ -486,6 +486,7 @@
 	"abusefilter-exception-invalidiprange": "$1 karakterinde geçersiz IP aralığı \"$2\" verildi.",
 	"abusefilter-exception-disabledvar": "$1 karakterindeki $2 değişkeni artık kullanımda değil.",
 	"abusefilter-exception-variablevariable": "set ve set_var ilk argümanın $1 karakterinde bulunan bir dizgi değişmezi olmasını bekler.",
+	"abusefilter-warning-match-empty-regex": "Bu düzenli ifade, $1 karakterindeki boş dizeyle eşleşir",
 	"abusefilter-action-tag": "Etiket",
 	"abusefilter-action-throttle": "Kısıtla",
 	"abusefilter-action-warn": "Uyar",
@@ -585,5 +586,8 @@
 	"abusefilter-log-ip-not-available": "Mevcut değil",
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code> etiketi, AbuseFilter tarafından dahili kullanım için ayrılmıştır.",
 	"tag-abusefilter-condition-limit": "koşul sınırına ulaşıldı",
-	"tag-abusefilter-condition-limit-description": "Tüm etkin kullanıcılar tarafından kontrol edilemeyen düzenlemeler veya diğer etkinlikler [[Special:AbuseFilter|kötüye kullanım filtreleri]]([[mw:Extension:AbuseFilter/Conditions|yardım]])."
+	"tag-abusefilter-condition-limit-description": "Tüm etkin kullanıcılar tarafından kontrol edilemeyen düzenlemeler veya diğer etkinlikler [[Special:AbuseFilter|kötüye kullanım filtreleri]]([[mw:Extension:AbuseFilter/Conditions|yardım]]).",
+	"notification-header-throttle-filter": "Yakın zamanda {{GENDER:$1|düzenlediğiniz}} $2 kötüye kullanım filtresi kısıtlandı.",
+	"notification-subject-throttle-filter": "{{GENDER:$1|Düzenlediğiniz}} kötüye kullanım filtresi {{SITENAME}} sitesinde kısıtlandı",
+	"notification-link-text-show-filter": "Fitreyi göster"
 }

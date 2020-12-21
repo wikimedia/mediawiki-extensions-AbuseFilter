@@ -488,5 +488,7 @@
 	"abusefilter-view-privatedetails-submit": "Mostra els detalls privats",
 	"abusefilter-view-privatedetails-legend": "Mostra els detalls privats",
 	"abusefilter-noreason": "Atenció: heu d’indicar un motiu per a veure els detalls privats d’aquest registre.",
-	"abusefilter-log-ip-not-available": "No disponible"
+	"abusefilter-log-ip-not-available": "No disponible",
+	"notification-header-throttle-filter": "El filtre d'abús $2 {{GENDER:$1| }}que heu editat recentment s'ha vist afectat.",
+	"notification-link-text-show-filter": "Mostra el filtre"
 }

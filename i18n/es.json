@@ -133,6 +133,7 @@
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalles",
 	"abusefilter-log-diff": "difs.",
+	"abusefilter-log-hide-entries": "Cambiar visibilidad de entradas seleccionadas",
 	"abusefilter-log-description-not-available": "no disponible",
 	"abusefilter-log-details-legend": "Detalles de la entrada del registro $1",
 	"abusefilter-log-details-var": "Variable",
@@ -157,6 +158,7 @@
 	"abusefilter-log-details-hidden": "No puedes ver detalles de esta entrada porque su acceso público está restringido.",
 	"abusefilter-log-details-hidden-implicit": "No puedes ver los detalles para esta entrada porque su revisión asociada no es visible al público.",
 	"abusefilter-log-private-not-included": "Uno o más de los identificadores de filtro que has especificado son privados. Debido a que no tienes permitido ver los detalles de los filtros privados, estos filtros no se han buscado.",
+	"abusefilter-log-hide-no-selected": "No se seleccionó ninguna entrada",
 	"abusefilter-log-hide-legend": "cambiar visibilidad",
 	"abusefilter-log-hide-set-visibility": "Seleccionar visibilidad para las entradas seleccionadas:",
 	"abusefilter-log-hide-reason": "Motivo:",
@@ -612,5 +614,6 @@
 	"abusefilter-log-ip-not-available": "No disponible",
 	"abusefilter-tag-reserved": "La etiqueta <code>abusefilter-condition-limit</code> está reservada para uso interno del filtro antiabusos.",
 	"tag-abusefilter-condition-limit": "límite de condiciones superado",
-	"tag-abusefilter-condition-limit-description": "Ediciones u otros eventos que no pudieron ser verificados por todos los [[Special:AbuseFilter|filtros antiabusos]] ([[mw:Extension:AbuseFilter/Conditions|ayuda]])."
+	"tag-abusefilter-condition-limit-description": "Ediciones u otros eventos que no pudieron ser verificados por todos los [[Special:AbuseFilter|filtros antiabusos]] ([[mw:Extension:AbuseFilter/Conditions|ayuda]]).",
+	"notification-link-text-show-filter": "Mostrar filtro"
 }

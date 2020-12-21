@@ -133,7 +133,7 @@
 	"abusefilter-log-private-not-included": "Eine oder mehrere angegebene Filterkennungen sind privat. Da du nicht berechtigt bist, die Einzelheiten von privaten Filtern anzusehen, wurde nicht nach solchen Filtern gesucht.",
 	"abusefilter-log-hide-no-selected": "Keine Einträge ausgewählt",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|Ausgewählter AbuseLog-Eintrag|Ausgewählte AbuseLog-Eintrag}}:",
-	"abusefilter-log-hide-legend": "Logbucheintrag verstecken",
+	"abusefilter-log-hide-legend": "Sichtbarkeit ändern",
 	"abusefilter-log-hide-set-visibility": "Sichtbarkeit für die ausgewählten Einträge einstellen:",
 	"abusefilter-log-hide-reason": "Grund:",
 	"abusefilter-log-hide-reason-other": "Anderer/Zusätzlicher Grund:",
@@ -493,6 +493,7 @@
 	"abusefilter-exception-invalidiprange": "Ungültigen IP-Adressbereich „$2“ bei Zeichen $1 angegeben.",
 	"abusefilter-exception-disabledvar": "Die Variable $2 bei Zeichen $1 ist nicht mehr in Verwendung.",
 	"abusefilter-exception-variablevariable": "set und set_var erwarten, dass das erste Argument ein Zeichenkettenliteral ist, gefunden bei Zeichen $1.",
+	"abusefilter-warning-match-empty-regex": "Dieser reguläre Ausdruck passt auf die leere Zeichenkette, bei Zeichen $1",
 	"abusefilter-action-tag": "Markierung",
 	"abusefilter-action-throttle": "Drosseln",
 	"abusefilter-action-warn": "Warnen",
@@ -592,5 +593,8 @@
 	"abusefilter-log-ip-not-available": "Nicht verfügbar",
 	"abusefilter-tag-reserved": "Das Tag <code>abusefilter-condition-limit</code> ist für die interne Verwendung durch den Missbrauchsfilter reserviert.",
 	"tag-abusefilter-condition-limit": "Bedingungsgrenze erreicht",
-	"tag-abusefilter-condition-limit-description": "Bearbeitungen oder andere Ereignisse, die nicht von allen aktiven [[Special:AbuseFilter|Missbrauchsfiltern]] überprüft werden konnten ([[mw:Extension:AbuseFilter/Conditions|Hilfe]])."
+	"tag-abusefilter-condition-limit-description": "Bearbeitungen oder andere Ereignisse, die nicht von allen aktiven [[Special:AbuseFilter|Missbrauchsfiltern]] überprüft werden konnten ([[mw:Extension:AbuseFilter/Conditions|Hilfe]]).",
+	"notification-header-throttle-filter": "Der von {{GENDER:$1|dir}} kürzlich bearbeitete Missbrauchsfilter $2 wurde gedrosselt.",
+	"notification-subject-throttle-filter": "Ein von {{GENDER:$1|dir}} kürzlich bearbeiteter Missbrauchsfilter  wurde auf {{SITENAME}} gedrosselt.",
+	"notification-link-text-show-filter": "Zeige Filter"
 }

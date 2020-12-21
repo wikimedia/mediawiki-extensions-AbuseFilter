@@ -75,7 +75,7 @@
 	"abusefilter-log-hidden-implicit": "(verstoppt, well d'Versioun geläscht gouf)",
 	"abusefilter-log-cannot-see-details": "Dir hutt net déi néideg Rechter fir Detailer hei vun ze gesinn.",
 	"abusefilter-log-details-hidden": "Dir kënnt Detailer hei der vun net gesinn well e virun der Ëffentlechkeet verstoppt sinn.",
-	"abusefilter-log-hide-legend": "Rubrik am Logbuch verstoppen",
+	"abusefilter-log-hide-legend": "Siichtbarkeet änneren",
 	"abusefilter-log-hide-reason": "Grond:",
 	"abusefilter-log-hide-reason-other": "Aneren/zousätzleche Grond:",
 	"abusefilter-log-hide-forbidden": "Dir hutt net déi néideg Rechter fir Rubriken aus dem Mëssbrauchsfilter ze verstoppen.",
@@ -420,5 +420,6 @@
 	"abusefilter-http-error": "Et ass en HTTP-Feeler geschitt: $1.",
 	"abusefilter-view-privatedetails-submit": "Privat Detailer weisen",
 	"abusefilter-view-privatedetails-legend": "Privat Detailer weisen",
-	"abusefilter-log-ip-not-available": "Net disponibel"
+	"abusefilter-log-ip-not-available": "Net disponibel",
+	"notification-link-text-show-filter": "Filter weisen"
 }
