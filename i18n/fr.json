@@ -606,5 +606,7 @@
 	"abusefilter-tag-reserved": "La balise <code>abusefilter-condition-limit</code> est réservée à l’usage interne du filtre anti-abus.",
 	"tag-abusefilter-condition-limit": "Limite de condition atteinte",
 	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]]).",
+	"notification-header-throttle-filter": "Le filtre d’abus $2 que {{GENDER:$1|vous}} avez modifié récemment a été engorgé.",
+	"notification-subject-throttle-filter": "Un filtre d’abus que {{GENDER:$1|vous}} avez modifié a été engorgé sur {{SITENAME}}",
 	"notification-link-text-show-filter": "Afficher le filtre"
 }

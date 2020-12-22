@@ -468,6 +468,7 @@
 	"abusefilter-exception-invalidiprange": "Indervalle IP \"$2\" non valide a 'u carattere $1",
 	"abusefilter-exception-disabledvar": "Variabbile $2 a 'u carattere $1 non ge se po ausà cchiù.",
 	"abusefilter-exception-variablevariable": "set e set_var s'aspettane ca 'u prime argomende adda essere 'na stringhe letterale, acchiate a 'u carattere $1.",
+	"abusefilter-warning-match-empty-regex": "St'espressione regolare s'accocchie cu 'a stringa vacande, a 'u carattere $1",
 	"abusefilter-action-tag": "Tag",
 	"abusefilter-action-throttle": "Annullate",
 	"abusefilter-action-warn": "Avvertì",
@@ -567,5 +568,8 @@
 	"abusefilter-log-ip-not-available": "Non disponibbile",
 	"abusefilter-tag-reserved": "'U tag <code>abusefilter-condition-limit</code> jè riservate pe l'ause inderne da AbuseFilter.",
 	"tag-abusefilter-condition-limit": "limite de condiziune raggiunde",
-	"tag-abusefilter-condition-limit-description": "Cangiaminde o otre avveneminde ca non ge onne state condrollate da tutte le [[Special:AbuseFilter|filtre anti abbuse]] attive ([[mw:Extension:AbuseFilter/Conditions|aijute]])."
+	"tag-abusefilter-condition-limit-description": "Cangiaminde o otre avveneminde ca non ge onne state condrollate da tutte le [[Special:AbuseFilter|filtre anti abbuse]] attive ([[mw:Extension:AbuseFilter/Conditions|aijute]]).",
+	"notification-header-throttle-filter": "Filtre d'abbuse $2 {{GENDER:$1|ca tu}} è cangiate urtemamende ha state limitate.",
+	"notification-subject-throttle-filter": "'Nu filtre d'abbuse {{GENDER:$1|ca tu}} è cangiate ha state limitate sus a {{SITENAME}}",
+	"notification-link-text-show-filter": "'Ndruche 'u filtre"
 }

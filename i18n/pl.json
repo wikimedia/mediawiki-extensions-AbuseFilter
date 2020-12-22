@@ -137,6 +137,7 @@
 	"abusefilter-log-hide-no-selected": "Nie wybrano żadnych wpisów",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|Wybrany wpis rejestru nadużyć|Wybrane wpisy rejestru nadużyć}}:",
 	"abusefilter-log-hide-legend": "Zmień widoczność",
+	"abusefilter-log-hide-set-visibility": "Ustaw widoczność wybranych wpisów:",
 	"abusefilter-log-hide-reason": "Powód",
 	"abusefilter-log-hide-reason-other": "Inny lub dodatkowy powód:",
 	"abusefilter-log-hide-forbidden": "Nie masz uprawnień do ukrywania\nwpisów w rejestrze nadużyć.",
