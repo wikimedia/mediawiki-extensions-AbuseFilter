@@ -159,6 +159,7 @@
 	"abusefilter-log-details-hidden-implicit": "No puedes ver los detalles para esta entrada porque su revisión asociada no es visible al público.",
 	"abusefilter-log-private-not-included": "Uno o más de los identificadores de filtro que has especificado son privados. Debido a que no tienes permitido ver los detalles de los filtros privados, estos filtros no se han buscado.",
 	"abusefilter-log-hide-no-selected": "No se seleccionó ninguna entrada",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Entrada del registro del filtro antiabusos seleccionada|Entradas del registro del filtro antiabusos seleccionadas}}:",
 	"abusefilter-log-hide-legend": "cambiar visibilidad",
 	"abusefilter-log-hide-set-visibility": "Seleccionar visibilidad para las entradas seleccionadas:",
 	"abusefilter-log-hide-reason": "Motivo:",
@@ -166,6 +167,10 @@
 	"abusefilter-log-hide-forbidden": "No tienes permiso para ocultar entradas del registro de abusos",
 	"abusefilter-log-hide-show": "Mostrar",
 	"abusefilter-log-hide-hide": "Ocultar",
+	"abusefilter-log-hide-no-change": "Todas las entradas seleccionadas ya tienen el nivel de visibilidad deseado.",
+	"abusefilter-log-hide-done": "Visibilidad actualizada: $1 {{PLURAL:$1|entrada|entradas}} $2.",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|ocultada|ocultadas}}",
+	"abusefilter-log-hide-done-show": "{{PLURAL:$1|mostrada|mostradas}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|ocultó}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|desocultó}} $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|disparó}} $4 al {{GENDER:$2|realizar}} la acción «$5» en $3. Medidas adoptadas: $6 ($7)",
@@ -615,5 +620,7 @@
 	"abusefilter-tag-reserved": "La etiqueta <code>abusefilter-condition-limit</code> está reservada para uso interno del filtro antiabusos.",
 	"tag-abusefilter-condition-limit": "límite de condiciones superado",
 	"tag-abusefilter-condition-limit-description": "Ediciones u otros eventos que no pudieron ser verificados por todos los [[Special:AbuseFilter|filtros antiabusos]] ([[mw:Extension:AbuseFilter/Conditions|ayuda]]).",
+	"notification-header-throttle-filter": "El filtro antiabusos $2 que {{GENDER:$1|editastes}} recientemente ha sido limitado.",
+	"notification-subject-throttle-filter": "Un filtro antiabusos que {{GENDER:$1|editastes}} ha sido limitado en {{SITENAME}}",
 	"notification-link-text-show-filter": "Mostrar filtro"
 }

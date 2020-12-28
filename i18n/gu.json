@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ashok modhvadia",
+			"CptViraj",
 			"Dineshjk",
 			"Dsvyas",
 			"Harsh4101991",
@@ -32,6 +33,7 @@
 	"abusefilter-log-detailedentry-local": "ગાળક $1",
 	"abusefilter-log-detailslink": "વિગતો",
 	"abusefilter-log-diff": "ભેદ",
+	"abusefilter-log-hide-entries": "પસંદ કરેલી નોધણીઓની દૃશ્યતા બદલો",
 	"abusefilter-log-details-legend": "$1 લૉગ દાખલા માટેની વિગતો",
 	"abusefilter-log-details-var": "ચલ",
 	"abusefilter-log-details-val": "કિંમત",
@@ -42,7 +44,7 @@
 	"abusefilter-log-details-diff": "સંપાદનમાં કરેલ ફેરફારો",
 	"abusefilter-log-linkoncontribs": "દુરુપયોગ નોંધ",
 	"abusefilter-log-linkoncontribs-text": "આ સભ્ય માટેની દુરુપયોગ નોંધ",
-	"abusefilter-log-hide-legend": "લૉગ દાખલો છુપાવો",
+	"abusefilter-log-hide-legend": "દૃશ્યતા બદલો",
 	"abusefilter-log-hide-reason": "કારણ:",
 	"abusefilter-list": "બધાં ગળણાં",
 	"abusefilter-list-id": "ગાળક ID",

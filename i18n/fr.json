@@ -153,9 +153,9 @@
 	"abusefilter-log-hide-show": "Afficher",
 	"abusefilter-log-hide-hide": "Cacher",
 	"abusefilter-log-hide-no-change": "Tous les ID sélectionnés ont déjà la visibilité souhaitée.",
-	"abusefilter-log-hide-done": "Mise à jour de la visibilité : $1 {{PLURAL:$1|entrée|entrées}} $2.",
-	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|masqué}}",
-	"abusefilter-log-hide-done-show": "{{PLURAL:$1|non masqué}}",
+	"abusefilter-log-hide-done": "Mise à jour de la visibilité : {{PLURAL:$1|une entrée|$1 entrées}} $2.",
+	"abusefilter-log-hide-done-hide": "masqué{{PLURAL:$1||e}}",
+	"abusefilter-log-hide-done-show": "démasquée{{PLURAL:$1||s}}",
 	"abusefilter-log-entry-suppress": "$1{{GENDER:$2|}} a masqué $3",
 	"abusefilter-log-entry-unsuppress": "$1{{GENDER:$2|}} a démasqué $3",
 	"logentry-abusefilter-hit": "$1{{GENDER:$2|}} a déclenché le filtre $4, en effectuant l’action « $5 » sur $3. Actions entreprises : $6 ($7)",
@@ -606,7 +606,7 @@
 	"abusefilter-tag-reserved": "La balise <code>abusefilter-condition-limit</code> est réservée à l’usage interne du filtre anti-abus.",
 	"tag-abusefilter-condition-limit": "Limite de condition atteinte",
 	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]]).",
-	"notification-header-throttle-filter": "Le filtre d’abus $2 que {{GENDER:$1|vous}} avez modifié récemment a été engorgé.",
-	"notification-subject-throttle-filter": "Un filtre d’abus que {{GENDER:$1|vous}} avez modifié a été engorgé sur {{SITENAME}}",
+	"notification-header-throttle-filter": "Le filtre d’abus $2 que {{GENDER:$1|}}vous avez modifié récemment a été engorgé.",
+	"notification-subject-throttle-filter": "Un filtre d’abus que {{GENDER:$1|}}vous avez modifié a été engorgé sur {{SITENAME}}",
 	"notification-link-text-show-filter": "Afficher le filtre"
 }

@@ -614,5 +614,6 @@
 	"abusefilter-log-ip-not-available": "Не доступно",
 	"abusefilter-tag-reserved": "Метка <code>abusefilter-condition-limit</code> зарезервирована для использования фильтром злоупотреблений.",
 	"tag-abusefilter-condition-limit": "предел условия достигнут",
-	"tag-abusefilter-condition-limit-description": "Правки или другие действия, которые не могут быть проверены всеми активными [[Special:AbuseFilter|фильтрами злоупотреблений]] ([[mw:Extension:AbuseFilter/Conditions|справка]])."
+	"tag-abusefilter-condition-limit-description": "Правки или другие действия, которые не могут быть проверены всеми активными [[Special:AbuseFilter|фильтрами злоупотреблений]] ([[mw:Extension:AbuseFilter/Conditions|справка]]).",
+	"notification-link-text-show-filter": "Показать фильтр"
 }

@@ -101,7 +101,7 @@
 	"abusefilter-log-details-hidden": "Tu non pote vider le detalios de iste entrata, proque illo es celate al vista del publico.",
 	"abusefilter-log-details-hidden-implicit": "Tu non pote vider le detalios de iste entrata perque su version associate es celate al vista del publico.",
 	"abusefilter-log-private-not-included": "Un o plure IDs de filtro specificate es private. Pois que tu non es autorisate a vider le detalios de filtros private, iste filtros non ha essite cercate.",
-	"abusefilter-log-hide-legend": "Celar entrata de registro",
+	"abusefilter-log-hide-legend": "Cambiar visibilitate",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Motivo altere/additional:",
 	"abusefilter-log-hide-forbidden": "Tu non ha le permission de celar\nentratas del registro de abusos.",
