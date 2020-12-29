@@ -161,13 +161,13 @@ class AbuseFilterViewList extends AbuseFilterView {
 		}
 
 		$this->showList(
-			compact(
-				'deleted',
-				'furtherOptions',
-				'querypattern',
-				'searchmode',
-				'scope'
-			),
+			[
+				'deleted' => $deleted,
+				'furtherOptions' => $furtherOptions,
+				'querypattern' => $querypattern,
+				'searchmode' => $searchmode,
+				'scope' => $scope,
+			],
 			$conds
 		);
 	}
