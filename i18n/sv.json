@@ -599,6 +599,6 @@
 	"tag-abusefilter-condition-limit": "villkorsgräns är nådd",
 	"tag-abusefilter-condition-limit-description": "Redigeringar eller andra händelser som inte kunde kontrolleras av alla aktiva [[Special:AbuseFilter|missbruksfilter]] ([[mw:Extension:AbuseFilter/Conditions|hjälp]]).",
 	"notification-header-throttle-filter": "Missbruksfiltret $2 som {{GENDER:$1|du}} nyligen redigerade var throttled.",
-	"notification-subject-throttle-filter": "Ett missbruksfilter som {{GENDER:$1|du}} redigerades was throttled på {{SITENAME}}",
+	"notification-subject-throttle-filter": "Ett missbruksfilter som {{GENDER:$1|du}} redigerade begränsades på {{SITENAME}}",
 	"notification-link-text-show-filter": "Visa filter"
 }
