@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
-use AbuseFilter;
 use AbuseFilterVariableHolder;
 use ApiBase;
 use ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
 use Status;
 
 class EvalExpression extends ApiBase {
@@ -28,7 +28,7 @@ class EvalExpression extends ApiBase {
 			$this->dieWithError( $status->getErrors()[0] );
 		} else {
 			$res = $status->getValue();
-			$res = $params['prettyprint'] ? AbuseFilter::formatVar( $res ) : $res;
+			$res = $params['prettyprint'] ? VariablesFormatter::formatVar( $res ) : $res;
 			$this->getResult()->addValue(
 				null,
 				$this->getModuleName(),

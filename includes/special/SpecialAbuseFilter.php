@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterView;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
@@ -54,6 +55,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			FilterLookup::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,
 			VariablesBlobStore::SERVICE_NAME,
+			VariablesFormatter::SERVICE_NAME,
 		],
 		AbuseFilterViewHistory::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,

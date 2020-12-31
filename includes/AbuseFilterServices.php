@@ -206,6 +206,13 @@ class AbuseFilterServices {
 	}
 
 	/**
+	 * @return VariablesFormatter
+	 */
+	public static function getVariablesFormatter() : VariablesFormatter {
+		return MediaWikiServices::getInstance()->getService( VariablesFormatter::SERVICE_NAME );
+	}
+
+	/**
 	 * @return LazyVariableComputer
 	 */
 	public static function getLazyVariableComputer() : LazyVariableComputer {
