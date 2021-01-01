@@ -66,9 +66,9 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$logger = new \Psr\Log\NullLogger();
 			$keywordsManager = AbuseFilterServices::getKeywordsManager();
 
-			$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager );
+			$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager, 1000 );
 			$parser->toggleConditionLimit( false );
-			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager );
+			$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager, 1000 );
 			$cachingParser->toggleConditionLimit( false );
 			$parsers = [ $parser, $cachingParser ];
 		} else {

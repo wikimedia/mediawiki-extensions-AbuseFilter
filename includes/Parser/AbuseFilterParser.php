@@ -81,6 +81,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	/** @var KeywordsManager */
 	protected $keywordsManager;
 
+	/** @var int */
+	private $conditionsLimit;
+
 	/** @var UserVisibleWarning[] */
 	protected $warnings = [];
 
@@ -116,6 +119,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @param BagOStuff $cache Used to cache the AST (in CachingParser) and the tokens
 	 * @param LoggerInterface $logger Used for debugging
 	 * @param KeywordsManager $keywordsManager
+	 * @param int $conditionsLimit
 	 * @param AbuseFilterVariableHolder|null $vars
 	 */
 	public function __construct(
@@ -123,6 +127,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		BagOStuff $cache,
 		LoggerInterface $logger,
 		KeywordsManager $keywordsManager,
+		int $conditionsLimit,
 		AbuseFilterVariableHolder $vars = null
 	) {
 		$this->contLang = $contLang;
@@ -130,6 +135,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$this->logger = $logger;
 		$this->statsd = new NullStatsdDataFactory;
 		$this->keywordsManager = $keywordsManager;
+		$this->conditionsLimit = $conditionsLimit;
 		$this->resetState();
 		if ( $vars ) {
 			$this->mVariables = $vars;
@@ -193,11 +199,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @throws AFPException
 	 */
 	protected function raiseCondCount( $val = 1 ) {
-		global $wgAbuseFilterConditionLimit;
-
 		$this->mCondCount += $val;
 
-		if ( $this->condLimitEnabled && $this->mCondCount > $wgAbuseFilterConditionLimit ) {
+		if ( $this->condLimitEnabled && $this->mCondCount > $this->conditionsLimit ) {
 			throw new AFPException( 'Condition limit reached.' );
 		}
 	}

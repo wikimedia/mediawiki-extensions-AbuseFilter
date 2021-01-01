@@ -48,9 +48,9 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 		$logger = new \Psr\Log\NullLogger();
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 
-		$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager );
+		$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager, 1000 );
 		$parser->toggleConditionLimit( false );
-		$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager );
+		$cachingParser = new AbuseFilterCachingParser( $contLang, $cache, $logger, $keywordsManager, 1000 );
 		$cachingParser->toggleConditionLimit( false );
 		return [ $parser, $cachingParser ];
 	}
