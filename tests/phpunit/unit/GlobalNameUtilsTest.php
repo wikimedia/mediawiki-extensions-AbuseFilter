@@ -30,7 +30,7 @@ use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
  * @group AbuseFilter
  * @group AbuseFilterGeneric
  */
-class AbuseFilterTest extends MediaWikiUnitTestCase {
+class GlobalNameUtilsTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers \MediaWiki\Extension\AbuseFilter\GlobalNameUtils::splitGlobalName
