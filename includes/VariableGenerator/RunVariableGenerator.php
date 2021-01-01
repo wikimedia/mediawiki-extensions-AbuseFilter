@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
-use AbuseFilter;
 use AbuseFilterVariableHolder;
 use Content;
 use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -32,15 +32,25 @@ class RunVariableGenerator extends VariableGenerator {
 	 */
 	protected $title;
 
+	/** @var TextExtractor */
+	private $textExtractor;
+
 	/**
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param User $user
 	 * @param Title $title
+	 * @param TextExtractor $textExtractor
 	 */
-	public function __construct( AbuseFilterVariableHolder $vars, User $user, Title $title ) {
+	public function __construct(
+		AbuseFilterVariableHolder $vars,
+		User $user,
+		Title $title,
+		TextExtractor $textExtractor
+	) {
 		parent::__construct( $vars );
 		$this->user = $user;
 		$this->title = $title;
+		$this->textExtractor = $textExtractor;
 	}
 
 	/**
@@ -84,13 +94,13 @@ class RunVariableGenerator extends VariableGenerator {
 		}
 
 		$oldContent = $oldRevRecord->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
-		$oldAfText = AbuseFilter::revisionToString( $oldRevRecord, $this->user );
+		$oldAfText = $this->textExtractor->revisionToString( $oldRevRecord, $this->user );
 
 		// XXX: Recreate what the new revision will probably be so we can get the full AF
 		// text for all slots
 		$newRevision = MutableRevisionRecord::newFromParentRevision( $oldRevRecord );
 		$newRevision->setContent( $slot, $content );
-		$text = AbuseFilter::revisionToString( $newRevision, $this->user );
+		$text = $this->textExtractor->revisionToString( $newRevision, $this->user );
 
 		// Cache article object so we can share a parse operation
 		$articleCacheKey = $this->title->getNamespace() . ':' . $this->title->getText();
@@ -270,7 +280,7 @@ class RunVariableGenerator extends VariableGenerator {
 				}
 
 				$oldcontent = $revRec->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
-				$oldtext = AbuseFilter::contentToString( $oldcontent );
+				$oldtext = $this->textExtractor->contentToString( $oldcontent );
 
 				// Cache article object so we can share a parse operation
 				$articleCacheKey = $this->title->getNamespace() . ':' . $this->title->getText();

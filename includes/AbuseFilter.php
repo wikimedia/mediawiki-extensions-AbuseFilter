@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Revision\RevisionRecord;
 
 /**
@@ -66,82 +65,6 @@ class AbuseFilter {
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $title, $vars, $group );
 		return $runner->run();
-	}
-
-	/**
-	 * Look up some text of a revision from its revision id
-	 *
-	 * Note that this is really *some* text, we do not make *any* guarantee
-	 * that this text will be even close to what the user actually sees, or
-	 * that the form is fit for any intended purpose.
-	 *
-	 * Note also that if the revision for any reason is not an Revision
-	 * the function returns with an empty string.
-	 *
-	 * For now, this returns all the revision's slots, concatenated together.
-	 * In future, this will be replaced by a better solution. See T208769 for
-	 * discussion.
-	 *
-	 * @internal
-	 * @todo Move elsewhere. VariableGenerator is a good candidate
-	 *
-	 * @param RevisionRecord|null $revision a valid revision
-	 * @param User $user the user instance to check for privileged access
-	 * @return string the content of the revision as some kind of string,
-	 *        or an empty string if it can not be found
-	 * @return-taint none
-	 */
-	public static function revisionToString( ?RevisionRecord $revision, User $user ) {
-		if ( !$revision ) {
-			return '';
-		}
-
-		$strings = [];
-
-		foreach ( $revision->getSlotRoles() as $role ) {
-			$content = $revision->getContent( $role, RevisionRecord::FOR_THIS_USER, $user );
-			if ( $content === null ) {
-				continue;
-			}
-			$strings[$role] = self::contentToString( $content );
-		}
-
-		$result = implode( "\n\n", $strings );
-		return $result;
-	}
-
-	/**
-	 * Converts the given Content object to a string.
-	 *
-	 * This uses Content::getNativeData() if $content is an instance of TextContent,
-	 * or Content::getTextForSearchIndex() otherwise.
-	 *
-	 * The hook 'AbuseFilter::contentToString' can be used to override this
-	 * behavior.
-	 *
-	 * @internal
-	 * @todo Move elsewhere. VariableGenerator is a good candidate
-	 *
-	 * @param Content $content
-	 *
-	 * @return string a suitable string representation of the content.
-	 */
-	public static function contentToString( Content $content ) {
-		$text = null;
-
-		$hookRunner = AbuseFilterHookRunner::getRunner();
-		if ( $hookRunner->onAbuseFilterContentToString(
-			$content,
-			$text
-		) ) {
-			$text = $content instanceof TextContent
-				? $content->getText()
-				: $content->getTextForSearchIndex();
-		}
-
-		// T22310
-		$text = TextContent::normalizeLineEndings( (string)$text );
-		return $text;
 	}
 
 	/**

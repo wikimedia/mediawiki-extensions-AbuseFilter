@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilter;
 use AbuseFilterVariableHolder;
 use AFComputedVariable;
 use ContentHandler;
@@ -47,6 +46,9 @@ class LazyVariableComputer {
 	 */
 	public static $profilingExtraTime = 0;
 
+	/** @var TextExtractor */
+	private $textExtractor;
+
 	/** @var AbuseFilterHookRunner */
 	private $hookRunner;
 
@@ -78,6 +80,7 @@ class LazyVariableComputer {
 	private $wikiID;
 
 	/**
+	 * @param TextExtractor $textExtractor
 	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param TitleFactory $titleFactory
 	 * @param LoggerInterface $logger
@@ -90,6 +93,7 @@ class LazyVariableComputer {
 	 * @param string $wikiID
 	 */
 	public function __construct(
+		TextExtractor $textExtractor,
 		AbuseFilterHookRunner $hookRunner,
 		TitleFactory $titleFactory,
 		LoggerInterface $logger,
@@ -101,6 +105,7 @@ class LazyVariableComputer {
 		Parser $parser,
 		string $wikiID
 	) {
+		$this->textExtractor = $textExtractor;
 		$this->hookRunner = $hookRunner;
 		$this->titleFactory = $titleFactory;
 		$this->logger = $logger;
@@ -358,7 +363,7 @@ class LazyVariableComputer {
 				break;
 			case 'revision-text-by-id':
 				$revRec = $this->revisionLookup->getRevisionById( $parameters['revid'] );
-				$result = AbuseFilter::revisionToString( $revRec, $parameters['contextUser'] );
+				$result = $this->textExtractor->revisionToString( $revRec, $parameters['contextUser'] );
 				break;
 			case 'get-wiki-name':
 				$result = $this->wikiID;

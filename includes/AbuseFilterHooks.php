@@ -188,7 +188,7 @@ class AbuseFilterHooks {
 		self::$lastEditPage = null;
 
 		// @todo is there any real point in passing this in?
-		$text = AbuseFilter::contentToString( $content );
+		$text = AbuseFilterServices::getTextExtractor()->contentToString( $content );
 
 		$title = $context->getTitle();
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
@@ -207,7 +207,8 @@ class AbuseFilterHooks {
 		$page = $context->getWikiPage();
 
 		$vars = new AbuseFilterVariableHolder();
-		$builder = new RunVariableGenerator( $vars, $user, $title );
+		$converter = AbuseFilterServices::getTextExtractor();
+		$builder = new RunVariableGenerator( $vars, $user, $title, $converter );
 		$vars = $builder->getEditVars( $content, $text, $summary, $slot, $page );
 		if ( $vars === null ) {
 			// We don't have to filter the edit
@@ -327,7 +328,8 @@ class AbuseFilterHooks {
 		Status &$status
 	) {
 		$vars = new AbuseFilterVariableHolder();
-		$builder = new RunVariableGenerator( $vars, $user, $oldTitle );
+		$converter = AbuseFilterServices::getTextExtractor();
+		$builder = new RunVariableGenerator( $vars, $user, $oldTitle, $converter );
 		$vars = $builder->getMoveVars( $newTitle, $reason );
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $oldTitle, $vars, 'default' );
@@ -346,7 +348,8 @@ class AbuseFilterHooks {
 	public static function onArticleDelete( WikiPage $article, User $user, $reason, &$error,
 		Status $status ) {
 		$vars = new AbuseFilterVariableHolder();
-		$builder = new RunVariableGenerator( $vars, $user, $article->getTitle() );
+		$converter = AbuseFilterServices::getTextExtractor();
+		$builder = new RunVariableGenerator( $vars, $user, $article->getTitle(), $converter );
 		$vars = $builder->getDeleteVars( $reason );
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $article->getTitle(), $vars, 'default' );
@@ -428,7 +431,8 @@ class AbuseFilterHooks {
 		}
 
 		$vars = new AbuseFilterVariableHolder();
-		$builder = new RunVariableGenerator( $vars, $user, $title );
+		$converter = AbuseFilterServices::getTextExtractor();
+		$builder = new RunVariableGenerator( $vars, $user, $title, $converter );
 		$vars = $builder->getUploadVars( $action, $upload, $summary, $text, $props );
 		if ( $vars === null ) {
 			return true;
@@ -506,7 +510,8 @@ class AbuseFilterHooks {
 			) {
 				$startTime = microtime( true );
 				$vars = new AbuseFilterVariableHolder();
-				$generator = new RunVariableGenerator( $vars, $user, $page->getTitle() );
+				$converter = AbuseFilterServices::getTextExtractor();
+				$generator = new RunVariableGenerator( $vars, $user, $page->getTitle(), $converter );
 				$vars = $generator->getStashEditVars( $content, $summary, $slot, $page );
 				if ( !$vars ) {
 					return;

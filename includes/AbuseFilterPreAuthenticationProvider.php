@@ -45,7 +45,8 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 
 		$title = SpecialPage::getTitleFor( 'Userlogin' );
 		$vars = new AbuseFilterVariableHolder();
-		$builder = new RunVariableGenerator( $vars, $creator, $title );
+		$converter = AbuseFilterServices::getTextExtractor();
+		$builder = new RunVariableGenerator( $vars, $creator, $title, $converter );
 		$vars = $builder->getAccountCreationVars( $user, $autocreate );
 
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
