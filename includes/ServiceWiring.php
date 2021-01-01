@@ -31,6 +31,7 @@ use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
@@ -264,6 +265,13 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getStatsdDataFactory(),
 			$services->getMainConfig()->get( 'AbuseFilterValidGroups' )
+		);
+	},
+	VariablesFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesFormatter {
+		return new VariablesFormatter(
+			$services->get( KeywordsManager::SERVICE_NAME ),
+			// TODO: Use a proper MessageLocalizer once available (T247127)
+			RequestContext::getMain()
 		);
 	},
 	SpecsFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): SpecsFormatter {

@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
@@ -86,6 +87,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var SpecsFormatter */
 	private $specsFormatter;
 
+	/** @var VariablesFormatter */
+	private $variablesFormatter;
+
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
@@ -93,6 +97,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param SpecsFormatter $specsFormatter
+	 * @param VariablesFormatter $variablesFormatter
 	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
@@ -100,7 +105,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		AbuseFilterPermissionManager $afPermissionManager,
 		ConsequencesRegistry $consequencesRegistry,
 		VariablesBlobStore $varBlobStore,
-		SpecsFormatter $specsFormatter
+		SpecsFormatter $specsFormatter,
+		VariablesFormatter $variablesFormatter
 	) {
 		parent::__construct( 'AbuseLog', 'abusefilter-log' );
 		$this->linkBatchFactory = $linkBatchFactory;
@@ -110,6 +116,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->varBlobStore = $varBlobStore;
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
+		$this->variablesFormatter = $variablesFormatter;
+		$this->variablesFormatter->setMessageLocalizer( $this->getContext() );
 	}
 
 	/**
@@ -721,7 +729,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-vars' )->text() );
 
 		// Build a table.
-		$output .= AbuseFilter::buildVarDumpTable( $vars, $this->getContext() );
+		$output .= $this->variablesFormatter->buildVarDumpTable( $vars );
 
 		if ( $this->afPermissionManager->canSeePrivateDetails( $user ) ) {
 			$formDescriptor = [
