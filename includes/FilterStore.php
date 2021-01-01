@@ -7,7 +7,7 @@ use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
-use SpecialAbuseFilter;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use Status;
 use stdClass;
 use User;

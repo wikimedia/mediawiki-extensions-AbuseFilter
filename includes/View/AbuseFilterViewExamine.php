@@ -13,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
@@ -21,7 +22,6 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use OOUI;
 use RecentChange;
-use SpecialAbuseLog;
 use Title;
 use Xml;
 

@@ -20,7 +20,7 @@ namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use SpecialAbuseLog;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 
 /**
  * API module to allow accessing private details (the user's IP) from AbuseLog entries

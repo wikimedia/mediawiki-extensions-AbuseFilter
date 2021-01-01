@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
@@ -12,14 +13,16 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use MediaWiki\MediaWikiServices;
-use SpecialAbuseFilter;
 use SpecialPageTestBase;
 
+/**
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter
+ */
 class SpecialAbuseFilterTest extends SpecialPageTestBase {
 
 	/**
-	 * @covers SpecialAbuseFilter::instantiateView
-	 * @covers SpecialAbuseFilter::__construct
+	 * @covers ::instantiateView
+	 * @covers ::__construct
 	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView::__construct
 	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff::__construct
 	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit::__construct

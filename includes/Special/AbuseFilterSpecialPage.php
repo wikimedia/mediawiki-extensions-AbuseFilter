@@ -1,6 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Special;
+
+use HtmlArmor;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use SpecialPage;
+use Title;
+use Xml;
 
 /**
  * Parent class for AbuseFilter special pages.

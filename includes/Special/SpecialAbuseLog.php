@@ -1,5 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Special;
+
+use AbuseFilter;
+use AbuseFilterVariableHolder;
+use DifferenceEngine;
+use ExtensionRegistry;
+use Html;
+use HTMLForm;
+use InvalidArgumentException;
+use Linker;
+use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
@@ -14,6 +25,13 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 use OOUI\ButtonInputWidget;
+use SpecialPage;
+use Status;
+use stdClass;
+use Title;
+use User;
+use WikiMap;
+use Xml;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**

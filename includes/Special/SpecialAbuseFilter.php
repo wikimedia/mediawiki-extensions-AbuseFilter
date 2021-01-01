@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Special;
+
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
@@ -22,6 +24,7 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
+use Title;
 use Wikimedia\ObjectFactory;
 
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {

@@ -64,7 +64,7 @@
 	},
 	"SpecialPages": {
 		"AbuseLog": {
-			"class": "SpecialAbuseLog",
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Special\\SpecialAbuseLog",
 			"services": [
 				"LinkBatchFactory",
 				"PermissionManager",
@@ -76,7 +76,7 @@
 			]
 		},
 		"AbuseFilter": {
-			"class": "SpecialAbuseFilter",
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Special\\SpecialAbuseFilter",
 			"services": [
 				"ObjectFactory"
 			]
@@ -145,6 +145,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\Parser\\": "includes/Parser/",
 		"MediaWiki\\Extension\\AbuseFilter\\Filter\\": "includes/Filter/",
 		"MediaWiki\\Extension\\AbuseFilter\\Pager\\": "includes/Pager/",
+		"MediaWiki\\Extension\\AbuseFilter\\Special\\": "includes/Special/",
 		"MediaWiki\\Extension\\AbuseFilter\\View\\": "includes/View/",
 		"MediaWiki\\Extension\\AbuseFilter\\Watcher\\": "includes/Watcher/",
 		"MediaWiki\\Extension\\AbuseFilter\\Consequences\\": "includes/Consequences/",
@@ -154,9 +155,6 @@
 		"AbuseFilter": "includes/AbuseFilter.php",
 		"AbuseFilterHooks": "includes/AbuseFilterHooks.php",
 		"AbuseFilterPreAuthenticationProvider": "includes/AbuseFilterPreAuthenticationProvider.php",
-		"AbuseFilterSpecialPage": "includes/special/AbuseFilterSpecialPage.php",
-		"SpecialAbuseLog": "includes/special/SpecialAbuseLog.php",
-		"SpecialAbuseFilter": "includes/special/SpecialAbuseFilter.php",
 		"AbuseFilterChangesList": "includes/AbuseFilterChangesList.php",
 		"TableDiffFormatterFullContext": "includes/TableDiffFormatterFullContext.php",
 		"AbuseFilterVariableHolder": "includes/AbuseFilterVariableHolder.php",

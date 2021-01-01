@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use EchoEvent;
-use SpecialAbuseFilter;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use Title;
 
 /**
