@@ -150,7 +150,8 @@ class ParserTest extends ParserTestCase {
 			$this->getLanguageMock(),
 			new EmptyBagOStuff(),
 			new NullLogger(),
-			new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) )
+			new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+			1000
 		];
 
 		$parser = new AbuseFilterParser( ...$constrArgs );
@@ -787,7 +788,8 @@ class ParserTest extends ParserTestCase {
 			$this->getLanguageMock(),
 			new EmptyBagOStuff(),
 			new NullLogger(),
-			$this->createMock( KeywordsManager::class )
+			$this->createMock( KeywordsManager::class ),
+			1000
 		);
 		$parser->toggleConditionLimit( false );
 		try {
@@ -1079,7 +1081,8 @@ class ParserTest extends ParserTestCase {
 				$this->getLanguageMock(),
 				new EmptyBagOStuff(),
 				new NullLogger(),
-				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) )
+				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+				1000
 			] )
 			->setMethods( [ 'logEmptyOperand' ] )
 			->getMock();
@@ -1105,7 +1108,8 @@ class ParserTest extends ParserTestCase {
 				$this->getLanguageMock(),
 				new EmptyBagOStuff(),
 				new NullLogger(),
-				$this->createMock( KeywordsManager::class )
+				$this->createMock( KeywordsManager::class ),
+				1000
 			);
 			$parser->toggleConditionLimit( false );
 		}
@@ -1168,7 +1172,8 @@ class ParserTest extends ParserTestCase {
 				$this->getLanguageMock(),
 				new EmptyBagOStuff(),
 				new NullLogger(),
-				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) )
+				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+				1000
 			] )
 			->setMethods( [ 'logEmptyOperand' ] )
 			->getMock();
@@ -1286,7 +1291,7 @@ class ParserTest extends ParserTestCase {
 		$keywordsManager = $this->createMock( KeywordsManager::class );
 		$vars = new AbuseFilterVariableHolder( $keywordsManager );
 
-		$parser = new AbuseFilterParser( $lang, $cache, $logger, $keywordsManager, $vars );
+		$parser = new AbuseFilterParser( $lang, $cache, $logger, $keywordsManager, 1000, $vars );
 		$this->assertEquals( $vars, $parser->mVariables, 'Variables should be initialized' );
 		$pVars = TestingAccessWrapper::newFromObject( $parser->mVariables );
 		$this->assertSame( $logger, $pVars->logger, 'VarHolder logger should be initialized' );

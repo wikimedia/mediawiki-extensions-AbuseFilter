@@ -109,7 +109,8 @@ return [
 			ObjectCache::getLocalServerInstance( 'hash' ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
-			$services->getMainConfig()->get( 'AbuseFilterParserClass' )
+			$services->getMainConfig()->get( 'AbuseFilterParserClass' ),
+			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
 	},
 	FilterLookup::SERVICE_NAME => function ( MediaWikiServices $services ): FilterLookup {
