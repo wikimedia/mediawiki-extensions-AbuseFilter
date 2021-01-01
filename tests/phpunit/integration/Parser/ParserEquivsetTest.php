@@ -20,12 +20,18 @@
  * @license GPL-2.0-or-later
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Parser;
+
+use EmptyBagOStuff;
+use Generator;
+use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.
@@ -45,7 +51,7 @@ use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTestCase;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
  */
-class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
+class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return AbuseFilterParser[]
 	 * @see ParserTestCase::getParsers() - we cannot reuse that due to inheritance
@@ -92,7 +98,7 @@ class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	 * @return Generator|array
 	 */
 	public function provideGenericTests() {
-		$testPath = __DIR__ . "/../parserTestsEquivset";
+		$testPath = __DIR__ . "/../../../parserTestsEquivset";
 		$testFiles = glob( $testPath . "/*.t" );
 
 		foreach ( $testFiles as $testFile ) {
