@@ -27,6 +27,7 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
@@ -269,6 +270,20 @@ return [
 		return new SpecsFormatter(
 			// TODO: Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain()
+		);
+	},
+	LazyVariableComputer::SERVICE_NAME => function ( MediaWikiServices $services ): LazyVariableComputer {
+		return new LazyVariableComputer(
+			AbuseFilterHookRunner::getRunner(),
+			$services->getTitleFactory(),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->getDBLoadBalancer(),
+			$services->getMainWANObjectCache(),
+			$services->getRevisionLookup(),
+			$services->getRevisionStore(),
+			$services->getContentLanguage(),
+			$services->getParser(),
+			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
 ];

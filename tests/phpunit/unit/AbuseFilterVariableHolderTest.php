@@ -22,6 +22,7 @@
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
@@ -169,13 +170,12 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 	public function provideGetVar() {
 		$vars = $this->getVariableHolder();
 
-		$afcv = $this->getMockBuilder( AFComputedVariable::class )
-			->setMethods( [ 'compute' ] )
-			->disableOriginalConstructor()
-			->getMock();
 		$name = 'foo';
 		$expected = new AFPData( AFPData::DSTRING, 'foobarbaz' );
-		$afcv->method( 'compute' )->willReturn( $expected );
+		$computer = $this->createMock( LazyVariableComputer::class );
+		$computer->method( 'compute' )->willReturn( $expected );
+		$afcv = new AFComputedVariable( '', [] );
+		$vars->setLazyComputer( $computer );
 		$vars->setVar( $name, $afcv );
 		yield 'set, AFComputedVariable' => [ $vars, $name, 0, $expected ];
 
@@ -319,16 +319,26 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 	 * @return Generator|array
 	 */
 	public function provideDumpAllVars() {
-		$afcv = $this->getMockBuilder( AFComputedVariable::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'compute' ] );
-
-		$preftitle = $afcv->getMock();
 		$titleVal = 'title';
-		$preftitle->method( 'compute' )->willReturn( new AFPData( AFPData::DSTRING, $titleVal ) );
-		$lines = $afcv->getMock();
+		$preftitle = new AFComputedVariable( 'preftitle', [] );
+
 		$linesVal = 'lines';
-		$lines->method( 'compute' )->willReturn( new AFPData( AFPData::DSTRING, $linesVal ) );
+		$lines = new AFComputedVariable( 'lines', [] );
+
+		$computer = $this->createMock( LazyVariableComputer::class );
+		$computer->method( 'compute' )->willReturnCallback(
+			function ( AFComputedVariable $var ) use ( $titleVal, $linesVal ) {
+				switch ( $var->mMethod ) {
+					case 'preftitle':
+						return new AFPData( AFPData::DSTRING, $titleVal );
+					case 'lines':
+						return new AFPData( AFPData::DSTRING, $linesVal );
+					default:
+						throw new LogicException( 'Unrecognized value!' );
+				}
+			}
+		);
+
 		$pairs = [
 			'page_title' => 'foo',
 			'page_prefixedtitle' => $preftitle,
@@ -338,6 +348,7 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 		];
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		$vars = AbuseFilterVariableHolder::newFromArray( $pairs, $keywordsManager );
+		$vars->setLazyComputer( $computer );
 
 		$nonLazy = array_fill_keys( [ 'page_title', 'user_name', 'custom-var' ], 1 );
 		$nonLazyExpect = array_intersect_key( $pairs, $nonLazy );
@@ -369,23 +380,24 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 	 * @covers AbuseFilterVariableHolder::computeDBVars
 	 */
 	public function testComputeDBVars() {
-		$afcv = $this->getMockBuilder( AFComputedVariable::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'compute' ] );
-
 		$nonDBMet = [ 'unknown', 'certainly-not-db' ];
 		$dbMet = [ 'page-age', 'simple-user-accessor', 'load-recent-authors' ];
 		$methods = array_merge( $nonDBMet, $dbMet );
 		$objs = [];
 		foreach ( $methods as $method ) {
-			$cur = $afcv->getMock();
-			$cur->method( 'compute' )->willReturn( $method );
-			$cur->mMethod = $method;
+			$cur = new AFComputedVariable( $method, [] );
 			$objs[ $method ] = $cur;
 		}
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		$vars = AbuseFilterVariableHolder::newFromArray( $objs, $keywordsManager );
+		$computer = $this->createMock( LazyVariableComputer::class );
+		$computer->method( 'compute' )->willReturnCallback(
+			function ( AFComputedVariable $var ) {
+				return $var->mMethod;
+			}
+		);
+		$vars->setLazyComputer( $computer );
 		$vars->computeDBVars();
 
 		$expAFCV = array_intersect_key( $vars->getVars(), array_fill_keys( $nonDBMet, 1 ) );

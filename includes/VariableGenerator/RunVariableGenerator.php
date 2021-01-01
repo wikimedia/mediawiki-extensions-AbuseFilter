@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use AbuseFilter;
 use AbuseFilterVariableHolder;
-use AFComputedVariable;
 use Content;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -94,7 +94,7 @@ class RunVariableGenerator extends VariableGenerator {
 
 		// Cache article object so we can share a parse operation
 		$articleCacheKey = $this->title->getNamespace() . ':' . $this->title->getText();
-		AFComputedVariable::$articleCache[$articleCacheKey] = $page;
+		LazyVariableComputer::$articleCache[$articleCacheKey] = $page;
 
 		// Don't trigger for null edits. Compare Content objects if available, but check the
 		// stringified contents as well, e.g. for line endings normalization (T240115).
@@ -274,7 +274,7 @@ class RunVariableGenerator extends VariableGenerator {
 
 				// Cache article object so we can share a parse operation
 				$articleCacheKey = $this->title->getNamespace() . ':' . $this->title->getText();
-				AFComputedVariable::$articleCache[$articleCacheKey] = $page;
+				LazyVariableComputer::$articleCache[$articleCacheKey] = $page;
 
 				// Page text is ignored for uploads when the page already exists
 				$text = $oldtext;

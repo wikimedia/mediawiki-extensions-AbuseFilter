@@ -2,15 +2,20 @@
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Revision\RevisionStore;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\NullLogger;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterGeneric
  *
- * @covers AFComputedVariable::compute
+ * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
  * @fixme Make this a unit test once the class stops using MediaWikiServices
  */
 class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
@@ -95,10 +100,26 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideUserVars
 	 */
 	public function testAddUserVars( $varName ) {
+		// Mocking the HookRunner would result in methods returning null, which would be interpreted
+		// as if the handler handled the event, so use the actual runner.
+		$hookRunner = AbuseFilterHookRunner::getRunner();
+		$computer = new LazyVariableComputer(
+			$hookRunner,
+			$this->createMock( TitleFactory::class ),
+			new NullLogger(),
+			$this->createMock( ILoadBalancer::class ),
+			$this->createMock( WANObjectCache::class ),
+			$this->createMock( RevisionLookup::class ),
+			$this->createMock( RevisionStore::class ),
+			$this->createMock( Language::class ),
+			$this->createMock( Parser::class ),
+			''
+		);
 		list( $user, $computed ) = $this->getUserAndExpectedVariable( $varName );
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		$variableHolder = new AbuseFilterVariableHolder( $keywordsManager );
+		$variableHolder->setLazyComputer( $computer );
 		$generator = new VariableGenerator( $variableHolder );
 		$variableHolder = $generator->addUserVars( $user )->getVariableHolder();
 		$actual = $variableHolder->getVar( $varName )->toNative();
@@ -203,23 +224,25 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		list( $title, $computed ) = $this->getTitleAndExpectedVariable( $prefix, $suffix, $restricted );
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$variableHolder = $this->getMockBuilder( AbuseFilterVariableHolder::class )
-			->setConstructorArgs( [ $keywordsManager ] )
-			->setMethods( [ 'getLazyLoader' ] )
-			->getMock();
-
-		/** @var MockObject|AbuseFilterVariableHolder $variableHolder */
-		$variableHolder
-			->method( 'getLazyLoader' )
-			->willReturnCallback( function ( $method, $params ) use ( $title ) {
-				$lazyLoader = $this->getMockBuilder( AFComputedVariable::class )
-					->setMethods( [ 'buildTitle' ] )
-					->setConstructorArgs( [ $method, $params ] )
-					->getMock();
-
-				$lazyLoader->method( 'buildTitle' )->willReturn( $title );
-				return $lazyLoader;
-			} );
+		$variableHolder = new AbuseFilterVariableHolder( $keywordsManager );
+		$titleFactory = $this->createMock( TitleFactory::class );
+		$titleFactory->method( 'makeTitle' )->willReturn( $title );
+		// The mock would return null, which would be interpreted as if the handler handled the event
+		$hookRunner = AbuseFilterHookRunner::getRunner();
+		/** @var LazyVariableComputer|MockObject $computer */
+		$computer = new LazyVariableComputer(
+			$hookRunner,
+			$titleFactory,
+			new NullLogger(),
+			$this->createMock( ILoadBalancer::class ),
+			$this->createMock( WANObjectCache::class ),
+			$this->createMock( RevisionLookup::class ),
+			$this->createMock( RevisionStore::class ),
+			$this->createMock( Language::class ),
+			$this->createMock( Parser::class ),
+			''
+		);
+		$variableHolder->setLazyComputer( $computer );
 
 		$generator = new VariableGenerator( $variableHolder );
 		$variableHolder = $generator->addTitleVars( $title, $prefix )->getVariableHolder();

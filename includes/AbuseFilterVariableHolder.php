@@ -2,6 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use Psr\Log\LoggerInterface;
 
@@ -19,6 +20,12 @@ class AbuseFilterVariableHolder {
 
 	/** @var LoggerInterface */
 	private $logger;
+
+	/**
+	 * Temporary hack. Only retrieve via getLazyComputer()
+	 * @var LazyVariableComputer|null
+	 */
+	private $lazyComputer;
 
 	/**
 	 * @var (AFPData|AFComputedVariable)[]
@@ -135,7 +142,7 @@ class AbuseFilterVariableHolder {
 			/** @var $variable AFComputedVariable|AFPData */
 			$variable = $this->mVars[$varName];
 			if ( $variable instanceof AFComputedVariable ) {
-				$value = $variable->compute( $this );
+				$value = $this->getLazyComputer()->compute( $variable, $this );
 				$this->setVar( $varName, $value );
 				return $value;
 			} elseif ( $variable instanceof AFPData ) {
@@ -278,11 +285,27 @@ class AbuseFilterVariableHolder {
 		$missingVars = array_filter( $this->mVars, function ( $el ) {
 			return ( $el instanceof AFComputedVariable );
 		} );
-		foreach ( $missingVars as $name => $value ) {
-			if ( in_array( $value->mMethod, $dbTypes ) ) {
-				$value = $value->compute( $this );
+		foreach ( $missingVars as $name => $var ) {
+			if ( in_array( $var->mMethod, $dbTypes ) ) {
+				$value = $this->getLazyComputer()->compute( $var, $this );
 				$this->setVar( $name, $value );
 			}
 		}
+	}
+
+	/**
+	 * Temporary hack.
+	 * @return LazyVariableComputer
+	 */
+	public function getLazyComputer() : LazyVariableComputer {
+		return $this->lazyComputer ?? AbuseFilterServices::getLazyVariableComputer();
+	}
+
+	/**
+	 * Temporary hack.
+	 * @param LazyVariableComputer $computer
+	 */
+	public function setLazyComputer( LazyVariableComputer $computer ) : void {
+		$this->lazyComputer = $computer;
 	}
 }

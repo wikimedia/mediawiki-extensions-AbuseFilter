@@ -223,7 +223,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test for the wiki_name variable.
 	 *
-	 * @covers AFComputedVariable::compute
+	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
 	 */
 	public function testWikiNameVar() {
 		$name = 'foo';
@@ -244,7 +244,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test for the wiki_language variable.
 	 *
-	 * @covers AFComputedVariable::compute
+	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
 	 */
 	public function testWikiLanguageVar() {
 		$fakeCode = 'foobar';
