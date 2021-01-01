@@ -1,13 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Filter;
+
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
+use MediaWikiUnitTestCase;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo
  */
-class AbuseFilterLastEditInfoTest extends MediaWikiUnitTestCase {
+class LastEditInfoTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
 	 * @covers ::getUserID

@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use Generator;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
@@ -8,7 +11,10 @@ use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
+use Status;
+use User;
 
 /**
  * @group Test
@@ -16,7 +22,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @group AbuseFilterSave
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterValidator
  */
-class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
+class FilterValidatorTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param AbuseFilterPermissionManager|null $permissionManager
@@ -319,7 +325,7 @@ class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
 			[ [ '1', '3,33', 'foo', 'ip,user,bar' ], 'abusefilter-edit-invalid-throttlegroups' ],
 			[ [ '1', '3,33', 'user', 'ip,page,user' ], null ],
 			[
-				[ '1', '3,33', 'ip', 'user','user,ip', 'ip,user', 'user,ip,user', 'user', 'ip,ip,user' ],
+				[ '1', '3,33', 'ip', 'user', 'user,ip', 'ip,user', 'user,ip,user', 'user', 'ip,ip,user' ],
 				'abusefilter-edit-duplicated-throttlegroups'
 			],
 			[ [ '1', '3,33', 'ip,ip,user' ], 'abusefilter-edit-duplicated-throttlegroups' ],
@@ -377,7 +383,7 @@ class AbuseFilterFilterValidatorTest extends MediaWikiUnitTestCase {
 		yield 'invalid tags' => [ $this->getFilterWithActions( [ 'tag' => [] ] ), 'tags-create-no-name' ];
 
 		yield 'missing required messages' =>
-			[ $this->getFilterWithActions( [ 'warn' => [ '' ] ] ),'abusefilter-edit-invalid-warn-message' ];
+			[ $this->getFilterWithActions( [ 'warn' => [ '' ] ] ), 'abusefilter-edit-invalid-warn-message' ];
 
 		yield 'invalid throttle params' => [
 			$this->getFilterWithActions( [ 'throttle' => [ '1', '5.3,23', 'user', 'ip' ] ] ),

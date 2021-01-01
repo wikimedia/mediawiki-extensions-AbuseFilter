@@ -1,15 +1,20 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Consequences;
+
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWikiUnitTestCase;
+use ReflectionClass;
+use RuntimeException;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry
  */
-class AbuseFilterConsequencesRegistryTest extends MediaWikiUnitTestCase {
+class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::__construct

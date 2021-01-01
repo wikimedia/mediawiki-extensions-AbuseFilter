@@ -21,6 +21,13 @@
  * @author Marius Hoch < hoo@online.de >
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
+
+use AbuseFilterVariableHolder;
+use BagOStuff;
+use EmptyBagOStuff;
+use Generator;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
@@ -28,7 +35,9 @@ use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use PHPUnit;
 use Psr\Log\NullLogger;
+use TestLogger;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -51,7 +60,7 @@ use Wikimedia\TestingAccessWrapper;
  * @covers AFComputedVariable
  * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer
  */
-class AbuseFilterParserTest extends AbuseFilterParserTestCase {
+class ParserTest extends ParserTestCase {
 	/**
 	 * @param string $rule The rule to parse
 	 * @dataProvider readTests
@@ -528,7 +537,7 @@ class AbuseFilterParserTest extends AbuseFilterParserTestCase {
 			[ 'added_lines[] := 1', 'doLevelSet' ],
 			[ 'added_lines[3] := 1', 'doLevelSet' ],
 			[ 'page_id[3] := 1', 'doLevelSet' ],
-			[ 'true | (added_lines := 1);','setUserVariable' ],
+			[ 'true | (added_lines := 1);', 'setUserVariable' ],
 			[ 'if(true) then 1 else (added_lines := 1) end;', 'setUserVariable' ],
 			[ 'length := 45', 'setUserVariable' ],
 			[ 'set("added_lines", 45)', 'setUserVariable' ],

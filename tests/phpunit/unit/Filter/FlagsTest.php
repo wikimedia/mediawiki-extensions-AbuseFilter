@@ -1,13 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Filter;
+
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWikiUnitTestCase;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\Flags
  */
-class AbuseFilterFlagsTest extends MediaWikiUnitTestCase {
+class FlagsTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
 	 * @covers ::getEnabled

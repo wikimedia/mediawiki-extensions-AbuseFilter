@@ -1,7 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
@@ -11,7 +14,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\CentralDBManager
  */
-class AbuseFilterCentralDBManagerTest extends MediaWikiUnitTestCase {
+class CentralDBManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
 	 */

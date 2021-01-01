@@ -1,11 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Watcher;
+
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
+use MediaWikiUnitTestCase;
+use MWTimestamp;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**

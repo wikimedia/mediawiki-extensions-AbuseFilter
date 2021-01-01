@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use AbuseFilterVariableHolder;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -7,6 +10,9 @@ use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWikiUnitTestCase;
+use Title;
+use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**

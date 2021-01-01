@@ -1,14 +1,17 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWikiUnitTestCase;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterParser
  */
-class AbuseFilterKeywordsManagerTest extends MediaWikiUnitTestCase {
+class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * Convenience wrapper
 	 * @return KeywordsManager

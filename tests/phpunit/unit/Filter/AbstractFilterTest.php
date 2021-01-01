@@ -1,8 +1,11 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Filter;
+
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWikiUnitTestCase;
 use Wikimedia\Assert\ParameterTypeException;
 
 /**
@@ -10,7 +13,7 @@ use Wikimedia\Assert\ParameterTypeException;
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter
  */
-class AbuseFilterAbstractFilterTest extends MediaWikiUnitTestCase {
+class AbstractFilterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
 	 */

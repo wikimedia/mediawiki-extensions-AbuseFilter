@@ -24,6 +24,8 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
+use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTestCase;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.
@@ -45,8 +47,8 @@ use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
  */
 class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @see AbuseFilterParserTestCase::getParsers() - we cannot reuse that due to inheritance
 	 * @return AbuseFilterParser[]
+	 * @see ParserTestCase::getParsers() - we cannot reuse that due to inheritance
 	 */
 	protected function getParsers() {
 		static $parsers = null;
@@ -103,7 +105,7 @@ class AbuseFilterParserEquivsetTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param string $func
-	 * @see AbuseFilterParserTest::testVariadicFuncsArbitraryArgsAllowed()
+	 * @see ParserTest::testVariadicFuncsArbitraryArgsAllowed()
 	 * @dataProvider variadicFuncs
 	 */
 	public function testVariadicFuncsArbitraryArgsAllowed( $func ) {

@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
@@ -7,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
+use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -15,7 +18,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterStore
  * @todo Expand this. FilterStore is tightly bound to a Database, so it's not easy.
  */
-class AbuseFilterFilterStoreTest extends MediaWikiUnitTestCase {
+class FilterStoreTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
 	 */

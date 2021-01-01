@@ -1,9 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilder;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWikiUnitTestCase;
+use MessageLocalizer;
+use OutputPage;
+use User;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory

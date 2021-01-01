@@ -1,17 +1,21 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Filter;
+
+use BadMethodCallException;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWikiUnitTestCase;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\MutableFilter
  */
-class AbuseFilterMutableFilterTest extends MediaWikiUnitTestCase {
+class MutableFilterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param mixed $value
 	 * @param string $setter

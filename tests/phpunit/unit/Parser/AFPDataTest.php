@@ -20,6 +20,9 @@
  * @license GPL-2.0-or-later
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
+
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 
@@ -28,7 +31,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
  * @group AbuseFilter
  * @group MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  */
-class AFPDataTest extends AbuseFilterParserTestCase {
+class AFPDataTest extends ParserTestCase {
 	/**
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown

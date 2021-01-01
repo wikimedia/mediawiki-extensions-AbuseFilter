@@ -1,14 +1,20 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\ChangeTags;
+
+use Generator;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
+use MediaWikiUnitTestCase;
+use RecentChange;
+use TitleValue;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  */
-class AbuseFilterChangeTaggerTest extends MediaWikiUnitTestCase {
+class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return ChangeTagger
 	 */

@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use Generator;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -10,13 +13,14 @@ use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
+use MediaWikiUnitTestCase;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterImporter
  */
-class AbuseFilterFilterImporterTest extends MediaWikiUnitTestCase {
+class FilterImporterTest extends MediaWikiUnitTestCase {
 	private const GOOD_FILTER_DATA = [
 		'rules' => 'foobar',
 		'name' => 'foobar',

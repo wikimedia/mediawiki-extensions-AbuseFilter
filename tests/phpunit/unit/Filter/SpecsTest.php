@@ -1,13 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Filter;
+
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWikiUnitTestCase;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\Specs
  */
-class AbuseFilterSpecsTest extends MediaWikiUnitTestCase {
+class SpecsTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
 	 * @covers ::getRules

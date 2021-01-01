@@ -1,5 +1,10 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use AbuseFilterRowsAndFiltersTestTrait;
+use Generator;
+use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -9,6 +14,9 @@ use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWikiUnitTestCase;
+use stdClass;
+use WANObjectCache;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
@@ -18,7 +26,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterLookup
  */
-class AbuseFilterLookupTest extends MediaWikiUnitTestCase {
+class FilterLookupTest extends MediaWikiUnitTestCase {
 	use AbuseFilterRowsAndFiltersTestTrait;
 
 	/**

@@ -20,14 +20,18 @@
  * @license GPL-2.0-or-later
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
+
+use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
+use Psr;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterParser
  */
-class AbuseFilterTokenizerTest extends AbuseFilterParserTestCase {
+class TokenizerTest extends ParserTestCase {
 	/**
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown

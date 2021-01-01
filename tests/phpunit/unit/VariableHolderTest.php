@@ -20,11 +20,20 @@
  * @license GPL-2.0-or-later
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use AbuseFilterVariableHolder;
+use AFComputedVariable;
+use Generator;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
+use TestLogger;
+use UnexpectedValueException;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -32,7 +41,7 @@ use Wikimedia\TestingAccessWrapper;
  * @group AbuseFilter
  * @group AbuseFilterParser
  */
-class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
+class VariableHolderTest extends MediaWikiUnitTestCase {
 	/**
 	 * Convenience wrapper
 	 * @return AbuseFilterVariableHolder
@@ -386,7 +395,7 @@ class AbuseFilterVariableHolderTest extends MediaWikiUnitTestCase {
 		$objs = [];
 		foreach ( $methods as $method ) {
 			$cur = new AFComputedVariable( $method, [] );
-			$objs[ $method ] = $cur;
+			$objs[$method] = $cur;
 		}
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );

@@ -1,12 +1,18 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use Language;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWikiUnitTestCase;
+use Message;
+use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\SpecsFormatter
  */
-class AbuseFilterSpecsFormatterTest extends MediaWikiUnitTestCase {
+class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param bool $msgDisabled Should the message be disabled?
 	 * @return SpecsFormatter
