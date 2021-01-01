@@ -1,6 +1,12 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
+
+use Generator;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWikiIntegrationTestCase;
+use ReflectionClass;
+use ReflectionMethod;
 
 /**
  * @group Test

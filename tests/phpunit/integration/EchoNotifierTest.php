@@ -1,8 +1,13 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
+
+use EchoEvent;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWikiIntegrationTestCase;
+use Title;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EchoNotifier
