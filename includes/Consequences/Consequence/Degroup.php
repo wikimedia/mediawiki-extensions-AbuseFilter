@@ -6,6 +6,7 @@ use AbuseFilterVariableHolder;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
@@ -141,10 +142,12 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 	 * @inheritDoc
 	 */
 	public function getMessage(): array {
+		$filter = $this->parameters->getFilter();
 		return [
 			'abusefilter-degrouped',
-			$this->parameters->getFilter()->getName(),
-			$this->parameters->getFilter()->getID()
+			$filter->getName(),
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}
 }

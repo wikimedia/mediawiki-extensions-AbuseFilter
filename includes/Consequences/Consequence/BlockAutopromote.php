@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -66,10 +67,12 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence, Re
 	 * @inheritDoc
 	 */
 	public function getMessage(): array {
+		$filter = $this->parameters->getFilter();
 		return [
 			'abusefilter-autopromote-blocked',
-			$this->parameters->getFilter()->getName(),
-			$this->parameters->getFilter()->getID(),
+			$filter->getName(),
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() ),
 			$this->duration
 		];
 	}
