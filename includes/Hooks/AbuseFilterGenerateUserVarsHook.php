@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use RecentChange;
 use User;
 
@@ -12,14 +12,14 @@ interface AbuseFilterGenerateUserVarsHook {
 	 *
 	 * Allows altering the variables generated for a specific user
 	 *
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param User $user
 	 * @param ?RecentChange $rc If the variables should be generated for an RC entry,
 	 *     this is the entry. Null if it's for the current action being filtered.
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onAbuseFilterGenerateUserVars(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		User $user,
 		?RecentChange $rc
 	);

@@ -13,8 +13,8 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
 use MediaWiki\Logger\LoggerFactory;
@@ -69,7 +69,7 @@ class FilterRunner {
 	 */
 	protected $title;
 	/**
-	 * @var AbuseFilterVariableHolder The variables for the current action
+	 * @var VariableHolder The variables for the current action
 	 */
 	protected $vars;
 	/**
@@ -108,7 +108,7 @@ class FilterRunner {
 	 * @param array $validFilterGroups
 	 * @param User $user
 	 * @param Title $title
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param string $group
 	 * @throws InvalidArgumentException If $group is invalid or the 'action' variable is unset
 	 */
@@ -127,7 +127,7 @@ class FilterRunner {
 		array $validFilterGroups,
 		User $user,
 		Title $title,
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		string $group
 	) {
 		$this->hookRunner = $hookRunner;
@@ -210,7 +210,7 @@ class FilterRunner {
 			$cacheData = $this->seekCache();
 			if ( $cacheData !== false ) {
 				// Use cached vars (T176291) and profiling data (T191430)
-				$this->vars = AbuseFilterVariableHolder::newFromArray( $cacheData['vars'] );
+				$this->vars = VariableHolder::newFromArray( $cacheData['vars'] );
 				$result = [
 					'hitCondLimit' => $cacheData['hitCondLimit'],
 					'matches' => $cacheData['matches'],

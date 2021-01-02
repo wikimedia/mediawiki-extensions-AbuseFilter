@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use Content;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -36,13 +36,13 @@ class RunVariableGenerator extends VariableGenerator {
 	private $textExtractor;
 
 	/**
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param User $user
 	 * @param Title $title
 	 * @param TextExtractor $textExtractor
 	 */
 	public function __construct(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		User $user,
 		Title $title,
 		TextExtractor $textExtractor
@@ -60,14 +60,14 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $summary
 	 * @param string $slot
 	 * @param WikiPage $page
-	 * @return AbuseFilterVariableHolder|null
+	 * @return VariableHolder|null
 	 */
 	public function getStashEditVars(
 		Content $content,
 		string $summary,
 		$slot,
 		WikiPage $page
-	) : ?AbuseFilterVariableHolder {
+	) : ?VariableHolder {
 		$filterText = $this->getEditTextForFiltering( $page, $content, $slot );
 		if ( $filterText === null ) {
 			return null;
@@ -126,7 +126,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $text
 	 * @param string $oldtext
 	 * @param Content|null $oldcontent
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 * @throws MWException
 	 */
 	private function newVariableHolderForEdit(
@@ -136,7 +136,7 @@ class RunVariableGenerator extends VariableGenerator {
 		string $text,
 		string $oldtext,
 		Content $oldcontent = null
-	) : AbuseFilterVariableHolder {
+	) : VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'page' );
 		$this->vars->setVar( 'action', 'edit' );
@@ -164,7 +164,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $summary
 	 * @param string $slot
 	 * @param WikiPage $page
-	 * @return AbuseFilterVariableHolder|null
+	 * @return VariableHolder|null
 	 */
 	public function getEditVars(
 		Content $content,
@@ -172,7 +172,7 @@ class RunVariableGenerator extends VariableGenerator {
 		string $summary,
 		$slot,
 		WikiPage $page
-	) : ?AbuseFilterVariableHolder {
+	) : ?VariableHolder {
 		if ( $this->title->exists() ) {
 			$filterText = $this->getEditTextForFiltering( $page, $content, $slot );
 			if ( $filterText === null ) {
@@ -195,12 +195,12 @@ class RunVariableGenerator extends VariableGenerator {
 	 *
 	 * @param Title $newTitle
 	 * @param string $reason
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 */
 	public function getMoveVars(
 		Title $newTitle,
 		string $reason
-	) : AbuseFilterVariableHolder {
+	) : VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'MOVED_FROM' )
 			->addTitleVars( $newTitle, 'MOVED_TO' );
@@ -213,11 +213,11 @@ class RunVariableGenerator extends VariableGenerator {
 	 * Get variables for filtering a deletion.
 	 *
 	 * @param string $reason
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 */
 	public function getDeleteVars(
 		string $reason
-	) : AbuseFilterVariableHolder {
+	) : VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'page' );
 
@@ -234,7 +234,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string|null $summary
 	 * @param string|null $text
 	 * @param array|null $props
-	 * @return AbuseFilterVariableHolder|null
+	 * @return VariableHolder|null
 	 */
 	public function getUploadVars(
 		string $action,
@@ -242,7 +242,7 @@ class RunVariableGenerator extends VariableGenerator {
 		?string $summary,
 		?string $text,
 		?array $props
-	) : ?AbuseFilterVariableHolder {
+	) : ?VariableHolder {
 		$mimeAnalyzer = MediaWikiServices::getInstance()->getMimeAnalyzer();
 		if ( !$props ) {
 			$props = ( new MWFileProps( $mimeAnalyzer ) )->getPropsFromPath(
@@ -307,12 +307,12 @@ class RunVariableGenerator extends VariableGenerator {
 	 *
 	 * @param User $createdUser This is the user being created, not the creator (which is $this->user)
 	 * @param bool $autocreate
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 */
 	public function getAccountCreationVars(
 		User $createdUser,
 		bool $autocreate
-	) : AbuseFilterVariableHolder {
+	) : VariableHolder {
 		// generateUserVars records $this->user->getName() which would be the IP for unregistered users
 		if ( $this->user->isRegistered() ) {
 			$this->addUserVars( $this->user );

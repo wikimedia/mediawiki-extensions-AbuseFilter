@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Title;
@@ -63,13 +63,13 @@ class AbuseLoggerFactory {
 	/**
 	 * @param Title $title
 	 * @param User $user
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @return AbuseLogger
 	 */
 	public function newLogger(
 		Title $title,
 		User $user,
-		AbuseFilterVariableHolder $vars
+		VariableHolder $vars
 	) : AbuseLogger {
 		return new AbuseLogger(
 			$this->centralDBManager,

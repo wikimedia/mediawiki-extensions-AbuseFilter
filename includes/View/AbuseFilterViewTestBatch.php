@@ -10,7 +10,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Linker\LinkRenderer;
 use RecentChange;
 use Title;
@@ -267,7 +267,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$contextUser = $this->getUser();
 		$parser->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
-			$vars = new AbuseFilterVariableHolder();
+			$vars = new VariableHolder();
 			$rc = RecentChange::newFromRow( $row );
 			$varGenerator = new RCVariableGenerator( $vars, $rc, $contextUser );
 			$vars = $varGenerator->getVars();

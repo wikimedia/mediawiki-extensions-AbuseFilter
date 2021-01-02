@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWFileProps;
@@ -25,12 +25,12 @@ class RCVariableGenerator extends VariableGenerator {
 	private $contextUser;
 
 	/**
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param RecentChange $rc
 	 * @param User $contextUser
 	 */
 	public function __construct(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		RecentChange $rc,
 		User $contextUser
 	) {
@@ -41,9 +41,9 @@ class RCVariableGenerator extends VariableGenerator {
 	}
 
 	/**
-	 * @return AbuseFilterVariableHolder|null
+	 * @return VariableHolder|null
 	 */
-	public function getVars() : ?AbuseFilterVariableHolder {
+	public function getVars() : ?VariableHolder {
 		if ( $this->rc->getAttribute( 'rc_type' ) == RC_LOG ) {
 			switch ( $this->rc->getAttribute( 'rc_log_type' ) ) {
 				case 'move':

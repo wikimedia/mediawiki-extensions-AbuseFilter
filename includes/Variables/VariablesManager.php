@@ -47,9 +47,9 @@ class VariablesManager {
 	 * Checks whether any deprecated variable is stored with the old name, and replaces it with
 	 * the new name. This should normally only happen when a DB dump is retrieved from the DB.
 	 *
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 */
-	public function translateDeprecatedVars( AbuseFilterVariableHolder $holder ) : void {
+	public function translateDeprecatedVars( VariableHolder $holder ) : void {
 		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
 		foreach ( $holder->getVars() as $name => $value ) {
 			if ( array_key_exists( $name, $deprecatedVars ) ) {
@@ -62,7 +62,7 @@ class VariablesManager {
 	/**
 	 * Get a variable from the current object
 	 *
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 * @param string $varName The variable name
 	 * @param int $mode One of the self::GET_* constants, determines how to behave when the variable is unset:
 	 *  - GET_STRICT -> In the future, this will throw an exception. For now it returns a DUNDEFINED and logs a warning
@@ -72,16 +72,16 @@ class VariablesManager {
 	 * @return AFPData
 	 */
 	public function getVar(
-		AbuseFilterVariableHolder $holder,
+		VariableHolder $holder,
 		string $varName,
 		$mode = self::GET_STRICT,
 		$tempFilter = null
 	) : AFPData {
 		$varName = strtolower( $varName );
 		if ( $holder->varIsSet( $varName ) ) {
-			/** @var $variable AFComputedVariable|AFPData */
+			/** @var $variable LazyLoadedVariable|AFPData */
 			$variable = $holder->getVarThrow( $varName );
-			if ( $variable instanceof AFComputedVariable ) {
+			if ( $variable instanceof LazyLoadedVariable ) {
 				$getVarCB = function ( string $varName ) use ( $holder ) : AFPData {
 					return $this->getVar( $holder, $varName );
 				};
@@ -131,13 +131,13 @@ class VariablesManager {
 	 * either set $compute to an array with the name of the variable or set
 	 * $compute to true to compute all not yet set variables.
 	 *
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 * @param array|bool $compute Variables we should compute if not yet set
 	 * @param bool $includeUserVars Include user set variables
 	 * @return array
 	 */
 	public function dumpAllVars(
-		AbuseFilterVariableHolder $holder,
+		VariableHolder $holder,
 		$compute = [],
 		bool $includeUserVars = false
 	) : array {
@@ -172,9 +172,9 @@ class VariablesManager {
 	 * Compute all vars which need DB access. Useful for vars which are going to be saved
 	 * cross-wiki or used for offline analysis.
 	 *
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 */
-	public function computeDBVars( AbuseFilterVariableHolder $holder ) : void {
+	public function computeDBVars( VariableHolder $holder ) : void {
 		static $dbTypes = [
 			'links-from-wikitext-or-database',
 			'load-recent-authors',
@@ -185,15 +185,15 @@ class VariablesManager {
 			'revision-text-by-id',
 		];
 
-		/** @var AFComputedVariable[] $missingVars */
+		/** @var LazyLoadedVariable[] $missingVars */
 		$missingVars = array_filter( $holder->getVars(), function ( $el ) {
-			return ( $el instanceof AFComputedVariable );
+			return ( $el instanceof LazyLoadedVariable );
 		} );
 		$getVarCB = function ( string $varName ) use ( $holder ) : AFPData {
 			return $this->getVar( $holder, $varName );
 		};
 		foreach ( $missingVars as $name => $var ) {
-			if ( in_array( $var->mMethod, $dbTypes ) ) {
+			if ( in_array( $var->getMethod(), $dbTypes ) ) {
 				$value = $this->lazyComputer->compute( $var, $holder, $getVarCB );
 				$holder->setVar( $name, $value );
 			}
@@ -203,10 +203,10 @@ class VariablesManager {
 	/**
 	 * Export all variables stored in this object with their native (PHP) types.
 	 *
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 * @return array
 	 */
-	public function exportAllVars( AbuseFilterVariableHolder $holder ) : array {
+	public function exportAllVars( VariableHolder $holder ) : array {
 		$exported = [];
 		foreach ( array_keys( $holder->getVars() ) as $varName ) {
 			$exported[ $varName ] = $this->getVar( $holder, $varName )->toNative();
@@ -218,13 +218,13 @@ class VariablesManager {
 	/**
 	 * Export all non-lazy variables stored in this object as string
 	 *
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 * @return string[]
 	 */
-	public function exportNonLazyVars( AbuseFilterVariableHolder $holder ) : array {
+	public function exportNonLazyVars( VariableHolder $holder ) : array {
 		$exported = [];
 		foreach ( $holder->getVars() as $varName => $data ) {
-			if ( !( $data instanceof AFComputedVariable ) ) {
+			if ( !( $data instanceof LazyLoadedVariable ) ) {
 				$exported[$varName] = $holder->getComputedVariable( $varName )->toString();
 			}
 		}

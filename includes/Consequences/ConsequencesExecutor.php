@@ -10,8 +10,8 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ConsequencesDisable
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use Psr\Log\LoggerInterface;
 use Status;
 use Title;
@@ -42,7 +42,7 @@ class ConsequencesExecutor {
 	private $user;
 	/** @var Title */
 	private $title;
-	/** @var AbuseFilterVariableHolder */
+	/** @var VariableHolder */
 	private $vars;
 
 	/**
@@ -54,7 +54,7 @@ class ConsequencesExecutor {
 	 * @param ServiceOptions $options
 	 * @param User $user
 	 * @param Title $title
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 */
 	public function __construct(
 		ConsequencesLookup $consLookup,
@@ -65,7 +65,7 @@ class ConsequencesExecutor {
 		ServiceOptions $options,
 		User $user,
 		Title $title,
-		AbuseFilterVariableHolder $vars
+		VariableHolder $vars
 	) {
 		$this->consLookup = $consLookup;
 		$this->consFactory = $consFactory;

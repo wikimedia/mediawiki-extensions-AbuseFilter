@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use RecentChange;
 use Title;
 
@@ -12,7 +12,7 @@ interface AbuseFilterGenerateTitleVarsHook {
 	 *
 	 * Allows altering the variables generated for a title
 	 *
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param Title $title
 	 * @param string $prefix Variable name prefix
 	 * @param ?RecentChange $rc If the variables should be generated for an RC entry,
@@ -20,7 +20,7 @@ interface AbuseFilterGenerateTitleVarsHook {
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onAbuseFilterGenerateTitleVars(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		Title $title,
 		string $prefix,
 		?RecentChange $rc

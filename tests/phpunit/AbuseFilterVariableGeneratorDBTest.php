@@ -4,8 +4,8 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
-use MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -56,7 +56,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		$this->editPage( $pageName, $oldText, 'Creating the test page' );
 		$this->editPage( $pageName, $newText, $summary );
 
-		$baseVars = AbuseFilterVariableHolder::newFromArray( [
+		$baseVars = VariableHolder::newFromArray( [
 			'old_wikitext' => $oldText,
 			'new_wikitext' => $newText,
 			'summary' => $summary
@@ -212,7 +212,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			$title = Title::newFromText( $pageName );
 
 			$expected = $this->computeRecentContributors( $title );
-			$vars = new AbuseFilterVariableHolder;
+			$vars = new VariableHolder;
 			$generator = new VariableGenerator( $vars );
 			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
 			$manager = AbuseFilterServices::getVariablesManager();
@@ -242,7 +242,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			);
 			$expected = $user->getName();
 
-			$vars = new AbuseFilterVariableHolder;
+			$vars = new VariableHolder;
 			$generator = new VariableGenerator( $vars );
 			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
 			$manager = AbuseFilterServices::getVariablesManager();
@@ -257,7 +257,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 * @param string $type Type of the action the row refers to
 	 * @param string $action Same as the 'action' variable
 	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator
-	 * @covers AbuseFilterVariableHolder
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariableHolder
 	 * @dataProvider provideRCRowTypes
 	 */
 	public function testGetVarsFromRCRow( string $type, string $action ) {
@@ -376,7 +376,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 
 		$rc = RecentChange::newFromRow( $row );
 		$varGenerator = new RCVariableGenerator(
-			new AbuseFilterVariableHolder(),
+			new VariableHolder(),
 			$rc,
 			$this->getTestSysop()->getUser()
 		);
@@ -389,7 +389,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		// from other extensions (may not be generated, depending on the test environment)
 		$coreVariables = AbuseFilterServices::getKeywordsManager()->getCoreVariables();
 		foreach ( $actual as $var => $value ) {
-			if ( !in_array( $var, $coreVariables, true ) || $value instanceof AFComputedVariable ) {
+			if ( !in_array( $var, $coreVariables, true ) || $value instanceof LazyLoadedVariable ) {
 				unset( $actual[ $var ] );
 			}
 		}

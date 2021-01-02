@@ -14,7 +14,7 @@ use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -202,9 +202,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 		$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
-		$vars = $varGenerator->getVars() ?: new AbuseFilterVariableHolder();
+		$vars = $varGenerator->getVars() ?: new VariableHolder();
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
 			'abuseFilterExamine' => [ 'type' => 'rc', 'id' => $rcid ]
@@ -283,9 +283,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder|null $vars
+	 * @param VariableHolder|null $vars
 	 */
-	public function showExaminer( ?AbuseFilterVariableHolder $vars ) {
+	public function showExaminer( ?VariableHolder $vars ) {
 		$output = $this->getOutput();
 		$output->enableOOUI();
 

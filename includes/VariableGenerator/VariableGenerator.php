@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use RecentChange;
 use Title;
 use User;
@@ -14,7 +14,7 @@ use WikiPage;
  */
 class VariableGenerator {
 	/**
-	 * @var AbuseFilterVariableHolder
+	 * @var VariableHolder
 	 */
 	protected $vars;
 
@@ -22,9 +22,9 @@ class VariableGenerator {
 	private $hookRunner;
 
 	/**
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 */
-	public function __construct( AbuseFilterVariableHolder $vars ) {
+	public function __construct( VariableHolder $vars ) {
 		$this->vars = $vars;
 
 		// TODO this class is constructed in other extensions; make this a parameter
@@ -32,9 +32,9 @@ class VariableGenerator {
 	}
 
 	/**
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 */
-	public function getVariableHolder() : AbuseFilterVariableHolder {
+	public function getVariableHolder() : VariableHolder {
 		return $this->vars;
 	}
 

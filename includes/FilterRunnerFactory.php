@@ -7,7 +7,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
@@ -93,14 +93,14 @@ class FilterRunnerFactory {
 	/**
 	 * @param User $user
 	 * @param Title $title
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param string $group
 	 * @return FilterRunner
 	 */
 	public function newRunner(
 		User $user,
 		Title $title,
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		string $group
 	) : FilterRunner {
 		// TODO Add a method to this class taking these as params? Add a hook for custom watchers

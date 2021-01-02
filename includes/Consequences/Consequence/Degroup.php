@@ -6,9 +6,9 @@ use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
-use MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use TitleValue;
@@ -18,7 +18,7 @@ use TitleValue;
  */
 class Degroup extends Consequence implements HookAborterConsequence, ReversibleConsequence {
 	/**
-	 * @var AbuseFilterVariableHolder
+	 * @var VariableHolder
 	 * @todo This dependency is subpar
 	 */
 	private $vars;
@@ -31,13 +31,13 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 
 	/**
 	 * @param Parameters $params
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param UserGroupManager $userGroupManager
 	 * @param FilterUser $filterUser
 	 */
 	public function __construct(
 		Parameters $params,
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		UserGroupManager $userGroupManager,
 		FilterUser $filterUser
 	) {
@@ -66,7 +66,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 		} catch ( UnsetVariableException $_ ) {
 			$groupsVar = null;
 		}
-		if ( $groupsVar === null || $groupsVar instanceof AFComputedVariable ) {
+		if ( $groupsVar === null || $groupsVar instanceof LazyLoadedVariable ) {
 			// The variable is unset or not computed. Compute it and update the holder so we can use it for reverts
 			$groups = $this->userGroupManager->getUserEffectiveGroups( $user );
 			$this->vars->setVar( 'user_groups', $groups );

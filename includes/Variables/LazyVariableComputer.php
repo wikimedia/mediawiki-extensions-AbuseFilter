@@ -121,19 +121,20 @@ class LazyVariableComputer {
 	 * XXX: $getVarCB is a hack to hide the cyclic dependency with VariablesManager. See T261069 for possible
 	 * solutions. This might also be merged into VariablesManager, but it would bring a ton of dependencies.
 	 *
-	 * @param AFComputedVariable $var
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param LazyLoadedVariable $var
+	 * @param VariableHolder $vars
 	 * @param callable $getVarCB
 	 * @phan-param callable(string $name):AFPData $getVarCB
 	 * @return AFPData
 	 * @throws AFPException
 	 */
-	public function compute( AFComputedVariable $var, AbuseFilterVariableHolder $vars, callable $getVarCB ) {
-		$parameters = $var->mParameters;
+	public function compute( LazyLoadedVariable $var, VariableHolder $vars, callable $getVarCB ) {
+		$parameters = $var->getParameters();
+		$varMethod = $var->getMethod();
 		$result = null;
 
 		if ( !$this->hookRunner->onAbuseFilterInterceptVariable(
-			$var->mMethod,
+			$varMethod,
 			$vars,
 			$parameters,
 			$result
@@ -142,7 +143,7 @@ class LazyVariableComputer {
 				? $result : AFPData::newFromPHPVar( $result );
 		}
 
-		switch ( $var->mMethod ) {
+		switch ( $varMethod ) {
 			case 'diff':
 				$text1Var = $parameters['oldtext-var'];
 				$text2Var = $parameters['newtext-var'];
@@ -227,10 +228,10 @@ class LazyVariableComputer {
 				$oldLinks = explode( "\n", $oldLinks );
 				$newLinks = explode( "\n", $newLinks );
 
-				if ( $var->mMethod === 'link-diff-added' ) {
+				if ( $varMethod === 'link-diff-added' ) {
 					$result = array_diff( $newLinks, $oldLinks );
 				}
-				if ( $var->mMethod === 'link-diff-removed' ) {
+				if ( $varMethod === 'link-diff-removed' ) {
 					$result = array_diff( $oldLinks, $newLinks );
 				}
 				break;
@@ -376,12 +377,12 @@ class LazyVariableComputer {
 				break;
 			default:
 				if ( $this->hookRunner->onAbuseFilterComputeVariable(
-					$var->mMethod,
+					$varMethod,
 					$vars,
 					$parameters,
 					$result
 				) ) {
-					throw new AFPException( 'Unknown variable compute type ' . $var->mMethod );
+					throw new AFPException( 'Unknown variable compute type ' . $varMethod );
 				}
 		}
 

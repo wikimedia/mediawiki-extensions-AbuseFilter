@@ -1,7 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Revision\RevisionRecord;
 
 /**
@@ -31,7 +31,7 @@ class AbuseFilter {
 	/**
 	 * Returns an associative array of filters which were tripped
 	 *
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
@@ -39,7 +39,7 @@ class AbuseFilter {
 	 * @deprecated Since 1.34 See comment on FilterRunner::checkAllFilters
 	 */
 	public static function checkAllFilters(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		Title $title,
 		$group = 'default',
 		$mode = 'execute'
@@ -53,7 +53,7 @@ class AbuseFilter {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param User $user The user performing the action
@@ -61,7 +61,7 @@ class AbuseFilter {
 	 * @deprecated Since 1.34 Build a FilterRunner instance and call run() on that.
 	 */
 	public static function filterAction(
-		AbuseFilterVariableHolder $vars, Title $title, $group, User $user
+		VariableHolder $vars, Title $title, $group, User $user
 	) {
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $title, $vars, $group );

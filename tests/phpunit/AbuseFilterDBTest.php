@@ -6,7 +6,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use Psr\Log\NullLogger;
@@ -62,11 +62,11 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	 */
 	public function testVarDump( array $variables, array $expectedValues = null ) {
 		$varBlobStore = AbuseFilterServices::getVariablesBlobStore();
-		$holder = AbuseFilterVariableHolder::newFromArray( $variables );
+		$holder = VariableHolder::newFromArray( $variables );
 
 		$insertID = $varBlobStore->storeVarDump( $holder );
 		$dump = $varBlobStore->loadVarDump( $insertID );
-		$expected = $expectedValues ? AbuseFilterVariableHolder::newFromArray( $expectedValues ) : $holder;
+		$expected = $expectedValues ? VariableHolder::newFromArray( $expectedValues ) : $holder;
 		$this->assertEquals( $expected, $dump, 'The var dump is not saved correctly' );
 	}
 
@@ -160,7 +160,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 			'wgDBprefix' => $prefix
 		] );
 
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 		$vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
 		$manager = AbuseFilterServices::getVariablesManager();
 		$this->assertSame(
@@ -182,7 +182,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		$fakeLang->method( 'getCode' )->willReturn( $fakeCode );
 		$this->setService( 'ContentLanguage', $fakeLang );
 
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 		$vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
 		$manager = AbuseFilterServices::getVariablesManager();
 		$this->assertSame(
@@ -256,7 +256,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		$fakeLookup->method( 'getFilter' )->willReturn( $fakeFilter );
 		$this->setService( FilterLookup::SERVICE_NAME, $fakeLookup );
 		$user = $this->getTestUser()->getUser();
-		$vars = AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] );
+		$vars = VariableHolder::newFromArray( [ 'action' => 'edit' ] );
 		$executor = new ConsequencesExecutor(
 			$this->createMock( ConsequencesLookup::class ),
 			AbuseFilterServices::getConsequencesFactory(),

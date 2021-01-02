@@ -17,7 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Tag;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Session\Session;
 use MediaWiki\User\UserGroupManager;
 use Psr\Log\LoggerInterface;
@@ -145,10 +145,10 @@ class ConsequencesFactory {
 
 	/**
 	 * @param Parameters $params
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @return Degroup
 	 */
-	public function newDegroup( Parameters $params, AbuseFilterVariableHolder $vars ) : Degroup {
+	public function newDegroup( Parameters $params, VariableHolder $vars ) : Degroup {
 		return new Degroup( $params, $vars, $this->userGroupManager, $this->filterUser );
 	}
 

@@ -8,7 +8,7 @@ use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
@@ -35,7 +35,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	public $mCur;
 	/**
-	 * @var AbuseFilterVariableHolder
+	 * @var VariableHolder
 	 */
 	public $mVariables;
 
@@ -125,7 +125,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * @param KeywordsManager $keywordsManager
 	 * @param VariablesManager $varManager
 	 * @param int $conditionsLimit
-	 * @param AbuseFilterVariableHolder|null $vars
+	 * @param VariableHolder|null $vars
 	 */
 	public function __construct(
 		Language $contLang,
@@ -134,7 +134,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		KeywordsManager $keywordsManager,
 		VariablesManager $varManager,
 		int $conditionsLimit,
-		AbuseFilterVariableHolder $vars = null
+		VariableHolder $vars = null
 	) {
 		$this->contLang = $contLang;
 		$this->cache = $cache;
@@ -217,7 +217,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 */
 	public function resetState() {
 		$this->mTokens = [];
-		$this->mVariables = new AbuseFilterVariableHolder();
+		$this->mVariables = new VariableHolder();
 		$this->mPos = 0;
 		$this->mShortCircuit = false;
 		$this->mAllowShort = true;
@@ -234,9 +234,9 @@ class AbuseFilterParser extends AFPTransitionBase {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 */
-	public function setVariables( AbuseFilterVariableHolder $vars ) {
+	public function setVariables( VariableHolder $vars ) {
 		$this->mVariables = $vars;
 	}
 

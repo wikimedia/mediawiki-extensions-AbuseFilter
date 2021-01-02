@@ -8,7 +8,7 @@ use FormatJson;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use RecentChange;
 
 class CheckMatch extends ApiBase {
@@ -28,7 +28,7 @@ class CheckMatch extends ApiBase {
 		$vars = null;
 		if ( $params['vars'] ) {
 			$pairs = FormatJson::decode( $params['vars'], true );
-			$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
+			$vars = VariableHolder::newFromArray( $pairs );
 		} elseif ( $params['rcid'] ) {
 			$rc = RecentChange::newFromId( $params['rcid'] );
 
@@ -36,7 +36,7 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
-			$vars = new AbuseFilterVariableHolder();
+			$vars = new VariableHolder();
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
 			$vars = $varGenerator->getVars();

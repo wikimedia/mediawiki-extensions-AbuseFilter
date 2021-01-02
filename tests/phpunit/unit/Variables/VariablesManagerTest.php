@@ -7,9 +7,9 @@ use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
-use MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
@@ -55,7 +55,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 			'page_title' => $varsMap['article_text'],
 			'page_id' => $varsMap['article_articleid']
 		];
-		$holder = AbuseFilterVariableHolder::newFromArray( $varsMap );
+		$holder = VariableHolder::newFromArray( $varsMap );
 		$manager = $this->getManager();
 		$manager->translateDeprecatedVars( $holder );
 		$this->assertEquals( $translatedVarsMap, $holder->getVars() );
@@ -63,7 +63,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param VariablesManager $manager
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 * @param array|bool $compute
 	 * @param bool $includeUser
 	 * @param array $expected
@@ -73,7 +73,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testDumpAllVars(
 		VariablesManager $manager,
-		AbuseFilterVariableHolder $holder,
+		VariableHolder $holder,
 		$compute,
 		bool $includeUser,
 		array $expected
@@ -86,15 +86,15 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function provideDumpAllVars() {
 		$titleVal = 'title';
-		$preftitle = new AFComputedVariable( 'preftitle', [] );
+		$preftitle = new LazyLoadedVariable( 'preftitle', [] );
 
 		$linesVal = 'lines';
-		$lines = new AFComputedVariable( 'lines', [] );
+		$lines = new LazyLoadedVariable( 'lines', [] );
 
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturnCallback(
-			function ( AFComputedVariable $var ) use ( $titleVal, $linesVal ) {
-				switch ( $var->mMethod ) {
+			function ( LazyLoadedVariable $var ) use ( $titleVal, $linesVal ) {
+				switch ( $var->getMethod() ) {
 					case 'preftitle':
 						return new AFPData( AFPData::DSTRING, $titleVal );
 					case 'lines':
@@ -112,7 +112,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 			'user_name' => 'bar',
 			'custom-var' => 'foo'
 		];
-		$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
+		$vars = VariableHolder::newFromArray( $pairs );
 
 		$varManager = $this->getManager( $computer );
 
@@ -153,15 +153,15 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$methods = array_merge( $nonDBMet, $dbMet );
 		$objs = [];
 		foreach ( $methods as $method ) {
-			$cur = new AFComputedVariable( $method, [] );
+			$cur = new LazyLoadedVariable( $method, [] );
 			$objs[$method] = $cur;
 		}
 
-		$vars = AbuseFilterVariableHolder::newFromArray( $objs );
+		$vars = VariableHolder::newFromArray( $objs );
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturnCallback(
-			function ( AFComputedVariable $var ) {
-				return $var->mMethod;
+			function ( LazyLoadedVariable $var ) {
+				return $var->getMethod();
 			}
 		);
 		$varManager = $this->getManager( $computer );
@@ -169,7 +169,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 
 		$expAFCV = array_intersect_key( $vars->getVars(), array_fill_keys( $nonDBMet, 1 ) );
 		$this->assertContainsOnlyInstancesOf(
-			AFComputedVariable::class,
+			LazyLoadedVariable::class,
 			$expAFCV,
 			"non-DB methods shouldn't have been computed"
 		);
@@ -184,7 +184,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param VariablesManager $manager
-	 * @param AbuseFilterVariableHolder $holder
+	 * @param VariableHolder $holder
 	 * @param string $name
 	 * @param int $flags
 	 * @param AFPData $expected
@@ -194,7 +194,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetVar(
 		VariablesManager $manager,
-		AbuseFilterVariableHolder $holder,
+		VariableHolder $holder,
 		string $name,
 		int $flags,
 		AFPData $expected
@@ -206,13 +206,13 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 * @return Generator|array
 	 */
 	public function provideGetVar() {
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 
 		$name = 'foo';
 		$expected = new AFPData( AFPData::DSTRING, 'foobarbaz' );
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturn( $expected );
-		$afcv = new AFComputedVariable( '', [] );
+		$afcv = new LazyLoadedVariable( '', [] );
 		$vars->setVar( $name, $afcv );
 		yield 'set, lazy-loaded' => [ $this->getManager( $computer ), $vars, $name, 0, $expected ];
 
@@ -245,7 +245,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 			'var' => false,
 			'boo' => null
 		];
-		$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
+		$vars = VariableHolder::newFromArray( $pairs );
 		$manager = $this->getManager();
 
 		$this->assertSame( $pairs, $manager->exportAllVars( $vars ) );
@@ -255,7 +255,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::exportNonLazyVars
 	 */
 	public function testExportNonLazyVars() {
-		$afcv = $this->createMock( AFComputedVariable::class );
+		$afcv = $this->createMock( LazyLoadedVariable::class );
 		$pairs = [
 			'lazy1' => $afcv,
 			'lazy2' => $afcv,
@@ -264,7 +264,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 			'native3' => null,
 			'afpd' => new AFPData( AFPData::DSTRING, 'hey' ),
 		];
-		$vars = AbuseFilterVariableHolder::newFromArray( $pairs );
+		$vars = VariableHolder::newFromArray( $pairs );
 		$manager = $this->getManager();
 
 		$nonLazy = [

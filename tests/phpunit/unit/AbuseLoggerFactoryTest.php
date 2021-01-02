@@ -7,7 +7,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
@@ -46,7 +46,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 		$logger = $factory->newLogger(
 			$this->createMock( Title::class ),
 			$this->createMock( User::class ),
-			AbuseFilterVariableHolder::newFromArray( [ 'action' => 'edit' ] )
+			VariableHolder::newFromArray( [ 'action' => 'edit' ] )
 		);
 		$this->assertInstanceOf( AbuseLogger::class, $logger );
 	}

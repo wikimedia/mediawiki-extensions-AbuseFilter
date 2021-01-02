@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use Psr\Log\LoggerInterface;
 use Title;
 use User;
@@ -53,10 +53,10 @@ class ConsequencesExecutorFactory {
 	/**
 	 * @param User $user
 	 * @param Title $title
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @return ConsequencesExecutor
 	 */
-	public function newExecutor( User $user, Title $title, AbuseFilterVariableHolder $vars ) : ConsequencesExecutor {
+	public function newExecutor( User $user, Title $title, VariableHolder $vars ) : ConsequencesExecutor {
 		return new ConsequencesExecutor(
 			$this->consLookup,
 			$this->consFactory,

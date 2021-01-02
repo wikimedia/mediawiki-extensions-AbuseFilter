@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use Title;
 
 /**
@@ -14,7 +14,7 @@ use Title;
 class BCConsequence extends Consequence implements HookAborterConsequence {
 	/** @var array */
 	private $rawParams;
-	/** @var AbuseFilterVariableHolder */
+	/** @var VariableHolder */
 	private $vars;
 	/** @var callable */
 	private $callback;
@@ -25,13 +25,13 @@ class BCConsequence extends Consequence implements HookAborterConsequence {
 	/**
 	 * @param Parameters $parameters
 	 * @param array $rawParams Parameters as stored in the DB
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 * @param callable $cb
 	 */
 	public function __construct(
 		Parameters $parameters,
 		array $rawParams,
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		callable $cb
 	) {
 		parent::__construct( $parameters );

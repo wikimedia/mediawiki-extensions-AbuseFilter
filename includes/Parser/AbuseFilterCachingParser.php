@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use BagOStuff;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MWException;
 
 /**
@@ -50,7 +50,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 	 * Resets the state of the parser
 	 */
 	public function resetState() {
-		$this->mVariables = new AbuseFilterVariableHolder();
+		$this->mVariables = new VariableHolder();
 		$this->mCur = new AFPToken();
 		$this->mCondCount = 0;
 		$this->mAllowShort = true;

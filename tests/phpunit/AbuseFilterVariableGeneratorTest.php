@@ -4,8 +4,8 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionStore;
@@ -122,7 +122,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		list( $user, $computed ) = $this->getUserAndExpectedVariable( $varName );
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$variableHolder = new AbuseFilterVariableHolder();
+		$variableHolder = new VariableHolder();
 		$generator = new VariableGenerator( $variableHolder );
 		$variableHolder = $generator->addUserVars( $user )->getVariableHolder();
 		$varManager = new VariablesManager(
@@ -232,7 +232,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		list( $title, $computed ) = $this->getTitleAndExpectedVariable( $prefix, $suffix, $restricted );
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		$variableHolder = new AbuseFilterVariableHolder();
+		$variableHolder = new VariableHolder();
 		$titleFactory = $this->createMock( TitleFactory::class );
 		$titleFactory->method( 'makeTitle' )->willReturn( $title );
 		// The mock would return null, which would be interpreted as if the handler handled the event

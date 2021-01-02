@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
 use Content;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use RecentChange;
@@ -78,7 +78,7 @@ class AbuseFilterHookRunner implements
 	 */
 	public function onAbuseFilterComputeVariable(
 		string $method,
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		array $parameters,
 		?string &$result
 	) {
@@ -105,7 +105,7 @@ class AbuseFilterHookRunner implements
 	 * @inheritDoc
 	 */
 	public function onAbuseFilterFilterAction(
-		AbuseFilterVariableHolder &$vars,
+		VariableHolder &$vars,
 		Title $title
 	) {
 		return $this->hookContainer->run(
@@ -118,7 +118,7 @@ class AbuseFilterHookRunner implements
 	 * @inheritDoc
 	 */
 	public function onAbuseFilterAlterVariables(
-		AbuseFilterVariableHolder &$vars,
+		VariableHolder &$vars,
 		Title $title,
 		User $user
 	) {
@@ -132,7 +132,7 @@ class AbuseFilterHookRunner implements
 	 * @inheritDoc
 	 */
 	public function onAbuseFilterGenerateTitleVars(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		Title $title,
 		string $prefix,
 		?RecentChange $rc
@@ -147,7 +147,7 @@ class AbuseFilterHookRunner implements
 	 * @inheritDoc
 	 */
 	public function onAbuseFilterGenerateUserVars(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		User $user,
 		?RecentChange $rc
 	) {
@@ -161,7 +161,7 @@ class AbuseFilterHookRunner implements
 	 * @inheritDoc
 	 */
 	public function onAbuseFilterGenerateGenericVars(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		?RecentChange $rc
 	) {
 		return $this->hookContainer->run(
@@ -175,7 +175,7 @@ class AbuseFilterHookRunner implements
 	 */
 	public function onAbuseFilterInterceptVariable(
 		string $method,
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		array $parameters,
 		&$result
 	) {
@@ -189,7 +189,7 @@ class AbuseFilterHookRunner implements
 	 * @inheritDoc
 	 */
 	public function onAbuseFilterShouldFilterAction(
-		AbuseFilterVariableHolder $vars,
+		VariableHolder $vars,
 		Title $title,
 		User $user,
 		array &$skipReasons

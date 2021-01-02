@@ -6,7 +6,7 @@ use ApiBase;
 use ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use Status;
 
@@ -47,7 +47,7 @@ class EvalExpression extends ApiBase {
 			return Status::newFatal( 'abusefilter-tools-syntax-error' );
 		}
 
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 		// Generic vars are the only ones available
 		$generator = new VariableGenerator( $vars );
 		$vars = $generator->addGenericVars()->getVariableHolder();

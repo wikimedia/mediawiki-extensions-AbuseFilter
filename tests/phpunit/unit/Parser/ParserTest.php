@@ -34,8 +34,8 @@ use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use PHPUnit;
 use Psr\Log\NullLogger;
@@ -59,7 +59,7 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
- * @covers \MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable
  * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
  */
 class ParserTest extends ParserTestCase {
@@ -830,7 +830,7 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testDeprecatedVars( $old, $new ) {
 		// Set it under the new name, and check that the old name points to it
-		$vars = AbuseFilterVariableHolder::newFromArray( [ $new => 'value' ] );
+		$vars = VariableHolder::newFromArray( [ $new => 'value' ] );
 
 		foreach ( $this->getParsers() as $parser ) {
 			$pname = get_class( $parser );
@@ -1301,7 +1301,7 @@ class ParserTest extends ParserTestCase {
 		$logger = new NullLogger();
 		$keywordsManager = $this->createMock( KeywordsManager::class );
 		$varManager = $this->createMock( VariablesManager::class );
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 
 		$parser = new AbuseFilterParser( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
 		$this->assertEquals( $vars, $parser->mVariables, 'Variables should be initialized' );
@@ -1392,7 +1392,7 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testSetVariables() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
-		$vars = new AbuseFilterVariableHolder();
+		$vars = new VariableHolder();
 		$parser->setVariables( $vars );
 		$this->assertSame( $vars, $parser->mVariables );
 	}

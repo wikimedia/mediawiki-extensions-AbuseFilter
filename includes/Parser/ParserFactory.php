@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
 use BagOStuff;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Psr\Log\LoggerInterface;
 
@@ -61,10 +61,10 @@ class ParserFactory {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder|null $vars
+	 * @param VariableHolder|null $vars
 	 * @return AbuseFilterParser
 	 */
-	public function newParser( AbuseFilterVariableHolder $vars = null ) : AbuseFilterParser {
+	public function newParser( VariableHolder $vars = null ) : AbuseFilterParser {
 		$class = "\MediaWiki\Extension\AbuseFilter\Parser\\{$this->parserClass}";
 		return new $class(
 			$this->contLang,

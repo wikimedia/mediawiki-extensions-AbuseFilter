@@ -43,10 +43,10 @@ class VariablesFormatter {
 	}
 
 	/**
-	 * @param AbuseFilterVariableHolder $varHolder
+	 * @param VariableHolder $varHolder
 	 * @return string
 	 */
-	public function buildVarDumpTable( AbuseFilterVariableHolder $varHolder ) : string {
+	public function buildVarDumpTable( VariableHolder $varHolder ) : string {
 		$vars = $this->varManager->exportAllVars( $varHolder );
 
 		$output = '';

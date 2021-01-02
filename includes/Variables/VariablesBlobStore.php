@@ -46,12 +46,12 @@ class VariablesBlobStore {
 	/**
 	 * Store a var dump to a BlobStore.
 	 *
-	 * @param AbuseFilterVariableHolder $varsHolder
+	 * @param VariableHolder $varsHolder
 	 * @param bool $global
 	 *
 	 * @return string Address of the record
 	 */
-	public function storeVarDump( AbuseFilterVariableHolder $varsHolder, $global = false ) {
+	public function storeVarDump( VariableHolder $varsHolder, $global = false ) {
 		// Get all variables yet set and compute old and new wikitext if not yet done
 		// as those are needed for the diff view on top of the abuse log pages
 		$vars = $this->varManager->dumpAllVars( $varsHolder, [ 'old_wikitext', 'new_wikitext' ] );
@@ -74,17 +74,17 @@ class VariablesBlobStore {
 	 *
 	 * @param string $address
 	 *
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 */
-	public function loadVarDump( string $address ) : AbuseFilterVariableHolder {
+	public function loadVarDump( string $address ) : VariableHolder {
 		try {
 			$blob = $this->blobStore->getBlob( $address );
 		} catch ( BlobAccessException $ex ) {
-			return new AbuseFilterVariableHolder;
+			return new VariableHolder;
 		}
 
 		$vars = FormatJson::decode( $blob, true );
-		$obj = AbuseFilterVariableHolder::newFromArray( $vars );
+		$obj = VariableHolder::newFromArray( $vars );
 		$this->varManager->translateDeprecatedVars( $obj );
 		return $obj;
 	}

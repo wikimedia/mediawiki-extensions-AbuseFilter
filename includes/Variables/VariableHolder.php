@@ -8,9 +8,9 @@ use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 /**
  * Mutable value object that holds a list of variables
  */
-class AbuseFilterVariableHolder {
+class VariableHolder {
 	/**
-	 * @var (AFPData|AFComputedVariable)[]
+	 * @var (AFPData|LazyLoadedVariable)[]
 	 */
 	private $mVars = [];
 
@@ -21,9 +21,9 @@ class AbuseFilterVariableHolder {
 	 * Utility function to translate an array with shape [ varname => value ] into a self instance
 	 *
 	 * @param array $vars
-	 * @return AbuseFilterVariableHolder
+	 * @return VariableHolder
 	 */
-	public static function newFromArray( array $vars ) : AbuseFilterVariableHolder {
+	public static function newFromArray( array $vars ) : VariableHolder {
 		$ret = new self();
 		foreach ( $vars as $var => $value ) {
 			$ret->setVar( $var, $value );
@@ -37,7 +37,7 @@ class AbuseFilterVariableHolder {
 	 */
 	public function setVar( string $variable, $datum ) : void {
 		$variable = strtolower( $variable );
-		if ( !( $datum instanceof AFPData || $datum instanceof AFComputedVariable ) ) {
+		if ( !( $datum instanceof AFPData || $datum instanceof LazyLoadedVariable ) ) {
 			$datum = AFPData::newFromPHPVar( $datum );
 		}
 
@@ -47,7 +47,7 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Get all variables stored in this object
 	 *
-	 * @return (AFPData|AFComputedVariable)[]
+	 * @return (AFPData|LazyLoadedVariable)[]
 	 */
 	public function getVars() : array {
 		return $this->mVars;
@@ -59,7 +59,7 @@ class AbuseFilterVariableHolder {
 	 * @param array $parameters
 	 */
 	public function setLazyLoadVar( string $variable, string $method, array $parameters ) : void {
-		$placeholder = new AFComputedVariable( $method, $parameters );
+		$placeholder = new LazyLoadedVariable( $method, $parameters );
 		$this->setVar( $variable, $placeholder );
 	}
 
@@ -78,7 +78,7 @@ class AbuseFilterVariableHolder {
 	 * Get a variable from the current object, or throw if not set
 	 *
 	 * @param string $varName The variable name
-	 * @return AFPData|AFComputedVariable
+	 * @return AFPData|LazyLoadedVariable
 	 */
 	public function getVarThrow( string $varName ) {
 		$varName = strtolower( $varName );
@@ -101,9 +101,9 @@ class AbuseFilterVariableHolder {
 	/**
 	 * Merge any number of holders given as arguments into this holder.
 	 *
-	 * @param AbuseFilterVariableHolder ...$holders
+	 * @param VariableHolder ...$holders
 	 */
-	public function addHolders( AbuseFilterVariableHolder ...$holders ) : void {
+	public function addHolders( VariableHolder ...$holders ) : void {
 		foreach ( $holders as $addHolder ) {
 			$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 		}
@@ -126,4 +126,4 @@ class AbuseFilterVariableHolder {
 }
 
 // @deprecated Since 1.36
-class_alias( AbuseFilterVariableHolder::class, 'AbuseFilterVariableHolder' );
+class_alias( VariableHolder::class, 'AbuseFilterVariableHolder' );

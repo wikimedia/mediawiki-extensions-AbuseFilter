@@ -9,7 +9,7 @@ use ExtensionRegistry;
 use InvalidArgumentException;
 use ManualLogEntry;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Title;
@@ -28,7 +28,7 @@ class AbuseLogger {
 	private $title;
 	/** @var User */
 	private $user;
-	/** @var AbuseFilterVariableHolder */
+	/** @var VariableHolder */
 	private $vars;
 	/** @var string */
 	private $action;
@@ -61,7 +61,7 @@ class AbuseLogger {
 	 * @param string $requestIP
 	 * @param Title $title
 	 * @param User $user
-	 * @param AbuseFilterVariableHolder $vars
+	 * @param VariableHolder $vars
 	 */
 	public function __construct(
 		CentralDBManager $centralDBManager,
@@ -74,7 +74,7 @@ class AbuseLogger {
 		string $requestIP,
 		Title $title,
 		User $user,
-		AbuseFilterVariableHolder $vars
+		VariableHolder $vars
 	) {
 		if ( !$vars->varIsSet( 'action' ) ) {
 			throw new InvalidArgumentException( "The 'action' variable is not set." );

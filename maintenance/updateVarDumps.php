@@ -2,7 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\AtEase\AtEase;
@@ -215,7 +215,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				continue;
 			}
 			// Build a VariableHolder with the only values we can be sure of
-			$vars = AbuseFilterVariableHolder::newFromArray( [
+			$vars = VariableHolder::newFromArray( [
 				'timestamp' => wfTimestamp( TS_UNIX, $row->afl_timestamp ),
 				'action' => $row->afl_action
 			] );
@@ -327,7 +327,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$stored = $this->restoreTruncatedDump( $row->afl_var_dump );
 				$truncatedDumps++;
 			}
-			if ( !is_array( $stored ) && !( $stored instanceof AbuseFilterVariableHolder ) ) {
+			if ( !is_array( $stored ) && !( $stored instanceof VariableHolder ) ) {
 				$this->fatalError(
 					'...found unexpected data type ( ' . gettype( $stored ) . ' ) in ' .
 					"afl_var_dump for afl_id {$row->afl_id}.\n"
@@ -336,7 +336,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$changeRows++;
 
 			if ( !$this->dryRun ) {
-				$holder = is_array( $stored ) ? AbuseFilterVariableHolder::newFromArray( $stored ) : $stored;
+				$holder = is_array( $stored ) ? VariableHolder::newFromArray( $stored ) : $stored;
 				// Note: this will upgrade to the new JSON format, so we use tt:
 				$newDump = $this->varBlobStore->storeVarDump( $holder );
 				$this->dbw->update(
@@ -549,7 +549,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$obj = $this->restoreTruncatedDump( $text );
 			}
 
-			if ( $obj instanceof AbuseFilterVariableHolder ) {
+			if ( $obj instanceof VariableHolder ) {
 				$varManager = AbuseFilterServices::getVariablesManager();
 				$varArray = $varManager->dumpAllVars( $obj, [ 'old_wikitext', 'new_wikitext' ] );
 			} else {
