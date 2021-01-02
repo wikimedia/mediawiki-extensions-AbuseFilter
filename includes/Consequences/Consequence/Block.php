@@ -8,6 +8,7 @@ use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\User\UserIdentity;
 use TitleValue;
 
@@ -81,10 +82,12 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	 * @inheritDoc
 	 */
 	public function getMessage(): array {
+		$filter = $this->parameters->getFilter();
 		return [
 			'abusefilter-blocked-display',
-			$this->parameters->getFilter()->getName(),
-			$this->parameters->getFilter()->getID()
+			$filter->getName(),
+			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}
 }
