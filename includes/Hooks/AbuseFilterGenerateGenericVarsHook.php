@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
-use AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use RecentChange;
 
 interface AbuseFilterGenerateGenericVarsHook {

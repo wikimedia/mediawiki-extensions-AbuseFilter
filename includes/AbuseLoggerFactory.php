@@ -2,8 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilterVariableHolder;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Title;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;

@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
-use AbuseFilterVariableHolder;
 use ApiBase;
 use ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
-use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use Status;
 
 class EvalExpression extends ApiBase {

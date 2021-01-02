@@ -1,8 +1,7 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Variables;
 
-use AbuseFilterVariableHolder;
 use FormatJson;
 use MediaWiki\Storage\BlobAccessException;
 use MediaWiki\Storage\BlobStore;

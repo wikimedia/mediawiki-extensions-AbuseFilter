@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
-use AbuseFilterVariableHolder;
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BCConsequence;
@@ -11,7 +10,8 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ConsequencesDisable
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
-use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use Psr\Log\LoggerInterface;
 use Status;
 use Title;

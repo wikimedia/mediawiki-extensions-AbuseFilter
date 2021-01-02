@@ -11,7 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
-use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\User\UserFactory;
 use Message;

@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use AbuseFilterVariableHolder;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use Title;
 use User;

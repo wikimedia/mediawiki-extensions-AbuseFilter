@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
-use AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 
 interface AbuseFilterInterceptVariableHook {
 	/**
 	 * Hook runner for the `AbuseFilter-interceptVariable` hook
 	 *
-	 * Called before a variable is set in AFComputedVariable::compute to be able to set
+	 * Called before a lazy-loaded variable is computed to be able to set
 	 * it before the core code runs. Return false to make the function return right after.
 	 *
 	 * @param string $method Method to generate the variable

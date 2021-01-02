@@ -2,14 +2,14 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
-use AbuseFilterVariableHolder;
 use BagOStuff;
 use Exception;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
 use Sanitizer;

@@ -2,7 +2,8 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\Database;
@@ -446,7 +447,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	}
 
 	/**
-	 * If the text table (or the External Storage) contains a serialized AbuseFilterVariableHolder
+	 * If the text table (or the External Storage) contains a serialized variable holder
 	 * or array, re-store it as a JSON-encoded array. This assumes that afl_var_dump rows starting
 	 * with 'tt:' already point to JSON dumps, and afl_var_dump rows starting with 'stored-text:'
 	 * only point to serialized dumps.
@@ -611,7 +612,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	}
 
 	/**
-	 * Get a set of builtin variable names. Copied from AbuseFilterVariableHolder::dumpAllVars.
+	 * Get a set of builtin variable names. Copied from VariableHolder::dumpAllVars.
 	 * @return array [ varname => true ] for instantaneous search. All names are lowercase
 	 */
 	private function getBuiltinVarNames() {

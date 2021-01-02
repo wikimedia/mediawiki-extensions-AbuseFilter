@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
-use AbuseFilterVariableHolder;
 use ApiBase;
 use ApiResult;
 use FormatJson;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use RecentChange;
 
 class CheckMatch extends ApiBase {

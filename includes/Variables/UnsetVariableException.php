@@ -1,9 +1,12 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Variables;
 
 use RuntimeException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class UnsetVariableException extends RuntimeException {
 	/**
 	 * @param string $varName

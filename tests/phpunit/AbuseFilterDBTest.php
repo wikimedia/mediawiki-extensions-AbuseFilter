@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use Psr\Log\NullLogger;
@@ -53,10 +54,10 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test storing and loading the var dump. See also AbuseFilterConsequencesTest::testVarDump
 	 *
-	 * @param array $variables Map of [ name => value ] to build an AbuseFilterVariableHolder with
+	 * @param array $variables Map of [ name => value ] to build a variable holder with
 	 * @param ?array $expectedValues Null to use $variables
-	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesBlobStore
-	 * @covers \MediaWiki\Extension\AbuseFilter\VariablesManager::dumpAllVars
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariablesManager::dumpAllVars
 	 * @dataProvider provideVariables
 	 */
 	public function testVarDump( array $variables, array $expectedValues = null ) {
@@ -149,7 +150,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test for the wiki_name variable.
 	 *
-	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer::compute
 	 */
 	public function testWikiNameVar() {
 		$name = 'foo';
@@ -171,7 +172,7 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 	/**
 	 * Test for the wiki_language variable.
 	 *
-	 * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer::compute
 	 */
 	public function testWikiLanguageVar() {
 		$fakeCode = 'foobar';

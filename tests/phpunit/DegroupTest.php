@@ -5,6 +5,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;

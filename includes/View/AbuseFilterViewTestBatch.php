@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\View;
 
 use AbuseFilterChangesList;
-use AbuseFilterVariableHolder;
 use ActorMigration;
 use HTMLForm;
 use IContextSource;
@@ -11,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Linker\LinkRenderer;
 use RecentChange;
 use Title;

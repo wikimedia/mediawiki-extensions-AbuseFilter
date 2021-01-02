@@ -23,20 +23,20 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
-use AbuseFilterVariableHolder;
 use BagOStuff;
 use EmptyBagOStuff;
 use Generator;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use PHPUnit;
 use Psr\Log\NullLogger;
 use TestLogger;
@@ -59,8 +59,8 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
- * @covers AFComputedVariable
- * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
  */
 class ParserTest extends ParserTestCase {
 	/**

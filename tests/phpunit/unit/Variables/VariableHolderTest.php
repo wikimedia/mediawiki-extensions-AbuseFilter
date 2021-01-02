@@ -22,11 +22,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use AbuseFilterVariableHolder;
-use AFComputedVariable;
 use Generator;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable;
+use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWikiUnitTestCase;
 
 /**
@@ -54,7 +54,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterVariableHolder::setVar
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder::setVar
 	 */
 	public function testVarsAreLowercased() {
 		$vars = new AbuseFilterVariableHolder();
@@ -71,7 +71,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 *
 	 * @dataProvider provideSetVar
 	 *
-	 * @covers AbuseFilterVariableHolder::setVar
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder::setVar
 	 */
 	public function testSetVar( string $name, $val, $expected ) {
 		$vars = new AbuseFilterVariableHolder();
@@ -86,7 +86,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 		yield 'AFPData' => [ 'foo', $afpdata, $afpdata ];
 
 		$afcompvar = new AFComputedVariable( 'foo', [] );
-		yield 'AFComputedVariable' => [ 'foo', $afcompvar, $afcompvar ];
+		yield 'lazy-loaded' => [ 'foo', $afcompvar, $afcompvar ];
 	}
 
 	/**
@@ -110,7 +110,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 * @param AbuseFilterVariableHolder $vars
 	 * @param string $name
 	 * @param AFPData|AFComputedVariable $expected
-	 * @covers AbuseFilterVariableHolder::getVarThrow
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder::getVarThrow
 	 *
 	 * @dataProvider provideGetVarThrow
 	 */
@@ -127,7 +127,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 		$name = 'foo';
 		$afcv = new AFComputedVariable( 'method', [ 'param' ] );
 		$vars->setVar( $name, $afcv );
-		yield 'set, AFComputedVariable' => [ $vars, $name, $afcv ];
+		yield 'set, lazy-loaded' => [ $vars, $name, $afcv ];
 
 		$name = 'afpd';
 		$afpd = new AFPData( AFPData::DINT, 42 );
@@ -136,7 +136,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers AbuseFilterVariableHolder::getVarThrow
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder::getVarThrow
 	 */
 	public function testGetVarThrow_unset() {
 		$vars = new AbuseFilterVariableHolder();
@@ -149,7 +149,7 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 	 * @param AbuseFilterVariableHolder ...$holders
 	 * @dataProvider provideHoldersForAddition
 	 *
-	 * @covers AbuseFilterVariableHolder::addHolders
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder::addHolders
 	 */
 	public function testAddHolders( array $expected, AbuseFilterVariableHolder ...$holders ) {
 		$actual = new AbuseFilterVariableHolder();

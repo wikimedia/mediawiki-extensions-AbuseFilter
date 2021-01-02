@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
-use AbuseFilterVariableHolder;
 use BagOStuff;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MWException;
 
 /**

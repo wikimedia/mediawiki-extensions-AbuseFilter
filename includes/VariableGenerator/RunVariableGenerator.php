@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
-use AbuseFilterVariableHolder;
 use Content;
-use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -18,7 +18,7 @@ use User;
 use WikiPage;
 
 /**
- * This class contains the logic used to create AbuseFilterVariableHolder objects before filtering
+ * This class contains the logic used to create variable holders before filtering
  * an action.
  */
 class RunVariableGenerator extends VariableGenerator {

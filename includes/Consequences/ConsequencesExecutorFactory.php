@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
-use AbuseFilterVariableHolder;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use Psr\Log\LoggerInterface;
 use Title;
 use User;

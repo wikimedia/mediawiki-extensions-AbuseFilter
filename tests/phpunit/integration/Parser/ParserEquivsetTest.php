@@ -26,13 +26,13 @@ use EmptyBagOStuff;
 use Generator;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTestCase;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiIntegrationTestCase;
 
 /**

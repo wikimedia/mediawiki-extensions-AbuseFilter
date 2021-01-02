@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
-use AbuseFilterVariableHolder;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use RecentChange;
 use Title;
 use User;

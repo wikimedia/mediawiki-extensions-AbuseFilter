@@ -2,15 +2,15 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use AbuseFilterVariableHolder;
-use AFComputedVariable;
 use Generator;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\AFComputedVariable;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
@@ -18,7 +18,7 @@ use Psr\Log\NullLogger;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\VariablesManager
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Variables\VariablesManager
  */
 class VariablesManagerTest extends MediaWikiUnitTestCase {
 	/**
@@ -214,7 +214,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$computer->method( 'compute' )->willReturn( $expected );
 		$afcv = new AFComputedVariable( '', [] );
 		$vars->setVar( $name, $afcv );
-		yield 'set, AFComputedVariable' => [ $this->getManager( $computer ), $vars, $name, 0, $expected ];
+		yield 'set, lazy-loaded' => [ $this->getManager( $computer ), $vars, $name, 0, $expected ];
 
 		$name = 'afpd';
 		$afpd = new AFPData( AFPData::DINT, 42 );

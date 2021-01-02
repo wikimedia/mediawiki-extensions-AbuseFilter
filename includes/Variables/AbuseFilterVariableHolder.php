@@ -1,9 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Variables;
+
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\UnsetVariableException;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
 
 /**
  * Mutable value object that holds a list of variables
@@ -124,3 +124,6 @@ class AbuseFilterVariableHolder {
 		unset( $this->mVars[$varName] );
 	}
 }
+
+// @deprecated Since 1.36
+class_alias( AbuseFilterVariableHolder::class, 'AbuseFilterVariableHolder' );

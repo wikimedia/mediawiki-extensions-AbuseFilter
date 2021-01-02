@@ -4,6 +4,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\ThrottleFilterPresentationModel;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;

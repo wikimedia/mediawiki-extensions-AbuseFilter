@@ -1,10 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Variables;
 
-use AbuseFilterVariableHolder;
-use AFComputedVariable;
 use LogicException;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use Psr\Log\LoggerInterface;
 use RuntimeException;

@@ -3,13 +3,15 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use AbuseFilter;
-use AbuseFilterVariableHolder;
 use CheckUserHooks;
 use DeferredUpdates;
 use ExtensionRegistry;
 use InvalidArgumentException;
 use ManualLogEntry;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Title;
 use User;
 use Wikimedia\Rdbms\IDatabase;

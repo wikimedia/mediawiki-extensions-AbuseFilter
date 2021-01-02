@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
-use AbuseFilterVariableHolder;
 use Content;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use RecentChange;

@@ -1,9 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\Variables;
 
-use AbuseFilterVariableHolder;
 use Html;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MessageLocalizer;
 use Xml;
 

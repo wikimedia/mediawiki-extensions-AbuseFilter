@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
-use AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWFileProps;
@@ -12,7 +12,7 @@ use Title;
 use User;
 
 /**
- * This class contains the logic used to create AbuseFilterVariableHolder objects used to
+ * This class contains the logic used to create variable holders used to
  * examine a RecentChanges row.
  */
 class RCVariableGenerator extends VariableGenerator {

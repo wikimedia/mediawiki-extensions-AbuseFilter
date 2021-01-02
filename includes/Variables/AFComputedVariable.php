@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Variables;
+
 class AFComputedVariable {
 	/**
 	 * @var string The method used to compute the variable

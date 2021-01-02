@@ -2,10 +2,11 @@
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterVariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionStore;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -17,7 +18,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * @group AbuseFilter
  * @group AbuseFilterGeneric
  *
- * @covers \MediaWiki\Extension\AbuseFilter\LazyVariableComputer::compute
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer::compute
  * @fixme Make this a unit test once the class stops using MediaWikiServices
  */
 class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {

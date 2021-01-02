@@ -3,14 +3,14 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\VariablesFormatter;
-use MediaWiki\Extension\AbuseFilter\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\VariablesFormatter
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter
  */
 class VariablesFormatterTest extends MediaWikiUnitTestCase {
 	/**
