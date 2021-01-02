@@ -19,6 +19,9 @@
  * @ingroup Maintenance
  */
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
+use LoggedUpdateMaintenance;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
@@ -47,7 +50,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 * @return string
 	 */
 	public function getUpdateKey() {
-		return __CLASS__;
+		return 'NormalizeThrottleParameters';
 	}
 
 	/** @var \Wikimedia\Rdbms\Database The master database */

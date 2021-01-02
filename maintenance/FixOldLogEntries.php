@@ -1,11 +1,16 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
+use LoggedUpdateMaintenance;
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+
 /**
  * Fix old log entries with log_type = 'abusefilter' where log_params are imploded with '\n'
  * instead of "\n" (using single quotes), which causes a broken display.
@@ -41,7 +46,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 	 * @inheritDoc
 	 */
 	public function getUpdateKey() {
-		return __CLASS__;
+		return 'FixOldLogEntries';
 	}
 
 	/**
@@ -284,5 +289,5 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 	}
 }
 
-$maintClass = 'FixOldLogEntries';
+$maintClass = FixOldLogEntries::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

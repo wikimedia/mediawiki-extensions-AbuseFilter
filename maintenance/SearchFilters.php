@@ -1,5 +1,9 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
+use Maintenance;
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {

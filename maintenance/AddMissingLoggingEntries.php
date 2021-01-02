@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
@@ -7,8 +9,11 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use LoggedUpdateMaintenance;
+use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\MediaWikiServices;
+use User;
 
 /**
  * Adds rows missing per T54919
@@ -29,7 +34,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 	 * @inheritDoc
 	 */
 	public function getUpdateKey() {
-		return __CLASS__;
+		return 'AddMissingLoggingEntries';
 	}
 
 	/**

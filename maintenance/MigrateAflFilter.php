@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
+use LoggedUpdateMaintenance;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\MediaWikiServices;
 
@@ -29,7 +32,7 @@ class MigrateAflFilter extends LoggedUpdateMaintenance {
 	 * @inheritDoc
 	 */
 	public function getUpdateKey() {
-		return __CLASS__;
+		return 'MigrateAflFilter';
 	}
 
 	/**
@@ -133,5 +136,5 @@ class MigrateAflFilter extends LoggedUpdateMaintenance {
 	}
 }
 
-$maintClass = 'MigrateAflFilter';
+$maintClass = MigrateAflFilter::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

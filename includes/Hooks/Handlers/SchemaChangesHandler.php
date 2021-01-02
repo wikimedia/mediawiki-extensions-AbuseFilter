@@ -3,12 +3,12 @@
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use DatabaseUpdater;
-use FixOldLogEntries;
+use MediaWiki\Extension\AbuseFilter\Maintenance\FixOldLogEntries;
+use MediaWiki\Extension\AbuseFilter\Maintenance\MigrateAflFilter;
+use MediaWiki\Extension\AbuseFilter\Maintenance\NormalizeThrottleParameters;
+use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
-use MigrateAflFilter;
 use MWException;
-use NormalizeThrottleParameters;
-use UpdateVarDumps;
 use User;
 
 class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
