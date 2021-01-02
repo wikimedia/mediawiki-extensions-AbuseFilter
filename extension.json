@@ -78,6 +78,7 @@
 		"AbuseFilter": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Special\\SpecialAbuseFilter",
 			"services": [
+				"AbuseFilterPermissionManager",
 				"ObjectFactory"
 			]
 		}

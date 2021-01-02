@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
@@ -23,6 +24,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	/**
 	 * @covers ::instantiateView
 	 * @covers ::__construct
+	 * @covers \MediaWiki\Extension\AbuseFilter\Special\AbuseFilterSpecialPage::__construct
 	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView::__construct
 	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff::__construct
 	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit::__construct
@@ -61,6 +63,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	protected function newSpecialPage() : SpecialAbuseFilter {
 		$services = MediaWikiServices::getInstance();
 		$sp = new SpecialAbuseFilter(
+			$services->getService( AbuseFilterPermissionManager::SERVICE_NAME ),
 			$services->getObjectFactory()
 		);
 		$sp->setLinkRenderer(
