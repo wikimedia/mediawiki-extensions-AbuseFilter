@@ -135,6 +135,7 @@
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
 	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\AbuseFilter\\Maintenance\\": "maintenance/",
 		"MediaWiki\\Extension\\AbuseFilter\\Api\\": "includes/Api/",
 		"MediaWiki\\Extension\\AbuseFilter\\VariableGenerator\\": "includes/VariableGenerator/",
 		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/",
