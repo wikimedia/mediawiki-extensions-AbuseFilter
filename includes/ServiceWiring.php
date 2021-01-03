@@ -30,6 +30,7 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
@@ -267,6 +268,7 @@ return [
 			$services->get( ConsequencesExecutorFactory::SERVICE_NAME ),
 			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
+			$services->get( VariableGeneratorFactory::SERVICE_NAME ),
 			$services->get( UpdateHitCountWatcher::SERVICE_NAME ),
 			$services->get( EmergencyWatcher::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
@@ -313,6 +315,14 @@ return [
 			$services->get( KeywordsManager::SERVICE_NAME ),
 			$services->get( LazyVariableComputer::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' )
+		);
+	},
+	VariableGeneratorFactory::SERVICE_NAME => function ( MediaWikiServices $services ): VariableGeneratorFactory {
+		return new VariableGeneratorFactory(
+			AbuseFilterHookRunner::getRunner(),
+			$services->get( TextExtractor::SERVICE_NAME ),
+			$services->getMimeAnalyzer(),
+			$services->getRepoGroup()
 		);
 	},
 ];

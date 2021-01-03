@@ -7,7 +7,6 @@ use ApiResult;
 use FormatJson;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use RecentChange;
 
@@ -36,9 +35,8 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
-			$vars = new VariableHolder();
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
+			$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator( $rc, $this->getUser() );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );

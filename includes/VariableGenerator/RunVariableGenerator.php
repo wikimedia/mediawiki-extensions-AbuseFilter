@@ -3,13 +3,14 @@
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use Content;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MimeAnalyzer;
 use MWException;
 use MWFileProps;
 use Title;
@@ -34,23 +35,30 @@ class RunVariableGenerator extends VariableGenerator {
 
 	/** @var TextExtractor */
 	private $textExtractor;
+	/** @var MimeAnalyzer */
+	private $mimeAnalyzer;
 
 	/**
-	 * @param VariableHolder $vars
+	 * @param AbuseFilterHookRunner $hookRunner
+	 * @param TextExtractor $textExtractor
+	 * @param MimeAnalyzer $mimeAnalyzer
 	 * @param User $user
 	 * @param Title $title
-	 * @param TextExtractor $textExtractor
+	 * @param VariableHolder|null $vars
 	 */
 	public function __construct(
-		VariableHolder $vars,
+		AbuseFilterHookRunner $hookRunner,
+		TextExtractor $textExtractor,
+		MimeAnalyzer $mimeAnalyzer,
 		User $user,
 		Title $title,
-		TextExtractor $textExtractor
+		VariableHolder $vars = null
 	) {
-		parent::__construct( $vars );
+		parent::__construct( $hookRunner, $vars );
+		$this->textExtractor = $textExtractor;
+		$this->mimeAnalyzer = $mimeAnalyzer;
 		$this->user = $user;
 		$this->title = $title;
-		$this->textExtractor = $textExtractor;
 	}
 
 	/**
@@ -243,9 +251,8 @@ class RunVariableGenerator extends VariableGenerator {
 		?string $text,
 		?array $props
 	) : ?VariableHolder {
-		$mimeAnalyzer = MediaWikiServices::getInstance()->getMimeAnalyzer();
 		if ( !$props ) {
-			$props = ( new MWFileProps( $mimeAnalyzer ) )->getPropsFromPath(
+			$props = ( new MWFileProps( $this->mimeAnalyzer ) )->getPropsFromPath(
 				$upload->getTempPath(),
 				true
 			);
@@ -264,7 +271,7 @@ class RunVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'file_size', $upload->getFileSize() );
 
 		$this->vars->setVar( 'file_mime', $props['mime'] );
-		$this->vars->setVar( 'file_mediatype', $mimeAnalyzer->getMediaType( null, $props['mime'] ) );
+		$this->vars->setVar( 'file_mediatype', $this->mimeAnalyzer->getMediaType( null, $props['mime'] ) );
 		$this->vars->setVar( 'file_width', $props['width'] );
 		$this->vars->setVar( 'file_height', $props['height'] );
 		$this->vars->setVar( 'file_bits_per_channel', $props['bits'] );

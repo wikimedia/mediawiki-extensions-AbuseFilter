@@ -3,8 +3,6 @@
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\MediaWikiServices;
 
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
@@ -45,9 +43,7 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 		}
 
 		$title = SpecialPage::getTitleFor( 'Userlogin' );
-		$vars = new VariableHolder();
-		$converter = AbuseFilterServices::getTextExtractor();
-		$builder = new RunVariableGenerator( $vars, $creator, $title, $converter );
+		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $creator, $title );
 		$vars = $builder->getAccountCreationVars( $user, $autocreate );
 
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();

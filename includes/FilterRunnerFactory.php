@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
@@ -34,6 +35,8 @@ class FilterRunnerFactory {
 	private $abuseLoggerFactory;
 	/** @var VariablesManager */
 	private $varManager;
+	/** @var VariableGeneratorFactory */
+	private $varGeneratorFactory;
 	/** @var UpdateHitCountWatcher */
 	private $updateHitCountWatcher;
 	/** @var EmergencyWatcher */
@@ -54,6 +57,7 @@ class FilterRunnerFactory {
 	 * @param ConsequencesExecutorFactory $consExecutorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param VariablesManager $varManager
+	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param UpdateHitCountWatcher $updateHitCountWatcher
 	 * @param EmergencyWatcher $emergencyWatcher
 	 * @param LoggerInterface $logger
@@ -69,6 +73,7 @@ class FilterRunnerFactory {
 		ConsequencesExecutorFactory $consExecutorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
 		VariablesManager $varManager,
+		VariableGeneratorFactory $varGeneratorFactory,
 		UpdateHitCountWatcher $updateHitCountWatcher,
 		EmergencyWatcher $emergencyWatcher,
 		LoggerInterface $logger,
@@ -83,6 +88,7 @@ class FilterRunnerFactory {
 		$this->consExecutorFactory = $consExecutorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 		$this->varManager = $varManager;
+		$this->varGeneratorFactory = $varGeneratorFactory;
 		$this->updateHitCountWatcher = $updateHitCountWatcher;
 		$this->emergencyWatcher = $emergencyWatcher;
 		$this->logger = $logger;
@@ -114,6 +120,7 @@ class FilterRunnerFactory {
 			$this->consExecutorFactory,
 			$this->abuseLoggerFactory,
 			$this->varManager,
+			$this->varGeneratorFactory,
 			$watchers,
 			$this->logger,
 			$this->statsdDataFactory,

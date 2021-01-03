@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -61,6 +62,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			VariablesBlobStore::SERVICE_NAME,
 			VariablesFormatter::SERVICE_NAME,
 			VariablesManager::SERVICE_NAME,
+			VariableGeneratorFactory::SERVICE_NAME,
 		],
 		AbuseFilterViewHistory::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
@@ -85,6 +87,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,
 			AfParserFactory::SERVICE_NAME,
+			VariableGeneratorFactory::SERVICE_NAME,
 		],
 		AbuseFilterViewTools::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,

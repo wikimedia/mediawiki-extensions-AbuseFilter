@@ -2,12 +2,14 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\MediaWikiServices;
+use MimeAnalyzer;
 use MWFileProps;
 use MWTimestamp;
 use RecentChange;
+use RepoGroup;
 use Title;
 use User;
 
@@ -24,18 +26,31 @@ class RCVariableGenerator extends VariableGenerator {
 	/** @var User */
 	private $contextUser;
 
+	/** @var MimeAnalyzer */
+	private $mimeAnalyzer;
+	/** @var RepoGroup */
+	private $repoGroup;
+
 	/**
-	 * @param VariableHolder $vars
+	 * @param AbuseFilterHookRunner $hookRunner
+	 * @param MimeAnalyzer $mimeAnalyzer
+	 * @param RepoGroup $repoGroup
 	 * @param RecentChange $rc
 	 * @param User $contextUser
+	 * @param VariableHolder|null $vars
 	 */
 	public function __construct(
-		VariableHolder $vars,
+		AbuseFilterHookRunner $hookRunner,
+		MimeAnalyzer $mimeAnalyzer,
+		RepoGroup $repoGroup,
 		RecentChange $rc,
-		User $contextUser
+		User $contextUser,
+		VariableHolder $vars = null
 	) {
-		parent::__construct( $vars );
+		parent::__construct( $hookRunner, $vars );
 
+		$this->mimeAnalyzer = $mimeAnalyzer;
+		$this->repoGroup = $repoGroup;
 		$this->rc = $rc;
 		$this->contextUser = $contextUser;
 	}
@@ -153,7 +168,7 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 
 		$time = $this->rc->getParam( 'img_timestamp' );
-		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile(
+		$file = $this->repoGroup->findFile(
 			$title, [ 'time' => $time, 'private' => $this->contextUser ]
 		);
 		if ( !$file ) {
@@ -172,13 +187,12 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'file_mime', $file->getMimeType() );
 		$this->vars->setVar(
 			'file_mediatype',
-			MediaWikiServices::getInstance()->getMimeAnalyzer()
-				->getMediaType( null, $file->getMimeType() )
+			$this->mimeAnalyzer->getMediaType( null, $file->getMimeType() )
 		);
 		$this->vars->setVar( 'file_width', $file->getWidth() );
 		$this->vars->setVar( 'file_height', $file->getHeight() );
 
-		$mwProps = new MWFileProps( MediaWikiServices::getInstance()->getMimeAnalyzer() );
+		$mwProps = new MWFileProps( $this->mimeAnalyzer );
 		$bits = $mwProps->getPropsFromPath( $file->getLocalRefPath(), true )['bits'];
 		$this->vars->setVar( 'file_bits_per_channel', $bits );
 

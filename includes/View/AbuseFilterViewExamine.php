@@ -13,7 +13,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
@@ -67,6 +67,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @var VariablesManager
 	 */
 	private $varManager;
+	/**
+	 * @var VariableGeneratorFactory
+	 */
+	private $varGeneratorFactory;
 
 	/**
 	 * @param RevisionLookup $revisionLookup
@@ -76,6 +80,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param VariablesFormatter $variablesFormatter
 	 * @param VariablesManager $varManager
+	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -89,6 +94,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		VariablesBlobStore $varBlobStore,
 		VariablesFormatter $variablesFormatter,
 		VariablesManager $varManager,
+		VariableGeneratorFactory $varGeneratorFactory,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -102,6 +108,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->variablesFormatter = $variablesFormatter;
 		$this->variablesFormatter->setMessageLocalizer( $context );
 		$this->varManager = $varManager;
+		$this->varGeneratorFactory = $varGeneratorFactory;
 	}
 
 	/**
@@ -202,8 +209,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		$vars = new VariableHolder();
-		$varGenerator = new RCVariableGenerator( $vars, $rc, $this->getUser() );
+		$varGenerator = $this->varGeneratorFactory->newRCGenerator( $rc, $this->getUser() );
 		$vars = $varGenerator->getVars() ?: new VariableHolder();
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
