@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilter;
-use AbuseFilterChangesList;
 use ChangesList;
 use HTMLForm;
 use IContextSource;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;

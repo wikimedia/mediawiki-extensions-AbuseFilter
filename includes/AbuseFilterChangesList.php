@@ -1,6 +1,15 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter;
+
+use HtmlArmor;
+use Linker;
+use LogFormatter;
 use MediaWiki\Revision\RevisionRecord;
+use OldChangesList;
+use RecentChange;
+use Skin;
+use SpecialPage;
 
 class AbuseFilterChangesList extends OldChangesList {
 

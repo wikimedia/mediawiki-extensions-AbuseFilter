@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use AbuseFilterChangesList;
 use ActorMigration;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
 use RecentChange;
 use ReverseChronologicalPager;

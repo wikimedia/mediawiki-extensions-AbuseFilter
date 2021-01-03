@@ -1,9 +1,13 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter;
+
 use MediaWiki\Auth\AbstractPreAuthenticationProvider;
 use MediaWiki\Auth\AuthenticationRequest;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\MediaWikiServices;
+use SpecialPage;
+use StatusValue;
+use User;
 
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
 	/**

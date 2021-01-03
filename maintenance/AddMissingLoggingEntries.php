@@ -122,7 +122,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 				continue;
 			}
 
-			// This copies the code in AbuseFilter::doSaveFilter
+			// This copies the code in FilterStore
 			$logEntry = new ManualLogEntry( 'abusefilter', 'modify' );
 			$logEntry->setPerformer( $user );
 			$logEntry->setTarget( SpecialAbuseFilter::getTitleForSubpage( $row->afh_filter ) );

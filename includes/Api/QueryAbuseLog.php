@@ -25,11 +25,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
-use AbuseFilter;
 use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
 use InvalidArgumentException;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;

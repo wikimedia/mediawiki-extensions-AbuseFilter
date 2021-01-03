@@ -525,7 +525,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	private function doUpdateText( IResultWrapper $res, ExternalStoreAccess $esAccess ) {
 		$orphaned = [];
 		foreach ( $res as $row ) {
-			// This is copied from AbuseFilter::loadVarDump
+			// This is copied from the old AbuseFilter::loadVarDump
 			$oldFlags = explode( ',', $row->old_flags );
 			$text = $row->old_text;
 			if ( in_array( 'external', $oldFlags ) ) {
@@ -565,7 +565,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$varArray = $this->updateVariables( $varArray );
 			// Recreating flags will also ensure that we don't add 'nativeDataArray'
 			$newFlags = [ 'utf-8' ];
-			// This is copied from AbuseFilter::storeVarDump
+			// This is copied from the old AbuseFilter::storeVarDump
 			$toStore = FormatJson::encode( $varArray );
 			if ( in_array( 'gzip', $oldFlags ) && function_exists( 'gzdeflate' ) ) {
 				$toStore = gzdeflate( $toStore );

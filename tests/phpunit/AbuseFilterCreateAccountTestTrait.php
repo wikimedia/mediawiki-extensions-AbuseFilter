@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider;
+
 /**
  * This trait can be used to create accounts in integration tests.
  * NOTE: The implementing classes MUST extend MediaWikiIntegrationTestCase

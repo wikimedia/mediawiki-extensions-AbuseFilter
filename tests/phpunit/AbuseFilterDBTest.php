@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
