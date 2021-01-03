@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Special;
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
@@ -25,7 +26,10 @@ class SpecialAbuseFilterTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideGetViewClassAndPageType
 	 */
 	public function testGetViewClassAndPageType( $subpage, $view, $pageType, $params = [] ) {
-		$sp = new SpecialAbuseFilter( $this->createMock( ObjectFactory::class ) );
+		$sp = new SpecialAbuseFilter(
+			$this->createMock( AbuseFilterPermissionManager::class ),
+			$this->createMock( ObjectFactory::class )
+		);
 		[ $viewClass, $type, $args ] = $sp->getViewClassAndPageType( $subpage );
 		$this->assertSame( $view, $viewClass );
 		$this->assertSame( $pageType, $type );

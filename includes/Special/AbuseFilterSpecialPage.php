@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use HtmlArmor;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use SpecialPage;
 use Title;
 use Xml;
@@ -12,13 +12,30 @@ use Xml;
  * Parent class for AbuseFilter special pages.
  */
 abstract class AbuseFilterSpecialPage extends SpecialPage {
+
+	/** @var AbuseFilterPermissionManager */
+	protected $afPermissionManager;
+
+	/**
+	 * @param string $name
+	 * @param string $restriction
+	 * @param AbuseFilterPermissionManager $afPermissionManager
+	 */
+	public function __construct(
+		$name,
+		$restriction,
+		AbuseFilterPermissionManager $afPermissionManager
+	) {
+		parent::__construct( $name, $restriction );
+		$this->afPermissionManager = $afPermissionManager;
+	}
+
 	/**
 	 * Add topbar navigation links
 	 *
 	 * @param string $pageType
 	 */
 	protected function addNavigationLinks( $pageType ) {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$user = $this->getUser();
 
 		$linkDefs = [
@@ -27,13 +44,13 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 			'examine' => 'Special:AbuseFilter/examine',
 		];
 
-		if ( $afPermManager->canViewAbuseLog( $user ) ) {
+		if ( $this->afPermissionManager->canViewAbuseLog( $user ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'log' => 'Special:AbuseLog'
 			] );
 		}
 
-		if ( $afPermManager->canViewPrivateFilters( $user ) ) {
+		if ( $this->afPermissionManager->canViewPrivateFilters( $user ) ) {
 			$linkDefs = array_merge( $linkDefs, [
 				'test' => 'Special:AbuseFilter/test',
 				'tools' => 'Special:AbuseFilter/tools'

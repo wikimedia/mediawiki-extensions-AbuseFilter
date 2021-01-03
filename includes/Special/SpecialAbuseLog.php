@@ -93,9 +93,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var PermissionManager */
 	private $permissionManager;
 
-	/** @var AbuseFilterPermissionManager */
-	private $afPermissionManager;
-
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
@@ -131,10 +128,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		VariablesFormatter $variablesFormatter,
 		VariablesManager $varManager
 	) {
-		parent::__construct( 'AbuseLog', 'abusefilter-log' );
+		parent::__construct( 'AbuseLog', 'abusefilter-log', $afPermissionManager );
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permissionManager;
-		$this->afPermissionManager = $afPermissionManager;
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->varBlobStore = $varBlobStore;
 		$this->specsFormatter = $specsFormatter;

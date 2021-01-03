@@ -93,10 +93,14 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	];
 
 	/**
+	 * @param AbuseFilterPermissionManager $afPermissionManager
 	 * @param ObjectFactory $objectFactory
 	 */
-	public function __construct( ObjectFactory $objectFactory ) {
-		parent::__construct( self::PAGE_NAME, 'abusefilter-view' );
+	public function __construct(
+		AbuseFilterPermissionManager $afPermissionManager,
+		ObjectFactory $objectFactory
+	) {
+		parent::__construct( self::PAGE_NAME, 'abusefilter-view', $afPermissionManager );
 		$this->objectFactory = $objectFactory;
 	}
 
