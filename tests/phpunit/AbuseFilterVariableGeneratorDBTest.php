@@ -2,8 +2,6 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\MediaWikiServices;
@@ -62,7 +60,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			'summary' => $summary
 		] );
 
-		$generator = new VariableGenerator( $baseVars );
+		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator( $baseVars );
 		$actualHolder = $generator->addEditVars( $title, $page, $this->createMock( User::class ) )
 			->getVariableHolder();
 		$actual = AbuseFilterServices::getVariablesManager()->exportAllVars( $actualHolder );
@@ -212,8 +210,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			$title = Title::newFromText( $pageName );
 
 			$expected = $this->computeRecentContributors( $title );
-			$vars = new VariableHolder;
-			$generator = new VariableGenerator( $vars );
+			$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
 			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
 			$manager = AbuseFilterServices::getVariablesManager();
 			$actual = $manager->getVar( $vars, $varName )->toNative();
@@ -242,8 +239,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 			);
 			$expected = $user->getName();
 
-			$vars = new VariableHolder;
-			$generator = new VariableGenerator( $vars );
+			$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
 			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
 			$manager = AbuseFilterServices::getVariablesManager();
 			$actual = $manager->getVar( $vars, $varName )->toNative();
@@ -375,8 +371,7 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 		);
 
 		$rc = RecentChange::newFromRow( $row );
-		$varGenerator = new RCVariableGenerator(
-			new VariableHolder(),
+		$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator(
 			$rc,
 			$this->getTestSysop()->getUser()
 		);

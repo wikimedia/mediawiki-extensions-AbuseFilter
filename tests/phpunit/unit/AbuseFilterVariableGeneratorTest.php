@@ -19,9 +19,9 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * @group AbuseFilterGeneric
  *
  * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer::compute
- * @fixme Make this a unit test once the class stops using MediaWikiServices
+ * @todo Extract a separate test for LazyVariableComputer
  */
-class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
+class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 	/** A fake timestamp to use in several time-related tests. */
 	private const FAKE_TIME = 1514700000;
 
@@ -103,9 +103,8 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideUserVars
 	 */
 	public function testAddUserVars( $varName ) {
-		// Mocking the HookRunner would result in methods returning null, which would be interpreted
-		// as if the handler handled the event, so use the actual runner.
-		$hookRunner = AbuseFilterHookRunner::getRunner();
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterInterceptVariable' )->willReturn( true );
 		$computer = new LazyVariableComputer(
 			$this->createMock( TextExtractor::class ),
 			$hookRunner,
@@ -123,7 +122,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		$variableHolder = new VariableHolder();
-		$generator = new VariableGenerator( $variableHolder );
+		$generator = new VariableGenerator( $this->createMock( AbuseFilterHookRunner::class ), $variableHolder );
 		$variableHolder = $generator->addUserVars( $user )->getVariableHolder();
 		$varManager = new VariablesManager(
 			$keywordsManager,
@@ -235,8 +234,8 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		$variableHolder = new VariableHolder();
 		$titleFactory = $this->createMock( TitleFactory::class );
 		$titleFactory->method( 'makeTitle' )->willReturn( $title );
-		// The mock would return null, which would be interpreted as if the handler handled the event
-		$hookRunner = AbuseFilterHookRunner::getRunner();
+		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
+		$hookRunner->method( 'onAbuseFilterInterceptVariable' )->willReturn( true );
 		/** @var LazyVariableComputer|MockObject $computer */
 		$computer = new LazyVariableComputer(
 			$this->createMock( TextExtractor::class ),
@@ -252,7 +251,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			''
 		);
 
-		$generator = new VariableGenerator( $variableHolder );
+		$generator = new VariableGenerator( $this->createMock( AbuseFilterHookRunner::class ), $variableHolder );
 		$variableHolder = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
 		$varManager = new VariablesManager(
 			$keywordsManager,

@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
@@ -235,5 +236,12 @@ class AbuseFilterServices {
 	 */
 	public static function getVariablesManager() : VariablesManager {
 		return MediaWikiServices::getInstance()->getService( VariablesManager::SERVICE_NAME );
+	}
+
+	/**
+	 * @return VariableGeneratorFactory
+	 */
+	public static function getVariableGeneratorFactory() : VariableGeneratorFactory {
+		return MediaWikiServices::getInstance()->getService( VariableGeneratorFactory::SERVICE_NAME );
 	}
 }

@@ -9,8 +9,7 @@ use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Linker\LinkRenderer;
 use RecentChange;
 use Title;
@@ -63,11 +62,16 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 * @var AfParserFactory
 	 */
 	private $parserFactory;
+	/**
+	 * @var VariableGeneratorFactory
+	 */
+	private $varGeneratorFactory;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
 	 * @param AfParserFactory $parserFactory
+	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -77,6 +81,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		AbuseFilterPermissionManager $afPermManager,
 		EditBoxBuilderFactory $boxBuilderFactory,
 		AfParserFactory $parserFactory,
+		VariableGeneratorFactory $varGeneratorFactory,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -85,6 +90,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->parserFactory = $parserFactory;
+		$this->varGeneratorFactory = $varGeneratorFactory;
 	}
 
 	/**
@@ -267,9 +273,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$contextUser = $this->getUser();
 		$parser->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
-			$vars = new VariableHolder();
 			$rc = RecentChange::newFromRow( $row );
-			$varGenerator = new RCVariableGenerator( $vars, $rc, $contextUser );
+			$varGenerator = $this->varGeneratorFactory->newRCGenerator( $rc, $contextUser );
 			$vars = $varGenerator->getVars();
 
 			if ( !$vars ) {

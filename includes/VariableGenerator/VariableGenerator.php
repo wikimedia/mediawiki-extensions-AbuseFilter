@@ -22,13 +22,15 @@ class VariableGenerator {
 	private $hookRunner;
 
 	/**
+	 * @param AbuseFilterHookRunner|null $hookRunner Null for BC
 	 * @param VariableHolder|null $vars
 	 */
-	public function __construct( VariableHolder $vars = null ) {
+	public function __construct(
+		AbuseFilterHookRunner $hookRunner = null,
+		VariableHolder $vars = null
+	) {
+		$this->hookRunner = $hookRunner ?? AbuseFilterHookRunner::getRunner();
 		$this->vars = $vars ?? new VariableHolder();
-
-		// TODO this class is constructed in other extensions; make this a parameter
-		$this->hookRunner = AbuseFilterHookRunner::getRunner();
 	}
 
 	/**

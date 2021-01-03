@@ -12,7 +12,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -53,6 +53,8 @@ class FilterRunner {
 	private $statsdDataFactory;
 	/** @var VariablesManager */
 	private $varManager;
+	/** @var VariableGeneratorFactory */
+	private $varGeneratorFactory;
 
 	/**
 	 * @var AbuseFilterParser
@@ -102,6 +104,7 @@ class FilterRunner {
 	 * @param ConsequencesExecutorFactory $consExecutorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param VariablesManager $varManager
+	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param Watcher[] $watchers
 	 * @param LoggerInterface $logger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
@@ -121,6 +124,7 @@ class FilterRunner {
 		ConsequencesExecutorFactory $consExecutorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
 		VariablesManager $varManager,
+		VariableGeneratorFactory $varGeneratorFactory,
 		array $watchers,
 		LoggerInterface $logger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
@@ -137,7 +141,8 @@ class FilterRunner {
 		$this->parserFactory = $parserFactory;
 		$this->consExecutorFactory = $consExecutorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
-		$this->varManager = AbuseFilterServices::getVariablesManager();
+		$this->varManager = $varManager;
+		$this->varGeneratorFactory = $varGeneratorFactory;
 		$this->watchers = $watchers;
 		$this->logger = $logger;
 		$this->statsdDataFactory = $statsdDataFactory;
@@ -169,7 +174,7 @@ class FilterRunner {
 			$this->title,
 			$this->user
 		);
-		$generator = new VariableGenerator( $this->vars );
+		$generator = $this->varGeneratorFactory->newGenerator( $this->vars );
 		$this->vars = $generator->addGenericVars()->getVariableHolder();
 
 		$this->vars->forFilter = true;

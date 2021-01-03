@@ -3,8 +3,6 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\ThrottleFilterPresentationModel;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator;
-use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
@@ -207,9 +205,7 @@ class AbuseFilterHooks {
 
 		$page = $context->getWikiPage();
 
-		$vars = new VariableHolder();
-		$converter = AbuseFilterServices::getTextExtractor();
-		$builder = new RunVariableGenerator( $vars, $user, $title, $converter );
+		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $title );
 		$vars = $builder->getEditVars( $content, $text, $summary, $slot, $page );
 		if ( $vars === null ) {
 			// We don't have to filter the edit
@@ -328,9 +324,7 @@ class AbuseFilterHooks {
 		$reason,
 		Status &$status
 	) {
-		$vars = new VariableHolder();
-		$converter = AbuseFilterServices::getTextExtractor();
-		$builder = new RunVariableGenerator( $vars, $user, $oldTitle, $converter );
+		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $oldTitle );
 		$vars = $builder->getMoveVars( $newTitle, $reason );
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $oldTitle, $vars, 'default' );
@@ -348,9 +342,7 @@ class AbuseFilterHooks {
 	 */
 	public static function onArticleDelete( WikiPage $article, User $user, $reason, &$error,
 		Status $status ) {
-		$vars = new VariableHolder();
-		$converter = AbuseFilterServices::getTextExtractor();
-		$builder = new RunVariableGenerator( $vars, $user, $article->getTitle(), $converter );
+		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $article->getTitle() );
 		$vars = $builder->getDeleteVars( $reason );
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $article->getTitle(), $vars, 'default' );
@@ -431,9 +423,7 @@ class AbuseFilterHooks {
 			return true;
 		}
 
-		$vars = new VariableHolder();
-		$converter = AbuseFilterServices::getTextExtractor();
-		$builder = new RunVariableGenerator( $vars, $user, $title, $converter );
+		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $title );
 		$vars = $builder->getUploadVars( $action, $upload, $summary, $text, $props );
 		if ( $vars === null ) {
 			return true;
@@ -510,9 +500,10 @@ class AbuseFilterHooks {
 				$slot
 			) {
 				$startTime = microtime( true );
-				$vars = new VariableHolder();
-				$converter = AbuseFilterServices::getTextExtractor();
-				$generator = new RunVariableGenerator( $vars, $user, $page->getTitle(), $converter );
+				$generator = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator(
+					$user,
+					$page->getTitle()
+				);
 				$vars = $generator->getStashEditVars( $content, $summary, $slot, $page );
 				if ( !$vars ) {
 					return;
