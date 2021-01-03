@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Variables;
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 
 /**
@@ -61,17 +60,6 @@ class VariableHolder {
 	public function setLazyLoadVar( string $variable, string $method, array $parameters ) : void {
 		$placeholder = new LazyLoadedVariable( $method, $parameters );
 		$this->setVar( $variable, $placeholder );
-	}
-
-	/**
-	 * @deprecated since 1.36 Use VariablesManager
-	 * @param $varName
-	 * @param int $mode
-	 * @return AFPData
-	 */
-	public function getVar( $varName, $mode = VariablesManager::GET_STRICT ) : AFPData {
-		$varManager = AbuseFilterServices::getVariablesManager();
-		return $varManager->getVar( $this, $varName, $mode );
 	}
 
 	/**
