@@ -22,14 +22,14 @@ class VariableGenerator {
 	private $hookRunner;
 
 	/**
-	 * @param AbuseFilterHookRunner|null $hookRunner Null for BC
+	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param VariableHolder|null $vars
 	 */
 	public function __construct(
-		AbuseFilterHookRunner $hookRunner = null,
+		AbuseFilterHookRunner $hookRunner,
 		VariableHolder $vars = null
 	) {
-		$this->hookRunner = $hookRunner ?? AbuseFilterHookRunner::getRunner();
+		$this->hookRunner = $hookRunner;
 		$this->vars = $vars ?? new VariableHolder();
 	}
 
