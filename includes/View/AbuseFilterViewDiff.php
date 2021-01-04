@@ -243,6 +243,10 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			// cached
 			$other = $this->loadSpec( $otherSpec, $spec );
 
+			if ( !$other ) {
+				return null;
+			}
+
 			$comparison = $spec === 'prev' ? '<' : '>';
 			$order = $spec === 'prev' ? 'DESC' : 'ASC';
 			$row = $dbr->selectRow(
@@ -256,7 +260,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				[ 'ORDER BY' => "afh_timestamp $order" ]
 			);
 
-			if ( $other && !$row ) {
+			if ( !$row ) {
 				$t = $this->getTitle(
 					'history/' . $this->filter . '/item/' . $other['meta']['history_id'] );
 				$this->getOutput()->redirect( $t->getFullURL() );
