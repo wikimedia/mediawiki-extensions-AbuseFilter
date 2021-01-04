@@ -1,10 +1,17 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
+use ExternalStoreAccess;
+use FormatJson;
+use LoggedUpdateMaintenance;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\MediaWikiServices;
+use Title;
+use UnexpectedValueException;
 use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IResultWrapper;
@@ -74,7 +81,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	 * @inheritDoc
 	 */
 	public function getUpdateKey() {
-		return __CLASS__;
+		return 'UpdateVarDumps';
 	}
 
 	/**
@@ -718,5 +725,5 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	}
 }
 
-$maintClass = 'UpdateVarDumps';
+$maintClass = UpdateVarDumps::class;
 require_once RUN_MAINTENANCE_IF_MAIN;

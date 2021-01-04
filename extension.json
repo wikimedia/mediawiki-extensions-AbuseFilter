@@ -140,6 +140,7 @@
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
 	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\AbuseFilter\\Maintenance\\": "maintenance/",
 		"MediaWiki\\Extension\\AbuseFilter\\Api\\": "includes/Api/",
 		"MediaWiki\\Extension\\AbuseFilter\\VariableGenerator\\": "includes/VariableGenerator/",
 		"MediaWiki\\Extension\\AbuseFilter\\Hooks\\": "includes/Hooks/",
@@ -184,11 +185,7 @@
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLogger": "includes/AbuseLogger.php",
 		"MediaWiki\\Extension\\AbuseFilter\\AbuseLoggerFactory": "includes/AbuseLoggerFactory.php",
 		"MediaWiki\\Extension\\AbuseFilter\\FilterRunner": "includes/FilterRunner.php",
-		"MediaWiki\\Extension\\AbuseFilter\\FilterRunnerFactory": "includes/FilterRunnerFactory.php",
-		"NormalizeThrottleParameters": "maintenance/normalizeThrottleParameters.php",
-		"FixOldLogEntries": "maintenance/fixOldLogEntries.php",
-		"UpdateVarDumps": "maintenance/updateVarDumps.php",
-		"MigrateAflFilter": "maintenance/migrateAflFilter.php"
+		"MediaWiki\\Extension\\AbuseFilter\\FilterRunnerFactory": "includes/FilterRunnerFactory.php"
 	},
 	"TestAutoloadClasses": {
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",

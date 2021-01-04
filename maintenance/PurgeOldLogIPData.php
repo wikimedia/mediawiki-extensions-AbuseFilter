@@ -1,5 +1,7 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Maintenance;
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
@@ -7,6 +9,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 }
 require_once "$IP/maintenance/Maintenance.php";
 
+use Maintenance;
 use MediaWiki\MediaWikiServices;
 
 class PurgeOldLogIPData extends Maintenance {
