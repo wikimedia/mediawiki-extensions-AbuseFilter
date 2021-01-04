@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
+use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -48,7 +49,14 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( User::class ),
 			VariableHolder::newFromArray( [ 'action' => 'edit' ] )
 		);
-		$this->assertInstanceOf( AbuseLogger::class, $logger );
+		$this->assertInstanceOf( AbuseLogger::class, $logger, 'valid' );
+
+		$this->expectException( InvalidArgumentException::class );
+		$factory->newLogger(
+			$this->createMock( Title::class ),
+			$this->createMock( User::class ),
+			new VariableHolder()
+		);
 	}
 
 }

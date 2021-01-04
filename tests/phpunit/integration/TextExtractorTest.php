@@ -10,6 +10,8 @@ use PHPUnit\Framework\MockObject\MockObject;
 /**
  * @group Test
  * @group AbuseFilter
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\TextExtractor
+ * @covers ::__construct
  * @todo Make this a unit test once MediaWikiServices is no longer used in RevisionRecord::userCanBitfield
  */
 class TextExtractorTest extends MediaWikiIntegrationTestCase {
@@ -18,26 +20,16 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 	 * @param RevisionRecord|null $rev The revision being converted
 	 * @param bool $sysop Whether the user should be a sysop (i.e. able to see deleted stuff)
 	 * @param string $expected The expected textual representation of the Revision
-	 * @covers \MediaWiki\Extension\AbuseFilter\TextExtractor::revisionToString
+	 * @covers ::revisionToString
 	 * @dataProvider provideRevisionToString
-	 * @todo This should be a unit test...
 	 */
 	public function testRevisionToString( ?RevisionRecord $rev, bool $sysop, string $expected ) {
 		/** @var MockObject|User $user */
 		$user = $this->getMockBuilder( User::class )
 			->setMethods( [ 'getEffectiveGroups' ] )
 			->getMock();
-		if ( $sysop ) {
-			$user->expects( $this->atLeastOnce() )
-				->method( 'getEffectiveGroups' )
-				->willReturn( [ 'user', 'sysop' ] );
-		} else {
-			$user->expects( $this->any() )
-				->method( 'getEffectiveGroups' )
-				->willReturn( [ 'user' ] );
-		}
-
-		$user->clearInstanceCache();
+		$groups = $sysop ? [ 'user', 'sysop' ] : [ 'user' ];
+		$user->method( 'getEffectiveGroups' )->willReturn( $groups );
 
 		$hookRunner = new AbuseFilterHookRunner( $this->createHookContainer() );
 		$converter = new TextExtractor( $hookRunner );
@@ -88,4 +80,42 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 		];
 	}
 
+	/**
+	 * @param Content $content
+	 * @param string $expected
+	 * @covers ::contentToString
+	 * @dataProvider provideContentToString
+	 */
+	public function testContentToString( Content $content, string $expected ) {
+		$hookRunner = new AbuseFilterHookRunner( $this->createHookContainer() );
+		$converter = new TextExtractor( $hookRunner );
+		$this->assertSame( $expected, $converter->contentToString( $content ) );
+	}
+
+	/**
+	 * @return Generator
+	 */
+	public function provideContentToString() : Generator {
+		$text = 'Some dummy text';
+		yield 'text' => [ new TextContent( $text ), $text ];
+		yield 'wikitext' => [ new WikitextContent( $text ), $text ];
+		yield 'non-text' => [ new DummyNonTextContent( $text ), '' ];
+	}
+
+	/**
+	 * @covers ::contentToString
+	 */
+	public function testContentToString__hook() {
+		$expected = 'Text changed by hook';
+		$hookCb = function ( Content $content, ?string &$text ) use ( $expected ) {
+			$text = $expected;
+			return false;
+		};
+		$hookRunner = new AbuseFilterHookRunner(
+			$this->createHookContainer( [ 'AbuseFilter-contentToString' => $hookCb ] )
+		);
+		$converter = new TextExtractor( $hookRunner );
+		$unusedContent = new TextContent( 'You should not see me' );
+		$this->assertSame( $expected, $converter->contentToString( $unusedContent ) );
+	}
 }

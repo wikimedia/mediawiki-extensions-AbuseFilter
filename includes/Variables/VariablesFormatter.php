@@ -84,9 +84,6 @@ class VariablesFormatter {
 				$keyDisplay = Html::element( 'code', [], $key );
 			}
 
-			if ( $value === null ) {
-				$value = '';
-			}
 			$value = Html::element(
 				'div',
 				[ 'class' => 'mw-abuselog-var-value' ],

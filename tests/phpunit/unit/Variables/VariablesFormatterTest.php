@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
@@ -76,5 +77,52 @@ class VariablesFormatterTest extends MediaWikiUnitTestCase {
 				"[\n\t3 => true,\n\t'foo' => false,\n\t4 => 1,\n\t5 => [\n\t\t0 => 1,\n\t\t'foo' => 42\n\t]\n]"
 			]
 		];
+	}
+
+	/**
+	 * @covers ::buildVarDumpTable
+	 */
+	public function testBuildVarDumpTable_empty() {
+		$ml = $this->createMock( MessageLocalizer::class );
+		$ml->method( 'msg' )->willReturnCallback( function ( $key ) {
+			return $this->getMockMessage( $key );
+		} );
+		$formatter = new VariablesFormatter(
+			$this->createMock( KeywordsManager::class ),
+			$this->createMock( VariablesManager::class ),
+			$ml
+		);
+
+		$actual = $formatter->buildVarDumpTable( new VariableHolder() );
+		$this->assertStringContainsString( 'abusefilter-log-details-var', $actual, 'header' );
+		$this->assertStringNotContainsString( 'mw-abuselog-var-value', $actual, 'no values' );
+	}
+
+	/**
+	 * @covers ::buildVarDumpTable
+	 */
+	public function testBuildVarDumpTable() {
+		$ml = $this->createMock( MessageLocalizer::class );
+		$ml->method( 'msg' )->willReturnCallback( function ( $key ) {
+			return $this->getMockMessage( $key );
+		} );
+		$kManager = $this->createMock( KeywordsManager::class );
+		$varMessage = 'Dummy variable message';
+		$varArray = [ 'foo' => true, 'bar' => 'foobar' ];
+		$kManager->expects( $this->atLeastOnce() )
+			->method( 'getMessageKeyForVar' )
+			->willReturnCallback( function ( $var ) use ( $varMessage ) {
+				return $var === 'foo' ? $varMessage : null;
+			} );
+		$holder = VariableHolder::newFromArray( $varArray );
+		$varManager = $this->createMock( VariablesManager::class );
+		$varManager->method( 'exportAllVars' )->willReturn( $varArray );
+		$formatter = new VariablesFormatter( $kManager, $varManager, $ml );
+
+		$actual = $formatter->buildVarDumpTable( $holder );
+		$this->assertStringContainsString( 'abusefilter-log-details-var', $actual, 'header' );
+		$this->assertStringContainsString( 'mw-abuselog-var-value', $actual, 'values' );
+		$this->assertStringContainsString( '<code', $actual, 'formatted var name' );
+		$this->assertSame( 1, substr_count( $actual, $varMessage ), 'only one var with message' );
 	}
 }

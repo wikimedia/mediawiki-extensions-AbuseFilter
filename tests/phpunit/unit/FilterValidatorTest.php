@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWikiUnitTestCase;
@@ -71,35 +72,50 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * Helper to check that $expected is null and $actual is good, or the messages match
 	 * @param string|null $expected
 	 * @param Status $actual
+	 * @param array|null $params
 	 */
-	private function assertStatusMessage( ?string $expected, Status $actual ) : void {
+	private function assertStatusMessage( ?string $expected, Status $actual, array $params = null ) : void {
 		$actualError = $actual->isGood() ? null : $actual->getErrors()[0]['message'];
-		$this->assertSame( $expected, $actualError );
+		$this->assertSame( $expected, $actualError, 'status message' );
+		if ( $params !== null ) {
+			$this->assertSame( $params, $actual->getErrors()[0]['params'] );
+		}
 	}
 
 	/**
 	 * @param bool $valid
+	 * @param AFPException|null $excep
 	 * @param string|null $expected
+	 * @param array|null $expParams
 	 * @covers ::checkValidSyntax
 	 * @dataProvider provideSyntax
 	 */
-	public function testCheckValidSyntax( bool $valid, ?string $expected ) {
+	public function testCheckValidSyntax( bool $valid, ?AFPException $excep, ?string $expected, ?array $expParams ) {
 		$parser = $this->createMock( AbuseFilterParser::class );
-		$syntaxStatus = new ParserStatus( $valid, true, $valid ? null : new AFPException(), [] );
+		$syntaxStatus = new ParserStatus( $valid, true, $excep, [] );
 		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		$validator = $this->getFilterValidator( null, $parser );
 
 		$this->assertStatusMessage(
 			$expected,
-			$validator->checkValidSyntax( $this->createMock( AbstractFilter::class ) )
+			$validator->checkValidSyntax( $this->createMock( AbstractFilter::class ) ),
+			$expParams
 		);
 	}
 
-	public function provideSyntax() : array {
-		return [
-			'valid' => [ true, null ],
-			'invalid' => [ false, 'abusefilter-edit-badsyntax' ]
+	public function provideSyntax() : Generator {
+		yield 'valid' => [ true, null, null, null ];
+		$excText = 'Internal error text';
+		yield 'invalid, internal error' => [
+			false,
+			new AFPException( $excText ),
+			'abusefilter-edit-badsyntax',
+			[ $excText ]
 		];
+		$excMsg = $this->getMockMessage( $excText );
+		$excep = $this->createMock( AFPUserVisibleException::class );
+		$excep->method( 'getMessageObj' )->willReturn( $excMsg );
+		yield 'invalid, user error' => [ false, $excep, 'abusefilter-edit-badsyntax', [ $excText ] ];
 	}
 
 	/**
