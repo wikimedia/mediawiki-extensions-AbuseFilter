@@ -2,17 +2,17 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilter;
 use Diff;
 use DifferenceEngine;
 use IContextSource;
 use Linker;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Extension\AbuseFilter\TableDiffFormatterFullContext;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use stdClass;
-use TableDiffFormatterFullContext;
 use Xml;
 
 /**

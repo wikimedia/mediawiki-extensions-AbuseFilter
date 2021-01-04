@@ -1,8 +1,13 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+namespace MediaWiki\Extension\AbuseFilter;
+
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Revision\RevisionRecord;
+use RequestContext;
+use Status;
+use Title;
+use User;
 
 /**
  * This class contains most of the business logic of AbuseFilter. It consists of
@@ -112,3 +117,5 @@ class AbuseFilter {
 		);
 	}
 }
+
+class_alias( AbuseFilter::class, 'AbuseFilter' );

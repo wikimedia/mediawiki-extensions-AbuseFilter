@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilter;
 use CheckUserHooks;
 use DeferredUpdates;
 use ExtensionRegistry;

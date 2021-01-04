@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
-use AbuseFilter;
 use DifferenceEngine;
 use ExtensionRegistry;
 use Html;
@@ -11,6 +10,7 @@ use InvalidArgumentException;
 use Linker;
 use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;

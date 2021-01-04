@@ -403,7 +403,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			if ( $throttledActions ) {
 				$throttledActions = array_map(
 					function ( $filterAction ) {
-						// TODO: This is AbuseFilter::getActionDisplay, but not escaped
+						// TODO: This is SpecsFormatter::getActionDisplay, but not escaped
 						return $this->msg( 'abusefilter-action-' . $filterAction )->text();
 					},
 					$throttledActions

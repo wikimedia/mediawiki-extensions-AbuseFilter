@@ -1,13 +1,28 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\EchoNotifier;
-use MediaWiki\Extension\AbuseFilter\ThrottleFilterPresentationModel;
+namespace MediaWiki\Extension\AbuseFilter;
+
+use ApiMessage;
+use Content;
+use DeferredUpdates;
+use EchoAttributeManager;
+use EchoUserLocator;
+use IContextSource;
+use InvalidArgumentException;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
+use ParserOutput;
+use RecentChange;
+use RenameuserSQL;
+use Status;
+use Title;
+use UploadBase;
+use User;
+use WikiMap;
+use WikiPage;
 
 class AbuseFilterHooks {
 
@@ -74,7 +89,7 @@ class AbuseFilterHooks {
 				'$wgAbuseFilterLocallyDisabledGlobalActions. You can now specify which actions to disable. ' .
 				'If you had set the former to true, you should set to true all of the actions in ' .
 				'$wgAbuseFilterRestrictions (if you were manually setting the variable) or ' .
-				'AbuseFilter::DANGEROUS_ACTIONS. ' .
+				'ConsequencesRegistry::DANGEROUS_ACTIONS. ' .
 				'If you had set it to false (or left the default), just remove it from your wiki settings.'
 			);
 			if ( $wgAbuseFilterDisallowGlobalLocalBlocks === true ) {

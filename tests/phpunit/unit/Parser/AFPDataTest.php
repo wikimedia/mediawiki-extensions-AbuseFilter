@@ -29,7 +29,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 /**
  * @group Test
  * @group AbuseFilter
- * @group MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
+ * @group AbuseFilterParser
  */
 class AFPDataTest extends ParserTestCase {
 	/**
@@ -115,7 +115,7 @@ class AFPDataTest extends ParserTestCase {
 	 * filters. Other casts are already covered in parserTests.
 	 *
 	 * @param AFPData $orig
-	 * @param string $newType One of the MediaWiki\Extension\AbuseFilter\Parser\AFPData::D* constants
+	 * @param string $newType One of the AFPData::D* constants
 	 * @param AFPData|null $expected If null, we expect an exception due to unsupported data type
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::castTypes
 	 * @dataProvider provideMissingCastTypes
@@ -211,7 +211,7 @@ class AFPDataTest extends ParserTestCase {
 	}
 
 	/**
-	 * Ensure that we don't allow DUNDEFINED in MediaWiki\Extension\AbuseFilter\Parser\AFPData::equals
+	 * Ensure that we don't allow DUNDEFINED in AFPData::equals
 	 *
 	 * @param AFPData $lhs
 	 * @param AFPData $rhs

@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use AbuseFilter;
 use DBAccessObjectUtils;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;

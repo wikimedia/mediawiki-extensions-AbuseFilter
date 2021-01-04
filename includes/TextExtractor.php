@@ -70,7 +70,7 @@ class TextExtractor {
 	 * This uses Content::getNativeData() if $content is an instance of TextContent,
 	 * or Content::getTextForSearchIndex() otherwise.
 	 *
-	 * The hook 'AbuseFilter::contentToString' can be used to override this
+	 * The hook AbuseFilterContentToString can be used to override this
 	 * behavior.
 	 *
 	 * @param Content $content

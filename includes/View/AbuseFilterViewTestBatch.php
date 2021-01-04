@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use AbuseFilterChangesList;
 use ActorMigration;
 use HTMLForm;
 use IContextSource;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;

@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use AbuseFilter;
 use HtmlArmor;
 use Linker;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
 use MediaWiki\Linker\LinkRenderer;

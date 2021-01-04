@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterHooks;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\MediaWikiServices;
@@ -38,12 +39,12 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @group Database
  * @group Large
  *
- * @covers AbuseFilter
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilter
  * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner
- * @covers AbuseFilterHooks
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterHooks
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
- * @covers AbuseFilterPreAuthenticationProvider
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
