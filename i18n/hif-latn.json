@@ -13,7 +13,6 @@
 	"abusefilter-list-edit": "Badlo",
 	"abusefilter-deleted": "Mitaawal",
 	"abusefilter-disabled": "Band karal",
-	"abusefilter-hitcount": "$1 {{PLURAL:$1|hit|hits}}",
 	"abusefilter-tools-reautoconfirm-user": "Sadasya:",
 	"abusefilter-edit-builder-vars-user-editcount": "Sadasya Badlao count",
 	"abusefilter-examine-submit": "Khojo"

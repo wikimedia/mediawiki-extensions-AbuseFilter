@@ -405,5 +405,6 @@
 	"abusefilter-group-default": "Asali",
 	"abusefilter-http-error": "Berlakunya ralat HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Lihat butiran peribadi",
-	"abusefilter-view-privatedetails-legend": "Lihat butiran peribadi"
+	"abusefilter-view-privatedetails-legend": "Lihat butiran peribadi",
+	"notification-link-text-show-filter": "Tunjuk penapis"
 }

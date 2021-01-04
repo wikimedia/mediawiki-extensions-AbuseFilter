@@ -97,6 +97,7 @@
 	"abusefilter-log-details-hidden": "ఈ పద్దు యొక్క వివరాలని మీరు చూడలేరు, ఎందుకంటే దీన్ని బహిరంగ వీక్షణం నుండి దాచేసారు.",
 	"abusefilter-log-details-hidden-implicit": "ఈ పద్దుకు సంబంధించిన కూర్పును బహిరంగంగా కనిపించకుండా దాచడం చేత మీరు దాని వివరాలను చూడలేరు.",
 	"abusefilter-log-private-not-included": "మీరిచ్చిన వడపోత ఐడీలు ఒకటి గాని అంత కంటే ఎక్కువ గానీ గోప్యమైనవి. గోప్య వడపోతల వివరాలను చూసే అనుమతి మీకు లేదు కాబట్టి, ఆ వడపోతల కోసం వెతకలేదు.",
+	"abusefilter-log-hide-no-selected": "పద్దులేమీ ఎంచుకోలేదు",
 	"abusefilter-log-hide-legend": "దృశ్యతను మార్చు",
 	"abusefilter-log-hide-reason": "కారణం:",
 	"abusefilter-log-hide-reason-other": "ఇతర/అదనపు కారణం:",
