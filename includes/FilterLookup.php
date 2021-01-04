@@ -59,6 +59,9 @@ class FilterLookup implements IDBAccessObject {
 	/** @var Filter[] */
 	private $historyCache = [];
 
+	/** @var int[] */
+	private $firstVersionCache = [];
+
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 
@@ -266,6 +269,27 @@ class FilterLookup implements IDBAccessObject {
 		}
 
 		return $this->historyCache[$version];
+	}
+
+	/**
+	 * Get the history ID of the first change to a given filter
+	 *
+	 * @param int $filterID
+	 * @return int
+	 */
+	public function getFirstFilterVersionID( int $filterID ) : int {
+		if ( !isset( $this->firstVersionCache[$filterID] ) ) {
+			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$historyID = (int)$dbr->selectField(
+				'abuse_filter_history',
+				'MIN(afh_id)',
+				[ 'afh_filter' => $filterID ],
+				__METHOD__
+			);
+			$this->firstVersionCache[$filterID] = $historyID;
+		}
+
+		return $this->firstVersionCache[$filterID];
 	}
 
 	/**

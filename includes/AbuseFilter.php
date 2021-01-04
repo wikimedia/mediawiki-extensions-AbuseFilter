@@ -74,32 +74,6 @@ class AbuseFilter {
 	}
 
 	/**
-	 * Get the history ID of the first change to a given filter
-	 *
-	 * @param int $filterID Filter id
-	 * @return string
-	 */
-	public static function getFirstFilterChange( $filterID ) {
-		static $firstChanges = [];
-
-		if ( !isset( $firstChanges[$filterID] ) ) {
-			$dbr = wfGetDB( DB_REPLICA );
-			$historyID = $dbr->selectField(
-				'abuse_filter_history',
-				'afh_id',
-				[
-					'afh_filter' => $filterID,
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afh_timestamp ASC' ]
-			);
-			$firstChanges[$filterID] = $historyID;
-		}
-
-		return $firstChanges[$filterID];
-	}
-
-	/**
 	 * Shortcut for checking whether $user can view the given revision, with mask
 	 *  SUPPRESSED_ALL.
 	 *

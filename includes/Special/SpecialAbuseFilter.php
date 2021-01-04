@@ -42,6 +42,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		AbuseFilterViewDiff::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			SpecsFormatter::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
 		],
 		AbuseFilterViewEdit::class => [
 			'PermissionManager',

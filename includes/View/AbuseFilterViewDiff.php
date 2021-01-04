@@ -6,8 +6,8 @@ use Diff;
 use DifferenceEngine;
 use IContextSource;
 use Linker;
-use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TableDiffFormatterFullContext;
 use MediaWiki\Linker\LinkRenderer;
@@ -39,10 +39,15 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @var SpecsFormatter
 	 */
 	private $specsFormatter;
+	/**
+	 * @var FilterLookup
+	 */
+	private $filterLookup;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param SpecsFormatter $specsFormatter
+	 * @param FilterLookup $filterLookup
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -51,6 +56,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
 		SpecsFormatter $specsFormatter,
+		FilterLookup $filterLookup,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -59,6 +65,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
+		$this->filterLookup = $filterLookup;
 	}
 
 	/**
@@ -96,8 +103,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$out->addHTML( $this->formatDiff() );
 			// Next and previous change links
 			$buttons = [];
-			if ( AbuseFilter::getFirstFilterChange( $this->filter ) !=
-				$this->mOldVersion['meta']['history_id']
+			if ( $this->filterLookup->getFirstFilterVersionID( $this->filter ) !==
+				(int)$this->mOldVersion['meta']['history_id']
 			) {
 				// Create a "previous change" link if this isn't the first change of the given filter
 				$href = $this->getTitle(

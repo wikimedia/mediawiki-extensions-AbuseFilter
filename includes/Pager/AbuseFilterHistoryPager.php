@@ -142,7 +142,8 @@ class AbuseFilterHistoryPager extends TablePager {
 				// Like in AbuseFilterViewDiff, don't show it if the user cannot see private filters and any
 				// of the versions is hidden.
 				$formatted = '';
-				if ( AbuseFilter::getFirstFilterChange( $row->afh_filter ) != $value ) {
+				$lookup = AbuseFilterServices::getFilterLookup();
+				if ( $lookup->getFirstFilterVersionID( $row->afh_filter ) !== (int)$value ) {
 					// @todo This is subpar, it should be cached at least. Should we also hide actions?
 					$dbr = wfGetDB( DB_REPLICA );
 					$oldFlags = $dbr->selectField(
