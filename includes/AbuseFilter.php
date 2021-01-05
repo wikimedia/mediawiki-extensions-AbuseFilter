@@ -16,12 +16,6 @@ use User;
 class AbuseFilter {
 
 	/**
-	 * @var array IDs of logged filters like [ page title => [ 'local' => [ids], 'global' => [ids] ] ].
-	 * @fixme avoid global state
-	 */
-	public static $logIds = [];
-
-	/**
 	 * @deprecated
 	 * @todo Phase out
 	 */

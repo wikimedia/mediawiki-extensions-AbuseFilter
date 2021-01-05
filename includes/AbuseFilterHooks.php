@@ -21,13 +21,9 @@ use Status;
 use Title;
 use UploadBase;
 use User;
-use WikiMap;
 use WikiPage;
 
 class AbuseFilterHooks {
-
-	/** @var WikiPage|null Make sure edit filter & edit save hooks match */
-	private static $lastEditPage = null;
 
 	/**
 	 * Called right after configuration has been loaded.
@@ -200,7 +196,8 @@ class AbuseFilterHooks {
 		Content $content,
 		$summary, $slot = SlotRecord::MAIN
 	) : Status {
-		self::$lastEditPage = null;
+		$revUpdater = AbuseFilterServices::getEditRevUpdater();
+		$revUpdater->clearLastEditPage();
 
 		// @todo is there any real point in passing this in?
 		$text = AbuseFilterServices::getTextExtractor()->contentToString( $content );
@@ -234,7 +231,7 @@ class AbuseFilterHooks {
 			return $filterResult;
 		}
 
-		self::$lastEditPage = $page;
+		$revUpdater->setLastEditPage( $page );
 
 		return Status::newGood();
 	}
@@ -281,49 +278,7 @@ class AbuseFilterHooks {
 		int $flags,
 		RevisionRecord $revisionRecord
 	) {
-		$curTitle = $wikiPage->getTitle()->getPrefixedText();
-		if ( !isset( AbuseFilter::$logIds[ $curTitle ] ) ||
-			$wikiPage !== self::$lastEditPage
-		) {
-			// This isn't the edit AbuseFilter::$logIds was set for
-			AbuseFilter::$logIds = [];
-			return;
-		}
-
-		// Ignore null edit.
-		$parentRevId = $revisionRecord->getParentId();
-		if ( $parentRevId !== null ) {
-			$parentRev = MediaWikiServices::getInstance()
-				->getRevisionLookup()
-				->getRevisionById( $parentRevId );
-			if ( $parentRev && $revisionRecord->hasSameContent( $parentRev ) ) {
-				AbuseFilter::$logIds = [];
-				return;
-			}
-		}
-
-		self::$lastEditPage = null;
-
-		$logs = AbuseFilter::$logIds[ $curTitle ];
-		if ( $logs[ 'local' ] ) {
-			// Now actually do our storage
-			$dbw = wfGetDB( DB_MASTER );
-
-			$dbw->update( 'abuse_filter_log',
-				[ 'afl_rev_id' => $revisionRecord->getId() ],
-				[ 'afl_id' => $logs['local'] ],
-				__METHOD__
-			);
-		}
-
-		if ( $logs[ 'global' ] ) {
-			$fdb = AbuseFilterServices::getCentralDBManager()->getConnection( DB_MASTER );
-			$fdb->update( 'abuse_filter_log',
-				[ 'afl_rev_id' => $revisionRecord->getId() ],
-				[ 'afl_id' => $logs['global'], 'afl_wiki' => WikiMap::getCurrentWikiDbDomain()->getId() ],
-				__METHOD__
-			);
-		}
+		AbuseFilterServices::getEditRevUpdater()->updateRev( $wikiPage, $revisionRecord );
 	}
 
 	/**

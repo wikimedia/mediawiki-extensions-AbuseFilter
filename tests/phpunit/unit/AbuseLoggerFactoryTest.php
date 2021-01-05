@@ -7,6 +7,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
+use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
@@ -32,6 +33,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( FilterLookup::class ),
 			$this->createMock( VariablesBlobStore::class ),
 			$this->createMock( VariablesManager::class ),
+			$this->createMock( EditRevUpdater::class ),
 			$this->createMock( ILoadBalancer::class ),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,

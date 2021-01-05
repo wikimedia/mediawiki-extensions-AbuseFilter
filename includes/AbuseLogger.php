@@ -40,6 +40,8 @@ class AbuseLogger {
 	private $varBlobStore;
 	/** @var VariablesManager */
 	private $varManager;
+	/** @var EditRevUpdater */
+	private $editRevUpdater;
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 	/** @var ServiceOptions */
@@ -54,6 +56,7 @@ class AbuseLogger {
 	 * @param FilterLookup $filterLookup
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param VariablesManager $varManager
+	 * @param EditRevUpdater $editRevUpdater
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ServiceOptions $options
 	 * @param string $wikiID
@@ -67,6 +70,7 @@ class AbuseLogger {
 		FilterLookup $filterLookup,
 		VariablesBlobStore $varBlobStore,
 		VariablesManager $varManager,
+		EditRevUpdater $editRevUpdater,
 		ILoadBalancer $loadBalancer,
 		ServiceOptions $options,
 		string $wikiID,
@@ -82,6 +86,7 @@ class AbuseLogger {
 		$this->filterLookup = $filterLookup;
 		$this->varBlobStore = $varBlobStore;
 		$this->varManager = $varManager;
+		$this->editRevUpdater = $editRevUpdater;
 		$this->loadBalancer = $loadBalancer;
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
@@ -166,10 +171,10 @@ class AbuseLogger {
 			$globalLogIDs = $this->insertGlobalLogEntries( $centralLogRows, $fdb );
 		}
 
-		AbuseFilter::$logIds[ $this->title->getPrefixedText() ] = [
-			'local' => $localLogIDs,
-			'global' => $globalLogIDs
-		];
+		$this->editRevUpdater->setLogIdsForTarget(
+			$this->title,
+			[ 'local' => $localLogIDs, 'global' => $globalLogIDs ]
+		);
 
 		return [ 'local' => $loggedLocalFilters, 'global' => $loggedGlobalFilters ];
 	}
@@ -203,7 +208,7 @@ class AbuseLogger {
 	/**
 	 * @param array[] $logRows
 	 * @param IDatabase $dbw
-	 * @return array
+	 * @return int[]
 	 */
 	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ) : array {
 		global $wgAbuseFilterAflFilterMigrationStage;
@@ -275,7 +280,7 @@ class AbuseLogger {
 	/**
 	 * @param array[] $centralLogRows
 	 * @param IDatabase $fdb
-	 * @return array
+	 * @return int[]
 	 */
 	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) : array {
 		$this->varManager->computeDBVars( $this->vars );
