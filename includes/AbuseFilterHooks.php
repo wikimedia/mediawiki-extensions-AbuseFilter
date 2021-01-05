@@ -351,9 +351,15 @@ class AbuseFilterHooks {
 	 * @param string &$reason
 	 * @param string &$error
 	 * @param Status &$status
+	 * @param bool $suppress
 	 * @return bool
 	 */
-	public static function onArticleDelete( &$article, &$user, &$reason, &$error, &$status ) {
+	public static function onArticleDelete( &$article, &$user, &$reason, &$error,
+		&$status, $suppress ) {
+		if ( $suppress ) {
+			// Don't filter suppressions, T71617
+			return true;
+		}
 		$vars = new AbuseFilterVariableHolder;
 
 		$vars->addHolders(
