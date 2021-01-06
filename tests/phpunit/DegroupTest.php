@@ -3,12 +3,9 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserGroupManager;
-use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 
 /**
@@ -16,26 +13,14 @@ use MediaWiki\User\UserIdentityValue;
  * @covers ::__construct
  */
 class DegroupTest extends MediaWikiIntegrationTestCase {
-
-	private function getParameters( UserIdentity $user ) : Parameters {
-		$filter = MutableFilter::newDefault();
-		$filter->setID( 1 );
-		$filter->setName( 'Degrouping filter' );
-		return new Parameters(
-			$filter,
-			false,
-			$user,
-			$this->createMock( LinkTarget::class ),
-			'edit'
-		);
-	}
+	use ConsequenceGetMessageTestTrait;
 
 	/**
 	 * @covers ::execute
 	 */
 	public function testExecute() {
 		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
-		$params = $this->getParameters( $user );
+		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
 			->willReturn( [ '*', 'user' ] );
@@ -57,8 +42,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_noGroups() {
-		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
-		$params = $this->getParameters( $user );
+		$params = $this->provideGetMessageParameters()->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
 			->willReturn( [ '*', 'user' ] );
@@ -79,7 +63,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testExecute_variableNotSet() {
 		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
-		$params = $this->getParameters( $user );
+		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
 			->willReturn( [ '*', 'user' ] );
@@ -105,7 +89,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testExecute_anonymous() {
 		$user = new UserIdentityValue( 0, 'Anonymous user', 1 );
-		$params = $this->getParameters( $user );
+		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->expects( $this->never() )->method( $this->anything() );
 		$filterUser = $this->createMock( FilterUser::class );
@@ -135,7 +119,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testRevert( bool $success, array $hadGroups, array $hasGroups = [] ) {
 		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
-		$params = $this->getParameters( $user );
+		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
 			->willReturn( [ '*', 'user' ] );
@@ -163,4 +147,17 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
+	/**
+	 * @covers ::getMessage
+	 * @dataProvider provideGetMessageParameters
+	 */
+	public function testGetMessage( Parameters $params ) {
+		$rangeBlock = new Degroup(
+			$params,
+			new VariableHolder(),
+			$this->createMock( UserGroupManager::class ),
+			$this->createMock( FilterUser::class )
+		);
+		$this->doTestGetMessage( $rangeBlock, $params, 'abusefilter-degrouped' );
+	}
 }

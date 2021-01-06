@@ -5,33 +5,20 @@ use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
-use MediaWiki\Linker\LinkTarget;
-use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityValue;
+use MediaWiki\Extension\AbuseFilter\FilterUser;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockingConsequence
+ * @todo Make this a unit test once T266409 is resolved
  */
 class RangeBlockTest extends MediaWikiIntegrationTestCase {
+	use ConsequenceGetMessageTestTrait;
 
 	private const CIDR_LIMIT = [
 		'IPv4' => 16,
 		'IPv6' => 19,
 	];
-
-	private function getParameters( UserIdentity $user ) : Parameters {
-		$filter = MutableFilter::newDefault();
-		$filter->setID( 1 );
-		$filter->setName( 'Degrouping filter' );
-		return new Parameters(
-			$filter,
-			false,
-			$user,
-			$this->createMock( LinkTarget::class ),
-			'edit'
-		);
-	}
 
 	public function provideExecute() : iterable {
 		yield 'IPv4 range block' => [
@@ -87,8 +74,7 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 	public function testExecute(
 		string $requestIP, array $rangeBlockSize, string $target, bool $result
 	) {
-		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
-		$params = $this->getParameters( $user );
+		$params = $this->provideGetMessageParameters()->current()[0];
 		/*
 		$filterUser = $this->createMock( FilterUser::class );
 		$filterUser->method( 'getUser' )
@@ -123,4 +109,20 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( $result, $rangeBlock->execute() );
 	}
 
+	/**
+	 * @covers ::getMessage
+	 * @dataProvider provideGetMessageParameters
+	 */
+	public function testGetMessage( Parameters $params ) {
+		$rangeBlock = new RangeBlock(
+			$params,
+			'0',
+			$this->createMock( BlockUserFactory::class ),
+			$this->createMock( FilterUser::class ),
+			[ 'IPv6' => 24, 'IPv4' => 24 ],
+			self::CIDR_LIMIT,
+			'1.1.1.1'
+		);
+		$this->doTestGetMessage( $rangeBlock, $params, 'abusefilter-blocked-display' );
+	}
 }
