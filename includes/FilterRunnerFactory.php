@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use IBufferingStatsdDataFactory;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
@@ -45,8 +46,8 @@ class FilterRunnerFactory {
 	private $logger;
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
-	/** @var string[] */
-	private $validGroups;
+	/** @var ServiceOptions */
+	private $options;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
@@ -62,7 +63,7 @@ class FilterRunnerFactory {
 	 * @param EmergencyWatcher $emergencyWatcher
 	 * @param LoggerInterface $logger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @param array $validFilterGroups
+	 * @param ServiceOptions $options
 	 */
 	public function __construct(
 		AbuseFilterHookRunner $hookRunner,
@@ -78,7 +79,7 @@ class FilterRunnerFactory {
 		EmergencyWatcher $emergencyWatcher,
 		LoggerInterface $logger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
-		array $validFilterGroups
+		ServiceOptions $options
 	) {
 		$this->hookRunner = $hookRunner;
 		$this->filterProfiler = $filterProfiler;
@@ -93,7 +94,7 @@ class FilterRunnerFactory {
 		$this->emergencyWatcher = $emergencyWatcher;
 		$this->logger = $logger;
 		$this->statsdDataFactory = $statsdDataFactory;
-		$this->validGroups = $validFilterGroups;
+		$this->options = $options;
 	}
 
 	/**
@@ -124,7 +125,7 @@ class FilterRunnerFactory {
 			$watchers,
 			$this->logger,
 			$this->statsdDataFactory,
-			$this->validGroups,
+			$this->options,
 			$user,
 			$title,
 			$vars,

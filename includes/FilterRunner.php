@@ -6,6 +6,7 @@ use BadMethodCallException;
 use BagOStuff;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -31,6 +32,13 @@ use User;
  * @internal Not stable yet
  */
 class FilterRunner {
+	public const CONSTRUCTOR_OPTIONS = [
+		'AbuseFilterValidGroups',
+		'AbuseFilterCentralDB',
+		'AbuseFilterIsCentral',
+		'AbuseFilterConditionLimit',
+	];
+
 	/** @var AbuseFilterHookRunner */
 	private $hookRunner;
 	/** @var FilterProfiler */
@@ -55,6 +63,8 @@ class FilterRunner {
 	private $varManager;
 	/** @var VariableGeneratorFactory */
 	private $varGeneratorFactory;
+	/** @var ServiceOptions */
+	private $options;
 
 	/**
 	 * @var AbuseFilterParser
@@ -108,7 +118,7 @@ class FilterRunner {
 	 * @param Watcher[] $watchers
 	 * @param LoggerInterface $logger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @param array $validFilterGroups
+	 * @param ServiceOptions $options
 	 * @param User $user
 	 * @param Title $title
 	 * @param VariableHolder $vars
@@ -128,7 +138,7 @@ class FilterRunner {
 		array $watchers,
 		LoggerInterface $logger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
-		array $validFilterGroups,
+		ServiceOptions $options,
 		User $user,
 		Title $title,
 		VariableHolder $vars,
@@ -147,9 +157,11 @@ class FilterRunner {
 		$this->logger = $logger;
 		$this->statsdDataFactory = $statsdDataFactory;
 
-		if ( !in_array( $group, $validFilterGroups, true ) ) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
+		if ( !in_array( $group, $options->get( 'AbuseFilterValidGroups' ), true ) ) {
 			throw new InvalidArgumentException( "Group $group is not a valid group" );
 		}
+		$this->options = $options;
 		if ( !$vars->varIsSet( 'action' ) ) {
 			throw new InvalidArgumentException( "The 'action' variable is not set." );
 		}
@@ -406,13 +418,10 @@ class FilterRunner {
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @protected Public for back compat only; this will actually be made protected in the future.
-	 *   You should either rely on $this->run() or subclass this class.
 	 * @param bool|null &$hitCondLimit TEMPORARY
 	 * @return bool[] Map of (integer filter ID => bool)
 	 */
 	public function checkAllFilters( &$hitCondLimit = false ) : array {
-		global $wgAbuseFilterCentralDB, $wgAbuseFilterIsCentral, $wgAbuseFilterConditionLimit;
-
 		// Ensure that we start fresh, see T193374
 		$this->parser->resetCondCount();
 
@@ -422,7 +431,7 @@ class FilterRunner {
 			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter );
 		}
 
-		if ( $wgAbuseFilterCentralDB && !$wgAbuseFilterIsCentral ) {
+		if ( $this->options->get( 'AbuseFilterCentralDB' ) && !$this->options->get( 'AbuseFilterIsCentral' ) ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
 				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 				$matchedFilters[GlobalNameUtils::buildGlobalName( $filter->getID() )] =
@@ -431,7 +440,8 @@ class FilterRunner {
 		}
 
 		// Tag the action if the condition limit was hit
-		$hitCondLimit = $this->parser->getCondCount() > $wgAbuseFilterConditionLimit;
+		// TODO: Check can be moved to callers
+		$hitCondLimit = $this->parser->getCondCount() > $this->options->get( 'AbuseFilterConditionLimit' );
 
 		return $matchedFilters;
 	}
