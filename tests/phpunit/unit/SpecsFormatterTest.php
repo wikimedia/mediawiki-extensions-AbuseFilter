@@ -2,7 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
+use Generator;
 use Language;
+use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWikiUnitTestCase;
 use Message;
@@ -156,6 +159,33 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 			'single' => [ 'foo', 'abusefilter-history-foo' ],
 			'multiple' => [ 'foo,bar,baz', 'abusefilter-history-foo,abusefilter-history-bar,abusefilter-history-baz' ]
 		];
+	}
+
+	/**
+	 * @param AbstractFilter $filter
+	 * @param string $expected
+	 * @dataProvider provideFilterFlags
+	 * @covers ::formatFilterFlags
+	 */
+	public function testFormatFilterFlags( AbstractFilter $filter, string $expected ) {
+		$formatter = $this->getFormatter();
+		$lang = $this->createMock( Language::class );
+		$lang->method( 'commaList' )->willReturnCallback( function ( $x ) {
+			return implode( ',', $x );
+		} );
+		$this->assertSame( $expected, $formatter->formatFilterFlags( $filter, $lang ) );
+	}
+
+	public function provideFilterFlags() : Generator {
+		$none = MutableFilter::newDefault();
+		$none->setEnabled( false );
+		yield 'none' => [ $none, '' ];
+
+		yield 'single' => [ MutableFilter::newDefault(), 'abusefilter-history-enabled' ];
+
+		$multiple = MutableFilter::newDefault();
+		$multiple->setHidden( true );
+		yield 'multiple' => [ $multiple, 'abusefilter-history-enabled,abusefilter-history-hidden' ];
 	}
 
 	/**

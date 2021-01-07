@@ -7,6 +7,7 @@ use Generator;
 use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
@@ -27,6 +28,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterLookup
+ * @todo Some integration tests with a real DB might be helpful
  */
 class FilterLookupTest extends MediaWikiUnitTestCase {
 	use AbuseFilterRowsAndFiltersTestTrait;
@@ -200,6 +202,72 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::getLastHistoryVersion
+	 */
+	public function testGetLastHistoryVersion() {
+		// Reuse this data provider for conveniency
+		[ , $historyRow, $filter ] = $this->provideFilterVersions()->current();
+		$db = $this->getDBWithMockRows( [ $historyRow ] );
+		$filterLookup = $this->getLookup( $db );
+		$this->assertEquals( $filter, $filterLookup->getLastHistoryVersion( $filter->getID() ) );
+	}
+
+	/**
+	 * @covers ::getLastHistoryVersion
+	 */
+	public function testGetLastHistoryVersion_notfound() {
+		$db = $this->createMock( IDatabase::class );
+		$db->method( 'selectRow' )->willReturn( false );
+		$filterLookup = $this->getLookup( $db );
+		$this->expectException( FilterNotFoundException::class );
+		$filterLookup->getLastHistoryVersion( 42 );
+	}
+
+	/**
+	 * @covers ::getClosestVersion
+	 */
+	public function testGetClosestVersion() {
+		// Reuse this data provider for conveniency
+		[ , $historyRow, $filter ] = $this->provideFilterVersions()->current();
+		$db = $this->getDBWithMockRows( [ $historyRow ] );
+		$filterLookup = $this->getLookup( $db );
+		$this->assertEquals( $filter, $filterLookup->getClosestVersion( 1, 42, FilterLookup::DIR_NEXT ) );
+	}
+
+	/**
+	 * @covers ::getClosestVersion
+	 */
+	public function testGetClosestVersion_notfound() {
+		$db = $this->createMock( IDatabase::class );
+		$db->method( 'selectRow' )->willReturn( false );
+		$filterLookup = $this->getLookup( $db );
+		$this->expectException( ClosestFilterVersionNotFoundException::class );
+		$filterLookup->getClosestVersion( 42, 42, FilterLookup::DIR_PREV );
+	}
+
+	/**
+	 * @covers ::getFirstFilterVersionID
+	 */
+	public function testGetFirstFilterVersionID() {
+		$versionID = 1234;
+		$db = $this->createMock( IDatabase::class );
+		$db->method( 'selectField' )->willReturn( $versionID );
+		$filterLookup = $this->getLookup( $db );
+		$this->assertSame( $versionID, $filterLookup->getFirstFilterVersionID( 42 ) );
+	}
+
+	/**
+	 * @covers ::getFirstFilterVersionID
+	 */
+	public function testGetFirstFilterVersionID_notfound() {
+		$db = $this->createMock( IDatabase::class );
+		$db->method( 'selectField' )->willReturn( false );
+		$filterLookup = $this->getLookup( $db );
+		$this->expectException( FilterNotFoundException::class );
+		$filterLookup->getFirstFilterVersionID( 42 );
+	}
+
+	/**
 	 * @covers ::getFilter
 	 * @covers ::getCacheKey
 	 */
@@ -243,8 +311,8 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param bool $isCentral
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterLookup::getAllActiveFiltersInGroup
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterLookup::getGlobalRulesKey
+	 * @covers ::getAllActiveFiltersInGroup
+	 * @covers ::getGlobalRulesKey
 	 * @dataProvider provideIsCentral
 	 */
 	public function testGlobalCache( bool $isCentral ) {
@@ -269,9 +337,9 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterLookup::purgeGroupWANCache
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterLookup::getAllActiveFiltersInGroup
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterLookup::getGlobalRulesKey
+	 * @covers ::purgeGroupWANCache
+	 * @covers ::getAllActiveFiltersInGroup
+	 * @covers ::getGlobalRulesKey
 	 */
 	public function testFilterLookupClearNetworkCache() {
 		$row = $this->getRowsAndFilters()['no actions']['row'];

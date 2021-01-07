@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use Language;
+use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MessageLocalizer;
 
 /**
@@ -113,6 +114,26 @@ class SpecsFormatter {
 		$flags = array_filter( explode( ',', $value ) );
 		$flagsDisplay = [];
 		foreach ( $flags as $flag ) {
+			$flagsDisplay[] = $this->messageLocalizer->msg( "abusefilter-history-$flag" )->escaped();
+		}
+
+		return $lang->commaList( $flagsDisplay );
+	}
+
+	/**
+	 * @param AbstractFilter $filter
+	 * @param Language $lang
+	 * @return string
+	 */
+	public function formatFilterFlags( AbstractFilter $filter, Language $lang ) : string {
+		$flags = array_filter( [
+			'enabled' => $filter->isEnabled(),
+			'deleted' => $filter->isDeleted(),
+			'hidden' => $filter->isHidden(),
+			'global' => $filter->isGlobal()
+		] );
+		$flagsDisplay = [];
+		foreach ( $flags as $flag => $_ ) {
 			$flagsDisplay[] = $this->messageLocalizer->msg( "abusefilter-history-$flag" )->escaped();
 		}
 

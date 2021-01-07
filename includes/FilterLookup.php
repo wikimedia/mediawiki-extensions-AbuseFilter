@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use DBAccessObjectUtils;
 use IDBAccessObject;
+use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
@@ -18,9 +19,14 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * This class provides read access to the filters stored in the database.
+ * @todo Cache exceptions
  */
 class FilterLookup implements IDBAccessObject {
 	public const SERVICE_NAME = 'AbuseFilterFilterLookup';
+
+	// Used in getClosestVersion
+	public const DIR_PREV = 'prev';
+	public const DIR_NEXT = 'next';
 
 	/**
 	 * @var string[] The FULL list of fields in the abuse_filter table
@@ -62,6 +68,15 @@ class FilterLookup implements IDBAccessObject {
 
 	/** @var int[] */
 	private $firstVersionCache = [];
+
+	/** @var int[] */
+	private $lastVersionCache = [];
+
+	/**
+	 * @var int[][] [ filter => [ historyID => [ prev, next ] ] ]
+	 * @phan-var array<int,array<int,array{prev?:int,next?:int}>>
+	 */
+	private $closestVersionsCache = [];
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
@@ -273,21 +288,83 @@ class FilterLookup implements IDBAccessObject {
 	}
 
 	/**
+	 * @param int $filterID
+	 * @return HistoryFilter
+	 * @throws FilterNotFoundException If the filter doesn't exist
+	 */
+	public function getLastHistoryVersion( int $filterID ) : HistoryFilter {
+		if ( !isset( $this->lastVersionCache[$filterID] ) ) {
+			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$row = $dbr->selectRow(
+				'abuse_filter_history',
+				'*',
+				[ 'afh_filter' => $filterID ],
+				__METHOD__,
+				[ 'ORDER BY' => 'afh_id DESC' ]
+			);
+			if ( !$row ) {
+				throw new FilterNotFoundException( $filterID, false );
+			}
+			$filterObj = $this->filterFromHistoryRow( $row );
+			$this->lastVersionCache[$filterID] = $filterObj->getHistoryID();
+			$this->historyCache[$filterObj->getHistoryID()] = $filterObj;
+		}
+		return $this->historyCache[ $this->lastVersionCache[$filterID] ];
+	}
+
+	/**
+	 * @param int $historyID
+	 * @param int $filterID
+	 * @param string $direction self::DIR_PREV or self::DIR_NEXT
+	 * @return HistoryFilter
+	 * @throws ClosestFilterVersionNotFoundException
+	 */
+	public function getClosestVersion( int $historyID, int $filterID, string $direction ) : HistoryFilter {
+		if ( !isset( $this->closestVersionsCache[$filterID][$historyID][$direction] ) ) {
+			$comparison = $direction === self::DIR_PREV ? '<' : '>';
+			$order = $direction === self::DIR_PREV ? 'DESC' : 'ASC';
+			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$row = $dbr->selectRow(
+				'abuse_filter_history',
+				'*',
+				[
+					'afh_filter' => $filterID,
+					"afh_id $comparison" . $dbr->addQuotes( $historyID ),
+				],
+				__METHOD__,
+				[ 'ORDER BY' => "afh_timestamp $order" ]
+			);
+			if ( !$row ) {
+				throw new ClosestFilterVersionNotFoundException( $filterID, $historyID );
+			}
+			$filterObj = $this->filterFromHistoryRow( $row );
+			$this->closestVersionsCache[$filterID][$historyID][$direction] = $filterObj->getHistoryID();
+			$this->historyCache[$filterObj->getHistoryID()] = $filterObj;
+		}
+		$histID = $this->closestVersionsCache[$filterID][$historyID][$direction];
+		return $this->historyCache[$histID];
+	}
+
+	/**
 	 * Get the history ID of the first change to a given filter
 	 *
 	 * @param int $filterID
 	 * @return int
+	 * @throws FilterNotFoundException
 	 */
 	public function getFirstFilterVersionID( int $filterID ) : int {
 		if ( !isset( $this->firstVersionCache[$filterID] ) ) {
 			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
-			$historyID = (int)$dbr->selectField(
+			$historyID = $dbr->selectField(
 				'abuse_filter_history',
 				'MIN(afh_id)',
 				[ 'afh_filter' => $filterID ],
 				__METHOD__
 			);
-			$this->firstVersionCache[$filterID] = $historyID;
+			if ( $historyID === false ) {
+				throw new FilterNotFoundException( $filterID, false );
+			}
+			$this->firstVersionCache[$filterID] = (int)$historyID;
 		}
 
 		return $this->firstVersionCache[$filterID];
@@ -300,6 +377,9 @@ class FilterLookup implements IDBAccessObject {
 		$this->cache = [];
 		$this->groupCache = [ 'local' => [], 'global' => [] ];
 		$this->historyCache = [];
+		$this->firstVersionCache = [];
+		$this->lastVersionCache = [];
+		$this->closestVersionsCache = [];
 	}
 
 	/**

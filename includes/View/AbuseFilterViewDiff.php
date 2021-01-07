@@ -7,30 +7,30 @@ use DifferenceEngine;
 use IContextSource;
 use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TableDiffFormatterFullContext;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
-use stdClass;
 use Xml;
 
-/**
- * @phan-file-suppress PhanTypeArraySuspiciousNullable Some confusion with class members
- */
 class AbuseFilterViewDiff extends AbuseFilterView {
 	/**
-	 * @var (string|array)[]|null The old version of the filter
+	 * @var HistoryFilter|null The old version of the filter
 	 */
-	public $mOldVersion = null;
+	public $oldVersion;
 	/**
-	 * @var (string|array)[]|null The new version of the filter
+	 * @var HistoryFilter|null The new version of the filter
 	 */
-	public $mNewVersion = null;
+	public $newVersion;
 	/**
 	 * @var int|null The history ID of the next version, if any
 	 */
-	public $mNextHistoryId = null;
+	public $nextHistoryId;
 	/**
 	 * @var int|null The ID of the filter
 	 */
@@ -79,37 +79,28 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$links = [];
 		if ( $this->filter ) {
-			$links['abusefilter-history-backedit'] =
-				$this->getTitle( $this->filter )->getFullURL();
-			$links['abusefilter-diff-backhistory'] =
-				$this->getTitle( 'history/' . $this->filter )->getFullURL();
+			$links['abusefilter-history-backedit'] = $this->getTitle( $this->filter )->getFullURL();
+			$links['abusefilter-diff-backhistory'] = $this->getTitle( "history/$this->filter" )->getFullURL();
 		}
 
 		foreach ( $links as $msg => $href ) {
-			$links[$msg] =
-				new OOUI\ButtonWidget( [
-					'label' => $this->msg( $msg )->text(),
-					'href' => $href
-				] );
+			$links[$msg] = new OOUI\ButtonWidget( [
+				'label' => $this->msg( $msg )->text(),
+				'href' => $href
+			] );
 		}
 
-		$backlinks =
-			new OOUI\HorizontalLayout( [
-				'items' => $links
-			] );
+		$backlinks = new OOUI\HorizontalLayout( [ 'items' => $links ] );
 		$out->addHTML( $backlinks );
 
 		if ( $show ) {
 			$out->addHTML( $this->formatDiff() );
 			// Next and previous change links
 			$buttons = [];
-			if ( $this->filterLookup->getFirstFilterVersionID( $this->filter ) !==
-				(int)$this->mOldVersion['meta']['history_id']
-			) {
+			$oldHistoryID = $this->oldVersion->getHistoryID();
+			if ( $this->filterLookup->getFirstFilterVersionID( $this->filter ) !== $oldHistoryID ) {
 				// Create a "previous change" link if this isn't the first change of the given filter
-				$href = $this->getTitle(
-					'history/' . $this->filter . '/diff/prev/' . $this->mOldVersion['meta']['history_id']
-				)->getFullURL();
+				$href = $this->getTitle( "history/$this->filter/diff/prev/$oldHistoryID" )->getFullURL();
 				$buttons[] = new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'abusefilter-diff-prev' )->text(),
 					'href' => $href,
@@ -117,11 +108,9 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				] );
 			}
 
-			if ( $this->mNextHistoryId !== null ) {
+			if ( $this->nextHistoryId !== null ) {
 				// Create a "next change" link if this isn't the last change of the given filter
-				$href = $this->getTitle(
-					'history/' . $this->filter . '/diff/prev/' . $this->mNextHistoryId
-				)->getFullURL();
+				$href = $this->getTitle( "history/$this->filter/diff/prev/$this->nextHistoryId" )->getFullURL();
 				$buttons[] = new OOUI\ButtonWidget( [
 					'label' => $this->msg( 'abusefilter-diff-next' )->text(),
 					'href' => $href,
@@ -152,61 +141,36 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		}
 		$this->filter = (int)$this->mParams[1];
 
-		$this->mOldVersion = $this->loadSpec( $oldSpec, $newSpec );
-		$this->mNewVersion = $this->loadSpec( $newSpec, $oldSpec );
+		$this->oldVersion = $this->loadSpec( $oldSpec, $newSpec );
+		$this->newVersion = $this->loadSpec( $newSpec, $oldSpec );
 
-		if ( $this->mOldVersion === null || $this->mNewVersion === null ) {
+		if ( $this->oldVersion === null || $this->newVersion === null ) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-diff-invalid' );
 			return false;
 		}
 
 		if ( !$this->afPermManager->canViewPrivateFilters( $this->getUser() ) &&
-			(
-				in_array( 'hidden', explode( ',', $this->mOldVersion['info']['flags'] ) ) ||
-				in_array( 'hidden', explode( ',', $this->mNewVersion['info']['flags'] ) )
-			)
+			( $this->oldVersion->isHidden() || $this->newVersion->isHidden() )
 		) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );
 			return false;
 		}
 
-		$this->mNextHistoryId = $this->getNextHistoryId(
-			$this->mNewVersion['meta']['history_id']
-		);
+		$this->nextHistoryId = $this->filterLookup->getClosestVersion(
+			$this->newVersion->getHistoryID(),
+			$this->filter,
+			FilterLookup::DIR_NEXT
+		)->getHistoryID();
 
 		return true;
 	}
 
 	/**
-	 * Get the history ID of the next change
-	 *
-	 * @param int $historyId History id to find next change of
-	 * @return int|null Id of the next change or null if there isn't one
-	 */
-	public function getNextHistoryId( $historyId ) {
-		$dbr = wfGetDB( DB_REPLICA );
-		$row = $dbr->selectRow(
-			'abuse_filter_history',
-			'afh_id',
-			[
-				'afh_filter' => $this->filter,
-				'afh_id > ' . $dbr->addQuotes( $historyId ),
-			],
-			__METHOD__,
-			[ 'ORDER BY' => 'afh_timestamp ASC' ]
-		);
-		if ( $row ) {
-			return $row->afh_id;
-		}
-		return null;
-	}
-
-	/**
 	 * @param string $spec
 	 * @param string $otherSpec
-	 * @return (string|array)[]|null
+	 * @return HistoryFilter|null
 	 */
-	public function loadSpec( $spec, $otherSpec ) {
+	public function loadSpec( $spec, $otherSpec ) : ?HistoryFilter {
 		static $dependentSpecs = [ 'prev', 'next' ];
 		static $cache = [];
 
@@ -214,99 +178,37 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return $cache[$spec];
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
-		// All but afh_filter, afh_deleted and afh_changed_fields
-		$selectFields = [
-			'afh_id',
-			'afh_user',
-			'afh_user_text',
-			'afh_timestamp',
-			'afh_pattern',
-			'afh_comments',
-			'afh_flags',
-			'afh_public_comments',
-			'afh_actions',
-			'afh_group',
-		];
-		$row = null;
-		if ( is_numeric( $spec ) ) {
-			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				$selectFields,
-				[ 'afh_id' => $spec, 'afh_filter' => $this->filter ],
-				__METHOD__
-			);
-		} elseif ( $spec === 'cur' ) {
-			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				$selectFields,
-				[ 'afh_filter' => $this->filter ],
-				__METHOD__,
-				[ 'ORDER BY' => 'afh_timestamp desc' ]
-			);
-		} elseif ( ( $spec === 'prev' || $spec === 'next' ) &&
-			!in_array( $otherSpec, $dependentSpecs )
-		) {
-			// cached
+		$filterObj = null;
+		if ( ( $spec === 'prev' || $spec === 'next' ) && !in_array( $otherSpec, $dependentSpecs ) ) {
 			$other = $this->loadSpec( $otherSpec, $spec );
 
 			if ( !$other ) {
 				return null;
 			}
 
-			$comparison = $spec === 'prev' ? '<' : '>';
-			$order = $spec === 'prev' ? 'DESC' : 'ASC';
-			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				$selectFields,
-				[
-					'afh_filter' => $this->filter,
-					"afh_id $comparison" . $dbr->addQuotes( $other['meta']['history_id'] ),
-				],
-				__METHOD__,
-				[ 'ORDER BY' => "afh_timestamp $order" ]
-			);
-
-			if ( !$row ) {
-				$t = $this->getTitle(
-					'history/' . $this->filter . '/item/' . $other['meta']['history_id'] );
+			$dir = $spec === 'prev' ? FilterLookup::DIR_PREV : FilterLookup::DIR_NEXT;
+			try {
+				$filterObj = $this->filterLookup->getClosestVersion( $other->getHistoryID(), $this->filter, $dir );
+			} catch ( ClosestFilterVersionNotFoundException $_ ) {
+				$t = $this->getTitle( "history/$this->filter/item/" . $other->getHistoryID() );
 				$this->getOutput()->redirect( $t->getFullURL() );
 				return null;
 			}
 		}
 
-		if ( !$row ) {
-			return null;
+		if ( $filterObj === null ) {
+			try {
+				if ( is_numeric( $spec ) ) {
+					$filterObj = $this->filterLookup->getFilterVersion( (int)$spec );
+				} elseif ( $spec === 'cur' ) {
+					$filterObj = $this->filterLookup->getLastHistoryVersion( $this->filter );
+				}
+			} catch ( FilterNotFoundException | FilterVersionNotFoundException $_ ) {
+			}
 		}
 
-		$data = $this->loadFromHistoryRow( $row );
-		$cache[$spec] = $data;
-		return $data;
-	}
-
-	/**
-	 * @param stdClass $row
-	 * @fixme Should use Filter objects
-	 * @return (string|array)[]
-	 */
-	public function loadFromHistoryRow( $row ) {
-		return [
-			'meta' => [
-				'history_id' => $row->afh_id,
-				'modified_by' => $row->afh_user,
-				'modified_by_text' => $row->afh_user_text,
-				'modified' => $row->afh_timestamp,
-			],
-			'info' => [
-				'description' => $row->afh_public_comments,
-				'flags' => $row->afh_flags,
-				'notes' => $row->afh_comments,
-				// FIXME T263324
-				'group' => $row->afh_group ?? 'default',
-			],
-			'pattern' => $row->afh_pattern,
-			'actions' => unserialize( $row->afh_actions ),
-		];
+		$cache[$spec] = $filterObj;
+		return $cache[$spec];
 	}
 
 	/**
@@ -315,53 +217,37 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @return string
 	 */
 	public function formatVersionLink( $timestamp, $history_id ) {
-		$filter = $this->filter;
 		$text = $this->getLanguage()->timeanddate( $timestamp, true );
-		$title = $this->getTitle( "history/$filter/item/$history_id" );
+		$title = $this->getTitle( "history/$this->filter/item/$history_id" );
 
-		$link = $this->linkRenderer->makeLink( $title, $text );
-
-		return $link;
+		return $this->linkRenderer->makeLink( $title, $text );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function formatDiff() {
-		$oldVersion = $this->mOldVersion;
-		$newVersion = $this->mNewVersion;
+		$oldVersion = $this->oldVersion;
+		$newVersion = $this->newVersion;
 
 		// headings
-		$oldLink = $this->formatVersionLink(
-			$oldVersion['meta']['modified'],
-			$oldVersion['meta']['history_id']
-		);
-		$newLink = $this->formatVersionLink(
-			$newVersion['meta']['modified'],
-			$newVersion['meta']['history_id']
-		);
+		$oldLink = $this->formatVersionLink( $oldVersion->getTimestamp(), $oldVersion->getHistoryID() );
+		$newLink = $this->formatVersionLink( $newVersion->getTimestamp(), $newVersion->getHistoryID() );
 
-		$oldUserLink = Linker::userLink(
-			$oldVersion['meta']['modified_by'],
-			$oldVersion['meta']['modified_by_text']
-		);
-		$newUserLink = Linker::userLink(
-			$newVersion['meta']['modified_by'],
-			$newVersion['meta']['modified_by_text']
-		);
+		$oldUserLink = Linker::userLink( $oldVersion->getUserID(), $oldVersion->getUserName() );
+		$newUserLink = Linker::userLink( $newVersion->getUserID(), $newVersion->getUserName() );
 
-		$headings = Xml::tags( 'th', null,
-			$this->msg( 'abusefilter-diff-item' )->parse() );
+		$headings = Xml::tags( 'th', null, $this->msg( 'abusefilter-diff-item' )->parse() );
 		$headings .= Xml::tags( 'th', null,
 			$this->msg( 'abusefilter-diff-version' )
 				->rawParams( $oldLink, $oldUserLink )
-				->params( $newVersion['meta']['modified_by_text'] )
+				->params( $newVersion->getUserName() )
 				->parse()
 		);
 		$headings .= Xml::tags( 'th', null,
 			$this->msg( 'abusefilter-diff-version' )
 				->rawParams( $newLink, $newUserLink )
-				->params( $newVersion['meta']['modified_by_text'] )
+				->params( $newVersion->getUserName() )
 				->parse()
 		);
 
@@ -369,42 +255,25 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$body = '';
 		// Basic info
-		$info = $this->getDiffRow(
-			'abusefilter-edit-description',
-			$oldVersion['info']['description'],
-			$newVersion['info']['description']
+		$info = $this->getDiffRow( 'abusefilter-edit-description', $oldVersion->getName(), $newVersion->getName() );
+		$info .= $this->getDiffRow(
+			'abusefilter-edit-group',
+			$this->specsFormatter->nameGroup( $oldVersion->getGroup() ),
+			$this->specsFormatter->nameGroup( $newVersion->getGroup() )
 		);
-		if (
-			count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ||
-			$oldVersion['info']['group'] !== $newVersion['info']['group']
-		) {
-			$info .= $this->getDiffRow(
-				'abusefilter-edit-group',
-				$this->specsFormatter->nameGroup( $oldVersion['info']['group'] ),
-				$this->specsFormatter->nameGroup( $newVersion['info']['group'] )
-			);
-		}
 		$info .= $this->getDiffRow(
 			'abusefilter-edit-flags',
-			$this->specsFormatter->formatFlags( $oldVersion['info']['flags'], $this->getLanguage() ),
-			$this->specsFormatter->formatFlags( $newVersion['info']['flags'], $this->getLanguage() )
+			$this->specsFormatter->formatFilterFlags( $oldVersion, $this->getLanguage() ),
+			$this->specsFormatter->formatFilterFlags( $newVersion, $this->getLanguage() )
 		);
 
-		$info .= $this->getDiffRow(
-			'abusefilter-edit-notes',
-			$oldVersion['info']['notes'],
-			$newVersion['info']['notes']
-		);
+		$info .= $this->getDiffRow( 'abusefilter-edit-notes', $oldVersion->getComments(), $newVersion->getComments() );
 
 		if ( $info !== '' ) {
 			$body .= $this->getHeaderRow( 'abusefilter-diff-info' ) . $info;
 		}
 
-		$pattern = $this->getDiffRow(
-			'abusefilter-edit-rules',
-			$oldVersion['pattern'],
-			$newVersion['pattern']
-		);
+		$pattern = $this->getDiffRow( 'abusefilter-edit-rules', $oldVersion->getRules(), $newVersion->getRules() );
 
 		if ( $pattern !== '' ) {
 			$body .= $this->getHeaderRow( 'abusefilter-diff-pattern' ) . $pattern;
@@ -412,8 +281,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 		$actions = $this->getDiffRow(
 			'abusefilter-edit-consequences',
-			$this->stringifyActions( $oldVersion['actions'] ) ?: [ '' ],
-			$this->stringifyActions( $newVersion['actions'] ) ?: [ '' ]
+			$this->stringifyActions( $oldVersion->getActions() ) ?: [ '' ],
+			$this->stringifyActions( $newVersion->getActions() ) ?: [ '' ]
 		);
 
 		if ( $actions !== '' ) {
@@ -452,9 +321,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	public function getHeaderRow( $msg ) {
 		$html = $this->msg( $msg )->parse();
 		$html = Xml::tags( 'th', [ 'colspan' => 3 ], $html );
-		$html = Xml::tags( 'tr', [ 'class' => 'mw-abusefilter-diff-header' ], $html );
-
-		return $html;
+		return Xml::tags( 'tr', [ 'class' => 'mw-abusefilter-diff-header' ], $html );
 	}
 
 	/**
