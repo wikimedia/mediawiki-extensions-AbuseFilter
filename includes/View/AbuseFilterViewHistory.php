@@ -6,6 +6,7 @@ use HTMLForm;
 use IContextSource;
 use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterHistoryPager;
 use MediaWiki\Linker\LinkRenderer;
@@ -50,16 +51,23 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
 
 		if ( $filter ) {
+			try {
+				$filterObj = $this->filterLookup->getFilter( $filter, false );
+			} catch ( FilterNotFoundException $_ ) {
+				$filter = null;
+			}
+			if ( isset( $filterObj ) && $filterObj->isHidden()
+				&& !$this->afPermManager->canViewPrivateFilters( $this->getUser() )
+			) {
+				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
+				return;
+			}
+		}
+
+		if ( $filter ) {
 			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
 		} else {
 			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
-		}
-
-		if ( $filter && $this->filterLookup->getFilter( $filter, false )->isHidden()
-			&& !$this->afPermManager->canViewPrivateFilters( $this->getUser() )
-		) {
-			$out->addWikiMsg( 'abusefilter-history-error-hidden' );
-			return;
 		}
 
 		// Useful links

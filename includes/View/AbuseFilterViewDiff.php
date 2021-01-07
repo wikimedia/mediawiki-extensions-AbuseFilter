@@ -286,6 +286,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 
 	/**
 	 * @param stdClass $row
+	 * @fixme Should use Filter objects
 	 * @return (string|array)[]
 	 */
 	public function loadFromHistoryRow( $row ) {
@@ -300,7 +301,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				'description' => $row->afh_public_comments,
 				'flags' => $row->afh_flags,
 				'notes' => $row->afh_comments,
-				'group' => $row->afh_group,
+				// FIXME T263324
+				'group' => $row->afh_group ?? 'default',
 			],
 			'pattern' => $row->afh_pattern,
 			'actions' => unserialize( $row->afh_actions ),
