@@ -10,6 +10,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * Class for retrieving actions and parameters from the database
+ * @todo Can we better integrate this with FilterLookup?
  */
 class ConsequencesLookup {
 	public const SERVICE_NAME = 'AbuseFilterConsequencesLookup';

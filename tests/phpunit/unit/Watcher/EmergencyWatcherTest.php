@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Watcher;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
-use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
@@ -52,9 +52,9 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 		$lookup->method( 'getFilter' )
 			->with( 1, false )
 			->willReturnCallback( function () use ( $filterData ) {
-				$filterObj = MutableFilter::newDefault();
-				$filterObj->setTimestamp( $filterData['timestamp'] );
-				$filterObj->setThrottled( $filterData['throttled'] ?? false );
+				$filterObj = $this->createMock( ExistingFilter::class );
+				$filterObj->method( 'getTimestamp' )->willReturn( $filterData['timestamp'] );
+				$filterObj->method( 'isThrottled' )->willReturn( $filterData['throttled'] ?? false );
 				return $filterObj;
 			} );
 		return $lookup;

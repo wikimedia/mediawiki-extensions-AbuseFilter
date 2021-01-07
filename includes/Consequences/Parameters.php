@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 
@@ -10,7 +10,7 @@ use MediaWiki\User\UserIdentity;
  * Immutable value object that provides "base" parameters to Consequence objects
  */
 class Parameters {
-	/** @var Filter */
+	/** @var ExistingFilter */
 	private $filter;
 
 	/** @var bool */
@@ -26,14 +26,14 @@ class Parameters {
 	private $action;
 
 	/**
-	 * @param Filter $filter
+	 * @param ExistingFilter $filter
 	 * @param bool $isGlobalFilter
 	 * @param UserIdentity $user
 	 * @param LinkTarget $target
 	 * @param string $action
 	 */
 	public function __construct(
-		Filter $filter,
+		ExistingFilter $filter,
 		bool $isGlobalFilter,
 		UserIdentity $user,
 		LinkTarget $target,
@@ -47,9 +47,9 @@ class Parameters {
 	}
 
 	/**
-	 * @return Filter
+	 * @return ExistingFilter
 	 */
-	public function getFilter(): Filter {
+	public function getFilter(): ExistingFilter {
 		return $this->filter;
 	}
 

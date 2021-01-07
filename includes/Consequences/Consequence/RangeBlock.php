@@ -57,7 +57,6 @@ class RangeBlock extends BlockingConsequence {
 		$target = IPUtils::sanitizeRange( $blockCIDR );
 		$status = $this->doBlockInternal(
 			$this->parameters->getFilter()->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			$this->parameters->getFilter()->getID(),
 			$target,
 			$this->expiry,
@@ -75,7 +74,6 @@ class RangeBlock extends BlockingConsequence {
 		return [
 			'abusefilter-blocked-display',
 			$filter->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}

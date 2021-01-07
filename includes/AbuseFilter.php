@@ -21,6 +21,10 @@ class AbuseFilter {
 	 */
 	public static $logIds = [];
 
+	/**
+	 * @deprecated
+	 * @todo Phase out
+	 */
 	public const HISTORY_MAPPINGS = [
 		'af_pattern' => 'afh_pattern',
 		'af_user' => 'afh_user',

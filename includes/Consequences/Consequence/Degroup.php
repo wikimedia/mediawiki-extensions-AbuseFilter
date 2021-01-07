@@ -161,7 +161,6 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 		return [
 			'abusefilter-degrouped',
 			$filter->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}

@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Filter;
 
 /**
  * Immutable value object representing a "complete" filter. This can be used to represent filters
- * that already exist in the database.
+ * that already exist in the database, but you should probably use subclasses for that.
  */
 class Filter extends AbstractFilter {
 	/** @var LastEditInfo */

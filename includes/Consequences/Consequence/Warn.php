@@ -64,7 +64,6 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 		return [
 			$this->message,
 			$filter->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}
@@ -94,7 +93,6 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	 */
 	private function getWarnKey() : string {
 		$globalFilterName = GlobalNameUtils::buildGlobalName(
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			$this->parameters->getFilter()->getID(),
 			$this->parameters->getIsGlobalFilter()
 		);

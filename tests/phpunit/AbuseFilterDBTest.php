@@ -44,5 +44,4 @@ class AbuseFilterDBTest extends MediaWikiTestCase {
 		yield 'All suppressed, not privileged' => [ $allSupp, false, false ];
 		yield 'All suppressed, privileged' => [ $allSupp, true, true ];
 	}
-
 }

@@ -5,7 +5,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use Psr\Log\NullLogger;
@@ -42,7 +42,7 @@ class ConsequencesExecutorTest extends MediaWikiIntegrationTestCase {
 		$options->method( 'get' )
 			->with( 'AbuseFilterLocallyDisabledGlobalActions' )
 			->willReturn( $locallyDisabledActions );
-		$fakeFilter = $this->createMock( Filter::class );
+		$fakeFilter = $this->createMock( ExistingFilter::class );
 		$fakeFilter->method( 'getName' )->willReturn( 'unused name' );
 		$fakeFilter->method( 'getID' )->willReturn( 1 );
 		$fakeLookup = $this->createMock( FilterLookup::class );

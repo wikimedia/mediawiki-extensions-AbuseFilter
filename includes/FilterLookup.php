@@ -4,10 +4,11 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use DBAccessObjectUtils;
 use IDBAccessObject;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use stdClass;
@@ -43,12 +44,12 @@ class FilterLookup implements IDBAccessObject {
 	];
 
 	/**
-	 * @var Filter[] Individual filters cache. Keys can be integer IDs, or global names
+	 * @var ExistingFilter[] Individual filters cache. Keys can be integer IDs, or global names
 	 */
 	private $cache = [];
 
 	/**
-	 * @var Filter[][][] Cache of all active filters in each group. This is not related to
+	 * @var ExistingFilter[][][] Cache of all active filters in each group. This is not related to
 	 * the individual cache, and is replicated in WAN cache. The structure is
 	 * [ local|global => [ group => [ ID => filter ] ] ]
 	 * where the cache for each group has the same format as $this->cache
@@ -56,7 +57,7 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	private $groupCache = [ 'local' => [], 'global' => [] ];
 
-	/** @var Filter[] */
+	/** @var HistoryFilter[] */
 	private $historyCache = [];
 
 	/** @var int[] */
@@ -90,11 +91,11 @@ class FilterLookup implements IDBAccessObject {
 	 * @param int $filterID
 	 * @param bool $global
 	 * @param int $flags One of the self::READ_* constants
-	 * @return Filter
+	 * @return ExistingFilter
 	 * @throws FilterNotFoundException if the filter doesn't exist
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getFilter( int $filterID, bool $global, int $flags = self::READ_NORMAL ) : Filter {
+	public function getFilter( int $filterID, bool $global, int $flags = self::READ_NORMAL ) : ExistingFilter {
 		$cacheKey = $this->getCacheKey( $filterID, $global );
 		if ( $flags !== self::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
@@ -125,7 +126,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param string $group
 	 * @param bool $global
 	 * @param int $flags
-	 * @return Filter[]
+	 * @return ExistingFilter[]
 	 * @throws CentralDBNotAvailableException
 	 */
 	public function getAllActiveFiltersInGroup( string $group, bool $global, int $flags = self::READ_NORMAL ) : array {
@@ -162,7 +163,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param string $group
 	 * @param bool $global
 	 * @param int $flags
-	 * @return array
+	 * @return ExistingFilter[]
 	 */
 	private function getAllActiveFiltersInGroupFromDB( string $group, bool $global, int $flags ) : array {
 		[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
@@ -244,13 +245,13 @@ class FilterLookup implements IDBAccessObject {
 	 *
 	 * @param int $version Unique identifier of the version
 	 * @param int $flags
-	 * @return Filter
+	 * @return HistoryFilter
 	 * @throws FilterVersionNotFoundException if the version doesn't exist
 	 */
 	public function getFilterVersion(
 		int $version,
 		int $flags = self::READ_NORMAL
-	) : Filter {
+	) : HistoryFilter {
 		if ( $flags !== self::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 			$dbr = $this->loadBalancer->getConnectionRef( $dbIndex );
@@ -265,7 +266,7 @@ class FilterLookup implements IDBAccessObject {
 			if ( !$row ) {
 				throw new FilterVersionNotFoundException( $version );
 			}
-			$this->historyCache[$version] = $this->getFilterFromHistory( $row );
+			$this->historyCache[$version] = $this->filterFromHistoryRow( $row );
 		}
 
 		return $this->historyCache[$version];
@@ -328,43 +329,49 @@ class FilterLookup implements IDBAccessObject {
 	}
 
 	/**
-	 * Translate an abuse_filter_history row into an abuse_filter row and a list of actions
+	 * Note: this is private because no external caller should access DB rows directly.
 	 * @param stdClass $row
-	 * @return Filter
+	 * @return HistoryFilter
 	 */
-	private function getFilterFromHistory( stdClass $row ) : Filter {
-		$af_row = new stdClass;
-
-		if ( $row->afh_group === null ) {
-			// FIXME Make the field NOT NULL and add default (T263324)
-			$row->afh_group = 'default';
-		}
-
-		foreach ( AbuseFilter::HISTORY_MAPPINGS as $af_col => $afh_col ) {
-			$af_row->$af_col = $row->$afh_col;
-		}
-
-		// Process flags
-		$flags = $row->afh_flags ? explode( ',', $row->afh_flags ) : [];
-		foreach ( [ 'enabled', 'hidden', 'deleted', 'global' ] as $flag ) {
-			$af_row->{"af_$flag"} = (int)in_array( $flag, $flags, true );
-		}
-
+	private function filterFromHistoryRow( stdClass $row ) : HistoryFilter {
 		$actionsRaw = unserialize( $row->afh_actions );
-		$actionsOutput = is_array( $actionsRaw ) ? $actionsRaw : [];
-		$af_row->af_actions = implode( ',', array_keys( $actionsOutput ) );
-
-		return $this->filterFromRow( $af_row, $actionsOutput );
+		$actions = is_array( $actionsRaw ) ? $actionsRaw : [];
+		$flags = $row->afh_flags ? explode( ',', $row->afh_flags ) : [];
+		return new HistoryFilter(
+			new Specs(
+				trim( $row->afh_pattern ),
+				$row->afh_comments,
+				// FIXME: Make the DB field NOT NULL (T263324)
+				(string)$row->afh_public_comments,
+				array_keys( $actions ),
+				// FIXME Make the field NOT NULL and add default (T263324)
+				$row->afh_group ?? 'default'
+			),
+			new Flags(
+				in_array( 'enabled', $flags, true ),
+				in_array( 'deleted', $flags, true ),
+				in_array( 'hidden', $flags, true ),
+				in_array( 'global', $flags, true )
+			),
+			$actions,
+			new LastEditInfo(
+				(int)$row->afh_user,
+				$row->afh_user_text,
+				$row->afh_timestamp
+			),
+			(int)$row->afh_filter,
+			$row->afh_id
+		);
 	}
 
 	/**
 	 * Note: this is private because no external caller should access DB rows directly.
 	 * @param stdClass $row
 	 * @param array[]|callable $actions
-	 * @return Filter
+	 * @return ExistingFilter
 	 */
-	private function filterFromRow( stdClass $row, $actions ) : Filter {
-		return new Filter(
+	private function filterFromRow( stdClass $row, $actions ) : ExistingFilter {
+		return new ExistingFilter(
 			new Specs(
 				trim( $row->af_pattern ),
 				// FIXME: Make the DB fields for these NOT NULL (T263324)

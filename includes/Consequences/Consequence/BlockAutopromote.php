@@ -76,7 +76,6 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence, Re
 		return [
 			'abusefilter-autopromote-blocked',
 			$filter->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() ),
 			$this->duration
 		];

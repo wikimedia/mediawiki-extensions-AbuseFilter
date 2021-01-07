@@ -51,7 +51,6 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	public function execute() : bool {
 		$status = $this->doBlockInternal(
 			$this->parameters->getFilter()->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			$this->parameters->getFilter()->getID(),
 			$this->parameters->getUser()->getName(),
 			$this->expiry,
@@ -98,7 +97,6 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 		return [
 			'abusefilter-blocked-display',
 			$filter->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}

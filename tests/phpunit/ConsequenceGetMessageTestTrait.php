@@ -2,7 +2,7 @@
 
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
@@ -23,9 +23,9 @@ trait ConsequenceGetMessageTestTrait {
 		$user = $user instanceof UserIdentity
 			? $user
 			: new UserIdentityValue( 1, 'getMessage test user', 2 );
-		$localFilter = MutableFilter::newDefault();
-		$localFilter->setID( 1 );
-		$localFilter->setName( 'Local filter' );
+		$localFilter = $this->createMock( ExistingFilter::class );
+		$localFilter->method( 'getID' )->willReturn( 1 );
+		$localFilter->method( 'getName' )->willReturn( 'Local filter' );
 		$localParams = new Parameters(
 			$localFilter,
 			false,
@@ -35,9 +35,9 @@ trait ConsequenceGetMessageTestTrait {
 		);
 		yield 'local filter' => [ $localParams ];
 
-		$globalFilter = MutableFilter::newDefault();
-		$globalFilter->setID( 3 );
-		$globalFilter->setName( 'Global filter' );
+		$globalFilter = $this->createMock( ExistingFilter::class );
+		$globalFilter->method( 'getID' )->willReturn( 3 );
+		$globalFilter->method( 'getName' )->willReturn( 'Global filter' );
 		$globalParams = new Parameters(
 			$globalFilter,
 			true,

@@ -9,7 +9,7 @@ use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
@@ -427,13 +427,11 @@ class FilterRunner {
 
 		$matchedFilters = [];
 		foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, false ) as $filter ) {
-			// @phan-suppress-next-line PhanTypeMismatchDimAssignment
 			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter );
 		}
 
 		if ( $this->options->get( 'AbuseFilterCentralDB' ) && !$this->options->get( 'AbuseFilterIsCentral' ) ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
-				// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 				$matchedFilters[GlobalNameUtils::buildGlobalName( $filter->getID() )] =
 					$this->checkFilter( $filter, true );
 			}
@@ -449,12 +447,11 @@ class FilterRunner {
 	/**
 	 * Check the conditions of a single filter, and profile it if $this->executeMode is true
 	 *
-	 * @param Filter $filter
+	 * @param ExistingFilter $filter
 	 * @param bool $global
 	 * @return bool
 	 */
-	protected function checkFilter( Filter $filter, $global = false ) {
-		// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
+	protected function checkFilter( ExistingFilter $filter, $global = false ) {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
 
 		$startConds = $this->parser->getCondCount();

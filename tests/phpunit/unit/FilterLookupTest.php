@@ -7,10 +7,12 @@ use Generator;
 use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -94,12 +96,12 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param int $version
 	 * @param stdClass $dbRow
-	 * @param Filter $expected
+	 * @param HistoryFilter $expected
 	 * @dataProvider provideFilterVersions
 	 * @covers ::getFilterVersion
-	 * @covers ::getFilterFromHistory
+	 * @covers ::filterFromHistoryRow
 	 */
-	public function testGetFilterVersion( int $version, stdClass $dbRow, Filter $expected ) {
+	public function testGetFilterVersion( int $version, stdClass $dbRow, HistoryFilter $expected ) {
 		$db = $this->getDBWithMockRows( [ $dbRow ] );
 		$filterLookup = $this->getLookup( $db );
 		$this->assertEquals( $expected, $filterLookup->getFilterVersion( $version ) );
@@ -111,7 +113,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	public function provideFilterVersions() : Generator {
 		$version = 163;
 		$filters = [
-			'no actions' => new Filter(
+			'no actions' => new HistoryFilter(
 				new Specs(
 					'false',
 					'X',
@@ -131,9 +133,10 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 					'FilterManager',
 					'20180706142932'
 				),
-				1
+				1,
+				$version
 			),
-			'with actions' => new Filter(
+			'with actions' => new HistoryFilter(
 				new Specs(
 					'the_answer := 42; the_answer === 6*9',
 					'Some comments',
@@ -153,7 +156,8 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 					'FilterManager',
 					'20180706142932'
 				),
-				1
+				1,
+				$version
 			),
 		];
 
@@ -310,14 +314,14 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param stdClass $row
 	 * @param stdClass[] $actionsRows
-	 * @param Filter $expected
+	 * @param ExistingFilter $expected
 	 * @covers ::getFilter
 	 * @covers ::filterFromRow
 	 * @covers ::getDBConnection
 	 * @covers ::getActionsFromDB
 	 * @dataProvider getRowsAndFilters
 	 */
-	public function testGetFilter( stdClass $row, array $actionsRows, Filter $expected ) {
+	public function testGetFilter( stdClass $row, array $actionsRows, ExistingFilter $expected ) {
 		$db = $this->getDBWithMockRows( [ $row ], $actionsRows );
 		$filterLookup = $this->getLookup( $db );
 
@@ -330,14 +334,14 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param stdClass $row
 	 * @param stdClass[] $actionsRows
-	 * @param Filter $expected
+	 * @param ExistingFilter $expected
 	 * @covers ::getFilter
 	 * @covers ::filterFromRow
 	 * @covers ::getDBConnection
 	 * @covers ::getActionsFromDB
 	 * @dataProvider getRowsAndFilters
 	 */
-	public function testGetFilter_global( stdClass $row, array $actionsRows, Filter $expected ) {
+	public function testGetFilter_global( stdClass $row, array $actionsRows, ExistingFilter $expected ) {
 		$db = $this->getDBWithMockRows( [ $row ], $actionsRows );
 		$filterLookup = $this->getLookup( $db, 'central_wiki' );
 

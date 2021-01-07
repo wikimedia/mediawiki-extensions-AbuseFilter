@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use EchoEvent;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
-use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWikiIntegrationTestCase;
 use Title;
@@ -23,8 +23,9 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		$lookup = $this->createMock( FilterLookup::class );
 		$lookup->method( 'getFilter' )
 			->willReturnCallback( function ( $filter, $global ) {
-				$filterObj = MutableFilter::newDefault();
-				$filterObj->setUserID( self::USER_IDS[ $global ? "global-$filter" : $filter ] ?? 0 );
+				$filterObj = $this->createMock( ExistingFilter::class );
+				$filterObj->method( 'getUserID' )
+					->willReturn( self::USER_IDS[ $global ? "global-$filter" : $filter ] ?? 0 );
 				return $filterObj;
 			} );
 		return $lookup;

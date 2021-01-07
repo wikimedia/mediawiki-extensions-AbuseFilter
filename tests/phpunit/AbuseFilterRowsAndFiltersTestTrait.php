@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
@@ -57,7 +57,7 @@ trait AbuseFilterRowsAndFiltersTestTrait {
 
 		foreach ( $rows as $name => $row ) {
 			$actionKeys = $row->af_actions ? explode( ',', $row->af_actions ) : [];
-			$filter = new Filter(
+			$filter = new ExistingFilter(
 				new Specs(
 					$row->af_pattern,
 					$row->af_comments,
@@ -109,7 +109,7 @@ trait AbuseFilterRowsAndFiltersTestTrait {
 					'af_group' => 'default'
 				],
 				'actions' => $this->getRowsForActions( 333, [ 'warn' ] ),
-				'filter' => new Filter(
+				'filter' => new ExistingFilter(
 					new Specs(
 						'false',
 						'',
@@ -146,7 +146,7 @@ trait AbuseFilterRowsAndFiltersTestTrait {
 					'af_group' => 'default'
 				],
 				'actions' => [],
-				'filter' => new Filter(
+				'filter' => new ExistingFilter(
 					new Specs(
 						'"foo"',
 						'foo',
@@ -183,7 +183,7 @@ trait AbuseFilterRowsAndFiltersTestTrait {
 					'af_group' => 'default'
 				],
 				'actions' => [],
-				'filter' => new Filter(
+				'filter' => new ExistingFilter(
 					new Specs(
 						'0',
 						'foo',

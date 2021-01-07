@@ -36,7 +36,6 @@ class Disallow extends Consequence implements HookAborterConsequence {
 		return [
 			$this->message,
 			$filter->getName(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}

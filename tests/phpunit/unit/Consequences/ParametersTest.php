@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Consequences;
 
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
@@ -23,7 +23,7 @@ class ParametersTest extends MediaWikiUnitTestCase {
 	 * @covers ::getAction
 	 */
 	public function testGetters() {
-		$filter = $this->createMock( Filter::class );
+		$filter = $this->createMock( ExistingFilter::class );
 		$global = true;
 		$user = $this->createMock( UserIdentity::class );
 		$target = $this->createMock( LinkTarget::class );

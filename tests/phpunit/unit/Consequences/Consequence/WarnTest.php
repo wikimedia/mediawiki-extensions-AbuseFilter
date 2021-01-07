@@ -6,7 +6,7 @@ use ConsequenceGetMessageTestTrait;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedException;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Session\Session;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
@@ -30,7 +30,7 @@ class WarnTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getParamsAndWarnKey() : array {
-		$filter = $this->createMock( Filter::class );
+		$filter = $this->createMock( ExistingFilter::class );
 		$filter->method( 'getID' )->willReturn( 42 );
 		$params = new Parameters(
 			$filter,
