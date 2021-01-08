@@ -283,7 +283,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
 
-		if ( !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
+		if ( $isListItem && !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
 			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . $description;
 		}
 
