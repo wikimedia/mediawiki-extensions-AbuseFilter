@@ -39,9 +39,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return MockObject|User User type is here for IDE-friendliness
 	 */
 	private function getUserWithMockedMethod( $method, $result ) {
-		$user = $this->getMockBuilder( User::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$user = $this->createMock( User::class );
 
 		$user->expects( $this->atLeastOnce() )
 			->method( $method )
@@ -68,7 +66,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 				$user = $this->getUserWithMockedMethod( 'getName', $result );
 				break;
 			case 'user_emailconfirm':
-				$result = wfTimestampNow();
+				$result = '20000101000000';
 				$user = $this->getUserWithMockedMethod( 'getEmailAuthenticationTimestamp', $result );
 				break;
 			case 'user_groups':
@@ -103,11 +101,9 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideUserVars
 	 */
 	public function testAddUserVars( $varName ) {
-		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
-		$hookRunner->method( 'onAbuseFilterInterceptVariable' )->willReturn( true );
 		$computer = new LazyVariableComputer(
 			$this->createMock( TextExtractor::class ),
-			$hookRunner,
+			new AbuseFilterHookRunner( $this->createHookContainer() ),
 			$this->createMock( TitleFactory::class ),
 			new NullLogger(),
 			$this->createMock( ILoadBalancer::class ),
@@ -158,10 +154,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 	 * @return MockObject|Title Title type is here for IDE-friendliness
 	 */
 	private function getTitleWithMockedMethod( $method, $result ) {
-		$title = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->getMock();
-
+		$title = $this->createMock( Title::class );
 		$title->expects( $this->atLeastOnce() )
 			->method( $method )
 			->willReturn( $result );

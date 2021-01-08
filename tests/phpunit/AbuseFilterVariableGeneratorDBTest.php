@@ -199,52 +199,58 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 * Test _recent_contributors variables. They perform a custom DB query and thus are tested
 	 * here instead of in AbuseFilterTest.
 	 *
+	 * @param string $prefix
 	 * @covers MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addTitleVars
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer::getLastPageAuthors
+	 * @dataProvider providePrefix
 	 */
-	public function testRecentContributors() {
-		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
-		foreach ( $prefixes as $prefix ) {
-			$varName = "{$prefix}_recent_contributors";
-			$pageName = "Page to test $varName";
-			$title = Title::newFromText( $pageName );
+	public function testRecentContributors( string $prefix ) {
+		$varName = "{$prefix}_recent_contributors";
+		$pageName = "Page to test $varName";
+		$title = Title::newFromText( $pageName );
 
-			$expected = $this->computeRecentContributors( $title );
-			$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
-			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-			$manager = AbuseFilterServices::getVariablesManager();
-			$actual = $manager->getVar( $vars, $varName )->toNative();
-			$this->assertSame( $expected, $actual, "Prefix: $prefix" );
-		}
+		$expected = $this->computeRecentContributors( $title );
+		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
+		$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
+		$manager = AbuseFilterServices::getVariablesManager();
+		$actual = $manager->getVar( $vars, $varName )->toNative();
+		$this->assertSame( $expected, $actual, "Prefix: $prefix" );
+	}
+
+	public function providePrefix() : array {
+		return [
+			'page' => [ 'page' ],
+			'moved_from' => [ 'moved_from' ],
+			'moved_to' => [ 'moved_to' ],
+		];
 	}
 
 	/**
 	 * Test for the page_first_contributor variable.
 	 *
+	 * @param string $prefix
 	 * @covers MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator::addTitleVars
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer::compute
+	 * @dataProvider providePrefix
 	 */
-	public function testFirstContributorVar() {
-		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
-		foreach ( $prefixes as $prefix ) {
-			$varName = "{$prefix}_first_contributor";
-			$title = Title::makeTitle( NS_MAIN, "Page to test $varName" );
-			$user = $this->getMutableTestUser()->getUser();
-			$this->editPage(
-				$title->getText(),
-				'AbuseFilter test for title variables',
-				'',
-				$title->getNamespace(),
-				$user
-			);
-			$expected = $user->getName();
+	public function testFirstContributorVar( string $prefix ) {
+		$varName = "{$prefix}_first_contributor";
+		$title = Title::makeTitle( NS_MAIN, "Page to test $varName" );
+		$user = $this->getMutableTestUser()->getUser();
+		$this->editPage(
+			$title->getText(),
+			'AbuseFilter test for title variables',
+			'',
+			$title->getNamespace(),
+			$user
+		);
+		$expected = $user->getName();
 
-			$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
-			$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-			$manager = AbuseFilterServices::getVariablesManager();
-			$actual = $manager->getVar( $vars, $varName )->toNative();
-			$this->assertSame( $expected, $actual, "Prefix: $prefix" );
-		}
+		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
+		$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
+		$manager = AbuseFilterServices::getVariablesManager();
+		$actual = $manager->getVar( $vars, $varName )->toNative();
+		$this->assertSame( $expected, $actual, "Prefix: $prefix" );
 	}
 
 	/**
@@ -253,7 +259,6 @@ class AbuseFilterVariableGeneratorDBTest extends MediaWikiIntegrationTestCase {
 	 * @param string $type Type of the action the row refers to
 	 * @param string $action Same as the 'action' variable
 	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator
-	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariableHolder
 	 * @dataProvider provideRCRowTypes
 	 */
 	public function testGetVarsFromRCRow( string $type, string $action ) {
