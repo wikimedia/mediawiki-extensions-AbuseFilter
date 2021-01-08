@@ -6,6 +6,7 @@ use HtmlArmor;
 use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
 use MediaWiki\Linker\LinkRenderer;
 use SpecialPage;
@@ -144,22 +145,12 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = '';
 				$lookup = AbuseFilterServices::getFilterLookup();
 				if ( $lookup->getFirstFilterVersionID( $row->afh_filter ) !== (int)$value ) {
-					// @todo This is subpar, it should be cached at least. Should we also hide actions?
-					$dbr = wfGetDB( DB_REPLICA );
-					$oldFlags = $dbr->selectField(
-						'abuse_filter_history',
-						'afh_flags',
-						[
-							'afh_filter' => $row->afh_filter,
-							'afh_id <' . $dbr->addQuotes( $row->afh_id ),
-						],
-						__METHOD__,
-						[ 'ORDER BY' => 'afh_id DESC' ]
-					);
+					// @todo Should we also hide actions?
+					$prevFilter = $lookup->getClosestVersion( $row->afh_id, $row->afh_filter, FilterLookup::DIR_PREV );
 					if ( $this->canViewPrivateFilters ||
 						(
 							!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
-							!in_array( 'hidden', explode( ',', $oldFlags ) )
+							!$prevFilter->isHidden()
 						)
 					) {
 						$title = $this->mPage->getTitle(
