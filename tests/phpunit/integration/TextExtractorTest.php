@@ -5,14 +5,13 @@ use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
-use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\TextExtractor
  * @covers ::__construct
- * @todo Make this a unit test once MediaWikiServices is no longer used in RevisionRecord::userCanBitfield
+ * @todo Make this a unit test once MediaWikiServices is no longer used in RevisionRecord::userCanBitfield (T271300)
  */
 class TextExtractorTest extends MediaWikiIntegrationTestCase {
 
@@ -24,12 +23,10 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideRevisionToString
 	 */
 	public function testRevisionToString( ?RevisionRecord $rev, bool $sysop, string $expected ) {
-		/** @var MockObject|User $user */
-		$user = $this->getMockBuilder( User::class )
-			->setMethods( [ 'getEffectiveGroups' ] )
-			->getMock();
-		$groups = $sysop ? [ 'user', 'sysop' ] : [ 'user' ];
-		$user->method( 'getEffectiveGroups' )->willReturn( $groups );
+		$user = $this->createMock( User::class );
+		$user->method( 'getName' )->willReturn( 'Test user 12345' );
+		$perms = $sysop ? [ 'deletedtext' ] : [];
+		$this->overrideUserPermissions( $user, $perms );
 
 		$hookRunner = new AbuseFilterHookRunner( $this->createHookContainer() );
 		$converter = new TextExtractor( $hookRunner );
