@@ -129,32 +129,30 @@ class VariableGenerator {
 		// have i18n messages. If a restriction is not enabled we'll just return the empty array.
 		$types = [ 'edit', 'move', 'create', 'upload' ];
 		foreach ( $types as $action ) {
-			$this->vars->setLazyLoadVar( "{$prefix}_restrictions_$action", 'get-page-restrictions',
-				[ 'title' => $title->getText(),
-					'namespace' => $title->getNamespace(),
-					'action' => $action
-				]
+			$this->vars->setLazyLoadVar(
+				"{$prefix}_restrictions_$action",
+				'get-page-restrictions',
+				[ 'title' => $title, 'action' => $action ]
 			);
 		}
 
-		$this->vars->setLazyLoadVar( "{$prefix}_recent_contributors", 'load-recent-authors',
-			[
-				'title' => $title->getText(),
-				'namespace' => $title->getNamespace()
-			] );
+		$this->vars->setLazyLoadVar(
+			"{$prefix}_recent_contributors",
+			'load-recent-authors',
+			[ 'title' => $title ]
+		);
 
-		$this->vars->setLazyLoadVar( "{$prefix}_age", 'page-age',
-			[
-				'title' => $title->getText(),
-				'namespace' => $title->getNamespace(),
-				'asof' => wfTimestampNow()
-			] );
+		$this->vars->setLazyLoadVar(
+			"{$prefix}_age",
+			'page-age',
+			[ 'title' => $title, 'asof' => wfTimestampNow() ]
+		);
 
-		$this->vars->setLazyLoadVar( "{$prefix}_first_contributor", 'load-first-author',
-			[
-				'title' => $title->getText(),
-				'namespace' => $title->getNamespace()
-			] );
+		$this->vars->setLazyLoadVar(
+			"{$prefix}_first_contributor",
+			'load-first-author',
+			[ 'title' => $title ]
+		);
 
 		$this->hookRunner->onAbuseFilterGenerateTitleVars( $this->vars, $title, $prefix, $rc );
 
@@ -162,12 +160,17 @@ class VariableGenerator {
 	}
 
 	/**
-	 * @param Title $title
-	 * @param WikiPage $page
-	 * @param User $user The current user
+	 * @param WikiPage|Title $page Title for BC only
+	 * @param User|WikiPage $user The current user; WikiPage for BC only
+	 * @param User|null $oldUser For BC only
 	 * @return $this For chaining
 	 */
-	public function addEditVars( Title $title, WikiPage $page, User $user ) : self {
+	public function addEditVars( $page, $user, $oldUser = null ) : self {
+		if ( $page instanceof Title ) {
+			// Temporary BC code for external callers
+			$page = $user;
+			$user = $oldUser;
+		}
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
@@ -195,23 +198,18 @@ class VariableGenerator {
 
 		$this->vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
 			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
 				'text-var' => 'new_wikitext',
 				'article' => $page,
 				'contextUser' => $user
 			] );
 		$this->vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
 			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
+				'article' => $page,
 				'text-var' => 'old_wikitext',
 				'contextUser' => $user
 			] );
 		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
 			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
 				'wikitext-var' => 'new_wikitext',
 				'article' => $page,
 				'pst' => true,
@@ -219,8 +217,6 @@ class VariableGenerator {
 			] );
 		$this->vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
 			[
-				'namespace' => $title->getNamespace(),
-				'title' => $title->getText(),
 				'wikitext-var' => 'new_wikitext',
 				'article' => $page,
 				'contextUser' => $user
