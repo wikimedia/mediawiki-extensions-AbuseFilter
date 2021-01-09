@@ -192,6 +192,10 @@ return [
 			$services->get( BlockAutopromoteStore::SERVICE_NAME ),
 			$services->get( FilterUser::SERVICE_NAME ),
 			SessionManager::getGlobalSession(),
+			// TODO: Use a proper MessageLocalizer once available (T247127)
+			RequestContext::getMain(),
+			$services->getUserEditTracker(),
+			$services->getUserFactory(),
 			RequestContext::getMain()->getRequest()->getIP()
 		);
 	},

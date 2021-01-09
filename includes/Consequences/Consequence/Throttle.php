@@ -5,9 +5,10 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 use BagOStuff;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedException;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use Psr\Log\LoggerInterface;
 use Title;
-use User;
 use Wikimedia\IPUtils;
 
 /**
@@ -18,6 +19,10 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	private $throttleParams;
 	/** @var BagOStuff */
 	private $mainStash;
+	/** @var UserEditTracker */
+	private $userEditTracker;
+	/** @var UserFactory */
+	private $userFactory;
 	/** @var LoggerInterface */
 	private $logger;
 	/** @var string */
@@ -35,6 +40,8 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @param array $throttleParams
 	 * @phan-param array{groups:string[],id:int|string,count:int,period:int} $throttleParams
 	 * @param BagOStuff $mainStash
+	 * @param UserEditTracker $userEditTracker
+	 * @param UserFactory $userFactory
 	 * @param LoggerInterface $logger
 	 * @param string $requestIP
 	 * @param bool $filterIsCentral
@@ -44,6 +51,8 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 		Parameters $parameters,
 		array $throttleParams,
 		BagOStuff $mainStash,
+		UserEditTracker $userEditTracker,
+		UserFactory $userFactory,
 		LoggerInterface $logger,
 		string $requestIP,
 		bool $filterIsCentral,
@@ -52,6 +61,8 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 		parent::__construct( $parameters );
 		$this->throttleParams = $throttleParams;
 		$this->mainStash = $mainStash;
+		$this->userEditTracker = $userEditTracker;
+		$this->userFactory = $userFactory;
 		$this->logger = $logger;
 		$this->requestIP = $requestIP;
 		$this->filterIsCentral = $filterIsCentral;
@@ -98,8 +109,8 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @param string $types
 	 * @return bool
 	 */
-	protected function isThrottled( string $types ) : bool {
-		$key = $this->throttleKey( $this->throttleParams['id'], $types, $this->parameters->getIsGlobalFilter() );
+	private function isThrottled( string $types ) : bool {
+		$key = $this->throttleKey( $types );
 		$newCount = (int)$this->mainStash->get( $key ) + 1;
 
 		$this->logger->debug(
@@ -119,8 +130,8 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 *
 	 * @param string $types
 	 */
-	protected function setThrottled( string $types ) : void {
-		$key = $this->throttleKey( $this->throttleParams['id'], $types, $this->parameters->getIsGlobalFilter() );
+	private function setThrottled( string $types ) : void {
+		$key = $this->throttleKey( $types );
 		$this->logger->debug(
 			'Increasing throttle key {key}',
 			[ 'key' => $key ]
@@ -129,12 +140,10 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	}
 
 	/**
-	 * @param string $throttleId
 	 * @param string $type
-	 * @param bool $global
 	 * @return string
 	 */
-	private function throttleKey( string $throttleId, string $type, bool $global = false ) : string {
+	private function throttleKey( string $type ) : string {
 		$types = explode( ',', $type );
 
 		$identifiers = [];
@@ -145,13 +154,13 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 
 		$identifier = sha1( implode( ':', $identifiers ) );
 
-		if ( $global && !$this->filterIsCentral ) {
+		if ( $this->parameters->getIsGlobalFilter() && !$this->filterIsCentral ) {
 			return $this->mainStash->makeGlobalKey(
-				'abusefilter', 'throttle', $this->centralDB, $throttleId, $type, $identifier
+				'abusefilter', 'throttle', $this->centralDB, $this->throttleParams['id'], $type, $identifier
 			);
 		}
 
-		return $this->mainStash->makeKey( 'abusefilter', 'throttle', $throttleId, $type, $identifier );
+		return $this->mainStash->makeKey( 'abusefilter', 'throttle', $this->throttleParams['id'], $type, $identifier );
 	}
 
 	/**
@@ -159,7 +168,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @return int|string
 	 */
 	private function throttleIdentifier( string $type ) {
-		$user = User::newFromIdentity( $this->parameters->getUser() );
+		$user = $this->parameters->getUser();
 		$title = Title::castFromLinkTarget( $this->parameters->getTarget() );
 		switch ( $type ) {
 			case 'ip':
@@ -172,17 +181,19 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				$identifier = substr( IPUtils::toHex( $this->requestIP ), 0, 4 );
 				break;
 			case 'creationdate':
-				$reg = (int)$user->getRegistration();
+				// TODO Inject a proper service, not UserFactory, once getRegistration is moved away from User
+				$reg = (int)$this->userFactory->newFromUserIdentity( $user )->getRegistration();
 				$identifier = $reg - ( $reg % 86400 );
 				break;
 			case 'editcount':
 				// Hack for detecting different single-purpose accounts.
-				$identifier = (int)$user->getEditCount();
+				$identifier = $user->isRegistered() ? $this->userEditTracker->getUserEditCount( $user ) : 0;
 				break;
 			case 'site':
 				$identifier = 1;
 				break;
 			case 'page':
+				// TODO Replace with something from LinkTarget, e.g. namespace + text
 				$identifier = $title->getPrefixedText();
 				break;
 			default:

@@ -4,6 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use RuntimeException;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ConsequenceNotPrecheckedException extends RuntimeException {
 	public function __construct() {
 		parent::__construct(

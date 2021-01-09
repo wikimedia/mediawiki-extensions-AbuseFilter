@@ -19,7 +19,10 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Session\Session;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
+use MessageLocalizer;
 use Psr\Log\LoggerInterface;
 
 class ConsequencesFactory {
@@ -62,6 +65,15 @@ class ConsequencesFactory {
 	/** @var Session */
 	private $session;
 
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
+
+	/** @var UserEditTracker */
+	private $userEditTracker;
+
+	/** @var UserFactory */
+	private $userFactory;
+
 	/** @var string */
 	private $requestIP;
 
@@ -78,6 +90,9 @@ class ConsequencesFactory {
 	 * @param BlockAutopromoteStore $blockAutopromoteStore
 	 * @param FilterUser $filterUser
 	 * @param Session $session
+	 * @param MessageLocalizer $messageLocalizer
+	 * @param UserEditTracker $userEditTracker
+	 * @param UserFactory $userFactory
 	 * @param string $requestIP
 	 */
 	public function __construct(
@@ -91,6 +106,9 @@ class ConsequencesFactory {
 		BlockAutopromoteStore $blockAutopromoteStore,
 		FilterUser $filterUser,
 		Session $session,
+		MessageLocalizer $messageLocalizer,
+		UserEditTracker $userEditTracker,
+		UserFactory $userFactory,
 		string $requestIP
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
@@ -104,6 +122,9 @@ class ConsequencesFactory {
 		$this->blockAutopromoteStore = $blockAutopromoteStore;
 		$this->filterUser = $filterUser;
 		$this->session = $session;
+		$this->messageLocalizer = $messageLocalizer;
+		$this->userEditTracker = $userEditTracker;
+		$this->userFactory = $userFactory;
 		$this->requestIP = $requestIP;
 	}
 
@@ -122,7 +143,8 @@ class ConsequencesFactory {
 			$preventsTalk,
 			$this->blockUserFactory,
 			$this->databaseBlockStore,
-			$this->filterUser
+			$this->filterUser,
+			$this->messageLocalizer
 		);
 	}
 
@@ -137,6 +159,7 @@ class ConsequencesFactory {
 			$expiry,
 			$this->blockUserFactory,
 			$this->filterUser,
+			$this->messageLocalizer,
 			$this->options->get( 'AbuseFilterRangeBlockSize' ),
 			$this->options->get( 'BlockCIDRLimit' ),
 			$this->requestIP
@@ -149,7 +172,7 @@ class ConsequencesFactory {
 	 * @return Degroup
 	 */
 	public function newDegroup( Parameters $params, VariableHolder $vars ) : Degroup {
-		return new Degroup( $params, $vars, $this->userGroupManager, $this->filterUser );
+		return new Degroup( $params, $vars, $this->userGroupManager, $this->filterUser, $this->messageLocalizer );
 	}
 
 	/**
@@ -158,7 +181,7 @@ class ConsequencesFactory {
 	 * @return BlockAutopromote
 	 */
 	public function newBlockAutopromote( Parameters $params, int $duration ) : BlockAutopromote {
-		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore );
+		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore, $this->messageLocalizer );
 	}
 
 	/**
@@ -172,6 +195,8 @@ class ConsequencesFactory {
 			$params,
 			$throttleParams,
 			$this->mainStash,
+			$this->userEditTracker,
+			$this->userFactory,
 			$this->logger,
 			$this->requestIP,
 			$this->options->get( 'AbuseFilterIsCentral' ),

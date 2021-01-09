@@ -6,6 +6,7 @@ use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MessageLocalizer;
 use Wikimedia\IPUtils;
 
 /**
@@ -24,6 +25,7 @@ class RangeBlock extends BlockingConsequence {
 	 * @param string $expiry
 	 * @param BlockUserFactory $blockUserFactory
 	 * @param FilterUser $filterUser
+	 * @param MessageLocalizer $messageLocalizer
 	 * @param array $rangeBlockSize
 	 * @param array $blockCIDRLimit
 	 * @param string $requestIP
@@ -33,11 +35,12 @@ class RangeBlock extends BlockingConsequence {
 		string $expiry,
 		BlockUserFactory $blockUserFactory,
 		FilterUser $filterUser,
+		MessageLocalizer $messageLocalizer,
 		array $rangeBlockSize,
 		array $blockCIDRLimit,
 		string $requestIP
 	) {
-		parent::__construct( $parameters, $expiry, $blockUserFactory, $filterUser );
+		parent::__construct( $parameters, $expiry, $blockUserFactory, $filterUser, $messageLocalizer );
 		$this->rangeBlockSize = $rangeBlockSize;
 		$this->blockCIDRLimit = $blockCIDRLimit;
 		$this->requestIP = $requestIP;
