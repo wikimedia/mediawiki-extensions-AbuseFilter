@@ -21,6 +21,7 @@ use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWiki\Extension\AbuseFilter\FilterRunner;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
@@ -273,7 +274,10 @@ return [
 			$services->get( EmergencyWatcher::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getStatsdDataFactory(),
-			$services->getMainConfig()->get( 'AbuseFilterValidGroups' )
+			new ServiceOptions(
+				FilterRunner::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
 		);
 	},
 	VariablesFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesFormatter {
