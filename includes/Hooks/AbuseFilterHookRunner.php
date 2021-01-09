@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks;
 use Content;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\HookContainer\HookContainer;
-use MediaWiki\MediaWikiServices;
 use RecentChange;
 use Title;
 use User;
@@ -29,6 +28,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterShouldFilterActionHook,
 	AbuseFilterGetDangerousActionsHook
 {
+	public const SERVICE_NAME = 'AbuseFilterHookRunner';
 
 	/** @var HookContainer */
 	private $hookContainer;
@@ -38,19 +38,6 @@ class AbuseFilterHookRunner implements
 	 */
 	public function __construct( HookContainer $hookContainer ) {
 		$this->hookContainer = $hookContainer;
-	}
-
-	/**
-	 * Convenience getter for static contexts
-	 *
-	 * See also core's Hooks::runner
-	 *
-	 * @return AbuseFilterHookRunner
-	 */
-	public static function getRunner() : AbuseFilterHookRunner {
-		return new AbuseFilterHookRunner(
-			MediaWikiServices::getInstance()->getHookContainer()
-		);
 	}
 
 	/**

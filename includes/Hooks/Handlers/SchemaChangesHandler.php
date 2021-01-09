@@ -8,11 +8,43 @@ use MediaWiki\Extension\AbuseFilter\Maintenance\MigrateAflFilter;
 use MediaWiki\Extension\AbuseFilter\Maintenance\NormalizeThrottleParameters;
 use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserGroupManager;
+use MessageLocalizer;
 use MWException;
+use RequestContext;
 use User;
 
 class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
+	/** @var UserGroupManager */
+	private $userGroupManager;
+
 	/**
+	 * @param MessageLocalizer $messageLocalizer
+	 * @param UserGroupManager $userGroupManager
+	 */
+	public function __construct( MessageLocalizer $messageLocalizer, UserGroupManager $userGroupManager ) {
+		$this->messageLocalizer = $messageLocalizer;
+		$this->userGroupManager = $userGroupManager;
+	}
+
+	/**
+	 * @note The hook doesn't allow injecting services!
+	 * @codeCoverageIgnore
+	 * @return self
+	 */
+	public static function newFromGlobalState() : self {
+		return new self(
+			// @todo Use a proper MessageLocalizer once available (T247127)
+			RequestContext::getMain(),
+			MediaWikiServices::getInstance()->getUserGroupManager()
+		);
+	}
+
+	/**
+	 * @codeCoverageIgnore This is tested by installing or updating MediaWiki
 	 * @param DatabaseUpdater $updater
 	 * @throws MWException
 	 */
@@ -218,7 +250,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			] );
 		}
 
-		$updater->addExtensionUpdate( [ [ __CLASS__, 'createAbuseFilterUser' ] ] );
+		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 		$updater->addPostDatabaseUpdateMaintenance( NormalizeThrottleParameters::class );
 		$updater->addPostDatabaseUpdateMaintenance( FixOldLogEntries::class );
 		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );
@@ -233,18 +265,20 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 
 	/**
 	 * Updater callback to create the AbuseFilter user after the user tables have been updated.
-	 * @todo Move elsewhere, use DI
 	 * @param DatabaseUpdater $updater
+	 * @return bool
 	 */
-	public static function createAbuseFilterUser( DatabaseUpdater $updater ) : void {
-		$username = wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text();
+	public function createAbuseFilterUser( DatabaseUpdater $updater ) : bool {
+		$username = $this->messageLocalizer->msg( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newFromName( $username );
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			$user = User::newSystemUser( $username, [ 'steal' => true ] );
 			$updater->insertUpdateRow( 'create abusefilter-blocker-user' );
 			// Promote user so it doesn't look too crazy.
-			$user->addGroup( 'sysop' );
+			$this->userGroupManager->addUserToGroup( $user, 'sysop' );
+			return true;
 		}
+		return false;
 	}
 }
