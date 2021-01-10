@@ -149,7 +149,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testComputeDBVars() {
 		$nonDBMet = [ 'unknown', 'certainly-not-db' ];
-		$dbMet = [ 'page-age', 'simple-user-accessor', 'load-recent-authors' ];
+		$dbMet = [ 'page-age', 'user-age', 'load-recent-authors' ];
 		$methods = array_merge( $nonDBMet, $dbMet );
 		$objs = [];
 		foreach ( $methods as $method ) {
