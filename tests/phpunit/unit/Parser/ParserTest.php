@@ -59,8 +59,6 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
- * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable
- * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
  */
 class ParserTest extends ParserTestCase {
 	/**
