@@ -462,7 +462,7 @@ class FilterRunner {
 		$origExtraTime = LazyVariableComputer::$profilingExtraTime;
 
 		$this->parser->setFilter( $filterName );
-		$result = $this->parser->checkConditions( $filter->getRules(), true, $filterName )->getResult();
+		$result = $this->parser->checkConditions( $filter->getRules(), $filterName )->getResult();
 
 		$actualExtra = LazyVariableComputer::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );

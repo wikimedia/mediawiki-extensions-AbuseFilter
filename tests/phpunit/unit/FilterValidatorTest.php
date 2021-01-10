@@ -115,7 +115,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$excMsg = $this->getMockMessage( $excText );
 		$excep = $this->createMock( AFPUserVisibleException::class );
 		$excep->method( 'getMessageObj' )->willReturn( $excMsg );
-		yield 'invalid, user error' => [ false, $excep, 'abusefilter-edit-badsyntax', [ $excText ] ];
+		yield 'invalid, user error' => [ false, $excep, 'abusefilter-edit-badsyntax', [ $excMsg ] ];
 	}
 
 	/**

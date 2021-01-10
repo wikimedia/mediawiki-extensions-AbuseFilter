@@ -282,28 +282,21 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * be used to determine whether this method should throw.
 	 *
 	 * @param string $conds
-	 * @param bool $ignoreError
 	 * @param string|null $filter The ID of the filter being parsed
 	 * @return ParserStatus
-	 * @throws AFPException
 	 */
-	public function checkConditions( string $conds, $ignoreError = true, $filter = null ) : ParserStatus {
+	public function checkConditions( string $conds, $filter = null ) : ParserStatus {
 		$result = $this->parseDetailed( $conds );
 		$excep = $result->getException();
 		if ( $excep !== null ) {
 			if ( $excep instanceof AFPUserVisibleException ) {
 				$msg = $excep->getMessageForLogs();
-				$excep->setLocalizedMessage();
 			} else {
 				$msg = $excep->getMessage();
 			}
 
 			$extraInfo = $filter !== null ? " for filter $filter" : '';
 			$this->logger->warning( "AbuseFilter parser error$extraInfo: $msg" );
-
-			if ( !$ignoreError ) {
-				throw $excep;
-			}
 		}
 
 		return $result;

@@ -37,25 +37,18 @@ class AFPUserVisibleException extends AFPException {
 	}
 
 	/**
-	 * Change the message of the exception to a localized version
-	 */
-	public function setLocalizedMessage() {
-		$this->message = $this->getMessageObj()->text();
-	}
-
-	/**
-	 * Returns the error message in English for use in logs
+	 * Returns the error message for use in logs
 	 *
 	 * @return string
 	 */
-	public function getMessageForLogs() {
-		return $this->getMessageObj()->inLanguage( 'en' )->useDatabase( false )->text();
+	public function getMessageForLogs() : string {
+		return "ID: {$this->mExceptionID}; position: {$this->mPosition}; params: " . implode( $this->mParams );
 	}
 
 	/**
 	 * @return Message
 	 */
-	public function getMessageObj() {
+	public function getMessageObj() : Message {
 		// Give grep a chance to find the usages:
 		// abusefilter-exception-unexpectedatend, abusefilter-exception-expectednotfound
 		// abusefilter-exception-unrecognisedkeyword, abusefilter-exception-unexpectedtoken
@@ -68,9 +61,9 @@ class AFPUserVisibleException extends AFPException {
 		// abusefilter-exception-invalidiprange, abusefilter-exception-disabledvar
 		// abusefilter-exception-variablevariable, abusefilter-exception-toomanyargs
 		// abusefilter-exception-negativeoffset
-		return wfMessage(
+		return new Message(
 			'abusefilter-exception-' . $this->mExceptionID,
-			$this->mPosition, ...$this->mParams
+			array_merge( [ $this->mPosition ], $this->mParams )
 		);
 	}
 }

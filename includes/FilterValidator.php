@@ -120,7 +120,7 @@ class FilterValidator {
 		if ( $syntaxStatus->getResult() !== true ) {
 			$excep = $syntaxStatus->getException();
 			$errMsg = $excep instanceof AFPUserVisibleException
-				? $excep->getMessageObj()->text()
+				? $excep->getMessageObj()
 				: $excep->getMessage();
 			$ret->error( 'abusefilter-edit-badsyntax', $errMsg );
 		}
