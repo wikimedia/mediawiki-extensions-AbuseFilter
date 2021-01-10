@@ -189,13 +189,9 @@ class VariablesManager {
 		$missingVars = array_filter( $holder->getVars(), function ( $el ) {
 			return ( $el instanceof LazyLoadedVariable );
 		} );
-		$getVarCB = function ( string $varName ) use ( $holder ) : AFPData {
-			return $this->getVar( $holder, $varName );
-		};
 		foreach ( $missingVars as $name => $var ) {
 			if ( in_array( $var->getMethod(), $dbTypes ) ) {
-				$value = $this->lazyComputer->compute( $var, $holder, $getVarCB );
-				$holder->setVar( $name, $value );
+				$holder->setVar( $name, $this->getVar( $holder, $name ) );
 			}
 		}
 	}
