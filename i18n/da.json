@@ -314,6 +314,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Hvorvidt brugeren er blokeret",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Tidspunkt e-mailadressen blev bekræftet",
 	"abusefilter-edit-builder-vars-recent-contributors": "Seneste ti brugere som har bidraget til siden",
+	"abusefilter-edit-builder-vars-first-contributor": "Første bruger til at bidrage til siden",
 	"abusefilter-edit-builder-vars-all-links": "Alle eksterne henvisninger i den nye tekst",
 	"abusefilter-edit-builder-vars-added-links": "Alle eksterne henvisninger tilføjet i redigeringen",
 	"abusefilter-edit-builder-vars-removed-links": "Alle eksterne henvisninger fjernet i redigeringen",
@@ -463,5 +464,6 @@
 	"abusefilter-log-details-id": "Log ID",
 	"log-description-abusefilterprivatedetails": "Denne log viser en liste over gange, hvor en bruger havde adgang til de private oplysninger i en misbrugslog.",
 	"abusefilter-noreason": "Advarsel: For at se de private oplysninger i denne log, skal du angive en grund.",
-	"abusefilter-log-ip-not-available": "Ikke tilgængelig."
+	"abusefilter-log-ip-not-available": "Ikke tilgængelig.",
+	"notification-link-text-show-filter": "Vis filter"
 }
