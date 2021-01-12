@@ -15,6 +15,7 @@
 			"Mormegil",
 			"Patriccck",
 			"Paxt",
+			"Robins7",
 			"Tchoř",
 			"Teslaton",
 			"Urbanecm",
@@ -574,5 +575,6 @@
 	"tag-abusefilter-condition-limit": "překročen limit podmínek",
 	"tag-abusefilter-condition-limit-description": "Editace či jiné aktivity, které nebylo možné zkontrolovat všemi zapnutými [[Special:AbuseFilter|filtry zneužití]] ([[mw:Extension:AbuseFilter/Conditions|nápověda]]).",
 	"notification-header-throttle-filter": "Filtr zneužití $2, který jste nedávno {{GENDER:$1|upravil|upravila|upravil(a)}}, byl omezen.",
-	"notification-subject-throttle-filter": "Na {{GRAMMAR:6sg|{{SITENAME}}}} byl omezen filtr zneužití, který jste {{GENDER:$1|upravil|upravila|upravil(a)}}"
+	"notification-subject-throttle-filter": "Na {{GRAMMAR:6sg|{{SITENAME}}}} byl omezen filtr zneužití, který jste {{GENDER:$1|upravil|upravila|upravil(a)}}",
+	"notification-link-text-show-filter": "Zobrazit filtr"
 }
