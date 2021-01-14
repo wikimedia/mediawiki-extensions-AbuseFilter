@@ -224,7 +224,7 @@ class RCVariableGenerator extends VariableGenerator {
 			$this->vars->setVar( 'old_wikitext', '' );
 		}
 
-		$this->addEditVars( $title, \WikiPage::factory( $title ), $this->contextUser );
+		$this->addEditVars( \WikiPage::factory( $title ), $this->contextUser );
 
 		return $this;
 	}

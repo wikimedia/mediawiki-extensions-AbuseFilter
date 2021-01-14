@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 use Content;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
-use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -110,10 +109,6 @@ class RunVariableGenerator extends VariableGenerator {
 		$newRevision->setContent( $slot, $content );
 		$text = $this->textExtractor->revisionToString( $newRevision, $this->user );
 
-		// Cache article object so we can share a parse operation
-		$articleCacheKey = $this->title->getNamespace() . ':' . $this->title->getText();
-		LazyVariableComputer::$articleCache[$articleCacheKey] = $page;
-
 		// Don't trigger for null edits. Compare Content objects if available, but check the
 		// stringified contents as well, e.g. for line endings normalization (T240115).
 		// Don't treat content model change as null edit though.
@@ -159,7 +154,7 @@ class RunVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'new_content_model', $newcontent->getModel() );
 		$this->vars->setVar( 'old_wikitext', $oldtext );
 		$this->vars->setVar( 'new_wikitext', $text );
-		$this->addEditVars( $this->title, $page, $this->user );
+		$this->addEditVars( $page, $this->user );
 
 		return $this->vars;
 	}
@@ -289,10 +284,6 @@ class RunVariableGenerator extends VariableGenerator {
 				$oldcontent = $revRec->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
 				$oldtext = $this->textExtractor->contentToString( $oldcontent );
 
-				// Cache article object so we can share a parse operation
-				$articleCacheKey = $this->title->getNamespace() . ':' . $this->title->getText();
-				LazyVariableComputer::$articleCache[$articleCacheKey] = $page;
-
 				// Page text is ignored for uploads when the page already exists
 				$text = $oldtext;
 			} else {
@@ -304,7 +295,7 @@ class RunVariableGenerator extends VariableGenerator {
 			$this->vars->setVar( 'old_wikitext', $oldtext );
 			$this->vars->setVar( 'new_wikitext', $text );
 			// TODO: set old_content and new_content vars, use them
-			$this->addEditVars( $this->title, $page, $this->user );
+			$this->addEditVars( $page, $this->user );
 		}
 		return $this->vars;
 	}

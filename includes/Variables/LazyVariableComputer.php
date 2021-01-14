@@ -18,7 +18,6 @@ use stdClass;
 use StringUtils;
 use TextContent;
 use Title;
-use TitleFactory;
 use UnifiedDiffFormatter;
 use User;
 use WANObjectCache;
@@ -34,12 +33,6 @@ class LazyVariableComputer {
 	public const SERVICE_NAME = 'AbuseFilterLazyVariableComputer';
 
 	/**
-	 * @var WikiPage[] Cache containing Page objects already constructed
-	 * @todo Is this necessary?
-	 */
-	public static $articleCache = [];
-
-	/**
 	 * @var float The amount of time to subtract from profiling
 	 * @todo This is a hack
 	 */
@@ -50,9 +43,6 @@ class LazyVariableComputer {
 
 	/** @var AbuseFilterHookRunner */
 	private $hookRunner;
-
-	/** @var TitleFactory */
-	private $titleFactory;
 
 	/** @var LoggerInterface */
 	private $logger;
@@ -81,7 +71,6 @@ class LazyVariableComputer {
 	/**
 	 * @param TextExtractor $textExtractor
 	 * @param AbuseFilterHookRunner $hookRunner
-	 * @param TitleFactory $titleFactory
 	 * @param LoggerInterface $logger
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WANObjectCache $wanCache
@@ -94,7 +83,6 @@ class LazyVariableComputer {
 	public function __construct(
 		TextExtractor $textExtractor,
 		AbuseFilterHookRunner $hookRunner,
-		TitleFactory $titleFactory,
 		LoggerInterface $logger,
 		ILoadBalancer $loadBalancer,
 		WANObjectCache $wanCache,
@@ -106,7 +94,6 @@ class LazyVariableComputer {
 	) {
 		$this->textExtractor = $textExtractor;
 		$this->hookRunner = $hookRunner;
-		$this->titleFactory = $titleFactory;
 		$this->logger = $logger;
 		$this->loadBalancer = $loadBalancer;
 		$this->wanCache = $wanCache;
@@ -120,6 +107,7 @@ class LazyVariableComputer {
 	/**
 	 * XXX: $getVarCB is a hack to hide the cyclic dependency with VariablesManager. See T261069 for possible
 	 * solutions. This might also be merged into VariablesManager, but it would bring a ton of dependencies.
+	 * @todo Should we remove $vars parameter (check hooks)?
 	 *
 	 * @param LazyLoadedVariable $var
 	 * @param VariableHolder $vars
@@ -186,13 +174,9 @@ class LazyVariableComputer {
 				}
 			// Otherwise fall back to database
 			case 'links-from-wikitext-or-database':
-				// Recreate the Page from namespace and title; this discards the $article
-				// used in links-from-wikitext.
 				// TODO: use Content object instead, if available!
-				$article = $this->pageFromTitle(
-					$parameters['namespace'],
-					$parameters['title']
-				);
+				/** @var WikiPage $article */
+				$article = $article ?? $parameters['article'];
 
 				if ( $vars->forFilter ) {
 					$links = $this->getLinksFromDB( $article );
@@ -237,6 +221,7 @@ class LazyVariableComputer {
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
+				// TODO: use Content object instead, if available!
 				/* @var WikiPage $article */
 				$article = $parameters['article'];
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
@@ -262,9 +247,6 @@ class LazyVariableComputer {
 				}
 
 				// Otherwise fall back to database
-
-				// TODO: use Content object instead, if available!
-				$article = $this->pageFromTitle( $parameters['namespace'], $parameters['title'] );
 				$textVar = $parameters['wikitext-var'];
 
 				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
@@ -298,12 +280,10 @@ class LazyVariableComputer {
 				$result = TextContent::normalizeLineEndings( $stripped );
 				break;
 			case 'load-recent-authors':
-				$title = $this->titleFactory->makeTitle( $parameters['namespace'], $parameters['title'] );
-				$result = $this->getLastPageAuthors( $title );
+				$result = $this->getLastPageAuthors( $parameters['title'] );
 				break;
 			case 'load-first-author':
-				$title = $this->titleFactory->makeTitle( $parameters['namespace'], $parameters['title'] );
-				$revision = $this->revisionLookup->getFirstRevision( $title );
+				$revision = $this->revisionLookup->getFirstRevision( $parameters['title'] );
 				if ( $revision ) {
 					$user = $revision->getUser();
 					$result = $user === null ? '' : $user->getName();
@@ -313,7 +293,8 @@ class LazyVariableComputer {
 				break;
 			case 'get-page-restrictions':
 				$action = $parameters['action'];
-				$title = $this->titleFactory->makeTitle( $parameters['namespace'], $parameters['title'] );
+				/** @var Title $title */
+				$title = $parameters['title'];
 
 				$result = $title->getRestrictions( $action );
 				break;
@@ -329,10 +310,11 @@ class LazyVariableComputer {
 				$result = (bool)$user->getBlock();
 				break;
 			case 'user-age':
+				/** @var User $user */
 				$user = $parameters['user'];
 				$asOf = $parameters['asof'];
 
-				if ( $user->getId() === 0 ) {
+				if ( !$user->isRegistered() ) {
 					$result = 0;
 				} else {
 					$registration = $user->getRegistration();
@@ -345,9 +327,11 @@ class LazyVariableComputer {
 				}
 				break;
 			case 'page-age':
-				$title = $this->titleFactory->makeTitle( $parameters['namespace'], $parameters['title'] );
+				/** @var Title $title */
+				$title = $parameters['title'];
 
-				$firstRevisionTime = $title->getEarliestRevTime();
+				$firstRev = $this->revisionLookup->getFirstRevision( $title );
+				$firstRevisionTime = $firstRev ? $firstRev->getTimestamp() : null;
 				if ( !$firstRevisionTime ) {
 					$result = 0;
 					break;
@@ -408,29 +392,6 @@ class LazyVariableComputer {
 			[ 'el_from' => $id ],
 			__METHOD__
 		);
-	}
-
-	/**
-	 * @todo Is this method necessary
-	 * @param int $namespace
-	 * @param string $title
-	 * @return WikiPage
-	 */
-	private function pageFromTitle( $namespace, $title ) {
-		if ( isset( self::$articleCache["$namespace:$title"] ) ) {
-			return self::$articleCache["$namespace:$title"];
-		}
-
-		if ( count( self::$articleCache ) > 1000 ) {
-			self::$articleCache = [];
-		}
-
-		$this->logger->debug( "Creating wikipage object for $namespace:$title in cache" );
-
-		$t = $this->titleFactory->makeTitle( $namespace, $title );
-		self::$articleCache["$namespace:$title"] = WikiPage::factory( $t );
-
-		return self::$articleCache["$namespace:$title"];
 	}
 
 	/**

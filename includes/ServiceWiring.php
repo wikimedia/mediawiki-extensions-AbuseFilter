@@ -298,7 +298,6 @@ return [
 		return new LazyVariableComputer(
 			$services->get( TextExtractor::SERVICE_NAME ),
 			AbuseFilterHookRunner::getRunner(),
-			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
