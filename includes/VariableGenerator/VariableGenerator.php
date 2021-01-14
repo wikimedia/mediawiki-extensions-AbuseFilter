@@ -160,17 +160,11 @@ class VariableGenerator {
 	}
 
 	/**
-	 * @param WikiPage|Title $page Title for BC only
-	 * @param User|WikiPage $user The current user; WikiPage for BC only
-	 * @param User|null $oldUser For BC only
+	 * @param WikiPage $page
+	 * @param User $user The current user
 	 * @return $this For chaining
 	 */
-	public function addEditVars( $page, $user, $oldUser = null ) : self {
-		if ( $page instanceof Title ) {
-			// Temporary BC code for external callers
-			$page = $user;
-			$user = $oldUser;
-		}
+	public function addEditVars( WikiPage $page, User $user ) : self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
