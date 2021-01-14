@@ -223,6 +223,18 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$actionLinks[] = $diffLink;
 			}
 
+			if ( !$isListItem && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
+				// Link for hiding a single entry from the details view
+				$hideLink = $linkRenderer->makeKnownLink(
+					SpecialPage::getTitleFor( $this->basePageName, 'hide' ),
+					$this->msg( 'abusefilter-log-hidelink' )->text(),
+					[],
+					[ "hideids[$row->afl_id]" => 1 ]
+				);
+
+				$actionLinks[] = $hideLink;
+			}
+
 			if ( $global ) {
 				$centralDb = $this->getConfig()->get( 'AbuseFilterCentralDB' );
 				$linkMsg = $this->msg( 'abusefilter-log-detailedentry-global' )
@@ -284,6 +296,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		if ( $isListItem && !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
+			// Checkbox for hiding multiple entries, single entries are handled above
 			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . $description;
 		}
 
