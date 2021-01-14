@@ -15,6 +15,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWTimestamp;
 use Parser;
@@ -274,6 +275,28 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 		yield "*_age" => [ $var, $age, $revLookup ];
 
-		// TODO _first_contributor and _recent_contributors are tested in LazyVariableComputerDBTest
+		$title = $this->createMock( Title::class );
+		$firstRev = $this->createMock( RevisionRecord::class );
+		$firstUserName = 'First author';
+		$firstUser = new UserIdentityValue( 1, $firstUserName, 42 );
+		$firstRev->expects( $this->once() )->method( 'getUser' )->willReturn( $firstUser );
+		$revLookup = $this->createMock( RevisionLookup::class );
+		$revLookup->method( 'getFirstRevision' )->with( $title )->willReturn( $firstRev );
+		$var = new LazyLoadedVariable(
+			'load-first-author',
+			[ 'title' => $title ]
+		);
+		yield '*_first_contributor, with rev' => [ $var, $firstUserName, $revLookup ];
+
+		$title = $this->createMock( Title::class );
+		$revLookup = $this->createMock( RevisionLookup::class );
+		$revLookup->method( 'getFirstRevision' )->with( $title )->willReturn( null );
+		$var = new LazyLoadedVariable(
+			'load-first-author',
+			[ 'title' => $title ]
+		);
+		yield '*_first_contributor, no rev' => [ $var, '', $revLookup ];
+
+		// TODO _recent_contributors is tested in LazyVariableComputerDBTest
 	}
 }
