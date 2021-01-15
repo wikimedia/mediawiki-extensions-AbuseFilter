@@ -12,7 +12,6 @@ use MediaWikiUnitTestCase;
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\AutoPromoteGroupsHandler
  * @covers ::__construct
- * @covers ::onGetAutoPromoteGroups
  */
 class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 
@@ -32,6 +31,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::onGetAutoPromoteGroups
 	 * @dataProvider provideOnGetAutoPromoteGroups_nothingToDo
 	 */
 	public function testOnGetAutoPromoteGroups_nothingToDo( bool $enabled, array $groups ) {
@@ -56,6 +56,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::onGetAutoPromoteGroups
 	 * @dataProvider provideOnGetAutoPromoteGroups
 	 */
 	public function testOnGetAutoPromoteGroups_cacheHit(
@@ -75,6 +76,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::onGetAutoPromoteGroups
 	 * @dataProvider provideOnGetAutoPromoteGroups
 	 */
 	public function testOnGetAutoPromoteGroups_cacheMiss(
@@ -95,4 +97,16 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $cache->hasKey( 'local:abusefilter:blockautopromote:quick:1' ) );
 	}
 
+	/**
+	 * @covers ::factory
+	 */
+	public function testFactory() {
+		$this->assertInstanceOf(
+			AutoPromoteGroupsHandler::class,
+			AutoPromoteGroupsHandler::factory(
+				$this->createMock( ConsequencesRegistry::class ),
+				$this->createMock( BlockAutopromoteStore::class )
+			)
+		);
+	}
 }

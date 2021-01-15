@@ -7,6 +7,9 @@ use MediaWiki\Hook\UnitTestsAfterDatabaseSetupHook;
 use MediaWiki\Hook\UnitTestsBeforeDatabaseTeardownHook;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
+/**
+ * @codeCoverageIgnore This is test code
+ */
 class TestsHandler implements UnitTestsAfterDatabaseSetupHook, UnitTestsBeforeDatabaseTeardownHook {
 	/**
 	 * Setup tables to emulate global filters, used in AbuseFilterConsequencesTest.

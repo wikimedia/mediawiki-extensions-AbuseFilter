@@ -253,7 +253,8 @@
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\TestsHandler"
 		},
 		"SchemaChanges": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler"
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler",
+			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler::newFromGlobalState"
 		}
 	},
 	"Hooks": {

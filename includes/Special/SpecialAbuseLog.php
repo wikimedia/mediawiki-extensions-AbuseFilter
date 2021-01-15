@@ -36,6 +36,8 @@ use WikiMap;
 use Xml;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
+	public const PAGE_NAME = 'AbuseLog';
+
 	/**
 	 * @var User The user whose AbuseLog entries are being searched
 	 */
@@ -130,7 +132,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		VariablesFormatter $variablesFormatter,
 		VariablesManager $varManager
 	) {
-		parent::__construct( 'AbuseLog', 'abusefilter-log', $afPermissionManager );
+		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permissionManager;
 		$this->consequencesRegistry = $consequencesRegistry;
@@ -387,7 +389,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$this->afPermissionManager,
 			$this->getContext(),
 			$this->getLinkRenderer(),
-			'AbuseLog'
+			self::PAGE_NAME
 		);
 		$view->show();
 	}
@@ -1077,7 +1079,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @return void
 	 */
 	public static function addPrivateDetailsAccessLogEntry( $logID, $reason, User $user ) {
-		$target = self::getTitleFor( 'AbuseLog', (string)$logID );
+		$target = self::getTitleFor( self::PAGE_NAME, (string)$logID );
 
 		$logEntry = new ManualLogEntry( 'abusefilterprivatedetails', 'access' );
 		$logEntry->setPerformer( $user );

@@ -47,10 +47,11 @@ use MediaWiki\Session\SessionManager;
 // @codeCoverageIgnoreStart
 
 return [
+	AbuseFilterHookRunner::SERVICE_NAME => function ( MediaWikiServices $services ): AbuseFilterHookRunner {
+		return new AbuseFilterHookRunner( $services->getHookContainer() );
+	},
 	KeywordsManager::SERVICE_NAME => function ( MediaWikiServices $services ): KeywordsManager {
-		return new KeywordsManager(
-			new AbuseFilterHookRunner( $services->getHookContainer() )
-		);
+		return new KeywordsManager( $services->get( AbuseFilterHookRunner::SERVICE_NAME ) );
 	},
 	FilterProfiler::SERVICE_NAME => function ( MediaWikiServices $services ): FilterProfiler {
 		return new FilterProfiler(
@@ -216,7 +217,7 @@ return [
 	},
 	ConsequencesRegistry::SERVICE_NAME => function ( MediaWikiServices $services ): ConsequencesRegistry {
 		return new ConsequencesRegistry(
-			AbuseFilterHookRunner::getRunner(),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->getMainConfig()->get( 'AbuseFilterActions' ),
 			$services->getMainConfig()->get( 'AbuseFilterCustomActionsHandlers' )
 		);
@@ -265,7 +266,7 @@ return [
 	},
 	FilterRunnerFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : FilterRunnerFactory {
 		return new FilterRunnerFactory(
-			AbuseFilterHookRunner::getRunner(),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->get( FilterProfiler::SERVICE_NAME ),
 			$services->get( ChangeTagger::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
@@ -301,7 +302,7 @@ return [
 	LazyVariableComputer::SERVICE_NAME => function ( MediaWikiServices $services ): LazyVariableComputer {
 		return new LazyVariableComputer(
 			$services->get( TextExtractor::SERVICE_NAME ),
-			AbuseFilterHookRunner::getRunner(),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
@@ -313,9 +314,7 @@ return [
 		);
 	},
 	TextExtractor::SERVICE_NAME => function ( MediaWikiServices $services ): TextExtractor {
-		return new TextExtractor(
-			new AbuseFilterHookRunner( $services->getHookContainer() )
-		);
+		return new TextExtractor( $services->get( AbuseFilterHookRunner::SERVICE_NAME ) );
 	},
 	VariablesManager::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesManager {
 		return new VariablesManager(
@@ -326,7 +325,7 @@ return [
 	},
 	VariableGeneratorFactory::SERVICE_NAME => function ( MediaWikiServices $services ): VariableGeneratorFactory {
 		return new VariableGeneratorFactory(
-			AbuseFilterHookRunner::getRunner(),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->get( TextExtractor::SERVICE_NAME ),
 			$services->getMimeAnalyzer(),
 			$services->getRepoGroup()

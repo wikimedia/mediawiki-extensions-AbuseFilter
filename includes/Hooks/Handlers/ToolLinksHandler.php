@@ -4,9 +4,12 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Linker\LinkTarget;
 use SpecialPage;
 use Title;
+use TitleValue;
 use Wikimedia\IPUtils;
 
 class ToolLinksHandler implements
@@ -39,7 +42,7 @@ class ToolLinksHandler implements
 		) {
 			$linkRenderer = $sp->getLinkRenderer();
 			$tools['abuselog'] = $linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
+				$this->getSpecialPageTitle(),
 				$sp->msg( 'abusefilter-log-linkoncontribs' )->text(),
 				[ 'title' => $sp->msg( 'abusefilter-log-linkoncontribs-text',
 					$username )->text() ],
@@ -56,7 +59,7 @@ class ToolLinksHandler implements
 	public function onHistoryPageToolLinks( IContextSource $context, LinkRenderer $linkRenderer, array &$links ) {
 		if ( $this->afPermManager->canViewAbuseLog( $context->getUser() ) ) {
 			$links[] = $linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
+				$this->getSpecialPageTitle(),
 				$context->msg( 'abusefilter-log-linkonhistory' )->text(),
 				[ 'title' => $context->msg( 'abusefilter-log-linkonhistory-text' )->text() ],
 				[ 'wpSearchTitle' => $context->getTitle()->getPrefixedText() ]
@@ -76,11 +79,21 @@ class ToolLinksHandler implements
 		// For 'history action', the link would be added by HistoryPageToolLinks hook.
 		if ( $show && $action !== 'history' ) {
 			$links[] = $linkRenderer->makeLink(
-				SpecialPage::getTitleFor( 'AbuseLog' ),
+				$this->getSpecialPageTitle(),
 				$context->msg( 'abusefilter-log-linkonundelete' )->text(),
 				[ 'title' => $context->msg( 'abusefilter-log-linkonundelete-text' )->text() ],
 				[ 'wpSearchTitle' => $context->getTitle()->getPrefixedText() ]
 			);
 		}
+	}
+
+	/**
+	 * @codeCoverageIgnore Helper for tests
+	 * @return LinkTarget
+	 */
+	private function getSpecialPageTitle() : LinkTarget {
+		return defined( 'MW_PHPUNIT_TEST' )
+			? new TitleValue( NS_SPECIAL, SpecialAbuseLog::PAGE_NAME )
+			: SpecialPage::getTitleFor( SpecialAbuseLog::PAGE_NAME );
 	}
 }
