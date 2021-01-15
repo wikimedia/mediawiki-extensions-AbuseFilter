@@ -110,6 +110,7 @@
 	"abusefilter-log-detailedentry-local": "フィルター $1",
 	"abusefilter-log-detailslink": "詳細",
 	"abusefilter-log-diff": "差分",
+	"abusefilter-log-hidelink": "閲覧レベルを調整",
 	"abusefilter-log-hide-entries": "選択した記録項目の閲覧レベルを変更",
 	"abusefilter-log-description-not-available": "利用できません",
 	"abusefilter-log-details-legend": "記録項目 $1 の詳細",

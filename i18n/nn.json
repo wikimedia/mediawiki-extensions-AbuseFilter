@@ -66,6 +66,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "detaljar",
 	"abusefilter-log-diff": "skilnad",
+	"abusefilter-log-hidelink": "juster synlegheit",
 	"abusefilter-log-details-legend": "Detaljar for loggelementet $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Verdi",

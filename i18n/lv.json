@@ -61,6 +61,7 @@
 	"abusefilter-log-detailedentry-local": "filtrs $1",
 	"abusefilter-log-detailslink": "papildinformācija",
 	"abusefilter-log-diff": "izmaiņas",
+	"abusefilter-log-hidelink": "mainīt redzamību",
 	"abusefilter-log-details-legend": "Sīkāka informācija par reģistra ierakstu $1",
 	"abusefilter-log-details-var": "Mainīgais",
 	"abusefilter-log-details-val": "Vērtība",

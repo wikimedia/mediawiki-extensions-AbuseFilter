@@ -106,6 +106,7 @@
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalhes",
 	"abusefilter-log-diff": "dif",
+	"abusefilter-log-hidelink": "ajustar a visibilidade",
 	"abusefilter-log-hide-entries": "Alterar visibilidade das entradas selecionadas",
 	"abusefilter-log-description-not-available": "não disponível",
 	"abusefilter-log-details-legend": "Detalhes para entrada de registro $1",

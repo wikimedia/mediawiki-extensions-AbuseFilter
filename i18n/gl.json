@@ -83,6 +83,7 @@
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalles",
 	"abusefilter-log-diff": "dif",
+	"abusefilter-log-hidelink": "axustar a visibilidade",
 	"abusefilter-log-details-legend": "Detalles para a entrada $1 do rexistro",
 	"abusefilter-log-details-var": "Variable",
 	"abusefilter-log-details-val": "Valor",

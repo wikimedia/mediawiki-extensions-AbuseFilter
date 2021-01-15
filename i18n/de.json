@@ -106,6 +106,7 @@
 	"abusefilter-log-detailedentry-local": "Filter $1",
 	"abusefilter-log-detailslink": "Details",
 	"abusefilter-log-diff": "Unterschied",
+	"abusefilter-log-hidelink": "Sichtbarkeit ändern",
 	"abusefilter-log-hide-entries": "Ausgewählte Logbucheinträge ändern",
 	"abusefilter-log-description-not-available": "nicht verfügbar",
 	"abusefilter-log-details-legend": "Einzelheiten zum Logbuch-Eintrag $1",

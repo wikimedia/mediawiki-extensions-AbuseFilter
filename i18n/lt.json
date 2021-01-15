@@ -75,6 +75,7 @@
 	"abusefilter-log-detailedentry-local": "filtras $1",
 	"abusefilter-log-detailslink": "detalės",
 	"abusefilter-log-diff": "skirt",
+	"abusefilter-log-hidelink": "koreguoti matomumą",
 	"abusefilter-log-details-legend": "Protokolo įrašo $1 detalės",
 	"abusefilter-log-details-var": "Kintamasis",
 	"abusefilter-log-details-val": "Reikšmė",

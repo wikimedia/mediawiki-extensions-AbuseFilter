@@ -50,6 +50,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "details",
 	"abusefilter-log-diff": "wiezig",
+	"abusefilter-log-hidelink": "zichtbaorheid anpassen",
 	"abusefilter-log-details-legend": "Details veur logboekregel $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Weerde",

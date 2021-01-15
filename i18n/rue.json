@@ -55,6 +55,7 @@
 	"abusefilter-log-detailedentry-local": "філтер $1",
 	"abusefilter-log-detailslink": "детайлы",
 	"abusefilter-log-diff": "різн.",
+	"abusefilter-log-hidelink": "управити видительность",
 	"abusefilter-log-details-legend": "Детайлы запису $1",
 	"abusefilter-log-details-var": "Перемінна",
 	"abusefilter-log-details-val": "Значіня",

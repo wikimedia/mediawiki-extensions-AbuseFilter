@@ -83,6 +83,7 @@
 	"abusefilter-log-detailedentry-local": "bộ lọc $1",
 	"abusefilter-log-detailslink": "chi tiết",
 	"abusefilter-log-diff": "khác",
+	"abusefilter-log-hidelink": "hiện/ẩn",
 	"abusefilter-log-details-legend": "Chi tiết cho mục nhật trình $1",
 	"abusefilter-log-details-var": "Biến",
 	"abusefilter-log-details-val": "Giá trị",

@@ -47,6 +47,7 @@
 	"abusefilter-log-detailedentry-local": "फिल्टर $1",
 	"abusefilter-log-detailslink": "विस्तार",
 	"abusefilter-log-diff": "अन्तर",
+	"abusefilter-log-hidelink": "दृश्यता समयोजित करी",
 	"abusefilter-log-details-legend": "लॉग प्रविष्टि के लेल विवरण $1",
 	"abusefilter-log-details-var": "अस्थायी",
 	"abusefilter-log-details-val": "महत्व",

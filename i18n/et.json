@@ -79,6 +79,7 @@
 	"abusefilter-log-detailedentry-local": "filtri $1",
 	"abusefilter-log-detailslink": "üksikasjad",
 	"abusefilter-log-diff": "erin",
+	"abusefilter-log-hidelink": "seadista nähtavust",
 	"abusefilter-log-description-not-available": "pole saadaval",
 	"abusefilter-log-details-legend": "Logisissekande $1 üksikasjad",
 	"abusefilter-log-details-var": "Muutuja",

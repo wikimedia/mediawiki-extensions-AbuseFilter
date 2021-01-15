@@ -99,6 +99,7 @@
 	"abusefilter-log-detailedentry-local": "$1 süzgeci",
 	"abusefilter-log-detailslink": "ayrıntılar",
 	"abusefilter-log-diff": "fark",
+	"abusefilter-log-hidelink": "görünürlüğü ayarla",
 	"abusefilter-log-hide-entries": "Seçili girişlerin görünürlüğünü değiştir",
 	"abusefilter-log-description-not-available": "mevcut değil",
 	"abusefilter-log-details-legend": "$1 numaralı günlük girdisinin ayrıntıları",

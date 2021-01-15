@@ -70,6 +70,7 @@
 	"abusefilter-log-detailedentry-local": "saraan $1",
 	"abusefilter-log-detailslink": "mga detalye",
 	"abusefilter-log-diff": "kaibhan",
+	"abusefilter-log-hidelink": "nultulon an bisibilidad",
 	"abusefilter-log-details-legend": "Mga detalye para sa entrada nin talaan $1",
 	"abusefilter-log-details-var": "Kapilyan",
 	"abusefilter-log-details-val": "Kantidad",

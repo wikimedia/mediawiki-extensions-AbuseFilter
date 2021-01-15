@@ -55,6 +55,7 @@
 	"abusefilter-log-detailedentry-local": "filtre $1 dels abuses",
 	"abusefilter-log-detailslink": "detalhs",
 	"abusefilter-log-diff": "diff",
+	"abusefilter-log-hidelink": "ajustar la visibilitat",
 	"abusefilter-log-details-legend": "Detalhs per l'entrada $1 del jornal",
 	"abusefilter-log-details-var": "Variabla",
 	"abusefilter-log-details-val": "Valor",

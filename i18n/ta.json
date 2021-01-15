@@ -46,6 +46,7 @@
 	"abusefilter-log-detailedentry-local": "வடிகட்டி $1",
 	"abusefilter-log-detailslink": "விளக்கம்",
 	"abusefilter-log-diff": "வேறுபாடு",
+	"abusefilter-log-hidelink": "காணுந்தன்மையைச் சீரமை",
 	"abusefilter-log-details-legend": "பதிவு உள்ளிடுகை $1 இன் விரிவு",
 	"abusefilter-log-details-var": "மாறி",
 	"abusefilter-log-details-val": "மதிப்பு",

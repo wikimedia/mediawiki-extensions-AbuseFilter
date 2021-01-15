@@ -135,6 +135,7 @@
 	"abusefilter-log-detailedentry-local": "фильтра $1",
 	"abusefilter-log-detailslink": "подробности",
 	"abusefilter-log-diff": "изм.",
+	"abusefilter-log-hidelink": "настроить видимость",
 	"abusefilter-log-description-not-available": "недоступно",
 	"abusefilter-log-details-legend": "Подробности записи журнала $1",
 	"abusefilter-log-details-var": "Переменная",

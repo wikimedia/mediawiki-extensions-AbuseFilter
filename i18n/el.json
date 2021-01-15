@@ -78,6 +78,7 @@
 	"abusefilter-log-detailedentry-local": "φίλτρο $1",
 	"abusefilter-log-detailslink": "λεπτομέρειες",
 	"abusefilter-log-diff": "διαφορά",
+	"abusefilter-log-hidelink": "ρυθμίσετε την ορατότητα",
 	"abusefilter-log-details-legend": "Λεπτομέρειες για την καταχώρηση ιστορικού $1",
 	"abusefilter-log-details-var": "Μεταβλητή",
 	"abusefilter-log-details-val": "Τιμή",

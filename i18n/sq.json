@@ -53,6 +53,7 @@
 	"abusefilter-log-detailedentry-global": "Filtri global $1",
 	"abusefilter-log-detailedentry-local": "filtri $1",
 	"abusefilter-log-detailslink": "Detajet",
+	"abusefilter-log-hidelink": "Përshtat shikueshmërinë",
 	"abusefilter-log-details-legend": "Detajet për gjurmët e hyrjes $1",
 	"abusefilter-log-details-var": "Variabël",
 	"abusefilter-log-details-val": "Vlera",

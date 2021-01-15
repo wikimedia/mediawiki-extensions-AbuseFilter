@@ -101,6 +101,7 @@
 	"abusefilter-log-detailedentry-local": "il filtro $1",
 	"abusefilter-log-detailslink": "dettagli",
 	"abusefilter-log-diff": "diff",
+	"abusefilter-log-hidelink": "regola visibilità",
 	"abusefilter-log-hide-entries": "Regola visibilità delle voci di registro selezionate",
 	"abusefilter-log-description-not-available": "non disponibile",
 	"abusefilter-log-details-legend": "Dettagli della voce di registro $1",

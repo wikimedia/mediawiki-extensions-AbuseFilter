@@ -93,6 +93,7 @@
 	"abusefilter-log-detailedentry-local": "מסנן $1",
 	"abusefilter-log-detailslink": "פרטים",
 	"abusefilter-log-diff": "השוואה",
+	"abusefilter-log-hidelink": "שינוי מצב התצוגה",
 	"abusefilter-log-hide-entries": "שינוי מצב התצוגה של הרשומות שנבחרו",
 	"abusefilter-log-description-not-available": "לא זמין",
 	"abusefilter-log-details-legend": "פרטים עבור פריט היומן $1",

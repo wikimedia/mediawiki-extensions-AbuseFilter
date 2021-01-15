@@ -52,6 +52,7 @@
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "dètalys",
 	"abusefilter-log-diff": "dif",
+	"abusefilter-log-hidelink": "ajustar la visibilitât",
 	"abusefilter-log-details-legend": "Dètalys por l’entrâ $1 du jornal",
 	"abusefilter-log-details-var": "Variâbla",
 	"abusefilter-log-details-val": "Valor",

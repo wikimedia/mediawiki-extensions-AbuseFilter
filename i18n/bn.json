@@ -78,6 +78,7 @@
 	"abusefilter-log-detailedentry-local": "ছাঁকনি নং $1",
 	"abusefilter-log-detailslink": "বিস্তারিত",
 	"abusefilter-log-diff": "পার্থক্য",
+	"abusefilter-log-hidelink": "প্রদর্শনযোগ্যতা ঠিক করুন",
 	"abusefilter-log-details-legend": "$1-এর বিস্তারিত লগ প্রদর্শন",
 	"abusefilter-log-details-var": "চলক",
 	"abusefilter-log-details-val": "মান",

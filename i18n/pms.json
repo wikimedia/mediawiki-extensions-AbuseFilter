@@ -55,6 +55,7 @@
 	"abusefilter-log-detailedentry-local": "filtr $1",
 	"abusefilter-log-detailslink": "detaj",
 	"abusefilter-log-diff": "dif.",
+	"abusefilter-log-hidelink": "rangé la visibilità",
 	"abusefilter-log-details-legend": "Detaj për la vos $1 dël registr",
 	"abusefilter-log-details-var": "Variàbil",
 	"abusefilter-log-details-val": "Valor",

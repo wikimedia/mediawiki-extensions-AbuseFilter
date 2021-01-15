@@ -85,6 +85,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "podrobnosti",
 	"abusefilter-log-diff": "rozdiel",
+	"abusefilter-log-hidelink": "zmeniť viditeľnosť",
 	"abusefilter-log-details-legend": "Podrobnosti položky záznamu $1",
 	"abusefilter-log-details-var": "Premenná",
 	"abusefilter-log-details-val": "Hodnota",

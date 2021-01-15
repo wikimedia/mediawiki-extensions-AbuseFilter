@@ -89,6 +89,7 @@
 	"abusefilter-log-detailedentry-local": "$1 azonosítójú szűrőt",
 	"abusefilter-log-detailslink": "részletek",
 	"abusefilter-log-diff": "eltérés",
+	"abusefilter-log-hidelink": "láthatóság beállítása",
 	"abusefilter-log-description-not-available": "nem elérhető",
 	"abusefilter-log-details-legend": "A(z) $1 naplóbejegyzés részletei",
 	"abusefilter-log-details-var": "Változó",

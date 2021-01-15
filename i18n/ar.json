@@ -100,6 +100,7 @@
 	"abusefilter-log-detailedentry-local": "المرشح $1",
 	"abusefilter-log-detailslink": "التفاصيل",
 	"abusefilter-log-diff": "فرق",
+	"abusefilter-log-hidelink": "أضبط الرؤية",
 	"abusefilter-log-details-legend": "التفاصيل لمدخلة السجل $1",
 	"abusefilter-log-details-var": "متغير",
 	"abusefilter-log-details-val": "قيمة",

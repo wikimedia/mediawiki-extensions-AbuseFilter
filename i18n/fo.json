@@ -45,6 +45,7 @@
 	"abusefilter-log-detailedentry-local": "filtur $1",
 	"abusefilter-log-detailslink": "smálutir",
 	"abusefilter-log-diff": "munur",
+	"abusefilter-log-hidelink": "tilpassa sjónligheit",
 	"abusefilter-log-details-legend": "Smálutir um loggpunkt $1",
 	"abusefilter-log-details-val": "Virði",
 	"abusefilter-log-details-privatedetails": "Privat dáta",

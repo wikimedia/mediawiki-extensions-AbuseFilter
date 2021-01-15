@@ -79,6 +79,7 @@
 	"abusefilter-log-detailedentry-local": "filtrul $1",
 	"abusefilter-log-detailslink": "detalii",
 	"abusefilter-log-diff": "dif",
+	"abusefilter-log-hidelink": "ajustează vizibilitatea",
 	"abusefilter-log-details-legend": "Detalii pentru intrarea $1 din jurnal",
 	"abusefilter-log-details-var": "Variabilă",
 	"abusefilter-log-details-val": "Valoare",

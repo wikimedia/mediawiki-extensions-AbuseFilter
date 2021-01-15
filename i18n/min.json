@@ -29,6 +29,7 @@
 	"abusefilter-log-detailedentry-local": "panyariang $1",
 	"abusefilter-log-detailslink": "rincian",
 	"abusefilter-log-diff": "bedo",
+	"abusefilter-log-hidelink": "sasuaian tampilan",
 	"abusefilter-log-details-legend": "Rincian untuak entri log $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Nilai",

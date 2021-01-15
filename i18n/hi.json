@@ -79,6 +79,7 @@
 	"abusefilter-log-detailedentry-local": "फ़िल्टर $1",
 	"abusefilter-log-detailslink": "विस्तृत विवरण",
 	"abusefilter-log-diff": "अंतर",
+	"abusefilter-log-hidelink": "दृश्यता समयोजित करें",
 	"abusefilter-log-details-legend": "लॉग प्रविष्टि $1 के लिए विवरण",
 	"abusefilter-log-details-var": "प्राचल",
 	"abusefilter-log-details-val": "मूल्य",

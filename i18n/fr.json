@@ -118,6 +118,7 @@
 	"abusefilter-log-detailedentry-local": "filtre $1",
 	"abusefilter-log-detailslink": "détails",
 	"abusefilter-log-diff": "diff",
+	"abusefilter-log-hidelink": "ajuster la visibilité",
 	"abusefilter-log-hide-entries": "Modifier la visibilité des entrées sélectionnées",
 	"abusefilter-log-description-not-available": "non disponible",
 	"abusefilter-log-details-legend": "Détails pour l’entrée $1 du journal",

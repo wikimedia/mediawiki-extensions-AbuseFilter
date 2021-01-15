@@ -86,6 +86,7 @@
 	"abusefilter-log-detailedentry-local": "филтер $1",
 	"abusefilter-log-detailslink": "детаљи",
 	"abusefilter-log-diff": "разл",
+	"abusefilter-log-hidelink": "подеси видљивост",
 	"abusefilter-log-details-legend": "Детаљи ставке у дневнику $1",
 	"abusefilter-log-details-var": "Променљива",
 	"abusefilter-log-details-val": "Вредност",

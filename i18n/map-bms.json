@@ -43,6 +43,7 @@
 	"abusefilter-log-detailedentry-local": "saringan $1",
 	"abusefilter-log-detailslink": "rincian",
 	"abusefilter-log-diff": "bédane",
+	"abusefilter-log-hidelink": "ngatur tampilan",
 	"abusefilter-log-details-legend": "Rinciane entri log $1",
 	"abusefilter-log-details-var": "Variabel",
 	"abusefilter-log-details-val": "Biji",

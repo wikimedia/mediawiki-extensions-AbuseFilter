@@ -100,6 +100,7 @@
 	"abusefilter-log-detailedentry-local": "фільтр $1",
 	"abusefilter-log-detailslink": "деталі",
 	"abusefilter-log-diff": "різн.",
+	"abusefilter-log-hidelink": "налаштувати видимість",
 	"abusefilter-log-hide-entries": "Змінити видимість виділених записів журналу",
 	"abusefilter-log-description-not-available": "не доступний",
 	"abusefilter-log-details-legend": "Деталі журнального запису $1",

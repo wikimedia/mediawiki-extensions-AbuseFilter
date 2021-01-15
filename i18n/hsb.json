@@ -53,6 +53,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "podrobnosće",
 	"abusefilter-log-diff": "Rozdźěl",
+	"abusefilter-log-hidelink": "Widźomnosć nastajić",
 	"abusefilter-log-details-legend": "Podrobnosće za protokolowy zapisk $1",
 	"abusefilter-log-details-var": "Wariabla",
 	"abusefilter-log-details-val": "Hódnota",

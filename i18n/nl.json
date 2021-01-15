@@ -103,6 +103,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "details",
 	"abusefilter-log-diff": "verschil",
+	"abusefilter-log-hidelink": "zichtbaarheid aanpassen",
 	"abusefilter-log-details-legend": "Details voor logboekregel $1",
 	"abusefilter-log-details-var": "Variabele",
 	"abusefilter-log-details-val": "Waarde",

@@ -57,6 +57,7 @@
 	"abusefilter-log-detailedentry-local": "filtru $1",
 	"abusefilter-log-detailslink": "dettalji",
 	"abusefilter-log-diff": "diff",
+	"abusefilter-log-hidelink": "irranġa l-viżibilità",
 	"abusefilter-log-details-legend": "Dettalji għad-daħla fir-reġistru $1",
 	"abusefilter-log-details-var": "Varjabbli",
 	"abusefilter-log-details-val": "Valur",

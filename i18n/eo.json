@@ -77,6 +77,7 @@
 	"abusefilter-log-detailedentry-local": "filtrilo $1",
 	"abusefilter-log-detailslink": "detaloj",
 	"abusefilter-log-diff": "malsamoj",
+	"abusefilter-log-hidelink": "Ŝanĝi videblecon",
 	"abusefilter-log-hide-entries": "Ŝanĝi videblecon de elektitaj eniroj",
 	"abusefilter-log-details-legend": "Detaloj por protokola listano $1",
 	"abusefilter-log-details-var": "Variablo",

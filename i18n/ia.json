@@ -77,6 +77,7 @@
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalios",
 	"abusefilter-log-diff": "diff",
+	"abusefilter-log-hidelink": "adjustar visibilitate",
 	"abusefilter-log-hide-entries": "Cambiar le visibilitate del entratas seligite",
 	"abusefilter-log-description-not-available": "non disponibile",
 	"abusefilter-log-details-legend": "Detalios pro le entrata $1 del registro",

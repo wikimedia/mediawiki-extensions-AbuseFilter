@@ -62,6 +62,7 @@
 	"abusefilter-log-detailedentry-local": "penapis $1",
 	"abusefilter-log-detailslink": "butiran",
 	"abusefilter-log-diff": "beza",
+	"abusefilter-log-hidelink": "ubah kebolehlihatan",
 	"abusefilter-log-details-legend": "Butiran untuk entri log $1",
 	"abusefilter-log-details-var": "Pemboleh ubah",
 	"abusefilter-log-details-val": "Nilai",

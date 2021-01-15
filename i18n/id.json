@@ -99,6 +99,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "rincian",
 	"abusefilter-log-diff": "beda",
+	"abusefilter-log-hidelink": "sesuaikan tampilan",
 	"abusefilter-log-description-not-available": "tidak tersedia",
 	"abusefilter-log-details-legend": "Rincian untuk entri log $1",
 	"abusefilter-log-details-var": "Variabel",

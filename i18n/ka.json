@@ -58,6 +58,7 @@
 	"abusefilter-log-detailedentry-local": "ფილტრი $1",
 	"abusefilter-log-detailslink": "დეტალები",
 	"abusefilter-log-diff": "განსხ.",
+	"abusefilter-log-hidelink": "ხილვადობის დაყენება",
 	"abusefilter-log-details-legend": "დეტალები ჟურნალის ჩანაწერისათვის: $1",
 	"abusefilter-log-details-var": "ცვალებადი",
 	"abusefilter-log-details-val": "მნიშვნელობა",

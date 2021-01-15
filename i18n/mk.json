@@ -81,6 +81,7 @@
 	"abusefilter-log-detailedentry-local": "филтерот $1",
 	"abusefilter-log-detailslink": "подробности",
 	"abusefilter-log-diff": "разл",
+	"abusefilter-log-hidelink": "прилагоди видливост",
 	"abusefilter-log-hide-entries": "Смени видливост на избрани ставки",
 	"abusefilter-log-description-not-available": "недостапно",
 	"abusefilter-log-details-legend": "Подробности за дневничкиот запис $1",

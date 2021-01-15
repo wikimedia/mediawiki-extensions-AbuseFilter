@@ -68,6 +68,7 @@
 	"abusefilter-log-detailedentry-local": "गाळणी $1",
 	"abusefilter-log-detailslink": "माहिती",
 	"abusefilter-log-diff": "फरक",
+	"abusefilter-log-hidelink": "दृष्यता जुळवून घ्या.",
 	"abusefilter-log-details-legend": "नोंदवहीतील कलम $1 चा तपशील",
 	"abusefilter-log-details-var": "चल (व्हॅरिएबल)",
 	"abusefilter-log-details-val": "किंमत (व्हॅल्यू)",

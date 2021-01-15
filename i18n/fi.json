@@ -103,6 +103,7 @@
 	"abusefilter-log-detailedentry-local": "suodatin $1",
 	"abusefilter-log-detailslink": "tarkat tiedot",
 	"abusefilter-log-diff": "ero",
+	"abusefilter-log-hidelink": "säädä näkyvyyttä",
 	"abusefilter-log-hide-entries": "Muuta valittujen merkintöjen näkyvyyttä",
 	"abusefilter-log-description-not-available": "ei saatavilla",
 	"abusefilter-log-details-legend": "Tarkemmat tiedot koskien lokimerkintää $1",

@@ -82,6 +82,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "detalji",
 	"abusefilter-log-diff": "razl",
+	"abusefilter-log-hidelink": "podesi vidljivost",
 	"abusefilter-log-details-legend": "Detalji stavke u dnevniku $1",
 	"abusefilter-log-details-var": "Promenljiva",
 	"abusefilter-log-details-val": "Vrednost",

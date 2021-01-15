@@ -98,6 +98,7 @@
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "detaljer",
 	"abusefilter-log-diff": "diff",
+	"abusefilter-log-hidelink": "juster synlighet",
 	"abusefilter-log-hide-entries": "Endre synlighet for valgte oppføringer",
 	"abusefilter-log-description-not-available": "ikke tilgjengelig",
 	"abusefilter-log-details-legend": "Detaljer for loggelement $1",

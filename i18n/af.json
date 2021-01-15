@@ -36,6 +36,7 @@
 	"abusefilter-log-detailedentry-global": "globale filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "details",
+	"abusefilter-log-hidelink": "pas sigbaarheid aan",
 	"abusefilter-log-details-legend": "Details vir logboekinskrywing $1",
 	"abusefilter-log-details-var": "Veranderlike",
 	"abusefilter-log-details-val": "Waarde",

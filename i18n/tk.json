@@ -39,6 +39,7 @@
 	"abusefilter-log-detailedentry-global": "global filtr $1",
 	"abusefilter-log-detailedentry-local": "filtr $1",
 	"abusefilter-log-detailslink": "jikme-jiklikler",
+	"abusefilter-log-hidelink": "görüniş derejesini sazla",
 	"abusefilter-log-details-legend": "$1 gündeligi girişi jikme-jikligi",
 	"abusefilter-log-details-var": "Üýtgeýän",
 	"abusefilter-log-details-val": "Baha",

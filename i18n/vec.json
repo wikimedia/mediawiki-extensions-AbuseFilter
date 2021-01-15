@@ -57,6 +57,7 @@
 	"abusefilter-log-detailedentry-global": "filtro globałe $1",
 	"abusefilter-log-detailedentry-local": "del filtro $1",
 	"abusefilter-log-detailslink": "detaji",
+	"abusefilter-log-hidelink": "canbia visibilità",
 	"abusefilter-log-details-legend": "Detàji de la voxe de registro $1",
 	"abusefilter-log-details-var": "Variabile",
 	"abusefilter-log-details-val": "Valor",

@@ -53,6 +53,7 @@
 	"abusefilter-log-detailedentry-local": "Filter $1",
 	"abusefilter-log-detailslink": "Detail",
 	"abusefilter-log-diff": "Unterschid",
+	"abusefilter-log-hidelink": "Sichtbarkeit ändere",
 	"abusefilter-log-details-legend": "Detail fir dr Logbuech-Yytrag $1",
 	"abusefilter-log-details-var": "Variable",
 	"abusefilter-log-details-val": "Wärt",
