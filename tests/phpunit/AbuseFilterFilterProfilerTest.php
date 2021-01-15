@@ -8,7 +8,7 @@ use Psr\Log\NullLogger;
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterProfiler
  * @covers ::__construct
- * @fixme convert to pure unit test when DI for DeferredUpdates is possible
+ * @fixme convert to pure unit test when DI for DeferredUpdates is possible (T265749)
  */
 class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 
@@ -55,6 +55,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::getFilterProfile
 	 * @covers ::recordPerFilterProfiling
+	 * @covers ::recordProfilingResult
 	 * @covers ::filterProfileKey
 	 */
 	public function testGetFilterProfile() {
@@ -84,6 +85,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::getFilterProfile
 	 * @covers ::recordPerFilterProfiling
+	 * @covers ::recordProfilingResult
 	 */
 	public function testRecordPerFilterProfiling_mergesResults() {
 		$profiler = $this->getFilterProfiler();
@@ -121,6 +123,7 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::recordPerFilterProfiling
+	 * @covers ::recordProfilingResult
 	 * @covers ::recordSlowFilter
 	 */
 	public function testRecordPerFilterProfiling_reportsSlowFilter() {

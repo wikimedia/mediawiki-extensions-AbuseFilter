@@ -161,7 +161,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturnCallback(
 			function ( LazyLoadedVariable $var ) {
-				return $var->getMethod();
+				return new AFPData( AFPData::DSTRING, $var->getMethod() );
 			}
 		);
 		$varManager = $this->getManager( $computer );
@@ -215,6 +215,19 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$afcv = new LazyLoadedVariable( '', [] );
 		$vars->setVar( $name, $afcv );
 		yield 'set, lazy-loaded' => [ $this->getManager( $computer ), $vars, $name, 0, $expected ];
+
+		$alreadySetName = 'first-var';
+		$firstValue = new AFPData( AFPData::DSTRING, 'expected value' );
+		$setVars = VariableHolder::newFromArray( [ 'first-var' => $firstValue ] );
+		$computer = $this->createMock( LazyVariableComputer::class );
+		$computer->method( 'compute' )->willReturnCallback( function ( $var, $vars, $cb ) use ( $alreadySetName ) {
+			return $cb( $alreadySetName );
+		} );
+		$name = 'second-var';
+		$manager = $this->getManager( $computer );
+		$lazyVar = new LazyLoadedVariable( '', [] );
+		$setVars->setVar( $name, $lazyVar );
+		yield 'set, lazy-loaded with callback' => [ $manager, $setVars, $name, 0, $firstValue ];
 
 		$name = 'afpd';
 		$afpd = new AFPData( AFPData::DINT, 42 );

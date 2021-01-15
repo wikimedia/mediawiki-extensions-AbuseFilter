@@ -10,6 +10,8 @@ use MediaWikiUnitTestCase;
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterParser
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\KeywordsManager
+ * @covers ::__construct
  */
 class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	/**
@@ -21,7 +23,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getDisabledVariables
+	 * @covers ::getDisabledVariables
 	 */
 	public function testGetDisabledVariables() {
 		$actual = $this->getKeywordsManager()->getDisabledVariables();
@@ -32,7 +34,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getDeprecatedVariables
+	 * @covers ::getDeprecatedVariables
 	 */
 	public function testGetDeprecatedVariables() {
 		$actual = $this->getKeywordsManager()->getDisabledVariables();
@@ -43,7 +45,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getDeprecatedVariables
+	 * @covers ::getDeprecatedVariables
 	 */
 	public function testGetDeprecatedVariables_hook() {
 		$oldVarName = 'foobardeprecated';
@@ -59,7 +61,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getBuilderValues
+	 * @covers ::getBuilderValues
 	 */
 	public function testGetBuilderValues() {
 		$actual = $this->getKeywordsManager()->getBuilderValues();
@@ -74,7 +76,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getBuilderValues
+	 * @covers ::getBuilderValues
 	 */
 	public function testGetBuilderValues_hook() {
 		$varName = 'magic_stuff';
@@ -93,7 +95,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $varName
 	 * @param bool $expected
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::isVarDisabled
+	 * @covers ::isVarDisabled
 	 * @dataProvider provideIsVarDisabled
 	 */
 	public function testIsVarDisabled( string $varName, bool $expected ) {
@@ -115,7 +117,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $varName
 	 * @param bool $expected
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::isVarDeprecated
+	 * @covers ::isVarDeprecated
 	 * @dataProvider provideIsVarDeprecated
 	 */
 	public function testIsVarDeprecated( string $varName, bool $expected ) {
@@ -135,7 +137,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::isVarInUse
+	 * @covers ::isVarInUse
 	 */
 	public function testIsVarInUse() {
 		// Add a new variable to avoid relying on what's currently valid
@@ -152,7 +154,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $varName
 	 * @param bool $expected
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::varExists
+	 * @covers ::varExists
 	 * @dataProvider provideVarExists
 	 */
 	public function testVarExists( string $varName, bool $expected ) {
@@ -163,7 +165,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $varName
 	 * @param bool $exists
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getMessageKeyForVar
+	 * @covers ::getMessageKeyForVar
 	 * @dataProvider provideVarExists
 	 */
 	public function testGetMessageKeyForVar( string $varName, bool $exists ) {
@@ -189,7 +191,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getVarsMappings
+	 * @covers ::getVarsMappings
 	 */
 	public function testGetVarsMappings() {
 		$actual = $this->getKeywordsManager()->getVarsMappings();
@@ -200,7 +202,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\KeywordsManager::getCoreVariables
+	 * @covers ::getCoreVariables
 	 */
 	public function testGetCoreVariables() {
 		$actual = $this->getKeywordsManager()->getCoreVariables();
