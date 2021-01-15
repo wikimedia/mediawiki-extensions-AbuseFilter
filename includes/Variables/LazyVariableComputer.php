@@ -395,6 +395,7 @@ class LazyVariableComputer {
 	}
 
 	/**
+	 * @todo Move to MW core (T272050)
 	 * @param Title $title
 	 * @return string[] Usernames of the last 10 (unique) authors from $title
 	 */

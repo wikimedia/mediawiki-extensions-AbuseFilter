@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 
 /**
@@ -175,54 +176,24 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @param string $prefix
 	 * @covers ::compute
 	 * @covers ::getLastPageAuthors
-	 * @dataProvider providePrefix
 	 */
-	public function testRecentContributors( string $prefix ) {
-		$varName = "{$prefix}_recent_contributors";
+	public function testRecentContributors() {
+		$varName = "page_recent_contributors";
 		$pageName = "Page to test $varName";
 		$title = Title::newFromText( $pageName );
 
 		$expected = $this->computeRecentContributors( $title );
-		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
-		$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-		$manager = AbuseFilterServices::getVariablesManager();
-		$actual = $manager->getVar( $vars, $varName )->toNative();
-		$this->assertSame( $expected, $actual, "Prefix: $prefix" );
-	}
-
-	public function providePrefix() : array {
-		return [
-			'page' => [ 'page' ],
-			'moved_from' => [ 'moved_from' ],
-			'moved_to' => [ 'moved_to' ],
-		];
-	}
-
-	/**
-	 * @param string $prefix
-	 * @covers ::compute
-	 * @dataProvider providePrefix
-	 */
-	public function testFirstContributorVar( string $prefix ) {
-		$varName = "{$prefix}_first_contributor";
-		$title = Title::makeTitle( NS_MAIN, "Page to test $varName" );
-		$user = $this->getMutableTestUser()->getUser();
-		$this->editPage(
-			$title->getText(),
-			'AbuseFilter test for title variables',
-			'',
-			$title->getNamespace(),
-			$user
+		$computer = AbuseFilterServices::getLazyVariableComputer();
+		$var = new LazyLoadedVariable(
+			'load-recent-authors',
+			[ 'title' => $title ]
 		);
-		$expected = $user->getName();
-
-		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
-		$vars = $generator->addTitleVars( $title, $prefix )->getVariableHolder();
-		$manager = AbuseFilterServices::getVariablesManager();
-		$actual = $manager->getVar( $vars, $varName )->toNative();
-		$this->assertSame( $expected, $actual, "Prefix: $prefix" );
+		$forbidComputeCB = function () {
+			throw new LogicException( 'Not expected to be called' );
+		};
+		$actual = $computer->compute( $var, new VariableHolder(), $forbidComputeCB )->toNative();
+		$this->assertSame( $expected, $actual );
 	}
 }
