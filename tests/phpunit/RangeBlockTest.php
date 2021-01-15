@@ -2,10 +2,10 @@
 
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Block\BlockUserFactory;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\User\UserIdentityValue;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
@@ -19,6 +19,21 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 		'IPv4' => 16,
 		'IPv6' => 19,
 	];
+
+	private function getMsgLocalizer() : MessageLocalizer {
+		$ml = $this->createMock( MessageLocalizer::class );
+		$ml->method( 'msg' )->willReturnCallback( function ( $k, $p ) {
+			return $this->getMockMessage( $k, $p );
+		} );
+		return $ml;
+	}
+
+	private function getFilterUser() : FilterUser {
+		$filterUser = $this->createMock( FilterUser::class );
+		$filterUser->method( 'getUser' )
+			->willReturn( new UserIdentityValue( 2, 'FilterUser', 3 ) );
+		return $filterUser;
+	}
 
 	public function provideExecute() : iterable {
 		yield 'IPv4 range block' => [
@@ -75,12 +90,6 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 		string $requestIP, array $rangeBlockSize, string $target, bool $result
 	) {
 		$params = $this->provideGetMessageParameters()->current()[0];
-		/*
-		$filterUser = $this->createMock( FilterUser::class );
-		$filterUser->method( 'getUser' )
-			->willReturn( new UserIdentityValue( 2, 'FilterUser', 3 ) );
-		*/
-		$filterUser = AbuseFilterServices::getFilterUser();
 		$blockUser = $this->createMock( BlockUser::class );
 		$blockUser->expects( $this->once() )
 			->method( 'placeBlockUnsafe' )
@@ -101,7 +110,8 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 			$params,
 			'1 week',
 			$blockUserFactory,
-			$filterUser,
+			$this->getFilterUser(),
+			$this->getMsgLocalizer(),
 			$rangeBlockSize,
 			self::CIDR_LIMIT,
 			$requestIP
@@ -119,6 +129,7 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 			'0',
 			$this->createMock( BlockUserFactory::class ),
 			$this->createMock( FilterUser::class ),
+			$this->getMsgLocalizer(),
 			[ 'IPv6' => 24, 'IPv4' => 24 ],
 			self::CIDR_LIMIT,
 			'1.1.1.1'

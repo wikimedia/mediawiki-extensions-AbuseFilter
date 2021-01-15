@@ -1,17 +1,29 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Consequences\Consequence;
+
+use ConsequenceGetMessageTestTrait;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockAutopromote;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\User\UserIdentityValue;
+use MediaWikiUnitTestCase;
+use MessageLocalizer;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockAutopromote
  * @covers ::__construct
- * @todo with MessageLocalizer injected, this can be a unit test
  */
-class BlockAutopromoteTest extends MediaWikiIntegrationTestCase {
+class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 	use ConsequenceGetMessageTestTrait;
+
+	private function getMsgLocalizer() : MessageLocalizer {
+		$ml = $this->createMock( MessageLocalizer::class );
+		$ml->method( 'msg' )->willReturnCallback( function ( $k, $p ) {
+			return $this->getMockMessage( $k, $p );
+		} );
+		return $ml;
+	}
 
 	/**
 	 * @covers ::execute
@@ -25,7 +37,8 @@ class BlockAutopromoteTest extends MediaWikiIntegrationTestCase {
 		$blockAutopromote = new BlockAutopromote(
 			$params,
 			5 * 86400,
-			$blockAutopromoteStore
+			$blockAutopromoteStore,
+			$this->getMsgLocalizer()
 		);
 		$this->assertFalse( $blockAutopromote->execute() );
 	}
@@ -43,7 +56,12 @@ class BlockAutopromoteTest extends MediaWikiIntegrationTestCase {
 			->method( 'blockAutoPromote' )
 			->with( $target, $this->anything(), $duration )
 			->willReturn( $success );
-		$blockAutopromote = new BlockAutopromote( $params, $duration, $blockAutopromoteStore );
+		$blockAutopromote = new BlockAutopromote(
+			$params,
+			$duration,
+			$blockAutopromoteStore,
+			$this->getMsgLocalizer()
+		);
 		$this->assertSame( $success, $blockAutopromote->execute() );
 	}
 
@@ -67,7 +85,7 @@ class BlockAutopromoteTest extends MediaWikiIntegrationTestCase {
 			->method( 'unblockAutoPromote' )
 			->with( $target, $performer, $this->anything() )
 			->willReturn( $success );
-		$blockAutopromote = new BlockAutopromote( $params, 0, $blockAutopromoteStore );
+		$blockAutopromote = new BlockAutopromote( $params, 0, $blockAutopromoteStore, $this->getMsgLocalizer() );
 		$this->assertSame( $success, $blockAutopromote->revert( [], $performer, 'reason' ) );
 	}
 
@@ -79,7 +97,8 @@ class BlockAutopromoteTest extends MediaWikiIntegrationTestCase {
 		$rangeBlock = new BlockAutopromote(
 			$params,
 			83,
-			$this->createMock( BlockAutopromoteStore::class )
+			$this->createMock( BlockAutopromoteStore::class ),
+			$this->getMsgLocalizer()
 		);
 		$this->doTestGetMessage( $rangeBlock, $params, 'abusefilter-autopromote-blocked' );
 	}

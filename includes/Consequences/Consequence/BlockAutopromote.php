@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\User\UserIdentity;
+use MessageLocalizer;
 
 /**
  * Consequence that blocks/delays autopromotion of a registered user.
@@ -15,20 +16,25 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence, Re
 	private $duration;
 	/** @var BlockAutopromoteStore */
 	private $blockAutopromoteStore;
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
 
 	/**
 	 * @param Parameters $params
 	 * @param int $duration
 	 * @param BlockAutopromoteStore $blockAutopromoteStore
+	 * @param MessageLocalizer $messageLocalizer
 	 */
 	public function __construct(
 		Parameters $params,
 		int $duration,
-		BlockAutopromoteStore $blockAutopromoteStore
+		BlockAutopromoteStore $blockAutopromoteStore,
+		MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct( $params );
 		$this->duration = $duration;
 		$this->blockAutopromoteStore = $blockAutopromoteStore;
+		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	/**
@@ -42,8 +48,7 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence, Re
 
 		return $this->blockAutopromoteStore->blockAutoPromote(
 			$target,
-			// TODO: inject MessageLocalizer
-			wfMessage(
+			$this->messageLocalizer->msg(
 				'abusefilter-blockautopromotereason',
 				$this->parameters->getFilter()->getName(),
 				$this->parameters->getFilter()->getID()

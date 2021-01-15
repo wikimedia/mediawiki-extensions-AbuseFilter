@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
+use MessageLocalizer;
 use TitleValue;
 
 /**
@@ -29,22 +30,28 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 	/** @var FilterUser */
 	private $filterUser;
 
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
+
 	/**
 	 * @param Parameters $params
 	 * @param VariableHolder $vars
 	 * @param UserGroupManager $userGroupManager
 	 * @param FilterUser $filterUser
+	 * @param MessageLocalizer $messageLocalizer
 	 */
 	public function __construct(
 		Parameters $params,
 		VariableHolder $vars,
 		UserGroupManager $userGroupManager,
-		FilterUser $filterUser
+		FilterUser $filterUser,
+		MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct( $params );
 		$this->vars = $vars;
 		$this->userGroupManager = $userGroupManager;
 		$this->filterUser = $filterUser;
+		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	/**
@@ -89,7 +96,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 		$logEntry->setPerformer( $this->filterUser->getUser() );
 		$logEntry->setTarget( new TitleValue( NS_USER, $user->getName() ) );
 		$logEntry->setComment(
-			wfMessage(
+			$this->messageLocalizer->msg(
 				'abusefilter-degroupreason',
 				$this->parameters->getFilter()->getName(),
 				$this->parameters->getFilter()->getID()

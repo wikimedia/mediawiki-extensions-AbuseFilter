@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\User\UserIdentity;
+use MessageLocalizer;
 use TitleValue;
 
 /**
@@ -28,6 +29,7 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	 * @param BlockUserFactory $blockUserFactory
 	 * @param DatabaseBlockStore $databaseBlockStore
 	 * @param FilterUser $filterUser
+	 * @param MessageLocalizer $messageLocalizer
 	 */
 	public function __construct(
 		Parameters $params,
@@ -35,9 +37,10 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 		bool $preventTalkEdit,
 		BlockUserFactory $blockUserFactory,
 		DatabaseBlockStore $databaseBlockStore,
-		FilterUser $filterUser
+		FilterUser $filterUser,
+		MessageLocalizer $messageLocalizer
 	) {
-		parent::__construct( $params, $expiry, $blockUserFactory, $filterUser );
+		parent::__construct( $params, $expiry, $blockUserFactory, $filterUser, $messageLocalizer );
 		$this->databaseBlockStore = $databaseBlockStore;
 		$this->preventsTalkEdit = $preventTalkEdit;
 	}
@@ -60,8 +63,10 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 
 	/**
 	 * @inheritDoc
+	 * @todo This could use UnblockUser, but we need to check if the block was performed by the AF user
 	 */
 	public function revert( $info, UserIdentity $performer, string $reason ): bool {
+		// TODO: DI once T255433 is resolved
 		$block = DatabaseBlock::newFromTarget( $this->parameters->getUser()->getName() );
 		if ( !( $block && $block->getBy() === $this->filterUser->getUser()->getId() ) ) {
 			// Not blocked by abuse filter
@@ -74,7 +79,14 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 		$logEntry->setTarget( new TitleValue( NS_USER, $this->parameters->getUser()->getName() ) );
 		$logEntry->setComment( $reason );
 		$logEntry->setPerformer( $performer );
-		$logEntry->publish( $logEntry->insert() );
+		$id = $logEntry->insert();
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			// This has a bazillion of static dependencies all around the place, and a nightmare to deal with in tests
+			// TODO: Remove this check once T253717 is resolved
+			// @codeCoverageIgnoreStart
+			$logEntry->publish( $id );
+			// @codeCoverageIgnoreEnd
+		}
 		return true;
 	}
 

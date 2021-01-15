@@ -39,13 +39,11 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @group Database
  * @group Large
  *
- * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilter
  * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterHooks
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
@@ -54,12 +52,10 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Disallow
- * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Parameters
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Tag
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn
- * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor
  */
@@ -134,12 +130,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'actions' => [
 				'degroup' => []
 			]
-		],
-		4 => [
-			'af_pattern' => 'action contains "createaccount" & accountname rlike "user" & page_title === article_text',
-			'af_public_comments' => 'Mock filter for createaccount',
-			'af_hidden' => 1,
-			'actions' => []
 		],
 		5 => [
 			'af_pattern' => 'user_name == "FilteredUser"',
@@ -259,15 +249,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			'af_pattern' => 'action contains "createaccount"',
 			'af_public_comments' => 'Catch-all for account creations',
 			'af_hidden' => 1,
-			'actions' => [
-				'disallow' => []
-			]
-		],
-		16 => [
-			'af_pattern' => 'random := "adruhaoerihouhae"; added_lines contains random | ' .
-				'edit_diff_pst contains random | new_pst contains random | new_html contains random |' .
-				'1=1 | /*Superfluous condition to set a lazyLoader but not compute*/all_links contains random',
-			'af_public_comments' => 'Filter computing several non-lazy variables',
 			'actions' => [
 				'disallow' => []
 			]
@@ -841,7 +822,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'degroup' => [ 3 ] ]
 			],
 			'Basic test for "createaccount", no consequences.' => [
-				[ 1, 2, 3, 4 ],
+				[ 1, 2, 3 ],
 				[
 					'action' => 'createaccount',
 					'target' => 'User:AnotherUser',
@@ -868,17 +849,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'summary' => ''
 				],
 				[ 'tag' => [ 5 ] ]
-			],
-			[
-				[ 6 ],
-				[
-					'action' => 'edit',
-					'target' => 'Help:Help',
-					'oldText' => 'Some help.',
-					'newText' => 'Some help for you',
-					'summary' => 'Help! I need somebody'
-				],
-				[ 'disallow' => [ 6 ] ]
 			],
 			'Check that degroup and block are executed together' => [
 				[ 2, 3, 7, 8 ],
@@ -964,28 +934,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'target' => 'Anything',
 					'oldText' => 'Bar',
 					'newText' => 'Foo',
-					'summary' => ''
-				],
-				[]
-			],
-			[
-				[ 7, 12 ],
-				[
-					'action' => 'edit',
-					'target' => 'Something',
-					'oldText' => 'Please allow me',
-					'newText' => 'to introduce myself',
-					'summary' => ''
-				],
-				[ 'degroup' => [ 7 ] ]
-			],
-			[
-				[ 13 ],
-				[
-					'action' => 'edit',
-					'target' => 'My page',
-					'oldText' => '',
-					'newText' => 'AbuseFilter will not block me',
 					'summary' => ''
 				],
 				[]
@@ -1232,14 +1180,11 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * Test storing and loading the var dump. See also AbuseFilterDBTest::testVarDump
-	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param string[] $usedVars The variables effectively computed by filters in $createIds.
 	 *   We'll search these in the stored dump.
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore
-	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariablesManager::dumpAllVars
 	 * @dataProvider provideFiltersAndVariables
 	 */
 	public function testVarDump( $createIds, $actionParams, $usedVars ) {
@@ -1326,80 +1271,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'action', 'moved_to_title' ]
 			],
 			[
-				[ 5 ],
-				[
-					'action' => 'edit',
-					'target' => 'User:FilteredUser',
-					'oldText' => 'Hey.',
-					'newText' => 'I am a very nice user, really!',
-					'summary' => ''
-				],
-				[ 'user_name' ]
-			],
-			[
-				[ 2, 3, 7, 8 ],
-				[
-					'action' => 'edit',
-					'target' => 'Link',
-					'oldText' => 'What is a link?',
-					'newText' => 'A link is something like this: [[Link|]].',
-					'summary' => 'Explaining'
-				],
-				[ 'action', 'timestamp', 'added_lines_pst' ]
-			],
-			[
-				[ 2, 3, 7, 8 ],
-				[
-					'action' => 'stashedit',
-					'target' => 'Link',
-					'oldText' => 'What is a link?',
-					'newText' => 'A link is something like this: [[Link|]].',
-					'summary' => 'Explaining',
-					'stashType' => 'hit'
-				],
-				[ 'action', 'timestamp', 'added_lines_pst' ]
-			],
-			[
-				[ 2, 3, 7, 8 ],
-				[
-					'action' => 'stashedit',
-					'target' => 'Link',
-					'oldText' => 'What is a link?',
-					'newText' => 'A link is something like this: [[Link|]].',
-					'summary' => 'Explaining',
-					'stashType' => 'miss'
-				],
-				[ 'action', 'timestamp', 'added_lines_pst' ]
-			],
-			[
-				[ 8, 10 ],
-				[
-					'action' => 'edit',
-					'target' => 'Anything',
-					'oldText' => 'Bar',
-					'newText' => 'Foo',
-					'summary' => ''
-				],
-				[ 'added_lines_pst' ]
-			],
-			[
 				[ 2, 3 ],
 				[
 					'action' => 'delete',
 					'target' => 'Test page'
 				],
 				[ 'action', 'page_prefixedtitle' ]
-			],
-			[
-				[ 10, 13 ],
-				[
-					'action' => 'edit',
-					'target' => 'Tyger! Tyger! Burning bright',
-					'oldText' => 'In the forests of the night',
-					'newText' => 'What immortal hand or eye',
-					'summary' => 'Could frame thy fearful symmetry?'
-				],
-				[]
 			],
 			[
 				[ 15 ],
@@ -1409,41 +1286,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'username' => 'AnotherUser'
 				],
 				[ 'action' ]
-			],
-			[
-				[ 16 ],
-				[
-					'action' => 'edit',
-					'target' => 'Random',
-					'oldText' => 'Old text',
-					'newText' => 'Some new text which will not match',
-					'summary' => 'No summary'
-				],
-				[ 'edit_diff_pst', 'new_pst', 'new_html' ]
-			],
-			[
-				[ 16 ],
-				[
-					'action' => 'stashedit',
-					'target' => 'Random',
-					'oldText' => 'Old text',
-					'newText' => 'Some new text which will not match',
-					'summary' => 'No summary',
-					'stashType' => 'miss'
-				],
-				[ 'edit_diff_pst', 'new_pst', 'new_html' ]
-			],
-			[
-				[ 16 ],
-				[
-					'action' => 'stashedit',
-					'target' => 'Random',
-					'oldText' => 'Old text',
-					'newText' => 'Some new text which will not match',
-					'summary' => 'No summary',
-					'stashType' => 'hit'
-				],
-				[ 'edit_diff_pst', 'new_pst', 'new_html' ]
 			],
 		];
 	}
@@ -1602,36 +1444,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				],
 				[]
 			],
-			[
-				[ 8, 10 ],
-				[
-					'target' => 'Anything',
-					'oldText' => 'Bar',
-					'newText' => 'Foo',
-					'summary' => ''
-				],
-				[]
-			],
-			[
-				[ 7, 12 ],
-				[
-					'target' => 'Something',
-					'oldText' => 'Please allow me',
-					'newText' => 'to introduce myself',
-					'summary' => ''
-				],
-				[ 'degroup' => [ 7 ] ]
-			],
-			[
-				[ 13 ],
-				[
-					'target' => 'My page',
-					'oldText' => '',
-					'newText' => 'AbuseFilter will not block me',
-					'summary' => ''
-				],
-				[]
-			],
 		];
 
 		$finalSets = [];
@@ -1732,17 +1544,6 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					'summary' => 'Baz'
 				],
 				[ 'tag' => [ 19 ] ]
-			],
-			[
-				[ 19, 20 ],
-				[
-					'action' => 'edit',
-					'target' => 'Cellar door',
-					'oldText' => '',
-					'newText' => 'Yay, that\'s cool',
-					'summary' => 'Unit test'
-				],
-				[ 'disallow' => [ 20 ] ]
 			],
 			[
 				[ 18 ],

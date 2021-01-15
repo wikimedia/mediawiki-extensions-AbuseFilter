@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MessageLocalizer;
 use Status;
 use User;
 
@@ -18,6 +19,9 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 	/** @var FilterUser */
 	protected $filterUser;
 
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
+
 	/** @var string Expiry of the block */
 	protected $expiry;
 
@@ -26,17 +30,20 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 	 * @param string $expiry
 	 * @param BlockUserFactory $blockUserFactory
 	 * @param FilterUser $filterUser
+	 * @param MessageLocalizer $messageLocalizer
 	 */
 	public function __construct(
 		Parameters $params,
 		string $expiry,
 		BlockUserFactory $blockUserFactory,
-		FilterUser $filterUser
+		FilterUser $filterUser,
+		MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct( $params );
 		$this->expiry = $expiry;
 		$this->blockUserFactory = $blockUserFactory;
 		$this->filterUser = $filterUser;
+		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	/**
@@ -57,7 +64,11 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 		bool $isAutoBlock,
 		bool $preventEditOwnUserTalk
 	) : Status {
-		$reason = wfMessage( 'abusefilter-blockreason', $ruleDesc, $ruleNumber )->inContentLanguage()->text();
+		$reason = $this->messageLocalizer->msg(
+			'abusefilter-blockreason',
+			$ruleDesc,
+			$ruleNumber
+		)->inContentLanguage()->text();
 
 		return $this->blockUserFactory->newBlockUser(
 			$target,

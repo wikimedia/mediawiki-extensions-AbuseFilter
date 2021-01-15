@@ -6,7 +6,6 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedExcepti
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Session\Session;
-use Title;
 
 /**
  * Consequence that warns the user once, allowing the action on the second attempt.
@@ -99,8 +98,8 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 			$this->parameters->getFilter()->getID(),
 			$this->parameters->getIsGlobalFilter()
 		);
-		$title = Title::castFromLinkTarget( $this->parameters->getTarget() );
-		return 'abusefilter-warned-' . md5( $title->getPrefixedText() ) .
+		$titleText = $this->parameters->getTarget()->getNamespace() . $this->parameters->getTarget()->getText();
+		return 'abusefilter-warned-' . md5( $titleText ) .
 			'-' . $globalFilterName . '-' . $this->parameters->getAction();
 	}
 }
