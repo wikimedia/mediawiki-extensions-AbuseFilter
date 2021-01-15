@@ -25,7 +25,7 @@ class CheckSyntax extends ApiBase {
 		$warnings = [];
 		foreach ( $result->getWarnings() as $warning ) {
 			$warnings[] = [
-				'message' => $warning->getMessageObj()->text(),
+				'message' => $this->msg( $warning->getMessageObj() )->text(),
 				'character' => $warning->getPosition()
 			];
 		}
@@ -43,7 +43,7 @@ class CheckSyntax extends ApiBase {
 			'@phan-var AFPUserVisibleException $excep';
 			$r = [
 				'status' => 'error',
-				'message' => $excep->getMessageObj()->text(),
+				'message' => $this->msg( $excep->getMessageObj() )->text(),
 				'character' => $excep->getPosition(),
 			];
 		}
