@@ -43,7 +43,7 @@ class VariablesFormatterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param $var
+	 * @param mixed $var
 	 * @param string $expected
 	 * @covers ::formatVar
 	 * @dataProvider provideFormatVar

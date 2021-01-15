@@ -17,6 +17,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	use AbuseFilterCreateAccountTestTrait;
 	use AbuseFilterUploadTestTrait;
 
+	/** @inheritDoc */
 	protected $tablesUsed = [
 		'page',
 		'text',

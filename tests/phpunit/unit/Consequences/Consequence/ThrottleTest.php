@@ -75,7 +75,6 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param BagOStuff|MockObject|null $cache
 	 * @covers ::execute
 	 * @covers ::setThrottled
 	 * @covers ::throttleKey

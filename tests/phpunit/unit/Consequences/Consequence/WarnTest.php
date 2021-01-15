@@ -85,13 +85,12 @@ class WarnTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param MockObject|Session $session
 	 * @covers ::execute
 	 * @covers ::setWarn
 	 * @covers ::getWarnKey
 	 * @dataProvider provideWarnsAndSuccess
 	 */
-	public function testExecute( Warn $warn, bool $shouldDisable, Session $session ) {
+	public function testExecute( Warn $warn, bool $shouldDisable, MockObject $session ) {
 		$session->expects( $this->once() )
 			->method( 'offsetSet' )
 			->with( $this->anything(), $shouldDisable );

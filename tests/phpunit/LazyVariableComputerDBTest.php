@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
  */
 class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 
+	/** @inheritDoc */
 	protected $tablesUsed = [
 		'page',
 		'text',

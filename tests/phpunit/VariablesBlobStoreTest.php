@@ -19,7 +19,7 @@ class VariablesBlobStoreTest extends MediaWikiIntegrationTestCase {
 	 * Test storing and loading the var dump. See also AbuseFilterConsequencesTest::testVarDump
 	 *
 	 * @param array $variables Map of [ name => value ] to build a variable holder with
-	 * @param ?array $expectedValues Null to use $variables
+	 * @param array|null $expectedValues Null to use $variables
 	 * @covers ::loadVarDump
 	 * @covers ::storeVarDump
 	 * @dataProvider provideVariables

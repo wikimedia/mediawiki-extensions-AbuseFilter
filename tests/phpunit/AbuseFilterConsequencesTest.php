@@ -69,7 +69,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	private $user;
 	/** Prefix for tables to emulate an external DB */
 	public const DB_EXTERNAL_PREFIX = 'external_';
-	/** Tables to create in the external DB */
+	/** @var string[] Tables to create in the external DB */
 	public static $externalTables = [
 		'abuse_filter',
 		'abuse_filter_action',
@@ -96,7 +96,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	];
 
 	// phpcs:disable Generic.Files.LineLength
-	// Filters that may be created, their key is the ID.
+	/** @var array Filters that may be created, their key is the ID. */
 	protected static $filters = [
 		1 => [
 			'af_pattern' => 'added_lines irlike "foo"',
