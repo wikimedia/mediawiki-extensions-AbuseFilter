@@ -147,7 +147,8 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	 * @todo This sucks. Clean it up once T255433 and T253717 are resolved
 	 */
 	public function testRevert( ?stdClass $blockRow, ?DatabaseBlockStore $blockStore, bool $expected ) {
-		$this->markTestSkipped( 'T272124' );
+		// Unset all hook handlers per T272124
+		$this->setService( 'HookContainer', $this->createHookContainer() );
 		$db = $this->createMock( IDatabase::class );
 		$db->method( 'select' )->willReturnCallback( function ( $tables ) use ( $blockRow ) {
 			return in_array( 'ipblocks', $tables, true ) && $blockRow ? [ $blockRow ] : [];
