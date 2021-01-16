@@ -85,7 +85,12 @@ class BlockAutopromoteStore {
 			'5::newgroups' => []
 		] );
 		$logEntry->setComment( $msg );
-		$logEntry->publish( $logEntry->insert() );
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			// FIXME Remove this check once ManualLogEntry is servicified (T253717)
+			// @codeCoverageIgnoreStart
+			$logEntry->publish( $logEntry->insert() );
+			// @codeCoverageIgnoreEnd
+		}
 
 		return true;
 	}
@@ -118,7 +123,12 @@ class BlockAutopromoteStore {
 			'5::newgroups' => []
 		] );
 		$logEntry->setPerformer( $performer );
-		$logEntry->publish( $logEntry->insert() );
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			// FIXME Remove this check once ManualLogEntry is servicified (T253717)
+			// @codeCoverageIgnoreStart
+			$logEntry->publish( $logEntry->insert() );
+			// @codeCoverageIgnoreEnd
+		}
 
 		return true;
 	}
