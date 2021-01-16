@@ -243,32 +243,9 @@ class LazyVariableComputer {
 						$result = preg_replace( $re, '', $newHTML );
 					}
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
-					break;
-				}
-
-				// Otherwise fall back to database
-				$textVar = $parameters['wikitext-var'];
-
-				if ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
-						// $textVar is already PSTed when it's not loaded from an ongoing edit.
-						$result = $getVarCB( $textVar )->toString();
-					} else {
-						$text = $getVarCB( $textVar )->toString();
-						$editInfo = $this->parseNonEditWikitext(
-							$text,
-							$article,
-							$parameters['contextUser']
-						);
-						$result = $editInfo->output->getText();
-					}
 				} else {
-					// TODO: Parser Output from Content object. But we don't have the content object.
-					// And for non-text content, $wikitext is usually not going to be a valid
-					// serialization, but rather some dummy text for filtering.
 					$result = '';
 				}
-
 				break;
 			case 'strip-html':
 				$htmlVar = $parameters['html-var'];
