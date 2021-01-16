@@ -31,6 +31,7 @@ class AbuseFilterHooks {
 
 	/**
 	 * Called right after configuration has been loaded.
+	 * @codeCoverageIgnore Mainly deprecation warnings and other things that can be tested by running the updater
 	 */
 	public static function onRegistration() {
 		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
