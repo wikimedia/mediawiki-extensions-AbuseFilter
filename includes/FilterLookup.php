@@ -158,7 +158,7 @@ class FilterLookup implements IDBAccessObject {
 					[
 						'checkKeys' => [ $globalRulesKey ],
 						'lockTSE' => 300,
-						'version' => 2
+						'version' => 3
 					]
 				);
 			} else {
