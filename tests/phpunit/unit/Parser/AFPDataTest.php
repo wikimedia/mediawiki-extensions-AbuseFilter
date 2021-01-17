@@ -207,6 +207,7 @@ class AFPDataTest extends ParserTestCase {
 				),
 				[ 'foo', true ]
 			],
+			[ new AFPData( AFPData::DEMPTY ), null ],
 		];
 	}
 

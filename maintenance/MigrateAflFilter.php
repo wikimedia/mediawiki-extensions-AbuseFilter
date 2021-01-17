@@ -6,15 +6,18 @@ use LoggedUpdateMaintenance;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\MediaWikiServices;
 
+// @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Split afl_filter in afl_filter_id and afl_global per T42757
+ * @codeCoverageIgnore Single-use script
  */
 class MigrateAflFilter extends LoggedUpdateMaintenance {
 	/**

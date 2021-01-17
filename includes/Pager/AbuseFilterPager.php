@@ -345,14 +345,16 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
-	 * @return string
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getDefaultSort() {
 		return 'af_id';
 	}
 
 	/**
-	 * @return string
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getTableClass() {
 		return parent::getTableClass() . ' mw-abusefilter-list-scrollable';
@@ -395,8 +397,8 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
-	 * @return array
-	 * @see IndexPager::getExtraSortFields
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getExtraSortFields() {
 		return [ 'af_enabled' => 'af_deleted' ];

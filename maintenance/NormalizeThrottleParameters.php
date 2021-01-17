@@ -24,12 +24,14 @@ namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 use LoggedUpdateMaintenance;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 
+// @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Normalizes throttle parameters, see T203587

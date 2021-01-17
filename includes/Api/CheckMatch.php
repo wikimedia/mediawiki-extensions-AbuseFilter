@@ -57,12 +57,11 @@ class CheckMatch extends ApiBase {
 			throw new LogicException( 'Impossible.' );
 		}
 
-		$parser = AbuseFilterServices::getParserFactory()->newParser();
+		$parser = AbuseFilterServices::getParserFactory()->newParser( $vars );
 		if ( $parser->checkSyntax( $params['filter'] )->getResult() !== true ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 
-		$parser->setVariables( $vars );
 		$result = [
 			ApiResult::META_BC_BOOLS => [ 'result' ],
 			'result' => $parser->checkConditions( $params['filter'] )->getResult(),
@@ -76,8 +75,8 @@ class CheckMatch extends ApiBase {
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getAllowedParams
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
 		return [
@@ -95,8 +94,8 @@ class CheckMatch extends ApiBase {
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getExamplesMessages()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	protected function getExamplesMessages() {
 		return [

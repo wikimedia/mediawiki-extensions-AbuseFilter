@@ -4,12 +4,14 @@ namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
 use Maintenance;
 
+// @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 class SearchFilters extends Maintenance {
 	public function __construct() {
@@ -27,12 +29,18 @@ class SearchFilters extends Maintenance {
 		global $wgConf, $wgDBtype;
 
 		if ( $wgDBtype !== 'mysql' ) {
+			// Code using exit() cannot be tested (T272241)
+			// @codeCoverageIgnoreStart
 			$this->fatalError( 'This maintenance script only works with MySQL databases' );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$this->output( "wiki\tfilter\n" );
 		if ( $this->getOption( 'pattern' ) === '' ) {
+			// Code using exit() cannot be tested (T272241)
+			// @codeCoverageIgnoreStart
 			$this->fatalError( 'Pattern cannot be empty' );
+			// @codeCoverageIgnoreEnd
 		}
 
 		if ( count( $wgConf->wikis ) > 0 ) {

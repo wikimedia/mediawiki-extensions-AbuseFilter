@@ -218,15 +218,16 @@ class AbuseFilterHistoryPager extends TablePager {
 	}
 
 	/**
-	 * @return string
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getDefaultSort() {
 		return 'afh_timestamp';
 	}
 
 	/**
-	 * @param string $name
-	 * @return bool
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function isFieldSortable( $name ) {
 		return $name === 'afh_timestamp';

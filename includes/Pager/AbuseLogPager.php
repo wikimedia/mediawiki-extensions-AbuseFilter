@@ -444,7 +444,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	}
 
 	/**
-	 * @return string
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getIndexField() {
 		return 'afl_timestamp';

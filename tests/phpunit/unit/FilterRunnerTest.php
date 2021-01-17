@@ -26,7 +26,7 @@ use User;
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterRunner
- * @covers ::__construct()
+ * @covers ::__construct
  */
 class FilterRunnerTest extends MediaWikiUnitTestCase {
 	/**

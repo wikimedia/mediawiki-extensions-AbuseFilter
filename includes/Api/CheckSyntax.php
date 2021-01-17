@@ -52,8 +52,8 @@ class CheckSyntax extends ApiBase {
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getAllowedParams
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
 		return [
@@ -64,8 +64,8 @@ class CheckSyntax extends ApiBase {
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getExamplesMessages()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	protected function getExamplesMessages() {
 		return [

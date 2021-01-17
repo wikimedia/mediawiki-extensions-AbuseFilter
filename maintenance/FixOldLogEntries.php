@@ -4,12 +4,14 @@ namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
 use LoggedUpdateMaintenance;
 
+// @codeCoverageIgnoreStart
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
+// @codeCoverageIgnoreEnd
 
 /**
  * Fix old log entries with log_type = 'abusefilter' where log_params are imploded with '\n'

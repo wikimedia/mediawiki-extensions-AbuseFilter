@@ -45,7 +45,8 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool[] Map of (integer filter ID => bool)
-	 * @deprecated Since 1.34 See comment on FilterRunner::checkAllFilters
+	 * @deprecated Since 1.34 This was meant to be internal!
+	 * @codeCoverageIgnore Deprecated method
 	 */
 	public static function checkAllFilters(
 		VariableHolder $vars,
@@ -67,7 +68,9 @@ class AbuseFilter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param User $user The user performing the action
 	 * @return Status
-	 * @deprecated Since 1.34 Build a FilterRunner instance and call run() on that.
+	 * @deprecated Since 1.34 Get a FilterRunner instance and call run() on that, if you really need to.
+	 *   Or consider resolving the problem at its root, because you shouldn't need to call this manually.
+	 * @codeCoverageIgnore Deprecated method
 	 */
 	public static function filterAction(
 		VariableHolder $vars, Title $title, $group, User $user
