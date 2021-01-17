@@ -275,14 +275,29 @@ class LazyVariableComputer {
 
 				$result = $title->getRestrictions( $action );
 				break;
-			case 'simple-user-accessor':
+			case 'user-editcount':
+				/** @var User $user */
 				$user = $parameters['user'];
-				$method = $parameters['method'];
-
-				$result = $user->$method();
+				$result = $user->getEditCount();
+				break;
+			case 'user-emailconfirm':
+				/** @var User $user */
+				$user = $parameters['user'];
+				$result = $user->getEmailAuthenticationTimestamp();
+				break;
+			case 'user-groups':
+				/** @var User $user */
+				$user = $parameters['user'];
+				$result = $user->getEffectiveGroups();
+				break;
+			case 'user-rights':
+				/** @var User $user */
+				$user = $parameters['user'];
+				$result = $user->getRights();
 				break;
 			case 'user-block':
-				// @todo Support partial blocks
+				// @todo Support partial blocks?
+				/** @var User $user */
 				$user = $parameters['user'];
 				$result = (bool)$user->getBlock();
 				break;

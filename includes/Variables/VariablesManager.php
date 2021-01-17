@@ -180,8 +180,12 @@ class VariablesManager {
 			'load-recent-authors',
 			'page-age',
 			'get-page-restrictions',
-			'simple-user-accessor',
+			'user-editcount',
+			'user-emailconfirm',
+			'user-groups',
+			'user-rights',
 			'user-age',
+			'user-block',
 			'revision-text-by-id',
 		];
 

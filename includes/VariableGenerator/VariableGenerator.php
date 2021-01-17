@@ -67,16 +67,16 @@ class VariableGenerator {
 	public function addUserVars( User $user, RecentChange $rc = null ) : self {
 		$this->vars->setLazyLoadVar(
 			'user_editcount',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getEditCount' ]
+			'user-editcount',
+			[ 'user' => $user ]
 		);
 
 		$this->vars->setVar( 'user_name', $user->getName() );
 
 		$this->vars->setLazyLoadVar(
 			'user_emailconfirm',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getEmailAuthenticationTimestamp' ]
+			'user-emailconfirm',
+			[ 'user' => $user ]
 		);
 
 		$this->vars->setLazyLoadVar(
@@ -87,14 +87,14 @@ class VariableGenerator {
 
 		$this->vars->setLazyLoadVar(
 			'user_groups',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getEffectiveGroups' ]
+			'user-groups',
+			[ 'user' => $user ]
 		);
 
 		$this->vars->setLazyLoadVar(
 			'user_rights',
-			'simple-user-accessor',
-			[ 'user' => $user, 'method' => 'getRights' ]
+			'user-rights',
+			[ 'user' => $user ]
 		);
 
 		$this->vars->setLazyLoadVar(

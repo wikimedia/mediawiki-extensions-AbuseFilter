@@ -158,39 +158,36 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 
 	public function provideUserRelatedVars() : Generator {
 		$user = $this->createMock( User::class );
-		$getAccessorVar = function ( $user, $method ) : LazyLoadedVariable {
+		$getUserVar = function ( $user, $method ) : LazyLoadedVariable {
 			return new LazyLoadedVariable(
-				'simple-user-accessor',
-				[ 'user' => $user, 'method' => $method ]
+				$method,
+				[ 'user' => $user ]
 			);
 		};
 
 		$editCount = 7;
 		$user->method( 'getEditCount' )->willReturn( $editCount );
-		$var = $getAccessorVar( $user, 'getEditCount' );
+		$var = $getUserVar( $user, 'user-editcount' );
 		yield 'user_editcount' => [ $var, $editCount ];
 
 		$emailConfirm = '20000101000000';
 		$user->method( 'getEmailAuthenticationTimestamp' )->willReturn( $emailConfirm );
-		$var = $getAccessorVar( $user, 'getEmailAuthenticationTimestamp' );
+		$var = $getUserVar( $user, 'user-emailconfirm' );
 		yield 'user_emailconfirm' => [ $var, $emailConfirm ];
 
 		$groups = [ '*', 'group1', 'group2' ];
 		$user->method( 'getEffectiveGroups' )->willReturn( $groups );
-		$var = $getAccessorVar( $user, 'getEffectiveGroups' );
+		$var = $getUserVar( $user, 'user-groups' );
 		yield 'user_groups' => [ $var, $groups ];
 
 		$rights = [ 'abusefilter-foo', 'abusefilter-bar' ];
 		$user->method( 'getRights' )->willReturn( $rights );
-		$var = $getAccessorVar( $user, 'getRights' );
+		$var = $getUserVar( $user, 'user-rights' );
 		yield 'user_rights' => [ $var, $rights ];
 
 		$blocked = true;
 		$user->method( 'getBlock' )->willReturn( $blocked );
-		$var = new LazyLoadedVariable(
-			'user-block',
-			[ 'user' => $user ]
-		);
+		$var = $getUserVar( $user, 'user-block' );
 		yield 'user_blocked' => [ $var, $blocked ];
 
 		$fakeTime = 1514700000;
