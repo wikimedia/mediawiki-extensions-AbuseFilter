@@ -29,14 +29,15 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 	public function testUserForCreation( $user, $autocreate, array $options = [] ) {
 		// if this is not an autocreation, testForAccountCreation already handled it
 		if ( $autocreate ) {
-			return $this->testUser( $user, $user, true );
+			// FIXME Using the constructor directly here a bit hacky but needed for T272244
+			return $this->testUser( $user, new User, true );
 		}
 		return StatusValue::newGood();
 	}
 
 	/**
 	 * @param User $user The user being created or autocreated
-	 * @param User $creator The user who caused $user to be created (or $user itself on autocreation)
+	 * @param User $creator The user who caused $user to be created (can be anonymous)
 	 * @param bool $autocreate Is this an autocreation?
 	 * @return StatusValue
 	 */
