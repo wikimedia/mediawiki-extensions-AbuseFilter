@@ -112,6 +112,8 @@
 	"abusefilter-log-hide-reason": "Прычына:",
 	"abusefilter-log-hide-reason-other": "Іншая/дадатковая прычына:",
 	"abusefilter-log-hide-forbidden": "Вы ня маеце права хаваць запісы\nў журнале злоўжываньняў.",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|схаваны|схаваныя}}",
+	"abusefilter-log-hide-done-show": "{{PLURAL:$1|адкрыты|адкрытыя}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|схаваў|схавала}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|адкрыў|адкрыла}} $3",
 	"logentry-abusefilter-hit": "$1 {{#GENDER:$2|выклікаў|выклікала}} спрацоўваньне фільтру $4 пры выкананьні дзеяньня «$5» на старонцы $3. Прынятыя меры: $6 ($7)",
@@ -558,5 +560,7 @@
 	"abusefilter-log-ip-not-available": "Недаступна",
 	"abusefilter-tag-reserved": "Тэг <code>abusefilter-condition-limit</code> зарэзэрваваны для ўнутранага выкарыстаньня AbuseFilter.",
 	"tag-abusefilter-condition-limit": "дасягнутае абмежаваньне ўмовы",
-	"tag-abusefilter-condition-limit-description": "Рэдагаваньні або іншыя падзеі, якія ня могуць быць правераны ўсімі актыўнымі \n[[Special:AbuseFilter|фільтрамі злоўжываньняў]] ([[mw:Extension:AbuseFilter/Conditions|дапамога]])."
+	"tag-abusefilter-condition-limit-description": "Рэдагаваньні або іншыя падзеі, якія ня могуць быць правераны ўсімі актыўнымі \n[[Special:AbuseFilter|фільтрамі злоўжываньняў]] ([[mw:Extension:AbuseFilter/Conditions|дапамога]]).",
+	"notification-header-throttle-filter": "Фільтар злоўжываньняў $2, які {{GENDER:$1|вы}} нядаўна рэдагавалі, быў абмежаваны.",
+	"notification-subject-throttle-filter": "Фільтар злоўжываньняў, які {{GENDER:$1|вы}} рэдагавалі, быў абмежаваны на {{GRAMMAR:locative|{{SITENAME}}}}"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Akmaie Ajam",
 			"Aldnonymous",
 			"Arifin.wijaya",
 			"ArlandGa",
@@ -579,5 +580,6 @@
 	"abusefilter-log-ip-not-available": "Tidak Tersedia",
 	"abusefilter-tag-reserved": "Tag <code>abusefilter-condition-limit</code> disimpan untuk penggunaan internal oleh Filter Penyalahgunaan",
 	"tag-abusefilter-condition-limit": "batas kondisi tercapai",
-	"tag-abusefilter-condition-limit-description": "Suntingan atau kejadian lainnya yang tidak bisa diperiksa oleh semua [[Special:AbuseFilter|filter penyalahgunaan]] yang aktif ([[mw:Extension:AbuseFilter/Conditions|bantuan]])."
+	"tag-abusefilter-condition-limit-description": "Suntingan atau kejadian lainnya yang tidak bisa diperiksa oleh semua [[Special:AbuseFilter|filter penyalahgunaan]] yang aktif ([[mw:Extension:AbuseFilter/Conditions|bantuan]]).",
+	"notification-link-text-show-filter": "Tampilkan filter"
 }

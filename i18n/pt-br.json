@@ -157,7 +157,7 @@
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|acessou}} detalhes privados de $3",
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|bloqueou}} a promoção automática {{GENDER:$4|$3}} élo período de $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|restaurou}} a capacidade de promoção automática de {{GENDER:$4|$3}}",
-	"abusefilterprivatedetails-log-name": "registro de acesso do do Filtro de abuso para detalhes privados",
+	"abusefilterprivatedetails-log-name": "Registro de acesso a detalhes privados do filtro de abusos",
 	"abusefilter-list": "Todos os filtros",
 	"abusefilter-list-id": "Identificação de filtro",
 	"abusefilter-list-pattern": "Padrão",

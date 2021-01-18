@@ -105,7 +105,7 @@
 	"abusefilter-log-detailedentry-local": "필터 $1",
 	"abusefilter-log-detailslink": "자세한 사항",
 	"abusefilter-log-diff": "차이",
-	"abusefilter-log-hidelink": "보이기 설정",
+	"abusefilter-log-hidelink": "보이기 수정",
 	"abusefilter-log-description-not-available": "사용할 수 없음",
 	"abusefilter-log-details-legend": "기록 $1에 대한 자세한 정보",
 	"abusefilter-log-details-var": "변수",
