@@ -145,6 +145,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	public function doesWrites() {
@@ -152,6 +153,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	protected function getGroupName() {
@@ -182,7 +184,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 */
 	public function execute( $parameter ) {
 		$out = $this->getOutput();
-		$request = $this->getRequest();
 
 		$this->addNavigationLinks( 'log' );
 

@@ -30,6 +30,7 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
  */
 class AbuseLogPrivateDetails extends ApiBase {
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	public function mustBePosted() {
@@ -37,6 +38,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	public function isWriteMode() {
@@ -44,6 +46,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	public function needsToken() {
@@ -68,7 +71,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 		}
 		$status = SpecialAbuseLog::getPrivateDetailsRow( $user, $params['logid'] );
 		if ( !$status->isGood() ) {
-			$this->dieWithError( $status->getErrors()[0] );
+			$this->dieStatus( $status );
 		}
 		$row = $status->getValue();
 		// Log accessing private details
@@ -91,6 +94,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
@@ -106,6 +110,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	protected function getExamplesMessages() {

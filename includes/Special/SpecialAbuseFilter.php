@@ -109,6 +109,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	public function doesWrites() {
@@ -116,6 +117,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	}
 
 	/**
+	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
 	protected function getGroupName() {

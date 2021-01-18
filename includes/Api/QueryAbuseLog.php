@@ -340,8 +340,8 @@ class QueryAbuseLog extends ApiQueryBase {
 	}
 
 	/**
-	 * @return array
-	 * @see ApiQueryBase::getAllowedParams()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
 		$params = [
@@ -408,8 +408,8 @@ class QueryAbuseLog extends ApiQueryBase {
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getExamplesMessages()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	protected function getExamplesMessages() {
 		return [

@@ -42,24 +42,24 @@ class UnblockAutopromote extends ApiBase {
 	}
 
 	/**
-	 * @return bool
-	 * @see ApiBase::mustBePosted()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function mustBePosted() {
 		return true;
 	}
 
 	/**
-	 * @return bool
-	 * @see ApiBase::isWriteMode()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function isWriteMode() {
 		return true;
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getAllowedParams()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getAllowedParams() {
 		return [
@@ -72,16 +72,16 @@ class UnblockAutopromote extends ApiBase {
 	}
 
 	/**
-	 * @return string
-	 * @see ApiBase::needsToken()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function needsToken() {
 		return 'csrf';
 	}
 
 	/**
-	 * @return array
-	 * @see ApiBase::getExamplesMessages()
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	protected function getExamplesMessages() {
 		return [

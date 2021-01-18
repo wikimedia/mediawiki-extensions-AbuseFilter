@@ -10,6 +10,7 @@ use Title;
 /**
  * BC class for custom consequences specified via $wgAbuseFilterCustomActionsHandlers
  * @internal Temporary class
+ * @codeCoverageIgnore
  */
 class BCConsequence extends Consequence implements HookAborterConsequence {
 	/** @var array */

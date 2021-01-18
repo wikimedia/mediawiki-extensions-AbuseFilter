@@ -82,7 +82,8 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	}
 
 	/**
-	 * @return string
+	 * @codeCoverageIgnore Merely declarative
+	 * @inheritDoc
 	 */
 	public function getIndexField() {
 		return 'rc_id';
