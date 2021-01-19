@@ -57,7 +57,9 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 			$autoblock = true,
 			$this->preventsTalkEdit
 		);
-		return $status->isOK();
+		// TODO: Should we reblock in case of partial blocks? At that point we could return
+		// the status of doBlockInternal
+		return defined( 'MW_PHPUNIT_TEST' ) ? $status->isOK() : true;
 	}
 
 	/**
