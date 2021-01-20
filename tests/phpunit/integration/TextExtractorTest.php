@@ -23,11 +23,7 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideRevisionToString
 	 */
 	public function testRevisionToString( ?RevisionRecord $rev, bool $sysop, string $expected ) {
-		$user = $this->createMock( User::class );
-		$user->method( 'getName' )->willReturn( 'Test user 12345' );
-		$perms = $sysop ? [ 'deletedtext' ] : [];
-		$this->overrideUserPermissions( $user, $perms );
-
+		$user = $sysop ? $this->getTestSysop()->getUser() : $this->getTestUser()->getUser();
 		$hookRunner = new AbuseFilterHookRunner( $this->createHookContainer() );
 		$converter = new TextExtractor( $hookRunner );
 		$actual = $converter->revisionToString( $rev, $user );
