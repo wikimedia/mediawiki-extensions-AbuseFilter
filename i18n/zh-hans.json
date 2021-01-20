@@ -529,7 +529,7 @@
 	"abusefilter-exception-invalidiprange": "字符$1处提供了无效的IP地址段“$2”。",
 	"abusefilter-exception-disabledvar": "字符$1的变量$2不再继续使用。",
 	"abusefilter-exception-variablevariable": "在第$1个字符位置发现set和ser_var变量，它们的第一个参数应为字符串字面量。",
-	"abusefilter-warning-match-empty-regex": "此正则表达式匹配了空字符串，在$1处。",
+	"abusefilter-warning-match-empty-regex": "该正则表达式匹配了空字符串，在字符$1处。",
 	"abusefilter-action-tag": "标签",
 	"abusefilter-action-throttle": "频率控制",
 	"abusefilter-action-warn": "警告",
