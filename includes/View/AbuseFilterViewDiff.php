@@ -156,11 +156,15 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
-		$this->nextHistoryId = $this->filterLookup->getClosestVersion(
-			$this->newVersion->getHistoryID(),
-			$this->filter,
-			FilterLookup::DIR_NEXT
-		)->getHistoryID();
+		try {
+			$this->nextHistoryId = $this->filterLookup->getClosestVersion(
+				$this->newVersion->getHistoryID(),
+				$this->filter,
+				FilterLookup::DIR_NEXT
+			)->getHistoryID();
+		} catch ( ClosestFilterVersionNotFoundException $_ ) {
+			$this->nextHistoryId = null;
+		}
 
 		return true;
 	}
