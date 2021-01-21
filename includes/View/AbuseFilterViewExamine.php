@@ -8,6 +8,7 @@ use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
@@ -262,7 +263,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			// SCHEMA_COMPAT_READ_OLD
 			[ $filterID, $isGlobal ] = GlobalNameUtils::splitGlobalName( $row->afl_filter );
 		}
-		$isHidden = $this->filterLookup->getFilter( $filterID, $isGlobal )->isHidden();
+		try {
+			$isHidden = $this->filterLookup->getFilter( $filterID, $isGlobal )->isHidden();
+		} catch ( CentralDBNotAvailableException $_ ) {
+			// Conservatively assume that it's hidden, like in SpecialAbuseLog
+			$isHidden = true;
+		}
 		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
