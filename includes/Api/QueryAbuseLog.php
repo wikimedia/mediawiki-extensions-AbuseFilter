@@ -32,6 +32,7 @@ use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\MediaWikiServices;
@@ -106,17 +107,16 @@ class QueryAbuseLog extends ApiQueryBase {
 					continue;
 				}
 			}
-			// @phan-suppress-next-line PhanImpossibleCondition
-			if ( $foundInvalid ) {
-				// @todo Tell what the invalid IDs are
-				$this->addWarning( 'abusefilter-log-invalid-filter' );
-			}
 			if ( !$afPermManager->canViewPrivateFiltersLogs( $user ) ) {
 				foreach ( $searchFilters as [ $filterID, $global ] ) {
 					try {
 						$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
 					} catch ( CentralDBNotAvailableException $_ ) {
+						// Conservatively assume it's hidden, like in SpecialAbuseLog
+						$isHidden = true;
+					} catch ( FilterNotFoundException $_ ) {
 						$isHidden = false;
+						$foundInvalid = true;
 					}
 					if ( $isHidden ) {
 						$this->dieWithError(
@@ -124,6 +124,11 @@ class QueryAbuseLog extends ApiQueryBase {
 						);
 					}
 				}
+			}
+
+			if ( $foundInvalid ) {
+				// @todo Tell what the invalid IDs are
+				$this->addWarning( 'abusefilter-log-invalid-filter' );
 			}
 		}
 
