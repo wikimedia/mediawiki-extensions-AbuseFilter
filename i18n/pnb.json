@@ -98,6 +98,7 @@
 	"abusefilter-throttle-creationdate": "کھاتہ تخلیق تریخ",
 	"abusefilter-throttle-page": "صفحہ",
 	"abusefilter-throttle-none": "(کوئی وی نئیں)",
+	"abusefilter-throttle-details": "Allow $1 {{PLURAL:$1|action|actions}} every $2 {{PLURAL:$2 سکنٹ}}, group throttle by: $3",
 	"abusefilter-edit-warn-other": "ہور سنیہا",
 	"abusefilter-edit-warn-actions": "عمل:",
 	"abusefilter-edit-disallow-other": "ہور سنیہا",

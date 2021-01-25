@@ -25,6 +25,7 @@
 			"Rex",
 			"Rv77ax",
 			"Sumbukompor",
+			"Syman51",
 			"Veracious"
 		]
 	},
@@ -101,6 +102,7 @@
 	"abusefilter-log-detailslink": "rincian",
 	"abusefilter-log-diff": "beda",
 	"abusefilter-log-hidelink": "sesuaikan tampilan",
+	"abusefilter-log-hide-entries": "Ubah tampilan yang terpilih",
 	"abusefilter-log-description-not-available": "tidak tersedia",
 	"abusefilter-log-details-legend": "Rincian untuk entri log $1",
 	"abusefilter-log-details-var": "Variabel",
@@ -125,7 +127,9 @@
 	"abusefilter-log-details-hidden": "Anda tidak dapat melihat rincian entri ini karena telah disembunyikan dari publik.",
 	"abusefilter-log-details-hidden-implicit": "Anda tidak dapat melihat rincian entri ini karena menyangkut revisi yang disembunyikan dari pandangan publik.",
 	"abusefilter-log-private-not-included": "Satu atau lebih filter ID yang Anda tentukan adalah pribadi. Karena Anda tidak diizinkan untuk melihat rincian filter pribadi, filter-filter ini tidak akan dicari.",
-	"abusefilter-log-hide-legend": "Sembunyikan entri log",
+	"abusefilter-log-hide-no-selected": "Tidak ada yang dipilih",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Pilih log penyalahgunaan|Pilih log penyalahgunaan}}:",
+	"abusefilter-log-hide-legend": "Ubah tampilan",
 	"abusefilter-log-hide-set-visibility": "Atur keterlihatan dari entri yang dipilih:",
 	"abusefilter-log-hide-reason": "Alasan:",
 	"abusefilter-log-hide-reason-other": "Alasan lain/tambahan:",

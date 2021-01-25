@@ -576,5 +576,6 @@
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code> 태그는 편집 필터에 의해 내부적으로 사용하기 위해 예약되어 있습니다.",
 	"tag-abusefilter-condition-limit": "조건 제한 도달",
 	"tag-abusefilter-condition-limit-description": "[[Special:AbuseFilter|편집필터]]가 모두 확인하지 못한 편집 또는 행위 ([[mw:Extension:AbuseFilter/Conditions|도움말]])",
+	"notification-header-throttle-filter": "최근 {{GENDER:$1|편집하신}} $2 편집 필터의 속도가 제한되었습니다.",
 	"notification-link-text-show-filter": "필터 표시"
 }
