@@ -333,7 +333,7 @@
 				"degroup": true,
 				"tag": false
 			},
-			"description":  "Do users need 'abusefilter-modify-restricted' user right as well as 'abusefilter-modify' in order to create or modify filters which carry out this action? Array like [action name => is restricted?]"
+			"description": "Do users need 'abusefilter-modify-restricted' user right as well as 'abusefilter-modify' in order to create or modify filters which carry out this action? Array like [action name => is restricted?]"
 		},
 		"AbuseFilterNotifications": {
 			"value": false,
@@ -362,7 +362,7 @@
 				"degroup": false,
 				"tag": false
 			},
-			"description":  "An array of actions which, if set on a global filter, will not be used for local hits of such filter (not in the central wiki). The array is [ action => will be disabled? ]. NOTE: Locally disabling throttle or warn will *not* disable the remaining actions."
+			"description": "An array of actions which, if set on a global filter, will not be used for local hits of such filter (not in the central wiki). The array is [ action => will be disabled? ]. NOTE: Locally disabling throttle or warn will *not* disable the remaining actions."
 		},
 		"AbuseFilterBlockDuration": {
 			"value": "indefinite",
