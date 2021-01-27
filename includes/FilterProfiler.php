@@ -130,31 +130,28 @@ class FilterProfiler {
 	 * @param bool $matched
 	 */
 	private function recordProfilingResult( int $filter, float $time, int $conds, bool $matched ) : void {
-		// Defer updates to avoid massive (~1 second) edit time increases
-		DeferredUpdates::addCallableUpdate( function () use ( $filter, $time, $conds, $matched ) {
-			// Note: It is important that all key information be stored together in a single
-			// memcache entry to avoid race conditions where competing Apache instances
-			// partially overwrite the stats.
-			$profileKey = $this->filterProfileKey( $filter );
-			$this->objectStash->merge(
-				$profileKey,
-				function ( $cache, $key, $profile ) use ( $time, $conds, $matched ) {
-					if ( $profile === false ) {
-						$profile = self::NULL_FILTER_PROFILE;
-					}
+		// Note: It is important that all key information be stored together in a single
+		// memcache entry to avoid race conditions where competing Apache instances
+		// partially overwrite the stats.
+		$profileKey = $this->filterProfileKey( $filter );
+		$this->objectStash->merge(
+			$profileKey,
+			function ( $cache, $key, $profile ) use ( $time, $conds, $matched ) {
+				if ( $profile === false ) {
+					$profile = self::NULL_FILTER_PROFILE;
+				}
 
-					$profile['count']++;
-					if ( $matched ) {
-						$profile['matches']++;
-					}
-					$profile['total-time'] += $time;
-					$profile['total-cond'] += $conds;
+				$profile['count']++;
+				if ( $matched ) {
+					$profile['matches']++;
+				}
+				$profile['total-time'] += $time;
+				$profile['total-cond'] += $conds;
 
-					return $profile;
-				},
-				BagOStuff::TTL_HOUR
-			);
-		} );
+				return $profile;
+			},
+			BagOStuff::TTL_HOUR
+		);
 	}
 
 	/**
@@ -245,30 +242,35 @@ class FilterProfiler {
 	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
 	 */
 	public function recordPerFilterProfiling( Title $title, array $data ) : void {
-		foreach ( $data as $filterName => $params ) {
-			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filterName );
-			if ( !$global ) {
+		// Defer profiling updates to avoid massive (~1 second) edit time increases
+		DeferredUpdates::addCallableUpdate( function () use ( $title, $data ) {
+			$slowFilterThreshold = $this->options->get( 'AbuseFilterSlowFilterRuntimeLimit' );
+
+			foreach ( $data as $filterName => $params ) {
+				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filterName );
 				// @todo Maybe add a parameter to recordProfilingResult to record global filters
 				// data separately (in the foreign wiki)
-				$this->recordProfilingResult(
-					$filterID,
-					$params['time'],
-					$params['conds'],
-					$params['result']
-				);
-			}
+				if ( !$global ) {
+					$this->recordProfilingResult(
+						$filterID,
+						$params['time'],
+						$params['conds'],
+						$params['result']
+					);
+				}
 
-			if ( $params['time'] > $this->options->get( 'AbuseFilterSlowFilterRuntimeLimit' ) ) {
-				$this->recordSlowFilter(
-					$title,
-					$filterName,
-					$params['time'],
-					$params['conds'],
-					$params['result'],
-					$global
-				);
+				if ( $params['time'] > $slowFilterThreshold ) {
+					$this->recordSlowFilter(
+						$title,
+						$filterName,
+						$params['time'],
+						$params['conds'],
+						$params['result'],
+						$global
+					);
+				}
 			}
-		}
+		} );
 	}
 
 	/**
