@@ -17,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -228,6 +229,7 @@ return [
 			$services->get( FilterLookup::SERVICE_NAME ),
 			$services->get( VariablesBlobStore::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
+			$services->get( EditRevUpdater::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
@@ -329,6 +331,14 @@ return [
 			$services->get( TextExtractor::SERVICE_NAME ),
 			$services->getMimeAnalyzer(),
 			$services->getRepoGroup()
+		);
+	},
+	EditRevUpdater::SERVICE_NAME => function ( MediaWikiServices $services ): EditRevUpdater {
+		return new EditRevUpdater(
+			$services->get( CentralDBManager::SERVICE_NAME ),
+			$services->getRevisionLookup(),
+			$services->getDBLoadBalancer(),
+			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
 ];

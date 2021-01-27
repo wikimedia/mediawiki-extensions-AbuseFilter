@@ -21,6 +21,8 @@ class AbuseLoggerFactory {
 	private $varBlobStore;
 	/** @var VariablesManager */
 	private $varManager;
+	/** @var EditRevUpdater */
+	private $editRevUpdater;
 	/** @var ILoadBalancer */
 	private $loadBalancer;
 	/** @var ServiceOptions */
@@ -35,6 +37,7 @@ class AbuseLoggerFactory {
 	 * @param FilterLookup $filterLookup
 	 * @param VariablesBlobStore $varBlobStore
 	 * @param VariablesManager $varManager
+	 * @param EditRevUpdater $editRevUpdater
 	 * @param ILoadBalancer $loadBalancer
 	 * @param ServiceOptions $options
 	 * @param string $wikiID
@@ -45,6 +48,7 @@ class AbuseLoggerFactory {
 		FilterLookup $filterLookup,
 		VariablesBlobStore $varBlobStore,
 		VariablesManager $varManager,
+		EditRevUpdater $editRevUpdater,
 		ILoadBalancer $loadBalancer,
 		ServiceOptions $options,
 		string $wikiID,
@@ -54,6 +58,7 @@ class AbuseLoggerFactory {
 		$this->filterLookup = $filterLookup;
 		$this->varBlobStore = $varBlobStore;
 		$this->varManager = $varManager;
+		$this->editRevUpdater = $editRevUpdater;
 		$this->loadBalancer = $loadBalancer;
 		$this->options = $options;
 		$this->wikiID = $wikiID;
@@ -76,6 +81,7 @@ class AbuseLoggerFactory {
 			$this->filterLookup,
 			$this->varBlobStore,
 			$this->varManager,
+			$this->editRevUpdater,
 			$this->loadBalancer,
 			$this->options,
 			$this->wikiID,

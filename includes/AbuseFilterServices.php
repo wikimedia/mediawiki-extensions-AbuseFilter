@@ -244,4 +244,11 @@ class AbuseFilterServices {
 	public static function getVariableGeneratorFactory() : VariableGeneratorFactory {
 		return MediaWikiServices::getInstance()->getService( VariableGeneratorFactory::SERVICE_NAME );
 	}
+
+	/**
+	 * @return EditRevUpdater
+	 */
+	public static function getEditRevUpdater() : EditRevUpdater {
+		return MediaWikiServices::getInstance()->getService( EditRevUpdater::SERVICE_NAME );
+	}
 }
