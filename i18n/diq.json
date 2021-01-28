@@ -88,7 +88,7 @@
 	"abusefilter-log-detailedentry-local": "parzûnê $1",
 	"abusefilter-log-detailslink": "teferruati",
 	"abusefilter-log-diff": "ferq",
-	"abusefilter-log-hidelink": "vinayişi eyar bike",
+	"abusefilter-log-hidelink": "vinayışi saz kerê",
 	"abusefilter-log-hide-entries": "Motnayışê qeydê weçinayışê cı kerdeyan bıvurne",
 	"abusefilter-log-description-not-available": "çıniyo",
 	"abusefilter-log-details-legend": "Detayî ser log entryê $1î",
@@ -576,5 +576,6 @@
 	"abusefilter-log-ip-not-available": "Çıniyo",
 	"abusefilter-tag-reserved": "Be etiketê <code>abusefilter-condition-limit</code> terefê AbuseFilter ra gureynayışê daxilan ra abırneyayo.",
 	"tag-abusefilter-condition-limit": "reşt sinorê şerti",
-	"tag-abusefilter-condition-limit-description": "Terefê karberanê aktivan pêroyın ra kontrol nebiyaye çımeştış yana aktivitey bini [[Special:AbuseFilter|parzûnanê gurenayışê tecizi]]([[mw:Extension:AbuseFilter/Conditions|peşti]])."
+	"tag-abusefilter-condition-limit-description": "Terefê karberanê aktivan pêroyın ra kontrol nebiyaye çımeştış yana aktivitey bini [[Special:AbuseFilter|parzûnanê gurenayışê tecizi]]([[mw:Extension:AbuseFilter/Conditions|peşti]]).",
+	"notification-link-text-show-filter": "parzuni bıasenê"
 }
