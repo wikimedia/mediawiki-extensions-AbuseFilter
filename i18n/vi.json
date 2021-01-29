@@ -470,5 +470,6 @@
 	"abusefilter-import-submit": "Nhập dữ liệu",
 	"abusefilter-group-default": "Mặc định",
 	"abusefilter-http-error": "Đã xuất hiện lỗi HTTP: $1.",
-	"abusefilter-log-details-id": "ID nhật trình"
+	"abusefilter-log-details-id": "ID nhật trình",
+	"abusefilter-log-ip-not-available": "Không tồn tại"
 }
