@@ -70,6 +70,23 @@ class AbuseFilterChangesList extends OldChangesList {
 	}
 
 	/**
+	 * Overridden as a hacky workaround for T273387. Yuck!
+	 * @inheritDoc
+	 */
+	public function recentChangesLine( &$rc, $watched = false, $linenumber = null ) {
+		$par = parent::recentChangesLine( $rc, $watched, $linenumber );
+		if ( $par === false || $par === '' ) {
+			return $par;
+		}
+		$ret = preg_replace( '/<\/li>$/', '', $par );
+		if ( $rc->getAttribute( 'rc_source' ) === 'flow' ) {
+			$classes = [];
+			$this->insertExtra( $ret, $rc, $classes );
+		}
+		return $ret . '</li>';
+	}
+
+	/**
 	 * Insert links to user page, user talk page and eventually a blocking link.
 	 *   Like the parent, but don't hide details if user can see them.
 	 *

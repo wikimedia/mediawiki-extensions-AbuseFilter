@@ -254,10 +254,6 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$action = $this->mTestAction !== '0' ? $this->mTestAction : false;
 		$conds[] = $this->buildTestConditions( $dbr, $action );
 
-		// Get our ChangesList
-		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );
-		$output = $changesList->beginRecentChangesList();
-
 		$rcQuery = RecentChange::getQueryInfo();
 		$res = $dbr->select(
 			$rcQuery['tables'],
@@ -267,6 +263,12 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			[ 'LIMIT' => self::$mChangeLimit, 'ORDER BY' => 'rc_timestamp desc' ],
 			$rcQuery['joins']
 		);
+
+		// Get our ChangesList
+		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );
+		// Note, we're initializing some rows that will later be discarded. Hopefully this won't have any overhead.
+		$changesList->initChangesListRows( $res );
+		$output = $changesList->beginRecentChangesList();
 
 		$counter = 1;
 
