@@ -19,7 +19,7 @@ class VariableGenerator {
 	protected $vars;
 
 	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
+	protected $hookRunner;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logger\LoggerFactory;
@@ -79,11 +80,12 @@ class RCVariableGenerator extends VariableGenerator {
 		} elseif ( $this->rc->getAttribute( 'rc_this_oldid' ) ) {
 			// It's an edit.
 			$this->addEditVarsForRow();
-		} else {
-			// @todo Ensure this cannot happen, and throw if it does
+		} elseif (
+			!$this->hookRunner->onAbuseFilterGenerateVarsForRecentChange(
+				$this, $this->rc, $this->vars, $this->contextUser )
+		) {
 			// @codeCoverageIgnoreStart
-			wfLogWarning( 'Cannot understand the given recentchanges row!' );
-			return null;
+			throw new LogicException( 'Cannot understand the given recentchanges row!' );
 			// @codeCoverageIgnoreEnd
 		}
 
