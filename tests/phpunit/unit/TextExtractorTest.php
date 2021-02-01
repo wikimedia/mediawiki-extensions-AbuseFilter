@@ -1,19 +1,29 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use Content;
+use DummyNonTextContent;
+use Generator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
+use MediaWiki\Page\PageIdentityValue;
+use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserIdentity;
+use MediaWikiUnitTestCase;
+use TextContent;
+use WikitextContent;
 
 /**
  * @group Test
  * @group AbuseFilter
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\TextExtractor
  * @covers ::__construct
- * @todo Make this a unit test once MediaWikiServices is no longer used in RevisionRecord::userCanBitfield (T271300)
  */
-class TextExtractorTest extends MediaWikiIntegrationTestCase {
+class TextExtractorTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param RevisionRecord|null $rev The revision being converted
@@ -23,10 +33,10 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideRevisionToString
 	 */
 	public function testRevisionToString( ?RevisionRecord $rev, bool $sysop, string $expected ) {
-		$user = $sysop ? $this->getTestSysop()->getUser() : $this->getTestUser()->getUser();
+		$authority = new SimpleAuthority( $this->createMock( UserIdentity::class ), $sysop ? [ 'deletedtext' ] : [] );
 		$hookRunner = new AbuseFilterHookRunner( $this->createHookContainer() );
 		$converter = new TextExtractor( $hookRunner );
-		$actual = $converter->revisionToString( $rev, $user );
+		$actual = $converter->revisionToString( $rev, $authority );
 		$this->assertSame( $expected, $actual );
 	}
 
@@ -38,8 +48,8 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 	public function provideRevisionToString() {
 		yield 'no revision' => [ null, false, '' ];
 
-		$title = Title::newFromText( __METHOD__ );
-		$revRec = new MutableRevisionRecord( $title );
+		$page = new PageIdentityValue( 1, NS_MAIN, 'Foo', PageIdentityValue::LOCAL );
+		$revRec = new MutableRevisionRecord( $page );
 		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
 
 		yield 'RevisionRecord instance' => [
@@ -48,7 +58,7 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 			'Main slot text.'
 		];
 
-		$revRec = new MutableRevisionRecord( $title );
+		$revRec = new MutableRevisionRecord( $page );
 		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
 		$revRec->setContent( 'aux', new TextContent( 'Aux slot content.' ) );
 		yield 'Multi-slot' => [
@@ -57,7 +67,7 @@ class TextExtractorTest extends MediaWikiIntegrationTestCase {
 			"Main slot text.\n\nAux slot content."
 		];
 
-		$revRec = new MutableRevisionRecord( $title );
+		$revRec = new MutableRevisionRecord( $page );
 		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
 		$revRec->setVisibility( RevisionRecord::DELETED_TEXT );
 		yield 'Suppressed revision, unprivileged' => [
