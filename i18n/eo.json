@@ -5,6 +5,7 @@
 			"Amikeco",
 			"Blahma",
 			"Fitoschido",
+			"Jakub Fabijan",
 			"Javiero",
 			"KuboF",
 			"Lucas",
@@ -79,6 +80,7 @@
 	"abusefilter-log-diff": "malsamoj",
 	"abusefilter-log-hidelink": "Ŝanĝi videblecon",
 	"abusefilter-log-hide-entries": "Ŝanĝi videblecon de elektitaj eniroj",
+	"abusefilter-log-description-not-available": "ne disponebla",
 	"abusefilter-log-details-legend": "Detaloj por protokola listano $1",
 	"abusefilter-log-details-var": "Variablo",
 	"abusefilter-log-details-val": "Valoro",
@@ -216,6 +218,7 @@
 	"abusefilter-edit-warn-edit": "Krei/Redakti elektitan mesaĝon",
 	"abusefilter-edit-disallow-other": "Alia mesaĝo",
 	"abusefilter-edit-disallow-actions": "Agoj:",
+	"abusefilter-edit-disallow-edit": "Krei/Redakti elektitan mesaĝon",
 	"abusefilter-edit-tag-tag": "Etikedoj por aldoni (po unu por linio):",
 	"abusefilter-edit-tag-hidden-placeholder": "Aldoni etikedojn (apartigitajn de komoj)",
 	"abusefilter-block-anon": "Forbari anonimulojn",
@@ -347,6 +350,7 @@
 	"abusefilter-edit-builder-vars-file-width": "Larĝo de la dosiero en bilderoj",
 	"abusefilter-edit-builder-vars-file-height": "Alto de la dosiero en bilderoj",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Nombro de bitoj en kolorkanalo de la dosiero",
+	"abusefilter-edit-builder-vars-wiki-language": "Lingva kodo de la vikio",
 	"abusefilter-filter-log": "Lastaj filtrilaj ŝanĝoj",
 	"abusefilter-history": "ŝanĝada historio por Misuzada Filtrilo #$1",
 	"abusefilter-history-foruser": "Ŝanĝoj de $1",
@@ -474,5 +478,6 @@
 	"abusefilter-view-privatedetails-legend": "Vidi privatajn detalojn",
 	"abusefilter-view-privatedetails-reason": "Kialo por akiri privatajn detalojn:",
 	"abusefilter-log-details-id": "Identigilo de Protokolero",
-	"abusefilter-log-ip-not-available": "Ne Havebla"
+	"abusefilter-log-ip-not-available": "Ne Havebla",
+	"notification-link-text-show-filter": "Montri filtron"
 }
