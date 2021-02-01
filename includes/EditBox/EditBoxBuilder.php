@@ -1,7 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MessageLocalizer;

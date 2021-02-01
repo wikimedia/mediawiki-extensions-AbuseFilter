@@ -16,7 +16,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;

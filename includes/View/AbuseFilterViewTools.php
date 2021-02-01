@@ -5,9 +5,9 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
 use MediaWiki\Linker\LinkRenderer;
-use OOUI;
 use Xml;
 
 class AbuseFilterViewTools extends AbuseFilterView {
@@ -57,26 +57,26 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
 
 		// Expression evaluator
-		$eval = '';
-		$eval .= $boxBuilder->buildEditBox(
-			$request->getText( 'wpFilterRules' ),
-			true,
-			false,
-			false
-		);
+		$formDesc = [
+			'rules' => [
+				'class' => EditBoxField::class,
+				'html' => $boxBuilder->buildEditBox(
+					$request->getText( 'wpFilterRules' ),
+					true,
+					false,
+					false
+				)
+			]
+		];
 
-		$eval .=
-			Xml::tags( 'p', null,
-				new OOUI\ButtonInputWidget( [
-					'label' => $this->msg( 'abusefilter-tools-submitexpr' )->text(),
-					'id' => 'mw-abusefilter-submitexpr',
-					'flags' => [ 'primary', 'progressive' ]
-				] )
-			);
-		$eval .= Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' );
-
-		$eval = Xml::fieldset( $this->msg( 'abusefilter-tools-expr' )->text(), $eval );
-		$out->addHTML( $eval );
+		HTMLForm::factory( 'ooui', $formDesc, $this->getContext() )
+			->setMethod( 'GET' )
+			->setWrapperLegendMsg( 'abusefilter-tools-expr' )
+			->setSubmitTextMsg( 'abusefilter-tools-submitexpr' )
+			->setSubmitId( 'mw-abusefilter-submitexpr' )
+			->setFooterText( Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' ) )
+			->prepareForm()
+			->displayForm( false );
 
 		$out->addModules( 'ext.abuseFilter.tools' );
 

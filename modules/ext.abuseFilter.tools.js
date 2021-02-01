@@ -50,6 +50,7 @@
 					.removeClass( 'mw-abusefilter-tools-error' )
 					.show();
 			} );
+		return false;
 	}
 
 	/**
