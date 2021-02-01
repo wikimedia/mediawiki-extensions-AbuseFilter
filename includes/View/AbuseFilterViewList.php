@@ -53,10 +53,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$config = $this->getConfig();
 		$user = $this->getUser();
 
-		// Show filter performance statistics
-		$this->showStatus();
-
 		$out->addWikiMsg( 'abusefilter-intro' );
+		$this->showStatus();
 
 		// New filter button
 		if ( $this->afPermManager->canEdit( $user ) ) {
@@ -66,10 +64,12 @@ class AbuseFilterViewList extends AbuseFilterView {
 					new OOUI\ButtonWidget( [
 						'label' => $this->msg( 'abusefilter-new' )->text(),
 						'href' => $this->getTitle( 'new' )->getFullURL(),
+						'flags' => [ 'primary', 'progressive' ],
 					] ),
 					new OOUI\ButtonWidget( [
 						'label' => $this->msg( 'abusefilter-import-button' )->text(),
 						'href' => $this->getTitle( 'import' )->getFullURL(),
+						'flags' => [ 'primary', 'progressive' ],
 					] )
 				]
 			] );
@@ -293,6 +293,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
 			->addHiddenField( 'title', $this->getTitle()->getPrefixedDBkey() )
 			->setAction( $this->getTitle()->getFullURL() )
+			->setCollapsibleOptions( true )
 			->setWrapperLegendMsg( 'abusefilter-list-options' )
 			->setSubmitTextMsg( 'abusefilter-list-options-submit' )
 			->setMethod( 'get' )
@@ -330,7 +331,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 					$matchPercent
 				)->parse();
 
-			$status = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-status' ], $status );
+			$status = Xml::tags( 'p', [ 'class' => 'mw-abusefilter-status' ], $status );
 			$this->getOutput()->addHTML( $status );
 		}
 	}
