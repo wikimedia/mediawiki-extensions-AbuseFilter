@@ -290,7 +290,8 @@
 	}
 
 	/**
-	 * Called if the filter group (#mw-abusefilter-edit-group-input select) is changed.
+	 * Called if the filter group (#mw-abusefilter-edit-group-input select) is changed. Allows
+	 * using different default messages for 'warn' and 'disallow', based on the group.
 	 *
 	 * @this HTMLELement
 	 * @param {jQuery.Event} e The event fired when the function is called
@@ -298,7 +299,10 @@
 	function onFilterGroupChange() {
 		var $afWarnMessageExisting, $afDisallowMessageExisting, newVal;
 
-		if ( !$( '#mw-abusefilter-action-warn-checkbox' ).is( ':checked' ) ) {
+		if (
+			!$( '#mw-abusefilter-action-checkbox-warn input' ).is( ':checked' ) &&
+			$( this ).val() in mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )
+		) {
 			$afWarnMessageExisting = $( '#mw-abusefilter-warn-message-existing select' );
 			newVal = mw.config.get( 'wgAbuseFilterDefaultWarningMessage' )[ $( this ).val() ];
 
@@ -311,7 +315,10 @@
 			}
 		}
 
-		if ( !$( '#mw-abusefilter-action-disallow-checkbox' ).is( ':checked' ) ) {
+		if (
+			!$( '#mw-abusefilter-action-checkbox-disallow input' ).is( ':checked' ) &&
+			$( this ).val() in mw.config.get( 'wgAbuseFilterDefaultDisallowMessage' )
+		) {
 			$afDisallowMessageExisting = $( '#mw-abusefilter-disallow-message-existing select' );
 			newVal = mw.config.get( 'wgAbuseFilterDefaultDisallowMessage' )[ $( this ).val() ];
 
