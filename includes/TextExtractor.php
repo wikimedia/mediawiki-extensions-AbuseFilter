@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use Content;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use TextContent;
-use User;
 
 /**
  * This service provides an interface to convert RevisionRecord and Content objects to some text
@@ -41,12 +41,12 @@ class TextExtractor {
 	 * discussion.
 	 *
 	 * @param RevisionRecord|null $revision a valid revision
-	 * @param User $user the user instance to check for privileged access
+	 * @param Authority $performer to check for privileged access
 	 * @return string the content of the revision as some kind of string,
 	 *        or an empty string if it can not be found
 	 * @return-taint none
 	 */
-	public function revisionToString( ?RevisionRecord $revision, User $user ) : string {
+	public function revisionToString( ?RevisionRecord $revision, Authority $performer ) : string {
 		if ( !$revision ) {
 			return '';
 		}
@@ -54,7 +54,7 @@ class TextExtractor {
 		$strings = [];
 
 		foreach ( $revision->getSlotRoles() as $role ) {
-			$content = $revision->getContent( $role, RevisionRecord::FOR_THIS_USER, $user );
+			$content = $revision->getContent( $role, RevisionRecord::FOR_THIS_USER, $performer );
 			if ( $content === null ) {
 				continue;
 			}
