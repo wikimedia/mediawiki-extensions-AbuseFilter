@@ -210,6 +210,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$this->showDetails( $args[0] );
 			}
 		} else {
+			$this->outputHeader( 'abusefilter-log-summary' );
 			$this->searchForm();
 			$this->showList();
 		}
@@ -403,7 +404,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$out = $this->getOutput();
 		$user = $this->getUser();
-		$this->outputHeader( 'abusefilter-log-summary' );
 
 		// Generate conditions list.
 		$conds = [];

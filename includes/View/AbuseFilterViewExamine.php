@@ -327,7 +327,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				new OOUI\ButtonInputWidget(
 					[
 						'label' => $this->msg( 'abusefilter-examine-test-button' )->text(),
-						'id' => 'mw-abusefilter-examine-test'
+						'id' => 'mw-abusefilter-examine-test',
+						'flags' => [ 'primary', 'progressive' ]
 					]
 				) .
 				Xml::element( 'div',
