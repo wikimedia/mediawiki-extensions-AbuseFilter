@@ -169,6 +169,14 @@ class AbuseFilterHooks {
 	) {
 		$startTime = microtime( true );
 
+		if ( !$status->isOK() ) {
+			// Investigate what happens if we skip filtering here (T211680)
+			LoggerFactory::getInstance( 'AbuseFilter' )->info(
+				'Status is already not OK',
+				[ 'status' => (string)$status ]
+			);
+		}
+
 		$filterResult = self::filterEdit( $context, $user, $content, $summary, $slot );
 
 		if ( !$filterResult->isOK() ) {
