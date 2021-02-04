@@ -152,6 +152,7 @@
 	"TestAutoloadClasses": {
 		"AbuseFilterConsequencesTest": "tests/phpunit/AbuseFilterConsequencesTest.php",
 		"MediaWiki\\Extension\\AbuseFilter\\Tests\\Unit\\Parser\\ParserTestCase": "tests/phpunit/unit/Parser/ParserTestCase.php",
+		"MediaWiki\\Extension\\AbuseFilter\\Tests\\Integration\\Api\\AbuseFilterApiTestTrait": "tests/phpunit/integration/Api/AbuseFilterApiTestTrait.php",
 		"AbuseFilterUploadTestTrait": "tests/phpunit/AbuseFilterUploadTestTrait.php",
 		"AbuseFilterCreateAccountTestTrait": "tests/phpunit/AbuseFilterCreateAccountTestTrait.php",
 		"AbuseFilterRowsAndFiltersTestTrait": "tests/phpunit/AbuseFilterRowsAndFiltersTestTrait.php",
