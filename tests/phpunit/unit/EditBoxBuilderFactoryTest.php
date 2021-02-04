@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilder;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilder;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
@@ -12,14 +12,14 @@ use OutputPage;
 use User;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Editbox\EditBoxBuilderFactory
  */
 class EditBoxBuilderFactoryTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::__construct
 	 * @covers ::newEditBoxBuilder
-	 * @covers \MediaWiki\Extension\AbuseFilter\EditBoxBuilder::__construct
+	 * @covers \MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilder::__construct
 	 * @dataProvider provideNewEditBoxBuilder
 	 * @param bool $isCodeEditorLoaded
 	 */

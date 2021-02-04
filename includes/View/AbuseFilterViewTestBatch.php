@@ -7,14 +7,14 @@ use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Linker\LinkRenderer;
 use RecentChange;
 use Title;
 use User;
-use Xml;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
@@ -113,25 +113,25 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
 
-		$output = '';
-		$output .=
-			$boxBuilder->buildEditBox(
-				$this->testPattern,
-				true,
-				true,
-				false
-			) . "\n";
-
-		$output .= $this->buildFilterLoader();
-		$output = Xml::tags( 'div', [ 'id' => 'mw-abusefilter-test-editor' ], $output );
+		$rulesFields = [
+			'rules' => [
+				'section' => 'abusefilter-test-rules-section',
+				'class' => EditBoxField::class,
+				'html' => $boxBuilder->buildEditBox(
+					$this->testPattern,
+					true,
+					true,
+					false
+				) . $this->buildFilterLoader()
+			]
+		];
 
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
 		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
 		$max = wfTimestampNow();
 
-		// Search form
-		$formFields = [];
-		$formFields['wpTestAction'] = [
+		$optionsFields = [];
+		$optionsFields['wpTestAction'] = [
 			'name' => 'wpTestAction',
 			'type' => 'select',
 			'label-message' => 'abusefilter-test-action',
@@ -144,20 +144,20 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				$this->msg( 'abusefilter-test-search-type-upload' )->text() => 'upload'
 			]
 		];
-		$formFields['wpTestUser'] = [
+		$optionsFields['wpTestUser'] = [
 			'name' => 'wpTestUser',
 			'type' => 'user',
 			'ipallowed' => true,
 			'label-message' => 'abusefilter-test-user',
 			'default' => $this->mTestUser
 		];
-		$formFields['wpExcludeBots'] = [
+		$optionsFields['wpExcludeBots'] = [
 			'name' => 'wpExcludeBots',
 			'type' => 'check',
 			'label-message' => 'abusefilter-test-nobots',
 			'default' => $this->mExcludeBots
 		];
-		$formFields['wpTestPeriodStart'] = [
+		$optionsFields['wpTestPeriodStart'] = [
 			'name' => 'wpTestPeriodStart',
 			'type' => 'datetime',
 			'label-message' => 'abusefilter-test-period-start',
@@ -165,7 +165,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'min' => $min,
 			'max' => $max
 		];
-		$formFields['wpTestPeriodEnd'] = [
+		$optionsFields['wpTestPeriodEnd'] = [
 			'name' => 'wpTestPeriodEnd',
 			'type' => 'datetime',
 			'label-message' => 'abusefilter-test-period-end',
@@ -173,7 +173,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'min' => $min,
 			'max' => $max
 		];
-		$formFields['wpTestPage'] = [
+		$optionsFields['wpTestPage'] = [
 			'name' => 'wpTestPage',
 			'type' => 'title',
 			'label-message' => 'abusefilter-test-page',
@@ -181,25 +181,26 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'creatable' => true,
 			'required' => false
 		];
-		$formFields['wpShowNegative'] = [
+		$optionsFields['wpShowNegative'] = [
 			'name' => 'wpShowNegative',
 			'type' => 'check',
 			'label-message' => 'abusefilter-test-shownegative',
 			'selected' => $this->mShowNegative
 		];
+		array_walk( $optionsFields, function ( &$el ) {
+			$el['section'] = 'abusefilter-test-options-section';
+		} );
+		$allFields = array_merge( $rulesFields, $optionsFields );
 
-		$htmlForm = HTMLForm::factory( 'ooui', $formFields, $this->getContext() )
+		HTMLForm::factory( 'ooui', $allFields, $this->getContext() )
 			->addHiddenField( 'title', $this->getTitle( 'test' )->getPrefixedDBkey() )
 			->setId( 'wpFilterForm' )
-			->setWrapperLegendMsg( 'abusefilter-list-options' )
+			->setWrapperLegendMsg( 'abusefilter-test-legend' )
 			->setAction( $this->getTitle( 'test' )->getLocalURL() )
 			->setSubmitTextMsg( 'abusefilter-test-submit' )
 			->setMethod( 'post' )
 			->prepareForm()
-			->getHTML( true );
-
-		$output = Xml::fieldset( $this->msg( 'abusefilter-test-legend' )->text(), $output . $htmlForm );
-		$out->addHTML( $output );
+			->displayForm( false );
 
 		if ( $this->getRequest()->wasPosted() ) {
 			$this->doTest();

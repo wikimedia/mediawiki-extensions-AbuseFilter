@@ -9,7 +9,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;

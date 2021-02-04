@@ -532,6 +532,8 @@
 	"abusefilter-revert-reasonfield": "{{Identical|Reason}}",
 	"abusefilter-test": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-intro": "Used as intro text.\n\nThe page title is {{msg-mw|Abusefilter-test}}.\n\nRefers to {{msg-mw|Abusefilter-test-load}}.\n\nParameters:\n* $1 - limit of changes; 100 (hard-coded)",
+	"abusefilter-test-rules-section": "Used as label on [[Special:AbuseFilter/test]]",
+	"abusefilter-test-options-section": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-legend": "Caption of the fieldset on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-load-filter": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-submit": "Caption of the submit button on [[Special:AbuseFilter/test]].\n{{Identical|Test}}",

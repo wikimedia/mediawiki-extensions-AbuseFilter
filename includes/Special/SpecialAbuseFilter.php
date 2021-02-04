@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
-use MediaWiki\Extension\AbuseFilter\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
