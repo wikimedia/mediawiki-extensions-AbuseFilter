@@ -416,7 +416,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 	/**
 	 * @param string $filter
-	 * @return string
+	 * @return mixed
 	 */
 	public function evaluateExpression( $filter ) {
 		return $this->intEval( $filter )->toNative();
