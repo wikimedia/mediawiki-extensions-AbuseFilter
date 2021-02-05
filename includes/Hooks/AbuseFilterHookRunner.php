@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
 use Content;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\HookContainer\HookContainer;
 use RecentChange;
@@ -24,6 +25,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterGenerateGenericVarsHook,
 	AbuseFilterGenerateTitleVarsHook,
 	AbuseFilterGenerateUserVarsHook,
+	AbuseFilterGenerateVarsForRecentChangeHook,
 	AbuseFilterInterceptVariableHook,
 	AbuseFilterShouldFilterActionHook,
 	AbuseFilterGetDangerousActionsHook
@@ -154,6 +156,21 @@ class AbuseFilterHookRunner implements
 		return $this->hookContainer->run(
 			'AbuseFilter-generateGenericVars',
 			[ $vars, $rc ]
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onAbuseFilterGenerateVarsForRecentChange(
+		RCVariableGenerator $generator,
+		RecentChange $rc,
+		VariableHolder $vars,
+		User $contextUser
+	) {
+		return $this->hookContainer->run(
+			'AbuseFilter-generateVarsForRecentChange',
+			[ $generator, $rc, $vars, $contextUser ]
 		);
 	}
 
