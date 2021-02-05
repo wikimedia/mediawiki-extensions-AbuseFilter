@@ -193,7 +193,7 @@
 	"abusefilter-import-button": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseLog]].",
 	"abusefilter-return": "Link displayed when filtering abuse filters without results.",
 	"abusefilter-status-global": "Abuse filter status. Means that it is active on all wikis in a farm.\n{{Identical|Global}}",
-	"abusefilter-list-options": "Fieldset legend for abuse filter filter options.\n{{Identical|Options}}",
+	"abusefilter-list-options": "Fieldset legend for abuse filter filter options.\n{{Identical|Search options}}",
 	"abusefilter-list-options-deleted": "Field label in filter form.",
 	"abusefilter-list-options-deleted-only": "Radio button label in filter form.",
 	"abusefilter-list-options-deleted-hide": "Radio button label in filter form.",

@@ -10,6 +10,7 @@
 			"Red Winged Duck",
 			"Renessaince",
 			"StasDash",
+			"W",
 			"Wizardist",
 			"Zedlik"
 		]
@@ -112,6 +113,8 @@
 	"abusefilter-log-hide-reason": "Прычына:",
 	"abusefilter-log-hide-reason-other": "Іншая/дадатковая прычына:",
 	"abusefilter-log-hide-forbidden": "Вы ня маеце права хаваць запісы\nў журнале злоўжываньняў.",
+	"abusefilter-log-hide-show": "Паказаць",
+	"abusefilter-log-hide-hide": "Схаваць",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|схаваны|схаваныя}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|адкрыты|адкрытыя}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|схаваў|схавала}} $3",
@@ -151,7 +154,7 @@
 	"abusefilter-import-button": "Імпартаваць фільтар",
 	"abusefilter-return": "Вярнуцца да кіраваньня фільтрам",
 	"abusefilter-status-global": "Глябальны",
-	"abusefilter-list-options": "Парамэтры",
+	"abusefilter-list-options": "Налады пошуку",
 	"abusefilter-list-options-deleted": "Выдаленыя фільтры:",
 	"abusefilter-list-options-deleted-only": "Паказаць толькі выдаленыя фільтры",
 	"abusefilter-list-options-deleted-hide": "Схаваць выдаленыя фільтры",
