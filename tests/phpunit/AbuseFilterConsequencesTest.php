@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Block\BlockUser;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterHooks;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
@@ -8,6 +9,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\PageEditStash;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * Complete tests where filters are saved, actions are executed and the right
@@ -347,6 +349,9 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 			$block->delete();
 		}
 
+		// Pin time to avoid time shifts on relative block duration
+		ConvertibleTimestamp::setFakeTime( time() );
+
 		// Make sure that the config we're using is the one we're expecting
 		$this->setMwGlobals( [
 			// Exclude noisy creation log
@@ -674,13 +679,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 							break;
 						}
 
-						$expectedExpiry = SpecialBlock::parseExpiryInput( $params[2] );
-						// Get rid of non-numeric 'infinity' by setting it to 0
-						$actualExpiry = wfIsInfinity( $userBlock->getExpiry() ) ? 0 : $userBlock->getExpiry();
-						$expectedExpiry = wfIsInfinity( $expectedExpiry ) ? 0 : $expectedExpiry;
-						// We need to take into account code execution time. 10 seconds should be enough
-						$durationCheck = abs( strtotime( $actualExpiry ) - strtotime( $expectedExpiry ) ) < 10;
-						if ( !$durationCheck ) {
+						$expectedExpiry = BlockUser::parseExpiryInput( $params[2] );
+						$actualExpiry = $userBlock->getExpiry();
+						if ( !wfIsInfinity( $actualExpiry ) ) {
+							$actualExpiry = wfTimestamp( TS_MW, $actualExpiry );
+						}
+						if ( $expectedExpiry === false || $expectedExpiry !== $actualExpiry ) {
 							$testErrorMessage = "The expected block expiry ($expectedExpiry) does not " .
 								"match the actual one ($actualExpiry).";
 							break;
