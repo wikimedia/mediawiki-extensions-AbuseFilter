@@ -1411,7 +1411,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 			// Suppress and restore needed per T177744
 			AtEase::suppressWarnings();
-			$this->checkRegexMatchesEmpty( $needle );
+			$this->checkRegexMatchesEmpty( $args[0] );
 			$count = preg_match_all( $needle, $haystack );
 			AtEase::restoreWarnings();
 
@@ -1459,7 +1459,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 
 		// Suppress and restore are here for the same reason as T177744
 		AtEase::suppressWarnings();
-		$this->checkRegexMatchesEmpty( $needle );
+		$this->checkRegexMatchesEmpty( $args[0] );
 		$check = preg_match( $needle, $haystack, $matches );
 		AtEase::restoreWarnings();
 
@@ -1874,7 +1874,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		}
 
 		AtEase::suppressWarnings();
-		$this->checkRegexMatchesEmpty( $pattern );
+		$this->checkRegexMatchesEmpty( $regex );
 		$result = preg_match( $pattern, $str );
 		AtEase::restoreWarnings();
 		if ( $result === false ) {
@@ -1956,11 +1956,15 @@ class AbuseFilterParser extends AFPTransitionBase {
 	 * Check whether the provided regex matches the empty string.
 	 * @note This method can generate a PHP notice if the regex is invalid
 	 *
-	 * @param string $regex
+	 * @param AFPData $regex
 	 */
-	protected function checkRegexMatchesEmpty( string $regex ) : void {
+	protected function checkRegexMatchesEmpty( AFPData $regex ) : void {
+		if ( $regex->getType() === AFPData::DUNDEFINED ) {
+			// We can't tell, and toString() would return the empty string (T273809)
+			return;
+		}
 		// @phan-suppress-next-line PhanParamSuspiciousOrder
-		if ( preg_match( $regex, '' ) === 1 ) {
+		if ( preg_match( $regex->toString(), '' ) === 1 ) {
 			$this->warnings[] = new UserVisibleWarning(
 				'match-empty-regex',
 				$this->mCur->pos,
