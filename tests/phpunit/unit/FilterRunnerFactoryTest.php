@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
+use HashBagOStuff;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -55,6 +56,8 @@ class FilterRunnerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( VariableGeneratorFactory::class ),
 			$this->createMock( UpdateHitCountWatcher::class ),
 			$this->createMock( EmergencyWatcher::class ),
+			new HashBagOStuff(),
+			new NullLogger(),
 			new NullLogger(),
 			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$opts

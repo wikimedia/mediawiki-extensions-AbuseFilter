@@ -8,6 +8,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
+use MediaWiki\Extension\AbuseFilter\EditStashCache;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
@@ -64,6 +65,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			$this->createMock( VariablesManager::class ),
 			$this->createMock( VariableGeneratorFactory::class ),
 			[],
+			$this->createMock( EditStashCache::class ),
 			new NullLogger(),
 			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$opts,

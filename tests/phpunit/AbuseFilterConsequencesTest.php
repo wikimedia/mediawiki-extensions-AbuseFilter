@@ -1322,10 +1322,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		// the given namespace has been localized and thus wouldn't match.
 		$pageName = Title::newFromText( $actionParams['target'] )->getPrefixedText();
 		foreach ( $loggerMock->getBuffer() as $entry ) {
-			if ( preg_match( "/FilterRunner::logCache: cache $type for '$pageName'/", $entry[1] ) ) {
+			if ( preg_match( "/.+::logCache: cache $type for '$pageName'/", $entry[1] ) ) {
 				$foundHitOrMiss = true;
 			}
-			if ( preg_match( "/FilterRunner::logCache: cache store for '$pageName'/", $entry[1] ) ) {
+			if ( preg_match( "/.+::logCache: cache store for '$pageName'/", $entry[1] ) ) {
 				$foundStore = true;
 			}
 			if ( $foundStore && $foundHitOrMiss ) {

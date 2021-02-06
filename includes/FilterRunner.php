@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use BadMethodCallException;
-use BagOStuff;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
@@ -18,9 +17,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
-use MediaWiki\Logger\LoggerFactory;
-use NullStatsdDataFactory;
-use ObjectCache;
 use Psr\Log\LoggerInterface;
 use Status;
 use Title;
@@ -55,6 +51,8 @@ class FilterRunner {
 	private $abuseLoggerFactory;
 	/** @var Watcher[] */
 	private $watchers;
+	/** @var EditStashCache */
+	private $stashCache;
 	/** @var LoggerInterface */
 	private $logger;
 	/** @var IBufferingStatsdDataFactory */
@@ -116,6 +114,7 @@ class FilterRunner {
 	 * @param VariablesManager $varManager
 	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param Watcher[] $watchers
+	 * @param EditStashCache $stashCache
 	 * @param LoggerInterface $logger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ServiceOptions $options
@@ -136,6 +135,7 @@ class FilterRunner {
 		VariablesManager $varManager,
 		VariableGeneratorFactory $varGeneratorFactory,
 		array $watchers,
+		EditStashCache $stashCache,
 		LoggerInterface $logger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		ServiceOptions $options,
@@ -154,6 +154,7 @@ class FilterRunner {
 		$this->varManager = $varManager;
 		$this->varGeneratorFactory = $varGeneratorFactory;
 		$this->watchers = $watchers;
+		$this->stashCache = $stashCache;
 		$this->logger = $logger;
 		$this->statsdDataFactory = $statsdDataFactory;
 
@@ -224,7 +225,7 @@ class FilterRunner {
 		$fromCache = false;
 		$result = [];
 		if ( $useStash ) {
-			$cacheData = $this->seekCache();
+			$cacheData = $this->stashCache->seek( $this->vars );
 			if ( $cacheData !== false ) {
 				// Use cached vars (T176291) and profiling data (T191430)
 				$this->vars = VariableHolder::newFromArray( $cacheData['vars'] );
@@ -320,8 +321,12 @@ class FilterRunner {
 			return Status::newGood();
 		}
 
-		$cache = ObjectCache::getLocalClusterInstance();
-		$stashKey = $this->getStashKey( $cache );
+		// XXX: We need a copy here because the cache key is computed
+		// from the variables, but some variables can be loaded lazily
+		// which would store the data with a key distinct from that
+		// computed by seek() in ::run().
+		// TODO: Find better way to generate the cache key.
+		$origVars = clone $this->vars;
 
 		$startTime = microtime( true );
 		// Ensure there's no extra time leftover
@@ -339,79 +344,9 @@ class FilterRunner {
 			'profiling' => $this->profilingData
 		];
 
-		$cache->set( $stashKey, $cacheData, $cache::TTL_MINUTE );
-		$this->logCache( 'store', $stashKey );
+		$this->stashCache->store( $origVars, $cacheData );
 
 		return Status::newGood();
-	}
-
-	/**
-	 * Search the cache to find data for a previous execution done for the current edit.
-	 *
-	 * @return false|array False on failure, the array with data otherwise
-	 */
-	protected function seekCache() {
-		$cache = ObjectCache::getLocalClusterInstance();
-		$stashKey = $this->getStashKey( $cache );
-
-		$ret = $cache->get( $stashKey );
-		$status = $ret !== false ? 'hit' : 'miss';
-		$this->logCache( $status, $stashKey );
-
-		return $ret;
-	}
-
-	/**
-	 * Get the stash key for the current variables
-	 *
-	 * @param BagOStuff $cache
-	 * @return string
-	 */
-	protected function getStashKey( BagOStuff $cache ) {
-		$inputVars = $this->varManager->exportNonLazyVars( $this->vars );
-		// Exclude noisy fields that have superficial changes
-		$excludedVars = [
-			'old_html' => true,
-			'new_html' => true,
-			'user_age' => true,
-			'timestamp' => true,
-			'page_age' => true,
-			'moved_from_age' => true,
-			'moved_to_age' => true
-		];
-
-		$inputVars = array_diff_key( $inputVars, $excludedVars );
-		ksort( $inputVars );
-		$hash = md5( serialize( $inputVars ) );
-
-		return $cache->makeKey(
-			'abusefilter',
-			'check-stash',
-			$this->group,
-			$hash,
-			'v2'
-		);
-	}
-
-	/**
-	 * Log cache operations related to stashed edits, i.e. store, hit and miss
-	 *
-	 * @param string $type Either 'store', 'hit' or 'miss'
-	 * @param string $key The cache key used
-	 * @throws InvalidArgumentException
-	 */
-	protected function logCache( $type, $key ) {
-		if ( !in_array( $type, [ 'store', 'hit', 'miss' ] ) ) {
-			throw new InvalidArgumentException( '$type must be either "store", "hit" or "miss"' );
-		}
-		$logger = LoggerFactory::getInstance( 'StashEdit' );
-		// Bots do not use edit stashing, so avoid distorting the stats
-		$statsd = $this->user->isBot()
-			? new NullStatsdDataFactory()
-			: $this->statsdDataFactory;
-
-		$logger->debug( __METHOD__ . ": cache $type for '{$this->title}' (key $key)." );
-		$statsd->increment( "abusefilter.check-stash.$type" );
 	}
 
 	/**
