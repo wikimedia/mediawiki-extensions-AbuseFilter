@@ -10,20 +10,14 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use NullStatsdDataFactory;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
-use TestLogger;
-use Title;
+use TitleValue;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EditStashCache
  */
 class EditStashCacheTest extends MediaWikiUnitTestCase {
-
-	private function getTitle() : Title {
-		$title = $this->createMock( Title::class );
-		$title->method( '__toString' )->willReturn( 'Prefixed:Text' );
-		return $title;
-	}
 
 	private function getVariablesManager() : VariablesManager {
 		return new VariablesManager(
@@ -39,35 +33,30 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 	 * @covers ::getStashKey
 	 */
 	public function testStore() {
+		$title = new TitleValue( NS_MAIN, 'Some title' );
 		$cache = $this->getMockBuilder( HashBagOStuff::class )
 			->onlyMethods( [ 'set' ] )
 			->getMock();
 		$cache->expects( $this->once() )->method( 'set' );
-		$logger = new TestLogger( true );
+		$logger = $this->createMock( LoggerInterface::class );
+		$logger->expects( $this->once() )
+			->method( 'debug' )
+			->willReturnCallback( function ( $msg, $args ) use ( $title ) {
+				unset( $args['key'] );
+				$this->assertSame( [ 'logtype' => 'store', 'target' => $title ], $args );
+			} );
 		$stash = new EditStashCache(
 			$cache,
 			new NullStatsdDataFactory(),
 			$this->getVariablesManager(),
 			$logger,
-			$this->getTitle(),
+			$title,
 			'default'
 		);
 		$vars = VariableHolder::newFromArray( [ 'page_title' => 'Title' ] );
 		$data = [ 'foo' => 'bar' ];
 		$stash->store( $vars, $data );
-
-		$found = false;
-		foreach ( $logger->getBuffer() as list( , $entry ) ) {
-			$check = preg_match(
-				"/^.+: cache store for 'Prefixed:Text' \(key .+\)\.$/",
-				$entry
-			);
-			if ( $check ) {
-				$found = true;
-				break;
-			}
-		}
-		$this->assertTrue( $found, "Test that store operation is logged." );
+		$this->addToAssertionCount( 1 );
 	}
 
 	public function provideRoundTrip() {
@@ -95,14 +84,27 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideRoundTrip
 	 */
 	public function testRoundTrip( array $storeVars, array $seekVars ) {
+		$title = new TitleValue( NS_MAIN, 'Some title' );
 		$cache = new HashBagOStuff();
-		$logger = new TestLogger( true );
+		$logger = $this->createMock( LoggerInterface::class );
+		$storeLogged = false;
+		$logger->expects( $this->exactly( 2 ) )
+			->method( 'debug' )
+			->willReturnCallback( function ( $msg, $args ) use ( $title, &$storeLogged ) {
+				unset( $args['key'] );
+				if ( !$storeLogged ) {
+					$this->assertSame( [ 'logtype' => 'store', 'target' => $title ], $args );
+					$storeLogged = true;
+				} else {
+					$this->assertSame( [ 'logtype' => 'hit', 'target' => $title ], $args );
+				}
+			} );
 		$stash = new EditStashCache(
 			$cache,
 			new NullStatsdDataFactory(),
 			$this->getVariablesManager(),
 			$logger,
-			$this->getTitle(),
+			$title,
 			'default'
 		);
 		$storeHolder = VariableHolder::newFromArray( $storeVars );
@@ -112,19 +114,6 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 		$seekHolder = VariableHolder::newFromArray( $seekVars );
 		$value = $stash->seek( $seekHolder );
 		$this->assertArrayEquals( $data, $value );
-
-		$found = false;
-		foreach ( $logger->getBuffer() as list( , $entry ) ) {
-			$check = preg_match(
-				"/^.+: cache hit for 'Prefixed:Text' \(key .+\)\.$/",
-				$entry
-			);
-			if ( $check ) {
-				$found = true;
-				break;
-			}
-		}
-		$this->assertTrue( $found, "Test that cache hit is logged." );
 	}
 
 	/**
@@ -133,32 +122,26 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 	 * @covers ::getStashKey
 	 */
 	public function testSeek_miss() {
+		$title = new TitleValue( NS_MAIN, 'Some title' );
 		$cache = new HashBagOStuff();
-		$logger = new TestLogger( true );
+		$logger = $this->createMock( LoggerInterface::class );
+		$logger->expects( $this->once() )
+			->method( 'debug' )
+			->willReturnCallback( function ( $msg, $args ) use ( $title ) {
+				unset( $args['key'] );
+				$this->assertSame( [ 'logtype' => 'miss', 'target' => $title ], $args );
+			} );
 		$stash = new EditStashCache(
 			$cache,
 			new NullStatsdDataFactory(),
 			$this->getVariablesManager(),
 			$logger,
-			$this->getTitle(),
+			$title,
 			'default'
 		);
 		$vars = VariableHolder::newFromArray( [ 'page_title' => 'Title' ] );
 		$value = $stash->seek( $vars );
 		$this->assertFalse( $value );
-
-		$found = false;
-		foreach ( $logger->getBuffer() as list( , $entry ) ) {
-			$check = preg_match(
-				"/^.+: cache miss for 'Prefixed:Text' \(key .+\)\.$/",
-				$entry
-			);
-			if ( $check ) {
-				$found = true;
-				break;
-			}
-		}
-		$this->assertTrue( $found, "Test that cache miss is logged." );
 	}
 
 }
