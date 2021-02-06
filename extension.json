@@ -235,7 +235,7 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "AbuseFilter/modules"
 	},
-	"callback": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onRegistration",
+	"callback": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RegistrationCallback::onRegistration",
 	"HookHandlers": {
 		"ToolLinks": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ToolLinksHandler",
@@ -256,6 +256,17 @@
 		"SchemaChanges": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler",
 			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler::newFromGlobalState"
+		},
+		"UserRename": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserRenameHandler"
+		},
+		"PageSave": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\PageSaveHandler",
+			"services": [ "AbuseFilterEditRevUpdater" ]
+		},
+		"RecentChangeSave": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RecentChangeSaveHandler",
+			"services": [ "AbuseFilterChangeTagger" ]
 		}
 	},
 	"Hooks": {
@@ -263,7 +274,7 @@
 		"GetAutoPromoteGroups": "AutoPromoteGroups",
 		"TitleMove": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onTitleMove",
 		"ArticleDelete": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onArticleDelete",
-		"RecentChange_save": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onRecentChangeSave",
+		"RecentChange_save": "RecentChangeSave",
 		"ListDefinedTags": "ChangeTags",
 		"ChangeTagsListActive": "ChangeTags",
 		"LoadExtensionSchemaUpdates": "SchemaChanges",
@@ -272,10 +283,10 @@
 		"UndeletePageToolLinks": "ToolLinks",
 		"UploadVerifyUpload": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onUploadVerifyUpload",
 		"UploadStashFile": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onUploadStashFile",
-		"PageSaveComplete": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onPageSaveComplete",
-		"RenameUserSQL": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onRenameUserSQL",
-		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onUserMergeAccountFields",
-		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onBeforeCreateEchoEvent",
+		"PageSaveComplete": "PageSave",
+		"RenameUserSQL": "UserRename",
+		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserRenameHandler::onUserMergeAccountFields",
+		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
 		"ParserOutputStashForEdit": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onParserOutputStashForEdit",
 		"UnitTestsAfterDatabaseSetup": "Tests",
 		"UnitTestsBeforeDatabaseTeardown": "Tests"
