@@ -38,7 +38,7 @@ class AbuseFilter {
 	 * @param Title $title
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
-	 * @return bool[] Map of (integer filter ID => bool)
+	 * @return bool[] Map of (filter ID => bool)
 	 * @deprecated Since 1.34 This was meant to be internal!
 	 * @codeCoverageIgnore Deprecated method
 	 */
