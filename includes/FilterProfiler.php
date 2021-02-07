@@ -238,7 +238,7 @@ class FilterProfiler {
 	 * Record per-filter profiling, for all filters
 	 *
 	 * @param Title $title
-	 * @param array $data Profiling data, as stored in AbuseFilterRunner::$profilingData
+	 * @param array $data Profiling data
 	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
 	 */
 	public function recordPerFilterProfiling( Title $title, array $data ) : void {
