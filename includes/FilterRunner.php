@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -354,7 +355,8 @@ class FilterRunner {
 	 *
 	 * @protected Public for back compat only; this will actually be made protected in the future.
 	 * @param bool|null &$hitCondLimit TEMPORARY
-	 * @return bool[] Map of (integer filter ID => bool)
+	 * @return bool[] Map of (filter ID => bool)
+	 * @phan-return array<int|string,bool>
 	 */
 	public function checkAllFilters( &$hitCondLimit = false ) : array {
 		// Ensure that we start fresh, see T193374
@@ -362,13 +364,13 @@ class FilterRunner {
 
 		$matchedFilters = [];
 		foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, false ) as $filter ) {
-			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter );
+			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter )->getResult();
 		}
 
 		if ( $this->options->get( 'AbuseFilterCentralDB' ) && !$this->options->get( 'AbuseFilterIsCentral' ) ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
 				$matchedFilters[GlobalNameUtils::buildGlobalName( $filter->getID() )] =
-					$this->checkFilter( $filter, true );
+					$this->checkFilter( $filter, true )->getResult();
 			}
 		}
 
@@ -380,11 +382,11 @@ class FilterRunner {
 	}
 
 	/**
-	 * Check the conditions of a single filter, and profile it if $this->executeMode is true
+	 * Check the conditions of a single filter, and profile it
 	 *
 	 * @param ExistingFilter $filter
 	 * @param bool $global
-	 * @return bool
+	 * @return ParserStatus
 	 */
 	protected function checkFilter( ExistingFilter $filter, $global = false ) {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
@@ -394,7 +396,7 @@ class FilterRunner {
 		$origExtraTime = LazyVariableComputer::$profilingExtraTime;
 
 		$this->parser->setFilter( $filterName );
-		$result = $this->parser->checkConditions( $filter->getRules(), $filterName )->getResult();
+		$status = $this->parser->checkConditions( $filter->getRules(), $filterName );
 
 		$actualExtra = LazyVariableComputer::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
@@ -403,10 +405,10 @@ class FilterRunner {
 		$this->profilingData[$filterName] = [
 			'time' => $timeTaken,
 			'conds' => $condsUsed,
-			'result' => $result
+			'result' => $status->getResult()
 		];
 
-		return $result;
+		return $status;
 	}
 
 	/**
