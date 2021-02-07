@@ -7,8 +7,8 @@ use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Linker\LinkTarget;
 use Psr\Log\LoggerInterface;
-use Title;
 
 /**
  * Wrapper around cache for storing and retrieving data from edit stash
@@ -27,8 +27,8 @@ class EditStashCache {
 	/** @var LoggerInterface */
 	private $logger;
 
-	/** @var Title */
-	private $title;
+	/** @var LinkTarget */
+	private $target;
 
 	/** @var string */
 	private $group;
@@ -38,7 +38,7 @@ class EditStashCache {
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param VariablesManager $variablesManager
 	 * @param LoggerInterface $logger
-	 * @param Title $title
+	 * @param LinkTarget $target
 	 * @param string $group
 	 */
 	public function __construct(
@@ -46,14 +46,14 @@ class EditStashCache {
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		VariablesManager $variablesManager,
 		LoggerInterface $logger,
-		Title $title,
+		LinkTarget $target,
 		string $group
 	) {
 		$this->cache = $cache;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->variablesManager = $variablesManager;
 		$this->logger = $logger;
-		$this->title = $title;
+		$this->target = $target;
 		$this->group = $group;
 	}
 
@@ -92,7 +92,10 @@ class EditStashCache {
 		if ( !in_array( $type, [ 'store', 'hit', 'miss' ] ) ) {
 			throw new InvalidArgumentException( '$type must be either "store", "hit" or "miss"' );
 		}
-		$this->logger->debug( __METHOD__ . ": cache $type for '{$this->title}' (key $key)." );
+		$this->logger->debug(
+			__METHOD__ . ": cache {logtype} for '{target}' (key {key}).",
+			[ 'logtype' => $type, 'target' => $this->target, 'key' => $key ]
+		);
 		$this->statsdDataFactory->increment( "abusefilter.check-stash.$type" );
 	}
 

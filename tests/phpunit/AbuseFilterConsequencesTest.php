@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\PageEditStash;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\LoggerInterface;
 
 /**
  * Complete tests where filters are saved, actions are executed and the right
@@ -970,7 +971,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		foreach ( $results as $result ) {
 			if ( !$result->isGood() ) {
 				$this->fail( 'Only the last actions should have triggered a filter; the other ones ' .
-				'should have been allowed.' );
+					'should have been allowed.' );
 			}
 		}
 
@@ -1308,33 +1309,23 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$actionParams['action'] = 'stashedit';
 		$actionParams['stashType'] = $type;
 
-		$loggerMock = new TestLogger();
-		$loggerMock->setCollect( true );
+		$loggerMock = $this->createMock( LoggerInterface::class );
+		$loggerCalls = [];
+		$loggerMock->method( 'debug' )
+			->willReturnCallback( function ( $msg, $args ) use ( &$loggerCalls ) {
+				if ( isset( $args['logtype'] ) ) {
+					$loggerCalls[] = $args['logtype'];
+				}
+			} );
 		$this->setLogger( 'StashEdit', $loggerMock );
 
 		$this->createFilters( $createIds );
 		$result = $this->doAction( $actionParams );
 
 		// Check that we stored the edit and then hit/missed the cache
-		$foundStore = false;
-		$foundHitOrMiss = false;
-		// The conversion back and forth is needed because if the wiki language is not english
-		// the given namespace has been localized and thus wouldn't match.
-		$pageName = Title::newFromText( $actionParams['target'] )->getPrefixedText();
-		foreach ( $loggerMock->getBuffer() as $entry ) {
-			if ( preg_match( "/.+::logCache: cache $type for '$pageName'/", $entry[1] ) ) {
-				$foundHitOrMiss = true;
-			}
-			if ( preg_match( "/.+::logCache: cache store for '$pageName'/", $entry[1] ) ) {
-				$foundStore = true;
-			}
-			if ( $foundStore && $foundHitOrMiss ) {
-				break;
-			}
-		}
-		if ( !$foundStore ) {
+		if ( !in_array( 'store', $loggerCalls, true ) ) {
 			$this->fail( 'Did not store the edit in cache as expected for a stashed edit.' );
-		} elseif ( !$foundHitOrMiss ) {
+		} elseif ( !in_array( $type, $loggerCalls, true ) ) {
 			$this->fail( "Did not $type the cache as expected for a stashed edit." );
 		}
 
