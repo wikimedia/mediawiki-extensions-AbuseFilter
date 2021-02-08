@@ -495,7 +495,7 @@
 	"abusefilter-exception-invalidiprange": "Ungültigen IP-Adressbereich „$2“ bei Zeichen $1 angegeben.",
 	"abusefilter-exception-disabledvar": "Die Variable $2 bei Zeichen $1 ist nicht mehr in Verwendung.",
 	"abusefilter-exception-variablevariable": "set und set_var erwarten, dass das erste Argument ein Zeichenkettenliteral ist, gefunden bei Zeichen $1.",
-	"abusefilter-warning-match-empty-regex": "Dieser reguläre Ausdruck passt auf die leere Zeichenkette, bei Zeichen $1",
+	"abusefilter-parser-warning-match-empty-regex": "Dieser reguläre Ausdruck passt auf die leere Zeichenkette, bei Zeichen $1",
 	"abusefilter-action-tag": "Markierung",
 	"abusefilter-action-throttle": "Drosseln",
 	"abusefilter-action-warn": "Warnen",

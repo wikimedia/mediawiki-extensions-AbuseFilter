@@ -498,7 +498,7 @@
 	"abusefilter-exception-invalidiprange": "\"$2\" är ett ogiltigt IP-intervall vid tecknet $1.",
 	"abusefilter-exception-disabledvar": "Variabeln $2 vid tecknet $1 används inte längre.",
 	"abusefilter-exception-variablevariable": "set och set_var förväntar att det första argumentet är en sträng, vid tecken nummer $1.",
-	"abusefilter-warning-match-empty-regex": "Detta reguljära uttryck matchar den tomma strängen vid tecken $1",
+	"abusefilter-parser-warning-match-empty-regex": "Detta reguljära uttryck matchar den tomma strängen vid tecken $1",
 	"abusefilter-action-tag": "Tagg",
 	"abusefilter-action-throttle": "Begränsning",
 	"abusefilter-action-warn": "Varna",

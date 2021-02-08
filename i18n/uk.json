@@ -489,7 +489,7 @@
 	"abusefilter-exception-invalidiprange": "Недійсний IP-діапазон «$2», поданий на позиції $1.",
 	"abusefilter-exception-disabledvar": "Змінна $2 на позиції $1 більше не використовується.",
 	"abusefilter-exception-variablevariable": "set і set_var передбачають, що перший аргумент має бути літерним рядком, знайдіть символ $1.",
-	"abusefilter-warning-match-empty-regex": "Цей регулярний вираз відповідає порожньому рядку, на позиції $1",
+	"abusefilter-parser-warning-match-empty-regex": "Цей регулярний вираз відповідає порожньому рядку, на позиції $1",
 	"abusefilter-action-tag": "Мітка",
 	"abusefilter-action-throttle": "Звузити",
 	"abusefilter-action-warn": "Попередження",

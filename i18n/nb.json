@@ -486,7 +486,7 @@
 	"abusefilter-exception-invalidiprange": "Ugyldig IP-intervall «$2» gitt ved tegn $1.",
 	"abusefilter-exception-disabledvar": "Variabelen $2 ved tegn $1 er ikke lenger i bruk.",
 	"abusefilter-exception-variablevariable": "set og set_var forventer at forventer at det første argumentet er en streng, funnet ved tegn $1.",
-	"abusefilter-warning-match-empty-regex": "Dette regulære uttrykker matcher en tom streng ved tegn $1",
+	"abusefilter-parser-warning-match-empty-regex": "Dette regulære uttrykker matcher en tom streng ved tegn $1",
 	"abusefilter-action-tag": "Tagg",
 	"abusefilter-action-throttle": "Begrensning av endringshastighet",
 	"abusefilter-action-warn": "Advar",
