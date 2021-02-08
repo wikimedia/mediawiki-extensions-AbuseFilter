@@ -97,8 +97,8 @@ class FilterRunner {
 	 *   [ filterName => [ 'time' => float, 'conds' => int, 'result' => bool ] ]
 	 * @phan-var array<string,array{time:float,conds:int,result:bool}>
 	 *
-	 * Where 'timeTaken' is in seconds, 'result' is a boolean indicating whether the filter matched
-	 * the action, and 'filterID' is "{prefix}-{ID}" ; Prefix should be empty for local
+	 * Where 'time' is in seconds, 'result' is a boolean indicating whether the filter matched
+	 * the action, and 'filterName' is "{prefix-}{ID}" ; Prefix should be empty for local
 	 * filters. In stash mode this member is saved in cache, while in execute mode it's used to
 	 * update profiling after checking all filters.
 	 */
@@ -258,7 +258,7 @@ class FilterRunner {
 				'profiling' => $this->profilingData
 			];
 		}
-		'@phan-var array{hitCondLimit:bool,matches:array,runtime:int,condCount:int,profiling:array} $result';
+		'@phan-var array{hitCondLimit:bool,matches:array,runtime:float,condCount:int,profiling:array} $result';
 
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 		$allFilters = array_keys( $result['matches'] );
@@ -353,24 +353,23 @@ class FilterRunner {
 	/**
 	 * Returns an associative array of filters which were tripped
 	 *
-	 * @protected Public for back compat only; this will actually be made protected in the future.
-	 * @param bool|null &$hitCondLimit TEMPORARY
-	 * @return bool[] Map of (filter ID => bool)
-	 * @phan-return array<int|string,bool>
+	 * @param bool &$hitCondLimit TEMPORARY
+	 * @return ParserStatus[] Map of (filter ID => ParserStatus)
+	 * @phan-return array<int|string,ParserStatus>
 	 */
-	public function checkAllFilters( &$hitCondLimit = false ) : array {
+	protected function checkAllFiltersInternal( bool &$hitCondLimit ) : array {
 		// Ensure that we start fresh, see T193374
 		$this->parser->resetCondCount();
 
 		$matchedFilters = [];
 		foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, false ) as $filter ) {
-			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter )->getResult();
+			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter );
 		}
 
 		if ( $this->options->get( 'AbuseFilterCentralDB' ) && !$this->options->get( 'AbuseFilterIsCentral' ) ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
 				$matchedFilters[GlobalNameUtils::buildGlobalName( $filter->getID() )] =
-					$this->checkFilter( $filter, true )->getResult();
+					$this->checkFilter( $filter, true );
 			}
 		}
 
@@ -379,6 +378,23 @@ class FilterRunner {
 		$hitCondLimit = $this->parser->getCondCount() > $this->options->get( 'AbuseFilterConditionLimit' );
 
 		return $matchedFilters;
+	}
+
+	/**
+	 * Returns an associative array of filters which were tripped
+	 *
+	 * @protected Public for back compat only; this will actually be made protected in the future.
+	 * @param bool &$hitCondLimit TEMPORARY
+	 * @return bool[] Map of (filter ID => bool)
+	 * @phan-return array<int|string,bool>
+	 */
+	public function checkAllFilters( bool &$hitCondLimit = false ) : array {
+		return array_map(
+			static function ( $status ) {
+				return $status->getResult();
+			},
+			$this->checkAllFiltersInternal( $hitCondLimit )
+		);
 	}
 
 	/**
