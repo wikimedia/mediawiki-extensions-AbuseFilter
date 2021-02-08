@@ -2,12 +2,14 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
+use LogPage;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MessageLocalizer;
 use Status;
 use User;
+use Wikimedia\IPUtils;
 
 /**
  * Base class for consequences that block a user
@@ -70,7 +72,7 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 			$ruleNumber
 		)->inContentLanguage()->text();
 
-		return $this->blockUserFactory->newBlockUser(
+		$blockUser = $this->blockUserFactory->newBlockUser(
 			$target,
 			// TODO: Avoid User here (T266409)
 			User::newFromIdentity( $this->filterUser->getUser() ),
@@ -82,6 +84,13 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 				'isCreateAccountBlocked' => true,
 				'isUserTalkEditBlocked' => $preventEditOwnUserTalk
 			]
-		)->placeBlockUnsafe();
+		);
+		if (
+			strpos( $this->parameters->getAction(), 'createaccount' ) !== false &&
+			IPUtils::isIPAddress( $target )
+		) {
+			$blockUser->setLogDeletionFlags( LogPage::SUPPRESSED_ACTION );
+		}
+		return $blockUser->placeBlockUnsafe();
 	}
 }
