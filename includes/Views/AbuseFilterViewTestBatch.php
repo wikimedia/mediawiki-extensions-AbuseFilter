@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\Storage\RevisionRecord;
+
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	// Hard-coded for now.
 	protected static $mChangeLimit = 100;
@@ -155,7 +157,34 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$counter = 1;
 
+		$contextUser = $this->getUser();
 		foreach ( $res as $row ) {
+			$rc = RecentChange::newFromRow( $row );
+			if ( !$this->mShowNegative ) {
+				$type = (int)$rc->getAttribute( 'rc_type' );
+				$deletedValue = $rc->getAttribute( 'rc_deleted' );
+				if (
+					(
+						$type === RC_LOG &&
+						!LogEventsList::userCanBitfield(
+							$deletedValue,
+							LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
+							$contextUser
+						)
+					) || (
+						$type !== RC_LOG &&
+						!RevisionRecord::userCanBitfield(
+							$deletedValue, RevisionRecord::SUPPRESSED_ALL, $contextUser
+						)
+					)
+				) {
+					// If the RC is deleted, the user can't see it, and we're only showing matches,
+					// always skip this row. If mShowNegative is true, we can still show the row
+					// because we won't tell whether it matches the given filter.
+					continue;
+				}
+			}
+
 			$vars = AbuseFilter::getVarsFromRCRow( $row );
 
 			if ( !$vars ) {
