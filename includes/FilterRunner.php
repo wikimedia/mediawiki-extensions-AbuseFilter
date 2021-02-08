@@ -219,7 +219,6 @@ class FilterRunner {
 				// Use cached vars (T176291) and profiling data (T191430)
 				$this->vars = VariableHolder::newFromArray( $cacheData['vars'] );
 				$result = [
-					'hitCondLimit' => $cacheData['hitCondLimit'],
 					'matches' => $cacheData['matches'],
 					'runtime' => $cacheData['runtime'],
 					'condCount' => $cacheData['condCount'],
@@ -230,25 +229,23 @@ class FilterRunner {
 		}
 
 		if ( !$fromCache ) {
-			$hitCondLimit = false;
-			$runnerData = $this->checkAllFiltersInternal( $hitCondLimit );
+			$runnerData = $this->checkAllFiltersInternal();
 			$result = [
-				'hitCondLimit' => $hitCondLimit,
 				'matches' => $runnerData->getMatchesMap(),
 				'runtime' => $runnerData->getTotalRuntime(),
 				'condCount' => $runnerData->getTotalConditions(),
 				'profiling' => $runnerData->getProfilingData()
 			];
 		}
-		// phpcs:ignore Generic.Files.LineLength.TooLong
-		'@phan-var array{hitCondLimit:bool,matches:array<string,bool>,runtime:float,condCount:int,profiling:array} $result';
+		'@phan-var array{matches:array<string,bool>,runtime:float,condCount:int,profiling:array} $result';
 
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 		$allFilters = array_keys( $result['matches'] );
 
 		$this->profileExecution( $result, $matchedFilters, $allFilters );
 
-		if ( $result['hitCondLimit'] ) {
+		// Tag the action if the condition limit was hit
+		if ( $result['condCount'] > $this->options->get( 'AbuseFilterConditionLimit' ) ) {
 			$this->changeTagger->addConditionsLimitTag( $this->getSpecsForTagger() );
 		}
 
@@ -312,12 +309,10 @@ class FilterRunner {
 		// TODO: Find better way to generate the cache key.
 		$origVars = clone $this->vars;
 
-		$hitCondLimit = false;
-		$runnerData = $this->checkAllFiltersInternal( $hitCondLimit );
+		$runnerData = $this->checkAllFiltersInternal();
 		// Save the filter stash result and do nothing further
 		$cacheData = [
 			'matches' => $runnerData->getMatchesMap(),
-			'hitCondLimit' => $hitCondLimit,
 			'condCount' => $runnerData->getTotalConditions(),
 			'runtime' => $runnerData->getTotalRuntime(),
 			'vars' => $this->varManager->dumpAllVars( $this->vars ),
@@ -332,10 +327,9 @@ class FilterRunner {
 	/**
 	 * Run all filters and return information about matches and profiling
 	 *
-	 * @param bool &$hitCondLimit TEMPORARY
 	 * @return RunnerData
 	 */
-	protected function checkAllFiltersInternal( bool &$hitCondLimit ) : RunnerData {
+	protected function checkAllFiltersInternal() : RunnerData {
 		// Ensure that we start fresh, see T193374
 		$this->parser->resetCondCount();
 		// Ensure there's no extra time leftover
@@ -355,10 +349,6 @@ class FilterRunner {
 			}
 		}
 
-		// Tag the action if the condition limit was hit
-		// TODO: Check can be moved to callers
-		$hitCondLimit = $this->parser->getCondCount() > $this->options->get( 'AbuseFilterConditionLimit' );
-
 		return $data;
 	}
 
@@ -366,11 +356,10 @@ class FilterRunner {
 	 * Returns an associative array of filters which were tripped
 	 *
 	 * @protected Public for back compat only; this will actually be made protected in the future.
-	 * @param bool &$hitCondLimit TEMPORARY
 	 * @return bool[] Map of (filter ID => bool)
 	 */
-	public function checkAllFilters( bool &$hitCondLimit = false ) : array {
-		return $this->checkAllFiltersInternal( $hitCondLimit )->getMatchesMap();
+	public function checkAllFilters() : array {
+		return $this->checkAllFiltersInternal()->getMatchesMap();
 	}
 
 	/**

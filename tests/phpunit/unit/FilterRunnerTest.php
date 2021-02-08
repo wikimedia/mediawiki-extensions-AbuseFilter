@@ -13,7 +13,6 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -31,16 +30,16 @@ use User;
  */
 class FilterRunnerTest extends MediaWikiUnitTestCase {
 	/**
-	 * @param ParserFactory|null $parserFactory
 	 * @param ChangeTagger|null $changeTagger
+	 * @param EditStashCache|null $cache
 	 * @param array $options
 	 * @param VariableHolder|null $vars
 	 * @param string $group
 	 * @return FilterRunner
 	 */
 	private function getRunner(
-		ParserFactory $parserFactory = null,
 		ChangeTagger $changeTagger = null,
+		EditStashCache $cache = null,
 		$options = [],
 		VariableHolder $vars = null,
 		$group = 'default'
@@ -54,6 +53,10 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 				'AbuseFilterConditionLimit' => 1000,
 			]
 		);
+		if ( $cache === null ) {
+			$cache = $this->createMock( EditStashCache::class );
+			$cache->method( 'seek' )->willReturn( false );
+		}
 		return new FilterRunner(
 			new AbuseFilterHookRunner( $this->createHookContainer() ),
 			$this->createMock( FilterProfiler::class ),
@@ -65,15 +68,13 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			$this->createMock( VariablesManager::class ),
 			$this->createMock( VariableGeneratorFactory::class ),
 			[],
-			$this->createMock( EditStashCache::class ),
+			$cache,
 			new NullLogger(),
 			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$opts,
 			$this->createMock( User::class ),
 			$this->createMock( Title::class ),
-			// Temporary hack: don't use action=edit so we won't check the cache (temporary until a cache is injected,
-			// or a service wrapping the caching code is created)
-			$vars ?? VariableHolder::newFromArray( [ 'action' => 'move' ] ),
+			$vars ?? VariableHolder::newFromArray( [ 'action' => 'edit' ] ),
 			$group
 		);
 	}
@@ -102,13 +103,17 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 	 * @covers ::checkAllFilters
 	 */
 	public function testConditionsLimit() {
-		$parser = $this->createMock( AbuseFilterParser::class );
-		$parser->expects( $this->atLeastOnce() )->method( 'getCondCount' )->willReturn( 1e6 );
-		$parserFactory = $this->createMock( ParserFactory::class );
-		$parserFactory->method( 'newParser' )->willReturn( $parser );
+		$cache = $this->createMock( EditStashCache::class );
+		$cache->method( 'seek' )->willReturn( [
+			'matches' => [],
+			'condCount' => 2000,
+			'runtime' => 100.0,
+			'vars' => [],
+			'profiling' => []
+		] );
 		$changeTagger = $this->createMock( ChangeTagger::class );
 		$changeTagger->expects( $this->once() )->method( 'addConditionsLimitTag' );
-		$runner = $this->getRunner( $parserFactory, $changeTagger );
+		$runner = $this->getRunner( $changeTagger, $cache );
 		$this->assertTrue( $runner->run()->isGood() );
 	}
 }
