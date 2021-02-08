@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
@@ -91,18 +92,6 @@ class FilterRunner {
 	 * @var string The action we're filtering
 	 */
 	protected $action;
-
-	/**
-	 * @var array Data from per-filter profiling. Shape:
-	 *   [ filterName => [ 'time' => float, 'conds' => int, 'result' => bool ] ]
-	 * @phan-var array<string,array{time:float,conds:int,result:bool}>
-	 *
-	 * Where 'time' is in seconds, 'result' is a boolean indicating whether the filter matched
-	 * the action, and 'filterName' is "{prefix-}{ID}" ; Prefix should be empty for local
-	 * filters. In stash mode this member is saved in cache, while in execute mode it's used to
-	 * update profiling after checking all filters.
-	 */
-	protected $profilingData;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
@@ -195,7 +184,6 @@ class FilterRunner {
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
 		$this->parser = $this->parserFactory->newParser( $this->vars );
 		$this->parser->setStatsd( $this->statsdDataFactory );
-		$this->profilingData = [];
 	}
 
 	/**
@@ -242,23 +230,18 @@ class FilterRunner {
 		}
 
 		if ( !$fromCache ) {
-			$startTime = microtime( true );
-			// Ensure there's no extra time leftover
-			LazyVariableComputer::$profilingExtraTime = 0;
-
 			$hitCondLimit = false;
-			// This also updates $this->profilingData and $this->parser->mCondCount used later
-			$matches = $this->checkAllFilters( $hitCondLimit );
-			$timeTaken = ( microtime( true ) - $startTime - LazyVariableComputer::$profilingExtraTime ) * 1000;
+			$runnerData = $this->checkAllFiltersInternal( $hitCondLimit );
 			$result = [
 				'hitCondLimit' => $hitCondLimit,
-				'matches' => $matches,
-				'runtime' => $timeTaken,
-				'condCount' => $this->parser->getCondCount(),
-				'profiling' => $this->profilingData
+				'matches' => $runnerData->getMatchesMap(),
+				'runtime' => $runnerData->getTotalRuntime(),
+				'condCount' => $runnerData->getTotalConditions(),
+				'profiling' => $runnerData->getProfilingData()
 			];
 		}
-		'@phan-var array{hitCondLimit:bool,matches:array,runtime:float,condCount:int,profiling:array} $result';
+		// phpcs:ignore Generic.Files.LineLength.TooLong
+		'@phan-var array{hitCondLimit:bool,matches:array<string,bool>,runtime:float,condCount:int,profiling:array} $result';
 
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 		$allFilters = array_keys( $result['matches'] );
@@ -329,20 +312,16 @@ class FilterRunner {
 		// TODO: Find better way to generate the cache key.
 		$origVars = clone $this->vars;
 
-		$startTime = microtime( true );
-		// Ensure there's no extra time leftover
-		LazyVariableComputer::$profilingExtraTime = 0;
-
 		$hitCondLimit = false;
-		$matchedFilters = $this->checkAllFilters( $hitCondLimit );
+		$runnerData = $this->checkAllFiltersInternal( $hitCondLimit );
 		// Save the filter stash result and do nothing further
 		$cacheData = [
-			'matches' => $matchedFilters,
+			'matches' => $runnerData->getMatchesMap(),
 			'hitCondLimit' => $hitCondLimit,
-			'condCount' => $this->parser->getCondCount(),
-			'runtime' => ( microtime( true ) - $startTime - LazyVariableComputer::$profilingExtraTime ) * 1000,
+			'condCount' => $runnerData->getTotalConditions(),
+			'runtime' => $runnerData->getTotalRuntime(),
 			'vars' => $this->varManager->dumpAllVars( $this->vars ),
-			'profiling' => $this->profilingData
+			'profiling' => $runnerData->getProfilingData()
 		];
 
 		$this->stashCache->store( $origVars, $cacheData );
@@ -351,25 +330,28 @@ class FilterRunner {
 	}
 
 	/**
-	 * Returns an associative array of filters which were tripped
+	 * Run all filters and return information about matches and profiling
 	 *
 	 * @param bool &$hitCondLimit TEMPORARY
-	 * @return ParserStatus[] Map of (filter ID => ParserStatus)
-	 * @phan-return array<int|string,ParserStatus>
+	 * @return RunnerData
 	 */
-	protected function checkAllFiltersInternal( bool &$hitCondLimit ) : array {
+	protected function checkAllFiltersInternal( bool &$hitCondLimit ) : RunnerData {
 		// Ensure that we start fresh, see T193374
 		$this->parser->resetCondCount();
+		// Ensure there's no extra time leftover
+		LazyVariableComputer::$profilingExtraTime = 0;
 
-		$matchedFilters = [];
+		$data = new RunnerData();
+
 		foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, false ) as $filter ) {
-			$matchedFilters[$filter->getID()] = $this->checkFilter( $filter );
+			[ $status, $profiling ] = $this->checkFilter( $filter );
+			$data->record( $filter->getID(), false, $status, $profiling );
 		}
 
 		if ( $this->options->get( 'AbuseFilterCentralDB' ) && !$this->options->get( 'AbuseFilterIsCentral' ) ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
-				$matchedFilters[GlobalNameUtils::buildGlobalName( $filter->getID() )] =
-					$this->checkFilter( $filter, true );
+				[ $status, $profiling ] = $this->checkFilter( $filter, true );
+				$data->record( $filter->getID(), true, $status, $profiling );
 			}
 		}
 
@@ -377,7 +359,7 @@ class FilterRunner {
 		// TODO: Check can be moved to callers
 		$hitCondLimit = $this->parser->getCondCount() > $this->options->get( 'AbuseFilterConditionLimit' );
 
-		return $matchedFilters;
+		return $data;
 	}
 
 	/**
@@ -386,15 +368,9 @@ class FilterRunner {
 	 * @protected Public for back compat only; this will actually be made protected in the future.
 	 * @param bool &$hitCondLimit TEMPORARY
 	 * @return bool[] Map of (filter ID => bool)
-	 * @phan-return array<int|string,bool>
 	 */
 	public function checkAllFilters( bool &$hitCondLimit = false ) : array {
-		return array_map(
-			static function ( $status ) {
-				return $status->getResult();
-			},
-			$this->checkAllFiltersInternal( $hitCondLimit )
-		);
+		return $this->checkAllFiltersInternal( $hitCondLimit )->getMatchesMap();
 	}
 
 	/**
@@ -402,9 +378,10 @@ class FilterRunner {
 	 *
 	 * @param ExistingFilter $filter
 	 * @param bool $global
-	 * @return ParserStatus
+	 * @return array
+	 * @phan-return array{0:ParserStatus,1:array{time:float,conds:int}}
 	 */
-	protected function checkFilter( ExistingFilter $filter, $global = false ) {
+	protected function checkFilter( ExistingFilter $filter, bool $global = false ) : array {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
 
 		$startConds = $this->parser->getCondCount();
@@ -418,13 +395,12 @@ class FilterRunner {
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
 		$condsUsed = $this->parser->getCondCount() - $startConds;
 
-		$this->profilingData[$filterName] = [
+		$profiling = [
 			'time' => $timeTaken,
 			'conds' => $condsUsed,
-			'result' => $status->getResult()
 		];
 
-		return $status;
+		return [ $status, $profiling ];
 	}
 
 	/**
