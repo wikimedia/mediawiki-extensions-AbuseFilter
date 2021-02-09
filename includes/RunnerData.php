@@ -81,6 +81,20 @@ class RunnerData {
 	}
 
 	/**
+	 * @return string[]
+	 */
+	public function getAllFilters() : array {
+		return array_keys( $this->matchedFilters );
+	}
+
+	/**
+	 * @return string[]
+	 */
+	public function getMatchedFilters() : array {
+		return array_keys( array_filter( $this->getMatchesMap() ) );
+	}
+
+	/**
 	 * @return array[]
 	 */
 	public function getProfilingData() : array {

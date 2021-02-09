@@ -225,19 +225,14 @@ class FilterRunner {
 			$runnerData = $this->checkAllFiltersInternal();
 		}
 
-		// TODO: get rid of this
-		$result = $runnerData->toArray();
-		$result['matches'] = $runnerData->getMatchesMap();
-
-		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
-		$allFilters = array_keys( $result['matches'] );
-
-		$this->profileExecution( $result, $matchedFilters, $allFilters );
+		$this->profileExecution( $runnerData );
 
 		// Tag the action if the condition limit was hit
-		if ( $result['condCount'] > $this->options->get( 'AbuseFilterConditionLimit' ) ) {
+		if ( $runnerData->getTotalConditions() > $this->options->get( 'AbuseFilterConditionLimit' ) ) {
 			$this->changeTagger->addConditionsLimitTag( $this->getSpecsForTagger() );
 		}
+
+		$matchedFilters = $runnerData->getMatchedFilters();
 
 		if ( count( $matchedFilters ) === 0 ) {
 			return Status::newGood();
@@ -380,22 +375,22 @@ class FilterRunner {
 	}
 
 	/**
-	 * @param array $result Result of the execution, as created in run()
-	 * @param string[] $matchedFilters
-	 * @param string[] $allFilters
+	 * @param RunnerData $data
 	 */
-	protected function profileExecution( array $result, array $matchedFilters, array $allFilters ) {
+	protected function profileExecution( RunnerData $data ) {
+		$allFilters = $data->getAllFilters();
+		$matchedFilters = $data->getMatchedFilters();
 		$this->filterProfiler->checkResetProfiling( $this->group, $allFilters );
 		$this->filterProfiler->recordRuntimeProfilingResult(
 			count( $allFilters ),
-			$result['condCount'],
-			$result['runtime']
+			$data->getTotalConditions(),
+			$data->getTotalRunTime()
 		);
-		$this->filterProfiler->recordPerFilterProfiling( $this->title, $result['profiling'] );
+		$this->filterProfiler->recordPerFilterProfiling( $this->title, $data->getProfilingData() );
 		$this->filterProfiler->recordStats(
 			$this->group,
-			$result['condCount'],
-			$result['runtime'],
+			$data->getTotalConditions(),
+			$data->getTotalRunTime(),
 			(bool)$matchedFilters
 		);
 	}
