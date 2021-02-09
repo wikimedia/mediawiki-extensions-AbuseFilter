@@ -277,7 +277,7 @@
 	"abusefilter-edit-warn-actions": "Operacje:",
 	"abusefilter-edit-warn-preview": "Pokaż/Ukryj podgląd wybranego komunikatu",
 	"abusefilter-edit-warn-edit": "Utwórz lub edytuj wybrany komunikat",
-	"abusefilter-edit-disallow-message": "Komunikat systemowy wyświetlany gdy zablokowano wykonanie akcji:",
+	"abusefilter-edit-disallow-message": "Komunikat systemowy wyświetlany, gdy zablokowano wykonanie akcji:",
 	"abusefilter-edit-disallow-other": "Inny komunikat",
 	"abusefilter-edit-disallow-other-label": "Nazwa strony innego komunikatu:\n:''(bez przedrostka „MediaWiki:”)''",
 	"abusefilter-edit-disallow-actions": "Działania:",
