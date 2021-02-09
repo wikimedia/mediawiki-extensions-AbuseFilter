@@ -34,4 +34,32 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $exc, $status->getException() );
 		$this->assertSame( $warnings, $status->getWarnings() );
 	}
+
+	public function provideToArrayException() {
+		yield 'exception instance' => [ new AFPException() ];
+		yield 'null' => [ null ];
+	}
+
+	/**
+	 * @dataProvider provideToArrayException
+	 * @covers ::toArray
+	 * @covers ::fromArray
+	 */
+	public function testToArrayRoundTrip( ?AFPException $exception ) {
+		$status = new ParserStatus(
+			true,
+			false,
+			$exception,
+			[ new UserVisibleWarning( 'foo', 1, [] ) ]
+		);
+		$newStatus = ParserStatus::fromArray( $status->toArray() );
+		$this->assertSame( $status->getResult(), $newStatus->getResult() );
+		$this->assertSame( $status->getWarmCache(), $newStatus->getWarmCache() );
+		if ( $exception !== null ) {
+			$this->assertInstanceOf( get_class( $exception ), $newStatus->getException() );
+		} else {
+			$this->assertNull( $newStatus->getException() );
+		}
+		$this->assertContainsOnlyInstancesOf( UserVisibleWarning::class, $newStatus->getWarnings() );
+	}
 }

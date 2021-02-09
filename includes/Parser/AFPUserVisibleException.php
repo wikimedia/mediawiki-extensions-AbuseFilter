@@ -66,4 +66,28 @@ class AFPUserVisibleException extends AFPException {
 			array_merge( [ $this->mPosition ], $this->mParams )
 		);
 	}
+
+	/**
+	 * Serialize data for edit stash
+	 * @return array
+	 */
+	public function toArray() : array {
+		return [
+			'class' => static::class,
+			'exceptionID' => $this->mExceptionID,
+			'position' => $this->mPosition,
+			'params' => $this->mParams,
+		];
+	}
+
+	/**
+	 * Deserialize data from edit stash
+	 * @param array $value
+	 * @return static
+	 */
+	public static function fromArray( array $value ) {
+		$cls = $value['class'];
+		return new $cls( $value['exceptionID'], $value['position'], $value['params'] );
+	}
+
 }

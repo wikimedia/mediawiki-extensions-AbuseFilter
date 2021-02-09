@@ -211,33 +211,23 @@ class FilterRunner {
 
 		$useStash = $allowStash && $this->action === 'edit';
 
-		$fromCache = false;
-		$result = [];
+		$runnerData = null;
 		if ( $useStash ) {
 			$cacheData = $this->stashCache->seek( $this->vars );
 			if ( $cacheData !== false ) {
 				// Use cached vars (T176291) and profiling data (T191430)
 				$this->vars = VariableHolder::newFromArray( $cacheData['vars'] );
-				$result = [
-					'matches' => $cacheData['matches'],
-					'runtime' => $cacheData['runtime'],
-					'condCount' => $cacheData['condCount'],
-					'profiling' => $cacheData['profiling']
-				];
-				$fromCache = true;
+				$runnerData = RunnerData::fromArray( $cacheData['data'] );
 			}
 		}
 
-		if ( !$fromCache ) {
+		if ( $runnerData === null ) {
 			$runnerData = $this->checkAllFiltersInternal();
-			$result = [
-				'matches' => $runnerData->getMatchesMap(),
-				'runtime' => $runnerData->getTotalRuntime(),
-				'condCount' => $runnerData->getTotalConditions(),
-				'profiling' => $runnerData->getProfilingData()
-			];
 		}
-		'@phan-var array{matches:array<string,bool>,runtime:float,condCount:int,profiling:array} $result';
+
+		// TODO: get rid of this
+		$result = $runnerData->toArray();
+		$result['matches'] = $runnerData->getMatchesMap();
 
 		$matchedFilters = array_keys( array_filter( $result['matches'] ) );
 		$allFilters = array_keys( $result['matches'] );
@@ -312,11 +302,8 @@ class FilterRunner {
 		$runnerData = $this->checkAllFiltersInternal();
 		// Save the filter stash result and do nothing further
 		$cacheData = [
-			'matches' => $runnerData->getMatchesMap(),
-			'condCount' => $runnerData->getTotalConditions(),
-			'runtime' => $runnerData->getTotalRuntime(),
 			'vars' => $this->varManager->dumpAllVars( $this->vars ),
-			'profiling' => $runnerData->getProfilingData()
+			'data' => $runnerData->toArray(),
 		];
 
 		$this->stashCache->store( $origVars, $cacheData );

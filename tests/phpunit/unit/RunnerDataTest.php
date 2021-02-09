@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\RunnerData;
 use MediaWikiUnitTestCase;
 
@@ -82,6 +83,35 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 			new ParserStatus( false, false, null, [] ),
 			[ 'time' => 23.4, 'conds' => 5 ]
 		);
+	}
+
+	/**
+	 * @covers ::__construct
+	 * @covers ::toArray
+	 * @covers ::fromArray
+	 */
+	public function testToArrayRoundTrip() {
+		$runnerData = new RunnerData();
+		$runnerData->record(
+			1, false,
+			new ParserStatus(
+				true,
+				false,
+				null,
+				[ new UserVisibleWarning( 'match-empty-regex', 3, [] ) ]
+			),
+			[ 'time' => 12.3, 'conds' => 7 ]
+		);
+		$runnerData->record(
+			1, true,
+			new ParserStatus( false, false, null, [] ),
+			[ 'time' => 23.4, 'conds' => 5 ]
+		);
+		$newData = RunnerData::fromArray( $runnerData->toArray() );
+		$this->assertSame( $runnerData->getTotalConditions(), $newData->getTotalConditions() );
+		$this->assertSame( $runnerData->getTotalRuntime(), $newData->getTotalRuntime() );
+		$this->assertSame( $runnerData->getProfilingData(), $newData->getProfilingData() );
+		$this->assertSame( $runnerData->getMatchesMap(), $newData->getMatchesMap() );
 	}
 
 }

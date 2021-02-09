@@ -15,6 +15,8 @@ use Psr\Log\LoggerInterface;
  */
 class EditStashCache {
 
+	private const CACHE_VERSION = 'v3';
+
 	/** @var BagOStuff */
 	private $cache;
 
@@ -127,7 +129,7 @@ class EditStashCache {
 			'check-stash',
 			$this->group,
 			$hash,
-			'v2'
+			self::CACHE_VERSION
 		);
 	}
 
