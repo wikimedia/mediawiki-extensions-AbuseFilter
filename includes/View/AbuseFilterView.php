@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\View;
 
 use ContextSource;
+use Flow\Data\Listener\RecentChangesListener;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Linker\LinkRenderer;
@@ -113,15 +114,22 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @return string
 	 */
 	public function buildTestConditions( IDatabase $db, $action = false ) {
+		$editSources = [
+			RecentChange::SRC_EDIT,
+			RecentChange::SRC_NEW,
+		];
+		if ( in_array( 'flow', $this->getConfig()->get( 'AbuseFilterValidGroups' ), true ) ) {
+			// TODO Should this be separated somehow? Also, this case should be handled via a hook, not
+			// by special-casing Flow here.
+			// @phan-suppress-next-line PhanUndeclaredClassConstant Temporary solution
+			$editSources[] = RecentChangesListener::SRC_FLOW;
+		}
 		// If one of these is true, we're abusefilter compatible.
 		switch ( $action ) {
 			case 'edit':
 				return $db->makeList( [
 					// Actually, this is only one condition, but this way we get it as string
-					'rc_source' => [
-						RecentChange::SRC_EDIT,
-						RecentChange::SRC_NEW,
-					]
+					'rc_source' => $editSources
 				], LIST_AND );
 			case 'move':
 				return $db->makeList( [
@@ -155,10 +163,7 @@ abstract class AbuseFilterView extends ContextSource {
 		}
 
 		return $db->makeList( [
-			'rc_source' => [
-				RecentChange::SRC_EDIT,
-				RecentChange::SRC_NEW,
-			],
+			'rc_source' => $editSources,
 			$db->makeList( [
 				'rc_source' => RecentChange::SRC_LOG,
 				$db->makeList( [
