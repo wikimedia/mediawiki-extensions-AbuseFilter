@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPInternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
@@ -108,7 +109,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$excText = 'Internal error text';
 		yield 'invalid, internal error' => [
 			false,
-			new AFPException( $excText ),
+			new AFPInternalException( $excText ),
 			'abusefilter-edit-badsyntax',
 			[ $excText ]
 		];
@@ -380,7 +381,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$noopFilter->method( 'isEnabled' )->willReturn( true );
 
 		$parser = $this->createMock( AbuseFilterParser::class );
-		$syntaxStatus = new ParserStatus( false, true, new AFPException(), [] );
+		$syntaxStatus = new ParserStatus( false, true, $this->createMock( AFPUserVisibleException::class ), [] );
 		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		yield 'invalid syntax' => [ $noopFilter, 'abusefilter-edit-badsyntax', null, $parser ];
 

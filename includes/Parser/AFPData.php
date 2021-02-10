@@ -76,7 +76,7 @@ class AFPData {
 	/**
 	 * @param mixed $var
 	 * @return AFPData
-	 * @throws AFPException
+	 * @throws AFPInternalException
 	 */
 	public static function newFromPHPVar( $var ) {
 		switch ( gettype( $var ) ) {
@@ -97,7 +97,7 @@ class AFPData {
 			case 'NULL':
 				return new AFPData( self::DNULL );
 			default:
-				throw new AFPException(
+				throw new AFPInternalException(
 					'Data type ' . gettype( $var ) . ' is not supported by AbuseFilter'
 				);
 		}
@@ -115,7 +115,7 @@ class AFPData {
 		if ( $orig->type === self::DUNDEFINED ) {
 			// This case should be handled at a higher level, to avoid implicitly relying on what
 			// this method will do for the specific case.
-			throw new AFPException( 'Refusing to cast DUNDEFINED to something else' );
+			throw new AFPInternalException( 'Refusing to cast DUNDEFINED to something else' );
 		}
 		if ( $target === self::DNULL ) {
 			// We don't expose any method to cast to null. And, actually, should we?
@@ -151,7 +151,7 @@ class AFPData {
 			// We don't expose any method to cast to array
 			return new AFPData( self::DARRAY, [ $orig ] );
 		}
-		throw new AFPException( 'Cannot cast ' . $orig->type . " to $target." );
+		throw new AFPInternalException( 'Cannot cast ' . $orig->type . " to $target." );
 	}
 
 	/**
@@ -182,14 +182,14 @@ class AFPData {
 	 * @param AFPData $d2
 	 * @param bool $strict whether to also check types
 	 * @return bool
-	 * @throws AFPException if $this or $d2 is a DUNDEFINED. This shouldn't happen, because this method
+	 * @throws AFPInternalException if $this or $d2 is a DUNDEFINED. This shouldn't happen, because this method
 	 *  only returns a boolean, and thus the type of the result has already been decided and cannot
 	 *  be changed to be a DUNDEFINED from here.
 	 * @internal
 	 */
 	public function equals( AFPData $d2, $strict = false ) {
 		if ( $this->type === self::DUNDEFINED || $d2->type === self::DUNDEFINED ) {
-			throw new AFPException(
+			throw new AFPInternalException(
 				__METHOD__ . " got a DUNDEFINED. This should be handled at a higher level"
 			);
 		} elseif ( $this->type !== self::DARRAY && $d2->type !== self::DARRAY ) {
@@ -243,7 +243,7 @@ class AFPData {
 	 * @param AFPData $b
 	 * @param string $op
 	 * @return AFPData
-	 * @throws AFPException
+	 * @throws AFPInternalException
 	 */
 	public function boolOp( AFPData $b, $op ) {
 		$a = $this->type === self::DUNDEFINED ? false : $this->toBool();
@@ -258,7 +258,7 @@ class AFPData {
 		}
 		// Should never happen.
 		// @codeCoverageIgnoreStart
-		throw new AFPException( "Invalid boolean operation: {$op}" );
+		throw new AFPInternalException( "Invalid boolean operation: {$op}" );
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -266,7 +266,7 @@ class AFPData {
 	 * @param AFPData $b
 	 * @param string $op
 	 * @return AFPData
-	 * @throws AFPException
+	 * @throws AFPInternalException
 	 */
 	public function compareOp( AFPData $b, $op ) {
 		if ( $this->type === self::DUNDEFINED || $b->type === self::DUNDEFINED ) {
@@ -295,7 +295,7 @@ class AFPData {
 		}
 		// Should never happen
 		// @codeCoverageIgnoreStart
-		throw new AFPException( "Invalid comparison operation: {$op}" );
+		throw new AFPInternalException( "Invalid comparison operation: {$op}" );
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -305,7 +305,7 @@ class AFPData {
 	 * @param int $pos
 	 * @return AFPData
 	 * @throws AFPUserVisibleException
-	 * @throws AFPException
+	 * @throws AFPInternalException
 	 */
 	public function mulRel( AFPData $b, $op, $pos ) {
 		if ( $b->type === self::DUNDEFINED ) {
@@ -339,7 +339,7 @@ class AFPData {
 		} else {
 			// Should never happen
 			// @codeCoverageIgnoreStart
-			throw new AFPException( "Invalid multiplication-related operation: {$op}" );
+			throw new AFPInternalException( "Invalid multiplication-related operation: {$op}" );
 			// @codeCoverageIgnoreEnd
 		}
 

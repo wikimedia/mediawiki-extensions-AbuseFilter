@@ -562,7 +562,7 @@ class ParserTest extends ParserTestCase {
 			$exc = $parser instanceof AbuseFilterCachingParser ? 'overridebuiltin' : 'unrecognisedvar';
 			try {
 				$parser->parse( $code );
-			} catch ( AFPException $e ) {
+			} catch ( AFPUserVisibleException $e ) {
 				$this->assertEquals( $exc, $e->mExceptionID, "Wrong exception with parser $pname, got:\n$e" );
 				continue;
 			}
@@ -1048,7 +1048,7 @@ class ParserTest extends ParserTestCase {
 			try {
 				$parser->parse( $code );
 				$this->fail( "Got no exception at parse-time. Parser: $pname" );
-			} catch ( AFPException $e ) {
+			} catch ( AFPUserVisibleException $e ) {
 				$this->assertSame( 'notarray', $e->getMessage(), "Parser: $pname" );
 			}
 		}

@@ -140,7 +140,7 @@ class AFPTreeNode {
 			if ( $varnameNode->type !== self::ATOM ) {
 				// Shouldn't happen since variable variables are not allowed
 				// @codeCoverageIgnoreStart
-				throw new AFPException( "Got non-atom type {$varnameNode->type} for set_var" );
+				throw new AFPInternalException( "Got non-atom type {$varnameNode->type} for set_var" );
 				// @codeCoverageIgnoreEnd
 			}
 			$this->innerAssignments = [ $varnameNode->children->value ];
@@ -190,7 +190,7 @@ class AFPTreeNode {
 			} elseif ( is_string( $subnode ) ) {
 				$sublines = [ "  {$subnode}" ];
 			} else {
-				throw new AFPException( "Each node parameter has to be either a node or a string" );
+				throw new AFPInternalException( "Each node parameter has to be either a node or a string" );
 			}
 
 			$lines = array_merge( $lines, $sublines );

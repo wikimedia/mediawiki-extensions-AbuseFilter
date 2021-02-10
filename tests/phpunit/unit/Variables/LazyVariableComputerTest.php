@@ -7,7 +7,6 @@ use Language;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
@@ -17,6 +16,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use MWException;
 use MWTimestamp;
 use Parser;
 use Psr\Log\NullLogger;
@@ -98,7 +98,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCompute_invalidName() {
 		$computer = $this->getComputer();
-		$this->expectException( AFPException::class );
+		$this->expectException( MWException::class );
 		$computer->compute(
 			new LazyLoadedVariable( 'method-does-not-exist', [] ),
 			new VariableHolder(),

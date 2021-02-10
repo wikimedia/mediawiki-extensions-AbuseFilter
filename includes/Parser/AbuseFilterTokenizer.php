@@ -141,7 +141,6 @@ class AbuseFilterTokenizer {
 	 * @param string $code
 	 * @param int &$offset
 	 * @return AFPToken
-	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
 	private function nextToken( $code, &$offset ) {
@@ -221,7 +220,6 @@ class AbuseFilterTokenizer {
 	 * @param int &$offset
 	 * @param int $start
 	 * @return AFPToken
-	 * @throws AFPException
 	 * @throws AFPUserVisibleException
 	 */
 	private static function readStringLiteral( $code, &$offset, $start ) {

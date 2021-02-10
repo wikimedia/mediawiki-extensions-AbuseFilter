@@ -208,7 +208,7 @@ class AbuseFilterParser extends AFPTransitionBase {
 		$this->mCondCount += $val;
 
 		if ( $this->condLimitEnabled && $this->mCondCount > $this->conditionsLimit ) {
-			throw new AFPException( 'Condition limit reached.' );
+			throw new AFPConditionLimitException();
 		}
 	}
 

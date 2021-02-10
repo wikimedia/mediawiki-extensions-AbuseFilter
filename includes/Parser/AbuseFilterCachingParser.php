@@ -153,7 +153,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 					// Fallthrough intended
 					default:
 						// @codeCoverageIgnoreStart
-						throw new AFPException( "Unknown token provided in the ATOM node" );
+						throw new AFPInternalException( "Unknown token provided in the ATOM node" );
 						// @codeCoverageIgnoreEnd
 				}
 				// Unreachable line
@@ -251,7 +251,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 						return $leftOperand->sub( $rightOperand );
 					default:
 						// @codeCoverageIgnoreStart
-						throw new AFPException( "Unknown sum-related operator: {$op}" );
+						throw new AFPInternalException( "Unknown sum-related operator: {$op}" );
 						// @codeCoverageIgnoreEnd
 				}
 				// Unreachable line
@@ -374,7 +374,7 @@ class AbuseFilterCachingParser extends AbuseFilterParser {
 				return $lastValue;
 			default:
 				// @codeCoverageIgnoreStart
-				throw new AFPException( "Unknown node type passed: {$node->type}" );
+				throw new AFPInternalException( "Unknown node type passed: {$node->type}" );
 				// @codeCoverageIgnoreEnd
 		}
 	}

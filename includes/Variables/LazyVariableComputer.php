@@ -7,10 +7,10 @@ use Diff;
 use Language;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Storage\RevisionLookup;
 use MediaWiki\Storage\RevisionStore;
+use MWException;
 use Parser;
 use ParserOptions;
 use Psr\Log\LoggerInterface;
@@ -114,7 +114,7 @@ class LazyVariableComputer {
 	 * @param callable $getVarCB
 	 * @phan-param callable(string $name):AFPData $getVarCB
 	 * @return AFPData
-	 * @throws AFPException
+	 * @throws MWException
 	 */
 	public function compute( LazyLoadedVariable $var, VariableHolder $vars, callable $getVarCB ) {
 		$parameters = $var->getParameters();
@@ -358,7 +358,7 @@ class LazyVariableComputer {
 					$parameters,
 					$result
 				) ) {
-					throw new AFPException( 'Unknown variable compute type ' . $varMethod );
+					throw new MWException( 'Unknown variable compute type ' . $varMethod );
 				}
 		}
 

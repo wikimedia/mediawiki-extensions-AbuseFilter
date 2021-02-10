@@ -24,7 +24,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPInternalException;
 
 /**
  * @group Test
@@ -76,7 +76,7 @@ class AFPDataTest extends ParserTestCase {
 	 */
 	public function testNewFromPHPVar( $raw, $expected ) {
 		if ( $expected === null ) {
-			$this->expectException( AFPException::class );
+			$this->expectException( AFPInternalException::class );
 		}
 		$this->assertEquals( $expected, AFPData::newFromPHPVar( $raw ) );
 	}
@@ -122,7 +122,7 @@ class AFPDataTest extends ParserTestCase {
 	 */
 	public function testMissingCastTypes( $orig, $newType, $expected ) {
 		if ( $expected === null ) {
-			$this->expectException( AFPException::class );
+			$this->expectException( AFPInternalException::class );
 		}
 		$this->assertEquals( $expected, AFPData::castTypes( $orig, $newType ) );
 	}
@@ -221,7 +221,7 @@ class AFPDataTest extends ParserTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::equals
 	 */
 	public function testNoDUNDEFINEDEquals( $lhs, $rhs ) {
-		$this->expectException( AFPException::class );
+		$this->expectException( AFPInternalException::class );
 		$lhs->equals( $rhs );
 	}
 
@@ -257,7 +257,7 @@ class AFPDataTest extends ParserTestCase {
 	 */
 	public function testDUNDEFINEDCannotBeCast() {
 		$data = new AFPData( AFPData::DUNDEFINED );
-		$this->expectException( AFPException::class );
+		$this->expectException( AFPInternalException::class );
 		$this->expectExceptionMessage( 'Refusing to cast' );
 		AFPData::castTypes( $data, AFPData::DNULL );
 	}

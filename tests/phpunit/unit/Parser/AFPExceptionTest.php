@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
+use MediaWiki\Extension\AbuseFilter\Parser\AFPInternalException;
 use MediaWikiUnitTestCase;
 
 /**
@@ -19,8 +19,8 @@ class AFPExceptionTest extends MediaWikiUnitTestCase {
 	 * @covers ::fromArray
 	 */
 	public function testToArrayRoundTrip() {
-		$exc = new AFPException( 'Condition limit reached.' );
-		$newExc = AFPException::fromArray( $exc->toArray() );
+		$exc = new AFPInternalException( 'Foo' );
+		$newExc = AFPInternalException::fromArray( $exc->toArray() );
 		$this->assertSame( $exc->getMessage(), $newExc->getMessage() );
 	}
 
