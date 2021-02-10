@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Watcher;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
+use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWikiUnitTestCase;
 use MWTimestamp;
@@ -36,15 +36,15 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getFilterProfiler( array $profilerData ) : FilterProfiler {
-		$profiler = $this->createMock( FilterProfiler::class );
-		$profiler->method( 'getGroupProfile' )
-			->willReturnCallback( function ( $group ) use ( $profilerData ) {
-				return [ 'total' => $profilerData['total'][$group] ];
-			} );
-		$profiler->method( 'getFilterProfile' )
-			->willReturn( [ 'matches' => $profilerData['matches'] ] );
-		return $profiler;
+	private function getEmergencyCache( array $cacheData, string $group ) : EmergencyCache {
+		$cache = $this->createMock( EmergencyCache::class );
+		$cache->method( 'getForFilter' )
+			->with( 1 )
+			->willReturn( $cacheData );
+		$cache->method( 'getFiltersToCheckInGroup' )
+			->with( $group )
+			->willReturn( [ 1 ] );
+		return $cache;
 	}
 
 	private function getFilterLookup( array $filterData ) : FilterLookup {
@@ -67,10 +67,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 				/* filterData */ [
 					'timestamp' => '20201016000000'
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 100,
-					],
+				/* cacheData */ [
+					'total' => 100,
 					'matches' => 10
 				],
 				/* willThrottle */ true
@@ -80,11 +78,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 				/* filterData */ [
 					'timestamp' => '20201016000000'
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 200,
-						'other' => 100
-					],
+				/* cacheData */ [
+					'total' => 100,
 					'matches' => 5
 				],
 				/* willThrottle */ true,
@@ -96,10 +91,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 					'timestamp' => '20201016000000',
 					'throttled' => true,
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 100,
-					],
+				/* cacheData */ [
+					'total' => 100,
 					'matches' => 10
 				],
 				/* willThrottle */ false
@@ -109,10 +102,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 				/* filterData */ [
 					'timestamp' => '20201016000000'
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 5,
-					],
+				/* cacheData */ [
+					'total' => 5,
 					'matches' => 2
 				],
 				/* willThrottle */ false
@@ -122,10 +113,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 				/* filterData */ [
 					'timestamp' => '20201016000000'
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 100,
-					],
+				/* cacheData */ [
+					'total' => 100,
 					'matches' => 5
 				],
 				/* willThrottle */ false
@@ -135,10 +124,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 				/* filterData */ [
 					'timestamp' => '20201016000000'
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 1000,
-					],
+				/* cacheData */ [
+					'total' => 1000,
 					'matches' => 100
 				],
 				/* willThrottle */ false
@@ -148,10 +135,8 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 				/* filterData */ [
 					'timestamp' => '20201016000000'
 				],
-				/* profilerData */ [
-					'total' => [
-						'default' => 0,
-					],
+				/* cacheData */ [
+					'total' => 0,
 					'matches' => 0
 				],
 				/* willThrottle */ false
@@ -167,13 +152,13 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 	public function testGetFiltersToThrottle(
 		string $timestamp,
 		array $filterData,
-		array $profilerData,
+		array $cacheData,
 		bool $willThrottle,
 		string $group = 'default'
 	) {
 		MWTimestamp::setFakeTime( $timestamp );
 		$watcher = new EmergencyWatcher(
-			$this->getFilterProfiler( $profilerData ),
+			$this->getEmergencyCache( $cacheData, $group ),
 			$this->createMock( ILoadBalancer::class ),
 			$this->getFilterLookup( $filterData ),
 			$this->createMock( EchoNotifier::class ),
@@ -194,7 +179,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 	 */
 	public function testConstruct() {
 		$watcher = new EmergencyWatcher(
-			$this->createMock( FilterProfiler::class ),
+			$this->createMock( EmergencyCache::class ),
 			$this->createMock( ILoadBalancer::class ),
 			$this->createMock( FilterLookup::class ),
 			$this->createMock( EchoNotifier::class ),

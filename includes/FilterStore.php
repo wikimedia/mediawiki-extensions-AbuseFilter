@@ -39,6 +39,9 @@ class FilterStore {
 	/** @var FilterCompare */
 	private $filterCompare;
 
+	/** @var EmergencyCache */
+	private $emergencyCache;
+
 	/**
 	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param ILoadBalancer $loadBalancer
@@ -47,6 +50,7 @@ class FilterStore {
 	 * @param ChangeTagsManager $tagsManager
 	 * @param FilterValidator $filterValidator
 	 * @param FilterCompare $filterCompare
+	 * @param EmergencyCache $emergencyCache
 	 */
 	public function __construct(
 		ConsequencesRegistry $consequencesRegistry,
@@ -55,7 +59,8 @@ class FilterStore {
 		FilterLookup $filterLookup,
 		ChangeTagsManager $tagsManager,
 		FilterValidator $filterValidator,
-		FilterCompare $filterCompare
+		FilterCompare $filterCompare,
+		EmergencyCache $emergencyCache
 	) {
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->loadBalancer = $loadBalancer;
@@ -64,6 +69,7 @@ class FilterStore {
 		$this->tagsManager = $tagsManager;
 		$this->filterValidator = $filterValidator;
 		$this->filterCompare = $filterCompare;
+		$this->emergencyCache = $emergencyCache;
 	}
 
 	/**
@@ -213,13 +219,15 @@ class FilterStore {
 
 		$dbw->endAtomic( __METHOD__ );
 
+		// TODO: isset() shouldn't be necessary,
+		// invalid values should also be discarded upstream
+		$group = 'default';
+		if ( isset( $newRow['af_group'] ) && $newRow['af_group'] !== '' ) {
+			$group = $newRow['af_group'];
+		}
+
 		// Invalidate cache if this was a global rule
 		if ( $wasGlobal || $newRow['af_global'] ) {
-			$group = 'default';
-			if ( isset( $newRow['af_group'] ) && $newRow['af_group'] !== '' ) {
-				$group = $newRow['af_group'];
-			}
-
 			$this->filterLookup->purgeGroupWANCache( $group );
 		}
 
@@ -241,6 +249,9 @@ class FilterStore {
 		}
 
 		$this->filterProfiler->resetFilterProfile( $newID );
+		if ( $newRow['af_enabled'] ) {
+			$this->emergencyCache->setNewForFilter( $newID, $group );
+		}
 		return [ $newID, $historyID ];
 	}
 
