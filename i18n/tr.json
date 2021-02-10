@@ -514,6 +514,8 @@
 	"abusefilter-revert-reasonfield": "Sebep:",
 	"abusefilter-test": "Önceki değişiklikler için bir süzgeci dene",
 	"abusefilter-test-intro": "Bu sayfa, aşağıdaki kutuya girilen filtreyi en son $1 {{PLURAL:$1|değişime|değişime}} göre kontrol etmenizi sağlar.\nMevcut bir filtreyi yüklemek için, filtre kimliğini düzenleme metin kutusunun altındaki kutuya yazın ve \"{{int:abusefilter-test-load}}\" düğmesini tıklayın.",
+	"abusefilter-test-rules-section": "Test edilecek kurallar",
+	"abusefilter-test-options-section": "Arama seçenekleri",
 	"abusefilter-test-legend": "Süzgeç denemesi",
 	"abusefilter-test-load-filter": "Süzgeç kimliği yükle:",
 	"abusefilter-test-submit": "Test",
