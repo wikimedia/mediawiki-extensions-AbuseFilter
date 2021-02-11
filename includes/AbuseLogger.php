@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use CheckUserHooks;
 use DeferredUpdates;
 use ExtensionRegistry;
 use InvalidArgumentException;
 use ManualLogEntry;
+use MediaWiki\CheckUser\Hooks;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
@@ -254,7 +254,7 @@ class AbuseLogger {
 				global $wgCheckUserLogAdditionalRights;
 				$wgCheckUserLogAdditionalRights[] = 'abusefilter-view';
 				$rc = $entry->getRecentChange();
-				CheckUserHooks::updateCheckUserData( $rc );
+				Hooks::updateCheckUserData( $rc );
 			}
 
 			if ( $this->options->get( 'AbuseFilterNotifications' ) !== false ) {
