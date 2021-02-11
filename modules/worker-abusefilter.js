@@ -1461,7 +1461,14 @@ ace.define( 'ace/mode/abusefilter_worker', [ 'require', 'exports', 'module', 'ac
 			false
 		);
 		xhr.send();
-		data = JSON.parse( xhr.responseText );
+		if ( xhr.status !== 200 ) {
+			return true;
+		}
+		try {
+			data = JSON.parse( xhr.responseText );
+		} catch ( e ) {
+			return true;
+		}
 
 		if ( data.error ) {
 			// API error, pretend everything is fine.
