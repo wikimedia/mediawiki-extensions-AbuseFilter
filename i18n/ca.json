@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alan Mena",
 			"Aleator",
 			"Alvaro Vidal-Abarca",
 			"Arnaugir",
@@ -110,7 +111,8 @@
 	"abusefilter-log-details-hidden-implicit": "No podeu veure els detalls d'aquesta entrada perquè la seva revisió associada està oculta a la vista pública.",
 	"abusefilter-log-private-not-included": "Una o més de les identificacions de filtre que va especificar són privades. A causa de que no se't permet veure els detalls dels filtres privats, no s'han buscat aquests filtres.",
 	"abusefilter-log-hide-no-selected": "No s'ha seleccionat cap entrada",
-	"abusefilter-log-hide-legend": "Amaga entrada de registre",
+	"abusefilter-log-hide-legend": "Canvia'n la visibilitat",
+	"abusefilter-log-hide-set-visibility": "Defineix la visibilitat per a les entrades seleccionades:",
 	"abusefilter-log-hide-reason": "Motiu:",
 	"abusefilter-log-hide-reason-other": "Motiu diferent o addicional:",
 	"abusefilter-log-hide-forbidden": "No teniu permisos per ocultar entrades al registre d'abusos.",
@@ -150,6 +152,7 @@
 	"abusefilter-list-options-scope": "Mostra els filtres:",
 	"abusefilter-list-options-scope-local": "Només normes locals",
 	"abusefilter-list-options-scope-global": "Només normes globals",
+	"abusefilter-list-options-scope-all": "Regles locals i globals",
 	"abusefilter-list-options-further-options": "Altres opcions:",
 	"abusefilter-list-options-hidedisabled": "Oculta filtres deshabilitats",
 	"abusefilter-list-options-hideprivate": "Amaga els filtres privats",
@@ -429,7 +432,7 @@
 	"abusefilter-test": "Prova un filtre contra les edicions anteriors",
 	"abusefilter-test-intro": "Aquesta pàgina us permet comprovar un filtre entrar en el camp de sota respecte els últims $1 {{PLURAL:$1|canvi|canvis}}.\nPer carregar un filtre existent, escriviu el seu número d'identificació en el camp sota la caixa de text i cliqueu el botó \"{{int:abusefilter-test-load}}\".",
 	"abusefilter-test-rules-section": "Regles per provar",
-	"abusefilter-test-options-section": "Search options",
+	"abusefilter-test-options-section": "Opcions de cerca",
 	"abusefilter-test-legend": "Prova de filtre",
 	"abusefilter-test-load-filter": "Carrega el filtre número:",
 	"abusefilter-test-submit": "Prova",
@@ -492,6 +495,7 @@
 	"abusefilter-http-error": "S’ha produït un error d’HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Mostra els detalls privats",
 	"abusefilter-view-privatedetails-legend": "Mostra els detalls privats",
+	"abusefilter-log-details-id": "ID de registre",
 	"abusefilter-noreason": "Atenció: heu d’indicar un motiu per a veure els detalls privats d’aquest registre.",
 	"abusefilter-log-ip-not-available": "No disponible",
 	"notification-header-throttle-filter": "El filtre d'abús $2 {{GENDER:$1| }}que heu editat recentment s'ha vist afectat.",
