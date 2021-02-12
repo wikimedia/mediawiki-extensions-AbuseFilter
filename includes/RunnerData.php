@@ -28,11 +28,22 @@ class RunnerData {
 	/** @var int */
 	private $totalConditions;
 
-	public function __construct() {
-		$this->matchedFilters = [];
-		$this->profilingData = [];
-		$this->totalRuntime = 0.0;
-		$this->totalConditions = 0;
+	/**
+	 * @param ParserStatus[] $matchedFilters
+	 * @param array[] $profilingData
+	 * @param float $totalRuntime
+	 * @param int $totalConditions
+	 */
+	public function __construct(
+		array $matchedFilters = [],
+		array $profilingData = [],
+		float $totalRuntime = 0.0,
+		int $totalConditions = 0
+	) {
+		$this->matchedFilters = $matchedFilters;
+		$this->profilingData = $profilingData;
+		$this->totalRuntime = $totalRuntime;
+		$this->totalConditions = $totalConditions;
 	}
 
 	/**
@@ -88,6 +99,39 @@ class RunnerData {
 	 */
 	public function getTotalConditions() : int {
 		return $this->totalConditions;
+	}
+
+	/**
+	 * Serialize data for edit stash
+	 * @return array
+	 * @phan-return array{matches:array<string,array>,runtime:float,condCount:int,profiling:array}
+	 */
+	public function toArray() : array {
+		return [
+			'matches' => array_map(
+				static function ( $status ) {
+					return $status->toArray();
+				},
+				$this->matchedFilters
+			),
+			'profiling' => $this->profilingData,
+			'condCount' => $this->totalConditions,
+			'runtime' => $this->totalRuntime,
+		];
+	}
+
+	/**
+	 * Deserialize data from edit stash
+	 * @param array $value
+	 * @return self
+	 */
+	public static function fromArray( array $value ) : self {
+		return new self(
+			array_map( [ ParserStatus::class, 'fromArray' ], $value['matches'] ),
+			$value['profiling'],
+			$value['runtime'],
+			$value['condCount']
+		);
 	}
 
 }

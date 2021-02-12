@@ -105,11 +105,13 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 	public function testConditionsLimit() {
 		$cache = $this->createMock( EditStashCache::class );
 		$cache->method( 'seek' )->willReturn( [
-			'matches' => [],
-			'condCount' => 2000,
-			'runtime' => 100.0,
 			'vars' => [],
-			'profiling' => []
+			'data' => [
+				'matches' => [],
+				'condCount' => 2000,
+				'runtime' => 100.0,
+				'profiling' => []
+			]
 		] );
 		$changeTagger = $this->createMock( ChangeTagger::class );
 		$changeTagger->expects( $this->once() )->method( 'addConditionsLimitTag' );

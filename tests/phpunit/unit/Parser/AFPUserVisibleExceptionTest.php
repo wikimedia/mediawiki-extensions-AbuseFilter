@@ -32,4 +32,15 @@ class AFPUserVisibleExceptionTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 'abusefilter-exception-' . $excID, $message->getKey(), 'msg key' );
 		$this->assertArrayEquals( array_merge( [ $position ], $params ), $message->getParams(), 'msg params' );
 	}
+
+	/**
+	 * @covers ::toArray
+	 * @covers ::fromArray
+	 */
+	public function testToArrayRoundTrip() {
+		$exc = new AFPUserVisibleException( 'abusefilter-foo', 42, [ 'foo' ] );
+		$newExc = AFPUserVisibleException::fromArray( $exc->toArray() );
+		$this->assertSame( $exc->getPosition(), $newExc->getPosition() );
+		$this->assertSame( $exc->getMessageObj()->getParams(), $newExc->getMessageObj()->getParams() );
+	}
 }
