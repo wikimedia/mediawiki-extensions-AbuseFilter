@@ -371,6 +371,7 @@
 	"abusefilter-revert-reasonfield": "Sebab:",
 	"abusefilter-test": "Uji penapis terhadap suntingan lalu",
 	"abusefilter-test-intro": "Laman ini membolehkan anda untuk menyemak penapis yang dimasukkan dalam petak di bawah dengan $1 perubahan terakhir.\nUntuk memuatkan penapis yang sedia ada, taipkan ID penapisnya ke dalam petak di bawah ruangan teks penyuntingan, kemudian klik butang \"{{int:abusefilter-test-load}}\".",
+	"abusefilter-test-options-section": "Pilihan carian",
 	"abusefilter-test-legend": "Ujian penapis",
 	"abusefilter-test-load-filter": "ID penapis muatan:",
 	"abusefilter-test-submit": "Uji",
