@@ -593,7 +593,7 @@
 	"abusefilter-tag-reserved": "L'etichetta <code>abusefilter-condition-limit</code> è riservata per utilizzo interno da parte del filtro anti abusi.",
 	"tag-abusefilter-condition-limit": "limite di condizioni raggiunto",
 	"tag-abusefilter-condition-limit-description": "Modifiche o altri eventi che non sono stati controllati da tutti i [[Special:AbuseFilter|filtri anti abusi]] attivi ([[mw:Extension:AbuseFilter/Conditions|aiuto]]).",
-	"notification-header-throttle-filter": "Al filtro anti abusi $2, che {{Gender:$1|}}hai modificato di recente, sono state automaticamente disattivate alcune azioni potenzialmente pericolose.",
-	"notification-subject-throttle-filter": "Sono state disattivate alcune azioni potenzialmente pericolose di un filtro anti abusi che {{GENDER:$1|}}hai modificato di recente su {{SITENAME}}",
+	"notification-header-throttle-filter": "Sono state disattivate alcune azioni del filtro anti abusi $2 che {{GENDER:$1|hai}} modificato recentemente su {{SITENAME}}.",
+	"notification-subject-throttle-filter": "Sono state disattivate alcune azioni di un filtro anti abusi che {{GENDER:$1|hai}} modificato su {{SITENAME}}",
 	"notification-link-text-show-filter": "Mostra filtro"
 }
