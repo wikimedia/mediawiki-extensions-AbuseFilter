@@ -15,7 +15,7 @@ class EvalExpression extends ApiBase {
 	public function execute() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		// "Anti-DoS"
-		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( !$afPermManager->canUseTestTools( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canteval', 'permissiondenied' );
 		}
 

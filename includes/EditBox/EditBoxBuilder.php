@@ -88,7 +88,7 @@ class EditBoxBuilder {
 		$noTestAttrib = [];
 		$isUserAllowed = $needsModifyRights ?
 			$this->afPermManager->canEdit( $this->user ) :
-			$this->afPermManager->canViewPrivateFilters( $this->user );
+			$this->afPermManager->canUseTestTools( $this->user );
 		if ( !$isUserAllowed ) {
 			$noTestAttrib['disabled'] = 'disabled';
 			$addResultDiv = false;

@@ -311,7 +311,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
-		if ( $this->afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( $this->afPermManager->canUseTestTools( $this->getUser() ) ) {
 			$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder(
 				$this,
 				$this->getUser(),

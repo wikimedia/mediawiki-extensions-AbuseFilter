@@ -240,4 +240,15 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$user = $this->createMock( UserIdentity::class );
 		$this->assertSame( $allowed, $this->getPermMan( $rights )->canSeeHiddenLogEntries( $user ) );
 	}
+
+	/**
+	 * @covers ::canUseTestTools
+	 * @dataProvider provideSimpleCases
+	 */
+	public function testCanUseTestTools( bool $allowed ) {
+		$rights = $allowed ? [ 'abusefilter-modify' ] : [];
+		$user = $this->createMock( UserIdentity::class );
+		$this->assertSame( $allowed, $this->getPermMan( $rights )->canUseTestTools( $user ) );
+	}
+
 }

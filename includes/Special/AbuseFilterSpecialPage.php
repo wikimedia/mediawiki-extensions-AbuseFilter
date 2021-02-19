@@ -50,7 +50,7 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 			];
 		}
 
-		if ( $this->afPermissionManager->canViewPrivateFilters( $user ) ) {
+		if ( $this->afPermissionManager->canUseTestTools( $user ) ) {
 			$linkDefs += [
 				'test' => 'AbuseFilter/test',
 				'tools' => 'AbuseFilter/tools'

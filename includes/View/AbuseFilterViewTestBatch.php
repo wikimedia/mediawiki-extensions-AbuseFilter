@@ -99,7 +99,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 
-		if ( !$this->afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canUseTestTools( $this->getUser() ) ) {
+			// TODO: the message still refers to the old rights
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
 		}

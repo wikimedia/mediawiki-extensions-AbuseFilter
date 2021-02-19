@@ -20,7 +20,7 @@ class CheckMatch extends ApiBase {
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
 		// "Anti-DoS"
-		if ( !$afPermManager->canViewPrivateFilters( $this->getUser() ) ) {
+		if ( !$afPermManager->canUseTestTools( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canttest', 'permissiondenied' );
 		}
 
