@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 use HtmlArmor;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use SpecialPage;
-use Title;
+use TitleValue;
 use Xml;
 
 /**
@@ -39,22 +39,22 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 		$user = $this->getUser();
 
 		$linkDefs = [
-			'home' => 'Special:AbuseFilter',
-			'recentchanges' => 'Special:AbuseFilter/history',
-			'examine' => 'Special:AbuseFilter/examine',
+			'home' => 'AbuseFilter',
+			'recentchanges' => 'AbuseFilter/history',
+			'examine' => 'AbuseFilter/examine',
 		];
 
 		if ( $this->afPermissionManager->canViewAbuseLog( $user ) ) {
-			$linkDefs = array_merge( $linkDefs, [
-				'log' => 'Special:AbuseLog'
-			] );
+			$linkDefs += [
+				'log' => 'AbuseLog'
+			];
 		}
 
 		if ( $this->afPermissionManager->canViewPrivateFilters( $user ) ) {
-			$linkDefs = array_merge( $linkDefs, [
-				'test' => 'Special:AbuseFilter/test',
-				'tools' => 'Special:AbuseFilter/tools'
-			] );
+			$linkDefs += [
+				'test' => 'AbuseFilter/test',
+				'tools' => 'AbuseFilter/tools'
+			];
 		}
 
 		$links = [];
@@ -66,12 +66,14 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 			$msgName = "abusefilter-topnav-$name";
 
 			$msg = $this->msg( $msgName )->parse();
-			$title = Title::newFromText( $page );
 
 			if ( $name === $pageType ) {
 				$links[] = Xml::tags( 'strong', null, $msg );
 			} else {
-				$links[] = $this->getLinkRenderer()->makeLink( $title, new HtmlArmor( $msg ) );
+				$links[] = $this->getLinkRenderer()->makeLink(
+					new TitleValue( NS_SPECIAL, $page ),
+					new HtmlArmor( $msg )
+				);
 			}
 		}
 
