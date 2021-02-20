@@ -114,4 +114,43 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $runnerData->getMatchesMap(), $newData->getMatchesMap() );
 	}
 
+	/**
+	 * @covers ::getAllFilters
+	 * @covers ::getMatchedFilters
+	 */
+	public function testGetAllAndMatchedFilters() {
+		$runnerData = new RunnerData();
+		$runnerData->record(
+			1, false,
+			new ParserStatus( true, false, null, [] ),
+			[ 'time' => 12.3, 'conds' => 7 ]
+		);
+		$runnerData->record(
+			1, true,
+			new ParserStatus( false, false, null, [] ),
+			[ 'time' => 23.4, 'conds' => 5 ]
+		);
+		$runnerData->record(
+			3, false,
+			new ParserStatus( false, false, null, [] ),
+			[ 'time' => 12.3, 'conds' => 7 ]
+		);
+		$runnerData->record(
+			3, true,
+			new ParserStatus( true, false, null, [] ),
+			[ 'time' => 23.4, 'conds' => 5 ]
+		);
+
+		$this->assertArrayEquals(
+			[ '1', 'global-1', '3', 'global-3' ],
+			$runnerData->getAllFilters(),
+			false
+		);
+		$this->assertArrayEquals(
+			[ '1', 'global-3' ],
+			$runnerData->getMatchedFilters(),
+			false
+		);
+	}
+
 }
