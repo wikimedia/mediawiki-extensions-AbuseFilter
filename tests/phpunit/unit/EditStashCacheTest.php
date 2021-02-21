@@ -16,6 +16,7 @@ use TitleValue;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EditStashCache
+ * @covers ::__construct
  */
 class EditStashCacheTest extends MediaWikiUnitTestCase {
 

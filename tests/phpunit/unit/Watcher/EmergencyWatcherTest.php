@@ -161,6 +161,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::getFiltersToThrottle
+	 * @covers ::getEmergencyValue
 	 * @dataProvider provideFiltersToThrottle
 	 */
 	public function testGetFiltersToThrottle(
