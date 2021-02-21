@@ -633,7 +633,9 @@ class AFPTreeParser extends AFPTransitionBase {
 			if ( $next->type !== AFPToken::TBRACE || $next->value !== ')' ) {
 				do {
 					$thisArg = $this->doLevelSemicolon();
-					if ( $thisArg === null && !$this->functionIsVariadic( $func ) ) {
+					if ( $thisArg !== null ) {
+						$args[] = $thisArg;
+					} elseif ( !$this->functionIsVariadic( $func ) ) {
 						throw new AFPUserVisibleException(
 							'unexpectedtoken',
 							$this->mPos,
@@ -642,8 +644,6 @@ class AFPTreeParser extends AFPTransitionBase {
 								$this->mCur->value
 							]
 						);
-					} elseif ( $thisArg !== null ) {
-						$args[] = $thisArg;
 					}
 				} while ( $this->mCur->type === AFPToken::TCOMMA );
 			} else {

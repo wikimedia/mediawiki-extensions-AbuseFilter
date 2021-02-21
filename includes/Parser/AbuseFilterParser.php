@@ -1035,10 +1035,11 @@ class AbuseFilterParser extends AFPTransitionBase {
 				do {
 					$r = new AFPData( AFPData::DEMPTY );
 					$this->doLevelSemicolon( $r );
-					if ( $r->getType() === AFPData::DEMPTY && !$this->functionIsVariadic( $fname ) ) {
+					if ( $r->getType() !== AFPData::DEMPTY ) {
+						$args[] = $r;
+					} elseif ( !$this->functionIsVariadic( $fname ) ) {
 						$this->logEmptyOperand( 'non-variadic function argument' );
 					}
-					$args[] = $r;
 				} while ( $this->mCur->type === AFPToken::TCOMMA );
 			} else {
 				$this->move();
