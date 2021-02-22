@@ -150,4 +150,14 @@ class AbuseFilterPermissionManager {
 	public function canSeeHiddenLogEntries( UserIdentity $user ) : bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-hidden-log' );
 	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function canUseTestTools( UserIdentity $user ) : bool {
+		// TODO: make independent
+		return $this->canViewPrivateFilters( $user );
+	}
+
 }

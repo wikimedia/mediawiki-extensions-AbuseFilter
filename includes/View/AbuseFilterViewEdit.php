@@ -479,7 +479,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( $this->afPermManager->canViewPrivateFilters( $user ) ) {
+			if ( $this->afPermManager->canUseTestTools( $user ) ) {
 				// Test link
 				$tools .= Xml::tags(
 					'p', null,
