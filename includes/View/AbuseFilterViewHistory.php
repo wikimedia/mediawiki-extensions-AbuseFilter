@@ -10,8 +10,8 @@ use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterHistoryPager;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\User\UserNameUtils;
 use OOUI;
-use User;
 
 class AbuseFilterViewHistory extends AbuseFilterView {
 
@@ -21,9 +21,13 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	/** @var FilterLookup */
 	private $filterLookup;
 
+	/** @var UserNameUtils */
+	private $userNameUtils;
+
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterLookup $filterLookup
+	 * @param UserNameUtils $userNameUtils
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -32,6 +36,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
 		FilterLookup $filterLookup,
+		UserNameUtils $userNameUtils,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -40,6 +45,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->filterLookup = $filterLookup;
 		$this->filter = $this->mParams['filter'] ?? null;
+		$this->userNameUtils = $userNameUtils;
 	}
 
 	/**
@@ -91,7 +97,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out->addHTML( $backlinks );
 
 		// For user
-		$user = User::getCanonicalName( $this->getRequest()->getText( 'user' ), 'valid' );
+		$user = $this->userNameUtils->getCanonical(
+			$this->getRequest()->getText( 'user' ),
+			UserNameUtils::RIGOR_VALID
+		);
 		if ( $user ) {
 			$out->addSubtitle(
 				$this->msg(
