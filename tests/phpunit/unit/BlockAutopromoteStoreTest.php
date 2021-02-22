@@ -40,7 +40,7 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 	 */
 	public function testBlockAutopromote( BagOStuff $cache, bool $expected ) {
 		$store = $this->getStore( $cache );
-		$target = new UserIdentityValue( 1, 'Blocked user', 43 );
+		$target = new UserIdentityValue( 1, 'Blocked user', 0 );
 		$this->assertSame( $expected, $store->blockAutoPromote( $target, '', 1 ) );
 	}
 
@@ -59,7 +59,7 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 	 */
 	public function testUnblockAutopromote( BagOStuff $cache, bool $expected ) {
 		$store = $this->getStore( $cache );
-		$target = new UserIdentityValue( 1, 'Blocked user', 43 );
+		$target = new UserIdentityValue( 1, 'Blocked user', 0 );
 		$this->assertSame( $expected, $store->unblockAutoPromote( $target, $target, '' ) );
 	}
 
@@ -72,7 +72,7 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 	public function testRoundTrip() {
 		$cache = new HashBagOStuff();
 		$store = $this->getStore( $cache );
-		$target = new UserIdentityValue( 1, 'Blocked user', 43 );
+		$target = new UserIdentityValue( 1, 'Blocked user', 0 );
 		$this->assertTrue( $store->blockAutoPromote( $target, '', 3000 ), 'block' );
 		$this->assertSame( 1, $store->getAutoPromoteBlockStatus( $target ), 'should be blocked' );
 		$this->assertTrue( $store->unblockAutoPromote( $target, $target, '' ), 'can unblock' );
