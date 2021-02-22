@@ -92,7 +92,9 @@ class EditStashCache {
 	 */
 	private function logCache( string $type, string $key ) : void {
 		if ( !in_array( $type, [ 'store', 'hit', 'miss' ] ) ) {
+			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( '$type must be either "store", "hit" or "miss"' );
+			// @codeCoverageIgnoreEnd
 		}
 		$this->logger->debug(
 			__METHOD__ . ": cache {logtype} for '{target}' (key {key}).",
