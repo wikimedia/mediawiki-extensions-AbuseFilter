@@ -187,7 +187,7 @@
 	"abusefilter-import-button": "フィルターのインポート",
 	"abusefilter-return": "フィルター管理に戻る",
 	"abusefilter-status-global": "グローバル",
-	"abusefilter-list-options": "オプション",
+	"abusefilter-list-options": "検索オプション",
 	"abusefilter-list-options-deleted": "削除されたフィルター:",
 	"abusefilter-list-options-deleted-only": "削除されたもののみ表示",
 	"abusefilter-list-options-deleted-hide": "削除されたものを表示しない",

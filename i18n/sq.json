@@ -3,6 +3,7 @@
 		"authors": [
 			"Arianit",
 			"Bjakupi",
+			"Eraldkerciku",
 			"Euriditi",
 			"Klein Muçi",
 			"Kosovastar",
@@ -91,7 +92,7 @@
 	"abusefilter-import-button": "Importo filtër",
 	"abusefilter-return": "Kthehu tek filtër menaxhmenti",
 	"abusefilter-status-global": "Global",
-	"abusefilter-list-options": "Opsionet e kërkimit",
+	"abusefilter-list-options": "Mundësitë e kërkimit",
 	"abusefilter-list-options-deleted": "Filtra e fshirë",
 	"abusefilter-list-options-deleted-only": "Trego vetëm filtrat e fshirë",
 	"abusefilter-list-options-deleted-hide": "Fsheh filtrat e fshirë",
