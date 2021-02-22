@@ -138,7 +138,7 @@ class FilterRunnerFactory {
 			new EditStashCache(
 				$this->localCache,
 				// Bots do not use edit stashing, so avoid distorting the stats
-				$user->isBot() ? $this->statsdDataFactory : new NullStatsdDataFactory(),
+				$user->isBot() ? new NullStatsdDataFactory() : $this->statsdDataFactory,
 				$this->varManager,
 				$this->editStashLogger,
 				$title,
