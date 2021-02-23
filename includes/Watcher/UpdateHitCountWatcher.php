@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Watcher;
 
+use DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -34,14 +35,17 @@ class UpdateHitCountWatcher implements Watcher {
 	 * @inheritDoc
 	 */
 	public function run( array $localFilters, array $globalFilters, string $group ) : void {
-		if ( count( $localFilters ) ) {
-			$this->updateHitCounts( $this->loadBalancer->getConnectionRef( DB_MASTER ), $localFilters );
-		}
+		// Run in a DeferredUpdate to avoid master queries on raw/view requests (T274455)
+		DeferredUpdates::addCallableUpdate( function () use ( $localFilters, $globalFilters ) {
+			if ( $localFilters ) {
+				$this->updateHitCounts( $this->loadBalancer->getConnectionRef( DB_MASTER ), $localFilters );
+			}
 
-		if ( count( $globalFilters ) ) {
-			$fdb = $this->centralDBManager->getConnection( DB_MASTER );
-			$this->updateHitCounts( $fdb, $globalFilters );
-		}
+			if ( $globalFilters ) {
+				$fdb = $this->centralDBManager->getConnection( DB_MASTER );
+				$this->updateHitCounts( $fdb, $globalFilters );
+			}
+		} );
 	}
 
 	/**
@@ -49,16 +53,11 @@ class UpdateHitCountWatcher implements Watcher {
 	 * @param array $loggedFilters
 	 */
 	private function updateHitCounts( IDatabase $dbw, array $loggedFilters ) : void {
-		$method = __METHOD__;
-		$dbw->onTransactionPreCommitOrIdle(
-			function () use ( $dbw, $loggedFilters, $method ) {
-				$dbw->update( 'abuse_filter',
-					[ 'af_hit_count=af_hit_count+1' ],
-					[ 'af_id' => $loggedFilters ],
-					$method
-				);
-			},
-			$method
+		$dbw->update(
+			'abuse_filter',
+			[ 'af_hit_count=af_hit_count+1' ],
+			[ 'af_id' => $loggedFilters ],
+			__METHOD__
 		);
 	}
 }
