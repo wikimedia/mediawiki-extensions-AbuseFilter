@@ -1,12 +1,15 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 
 class ApiAbuseFilterCheckMatch extends ApiBase {
 	/**
 	 * @see ApiBase::execute
 	 */
 	public function execute() {
+		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
@@ -26,6 +29,25 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
+			$type = (int)$rc->getAttribute( 'rc_type' );
+			$deletedValue = $rc->getAttribute( 'rc_deleted' );
+			if (
+				(
+					$type === RC_LOG &&
+					!LogEventsList::userCanBitfield(
+						$deletedValue,
+						LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
+						$user
+					)
+				) || (
+					$type !== RC_LOG &&
+					!RevisionRecord::userCanBitfield( $deletedValue, RevisionRecord::SUPPRESSED_ALL, $user )
+				)
+			) {
+				// T223654 - Same check as in AbuseFilterChangesList
+				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedrc' );
+			}
+
 			$vars = new AbuseFilterVariableHolder();
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$varGenerator = new RCVariableGenerator( $vars, $rc );
@@ -34,10 +56,17 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_log',
-				'afl_var_dump',
+				'*',
 				[ 'afl_id' => $params['logid'] ],
 				__METHOD__
 			);
+
+			$permManager = MediaWikiServices::getInstance()->getPermissionManager();
+			if ( !$permManager->canSeeHiddenLogEntries( $user ) && SpecialAbuseLog::isHidden( $row ) ) {
+				// T223654 - Same check as in SpecialAbuseLog. Both the visibility of the AbuseLog entry
+				// and the corresponding revision are checked.
+				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );
+			}
 
 			if ( !$row ) {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
