@@ -21,6 +21,7 @@ class AbuseFilterChangesList extends OldChangesList {
 		if ( (int)$rc->getAttribute( 'rc_deleted' ) !== 0 ) {
 			$s .= ' ' . $this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 			if ( !$this->userCan( $rc, Revision::SUPPRESSED_ALL ) ) {
+				// Remember to keep this in sync with the CheckMatch API
 				return;
 			}
 		}
