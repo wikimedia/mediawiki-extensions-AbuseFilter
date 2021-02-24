@@ -15,6 +15,7 @@
 			"Octahedron80",
 			"Passawuth",
 			"Patsagorn Y.",
+			"Prame Tan",
 			"Woraponboonkerd"
 		]
 	},
@@ -155,7 +156,7 @@
 	"abusefilter-import-button": "นำเข้าตัวกรอง",
 	"abusefilter-return": "กลับไปยังส่วนการจัดการตัวกรอง",
 	"abusefilter-status-global": "ทั่วโลก",
-	"abusefilter-list-options": "ตัวเลือก",
+	"abusefilter-list-options": "ตัวเลือกการค้นหา",
 	"abusefilter-list-options-deleted": "ตัวกรองที่ถูกลบ:",
 	"abusefilter-list-options-deleted-only": "แสดงเฉพาะตัวกรองที่ถูกลบ",
 	"abusefilter-list-options-deleted-hide": "ซ่อนตัวกรองที่ถูกลบ",
