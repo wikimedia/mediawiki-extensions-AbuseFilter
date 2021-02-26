@@ -40,6 +40,8 @@ class FilterRunnerFactory {
 	private $varManager;
 	/** @var VariableGeneratorFactory */
 	private $varGeneratorFactory;
+	/** @var EmergencyCache */
+	private $emergencyCache;
 	/** @var UpdateHitCountWatcher */
 	private $updateHitCountWatcher;
 	/** @var EmergencyWatcher */
@@ -65,6 +67,7 @@ class FilterRunnerFactory {
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param VariablesManager $varManager
 	 * @param VariableGeneratorFactory $varGeneratorFactory
+	 * @param EmergencyCache $emergencyCache
 	 * @param UpdateHitCountWatcher $updateHitCountWatcher
 	 * @param EmergencyWatcher $emergencyWatcher
 	 * @param BagOStuff $localCache
@@ -83,6 +86,7 @@ class FilterRunnerFactory {
 		AbuseLoggerFactory $abuseLoggerFactory,
 		VariablesManager $varManager,
 		VariableGeneratorFactory $varGeneratorFactory,
+		EmergencyCache $emergencyCache,
 		UpdateHitCountWatcher $updateHitCountWatcher,
 		EmergencyWatcher $emergencyWatcher,
 		BagOStuff $localCache,
@@ -100,6 +104,7 @@ class FilterRunnerFactory {
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 		$this->varManager = $varManager;
 		$this->varGeneratorFactory = $varGeneratorFactory;
+		$this->emergencyCache = $emergencyCache;
 		$this->updateHitCountWatcher = $updateHitCountWatcher;
 		$this->emergencyWatcher = $emergencyWatcher;
 		$this->localCache = $localCache;
@@ -134,6 +139,7 @@ class FilterRunnerFactory {
 			$this->abuseLoggerFactory,
 			$this->varManager,
 			$this->varGeneratorFactory,
+			$this->emergencyCache,
 			$watchers,
 			new EditStashCache(
 				$this->localCache,

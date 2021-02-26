@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use BadMethodCallException;
+use DeferredUpdates;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
@@ -51,6 +52,8 @@ class FilterRunner {
 	private $consExecutorFactory;
 	/** @var AbuseLoggerFactory */
 	private $abuseLoggerFactory;
+	/** @var EmergencyCache */
+	private $emergencyCache;
 	/** @var Watcher[] */
 	private $watchers;
 	/** @var EditStashCache */
@@ -103,6 +106,7 @@ class FilterRunner {
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param VariablesManager $varManager
 	 * @param VariableGeneratorFactory $varGeneratorFactory
+	 * @param EmergencyCache $emergencyCache
 	 * @param Watcher[] $watchers
 	 * @param EditStashCache $stashCache
 	 * @param LoggerInterface $logger
@@ -124,6 +128,7 @@ class FilterRunner {
 		AbuseLoggerFactory $abuseLoggerFactory,
 		VariablesManager $varManager,
 		VariableGeneratorFactory $varGeneratorFactory,
+		EmergencyCache $emergencyCache,
 		array $watchers,
 		EditStashCache $stashCache,
 		LoggerInterface $logger,
@@ -143,6 +148,7 @@ class FilterRunner {
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 		$this->varManager = $varManager;
 		$this->varGeneratorFactory = $varGeneratorFactory;
+		$this->emergencyCache = $emergencyCache;
 		$this->watchers = $watchers;
 		$this->stashCache = $stashCache;
 		$this->logger = $logger;
@@ -226,6 +232,14 @@ class FilterRunner {
 		}
 
 		$this->profileExecution( $runnerData );
+		// hack until DI for DeferredUpdates is possible (T265749)
+		if ( defined( 'MW_PHPUNIT_TEST' ) ) {
+			$this->updateEmergencyCache( $runnerData->getMatchesMap() );
+		} else {
+			DeferredUpdates::addCallableUpdate( function () use ( $runnerData ) {
+				$this->updateEmergencyCache( $runnerData->getMatchesMap() );
+			} );
+		}
 
 		// Tag the action if the condition limit was hit
 		if ( $runnerData->getTotalConditions() > $this->options->get( 'AbuseFilterConditionLimit' ) ) {
@@ -393,6 +407,18 @@ class FilterRunner {
 			$data->getTotalRunTime(),
 			(bool)$matchedFilters
 		);
+	}
+
+	/**
+	 * @param bool[] $matches
+	 */
+	protected function updateEmergencyCache( array $matches ) : void {
+		$filters = $this->emergencyCache->getFiltersToCheckInGroup( $this->group );
+		foreach ( $filters as $filter ) {
+			if ( array_key_exists( "$filter", $matches ) ) {
+				$this->emergencyCache->incrementForFilter( $filter, $matches["$filter"] );
+			}
+		}
 	}
 
 	/**

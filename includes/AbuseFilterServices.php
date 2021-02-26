@@ -100,6 +100,13 @@ class AbuseFilterServices {
 	}
 
 	/**
+	 * @return EmergencyCache
+	 */
+	public static function getEmergencyCache() : EmergencyCache {
+		return MediaWikiServices::getInstance()->getService( EmergencyCache::SERVICE_NAME );
+	}
+
+	/**
 	 * @return EmergencyWatcher
 	 */
 	public static function getEmergencyWatcher() : EmergencyWatcher {

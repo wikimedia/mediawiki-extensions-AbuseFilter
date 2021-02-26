@@ -7,8 +7,8 @@ use DeferredUpdates;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
+use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -27,8 +27,8 @@ class EmergencyWatcher implements Watcher {
 		'AbuseFilterEmergencyDisableThreshold',
 	];
 
-	/** @var FilterProfiler */
-	private $profiler;
+	/** @var EmergencyCache */
+	private $cache;
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
@@ -43,21 +43,21 @@ class EmergencyWatcher implements Watcher {
 	private $options;
 
 	/**
-	 * @param FilterProfiler $profiler
+	 * @param EmergencyCache $cache
 	 * @param ILoadBalancer $loadBalancer
 	 * @param FilterLookup $filterLookup
 	 * @param EchoNotifier $notifier
 	 * @param ServiceOptions $options
 	 */
 	public function __construct(
-		FilterProfiler $profiler,
+		EmergencyCache $cache,
 		ILoadBalancer $loadBalancer,
 		FilterLookup $filterLookup,
 		EchoNotifier $notifier,
 		ServiceOptions $options
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->profiler = $profiler;
+		$this->cache = $cache;
 		$this->loadBalancer = $loadBalancer;
 		$this->filterLookup = $filterLookup;
 		$this->notifier = $notifier;
@@ -73,12 +73,11 @@ class EmergencyWatcher implements Watcher {
 	 * @return int[] Array of filters to be throttled
 	 */
 	public function getFiltersToThrottle( array $filters, string $group ) : array {
-		$groupProfile = $this->profiler->getGroupProfile( $group );
-
-		// @ToDo this is an amount between 1 and AbuseFilterProfileActionsCap, which means that the
-		// reliability of this number may strongly vary. We should instead use a fixed one.
-		$totalActions = $groupProfile['total'];
-		if ( $totalActions === 0 ) {
+		$filters = array_intersect(
+			$filters,
+			$this->cache->getFiltersToCheckInGroup( $group )
+		);
+		if ( $filters === [] ) {
 			return [];
 		}
 
@@ -91,6 +90,8 @@ class EmergencyWatcher implements Watcher {
 		$throttleFilters = [];
 		foreach ( $filters as $filter ) {
 			$filterObj = $this->filterLookup->getFilter( $filter, false );
+			// TODO: consider removing the filter from the group key
+			// after throttling
 			if ( $filterObj->isThrottled() ) {
 				continue;
 			}
@@ -99,13 +100,20 @@ class EmergencyWatcher implements Watcher {
 			$exemptTime = $filterAge + $maxAge;
 
 			// Optimize for the common case when filters are well-established
+			// This check somewhat duplicates the role of cache entry's TTL
+			// and could as well be removed
 			if ( $exemptTime <= $time ) {
 				continue;
 			}
 
 			// TODO: this value might be stale, there is no guarantee the match
 			// has actually been recorded now
-			$matchCount = $this->profiler->getFilterProfile( $filter )['matches'];
+			$cacheValue = $this->cache->getForFilter( $filter );
+			if ( $cacheValue === false ) {
+				continue;
+			}
+
+			[ 'total' => $totalActions, 'matches' => $matchCount ] = $cacheValue;
 
 			if ( $matchCount > $hitCountLimit && ( $matchCount / $totalActions ) > $threshold ) {
 				// More than AbuseFilterEmergencyDisableCount matches, constituting more than

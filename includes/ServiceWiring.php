@@ -18,6 +18,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
+use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -127,9 +128,15 @@ return [
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
+	EmergencyCache::SERVICE_NAME => function ( MediaWikiServices $services ): EmergencyCache {
+		return new EmergencyCache(
+			$services->getMainObjectStash(),
+			$services->getMainConfig()->get( 'AbuseFilterEmergencyDisableAge' )
+		);
+	},
 	EmergencyWatcher::SERVICE_NAME => function ( MediaWikiServices $services ): EmergencyWatcher {
 		return new EmergencyWatcher(
-			$services->getService( FilterProfiler::SERVICE_NAME ),
+			$services->getService( EmergencyCache::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
 			$services->getService( FilterLookup::SERVICE_NAME ),
 			$services->getService( EchoNotifier::SERVICE_NAME ),
@@ -176,7 +183,8 @@ return [
 			$services->get( FilterLookup::SERVICE_NAME ),
 			$services->get( ChangeTagsManager::SERVICE_NAME ),
 			$services->get( FilterValidator::SERVICE_NAME ),
-			$services->get( FilterCompare::SERVICE_NAME )
+			$services->get( FilterCompare::SERVICE_NAME ),
+			$services->get( EmergencyCache::SERVICE_NAME )
 		);
 	},
 	ConsequencesFactory::SERVICE_NAME => function ( MediaWikiServices $services ): ConsequencesFactory {
@@ -277,6 +285,7 @@ return [
 			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( VariableGeneratorFactory::SERVICE_NAME ),
+			$services->get( EmergencyCache::SERVICE_NAME ),
 			$services->get( UpdateHitCountWatcher::SERVICE_NAME ),
 			$services->get( EmergencyWatcher::SERVICE_NAME ),
 			ObjectCache::getLocalClusterInstance(),

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWiki\Extension\AbuseFilter\FilterCompare;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -32,7 +33,8 @@ class FilterStoreTest extends MediaWikiUnitTestCase {
 				$this->createMock( FilterLookup::class ),
 				$this->createMock( ChangeTagsManager::class ),
 				$this->createMock( FilterValidator::class ),
-				$this->createMock( FilterCompare::class )
+				$this->createMock( FilterCompare::class ),
+				$this->createMock( EmergencyCache::class )
 			)
 		);
 	}

@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\EditStashCache;
+use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
@@ -67,6 +68,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			$this->createMock( AbuseLoggerFactory::class ),
 			$this->createMock( VariablesManager::class ),
 			$this->createMock( VariableGeneratorFactory::class ),
+			$this->createMock( EmergencyCache::class ),
 			[],
 			$cache,
 			new NullLogger(),
