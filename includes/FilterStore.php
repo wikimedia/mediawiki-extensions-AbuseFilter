@@ -219,16 +219,9 @@ class FilterStore {
 
 		$dbw->endAtomic( __METHOD__ );
 
-		// TODO: isset() shouldn't be necessary,
-		// invalid values should also be discarded upstream
-		$group = 'default';
-		if ( isset( $newRow['af_group'] ) && $newRow['af_group'] !== '' ) {
-			$group = $newRow['af_group'];
-		}
-
 		// Invalidate cache if this was a global rule
 		if ( $wasGlobal || $newRow['af_global'] ) {
-			$this->filterLookup->purgeGroupWANCache( $group );
+			$this->filterLookup->purgeGroupWANCache( $newRow['af_group'] );
 		}
 
 		// Logging
@@ -250,7 +243,7 @@ class FilterStore {
 
 		$this->filterProfiler->resetFilterProfile( $newID );
 		if ( $newRow['af_enabled'] ) {
-			$this->emergencyCache->setNewForFilter( $newID, $group );
+			$this->emergencyCache->setNewForFilter( $newID, $newRow['af_group'] );
 		}
 		return [ $newID, $historyID ];
 	}

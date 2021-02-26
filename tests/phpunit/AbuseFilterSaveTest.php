@@ -22,6 +22,7 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -231,7 +232,13 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 			AbuseFilterServices::getChangeTagValidator(),
 			$this->createMock( ParserFactory::class ),
 			$this->createMock( AbuseFilterPermissionManager::class ),
-			[]
+			new ServiceOptions(
+				FilterValidator::CONSTRUCTOR_OPTIONS,
+				[
+					'AbuseFilterActionRestrictions' => [],
+					'AbuseFilterValidGroups' => [ 'default' ]
+				]
+			)
 		);
 
 		$status = $validator->checkAllTags( $tags );

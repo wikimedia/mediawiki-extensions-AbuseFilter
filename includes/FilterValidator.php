@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
@@ -17,6 +18,11 @@ use User;
 class FilterValidator {
 	public const SERVICE_NAME = 'AbuseFilterFilterValidator';
 
+	public const CONSTRUCTOR_OPTIONS = [
+		'AbuseFilterValidGroups',
+		'AbuseFilterActionRestrictions'
+	];
+
 	/** @var ChangeTagValidator */
 	private $changeTagValidator;
 
@@ -29,22 +35,26 @@ class FilterValidator {
 	/** @var string[] */
 	private $restrictedActions;
 
+	/** @var string[] */
+	private $validGroups;
+
 	/**
 	 * @param ChangeTagValidator $changeTagValidator
 	 * @param ParserFactory $parserFactory
 	 * @param AbuseFilterPermissionManager $permManager
-	 * @param string[] $restrictedActions
+	 * @param ServiceOptions $options
 	 */
 	public function __construct(
 		ChangeTagValidator $changeTagValidator,
 		ParserFactory $parserFactory,
 		AbuseFilterPermissionManager $permManager,
-		array $restrictedActions
+		ServiceOptions $options
 	) {
 		$this->changeTagValidator = $changeTagValidator;
 		$this->parserFactory = $parserFactory;
 		$this->permManager = $permManager;
-		$this->restrictedActions = $restrictedActions;
+		$this->restrictedActions = array_keys( array_filter( $options->get( 'AbuseFilterActionRestrictions' ) ) );
+		$this->validGroups = $options->get( 'AbuseFilterValidGroups' );
 	}
 
 	/**
@@ -104,6 +114,11 @@ class FilterValidator {
 		$restrictedActionsStatus = $this->checkRestrictedActions( $user, $newFilter, $originalFilter );
 		if ( !$restrictedActionsStatus->isGood() ) {
 			return $restrictedActionsStatus;
+		}
+
+		$filterGroupStatus = $this->checkGroup( $newFilter );
+		if ( !$filterGroupStatus->isGood() ) {
+			return $filterGroupStatus;
 		}
 
 		return Status::newGood();
@@ -324,6 +339,19 @@ class FilterValidator {
 			&& !$this->permManager->canEditFilterWithRestrictedActions( $user )
 		) {
 			$ret->error( 'abusefilter-edit-restricted' );
+		}
+		return $ret;
+	}
+
+	/**
+	 * @param AbstractFilter $filter
+	 * @return Status
+	 */
+	public function checkGroup( AbstractFilter $filter ) : Status {
+		$ret = Status::newGood();
+		$group = $filter->getGroup();
+		if ( !in_array( $group, $this->validGroups, true ) ) {
+			$ret->error( 'abusefilter-edit-invalid-group' );
 		}
 		return $ret;
 	}
