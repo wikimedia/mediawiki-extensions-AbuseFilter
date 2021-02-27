@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use Generator;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
@@ -30,12 +31,14 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param AbuseFilterPermissionManager|null $permissionManager
 	 * @param AbuseFilterParser|null $parser
 	 * @param array $restrictions
+	 * @param array $validFilterGroups
 	 * @return FilterValidator
 	 */
 	private function getFilterValidator(
 		AbuseFilterPermissionManager $permissionManager = null,
 		AbuseFilterParser $parser = null,
-		array $restrictions = []
+		array $restrictions = [],
+		array $validFilterGroups = [ 'default' ]
 	) : FilterValidator {
 		if ( !$parser ) {
 			$parser = $this->createMock( AbuseFilterParser::class );
@@ -53,7 +56,13 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			$this->createMock( ChangeTagValidator::class ),
 			$parserFactory,
 			$permissionManager,
-			$restrictions
+			new ServiceOptions(
+				FilterValidator::CONSTRUCTOR_OPTIONS,
+				[
+					'AbuseFilterActionRestrictions' => array_fill_keys( $restrictions, true ),
+					'AbuseFilterValidGroups' => $validFilterGroups
+				]
+			)
 		);
 	}
 
@@ -427,9 +436,41 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			[ 'degroup' ]
 		];
 
+		$invalidGroupFilter = $this->createMock( AbstractFilter::class );
+		$invalidGroupFilter->method( 'getRules' )->willReturn( 'true' );
+		$invalidGroupFilter->method( 'getName' )->willReturn( 'Foo' );
+		$invalidGroupFilter->expects( $this->atLeastOnce() )->method( 'getGroup' )->willReturn( 'xxx-invalid' );
+		yield 'invalid group' => [ $invalidGroupFilter, 'abusefilter-edit-invalid-group' ];
+
 		$filter = $this->createMock( AbstractFilter::class );
 		$filter->method( 'getRules' )->willReturn( 'true' );
 		$filter->method( 'getName' )->willReturn( 'Foo' );
+		$filter->method( 'getGroup' )->willReturn( 'default' );
 		yield 'valid' => [ $filter, null ];
+	}
+
+	/**
+	 * @param string $group
+	 * @param string[] $validGroups
+	 * @param string|null $expected
+	 * @covers ::checkGroup
+	 * @dataProvider provideGroups
+	 */
+	public function testCheckGroup( string $group, array $validGroups, ?string $expected ) {
+		$filter = $this->createMock( AbstractFilter::class );
+		$filter->expects( $this->atLeastOnce() )->method( 'getGroup' )->willReturn( $group );
+		$this->assertStatusMessage(
+			$expected,
+			$this->getFilterValidator( null, null, [], $validGroups )->checkGroup( $filter )
+		);
+	}
+
+	public function provideGroups() : Generator {
+		$allowed = [ 'default' ];
+		yield 'Default, pass' => [ 'default', $allowed, null ];
+		$extraGroup = 'foobar';
+		$allowed[] = $extraGroup;
+		yield 'Extra, pass' => [ $extraGroup, $allowed, null ];
+		yield 'Unknown, fail' => [ 'some-unknown-group', $allowed, 'abusefilter-edit-invalid-group' ];
 	}
 }

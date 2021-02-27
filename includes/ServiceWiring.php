@@ -157,8 +157,10 @@ return [
 			$services->get( ChangeTagValidator::SERVICE_NAME ),
 			$services->get( ParserFactory::SERVICE_NAME ),
 			$services->get( PermManager::SERVICE_NAME ),
-			// Pass the cleaned list of enabled restrictions
-			array_keys( array_filter( $services->getMainConfig()->get( 'AbuseFilterActionRestrictions' ) ) )
+			new ServiceOptions(
+				FilterValidator::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
 		);
 	},
 	FilterCompare::SERVICE_NAME => function ( MediaWikiServices $services ): FilterCompare {
