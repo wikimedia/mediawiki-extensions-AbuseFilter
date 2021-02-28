@@ -231,12 +231,13 @@ class FilterRunner {
 			$runnerData = $this->checkAllFiltersInternal();
 		}
 
-		$this->profileExecution( $runnerData );
 		// hack until DI for DeferredUpdates is possible (T265749)
 		if ( defined( 'MW_PHPUNIT_TEST' ) ) {
+			$this->profileExecution( $runnerData );
 			$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 		} else {
 			DeferredUpdates::addCallableUpdate( function () use ( $runnerData ) {
+				$this->profileExecution( $runnerData );
 				$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 			} );
 		}

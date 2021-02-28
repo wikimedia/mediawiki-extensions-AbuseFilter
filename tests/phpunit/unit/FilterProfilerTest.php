@@ -1,16 +1,22 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+
+use HashBagOStuff;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
+use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use TestLogger;
+use Title;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterProfiler
  * @covers ::__construct
- * @fixme convert to pure unit test when DI for DeferredUpdates is possible (T265749)
  */
-class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
+class FilterProfilerTest extends MediaWikiUnitTestCase {
 
 	private const NULL_FILTER_PROFILE = [
 		'count' => 0,
@@ -70,7 +76,6 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 				],
 			]
 		);
-		DeferredUpdates::doUpdates();
 		$this->assertSame(
 			[
 				'count' => 1,
@@ -109,7 +114,6 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 				],
 			]
 		);
-		DeferredUpdates::doUpdates();
 		$this->assertSame(
 			[
 				'count' => 2,
@@ -181,7 +185,6 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 				],
 			]
 		);
-		DeferredUpdates::doUpdates();
 		$profiler->resetFilterProfile( 1 );
 		$this->assertSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 1 ) );
 		$this->assertNotSame( self::NULL_FILTER_PROFILE, $profiler->getFilterProfile( 2 ) );
@@ -294,7 +297,6 @@ class AbuseFilterFilterProfilerTest extends MediaWikiIntegrationTestCase {
 				],
 			]
 		);
-		DeferredUpdates::doUpdates();
 
 		$profiler->recordStats( 'default', 100, 256.5, true );
 		$profiler->recordStats( 'default', 200, 512.5, false );

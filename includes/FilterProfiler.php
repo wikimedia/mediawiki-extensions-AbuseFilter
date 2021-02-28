@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use BagOStuff;
-use DeferredUpdates;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
 use Psr\Log\LoggerInterface;
@@ -242,35 +241,32 @@ class FilterProfiler {
 	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
 	 */
 	public function recordPerFilterProfiling( Title $title, array $data ) : void {
-		// Defer profiling updates to avoid massive (~1 second) edit time increases
-		DeferredUpdates::addCallableUpdate( function () use ( $title, $data ) {
-			$slowFilterThreshold = $this->options->get( 'AbuseFilterSlowFilterRuntimeLimit' );
+		$slowFilterThreshold = $this->options->get( 'AbuseFilterSlowFilterRuntimeLimit' );
 
-			foreach ( $data as $filterName => $params ) {
-				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filterName );
-				// @todo Maybe add a parameter to recordProfilingResult to record global filters
-				// data separately (in the foreign wiki)
-				if ( !$global ) {
-					$this->recordProfilingResult(
-						$filterID,
-						$params['time'],
-						$params['conds'],
-						$params['result']
-					);
-				}
-
-				if ( $params['time'] > $slowFilterThreshold ) {
-					$this->recordSlowFilter(
-						$title,
-						$filterName,
-						$params['time'],
-						$params['conds'],
-						$params['result'],
-						$global
-					);
-				}
+		foreach ( $data as $filterName => $params ) {
+			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filterName );
+			// @todo Maybe add a parameter to recordProfilingResult to record global filters
+			// data separately (in the foreign wiki)
+			if ( !$global ) {
+				$this->recordProfilingResult(
+					$filterID,
+					$params['time'],
+					$params['conds'],
+					$params['result']
+				);
 			}
-		} );
+
+			if ( $params['time'] > $slowFilterThreshold ) {
+				$this->recordSlowFilter(
+					$title,
+					$filterName,
+					$params['time'],
+					$params['conds'],
+					$params['result'],
+					$global
+				);
+			}
+		}
 	}
 
 	/**
