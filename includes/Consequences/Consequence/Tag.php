@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
+use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 
@@ -33,13 +34,13 @@ class Tag extends Consequence {
 	 * @inheritDoc
 	 */
 	public function execute(): bool {
-		$specs = [
-			'action' => $this->parameters->getAction(),
-			'username' => $this->parameters->getUser()->getName(),
-			'target' => $this->parameters->getTarget(),
-			'accountname' => $this->accountName
-		];
-		$this->tagger->addTags( $specs, $this->tags );
+		$specifier = new ActionSpecifier(
+			$this->parameters->getAction(),
+			$this->parameters->getTarget(),
+			$this->parameters->getUser(),
+			$this->accountName
+		);
+		$this->tagger->addTags( $specifier, $this->tags );
 		return true;
 	}
 }

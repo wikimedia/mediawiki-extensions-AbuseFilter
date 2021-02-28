@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\ChangeTags;
 
-use LogicException;
-use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
+use MediaWiki\User\UserIdentityValue;
 use RecentChange;
 use TitleValue;
 
@@ -37,25 +37,18 @@ class ChangeTagger {
 	}
 
 	/**
-	 * @param array $actionSpecs
-	 * @phan-param array{action:string,username:string,target:LinkTarget,accountname?:?string} $actionSpecs
+	 * @param ActionSpecifier $specifier
 	 */
-	public function addConditionsLimitTag( array $actionSpecs ): void {
-		$this->addTags( $actionSpecs, [ $this->changeTagsManager->getCondsLimitTag() ] );
+	public function addConditionsLimitTag( ActionSpecifier $specifier ): void {
+		$this->addTags( $specifier, [ $this->changeTagsManager->getCondsLimitTag() ] );
 	}
 
 	/**
-	 * @param array $actionSpecs
-	 * @phan-param array{action:string,username:string,target:LinkTarget,accountname?:?string} $actionSpecs
+	 * @param ActionSpecifier $specifier
 	 * @param array $tags
 	 */
-	public function addTags( array $actionSpecs, array $tags ): void {
-		$id = $this->getActionID(
-			$actionSpecs['action'],
-			$actionSpecs['username'],
-			$actionSpecs['target'],
-			$actionSpecs['accountname'] ?? null
-		);
+	public function addTags( ActionSpecifier $specifier, array $tags ): void {
+		$id = $this->getActionID( $specifier );
 		$this->bufferTagsToSetByAction( [ $id => $tags ] );
 	}
 
@@ -111,38 +104,26 @@ class ChangeTagger {
 		} else {
 			$action = $logType;
 		}
-		return $this->getActionID(
-			$action,
-			$recentChange->getAttribute( 'rc_user_text' ),
-			$title,
+		$user = new UserIdentityValue(
+			$recentChange->getAttribute( 'rc_user' ),
 			$recentChange->getAttribute( 'rc_user_text' )
 		);
+		return $this->getActionID( new ActionSpecifier( $action, $title, $user, $user->getName() ) );
 	}
 
 	/**
 	 * Get a unique identifier for the given action
 	 *
-	 * @param string $action Action being filtered (e.g. 'edit' or 'createaccount')
-	 * @param string $username Of the context user, will be ignored in favour of the specified account name
-	 *   for account creations.
-	 * @param LinkTarget $title Where the current action is executed. This is the user page
-	 *   for account creations.
-	 * @param string|null $accountname Required if the action is an account creation
+	 * @param ActionSpecifier $specifier
 	 * @return string
 	 */
-	private function getActionID(
-		string $action,
-		string $username,
-		LinkTarget $title,
-		?string $accountname = null
-	): string {
-		if ( strpos( $action, 'createaccount' ) !== false ) {
-			if ( $accountname === null ) {
-				// @codeCoverageIgnoreStart
-				throw new LogicException( '$accountname required for account creations' );
-				// @codeCoverageIgnoreEnd
-			}
-			$username = $accountname;
+	private function getActionID( ActionSpecifier $specifier ): string {
+		$username = $specifier->getUser()->getName();
+		$title = $specifier->getTitle();
+		if ( strpos( $specifier->getAction(), 'createaccount' ) !== false ) {
+			// TODO Move this to ActionSpecifier?
+			$username = $specifier->getAccountName();
+			'@phan-var string $username';
 			$title = new TitleValue( NS_USER, $username );
 		}
 
@@ -153,7 +134,7 @@ class ChangeTagger {
 			[
 				$title->getNamespace() . ':' . $title->getText(),
 				$username,
-				$action
+				$specifier->getAction()
 			]
 		);
 	}

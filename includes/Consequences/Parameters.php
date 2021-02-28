@@ -8,6 +8,7 @@ use MediaWiki\User\UserIdentity;
 
 /**
  * Immutable value object that provides "base" parameters to Consequence objects
+ * @todo Should use ActionSpecifier
  */
 class Parameters {
 	/** @var ExistingFilter */

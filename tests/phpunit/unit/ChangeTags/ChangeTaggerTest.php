@@ -3,8 +3,10 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\ChangeTags;
 
 use Generator;
+use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use RecentChange;
 use TitleValue;
@@ -43,25 +45,38 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 		$baseAttribs = [
 			'rc_namespace' => NS_MAIN,
 			'rc_title' => $titleText,
+			'rc_user' => 42,
 			'rc_user_text' => $userName
 		];
+		$specifierFromArray = static function ( array $specs ): ActionSpecifier {
+			return new ActionSpecifier(
+				$specs['action'],
+				$specs['target'],
+				new UserIdentityValue( 42, $specs['username'] ),
+				$specs['accountname'] ?? null
+			);
+		};
 		$baseSpecs = [ 'username' => $userName, 'target' => $title ];
 
 		$rcAttribs = [ 'rc_log_type' => null ] + $baseAttribs;
 		yield 'edit' => [
-			'specifier' => [ 'action' => 'edit' ] + $baseSpecs,
+			'specifier' => $specifierFromArray( [ 'action' => 'edit' ] + $baseSpecs ),
 			'recentchange' => $getRCFromAttribs( $rcAttribs )
 		];
 
 		$rcAttribs = [ 'rc_log_type' => 'newusers', 'rc_log_action' => 'create2' ] + $baseAttribs;
 		yield 'createaccount' => [
-			'specifier' => [ 'action' => 'createaccount', 'accountname' => $userName ] + $baseSpecs,
+			'specifier' => $specifierFromArray(
+				[ 'action' => 'createaccount', 'accountname' => $userName ] + $baseSpecs
+			),
 			'recentchange' => $getRCFromAttribs( $rcAttribs )
 		];
 
 		$rcAttribs = [ 'rc_log_type' => 'newusers', 'rc_log_action' => 'autocreate' ] + $baseAttribs;
 		yield 'autocreate' => [
-			'specifier' => [ 'action' => 'autocreateaccount', 'accountname' => $userName ] + $baseSpecs,
+			'specifier' => $specifierFromArray(
+				[ 'action' => 'autocreateaccount', 'accountname' => $userName ] + $baseSpecs
+			),
 			'recentchange' => $getRCFromAttribs( $rcAttribs )
 		];
 	}
@@ -74,12 +89,12 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array $specifier
+	 * @param ActionSpecifier $specifier
 	 * @param RecentChange $rc
 	 * @covers ::bufferTagsToSetByAction
 	 * @dataProvider getActionData
 	 */
-	public function testTagsToSetWillNotContainDuplicates( array $specifier, RecentChange $rc ) {
+	public function testTagsToSetWillNotContainDuplicates( ActionSpecifier $specifier, RecentChange $rc ) {
 		$tagger = $this->getTagger();
 
 		$iterations = 3;
@@ -90,12 +105,12 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array $specifier
+	 * @param ActionSpecifier $specifier
 	 * @param RecentChange $rc
 	 * @covers ::clearBuffer
 	 * @dataProvider getActionData
 	 */
-	public function testClearBuffer( array $specifier, RecentChange $rc ) {
+	public function testClearBuffer( ActionSpecifier $specifier, RecentChange $rc ) {
 		$tagger = $this->getTagger();
 
 		$tagger->addTags( $specifier, [ 'a', 'b', 'c' ] );
@@ -104,12 +119,12 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array $specifier
+	 * @param ActionSpecifier $specifier
 	 * @param RecentChange $rc
 	 * @covers ::addConditionsLimitTag
 	 * @dataProvider getActionData
 	 */
-	public function testAddConditionsLimitTag( array $specifier, RecentChange $rc ) {
+	public function testAddConditionsLimitTag( ActionSpecifier $specifier, RecentChange $rc ) {
 		$tagger = $this->getTagger();
 
 		$tagger->addConditionsLimitTag( $specifier );
@@ -117,7 +132,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array $specifier
+	 * @param ActionSpecifier $specifier
 	 * @param RecentChange $rc
 	 * @covers ::addTags
 	 * @covers ::getTagsForRecentChange
@@ -127,7 +142,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	 * @covers ::bufferTagsToSetByAction
 	 * @dataProvider getActionData
 	 */
-	public function testAddGetTags( array $specifier, RecentChange $rc ) {
+	public function testAddGetTags( ActionSpecifier $specifier, RecentChange $rc ) {
 		$tagger = $this->getTagger();
 
 		$expected = [ 'foo', 'bar', 'baz' ];
@@ -136,14 +151,14 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array $specifier
+	 * @param ActionSpecifier $specifier
 	 * @param RecentChange $rc
 	 * @covers ::addTags
 	 * @covers ::getActionID
 	 * @covers ::bufferTagsToSetByAction
 	 * @dataProvider getActionData
 	 */
-	public function testAddTags_multiple( array $specifier, RecentChange $rc ) {
+	public function testAddTags_multiple( ActionSpecifier $specifier, RecentChange $rc ) {
 		$tagger = $this->getTagger();
 
 		$expected = [ 'foo', 'bar', 'baz' ];
@@ -154,7 +169,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array $specifier
+	 * @param ActionSpecifier $specifier
 	 * @param RecentChange $rc
 	 * @covers ::getTagsForRecentChange
 	 * @covers ::getIDFromRecentChange
@@ -162,7 +177,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getTagsForID
 	 * @dataProvider getActionData
 	 */
-	public function testGetTags_clear( array $specifier, RecentChange $rc ) {
+	public function testGetTags_clear( ActionSpecifier $specifier, RecentChange $rc ) {
 		$tagger = $this->getTagger();
 
 		$expected = [ 'foo', 'bar', 'baz' ];

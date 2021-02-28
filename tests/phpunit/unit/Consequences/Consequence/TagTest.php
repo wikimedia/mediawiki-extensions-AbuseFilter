@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Consequences\Consequence;
 
+use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Tag;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
@@ -20,10 +21,9 @@ class TagTest extends MediaWikiUnitTestCase {
 		$tagsToAdd = [ 'tag1', 'tag2' ];
 		$accountName = 'foobar';
 		$tagger = $this->createMock( ChangeTagger::class );
-		$addTags = function ( $specs, $tags ) use ( $tagsToAdd, $accountName ) {
+		$addTags = function ( ActionSpecifier $specs, $tags ) use ( $tagsToAdd, $accountName ) {
 			$this->assertSame( $tagsToAdd, $tags );
-			$this->assertArrayEquals( [ 'action', 'username', 'target', 'accountname' ], array_keys( $specs ) );
-			$this->assertSame( $accountName, $specs['accountname'] );
+			$this->assertSame( $accountName, $specs->getAccountName() );
 		};
 		$tagger->expects( $this->once() )->method( 'addTags' )->willReturnCallback( $addTags );
 		$tag = new Tag(

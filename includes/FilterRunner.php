@@ -234,7 +234,13 @@ class FilterRunner {
 
 		// Tag the action if the condition limit was hit
 		if ( $runnerData->getTotalConditions() > $this->options->get( 'AbuseFilterConditionLimit' ) ) {
-			$this->changeTagger->addConditionsLimitTag( $this->getSpecsForTagger() );
+			$accountname = $this->varManager->getVar(
+				$this->vars,
+				'accountname',
+				VariablesManager::GET_BC
+			)->toNative();
+			$spec = new ActionSpecifier( $this->action, $this->title, $this->user, $accountname );
+			$this->changeTagger->addConditionsLimitTag( $spec );
 		}
 
 		$matchedFilters = $runnerData->getMatchedFilters();
@@ -401,21 +407,5 @@ class FilterRunner {
 				$this->emergencyCache->incrementForFilter( $filter, $matches["$filter"] );
 			}
 		}
-	}
-
-	/**
-	 * @return array
-	 */
-	private function getSpecsForTagger(): array {
-		return [
-			'action' => $this->action,
-			'username' => $this->user->getName(),
-			'target' => $this->title,
-			'accountname' => $this->varManager->getVar(
-				$this->vars,
-				'accountname',
-				VariablesManager::GET_BC
-			)->toNative()
-		];
 	}
 }
