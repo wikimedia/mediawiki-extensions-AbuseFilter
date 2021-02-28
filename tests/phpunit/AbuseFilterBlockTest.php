@@ -2,14 +2,13 @@
 
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Block\BlockUserFactory;
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
-use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
@@ -77,6 +76,9 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 			$preventsTalkEdit = true,
 			$blockUserFactory,
 			$this->createMock( DatabaseBlockStore::class ),
+			function () {
+				return null;
+			},
 			$this->getFilterUser(),
 			$this->getMsgLocalizer()
 		);
@@ -94,6 +96,9 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 			false,
 			$this->createMock( BlockUserFactory::class ),
 			$this->createMock( DatabaseBlockStore::class ),
+			function () {
+				return null;
+			},
 			$this->createMock( FilterUser::class ),
 			$this->getMsgLocalizer()
 		);
@@ -103,70 +108,24 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	public function provideRevert() {
 		yield 'no block to revert' => [ null, null, false ];
 
-		$getMockRow = function ( UserIdentity $performer ) {
-			return new class( $performer ) extends stdClass {
-				private $performer;
-
-				public function __construct( UserIdentity $performer ) {
-					$this->performer = $performer;
-				}
-
-				public function __get( string $prop ) {
-					switch ( $prop ) {
-						case 'ipb_by':
-							return $this->performer->getId();
-						case 'ipb_by_text':
-							return $this->performer->getName();
-						case 'ipb_by_actor':
-							return $this->performer->getActorId();
-						case 'ipb_auto':
-							return false;
-						default:
-							return 'foo';
-					}
-				}
-			};
-		};
-
 		$randomUser = new UserIdentityValue( 1234, 'Some other user', 3456 );
-		yield 'not blocked by AF user' => [ $getMockRow( $randomUser ), null, false ];
+		yield 'not blocked by AF user' => [ new DatabaseBlock( [ 'by' => $randomUser->getUserId() ] ), null, false ];
 
-		$filterUserIdentity = $this->getFilterUser()->getUser();
+		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUser()->getUserId() ] );
 		$failBlockStore = $this->createMock( DatabaseBlockStore::class );
 		$failBlockStore->expects( $this->once() )->method( 'deleteBlock' )->willReturn( false );
-		yield 'cannot delete block' => [ $getMockRow( $filterUserIdentity ), $failBlockStore, false ];
+		yield 'cannot delete block' => [ $blockByFilter, $failBlockStore, false ];
 
 		$succeedBlockStore = $this->createMock( DatabaseBlockStore::class );
 		$succeedBlockStore->expects( $this->once() )->method( 'deleteBlock' )->willReturn( true );
-		yield 'succeed' => [ $getMockRow( $filterUserIdentity ), $succeedBlockStore, true ];
+		yield 'succeed' => [ $blockByFilter, $succeedBlockStore, true ];
 	}
 
 	/**
 	 * @covers ::revert
 	 * @dataProvider provideRevert
-	 * @todo This sucks. Clean it up once T255433 and T253717 are resolved
 	 */
-	public function testRevert( ?stdClass $blockRow, ?DatabaseBlockStore $blockStore, bool $expected ) {
-		// Unset all hook handlers per T272124
-		$this->setService( 'HookContainer', $this->createHookContainer() );
-		$db = $this->createMock( IDatabase::class );
-		$db->method( 'select' )->willReturnCallback( function ( $tables ) use ( $blockRow ) {
-			return in_array( 'ipblocks', $tables, true ) && $blockRow ? [ $blockRow ] : [];
-		} );
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getMaintenanceConnectionRef' )->willReturn( $db );
-		$this->setService( 'DBLoadBalancer', $lb );
-		$commentStore = $this->createMock( CommentStore::class );
-		$migrationData = [ 'tables' => [], 'fields' => [], 'joins' => [] ];
-		$commentStore->method( 'getJoin' )->willReturn( $migrationData );
-		$commentStore->method( 'insert' )->willReturn( [] );
-		$this->setService( 'CommentStore', $commentStore );
-		$actorMigration = $this->createMock( ActorMigration::class );
-		$actorMigration->method( 'getInsertValues' )->willReturn( [] );
-		$actorMigration->method( 'getJoin' )->willReturn( $migrationData );
-		$this->setService( 'ActorMigration', $actorMigration );
-		$this->setService( 'LinkCache', $this->createMock( LinkCache::class ) );
-
+	public function testRevert( ?DatabaseBlock $block, ?DatabaseBlockStore $blockStore, bool $expected ) {
 		$params = $this->createMock( Parameters::class );
 		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar', 2 ) );
 		$block = new Block(
@@ -175,6 +134,9 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 			false,
 			$this->createMock( BlockUserFactory::class ),
 			$blockStore ?? $this->createMock( DatabaseBlockStore::class ),
+			function () use ( $block ) {
+				return $block;
+			},
 			$this->getFilterUser(),
 			$this->getMsgLocalizer()
 		);
