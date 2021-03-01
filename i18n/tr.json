@@ -312,6 +312,7 @@
 	"abusefilter-edit-empty-throttlegroups": "En az bir gaz grubu seçilmelidir.",
 	"abusefilter-edit-duplicated-throttlegroups": "Gaz kelebeği gruplarının kopyaları olamaz.",
 	"abusefilter-edit-invalid-throttlegroups": "Belirtilen gaz grupları geçerli değil.",
+	"abusefilter-edit-invalid-group": "Belirtilen filtre grubu ('$1') geçerli değil.",
 	"abusefilter-edit-builder-select": "İmleçte eklemek için bir seçenek seçin",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetik operatörler",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Toplama (+)",

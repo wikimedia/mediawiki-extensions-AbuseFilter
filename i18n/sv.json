@@ -322,6 +322,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Minst en begränsningsgrupp måste markeras.",
 	"abusefilter-edit-duplicated-throttlegroups": "Begränsningsgrupper kan inte ha dubbletter.",
 	"abusefilter-edit-invalid-throttlegroups": "De angivna begränsningsgrupperna är inte giltiga.",
+	"abusefilter-edit-invalid-group": "Den angivna filtergruppen (\"$1\") är inte giltig",
 	"abusefilter-edit-builder-select": "Ange ett alternativ för att lägga till det vid markören",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetiska operatorer",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Addition (+)",

@@ -502,6 +502,7 @@
 	"abusefilter-revert-reasonfield": "السبب:",
 	"abusefilter-test": "اختبار المرشح على تعديلات سابقة",
 	"abusefilter-test-intro": "هذه الصفحة تسمح لك بالتحقق من مرشح مدخل في الصندوق بالأسفل ضد آخر $1 {{PLURAL:$1|تغيير}}.\nلتحميل مرشح موجود; اكتب رقم المرشح الخاص به في الصندوق بأسفل صندوق نص التعديل، واضغط زر \"{{int:abusefilter-test-load}}\".",
+	"abusefilter-test-options-section": "خيارات البحث",
 	"abusefilter-test-legend": "اختبار المرشح",
 	"abusefilter-test-load-filter": "تحميل رمز تعريف المرشح:",
 	"abusefilter-test-submit": "اختبار",

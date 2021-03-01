@@ -305,6 +305,7 @@
 	"abusefilter-edit-empty-throttlegroups": "יש לבחור לפחות קבוצת הגבלה אחת.",
 	"abusefilter-edit-duplicated-throttlegroups": "קבוצות ההגבלה אינן יכולות להכיל פריטים כפולים",
 	"abusefilter-edit-invalid-throttlegroups": "קבוצות ההגבלה שסופקו אינן תקינות.",
+	"abusefilter-edit-invalid-group": "קבוצת המסננים שצוינה (\"$1\") אינה תקינה.",
 	"abusefilter-edit-builder-select": "יש לבחור באפשרות כדי להוסיף אותה",
 	"abusefilter-edit-builder-group-op-arithmetic": "אופרטורים חשבוניים",
 	"abusefilter-edit-builder-op-arithmetic-addition": "חיבור (+)",

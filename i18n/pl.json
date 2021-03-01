@@ -321,6 +321,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Przynajmniej jedna grupa ograniczenia musi być wybrana.",
 	"abusefilter-edit-duplicated-throttlegroups": "Grupy zdławienia nie mogą mieć duplikatów.",
 	"abusefilter-edit-invalid-throttlegroups": "Podane grupy ograniczenia nie są poprawne.",
+	"abusefilter-edit-invalid-group": "Wybrana grupa filtru („$1”) nie jest prawidłowa.",
 	"abusefilter-edit-builder-select": "Wybierz opcję, aby wkleić ją na pozycji kursora",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operatory arytmetyczne",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Dodawanie (+)",
