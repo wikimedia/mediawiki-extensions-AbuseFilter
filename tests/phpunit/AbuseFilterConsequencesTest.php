@@ -343,7 +343,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		// Ensure that our user is not blocked and is a sysop (matched filters could block or
 		// degroup the user)
 		$this->user->addToDatabase();
-		$this->user->addGroup( 'sysop' );
+		MediaWikiServices::getInstance()->getUserGroupManager()->addUserToGroup( $this->user, 'sysop' );
 		$block = DatabaseBlock::newFromTarget( $this->user );
 		if ( $block ) {
 			$block->delete();
