@@ -532,6 +532,7 @@
 	"abusefilter-changeslist-examine": "בדיקה",
 	"abusefilter-examine": "בדיקת שינויים ספציפיים",
 	"abusefilter-examine-intro": "דף זה מאפשר לך לבדוק את המשתנים שמייצר מסנן ההשחתות עבור שינוי ספציפי, ולבדוק זאת אל מול המסננים.",
+	"abusefilter-examine-intro-examine-only": "הדף הזה מאפשר לך לבחון את המשתנים שנוצרו על־ידי מסנן ההשחתות עבור שינוי פרטני.",
 	"abusefilter-examine-legend": "בחירת השינויים",
 	"abusefilter-examine-diff": "כתובת ההשוואה בין הגרסאות:",
 	"abusefilter-examine-user": "משתמש:",
