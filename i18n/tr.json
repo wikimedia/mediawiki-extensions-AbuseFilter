@@ -539,6 +539,7 @@
 	"abusefilter-changeslist-examine": "incele",
 	"abusefilter-examine": "Bireysel değişiklikleri incele",
 	"abusefilter-examine-intro": "Bu sayfa, Suistimal filtresi tarafından özgün bir değişiklik için oluşturulan değişkenleri incelemenize, ve filtrelere karşı test etmenize izin verir.",
+	"abusefilter-examine-intro-examine-only": "Bu sayfa, Kötüye Kullanım Filtresi tarafından oluşturulan değişkenleri tek bir değişiklik için incelemenizi sağlar.",
 	"abusefilter-examine-legend": "Değişiklikleri seç",
 	"abusefilter-examine-diff": "Fark URL'si:",
 	"abusefilter-examine-user": "Kullanıcı:",

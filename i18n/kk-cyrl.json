@@ -4,6 +4,7 @@
 			"Arystanbek",
 			"Batyrbek.kz",
 			"GaiJin",
+			"Hedeyohu22",
 			"Нұрлан Рахымжанов"
 		]
 	},
@@ -152,6 +153,7 @@
 	"abusefilter-edit-export": "Бұл сүзгішті басқа уикиге экспорттау",
 	"abusefilter-edit-syntaxok": "Синтаксис қатесі табылмады.",
 	"abusefilter-edit-syntaxerr": "Синтаксис қатесі табылды: $1",
+	"abusefilter-edit-invalid-group": "Көрсетілген сүзгі тобы ('$1') жарамсыз.",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Қосулар (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "Азайтулар (-)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "Көбейту (*)",
@@ -251,6 +253,7 @@
 	"abusefilter-test-shownegative": "Сүзгіш есептемеген өзгерістерді көрсету",
 	"abusefilter-test-badtitle": "Сіз енгізген бет атауы жарамды емес. Ол бір немесе бірнеше таңбалардан тұрады бұл тақырып аттарында қолданылмайды.",
 	"abusefilter-changeslist-examine": "тексеру",
+	"abusefilter-examine-intro-examine-only": "Бұл парақ жеке өзгерту үшін «Қиянат» сүзгісімен жасалған айнымалыларды зерттеуге мүмкіндік береді.",
 	"abusefilter-examine-legend": "Өзгерістерді таңдау",
 	"abusefilter-examine-diff": "URL айырм:",
 	"abusefilter-examine-user": "Қатысушы:",

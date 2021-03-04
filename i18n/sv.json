@@ -549,6 +549,7 @@
 	"abusefilter-changeslist-examine": "undersök",
 	"abusefilter-examine": "Undersök enstaka ändringar",
 	"abusefilter-examine-intro": "Denna sida låter dig undersöka variablerna skapade av missbruksfiltret för en enstaka ändring, och testa den mot filter.",
+	"abusefilter-examine-intro-examine-only": "Den här sidan låter dig granska variablerna som genererats av missbruksfiltret för en individuell ändring.",
 	"abusefilter-examine-legend": "Välj ändringar",
 	"abusefilter-examine-diff": "Diff-URL:",
 	"abusefilter-examine-user": "Användare:",
