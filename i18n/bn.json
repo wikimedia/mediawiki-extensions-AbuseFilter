@@ -57,6 +57,7 @@
 	"abusefilter-log-search-group-any": "যেকোন",
 	"abusefilter-log-search-filter": "ছাঁকনির আইডি:",
 	"abusefilter-log-search-filter-help": "উলম্ব দণ্ড দিয়ে আলাদা করুন, বৈশ্বিক ছাঁকনির জন্য সাথে \"$1\" উপসর্গ দিন",
+	"abusefilter-log-search-filter-help-central": "উলম্ব দণ্ড দিয়ে আলাদা করুন",
 	"abusefilter-log-search-title": "শিরোনাম:",
 	"abusefilter-log-search-wiki": "উইকি:",
 	"abusefilter-log-search-impact": "প্রভাব:",
@@ -165,7 +166,7 @@
 	"abusefilter-edit-subtitle-new": "ছাঁকনি তৈরি করছেন",
 	"abusefilter-edit-token-not-match": "সম্পাদনাটি সংরক্ষণ করা হয়নি! আবার সংরক্ষণ করুন।",
 	"abusefilter-edit-status-label": "পরিসংখ্যান:",
-	"abusefilter-edit-status": "বিগত $1টি {{PLURAL:$1|কার্যে}}, এই ছাঁকনিটি $2 বার ($3%) মিলেছে। গড়ে, এটি চলার সময় $4 মি.সে. এবং এটি শর্তসীমার $5টি {{PLURAL:$5|শর্ত}} ব্যয় করেছে।",
+	"abusefilter-edit-status": "বিগত $1টি {{PLURAL:$1|কার্যে}}, এই ছাঁকনিটি $2 বার ($3%) মিলেছে। গড়ে, এটি চালনার সময় হল $4 মি.সে. এবং এটি শর্তসীমার $5টি {{PLURAL:$5|শর্ত}} ব্যয় করেছে।",
 	"abusefilter-edit-new": "নতুন ছাঁকনি",
 	"abusefilter-edit-save": "ছাঁকনি সংরক্ষণ করুন",
 	"abusefilter-edit-id": "ছাঁকনির আইডি:",
@@ -185,7 +186,10 @@
 	"abusefilter-edit-lastmod-text": "$1 তারিখে $2 কর্তৃক",
 	"abusefilter-edit-hitcount": "ছাঁকনির হিট:",
 	"abusefilter-edit-consequences": "মিল পাওয়া গেলে যে পদক্ষেপ নেয়া হবে",
+	"abusefilter-edit-action-warn": "ব্যবহারকারীকে সতর্কবার্তা দেখানোর পর এই ক্রিয়াগুলি সক্রিয় করুন",
+	"abusefilter-edit-action-disallow": "ব্যবহারকারীকে প্রশ্নবিদ্ধ ক্রিয়াটি করা থেকে বাধা দিন",
 	"abusefilter-edit-action-blockautopromote": "ব্যবহারকারীর স্বয়ংনিশ্চিতকৃত স্থিতি বাতিল করুন",
+	"abusefilter-edit-action-throttle": "ব্যবহারকারী সীমার হার অতিক্রম করলে কেবল তখনি ক্রিয়াগুলি সক্রিয় করুন",
 	"abusefilter-edit-action-tag": "আরও পর্যালোচনার জন্য সম্পাদনা ট্যাগ করুন",
 	"abusefilter-edit-throttle-period": "সময়কাল (সেকেন্ডে):",
 	"abusefilter-edit-throttle-groups-help": "$1 দেখুন।",
@@ -228,6 +232,7 @@
 	"abusefilter-edit-export": "এই ছাঁকনিটি অন্য উইকিতে রপ্তানি করুন",
 	"abusefilter-edit-syntaxok": "কোন শব্দবিন্যাস ত্রুটি পাওয়া যায়নি।",
 	"abusefilter-edit-syntaxerr": "সিনট্যাক্স ত্রুটি সনাক্ত হয়েছে: $1",
+	"abusefilter-edit-builder-select": "কার্সারের অবস্থানে যুক্ত করার জন্য একটি বিকল্প নির্বাচন করুন",
 	"abusefilter-edit-builder-op-arithmetic-addition": "যোগ (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "বিয়োগ (-)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "গুন (*)",
@@ -367,5 +372,6 @@
 	"abusefilter-view-privatedetails-legend": "ব্যক্তিগতের বিস্তারিত দেখুন",
 	"abusefilter-view-privatedetails-reason": "ব্যক্তিগতের বিস্তারিত দেখার কারণ:",
 	"abusefilter-log-details-id": "লগ আইডি",
-	"abusefilter-log-ip-not-available": "উপলব্ধ নয়"
+	"abusefilter-log-ip-not-available": "উপলব্ধ নয়",
+	"notification-header-throttle-filter": "সম্প্রতি {{GENDER:$1|আপনার}} সম্পাদিত $2 নং অপব্যবহার ছাঁকনির কিছু কার্য নিষ্ক্রিয় করা হয়েছে।"
 }
