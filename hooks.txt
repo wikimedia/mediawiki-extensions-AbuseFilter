@@ -57,7 +57,7 @@ $rc: RecentChange|null If the variables should be generated for an RC entry, thi
 $vars: AbuseFilterVariableHolder
 $rc: RecentChange|null If the variables should be generated for an RC entry, this is the entry. Null if it's for the current action being filtered.
 
-'AbuseFilter-generateVarsForRecentChange': Hook that allows extensions to generate variables from a RecentChange row with a non-standard model.
+'AbuseFilterGenerateVarsForRecentChange': Hook that allows extensions to generate variables from a RecentChange row with a non-standard model.
 The hooks `AbuseFilterGenerate(Title|User|Generic)Hook` should be used for computing single variables in standard RC rows.
 $generator: RCVariableGenerator
 $rc: RecentChange

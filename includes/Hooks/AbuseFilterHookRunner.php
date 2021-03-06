@@ -169,7 +169,7 @@ class AbuseFilterHookRunner implements
 		User $contextUser
 	) {
 		return $this->hookContainer->run(
-			'AbuseFilter-generateVarsForRecentChange',
+			'AbuseFilterGenerateVarsForRecentChange',
 			[ $generator, $rc, $vars, $contextUser ]
 		);
 	}
