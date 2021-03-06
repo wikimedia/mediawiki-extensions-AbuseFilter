@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
 use ManualLogEntry;
 use MediaWiki\Block\BlockUserFactory;
-use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
@@ -21,6 +20,8 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	private $preventsTalkEdit;
 	/** @var DatabaseBlockStore */
 	private $databaseBlockStore;
+	/** @var callable */
+	private $blockFactory;
 
 	/**
 	 * @param Parameters $params
@@ -28,6 +29,7 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	 * @param bool $preventTalkEdit
 	 * @param BlockUserFactory $blockUserFactory
 	 * @param DatabaseBlockStore $databaseBlockStore
+	 * @param callable $blockFactory Should take a user name and return a DatabaseBlock or null.
 	 * @param FilterUser $filterUser
 	 * @param MessageLocalizer $messageLocalizer
 	 */
@@ -37,12 +39,14 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 		bool $preventTalkEdit,
 		BlockUserFactory $blockUserFactory,
 		DatabaseBlockStore $databaseBlockStore,
+		callable $blockFactory,
 		FilterUser $filterUser,
 		MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct( $params, $expiry, $blockUserFactory, $filterUser, $messageLocalizer );
 		$this->databaseBlockStore = $databaseBlockStore;
 		$this->preventsTalkEdit = $preventTalkEdit;
+		$this->blockFactory = $blockFactory;
 	}
 
 	/**
@@ -67,8 +71,8 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	 * @todo This could use UnblockUser, but we need to check if the block was performed by the AF user
 	 */
 	public function revert( $info, UserIdentity $performer, string $reason ): bool {
-		// TODO: DI once T255433 is resolved
-		$block = DatabaseBlock::newFromTarget( $this->parameters->getUser()->getName() );
+		// TODO: Proper DI once T255433 is resolved
+		$block = ( $this->blockFactory )( $this->parameters->getUser()->getName() );
 		if ( !( $block && $block->getBy() === $this->filterUser->getUser()->getId() ) ) {
 			// Not blocked by abuse filter
 			return false;
@@ -80,12 +84,11 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 		$logEntry->setTarget( new TitleValue( NS_USER, $this->parameters->getUser()->getName() ) );
 		$logEntry->setComment( $reason );
 		$logEntry->setPerformer( $performer );
-		$id = $logEntry->insert();
 		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
 			// This has a bazillion of static dependencies all around the place, and a nightmare to deal with in tests
 			// TODO: Remove this check once T253717 is resolved
 			// @codeCoverageIgnoreStart
-			$logEntry->publish( $id );
+			$logEntry->publish( $logEntry->insert() );
 			// @codeCoverageIgnoreEnd
 		}
 		return true;

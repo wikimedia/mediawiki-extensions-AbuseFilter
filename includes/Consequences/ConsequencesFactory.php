@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use BagOStuff;
 use MediaWiki\Block\BlockUserFactory;
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
@@ -143,6 +144,8 @@ class ConsequencesFactory {
 			$preventsTalk,
 			$this->blockUserFactory,
 			$this->databaseBlockStore,
+			// FIXME This is a hack until DI is possible here.
+			[ DatabaseBlock::class, 'newFromTarget' ],
 			$this->filterUser,
 			$this->messageLocalizer
 		);
