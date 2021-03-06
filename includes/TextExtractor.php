@@ -80,7 +80,7 @@ class TextExtractor {
 	public function contentToString( Content $content ) : string {
 		$text = null;
 
-		if ( $this->hookRunner->onAbuseFilterContentToString(
+		if ( $this->hookRunner->onAbuseFilter_contentToString(
 			$content,
 			$text
 		) ) {

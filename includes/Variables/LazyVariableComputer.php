@@ -121,7 +121,7 @@ class LazyVariableComputer {
 		$varMethod = $var->getMethod();
 		$result = null;
 
-		if ( !$this->hookRunner->onAbuseFilterInterceptVariable(
+		if ( !$this->hookRunner->onAbuseFilter_interceptVariable(
 			$varMethod,
 			$vars,
 			$parameters,
@@ -352,7 +352,7 @@ class LazyVariableComputer {
 				$result = $this->contentLanguage->getCode();
 				break;
 			default:
-				if ( $this->hookRunner->onAbuseFilterComputeVariable(
+				if ( $this->hookRunner->onAbuseFilter_computeVariable(
 					$varMethod,
 					$vars,
 					$parameters,

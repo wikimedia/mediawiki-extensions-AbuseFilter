@@ -203,7 +203,7 @@ class KeywordsManager {
 	public function getDeprecatedVariables(): array {
 		if ( $this->deprecatedVars === null ) {
 			$this->deprecatedVars = self::DEPRECATED_VARS;
-			$this->hookRunner->onAbuseFilterDeprecatedVariables( $this->deprecatedVars );
+			$this->hookRunner->onAbuseFilter_deprecatedVariables( $this->deprecatedVars );
 		}
 		return $this->deprecatedVars;
 	}
@@ -214,7 +214,7 @@ class KeywordsManager {
 	public function getBuilderValues(): array {
 		if ( $this->builderValues === null ) {
 			$this->builderValues = self::BUILDER_VALUES;
-			$this->hookRunner->onAbuseFilterBuilder( $this->builderValues );
+			$this->hookRunner->onAbuseFilter_builder( $this->builderValues );
 		}
 		return $this->builderValues;
 	}

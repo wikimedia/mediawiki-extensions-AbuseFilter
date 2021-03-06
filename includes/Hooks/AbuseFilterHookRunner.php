@@ -45,7 +45,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterBuilder( array &$realValues ) {
+	public function onAbuseFilter_builder( array &$realValues ) {
 		return $this->hookContainer->run(
 			'AbuseFilter-builder',
 			[ &$realValues ]
@@ -55,7 +55,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterDeprecatedVariables( array &$deprecatedVariables ) {
+	public function onAbuseFilter_deprecatedVariables( array &$deprecatedVariables ) {
 		return $this->hookContainer->run(
 			'AbuseFilter-deprecatedVariables',
 			[ &$deprecatedVariables ]
@@ -65,7 +65,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterComputeVariable(
+	public function onAbuseFilter_computeVariable(
 		string $method,
 		VariableHolder $vars,
 		array $parameters,
@@ -80,7 +80,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterContentToString(
+	public function onAbuseFilter_contentToString(
 		Content $content,
 		?string &$text
 	) {
@@ -93,7 +93,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterFilterAction(
+	public function onAbuseFilter_filterAction(
 		VariableHolder &$vars,
 		Title $title
 	) {
@@ -120,7 +120,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterGenerateTitleVars(
+	public function onAbuseFilter_generateTitleVars(
 		VariableHolder $vars,
 		Title $title,
 		string $prefix,
@@ -135,7 +135,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterGenerateUserVars(
+	public function onAbuseFilter_generateUserVars(
 		VariableHolder $vars,
 		User $user,
 		?RecentChange $rc
@@ -149,7 +149,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterGenerateGenericVars(
+	public function onAbuseFilter_generateGenericVars(
 		VariableHolder $vars,
 		?RecentChange $rc
 	) {
@@ -177,7 +177,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterInterceptVariable(
+	public function onAbuseFilter_interceptVariable(
 		string $method,
 		VariableHolder $vars,
 		array $parameters,

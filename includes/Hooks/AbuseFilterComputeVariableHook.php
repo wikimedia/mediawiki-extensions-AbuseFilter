@@ -17,7 +17,7 @@ interface AbuseFilterComputeVariableHook {
 	 * @param ?string &$result Result of the computation
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public function onAbuseFilterComputeVariable(
+	public function onAbuseFilter_computeVariable(
 		string $method,
 		VariableHolder $vars,
 		array $parameters,

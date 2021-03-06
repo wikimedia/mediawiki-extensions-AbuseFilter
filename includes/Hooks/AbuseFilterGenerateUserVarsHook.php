@@ -18,7 +18,7 @@ interface AbuseFilterGenerateUserVarsHook {
 	 *     this is the entry. Null if it's for the current action being filtered.
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public function onAbuseFilterGenerateUserVars(
+	public function onAbuseFilter_generateUserVars(
 		VariableHolder $vars,
 		User $user,
 		?RecentChange $rc

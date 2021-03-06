@@ -16,7 +16,7 @@ interface AbuseFilterContentToStringHook {
 	 * @param ?string &$text
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public function onAbuseFilterContentToString(
+	public function onAbuseFilter_contentToString(
 		Content $content,
 		?string &$text
 	);

@@ -174,7 +174,7 @@ class FilterRunner {
 	 */
 	private function init() {
 		// Add vars from extensions
-		$this->hookRunner->onAbuseFilterFilterAction(
+		$this->hookRunner->onAbuseFilter_filterAction(
 			$this->vars,
 			$this->title
 		);

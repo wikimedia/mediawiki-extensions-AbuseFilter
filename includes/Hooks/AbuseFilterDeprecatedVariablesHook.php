@@ -12,5 +12,5 @@ interface AbuseFilterDeprecatedVariablesHook {
 	 * @param array &$deprecatedVariables deprecated variables, syntax: [ 'old_name' => 'new_name' ]
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public function onAbuseFilterDeprecatedVariables( array &$deprecatedVariables );
+	public function onAbuseFilter_deprecatedVariables( array &$deprecatedVariables );
 }

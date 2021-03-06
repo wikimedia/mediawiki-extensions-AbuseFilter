@@ -54,7 +54,7 @@ class VariableGenerator {
 		$this->vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
 		$this->vars->setLazyLoadVar( 'wiki_language', 'get-wiki-language', [] );
 
-		$this->hookRunner->onAbuseFilterGenerateGenericVars( $this->vars, $rc );
+		$this->hookRunner->onAbuseFilter_generateGenericVars( $this->vars, $rc );
 		return $this;
 	}
 
@@ -103,7 +103,7 @@ class VariableGenerator {
 			[ 'user' => $user ]
 		);
 
-		$this->hookRunner->onAbuseFilterGenerateUserVars( $this->vars, $user, $rc );
+		$this->hookRunner->onAbuseFilter_generateUserVars( $this->vars, $user, $rc );
 
 		return $this;
 	}
@@ -154,7 +154,7 @@ class VariableGenerator {
 			[ 'title' => $title ]
 		);
 
-		$this->hookRunner->onAbuseFilterGenerateTitleVars( $this->vars, $title, $prefix, $rc );
+		$this->hookRunner->onAbuseFilter_generateTitleVars( $this->vars, $title, $prefix, $rc );
 
 		return $this;
 	}

@@ -19,7 +19,7 @@ interface AbuseFilterFilterActionHook {
 	 * @param Title $title
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public function onAbuseFilterFilterAction(
+	public function onAbuseFilter_filterAction(
 		VariableHolder &$vars,
 		Title $title
 	);

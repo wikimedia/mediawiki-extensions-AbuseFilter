@@ -17,7 +17,7 @@ interface AbuseFilterInterceptVariableHook {
 	 * @param mixed &$result Result of the computation
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
-	public function onAbuseFilterInterceptVariable(
+	public function onAbuseFilter_interceptVariable(
 		string $method,
 		VariableHolder $vars,
 		array $parameters,
