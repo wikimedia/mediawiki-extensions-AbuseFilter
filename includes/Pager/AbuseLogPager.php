@@ -156,7 +156,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
 		}
 
-		$timestamp = htmlspecialchars( $lang->timeanddate( $row->afl_timestamp, true ) );
+		$timestamp = htmlspecialchars( $lang->userTimeAndDate( $row->afl_timestamp, $this->getUser() ) );
 
 		$actions_takenRaw = $row->afl_actions;
 		if ( !strlen( trim( $actions_takenRaw ) ) ) {

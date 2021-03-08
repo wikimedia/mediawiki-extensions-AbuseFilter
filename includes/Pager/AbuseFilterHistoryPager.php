@@ -111,7 +111,7 @@ class AbuseFilterHistoryPager extends TablePager {
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
 				$formatted = $linkRenderer->makeLink(
 					$title,
-					$lang->timeanddate( $row->afh_timestamp, true )
+					$lang->userTimeAndDate( $row->afh_timestamp, $this->getUser() )
 				);
 				break;
 			case 'afh_user_text':
