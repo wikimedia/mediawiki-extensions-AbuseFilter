@@ -187,7 +187,7 @@
 	"abusefilter-edit-hitcount": "ছাঁকনির হিট:",
 	"abusefilter-edit-consequences": "মিল পাওয়া গেলে যে পদক্ষেপ নেয়া হবে",
 	"abusefilter-edit-action-warn": "ব্যবহারকারীকে সতর্কবার্তা দেখানোর পর এই ক্রিয়াগুলি সক্রিয় করুন",
-	"abusefilter-edit-action-disallow": "ব্যবহারকারীকে প্রশ্নবিদ্ধ ক্রিয়াটি করা থেকে বাধা দিন",
+	"abusefilter-edit-action-disallow": "ব্যবহারকারীকে এই ক্রিয়াটি করা থেকে বাধা দিন",
 	"abusefilter-edit-action-blockautopromote": "ব্যবহারকারীর স্বয়ংনিশ্চিতকৃত স্থিতি বাতিল করুন",
 	"abusefilter-edit-action-throttle": "ব্যবহারকারী সীমার হার অতিক্রম করলে কেবল তখনি ক্রিয়াগুলি সক্রিয় করুন",
 	"abusefilter-edit-action-tag": "আরও পর্যালোচনার জন্য সম্পাদনা ট্যাগ করুন",
