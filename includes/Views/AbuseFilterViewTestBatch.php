@@ -198,6 +198,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$action = $this->mTestAction !== '0' ? $this->mTestAction : false;
 		$conds[] = $this->buildTestConditions( $dbr, $action );
+		$conds = array_merge( $conds, $this->buildVisibilityConditions() );
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );

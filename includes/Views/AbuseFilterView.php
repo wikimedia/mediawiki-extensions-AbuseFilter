@@ -313,6 +313,14 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
+	 * @todo Check what the user can actually see and use a proper bitmask. Core should provide such a method though.
+	 * @return array
+	 */
+	public function buildVisibilityConditions() : array {
+		return [ 'rc_deleted' => 0 ];
+	}
+
+	/**
 	 * @param string|int $id
 	 * @param string|null $text
 	 * @return string HTML
