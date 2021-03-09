@@ -311,6 +311,7 @@ class AFComputedVariable {
 
 				$revision = $title->getFirstRevision();
 				if ( $revision ) {
+					// TODO T233241
 					$result = $revision->getUserText();
 				} else {
 					$result = '';
@@ -419,7 +420,12 @@ class AFComputedVariable {
 				$revAuthors = $dbr->selectFieldValues(
 					$revQuery['tables'],
 					$revQuery['fields']['rev_user_text'],
-					[ 'rev_page' => $title->getArticleID() ],
+					[
+						'rev_page' => $title->getArticleID(),
+						// TODO Should deleted names be counted in the 10 authors? If yes, this check should
+						// be moved inside the foreach
+						'rev_deleted' => 0
+					],
 					__METHOD__,
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
 					[ 'ORDER BY' => 'rev_timestamp DESC',
