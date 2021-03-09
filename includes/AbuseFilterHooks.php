@@ -165,10 +165,15 @@ class AbuseFilterHooks {
 	 * @param string $reason
 	 * @param string &$error
 	 * @param Status $status
+	 * @param bool $suppress
 	 * @return bool
 	 */
 	public static function onArticleDelete( WikiPage $article, User $user, $reason, &$error,
-		Status $status ) {
+		Status $status, $suppress ) {
+		if ( $suppress ) {
+			// Don't filter suppressions, T71617
+			return true;
+		}
 		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $article->getTitle() );
 		$vars = $builder->getDeleteVars( $reason );
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
