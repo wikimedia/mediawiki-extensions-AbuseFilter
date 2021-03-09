@@ -5,9 +5,13 @@ namespace MediaWiki\Extension\AbuseFilter\Api;
 use ApiBase;
 use ApiResult;
 use FormatJson;
+use LogEventsList;
 use LogicException;
+use LogPage;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
 
 class CheckMatch extends ApiBase {
@@ -16,6 +20,7 @@ class CheckMatch extends ApiBase {
 	 */
 	public function execute() {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
+		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
@@ -35,20 +40,45 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
+			$type = (int)$rc->getAttribute( 'rc_type' );
+			$deletedValue = $rc->getAttribute( 'rc_deleted' );
+			if (
+				(
+					$type === RC_LOG &&
+					!LogEventsList::userCanBitfield(
+						$deletedValue,
+						LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
+						$user
+					)
+				) || (
+					$type !== RC_LOG &&
+					!RevisionRecord::userCanBitfield( $deletedValue, RevisionRecord::SUPPRESSED_ALL, $user )
+				)
+			) {
+				// T223654 - Same check as in AbuseFilterChangesList
+				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedrc' );
+			}
+
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator( $rc, $this->getUser() );
+			$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator( $rc, $user );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_log',
-				'afl_var_dump',
+				'*',
 				[ 'afl_id' => $params['logid'] ],
 				__METHOD__
 			);
 
 			if ( !$row ) {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
+			}
+
+			if ( !$afPermManager->canSeeHiddenLogEntries( $user ) && SpecialAbuseLog::isHidden( $row ) ) {
+				// T223654 - Same check as in SpecialAbuseLog. Both the visibility of the AbuseLog entry
+				// and the corresponding revision are checked.
+				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );
 			}
 
 			$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $row->afl_var_dump );
