@@ -261,16 +261,16 @@ class AbuseFilterPager extends TablePager {
 					->rawParams(
 						$this->mPage->getLinkToLatestDiff(
 							$row->af_id,
-							$lang->timeanddate( $value, true )
+							$lang->userTimeAndDate( $value, $user )
 						),
 						$userLink,
 						$this->mPage->getLinkToLatestDiff(
 							$row->af_id,
-							$lang->date( $value, true )
+							$lang->userDate( $value, $user )
 						),
 						$this->mPage->getLinkToLatestDiff(
 							$row->af_id,
-							$lang->time( $value, true )
+							$lang->userTime( $value, $user )
 						)
 					)->params(
 						wfEscapeWikiText( $row->af_user_text )

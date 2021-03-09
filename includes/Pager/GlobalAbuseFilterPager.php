@@ -58,14 +58,14 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				}
 				return $this->msg( 'abusefilter-hitcount' )->numParams( $value )->parse();
 			case 'af_timestamp':
-				$user = $row->af_user_text;
+				$user = $this->getUser();
 				return $this->msg(
 					'abusefilter-edit-lastmod-text',
-					$lang->timeanddate( $value, true ),
-					$user,
-					$lang->date( $value, true ),
-					$lang->time( $value, true ),
-					$user
+					$lang->userTimeAndDate( $value, $user ),
+					$row->af_user_text,
+					$lang->userDate( $value, $user ),
+					$lang->userTime( $value, $user ),
+					$row->af_user_text
 				)->parse();
 			case 'af_group':
 				// If this is global, local name probably doesn't exist, but try

@@ -498,16 +498,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				->rawParams(
 					$this->getLinkToLatestDiff(
 						$filter,
-						$lang->timeanddate( $filterObj->getTimestamp(), true )
+						$lang->userTimeAndDate( $filterObj->getTimestamp(), $user )
 					),
 					$userLink,
 					$this->getLinkToLatestDiff(
 						$filter,
-						$lang->date( $filterObj->getTimestamp(), true )
+						$lang->userDate( $filterObj->getTimestamp(), $user )
 					),
 					$this->getLinkToLatestDiff(
 						$filter,
-						$lang->time( $filterObj->getTimestamp(), true )
+						$lang->userTime( $filterObj->getTimestamp(), $user )
 					)
 				)->params(
 					wfEscapeWikiText( $filterObj->getUserName() )

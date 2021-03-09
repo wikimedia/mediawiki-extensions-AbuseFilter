@@ -915,7 +915,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				) .
 				Xml::element( 'td',
 					null,
-					$this->getLanguage()->timeanddate( $row->afl_timestamp, true )
+					$this->getLanguage()->userTimeAndDate( $row->afl_timestamp, $this->getUser() )
 				)
 			);
 

@@ -221,7 +221,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @return string
 	 */
 	public function formatVersionLink( $timestamp, $history_id ) {
-		$text = $this->getLanguage()->timeanddate( $timestamp, true );
+		$text = $this->getLanguage()->userTimeAndDate( $timestamp, $this->getUser() );
 		$title = $this->getTitle( "history/$this->filter/item/$history_id" );
 
 		return $this->linkRenderer->makeLink( $title, $text );

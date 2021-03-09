@@ -201,7 +201,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 			$msg = $this->msg( 'abusefilter-revert-preview-item' )
 				->params(
-					$lang->timeanddate( $result['timestamp'], true )
+					$lang->userTimeAndDate( $result['timestamp'], $user )
 				)->rawParams(
 					Linker::userLink( $result['userid'], $result['user'] )
 				)->params(
