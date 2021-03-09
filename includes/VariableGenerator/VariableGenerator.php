@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\User\UserIdentity;
 use RecentChange;
 use Title;
 use User;
@@ -59,16 +60,18 @@ class VariableGenerator {
 	}
 
 	/**
-	 * @param User $user
+	 * @param UserIdentity $userIdentity
 	 * @param RecentChange|null $rc If the variables should be generated for an RC entry,
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addUserVars( User $user, RecentChange $rc = null ) : self {
+	public function addUserVars( UserIdentity $userIdentity, RecentChange $rc = null ) : self {
+		$user = User::newFromIdentity( $userIdentity );
+
 		$this->vars->setLazyLoadVar(
 			'user_editcount',
 			'user-editcount',
-			[ 'user' => $user ]
+			[ 'user-identity' => $userIdentity ]
 		);
 
 		$this->vars->setVar( 'user_name', $user->getName() );
@@ -88,13 +91,13 @@ class VariableGenerator {
 		$this->vars->setLazyLoadVar(
 			'user_groups',
 			'user-groups',
-			[ 'user' => $user ]
+			[ 'user-identity' => $userIdentity ]
 		);
 
 		$this->vars->setLazyLoadVar(
 			'user_rights',
 			'user-rights',
-			[ 'user' => $user ]
+			[ 'user-identity' => $userIdentity ]
 		);
 
 		$this->vars->setLazyLoadVar(

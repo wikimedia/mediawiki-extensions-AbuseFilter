@@ -325,6 +325,9 @@ return [
 			$services->getRevisionStore(),
 			$services->getContentLanguage(),
 			$services->getParser(),
+			$services->getUserEditTracker(),
+			$services->getUserGroupManager(),
+			$services->getPermissionManager(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
