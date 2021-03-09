@@ -258,6 +258,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$action = $this->mTestAction !== '0' ? $this->mTestAction : false;
 		$conds[] = $this->buildTestConditions( $dbr, $action );
+		$conds = array_merge( $conds, $this->buildVisibilityConditions() );
 
 		$rcQuery = RecentChange::getQueryInfo();
 		$res = $dbr->select(
