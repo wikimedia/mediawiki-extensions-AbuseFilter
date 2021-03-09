@@ -5,6 +5,8 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use ActorMigration;
 use HTMLForm;
 use IContextSource;
+use LogEventsList;
+use LogPage;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
@@ -12,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
 use Title;
 use User;
@@ -278,6 +281,29 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$parser->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
 			$rc = RecentChange::newFromRow( $row );
+			if ( !$this->mShowNegative ) {
+				$type = (int)$rc->getAttribute( 'rc_type' );
+				$deletedValue = $rc->getAttribute( 'rc_deleted' );
+				if (
+					(
+						$type === RC_LOG &&
+						!LogEventsList::userCanBitfield(
+							$deletedValue,
+							LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
+							$contextUser
+						)
+					) || (
+						$type !== RC_LOG &&
+						!RevisionRecord::userCanBitfield( $deletedValue, RevisionRecord::SUPPRESSED_ALL, $contextUser )
+					)
+				) {
+					// If the RC is deleted, the user can't see it, and we're only showing matches,
+					// always skip this row. If mShowNegative is true, we can still show the row
+					// because we won't tell whether it matches the given filter.
+					continue;
+				}
+			}
+
 			$varGenerator = $this->varGeneratorFactory->newRCGenerator( $rc, $contextUser );
 			$vars = $varGenerator->getVars();
 
