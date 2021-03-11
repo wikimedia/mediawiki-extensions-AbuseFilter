@@ -140,7 +140,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 
 		$conds[] = $this->buildTestConditions( $dbr );
-		$conds = array_merge( $conds, $this->buildVisibilityConditions() );
+		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $this->getUser() ) );
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mFilter );

@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
@@ -95,12 +96,22 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
-	 * @todo Check what the user can actually see and use a proper bitmask. Core should provide
-	 * such a method though.
+	 * @todo Core should provide a method for this (T233222)
+	 * @param IDatabase $db
+	 * @param User $user
 	 * @return array
 	 */
-	public function buildVisibilityConditions() : array {
-		return [ 'rc_deleted' => 0 ];
+	public function buildVisibilityConditions( IDatabase $db, User $user ) : array {
+		if ( !$user->isAllowed( 'deletedhistory' ) ) {
+			$bitmask = RevisionRecord::DELETED_USER;
+		} elseif ( !$user->isAllowedAny( 'suppressrevision', 'viewsuppressed' ) ) {
+			$bitmask = RevisionRecord::DELETED_USER | RevisionRecord::DELETED_RESTRICTED;
+		} else {
+			$bitmask = 0;
+		}
+		return $bitmask
+			? [ $db->bitAnd( 'rc_deleted', $bitmask ) . " != $bitmask" ]
+			: [];
 	}
 
 	/**
