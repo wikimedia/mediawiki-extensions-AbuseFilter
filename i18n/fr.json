@@ -353,6 +353,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Non (!)",
 	"abusefilter-edit-builder-op-bool-and": "Et (&)",
 	"abusefilter-edit-builder-op-bool-or": "Ou (|)",
+	"abusefilter-edit-builder-op-bool-xor": "XOR (^)",
 	"abusefilter-edit-builder-group-misc": "Divers",
 	"abusefilter-edit-builder-misc-in": "Contenu dans la chaîne de caractères (in)",
 	"abusefilter-edit-builder-misc-like": "Correspond au motif (like)",
