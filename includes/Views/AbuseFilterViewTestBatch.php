@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
@@ -197,8 +198,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		}
 
 		$action = $this->mTestAction !== '0' ? $this->mTestAction : false;
+		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$conds[] = $this->buildTestConditions( $dbr, $action );
-		$conds = array_merge( $conds, $this->buildVisibilityConditions() );
+		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $permissionManager ) );
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );

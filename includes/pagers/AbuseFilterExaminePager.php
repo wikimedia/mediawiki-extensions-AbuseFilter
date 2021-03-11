@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**
 	 * @var AbuseFilterChangesList Our changes list
@@ -42,8 +44,9 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
 		}
 
+		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$conds[] = $this->mPage->buildTestConditions( $dbr );
-		$conds = array_merge( $conds, $this->mPage->buildVisibilityConditions() );
+		$conds = array_merge( $conds, $this->mPage->buildVisibilityConditions( $dbr, $permissionManager ) );
 
 		$rcQuery = RecentChange::getQueryInfo();
 		$info = [
