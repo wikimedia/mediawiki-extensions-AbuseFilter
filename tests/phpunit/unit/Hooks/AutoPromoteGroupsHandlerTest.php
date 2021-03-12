@@ -41,7 +41,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 		$registry = $this->getConsequencesRegistry( $enabled );
 		$handler = new AutoPromoteGroupsHandler( $cache, $registry, $store );
 
-		$user = new UserIdentityValue( 1, 'User', 1 );
+		$user = new UserIdentityValue( 1, 'User' );
 		$copy = $groups;
 		$handler->onGetAutoPromoteGroups( $user, $copy );
 		$this->assertSame( $groups, $copy );
@@ -62,7 +62,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	public function testOnGetAutoPromoteGroups_cacheHit(
 		int $status, array $groups, array $expected
 	) {
-		$user = new UserIdentityValue( 1, 'User', 1 );
+		$user = new UserIdentityValue( 1, 'User' );
 		$cache = new HashBagOStuff();
 		$cache->set( 'local:abusefilter:blockautopromote:quick:1', $status );
 		$store = $this->createMock( BlockAutopromoteStore::class );
@@ -82,7 +82,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	public function testOnGetAutoPromoteGroups_cacheMiss(
 		int $status, array $groups, array $expected
 	) {
-		$user = new UserIdentityValue( 1, 'User', 1 );
+		$user = new UserIdentityValue( 1, 'User' );
 		$cache = new HashBagOStuff();
 		$store = $this->createMock( BlockAutopromoteStore::class );
 		$store->expects( $this->once() )->method( 'getAutoPromoteBlockStatus' )
