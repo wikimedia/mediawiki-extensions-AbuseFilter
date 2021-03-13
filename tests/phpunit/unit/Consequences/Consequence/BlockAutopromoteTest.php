@@ -48,7 +48,7 @@ class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideExecute
 	 */
 	public function testExecute( bool $success ) {
-		$target = new UserIdentityValue( 1, 'A new user', 2 );
+		$target = new UserIdentityValue( 1, 'A new user' );
 		$params = $this->provideGetMessageParameters( $target )->current()[0];
 		$duration = 5 * 86400;
 		$blockAutopromoteStore = $this->createMock( BlockAutopromoteStore::class );
@@ -77,8 +77,8 @@ class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideExecute
 	 */
 	public function testRevert( bool $success ) {
-		$target = new UserIdentityValue( 1, 'A new user', 2 );
-		$performer = new UserIdentityValue( 2, 'Reverting user', 3 );
+		$target = new UserIdentityValue( 1, 'A new user' );
+		$performer = new UserIdentityValue( 2, 'Reverting user' );
 		$params = $this->provideGetMessageParameters( $target )->current()[0];
 		$blockAutopromoteStore = $this->createMock( BlockAutopromoteStore::class );
 		$blockAutopromoteStore->expects( $this->once() )
