@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
+use BadMethodCallException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MessageLocalizer;
@@ -40,6 +41,7 @@ class EditBoxBuilderFactory {
 	}
 
 	/**
+	 * Returns a builder, preferring the Ace version if available
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param User $user
 	 * @param OutputPage $output
@@ -50,13 +52,56 @@ class EditBoxBuilderFactory {
 		User $user,
 		OutputPage $output
 	) : EditBoxBuilder {
-		return new EditBoxBuilder(
+		return $this->isCodeEditorLoaded
+			? $this->newAceBoxBuilder( $messageLocalizer, $user, $output )
+			: $this->newPlainBoxBuilder( $messageLocalizer, $user, $output );
+	}
+
+	/**
+	 * @param MessageLocalizer $messageLocalizer
+	 * @param User $user
+	 * @param OutputPage $output
+	 * @return PlainEditBoxBuiler
+	 */
+	public function newPlainBoxBuilder(
+		MessageLocalizer $messageLocalizer,
+		User $user,
+		OutputPage $output
+	) : PlainEditBoxBuiler {
+		return new PlainEditBoxBuiler(
 			$this->afPermManager,
 			$this->keywordsManager,
-			$this->isCodeEditorLoaded,
 			$messageLocalizer,
 			$user,
 			$output
+		);
+	}
+
+	/**
+	 * @param MessageLocalizer $messageLocalizer
+	 * @param User $user
+	 * @param OutputPage $output
+	 * @return AceEditBoxBuiler
+	 */
+	public function newAceBoxBuilder(
+		MessageLocalizer $messageLocalizer,
+		User $user,
+		OutputPage $output
+	) : AceEditBoxBuiler {
+		if ( !$this->isCodeEditorLoaded ) {
+			throw new BadMethodCallException( 'Cannot create Ace box without CodeEditor' );
+		}
+		return new AceEditBoxBuiler(
+			$this->afPermManager,
+			$this->keywordsManager,
+			$messageLocalizer,
+			$user,
+			$output,
+			$this->newPlainBoxBuilder(
+				$messageLocalizer,
+				$user,
+				$output
+			)
 		);
 	}
 
