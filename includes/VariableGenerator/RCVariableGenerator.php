@@ -102,12 +102,12 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addMoveVars() : self {
-		$user = $this->rc->getPerformer();
+		$userIdentity = $this->rc->getPerformerIdentity();
 
 		$oldTitle = $this->rc->getTitle();
 		$newTitle = Title::newFromText( $this->rc->getParam( '4::target' ) );
 
-		$this->addUserVars( $user, $this->rc )
+		$this->addUserVars( $userIdentity, $this->rc )
 			->addTitleVars( $oldTitle, 'moved_from', $this->rc )
 			->addTitleVars( $newTitle, 'moved_to', $this->rc );
 
@@ -130,9 +130,9 @@ class RCVariableGenerator extends VariableGenerator {
 
 		$name = $this->rc->getTitle()->getText();
 		// Add user data if the account was created by a registered user
-		$user = $this->rc->getPerformer();
-		if ( !$user->isAnon() && $name !== $user->getName() ) {
-			$this->addUserVars( $user, $this->rc );
+		$userIdentity = $this->rc->getPerformerIdentity();
+		if ( $userIdentity->isRegistered() && $name !== $userIdentity->getName() ) {
+			$this->addUserVars( $userIdentity, $this->rc );
 		}
 
 		$this->vars->setVar( 'accountname', $name );
@@ -145,9 +145,9 @@ class RCVariableGenerator extends VariableGenerator {
 	 */
 	private function addDeleteVars() : self {
 		$title = $this->rc->getTitle();
-		$user = $this->rc->getPerformer();
+		$userIdentity = $this->rc->getPerformerIdentity();
 
-		$this->addUserVars( $user, $this->rc )
+		$this->addUserVars( $userIdentity, $this->rc )
 			->addTitleVars( $title, 'page', $this->rc );
 
 		$this->vars->setVar( 'action', 'delete' );
@@ -161,9 +161,9 @@ class RCVariableGenerator extends VariableGenerator {
 	 */
 	private function addUploadVars() : self {
 		$title = $this->rc->getTitle();
-		$user = $this->rc->getPerformer();
+		$userIdentity = $this->rc->getPerformerIdentity();
 
-		$this->addUserVars( $user, $this->rc )
+		$this->addUserVars( $userIdentity, $this->rc )
 			->addTitleVars( $title, 'page', $this->rc );
 
 		$this->vars->setVar( 'action', 'upload' );
@@ -206,9 +206,9 @@ class RCVariableGenerator extends VariableGenerator {
 	 */
 	private function addEditVarsForRow() : self {
 		$title = $this->rc->getTitle();
-		$user = $this->rc->getPerformer();
+		$userIdentity = $this->rc->getPerformerIdentity();
 
-		$this->addUserVars( $user, $this->rc )
+		$this->addUserVars( $userIdentity, $this->rc )
 			->addTitleVars( $title, 'page', $this->rc );
 
 		// @todo Set old_content_model and new_content_model

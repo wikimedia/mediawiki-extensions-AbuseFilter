@@ -11,9 +11,12 @@ use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWException;
@@ -43,7 +46,10 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		Language $contentLanguage = null,
 		array $hookHandlers = [],
 		RevisionLookup $revisionLookup = null,
-		string $wikiID = ''
+		string $wikiID = '',
+		UserEditTracker $userEditTracker = null,
+		UserGroupManager $userGroupManager = null,
+		PermissionManager $permissionManager = null
 	) : LazyVariableComputer {
 		return new LazyVariableComputer(
 			$this->createMock( TextExtractor::class ),
@@ -55,6 +61,9 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 			$this->createMock( RevisionStore::class ),
 			$contentLanguage ?? $this->createMock( Language::class ),
 			$this->createMock( Parser::class ),
+			$userEditTracker ?? $this->createMock( UserEditTracker::class ),
+			$userGroupManager ?? $this->createMock( UserGroupManager::class ),
+			$permissionManager ?? $this->createMock( PermissionManager::class ),
 			$wikiID
 		);
 	}
@@ -145,11 +154,16 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param LazyLoadedVariable $var
 	 * @param mixed $expected
+	 * @param array $services
 	 * @covers ::compute
 	 * @dataProvider provideUserRelatedVars
 	 */
-	public function testUserRelatedVars( LazyLoadedVariable $var, $expected ) {
-		$computer = $this->getComputer();
+	public function testUserRelatedVars(
+		LazyLoadedVariable $var,
+		$expected,
+		$services = [ null, null, null ]
+ ) {
+		$computer = $this->getComputer( null, [], null, '', ...$services );
 		$this->assertSame(
 			$expected,
 			$computer->compute( $var, new VariableHolder(), $this->getForbidComputeCB() )->toNative()
@@ -161,14 +175,17 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		$getUserVar = function ( $user, $method ) : LazyLoadedVariable {
 			return new LazyLoadedVariable(
 				$method,
-				[ 'user' => $user ]
+				[ 'user' => $user, 'user-identity' => $user ]
 			);
 		};
 
 		$editCount = 7;
-		$user->method( 'getEditCount' )->willReturn( $editCount );
+
+		$userEditTracker = $this->createMock( UserEditTracker::class );
+
+		$userEditTracker->method( 'getUserEditCount' )->with( $user )->willReturn( $editCount );
 		$var = $getUserVar( $user, 'user-editcount' );
-		yield 'user_editcount' => [ $var, $editCount ];
+		yield 'user_editcount' => [ $var, $editCount, [ $userEditTracker, null, null ] ];
 
 		$emailConfirm = '20000101000000';
 		$user->method( 'getEmailAuthenticationTimestamp' )->willReturn( $emailConfirm );
@@ -176,14 +193,16 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		yield 'user_emailconfirm' => [ $var, $emailConfirm ];
 
 		$groups = [ '*', 'group1', 'group2' ];
-		$user->method( 'getEffectiveGroups' )->willReturn( $groups );
+		$userGroupManager = $this->createMock( UserGroupManager::class );
+		$userGroupManager->method( 'getUserEffectiveGroups' )->with( $user )->willReturn( $groups );
 		$var = $getUserVar( $user, 'user-groups' );
-		yield 'user_groups' => [ $var, $groups ];
+		yield 'user_groups' => [ $var, $groups, [ null, $userGroupManager, null ] ];
 
 		$rights = [ 'abusefilter-foo', 'abusefilter-bar' ];
-		$user->method( 'getRights' )->willReturn( $rights );
+		$permissionManager = $this->createMock( PermissionManager::class );
+		$permissionManager->method( 'getUserPermissions' )->with( $user )->willReturn( $rights );
 		$var = $getUserVar( $user, 'user-rights' );
-		yield 'user_rights' => [ $var, $rights ];
+		yield 'user_rights' => [ $var, $rights, [ null, null, $permissionManager ] ];
 
 		$blocked = true;
 		$user->method( 'getBlock' )->willReturn( $blocked );

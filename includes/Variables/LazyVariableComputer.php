@@ -8,8 +8,11 @@ use Language;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Storage\RevisionLookup;
 use MediaWiki\Storage\RevisionStore;
+use MediaWiki\User\UserEditTracker;
+use MediaWiki\User\UserGroupManager;
 use MWException;
 use Parser;
 use ParserOptions;
@@ -65,6 +68,15 @@ class LazyVariableComputer {
 	/** @var Parser */
 	private $parser;
 
+	/** @var UserEditTracker */
+	private $userEditTracker;
+
+	/** @var UserGroupManager */
+	private $userGroupManager;
+
+	/** @var PermissionManager */
+	private $permissionManager;
+
 	/** @var string */
 	private $wikiID;
 
@@ -78,6 +90,9 @@ class LazyVariableComputer {
 	 * @param RevisionStore $revisionStore
 	 * @param Language $contentLanguage
 	 * @param Parser $parser
+	 * @param UserEditTracker $userEditTracker
+	 * @param UserGroupManager $userGroupManager
+	 * @param PermissionManager $permissionManager
 	 * @param string $wikiID
 	 */
 	public function __construct(
@@ -90,6 +105,9 @@ class LazyVariableComputer {
 		RevisionStore $revisionStore,
 		Language $contentLanguage,
 		Parser $parser,
+		UserEditTracker $userEditTracker,
+		UserGroupManager $userGroupManager,
+		PermissionManager $permissionManager,
 		string $wikiID
 	) {
 		$this->textExtractor = $textExtractor;
@@ -101,6 +119,9 @@ class LazyVariableComputer {
 		$this->revisionStore = $revisionStore;
 		$this->contentLanguage = $contentLanguage;
 		$this->parser = $parser;
+		$this->userEditTracker = $userEditTracker;
+		$this->userGroupManager = $userGroupManager;
+		$this->permissionManager = $permissionManager;
 		$this->wikiID = $wikiID;
 	}
 
@@ -273,13 +294,12 @@ class LazyVariableComputer {
 				$action = $parameters['action'];
 				/** @var Title $title */
 				$title = $parameters['title'];
-
 				$result = $title->getRestrictions( $action );
 				break;
 			case 'user-editcount':
-				/** @var User $user */
-				$user = $parameters['user'];
-				$result = $user->getEditCount();
+				/** @var UserIdentity $user */
+				$userIdentity = $parameters['user-identity'];
+				$result = $this->userEditTracker->getUserEditCount( $userIdentity );
 				break;
 			case 'user-emailconfirm':
 				/** @var User $user */
@@ -287,14 +307,14 @@ class LazyVariableComputer {
 				$result = $user->getEmailAuthenticationTimestamp();
 				break;
 			case 'user-groups':
-				/** @var User $user */
-				$user = $parameters['user'];
-				$result = $user->getEffectiveGroups();
+				/** @var UserIdentity $user */
+				$userIdentity = $parameters['user-identity'];
+				$result = $this->userGroupManager->getUserEffectiveGroups( $userIdentity );
 				break;
 			case 'user-rights':
-				/** @var User $user */
-				$user = $parameters['user'];
-				$result = $user->getRights();
+				/** @var UserIdentity $user */
+				$userIdentity = $parameters['user-identity'];
+				$result = $this->permissionManager->getUserPermissions( $userIdentity );
 				break;
 			case 'user-block':
 				// @todo Support partial blocks?
