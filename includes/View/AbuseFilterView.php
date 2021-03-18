@@ -7,6 +7,8 @@ use Flow\Data\Listener\RecentChangesListener;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Permissions\Authority;
+use MediaWiki\Revision\RevisionRecord;
 use MWException;
 use OOUI;
 use RecentChange;
@@ -189,11 +191,22 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
-	 * @todo Check what the user can actually see and use a proper bitmask. Core should provide such a method though.
+	 * @todo Core should provide a method for this (T233222)
+	 * @param IDatabase $db
+	 * @param Authority $authority
 	 * @return array
 	 */
-	public function buildVisibilityConditions() : array {
-		return [ 'rc_deleted' => 0 ];
+	public function buildVisibilityConditions( IDatabase $db, Authority $authority ) : array {
+		if ( !$authority->isAllowed( 'deletedhistory' ) ) {
+			$bitmask = RevisionRecord::DELETED_USER;
+		} elseif ( !$authority->isAllowedAny( 'suppressrevision', 'viewsuppressed' ) ) {
+			$bitmask = RevisionRecord::DELETED_USER | RevisionRecord::DELETED_RESTRICTED;
+		} else {
+			$bitmask = 0;
+		}
+		return $bitmask
+			? [ $db->bitAnd( 'rc_deleted', $bitmask ) . " != $bitmask" ]
+			: [];
 	}
 
 	/**
