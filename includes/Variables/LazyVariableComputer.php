@@ -13,6 +13,7 @@ use MediaWiki\Storage\RevisionLookup;
 use MediaWiki\Storage\RevisionStore;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
+use MediaWiki\User\UserIdentity;
 use MWException;
 use Parser;
 use ParserOptions;
@@ -297,9 +298,11 @@ class LazyVariableComputer {
 				$result = $title->getRestrictions( $action );
 				break;
 			case 'user-editcount':
-				/** @var UserIdentity $user */
+				/** @var UserIdentity $userIdentity */
 				$userIdentity = $parameters['user-identity'];
-				$result = $this->userEditTracker->getUserEditCount( $userIdentity );
+				$result = $userIdentity->isRegistered()
+					? $this->userEditTracker->getUserEditCount( $userIdentity )
+					: null;
 				break;
 			case 'user-emailconfirm':
 				/** @var User $user */
@@ -307,12 +310,12 @@ class LazyVariableComputer {
 				$result = $user->getEmailAuthenticationTimestamp();
 				break;
 			case 'user-groups':
-				/** @var UserIdentity $user */
+				/** @var UserIdentity $userIdentity */
 				$userIdentity = $parameters['user-identity'];
 				$result = $this->userGroupManager->getUserEffectiveGroups( $userIdentity );
 				break;
 			case 'user-rights':
-				/** @var UserIdentity $user */
+				/** @var UserIdentity $userIdentity */
 				$userIdentity = $parameters['user-identity'];
 				$result = $this->permissionManager->getUserPermissions( $userIdentity );
 				break;
