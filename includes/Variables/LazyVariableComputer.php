@@ -427,6 +427,11 @@ class LazyVariableComputer {
 			WANObjectCache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title, $fname ) {
 				$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+				// T270033 Index renaming
+				$revIndex = $dbr->indexExists( 'revision', 'page_timestamp', $fname )
+					? 'page_timestamp'
+					: 'rev_page_timestamp';
+
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
 				$revQuery = $this->revisionStore->getQueryInfo();
@@ -444,7 +449,7 @@ class LazyVariableComputer {
 					[ 'ORDER BY' => 'rev_timestamp DESC, rev_id DESC',
 						'LIMIT' => 100,
 						// Force index per T116557
-						'USE INDEX' => [ 'revision' => 'page_timestamp' ],
+						'USE INDEX' => [ 'revision' => $revIndex ],
 					],
 					$revQuery['joins']
 				);

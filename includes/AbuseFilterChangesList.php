@@ -31,7 +31,6 @@ class AbuseFilterChangesList extends OldChangesList {
 	 * @param string &$s
 	 * @param RecentChange &$rc
 	 * @param string[] &$classes
-	 * @suppress PhanUndeclaredProperty for $rc->filterResult, which isn't a big deal
 	 */
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		if ( (int)$rc->getAttribute( 'rc_deleted' ) !== 0 ) {
