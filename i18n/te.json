@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Arjunaraoc",
 			"Chaduvari",
 			"Kiranmayee",
 			"Matma Rex",
@@ -175,7 +176,7 @@
 	"abusefilter-edit-field-description": "వివరం",
 	"abusefilter-edit-group": "వడపోత గుంపు:",
 	"abusefilter-edit-flags": "పతాకలు:",
-	"abusefilter-edit-enabled": "ఈ వడపోతని చేతనం చేయి",
+	"abusefilter-edit-enabled": "వడపోత చేతన స్థితి",
 	"abusefilter-edit-deleted": "తొలగించినట్లుగా గుర్తించు",
 	"abusefilter-edit-hidden": "ఈ వడపోత యొక్క వివరాలని బహిరంగపరచకుండా దాచు",
 	"abusefilter-edit-global": "సార్వత్రిక వడపోత",
