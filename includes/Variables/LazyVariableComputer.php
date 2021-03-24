@@ -463,8 +463,7 @@ class LazyVariableComputer {
 	}
 
 	/**
-	 * It's like Article::prepareContentForEdit, but not for editing (old wikitext usually)
-	 *
+	 * It's like WikiPage::prepareContentForEdit, but not for editing (old wikitext usually)
 	 *
 	 * @param string $wikitext
 	 * @param WikiPage $article
