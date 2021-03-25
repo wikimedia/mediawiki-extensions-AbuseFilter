@@ -139,7 +139,7 @@
 	"abusefilter-deleted": "Ezabatuta",
 	"abusefilter-disabled": "Ezgaitua",
 	"abusefilter-throttled": "Bizkortu",
-	"abusefilter-hitcount": "{{PLURAL:$1|hit 1|$1 hit}}",
+	"abusefilter-hitcount": "{{PLURAL:$1|Emaitza bat|$1 emaitza}}",
 	"abusefilter-new": "Iragazki berria sortu",
 	"abusefilter-import-button": "Iragazkia inportatu",
 	"abusefilter-return": "Iragazi kudeatzailera bueltatu",
