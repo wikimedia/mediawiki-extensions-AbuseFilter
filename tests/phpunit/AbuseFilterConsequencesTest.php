@@ -443,15 +443,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 * @return string The status of the operation, as returned by the API.
 	 */
 	private function stashEdit( $title, $text, $summary ) {
-		$editStash = new PageEditStash(
-			new HashBagOStuff( [] ),
-			MediaWikiServices::getInstance()->getDBLoadBalancer(),
-			new Psr\Log\NullLogger(),
-			new NullStatsdDataFactory(),
-			MediaWikiServices::getInstance()->getHookContainer(),
-			PageEditStash::INITIATOR_USER
-		);
-		return $editStash->parseAndCache(
+		return $this->getServiceContainer()->getPageEditStash()->parseAndCache(
 			WikiPage::factory( $title ),
 			new WikitextContent( $text ),
 			$this->user,
