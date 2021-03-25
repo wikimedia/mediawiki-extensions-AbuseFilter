@@ -29,7 +29,7 @@ class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_anonymous() {
-		$user = new UserIdentityValue( 0, 'Anonymous user', 1 );
+		$user = new UserIdentityValue( 0, 'Anonymous user' );
 		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$blockAutopromoteStore = $this->createMock( BlockAutopromoteStore::class );
 		$blockAutopromoteStore->expects( $this->never() )
