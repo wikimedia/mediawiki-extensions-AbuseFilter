@@ -3,19 +3,37 @@
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
+use ApiMain;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 
 class CheckSyntax extends ApiBase {
 
+	/** @var AbuseFilterPermissionManager */
+	private $afPermManager;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		AbuseFilterPermissionManager $afPermManager
+	) {
+		parent::__construct( $main, $action );
+		$this->afPermManager = $afPermManager;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		// "Anti-DoS"
-		if ( !$afPermManager->canUseTestTools( $this->getUser() )
-			&& !$afPermManager->canEdit( $this->getUser() )
+		if ( !$this->afPermManager->canUseTestTools( $this->getUser() )
+			&& !$this->afPermManager->canEdit( $this->getUser() )
 		) {
 			$this->dieWithError( 'apierror-abusefilter-cantcheck', 'permissiondenied' );
 		}

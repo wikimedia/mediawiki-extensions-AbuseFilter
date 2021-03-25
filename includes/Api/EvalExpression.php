@@ -3,19 +3,38 @@
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
+use ApiMain;
 use ApiResult;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use Status;
 
 class EvalExpression extends ApiBase {
+
+	/** @var AbuseFilterPermissionManager */
+	private $afPermManager;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		AbuseFilterPermissionManager $afPermManager
+	) {
+		parent::__construct( $main, $action );
+		$this->afPermManager = $afPermManager;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		// "Anti-DoS"
-		if ( !$afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canUseTestTools( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canteval', 'permissiondenied' );
 		}
 

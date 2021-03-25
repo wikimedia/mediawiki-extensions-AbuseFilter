@@ -30,6 +30,7 @@ use ApiQuery;
 use ApiQueryBase;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
@@ -48,19 +49,28 @@ use Wikimedia\IPUtils;
  * @ingroup Extensions
  */
 class QueryAbuseLog extends ApiQueryBase {
+
+	/** @var AbuseFilterPermissionManager */
+	private $afPermManager;
+
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
+	 * @param AbuseFilterPermissionManager $afPermManager
 	 */
-	public function __construct( ApiQuery $query, $moduleName ) {
+	public function __construct(
+		ApiQuery $query,
+		$moduleName,
+		AbuseFilterPermissionManager $afPermManager
+	) {
 		parent::__construct( $query, $moduleName, 'afl' );
+		$this->afPermManager = $afPermManager;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$lookup = AbuseFilterServices::getFilterLookup();
 		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
@@ -107,7 +117,7 @@ class QueryAbuseLog extends ApiQueryBase {
 					continue;
 				}
 			}
-			if ( !$afPermManager->canViewPrivateFiltersLogs( $user ) ) {
+			if ( !$this->afPermManager->canViewPrivateFiltersLogs( $user ) ) {
 				foreach ( $searchFilters as [ $filterID, $global ] ) {
 					try {
 						$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
@@ -196,7 +206,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			}
 		}
 
-		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$afPermManager->canSeeHiddenLogEntries( $user ) );
+		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$this->afPermManager->canSeeHiddenLogEntries( $user ) );
 
 		if ( $searchFilters ) {
 			$conds = [];
@@ -260,7 +270,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				break;
 			}
 			$hidden = SpecialAbuseLog::isHidden( $row );
-			if ( $hidden === true && !$afPermManager->canSeeHiddenLogEntries( $user ) ) {
+			if ( $hidden === true && !$this->afPermManager->canSeeHiddenLogEntries( $user ) ) {
 				continue;
 			}
 			if ( $hidden === 'implicit' ) {
@@ -282,7 +292,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				$fullName = $row->afl_filter;
 			}
 			$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
-			$canSeeDetails = $afPermManager->canSeeLogDetailsForFilter( $user, $isHidden );
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden );
 
 			$entry = [];
 			if ( $fld_ids ) {

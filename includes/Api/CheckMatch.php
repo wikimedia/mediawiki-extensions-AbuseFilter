@@ -3,11 +3,13 @@
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
+use ApiMain;
 use ApiResult;
 use FormatJson;
 use LogEventsList;
 use LogicException;
 use LogPage;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -15,17 +17,34 @@ use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
 
 class CheckMatch extends ApiBase {
+
+	/** @var AbuseFilterPermissionManager */
+	private $afPermManager;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		AbuseFilterPermissionManager $afPermManager
+	) {
+		parent::__construct( $main, $action );
+		$this->afPermManager = $afPermManager;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 		$this->requireOnlyOneParameter( $params, 'vars', 'rcid', 'logid' );
 
 		// "Anti-DoS"
-		if ( !$afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canUseTestTools( $this->getUser() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canttest', 'permissiondenied' );
 		}
 
@@ -75,7 +94,7 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
-			if ( !$afPermManager->canSeeHiddenLogEntries( $user ) && SpecialAbuseLog::isHidden( $row ) ) {
+			if ( !$this->afPermManager->canSeeHiddenLogEntries( $user ) && SpecialAbuseLog::isHidden( $row ) ) {
 				// T223654 - Same check as in SpecialAbuseLog. Both the visibility of the AbuseLog entry
 				// and the corresponding revision are checked.
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );

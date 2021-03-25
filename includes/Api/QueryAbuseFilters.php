@@ -28,7 +28,7 @@ namespace MediaWiki\Extension\AbuseFilter\Api;
 use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MWTimestamp;
 
 /**
@@ -38,12 +38,22 @@ use MWTimestamp;
  * @ingroup Extensions
  */
 class QueryAbuseFilters extends ApiQueryBase {
+
+	/** @var AbuseFilterPermissionManager */
+	private $afPermManager;
+
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
+	 * @param AbuseFilterPermissionManager $afPermManager
 	 */
-	public function __construct( ApiQuery $query, $moduleName ) {
+	public function __construct(
+		ApiQuery $query,
+		$moduleName,
+		AbuseFilterPermissionManager $afPermManager
+	) {
 		parent::__construct( $query, $moduleName, 'abf' );
+		$this->afPermManager = $afPermManager;
 	}
 
 	/**
@@ -51,7 +61,6 @@ class QueryAbuseFilters extends ApiQueryBase {
 	 */
 	public function execute() {
 		$user = $this->getUser();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$this->checkUserRightsAny( 'abusefilter-view' );
 
 		$params = $this->extractRequestParams();
@@ -109,7 +118,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$showhidden = $afPermManager->canViewPrivateFilters( $user );
+		$showhidden = $this->afPermManager->canViewPrivateFilters( $user );
 
 		$count = 0;
 		foreach ( $res as $row ) {
