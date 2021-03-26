@@ -8,6 +8,12 @@ const fs = require( 'fs' ),
 	saveScreenshot = require( 'wdio-mediawiki' ).saveScreenshot;
 
 exports.config = {
+	// ==================
+	// Automation Protocols
+	// ==================
+	// See https://webdriver.io/docs/automationProtocols/
+	automationProtocol: 'devtools',
+
 	// ======
 	// Custom WDIO config specific to MediaWiki
 	// ======
