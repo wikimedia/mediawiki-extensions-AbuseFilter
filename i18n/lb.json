@@ -333,7 +333,7 @@
 	"abusefilter-exception-invalidoperator": "Net valabelen Operateur \"$2\" beim Zeechen $1.",
 	"abusefilter-exception-unrecognisedtoken": "Onbekannt Zeechen \"$2\" beim Zeechen $1.",
 	"abusefilter-exception-noparams": "Keng Parameter ugi fir d'Funktioun \"$2\" beim Zeechen $1",
-	"abusefilter-exception-dividebyzero": "Versuch fir $2 duerch null ze dividéieren beim Buchstaw $1.",
+	"abusefilter-exception-dividebyzero": "Versuch fir $2 duerch null ze dividéieren beim Buschtaf $1.",
 	"abusefilter-exception-unrecognisedvar": "Onerkannt Variabel $2 beim Zeechen $1",
 	"abusefilter-exception-overridebuiltin": "Illegaalt Iwwerschreiwe vun der agebauter Variabel \"$2\" beim Zeechen $1.",
 	"abusefilter-exception-outofbounds": "Ufro vum Element - dat et net gëtt - vun der Lëscht $2 (Gréisst vun der Lëscht = $3) beim Zeeche(n) $1.",
