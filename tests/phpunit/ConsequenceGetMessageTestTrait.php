@@ -22,7 +22,7 @@ trait ConsequenceGetMessageTestTrait {
 	public function provideGetMessageParameters( $user = null ) : Generator {
 		$user = $user instanceof UserIdentity
 			? $user
-			: new UserIdentityValue( 1, 'getMessage test user', 2 );
+			: new UserIdentityValue( 1, 'getMessage test user' );
 		$localFilter = $this->createMock( ExistingFilter::class );
 		$localFilter->method( 'getID' )->willReturn( 1 );
 		$localFilter->method( 'getName' )->willReturn( 'Local filter' );

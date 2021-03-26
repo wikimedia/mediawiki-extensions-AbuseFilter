@@ -31,7 +31,7 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 	private function getFilterUser() : FilterUser {
 		$filterUser = $this->createMock( FilterUser::class );
 		$filterUser->method( 'getUser' )
-			->willReturn( new UserIdentityValue( 2, 'FilterUser', 3 ) );
+			->willReturn( new UserIdentityValue( 2, 'FilterUser' ) );
 		return $filterUser;
 	}
 

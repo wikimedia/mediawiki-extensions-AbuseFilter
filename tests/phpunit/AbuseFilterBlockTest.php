@@ -29,20 +29,20 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	private function getFilterUser() : FilterUser {
 		$filterUser = $this->createMock( FilterUser::class );
 		$filterUser->method( 'getUser' )
-			->willReturn( new UserIdentityValue( 2, 'FilterUser', 3 ) );
+			->willReturn( new UserIdentityValue( 2, 'FilterUser' ) );
 		return $filterUser;
 	}
 
 	public function provideExecute() : iterable {
 		foreach ( [ true, false ] as $result ) {
 			$resStr = wfBoolToStr( $result );
-			yield "IPv4, $resStr" => [ new UserIdentityValue( 0, '1.2.3.4', 42 ), $result ];
+			yield "IPv4, $resStr" => [ new UserIdentityValue( 0, '1.2.3.4' ), $result ];
 			yield "IPv6, $resStr" => [
 				// random IP from https://en.wikipedia.org/w/index.php?title=IPv6&oldid=989727833
-				new UserIdentityValue( 0, '2001:0db8:0000:0000:0000:ff00:0042:8329', 42 ),
+				new UserIdentityValue( 0, '2001:0db8:0000:0000:0000:ff00:0042:8329' ),
 				$result
 			];
-			yield "Registered, $resStr" => [ new UserIdentityValue( 3, 'Some random user', 42 ), $result ];
+			yield "Registered, $resStr" => [ new UserIdentityValue( 3, 'Some random user' ), $result ];
 		}
 	}
 
@@ -108,7 +108,7 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	public function provideRevert() {
 		yield 'no block to revert' => [ null, null, false ];
 
-		$randomUser = new UserIdentityValue( 1234, 'Some other user', 3456 );
+		$randomUser = new UserIdentityValue( 1234, 'Some other user' );
 		yield 'not blocked by AF user' => [ new DatabaseBlock( [ 'by' => $randomUser->getId() ] ), null, false ];
 
 		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUser()->getId() ] );
@@ -127,7 +127,7 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testRevert( ?DatabaseBlock $block, ?DatabaseBlockStore $blockStore, bool $expected ) {
 		$params = $this->createMock( Parameters::class );
-		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar', 2 ) );
+		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar' ) );
 		$block = new Block(
 			$params,
 			'0',

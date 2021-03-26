@@ -294,7 +294,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		$title = $this->createMock( Title::class );
 		$firstRev = $this->createMock( RevisionRecord::class );
 		$firstUserName = 'First author';
-		$firstUser = new UserIdentityValue( 1, $firstUserName, 42 );
+		$firstUser = new UserIdentityValue( 1, $firstUserName );
 		$firstRev->expects( $this->once() )->method( 'getUser' )->willReturn( $firstUser );
 		$revLookup = $this->createMock( RevisionLookup::class );
 		$revLookup->method( 'getFirstRevision' )->with( $title )->willReturn( $firstRev );

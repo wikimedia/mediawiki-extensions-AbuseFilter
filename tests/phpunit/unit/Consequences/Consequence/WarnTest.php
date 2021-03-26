@@ -35,7 +35,7 @@ class WarnTest extends MediaWikiUnitTestCase {
 		$params = new Parameters(
 			$filter,
 			false,
-			new UserIdentityValue( 1, 'Warned user', 2 ),
+			new UserIdentityValue( 1, 'Warned user' ),
 			new TitleValue( NS_HELP, 'Some title' ),
 			'edit'
 		);

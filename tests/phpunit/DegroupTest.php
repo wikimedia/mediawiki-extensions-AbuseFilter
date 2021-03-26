@@ -33,7 +33,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute() {
-		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
+		$user = new UserIdentityValue( 1, 'Degrouped user' );
 		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
@@ -78,7 +78,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_variableNotSet() {
-		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
+		$user = new UserIdentityValue( 1, 'Degrouped user' );
 		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
@@ -105,7 +105,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_anonymous() {
-		$user = new UserIdentityValue( 0, 'Anonymous user', 1 );
+		$user = new UserIdentityValue( 0, 'Anonymous user' );
 		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->expects( $this->never() )->method( $this->anything() );
@@ -136,7 +136,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideRevert
 	 */
 	public function testRevert( bool $success, array $hadGroups, array $hasGroups = [] ) {
-		$user = new UserIdentityValue( 1, 'Degrouped user', 2 );
+		$user = new UserIdentityValue( 1, 'Degrouped user' );
 		$params = $this->provideGetMessageParameters( $user )->current()[0];
 		$userGroupManager = $this->createMock( UserGroupManager::class );
 		$userGroupManager->method( 'listAllImplicitGroups' )
