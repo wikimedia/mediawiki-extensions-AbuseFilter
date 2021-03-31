@@ -13,7 +13,7 @@ interface AbuseFilterContentToStringHook {
 	 * will be used for non-text content.
 	 *
 	 * @param Content $content
-	 * @param ?string &$text
+	 * @param ?string &$text Set this to the desired text
 	 * @return bool|void True or no return value to continue or false to abort
 	 */
 	public function onAbuseFilter_contentToString(

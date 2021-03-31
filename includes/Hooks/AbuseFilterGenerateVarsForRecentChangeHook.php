@@ -9,6 +9,8 @@ use User;
 
 interface AbuseFilterGenerateVarsForRecentChangeHook {
 	/**
+	 * Hook runner for the `AbuseFilterGenerateVarsForRecentChange` hook
+	 *
 	 * Hook that allows extensions to generate variables from a RecentChange row with a non-standard model.
 	 * The hooks `AbuseFilterGenerate(Title|User|Generic)Hook` should be used for computing single variables
 	 * in standard RC rows.

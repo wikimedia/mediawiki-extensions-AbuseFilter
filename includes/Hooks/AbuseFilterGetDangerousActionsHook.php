@@ -9,7 +9,7 @@ interface AbuseFilterGetDangerousActionsHook {
 	 * Allows specifying custom consequences which can harm the user and prevent
 	 * the edit from being saved.
 	 *
-	 * @param string[] &$actions
+	 * @param string[] &$actions The dangerous actions
 	 */
 	public function onAbuseFilterGetDangerousActions( array &$actions ) : void;
 }
