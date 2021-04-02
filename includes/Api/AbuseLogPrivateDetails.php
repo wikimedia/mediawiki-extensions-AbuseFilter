@@ -19,7 +19,8 @@
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use ApiMain;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 
 /**
@@ -29,6 +30,24 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
  * @ingroup Extensions
  */
 class AbuseLogPrivateDetails extends ApiBase {
+
+	/** @var AbuseFilterPermissionManager */
+	private $afPermManager;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		AbuseFilterPermissionManager $afPermManager
+	) {
+		parent::__construct( $main, $action );
+		$this->afPermManager = $afPermManager;
+	}
+
 	/**
 	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
@@ -58,9 +77,8 @@ class AbuseLogPrivateDetails extends ApiBase {
 	 */
 	public function execute() {
 		$user = $this->getUser();
-		$afPermManager = AbuseFilterServices::getPermissionManager();
 
-		if ( !$afPermManager->canSeePrivateDetails( $user ) ) {
+		if ( !$this->afPermManager->canSeePrivateDetails( $user ) ) {
 			$this->dieWithError( 'abusefilter-log-cannot-see-privatedetails' );
 		}
 		$params = $this->extractRequestParams();

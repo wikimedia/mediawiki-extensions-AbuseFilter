@@ -120,15 +120,45 @@
 		"abusefilterprivatedetails": "abusefilter-privatedetails-log"
 	},
 	"APIModules": {
-		"abusefilterchecksyntax": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckSyntax",
-		"abusefilterevalexpression": "MediaWiki\\Extension\\AbuseFilter\\Api\\EvalExpression",
+		"abusefilterchecksyntax": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckSyntax",
+			"services": [
+				"AbuseFilterPermissionManager"
+			]
+		},
+		"abusefilterevalexpression": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\EvalExpression",
+			"services": [
+				"AbuseFilterPermissionManager"
+			]
+		},
 		"abusefilterunblockautopromote": "MediaWiki\\Extension\\AbuseFilter\\Api\\UnblockAutopromote",
-		"abusefiltercheckmatch": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckMatch",
-		"abuselogprivatedetails": "MediaWiki\\Extension\\AbuseFilter\\Api\\AbuseLogPrivateDetails"
+		"abusefiltercheckmatch": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckMatch",
+			"services": [
+				"AbuseFilterPermissionManager"
+			]
+		},
+		"abuselogprivatedetails": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\AbuseLogPrivateDetails",
+			"services": [
+				"AbuseFilterPermissionManager"
+			]
+		}
 	},
 	"APIListModules": {
-		"abuselog": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseLog",
-		"abusefilters": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseFilters"
+		"abuselog": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseLog",
+			"services": [
+				"AbuseFilterPermissionManager"
+			]
+		},
+		"abusefilters": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseFilters",
+			"services": [
+				"AbuseFilterPermissionManager"
+			]
+		}
 	},
 	"MessagesDirs": {
 		"AbuseFilter": [
