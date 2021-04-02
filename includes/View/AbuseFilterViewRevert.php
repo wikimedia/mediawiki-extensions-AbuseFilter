@@ -28,23 +28,23 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	/**
 	 * @var string The start time of the lookup period
 	 */
-	public $origPeriodStart;
+	private $origPeriodStart;
 	/**
 	 * @var string The end time of the lookup period
 	 */
-	public $origPeriodEnd;
+	private $origPeriodEnd;
 	/**
 	 * @var string|null The same as $origPeriodStart
 	 */
-	public $mPeriodStart;
+	private $periodStart;
 	/**
 	 * @var string|null The same as $origPeriodEnd
 	 */
-	public $mPeriodEnd;
+	private $periodEnd;
 	/**
 	 * @var string|null The reason provided for the revert
 	 */
-	public $mReason;
+	private $reason;
 	/**
 	 * @var UserFactory
 	 */
@@ -268,8 +268,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 */
 	public function doLookup() {
 		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
-		$periodStart = $this->mPeriodStart;
-		$periodEnd = $this->mPeriodEnd;
+		$periodStart = $this->periodStart;
+		$periodEnd = $this->periodEnd;
 		$filter = $this->filter;
 		$dbr = wfGetDB( DB_REPLICA );
 
@@ -291,6 +291,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$conds[] = 'afl_timestamp <= ' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
 		}
 
+		// Don't revert if there was no action, or the action was global
+		$conds[] = 'afl_actions != ' . $dbr->addQuotes( '' );
+		$conds[] = 'afl_wiki IS NULL';
+
 		$selectFields = [
 			'afl_id',
 			'afl_user',
@@ -301,17 +305,17 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			'afl_timestamp',
 			'afl_namespace',
 			'afl_title',
-			'afl_wiki',
 		];
-		$res = $dbr->select( 'abuse_filter_log', $selectFields, $conds, __METHOD__ );
+		$res = $dbr->select(
+			'abuse_filter_log',
+			$selectFields,
+			$conds,
+			__METHOD__,
+			[ 'ORDER BY' => 'afl_timestamp DESC' ]
+		);
 
 		$results = [];
 		foreach ( $res as $row ) {
-			// Don't revert if there was no action, or the action was global
-			if ( !$row->afl_actions || $row->afl_wiki != null ) {
-				continue;
-			}
-
 			$actions = explode( ',', $row->afl_actions );
 			// TODO: get the following from ConsequencesRegistry or sth else
 			$reversibleActions = [ 'block', 'blockautopromote', 'degroup' ];
@@ -341,10 +345,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		$this->filter = (int)$this->mParams[1];
 		$this->origPeriodStart = $request->getText( 'wpPeriodStart' );
-		$this->mPeriodStart = strtotime( $this->origPeriodStart ) ?: null;
+		$this->periodStart = strtotime( $this->origPeriodStart ) ?: null;
 		$this->origPeriodEnd = $request->getText( 'wpPeriodEnd' );
-		$this->mPeriodEnd = strtotime( $this->origPeriodEnd ) ?: null;
-		$this->mReason = $request->getVal( 'wpReason' );
+		$this->periodEnd = strtotime( $this->origPeriodEnd ) ?: null;
+		$this->reason = $request->getVal( 'wpReason' );
 	}
 
 	/**
@@ -416,7 +420,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 */
 	public function revertAction( string $action, array $result ) : bool {
 		$message = $this->msg(
-			'abusefilter-revert-reason', $this->filter, $this->mReason
+			'abusefilter-revert-reason', $this->filter, $this->reason
 		)->inContentLanguage()->text();
 
 		$consequence = $this->getConsequence( $action, $result );
