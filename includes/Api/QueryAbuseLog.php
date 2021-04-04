@@ -31,11 +31,13 @@ use ApiQueryBase;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use Title;
@@ -50,28 +52,46 @@ use Wikimedia\IPUtils;
  */
 class QueryAbuseLog extends ApiQueryBase {
 
+	/** @var FilterLookup */
+	private $afFilterLookup;
+
 	/** @var AbuseFilterPermissionManager */
 	private $afPermManager;
+
+	/** @var VariablesBlobStore */
+	private $afVariablesBlobStore;
+
+	/** @var VariablesManager */
+	private $afVariablesManager;
 
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
+	 * @param FilterLookup $afFilterLookup
 	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param VariablesBlobStore $afVariablesBlobStore
+	 * @param VariablesManager $afVariablesManager
 	 */
 	public function __construct(
 		ApiQuery $query,
 		$moduleName,
-		AbuseFilterPermissionManager $afPermManager
+		FilterLookup $afFilterLookup,
+		AbuseFilterPermissionManager $afPermManager,
+		VariablesBlobStore $afVariablesBlobStore,
+		VariablesManager $afVariablesManager
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
+		$this->afFilterLookup = $afFilterLookup;
 		$this->afPermManager = $afPermManager;
+		$this->afVariablesBlobStore = $afVariablesBlobStore;
+		$this->afVariablesManager = $afVariablesManager;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$lookup = AbuseFilterServices::getFilterLookup();
+		$lookup = $this->afFilterLookup;
 		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
 		// Same check as in SpecialAbuseLog
@@ -274,6 +294,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				continue;
 			}
 			if ( $hidden === 'implicit' ) {
+				// TODO inject
 				$revRec = MediaWikiServices::getInstance()
 					->getRevisionLookup()
 					->getRevisionById( (int)$row->afl_rev_id );
@@ -332,8 +353,8 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( $fld_details ) {
 				$entry['details'] = [];
 				if ( $canSeeDetails ) {
-					$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $row->afl_var_dump );
-					$varManager = AbuseFilterServices::getVariablesManager();
+					$vars = $this->afVariablesBlobStore->loadVarDump( $row->afl_var_dump );
+					$varManager = $this->afVariablesManager;
 					$entry['details'] = $varManager->exportAllVars( $vars );
 				}
 			}

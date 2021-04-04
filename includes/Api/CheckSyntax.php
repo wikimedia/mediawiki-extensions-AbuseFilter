@@ -5,10 +5,13 @@ namespace MediaWiki\Extension\AbuseFilter\Api;
 use ApiBase;
 use ApiMain;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 
 class CheckSyntax extends ApiBase {
+
+	/** @var ParserFactory */
+	private $afParserFactory;
 
 	/** @var AbuseFilterPermissionManager */
 	private $afPermManager;
@@ -16,14 +19,17 @@ class CheckSyntax extends ApiBase {
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
+	 * @param ParserFactory $afParserFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
+		ParserFactory $afParserFactory,
 		AbuseFilterPermissionManager $afPermManager
 	) {
 		parent::__construct( $main, $action );
+		$this->afParserFactory = $afParserFactory;
 		$this->afPermManager = $afPermManager;
 	}
 
@@ -39,7 +45,7 @@ class CheckSyntax extends ApiBase {
 		}
 
 		$params = $this->extractRequestParams();
-		$result = AbuseFilterServices::getParserFactory()->newParser()->checkSyntax( $params['filter'] );
+		$result = $this->afParserFactory->newParser()->checkSyntax( $params['filter'] );
 
 		$r = [];
 		$warnings = [];

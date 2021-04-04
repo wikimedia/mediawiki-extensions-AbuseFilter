@@ -10,29 +10,49 @@ use LogEventsList;
 use LogicException;
 use LogPage;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
 
 class CheckMatch extends ApiBase {
 
+	/** @var ParserFactory */
+	private $afParserFactory;
+
 	/** @var AbuseFilterPermissionManager */
 	private $afPermManager;
+
+	/** @var VariablesBlobStore */
+	private $afVariablesBlobStore;
+
+	/** @var VariableGeneratorFactory */
+	private $afVariableGeneratorFactory;
 
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
+	 * @param ParserFactory $afParserFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param VariablesBlobStore $afVariablesBlobStore
+	 * @param VariableGeneratorFactory $afVariableGeneratorFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
-		AbuseFilterPermissionManager $afPermManager
+		ParserFactory $afParserFactory,
+		AbuseFilterPermissionManager $afPermManager,
+		VariablesBlobStore $afVariablesBlobStore,
+		VariableGeneratorFactory $afVariableGeneratorFactory
 	) {
 		parent::__construct( $main, $action );
+		$this->afParserFactory = $afParserFactory;
 		$this->afPermManager = $afPermManager;
+		$this->afVariablesBlobStore = $afVariablesBlobStore;
+		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
 	}
 
 	/**
@@ -79,9 +99,10 @@ class CheckMatch extends ApiBase {
 			}
 
 			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
-			$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator( $rc, $user );
+			$varGenerator = $this->afVariableGeneratorFactory->newRCGenerator( $rc, $user );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
+			// TODO inject
 			$dbr = wfGetDB( DB_REPLICA );
 			$row = $dbr->selectRow(
 				'abuse_filter_log',
@@ -100,13 +121,13 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );
 			}
 
-			$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $row->afl_var_dump );
+			$vars = $this->afVariablesBlobStore->loadVarDump( $row->afl_var_dump );
 		}
 		if ( $vars === null ) {
 			throw new LogicException( 'Impossible.' );
 		}
 
-		$parser = AbuseFilterServices::getParserFactory()->newParser( $vars );
+		$parser = $this->afParserFactory->newParser( $vars );
 		if ( $parser->checkSyntax( $params['filter'] )->getResult() !== true ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}

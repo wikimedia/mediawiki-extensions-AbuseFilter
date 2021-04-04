@@ -6,27 +6,40 @@ use ApiBase;
 use ApiMain;
 use ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use Status;
 
 class EvalExpression extends ApiBase {
 
+	/** @var ParserFactory */
+	private $afParserFactory;
+
 	/** @var AbuseFilterPermissionManager */
 	private $afPermManager;
+
+	/** @var VariableGeneratorFactory */
+	private $afVariableGeneratorFactory;
 
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
+	 * @param ParserFactory $afParserFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param VariableGeneratorFactory $afVariableGeneratorFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
-		AbuseFilterPermissionManager $afPermManager
+		ParserFactory $afParserFactory,
+		AbuseFilterPermissionManager $afPermManager,
+		VariableGeneratorFactory $afVariableGeneratorFactory
 	) {
 		parent::__construct( $main, $action );
+		$this->afParserFactory = $afParserFactory;
 		$this->afPermManager = $afPermManager;
+		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
 	}
 
 	/**
@@ -59,13 +72,13 @@ class EvalExpression extends ApiBase {
 	 * @return Status
 	 */
 	private function evaluateExpression( string $expr ): Status {
-		$parser = AbuseFilterServices::getParserFactory()->newParser();
+		$parser = $this->afParserFactory->newParser();
 		if ( $parser->checkSyntax( $expr )->getResult() !== true ) {
 			return Status::newFatal( 'abusefilter-tools-syntax-error' );
 		}
 
 		// Generic vars are the only ones available
-		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator();
+		$generator = $this->afVariableGeneratorFactory->newGenerator();
 		$vars = $generator->addGenericVars()->getVariableHolder();
 		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
 		$parser->setVariables( $vars );
