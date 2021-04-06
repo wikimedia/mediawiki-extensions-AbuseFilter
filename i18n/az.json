@@ -74,7 +74,7 @@
 	"abusefilter-log-hide-legend": "Jurnaldakı qeydləri gizlət",
 	"abusefilter-log-hide-reason": "Səbəb:",
 	"abusefilter-log-hide-forbidden": "Təhqir jurnalındakı qeydləri gizlətmək hüququnuz yoxdur.",
-	"logentry-rights-blockautopromote": "$1 {{GENDER:$4|$3}} istifadəçisini avtomatik hüquq almağını $5 müddətinə {{GENDER:$2|blokladı}}",
+	"logentry-rights-blockautopromote": "$1 {{GENDER:$4|$3}} istifadəçisinin avtomatik hüquq almağını $5 müddətinə {{GENDER:$2|blokladı}}",
 	"abusefilter-list": "Bütün süzgəclər",
 	"abusefilter-list-id": "Süzgəc nömrəsi",
 	"abusefilter-list-status": "Status",
