@@ -2,8 +2,10 @@
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Page\PageIdentityValue;
+use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\User\UserIdentity;
 
 /**
  * @group Test
@@ -19,10 +21,11 @@ class AbuseFilterTest extends MediaWikiUnitTestCase {
 	 * @covers AbuseFilter::userCanViewRev
 	 */
 	public function testUserCanViewRev( RevisionRecord $revRec, bool $privileged, bool $expected ) {
-		$user = $this->createMock( User::class );
-		$user->method( 'isAllowedAny' )->willReturn( $privileged );
-		$user->method( 'authorizeRead' )->willReturn( $privileged );
-		$this->assertSame( $expected, AbuseFilter::userCanViewRev( $revRec, $user ) );
+		$authority = new SimpleAuthority(
+			$this->createMock( UserIdentity::class ),
+			$privileged ? [ 'viewsuppressed' ] : []
+		);
+		$this->assertSame( $expected, AbuseFilter::userCanViewRev( $revRec, $authority ) );
 	}
 
 	/**

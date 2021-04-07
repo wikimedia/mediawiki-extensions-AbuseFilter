@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use RequestContext;
 use Status;
@@ -81,14 +82,14 @@ class AbuseFilter {
 	 * @note This assumes that a revision with the given ID exists
 	 *
 	 * @param RevisionRecord $revRec
-	 * @param User $user
+	 * @param Authority $authority
 	 * @return bool
 	 */
-	public static function userCanViewRev( RevisionRecord $revRec, User $user ) : bool {
+	public static function userCanViewRev( RevisionRecord $revRec, Authority $authority ) : bool {
 		return $revRec->audienceCan(
 			RevisionRecord::SUPPRESSED_ALL,
 			RevisionRecord::FOR_THIS_USER,
-			$user
+			$authority
 		);
 	}
 }
