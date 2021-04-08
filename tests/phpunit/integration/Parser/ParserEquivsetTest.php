@@ -100,7 +100,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideGenericTests
 	 */
 	public function testGeneric( $rule ) {
-		if ( !class_exists( 'Wikimedia\Equivset\Equivset' ) ) {
+		if ( !class_exists( \Wikimedia\Equivset\Equivset::class ) ) {
 			$this->markTestSkipped( 'Equivset is not installed' );
 		}
 		foreach ( $this->getParsers() as $parser ) {
