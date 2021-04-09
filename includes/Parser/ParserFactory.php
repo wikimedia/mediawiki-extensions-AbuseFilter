@@ -27,9 +27,6 @@ class ParserFactory {
 	/** @var VariablesManager */
 	private $varManager;
 
-	/** @var string */
-	private $parserClass;
-
 	/** @var int */
 	private $conditionsLimit;
 
@@ -39,7 +36,6 @@ class ParserFactory {
 	 * @param LoggerInterface $logger
 	 * @param KeywordsManager $keywordsManager
 	 * @param VariablesManager $varManager
-	 * @param string $parserClass
 	 * @param int $conditionsLimit
 	 */
 	public function __construct(
@@ -48,7 +44,6 @@ class ParserFactory {
 		LoggerInterface $logger,
 		KeywordsManager $keywordsManager,
 		VariablesManager $varManager,
-		string $parserClass,
 		int $conditionsLimit
 	) {
 		$this->contLang = $contLang;
@@ -56,17 +51,15 @@ class ParserFactory {
 		$this->logger = $logger;
 		$this->keywordsManager = $keywordsManager;
 		$this->varManager = $varManager;
-		$this->parserClass = $parserClass;
 		$this->conditionsLimit = $conditionsLimit;
 	}
 
 	/**
 	 * @param VariableHolder|null $vars
-	 * @return AbuseFilterParser
+	 * @return AbuseFilterCachingParser
 	 */
-	public function newParser( VariableHolder $vars = null ) : AbuseFilterParser {
-		$class = "\MediaWiki\Extension\AbuseFilter\Parser\\{$this->parserClass}";
-		return new $class(
+	public function newParser( VariableHolder $vars = null ) : AbuseFilterCachingParser {
+		return new AbuseFilterCachingParser(
 			$this->contLang,
 			$this->cache,
 			$this->logger,

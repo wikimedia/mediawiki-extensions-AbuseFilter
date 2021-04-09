@@ -117,7 +117,6 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
-			$services->getMainConfig()->get( 'AbuseFilterParserClass' ),
 			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
 	},

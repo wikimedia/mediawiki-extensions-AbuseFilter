@@ -494,7 +494,7 @@ class AFPTreeParser extends AFPTransitionBase {
 		$leftOperand = $this->doLevelUnarys();
 		$keyword = strtolower( $this->mCur->value );
 		if ( $this->mCur->type === AFPToken::TKEYWORD &&
-			isset( AbuseFilterParser::KEYWORDS[$keyword] )
+			isset( AbuseFilterCachingParser::KEYWORDS[$keyword] )
 		) {
 			$position = $this->mPos;
 			$this->move();
@@ -594,7 +594,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 */
 	protected function doLevelFunction() {
 		if ( $this->mCur->type === AFPToken::TID &&
-			isset( AbuseFilterParser::FUNCTIONS[$this->mCur->value] )
+			isset( AbuseFilterCachingParser::FUNCTIONS[$this->mCur->value] )
 		) {
 			$func = $this->mCur->value;
 			$position = $this->mPos;

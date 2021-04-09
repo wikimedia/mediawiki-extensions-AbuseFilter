@@ -24,20 +24,15 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
 use BagOStuff;
-use EmptyBagOStuff;
 use Generator;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
-use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
-use PHPUnit;
 use Psr\Log\NullLogger;
 use TestLogger;
 use Wikimedia\TestingAccessWrapper;
@@ -53,7 +48,6 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPParserState
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
@@ -66,9 +60,7 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider readTests
 	 */
 	public function testParser( $rule ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$this->assertTrue( $parser->parse( $rule ), 'Parser used: ' . get_class( $parser ) );
-		}
+		$this->assertTrue( $this->getParser()->parse( $rule ) );
 	}
 
 	/**
@@ -94,10 +86,8 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideExpressions
 	 */
 	public function testEvaluateExpression( $expr, $expected ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$actual = $parser->evaluateExpression( $expr );
-			$this->assertEquals( $expected, $actual );
-		}
+		$actual = $this->getParser()->evaluateExpression( $expr );
+		$this->assertEquals( $expected, $actual );
 	}
 
 	/**
@@ -123,9 +113,7 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideEmptySyntax
 	 */
 	public function testEmptySyntax( $code ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$this->assertFalse( $parser->parse( $code ) );
-		}
+		$this->assertFalse( $this->getParser()->parse( $code ) );
 	}
 
 	/**
@@ -141,26 +129,13 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * Test a filter only containing a pair of empty parentheses. In the old parser, this should simply
-	 * return false. In the new parser, it will throw.
+	 * Test a filter only containing a pair of empty parentheses.
 	 */
 	public function testEmptyParenthesisOnly() {
 		$code = '()';
-		$constrArgs = [
-			$this->getLanguageMock(),
-			new EmptyBagOStuff(),
-			new NullLogger(),
-			new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
-			$this->createMock( VariablesManager::class ),
-			1000
-		];
-
-		$parser = new AbuseFilterParser( ...$constrArgs );
-		$this->assertFalse( $parser->parse( $code ) );
-		$cachingParser = new AbuseFilterCachingParser( ...$constrArgs );
 		$this->expectException( AFPUserVisibleException::class );
 		$this->expectExceptionMessage( 'unexpectedtoken' );
-		$cachingParser->parse( $code );
+		$this->getParser()->parse( $code );
 	}
 
 	/**
@@ -186,14 +161,12 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider condCountCases
 	 */
 	public function testCondCount( $rule, $expected ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$parserClass = get_class( $parser );
-			$countBefore = $parser->getCondCount();
-			$parser->parse( $rule );
-			$countAfter = $parser->getCondCount();
-			$actual = $countAfter - $countBefore;
-			$this->assertEquals( $expected, $actual, "Wrong condition count for $rule with $parserClass" );
-		}
+		$parser = $this->getParser();
+		$countBefore = $parser->getCondCount();
+		$parser->parse( $rule );
+		$countAfter = $parser->getCondCount();
+		$actual = $countAfter - $countBefore;
+		$this->assertEquals( $expected, $actual, "Rule: $rule" );
 	}
 
 	/**
@@ -223,9 +196,7 @@ class ParserTest extends ParserTestCase {
 	public function testArrayShortcircuit() {
 		$code = 'a := [false, false]; b := [false, false]; c := 42; d := [0,1];' .
 			'a[0] != false & b[1] != false & (b[5**2/(5*(4+1))] !== a[43-c] | a[d[0]] === b[d[c-41]])';
-		foreach ( $this->getParsers() as $parser ) {
-			$this->assertFalse( $parser->parse( $code ), 'Parser: ' . get_class( $parser ) );
-		}
+		$this->assertFalse( $this->getParser()->parse( $code ) );
 	}
 
 	/**
@@ -317,18 +288,6 @@ class ParserTest extends ParserTestCase {
 			[ 'x := []; x[a] := 1', 'getVarValue' ],
 			[ 'a := [1]; a[b] := (b := 0); true', 'getVarValue' ],
 		];
-	}
-
-	/**
-	 * Special case, cannot use exceptionTestInSkippedBlock because that calls checkSyntax
-	 */
-	public function testUnrecognisedArrayInSkippedBlock() {
-		$code = 'false & ( nonex[1] := 2 )';
-		// Old parser only
-		$parser = $this->getParsers()[0];
-		$this->expectException( AFPUserVisibleException::class );
-		$this->expectExceptionMessage( 'unrecognisedvar' );
-		$parser->parse( $code );
 	}
 
 	/**
@@ -545,29 +504,8 @@ class ParserTest extends ParserTestCase {
 			[ 'set("added_lines", 45)', 'setUserVariable' ],
 			[ 'set("length", 45)', 'setUserVariable' ],
 			[ 'set("true", true)', 'setUserVariable' ],
+			[ 'contains_any[1] := "foo"', '??' ],
 		];
-	}
-
-	/**
-	 * Test for overriding a function name. The parsers cannot agree on this: the old parser
-	 * will try to get the value of the variable before knowing that it's parsing an assignment,
-	 * hence throwing unrecognisedvar. The new parser already knows it's an assignment and immediately
-	 * throws an overridebuiltin (which is more correct).
-	 * @todo Merge this into testOverrideBuiltin as soon as the old parser is deleted
-	 */
-	public function testOverrideFuncName() {
-		$code = 'contains_any[1] := "foo"';
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			$exc = $parser instanceof AbuseFilterCachingParser ? 'overridebuiltin' : 'unrecognisedvar';
-			try {
-				$parser->parse( $code );
-			} catch ( AFPUserVisibleException $e ) {
-				$this->assertEquals( $exc, $e->mExceptionID, "Wrong exception with parser $pname, got:\n$e" );
-				continue;
-			}
-			$this->fail( "Exception $exc not thrown with parser $pname." );
-		}
 	}
 
 	/**
@@ -752,15 +690,9 @@ class ParserTest extends ParserTestCase {
 	public function testVariadicFuncsArbitraryArgsAllowed( $func ) {
 		$argsList = str_repeat( ', "arg"', 50 );
 		$code = "$func( 'arg' $argsList )";
-		foreach ( self::getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			try {
-				$parser->parse( $code );
-				$this->assertTrue( true );
-			} catch ( AFPException $e ) {
-				$this->fail( "Got exception with parser $pname.\n$e" );
-			}
-		}
+		// Expect no exception
+		$this->getParser()->parse( $code );
+		$this->assertTrue( true );
 	}
 
 	/**
@@ -785,14 +717,7 @@ class ParserTest extends ParserTestCase {
 	public function testCheckArgCountInConditional( $funcCode, $exceptionCode ) {
 		$code = "if ( 1==1 ) then ( 1 ) else ( $funcCode ) end;";
 		// AbuseFilterParser skips the parentheses altogether, so this is not supposed to work
-		$parser = new AbuseFilterCachingParser(
-			$this->getLanguageMock(),
-			new EmptyBagOStuff(),
-			new NullLogger(),
-			$this->createMock( KeywordsManager::class ),
-			$this->createMock( VariablesManager::class ),
-			1000
-		);
+		$parser = $this->getParser();
 		$parser->toggleConditionLimit( false );
 		try {
 			$parser->parse( $code );
@@ -823,38 +748,36 @@ class ParserTest extends ParserTestCase {
 	 * @param string $new The new name of the variable
 	 * @dataProvider provideDeprecatedVars
 	 *
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::getVarValue
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::getVarValue
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser::checkLogDeprecatedVar
 	 */
 	public function testDeprecatedVars( $old, $new ) {
 		// Set it under the new name, and check that the old name points to it
 		$vars = VariableHolder::newFromArray( [ $new => 'value' ] );
 
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			$loggerMock = new TestLogger();
-			$loggerMock->setCollect( true );
-			$parser->setLogger( $loggerMock );
+		$parser = $this->getParser();
+		$loggerMock = new TestLogger();
+		$loggerMock->setCollect( true );
+		$parser->setLogger( $loggerMock );
 
-			$parser->setVariables( $vars );
-			$actual = $parser->parse( "$old === $new" );
+		$parser->setVariables( $vars );
+		$actual = $parser->parse( "$old === $new" );
 
-			$loggerBuffer = $loggerMock->getBuffer();
-			// Check that the use has been logged
-			$found = false;
-			foreach ( $loggerBuffer as $entry ) {
-				$check = preg_match( '/^Deprecated variable/', $entry[1] );
-				if ( $check ) {
-					$found = true;
-					break;
-				}
+		$loggerBuffer = $loggerMock->getBuffer();
+		// Check that the use has been logged
+		$found = false;
+		foreach ( $loggerBuffer as $entry ) {
+			$check = preg_match( '/^Deprecated variable/', $entry[1] );
+			if ( $check ) {
+				$found = true;
+				break;
 			}
-			if ( !$found ) {
-				$this->fail( "The use of the deprecated variable $old was not logged. Parser: $pname" );
-			}
-
-			$this->assertTrue( $actual, "Parser: $pname" );
 		}
+		if ( !$found ) {
+			$this->fail( "The use of the deprecated variable $old was not logged." );
+		}
+
+		$this->assertTrue( $actual );
 	}
 
 	/**
@@ -876,21 +799,15 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideConsecutiveComparisons
 	 */
 	public function testDisallowConsecutiveComparisons( $code, $valid ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			$actuallyValid = true;
-			try {
-				$parser->parse( $code );
-			} catch ( AFPUserVisibleException $e ) {
-				$actuallyValid = false;
-			}
-
-			$this->assertSame(
-				$valid,
-				$actuallyValid,
-				'The code should' . ( $valid ? ' ' : ' NOT ' ) . "be parsed correctly. Parser: $pname"
-			);
+		$parser = $this->getParser();
+		$actuallyValid = true;
+		try {
+			$parser->parse( $code );
+		} catch ( AFPUserVisibleException $e ) {
+			$actuallyValid = false;
 		}
+
+		$this->assertSame( $valid, $actuallyValid );
 	}
 
 	/**
@@ -899,7 +816,6 @@ class ParserTest extends ParserTestCase {
 	 * @return Generator
 	 */
 	public function provideConsecutiveComparisons() {
-		// Same as AbuseFilterParser::doLevelCompares
 		$eqOps = [ '==', '===', '!=', '!==', '=' ];
 		$ordOps = [ '<', '>', '<=', '>=' ];
 		$ops = array_merge( $eqOps, $ordOps );
@@ -932,17 +848,7 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideVarDeclarationInSkippedBlock
 	 */
 	public function testVarDeclarationInSkippedBlock( $code ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			try {
-				$this->assertFalse(
-					$parser->parse( $code ),
-					"Parser: $pname"
-				);
-			} catch ( AFPException $e ) {
-				$this->fail( "Got exception with parser: $pname\n$e" );
-			}
-		}
+		$this->assertFalse( $this->getParser()->parse( $code ) );
 	}
 
 	/**
@@ -981,13 +887,10 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideDUNDEFINED
 	 */
 	public function testDUNDEFINED( $code ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			// Note that some of the data sets will actually match at runtime, even if the variable
-			// they refer to is not set, due to the parser using GET_BC rather than GET_STRICT.
-			// TODO: Once T230256 is done, this can be changed to $this->assertFalse( $parser->parse( $code ) )
-			$this->assertTrue( $parser->checkSyntax( $code )->getResult(), "Parser: $pname" );
-		}
+		// Note that some of the data sets will actually match at runtime, even if the variable
+		// they refer to is not set, due to the parser using GET_BC rather than GET_STRICT.
+		// TODO: Once T230256 is done, this can be changed to $this->assertFalse( $this->getParser()->parse( $code ) )
+		$this->assertTrue( $this->getParser()->checkSyntax( $code )->getResult() );
 	}
 
 	/**
@@ -1041,17 +944,8 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideBuiltinArrays
 	 */
 	public function testBuiltinArrays( string $code ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			$this->assertTrue( $parser->checkSyntax( $code )->getResult(), "Parser: $pname" );
-
-			try {
-				$parser->parse( $code );
-				$this->fail( "Got no exception at parse-time. Parser: $pname" );
-			} catch ( AFPUserVisibleException $e ) {
-				$this->assertSame( 'notarray', $e->getMessage(), "Parser: $pname" );
-			}
-		}
+		$this->assertTrue( $this->getParser()->checkSyntax( $code )->getResult() );
+		$this->exceptionTest( 'notarray', $code, '' );
 	}
 
 	/**
@@ -1067,60 +961,13 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * Test that empty operands are correctly logged in the old parser. Note that this test doesn't
-	 * generate coverage *intentionally*. This is so that if the logEmptyOperand method becomes
-	 * covered, there's likely a bug somewhere in the parser.
-	 *
-	 * @param string $code
-	 * @param string $operandType
-	 * @dataProvider provideEmptyOperands
-	 */
-	public function testEmptyOperandsOldParser( $code, $operandType ) {
-		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
-		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
-		$mock = $this->getMockBuilder( AbuseFilterParser::class )
-			->setConstructorArgs( [
-				$this->getLanguageMock(),
-				new EmptyBagOStuff(),
-				new NullLogger(),
-				$keywordsManager,
-				new VariablesManager(
-					$keywordsManager,
-					$this->createMock( LazyVariableComputer::class ),
-					new NullLogger()
-				),
-				1000
-			] )
-			->setMethods( [ 'logEmptyOperand' ] )
-			->getMock();
-
-		$mock->expects( $this->once() )
-			->method( 'logEmptyOperand' )
-			->with( $operandType );
-
-		$mock->toggleConditionLimit( false );
-		$mock->parse( $code );
-	}
-
-	/**
 	 * Test that empty operands raise an exception in the CachingParser
 	 *
 	 * @param string $code
 	 * @dataProvider provideEmptyOperands
 	 */
-	public function testEmptyOperandsCachingParser( $code ) {
-		static $parser = null;
-		if ( !$parser ) {
-			$parser = new AbuseFilterCachingParser(
-				$this->getLanguageMock(),
-				new EmptyBagOStuff(),
-				new NullLogger(),
-				$this->createMock( KeywordsManager::class ),
-				$this->createMock( VariablesManager::class ),
-				1000
-			);
-			$parser->toggleConditionLimit( false );
-		}
+	public function testEmptyOperands( $code ) {
+		$parser = $this->getParser();
 		$this->expectException( AFPUserVisibleException::class );
 		$this->expectExceptionMessage( 'unexpectedtoken' );
 		$parser->parse( $code );
@@ -1169,47 +1016,14 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * For the old parser, ensure that dangling commas for variadic functions aren't logged
-	 * @param string $code
-	 * @dataProvider provideDanglingCommasInVariargs
-	 */
-	public function testDanglingCommasInVariargsNotLogged( $code ) {
-		/** @var PHPUnit\Framework\MockObject\MockObject|AbuseFilterParser $mock */
-		$mock = $this->getMockBuilder( AbuseFilterParser::class )
-			->setConstructorArgs( [
-				$this->getLanguageMock(),
-				new EmptyBagOStuff(),
-				new NullLogger(),
-				new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
-				$this->createMock( VariablesManager::class ),
-				1000
-			] )
-			->setMethods( [ 'logEmptyOperand' ] )
-			->getMock();
-
-		$mock->expects( $this->never() )
-			->method( 'logEmptyOperand' )
-			->with( 'non-variadic function argument' );
-
-		$mock->toggleConditionLimit( false );
-		$mock->parse( $code );
-	}
-
-	/**
 	 * Ensure that the both parsers won't throw for dangling commas in variadic functions
 	 * @param string $code
 	 * @dataProvider provideDanglingCommasInVariargs
 	 */
 	public function testDanglingCommasInVariargsAreValid( $code ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			try {
-				$parser->parse( $code );
-				$this->assertTrue( true );
-			} catch ( AFPException $e ) {
-				$this->fail( "Got exception for dangling commas with parser $pname:\n$e" );
-			}
-		}
+		// Expect no exception
+		$this->getParser()->parse( $code );
+		$this->assertTrue( true );
 	}
 
 	/**
@@ -1279,19 +1093,19 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * Ensure that every function in AbuseFilterParser::FUNCTIONS is also listed in
-	 * AbuseFilterParser::FUNC_ARG_COUNT
+	 * Ensure that every function in AbuseFilterCachingParser::FUNCTIONS is also listed in
+	 * AbuseFilterCachingParser::FUNC_ARG_COUNT
 	 */
 	public function testAllFunctionsHaveArgCount() {
-		$funcs = array_keys( AbuseFilterParser::FUNCTIONS );
+		$funcs = array_keys( AbuseFilterCachingParser::FUNCTIONS );
 		sort( $funcs );
-		$argsCount = array_keys( AbuseFilterParser::FUNC_ARG_COUNT );
+		$argsCount = array_keys( AbuseFilterCachingParser::FUNC_ARG_COUNT );
 		sort( $argsCount );
 		$this->assertSame( $funcs, $argsCount );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::__construct
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::__construct
 	 */
 	public function testConstructorInitsVars() {
 		$lang = $this->getLanguageMock();
@@ -1301,15 +1115,15 @@ class ParserTest extends ParserTestCase {
 		$varManager = $this->createMock( VariablesManager::class );
 		$vars = new VariableHolder();
 
-		$parser = new AbuseFilterParser( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
-		$this->assertEquals( $vars, $parser->mVariables, 'Variables should be initialized' );
+		$parser = new AbuseFilterCachingParser( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
+		$this->assertSame( $vars, $parser->mVariables, 'Variables should be initialized' );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setFilter
 	 */
 	public function testSetFilter() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 		$this->assertNull( $parser->mFilter, 'precondition' );
 		$filter = 42;
 		$parser->setFilter( $filter );
@@ -1317,41 +1131,41 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setCache
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setCache
 	 */
 	public function testSetCache() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 		$cache = $this->createMock( BagOStuff::class );
 		$parser->setCache( $cache );
 		$this->assertSame( $cache, $parser->cache );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setLogger
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setLogger
 	 */
 	public function testSetLogger() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 		$logger = new NullLogger();
 		$parser->setLogger( $logger );
 		$this->assertSame( $logger, $parser->logger );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setStatsd
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setStatsd
 	 */
 	public function testSetStatsd() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 		$statsd = $this->createMock( IBufferingStatsdDataFactory::class );
 		$parser->setStatsd( $statsd );
 		$this->assertSame( $statsd, $parser->statsd );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::getCondCount
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::resetCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::getCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::resetCondCount
 	 */
 	public function testCondCountMethods() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 		$this->assertSame( 0, $parser->mCondCount, 'precondition' );
 		$val = 42;
 		$parser->mCondCount = $val;
@@ -1361,10 +1175,10 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::toggleConditionLimit
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::toggleConditionLimit
 	 */
 	public function testToggleConditionLimit() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 
 		$parser->toggleConditionLimit( false );
 		$this->assertFalse( $parser->condLimitEnabled );
@@ -1374,10 +1188,10 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::clearFuncCache
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::clearFuncCache
 	 */
 	public function testClearFuncCache() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 
 		$parser->funcCache = [ 1, 2, 3 ];
 
@@ -1386,10 +1200,10 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser::setVariables
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setVariables
 	 */
 	public function testSetVariables() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParsers()[0] );
+		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
 		$vars = new VariableHolder();
 		$parser->setVariables( $vars );
 		$this->assertSame( $vars, $parser->mVariables );

@@ -27,10 +27,7 @@ use Generator;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
-use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTestCase;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiIntegrationTestCase;
@@ -48,51 +45,37 @@ use MediaWikiIntegrationTestCase;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPParserState
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
  */
 class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @return AbuseFilterParser[]
-	 * @see ParserTestCase::getParsers() - we cannot reuse that due to inheritance
+	 * @return AbuseFilterCachingParser
 	 */
-	protected function getParsers() {
-		static $parsers = null;
-		if ( !$parsers ) {
-			// We're not interested in caching or logging; tests should call respectively setCache
-			// and setLogger if they want to test any of those.
-			$contLang = new LanguageEn();
-			$cache = new EmptyBagOStuff();
-			$logger = new \Psr\Log\NullLogger();
-			$keywordsManager = AbuseFilterServices::getKeywordsManager();
-			$varManager = new VariablesManager(
-				$keywordsManager,
-				$this->createMock( LazyVariableComputer::class ),
-				$logger
-			);
+	protected function getParser() {
+		// We're not interested in caching or logging; tests should call respectively setCache
+		// and setLogger if they want to test any of those.
+		$contLang = new LanguageEn();
+		$cache = new EmptyBagOStuff();
+		$logger = new \Psr\Log\NullLogger();
+		$keywordsManager = AbuseFilterServices::getKeywordsManager();
+		$varManager = new VariablesManager(
+			$keywordsManager,
+			$this->createMock( LazyVariableComputer::class ),
+			$logger
+		);
 
-			$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager, $varManager, 1000 );
-			$parser->toggleConditionLimit( false );
-			$cachingParser = new AbuseFilterCachingParser(
-				$contLang,
-				$cache,
-				$logger,
-				$keywordsManager,
-				$varManager,
-				1000
-			);
-			$cachingParser->toggleConditionLimit( false );
-			$parsers = [ $parser, $cachingParser ];
-		} else {
-			// Reset so that already executed tests don't influence new ones
-			$parsers[0]->resetState();
-			$parsers[0]->clearFuncCache();
-			$parsers[1]->resetState();
-			$parsers[1]->clearFuncCache();
-		}
-		return $parsers;
+		$cachingParser = new AbuseFilterCachingParser(
+			$contLang,
+			$cache,
+			$logger,
+			$keywordsManager,
+			$varManager,
+			1000
+		);
+		$cachingParser->toggleConditionLimit( false );
+		return $cachingParser;
 	}
 
 	/**
@@ -103,9 +86,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 		if ( !class_exists( \Wikimedia\Equivset\Equivset::class ) ) {
 			$this->markTestSkipped( 'Equivset is not installed' );
 		}
-		foreach ( $this->getParsers() as $parser ) {
-			$this->assertTrue( $parser->parse( $rule ), 'Parser used: ' . get_class( $parser ) );
-		}
+		$this->assertTrue( $this->getParser()->parse( $rule ) );
 	}
 
 	/**
@@ -131,15 +112,9 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	public function testVariadicFuncsArbitraryArgsAllowed( $func ) {
 		$argsList = str_repeat( ', "arg"', 50 );
 		$code = "$func( 'arg' $argsList )";
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			try {
-				$parser->parse( $code );
-				$this->assertTrue( true );
-			} catch ( AFPException $e ) {
-				$this->fail( "Got exception with parser $pname.\n$e" );
-			}
-		}
+		// Expect no exception
+		$this->getParser()->parse( $code );
+		$this->assertTrue( true );
 	}
 
 	/**

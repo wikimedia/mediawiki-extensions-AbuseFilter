@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
@@ -86,7 +86,7 @@ class AceEditBoxBuiler extends EditBoxBuilder {
 		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
 
 		$builderVariables = implode( '|', array_keys( $values['vars'] ) );
-		$builderFunctions = implode( '|', array_keys( AbuseFilterParser::FUNCTIONS ) );
+		$builderFunctions = implode( '|', array_keys( AbuseFilterCachingParser::FUNCTIONS ) );
 		// AbuseFilterTokenizer::KEYWORDS also includes constants (true, false and null),
 		// but Ace redefines these constants afterwards so this will not be an issue
 		$builderKeywords = implode( '|', AbuseFilterTokenizer::KEYWORDS );

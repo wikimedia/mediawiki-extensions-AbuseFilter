@@ -342,10 +342,6 @@
 			"value": 1000,
 			"description": "The maximum number of 'conditions' that can be used each time the filters are run against a change. (More complex filters require more 'conditions')."
 		},
-		"AbuseFilterParserClass": {
-			"value": "AbuseFilterParser",
-			"description": "Class of the parser to use. The only possible values are 'AbuseFilterParser' and 'AbuseFilterCachingParser' (experimental). The code should only use the ParserFactory service."
-		},
 		"AbuseFilterEmergencyDisableThreshold": {
 			"value": {
 				"default": 0.05
