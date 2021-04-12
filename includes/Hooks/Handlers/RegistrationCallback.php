@@ -115,7 +115,7 @@ class RegistrationCallback {
 
 		if ( strpos( $wgAbuseFilterAflFilterMigrationStage, 'Bogus value' ) !== false ) {
 			// Set the value here, because extension.json is very unfriendly towards PHP constants
-			$wgAbuseFilterAflFilterMigrationStage = SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD;
+			$wgAbuseFilterAflFilterMigrationStage = SCHEMA_COMPAT_NEW;
 		}
 		$stage = $wgAbuseFilterAflFilterMigrationStage;
 		// Validation for the afl_filter migration stage, stolen from ActorMigration
