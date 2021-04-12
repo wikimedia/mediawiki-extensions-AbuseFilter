@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
+use MediaWiki\Revision\RevisionRecord;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
