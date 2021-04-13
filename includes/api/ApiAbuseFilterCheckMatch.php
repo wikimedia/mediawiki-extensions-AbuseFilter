@@ -62,7 +62,7 @@ class ApiAbuseFilterCheckMatch extends ApiBase {
 			);
 
 			$permManager = MediaWikiServices::getInstance()->getPermissionManager();
-			if ( !$permManager->canSeeHiddenLogEntries( $user ) && SpecialAbuseLog::isHidden( $row ) ) {
+			if ( !$permManager->userHasRight( $user, 'abusefilter-hidden-log' ) && SpecialAbuseLog::isHidden( $row ) ) {
 				// T223654 - Same check as in SpecialAbuseLog. Both the visibility of the AbuseLog entry
 				// and the corresponding revision are checked.
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );
