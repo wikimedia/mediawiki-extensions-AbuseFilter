@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -317,12 +318,13 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @todo Core should provide a method for this (T233222)
 	 * @param IDatabase $db
 	 * @param PermissionManager $manager
+	 * @param User $user
 	 * @return array
 	 */
-	public function buildVisibilityConditions( IDatabase $db, PermissionManager $manager ) : array {
-		if ( !$manager->userHasRight( 'deletedhistory' ) ) {
+	public function buildVisibilityConditions( IDatabase $db, PermissionManager $manager, User $user ) : array {
+		if ( !$manager->userHasRight( $user, 'deletedhistory' ) ) {
 			$bitmask = RevisionRecord::DELETED_USER;
-		} elseif ( !$manager->userHasAnyRight( 'suppressrevision', 'viewsuppressed' ) ) {
+		} elseif ( !$manager->userHasAnyRight( $user, 'suppressrevision', 'viewsuppressed' ) ) {
 			$bitmask = RevisionRecord::DELETED_USER | RevisionRecord::DELETED_RESTRICTED;
 		} else {
 			$bitmask = 0;

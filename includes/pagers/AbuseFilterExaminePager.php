@@ -46,7 +46,10 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$conds[] = $this->mPage->buildTestConditions( $dbr );
-		$conds = array_merge( $conds, $this->mPage->buildVisibilityConditions( $dbr, $permissionManager ) );
+		$conds = array_merge(
+			$conds,
+			$this->mPage->buildVisibilityConditions( $dbr, $permissionManager, $this->getUser() )
+		);
 
 		$rcQuery = RecentChange::getQueryInfo();
 		$info = [
