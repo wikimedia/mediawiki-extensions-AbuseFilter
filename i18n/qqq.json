@@ -557,7 +557,7 @@
 	"abusefilter-changeslist-examine": "Used as link text on [[Special:AbuseFilter]]",
 	"abusefilter-examine": "Used as special page label",
 	"abusefilter-examine-intro": "Used as intro on [[Special:AbuseFilter/examine]]",
-	"abusefilter-examine-intro-examine-only": "Used as intro on [[Special:AbuseFilter/examine]]",
+	"abusefilter-examine-intro-examine-only": "Used as intro on [[Special:AbuseFilter/examine]]. See also {{msg-mw|abusefilter-examine-intro}}",
 	"abusefilter-examine-legend": "Used as legend on [[Special:AbuseFilter/examine]]",
 	"abusefilter-examine-diff": "Used somewhere on [[Special:AbuseFilter/examine]]",
 	"abusefilter-examine-user": "{{Identical|User}}",
