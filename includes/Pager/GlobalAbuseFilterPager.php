@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\CentralDBManager;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
 
@@ -10,15 +12,25 @@ use MediaWiki\Linker\LinkRenderer;
  * Class to build paginated filter list for wikis using global abuse filters
  */
 class GlobalAbuseFilterPager extends AbuseFilterPager {
+
 	/**
 	 * @param AbuseFilterViewList $page
-	 * @param array $conds
 	 * @param LinkRenderer $linkRenderer
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param SpecsFormatter $specsFormatter
+	 * @param CentralDBManager $centralDBManager
+	 * @param array $conds
 	 */
-	public function __construct( AbuseFilterViewList $page, $conds, LinkRenderer $linkRenderer ) {
-		parent::__construct( $page, $conds, $linkRenderer, null, null );
-		$this->mDb = wfGetDB(
-			DB_REPLICA, [], $this->getConfig()->get( 'AbuseFilterCentralDB' ) );
+	public function __construct(
+		AbuseFilterViewList $page,
+		LinkRenderer $linkRenderer,
+		AbuseFilterPermissionManager $afPermManager,
+		SpecsFormatter $specsFormatter,
+		CentralDBManager $centralDBManager,
+		array $conds
+	) {
+		parent::__construct( $page, $linkRenderer, $afPermManager, $specsFormatter, $conds, null, null );
+		$this->mDb = $centralDBManager->getConnection( DB_REPLICA );
 	}
 
 	/**
@@ -28,8 +40,6 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 	 */
 	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
-		$specsFormatter = AbuseFilterServices::getSpecsFormatter();
-		$specsFormatter->setMessageLocalizer( $this->getContext() );
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
@@ -69,7 +79,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 				)->parse();
 			case 'af_group':
 				// If this is global, local name probably doesn't exist, but try
-				return $specsFormatter->nameGroup( $value );
+				return $this->specsFormatter->nameGroup( $value );
 			default:
 				return parent::formatValue( $name, $value );
 		}

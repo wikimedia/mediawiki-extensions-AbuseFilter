@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
@@ -76,6 +77,8 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		AbuseFilterViewList::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			FilterProfiler::SERVICE_NAME,
+			SpecsFormatter::SERVICE_NAME,
+			CentralDBManager::SERVICE_NAME,
 		],
 		AbuseFilterViewRevert::class => [
 			'UserFactory',
