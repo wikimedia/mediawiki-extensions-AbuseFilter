@@ -6,8 +6,7 @@ use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 
 /**
- * Base parse-related class to be used while the old parser is being phased out
- *
+ * @todo Remove this class
  * @internal This is a temporary class until things are settled down
  * @property KeywordsManager $keywordsManager
  */

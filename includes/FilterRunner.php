@@ -11,7 +11,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
@@ -70,7 +70,7 @@ class FilterRunner {
 	private $options;
 
 	/**
-	 * @var AbuseFilterParser
+	 * @var AbuseFilterCachingParser
 	 * @private Temporarily public for BC
 	 */
 	public $parser;

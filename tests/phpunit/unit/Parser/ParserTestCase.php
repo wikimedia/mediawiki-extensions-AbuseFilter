@@ -28,7 +28,6 @@ use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -40,9 +39,9 @@ use PHPUnit\Framework\MockObject\MockObject;
  */
 abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	/**
-	 * @return AbuseFilterParser[]
+	 * @return AbuseFilterCachingParser
 	 */
-	protected function getParsers() {
+	protected function getParser() {
 		// We're not interested in caching or logging; tests should call respectively setCache
 		// and setLogger if they want to test any of those.
 		$contLang = $this->getLanguageMock();
@@ -55,8 +54,6 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			$logger
 		);
 
-		$parser = new AbuseFilterParser( $contLang, $cache, $logger, $keywordsManager, $varManager, 1000 );
-		$parser->toggleConditionLimit( false );
 		$cachingParser = new AbuseFilterCachingParser(
 			$contLang,
 			$cache,
@@ -66,7 +63,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			1000
 		);
 		$cachingParser->toggleConditionLimit( false );
-		return [ $parser, $cachingParser ];
+		return $cachingParser;
 	}
 
 	/**
@@ -76,27 +73,26 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 * @param bool $skippedBlock Whether we're testing code inside a short-circuited block
 	 */
 	private function exceptionTestInternal( $excep, $expr, $caller, $skippedBlock ) {
-		foreach ( $this->getParsers() as $parser ) {
-			$pname = get_class( $parser );
-			$msg = "Exception $excep not thrown in $caller";
-			if ( $skippedBlock ) {
-				$msg .= " inside a short-circuited block";
-			}
-			$msg .= ". Parser: $pname.";
-			try {
-				if ( $skippedBlock ) {
-					// Skipped blocks are, well, skipped when actually parsing.
-					$parser->checkSyntaxThrow( $expr );
-				} else {
-					$parser->parse( $expr );
-				}
-			} catch ( AFPUserVisibleException $e ) {
-				$this->assertEquals( $excep, $e->mExceptionID, $msg . " Got instead:\n$e" );
-				continue;
-			}
-
-			$this->fail( $msg );
+		$parser = $this->getParser();
+		$msg = "Exception $excep not thrown";
+		if ( $caller ) {
+			$msg .= " in $caller";
 		}
+		if ( $skippedBlock ) {
+			$msg .= " inside a short-circuited block";
+		}
+		try {
+			if ( $skippedBlock ) {
+				// Skipped blocks are, well, skipped when actually parsing.
+				$parser->checkSyntaxThrow( $expr );
+			} else {
+				$parser->parse( $expr );
+			}
+		} catch ( AFPUserVisibleException $e ) {
+			$this->assertEquals( $excep, $e->mExceptionID, $msg . " Got instead:\n$e" );
+			return;
+		}
+		$this->fail( $msg );
 	}
 
 	/**
@@ -108,7 +104,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 *  The method may be different in Parser and CachingParser, but this parameter is
 	 *  just used for debugging purposes.
 	 */
-	protected function exceptionTest( $excep, $expr, $caller ) {
+	protected function exceptionTest( $excep, $expr, $caller = '' ) {
 		$this->exceptionTestInternal( $excep, $expr, $caller, false );
 	}
 
@@ -121,7 +117,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 * @param string $expr
 	 * @param string $caller
 	 */
-	protected function exceptionTestInSkippedBlock( $excep, $expr, $caller ) {
+	protected function exceptionTestInSkippedBlock( $excep, $expr, $caller = '' ) {
 		$expr = "false & ( $expr )";
 		$this->exceptionTestInternal( $excep, $expr, $caller, true );
 	}

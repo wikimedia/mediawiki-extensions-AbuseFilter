@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
 use FormatJson;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterParser;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 
@@ -45,7 +45,7 @@ class CheckMatchTest extends ApiTestCase {
 		$filter = 'sampleFilter';
 		$checkStatus = new ParserStatus( true, false, null, [] );
 		$resultStatus = new ParserStatus( $expected, false, null, [] );
-		$parser = $this->createMock( AbuseFilterParser::class );
+		$parser = $this->createMock( AbuseFilterCachingParser::class );
 		$parser->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )
 			->willReturn( $checkStatus );
@@ -79,7 +79,7 @@ class CheckMatchTest extends ApiTestCase {
 		$this->setExpectedApiException( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		$filter = 'sampleFilter';
 		$status = new ParserStatus( false, false, null, [] );
-		$parser = $this->createMock( AbuseFilterParser::class );
+		$parser = $this->createMock( AbuseFilterCachingParser::class );
 		$parser->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )
 			->willReturn( $status );
