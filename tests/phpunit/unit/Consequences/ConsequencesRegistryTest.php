@@ -23,7 +23,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$this->assertInstanceOf(
 			ConsequencesRegistry::class,
-			new ConsequencesRegistry( $hookRunner, [], [] )
+			new ConsequencesRegistry( $hookRunner, [] )
 		);
 	}
 
@@ -32,7 +32,6 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetAllActionNames() {
 		$configActions = [ 'nothing' => false, 'rickroll' => true ];
-		$customHandlers = [ 'blahblah' => 'strlen' ];
 		$customActionName = 'spell';
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
@@ -40,12 +39,8 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 				$actions[$customActionName] = 'strlen';
 			}
 		);
-		$expected = [ 'nothing', 'rickroll', 'blahblah', 'spell' ];
-		$registry = new ConsequencesRegistry(
-			$hookRunner,
-			$configActions,
-			$customHandlers
-		);
+		$expected = [ 'nothing', 'rickroll', 'spell' ];
+		$registry = new ConsequencesRegistry( $hookRunner, $configActions );
 		$this->assertSame( $expected, $registry->getAllActionNames() );
 	}
 
@@ -54,7 +49,6 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetAllEnabledActionNames() {
 		$configActions = [ 'nothing' => false, 'rickroll' => true ];
-		$customHandlers = [ 'blahblah' => 'strlen' ];
 		$customActionName = 'spell';
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
@@ -62,12 +56,8 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 				$actions[$customActionName] = 'strlen';
 			}
 		);
-		$expected = [ 'rickroll', 'blahblah', 'spell' ];
-		$registry = new ConsequencesRegistry(
-			$hookRunner,
-			$configActions,
-			$customHandlers
-		);
+		$expected = [ 'rickroll', 'spell' ];
+		$registry = new ConsequencesRegistry( $hookRunner, $configActions );
 		$this->assertSame( $expected, $registry->getAllEnabledActionNames() );
 	}
 
@@ -79,7 +69,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$regReflection = new ReflectionClass( ConsequencesRegistry::class );
 		$expected = $regReflection->getConstant( 'DANGEROUS_ACTIONS' );
 
-		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), [], [] );
+		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), [] );
 		$this->assertSame( $expected, $registry->getDangerousActionNames() );
 	}
 
@@ -94,7 +84,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 				$array[] = $extraDangerous;
 			}
 		);
-		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$registry = new ConsequencesRegistry( $hookRunner, [] );
 		$this->assertContains( $extraDangerous, $registry->getDangerousActionNames() );
 	}
 
@@ -111,7 +101,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 				$actions[$customActionName] = $customAction;
 			}
 		);
-		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$registry = new ConsequencesRegistry( $hookRunner, [] );
 		$this->assertSame( [ $customActionName => $customAction ], $registry->getCustomActions() );
 	}
 
@@ -127,7 +117,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 				$actions[$invalidKey] = $this->createMock( Consequence::class );
 			}
 		);
-		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$registry = new ConsequencesRegistry( $hookRunner, [] );
 		$this->expectException( RuntimeException::class );
 		$registry->getCustomActions();
 	}
@@ -144,7 +134,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 				$actions['myaction'] = $invalidValue;
 			}
 		);
-		$registry = new ConsequencesRegistry( $hookRunner, [], [] );
+		$registry = new ConsequencesRegistry( $hookRunner, [] );
 		$this->expectException( RuntimeException::class );
 		$registry->getCustomActions();
 	}

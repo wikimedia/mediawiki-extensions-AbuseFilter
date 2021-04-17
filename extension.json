@@ -418,10 +418,6 @@
 			"value": 5,
 			"description": "Duration, in days, for which users' autopromotion is blocked by filters."
 		},
-		"AbuseFilterCustomActionsHandlers": {
-			"value": [],
-			"description": "Callback functions for custom actions. DEPRECATED since 1.36! Use the AbuseFilterCustomActions hook instead."
-		},
 		"AbuseFilterValidGroups": {
 			"value": [ "default" ],
 			"description": "The list of 'groups' filters can be divided into – used for applying edit filters to certain types of actions. By default there is only one group."

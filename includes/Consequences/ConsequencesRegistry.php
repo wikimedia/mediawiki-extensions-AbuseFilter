@@ -21,8 +21,6 @@ class ConsequencesRegistry {
 	private $hookRunner;
 	/** @var bool[] */
 	private $configActions;
-	/** @var callable[] */
-	private $customHandlers;
 
 	/** @var string[]|null */
 	private $dangerousActionsCache;
@@ -32,16 +30,13 @@ class ConsequencesRegistry {
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param bool[] $configActions
-	 * @param callable[] $customHandlers
 	 */
 	public function __construct(
 		AbuseFilterHookRunner $hookRunner,
-		array $configActions,
-		array $customHandlers
+		array $configActions
 	) {
 		$this->hookRunner = $hookRunner;
 		$this->configActions = $configActions;
-		$this->customHandlers = $customHandlers;
 	}
 
 	/**
@@ -67,7 +62,6 @@ class ConsequencesRegistry {
 		return array_unique(
 			array_merge(
 				array_keys( $this->configActions ),
-				array_keys( $this->customHandlers ),
 				array_keys( $this->getCustomActions() )
 			)
 		);

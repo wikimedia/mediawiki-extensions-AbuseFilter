@@ -33,7 +33,7 @@ class FilterCompareTest extends MediaWikiUnitTestCase {
 			'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'rangeblock', 'degroup', 'tag'
 		];
 		$allActions = array_fill_keys( $allActions, true );
-		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), $allActions, [] );
+		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), $allActions );
 		$compare = new FilterCompare( $registry );
 
 		$this->assertSame( $expected, $compare->compareVersions( $firstVersion, $secondVersion ) );

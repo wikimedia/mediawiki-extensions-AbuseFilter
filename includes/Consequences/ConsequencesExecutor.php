@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BCConsequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ConsequencesDisablerConsequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
@@ -23,7 +22,6 @@ class ConsequencesExecutor {
 		'AbuseFilterBlockDuration',
 		'AbuseFilterAnonBlockDuration',
 		'AbuseFilterBlockAutopromoteDuration',
-		'AbuseFilterCustomActionsHandlers',
 	];
 
 	/** @var ConsequencesLookup */
@@ -265,17 +263,9 @@ class ConsequencesExecutor {
 				}
 				return $this->consFactory->newTag( $baseConsParams, $accountName, $rawParams );
 			default:
-				$customHandlers = $this->options->get( 'AbuseFilterCustomActionsHandlers' );
 				if ( array_key_exists( $actionName, $this->consRegistry->getCustomActions() ) ) {
 					$callback = $this->consRegistry->getCustomActions()[$actionName];
 					return $callback( $baseConsParams, $rawParams );
-				} elseif ( isset( $customHandlers[$actionName] ) ) {
-					wfDeprecated(
-						'$wgAbuseFilterCustomActionsHandlers; use the AbuseFilterCustomActions hook instead',
-						'1.36'
-					);
-					$customFunction = $customHandlers[$actionName];
-					return new BCConsequence( $baseConsParams, $rawParams, $this->vars, $customFunction );
 				} else {
 					$this->logger->warning( "Unrecognised action $actionName" );
 					return null;
@@ -324,18 +314,6 @@ class ConsequencesExecutor {
 	 * @todo Improve return value
 	 */
 	private function takeConsequenceAction( Consequence $consequence ) : array {
-		// Special case
-		if ( $consequence instanceof BCConsequence ) {
-			$consequence->execute();
-			try {
-				$message = $consequence->getMessage();
-			} catch ( \LogicException $_ ) {
-				// Swallow. Sigh.
-				$message = null;
-			}
-			return [ true, $message ];
-		}
-
 		$res = $consequence->execute();
 		if ( $res && $consequence instanceof HookAborterConsequence ) {
 			$message = $consequence->getMessage();
