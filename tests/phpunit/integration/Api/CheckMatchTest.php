@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckMatch
+ * @covers ::__construct
  * @group medium
  */
 class CheckMatchTest extends ApiTestCase {
