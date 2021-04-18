@@ -6,9 +6,11 @@ use Html;
 use HTMLForm;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterPager;
 use MediaWiki\Extension\AbuseFilter\Pager\GlobalAbuseFilterPager;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use StringUtils;
@@ -19,14 +21,20 @@ use Xml;
  */
 class AbuseFilterViewList extends AbuseFilterView {
 
-	/**
-	 * @var FilterProfiler
-	 */
+	/** @var FilterProfiler */
 	private $filterProfiler;
+
+	/** @var SpecsFormatter */
+	private $specsFormatter;
+
+	/** @var CentralDBManager */
+	private $centralDBManager;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterProfiler $filterProfiler
+	 * @param SpecsFormatter $specsFormatter
+	 * @param CentralDBManager $centralDBManager
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -35,6 +43,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
 		FilterProfiler $filterProfiler,
+		SpecsFormatter $specsFormatter,
+		CentralDBManager $centralDBManager,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -42,6 +52,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->filterProfiler = $filterProfiler;
+		$this->specsFormatter = $specsFormatter;
+		$this->specsFormatter->setMessageLocalizer( $context );
+		$this->centralDBManager = $centralDBManager;
 	}
 
 	/**
@@ -192,16 +205,22 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$searchmode = $optarray['searchmode'];
 
 		if ( $centralDB !== null && !$dbIsCentral && $scope === 'global' ) {
+			// TODO: remove the circular dependency
 			$pager = new GlobalAbuseFilterPager(
 				$this,
-				$conds,
-				$this->linkRenderer
+				$this->linkRenderer,
+				$this->afPermManager,
+				$this->specsFormatter,
+				$this->centralDBManager,
+				$conds
 			);
 		} else {
 			$pager = new AbuseFilterPager(
 				$this,
-				$conds,
 				$this->linkRenderer,
+				$this->afPermManager,
+				$this->specsFormatter,
+				$conds,
 				$querypattern,
 				$searchmode
 			);

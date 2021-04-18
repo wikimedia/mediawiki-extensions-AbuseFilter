@@ -5,7 +5,8 @@ namespace MediaWiki\Extension\AbuseFilter\Pager;
 use FakeResultWrapper;
 use Linker;
 use LogicException;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
 use MWException;
@@ -19,42 +20,55 @@ use Wikimedia\AtEase\AtEase;
  */
 class AbuseFilterPager extends TablePager {
 
+	/** @var AbuseFilterPermissionManager */
+	protected $afPermManager;
+
+	/** @var SpecsFormatter */
+	protected $specsFormatter;
+
 	/**
 	 * @var AbuseFilterViewList The associated page
 	 */
-	public $mPage;
+	protected $mPage;
 	/**
 	 * @var array Query WHERE conditions
 	 */
-	public $mConds;
+	protected $conds;
 	/**
 	 * @var string|null The pattern being searched
 	 */
-	private $mSearchPattern;
+	private $searchPattern;
 	/**
 	 * @var string|null The pattern search mode (LIKE, RLIKE or IRLIKE)
 	 */
-	private $mSearchMode;
+	private $searchMode;
 
 	/**
 	 * @param AbuseFilterViewList $page
-	 * @param array $conds
 	 * @param LinkRenderer $linkRenderer
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @param SpecsFormatter $specsFormatter
+	 * @param array $conds
 	 * @param ?string $searchPattern Null if no pattern was specified
 	 * @param ?string $searchMode
 	 */
 	public function __construct(
 		AbuseFilterViewList $page,
-		$conds,
 		LinkRenderer $linkRenderer,
+		AbuseFilterPermissionManager $afPermManager,
+		SpecsFormatter $specsFormatter,
+		array $conds,
 		?string $searchPattern,
 		?string $searchMode
 	) {
+		// needed by parent's constructor call
+		$this->afPermManager = $afPermManager;
+		$this->specsFormatter = $specsFormatter;
 		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mPage = $page;
-		$this->mConds = $conds;
-		$this->mSearchPattern = $searchPattern;
-		$this->mSearchMode = $searchMode;
+		$this->conds = $conds;
+		$this->searchPattern = $searchPattern;
+		$this->searchMode = $searchMode;
 	}
 
 	/**
@@ -80,7 +94,7 @@ class AbuseFilterPager extends TablePager {
 				'af_group',
 				'af_throttled'
 			],
-			'conds' => $this->mConds,
+			'conds' => $this->conds,
 		];
 	}
 
@@ -90,7 +104,7 @@ class AbuseFilterPager extends TablePager {
 	 * Otherwise, it does a query with no limit and then slices the results à la ContribsPager.
 	 */
 	public function reallyDoQuery( $offset, $limit, $order ) {
-		if ( $this->mSearchMode === null ) {
+		if ( $this->searchMode === null ) {
 			return parent::reallyDoQuery( $offset, $limit, $order );
 		}
 
@@ -126,8 +140,8 @@ class AbuseFilterPager extends TablePager {
 	 * @throws LogicException
 	 */
 	private function matchesPattern( $subject ) {
-		$pattern = $this->mSearchPattern;
-		switch ( $this->mSearchMode ) {
+		$pattern = $this->searchPattern;
+		switch ( $this->searchMode ) {
 			case 'RLIKE':
 				return (bool)preg_match( "/$pattern/u", $subject );
 			case 'IRLIKE':
@@ -135,7 +149,7 @@ class AbuseFilterPager extends TablePager {
 			case 'LIKE':
 				return mb_stripos( $subject, $pattern ) !== false;
 			default:
-				throw new LogicException( "Unknown search type {$this->mSearchMode}" );
+				throw new LogicException( "Unknown search type {$this->searchMode}" );
 		}
 	}
 
@@ -145,8 +159,6 @@ class AbuseFilterPager extends TablePager {
 	 * @see Pager::getFieldNames()
 	 */
 	public function getFieldNames() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-
 		$headers = [
 			'af_id' => 'abusefilter-list-id',
 			'af_public_comments' => 'abusefilter-list-public',
@@ -157,11 +169,11 @@ class AbuseFilterPager extends TablePager {
 		];
 
 		$user = $this->getUser();
-		if ( $afPermManager->canSeeLogDetails( $user ) ) {
+		if ( $this->afPermManager->canSeeLogDetails( $user ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( $afPermManager->canViewPrivateFilters( $user ) && $this->mSearchMode !== null ) {
+		if ( $this->afPermManager->canViewPrivateFilters( $user ) && $this->searchMode !== null ) {
 			// This is also excluded in the default view
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
@@ -186,8 +198,6 @@ class AbuseFilterPager extends TablePager {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$linkRenderer = $this->getLinkRenderer();
-		$specsFormatter = AbuseFilterServices::getSpecsFormatter();
-		$specsFormatter->setMessageLocalizer( $this->getContext() );
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
@@ -207,7 +217,7 @@ class AbuseFilterPager extends TablePager {
 				$actions = explode( ',', $value );
 				$displayActions = [];
 				foreach ( $actions as $action ) {
-					$displayActions[] = $specsFormatter->getActionDisplay( $action );
+					$displayActions[] = $this->specsFormatter->getActionDisplay( $action );
 				}
 				return $lang->commaList( $displayActions );
 			case 'af_enabled':
@@ -232,8 +242,7 @@ class AbuseFilterPager extends TablePager {
 				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
 				return $this->msg( $msg )->parse();
 			case 'af_hit_count':
-				$afPermManager = AbuseFilterServices::getPermissionManager();
-				if ( $afPermManager->canSeeLogDetailsForFilter( $user, $row->af_hidden ) ) {
+				if ( $this->afPermManager->canSeeLogDetailsForFilter( $user, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $linkRenderer->makeKnownLink(
@@ -276,7 +285,7 @@ class AbuseFilterPager extends TablePager {
 						wfEscapeWikiText( $row->af_user_text )
 					)->parse();
 			case 'af_group':
-				return $specsFormatter->nameGroup( $value );
+				return $this->specsFormatter->nameGroup( $value );
 			default:
 				throw new MWException( "Unknown row type $name!" );
 		}
@@ -289,16 +298,16 @@ class AbuseFilterPager extends TablePager {
 	 * @return string
 	 */
 	private function getHighlightedPattern( stdClass $row ) {
-		if ( $this->mSearchMode === null ) {
+		if ( $this->searchMode === null ) {
 			throw new LogicException( 'Cannot search without a mode.' );
 		}
 		$maxLen = 50;
-		if ( $this->mSearchMode === 'LIKE' ) {
-			$position = mb_stripos( $row->af_pattern, $this->mSearchPattern );
-			$length = mb_strlen( $this->mSearchPattern );
+		if ( $this->searchMode === 'LIKE' ) {
+			$position = mb_stripos( $row->af_pattern, $this->searchPattern );
+			$length = mb_strlen( $this->searchPattern );
 		} else {
-			$regex = '/' . $this->mSearchPattern . '/u';
-			if ( $this->mSearchMode === 'IRLIKE' ) {
+			$regex = '/' . $this->searchPattern . '/u';
+			if ( $this->searchMode === 'IRLIKE' ) {
 				$regex .= 'i';
 			}
 
@@ -380,8 +389,6 @@ class AbuseFilterPager extends TablePager {
 	 * @return bool
 	 */
 	public function isFieldSortable( $name ) {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-
 		$sortable_fields = [
 			'af_id',
 			'af_enabled',
@@ -389,7 +396,7 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden',
 			'af_group',
 		];
-		if ( $afPermManager->canSeeLogDetails( $this->getUser() ) ) {
+		if ( $this->afPermManager->canSeeLogDetails( $this->getUser() ) ) {
 			$sortable_fields[] = 'af_hit_count';
 			$sortable_fields[] = 'af_public_comments';
 		}
