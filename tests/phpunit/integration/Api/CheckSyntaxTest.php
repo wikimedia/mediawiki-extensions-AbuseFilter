@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckSyntax
+ * @covers ::__construct
  * @group medium
  */
 class CheckSyntaxTest extends ApiTestCase {

@@ -102,9 +102,7 @@ class CheckMatch extends ApiBase {
 			$varGenerator = $this->afVariableGeneratorFactory->newRCGenerator( $rc, $user );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
-			// TODO inject
-			$dbr = wfGetDB( DB_REPLICA );
-			$row = $dbr->selectRow(
+			$row = $this->getDB()->selectRow(
 				'abuse_filter_log',
 				'*',
 				[ 'afl_id' => $params['logid'] ],
@@ -124,7 +122,9 @@ class CheckMatch extends ApiBase {
 			$vars = $this->afVariablesBlobStore->loadVarDump( $row->afl_var_dump );
 		}
 		if ( $vars === null ) {
+			// @codeCoverageIgnoreStart
 			throw new LogicException( 'Impossible.' );
+			// @codeCoverageIgnoreEnd
 		}
 
 		$parser = $this->afParserFactory->newParser( $vars );

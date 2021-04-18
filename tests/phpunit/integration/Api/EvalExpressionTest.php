@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\EvalExpression
+ * @covers ::__construct
  * @group medium
  */
 class EvalExpressionTest extends ApiTestCase {
@@ -30,6 +31,7 @@ class EvalExpressionTest extends ApiTestCase {
 
 	/**
 	 * @covers ::execute
+	 * @covers ::evaluateExpression
 	 */
 	public function testExecute_error() {
 		$this->setExpectedApiException( 'abusefilter-tools-syntax-error' );
@@ -48,6 +50,7 @@ class EvalExpressionTest extends ApiTestCase {
 
 	/**
 	 * @covers ::execute
+	 * @covers ::evaluateExpression
 	 */
 	public function testExecute_Ok() {
 		$expression = 'sampleExpression';
@@ -79,6 +82,7 @@ class EvalExpressionTest extends ApiTestCase {
 
 	/**
 	 * @covers ::execute
+	 * @covers ::evaluateExpression
 	 */
 	public function testExecute_OkAndPrettyPrint() {
 		$expression = 'sampleExpression';
