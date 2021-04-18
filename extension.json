@@ -123,20 +123,31 @@
 		"abusefilterchecksyntax": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckSyntax",
 			"services": [
+				"AbuseFilterParserFactory",
 				"AbuseFilterPermissionManager"
 			]
 		},
 		"abusefilterevalexpression": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\EvalExpression",
 			"services": [
-				"AbuseFilterPermissionManager"
+				"AbuseFilterParserFactory",
+				"AbuseFilterPermissionManager",
+				"AbuseFilterVariableGeneratorFactory"
 			]
 		},
-		"abusefilterunblockautopromote": "MediaWiki\\Extension\\AbuseFilter\\Api\\UnblockAutopromote",
+		"abusefilterunblockautopromote": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\UnblockAutopromote",
+			"services": [
+				"AbuseFilterBlockAutopromoteStore"
+			]
+		},
 		"abusefiltercheckmatch": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckMatch",
 			"services": [
-				"AbuseFilterPermissionManager"
+				"AbuseFilterParserFactory",
+				"AbuseFilterPermissionManager",
+				"AbuseFilterVariablesBlobStore",
+				"AbuseFilterVariableGeneratorFactory"
 			]
 		},
 		"abuselogprivatedetails": {
@@ -150,7 +161,10 @@
 		"abuselog": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseLog",
 			"services": [
-				"AbuseFilterPermissionManager"
+				"AbuseFilterFilterLookup",
+				"AbuseFilterPermissionManager",
+				"AbuseFilterVariablesBlobStore",
+				"AbuseFilterVariablesManager"
 			]
 		},
 		"abusefilters": {

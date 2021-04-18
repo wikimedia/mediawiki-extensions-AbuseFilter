@@ -3,10 +3,29 @@
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
 use ApiBase;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use ApiMain;
+use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use User;
 
 class UnblockAutopromote extends ApiBase {
+
+	/** @var BlockAutopromoteStore */
+	private $afBlockAutopromoteStore;
+
+	/**
+	 * @param ApiMain $main
+	 * @param string $action
+	 * @param BlockAutopromoteStore $afBlockAutopromoteStore
+	 */
+	public function __construct(
+		ApiMain $main,
+		$action,
+		BlockAutopromoteStore $afBlockAutopromoteStore
+	) {
+		parent::__construct( $main, $action );
+		$this->afBlockAutopromoteStore = $afBlockAutopromoteStore;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -30,7 +49,7 @@ class UnblockAutopromote extends ApiBase {
 		}
 
 		$msg = $this->msg( 'abusefilter-tools-restoreautopromote' )->inContentLanguage()->text();
-		$blockAutopromoteStore = AbuseFilterServices::getBlockAutopromoteStore();
+		$blockAutopromoteStore = $this->afBlockAutopromoteStore;
 		$res = $blockAutopromoteStore->unblockAutopromote( $target, $this->getUser(), $msg );
 
 		if ( $res === false ) {
