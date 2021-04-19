@@ -2,14 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use ActorMigration;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
 use RecentChange;
 use ReverseChronologicalPager;
 use stdClass;
 use Title;
-use User;
 
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**
@@ -42,11 +40,10 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	public function getQueryInfo() {
 		$dbr = wfGetDB( DB_REPLICA );
 		$conds = [];
+		$rcQuery = RecentChange::getQueryInfo();
 
 		if ( (string)$this->mPage->mSearchUser !== '' ) {
-			$conds[] = ActorMigration::newMigration()->getWhere(
-				$dbr, 'rc_user', User::newFromName( $this->mPage->mSearchUser, false )
-			)['conds'];
+			$conds[$rcQuery['fields']['rc_user_text']] = $this->mPage->mSearchUser;
 		}
 
 		$startTS = strtotime( $this->mPage->mSearchPeriodStart );
@@ -61,7 +58,6 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		$conds[] = $this->mPage->buildTestConditions( $dbr );
 		$conds = array_merge( $conds, $this->mPage->buildVisibilityConditions( $dbr, $this->getAuthority() ) );
 
-		$rcQuery = RecentChange::getQueryInfo();
 		$info = [
 			'tables' => $rcQuery['tables'],
 			'fields' => $rcQuery['fields'],

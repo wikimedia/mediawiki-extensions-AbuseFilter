@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use ActorMigration;
 use HTMLForm;
 use IContextSource;
 use LogEventsList;
@@ -17,7 +16,6 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
 use Title;
-use User;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
@@ -223,14 +221,13 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
-		$dbr = wfGetDB( DB_REPLICA );
 
+		$dbr = wfGetDB( DB_REPLICA );
+		$rcQuery = RecentChange::getQueryInfo();
 		$conds = [];
 
 		if ( (string)$this->mTestUser !== '' ) {
-			$conds[] = ActorMigration::newMigration()->getWhere(
-				$dbr, 'rc_user', User::newFromName( $this->mTestUser, false )
-			)['conds'];
+			$conds[$rcQuery['fields']['rc_user_text']] = $this->mTestUser;
 		}
 
 		if ( $this->mTestPeriodStart ) {
@@ -260,7 +257,6 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$conds[] = $this->buildTestConditions( $dbr, $action );
 		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $this->getAuthority() ) );
 
-		$rcQuery = RecentChange::getQueryInfo();
 		$res = $dbr->select(
 			$rcQuery['tables'],
 			$rcQuery['fields'],
