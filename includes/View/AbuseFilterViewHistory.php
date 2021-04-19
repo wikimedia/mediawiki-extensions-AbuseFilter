@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterHistoryPager;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\User\UserNameUtils;
 use OOUI;
@@ -21,12 +22,16 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	/** @var FilterLookup */
 	private $filterLookup;
 
+	/** @var SpecsFormatter */
+	private $specsFormatter;
+
 	/** @var UserNameUtils */
 	private $userNameUtils;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterLookup $filterLookup
+	 * @param SpecsFormatter $specsFormatter
 	 * @param UserNameUtils $userNameUtils
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
@@ -36,6 +41,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
 		FilterLookup $filterLookup,
+		SpecsFormatter $specsFormatter,
 		UserNameUtils $userNameUtils,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
@@ -44,6 +50,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->filterLookup = $filterLookup;
+		$this->specsFormatter = $specsFormatter;
+		$this->specsFormatter->setMessageLocalizer( $context );
 		$this->filter = $this->mParams['filter'] ?? null;
 		$this->userNameUtils = $userNameUtils;
 	}
@@ -55,6 +63,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
+		$canViewPrivate = $this->afPermManager->canViewPrivateFilters( $this->getUser() );
 
 		if ( $filter ) {
 			try {
@@ -62,9 +71,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			} catch ( FilterNotFoundException $_ ) {
 				$filter = null;
 			}
-			if ( isset( $filterObj ) && $filterObj->isHidden()
-				&& !$this->afPermManager->canViewPrivateFilters( $this->getUser() )
-			) {
+			if ( isset( $filterObj ) && $filterObj->isHidden() && !$canViewPrivate ) {
 				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 				return;
 			}
@@ -101,7 +108,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$this->getRequest()->getText( 'user' ),
 			UserNameUtils::RIGOR_VALID
 		);
-		if ( $user ) {
+		if ( $user !== false ) {
 			$out->addSubtitle(
 				$this->msg(
 					'abusefilter-history-foruser',
@@ -111,6 +118,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 					$user
 				)->text()
 			);
+		} else {
+			$user = null;
 		}
 
 		$formDescriptor = [
@@ -139,8 +148,13 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			->displayForm( false );
 
 		$pager = new AbuseFilterHistoryPager(
-			$filter, $this, $user, $this->linkRenderer,
-			$this->afPermManager->canViewPrivateFilters( $this->getUser() )
+			$this->getContext(),
+			$this->linkRenderer,
+			$this->filterLookup,
+			$this->specsFormatter,
+			$filter,
+			$user,
+			$canViewPrivate
 		);
 
 		$out->addParserOutputContent( $pager->getFullOutput() );

@@ -3,58 +3,65 @@
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
 use HtmlArmor;
+use IContextSource;
 use Linker;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory;
+use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
-use SpecialPage;
+use MWException;
 use TablePager;
 use Title;
 use Xml;
 
 class AbuseFilterHistoryPager extends TablePager {
-	/**
-	 * @var int|null The filter ID
-	 */
-	public $mFilter;
-	/**
-	 * @var AbuseFilterViewHistory The associated page
-	 */
-	public $mPage;
-	/**
-	 * @var string The user whose changes we're looking up for
-	 */
-	public $mUser;
-	/**
-	 * @var bool
-	 */
+
+	/** @var FilterLookup */
+	private $filterLookup;
+
+	/** @var SpecsFormatter */
+	private $specsFormatter;
+
+	/** @var int|null The filter ID */
+	private $filter;
+
+	/** @var string|null The user whose changes we're looking up for */
+	private $user;
+
+	/** @var bool */
 	private $canViewPrivateFilters;
 
 	/**
-	 * @param ?int $filter
-	 * @param AbuseFilterViewHistory $page
-	 * @param string $user User name
+	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
+	 * @param FilterLookup $filterLookup
+	 * @param SpecsFormatter $specsFormatter
+	 * @param ?int $filter
+	 * @param ?string $user User name
 	 * @param bool $canViewPrivateFilters
 	 */
 	public function __construct(
-		?int $filter,
-		AbuseFilterViewHistory $page,
-		$user,
+		IContextSource $context,
 		LinkRenderer $linkRenderer,
+		FilterLookup $filterLookup,
+		SpecsFormatter $specsFormatter,
+		?int $filter,
+		?string $user,
 		bool $canViewPrivateFilters = false
 	) {
-		parent::__construct( $page->getContext(), $linkRenderer );
-		$this->mFilter = $filter;
-		$this->mPage = $page;
-		$this->mUser = $user;
-		$this->mDefaultDirection = true;
+		// needed by parent's constructor call
+		$this->filter = $filter;
+		parent::__construct( $context, $linkRenderer );
+		$this->filterLookup = $filterLookup;
+		$this->specsFormatter = $specsFormatter;
+		$this->user = $user;
 		$this->canViewPrivateFilters = $canViewPrivateFilters;
+		$this->mDefaultDirection = true;
 	}
 
 	/**
+	 * Note: this method is called by parent::__construct
 	 * @return array
 	 * @see Pager::getFieldNames()
 	 */
@@ -74,7 +81,7 @@ class AbuseFilterHistoryPager extends TablePager {
 			'afh_id' => 'abusefilter-history-diff',
 		];
 
-		if ( !$this->mFilter ) {
+		if ( !$this->filter ) {
 			// awful hack
 			$headers = [ 'afh_filter' => 'abusefilter-history-filterid' ] + $headers;
 		}
@@ -94,20 +101,18 @@ class AbuseFilterHistoryPager extends TablePager {
 	public function formatValue( $name, $value ) {
 		$lang = $this->getLanguage();
 		$linkRenderer = $this->getLinkRenderer();
-		$specsFormatter = AbuseFilterServices::getSpecsFormatter();
-		$specsFormatter->setMessageLocalizer( $this->getContext() );
 
 		$row = $this->mCurrentRow;
 
 		switch ( $name ) {
 			case 'afh_filter':
 				$formatted = $linkRenderer->makeLink(
-					SpecialPage::getTitleFor( 'AbuseFilter', $row->afh_filter ),
+					SpecialAbuseFilter::getTitleForSubpage( $row->afh_filter ),
 					$lang->formatNum( $row->afh_filter )
 				);
 				break;
 			case 'afh_timestamp':
-				$title = SpecialPage::getTitleFor( 'AbuseFilter',
+				$title = SpecialAbuseFilter::getTitleForSubpage(
 					'history/' . $row->afh_filter . '/item/' . $row->afh_id );
 				$formatted = $linkRenderer->makeLink(
 					$title,
@@ -123,7 +128,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );
 				break;
 			case 'afh_flags':
-				$formatted = $specsFormatter->formatFlags( $value, $lang );
+				$formatted = $this->specsFormatter->formatFlags( $value, $lang );
 				break;
 			case 'afh_actions':
 				$actions = unserialize( $value );
@@ -131,7 +136,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$display_actions = '';
 
 				foreach ( $actions as $action => $parameters ) {
-					$displayAction = $specsFormatter->formatAction( $action, $parameters, $lang );
+					$displayAction = $this->specsFormatter->formatAction( $action, $parameters, $lang );
 					$display_actions .= Xml::tags( 'li', null, $displayAction );
 				}
 				$display_actions = Xml::tags( 'ul', null, $display_actions );
@@ -143,17 +148,17 @@ class AbuseFilterHistoryPager extends TablePager {
 				// Like in AbuseFilterViewDiff, don't show it if the user cannot see private filters and any
 				// of the versions is hidden.
 				$formatted = '';
-				$lookup = AbuseFilterServices::getFilterLookup();
-				if ( $lookup->getFirstFilterVersionID( $row->afh_filter ) !== (int)$value ) {
+				if ( $this->filterLookup->getFirstFilterVersionID( $row->afh_filter ) !== (int)$value ) {
 					// @todo Should we also hide actions?
-					$prevFilter = $lookup->getClosestVersion( $row->afh_id, $row->afh_filter, FilterLookup::DIR_PREV );
+					$prevFilter = $this->filterLookup->getClosestVersion(
+						$row->afh_id, $row->afh_filter, FilterLookup::DIR_PREV );
 					if ( $this->canViewPrivateFilters ||
 						(
 							!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
 							!$prevFilter->isHidden()
 						)
 					) {
-						$title = $this->mPage->getTitle(
+						$title = SpecialAbuseFilter::getTitleForSubpage(
 							'history/' . $row->afh_filter . "/diff/prev/$value" );
 						$formatted = $linkRenderer->makeLink(
 							$title,
@@ -163,8 +168,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				}
 				break;
 			default:
-				$formatted = "Unable to format $name";
-				break;
+				throw new MWException( "Unknown row type $name!" );
 		}
 
 		return $formatted;
@@ -201,12 +205,12 @@ class AbuseFilterHistoryPager extends TablePager {
 			],
 		];
 
-		if ( $this->mUser ) {
-			$info['conds']['afh_user_text'] = $this->mUser;
+		if ( $this->user !== null ) {
+			$info['conds']['afh_user_text'] = $this->user;
 		}
 
-		if ( $this->mFilter ) {
-			$info['conds']['afh_filter'] = $this->mFilter;
+		if ( $this->filter ) {
+			$info['conds']['afh_filter'] = $this->filter;
 		}
 
 		if ( !$this->canViewPrivateFilters ) {
@@ -269,7 +273,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @return Title
 	 */
 	public function getTitle() {
-		$subpage = $this->mFilter ? ( 'history/' . $this->mFilter ) : 'history';
-		return $this->mPage->getTitle( $subpage );
+		$subpage = $this->filter ? ( 'history/' . $this->filter ) : 'history';
+		return SpecialAbuseFilter::getTitleForSubpage( $subpage );
 	}
 }

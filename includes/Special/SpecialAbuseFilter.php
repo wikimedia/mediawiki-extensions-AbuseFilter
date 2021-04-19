@@ -69,6 +69,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		AbuseFilterViewHistory::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			FilterLookup::SERVICE_NAME,
+			SpecsFormatter::SERVICE_NAME,
 			'UserNameUtils',
 		],
 		AbuseFilterViewImport::class => [
