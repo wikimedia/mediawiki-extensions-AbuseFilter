@@ -345,6 +345,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Debe seleccionarse al menos un grupo de limitación.",
 	"abusefilter-edit-duplicated-throttlegroups": "Los grupos de aceleración no pueden tener duplicados.",
 	"abusefilter-edit-invalid-throttlegroups": "Los grupos de aceleración especificados no son válidos.",
+	"abusefilter-edit-invalid-group": "El grupo de filtros especificado ('$1') no es válido.",
 	"abusefilter-edit-builder-select": "Selecciona una opción para agregarla en el cursor",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operadores aritméticos",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Adición (+)",
