@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AJBot2",
 			"Akmaie Ajam",
 			"Aldnonymous",
 			"Arifin.wijaya",
@@ -591,5 +592,7 @@
 	"abusefilter-tag-reserved": "Tag <code>abusefilter-condition-limit</code> disimpan untuk penggunaan internal oleh Filter Penyalahgunaan",
 	"tag-abusefilter-condition-limit": "batas kondisi tercapai",
 	"tag-abusefilter-condition-limit-description": "Suntingan atau kejadian lainnya yang tidak bisa diperiksa oleh semua [[Special:AbuseFilter|filter penyalahgunaan]] yang aktif ([[mw:Extension:AbuseFilter/Conditions|bantuan]]).",
+	"notification-header-throttle-filter": "Filter penyalahgunaan $2 {{GENDER:$1|you}} yang baru saja diedit dibatasi.",
+	"notification-subject-throttle-filter": "Filter penyalahgunaan {{GENDER:$1|you}} diedit dibatasi {{SITENAME}}",
 	"notification-link-text-show-filter": "Tampilkan filter"
 }
