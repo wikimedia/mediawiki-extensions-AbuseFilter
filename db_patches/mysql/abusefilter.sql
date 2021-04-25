@@ -17,9 +17,9 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter (
 	af_global tinyint(1) NOT NULL DEFAULT 0,
 	af_group varchar(64) binary NOT NULL DEFAULT 'default',
 
-	PRIMARY KEY (af_id),
-	KEY (af_user),
-	KEY (af_group,af_enabled,af_id)
+	PRIMARY KEY af_id (af_id),
+	KEY af_user (af_user),
+	KEY af_group_enabled (af_group,af_enabled,af_id)
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
@@ -27,8 +27,8 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
 	afa_consequence varchar(255) NOT NULL,
 	afa_parameters TINYBLOB NOT NULL,
 
-	PRIMARY KEY (afa_filter,afa_consequence),
-	KEY (afa_consequence)
+	PRIMARY KEY afa_filter_consequence (afa_filter,afa_consequence),
+	KEY afa_consequence (afa_consequence)
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
@@ -50,15 +50,15 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_patrolled_by int unsigned NOT NULL DEFAULT 0,
 	afl_rev_id int unsigned,
 
-	PRIMARY KEY (afl_id),
-	KEY filter_timestamp (afl_filter,afl_timestamp),
-	KEY filter_timestamp_full (afl_global,afl_filter_id,afl_timestamp),
-	KEY user_timestamp (afl_user,afl_user_text,afl_timestamp),
-	KEY (afl_timestamp),
-	KEY page_timestamp (afl_namespace, afl_title, afl_timestamp),
-	KEY ip_timestamp (afl_ip, afl_timestamp),
-	KEY (afl_rev_id),
-	KEY wiki_timestamp (afl_wiki, afl_timestamp)
+	PRIMARY KEY afl_id (afl_id),
+	KEY afl_filter_timestamp (afl_filter,afl_timestamp),
+	KEY afl_filter_timestamp_full (afl_global,afl_filter_id,afl_timestamp),
+	KEY afl_user_timestamp (afl_user,afl_user_text,afl_timestamp),
+	KEY afl_timestamp (afl_timestamp),
+	KEY afl_page_timestamp (afl_namespace, afl_title, afl_timestamp),
+	KEY afl_ip_timestamp (afl_ip, afl_timestamp),
+	KEY afl_rev_id (afl_rev_id),
+	KEY afl_wiki_timestamp (afl_wiki, afl_timestamp)
 ) /*$wgDBTableOptions*/;
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
@@ -76,9 +76,9 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_history (
 	afh_changed_fields varchar(255) NOT NULL DEFAULT '',
 	afh_group varchar(64) binary NULL,
 
-	PRIMARY KEY (afh_id),
-	KEY (afh_filter),
-	KEY (afh_user),
-	KEY (afh_user_text),
-	KEY (afh_timestamp)
+	PRIMARY KEY afh_id (afh_id),
+	KEY afh_filter (afh_filter),
+	KEY afh_user (afh_user),
+	KEY afh_user_text (afh_user_text),
+	KEY afh_timestamp (afh_timestamp)
 ) /*$wgDBTableOptions*/;

@@ -59,6 +59,16 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			"$dir/$dbType/abusefilter.sql"
 		);
 
+		if ( $dbType === 'mysql' ) {
+			$updater->renameExtensionIndex(
+				'abuse_filter_log',
+				'wiki_timestamp',
+				'afl_wiki_timestamp',
+				"$dir/mysql/patch-rename-indexes.sql",
+				true
+			);
+		}
+
 		if ( $dbType === 'mysql' || $dbType === 'sqlite' ) {
 			$updater->dropExtensionField(
 				'abuse_filter_log',
@@ -68,7 +78,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 
 			$updater->addExtensionIndex(
 				'abuse_filter_log',
-				'filter_timestamp_full',
+				'afl_filter_timestamp_full',
 				"$dir/$dbType/patch-split-afl_filter.sql"
 			);
 		} elseif ( $dbType === 'postgres' ) {

@@ -4,4 +4,4 @@ ALTER TABLE /*_*/abuse_filter_log
 	ADD COLUMN afl_filter_id BIGINT unsigned NOT NULL DEFAULT 0 AFTER afl_global,
 	ALTER COLUMN afl_filter SET DEFAULT '';
 
-CREATE INDEX /*i*/filter_timestamp_full ON /*_*/abuse_filter_log (afl_global,afl_filter_id,afl_timestamp);
+CREATE INDEX /*i*/afl_filter_timestamp_full ON /*_*/abuse_filter_log (afl_global,afl_filter_id,afl_timestamp);
