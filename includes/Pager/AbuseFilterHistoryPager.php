@@ -46,8 +46,9 @@ class AbuseFilterHistoryPager extends TablePager {
 		LinkRenderer $linkRenderer,
 		bool $canViewPrivateFilters = false
 	) {
-		parent::__construct( $page->getContext(), $linkRenderer );
+		// needed by parent's constructor call
 		$this->mFilter = $filter;
+		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mPage = $page;
 		$this->mUser = $user;
 		$this->mDefaultDirection = true;
