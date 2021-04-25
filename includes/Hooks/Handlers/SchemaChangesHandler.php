@@ -59,16 +59,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			"$dir/$dbType/abusefilter.sql"
 		);
 
-		if ( $dbType === 'mysql' ) {
-			$updater->renameExtensionIndex(
-				'abuse_filter_log',
-				'wiki_timestamp',
-				'afl_wiki_timestamp',
-				"$dir/mysql/patch-rename-indexes.sql",
-				true
-			);
-		}
-
 		if ( $dbType === 'mysql' || $dbType === 'sqlite' ) {
 			$updater->dropExtensionField(
 				'abuse_filter_log',
@@ -76,11 +66,21 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 				"$dir/$dbType/patch-drop_afl_log_id.sql"
 			);
 
-			$updater->addExtensionIndex(
+			$updater->addExtensionField(
 				'abuse_filter_log',
-				'afl_filter_timestamp_full',
+				'afl_filter_id',
 				"$dir/$dbType/patch-split-afl_filter.sql"
 			);
+
+			if ( $dbType === 'mysql' ) {
+				$updater->renameExtensionIndex(
+					'abuse_filter_log',
+					'wiki_timestamp',
+					'afl_wiki_timestamp',
+					"$dir/mysql/patch-rename-indexes.sql",
+					true
+				);
+			}
 		} elseif ( $dbType === 'postgres' ) {
 			$updater->addExtensionUpdate( [
 				'dropPgField', 'abuse_filter_log', 'afl_log_id' ] );
