@@ -9,6 +9,8 @@
 			"Woytecr"
 		]
 	},
+	"apihelp-abusefiltercheckmatch-param-filter": "Pełny tekst filtru do sprawdzenia zgodności.",
+	"apihelp-abusefiltercheckmatch-param-vars": "Tablica zmiennych do testowania zakodowana w formacie JSON.",
 	"apihelp-abusefilterchecksyntax-description": "Sprawdź składnię filtra AbuseFilter.",
 	"apihelp-abusefilterchecksyntax-example-1": "Sprawdź składnię poprawnego filtra",
 	"apihelp-abusefilterchecksyntax-example-2": "Sprawdź składnię nieprawidłowego filtra",

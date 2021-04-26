@@ -198,7 +198,7 @@
 	"abusefilter-edit-field-conditions": "услови",
 	"abusefilter-edit-notes": "Напомене:",
 	"abusefilter-edit-lastmod": "Последња измена филтера:",
-	"abusefilter-edit-lastmod-text": "У $1 од стране $2",
+	"abusefilter-edit-lastmod-text": "аутор: $2; датум: $3 у $4",
 	"abusefilter-edit-hitcount": "Погоци филтера:",
 	"abusefilter-edit-consequences": "Предузети радње при поклапању",
 	"abusefilter-edit-action-warn": "Упозори корисника",
