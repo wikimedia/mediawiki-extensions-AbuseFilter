@@ -6,6 +6,13 @@
 		]
 	},
 	"abusefilter-log-search-impact-saved": "Wantah uahan maraksa",
+	"abusefilter-log-description-not-available": "nénten kasedia",
+	"abusefilter-log-noactions": "nénten wénten",
 	"abusefilter-log-hide-show": "Sinahang",
-	"abusefilter-list-edit": "Uah"
+	"abusefilter-list-edit": "Uah",
+	"abusefilter-edit-notes": "Cutetan:",
+	"abusefilter-throttle-none": "(nénten wénten)",
+	"abusefilter-edit-builder-op-comparison-notequal": "Nilai nénten pateh sareng (!=)",
+	"abusefilter-edit-builder-op-comparison-notequal-strict": "Nilai miwah tipe nénten pateh sareng (!==)",
+	"abusefilter-edit-builder-op-bool-not": "Nénten (!)"
 }
