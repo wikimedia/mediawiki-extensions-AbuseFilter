@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
+use Html;
 use HTMLForm;
 use IContextSource;
 use Linker;
@@ -367,14 +368,13 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$this->revertAction( $action, $result );
 			}
 		}
-		$this->getOutput()->wrapWikiMsg(
-			'<p class="success">$1</p>',
-			[
+		$this->getOutput()->addHTML( Html::successBox(
+			$this->msg(
 				'abusefilter-revert-success',
 				$filter,
 				$this->getLanguage()->formatNum( $filter )
-			]
-		);
+			)->parse()
+		) );
 
 		return true;
 	}

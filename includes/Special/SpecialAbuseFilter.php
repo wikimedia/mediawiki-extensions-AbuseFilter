@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
+use Html;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
@@ -147,14 +148,14 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			$out->setSubtitle( $this->msg( 'abusefilter-edit-done-subtitle' ) );
 			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
 			$changeId = intval( $request->getVal( 'changeid' ) );
-			$out->wrapWikiMsg( '<p class="success">$1</p>',
-				[
+			$out->addHTML( Html::successBox(
+				$this->msg(
 					'abusefilter-edit-done',
 					$changedFilter,
 					$changeId,
 					$this->getLanguage()->formatNum( $changedFilter )
-				]
-			);
+				)->parse()
+			) );
 		}
 
 		[ $view, $pageType, $params ] = $this->getViewClassAndPageType( $subpage );
