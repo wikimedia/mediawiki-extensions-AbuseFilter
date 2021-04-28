@@ -519,7 +519,7 @@
 	"abusefilter-group-default": "По подразбиране",
 	"abusefilter-http-error": "Възникна HTTP грешка: $1",
 	"abusefilter-view-privatedetails-submit": "Преглед на скрити данни",
-	"abusefilter-view-privatedetails-legend": "Преглед на лични данни",
+	"abusefilter-view-privatedetails-legend": "Преглед на скрити данни",
 	"abusefilter-view-privatedetails-reason": "Причина за достъп до личните данни:",
 	"abusefilter-log-details-id": "Номер на записа",
 	"abusefilter-invalid-request": "Невалидна заявка! Трябва да осъществите достъп до непубличните записи през формуляра на [[Special:AbuseLog/$1]] и да посочите причина.",
