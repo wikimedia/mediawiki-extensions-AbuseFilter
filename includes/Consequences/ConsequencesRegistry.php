@@ -101,7 +101,7 @@ class ConsequencesRegistry {
 	public function getAllEnabledActionNames() : array {
 		$disabledActions = array_keys( array_filter(
 			$this->configActions,
-			function ( $el ) {
+			static function ( $el ) {
 				return $el === false;
 			}
 		) );

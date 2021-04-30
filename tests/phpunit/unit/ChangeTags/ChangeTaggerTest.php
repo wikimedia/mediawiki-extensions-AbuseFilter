@@ -34,7 +34,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 		$getRCFromAttribs = function ( array $attribs ) : RecentChange {
 			$rc = $this->createMock( RecentChange::class );
 			$rc->method( 'getAttribute' )->willReturnCallback(
-				function ( $name ) use ( $attribs ) {
+				static function ( $name ) use ( $attribs ) {
 					return $attribs[$name];
 				}
 			);

@@ -52,7 +52,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 		$newVarName = 'foobarpleaseuseme';
 		$runner = $this->createMock( AbuseFilterHookRunner::class );
 		$runner->method( 'onAbuseFilter_deprecatedVariables' )
-			->willReturnCallback( function ( &$val ) use ( $oldVarName, $newVarName ) {
+			->willReturnCallback( static function ( &$val ) use ( $oldVarName, $newVarName ) {
 				$val[$oldVarName] = $newVarName;
 			} );
 		$actual = ( new KeywordsManager( $runner ) )->getDeprecatedVariables();
@@ -83,7 +83,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 		$varMessage = 'magic-stuff';
 		$runner = $this->createMock( AbuseFilterHookRunner::class );
 		$runner->method( 'onAbuseFilter_builder' )
-			->willReturnCallback( function ( &$val ) use ( $varName, $varMessage ) {
+			->willReturnCallback( static function ( &$val ) use ( $varName, $varMessage ) {
 				$val['vars'][$varName] = $varMessage;
 			} );
 		$actual = ( new KeywordsManager( $runner ) )->getBuilderValues();
@@ -144,7 +144,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 		$varName = 'my_new_var';
 		$runner = $this->createMock( AbuseFilterHookRunner::class );
 		$runner->method( 'onAbuseFilter_builder' )
-			->willReturnCallback( function ( &$val ) use ( $varName ) {
+			->willReturnCallback( static function ( &$val ) use ( $varName ) {
 				$val['vars'][$varName] = 'some-message';
 			} );
 		$km = new KeywordsManager( $runner );

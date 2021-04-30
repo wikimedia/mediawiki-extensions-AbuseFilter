@@ -325,7 +325,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	public function __construct( $name = null, array $data = [], $dataName = '' ) {
 		$prefixedTables = array_map(
-			function ( $table ) {
+			static function ( $table ) {
 				return self::DB_EXTERNAL_PREFIX . $table;
 			},
 			self::$externalTables
@@ -1308,7 +1308,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$loggerMock = $this->createMock( LoggerInterface::class );
 		$loggerCalls = [];
 		$loggerMock->method( 'debug' )
-			->willReturnCallback( function ( $msg, $args ) use ( &$loggerCalls ) {
+			->willReturnCallback( static function ( $msg, $args ) use ( &$loggerCalls ) {
 				if ( isset( $args['logtype'] ) ) {
 					$loggerCalls[] = $args['logtype'];
 				}

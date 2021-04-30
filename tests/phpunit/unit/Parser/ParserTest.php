@@ -144,7 +144,7 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testOperatorRe() {
 		$quotedOps = array_map(
-			function ( $op ) {
+			static function ( $op ) {
 				return preg_quote( $op, '/' );
 			},
 			AbuseFilterTokenizer::OPERATORS

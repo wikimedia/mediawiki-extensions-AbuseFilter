@@ -198,7 +198,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		// Filter by removing blanks.
 		$params = array_values( array_filter(
 			explode( '/', $subpage ?: '' ),
-			function ( $value ) {
+			static function ( $value ) {
 				return $value !== '';
 			}
 		) );

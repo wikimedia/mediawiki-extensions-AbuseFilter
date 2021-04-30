@@ -93,7 +93,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturnCallback(
-			function ( LazyLoadedVariable $var ) use ( $titleVal, $linesVal ) {
+			static function ( LazyLoadedVariable $var ) use ( $titleVal, $linesVal ) {
 				switch ( $var->getMethod() ) {
 					case 'preftitle':
 						return new AFPData( AFPData::DSTRING, $titleVal );
@@ -160,7 +160,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$vars = VariableHolder::newFromArray( $objs );
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturnCallback(
-			function ( LazyLoadedVariable $var ) {
+			static function ( LazyLoadedVariable $var ) {
 				return new AFPData( AFPData::DSTRING, $var->getMethod() );
 			}
 		);
@@ -220,9 +220,11 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$firstValue = new AFPData( AFPData::DSTRING, 'expected value' );
 		$setVars = VariableHolder::newFromArray( [ 'first-var' => $firstValue ] );
 		$computer = $this->createMock( LazyVariableComputer::class );
-		$computer->method( 'compute' )->willReturnCallback( function ( $var, $vars, $cb ) use ( $alreadySetName ) {
-			return $cb( $alreadySetName );
-		} );
+		$computer->method( 'compute' )->willReturnCallback(
+			static function ( $var, $vars, $cb ) use ( $alreadySetName ) {
+				return $cb( $alreadySetName );
+			}
+		);
 		$name = 'second-var';
 		$manager = $this->getManager( $computer );
 		$lazyVar = new LazyLoadedVariable( '', [] );

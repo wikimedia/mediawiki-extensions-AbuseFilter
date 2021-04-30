@@ -91,7 +91,7 @@ class AceEditBoxBuiler extends EditBoxBuilder {
 		// but Ace redefines these constants afterwards so this will not be an issue
 		$builderKeywords = implode( '|', AbuseFilterTokenizer::KEYWORDS );
 		// Extract operators from tokenizer like we do in AbuseFilterParserTest
-		$operators = implode( '|', array_map( function ( $op ) {
+		$operators = implode( '|', array_map( static function ( $op ) {
 			return preg_quote( $op, '/' );
 		}, AbuseFilterTokenizer::OPERATORS ) );
 		$deprecatedVariables = implode( '|', array_keys( $deprecatedVars ) );

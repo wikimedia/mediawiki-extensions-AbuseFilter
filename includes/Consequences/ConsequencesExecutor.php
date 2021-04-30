@@ -286,13 +286,13 @@ class ConsequencesExecutor {
 	public function getFilteredConsequences( array $actionsByFilter ) : array {
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			/** @var ConsequencesDisablerConsequence[] $consequenceDisablers */
-			$consequenceDisablers = array_filter( $actions, function ( $el ) {
+			$consequenceDisablers = array_filter( $actions, static function ( $el ) {
 				return $el instanceof ConsequencesDisablerConsequence;
 			} );
 			'@phan-var ConsequencesDisablerConsequence[] $consequenceDisablers';
 			uasort(
 				$consequenceDisablers,
-				function ( ConsequencesDisablerConsequence $x, ConsequencesDisablerConsequence $y ) {
+				static function ( ConsequencesDisablerConsequence $x, ConsequencesDisablerConsequence $y ) {
 					return $x->getSort() - $y->getSort();
 				}
 			);

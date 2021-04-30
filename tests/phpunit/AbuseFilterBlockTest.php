@@ -76,7 +76,7 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 			$preventsTalkEdit = true,
 			$blockUserFactory,
 			$this->createMock( DatabaseBlockStore::class ),
-			function () {
+			static function () {
 				return null;
 			},
 			$this->getFilterUser(),
@@ -96,7 +96,7 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 			false,
 			$this->createMock( BlockUserFactory::class ),
 			$this->createMock( DatabaseBlockStore::class ),
-			function () {
+			static function () {
 				return null;
 			},
 			$this->createMock( FilterUser::class ),
@@ -134,7 +134,7 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 			false,
 			$this->createMock( BlockUserFactory::class ),
 			$blockStore ?? $this->createMock( DatabaseBlockStore::class ),
-			function () use ( $block ) {
+			static function () use ( $block ) {
 				return $block;
 			},
 			$this->getFilterUser(),

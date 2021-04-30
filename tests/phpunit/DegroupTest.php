@@ -145,7 +145,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			->with( $user )
 			->willReturn( $hasGroups );
 		$userGroupManager->method( 'addUserToGroup' )
-			->willReturnCallback( function ( $_, $group ) use ( $hasGroups ) {
+			->willReturnCallback( static function ( $_, $group ) use ( $hasGroups ) {
 				return $group === 'sysop';
 			} );
 		$degroup = new Degroup(

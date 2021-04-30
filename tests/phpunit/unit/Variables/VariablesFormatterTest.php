@@ -111,7 +111,7 @@ class VariablesFormatterTest extends MediaWikiUnitTestCase {
 		$varArray = [ 'foo' => true, 'bar' => 'foobar' ];
 		$kManager->expects( $this->atLeastOnce() )
 			->method( 'getMessageKeyForVar' )
-			->willReturnCallback( function ( $var ) use ( $varMessage ) {
+			->willReturnCallback( static function ( $var ) use ( $varMessage ) {
 				return $var === 'foo' ? $varMessage : null;
 			} );
 		$holder = VariableHolder::newFromArray( $varArray );

@@ -191,7 +191,7 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 			'load-recent-authors',
 			[ 'title' => $title ]
 		);
-		$forbidComputeCB = function () {
+		$forbidComputeCB = static function () {
 			throw new LogicException( 'Not expected to be called' );
 		};
 		$actual = $computer->compute( $var, new VariableHolder(), $forbidComputeCB )->toNative();

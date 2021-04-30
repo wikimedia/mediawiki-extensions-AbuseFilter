@@ -135,7 +135,7 @@ class FilterProfiler {
 		$profileKey = $this->filterProfileKey( $filter );
 		$this->objectStash->merge(
 			$profileKey,
-			function ( $cache, $key, $profile ) use ( $time, $conds, $matched ) {
+			static function ( $cache, $key, $profile ) use ( $time, $conds, $matched ) {
 				if ( $profile === false ) {
 					$profile = self::NULL_FILTER_PROFILE;
 				}

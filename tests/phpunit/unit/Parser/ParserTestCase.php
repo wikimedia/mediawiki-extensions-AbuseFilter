@@ -133,12 +133,12 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			->getMock();
 		$lang->expects( $this->any() )
 			->method( 'uc' )
-			->willReturnCallback( function ( $x ) {
+			->willReturnCallback( static function ( $x ) {
 				return mb_strtoupper( $x );
 			} );
 		$lang->expects( $this->any() )
 			->method( 'lc' )
-			->willReturnCallback( function ( $x ) {
+			->willReturnCallback( static function ( $x ) {
 				return mb_strtolower( $x );
 			} );
 		return $lang;

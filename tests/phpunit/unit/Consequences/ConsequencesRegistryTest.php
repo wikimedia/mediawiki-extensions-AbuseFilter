@@ -35,7 +35,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$customActionName = 'spell';
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
-			function ( &$actions ) use ( $customActionName ) {
+			static function ( &$actions ) use ( $customActionName ) {
 				$actions[$customActionName] = 'strlen';
 			}
 		);
@@ -52,7 +52,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$customActionName = 'spell';
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
-			function ( &$actions ) use ( $customActionName ) {
+			static function ( &$actions ) use ( $customActionName ) {
 				$actions[$customActionName] = 'strlen';
 			}
 		);
@@ -80,7 +80,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$extraDangerous = 'rickroll';
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterGetDangerousActions' )->willReturnCallback(
-			function ( &$array ) use ( $extraDangerous ) {
+			static function ( &$array ) use ( $extraDangerous ) {
 				$array[] = $extraDangerous;
 			}
 		);
@@ -97,7 +97,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$customAction = 'strlen';
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
-			function ( &$actions ) use ( $customActionName, $customAction ) {
+			static function ( &$actions ) use ( $customActionName, $customAction ) {
 				$actions[$customActionName] = $customAction;
 			}
 		);
@@ -129,7 +129,7 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 	public function testGetCustomActions_invalidValue() {
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		$hookRunner->method( 'onAbuseFilterCustomActions' )->willReturnCallback(
-			function ( &$actions ) {
+			static function ( &$actions ) {
 				$invalidValue = 42;
 				$actions['myaction'] = $invalidValue;
 			}

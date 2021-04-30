@@ -190,7 +190,7 @@ class VariablesManager {
 		];
 
 		/** @var LazyLoadedVariable[] $missingVars */
-		$missingVars = array_filter( $holder->getVars(), function ( $el ) {
+		$missingVars = array_filter( $holder->getVars(), static function ( $el ) {
 			return ( $el instanceof LazyLoadedVariable );
 		} );
 		foreach ( $missingVars as $name => $var ) {

@@ -49,13 +49,13 @@ use MediaWiki\Session\SessionManager;
 // @codeCoverageIgnoreStart
 
 return [
-	AbuseFilterHookRunner::SERVICE_NAME => function ( MediaWikiServices $services ): AbuseFilterHookRunner {
+	AbuseFilterHookRunner::SERVICE_NAME => static function ( MediaWikiServices $services ): AbuseFilterHookRunner {
 		return new AbuseFilterHookRunner( $services->getHookContainer() );
 	},
-	KeywordsManager::SERVICE_NAME => function ( MediaWikiServices $services ): KeywordsManager {
+	KeywordsManager::SERVICE_NAME => static function ( MediaWikiServices $services ): KeywordsManager {
 		return new KeywordsManager( $services->get( AbuseFilterHookRunner::SERVICE_NAME ) );
 	},
-	FilterProfiler::SERVICE_NAME => function ( MediaWikiServices $services ): FilterProfiler {
+	FilterProfiler::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterProfiler {
 		return new FilterProfiler(
 			$services->getMainObjectStash(),
 			new ServiceOptions(
@@ -67,41 +67,41 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
-	PermManager::SERVICE_NAME => function ( MediaWikiServices $services ): PermManager {
+	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
 		return new PermManager( $services->getPermissionManager() );
 	},
-	ChangeTagger::SERVICE_NAME => function ( MediaWikiServices $services ) : ChangeTagger {
+	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ) : ChangeTagger {
 		return new ChangeTagger(
 			$services->getService( ChangeTagsManager::SERVICE_NAME )
 		);
 	},
-	ChangeTagsManager::SERVICE_NAME => function ( MediaWikiServices $services ): ChangeTagsManager {
+	ChangeTagsManager::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagsManager {
 		return new ChangeTagsManager(
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
-	ChangeTagValidator::SERVICE_NAME => function ( MediaWikiServices $services ): ChangeTagValidator {
+	ChangeTagValidator::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagValidator {
 		return new ChangeTagValidator(
 			$services->getService( ChangeTagsManager::SERVICE_NAME )
 		);
 	},
-	CentralDBManager::SERVICE_NAME => function ( MediaWikiServices $services ): CentralDBManager {
+	CentralDBManager::SERVICE_NAME => static function ( MediaWikiServices $services ): CentralDBManager {
 		return new CentralDBManager(
 			$services->getDBLoadBalancerFactory(),
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' ),
 			$services->getMainConfig()->get( 'AbuseFilterIsCentral' )
 		);
 	},
-	BlockAutopromoteStore::SERVICE_NAME => function ( MediaWikiServices $services ): BlockAutopromoteStore {
+	BlockAutopromoteStore::SERVICE_NAME => static function ( MediaWikiServices $services ): BlockAutopromoteStore {
 		return new BlockAutopromoteStore(
 			ObjectCache::getInstance( 'db-replicated' ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->get( FilterUser::SERVICE_NAME )
 		);
 	},
-	FilterUser::SERVICE_NAME => function ( MediaWikiServices $services ): FilterUser {
+	FilterUser::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterUser {
 		return new FilterUser(
 			// TODO We need a proper MessageLocalizer, see T247127
 			RequestContext::getMain(),
@@ -109,7 +109,7 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
-	ParserFactory::SERVICE_NAME => function ( MediaWikiServices $services ): ParserFactory {
+	ParserFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): ParserFactory {
 		return new ParserFactory(
 			$services->getContentLanguage(),
 			// We could use $services here, but we need the fallback
@@ -120,20 +120,20 @@ return [
 			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
 	},
-	FilterLookup::SERVICE_NAME => function ( MediaWikiServices $services ): FilterLookup {
+	FilterLookup::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterLookup {
 		return new FilterLookup(
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
-	EmergencyCache::SERVICE_NAME => function ( MediaWikiServices $services ): EmergencyCache {
+	EmergencyCache::SERVICE_NAME => static function ( MediaWikiServices $services ): EmergencyCache {
 		return new EmergencyCache(
 			$services->getMainObjectStash(),
 			$services->getMainConfig()->get( 'AbuseFilterEmergencyDisableAge' )
 		);
 	},
-	EmergencyWatcher::SERVICE_NAME => function ( MediaWikiServices $services ): EmergencyWatcher {
+	EmergencyWatcher::SERVICE_NAME => static function ( MediaWikiServices $services ): EmergencyWatcher {
 		return new EmergencyWatcher(
 			$services->getService( EmergencyCache::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
@@ -145,13 +145,13 @@ return [
 			)
 		);
 	},
-	EchoNotifier::SERVICE_NAME => function ( MediaWikiServices $services ): EchoNotifier {
+	EchoNotifier::SERVICE_NAME => static function ( MediaWikiServices $services ): EchoNotifier {
 		return new EchoNotifier(
 			$services->getService( FilterLookup::SERVICE_NAME ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Echo' )
 		);
 	},
-	FilterValidator::SERVICE_NAME => function ( MediaWikiServices $services ): FilterValidator {
+	FilterValidator::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterValidator {
 		return new FilterValidator(
 			$services->get( ChangeTagValidator::SERVICE_NAME ),
 			$services->get( ParserFactory::SERVICE_NAME ),
@@ -162,12 +162,12 @@ return [
 			)
 		);
 	},
-	FilterCompare::SERVICE_NAME => function ( MediaWikiServices $services ): FilterCompare {
+	FilterCompare::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterCompare {
 		return new FilterCompare(
 			$services->get( ConsequencesRegistry::SERVICE_NAME )
 		);
 	},
-	FilterImporter::SERVICE_NAME => function ( MediaWikiServices $services ): FilterImporter {
+	FilterImporter::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterImporter {
 		return new FilterImporter(
 			new ServiceOptions(
 				FilterImporter::CONSTRUCTOR_OPTIONS,
@@ -176,7 +176,7 @@ return [
 			$services->get( ConsequencesRegistry::SERVICE_NAME )
 		);
 	},
-	FilterStore::SERVICE_NAME => function ( MediaWikiServices $services ): FilterStore {
+	FilterStore::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterStore {
 		return new FilterStore(
 			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			$services->getDBLoadBalancer(),
@@ -188,7 +188,7 @@ return [
 			$services->get( EmergencyCache::SERVICE_NAME )
 		);
 	},
-	ConsequencesFactory::SERVICE_NAME => function ( MediaWikiServices $services ): ConsequencesFactory {
+	ConsequencesFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesFactory {
 		return new ConsequencesFactory(
 			new ServiceOptions(
 				ConsequencesFactory::CONSTRUCTOR_OPTIONS,
@@ -210,14 +210,14 @@ return [
 			RequestContext::getMain()->getRequest()->getIP()
 		);
 	},
-	EditBoxBuilderFactory::SERVICE_NAME => function ( MediaWikiServices $services ): EditBoxBuilderFactory {
+	EditBoxBuilderFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): EditBoxBuilderFactory {
 		return new EditBoxBuilderFactory(
 			$services->get( PermManager::SERVICE_NAME ),
 			$services->get( KeywordsManager::SERVICE_NAME ),
 			ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' )
 		);
 	},
-	ConsequencesLookup::SERVICE_NAME => function ( MediaWikiServices $services ) : ConsequencesLookup {
+	ConsequencesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ) : ConsequencesLookup {
 		return new ConsequencesLookup(
 			$services->getDBLoadBalancer(),
 			$services->get( CentralDBManager::SERVICE_NAME ),
@@ -225,13 +225,13 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
-	ConsequencesRegistry::SERVICE_NAME => function ( MediaWikiServices $services ): ConsequencesRegistry {
+	ConsequencesRegistry::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesRegistry {
 		return new ConsequencesRegistry(
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->getMainConfig()->get( 'AbuseFilterActions' )
 		);
 	},
-	AbuseLoggerFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : AbuseLoggerFactory {
+	AbuseLoggerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ) : AbuseLoggerFactory {
 		return new AbuseLoggerFactory(
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
@@ -247,13 +247,13 @@ return [
 			RequestContext::getMain()->getRequest()->getIP()
 		);
 	},
-	UpdateHitCountWatcher::SERVICE_NAME => function ( MediaWikiServices $services ): UpdateHitCountWatcher {
+	UpdateHitCountWatcher::SERVICE_NAME => static function ( MediaWikiServices $services ): UpdateHitCountWatcher {
 		return new UpdateHitCountWatcher(
 			$services->getDBLoadBalancer(),
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
-	VariablesBlobStore::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesBlobStore {
+	VariablesBlobStore::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesBlobStore {
 		return new VariablesBlobStore(
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->getBlobStoreFactory(),
@@ -261,7 +261,7 @@ return [
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )
 		);
 	},
-	ConsExecutorFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : ConsExecutorFactory {
+	ConsExecutorFactory::SERVICE_NAME => static function ( MediaWikiServices $services ) : ConsExecutorFactory {
 		return new ConsExecutorFactory(
 			$services->get( ConsequencesLookup::SERVICE_NAME ),
 			$services->get( ConsequencesFactory::SERVICE_NAME ),
@@ -274,7 +274,7 @@ return [
 			)
 		);
 	},
-	FilterRunnerFactory::SERVICE_NAME => function ( MediaWikiServices $services ) : FilterRunnerFactory {
+	FilterRunnerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ) : FilterRunnerFactory {
 		return new FilterRunnerFactory(
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->get( FilterProfiler::SERVICE_NAME ),
@@ -298,7 +298,7 @@ return [
 			)
 		);
 	},
-	VariablesFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesFormatter {
+	VariablesFormatter::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesFormatter {
 		return new VariablesFormatter(
 			$services->get( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
@@ -306,13 +306,13 @@ return [
 			RequestContext::getMain()
 		);
 	},
-	SpecsFormatter::SERVICE_NAME => function ( MediaWikiServices $services ): SpecsFormatter {
+	SpecsFormatter::SERVICE_NAME => static function ( MediaWikiServices $services ): SpecsFormatter {
 		return new SpecsFormatter(
 			// TODO: Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain()
 		);
 	},
-	LazyVariableComputer::SERVICE_NAME => function ( MediaWikiServices $services ): LazyVariableComputer {
+	LazyVariableComputer::SERVICE_NAME => static function ( MediaWikiServices $services ): LazyVariableComputer {
 		return new LazyVariableComputer(
 			$services->get( TextExtractor::SERVICE_NAME ),
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
@@ -329,17 +329,19 @@ return [
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
-	TextExtractor::SERVICE_NAME => function ( MediaWikiServices $services ): TextExtractor {
+	TextExtractor::SERVICE_NAME => static function ( MediaWikiServices $services ): TextExtractor {
 		return new TextExtractor( $services->get( AbuseFilterHookRunner::SERVICE_NAME ) );
 	},
-	VariablesManager::SERVICE_NAME => function ( MediaWikiServices $services ): VariablesManager {
+	VariablesManager::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesManager {
 		return new VariablesManager(
 			$services->get( KeywordsManager::SERVICE_NAME ),
 			$services->get( LazyVariableComputer::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
-	VariableGeneratorFactory::SERVICE_NAME => function ( MediaWikiServices $services ): VariableGeneratorFactory {
+	VariableGeneratorFactory::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): VariableGeneratorFactory {
 		return new VariableGeneratorFactory(
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->get( TextExtractor::SERVICE_NAME ),
@@ -347,7 +349,7 @@ return [
 			$services->getRepoGroup()
 		);
 	},
-	EditRevUpdater::SERVICE_NAME => function ( MediaWikiServices $services ): EditRevUpdater {
+	EditRevUpdater::SERVICE_NAME => static function ( MediaWikiServices $services ): EditRevUpdater {
 		return new EditRevUpdater(
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->getRevisionLookup(),

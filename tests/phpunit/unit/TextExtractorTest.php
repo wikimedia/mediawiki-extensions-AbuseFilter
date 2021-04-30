@@ -110,7 +110,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testContentToString__hook() {
 		$expected = 'Text changed by hook';
-		$hookCb = function ( Content $content, ?string &$text ) use ( $expected ) {
+		$hookCb = static function ( Content $content, ?string &$text ) use ( $expected ) {
 			$text = $expected;
 			return false;
 		};

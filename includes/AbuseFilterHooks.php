@@ -282,7 +282,7 @@ class AbuseFilterHooks {
 		// Cache any resulting filter matches.
 		// Do this outside the synchronous stash lock to avoid any chance of slowdown.
 		DeferredUpdates::addCallableUpdate(
-			function () use (
+			static function () use (
 				$user,
 				$page,
 				$summary,

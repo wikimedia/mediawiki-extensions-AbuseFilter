@@ -55,7 +55,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getMainLB' )->willReturnCallback(
-			function ( $domain ) use ( $lb, $centralDB ) {
+			static function ( $domain ) use ( $lb, $centralDB ) {
 				// Return null for sanity
 				return $domain === $centralDB ? $lb : null;
 			}
@@ -72,11 +72,11 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	 */
 	private function getDBWithMockRows( array $filterRows, array $actionRows = [] ) : IDatabase {
 		$db = $this->createMock( IDatabase::class );
-		$db->method( 'selectRow' )->willReturnCallback( function ( $table ) use ( $filterRows ) {
+		$db->method( 'selectRow' )->willReturnCallback( static function ( $table ) use ( $filterRows ) {
 			return $table === 'abuse_filter' || $table === 'abuse_filter_history' ? $filterRows[0] : false;
 		} );
 		$db->method( 'select' )->willReturnCallback(
-			function ( $table, $_, $where ) use ( $filterRows, $actionRows ) {
+			static function ( $table, $_, $where ) use ( $filterRows, $actionRows ) {
 				if ( $table === 'abuse_filter_action' ) {
 					$ret = [];
 					foreach ( $actionRows as $row ) {

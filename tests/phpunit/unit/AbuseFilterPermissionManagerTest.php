@@ -19,10 +19,10 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 
 	private function getPermMan( array $rights = [] ) : AbuseFilterPermissionManager {
 		$pm = $this->createMock( PermissionManager::class );
-		$pm->method( 'userHasRight' )->willReturnCallback( function ( $u, $r ) use ( $rights ) {
+		$pm->method( 'userHasRight' )->willReturnCallback( static function ( $u, $r ) use ( $rights ) {
 			return in_array( $r, $rights, true );
 		} );
-		$pm->method( 'userHasAnyRight' )->willReturnCallback( function ( $u, ...$r ) use ( $rights ) {
+		$pm->method( 'userHasAnyRight' )->willReturnCallback( static function ( $u, ...$r ) use ( $rights ) {
 			return (bool)array_intersect( $r, $rights );
 		} );
 		return new AbuseFilterPermissionManager( $pm );

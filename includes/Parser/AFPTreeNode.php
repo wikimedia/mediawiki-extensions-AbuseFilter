@@ -178,7 +178,7 @@ class AFPTreeNode {
 			return [ "ATOM({$this->children->type} {$this->children->value})" ];
 		}
 
-		$align = function ( $line ) {
+		$align = static function ( $line ) {
 			return '  ' . $line;
 		};
 

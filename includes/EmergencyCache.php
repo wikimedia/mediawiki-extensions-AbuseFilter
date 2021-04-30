@@ -61,7 +61,7 @@ class EmergencyCache {
 		$expiry = (int)round( $this->stash->getCurrentTime() + $ttl );
 		$this->stash->merge(
 			$this->createGroupKey( $group ),
-			function ( $cache, $key, $value ) use ( $filter, $expiry ) {
+			static function ( $cache, $key, $value ) use ( $filter, $expiry ) {
 				if ( $value === false ) {
 					$value = [];
 				}

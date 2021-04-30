@@ -27,7 +27,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		BlobStore $blobStore = null
 	) : VariablesBlobStore {
 		$manager = $this->createMock( VariablesManager::class );
-		$manager->method( 'dumpAllVars' )->willReturnCallback( function ( VariableHolder $holder ) {
+		$manager->method( 'dumpAllVars' )->willReturnCallback( static function ( VariableHolder $holder ) {
 			$ret = [];
 			foreach ( $holder->getVars() as $name => $var ) {
 				if ( $var instanceof AFPData ) {
@@ -36,7 +36,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 			}
 			return $ret;
 		} );
-		$manager->method( 'translateDeprecatedVars' )->willReturnCallback( function ( VariableHolder $holder ) {
+		$manager->method( 'translateDeprecatedVars' )->willReturnCallback( static function ( VariableHolder $holder ) {
 			$depVars = TestingAccessWrapper::constant( KeywordsManager::class, 'DEPRECATED_VARS' );
 			foreach ( $holder->getVars() as $name => $value ) {
 				if ( array_key_exists( $name, $depVars ) ) {
@@ -131,7 +131,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$storeID = $varBlobStore->storeVarDump( VariableHolder::newFromArray( $toStore ) );
 		$this->assertIsString( $storeID );
 		$loadedVars = $varBlobStore->loadVarDump( $storeID )->getVars();
-		$nativeLoadedVars = array_map( function ( AFPData $el ) {
+		$nativeLoadedVars = array_map( static function ( AFPData $el ) {
 			return $el->toNative();
 		}, $loadedVars );
 		$this->assertSame( $expected, $nativeLoadedVars );

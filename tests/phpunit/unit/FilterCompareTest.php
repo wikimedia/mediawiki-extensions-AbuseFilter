@@ -51,7 +51,7 @@ class FilterCompareTest extends MediaWikiUnitTestCase {
 			'timestamp' => '20181016155634',
 			'id' => 42
 		];
-		$makeFilter = function ( $specs ) use ( $baseSpecs ) {
+		$makeFilter = static function ( $specs ) use ( $baseSpecs ) {
 			$specs += $baseSpecs;
 			return new Filter(
 				new Specs(

@@ -189,7 +189,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			'label-message' => 'abusefilter-test-shownegative',
 			'selected' => $this->mShowNegative
 		];
-		array_walk( $optionsFields, function ( &$el ) {
+		array_walk( $optionsFields, static function ( &$el ) {
 			$el['section'] = 'abusefilter-test-options-section';
 		} );
 		$allFields = array_merge( $rulesFields, $optionsFields );

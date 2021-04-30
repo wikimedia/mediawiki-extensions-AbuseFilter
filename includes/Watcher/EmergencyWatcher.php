@@ -141,7 +141,7 @@ class EmergencyWatcher implements Watcher {
 			new AutoCommitUpdate(
 				$this->loadBalancer->getConnection( DB_MASTER ),
 				__METHOD__,
-				function ( IDatabase $dbw, $fname ) use ( $throttleFilters ) {
+				static function ( IDatabase $dbw, $fname ) use ( $throttleFilters ) {
 					$dbw->update(
 						'abuse_filter',
 						[ 'af_throttled' => 1 ],

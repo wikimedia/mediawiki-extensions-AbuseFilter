@@ -69,7 +69,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	}
 
 	private function getForbidComputeCB() : callable {
-		return function () {
+		return static function () {
 			throw new LogicException( 'Not expected to be called' );
 		};
 	}
@@ -120,7 +120,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testInterceptVariableHook() {
 		$expected = new AFPData( AFPData::DSTRING, 'foobar' );
-		$handler = function ( $method, $vars, $params, &$result ) use ( $expected ) {
+		$handler = static function ( $method, $vars, $params, &$result ) use ( $expected ) {
 			$result = $expected;
 			return false;
 		};
@@ -138,7 +138,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testComputeVariableHook() {
 		$expected = new AFPData( AFPData::DSTRING, 'foobar' );
-		$handler = function ( $method, $vars, $params, &$result ) use ( $expected ) {
+		$handler = static function ( $method, $vars, $params, &$result ) use ( $expected ) {
 			$result = $expected;
 			return false;
 		};
@@ -172,7 +172,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 
 	public function provideUserRelatedVars() : Generator {
 		$user = $this->createMock( User::class );
-		$getUserVar = function ( $user, $method ) : LazyLoadedVariable {
+		$getUserVar = static function ( $user, $method ) : LazyLoadedVariable {
 			return new LazyLoadedVariable(
 				$method,
 				[ 'user' => $user, 'user-identity' => $user ]
