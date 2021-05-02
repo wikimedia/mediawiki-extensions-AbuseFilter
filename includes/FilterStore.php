@@ -126,7 +126,7 @@ class FilterStore {
 		?int $filter,
 		bool $wasGlobal
 	) : array {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_MASTER );
+		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 		$newRow = get_object_vars( $this->filterToDatabaseRow( $newFilter ) );
 
 		// Set last modifier.

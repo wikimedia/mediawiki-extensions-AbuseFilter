@@ -486,7 +486,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 */
 	public function doDBUpdates() {
 		$dryRun = $this->hasOption( 'dry-run' );
-		$this->dbw = wfGetDB( DB_MASTER );
+		$this->dbw = wfGetDB( DB_PRIMARY );
 		$this->beginTransaction( $this->dbw, __METHOD__ );
 
 		$normalized = $this->normalizeParameters();

@@ -60,7 +60,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 	 */
 	private function deleteDuplicatedRows() {
 		$dbr = wfGetDB( DB_REPLICA, 'vslow' );
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$newFormatLike = $dbr->buildLike( $dbr->anyString(), 'historyId', $dbr->anyString() );
 		$batchSize = $this->getBatchSize();
 		$prevID = 0;
@@ -134,7 +134,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 	 */
 	private function changeNewlineType( array $deleted ) {
 		$dbr = wfGetDB( DB_REPLICA, 'vslow' );
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$batchSize = $this->getBatchSize();
 		$prevID = 1;
 		$curID = $batchSize;
@@ -199,7 +199,7 @@ class FixOldLogEntries extends LoggedUpdateMaintenance {
 	 */
 	private function updateLoggingFields( array $deleted ) {
 		$dbr = wfGetDB( DB_REPLICA, 'vslow' );
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$batchSize = $this->getBatchSize();
 		$prevID = 1;
 		$curID = $batchSize;

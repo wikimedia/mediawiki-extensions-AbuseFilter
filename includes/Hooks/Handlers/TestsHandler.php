@@ -56,7 +56,7 @@ class TestsHandler implements UnitTestsAfterDatabaseSetupHook, UnitTestsBeforeDa
 	 * @suppress PhanUndeclaredClassStaticProperty AbuseFilterConsequencesTest is in AutoloadClasses
 	 */
 	public function onUnitTestsBeforeDatabaseTeardown() {
-		$db = wfGetDB( DB_MASTER );
+		$db = wfGetDB( DB_PRIMARY );
 		foreach ( AbuseFilterConsequencesTest::$externalTables as $table ) {
 			$db->dropTable( AbuseFilterConsequencesTest::DB_EXTERNAL_PREFIX . $table );
 		}

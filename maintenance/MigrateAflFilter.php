@@ -54,7 +54,7 @@ class MigrateAflFilter extends LoggedUpdateMaintenance {
 
 		$dryRun = $this->hasOption( 'dry-run' );
 		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$dbw = $lbFactory->getMainLB()->getConnection( DB_MASTER );
+		$dbw = $lbFactory->getMainLB()->getConnection( DB_PRIMARY );
 		$globalPrefix = GlobalNameUtils::GLOBAL_FILTER_PREFIX;
 
 		$batchSize = $this->getBatchSize();

@@ -108,7 +108,7 @@ class AbuseLogger {
 	public function addLogEntries( array $actionsTaken ) : array {
 		global $wgAbuseFilterAflFilterMigrationStage;
 
-		$dbw = $this->loadBalancer->getConnectionRef( DB_MASTER );
+		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 		$logTemplate = $this->buildLogTemplate();
 		$centralLogTemplate = [
 			'afl_wiki' => $this->wikiID,
@@ -167,7 +167,7 @@ class AbuseLogger {
 
 		$globalLogIDs = [];
 		if ( count( $loggedGlobalFilters ) ) {
-			$fdb = $this->centralDBManager->getConnection( DB_MASTER );
+			$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
 			$globalLogIDs = $this->insertGlobalLogEntries( $centralLogRows, $fdb );
 		}
 

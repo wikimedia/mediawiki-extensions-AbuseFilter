@@ -107,7 +107,7 @@ class EditRevUpdater {
 		$ret = false;
 		$logs = $this->logIds[ $key ];
 		if ( $logs[ 'local' ] ) {
-			$dbw = $this->loadBalancer->getConnectionRef( DB_MASTER );
+			$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 			$dbw->update( 'abuse_filter_log',
 				[ 'afl_rev_id' => $revisionRecord->getId() ],
 				[ 'afl_id' => $logs['local'] ],
@@ -117,7 +117,7 @@ class EditRevUpdater {
 		}
 
 		if ( $logs[ 'global' ] ) {
-			$fdb = $this->centralDBManager->getConnection( DB_MASTER );
+			$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
 			$fdb->update( 'abuse_filter_log',
 				[ 'afl_rev_id' => $revisionRecord->getId() ],
 				[ 'afl_id' => $logs['global'], 'afl_wiki' => $this->wikiID ],

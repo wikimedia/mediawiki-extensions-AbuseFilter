@@ -38,11 +38,11 @@ class UpdateHitCountWatcher implements Watcher {
 		// Run in a DeferredUpdate to avoid master queries on raw/view requests (T274455)
 		DeferredUpdates::addCallableUpdate( function () use ( $localFilters, $globalFilters ) {
 			if ( $localFilters ) {
-				$this->updateHitCounts( $this->loadBalancer->getConnectionRef( DB_MASTER ), $localFilters );
+				$this->updateHitCounts( $this->loadBalancer->getConnectionRef( DB_PRIMARY ), $localFilters );
 			}
 
 			if ( $globalFilters ) {
-				$fdb = $this->centralDBManager->getConnection( DB_MASTER );
+				$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
 				$this->updateHitCounts( $fdb, $globalFilters );
 			}
 		} );

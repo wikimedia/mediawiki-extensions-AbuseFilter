@@ -109,7 +109,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 
 		$count = 0;

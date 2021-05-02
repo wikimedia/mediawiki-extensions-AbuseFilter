@@ -544,7 +544,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					: $this->getNonExistingTestPage()->getTitle();
 				/** @var MockObject|MovePage $mp */
 				$mp = $this->getMockBuilder( MovePage::class )
-					->setMethods( [ 'isValidMove' ] )
+					->onlyMethods( [ 'isValidMove' ] )
 					->setConstructorArgs( [ $target, $newTitle ] )
 					->getMock();
 				$mp->expects( $this->any() )

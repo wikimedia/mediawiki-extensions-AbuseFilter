@@ -29,7 +29,7 @@ class PurgeOldLogIPData extends Maintenance {
 	 */
 	public function execute() {
 		$this->output( "Purging old IP Address data from abuse_filter_log...\n" );
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
 		$cutoffUnix = (int)MWTimestamp::now( TS_UNIX ) - $this->getConfig()->get( 'AbuseFilterLogIPMaxAge' );
 

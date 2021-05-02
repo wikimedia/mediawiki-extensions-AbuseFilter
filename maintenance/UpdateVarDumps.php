@@ -103,7 +103,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 
 		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
 		$this->dbr = wfGetDB( DB_REPLICA );
-		$this->dbw = wfGetDB( DB_MASTER );
+		$this->dbw = wfGetDB( DB_PRIMARY );
 
 		// Control batching with the primary key to keep the queries performant and allow gaps
 		$this->allRowsCount = (int)$this->dbr->selectField(

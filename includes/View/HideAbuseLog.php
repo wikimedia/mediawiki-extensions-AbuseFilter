@@ -138,7 +138,7 @@ class HideAbuseLog extends AbuseFilterView {
 	 */
 	public function saveHideForm( array $fields ) {
 		// Determine which rows actually have to be changed
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$newValue = $fields['showorhide'] === 'hide' ? 1 : 0;
 		$actualIDs = $dbw->selectFieldValues(
 			'abuse_filter_log',

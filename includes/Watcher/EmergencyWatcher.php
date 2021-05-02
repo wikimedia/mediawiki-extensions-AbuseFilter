@@ -139,7 +139,7 @@ class EmergencyWatcher implements Watcher {
 
 		DeferredUpdates::addUpdate(
 			new AutoCommitUpdate(
-				$this->loadBalancer->getConnection( DB_MASTER ),
+				$this->loadBalancer->getConnection( DB_PRIMARY ),
 				__METHOD__,
 				static function ( IDatabase $dbw, $fname ) use ( $throttleFilters ) {
 					$dbw->update(

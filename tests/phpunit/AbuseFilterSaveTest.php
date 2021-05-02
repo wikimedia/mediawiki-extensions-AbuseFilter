@@ -70,7 +70,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		$filter = $this->getFilterFromSpecs( [ 'id' => $id ] + self::DEFAULT_VALUES );
 		// Use some black magic to bypass checks
 		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
-		wfGetDB( DB_MASTER )->insert(
+		wfGetDB( DB_PRIMARY )->insert(
 			'abuse_filter',
 			get_object_vars( $filterStore->filterToDatabaseRow( $filter ) ),
 			__METHOD__
