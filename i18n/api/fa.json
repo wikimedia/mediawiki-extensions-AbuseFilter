@@ -5,6 +5,7 @@
 			"Alirezaaa",
 			"FarsiNevis",
 			"Huji",
+			"Jeeputer",
 			"Ladsgroup",
 			"Reza1615"
 		]
@@ -46,7 +47,7 @@
 	"apihelp-query+abuselog-param-end": "تاریخی که شمارش از آن متوقف شود.",
 	"apihelp-query+abuselog-param-user": "نمایش ورودی‌های انجام شده توسط کاربر یا آی‌پی.",
 	"apihelp-query+abuselog-param-title": "نمایش ورودی‌هایی که بر روی یک صفحهٔ مشخص اعمال شده اند.",
-	"apihelp-query+abuselog-param-filter": "نمایش ورودی‌هایی که توسط یک شناسهٔ پالایهٔ داده‌شده جلوگیری شده‌اند.",
+	"apihelp-query+abuselog-param-filter": "نمایش ورودی‌هایی که توسط یک شناسهٔ پالایهٔ داده‌شده جلوگیری شده‌اند. جداشده با لوله، پیشوند «$1» را برای دیدن پالایه‌های سراسری اضافه کنید.",
 	"apihelp-query+abuselog-param-limit": "حداکثر تعداد ورودی‌هایی که نمایش داده شود.",
 	"apihelp-query+abuselog-param-prop": "خصوصیتی که باید گرفته شود.",
 	"apihelp-query+abuselog-param-wiki": "ویکی برای نمایش تأثیر گرفته از آن",

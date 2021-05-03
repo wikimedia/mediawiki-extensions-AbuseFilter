@@ -592,5 +592,6 @@
 	"abusefilter-log-ip-not-available": "موجود نیست",
 	"abusefilter-tag-reserved": "تگ <code>abusefilter-condition-limit</code> برای استفادهٔ داخلی توسط پالایهٔ ویرایش در نظر گرفته شده.",
 	"tag-abusefilter-condition-limit": "محدودیت تعداد شرایط حاصل شد",
-	"tag-abusefilter-condition-limit-description": "ویرایش‌ها یا عملکردهای دیگری که توسط تمام [[Special:AbuseFilter|پالایه‌های]] فعال بررسی نشدند ([[mw:Extension:AbuseFilter/Conditions|راهنما]])."
+	"tag-abusefilter-condition-limit-description": "ویرایش‌ها یا عملکردهای دیگری که توسط تمام [[Special:AbuseFilter|پالایه‌های]] فعال بررسی نشدند ([[mw:Extension:AbuseFilter/Conditions|راهنما]]).",
+	"notification-link-text-show-filter": "نمایش پالایه"
 }
