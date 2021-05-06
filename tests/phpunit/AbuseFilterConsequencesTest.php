@@ -687,7 +687,8 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 					case 'degroup':
 						// Aborts the hook with 'abusefilter-degrouped' error and degroups the user.
 						$expectedErrors['degroup'][] = 'abusefilter-degrouped';
-						$groupCheck = !in_array( 'sysop', $this->user->getEffectiveGroups() );
+						$ugm = MediaWikiServices::getInstance()->getUserGroupManager();
+						$groupCheck = !in_array( 'sysop', $ugm->getUserEffectiveGroups( $this->user ) );
 						if ( !$groupCheck ) {
 							$testErrorMessage = 'The user was not degrouped.';
 						}
