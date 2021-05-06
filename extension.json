@@ -329,7 +329,7 @@
 		"UploadStashFile": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onUploadStashFile",
 		"PageSaveComplete": "PageSave",
 		"RenameUserSQL": "UserRename",
-		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserRenameHandler::onUserMergeAccountFields",
+		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler::onUserMergeAccountFields",
 		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
 		"ParserOutputStashForEdit": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onParserOutputStashForEdit",
 		"UnitTestsAfterDatabaseSetup": "Tests",
