@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Aushulz",
 			"Fitoschido",
 			"Gmelfi",
@@ -47,6 +48,7 @@
 	"abusefilter-log-search-filter": "ID dî filtri (spàrtiri cu sbarri virticali):",
 	"abusefilter-log-search-title": "Tìtulu:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-action-other": "Àutru",
 	"abusefilter-log-search-submit": "Va' arricerca",
 	"abusefilter-log-entry": "$1: $2 fici scattari nu filtru anti-abbusi, facennu l'azzioni «$3» nta $4.\nMisuri pigghiati: $5;\nDiscrizzioni dû filtru: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 fici scattari nu filtru anti-abbusi, facennu l'azzioni «$3» nta $4.\nMisuri pigghiati: $5;\nDiscrizzioni dû filtru: $6 ($7)",

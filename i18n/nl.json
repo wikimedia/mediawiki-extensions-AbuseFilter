@@ -507,6 +507,7 @@
 	"abusefilter-revert-reasonfield": "Reden:",
 	"abusefilter-test": "Filter tegen eerdere bewerkingen testen",
 	"abusefilter-test-intro": "Op deze pagina kunt u een opgegeven filter controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.\nGeef een filternummer in om een bestaand filter te laden en klik daarna op de knop \"{{int:abusefilter-test-load}}\".",
+	"abusefilter-test-rules-section": "Te testen regels",
 	"abusefilter-test-options-section": "Zoekopties",
 	"abusefilter-test-legend": "Filter testen",
 	"abusefilter-test-load-filter": "Filternummer laden:",
