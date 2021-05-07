@@ -13,7 +13,7 @@
 		"@wdio/spec-reporter": "6.1.12",
 		"@wdio/sync": "6.1.8",
 		"eslint-config-wikimedia": "0.20.0",
-		"grunt": "1.3.0",
+		"grunt": "1.4.0",
 		"grunt-banana-checker": "0.9.0",
 		"grunt-eslint": "23.0.0",
 		"grunt-stylelint": "0.16.0",
