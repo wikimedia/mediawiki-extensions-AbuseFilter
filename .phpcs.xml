@@ -11,6 +11,6 @@
 		<exclude-pattern>AbuseFilter\.alias\.php</exclude-pattern>
 	</rule>
 	<file>.</file>
-	<arg name="extensions" value="php,php5,inc"/>
+	<arg name="extensions" value="php"/>
 	<arg name="encoding" value="UTF-8"/>
 </ruleset>
