@@ -14,5 +14,7 @@
 	"abusefilter-throttle-none": "(nénten wénten)",
 	"abusefilter-edit-builder-op-comparison-notequal": "Nilai nénten pateh sareng (!=)",
 	"abusefilter-edit-builder-op-comparison-notequal-strict": "Nilai miwah tipe nénten pateh sareng (!==)",
-	"abusefilter-edit-builder-op-bool-not": "Nénten (!)"
+	"abusefilter-edit-builder-op-bool-not": "Nénten (!)",
+	"abusefilter-edit-builder-funcs-specialratio": "Aksara kusus / akéh aksara (specialratio)",
+	"abusefilter-edit-builder-funcs-rmspecials": "Usap aksara kusus (rmspecials)"
 }

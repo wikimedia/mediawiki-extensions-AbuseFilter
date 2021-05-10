@@ -60,6 +60,7 @@
 	"abusefilter-log-noactions": "gien",
 	"abusefilter-log-details-diff": "Wiezigingen in de bewarking",
 	"abusefilter-log-linkoncontribs": "misbruuklogbook",
+	"abusefilter-log-linkonhistory": "filterlogbook bekyken",
 	"abusefilter-log-hide-legend": "Logboekregel verbargen",
 	"abusefilter-log-hide-reason": "Reden:",
 	"abusefilter-list": "Alle filters",
@@ -175,6 +176,7 @@
 	"abusefilter-revert-periodend": "Einde periode:",
 	"abusefilter-revert-search": "Maotregels selekteren",
 	"abusefilter-revert-filter": "Filter:",
+	"abusefilter-revert-confirm": "Bevästigen",
 	"abusefilter-examine-user": "Gebruker:",
 	"abusefilter-topnav-log": "Misbruuklogbook"
 }
