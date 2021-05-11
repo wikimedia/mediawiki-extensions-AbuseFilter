@@ -5,6 +5,7 @@
 			"NoiX180"
 		]
 	},
+	"abuselog": "Cutetan saringan palanggaran",
 	"abusefilter-log-search-impact-saved": "Wantah uahan maraksa",
 	"abusefilter-log-description-not-available": "nénten kasedia",
 	"abusefilter-log-noactions": "nénten wénten",
@@ -16,5 +17,6 @@
 	"abusefilter-edit-builder-op-comparison-notequal-strict": "Nilai miwah tipe nénten pateh sareng (!==)",
 	"abusefilter-edit-builder-op-bool-not": "Nénten (!)",
 	"abusefilter-edit-builder-funcs-specialratio": "Aksara kusus / akéh aksara (specialratio)",
-	"abusefilter-edit-builder-funcs-rmspecials": "Usap aksara kusus (rmspecials)"
+	"abusefilter-edit-builder-funcs-rmspecials": "Usap aksara kusus (rmspecials)",
+	"abusefilter-log-noresults": "Tanpa asil"
 }
