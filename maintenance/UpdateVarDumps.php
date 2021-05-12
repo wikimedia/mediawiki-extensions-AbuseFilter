@@ -40,7 +40,7 @@ require_once "$IP/maintenance/Maintenance.php";
 class UpdateVarDumps extends LoggedUpdateMaintenance {
 	/** @var Database A connection to replica */
 	private $dbr;
-	/** @var Database A connection to the master */
+	/** @var Database A connection to the primary database */
 	private $dbw;
 	/** @var bool Whether we're performing a dry run */
 	private $dryRun = false;
@@ -101,7 +101,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->keywordsManager = AbuseFilterServices::getKeywordsManager();
 		$this->varBlobStore = AbuseFilterServices::getVariablesBlobStore();
 
-		// Faulty rows aren't inserted anymore, hence we can query the replica and update the master.
+		// Faulty rows aren't inserted anymore, hence we can query the replica and update the primary database.
 		$this->dbr = wfGetDB( DB_REPLICA );
 		$this->dbw = wfGetDB( DB_PRIMARY );
 

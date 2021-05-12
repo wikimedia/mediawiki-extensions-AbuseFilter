@@ -29,7 +29,7 @@ class CentralDBManager {
 	}
 
 	/**
-	 * @param int $index DB_MASTER/DB_REPLICA
+	 * @param int $index DB_PRIMARY/DB_REPLICA
 	 * @return IDatabase
 	 * @throws DBError
 	 * @throws CentralDBNotAvailableException

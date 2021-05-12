@@ -35,7 +35,7 @@ class UpdateHitCountWatcher implements Watcher {
 	 * @inheritDoc
 	 */
 	public function run( array $localFilters, array $globalFilters, string $group ) : void {
-		// Run in a DeferredUpdate to avoid master queries on raw/view requests (T274455)
+		// Run in a DeferredUpdate to avoid primary database queries on raw/view requests (T274455)
 		DeferredUpdates::addCallableUpdate( function () use ( $localFilters, $globalFilters ) {
 			if ( $localFilters ) {
 				$this->updateHitCounts( $this->loadBalancer->getConnectionRef( DB_PRIMARY ), $localFilters );

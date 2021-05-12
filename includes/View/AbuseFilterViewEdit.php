@@ -1161,7 +1161,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$flags = $this->getRequest()->wasPosted()
-			// Load from master to avoid unintended reversions where there's replication lag.
+			// Load from primary database to avoid unintended reversions where there's replication lag.
 			? FilterLookup::READ_LATEST
 			: FilterLookup::READ_NORMAL;
 
