@@ -200,7 +200,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$action = $this->mTestAction !== '0' ? $this->mTestAction : false;
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$conds[] = $this->buildTestConditions( $dbr, $action );
-		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $permissionManager ) );
+		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $permissionManager, $this->getUser() ) );
 
 		// Get our ChangesList
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );
