@@ -5,7 +5,7 @@ use MediaWiki\MediaWikiServices;
 /**
  * This trait can be used to perform uploads in integration tests.
  * NOTE: The implementing classes MUST extend MediaWikiIntegrationTestCase
- * The tearDown method must clear $_FILES and the local file
+ * The tearDown method must clear the local file
  * @todo This might be moved to MediaWikiIntegrationTestCase
  *
  * @method string getNewTempDirectory()
@@ -21,7 +21,6 @@ trait AbuseFilterUploadTestTrait {
 	 * Clear any temporary uploads, should be called from tearDown
 	 */
 	protected function clearUploads() : void {
-		$_FILES = [];
 		if ( $this->clearPath ) {
 			$backend = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->getBackend();
 			$backend->delete( [ 'src' => $this->clearPath ], [ 'force' => 1 ] );
@@ -48,15 +47,15 @@ trait AbuseFilterUploadTestTrait {
 		$mime = 'image/svg+xml';
 		$filePath = $imgGen->writeImages( 1, $format, $this->getNewTempDirectory() )[0];
 		clearstatcache();
-		$_FILES[ 'wpUploadFile' ] = [
+		$request = new FauxRequest( [
+			'wpDestFile' => $fileName
+		] );
+		$request->setUpload( 'wpUploadFile', [
 			'name' => $fileName,
 			'type' => $mime,
 			'tmp_name' => $filePath,
 			'error' => UPLOAD_ERR_OK,
 			'size' => filesize( $filePath ),
-		];
-		$request = new FauxRequest( [
-			'wpDestFile' => $fileName
 		] );
 		/** @var UploadFromFile $ub */
 		$ub = UploadBase::createFromRequest( $request );
