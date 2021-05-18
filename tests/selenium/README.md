@@ -1,24 +1,12 @@
 # Selenium tests
 
-For more information see https://www.mediawiki.org/wiki/Selenium/Node.js and [PATH]/mediawiki/vagrant/mediawiki/tests/selenium/README.md.
+For more information see https://www.mediawiki.org/wiki/Selenium
 
 ## Setup
 
-Set up MediaWiki-Vagrant:
-
-    cd [PATH]/mediawiki/vagrant/mediawiki/extensions/AbuseFilter
-    vagrant up
-    vagrant roles enable abusefilter
-    vagrant provision
-    npm install
-
-Chromedriver has to run in one terminal window:
-
-    chromedriver --url-base=wd/hub --port=4444
+See https://www.mediawiki.org/wiki/MediaWiki-Docker/Extension/AbuseFilter
 
 ## Run all specs
-
-In another terminal window:
 
     npm run selenium-test
 
