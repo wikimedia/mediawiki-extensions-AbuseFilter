@@ -355,7 +355,7 @@
 	"abusefilter-test-legend": "Литтаре хьажар",
 	"abusefilter-test-load-filter": "Чудаккха луьттург ID тӀера:",
 	"abusefilter-test-submit": "Хьажа",
-	"abusefilter-test-load": "Чуяккха",
+	"abusefilter-test-load": "Чуйаккха",
 	"abusefilter-test-user": "Декъашхочо бина хийцамаш:",
 	"abusefilter-test-nobots": "Ботийн нисдарш къайладаха",
 	"abusefilter-test-period-start": "ТӀаьхьа хийцамаш бина хан:",
@@ -368,6 +368,7 @@
 	"abusefilter-test-search-type-move": "ЦӀе хийцар",
 	"abusefilter-test-search-type-delete": "ДӀайаккхар",
 	"abusefilter-test-search-type-upload": "Чуйаьхарш",
+	"abusefilter-test-search-type-createaccount": "Декъашхойн дӀайаздарш кхоллар",
 	"abusefilter-changeslist-examine": "хьажа",
 	"abusefilter-examine": "Хийцамашка къестош хьажар",
 	"abusefilter-examine-intro": "ХӀокху агӀоно йиш хуьлуьйту зулуман литтаро кхолийна хийцамашка хьажа нисдарш къестош.",
@@ -416,5 +417,6 @@
 	"abusefilter-log-details-id": "Тептаран ID",
 	"abusefilter-log-ip-not-available": "ТӀекхочехь йац",
 	"tag-abusefilter-condition-limit": "доза тохар",
-	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зуламан литтаршна]] далуш доцург ([[mw:Extension:AbuseFilter/Conditions|гӀо]])."
+	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зуламан литтаршна]] далуш доцург ([[mw:Extension:AbuseFilter/Conditions|гӀо]]).",
+	"notification-link-text-show-filter": "Гайта литтарг"
 }
