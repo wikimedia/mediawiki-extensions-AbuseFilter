@@ -131,6 +131,7 @@
 	"abusefilter-log-details-hidden-implicit": "U kunt de details van deze melding niet bekijken omdat de gekoppelde versie verborgen is.",
 	"abusefilter-log-private-not-included": "Een of meer van de opgegeven filter-ID's zijn persoonlijk. Omdat u de details van privéfilters niet mag zien, is er niet in deze filters gezocht.",
 	"abusefilter-log-hide-no-selected": "Geen items geselecteerd",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Geselecteerde misbruikfilterregel|Geselecteerde misbruikfilterregels}}:",
 	"abusefilter-log-hide-legend": "Zichtbaarheid wijzigen",
 	"abusefilter-log-hide-set-visibility": "Stel de zichtbaarheid in voor geselecteerde items:",
 	"abusefilter-log-hide-reason": "Reden:",
