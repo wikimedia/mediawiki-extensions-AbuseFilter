@@ -87,6 +87,7 @@
 	"abusefilter-log-detailslink": "падрабязнасьці",
 	"abusefilter-log-diff": "розьн",
 	"abusefilter-log-hidelink": "зьмяніць бачнасьць",
+	"abusefilter-log-description-not-available": "недаступна",
 	"abusefilter-log-details-legend": "Падрабязнасьці запісу ў журнале $1",
 	"abusefilter-log-details-var": "Зьменная",
 	"abusefilter-log-details-val": "Значэньне",
@@ -95,6 +96,7 @@
 	"abusefilter-log-details-ip": "Выходны ІР-адрас",
 	"abusefilter-log-details-checkuser": "Праверыць удзельніка",
 	"abusefilter-log-noactions": "няма",
+	"abusefilter-log-noactions-filter": "Няма",
 	"abusefilter-log-details-diff": "Зьмены, зробленыя ў рэдагаваньні",
 	"abusefilter-log-linkoncontribs": "журнал злоўжываньняў",
 	"abusefilter-log-linkoncontribs-text": "Журнал злоўжываньняў {{GENDER:$1|гэтага ўдзельніка|гэтай удзельніцы}}",
@@ -565,5 +567,6 @@
 	"tag-abusefilter-condition-limit": "дасягнутае абмежаваньне ўмовы",
 	"tag-abusefilter-condition-limit-description": "Рэдагаваньні або іншыя падзеі, якія ня могуць быць правераны ўсімі актыўнымі \n[[Special:AbuseFilter|фільтрамі злоўжываньняў]] ([[mw:Extension:AbuseFilter/Conditions|дапамога]]).",
 	"notification-header-throttle-filter": "Фільтар злоўжываньняў $2, які {{GENDER:$1|вы}} нядаўна рэдагавалі, быў абмежаваны.",
-	"notification-subject-throttle-filter": "Фільтар злоўжываньняў, які {{GENDER:$1|вы}} рэдагавалі, быў абмежаваны на {{GRAMMAR:locative|{{SITENAME}}}}"
+	"notification-subject-throttle-filter": "Фільтар злоўжываньняў, які {{GENDER:$1|вы}} рэдагавалі, быў абмежаваны на {{GRAMMAR:locative|{{SITENAME}}}}",
+	"notification-link-text-show-filter": "Паказаць фільтар"
 }
