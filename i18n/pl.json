@@ -157,7 +157,7 @@
 	"log-action-filter-suppress-abuselog": "Ukrywanie rejestru nadużyć",
 	"log-action-filter-rights-blockautopromote": "Blokada autopromocji",
 	"log-action-filter-rights-restoreautopromote": "Przywrócenie autopromocji",
-	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|uzyskał|uzyskała}} dostęp do prywatnych szczegółów $3",
+	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|uzyskał|uzyskała|uzyskał(a)}} dostęp do prywatnych szczegółów $3",
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|zablokował|zablokowała|zablokował(a)}} automatyczny awans {{GENDER:$4|$3}} na $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|odtworzył|odtworzyła|odtworzył(a)}} zdolność do automatycznego awansu {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Rejestr dostępu do prywatnych szczegółów filtru nadużyć",
