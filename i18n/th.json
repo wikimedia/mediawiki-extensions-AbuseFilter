@@ -91,7 +91,7 @@
 	"abusefilter-log-detailedentry-local": "ตัวกรอง $1",
 	"abusefilter-log-detailslink": "รายละเอียด",
 	"abusefilter-log-diff": "แตกต่าง",
-	"abusefilter-log-hidelink": "ปรับสถานะการแสดง",
+	"abusefilter-log-hidelink": "ปรับทัศนวิสัย",
 	"abusefilter-log-details-legend": "รายละเอียดสำหรับหน่วยรายการบันทึก $1",
 	"abusefilter-log-details-var": "ตัวแปร",
 	"abusefilter-log-details-val": "ค่า",
