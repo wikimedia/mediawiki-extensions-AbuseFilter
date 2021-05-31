@@ -109,9 +109,9 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 		yield 'no block to revert' => [ null, null, false ];
 
 		$randomUser = new UserIdentityValue( 1234, 'Some other user' );
-		yield 'not blocked by AF user' => [ new DatabaseBlock( [ 'by' => $randomUser->getId() ] ), null, false ];
+		yield 'not blocked by AF user' => [ new DatabaseBlock( [ 'by' => $randomUser ] ), null, false ];
 
-		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUser()->getId() ] );
+		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUser() ] );
 		$failBlockStore = $this->createMock( DatabaseBlockStore::class );
 		$failBlockStore->expects( $this->once() )->method( 'deleteBlock' )->willReturn( false );
 		yield 'cannot delete block' => [ $blockByFilter, $failBlockStore, false ];
