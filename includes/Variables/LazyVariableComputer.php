@@ -386,7 +386,6 @@ class LazyVariableComputer {
 				}
 		}
 
-		// @phan-suppress-next-line SecurityCheck-ReDoS Legit, but that's the intention
 		return $result instanceof AFPData ? $result : AFPData::newFromPHPVar( $result );
 	}
 

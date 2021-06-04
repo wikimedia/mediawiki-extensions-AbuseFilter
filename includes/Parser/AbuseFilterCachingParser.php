@@ -921,13 +921,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			// Munge the regex
-			$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
-			$needle = "/$needle/u";
+			$needle = $this->mungeRegexp( $needle );
 
 			// Suppress and restore needed per T177744
 			AtEase::suppressWarnings();
-			$this->checkRegexMatchesEmpty( $args[0] );
+			$this->checkRegexMatchesEmpty( $args[0], $needle );
 			$count = preg_match_all( $needle, $haystack );
 			AtEase::restoreWarnings();
 
@@ -969,13 +967,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		$groupscount = substr_count( $sanitized, '(' ) + 1;
 		$falsy = array_fill( 0, $groupscount, false );
 
-		// Munge the regex by escaping slashes
-		$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $needle );
-		$needle = "/$needle/u";
+		$needle = $this->mungeRegexp( $needle );
 
 		// Suppress and restore are here for the same reason as T177744
 		AtEase::suppressWarnings();
-		$this->checkRegexMatchesEmpty( $args[0] );
+		$this->checkRegexMatchesEmpty( $args[0], $needle );
 		$check = preg_match( $needle, $haystack, $matches );
 		AtEase::restoreWarnings();
 
@@ -1382,15 +1378,14 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		$str = $str->toString();
 		$pattern = $regex->toString();
 
-		$pattern = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $pattern );
-		$pattern = "/$pattern/u";
+		$pattern = $this->mungeRegexp( $pattern );
 
 		if ( $insensitive ) {
 			$pattern .= 'i';
 		}
 
 		AtEase::suppressWarnings();
-		$this->checkRegexMatchesEmpty( $regex );
+		$this->checkRegexMatchesEmpty( $regex, $pattern );
 		$result = preg_match( $pattern, $str );
 		AtEase::restoreWarnings();
 		if ( $result === false ) {
@@ -1493,18 +1488,31 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	}
 
 	/**
+	 * Given a regexp in the AF syntax, make it PCRE-compliant (i.e. we need to escape slashes, add
+	 * delimiters and modifiers).
+	 *
+	 * @param string $rawRegexp
+	 * @return string
+	 */
+	private function mungeRegexp( string $rawRegexp ) : string {
+		$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $rawRegexp );
+		return "/$needle/u";
+	}
+
+	/**
 	 * Check whether the provided regex matches the empty string.
 	 * @note This method can generate a PHP notice if the regex is invalid
 	 *
-	 * @param AFPData $regex
+	 * @param AFPData $regex TODO Can we avoid passing this in?
+	 * @param string $pattern Already munged
 	 */
-	protected function checkRegexMatchesEmpty( AFPData $regex ) : void {
+	protected function checkRegexMatchesEmpty( AFPData $regex, string $pattern ) : void {
 		if ( $regex->getType() === AFPData::DUNDEFINED ) {
 			// We can't tell, and toString() would return the empty string (T273809)
 			return;
 		}
 		// @phan-suppress-next-line PhanParamSuspiciousOrder
-		if ( preg_match( $regex->toString(), '' ) === 1 ) {
+		if ( preg_match( $pattern, '' ) === 1 ) {
 			$this->warnings[] = new UserVisibleWarning(
 				'match-empty-regex',
 				$this->mCur->pos,
