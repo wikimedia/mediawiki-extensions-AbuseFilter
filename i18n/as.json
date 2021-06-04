@@ -5,7 +5,8 @@
 			"Britul",
 			"Chaipau",
 			"Gitartha.bordoloi",
-			"Psneog"
+			"Psneog",
+			"Simbu123"
 		]
 	},
 	"abuselog": "অপব্যৱহাৰ পৰিশ্ৰাৱক অভিলেখ",
@@ -109,5 +110,5 @@
 	"abusefilter-topnav-log": "অপব্যৱহাৰ অভিলেখ",
 	"abusefilter-log-noresults": "ফলাফল নাই",
 	"abusefilter-import-submit": "তথ্য আমদানী কৰক",
-	"abusefilter-group-default": "অবিচল"
+	"abusefilter-group-default": "পূৰ্বনিৰ্ধাৰিত"
 }
