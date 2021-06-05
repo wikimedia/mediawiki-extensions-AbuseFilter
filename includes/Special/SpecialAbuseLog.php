@@ -834,7 +834,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$filterHidden = $row->af_hidden;
 		}
 
-		if ( !$afPermManager->canSeeLogDetailsForFilter( $authority->getUser(), $filterHidden ) ) {
+		if ( !$afPermManager->canSeeLogDetailsForFilter( $authority, $filterHidden ) ) {
 			$status->fatal( 'abusefilter-log-cannot-see-details' );
 			return $status;
 		}
@@ -1099,7 +1099,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		Authority $authority,
 		AbuseFilterPermissionManager $afPermManager
 	): string {
-		if ( $row->afl_deleted && !$afPermManager->canSeeHiddenLogEntries( $authority->getUser() ) ) {
+		if ( $row->afl_deleted && !$afPermManager->canSeeHiddenLogEntries( $authority ) ) {
 			return self::VISIBILITY_HIDDEN;
 		}
 		if ( !$row->afl_rev_id ) {
