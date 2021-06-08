@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 use Generator;
 use Language;
 use LogicException;
+use MediaWiki\Block\SystemBlock;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
@@ -204,10 +205,10 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		$var = $getUserVar( $user, 'user-rights' );
 		yield 'user_rights' => [ $var, $rights, [ null, null, $permissionManager ] ];
 
-		$blocked = true;
-		$user->method( 'getBlock' )->willReturn( $blocked );
+		$block = new SystemBlock( [] );
+		$user->method( 'getBlock' )->willReturn( $block );
 		$var = $getUserVar( $user, 'user-block' );
-		yield 'user_blocked' => [ $var, $blocked ];
+		yield 'user_blocked' => [ $var, (bool)$block ];
 
 		$fakeTime = 1514700000;
 
