@@ -431,7 +431,7 @@
 	"abusefilter-exception-notarray": "Zahtevanje elementa polja v nepolju pri znaku $1.",
 	"abusefilter-action-tag": "Označi",
 	"abusefilter-action-throttle": "Zaduši",
-	"abusefilter-action-warn": "Opozori",
+	"abusefilter-action-warn": "Opozorilo",
 	"abusefilter-action-blockautopromote": "Samodejno izvedi blokado",
 	"abusefilter-action-block": "Blokiraj",
 	"abusefilter-action-degroup": "Odstrani iz skupin",

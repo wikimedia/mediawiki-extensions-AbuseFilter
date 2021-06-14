@@ -24,6 +24,7 @@
 			"Srhat",
 			"TmY e12",
 			"ToprakM",
+			"Uncitoyen",
 			"Vito Genovese",
 			"Ömer Berkay"
 		]
@@ -183,7 +184,7 @@
 	"abusefilter-list-options-deleted-show": "Silinmiş süzgeçleri içer",
 	"abusefilter-list-options-scope": "Süzgeçleri göster:",
 	"abusefilter-list-options-scope-local": "Yalnızca yerel kurallar",
-	"abusefilter-list-options-scope-global": "Yalnızca genel kurallar",
+	"abusefilter-list-options-scope-global": "Yalnızca küresel kurallar",
 	"abusefilter-list-options-scope-all": "Yerel ve genel kurallar",
 	"abusefilter-list-options-further-options": "Diğer seçenekler:",
 	"abusefilter-list-options-hidedisabled": "Devre dışı süzgeçleri gizle",

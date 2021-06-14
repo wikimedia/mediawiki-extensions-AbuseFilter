@@ -304,6 +304,7 @@
 	"abusefilter-edit-empty-throttlegroups": "적어도 하나의 스로틀 그룹을 선택해야 합니다.",
 	"abusefilter-edit-duplicated-throttlegroups": "스로틀 그룹은 중복을 가질 수 없습니다.",
 	"abusefilter-edit-invalid-throttlegroups": "지정된 스로틀 그룹은 유효하지 않습니다.",
+	"abusefilter-edit-invalid-group": "제시한 필터 그룹('$1')이 올바르지 않습니다.",
 	"abusefilter-edit-builder-select": "커서가 있는 위치에 추가할 설정을 선택하세요.",
 	"abusefilter-edit-builder-group-op-arithmetic": "산술 연산자",
 	"abusefilter-edit-builder-op-arithmetic-addition": "더하기 (+)",
