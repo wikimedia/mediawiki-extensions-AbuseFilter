@@ -23,6 +23,8 @@
 	"abusefilter-log-details-checkuser": "Turéksa sang anganggé",
 	"abusefilter-log-noactions": "nénten wénten",
 	"abusefilter-log-linkoncontribs-text": "Log planggaran antuk {{GENDER:$1|sang anganggé puniki}}",
+	"abusefilter-log-linkonhistory": "cingak log panyalahwigunaan",
+	"abusefilter-log-linkonundelete": "cingak log panyalahwigunaan",
 	"abusefilter-log-hide-show": "Sinahang",
 	"abusefilter-list-pattern": "Pola",
 	"abusefilter-list-status": "Status",
