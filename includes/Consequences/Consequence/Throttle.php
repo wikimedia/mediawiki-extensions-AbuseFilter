@@ -203,6 +203,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				// @codeCoverageIgnoreEnd
 		}
 
+		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Simplify 'editcount' in 1.37+
 		return $identifier;
 	}
 }
