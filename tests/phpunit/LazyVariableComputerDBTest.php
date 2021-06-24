@@ -46,7 +46,7 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 		] );
 
 		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newGenerator( $baseVars );
-		$actualHolder = $generator->addEditVars( $page, $this->createMock( User::class ) )
+		$actualHolder = $generator->addEditVars( $page, $this->getTestUser()->getUser() )
 			->getVariableHolder();
 		$actual = AbuseFilterServices::getVariablesManager()->exportAllVars( $actualHolder );
 
