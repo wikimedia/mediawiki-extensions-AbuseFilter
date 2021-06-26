@@ -49,8 +49,6 @@ class AbuseFilterHooks {
 			// Produce a useful error message for API edits
 			$filterResultApi = self::getApiStatus( $filterResult );
 			$status->merge( $filterResultApi );
-			// @todo Remove this line after this extension do not support mediawiki version 1.36 and before
-			$status->value = \EditPage::AS_HOOK_ERROR_EXPECTED;
 		}
 		MediaWikiServices::getInstance()->getStatsdDataFactory()
 			->timing( 'timing.editAbuseFilter', microtime( true ) - $startTime );
