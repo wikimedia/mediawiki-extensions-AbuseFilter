@@ -28,6 +28,7 @@ class AbuseFilterHooks {
 	 * @param User $user the user performing the edit
 	 * @param bool $minoredit whether this is a minor edit according to the user.
 	 * @param string $slot slot role for the content
+	 * @return bool
 	 */
 	public static function onEditFilterMergedContent( IContextSource $context, Content $content,
 		Status $status, $summary, User $user, $minoredit, $slot = SlotRecord::MAIN
@@ -48,9 +49,13 @@ class AbuseFilterHooks {
 			// Produce a useful error message for API edits
 			$filterResultApi = self::getApiStatus( $filterResult );
 			$status->merge( $filterResultApi );
+			// @todo Remove this line after this extension do not support mediawiki version 1.36 and before
+			$status->value = \EditPage::AS_HOOK_ERROR_EXPECTED;
 		}
 		MediaWikiServices::getInstance()->getStatsdDataFactory()
 			->timing( 'timing.editAbuseFilter', microtime( true ) - $startTime );
+
+		return $status->isOK();
 	}
 
 	/**
