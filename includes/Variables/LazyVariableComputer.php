@@ -308,9 +308,7 @@ class LazyVariableComputer {
 			case 'user-editcount':
 				/** @var UserIdentity $userIdentity */
 				$userIdentity = $parameters['user-identity'];
-				$result = $userIdentity->isRegistered()
-					? $this->userEditTracker->getUserEditCount( $userIdentity )
-					: null;
+				$result = $this->userEditTracker->getUserEditCount( $userIdentity );
 				break;
 			case 'user-emailconfirm':
 				/** @var User $user */

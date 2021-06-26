@@ -187,7 +187,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				break;
 			case 'editcount':
 				// Hack for detecting different single-purpose accounts.
-				$identifier = $user->isRegistered() ? $this->userEditTracker->getUserEditCount( $user ) : 0;
+				$identifier = $this->userEditTracker->getUserEditCount( $user ) ?: 0;
 				break;
 			case 'site':
 				$identifier = 1;
@@ -203,7 +203,6 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				// @codeCoverageIgnoreEnd
 		}
 
-		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Simplify 'editcount' in 1.37+
 		return $identifier;
 	}
 }
