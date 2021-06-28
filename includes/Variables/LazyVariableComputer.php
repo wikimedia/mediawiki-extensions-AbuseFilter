@@ -189,7 +189,11 @@ class LazyVariableComputer {
 
 					$new_text = $getVarCB( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
-					$editInfo = $article->prepareContentForEdit( $content );
+					$editInfo = $article->prepareContentForEdit(
+						$content,
+						null,
+						$parameters['contextUser']
+					);
 					$result = array_keys( $editInfo->output->getExternalLinks() );
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
@@ -253,7 +257,11 @@ class LazyVariableComputer {
 
 					$new_text = $getVarCB( $textVar )->toString();
 					$content = ContentHandler::makeContent( $new_text, $article->getTitle() );
-					$editInfo = $article->prepareContentForEdit( $content );
+					$editInfo = $article->prepareContentForEdit(
+						$content,
+						null,
+						$parameters['contextUser']
+					);
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
 					} else {
