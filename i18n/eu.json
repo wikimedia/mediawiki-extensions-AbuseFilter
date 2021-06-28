@@ -84,6 +84,7 @@
 	"abusefilter-log-detailslink": "zehaztapenak",
 	"abusefilter-log-diff": "ezb",
 	"abusefilter-log-hidelink": "ikusgarritasuna egokitu",
+	"abusefilter-log-description-not-available": "ez dago erabilgarri",
 	"abusefilter-log-details-legend": "$1 log sarreraren zehaztapenak",
 	"abusefilter-log-details-var": "Aldagarria",
 	"abusefilter-log-details-val": "Balioa",
@@ -92,6 +93,7 @@
 	"abusefilter-log-details-ip": "IP helbide sortzailea",
 	"abusefilter-log-details-checkuser": "Erabiltzailea aztertu",
 	"abusefilter-log-noactions": "bat ere ez",
+	"abusefilter-log-noactions-filter": "Ezer",
 	"abusefilter-log-details-diff": "Aldaketan egindako aldaketak",
 	"abusefilter-log-linkoncontribs": "gehiegikerien erregistroa",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|erabiltzaile honentzako}} gehiegikerien erregistroa",
@@ -110,6 +112,8 @@
 	"abusefilter-log-hide-reason": "Arrazoia:",
 	"abusefilter-log-hide-reason-other": "Beste arrazoiak/arrazoi gehigarriak",
 	"abusefilter-log-hide-forbidden": "Ez daukazu neurrigabekerizko erregistroak ezkutatzeko baimenik",
+	"abusefilter-log-hide-show": "Erakutsi",
+	"abusefilter-log-hide-hide": "Ezkutatu",
 	"abusefilter-log-entry-suppress": "$1 {{MOTA:$2|ezkutatu}} $3",
 	"abusefilter-log-entry-unsuppress": "$1(e)k $3 {{GENDER:$2|bistan jarri du}}",
 	"log-action-filter-abusefilter": "Iragazki aldaketa mota:",
@@ -454,6 +458,7 @@
 	"abusefilter-revert-confirm": "Berretsi",
 	"abusefilter-revert-reasonfield": "Arrazoia:",
 	"abusefilter-test": "Aurreko edizioen aurkako iragazki bat probatu",
+	"abusefilter-test-options-section": "Bilaketa aukerak",
 	"abusefilter-test-legend": "Iragazki probak",
 	"abusefilter-test-load-filter": "Kargatu iragazkiaren ID:",
 	"abusefilter-test-submit": "Froga",
@@ -516,5 +521,6 @@
 	"abusefilter-log-details-id": "Erregistroaren IDa",
 	"abusefilter-noreason": "Abisua: Erregistro honen xehetasun pribatuak ikusteko arrazoi bat eman behar duzu.",
 	"abusefilter-log-ip-not-available": "Ez dago erabilgarri",
-	"tag-abusefilter-condition-limit": "Baldintzaren muga gaaindituta"
+	"tag-abusefilter-condition-limit": "Baldintzaren muga gaaindituta",
+	"notification-link-text-show-filter": "Erakutsi iragazkia"
 }
