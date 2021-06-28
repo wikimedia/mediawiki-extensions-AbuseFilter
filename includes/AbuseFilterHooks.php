@@ -92,7 +92,7 @@ class AbuseFilterHooks {
 			return Status::newGood();
 		}
 
-		$page = $context->getWikiPage();
+		$page = MediaWikiServices::getInstance()->getWikiPageFactory()->newFromTitle( $title );
 
 		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $title );
 		$vars = $builder->getEditVars( $content, $text, $summary, $slot, $page );
