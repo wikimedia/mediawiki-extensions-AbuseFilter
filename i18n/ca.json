@@ -27,6 +27,7 @@
 			"Ssola",
 			"Toniher",
 			"Townie",
+			"Vfc",
 			"Vriullop"
 		]
 	},
@@ -389,6 +390,7 @@
 	"abusefilter-history-filterid": "Filtre",
 	"abusefilter-history-select-legend": "Afina la cerca",
 	"abusefilter-history-select-user": "Usuari:",
+	"abusefilter-history-select-filter": "ID del filtre:",
 	"abusefilter-history-select-submit": "Afina",
 	"abusefilter-history-diff": "Canvis",
 	"abusefilter-history-error-hidden": "El filtre que heu demanat s'ha amagat, i no podeu veure'n l'historial.",
