@@ -51,7 +51,11 @@ class FilterUser {
 			);
 			// Use the default name to avoid breaking other stuff. This should have no harm,
 			// aside from blocks temporarily attributed to another user.
-			$defaultName = $this->messageLocalizer->msg( 'abusefilter-blocker' )->inLanguage( 'en' )->text();
+			// Don't use the database in case the English onwiki message is broken, T284364
+			$defaultName = $this->messageLocalizer->msg( 'abusefilter-blocker' )
+				->inLanguage( 'en' )
+				->useDatabase( false )
+				->text();
 			$user = User::newSystemUser( $defaultName, [ 'steal' => true ] );
 		}
 		'@phan-var User $user';
