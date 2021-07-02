@@ -291,8 +291,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		];
 
 		HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
-			->addHiddenField( 'title', $this->getTitle()->getPrefixedDBkey() )
-			->setAction( $this->getTitle()->getFullURL() )
+			->setTitle( $this->getTitle() )
 			->setCollapsibleOptions( true )
 			->setWrapperLegendMsg( 'abusefilter-list-options' )
 			->setSubmitTextMsg( 'abusefilter-list-options-submit' )

@@ -197,10 +197,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$allFields = array_merge( $rulesFields, $optionsFields );
 
 		HTMLForm::factory( 'ooui', $allFields, $this->getContext() )
-			->addHiddenField( 'title', $this->getTitle( 'test' )->getPrefixedDBkey() )
+			->setTitle( $this->getTitle( 'test' ) )
 			->setId( 'wpFilterForm' )
 			->setWrapperLegendMsg( 'abusefilter-test-legend' )
-			->setAction( $this->getTitle( 'test' )->getLocalURL() )
 			->setSubmitTextMsg( 'abusefilter-test-submit' )
 			->setMethod( 'post' )
 			->prepareForm()
