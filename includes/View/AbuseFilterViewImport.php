@@ -14,7 +14,6 @@ class AbuseFilterViewImport extends AbuseFilterView {
 			$out->addWikiMsg( 'abusefilter-edit-notallowed' );
 			return;
 		}
-		$url = $this->getTitle( 'new' )->getFullURL();
 
 		$out->addWikiMsg( 'abusefilter-import-intro' );
 
@@ -25,8 +24,8 @@ class AbuseFilterViewImport extends AbuseFilterView {
 			]
 		];
 		HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() )
+			->setTitle( $this->getTitle( 'new' ) )
 			->setSubmitTextMsg( 'abusefilter-import-submit' )
-			->setAction( $url )
 			->show();
 	}
 }
