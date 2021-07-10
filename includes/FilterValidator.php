@@ -333,9 +333,9 @@ class FilterValidator {
 		AbstractFilter $originalFilter
 	): Status {
 		$ret = Status::newGood();
-		$allEnabledActions = array_merge( $newFilter->getActions(), $originalFilter->getActions() );
+		$allEnabledActions = $newFilter->getActions() + $originalFilter->getActions();
 		if (
-			array_intersect_key( array_flip( $this->restrictedActions ), $allEnabledActions )
+			array_intersect_key( array_fill_keys( $this->restrictedActions, true ), $allEnabledActions )
 			&& !$this->permManager->canEditFilterWithRestrictedActions( $user )
 		) {
 			$ret->error( 'abusefilter-edit-restricted' );

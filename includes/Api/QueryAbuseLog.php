@@ -100,7 +100,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$user = $this->getUser();
 		$params = $this->extractRequestParams();
 
-		$prop = array_flip( $params['prop'] );
+		$prop = array_fill_keys( $params['prop'], true );
 		$fld_ids = isset( $prop['ids'] );
 		$fld_filter = isset( $prop['filter'] );
 		$fld_user = isset( $prop['user'] );

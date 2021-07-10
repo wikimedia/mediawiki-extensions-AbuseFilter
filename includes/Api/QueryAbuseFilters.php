@@ -65,7 +65,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 
 		$params = $this->extractRequestParams();
 
-		$prop = array_flip( $params['prop'] );
+		$prop = array_fill_keys( $params['prop'], true );
 		$fld_id = isset( $prop['id'] );
 		$fld_desc = isset( $prop['description'] );
 		$fld_pattern = isset( $prop['pattern'] );
@@ -98,7 +98,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 		$this->addWhereRange( 'af_id', $params['dir'], $params['startid'], $params['endid'] );
 
 		if ( $params['show'] !== null ) {
-			$show = array_flip( $params['show'] );
+			$show = array_fill_keys( $params['show'], true );
 
 			/* Check for conflicting parameters. */
 			if ( ( isset( $show['enabled'] ) && isset( $show['!enabled'] ) )
