@@ -315,6 +315,12 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				]
 			]
 		],
+		24 => [
+			// We used this for testRevIdSet()
+			'af_pattern' => '1 == 1',
+			'af_public_comments' => 'Always matches, no actions',
+			'actions' => []
+		],
 	];
 	// phpcs:enable Generic.Files.LineLength
 
@@ -464,7 +470,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$page = WikiPage::factory( $title );
 		if ( !$page->exists() ) {
 			$status = $this->editPage(
-				$title->getText(),
+				$page,
 				$oldText,
 				__METHOD__ . ' page creation',
 				$title->getNamespace()
@@ -493,6 +499,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$context = RequestContext::getMain();
 		$context->setTitle( $title );
 		$context->setUser( $this->user );
+		$context->setWikiPage( $page );
 
 		AbuseFilterHooks::onEditFilterMergedContent( $context, $content, $status, $summary,
 			$this->user, false );
@@ -500,7 +507,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		if ( $status->isGood() ) {
 			// Edit the page in case the test will expect for it to exist
 			$this->editPage(
-				$title->getText(),
+				$page,
 				$newText,
 				$summary,
 				$title->getNamespace(),
@@ -1572,5 +1579,47 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				[ 'warn' => [ 18 ] ]
 			]
 		];
+	}
+
+	/**
+	 * Make sure that after an edit is saved, if a filter was hit the afl_rev_id is updated
+	 * to reflect the new edit
+	 *
+	 * Regression tests for T286140
+	 */
+	public function testRevIdSet() {
+		// Filter 24 has no actions and always matches
+		$this->createFilters( [ 24 ] );
+
+		$targetTitle = Title::newFromText( 'TestRevIdSet' );
+		$startingRevId = $targetTitle->getLatestRevID( Title::READ_LATEST );
+
+		$this->doEdit( $targetTitle, 'Old text', 'New text', 'Summary' );
+		$latestRevId = $targetTitle->getLatestRevID( Title::READ_LATEST );
+
+		$this->assertNotSame(
+			$startingRevId,
+			$latestRevId,
+			'Edit should have been properly saved'
+		);
+
+		// Check the database for the filter hit
+		// We don't have an easy way to retrieve the afl_id for this relevant hit,
+		// so instead find the latest row for this filter
+		$filterHit = $this->db->selectRow(
+			'abuse_filter_log',
+			'*',
+			[ 'afl_filter_id' => 24 ],
+			__METHOD__,
+			[ 'ORDER BY' => 'afl_id DESC' ]
+		);
+
+		// Helpful for debugging
+		$filterHitStr = FormatJson::encode( $filterHit );
+		$this->assertSame(
+			$latestRevId,
+			(int)( $filterHit->afl_rev_id ),
+			"AbuseLog entry updated with the revision id (full filter hit: $filterHitStr)"
+		);
 	}
 }
