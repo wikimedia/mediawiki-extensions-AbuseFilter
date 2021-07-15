@@ -149,6 +149,7 @@
 	"log-action-filter-abusefilter": "Type filterwijziging:",
 	"log-action-filter-abusefilter-create": "Aanmaak nieuw filter",
 	"log-action-filter-abusefilter-modify": "Filteraanpassing",
+	"log-action-filter-suppress-abuselog": "Onderdrukking van misbruiklogboek",
 	"log-action-filter-rights-blockautopromote": "Uitstellen van automatisch promoveren",
 	"log-action-filter-rights-restoreautopromote": "Herstellen van automatisch promoveren",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|bekeek}} de beperkte zichtbare logboekgegevens van $3",
