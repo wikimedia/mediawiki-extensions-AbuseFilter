@@ -177,7 +177,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 * @param array $params
 	 * @return AbuseFilterView
 	 */
-	public function instantiateView( string $viewClass, array $params ) : AbuseFilterView {
+	public function instantiateView( string $viewClass, array $params ): AbuseFilterView {
 		return $this->objectFactory->createObject( [
 			'class' => $viewClass,
 			'services' => self::SERVICES_PER_VIEW[$viewClass],
@@ -195,7 +195,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 *      - array of parameters for the class
 	 * @phan-return array{0:class-string,1:string,2:array}
 	 */
-	public function getViewClassAndPageType( $subpage ) : array {
+	public function getViewClassAndPageType( $subpage ): array {
 		// Filter by removing blanks.
 		$params = array_values( array_filter(
 			explode( '/', $subpage ?: '' ),
@@ -262,7 +262,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 * @param string|int $subpage
 	 * @return Title
 	 */
-	public static function getTitleForSubpage( $subpage ) : Title {
+	public static function getTitleForSubpage( $subpage ): Title {
 		return self::getTitleFor( self::PAGE_NAME, $subpage );
 	}
 }

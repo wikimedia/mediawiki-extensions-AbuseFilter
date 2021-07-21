@@ -28,7 +28,7 @@ class FilterCompare {
 	 * @param Filter $secondFilter
 	 * @return array Fields that are different
 	 */
-	public function compareVersions( Filter $firstFilter, Filter $secondFilter ) : array {
+	public function compareVersions( Filter $firstFilter, Filter $secondFilter ): array {
 		// TODO: Avoid DB references here, re-add when saving the filter
 		$methods = [
 			'af_public_comments' => 'getName',

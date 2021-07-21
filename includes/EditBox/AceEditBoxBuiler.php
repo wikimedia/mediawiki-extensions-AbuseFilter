@@ -41,7 +41,7 @@ class AceEditBoxBuiler extends EditBoxBuilder {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getEditBox( string $rules, bool $isUserAllowed, bool $externalForm ) : string {
+	protected function getEditBox( string $rules, bool $isUserAllowed, bool $externalForm ): string {
 		$rules = rtrim( $rules ) . "\n";
 
 		$attribs = [
@@ -60,7 +60,7 @@ class AceEditBoxBuiler extends EditBoxBuilder {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getEditorControls() : Widget {
+	protected function getEditorControls(): Widget {
 		$base = parent::getEditorControls();
 		$switchEditor = new ButtonWidget(
 			[

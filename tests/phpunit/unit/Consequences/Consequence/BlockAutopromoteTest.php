@@ -17,7 +17,7 @@ use MessageLocalizer;
 class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 	use ConsequenceGetMessageTestTrait;
 
-	private function getMsgLocalizer() : MessageLocalizer {
+	private function getMsgLocalizer(): MessageLocalizer {
 		$ml = $this->createMock( MessageLocalizer::class );
 		$ml->method( 'msg' )->willReturnCallback( function ( $k, $p ) {
 			return $this->getMockMessage( $k, $p );
@@ -65,7 +65,7 @@ class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $success, $blockAutopromote->execute() );
 	}
 
-	public function provideExecute() : array {
+	public function provideExecute(): array {
 		return [
 			[ true ],
 			[ false ]

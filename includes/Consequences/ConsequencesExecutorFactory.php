@@ -56,7 +56,7 @@ class ConsequencesExecutorFactory {
 	 * @param VariableHolder $vars
 	 * @return ConsequencesExecutor
 	 */
-	public function newExecutor( User $user, Title $title, VariableHolder $vars ) : ConsequencesExecutor {
+	public function newExecutor( User $user, Title $title, VariableHolder $vars ): ConsequencesExecutor {
 		return new ConsequencesExecutor(
 			$this->consLookup,
 			$this->consFactory,

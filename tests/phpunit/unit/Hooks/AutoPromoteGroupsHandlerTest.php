@@ -15,14 +15,14 @@ use MediaWikiUnitTestCase;
  */
 class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 
-	private function getConsequencesRegistry( bool $enabled = true ) : ConsequencesRegistry {
+	private function getConsequencesRegistry( bool $enabled = true ): ConsequencesRegistry {
 		$registry = $this->createMock( ConsequencesRegistry::class );
 		$registry->method( 'getAllEnabledActionNames' )
 			->willReturn( $enabled ? [ 'tag', 'blockautopromote' ] : [ 'tag' ] );
 		return $registry;
 	}
 
-	public function provideOnGetAutoPromoteGroups_nothingToDo() : array {
+	public function provideOnGetAutoPromoteGroups_nothingToDo(): array {
 		return [
 			[ true, [] ],
 			[ false, [] ],
@@ -48,7 +48,7 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $cache->hasKey( 'local:abusefilter:blockautopromote:quick:1' ) );
 	}
 
-	public function provideOnGetAutoPromoteGroups() : array {
+	public function provideOnGetAutoPromoteGroups(): array {
 		return [
 			[ 0, [ 'autoconfirmed' ], [ 'autoconfirmed' ] ],
 			[ 1000, [ 'autoconfirmed' ], [] ],

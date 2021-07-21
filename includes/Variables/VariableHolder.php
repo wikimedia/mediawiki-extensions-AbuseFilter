@@ -22,7 +22,7 @@ class VariableHolder {
 	 * @param array $vars
 	 * @return VariableHolder
 	 */
-	public static function newFromArray( array $vars ) : VariableHolder {
+	public static function newFromArray( array $vars ): VariableHolder {
 		$ret = new self();
 		foreach ( $vars as $var => $value ) {
 			$ret->setVar( $var, $value );
@@ -34,7 +34,7 @@ class VariableHolder {
 	 * @param string $variable
 	 * @param mixed $datum
 	 */
-	public function setVar( string $variable, $datum ) : void {
+	public function setVar( string $variable, $datum ): void {
 		$variable = strtolower( $variable );
 		if ( !( $datum instanceof AFPData || $datum instanceof LazyLoadedVariable ) ) {
 			$datum = AFPData::newFromPHPVar( $datum );
@@ -48,7 +48,7 @@ class VariableHolder {
 	 *
 	 * @return (AFPData|LazyLoadedVariable)[]
 	 */
-	public function getVars() : array {
+	public function getVars(): array {
 		return $this->mVars;
 	}
 
@@ -57,7 +57,7 @@ class VariableHolder {
 	 * @param string $method
 	 * @param array $parameters
 	 */
-	public function setLazyLoadVar( string $variable, string $method, array $parameters ) : void {
+	public function setLazyLoadVar( string $variable, string $method, array $parameters ): void {
 		$placeholder = new LazyLoadedVariable( $method, $parameters );
 		$this->setVar( $variable, $placeholder );
 	}
@@ -82,7 +82,7 @@ class VariableHolder {
 	 * @return AFPData
 	 * @codeCoverageIgnore
 	 */
-	public function getComputedVariable( string $varName ) : AFPData {
+	public function getComputedVariable( string $varName ): AFPData {
 		return $this->getVarThrow( $varName );
 	}
 
@@ -91,7 +91,7 @@ class VariableHolder {
 	 *
 	 * @param VariableHolder ...$holders
 	 */
-	public function addHolders( VariableHolder ...$holders ) : void {
+	public function addHolders( VariableHolder ...$holders ): void {
 		foreach ( $holders as $addHolder ) {
 			$this->mVars = array_merge( $this->mVars, $addHolder->mVars );
 		}
@@ -101,14 +101,14 @@ class VariableHolder {
 	 * @param string $var
 	 * @return bool
 	 */
-	public function varIsSet( string $var ) : bool {
+	public function varIsSet( string $var ): bool {
 		return array_key_exists( $var, $this->mVars );
 	}
 
 	/**
 	 * @param string $varName
 	 */
-	public function removeVar( string $varName ) : void {
+	public function removeVar( string $varName ): void {
 		unset( $this->mVars[$varName] );
 	}
 }

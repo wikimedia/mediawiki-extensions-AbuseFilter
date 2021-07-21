@@ -71,7 +71,7 @@ class AbuseFilterHooks {
 		User $user,
 		Content $content,
 		$summary, $slot = SlotRecord::MAIN
-	) : Status {
+	): Status {
 		$revUpdater = AbuseFilterServices::getEditRevUpdater();
 		$revUpdater->clearLastEditPage();
 

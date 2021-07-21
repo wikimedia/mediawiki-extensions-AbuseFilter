@@ -85,7 +85,7 @@ class AbuseFilter {
 	 * @param Authority $authority
 	 * @return bool
 	 */
-	public static function userCanViewRev( RevisionRecord $revRec, Authority $authority ) : bool {
+	public static function userCanViewRev( RevisionRecord $revRec, Authority $authority ): bool {
 		return $revRec->audienceCan(
 			RevisionRecord::SUPPRESSED_ALL,
 			RevisionRecord::FOR_THIS_USER,

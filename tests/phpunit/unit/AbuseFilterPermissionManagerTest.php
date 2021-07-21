@@ -17,7 +17,7 @@ use User;
  */
 class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 
-	private function getPermMan( array $rights = [] ) : AbuseFilterPermissionManager {
+	private function getPermMan( array $rights = [] ): AbuseFilterPermissionManager {
 		$pm = $this->createMock( PermissionManager::class );
 		$pm->method( 'userHasRight' )->willReturnCallback( static function ( $u, $r ) use ( $rights ) {
 			return in_array( $r, $rights, true );
@@ -28,7 +28,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		return new AbuseFilterPermissionManager( $pm );
 	}
 
-	public function provideCanEdit() : Generator {
+	public function provideCanEdit(): Generator {
 		$blockedUser = $this->createMock( User::class );
 		$sitewideBlock = $this->createMock( DatabaseBlock::class );
 		$sitewideBlock->method( 'isSiteWide' )->willReturn( true );
@@ -58,7 +58,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $this->getPermMan( $rights )->canEdit( $user ) );
 	}
 
-	public function provideCanEditGlobal() : Generator {
+	public function provideCanEditGlobal(): Generator {
 		yield 'not allowed' => [ [], false ];
 		yield 'allowed' => [ [ 'abusefilter-modify-global' ], true ];
 	}
@@ -72,7 +72,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $this->getPermMan( $rights )->canEditGlobal( $user ) );
 	}
 
-	public function provideCanEditFilter() : Generator {
+	public function provideCanEditFilter(): Generator {
 		$localFilter = $this->createMock( AbstractFilter::class );
 		$localFilter->method( 'isGlobal' )->willReturn( false );
 		$globalFilter = $this->createMock( AbstractFilter::class );
@@ -107,7 +107,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $this->getPermMan( $rights )->canEditFilter( $user, $filter ) );
 	}
 
-	public function provideCanViewPrivateFilters() : Generator {
+	public function provideCanViewPrivateFilters(): Generator {
 		yield 'not privileged' => [ [], false ];
 		yield 'modify' => [ [ 'abusefilter-modify' ], true ];
 		yield 'private' => [ [ 'abusefilter-view-private' ], true ];
@@ -123,7 +123,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $this->getPermMan( $rights )->canViewPrivateFilters( $user ) );
 	}
 
-	public function provideCanViewPrivateFiltersLogs() : Generator {
+	public function provideCanViewPrivateFiltersLogs(): Generator {
 		yield 'not privileged' => [ [], false ];
 		yield 'can view private' => [ [ 'abusefilter-view-private' ], true ];
 		yield 'can view logs' => [ [ 'abusefilter-log-private' ], true ];
@@ -141,7 +141,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $this->getPermMan( $rights )->canViewPrivateFiltersLogs( $user ) );
 	}
 
-	public function provideCanSeeLogDetailsForFilter() : Generator {
+	public function provideCanSeeLogDetailsForFilter(): Generator {
 		$details = [ 0 => 'abusefilter-log-detail' ];
 		$private = [ 1 => 'abusefilter-log-private' ];
 		yield 'filter hidden, not privileged' => [ true, [], false ];
@@ -164,7 +164,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $this->getPermMan( $rights )->canSeeLogDetailsForFilter( $user, $filterHidden ) );
 	}
 
-	public function provideSimpleCases() : array {
+	public function provideSimpleCases(): array {
 		return [
 			'not allowed' => [ false ],
 			'allowed' => [ true ],

@@ -98,7 +98,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideContentToString() : Generator {
+	public function provideContentToString(): Generator {
 		$text = 'Some dummy text';
 		yield 'text' => [ new TextContent( $text ), $text ];
 		yield 'wikitext' => [ new WikitextContent( $text ), $text ];

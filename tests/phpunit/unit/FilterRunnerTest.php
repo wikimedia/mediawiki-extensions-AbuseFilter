@@ -44,7 +44,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 		$options = [],
 		VariableHolder $vars = null,
 		$group = 'default'
-	) : FilterRunner {
+	): FilterRunner {
 		$opts = new ServiceOptions(
 			FilterRunner::CONSTRUCTOR_OPTIONS,
 			$options + [

@@ -18,7 +18,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return ChangeTagger
 	 */
-	private function getTagger() : ChangeTagger {
+	private function getTagger(): ChangeTagger {
 		$manager = $this->createMock( ChangeTagsManager::class );
 		$manager->method( 'getCondsLimitTag' )->willReturn( 'tag' );
 		return new ChangeTagger( $manager );
@@ -27,11 +27,11 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function getActionData() : Generator {
+	public function getActionData(): Generator {
 		$titleText = 'FOO';
 		$title = new TitleValue( NS_MAIN, $titleText );
 		$userName = 'Foobar';
-		$getRCFromAttribs = function ( array $attribs ) : RecentChange {
+		$getRCFromAttribs = function ( array $attribs ): RecentChange {
 			$rc = $this->createMock( RecentChange::class );
 			$rc->method( 'getAttribute' )->willReturnCallback(
 				static function ( $name ) use ( $attribs ) {
@@ -69,7 +69,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @inheritDoc
 	 */
-	public function setUp() : void {
+	public function setUp(): void {
 		$this->getTagger()->clearBuffer();
 	}
 

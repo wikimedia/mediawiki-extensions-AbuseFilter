@@ -12,7 +12,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider;
  */
 class RegistrationCallback {
 
-	public static function onRegistration() : void {
+	public static function onRegistration(): void {
 		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
 			   $wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
 			   $wgGroupPermissions, $wgAbuseFilterRestrictions, $wgAbuseFilterDisallowGlobalLocalBlocks,

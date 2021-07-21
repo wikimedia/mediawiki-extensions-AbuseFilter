@@ -11,5 +11,5 @@ interface AbuseFilterGetDangerousActionsHook {
 	 *
 	 * @param string[] &$actions The dangerous actions
 	 */
-	public function onAbuseFilterGetDangerousActions( array &$actions ) : void;
+	public function onAbuseFilterGetDangerousActions( array &$actions ): void;
 }

@@ -105,7 +105,7 @@ class AbuseLogger {
 	 * @return array Shape is [ 'local' => int[], 'global' => int[] ], IDs of logged filters
 	 * @phan-return array{local:int[],global:int[]}
 	 */
-	public function addLogEntries( array $actionsTaken ) : array {
+	public function addLogEntries( array $actionsTaken ): array {
 		global $wgAbuseFilterAflFilterMigrationStage;
 
 		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
@@ -184,7 +184,7 @@ class AbuseLogger {
 	 *
 	 * @return array
 	 */
-	private function buildLogTemplate() : array {
+	private function buildLogTemplate(): array {
 		// If $this->user isn't safe to load (e.g. a failure during
 		// AbortAutoAccount), create a dummy anonymous user instead.
 		$user = $this->user->isSafeToLoad() ? $this->user : new User;
@@ -210,7 +210,7 @@ class AbuseLogger {
 	 * @param IDatabase $dbw
 	 * @return int[]
 	 */
-	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ) : array {
+	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ): array {
 		global $wgAbuseFilterAflFilterMigrationStage;
 
 		$writeNewSchema = $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW;
@@ -282,7 +282,7 @@ class AbuseLogger {
 	 * @param IDatabase $fdb
 	 * @return int[]
 	 */
-	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ) : array {
+	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ): array {
 		$this->varManager->computeDBVars( $this->vars );
 		$globalVarDump = $this->varBlobStore->storeVarDump( $this->vars, true );
 		foreach ( $centralLogRows as $index => $data ) {
@@ -304,7 +304,7 @@ class AbuseLogger {
 	 * @param IDatabase $dbw To cancel the callback if the log insertion fails
 	 * @param ManualLogEntry $entry
 	 */
-	private function publishEntry( IDatabase $dbw, ManualLogEntry $entry ) : void {
+	private function publishEntry( IDatabase $dbw, ManualLogEntry $entry ): void {
 		DeferredUpdates::addCallableUpdate(
 			function () use ( $entry ) {
 				$rc = $entry->getRecentChange();

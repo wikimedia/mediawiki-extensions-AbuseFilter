@@ -51,7 +51,7 @@ class EditBoxBuilderFactory {
 		MessageLocalizer $messageLocalizer,
 		User $user,
 		OutputPage $output
-	) : EditBoxBuilder {
+	): EditBoxBuilder {
 		return $this->isCodeEditorLoaded
 			? $this->newAceBoxBuilder( $messageLocalizer, $user, $output )
 			: $this->newPlainBoxBuilder( $messageLocalizer, $user, $output );
@@ -67,7 +67,7 @@ class EditBoxBuilderFactory {
 		MessageLocalizer $messageLocalizer,
 		User $user,
 		OutputPage $output
-	) : PlainEditBoxBuiler {
+	): PlainEditBoxBuiler {
 		return new PlainEditBoxBuiler(
 			$this->afPermManager,
 			$this->keywordsManager,
@@ -87,7 +87,7 @@ class EditBoxBuilderFactory {
 		MessageLocalizer $messageLocalizer,
 		User $user,
 		OutputPage $output
-	) : AceEditBoxBuiler {
+	): AceEditBoxBuiler {
 		if ( !$this->isCodeEditorLoaded ) {
 			throw new BadMethodCallException( 'Cannot create Ace box without CodeEditor' );
 		}

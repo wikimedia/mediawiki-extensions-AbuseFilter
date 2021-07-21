@@ -17,7 +17,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 	/** @inheritDoc */
 	protected $tablesUsed = [ 'abuse_filter' ];
 
-	public function setUp() : void {
+	public function setUp(): void {
 		global $wgDBtype;
 
 		parent::setUp();
@@ -62,7 +62,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 		$this->db->insert( 'abuse_filter', $rows, __METHOD__ );
 	}
 
-	private function getExpectedOutput( array $ids, bool $withHeader = true ) : string {
+	private function getExpectedOutput( array $ids, bool $withHeader = true ): string {
 		global $wgDBname;
 		$expected = $withHeader ? "wiki\tfilter\n" : '';
 		foreach ( $ids as $id ) {
@@ -71,7 +71,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 		return $expected;
 	}
 
-	public function provideSearches() : Generator {
+	public function provideSearches(): Generator {
 		yield 'single filter' => [ 'page_title', [ 2 ] ];
 		yield 'multiple filters' => [ 'rmspecials', [ 2, 4 ] ];
 		yield 'regex' => [ '[a-z]\(', [ 2, 4 ] ];

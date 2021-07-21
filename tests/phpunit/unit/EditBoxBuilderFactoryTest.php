@@ -22,7 +22,7 @@ class EditBoxBuilderFactoryTest extends MediaWikiUnitTestCase {
 	 * @param bool $isCodeEditorLoaded
 	 * @return EditBoxBuilderFactory
 	 */
-	private function getFactory( bool $isCodeEditorLoaded ) : EditBoxBuilderFactory {
+	private function getFactory( bool $isCodeEditorLoaded ): EditBoxBuilderFactory {
 		return new EditBoxBuilderFactory(
 			$this->createMock( AbuseFilterPermissionManager::class ),
 			$this->createMock( KeywordsManager::class ),
@@ -48,7 +48,7 @@ class EditBoxBuilderFactoryTest extends MediaWikiUnitTestCase {
 			: $this->assertInstanceOf( PlainEditBoxBuiler::class, $builder );
 	}
 
-	public function provideNewEditBoxBuilder() : array {
+	public function provideNewEditBoxBuilder(): array {
 		return [
 			[ true ],
 			[ false ]

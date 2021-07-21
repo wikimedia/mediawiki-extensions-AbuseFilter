@@ -43,7 +43,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$this->assertInstanceOf( $viewClass, $view );
 	}
 
-	public function provideInstantiateView() : array {
+	public function provideInstantiateView(): array {
 		return [
 			[ AbuseFilterViewDiff::class ],
 			[ AbuseFilterViewEdit::class, [ 'filter' => 1 ] ],
@@ -60,7 +60,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function newSpecialPage() : SpecialAbuseFilter {
+	protected function newSpecialPage(): SpecialAbuseFilter {
 		$services = MediaWikiServices::getInstance();
 		$sp = new SpecialAbuseFilter(
 			$services->getService( AbuseFilterPermissionManager::SERVICE_NAME ),

@@ -11,7 +11,7 @@ class PlainEditBoxBuiler extends EditBoxBuilder {
 	/**
 	 * @inheritDoc
 	 */
-	public function getEditBox( string $rules, bool $isUserAllowed, bool $externalForm ) : string {
+	public function getEditBox( string $rules, bool $isUserAllowed, bool $externalForm ): string {
 		$rules = rtrim( $rules ) . "\n";
 		// Rules are in English
 		$editorAttribs = [ 'dir' => 'ltr' ];

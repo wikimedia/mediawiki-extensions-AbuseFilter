@@ -110,7 +110,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @throws FilterNotFoundException if the filter doesn't exist
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getFilter( int $filterID, bool $global, int $flags = self::READ_NORMAL ) : ExistingFilter {
+	public function getFilter( int $filterID, bool $global, int $flags = self::READ_NORMAL ): ExistingFilter {
 		$cacheKey = $this->getCacheKey( $filterID, $global );
 		if ( $flags !== self::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
@@ -127,7 +127,7 @@ class FilterLookup implements IDBAccessObject {
 				throw new FilterNotFoundException( $filterID, $global );
 			}
 			$fname = __METHOD__;
-			$getActionsCB = function () use ( $dbr, $fname, $row ) : array {
+			$getActionsCB = function () use ( $dbr, $fname, $row ): array {
 				return $this->getActionsFromDB( $dbr, $fname, $row->af_id );
 			};
 			$this->cache[$cacheKey] = $this->filterFromRow( $row, $getActionsCB );
@@ -144,7 +144,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @return ExistingFilter[]
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getAllActiveFiltersInGroup( string $group, bool $global, int $flags = self::READ_NORMAL ) : array {
+	public function getAllActiveFiltersInGroup( string $group, bool $global, int $flags = self::READ_NORMAL ): array {
 		$domainKey = $global ? 'global' : 'local';
 		if ( $flags !== self::READ_NORMAL || !isset( $this->groupCache[$domainKey][$group] ) ) {
 			if ( $global ) {
@@ -180,7 +180,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param int $flags
 	 * @return ExistingFilter[]
 	 */
-	private function getAllActiveFiltersInGroupFromDB( string $group, bool $global, int $flags ) : array {
+	private function getAllActiveFiltersInGroupFromDB( string $group, bool $global, int $flags ): array {
 		[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 		$dbr = $this->getDBConnection( $dbIndex, $global );
 
@@ -207,7 +207,7 @@ class FilterLookup implements IDBAccessObject {
 		$ret = [];
 		foreach ( $rows as $row ) {
 			$filterKey = $this->getCacheKey( $row->af_id, $global );
-			$getActionsCB = function () use ( $dbr, $fname, $row ) : array {
+			$getActionsCB = function () use ( $dbr, $fname, $row ): array {
 				return $this->getActionsFromDB( $dbr, $fname, $row->af_id );
 			};
 			$ret[$filterKey] = $this->filterFromRow(
@@ -225,7 +225,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @return IDatabase
 	 * @throws CentralDBNotAvailableException
 	 */
-	private function getDBConnection( int $dbIndex, bool $global ) : IDatabase {
+	private function getDBConnection( int $dbIndex, bool $global ): IDatabase {
 		if ( $global ) {
 			return $this->centralDBManager->getConnection( $dbIndex );
 		} else {
@@ -239,7 +239,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param int $id
 	 * @return array
 	 */
-	private function getActionsFromDB( IDatabase $db, string $fname, int $id ) : array {
+	private function getActionsFromDB( IDatabase $db, string $fname, int $id ): array {
 		$res = $db->select(
 			'abuse_filter_action',
 			[ 'afa_consequence', 'afa_parameters' ],
@@ -266,7 +266,7 @@ class FilterLookup implements IDBAccessObject {
 	public function getFilterVersion(
 		int $version,
 		int $flags = self::READ_NORMAL
-	) : HistoryFilter {
+	): HistoryFilter {
 		if ( $flags !== self::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 			$dbr = $this->loadBalancer->getConnectionRef( $dbIndex );
@@ -292,7 +292,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @return HistoryFilter
 	 * @throws FilterNotFoundException If the filter doesn't exist
 	 */
-	public function getLastHistoryVersion( int $filterID ) : HistoryFilter {
+	public function getLastHistoryVersion( int $filterID ): HistoryFilter {
 		if ( !isset( $this->lastVersionCache[$filterID] ) ) {
 			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
 			$row = $dbr->selectRow(
@@ -319,7 +319,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @return HistoryFilter
 	 * @throws ClosestFilterVersionNotFoundException
 	 */
-	public function getClosestVersion( int $historyID, int $filterID, string $direction ) : HistoryFilter {
+	public function getClosestVersion( int $historyID, int $filterID, string $direction ): HistoryFilter {
 		if ( !isset( $this->closestVersionsCache[$filterID][$historyID][$direction] ) ) {
 			$comparison = $direction === self::DIR_PREV ? '<' : '>';
 			$order = $direction === self::DIR_PREV ? 'DESC' : 'ASC';
@@ -352,7 +352,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @return int
 	 * @throws FilterNotFoundException
 	 */
-	public function getFirstFilterVersionID( int $filterID ) : int {
+	public function getFirstFilterVersionID( int $filterID ): int {
 		if ( !isset( $this->firstVersionCache[$filterID] ) ) {
 			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
 			$historyID = $dbr->selectField(
@@ -373,7 +373,7 @@ class FilterLookup implements IDBAccessObject {
 	/**
 	 * Resets the internal cache of Filter objects
 	 */
-	public function clearLocalCache() : void {
+	public function clearLocalCache(): void {
 		$this->cache = [];
 		$this->groupCache = [ 'local' => [], 'global' => [] ];
 		$this->historyCache = [];
@@ -387,7 +387,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @note This doesn't purge the local cache
 	 * @param string $group
 	 */
-	public function purgeGroupWANCache( string $group ) : void {
+	public function purgeGroupWANCache( string $group ): void {
 		$this->wanCache->touchCheckKey( $this->getGlobalRulesKey( $group ) );
 	}
 
@@ -395,7 +395,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return string
 	 */
-	private function getGlobalRulesKey( string $group ) : string {
+	private function getGlobalRulesKey( string $group ): string {
 		if ( !$this->centralDBManager->filterIsCentral() ) {
 			return $this->wanCache->makeGlobalKey(
 				'abusefilter',
@@ -413,7 +413,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param stdClass $row
 	 * @return HistoryFilter
 	 */
-	private function filterFromHistoryRow( stdClass $row ) : HistoryFilter {
+	private function filterFromHistoryRow( stdClass $row ): HistoryFilter {
 		$actionsRaw = unserialize( $row->afh_actions );
 		$actions = is_array( $actionsRaw ) ? $actionsRaw : [];
 		$flags = $row->afh_flags ? explode( ',', $row->afh_flags ) : [];
@@ -450,7 +450,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param array[]|callable $actions
 	 * @return ExistingFilter
 	 */
-	private function filterFromRow( stdClass $row, $actions ) : ExistingFilter {
+	private function filterFromRow( stdClass $row, $actions ): ExistingFilter {
 		return new ExistingFilter(
 			new Specs(
 				trim( $row->af_pattern ),
@@ -483,7 +483,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @param bool $global
 	 * @return string
 	 */
-	private function getCacheKey( int $filterID, bool $global ) : string {
+	private function getCacheKey( int $filterID, bool $global ): string {
 		return GlobalNameUtils::buildGlobalName( $filterID, $global );
 	}
 }

@@ -20,7 +20,7 @@ trait AbuseFilterUploadTestTrait {
 	/**
 	 * Clear any temporary uploads, should be called from tearDown
 	 */
-	protected function clearUploads() : void {
+	protected function clearUploads(): void {
 		if ( $this->clearPath ) {
 			$backend = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->getBackend();
 			$backend->delete( [ 'src' => $this->clearPath ], [ 'force' => 1 ] );
@@ -37,7 +37,7 @@ trait AbuseFilterUploadTestTrait {
 	 * @param string $summary
 	 * @return array [ Status, file path ]
 	 */
-	protected function doUpload( User $user, string $fileName, string $pageText, string $summary ) : array {
+	protected function doUpload( User $user, string $fileName, string $pageText, string $summary ): array {
 		global $wgFileExtensions;
 
 		$this->setMwGlobals( [ 'wgFileExtensions' => array_merge( $wgFileExtensions, [ 'svg' ] ) ] );

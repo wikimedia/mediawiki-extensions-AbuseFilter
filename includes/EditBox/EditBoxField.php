@@ -24,7 +24,7 @@ class EditBoxField extends HTMLFormField {
 	/**
 	 * @inheritDoc
 	 */
-	public function getInputHTML( $value ) : string {
+	public function getInputHTML( $value ): string {
 		return $this->html;
 	}
 }

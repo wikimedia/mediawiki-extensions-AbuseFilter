@@ -79,7 +79,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( $expected, $computedVars );
 	}
 
-	public function provideTitleVarsNotLazy() : Generator {
+	public function provideTitleVarsNotLazy(): Generator {
 		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
 		foreach ( $prefixes as $prefix ) {
 			$title = $this->createMock( Title::class );
@@ -120,7 +120,7 @@ class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( $expectedKeys, $lazyVars );
 	}
 
-	public function provideTitleVarsLazy() : Generator {
+	public function provideTitleVarsLazy(): Generator {
 		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
 		foreach ( $prefixes as $prefix ) {
 			$expectedKeys = [

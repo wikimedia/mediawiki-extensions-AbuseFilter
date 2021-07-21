@@ -21,7 +21,7 @@ use User;
  * @covers ::__construct
  */
 class VariableGeneratorFactoryTest extends MediaWikiUnitTestCase {
-	private function getFactory() : VariableGeneratorFactory {
+	private function getFactory(): VariableGeneratorFactory {
 		return new VariableGeneratorFactory(
 			$this->createMock( AbuseFilterHookRunner::class ),
 			$this->createMock( TextExtractor::class ),

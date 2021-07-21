@@ -91,7 +91,7 @@ class FilterProfiler {
 	/**
 	 * @param int $filter
 	 */
-	public function resetFilterProfile( int $filter ) : void {
+	public function resetFilterProfile( int $filter ): void {
 		$profileKey = $this->filterProfileKey( $filter );
 		$this->objectStash->delete( $profileKey );
 	}
@@ -103,7 +103,7 @@ class FilterProfiler {
 	 * @return array See self::NULL_FILTER_PROFILE for the returned array structure
 	 * @phan-return array{count:int,matches:int,total-time:float,total-cond:int}
 	 */
-	public function getFilterProfile( int $filter ) : array {
+	public function getFilterProfile( int $filter ): array {
 		return $this->objectStash->get( $this->filterProfileKey( $filter ) )
 			?: self::NULL_FILTER_PROFILE;
 	}
@@ -115,7 +115,7 @@ class FilterProfiler {
 	 * @return array See self::NULL_GROUP_PROFILE for the returned array structure
 	 * @phan-return array{total:int,overflow:int,total-time:float,total-cond:int,matches:int}
 	 */
-	public function getGroupProfile( string $group ) : array {
+	public function getGroupProfile( string $group ): array {
 		return $this->objectStash->get( $this->filterProfileGroupKey( $group ) )
 			?: self::NULL_GROUP_PROFILE;
 	}
@@ -128,7 +128,7 @@ class FilterProfiler {
 	 * @param int $conds
 	 * @param bool $matched
 	 */
-	private function recordProfilingResult( int $filter, float $time, int $conds, bool $matched ) : void {
+	private function recordProfilingResult( int $filter, float $time, int $conds, bool $matched ): void {
 		// Note: It is important that all key information be stored together in a single
 		// memcache entry to avoid race conditions where competing Apache instances
 		// partially overwrite the stats.
@@ -161,7 +161,7 @@ class FilterProfiler {
 	 * @param string $group
 	 * @param string[] $allFilters
 	 */
-	public function checkResetProfiling( string $group, array $allFilters ) : void {
+	public function checkResetProfiling( string $group, array $allFilters ): void {
 		$profile = $this->getGroupProfile( $group );
 		$total = $profile['total'];
 
@@ -185,7 +185,7 @@ class FilterProfiler {
 	 * @param float $totalTime Time taken, in milliseconds
 	 * @param bool $anyMatch Whether at least one filter matched the action
 	 */
-	public function recordStats( string $group, int $condsUsed, float $totalTime, bool $anyMatch ) : void {
+	public function recordStats( string $group, int $condsUsed, float $totalTime, bool $anyMatch ): void {
 		$profileKey = $this->filterProfileGroupKey( $group );
 
 		// Note: All related data is stored in a single memcache entry and updated via merge()
@@ -225,7 +225,7 @@ class FilterProfiler {
 	 * @param float $runtime
 	 * @codeCoverageIgnore
 	 */
-	public function recordRuntimeProfilingResult( int $totalFilters, int $totalConditions, float $runtime ) : void {
+	public function recordRuntimeProfilingResult( int $totalFilters, int $totalConditions, float $runtime ): void {
 		$keyPrefix = 'abusefilter.runtime-profile.' . $this->localWikiID . '.';
 
 		$this->statsd->timing( $keyPrefix . 'runtime', $runtime );
@@ -240,7 +240,7 @@ class FilterProfiler {
 	 * @param array $data Profiling data
 	 * @phan-param array<string,array{time:float,conds:int,result:bool}> $data
 	 */
-	public function recordPerFilterProfiling( Title $title, array $data ) : void {
+	public function recordPerFilterProfiling( Title $title, array $data ): void {
 		$slowFilterThreshold = $this->options->get( 'AbuseFilterSlowFilterRuntimeLimit' );
 
 		foreach ( $data as $filterName => $params ) {
@@ -286,7 +286,7 @@ class FilterProfiler {
 		int $totalConditions,
 		bool $matched,
 		bool $global
-	) : void {
+	): void {
 		$this->logger->info(
 			'Edit filter {filter_id} on {wiki} is taking longer than expected',
 			[
@@ -307,7 +307,7 @@ class FilterProfiler {
 	 * @param int $filter
 	 * @return string
 	 */
-	private function filterProfileKey( int $filter ) : string {
+	private function filterProfileKey( int $filter ): string {
 		return $this->objectStash->makeKey( 'abusefilter-profile', 'v3', $filter );
 	}
 
@@ -317,7 +317,7 @@ class FilterProfiler {
 	 * @param string $group
 	 * @return string
 	 */
-	private function filterProfileGroupKey( string $group ) : string {
+	private function filterProfileGroupKey( string $group ): string {
 		return $this->objectStash->makeKey( 'abusefilter-profile', 'group', $group );
 	}
 }

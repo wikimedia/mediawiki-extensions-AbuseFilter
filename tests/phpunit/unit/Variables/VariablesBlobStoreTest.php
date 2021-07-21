@@ -25,7 +25,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	private function getStore(
 		BlobStoreFactory $blobStoreFactory = null,
 		BlobStore $blobStore = null
-	) : VariablesBlobStore {
+	): VariablesBlobStore {
 		$manager = $this->createMock( VariablesManager::class );
 		$manager->method( 'dumpAllVars' )->willReturnCallback( static function ( VariableHolder $holder ) {
 			$ret = [];
@@ -90,7 +90,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$this->assertCount( 0, $varBlobStore->loadVarDump( 'foo' )->getVars() );
 	}
 
-	private function getBlobStore() : BlobStore {
+	private function getBlobStore(): BlobStore {
 		return new class implements BlobStore {
 			private $blobs;
 

@@ -137,7 +137,7 @@ class ConsequencesFactory {
 	 * @param bool $preventsTalk
 	 * @return Block
 	 */
-	public function newBlock( Parameters $params, string $expiry, bool $preventsTalk ) : Block {
+	public function newBlock( Parameters $params, string $expiry, bool $preventsTalk ): Block {
 		return new Block(
 			$params,
 			$expiry,
@@ -156,7 +156,7 @@ class ConsequencesFactory {
 	 * @param string $expiry
 	 * @return RangeBlock
 	 */
-	public function newRangeBlock( Parameters $params, string $expiry ) : RangeBlock {
+	public function newRangeBlock( Parameters $params, string $expiry ): RangeBlock {
 		return new RangeBlock(
 			$params,
 			$expiry,
@@ -174,7 +174,7 @@ class ConsequencesFactory {
 	 * @param VariableHolder $vars
 	 * @return Degroup
 	 */
-	public function newDegroup( Parameters $params, VariableHolder $vars ) : Degroup {
+	public function newDegroup( Parameters $params, VariableHolder $vars ): Degroup {
 		return new Degroup( $params, $vars, $this->userGroupManager, $this->filterUser, $this->messageLocalizer );
 	}
 
@@ -183,7 +183,7 @@ class ConsequencesFactory {
 	 * @param int $duration
 	 * @return BlockAutopromote
 	 */
-	public function newBlockAutopromote( Parameters $params, int $duration ) : BlockAutopromote {
+	public function newBlockAutopromote( Parameters $params, int $duration ): BlockAutopromote {
 		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore, $this->messageLocalizer );
 	}
 
@@ -193,7 +193,7 @@ class ConsequencesFactory {
 	 * @phan-param array{id:int|string,count:int,period:int,groups:string[]} $throttleParams
 	 * @return Throttle
 	 */
-	public function newThrottle( Parameters $params, array $throttleParams ) : Throttle {
+	public function newThrottle( Parameters $params, array $throttleParams ): Throttle {
 		return new Throttle(
 			$params,
 			$throttleParams,
@@ -212,7 +212,7 @@ class ConsequencesFactory {
 	 * @param string $message
 	 * @return Warn
 	 */
-	public function newWarn( Parameters $params, string $message ) : Warn {
+	public function newWarn( Parameters $params, string $message ): Warn {
 		return new Warn( $params, $message, $this->session );
 	}
 
@@ -221,7 +221,7 @@ class ConsequencesFactory {
 	 * @param string $message
 	 * @return Disallow
 	 */
-	public function newDisallow( Parameters $params, string $message ) : Disallow {
+	public function newDisallow( Parameters $params, string $message ): Disallow {
 		return new Disallow( $params, $message );
 	}
 
@@ -231,7 +231,7 @@ class ConsequencesFactory {
 	 * @param string[] $tags
 	 * @return Tag
 	 */
-	public function newTag( Parameters $params, ?string $accountName, array $tags ) : Tag {
+	public function newTag( Parameters $params, ?string $accountName, array $tags ): Tag {
 		return new Tag( $params, $accountName, $tags, $this->changeTagger );
 	}
 }

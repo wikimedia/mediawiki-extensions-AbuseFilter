@@ -25,7 +25,7 @@ class SpecsFormatter {
 	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 */
-	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ) : void {
+	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
 		$this->messageLocalizer = $messageLocalizer;
 	}
 
@@ -33,7 +33,7 @@ class SpecsFormatter {
 	 * @param string $action
 	 * @return string HTML
 	 */
-	public function getActionDisplay( string $action ) : string {
+	public function getActionDisplay( string $action ): string {
 		// Give grep a chance to find the usages:
 		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
 		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
@@ -48,7 +48,7 @@ class SpecsFormatter {
 	 * @param Language $lang
 	 * @return string
 	 */
-	public function formatAction( string $action, array $parameters, Language $lang ) : string {
+	public function formatAction( string $action, array $parameters, Language $lang ): string {
 		if ( count( $parameters ) === 0 || ( $action === 'block' && count( $parameters ) !== 3 ) ) {
 			$displayAction = $this->getActionDisplay( $action );
 		} elseif ( $action === 'block' ) {
@@ -110,7 +110,7 @@ class SpecsFormatter {
 	 * @param Language $lang
 	 * @return string
 	 */
-	public function formatFlags( string $value, Language $lang ) : string {
+	public function formatFlags( string $value, Language $lang ): string {
 		$flags = array_filter( explode( ',', $value ) );
 		$flagsDisplay = [];
 		foreach ( $flags as $flag ) {
@@ -125,7 +125,7 @@ class SpecsFormatter {
 	 * @param Language $lang
 	 * @return string
 	 */
-	public function formatFilterFlags( AbstractFilter $filter, Language $lang ) : string {
+	public function formatFilterFlags( AbstractFilter $filter, Language $lang ): string {
 		$flags = array_filter( [
 			'enabled' => $filter->isEnabled(),
 			'deleted' => $filter->isDeleted(),
@@ -146,7 +146,7 @@ class SpecsFormatter {
 	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
 	 * @return string A name for that filter group, or the input.
 	 */
-	public function nameGroup( string $group ) : string {
+	public function nameGroup( string $group ): string {
 		// Give grep a chance to find the usages: abusefilter-group-default
 		$msg = $this->messageLocalizer->msg( "abusefilter-group-$group" );
 		return $msg->isDisabled() ? $group : $msg->escaped();

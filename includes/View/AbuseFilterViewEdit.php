@@ -182,7 +182,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param int|null $filter The filter ID or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
-	private function attemptSave( ?int $filter, $history_id ) : void {
+	private function attemptSave( ?int $filter, $history_id ): void {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
 		$user = $this->getUser();
@@ -234,7 +234,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @param string $msgKey
 	 */
-	private function showUnrecoverableError( string $msgKey ) : void {
+	private function showUnrecoverableError( string $msgKey ): void {
 		$out = $this->getOutput();
 
 		$out->addHTML( Html::errorBox( $this->msg( $msgKey )->parseAsBlock() ) );
@@ -1155,7 +1155,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @return Filter
 	 * @throws FilterNotFoundException
 	 */
-	private function loadFilterData( ?int $id ) : Filter {
+	private function loadFilterData( ?int $id ): Filter {
 		if ( $id === null ) {
 			return MutableFilter::newDefault();
 		}
@@ -1174,7 +1174,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param int|null $history_id If any, the history ID being requested.
 	 * @return Filter|null Null if the filter does not exist.
 	 */
-	private function loadFromDatabase( ?int $filter, $history_id = null ) : ?Filter {
+	private function loadFromDatabase( ?int $filter, $history_id = null ): ?Filter {
 		if ( $history_id ) {
 			try {
 				return $this->filterLookup->getFilterVersion( $history_id );
@@ -1191,7 +1191,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param int|null $filter
 	 * @return Filter[]
 	 */
-	private function loadRequest( ?int $filter ) : array {
+	private function loadRequest( ?int $filter ): array {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
@@ -1239,7 +1239,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @return Filter|null
 	 */
-	private function loadImportRequest() : ?Filter {
+	private function loadImportRequest(): ?Filter {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
@@ -1258,7 +1258,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * @return array[]
 	 */
-	private function loadActions() : array {
+	private function loadActions(): array {
 		$request = $this->getRequest();
 		$allActions = $this->consequencesRegistry->getAllEnabledActionNames();
 		$actions = [];

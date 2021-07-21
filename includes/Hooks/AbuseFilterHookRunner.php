@@ -207,7 +207,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterGetDangerousActions( array &$actions ) : void {
+	public function onAbuseFilterGetDangerousActions( array &$actions ): void {
 		$this->hookContainer->run(
 			'AbuseFilterGetDangerousActions',
 			[ &$actions ],
@@ -218,7 +218,7 @@ class AbuseFilterHookRunner implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onAbuseFilterCustomActions( array &$actions ) : void {
+	public function onAbuseFilterCustomActions( array &$actions ): void {
 		$this->hookContainer->run(
 			'AbuseFilterCustomActions',
 			[ &$actions ],

@@ -270,7 +270,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @return true When successful
 	 * @throws AFPUserVisibleException
 	 */
-	public function checkSyntaxThrow( string $filter ) : bool {
+	public function checkSyntaxThrow( string $filter ): bool {
 		$this->allowMissingVariables = true;
 		$origAS = $this->mAllowShort;
 		try {
@@ -290,7 +290,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string $filter
 	 * @return ParserStatus The result indicates whether the syntax is valid
 	 */
-	public function checkSyntax( string $filter ) : ParserStatus {
+	public function checkSyntax( string $filter ): ParserStatus {
 		try {
 			$valid = $this->checkSyntaxThrow( $filter );
 		} catch ( AFPUserVisibleException $excep ) {
@@ -309,7 +309,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string|null $filter The ID of the filter being parsed
 	 * @return ParserStatus
 	 */
-	public function checkConditions( string $conds, $filter = null ) : ParserStatus {
+	public function checkConditions( string $conds, $filter = null ): ParserStatus {
 		$result = $this->parseDetailed( $conds );
 		$excep = $result->getException();
 		if ( $excep !== null ) {
@@ -330,7 +330,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string $code
 	 * @return AFPData
 	 */
-	public function intEval( $code ) : AFPData {
+	public function intEval( $code ): AFPData {
 		$startTime = microtime( true );
 		$tree = $this->getTree( $code );
 
@@ -356,7 +356,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string $code
 	 * @return ParserStatus
 	 */
-	public function parseDetailed( string $code ) : ParserStatus {
+	public function parseDetailed( string $code ): ParserStatus {
 		$excep = null;
 		try {
 			$res = $this->parse( $code );
@@ -378,7 +378,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string $code
 	 * @return AFPSyntaxTree
 	 */
-	private function getTree( $code ) : AFPSyntaxTree {
+	private function getTree( $code ): AFPSyntaxTree {
 		$this->fromCache = true;
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeGlobalKey(
@@ -400,7 +400,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param AFPSyntaxTree $tree
 	 * @return AFPData
 	 */
-	private function evalTree( AFPSyntaxTree $tree ) : AFPData {
+	private function evalTree( AFPSyntaxTree $tree ): AFPData {
 		$startTime = microtime( true );
 		$root = $tree->getRoot();
 
@@ -688,7 +688,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @return AFPData The return value of the function
 	 * @throws InvalidArgumentException if given an invalid func
 	 */
-	protected function callFunc( $fname, array $args ) : AFPData {
+	protected function callFunc( $fname, array $args ): AFPData {
 		if ( !array_key_exists( $fname, self::FUNCTIONS ) ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "$fname is not a valid function." );
@@ -743,7 +743,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param AFPData $rhs
 	 * @return AFPData
 	 */
-	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs ) : AFPData {
+	protected function callKeyword( $kname, AFPData $lhs, AFPData $rhs ): AFPData {
 		$func = self::KEYWORDS[$kname];
 		$this->raiseCondCount();
 
@@ -1494,7 +1494,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param string $rawRegexp
 	 * @return string
 	 */
-	private function mungeRegexp( string $rawRegexp ) : string {
+	private function mungeRegexp( string $rawRegexp ): string {
 		$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $rawRegexp );
 		return "/$needle/u";
 	}
@@ -1506,7 +1506,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @param AFPData $regex TODO Can we avoid passing this in?
 	 * @param string $pattern Already munged
 	 */
-	protected function checkRegexMatchesEmpty( AFPData $regex, string $pattern ) : void {
+	protected function checkRegexMatchesEmpty( AFPData $regex, string $pattern ): void {
 		if ( $regex->getType() === AFPData::DUNDEFINED ) {
 			// We can't tell, and toString() would return the empty string (T273809)
 			return;

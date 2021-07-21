@@ -39,7 +39,7 @@ class HideAbuseLog extends AbuseFilterView {
 	/**
 	 * Shows the page
 	 */
-	public function show() : void {
+	public function show(): void {
 		$output = $this->getOutput();
 		$output->enableOOUI();
 

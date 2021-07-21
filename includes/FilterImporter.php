@@ -59,7 +59,7 @@ class FilterImporter {
 	 * @param array $actions
 	 * @return string
 	 */
-	public function encodeData( Filter $filter, array $actions ) : string {
+	public function encodeData( Filter $filter, array $actions ): string {
 		$data = [
 			'rules' => $filter->getRules(),
 			'name' => $filter->getName(),
@@ -85,7 +85,7 @@ class FilterImporter {
 	 * @return Filter
 	 * @throws InvalidImportDataException
 	 */
-	public function decodeData( string $rawData ) : Filter {
+	public function decodeData( string $rawData ): Filter {
 		$validGroups = $this->options->get( 'AbuseFilterValidGroups' );
 		$globalFiltersEnabled = $this->options->get( 'AbuseFilterIsCentral' );
 
@@ -126,7 +126,7 @@ class FilterImporter {
 	 * @param mixed $data Already decoded
 	 * @return bool
 	 */
-	private function isValidImportData( $data ) : bool {
+	private function isValidImportData( $data ): bool {
 		if ( !is_object( $data ) ) {
 			return false;
 		}

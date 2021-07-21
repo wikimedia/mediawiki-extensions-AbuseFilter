@@ -21,7 +21,7 @@ use Wikimedia\TestingAccessWrapper;
 class WarnTest extends MediaWikiUnitTestCase {
 	use ConsequenceGetMessageTestTrait;
 
-	private function getWarn( Parameters $params = null ) : Warn {
+	private function getWarn( Parameters $params = null ): Warn {
 		return new Warn(
 			$params ?? $this->createMock( Parameters::class ),
 			'foo-bar-message',
@@ -29,7 +29,7 @@ class WarnTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getParamsAndWarnKey() : array {
+	private function getParamsAndWarnKey(): array {
 		$filter = $this->createMock( ExistingFilter::class );
 		$filter->method( 'getID' )->willReturn( 42 );
 		$params = new Parameters(

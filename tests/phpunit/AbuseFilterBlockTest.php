@@ -18,7 +18,7 @@ use MediaWiki\User\UserIdentityValue;
 class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	use ConsequenceGetMessageTestTrait;
 
-	private function getMsgLocalizer() : MessageLocalizer {
+	private function getMsgLocalizer(): MessageLocalizer {
 		$ml = $this->createMock( MessageLocalizer::class );
 		$ml->method( 'msg' )->willReturnCallback( function ( $k, $p ) {
 			return $this->getMockMessage( $k, $p );
@@ -26,14 +26,14 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 		return $ml;
 	}
 
-	private function getFilterUser() : FilterUser {
+	private function getFilterUser(): FilterUser {
 		$filterUser = $this->createMock( FilterUser::class );
 		$filterUser->method( 'getUser' )
 			->willReturn( new UserIdentityValue( 2, 'FilterUser' ) );
 		return $filterUser;
 	}
 
-	public function provideExecute() : iterable {
+	public function provideExecute(): iterable {
 		foreach ( [ true, false ] as $result ) {
 			$resStr = wfBoolToStr( $result );
 			yield "IPv4, $resStr" => [ new UserIdentityValue( 0, '1.2.3.4' ), $result ];

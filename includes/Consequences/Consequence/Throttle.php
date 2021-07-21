@@ -73,7 +73,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @return bool Whether the throttling took place (i.e. the limit was NOT hit)
 	 * @throws ConsequenceNotPrecheckedException
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		if ( $this->hitThrottle === null ) {
 			throw new ConsequenceNotPrecheckedException();
 		}
@@ -86,7 +86,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	/**
 	 * @inheritDoc
 	 */
-	public function shouldDisableOtherConsequences() : bool {
+	public function shouldDisableOtherConsequences(): bool {
 		$this->hitThrottle = false;
 		foreach ( $this->throttleParams['groups'] as $throttleType ) {
 			$this->hitThrottle = $this->isThrottled( $throttleType ) || $this->hitThrottle;
@@ -109,7 +109,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @param string $types
 	 * @return bool
 	 */
-	private function isThrottled( string $types ) : bool {
+	private function isThrottled( string $types ): bool {
 		$key = $this->throttleKey( $types );
 		$newCount = (int)$this->mainStash->get( $key ) + 1;
 
@@ -130,7 +130,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 *
 	 * @param string $types
 	 */
-	private function setThrottled( string $types ) : void {
+	private function setThrottled( string $types ): void {
 		$key = $this->throttleKey( $types );
 		$this->logger->debug(
 			'Increasing throttle key {key}',
@@ -143,7 +143,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @param string $type
 	 * @return string
 	 */
-	private function throttleKey( string $type ) : string {
+	private function throttleKey( string $type ): string {
 		$types = explode( ',', $type );
 
 		$identifiers = [];

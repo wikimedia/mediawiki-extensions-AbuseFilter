@@ -10,7 +10,7 @@ abstract class AFPException extends MWException {
 	 * Serialize data for edit stash
 	 * @return array
 	 */
-	public function toArray() : array {
+	public function toArray(): array {
 		return [
 			'class' => static::class,
 			'message' => $this->getMessage(),

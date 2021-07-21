@@ -36,7 +36,7 @@ class SpecialAbuseFilterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $params, $args );
 	}
 
-	public function provideGetViewClassAndPageType() : array {
+	public function provideGetViewClassAndPageType(): array {
 		return [
 			[ null, AbuseFilterViewList::class, 'home' ],
 			[ 'foo', AbuseFilterViewList::class, 'home' ],

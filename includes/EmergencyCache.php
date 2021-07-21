@@ -34,7 +34,7 @@ class EmergencyCache {
 	 * @param string $group
 	 * @return int[]
 	 */
-	public function getFiltersToCheckInGroup( string $group ) : array {
+	public function getFiltersToCheckInGroup( string $group ): array {
 		$filterToExpiry = $this->stash->get( $this->createGroupKey( $group ) );
 		if ( $filterToExpiry === false ) {
 			return [];
@@ -56,7 +56,7 @@ class EmergencyCache {
 	 * @param string $group
 	 * @return bool
 	 */
-	public function setNewForFilter( int $filter, string $group ) : bool {
+	public function setNewForFilter( int $filter, string $group ): bool {
 		$ttl = $this->ttlPerGroup[$group] ?? $this->ttlPerGroup['default'];
 		$expiry = (int)round( $this->stash->getCurrentTime() + $ttl );
 		$this->stash->merge(
@@ -87,7 +87,7 @@ class EmergencyCache {
 	 * @param bool $matched Whether the filter matched the action
 	 * @return bool
 	 */
-	public function incrementForFilter( int $filter, bool $matched ) : bool {
+	public function incrementForFilter( int $filter, bool $matched ): bool {
 		return $this->stash->merge(
 			$this->createFilterKey( $filter ),
 			static function ( $cache, $key, $value, &$expiry ) use ( $matched ) {
@@ -125,7 +125,7 @@ class EmergencyCache {
 	 * @param string $group
 	 * @return string
 	 */
-	private function createGroupKey( string $group ) : string {
+	private function createGroupKey( string $group ): string {
 		return $this->stash->makeKey( 'abusefilter', 'emergency', 'group', $group );
 	}
 
@@ -133,7 +133,7 @@ class EmergencyCache {
 	 * @param int $filter
 	 * @return string
 	 */
-	private function createFilterKey( int $filter ) : string {
+	private function createFilterKey( int $filter ): string {
 		return $this->stash->makeKey( 'abusefilter', 'emergency', 'filter', $filter );
 	}
 

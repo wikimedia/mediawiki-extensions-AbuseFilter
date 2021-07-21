@@ -66,7 +66,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @param int $id
 	 */
-	private function createFilter( int $id ) : void {
+	private function createFilter( int $id ): void {
 		$filter = $this->getFilterFromSpecs( [ 'id' => $id ] + self::DEFAULT_VALUES );
 		// Use some black magic to bypass checks
 		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
@@ -82,7 +82,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	 * @param array $actions
 	 * @return Filter
 	 */
-	private function getFilterFromSpecs( array $filterSpecs, array $actions = [] ) : Filter {
+	private function getFilterFromSpecs( array $filterSpecs, array $actions = [] ): Filter {
 		$filterSpecs += self::DEFAULT_VALUES;
 		return new Filter(
 			new Specs(

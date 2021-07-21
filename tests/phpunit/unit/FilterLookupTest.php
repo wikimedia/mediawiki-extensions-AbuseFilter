@@ -45,7 +45,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		$centralDB = false,
 		WANObjectCache $cache = null,
 		bool $filterIsCentral = false
-	) : FilterLookup {
+	): FilterLookup {
 		$db = $db ?? $this->createMock( IDatabase::class );
 		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnectionRef' )->willReturn( $db );
@@ -70,7 +70,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	 * @param stdClass[] $actionRows
 	 * @return IDatabase
 	 */
-	private function getDBWithMockRows( array $filterRows, array $actionRows = [] ) : IDatabase {
+	private function getDBWithMockRows( array $filterRows, array $actionRows = [] ): IDatabase {
 		$db = $this->createMock( IDatabase::class );
 		$db->method( 'selectRow' )->willReturnCallback( static function ( $table ) use ( $filterRows ) {
 			return $table === 'abuse_filter' || $table === 'abuse_filter_history' ? $filterRows[0] : false;
@@ -112,7 +112,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideFilterVersions() : Generator {
+	public function provideFilterVersions(): Generator {
 		$version = 163;
 		$filters = [
 			'no actions' => new HistoryFilter(

@@ -22,7 +22,7 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function provideAbuseFilterUser() : Generator {
+	public function provideAbuseFilterUser(): Generator {
 		$noRowUpdater = $this->createMock( DatabaseUpdater::class );
 		$noRowUpdater->method( 'updateRowExists' )->willReturn( false );
 		$invalidML = $this->createMock( MessageLocalizer::class );

@@ -38,7 +38,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function tearDown() : void {
+	protected function tearDown(): void {
 		MWTimestamp::setFakeTime( false );
 		parent::tearDown();
 	}
@@ -51,7 +51,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		UserEditTracker $userEditTracker = null,
 		UserGroupManager $userGroupManager = null,
 		PermissionManager $permissionManager = null
-	) : LazyVariableComputer {
+	): LazyVariableComputer {
 		return new LazyVariableComputer(
 			$this->createMock( TextExtractor::class ),
 			new AbuseFilterHookRunner( $this->createHookContainer( $hookHandlers ) ),
@@ -69,7 +69,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getForbidComputeCB() : callable {
+	private function getForbidComputeCB(): callable {
 		return static function () {
 			throw new LogicException( 'Not expected to be called' );
 		};
@@ -171,9 +171,9 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideUserRelatedVars() : Generator {
+	public function provideUserRelatedVars(): Generator {
 		$user = $this->createMock( User::class );
-		$getUserVar = static function ( $user, $method ) : LazyLoadedVariable {
+		$getUserVar = static function ( $user, $method ): LazyLoadedVariable {
 			return new LazyLoadedVariable(
 				$method,
 				[ 'user' => $user, 'user-identity' => $user ]
@@ -258,7 +258,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideTitleRelatedVars() : Generator {
+	public function provideTitleRelatedVars(): Generator {
 		$restrictions = [ 'create', 'edit', 'move', 'upload' ];
 		foreach ( $restrictions as $restriction ) {
 			$appliedRestrictions = [ 'sysop' ];

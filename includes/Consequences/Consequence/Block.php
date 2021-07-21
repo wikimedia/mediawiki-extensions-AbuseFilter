@@ -52,7 +52,7 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		$status = $this->doBlockInternal(
 			$this->parameters->getFilter()->getName(),
 			$this->parameters->getFilter()->getID(),

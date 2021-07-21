@@ -57,7 +57,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 	/**
 	 * @inheritDoc
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		$user = $this->parameters->getUser();
 
 		if ( !$user->isRegistered() ) {

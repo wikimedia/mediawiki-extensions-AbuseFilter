@@ -74,7 +74,7 @@ class RunVariableGenerator extends VariableGenerator {
 		string $summary,
 		$slot,
 		WikiPage $page
-	) : ?VariableHolder {
+	): ?VariableHolder {
 		$filterText = $this->getEditTextForFiltering( $page, $content, $slot );
 		if ( $filterText === null ) {
 			return null;
@@ -94,7 +94,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $slot
 	 * @return array|null
 	 */
-	protected function getEditTextForFiltering( WikiPage $page, Content $content, $slot ) : ?array {
+	protected function getEditTextForFiltering( WikiPage $page, Content $content, $slot ): ?array {
 		$oldRevRecord = $page->getRevisionRecord();
 		if ( !$oldRevRecord ) {
 			return null;
@@ -139,7 +139,7 @@ class RunVariableGenerator extends VariableGenerator {
 		string $text,
 		string $oldtext,
 		Content $oldcontent = null
-	) : VariableHolder {
+	): VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'page' );
 		$this->vars->setVar( 'action', 'edit' );
@@ -175,7 +175,7 @@ class RunVariableGenerator extends VariableGenerator {
 		string $summary,
 		$slot,
 		WikiPage $page
-	) : ?VariableHolder {
+	): ?VariableHolder {
 		if ( $this->title->exists() ) {
 			$filterText = $this->getEditTextForFiltering( $page, $content, $slot );
 			if ( $filterText === null ) {
@@ -203,7 +203,7 @@ class RunVariableGenerator extends VariableGenerator {
 	public function getMoveVars(
 		Title $newTitle,
 		string $reason
-	) : VariableHolder {
+	): VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'MOVED_FROM' )
 			->addTitleVars( $newTitle, 'MOVED_TO' );
@@ -220,7 +220,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 */
 	public function getDeleteVars(
 		string $reason
-	) : VariableHolder {
+	): VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'page' );
 
@@ -245,7 +245,7 @@ class RunVariableGenerator extends VariableGenerator {
 		?string $summary,
 		?string $text,
 		?array $props
-	) : ?VariableHolder {
+	): ?VariableHolder {
 		if ( !$props ) {
 			$props = ( new MWFileProps( $this->mimeAnalyzer ) )->getPropsFromPath(
 				$upload->getTempPath(),
@@ -310,7 +310,7 @@ class RunVariableGenerator extends VariableGenerator {
 	public function getAccountCreationVars(
 		User $createdUser,
 		bool $autocreate
-	) : VariableHolder {
+	): VariableHolder {
 		// generateUserVars records $this->user->getName() which would be the IP for unregistered users
 		if ( $this->user->isRegistered() ) {
 			$this->addUserVars( $this->user );

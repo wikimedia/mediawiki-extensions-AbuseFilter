@@ -19,7 +19,7 @@ trait ConsequenceGetMessageTestTrait {
 	 * called explicitly
 	 * @return Generator
 	 */
-	public function provideGetMessageParameters( $user = null ) : Generator {
+	public function provideGetMessageParameters( $user = null ): Generator {
 		$user = $user instanceof UserIdentity
 			? $user
 			: new UserIdentityValue( 1, 'getMessage test user' );
@@ -57,7 +57,7 @@ trait ConsequenceGetMessageTestTrait {
 		HookAborterConsequence $consequence,
 		Parameters $params,
 		string $msg
-	) : void {
+	): void {
 		$actualMsg = $consequence->getMessage();
 		$this->assertSame( $msg, $actualMsg[0], 'message' );
 		$this->assertSame( $params->getFilter()->getName(), $actualMsg[1], 'name' );

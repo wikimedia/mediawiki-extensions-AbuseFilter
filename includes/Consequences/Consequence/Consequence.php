@@ -21,5 +21,5 @@ abstract class Consequence {
 	/**
 	 * @return bool A generic success indicator, subclasses can be more specific
 	 */
-	abstract public function execute() : bool;
+	abstract public function execute(): bool;
 }

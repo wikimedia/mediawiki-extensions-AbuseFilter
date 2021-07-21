@@ -157,7 +157,7 @@ class AFPTreeNode {
 	/**
 	 * @return string[]
 	 */
-	public function getInnerAssignments() : array {
+	public function getInnerAssignments(): array {
 		return $this->innerAssignments;
 	}
 

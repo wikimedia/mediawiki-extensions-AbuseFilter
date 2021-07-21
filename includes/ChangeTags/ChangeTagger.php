@@ -32,7 +32,7 @@ class ChangeTagger {
 	/**
 	 * Clear any buffered tag
 	 */
-	public function clearBuffer() : void {
+	public function clearBuffer(): void {
 		self::$tagsToSet = [];
 	}
 
@@ -40,7 +40,7 @@ class ChangeTagger {
 	 * @param array $actionSpecs
 	 * @phan-param array{action:string,username:string,target:LinkTarget,accountname?:?string} $actionSpecs
 	 */
-	public function addConditionsLimitTag( array $actionSpecs ) : void {
+	public function addConditionsLimitTag( array $actionSpecs ): void {
 		$this->addTags( $actionSpecs, [ $this->changeTagsManager->getCondsLimitTag() ] );
 	}
 
@@ -49,7 +49,7 @@ class ChangeTagger {
 	 * @phan-param array{action:string,username:string,target:LinkTarget,accountname?:?string} $actionSpecs
 	 * @param array $tags
 	 */
-	public function addTags( array $actionSpecs, array $tags ) : void {
+	public function addTags( array $actionSpecs, array $tags ): void {
 		$id = $this->getActionID(
 			$actionSpecs['action'],
 			$actionSpecs['username'],
@@ -62,7 +62,7 @@ class ChangeTagger {
 	/**
 	 * @param string[][] $tagsByAction Map of (string => string[])
 	 */
-	private function bufferTagsToSetByAction( array $tagsByAction ) : void {
+	private function bufferTagsToSetByAction( array $tagsByAction ): void {
 		foreach ( $tagsByAction as $actionID => $tags ) {
 			self::$tagsToSet[ $actionID ] = array_unique(
 				array_merge( self::$tagsToSet[ $actionID ] ?? [], $tags )
@@ -75,7 +75,7 @@ class ChangeTagger {
 	 * @param bool $clear
 	 * @return array
 	 */
-	private function getTagsForID( string $id, bool $clear = true ) : array {
+	private function getTagsForID( string $id, bool $clear = true ): array {
 		$val = self::$tagsToSet[$id] ?? [];
 		if ( $clear ) {
 			unset( self::$tagsToSet[$id] );
@@ -88,7 +88,7 @@ class ChangeTagger {
 	 * @param bool $clear
 	 * @return array
 	 */
-	public function getTagsForRecentChange( RecentChange $recentChange, bool $clear = true ) : array {
+	public function getTagsForRecentChange( RecentChange $recentChange, bool $clear = true ): array {
 		$id = $this->getIDFromRecentChange( $recentChange );
 		return $this->getTagsForID( $id, $clear );
 	}
@@ -97,7 +97,7 @@ class ChangeTagger {
 	 * @param RecentChange $recentChange
 	 * @return string
 	 */
-	private function getIDFromRecentChange( RecentChange $recentChange ) : string {
+	private function getIDFromRecentChange( RecentChange $recentChange ): string {
 		$title = new TitleValue(
 			$recentChange->getAttribute( 'rc_namespace' ),
 			$recentChange->getAttribute( 'rc_title' )
@@ -135,7 +135,7 @@ class ChangeTagger {
 		string $username,
 		LinkTarget $title,
 		?string $accountname = null
-	) : string {
+	): string {
 		if ( strpos( $action, 'createaccount' ) !== false ) {
 			if ( $accountname === null ) {
 				// @codeCoverageIgnoreStart

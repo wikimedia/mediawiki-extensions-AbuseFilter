@@ -63,7 +63,7 @@ class EditStashCache {
 	 * @param VariableHolder $vars For creating the key
 	 * @param array $data Data to store
 	 */
-	public function store( VariableHolder $vars, array $data ) : void {
+	public function store( VariableHolder $vars, array $data ): void {
 		$key = $this->getStashKey( $vars );
 		$this->cache->set( $key, $data, BagOStuff::TTL_MINUTE );
 		$this->logCache( 'store', $key );
@@ -90,7 +90,7 @@ class EditStashCache {
 	 * @param string $key The cache key used
 	 * @throws InvalidArgumentException
 	 */
-	private function logCache( string $type, string $key ) : void {
+	private function logCache( string $type, string $key ): void {
 		if ( !in_array( $type, [ 'store', 'hit', 'miss' ] ) ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( '$type must be either "store", "hit" or "miss"' );
@@ -109,7 +109,7 @@ class EditStashCache {
 	 * @param VariableHolder $vars
 	 * @return string
 	 */
-	private function getStashKey( VariableHolder $vars ) : string {
+	private function getStashKey( VariableHolder $vars ): string {
 		$inputVars = $this->variablesManager->exportNonLazyVars( $vars );
 		// Exclude noisy fields that have superficial changes
 		$excludedVars = [

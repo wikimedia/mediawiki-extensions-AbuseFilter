@@ -70,7 +70,7 @@ return [
 	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
 		return new PermManager( $services->getPermissionManager() );
 	},
-	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ) : ChangeTagger {
+	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagger {
 		return new ChangeTagger(
 			$services->getService( ChangeTagsManager::SERVICE_NAME )
 		);
@@ -217,7 +217,7 @@ return [
 			ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' )
 		);
 	},
-	ConsequencesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ) : ConsequencesLookup {
+	ConsequencesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesLookup {
 		return new ConsequencesLookup(
 			$services->getDBLoadBalancer(),
 			$services->get( CentralDBManager::SERVICE_NAME ),
@@ -231,7 +231,7 @@ return [
 			$services->getMainConfig()->get( 'AbuseFilterActions' )
 		);
 	},
-	AbuseLoggerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ) : AbuseLoggerFactory {
+	AbuseLoggerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): AbuseLoggerFactory {
 		return new AbuseLoggerFactory(
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
@@ -261,7 +261,7 @@ return [
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )
 		);
 	},
-	ConsExecutorFactory::SERVICE_NAME => static function ( MediaWikiServices $services ) : ConsExecutorFactory {
+	ConsExecutorFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsExecutorFactory {
 		return new ConsExecutorFactory(
 			$services->get( ConsequencesLookup::SERVICE_NAME ),
 			$services->get( ConsequencesFactory::SERVICE_NAME ),
@@ -274,7 +274,7 @@ return [
 			)
 		);
 	},
-	FilterRunnerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ) : FilterRunnerFactory {
+	FilterRunnerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterRunnerFactory {
 		return new FilterRunnerFactory(
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->get( FilterProfiler::SERVICE_NAME ),

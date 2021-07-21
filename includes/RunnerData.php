@@ -55,7 +55,7 @@ class RunnerData {
 	 * @param array $profilingData
 	 * @phan-param array{time:float,conds:int} $profilingData
 	 */
-	public function record( int $filterID, bool $global, ParserStatus $status, array $profilingData ) : void {
+	public function record( int $filterID, bool $global, ParserStatus $status, array $profilingData ): void {
 		$key = GlobalNameUtils::buildGlobalName( $filterID, $global );
 		if ( array_key_exists( $key, $this->matchedFilters ) ) {
 			throw new LogicException( "Filter '$key' has already been recorded" );
@@ -71,7 +71,7 @@ class RunnerData {
 	 * @return bool[]
 	 * @phan-return array<string,bool>
 	 */
-	public function getMatchesMap() : array {
+	public function getMatchesMap(): array {
 		return array_map(
 			static function ( $status ) {
 				return $status->getResult();
@@ -83,35 +83,35 @@ class RunnerData {
 	/**
 	 * @return string[]
 	 */
-	public function getAllFilters() : array {
+	public function getAllFilters(): array {
 		return array_keys( $this->matchedFilters );
 	}
 
 	/**
 	 * @return string[]
 	 */
-	public function getMatchedFilters() : array {
+	public function getMatchedFilters(): array {
 		return array_keys( array_filter( $this->getMatchesMap() ) );
 	}
 
 	/**
 	 * @return array[]
 	 */
-	public function getProfilingData() : array {
+	public function getProfilingData(): array {
 		return $this->profilingData;
 	}
 
 	/**
 	 * @return float
 	 */
-	public function getTotalRuntime() : float {
+	public function getTotalRuntime(): float {
 		return $this->totalRuntime;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getTotalConditions() : int {
+	public function getTotalConditions(): int {
 		return $this->totalConditions;
 	}
 
@@ -120,7 +120,7 @@ class RunnerData {
 	 * @return array
 	 * @phan-return array{matches:array<string,array>,runtime:float,condCount:int,profiling:array}
 	 */
-	public function toArray() : array {
+	public function toArray(): array {
 		return [
 			'matches' => array_map(
 				static function ( $status ) {
@@ -139,7 +139,7 @@ class RunnerData {
 	 * @param array $value
 	 * @return self
 	 */
-	public static function fromArray( array $value ) : self {
+	public static function fromArray( array $value ): self {
 		return new self(
 			array_map( [ ParserStatus::class, 'fromArray' ], $value['matches'] ),
 			$value['profiling'],

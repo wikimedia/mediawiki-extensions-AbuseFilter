@@ -12,7 +12,7 @@ interface ConsequencesDisablerConsequence {
 	 * ConsequenceNotPrecheckedException can be used to assert that execute() was called.
 	 * @return bool
 	 */
-	public function shouldDisableOtherConsequences() : bool;
+	public function shouldDisableOtherConsequences(): bool;
 
 	/**
 	 * Returns an arbitrary integer representing the sorting importance of this consequence. Consequences
@@ -20,5 +20,5 @@ interface ConsequencesDisablerConsequence {
 	 * @note If two consequences have the same importance, their final order is nondeterministic
 	 * @return int
 	 */
-	public function getSort() : int;
+	public function getSort(): int;
 }

@@ -24,14 +24,14 @@ class LazyLoadedVariable {
 	/**
 	 * @return string
 	 */
-	public function getMethod() : string {
+	public function getMethod(): string {
 		return $this->method;
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getParameters() : array {
+	public function getParameters(): array {
 		return $this->parameters;
 	}
 }

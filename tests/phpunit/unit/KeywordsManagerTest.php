@@ -18,7 +18,7 @@ class KeywordsManagerTest extends MediaWikiUnitTestCase {
 	 * Convenience wrapper
 	 * @return KeywordsManager
 	 */
-	private function getKeywordsManager() : KeywordsManager {
+	private function getKeywordsManager(): KeywordsManager {
 		return new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 	}
 

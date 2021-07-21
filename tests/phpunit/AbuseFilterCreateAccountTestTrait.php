@@ -18,7 +18,7 @@ trait AbuseFilterCreateAccountTestTrait {
 		string $accountName,
 		User $creator = null,
 		bool $autocreate = false
-	) : StatusValue {
+	): StatusValue {
 		$user = User::newFromName( $accountName );
 		// A creatable username must exist to be passed to $logEntry->setPerformer(),
 		// so create the account.

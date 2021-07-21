@@ -16,6 +16,6 @@ interface ReversibleConsequence {
 	 * @return bool Whether the revert was successful
 	 * @todo define or narrow $info
 	 */
-	public function revert( $info, UserIdentity $performer, string $reason ) : bool;
+	public function revert( $info, UserIdentity $performer, string $reason ): bool;
 
 }

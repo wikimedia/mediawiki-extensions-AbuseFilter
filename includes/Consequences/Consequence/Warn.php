@@ -33,7 +33,7 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	 * @return bool Whether the user should be warned (i.e. this is the first attempt)
 	 * @throws ConsequenceNotPrecheckedException
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		if ( $this->shouldWarn === null ) {
 			throw new ConsequenceNotPrecheckedException();
 		}
@@ -44,7 +44,7 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	/**
 	 * @inheritDoc
 	 */
-	public function shouldDisableOtherConsequences() : bool {
+	public function shouldDisableOtherConsequences(): bool {
 		$this->shouldWarn = $this->shouldBeWarned();
 		return $this->shouldWarn;
 	}
@@ -71,7 +71,7 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	/**
 	 * @return bool
 	 */
-	private function shouldBeWarned() : bool {
+	private function shouldBeWarned(): bool {
 		// Make sure the session is started prior to using it
 		$this->session->persist();
 		$warnKey = $this->getWarnKey();
@@ -81,7 +81,7 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	/**
 	 * Sets the parameters needed to warn the user, *without* checking if the user should be warned.
 	 */
-	private function setWarn() : void {
+	private function setWarn(): void {
 		$warnKey = $this->getWarnKey();
 		$this->session[$warnKey] = $this->shouldWarn;
 	}
@@ -91,7 +91,7 @@ class Warn extends Consequence implements HookAborterConsequence, ConsequencesDi
 	 * We'll warn again if one of these changes: session, page, triggered filter, or action
 	 * @return string
 	 */
-	private function getWarnKey() : string {
+	private function getWarnKey(): string {
 		$globalFilterName = GlobalNameUtils::buildGlobalName(
 			$this->parameters->getFilter()->getID(),
 			$this->parameters->getIsGlobalFilter()

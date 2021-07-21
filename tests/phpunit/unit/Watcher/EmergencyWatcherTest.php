@@ -17,7 +17,7 @@ use Wikimedia\Rdbms\ILoadBalancer;
  */
 class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 
-	private function getOptions() : ServiceOptions {
+	private function getOptions(): ServiceOptions {
 		return new ServiceOptions(
 			EmergencyWatcher::CONSTRUCTOR_OPTIONS,
 			[
@@ -36,7 +36,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	private function getEmergencyCache( array $cacheData, string $group ) : EmergencyCache {
+	private function getEmergencyCache( array $cacheData, string $group ): EmergencyCache {
 		$cache = $this->createMock( EmergencyCache::class );
 		$cache->method( 'getForFilter' )
 			->with( 1 )
@@ -47,7 +47,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 		return $cache;
 	}
 
-	private function getFilterLookup( array $filterData ) : FilterLookup {
+	private function getFilterLookup( array $filterData ): FilterLookup {
 		$lookup = $this->createMock( FilterLookup::class );
 		$lookup->method( 'getFilter' )
 			->with( 1, false )
@@ -60,7 +60,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 		return $lookup;
 	}
 
-	public function provideFiltersToThrottle() : array {
+	public function provideFiltersToThrottle(): array {
 		return [
 			'throttled, default group' => [
 				/* timestamp */ '20201016010000',

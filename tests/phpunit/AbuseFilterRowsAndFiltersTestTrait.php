@@ -13,7 +13,7 @@ trait AbuseFilterRowsAndFiltersTestTrait {
 	/**
 	 * @return array[]
 	 */
-	public function getRowsAndFilters() : array {
+	public function getRowsAndFilters(): array {
 		static $ret = null;
 		if ( $ret !== null ) {
 			return $ret;
@@ -213,7 +213,7 @@ trait AbuseFilterRowsAndFiltersTestTrait {
 	 * @param string[] $actions
 	 * @return stdClass[]
 	 */
-	private function getRowsForActions( int $id, array $actions ) : array {
+	private function getRowsForActions( int $id, array $actions ): array {
 		$ret = [];
 		foreach ( $actions as $action ) {
 			$ret[] = (object)[

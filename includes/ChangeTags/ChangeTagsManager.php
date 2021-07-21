@@ -47,7 +47,7 @@ class ChangeTagsManager {
 	/**
 	 * Purge all cache related to tags, both within AbuseFilter and in core
 	 */
-	public function purgeTagCache() : void {
+	public function purgeTagCache(): void {
 		// xxx: this doesn't purge all existing caches, see T266105
 		ChangeTags::purgeTagCacheAll();
 		$this->cache->delete( $this->getCacheKeyForStatus( true ) );
@@ -58,7 +58,7 @@ class ChangeTagsManager {
 	 * Return tags used by any active (enabled) filter, both local and global.
 	 * @return string[]
 	 */
-	public function getTagsDefinedByActiveFilters() : array {
+	public function getTagsDefinedByActiveFilters(): array {
 		return $this->loadTags( true );
 	}
 
@@ -66,7 +66,7 @@ class ChangeTagsManager {
 	 * Return tags used by any filter that is not deleted, both local and global.
 	 * @return string[]
 	 */
-	public function getTagsDefinedByFilters() : array {
+	public function getTagsDefinedByFilters(): array {
 		return $this->loadTags( false );
 	}
 
@@ -76,7 +76,7 @@ class ChangeTagsManager {
 	 * @param bool $global
 	 * @return string[]
 	 */
-	private function loadTagsFromDb( IDatabase $dbr, bool $enabled, bool $global = false ) : array {
+	private function loadTagsFromDb( IDatabase $dbr, bool $enabled, bool $global = false ): array {
 		// This is a pretty awful hack.
 		$where = [
 			'afa_consequence' => 'tag',
@@ -112,7 +112,7 @@ class ChangeTagsManager {
 	 * @param bool $enabled
 	 * @return string[]
 	 */
-	private function loadTags( bool $enabled ) : array {
+	private function loadTags( bool $enabled ): array {
 		return $this->cache->getWithSetCallback(
 			$this->getCacheKeyForStatus( $enabled ),
 			WANObjectCache::TTL_MINUTE,
@@ -145,7 +145,7 @@ class ChangeTagsManager {
 	 * @param bool $enabled
 	 * @return string
 	 */
-	private function getCacheKeyForStatus( bool $enabled ) : string {
+	private function getCacheKeyForStatus( bool $enabled ): string {
 		return $this->cache->makeKey( 'abusefilter-fetch-all-tags', (int)$enabled );
 	}
 
@@ -153,7 +153,7 @@ class ChangeTagsManager {
 	 * Get the tag identifier used to indicate a change has exceeded the condition limit
 	 * @return string
 	 */
-	public function getCondsLimitTag() : string {
+	public function getCondsLimitTag(): string {
 		return self::CONDS_LIMIT_TAG;
 	}
 }

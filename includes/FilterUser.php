@@ -38,7 +38,7 @@ class FilterUser {
 	 *   Or can we just use `new UserIdentityValue` here?
 	 * @return UserIdentity
 	 */
-	public function getUser() : UserIdentity {
+	public function getUser(): UserIdentity {
 		$username = $this->messageLocalizer->msg( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newSystemUser( $username, [ 'steal' => true ] );
 

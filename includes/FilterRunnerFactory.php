@@ -126,7 +126,7 @@ class FilterRunnerFactory {
 		Title $title,
 		VariableHolder $vars,
 		string $group
-	) : FilterRunner {
+	): FilterRunner {
 		// TODO Add a method to this class taking these as params? Add a hook for custom watchers
 		$watchers = [ $this->updateHitCountWatcher, $this->emergencyWatcher ];
 		return new FilterRunner(

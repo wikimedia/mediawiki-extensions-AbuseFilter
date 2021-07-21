@@ -19,7 +19,7 @@ use WebRequest;
  */
 class ToolLinksHandlerTest extends MediaWikiUnitTestCase {
 
-	private function getToolLinksHandler( bool $allowed = true ) : ToolLinksHandler {
+	private function getToolLinksHandler( bool $allowed = true ): ToolLinksHandler {
 		$permManager = $this->createMock( AbuseFilterPermissionManager::class );
 		$permManager->method( 'canViewAbuseLog' )->willReturn( $allowed );
 		return new ToolLinksHandler( $permManager );

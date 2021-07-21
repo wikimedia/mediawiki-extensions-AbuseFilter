@@ -62,7 +62,7 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 		$this->assertEquals( $expected, $actual );
 	}
 
-	public function provideEditRelatedVars() : Generator {
+	public function provideEditRelatedVars(): Generator {
 		$summary = __METHOD__;
 
 		// phpcs:disable Generic.Files.LineLength

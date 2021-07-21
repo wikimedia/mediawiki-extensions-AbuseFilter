@@ -44,7 +44,7 @@ class ConsequencesRegistry {
 	 *
 	 * @return string[]
 	 */
-	public function getDangerousActionNames() : array {
+	public function getDangerousActionNames(): array {
 		if ( $this->dangerousActionsCache === null ) {
 			$extActions = [];
 			$this->hookRunner->onAbuseFilterGetDangerousActions( $extActions );
@@ -58,7 +58,7 @@ class ConsequencesRegistry {
 	/**
 	 * @return string[]
 	 */
-	public function getAllActionNames() : array {
+	public function getAllActionNames(): array {
 		return array_unique(
 			array_merge(
 				array_keys( $this->configActions ),
@@ -71,7 +71,7 @@ class ConsequencesRegistry {
 	 * @return callable[]
 	 * @phan-return array<string,callable(Parameters,array):Consequence>
 	 */
-	public function getCustomActions() : array {
+	public function getCustomActions(): array {
 		if ( $this->customActionsCache === null ) {
 			$this->customActionsCache = [];
 			$this->hookRunner->onAbuseFilterCustomActions( $this->customActionsCache );
@@ -83,7 +83,7 @@ class ConsequencesRegistry {
 	/**
 	 * Ensure that extensions aren't putting crap in this array, since we can't enforce types on closures otherwise
 	 */
-	private function validateCustomActions() : void {
+	private function validateCustomActions(): void {
 		foreach ( $this->customActionsCache as $name => $cb ) {
 			if ( !is_string( $name ) ) {
 				throw new RuntimeException( 'Custom actions keys should be strings!' );
@@ -98,7 +98,7 @@ class ConsequencesRegistry {
 	/**
 	 * @return string[]
 	 */
-	public function getAllEnabledActionNames() : array {
+	public function getAllEnabledActionNames(): array {
 		$disabledActions = array_keys( array_filter(
 			$this->configActions,
 			static function ( $el ) {

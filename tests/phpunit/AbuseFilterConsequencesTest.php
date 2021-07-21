@@ -344,7 +344,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		// Ensure that our user is not blocked and is a sysop (matched filters could block or
 		// degroup the user)
@@ -379,7 +379,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	/**
 	 * @inheritDoc
 	 */
-	protected function tearDown() : void {
+	protected function tearDown(): void {
 		$this->clearUploads();
 		parent::tearDown();
 	}

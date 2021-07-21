@@ -86,7 +86,7 @@ class ConsequencesExecutor {
 	 *         an array listing the actions taken. $status->getErrors() etc. will provide
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
-	public function executeFilterActions( array $filters ) : Status {
+	public function executeFilterActions( array $filters ): Status {
 		$actionsByFilter = $this->consLookup->getConsequencesForFilters( $filters );
 		$consequences = $this->replaceArraysWithConsequences( $actionsByFilter );
 		$actionsToTake = $this->getFilteredConsequences( $consequences );
@@ -120,7 +120,7 @@ class ConsequencesExecutor {
 	 * @return Consequence[][]
 	 * @internal Temporarily public
 	 */
-	public function replaceArraysWithConsequences( array $actionsByFilter ) : array {
+	public function replaceArraysWithConsequences( array $actionsByFilter ): array {
 		// Keep track of the longest block
 		$maxBlock = [ 'id' => null, 'expiry' => -1, 'blocktalk' => null ];
 		$dangerousActions = $this->consRegistry->getDangerousActionNames();
@@ -216,7 +216,7 @@ class ConsequencesExecutor {
 	 * @param int|string $filter
 	 * @return Consequence|null
 	 */
-	private function actionsParamsToConsequence( string $actionName, array $rawParams, $filter ) : ?Consequence {
+	private function actionsParamsToConsequence( string $actionName, array $rawParams, $filter ): ?Consequence {
 		[ $filterID, $isGlobalFilter ] = GlobalNameUtils::splitGlobalName( $filter );
 		$filterObj = $this->filterLookup->getFilter( $filterID, $isGlobalFilter );
 
@@ -283,7 +283,7 @@ class ConsequencesExecutor {
 	 * @return Consequence[][]
 	 * @internal Temporary method
 	 */
-	public function getFilteredConsequences( array $actionsByFilter ) : array {
+	public function getFilteredConsequences( array $actionsByFilter ): array {
 		foreach ( $actionsByFilter as $filter => $actions ) {
 			/** @var ConsequencesDisablerConsequence[] $consequenceDisablers */
 			$consequenceDisablers = array_filter( $actions, static function ( $el ) {
@@ -313,7 +313,7 @@ class ConsequencesExecutor {
 	 *   containing the message key followed by any message parameters.
 	 * @todo Improve return value
 	 */
-	private function takeConsequenceAction( Consequence $consequence ) : array {
+	private function takeConsequenceAction( Consequence $consequence ): array {
 		$res = $consequence->execute();
 		if ( $res && $consequence instanceof HookAborterConsequence ) {
 			$message = $consequence->getMessage();
@@ -333,7 +333,7 @@ class ConsequencesExecutor {
 	 *
 	 * @return Status
 	 */
-	private function buildStatus( array $actionsTaken, array $messages ) : Status {
+	private function buildStatus( array $actionsTaken, array $messages ): Status {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {

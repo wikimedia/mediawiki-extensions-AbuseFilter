@@ -45,7 +45,7 @@ class BlockAutopromoteStore {
 	 * @param UserIdentity $target
 	 * @return int
 	 */
-	public function getAutoPromoteBlockStatus( UserIdentity $target ) : int {
+	public function getAutoPromoteBlockStatus( UserIdentity $target ): int {
 		return (int)$this->store->get( $this->getAutoPromoteBlockKey( $target ) );
 	}
 
@@ -57,7 +57,7 @@ class BlockAutopromoteStore {
 	 * @param int $duration Duration for which autopromotion is blocked, in seconds
 	 * @return bool True on success, false on failure
 	 */
-	public function blockAutoPromote( UserIdentity $target, string $msg, int $duration ) : bool {
+	public function blockAutoPromote( UserIdentity $target, string $msg, int $duration ): bool {
 		if ( !$this->store->set(
 			$this->getAutoPromoteBlockKey( $target ),
 			1,
@@ -103,7 +103,7 @@ class BlockAutopromoteStore {
 	 * @param string $msg The message to show in the log
 	 * @return bool True on success, false on failure
 	 */
-	public function unblockAutopromote( UserIdentity $target, UserIdentity $performer, string $msg ) : bool {
+	public function unblockAutopromote( UserIdentity $target, UserIdentity $performer, string $msg ): bool {
 		// Immediately expire (delete) the key, failing if it does not exist
 		$expireAt = time() - BagOStuff::TTL_HOUR;
 		if ( !$this->store->changeTTL(
@@ -137,7 +137,7 @@ class BlockAutopromoteStore {
 	 * @param UserIdentity $target
 	 * @return string
 	 */
-	private function getAutoPromoteBlockKey( UserIdentity $target ) : string {
+	private function getAutoPromoteBlockKey( UserIdentity $target ): string {
 		return $this->store->makeKey( 'abusefilter', 'block-autopromote', $target->getId() );
 	}
 }

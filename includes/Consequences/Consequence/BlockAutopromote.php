@@ -40,7 +40,7 @@ class BlockAutopromote extends Consequence implements HookAborterConsequence, Re
 	/**
 	 * @inheritDoc
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		$target = $this->parameters->getUser();
 		if ( !$target->isRegistered() ) {
 			return false;

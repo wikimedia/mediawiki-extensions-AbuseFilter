@@ -65,7 +65,7 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 		string $expiry,
 		bool $isAutoBlock,
 		bool $preventEditOwnUserTalk
-	) : Status {
+	): Status {
 		$reason = $this->messageLocalizer->msg(
 			'abusefilter-blockreason',
 			$ruleDesc,

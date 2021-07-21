@@ -28,28 +28,28 @@ class ParserStatus {
 	/**
 	 * @return bool
 	 */
-	public function getResult() : bool {
+	public function getResult(): bool {
 		return $this->result;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function getWarmCache() : bool {
+	public function getWarmCache(): bool {
 		return $this->warmCache;
 	}
 
 	/**
 	 * @return AFPException|null
 	 */
-	public function getException() : ?AFPException {
+	public function getException(): ?AFPException {
 		return $this->excep;
 	}
 
 	/**
 	 * @return UserVisibleWarning[]
 	 */
-	public function getWarnings() : array {
+	public function getWarnings(): array {
 		return $this->warnings;
 	}
 
@@ -57,7 +57,7 @@ class ParserStatus {
 	 * Serialize data for edit stash
 	 * @return array
 	 */
-	public function toArray() : array {
+	public function toArray(): array {
 		return [
 			'result' => $this->result,
 			'warmCache' => $this->warmCache,
@@ -76,7 +76,7 @@ class ParserStatus {
 	 * @param array $value
 	 * @return self
 	 */
-	public static function fromArray( array $value ) : self {
+	public static function fromArray( array $value ): self {
 		$excClass = $value['exception']['class'] ?? null;
 		return new self(
 			$value['result'],

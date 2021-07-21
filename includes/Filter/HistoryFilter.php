@@ -33,7 +33,7 @@ class HistoryFilter extends ExistingFilter {
 	/**
 	 * @return int
 	 */
-	public function getHistoryID() : int {
+	public function getHistoryID(): int {
 		return $this->historyID;
 	}
 }

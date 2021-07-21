@@ -55,14 +55,14 @@ class EditRevUpdater {
 	 *
 	 * @param WikiPage $page
 	 */
-	public function setLastEditPage( WikiPage $page ) : void {
+	public function setLastEditPage( WikiPage $page ): void {
 		$this->wikiPage = $page;
 	}
 
 	/**
 	 * Clear the WikiPage object used for the ongoing edit
 	 */
-	public function clearLastEditPage() : void {
+	public function clearLastEditPage(): void {
 		$this->wikiPage = null;
 	}
 
@@ -71,7 +71,7 @@ class EditRevUpdater {
 	 * @param int[][] $logIds
 	 * @phan-param array{local:int[],global:int[]} $logIds
 	 */
-	public function setLogIdsForTarget( LinkTarget $target, array $logIds ) : void {
+	public function setLogIdsForTarget( LinkTarget $target, array $logIds ): void {
 		if ( count( $logIds ) !== 2 || array_diff( array_keys( $logIds ), [ 'local', 'global' ] ) ) {
 			throw new InvalidArgumentException( 'Wrong keys; got: ' . implode( ', ', array_keys( $logIds ) ) );
 		}
@@ -84,7 +84,7 @@ class EditRevUpdater {
 	 * @param RevisionRecord $revisionRecord
 	 * @return bool Whether the DB was updated
 	 */
-	public function updateRev( WikiPage $wikiPage, RevisionRecord $revisionRecord ) : bool {
+	public function updateRev( WikiPage $wikiPage, RevisionRecord $revisionRecord ): bool {
 		$key = $this->getCacheKey( $wikiPage->getTitle() );
 		if ( !isset( $this->logIds[ $key ] ) || $wikiPage !== $this->wikiPage ) {
 			// This isn't the edit $this->logIds was set for
@@ -132,7 +132,7 @@ class EditRevUpdater {
 	 * @param LinkTarget $target
 	 * @return string
 	 */
-	private function getCacheKey( LinkTarget $target ) : string {
+	private function getCacheKey( LinkTarget $target ): string {
 		return $target->getNamespace() . '|' . $target->getText();
 	}
 }

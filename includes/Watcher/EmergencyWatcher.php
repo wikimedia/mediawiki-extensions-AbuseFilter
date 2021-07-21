@@ -72,7 +72,7 @@ class EmergencyWatcher implements Watcher {
 	 * @param string $group Group the filters belong to
 	 * @return int[] Array of filters to be throttled
 	 */
-	public function getFiltersToThrottle( array $filters, string $group ) : array {
+	public function getFiltersToThrottle( array $filters, string $group ): array {
 		$filters = array_intersect(
 			$filters,
 			$this->cache->getFiltersToCheckInGroup( $group )
@@ -131,7 +131,7 @@ class EmergencyWatcher implements Watcher {
 	 *
 	 * @inheritDoc
 	 */
-	public function run( array $localFilters, array $globalFilters, string $group ) : void {
+	public function run( array $localFilters, array $globalFilters, string $group ): void {
 		$throttleFilters = $this->getFiltersToThrottle( $localFilters, $group );
 		if ( !$throttleFilters ) {
 			return;

@@ -88,7 +88,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @param bool $isListItem
 	 * @return string
 	 */
-	public function doFormatRow( stdClass $row, bool $isListItem = true ) : string {
+	public function doFormatRow( stdClass $row, bool $isListItem = true ): string {
 		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 		$user = $this->getUser();
 		$lang = $this->getLanguage();
@@ -314,7 +314,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 *
 	 * @return bool
 	 */
-	private function canSeeUndeleteDiffForPage( LinkTarget $page ) : bool {
+	private function canSeeUndeleteDiffForPage( LinkTarget $page ): bool {
 		if ( !$this->canSeeUndeleteDiffs() ) {
 			return false;
 		}
@@ -336,7 +336,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 *
 	 * @return bool
 	 */
-	private function canSeeUndeleteDiffs() : bool {
+	private function canSeeUndeleteDiffs(): bool {
 		if ( !$this->permissionManager->userHasRight( $this->getUser(), 'deletedhistory' ) ) {
 			return false;
 		}
@@ -436,7 +436,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @param stdClass $row
 	 * @return bool|null True if just hidden, false if just unhidden, null if untouched
 	 */
-	private function isHidingEntry( stdClass $row ) : ?bool {
+	private function isHidingEntry( stdClass $row ): ?bool {
 		if ( isset( $this->hideEntries[ $row->afl_id ] ) ) {
 			return $this->hideEntries[ $row->afl_id ] === 'hide';
 		}

@@ -91,7 +91,7 @@ class ToolLinksHandler implements
 	 * @codeCoverageIgnore Helper for tests
 	 * @return LinkTarget
 	 */
-	private function getSpecialPageTitle() : LinkTarget {
+	private function getSpecialPageTitle(): LinkTarget {
 		return defined( 'MW_PHPUNIT_TEST' )
 			? new TitleValue( NS_SPECIAL, SpecialAbuseLog::PAGE_NAME )
 			: SpecialPage::getTitleFor( SpecialAbuseLog::PAGE_NAME );

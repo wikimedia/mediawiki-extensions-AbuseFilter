@@ -37,7 +37,7 @@ class VariableGenerator {
 	/**
 	 * @return VariableHolder
 	 */
-	public function getVariableHolder() : VariableHolder {
+	public function getVariableHolder(): VariableHolder {
 		return $this->vars;
 	}
 
@@ -49,7 +49,7 @@ class VariableGenerator {
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addGenericVars( RecentChange $rc = null ) : self {
+	public function addGenericVars( RecentChange $rc = null ): self {
 		// These are lazy-loaded just to reduce the amount of preset variables, but they
 		// shouldn't be expensive.
 		$this->vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );
@@ -65,7 +65,7 @@ class VariableGenerator {
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addUserVars( UserIdentity $userIdentity, RecentChange $rc = null ) : self {
+	public function addUserVars( UserIdentity $userIdentity, RecentChange $rc = null ): self {
 		$user = User::newFromIdentity( $userIdentity );
 
 		$this->vars->setLazyLoadVar(
@@ -122,7 +122,7 @@ class VariableGenerator {
 		Title $title,
 		string $prefix,
 		RecentChange $rc = null
-	) : self {
+	): self {
 		$this->vars->setVar( $prefix . '_id', $title->getArticleID() );
 		$this->vars->setVar( $prefix . '_namespace', $title->getNamespace() );
 		$this->vars->setVar( $prefix . '_title', $title->getText() );
@@ -167,7 +167,7 @@ class VariableGenerator {
 	 * @param User $user The current user
 	 * @return $this For chaining
 	 */
-	public function addEditVars( WikiPage $page, User $user ) : self {
+	public function addEditVars( WikiPage $page, User $user ): self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',

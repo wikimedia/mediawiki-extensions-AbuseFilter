@@ -34,7 +34,7 @@ class CentralDBManager {
 	 * @throws DBError
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getConnection( int $index ) : IDatabase {
+	public function getConnection( int $index ): IDatabase {
 		if ( !is_string( $this->dbName ) ) {
 			throw new CentralDBNotAvailableException( '$wgAbuseFilterCentralDB is not configured' );
 		}
@@ -48,7 +48,7 @@ class CentralDBManager {
 	 * @return string
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getCentralDBName() : string {
+	public function getCentralDBName(): string {
 		if ( !is_string( $this->dbName ) ) {
 			throw new CentralDBNotAvailableException( '$wgAbuseFilterCentralDB is not configured' );
 		}
@@ -61,7 +61,7 @@ class CentralDBManager {
 	 *  as $wgAbuseFilterCentralDB.
 	 * @return bool
 	 */
-	public function filterIsCentral() : bool {
+	public function filterIsCentral(): bool {
 		return $this->filterIsCentral;
 	}
 }

@@ -59,7 +59,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @return VariableHolder|null
 	 */
-	public function getVars() : ?VariableHolder {
+	public function getVars(): ?VariableHolder {
 		if ( $this->rc->getAttribute( 'rc_type' ) == RC_LOG ) {
 			switch ( $this->rc->getAttribute( 'rc_log_type' ) ) {
 				case 'move':
@@ -101,7 +101,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @return $this
 	 */
-	private function addMoveVars() : self {
+	private function addMoveVars(): self {
 		$userIdentity = $this->rc->getPerformerIdentity();
 
 		$oldTitle = $this->rc->getTitle();
@@ -120,7 +120,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @return $this
 	 */
-	private function addCreateAccountVars() : self {
+	private function addCreateAccountVars(): self {
 		$this->vars->setVar(
 			'action',
 			$this->rc->getAttribute( 'rc_log_action' ) === 'autocreate'
@@ -143,7 +143,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @return $this
 	 */
-	private function addDeleteVars() : self {
+	private function addDeleteVars(): self {
 		$title = $this->rc->getTitle();
 		$userIdentity = $this->rc->getPerformerIdentity();
 
@@ -159,7 +159,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @return $this
 	 */
-	private function addUploadVars() : self {
+	private function addUploadVars(): self {
 		$title = $this->rc->getTitle();
 		$userIdentity = $this->rc->getPerformerIdentity();
 
@@ -204,7 +204,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @return $this
 	 */
-	private function addEditVarsForRow() : self {
+	private function addEditVarsForRow(): self {
 		$title = $this->rc->getTitle();
 		$userIdentity = $this->rc->getPerformerIdentity();
 

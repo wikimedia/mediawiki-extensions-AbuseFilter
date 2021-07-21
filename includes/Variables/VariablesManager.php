@@ -49,7 +49,7 @@ class VariablesManager {
 	 *
 	 * @param VariableHolder $holder
 	 */
-	public function translateDeprecatedVars( VariableHolder $holder ) : void {
+	public function translateDeprecatedVars( VariableHolder $holder ): void {
 		$deprecatedVars = $this->keywordsManager->getDeprecatedVariables();
 		foreach ( $holder->getVars() as $name => $value ) {
 			if ( array_key_exists( $name, $deprecatedVars ) ) {
@@ -76,13 +76,13 @@ class VariablesManager {
 		string $varName,
 		$mode = self::GET_STRICT,
 		$tempFilter = null
-	) : AFPData {
+	): AFPData {
 		$varName = strtolower( $varName );
 		if ( $holder->varIsSet( $varName ) ) {
 			/** @var $variable LazyLoadedVariable|AFPData */
 			$variable = $holder->getVarThrow( $varName );
 			if ( $variable instanceof LazyLoadedVariable ) {
-				$getVarCB = function ( string $varName ) use ( $holder ) : AFPData {
+				$getVarCB = function ( string $varName ) use ( $holder ): AFPData {
 					return $this->getVar( $holder, $varName );
 				};
 				$value = $this->lazyComputer->compute( $variable, $holder, $getVarCB );
@@ -140,7 +140,7 @@ class VariablesManager {
 		VariableHolder $holder,
 		$compute = [],
 		bool $includeUserVars = false
-	) : array {
+	): array {
 		$coreVariables = [];
 
 		if ( !$includeUserVars ) {
@@ -174,7 +174,7 @@ class VariablesManager {
 	 *
 	 * @param VariableHolder $holder
 	 */
-	public function computeDBVars( VariableHolder $holder ) : void {
+	public function computeDBVars( VariableHolder $holder ): void {
 		static $dbTypes = [
 			'links-from-wikitext-or-database',
 			'load-recent-authors',
@@ -206,7 +206,7 @@ class VariablesManager {
 	 * @param VariableHolder $holder
 	 * @return array
 	 */
-	public function exportAllVars( VariableHolder $holder ) : array {
+	public function exportAllVars( VariableHolder $holder ): array {
 		$exported = [];
 		foreach ( array_keys( $holder->getVars() ) as $varName ) {
 			$exported[ $varName ] = $this->getVar( $holder, $varName )->toNative();
@@ -221,7 +221,7 @@ class VariablesManager {
 	 * @param VariableHolder $holder
 	 * @return string[]
 	 */
-	public function exportNonLazyVars( VariableHolder $holder ) : array {
+	public function exportNonLazyVars( VariableHolder $holder ): array {
 		$exported = [];
 		foreach ( $holder->getVars() as $varName => $data ) {
 			if ( !( $data instanceof LazyLoadedVariable ) ) {

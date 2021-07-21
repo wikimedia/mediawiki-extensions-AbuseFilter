@@ -183,7 +183,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param HTMLForm $form
 	 * @return bool
 	 */
-	public function showResults( array $formData, HTMLForm $form ) : bool {
+	public function showResults( array $formData, HTMLForm $form ): bool {
 		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mTestFilter );
 		$pager = new AbuseFilterExaminePager( $this, $changesList );
 

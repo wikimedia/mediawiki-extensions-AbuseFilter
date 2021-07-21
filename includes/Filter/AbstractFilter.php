@@ -48,14 +48,14 @@ class AbstractFilter {
 	/**
 	 * @return Specs
 	 */
-	public function getSpecs() : Specs {
+	public function getSpecs(): Specs {
 		return clone $this->specs;
 	}
 
 	/**
 	 * @return Flags
 	 */
-	public function getFlags() : Flags {
+	public function getFlags(): Flags {
 		return clone $this->flags;
 	}
 
@@ -126,7 +126,7 @@ class AbstractFilter {
 	/**
 	 * @return array[]
 	 */
-	public function getActions() : array {
+	public function getActions(): array {
 		if ( $this->actions === null ) {
 			$this->setActions( call_user_func( $this->actionsCallback ) );
 			// This is to ease testing
@@ -138,7 +138,7 @@ class AbstractFilter {
 	/**
 	 * @param array $actions
 	 */
-	protected function setActions( array $actions ) : void {
+	protected function setActions( array $actions ): void {
 		$this->actions = $actions;
 		$this->specs->setActionsNames( array_keys( $actions ) );
 	}

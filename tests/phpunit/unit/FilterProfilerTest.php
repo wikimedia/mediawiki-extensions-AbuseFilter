@@ -33,7 +33,7 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		'matches' => 0,
 	];
 
-	private function getFilterProfiler( array $options = null, LoggerInterface $logger = null ) : FilterProfiler {
+	private function getFilterProfiler( array $options = null, LoggerInterface $logger = null ): FilterProfiler {
 		if ( $options === null ) {
 			$options = [
 				'AbuseFilterProfileActionsCap' => 10000,
@@ -217,7 +217,7 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $profiler->getGroupProfile( $group ) );
 	}
 
-	public function provideRecordStats() : array {
+	public function provideRecordStats(): array {
 		return [
 			'No overflow' => [
 				100,

@@ -284,7 +284,7 @@ class FilterRunner {
 	 * @throws InvalidArgumentException
 	 * @return Status Always a good status, since we're only saving data.
 	 */
-	public function runForStash() : Status {
+	public function runForStash(): Status {
 		if ( $this->action !== 'edit' ) {
 			throw new InvalidArgumentException(
 				__METHOD__ . " can only be called for edits, called for action {$this->action}."
@@ -326,7 +326,7 @@ class FilterRunner {
 	 *
 	 * @return RunnerData
 	 */
-	protected function checkAllFiltersInternal() : RunnerData {
+	protected function checkAllFiltersInternal(): RunnerData {
 		// Ensure that we start fresh, see T193374
 		$this->parser->resetCondCount();
 		// Ensure there's no extra time leftover
@@ -355,7 +355,7 @@ class FilterRunner {
 	 * @protected Public for back compat only; this will actually be made protected in the future.
 	 * @return bool[] Map of (filter ID => bool)
 	 */
-	public function checkAllFilters() : array {
+	public function checkAllFilters(): array {
 		return $this->checkAllFiltersInternal()->getMatchesMap();
 	}
 
@@ -367,7 +367,7 @@ class FilterRunner {
 	 * @return array
 	 * @phan-return array{0:ParserStatus,1:array{time:float,conds:int}}
 	 */
-	protected function checkFilter( ExistingFilter $filter, bool $global = false ) : array {
+	protected function checkFilter( ExistingFilter $filter, bool $global = false ): array {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
 
 		$startConds = $this->parser->getCondCount();
@@ -413,7 +413,7 @@ class FilterRunner {
 	/**
 	 * @param bool[] $matches
 	 */
-	protected function updateEmergencyCache( array $matches ) : void {
+	protected function updateEmergencyCache( array $matches ): void {
 		$filters = $this->emergencyCache->getFiltersToCheckInGroup( $this->group );
 		foreach ( $filters as $filter ) {
 			if ( array_key_exists( "$filter", $matches ) ) {
@@ -425,7 +425,7 @@ class FilterRunner {
 	/**
 	 * @return array
 	 */
-	private function getSpecsForTagger() : array {
+	private function getSpecsForTagger(): array {
 		return [
 			'action' => $this->action,
 			'username' => $this->user->getName(),

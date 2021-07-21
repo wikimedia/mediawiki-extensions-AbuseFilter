@@ -11,5 +11,5 @@ interface Watcher {
 	 * @param int[] $globalFilters The global filters that matched the action
 	 * @param string $group
 	 */
-	public function run( array $localFilters, array $globalFilters, string $group ) : void;
+	public function run( array $localFilters, array $globalFilters, string $group ): void;
 }

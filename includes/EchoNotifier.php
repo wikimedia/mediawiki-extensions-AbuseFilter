@@ -36,7 +36,7 @@ class EchoNotifier {
 	 * @param int $filter
 	 * @return Title
 	 */
-	private function getTitleForFilter( int $filter ) : Title {
+	private function getTitleForFilter( int $filter ): Title {
 		return SpecialAbuseFilter::getTitleForSubpage( (string)$filter );
 	}
 
@@ -44,7 +44,7 @@ class EchoNotifier {
 	 * @param int $filter
 	 * @return int
 	 */
-	private function getLastUserIDForFilter( int $filter ) : int {
+	private function getLastUserIDForFilter( int $filter ): int {
 		return $this->filterLookup->getFilter( $filter, false )->getUserID();
 	}
 
@@ -53,7 +53,7 @@ class EchoNotifier {
 	 * @param int $filter
 	 * @return array
 	 */
-	public function getDataForEvent( int $filter ) : array {
+	public function getDataForEvent( int $filter ): array {
 		return [
 			'type' => self::EVENT_TYPE,
 			'title' => $this->getTitleForFilter( $filter ),

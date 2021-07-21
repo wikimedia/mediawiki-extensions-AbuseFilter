@@ -39,7 +39,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		AbuseFilterCachingParser $parser = null,
 		array $restrictions = [],
 		array $validFilterGroups = [ 'default' ]
-	) : FilterValidator {
+	): FilterValidator {
 		if ( !$parser ) {
 			$parser = $this->createMock( AbuseFilterCachingParser::class );
 			$parser->method( 'checkSyntax' )->willReturn(
@@ -70,7 +70,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param array $actions
 	 * @return AbstractFilter|MockObject
 	 */
-	private function getFilterWithActions( array $actions ) : AbstractFilter {
+	private function getFilterWithActions( array $actions ): AbstractFilter {
 		$ret = $this->createMock( AbstractFilter::class );
 		$ret->method( 'getRules' )->willReturn( '1' );
 		$ret->method( 'getName' )->willReturn( 'Foo' );
@@ -84,7 +84,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param Status $actual
 	 * @param array|null $params
 	 */
-	private function assertStatusMessage( ?string $expected, Status $actual, array $params = null ) : void {
+	private function assertStatusMessage( ?string $expected, Status $actual, array $params = null ): void {
 		$actualError = $actual->isGood() ? null : $actual->getErrors()[0]['message'];
 		$this->assertSame( $expected, $actualError, 'status message' );
 		if ( $params !== null ) {
@@ -113,7 +113,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideSyntax() : Generator {
+	public function provideSyntax(): Generator {
 		yield 'valid' => [ true, null, null, null ];
 		$excText = 'Internal error text';
 		yield 'invalid, internal error' => [
@@ -143,7 +143,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( $expected, $validator->checkRequiredFields( $filter ) );
 	}
 
-	public function provideRequiredFields() : array {
+	public function provideRequiredFields(): array {
 		return [
 			'valid' => [ '0', '0', null ],
 			'no rules' => [ '', 'bar', 'abusefilter-edit-missingfields' ],
@@ -163,7 +163,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( $expected, $this->getFilterValidator()->checkEmptyMessages( $filter ) );
 	}
 
-	public function provideEmptyMessages() : array {
+	public function provideEmptyMessages(): array {
 		return [
 			'valid' => [ [ 'warn' => [ 'foo' ], 'disallow' => [ 'bar' ] ], null ],
 			'empty warn' => [ [ 'warn' => [ '' ], 'disallow' => [ 'bar' ] ], 'abusefilter-edit-invalid-warn-message' ],
@@ -187,7 +187,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( $expected, $this->getFilterValidator()->checkConflictingFields( $filter ) );
 	}
 
-	public function provideConflictingFields() : array {
+	public function provideConflictingFields(): array {
 		return [
 			'valid' => [ true, false, null ],
 			'invalid' => [ true, true, 'abusefilter-edit-deleting-enabled' ]
@@ -217,7 +217,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( $expected, $actual );
 	}
 
-	public function provideCheckGlobalFilterEditPermission() : array {
+	public function provideCheckGlobalFilterEditPermission(): array {
 		return [
 			'none' => [ false, false, 'abusefilter-edit-notallowed-global' ],
 			'cur only' => [ true, false, 'abusefilter-edit-notallowed-global' ],
@@ -239,7 +239,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( $expected, $this->getFilterValidator()->checkMessagesOnGlobalFilters( $filter ) );
 	}
 
-	public function provideMessagesOnGlobalFilters() : array {
+	public function provideMessagesOnGlobalFilters(): array {
 		return [
 			'valid' => [
 				[ 'warn' => [ 'abusefilter-warning' ], 'disallow' => [ 'abusefilter-disallowed' ] ],
@@ -286,7 +286,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertStatusMessage( $expected, $validator->checkRestrictedActions( $user, $newFilter, $oldFilter ) );
 	}
 
-	public function provideRestrictedActions() : Generator {
+	public function provideRestrictedActions(): Generator {
 		$canModifyRestrictedPM = $this->createMock( AbuseFilterPermissionManager::class );
 		$canModifyRestrictedPM->method( 'canEditFilterWithRestrictedActions' )->willReturn( true );
 		$cannotModifyRestrictedPM = $this->createMock( AbuseFilterPermissionManager::class );
@@ -383,7 +383,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $actualError );
 	}
 
-	public function provideCheckAll() : Generator {
+	public function provideCheckAll(): Generator {
 		$noopFilter = $this->createMock( AbstractFilter::class );
 		$noopFilter->method( 'getRules' )->willReturn( '1' );
 		$noopFilter->method( 'getName' )->willReturn( 'Foo' );
@@ -465,7 +465,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideGroups() : Generator {
+	public function provideGroups(): Generator {
 		$allowed = [ 'default' ];
 		yield 'Default, pass' => [ 'default', $allowed, null ];
 		$extraGroup = 'foobar';

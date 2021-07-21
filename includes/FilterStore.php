@@ -91,7 +91,7 @@ class FilterStore {
 		?int $filter,
 		Filter $newFilter,
 		Filter $originalFilter
-	) : Status {
+	): Status {
 		$validationStatus = $this->filterValidator->checkAll( $newFilter, $originalFilter, $user );
 		if ( !$validationStatus->isGood() ) {
 			return $validationStatus;
@@ -125,7 +125,7 @@ class FilterStore {
 		array $differences,
 		?int $filter,
 		bool $wasGlobal
-	) : array {
+	): array {
 		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
 		$newRow = get_object_vars( $this->filterToDatabaseRow( $newFilter ) );
 
@@ -253,7 +253,7 @@ class FilterStore {
 	 * @param Filter $filter
 	 * @return stdClass
 	 */
-	private function filterToDatabaseRow( Filter $filter ) : stdClass {
+	private function filterToDatabaseRow( Filter $filter ): stdClass {
 		// T67807: integer 1's & 0's might be better understood than booleans
 		return (object)[
 			'af_id' => $filter->getID(),

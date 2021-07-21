@@ -21,7 +21,7 @@ class PurgeOldLogIPDataTest extends MaintenanceBaseTestCase {
 	/** @inheritDoc */
 	protected $tablesUsed = [ 'abuse_filter_log' ];
 
-	protected function tearDown() : void {
+	protected function tearDown(): void {
 		ConvertibleTimestamp::setFakeTime( false );
 		parent::tearDown();
 	}

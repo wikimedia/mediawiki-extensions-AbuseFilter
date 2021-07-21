@@ -174,7 +174,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param string $otherSpec
 	 * @return HistoryFilter|null
 	 */
-	public function loadSpec( $spec, $otherSpec ) : ?HistoryFilter {
+	public function loadSpec( $spec, $otherSpec ): ?HistoryFilter {
 		static $dependentSpecs = [ 'prev', 'next' ];
 		static $cache = [];
 
@@ -307,7 +307,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @param string[][] $actions
 	 * @return string[]
 	 */
-	private function stringifyActions( array $actions ) : array {
+	private function stringifyActions( array $actions ): array {
 		$lines = [];
 
 		ksort( $actions );

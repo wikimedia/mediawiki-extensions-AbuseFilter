@@ -46,7 +46,7 @@ class ConsequencesLookup {
 	 * @param string[] $filters
 	 * @return array[][]
 	 */
-	public function getConsequencesForFilters( array $filters ) : array {
+	public function getConsequencesForFilters( array $filters ): array {
 		$globalFilters = [];
 		$localFilters = [];
 
@@ -86,7 +86,7 @@ class ConsequencesLookup {
 	 * @param string $prefix
 	 * @return array[][]
 	 */
-	private function loadConsequencesFromDB( IDatabase $dbr, array $filters, string $prefix = '' ) : array {
+	private function loadConsequencesFromDB( IDatabase $dbr, array $filters, string $prefix = '' ): array {
 		$actionsByFilter = [];
 		foreach ( $filters as $filter ) {
 			$actionsByFilter[$prefix . $filter] = [];

@@ -11,7 +11,7 @@ class UserVisibleWarning extends AFPUserVisibleException {
 	/**
 	 * @return Message
 	 */
-	public function getMessageObj() : Message {
+	public function getMessageObj(): Message {
 		// Give grep a chance to find the usages:
 		// abusefilter-parser-warning-match-empty-regex
 		return new Message(

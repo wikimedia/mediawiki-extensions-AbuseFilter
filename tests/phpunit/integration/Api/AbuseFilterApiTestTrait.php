@@ -14,7 +14,7 @@ trait AbuseFilterApiTestTrait {
 	 * @param AbuseFilterCachingParser|null $parser
 	 * @return ParserFactory
 	 */
-	protected function getParserFactory( AbuseFilterCachingParser $parser = null ) : ParserFactory {
+	protected function getParserFactory( AbuseFilterCachingParser $parser = null ): ParserFactory {
 		$factory = $this->createMock( ParserFactory::class );
 		if ( $parser !== null ) {
 			$factory->expects( $this->atLeastOnce() )

@@ -76,7 +76,7 @@ class VariablesBlobStore {
 	 *
 	 * @return VariableHolder
 	 */
-	public function loadVarDump( string $address ) : VariableHolder {
+	public function loadVarDump( string $address ): VariableHolder {
 		try {
 			$blob = $this->blobStore->getBlob( $address );
 		} catch ( BlobAccessException $ex ) {

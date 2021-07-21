@@ -15,7 +15,7 @@ class MutableFilter extends Filter {
 	 * @return self
 	 * @codeCoverageIgnore
 	 */
-	public static function newDefault() : self {
+	public static function newDefault(): self {
 		return new self(
 			new Specs(
 				'',
@@ -43,7 +43,7 @@ class MutableFilter extends Filter {
 	 * @param Filter $filter
 	 * @return self
 	 */
-	public static function newFromParentFilter( Filter $filter ) : self {
+	public static function newFromParentFilter( Filter $filter ): self {
 		return new self(
 			$filter->getSpecs(),
 			$filter->getFlags(),
@@ -127,7 +127,7 @@ class MutableFilter extends Filter {
 	 * @note This also updates action names
 	 * @param array[] $actions
 	 */
-	public function setActions( array $actions ) : void {
+	public function setActions( array $actions ): void {
 		parent::setActions( $actions );
 	}
 

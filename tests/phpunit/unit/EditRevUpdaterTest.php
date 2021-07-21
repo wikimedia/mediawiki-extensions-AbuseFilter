@@ -47,7 +47,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		IDatabase $localDB = null,
 		IDatabase $centralDB = null,
 		RevisionLookup $revLookup = null
-	) : EditRevUpdater {
+	): EditRevUpdater {
 		$localDB = $localDB ?? $this->createMock( IDatabase::class );
 		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnectionRef' )->willReturn( $localDB );
@@ -66,7 +66,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 	 * @param LinkTarget $target
 	 * @return array
 	 */
-	private function getPageAndRev( LinkTarget $target ) : array {
+	private function getPageAndRev( LinkTarget $target ): array {
 		$title = Title::newFromLinkTarget( $target );
 		// Legacy code. Yay.
 		$title->mArticleID = 123456;
@@ -140,7 +140,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $updater->updateRev( $page, $rev ) );
 	}
 
-	public function provideIDsSuccess() : array {
+	public function provideIDsSuccess(): array {
 		return [
 			'local only' => [ [ 'local' => [ 1, 2 ], 'global' => [] ] ],
 			'global only' => [ [ 'local' => [], 'global' => [ 1, 2 ] ] ],
@@ -197,7 +197,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$updater->setLogIdsForTarget( new TitleValue( NS_MAIN, 'x' ), $ids );
 	}
 
-	public function provideInvalidIDs() : array {
+	public function provideInvalidIDs(): array {
 		return [
 			'empty' => [ [] ],
 			'missing key' => [ [ 'local' => [ 1 ] ] ],

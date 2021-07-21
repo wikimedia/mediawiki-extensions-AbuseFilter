@@ -17,7 +17,7 @@ use Psr\Log\NullLogger;
  */
 class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 
-	private function getStore( BagOStuff $cache ) : BlockAutopromoteStore {
+	private function getStore( BagOStuff $cache ): BlockAutopromoteStore {
 		return new BlockAutopromoteStore(
 			$cache,
 			new NullLogger(),
@@ -25,7 +25,7 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public function provideBlockAutopromote() : Generator {
+	public function provideBlockAutopromote(): Generator {
 		$cache = $this->createMock( BagOStuff::class );
 		$cache->expects( $this->once() )->method( 'set' )->willReturn( false );
 		$cache->method( 'makeKey' )->willReturn( 'foo' );
@@ -44,7 +44,7 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $store->blockAutoPromote( $target, '', 1 ) );
 	}
 
-	public function provideUnblockAutopromote() : Generator {
+	public function provideUnblockAutopromote(): Generator {
 		yield 'not blocked' => [ new HashBagOStuff(), false ];
 
 		$cache = $this->createMock( BagOStuff::class );

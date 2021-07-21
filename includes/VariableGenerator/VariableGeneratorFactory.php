@@ -45,7 +45,7 @@ class VariableGeneratorFactory {
 	 * @param VariableHolder|null $holder
 	 * @return VariableGenerator
 	 */
-	public function newGenerator( VariableHolder $holder = null ) : VariableGenerator {
+	public function newGenerator( VariableHolder $holder = null ): VariableGenerator {
 		return new VariableGenerator( $this->hookRunner, $holder );
 	}
 
@@ -55,7 +55,7 @@ class VariableGeneratorFactory {
 	 * @param VariableHolder|null $holder
 	 * @return RunVariableGenerator
 	 */
-	public function newRunGenerator( User $user, Title $title, VariableHolder $holder = null ) : RunVariableGenerator {
+	public function newRunGenerator( User $user, Title $title, VariableHolder $holder = null ): RunVariableGenerator {
 		return new RunVariableGenerator(
 			$this->hookRunner,
 			$this->textExtractor,
@@ -76,7 +76,7 @@ class VariableGeneratorFactory {
 		RecentChange $rc,
 		User $contextUser,
 		VariableHolder $holder = null
-	) : RCVariableGenerator {
+	): RCVariableGenerator {
 		return new RCVariableGenerator(
 			$this->hookRunner,
 			$this->mimeAnalyzer,

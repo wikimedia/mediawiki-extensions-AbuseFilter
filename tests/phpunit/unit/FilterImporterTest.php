@@ -43,7 +43,7 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 		array $groups = null,
 		bool $isCentral = null,
 		array $actions = null
-	) : FilterImporter {
+	): FilterImporter {
 		$groups = $groups ?? [ 'default' ];
 		$isCentral = $isCentral ?? false;
 		$actions = array_fill_keys( $actions ?? [ 'warn', 'disallow', 'block' ], true );
@@ -140,7 +140,7 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideRoundTrip() : Generator {
+	public function provideRoundTrip(): Generator {
 		$actions = [
 			'block' => [],
 			'warn' => []

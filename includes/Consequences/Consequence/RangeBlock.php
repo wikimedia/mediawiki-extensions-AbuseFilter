@@ -49,7 +49,7 @@ class RangeBlock extends BlockingConsequence {
 	/**
 	 * @inheritDoc
 	 */
-	public function execute() : bool {
+	public function execute(): bool {
 		$type = IPUtils::isIPv6( $this->requestIP ) ? 'IPv6' : 'IPv4';
 		$CIDRsize = max( $this->rangeBlockSize[$type], $this->blockCIDRLimit[$type] );
 		$blockCIDR = $this->requestIP . '/' . $CIDRsize;

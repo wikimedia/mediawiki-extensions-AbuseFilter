@@ -178,7 +178,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @param HTMLForm $dateForm
 	 * @return bool
 	 */
-	public function showRevertableActions( array $formData, HTMLForm $dateForm ) : bool {
+	public function showRevertableActions( array $formData, HTMLForm $dateForm ): bool {
 		$lang = $this->getLanguage();
 		$user = $this->getUser();
 		$filter = $this->filter;
@@ -386,7 +386,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return ReversibleConsequence
 	 * @throws MWException
 	 */
-	private function getConsequence( string $action, array $result ) : ReversibleConsequence {
+	private function getConsequence( string $action, array $result ): ReversibleConsequence {
 		$params = new Parameters(
 			$this->filterLookup->getFilter( $this->filter, false ),
 			false,
@@ -418,7 +418,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return bool
 	 * @throws MWException
 	 */
-	public function revertAction( string $action, array $result ) : bool {
+	public function revertAction( string $action, array $result ): bool {
 		$message = $this->msg(
 			'abusefilter-revert-reason', $this->filter, $this->reason
 		)->inContentLanguage()->text();

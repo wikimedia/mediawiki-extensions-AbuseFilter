@@ -20,7 +20,7 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 * @param bool $msgDisabled Should the message be disabled?
 	 * @return SpecsFormatter
 	 */
-	private function getFormatter( bool $msgDisabled = false ) : SpecsFormatter {
+	private function getFormatter( bool $msgDisabled = false ): SpecsFormatter {
 		$localizer = $this->createMock( MessageLocalizer::class );
 		$localizer->method( 'msg' )->willReturnCallback( function ( $k, $p = [] ) use ( $msgDisabled ) {
 			if ( $k === 'abusefilter-throttle-details' ) {
@@ -74,7 +74,7 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return array[]
 	 */
-	public function provideActionDisplay() : array {
+	public function provideActionDisplay(): array {
 		return [
 			'exists' => [ 'foobar', false, 'abusefilter-action-foobar' ],
 			'does not exist' => [ 'foobar', true, 'foobar' ],
@@ -84,7 +84,7 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Language
 	 */
-	private function getMockLanguage() : Language {
+	private function getMockLanguage(): Language {
 		$lang = $this->createMock( Language::class );
 		$lang->method( 'translateBlockExpiry' )->willReturnCallback( static function ( $x ) {
 			return "expiry-$x";
@@ -153,7 +153,7 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideFlags() : array {
+	public function provideFlags(): array {
 		return [
 			'empty' => [ '', '' ],
 			'single' => [ 'foo', 'abusefilter-history-foo' ],
@@ -176,7 +176,7 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $formatter->formatFilterFlags( $filter, $lang ) );
 	}
 
-	public function provideFilterFlags() : Generator {
+	public function provideFilterFlags(): Generator {
 		$none = MutableFilter::newDefault();
 		$none->setEnabled( false );
 		yield 'none' => [ $none, '' ];
@@ -203,7 +203,7 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return array[]
 	 */
-	public function provideGroup() : array {
+	public function provideGroup(): array {
 		return [
 			'exists' => [ 'foobar', false, 'abusefilter-group-foobar' ],
 			'does not exist' => [ 'foobar', true, 'foobar' ],

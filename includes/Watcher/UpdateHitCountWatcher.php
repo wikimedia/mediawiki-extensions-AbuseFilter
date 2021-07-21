@@ -34,7 +34,7 @@ class UpdateHitCountWatcher implements Watcher {
 	/**
 	 * @inheritDoc
 	 */
-	public function run( array $localFilters, array $globalFilters, string $group ) : void {
+	public function run( array $localFilters, array $globalFilters, string $group ): void {
 		// Run in a DeferredUpdate to avoid primary database queries on raw/view requests (T274455)
 		DeferredUpdates::addCallableUpdate( function () use ( $localFilters, $globalFilters ) {
 			if ( $localFilters ) {
@@ -52,7 +52,7 @@ class UpdateHitCountWatcher implements Watcher {
 	 * @param IDatabase $dbw
 	 * @param array $loggedFilters
 	 */
-	private function updateHitCounts( IDatabase $dbw, array $loggedFilters ) : void {
+	private function updateHitCounts( IDatabase $dbw, array $loggedFilters ): void {
 		$dbw->update(
 			'abuse_filter',
 			[ 'af_hit_count=af_hit_count+1' ],

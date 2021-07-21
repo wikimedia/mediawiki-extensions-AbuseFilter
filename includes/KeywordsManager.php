@@ -286,7 +286,7 @@ class KeywordsManager {
 	 * You usually want to use getVarsMappings(), not this one.
 	 * @return string[]
 	 */
-	public function getCoreVariables() : array {
+	public function getCoreVariables(): array {
 		return array_keys( self::BUILDER_VALUES['vars'] );
 	}
 }

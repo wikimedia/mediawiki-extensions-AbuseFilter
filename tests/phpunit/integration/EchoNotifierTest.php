@@ -19,7 +19,7 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		'2' => 42,
 	];
 
-	private function getFilterLookup() : FilterLookup {
+	private function getFilterLookup(): FilterLookup {
 		$lookup = $this->createMock( FilterLookup::class );
 		$lookup->method( 'getFilter' )
 			->willReturnCallback( function ( $filter, $global ) {
@@ -31,7 +31,7 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		return $lookup;
 	}
 
-	public function provideDataForEvent() : array {
+	public function provideDataForEvent(): array {
 		return [
 			[ true, 1, 1 ],
 			[ true, 2, 42 ],

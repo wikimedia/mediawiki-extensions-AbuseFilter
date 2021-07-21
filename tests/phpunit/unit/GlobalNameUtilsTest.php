@@ -44,7 +44,7 @@ class GlobalNameUtilsTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ $id, $global ], $filterDef );
 	}
 
-	public function provideBuildGlobalName() : array {
+	public function provideBuildGlobalName(): array {
 		return [
 			[ 1, false, '1' ],
 			[ 2, true, 'global-2' ],

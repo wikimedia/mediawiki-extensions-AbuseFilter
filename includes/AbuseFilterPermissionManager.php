@@ -28,7 +28,7 @@ class AbuseFilterPermissionManager {
 	 * @param User $user
 	 * @return bool
 	 */
-	public function canEdit( User $user ) : bool {
+	public function canEdit( User $user ): bool {
 		$block = $user->getBlock();
 		return (
 			!( $block && $block->isSitewide() ) &&
@@ -40,7 +40,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canEditGlobal( UserIdentity $user ) : bool {
+	public function canEditGlobal( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-modify-global' );
 	}
 
@@ -51,7 +51,7 @@ class AbuseFilterPermissionManager {
 	 * @param AbstractFilter $filter
 	 * @return bool
 	 */
-	public function canEditFilter( User $user, AbstractFilter $filter ) : bool {
+	public function canEditFilter( User $user, AbstractFilter $filter ): bool {
 		return (
 			$this->canEdit( $user ) &&
 			!( $filter->isGlobal() && !$this->canEditGlobal( $user ) )
@@ -64,7 +64,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canEditFilterWithRestrictedActions( UserIdentity $user ) : bool {
+	public function canEditFilterWithRestrictedActions( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-modify-restricted' );
 	}
 
@@ -72,7 +72,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canViewPrivateFilters( UserIdentity $user ) : bool {
+	public function canViewPrivateFilters( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasAnyRight(
 			$user,
 			'abusefilter-modify',
@@ -84,7 +84,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canViewPrivateFiltersLogs( UserIdentity $user ) : bool {
+	public function canViewPrivateFiltersLogs( UserIdentity $user ): bool {
 		return $this->canViewPrivateFilters( $user ) ||
 			$this->permissionManager->userHasRight( $user, 'abusefilter-log-private' );
 	}
@@ -93,7 +93,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canViewAbuseLog( UserIdentity $user ) : bool {
+	public function canViewAbuseLog( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-log' );
 	}
 
@@ -101,7 +101,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canHideAbuseLog( UserIdentity $user ) : bool {
+	public function canHideAbuseLog( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-hide-log' );
 	}
 
@@ -109,7 +109,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canRevertFilterActions( UserIdentity $user ) : bool {
+	public function canRevertFilterActions( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-revert' );
 	}
 
@@ -119,7 +119,7 @@ class AbuseFilterPermissionManager {
 	 * @todo Take a Filter parameter
 	 * @return bool
 	 */
-	public function canSeeLogDetailsForFilter( UserIdentity $user, $filterHidden ) : bool {
+	public function canSeeLogDetailsForFilter( UserIdentity $user, $filterHidden ): bool {
 		if ( $filterHidden ) {
 			return $this->canSeeLogDetails( $user ) && $this->canViewPrivateFiltersLogs( $user );
 		}
@@ -131,7 +131,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canSeeLogDetails( UserIdentity $user ) : bool {
+	public function canSeeLogDetails( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-log-detail' );
 	}
 
@@ -139,7 +139,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canSeePrivateDetails( UserIdentity $user ) : bool {
+	public function canSeePrivateDetails( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-privatedetails' );
 	}
 
@@ -147,7 +147,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canSeeHiddenLogEntries( UserIdentity $user ) : bool {
+	public function canSeeHiddenLogEntries( UserIdentity $user ): bool {
 		return $this->permissionManager->userHasRight( $user, 'abusefilter-hidden-log' );
 	}
 
@@ -155,7 +155,7 @@ class AbuseFilterPermissionManager {
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function canUseTestTools( UserIdentity $user ) : bool {
+	public function canUseTestTools( UserIdentity $user ): bool {
 		// TODO: make independent
 		return $this->canViewPrivateFilters( $user );
 	}

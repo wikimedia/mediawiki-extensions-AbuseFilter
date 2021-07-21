@@ -32,7 +32,7 @@ class AFPUserVisibleException extends AFPException {
 	/**
 	 * @return int
 	 */
-	public function getPosition() : int {
+	public function getPosition(): int {
 		return $this->mPosition;
 	}
 
@@ -41,14 +41,14 @@ class AFPUserVisibleException extends AFPException {
 	 *
 	 * @return string
 	 */
-	public function getMessageForLogs() : string {
+	public function getMessageForLogs(): string {
 		return "ID: {$this->mExceptionID}; position: {$this->mPosition}; params: " . implode( $this->mParams );
 	}
 
 	/**
 	 * @return Message
 	 */
-	public function getMessageObj() : Message {
+	public function getMessageObj(): Message {
 		// Give grep a chance to find the usages:
 		// abusefilter-exception-unexpectedatend, abusefilter-exception-expectednotfound
 		// abusefilter-exception-unrecognisedkeyword, abusefilter-exception-unexpectedtoken
@@ -71,7 +71,7 @@ class AFPUserVisibleException extends AFPException {
 	 * Serialize data for edit stash
 	 * @return array
 	 */
-	public function toArray() : array {
+	public function toArray(): array {
 		return [
 			'class' => static::class,
 			'exceptionID' => $this->mExceptionID,

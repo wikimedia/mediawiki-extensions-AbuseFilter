@@ -385,7 +385,7 @@ class AFPData {
 	 * Check whether this instance contains the DUNDEFINED type, recursively
 	 * @return bool
 	 */
-	public function hasUndefined() : bool {
+	public function hasUndefined(): bool {
 		if ( $this->type === self::DUNDEFINED ) {
 			return true;
 		}
@@ -403,7 +403,7 @@ class AFPData {
 	 * Return a clone of this instance where DUNDEFINED is replaced with DNULL
 	 * @return $this
 	 */
-	public function cloneAsUndefinedReplacedWithNull() : self {
+	public function cloneAsUndefinedReplacedWithNull(): self {
 		if ( $this->type === self::DUNDEFINED ) {
 			return new self( self::DNULL );
 		}

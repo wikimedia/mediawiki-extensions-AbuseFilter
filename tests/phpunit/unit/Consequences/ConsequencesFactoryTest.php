@@ -28,7 +28,7 @@ use Psr\Log\NullLogger;
  */
 class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 
-	private function getFactory() : ConsequencesFactory {
+	private function getFactory(): ConsequencesFactory {
 		$opts = new ServiceOptions(
 			ConsequencesFactory::CONSTRUCTOR_OPTIONS,
 			[

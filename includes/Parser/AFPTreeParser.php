@@ -132,7 +132,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * @throws AFPUserVisibleException
 	 * @return AFPSyntaxTree
 	 */
-	public function parse( $code ) : AFPSyntaxTree {
+	public function parse( $code ): AFPSyntaxTree {
 		$tokenizer = new AbuseFilterTokenizer( $this->cache, $this->logger );
 		$this->mTokens = $tokenizer->getTokens( $code );
 		$this->mPos = 0;
@@ -143,7 +143,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	/**
 	 * @return AFPSyntaxTree
 	 */
-	public function buildSyntaxTree() : AFPSyntaxTree {
+	public function buildSyntaxTree(): AFPSyntaxTree {
 		$startTime = microtime( true );
 		$root = $this->doLevelEntry();
 		$this->statsd->timing( 'abusefilter_cachingParser_buildtree', microtime( true ) - $startTime );

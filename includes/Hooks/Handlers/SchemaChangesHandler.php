@@ -35,7 +35,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	 * @codeCoverageIgnore
 	 * @return self
 	 */
-	public static function newFromGlobalState() : self {
+	public static function newFromGlobalState(): self {
 		return new self(
 			// @todo Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain(),
@@ -117,7 +117,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	 * @param DatabaseUpdater $updater
 	 * @return bool
 	 */
-	public function createAbuseFilterUser( DatabaseUpdater $updater ) : bool {
+	public function createAbuseFilterUser( DatabaseUpdater $updater ): bool {
 		$username = $this->messageLocalizer->msg( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newFromName( $username );
 

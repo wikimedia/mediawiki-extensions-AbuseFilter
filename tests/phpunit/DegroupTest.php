@@ -16,7 +16,7 @@ use MediaWiki\User\UserIdentityValue;
 class DegroupTest extends MediaWikiIntegrationTestCase {
 	use ConsequenceGetMessageTestTrait;
 
-	private function getMsgLocalizer() : MessageLocalizer {
+	private function getMsgLocalizer(): MessageLocalizer {
 		$ml = $this->createMock( MessageLocalizer::class );
 		$ml->method( 'msg' )->willReturnCallback( function ( $k, $p ) {
 			return $this->getMockMessage( $k, $p );
@@ -24,7 +24,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 		return $ml;
 	}
 
-	private function getFilterUser() : FilterUser {
+	private function getFilterUser(): FilterUser {
 		// TODO: Can't use mocks until ManualLogEntry is servicified (T253717)
 		return AbuseFilterServices::getFilterUser();
 	}
@@ -122,7 +122,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $degroup->execute() );
 	}
 
-	public function provideRevert() : array {
+	public function provideRevert(): array {
 		return [
 			[ true, [ '*', 'user', 'sysop' ] ],
 			[ true, [ '*', 'user', 'canceled', 'sysop' ] ],

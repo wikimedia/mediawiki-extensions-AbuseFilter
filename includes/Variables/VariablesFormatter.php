@@ -38,7 +38,7 @@ class VariablesFormatter {
 	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 */
-	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ) : void {
+	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
 		$this->messageLocalizer = $messageLocalizer;
 	}
 
@@ -46,7 +46,7 @@ class VariablesFormatter {
 	 * @param VariableHolder $varHolder
 	 * @return string
 	 */
-	public function buildVarDumpTable( VariableHolder $varHolder ) : string {
+	public function buildVarDumpTable( VariableHolder $varHolder ): string {
 		$vars = $this->varManager->exportAllVars( $varHolder );
 
 		$output = '';
@@ -109,7 +109,7 @@ class VariablesFormatter {
 	 * @param string $indent
 	 * @return string
 	 */
-	public static function formatVar( $var, string $indent = '' ) : string {
+	public static function formatVar( $var, string $indent = '' ): string {
 		if ( $var === [] ) {
 			return '[]';
 		} elseif ( is_array( $var ) ) {

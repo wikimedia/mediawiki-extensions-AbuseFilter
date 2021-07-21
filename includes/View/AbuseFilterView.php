@@ -196,7 +196,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param Authority $authority
 	 * @return array
 	 */
-	public function buildVisibilityConditions( IDatabase $db, Authority $authority ) : array {
+	public function buildVisibilityConditions( IDatabase $db, Authority $authority ): array {
 		if ( !$authority->isAllowed( 'deletedhistory' ) ) {
 			$bitmask = RevisionRecord::DELETED_USER;
 		} elseif ( !$authority->isAllowedAny( 'suppressrevision', 'viewsuppressed' ) ) {

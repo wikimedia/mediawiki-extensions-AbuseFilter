@@ -21,7 +21,7 @@ class GlobalNameUtils {
 	 * @return string
 	 * @todo Calling this method should be avoided wherever possible
 	 */
-	public static function buildGlobalName( int $id, bool $global = true ) : string {
+	public static function buildGlobalName( int $id, bool $global = true ): string {
 		$prefix = $global ? self::GLOBAL_FILTER_PREFIX : '';
 		return "$prefix$id";
 	}
@@ -39,7 +39,7 @@ class GlobalNameUtils {
 	 * @phan-return array{0:int,1:bool}
 	 * @throws InvalidArgumentException
 	 */
-	public static function splitGlobalName( $filter ) : array {
+	public static function splitGlobalName( $filter ): array {
 		if ( preg_match( '/^' . self::GLOBAL_FILTER_PREFIX . '\d+$/', $filter ) === 1 ) {
 			$id = intval( substr( $filter, strlen( self::GLOBAL_FILTER_PREFIX ) ) );
 			return [ $id, true ];

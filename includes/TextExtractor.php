@@ -46,7 +46,7 @@ class TextExtractor {
 	 *        or an empty string if it can not be found
 	 * @return-taint none
 	 */
-	public function revisionToString( ?RevisionRecord $revision, Authority $performer ) : string {
+	public function revisionToString( ?RevisionRecord $revision, Authority $performer ): string {
 		if ( !$revision ) {
 			return '';
 		}
@@ -77,7 +77,7 @@ class TextExtractor {
 	 *
 	 * @return string a suitable string representation of the content.
 	 */
-	public function contentToString( Content $content ) : string {
+	public function contentToString( Content $content ): string {
 		$text = null;
 
 		if ( $this->hookRunner->onAbuseFilter_contentToString(

@@ -58,7 +58,7 @@ class ParserFactory {
 	 * @param VariableHolder|null $vars
 	 * @return AbuseFilterCachingParser
 	 */
-	public function newParser( VariableHolder $vars = null ) : AbuseFilterCachingParser {
+	public function newParser( VariableHolder $vars = null ): AbuseFilterCachingParser {
 		return new AbuseFilterCachingParser(
 			$this->contLang,
 			$this->cache,

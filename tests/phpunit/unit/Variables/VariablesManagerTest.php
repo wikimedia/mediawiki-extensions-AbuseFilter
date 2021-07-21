@@ -31,7 +31,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		LazyVariableComputer $lazyComputer = null,
 		KeywordsManager $keywordsManager = null,
 		LoggerInterface $logger = null
-	) : VariablesManager {
+	): VariablesManager {
 		return new VariablesManager(
 			$keywordsManager ?? new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
 			$lazyComputer ?? $this->createMock( LazyVariableComputer::class ),

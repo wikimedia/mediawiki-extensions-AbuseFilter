@@ -67,7 +67,7 @@ abstract class EditBoxBuilder {
 		bool $addResultDiv = true,
 		bool $externalForm = false,
 		bool $needsModifyRights = true
-	) : string {
+	): string {
 		$this->output->addModules( 'ext.abuseFilter.edit' );
 		$this->output->enableOOUI();
 
@@ -110,7 +110,7 @@ abstract class EditBoxBuilder {
 	/**
 	 * @return DropdownInputWidget
 	 */
-	private function getSuggestionsDropdown() : DropdownInputWidget {
+	private function getSuggestionsDropdown(): DropdownInputWidget {
 		$rawDropDown = $this->keywordsManager->getBuilderValues();
 
 		// The array needs to be rearranged to be understood by OOUI. It comes with the format
@@ -151,7 +151,7 @@ abstract class EditBoxBuilder {
 	 *
 	 * @return Widget
 	 */
-	protected function getEditorControls() : Widget {
+	protected function getEditorControls(): Widget {
 		return new ButtonWidget(
 			[
 				'label' => $this->localizer->msg( 'abusefilter-edit-check' )->text(),
@@ -168,6 +168,6 @@ abstract class EditBoxBuilder {
 	 * @param bool $externalForm
 	 * @return string
 	 */
-	abstract protected function getEditBox( string $rules, bool $isUserAllowed, bool $externalForm ) : string;
+	abstract protected function getEditBox( string $rules, bool $isUserAllowed, bool $externalForm ): string;
 
 }

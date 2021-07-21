@@ -709,7 +709,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	 *
 	 * @param int $start
 	 */
-	private function maybePrintProgress( int $start ) : void {
+	private function maybePrintProgress( int $start ): void {
 		if ( $this->progressMarkers && $start % ( 10 * $this->getBatchSize() ) === 0 ) {
 			$end = $start + $this->getBatchSize();
 			$this->output( "...Doing range $start - $end\n" );
@@ -720,7 +720,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 	 * Sleep for a while, if required. Note: checking the value is several
 	 * orders of magnitude faster than calling sleep(0).
 	 */
-	private function maybeSleep() : void {
+	private function maybeSleep(): void {
 		if ( $this->sleep ) {
 			sleep( $this->sleep );
 		}

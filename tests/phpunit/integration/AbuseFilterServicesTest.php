@@ -27,7 +27,7 @@ class AbuseFilterServicesTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideGetters() : Generator {
+	public function provideGetters(): Generator {
 		$clazz = new ReflectionClass( AbuseFilterServices::class );
 		foreach ( $clazz->getMethods( ReflectionMethod::IS_PUBLIC ) as $method ) {
 			$name = $method->getName();

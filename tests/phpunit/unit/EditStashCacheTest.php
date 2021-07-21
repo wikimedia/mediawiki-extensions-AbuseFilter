@@ -20,7 +20,7 @@ use TitleValue;
  */
 class EditStashCacheTest extends MediaWikiUnitTestCase {
 
-	private function getVariablesManager() : VariablesManager {
+	private function getVariablesManager(): VariablesManager {
 		return new VariablesManager(
 			$this->createMock( KeywordsManager::class ),
 			$this->createMock( LazyVariableComputer::class ),

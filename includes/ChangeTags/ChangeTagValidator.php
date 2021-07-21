@@ -30,7 +30,7 @@ class ChangeTagValidator {
 	 * @param string $tag Tag name
 	 * @return Status
 	 */
-	public function validateTag( string $tag ) : Status {
+	public function validateTag( string $tag ): Status {
 		$tagNameStatus = ChangeTags::isTagNameValid( $tag );
 
 		if ( !$tagNameStatus->isGood() ) {

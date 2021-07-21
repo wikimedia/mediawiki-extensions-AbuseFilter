@@ -63,7 +63,7 @@ class FilterValidator {
 	 * @param User $user
 	 * @return Status
 	 */
-	public function checkAll( AbstractFilter $newFilter, AbstractFilter $originalFilter, User $user ) : Status {
+	public function checkAll( AbstractFilter $newFilter, AbstractFilter $originalFilter, User $user ): Status {
 		// TODO We might consider not bailing at the first error, so we can show all errors at the first attempt
 
 		$syntaxStatus = $this->checkValidSyntax( $newFilter );
@@ -128,7 +128,7 @@ class FilterValidator {
 	 * @param AbstractFilter $filter
 	 * @return Status
 	 */
-	public function checkValidSyntax( AbstractFilter $filter ) : Status {
+	public function checkValidSyntax( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$parser = $this->parserFactory->newParser();
 		$syntaxStatus = $parser->checkSyntax( $filter->getRules() );
@@ -146,7 +146,7 @@ class FilterValidator {
 	 * @param AbstractFilter $filter
 	 * @return Status
 	 */
-	public function checkRequiredFields( AbstractFilter $filter ) : Status {
+	public function checkRequiredFields( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$missing = [];
 		if ( $filter->getRules() === '' ) {
@@ -168,7 +168,7 @@ class FilterValidator {
 	 * @param AbstractFilter $filter
 	 * @return Status
 	 */
-	public function checkConflictingFields( AbstractFilter $filter ) : Status {
+	public function checkConflictingFields( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		// Don't allow setting as deleted an active filter
 		if ( $filter->isEnabled() && $filter->isDeleted() ) {
@@ -181,7 +181,7 @@ class FilterValidator {
 	 * @param string[] $tags
 	 * @return Status
 	 */
-	public function checkAllTags( array $tags ) : Status {
+	public function checkAllTags( array $tags ): Status {
 		$ret = Status::newGood();
 		if ( count( $tags ) === 0 ) {
 			$ret->error( 'tags-create-no-name' );
@@ -203,7 +203,7 @@ class FilterValidator {
 	 * @param AbstractFilter $filter
 	 * @return Status
 	 */
-	public function checkEmptyMessages( AbstractFilter $filter ) : Status {
+	public function checkEmptyMessages( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$actions = $filter->getActions();
 		// TODO: Check and report both together
@@ -221,7 +221,7 @@ class FilterValidator {
 	 * @param array $params Throttle parameters
 	 * @return Status
 	 */
-	public function checkThrottleParameters( array $params ) : Status {
+	public function checkThrottleParameters( array $params ): Status {
 		list( $throttleCount, $throttlePeriod ) = explode( ',', $params[1], 2 );
 		$throttleGroups = array_slice( $params, 2 );
 		$validGroups = [
@@ -293,7 +293,7 @@ class FilterValidator {
 		User $user,
 		AbstractFilter $newFilter,
 		AbstractFilter $originalFilter
-	) : Status {
+	): Status {
 		if (
 			!$this->permManager->canEditFilter( $user, $newFilter ) ||
 			!$this->permManager->canEditFilter( $user, $originalFilter )
@@ -307,7 +307,7 @@ class FilterValidator {
 	 * @param AbstractFilter $filter
 	 * @return Status
 	 */
-	public function checkMessagesOnGlobalFilters( AbstractFilter $filter ) : Status {
+	public function checkMessagesOnGlobalFilters( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$actions = $filter->getActions();
 		if (
@@ -331,7 +331,7 @@ class FilterValidator {
 		UserIdentity $user,
 		AbstractFilter $newFilter,
 		AbstractFilter $originalFilter
-	) : Status {
+	): Status {
 		$ret = Status::newGood();
 		$allEnabledActions = array_merge( $newFilter->getActions(), $originalFilter->getActions() );
 		if (
@@ -347,7 +347,7 @@ class FilterValidator {
 	 * @param AbstractFilter $filter
 	 * @return Status
 	 */
-	public function checkGroup( AbstractFilter $filter ) : Status {
+	public function checkGroup( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$group = $filter->getGroup();
 		if ( !in_array( $group, $this->validGroups, true ) ) {

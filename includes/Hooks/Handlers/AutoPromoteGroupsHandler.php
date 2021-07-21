@@ -44,7 +44,7 @@ class AutoPromoteGroupsHandler implements GetAutoPromoteGroupsHook {
 	public static function factory(
 		ConsequencesRegistry $consequencesRegistry,
 		BlockAutopromoteStore $blockAutopromoteStore
-	) : self {
+	): self {
 		return new self(
 			ObjectCache::getInstance( 'hash' ),
 			$consequencesRegistry,
@@ -56,7 +56,7 @@ class AutoPromoteGroupsHandler implements GetAutoPromoteGroupsHook {
 	 * @param UserIdentity $user
 	 * @param string[] &$promote
 	 */
-	public function onGetAutoPromoteGroups( $user, &$promote ) : void {
+	public function onGetAutoPromoteGroups( $user, &$promote ): void {
 		if (
 			in_array( 'blockautopromote', $this->consequencesRegistry->getAllEnabledActionNames() )
 			&& $promote

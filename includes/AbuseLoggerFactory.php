@@ -75,7 +75,7 @@ class AbuseLoggerFactory {
 		Title $title,
 		User $user,
 		VariableHolder $vars
-	) : AbuseLogger {
+	): AbuseLogger {
 		return new AbuseLogger(
 			$this->centralDBManager,
 			$this->filterLookup,
