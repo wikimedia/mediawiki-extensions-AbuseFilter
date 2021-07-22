@@ -163,7 +163,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * Get variables for filtering an edit.
 	 *
 	 * @param Content $content
-	 * @param string $text
+	 * @param mixed $unused
 	 * @param string $summary
 	 * @param string $slot
 	 * @param WikiPage $page
@@ -171,7 +171,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 */
 	public function getEditVars(
 		Content $content,
-		string $text,
+		$unused,
 		string $summary,
 		$slot,
 		WikiPage $page
@@ -186,6 +186,7 @@ class RunVariableGenerator extends VariableGenerator {
 			// Optimization
 			$oldContent = null;
 			$oldAfText = '';
+			$text = $this->textExtractor->contentToString( $content );
 		}
 
 		return $this->newVariableHolderForEdit(

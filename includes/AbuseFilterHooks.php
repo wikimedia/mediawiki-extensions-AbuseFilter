@@ -75,9 +75,6 @@ class AbuseFilterHooks {
 		$revUpdater = AbuseFilterServices::getEditRevUpdater();
 		$revUpdater->clearLastEditPage();
 
-		// @todo is there any real point in passing this in?
-		$text = AbuseFilterServices::getTextExtractor()->contentToString( $content );
-
 		$title = $context->getTitle();
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		if ( $title === null ) {
@@ -95,7 +92,7 @@ class AbuseFilterHooks {
 		$page = $context->getWikiPage();
 
 		$builder = AbuseFilterServices::getVariableGeneratorFactory()->newRunGenerator( $user, $title );
-		$vars = $builder->getEditVars( $content, $text, $summary, $slot, $page );
+		$vars = $builder->getEditVars( $content, null, $summary, $slot, $page );
 		if ( $vars === null ) {
 			// We don't have to filter the edit
 			return Status::newGood();
