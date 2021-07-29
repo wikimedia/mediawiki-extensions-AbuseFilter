@@ -992,7 +992,7 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 	 */
 	public function testThrottle( $createIds, $actionsParams, $consequences ) {
 		$this->createFilters( $createIds );
-		$results = self::doActions( $actionsParams );
+		$results = $this->doActions( $actionsParams );
 		$res = $this->checkThrottleConsequence( $results );
 		$lastParams = array_pop( $actionsParams );
 		list( $expected, $actual ) = $this->checkConsequences( $res, $lastParams, $consequences );
