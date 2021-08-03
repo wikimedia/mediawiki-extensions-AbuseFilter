@@ -484,7 +484,7 @@
 	"abusefilter-exception-notenoughargs": "Zbyt mało argumentów dla funkcji $2, wywołanie – znak $1.\nOczekiwano $3 {{PLURAL:$3|argumentu|argumentów}}, użyto $4",
 	"abusefilter-exception-toomanyargs": "Zbyt dużo argumentów dla funkcji $2, wywołanie – znak $1.\nOczekiwano najwyżej $3 {{PLURAL:$3|argumentu|argumentów}}, użyto $4",
 	"abusefilter-exception-regexfailure": "Błąd w wyrażeniu regularnym „$2” na znaku $1.",
-	"abusefilter-exception-overridebuiltin": "Nielegalne nadpisanie wbudowanej zmiennej „$2” – znak $1.",
+	"abusefilter-exception-overridebuiltin": "Niedozwolone nadpisanie wbudowanej zmiennej „$2” – znak $1.",
 	"abusefilter-exception-outofbounds": "Żądanie nieistniejącego elementu tablicy $2 (rozmiar tablicy = $3) – znak $1.",
 	"abusefilter-exception-negativeindex": "Ujemne indeksy są niedozwolone w tablicach. Otrzymano indeks „$2” w $1.",
 	"abusefilter-exception-notarray": "Żądanie elementu tablicy od zmiennej nietablicowej – znak $1.",

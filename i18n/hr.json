@@ -166,7 +166,7 @@
 	"abusefilter-list-options-submit": "Osvježi",
 	"abusefilter-tools-text": "Nekoliko alata koji mogu biti korisni kod formuliranja i uklanjanja grešaka filtra zloporaba.",
 	"abusefilter-tools-expr": "Testiranje filtra",
-	"abusefilter-tools-submitexpr": "Ocijeni",
+	"abusefilter-tools-submitexpr": "Testiraj",
 	"abusefilter-tools-syntax-error": "Filtar ima neispravnu sintaksu",
 	"abusefilter-tools-reautoconfirm": "Obnovi status autopotvrđenog suradnika",
 	"abusefilter-tools-reautoconfirm-user": "Suradnik:",
