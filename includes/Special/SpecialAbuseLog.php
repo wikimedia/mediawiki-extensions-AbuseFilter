@@ -288,6 +288,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'SearchTitle' => [
 				'label-message' => 'abusefilter-log-search-title',
 				'type' => 'title',
+				'interwiki' => false,
 				'default' => $this->mSearchTitle,
 				'required' => false
 			],
