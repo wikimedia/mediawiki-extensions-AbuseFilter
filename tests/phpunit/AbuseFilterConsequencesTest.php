@@ -7,7 +7,6 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\PageEditStash;
-use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -549,15 +548,10 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 				$newTitle = isset( $params['newTitle'] )
 					? Title::newFromText( $params['newTitle'] )
 					: $this->getNonExistingTestPage()->getTitle();
-				/** @var MockObject|MovePage $mp */
-				$mp = $this->getMockBuilder( MovePage::class )
-					->onlyMethods( [ 'isValidMove' ] )
-					->setConstructorArgs( [ $target, $newTitle ] )
-					->getMock();
-				$mp->expects( $this->any() )
-					->method( 'isValidMove' )
-					->willReturn( Status::newGood() );
-				$status = $mp->move( $this->user, 'AbuseFilter move test', false );
+				$status = $this->getServiceContainer()
+					->getMovePageFactory()
+					->newMovePage( $target, $newTitle )
+					->move( $this->user, 'AbuseFilter move test', false );
 				break;
 			case 'delete':
 				$page = $this->getExistingTestPage( $target );
