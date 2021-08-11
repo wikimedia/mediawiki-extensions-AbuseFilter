@@ -12,7 +12,7 @@
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Перевірте, чи має зловживання збіги з набором змінних, редагуванням чи подією в журналі зловживань.\n\nПотрібні vars, rcid або logid, але використати можна лише один.",
-	"apihelp-abusefiltercheckmatch-summary": "Перевірити, щоб побачити, чи Фільтр редагувань відповідає набору змінних, редагуванню чи журнальовані дії фільтра зловживань.",
+	"apihelp-abusefiltercheckmatch-summary": "Перевірити, щоб побачити, чи відповідає фільтр зловживань набору змінних, редагуванню чи журнальовані дії фільтра зловживань.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Необхідні vars, rcid або logid, однак можна використати лише один з цих параметрів.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Повнотекстовий фільтр для перевірки на відповідність.",
 	"apihelp-abusefiltercheckmatch-param-vars": "JSON-кодований масив змінних, за яким тестувати.",

@@ -288,7 +288,7 @@
 	"abusefilter-edit-done-subtitle": "Фільтр змінено",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Ваші зміни]] на [[Special:AbuseFilter/$1|фільтр $3]] вже збережено.",
 	"abusefilter-edit-badsyntax": "У вказному вами фільтрі є синтаксична помилка.\nСинтаксичний аналізатор видав таке повідомлення: <pre>$1</pre>",
-	"abusefilter-edit-missingfields": " Наступні поля повинні бути заповнені обов'язково: $1",
+	"abusefilter-edit-missingfields": "Такі поля повинні бути заповнені обов'язково: $1",
 	"abusefilter-edit-deleting-enabled": "Ви не можете позначити активний фільтр як вилучений.",
 	"abusefilter-edit-restricted": "Ви не можете змінити цей фільтр, оскільки він містить одну або декілька обмежуючих дій. Будь ласка, попросіть користувача з відповідними правами змінити фільтр для вас.",
 	"abusefilter-edit-viewhistory": "Показати історію цього фільтра",
