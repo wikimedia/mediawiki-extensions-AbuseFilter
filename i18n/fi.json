@@ -133,6 +133,7 @@
 	"abusefilter-log-details-hidden-implicit": "Et voi nähdä tämän lokimerkinnän tietoja, koska siihen liittyvä versio on piilotettu eikä ole julkisesti näkyvissä.",
 	"abusefilter-log-private-not-included": "Yksi tai useampi määrittämäsi suodattimen numero on suljettu ulkopuolisilta. Koska sinulla ei ole lupaa nähdä yksityisten suodattimien tietoja, näitä suodattimia ei ole haettu.",
 	"abusefilter-log-hide-no-selected": "Ei valintoja",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Valittu väärinkäyttölokin merkintä|Valitut väärinkäyttölokin merkinnät}}:",
 	"abusefilter-log-hide-legend": "Muuta näkyvyyttä",
 	"abusefilter-log-hide-set-visibility": "Aseta valittujen merkintöjen näkyvyys:",
 	"abusefilter-log-hide-reason": "Syy:",
