@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DannyS712",
 			"Matma Rex",
 			"Sasan700",
 			"Исмаил Садуев",
@@ -89,7 +90,7 @@
 	"abusefilter-log-hide-reason": "Бахьана:",
 	"abusefilter-log-hide-forbidden": "Зуламан тептар чуьра дӀайаздарш къайладаха хьа бакъо йац.",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|къайладаьккхина}} $3",
-	"logentry-abusefilter-hit": "$1 {{#gender:$1|болх бола балийтина}} литтаре $4, кхочушъ дийнарг «$5» агӀона $3 чохь. Дийнарг:  $6  ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|болх бола балийтина}} литтаре $4, кхочушъ дийнарг «$5» агӀона $3 чохь. Дийнарг:  $6  ($7)",
 	"abusefilter-list": "Дерриг литтарш",
 	"abusefilter-list-id": "Литтаран ID",
 	"abusefilter-list-pattern": "Паттерн",

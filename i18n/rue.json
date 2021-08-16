@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DannyS712",
 			"Dim Grits",
 			"Gazeb",
 			"Matma Rex",
@@ -73,7 +74,7 @@
 	"abusefilter-log-hide-legend": "Сховати запис протоколу",
 	"abusefilter-log-hide-reason": "Причіна:",
 	"abusefilter-log-hide-forbidden": "Не маєте права про схованя записів в протоколї знеужытя",
-	"logentry-abusefilter-hit": "$1 {{#gender:$1|выкликав|выкликала}} спрацовованя $4, выконуючі дїю \"$5\" на $3. Учінены крокы: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|выкликав|выкликала}} спрацовованя $4, выконуючі дїю \"$5\" на $3. Учінены крокы: $6 ($7)",
 	"abusefilter-list": "Вшыткы філтры",
 	"abusefilter-list-id": "ІД філтра",
 	"abusefilter-list-status": "Статус",

@@ -3,6 +3,7 @@
 		"authors": [
 			"Artsiom91",
 			"Cesco",
+			"DannyS712",
 			"EugeneZelenko",
 			"Jim-by",
 			"Matma Rex",
@@ -128,7 +129,7 @@
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|адкрыты|адкрытыя}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|схаваў|схавала}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|адкрыў|адкрыла}} $3",
-	"logentry-abusefilter-hit": "$1 {{#GENDER:$2|выклікаў|выклікала}} спрацоўваньне фільтру $4 пры выкананьні дзеяньня «$5» на старонцы $3. Прынятыя меры: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|выклікаў|выклікала}} спрацоўваньне фільтру $4 пры выкананьні дзеяньня «$5» на старонцы $3. Прынятыя меры: $6 ($7)",
 	"log-action-filter-abusefilter": "Тып зьмены фільтру:",
 	"log-action-filter-abusefilter-create": "Стварэньне новага фільтру",
 	"log-action-filter-abusefilter-modify": "Зьмяненьне фільтру",
