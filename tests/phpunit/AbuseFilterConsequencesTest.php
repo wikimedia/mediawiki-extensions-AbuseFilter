@@ -2,8 +2,8 @@
 
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Block\DatabaseBlock;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterHooks;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\PageEditStash;
@@ -42,7 +42,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @group Large
  *
  * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner
- * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterHooks
+ * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider
@@ -500,7 +500,13 @@ class AbuseFilterConsequencesTest extends MediaWikiTestCase {
 		$context->setUser( $this->user );
 		$context->setWikiPage( $page );
 
-		AbuseFilterHooks::onEditFilterMergedContent( $context, $content, $status, $summary,
+		$hooksHandler = new FilteredActionsHandler(
+			MediaWikiServices::getInstance()->getStatsdDataFactory(),
+			AbuseFilterServices::getFilterRunnerFactory(),
+			AbuseFilterServices::getVariableGeneratorFactory(),
+			AbuseFilterServices::getEditRevUpdater()
+		);
+		$hooksHandler->onEditFilterMergedContent( $context, $content, $status, $summary,
 			$this->user, false );
 
 		if ( $status->isGood() ) {

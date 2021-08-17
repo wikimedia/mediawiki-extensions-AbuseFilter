@@ -182,7 +182,7 @@ class RCVariableGenerator extends VariableGenerator {
 			// @codeCoverageIgnoreEnd
 		}
 
-		// This is the same as AbuseFilterHooks::filterUpload, but from a different source
+		// This is the same as FilteredActionsHandler::filterUpload, but from a different source
 		$this->vars->setVar( 'file_sha1', \Wikimedia\base_convert( $file->getSha1(), 36, 16, 40 ) );
 		$this->vars->setVar( 'file_size', $file->getSize() );
 

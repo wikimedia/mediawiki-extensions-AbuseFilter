@@ -311,13 +311,17 @@
 		"RecentChangeSave": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RecentChangeSaveHandler",
 			"services": [ "AbuseFilterChangeTagger" ]
+		},
+		"FilteredActions": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\FilteredActionsHandler",
+			"services": [ "StatsdDataFactory", "AbuseFilterRunnerFactory", "AbuseFilterVariableGeneratorFactory", "AbuseFilterEditRevUpdater" ]
 		}
 	},
 	"Hooks": {
-		"EditFilterMergedContent": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onEditFilterMergedContent",
+		"EditFilterMergedContent": "FilteredActions",
 		"GetAutoPromoteGroups": "AutoPromoteGroups",
-		"TitleMove": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onTitleMove",
-		"ArticleDelete": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onArticleDelete",
+		"TitleMove": "FilteredActions",
+		"ArticleDelete": "FilteredActions",
 		"RecentChange_save": "RecentChangeSave",
 		"ListDefinedTags": "ChangeTags",
 		"ChangeTagsListActive": "ChangeTags",
@@ -325,13 +329,13 @@
 		"ContributionsToolLinks": "ToolLinks",
 		"HistoryPageToolLinks": "ToolLinks",
 		"UndeletePageToolLinks": "ToolLinks",
-		"UploadVerifyUpload": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onUploadVerifyUpload",
-		"UploadStashFile": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onUploadStashFile",
+		"UploadVerifyUpload": "FilteredActions",
+		"UploadStashFile": "FilteredActions",
 		"PageSaveComplete": "PageSave",
 		"RenameUserSQL": "UserRename",
 		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler::onUserMergeAccountFields",
 		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
-		"ParserOutputStashForEdit": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterHooks::onParserOutputStashForEdit",
+		"ParserOutputStashForEdit": "FilteredActions",
 		"UnitTestsAfterDatabaseSetup": "Tests",
 		"UnitTestsBeforeDatabaseTeardown": "Tests"
 	},
