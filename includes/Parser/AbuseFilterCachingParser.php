@@ -1268,7 +1268,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		if ( $needle === '' ) {
 			return new AFPData( AFPData::DINT, -1 );
 		}
-
+		// Special handling for when the offset is not contained in $haystack. PHP can emit a warning
+		// or throw an error depending on the version (T285978). TODO Should we also throw?
+		if ( $offset > mb_strlen( $haystack ) ) {
+			return new AFPData( AFPData::DINT, -1 );
+		}
 		$result = mb_strpos( $haystack, $needle, $offset );
 
 		if ( $result === false ) {
