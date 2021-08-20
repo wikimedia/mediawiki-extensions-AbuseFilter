@@ -202,8 +202,6 @@
 	"abusefilter-list-consequences": "处理",
 	"abusefilter-list-visibility": "公开级别",
 	"abusefilter-list-hitcount": "触发数",
-	"abusefilter-list-edit": "编辑",
-	"abusefilter-list-details": "详情",
 	"abusefilter-list-limit": "每页显示数量：",
 	"abusefilter-list-lastmodified": "最后更改",
 	"abusefilter-list-group": "过滤器组",

@@ -173,8 +173,6 @@
 	"abusefilter-list-consequences": "対処操作",
 	"abusefilter-list-visibility": "閲覧レベル",
 	"abusefilter-list-hitcount": "一致件数",
-	"abusefilter-list-edit": "編集",
-	"abusefilter-list-details": "詳細",
 	"abusefilter-list-limit": "ページごとの数:",
 	"abusefilter-list-lastmodified": "最終変更",
 	"abusefilter-list-group": "フィルターグループ",

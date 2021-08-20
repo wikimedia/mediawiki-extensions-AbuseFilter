@@ -179,8 +179,6 @@
 	"abusefilter-list-consequences": "Conséquences",
 	"abusefilter-list-visibility": "Visibilité",
 	"abusefilter-list-hitcount": "Nombre de détections",
-	"abusefilter-list-edit": "Modifier",
-	"abusefilter-list-details": "Détails",
 	"abusefilter-list-limit": "Nombre par page :",
 	"abusefilter-list-lastmodified": "Dernière modification",
 	"abusefilter-list-group": "Groupe du filtre",

@@ -68,8 +68,6 @@
 	"abusefilter-list-consequences": "Avleiðingar",
 	"abusefilter-list-visibility": "Sjónligheit",
 	"abusefilter-list-hitcount": "Treff-teljari",
-	"abusefilter-list-edit": "Rætta",
-	"abusefilter-list-details": "Smálutir",
 	"abusefilter-list-limit": "Mongd pr. síðu:",
 	"abusefilter-list-lastmodified": "Seinast broytt",
 	"abusefilter-list-group": "Filturbólkur",

@@ -176,8 +176,6 @@
 	"abusefilter-list-consequences": "處理方式",
 	"abusefilter-list-visibility": "可見性",
 	"abusefilter-list-hitcount": "觸發次數",
-	"abusefilter-list-edit": "編輯",
-	"abusefilter-list-details": "詳細資料",
 	"abusefilter-list-limit": "每頁顯示筆數：",
 	"abusefilter-list-lastmodified": "最後修改：",
 	"abusefilter-list-group": "過濾器群組",

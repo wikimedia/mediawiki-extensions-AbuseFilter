@@ -193,8 +193,6 @@
 	"abusefilter-list-consequences": "Consecuencias",
 	"abusefilter-list-visibility": "Visibilidad",
 	"abusefilter-list-hitcount": "Contador de detecciones",
-	"abusefilter-list-edit": "Editar",
-	"abusefilter-list-details": "Detalles",
 	"abusefilter-list-limit": "Número por página:",
 	"abusefilter-list-lastmodified": "Última modificación",
 	"abusefilter-list-group": "Grupo de filtros",

@@ -155,8 +155,6 @@
 	"abusefilter-list-consequences": "조치",
 	"abusefilter-list-visibility": "공개 여부",
 	"abusefilter-list-hitcount": "동작 횟수",
-	"abusefilter-list-edit": "편집",
-	"abusefilter-list-details": "자세한 내용",
 	"abusefilter-list-limit": "페이지당 필터 개수",
 	"abusefilter-list-lastmodified": "마지막 수정",
 	"abusefilter-list-group": "필터 그룹",
