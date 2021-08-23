@@ -5,7 +5,9 @@
 			"Yupik"
 		]
 	},
+	"abusefilter-log-hide-show": "Čääiti",
 	"abusefilter-log-hide-hide": "Čievâ",
 	"abusefilter-list-lastmodified": "Majemustáá nubástittum",
+	"abusefilter-edit-status-label": "Lovottuvah:",
 	"abusefilter-edit-throttle-groups-help": "Keejâ $1."
 }

@@ -95,6 +95,7 @@
 	"abusefilter-log-details-ip": "Изворна IP адреса",
 	"abusefilter-log-details-checkuser": "Провери корисника",
 	"abusefilter-log-noactions": "ништа",
+	"abusefilter-log-noactions-filter": "Ништа",
 	"abusefilter-log-details-diff": "Промене направљене при уређивању",
 	"abusefilter-log-linkoncontribs": "дневник злоупотреба",
 	"abusefilter-log-linkoncontribs-text": "Дневник злоупотреба {{GENDER:$1|овог корисника|ове кориснице}}",
@@ -437,6 +438,7 @@
 	"abusefilter-revert-reasonfield": "Разлог:",
 	"abusefilter-test": "Тестирај филтер према претходним изменама",
 	"abusefilter-test-intro": "Ова страница вам омогућава да проверите филтер из доње кутијице на {{PLURAL:$1|последњу $1 измену|последње $1 измене|последњих $1 измена}}.\nДа бисте учитали постојећи филтер, унесите његов ID у кутијицу испод поља за уређивање и клинките на дугме „Учитај“.",
+	"abusefilter-test-options-section": "Опције претраге",
 	"abusefilter-test-legend": "Тестирање филтера",
 	"abusefilter-test-load-filter": "Учитај филтер с назнаком:",
 	"abusefilter-test-submit": "Тестирај",
@@ -503,5 +505,6 @@
 	"abusefilter-view-privatedetails-reason": "Разлог за приступање приватним детаљима:",
 	"abusefilter-log-details-id": "ID дневника",
 	"abusefilter-log-ip-not-available": "Недоступно",
-	"tag-abusefilter-condition-limit": "достигнуто условно ограничење"
+	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
+	"notification-link-text-show-filter": "Прикажи филтер"
 }
