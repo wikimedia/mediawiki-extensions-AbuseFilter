@@ -405,7 +405,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Kullanıcının engelli olup olmadığı",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "E-posta adresinin doğrulanma zamanı",
 	"abusefilter-edit-builder-vars-recent-contributors": "Sayfaya katkıda bulunan son on kullanıcı",
-	"abusefilter-edit-builder-vars-first-contributor": "Kullanıcının ilk katkısı",
+	"abusefilter-edit-builder-vars-first-contributor": "Sayfada ilk katkıda bulunan kullanıcı",
 	"abusefilter-edit-builder-vars-movedfrom-recent-contributors": "Kaynak sayfayı taşımak için katkıda bulunan son on kullanıcı",
 	"abusefilter-edit-builder-vars-movedfrom-first-contributor": "Kaynak sayfayı taşımaya katkıda bulunan ilk kullanıcı",
 	"abusefilter-edit-builder-vars-movedto-recent-contributors": "Hedef sayfayı taşımak için katkıda bulunan son on kullanıcı",
