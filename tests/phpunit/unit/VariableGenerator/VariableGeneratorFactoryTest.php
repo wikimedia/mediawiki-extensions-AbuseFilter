@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWikiUnitTestCase;
 use MimeAnalyzer;
 use RecentChange;
@@ -26,7 +27,8 @@ class VariableGeneratorFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( AbuseFilterHookRunner::class ),
 			$this->createMock( TextExtractor::class ),
 			$this->createMock( MimeAnalyzer::class ),
-			$this->createMock( RepoGroup::class )
+			$this->createMock( RepoGroup::class ),
+			$this->createMock( WikiPageFactory::class )
 		);
 	}
 

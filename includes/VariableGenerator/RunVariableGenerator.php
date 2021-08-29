@@ -6,6 +6,7 @@ use Content;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
@@ -36,11 +37,14 @@ class RunVariableGenerator extends VariableGenerator {
 	private $textExtractor;
 	/** @var MimeAnalyzer */
 	private $mimeAnalyzer;
+	/** @var WikiPageFactory */
+	private $wikiPageFactory;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param TextExtractor $textExtractor
 	 * @param MimeAnalyzer $mimeAnalyzer
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param User $user
 	 * @param Title $title
 	 * @param VariableHolder|null $vars
@@ -49,6 +53,7 @@ class RunVariableGenerator extends VariableGenerator {
 		AbuseFilterHookRunner $hookRunner,
 		TextExtractor $textExtractor,
 		MimeAnalyzer $mimeAnalyzer,
+		WikiPageFactory $wikiPageFactory,
 		User $user,
 		Title $title,
 		VariableHolder $vars = null
@@ -56,6 +61,7 @@ class RunVariableGenerator extends VariableGenerator {
 		parent::__construct( $hookRunner, $vars );
 		$this->textExtractor = $textExtractor;
 		$this->mimeAnalyzer = $mimeAnalyzer;
+		$this->wikiPageFactory = $wikiPageFactory;
 		$this->user = $user;
 		$this->title = $title;
 	}
@@ -273,7 +279,7 @@ class RunVariableGenerator extends VariableGenerator {
 		// We only have the upload comment and page text when using the UploadVerifyUpload hook
 		if ( $summary !== null && $text !== null ) {
 			// This block is adapted from self::getTextForFiltering()
-			$page = WikiPage::factory( $this->title );
+			$page = $this->wikiPageFactory->newFromTitle( $this->title );
 			if ( $this->title->exists() ) {
 				$revRec = $page->getRevisionRecord();
 				if ( !$revRec ) {

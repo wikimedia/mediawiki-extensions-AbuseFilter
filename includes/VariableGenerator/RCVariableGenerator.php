@@ -6,6 +6,7 @@ use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Page\WikiPageFactory;
 use MimeAnalyzer;
 use MWFileProps;
 use MWTimestamp;
@@ -31,11 +32,14 @@ class RCVariableGenerator extends VariableGenerator {
 	private $mimeAnalyzer;
 	/** @var RepoGroup */
 	private $repoGroup;
+	/** @var WikiPageFactory */
+	private $wikiPageFactory;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param MimeAnalyzer $mimeAnalyzer
 	 * @param RepoGroup $repoGroup
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param RecentChange $rc
 	 * @param User $contextUser
 	 * @param VariableHolder|null $vars
@@ -44,6 +48,7 @@ class RCVariableGenerator extends VariableGenerator {
 		AbuseFilterHookRunner $hookRunner,
 		MimeAnalyzer $mimeAnalyzer,
 		RepoGroup $repoGroup,
+		WikiPageFactory $wikiPageFactory,
 		RecentChange $rc,
 		User $contextUser,
 		VariableHolder $vars = null
@@ -52,6 +57,7 @@ class RCVariableGenerator extends VariableGenerator {
 
 		$this->mimeAnalyzer = $mimeAnalyzer;
 		$this->repoGroup = $repoGroup;
+		$this->wikiPageFactory = $wikiPageFactory;
 		$this->rc = $rc;
 		$this->contextUser = $contextUser;
 	}
@@ -226,7 +232,10 @@ class RCVariableGenerator extends VariableGenerator {
 			$this->vars->setVar( 'old_wikitext', '' );
 		}
 
-		$this->addEditVars( \WikiPage::factory( $title ), $this->contextUser );
+		$this->addEditVars(
+			$this->wikiPageFactory->newFromTitle( $title ),
+			$this->contextUser
+		);
 
 		return $this;
 	}

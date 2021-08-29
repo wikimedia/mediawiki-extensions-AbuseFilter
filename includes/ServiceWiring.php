@@ -346,7 +346,8 @@ return [
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			$services->get( TextExtractor::SERVICE_NAME ),
 			$services->getMimeAnalyzer(),
-			$services->getRepoGroup()
+			$services->getRepoGroup(),
+			$services->getWikiPageFactory()
 		);
 	},
 	EditRevUpdater::SERVICE_NAME => static function ( MediaWikiServices $services ): EditRevUpdater {
