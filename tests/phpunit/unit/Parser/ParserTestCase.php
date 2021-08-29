@@ -28,7 +28,7 @@ use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
@@ -88,7 +88,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			} else {
 				$parser->parse( $expr );
 			}
-		} catch ( AFPUserVisibleException $e ) {
+		} catch ( UserVisibleException $e ) {
 			$this->assertEquals( $excep, $e->mExceptionID, $msg . " Got instead:\n$e" );
 			return;
 		}

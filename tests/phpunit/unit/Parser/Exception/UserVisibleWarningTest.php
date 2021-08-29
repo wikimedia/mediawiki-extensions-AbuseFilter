@@ -1,8 +1,8 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\Exception;
 
-use MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWikiUnitTestCase;
 
 /**
@@ -10,7 +10,7 @@ use MediaWikiUnitTestCase;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning
  */
 class UserVisibleWarningTest extends MediaWikiUnitTestCase {
 

@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Api;
 use ApiBase;
 use ApiMain;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 
 class CheckSyntax extends ApiBase {
@@ -64,9 +64,9 @@ class CheckSyntax extends ApiBase {
 			$r['status'] = 'ok';
 		} else {
 			// TODO: Improve the type here.
-			/** @var AFPUserVisibleException $excep */
+			/** @var UserVisibleException $excep */
 			$excep = $result->getException();
-			'@phan-var AFPUserVisibleException $excep';
+			'@phan-var UserVisibleException $excep';
 			$r = [
 				'status' => 'error',
 				'message' => $this->msg( $excep->getMessageObj() )->text(),

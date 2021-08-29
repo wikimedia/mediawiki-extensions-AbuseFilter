@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
-use MediaWiki\Extension\AbuseFilter\Parser\AFPException;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPInternalException;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
-use MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning;
 use MediaWikiUnitTestCase;
 
 /**
@@ -28,7 +28,7 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 	public function testGetters() {
 		$result = true;
 		$warm = false;
-		$exc = $this->createMock( AFPUserVisibleException::class );
+		$exc = $this->createMock( UserVisibleException::class );
 		$warnings = [ new UserVisibleWarning( 'foo', 1, [] ) ];
 		$status = new ParserStatus( $result, $warm, $exc, $warnings );
 		$this->assertSame( $result, $status->getResult() );
@@ -38,7 +38,7 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideToArrayException() {
-		yield 'exception instance' => [ new AFPInternalException() ];
+		yield 'exception instance' => [ new InternalException() ];
 		yield 'null' => [ null ];
 	}
 
@@ -47,7 +47,7 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 	 * @covers ::toArray
 	 * @covers ::fromArray
 	 */
-	public function testToArrayRoundTrip( ?AFPException $exception ) {
+	public function testToArrayRoundTrip( ?ExceptionBase $exception ) {
 		$status = new ParserStatus(
 			true,
 			false,

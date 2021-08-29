@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use BagOStuff;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -141,7 +142,7 @@ class AbuseFilterTokenizer {
 	 * @param string $code
 	 * @param int &$offset
 	 * @return AFPToken
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	private function nextToken( $code, &$offset ) {
 		$matches = [];
@@ -150,7 +151,7 @@ class AbuseFilterTokenizer {
 		// Read past comments
 		while ( preg_match( self::COMMENT_START_RE, $code, $matches, 0, $offset ) ) {
 			if ( strpos( $code, '*/', $offset ) === false ) {
-				throw new AFPUserVisibleException(
+				throw new UserVisibleException(
 					'unclosedcomment', $offset, [] );
 			}
 			$offset = strpos( $code, '*/', $offset ) + 2;
@@ -211,7 +212,7 @@ class AbuseFilterTokenizer {
 			return new AFPToken( $type, $token, $start );
 		}
 
-		throw new AFPUserVisibleException(
+		throw new UserVisibleException(
 			'unrecognisedtoken', $start, [ substr( $code, $start ) ] );
 	}
 
@@ -220,7 +221,7 @@ class AbuseFilterTokenizer {
 	 * @param int &$offset
 	 * @param int $start
 	 * @return AFPToken
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	private static function readStringLiteral( $code, &$offset, $start ) {
 		$type = $code[$offset];
@@ -281,6 +282,6 @@ class AbuseFilterTokenizer {
 				// @codeCoverageIgnoreEnd
 			}
 		}
-		throw new AFPUserVisibleException( 'unclosedstring', $offset, [] );
+		throw new UserVisibleException( 'unclosedstring', $offset, [] );
 	}
 }

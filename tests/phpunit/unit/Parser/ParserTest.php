@@ -30,7 +30,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Psr\Log\NullLogger;
@@ -50,8 +50,8 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPParserState
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPException
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
  */
 class ParserTest extends ParserTestCase {
@@ -133,7 +133,7 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testEmptyParenthesisOnly() {
 		$code = '()';
-		$this->expectException( AFPUserVisibleException::class );
+		$this->expectException( UserVisibleException::class );
 		$this->expectExceptionMessage( 'unexpectedtoken' );
 		$this->getParser()->parse( $code );
 	}
@@ -722,7 +722,7 @@ class ParserTest extends ParserTestCase {
 		try {
 			$parser->parse( $code );
 			$this->fail( 'No exception was thrown.' );
-		} catch ( AFPUserVisibleException $e ) {
+		} catch ( UserVisibleException $e ) {
 			$this->assertSame( $exceptionCode, $e->mExceptionID );
 		}
 	}
@@ -803,7 +803,7 @@ class ParserTest extends ParserTestCase {
 		$actuallyValid = true;
 		try {
 			$parser->parse( $code );
-		} catch ( AFPUserVisibleException $e ) {
+		} catch ( UserVisibleException $e ) {
 			$actuallyValid = false;
 		}
 
@@ -968,7 +968,7 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testEmptyOperands( $code ) {
 		$parser = $this->getParser();
-		$this->expectException( AFPUserVisibleException::class );
+		$this->expectException( UserVisibleException::class );
 		$this->expectExceptionMessage( 'unexpectedtoken' );
 		$parser->parse( $code );
 	}

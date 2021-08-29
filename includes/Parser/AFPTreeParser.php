@@ -13,6 +13,7 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
 use BagOStuff;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -129,8 +130,8 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * Parse the supplied filter source code into a tree.
 	 *
 	 * @param string $code
-	 * @throws AFPUserVisibleException
 	 * @return AFPSyntaxTree
+	 * @throws UserVisibleException
 	 */
 	public function parse( $code ): AFPSyntaxTree {
 		$tokenizer = new AbuseFilterTokenizer( $this->cache, $this->logger );
@@ -155,13 +156,13 @@ class AFPTreeParser extends AFPTransitionBase {
 	/**
 	 * Handles unexpected characters after the expression.
 	 * @return AFPTreeNode|null Null only if no statements
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelEntry() {
 		$result = $this->doLevelSemicolon();
 
 		if ( $this->mCur->type !== AFPToken::TNONE ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'unexpectedatend',
 				$this->mPos, [ $this->mCur->type ]
 			);
@@ -213,7 +214,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * Handles variable assignment.
 	 *
 	 * @return AFPTreeNode
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelSet() {
 		if ( $this->mCur->type === AFPToken::TID ) {
@@ -244,7 +245,7 @@ class AFPTreeParser extends AFPTransitionBase {
 					$this->move();
 					$index = $this->doLevelSemicolon();
 					if ( !( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) ) {
-						throw new AFPUserVisibleException( 'expectednotfound', $this->mPos,
+						throw new UserVisibleException( 'expectednotfound', $this->mPos,
 							[ ']', $this->mCur->type, $this->mCur->value ] );
 					}
 				}
@@ -279,7 +280,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * Handles ternary operator and if-then-else-end.
 	 *
 	 * @return AFPTreeNode
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelConditions() {
 		if ( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'if' ) {
@@ -288,7 +289,7 @@ class AFPTreeParser extends AFPTransitionBase {
 			$condition = $this->doLevelBoolOps();
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'then' ) ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
+				throw new UserVisibleException( 'expectednotfound',
 					$this->mPos,
 					[
 						'then',
@@ -309,7 +310,7 @@ class AFPTreeParser extends AFPTransitionBase {
 			}
 
 			if ( !( $this->mCur->type === AFPToken::TKEYWORD && $this->mCur->value === 'end' ) ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
+				throw new UserVisibleException( 'expectednotfound',
 					$this->mPos,
 					[
 						'end',
@@ -334,7 +335,7 @@ class AFPTreeParser extends AFPTransitionBase {
 
 			$valueIfTrue = $this->doLevelConditions();
 			if ( !( $this->mCur->type === AFPToken::TOP && $this->mCur->value === ':' ) ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
+				throw new UserVisibleException( 'expectednotfound',
 					$this->mPos,
 					[
 						':',
@@ -530,7 +531,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * Handles accessing an array element by an offset.
 	 *
 	 * @return AFPTreeNode
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelArrayElements() {
 		$array = $this->doLevelParenthesis();
@@ -540,7 +541,7 @@ class AFPTreeParser extends AFPTransitionBase {
 			$array = new AFPTreeNode( AFPTreeNode::ARRAY_INDEX, [ $array, $index ], $position );
 
 			if ( !( $this->mCur->type === AFPToken::TSQUAREBRACKET && $this->mCur->value === ']' ) ) {
-				throw new AFPUserVisibleException( 'expectednotfound', $this->mPos,
+				throw new UserVisibleException( 'expectednotfound', $this->mPos,
 					[ ']', $this->mCur->type, $this->mCur->value ] );
 			}
 			$this->move();
@@ -553,14 +554,14 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * Handles parenthesis.
 	 *
 	 * @return AFPTreeNode
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelParenthesis() {
 		if ( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === '(' ) {
 			$next = $this->getNextToken();
 			if ( $next->type === AFPToken::TBRACE && $next->value === ')' ) {
 				// Empty parentheses are never allowed
-				throw new AFPUserVisibleException(
+				throw new UserVisibleException(
 					'unexpectedtoken',
 					$this->mPos,
 					[
@@ -572,7 +573,7 @@ class AFPTreeParser extends AFPTransitionBase {
 			$result = $this->doLevelSemicolon();
 
 			if ( !( $this->mCur->type === AFPToken::TBRACE && $this->mCur->value === ')' ) ) {
-				throw new AFPUserVisibleException(
+				throw new UserVisibleException(
 					'expectednotfound',
 					$this->mPos,
 					[ ')', $this->mCur->type, $this->mCur->value ]
@@ -590,7 +591,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * Handles function calls.
 	 *
 	 * @return AFPTreeNode
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelFunction() {
 		if ( $this->mCur->type === AFPToken::TID &&
@@ -600,7 +601,7 @@ class AFPTreeParser extends AFPTransitionBase {
 			$position = $this->mPos;
 			$this->move();
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== '(' ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
+				throw new UserVisibleException( 'expectednotfound',
 					$this->mPos,
 					[
 						'(',
@@ -622,7 +623,7 @@ class AFPTreeParser extends AFPTransitionBase {
 						!( $next->type === AFPToken::TBRACE && $next->value === ')' )
 					)
 				) {
-					throw new AFPUserVisibleException( 'variablevariable', $this->mPos, [] );
+					throw new UserVisibleException( 'variablevariable', $this->mPos, [] );
 				} else {
 					$this->setState( $state );
 				}
@@ -636,7 +637,7 @@ class AFPTreeParser extends AFPTransitionBase {
 					if ( $thisArg !== null ) {
 						$args[] = $thisArg;
 					} elseif ( !$this->functionIsVariadic( $func ) ) {
-						throw new AFPUserVisibleException(
+						throw new UserVisibleException(
 							'unexpectedtoken',
 							$this->mPos,
 							[
@@ -651,7 +652,7 @@ class AFPTreeParser extends AFPTransitionBase {
 			}
 
 			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== ')' ) {
-				throw new AFPUserVisibleException( 'expectednotfound',
+				throw new UserVisibleException( 'expectednotfound',
 					$this->mPos,
 					[
 						')',
@@ -677,7 +678,7 @@ class AFPTreeParser extends AFPTransitionBase {
 	/**
 	 * Handle literals.
 	 * @return AFPTreeNode
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function doLevelAtom() {
 		$tok = $this->mCur->value;
@@ -696,7 +697,7 @@ class AFPTreeParser extends AFPTransitionBase {
 					break;
 				}
 
-				throw new AFPUserVisibleException(
+				throw new UserVisibleException(
 					'unrecognisedkeyword',
 					$this->mPos,
 					[ $tok ]
@@ -717,7 +718,7 @@ class AFPTreeParser extends AFPTransitionBase {
 							break;
 						}
 						if ( $this->mCur->type !== AFPToken::TCOMMA ) {
-							throw new AFPUserVisibleException(
+							throw new UserVisibleException(
 								'expectednotfound',
 								$this->mPos,
 								[ ', or ]', $this->mCur->type, $this->mCur->value ]
@@ -731,7 +732,7 @@ class AFPTreeParser extends AFPTransitionBase {
 
 			// Fallthrough expected
 			default:
-				throw new AFPUserVisibleException(
+				throw new UserVisibleException(
 					'unexpectedtoken',
 					$this->mPos,
 					[
