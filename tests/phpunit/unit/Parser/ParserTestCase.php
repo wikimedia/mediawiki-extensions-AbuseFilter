@@ -27,8 +27,8 @@ use Language;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
@@ -39,7 +39,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  */
 abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	/**
-	 * @return AbuseFilterCachingParser
+	 * @return FilterEvaluator
 	 */
 	protected function getParser() {
 		// We're not interested in caching or logging; tests should call respectively setCache
@@ -54,7 +54,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			$logger
 		);
 
-		$cachingParser = new AbuseFilterCachingParser(
+		$evaluator = new FilterEvaluator(
 			$contLang,
 			$cache,
 			$logger,
@@ -62,8 +62,8 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			$varManager,
 			1000
 		);
-		$cachingParser->toggleConditionLimit( false );
-		return $cachingParser;
+		$evaluator->toggleConditionLimit( false );
+		return $evaluator;
 	}
 
 	/**
@@ -101,8 +101,6 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 * @param string $excep Identifier of the exception (e.g. 'unexpectedtoken')
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown, if available
-	 *  The method may be different in Parser and CachingParser, but this parameter is
-	 *  just used for debugging purposes.
 	 */
 	protected function exceptionTest( $excep, $expr, $caller = '' ) {
 		$this->exceptionTestInternal( $excep, $expr, $caller, false );

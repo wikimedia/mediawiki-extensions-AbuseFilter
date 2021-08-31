@@ -37,7 +37,7 @@ use Psr\Log\NullLogger;
  * @group AbuseFilterParser
  *
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\SyntaxChecker
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree

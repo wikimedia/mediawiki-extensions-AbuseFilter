@@ -26,7 +26,7 @@ use EmptyBagOStuff;
 use Generator;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -39,7 +39,7 @@ use MediaWikiIntegrationTestCase;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
@@ -51,7 +51,7 @@ use MediaWikiIntegrationTestCase;
  */
 class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**
-	 * @return AbuseFilterCachingParser
+	 * @return FilterEvaluator
 	 */
 	protected function getParser() {
 		// We're not interested in caching or logging; tests should call respectively setCache
@@ -66,7 +66,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$logger
 		);
 
-		$cachingParser = new AbuseFilterCachingParser(
+		$evaluator = new FilterEvaluator(
 			$contLang,
 			$cache,
 			$logger,
@@ -74,8 +74,8 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$varManager,
 			1000
 		);
-		$cachingParser->toggleConditionLimit( false );
-		return $cachingParser;
+		$evaluator->toggleConditionLimit( false );
+		return $evaluator;
 	}
 
 	/**

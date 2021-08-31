@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 
@@ -37,7 +37,7 @@ class CheckSyntaxTest extends ApiTestCase {
 	public function testExecute_Ok() {
 		$input = 'sampleFilter';
 		$status = new ParserStatus( true, false, null, [] );
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $input )
 			->willReturn( $status );
 		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
@@ -65,7 +65,7 @@ class CheckSyntaxTest extends ApiTestCase {
 			new UserVisibleWarning( 'exception-2', 8, [ 'param' ] ),
 		];
 		$status = new ParserStatus( true, false, null, $warnings );
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $input )
 			->willReturn( $status );
 		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
@@ -111,7 +111,7 @@ class CheckSyntaxTest extends ApiTestCase {
 		$input = 'sampleFilter';
 		$exception = new UserVisibleException( 'error-id', 4, [] );
 		$status = new ParserStatus( false, false, $exception, [] );
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $input )
 			->willReturn( $status );
 		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );

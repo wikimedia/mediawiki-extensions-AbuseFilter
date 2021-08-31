@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 use BagOStuff;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
@@ -32,6 +32,6 @@ class ParserFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( VariablesManager::class ),
 			1000
 		);
-		$this->assertInstanceOf( AbuseFilterCachingParser::class, $factory->newParser() );
+		$this->assertInstanceOf( FilterEvaluator::class, $factory->newParser() );
 	}
 }

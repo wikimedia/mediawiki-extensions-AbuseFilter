@@ -1,3 +1,3 @@
-/* CachingParser's intEval used to return AFPTreeNode for this */
+/* intEval used to return a tree node for this */
 var := [1];
 var[0] := 2;

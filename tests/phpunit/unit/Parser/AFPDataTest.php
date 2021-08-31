@@ -36,7 +36,7 @@ class AFPDataTest extends ParserTestCase {
 	 * @param string $expr The expression to test
 	 * @param string $caller The function where the exception is thrown
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData::mulRel
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
 	 *
 	 * @dataProvider divideByZero

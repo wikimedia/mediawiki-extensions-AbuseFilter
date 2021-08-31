@@ -447,7 +447,7 @@ class SyntaxChecker {
 			case AFPTreeNode::FUNCTION_CALL:
 				$fname = $node->children[0];
 				$args = array_slice( $node->children, 1 );
-				if ( !array_key_exists( $fname, AbuseFilterCachingParser::FUNCTIONS ) ) {
+				if ( !array_key_exists( $fname, FilterEvaluator::FUNCTIONS ) ) {
 					throw new UserVisibleException(
 						'unknownfunction',
 						$node->position,
@@ -643,12 +643,12 @@ class SyntaxChecker {
 	 * @throws UserVisibleException
 	 */
 	protected function checkArgCount( array $args, string $func, int $position ): void {
-		if ( !array_key_exists( $func, AbuseFilterCachingParser::FUNC_ARG_COUNT ) ) {
+		if ( !array_key_exists( $func, FilterEvaluator::FUNC_ARG_COUNT ) ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "$func is not a valid function." );
 			// @codeCoverageIgnoreEnd
 		}
-		list( $min, $max ) = AbuseFilterCachingParser::FUNC_ARG_COUNT[ $func ];
+		list( $min, $max ) = FilterEvaluator::FUNC_ARG_COUNT[ $func ];
 		if ( count( $args ) < $min ) {
 			throw new UserVisibleException(
 				$min === 1 ? 'noparams' : 'notenoughargs',
@@ -673,7 +673,7 @@ class SyntaxChecker {
 	 */
 	protected function isReservedIdentifier( string $name ): bool {
 		return $this->keywordsManager->varExists( $name ) ||
-			array_key_exists( $name, AbuseFilterCachingParser::FUNCTIONS ) ||
+			array_key_exists( $name, FilterEvaluator::FUNCTIONS ) ||
 			// We need to check for true, false, if/then/else etc. because, even if they have a different
 			// AFPToken type, they may be used inside set/set_var()
 			in_array( $name, AbuseFilterTokenizer::KEYWORDS, true );

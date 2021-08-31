@@ -28,9 +28,9 @@ use Generator;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Psr\Log\NullLogger;
@@ -42,7 +42,7 @@ use Wikimedia\TestingAccessWrapper;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeNode
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPSyntaxTree
@@ -779,7 +779,7 @@ class ParserTest extends ParserTestCase {
 	 * @param string $new The new name of the variable
 	 * @dataProvider provideDeprecatedVars
 	 *
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::getVarValue
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::getVarValue
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser::checkLogDeprecatedVar
 	 */
 	public function testDeprecatedVars( $old, $new ) {
@@ -1012,7 +1012,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * Test that empty operands raise an exception in the CachingParser
+	 * Test that empty operands raise an exception
 	 *
 	 * @param string $code
 	 * @dataProvider provideEmptyOperands
@@ -1144,19 +1144,18 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * Ensure that every function in AbuseFilterCachingParser::FUNCTIONS is also listed in
-	 * AbuseFilterCachingParser::FUNC_ARG_COUNT
+	 * Ensure that every function in FUNCTIONS is also listed in FUNC_ARG_COUNT
 	 */
 	public function testAllFunctionsHaveArgCount() {
-		$funcs = array_keys( AbuseFilterCachingParser::FUNCTIONS );
+		$funcs = array_keys( FilterEvaluator::FUNCTIONS );
 		sort( $funcs );
-		$argsCount = array_keys( AbuseFilterCachingParser::FUNC_ARG_COUNT );
+		$argsCount = array_keys( FilterEvaluator::FUNC_ARG_COUNT );
 		sort( $argsCount );
 		$this->assertSame( $funcs, $argsCount );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::__construct
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::__construct
 	 */
 	public function testConstructorInitsVars() {
 		$lang = $this->getLanguageMock();
@@ -1166,12 +1165,12 @@ class ParserTest extends ParserTestCase {
 		$varManager = $this->createMock( VariablesManager::class );
 		$vars = new VariableHolder();
 
-		$parser = new AbuseFilterCachingParser( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
+		$parser = new FilterEvaluator( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
 		$this->assertSame( $vars, $parser->mVariables, 'Variables should be initialized' );
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setFilter
 	 */
 	public function testSetFilter() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1182,7 +1181,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setCache
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setCache
 	 */
 	public function testSetCache() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1192,7 +1191,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setLogger
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setLogger
 	 */
 	public function testSetLogger() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1202,7 +1201,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setStatsd
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setStatsd
 	 */
 	public function testSetStatsd() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1212,8 +1211,8 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::getCondCount
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::resetCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::getCondCount
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::resetCondCount
 	 */
 	public function testCondCountMethods() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1226,7 +1225,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::toggleConditionLimit
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::toggleConditionLimit
 	 */
 	public function testToggleConditionLimit() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1239,7 +1238,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::clearFuncCache
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::clearFuncCache
 	 */
 	public function testClearFuncCache() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
@@ -1251,7 +1250,7 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser::setVariables
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setVariables
 	 */
 	public function testSetVariables() {
 		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );

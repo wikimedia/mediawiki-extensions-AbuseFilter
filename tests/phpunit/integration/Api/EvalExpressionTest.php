@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 
@@ -37,7 +37,7 @@ class EvalExpressionTest extends ApiTestCase {
 		$this->setExpectedApiException( 'abusefilter-tools-syntax-error' );
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( false, false, null, [] );
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
 		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
@@ -55,7 +55,7 @@ class EvalExpressionTest extends ApiTestCase {
 	public function testExecute_Ok() {
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( true, false, null, [] );
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
 		$parser->expects( $this->once() )->method( 'evaluateExpression' )
@@ -87,7 +87,7 @@ class EvalExpressionTest extends ApiTestCase {
 	public function testExecute_OkAndPrettyPrint() {
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( true, false, null, [] );
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
 		$parser->expects( $this->once() )->method( 'evaluateExpression' )

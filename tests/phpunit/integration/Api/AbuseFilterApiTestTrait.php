@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 
 /**
@@ -11,10 +11,10 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 trait AbuseFilterApiTestTrait {
 
 	/**
-	 * @param AbuseFilterCachingParser|null $parser
+	 * @param FilterEvaluator|null $parser
 	 * @return ParserFactory
 	 */
-	protected function getParserFactory( AbuseFilterCachingParser $parser = null ): ParserFactory {
+	protected function getParserFactory( FilterEvaluator $parser = null ): ParserFactory {
 		$factory = $this->createMock( ParserFactory::class );
 		if ( $parser !== null ) {
 			$factory->expects( $this->atLeastOnce() )

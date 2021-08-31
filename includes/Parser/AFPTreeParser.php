@@ -499,7 +499,7 @@ class AFPTreeParser {
 		$leftOperand = $this->doLevelUnarys();
 		$keyword = strtolower( $this->mCur->value );
 		if ( $this->mCur->type === AFPToken::TKEYWORD &&
-			isset( AbuseFilterCachingParser::KEYWORDS[$keyword] )
+			isset( FilterEvaluator::KEYWORDS[$keyword] )
 		) {
 			$position = $this->mPos;
 			$this->move();
@@ -738,11 +738,11 @@ class AFPTreeParser {
 	 * @return bool
 	 */
 	protected function functionIsVariadic( string $fname ): bool {
-		if ( !array_key_exists( $fname, AbuseFilterCachingParser::FUNC_ARG_COUNT ) ) {
+		if ( !array_key_exists( $fname, FilterEvaluator::FUNC_ARG_COUNT ) ) {
 			// @codeCoverageIgnoreStart
 			throw new InvalidArgumentException( "Function $fname is not valid" );
 			// @codeCoverageIgnoreEnd
 		}
-		return AbuseFilterCachingParser::FUNC_ARG_COUNT[$fname][1] === INF;
+		return FilterEvaluator::FUNC_ARG_COUNT[$fname][1] === INF;
 	}
 }

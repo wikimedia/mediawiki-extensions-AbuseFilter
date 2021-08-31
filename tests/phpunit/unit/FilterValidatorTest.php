@@ -8,10 +8,10 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
-use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWikiUnitTestCase;
@@ -29,19 +29,19 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param AbuseFilterPermissionManager|null $permissionManager
-	 * @param AbuseFilterCachingParser|null $parser
+	 * @param FilterEvaluator|null $parser
 	 * @param array $restrictions
 	 * @param array $validFilterGroups
 	 * @return FilterValidator
 	 */
 	private function getFilterValidator(
 		AbuseFilterPermissionManager $permissionManager = null,
-		AbuseFilterCachingParser $parser = null,
+		FilterEvaluator $parser = null,
 		array $restrictions = [],
 		array $validFilterGroups = [ 'default' ]
 	): FilterValidator {
 		if ( !$parser ) {
-			$parser = $this->createMock( AbuseFilterCachingParser::class );
+			$parser = $this->createMock( FilterEvaluator::class );
 			$parser->method( 'checkSyntax' )->willReturn(
 				new ParserStatus( true, true, null, [] )
 			);
@@ -101,7 +101,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideSyntax
 	 */
 	public function testCheckValidSyntax( bool $valid, ?ExceptionBase $excep, ?string $expected, ?array $expParams ) {
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$syntaxStatus = new ParserStatus( $valid, true, $excep, [] );
 		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		$validator = $this->getFilterValidator( null, $parser );
@@ -363,7 +363,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param AbstractFilter $newFilter
 	 * @param string|null $expected
 	 * @param AbuseFilterPermissionManager|null $permissionManager
-	 * @param AbuseFilterCachingParser|null $parser
+	 * @param FilterEvaluator|null $parser
 	 * @param array $restrictions
 	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator::checkAll
 	 * @dataProvider provideCheckAll
@@ -372,7 +372,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		AbstractFilter $newFilter,
 		?string $expected,
 		AbuseFilterPermissionManager $permissionManager = null,
-		AbuseFilterCachingParser $parser = null,
+		FilterEvaluator $parser = null,
 		array $restrictions = []
 	) {
 		$validator = $this->getFilterValidator( $permissionManager, $parser, $restrictions );
@@ -389,7 +389,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$noopFilter->method( 'getName' )->willReturn( 'Foo' );
 		$noopFilter->method( 'isEnabled' )->willReturn( true );
 
-		$parser = $this->createMock( AbuseFilterCachingParser::class );
+		$parser = $this->createMock( FilterEvaluator::class );
 		$syntaxStatus = new ParserStatus( false, true, $this->createMock( UserVisibleException::class ), [] );
 		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		yield 'invalid syntax' => [ $noopFilter, 'abusefilter-edit-badsyntax', null, $parser ];
