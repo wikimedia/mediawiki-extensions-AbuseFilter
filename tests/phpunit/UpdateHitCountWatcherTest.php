@@ -2,10 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Watcher;
 
-use IDatabase;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWikiIntegrationTestCase;
+use Wikimedia\Rdbms\DBConnRef;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -23,7 +24,7 @@ class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 		$localFilters = [ 1, 2, 3 ];
 		$globalFilters = [ 4, 5, 6 ];
 
-		$localDB = $this->createMock( IDatabase::class );
+		$localDB = $this->createMock( DBConnRef::class );
 		$localDB->expects( $this->once() )->method( 'update' )->with(
 			'abuse_filter',
 			[ 'af_hit_count=af_hit_count+1' ],

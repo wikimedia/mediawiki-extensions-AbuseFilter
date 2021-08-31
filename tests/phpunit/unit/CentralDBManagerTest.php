@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWikiUnitTestCase;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
 
@@ -33,7 +33,7 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getConnection
 	 */
 	public function testGetConnection() {
-		$expected = $this->createMock( IDatabase::class );
+		$expected = $this->createMock( DBConnRef::class );
 		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnectionRef' )->willReturn( $expected );
 		$lbFactory = $this->createMock( LBFactory::class );

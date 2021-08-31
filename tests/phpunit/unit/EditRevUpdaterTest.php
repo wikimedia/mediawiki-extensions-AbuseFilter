@@ -11,6 +11,7 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWikiUnitTestCase;
 use Title;
 use TitleValue;
+use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use WikiPage;
@@ -38,17 +39,17 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param IDatabase|null $localDB
+	 * @param DBConnRef|null $localDB
 	 * @param IDatabase|null $centralDB
 	 * @param RevisionLookup|null $revLookup
 	 * @return EditRevUpdater
 	 */
 	private function getUpdater(
-		IDatabase $localDB = null,
+		DBConnRef $localDB = null,
 		IDatabase $centralDB = null,
 		RevisionLookup $revLookup = null
 	): EditRevUpdater {
-		$localDB = $localDB ?? $this->createMock( IDatabase::class );
+		$localDB = $localDB ?? $this->createMock( DBConnRef::class );
 		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnectionRef' )->willReturn( $localDB );
 		$centralDB = $centralDB ?? $this->createMock( IDatabase::class );
@@ -129,7 +130,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 	public function testUpdateRev_success( array $ids ) {
 		$titleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater' );
 		[ $page, $rev ] = $this->getPageAndRev( $titleValue );
-		$localDB = $this->createMock( IDatabase::class );
+		$localDB = $this->createMock( DBConnRef::class );
 		$localDB->expects( $ids['local'] ? $this->once() : $this->never() )->method( 'update' );
 		$centralDB = $this->createMock( IDatabase::class );
 		$centralDB->expects( $ids['global'] ? $this->once() : $this->never() )->method( 'update' );
@@ -160,7 +161,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$goodIDs = [ 'local' => [ 1, 2 ], 'global' => [] ];
 		$badIDs = [ 'local' => [], 'global' => [ 1, 2 ] ];
 		[ $page, $rev ] = $this->getPageAndRev( $goodTitleValue );
-		$localDB = $this->createMock( IDatabase::class );
+		$localDB = $this->createMock( DBConnRef::class );
 		$localDB->expects( $this->once() )->method( 'update' );
 		$centralDB = $this->createMock( IDatabase::class );
 		$centralDB->expects( $this->never() )->method( 'update' );
