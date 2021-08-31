@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use LogicException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
-use MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\RunnerData;
 use MediaWikiUnitTestCase;
 

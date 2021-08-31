@@ -2,12 +2,15 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
+
 class ParserStatus {
 	/** @var bool */
 	private $result;
 	/** @var bool */
 	private $warmCache;
-	/** @var AFPException|null */
+	/** @var ExceptionBase|null */
 	private $excep;
 	/** @var UserVisibleWarning[] */
 	private $warnings;
@@ -15,10 +18,10 @@ class ParserStatus {
 	/**
 	 * @param bool $result A generic operation result
 	 * @param bool $warmCache Whether we retrieved the AST from cache
-	 * @param AFPException|null $excep An exception thrown while parsing, or null if it parsed correctly
+	 * @param ExceptionBase|null $excep An exception thrown while parsing, or null if it parsed correctly
 	 * @param UserVisibleWarning[] $warnings
 	 */
-	public function __construct( bool $result, bool $warmCache, ?AFPException $excep, array $warnings ) {
+	public function __construct( bool $result, bool $warmCache, ?ExceptionBase $excep, array $warnings ) {
 		$this->result = $result;
 		$this->warmCache = $warmCache;
 		$this->excep = $excep;
@@ -40,9 +43,9 @@ class ParserStatus {
 	}
 
 	/**
-	 * @return AFPException|null
+	 * @return ExceptionBase|null
 	 */
-	public function getException(): ?AFPException {
+	public function getException(): ?ExceptionBase {
 		return $this->excep;
 	}
 

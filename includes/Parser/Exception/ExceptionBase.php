@@ -1,10 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Parser;
+namespace MediaWiki\Extension\AbuseFilter\Parser\Exception;
 
 use MWException;
 
-abstract class AFPException extends MWException {
+abstract class ExceptionBase extends MWException {
 
 	/**
 	 * Serialize data for edit stash

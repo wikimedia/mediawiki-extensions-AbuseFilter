@@ -1,13 +1,13 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Parser;
+namespace MediaWiki\Extension\AbuseFilter\Parser\Exception;
 
 use Message;
 
 /**
  * A variant of user-visible exception that is not fatal.
  */
-class UserVisibleWarning extends AFPUserVisibleException {
+class UserVisibleWarning extends UserVisibleException {
 	/**
 	 * @return Message
 	 */

@@ -8,6 +8,11 @@ use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\ConditionLimitException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MWException;
@@ -204,13 +209,13 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 
 	/**
 	 * @param int $val The amount to increase the conditions count of.
-	 * @throws AFPException
+	 * @throws ConditionLimitException
 	 */
 	protected function raiseCondCount( $val = 1 ) {
 		$this->mCondCount += $val;
 
 		if ( $this->condLimitEnabled && $this->mCondCount > $this->conditionsLimit ) {
-			throw new AFPConditionLimitException();
+			throw new ConditionLimitException();
 		}
 	}
 
@@ -268,7 +273,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * Check the syntax of $filter, throwing an exception if invalid
 	 * @param string $filter
 	 * @return true When successful
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	public function checkSyntaxThrow( string $filter ): bool {
 		$this->allowMissingVariables = true;
@@ -293,7 +298,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	public function checkSyntax( string $filter ): ParserStatus {
 		try {
 			$valid = $this->checkSyntaxThrow( $filter );
-		} catch ( AFPUserVisibleException $excep ) {
+		} catch ( UserVisibleException $excep ) {
 			$valid = false;
 		}
 		// @phan-suppress-next-line PhanCoalescingNeverUndefined
@@ -313,7 +318,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		$result = $this->parseDetailed( $conds );
 		$excep = $result->getException();
 		if ( $excep !== null ) {
-			if ( $excep instanceof AFPUserVisibleException ) {
+			if ( $excep instanceof UserVisibleException ) {
 				$msg = $excep->getMessageForLogs();
 			} else {
 				$msg = $excep->getMessage();
@@ -360,7 +365,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		$excep = null;
 		try {
 			$res = $this->parse( $code );
-		} catch ( AFPException $excep ) {
+		} catch ( ExceptionBase $excep ) {
 			$res = false;
 		}
 		return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings );
@@ -418,8 +423,8 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 *
 	 * @param AFPTreeNode $node The node to evaluate.
 	 * @return AFPData|AFPTreeNode|string
-	 * @throws AFPException
-	 * @throws AFPUserVisibleException
+	 * @throws ExceptionBase
+	 * @throws UserVisibleException
 	 * @throws MWException
 	 */
 	private function evalNode( AFPTreeNode $node ) {
@@ -454,7 +459,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 					// Fallthrough intended
 					default:
 						// @codeCoverageIgnoreStart
-						throw new AFPInternalException( "Unknown token provided in the ATOM node" );
+						throw new InternalException( "Unknown token provided in the ATOM node" );
 						// @codeCoverageIgnoreEnd
 				}
 				// Unreachable line
@@ -497,15 +502,15 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				}
 
 				if ( $array->getType() !== AFPData::DARRAY ) {
-					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
+					throw new UserVisibleException( 'notarray', $node->position, [] );
 				}
 
 				$array = $array->toArray();
 				if ( count( $array ) <= $offset ) {
-					throw new AFPUserVisibleException( 'outofbounds', $node->position,
+					throw new UserVisibleException( 'outofbounds', $node->position,
 						[ $offset, count( $array ) ] );
 				} elseif ( $offset < 0 ) {
-					throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
+					throw new UserVisibleException( 'negativeindex', $node->position, [ $offset ] );
 				}
 
 				return $array[$offset];
@@ -552,7 +557,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 						return $leftOperand->sub( $rightOperand );
 					default:
 						// @codeCoverageIgnoreStart
-						throw new AFPInternalException( "Unknown sum-related operator: {$op}" );
+						throw new InternalException( "Unknown sum-related operator: {$op}" );
 						// @codeCoverageIgnoreEnd
 				}
 				// Unreachable line
@@ -604,12 +609,12 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				list( $varName, $offset, $value ) = $node->children;
 
 				if ( $this->isReservedIdentifier( $varName ) ) {
-					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
+					throw new UserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
 				}
 				$array = $this->getVarValue( $varName );
 
 				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
-					throw new AFPUserVisibleException( 'notarray', $node->position, [] );
+					throw new UserVisibleException( 'notarray', $node->position, [] );
 				}
 
 				$offset = $this->evalNode( $offset );
@@ -622,10 +627,10 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 						$offset = $offset->toInt();
 						$array = $array->toArray();
 						if ( count( $array ) <= $offset ) {
-							throw new AFPUserVisibleException( 'outofbounds', $node->position,
+							throw new UserVisibleException( 'outofbounds', $node->position,
 								[ $offset, count( $array ) ] );
 						} elseif ( $offset < 0 ) {
-							throw new AFPUserVisibleException( 'negativeindex', $node->position, [ $offset ] );
+							throw new UserVisibleException( 'negativeindex', $node->position, [ $offset ] );
 						}
 
 						$value = $this->evalNode( $value );
@@ -646,7 +651,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				list( $varName, $value ) = $node->children;
 
 				if ( $this->isReservedIdentifier( $varName ) ) {
-					throw new AFPUserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
+					throw new UserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
 				}
 
 				$array = $this->getVarValue( $varName );
@@ -654,7 +659,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
-						throw new AFPUserVisibleException( 'notarray', $node->position, [] );
+						throw new UserVisibleException( 'notarray', $node->position, [] );
 					}
 
 					$array = $array->toArray();
@@ -675,7 +680,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				return $lastValue;
 			default:
 				// @codeCoverageIgnoreStart
-				throw new AFPInternalException( "Unknown node type passed: {$node->type}" );
+				throw new InternalException( "Unknown node type passed: {$node->type}" );
 				// @codeCoverageIgnoreEnd
 		}
 	}
@@ -784,7 +789,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	/**
 	 * @param string $var
 	 * @return AFPData
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function getVarValue( $var ) {
 		$var = strtolower( $var );
@@ -794,14 +799,14 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 			$var = $deprecatedVars[ $var ];
 		}
 		if ( $this->keywordsManager->isVarDisabled( $var ) ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'disabledvar',
 				$this->mCur->pos,
 				[ $var ]
 			);
 		}
 		if ( !$this->varExists( $var ) ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'unrecognisedvar',
 				$this->mCur->pos,
 				[ $var ]
@@ -819,11 +824,11 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	/**
 	 * @param string $name
 	 * @param mixed $value
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function setUserVariable( $name, $value ) {
 		if ( $this->isReservedIdentifier( $name ) ) {
-			throw new AFPUserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
+			throw new UserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
 		}
 		$this->mVariables->setVar( $name, $value );
 	}
@@ -912,7 +917,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	/**
 	 * @param array $args
 	 * @return AFPData
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function funcRCount( $args ) {
 		if ( count( $args ) === 1 ) {
@@ -930,7 +935,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 			AtEase::restoreWarnings();
 
 			if ( $count === false ) {
-				throw new AFPUserVisibleException(
+				throw new UserVisibleException(
 					'regexfailure',
 					$this->mCur->pos,
 					[ $needle ]
@@ -947,7 +952,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 *
 	 * @param array $args
 	 * @return AFPData An array of matches.
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function funcGetMatches( $args ) {
 		$needle = $args[0]->toString();
@@ -976,7 +981,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		AtEase::restoreWarnings();
 
 		if ( $check === false ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'regexfailure',
 				$this->mCur->pos,
 				[ $needle ]
@@ -992,14 +997,14 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	/**
 	 * @param array $args
 	 * @return AFPData
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function funcIPInRange( $args ) {
 		$ip = $args[0]->toString();
 		$range = $args[1]->toString();
 
 		if ( !IPUtils::isValidRange( $range ) && !IPUtils::isIPAddress( $range ) ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'invalidiprange',
 				$this->mCur->pos,
 				[ $range ]
@@ -1393,7 +1398,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		$result = preg_match( $pattern, $str );
 		AtEase::restoreWarnings();
 		if ( $result === false ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'regexfailure',
 				// Coverage bug
 				// @codeCoverageIgnoreStart

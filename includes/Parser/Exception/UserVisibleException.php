@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Parser;
+namespace MediaWiki\Extension\AbuseFilter\Parser\Exception;
 
 use Message;
 
@@ -8,7 +8,7 @@ use Message;
  * Exceptions that we might conceivably want to report to ordinary users
  * (i.e. exceptions that don't represent bugs in the extension itself)
  */
-class AFPUserVisibleException extends AFPException {
+class UserVisibleException extends ExceptionBase {
 	/** @var string */
 	public $mExceptionID;
 	/** @var int */

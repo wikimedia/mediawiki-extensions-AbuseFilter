@@ -1,8 +1,8 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\Exception;
 
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWikiUnitTestCase;
 
 /**
@@ -10,9 +10,9 @@ use MediaWikiUnitTestCase;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException
  */
-class AFPUserVisibleExceptionTest extends MediaWikiUnitTestCase {
+class UserVisibleExceptionTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::__construct
@@ -24,7 +24,7 @@ class AFPUserVisibleExceptionTest extends MediaWikiUnitTestCase {
 		$excID = 'abusefilter-foo';
 		$position = 42;
 		$params = [ 'foo' ];
-		$exc = new AFPUserVisibleException( $excID, $position, $params );
+		$exc = new UserVisibleException( $excID, $position, $params );
 		$this->assertSame( $position, $exc->getPosition(), 'position' );
 		$this->assertStringContainsString( $excID, $exc->getMessageForLogs(), 'ID in log message' );
 		$this->assertStringContainsString( $position, $exc->getMessageForLogs(), 'position in logs message' );
@@ -38,8 +38,8 @@ class AFPUserVisibleExceptionTest extends MediaWikiUnitTestCase {
 	 * @covers ::fromArray
 	 */
 	public function testToArrayRoundTrip() {
-		$exc = new AFPUserVisibleException( 'abusefilter-foo', 42, [ 'foo' ] );
-		$newExc = AFPUserVisibleException::fromArray( $exc->toArray() );
+		$exc = new UserVisibleException( 'abusefilter-foo', 42, [ 'foo' ] );
+		$newExc = UserVisibleException::fromArray( $exc->toArray() );
 		$this->assertSame( $exc->getPosition(), $newExc->getPosition() );
 		$this->assertSame( $exc->getMessageObj()->getParams(), $newExc->getMessageObj()->getParams() );
 	}

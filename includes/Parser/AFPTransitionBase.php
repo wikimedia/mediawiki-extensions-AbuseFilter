@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 
 /**
  * @todo Remove this class
@@ -91,7 +92,7 @@ abstract class AFPTransitionBase {
 	 *
 	 * @param array $args The arguments supplied to the function
 	 * @param string $func The function name
-	 * @throws AFPUserVisibleException
+	 * @throws UserVisibleException
 	 */
 	protected function checkArgCount( $args, $func ) {
 		if ( !array_key_exists( $func, self::FUNC_ARG_COUNT ) ) {
@@ -101,13 +102,13 @@ abstract class AFPTransitionBase {
 		}
 		list( $min, $max ) = self::FUNC_ARG_COUNT[ $func ];
 		if ( count( $args ) < $min ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				$min === 1 ? 'noparams' : 'notenoughargs',
 				$this->mPos,
 				[ $func, $min, count( $args ) ]
 			);
 		} elseif ( count( $args ) > $max ) {
-			throw new AFPUserVisibleException(
+			throw new UserVisibleException(
 				'toomanyargs',
 				$this->mPos,
 				[ $func, $max, count( $args ) ]

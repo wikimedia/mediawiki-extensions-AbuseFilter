@@ -4,10 +4,10 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterCachingParser;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
-use MediaWiki\Extension\AbuseFilter\Parser\UserVisibleWarning;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckSyntax
@@ -109,7 +109,7 @@ class CheckSyntaxTest extends ApiTestCase {
 	 */
 	public function testExecute_error() {
 		$input = 'sampleFilter';
-		$exception = new AFPUserVisibleException( 'error-id', 4, [] );
+		$exception = new UserVisibleException( 'error-id', 4, [] );
 		$status = new ParserStatus( false, false, $exception, [] );
 		$parser = $this->createMock( AbuseFilterCachingParser::class );
 		$parser->method( 'checkSyntax' )->with( $input )

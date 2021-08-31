@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
-use MediaWiki\Extension\AbuseFilter\Parser\AFPUserVisibleException;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
@@ -134,7 +134,7 @@ class FilterValidator {
 		$syntaxStatus = $parser->checkSyntax( $filter->getRules() );
 		if ( $syntaxStatus->getResult() !== true ) {
 			$excep = $syntaxStatus->getException();
-			$errMsg = $excep instanceof AFPUserVisibleException
+			$errMsg = $excep instanceof UserVisibleException
 				? $excep->getMessageObj()
 				: $excep->getMessage();
 			$ret->error( 'abusefilter-edit-badsyntax', $errMsg );
