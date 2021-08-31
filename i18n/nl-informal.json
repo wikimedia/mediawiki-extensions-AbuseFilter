@@ -27,8 +27,12 @@
 	"abusefilter-test-intro": "Op deze pagina kun je een filter, ingevoerd in het vak eronder, controleren met de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.\nOm een bestaand filter te laden typ je het filter-ID in het vak onder het tekstvak en klik je op de knop \"{{int:abusefilter-test-load}}\".",
 	"abusefilter-test-syntaxerr": "Het filter dat je hebt ingevoerd bevat een syntaxisfout.\nKlik op \"{{int:abusefilter-edit-check}}\" voor een volledige toelichting.",
 	"abusefilter-examine-intro": "Via deze pagina kan je de door het filter aangemaakte variabelen voor een individuele wijziging onderzoeken, en deze testen tegen filters.",
+	"abusefilter-examine-intro-examine-only": "Op deze pagina kun je de variabelen bekijken die door het misbruikfilter voor een individuele wijziging worden gegenereerd.",
 	"abusefilter-examine-notfound": "De wijziging die je hebt opgevraagd is niet aangetroffen.",
 	"abusefilter-examine-incompatible": "Het filter ondersteunt de wijziging die je hebt opgevraagd niet",
 	"abusefilter-examine-noresults": "Er zijn geen resultaten gevonden voor de zoekopdrachtparameters die je hebt opgegeven.",
-	"abusefilter-import-intro": "Je kunt deze interface gebruiken om filters van andere wiki's te importeren.\nKlik \"{{int:abusefilter-edit-export}}i\" bij \"{{int:abusefilter-edit-tools}}\".\nKopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op \"{{int:abusefilter-import-submit}}\"."
+	"abusefilter-import-intro": "Je kunt deze interface gebruiken om filters van andere wiki's te importeren.\nKlik \"{{int:abusefilter-edit-export}}i\" bij \"{{int:abusefilter-edit-tools}}\".\nKopieer de tekst die in het bewerkingsvenster verschijnt naar dit bewerkingsvenster en klik dan op \"{{int:abusefilter-import-submit}}\".",
+	"abusefilter-invalid-request-noid": "Ongeldig verzoek! Privéloggegevens moet je, met opgaaf van reden, opvragen via het formulier op de pagina met details van het misbruiklogboek.",
+	"notification-header-throttle-filter": "Het misbruikfilter $2, dat {{GENDER:$1|jij}} pas nog hebt bewerkt, is beperkt.",
+	"notification-subject-throttle-filter": "Een misbruikfilter dat {{GENDER:$1|jij}} hebt bewerkt, is beperkt op {{SITENAME}}"
 }
