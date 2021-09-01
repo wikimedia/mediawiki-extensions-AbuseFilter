@@ -9,11 +9,10 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
+use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
-use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 
 /**
  * @group Test
@@ -24,18 +23,15 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param LazyVariableComputer|null $lazyComputer
 	 * @param KeywordsManager|null $keywordsManager
-	 * @param LoggerInterface|null $logger
 	 * @return VariablesManager
 	 */
 	private function getManager(
 		LazyVariableComputer $lazyComputer = null,
-		KeywordsManager $keywordsManager = null,
-		LoggerInterface $logger = null
+		KeywordsManager $keywordsManager = null
 	): VariablesManager {
 		return new VariablesManager(
 			$keywordsManager ?? new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
-			$lazyComputer ?? $this->createMock( LazyVariableComputer::class ),
-			$logger ?? new NullLogger()
+			$lazyComputer ?? $this->createMock( LazyVariableComputer::class )
 		);
 	}
 
@@ -187,7 +183,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 * @param VariableHolder $holder
 	 * @param string $name
 	 * @param int $flags
-	 * @param AFPData $expected
+	 * @param AFPData|string $expected String if expecting an exception
 	 * @covers ::getVar
 	 *
 	 * @dataProvider provideGetVar
@@ -197,9 +193,14 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		VariableHolder $holder,
 		string $name,
 		int $flags,
-		AFPData $expected
+		$expected
 	) {
-		$this->assertEquals( $expected, $manager->getVar( $holder, $name, $flags ) );
+		if ( is_string( $expected ) ) {
+			$this->expectException( $expected );
+			$manager->getVar( $holder, $name, $flags );
+		} else {
+			$this->assertEquals( $expected, $manager->getVar( $holder, $name, $flags ) );
+		}
 	}
 
 	/**
@@ -239,8 +240,13 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$name = 'not-set';
 		$expected = new AFPData( AFPData::DUNDEFINED );
 		yield 'unset, lax' => [ $this->getManager(), $vars, $name, VariablesManager::GET_LAX, $expected ];
-		// For now, strict is the same as lax.
-		yield 'unset, strict' => [ $this->getManager(), $vars, $name, VariablesManager::GET_STRICT, $expected ];
+		yield 'unset, strict' => [
+			$this->getManager(),
+			$vars,
+			$name,
+			VariablesManager::GET_STRICT,
+			UnsetVariableException::class
+		];
 		yield 'unset, bc' => [
 			$this->getManager(),
 			$vars,
@@ -300,8 +306,7 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 			VariablesManager::class,
 			new VariablesManager(
 				$this->createMock( KeywordsManager::class ),
-				$this->createMock( LazyVariableComputer::class ),
-				new NullLogger()
+				$this->createMock( LazyVariableComputer::class )
 			)
 		);
 	}

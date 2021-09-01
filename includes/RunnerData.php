@@ -52,18 +52,21 @@ class RunnerData {
 	 * @param int $filterID
 	 * @param bool $global
 	 * @param ParserStatus $status
-	 * @param array $profilingData
-	 * @phan-param array{time:float,conds:int} $profilingData
+	 * @param float $timeTaken
 	 */
-	public function record( int $filterID, bool $global, ParserStatus $status, array $profilingData ): void {
+	public function record( int $filterID, bool $global, ParserStatus $status, float $timeTaken ): void {
 		$key = GlobalNameUtils::buildGlobalName( $filterID, $global );
 		if ( array_key_exists( $key, $this->matchedFilters ) ) {
 			throw new LogicException( "Filter '$key' has already been recorded" );
 		}
 		$this->matchedFilters[$key] = $status;
-		$this->profilingData[$key] = $profilingData + [ 'result' => $status->getResult() ];
-		$this->totalRuntime += $profilingData['time'];
-		$this->totalConditions += $profilingData['conds'];
+		$this->profilingData[$key] = [
+			'time' => $timeTaken,
+			'conds' => $status->getCondsUsed(),
+			'result' => $status->getResult()
+		];
+		$this->totalRuntime += $timeTaken;
+		$this->totalConditions += $status->getCondsUsed();
 	}
 
 	/**

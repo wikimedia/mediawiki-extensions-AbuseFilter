@@ -151,7 +151,6 @@ class FilterRunnerFactory {
 				$group
 			),
 			$this->logger,
-			$this->statsdDataFactory,
 			$this->options,
 			$user,
 			$title,

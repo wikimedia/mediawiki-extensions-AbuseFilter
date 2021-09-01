@@ -14,18 +14,28 @@ class ParserStatus {
 	private $excep;
 	/** @var UserVisibleWarning[] */
 	private $warnings;
+	/** @var int */
+	private $condsUsed;
 
 	/**
 	 * @param bool $result A generic operation result
 	 * @param bool $warmCache Whether we retrieved the AST from cache
 	 * @param ExceptionBase|null $excep An exception thrown while parsing, or null if it parsed correctly
 	 * @param UserVisibleWarning[] $warnings
+	 * @param int $condsUsed
 	 */
-	public function __construct( bool $result, bool $warmCache, ?ExceptionBase $excep, array $warnings ) {
+	public function __construct(
+		bool $result,
+		bool $warmCache,
+		?ExceptionBase $excep,
+		array $warnings,
+		int $condsUsed
+	) {
 		$this->result = $result;
 		$this->warmCache = $warmCache;
 		$this->excep = $excep;
 		$this->warnings = $warnings;
+		$this->condsUsed = $condsUsed;
 	}
 
 	/**
@@ -57,6 +67,13 @@ class ParserStatus {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getCondsUsed(): int {
+		return $this->condsUsed;
+	}
+
+	/**
 	 * Serialize data for edit stash
 	 * @return array
 	 */
@@ -71,6 +88,7 @@ class ParserStatus {
 				},
 				$this->warnings
 			),
+			'condsUsed' => $this->condsUsed,
 		];
 	}
 
@@ -85,7 +103,8 @@ class ParserStatus {
 			$value['result'],
 			$value['warmCache'],
 			$excClass !== null ? call_user_func( [ $excClass, 'fromArray' ], $value['exception'] ) : null,
-			array_map( [ UserVisibleWarning::class, 'fromArray' ], $value['warnings'] )
+			array_map( [ UserVisibleWarning::class, 'fromArray' ], $value['warnings'] ),
+			$value['condsUsed']
 		);
 	}
 

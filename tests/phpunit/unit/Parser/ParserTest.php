@@ -23,17 +23,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
-use BagOStuff;
 use Generator;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
-use Psr\Log\NullLogger;
 use TestLogger;
 use Wikimedia\TestingAccessWrapper;
 
@@ -161,12 +157,7 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider condCountCases
 	 */
 	public function testCondCount( $rule, $expected ) {
-		$parser = $this->getParser();
-		$countBefore = $parser->getCondCount();
-		$parser->parse( $rule );
-		$countAfter = $parser->getCondCount();
-		$actual = $countAfter - $countBefore;
-		$this->assertEquals( $expected, $actual, "Rule: $rule" );
+		$this->assertEquals( $expected, $this->getParser()->parseDetailed( $rule )->getCondsUsed(), "Rule: $rule" );
 	}
 
 	/**
@@ -786,10 +777,9 @@ class ParserTest extends ParserTestCase {
 		// Set it under the new name, and check that the old name points to it
 		$vars = VariableHolder::newFromArray( [ $new => 'value' ] );
 
-		$parser = $this->getParser();
 		$loggerMock = new TestLogger();
 		$loggerMock->setCollect( true );
-		$parser->setLogger( $loggerMock );
+		$parser = $this->getParser( $loggerMock );
 
 		$parser->setVariables( $vars );
 		$actual = $parser->parse( "$old === $new" );
@@ -1155,21 +1145,6 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::__construct
-	 */
-	public function testConstructorInitsVars() {
-		$lang = $this->getLanguageMock();
-		$cache = $this->createMock( BagOStuff::class );
-		$logger = new NullLogger();
-		$keywordsManager = $this->createMock( KeywordsManager::class );
-		$varManager = $this->createMock( VariablesManager::class );
-		$vars = new VariableHolder();
-
-		$parser = new FilterEvaluator( $lang, $cache, $logger, $keywordsManager, $varManager, 1000, $vars );
-		$this->assertSame( $vars, $parser->mVariables, 'Variables should be initialized' );
-	}
-
-	/**
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setFilter
 	 */
 	public function testSetFilter() {
@@ -1178,50 +1153,6 @@ class ParserTest extends ParserTestCase {
 		$filter = 42;
 		$parser->setFilter( $filter );
 		$this->assertSame( $filter, $parser->mFilter );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setCache
-	 */
-	public function testSetCache() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
-		$cache = $this->createMock( BagOStuff::class );
-		$parser->setCache( $cache );
-		$this->assertSame( $cache, $parser->cache );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setLogger
-	 */
-	public function testSetLogger() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
-		$logger = new NullLogger();
-		$parser->setLogger( $logger );
-		$this->assertSame( $logger, $parser->logger );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setStatsd
-	 */
-	public function testSetStatsd() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
-		$statsd = $this->createMock( IBufferingStatsdDataFactory::class );
-		$parser->setStatsd( $statsd );
-		$this->assertSame( $statsd, $parser->statsd );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::getCondCount
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::resetCondCount
-	 */
-	public function testCondCountMethods() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
-		$this->assertSame( 0, $parser->mCondCount, 'precondition' );
-		$val = 42;
-		$parser->mCondCount = $val;
-		$this->assertSame( $val, $parser->getCondCount(), 'after set' );
-		$parser->resetCondCount( $val );
-		$this->assertSame( 0, $parser->getCondCount(), 'after reset' );
 	}
 
 	/**
@@ -1235,18 +1166,6 @@ class ParserTest extends ParserTestCase {
 
 		$parser->toggleConditionLimit( true );
 		$this->assertTrue( $parser->condLimitEnabled );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::clearFuncCache
-	 */
-	public function testClearFuncCache() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
-
-		$parser->funcCache = [ 1, 2, 3 ];
-
-		$parser->clearFuncCache();
-		$this->assertSame( [], $parser->funcCache );
 	}
 
 	/**

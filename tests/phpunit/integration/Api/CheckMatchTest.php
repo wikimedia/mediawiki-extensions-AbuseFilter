@@ -44,8 +44,8 @@ class CheckMatchTest extends ApiTestCase {
 	 */
 	public function testExecute_Ok( bool $expected ) {
 		$filter = 'sampleFilter';
-		$checkStatus = new ParserStatus( true, false, null, [] );
-		$resultStatus = new ParserStatus( $expected, false, null, [] );
+		$checkStatus = new ParserStatus( true, false, null, [], 1 );
+		$resultStatus = new ParserStatus( $expected, false, null, [], 1 );
 		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )
@@ -79,7 +79,7 @@ class CheckMatchTest extends ApiTestCase {
 	public function testExecute_error() {
 		$this->setExpectedApiException( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		$filter = 'sampleFilter';
-		$status = new ParserStatus( false, false, null, [] );
+		$status = new ParserStatus( false, false, null, [], 1 );
 		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )

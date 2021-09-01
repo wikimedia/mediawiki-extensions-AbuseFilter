@@ -16,7 +16,6 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MWException;
-use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
 use Sanitizer;
 use Wikimedia\AtEase\AtEase;
@@ -105,7 +104,7 @@ class FilterEvaluator {
 	];
 
 	// Functions that affect parser state, and shouldn't be cached.
-	public const ACTIVE_FUNCTIONS = [
+	private const ACTIVE_FUNCTIONS = [
 		'funcSetVar',
 	];
 
@@ -122,71 +121,71 @@ class FilterEvaluator {
 	/**
 	 * @var bool Are we allowed to use short-circuit evaluation?
 	 */
-	public $mAllowShort;
+	private $mAllowShort;
 
 	/**
 	 * @var VariableHolder
 	 */
-	public $mVariables;
+	private $mVariables;
 	/**
 	 * @var int The current amount of conditions being consumed
 	 */
-	protected $mCondCount;
+	private $mCondCount;
 	/**
 	 * @var bool Whether the condition limit is enabled.
 	 */
-	protected $condLimitEnabled = true;
+	private $condLimitEnabled = true;
 	/**
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
-	protected $mFilter;
+	private $mFilter;
 	/**
 	 * @var bool Whether we can allow retrieving _builtin_ variables not included in $this->mVariables
 	 */
-	protected $allowMissingVariables = false;
+	private $allowMissingVariables = false;
 
 	/**
 	 * @var BagOStuff Used to cache the AST and the tokens
 	 */
-	protected $cache;
+	private $cache;
 	/**
 	 * @var bool Whether the AST was retrieved from cache
 	 */
-	protected $fromCache = false;
+	private $fromCache = false;
 	/**
 	 * @var LoggerInterface Used for debugging
 	 */
-	protected $logger;
+	private $logger;
 	/**
 	 * @var Language Content language, used for language-dependent functions
 	 */
-	protected $contLang;
+	private $contLang;
 	/**
 	 * @var IBufferingStatsdDataFactory
 	 */
-	protected $statsd;
+	private $statsd;
 
 	/** @var KeywordsManager */
-	protected $keywordsManager;
+	private $keywordsManager;
 
 	/** @var VariablesManager */
-	protected $varManager;
+	private $varManager;
 
 	/** @var int */
 	private $conditionsLimit;
 
 	/** @var UserVisibleWarning[] */
-	protected $warnings = [];
+	private $warnings = [];
 
 	/**
 	 * @var array Cached results of functions
 	 */
-	protected $funcCache = [];
+	private $funcCache = [];
 
 	/**
 	 * @var Equivset
 	 */
-	protected static $equivset;
+	private static $equivset;
 
 	/**
 	 * Create a new instance
@@ -196,6 +195,7 @@ class FilterEvaluator {
 	 * @param LoggerInterface $logger Used for debugging
 	 * @param KeywordsManager $keywordsManager
 	 * @param VariablesManager $varManager
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param int $conditionsLimit
 	 * @param VariableHolder|null $vars
 	 */
@@ -205,13 +205,14 @@ class FilterEvaluator {
 		LoggerInterface $logger,
 		KeywordsManager $keywordsManager,
 		VariablesManager $varManager,
+		IBufferingStatsdDataFactory $statsdDataFactory,
 		int $conditionsLimit,
 		VariableHolder $vars = null
 	) {
 		$this->contLang = $contLang;
 		$this->cache = $cache;
 		$this->logger = $logger;
-		$this->statsd = new NullStatsdDataFactory;
+		$this->statsd = $statsdDataFactory;
 		$this->keywordsManager = $keywordsManager;
 		$this->varManager = $varManager;
 		$this->conditionsLimit = $conditionsLimit;
@@ -229,41 +230,6 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param BagOStuff $cache
-	 */
-	public function setCache( BagOStuff $cache ) {
-		$this->cache = $cache;
-	}
-
-	/**
-	 * @param LoggerInterface $logger
-	 */
-	public function setLogger( LoggerInterface $logger ) {
-		$this->logger = $logger;
-	}
-
-	/**
-	 * @param IBufferingStatsdDataFactory $statsd
-	 */
-	public function setStatsd( IBufferingStatsdDataFactory $statsd ) {
-		$this->statsd = $statsd;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getCondCount() {
-		return $this->mCondCount;
-	}
-
-	/**
-	 * Reset the conditions counter
-	 */
-	public function resetCondCount() {
-		$this->mCondCount = 0;
-	}
-
-	/**
 	 * For use in batch scripts and the like
 	 *
 	 * @param bool $enable True to enable the limit, false to disable it
@@ -276,19 +242,12 @@ class FilterEvaluator {
 	 * @param int $val The amount to increase the conditions count of.
 	 * @throws ConditionLimitException
 	 */
-	protected function raiseCondCount( $val = 1 ) {
+	private function raiseCondCount( $val = 1 ) {
 		$this->mCondCount += $val;
 
 		if ( $this->condLimitEnabled && $this->mCondCount > $this->conditionsLimit ) {
 			throw new ConditionLimitException();
 		}
-	}
-
-	/**
-	 * Clears the array of cached function results
-	 */
-	public function clearFuncCache() {
-		$this->funcCache = [];
 	}
 
 	/**
@@ -361,12 +320,20 @@ class FilterEvaluator {
 	 * @return ParserStatus The result indicates whether the syntax is valid
 	 */
 	public function checkSyntax( string $filter ): ParserStatus {
+		$initialConds = $this->mCondCount;
 		try {
 			$valid = $this->checkSyntaxThrow( $filter );
 		} catch ( UserVisibleException $excep ) {
 			$valid = false;
 		}
-		return new ParserStatus( $valid, $this->fromCache, $excep ?? null, $this->warnings );
+
+		return new ParserStatus(
+			$valid,
+			$this->fromCache,
+			$excep ?? null,
+			$this->warnings,
+			$this->mCondCount - $initialConds
+		);
 	}
 
 	/**
@@ -399,7 +366,7 @@ class FilterEvaluator {
 	 * @param string $code
 	 * @return AFPData
 	 */
-	public function intEval( $code ): AFPData {
+	private function intEval( $code ): AFPData {
 		$startTime = microtime( true );
 		$tree = $this->getTree( $code );
 		$res = $this->evalTree( $tree );
@@ -426,12 +393,13 @@ class FilterEvaluator {
 	 */
 	public function parseDetailed( string $code ): ParserStatus {
 		$excep = null;
+		$initialConds = $this->mCondCount;
 		try {
 			$res = $this->parse( $code );
 		} catch ( ExceptionBase $excep ) {
 			$res = false;
 		}
-		return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings );
+		return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings, $this->mCondCount - $initialConds );
 	}
 
 	/**
@@ -793,7 +761,7 @@ class FilterEvaluator {
 
 		if ( count( $this->funcCache ) > 1000 ) {
 			// @codeCoverageIgnoreStart
-			$this->clearFuncCache();
+			$this->funcCache = [];
 			// @codeCoverageIgnoreEnd
 		}
 		return $result;
@@ -869,7 +837,7 @@ class FilterEvaluator {
 			? VariablesManager::GET_LAX
 			// TODO: This should be GET_STRICT, but that's going to be very hard (see T230256)
 			: VariablesManager::GET_BC;
-		return $this->varManager->getVar( $this->mVariables, $var, $flags, $this->mFilter );
+		return $this->varManager->getVar( $this->mVariables, $var, $flags );
 	}
 
 	/**

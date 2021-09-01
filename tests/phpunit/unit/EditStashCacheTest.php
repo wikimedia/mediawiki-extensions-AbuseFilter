@@ -11,7 +11,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
-use Psr\Log\NullLogger;
 use TitleValue;
 
 /**
@@ -23,8 +22,7 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 	private function getVariablesManager(): VariablesManager {
 		return new VariablesManager(
 			$this->createMock( KeywordsManager::class ),
-			$this->createMock( LazyVariableComputer::class ),
-			new NullLogger()
+			$this->createMock( LazyVariableComputer::class )
 		);
 	}
 
