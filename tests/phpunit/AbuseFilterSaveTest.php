@@ -31,7 +31,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -230,7 +230,7 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 	public function testCheckAllTags( array $tags, ?string $expected ) {
 		$validator = new FilterValidator(
 			AbuseFilterServices::getChangeTagValidator(),
-			$this->createMock( ParserFactory::class ),
+			$this->createMock( RuleCheckerFactory::class ),
 			$this->createMock( AbuseFilterPermissionManager::class ),
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,

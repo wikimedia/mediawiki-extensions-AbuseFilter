@@ -6,7 +6,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
 use Status;
@@ -26,8 +26,8 @@ class FilterValidator {
 	/** @var ChangeTagValidator */
 	private $changeTagValidator;
 
-	/** @var ParserFactory */
-	private $parserFactory;
+	/** @var RuleCheckerFactory */
+	private $ruleCheckerFactory;
 
 	/** @var AbuseFilterPermissionManager */
 	private $permManager;
@@ -40,18 +40,18 @@ class FilterValidator {
 
 	/**
 	 * @param ChangeTagValidator $changeTagValidator
-	 * @param ParserFactory $parserFactory
+	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param AbuseFilterPermissionManager $permManager
 	 * @param ServiceOptions $options
 	 */
 	public function __construct(
 		ChangeTagValidator $changeTagValidator,
-		ParserFactory $parserFactory,
+		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterPermissionManager $permManager,
 		ServiceOptions $options
 	) {
 		$this->changeTagValidator = $changeTagValidator;
-		$this->parserFactory = $parserFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->permManager = $permManager;
 		$this->restrictedActions = array_keys( array_filter( $options->get( 'AbuseFilterActionRestrictions' ) ) );
 		$this->validGroups = $options->get( 'AbuseFilterValidGroups' );
@@ -130,8 +130,8 @@ class FilterValidator {
 	 */
 	public function checkValidSyntax( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
-		$parser = $this->parserFactory->newParser();
-		$syntaxStatus = $parser->checkSyntax( $filter->getRules() );
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		$syntaxStatus = $ruleChecker->checkSyntax( $filter->getRules() );
 		if ( !$syntaxStatus->getResult() ) {
 			$excep = $syntaxStatus->getException();
 			$errMsg = $excep instanceof UserVisibleException

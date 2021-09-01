@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 
 /**
  * This trait contains helper methods for Api integration tests.
@@ -11,17 +11,17 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 trait AbuseFilterApiTestTrait {
 
 	/**
-	 * @param FilterEvaluator|null $parser
-	 * @return ParserFactory
+	 * @param FilterEvaluator|null $ruleChecker
+	 * @return RuleCheckerFactory
 	 */
-	protected function getParserFactory( FilterEvaluator $parser = null ): ParserFactory {
-		$factory = $this->createMock( ParserFactory::class );
-		if ( $parser !== null ) {
+	protected function getRuleCheckerFactory( FilterEvaluator $ruleChecker = null ): RuleCheckerFactory {
+		$factory = $this->createMock( RuleCheckerFactory::class );
+		if ( $ruleChecker !== null ) {
 			$factory->expects( $this->atLeastOnce() )
-				->method( 'newParser' )
-				->willReturn( $parser );
+				->method( 'newRuleChecker' )
+				->willReturn( $ruleChecker );
 		} else {
-			$factory->expects( $this->never() )->method( 'newParser' );
+			$factory->expects( $this->never() )->method( 'newRuleChecker' );
 		}
 		return $factory;
 	}

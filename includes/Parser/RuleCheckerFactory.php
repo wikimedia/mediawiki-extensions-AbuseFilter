@@ -10,8 +10,8 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Psr\Log\LoggerInterface;
 
-class ParserFactory {
-	public const SERVICE_NAME = 'AbuseFilterParserFactory';
+class RuleCheckerFactory {
+	public const SERVICE_NAME = 'AbuseFilterRuleCheckerFactory';
 
 	/** @var Language */
 	private $contLang;
@@ -65,7 +65,7 @@ class ParserFactory {
 	 * @param VariableHolder|null $vars
 	 * @return FilterEvaluator
 	 */
-	public function newParser( VariableHolder $vars = null ): FilterEvaluator {
+	public function newRuleChecker( VariableHolder $vars = null ): FilterEvaluator {
 		return new FilterEvaluator(
 			$this->contLang,
 			$this->cache,

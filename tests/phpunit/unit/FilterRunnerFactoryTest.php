@@ -14,7 +14,7 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -50,7 +50,7 @@ class FilterRunnerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( FilterProfiler::class ),
 			$this->createMock( ChangeTagger::class ),
 			$this->createMock( FilterLookup::class ),
-			$this->createMock( ParserFactory::class ),
+			$this->createMock( RuleCheckerFactory::class ),
 			$this->createMock( ConsequencesExecutorFactory::class ),
 			$this->createMock( AbuseLoggerFactory::class ),
 			$this->createMock( VariablesManager::class ),

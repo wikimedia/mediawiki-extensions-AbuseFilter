@@ -30,7 +30,7 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
@@ -109,8 +109,8 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
-	ParserFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): ParserFactory {
-		return new ParserFactory(
+	RuleCheckerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): RuleCheckerFactory {
+		return new RuleCheckerFactory(
 			$services->getContentLanguage(),
 			// We could use $services here, but we need the fallback
 			ObjectCache::getLocalServerInstance( 'hash' ),
@@ -155,7 +155,7 @@ return [
 	FilterValidator::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterValidator {
 		return new FilterValidator(
 			$services->get( ChangeTagValidator::SERVICE_NAME ),
-			$services->get( ParserFactory::SERVICE_NAME ),
+			$services->get( RuleCheckerFactory::SERVICE_NAME ),
 			$services->get( PermManager::SERVICE_NAME ),
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,
@@ -281,7 +281,7 @@ return [
 			$services->get( FilterProfiler::SERVICE_NAME ),
 			$services->get( ChangeTagger::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
-			$services->get( ParserFactory::SERVICE_NAME ),
+			$services->get( RuleCheckerFactory::SERVICE_NAME ),
 			$services->get( ConsequencesExecutorFactory::SERVICE_NAME ),
 			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),

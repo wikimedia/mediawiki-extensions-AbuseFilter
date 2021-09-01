@@ -6,7 +6,7 @@ use BagOStuff;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use NullStatsdDataFactory;
@@ -17,15 +17,15 @@ use Psr\Log\NullLogger;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\ParserFactory
+ * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory
  */
-class ParserFactoryTest extends MediaWikiUnitTestCase {
+class RuleCheckerFactoryTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::__construct
-	 * @covers ::newParser
+	 * @covers ::newRuleChecker
 	 */
-	public function testNewParser() {
-		$factory = new ParserFactory(
+	public function testNewRuleChecker() {
+		$factory = new RuleCheckerFactory(
 			$this->createMock( Language::class ),
 			$this->createMock( BagOStuff::class ),
 			new NullLogger(),
@@ -34,6 +34,6 @@ class ParserFactoryTest extends MediaWikiUnitTestCase {
 			new NullStatsdDataFactory(),
 			1000
 		);
-		$this->assertInstanceOf( FilterEvaluator::class, $factory->newParser() );
+		$this->assertInstanceOf( FilterEvaluator::class, $factory->newRuleChecker() );
 	}
 }

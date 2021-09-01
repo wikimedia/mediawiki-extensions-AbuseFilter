@@ -10,7 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
@@ -86,10 +86,10 @@ class AbuseFilterServices {
 	}
 
 	/**
-	 * @return ParserFactory
+	 * @return RuleCheckerFactory
 	 */
-	public static function getParserFactory(): ParserFactory {
-		return MediaWikiServices::getInstance()->getService( ParserFactory::SERVICE_NAME );
+	public static function getRuleCheckerFactory(): RuleCheckerFactory {
+		return MediaWikiServices::getInstance()->getService( RuleCheckerFactory::SERVICE_NAME );
 	}
 
 	/**

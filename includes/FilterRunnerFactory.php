@@ -8,7 +8,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -30,8 +30,8 @@ class FilterRunnerFactory {
 	private $changeTagger;
 	/** @var FilterLookup */
 	private $filterLookup;
-	/** @var ParserFactory */
-	private $parserFactory;
+	/** @var RuleCheckerFactory */
+	private $ruleCheckerFactory;
 	/** @var ConsequencesExecutorFactory */
 	private $consExecutorFactory;
 	/** @var AbuseLoggerFactory */
@@ -62,7 +62,7 @@ class FilterRunnerFactory {
 	 * @param FilterProfiler $filterProfiler
 	 * @param ChangeTagger $changeTagger
 	 * @param FilterLookup $filterLookup
-	 * @param ParserFactory $parserFactory
+	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param ConsequencesExecutorFactory $consExecutorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param VariablesManager $varManager
@@ -81,7 +81,7 @@ class FilterRunnerFactory {
 		FilterProfiler $filterProfiler,
 		ChangeTagger $changeTagger,
 		FilterLookup $filterLookup,
-		ParserFactory $parserFactory,
+		RuleCheckerFactory $ruleCheckerFactory,
 		ConsequencesExecutorFactory $consExecutorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
 		VariablesManager $varManager,
@@ -99,7 +99,7 @@ class FilterRunnerFactory {
 		$this->filterProfiler = $filterProfiler;
 		$this->changeTagger = $changeTagger;
 		$this->filterLookup = $filterLookup;
-		$this->parserFactory = $parserFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->consExecutorFactory = $consExecutorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 		$this->varManager = $varManager;
@@ -134,7 +134,7 @@ class FilterRunnerFactory {
 			$this->filterProfiler,
 			$this->changeTagger,
 			$this->filterLookup,
-			$this->parserFactory,
+			$this->ruleCheckerFactory,
 			$this->consExecutorFactory,
 			$this->abuseLoggerFactory,
 			$this->varManager,

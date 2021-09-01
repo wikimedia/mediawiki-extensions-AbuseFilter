@@ -5,8 +5,8 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 use ApiTestCase;
 use FormatJson;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckMatch
@@ -22,7 +22,7 @@ class CheckMatchTest extends ApiTestCase {
 	public function testExecute_noPermissions() {
 		$this->setExpectedApiException( 'apierror-abusefilter-canttest', 'permissiondenied' );
 
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory() );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory() );
 
 		$this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
@@ -46,14 +46,14 @@ class CheckMatchTest extends ApiTestCase {
 		$filter = 'sampleFilter';
 		$checkStatus = new ParserStatus( true, false, null, [], 1 );
 		$resultStatus = new ParserStatus( $expected, false, null, [], 1 );
-		$parser = $this->createMock( FilterEvaluator::class );
-		$parser->expects( $this->once() )
+		$ruleChecker = $this->createMock( FilterEvaluator::class );
+		$ruleChecker->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )
 			->willReturn( $checkStatus );
-		$parser->expects( $this->once() )
+		$ruleChecker->expects( $this->once() )
 			->method( 'checkConditions' )->with( $filter )
 			->willReturn( $resultStatus );
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory( $ruleChecker ) );
 
 		$result = $this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
@@ -80,11 +80,11 @@ class CheckMatchTest extends ApiTestCase {
 		$this->setExpectedApiException( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		$filter = 'sampleFilter';
 		$status = new ParserStatus( false, false, null, [], 1 );
-		$parser = $this->createMock( FilterEvaluator::class );
-		$parser->expects( $this->once() )
+		$ruleChecker = $this->createMock( FilterEvaluator::class );
+		$ruleChecker->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )
 			->willReturn( $status );
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory( $ruleChecker ) );
 
 		$this->doApiRequest( [
 			'action' => 'abusefiltercheckmatch',
