@@ -41,6 +41,7 @@
 	"abusefilter-list-options-deleted-only": "Montrar nur filtrili efacita",
 	"abusefilter-list-options-scope-local": "Nur lokala reguli",
 	"abusefilter-list-options-searchoptions": "Modo di serchado:",
+	"abusefilter-list-regexerror": "Eventis eroro dum la serchado. Eroro pri sintaxo di regulara frazo.",
 	"abusefilter-tools-reautoconfirm-user": "Uzero:",
 	"abusefilter-edit-status-label": "Statistiko:",
 	"abusefilter-edit-new": "Nova filtrilo",
@@ -121,5 +122,6 @@
 	"abusefilter-log-header": "Ca protokolo ('log') montras rezumo di modifikuri en la filtrili.\nPor plusa detali, videz [[Special:AbuseFilter/history|la listo di recenta chanji en la filtrili]].",
 	"abusefilter-log-noresults": "Nula rezulti",
 	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2",
-	"abusefilter-group-default": "Normala"
+	"abusefilter-group-default": "Normala",
+	"abusefilter-http-error": "Eventis eroro di HTTP: $1."
 }

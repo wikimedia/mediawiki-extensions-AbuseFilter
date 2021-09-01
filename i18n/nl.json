@@ -359,6 +359,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Normaliseren (norm)",
 	"abusefilter-edit-builder-funcs-count": "Aantal keren dat tekst X voorkomt in tekst Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Aantal keren dat reguliere expressie X voorkomt in tekst Y (rcount)",
+	"abusefilter-edit-builder-funcs-get_matches": "Array van regex-overeenkomsten in een tekst voor elke vastleggende groep (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Witruimte verwijderen (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Speciale tekens verwijderen (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Bevindt het IP-adres zich in de opgegeven range? (ip_in_range)",
