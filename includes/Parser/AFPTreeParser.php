@@ -10,7 +10,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
-use BagOStuff;
 use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
@@ -23,6 +22,7 @@ use Psr\Log\LoggerInterface;
 class AFPTreeParser {
 	/**
 	 * @var array[] Contains the AFPTokens for the code being parsed
+	 * @phan-var array<int,array{0:AFPToken,1:int}>
 	 */
 	public $mTokens;
 	/**
@@ -40,11 +40,6 @@ class AFPTreeParser {
 	public const CACHE_VERSION = 2;
 
 	/**
-	 * @var BagOStuff Used to cache tokens
-	 */
-	protected $cache;
-
-	/**
 	 * @var LoggerInterface Used for debugging
 	 */
 	protected $logger;
@@ -58,18 +53,15 @@ class AFPTreeParser {
 	protected $keywordsManager;
 
 	/**
-	 * @param BagOStuff $cache
 	 * @param LoggerInterface $logger Used for debugging
 	 * @param IBufferingStatsdDataFactory $statsd
 	 * @param KeywordsManager $keywordsManager
 	 */
 	public function __construct(
-		BagOStuff $cache,
 		LoggerInterface $logger,
 		IBufferingStatsdDataFactory $statsd,
 		KeywordsManager $keywordsManager
 	) {
-		$this->cache = $cache;
 		$this->logger = $logger;
 		$this->statsd = $statsd;
 		$this->keywordsManager = $keywordsManager;
@@ -86,7 +78,7 @@ class AFPTreeParser {
 	/**
 	 * Resets the state
 	 */
-	public function resetState() {
+	private function resetState() {
 		$this->mTokens = [];
 		$this->mPos = 0;
 		$this->mFilter = null;
@@ -133,13 +125,13 @@ class AFPTreeParser {
 	/**
 	 * Parse the supplied filter source code into a tree.
 	 *
-	 * @param string $code
+	 * @param array[] $tokens
+	 * @phan-param array<int,array{0:AFPToken,1:int}> $tokens
 	 * @return AFPSyntaxTree
 	 * @throws UserVisibleException
 	 */
-	public function parse( $code ): AFPSyntaxTree {
-		$tokenizer = new AbuseFilterTokenizer( $this->cache, $this->logger );
-		$this->mTokens = $tokenizer->getTokens( $code );
+	public function parse( array $tokens ): AFPSyntaxTree {
+		$this->mTokens = $tokens;
 		$this->mPos = 0;
 
 		return $this->buildSyntaxTree();
@@ -148,7 +140,7 @@ class AFPTreeParser {
 	/**
 	 * @return AFPSyntaxTree
 	 */
-	public function buildSyntaxTree(): AFPSyntaxTree {
+	private function buildSyntaxTree(): AFPSyntaxTree {
 		$startTime = microtime( true );
 		$root = $this->doLevelEntry();
 		$this->statsd->timing( 'abusefilter_cachingParser_buildtree', microtime( true ) - $startTime );

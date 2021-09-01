@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use Psr\Log\LoggerInterface;
+use Wikimedia\Equivset\Equivset;
 
 class RuleCheckerFactory {
 	public const SERVICE_NAME = 'AbuseFilterRuleCheckerFactory';
@@ -31,6 +32,9 @@ class RuleCheckerFactory {
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
 
+	/** @var Equivset */
+	private $equivset;
+
 	/** @var int */
 	private $conditionsLimit;
 
@@ -41,6 +45,7 @@ class RuleCheckerFactory {
 	 * @param KeywordsManager $keywordsManager
 	 * @param VariablesManager $varManager
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param Equivset $equivset
 	 * @param int $conditionsLimit
 	 */
 	public function __construct(
@@ -50,6 +55,7 @@ class RuleCheckerFactory {
 		KeywordsManager $keywordsManager,
 		VariablesManager $varManager,
 		IBufferingStatsdDataFactory $statsdDataFactory,
+		Equivset $equivset,
 		int $conditionsLimit
 	) {
 		$this->contLang = $contLang;
@@ -58,6 +64,7 @@ class RuleCheckerFactory {
 		$this->keywordsManager = $keywordsManager;
 		$this->varManager = $varManager;
 		$this->statsdDataFactory = $statsdDataFactory;
+		$this->equivset = $equivset;
 		$this->conditionsLimit = $conditionsLimit;
 	}
 
@@ -73,6 +80,7 @@ class RuleCheckerFactory {
 			$this->keywordsManager,
 			$this->varManager,
 			$this->statsdDataFactory,
+			$this->equivset,
 			$this->conditionsLimit,
 			$vars
 		);

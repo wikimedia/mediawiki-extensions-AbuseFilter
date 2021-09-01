@@ -10,7 +10,6 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor;
-use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory as ConsExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
@@ -43,6 +42,7 @@ use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
+use Wikimedia\Equivset\Equivset;
 
 // This file is actually covered by AbuseFilterServicesTest, but it's not possible to specify a path
 // in @covers annotations (https://github.com/sebastianbergmann/phpunit/issues/3794)
@@ -118,6 +118,7 @@ return [
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->getStatsdDataFactory(),
+			new Equivset(),
 			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
 	},
@@ -282,7 +283,7 @@ return [
 			$services->get( ChangeTagger::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
 			$services->get( RuleCheckerFactory::SERVICE_NAME ),
-			$services->get( ConsequencesExecutorFactory::SERVICE_NAME ),
+			$services->get( ConsExecutorFactory::SERVICE_NAME ),
 			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( VariableGeneratorFactory::SERVICE_NAME ),

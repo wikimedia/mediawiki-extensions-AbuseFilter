@@ -27,11 +27,11 @@ use Generator;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiIntegrationTestCase;
 use NullStatsdDataFactory;
+use Wikimedia\Equivset\Equivset;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.
@@ -73,6 +73,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$keywordsManager,
 			$varManager,
 			new NullStatsdDataFactory(),
+			new Equivset(),
 			1000
 		);
 		$evaluator->toggleConditionLimit( false );
@@ -84,9 +85,6 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideGenericTests
 	 */
 	public function testGeneric( $rule ) {
-		if ( !class_exists( \Wikimedia\Equivset\Equivset::class ) ) {
-			$this->markTestSkipped( 'Equivset is not installed' );
-		}
 		$this->assertTrue( $this->getParser()->parse( $rule ) );
 	}
 
@@ -103,28 +101,5 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 
 			yield $testName => [ $rule ];
 		}
-	}
-
-	/**
-	 * @param string $func
-	 * @see ParserTest::testVariadicFuncsArbitraryArgsAllowed()
-	 * @dataProvider variadicFuncs
-	 */
-	public function testVariadicFuncsArbitraryArgsAllowed( $func ) {
-		$argsList = str_repeat( ', "arg"', 50 );
-		$code = "$func( 'arg' $argsList )";
-		// Expect no exception
-		$this->getParser()->parse( $code );
-		$this->assertTrue( true );
-	}
-
-	/**
-	 * @return array
-	 */
-	public function variadicFuncs() {
-		return [
-			[ 'ccnorm_contains_any' ],
-			[ 'ccnorm_contains_all' ],
-		];
 	}
 }

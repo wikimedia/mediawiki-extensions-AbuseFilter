@@ -364,7 +364,6 @@ class FilterRunner {
 		$startTime = microtime( true );
 		$origExtraTime = LazyVariableComputer::$profilingExtraTime;
 
-		$this->ruleChecker->setFilter( $filterName );
 		$status = $this->ruleChecker->checkConditions( $filter->getRules(), $filterName );
 
 		$actualExtra = LazyVariableComputer::$profilingExtraTime - $origExtraTime;

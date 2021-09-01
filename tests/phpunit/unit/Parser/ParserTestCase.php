@@ -35,6 +35,7 @@ use MediaWikiUnitTestCase;
 use NullStatsdDataFactory;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
+use Wikimedia\Equivset\Equivset;
 
 /**
  * Helper for parser-related tests
@@ -55,6 +56,8 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			$keywordsManager,
 			$this->createMock( LazyVariableComputer::class )
 		);
+		$equivset = $this->createMock( Equivset::class );
+		$equivset->method( 'normalize' )->willReturnArgument( 0 );
 
 		$evaluator = new FilterEvaluator(
 			$contLang,
@@ -63,6 +66,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			$keywordsManager,
 			$varManager,
 			new NullStatsdDataFactory(),
+			$equivset,
 			1000
 		);
 		$evaluator->toggleConditionLimit( false );
