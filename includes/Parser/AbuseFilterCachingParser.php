@@ -249,6 +249,7 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 			self::CACHE_VERSION,
 			AFPTreeParser::CACHE_VERSION,
 			AbuseFilterTokenizer::CACHE_VERSION,
+			SyntaxChecker::CACHE_VERSION,
 			array_keys( self::FUNCTIONS ),
 			array_keys( self::KEYWORDS ),
 		];
@@ -338,7 +339,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	public function intEval( $code ): AFPData {
 		$startTime = microtime( true );
 		$tree = $this->getTree( $code );
-
 		$res = $this->evalTree( $tree );
 
 		if ( $res->getType() === AFPData::DUNDEFINED ) {
@@ -396,7 +396,15 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 				$this->fromCache = false;
 				$parser = new AFPTreeParser( $this->cache, $this->logger, $this->statsd, $this->keywordsManager );
 				$parser->setFilter( $this->mFilter );
-				return $parser->parse( $code );
+				$tree = $parser->parse( $code );
+				$checker = new SyntaxChecker(
+					$tree,
+					$this->keywordsManager,
+					SyntaxChecker::MCONSERVATIVE,
+					false
+				);
+				$checker->start();
+				return $tree;
 			}
 		);
 	}
@@ -608,9 +616,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 			case AFPTreeNode::INDEX_ASSIGNMENT:
 				list( $varName, $offset, $value ) = $node->children;
 
-				if ( $this->isReservedIdentifier( $varName ) ) {
-					throw new UserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
-				}
 				$array = $this->getVarValue( $varName );
 
 				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
@@ -649,10 +654,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 
 			case AFPTreeNode::ARRAY_APPEND:
 				list( $varName, $value ) = $node->children;
-
-				if ( $this->isReservedIdentifier( $varName ) ) {
-					throw new UserVisibleException( 'overridebuiltin', $node->position, [ $varName ] );
-				}
 
 				$array = $this->getVarValue( $varName );
 				$value = $this->evalNode( $value );
@@ -708,7 +709,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		) {
 			$result = $this->funcCache[$funcHash];
 		} else {
-			$this->checkArgCount( $args, $fname );
 			$this->raiseCondCount();
 
 			// Any undefined argument should be special-cased by the function, but that would be too
@@ -798,23 +798,13 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 		if ( array_key_exists( $var, $deprecatedVars ) ) {
 			$var = $deprecatedVars[ $var ];
 		}
-		if ( $this->keywordsManager->isVarDisabled( $var ) ) {
-			throw new UserVisibleException(
-				'disabledvar',
-				$this->mCur->pos,
-				[ $var ]
-			);
-		}
-		if ( !$this->varExists( $var ) ) {
-			throw new UserVisibleException(
-				'unrecognisedvar',
-				$this->mCur->pos,
-				[ $var ]
-			);
-		}
+		// With check syntax, all unbound variables will be caught
+		// already. So we do not error unbound variables at runtime,
+		// allowing it to result in DUNDEFINED.
+		$allowMissingVariables = !$this->varExists( $var ) || $this->allowMissingVariables;
 
 		// It's a built-in, non-disabled variable (either set or unset), or a set custom variable
-		$flags = $this->allowMissingVariables
+		$flags = $allowMissingVariables
 			? VariablesManager::GET_LAX
 			// TODO: This should be GET_STRICT, but that's going to be very hard (see T230256)
 			: VariablesManager::GET_BC;
@@ -827,9 +817,6 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	 * @throws UserVisibleException
 	 */
 	protected function setUserVariable( $name, $value ) {
-		if ( $this->isReservedIdentifier( $name ) ) {
-			throw new UserVisibleException( 'overridebuiltin', $this->mCur->pos, [ $name ] );
-		}
 		$this->mVariables->setVar( $name, $value );
 	}
 
@@ -1454,45 +1441,15 @@ class AbuseFilterCachingParser extends AFPTransitionBase {
 	}
 
 	/**
-	 * Given a node that we don't need to evaluate, decide what to do with it. The nodes passed in
-	 * will usually be discarded by short-circuit evaluation. If we allow it, then we just hoist
-	 * the variables assigned in any descendant of the node. Otherwise, we fully evaluate the node.
+	 * Given a node that we don't need to evaluate, decide what to do with it.
+	 * The nodes passed in will usually be discarded by short-circuit
+	 * evaluation. If we don't allow it, we fully evaluate the node.
 	 *
 	 * @param AFPTreeNode $node
 	 */
 	private function maybeDiscardNode( AFPTreeNode $node ) {
-		if ( $this->mAllowShort ) {
-			$this->discardWithHoisting( $node );
-		} else {
+		if ( !$this->mAllowShort ) {
 			$this->evalNode( $node );
-		}
-	}
-
-	/**
-	 * Intended to be used for short-circuit as a solution for T214674.
-	 * Given a node, check it and its children; if there are assignments of non-existing variables,
-	 * hoist them. In case of index assignment or array append, the old value is always erased and
-	 * overwritten with a DUNDEFINED. This is used to allow stuff like:
-	 * false & ( var := 'foo' ); var == 2
-	 * or
-	 * if ( false ) then ( var := 'foo' ) else ( 1 ) end; var == 2
-	 * where `false` is something evaluated as false at runtime.
-	 *
-	 * @note This method doesn't check whether the variable exists in case of index assignments.
-	 *   Hence, in `false & (nonexistent[] := 2)`, `nonexistent` would be hoisted without errors.
-	 *   However, that would by caught by checkSyntax, so we can avoid checking here: we'd need
-	 *   way more context than we currently have.
-	 *
-	 * @param AFPTreeNode $node
-	 */
-	private function discardWithHoisting( AFPTreeNode $node ) {
-		foreach ( $node->getInnerAssignments() as $name ) {
-			if (
-				!$this->mVariables->varIsSet( $name ) ||
-				$this->varManager->getVar( $this->mVariables, $name )->getType() === AFPData::DARRAY
-			) {
-				$this->setUserVariable( $name, new AFPData( AFPData::DUNDEFINED ) );
-			}
 		}
 	}
 

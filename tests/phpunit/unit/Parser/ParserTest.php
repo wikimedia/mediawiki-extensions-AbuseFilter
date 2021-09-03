@@ -53,6 +53,7 @@ use Wikimedia\TestingAccessWrapper;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\SyntaxChecker
  */
 class ParserTest extends ParserTestCase {
 	/**
@@ -226,12 +227,12 @@ class ParserTest extends ParserTestCase {
 			[ "if 1 = 1 then 'foo' else 'bar'", 'doLevelConditions' ],
 			[ "a := 1 = 1 ? 'foo'", 'doLevelConditions' ],
 			[ '(1 = 1', 'doLevelBraces' ],
-			[ 'lcase = 3', 'doLevelFunction' ],
 			[ 'lcase( 3 = 1', 'doLevelFunction' ],
 			[ 'a := [1,2', 'doLevelAtom' ],
 			[ '1 = 1 | (1', 'skipOverBraces/doLevelParenthesis' ],
 			[ 'a := [1,2,3]; 3 = a[5', 'doLevelArrayElements' ],
 			[ 'if[3] := 1', 'doLevelConditions' ],
+			[ "set( page_title + 'x' + ( page_namespace == 0 ? 'x' : 'y' )", '' ]
 		];
 	}
 
@@ -471,7 +472,7 @@ class ParserTest extends ParserTestCase {
 			[ "set( 'x' + 'y', 1 )", 'doLevelFunction' ],
 			[ "set( 'x' + page_title, 1 )", 'doLevelFunction' ],
 			[ "set( page_title, 1 )", 'doLevelFunction' ],
-			[ "set( page_title + 'x' + ( page_namespace == 0 ? 'x' : 'y' )", 'doLevelFunction' ],
+			[ "set( page_title + 'x' + ( page_namespace == 0 ? 'x' : 'y' ), 1 )", 'doLevelFunction' ],
 		];
 	}
 
@@ -504,8 +505,39 @@ class ParserTest extends ParserTestCase {
 			[ 'set("added_lines", 45)', 'setUserVariable' ],
 			[ 'set("length", 45)', 'setUserVariable' ],
 			[ 'set("true", true)', 'setUserVariable' ],
-			[ 'contains_any[1] := "foo"', '??' ],
 		];
+	}
+
+	/**
+	 * Test the 'usebuiltin' exception
+	 *
+	 * @param string $expr The expression to test
+	 * @dataProvider useBuiltin
+	 */
+	public function testUseBuiltinException( $expr ) {
+		$this->exceptionTest( 'usebuiltin', $expr );
+		$this->exceptionTestInSkippedBlock( 'usebuiltin', $expr );
+	}
+
+	/**
+	 * Data provider for testUseBuiltinException
+	 * @return array
+	 */
+	public function useBuiltin() {
+		return [
+			[ 'contains_any[1] := "foo"' ],
+			[ '1 + lcase + 2' ]
+		];
+	}
+
+	/**
+	 * Test a filter only containing a function application of
+	 * an unknown function.
+	 */
+	public function testUnknownFunction() {
+		$expr = "f(1)";
+		$this->exceptionTest( 'unknownfunction', $expr );
+		$this->exceptionTestInSkippedBlock( 'unknownfunction', $expr );
 	}
 
 	/**
@@ -841,6 +873,28 @@ class ParserTest extends ParserTestCase {
 	}
 
 	/**
+	 * Test for mutating arrays under a skipped branch.
+	 *
+	 * @param string $code Code to parse
+	 * @dataProvider provideArrayAssignmentShortCircuit
+	 */
+	public function testArrayAssignmentShortCircuit( string $code ) {
+		$this->assertTrue( $this->getParser()->parse( $code ) );
+	}
+
+	/**
+	 * Data provider for testArrayAssignmentShortCircuit
+	 *
+	 * @return array
+	 */
+	public function provideArrayAssignmentShortCircuit() {
+		return [
+			[ 'a := [true]; false & (a[] := 2); a[0]' ],
+			[ 'a := [true]; false & (a[1] := 2); a[0]' ],
+		];
+	}
+
+	/**
 	 * Test that code declaring a variable in a skipped brace (because of shortcircuit)
 	 * will be parsed without throwing an exception when later trying to use that var. T214674
 	 *
@@ -858,8 +912,6 @@ class ParserTest extends ParserTestCase {
 	public function provideVarDeclarationInSkippedBlock() {
 		return [
 			[ "x := [5]; false & (1 == 1; y := 'b'; x[1] := 'x'; 3 < 4); y != 'b' & x[1] != 'x'" ],
-			[ "(var := [1]); false & ( var[] := 'baz' ); count(var) > -1" ],
-			[ "(var := [1]); false & ( var[1] := 'baz' ); var[1] === 'baz'" ],
 			[ "false & (set('myvar', 1)); myvar contains 1" ],
 			[ "false & ( ( false & ( var := [1] ) ) | ( var[] := 2 ) ); var" ],
 			[ "false & ( ( false & ( var := [1] ); true ) | ( var[] := 2 ) ); var" ],

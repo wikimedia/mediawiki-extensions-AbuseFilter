@@ -48,6 +48,7 @@ use MediaWikiIntegrationTestCase;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPToken
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\AFPData
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\SyntaxChecker
  */
 class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**

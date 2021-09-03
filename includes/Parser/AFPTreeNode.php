@@ -81,6 +81,15 @@ class AFPTreeNode {
 	// token corresponding to the literal.
 	public const ATOM = 'ATOM';
 
+	// BINOP is a combination of LOGIC (^), COMPARE (<=, <, etc.),
+	// SUM_REL (+, -), MUL_REL (*, /, %), POW (**),
+	// KEYWORD_OPERATOR (like, rlike, etc.), and ARRAY_INDEX ([]).
+	// The format is (operator, operand, operand).
+	// Currently, it's only used in SyntaxChecker
+	// & and | which is in LOGIC is not in BINOP because it affects
+	// control flow.
+	public const BINOP = 'BINOP';
+
 	/** @var string Type of the node, one of the constants above */
 	public $type;
 	/**
@@ -95,14 +104,6 @@ class AFPTreeNode {
 	public $position;
 
 	/**
-	 * @var string[] Names of the variables assigned in this node or any of its descendants
-	 * @todo We could change this to be an instance of a new AFPScope class (holding a var map)
-	 *   if we'll have the need to store other scope-specific data,
-	 *   see <https://phabricator.wikimedia.org/T230982#5475400>.
-	 */
-	private $innerAssignments = [];
-
-	/**
 	 * @param string $type
 	 * @param (AFPTreeNode|null)[]|string[]|AFPToken $children
 	 * @param int $position
@@ -111,56 +112,6 @@ class AFPTreeNode {
 		$this->type = $type;
 		$this->children = $children;
 		$this->position = $position;
-		$this->populateInnerAssignments();
-	}
-
-	/**
-	 * Save in this node all the variable names used in the children, and in this node if it's an
-	 * assignment-related node. Note that this doesn't check whether the variable is custom or builtin:
-	 * this is already checked when calling setUserVariable.
-	 * In case we'll ever need to store other data in a node, or maybe even a Scope object, this could
-	 * be moved to a different class which could also re-visit the whole AST.
-	 */
-	private function populateInnerAssignments() {
-		if ( $this->type === self::ATOM ) {
-			return;
-		}
-
-		if (
-			$this->type === self::ASSIGNMENT ||
-			$this->type === self::INDEX_ASSIGNMENT ||
-			$this->type === self::ARRAY_APPEND
-		) {
-			$this->innerAssignments = [ $this->children[0] ];
-		} elseif (
-			$this->type === self::FUNCTION_CALL &&
-			in_array( $this->children[0], [ 'set', 'set_var' ] ) &&
-			// If unset, parsing will fail when checking arguments
-			isset( $this->children[1] )
-		) {
-			$varnameNode = $this->children[1];
-			if ( $varnameNode->type !== self::ATOM ) {
-				// Shouldn't happen since variable variables are not allowed
-				// @codeCoverageIgnoreStart
-				throw new InternalException( "Got non-atom type {$varnameNode->type} for set_var" );
-				// @codeCoverageIgnoreEnd
-			}
-			$this->innerAssignments = [ $varnameNode->children->value ];
-		}
-
-		// @phan-suppress-next-line PhanTypeSuspiciousNonTraversableForeach ATOM excluded above
-		foreach ( $this->children as $child ) {
-			if ( $child instanceof self ) {
-				$this->innerAssignments = array_merge( $this->innerAssignments, $child->getInnerAssignments() );
-			}
-		}
-	}
-
-	/**
-	 * @return string[]
-	 */
-	public function getInnerAssignments(): array {
-		return $this->innerAssignments;
 	}
 
 	/**

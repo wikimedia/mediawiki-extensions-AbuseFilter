@@ -594,40 +594,14 @@ class AFPTreeParser extends AFPTransitionBase {
 	 * @throws UserVisibleException
 	 */
 	protected function doLevelFunction() {
+		$next = $this->getNextToken();
 		if ( $this->mCur->type === AFPToken::TID &&
-			isset( AbuseFilterCachingParser::FUNCTIONS[$this->mCur->value] )
+			 $next->type === AFPToken::TBRACE &&
+			 $next->value === '('
 		) {
 			$func = $this->mCur->value;
 			$position = $this->mPos;
 			$this->move();
-			if ( $this->mCur->type !== AFPToken::TBRACE || $this->mCur->value !== '(' ) {
-				throw new UserVisibleException( 'expectednotfound',
-					$this->mPos,
-					[
-						'(',
-						$this->mCur->type,
-						$this->mCur->value
-					]
-				);
-			}
-
-			if ( ( $func === 'set' || $func === 'set_var' ) ) {
-				$state = $this->getState();
-				$this->move();
-				$next = $this->getNextToken();
-				if (
-					$this->mCur->type !== AFPToken::TSTRING ||
-					(
-						$next->type !== AFPToken::TCOMMA &&
-						// Let this fail later, when checking parameters count
-						!( $next->type === AFPToken::TBRACE && $next->value === ')' )
-					)
-				) {
-					throw new UserVisibleException( 'variablevariable', $this->mPos, [] );
-				} else {
-					$this->setState( $state );
-				}
-			}
 
 			$args = [];
 			$next = $this->getNextToken();
@@ -661,11 +635,6 @@ class AFPTreeParser extends AFPTransitionBase {
 					]
 				);
 			}
-			// Giving too few arguments to a function is a pretty common error. If we check it here
-			// (as well as at runtime, for OCD), we can make checkSyntax only try to build the AST, as
-			// there would be way less runtime errors. Moreover, this check will also be performed inside
-			// skipped branches, e.g. the discarded if/else branch.
-			$this->checkArgCount( $args, $func );
 			$this->move();
 
 			array_unshift( $args, $func );
