@@ -238,14 +238,12 @@ class QueryAbuseLog extends ApiQueryBase {
 					$key = $isGlobal ? 'global' : 'local';
 					$filterConds[$key][] = $filter[0];
 				}
-				// @phan-suppress-next-line PhanImpossibleCondition False positive
 				if ( $filterConds['local'] ) {
 					$conds[] = $this->getDB()->makeList(
 						[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
 						LIST_AND
 					);
 				}
-				// @phan-suppress-next-line PhanImpossibleCondition False positive
 				if ( $filterConds['global'] ) {
 					$conds[] = $this->getDB()->makeList(
 						[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],

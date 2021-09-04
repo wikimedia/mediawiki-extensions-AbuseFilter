@@ -527,14 +527,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					$filterConds[$key][] = $filterID;
 				}
 				$filterWhere = [];
-				// @phan-suppress-next-line PhanImpossibleCondition False positive
 				if ( $filterConds['local'] ) {
 					$filterWhere[] = $dbr->makeList(
 						[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
 						LIST_AND
 					);
 				}
-				// @phan-suppress-next-line PhanImpossibleCondition False positive
 				if ( $filterConds['global'] ) {
 					$filterWhere[] = $dbr->makeList(
 						[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
@@ -797,6 +795,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$output .= $htmlForm->getHTML( false );
 		}
 
+		// TODO Clarify whether TextSlotDiffRenderer::getTextDiff can return unsafe stuff
+		// @phan-suppress-next-line SecurityCheck-XSS
 		$out->addHTML( Xml::tags( 'fieldset', null, $output ) );
 	}
 

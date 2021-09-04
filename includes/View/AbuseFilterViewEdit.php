@@ -307,7 +307,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-id'] =
 			$filter === null ?
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
-				$lang->formatNum( (string)$filter );
+				htmlspecialchars( $lang->formatNum( (string)$filter ) );
 		$fields['abusefilter-edit-description'] =
 			new OOUI\TextInputWidget( [
 				'name' => 'wpFilterDescription',

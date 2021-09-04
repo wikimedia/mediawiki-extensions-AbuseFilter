@@ -368,7 +368,6 @@ class AbuseFilterCachingParser {
 		} catch ( UserVisibleException $excep ) {
 			$valid = false;
 		}
-		// @phan-suppress-next-line PhanCoalescingNeverUndefined
 		return new ParserStatus( $valid, $this->fromCache, $excep ?? null, $this->warnings );
 	}
 

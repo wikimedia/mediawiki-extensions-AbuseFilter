@@ -153,7 +153,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$userLink = SpecialAbuseLog::getUserLinks( $row->afl_user, $row->afl_user_text );
 		} else {
 			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text );
-			$userLink .= ' (' . WikiMap::getWikiName( $row->afl_wiki ) . ')';
+			$userLink .= $this->msg( 'parentheses' )->params( WikiMap::getWikiName( $row->afl_wiki ) )->escaped();
 		}
 
 		$timestamp = htmlspecialchars( $lang->userTimeAndDate( $row->afl_timestamp, $this->getUser() ) );

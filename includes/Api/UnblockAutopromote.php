@@ -52,7 +52,7 @@ class UnblockAutopromote extends ApiBase {
 		$blockAutopromoteStore = $this->afBlockAutopromoteStore;
 		$res = $blockAutopromoteStore->unblockAutopromote( $target, $this->getUser(), $msg );
 
-		if ( $res === false ) {
+		if ( !$res ) {
 			$this->dieWithError( [ 'abusefilter-reautoconfirm-none', $target->getName() ], 'notsuspended' );
 		}
 

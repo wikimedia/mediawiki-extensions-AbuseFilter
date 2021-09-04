@@ -98,7 +98,6 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedrc' );
 			}
 
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable T240141
 			$varGenerator = $this->afVariableGeneratorFactory->newRCGenerator( $rc, $user );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
@@ -128,7 +127,7 @@ class CheckMatch extends ApiBase {
 		}
 
 		$parser = $this->afParserFactory->newParser( $vars );
-		if ( $parser->checkSyntax( $params['filter'] )->getResult() !== true ) {
+		if ( !$parser->checkSyntax( $params['filter'] )->getResult() ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 

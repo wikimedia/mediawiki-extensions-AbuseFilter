@@ -43,7 +43,7 @@ class ConsequencesLookup {
 	}
 
 	/**
-	 * @param string[] $filters
+	 * @param array<int|string> $filters
 	 * @return array[][]
 	 */
 	public function getConsequencesForFilters( array $filters ): array {
@@ -56,7 +56,7 @@ class ConsequencesLookup {
 			if ( $global ) {
 				$globalFilters[] = $filterID;
 			} else {
-				$localFilters[] = $filter;
+				$localFilters[] = (int)$filter;
 			}
 		}
 
@@ -82,7 +82,7 @@ class ConsequencesLookup {
 
 	/**
 	 * @param IDatabase $dbr
-	 * @param string[] $filters
+	 * @param int[] $filters
 	 * @param string $prefix
 	 * @return array[][]
 	 */

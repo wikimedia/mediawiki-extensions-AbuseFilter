@@ -59,7 +59,7 @@ class CheckSyntax extends ApiBase {
 			$r['warnings'] = $warnings;
 		}
 
-		if ( $result->getResult() === true ) {
+		if ( $result->getResult() ) {
 			// Everything went better than expected :)
 			$r['status'] = 'ok';
 		} else {
