@@ -4,9 +4,11 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
 use FormatJson;
+use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckMatch
@@ -44,8 +46,8 @@ class CheckMatchTest extends ApiTestCase {
 	 */
 	public function testExecute_Ok( bool $expected ) {
 		$filter = 'sampleFilter';
-		$checkStatus = new ParserStatus( true, false, null, [], 1 );
-		$resultStatus = new ParserStatus( $expected, false, null, [], 1 );
+		$checkStatus = new ParserStatus( null, [], 1 );
+		$resultStatus = new RuleCheckerStatus( $expected, false, null, [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
 		$ruleChecker->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )
@@ -79,7 +81,7 @@ class CheckMatchTest extends ApiTestCase {
 	public function testExecute_error() {
 		$this->setExpectedApiException( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		$filter = 'sampleFilter';
-		$status = new ParserStatus( false, false, null, [], 1 );
+		$status = new ParserStatus( $this->createMock( InternalException::class ), [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
 		$ruleChecker->expects( $this->once() )
 			->method( 'checkSyntax' )->with( $filter )

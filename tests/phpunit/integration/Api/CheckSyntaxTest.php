@@ -36,7 +36,7 @@ class CheckSyntaxTest extends ApiTestCase {
 	 */
 	public function testExecute_Ok() {
 		$input = 'sampleFilter';
-		$status = new ParserStatus( true, false, null, [], 1 );
+		$status = new ParserStatus( null, [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
 		$ruleChecker->method( 'checkSyntax' )->with( $input )
 			->willReturn( $status );
@@ -64,7 +64,7 @@ class CheckSyntaxTest extends ApiTestCase {
 			new UserVisibleWarning( 'exception-1', 3, [] ),
 			new UserVisibleWarning( 'exception-2', 8, [ 'param' ] ),
 		];
-		$status = new ParserStatus( true, false, null, $warnings, 1 );
+		$status = new ParserStatus( null, $warnings, 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
 		$ruleChecker->method( 'checkSyntax' )->with( $input )
 			->willReturn( $status );
@@ -110,7 +110,7 @@ class CheckSyntaxTest extends ApiTestCase {
 	public function testExecute_error() {
 		$input = 'sampleFilter';
 		$exception = new UserVisibleException( 'error-id', 4, [] );
-		$status = new ParserStatus( false, false, $exception, [], 1 );
+		$status = new ParserStatus( $exception, [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
 		$ruleChecker->method( 'checkSyntax' )->with( $input )
 			->willReturn( $status );

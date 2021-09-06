@@ -6,50 +6,26 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 
 class ParserStatus {
-	/** @var bool */
-	private $result;
-	/** @var bool */
-	private $warmCache;
 	/** @var ExceptionBase|null */
-	private $excep;
+	protected $excep;
 	/** @var UserVisibleWarning[] */
-	private $warnings;
+	protected $warnings;
 	/** @var int */
-	private $condsUsed;
+	protected $condsUsed;
 
 	/**
-	 * @param bool $result A generic operation result
-	 * @param bool $warmCache Whether we retrieved the AST from cache
 	 * @param ExceptionBase|null $excep An exception thrown while parsing, or null if it parsed correctly
 	 * @param UserVisibleWarning[] $warnings
 	 * @param int $condsUsed
 	 */
 	public function __construct(
-		bool $result,
-		bool $warmCache,
 		?ExceptionBase $excep,
 		array $warnings,
 		int $condsUsed
 	) {
-		$this->result = $result;
-		$this->warmCache = $warmCache;
 		$this->excep = $excep;
 		$this->warnings = $warnings;
 		$this->condsUsed = $condsUsed;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function getResult(): bool {
-		return $this->result;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function getWarmCache(): bool {
-		return $this->warmCache;
 	}
 
 	/**
@@ -74,38 +50,10 @@ class ParserStatus {
 	}
 
 	/**
-	 * Serialize data for edit stash
-	 * @return array
+	 * Whether the parsing/evaluation happened successfully.
+	 * @return bool
 	 */
-	public function toArray(): array {
-		return [
-			'result' => $this->result,
-			'warmCache' => $this->warmCache,
-			'exception' => $this->excep ? $this->excep->toArray() : null,
-			'warnings' => array_map(
-				static function ( $warn ) {
-					return $warn->toArray();
-				},
-				$this->warnings
-			),
-			'condsUsed' => $this->condsUsed,
-		];
+	public function isValid(): bool {
+		return !$this->excep;
 	}
-
-	/**
-	 * Deserialize data from edit stash
-	 * @param array $value
-	 * @return self
-	 */
-	public static function fromArray( array $value ): self {
-		$excClass = $value['exception']['class'] ?? null;
-		return new self(
-			$value['result'],
-			$value['warmCache'],
-			$excClass !== null ? call_user_func( [ $excClass, 'fromArray' ], $value['exception'] ) : null,
-			array_map( [ UserVisibleWarning::class, 'fromArray' ], $value['warnings'] ),
-			$value['condsUsed']
-		);
-	}
-
 }

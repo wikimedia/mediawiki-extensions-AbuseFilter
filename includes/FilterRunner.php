@@ -11,8 +11,6 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
-use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
@@ -356,7 +354,7 @@ class FilterRunner {
 	 * @param ExistingFilter $filter
 	 * @param bool $global
 	 * @return array [ status, time taken ]
-	 * @phan-return array{0:ParserStatus,1:float}
+	 * @phan-return array{0:\MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus,1:float}
 	 */
 	protected function checkFilter( ExistingFilter $filter, bool $global = false ): array {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );

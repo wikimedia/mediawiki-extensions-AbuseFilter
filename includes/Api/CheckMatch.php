@@ -127,7 +127,7 @@ class CheckMatch extends ApiBase {
 		}
 
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker( $vars );
-		if ( !$ruleChecker->checkSyntax( $params['filter'] )->getResult() ) {
+		if ( !$ruleChecker->checkSyntax( $params['filter'] )->isValid() ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 

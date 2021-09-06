@@ -132,7 +132,7 @@ class FilterValidator {
 		$ret = Status::newGood();
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 		$syntaxStatus = $ruleChecker->checkSyntax( $filter->getRules() );
-		if ( !$syntaxStatus->getResult() ) {
+		if ( !$syntaxStatus->isValid() ) {
 			$excep = $syntaxStatus->getException();
 			$errMsg = $excep instanceof UserVisibleException
 				? $excep->getMessageObj()

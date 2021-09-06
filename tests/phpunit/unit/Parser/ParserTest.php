@@ -933,7 +933,7 @@ class ParserTest extends ParserTestCase {
 		// Note that some of the data sets will actually match at runtime, even if the variable
 		// they refer to is not set, due to the parser using GET_BC rather than GET_STRICT.
 		// TODO: Once T230256 is done, this can be changed to $this->assertFalse( $this->getParser()->parse( $code ) )
-		$this->assertTrue( $this->getParser()->checkSyntax( $code )->getResult() );
+		$this->assertTrue( $this->getParser()->checkSyntax( $code )->isValid() );
 	}
 
 	/**
@@ -987,7 +987,7 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider provideBuiltinArrays
 	 */
 	public function testBuiltinArrays( string $code ) {
-		$this->assertTrue( $this->getParser()->checkSyntax( $code )->getResult() );
+		$this->assertTrue( $this->getParser()->checkSyntax( $code )->isValid() );
 		$this->exceptionTest( 'notarray', $code, '' );
 	}
 
