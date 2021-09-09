@@ -32,26 +32,28 @@ use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
+use NullStatsdDataFactory;
 use PHPUnit\Framework\MockObject\MockObject;
+use Psr\Log\LoggerInterface;
 
 /**
  * Helper for parser-related tests
  */
 abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	/**
+	 * @param LoggerInterface|null $logger
 	 * @return FilterEvaluator
 	 */
-	protected function getParser() {
+	protected function getParser( LoggerInterface $logger = null ) {
 		// We're not interested in caching or logging; tests should call respectively setCache
 		// and setLogger if they want to test any of those.
 		$contLang = $this->getLanguageMock();
 		$cache = new EmptyBagOStuff();
-		$logger = new \Psr\Log\NullLogger();
+		$logger = $logger ?? new \Psr\Log\NullLogger();
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		$varManager = new VariablesManager(
 			$keywordsManager,
-			$this->createMock( LazyVariableComputer::class ),
-			$logger
+			$this->createMock( LazyVariableComputer::class )
 		);
 
 		$evaluator = new FilterEvaluator(
@@ -60,6 +62,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 			$logger,
 			$keywordsManager,
 			$varManager,
+			new NullStatsdDataFactory(),
 			1000
 		);
 		$evaluator->toggleConditionLimit( false );

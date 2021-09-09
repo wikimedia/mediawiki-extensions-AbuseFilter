@@ -24,17 +24,20 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 	 * @covers ::getWarmCache
 	 * @covers ::getException
 	 * @covers ::getWarnings
+	 * @covers ::getCondsUsed
 	 */
 	public function testGetters() {
 		$result = true;
 		$warm = false;
 		$exc = $this->createMock( UserVisibleException::class );
 		$warnings = [ new UserVisibleWarning( 'foo', 1, [] ) ];
-		$status = new ParserStatus( $result, $warm, $exc, $warnings );
+		$condsUsed = 42;
+		$status = new ParserStatus( $result, $warm, $exc, $warnings, $condsUsed );
 		$this->assertSame( $result, $status->getResult() );
 		$this->assertSame( $warm, $status->getWarmCache() );
 		$this->assertSame( $exc, $status->getException() );
 		$this->assertSame( $warnings, $status->getWarnings() );
+		$this->assertSame( $condsUsed, $status->getCondsUsed() );
 	}
 
 	public function provideToArrayException() {
@@ -52,7 +55,8 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 			true,
 			false,
 			$exception,
-			[ new UserVisibleWarning( 'foo', 1, [] ) ]
+			[ new UserVisibleWarning( 'foo', 1, [] ) ],
+			42
 		);
 		$newStatus = ParserStatus::fromArray( $status->toArray() );
 		$this->assertSame( $status->getResult(), $newStatus->getResult() );
@@ -63,5 +67,6 @@ class ParserStatusTest extends MediaWikiUnitTestCase {
 			$this->assertNull( $newStatus->getException() );
 		}
 		$this->assertContainsOnlyInstancesOf( UserVisibleWarning::class, $newStatus->getWarnings() );
+		$this->assertSame( $status->getCondsUsed(), $newStatus->getCondsUsed() );
 	}
 }

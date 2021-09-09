@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -63,7 +62,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			$this->createMock( FilterProfiler::class ),
 			$changeTagger ?? $this->createMock( ChangeTagger::class ),
 			$this->createMock( FilterLookup::class ),
-			$parserFactory ?? $this->createMock( ParserFactory::class ),
+			$this->createMock( ParserFactory::class ),
 			$this->createMock( ConsequencesExecutorFactory::class ),
 			$this->createMock( AbuseLoggerFactory::class ),
 			$this->createMock( VariablesManager::class ),
@@ -72,7 +71,6 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			[],
 			$cache,
 			new NullLogger(),
-			$this->createMock( IBufferingStatsdDataFactory::class ),
 			$opts,
 			$this->createMock( User::class ),
 			$this->createMock( Title::class ),

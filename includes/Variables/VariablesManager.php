@@ -5,8 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter\Variables;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
-use Psr\Log\LoggerInterface;
-use RuntimeException;
 
 /**
  * Service that allows manipulating a VariableHolder
@@ -25,22 +23,17 @@ class VariablesManager {
 	private $keywordsManager;
 	/** @var LazyVariableComputer */
 	private $lazyComputer;
-	/** @var LoggerInterface */
-	private $logger;
 
 	/**
 	 * @param KeywordsManager $keywordsManager
 	 * @param LazyVariableComputer $lazyComputer
-	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		KeywordsManager $keywordsManager,
-		LazyVariableComputer $lazyComputer,
-		LoggerInterface $logger
+		LazyVariableComputer $lazyComputer
 	) {
 		$this->keywordsManager = $keywordsManager;
 		$this->lazyComputer = $lazyComputer;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -68,14 +61,12 @@ class VariablesManager {
 	 *  - GET_STRICT -> In the future, this will throw an exception. For now it returns a DUNDEFINED and logs a warning
 	 *  - GET_LAX -> Return a DUNDEFINED AFPData
 	 *  - GET_BC -> Return a DNULL AFPData (this should only be used for BC, see T230256)
-	 * @param string|null $tempFilter Filter ID, if available; only used for debugging (temporarily)
 	 * @return AFPData
 	 */
 	public function getVar(
 		VariableHolder $holder,
 		string $varName,
-		$mode = self::GET_STRICT,
-		$tempFilter = null
+		$mode = self::GET_STRICT
 	): AFPData {
 		$varName = strtolower( $varName );
 		if ( $holder->varIsSet( $varName ) ) {
@@ -102,16 +93,7 @@ class VariablesManager {
 		// The variable is not set.
 		switch ( $mode ) {
 			case self::GET_STRICT:
-				$this->logger->warning(
-					__METHOD__ . ": requested unset variable {varname} in strict mode, filter: {filter}",
-					[
-						'varname' => $varName,
-						'exception' => new RuntimeException(),
-						'filter' => $tempFilter ?? 'unavailable'
-					]
-				);
-				// @todo change the line below to throw an exception in a future MW version
-				return new AFPData( AFPData::DUNDEFINED );
+				throw new UnsetVariableException( $varName );
 			case self::GET_LAX:
 				return new AFPData( AFPData::DUNDEFINED );
 			case self::GET_BC:

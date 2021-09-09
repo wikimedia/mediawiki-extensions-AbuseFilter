@@ -43,7 +43,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		if ( !$parser ) {
 			$parser = $this->createMock( FilterEvaluator::class );
 			$parser->method( 'checkSyntax' )->willReturn(
-				new ParserStatus( true, true, null, [] )
+				new ParserStatus( true, true, null, [], 1 )
 			);
 		}
 		$parserFactory = $this->createMock( ParserFactory::class );
@@ -102,7 +102,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCheckValidSyntax( bool $valid, ?ExceptionBase $excep, ?string $expected, ?array $expParams ) {
 		$parser = $this->createMock( FilterEvaluator::class );
-		$syntaxStatus = new ParserStatus( $valid, true, $excep, [] );
+		$syntaxStatus = new ParserStatus( $valid, true, $excep, [], 1 );
 		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		$validator = $this->getFilterValidator( null, $parser );
 
@@ -390,7 +390,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$noopFilter->method( 'isEnabled' )->willReturn( true );
 
 		$parser = $this->createMock( FilterEvaluator::class );
-		$syntaxStatus = new ParserStatus( false, true, $this->createMock( UserVisibleException::class ), [] );
+		$syntaxStatus = new ParserStatus( false, true, $this->createMock( UserVisibleException::class ), [], 1 );
 		$parser->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		yield 'invalid syntax' => [ $noopFilter, 'abusefilter-edit-badsyntax', null, $parser ];
 

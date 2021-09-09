@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use BadMethodCallException;
 use DeferredUpdates;
-use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -60,8 +59,6 @@ class FilterRunner {
 	private $stashCache;
 	/** @var LoggerInterface */
 	private $logger;
-	/** @var IBufferingStatsdDataFactory */
-	private $statsdDataFactory;
 	/** @var VariablesManager */
 	private $varManager;
 	/** @var VariableGeneratorFactory */
@@ -110,7 +107,6 @@ class FilterRunner {
 	 * @param Watcher[] $watchers
 	 * @param EditStashCache $stashCache
 	 * @param LoggerInterface $logger
-	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ServiceOptions $options
 	 * @param User $user
 	 * @param Title $title
@@ -132,7 +128,6 @@ class FilterRunner {
 		array $watchers,
 		EditStashCache $stashCache,
 		LoggerInterface $logger,
-		IBufferingStatsdDataFactory $statsdDataFactory,
 		ServiceOptions $options,
 		User $user,
 		Title $title,
@@ -152,7 +147,6 @@ class FilterRunner {
 		$this->watchers = $watchers;
 		$this->stashCache = $stashCache;
 		$this->logger = $logger;
-		$this->statsdDataFactory = $statsdDataFactory;
 
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		if ( !in_array( $group, $options->get( 'AbuseFilterValidGroups' ), true ) ) {
@@ -189,7 +183,6 @@ class FilterRunner {
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
 		$this->parser = $this->parserFactory->newParser( $this->vars );
-		$this->parser->setStatsd( $this->statsdDataFactory );
 	}
 
 	/**
@@ -327,22 +320,20 @@ class FilterRunner {
 	 * @return RunnerData
 	 */
 	protected function checkAllFiltersInternal(): RunnerData {
-		// Ensure that we start fresh, see T193374
-		$this->parser->resetCondCount();
 		// Ensure there's no extra time leftover
 		LazyVariableComputer::$profilingExtraTime = 0;
 
 		$data = new RunnerData();
 
 		foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, false ) as $filter ) {
-			[ $status, $profiling ] = $this->checkFilter( $filter );
-			$data->record( $filter->getID(), false, $status, $profiling );
+			[ $status, $timeTaken ] = $this->checkFilter( $filter );
+			$data->record( $filter->getID(), false, $status, $timeTaken );
 		}
 
 		if ( $this->options->get( 'AbuseFilterCentralDB' ) && !$this->options->get( 'AbuseFilterIsCentral' ) ) {
 			foreach ( $this->filterLookup->getAllActiveFiltersInGroup( $this->group, true ) as $filter ) {
-				[ $status, $profiling ] = $this->checkFilter( $filter, true );
-				$data->record( $filter->getID(), true, $status, $profiling );
+				[ $status, $timeTaken ] = $this->checkFilter( $filter, true );
+				$data->record( $filter->getID(), true, $status, $timeTaken );
 			}
 		}
 
@@ -364,13 +355,12 @@ class FilterRunner {
 	 *
 	 * @param ExistingFilter $filter
 	 * @param bool $global
-	 * @return array
-	 * @phan-return array{0:ParserStatus,1:array{time:float,conds:int}}
+	 * @return array [ status, time taken ]
+	 * @phan-return array{0:ParserStatus,1:float}
 	 */
 	protected function checkFilter( ExistingFilter $filter, bool $global = false ): array {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
 
-		$startConds = $this->parser->getCondCount();
 		$startTime = microtime( true );
 		$origExtraTime = LazyVariableComputer::$profilingExtraTime;
 
@@ -379,14 +369,8 @@ class FilterRunner {
 
 		$actualExtra = LazyVariableComputer::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );
-		$condsUsed = $this->parser->getCondCount() - $startConds;
 
-		$profiling = [
-			'time' => $timeTaken,
-			'conds' => $condsUsed,
-		];
-
-		return [ $status, $profiling ];
+		return [ $status, $timeTaken ];
 	}
 
 	/**

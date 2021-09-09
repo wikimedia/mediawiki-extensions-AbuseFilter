@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
+use NullStatsdDataFactory;
 use Psr\Log\NullLogger;
 
 /**
@@ -30,6 +31,7 @@ class ParserFactoryTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			$this->createMock( KeywordsManager::class ),
 			$this->createMock( VariablesManager::class ),
+			new NullStatsdDataFactory(),
 			1000
 		);
 		$this->assertInstanceOf( FilterEvaluator::class, $factory->newParser() );

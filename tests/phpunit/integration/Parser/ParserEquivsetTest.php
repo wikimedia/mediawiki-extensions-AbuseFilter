@@ -31,6 +31,7 @@ use MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser\ParserTest;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiIntegrationTestCase;
+use NullStatsdDataFactory;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.
@@ -62,8 +63,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 		$keywordsManager = AbuseFilterServices::getKeywordsManager();
 		$varManager = new VariablesManager(
 			$keywordsManager,
-			$this->createMock( LazyVariableComputer::class ),
-			$logger
+			$this->createMock( LazyVariableComputer::class )
 		);
 
 		$evaluator = new FilterEvaluator(
@@ -72,6 +72,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$logger,
 			$keywordsManager,
 			$varManager,
+			new NullStatsdDataFactory(),
 			1000
 		);
 		$evaluator->toggleConditionLimit( false );

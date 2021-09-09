@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use BagOStuff;
+use IBufferingStatsdDataFactory;
 use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -27,6 +28,9 @@ class ParserFactory {
 	/** @var VariablesManager */
 	private $varManager;
 
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
 	/** @var int */
 	private $conditionsLimit;
 
@@ -36,6 +40,7 @@ class ParserFactory {
 	 * @param LoggerInterface $logger
 	 * @param KeywordsManager $keywordsManager
 	 * @param VariablesManager $varManager
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param int $conditionsLimit
 	 */
 	public function __construct(
@@ -44,6 +49,7 @@ class ParserFactory {
 		LoggerInterface $logger,
 		KeywordsManager $keywordsManager,
 		VariablesManager $varManager,
+		IBufferingStatsdDataFactory $statsdDataFactory,
 		int $conditionsLimit
 	) {
 		$this->contLang = $contLang;
@@ -51,6 +57,7 @@ class ParserFactory {
 		$this->logger = $logger;
 		$this->keywordsManager = $keywordsManager;
 		$this->varManager = $varManager;
+		$this->statsdDataFactory = $statsdDataFactory;
 		$this->conditionsLimit = $conditionsLimit;
 	}
 
@@ -65,6 +72,7 @@ class ParserFactory {
 			$this->logger,
 			$this->keywordsManager,
 			$this->varManager,
+			$this->statsdDataFactory,
 			$this->conditionsLimit,
 			$vars
 		);

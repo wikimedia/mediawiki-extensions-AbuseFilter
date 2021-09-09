@@ -39,13 +39,13 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus( true, false, null, [] ),
-			[ 'time' => 12.3, 'conds' => 7 ]
+			new ParserStatus( true, false, null, [], 7 ),
+			12.3
 		);
 		$runnerData->record(
 			1, true,
-			new ParserStatus( false, false, null, [] ),
-			[ 'time' => 23.4, 'conds' => 5 ]
+			new ParserStatus( false, false, null, [], 5 ),
+			23.4
 		);
 
 		$this->assertArrayEquals(
@@ -74,14 +74,14 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus( true, false, null, [] ),
-			[ 'time' => 12.3, 'conds' => 7 ]
+			new ParserStatus( true, false, null, [], 7 ),
+			12.3
 		);
 		$this->expectException( LogicException::class );
 		$runnerData->record(
 			1, false,
-			new ParserStatus( false, false, null, [] ),
-			[ 'time' => 23.4, 'conds' => 5 ]
+			new ParserStatus( false, false, null, [], 5 ),
+			23.4
 		);
 	}
 
@@ -98,14 +98,15 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 				true,
 				false,
 				null,
-				[ new UserVisibleWarning( 'match-empty-regex', 3, [] ) ]
+				[ new UserVisibleWarning( 'match-empty-regex', 3, [] ) ],
+				7
 			),
-			[ 'time' => 12.3, 'conds' => 7 ]
+			12.3
 		);
 		$runnerData->record(
 			1, true,
-			new ParserStatus( false, false, null, [] ),
-			[ 'time' => 23.4, 'conds' => 5 ]
+			new ParserStatus( false, false, null, [], 5 ),
+			23.4
 		);
 		$newData = RunnerData::fromArray( $runnerData->toArray() );
 		$this->assertSame( $runnerData->getTotalConditions(), $newData->getTotalConditions() );
@@ -122,23 +123,23 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus( true, false, null, [] ),
-			[ 'time' => 12.3, 'conds' => 7 ]
+			new ParserStatus( true, false, null, [], 7 ),
+			12.3
 		);
 		$runnerData->record(
 			1, true,
-			new ParserStatus( false, false, null, [] ),
-			[ 'time' => 23.4, 'conds' => 5 ]
+			new ParserStatus( false, false, null, [], 5 ),
+			23.4
 		);
 		$runnerData->record(
 			3, false,
-			new ParserStatus( false, false, null, [] ),
-			[ 'time' => 12.3, 'conds' => 7 ]
+			new ParserStatus( false, false, null, [], 7 ),
+			12.3
 		);
 		$runnerData->record(
 			3, true,
-			new ParserStatus( true, false, null, [] ),
-			[ 'time' => 23.4, 'conds' => 5 ]
+			new ParserStatus( true, false, null, [], 5 ),
+			23.4
 		);
 
 		$this->assertArrayEquals(

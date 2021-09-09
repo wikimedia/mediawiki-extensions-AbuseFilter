@@ -36,7 +36,7 @@ class EvalExpressionTest extends ApiTestCase {
 	public function testExecute_error() {
 		$this->setExpectedApiException( 'abusefilter-tools-syntax-error' );
 		$expression = 'sampleExpression';
-		$status = new ParserStatus( false, false, null, [] );
+		$status = new ParserStatus( false, false, null, [], 1 );
 		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
@@ -54,7 +54,7 @@ class EvalExpressionTest extends ApiTestCase {
 	 */
 	public function testExecute_Ok() {
 		$expression = 'sampleExpression';
-		$status = new ParserStatus( true, false, null, [] );
+		$status = new ParserStatus( true, false, null, [], 1 );
 		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
@@ -86,7 +86,7 @@ class EvalExpressionTest extends ApiTestCase {
 	 */
 	public function testExecute_OkAndPrettyPrint() {
 		$expression = 'sampleExpression';
-		$status = new ParserStatus( true, false, null, [] );
+		$status = new ParserStatus( true, false, null, [], 1 );
 		$parser = $this->createMock( FilterEvaluator::class );
 		$parser->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );

@@ -117,6 +117,7 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
+			$services->getStatsdDataFactory(),
 			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
 	},
@@ -335,8 +336,7 @@ return [
 	VariablesManager::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesManager {
 		return new VariablesManager(
 			$services->get( KeywordsManager::SERVICE_NAME ),
-			$services->get( LazyVariableComputer::SERVICE_NAME ),
-			LoggerFactory::getInstance( 'AbuseFilter' )
+			$services->get( LazyVariableComputer::SERVICE_NAME )
 		);
 	},
 	VariableGeneratorFactory::SERVICE_NAME => static function (
