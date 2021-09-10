@@ -12,7 +12,7 @@ use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
@@ -93,7 +93,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		AbuseFilterViewTestBatch::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,
-			AfParserFactory::SERVICE_NAME,
+			RuleCheckerFactory::SERVICE_NAME,
 			VariableGeneratorFactory::SERVICE_NAME,
 		],
 		AbuseFilterViewTools::class => [

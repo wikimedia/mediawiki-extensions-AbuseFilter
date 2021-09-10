@@ -10,7 +10,7 @@ use LogEventsList;
 use LogicException;
 use LogPage;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -20,8 +20,8 @@ use RecentChange;
 
 class CheckMatch extends ApiBase {
 
-	/** @var ParserFactory */
-	private $afParserFactory;
+	/** @var RuleCheckerFactory */
+	private $ruleCheckerFactory;
 
 	/** @var AbuseFilterPermissionManager */
 	private $afPermManager;
@@ -35,7 +35,7 @@ class CheckMatch extends ApiBase {
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
-	 * @param ParserFactory $afParserFactory
+	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param VariablesBlobStore $afVariablesBlobStore
 	 * @param VariableGeneratorFactory $afVariableGeneratorFactory
@@ -43,13 +43,13 @@ class CheckMatch extends ApiBase {
 	public function __construct(
 		ApiMain $main,
 		$action,
-		ParserFactory $afParserFactory,
+		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		VariablesBlobStore $afVariablesBlobStore,
 		VariableGeneratorFactory $afVariableGeneratorFactory
 	) {
 		parent::__construct( $main, $action );
-		$this->afParserFactory = $afParserFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->afPermManager = $afPermManager;
 		$this->afVariablesBlobStore = $afVariablesBlobStore;
 		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
@@ -126,14 +126,14 @@ class CheckMatch extends ApiBase {
 			// @codeCoverageIgnoreEnd
 		}
 
-		$parser = $this->afParserFactory->newParser( $vars );
-		if ( !$parser->checkSyntax( $params['filter'] )->getResult() ) {
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker( $vars );
+		if ( !$ruleChecker->checkSyntax( $params['filter'] )->getResult() ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
 		}
 
 		$result = [
 			ApiResult::META_BC_BOOLS => [ 'result' ],
-			'result' => $parser->checkConditions( $params['filter'] )->getResult(),
+			'result' => $ruleChecker->checkConditions( $params['filter'] )->getResult(),
 		];
 
 		$this->getResult()->addValue(

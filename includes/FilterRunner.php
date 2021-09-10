@@ -11,9 +11,9 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -45,8 +45,8 @@ class FilterRunner {
 	private $changeTagger;
 	/** @var FilterLookup */
 	private $filterLookup;
-	/** @var ParserFactory */
-	private $parserFactory;
+	/** @var RuleCheckerFactory */
+	private $ruleCheckerFactory;
 	/** @var ConsequencesExecutorFactory */
 	private $consExecutorFactory;
 	/** @var AbuseLoggerFactory */
@@ -68,9 +68,8 @@ class FilterRunner {
 
 	/**
 	 * @var FilterEvaluator
-	 * @private Temporarily public for BC
 	 */
-	public $parser;
+	private $ruleChecker;
 
 	/**
 	 * @var User The user who performed the action being filtered
@@ -98,7 +97,7 @@ class FilterRunner {
 	 * @param FilterProfiler $filterProfiler
 	 * @param ChangeTagger $changeTagger
 	 * @param FilterLookup $filterLookup
-	 * @param ParserFactory $parserFactory
+	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param ConsequencesExecutorFactory $consExecutorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param VariablesManager $varManager
@@ -119,7 +118,7 @@ class FilterRunner {
 		FilterProfiler $filterProfiler,
 		ChangeTagger $changeTagger,
 		FilterLookup $filterLookup,
-		ParserFactory $parserFactory,
+		RuleCheckerFactory $ruleCheckerFactory,
 		ConsequencesExecutorFactory $consExecutorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
 		VariablesManager $varManager,
@@ -138,7 +137,7 @@ class FilterRunner {
 		$this->filterProfiler = $filterProfiler;
 		$this->changeTagger = $changeTagger;
 		$this->filterLookup = $filterLookup;
-		$this->parserFactory = $parserFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->consExecutorFactory = $consExecutorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 		$this->varManager = $varManager;
@@ -182,7 +181,7 @@ class FilterRunner {
 
 		$this->vars->forFilter = true;
 		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
-		$this->parser = $this->parserFactory->newParser( $this->vars );
+		$this->ruleChecker = $this->ruleCheckerFactory->newRuleChecker( $this->vars );
 	}
 
 	/**
@@ -343,10 +342,11 @@ class FilterRunner {
 	/**
 	 * Returns an associative array of filters which were tripped
 	 *
-	 * @protected Public for back compat only; this will actually be made protected in the future.
+	 * @internal BC method
 	 * @return bool[] Map of (filter ID => bool)
 	 */
 	public function checkAllFilters(): array {
+		$this->init();
 		return $this->checkAllFiltersInternal()->getMatchesMap();
 	}
 
@@ -364,8 +364,8 @@ class FilterRunner {
 		$startTime = microtime( true );
 		$origExtraTime = LazyVariableComputer::$profilingExtraTime;
 
-		$this->parser->setFilter( $filterName );
-		$status = $this->parser->checkConditions( $filter->getRules(), $filterName );
+		$this->ruleChecker->setFilter( $filterName );
+		$status = $this->ruleChecker->checkConditions( $filter->getRules(), $filterName );
 
 		$actualExtra = LazyVariableComputer::$profilingExtraTime - $origExtraTime;
 		$timeTaken = 1000 * ( microtime( true ) - $startTime - $actualExtra );

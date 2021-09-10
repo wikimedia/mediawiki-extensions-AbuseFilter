@@ -10,7 +10,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory as AfParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionRecord;
@@ -60,9 +60,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 */
 	private $boxBuilderFactory;
 	/**
-	 * @var AfParserFactory
+	 * @var RuleCheckerFactory
 	 */
-	private $parserFactory;
+	private $ruleCheckerFactory;
 	/**
 	 * @var VariableGeneratorFactory
 	 */
@@ -71,7 +71,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
-	 * @param AfParserFactory $parserFactory
+	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
@@ -81,7 +81,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
 		EditBoxBuilderFactory $boxBuilderFactory,
-		AfParserFactory $parserFactory,
+		RuleCheckerFactory $ruleCheckerFactory,
 		VariableGeneratorFactory $varGeneratorFactory,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
@@ -90,7 +90,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->boxBuilderFactory = $boxBuilderFactory;
-		$this->parserFactory = $parserFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->varGeneratorFactory = $varGeneratorFactory;
 	}
 
@@ -214,9 +214,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function doTest() {
 		// Quick syntax check.
 		$out = $this->getOutput();
-		$parser = $this->parserFactory->newParser();
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 
-		if ( !$parser->checkSyntax( $this->testPattern )->getResult() ) {
+		if ( !$ruleChecker->checkSyntax( $this->testPattern )->getResult() ) {
 			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}
@@ -274,7 +274,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$counter = 1;
 
 		$contextUser = $this->getUser();
-		$parser->toggleConditionLimit( false );
+		$ruleChecker->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
 			$rc = RecentChange::newFromRow( $row );
 			if ( !$this->mShowNegative ) {
@@ -307,8 +307,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				continue;
 			}
 
-			$parser->setVariables( $vars );
-			$result = $parser->checkConditions( $this->testPattern )->getResult();
+			$ruleChecker->setVariables( $vars );
+			$result = $ruleChecker->checkConditions( $this->testPattern )->getResult();
 
 			if ( $result || $this->mShowNegative ) {
 				// Stash result in RC item

@@ -37,23 +37,17 @@ class AbuseFilter {
 	 *
 	 * @param VariableHolder $vars
 	 * @param Title $title
-	 * @param string $group The filter's group (as defined in $wgAbuseFilterValidGroups)
-	 * @param string $mode 'execute' for edits and logs, 'stash' for cached matches
 	 * @return bool[] Map of (filter ID => bool)
 	 * @deprecated Since 1.34 This was meant to be internal!
 	 * @codeCoverageIgnore Deprecated method
 	 */
 	public static function checkAllFilters(
 		VariableHolder $vars,
-		Title $title,
-		$group = 'default',
-		$mode = 'execute'
+		Title $title
 	) {
-		$parser = AbuseFilterServices::getParserFactory()->newParser( $vars );
 		$user = RequestContext::getMain()->getUser();
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
-		$runner = $runnerFactory->newRunner( $user, $title, $vars, $group );
-		$runner->parser = $parser;
+		$runner = $runnerFactory->newRunner( $user, $title, $vars, 'default' );
 		return $runner->checkAllFilters();
 	}
 

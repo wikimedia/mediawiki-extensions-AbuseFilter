@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\EvalExpression
@@ -21,7 +21,7 @@ class EvalExpressionTest extends ApiTestCase {
 	public function testExecute_noPermissions() {
 		$this->setExpectedApiException( 'apierror-abusefilter-canteval', 'permissiondenied' );
 
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory() );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory() );
 
 		$this->doApiRequest( [
 			'action' => 'abusefilterevalexpression',
@@ -37,10 +37,10 @@ class EvalExpressionTest extends ApiTestCase {
 		$this->setExpectedApiException( 'abusefilter-tools-syntax-error' );
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( false, false, null, [], 1 );
-		$parser = $this->createMock( FilterEvaluator::class );
-		$parser->method( 'checkSyntax' )->with( $expression )
+		$ruleChecker = $this->createMock( FilterEvaluator::class );
+		$ruleChecker->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory( $ruleChecker ) );
 
 		$this->doApiRequest( [
 			'action' => 'abusefilterevalexpression',
@@ -55,12 +55,12 @@ class EvalExpressionTest extends ApiTestCase {
 	public function testExecute_Ok() {
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( true, false, null, [], 1 );
-		$parser = $this->createMock( FilterEvaluator::class );
-		$parser->method( 'checkSyntax' )->with( $expression )
+		$ruleChecker = $this->createMock( FilterEvaluator::class );
+		$ruleChecker->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
-		$parser->expects( $this->once() )->method( 'evaluateExpression' )
+		$ruleChecker->expects( $this->once() )->method( 'evaluateExpression' )
 			->willReturn( 'output' );
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory( $ruleChecker ) );
 
 		$result = $this->doApiRequest( [
 			'action' => 'abusefilterevalexpression',
@@ -87,12 +87,12 @@ class EvalExpressionTest extends ApiTestCase {
 	public function testExecute_OkAndPrettyPrint() {
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( true, false, null, [], 1 );
-		$parser = $this->createMock( FilterEvaluator::class );
-		$parser->method( 'checkSyntax' )->with( $expression )
+		$ruleChecker = $this->createMock( FilterEvaluator::class );
+		$ruleChecker->method( 'checkSyntax' )->with( $expression )
 			->willReturn( $status );
-		$parser->expects( $this->once() )->method( 'evaluateExpression' )
+		$ruleChecker->expects( $this->once() )->method( 'evaluateExpression' )
 			->willReturn( [ 'value1', 2 ] );
-		$this->setService( ParserFactory::SERVICE_NAME, $this->getParserFactory( $parser ) );
+		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory( $ruleChecker ) );
 
 		$result = $this->doApiRequest( [
 			'action' => 'abusefilterevalexpression',

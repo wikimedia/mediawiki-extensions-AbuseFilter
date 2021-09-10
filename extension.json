@@ -123,14 +123,14 @@
 		"abusefilterchecksyntax": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckSyntax",
 			"services": [
-				"AbuseFilterParserFactory",
+				"AbuseFilterRuleCheckerFactory",
 				"AbuseFilterPermissionManager"
 			]
 		},
 		"abusefilterevalexpression": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\EvalExpression",
 			"services": [
-				"AbuseFilterParserFactory",
+				"AbuseFilterRuleCheckerFactory",
 				"AbuseFilterPermissionManager",
 				"AbuseFilterVariableGeneratorFactory"
 			]
@@ -144,7 +144,7 @@
 		"abusefiltercheckmatch": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\CheckMatch",
 			"services": [
-				"AbuseFilterParserFactory",
+				"AbuseFilterRuleCheckerFactory",
 				"AbuseFilterPermissionManager",
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterVariableGeneratorFactory"

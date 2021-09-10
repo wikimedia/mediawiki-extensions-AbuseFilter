@@ -6,15 +6,15 @@ use ApiBase;
 use ApiMain;
 use ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserFactory;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use Status;
 
 class EvalExpression extends ApiBase {
 
-	/** @var ParserFactory */
-	private $afParserFactory;
+	/** @var RuleCheckerFactory */
+	private $ruleCheckerFactory;
 
 	/** @var AbuseFilterPermissionManager */
 	private $afPermManager;
@@ -25,19 +25,19 @@ class EvalExpression extends ApiBase {
 	/**
 	 * @param ApiMain $main
 	 * @param string $action
-	 * @param ParserFactory $afParserFactory
+	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param VariableGeneratorFactory $afVariableGeneratorFactory
 	 */
 	public function __construct(
 		ApiMain $main,
 		$action,
-		ParserFactory $afParserFactory,
+		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		VariableGeneratorFactory $afVariableGeneratorFactory
 	) {
 		parent::__construct( $main, $action );
-		$this->afParserFactory = $afParserFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->afPermManager = $afPermManager;
 		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
 	}
@@ -72,8 +72,8 @@ class EvalExpression extends ApiBase {
 	 * @return Status
 	 */
 	private function evaluateExpression( string $expr ): Status {
-		$parser = $this->afParserFactory->newParser();
-		if ( !$parser->checkSyntax( $expr )->getResult() ) {
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		if ( !$ruleChecker->checkSyntax( $expr )->getResult() ) {
 			return Status::newFatal( 'abusefilter-tools-syntax-error' );
 		}
 
@@ -81,9 +81,9 @@ class EvalExpression extends ApiBase {
 		$generator = $this->afVariableGeneratorFactory->newGenerator();
 		$vars = $generator->addGenericVars()->getVariableHolder();
 		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
-		$parser->setVariables( $vars );
+		$ruleChecker->setVariables( $vars );
 
-		return Status::newGood( $parser->evaluateExpression( $expr ) );
+		return Status::newGood( $ruleChecker->evaluateExpression( $expr ) );
 	}
 
 	/**
