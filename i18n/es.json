@@ -59,7 +59,8 @@
 			"Tiberius1701",
 			"Tifinaghes",
 			"Translationista",
-			"Vivaelcelta"
+			"Vivaelcelta",
+			"Warming Hearth"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -522,6 +523,8 @@
 	"abusefilter-exception-invalidiprange": "Se proporcionó un intervalo de IP no válido, «$2», en el carácter $1.",
 	"abusefilter-exception-disabledvar": "Ya no se utiliza la variable $2 en el carácter $1.",
 	"abusefilter-exception-variablevariable": "set y set_var esperan que el primer argumento sea un literal de cadena, que se encuentra en el carácter $1.",
+	"abusefilter-exception-unknownfunction": "$2 no es una función válida en el carácter $1",
+	"abusefilter-exception-unusedvars": "Las siguientes variables no están en uso: $2",
 	"abusefilter-parser-warning-match-empty-regex": "Esta expresión regular es igual a la cadena vacía, en el carácter $1",
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitar",
