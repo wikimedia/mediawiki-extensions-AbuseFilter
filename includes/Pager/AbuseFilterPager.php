@@ -13,7 +13,6 @@ use MWException;
 use SpecialPage;
 use stdClass;
 use TablePager;
-use Wikimedia\AtEase\AtEase;
 
 /**
  * Class to build paginated filter list
@@ -312,13 +311,12 @@ class AbuseFilterPager extends TablePager {
 			}
 
 			$matches = [];
-			AtEase::suppressWarnings();
-			$check = preg_match(
+			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$check = @preg_match(
 				$regex,
 				$row->af_pattern,
 				$matches
 			);
-			AtEase::restoreWarnings();
 			// This may happen in case of catastrophic backtracking, or regexps matching
 			// the empty string.
 			if ( $check === false || strlen( $matches[0] ) === 0 ) {

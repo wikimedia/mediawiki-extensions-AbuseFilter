@@ -18,7 +18,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MWException;
 use Psr\Log\LoggerInterface;
 use Sanitizer;
-use Wikimedia\AtEase\AtEase;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\IPUtils;
 
@@ -945,11 +944,9 @@ class FilterEvaluator {
 
 			$needle = $this->mungeRegexp( $needle );
 
-			// Suppress and restore needed per T177744
-			AtEase::suppressWarnings();
 			$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
-			$count = preg_match_all( $needle, $haystack );
-			AtEase::restoreWarnings();
+			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$count = @preg_match_all( $needle, $haystack );
 
 			if ( $count === false ) {
 				throw new UserVisibleException(
@@ -992,11 +989,9 @@ class FilterEvaluator {
 
 		$needle = $this->mungeRegexp( $needle );
 
-		// Suppress and restore are here for the same reason as T177744
-		AtEase::suppressWarnings();
 		$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
-		$check = preg_match( $needle, $haystack, $matches );
-		AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$check = @preg_match( $needle, $haystack, $matches );
 
 		if ( $check === false ) {
 			throw new UserVisibleException(
@@ -1387,9 +1382,8 @@ class FilterEvaluator {
 	protected function keywordLike( AFPData $str, AFPData $pattern ) {
 		$str = $str->toString();
 		$pattern = '#^' . strtr( preg_quote( $pattern->toString(), '#' ), AFPData::WILDCARD_MAP ) . '$#u';
-		AtEase::suppressWarnings();
-		$result = preg_match( $pattern, $str );
-		AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$result = @preg_match( $pattern, $str );
 
 		return new AFPData( AFPData::DBOOL, (bool)$result );
 	}
@@ -1412,10 +1406,9 @@ class FilterEvaluator {
 			$pattern .= 'i';
 		}
 
-		AtEase::suppressWarnings();
 		$this->checkRegexMatchesEmpty( $regex, $pattern, $pos );
-		$result = preg_match( $pattern, $str );
-		AtEase::restoreWarnings();
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$result = @preg_match( $pattern, $str );
 		if ( $result === false ) {
 			throw new UserVisibleException(
 				'regexfailure',
@@ -1510,8 +1503,9 @@ class FilterEvaluator {
 			// We can't tell, and toString() would return the empty string (T273809)
 			return;
 		}
-		// @phan-suppress-next-line PhanParamSuspiciousOrder
-		if ( preg_match( $pattern, '' ) === 1 ) {
+		// @phan-suppress-next-next-line PhanParamSuspiciousOrder
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		if ( @preg_match( $pattern, '' ) === 1 ) {
 			$this->warnings[] = new UserVisibleWarning(
 				'match-empty-regex',
 				$position,

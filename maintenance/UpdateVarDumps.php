@@ -12,7 +12,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\MediaWikiServices;
 use Title;
 use UnexpectedValueException;
-use Wikimedia\AtEase\AtEase;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -322,9 +321,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				);
 			}
 
-			AtEase::suppressWarnings();
-			$stored = unserialize( $row->afl_var_dump );
-			AtEase::restoreWarnings();
+			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$stored = @unserialize( $row->afl_var_dump );
 			if ( !$stored ) {
 				$re = '/^O:25:"[Aa]buse[Ff]ilter[Vv]ariable[Hh]older":\d+:{/';
 				if ( preg_match( $re, $row->afl_var_dump ) ) {
@@ -549,9 +547,8 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				continue;
 			}
 
-			AtEase::suppressWarnings();
-			$obj = unserialize( $text );
-			AtEase::restoreWarnings();
+			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+			$obj = @unserialize( $text );
 
 			if ( !$obj ) {
 				// Under certain conditions, there might be a truncated dump here, see T264513
