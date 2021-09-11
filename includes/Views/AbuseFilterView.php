@@ -1,6 +1,6 @@
 <?php
 
-use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\RevisionRecord;
 use Wikimedia\Rdbms\IDatabase;
 
 abstract class AbuseFilterView extends ContextSource {
