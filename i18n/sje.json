@@ -4,5 +4,8 @@
 			"Olve Utne"
 		]
 	},
-	"abusefilter-action-tag": "Märrka"
+	"abusefilter-log-diff": "ierádasa",
+	"abusefilter-action-tag": "Märrka",
+	"abusefilter-examine-diff": "Dán ierádasa URL:",
+	"abusefilter-diff-title": "Ierádasa versjuvnaj gaskan"
 }

@@ -478,6 +478,7 @@
 	"abusefilter-exception-notarray": "$1번째 문자에서 배열이 아닌 배열 항목을 요구하고 있습니다.",
 	"abusefilter-exception-invalidiprange": "$1 문자열에 유효하지 않은 \"$2\" IP 주소가 제공되었습니다.",
 	"abusefilter-exception-disabledvar": "$1번째 글자에 있는 $2 변수는 더 이상 사용되지 않습니다.",
+	"abusefilter-exception-unknownfunction": "$2 값은 문자 $1의 유효한 함수가 아닙니다.",
 	"abusefilter-exception-unusedvars": "다음 변수는 사용되지 않습니다: $2.",
 	"abusefilter-parser-warning-match-empty-regex": "이 정규 표현식은 문자 $1에서 빈 문자열과 일치합니다",
 	"abusefilter-action-tag": "태그",

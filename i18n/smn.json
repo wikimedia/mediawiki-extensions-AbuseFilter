@@ -5,9 +5,12 @@
 			"Yupik"
 		]
 	},
+	"abusefilter-log-hidden-implicit": "(čiehhum, ko versio lii sikkum)",
 	"abusefilter-log-hide-show": "Čääiti",
 	"abusefilter-log-hide-hide": "Čievâ",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|čiehhum}}",
 	"abusefilter-list-lastmodified": "Majemustáá nubástittum",
 	"abusefilter-edit-status-label": "Lovottuvah:",
-	"abusefilter-edit-throttle-groups-help": "Keejâ $1."
+	"abusefilter-edit-throttle-groups-help": "Keejâ $1.",
+	"abusefilter-history-hidden": "Čiehhum"
 }
