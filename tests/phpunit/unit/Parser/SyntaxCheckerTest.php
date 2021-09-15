@@ -25,6 +25,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 use EmptyBagOStuff;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPTreeParser;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\SyntaxChecker;
@@ -62,8 +63,10 @@ class SyntaxCheckerTest extends \MediaWikiUnitTestCase {
 		$statsd = new NullStatsdDataFactory();
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 
-		$parser = new AFPTreeParser( $cache, $logger, $statsd, $keywordsManager );
-		$tree = $parser->parse( $expr );
+		$tokenizer = new AbuseFilterTokenizer( $cache );
+		$tokens = $tokenizer->getTokens( $expr );
+		$parser = new AFPTreeParser( $logger, $statsd, $keywordsManager );
+		$tree = $parser->parse( $tokens );
 		$checker = new SyntaxChecker( $tree, $keywordsManager, $mode, $checkUnusedVars );
 		try {
 			$checker->start();

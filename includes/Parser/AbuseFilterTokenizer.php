@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use BagOStuff;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
-use Psr\Log\LoggerInterface;
 
 /**
  * Tokenizer for AbuseFilter rules.
@@ -79,17 +78,10 @@ class AbuseFilterTokenizer {
 	private $cache;
 
 	/**
-	 * @var LoggerInterface
-	 */
-	private $logger;
-
-	/**
 	 * @param BagOStuff $cache
-	 * @param LoggerInterface $logger
 	 */
-	public function __construct( BagOStuff $cache, LoggerInterface $logger ) {
+	public function __construct( BagOStuff $cache ) {
 		$this->cache = $cache;
-		$this->logger = $logger;
 	}
 
 	/**
@@ -108,24 +100,24 @@ class AbuseFilterTokenizer {
 	 *
 	 * @param string $code
 	 * @return array[]
+	 * @phan-return array<int,array{0:AFPToken,1:int}>
 	 */
-	public function getTokens( $code ) {
-		$tokens = $this->cache->getWithSetCallback(
+	public function getTokens( string $code ): array {
+		return $this->cache->getWithSetCallback(
 			$this->getCacheKey( $code ),
 			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
 				return $this->tokenize( $code );
 			}
 		);
-
-		return $tokens;
 	}
 
 	/**
 	 * @param string $code
 	 * @return array[]
+	 * @phan-return array<int,array{0:AFPToken,1:int}>
 	 */
-	private function tokenize( $code ) {
+	private function tokenize( string $code ): array {
 		$tokens = [];
 		$curPos = 0;
 

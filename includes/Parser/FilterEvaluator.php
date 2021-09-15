@@ -185,7 +185,7 @@ class FilterEvaluator {
 	/**
 	 * @var Equivset
 	 */
-	private static $equivset;
+	private $equivset;
 
 	/**
 	 * Create a new instance
@@ -196,6 +196,7 @@ class FilterEvaluator {
 	 * @param KeywordsManager $keywordsManager
 	 * @param VariablesManager $varManager
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param Equivset $equivset
 	 * @param int $conditionsLimit
 	 * @param VariableHolder|null $vars
 	 */
@@ -206,6 +207,7 @@ class FilterEvaluator {
 		KeywordsManager $keywordsManager,
 		VariablesManager $varManager,
 		IBufferingStatsdDataFactory $statsdDataFactory,
+		Equivset $equivset,
 		int $conditionsLimit,
 		VariableHolder $vars = null
 	) {
@@ -215,18 +217,12 @@ class FilterEvaluator {
 		$this->statsd = $statsdDataFactory;
 		$this->keywordsManager = $keywordsManager;
 		$this->varManager = $varManager;
+		$this->equivset = $equivset;
 		$this->conditionsLimit = $conditionsLimit;
 		$this->resetState();
 		if ( $vars ) {
 			$this->mVariables = $vars;
 		}
-	}
-
-	/**
-	 * @param string $filter
-	 */
-	public function setFilter( $filter ) {
-		$this->mFilter = $filter;
 	}
 
 	/**
@@ -304,7 +300,7 @@ class FilterEvaluator {
 		$origAS = $this->mAllowShort;
 		try {
 			$this->mAllowShort = false;
-			$this->intEval( $filter );
+			$this->evalTree( $this->getTree( $filter ) );
 		} finally {
 			$this->mAllowShort = $origAS;
 			$this->allowMissingVariables = false;
@@ -338,16 +334,31 @@ class FilterEvaluator {
 
 	/**
 	 * This is the main entry point. It checks the given conditions and returns whether
-	 * they match. In case of bad syntax, this is always logged, and $ignoreError can
-	 * be used to determine whether this method should throw.
+	 * they match. Parser errors are always logged.
 	 *
 	 * @param string $conds
 	 * @param string|null $filter The ID of the filter being parsed
 	 * @return ParserStatus
 	 */
 	public function checkConditions( string $conds, $filter = null ): ParserStatus {
-		$result = $this->parseDetailed( $conds );
-		$excep = $result->getException();
+		$this->mFilter = $filter;
+		$excep = null;
+		$initialConds = $this->mCondCount;
+		$startTime = microtime( true );
+		try {
+			$res = $this->parse( $conds );
+		} catch ( ExceptionBase $excep ) {
+			$res = false;
+		}
+		$this->statsd->timing( 'abusefilter_cachingParser_full', microtime( true ) - $startTime );
+		$result = new ParserStatus(
+			$res,
+			$this->fromCache,
+			$excep,
+			$this->warnings,
+			$this->mCondCount - $initialConds
+		);
+
 		if ( $excep !== null ) {
 			if ( $excep instanceof UserVisibleException ) {
 				$msg = $excep->getMessageForLogs();
@@ -364,42 +375,11 @@ class FilterEvaluator {
 
 	/**
 	 * @param string $code
-	 * @return AFPData
-	 */
-	private function intEval( $code ): AFPData {
-		$startTime = microtime( true );
-		$tree = $this->getTree( $code );
-		$res = $this->evalTree( $tree );
-
-		if ( $res->getType() === AFPData::DUNDEFINED ) {
-			$res = new AFPData( AFPData::DBOOL, false );
-		}
-		$this->statsd->timing( 'abusefilter_cachingParser_full', microtime( true ) - $startTime );
-		return $res;
-	}
-
-	/**
-	 * @param string $code
 	 * @return bool
 	 */
 	public function parse( $code ) {
-		return $this->intEval( $code )->toBool();
-	}
-
-	/**
-	 * Like self::parse(), but returns an object with additional info
-	 * @param string $code
-	 * @return ParserStatus
-	 */
-	public function parseDetailed( string $code ): ParserStatus {
-		$excep = null;
-		$initialConds = $this->mCondCount;
-		try {
-			$res = $this->parse( $code );
-		} catch ( ExceptionBase $excep ) {
-			$res = false;
-		}
-		return new ParserStatus( $res, $this->fromCache, $excep, $this->warnings, $this->mCondCount - $initialConds );
+		$res = $this->evalTree( $this->getTree( $code ) );
+		return $res->getType() === AFPData::DUNDEFINED ? false : $res->toBool();
 	}
 
 	/**
@@ -407,7 +387,7 @@ class FilterEvaluator {
 	 * @return mixed
 	 */
 	public function evaluateExpression( $filter ) {
-		return $this->intEval( $filter )->toNative();
+		return $this->evalTree( $this->getTree( $filter ) )->toNative();
 	}
 
 	/**
@@ -425,9 +405,11 @@ class FilterEvaluator {
 			BagOStuff::TTL_DAY,
 			function () use ( $code ) {
 				$this->fromCache = false;
-				$parser = new AFPTreeParser( $this->cache, $this->logger, $this->statsd, $this->keywordsManager );
+				$tokenizer = new AbuseFilterTokenizer( $this->cache );
+				$tokens = $tokenizer->getTokens( $code );
+				$parser = new AFPTreeParser( $this->logger, $this->statsd, $this->keywordsManager );
 				$parser->setFilter( $this->mFilter );
-				$tree = $parser->parse( $code );
+				$tree = $parser->parse( $tokens );
 				$checker = new SyntaxChecker(
 					$tree,
 					$this->keywordsManager,
@@ -1068,7 +1050,7 @@ class FilterEvaluator {
 	protected function funcContainsAny( $args ) {
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, true ) );
+		return new AFPData( AFPData::DBOOL, $this->contains( $s, $args, true ) );
 	}
 
 	/**
@@ -1078,7 +1060,7 @@ class FilterEvaluator {
 	protected function funcContainsAll( $args ) {
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, false, false ) );
+		return new AFPData( AFPData::DBOOL, $this->contains( $s, $args, false, false ) );
 	}
 
 	/**
@@ -1090,7 +1072,7 @@ class FilterEvaluator {
 	protected function funcCCNormContainsAny( $args ) {
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, true, true ) );
+		return new AFPData( AFPData::DBOOL, $this->contains( $s, $args, true, true ) );
 	}
 
 	/**
@@ -1102,7 +1084,7 @@ class FilterEvaluator {
 	protected function funcCCNormContainsAll( $args ) {
 		$s = array_shift( $args );
 
-		return new AFPData( AFPData::DBOOL, self::contains( $s, $args, false, true ) );
+		return new AFPData( AFPData::DBOOL, $this->contains( $s, $args, false, true ) );
 	}
 
 	/**
@@ -1120,7 +1102,7 @@ class FilterEvaluator {
 	 *
 	 * @return bool
 	 */
-	protected static function contains( $string, $values, $is_any = true, $normalize = false ) {
+	private function contains( $string, $values, $is_any = true, $normalize = false ) {
 		$string = $string->toString();
 
 		if ( $string === '' ) {
@@ -1128,13 +1110,13 @@ class FilterEvaluator {
 		}
 
 		if ( $normalize ) {
-			$string = self::ccnorm( $string );
+			$string = $this->ccnorm( $string );
 		}
 
 		foreach ( $values as $needle ) {
 			$needle = $needle->toString();
 			if ( $normalize ) {
-				$needle = self::ccnorm( $needle );
+				$needle = $this->ccnorm( $needle );
 			}
 			if ( $needle === '' ) {
 				// T62203: Keep empty parameters from causing PHP warnings
@@ -1185,15 +1167,10 @@ class FilterEvaluator {
 
 	/**
 	 * @param string $s
-	 * @return mixed
+	 * @return string
 	 */
-	protected static function ccnorm( $s ) {
-		// Instantiate a single version of the equivset so the data is only loaded once.
-		if ( !self::$equivset ) {
-			self::$equivset = new Equivset();
-		}
-
-		return self::$equivset->normalize( $s );
+	private function ccnorm( $s ): string {
+		return $this->equivset->normalize( $s );
 	}
 
 	/**

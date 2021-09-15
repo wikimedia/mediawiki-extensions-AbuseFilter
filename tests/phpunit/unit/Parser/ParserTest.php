@@ -157,7 +157,7 @@ class ParserTest extends ParserTestCase {
 	 * @dataProvider condCountCases
 	 */
 	public function testCondCount( $rule, $expected ) {
-		$this->assertEquals( $expected, $this->getParser()->parseDetailed( $rule )->getCondsUsed(), "Rule: $rule" );
+		$this->assertEquals( $expected, $this->getParser()->checkConditions( $rule )->getCondsUsed(), "Rule: $rule" );
 	}
 
 	/**
@@ -725,6 +725,8 @@ class ParserTest extends ParserTestCase {
 			[ 'contains_any' ],
 			[ 'contains_all' ],
 			[ 'equals_to_any' ],
+			[ 'ccnorm_contains_any' ],
+			[ 'ccnorm_contains_all' ],
 		];
 	}
 
@@ -1142,17 +1144,6 @@ class ParserTest extends ParserTestCase {
 		$argsCount = array_keys( FilterEvaluator::FUNC_ARG_COUNT );
 		sort( $argsCount );
 		$this->assertSame( $funcs, $argsCount );
-	}
-
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setFilter
-	 */
-	public function testSetFilter() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
-		$this->assertNull( $parser->mFilter, 'precondition' );
-		$filter = 42;
-		$parser->setFilter( $filter );
-		$this->assertSame( $filter, $parser->mFilter );
 	}
 
 	/**

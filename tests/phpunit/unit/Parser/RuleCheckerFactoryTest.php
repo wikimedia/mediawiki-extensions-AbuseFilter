@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use NullStatsdDataFactory;
 use Psr\Log\NullLogger;
+use Wikimedia\Equivset\Equivset;
 
 /**
  * @group Test
@@ -32,6 +33,7 @@ class RuleCheckerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( KeywordsManager::class ),
 			$this->createMock( VariablesManager::class ),
 			new NullStatsdDataFactory(),
+			$this->createMock( Equivset::class ),
 			1000
 		);
 		$this->assertInstanceOf( FilterEvaluator::class, $factory->newRuleChecker() );

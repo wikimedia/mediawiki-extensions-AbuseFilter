@@ -24,7 +24,6 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
 use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
-use Psr;
 
 /**
  * @group Test
@@ -110,7 +109,7 @@ class TokenizerTest extends ParserTestCase {
 	 */
 	public function testCaching( $code ) {
 		$cache = new HashBagOStuff();
-		$tokenizer = new AbuseFilterTokenizer( $cache, new Psr\Log\NullLogger() );
+		$tokenizer = new AbuseFilterTokenizer( $cache );
 
 		$key = $tokenizer->getCacheKey( $code );
 
