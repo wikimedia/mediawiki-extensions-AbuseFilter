@@ -29,7 +29,6 @@ use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
 use InvalidArgumentException;
-use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
@@ -38,7 +37,6 @@ use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
-use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use Title;
 use User;
@@ -286,18 +284,9 @@ class QueryAbuseLog extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
 				break;
 			}
-			$hidden = SpecialAbuseLog::isHidden( $row );
-			if ( $hidden === true && !$this->afPermManager->canSeeHiddenLogEntries( $user ) ) {
+			$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermManager );
+			if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
 				continue;
-			}
-			if ( $hidden === 'implicit' ) {
-				// TODO inject
-				$revRec = MediaWikiServices::getInstance()
-					->getRevisionLookup()
-					->getRevisionById( (int)$row->afl_rev_id );
-				if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
-					continue;
-				}
 			}
 
 			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
@@ -356,6 +345,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				}
 			}
 
+			$hidden = SpecialAbuseLog::isHidden( $row );
 			if ( $fld_hidden && $hidden ) {
 				$entry['hidden'] = $hidden;
 			}

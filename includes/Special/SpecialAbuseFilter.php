@@ -58,7 +58,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			SpecsFormatter::SERVICE_NAME,
 		],
 		AbuseFilterViewExamine::class => [
-			'RevisionLookup',
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			FilterLookup::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,

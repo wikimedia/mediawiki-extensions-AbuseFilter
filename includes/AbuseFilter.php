@@ -3,8 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\Permissions\Authority;
-use MediaWiki\Revision\RevisionRecord;
 use RequestContext;
 use Status;
 use Title;
@@ -67,24 +65,6 @@ class AbuseFilter {
 		$runnerFactory = AbuseFilterServices::getFilterRunnerFactory();
 		$runner = $runnerFactory->newRunner( $user, $title, $vars, $group );
 		return $runner->run();
-	}
-
-	/**
-	 * Shortcut for checking whether $user can view the given revision, with mask
-	 *  SUPPRESSED_ALL.
-	 *
-	 * @note This assumes that a revision with the given ID exists
-	 *
-	 * @param RevisionRecord $revRec
-	 * @param Authority $authority
-	 * @return bool
-	 */
-	public static function userCanViewRev( RevisionRecord $revRec, Authority $authority ): bool {
-		return $revRec->audienceCan(
-			RevisionRecord::SUPPRESSED_ALL,
-			RevisionRecord::FOR_THIS_USER,
-			$authority
-		);
 	}
 }
 

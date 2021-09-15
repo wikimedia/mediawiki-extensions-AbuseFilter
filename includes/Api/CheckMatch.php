@@ -112,7 +112,8 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
-			if ( !$this->afPermManager->canSeeHiddenLogEntries( $user ) && SpecialAbuseLog::isHidden( $row ) ) {
+			$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermManager );
+			if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
 				// T223654 - Same check as in SpecialAbuseLog. Both the visibility of the AbuseLog entry
 				// and the corresponding revision are checked.
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );

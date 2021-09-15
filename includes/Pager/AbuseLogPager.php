@@ -96,11 +96,9 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
 
 		$diffLink = false;
-		$isHidden = SpecialAbuseLog::isHidden( $row );
+		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermissionManager );
 
-		// @todo T224203 Try to show the details if the revision is deleted but the AbuseLog entry
-		// is not. However, watch out to avoid showing too much stuff.
-		if ( !$this->afPermissionManager->canSeeHiddenLogEntries( $user ) && $isHidden ) {
+		if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
 			return '';
 		}
 
@@ -283,6 +281,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		$attribs = null;
+		$isHidden = SpecialAbuseLog::isHidden( $row );
 		if (
 			$this->isHidingEntry( $row ) === true ||
 			// If isHidingEntry is false, we've just unhidden the row

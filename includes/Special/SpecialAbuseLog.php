@@ -10,7 +10,6 @@ use InvalidArgumentException;
 use Linker;
 use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
@@ -25,7 +24,9 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\View\HideAbuseLog;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Revision\RevisionRecord;
 use OOUI\ButtonInputWidget;
 use SpecialPage;
 use Status;
@@ -37,6 +38,13 @@ use Xml;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public const PAGE_NAME = 'AbuseLog';
+
+	/** Visible entry */
+	public const VISIBILITY_VISIBLE = 'visible';
+	/** Explicitly hidden entry */
+	public const VISIBILITY_HIDDEN = 'hidden';
+	/** Visible entry but the associated revision is hidden */
+	public const VISIBILITY_HIDDEN_IMPLICIT = 'implicit';
 
 	/**
 	 * @var User The user whose AbuseLog entries are being searched
@@ -703,17 +711,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 			if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $user, $filter_hidden ) ) {
 				$error = 'abusefilter-log-cannot-see-details';
-			} elseif (
-				self::isHidden( $row ) === true &&
-				!$this->afPermissionManager->canSeeHiddenLogEntries( $user )
-			) {
-				$error = 'abusefilter-log-details-hidden';
-			} elseif ( self::isHidden( $row ) === 'implicit' ) {
-				$revRec = MediaWikiServices::getInstance()
-					->getRevisionLookup()
-					->getRevisionById( (int)$row->afl_rev_id );
-				if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
-					// The log is visible, but refers to a deleted revision
+			} else {
+				$visibility = self::getEntryVisibilityForUser( $row, $user, $this->afPermissionManager );
+				if ( $visibility === self::VISIBILITY_HIDDEN ) {
+					$error = 'abusefilter-log-details-hidden';
+				} elseif ( $visibility === self::VISIBILITY_HIDDEN_IMPLICIT ) {
 					$error = 'abusefilter-log-details-hidden-implicit';
 				}
 			}
@@ -1117,6 +1119,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 *
 	 * @return bool|string true if the item is explicitly hidden, false if it is not.
 	 *    The string 'implicit' if it is hidden because the corresponding revision is hidden.
+	 * @todo Stop using this method.
 	 */
 	public static function isHidden( $row ) {
 		// First, check if the entry is hidden. Since this is an oversight-level deletion,
@@ -1134,5 +1137,33 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		return false;
+	}
+
+	/**
+	 * @param stdClass $row
+	 * @param Authority $authority
+	 * @param AbuseFilterPermissionManager $afPermManager
+	 * @return string One of the self::VISIBILITY_* constants
+	 */
+	public static function getEntryVisibilityForUser(
+		stdClass $row,
+		Authority $authority,
+		AbuseFilterPermissionManager $afPermManager
+	): string {
+		if ( $row->afl_deleted && !$afPermManager->canSeeHiddenLogEntries( $authority->getUser() ) ) {
+			return self::VISIBILITY_HIDDEN;
+		}
+		if ( !$row->afl_rev_id ) {
+			return self::VISIBILITY_VISIBLE;
+		}
+		$revRec = MediaWikiServices::getInstance()
+			->getRevisionLookup()
+			->getRevisionById( (int)$row->afl_rev_id );
+		if ( !$revRec || $revRec->getVisibility() === 0 ) {
+			return self::VISIBILITY_VISIBLE;
+		}
+		return $revRec->audienceCan( RevisionRecord::SUPPRESSED_ALL, RevisionRecord::FOR_THIS_USER, $authority )
+			? self::VISIBILITY_VISIBLE
+			: self::VISIBILITY_HIDDEN_IMPLICIT;
 	}
 }

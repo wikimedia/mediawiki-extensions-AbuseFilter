@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use ChangesList;
 use HTMLForm;
 use IContextSource;
-use MediaWiki\Extension\AbuseFilter\AbuseFilter;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
@@ -20,7 +20,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use OOUI;
 use RecentChange;
@@ -44,10 +43,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @var string The ID of the filter we're examinating
 	 */
 	public $mTestFilter;
-	/**
-	 * @var RevisionLookup
-	 */
-	private $revisionLookup;
 	/**
 	 * @var FilterLookup
 	 */
@@ -74,7 +69,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	private $varGeneratorFactory;
 
 	/**
-	 * @param RevisionLookup $revisionLookup
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterLookup $filterLookup
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
@@ -88,7 +82,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param array $params
 	 */
 	public function __construct(
-		RevisionLookup $revisionLookup,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterLookup $filterLookup,
 		EditBoxBuilderFactory $boxBuilderFactory,
@@ -102,7 +95,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->revisionLookup = $revisionLookup;
 		$this->filterLookup = $filterLookup;
 		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->varBlobStore = $varBlobStore;
@@ -278,18 +270,19 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( $row->afl_deleted && !$this->afPermManager->canSeeHiddenLogEntries( $user ) ) {
-			$out->addWikiMsg( 'abusefilter-log-details-hidden' );
+		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermManager );
+		if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
+			if ( $visibility === SpecialAbuseLog::VISIBILITY_HIDDEN ) {
+				$msg = 'abusefilter-log-details-hidden';
+			} elseif ( $visibility === SpecialAbuseLog::VISIBILITY_HIDDEN_IMPLICIT ) {
+				$msg = 'abusefilter-log-details-hidden-implicit';
+			} else {
+				throw new LogicException( "Unexpected visibility $visibility" );
+			}
+			$out->addWikiMsg( $msg );
 			return;
 		}
 
-		if ( SpecialAbuseLog::isHidden( $row ) === 'implicit' ) {
-			$revRec = $this->revisionLookup->getRevisionById( (int)$row->afl_rev_id );
-			if ( !AbuseFilter::userCanViewRev( $revRec, $user ) ) {
-				$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
-				return;
-			}
-		}
 		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
