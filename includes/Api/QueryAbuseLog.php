@@ -327,9 +327,8 @@ class QueryAbuseLog extends ApiQueryBase {
 				}
 			}
 
-			$hidden = SpecialAbuseLog::isHidden( $row );
-			if ( $fld_hidden && $hidden ) {
-				$entry['hidden'] = $hidden;
+			if ( $fld_hidden ) {
+				$entry['hidden'] = (bool)$row->afl_deleted;
 			}
 
 			if ( $entry ) {

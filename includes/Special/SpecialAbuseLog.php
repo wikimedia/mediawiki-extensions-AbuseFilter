@@ -1083,33 +1083,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
-	 * Given a log entry row, decides whether or not it can be viewed by the public.
-	 *
-	 * @param stdClass $row The abuse_filter_log row object.
-	 *
-	 * @return bool|string true if the item is explicitly hidden, false if it is not.
-	 *    The string 'implicit' if it is hidden because the corresponding revision is hidden.
-	 * @todo Stop using this method.
-	 */
-	public static function isHidden( $row ) {
-		// First, check if the entry is hidden. Since this is an oversight-level deletion,
-		// it's more important than the associated revision being deleted.
-		if ( $row->afl_deleted ) {
-			return true;
-		}
-		if ( $row->afl_rev_id ) {
-			$revision = MediaWikiServices::getInstance()
-				->getRevisionLookup()
-				->getRevisionById( $row->afl_rev_id );
-			if ( $revision && $revision->getVisibility() !== 0 ) {
-				return 'implicit';
-			}
-		}
-
-		return false;
-	}
-
-	/**
 	 * @param stdClass $row
 	 * @param Authority $authority
 	 * @param AbuseFilterPermissionManager $afPermManager
