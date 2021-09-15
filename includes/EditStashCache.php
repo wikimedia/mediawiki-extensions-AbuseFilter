@@ -15,7 +15,7 @@ use Psr\Log\LoggerInterface;
  */
 class EditStashCache {
 
-	private const CACHE_VERSION = 'v3';
+	private const CACHE_VERSION = 'v4';
 
 	/** @var BagOStuff */
 	private $cache;
