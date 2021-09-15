@@ -21,7 +21,7 @@ use WikiPage;
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  * @covers ::__construct
  */
-class AbuseFilterVariableGeneratorTest extends MediaWikiUnitTestCase {
+class VariableGeneratorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::getVariableHolder
 	 */
