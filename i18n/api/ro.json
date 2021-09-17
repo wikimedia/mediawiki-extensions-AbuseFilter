@@ -1,11 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Strainu"
+			"Strainu",
+			"WebSourceContentRO"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Verifică dacă filtrul de abuzuri se aplică unui se de variabile, eveniment logat de Filtrul de abuzuri.\n\nvars, rcid sau logid sunt obligatorii, dar doar una poate fi folosită.",
+	"apihelp-abusefiltercheckmatch-summary": "Verificați dacă un AbuseFilter se potrivește cu un set de variabile, o modificare sau un eveniment AbuseFilter înregistrat",
 	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid sau logid sunt obligatorii dar doar una poate fi folosită.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Textul filtrului complet pentru a verifica dacă există o potrivire.",
+	"apihelp-abusefiltercheckmatch-param-vars": "Matrice JSON codificată de variabile de testat.",
+	"apihelp-abusefiltercheckmatch-param-rcid": "ID schimbare recentă de verificat.",
+	"apihelp-abusefiltercheckmatch-param-logid": "ID-ul jurnalului filtrului de abuz de verificat.",
+	"apihelp-abusefiltercheckmatch-example-1": "Testați dacă ID-ul modificării recente 15 se potrivește cu un filtru simplu",
 	"apihelp-abusefilterchecksyntax-description": "Verifică sintaxa unui filtru AbuseFilter.",
 	"apihelp-abusefilterchecksyntax-param-filter": "Textul complet al filtrului pentru care trebuie verificată sintaxa.",
 	"apihelp-abusefilterchecksyntax-example-1": "Verifică sintaxa unui filtru valid.",
