@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use FakeResultWrapper;
 use Linker;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -13,6 +12,7 @@ use MWException;
 use SpecialPage;
 use stdClass;
 use TablePager;
+use Wikimedia\Rdbms\FakeResultWrapper;
 
 /**
  * Class to build paginated filter list
