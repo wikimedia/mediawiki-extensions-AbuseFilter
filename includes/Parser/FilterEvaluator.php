@@ -312,19 +312,16 @@ class FilterEvaluator {
 	 * Check the syntax of $filter, without throwing
 	 *
 	 * @param string $filter
-	 * @return ParserStatus The result indicates whether the syntax is valid
+	 * @return ParserStatus
 	 */
 	public function checkSyntax( string $filter ): ParserStatus {
 		$initialConds = $this->mCondCount;
 		try {
-			$valid = $this->checkSyntaxThrow( $filter );
+			$this->checkSyntaxThrow( $filter );
 		} catch ( UserVisibleException $excep ) {
-			$valid = false;
 		}
 
 		return new ParserStatus(
-			$valid,
-			$this->fromCache,
 			$excep ?? null,
 			$this->warnings,
 			$this->mCondCount - $initialConds
@@ -337,9 +334,9 @@ class FilterEvaluator {
 	 *
 	 * @param string $conds
 	 * @param string|null $filter The ID of the filter being parsed
-	 * @return ParserStatus
+	 * @return RuleCheckerStatus
 	 */
-	public function checkConditions( string $conds, $filter = null ): ParserStatus {
+	public function checkConditions( string $conds, $filter = null ): RuleCheckerStatus {
 		$this->mFilter = $filter;
 		$excep = null;
 		$initialConds = $this->mCondCount;
@@ -350,7 +347,7 @@ class FilterEvaluator {
 			$res = false;
 		}
 		$this->statsd->timing( 'abusefilter_cachingParser_full', microtime( true ) - $startTime );
-		$result = new ParserStatus(
+		$result = new RuleCheckerStatus(
 			$res,
 			$this->fromCache,
 			$excep,

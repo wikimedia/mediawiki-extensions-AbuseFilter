@@ -43,7 +43,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		if ( !$ruleChecker ) {
 			$ruleChecker = $this->createMock( FilterEvaluator::class );
 			$ruleChecker->method( 'checkSyntax' )->willReturn(
-				new ParserStatus( true, true, null, [], 1 )
+				new ParserStatus( null, [], 1 )
 			);
 		}
 		$checkerFactory = $this->createMock( RuleCheckerFactory::class );
@@ -93,16 +93,15 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param bool $valid
 	 * @param ExceptionBase|null $excep
 	 * @param string|null $expected
 	 * @param array|null $expParams
 	 * @covers ::checkValidSyntax
 	 * @dataProvider provideSyntax
 	 */
-	public function testCheckValidSyntax( bool $valid, ?ExceptionBase $excep, ?string $expected, ?array $expParams ) {
+	public function testCheckValidSyntax( ?ExceptionBase $excep, ?string $expected, ?array $expParams ) {
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
-		$syntaxStatus = new ParserStatus( $valid, true, $excep, [], 1 );
+		$syntaxStatus = new ParserStatus( $excep, [], 1 );
 		$ruleChecker->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		$validator = $this->getFilterValidator( null, $ruleChecker );
 
@@ -114,10 +113,9 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideSyntax(): Generator {
-		yield 'valid' => [ true, null, null, null ];
+		yield 'valid' => [ null, null, null ];
 		$excText = 'Internal error text';
 		yield 'invalid, internal error' => [
-			false,
 			new InternalException( $excText ),
 			'abusefilter-edit-badsyntax',
 			[ $excText ]
@@ -125,7 +123,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$excMsg = $this->getMockMessage( $excText );
 		$excep = $this->createMock( UserVisibleException::class );
 		$excep->method( 'getMessageObj' )->willReturn( $excMsg );
-		yield 'invalid, user error' => [ false, $excep, 'abusefilter-edit-badsyntax', [ $excMsg ] ];
+		yield 'invalid, user error' => [ $excep, 'abusefilter-edit-badsyntax', [ $excMsg ] ];
 	}
 
 	/**
@@ -390,7 +388,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$noopFilter->method( 'isEnabled' )->willReturn( true );
 
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
-		$syntaxStatus = new ParserStatus( false, true, $this->createMock( UserVisibleException::class ), [], 1 );
+		$syntaxStatus = new ParserStatus( $this->createMock( UserVisibleException::class ), [], 1 );
 		$ruleChecker->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		yield 'invalid syntax' => [ $noopFilter, 'abusefilter-edit-badsyntax', null, $ruleChecker ];
 

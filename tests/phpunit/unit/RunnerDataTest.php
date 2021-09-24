@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 use MediaWiki\Extension\AbuseFilter\RunnerData;
 use MediaWikiUnitTestCase;
 
@@ -39,12 +39,12 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus( true, false, null, [], 7 ),
+			new RuleCheckerStatus( true, false, null, [], 7 ),
 			12.3
 		);
 		$runnerData->record(
 			1, true,
-			new ParserStatus( false, false, null, [], 5 ),
+			new RuleCheckerStatus( false, false, null, [], 5 ),
 			23.4
 		);
 
@@ -74,13 +74,13 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus( true, false, null, [], 7 ),
+			new RuleCheckerStatus( true, false, null, [], 7 ),
 			12.3
 		);
 		$this->expectException( LogicException::class );
 		$runnerData->record(
 			1, false,
-			new ParserStatus( false, false, null, [], 5 ),
+			new RuleCheckerStatus( false, false, null, [], 5 ),
 			23.4
 		);
 	}
@@ -94,7 +94,7 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus(
+			new RuleCheckerStatus(
 				true,
 				false,
 				null,
@@ -105,7 +105,7 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		);
 		$runnerData->record(
 			1, true,
-			new ParserStatus( false, false, null, [], 5 ),
+			new RuleCheckerStatus( false, false, null, [], 5 ),
 			23.4
 		);
 		$newData = RunnerData::fromArray( $runnerData->toArray() );
@@ -123,22 +123,22 @@ class RunnerDataTest extends MediaWikiUnitTestCase {
 		$runnerData = new RunnerData();
 		$runnerData->record(
 			1, false,
-			new ParserStatus( true, false, null, [], 7 ),
+			new RuleCheckerStatus( true, false, null, [], 7 ),
 			12.3
 		);
 		$runnerData->record(
 			1, true,
-			new ParserStatus( false, false, null, [], 5 ),
+			new RuleCheckerStatus( false, false, null, [], 5 ),
 			23.4
 		);
 		$runnerData->record(
 			3, false,
-			new ParserStatus( false, false, null, [], 7 ),
+			new RuleCheckerStatus( false, false, null, [], 7 ),
 			12.3
 		);
 		$runnerData->record(
 			3, true,
-			new ParserStatus( true, false, null, [], 5 ),
+			new RuleCheckerStatus( true, false, null, [], 5 ),
 			23.4
 		);
 

@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use LogicException;
-use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 
 /**
  * Mutable value class storing and accumulating information about filter matches and runtime
@@ -11,8 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 class RunnerData {
 
 	/**
-	 * @var ParserStatus[]
-	 * @phan-var array<string,ParserStatus>
+	 * @var array<string,RuleCheckerStatus>
 	 */
 	private $matchedFilters;
 
@@ -29,7 +28,7 @@ class RunnerData {
 	private $totalConditions;
 
 	/**
-	 * @param ParserStatus[] $matchedFilters
+	 * @param RuleCheckerStatus[] $matchedFilters
 	 * @param array[] $profilingData
 	 * @param float $totalRuntime
 	 * @param int $totalConditions
@@ -51,10 +50,10 @@ class RunnerData {
 	 *
 	 * @param int $filterID
 	 * @param bool $global
-	 * @param ParserStatus $status
+	 * @param RuleCheckerStatus $status
 	 * @param float $timeTaken
 	 */
-	public function record( int $filterID, bool $global, ParserStatus $status, float $timeTaken ): void {
+	public function record( int $filterID, bool $global, RuleCheckerStatus $status, float $timeTaken ): void {
 		$key = GlobalNameUtils::buildGlobalName( $filterID, $global );
 		if ( array_key_exists( $key, $this->matchedFilters ) ) {
 			throw new LogicException( "Filter '$key' has already been recorded" );
@@ -144,7 +143,7 @@ class RunnerData {
 	 */
 	public static function fromArray( array $value ): self {
 		return new self(
-			array_map( [ ParserStatus::class, 'fromArray' ], $value['matches'] ),
+			array_map( [ RuleCheckerStatus::class, 'fromArray' ], $value['matches'] ),
 			$value['profiling'],
 			$value['runtime'],
 			$value['condCount']

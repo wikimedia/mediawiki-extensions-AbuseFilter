@@ -216,7 +216,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$out = $this->getOutput();
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 
-		if ( !$ruleChecker->checkSyntax( $this->testPattern )->getResult() ) {
+		if ( !$ruleChecker->checkSyntax( $this->testPattern )->isValid() ) {
 			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
 			return;
 		}

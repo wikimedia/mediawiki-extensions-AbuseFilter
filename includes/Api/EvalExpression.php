@@ -73,7 +73,7 @@ class EvalExpression extends ApiBase {
 	 */
 	private function evaluateExpression( string $expr ): Status {
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
-		if ( !$ruleChecker->checkSyntax( $expr )->getResult() ) {
+		if ( !$ruleChecker->checkSyntax( $expr )->isValid() ) {
 			return Status::newFatal( 'abusefilter-tools-syntax-error' );
 		}
 
