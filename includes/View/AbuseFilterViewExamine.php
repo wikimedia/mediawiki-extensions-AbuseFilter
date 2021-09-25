@@ -175,7 +175,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @return bool
 	 */
 	public function showResults( array $formData, HTMLForm $form ): bool {
-		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->mTestFilter );
+		$changesList = new AbuseFilterChangesList( $this->getContext(), $this->mTestFilter );
 		$pager = new AbuseFilterExaminePager( $this, $changesList );
 
 		$output = $changesList->beginRecentChangesList()

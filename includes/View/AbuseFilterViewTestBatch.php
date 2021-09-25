@@ -266,7 +266,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		);
 
 		// Get our ChangesList
-		$changesList = new AbuseFilterChangesList( $this->getSkin(), $this->testPattern );
+		$changesList = new AbuseFilterChangesList( $this->getContext(), $this->testPattern );
 		// Note, we're initializing some rows that will later be discarded. Hopefully this won't have any overhead.
 		$changesList->initChangesListRows( $res );
 		$output = $changesList->beginRecentChangesList();

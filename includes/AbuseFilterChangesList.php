@@ -3,12 +3,12 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use HtmlArmor;
+use IContextSource;
 use Linker;
 use LogFormatter;
 use MediaWiki\Revision\RevisionRecord;
 use OldChangesList;
 use RecentChange;
-use Skin;
 use SpecialPage;
 
 class AbuseFilterChangesList extends OldChangesList {
@@ -19,11 +19,11 @@ class AbuseFilterChangesList extends OldChangesList {
 	private $testFilter;
 
 	/**
-	 * @param Skin $skin
+	 * @param IContextSource $context
 	 * @param string $testFilter
 	 */
-	public function __construct( Skin $skin, $testFilter ) {
-		parent::__construct( $skin );
+	public function __construct( IContextSource $context, $testFilter ) {
+		parent::__construct( $context );
 		$this->testFilter = $testFilter;
 	}
 
