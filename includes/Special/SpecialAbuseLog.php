@@ -650,7 +650,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public function showDetails( $id ) {
 		$out = $this->getOutput();
 		$user = $this->getUser();
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
 		$pager = new AbuseLogPager(
 			$this->getContext(),

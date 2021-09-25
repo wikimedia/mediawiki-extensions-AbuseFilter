@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use DatabaseUpdater;
 use MediaWiki\Extension\AbuseFilter\Maintenance\FixOldLogEntries;
-use MediaWiki\Extension\AbuseFilter\Maintenance\MigrateAflFilter;
 use MediaWiki\Extension\AbuseFilter\Maintenance\NormalizeThrottleParameters;
 use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
@@ -49,8 +48,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	 * @throws MWException
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		global $wgAbuseFilterAflFilterMigrationStage;
-
 		$dbType = $updater->getDB()->getType();
 		$dir = __DIR__ . "/../../../db_patches";
 
@@ -120,13 +117,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 		$updater->addPostDatabaseUpdateMaintenance( NormalizeThrottleParameters::class );
 		$updater->addPostDatabaseUpdateMaintenance( FixOldLogEntries::class );
 		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );
-		// The global is not set on install.php
-		if (
-			isset( $wgAbuseFilterAflFilterMigrationStage ) &&
-			( $wgAbuseFilterAflFilterMigrationStage & SCHEMA_COMPAT_WRITE_NEW )
-		) {
-			$updater->addPostDatabaseUpdateMaintenance( MigrateAflFilter::class );
-		}
 	}
 
 	/**
