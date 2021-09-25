@@ -33,9 +33,8 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_action (
 
 CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-	afl_filter varchar(64) binary NOT NULL DEFAULT '',
-	afl_global tinyint(1) NOT NULL DEFAULT 0,
-	afl_filter_id BIGINT unsigned NOT NULL DEFAULT 0,
+	afl_global tinyint(1) NOT NULL,
+	afl_filter_id BIGINT unsigned NOT NULL,
 	afl_user BIGINT unsigned NOT NULL,
 	afl_user_text varchar(255) binary NOT NULL,
 	afl_ip varchar(255) not null,
@@ -51,7 +50,6 @@ CREATE TABLE /*$wgDBprefix*/abuse_filter_log (
 	afl_rev_id int unsigned,
 
 	PRIMARY KEY afl_id (afl_id),
-	KEY afl_filter_timestamp (afl_filter,afl_timestamp),
 	KEY afl_filter_timestamp_full (afl_global,afl_filter_id,afl_timestamp),
 	KEY afl_user_timestamp (afl_user,afl_user_text,afl_timestamp),
 	KEY afl_timestamp (afl_timestamp),

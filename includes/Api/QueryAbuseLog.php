@@ -90,7 +90,6 @@ class QueryAbuseLog extends ApiQueryBase {
 	 */
 	public function execute() {
 		$lookup = $this->afFilterLookup;
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 
 		// Same check as in SpecialAbuseLog
 		$this->checkUserRightsAny( 'abusefilter-log' );
@@ -166,12 +165,8 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addFields( 'afl_timestamp' );
 		$this->addFields( 'afl_rev_id' );
 		$this->addFields( 'afl_deleted' );
-		$this->addFieldsIf( 'afl_filter',
-			( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_OLD ) !== 0 );
-		$this->addFieldsIf( 'afl_filter_id',
-			( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) !== 0 );
-		$this->addFieldsIf( 'afl_global',
-			( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) !== 0 );
+		$this->addFields( 'afl_filter_id' );
+		$this->addFields( 'afl_global' );
 		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( [ 'afl_namespace', 'afl_title' ], $fld_title );
@@ -184,14 +179,15 @@ class QueryAbuseLog extends ApiQueryBase {
 			$this->addTables( 'abuse_filter' );
 			$this->addFields( 'af_public_comments' );
 
-			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-				$join = [ 'af_id=afl_filter_id', 'afl_global' => 0 ];
-			} else {
-				// SCHEMA_COMPAT_READ_OLD
-				$join = 'af_id=afl_filter';
-			}
-
-			$this->addJoinConds( [ 'abuse_filter' => [ 'LEFT JOIN', $join ] ] );
+			$this->addJoinConds( [
+				'abuse_filter' => [
+					'LEFT JOIN',
+					[
+						'af_id=afl_filter_id',
+						'afl_global' => 0
+					]
+				]
+			] );
 		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
@@ -227,36 +223,28 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$this->afPermManager->canSeeHiddenLogEntries( $user ) );
 
 		if ( $searchFilters ) {
-			$conds = [];
 			// @todo Avoid code duplication with SpecialAbuseLog::showList
-			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-				$filterConds = [ 'local' => [], 'global' => [] ];
-				foreach ( $searchFilters as $filter ) {
-					$isGlobal = $filter[1];
-					$key = $isGlobal ? 'global' : 'local';
-					$filterConds[$key][] = $filter[0];
-				}
-				if ( $filterConds['local'] ) {
-					$conds[] = $this->getDB()->makeList(
-						[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
-						LIST_AND
-					);
-				}
-				if ( $filterConds['global'] ) {
-					$conds[] = $this->getDB()->makeList(
-						[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
-						LIST_AND
-					);
-				}
-				$conds = $this->getDB()->makeList( $conds, LIST_OR );
-			} else {
-				// SCHEMA_COMPAT_READ_OLD
-				$names = [];
-				foreach ( $searchFilters as $filter ) {
-					$names[] = GlobalNameUtils::buildGlobalName( ...$filter );
-				}
-				$conds = [ 'afl_filter' => $names ];
+			$filterConds = [ 'local' => [], 'global' => [] ];
+			foreach ( $searchFilters as $filter ) {
+				$isGlobal = $filter[1];
+				$key = $isGlobal ? 'global' : 'local';
+				$filterConds[$key][] = $filter[0];
 			}
+			$conds = [];
+			if ( $filterConds['local'] ) {
+				$conds[] = $this->getDB()->makeList(
+					[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
+					LIST_AND
+				);
+			}
+			if ( $filterConds['global'] ) {
+				$conds[] = $this->getDB()->makeList(
+					[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
+					LIST_AND
+				);
+			}
+			$conds = $this->getDB()->makeList( $conds, LIST_OR );
+
 			$this->addWhere( $conds );
 		}
 
@@ -289,15 +277,9 @@ class QueryAbuseLog extends ApiQueryBase {
 				continue;
 			}
 
-			if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-				$filterID = $row->afl_filter_id;
-				$global = $row->afl_global;
-				$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
-			} else {
-				// SCHEMA_COMPAT_READ_OLD
-				list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $row->afl_filter );
-				$fullName = $row->afl_filter;
-			}
+			$filterID = $row->afl_filter_id;
+			$global = $row->afl_global;
+			$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
 			$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
 			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden );
 

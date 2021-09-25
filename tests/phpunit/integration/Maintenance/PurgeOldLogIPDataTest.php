@@ -39,7 +39,6 @@ class PurgeOldLogIPDataTest extends MaintenanceBaseTestCase {
 	public function addDBData() {
 		$defaultRow = [
 			'afl_ip' => '1.1.1.1',
-			'afl_filter' => '1',
 			'afl_global' => 0,
 			'afl_filter_id' => 1,
 			'afl_user' => 1,

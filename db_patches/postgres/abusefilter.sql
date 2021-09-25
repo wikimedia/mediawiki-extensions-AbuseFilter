@@ -36,7 +36,6 @@ CREATE INDEX abuse_filter_action_consequence ON abuse_filter_action(afa_conseque
 CREATE SEQUENCE abuse_filter_log_afl_id_seq;
 CREATE TABLE abuse_filter_log (
     afl_id           INTEGER     NOT NULL PRIMARY KEY DEFAULT nextval('abuse_filter_log_afl_id_seq'),
-    afl_filter       TEXT        NOT NULL             DEFAULT '',
     afl_user         INTEGER     NOT NULL,
     afl_user_text    TEXT        NOT NULL,
     afl_ip           TEXT        NOT NULL,
@@ -50,11 +49,10 @@ CREATE TABLE abuse_filter_log (
     afl_deleted      SMALLINT    NOT NULL             DEFAULT 0,
     afl_patrolled_by INTEGER     NOT NULL             DEFAULT 0,
     afl_rev_id       INTEGER         NULL,
-    afl_global       SMALLINT    NOT NULL             DEFAULT 0,
-    afl_filter_id    INTEGER     NOT NULL             DEFAULT 0
+    afl_global       SMALLINT    NOT NULL,
+    afl_filter_id    INTEGER     NOT NULL
 );
 
-CREATE INDEX abuse_filter_log_filter_timestamp      ON abuse_filter_log(afl_filter,afl_timestamp);
 CREATE INDEX abuse_filter_log_filter_timestamp_full ON abuse_filter_log(afl_global,afl_filter_id,afl_timestamp);
 CREATE INDEX abuse_filter_log_user_timestamp        ON abuse_filter_log(afl_user,afl_user_text,afl_timestamp);
 CREATE INDEX abuse_filter_log_timestamp             ON abuse_filter_log(afl_timestamp);

@@ -268,22 +268,13 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return array[]
 	 */
 	public function doLookup() {
-		$aflFilterMigrationStage = $this->getConfig()->get( 'AbuseFilterAflFilterMigrationStage' );
 		$periodStart = $this->periodStart;
 		$periodEnd = $this->periodEnd;
 		$filter = $this->filter;
 		$dbr = wfGetDB( DB_REPLICA );
 
-		$conds = [];
-
-		if ( $aflFilterMigrationStage & SCHEMA_COMPAT_READ_NEW ) {
-			// Only hits from local filters can be reverted
-			$conds['afl_filter_id'] = $filter;
-			$conds['afl_global'] = 0;
-		} else {
-			// SCHEMA_COMPAT_READ_OLD
-			$conds['afl_filter'] = $filter;
-		}
+		// Only hits from local filters can be reverted
+		$conds = [ 'afl_filter_id' => $filter, 'afl_global' => 0 ];
 
 		if ( $periodStart !== null ) {
 			$conds[] = 'afl_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
