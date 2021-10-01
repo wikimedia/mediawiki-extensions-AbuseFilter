@@ -16,6 +16,7 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TableDiffFormatterFullContext;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
+use TextContent;
 use Xml;
 
 class AbuseFilterViewDiff extends AbuseFilterView {
@@ -336,10 +337,10 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 */
 	public function getDiffRow( $msg, $old, $new ) {
 		if ( !is_array( $old ) ) {
-			$old = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $old ) );
+			$old = explode( "\n", TextContent::normalizeLineEndings( $old ) );
 		}
 		if ( !is_array( $new ) ) {
-			$new = explode( "\n", preg_replace( "/\\\r\\\n?/", "\n", $new ) );
+			$new = explode( "\n", TextContent::normalizeLineEndings( $new ) );
 		}
 
 		if ( $old === $new ) {
