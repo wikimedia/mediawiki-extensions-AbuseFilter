@@ -35,7 +35,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 
 	/**
 	 * @param string $name
-	 * @param string $value
+	 * @param string|null $value
 	 * @return string
 	 */
 	public function formatValue( $name, $value ) {
