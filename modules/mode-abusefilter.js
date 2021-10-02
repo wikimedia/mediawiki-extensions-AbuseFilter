@@ -36,9 +36,7 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 				fraction = '(?:\\.\\d+)',
 				intPart = '(?:\\d+)',
 				pointFloat = '(?:(?:' + intPart + '?' + fraction + ')|(?:' + intPart + '\\.))',
-				floatNumber = '(?:' + pointFloat + ')',
-				singleQuoteString = '\'(?:[^\\\\]|\\\\.)*?\'',
-				doubleQuoteString = '"(?:[^\\\\]|\\\\.)*?"';
+				floatNumber = '(?:' + pointFloat + ')';
 
 			this.$rules = {
 				start: [ {
@@ -47,10 +45,12 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					next: 'comment'
 				}, {
 					token: 'string',
-					regex: doubleQuoteString
+					regex: '"',
+					next: 'doublequotestring'
 				}, {
 					token: 'string',
-					regex: singleQuoteString
+					regex: "'",
+					next: 'singlequotestring'
 				}, {
 					token: 'constant.numeric',
 					regex: floatNumber
@@ -73,13 +73,20 @@ ace.define( 'ace/mode/abusefilter_highlight_rules', [ 'require', 'exports', 'mod
 					token: 'text',
 					regex: '\\s+|\\w+'
 				} ],
-				comment: [ {
-					token: 'comment',
-					regex: '\\*\\/',
-					next: 'start'
-				}, {
-					defaultToken: 'comment'
-				} ]
+				comment: [
+					{ token: 'comment', regex: '\\*\\/', next: 'start' },
+					{ defaultToken: 'comment' }
+				],
+				doublequotestring: [
+					{ token: 'constant.language.escape', regex: /\\["\\]/ },
+					{ token: 'string', regex: '"', next: 'start' },
+					{ defaultToken: 'string' }
+				],
+				singlequotestring: [
+					{ token: 'constant.language.escape', regex: /\\['\\]/ },
+					{ token: 'string', regex: "'", next: 'start' },
+					{ defaultToken: 'string' }
+				]
 			};
 
 			this.normalizeRules();
