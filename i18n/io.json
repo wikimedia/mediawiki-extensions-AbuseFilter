@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"JSantos",
 			"Joao Xavier",
 			"Lakaoso",
 			"Malafaya",
@@ -48,6 +49,7 @@
 	"abusefilter-edit-save": "Registragar filtrilo",
 	"abusefilter-edit-description": "Deskripto:\n:''(publike videbla)''",
 	"abusefilter-edit-rules": "Kondicioni:",
+	"abusefilter-edit-notes": "Noti:",
 	"abusefilter-edit-lastmod-text": "$1 da $2",
 	"abusefilter-edit-action-rangeblock": "Blokusar la serio di IP-adresi de ube l'uzero originis",
 	"abusefilter-edit-warn-other": "Altra mesajo",
@@ -120,6 +122,7 @@
 	"abusefilter-topnav-log": "Protokolo ('log') pri misuzo",
 	"abusefilter-topnav-tools": "Utensili por 'debug'",
 	"abusefilter-log-header": "Ca protokolo ('log') montras rezumo di modifikuri en la filtrili.\nPor plusa detali, videz [[Special:AbuseFilter/history|la listo di recenta chanji en la filtrili]].",
+	"abusefilter-logentry-create": "$4 {{GENDER:$2|kreesis}} da $1 ($5)",
 	"abusefilter-log-noresults": "Nula rezulti",
 	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2",
 	"abusefilter-group-default": "Normala",
