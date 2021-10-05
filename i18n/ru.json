@@ -524,6 +524,7 @@
 	"abusefilter-exception-invalidiprange": "Неверный диапазон IP-адресов «$2» на позиции $1.",
 	"abusefilter-exception-disabledvar": "Переменная $2 на позиции $1 более не используется.",
 	"abusefilter-exception-variablevariable": "Переменные \"set\" и \"set_var\" не разрешены, найдено на позиции $1.",
+	"abusefilter-exception-unknownfunction": "$2 не является допустимой функцией для символа $1.",
 	"abusefilter-exception-unusedvars": "Следующие переменные не используются: $2.",
 	"abusefilter-action-tag": "Метка",
 	"abusefilter-action-throttle": "Замедление",
