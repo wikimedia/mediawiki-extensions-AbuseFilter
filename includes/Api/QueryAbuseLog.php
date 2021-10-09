@@ -312,7 +312,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				$entry['result'] = $row->afl_actions;
 			}
 			if ( $fld_revid && $row->afl_rev_id !== null ) {
-				$entry['revid'] = $canSeeDetails ? $row->afl_rev_id : '';
+				$entry['revid'] = $canSeeDetails ? (int)$row->afl_rev_id : '';
 			}
 			if ( $fld_timestamp ) {
 				$ts = new MWTimestamp( $row->afl_timestamp );
