@@ -61,7 +61,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutor
  */
-class AbuseFilterConsequencesTest extends MediaWikiTestCase {
+class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	use AbuseFilterCreateAccountTestTrait;
 	use AbuseFilterUploadTestTrait;
 
