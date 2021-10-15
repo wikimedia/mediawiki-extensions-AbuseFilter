@@ -72,9 +72,18 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			if ( $dbType === 'mysql' ) {
 				$updater->renameExtensionIndex(
 					'abuse_filter_log',
+					'ip_timestamp',
+					'afl_ip_timestamp',
+					"$dir/mysql/patch-rename-indexes.sql",
+					true
+				);
+				// This one has its own files because apparently, sometimes this particular index can already
+				// have the correct name (T291725)
+				$updater->renameExtensionIndex(
+					'abuse_filter_log',
 					'wiki_timestamp',
 					'afl_wiki_timestamp',
-					"$dir/mysql/patch-rename-indexes.sql",
+					"$dir/mysql/patch-rename-wiki-timestamp-index.sql",
 					true
 				);
 			}

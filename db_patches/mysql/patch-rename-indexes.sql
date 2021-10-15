@@ -9,11 +9,9 @@ ALTER TABLE /*_*/abuse_filter_log
 	DROP INDEX /*i*/filter_timestamp_full,
 	DROP INDEX /*i*/user_timestamp,
 	DROP INDEX /*i*/page_timestamp,
-	DROP INDEX /*i*/ip_timestamp,
-	DROP INDEX /*i*/wiki_timestamp;
+	DROP INDEX /*i*/ip_timestamp;
 CREATE INDEX /*i*/afl_filter_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_filter,afl_timestamp);
 CREATE INDEX /*i*/afl_filter_timestamp_full ON /*$wgDBprefix*/abuse_filter_log (afl_global,afl_filter_id,afl_timestamp);
 CREATE INDEX /*i*/afl_user_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_user,afl_user_text,afl_timestamp);
 CREATE INDEX /*i*/afl_page_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_namespace, afl_title, afl_timestamp);
 CREATE INDEX /*i*/afl_ip_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_ip, afl_timestamp);
-CREATE INDEX /*i*/afl_wiki_timestamp ON /*$wgDBprefix*/abuse_filter_log (afl_wiki, afl_timestamp);
