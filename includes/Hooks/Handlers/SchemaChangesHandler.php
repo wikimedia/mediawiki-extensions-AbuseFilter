@@ -86,6 +86,14 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 					"$dir/mysql/patch-rename-wiki-timestamp-index.sql",
 					true
 				);
+				// This one is also separate to avoid interferences with the afl_filter field removal below.
+				$updater->renameExtensionIndex(
+					'abuse_filter_log',
+					'filter_timestamp',
+					'afl_filter_timestamp',
+					"$dir/mysql/patch-rename-filter_timestamp-index.sql",
+					true
+				);
 			}
 			$updater->dropExtensionField(
 				'abuse_filter_log',
