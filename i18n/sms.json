@@ -4,8 +4,10 @@
 			"Yupik"
 		]
 	},
+	"abusefilter-log-search-submit": "Ooʒʒ",
 	"abusefilter-log-hide-show": "Čuäʹjet",
 	"abusefilter-log-hide-hide": "Čiõǥǥ",
 	"abusefilter-edit-status-label": "Statistiikk:",
-	"abusefilter-edit-throttle-groups-help": "Ǩiičč $1."
+	"abusefilter-edit-throttle-groups-help": "Ǩiičč $1.",
+	"abusefilter-examine-submit": "Ooʒʒ"
 }
