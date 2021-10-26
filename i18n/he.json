@@ -330,7 +330,7 @@
 	"abusefilter-edit-builder-misc-in": "האם נמצא במחרוזת (in)",
 	"abusefilter-edit-builder-misc-like": "האם תואם לתבנית (like)",
 	"abusefilter-edit-builder-misc-rlike": "תואם לביטוי רגולרי (rlike)",
-	"abusefilter-edit-builder-misc-irlike": "ביטוי רגולרי, לא תלוי רישיות (irlike)",
+	"abusefilter-edit-builder-misc-irlike": "ביטוי רגולרי, לא תלוי־רישיות (irlike)",
 	"abusefilter-edit-builder-misc-contains": "המחרוזת השמאלית מכילה את המחרוזת הימנית (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "מחרוזת מילולית (\"\")",
 	"abusefilter-edit-builder-misc-tern": "האופרטור המשולש (X ? Y : Z)",

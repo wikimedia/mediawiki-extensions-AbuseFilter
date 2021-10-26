@@ -551,6 +551,7 @@
 	"abusefilter-changeslist-examine": "آزمودن",
 	"abusefilter-examine": "بررسی تک تک تغییرات",
 	"abusefilter-examine-intro": "این صفحه اجازهٔ بررسی متغیرهای تولیدشده توسط پالایهٔ خرابکاری برای یک تغییر، و آزمودنش در برابر پالایه‌ها را می‌دهد.",
+	"abusefilter-examine-intro-examine-only": "این صفحه به شما این امکان را می‌دهد تا متغیرهای تولیدشده توسط پالایهٔ خرابکاری برای یک تغییر یکتا را آزمایش کنید.",
 	"abusefilter-examine-legend": "انتخاب تغییرات",
 	"abusefilter-examine-diff": "آدرس اینترنتی تفاوت:",
 	"abusefilter-examine-user": "کاربر:",
@@ -604,5 +605,7 @@
 	"abusefilter-tag-reserved": "تگ <code>abusefilter-condition-limit</code> برای استفادهٔ داخلی توسط پالایهٔ ویرایش در نظر گرفته شده.",
 	"tag-abusefilter-condition-limit": "محدودیت تعداد شرایط حاصل شد",
 	"tag-abusefilter-condition-limit-description": "ویرایش‌ها یا عملکردهای دیگری که توسط تمام [[Special:AbuseFilter|پالایه‌های]] فعال بررسی نشدند ([[mw:Extension:AbuseFilter/Conditions|راهنما]]).",
+	"notification-header-throttle-filter": "پالایهٔ خرابکاری $2 که {{GENDER:$1|شما}} اخیراً آن را ویرایش کرده‌بودید متوقف شد.",
+	"notification-subject-throttle-filter": "یکی از پالایه‌های خرابکاری ویرایش‌شده توسط {{GENDER:$1|شما}} در {{SITENAME}} متوقف شد",
 	"notification-link-text-show-filter": "نمایش پالایه"
 }
