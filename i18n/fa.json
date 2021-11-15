@@ -254,7 +254,7 @@
 	"abusefilter-edit-action-blocktalk": "جلوگیری از ویرایش صفحهٔ بحث توسط خود کاربر/آی‌پی در زمانی که بسته است",
 	"abusefilter-edit-action-throttle": "واکنش‌ها را تنها در صورتی که کاربر از یک حد سرعت تجاوز کرد فعال کن",
 	"abusefilter-edit-action-rangeblock": "بازهٔ آی‌پی مرتبطی که کاربر از آن می‌آید را ببند",
-	"abusefilter-edit-action-tag": "این ویرایش برای بازبینی بعدی علامت‌گذاری کن",
+	"abusefilter-edit-action-tag": "این ویرایش را برای بازبینی بعدی علامت‌گذاری کن",
 	"abusefilter-edit-throttle-count": "تعداد اقدامات مجاز:",
 	"abusefilter-edit-throttle-period": "تناوب زمانی (به ثانیه):",
 	"abusefilter-edit-throttle-groups": "کنترل گروه توسط:",
