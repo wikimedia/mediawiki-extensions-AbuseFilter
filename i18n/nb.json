@@ -23,7 +23,8 @@
 			"Orf3us",
 			"PeterFisk",
 			"Stigmj",
-			"VukAnd12"
+			"VukAnd12",
+			"Vukky"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -281,7 +282,7 @@
 	"abusefilter-edit-denied": "Du kan ikke se detaljene for dette filteret, fordi de er skjult fra offentlig visning.",
 	"abusefilter-edit-main": "Filterparametere",
 	"abusefilter-edit-done-subtitle": "Filter redigert",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Dine endringer]] til [[Special:AbuseFilter/$1|filter $3]] er lagret.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Dine endringer]] i [[Special:AbuseFilter/$1|filter $3]] er lagret.",
 	"abusefilter-edit-badsyntax": "Det er en syntaksfeil i filteret du anga. Resultatet fra fortolkeren var: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Følgende felt er påkrevd og må være fylt ut: $1",
 	"abusefilter-edit-deleting-enabled": "Du kan ikke merke et aktivt filter som slettet.",
@@ -478,6 +479,7 @@
 	"abusefilter-exception-toomanyargs": "For mange argumenter til funksjonen $2 kalt ved tegn $1.\nForventet maksimalt $3 {{PLURAL:$3|argument|argumenter}}, fikk $4.",
 	"abusefilter-exception-regexfailure": "Feil i det regulære uttrykket «$2» ved tegn $1.",
 	"abusefilter-exception-overridebuiltin": "Ulovlig overstyring av innebygd identifikator «$2» ved tegn $1.",
+	"abusefilter-exception-usebuiltin": "Ulovlig bruk av innebygd identifikator «$2» ved tegn $1.",
 	"abusefilter-exception-outofbounds": "Ber om ikke-eksisterende listeelement $2 (listestørrelse = $3) ved tegn $1.",
 	"abusefilter-exception-negativeindex": "Negative søk tillates ikke i tabeller. Fikk indeksen «$2» ved tegn $1.",
 	"abusefilter-exception-notarray": "Ber om tabellelement fra en ikke-tabell ved tegn $1.",
@@ -485,6 +487,8 @@
 	"abusefilter-exception-invalidiprange": "Ugyldig IP-intervall «$2» gitt ved tegn $1.",
 	"abusefilter-exception-disabledvar": "Variabelen $2 ved tegn $1 er ikke lenger i bruk.",
 	"abusefilter-exception-variablevariable": "set og set_var forventer at forventer at det første argumentet er en streng, funnet ved tegn $1.",
+	"abusefilter-exception-unknownfunction": "$2 er ikke en gyldig funksjon ved tegn $1.",
+	"abusefilter-exception-unusedvars": "Følgende variabler er ubrukte: $2.",
 	"abusefilter-parser-warning-match-empty-regex": "Dette regulære uttrykker matcher en tom streng ved tegn $1",
 	"abusefilter-action-tag": "Tagg",
 	"abusefilter-action-throttle": "Begrensning av endringshastighet",

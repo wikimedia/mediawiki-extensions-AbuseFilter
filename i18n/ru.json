@@ -62,7 +62,8 @@
 			"Александр Сигачёв",
 			"ЛингвоЧел",
 			"Сrower",
-			"Туллук"
+			"Туллук",
+			"DDPAT"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -164,6 +165,7 @@
 	"abusefilter-log-details-hidden-implicit": "Вы не можете просмотреть подробности этой записи, поскольку соответствующая ей версия была скрыта.",
 	"abusefilter-log-private-not-included": "Один или несколько заданных вами идентификатора принадлежат скрытым фильтрам. Поскольку вы не можете просматривать скрытые фильтры, они не будут отображены в поиске.",
 	"abusefilter-log-hide-no-selected": "Записи не выбраны",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Выбранная запись AbuseLog|Выбранные записи AbuseLog}}:",
 	"abusefilter-log-hide-legend": "Изменить видимость",
 	"abusefilter-log-hide-set-visibility": "Установите видимость для выбранных записей:",
 	"abusefilter-log-hide-reason": "Причина:",
@@ -522,6 +524,8 @@
 	"abusefilter-exception-invalidiprange": "Неверный диапазон IP-адресов «$2» на позиции $1.",
 	"abusefilter-exception-disabledvar": "Переменная $2 на позиции $1 более не используется.",
 	"abusefilter-exception-variablevariable": "Переменные \"set\" и \"set_var\" не разрешены, найдено на позиции $1.",
+	"abusefilter-exception-unknownfunction": "$2 не является допустимой функцией для символа $1.",
+	"abusefilter-exception-unusedvars": "Следующие переменные не используются: $2.",
 	"abusefilter-action-tag": "Метка",
 	"abusefilter-action-throttle": "Замедление",
 	"abusefilter-action-warn": "Предупреждение",

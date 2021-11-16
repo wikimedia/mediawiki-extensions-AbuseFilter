@@ -32,7 +32,8 @@
 			"Vililikku",
 			"Vlad5250",
 			"Zache",
-			"ZeiP"
+			"ZeiP",
+			"Rönttönen"
 		]
 	},
 	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
@@ -465,6 +466,7 @@
 	"abusefilter-exception-unclosedcomment": "Sulkematon kommentti merkissä $1.",
 	"abusefilter-exception-invalidiprange": "Virheellinen IP-osoiteavaruus ”$2” merkin $1 kohdalla.",
 	"abusefilter-exception-disabledvar": "Muuttuja $2 merkissä $1 ei ole enää käytössä.",
+	"abusefilter-exception-unusedvars": "Seuraavat muuttujat eivät ole käytössä: $2.",
 	"abusefilter-action-tag": "Merkkaa",
 	"abusefilter-action-throttle": "Rajoita",
 	"abusefilter-action-warn": "Varoita",
@@ -550,6 +552,7 @@
 	"abusefilter-diff-next": "Uudempi muutos",
 	"abusefilter-import-intro": "Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.\nNapsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.\nKopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Tuo tiedot",
+	"abusefilter-import-invalid-data": "Tieto, jota yritit tuoda, ei ole kelvollista",
 	"abusefilter-group-default": "Yleinen",
 	"abusefilter-http-error": "Tapahtui HTTP-virhe: $1.",
 	"abusefilter-view-privatedetails-submit": "Näytä yksityiset tiedot",

@@ -8,7 +8,8 @@
 			"Movses",
 			"Okras",
 			"Vlad5250",
-			"Марио"
+			"Марио",
+			"DDPAT"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Проверьте, удовлетворяет ли фильтру злоупотреблений набор переменных или событие фильтра злоупотреблений, записанное редактором.\n\nПеременные vars, rcid и logid обязательны, однако только одна из них может быть использована.",
@@ -27,6 +28,7 @@
 	"apihelp-abusefilterevalexpression-description": "Вычисление выражения фильтра злоупотреблений",
 	"apihelp-abusefilterevalexpression-summary": "Вычисление выражения фильтра злоупотреблений",
 	"apihelp-abusefilterevalexpression-param-expression": "Вычисляемое выражение.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "Должен ли результат быть красивым.",
 	"apihelp-abusefilterevalexpression-example-1": "Вычислить простое выражение",
 	"apihelp-abusefilterevalexpression-example-2": "Вычислить простое выражение, отформатировав результат",
 	"apihelp-abusefilterunblockautopromote-description": "Разблокировка получаемого автоповышения участника вследствие фильтра злоупотреблений.",

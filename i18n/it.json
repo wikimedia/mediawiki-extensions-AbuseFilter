@@ -26,7 +26,8 @@
 			"Sarah Bernabei",
 			"Valepert",
 			"Wim b",
-			"Ximo17"
+			"Ximo17",
+			"Salvemm el lombard"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -489,6 +490,7 @@
 	"abusefilter-exception-invalidiprange": "Intervallo IP \"$2\" non valido al carattere $1",
 	"abusefilter-exception-disabledvar": "La variabile $2 al carattere $1 non è più utilizzabile.",
 	"abusefilter-exception-variablevariable": "Il primo argomento di set e set_var deve essere stringa, trovato al carattere $1.",
+	"abusefilter-exception-unusedvars": "Le seguenti variabili non vengono utilizzate: $2.",
 	"abusefilter-parser-warning-match-empty-regex": "Questa espressione regolare accetta la stringa vuota, al carattere $1",
 	"abusefilter-action-tag": "Etichetta",
 	"abusefilter-action-throttle": "Rallenta",
