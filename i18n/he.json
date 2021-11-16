@@ -161,7 +161,7 @@
 	"abusefilter-unhidden": "ציבורי",
 	"abusefilter-enabled": "מופעל",
 	"abusefilter-deleted": "מחוק",
-	"abusefilter-disabled": "מבוטל",
+	"abusefilter-disabled": "כבוי",
 	"abusefilter-throttled": "הוגבל",
 	"abusefilter-hitcount": "{{PLURAL:$1|פעולה אחת סוננה|$1 פעולות סוננו}}",
 	"abusefilter-new": "יצירת מסנן חדש",
