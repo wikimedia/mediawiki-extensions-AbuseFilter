@@ -32,6 +32,8 @@
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-show": "Montrez",
 	"abusefilter-log-hide-hide": "Celez",
+	"log-action-filter-abusefilter": "Tipo di modifiko en la filtrilo:",
+	"log-action-filter-abusefilter-modify": "Modifiko en filtrili",
 	"abusefilter-list": "Omna filtrili",
 	"abusefilter-list-status": "Stando",
 	"abusefilter-list-public": "Publika deskripto",
