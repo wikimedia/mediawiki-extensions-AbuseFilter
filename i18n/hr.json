@@ -439,7 +439,7 @@
 	"abusefilter-revert-reason": "Automatsko vraćanje svih radnji poduzetih od strane filtra zloporabe tijekom filtriranja $1.\nRazlog dan: $2",
 	"abusefilter-revert-reasonfield": "Razlog:",
 	"abusefilter-test": "Testiraj filtar s prethodnim uređivanjem",
-	"abusefilter-test-intro": "Ova stranica omogućava provjeru filtra unešenog u donji okvir s {{PLURAL:$1|posljednjim $1 uređivanjem|posljednjih $1 uređivanja}}.\nZa učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i kliknite tipku \"Učitaj\".",
+	"abusefilter-test-intro": "Ova stranica omogućava provjeru filtra unesenog u donji okvir na {{PLURAL:$1|posljednjem $1 uređivanju|posljednja $1 uređivanja|posljednjih $1 uređivanja}}.\nZa učitavanje postojećeg filtra, upišite ID filtra u okvir ispod okvira za uređenjivanje i pritisnite tipku »Učitaj«.",
 	"abusefilter-test-rules-section": "Pravila koja se provjeravaju",
 	"abusefilter-test-options-section": "Opcije pretraživanja",
 	"abusefilter-test-legend": "Testiranje filtra",
