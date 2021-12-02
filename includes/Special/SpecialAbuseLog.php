@@ -146,9 +146,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->varBlobStore = $varBlobStore;
 		$this->specsFormatter = $specsFormatter;
-		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
+		$this->specsFormatter->setMessageLocalizer( $this );
 		$this->variablesFormatter = $variablesFormatter;
-		$this->variablesFormatter->setMessageLocalizer( $this->getContext() );
+		$this->variablesFormatter->setMessageLocalizer( $this );
 		$this->varManager = $varManager;
 	}
 
