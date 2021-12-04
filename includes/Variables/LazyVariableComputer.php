@@ -265,12 +265,9 @@ class LazyVariableComputer {
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
 					} else {
-						$newHTML = $editInfo->output->getText();
-						// Kill the PP limit comments. Ideally we'd just remove these by not setting the
-						// parser option, but then we can't share a parse operation with the edit, which is bad.
-						// @fixme No awfulness scale can measure how awful this hack is.
-						$re = '/<!--\s*NewPP limit [^>]*-->\s*(?:<!--\s*Transclusion [^>]+-->\s*)?(?:<\/div>\s*)?$/i';
-						$result = preg_replace( $re, '', $newHTML );
+						// Note: as of core change r727361, the PP limit comments (which we don't want to be here)
+						// are already excluded.
+						$result = $editInfo->getOutput()->getText();
 					}
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 				} else {
