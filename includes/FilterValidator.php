@@ -252,6 +252,7 @@ class FilterValidator {
 			foreach ( $throttleGroups as $group ) {
 				if ( strpos( $group, ',' ) !== false ) {
 					$subGroups = explode( ',', $group );
+					// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
 					if ( $subGroups !== array_unique( $subGroups ) ) {
 						$uniqueSubGroups = false;
 						break;
