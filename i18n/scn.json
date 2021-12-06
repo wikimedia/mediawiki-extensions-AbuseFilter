@@ -396,7 +396,7 @@
 	"abusefilter-log-header": "Stu riggistru ammustra nu riassuntu dî canciamenti ca foru fatti ntê filtri.\nPî dittagghî cumpleti, talìa [[Special:AbuseFilter/history|l'elencu]] dî canciamenti ricenti.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|criau}} $4 ($5)",
 	"abusefilter-log-noresults": "Nuddu risurtatu",
-	"abusefilter-diff-title": "Diffirenzi ntra li virsiuni",
+	"abusefilter-diff-title": "Diffirenzi ntrê virsiuni",
 	"abusefilter-diff-item": "Elimentu",
 	"abusefilter-diff-version": "Virsioni dû $1 {{GENDER:$3|di}} $2",
 	"abusefilter-diff-info": "Nfurmazzioni essinziali",

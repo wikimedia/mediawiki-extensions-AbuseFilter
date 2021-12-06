@@ -42,6 +42,7 @@
 	"action-abusefilter-hide-log": "схаваць запісы у журнале злоўжыванняў",
 	"action-abusefilter-hidden-log": "паказаць схаваныя запісы у журнале злоўжыванняў",
 	"action-abusefilter-modify-global": "стварэнне ці змяненне глабальных фільтраў злоўжыванняў",
+	"abusefilter-log-summary": "Гэты журнал паказвае спіс усіх дзеянняў, якія былі выяўлены фільтрамі.",
 	"abusefilter-log-search": "Пошук у журнале злоўжыванняў",
 	"abusefilter-log-search-user": "Удзельнік:",
 	"abusefilter-log-search-group": "Група фільтраў:",
