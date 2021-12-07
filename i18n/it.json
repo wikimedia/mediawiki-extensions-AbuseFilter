@@ -26,7 +26,8 @@
 			"Sarah Bernabei",
 			"Valepert",
 			"Wim b",
-			"Ximo17"
+			"Ximo17",
+			"Salvemm el lombard"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -541,6 +542,7 @@
 	"abusefilter-changeslist-examine": "esamina",
 	"abusefilter-examine": "Esamina le singole modifiche",
 	"abusefilter-examine-intro": "Questa pagina consente di esaminare le variabili generate dal filtro anti abusi per una particolare modifica, e di provare il funzionamento dei filtri su di essa.",
+	"abusefilter-examine-intro-examine-only": "Questa pagina consente di esaminare le variabili generate dal filtro anti abusi per una particolare modifica.",
 	"abusefilter-examine-legend": "Seleziona modifiche",
 	"abusefilter-examine-diff": "URL delle differenze:",
 	"abusefilter-examine-user": "Utente:",

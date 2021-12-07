@@ -8,7 +8,8 @@
 			"බිඟුවා",
 			"ශ්වෙත",
 			"සුරනිමල",
-			1100100
+			1100100,
+			"Amire80"
 		]
 	},
 	"abusefilter-desc": "සංස්කරණ සඳහා ස්වයංක්‍රීය විවරණෝපයෝගී යෙදේ",
@@ -183,7 +184,7 @@
 	"abusefilter-edit-builder-misc-in": "තන්තුවේ අඩංගු වේ (in)",
 	"abusefilter-edit-builder-misc-like": "ගැලපුම් රටාව (like)",
 	"abusefilter-edit-builder-misc-rlike": "ගැලපුම් ප්‍රතිශ්‍රීතනය (rlike)",
-	"abusefilter-edit-builder-misc-irlike": "Matches regex, case insensitive (irlike)",
+	"abusefilter-edit-builder-misc-irlike": "ගැලපුම් ප්‍රතිශ්‍රීතනය, අවස්ථා අසංවේදී (irlike)",
 	"abusefilter-edit-builder-misc-contains": "වම් තන්තුවේ දකුණු තන්තුව අඩංගු වේ (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "තන්තුවේ වාච්‍යාර්ථය (\"\")",
 	"abusefilter-edit-builder-misc-tern": "ත්‍රයාත්මක ක්‍රියාකාරක (X ? Y : Z)",

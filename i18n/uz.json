@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sociologist"
+			"Sociologist",
+			"Malikxan"
 		]
 	},
 	"abuselog": "Filtrlash qaydlari",
@@ -9,6 +10,7 @@
 	"action-abusefilter-log": "filtrlash qaydlarini koʻrish",
 	"abusefilter-log-linkoncontribs": "filtrlash qaydlari",
 	"abusefilter-log-linkoncontribs-text": "Ushbu foydalanuvchi haqida filtrlash qaydlaridagi yozuvlar",
+	"abusefilter-log-linkonhistory": "suisteʼmollar qaydlarini koʻrish",
 	"abusefilter-log-hide-reason": "Sabab:",
 	"abusefilter-edit-builder-vars-user-name": "Hisob yozuvi nomi",
 	"abusefilter-revert-reasonfield": "Sabab:",

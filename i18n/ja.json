@@ -37,7 +37,9 @@
 			"Yuukin0248",
 			"おはぐろ蜻蛉",
 			"そらたこ",
-			"青子守歌"
+			"青子守歌",
+			"RYOUMA1117",
+			"UsagiNeko"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -139,6 +141,7 @@
 	"abusefilter-log-details-hidden-implicit": "関連付けられている版は公開されていないため、このエントリの詳細を表示することはできません。",
 	"abusefilter-log-private-not-included": "指定したフィルターIDのうち一つ以上はプライベート状態です。プライベートになっているフィルターの詳細を見ることは許可されていないため、これらのフィルターは検索されません。",
 	"abusefilter-log-hide-no-selected": "記録が選択されていません",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|選択された不正利用ログ項目}}:",
 	"abusefilter-log-hide-legend": "閲覧レベルを変更",
 	"abusefilter-log-hide-set-visibility": "選択した記録の閲覧レベルを設定:",
 	"abusefilter-log-hide-reason": "理由:",
@@ -323,6 +326,7 @@
 	"abusefilter-edit-empty-throttlegroups": "少なくとも1つのスロットルグループを選択する必要があります。",
 	"abusefilter-edit-duplicated-throttlegroups": "スロットルグループは重複できません。",
 	"abusefilter-edit-invalid-throttlegroups": "指定されたスロットルグループは無効です。",
+	"abusefilter-edit-invalid-group": "指定されたフィルターグループ「$1」は正しくありません。",
 	"abusefilter-edit-builder-select": "カーソルの位置に追加するものを選択",
 	"abusefilter-edit-builder-group-op-arithmetic": "算術演算子",
 	"abusefilter-edit-builder-op-arithmetic-addition": "加算 (+)",
@@ -526,6 +530,7 @@
 	"abusefilter-revert-reasonfield": "理由:",
 	"abusefilter-test": "フィルターを過去の編集に対して試験する",
 	"abusefilter-test-intro": "このページでは、下のボックスに入力したフィルターを過去 $1件の{{PLURAL:$1|変更}}に対してテストできます。既存のフィルターを読み込むには、そのフィルターIDを編集テキストボックスの下のボックスに入力し、「{{int:abusefilter-test-load}}」ボタンを押します。",
+	"abusefilter-test-rules-section": "テストするルール",
 	"abusefilter-test-options-section": "検索オプション",
 	"abusefilter-test-legend": "フィルターのテスト",
 	"abusefilter-test-load-filter": "読み込むフィルターのID:",
@@ -549,6 +554,7 @@
 	"abusefilter-changeslist-examine": "分析",
 	"abusefilter-examine": "個別の変更を分析する",
 	"abusefilter-examine-intro": "このページでは不正利用フィルターが個別の編集に対して生成した変数を分析し、フィルターに対してそれを試験することができます。",
+	"abusefilter-examine-intro-examine-only": "このページでは不正利用フィルターが個別の編集に対して生成した変数を分析できます。",
 	"abusefilter-examine-legend": "変更の選択",
 	"abusefilter-examine-diff": "差分URL:",
 	"abusefilter-examine-user": "利用者:",
@@ -602,5 +608,7 @@
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code>タグはAbuseFilterが使用するため予約されています。",
 	"tag-abusefilter-condition-limit": "条件の上限に達しました",
 	"tag-abusefilter-condition-limit-description": "[[Special:AbuseFilter|不正利用フィルター]]（[[mw:Extension:AbuseFilter/Conditions|ヘルプ]]）によって確認できなかった編集やその他のイベント。",
+	"notification-header-throttle-filter": "最近編集された不正使用フィルターID:$2 {{GENDER：$1 |あなた}}が抑制されました。",
+	"notification-subject-throttle-filter": "編集された不正使用フィルター{{GENDER：$1 |あなた}}が{{SITENAME}}で抑制されました",
 	"notification-link-text-show-filter": "フィルターを表示:"
 }

@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Erdemaslancan",
-			"Patriot Kur"
+			"Patriot Kur",
+			"Гусейн"
 		]
 	},
 	"abusefilter-list-edit": "Dəqiş karde",
-	"abusefilter-list-options": "Tənziməkon",
+	"abusefilter-list-options": "Нәве сәбәро",
 	"abusefilter-throttle-page": "səhifə",
 	"abusefilter-edit-builder-vars-page-id": "Səhifə ID",
 	"abusefilter-history-comments": "Şərhon"

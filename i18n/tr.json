@@ -25,7 +25,10 @@
 			"TmY e12",
 			"ToprakM",
 			"Vito Genovese",
-			"Ömer Berkay"
+			"Ömer Berkay",
+			"Melissadilara",
+			"Sadrettin",
+			"Uncitoyen"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -183,7 +186,7 @@
 	"abusefilter-list-options-deleted-show": "Silinmiş süzgeçleri içer",
 	"abusefilter-list-options-scope": "Süzgeçleri göster:",
 	"abusefilter-list-options-scope-local": "Yalnızca yerel kurallar",
-	"abusefilter-list-options-scope-global": "Yalnızca genel kurallar",
+	"abusefilter-list-options-scope-global": "Yalnızca küresel kurallar",
 	"abusefilter-list-options-scope-all": "Yerel ve genel kurallar",
 	"abusefilter-list-options-further-options": "Diğer seçenekler:",
 	"abusefilter-list-options-hidedisabled": "Devre dışı süzgeçleri gizle",
@@ -208,7 +211,7 @@
 	"abusefilter-reautoconfirm-none": "Bu {{GENDER:$1|kullanıcının|kullanıcının|kullanıcıların}} otomatik onaylı durumu askıya alınmadı.",
 	"abusefilter-reautoconfirm-notallowed": "Otomatik onaylı durumu getirmeye yetkiniz yok.",
 	"abusefilter-reautoconfirm-done": "Hesabın otomatik onaylı durumu geri getirildi",
-	"abusefilter-status": "Son $1 {{PLURAL:$1|işlem|işlem}}, $2 (%$3) {{PLURAL:$2|şuanda|şuanda}} $4 ve $5 (%$6) koşul limitine ulaştı, etkin olan filtrelerden en az biriyle eşleşti.",
+	"abusefilter-status": "Son $1 {{PLURAL:$1|eylem}}, $2 (%$3) $4 koşul sınırına ulaştı ve $5 (%$6) şu anda etkin olan filtrelerden en az biriyle eşleşti.",
 	"abusefilter-edit": "Kötüye kullanım süzgeci düzenleniyor",
 	"abusefilter-edit-subtitle": "$1 süzgeci değiştiriliyor",
 	"abusefilter-edit-subtitle-new": "Filtre oluşturma",
@@ -406,7 +409,7 @@
 	"abusefilter-edit-builder-vars-user-blocked": "Kullanıcının engelli olup olmadığı",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "E-posta adresinin doğrulanma zamanı",
 	"abusefilter-edit-builder-vars-recent-contributors": "Sayfaya katkıda bulunan son on kullanıcı",
-	"abusefilter-edit-builder-vars-first-contributor": "Kullanıcının ilk katkısı",
+	"abusefilter-edit-builder-vars-first-contributor": "Sayfada ilk katkıda bulunan kullanıcı",
 	"abusefilter-edit-builder-vars-movedfrom-recent-contributors": "Kaynak sayfayı taşımak için katkıda bulunan son on kullanıcı",
 	"abusefilter-edit-builder-vars-movedfrom-first-contributor": "Kaynak sayfayı taşımaya katkıda bulunan ilk kullanıcı",
 	"abusefilter-edit-builder-vars-movedto-recent-contributors": "Hedef sayfayı taşımak için katkıda bulunan son on kullanıcı",

@@ -30,7 +30,8 @@
 			"관인생략",
 			"렌즈",
 			"밝은소년",
-			"아라"
+			"아라",
+			"Underbaaar"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -130,12 +131,15 @@
 	"abusefilter-log-details-hidden": "이 항목은 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-log-details-hidden-implicit": "연결된 판이 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-log-private-not-included": "지정한 필터 ID 중 하나 이상이 비공개 필터입니다. 비공개 필터의 자세한 내용을 볼 권한이 없기 때문에 해당 필터는 검색되지 않았습니다.",
+	"abusefilter-log-hide-no-selected": "선택한 항목이 없습니다",
 	"abusefilter-log-hide-legend": "보이기 설정 바꾸기",
+	"abusefilter-log-hide-set-visibility": "선택한 항목의 보이기 설정:",
 	"abusefilter-log-hide-reason": "이유:",
 	"abusefilter-log-hide-reason-other": "다른 이유/추가적인 이유:",
 	"abusefilter-log-hide-forbidden": "편집 필터 기록 항목을 숨길 권한이 없습니다.",
 	"abusefilter-log-hide-show": "보이기",
 	"abusefilter-log-hide-hide": "숨기기",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|숨겨짐}}",
 	"abusefilter-log-entry-suppress": "$1님이 $3 기록을 {{GENDER:$2|숨겼습니다}}",
 	"abusefilter-log-entry-unsuppress": "$1님이 $3 기록의 {{GENDER:$2|숨김을 해제했습니다}}",
 	"logentry-abusefilter-hit": "$1님이 $3에서 \"$5\" 동작을 {{GENDER:$2|하여}} $4이(가) {{GENDER:$2|작동하였습니다}}. 조치: $6 ($7)",
@@ -304,6 +308,7 @@
 	"abusefilter-edit-empty-throttlegroups": "적어도 하나의 스로틀 그룹을 선택해야 합니다.",
 	"abusefilter-edit-duplicated-throttlegroups": "스로틀 그룹은 중복을 가질 수 없습니다.",
 	"abusefilter-edit-invalid-throttlegroups": "지정된 스로틀 그룹은 유효하지 않습니다.",
+	"abusefilter-edit-invalid-group": "제시한 필터 그룹('$1')이 올바르지 않습니다.",
 	"abusefilter-edit-builder-select": "커서가 있는 위치에 추가할 설정을 선택하세요.",
 	"abusefilter-edit-builder-group-op-arithmetic": "산술 연산자",
 	"abusefilter-edit-builder-op-arithmetic-addition": "더하기 (+)",

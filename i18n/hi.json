@@ -22,7 +22,8 @@
 			"Smtchahal",
 			"Wikiuser13",
 			"गोपाल",
-			"संजीव कुमार"
+			"संजीव कुमार",
+			"DannyS712"
 		]
 	},
 	"abusefilter-desc": "संपादनों पर स्वतः शोध प्रणाली का प्रयोग लागू करता है",
@@ -100,7 +101,7 @@
 	"abusefilter-log-hide-show": "दिखाएँ",
 	"abusefilter-log-hide-hide": "छुपाएँ",
 	"logentry-abusefilter-hit": "$1 ने $3 पर \"$5\" किया जिसे $4 ने पकड़ा और निम्न कदम उठाया: $6 ($7)",
-	"logentry-abusefilterprivatedetails-access": "$1 $3 के व्यक्तिगत विवरण तक {{{{GENDER:$2|पहुँचा}}",
+	"logentry-abusefilterprivatedetails-access": "$1 $3 के व्यक्तिगत विवरण तक {{GENDER:$2|पहुँचा}}",
 	"abusefilter-list": "सभी फ़िल्टर",
 	"abusefilter-list-id": "फ़िल्टर आइ॰डी",
 	"abusefilter-list-status": "स्थिति",

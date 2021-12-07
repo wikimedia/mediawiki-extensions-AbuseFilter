@@ -35,7 +35,8 @@
 			"Skalman",
 			"Thurs",
 			"Tobulos1",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Anhn"
 		]
 	},
 	"abusefilter-desc": "Tillämpar automatiska filter på redigeringar",
@@ -224,7 +225,7 @@
 	"abusefilter-edit-subtitle-new": "Skapa filter",
 	"abusefilter-edit-token-not-match": "Redigeringen sparades inte! Var god spara igen.",
 	"abusefilter-edit-oldwarning": "<strong>Du redigerar en gammal version av detta filter. Den angivna statistiken gäller den senaste versionen av filtret. Om du sparar dina ändringar kommer du att skriva över alla ändringar som gjorts efter den version du redigerar. </strong> &bull; [[Special:AbuseFilter/history/$2|Återvänd till detta filters historik]]",
-	"abusefilter-edit-oldwarning-view": "Du visar en gammal version av detta filtret.\nStatistiken som citeras gäller den nyaste versionen av filtret. •\n[[Special:AbuseFilter/history/$2|Tillbaka till filterets historik]].",
+	"abusefilter-edit-oldwarning-view": "Du visar en tidigare version av detta filter.\nStatistiken som visas avser den senaste versionen. •\n[[Special:AbuseFilter/history/$2|Tillbaka till historik för detta filter]].",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Av {{PLURAL:$1|den senaste handlingen|de senaste $1 handlingarna}} har detta filter matchat $2 ($3 %).\nI genomsnitt ligger körtiden på $4 ms och konsumerar $5 {{PLURAL:$5|villkor}} av villkorsgränsen.",
 	"abusefilter-edit-throttled-warning": "'''Varning:''' Detta filter flaggades automatiskt som skadligt. Följande åtgärder kommer inte utföras av säkerhetsskäl ($1). Granska och [[mw:Extension:AbuseFilter/Conditions|optimera villkoren]] för att ta bort denna begränsning",

@@ -5,7 +5,8 @@
 			"Britul",
 			"Chaipau",
 			"Gitartha.bordoloi",
-			"Psneog"
+			"Psneog",
+			"Simbu123"
 		]
 	},
 	"abuselog": "অপব্যৱহাৰ পৰিশ্ৰাৱক অভিলেখ",
@@ -32,10 +33,12 @@
 	"abusefilter-log-details-diff": "সম্পাদনাত কৰা সালসলনিসমূহ ।",
 	"abusefilter-log-linkoncontribs": "অপব্যৱহাৰ অভিলেখ",
 	"abusefilter-log-linkoncontribs-text": "এই সদস্যৰ বাবে অপব্যবহাৰ অভিলেখ",
+	"abusefilter-log-linkonhistory": "অপব্যৱহাৰৰ অভিলেখ চাওক",
 	"abusefilter-log-cannot-see-details": "ইয়াৰ সবিশেষ চোৱাৰ বাবে অনুমতি নাই ।",
 	"abusefilter-log-details-hidden": "আপনি এই সংযোজনটো বিস্তাৰিত ভাৱে চাব নোৱাৰে, কাৰণ এইটো জনসাধাৰনক প্ৰদৰ্শনৰ পৰা লুকুৱাই ৰখা হৈছে।",
 	"abusefilter-log-hide-legend": "অভিলেখ সংযোজন লুকুৱাই ৰাখক",
 	"abusefilter-log-hide-reason": "কাৰণ:",
+	"abusefilter-log-hide-show": "দেখুৱাওক",
 	"abusefilter-list": "সকলোৱোৰ ছেকনী",
 	"abusefilter-list-status": "স্থিতি",
 	"abusefilter-list-visibility": "দৃশ্যমান",
@@ -109,5 +112,5 @@
 	"abusefilter-topnav-log": "অপব্যৱহাৰ অভিলেখ",
 	"abusefilter-log-noresults": "ফলাফল নাই",
 	"abusefilter-import-submit": "তথ্য আমদানী কৰক",
-	"abusefilter-group-default": "অবিচল"
+	"abusefilter-group-default": "পূৰ্বনিৰ্ধাৰিত"
 }

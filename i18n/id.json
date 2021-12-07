@@ -26,11 +26,12 @@
 			"Rv77ax",
 			"Sumbukompor",
 			"Syman51",
-			"Veracious"
+			"Veracious",
+			"AJBot2"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
-	"abusefilter": "Manajemen filter penyalahgunaan",
+	"abusefilter": "Manajemen penyaring penyalahgunaan",
 	"abuselog": "Catatan filter penyalahgunaan",
 	"abusefilter-intro": "Selamat datang di antarmuka pengelola Filter Penyalahgunaan.\nFilter Penyalahgunaan adalah sebuah mekanisme perangkat lunak yang mengaplikasikan heuristik otomatis terhadap semua tindakan. Antarmuka ini menampilkan sebuah daftar filter yang telah ditetapkan, dan filter-filter ini dapat dimodifikasi.",
 	"abusefilter-mustviewprivateoredit": "Demi alasan keamanan, hanya pengguna-pengguna dengan hak untuk melihat atau mengubah filter penyalahgunaan pribadi yang dapat menggunakan antarmuka ini.",
@@ -136,6 +137,9 @@
 	"abusefilter-log-hide-forbidden": "Anda tidak memiliki izin untuk menyembunyikan\nentri catatan penyalahgunaan.",
 	"abusefilter-log-hide-show": "Tampilkan",
 	"abusefilter-log-hide-hide": "Sembunyikan",
+	"abusefilter-log-hide-done": "Visibilitas diperbarui: $1 {{PLURAL:$1|entri|entri}} $2.",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|disembunyikan}}",
+	"abusefilter-log-hide-done-show": "{{PLURAL:$1|ditampilkan}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|menyembunyikan}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|memperlihatkan}} $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|memicu}} $4, {{GENDER:$2|melakukan}} tindakan \"$5\" terhadap $3. Tindakan yang dilakukan: $6 ($7)",
@@ -309,6 +313,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Paling tidak satu kelompok batasan harus dipilih.",
 	"abusefilter-edit-duplicated-throttlegroups": "Kelompok batasan tidak boleh punya duplikat.",
 	"abusefilter-edit-invalid-throttlegroups": "Kelompok batasan yang diberikan tidak valid.",
+	"abusefilter-edit-invalid-group": "Kelompok penyaring yang ditentukan ('$1') tidak sahih.",
 	"abusefilter-edit-builder-select": "Pilih sebuah opsi untuk menambahkannya pada kursor",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operator aritmatika",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Penambahan (+)",
@@ -587,5 +592,7 @@
 	"abusefilter-tag-reserved": "Tag <code>abusefilter-condition-limit</code> disimpan untuk penggunaan internal oleh Filter Penyalahgunaan",
 	"tag-abusefilter-condition-limit": "batas kondisi tercapai",
 	"tag-abusefilter-condition-limit-description": "Suntingan atau kejadian lainnya yang tidak bisa diperiksa oleh semua [[Special:AbuseFilter|filter penyalahgunaan]] yang aktif ([[mw:Extension:AbuseFilter/Conditions|bantuan]]).",
+	"notification-header-throttle-filter": "Filter penyalahgunaan $2 {{GENDER:$1|you}} yang baru saja diedit dibatasi.",
+	"notification-subject-throttle-filter": "Filter penyalahgunaan {{GENDER:$1|you}} diedit dibatasi {{SITENAME}}",
 	"notification-link-text-show-filter": "Tampilkan filter"
 }

@@ -153,7 +153,7 @@
 	"abusefilter-import-button": "Importar filtro",
 	"abusefilter-return": "Retornar al gestion de filtros",
 	"abusefilter-status-global": "Global",
-	"abusefilter-list-options": "Optiones",
+	"abusefilter-list-options": "Optiones de recerca",
 	"abusefilter-list-options-deleted": "Filtros delite:",
 	"abusefilter-list-options-deleted-only": "Monstrar solmente le filtros delite",
 	"abusefilter-list-options-deleted-hide": "Celar le filtros delite",
@@ -289,6 +289,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Al minus un gruppo de limitation debe esser seligite.",
 	"abusefilter-edit-duplicated-throttlegroups": "Le gruppos de limitation non pote haber duplicatos.",
 	"abusefilter-edit-invalid-throttlegroups": "Le gruppos de limitation specificate non es valide.",
+	"abusefilter-edit-invalid-group": "Le gruppo de filtros specificate ('$1') non es valide.",
 	"abusefilter-edit-builder-select": "Selige un option pro inserer lo al puncto del cursor",
 	"abusefilter-edit-builder-group-op-arithmetic": "Operatores arithmetic",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Addition (+)",
@@ -491,6 +492,8 @@
 	"abusefilter-revert-reasonfield": "Motivo:",
 	"abusefilter-test": "Testar un filtro contra modificationes previe",
 	"abusefilter-test-intro": "Iste pagina permitte verificar un filtro indicate in le quadro hic infra contra le ultime $1 {{PLURAL:$1|modification|modificationes}}.\nPro cargar un filtro existente, insere su ID in le quadro sub le quadro de modification, e clicca sur le button \"{{int:abusefilter-test-load}}\".",
+	"abusefilter-test-rules-section": "Regulas a testar",
+	"abusefilter-test-options-section": "Optiones de recerca",
 	"abusefilter-test-legend": "Test de filtros",
 	"abusefilter-test-load-filter": "ID del filtro a cargar:",
 	"abusefilter-test-submit": "Testar",
@@ -513,6 +516,7 @@
 	"abusefilter-changeslist-examine": "examinar",
 	"abusefilter-examine": "Examinar modificationes individual",
 	"abusefilter-examine-intro": "Iste pagina permitte examinar le variabiles generate per le filtro anti-abuso pro un modification individual, e testar lo contra le filtros.",
+	"abusefilter-examine-intro-examine-only": "Iste pagina permitte examinar le variabiles generate per le filtro anti-abuso pro un modification individual.",
 	"abusefilter-examine-legend": "Seliger modificationes",
 	"abusefilter-examine-diff": "URL del diff:",
 	"abusefilter-examine-user": "Usator:",
@@ -565,5 +569,8 @@
 	"abusefilter-log-ip-not-available": "Non disponibile",
 	"abusefilter-tag-reserved": "Le etiquetta <code>abusefilter-condition-limit</code> es reservate pro uso interne per AbuseFilter.",
 	"tag-abusefilter-condition-limit": "limite de conditiones attingite",
-	"tag-abusefilter-condition-limit-description": "Modificationes o altere eventos que non poteva esser verificate per tote le [[Special:AbuseFilter|filtros anti-abuso]] active ([[mw:Extension:AbuseFilter/Conditions|adjuta]])."
+	"tag-abusefilter-condition-limit-description": "Modificationes o altere eventos que non poteva esser verificate per tote le [[Special:AbuseFilter|filtros anti-abuso]] active ([[mw:Extension:AbuseFilter/Conditions|adjuta]]).",
+	"notification-header-throttle-filter": "Le filtro anti-abuso $2 que {{GENDER:$1|tu}} ha recentemente modificate ha essite inhibite.",
+	"notification-subject-throttle-filter": "Un filtro anti-abuso que {{GENDER:$1|tu}} ha modificate ha essite inhibite sur {{SITENAME}}",
+	"notification-link-text-show-filter": "Monstrar filtro"
 }

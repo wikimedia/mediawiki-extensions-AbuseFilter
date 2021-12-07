@@ -23,7 +23,8 @@
 			"Orf3us",
 			"PeterFisk",
 			"Stigmj",
-			"VukAnd12"
+			"VukAnd12",
+			"Vukky"
 		]
 	},
 	"abusefilter-desc": "Legger til automatisk heuristikk til redigeringer.",
@@ -283,7 +284,7 @@
 	"abusefilter-edit-denied": "Du kan ikke se detaljene for dette filteret, fordi de er skjult fra offentlig visning.",
 	"abusefilter-edit-main": "Filterparametere",
 	"abusefilter-edit-done-subtitle": "Filter redigert",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Dine endringer]] til [[Special:AbuseFilter/$1|filter $3]] er lagret.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Dine endringer]] i [[Special:AbuseFilter/$1|filter $3]] er lagret.",
 	"abusefilter-edit-badsyntax": "Det er en syntaksfeil i filteret du anga. Resultatet fra fortolkeren var: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Følgende felt er påkrevd og må være fylt ut: $1",
 	"abusefilter-edit-deleting-enabled": "Du kan ikke merke et aktivt filter som slettet.",

@@ -4,5 +4,20 @@
 			"Yupik"
 		]
 	},
-	"abusefilter-edit-throttle-groups-help": "Ǩiičč $1."
+	"abusefilter-log-search-user": "Õõʹnni:",
+	"abusefilter-log-search-submit": "Ooʒʒ",
+	"abusefilter-log-hide-show": "Čuäʹjet",
+	"abusefilter-log-hide-hide": "Čiõǥǥ",
+	"abusefilter-deleted": "Jaukkuum",
+	"abusefilter-tools-reautoconfirm-user": "Õõʹnni:",
+	"abusefilter-edit-status-label": "Statistiikk:",
+	"abusefilter-edit-throttle-groups-help": "Ǩiičč $1.",
+	"abusefilter-history-user": "Õõʹnni",
+	"abusefilter-history-deleted": "Jaukkuum",
+	"abusefilter-history-select-user": "Õõʹnni:",
+	"abusefilter-history-diff": "Muttâz",
+	"abusefilter-test-load": "Laadd",
+	"abusefilter-examine-legend": "Vaʹlljed muttsid",
+	"abusefilter-examine-user": "Õõʹnni:",
+	"abusefilter-examine-submit": "Ooʒʒ"
 }

@@ -20,7 +20,8 @@
 			"Tlustulimu",
 			"Tradukisto",
 			"Yekrats",
-			"Zarisi"
+			"Zarisi",
+			"Lepticed"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -36,7 +37,7 @@
 	"abusefilter-blockreason": "Aŭtomate blokita de la misuzada filtrilo. Resumo de kongrua regulo: $1",
 	"abusefilter-degroupreason": "Rajtoj estis aŭtomate forigitaj de misuzadaj filtriloj.\nPriskribo de regulo: $1",
 	"abusefilter-accountreserved": "Ĉi tiu konta nomo estas rezervita por uzo de la misuzada filtrilo.",
-	"right-abusefilter-modify": "Modifi filtrilojn de misuzo",
+	"right-abusefilter-modify": "Krei aŭ modifi filtrilojn de misuzo",
 	"right-abusefilter-view": "Rigardi filtrilojn de misuzo",
 	"right-abusefilter-log": "Rigardi la protokolon de misuzo",
 	"right-abusefilter-log-detail": "Rigardi detalojn en la protokolo de misuzo",
