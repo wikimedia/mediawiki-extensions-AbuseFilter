@@ -581,5 +581,7 @@
 	"abusefilter-tag-reserved": "تم حجز الوسم <code>abusefilter-condition-limit</code> للاستخدام الداخلي بواسطة مرشح الإساءة.",
 	"tag-abusefilter-condition-limit": "تم الوصول إلى حد الشرط",
 	"tag-abusefilter-condition-limit-description": "التعديلات أو الأحداث الأخرى التي لا يمكن التحقق منها من قبل جميع [[Special:AbuseFilter|مرشحات الإساءة]] النشطة ([[mw:Extension:AbuseFilter/Conditions|مساعدة]]).",
+	"notification-header-throttle-filter": "مرشح الإساءة رقم $2 الذي عدلته مؤخراً مخنوق.",
+	"notification-subject-throttle-filter": "مُرشِّح الإساءة الذي عدلته قد خُنق في {{SITENAME}}.",
 	"notification-link-text-show-filter": "أظهر المرشح"
 }
