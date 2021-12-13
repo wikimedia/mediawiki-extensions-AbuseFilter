@@ -14,7 +14,8 @@
 			"Samat",
 			"Tacsipacsi",
 			"Tgr",
-			"Wolf Rex"
+			"Wolf Rex",
+			"Hanna Tardos"
 		]
 	},
 	"abusefilter-desc": "Automatikus heurisztikát alkalmaz a szerkesztésekre.",
@@ -431,8 +432,8 @@
 	"abusefilter-exception-unrecognisedvar": "Ismeretlen változó ($2) a(z) $1. karakternél",
 	"abusefilter-exception-notenoughargs": "A(z) $1 karakternél meghívott $2 függvénynek nincsen elég argumentuma: $3 helyett $4 van.",
 	"abusefilter-exception-regexfailure": "Hiba a reguláris kifejezés $1. karakterénél: „$2”",
-	"abusefilter-exception-overridebuiltin": "A(z) $1. karakternél a „$2” beépített változó felülírása nem engedélyezett.",
-	"abusefilter-exception-outofbounds": "A(z) $1. karakternél nem létező, $2. számú listatagra található hivatkozás, de az egész lista csak $3 hosszú.",
+	"abusefilter-exception-overridebuiltin": "A(z) $1. karakternél a(z) „$2” beépített azonosító felülírása nem engedélyezett.",
+	"abusefilter-exception-outofbounds": "A(z) $1. karakternél nem létező, $2. számú tömbelemre található hivatkozás (a tömb hossza $3).",
 	"abusefilter-exception-notarray": "A(z) $1. karakternél a függvény tömbbe nem tartozó tömbtagot kér.",
 	"abusefilter-exception-unclosedcomment": "Lezáratlan komment a(z) $1. számú karakternél.",
 	"abusefilter-exception-invalidiprange": "Érvénytelen IP-tartomány („$2”) a(z) $1. karakternél.",

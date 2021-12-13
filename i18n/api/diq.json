@@ -9,6 +9,8 @@
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Ratena Fiktrandê nengan dı têversanayış esto se, filtrey nengan de vurnayış vurnayışi kontrol kerê \n\nVurnayoğê RCID ya na LOGID eger ke icab krno se karêno",
+	"apihelp-abusefiltercheckmatch-summary": "Nê AbuseFilter'i de be kumey vurnayoği ra,i yew vurnayış yana rocekê qeydê AbuseFilter pêameyışi kontrol kerê",
+	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid yana logid lazımi, lakin teyna yewi şıma şenê bıgureyne.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Ful filtreya metini çımraravyarnayışi ke",
 	"apihelp-abusefiltercheckmatch-param-vars": "Vurnayerê kod kerdena JSON fına do test bo.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Têverşanaene rê vırnayışê IDy'o peyên",
@@ -22,7 +24,9 @@
 	"apihelp-abusefilterevalexpression-description": "Erca ifadeya Filtreya nengan",
 	"apihelp-abusefilterevalexpression-summary": "İfadeyê yew parzûnê istısmari ercneno.",
 	"apihelp-abusefilterevalexpression-param-expression": "Erceya ifadeyan",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "Netice weş çap bo çept çap bo",
 	"apihelp-abusefilterevalexpression-example-1": "Erca gasit ifadeyan",
+	"apihelp-abusefilterevalexpression-example-2": "Neticey biçım kerdışa ifadey basiti tetkik kerê",
 	"apihelp-abusefilterunblockautopromote-description": "Filtreya nengan karberi neticeya bloqe bıyayışa cı otomatik kerdau gêriya ya",
 	"apihelp-abusefilterunblockautopromote-summary": "Seba parzûnê istısmari ra gırewtışê qıseykerdışê otomatiki ra yew karberi kılit keno.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Şıma qayılê ke bloqey kanci bamaey karberi wedarne.",
@@ -38,6 +42,7 @@
 	"apihelp-query+abusefilters-example-2": "Heqdê filtranndı tayna detaya bıvin",
 	"apihelp-query+abuselog-description": "Filtreya nengan yew merdımi teref ra tepêşyaya bıvin",
 	"apihelp-query+abuselog-summary": "Parzûnanê istısmari ra yewo ke weqeyi tepıştê, bımocne.",
+	"apihelp-query+abuselog-param-logid": "Deyaye kamiye roceka yew ronıştış bımocne",
 	"apihelp-query+abuselog-param-start": "Mora zemani nımre kerdışmra start ke",
 	"apihelp-query+abuselog-param-end": "Mora zemani  nımre kedışi vındarn",
 	"apihelp-query+abuselog-param-user": "Teyna qeydé dekerdena grotena IP adresa karberi bıvin",
@@ -52,8 +57,10 @@
 	"apihelp-abuselogprivatedetails-summary": "Yew cıkewtışê xısusiyê detayanê AbuseLogi bımocne",
 	"apihelp-abuselogprivatedetails-param-logid": "Kontrol bıyaye cıkewtışê kamiya AbuseLogi",
 	"apihelp-abuselogprivatedetails-param-reason": "Seba kontrol kerdışi rê yew sebeb",
+	"apihelp-abuselogprivatedetails-example-1": "Be gurenayışê sebebê \"example\" ya, numrey 1 qeydê AbuseLog xısusi detayan bıgêrê.",
 	"apierror-abusefilter-canttest": "Testê qeydê nengan rê izinê şıma çıni yo.",
 	"apierror-abusefilter-cantcheck": "rêz kerdena qeydanê nengan rê izinê şıma çıni yo.",
+	"apierror-abusefilter-canteval": "Ercnayışê ifadeyanê AbuseFilteri re mısadey to çıniyo",
 	"apierror-abusefilter-nosuchlogid": "Tiya ra qeydê nengan nêdebêno kamiya $1",
 	"apierror-abusefilter-badsyntax": "Ena filter de yew rêza xelat esta."
 }

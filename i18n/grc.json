@@ -3,7 +3,8 @@
 		"authors": [
 			"Crazymadlover",
 			"LeighvsOptimvsMaximvs",
-			"Omnipaedista"
+			"Omnipaedista",
+			"PastelKos"
 		]
 	},
 	"abuselog": "Κατάλογος διηθητηρίου καταχρήσεων",
@@ -34,13 +35,13 @@
 	"abusefilter-list-options-submit": "Ἐνημέρωσις",
 	"abusefilter-tools-reautoconfirm-user": "Χρώμενος:",
 	"abusefilter-edit-status-label": "Στατιστικά:",
-	"abusefilter-edit-new": "Νέον διηθητήριον",
+	"abusefilter-edit-new": "Καινὸν διηθητήριον",
 	"abusefilter-edit-flags": "Σημαῖαι:",
 	"abusefilter-edit-rules": "Συνθῆκαι:",
-	"abusefilter-edit-notes": "Σημειώσεις:\n:''(ἰδιωτικόν)",
+	"abusefilter-edit-notes": "Σημειώσεις:",
 	"abusefilter-edit-lastmod-text": "$1 ὑπὸ $2",
 	"abusefilter-edit-throttle-period": "Χρονικὴ περίοδος:",
-	"abusefilter-edit-warn-other": "Ἄλλον μήνυμα",
+	"abusefilter-edit-warn-other": "Ἕτερον ἄγγελμα",
 	"abusefilter-edit-warn-actions": "Δράσεις:",
 	"abusefilter-edit-main": "Παράμετροι διηθητηρίου",
 	"abusefilter-edit-done-subtitle": "Διηθητήριον μεταγεγραμμένον.",

@@ -2,12 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Jeblad",
-			"Linnea"
+			"Linnea",
+			"Yupik"
 		]
 	},
 	"abuselog": "Boasttogeavahanfiltera logga",
+	"abusefilter-log-search-submit": "Oza",
 	"abusefilter-deleted": "Sihkkojuvvon",
+	"abusefilter-edit-throttle-groups-help": "Geahča $1.",
 	"abusefilter-history-deleted": "Sihkkojuvvon",
 	"abusefilter-action-block": "Hehtte",
+	"abusefilter-test-load": "Luđe",
+	"abusefilter-examine-submit": "Oza",
 	"abusefilter-log-noresults": "Eai bohtosat"
 }

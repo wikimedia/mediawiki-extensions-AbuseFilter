@@ -31,7 +31,8 @@
 			"W (aka Wuzur)",
 			"WikiBayer",
 			"Wikifan",
-			"Xqt"
+			"Xqt",
+			"Count Count"
 		]
 	},
 	"abusefilter-desc": "Wendet Heuristiken automatisch auf Bearbeitungen an",
@@ -210,7 +211,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Du bearbeitest nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn du speicherst, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]",
 	"abusefilter-edit-oldwarning-view": "<strong>Du siehst eine alte Version dieses Filters. Die angeführten Statistiken beziehen sich auf die neueste Version des Filters.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Zurück zu der Versionsgeschichte des Filters]].",
 	"abusefilter-edit-status-label": "Statistik:",
-	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.\nIm Durchschnitt beträgt ihre Ausführungszeit $4 ms und sie verbraucht {{PLURAL:$5|eine Bedingung|$5 Bedingungen}} der Bedingungsgrenze.",
+	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.\nIm Durchschnitt beträgt ihre Ausführungszeit $4 ms und sie verbraucht {{PLURAL:$5|eine Bedingung|$5 Bedingungen}} des Bedingungskontingents.",
 	"abusefilter-edit-throttled-warning": "'''Warnung:''' Dieser Filter wurde automatisch als schädlich markiert. Aus Sicherheitsgründen werden die folgenden Aktionen nicht ausgeführt ($1). Bitte überprüfe und [[mw:Extension:AbuseFilter/Conditions|optimiere]] deine Bedingungen, um diese Beschränkung aufzuheben.",
 	"abusefilter-edit-new": "Neuer Filter",
 	"abusefilter-edit-save": "Filter speichern",
@@ -476,7 +477,7 @@
 	"abusefilter-exception-regexfailure": "Fehler im regulären Ausdruck „$2“ an Zeichen $1.",
 	"abusefilter-exception-overridebuiltin": "Verbotenes Überschreiben der eingebauten Variable „$2“ an Zeichen $1.",
 	"abusefilter-exception-outofbounds": "Anforderung des nicht vorhandenen Anordnungseintrages $2 (Anordnungsgröße: $3) an Zeichen $1.",
-	"abusefilter-exception-negativeindex": "Negative Indizes sind in Arrays nicht erlaubt. Hat den Index \"$2\" bei Zeichen $1.",
+	"abusefilter-exception-negativeindex": "Negative Indizes sind in Arrays nicht erlaubt. Hat den Index „$2“ bei Zeichen $1.",
 	"abusefilter-exception-notarray": "Anforderung eines Arrayelements aus einem Nicht-Array bei Zeichen „$1“.",
 	"abusefilter-exception-unclosedcomment": "Nicht abgeschlossener Kommentar bei Zeichen $1.",
 	"abusefilter-exception-invalidiprange": "Ungültigen IP-Adressbereich „$2“ bei Zeichen $1 angegeben.",

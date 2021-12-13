@@ -6,7 +6,8 @@
 			"Giangian15",
 			"Leli Forte",
 			"Matma Rex",
-			"Roderick Mallia"
+			"Roderick Mallia",
+			"ToniSant"
 		]
 	},
 	"abusefilter-desc": "Tapplika ewristika awtomatika lill-modifiki",
@@ -75,6 +76,7 @@
 	"abusefilter-log-hide-id": "ID tad-daħla tar-reġistru:",
 	"abusefilter-log-hide-hidden": "Aħbi din id-daħla mid-dehra pubblika",
 	"abusefilter-log-hide-reason": "Raġuni:",
+	"abusefilter-log-hide-reason-other": "Raġuni oħra/addizzjonali:",
 	"abusefilter-log-hide-forbidden": "M'għandekx il-permess li taħbi daħliet tar-reġistru tal-abbużi",
 	"logentry-abusefilter-hit": "$1 attiva $4, esegwixxa l-azzjoni \"$5\" fuq $3. Azzjonijiet meħuda: $6 ($7)",
 	"abusefilter-list": "Il-filtri kollha",
@@ -107,6 +109,7 @@
 	"abusefilter-list-options-scope-local": "Wiki lokali",
 	"abusefilter-list-options-scope-global": "Regoli globali",
 	"abusefilter-list-options-hidedisabled": "Aħbi filtri diżattivati",
+	"abusefilter-list-options-hideprivate": "Aħbi l-filtri privati",
 	"abusefilter-list-options-submit": "Aġġorna",
 	"abusefilter-tools-text": "Hawnhekk hawn xi għodda li jistgħu jkunu utli fil-bini u l-verifika tal-filtri kontra l-abbużi.",
 	"abusefilter-tools-expr": "Tester tal-espressjonijiet",

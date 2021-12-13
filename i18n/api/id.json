@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hidayatsrf"
+			"Hidayatsrf",
+			"Daud I.F. Argana"
 		]
 	},
+	"apihelp-abusefiltercheckmatch-description": "Melihat apakah sebuah Filter Penyalahgunaan sesuai dengan seperangkat variabel, sebuah suntingan, atau sebuah kejadian yang dicatat Filter Penyalahgunaan.\n\nvars, rcid atau logid diwajibkan tetapi hanya satu yang bisa digunakan.",
+	"apihelp-abusefiltercheckmatch-summary": "Melihat apakah sebuah Filter Penyalahgunaan sesuai dengan seperangkat variabel, sebuah suntingan, atau sebuah kejadian yang dicatat Filter Penyalahgunaan.",
+	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid atau logid diwajibkan tetapi hanya satu yang bisa digunakan.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Teks filter lengkap untuk mencari kecocokan.",
+	"apihelp-abusefiltercheckmatch-param-logid": "ID log filter penyalahgunaan untuk diperiksa.",
+	"apihelp-abusefilterchecksyntax-description": "Periksa sintaks filter AbuseFilter.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Nama pengguna dari pengguna yang ingin Anda buka pemblokirannya",
 	"apihelp-query+abusefilters-description": "Tampilkan detail filter penyalahgunaan.",
 	"apihelp-query+abusefilters-summary": "Tampilkan detail filter penyalahgunaan.",

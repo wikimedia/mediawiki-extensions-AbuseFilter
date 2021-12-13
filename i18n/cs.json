@@ -17,7 +17,11 @@
 			"Tchoř",
 			"Teslaton",
 			"Urbanecm",
-			"Vks"
+			"Vks",
+			"Jan Myšák",
+			"Natalie",
+			"Patrik L.",
+			"Robins7"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -131,7 +135,7 @@
 	"log-action-filter-rights-restoreautopromote": "Obnova automatického potvrzení",
 	"logentry-abusefilterprivatedetails-access": "$1 si {{GENDER:$2|prohlédl|prohlédla}} soukromé detaily k $3",
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|zablokoval|zablokovala}} automatické potvrzení {{GENDER:$4|uživatele|uživatelky}} $3 na dobu $5",
-	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|obnovil|obnovila}} možnost automatického potvrzení {{GENDER:$4|uživatele|uživatelky}} $3",
+	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|obnovil|obnovila|obnovil(a)}} možnost automatického potvrzení {{GENDER:$4|uživatele|uživatelky}} $3",
 	"abusefilterprivatedetails-log-name": "Kniha přístupů k soukromým detailům filtrů zneužití",
 	"abusefilter-list": "Všechny filtry",
 	"abusefilter-list-id": "ID filtru",

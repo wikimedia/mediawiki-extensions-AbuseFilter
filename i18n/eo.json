@@ -18,7 +18,10 @@
 			"Tlustulimu",
 			"Tradukisto",
 			"Yekrats",
-			"Zarisi"
+			"Zarisi",
+			"Jakub Fabijan",
+			"Javiero",
+			"Lepticed"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -34,7 +37,7 @@
 	"abusefilter-blockreason": "Aŭtomate blokita de la misuzada filtrilo. Resumo de kongrua regulo: $1",
 	"abusefilter-degroupreason": "Rajtoj estis aŭtomate forigitaj de misuzadaj filtriloj.\nPriskribo de regulo: $1",
 	"abusefilter-accountreserved": "Ĉi tiu konta nomo estas rezervita por uzo de la misuzada filtrilo.",
-	"right-abusefilter-modify": "Modifi filtrilojn de misuzo",
+	"right-abusefilter-modify": "Krei aŭ modifi filtrilojn de misuzo",
 	"right-abusefilter-view": "Rigardi filtrilojn de misuzo",
 	"right-abusefilter-log": "Rigardi la protokolon de misuzo",
 	"right-abusefilter-log-detail": "Rigardi detalojn en la protokolo de misuzo",
@@ -207,6 +210,7 @@
 	"abusefilter-edit-warn-edit": "Krei/Redakti elektitan mesaĝon",
 	"abusefilter-edit-disallow-other": "Alia mesaĝo",
 	"abusefilter-edit-disallow-actions": "Agoj:",
+	"abusefilter-edit-disallow-edit": "Krei/Redakti elektitan mesaĝon",
 	"abusefilter-edit-tag-tag": "Etikedoj por aldoni (po unu por linio):",
 	"abusefilter-edit-tag-hidden-placeholder": "Aldoni etikedojn (apartigitajn de komoj)",
 	"abusefilter-block-anon": "Forbari anonimulojn",
@@ -338,6 +342,7 @@
 	"abusefilter-edit-builder-vars-file-width": "Larĝo de la dosiero en bilderoj",
 	"abusefilter-edit-builder-vars-file-height": "Alto de la dosiero en bilderoj",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Nombro de bitoj en kolorkanalo de la dosiero",
+	"abusefilter-edit-builder-vars-wiki-language": "Lingva kodo de la vikio",
 	"abusefilter-filter-log": "Lastaj filtrilaj ŝanĝoj",
 	"abusefilter-history": "ŝanĝada historio por Misuzada Filtrilo #$1",
 	"abusefilter-history-foruser": "Ŝanĝoj de $1",

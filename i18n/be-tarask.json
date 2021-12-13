@@ -11,7 +11,9 @@
 			"Renessaince",
 			"StasDash",
 			"Wizardist",
-			"Zedlik"
+			"Zedlik",
+			"DannyS712",
+			"W"
 		]
 	},
 	"abusefilter-desc": "Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.",
@@ -116,7 +118,7 @@
 	"abusefilter-log-hide-forbidden": "Вы ня маеце права хаваць запісы\nў журнале злоўжываньняў.",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|схаваў|схавала}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|адкрыў|адкрыла}} $3",
-	"logentry-abusefilter-hit": "$1 {{#GENDER:$2|выклікаў|выклікала}} спрацоўваньне фільтру $4 пры выкананьні дзеяньня «$5» на старонцы $3. Прынятыя меры: $6 ($7)",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|выклікаў|выклікала}} спрацоўваньне фільтру $4 пры выкананьні дзеяньня «$5» на старонцы $3. Прынятыя меры: $6 ($7)",
 	"log-action-filter-abusefilter": "Тып зьмены фільтру:",
 	"log-action-filter-abusefilter-create": "Стварэньне новага фільтру",
 	"log-action-filter-abusefilter-modify": "Зьмяненьне фільтру",
@@ -174,6 +176,7 @@
 	"abusefilter-tools-text": "Тут знаходзяцца інструмэнты, якія могуць быць карыснымі ў фармуляваньні і праверцы фільтраў злоўжываньняў.",
 	"abusefilter-tools-expr": "Праверка выразаў",
 	"abusefilter-tools-submitexpr": "Паспрабаваць",
+	"abusefilter-tools-syntax-error": "Фільтар мае недапушчальны сынтаксіс.",
 	"abusefilter-tools-reautoconfirm": "Аднавіць статус аўтаматычнага пацьверджаньня",
 	"abusefilter-tools-reautoconfirm-user": "Удзельнік:",
 	"abusefilter-tools-reautoconfirm-submit": "Паўторнае аўтаматычнае пацьверджаньне",

@@ -165,6 +165,7 @@
 	"abusefilter-tools-text": "Ecce alcun instrumentos utile pro formular e corriger le filtros anti-abuso.",
 	"abusefilter-tools-expr": "Verificator de expressiones",
 	"abusefilter-tools-submitexpr": "Evalutar",
+	"abusefilter-tools-syntax-error": "Le filtro ha un syntaxe invalide.",
 	"abusefilter-tools-reautoconfirm": "Restaurar le stato autoconfirmate",
 	"abusefilter-tools-reautoconfirm-user": "Usator:",
 	"abusefilter-tools-reautoconfirm-submit": "Re-autoconfirmar",

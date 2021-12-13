@@ -29,7 +29,9 @@
 			"관인생략",
 			"렌즈",
 			"밝은소년",
-			"아라"
+			"아라",
+			"MemphisA5",
+			"Underbaaar"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -103,7 +105,7 @@
 	"abusefilter-log-detailedentry-local": "필터 $1",
 	"abusefilter-log-detailslink": "자세한 사항",
 	"abusefilter-log-diff": "차이",
-	"abusefilter-log-hidelink": "보이기 설정",
+	"abusefilter-log-hidelink": "보이기 수정",
 	"abusefilter-log-details-legend": "기록 $1에 대한 자세한 정보",
 	"abusefilter-log-details-var": "변수",
 	"abusefilter-log-details-val": "값",
@@ -141,6 +143,7 @@
 	"log-action-filter-suppress-abuselog": "악용 기록 숨기기",
 	"log-action-filter-rights-blockautopromote": "자동처리 차단",
 	"logentry-abusefilterprivatedetails-access": "$1님이 $3의 비공개 상세 정보에 {{GENDER:$2|접근하였습니다}}",
+	"logentry-rights-blockautopromote": "$1님이 {{GENDER:$4|$3}}님의 자동 권한 상승을 $5 {{GENDER:$2|차단했습니다}}",
 	"abusefilterprivatedetails-log-name": "편집 필터 비공개 상세 정보 접근 기록",
 	"abusefilter-list": "모든 필터",
 	"abusefilter-list-id": "필터 ID",
@@ -203,7 +206,7 @@
 	"abusefilter-edit-token-not-match": "편집이 저장되지 않았습니다! 다시 저장해 주십시오.",
 	"abusefilter-edit-oldwarning": "<strong>이 필터의 이전 버전을 수정하고 있습니다.\n아래의 통계는 이 필터의 최신판에 대한 것입니다.\n변경 사항을 저장하면 편집하고 있는 판 이후의 모든 변경 사항을 덮어쓰게 됩니다.</strong> &bull;\n[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].",
 	"abusefilter-edit-status-label": "통계:",
-	"abusefilter-edit-status": "최근 {{PLURAL:$1|동작}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.",
+	"abusefilter-edit-status": "최근 {{PLURAL:$1|동작}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.\n평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 {{PLURAL:$5|부하}}가 걸리고 있습니다.",
 	"abusefilter-edit-throttled-warning": "'''경고''': 이 필터는 자동으로 유해한 것으로 표시되었습니다. 안전 장치로서 다음의 조치는 실행되지 않을 것입니다. ($1) 검토한 다음 조건을 [[mw:Extension:AbuseFilter/Conditions|최적화]]하여 이 제한을 제거하십시오.",
 	"abusefilter-edit-new": "새 필터",
 	"abusefilter-edit-save": "필터 저장하기",

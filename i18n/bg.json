@@ -13,7 +13,8 @@
 			"Vlad5250",
 			"Vodnokon4e",
 			"Петър Петров",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Kareyac"
 		]
 	},
 	"abusefilter-desc": "Прилага автоматични евристики към редакциите.",
@@ -165,7 +166,7 @@
 	"abusefilter-list-options-search-like": "Обикновена заявка",
 	"abusefilter-list-options-search-rlike": "Регулярен израз",
 	"abusefilter-list-options-search-irlike": "Нечувствителен към регистъра регулярен израз",
-	"abusefilter-list-regexerror": "Възникна грешка по време на търсенето: Синтактична греша в регулярния израз.",
+	"abusefilter-list-regexerror": "Възникна грешка по време на търсенето: Синтактична грешка в регулярния израз.",
 	"abusefilter-list-options-submit": "Обновяване",
 	"abusefilter-tools-text": "Тук има някои инструменти, които може да са полезни за създаване или поправяне на филтри срещу злоупотреби.",
 	"abusefilter-tools-expr": "Проверка на изрази",
@@ -517,7 +518,7 @@
 	"abusefilter-import-invalid-data": "Данните, които опитвате да внесете, не са валидни",
 	"abusefilter-group-default": "По подразбиране",
 	"abusefilter-http-error": "Възникна HTTP грешка: $1",
-	"abusefilter-view-privatedetails-submit": "Преглед на личните данни",
+	"abusefilter-view-privatedetails-submit": "Преглед на скрити данни",
 	"abusefilter-view-privatedetails-legend": "Преглед на скрити данни",
 	"abusefilter-view-privatedetails-reason": "Причина за достъп до личните данни:",
 	"abusefilter-log-details-id": "Номер на записа",

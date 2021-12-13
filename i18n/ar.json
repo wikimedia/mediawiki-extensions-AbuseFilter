@@ -25,7 +25,9 @@
 			"زكريا",
 			"علاء",
 			"محمد أحمد عبد الفتاح",
-			"وهراني"
+			"وهراني",
+			"Michel Bakni",
+			"Sosozozo"
 		]
 	},
 	"abusefilter-desc": "يطبق قواعد آلية على التعديلات.",
@@ -99,7 +101,7 @@
 	"abusefilter-log-detailedentry-local": "المرشح $1",
 	"abusefilter-log-detailslink": "التفاصيل",
 	"abusefilter-log-diff": "فرق",
-	"abusefilter-log-hidelink": "أضبط الرؤية",
+	"abusefilter-log-hidelink": "اضبط الرؤية",
 	"abusefilter-log-details-legend": "التفاصيل لمدخلة السجل $1",
 	"abusefilter-log-details-var": "متغير",
 	"abusefilter-log-details-val": "قيمة",
@@ -561,6 +563,7 @@
 	"abusefilter-diff-next": "التعديل اللاحق",
 	"abusefilter-import-intro": "يمكنك استخدام هذه الواجهة لاستيراد المرشحات من الويكيات الأخرى.\nفي الويكي المصدر، اضغط \"{{int:abusefilter-edit-export}}\" تحت \"{{int:abusefilter-edit-tools}}\" في واجهة التعديل.\nانسخ من صندوق النص الذي سيظهر، والصقه إلى صندوق النص هذا، ثم اضغط \"{{int:abusefilter-import-submit}}\",",
 	"abusefilter-import-submit": "استيراد البيانات",
+	"abusefilter-import-invalid-data": "البيانات التي حاولت استيرادها غير صالحة",
 	"abusefilter-group-default": "افتراضي",
 	"abusefilter-http-error": "حدث خطأ HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "عرض التفاصيل الخاصة",

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Seipinne",
+			"Yupik"
+		]
+	},
+	"abusefilter-log-search-submit": "Uusâ",
+	"abusefilter-log-hidden-implicit": "(čiehhum, ko versio lii sikkum)",
+	"abusefilter-list-lastmodified": "Majemustáá nubástittum",
+	"abusefilter-edit-status-label": "Lovottuvah:",
+	"abusefilter-edit-throttle-groups-help": "Keejâ $1.",
+	"abusefilter-history-hidden": "Čiehhum",
+	"abusefilter-test-load": "Luođii",
+	"abusefilter-examine-submit": "Uusâ"
+}

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"MuratTheTurkish"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Bir AbuseFilter'ın bir değişkenler kümesiyle mi, bir düzenleme ile mi yoksa günlüğe kaydedilen bir AbuseFilter olayıyla eşleştiğini kontrol edin.\n\nvars, rcid veya logid gereklidir, ancak yalnızca biri kullanılabilir.",
@@ -53,7 +54,7 @@
 	"apihelp-abuselogprivatedetails-summary": "Bir AbuseLog girişinin özel ayrıntılarını görüntüleyin.",
 	"apihelp-abuselogprivatedetails-param-logid": "Kontrol edilecek AbuseLog girişinin kimliği.",
 	"apihelp-abuselogprivatedetails-param-reason": "Kontrolün yapılması için geçerli bir sebep.",
-	"apihelp-abuselogprivatedetails-example-1": "\"Example\" nedenini kullanarak, kimlik 1 ile AbuseLog girişi için özel detaylar alın.",
+	"apihelp-abuselogprivatedetails-example-1": "\"example\" nedenini kullanarak, 1 numaralı AbuseLog girişi için özel ayrıntıları alın.",
 	"apierror-abusefilter-canttest": "Kötüye kullanım filtrelerini test etme izniniz yok.",
 	"apierror-abusefilter-cantcheck": "Kötüye kullanım filtrelerinin sözdizimini kontrol etme izniniz yok.",
 	"apierror-abusefilter-canteval": "AbuseFilter ifadelerini değerlendirme izniniz yok.",
