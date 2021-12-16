@@ -34,7 +34,7 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 	public function testEditRelatedVars( $oldText, $newText, $summary, array $expected ) {
 		$pageName = __METHOD__;
 		$title = Title::makeTitle( 0, $pageName );
-		$page = WikiPage::factory( $title );
+		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 
 		$this->editPage( $pageName, $oldText, 'Creating the test page' );
 		$this->editPage( $pageName, $newText, $summary );

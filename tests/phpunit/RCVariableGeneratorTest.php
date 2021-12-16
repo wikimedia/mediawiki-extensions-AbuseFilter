@@ -3,7 +3,6 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
-use MediaWiki\MediaWikiServices;
 
 /**
  * @group Test
@@ -50,7 +49,9 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		MWTimestamp::setFakeTime( $timestamp );
 		$user = $this->getMutableTestUser()->getUser();
 		$title = Title::newFromText( 'AbuseFilter testing page' );
-		$page = $type === 'create' ? WikiPage::factory( $title ) : $this->getExistingTestPage( $title );
+		$services = $this->getServiceContainer();
+		$wikiPageFactory = $services->getWikiPageFactory();
+		$page = $type === 'create' ? $wikiPageFactory->newFromTitle( $title ) : $this->getExistingTestPage( $title );
 		$page->clear();
 
 		$summary = 'Abuse Filter summary for RC tests';
@@ -77,10 +78,10 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				break;
 			case 'move':
 				$newTitle = Title::newFromText( 'Another AbuseFilter testing page' );
-				$mpf = MediaWikiServices::getInstance()->getMovePageFactory();
+				$mpf = $services->getMovePageFactory();
 				$mp = $mpf->newMovePage( $title, $newTitle );
 				$mp->move( $user, $summary, false );
-				$newID = WikiPage::factory( $newTitle )->getId();
+				$newID = $wikiPageFactory->newFromTitle( $newTitle )->getId();
 
 				$expectedValues += [
 					'moved_from_id' => $page->getId(),
@@ -116,14 +117,14 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			case 'upload':
 				$fileName = 'My File.svg';
 				$destTitle = Title::makeTitle( NS_FILE, $fileName );
-				$page = WikiPage::factory( $destTitle );
+				$page = $wikiPageFactory->newFromTitle( $destTitle );
 				[ $status, $this->clearPath ] = $this->doUpload( $user, $fileName, 'Some text', $summary );
 				if ( !$status->isGood() ) {
 					throw new LogicException( "Cannot upload file:\n$status" );
 				}
 
 				// Since the SVG is randomly generated, we need to read some properties live
-				$file = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->newFile( $destTitle );
+				$file = $services->getRepoGroup()->getLocalRepo()->newFile( $destTitle );
 				$expectedValues += [
 					'page_id' => $page->getId(),
 					'page_namespace' => $destTitle->getNamespace(),
