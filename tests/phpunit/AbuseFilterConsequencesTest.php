@@ -448,8 +448,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @return string The status of the operation, as returned by the API.
 	 */
 	private function stashEdit( $title, $text, $summary ) {
-		return $this->getServiceContainer()->getPageEditStash()->parseAndCache(
-			WikiPage::factory( $title ),
+		$services = $this->getServiceContainer();
+		return $services->getPageEditStash()->parseAndCache(
+			$services->getWikiPageFactory()->newFromTitle( $title ),
 			new WikitextContent( $text ),
 			$this->user,
 			$summary
@@ -466,7 +467,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @return Status
 	 */
 	private function doEdit( Title $title, $oldText, $newText, $summary, $fromStash = null ) {
-		$page = WikiPage::factory( $title );
+		$services = $this->getServiceContainer();
+		$page = $services->getWikiPageFactory()->newFromTitle( $title );
 		if ( !$page->exists() ) {
 			$status = $this->editPage(
 				$page,
@@ -501,7 +503,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$context->setWikiPage( $page );
 
 		$hooksHandler = new FilteredActionsHandler(
-			MediaWikiServices::getInstance()->getStatsdDataFactory(),
+			$services->getStatsdDataFactory(),
 			AbuseFilterServices::getFilterRunnerFactory(),
 			AbuseFilterServices::getVariableGeneratorFactory(),
 			AbuseFilterServices::getEditRevUpdater()
@@ -608,7 +610,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function getActionTags( $actionParams ) {
 		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
-			$page = WikiPage::factory( Title::newFromText( $actionParams['target'] ) );
+			$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle(
+				Title::newFromText( $actionParams['target'] )
+			);
 			return ChangeTags::getTags( $this->db, null, $page->getLatest() );
 		}
 
