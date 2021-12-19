@@ -204,11 +204,14 @@ class LazyVariableComputer {
 				/** @var WikiPage $article */
 				$article = $article ?? $parameters['article'];
 
+				// this inference is ugly, but the name isn't accessible from here
+				// and we only want this for debugging
+				$varName = strpos( $parameters['text-var'], 'old_' ) === 0 ? 'old_links' : 'all_links';
 				if ( $vars->forFilter ) {
+					$this->logger->debug( "Loading $varName from DB" );
 					$links = $this->getLinksFromDB( $article );
-					$this->logger->debug( 'Loading old links from DB' );
 				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
-					$this->logger->debug( 'Loading old links from Parser' );
+					$this->logger->debug( "Loading $varName from Parser" );
 					$textVar = $parameters['text-var'];
 
 					$wikitext = $getVarCB( $textVar )->toString();
