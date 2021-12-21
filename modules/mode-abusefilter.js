@@ -136,7 +136,7 @@ ace.define( 'ace/mode/abusefilter', [ 'require', 'exports', 'module', 'ace/lib/o
 			worker = new WorkerClient( [ 'ace' ], 'ace/mode/abusefilter_worker', 'AbuseFilterWorker' );
 
 			apiPath = mw.config.get( 'wgServer' ) + new mw.Api().defaults.ajax.url;
-			if ( apiPath.substr( 0, 2 ) === '//' ) {
+			if ( apiPath.slice( 0, 2 ) === '//' ) {
 				apiPath = window.location.protocol + apiPath;
 			}
 			worker.$worker.postMessage( { apipath: apiPath } );

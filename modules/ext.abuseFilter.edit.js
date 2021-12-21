@@ -216,7 +216,7 @@
 	function hideDeselectedActions() {
 		$( '.mw-abusefilter-action-checkbox input' ).each( function showHideParams() {
 			// mw-abusefilter-action-checkbox-{$action}
-			var action = this.parentNode.id.substr( 31 ),
+			var action = this.parentNode.id.slice( 31 ),
 				$params = $( '#mw-abusefilter-' + action + '-parameters' );
 
 			if ( $params.length ) {
