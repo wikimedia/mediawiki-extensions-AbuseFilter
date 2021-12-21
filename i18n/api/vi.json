@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dinhxuanduyet",
-			"Minh Nguyen"
+			"Minh Nguyen",
+			"NguoiDungKhongDinhDanh"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Đánh dấu vào đây để kiểm tra xem nếu một AbuseFilter (bộ lọc lạm dụng) có khớp với tập hợp các biến hay không, trình biên tập đã ghi vào sự kiện của AbuseFilter.\n\nvars, rcid hoặc logid được yêu cầu tuy nhiên chỉ một trong số đó có thể sẽ được dùng.",
@@ -19,6 +20,7 @@
 	"apihelp-abusefilterevalexpression-param-expression": "Đánh giá biểu thức.",
 	"apihelp-abusefilterevalexpression-example-1": "Đánh giá một biểu thức đơn giản",
 	"apihelp-abusefilterunblockautopromote-param-user": "Tên người dùng của người dùng mà bạn muốn bỏ khóa.",
+	"apihelp-abusefilterunblockautopromote-example-1": "Gỡ lệnh cấm tự động cấp quyền cho [[User:Example]].",
 	"apihelp-query+abusefilters-description": "Hiển thị chi tiết của các bộ lọc lạm dụng.",
 	"apihelp-query+abusefilters-param-startid": "ID bộ lọc để bắt đầu việc đếm.",
 	"apihelp-query+abusefilters-param-endid": "ID bộ lọc để dừng việc đếm.",
@@ -37,5 +39,6 @@
 	"apihelp-query+abuselog-param-prop": "Thuộc tính mà bạn muốn lấy.",
 	"apihelp-query+abuselog-example-1": "Hiển thị các mục nhật trình gần đây",
 	"apihelp-query+abuselog-example-2": "Hiển thị các mục nhật trình gần đây cho [[API]]",
+	"apierror-abusefilter-nosuchlogid": "Không tồn tại mục nhật trình nào có id $1.",
 	"apierror-abusefilter-badsyntax": "Bộ lọc có cú pháp không hợp lệ."
 }
