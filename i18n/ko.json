@@ -140,6 +140,7 @@
 	"abusefilter-log-hide-show": "보이기",
 	"abusefilter-log-hide-hide": "숨기기",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|숨겨짐}}",
+	"abusefilter-log-hide-done-show": "{{PLURAL:$1|숨김 해제됨}}",
 	"abusefilter-log-entry-suppress": "$1님이 $3 기록을 {{GENDER:$2|숨겼습니다}}",
 	"abusefilter-log-entry-unsuppress": "$1님이 $3 기록의 {{GENDER:$2|숨김을 해제했습니다}}",
 	"logentry-abusefilter-hit": "$1님이 $3에서 \"$5\" 동작을 {{GENDER:$2|하여}} $4이(가) {{GENDER:$2|작동하였습니다}}. 조치: $6 ($7)",
