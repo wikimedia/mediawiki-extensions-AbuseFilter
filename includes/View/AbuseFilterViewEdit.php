@@ -649,7 +649,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					$throttleGroups = [ 'user' ];
 				}
 
-				$throttleFields['abusefilter-edit-throttle-count'] =
+				$throttleFields[] =
 					new OOUI\FieldLayout(
 						new OOUI\TextInputWidget( [
 							'type' => 'number',
@@ -662,7 +662,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'label' => $this->msg( 'abusefilter-edit-throttle-count' )->text()
 						]
 					);
-				$throttleFields['abusefilter-edit-throttle-period'] =
+				$throttleFields[] =
 					new OOUI\FieldLayout(
 						new OOUI\TextInputWidget( [
 							'type' => 'number',
@@ -710,7 +710,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						]
 					);
 
-				$throttleFields['abusefilter-edit-throttle-groups'] = $hiddenGroups;
+				$throttleFields[] = $hiddenGroups;
 
 				$throttleConfig = [
 					'values' => $throttleGroups,
@@ -765,12 +765,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				}
 
 				$fields = [];
-				$fields["abusefilter-edit-$action-message"] =
+				$fields[] =
 					$this->getExistingSelector( $msg, $readOnly, $action );
 				$otherFieldName = $action === 'warn' ? 'wpFilterWarnMessageOther'
 					: 'wpFilterDisallowMessageOther';
 
-				$fields["abusefilter-edit-$action-other-label"] =
+				$fields[] =
 					new OOUI\FieldLayout(
 						new OOUI\TextInputWidget( [
 							'name' => $otherFieldName,
@@ -831,7 +831,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					],
 					''
 				);
-				$fields["abusefilter-edit-$action-actions"] = $buttonGroup;
+				$fields[] = $buttonGroup;
 				$output .=
 					Xml::tags(
 						'div',
@@ -970,16 +970,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							]
 						);
 
-					$blockOptions['abusefilter-edit-block-options'] = $talkCheckbox;
+					$blockOptions[] = $talkCheckbox;
 				}
-				$blockOptions['abusefilter-edit-block-anon-durations'] =
+				$blockOptions[] =
 					new OOUI\FieldLayout(
 						$anonDuration,
 						[
 							'label' => $this->msg( 'abusefilter-edit-block-anon-durations' )->text()
 						]
 					);
-				$blockOptions['abusefilter-edit-block-user-durations'] =
+				$blockOptions[] =
 					new OOUI\FieldLayout(
 						$userDuration,
 						[
