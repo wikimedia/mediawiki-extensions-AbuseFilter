@@ -91,7 +91,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			] );
 		}
 
-		$backlinks = new OOUI\HorizontalLayout( [ 'items' => $links ] );
+		$backlinks = new OOUI\HorizontalLayout( [ 'items' => array_values( $links ) ] );
 		$out->addHTML( $backlinks );
 
 		if ( $show ) {
