@@ -99,7 +99,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 
 		$backlinks =
 			new OOUI\HorizontalLayout( [
-				'items' => $links
+				'items' => array_values( $links )
 			] );
 		$out->addHTML( $backlinks );
 
