@@ -41,7 +41,8 @@
 			"Yfdyh000",
 			"Zanhsieh",
 			"Zhxy 519",
-			"逆襲的天邪鬼"
+			"逆襲的天邪鬼",
+			"Tranve"
 		]
 	},
 	"abusefilter-desc": "對編輯行為自動進行條件判定",
@@ -431,8 +432,8 @@
 	"abusefilter-edit-builder-vars-all-links": "新內容中的所有外部連結",
 	"abusefilter-edit-builder-vars-added-links": "所有編輯後加入的外部連結",
 	"abusefilter-edit-builder-vars-removed-links": "所有編輯後移除的外部連結",
-	"abusefilter-edit-builder-vars-old-wikitext": "在編輯前舊頁面上的 wiki 標記式語言",
-	"abusefilter-edit-builder-vars-new-wikitext": "在編後新頁面上的 wiki 標記式語言",
+	"abusefilter-edit-builder-vars-old-wikitext": "在編輯前舊頁面上的 wikitext",
+	"abusefilter-edit-builder-vars-new-wikitext": "在編後新頁面上的 wikitext",
 	"abusefilter-edit-builder-vars-new-pst": "新頁面 Wikitext，於儲存前轉換",
 	"abusefilter-edit-builder-vars-diff-pst": "編輯所做的變更 Unified，儲存前轉換",
 	"abusefilter-edit-builder-vars-addedlines-pst": "編輯加入的行，儲存前轉換",
