@@ -96,7 +96,7 @@ return [
 	},
 	BlockAutopromoteStore::SERVICE_NAME => static function ( MediaWikiServices $services ): BlockAutopromoteStore {
 		return new BlockAutopromoteStore(
-			ObjectCache::getInstance( 'db-replicated' ),
+			$services->getMainObjectStash(),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->get( FilterUser::SERVICE_NAME )
 		);
