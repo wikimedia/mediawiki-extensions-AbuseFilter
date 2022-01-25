@@ -162,7 +162,7 @@
 	"abusefilter-edit-action-degroup": "De Benotzer aus alle priviligéierte Gruppen eraushuelen",
 	"abusefilter-edit-action-block": "De Benotzer an/oder d'IP-Adress fir Ännerunge spären",
 	"abusefilter-edit-action-throttle": "Aktiounen nëmmen ausléise wann de Benotzer eng bestëmmte Limitt depasséiert",
-	"abusefilter-edit-action-rangeblock": "Späert den IP-Adresseberäich, aus dem dëse Benotzer kënnt.",
+	"abusefilter-edit-action-rangeblock": "Späert den IP-Adresseberäich, aus dem de Benotzer kënnt.",
 	"abusefilter-edit-action-tag": "D'Ännerung fir e spéidert Nokucke markéieren",
 	"abusefilter-edit-throttle-count": "Zuel vun den erlaabten Aktiounen:",
 	"abusefilter-edit-throttle-period": "Zäitraum (a Sekonnen):",
