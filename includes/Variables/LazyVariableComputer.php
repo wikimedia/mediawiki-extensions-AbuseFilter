@@ -232,11 +232,8 @@ class LazyVariableComputer {
 				$oldLinkVar = $parameters['oldlink-var'];
 				$newLinkVar = $parameters['newlink-var'];
 
-				$oldLinks = $getVarCB( $oldLinkVar )->toString();
-				$newLinks = $getVarCB( $newLinkVar )->toString();
-
-				$oldLinks = explode( "\n", $oldLinks );
-				$newLinks = explode( "\n", $newLinks );
+				$oldLinks = $getVarCB( $oldLinkVar )->toNative();
+				$newLinks = $getVarCB( $newLinkVar )->toNative();
 
 				if ( $varMethod === 'link-diff-added' ) {
 					$result = array_diff( $newLinks, $oldLinks );
