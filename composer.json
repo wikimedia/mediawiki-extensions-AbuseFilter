@@ -9,7 +9,7 @@
 		"wikimedia/equivset": "^1.4"
 	},
 	"require-dev": {
-		"mediawiki/mediawiki-codesniffer": "35.0.0",
+		"mediawiki/mediawiki-codesniffer": "38.0.0",
 		"mediawiki/mediawiki-phan-config": "0.10.6",
 		"mediawiki/minus-x": "1.1.1",
 		"php-parallel-lint/php-console-highlighter": "0.5.0",
