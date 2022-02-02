@@ -27,7 +27,7 @@ abstract class AbuseFilterView extends ContextSource {
 	/**
 	 * @var array The parameters of the current request
 	 */
-	public $mParams;
+	protected $mParams;
 
 	/**
 	 * @var LinkRenderer
