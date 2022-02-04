@@ -199,7 +199,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->addHelpLink( 'Extension:AbuseFilter' );
 		$this->loadParameters();
 
-		$out->enableClientCache( false );
+		$out->disableClientCache();
 
 		$out->addModuleStyles( 'ext.abuseFilter' );
 
