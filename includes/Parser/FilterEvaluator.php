@@ -1170,7 +1170,7 @@ class FilterEvaluator {
 	 * @return array|string
 	 */
 	protected function rmspecials( $s ) {
-		return preg_replace( '/[^\p{L}\p{N}]/u', '', $s );
+		return preg_replace( '/[^\p{L}\p{N}\s]/u', '', $s );
 	}
 
 	/**
