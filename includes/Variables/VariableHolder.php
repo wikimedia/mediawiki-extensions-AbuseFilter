@@ -112,6 +112,3 @@ class VariableHolder {
 		unset( $this->mVars[$varName] );
 	}
 }
-
-// @deprecated Since 1.36
-class_alias( VariableHolder::class, 'AbuseFilterVariableHolder' );
