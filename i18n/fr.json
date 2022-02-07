@@ -509,7 +509,7 @@
 	"abusefilter-exception-disabledvar": "La variable $2 au caractère nº $1 n’est plus utilisée.",
 	"abusefilter-exception-variablevariable": "set et set_var s’attendent à ce que le premier argument soit une chaîne littérale, trouvée au caractère $1.",
 	"abusefilter-exception-unknownfunction": "$2 n’est pas une fonction valide au caractère $1.",
-	"abusefilter-exception-unusedvars": "Les variables suivantes sont inutilisées : $2.",
+	"abusefilter-exception-unusedvars": "Les variables suivantes sont inutilisées : $2.",
 	"abusefilter-parser-warning-match-empty-regex": "Cette expression rationnelle correspond à la chaîne vide, à la position $1",
 	"abusefilter-action-tag": "Baliser",
 	"abusefilter-action-throttle": "Limiter les modifications",
