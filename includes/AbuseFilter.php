@@ -67,5 +67,3 @@ class AbuseFilter {
 		return $runner->run();
 	}
 }
-
-class_alias( AbuseFilter::class, 'AbuseFilter' );
