@@ -526,6 +526,7 @@
 	"abusefilter-changeslist-examine": "prozkoumat",
 	"abusefilter-examine": "Prozkoumat jednotlivé editace",
 	"abusefilter-examine-intro": "Na této stránce budete moci u zvolené editace prozkoumat proměnné, které pro ni Filtr zneužití vygeneroval, a otestovat na ní filtry.",
+	"abusefilter-examine-intro-examine-only": "Na této stránce budete moci u zvolené editace prozkoumat proměnné, které pro ni Filtr zneužití vygeneroval.",
 	"abusefilter-examine-legend": "Výběr editací",
 	"abusefilter-examine-diff": "URL rozdílu:",
 	"abusefilter-examine-user": "Uživatel:",

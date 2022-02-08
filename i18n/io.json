@@ -107,6 +107,7 @@
 	"abusefilter-revert-filter": "Filtrilo:",
 	"abusefilter-revert-confirm": "Konfirmez",
 	"abusefilter-revert-reason": "Automatale desfacez omna agadi dal filtrilo pri abuzo, pro la filtro $1.\nMotivo: $2",
+	"abusefilter-revert-reasonfield": "Motivo:",
 	"abusefilter-test": "Probar filtrilo kontre antea redakturi",
 	"abusefilter-test-intro": "Ica pagino permisas vu probar filtrilo kontre l'antea $1 {{PLURAL:$1|modifiko|modifiki}} en la buxo adinfre.\nPor charjar existanta filtrilo, skribez la nomo dil filtrilo en la buxo infre la redakto-buxo, e pose kliktez la butono \"{{int:abusefilter-test-load}}\".",
 	"abusefilter-test-legend": "Probo di filtrili",

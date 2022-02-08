@@ -3,7 +3,8 @@
 		"authors": [
 			"Meno25",
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"SaldırganSincap"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "تحقق لمعرفة ما إذا كان مرشح الإساءة يطابق مجموعة من المتغيرات، تحرير حدث مرشح إساءة مسجل،\nvars أو rcid أو logid مطلوبون ولكن يمكن استخدام واحد فقط.",
@@ -22,7 +23,9 @@
 	"apihelp-abusefilterevalexpression-description": "تقييم تعبير مرشح إساءة.",
 	"apihelp-abusefilterevalexpression-summary": "تقييم تعبير مرشح إساءة.",
 	"apihelp-abusefilterevalexpression-param-expression": "التعبير لتقييمه.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "ما إذا كان يجب طباعة النتيجة بشكل جميل.",
 	"apihelp-abusefilterevalexpression-example-1": "تقييم تعبير بسيط",
+	"apihelp-abusefilterevalexpression-example-2": "تقييم تعبير بسيط ، تنسيق النتيجة",
 	"apihelp-abusefilterunblockautopromote-description": "يرفع منع المستخدم من تلقي ترقيات تلقائية بسبب نتيجة مرشح إساءة.",
 	"apihelp-abusefilterunblockautopromote-summary": "يرفع منع المستخدم من تلقي ترقيات تلقائية بسبب نتيجة مرشح إساءة.",
 	"apihelp-abusefilterunblockautopromote-param-user": "اسم المستخدم للمستخدم الذي تريد إلغاء منعه.",
@@ -44,6 +47,7 @@
 	"apihelp-query+abuselog-param-user": "إظهار الإدخالات من قبل مستخدم معين أو عنوان أيبي فقط.",
 	"apihelp-query+abuselog-param-title": "إظهار الإدخالات التي تحدث في صفحة معينة فقط.",
 	"apihelp-query+abuselog-param-filter": "إظهار الإدخالات فقط التي تم اكتشافها بواسطة معرفات المرشحات المحددة، افصل بالأنابيب والبادئة بـ\"$1\" للمرشحات العالمية.",
+	"apihelp-query+abuselog-param-filter-central": "إظهار الإدخالات التي تم التقاطها بواسطة معرفات عامل التصفية المحددة فقط. افصل مع الأنابيب.",
 	"apihelp-query+abuselog-param-limit": "الحد الأقصى لعدد الإدخالات للقائمة.",
 	"apihelp-query+abuselog-param-prop": "أي خصائص للحصول عليها.",
 	"apihelp-query+abuselog-param-wiki": "ويكي لإظهار نتائج منه.",

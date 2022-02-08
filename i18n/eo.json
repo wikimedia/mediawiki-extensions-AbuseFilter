@@ -21,7 +21,8 @@
 			"Tradukisto",
 			"Yekrats",
 			"Zarisi",
-			"Lepticed"
+			"Lepticed",
+			"Spenĉjo"
 		]
 	},
 	"abusefilter-desc": "Aplikas aŭtomatan heŭristikon al redaktoj.",
@@ -90,6 +91,7 @@
 	"abusefilter-log-details-ip": "Originala IP-adreso",
 	"abusefilter-log-details-checkuser": "Kontroli uzanton",
 	"abusefilter-log-noactions": "neniu",
+	"abusefilter-log-noactions-filter": "Neniu",
 	"abusefilter-log-details-diff": "Ŝanĝoj faritaj en redaktoj",
 	"abusefilter-log-linkoncontribs": "protokolo pri misuzado",
 	"abusefilter-log-linkoncontribs-text": "Protokolaĵoj en la Protokolo pri Misuzado por ĉi tiu uzanto",
