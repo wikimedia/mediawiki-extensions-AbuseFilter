@@ -1,4 +1,5 @@
 {
+	"name": "AbuseFilter",
 	"private": true,
 	"description": "Build tools for the AbuseFilter mediawiki extension.",
 	"scripts": {
