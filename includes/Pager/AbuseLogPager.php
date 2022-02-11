@@ -26,7 +26,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	/**
 	 * @var array
 	 */
-	public $mConds;
+	private $conds;
 
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
@@ -66,7 +66,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		array $hideEntries = []
 	) {
 		parent::__construct( $context, $linkRenderer );
-		$this->mConds = $conds;
+		$this->conds = $conds;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permManager;
 		$this->afPermissionManager = $afPermissionManager;
@@ -341,10 +341,6 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
-		$afPermManager = AbuseFilterServices::getPermissionManager();
-
-		$conds = $this->mConds;
-
 		$info = [
 			'tables' => [ 'abuse_filter_log', 'abuse_filter', 'revision' ],
 			'fields' => [
@@ -352,7 +348,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$this->mDb->tableName( 'abuse_filter' ) . '.*',
 				'rev_id',
 			],
-			'conds' => $conds,
+			'conds' => $this->conds,
 			'join_conds' => [
 				'abuse_filter' => [
 					'LEFT JOIN',
@@ -383,7 +379,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			];
 		}
 
-		if ( !$afPermManager->canSeeHiddenLogEntries( $this->getUser() ) ) {
+		if ( !$this->afPermissionManager->canSeeHiddenLogEntries( $this->getUser() ) ) {
 			$info['conds']['afl_deleted'] = 0;
 		}
 
