@@ -3,12 +3,13 @@
 		"authors": [
 			"Akapochtli",
 			"Fluence",
-			"Teòtlalili"
+			"Teòtlalili",
+			"Languaeditor"
 		]
 	},
 	"abusefilter-log-search-user": "Tequitiuhqui:",
 	"abusefilter-log-search-title": "Tocaitl:",
-	"abusefilter-log-search-submit": "Tlatemoliztli",
+	"abusefilter-log-search-submit": "Xiktemo",
 	"abusefilter-log-noactions": "ahtlein",
 	"abusefilter-log-hide-reason": "Tleca:",
 	"abusefilter-list-edit": "Tlapatlaliztli",
@@ -18,6 +19,6 @@
 	"abusefilter-history-select-user": "Tequitiuhqui",
 	"abusefilter-examine-user": "Tequitiuhqui",
 	"abusefilter-examine-title": "Tlahcuilolamatocaitl:",
-	"abusefilter-examine-submit": "Tlatemoliztli",
+	"abusefilter-examine-submit": "Xiktemo",
 	"abusefilter-topnav-home": "Pehualoyan"
 }

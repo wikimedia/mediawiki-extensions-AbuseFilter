@@ -553,7 +553,7 @@
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|değiştirdi}} $4 ($5)",
 	"abusefilter-log-invalid-filter": "Belirtilen filtre kimlikleri bazıları geçersiz.",
 	"abusefilter-log-noresults": "Sonuç yok",
-	"abusefilter-diff-title": "Sürümler arasındaki farklar",
+	"abusefilter-diff-title": "Revizyonlar arasındaki farklar",
 	"abusefilter-diff-item": "Öğe",
 	"abusefilter-diff-version": "$1 üzerinden sürümü {{GENDER:$3|yapan}} $2",
 	"abusefilter-diff-info": "Temel bilgiler",
