@@ -395,7 +395,7 @@
 	"abusefilter-topnav-log": "Зуламаш долу тéптар",
 	"abusefilter-topnav-tools": "Нисяран гӀирс",
 	"abusefilter-log-name": "Зулам литтаран тептар",
-	"abusefilter-log-header": "ХӀокху тептар чохь гойту литтаран чохь бина хийцамаш.\nМадарра [[Special:AbuseFilter/history|хьажа тӀеххьара бина литтаран хийцамашка]].",
+	"abusefilter-log-header": "ХӀокху тептар чохь гойту литтаран чохь бина хийцамаш.\nМадарра [[Special:AbuseFilter/history|хьажа тӀаьххьара бина литтаран хийцамашка]].",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|кхоьллина}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|хийцина}} $4 ($5)",
 	"abusefilter-log-noresults": "ХӀума ца карийна",

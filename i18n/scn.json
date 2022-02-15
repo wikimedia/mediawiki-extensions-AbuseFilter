@@ -205,6 +205,7 @@
 	"abusefilter-edit-disallow-preview": "Ammustra/ammuccia l'antiprima dû missaggiu scigghiutu",
 	"abusefilter-edit-disallow-edit": "Crea/Cancia lu missaggiu scigghiutu",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Etichetti]] di mpiccicari:",
+	"abusefilter-edit-tag-hidden-placeholder": "Agghiunci di l'etichetti (separati da virguli)",
 	"abusefilter-edit-denied": "Nun poi vìdiri li dittagghî di stu filtru pirchì veni ammucciatu dû pùbblicu.",
 	"abusefilter-edit-main": "Paràmitri dû filtru",
 	"abusefilter-edit-done-subtitle": "Filtru canciatu",

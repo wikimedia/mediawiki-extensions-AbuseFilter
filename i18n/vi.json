@@ -238,6 +238,8 @@
 	"abusefilter-edit-throttle-groups": "Thắt cổ chai các nhóm:",
 	"abusefilter-edit-throttle-groups-help": "Xem $1.",
 	"abusefilter-edit-throttle-groups-help-text": "tài liệu ở mediawiki.org",
+	"abusefilter-edit-throttle-hidden-placeholder": "Để thêm toán tử AND, phân tách bằng dấu phẩy; để thêm toán tử OR, phân tách bằng ngắt dòng",
+	"abusefilter-edit-throttle-placeholder": "Để thêm toán tử AND, phân tách bằng dấu phẩy; để thêm toán tử OR, thêm lần lượt từng nhóm",
 	"abusefilter-throttle-ip": "Địa chỉ IP",
 	"abusefilter-throttle-user": "tài khoản thành viên",
 	"abusefilter-throttle-range": "dải /16",
