@@ -499,6 +499,7 @@
 	"abusefilter-exception-unclosedcomment": "نظر بسته‌نشده در نویسهٔ $1.",
 	"abusefilter-exception-invalidiprange": "بازهٔ نامعتبر آی‌پی «$2» در نویسهٔ $1 وارد شده.",
 	"abusefilter-exception-disabledvar": "متغیر $2 در نویسهٔ $1 دیگر مورداستفاده نیست.",
+	"abusefilter-exception-variablevariable": "set و set_var انتظار دارد که آرگومان اول یک رشتهٔ دقیق باشد، یافت‌شده در نویسهٔ $1.",
 	"abusefilter-exception-unknownfunction": "$2 در نویسهٔ $1 تابع معتبری نیست",
 	"abusefilter-exception-unusedvars": "این متغیرها استفاده نشده‌اند: $2.",
 	"abusefilter-parser-warning-match-empty-regex": "این عبارت باقاعده با رشتهٔ خالی در نویسهٔ $1 منطبق است",

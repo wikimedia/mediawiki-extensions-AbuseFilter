@@ -30,7 +30,7 @@
 	"abusefilter-degrouped": "Tác vụ này đã được tự động xác định là nguy hại.\nDo đó, bạn không được phép thực hiện; vì tài khoản của bạn bị nghi là bị đánh cắp, tất cả các quyền đã bị thu hồi.\nNếu bạn tin rằng điều này xảy ra do nhầm lẫn, xin hãy liên hệ với một hành chính viên cùng với lời giải thích cho tác vụ của mình, quyền của bạn có thể được phục hồi.\nMiêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1",
 	"abusefilter-autopromote-blocked": "Tác vụ này đã được tự động xác định là nguy hại, và bạn không được phép thực hiện nó.\nNgoài ra, để bảo đảm an toàn, một số quyền thường có của tài khoản hoàn chỉnh đã tạm thời gỡ bỏ ra khỏi tài khoản của bạn.\nMiêu tả ngắn về quy định nguy hại mà tác vụ của bạn gặp phải là: $1",
 	"abusefilter-blocker": "Bộ lọc sai phạm",
-	"abusefilter-blockreason": "Bị bộ lọc sai phạm tự động cấm. Mô tả về quy định liên quan: $1",
+	"abusefilter-blockreason": "Bộ lọc sai phạm tự động cấm. Mô tả điều kiện: $1",
 	"abusefilter-degroupreason": "Quyền hạn đã bị bộ lọc sai phạm tự động tước bỏ. Mô tả quy định: $1",
 	"abusefilter-blockautopromotereason": "Quyền hạn đã bị bộ lọc sai phạm tự động tước bỏ. \nMô tả quy định: $1",
 	"abusefilter-accountreserved": "Tên tài khoản này được bộ lọc sai phạm bảo lưu để sử dụng.",
