@@ -150,6 +150,7 @@ return [
 	EchoNotifier::SERVICE_NAME => static function ( MediaWikiServices $services ): EchoNotifier {
 		return new EchoNotifier(
 			$services->getService( FilterLookup::SERVICE_NAME ),
+			$services->getService( ConsequencesRegistry::SERVICE_NAME ),
 			ExtensionRegistry::getInstance()->isLoaded( 'Echo' )
 		);
 	},

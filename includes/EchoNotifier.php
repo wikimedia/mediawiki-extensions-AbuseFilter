@@ -3,6 +3,8 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use EchoEvent;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use Title;
 
@@ -16,19 +18,23 @@ class EchoNotifier {
 
 	/** @var FilterLookup */
 	private $filterLookup;
-
+	/** @var ConsequencesRegistry */
+	private $consequencesRegistry;
 	/** @var bool */
 	private $isEchoLoaded;
 
 	/**
 	 * @param FilterLookup $filterLookup
+	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param bool $isEchoLoaded
 	 */
 	public function __construct(
 		FilterLookup $filterLookup,
+		ConsequencesRegistry $consequencesRegistry,
 		bool $isEchoLoaded
 	) {
 		$this->filterLookup = $filterLookup;
+		$this->consequencesRegistry = $consequencesRegistry;
 		$this->isEchoLoaded = $isEchoLoaded;
 	}
 
@@ -42,10 +48,10 @@ class EchoNotifier {
 
 	/**
 	 * @param int $filter
-	 * @return int
+	 * @return ExistingFilter
 	 */
-	private function getLastUserIDForFilter( int $filter ): int {
-		return $this->filterLookup->getFilter( $filter, false )->getUserID();
+	private function getFilterObject( int $filter ): ExistingFilter {
+		return $this->filterLookup->getFilter( $filter, false );
 	}
 
 	/**
@@ -54,11 +60,17 @@ class EchoNotifier {
 	 * @return array
 	 */
 	public function getDataForEvent( int $filter ): array {
+		$filterObj = $this->getFilterObject( $filter );
+		$throttledActionNames = array_intersect(
+			$filterObj->getActionsNames(),
+			$this->consequencesRegistry->getDangerousActionNames()
+		);
 		return [
 			'type' => self::EVENT_TYPE,
 			'title' => $this->getTitleForFilter( $filter ),
 			'extra' => [
-				'user' => $this->getLastUserIDForFilter( $filter ),
+				'user' => $filterObj->getUserID(),
+				'throttled-actions' => $throttledActionNames,
 			],
 		];
 	}

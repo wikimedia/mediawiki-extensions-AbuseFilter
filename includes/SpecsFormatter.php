@@ -4,7 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use Language;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use Message;
 use MessageLocalizer;
+use RawMessage;
 
 /**
  * @todo Improve this once DI around Message objects is improved in MW core.
@@ -32,6 +34,7 @@ class SpecsFormatter {
 	/**
 	 * @param string $action
 	 * @return string HTML
+	 * @todo Replace usage with getActionMessage
 	 */
 	public function getActionDisplay( string $action ): string {
 		// Give grep a chance to find the usages:
@@ -40,6 +43,20 @@ class SpecsFormatter {
 		// abusefilter-action-rangeblock, abusefilter-action-disallow
 		$msg = $this->messageLocalizer->msg( "abusefilter-action-$action" );
 		return $msg->isDisabled() ? htmlspecialchars( $action ) : $msg->escaped();
+	}
+
+	/**
+	 * @param string $action
+	 * @return Message
+	 */
+	public function getActionMessage( string $action ): Message {
+		// Give grep a chance to find the usages:
+		// abusefilter-action-tag, abusefilter-action-throttle, abusefilter-action-warn,
+		// abusefilter-action-blockautopromote, abusefilter-action-block, abusefilter-action-degroup,
+		// abusefilter-action-rangeblock, abusefilter-action-disallow
+		$msg = $this->messageLocalizer->msg( "abusefilter-action-$action" );
+		// XXX Why do we expect the message to be disabled?
+		return $msg->isDisabled() ? new RawMessage( $action ) : $msg;
 	}
 
 	/**
