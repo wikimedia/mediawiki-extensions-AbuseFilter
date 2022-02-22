@@ -175,7 +175,7 @@
 	"abusefilter-enabled": "Aktiviert",
 	"abusefilter-deleted": "Gelöscht",
 	"abusefilter-disabled": "Deaktiviert",
-	"abusefilter-throttled": "gedrosselt",
+	"abusefilter-throttled": "Hohe Trefferquote",
 	"abusefilter-hitcount": "{{PLURAL:$1|Ein Treffer|$1 Treffer}}",
 	"abusefilter-new": "Neuen Filter erstellen",
 	"abusefilter-import-button": "Filter importieren",
@@ -222,7 +222,8 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Du siehst eine alte Version dieses Filters. Die angeführten Statistiken beziehen sich auf die neueste Version des Filters.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Zurück zu der Versionsgeschichte des Filters]].",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.\nIm Durchschnitt beträgt ihre Ausführungszeit $4 ms und sie verbraucht {{PLURAL:$5|eine Bedingung|$5 Bedingungen}} des Bedingungskontingents.",
-	"abusefilter-edit-throttled-warning": "'''Warnung:''' Dieser Filter wurde automatisch als schädlich markiert. Aus Sicherheitsgründen werden die folgenden Aktionen nicht ausgeführt ($1). Bitte überprüfe und [[mw:Extension:AbuseFilter/Conditions|optimiere]] deine Bedingungen, um diese Beschränkung aufzuheben.",
+	"abusefilter-edit-throttled-warning": "'''Warnung:''' Dieser Filter wurde automatisch als schädlich eingestuft. Als Sicherheitsmaßnahme {{PLURAL:$2|wird die folgende Aktion|werden die folgenden Aktionen}} nicht ausgeführt: $1. Bitte prüfe, ob die hohe Trefferquote erwartet wird. Wenn ja, kannst du den Filter erneut speichern, um diese Einschränkung aufzuheben.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Warnung:''' Dieser Filter wurde automatisch als schädlich eingestuft. Es wurden keine Aktionen automatisch deaktiviert, aber überprüfe bitte, ob die hohe Trefferquote zu erwarten ist. Wenn ja, kannst du diese Warnung ignorieren.",
 	"abusefilter-edit-new": "Neuer Filter",
 	"abusefilter-edit-save": "Filter speichern",
 	"abusefilter-edit-id": "Filterkennung:",
@@ -602,6 +603,8 @@
 	"tag-abusefilter-condition-limit": "Bedingungsgrenze erreicht",
 	"tag-abusefilter-condition-limit-description": "Bearbeitungen oder andere Ereignisse, die nicht von allen aktiven [[Special:AbuseFilter|Missbrauchsfiltern]] überprüft werden konnten ([[mw:Extension:AbuseFilter/Conditions|Hilfe]]).",
 	"notification-header-throttle-filter": "Der von {{GENDER:$1|dir}} kürzlich bearbeitete Missbrauchsfilter $2 wurde gedrosselt.",
+	"notification-header-throttle-filter-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|du}} kürzlich bearbeitet hast, hatte eine hohe Trefferquote und {{PLURAL:$4|die folgende Aktion wurde|die folgenden Aktionen wurden}} automatisch deaktiviert: $3.",
+	"notification-header-throttle-filter-no-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|du}} kürzlich bearbeitet hast, hatte eine hohe Trefferquote, aber es wurden keine Aktionen automatisch deaktiviert.",
 	"notification-subject-throttle-filter": "Ein von {{GENDER:$1|dir}} kürzlich bearbeiteter Missbrauchsfilter wurde auf {{SITENAME}} gedrosselt.",
 	"notification-link-text-show-filter": "Zeige Filter"
 }
