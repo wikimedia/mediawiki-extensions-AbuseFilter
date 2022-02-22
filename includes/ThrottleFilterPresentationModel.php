@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use EchoEventPresentationModel;
+use Message;
 
 class ThrottleFilterPresentationModel extends EchoEventPresentationModel {
 
@@ -19,7 +20,27 @@ class ThrottleFilterPresentationModel extends EchoEventPresentationModel {
 	public function getHeaderMessage() {
 		$text = $this->event->getTitle()->getText();
 		list( , $filter ) = explode( '/', $text, 2 );
-		return $this->msg( 'notification-header-throttle-filter' )
+		$disabledActions = $this->event->getExtraParam( 'throttled-actions' );
+		if ( $disabledActions === null ) {
+			// BC for when we didn't include the actions here.
+			return $this->msg( 'notification-header-throttle-filter' )
+				->params( $this->getViewingUserForGender() )
+				->numParams( $filter );
+		}
+		if ( $disabledActions ) {
+			$specsFormatter = AbuseFilterServices::getSpecsFormatter();
+			$specsFormatter->setMessageLocalizer( $this );
+			$disabledActionsLocalized = [];
+			foreach ( $disabledActions as $action ) {
+				$disabledActionsLocalized[] = $specsFormatter->getActionMessage( $action )->text();
+			}
+			return $this->msg( 'notification-header-throttle-filter-actions' )
+				->params( $this->getViewingUserForGender() )
+				->numParams( $filter )
+				->params( Message::listParam( $disabledActionsLocalized ) )
+				->params( count( $disabledActionsLocalized ) );
+		}
+		return $this->msg( 'notification-header-throttle-filter-no-actions' )
 			->params( $this->getViewingUserForGender() )
 			->numParams( $filter );
 	}

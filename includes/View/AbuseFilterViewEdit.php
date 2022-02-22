@@ -395,26 +395,26 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		if ( $filterObj->isThrottled() ) {
-			$throttledActions = array_intersect(
+			$throttledActionNames = array_intersect(
 				$filterObj->getActionsNames(),
 				$this->consequencesRegistry->getDangerousActionNames()
 			);
 
-			if ( $throttledActions ) {
-				$throttledActions = array_map(
-					function ( $filterAction ) {
-						// TODO: This is SpecsFormatter::getActionDisplay, but not escaped
-						return $this->msg( 'abusefilter-action-' . $filterAction )->text();
-					},
-					$throttledActions
-				);
+			if ( $throttledActionNames ) {
+				$throttledActionsLocalized = [];
+				foreach ( $throttledActionNames as $actionName ) {
+					$throttledActionsLocalized[] = $this->specsFormatter->getActionMessage( $actionName )->text();
+				}
 
-				$flags .= Html::warningBox(
-					$this->msg( 'abusefilter-edit-throttled-warning' )
-					->plaintextParams( $lang->commaList( $throttledActions ) )
-					->parseAsBlock()
-				);
+				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning' )
+					->plaintextParams( $lang->commaList( $throttledActionsLocalized ) )
+					->params( count( $throttledActionsLocalized ) )
+					->parseAsBlock();
+			} else {
+				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning-no-actions' )
+					->parseAsBlock();
 			}
+			$flags .= Html::warningBox( $throttledMsg );
 		}
 
 		foreach ( $checkboxes as $checkboxId ) {

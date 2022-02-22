@@ -145,7 +145,7 @@
 	"abusefilter-enabled": "Enabled",
 	"abusefilter-deleted": "Deleted",
 	"abusefilter-disabled": "Disabled",
-	"abusefilter-throttled": "throttled",
+	"abusefilter-throttled": "High rate of matches",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|hit|hits}}",
 	"abusefilter-new": "Create a new filter",
 	"abusefilter-import-button": "Import filter",
@@ -192,7 +192,8 @@
 	"abusefilter-edit-oldwarning-view": "<strong>You are viewing an old version of this filter.\nThe statistics quoted are for the most recent version of the filter.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Return to this filter's history]].",
 	"abusefilter-edit-status-label": "Statistics:",
 	"abusefilter-edit-status": "Of the last $1 {{PLURAL:$1|action|actions}}, this filter has matched $2 ($3%).\nOn average, its run time is $4 ms, and it consumes $5 {{PLURAL:$5|condition|conditions}} of the condition limit.",
-	"abusefilter-edit-throttled-warning": "'''Warning:''' This filter was automatically flagged as harmful. As a safety measure, the following actions will not execute ($1). Please review and [[mw:Extension:AbuseFilter/Conditions|optimize]] your conditions to remove this restriction",
+	"abusefilter-edit-throttled-warning": "'''Warning:''' This filter was automatically flagged as harmful. As a safety measure, the following {{PLURAL:$2|action|actions}} will not execute: $1. Please check whether the high rate of matches is expected. If so, you can save the filter again to remove this restriction.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Warning:''' This filter was automatically flagged as harmful. No actions were automatically disabled, but please check whether the high rate of matches is expected. If so, you can ignore this warning.",
 	"abusefilter-edit-new": "New filter",
 	"abusefilter-edit-save": "Save filter",
 	"abusefilter-edit-id": "Filter ID:",
@@ -573,6 +574,8 @@
 	"tag-abusefilter-condition-limit": "condition limit reached",
 	"tag-abusefilter-condition-limit-description": "Edits or other events that couldn't be checked by all active [[Special:AbuseFilter|abuse filters]] ([[mw:Extension:AbuseFilter/Conditions|help]]).",
 	"notification-header-throttle-filter": "Abuse filter $2 {{GENDER:$1|you}} recently edited was throttled.",
+	"notification-header-throttle-filter-actions": "The abuse filter $2 {{GENDER:$1|you}} recently edited had a high rate of matches and the following {{PLURAL:$4|action was|actions were}} automatically disabled: $3.",
+	"notification-header-throttle-filter-no-actions": "The abuse filter $2 {{GENDER:$1|you}} recently edited had a high rate of matches but no actions were automatically disabled.",
 	"notification-subject-throttle-filter": "An abuse filter {{GENDER:$1|you}} edited was throttled on {{SITENAME}}",
 	"notification-link-text-show-filter": "Show filter"
 }

@@ -186,7 +186,7 @@
 	"abusefilter-enabled": "Abuse filter status.\n{{Identical|Enabled}}",
 	"abusefilter-deleted": "Abuse filter status.\n{{Identical|Deleted}}",
 	"abusefilter-disabled": "Abuse filter status.\n{{Identical|Disabled}}",
-	"abusefilter-throttled": "Abuse filter status where some actions have been automatically disabled. See {{msg-mw|abusefilter-edit-throttled-warning}}",
+	"abusefilter-throttled": "Abuse filter status where the filter is matching many edits. See {{msg-mw|abusefilter-edit-throttled-warning}} and {{msg-mw|abusefilter-edit-throttled-warning-no-actions}}.",
 	"abusefilter-hitcount": "Indicates number of times an abuse filter was triggered. Parameters:\n* $1 is the number of hits.",
 	"abusefilter-new": "Button text for creating a new abuse filter.",
 	"abusefilter-import-button": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseLog]].",
@@ -233,7 +233,8 @@
 	"abusefilter-edit-oldwarning-view": "Warning displayed when viewing an older version of a filter. Parameters:\n* $1 - (Unused) history ID\n* $2 - filter ID\nSee also {{msg-mw|AbuseFilter-edit-oldwarning}}",
 	"abusefilter-edit-status-label": "Field label for abuse filter statistics.\n{{Identical|Statistics}}",
 	"abusefilter-edit-status": "Parameters:\n* $1 - number of actions\n* $2 - matched count\n* $3 - matched percentage\n* $4 - time (in milliseconds)\n* $5 - number of conditions",
-	"abusefilter-edit-throttled-warning": "Used as warning message when the filter is throttled and actions will not execute. Parameters:\n* $1 - is a string containing the actions that will not execute",
+	"abusefilter-edit-throttled-warning": "Used as warning message when the filter is throttled and actions will not execute. Parameters:\n* $1 - is a string containing the actions that will not execute\n* $2 - number of disabled actions, for PLURAL",
+	"abusefilter-edit-throttled-warning-no-actions": "Used as warning message when the filter is throttled but no actions were disabled.",
 	"abusefilter-edit-new": "Field value in case an edited filter is new.",
 	"abusefilter-edit-save": "Submit button text to save a filter.",
 	"abusefilter-edit-id": "Field label for filter identifier.\n{{Identical|Filter ID}}",
@@ -614,6 +615,8 @@
 	"tag-abusefilter-condition-limit": "Change tag for edits that reached the condition limit",
 	"tag-abusefilter-condition-limit-description": "Description for \"condition limit reached\" change tag",
 	"notification-header-throttle-filter": "Header text for a notification when an abuse filter was throttled after the user edited it. Parameters:\n* $1 - the username of the viewing user, for use in GENDER\n* $2 - filter ID",
+	"notification-header-throttle-filter-actions": "Header text for a notification when an abuse filter was throttled after the user edited it and some actions were automatically disabled. Parameters:\n* $1 - the username of the viewing user, for use in GENDER\n* $2 - filter ID\n* $3 - list of actions that were disabled\n* $4 - number of disabled actions, for PLURAL",
+	"notification-header-throttle-filter-no-actions": "Header text for a notification when an abuse filter was throttled after the user edited it but no actions were automatically disabled. Parameters:\n* $1 - the username of the viewing user, for use in GENDER\n* $2 - filter ID",
 	"notification-subject-throttle-filter": "Email subject line for email notice when an abuse filter was throttled after the user edited it. Parameters:\n* $1 - the username of the receiving user, for use in GENDER",
 	"notification-link-text-show-filter": "Label for button that links to the filter that was throttled."
 }

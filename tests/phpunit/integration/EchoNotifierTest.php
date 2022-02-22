@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use EchoEvent;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -44,11 +45,16 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideDataForEvent
 	 * @covers ::__construct
 	 * @covers ::getDataForEvent
-	 * @covers ::getLastUserIDForFilter
+	 * @covers ::getFilterObject
 	 * @covers ::getTitleForFilter
 	 */
 	public function testGetDataForEvent( bool $loaded, int $filter, int $userID ) {
-		$notifier = new EchoNotifier( $this->getFilterLookup(), $loaded );
+		$expectedThrottledActions = [];
+		$notifier = new EchoNotifier(
+			$this->getFilterLookup(),
+			$this->createMock( ConsequencesRegistry::class ),
+			$loaded
+		);
 		[
 			'type' => $type,
 			'title' => $title,
@@ -60,7 +66,7 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( -1, $title->getNamespace() );
 		[ , $subpage ] = explode( '/', $title->getText(), 2 );
 		$this->assertSame( (string)$filter, $subpage );
-		$this->assertSame( [ 'user' => $userID ], $extra );
+		$this->assertSame( [ 'user' => $userID, 'throttled-actions' => $expectedThrottledActions ], $extra );
 	}
 
 	/**
@@ -70,7 +76,11 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		if ( !class_exists( EchoEvent::class ) ) {
 			$this->markTestSkipped( 'Echo not loaded' );
 		}
-		$notifier = new EchoNotifier( $this->getFilterLookup(), true );
+		$notifier = new EchoNotifier(
+			$this->getFilterLookup(),
+			$this->createMock( ConsequencesRegistry::class ),
+			true
+		);
 		$this->assertInstanceOf( EchoEvent::class, $notifier->notifyForFilter( 1 ) );
 	}
 
@@ -80,7 +90,11 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 	public function testNotifyForFilter_EchoNotLoaded() {
 		$lookup = $this->createMock( FilterLookup::class );
 		$lookup->expects( $this->never() )->method( $this->anything() );
-		$notifier = new EchoNotifier( $lookup, false );
+		$notifier = new EchoNotifier(
+			$lookup,
+			$this->createMock( ConsequencesRegistry::class ),
+			false
+		);
 		$this->assertFalse( $notifier->notifyForFilter( 1 ) );
 	}
 
