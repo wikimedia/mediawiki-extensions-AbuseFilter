@@ -187,7 +187,7 @@
 	"abusefilter-enabled": "Activé",
 	"abusefilter-deleted": "Supprimé",
 	"abusefilter-disabled": "Désactivé",
-	"abusefilter-throttled": "limité",
+	"abusefilter-throttled": "Taux élevé de correspondances",
 	"abusefilter-hitcount": "$1 détection{{PLURAL:$1||s}}",
 	"abusefilter-new": "Créer un nouveau filtre",
 	"abusefilter-import-button": "Importer un filtre",
@@ -234,7 +234,8 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Vous visualisez une ancienne version de ce filtre.\nLes statistiques citées concernent la plus récente version du filtre.</strong>&nbsp;●\n[[Special:AbuseFilter/history/$2|Retour à l’historique de ce filtre]].",
 	"abusefilter-edit-status-label": "Statistiques :",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, ce filtre a été déclenché $2 fois ($3 %).\nEn moyenne, sa durée d’exécution est de $4 ms, et il consomme $5 {{PLURAL:$5|condition|conditions}} de la limite de conditions.",
-	"abusefilter-edit-throttled-warning": "'''Attention :''' ce filtre a été marqué automatiquement comme nuisible. Par mesure de sûreté, les actions suivantes ne seront pas exécutées ($1). Veuillez relire et [[mw:Extension:AbuseFilter/Conditions|optimiser]] vos conditions pour supprimer cette restriction",
+	"abusefilter-edit-throttled-warning": "'''Attention :''' ce filtre a été marqué automatiquement comme nuisible. Par mesure de sûreté, {{PLURAL:$2|l’action suivante ne sera pas exécutée|les actions suivantes ne seront pas exécutées}} : $1. Veuillez vérifier si le taux élevé de correspondances est attendu. Si c’est le cas, vous pouvez enregistrer à nouveau le filtre pour retirer cette restriction.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Attention :''' ce filtre a été automatiquement marqué comme nuisible. Aucune action n’a été automatiquement désactivée, mais veuillez vérifier si le taux élevé de correspondances est attendu. Si c’est la cas, vous pouvez ignorer cet avertissement.",
 	"abusefilter-edit-new": "Nouveau filtre",
 	"abusefilter-edit-save": "Enregistrer le filtre",
 	"abusefilter-edit-id": "Nº du filtre :",
@@ -615,6 +616,8 @@
 	"tag-abusefilter-condition-limit": "Limite de condition atteinte",
 	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui ne peuvent pas être vérifiés par tous les [[Special:AbuseFilter|filtres d’abus]] actifs ([[mw:Extension:AbuseFilter/Conditions|aide]]).",
 	"notification-header-throttle-filter": "Le filtre d’abus $2 que {{GENDER:$1|}}vous avez modifié récemment a été engorgé.",
+	"notification-header-throttle-filter-actions": "Le filtre anti-abus $2 que {{GENDER:$1|}}vous avez récemment modifié a un taux élevé de correspondances et {{PLURAL:$4|l’action suivante a été automatiquement désactivée|les actions suivantes ont été automatiquement désactivées}} : $3",
+	"notification-header-throttle-filter-no-actions": "Le filtre anti-abus $2 que {{GENDER:$1|}}vous avez récemment modifié a un taux élevé de correspondances mais aucune action n’a été automatiquement désactivée.",
 	"notification-subject-throttle-filter": "Un filtre d’abus que {{GENDER:$1|}}vous avez modifié a été engorgé sur {{SITENAME}}",
 	"notification-link-text-show-filter": "Afficher le filtre"
 }

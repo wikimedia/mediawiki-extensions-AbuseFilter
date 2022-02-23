@@ -149,7 +149,7 @@
 	"abusefilter-enabled": "Вклучен",
 	"abusefilter-deleted": "Избришан",
 	"abusefilter-disabled": "Исклучен",
-	"abusefilter-throttled": "наметнато",
+	"abusefilter-throttled": "Висок степен на погодоци",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|погодок|погодоци}}",
 	"abusefilter-new": "Создај нов филтер",
 	"abusefilter-import-button": "Увези филтер",

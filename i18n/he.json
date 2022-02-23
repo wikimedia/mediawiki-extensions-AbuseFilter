@@ -162,7 +162,7 @@
 	"abusefilter-enabled": "מופעל",
 	"abusefilter-deleted": "מחוק",
 	"abusefilter-disabled": "כבוי",
-	"abusefilter-throttled": "הוגבל",
+	"abusefilter-throttled": "קצב התאמות גבוה",
 	"abusefilter-hitcount": "{{PLURAL:$1|פעולה אחת סוננה|$1 פעולות סוננו}}",
 	"abusefilter-new": "יצירת מסנן חדש",
 	"abusefilter-import-button": "ייבוא מסנן",
@@ -209,7 +209,8 @@
 	"abusefilter-edit-oldwarning-view": "<strong>אתם צופים בגרסה ישנה של המסנן הזה.\nהסטטיסטיקה שמצוטטת מתייחסת לגרסה האחרונה של המסנן.</strong> &bull;\n[[Special:AbuseFilter/history/$2|חזרה להיסטוריה של המסנן הזה]].",
 	"abusefilter-edit-status-label": "סטטיסטיקות:",
 	"abusefilter-edit-status": "מתוך {{PLURAL:$1|הפעולה האחרונה|$1 הפעולות האחרונות}}, מסנן זה התאים ל־$2 ($3%).\nבממוצע, זמן הריצה שלו היה $4 מ\"ש, והוא צורך {{PLURAL:$5|תנאי אחד|$5 תנאים}} מתוך מגבלת התנאים.",
-	"abusefilter-edit-throttled-warning": "'''אזהרה:''' המסנן הזה סומן אוטומטית בתור מזיק. בתור אמצעי זהירות, הפעולות הבאות לא תתבצענה ($1). נא לסקור ו[[mw:Extension:AbuseFilter/Conditions|לשפר]] את התנאים שלך כדי להסיר את המגבלה הזאת",
+	"abusefilter-edit-throttled-warning": "'''אזהרה:''' המסנן הזה סומן אוטומטית בתור מזיק. בתור אמצעי זהירות, {{PLURAL:$2|הפעולה הבאה לא תתבצע|הפעולות הבאות לא תתבצענה}}: $1. נא לבדוק אם הקצב הגבוה של ההתאמות מצופה. אם כן, באפשרותף לשמור שוב את המסנן כדי להסיר את המגבלה הזאת.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''אזהרה:''' המסנן הזה סומן אוטומטית בתור מזיר. לא כובו שום פעולות באופן אוטומטי, אבל נא לבדוק אם הקצב הגבוה של ההתאמות מצופה. אם כן, אפשר להתעלם מהאזהרה הזאת.",
 	"abusefilter-edit-new": "מסנן חדש",
 	"abusefilter-edit-save": "שמירת המסנן",
 	"abusefilter-edit-id": "מזהה המסנן:",
@@ -589,6 +590,8 @@
 	"tag-abusefilter-condition-limit": "חריגה מתנאי ההגבלה",
 	"tag-abusefilter-condition-limit-description": "עריכות או פעולות אחרות שלא ניתן היה לבדוק אותן באמצעות כל [[Special:AbuseFilter|מסנני ההשחתות]] הפעילים ([[mw:Extension:AbuseFilter/Conditions|עזרה]]).",
 	"notification-header-throttle-filter": "מסנן השחתות $2 {{GENDER:$1|שערכת}} לאחרונה הוגבל.",
+	"notification-header-throttle-filter-actions": "למסנן ההשחתה $2 {{GENDER:$1|שערכת}} לאחרונה יש קצב התאמות גבוה {{PLURAL:$4|והפעולה הבאה כובתה|והפעולות הבאות כובו}} באופן אוטומטי: $3.",
+	"notification-header-throttle-filter-no-actions": "למסנן ההשחתה $2 {{GENDER:$1|שערכת}} לאחרונה יש קצב התאמות גבוה, אבל לא כובו שום פעולות באופן אוטומטי.",
 	"notification-subject-throttle-filter": "מסנן השחתות {{GENDER:$1|שערכת}} הוגבל באתר {{SITENAME}}.",
 	"notification-link-text-show-filter": "הצגת המסנן"
 }
