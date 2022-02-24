@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"AC Krah"
+			"AC Krah",
+			"Julia"
 		]
 	},
 	"abusefilter-log-search-group-any": "Ebia",
@@ -20,6 +21,7 @@
 	"abusefilter-list-status": "Wodiberɛ",
 	"abusefilter-hidden": "Kokoam",
 	"abusefilter-deleted": "Apepa",
+	"abusefilter-throttled": "Nsemfua bebree wɔ h a esɛ deɛ wohwehwɛ yi",
 	"abusefilter-status-global": "Wiase nyinaa",
 	"abusefilter-list-options-searchfield": "Hwehwɛ mmara nom",
 	"abusefilter-list-options-searchoptions": "Ade hwehwɛ",
@@ -46,5 +48,6 @@
 	"abusefilter-edit-builder-funcs-lcase": "Fakɔ atwerɛ nketewa mu",
 	"abusefilter-edit-builder-funcs-ucase": "Fakɔ atwerɛ akɛseɛ mu",
 	"abusefilter-edit-builder-vars-accountname": "Edin a wode di dwuma",
-	"abusefilter-edit-builder-vars-action": "Anamɔntuo"
+	"abusefilter-edit-builder-vars-action": "Anamɔntuo",
+	"notification-header-throttle-filter-no-actions": "Saa abuse filter {{GENDER:$1|wo}} sesa yɛ nansa yi ara wɔ nsemfua bebree ɛse no, nanso action biara nyɛ disabled."
 }

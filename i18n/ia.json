@@ -193,6 +193,7 @@
 	"abusefilter-edit-status-label": "Statisticas:",
 	"abusefilter-edit-status": "Del ultime $1 {{PLURAL:$1|action|actiones}}, iste filtro ha correspondite a $2 ($3%).\nIn media, su durata de execution es $4ms, e illo consume $5 {{PLURAL:$5|condition|conditiones}} ex le limite de conditiones.",
 	"abusefilter-edit-throttled-warning": "'''Attention:''' Iste filtro ha essite automaticamente marcate como nocive. Como mesura de securitate, le sequente action{{PLURAL:$2||es}} non essera exequite: $1. Per favor, verifica si le grande numero de correspondentias es expectate. Si es assi, tu pote salveguardar le filtro de novo pro remover iste restriction.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Attention:''' Iste filtro ha essite automaticamente marcate como nocive. Nulle action ha essite automaticamente disactivate, ma per favor verifica si le grande numero de correspondentias es expectate. Si es le caso, tu pote ignorar iste advertimento.",
 	"abusefilter-edit-new": "Nove filtro",
 	"abusefilter-edit-save": "Salveguardar filtro",
 	"abusefilter-edit-id": "ID del filtro:",

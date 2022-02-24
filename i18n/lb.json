@@ -99,7 +99,7 @@
 	"abusefilter-enabled": "Aktivéiert",
 	"abusefilter-deleted": "Geläscht",
 	"abusefilter-disabled": "Desaktivéiert",
-	"abusefilter-throttled": "gebremst",
+	"abusefilter-throttled": "Héich Trefferquot",
 	"abusefilter-hitcount": "{{PLURAL:$1|1 Treffer|$1 Treffer}}",
 	"abusefilter-new": "En neie Filter uleeën",
 	"abusefilter-import-button": "Fiter importéieren",
