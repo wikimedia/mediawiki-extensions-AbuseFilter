@@ -178,7 +178,7 @@
 	"abusefilter-enabled": "Włączony",
 	"abusefilter-deleted": "Usunięty",
 	"abusefilter-disabled": "Wyłączony",
-	"abusefilter-throttled": "z ograniczeniami",
+	"abusefilter-throttled": "Wysoki współczynnik trafień",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|wywołanie|wywołania|wywołań}}",
 	"abusefilter-new": "Utwórz nowy filtr",
 	"abusefilter-import-button": "Import filtru",
