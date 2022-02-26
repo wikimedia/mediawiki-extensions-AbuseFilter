@@ -362,8 +362,10 @@ class FilterEvaluator {
 				$msg = $excep->getMessage();
 			}
 
-			$extraInfo = $filter !== null ? " for filter $filter" : '';
-			$this->logger->warning( "AbuseFilter parser error$extraInfo: $msg" );
+			$this->logger->warning(
+				"AbuseFilter parser error: {parser_error}",
+				[ 'parser_error' => $msg, 'broken_filter' => $filter ?: 'none' ]
+			);
 		}
 
 		return $result;
