@@ -218,6 +218,7 @@
 	"abusefilter-edit-status-label": "Statistiche:",
 	"abusefilter-edit-status": "Rispetto {{PLURAL:$1|all'azione più recente|alle $1 azioni più recenti}}, questo filtro ha trovato $2 {{PLURAL:$2|corrispondenza|corrispondenze}} ($3 %).\nIn media, il suo tempo di esecuzione è di $4 ms e consuma $5 {{PLURAL:$5|condizione|condizioni}} del limite delle condizioni.",
 	"abusefilter-edit-throttled-warning": "'''Attenzione''': questo filtro è stato automaticamente identificato come pericoloso. Come misura di sicurezza, {{PLURAL:$2|l'azione seguente non sarà eseguita|le azioni seguenti non saranno eseguite}}: $1. Controlla se l'alto tasso di corrispondenze era previsto. In tal caso, puoi salvare nuovamente il filtro per rimuovere questa restrizione.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Attenzione''': questo filtro è stato automaticamente identificato come pericoloso. Nessuna azione è stata disattivata automaticamente, ma cortesemente controlla che l'elevato numero di corrispondenze sia voluto. Se questo è il caso, puoi ignorare il presente avviso.",
 	"abusefilter-edit-new": "Nuovo filtro",
 	"abusefilter-edit-save": "Salva filtro",
 	"abusefilter-edit-id": "ID filtro:",
@@ -598,6 +599,8 @@
 	"tag-abusefilter-condition-limit": "limite di condizioni raggiunto",
 	"tag-abusefilter-condition-limit-description": "Modifiche o altri eventi che non sono stati controllati da tutti i [[Special:AbuseFilter|filtri anti abusi]] attivi ([[mw:Extension:AbuseFilter/Conditions|aiuto]]).",
 	"notification-header-throttle-filter": "Sono state disattivate alcune azioni del filtro anti abusi $2 che {{GENDER:$1|hai}} modificato recentemente su {{SITENAME}}.",
+	"notification-header-throttle-filter-actions": "Il filtro anti abusi $2 che {{GENDER:$1|hai}} modificato di recente ha avuto un elevato numero di corrispondenze e {{PLURAL:$4|la seguente azione è stata disattivata|le seguenti azioni sono state disattivate}} automaticamente: $3.",
+	"notification-header-throttle-filter-no-actions": "Il filtro anti abusi $2 che {{GENDER:$1|hai}} modificato di recente ha avuto un elevato numero di corrispondenze, ma nessuna azione è stata disattivata automaticamente.",
 	"notification-subject-throttle-filter": "Sono state disattivate alcune azioni di un filtro anti abusi che {{GENDER:$1|hai}} modificato su {{SITENAME}}",
 	"notification-link-text-show-filter": "Mostra filtro"
 }
