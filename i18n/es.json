@@ -20,6 +20,7 @@
 			"DannyS712",
 			"Dferg",
 			"Dgstranz",
+			"DiegoAmbrocio",
 			"Fitoschido",
 			"Fortega",
 			"Hasley",
@@ -252,6 +253,7 @@
 	"abusefilter-edit-status-label": "Estadísticas:",
 	"abusefilter-edit-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, este filtro ha coincidido con $2 ($3 %).\nComo promedio, su tiempo de ejecución es de $4 y consume $5 {{PLURAL:$5|condición|condiciones}} del límite de condiciones.",
 	"abusefilter-edit-throttled-warning": "'''Atención:''' Este filtro se marcó automáticamente como dañino. Como medida de seguridad, {{PLURAL:$2|la siguiente acción no se ejecutará|las siguientes acciones no se ejecutarán}}: $1. Compruebe si se espera la alta tasa de coincidencias. Si es así, puede guardar el filtro nuevamente para eliminar esta restricción.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Advertencia:''' Este filtro fue marcado automáticamente como dañino. No se ha desactivado automáticamente ninguna acción, pero por favor, comprueba si la alta tasa de coincidencias es la esperada. Si es así, puedes ignorar esta advertencia.",
 	"abusefilter-edit-new": "Filtro nuevo",
 	"abusefilter-edit-save": "Guardar filtro",
 	"abusefilter-edit-id": "Identificador de filtro:",
@@ -631,6 +633,8 @@
 	"tag-abusefilter-condition-limit": "límite de condiciones superado",
 	"tag-abusefilter-condition-limit-description": "Ediciones u otros eventos que no pudieron ser verificados por todos los [[Special:AbuseFilter|filtros antiabusos]] ([[mw:Extension:AbuseFilter/Conditions|ayuda]]).",
 	"notification-header-throttle-filter": "El filtro antiabusos $2 que {{GENDER:$1|editastes}} recientemente ha sido limitado.",
+	"notification-header-throttle-filter-actions": "El filtro de abuso $2 {{GENDER:$1|you}} recientemente editado tenía un alto índice de coincidencias y las siguientes {{PLURAL:$4|action was|actions were}} automáticamente desactivadas: $3.",
+	"notification-header-throttle-filter-no-actions": "El filtro de abuso $2 {{GENDER:$1|you}} recientemente editado tenía un alto índice de coincidencias pero no se desactivó ninguna acción automáticamente.",
 	"notification-subject-throttle-filter": "Un filtro antiabusos que {{GENDER:$1|editastes}} ha sido limitado en {{SITENAME}}",
 	"notification-link-text-show-filter": "Mostrar filtro"
 }
