@@ -444,7 +444,7 @@
 	"abusefilter-history-select-filter": "ID bộ lọc:",
 	"abusefilter-history-select-submit": "Tinh lọc",
 	"abusefilter-history-diff": "Thay đổi",
-	"abusefilter-history-error-hidden": "Bạn đã yêu cầu một bộ lọc ẩn, nên không thể xem lịch sử của nó.",
+	"abusefilter-history-error-hidden": "Bộ lọc bạn yêu cầu bị ẩn, bạn không thể xem lịch sử của nó.",
 	"abusefilter-exception-unexpectedatend": "“$2” không mong đợi ở ký tự $1.",
 	"abusefilter-exception-expectednotfound": "Tìm thấy $3 ở ký tự $4 thay vì $2 ở $1.",
 	"abusefilter-exception-unrecognisedkeyword": "Không hiểu được từ khóa $2 tại ký tự $1.",
