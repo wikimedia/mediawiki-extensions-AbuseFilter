@@ -205,8 +205,6 @@
 	"abusefilter-examine": "သီးသန့်ပြောင်းလဲမှုများကို စစ်ဆေးရန်",
 	"abusefilter-examine-intro": "ဤစာမျက်နှာသည် သီးသန့်အပြောင်းအလဲအတွက် အလွဲသုံးစားမှု စိစစ်စနစ်မှ ထုတ်ပြန်သည့် ပြောင်းလဲနိုင်သောအကြောင်းအရာများကို စစ်ဆေးရန်နှင့် စမ်းသပ်ရန် ခွင့်ပြုသည်။",
 	"abusefilter-examine-legend": "ပြောင်းလဲမှုများကို ရွေးပါ",
-	"abusefilter-examine-user": "အသုံးပြုသူ:",
-	"abusefilter-examine-title": "စာမျက်နှာ ခေါင်းစဉ်:",
 	"abusefilter-examine-submit": "ရှာဖွေရန်",
 	"abusefilter-examine-test-button": "စိစစ်မှုစနစ်ကို စမ်းသပ်ရန်",
 	"abusefilter-examine-nomatch": "ဤပြောင်းလဲချက်သည် စိစစ်စနစ်နှင့် မကိုက်ညီခဲ့ပါ။",
