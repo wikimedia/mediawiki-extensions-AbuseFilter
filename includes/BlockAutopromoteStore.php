@@ -75,7 +75,7 @@ class BlockAutopromoteStore {
 		}
 
 		$logEntry = new ManualLogEntry( 'rights', 'blockautopromote' );
-		$logEntry->setPerformer( $this->filterUser->getUser() );
+		$logEntry->setPerformer( $this->filterUser->getUserIdentity() );
 		$logEntry->setTarget( new TitleValue( NS_USER, $target->getName() ) );
 
 		$logEntry->setParameters( [

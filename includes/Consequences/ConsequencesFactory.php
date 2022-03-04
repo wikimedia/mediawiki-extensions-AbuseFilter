@@ -144,10 +144,11 @@ class ConsequencesFactory {
 			$preventsTalk,
 			$this->blockUserFactory,
 			$this->databaseBlockStore,
-			// FIXME This is a hack until DI is possible here.
+			// FIXME This is a hack until DI is possible here (T255433).
 			[ DatabaseBlock::class, 'newFromTarget' ],
 			$this->filterUser,
-			$this->messageLocalizer
+			$this->messageLocalizer,
+			$this->logger
 		);
 	}
 
@@ -163,6 +164,7 @@ class ConsequencesFactory {
 			$this->blockUserFactory,
 			$this->filterUser,
 			$this->messageLocalizer,
+			$this->logger,
 			$this->options->get( 'AbuseFilterRangeBlockSize' ),
 			$this->options->get( 'BlockCIDRLimit' ),
 			$this->requestIP

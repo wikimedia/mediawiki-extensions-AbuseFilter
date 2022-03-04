@@ -5,7 +5,7 @@ use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
-use MediaWiki\User\UserIdentityValue;
+use Psr\Log\NullLogger;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
@@ -26,13 +26,6 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 			return $this->getMockMessage( $k, $p );
 		} );
 		return $ml;
-	}
-
-	private function getFilterUser(): FilterUser {
-		$filterUser = $this->createMock( FilterUser::class );
-		$filterUser->method( 'getUser' )
-			->willReturn( new UserIdentityValue( 2, 'FilterUser' ) );
-		return $filterUser;
 	}
 
 	public function provideExecute(): iterable {
@@ -110,8 +103,9 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 			$params,
 			'1 week',
 			$blockUserFactory,
-			$this->getFilterUser(),
+			$this->createMock( FilterUser::class ),
 			$this->getMsgLocalizer(),
+			new NullLogger(),
 			$rangeBlockSize,
 			self::CIDR_LIMIT,
 			$requestIP
@@ -130,6 +124,7 @@ class RangeBlockTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( BlockUserFactory::class ),
 			$this->createMock( FilterUser::class ),
 			$this->getMsgLocalizer(),
+			new NullLogger(),
 			[ 'IPv6' => 24, 'IPv4' => 24 ],
 			self::CIDR_LIMIT,
 			'1.1.1.1'

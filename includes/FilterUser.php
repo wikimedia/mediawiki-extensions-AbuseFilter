@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
@@ -34,11 +35,24 @@ class FilterUser {
 	}
 
 	/**
-	 * @todo Core should provide an alternative way to create system users, possibly returning just UserIdentity.
-	 *   Or can we just use `new UserIdentityValue` here?
+	 * @return Authority
+	 */
+	public function getAuthority(): Authority {
+		return $this->getUser();
+	}
+
+	/**
 	 * @return UserIdentity
 	 */
-	public function getUser(): UserIdentity {
+	public function getUserIdentity(): UserIdentity {
+		return $this->getUser();
+	}
+
+	/**
+	 * @todo Stop using the User class when User::newSystemUser is refactored.
+	 * @return User
+	 */
+	private function getUser(): User {
 		$username = $this->messageLocalizer->msg( 'abusefilter-blocker' )->inContentLanguage()->text();
 		$user = User::newSystemUser( $username, [ 'steal' => true ] );
 
