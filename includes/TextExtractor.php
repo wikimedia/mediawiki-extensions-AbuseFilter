@@ -67,7 +67,7 @@ class TextExtractor {
 	/**
 	 * Converts the given Content object to a string.
 	 *
-	 * This uses Content::getNativeData() if $content is an instance of TextContent,
+	 * This uses TextContent::getText() if $content is an instance of TextContent,
 	 * or Content::getTextForSearchIndex() otherwise.
 	 *
 	 * The hook AbuseFilterContentToString can be used to override this
