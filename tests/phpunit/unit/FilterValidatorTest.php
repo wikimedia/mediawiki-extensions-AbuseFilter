@@ -84,7 +84,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param Status $actual
 	 * @param array|null $params
 	 */
-	private function assertStatusMessage( ?string $expected, Status $actual, array $params = null ): void {
+	private function assertStatusMessageParams( ?string $expected, Status $actual, array $params = null ): void {
 		$actualError = $actual->isGood() ? null : $actual->getErrors()[0]['message'];
 		$this->assertSame( $expected, $actualError, 'status message' );
 		if ( $params !== null ) {
@@ -105,7 +105,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$ruleChecker->method( 'checkSyntax' )->willReturn( $syntaxStatus );
 		$validator = $this->getFilterValidator( null, $ruleChecker );
 
-		$this->assertStatusMessage(
+		$this->assertStatusMessageParams(
 			$expected,
 			$validator->checkValidSyntax( $this->createMock( AbstractFilter::class ) ),
 			$expParams
@@ -138,7 +138,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$filter->method( 'getRules' )->willReturn( $rules );
 		$filter->method( 'getName' )->willReturn( $name );
 		$validator = $this->getFilterValidator();
-		$this->assertStatusMessage( $expected, $validator->checkRequiredFields( $filter ) );
+		$this->assertStatusMessageParams( $expected, $validator->checkRequiredFields( $filter ) );
 	}
 
 	public function provideRequiredFields(): array {
@@ -158,7 +158,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCheckEmptyMessages( array $actions, ?string $expected ) {
 		$filter = $this->getFilterWithActions( $actions );
-		$this->assertStatusMessage( $expected, $this->getFilterValidator()->checkEmptyMessages( $filter ) );
+		$this->assertStatusMessageParams( $expected, $this->getFilterValidator()->checkEmptyMessages( $filter ) );
 	}
 
 	public function provideEmptyMessages(): array {
@@ -182,7 +182,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$filter = $this->createMock( AbstractFilter::class );
 		$filter->method( 'isEnabled' )->willReturn( $enabled );
 		$filter->method( 'isDeleted' )->willReturn( $deleted );
-		$this->assertStatusMessage( $expected, $this->getFilterValidator()->checkConflictingFields( $filter ) );
+		$this->assertStatusMessageParams( $expected, $this->getFilterValidator()->checkConflictingFields( $filter ) );
 	}
 
 	public function provideConflictingFields(): array {
@@ -212,7 +212,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			$this->createMock( AbstractFilter::class ),
 			$this->createMock( AbstractFilter::class )
 		);
-		$this->assertStatusMessage( $expected, $actual );
+		$this->assertStatusMessageParams( $expected, $actual );
 	}
 
 	public function provideCheckGlobalFilterEditPermission(): array {
@@ -234,7 +234,10 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	public function testCheckMessagesOnGlobalFilters( array $actions, bool $isGlobal, ?string $expected ) {
 		$filter = $this->getFilterWithActions( $actions );
 		$filter->method( 'isGlobal' )->willReturn( $isGlobal );
-		$this->assertStatusMessage( $expected, $this->getFilterValidator()->checkMessagesOnGlobalFilters( $filter ) );
+		$this->assertStatusMessageParams(
+			$expected,
+			$this->getFilterValidator()->checkMessagesOnGlobalFilters( $filter )
+		);
 	}
 
 	public function provideMessagesOnGlobalFilters(): array {
@@ -281,7 +284,10 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	) {
 		$validator = $this->getFilterValidator( $permManager, null, $restrictions );
 		$user = $this->createMock( User::class );
-		$this->assertStatusMessage( $expected, $validator->checkRestrictedActions( $user, $newFilter, $oldFilter ) );
+		$this->assertStatusMessageParams(
+			$expected,
+			$validator->checkRestrictedActions( $user, $newFilter, $oldFilter )
+		);
 	}
 
 	public function provideRestrictedActions(): Generator {
@@ -317,7 +323,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @covers ::checkAllTags
 	 */
 	public function testCheckAllTags_noTags() {
-		$this->assertStatusMessage( 'tags-create-no-name', $this->getFilterValidator()->checkAllTags( [] ) );
+		$this->assertStatusMessageParams( 'tags-create-no-name', $this->getFilterValidator()->checkAllTags( [] ) );
 	}
 
 	/**
@@ -328,7 +334,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCheckThrottleParameters( array $params, ?string $expectedError ) {
 		$result = $this->getFilterValidator()->checkThrottleParameters( $params );
-		$this->assertStatusMessage( $expectedError, $result );
+		$this->assertStatusMessageParams( $expectedError, $result );
 	}
 
 	/**
@@ -457,7 +463,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	public function testCheckGroup( string $group, array $validGroups, ?string $expected ) {
 		$filter = $this->createMock( AbstractFilter::class );
 		$filter->expects( $this->atLeastOnce() )->method( 'getGroup' )->willReturn( $group );
-		$this->assertStatusMessage(
+		$this->assertStatusMessageParams(
 			$expected,
 			$this->getFilterValidator( null, null, [], $validGroups )->checkGroup( $filter )
 		);
