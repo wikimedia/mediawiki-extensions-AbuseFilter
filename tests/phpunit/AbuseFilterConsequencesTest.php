@@ -643,25 +643,23 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @param Status $result As returned by self::doAction
 	 * @param array $actionParams As it's given by data providers
-	 * @param array $consequences As it's given by data providers
+	 * @param array $expectedConsequences
 	 * @return array [ expected consequences, actual consequences ]
 	 */
-	private function checkConsequences( $result, $actionParams, $consequences ) {
-		global $wgAbuseFilterActionRestrictions;
-
+	private function checkConsequences( $result, $actionParams, $expectedConsequences ) {
 		$expectedErrors = [];
 		$testErrorMessage = false;
-		foreach ( $consequences as $consequence => $ids ) {
+		foreach ( $expectedConsequences as $consequence => $ids ) {
 			foreach ( $ids as $id ) {
 				$params = self::$filters[$id]['actions'][$consequence];
 				switch ( $consequence ) {
 					case 'warn':
 						// Aborts the hook with the warning message as error.
-						$expectedErrors['warn'][] = $params[0] ?? 'abusefilter-warning';
+						$expectedErrors[] = $params[0] ?? 'abusefilter-warning';
 						break;
 					case 'disallow':
 						// Aborts the hook with the disallow message error.
-						$expectedErrors['disallow'][] = $params[0] ?? 'abusefilter-disallowed';
+						$expectedErrors[] = $params[0] ?? 'abusefilter-disallowed';
 						break;
 					case 'block':
 						// Aborts the hook with 'abusefilter-blocked-display' error. Should block
@@ -693,11 +691,11 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 							break;
 						}
 
-						$expectedErrors['block'][] = 'abusefilter-blocked-display';
+						$expectedErrors[] = 'abusefilter-blocked-display';
 						break;
 					case 'degroup':
 						// Aborts the hook with 'abusefilter-degrouped' error and degroups the user.
-						$expectedErrors['degroup'][] = 'abusefilter-degrouped';
+						$expectedErrors[] = 'abusefilter-degrouped';
 						$ugm = MediaWikiServices::getInstance()->getUserGroupManager();
 						$groupCheck = !in_array( 'sysop', $ugm->getUserEffectiveGroups( $this->user ) );
 						if ( !$groupCheck ) {
@@ -720,7 +718,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 						throw new UnexpectedValueException( 'Use self::testThrottleConsequence to test throttling' );
 					case 'blockautopromote':
 						// Aborts the hook with 'abusefilter-autopromote-blocked' error and prevent promotion.
-						$expectedErrors['blockautopromote'][] = 'abusefilter-autopromote-blocked';
+						$expectedErrors[] = 'abusefilter-autopromote-blocked';
 						$value = AbuseFilterServices::getBlockAutopromoteStore()
 							->getAutoPromoteBlockStatus( $this->user );
 						if ( !$value ) {
@@ -737,22 +735,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			}
 		}
 
-		if ( array_intersect_key( $expectedErrors, array_filter( $wgAbuseFilterActionRestrictions ) ) ) {
-			$filteredExpected = array_intersect_key(
-				$expectedErrors,
-				array_filter( $wgAbuseFilterActionRestrictions )
-			);
-			$expected = [];
-			foreach ( $filteredExpected as $values ) {
-				$expected = array_merge( $expected, $values );
-			}
-		} else {
-			$expected = $expectedErrors['warn'] ?? $expectedErrors['disallow'] ?? null;
-			if ( !is_array( $expected ) ) {
-				$expected = (array)$expected;
-			}
-		}
-
 		$errors = $result->getErrors();
 
 		$actual = [];
@@ -765,9 +747,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			}
 		}
 
-		sort( $expected );
+		sort( $expectedErrors );
 		sort( $actual );
-		return [ $expected, $actual ];
+		return [ $expectedErrors, $actual ];
 	}
 
 	/**
@@ -775,13 +757,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
-	 * @param array $consequences The consequences we're expecting
+	 * @param array $expectedConsequences The consequences we're expecting
 	 * @dataProvider provideFilters
 	 */
-	public function testFilterConsequences( $createIds, $actionParams, $consequences ) {
+	public function testFilterConsequences( $createIds, $actionParams, $expectedConsequences ) {
 		$this->createFilters( $createIds );
 		$result = $this->doAction( $actionParams );
-		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $consequences );
+		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $expectedConsequences );
 
 		$this->assertEquals(
 			$expected,
@@ -820,7 +802,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 					'target' => 'Test page',
 					'newTitle' => 'Another test page'
 				],
-				[ 'disallow'  => [ 2 ], 'block' => [ 2 ] ]
+				[ 'block' => [ 2 ] ]
 			],
 			'Basic test for "delete" action' => [
 				[ 2, 3 ],
@@ -1520,7 +1502,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 					'newText' => 'New text',
 					'summary' => ''
 				],
-				[ 'disallow' => [ 18 ], 'warn' => [ 18 ] ]
+				[ 'warn' => [ 18 ] ]
 			],
 			[
 				[ 19 ],
