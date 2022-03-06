@@ -36,6 +36,9 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	/** @var bool|null */
 	private $hitThrottle;
 
+	private const IPV4_RANGE = '16';
+	private const IPV6_RANGE = '64';
+
 	/**
 	 * @param Parameters $parameters
 	 * @param array $throttleParams
@@ -180,7 +183,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				$identifier = $user->getId();
 				break;
 			case 'range':
-				$range = IPUtils::isIPv6( $this->requestIP ) ? 64 : 16;
+				$range = IPUtils::isIPv6( $this->requestIP ) ? self::IPV6_RANGE : self::IPV4_RANGE;
 				$identifier = IPUtils::sanitizeRange( "{$this->requestIP}/$range" );
 				break;
 			case 'creationdate':
