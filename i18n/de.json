@@ -261,7 +261,7 @@
 	"abusefilter-edit-throttle-placeholder": "Mit Kommata trennen, um mit AND zu verbinden und füge nacheinander ein, um mit OR zu verbinden.",
 	"abusefilter-throttle-ip": "IP-Adresse",
 	"abusefilter-throttle-user": "Benutzerkonto",
-	"abusefilter-throttle-range": "/16-Bereich",
+	"abusefilter-throttle-range": "IP-Adress-Bereich",
 	"abusefilter-throttle-creationdate": "Datum der Benutzerkontenerstellung",
 	"abusefilter-throttle-editcount": "Bearbeitungszähler",
 	"abusefilter-throttle-site": "Gesamte Website",
