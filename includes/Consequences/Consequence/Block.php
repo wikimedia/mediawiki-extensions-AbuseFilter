@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
+use Psr\Log\LoggerInterface;
 use TitleValue;
 
 /**
@@ -32,6 +33,7 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	 * @param callable $blockFactory Should take a user name and return a DatabaseBlock or null.
 	 * @param FilterUser $filterUser
 	 * @param MessageLocalizer $messageLocalizer
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		Parameters $params,
@@ -41,9 +43,10 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 		DatabaseBlockStore $databaseBlockStore,
 		callable $blockFactory,
 		FilterUser $filterUser,
-		MessageLocalizer $messageLocalizer
+		MessageLocalizer $messageLocalizer,
+		LoggerInterface $logger
 	) {
-		parent::__construct( $params, $expiry, $blockUserFactory, $filterUser, $messageLocalizer );
+		parent::__construct( $params, $expiry, $blockUserFactory, $filterUser, $messageLocalizer, $logger );
 		$this->databaseBlockStore = $databaseBlockStore;
 		$this->preventsTalkEdit = $preventTalkEdit;
 		$this->blockFactory = $blockFactory;
@@ -73,7 +76,7 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 	public function revert( $info, UserIdentity $performer, string $reason ): bool {
 		// TODO: Proper DI once T255433 is resolved
 		$block = ( $this->blockFactory )( $this->parameters->getUser()->getName() );
-		if ( !( $block && $block->getBy() === $this->filterUser->getUser()->getId() ) ) {
+		if ( !( $block && $block->getBy() === $this->filterUser->getUserIdentity()->getId() ) ) {
 			// Not blocked by abuse filter
 			return false;
 		}

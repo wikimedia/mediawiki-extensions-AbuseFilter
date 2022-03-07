@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
+use Psr\Log\NullLogger;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
@@ -26,9 +27,14 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 		return $ml;
 	}
 
+	/**
+	 * This helper is needed because for reverts we check that the blocker is our filter user, so we want
+	 * to always use the same object.
+	 * @return FilterUser
+	 */
 	private function getFilterUser(): FilterUser {
 		$filterUser = $this->createMock( FilterUser::class );
-		$filterUser->method( 'getUser' )
+		$filterUser->method( 'getUserIdentity' )
 			->willReturn( new UserIdentityValue( 2, 'FilterUser' ) );
 		return $filterUser;
 	}
@@ -80,7 +86,8 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 				return null;
 			},
 			$this->getFilterUser(),
-			$this->getMsgLocalizer()
+			$this->getMsgLocalizer(),
+			new NullLogger()
 		);
 		$this->assertSame( $result, $block->execute() );
 	}
@@ -100,7 +107,8 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 				return null;
 			},
 			$this->createMock( FilterUser::class ),
-			$this->getMsgLocalizer()
+			$this->getMsgLocalizer(),
+			new NullLogger()
 		);
 		$this->doTestGetMessage( $block, $params, 'abusefilter-blocked-display' );
 	}
@@ -111,7 +119,7 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 		$randomUser = new UserIdentityValue( 1234, 'Some other user' );
 		yield 'not blocked by AF user' => [ new DatabaseBlock( [ 'by' => $randomUser ] ), null, false ];
 
-		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUser() ] );
+		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUserIdentity() ] );
 		$failBlockStore = $this->createMock( DatabaseBlockStore::class );
 		$failBlockStore->expects( $this->once() )->method( 'deleteBlock' )->willReturn( false );
 		yield 'cannot delete block' => [ $blockByFilter, $failBlockStore, false ];
@@ -138,7 +146,8 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 				return $block;
 			},
 			$this->getFilterUser(),
-			$this->getMsgLocalizer()
+			$this->getMsgLocalizer(),
+			new NullLogger()
 		);
 		$this->assertSame( $expected, $block->revert( [], $this->createMock( UserIdentity::class ), '' ) );
 	}

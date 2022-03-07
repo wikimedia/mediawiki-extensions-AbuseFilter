@@ -93,7 +93,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 
 		// TODO Core should provide a logging method
 		$logEntry = new ManualLogEntry( 'rights', 'rights' );
-		$logEntry->setPerformer( $this->filterUser->getUser() );
+		$logEntry->setPerformer( $this->filterUser->getUserIdentity() );
 		$logEntry->setTarget( new TitleValue( NS_USER, $user->getName() ) );
 		$logEntry->setComment(
 			$this->messageLocalizer->msg(

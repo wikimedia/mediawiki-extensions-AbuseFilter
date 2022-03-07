@@ -14,6 +14,7 @@ use Psr\Log\NullLogger;
 class AbuseFilterFilterUserTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::getUser
+	 * @covers ::getUserIdentity
 	 */
 	public function testGetUser() {
 		$name = 'AbuseFilter blocker user';
@@ -22,13 +23,14 @@ class AbuseFilterFilterUserTest extends MediaWikiIntegrationTestCase {
 		$ugm = MediaWikiServices::getInstance()->getUserGroupManager();
 		$filterUser = new FilterUser( $ml, $ugm, new NullLogger() );
 
-		$actual = $filterUser->getUser();
+		$actual = $filterUser->getUserIdentity();
 		$this->assertSame( $name, $actual->getName(), 'name' );
 		$this->assertContains( 'sysop', $ugm->getUserGroups( $actual ), 'sysop' );
 	}
 
 	/**
 	 * @covers ::getUser
+	 * @covers ::getUserIdentity
 	 */
 	public function testGetUser_invalidName() {
 		$name = 'Foobar filter user';
@@ -42,7 +44,7 @@ class AbuseFilterFilterUserTest extends MediaWikiIntegrationTestCase {
 		$logger->setCollect( true );
 		$filterUser = new FilterUser( $ml, $ugm, $logger );
 
-		$actual = $filterUser->getUser();
+		$actual = $filterUser->getUserIdentity();
 		$this->assertSame( $name, $actual->getName(), 'name' );
 		$found = false;
 		foreach ( $logger->getBuffer() as $msg ) {

@@ -7,8 +7,8 @@ use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MessageLocalizer;
+use Psr\Log\LoggerInterface;
 use Status;
-use User;
 use Wikimedia\IPUtils;
 
 /**
@@ -24,6 +24,9 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
+	/** @var LoggerInterface */
+	private $logger;
+
 	/** @var string Expiry of the block */
 	protected $expiry;
 
@@ -33,19 +36,22 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 	 * @param BlockUserFactory $blockUserFactory
 	 * @param FilterUser $filterUser
 	 * @param MessageLocalizer $messageLocalizer
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		Parameters $params,
 		string $expiry,
 		BlockUserFactory $blockUserFactory,
 		FilterUser $filterUser,
-		MessageLocalizer $messageLocalizer
+		MessageLocalizer $messageLocalizer,
+		LoggerInterface $logger
 	) {
 		parent::__construct( $params );
 		$this->expiry = $expiry;
 		$this->blockUserFactory = $blockUserFactory;
 		$this->filterUser = $filterUser;
 		$this->messageLocalizer = $messageLocalizer;
+		$this->logger = $logger;
 	}
 
 	/**
@@ -74,8 +80,7 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 
 		$blockUser = $this->blockUserFactory->newBlockUser(
 			$target,
-			// TODO: Avoid User here (T266409)
-			User::newFromIdentity( $this->filterUser->getUser() ),
+			$this->filterUser->getAuthority(),
 			$expiry,
 			$reason,
 			[
@@ -91,6 +96,13 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 		) {
 			$blockUser->setLogDeletionFlags( LogPage::SUPPRESSED_ACTION );
 		}
-		return $blockUser->placeBlockUnsafe();
+		$status = $blockUser->placeBlockUnsafe();
+		if ( !$status->isGood() ) {
+			$this->logger->warning(
+				'AbuseFilter block to {block_target} failed: {errors}',
+				[ 'block_target' => $target, 'errors' => $status->__toString() ]
+			);
+		}
+		return $status;
 	}
 }
