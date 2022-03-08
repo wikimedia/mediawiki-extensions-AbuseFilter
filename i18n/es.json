@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"-jem-",
+			"Adilson",
 			"Agusbou2015",
 			"Aleator",
 			"Alvaro qc",
@@ -291,7 +292,7 @@
 	"abusefilter-edit-throttle-placeholder": "Separa las condiciones con comas para unirlas con AND (Y) e insértalas una a una para unirlas con OR (O)",
 	"abusefilter-throttle-ip": "dirección IP",
 	"abusefilter-throttle-user": "cuenta de usuario",
-	"abusefilter-throttle-range": "intervalo /16",
+	"abusefilter-throttle-range": "Intervalo de IP",
 	"abusefilter-throttle-creationdate": "fecha de creación de la cuenta",
 	"abusefilter-throttle-editcount": "número de ediciones",
 	"abusefilter-throttle-site": "el sitio entero",

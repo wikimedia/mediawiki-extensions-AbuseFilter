@@ -300,7 +300,7 @@
 	"abusefilter-edit-throttle-placeholder": "用逗号分隔来与 AND 相接，并逐一插入来与 OR 相接。",
 	"abusefilter-throttle-ip": "IP地址",
 	"abusefilter-throttle-user": "用户账号",
-	"abusefilter-throttle-range": "/16段",
+	"abusefilter-throttle-range": "IP范围",
 	"abusefilter-throttle-creationdate": "账号创建时间",
 	"abusefilter-throttle-editcount": "编辑计数",
 	"abusefilter-throttle-site": "整个网站",

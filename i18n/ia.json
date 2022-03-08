@@ -231,7 +231,7 @@
 	"abusefilter-edit-throttle-placeholder": "Separar con commas pro unir con AND, e inserer un a un pro unir con OR",
 	"abusefilter-throttle-ip": "Adresse IP",
 	"abusefilter-throttle-user": "conto de usator",
-	"abusefilter-throttle-range": "gamma /16",
+	"abusefilter-throttle-range": "Intervallo IP",
 	"abusefilter-throttle-creationdate": "data de creation del conto",
 	"abusefilter-throttle-editcount": "numero de modificationes",
 	"abusefilter-throttle-site": "tote le sito",

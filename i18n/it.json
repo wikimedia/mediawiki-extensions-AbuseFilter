@@ -256,7 +256,7 @@
 	"abusefilter-edit-throttle-placeholder": "Separare con la virgola per raggruppare in AND, e inserire uno ad uno per raggruppare in OR",
 	"abusefilter-throttle-ip": "indirizzo IP",
 	"abusefilter-throttle-user": "account utente",
-	"abusefilter-throttle-range": "range /16",
+	"abusefilter-throttle-range": "Intervallo di IP",
 	"abusefilter-throttle-creationdate": "data di creazione dell'utenza",
 	"abusefilter-throttle-editcount": "conteggio delle modifiche",
 	"abusefilter-throttle-site": "tutto il sito",

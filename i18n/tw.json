@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"AC Krah",
-			"Julia"
+			"Julia",
+			"TAMAKNARAD"
 		]
 	},
 	"abusefilter-log-search-group-any": "Ebia",
@@ -33,6 +34,7 @@
 	"abusefilter-edit-deleted": "Ahyɛnso sɛ apepa",
 	"abusefilter-edit-rules": "Tebea",
 	"abusefilter-edit-throttle-groups-help": "Hwɛ$1",
+	"abusefilter-throttle-range": "IP no nfetiaseɛ ko pim ewieyɛ",
 	"abusefilter-throttle-editcount": "Nsesaeɛ a wayɛ",
 	"abusefilter-edit-history": "Abakɔsɛm",
 	"abusefilter-edit-check": "Hwɛ ne nsɛmfua",

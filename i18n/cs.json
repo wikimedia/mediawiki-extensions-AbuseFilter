@@ -244,7 +244,7 @@
 	"abusefilter-edit-throttle-placeholder": "Pro spojení pomocí AND oddělujte čárkami, pro spojení pomocí OR vkládejte jeden po druhém",
 	"abusefilter-throttle-ip": "IP adresa",
 	"abusefilter-throttle-user": "uživatelský účet",
-	"abusefilter-throttle-range": "rozsah /16",
+	"abusefilter-throttle-range": "Rozsah IP adres",
 	"abusefilter-throttle-creationdate": "datum založení účtu",
 	"abusefilter-throttle-editcount": "počet editací",
 	"abusefilter-throttle-site": "celý web",
