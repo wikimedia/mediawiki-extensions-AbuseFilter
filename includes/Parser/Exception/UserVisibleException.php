@@ -42,7 +42,7 @@ class UserVisibleException extends ExceptionBase {
 	 * @return string
 	 */
 	public function getMessageForLogs(): string {
-		return "ID: {$this->mExceptionID}; position: {$this->mPosition}; params: " . implode( $this->mParams );
+		return "ID: {$this->mExceptionID}; position: {$this->mPosition}; params: " . implode( ', ', $this->mParams );
 	}
 
 	/**
