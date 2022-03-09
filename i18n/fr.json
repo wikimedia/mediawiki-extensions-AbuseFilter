@@ -273,7 +273,7 @@
 	"abusefilter-edit-throttle-placeholder": "Séparer avec des virgules les conditions simultanées (conjointes avec un ET) ou insérez une par une les conditions inclusives (jointes avec un OU)",
 	"abusefilter-throttle-ip": "Adresse IP",
 	"abusefilter-throttle-user": "compte utilisateur",
-	"abusefilter-throttle-range": "plage /16",
+	"abusefilter-throttle-range": "plage d’adresses IP",
 	"abusefilter-throttle-creationdate": "date de création du compte",
 	"abusefilter-throttle-editcount": "compteur de modifications",
 	"abusefilter-throttle-site": "tout le site",

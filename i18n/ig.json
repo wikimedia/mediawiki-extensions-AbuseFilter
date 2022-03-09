@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Chikapatience",
 			"Ukabia"
 		]
 	},
@@ -19,6 +20,7 @@
 	"abusefilter-edit-save": "Domá nzàtá",
 	"abusefilter-edit-flags": "Ọ́kọ̀lọ́tọ:",
 	"abusefilter-edit-throttle-period": "Ótù ógè:",
+	"abusefilter-throttle-range": "Agbata IP",
 	"abusefilter-edit-warn-other": "Ozi ozor",
 	"abusefilter-edit-warn-actions": "Mmèmé:",
 	"abusefilter-edit-history": "Ịta:",

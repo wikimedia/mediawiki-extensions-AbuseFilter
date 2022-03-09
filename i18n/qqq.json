@@ -43,6 +43,7 @@
 			"The Evil IP address",
 			"Translationista",
 			"Umherirrender",
+			"Verdy p",
 			"Yekrats"
 		]
 	},
@@ -272,7 +273,7 @@
 	"abusefilter-edit-throttle-placeholder": "Label for an input field where users may insert throttling criteria.",
 	"abusefilter-throttle-ip": "Throttle option. The first letter is meant to be lowercase.",
 	"abusefilter-throttle-user": "Throttle option.",
-	"abusefilter-throttle-range": "Throttle option. The first letter is meant to be lowercase.",
+	"abusefilter-throttle-range": "Throttle option. The first letter is meant to be lowercase (e.g. if you need to translate it as a \"range of IP addresses\")",
 	"abusefilter-throttle-creationdate": "Throttle option.",
 	"abusefilter-throttle-editcount": "Throttle option.",
 	"abusefilter-throttle-site": "Throttle option.",
