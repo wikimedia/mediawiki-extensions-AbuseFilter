@@ -217,7 +217,7 @@
 	"abusefilter-edit-throttle-placeholder": "AND తో జతపరచేందుకు మధ్యలో కామా పెట్టండి, OR తో జతపరచేందుకు ఒకదాని కింద ఒకటి ఇవ్వండి",
 	"abusefilter-throttle-ip": "ఐపీ చిరునామా",
 	"abusefilter-throttle-user": "వాడుకరి ఖాతా",
-	"abusefilter-throttle-range": "/16 శ్రేణి",
+	"abusefilter-throttle-range": "ఐపీ శ్రేణి",
 	"abusefilter-throttle-creationdate": "ఖాతా సృష్టించిన తేదీ",
 	"abusefilter-throttle-editcount": "దిద్దుబాట్ల సంఖ్య",
 	"abusefilter-throttle-site": "సైటంతా",
