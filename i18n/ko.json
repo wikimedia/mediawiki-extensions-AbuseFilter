@@ -253,7 +253,7 @@
 	"abusefilter-edit-throttle-placeholder": "AND로 병합하려면 쉼표로 구분하고, OR로 병합하려면 하나씩 추가하십시오",
 	"abusefilter-throttle-ip": "IP 주소",
 	"abusefilter-throttle-user": "사용자 계정",
-	"abusefilter-throttle-range": "/16 대역",
+	"abusefilter-throttle-range": "IP 대역",
 	"abusefilter-throttle-creationdate": "계정 생성일",
 	"abusefilter-throttle-editcount": "편집 수",
 	"abusefilter-throttle-site": "사이트 전반",
