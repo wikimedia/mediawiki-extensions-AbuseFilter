@@ -104,7 +104,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 		$result = [
 			'log-id' => $params['logid'],
 			'user' => $row->afl_user_text,
-			'filter-id' => $row->af_id,
+			'filter-id' => (int)$row->af_id,
 			'filter-description' => $row->af_public_comments,
 			'ip-address' => $row->afl_ip !== '' ? $row->afl_ip : null
 		];
