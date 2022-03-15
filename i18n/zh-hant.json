@@ -270,7 +270,7 @@
 	"abusefilter-edit-throttle-placeholder": "用逗號分隔來與 AND 相接，並逐一插入來與 OR 相接。",
 	"abusefilter-throttle-ip": "IP 位址",
 	"abusefilter-throttle-user": "使用者帳號",
-	"abusefilter-throttle-range": "/16 範圍",
+	"abusefilter-throttle-range": "IP 範圍",
 	"abusefilter-throttle-creationdate": "帳號建立日期",
 	"abusefilter-throttle-editcount": "編輯次數",
 	"abusefilter-throttle-site": "整個站台",
