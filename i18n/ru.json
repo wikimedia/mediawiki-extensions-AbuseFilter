@@ -292,7 +292,7 @@
 	"abusefilter-edit-throttle-placeholder": "Разделите запятыми, чтобы соединить логическим оператором AND, и переводами строк, чтобы соединить логическим оператором OR",
 	"abusefilter-throttle-ip": "IP-адрес",
 	"abusefilter-throttle-user": "учётная запись",
-	"abusefilter-throttle-range": "Диапазон /16",
+	"abusefilter-throttle-range": "Диапазон IP",
 	"abusefilter-throttle-creationdate": "дата создания учётной записи",
 	"abusefilter-throttle-editcount": "счётчик правок",
 	"abusefilter-throttle-site": "весь сайт",
