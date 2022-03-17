@@ -1,5 +1,5 @@
 {
 	"globals": {
-		"ve": true
+		"ve": "readonly"
 	}
 }
