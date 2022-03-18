@@ -610,6 +610,8 @@
 	"tag-abusefilter-condition-limit": "条件の上限に達しました",
 	"tag-abusefilter-condition-limit-description": "[[Special:AbuseFilter|不正利用フィルター]]（[[mw:Extension:AbuseFilter/Conditions|ヘルプ]]）によって確認できなかった編集やその他のイベント。",
 	"notification-header-throttle-filter": "最近編集された不正使用フィルターID:$2 {{GENDER:$1|あなた}}が抑制されました。",
+	"notification-header-throttle-filter-actions": "{{GENDER:$1|あなた}}が最近編集した、この乱用フィルター$2は高い割合で一致し、以下の{{PLURAL:$4|操作は}}自動的に不可能になっています。: $3",
+	"notification-header-throttle-filter-no-actions": "{{GENDER:$1|あなた}}が最近編集した、この乱用フィルター$2は高い割合で一致しますが、操作は自動的に不可能になっていません。",
 	"notification-subject-throttle-filter": "編集された不正使用フィルター{{GENDER:$1 |あなた}}が{{SITENAME}}で抑制されました",
 	"notification-link-text-show-filter": "フィルターを表示:"
 }
