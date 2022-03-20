@@ -27,19 +27,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	/** @var int */
 	private $filter;
 	/**
-	 * @var string The start time of the lookup period
-	 */
-	private $origPeriodStart;
-	/**
-	 * @var string The end time of the lookup period
-	 */
-	private $origPeriodEnd;
-	/**
-	 * @var string|null The same as $origPeriodStart
+	 * @var string|null The start time of the lookup period
 	 */
 	private $periodStart;
 	/**
-	 * @var string|null The same as $origPeriodEnd
+	 * @var string|null The end time of the lookup period
 	 */
 	private $periodEnd;
 	/**
@@ -145,25 +137,21 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			'raw' => true,
 			'label-message' => 'abusefilter-revert-filter'
 		];
-		$searchFields['periodstart'] = [
+		$searchFields['PeriodStart'] = [
 			'type' => 'datetime',
-			'name' => 'wpPeriodStart',
-			'default' => $this->origPeriodStart,
 			'label-message' => 'abusefilter-revert-periodstart',
 			'min' => $min,
 			'max' => $max
 		];
-		$searchFields['periodend'] = [
+		$searchFields['PeriodEnd'] = [
 			'type' => 'datetime',
-			'name' => 'wpPeriodEnd',
-			'default' => $this->origPeriodEnd,
 			'label-message' => 'abusefilter-revert-periodend',
 			'min' => $min,
 			'max' => $max
 		];
 
 		HTMLForm::factory( 'ooui', $searchFields, $this->getContext() )
-			->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
+			->setTitle( $this->getTitle( "revert/$filter" ) )
 			->setWrapperLegendMsg( 'abusefilter-revert-search-legend' )
 			->setSubmitTextMsg( 'abusefilter-revert-search' )
 			->setMethod( 'get' )
@@ -226,35 +214,21 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		// Add a button down the bottom.
 		$confirmForm = [];
-		$confirmForm['edittoken'] = [
+		$confirmForm['PeriodStart'] = [
 			'type' => 'hidden',
-			'name' => 'editToken',
-			'default' => $user->getEditToken( "abusefilter-revert-$filter" )
 		];
-		$confirmForm['title'] = [
+		$confirmForm['PeriodEnd'] = [
 			'type' => 'hidden',
-			'name' => 'title',
-			'default' => $this->getTitle( "revert/$filter" )->getPrefixedDBkey()
 		];
-		$confirmForm['wpPeriodStart'] = [
-			'type' => 'hidden',
-			'name' => 'wpPeriodStart',
-			'default' => $this->origPeriodStart
-		];
-		$confirmForm['wpPeriodEnd'] = [
-			'type' => 'hidden',
-			'name' => 'wpPeriodEnd',
-			'default' => $this->origPeriodEnd
-		];
-		$confirmForm['reason'] = [
+		$confirmForm['Reason'] = [
 			'type' => 'text',
 			'label-message' => 'abusefilter-revert-reasonfield',
-			'name' => 'wpReason',
 			'id' => 'wpReason',
 		];
 
 		$revertForm = HTMLForm::factory( 'ooui', $confirmForm, $this->getContext() )
-			->setAction( $this->getTitle( "revert/$filter" )->getLocalURL() )
+			->setTitle( $this->getTitle( "revert/$filter" ) )
+			->setTokenSalt( "abusefilter-revert-$filter" )
 			->setWrapperLegendMsg( 'abusefilter-revert-confirm-legend' )
 			->setSubmitTextMsg( 'abusefilter-revert-confirm' )
 			->prepareForm()
@@ -336,10 +310,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$request = $this->getRequest();
 
 		$this->filter = (int)$this->mParams[1];
-		$this->origPeriodStart = $request->getText( 'wpPeriodStart' );
-		$this->periodStart = strtotime( $this->origPeriodStart ) ?: null;
-		$this->origPeriodEnd = $request->getText( 'wpPeriodEnd' );
-		$this->periodEnd = strtotime( $this->origPeriodEnd ) ?: null;
+		$this->periodStart = strtotime( $request->getText( 'wpPeriodStart' ) ) ?: null;
+		$this->periodEnd = strtotime( $request->getText( 'wpPeriodEnd' ) ) ?: null;
 		$this->reason = $request->getVal( 'wpReason' );
 	}
 
@@ -348,7 +320,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 */
 	public function attemptRevert() {
 		$filter = $this->filter;
-		$token = $this->getRequest()->getVal( 'editToken' );
+		$token = $this->getRequest()->getVal( 'wpEditToken' );
 		if ( !$this->getUser()->matchEditToken( $token, "abusefilter-revert-$filter" ) ) {
 			return false;
 		}
