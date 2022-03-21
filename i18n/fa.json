@@ -36,7 +36,8 @@
 			"درفش کاویانی",
 			"Darafsh",
 			"Reza koulivand",
-			"Sunfyre"
+			"Sunfyre",
+			"Beginneruser"
 		]
 	},
 	"abusefilter-desc": "اکتشافات خودکاری را بر روی ویرایش‌های انجام می‌دهد.",
@@ -261,13 +262,13 @@
 	"abusefilter-throttle-page": "صفحه",
 	"abusefilter-throttle-none": "(هیچ)",
 	"abusefilter-throttle-details": "اجازهٔ $1 {{PLURAL:$1|عمل}} در هر $2 {{PLURAL:$2|ثانیه}} را بده، و سرعت‌گیری را بر اساس این گروه انجام بده: $3",
-	"abusefilter-edit-warn-message": "پیغام سامانه برای استفاده در هشدار:",
+	"abusefilter-edit-warn-message": "پیام سامانه برای استفاده در هشدار:",
 	"abusefilter-edit-warn-other": "پیام‌های دیگر",
 	"abusefilter-edit-warn-other-label": "نام صفحهٔ حاوی پیام‌های دیگر:\n: ''(بدون پیشوند «مدیاویکی»)''",
 	"abusefilter-edit-warn-actions": "اقدامات:",
 	"abusefilter-edit-warn-preview": "نمایش/نهفتن پیش‌نمایش پیام انتخاب‌شده",
 	"abusefilter-edit-warn-edit": "ایجاد/ویرایش پیام انتخاب‌شده",
-	"abusefilter-edit-disallow-message": "پیغام سامانه برای استفاده در خطا:",
+	"abusefilter-edit-disallow-message": "پیام سامانه برای استفاده در خطا:",
 	"abusefilter-edit-disallow-other": "پیام‌های دیگر",
 	"abusefilter-edit-disallow-other-label": "نام صفحهٔ حاوی پیام‌های دیگر:\n:''(بدون پیشوند مدیاویکی)''",
 	"abusefilter-edit-disallow-actions": "اقدامات:",
