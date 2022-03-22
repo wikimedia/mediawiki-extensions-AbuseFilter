@@ -21,7 +21,8 @@
 			"Tchoř",
 			"Teslaton",
 			"Urbanecm",
-			"Vks"
+			"Vks",
+			"TheMatto58"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -123,6 +124,7 @@
 	"abusefilter-log-details-hidden-implicit": "U tohoto záznamu si nemůžete prohlédnout podrobnosti, protože s ním související revize byla skryta před veřejností.",
 	"abusefilter-log-private-not-included": "Jeden nebo více filtrů uvedených ID jsou tajné. Protože nemáte dovoleno prohlížet si podrobnosti tajných filtrů, nebyly tyto filtry prohledávány.",
 	"abusefilter-log-hide-no-selected": "Žádné vstupy nebyly vybrány",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Vybraný záznam protokolu filtrů zneužití|Vybrané záznamy protokolu filtrů zneužití}}:",
 	"abusefilter-log-hide-legend": "Změnit viditelnost",
 	"abusefilter-log-hide-set-visibility": "Nastavit vybraným položkám viditelnost:",
 	"abusefilter-log-hide-reason": "Důvod:",
@@ -130,6 +132,10 @@
 	"abusefilter-log-hide-forbidden": "Nemáte oprávnění ke skrývání záznamů v protokolu zneužití.",
 	"abusefilter-log-hide-show": "Zobrazit",
 	"abusefilter-log-hide-hide": "Skrýt",
+	"abusefilter-log-hide-no-change": "Všechny vybrané ID již mají tuto viditelnost.",
+	"abusefilter-log-hide-done": "Viditelnost aktualizována: $1 {{PLURAL:$1|záznam|záznamy|záznamů}} $2",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|skryt|skryty|skryto}}",
+	"abusefilter-log-hide-done-show": "{{PLURAL:$1|zobrazen|zobrazeny|zobrazeno}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|skryl|skryla}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|odkryl|odkryla}} $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|spustil|spustila|spustil(a)}} $4 při činnosti „$5“ na $3. Provedená opatření: $6 ($7)",
@@ -303,6 +309,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Musí být vybrána alespoň jedna skupina.",
 	"abusefilter-edit-duplicated-throttlegroups": "Skupiny nemohou být uvedeny duplicitně.",
 	"abusefilter-edit-invalid-throttlegroups": "Uvedené skupiny nejsou platné.",
+	"abusefilter-edit-invalid-group": "Vybraná skupina filtrů („$1“) není platná.",
 	"abusefilter-edit-builder-select": "Vyberte položku, bude přidána na místo, kde je kurzor",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetické operátory",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Sčítání (+)",
