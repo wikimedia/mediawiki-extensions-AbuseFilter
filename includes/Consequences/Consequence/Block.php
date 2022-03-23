@@ -108,4 +108,12 @@ class Block extends BlockingConsequence implements ReversibleConsequence {
 			GlobalNameUtils::buildGlobalName( $filter->getID(), $this->parameters->getIsGlobalFilter() )
 		];
 	}
+
+	/**
+	 * @return string
+	 * @internal
+	 */
+	public function getExpiry(): string {
+		return $this->expiry;
+	}
 }

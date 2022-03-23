@@ -1298,6 +1298,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 					$parameters[0] = $specMsg;
 				} elseif ( $action === 'block' ) {
+					// TODO: Should save a boolean
 					$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
 						'blocktalk' : 'noTalkBlockSet';
 					$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
