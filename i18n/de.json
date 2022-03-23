@@ -32,7 +32,8 @@
 			"W (aka Wuzur)",
 			"WikiBayer",
 			"Wikifan",
-			"Xqt"
+			"Xqt",
+			"Wnme"
 		]
 	},
 	"abusefilter-desc": "Wendet Heuristiken automatisch auf Bearbeitungen an",
@@ -569,7 +570,7 @@
 	"abusefilter-topnav-examine": "Untersuchung der letzten Änderungen",
 	"abusefilter-topnav-log": "Logbuch",
 	"abusefilter-topnav-tools": "Debugging",
-	"abusefilter-log-name": "Missbrauchsfilter-Logbuch",
+	"abusefilter-log-name": "Missbrauchsfilter-Änderungs-Logbuch",
 	"abusefilter-log-header": "Dieses Logbuch zeigt eine Zusammenfassung der Änderungen an Filtern.\nGenauere Einzelheiten sind in [[Special:AbuseFilter/history|der Liste]] der letzten Änderungen an Filtern zu finden.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|erstellte}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|veränderte}} $4 ($5)",
