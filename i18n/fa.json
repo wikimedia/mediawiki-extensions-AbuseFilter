@@ -265,7 +265,7 @@
 	"abusefilter-edit-throttle-placeholder": "برای ترکیب «این و آن» از کاما، و برای ترکیب «این یا آن» از وارد کردن تک تک موارد جدید استفاده کنید",
 	"abusefilter-throttle-ip": "نشانی آی‌پی",
 	"abusefilter-throttle-user": "حساب کاربری",
-	"abusefilter-throttle-range": "بازه /۱۶",
+	"abusefilter-throttle-range": "محدوده IP",
 	"abusefilter-throttle-creationdate": "تاریخ ایجاد حساب کاربری",
 	"abusefilter-throttle-editcount": "شمار ویرایش‌ها",
 	"abusefilter-throttle-site": "همهٔ وب‌گاه",
