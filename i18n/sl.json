@@ -221,7 +221,7 @@
 	"abusefilter-edit-throttle-placeholder": "Ločite z vejicami da združite z IN, naredite ločene vnose da združite z ALI",
 	"abusefilter-throttle-ip": "IP-naslov",
 	"abusefilter-throttle-user": "uporabniški račun",
-	"abusefilter-throttle-range": "obseg /16",
+	"abusefilter-throttle-range": "IP-območje",
 	"abusefilter-throttle-creationdate": "datum ustvaritve računa",
 	"abusefilter-throttle-editcount": "število urejanj",
 	"abusefilter-throttle-site": "celotna stran",
