@@ -1,47 +1,23 @@
 <?php
-/**
- * Tests for validating and saving a filter
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along
- * with this program; if not, write to the Free Software Foundation, Inc.,
- * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
- * http://www.gnu.org/copyleft/gpl.html
- *
- * @file
- *
- * @license GPL-2.0-or-later
- */
 
-use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
+
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
-use MediaWiki\Extension\AbuseFilter\FilterValidator;
-use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
+use MediaWikiIntegrationTestCase;
 use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Test
  * @group AbuseFilter
- * @group AbuseFilterSave
  * @group Database
- * @todo This can probably be removed in favour of unit-testing a class that handles saving filters.
+ * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
  */
-class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
+class FilterStoreTest extends MediaWikiIntegrationTestCase {
 
 	private const DEFAULT_VALUES = [
 		'rules' => '/**/',
@@ -110,10 +86,6 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
-	 */
 	public function testSaveFilter_valid() {
 		$row = [
 			'id' => null,
@@ -137,10 +109,6 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		$this->assertContainsOnly( 'int', $value );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
-	 */
 	public function testSaveFilter_invalid() {
 		$row = [
 			'id' => null,
@@ -167,10 +135,6 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( $expectedError, $actual );
 	}
 
-	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
-	 */
 	public function testSaveFilter_noChange() {
 		$row = [
 			'id' => '1',
@@ -189,70 +153,5 @@ class AbuseFilterSaveTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertTrue( $status->isGood(), "Got a non-good status: $status" );
 		$this->assertFalse( $status->getValue(), 'Status value should be false' );
-	}
-
-	/**
-	 * @todo Make this a unit test in AbuseFilterChangeTagValidatorTest once static methods
-	 *   in ChangeTags are moved to a service
-	 * @todo When the above is possible, use mocks to test canAddTagsAccompanyingChange and canCreateTag
-	 * @param string $tag The tag to validate
-	 * @param string|null $expectedError
-	 * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator::validateTag
-	 * @dataProvider provideTags
-	 */
-	public function testValidateTag( string $tag, ?string $expectedError ) {
-		$validator = AbuseFilterServices::getChangeTagValidator();
-		$status = $validator->validateTag( $tag );
-		$actualError = $status->isGood() ? null : $status->getErrors()[0]['message'];
-		$this->assertSame( $expectedError, $actualError );
-	}
-
-	/**
-	 * Data provider for testValidateTag
-	 * @return array
-	 */
-	public function provideTags() {
-		return [
-			'invalid chars' => [ 'a|b', 'tags-create-invalid-chars' ],
-			'core-reserved tag' => [ 'mw-undo', 'abusefilter-edit-bad-tags' ],
-			'AF-reserved tag' => [ 'abusefilter-condition-limit', 'abusefilter-tag-reserved' ],
-			'valid' => [ 'my_tag', null ],
-		];
-	}
-
-	/**
-	 * @todo Like above, make this a unit test once possible
-	 * @param string[] $tags
-	 * @param string|null $expected
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator::checkAllTags
-	 * @dataProvider provideAllTags
-	 */
-	public function testCheckAllTags( array $tags, ?string $expected ) {
-		$validator = new FilterValidator(
-			AbuseFilterServices::getChangeTagValidator(),
-			$this->createMock( RuleCheckerFactory::class ),
-			$this->createMock( AbuseFilterPermissionManager::class ),
-			new ServiceOptions(
-				FilterValidator::CONSTRUCTOR_OPTIONS,
-				[
-					'AbuseFilterActionRestrictions' => [],
-					'AbuseFilterValidGroups' => [ 'default' ]
-				]
-			)
-		);
-
-		$status = $validator->checkAllTags( $tags );
-		$actualError = $status->isGood() ? null : $status->getErrors()[0]['message'];
-		$this->assertSame( $expected, $actualError );
-	}
-
-	public function provideAllTags() {
-		$providedTagsInvalid = $this->provideTags();
-		$invalidtags = array_column( $providedTagsInvalid, 0 );
-		$allTagErrors = array_filter( array_column( $providedTagsInvalid, 1 ) );
-		$expectedError = reset( $allTagErrors );
-		yield 'invalid' => [ $invalidtags, $expectedError ];
-
-		yield 'valid' => [ [ 'fooooobar', 'foooobaz' ], null ];
 	}
 }

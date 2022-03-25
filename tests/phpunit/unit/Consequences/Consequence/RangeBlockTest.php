@@ -1,18 +1,23 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Consequences\Consequence;
+
+use ConsequenceGetMessageTestTrait;
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWikiUnitTestCase;
+use MessageLocalizer;
 use Psr\Log\NullLogger;
+use Status;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockingConsequence
- * @todo Make this a unit test once T266409 is resolved
  */
-class RangeBlockTest extends MediaWikiIntegrationTestCase {
+class RangeBlockTest extends MediaWikiUnitTestCase {
 	use ConsequenceGetMessageTestTrait;
 
 	private const CIDR_LIMIT = [

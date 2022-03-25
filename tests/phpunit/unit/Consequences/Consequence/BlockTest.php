@@ -1,5 +1,8 @@
 <?php
 
+namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Consequences\Consequence;
+
+use ConsequenceGetMessageTestTrait;
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Block\DatabaseBlock;
@@ -9,14 +12,16 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
+use MediaWikiUnitTestCase;
+use MessageLocalizer;
 use Psr\Log\NullLogger;
+use Status;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockingConsequence
- * @todo Make this a unit test once T266409 is resolved
  */
-class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
+class BlockTest extends MediaWikiUnitTestCase {
 	use ConsequenceGetMessageTestTrait;
 
 	private function getMsgLocalizer(): MessageLocalizer {
@@ -116,10 +121,14 @@ class AbuseFilterBlockTest extends MediaWikiIntegrationTestCase {
 	public function provideRevert() {
 		yield 'no block to revert' => [ null, null, false ];
 
-		$randomUser = new UserIdentityValue( 1234, 'Some other user' );
-		yield 'not blocked by AF user' => [ new DatabaseBlock( [ 'by' => $randomUser ] ), null, false ];
+		$filterUserIdentity = $this->getFilterUser()->getUserIdentity();
 
-		$blockByFilter = new DatabaseBlock( [ 'by' => $this->getFilterUser()->getUserIdentity() ] );
+		$notAFBlock = $this->createMock( DatabaseBlock::class );
+		$notAFBlock->method( 'getBy' )->willReturn( $filterUserIdentity->getId() + 1 );
+		yield 'not blocked by AF user' => [ $notAFBlock, null, false ];
+
+		$blockByFilter = $this->createMock( DatabaseBlock::class );
+		$blockByFilter->method( 'getBy' )->willReturn( $filterUserIdentity->getId() );
 		$failBlockStore = $this->createMock( DatabaseBlockStore::class );
 		$failBlockStore->expects( $this->once() )->method( 'deleteBlock' )->willReturn( false );
 		yield 'cannot delete block' => [ $blockByFilter, $failBlockStore, false ];
