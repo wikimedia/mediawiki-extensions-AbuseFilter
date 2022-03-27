@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
 use ReverseChronologicalPager;
 use Sanitizer;
@@ -274,15 +275,14 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		$attribs = null;
-		$isHidden = SpecialAbuseLog::isHidden( $row );
 		if (
 			$this->isHidingEntry( $row ) === true ||
 			// If isHidingEntry is false, we've just unhidden the row
-			( $this->isHidingEntry( $row ) === null && $isHidden === true )
+			( $this->isHidingEntry( $row ) === null && $row->afl_deleted )
 		) {
 			$attribs = [ 'class' => 'mw-abusefilter-log-hidden-entry' ];
 		}
-		if ( $isHidden === 'implicit' ) {
+		if ( self::entryHasAssociatedDeletedRev( $row ) ) {
 			$description .= ' ' .
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
@@ -406,6 +406,21 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 		$lb->execute();
 		$result->seek( 0 );
+	}
+
+	/**
+	 * @param stdClass $row
+	 * @return bool
+	 * @todo This should be moved elsewhere
+	 */
+	private static function entryHasAssociatedDeletedRev( stdClass $row ): bool {
+		if ( !$row->afl_rev_id ) {
+			return false;
+		}
+		$revision = MediaWikiServices::getInstance()
+			->getRevisionLookup()
+			->getRevisionById( $row->afl_rev_id );
+		return $revision && $revision->getVisibility() !== 0;
 	}
 
 	/**
