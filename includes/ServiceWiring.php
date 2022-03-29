@@ -329,6 +329,7 @@ return [
 			$services->getUserEditTracker(),
 			$services->getUserGroupManager(),
 			$services->getPermissionManager(),
+			$services->getRestrictionStore(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
