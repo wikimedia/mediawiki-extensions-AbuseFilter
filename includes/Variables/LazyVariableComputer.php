@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Permissions\RestrictionStore;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\User\UserEditTracker;
@@ -78,6 +79,9 @@ class LazyVariableComputer {
 	/** @var PermissionManager */
 	private $permissionManager;
 
+	/** @var RestrictionStore */
+	private $restrictionStore;
+
 	/** @var string */
 	private $wikiID;
 
@@ -94,6 +98,7 @@ class LazyVariableComputer {
 	 * @param UserEditTracker $userEditTracker
 	 * @param UserGroupManager $userGroupManager
 	 * @param PermissionManager $permissionManager
+	 * @param RestrictionStore $restrictionStore
 	 * @param string $wikiID
 	 */
 	public function __construct(
@@ -109,6 +114,7 @@ class LazyVariableComputer {
 		UserEditTracker $userEditTracker,
 		UserGroupManager $userGroupManager,
 		PermissionManager $permissionManager,
+		RestrictionStore $restrictionStore,
 		string $wikiID
 	) {
 		$this->textExtractor = $textExtractor;
@@ -123,6 +129,7 @@ class LazyVariableComputer {
 		$this->userEditTracker = $userEditTracker;
 		$this->userGroupManager = $userGroupManager;
 		$this->permissionManager = $permissionManager;
+		$this->restrictionStore = $restrictionStore;
 		$this->wikiID = $wikiID;
 	}
 
@@ -300,7 +307,7 @@ class LazyVariableComputer {
 				$action = $parameters['action'];
 				/** @var Title $title */
 				$title = $parameters['title'];
-				$result = $title->getRestrictions( $action );
+				$result = $this->restrictionStore->getRestrictions( $title, $action );
 				break;
 			case 'user-editcount':
 				/** @var UserIdentity $userIdentity */
