@@ -547,7 +547,7 @@
 	"abusefilter-log-name": "Qeydé filtran dé nengan",
 	"abusefilter-log-header": "Ena log yew qisse mucneno ke ey de vurnayîşê filitreyî esta.\nQe detayanê hemî, bivine [[Special:AbuseFilter/history|liste]]yê vurnayîşê filitreyî.",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|vıraşt}} $4 ($5)",
-	"abusefilter-logentry-modify": "$1 {{GENDER:$2|vurneya}} $4 ($5)",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|vurniya}} $4 ($5)",
 	"abusefilter-log-invalid-filter": "Tayê etiketanê parzûnê kamiyeyi nêvêrenê.",
 	"abusefilter-log-noresults": "Netice çıniyo",
 	"abusefilter-diff-title": "Benatê versiyonan de ferqan",
