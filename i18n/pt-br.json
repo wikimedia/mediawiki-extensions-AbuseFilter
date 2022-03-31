@@ -33,6 +33,7 @@
 			"Teles",
 			"TheEduGobi",
 			"TheGabrielZaum",
+			"YuriNikolai",
 			555
 		]
 	},
@@ -262,7 +263,7 @@
 	"abusefilter-edit-throttle-placeholder": "Dividir com vírgulas para se juntar com AND e inserir um por um para ingressar com OU",
 	"abusefilter-throttle-ip": "Endereço de IP",
 	"abusefilter-throttle-user": "conta de usuário",
-	"abusefilter-throttle-range": "gama /16",
+	"abusefilter-throttle-range": "Intervalo de IP",
 	"abusefilter-throttle-creationdate": "data de criação da conta",
 	"abusefilter-throttle-editcount": "contador de edições",
 	"abusefilter-throttle-site": "Todo o site",
