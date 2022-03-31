@@ -223,6 +223,9 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 
 		$this->editPage( $title, $newText, 'Editing the test page' );
 
+		// one more tick to reliably test page_age
+		MWTimestamp::setFakeTime( $timestamp + 10 );
+
 		$rcQuery = RecentChange::getQueryInfo();
 		$row = $this->db->selectRow(
 			$rcQuery['tables'],
@@ -240,6 +243,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		$manager = AbuseFilterServices::getVariablesManager();
 
 		$expected = [
+			'page_age' => 10,
 			'old_wikitext' => $oldText,
 			'old_size' => strlen( $oldText ),
 			'old_links' => [ $oldLink ],

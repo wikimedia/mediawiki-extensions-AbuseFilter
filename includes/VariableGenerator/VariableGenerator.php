@@ -71,6 +71,7 @@ class VariableGenerator {
 	 * @return $this For chaining
 	 */
 	public function addUserVars( UserIdentity $userIdentity, RecentChange $rc = null ): self {
+		$asOf = $rc ? $rc->getAttribute( 'rc_timestamp' ) : wfTimestampNow();
 		$user = User::newFromIdentity( $userIdentity );
 
 		$this->vars->setLazyLoadVar(
@@ -90,7 +91,7 @@ class VariableGenerator {
 		$this->vars->setLazyLoadVar(
 			'user_age',
 			'user-age',
-			[ 'user' => $user, 'asof' => wfTimestampNow() ]
+			[ 'user' => $user, 'asof' => $asOf ]
 		);
 
 		$this->vars->setLazyLoadVar(
@@ -144,6 +145,9 @@ class VariableGenerator {
 			);
 		}
 
+		$asOf = $rc ? $rc->getAttribute( 'rc_timestamp' ) : wfTimestampNow();
+
+		// TODO: add 'asof' to this as well
 		$this->vars->setLazyLoadVar(
 			"{$prefix}_recent_contributors",
 			'load-recent-authors',
@@ -153,7 +157,7 @@ class VariableGenerator {
 		$this->vars->setLazyLoadVar(
 			"{$prefix}_age",
 			'page-age',
-			[ 'title' => $title, 'asof' => wfTimestampNow() ]
+			[ 'title' => $title, 'asof' => $asOf ]
 		);
 
 		$this->vars->setLazyLoadVar(
