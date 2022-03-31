@@ -241,7 +241,7 @@
 	"abusefilter-edit-throttle-placeholder": "คั่นด้วยจุลภาคเพื่อเชื่อมด้วย AND และแทรกเดี่ยว ๆ เพื่อเชื่อมด้วย OR",
 	"abusefilter-throttle-ip": "ที่อยู่ไอพี",
 	"abusefilter-throttle-user": "บัญชีผู้ใช้",
-	"abusefilter-throttle-range": "ช่วง /16",
+	"abusefilter-throttle-range": "ช่วงไอพี",
 	"abusefilter-throttle-creationdate": "วันที่สร้างบัญชี",
 	"abusefilter-throttle-editcount": "จำนวนการแก้ไข",
 	"abusefilter-throttle-site": "ทั้งไซต์",

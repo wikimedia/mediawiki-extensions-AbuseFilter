@@ -168,6 +168,7 @@
 	"abusefilter-edit-throttle-groups-help-text": "d'Dokumentatioun op mediawiki.org",
 	"abusefilter-throttle-ip": "IP-Adress",
 	"abusefilter-throttle-user": "Benotzerkont",
+	"abusefilter-throttle-range": "IP Adressberäich",
 	"abusefilter-throttle-editcount": "Zuel vun den Ännerungen",
 	"abusefilter-throttle-site": "ganzen Internetsite",
 	"abusefilter-throttle-page": "Säit",
