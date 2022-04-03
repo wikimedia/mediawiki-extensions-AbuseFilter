@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use Status;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class EvalExpression extends ApiBase {
 
@@ -93,10 +94,10 @@ class EvalExpression extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'expression' => [
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'prettyprint' => [
-				ApiBase::PARAM_TYPE => 'boolean'
+				ParamValidator::PARAM_TYPE => 'boolean'
 			]
 		];
 	}

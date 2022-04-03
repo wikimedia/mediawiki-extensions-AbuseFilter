@@ -17,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class CheckMatch extends ApiBase {
 
@@ -151,14 +152,14 @@ class CheckMatch extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'filter' => [
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 			'vars' => null,
 			'rcid' => [
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'logid' => [
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 		];
 	}

@@ -30,6 +30,7 @@ use ApiQuery;
 use ApiQueryBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MWTimestamp;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
@@ -184,22 +185,22 @@ class QueryAbuseFilters extends ApiQueryBase {
 	public function getAllowedParams() {
 		return [
 			'startid' => [
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'endid' => [
-				ApiBase::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'dir' => [
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_TYPE => [
 					'older',
 					'newer'
 				],
-				ApiBase::PARAM_DFLT => 'newer',
+				ParamValidator::PARAM_DEFAULT => 'newer',
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-direction',
 			],
 			'show' => [
-				ApiBase::PARAM_ISMULTI => true,
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => [
 					'enabled',
 					'!enabled',
 					'deleted',
@@ -209,15 +210,15 @@ class QueryAbuseFilters extends ApiQueryBase {
 				],
 			],
 			'limit' => [
-				ApiBase::PARAM_DFLT => 10,
-				ApiBase::PARAM_TYPE => 'limit',
+				ParamValidator::PARAM_DEFAULT => 10,
+				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MIN => 1,
 				IntegerDef::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			'prop' => [
-				ApiBase::PARAM_DFLT => 'id|description|actions|status',
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_DEFAULT => 'id|description|actions|status',
+				ParamValidator::PARAM_TYPE => [
 					'id',
 					'description',
 					'pattern',
@@ -229,7 +230,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 					'status',
 					'private',
 				],
-				ApiBase::PARAM_ISMULTI => true
+				ParamValidator::PARAM_ISMULTI => true
 			]
 		];
 	}

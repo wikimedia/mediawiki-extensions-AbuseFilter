@@ -6,6 +6,7 @@ use ApiBase;
 use ApiMain;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use User;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class UnblockAutopromote extends ApiBase {
 
@@ -83,8 +84,8 @@ class UnblockAutopromote extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'user' => [
-				ApiBase::PARAM_TYPE => 'user',
-				ApiBase::PARAM_REQUIRED => true
+				ParamValidator::PARAM_TYPE => 'user',
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'token' => null,
 		];

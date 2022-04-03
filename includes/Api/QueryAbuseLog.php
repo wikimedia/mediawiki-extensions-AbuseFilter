@@ -41,6 +41,7 @@ use MWTimestamp;
 use Title;
 use User;
 use Wikimedia\IPUtils;
+use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 
 /**
@@ -351,42 +352,42 @@ class QueryAbuseLog extends ApiQueryBase {
 	public function getAllowedParams() {
 		$params = [
 			'logid' => [
-				ApiBase::PARAM_TYPE => 'integer'
+				ParamValidator::PARAM_TYPE => 'integer'
 			],
 			'start' => [
-				ApiBase::PARAM_TYPE => 'timestamp'
+				ParamValidator::PARAM_TYPE => 'timestamp'
 			],
 			'end' => [
-				ApiBase::PARAM_TYPE => 'timestamp'
+				ParamValidator::PARAM_TYPE => 'timestamp'
 			],
 			'dir' => [
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_TYPE => [
 					'newer',
 					'older'
 				],
-				ApiBase::PARAM_DFLT => 'older',
+				ParamValidator::PARAM_DEFAULT => 'older',
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-direction',
 			],
 			'user' => null,
 			'title' => null,
 			'filter' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_ISMULTI => true,
 				ApiBase::PARAM_HELP_MSG => [
 					'apihelp-query+abuselog-param-filter',
 					GlobalNameUtils::GLOBAL_FILTER_PREFIX
 				]
 			],
 			'limit' => [
-				ApiBase::PARAM_DFLT => 10,
-				ApiBase::PARAM_TYPE => 'limit',
+				ParamValidator::PARAM_DEFAULT => 10,
+				ParamValidator::PARAM_TYPE => 'limit',
 				IntegerDef::PARAM_MIN => 1,
 				IntegerDef::PARAM_MAX => ApiBase::LIMIT_BIG1,
 				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			'prop' => [
-				ApiBase::PARAM_DFLT => 'ids|user|title|action|result|timestamp|hidden|revid',
-				ApiBase::PARAM_TYPE => [
+				ParamValidator::PARAM_DEFAULT => 'ids|user|title|action|result|timestamp|hidden|revid',
+				ParamValidator::PARAM_TYPE => [
 					'ids',
 					'filter',
 					'user',
@@ -398,15 +399,15 @@ class QueryAbuseLog extends ApiQueryBase {
 					'hidden',
 					'revid',
 				],
-				ApiBase::PARAM_ISMULTI => true
+				ParamValidator::PARAM_ISMULTI => true
 			]
 		];
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$params['wiki'] = [
-				ApiBase::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_TYPE => 'string',
 			];
-			$params['prop'][ApiBase::PARAM_DFLT] .= '|wiki';
-			$params['prop'][ApiBase::PARAM_TYPE][] = 'wiki';
+			$params['prop'][ParamValidator::PARAM_DEFAULT] .= '|wiki';
+			$params['prop'][ParamValidator::PARAM_TYPE][] = 'wiki';
 			$params['filter'][ApiBase::PARAM_HELP_MSG] = 'apihelp-query+abuselog-param-filter-central';
 		}
 		return $params;

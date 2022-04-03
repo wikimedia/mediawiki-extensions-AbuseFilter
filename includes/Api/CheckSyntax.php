@@ -7,6 +7,7 @@ use ApiMain;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class CheckSyntax extends ApiBase {
 
@@ -84,7 +85,7 @@ class CheckSyntax extends ApiBase {
 	public function getAllowedParams() {
 		return [
 			'filter' => [
-				ApiBase::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_REQUIRED => true,
 			],
 		];
 	}
