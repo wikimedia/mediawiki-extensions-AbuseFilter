@@ -214,7 +214,7 @@ class LazyVariableComputer {
 				// this inference is ugly, but the name isn't accessible from here
 				// and we only want this for debugging
 				$varName = strpos( $parameters['text-var'], 'old_' ) === 0 ? 'old_links' : 'all_links';
-				if ( $vars->forFilter ) {
+				if ( $parameters['forFilter'] ?? false ) {
 					$this->logger->debug( "Loading $varName from DB" );
 					$links = $this->getLinksFromDB( $article );
 				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
