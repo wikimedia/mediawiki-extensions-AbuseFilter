@@ -198,4 +198,62 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			'upload' => [ 'upload', 'upload' ],
 		];
 	}
+
+	/**
+	 * @covers ::addEditVars
+	 * @covers ::addEditVarsForRow
+	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
+	 */
+	public function testAddEditVarsForRow() {
+		$timestamp = 1514700000;
+		MWTimestamp::setFakeTime( $timestamp );
+
+		$user = $this->getMutableTestUser()->getUser();
+		$title = Title::newFromText( 'AbuseFilter testing page' );
+
+		$oldLink = "https://wikipedia.org";
+		$newLink = "https://en.wikipedia.org";
+		$oldText = "test $oldLink";
+		$newText = "new test $newLink";
+
+		$this->editPage( $title, $oldText, 'Creating the test page' );
+
+		$timestamp += 10;
+		MWTimestamp::setFakeTime( $timestamp );
+
+		$this->editPage( $title, $newText, 'Editing the test page' );
+
+		$rcQuery = RecentChange::getQueryInfo();
+		$row = $this->db->selectRow(
+			$rcQuery['tables'],
+			$rcQuery['fields'],
+			[ 'rc_type' => RC_EDIT ],
+			__METHOD__,
+			[ 'ORDER BY rc_id DESC' ],
+			$rcQuery['joins']
+		);
+
+		$rc = RecentChange::newFromRow( $row );
+
+		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator( $rc, $user );
+		$varHolder = $generator->getVars();
+		$manager = AbuseFilterServices::getVariablesManager();
+
+		$expected = [
+			'old_wikitext' => $oldText,
+			'old_size' => strlen( $oldText ),
+			'old_links' => [ $oldLink ],
+			'new_wikitext' => $newText,
+			'new_size' => strlen( $newText ),
+			'all_links' => [ $newLink ],
+			'timestamp' => $timestamp,
+		];
+		foreach ( $expected as $var => $value ) {
+			$this->assertEquals(
+				$value,
+				$manager->getVar( $varHolder, $var )->toNative()
+			);
+		}
+	}
+
 }
