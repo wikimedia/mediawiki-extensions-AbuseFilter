@@ -101,6 +101,7 @@
 	"abusefilter-log-details-ip": "ที่อยู่ไอพีเดิม",
 	"abusefilter-log-details-checkuser": "ตรวจสอบผู้ใช้",
 	"abusefilter-log-noactions": "ไม่มี",
+	"abusefilter-log-noactions-filter": "ไม่มี",
 	"abusefilter-log-details-diff": "การเปลี่ยนแปลงในการแก้ไข",
 	"abusefilter-log-linkoncontribs": "ปูมการละเมิด",
 	"abusefilter-log-linkoncontribs-text": "ปูมการละเมิดกฎของ{{GENDER:$1|ผู้ใช้นี้}}",
