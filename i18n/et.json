@@ -526,5 +526,8 @@
 	"log-description-abusefilterprivatedetails": "Siin on logitud korrad, mil kasutaja pöördub väärtarvitusfiltrite isiklike üksikasjade poole.",
 	"abusefilter-noreason": "Hoiatus: Selleks et näha selle logi isiklikke üksikasju, pead esitama põhjuse.",
 	"tag-abusefilter-condition-limit": "Tingimuste ülempiir käes",
-	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Special:AbuseFilter|väärtarvitusfiltritega]] kontrollida ([[mw:Extension:AbuseFilter/Conditions|spikker]])."
+	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Special:AbuseFilter|väärtarvitusfiltritega]] kontrollida ([[mw:Extension:AbuseFilter/Conditions|spikker]]).",
+	"notification-header-throttle-filter": "Piirati toiminguid väärtarvitusfiltris $2, mida hiljuti {{GENDER:$1|muutsid}}.",
+	"notification-subject-throttle-filter": "Piirati toiminguid {{GRAMMAR:genitive|{{SITENAME}}}} väärtarvitusfiltris, mida hiljuti {{GENDER:$1|muutsid}}",
+	"notification-link-text-show-filter": "Näita filtrit"
 }
