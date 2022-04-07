@@ -171,6 +171,8 @@
 	"abusefilter-edit-oldwarning": "<strong>Muudad selle filtri vana versiooni.\nAllpool toodud arvandmed käivad filtri uusima versiooni kohta.\nKui oma muudatused salvestad, kirjutad üle kõik redigeeritavast redaktsioonist uuemad muudatused. </strong> &bull;\n[[Special:AbuseFilter/history/$2|Naase selle filtri ajaloo juurde]].",
 	"abusefilter-edit-status-label": "Arvandmed:",
 	"abusefilter-edit-status": "Viimasest {{PLURAL:$1|ühest toimingust|$1 toimingust}} on sellele filtrile vastanud $2 ($3%).\nFiltri keskmine tööaeg on $4 ms ja see kasutab tingimuste ülemmäärast $5 {{PLURAL:$5|tingimust}}.",
+	"abusefilter-edit-throttled-warning": "'''Hoiatus:''' See filter märgiti automaatselt kahjulikuks. Ohutuse eesmärgil jäetakse {{PLURAL:$2|järgmine toiming|järgmised toimingud}} täitmata: $1. Palun kontrolli, kas suur tabamusmäär on ootuspärane. Kui see on ootuspärane, siis võid filtri uuesti salvestada, et piirang eemaldada.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Hoiatus:''' See filter märgiti automaatselt kahjulikuks. Toiminguid ei keelatud automaatselt, kuid palun kontrolli, kas suur tabamusmäär on ootuspärane. Kui see on ootuspärane, siis võid seda hoiatust eirata.",
 	"abusefilter-edit-new": "Uus filter",
 	"abusefilter-edit-save": "Salvesta filter",
 	"abusefilter-edit-id": "Filtri ID:",
@@ -208,7 +210,7 @@
 	"abusefilter-edit-throttle-placeholder": "Eralda komaga (ühendaja AND) ja lisa ükshaaval (ühendaja OR)",
 	"abusefilter-throttle-ip": "IP-aadress",
 	"abusefilter-throttle-user": "kasutajakonto",
-	"abusefilter-throttle-range": "/16-vahemik",
+	"abusefilter-throttle-range": "IP-vahemik",
 	"abusefilter-throttle-creationdate": "konto loomise kuupäev",
 	"abusefilter-throttle-editcount": "redigeerimise arv",
 	"abusefilter-throttle-site": "kogu sait",
@@ -523,5 +525,10 @@
 	"log-description-abusefilterprivatedetails": "Siin on logitud korrad, mil kasutaja pöördub väärtarvitusfiltrite isiklike üksikasjade poole.",
 	"abusefilter-noreason": "Hoiatus: Selleks et näha selle logi isiklikke üksikasju, pead esitama põhjuse.",
 	"tag-abusefilter-condition-limit": "Tingimuste ülempiir käes",
-	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Special:AbuseFilter|väärtarvitusfiltritega]] kontrollida ([[mw:Extension:AbuseFilter/Conditions|spikker]])."
+	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Special:AbuseFilter|väärtarvitusfiltritega]] kontrollida ([[mw:Extension:AbuseFilter/Conditions|spikker]]).",
+	"notification-header-throttle-filter": "Piirati toiminguid väärtarvitusfiltris $2, mida hiljuti {{GENDER:$1|muutsid}}.",
+	"notification-header-throttle-filter-actions": "Väärtarvitusfilter $2, mida hiljuti {{GENDER:$1|muutsid}}, oli suure tabamusmääraga ja  {{PLURAL:$4|järgmine toiming|järgmised toimingud}} keelati automaatselt: $3.",
+	"notification-header-throttle-filter-no-actions": "Väärtarvitusfilter $2, mida hiljuti {{GENDER:$1|muutsid}}, oli suure tabamusmääraga, kuid toiminguid automaatselt ei keelatud.",
+	"notification-subject-throttle-filter": "Piirati toiminguid {{GRAMMAR:genitive|{{SITENAME}}}} väärtarvitusfiltris, mida hiljuti {{GENDER:$1|muutsid}}",
+	"notification-link-text-show-filter": "Näita filtrit"
 }

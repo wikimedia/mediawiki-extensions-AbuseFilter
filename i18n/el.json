@@ -187,7 +187,7 @@
 	"abusefilter-edit-throttle-groups-help-text": "την τεκμηρίωση στο mediawiki.org",
 	"abusefilter-throttle-ip": "Διεύθυνση IP",
 	"abusefilter-throttle-user": "λογαριασμός χρήστη",
-	"abusefilter-throttle-range": "εύρος /16",
+	"abusefilter-throttle-range": "Εύρος IP",
 	"abusefilter-throttle-editcount": "καταμέτρηση επεξεργασιών",
 	"abusefilter-throttle-site": "ολόκληρο ιστότοπο",
 	"abusefilter-throttle-page": "σελίδα",

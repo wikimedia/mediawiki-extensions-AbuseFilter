@@ -587,7 +587,7 @@
 	"abusefilter-diff-backhistory": "بازگشت به تاریخچهٔ پالایه",
 	"abusefilter-diff-prev": "تغییر قدیمی‌تر",
 	"abusefilter-diff-next": "تغییر جدیدتر",
-	"abusefilter-import-intro": "شما می‌توانید از این رابط برای واردکردن پالایه‌ها از دیگر ویکی‌ها استفاده کنید.\nدر ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-edit-tools}}» در رابط ویرایشی کلیک کنید.\nاز جعبهٔ متنی که نشان داده می‌شود کپی کرده و در این جعبهٔ متن بچسبانید، سپس روی «{{int:abusefilter-import-submit}}» کلیک کنید.",
+	"abusefilter-import-intro": "شما می‌توانید از این رابط برای درون‌ریزی پالایه‌ها از دیگر ویکی‌ها استفاده کنید.\nدر ویکی مبدأ روی «{{int:abusefilter-edit-export}}» زیر «{{int:abusefilter-edit-tools}}» در رابط ویرایشی کلیک کنید.\nاز جعبهٔ متنی که نشان داده می‌شود کپی کرده و در این جعبهٔ متن بچسبانید، سپس روی «{{int:abusefilter-import-submit}}» کلیک کنید.",
 	"abusefilter-import-submit": "درون‌ریزی اطلاعات",
 	"abusefilter-import-invalid-data": "داده‌هایی که شما در تلاش برای درون‌ریزی‌شان هستید، معتبر نیستند.",
 	"abusefilter-group-default": "پیش‌فرض",
