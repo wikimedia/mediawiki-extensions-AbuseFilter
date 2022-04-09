@@ -2,8 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider;
-
 /**
  * This class runs a callback when the extension is registered, right after configuration has been
  * loaded (not really a hook, but almost).
@@ -12,7 +10,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider;
 class RegistrationCallback {
 
 	public static function onRegistration(): void {
-		global $wgAuthManagerAutoConfig, $wgActionFilteredLogs, $wgAbuseFilterProfile,
+		global $wgAbuseFilterProfile,
 			   $wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
 			   $wgGroupPermissions, $wgAbuseFilterRestrictions, $wgAbuseFilterDisallowGlobalLocalBlocks,
 			   $wgAbuseFilterActionRestrictions, $wgAbuseFilterLocallyDisabledGlobalActions;
@@ -89,27 +87,6 @@ class RegistrationCallback {
 			wfWarn( '$wgAbuseFilterRestrictions has been renamed to $wgAbuseFilterActionRestrictions.' );
 			$wgAbuseFilterActionRestrictions = $wgAbuseFilterRestrictions;
 		}
-
-		$wgAuthManagerAutoConfig['preauth'][AbuseFilterPreAuthenticationProvider::class] = [
-			'class' => AbuseFilterPreAuthenticationProvider::class,
-			// Run after normal preauth providers to keep the log cleaner
-			'sort' => 5,
-		];
-
-		$wgActionFilteredLogs['suppress'] = array_merge(
-			$wgActionFilteredLogs['suppress'],
-			// Message: log-action-filter-suppress-abuselog
-			[ 'abuselog' => [ 'hide-afl', 'unhide-afl' ] ]
-		);
-		$wgActionFilteredLogs['rights'] = array_merge(
-			$wgActionFilteredLogs['rights'],
-			// Messages: log-action-filter-rights-blockautopromote,
-			// log-action-filter-rights-restoreautopromote
-			[
-				'blockautopromote' => [ 'blockautopromote' ],
-				'restoreautopromote' => [ 'restoreautopromote' ]
-			]
-		);
 	}
 
 }

@@ -113,11 +113,39 @@
 			"create": [
 				"create"
 			]
+		},
+		"suppress": {
+			"abuselog": [
+				"hide-afl",
+				"unhide-afl"
+			]
+		},
+		"rights": {
+			"blockautopromote": [
+				"blockautopromote"
+			],
+			"restoreautopromote": [
+				"restoreautopromote"
+			]
 		}
 	},
 	"LogRestrictions": {
 		"abusefilter": "abusefilter-view",
 		"abusefilterprivatedetails": "abusefilter-privatedetails-log"
+	},
+	"AuthManagerAutoConfig": {
+		"preauth": {
+			"AbuseFilterPreAuthenticationProvider": {
+				"class": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPreAuthenticationProvider",
+				"services": [
+					"AbuseFilterVariableGeneratorFactory",
+					"AbuseFilterRunnerFactory",
+					"StatsdDataFactory",
+					"UserFactory"
+				],
+				"sort": 5
+			}
+		}
 	},
 	"APIModules": {
 		"abusefilterchecksyntax": {
