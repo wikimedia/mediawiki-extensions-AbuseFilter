@@ -13,6 +13,7 @@
 	"abusefilter-log-details-val": "Ärvv",
 	"abusefilter-log-hide-show": "Čuäʹjet",
 	"abusefilter-log-hide-hide": "Čiõǥǥ",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|čiõkkum}}",
 	"abusefilter-list-id": "Siʹllʼjeei nââmar",
 	"abusefilter-list-group": "Siʹllʼjemjoukk",
 	"abusefilter-deleted": "Jaukkuum",
@@ -28,6 +29,7 @@
 	"abusefilter-throttle-ip": "IP-addrõs",
 	"abusefilter-throttle-user": "õõʹnnitobdldõk",
 	"abusefilter-throttle-page": "seidd",
+	"abusefilter-history-hidden": "Čiõkkum",
 	"abusefilter-history-user": "Õõʹnni",
 	"abusefilter-history-deleted": "Jaukkuum",
 	"abusefilter-history-filterid": "Siʹllʼjeei",
@@ -38,5 +40,6 @@
 	"abusefilter-examine-legend": "Vaʹlljed muttsid",
 	"abusefilter-examine-user": "Õõʹnni:",
 	"abusefilter-examine-submit": "Ooʒʒ",
+	"abusefilter-log-noresults": "Ni mâiʹd ij käunnʼjam",
 	"notification-link-text-show-filter": "Čuäʹjet siʹllʼjeei"
 }
