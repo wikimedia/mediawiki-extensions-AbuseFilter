@@ -75,6 +75,7 @@
 	"abusefilter-log-hidden-implicit": "(kuzhet abalamour m'eo bet diverket ar reizhadenn)",
 	"abusefilter-log-cannot-see-details": "N'hoc'h ket aotreet da welet ar munudoù evit an enmont-mañ.",
 	"abusefilter-log-details-hidden": "Ne c'helloc'h ket gwelet munudoù ar moned-mañ dre ma 'z eo kuzhet d'ar selloù publik.",
+	"abusefilter-log-hide-selected": "Linenn{{PLURAL:$1||où}} ar sil a-enep ar gwallimplij diluzet:",
 	"abusefilter-log-hide-legend": "Kuzhat ar moned en deizlevrioù",
 	"abusefilter-log-hide-reason": "Abeg :",
 	"abusefilter-log-hide-forbidden": "N'hoc'h eus ket ar gwir da guzhat enmontoù e deizlevr ar gwallimplij.",
