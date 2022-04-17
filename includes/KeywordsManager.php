@@ -68,6 +68,7 @@ class KeywordsManager {
 			'substr(subject, offset, length)' => 'substr',
 			'strpos(haystack, needle)' => 'strpos',
 			'str_replace(subject, search, replace)' => 'str_replace',
+			'str_replace_regexp(subject, search, replace)' => 'str_replace_regexp',
 			'rescape(string)' => 'rescape',
 			'set_var(var,value)' => 'set_var',
 			'sanitize(string)' => 'sanitize',
