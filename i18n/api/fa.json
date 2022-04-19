@@ -8,7 +8,8 @@
 			"Ladsgroup",
 			"Reza1615",
 			"Jeeputer",
-			"Sunfyre"
+			"Sunfyre",
+			"Beginneruser"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "بررسی کنید تا ببینید پالایهٔ ویرایش با مجموعه‌ای از متغیرها، یک ویرایش، یا یک رویداد سیاههٔ پالایهٔ ویرایش کاربر مطابق است یا خیر.\n\nمتغیر، شناسهٔ تغییرات اخیر یا شناسهٔ ورود مورد نیاز است، اما فقط یکی از این سه می‌تواند استفاده شود.",
@@ -32,7 +33,7 @@
 	"apihelp-abusefilterunblockautopromote-description": "باز کردن یک کاربر از ارتقاء خودکار بر پایهٔ نتیجهٔ پالایهٔ ویرایش.",
 	"apihelp-abusefilterunblockautopromote-summary": "باز کردن یک کاربر از ارتقاء خودکار بر پایهٔ نتیجهٔ پالایهٔ ویرایش.",
 	"apihelp-abusefilterunblockautopromote-param-user": "نام کاربری‌ای که قصد باز کردن آن را دارید.",
-	"apihelp-abusefilterunblockautopromote-example-1": "برداشتن قفل بر روی ارتقاء خودکار [[User:Example]]",
+	"apihelp-abusefilterunblockautopromote-example-1": "حذف بستن دسترسی بر روی ارتقاء خودکار [[User:Example]]",
 	"apihelp-query+abusefilters-description": "نمایش جزئیات پالایهٔ ویرایش.",
 	"apihelp-query+abusefilters-summary": "نمایش جزئیات پالایهٔ ویرایش.",
 	"apihelp-query+abusefilters-param-startid": "شناسهٔ پالایه برای شروع شمارش از آن.",
