@@ -8,7 +8,8 @@
 			"Jeeputer",
 			"Ladsgroup",
 			"Reza1615",
-			"Sunfyre"
+			"Sunfyre",
+			"Beginneruser"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "بررسی کنید تا ببینید پالایهٔ ویرایش با مجموعه‌ای از متغیرها، یک ویرایش، یا یک رویداد سیاههٔ پالایهٔ ویرایش کاربر مطابق است یا خیر.\n\nمتغیر، شناسهٔ تغییرات اخیر یا شناسهٔ ورود مورد نیاز است، اما فقط یکی از این سه می‌تواند استفاده شود.",
@@ -32,7 +33,7 @@
 	"apihelp-abusefilterunblockautopromote-description": "باز کردن یک کاربر از ارتقاء خودکار بر پایهٔ نتیجهٔ پالایهٔ ویرایش.",
 	"apihelp-abusefilterunblockautopromote-summary": "باز کردن یک کاربر از ارتقاء خودکار بر پایهٔ نتیجهٔ پالایهٔ ویرایش.",
 	"apihelp-abusefilterunblockautopromote-param-user": "نام کاربری‌ای که قصد باز کردن آن را دارید.",
-	"apihelp-abusefilterunblockautopromote-example-1": "برداشتن قفل بر روی ارتقاء خودکار [[User:Example]]",
+	"apihelp-abusefilterunblockautopromote-example-1": "حذف بستن دسترسی بر روی ارتقاء خودکار [[User:Example]]",
 	"apihelp-query+abusefilters-description": "نمایش جزئیات پالایهٔ ویرایش.",
 	"apihelp-query+abusefilters-summary": "نمایش جزئیات پالایهٔ ویرایش.",
 	"apihelp-query+abusefilters-param-startid": "شناسهٔ پالایه برای شروع شمارش از آن.",
@@ -56,14 +57,14 @@
 	"apihelp-query+abuselog-param-wiki": "ویکی برای نمایش تأثیر گرفته از آن",
 	"apihelp-query+abuselog-example-1": "نمایش سیاههٔ آخرین ورودی‌ها",
 	"apihelp-query+abuselog-example-2": "نمایش آخرین موارد سیاهه از [[API]]",
-	"apihelp-abuselogprivatedetails-description": "مشاهدهٔ جزئیات خصوصی یک مدخل سیاههٔ خرابکاری.",
-	"apihelp-abuselogprivatedetails-summary": "مشاهدهٔ جزئیات خصوصی یک مدخل سیاههٔ خرابکاری.",
-	"apihelp-abuselogprivatedetails-param-logid": "شناسهٔ مدخل سیاههٔ خرابکاری برای بررسی.",
+	"apihelp-abuselogprivatedetails-description": "مشاهدهٔ جزئیات خصوصی یک مدخل سیاههٔ ویرایش.",
+	"apihelp-abuselogprivatedetails-summary": "مشاهدهٔ جزئیات خصوصی یک مدخل سیاههٔ ویرایش.",
+	"apihelp-abuselogprivatedetails-param-logid": "شناسهٔ مدخل سیاههٔ ویرایش برای بررسی.",
 	"apihelp-abuselogprivatedetails-param-reason": "دلیلی معتبر برای اجرای این وارسی.",
-	"apihelp-abuselogprivatedetails-example-1": "دریافتت جزئیات خصوصی یک مدخل سیاههٔ خرابکاری با شناسهٔ ۱، با استفاده از دلیل «example».",
-	"apierror-abusefilter-canttest": "شما اجازهٔ آزمایش پالایه‌های خرابکاری را ندارید.",
-	"apierror-abusefilter-cantcheck": "شما اجازهٔ آزمایش نحوی پالایه‌های خرابکاری را ندارید.",
+	"apihelp-abuselogprivatedetails-example-1": "دریافتت جزئیات خصوصی یک مدخل سیاههٔ ویرایش با شناسهٔ ۱، با استفاده از دلیل «example».",
+	"apierror-abusefilter-canttest": "شما اجازهٔ آزمایش پالایه‌های ویرایش را ندارید.",
+	"apierror-abusefilter-cantcheck": "شما اجازهٔ آزمایش نحوی پالایه‌های ویرایش را ندارید.",
 	"apierror-abusefilter-canteval": "شما مجاز به ارزیابی عبارت‌های پالایهٔ ویرایش نیستید.",
-	"apierror-abusefilter-nosuchlogid": "هیچ موردی در سیاههٔ خرابکاری با شناسهٔ $1 وجود ندارد.",
+	"apierror-abusefilter-nosuchlogid": "هیچ موردی در سیاههٔ ویرایش با شناسهٔ $1 وجود ندارد.",
 	"apierror-abusefilter-badsyntax": "نحو پالایه غیرمجاز است"
 }
