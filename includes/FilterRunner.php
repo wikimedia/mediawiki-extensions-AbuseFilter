@@ -386,13 +386,13 @@ class FilterRunner {
 		$this->filterProfiler->recordRuntimeProfilingResult(
 			count( $allFilters ),
 			$data->getTotalConditions(),
-			$data->getTotalRunTime()
+			$data->getTotalRuntime()
 		);
 		$this->filterProfiler->recordPerFilterProfiling( $this->title, $data->getProfilingData() );
 		$this->filterProfiler->recordStats(
 			$this->group,
 			$data->getTotalConditions(),
-			$data->getTotalRunTime(),
+			$data->getTotalRuntime(),
 			(bool)$matchedFilters
 		);
 	}

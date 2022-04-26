@@ -178,7 +178,7 @@ class SyntaxChecker {
 					$node->children[2] = new AFPTreeNode(
 						AFPTreeNode::ATOM,
 						new AFPToken(
-							AFPTOKEN::TKEYWORD,
+							AFPToken::TKEYWORD,
 							"null",
 							$node->position
 						),
@@ -235,7 +235,7 @@ class SyntaxChecker {
 		$trueNode = new AFPTreeNode(
 			AFPTreeNode::ATOM,
 			new AFPToken(
-				AFPTOKEN::TKEYWORD,
+				AFPToken::TKEYWORD,
 				"true",
 				$position
 			),
@@ -244,7 +244,7 @@ class SyntaxChecker {
 		$falseNode = new AFPTreeNode(
 			AFPTreeNode::ATOM,
 			new AFPToken(
-				AFPTOKEN::TKEYWORD,
+				AFPToken::TKEYWORD,
 				"false",
 				$position
 			),
