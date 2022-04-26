@@ -74,7 +74,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			->setMethod( 'GET' )
 			->setWrapperLegendMsg( 'abusefilter-tools-expr' )
 			->setSubmitTextMsg( 'abusefilter-tools-submitexpr' )
-			->setSubmitId( 'mw-abusefilter-submitexpr' )
+			->setSubmitID( 'mw-abusefilter-submitexpr' )
 			->setFooterText( Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' ) )
 			->prepareForm()
 			->displayForm( false );
@@ -96,7 +96,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			$htmlForm->setWrapperLegendMsg( 'abusefilter-tools-reautoconfirm' )
 				->setSubmitTextMsg( 'abusefilter-tools-reautoconfirm-submit' )
 				->setSubmitName( 'wpReautoconfirmSubmit' )
-				->setSubmitId( 'mw-abusefilter-reautoconfirmsubmit' )
+				->setSubmitID( 'mw-abusefilter-reautoconfirmsubmit' )
 				->prepareForm()
 				->displayForm( false );
 		}
