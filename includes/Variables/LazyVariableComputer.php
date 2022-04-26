@@ -486,15 +486,13 @@ class LazyVariableComputer {
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
 
-		if ( isset( $cache[$cacheKey] ) ) {
-			return $cache[$cacheKey];
+		if ( !isset( $cache[$cacheKey] ) ) {
+			$options = ParserOptions::newFromUser( $user );
+			$cache[$cacheKey] = (object)[
+				'output' => $this->parser->parse( $wikitext, $article->getTitle(), $options )
+			];
 		}
 
-		$edit = (object)[];
-		$options = ParserOptions::newFromUser( $user );
-		$edit->output = $this->parser->parse( $wikitext, $article->getTitle(), $options );
-		$cache[$cacheKey] = $edit;
-
-		return $edit;
+		return $cache[$cacheKey];
 	}
 }

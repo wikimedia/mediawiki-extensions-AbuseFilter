@@ -17,7 +17,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 	/** @inheritDoc */
 	protected $tablesUsed = [ 'abuse_filter' ];
 
-	public function setUp(): void {
+	protected function setUp(): void {
 		global $wgDBtype;
 
 		parent::setUp();
