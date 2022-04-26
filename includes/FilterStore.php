@@ -142,15 +142,17 @@ class FilterStore {
 		$newRow['af_throttled'] = ( $newRow['af_throttled'] ?? false ) && !$newRow['af_enabled'];
 		// This is null when creating a new filter, but the DB field is NOT NULL
 		$newRow['af_hit_count'] = $newRow['af_hit_count'] ?? 0;
-		$newRow['af_id'] = $newID;
+		$rowForInsert = array_diff_key( $newRow, [ 'af_id' => true ] );
 
 		$dbw->startAtomic( __METHOD__ );
-		$dbw->replace( 'abuse_filter', 'af_id', $newRow, __METHOD__ );
-
 		if ( $isNew ) {
+			$dbw->insert( 'abuse_filter', $rowForInsert, __METHOD__ );
 			$newID = $dbw->insertId();
+		} else {
+			$dbw->update( 'abuse_filter', $rowForInsert, [ 'af_id' => $newID ], __METHOD__ );
 		}
 		'@phan-var int $newID';
+		$newRow['af_id'] = $newID;
 
 		$actions = $newFilter->getActions();
 		$actionsRows = [];
