@@ -9,7 +9,6 @@ use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\User\UserIdentity;
 use Status;
-use stdClass;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -128,7 +127,7 @@ class FilterStore {
 		bool $wasGlobal
 	): array {
 		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
-		$newRow = get_object_vars( $this->filterToDatabaseRow( $newFilter ) );
+		$newRow = $this->filterToDatabaseRow( $newFilter );
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp();
@@ -249,11 +248,11 @@ class FilterStore {
 	/**
 	 * @todo Perhaps add validation to ensure no null values remained.
 	 * @param Filter $filter
-	 * @return stdClass
+	 * @return array
 	 */
-	private function filterToDatabaseRow( Filter $filter ): stdClass {
+	private function filterToDatabaseRow( Filter $filter ): array {
 		// T67807: integer 1's & 0's might be better understood than booleans
-		return (object)[
+		return [
 			'af_id' => $filter->getID(),
 			'af_pattern' => $filter->getRules(),
 			'af_public_comments' => $filter->getName(),

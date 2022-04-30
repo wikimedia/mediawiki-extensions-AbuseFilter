@@ -48,7 +48,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
 		wfGetDB( DB_PRIMARY )->insert(
 			'abuse_filter',
-			get_object_vars( $filterStore->filterToDatabaseRow( $filter ) ),
+			$filterStore->filterToDatabaseRow( $filter ),
 			__METHOD__
 		);
 	}
