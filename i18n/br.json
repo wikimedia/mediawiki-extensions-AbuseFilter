@@ -80,6 +80,7 @@
 	"abusefilter-log-hide-hidden": "Kuzhat ar moned-mañ eus ar selloù publik",
 	"abusefilter-log-hide-reason": "Abeg :",
 	"abusefilter-log-hide-forbidden": "N'hoc'h eus ket ar gwir da guzhat enmontoù e deizlevr ar gwallimplij.",
+	"logentry-abusefilter-hit": "$1 {{GENDER:$2|en|he}} deus lañset sil gwallimplij $4, e-kerzh an ober \"$5\" war $3. Oberoù graet : $6 ($7)",
 	"abusefilter-list": "An holl siloù",
 	"abusefilter-list-id": "Niv. ar sil",
 	"abusefilter-list-pattern": "Patrom",
