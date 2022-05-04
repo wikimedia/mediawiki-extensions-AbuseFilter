@@ -32,7 +32,8 @@
 			"밝은소년",
 			"아라",
 			"Underbaaar",
-			"Yunbj"
+			"Yunbj",
+			"Bluehill"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -213,6 +214,7 @@
 	"abusefilter-edit-subtitle-new": "필터 만들기",
 	"abusefilter-edit-token-not-match": "편집이 저장되지 않았습니다! 다시 저장해 주십시오.",
 	"abusefilter-edit-oldwarning": "<strong>이 필터의 이전 버전을 수정하고 있습니다.\n아래의 통계는 이 필터의 최신판에 대한 것입니다.\n변경 사항을 저장하면 편집하고 있는 판 이후의 모든 변경 사항을 덮어쓰게 됩니다.</strong> &bull;\n[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아가기]].",
+	"abusefilter-edit-oldwarning-view": "<strong>이 필터의 오래된 판을 보고 있습니다.\n인용된 통계는 최근 판의 필터에 대한 것입니다.</strong> &bull;\n[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아갑니다]].",
 	"abusefilter-edit-status-label": "통계:",
 	"abusefilter-edit-status": "최근 {{PLURAL:$1|동작}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.\n평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 {{PLURAL:$5|부하}}가 걸리고 있습니다.",
 	"abusefilter-edit-throttled-warning": "'''경고''': 이 필터는 자동으로 유해한 것으로 표시되었습니다. 안전 장치로서 다음의 조치는 실행되지 않을 것입니다. ($1) 검토한 다음 조건을 [[mw:Extension:AbuseFilter/Conditions|최적화]]하여 이 제한을 제거하십시오.",
@@ -305,6 +307,7 @@
 	"abusefilter-edit-notallowed-global-custom-msg": "전역 필터의 경우 사용자 지정 경고 및 불허 메시지는 지원되지 않습니다",
 	"abusefilter-edit-invalid-warn-message": "경고 메시지는 비워둘 수 없습니다.",
 	"abusefilter-edit-invalid-disallow-message": "경고 메시지는 비워둘 수 없습니다.",
+	"abusefilter-edit-invalid-throttlecount": "스로틀 동작 수는 양수여야 합니다.",
 	"abusefilter-edit-invalid-throttleperiod": "스로틀 기간은 양의 정수여야 합니다.",
 	"abusefilter-edit-empty-throttlegroups": "적어도 하나의 스로틀 그룹을 선택해야 합니다.",
 	"abusefilter-edit-duplicated-throttlegroups": "스로틀 그룹은 중복을 가질 수 없습니다.",
@@ -477,6 +480,7 @@
 	"abusefilter-exception-dividebyzero": "$1번째 문자에서 $2를 0으로 나누려 하고 있습니다.",
 	"abusefilter-exception-unrecognisedvar": "$1번째 문자에 알 수 없는 변수 $2가 있습니다.",
 	"abusefilter-exception-notenoughargs": "$1번째 문자에서 호출한 $2 함수에 변수가 부족합니다.\n{{PLURAL:$3|변수}} $3개가 있어야 하지만 $4개가 있습니다.",
+	"abusefilter-exception-toomanyargs": "$1번째 문자에서 호출한 $2 함수에 변수가 너무 많습니다.\n{{PLURAL:$3|변수}} $3개가 최대이지만 $4개가 있습니다.",
 	"abusefilter-exception-regexfailure": "$1번째 글자의 \"$2\" 정규 표현식에 오류가 있습니다.",
 	"abusefilter-exception-overridebuiltin": "$1번째 문자에서 소프트웨어에 내장된 변수를 덮는 \"$2\" 변수가 있습니다.",
 	"abusefilter-exception-outofbounds": "$1번째 문자에서 존재하지 않는 배열 항목 $2(배열 길이 = $3)를 요청하고 있습니다.",
