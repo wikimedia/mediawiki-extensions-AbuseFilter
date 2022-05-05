@@ -246,7 +246,7 @@
 	"abusefilter-edit-flags": "Indicateurs :",
 	"abusefilter-edit-enabled": "Activer ce filtre",
 	"abusefilter-edit-deleted": "Marquer comme supprimé",
-	"abusefilter-edit-hidden": "Masquer les détails de ce filtre dans la vue publique",
+	"abusefilter-edit-hidden": "Masquer les détails de ce filtre à la vue du public",
 	"abusefilter-edit-global": "Filtre global",
 	"abusefilter-edit-rules": "Conditions :",
 	"abusefilter-edit-field-conditions": "conditions",

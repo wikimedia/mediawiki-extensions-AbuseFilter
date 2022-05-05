@@ -48,7 +48,7 @@
 	"apihelp-query+abuselog-param-user": "Teyna qeydé dekerdena grotena IP adresa karberi bıvin",
 	"apihelp-query+abuselog-param-title": "Dekerdenanê perer teyna bıvin",
 	"apihelp-query+abuselog-param-filter": "Teyna dekerdenanê kamiya filtrande tepêştena grotışa bıvin. Pey blokana abırne u parzûnê $1ya verole cıkuye",
-	"apihelp-query+abuselog-param-filter-central": "Teyna deyaye be terefê kamiya parzûnana tepêşiyaye qeydan bımocne. Boriyana pêra abırne",
+	"apihelp-query+abuselog-param-filter-central": "Tenya cıkewtışê ke terefê kamiya parzûnan ra tepışiyayê, inan bımocne. Be boriyan ra abırne.",
 	"apihelp-query+abuselog-param-limit": "Azami miktarê dekerdena liste ke",
 	"apihelp-query+abuselog-param-prop": "Kamci xısusiyeta ke gê no",
 	"apihelp-query+abuselog-param-wiki": "Wiki ra isabetê ke bımocniyê.",
