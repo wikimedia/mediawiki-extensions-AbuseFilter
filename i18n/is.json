@@ -130,7 +130,7 @@
 	"abusefilter-edit-lastmod-text": "$1 af $2",
 	"abusefilter-edit-action-warn": "Virkja þessar aðgerðir eftir að notandinn hefur verið varaður við",
 	"abusefilter-edit-action-disallow": "Hindra notandann frá því að gera tiltekna aðgerð",
-	"abusefilter-edit-action-blockautopromote": "Endurvekja réttindi sjálfvirkt staðfestra notenda",
+	"abusefilter-edit-action-blockautopromote": "Fjarlægja réttindi sjálfvirkt staðfestra notenda",
 	"abusefilter-edit-action-degroup": "Fjarlægja öll réttindi notandans",
 	"abusefilter-edit-action-block": "Banna notandann og/eða vistfang hans frá frekari breytingum",
 	"abusefilter-edit-action-throttle": "Eingöngu virkja aðgerðir ef notandinn fer yfir eftirfarandi hlutfall",
