@@ -235,7 +235,7 @@
 	"abusefilter-edit-throttle-placeholder": "Одделете со запирки за да споите со AND, а вметнете едно по едно за да споите со OR",
 	"abusefilter-throttle-ip": "IP-адреса",
 	"abusefilter-throttle-user": "корисничка сметка",
-	"abusefilter-throttle-range": "/16-опсег",
+	"abusefilter-throttle-range": "IP-опсег",
 	"abusefilter-throttle-creationdate": "датум на создавање на сметката",
 	"abusefilter-throttle-editcount": "број на уредувања",
 	"abusefilter-throttle-site": "целото мреж. место",
