@@ -214,7 +214,8 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Du viser en gammel versjon av dette filteret.\nStatistikken som siteres gjelder den nyligste versjonen av filteret.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Tilbake til filterets historikk]].",
 	"abusefilter-edit-status-label": "Statistikk:",
 	"abusefilter-edit-status": "Av {{PLURAL:$1|den siste handlingen|de siste $1 handlingene}} har dette filteret matchet $2 ($3 %).\nI gjennomsnitt er kjøretiden $4 ms, og det bruker $5 {{PLURAL:$5|vilkår}} av vilkårsgrensen.",
-	"abusefilter-edit-throttled-warning": "'''Advarsel:''' Dette filteret ble automatisk flagget som skadefullt. Av sikkerhetsårsaker vil følgende handlinger ikke bli utført ($1). Gå gjennom og [[mw:Extension:AbuseFilter/Conditions|optimer]] betingelsene for å fjerne denne begrensningen",
+	"abusefilter-edit-throttled-warning": "'''Advarsel:''' Dette filteret ble automatisk flagget som skadefullt. Av sikkerhetsårsaker vil følgende {{PLURAL:$2|handling|handlinger}} ikke bli utført: $1. Sjekk hvorvidt den høye andelen treff er forventet. Hvis det er det kan du lagre filteret igjen for å fjerne denne begrensningen.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Advarsel:''' Dette filteret ble automatisk merket som skadelig. Ingen handlinger ble slått av automatisk, men sjekk om den høye andelen treff er forventet. Hvis det er det kan du ignorere denne advarselen.",
 	"abusefilter-edit-new": "Nytt filter",
 	"abusefilter-edit-save": "Lagre filter",
 	"abusefilter-edit-id": "Filter-ID:",
@@ -252,7 +253,7 @@
 	"abusefilter-edit-throttle-placeholder": "Splitt med kommaer for å sammenstille med AND, og sett inn én etter én for å sammenstille med OR",
 	"abusefilter-throttle-ip": "IP-adresse",
 	"abusefilter-throttle-user": "brukerkonto",
-	"abusefilter-throttle-range": "/16-intervall",
+	"abusefilter-throttle-range": "IP-intervall",
 	"abusefilter-throttle-creationdate": "kontoopprettelsesdato",
 	"abusefilter-throttle-editcount": "antall redigeringer",
 	"abusefilter-throttle-site": "hele nettstedet",
@@ -591,6 +592,8 @@
 	"tag-abusefilter-condition-limit": "vilkårsgrense nådd",
 	"tag-abusefilter-condition-limit-description": "Redigeringer eller andre handlinger som ikke kunne sjekkes av alle aktive [[Special:AbuseFilter|misbruksfiltre]] ([[mw:Extension:AbuseFilter/Conditions|hjelp]]).",
 	"notification-header-throttle-filter": "Misbruksfilteret $2 som {{GENDER:$1|du}} nylig redigerte ble bremset.",
+	"notification-header-throttle-filter-actions": "Misbruksfilteret $2 som {{GENDER:$1|du}} nylig redigerte har et høyt antall treff, og følgende {{PLURAL:$4|handling|handlinger}} ble slått av automatisk: $3.",
+	"notification-header-throttle-filter-no-actions": "Misbruksfilteret $2 som {{GENDER:$1|du}} nylig redigerte har et høyt antall treff, men ingen handlinger ble slått av automatisk.",
 	"notification-subject-throttle-filter": "Et misbruksfilter {{GENDER:$1|du}} har redigert ble bremset på {{SITENAME}}",
 	"notification-link-text-show-filter": "Vis filter"
 }

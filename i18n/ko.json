@@ -135,6 +135,7 @@
 	"abusefilter-log-details-hidden-implicit": "연결된 판이 비공개로 설정되었기 때문에 이 항목의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-log-private-not-included": "지정한 필터 ID 중 하나 이상이 비공개 필터입니다. 비공개 필터의 자세한 내용을 볼 권한이 없기 때문에 해당 필터는 검색되지 않았습니다.",
 	"abusefilter-log-hide-no-selected": "선택한 항목이 없습니다",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|선택한 편집 필터 기록 항목}}:",
 	"abusefilter-log-hide-legend": "보이기 설정 바꾸기",
 	"abusefilter-log-hide-set-visibility": "선택한 항목의 보이기 설정:",
 	"abusefilter-log-hide-reason": "이유:",
