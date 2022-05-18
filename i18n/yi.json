@@ -6,7 +6,8 @@
 			"Jiddisch",
 			"Matma Rex",
 			"פוילישער",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Pacha Tchernof"
 		]
 	},
 	"abusefilter-desc": "ווענדט אויטאמאטישע הייריסטיק צו רעדאקטירונגען",
@@ -139,8 +140,8 @@
 	"abusefilter-edit-main": "פילטער פאראמעטערס",
 	"abusefilter-edit-done-subtitle": "פילטער רעדאקטירט",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|אײַערע ענדערונגען]] צו [[Special:AbuseFilter/$1|פילטער $3]] זענען געווארן אײַנגעשפייכלערט.",
-	"abusefilter-edit-viewhistory": "באקוקן דעם פֿילטערס היסטאריע",
-	"abusefilter-edit-history": "היסטאריע:",
+	"abusefilter-edit-viewhistory": "באַקוקן דעם פֿילטערס היסטאָריע",
+	"abusefilter-edit-history": "היסטאָריע:",
 	"abusefilter-edit-check": "קאנטראלירן סינטאקס",
 	"abusefilter-edit-badfilter": "דער פֿילטער וואס איר האט ספעציפֿירט עקזיסטירט נישט",
 	"abusefilter-edit-revert": "צוריקשטעלן אקציעס אויסגעפֿירט דורך דעם פֿילטער",
