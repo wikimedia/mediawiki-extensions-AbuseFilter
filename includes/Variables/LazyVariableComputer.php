@@ -179,8 +179,8 @@ class LazyVariableComputer {
 				$diff_lines = explode( "\n", $diff );
 				$result = [];
 				foreach ( $diff_lines as $line ) {
-					if ( substr( $line, 0, 1 ) === $line_prefix ) {
-						$result[] = substr( $line, strlen( $line_prefix ) );
+					if ( ( $line[0] ?? '' ) === $line_prefix ) {
+						$result[] = substr( $line, 1 );
 					}
 				}
 				break;
