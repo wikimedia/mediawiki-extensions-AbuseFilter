@@ -52,6 +52,7 @@ class FilterEvaluator {
 		'rcount' => 'funcRCount',
 		'get_matches' => 'funcGetMatches',
 		'ip_in_range' => 'funcIPInRange',
+		'ip_in_ranges' => 'funcIPInRanges',
 		'contains_any' => 'funcContainsAny',
 		'contains_all' => 'funcContainsAll',
 		'equals_to_any' => 'funcEqualsToAny',
@@ -89,6 +90,7 @@ class FilterEvaluator {
 		'rcount' => [ 1, 2 ],
 		'get_matches' => [ 2, 2 ],
 		'ip_in_range' => [ 2, 2 ],
+		'ip_in_ranges' => [ 3, INF ],
 		'contains_any' => [ 2, INF ],
 		'contains_all' => [ 2, INF ],
 		'equals_to_any' => [ 2, INF ],
@@ -1009,6 +1011,34 @@ class FilterEvaluator {
 		$result = IPUtils::isInRange( $ip, $range );
 
 		return new AFPData( AFPData::DBOOL, $result );
+	}
+
+	/**
+	 * @param array $args
+	 * @param int $position
+	 * @return AFPData
+	 * @throws UserVisibleException
+	 */
+	protected function funcIPInRanges( $args, int $position ) {
+		$ip = array_shift( $args )->toString();
+
+		foreach ( $args as $range ) {
+			$range = $range->toString();
+
+			if ( !IPUtils::isValidRange( $range ) && !IPUtils::isIPAddress( $range ) ) {
+				throw new UserVisibleException(
+					'invalidiprange',
+					$position,
+					[ $range ]
+				);
+			}
+
+			if ( IPUtils::isInRange( $ip, $range ) ) {
+				return new AFPData( AFPData::DBOOL, true );
+			}
+		}
+
+		return new AFPData( AFPData::DBOOL, false );
 	}
 
 	/**

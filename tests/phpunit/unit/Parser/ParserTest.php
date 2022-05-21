@@ -575,6 +575,7 @@ class ParserTest extends ParserTestCase {
 	public function invalidIPRange() {
 		return [
 			[ "ip_in_range('0.0.0.0', 'lol')", 'funcIPInRange' ],
+			[ "ip_in_ranges('0.0.0.0', ':', '0.0.0.256')", 'funcIPInRanges' ],
 		];
 	}
 
@@ -679,6 +680,7 @@ class ParserTest extends ParserTestCase {
 	public function threeParamsFuncs() {
 		return [
 			[ 'str_replace' ],
+			[ 'ip_in_ranges' ],
 		];
 	}
 
@@ -1132,6 +1134,7 @@ class ParserTest extends ParserTestCase {
 			[ 'added_lines contains string(3/0)', 'dividebyzero' ],
 			[ 'norm(new_text) irlike ")"', 'regexfailure' ],
 			[ 'ip_in_range( user_name, "foobar" )', 'invalidiprange' ],
+			[ 'ip_in_ranges( user_name, "foo", "bar" )', 'invalidiprange' ],
 		];
 	}
 

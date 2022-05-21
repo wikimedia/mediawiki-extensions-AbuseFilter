@@ -62,6 +62,7 @@ class KeywordsManager {
 			'rmwhitespace(text)' => 'rmwhitespace',
 			'rmspecials(text)' => 'rmspecials',
 			'ip_in_range(ip, range)' => 'ip_in_range',
+			'ip_in_ranges(ip, range1, range2, ...)' => 'ip_in_ranges',
 			'contains_any(haystack,needle1,needle2,...)' => 'contains-any',
 			'contains_all(haystack,needle1,needle2,...)' => 'contains-all',
 			'equals_to_any(haystack,needle1,needle2,...)' => 'equals-to-any',
