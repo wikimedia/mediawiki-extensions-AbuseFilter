@@ -576,6 +576,7 @@ class ParserTest extends ParserTestCase {
 		return [
 			[ "ip_in_range('0.0.0.0', 'lol')", 'funcIPInRange' ],
 			[ "ip_in_ranges('0.0.0.0', ':', '0.0.0.256')", 'funcIPInRanges' ],
+			[ "ip_in_ranges('1.1.1.1', '1.1.0.0/16', 'gibberish')", 'funcIPInRanges' ],
 		];
 	}
 
@@ -645,6 +646,7 @@ class ParserTest extends ParserTestCase {
 		return [
 			[ 'get_matches' ],
 			[ 'ip_in_range' ],
+			[ 'ip_in_ranges' ],
 			[ 'contains_any' ],
 			[ 'contains_all' ],
 			[ 'ccnorm_contains_any' ],
@@ -680,7 +682,6 @@ class ParserTest extends ParserTestCase {
 	public function threeParamsFuncs() {
 		return [
 			[ 'str_replace' ],
-			[ 'ip_in_ranges' ],
 		];
 	}
 

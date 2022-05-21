@@ -90,7 +90,7 @@ class FilterEvaluator {
 		'rcount' => [ 1, 2 ],
 		'get_matches' => [ 2, 2 ],
 		'ip_in_range' => [ 2, 2 ],
-		'ip_in_ranges' => [ 3, INF ],
+		'ip_in_ranges' => [ 2, INF ],
 		'contains_any' => [ 2, INF ],
 		'contains_all' => [ 2, INF ],
 		'equals_to_any' => [ 2, INF ],
@@ -1022,6 +1022,7 @@ class FilterEvaluator {
 	protected function funcIPInRanges( $args, int $position ) {
 		$ip = array_shift( $args )->toString();
 
+		$strRanges = [];
 		foreach ( $args as $range ) {
 			$range = $range->toString();
 
@@ -1033,12 +1034,10 @@ class FilterEvaluator {
 				);
 			}
 
-			if ( IPUtils::isInRange( $ip, $range ) ) {
-				return new AFPData( AFPData::DBOOL, true );
-			}
+			$strRanges[] = $range;
 		}
 
-		return new AFPData( AFPData::DBOOL, false );
+		return new AFPData( AFPData::DBOOL, IPUtils::isInRanges( $ip, $strRanges ) );
 	}
 
 	/**
