@@ -11,7 +11,8 @@
 			"Vugar 1981",
 			"Wertuose",
 			"NMW03",
-			"Şeyx Şamil"
+			"Şeyx Şamil",
+			"Serkanland"
 		]
 	},
 	"abusefilter-desc": "Düzəlişlərə evristik filtrlərin tətbiq olunmasına imkan verir.",
@@ -19,7 +20,7 @@
 	"abuselog": "Dəyişiklik süzgəci jurnalı",
 	"abusefilter-intro": "Dəyişiklik süzgəclərinin idarəetmə səhifəsinə xoş gəlmisiniz.\nDəyişiklik süzgəci istifadəçilərin fəaliyyətinə avtomatik evristika tətbiq edən avtomatlaşdırılmış proqram mexanizmidir.\nBurada bütün süzgəclərin siyahısı verilib və onların dəyişdirilməsi mümkündür.",
 	"abusefilter-warning": "'''Diqqət'''. Bu fəaliyyət avtomatik olaraq zərərli təyin olunmuşdur.\nQeyri-konstruktiv dəyişikliklər tezliklə geri qaytarılacaq.\nUyğun olmayan və ya təkrarlanan qeyri-konstruktiv düzəlişlər sizin hesabınızın və ya IP ünvanınızın bloklanmasına gətirib çıxara bilər.\nƏgər siz bunun konstruktiv düzəliş olduğuna əminsinizsə, onda bir daha təsdiq edin.\nFəaliyyətinizə müvafiq olan qaydaların qısa təsviri: $1",
-	"abusefilter-disallowed": "Bu fəaliyyət avtomatik olaraq zərərli fəaliyyət kimi təyin olunmuş və buna görə də qəbul edilməmişdir.\nƏgər siz öz düzəlişinizin konstruktiv olduğuna əminsinizsə, zəhmət olmasa, nə etmək istədiyinizi [[{{SITENAME}}:İdarəçilərə müraciət|idarəçilərdən birinə]] izah edin.\nFəaliyyətinizə müvafiq olan qaydaların qısa təsviri: $1",
+	"abusefilter-disallowed": "Bu fəaliyyət avtomatik olaraq zərərli fəaliyyət kimi təyin olunmuş və buna görə də qəbul edilməmişdir.\nƏgər siz öz düzəlişinizin konstruktiv olduğuna əminsinizsə, zəhmət olmasa, nə etmək istədiyinizi [[{{SITENAME}}:İnzibatçılara müraciət|inzibatçılardan birinə]] izah edin.\nFəaliyyətinizə müvafiq olan qaydaların qısa təsviri: $1",
 	"abusefilter-autopromote-blocked": "Bu fəaliyyət avtomatik olaraq zərərli fəaliyyət kimi təyin olunmuş və qəbul edilməmişdir.\nBundan əlavə, təhlükəsizlik məqsədilə, adətən qeydə alınmış istifadəçi hesablarına verilən bəzi imkanlar sizin istifadəçi hesabınızda məhdudlaşdırılmışdır.\nFəaliyyətinizə müvafiq olan qaydaların qısa təsviri: $1",
 	"abusefilter-blocker": "Dəyişiklik süzgəci",
 	"abusefilter-blockreason": "Dəyişiklik süzgəci tərəfindən avtomatik bloklanmışdır.\nMüvafiq qaydanın təsviri: $1",

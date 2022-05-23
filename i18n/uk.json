@@ -27,7 +27,8 @@
 			"Andriy.v",
 			"DDPAT",
 			"DannyS712",
-			"Kareyac"
+			"Kareyac",
+			"Ice bulldog"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -88,7 +89,7 @@
 	"abusefilter-log-search-entries-all": "Усі записи",
 	"abusefilter-log-search-entries-hidden": "Лише приховані записи",
 	"abusefilter-log-search-entries-visible": "Лише видимі записи",
-	"abusefilter-log-search-action-label": "Запускальна дія:",
+	"abusefilter-log-search-action-label": "Дія, що запускає:",
 	"abusefilter-log-search-action-other": "Інше",
 	"abusefilter-log-search-action-any": "Будь-що",
 	"abusefilter-log-search-action-taken-label": "Вжиті заходи:",
@@ -187,7 +188,7 @@
 	"abusefilter-list-invalid-searchmode": "Вказано недопустимий режим пошуку.",
 	"abusefilter-list-regexerror": "Сталася помилка при пошуку: синтаксична помилка регулярного виразу.",
 	"abusefilter-list-options-submit": "Оновити",
-	"abusefilter-tools-text": "Тут є деякі засоби, які можуть пригодитися у формулюванні та налагодженні фільтрів редагувань.",
+	"abusefilter-tools-text": "Тут є деякі засоби, які можуть пригодитися у формулюванні та налагодженні фільтрів зловживань.",
 	"abusefilter-tools-expr": "Випробувач виразів",
 	"abusefilter-tools-submitexpr": "Випробувати",
 	"abusefilter-tools-syntax-error": "Синтаксична помилка у фільтрі.",
@@ -473,7 +474,7 @@
 	"abusefilter-exception-regexfailure": "Помилка в регулярному виразі «$2» на позиції $1.",
 	"abusefilter-exception-overridebuiltin": "Недопустиме перевизначення вбудованого ідентифікатора «$2» на позиції $1.",
 	"abusefilter-exception-outofbounds": "Запит на неіснуючий елемент масиву $2 (розмір масиву = $3) на позиції $1.",
-	"abusefilter-exception-negativeindex": "Негативні індекси не дозволені у масивах. Відноситься до індексу \"$2\" на позиції $1.",
+	"abusefilter-exception-negativeindex": "Негативні індекси не дозволені у масивах. Відноситься до індексу «$2» на позиції $1.",
 	"abusefilter-exception-notarray": "Запит на елемент масиву для об'єкта, що не є масивом, на позиції $1.",
 	"abusefilter-exception-unclosedcomment": "Незакритий коментар на позиції $1.",
 	"abusefilter-exception-invalidiprange": "Недійсний IP-діапазон «$2», поданий на позиції $1.",
