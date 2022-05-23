@@ -336,6 +336,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Remover spatio blanc (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Remover characteres special (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Es le IP in le intervallo? (ip_in_range)",
+	"abusefilter-edit-builder-funcs-ip_in_ranges": "Es le adresse IP in alcun del intervallos? (ip_in_ranges)",
 	"abusefilter-edit-builder-funcs-contains-any": "Cercar un de plure subcatenas in le catena. (contains_any)",
 	"abusefilter-edit-builder-funcs-contains-all": "Cercar in le catena multiple subcatenas in modo \"AND\". (contains_all)",
 	"abusefilter-edit-builder-funcs-equals-to-any": "Verificar si un argumento date es equal (===) a alcun del argumentos sequente (equals_to_any)",

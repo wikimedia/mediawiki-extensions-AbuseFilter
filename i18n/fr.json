@@ -379,6 +379,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Supprimer les espaces (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Supprimer les caractères spéciaux (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "L’adresse IP est-elle dans la plage ? (ip_in_range)",
+	"abusefilter-edit-builder-funcs-ip_in_ranges": "L’IP est-elle dans un des intervalles ? (ip-in-range)",
 	"abusefilter-edit-builder-funcs-contains-any": "Rechercher dans une chaîne des multiples sous-chaînes avec le critère OU (contains_any).",
 	"abusefilter-edit-builder-funcs-contains-all": "Rechercher dans une chaîne des multiples sous-chaînes avec le critère ET (contains_all).",
 	"abusefilter-edit-builder-funcs-equals-to-any": "Vérifier si un argument donné est égal (===) à l’un des arguments suivants (equals_to_any)",

@@ -353,6 +353,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "הסרת רווח לבן (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "הסרת תווים מיוחדים (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "האם כתובת ה־IP בטווח? (ip_in_range)",
+	"abusefilter-edit-builder-funcs-ip_in_ranges": "באם כתובת ה־IP הזאת באחד מהטווחים? (ip_in_ranges)",
 	"abusefilter-edit-builder-funcs-contains-any": "חיפוש תת־מחרוזות מרובות בתוך מחרוזת במצב OR‏ (contains_any)",
 	"abusefilter-edit-builder-funcs-contains-all": "חיפוש תת־מחרוזות מרובות במחרוזת נתונה במצב AND‏. (contains_all)",
 	"abusefilter-edit-builder-funcs-equals-to-any": "בדיקה האם פרמטר נתון שווה (===) לאחד הפרמטרים הבאים (equals_to_any)",
