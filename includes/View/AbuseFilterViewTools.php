@@ -75,7 +75,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 			->setWrapperLegendMsg( 'abusefilter-tools-expr' )
 			->setSubmitTextMsg( 'abusefilter-tools-submitexpr' )
 			->setSubmitID( 'mw-abusefilter-submitexpr' )
-			->setFooterText( Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' ) )
+			->setFooterHtml( Xml::element( 'pre', [ 'id' => 'mw-abusefilter-expr-result' ], ' ' ) )
 			->prepareForm()
 			->displayForm( false );
 

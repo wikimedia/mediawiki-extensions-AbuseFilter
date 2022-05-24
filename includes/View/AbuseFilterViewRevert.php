@@ -174,12 +174,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		// Look up all of them.
 		$results = $this->doLookup();
 		if ( $results === [] ) {
-			$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-no-results' )->escaped() );
+			$dateForm->addPostHtml( $this->msg( 'abusefilter-revert-preview-no-results' )->escaped() );
 			return true;
 		}
 
 		// Add a summary of everything that will be reversed.
-		$dateForm->addPostText( $this->msg( 'abusefilter-revert-preview-intro' )->parseAsBlock() );
+		$dateForm->addPostHtml( $this->msg( 'abusefilter-revert-preview-intro' )->parseAsBlock() );
 		$list = [];
 
 		foreach ( $results as $result ) {
@@ -210,7 +210,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$list[] = Xml::tags( 'li', null, $msg );
 		}
 
-		$dateForm->addPostText( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
+		$dateForm->addPostHtml( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
 
 		// Add a button down the bottom.
 		$confirmForm = [];
@@ -233,7 +233,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			->setSubmitTextMsg( 'abusefilter-revert-confirm' )
 			->prepareForm()
 			->getHTML( true );
-		$dateForm->addPostText( $revertForm );
+		$dateForm->addPostHtml( $revertForm );
 
 		return true;
 	}
