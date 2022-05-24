@@ -158,7 +158,7 @@
 	"abusefilter-edit-action-degroup": "Dilemel an implijer eus an holl strolladoù brientekaet",
 	"abusefilter-edit-action-block": "Stankañ an implijer-mañ hag/pe ar chomlec'h IP evit ar c'hemmañ",
 	"abusefilter-edit-action-throttle": "Deluskañ an oberoù nemet ma za an implijer dreist d'ur feur termen",
-	"abusefilter-edit-action-rangeblock": "Stankañ al lijorenn IP /16 orin evit an implijer.",
+	"abusefilter-edit-action-rangeblock": "Stankañ lijorenn IP orin an implijer",
 	"abusefilter-edit-action-tag": "Balizenniñ ar c'hemm evit un adlenn a-c'houdevezh.",
 	"abusefilter-edit-throttle-count": "Niver a oberiadennoù aotreet :",
 	"abusefilter-edit-throttle-period": "Prantad amzer :",
