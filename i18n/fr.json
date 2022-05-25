@@ -402,7 +402,7 @@
 	"abusefilter-edit-builder-vars-old-content-model": "Ancien modèle de contenu",
 	"abusefilter-edit-builder-vars-new-content-model": "Nouveau modèle de contenu",
 	"abusefilter-edit-builder-vars-removedlines": "Lignes supprimées par la modification",
-	"abusefilter-edit-builder-vars-summary": "Résumé/motif de la modification",
+	"abusefilter-edit-builder-vars-summary": "Résumé / motif des modifications",
 	"abusefilter-edit-builder-vars-page-id": "ID de la page",
 	"abusefilter-edit-builder-vars-page-ns": "Espace de noms de la page",
 	"abusefilter-edit-builder-vars-page-title": "Titre de la page (sans l’espace de noms)",
