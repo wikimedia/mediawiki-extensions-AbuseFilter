@@ -3,7 +3,9 @@
 		"authors": [
 			"Aguve",
 			"Enock4seth",
-			"Natsubee"
+			"Natsubee",
+			"Afimaame",
+			"Azorbli"
 		]
 	},
 	"abusefilter-log-search-user": "Ezãla:",
@@ -16,7 +18,7 @@
 	"abusefilter-tools-reautoconfirm-user": "Ezãla",
 	"abusefilter-edit-status-label": "Akɔntawo",
 	"abusefilter-throttle-none": "(ɖekeo)",
-	"abusefilter-edit-warn-preview": "Kpɔ du tatia do ŋgɔ",
+	"abusefilter-edit-warn-preview": "Fia/Hla nusuo na ji gbe yakpɔ",
 	"abusefilter-edit-warn-edit": "Ŋlɔ/trɔ du tatia",
 	"abusefilter-edit-history": "Xoxoawo",
 	"abusefilter-edit-tools": "Dɔwɔnuwo",
