@@ -7,9 +7,9 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserIdentity;
 use Status;
-use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
@@ -80,19 +80,19 @@ class FilterStore {
 	 *  - OK with errors if a validation error occurred
 	 *  - Fatal in case of a permission-related error
 	 *
-	 * @param User $user
+	 * @param Authority $performer
 	 * @param int|null $filterId
 	 * @param Filter $newFilter
 	 * @param Filter $originalFilter
 	 * @return Status
 	 */
 	public function saveFilter(
-		User $user,
+		Authority $performer,
 		?int $filterId,
 		Filter $newFilter,
 		Filter $originalFilter
 	): Status {
-		$validationStatus = $this->filterValidator->checkAll( $newFilter, $originalFilter, $user );
+		$validationStatus = $this->filterValidator->checkAll( $newFilter, $originalFilter, $performer );
 		if ( !$validationStatus->isGood() ) {
 			return $validationStatus;
 		}
@@ -105,7 +105,8 @@ class FilterStore {
 
 		// Everything went fine, so let's save the filter
 		$wasGlobal = $originalFilter->isGlobal();
-		[ $newID, $historyID ] = $this->doSaveFilter( $user, $newFilter, $differences, $filterId, $wasGlobal );
+		[ $newID, $historyID ] = $this->doSaveFilter(
+			$performer->getUser(), $newFilter, $differences, $filterId, $wasGlobal );
 		return Status::newGood( [ $newID, $historyID ] );
 	}
 
