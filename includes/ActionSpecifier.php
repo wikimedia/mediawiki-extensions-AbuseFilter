@@ -9,6 +9,7 @@ use MediaWiki\User\UserIdentity;
 /**
  * Plain value object that univocally represents an action being filtered
  * @todo Add constants for possible actions?
+ * @todo Add the timestamp and IP address
  */
 class ActionSpecifier {
 	/** @var string */

@@ -229,11 +229,10 @@ class ConsequencesFactory {
 
 	/**
 	 * @param Parameters $params
-	 * @param string|null $accountName
 	 * @param string[] $tags
 	 * @return Tag
 	 */
-	public function newTag( Parameters $params, ?string $accountName, array $tags ): Tag {
-		return new Tag( $params, $accountName, $tags, $this->changeTagger );
+	public function newTag( Parameters $params, array $tags ): Tag {
+		return new Tag( $params, $tags, $this->changeTagger );
 	}
 }

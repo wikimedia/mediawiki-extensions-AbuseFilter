@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConsequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
@@ -29,9 +30,12 @@ trait ConsequenceGetMessageTestTrait {
 		$localParams = new Parameters(
 			$localFilter,
 			false,
-			$user,
-			$this->createMock( LinkTarget::class ),
-			'edit'
+			new ActionSpecifier(
+				'edit',
+				$this->createMock( LinkTarget::class ),
+				$user,
+				null
+			)
 		);
 		yield 'local filter' => [ $localParams ];
 
@@ -41,9 +45,12 @@ trait ConsequenceGetMessageTestTrait {
 		$globalParams = new Parameters(
 			$globalFilter,
 			true,
-			$user,
-			$this->createMock( LinkTarget::class ),
-			'edit'
+			new ActionSpecifier(
+				'edit',
+				$this->createMock( LinkTarget::class ),
+				$user,
+				null
+			)
 		);
 		yield 'global filter' => [ $globalParams ];
 	}

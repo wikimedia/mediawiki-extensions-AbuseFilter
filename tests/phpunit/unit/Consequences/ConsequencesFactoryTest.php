@@ -116,7 +116,7 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 	 * @covers ::newTag
 	 */
 	public function testNewTag() {
-		$this->getFactory()->newTag( $this->createMock( Parameters::class ), null, [] );
+		$this->getFactory()->newTag( $this->createMock( Parameters::class ), [] );
 		$this->addToAssertionCount( 1 );
 	}
 }

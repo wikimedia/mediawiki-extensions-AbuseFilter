@@ -231,14 +231,16 @@ class FilterRunner {
 			} );
 		}
 
+		// TODO: inject the action specifier to avoid this
+		$accountname = $this->varManager->getVar(
+			$this->vars,
+			'accountname',
+			VariablesManager::GET_BC
+		)->toNative();
+		$spec = new ActionSpecifier( $this->action, $this->title, $this->user, $accountname );
+
 		// Tag the action if the condition limit was hit
 		if ( $runnerData->getTotalConditions() > $this->options->get( 'AbuseFilterConditionLimit' ) ) {
-			$accountname = $this->varManager->getVar(
-				$this->vars,
-				'accountname',
-				VariablesManager::GET_BC
-			)->toNative();
-			$spec = new ActionSpecifier( $this->action, $this->title, $this->user, $accountname );
 			$this->changeTagger->addConditionsLimitTag( $spec );
 		}
 
@@ -248,11 +250,7 @@ class FilterRunner {
 			return Status::newGood();
 		}
 
-		$executor = $this->consExecutorFactory->newExecutor(
-			$this->user,
-			$this->title,
-			$this->vars
-		);
+		$executor = $this->consExecutorFactory->newExecutor( $spec, $this->vars );
 		$status = $executor->executeFilterActions( $matchedFilters );
 		$actionsTaken = $status->getValue();
 
