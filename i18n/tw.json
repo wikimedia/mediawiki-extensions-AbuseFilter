@@ -1,13 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"AC Krah"
+			"AC Krah",
+			"Julia",
+			"Merlin266",
+			"TAMAKNARAD"
 		]
 	},
 	"abusefilter-log-search-group-any": "Ebia",
 	"abusefilter-log-search-title": "Asɛmti",
 	"abusefilter-log-search-impact": "Wode nsesaeɛ kɔ biribi mu",
 	"abusefilter-log-search-action-other": "Nea ɛka ho",
+	"abusefilter-log-search-action-any": "Ebia",
 	"abusefilter-log-search-action-taken-label": "Biribi rekɔso",
 	"abusefilter-log-search-submit": "Hwehwɛ",
 	"abusefilter-log-detailslink": "Emu nsɛm",
@@ -30,6 +34,7 @@
 	"abusefilter-edit-rules": "Tebea",
 	"abusefilter-edit-throttle-groups-help": "Hwɛ$1",
 	"abusefilter-throttle-editcount": "Nsesaeɛ a wayɛ",
+	"abusefilter-throttle-none": "(ɛnyɛ biaa)",
 	"abusefilter-edit-history": "Abakɔsɛm",
 	"abusefilter-edit-check": "Hwɛ ne nsɛmfua",
 	"abusefilter-edit-tools": "Nnoɔma",
@@ -44,5 +49,10 @@
 	"abusefilter-edit-builder-funcs-lcase": "Fakɔ atwerɛ nketewa mu",
 	"abusefilter-edit-builder-funcs-ucase": "Fakɔ atwerɛ akɛseɛ mu",
 	"abusefilter-edit-builder-vars-accountname": "Edin a wode di dwuma",
-	"abusefilter-edit-builder-vars-action": "Anamɔntuo"
+	"abusefilter-edit-builder-vars-action": "Anamɔntuo",
+	"abusefilter-history-diff": "Nsesaeɛ",
+	"abusefilter-test-user": "Nsesaeɛ efiri deɛ wɔde di dwuma:",
+	"abusefilter-test-period-start": "Nsesaeɛ yɛ akyi:",
+	"abusefilter-test-period-end": "Nsesaeɛ yɛ ansa:",
+	"abusefilter-test-page": "Nsesaeɛ yɛ wo kratafa no ho:"
 }

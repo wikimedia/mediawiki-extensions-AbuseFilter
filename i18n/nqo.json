@@ -134,6 +134,8 @@
 	"abusefilter-edit-history": "ߘߐ߬ߝߐ",
 	"abusefilter-edit-badfilter": "ߌ ߣߊ߬ ߛߍ߲ߛߍ߲ߟߊ߲ ߡߍ߲ ߞߙߍߞߙߍ߫ ߟߊ߫ ߏ߬ ߕߴߦߋ߲߬.",
 	"abusefilter-edit-tools": "ߖߐ߯ߙߊ߲ ߠߎ߬:",
+	"abusefilter-edit-invalid-warn-message": "ߖߊ߬ߛߙߋ߬ߡߊ߬ߟߊ߫ ߗߋߛߓߍ ߘߐߞߏߟߏ߲ ߕߴߛߋ߫ ߓߌ߬ߟߊ߫ ߟߊ߫",
+	"abusefilter-edit-invalid-disallow-message": "ߟߊ߬ߕߐ߲߬ߠߌ߲߫ ߗߋߛߓߍ ߕߍ߫ ߛߐ߲߬ ߓߌ߬ߟߊ߬ ߟߊ߫ ߞߵߊ߬ ߘߐߞߏߟߏ߲ ߕߏ߫.",
 	"abusefilter-edit-builder-op-arithmetic-addition": "ߟߊߒߞߊ߲ߠߌ߲ (+)",
 	"abusefilter-edit-builder-op-arithmetic-pow": "ߝߊ߲߬ߞߊ (**)",
 	"abusefilter-edit-builder-group-op-comparison": "ߘߐ߬ߓߛߏ߬ߟߊ ߟߎ߬ ߟߊߢߐ߲߯ߡߊ",
