@@ -263,7 +263,7 @@
 	"abusefilter-edit-throttle-placeholder": "Rozdziel przecinkami aby połączyć operatorem AND („i”) lub wpisz w osobnych wierszach aby połączyć operatorem OR („lub”)",
 	"abusefilter-throttle-ip": "adresu IP",
 	"abusefilter-throttle-user": "konta użytkownika",
-	"abusefilter-throttle-range": "Zakres IP",
+	"abusefilter-throttle-range": "zakresu IP",
 	"abusefilter-throttle-creationdate": "daty utworzenia konta",
 	"abusefilter-throttle-editcount": "liczby edycji",
 	"abusefilter-throttle-site": "całej witryny",
