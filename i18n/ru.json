@@ -63,7 +63,8 @@
 			"Сrower",
 			"Туллук",
 			"DDPAT",
-			"Thothsum"
+			"Thothsum",
+			"Ice bulldog"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -628,7 +629,7 @@
 	"abusefilter-invalid-request-noid": "Неверный запрос! Вы должны получить доступ к частным данным журнала через форму на странице сведений о журнале злоупотреблений и указать причину.",
 	"log-description-abusefilterprivatedetails": "В этом журнале отображается список случаев, когда пользователь просматривал личные данные журнала злоупотреблений.",
 	"abusefilter-noreason": "Предупреждение. Чтобы просмотреть личные данные этого журнала, вы должны указать причину.",
-	"abusefilter-log-ip-not-available": "Не доступно",
+	"abusefilter-log-ip-not-available": "Недоступно",
 	"abusefilter-tag-reserved": "Метка <code>abusefilter-condition-limit</code> зарезервирована для использования фильтром злоупотреблений.",
 	"tag-abusefilter-condition-limit": "предел условия достигнут",
 	"tag-abusefilter-condition-limit-description": "Правки или другие действия, которые не могут быть проверены всеми активными [[Special:AbuseFilter|фильтрами злоупотреблений]] ([[mw:Extension:AbuseFilter/Conditions|справка]]).",
