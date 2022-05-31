@@ -60,6 +60,7 @@ class FilterEvaluator {
 		'strlen' => 'funcLen',
 		'strpos' => 'funcStrPos',
 		'str_replace' => 'funcStrReplace',
+		'str_replace_regexp' => 'funcStrReplaceRegexp',
 		'rescape' => 'funcStrRegexEscape',
 		'set' => 'funcSetVar',
 		'set_var' => 'funcSetVar',
@@ -98,6 +99,7 @@ class FilterEvaluator {
 		'strlen' => [ 1, 1 ],
 		'strpos' => [ 2, 3 ],
 		'str_replace' => [ 3, 3 ],
+		'str_replace_regexp' => [ 3, 3 ],
 		'rescape' => [ 1, 1 ],
 		'set' => [ 2, 2 ],
 		'set_var' => [ 2, 2 ],
@@ -1316,6 +1318,35 @@ class FilterEvaluator {
 		$replace = $args[2]->toString();
 
 		return new AFPData( AFPData::DSTRING, str_replace( $search, $replace, $subject ) );
+	}
+
+	/**
+	 * @param array $args
+	 * @param int $position
+	 * @return AFPData
+	 */
+	protected function funcStrReplaceRegexp( $args, int $position ) {
+		$subject = $args[0]->toString();
+		$search = $args[1]->toString();
+		$replace = $args[2]->toString();
+
+		$this->checkRegexMatchesEmpty( $args[1], $search, $position );
+		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
+		$result = @preg_replace(
+			$this->mungeRegexp( $search ),
+			$replace,
+			$subject
+		);
+
+		if ( $result === null ) {
+			throw new UserVisibleException(
+				'regexfailure',
+				$position,
+				[ $search ]
+			);
+		}
+
+		return new AFPData( AFPData::DSTRING, $result );
 	}
 
 	/**
