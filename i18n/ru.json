@@ -18,6 +18,7 @@
 			"Eleferen",
 			"Facenapalm",
 			"Ferrer",
+			"Gulka.nik",
 			"HalanTul",
 			"Happy13241",
 			"Helpau",
@@ -255,6 +256,7 @@
 	"abusefilter-edit-status-label": "Статистика:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Для $1 последнего действия|Из $1 последних действий}}, этот фильтр соответствует $2 ($3%).\nСреднее время его работы — $4 мс, он использует $5 {{PLURAL:$5|условие|условия|условий}} из лимита условий.",
 	"abusefilter-edit-throttled-warning": "'''Внимание:''' Этот фильтр автоматически помечен как вредный. В качестве меры безопасности {{PLURAL:$2|следующее действие не будет выполнено|следующие действия не будут выполнены}}: $1. Пожалуйста, проверьте, ожидается ли высокая частота совпадений. Если да, вы можете сохранить фильтр снова, чтобы снять это ограничение.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Предупреждение:''' Этот фильтр был автоматически помечен как вредный. Никакие действия не были автоматически отключены, но, пожалуйста, проверьте, ожидается ли высокая частота совпадений. Если это так, вы можете проигнорировать это предупреждение.",
 	"abusefilter-edit-new": "Новый фильтр",
 	"abusefilter-edit-save": "Сохранить фильтр",
 	"abusefilter-edit-id": "ID фильтра:",
@@ -398,6 +400,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Удалить пробелы (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Удалить специальные символы (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Присутствие IP в диапазоне (ip_in_range)",
+	"abusefilter-edit-builder-funcs-ip_in_ranges": "Находится ли IP в каком-либо из диапазонов? (ip_in_ranges)",
 	"abusefilter-edit-builder-funcs-contains-any": "Строка содержит для нескольких подстрок в режиме OR. (contains_any)",
 	"abusefilter-edit-builder-funcs-contains-all": "Строка содержит для нескольких подстрок в режиме AND. (contains_all)",
 	"abusefilter-edit-builder-funcs-equals-to-any": "Проверить, является ли аргумент равным (===) одному из следующих аргументов (equals_to_any)",
@@ -632,6 +635,7 @@
 	"tag-abusefilter-condition-limit": "предел условия достигнут",
 	"tag-abusefilter-condition-limit-description": "Правки или другие действия, которые не могут быть проверены всеми активными [[Special:AbuseFilter|фильтрами злоупотреблений]] ([[mw:Extension:AbuseFilter/Conditions|справка]]).",
 	"notification-header-throttle-filter": "Фильтр злоупотреблений $2, который {{GENDER:$1|вы}} недавно редактировали, был ограничен.",
+	"notification-header-throttle-filter-actions": "Фильтр злоупотреблений $2 недавно отредактированный {{GENDER:$1|you}} имел высокий процент совпадений, а следующие {{PLURAL:$4|действие было|действия были}} автоматически отключены: $3.",
 	"notification-subject-throttle-filter": "Отредактированный{{GENDER:$1|вами}} фильтр злоупотреблений был заблокирован на сайте {{SITENAME}}",
 	"notification-link-text-show-filter": "Показать фильтр"
 }

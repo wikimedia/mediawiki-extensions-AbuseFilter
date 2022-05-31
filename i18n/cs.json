@@ -355,6 +355,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Odstranit bílé znaky (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Odstranit speciální znaky (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Patří IP adresa do rozsahu? (ip_in_range)",
+	"abusefilter-edit-builder-funcs-ip_in_ranges": "Patří IP adresa do některého z rozsahů? (ip_in_ranges)",
 	"abusefilter-edit-builder-funcs-contains-any": "Hledat několik podřetězců v řetězci v režimu OR (contains_any)",
 	"abusefilter-edit-builder-funcs-contains-all": "Hledat v řetězci více podřetězců v režimu AND. (contains_all)",
 	"abusefilter-edit-builder-funcs-equals-to-any": "Zjistí, zde je daný argument rovný (===) libovolnému z následujících argumentů (equals_to_any)",
