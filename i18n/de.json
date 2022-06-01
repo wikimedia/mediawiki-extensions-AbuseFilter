@@ -375,6 +375,7 @@
 	"abusefilter-edit-builder-funcs-substr": "Teil-Zeichenkette (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Position der Teil-Zeichenkette in der Zeichenkette (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Ersetze Teil-Zeichenkette mit Zeichenkette (str_replace)",
+	"abusefilter-edit-builder-funcs-str_replace_regexp": "Suchen und Ersetzen mit regulären Ausdrücken (str_replace_regexp)",
 	"abusefilter-edit-builder-funcs-rescape": "Escape-Zeichenfolge als Buchstabensymbol in einem regulären Ausdruck (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Variable setzen (set_var)",
 	"abusefilter-edit-builder-funcs-sanitize": "HTML-Entitäten in Unicode-Zeichen normalisieren (sanitize)",
