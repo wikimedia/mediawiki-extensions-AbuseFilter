@@ -45,7 +45,7 @@ class ToolLinksHandler implements
 				$this->getSpecialPageTitle(),
 				$sp->msg( 'abusefilter-log-linkoncontribs' )->text(),
 				[ 'title' => $sp->msg( 'abusefilter-log-linkoncontribs-text',
-					$username )->text() ],
+					$username )->text(), 'class' => 'mw-contributions-link-abuse-log' ],
 				[ 'wpSearchUser' => $username ]
 			);
 		}
