@@ -217,7 +217,7 @@
 	"abusefilter-edit-throttle-period": "Vremensko razdoblje (u sekundama):",
 	"abusefilter-edit-throttle-groups": "Skupno usporavanje prema:",
 	"abusefilter-edit-throttle-hidden-placeholder": "Razdijeli uvjete zarezima za I (AND), te novim redom za ILI (OR)",
-	"abusefilter-edit-throttle-placeholder": "Razdijeli uvjete zarezima za I (AND), te te umetni jedan po jedan za ILI (OR)",
+	"abusefilter-edit-throttle-placeholder": "Razdijelite uvjete zarezima za I (AND), a umetnite jedan po jedan za ILI (OR)",
 	"abusefilter-throttle-ip": "IP adresa",
 	"abusefilter-throttle-user": "suradnički račun",
 	"abusefilter-throttle-range": "opseg /16",
