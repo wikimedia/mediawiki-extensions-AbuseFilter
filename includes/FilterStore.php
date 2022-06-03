@@ -99,7 +99,7 @@ class FilterStore {
 
 		// Check for non-changes
 		$differences = $this->filterCompare->compareVersions( $newFilter, $originalFilter );
-		if ( !count( $differences ) ) {
+		if ( !$differences ) {
 			return Status::newGood( false );
 		}
 
@@ -223,8 +223,7 @@ class FilterStore {
 		}
 
 		// Logging
-		$subtype = $isNew ? 'create' : 'modify';
-		$logEntry = new ManualLogEntry( 'abusefilter', $subtype );
+		$logEntry = new ManualLogEntry( 'abusefilter', $isNew ? 'create' : 'modify' );
 		$logEntry->setPerformer( $user );
 		$logEntry->setTarget( SpecialAbuseFilter::getTitleForSubpage( (string)$filterId ) );
 		$logEntry->setParameters( [
