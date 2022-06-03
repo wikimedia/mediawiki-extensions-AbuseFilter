@@ -362,6 +362,7 @@
 	"abusefilter-edit-builder-funcs-substr": "Podřetězec (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Pozice podřetězce v řetězci (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Nahradit podřetězec jiným řetězcem (str_replace)",
+	"abusefilter-edit-builder-funcs-str_replace_regexp": "Najít a nahradit regulárním výrazem (str_replace_regexp)",
 	"abusefilter-edit-builder-funcs-rescape": "Oescapovat řetězec jako literál do regexu (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Nastavit proměnnou (set_var)",
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizovat HTML entity na znaky unicode (sanitize)",
