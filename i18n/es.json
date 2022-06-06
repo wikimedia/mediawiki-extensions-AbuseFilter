@@ -406,7 +406,7 @@
 	"abusefilter-edit-builder-funcs-substr": "Subcadena (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Posición de la subcadena en la cadena (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Reemplazar subcadena con una cadena (str_replace)",
-	"abusefilter-edit-builder-funcs-str_replace_regexp": "Buscar y reemplazo de expresion regular (str_replace_regexp)",
+	"abusefilter-edit-builder-funcs-str_replace_regexp": "Buscar y reemplazar expresión regular (str_replace_regexp)",
 	"abusefilter-edit-builder-funcs-rescape": "Cadena de escape como literal en una expresión regular (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "Establecer variable (set_var)",
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizar entidades HTML en caracteres unicode (sanitize)",
