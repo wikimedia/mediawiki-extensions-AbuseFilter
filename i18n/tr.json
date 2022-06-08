@@ -369,6 +369,7 @@
 	"abusefilter-edit-builder-funcs-substr": "Altdizi (substr)",
 	"abusefilter-edit-builder-funcs-strpos": "Altdizinin dizideki yeri (strpos)",
 	"abusefilter-edit-builder-funcs-str_replace": "Altdiziyi dizi ile değiştir (str_replace)",
+	"abusefilter-edit-builder-funcs-str_replace_regexp": "Düzenli ifade arama ve değiştirme (str_replace_regexp)",
 	"abusefilter-edit-builder-funcs-rescape": "Düzenli ifadeler (rescape) değişmez olarak dizisini kaçış",
 	"abusefilter-edit-builder-funcs-set_var": "Değişkeni ayarla (set_var)",
 	"abusefilter-edit-builder-funcs-sanitize": "HTML varlıklarını unicode karakterlerle normalize et (sanitize)",
