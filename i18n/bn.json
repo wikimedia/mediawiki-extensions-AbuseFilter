@@ -141,7 +141,7 @@
 	"abusefilter-unhidden": "প্রকাশ্য",
 	"abusefilter-enabled": "সক্রিয়",
 	"abusefilter-deleted": "অপসারণ",
-	"abusefilter-disabled": "নিস্ক্রিয়",
+	"abusefilter-disabled": "নিষ্ক্রিয়",
 	"abusefilter-hitcount": "$1টি {{PLURAL:$1|হিট}}",
 	"abusefilter-new": "নতুন ছাঁকনি তৈরি করুন",
 	"abusefilter-import-button": "ছাঁকনি আমদানি করুন",
