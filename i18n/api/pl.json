@@ -32,7 +32,7 @@
 	"apihelp-abusefilterunblockautopromote-description": "Zdejmuje z użytkownika blokadę autopromocji, która została nałożona przez filtr nadużyć.",
 	"apihelp-abusefilterunblockautopromote-summary": "Zdejmuje z użytkownika blokadę autopromocji, która została nałożona przez filtr nadużyć.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Nazwa użytkownika, którego chcesz odblokować.",
-	"apihelp-abusefilterunblockautopromote-example-1": "Zdejmij blokadę autopromocji z [[User:Example]]",
+	"apihelp-abusefilterunblockautopromote-example-1": "Zdejmij blokadę autopromocji z [[Użytkownik:Przykład]]",
 	"apihelp-query+abusefilters-description": "Pokaż szczegóły filtrów nadużyć.",
 	"apihelp-query+abusefilters-summary": "Pokaż szczegóły filtrów nadużyć.",
 	"apihelp-query+abusefilters-param-startid": "ID filtra, od którego rozpocząć wyliczanie.",
