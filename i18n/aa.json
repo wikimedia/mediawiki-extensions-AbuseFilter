@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"abusefilter-desc": "",
+	"abusefilter": "",
+	"abuselog": "",
+	"abusefilter-intro": "",
+	"abusefilter-mustviewprivateoredit": "",
+	"abusefilter-blocker": "",
+	"right-abusefilter-modify": "",
+	"right-abusefilter-view": "",
+	"right-abusefilter-log": "",
+	"right-abusefilter-log-detail": "",
+	"right-abusefilter-privatedetails": "",
+	"right-abusefilter-privatedetails-log": "",
+	"abusefilter-log-details-var": "Variable"
+}
