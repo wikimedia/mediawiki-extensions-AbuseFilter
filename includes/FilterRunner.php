@@ -381,7 +381,6 @@ class FilterRunner {
 	protected function profileExecution( RunnerData $data ) {
 		$allFilters = $data->getAllFilters();
 		$matchedFilters = $data->getMatchedFilters();
-		$this->filterProfiler->checkResetProfiling( $this->group, $allFilters );
 		$this->filterProfiler->recordRuntimeProfilingResult(
 			count( $allFilters ),
 			$data->getTotalConditions(),
