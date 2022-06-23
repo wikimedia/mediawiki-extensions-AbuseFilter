@@ -479,14 +479,6 @@
 			"value": 500,
 			"description": "Runtime in milliseconds before a filter is considered slow."
 		},
-		"AbuseFilterProfileActionsCap": {
-			"value": 10000,
-			"description": "Number of action that determines when to reset profiling stats."
-		},
-		"AbuseFilterProfilerCache": {
-			"value": null,
-			"description": "The key in $wgObjectCaches to use for a profiler, or null to use the main stash"
-		},
 		"AbuseFilterRangeBlockSize": {
 			"value": {
 				"IPv4": 16,
