@@ -158,6 +158,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 			$this->getMsgLocalizer(),
 			new NullLogger()
 		);
-		$this->assertSame( $expected, $block->revert( [], $this->createMock( UserIdentity::class ), '' ) );
+		$this->assertSame( $expected, $block->revert( $this->createMock( UserIdentity::class ), '' ) );
 	}
 }
