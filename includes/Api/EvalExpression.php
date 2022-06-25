@@ -81,7 +81,6 @@ class EvalExpression extends ApiBase {
 		// Generic vars are the only ones available
 		$generator = $this->afVariableGeneratorFactory->newGenerator();
 		$vars = $generator->addGenericVars()->getVariableHolder();
-		$vars->setVar( 'timestamp', wfTimestamp( TS_UNIX ) );
 		$ruleChecker->setVariables( $vars );
 
 		return Status::newGood( $ruleChecker->evaluateExpression( $expr ) );

@@ -9,7 +9,6 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\WikiPageFactory;
 use MimeAnalyzer;
 use MWFileProps;
-use MWTimestamp;
 use RecentChange;
 use RepoGroup;
 use Title;
@@ -96,10 +95,6 @@ class RCVariableGenerator extends VariableGenerator {
 		}
 
 		$this->addGenericVars( $this->rc );
-		$this->vars->setVar(
-			'timestamp',
-			MWTimestamp::convert( TS_UNIX, $this->rc->getAttribute( 'rc_timestamp' ) )
-		);
 
 		return $this->vars;
 	}

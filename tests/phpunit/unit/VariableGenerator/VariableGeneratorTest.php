@@ -141,6 +141,7 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testAddGenericVars() {
 		$expectedKeys = [
+			'timestamp',
 			'wiki_name',
 			'wiki_language',
 		];
@@ -148,7 +149,6 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 		$generator = new VariableGenerator( $this->createMock( AbuseFilterHookRunner::class ) );
 		$actualVars = $generator->addGenericVars()->getVariableHolder()->getVars();
 		$this->assertArrayEquals( $expectedKeys, array_keys( $actualVars ) );
-		$this->assertContainsOnlyInstancesOf( LazyLoadedVariable::class, $actualVars, 'lazy-loaded vars' );
 	}
 
 	/**

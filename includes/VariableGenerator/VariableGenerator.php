@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\User\UserIdentity;
+use MWTimestamp;
 use RecentChange;
 use Title;
 use User;
@@ -50,6 +51,10 @@ class VariableGenerator {
 	 * @return $this For chaining
 	 */
 	public function addGenericVars( RecentChange $rc = null ): self {
+		$timestamp = $rc
+			? MWTimestamp::convert( TS_UNIX, $rc->getAttribute( 'rc_timestamp' ) )
+			: wfTimestamp( TS_UNIX );
+		$this->vars->setVar( 'timestamp', $timestamp );
 		// These are lazy-loaded just to reduce the amount of preset variables, but they
 		// shouldn't be expensive.
 		$this->vars->setLazyLoadVar( 'wiki_name', 'get-wiki-name', [] );

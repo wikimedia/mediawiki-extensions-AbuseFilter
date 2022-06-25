@@ -155,7 +155,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			]
 		],
 		7 => [
-			'af_pattern' => 'timestamp === int(timestamp)',
+			'af_pattern' => 'timestamp === string(timestamp)',
 			'af_public_comments' => 'Mock filter with timestamp',
 			'actions' => [
 				'degroup' => []

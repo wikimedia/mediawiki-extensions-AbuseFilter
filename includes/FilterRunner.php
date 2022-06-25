@@ -178,7 +178,6 @@ class FilterRunner {
 		$this->vars = $generator->addGenericVars()->getVariableHolder();
 
 		$this->vars->forFilter = true;
-		$this->vars->setVar( 'timestamp', (int)wfTimestamp( TS_UNIX ) );
 		$this->ruleChecker = $this->ruleCheckerFactory->newRuleChecker( $this->vars );
 	}
 
