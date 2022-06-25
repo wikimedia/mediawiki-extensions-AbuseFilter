@@ -303,7 +303,6 @@ return [
 			$services->get( ConsExecutorFactory::SERVICE_NAME ),
 			$services->get( AbuseLoggerFactory::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
-			$services->get( VariableGeneratorFactory::SERVICE_NAME ),
 			$services->get( EmergencyCache::SERVICE_NAME ),
 			$services->get( UpdateHitCountWatcher::SERVICE_NAME ),
 			$services->get( EmergencyWatcher::SERVICE_NAME ),
