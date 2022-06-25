@@ -95,7 +95,7 @@ class RCVariableGenerator extends VariableGenerator {
 			// @codeCoverageIgnoreEnd
 		}
 
-		$this->addGenericVars();
+		$this->addGenericVars( $this->rc );
 		$this->vars->setVar(
 			'timestamp',
 			MWTimestamp::convert( TS_UNIX, $this->rc->getAttribute( 'rc_timestamp' ) )
