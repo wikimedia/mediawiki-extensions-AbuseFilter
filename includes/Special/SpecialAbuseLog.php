@@ -27,12 +27,13 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use OOUI\ButtonInputWidget;
 use SpecialPage;
 use Status;
 use stdClass;
 use Title;
-use User;
 use WikiMap;
 use Xml;
 
@@ -47,7 +48,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public const VISIBILITY_HIDDEN_IMPLICIT = 'implicit';
 
 	/**
-	 * @var User The user whose AbuseLog entries are being searched
+	 * @var string|null The user whose AbuseLog entries are being searched
 	 */
 	protected $mSearchUser;
 
@@ -105,6 +106,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var PermissionManager */
 	private $permissionManager;
 
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
@@ -123,6 +127,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param AbuseFilterPermissionManager $afPermissionManager
 	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param VariablesBlobStore $varBlobStore
@@ -133,6 +138,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
 		PermissionManager $permissionManager,
+		UserIdentityLookup $userIdentityLookup,
 		AbuseFilterPermissionManager $afPermissionManager,
 		ConsequencesRegistry $consequencesRegistry,
 		VariablesBlobStore $varBlobStore,
@@ -143,6 +149,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permissionManager;
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->varBlobStore = $varBlobStore;
 		$this->specsFormatter = $specsFormatter;
@@ -416,7 +423,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$conds = [];
 
 		if ( $this->mSearchUser ) {
-			$searchedUser = User::newFromName( $this->mSearchUser );
+			$searchedUser = $this->userIdentityLookup->getUserIdentityByName( $this->mSearchUser );
 
 			if ( !$searchedUser ) {
 				$conds['afl_user'] = 0;
@@ -792,12 +799,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * Helper function to select a row with private details and some more context
 	 * for an AbuseLog entry.
 	 *
-	 * @param User $user The user who's trying to view the row
+	 * @param Authority $authority The user who's trying to view the row
 	 * @param int $id The ID of the log entry
 	 * @return Status A status object with the requested row stored in the value property,
 	 *  or an error and no row.
 	 */
-	public static function getPrivateDetailsRow( User $user, $id ) {
+	public static function getPrivateDetailsRow( Authority $authority, $id ) {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$dbr = wfGetDB( DB_REPLICA );
 
@@ -827,7 +834,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$filterHidden = $row->af_hidden;
 		}
 
-		if ( !$afPermManager->canSeeLogDetailsForFilter( $user, $filterHidden ) ) {
+		if ( !$afPermManager->canSeeLogDetailsForFilter( $authority->getUser(), $filterHidden ) ) {
 			$status->fatal( 'abusefilter-log-cannot-see-details' );
 			return $status;
 		}
@@ -1048,14 +1055,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @param int $logID int The ID of the AbuseFilter log that was accessed
 	 * @param string $reason The reason provided for accessing private details
-	 * @param User $user The user who accessed the private details
+	 * @param UserIdentity $userIdentity The user who accessed the private details
 	 * @return void
 	 */
-	public static function addPrivateDetailsAccessLogEntry( $logID, $reason, User $user ) {
+	public static function addPrivateDetailsAccessLogEntry( $logID, $reason, UserIdentity $userIdentity ) {
 		$target = self::getTitleFor( self::PAGE_NAME, (string)$logID );
 
 		$logEntry = new ManualLogEntry( 'abusefilterprivatedetails', 'access' );
-		$logEntry->setPerformer( $user );
+		$logEntry->setPerformer( $userIdentity );
 		$logEntry->setTarget( $target );
 		$logEntry->setParameters( [
 			'4::logid' => $logID,
