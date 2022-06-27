@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
+use MediaWiki\User\UserIdentity;
 use Status;
 use stdClass;
 use User;
@@ -112,7 +113,7 @@ class FilterStore {
 	/**
 	 * Saves new filter's info to DB
 	 *
-	 * @param User $user
+	 * @param UserIdentity $userIdentity
 	 * @param Filter $newFilter
 	 * @param array $differences
 	 * @param int|null $filterId
@@ -120,7 +121,7 @@ class FilterStore {
 	 * @return int[] first element is new ID, second is history ID
 	 */
 	private function doSaveFilter(
-		User $user,
+		UserIdentity $userIdentity,
 		Filter $newFilter,
 		array $differences,
 		?int $filterId,
@@ -131,8 +132,8 @@ class FilterStore {
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp();
-		$newRow['af_user'] = $user->getId();
-		$newRow['af_user_text'] = $user->getName();
+		$newRow['af_user'] = $userIdentity->getId();
+		$newRow['af_user_text'] = $userIdentity->getName();
 
 		$isNew = $filterId === null;
 
@@ -224,7 +225,7 @@ class FilterStore {
 
 		// Logging
 		$logEntry = new ManualLogEntry( 'abusefilter', $isNew ? 'create' : 'modify' );
-		$logEntry->setPerformer( $user );
+		$logEntry->setPerformer( $userIdentity );
 		$logEntry->setTarget( SpecialAbuseFilter::getTitleForSubpage( (string)$filterId ) );
 		$logEntry->setParameters( [
 			'historyId' => $historyID,
