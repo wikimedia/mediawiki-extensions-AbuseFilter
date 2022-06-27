@@ -13,11 +13,11 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use Title;
-use User;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -87,7 +87,7 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 			$this->createMock( FilterLookup::class ),
 			new NullLogger,
 			$options,
-			$this->createMock( User::class ),
+			$this->createMock( UserIdentity::class ),
 			$title,
 			VariableHolder::newFromArray( [ 'action' => 'edit' ] )
 		);

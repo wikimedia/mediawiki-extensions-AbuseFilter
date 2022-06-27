@@ -12,10 +12,10 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
 use Title;
-use User;
 
 class ConsequencesExecutor {
 	public const CONSTRUCTOR_OPTIONS = [
@@ -37,7 +37,7 @@ class ConsequencesExecutor {
 	private $logger;
 	/** @var ServiceOptions */
 	private $options;
-	/** @var User */
+	/** @var UserIdentity */
 	private $user;
 	/** @var Title */
 	private $title;
@@ -51,7 +51,7 @@ class ConsequencesExecutor {
 	 * @param FilterLookup $filterLookup
 	 * @param LoggerInterface $logger
 	 * @param ServiceOptions $options
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param Title $title
 	 * @param VariableHolder $vars
 	 */
@@ -62,7 +62,7 @@ class ConsequencesExecutor {
 		FilterLookup $filterLookup,
 		LoggerInterface $logger,
 		ServiceOptions $options,
-		User $user,
+		UserIdentity $user,
 		Title $title,
 		VariableHolder $vars
 	) {
@@ -165,7 +165,7 @@ class ConsequencesExecutor {
 			foreach ( $actions as $name => $parameters ) {
 				if ( $name === 'block' ) {
 					$consParams[$filter][$name] = [
-						'expiry' => $this->user->isAnon() ? $parameters[1] : $parameters[2],
+						'expiry' => $this->user->isRegistered() ? $parameters[2] : $parameters[1],
 						'blocktalk' => $parameters[0] === 'blocktalk'
 					];
 				}
