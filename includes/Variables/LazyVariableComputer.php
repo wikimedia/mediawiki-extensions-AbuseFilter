@@ -199,7 +199,7 @@ class LazyVariableComputer {
 					$editInfo = $article->prepareContentForEdit(
 						$content,
 						null,
-						$parameters['contextUser']
+						$parameters['contextUserIdentity']
 					);
 					$result = array_keys( $editInfo->output->getExternalLinks() );
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
@@ -225,7 +225,7 @@ class LazyVariableComputer {
 					$editInfo = $this->parseNonEditWikitext(
 						$wikitext,
 						$article,
-						$parameters['contextUser']
+						$parameters['contextUserIdentity']
 					);
 					$links = array_keys( $editInfo->output->getExternalLinks() );
 				} else {
@@ -267,7 +267,7 @@ class LazyVariableComputer {
 					$editInfo = $article->prepareContentForEdit(
 						$content,
 						null,
-						$parameters['contextUser']
+						$parameters['contextUserIdentity']
 					);
 					if ( isset( $parameters['pst'] ) && $parameters['pst'] ) {
 						$result = $editInfo->pstContent->serialize( $editInfo->format );
@@ -477,17 +477,17 @@ class LazyVariableComputer {
 	 *
 	 * @param string $wikitext
 	 * @param WikiPage $article
-	 * @param User $user Context user
+	 * @param UserIdentity $userIdentity Context user
 	 *
 	 * @return stdClass
 	 */
-	private function parseNonEditWikitext( $wikitext, WikiPage $article, User $user ) {
+	private function parseNonEditWikitext( $wikitext, WikiPage $article, UserIdentity $userIdentity ) {
 		static $cache = [];
 
 		$cacheKey = md5( $wikitext ) . ':' . $article->getTitle()->getPrefixedText();
 
 		if ( !isset( $cache[$cacheKey] ) ) {
-			$options = ParserOptions::newFromUser( $user );
+			$options = ParserOptions::newFromUser( $userIdentity );
 			$cache[$cacheKey] = (object)[
 				'output' => $this->parser->parse( $wikitext, $article->getTitle(), $options )
 			];

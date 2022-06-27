@@ -173,10 +173,10 @@ class VariableGenerator {
 
 	/**
 	 * @param WikiPage $page
-	 * @param User $user The current user
+	 * @param UserIdentity $userIdentity The current user
 	 * @return $this For chaining
 	 */
-	public function addEditVars( WikiPage $page, User $user ): self {
+	public function addEditVars( WikiPage $page, UserIdentity $userIdentity ): self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
@@ -206,26 +206,26 @@ class VariableGenerator {
 			[
 				'text-var' => 'new_wikitext',
 				'article' => $page,
-				'contextUser' => $user
+				'contextUserIdentity' => $userIdentity
 			] );
 		$this->vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
 			[
 				'article' => $page,
 				'text-var' => 'old_wikitext',
-				'contextUser' => $user
+				'contextUserIdentity' => $userIdentity
 			] );
 		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
 			[
 				'wikitext-var' => 'new_wikitext',
 				'article' => $page,
 				'pst' => true,
-				'contextUser' => $user
+				'contextUserIdentity' => $userIdentity
 			] );
 		$this->vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
 			[
 				'wikitext-var' => 'new_wikitext',
 				'article' => $page,
-				'contextUser' => $user
+				'contextUserIdentity' => $userIdentity
 			] );
 
 		return $this;
