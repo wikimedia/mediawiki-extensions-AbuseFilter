@@ -31,7 +31,6 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * @inheritDoc
 	 */
 	protected function tearDown(): void {
-		MWTimestamp::setFakeTime( false );
 		$this->clearUploads();
 		parent::tearDown();
 	}

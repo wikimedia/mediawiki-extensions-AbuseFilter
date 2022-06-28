@@ -22,7 +22,6 @@ use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWException;
-use MWTimestamp;
 use Parser;
 use Psr\Log\NullLogger;
 use Title;
@@ -35,14 +34,6 @@ use Wikimedia\Rdbms\ILoadBalancer;
  * @covers ::__construct
  */
 class LazyVariableComputerTest extends MediaWikiUnitTestCase {
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function tearDown(): void {
-		MWTimestamp::setFakeTime( false );
-		parent::tearDown();
-	}
 
 	private function getComputer(
 		array $services = [],
