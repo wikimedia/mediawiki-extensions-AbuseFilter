@@ -47,6 +47,7 @@ trait AbuseFilterCreateAccountTestTrait {
 		] );
 		$logid = $logEntry->insert();
 		$logEntry->publish( $logid );
+		$status->value = $logid;
 		return $status;
 	}
 }
