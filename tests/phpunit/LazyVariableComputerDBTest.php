@@ -32,12 +32,11 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideEditRelatedVars
 	 */
 	public function testEditRelatedVars( $oldText, $newText, $summary, array $expected ) {
-		$pageName = __METHOD__;
-		$title = Title::makeTitle( 0, $pageName );
+		$title = Title::makeTitle( NS_MAIN, 'TestEditRelatedVars' );
 		$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle( $title );
 
-		$this->editPage( $pageName, $oldText, 'Creating the test page' );
-		$this->editPage( $pageName, $newText, $summary );
+		$this->editPage( $page, $oldText, 'Creating the test page' );
+		$this->editPage( $page, $newText, $summary );
 
 		$baseVars = VariableHolder::newFromArray( [
 			'old_wikitext' => $oldText,
@@ -155,19 +154,19 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 		$user = $this->getMutableTestUser()->getUser();
 		// Create the page and make a couple of edits from different users
 		$this->editPage(
-			$title->getText(),
+			$title,
 			'AbuseFilter test for title variables',
 			'',
-			$title->getNamespace(),
+			NS_MAIN,
 			$user
 		);
 		$mockContributors = [ 'X>Alice', 'X>Bob', 'X>Charlie' ];
 		foreach ( $mockContributors as $contributor ) {
 			$this->editPage(
-				$title->getText(),
+				$title,
 				"page revision by $contributor",
 				'',
-				$title->getNamespace(),
+				NS_MAIN,
 				User::newFromName( $contributor, false )
 			);
 		}
@@ -182,8 +181,7 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testRecentContributors() {
 		$varName = "page_recent_contributors";
-		$pageName = "Page to test $varName";
-		$title = Title::newFromText( $pageName );
+		$title = Title::makeTitle( NS_MAIN, "Page to test $varName" );
 
 		$expected = $this->computeRecentContributors( $title );
 		$computer = AbuseFilterServices::getLazyVariableComputer();
