@@ -400,7 +400,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			// Only for local wiki results
 			if ( !$row->afl_wiki ) {
 				$lb->add( $row->afl_namespace, $row->afl_title );
-				$lb->add( NS_USER, $row->afl_user );
+				$lb->add( NS_USER, $row->afl_user_text );
 				$lb->add( NS_USER_TALK, $row->afl_user_text );
 			}
 		}
