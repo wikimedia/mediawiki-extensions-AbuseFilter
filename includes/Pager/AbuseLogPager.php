@@ -90,11 +90,6 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public function doFormatRow( stdClass $row, bool $isListItem = true ): string {
 		$user = $this->getUser();
-		$lang = $this->getLanguage();
-
-		$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
-
-		$diffLink = false;
 		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermissionManager );
 
 		if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
@@ -102,8 +97,11 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		$linkRenderer = $this->getLinkRenderer();
+		$diffLink = false;
 
 		if ( !$row->afl_wiki ) {
+			$title = Title::makeTitle( $row->afl_namespace, $row->afl_title );
+
 			$pageLink = $linkRenderer->makeLink(
 				$title,
 				null,
@@ -153,6 +151,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$this->msg( 'parentheses' )->params( WikiMap::getWikiName( $row->afl_wiki ) )->escaped();
 		}
 
+		$lang = $this->getLanguage();
 		$timestamp = htmlspecialchars( $lang->userTimeAndDate( $row->afl_timestamp, $this->getUser() ) );
 
 		$actions_takenRaw = $row->afl_actions;
