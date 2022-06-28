@@ -473,8 +473,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$status = $this->editPage(
 				$page,
 				$oldText,
-				__METHOD__ . ' page creation',
-				$title->getNamespace()
+				__METHOD__ . ' page creation'
 			);
 			if ( !$status->isGood() ) {
 				throw new Exception( "Could not create test page. $status" );
@@ -517,7 +516,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				$page,
 				$newText,
 				$summary,
-				$title->getNamespace(),
+				NS_MAIN,
 				$this->user
 			);
 		}
@@ -1566,7 +1565,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		// Filter 24 has no actions and always matches
 		$this->createFilters( [ 24 ] );
 
-		$targetTitle = Title::newFromText( 'TestRevIdSet' );
+		$targetTitle = Title::makeTitle( NS_MAIN, 'TestRevIdSet' );
 		$startingRevId = $targetTitle->getLatestRevID( Title::READ_LATEST );
 
 		$this->doEdit( $targetTitle, 'Old text', 'New text', 'Summary' );
