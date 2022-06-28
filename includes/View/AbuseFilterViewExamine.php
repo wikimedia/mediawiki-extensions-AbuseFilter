@@ -184,7 +184,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			. $pager->getNavigationBar()
 			. $changesList->endRecentChangesList();
 
-		$form->addPostText( $output );
+		$form->addPostHtml( $output );
 		return true;
 	}
 
