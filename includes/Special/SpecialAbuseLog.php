@@ -63,7 +63,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	protected $mSearchPeriodEnd;
 
 	/**
-	 * @var Title The page of which AbuseLog entries are being searched
+	 * @var string The page of which AbuseLog entries are being searched
 	 */
 	protected $mSearchTitle;
 
@@ -422,7 +422,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Generate conditions list.
 		$conds = [];
 
-		if ( $this->mSearchUser ) {
+		if ( $this->mSearchUser !== null ) {
 			$searchedUser = $this->userIdentityLookup->getUserIdentityByName( $this->mSearchUser );
 
 			if ( !$searchedUser ) {
@@ -555,7 +555,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 
 		$searchTitle = Title::newFromText( $this->mSearchTitle );
-		if ( $this->mSearchTitle && $searchTitle ) {
+		if ( $searchTitle ) {
 			$conds['afl_namespace'] = $searchTitle->getNamespace();
 			$conds['afl_title'] = $searchTitle->getDBkey();
 		}

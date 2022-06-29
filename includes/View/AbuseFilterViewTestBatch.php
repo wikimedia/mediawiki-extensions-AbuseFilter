@@ -225,7 +225,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$rcQuery = RecentChange::getQueryInfo();
 		$conds = [];
 
-		if ( (string)$this->mTestUser !== '' ) {
+		if ( $this->mTestUser !== '' ) {
 			$conds[$rcQuery['fields']['rc_user_text']] = $this->mTestUser;
 		}
 
@@ -237,15 +237,14 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$conds[] = 'rc_timestamp <= ' .
 				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mTestPeriodEnd ) ) );
 		}
-		if ( $this->mTestPage ) {
+		if ( $this->mTestPage !== '' ) {
 			$title = Title::newFromText( $this->mTestPage );
-			if ( $title instanceof Title ) {
-				$conds['rc_namespace'] = $title->getNamespace();
-				$conds['rc_title'] = $title->getDBkey();
-			} else {
+			if ( !$title ) {
 				$out->addWikiMsg( 'abusefilter-test-badtitle' );
 				return;
 			}
+			$conds['rc_namespace'] = $title->getNamespace();
+			$conds['rc_title'] = $title->getDBkey();
 		}
 
 		if ( $this->mExcludeBots ) {
@@ -338,20 +337,23 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->mExcludeBots = $request->getBool( 'wpExcludeBots' );
 		$this->mTestAction = $request->getText( 'wpTestAction' );
 
-		if ( !$this->testPattern
+		if ( $this->testPattern === ''
 			&& count( $this->mParams ) > 1
 			&& is_numeric( $this->mParams[1] )
 		) {
 			$dbr = wfGetDB( DB_REPLICA );
-			$this->testPattern = $dbr->selectField( 'abuse_filter',
+			$pattern = $dbr->selectField( 'abuse_filter',
 				'af_pattern',
-				[ 'af_id' => $this->mParams[1] ],
+				[ 'af_id' => intval( $this->mParams[1] ) ],
 				__METHOD__
 			);
+			if ( $pattern !== false ) {
+				$this->testPattern = $pattern;
+			}
 		}
 
 		// Normalise username
 		$userTitle = Title::newFromText( $testUsername, NS_USER );
-		$this->mTestUser = $userTitle ? $userTitle->getText() : null;
+		$this->mTestUser = $userTitle ? $userTitle->getText() : '';
 	}
 }
