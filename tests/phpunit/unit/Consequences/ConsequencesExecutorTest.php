@@ -13,11 +13,11 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
-use Title;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -50,7 +50,7 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 		return $consFactory;
 	}
 
-	private function getConsExecutor( array $consequences, Title $title ): ConsequencesExecutor {
+	private function getConsExecutor( array $consequences, LinkTarget $title ): ConsequencesExecutor {
 		$locallyDisabledActions = [
 			'flag' => false,
 			'throttle' => false,
@@ -96,7 +96,6 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $rawConsequences A raw, unfiltered list of consequences
 	 * @param array $expectedKeys
-	 * @param Title $title
 	 *
 	 * @covers ::getActualConsequencesToExecute
 	 * @covers ::replaceLegacyParameters
@@ -110,10 +109,9 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGetActualConsequencesToExecute(
 		array $rawConsequences,
-		array $expectedKeys,
-		Title $title
+		array $expectedKeys
 	): void {
-		$executor = $this->getConsExecutor( $rawConsequences, $title );
+		$executor = $this->getConsExecutor( $rawConsequences, $this->createMock( LinkTarget::class ) );
 		$actual = $executor->getActualConsequencesToExecute( array_keys( $rawConsequences ) );
 
 		$actualKeys = [];
@@ -128,10 +126,6 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 	 * @return array
 	 */
 	public function provideConsequences(): array {
-		$pageName = 'TestFilteredConsequences';
-		$title = $this->createMock( Title::class );
-		$title->method( 'getPrefixedText' )->willReturn( $pageName );
-
 		return [
 			'warn and throttle exclude other actions' => [
 				[
@@ -160,7 +154,6 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 					13 => [ 'throttle' ],
 					168 => [ 'degroup' ]
 				],
-				$title
 			],
 			'warn excludes other actions, block excludes disallow' => [
 				[
@@ -189,7 +182,6 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 					'global-2' => [ 'warn' ],
 					4 => [ 'block' ]
 				],
-				$title
 			],
 			'some global actions are disabled locally, the longest block is chosen' => [
 				[
@@ -222,7 +214,6 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 					1 => [],
 					2 => [ 'degroup', 'block' ]
 				],
-				$title
 			],
 			'do not use a block that will be skipped as the longer one' => [
 				[
@@ -248,7 +239,6 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 					1 => [ 'warn' ],
 					2 => [ 'block' ]
 				],
-				$title
 			],
 		];
 	}

@@ -12,10 +12,10 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
-use Title;
 
 class ConsequencesExecutor {
 	public const CONSTRUCTOR_OPTIONS = [
@@ -39,7 +39,7 @@ class ConsequencesExecutor {
 	private $options;
 	/** @var UserIdentity */
 	private $user;
-	/** @var Title */
+	/** @var LinkTarget */
 	private $title;
 	/** @var VariableHolder */
 	private $vars;
@@ -52,7 +52,7 @@ class ConsequencesExecutor {
 	 * @param LoggerInterface $logger
 	 * @param ServiceOptions $options
 	 * @param UserIdentity $user
-	 * @param Title $title
+	 * @param LinkTarget $title
 	 * @param VariableHolder $vars
 	 */
 	public function __construct(
@@ -63,7 +63,7 @@ class ConsequencesExecutor {
 		LoggerInterface $logger,
 		ServiceOptions $options,
 		UserIdentity $user,
-		Title $title,
+		LinkTarget $title,
 		VariableHolder $vars
 	) {
 		$this->consLookup = $consLookup;
