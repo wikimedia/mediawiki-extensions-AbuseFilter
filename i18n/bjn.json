@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ezagren"
+		]
+	},
+	"right-abusefilter-log": "Manampaiakan catatan panyalahgunaan",
+	"right-abusefilter-privatedetails-log": "Janaki log ijin rinci paribadi Log Panyalahgunaan",
+	"action-abusefilter-log": "manampaiakan catatan panyalahgunaan",
+	"abusefilter-log-search": "Panggagaian catatan panyalahgunaan",
+	"abusefilter-log-linkoncontribs": "catatan panyalahgunaan",
+	"abusefilter-log-linkoncontribs-text": "Log panyalahgunaan gasan {{GENDER:$1|pamakai ngini}}",
+	"abusefilter-log-linkonhistory": "janaki log panyalahgunaan",
+	"abusefilter-log-linkonhistory-text": "janaki log panyalahgunaan gasan laman ngini",
+	"abusefilter-log-linkonundelete": "janaki log panyalahgunaan",
+	"abusefilter-log-linkonundelete-text": "Janaki log panyalahgunaan gasan laman ngini",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|Pilih log panyalahgunaan|Pilih log panyalahgunaan}}:",
+	"abusefilterprivatedetails-log-name": "Catatan ijin rinci paribadi Filter Panyalahgunaan",
+	"abusefilter-topnav-log": "Catatan panyalahgunaan",
+	"abusefilter-log-name": "Catatan panyaringan panyalahgunaan",
+	"abusefilter-diff-next": "Paubahan pahanyarnya"
+}
