@@ -21,6 +21,19 @@ use Wikimedia\Rdbms\IResultWrapper;
  */
 class AbuseFilterPager extends TablePager {
 
+	/**
+	 * The unique sort fields for the sort options for unique paginate
+	 */
+	private const INDEX_FIELDS = [
+		'af_id' => [ 'af_id' ],
+		'af_enabled' => [ 'af_enabled', 'af_deleted', 'af_id' ],
+		'af_timestamp' => [ 'af_timestamp', 'af_id' ],
+		'af_hidden' => [ 'af_hidden', 'af_id' ],
+		'af_group' => [ 'af_group', 'af_id' ],
+		'af_hit_count' => [ 'af_hit_count', 'af_id' ],
+		'af_public_comments' => [ 'af_public_comments', 'af_id' ],
+	];
+
 	/** @var ?LinkBatchFactory */
 	private $linkBatchFactory;
 
@@ -410,29 +423,22 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getIndexField() {
+		return [ self::INDEX_FIELDS[$this->mSort] ];
+	}
+
+	/**
 	 * @param string $name
 	 * @return bool
 	 */
 	public function isFieldSortable( $name ) {
-		$sortable_fields = [
-			'af_id',
-			'af_enabled',
-			'af_timestamp',
-			'af_hidden',
-			'af_group',
-		];
-		if ( $this->afPermManager->canSeeLogDetails( $this->getAuthority() ) ) {
-			$sortable_fields[] = 'af_hit_count';
-			$sortable_fields[] = 'af_public_comments';
+		if ( ( $name === 'af_hit_count' || $name === 'af_public_comments' )
+			&& !$this->afPermManager->canSeeLogDetails( $this->getAuthority() )
+		) {
+			return false;
 		}
-		return in_array( $name, $sortable_fields );
-	}
-
-	/**
-	 * @codeCoverageIgnore Merely declarative
-	 * @inheritDoc
-	 */
-	public function getExtraSortFields() {
-		return [ 'af_enabled' => 'af_deleted' ];
+		return isset( self::INDEX_FIELDS[$name] );
 	}
 }
