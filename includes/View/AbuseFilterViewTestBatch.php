@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
+use Html;
 use HTMLForm;
 use IContextSource;
 use LogEventsList;
@@ -217,7 +218,9 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 
 		if ( !$ruleChecker->checkSyntax( $this->testPattern )->isValid() ) {
-			$out->addWikiMsg( 'abusefilter-test-syntaxerr' );
+			$out->addHTML(
+				Html::errorBox( $this->msg( 'abusefilter-test-syntaxerr' )->parse() )
+			);
 			return;
 		}
 
