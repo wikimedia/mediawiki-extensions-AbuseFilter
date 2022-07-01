@@ -7,7 +7,7 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
-use MediaWiki\User\UserIdentity;
+use MediaWiki\Permissions\Authority;
 use Message;
 use Status;
 use User;
@@ -323,13 +323,13 @@ class FilterValidator {
 	}
 
 	/**
-	 * @param UserIdentity $user
+	 * @param Authority $performer
 	 * @param AbstractFilter $newFilter
 	 * @param AbstractFilter $originalFilter
 	 * @return Status
 	 */
 	public function checkRestrictedActions(
-		UserIdentity $user,
+		Authority $performer,
 		AbstractFilter $newFilter,
 		AbstractFilter $originalFilter
 	): Status {
@@ -337,7 +337,7 @@ class FilterValidator {
 		$allEnabledActions = $newFilter->getActions() + $originalFilter->getActions();
 		if (
 			array_intersect_key( array_fill_keys( $this->restrictedActions, true ), $allEnabledActions )
-			&& !$this->permManager->canEditFilterWithRestrictedActions( $user )
+			&& !$this->permManager->canEditFilterWithRestrictedActions( $performer )
 		) {
 			$ret->error( 'abusefilter-edit-restricted' );
 		}

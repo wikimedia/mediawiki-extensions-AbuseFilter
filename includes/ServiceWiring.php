@@ -74,7 +74,8 @@ return [
 		);
 	},
 	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
-		return new PermManager( $services->getPermissionManager() );
+		// No longer has any dependencies
+		return new PermManager();
 	},
 	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagger {
 		return new ChangeTagger(
