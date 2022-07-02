@@ -3,6 +3,8 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Permissions\UltimateAuthority;
+use MediaWiki\User\UserIdentityValue;
 
 /**
  * @group Test
@@ -167,7 +169,7 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 				"page revision by $contributor",
 				'',
 				NS_MAIN,
-				User::newFromName( $contributor, false )
+				new UltimateAuthority( UserIdentityValue::newAnonymous( $contributor ) )
 			);
 		}
 		$contributors = array_reverse( $mockContributors );
