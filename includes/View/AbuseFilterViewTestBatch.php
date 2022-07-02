@@ -101,7 +101,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	public function show() {
 		$out = $this->getOutput();
 
-		if ( !$this->afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {
 			// TODO: the message still refers to the old rights
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
@@ -114,7 +114,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
 		$out->enableOOUI();
 
-		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
+		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getAuthority(), $out );
 
 		$rulesFields = [
 			'rules' => [

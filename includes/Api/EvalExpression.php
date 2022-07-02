@@ -48,7 +48,7 @@ class EvalExpression extends ApiBase {
 	 */
 	public function execute() {
 		// "Anti-DoS"
-		if ( !$this->afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {
 			$this->dieWithError( 'apierror-abusefilter-canteval', 'permissiondenied' );
 		}
 

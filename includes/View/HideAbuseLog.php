@@ -43,7 +43,7 @@ class HideAbuseLog extends AbuseFilterView {
 		$output = $this->getOutput();
 		$output->enableOOUI();
 
-		if ( !$this->afPermManager->canHideAbuseLog( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canHideAbuseLog( $this->getAuthority() ) ) {
 			$output->addWikiMsg( 'abusefilter-log-hide-forbidden' );
 			return;
 		}

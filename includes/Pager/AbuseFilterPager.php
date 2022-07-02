@@ -167,12 +167,12 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden' => 'abusefilter-list-visibility',
 		];
 
-		$user = $this->getUser();
-		if ( $this->afPermManager->canSeeLogDetails( $user ) ) {
+		$performer = $this->getAuthority();
+		if ( $this->afPermManager->canSeeLogDetails( $performer ) ) {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( $this->afPermManager->canViewPrivateFilters( $user ) && $this->searchMode !== null ) {
+		if ( $this->afPermManager->canViewPrivateFilters( $performer ) && $this->searchMode !== null ) {
 			// This is also excluded in the default view
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
@@ -394,7 +394,7 @@ class AbuseFilterPager extends TablePager {
 			'af_hidden',
 			'af_group',
 		];
-		if ( $this->afPermManager->canSeeLogDetails( $this->getUser() ) ) {
+		if ( $this->afPermManager->canSeeLogDetails( $this->getAuthority() ) ) {
 			$sortable_fields[] = 'af_hit_count';
 			$sortable_fields[] = 'af_public_comments';
 		}

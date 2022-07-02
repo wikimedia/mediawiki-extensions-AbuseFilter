@@ -62,7 +62,6 @@ class QueryAbuseFilters extends ApiQueryBase {
 	 * @inheritDoc
 	 */
 	public function execute() {
-		$user = $this->getUser();
 		$this->checkUserRightsAny( 'abusefilter-view' );
 
 		$params = $this->extractRequestParams();
@@ -120,7 +119,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 
 		$res = $this->select( __METHOD__ );
 
-		$showhidden = $this->afPermManager->canViewPrivateFilters( $user );
+		$showhidden = $this->afPermManager->canViewPrivateFilters( $this->getAuthority() );
 
 		$count = 0;
 		foreach ( $res as $row ) {

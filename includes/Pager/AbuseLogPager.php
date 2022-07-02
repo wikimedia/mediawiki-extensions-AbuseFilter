@@ -89,8 +89,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 * @return string
 	 */
 	public function doFormatRow( stdClass $row, bool $isListItem = true ): string {
-		$user = $this->getUser();
-		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermissionManager );
+		$performer = $this->getAuthority();
+		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $performer, $this->afPermissionManager );
 
 		if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
 			return '';
@@ -192,7 +192,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$filter_hidden = $row->af_hidden;
 		}
 
-		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $user, $filter_hidden ) ) {
+		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $filter_hidden ) ) {
 			$actionLinks = [];
 
 			if ( $isListItem ) {
@@ -214,7 +214,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$actionLinks[] = $diffLink;
 			}
 
-			if ( !$isListItem && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
+			if ( !$isListItem && $this->afPermissionManager->canHideAbuseLog( $performer ) ) {
 				// Link for hiding a single entry from the details view
 				$hideLink = $linkRenderer->makeKnownLink(
 					SpecialPage::getTitleFor( $this->basePageName, 'hide' ),
@@ -286,7 +286,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$this->msg( 'abusefilter-log-hidden-implicit' )->parse();
 		}
 
-		if ( $isListItem && !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
+		if ( $isListItem && !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $performer ) ) {
 			// Checkbox for hiding multiple entries, single entries are handled above
 			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . $description;
 		}
@@ -378,7 +378,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			];
 		}
 
-		if ( !$this->afPermissionManager->canSeeHiddenLogEntries( $this->getUser() ) ) {
+		if ( !$this->afPermissionManager->canSeeHiddenLogEntries( $this->getAuthority() ) ) {
 			$info['conds']['afl_deleted'] = 0;
 		}
 
