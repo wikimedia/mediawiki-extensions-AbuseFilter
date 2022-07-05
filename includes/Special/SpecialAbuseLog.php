@@ -8,6 +8,7 @@ use Html;
 use HTMLForm;
 use InvalidArgumentException;
 use Linker;
+use ListToggle;
 use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -623,9 +624,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				'method' => 'GET',
 				'action' => $this->getPageTitle( 'hide' )->getLocalURL()
 			],
-			$this->getDeleteButton() .
+			$this->getDeleteButton() . $this->getListToggle() .
 				Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) .
-				$this->getDeleteButton()
+				$this->getListToggle() . $this->getDeleteButton()
 		);
 
 		if ( $result && $result->numRows() !== 0 ) {
@@ -648,6 +649,19 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'label' => $this->msg( 'abusefilter-log-hide-entries' )->text(),
 			'type' => 'submit'
 		] );
+	}
+
+	/**
+	 * Get the All / Invert / None options provided by
+	 * ToggleList.php to mass select the checkboxes.
+	 *
+	 * @return string
+	 */
+	private function getListToggle() {
+		if ( !$this->afPermissionManager->canHideAbuseLog( $this->getUser() ) ) {
+			return '';
+		}
+		return ( new ListToggle( $this->getOutput() ) )->getHtml();
 	}
 
 	/**
