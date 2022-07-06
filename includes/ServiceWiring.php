@@ -56,14 +56,8 @@ return [
 		return new KeywordsManager( $services->get( AbuseFilterHookRunner::SERVICE_NAME ) );
 	},
 	FilterProfiler::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterProfiler {
-		$cacheType = $services->getMainConfig()->get( 'AbuseFilterProfilerCache' );
-		if ( $cacheType !== null ) {
-			$cache = ObjectCache::getInstance( $cacheType );
-		} else {
-			$cache = $services->getMainObjectStash();
-		}
 		return new FilterProfiler(
-			$cache,
+			$services->getWRStatsFactory(),
 			new ServiceOptions(
 				FilterProfiler::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
