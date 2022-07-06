@@ -421,7 +421,7 @@
 	"abusefilter-edit-builder-funcs-set_var": "设置变量（set_var）",
 	"abusefilter-edit-builder-funcs-sanitize": "标准化HTML记录为unicode字符（sanitize）",
 	"abusefilter-edit-builder-group-vars": "变量",
-	"abusefilter-edit-builder-vars-accountname": "帐户（创建时）的名称",
+	"abusefilter-edit-builder-vars-accountname": "账号（创建时）的名称",
 	"abusefilter-edit-builder-vars-timestamp": "更改的Unix时间戳",
 	"abusefilter-edit-builder-vars-timestamp-expanded": "日志时间戳",
 	"abusefilter-edit-builder-vars-action": "操作",
