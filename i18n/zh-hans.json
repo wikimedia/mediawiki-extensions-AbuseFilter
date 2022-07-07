@@ -417,6 +417,7 @@
 	"abusefilter-edit-builder-funcs-substr": "子字符串（substr）",
 	"abusefilter-edit-builder-funcs-strpos": "子字符串在字符串中的位置（strpos）",
 	"abusefilter-edit-builder-funcs-str_replace": "在字符串中替换子字符串（str_replace）",
+	"abusefilter-edit-builder-funcs-str_replace_regexp": "正则表达式搜索和替换（str_replace_regexp）",
 	"abusefilter-edit-builder-funcs-rescape": "转义字符串以在正则表达式中使用 (rescape)",
 	"abusefilter-edit-builder-funcs-set_var": "设置变量（set_var）",
 	"abusefilter-edit-builder-funcs-sanitize": "标准化HTML记录为unicode字符（sanitize）",
@@ -645,6 +646,8 @@
 	"tag-abusefilter-condition-limit": "已达到条件限制",
 	"tag-abusefilter-condition-limit-description": "不能被所有激活的[[Special:AbuseFilter|防滥用过滤器]]检查到的编辑或其他活动（[[mw:Extension:AbuseFilter/Conditions|帮助]]）。",
 	"notification-header-throttle-filter": "{{GENDER:$1|您}}近期编辑的$2号滥用过滤器被限制。",
+	"notification-header-throttle-filter-actions": "{{GENDER:$1|你}}最近编辑的滥用过滤器$2的匹配率过高，以下{{PLURAL:$4|操作已被}}自动禁用：$3。",
+	"notification-header-throttle-filter-no-actions": "{{GENDER:$1|你}}最近编辑的滥用过滤器$2的匹配率过高，但没有任何操作被自动禁用。",
 	"notification-subject-throttle-filter": "{{GENDER:$1|您}}近期编辑的一个滥用过滤器在{{SITENAME}}被限制",
 	"notification-link-text-show-filter": "显示过滤器"
 }
