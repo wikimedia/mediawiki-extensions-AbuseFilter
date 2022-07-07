@@ -288,7 +288,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 
 		if ( $isListItem && !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $user ) ) {
 			// Checkbox for hiding multiple entries, single entries are handled above
-			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . $description;
+			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . ' ' . $description;
 		}
 
 		if ( $isListItem ) {
