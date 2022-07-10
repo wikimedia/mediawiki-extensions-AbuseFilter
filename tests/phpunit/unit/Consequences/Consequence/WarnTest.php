@@ -40,6 +40,7 @@ class WarnTest extends MediaWikiUnitTestCase {
 				'edit',
 				new TitleValue( NS_HELP, 'Some title' ),
 				new UserIdentityValue( 1, 'Warned user' ),
+				'1.2.3.4',
 				null
 			)
 		);

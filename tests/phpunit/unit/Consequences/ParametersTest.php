@@ -30,7 +30,7 @@ class ParametersTest extends MediaWikiUnitTestCase {
 		$user = $this->createMock( UserIdentity::class );
 		$target = $this->createMock( LinkTarget::class );
 		$action = 'some-action';
-		$specifier = new ActionSpecifier( $action, $target, $user, null );
+		$specifier = new ActionSpecifier( $action, $target, $user, '1.2.3.4', null );
 		$params = new Parameters( $filter, $global, $specifier );
 
 		$this->assertSame( $filter, $params->getFilter(), 'filter' );

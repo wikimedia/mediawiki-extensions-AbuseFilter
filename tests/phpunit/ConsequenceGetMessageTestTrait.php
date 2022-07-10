@@ -34,6 +34,7 @@ trait ConsequenceGetMessageTestTrait {
 				'edit',
 				$this->createMock( LinkTarget::class ),
 				$user,
+				'1.2.3.4',
 				null
 			)
 		);
@@ -49,6 +50,7 @@ trait ConsequenceGetMessageTestTrait {
 				'edit',
 				$this->createMock( LinkTarget::class ),
 				$user,
+				'1.2.3.4',
 				null
 			)
 		);

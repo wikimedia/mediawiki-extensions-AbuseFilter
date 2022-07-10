@@ -237,7 +237,13 @@ class FilterRunner {
 			'accountname',
 			VariablesManager::GET_BC
 		)->toNative();
-		$spec = new ActionSpecifier( $this->action, $this->title, $this->user, $accountname );
+		$spec = new ActionSpecifier(
+			$this->action,
+			$this->title,
+			$this->user,
+			$this->user->getRequest()->getIP(),
+			$accountname
+		);
 
 		// Tag the action if the condition limit was hit
 		if ( $runnerData->getTotalConditions() > $this->options->get( 'AbuseFilterConditionLimit' ) ) {

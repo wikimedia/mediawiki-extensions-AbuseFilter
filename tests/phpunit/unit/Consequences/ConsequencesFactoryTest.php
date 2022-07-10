@@ -51,8 +51,7 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( Session::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->createMock( UserEditTracker::class ),
-			$this->createMock( UserFactory::class ),
-			'1.2.3.4'
+			$this->createMock( UserFactory::class )
 		);
 	}
 

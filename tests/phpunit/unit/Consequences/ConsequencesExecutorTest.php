@@ -92,6 +92,7 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 				'edit',
 				$this->createMock( LinkTarget::class ),
 				$this->createMock( UserIdentity::class ),
+				'1.2.3.4',
 				null
 			),
 			new VariableHolder

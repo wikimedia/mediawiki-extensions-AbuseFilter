@@ -271,6 +271,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			'afl_id',
 			'afl_user',
 			'afl_user_text',
+			'afl_ip',
 			'afl_action',
 			'afl_actions',
 			'afl_var_dump',
@@ -309,6 +310,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 						$row->afl_action,
 						new TitleValue( (int)$row->afl_namespace, $row->afl_title ),
 						$this->userFactory->newFromAnyId( (int)$row->afl_user, $row->afl_user_text ),
+						$row->afl_ip,
 						$accountName
 					),
 					'timestamp' => $row->afl_timestamp
