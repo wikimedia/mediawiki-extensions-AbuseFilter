@@ -232,5 +232,18 @@
 	"abusefilter-examine-legend": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߎ߬ ߓߊߕߐ߬ߡߐ߲߫",
 	"abusefilter-examine-user": "ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ:",
 	"abusefilter-examine-title": "ߞߐߜߍ ߞߎ߲߬ߕߐ߮:",
-	"abusefilter-examine-submit": "ߢߌߣߌ߲ߠߌ߲"
+	"abusefilter-examine-submit": "ߢߌߣߌ߲ߠߌ߲",
+	"abusefilter-logentry-create": "$1 {{GENDER:$2|ߛߌ߲ߘߟߌߣߐ ߟߋ߬}} ߦߋ߫ $4 ($5) ߘߌ߫",
+	"abusefilter-logentry-modify": "$1 {{GENDER:$2|}} ߓߘߊ߫ $4 ($5) ߡߊߦߟߍ߬ߡߊ߲߫",
+	"abusefilter-log-invalid-filter": "ߛߍ߲ߛߍ߲ߟߊ߲ ߘߏ߫ ߟߎ߫ ߡߊߟߐ߲ߠߌ߲ ߦߋ߫ ߓߍ߲߬ߓߊߟߌ ߟߋ߬ ߘߌ߫.",
+	"abusefilter-log-noresults": "ߞߐߝߟߌ߫ ߕߴߦߋ߲߬",
+	"abusefilter-diff-title": "ߘߊ߲߬ߝߘߊ߬ߓߐ ߡߍ߲ ߦߋ߫ ߟߢߊ߬ߟߌ ߟߎ߬ ߕߍ߫",
+	"abusefilter-diff-item": "ߝߌ߬ߛߌ",
+	"abusefilter-diff-version": "ߦߌߟߡߊ ߞߊ߬ ߓߐ߫ $1 ߡߊ߬ {{GENDER:$3|}} $2 ߓߟߏ߫",
+	"abusefilter-diff-info": "ߞߎ߲߬ߠߊ߬ߝߎߟߋ߲ ߓߊߖߎߟߞߊ",
+	"abusefilter-diff-pattern": "ߛߍ߲ߛߍ߲ߟߊ߲ ߟߌ߬ߤߟߊ߬ߦߊ ߟߎ߫",
+	"abusefilter-diff-invalid": "ߦߌߟߡߊ߫ ߡߊߢߌ߬ߣߌ߲߬ߞߊ߬ߣߍ߲ ߕߍ߫ ߛߐ߲߬ ߟߊߛߐ߬ߘߐ߲߫ ߠߊ߫",
+	"abusefilter-diff-backhistory": "ߌ ߞߐߛߊ߬ߦߌ߫ ߛߍ߲ߛߍ߲ߟߊ߲ ߘߐ߬ߝߐ ߡߊ߬",
+	"abusefilter-diff-prev": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߞߘߐ߬ߡߊ߲",
+	"abusefilter-diff-next": "ߡߊ߬ߟߦߍ߬ߡߊ߲߬ߠߌ߲߫ ߞߎߘߡߊ"
 }
