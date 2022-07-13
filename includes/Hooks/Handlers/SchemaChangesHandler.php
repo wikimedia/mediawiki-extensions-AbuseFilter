@@ -171,10 +171,10 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 				'renameIndex', 'abuse_filter_history', 'abuse_filter_history_timestamp', 'afh_timestamp'
 			] );
 			$updater->addExtensionUpdate( [
-				'changeNullableField', ' abuse_filter_history', 'afh_public_comments'
+				'changeNullableField', ' abuse_filter_history', 'afh_public_comments', 'NULL', true
 			] );
 			$updater->addExtensionUpdate( [
-				'changeNullableField', ' abuse_filter_history', 'afh_actions'
+				'changeNullableField', ' abuse_filter_history', 'afh_actions', 'NULL', true
 			] );
 		}
 
