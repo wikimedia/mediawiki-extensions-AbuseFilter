@@ -1447,9 +1447,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideGlobalFilters
 	 */
 	public function testGlobalFilters( $createIds, $actionParams, $consequences ) {
-		if ( $this->db->getType() === 'sqlite' ) {
-			$this->markTestSkipped( 'FIXME debug the failure' );
-		}
+		// cannot access temporary tables of other sessions
+		$this->markTestSkippedIfDbType( 'postgres' );
 
 		$this->setMwGlobals( [
 			'wgAbuseFilterCentralDB' => $this->db->getDBname() . '-' . $this->dbPrefix() .
