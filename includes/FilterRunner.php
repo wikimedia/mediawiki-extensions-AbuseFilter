@@ -225,10 +225,12 @@ class FilterRunner {
 			$this->profileExecution( $runnerData );
 			$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 		} else {
+			// @codeCoverageIgnoreStart
 			DeferredUpdates::addCallableUpdate( function () use ( $runnerData ) {
 				$this->profileExecution( $runnerData );
 				$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 			} );
+			// @codeCoverageIgnoreEnd
 		}
 
 		// Tag the action if the condition limit was hit

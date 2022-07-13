@@ -114,7 +114,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				break;
 			case 'newusers':
 				$accountName = 'AbuseFilter dummy user';
-				$status = $this->createAccount( $accountName, $user, $action === 'autocreateaccount' );
+				$status = $this->createAccount( $accountName, $action === 'autocreateaccount', $user );
 				$rcConds['rc_logid'] = $status->value;
 
 				$expectedValues = [
