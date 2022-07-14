@@ -129,7 +129,7 @@
 	"abusefilter-log-details-privatedetails": "Détails du journal confidentiel",
 	"abusefilter-log-details-ip": "Adresse IP d’origine",
 	"abusefilter-log-details-checkuser": "Vérifier l’utilisateur",
-	"abusefilter-log-noactions": "aucun",
+	"abusefilter-log-noactions": "aucune",
 	"abusefilter-log-noactions-filter": "Aucun",
 	"abusefilter-log-details-diff": "Changements faits lors de la modification",
 	"abusefilter-log-linkoncontribs": "journal des abus",
