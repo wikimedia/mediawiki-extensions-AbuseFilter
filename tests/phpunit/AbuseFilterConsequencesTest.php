@@ -748,12 +748,71 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
+	 * @param array $actionParams
+	 * @param array $expectedConsequences
+	 */
+	private function assertAbuseLog( $actionParams, $expectedConsequences ): void {
+		$consequencesByFilter = [];
+		foreach ( $expectedConsequences as $consequence => $ids ) {
+			foreach ( $ids as $id ) {
+				$consequencesByFilter[$id][] = $consequence;
+			}
+		}
+
+		foreach ( $consequencesByFilter as $filter => $consequences ) {
+			$action = $actionParams['action'];
+			if ( $action === 'stashedit' ) {
+				$action = 'edit';
+			}
+			$title = Title::newFromTextThrow( $actionParams['target'] );
+
+			$row = $this->db->selectRow(
+				'abuse_filter_log',
+				'*',
+				[
+					'afl_filter_id' => $filter,
+					'afl_global' => 0,
+				],
+				__METHOD__,
+				[ 'ORDER BY' => 'afl_id DESC' ]
+			);
+			$this->assertNotFalse( $row );
+
+			$dumpStr = FormatJson::encode( $row );
+			$this->assertSame( $action, $row->afl_action, $dumpStr );
+			$this->assertNull( $row->afl_wiki, $dumpStr );
+			if ( $action === 'createaccount' ) {
+				$this->assertSame( $actionParams['username'], $row->afl_user_text, $dumpStr );
+				$this->assertSame( -1, (int)$row->afl_namespace, $dumpStr );
+			} else {
+				$this->assertSame( 'FilteredUser', $row->afl_user_text, $dumpStr );
+				$this->assertSame( $title->getNamespace(), (int)$row->afl_namespace, $dumpStr );
+				$this->assertSame( $title->getDBkey(), $row->afl_title, $dumpStr );
+			}
+			if (
+				in_array( 'disallow', $consequences )
+				&& array_intersect( $consequences, [ 'block', 'blockautopromote', 'degroup' ] )
+			) {
+				$consequences = array_diff( $consequences, [ 'disallow' ] );
+			}
+			$this->assertArrayEquals(
+				$consequences,
+				explode( ',', $row->afl_actions ),
+				false,
+				false,
+				$dumpStr
+			);
+		}
+	}
+
+	/**
 	 * Creates new filters, execute an action and check the consequences
 	 *
 	 * @param int[] $createIds IDs of the filters to create
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $expectedConsequences The consequences we're expecting
 	 * @dataProvider provideFilters
+	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
 	 */
 	public function testFilterConsequences( $createIds, $actionParams, $expectedConsequences ) {
 		$this->createFilters( $createIds );
@@ -765,6 +824,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$actual,
 			'The error messages obtained by performing the action do not match.'
 		);
+
+		$this->assertAbuseLog( $actionParams, $expectedConsequences );
 	}
 
 	/**
@@ -913,8 +974,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				],
 				[ 'blockautopromote' => [ 21 ] ],
 			],
-			[
-				[ 8, 10 ],
+			'No consequences' => [
+				[ 8 ],
 				[
 					'action' => 'edit',
 					'target' => 'Anything',
@@ -970,6 +1031,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @param array[] $actionsParams Details of the action we need to execute to trigger filters
 	 * @param array $consequences The consequences we're expecting
 	 * @dataProvider provideThrottleFilters
+	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
 	 */
 	public function testThrottle( $createIds, $actionsParams, $consequences ) {
 		$this->createFilters( $createIds );
@@ -983,6 +1045,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$actual,
 			'The error messages obtained by performing the action do not match.'
 		);
+
+		$this->assertAbuseLog( $lastParams, $consequences );
 	}
 
 	/**
@@ -1077,6 +1141,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @param int[] $warnIDs IDs of the filters which will warn us
 	 * @param array $consequences The consequences we're expecting
 	 * @dataProvider provideWarnFilters
+	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
 	 */
 	public function testWarn( $createIds, $actionParams, $warnIDs, $consequences ) {
 		$this->createFilters( $createIds );
@@ -1106,6 +1171,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$actualFinal,
 			'The error messages for the second action do not match.'
 		);
+
+		$this->assertAbuseLog( $actionParams, $consequences );
 	}
 
 	/**
@@ -1285,6 +1352,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $consequences The consequences we're expecting
 	 * @dataProvider provideStashedEdits
+	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
 	 */
 	public function testStashedEdit( $type, $createIds, $actionParams, $consequences ) {
 		if ( $type !== 'hit' && $type !== 'miss' ) {
@@ -1321,6 +1389,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$actual,
 			'The error messages obtained by performing the action do not match.'
 		);
+
+		$this->assertAbuseLog( $actionParams, $consequences );
 	}
 
 	/**
@@ -1441,6 +1511,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @param array $actionParams Details of the action we need to execute to trigger filters
 	 * @param array $consequences The consequences we're expecting
 	 * @dataProvider provideGlobalFilters
+	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
 	 */
 	public function testGlobalFilters( $createIds, $actionParams, $consequences ) {
 		// cannot access temporary tables of other sessions
