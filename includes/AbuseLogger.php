@@ -11,6 +11,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\User\UserIdentityValue;
 use Title;
 use User;
 use Wikimedia\Rdbms\IDatabase;
@@ -198,9 +199,7 @@ class AbuseLogger {
 		// Give grep a chance to find the usages:
 		// logentry-abusefilter-hit
 		$entry = new ManualLogEntry( 'abusefilter', 'hit' );
-		// Construct a user object
-		$user = User::newFromId( $data['afl_user'] );
-		$user->setName( $data['afl_user_text'] );
+		$user = new UserIdentityValue( $data['afl_user'], $data['afl_user_text'] );
 		$entry->setPerformer( $user );
 		$entry->setTarget( $this->title );
 		$filterName = GlobalNameUtils::buildGlobalName(
@@ -230,7 +229,6 @@ class AbuseLogger {
 			$data['afl_var_dump'] = $varDump;
 			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
 			$loggedIDs[] = $data['afl_id'] = $dbw->insertId();
-			$entry = $this->newLocalLogEntryFromData( $data );
 
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
@@ -239,6 +237,16 @@ class AbuseLogger {
 			) {
 				global $wgCheckUserLogAdditionalRights;
 				$wgCheckUserLogAdditionalRights[] = 'abusefilter-view';
+				$entry = $this->newLocalLogEntryFromData( $data );
+				$user = $entry->getPerformerIdentity();
+				// Invert the hack from ::buildLogTemplate because CheckUser attempts
+				// to assign an actor id to the non-existing user
+				if (
+					( $this->action === 'createaccount' || $this->action === 'autocreateaccount' )
+					&& !$user->getId()
+				) {
+					$entry->setPerformer( new UserIdentityValue( 0, $this->requestIP ) );
+				}
 				$rc = $entry->getRecentChange();
 				Hooks::updateCheckUserData( $rc );
 			}
@@ -252,6 +260,7 @@ class AbuseLogger {
 				) {
 					continue;
 				}
+				$entry = $this->newLocalLogEntryFromData( $data );
 				$this->publishEntry( $dbw, $entry );
 			}
 		}
