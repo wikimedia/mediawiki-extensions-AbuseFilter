@@ -11,6 +11,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\User\UserIdentityValue;
 use Title;
 use User;
 use Wikimedia\Rdbms\IDatabase;
@@ -230,6 +231,14 @@ class AbuseLogger {
 			) {
 				global $wgCheckUserLogAdditionalRights;
 				$wgCheckUserLogAdditionalRights[] = 'abusefilter-view';
+				// Invert the hack from ::buildLogTemplate because CheckUser attempts
+				// to assign an actor id to the non-existing user
+				if (
+					( $this->action === 'createaccount' || $this->action === 'autocreateaccount' )
+					&& !$user->getId()
+				) {
+					$entry->setPerformer( new UserIdentityValue( 0, $this->requestIP ) );
+				}
 				$rc = $entry->getRecentChange();
 				Hooks::updateCheckUserData( $rc );
 			}
