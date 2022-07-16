@@ -3,6 +3,7 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
+use MediaWiki\Revision\RevisionRecord;
 
 /**
  * @group Test
@@ -20,7 +21,6 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	protected $tablesUsed = [
 		'page',
 		'text',
-		'page_restrictions',
 		'user',
 		'recentchanges',
 		'image',
@@ -155,7 +155,8 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				throw new LogicException( "Type $type not recognized!" );
 		}
 
-		$rc = RecentChange::newFromConds( $rcConds, __METHOD__ );
+		DeferredUpdates::doUpdates();
+		$rc = RecentChange::newFromConds( $rcConds, __METHOD__, DB_PRIMARY );
 		$this->assertNotNull( $rc, 'RC item found' );
 
 		$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator(
@@ -199,6 +200,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @covers ::addEditVars
 	 * @covers ::addEditVarsForRow
+	 * @covers ::addGenericVars
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
 	 */
 	public function testAddEditVarsForRow() {
@@ -222,7 +224,11 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		/** @var RevisionRecord $revRecord */
 		$revRecord = $status->value['revision-record'];
 
-		$rc = RecentChange::newFromConds( [ 'rc_this_oldid' => $revRecord->getId() ], __METHOD__ );
+		$rc = RecentChange::newFromConds(
+			[ 'rc_this_oldid' => $revRecord->getId() ],
+			__METHOD__,
+			DB_PRIMARY
+		);
 		$this->assertNotNull( $rc, 'RC item found' );
 
 		// one more tick to reliably test page_age

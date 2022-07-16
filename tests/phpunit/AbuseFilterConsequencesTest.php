@@ -1449,6 +1449,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	public function testGlobalFilters( $createIds, $actionParams, $consequences ) {
 		// cannot access temporary tables of other sessions
 		$this->markTestSkippedIfDbType( 'postgres' );
+		// Read from wrong table: unittest_external_abuse_filter
+		$this->markTestSkippedIfDbType( 'sqlite' );
 
 		$this->setMwGlobals( [
 			'wgAbuseFilterCentralDB' => $this->db->getDBname() . '-' . $this->dbPrefix() .
