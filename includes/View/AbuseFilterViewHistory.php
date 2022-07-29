@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use HTMLForm;
 use IContextSource;
 use Linker;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -28,32 +29,38 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	/** @var UserNameUtils */
 	private $userNameUtils;
 
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/**
+	 * @param UserNameUtils $userNameUtils
+	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterLookup $filterLookup
 	 * @param SpecsFormatter $specsFormatter
-	 * @param UserNameUtils $userNameUtils
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
 	 * @param array $params
 	 */
 	public function __construct(
+		UserNameUtils $userNameUtils,
+		LinkBatchFactory $linkBatchFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterLookup $filterLookup,
 		SpecsFormatter $specsFormatter,
-		UserNameUtils $userNameUtils,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->userNameUtils = $userNameUtils;
+		$this->linkBatchFactory = $linkBatchFactory;
 		$this->filterLookup = $filterLookup;
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $context );
 		$this->filter = $this->mParams['filter'] ?? null;
-		$this->userNameUtils = $userNameUtils;
 	}
 
 	/**
@@ -150,6 +157,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$pager = new AbuseFilterHistoryPager(
 			$this->getContext(),
 			$this->linkRenderer,
+			$this->linkBatchFactory,
 			$this->filterLookup,
 			$this->specsFormatter,
 			$filter,

@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use Html;
 use HTMLForm;
 use IContextSource;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
@@ -21,6 +22,9 @@ use Xml;
  */
 class AbuseFilterViewList extends AbuseFilterView {
 
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/** @var FilterProfiler */
 	private $filterProfiler;
 
@@ -31,6 +35,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	private $centralDBManager;
 
 	/**
+	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterProfiler $filterProfiler
 	 * @param SpecsFormatter $specsFormatter
@@ -41,6 +46,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 * @param array $params
 	 */
 	public function __construct(
+		LinkBatchFactory $linkBatchFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterProfiler $filterProfiler,
 		SpecsFormatter $specsFormatter,
@@ -51,6 +57,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->linkBatchFactory = $linkBatchFactory;
 		$this->filterProfiler = $filterProfiler;
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $context );
@@ -218,6 +225,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$pager = new AbuseFilterPager(
 				$this,
 				$this->linkRenderer,
+				$this->linkBatchFactory,
 				$this->afPermManager,
 				$this->specsFormatter,
 				$conds,

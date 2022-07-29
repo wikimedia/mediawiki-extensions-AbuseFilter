@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Pager;
 
 use Linker;
 use LogicException;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
@@ -13,11 +14,15 @@ use SpecialPage;
 use stdClass;
 use TablePager;
 use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IResultWrapper;
 
 /**
  * Class to build paginated filter list
  */
 class AbuseFilterPager extends TablePager {
+
+	/** @var ?LinkBatchFactory */
+	private $linkBatchFactory;
 
 	/** @var AbuseFilterPermissionManager */
 	protected $afPermManager;
@@ -45,6 +50,7 @@ class AbuseFilterPager extends TablePager {
 	/**
 	 * @param AbuseFilterViewList $page
 	 * @param LinkRenderer $linkRenderer
+	 * @param ?LinkBatchFactory $linkBatchFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param SpecsFormatter $specsFormatter
 	 * @param array $conds
@@ -54,6 +60,7 @@ class AbuseFilterPager extends TablePager {
 	public function __construct(
 		AbuseFilterViewList $page,
 		LinkRenderer $linkRenderer,
+		?LinkBatchFactory $linkBatchFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		SpecsFormatter $specsFormatter,
 		array $conds,
@@ -65,6 +72,7 @@ class AbuseFilterPager extends TablePager {
 		$this->specsFormatter = $specsFormatter;
 		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mPage = $page;
+		$this->linkBatchFactory = $linkBatchFactory;
 		$this->conds = $conds;
 		$this->searchPattern = $searchPattern;
 		$this->searchMode = $searchMode;
@@ -95,6 +103,25 @@ class AbuseFilterPager extends TablePager {
 			],
 			'conds' => $this->conds,
 		];
+	}
+
+	/**
+	 * @param IResultWrapper $result
+	 */
+	protected function preprocessResults( $result ) {
+		// LinkBatchFactory only provided and needed for local wiki results
+		if ( $this->linkBatchFactory === null || $this->getNumRows() === 0 ) {
+			return;
+		}
+
+		$lb = $this->linkBatchFactory->newLinkBatch();
+		$lb->setCaller( __METHOD__ );
+		foreach ( $result as $row ) {
+			$lb->add( NS_USER, $row->af_user_text );
+			$lb->add( NS_USER_TALK, $row->af_user_text );
+		}
+		$lb->execute();
+		$result->seek( 0 );
 	}
 
 	/**
