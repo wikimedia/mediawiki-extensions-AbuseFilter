@@ -150,7 +150,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
-		if ( !$this->afPermManager->canViewPrivateFilters( $this->getUser() ) &&
+		if ( !$this->afPermManager->canViewPrivateFilters( $this->getAuthority() ) &&
 			( $this->oldVersion->isHidden() || $this->newVersion->isHidden() )
 		) {
 			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-hidden' );

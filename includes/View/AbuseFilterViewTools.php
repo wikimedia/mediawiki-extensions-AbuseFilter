@@ -46,7 +46,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$request = $this->getRequest();
 
-		if ( !$this->afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( !$this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {
 			// TODO: the message still refers to the old rights
 			$out->addWikiMsg( 'abusefilter-mustviewprivateoredit' );
 			return;
@@ -55,7 +55,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 		// Header
 		$out->addWikiMsg( 'abusefilter-tools-text' );
 
-		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getUser(), $out );
+		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getAuthority(), $out );
 
 		// Expression evaluator
 		$formDesc = [
@@ -81,7 +81,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 
 		$out->addModules( 'ext.abuseFilter.tools' );
 
-		if ( $this->afPermManager->canEdit( $this->getUser() ) ) {
+		if ( $this->afPermManager->canEdit( $this->getAuthority() ) ) {
 			// Hacky little box to re-enable autoconfirmed if it got disabled
 			$formDescriptor = [
 				'RestoreAutoconfirmed' => [

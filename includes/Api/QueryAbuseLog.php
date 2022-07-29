@@ -96,7 +96,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		// Same check as in SpecialAbuseLog
 		$this->checkUserRightsAny( 'abusefilter-log' );
 
-		$user = $this->getUser();
+		$performer = $this->getAuthority();
 		$params = $this->extractRequestParams();
 
 		$prop = array_fill_keys( $params['prop'], true );
@@ -136,7 +136,7 @@ class QueryAbuseLog extends ApiQueryBase {
 					continue;
 				}
 			}
-			if ( !$this->afPermManager->canViewPrivateFiltersLogs( $user ) ) {
+			if ( !$this->afPermManager->canViewPrivateFiltersLogs( $performer ) ) {
 				foreach ( $searchFilters as [ $filterID, $global ] ) {
 					try {
 						$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
@@ -222,7 +222,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			}
 		}
 
-		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$this->afPermManager->canSeeHiddenLogEntries( $user ) );
+		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$this->afPermManager->canSeeHiddenLogEntries( $performer ) );
 
 		if ( $searchFilters ) {
 			// @todo Avoid code duplication with SpecialAbuseLog::showList
@@ -274,7 +274,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
 				break;
 			}
-			$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermManager );
+			$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $performer, $this->afPermManager );
 			if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
 				continue;
 			}
@@ -283,7 +283,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			$global = $row->afl_global;
 			$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
 			$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden );
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $isHidden );
 
 			$entry = [];
 			if ( $fld_ids ) {

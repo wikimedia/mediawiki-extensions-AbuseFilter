@@ -98,14 +98,14 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	public function show() {
 		$lang = $this->getLanguage();
 
-		$user = $this->getUser();
+		$performer = $this->getAuthority();
 		$out = $this->getOutput();
 
-		if ( !$this->afPermManager->canRevertFilterActions( $user ) ) {
+		if ( !$this->afPermManager->canRevertFilterActions( $performer ) ) {
 			throw new PermissionsError( 'abusefilter-revert' );
 		}
 
-		$block = $user->getBlock();
+		$block = $performer->getBlock();
 		if ( $block && $block->isSitewide() ) {
 			throw new UserBlockedError( $block );
 		}

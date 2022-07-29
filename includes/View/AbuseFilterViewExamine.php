@@ -106,7 +106,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$out = $this->getOutput();
 		$out->setPageTitle( $this->msg( 'abusefilter-examine' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
-		if ( $this->afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( $this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {
 			$out->addWikiMsg( 'abusefilter-examine-intro' );
 		} else {
 			$out->addWikiMsg( 'abusefilter-examine-intro-examine-only' );
@@ -242,7 +242,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public function showExaminerForLogEntry( $logid ) {
 		// Get data
 		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
-		$user = $this->getUser();
+		$performer = $this->getAuthority();
 		$out = $this->getOutput();
 
 		$row = $dbr->selectRow(
@@ -269,12 +269,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			// Conservatively assume that it's hidden, like in SpecialAbuseLog
 			$isHidden = true;
 		}
-		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $user, $isHidden ) ) {
+		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $isHidden ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
 
-		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $user, $this->afPermManager );
+		$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $performer, $this->afPermManager );
 		if ( $visibility !== SpecialAbuseLog::VISIBILITY_VISIBLE ) {
 			if ( $visibility === SpecialAbuseLog::VISIBILITY_HIDDEN ) {
 				$msg = 'abusefilter-log-details-hidden';
@@ -312,10 +312,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$output->addModules( 'ext.abuseFilter.examine' );
 
 		// Add test bit
-		if ( $this->afPermManager->canUseTestTools( $this->getUser() ) ) {
+		if ( $this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {
 			$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder(
 				$this,
-				$this->getUser(),
+				$this->getAuthority(),
 				$output
 			);
 

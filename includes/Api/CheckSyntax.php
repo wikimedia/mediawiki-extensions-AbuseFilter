@@ -39,8 +39,8 @@ class CheckSyntax extends ApiBase {
 	 */
 	public function execute() {
 		// "Anti-DoS"
-		if ( !$this->afPermManager->canUseTestTools( $this->getUser() )
-			&& !$this->afPermManager->canEdit( $this->getUser() )
+		if ( !$this->afPermManager->canUseTestTools( $this->getAuthority() )
+			&& !$this->afPermManager->canEdit( $this->getAuthority() )
 		) {
 			$this->dieWithError( 'apierror-abusefilter-cantcheck', 'permissiondenied' );
 		}
