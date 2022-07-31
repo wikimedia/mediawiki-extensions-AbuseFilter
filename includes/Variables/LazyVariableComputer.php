@@ -415,7 +415,8 @@ class LazyVariableComputer {
 			'externallinks',
 			'el_to',
 			[ 'el_from' => $id ],
-			__METHOD__
+			__METHOD__,
+			[ 'DISTINCT' ]
 		);
 	}
 
