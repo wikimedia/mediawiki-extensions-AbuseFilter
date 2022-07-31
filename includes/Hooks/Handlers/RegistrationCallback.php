@@ -11,9 +11,9 @@ class RegistrationCallback {
 
 	public static function onRegistration(): void {
 		global $wgAbuseFilterProfile,
-			   $wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
-			   $wgGroupPermissions, $wgAbuseFilterRestrictions, $wgAbuseFilterDisallowGlobalLocalBlocks,
-			   $wgAbuseFilterActionRestrictions, $wgAbuseFilterLocallyDisabledGlobalActions;
+			$wgAbuseFilterProfiling, $wgAbuseFilterPrivateLog, $wgAbuseFilterForceSummary,
+			$wgGroupPermissions, $wgAbuseFilterRestrictions, $wgAbuseFilterDisallowGlobalLocalBlocks,
+			$wgAbuseFilterActionRestrictions, $wgAbuseFilterLocallyDisabledGlobalActions;
 
 		// @todo Remove this in a future release (added in 1.33)
 		if ( isset( $wgAbuseFilterProfile ) || isset( $wgAbuseFilterProfiling ) ) {

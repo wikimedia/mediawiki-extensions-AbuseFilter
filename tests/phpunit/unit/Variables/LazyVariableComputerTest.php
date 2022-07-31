@@ -152,7 +152,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		LazyLoadedVariable $var,
 		$expected,
 		array $services = []
- ) {
+	) {
 		$computer = $this->getComputer( $services );
 		$this->assertSame(
 			$expected,
