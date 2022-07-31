@@ -191,6 +191,33 @@ class AbuseLogger {
 	}
 
 	/**
+	 * @param array $data
+	 * @return ManualLogEntry
+	 */
+	private function newLocalLogEntryFromData( array $data ): ManualLogEntry {
+		// Give grep a chance to find the usages:
+		// logentry-abusefilter-hit
+		$entry = new ManualLogEntry( 'abusefilter', 'hit' );
+		// Construct a user object
+		$user = User::newFromId( $data['afl_user'] );
+		$user->setName( $data['afl_user_text'] );
+		$entry->setPerformer( $user );
+		$entry->setTarget( $this->title );
+		$filterName = GlobalNameUtils::buildGlobalName(
+			$data['afl_filter_id'],
+			$data['afl_global'] === 1
+		);
+		// Additional info
+		$entry->setParameters( [
+			'action' => $data['afl_action'],
+			'filter' => $filterName,
+			'actions' => $data['afl_actions'],
+			'log' => $data['afl_id'],
+		] );
+		return $entry;
+	}
+
+	/**
 	 * @param array[] $logRows
 	 * @param IDatabase $dbw
 	 * @return int[]
@@ -203,25 +230,7 @@ class AbuseLogger {
 			$data['afl_var_dump'] = $varDump;
 			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
 			$loggedIDs[] = $data['afl_id'] = $dbw->insertId();
-			// Give grep a chance to find the usages:
-			// logentry-abusefilter-hit
-			$entry = new ManualLogEntry( 'abusefilter', 'hit' );
-			// Construct a user object
-			$user = User::newFromId( $data['afl_user'] );
-			$user->setName( $data['afl_user_text'] );
-			$entry->setPerformer( $user );
-			$entry->setTarget( $this->title );
-			$filterName = GlobalNameUtils::buildGlobalName(
-				$data['afl_filter_id'],
-				$data['afl_global'] === 1
-			);
-			// Additional info
-			$entry->setParameters( [
-				'action' => $data['afl_action'],
-				'filter' => $filterName,
-				'actions' => $data['afl_actions'],
-				'log' => $data['afl_id'],
-			] );
+			$entry = $this->newLocalLogEntryFromData( $data );
 
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
