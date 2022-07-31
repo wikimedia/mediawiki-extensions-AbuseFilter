@@ -1,8 +1,8 @@
 <?php
 
 use MediaWiki\Block\BlockUser;
-use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\MediaWikiServices;
@@ -80,7 +80,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	];
 
 	/**
-	 * @var array This tables will be deleted in parent::tearDown
+	 * @var array These tables will be deleted in parent::tearDown
 	 */
 	protected $tablesUsed = [
 		'abuse_filter',
@@ -336,7 +336,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			self::$externalTables
 		);
 		$this->tablesUsed = array_merge( $this->tablesUsed, $prefixedTables );
-		$this->user = User::newFromName( 'FilteredUser' );
 		parent::__construct( $name, $data, $dataName );
 	}
 
@@ -345,14 +344,10 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 */
 	protected function setUp(): void {
 		parent::setUp();
-		// Ensure that our user is not blocked and is a sysop (matched filters could block or
-		// degroup the user)
+		// Ensure that our user is a sysop
+		$this->user = $this->getServiceContainer()->getUserFactory()->newFromName( 'FilteredUser' );
 		$this->user->addToDatabase();
-		MediaWikiServices::getInstance()->getUserGroupManager()->addUserToGroup( $this->user, 'sysop' );
-		$block = DatabaseBlock::newFromTarget( $this->user );
-		if ( $block ) {
-			$block->delete();
-		}
+		$this->getServiceContainer()->getUserGroupManager()->addUserToGroup( $this->user, 'sysop' );
 
 		// Pin time to avoid time shifts on relative block duration
 		ConvertibleTimestamp::setFakeTime( time() );
@@ -443,15 +438,15 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param Title $title Title of the page to edit
-	 * @param string $text The new content of the page
+	 * @param Content $content The new content of the page
 	 * @param string $summary The summary of the edit
 	 * @return string The status of the operation, as returned by the API.
 	 */
-	private function stashEdit( $title, $text, $summary ) {
+	private function stashEdit( Title $title, Content $content, string $summary ) {
 		$services = $this->getServiceContainer();
 		return $services->getPageEditStash()->parseAndCache(
 			$services->getWikiPageFactory()->newFromTitle( $title ),
-			new WikitextContent( $text ),
+			$content,
 			$this->user,
 			$summary
 		);
@@ -459,8 +454,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param Title $title Title of the page to edit
-	 * @param string $oldText Old content of the page
-	 * @param string $newText The new content of the page
+	 * @param Content|string $oldText Old content of the page
+	 * @param Content|string $newText The new content of the page
 	 * @param string $summary The summary of the edit
 	 * @param bool|null $fromStash Whether to stash the edit. Null means no stashing, false means
 	 *   stash the edit but don't reuse it for saving, true means stash and reuse.
@@ -478,6 +473,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			if ( !$status->isGood() ) {
 				throw new Exception( "Could not create test page. $status" );
 			}
+			$page->clear();
 			$title->resetArticleID( -1 );
 		}
 
@@ -488,16 +484,18 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				// Otherwise, stash some random text which won't match the actual edit
 				$stashText = md5( uniqid( rand(), true ) );
 			}
-			$stashResult = $this->stashEdit( $title, $stashText, $summary );
+			$stashContent = $stashText instanceof Content ? $stashText : new WikitextContent( $stashText );
+			$stashResult = $this->stashEdit( $title, $stashContent, $summary );
 			if ( $stashResult !== PageEditStash::ERROR_NONE ) {
 				throw new MWException( "The edit cannot be stashed, got the following error: $stashResult" );
 			}
 		}
 
-		$content = ContentHandler::makeContent( $newText, $title );
+		$content = $newText instanceof Content
+			? $newText
+			: ContentHandler::makeContent( $newText, $title );
 		$status = Status::newGood();
 		$context = RequestContext::getMain();
-		$context->setTitle( $title );
 		$context->setUser( $this->user );
 		$context->setWikiPage( $page );
 
@@ -519,6 +517,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				NS_MAIN,
 				$this->user
 			);
+			$page->clear();
+			$title->resetArticleID( -1 );
 		}
 
 		return $status;
@@ -531,9 +531,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @return Status
 	 */
 	private function doAction( $params ) {
-		$target = Title::newFromText( $params['target'] );
-		// Make sure that previous blocks don't affect the test
-		$this->user->clearInstanceCache();
+		$target = Title::newFromTextThrow( $params['target'] );
 
 		switch ( $params['action'] ) {
 			case 'edit':
@@ -553,7 +551,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				// Ensure that the page exists
 				$this->getExistingTestPage( $target );
 				$newTitle = isset( $params['newTitle'] )
-					? Title::newFromText( $params['newTitle'] )
+					? Title::newFromTextThrow( $params['newTitle'] )
 					: $this->getNonExistingTestPage()->getTitle();
 				$status = $this->getServiceContainer()
 					->getMovePageFactory()
@@ -608,20 +606,18 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @return string[] The applied tags
 	 */
 	private function getActionTags( $actionParams ) {
+		$title = Title::newFromTextThrow( $actionParams['target'] );
 		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
-			$page = $this->getServiceContainer()->getWikiPageFactory()->newFromTitle(
-				Title::newFromText( $actionParams['target'] )
-			);
-			return ChangeTags::getTags( $this->db, null, $page->getLatest() );
+			return ChangeTags::getTags( $this->db, null, $title->getLatestRevID() );
 		}
 
 		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
 		$logAction = $logType === 'newusers' ? 'create2' : $logType;
-		$title = Title::newFromText( $actionParams['target'] );
 		$id = $this->db->selectField(
 			'logging',
 			'log_id',
 			[
+				'log_namespace' => $title->getNamespace(),
 				'log_title' => $title->getDBkey(),
 				'log_type' => $logType,
 				'log_action' => $logAction
@@ -633,7 +629,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		if ( !$id ) {
 			$this->fail( 'Could not find the action in the logging table.' );
 		}
-		return ChangeTags::getTags( $this->db, null, null, $id );
+		return ChangeTags::getTags( $this->db, null, null, (int)$id );
 	}
 
 	/**
@@ -932,7 +928,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				[ 5 ],
 				[
 					'action' => 'upload',
-					'target' => 'MyFile.svg',
+					'target' => 'File:MyFile.svg',
 				],
 				[ 'tag' => [ 5 ] ]
 			],
@@ -940,7 +936,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				[ 22 ],
 				[
 					'action' => 'upload',
-					'target' => 'MyFile.svg',
+					'target' => 'File:MyFile.svg',
 					'newText' => 'Block me please!',
 					'summary' => 'Asking to be blocked'
 				],
@@ -1596,5 +1592,41 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			(int)( $filterHit->afl_rev_id ),
 			"AbuseLog entry updated with the revision id (full filter hit: $filterHitStr)"
 		);
+	}
+
+	/**
+	 * Test a null edit.
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
+	 */
+	public function testNullEdit() {
+		$this->setService(
+			FilterRunnerFactory::SERVICE_NAME,
+			$this->createNoOpMock( FilterRunnerFactory::class )
+		);
+		// Filter 24 has no actions and always matches
+		$this->createFilters( [ 24 ] );
+
+		$targetTitle = Title::makeTitle( NS_MAIN, 'TestNullEdit' );
+		$text = 'Some text';
+		$status = $this->doEdit( $targetTitle, $text, $text, 'Summary' );
+		$this->assertStatusGood( $status );
+	}
+
+	/**
+	 * Test a content model change.
+	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
+	 */
+	public function testContentModelChange() {
+		// Filter 23 always matches and disables
+		$this->createFilters( [ 23 ] );
+
+		$targetTitle = Title::makeTitle( NS_MAIN, 'TestContentModelChange' );
+
+		$text = FormatJson::encode( [ 'key' => 'value' ] );
+		$oldContent = new JsonContent( $text );
+		$newContent = new WikitextContent( $text );
+
+		$status = $this->doEdit( $targetTitle, $oldContent, $newContent, 'Summary' );
+		$this->assertStatusNotOK( $status );
 	}
 }
