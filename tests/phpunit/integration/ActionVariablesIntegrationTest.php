@@ -264,8 +264,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'new_wikitext' => 'new test https://en.wikipedia.org',
 				'new_content_model' => 'wikitext',
 				'old_links' => [],
-				// FIXME: this should be [ 'https://en.wikipedia.org' ]
-				'all_links' => [],
+				'all_links' => [ 'https://en.wikipedia.org' ],
 			],
 			'params' => [
 				'text' => 'new test https://en.wikipedia.org',

@@ -16,6 +16,7 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Storage\PreparedUpdate;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
@@ -243,6 +244,16 @@ class LazyVariableComputer {
 				}
 
 				$result = $links;
+				break;
+			case 'links-from-update':
+				/** @var PreparedUpdate $update */
+				$update = $parameters['update'];
+				// Shared with the edit, don't count it in profiling
+				$startTime = microtime( true );
+				$result = LinkFilter::getIndexedUrlsNonReversed(
+					array_keys( $update->getParserOutputForMetaData()->getExternalLinks() )
+				);
+				self::$profilingExtraTime += ( microtime( true ) - $startTime );
 				break;
 			case 'links-from-database':
 				/** @var WikiPage $article */

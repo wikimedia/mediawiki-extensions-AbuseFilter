@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Storage\PreparedUpdate;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use RecentChange;
@@ -176,10 +177,15 @@ class VariableGenerator {
 	 * @param UserIdentity $userIdentity The current user
 	 * @param bool $forFilter Whether the variables should be computed for an ongoing action
 	 *   being filtered
+	 * @param PreparedUpdate|null $update
 	 * @return $this For chaining
-	 * @todo Deliver PreparedUpdate here
 	 */
-	public function addEditVars( WikiPage $page, UserIdentity $userIdentity, bool $forFilter = true ): self {
+	public function addEditVars(
+		WikiPage $page,
+		UserIdentity $userIdentity,
+		bool $forFilter = true,
+		PreparedUpdate $update = null
+	): self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
@@ -205,13 +211,18 @@ class VariableGenerator {
 		$this->vars->setLazyLoadVar( 'new_text', 'strip-html',
 			[ 'html-var' => 'new_html' ] );
 
-		$this->vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
-			[
-				'text-var' => 'new_wikitext',
-				'article' => $page,
-				'forFilter' => $forFilter,
-				'contextUserIdentity' => $userIdentity
-			] );
+		if ( $forFilter && $update ) {
+			$this->vars->setLazyLoadVar( 'all_links', 'links-from-update',
+				[ 'update' => $update ] );
+		} else {
+			$this->vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+				[
+					'text-var' => 'new_wikitext',
+					'article' => $page,
+					'forFilter' => $forFilter,
+					'contextUserIdentity' => $userIdentity
+				] );
+		}
 
 		if ( $forFilter ) {
 			$this->vars->setLazyLoadVar( 'old_links', 'links-from-database',
@@ -225,6 +236,7 @@ class VariableGenerator {
 				] );
 		}
 
+		// TODO: the following should use PreparedUpdate, too
 		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
 			[
 				'wikitext-var' => 'new_wikitext',
