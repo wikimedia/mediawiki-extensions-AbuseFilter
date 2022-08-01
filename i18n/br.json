@@ -179,6 +179,7 @@
 	"abusefilter-edit-warn-edit": "Krouiñ/Kemmañ ar gemennadenn diuzet",
 	"abusefilter-edit-disallow-other": "Kemennadenn all",
 	"abusefilter-edit-tag-tag": "Balizenn da arloañ (unan dre linenn) :",
+	"abusefilter-edit-tag-placeholder": "Ouzhpennit balizennoù (unan-hag-unan pe disrannet gant virgulennoù)",
 	"abusefilter-block-anon": "Stankañ an implijerien dizanv",
 	"abusefilter-block-user": "stankañ an implijerien enrollet",
 	"abusefilter-block-talk": "pajenn gaozeal stanket",
