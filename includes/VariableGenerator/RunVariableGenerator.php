@@ -16,6 +16,7 @@ use MWFileProps;
 use Title;
 use UploadBase;
 use User;
+use Wikimedia\Assert\PreconditionException;
 use WikiPage;
 
 /**
@@ -164,7 +165,15 @@ class RunVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'new_content_model', $newcontent->getModel() );
 		$this->vars->setVar( 'old_wikitext', $oldtext );
 		$this->vars->setVar( 'new_wikitext', $text );
-		$this->addEditVars( $page, $this->user );
+
+		try {
+			$update = $page->getCurrentUpdate();
+		} catch ( PreconditionException $ex ) {
+			// Temporary workaround until this becomes
+			// a hook parameter
+			$update = null;
+		}
+		$this->addEditVars( $page, $this->user, true, $update );
 
 		return $this->vars;
 	}
@@ -305,7 +314,7 @@ class RunVariableGenerator extends VariableGenerator {
 			$this->vars->setVar( 'old_wikitext', $oldtext );
 			$this->vars->setVar( 'new_wikitext', $text );
 			// TODO: set old_content and new_content vars, use them
-			$this->addEditVars( $page, $this->user );
+			$this->addEditVars( $page, $this->user, true );
 		}
 		return $this->vars;
 	}
