@@ -89,7 +89,7 @@
 	"abusefilter-log-diff": "разлика",
 	"abusefilter-log-hidelink": "настройка на видимостта",
 	"abusefilter-log-hide-entries": "Промяна на видимостта на избраните записи",
-	"abusefilter-log-description-not-available": "недостъпен",
+	"abusefilter-log-description-not-available": "недостъпно",
 	"abusefilter-log-details-legend": "Детайли за запис от дневника $1",
 	"abusefilter-log-details-var": "Променлива",
 	"abusefilter-log-details-val": "Стойност",
