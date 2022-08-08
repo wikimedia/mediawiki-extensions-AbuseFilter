@@ -40,6 +40,7 @@
 	"abusefilter-edit-history": "Historia:",
 	"abusefilter-edit-builder-funcs-length": "Miârkkrääid kookkadvuõtt (length)",
 	"abusefilter-edit-builder-vars-newsize": "Ođđ seeid šorradvuõtt",
+	"abusefilter-edit-builder-vars-summary": "Õʹhtteǩeässmõš leʹbe mäinn",
 	"abusefilter-edit-builder-vars-page-id": "Seeid tobdstõk",
 	"abusefilter-edit-builder-vars-user-name": "Õõʹnnitobdldõõǥǥ nõmm",
 	"abusefilter-edit-builder-vars-file-width": "Teâttõõzz kobddâdvuõtt pikseleeʹlen",
@@ -64,5 +65,6 @@
 	"abusefilter-examine-submit": "Ooʒʒ",
 	"abusefilter-topnav-home": "Ouddseidd",
 	"abusefilter-log-noresults": "Ni mâiʹd ij käunnʼjam",
+	"abusefilter-diff-info": "Vuâđđteâđ",
 	"notification-link-text-show-filter": "Čuäʹjet siʹllʼjeei"
 }
