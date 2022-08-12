@@ -54,6 +54,7 @@
 	"abusefilter-log-search-action-taken-label": "Diarbenn kemeret :",
 	"abusefilter-log-search-submit": "Klask",
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|en|he}} deus lañset ur sil gwallimplij, e-kerzh an ober \"$3\" war $4.\nOberoù graet : $5;\nDiskrivadenn ar sil : $6",
+	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|en|he}} deus lañset ur sil gwallimplij, {{GENDER:$8|e-kerzh an ober}} \"$3\" war $4.\nOberoù graet : $5;\nDiskrivadenn ar sil : $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1 : $2 {{GENDER:$9|en|he}} deus lañset $3, e-kerzh an ober \"$4\" war $5.\nOberoù kemeret : $6;\nDiskrivadenn ar sil : $7 ($8)",
 	"abusefilter-log-detailedentry-global": "sil hollek $1",
 	"abusefilter-log-detailedentry-local": "sil a-enep ar gwallimplijoù $1",
