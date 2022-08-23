@@ -31,6 +31,8 @@
 	"right-abusefilter-privatedetails-log": "Прагляд журналу доступу да асабістых звестак фільтру злоўжыванняў",
 	"right-abusefilter-modify-restricted": "Змяненне фільтраў злоўжыванняў з абмежаванымі дзеяннямі",
 	"right-abusefilter-revert": "Адкат змяненняў, вырабленых фільтрам злоўжыванняў",
+	"right-abusefilter-view-private": "Прагляд фільтраў злоўжыванняў, пазначаных як прыватныя",
+	"right-abusefilter-log-private": "Прагляд журнальных запісаў фільтраў злоўжыванняў, пазначаных як прыватныя",
 	"right-abusefilter-hide-log": "Хаванне запісаў у журнале злоўжыванняў",
 	"right-abusefilter-hidden-log": "Прагляд схаваных запісаў у журнале злоўжыванняў",
 	"right-abusefilter-modify-global": "Стварэнне ці змяненне глабальных фільтраў злоўжыванняў",
