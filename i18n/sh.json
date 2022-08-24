@@ -116,6 +116,8 @@
 	"abusefilter-log-hide-show": "Prikaži",
 	"abusefilter-log-hide-hide": "Sakrij",
 	"abusefilter-log-hide-no-change": "Svi odabrani filteri već imaju traženu dostupnost.",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|skriven|skrivena|skriveno}}",
+	"abusefilter-log-hide-done-show": "{{PLURAL:$1|otkriven|otkrivena|otkriveno}}",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|ga skrio|skrila}} je $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|ga odkrio|odkrila}} je $3",
 	"logentry-abusefilter-hit": "$1 je {{GENDER:$2|pokrenuo|pokrenula}} filter $4, {{GENDER:$2|izvodeći}} radnju \"$5\" na $3.\nPoduzete radnje: $6 ($7)",
