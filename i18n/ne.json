@@ -48,7 +48,7 @@
 	"abusefilter-log-detailedentry-global": " विश्वव्यापी फिल्टर \"$1\" \\",
 	"abusefilter-log-detailedentry-local": "$1 छनाेट गर्नुहाेस्",
 	"abusefilter-log-detailslink": "विवरण",
-	"abusefilter-log-diff": "भिन्नता",
+	"abusefilter-log-diff": "अन्तर",
 	"abusefilter-log-hidelink": "दर्शिता मिलाउने",
 	"abusefilter-log-details-legend": "$1 लग इन्ट्रीको विवरण",
 	"abusefilter-log-details-var": "चल राशी",
