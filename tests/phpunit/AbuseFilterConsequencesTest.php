@@ -386,11 +386,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function createFilters( $ids, $external = false ) {
 		global $wgAbuseFilterActions;
+
+		$dbw = $this->getDb();
 		$tablePrefix = $external ? self::DB_EXTERNAL_PREFIX : '';
 		$defaultRowSection = [
 			'af_user_text' => 'FilterTester',
 			'af_user' => 0,
-			'af_timestamp' => $this->db->timestamp(),
+			'af_timestamp' => $dbw->timestamp(),
 			'af_group' => 'default',
 			'af_comments' => '',
 			'af_hit_count' => 0,
@@ -408,7 +410,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$filter[ 'af_actions' ] = implode( ',', array_keys( $actions ) );
 			$filter[ 'af_id' ] = $id;
 
-			$this->db->insert(
+			$dbw->insert(
 				"{$tablePrefix}abuse_filter",
 				$filter,
 				__METHOD__
@@ -428,7 +430,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				}
 			}
 
-			$this->db->insert(
+			$dbw->insert(
 				"{$tablePrefix}abuse_filter_action",
 				$actionsRows,
 				__METHOD__
@@ -606,14 +608,15 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @return string[] The applied tags
 	 */
 	private function getActionTags( $actionParams ) {
+		$dbw = $this->getDb();
 		$title = Title::newFromTextThrow( $actionParams['target'] );
 		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
-			return ChangeTags::getTags( $this->db, null, $title->getLatestRevID() );
+			return ChangeTags::getTags( $dbw, null, $title->getLatestRevID() );
 		}
 
 		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
 		$logAction = $logType === 'newusers' ? 'create2' : $logType;
-		$id = $this->db->selectField(
+		$id = $dbw->selectField(
 			'logging',
 			'log_id',
 			[
@@ -629,7 +632,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		if ( !$id ) {
 			$this->fail( 'Could not find the action in the logging table.' );
 		}
-		return ChangeTags::getTags( $this->db, null, null, (int)$id );
+		return ChangeTags::getTags( $dbw, null, null, (int)$id );
 	}
 
 	/**
@@ -766,7 +769,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			}
 			$title = Title::newFromTextThrow( $actionParams['target'] );
 
-			$row = $this->db->selectRow(
+			$row = $this->getDb()->selectRow(
 				'abuse_filter_log',
 				'*',
 				[
@@ -1246,7 +1249,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$this->doAction( $actionParams );
 
 		// We just take a dump from a single filters, as they're all identical for the same action
-		$dumpID = $this->db->selectField(
+		$dumpID = $this->getDb()->selectField(
 			'abuse_filter_log',
 			'afl_var_dump',
 			'',
@@ -1520,8 +1523,10 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$this->markTestSkippedIfDbType( 'sqlite' );
 
 		$this->setMwGlobals( [
-			'wgAbuseFilterCentralDB' => $this->db->getDBname() . '-' . $this->dbPrefix() .
-				self::DB_EXTERNAL_PREFIX,
+			'wgAbuseFilterCentralDB' =>
+				$this->getDb()->getDBname() .
+				'-' .
+				$this->dbPrefix() . self::DB_EXTERNAL_PREFIX,
 			'wgAbuseFilterIsCentral' => false,
 		] );
 		$this->createFilters( $createIds, true );
@@ -1538,7 +1543,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		);
 
 		// Check that the hits were logged on the "external" DB
-		$loggedFilters = $this->db->selectFieldValues(
+		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+		$loggedFilters = $db->selectFieldValues(
 			self::DB_EXTERNAL_PREFIX . 'abuse_filter_log',
 			'afl_filter_id',
 			[ 'afl_wiki IS NOT NULL' ],
@@ -1648,7 +1654,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		// Check the database for the filter hit
 		// We don't have an easy way to retrieve the afl_id for this relevant hit,
 		// so instead find the latest row for this filter
-		$filterHit = $this->db->selectRow(
+		$filterHit = $this->getDb()->selectRow(
 			'abuse_filter_log',
 			'*',
 			[ 'afl_filter_id' => 24 ],
