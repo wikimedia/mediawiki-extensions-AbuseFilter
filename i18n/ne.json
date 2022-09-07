@@ -12,7 +12,8 @@
 			"राम प्रसाद जोशी",
 			"सरोज कुमार ढकाल",
 			"हिमाल सुबेदी",
-			"Bada Kaji"
+			"Bada Kaji",
+			"बडा काजी"
 		]
 	},
 	"abusefilter-desc": "स्वचालित अनुमानित सम्पादनहरुकोनिम्ति लागु हुन्छ",
@@ -238,7 +239,7 @@
 	"abusefilter-action-tag": "चिनो",
 	"abusefilter-action-throttle": "थ्रोटल",
 	"abusefilter-action-warn": "चेतावनी",
-	"abusefilter-action-block": "रोक्ने",
+	"abusefilter-action-block": "निषेध गर्नुहोस्",
 	"abusefilter-action-degroup": "समूहबाट हटाउने",
 	"abusefilter-action-rangeblock": "रेन्ज-रोक",
 	"abusefilter-action-disallow": "अनुमति नदिने",
