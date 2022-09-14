@@ -139,7 +139,7 @@
 	"abusefilter-enabled": "укључен",
 	"abusefilter-deleted": "Избрисано",
 	"abusefilter-disabled": "искључен",
-	"abusefilter-throttled": "успорено",
+	"abusefilter-throttled": "Висока стопа поклапања",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|погодак|поготка|погодака}}",
 	"abusefilter-new": "Направи нови филтер",
 	"abusefilter-import-button": "Увези филтер",
