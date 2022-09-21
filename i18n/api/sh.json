@@ -54,6 +54,7 @@
 	"apihelp-abuselogprivatedetails-example-1": "Daj osobne podatke za unos u Evidenciji zloupotreba s naznakom 1, koristeći razlog",
 	"apierror-abusefilter-canttest": "Nemate dopuštenje da isprobate filtre za zlouporabu.",
 	"apierror-abusefilter-cantcheck": "Nemate dopuštenje da provjerite sintaksu filtara za zlouporabu.",
+	"apierror-abusefilter-canteval": "Nemate dozvolu za procjenu izraza Filtera zloupotrebe.",
 	"apierror-abusefilter-nosuchlogid": "Nema unosa u zapisniku zlouporabe s naznakom $1.",
 	"apierror-abusefilter-badsyntax": "Filter nema valjanu sintaksu."
 }

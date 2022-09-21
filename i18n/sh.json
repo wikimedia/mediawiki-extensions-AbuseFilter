@@ -564,5 +564,7 @@
 	"tag-abusefilter-condition-limit": "dostignuta granica uvjeta",
 	"tag-abusefilter-condition-limit-description": "Izmjene ili druge radnje koje nije bilo moguće provjeriti pomoću svih aktivnih [[Special:AbuseFilter|filtera zloupotreba]] ([[mw:Extension:AbuseFilter/Conditions|pomoć]]).",
 	"notification-header-throttle-filter": "Filter zloupotrebe $2 koji {{GENDER:$1|ste}} nedavno uredili je prigušen.",
+	"notification-header-throttle-filter-actions": "Filter zloupotrebe $2 koji {{GENDER:$1|vi ste}} nedavno uredili ima visoku stopu podudaranja, i {{PLURAL:$4|sljedeća radnja je bila automatski onemogućena|sljedeće radnje su bile automatski onemogućene}}: $3.",
+	"notification-header-throttle-filter-no-actions": "Filter zloupotrebe $2 koji {{GENDER:$1|vi ste}} nedavno uredili ima visoku stopu podudaranja, ali nijedna radnja nije bila automatski onemogućena.",
 	"notification-link-text-show-filter": "Prikaži filter"
 }
