@@ -13,7 +13,7 @@
 	"abusefilter-desc": "Pri urejanjih uporabi samodejno hevristiko",
 	"abusefilter": "Upravljanje filtrov zlorab",
 	"abuselog": "Dnevnik filtrov zlorab",
-	"abusefilter-intro": "Dobrodošli v vmesniku upravljanja filtrov zlorab.\nFilter zlorab je samodejni programski mehanizem, ki vsa dejanja hevristično ovrednoti.\nVmesnik prikazuje seznam določenih filtrov in omogoč njihovo spreminjanje.",
+	"abusefilter-intro": "Pozdravljeni v vmesniku za upravljanje filtrov zlorab.\nFilter zlorab je samodejni programski mehanizem, ki vsa dejanja hevristično ovrednoti.\nVmesnik prikazuje seznam določenih filtrov in omogoča njihovo spreminjanje.",
 	"abusefilter-mustviewprivateoredit": "Iz varnostnih razlogov lahko ta vmesnik uporabljajo samo uporabniki s pravico do ogleda zasebnih filtrov in spreminjanja filtrov zlorab.",
 	"abusefilter-warning": "'''Opozorilo:''' To dejanje je bilo samodejno zaznano kot škodljivo.\nNekoristna dejanja bodo hitro povrnjena,\nnezaslišana ali ponavljajoča nekoristna urejanja pa bodo sledila v blokado vašega računa ali IP-naslova.\nČe verjamete, da je to dejanje koristno, ga lahko ponovno potrdite.\nKratek opis pravila zlorab, ki mu je ustrezalo vaše dejanje: $1",
 	"abusefilter-disallowed": "To dejanje je bilo samodejno zaznano kot škodljivo in je zato prepovedano.\nČe verjamete, da je bilo vaše dejanje koristno, prosimo, obvestite administratorja o tem, kar ste skušali storiti.\nKratek opis pravila zlorab, ki mu je ustrezalo vaše dejanje: $1",
