@@ -15,22 +15,19 @@ use UnexpectedValueException;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IResultWrapper;
 
-/**
- * Performs several tasks aiming to update the stored var dumps for filter hits.
- * See T213006 for a list.
- *
- * @ingroup Maintenance
- */
 // @codeCoverageIgnoreStart
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
 /**
+ * Performs several tasks aiming to update the stored var dumps for filter hits.
+ *
+ * See T213006 for a list.
+ *
  * @codeCoverageIgnore
  * This script used to be covered by a test, but it was removed: the script was single-use, so
  * no more testing is needed. OTOH, maintaining the test was too hard because we needed to create

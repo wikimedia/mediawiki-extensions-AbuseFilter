@@ -5,24 +5,27 @@ namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 use LoggedUpdateMaintenance;
 
 // @codeCoverageIgnoreStart
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
 /**
- * Fix old log entries with log_type = 'abusefilter' where log_params are imploded with '\n'
+ * Fix old rows in logging which hold broken log_params
+ *
+ * Fixes entries with log_type = 'abusefilter' where log_params are imploded with '\n'
  * instead of "\n" (using single quotes), which causes a broken display.
- * This was caused by the addMissingLoggingEntries script creating broken entries, see T208931
- * and T228655.
- * It also fixes a problem which caused addMissingLoggingEntries to insert duplicate rows foreach
- * non-legacy entries
+ *
+ * This was caused by the addMissingLoggingEntries script creating broken entries,
+ * see T208931 and T228655.
+ *
+ * It also fixes a problem which caused addMissingLoggingEntries to insert duplicate rows
+ * foreach non-legacy entries
  *
  * @codeCoverageIgnore
- * No need to cover: old, single-use script.
+ * No need to test old single-use script.
  */
 class FixOldLogEntries extends LoggedUpdateMaintenance {
 	/** @var bool */

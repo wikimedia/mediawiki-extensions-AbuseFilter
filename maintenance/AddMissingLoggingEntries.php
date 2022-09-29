@@ -3,9 +3,8 @@
 namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
 // @codeCoverageIgnoreStart
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
+$IP = getenv( 'MW_INSTALL_PATH' );
+if ( $IP === false ) {
 	$IP = __DIR__ . '/../../..';
 }
 require_once "$IP/maintenance/Maintenance.php";
@@ -18,9 +17,8 @@ use MediaWiki\MediaWikiServices;
 use User;
 
 /**
- * Adds rows missing per T54919
  * @codeCoverageIgnore
- * No need to cover: old, single-use script.
+ * No need to test old single-use script.
  */
 class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 	public function __construct() {
