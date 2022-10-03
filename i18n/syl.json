@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"এম আবু সাঈদ"
+			"এম আবু সাঈদ",
+			"ꠢꠣꠍꠘ ꠞꠣꠎꠣ"
 		]
 	},
-	"right-abusefilter-modify": "ꠛꠣꠘꠣꠃ ꠘꠣꠁꠟꠦ ꠅꠙꠛꠦꠛꠢꠣꠞ ꠚꠤꠟꠐꠣꠞꠞꠦ ꠢꠣꠎꠣꠃ"
+	"right-abusefilter-modify": "ꠛꠣꠘꠣꠃ ꠘꠣꠁꠟꠦ ꠅꠙꠛꠦꠛꠢꠣꠞ ꠚꠤꠟꠐꠣꠞꠞꠦ ꠢꠣꠎꠣꠃ",
+	"abusefilter-log-search-user": "ꠛꠦꠛꠀꠞꠇꠞ꠆ꠞꠣ:"
 }
