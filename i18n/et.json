@@ -129,6 +129,7 @@
 	"abusefilter-enabled": "Lubatud",
 	"abusefilter-deleted": "Kustutatud",
 	"abusefilter-disabled": "Keelatud",
+	"abusefilter-throttled": "Suur tabamusmäär",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|tabamus|tabamust}}",
 	"abusefilter-new": "Koosta uus filter",
 	"abusefilter-import-button": "Filtri importimine",
