@@ -501,7 +501,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				}
 			}
 
-			// @phan-suppress-next-line PhanImpossibleCondition
 			if ( $foundInvalid ) {
 				// @todo Tell what the invalid IDs are
 				$out->addHTML(

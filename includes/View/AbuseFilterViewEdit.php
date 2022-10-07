@@ -902,7 +902,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				} else {
 					if ( $set && count( $parameters ) === 1 ) {
 						// Only blocktalk available
-						// @phan-suppress-next-line PhanTypeArraySuspiciousNullable $parameters is array here
 						$blockTalk = $parameters[0];
 					}
 					if ( $config->get( 'AbuseFilterAnonBlockDuration' ) ) {
