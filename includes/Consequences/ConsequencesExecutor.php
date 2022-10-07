@@ -410,6 +410,7 @@ class ConsequencesExecutor {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {
+			// @phan-suppress-next-line PhanParamTooFewUnpack $msg will always be non-empty
 			$status->fatal( ...$msg );
 		}
 
