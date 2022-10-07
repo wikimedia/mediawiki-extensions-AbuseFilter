@@ -14,7 +14,7 @@
 		"@wdio/local-runner": "7.4.6",
 		"@wdio/mocha-framework": "7.13.2",
 		"@wdio/sync": "7.4.6",
-		"eslint-config-wikimedia": "0.22.1",
+		"eslint-config-wikimedia": "0.23.0",
 		"grunt": "1.5.3",
 		"grunt-banana-checker": "0.10.0",
 		"grunt-eslint": "24.0.0",

@@ -403,6 +403,7 @@
 			inputPosition: 'outline',
 			allowArbitrary: true,
 			allowEditTags: true,
+			// eslint-disable-next-line es-x/no-array-prototype-values
 			selected: config.values,
 			// The following messages are used here:
 			// * abusefilter-edit-throttle-placeholder
