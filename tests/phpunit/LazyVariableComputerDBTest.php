@@ -53,8 +53,8 @@ class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 
 		// Special case for new_html: avoid flaky tests, and only check containment
 		$this->assertStringContainsString( '<div class="mw-parser-output', $actual['new_html'] );
-		$this->assertNotRegExp( "/<!--\s*NewPP limit/", $actual['new_html'] );
-		$this->assertNotRegExp( "/<!--\s*Transclusion/", $actual['new_html'] );
+		$this->assertDoesNotMatchRegularExpression( "/<!--\s*NewPP limit/", $actual['new_html'] );
+		$this->assertDoesNotMatchRegularExpression( "/<!--\s*Transclusion/", $actual['new_html'] );
 		foreach ( $expected['new_html'] as $needle ) {
 			$this->assertStringContainsString( $needle, $actual['new_html'], 'Checking new_html' );
 		}
