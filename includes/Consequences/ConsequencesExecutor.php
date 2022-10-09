@@ -403,6 +403,7 @@ class ConsequencesExecutor {
 	 *                actions taken because of that filter.
 	 * @param array[] $messages a list of arrays, where each array contains a message key
 	 *                followed by any message parameters.
+	 * @phan-param non-empty-array[] $messages
 	 *
 	 * @return Status
 	 */
@@ -410,7 +411,6 @@ class ConsequencesExecutor {
 		$status = Status::newGood( $actionsTaken );
 
 		foreach ( $messages as $msg ) {
-			// @phan-suppress-next-line PhanParamTooFewUnpack $msg will always be non-empty
 			$status->fatal( ...$msg );
 		}
 
