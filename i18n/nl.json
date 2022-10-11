@@ -244,7 +244,7 @@
 	"abusefilter-edit-hitcount": "Hits filteren:",
 	"abusefilter-edit-consequences": "Te nemen maatregelen indien het filter afgaat.",
 	"abusefilter-edit-action-warn": "Voer deze maatregel uit nadat een gebruiker een waarschuwing heeft gekregen",
-	"abusefilter-edit-action-disallow": "Voorkomen dat de gebruiker de handeling kan uitvoeren",
+	"abusefilter-edit-action-disallow": "Voorkomen dat de gebruiker de betreffende handeling verricht",
 	"abusefilter-edit-action-blockautopromote": "De bevestigde status van deze gebruiker verwijderen",
 	"abusefilter-edit-action-degroup": "De gebruiker uit alle gebruikersgroepen verwijderen",
 	"abusefilter-edit-action-block": "Bewerken door de gebruiker en/of het IP-adres blokkeren",
