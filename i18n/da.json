@@ -21,7 +21,8 @@
 			"Sarrus",
 			"Steenth",
 			"Tjernobyl",
-			"Weblars"
+			"Weblars",
+			"Dipsacus fullonum"
 		]
 	},
 	"abusefilter-desc": "Anvender automatiske heuristikker på redigeringer",
@@ -71,6 +72,7 @@
 	"abusefilter-log-search-impact-saved": "Kun gemte ændringer",
 	"abusefilter-log-search-impact-not-saved": "Uden gemte ændringer",
 	"abusefilter-log-search-entries-label": "Synlighed:",
+	"abusefilter-log-search-action-label": "Udløsende handling:",
 	"abusefilter-log-search-action-other": "Andet",
 	"abusefilter-log-search-action-any": "Enhver",
 	"abusefilter-log-search-action-taken-label": "Handling udført:",
@@ -434,6 +436,7 @@
 	"abusefilter-examine-noresults": "Ingen resultater blev fundet for søgeparametrene du angav.",
 	"abusefilter-topnav": "'''Navigation for misbrugsfilter'''",
 	"abusefilter-topnav-home": "Hjem",
+	"abusefilter-topnav-recentchanges": "Seneste filterændringer",
 	"abusefilter-topnav-test": "Gruppetesting",
 	"abusefilter-topnav-examine": "Undersøg tidligere ændringer",
 	"abusefilter-topnav-log": "Misbrugslog",
