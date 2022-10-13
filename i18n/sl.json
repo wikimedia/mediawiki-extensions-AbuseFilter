@@ -178,7 +178,7 @@
 	"abusefilter-tools-submitexpr": "Ovrednoti",
 	"abusefilter-tools-reautoconfirm": "Obnovi samodejno potrjeno stanje",
 	"abusefilter-tools-reautoconfirm-user": "Uporabnik:",
-	"abusefilter-tools-reautoconfirm-submit": "Ponovno samodejno potrdi",
+	"abusefilter-tools-reautoconfirm-submit": "Znova samodejno potrdi",
 	"abusefilter-tools-restoreautopromote": "Samodejno napredovanje povrnjeno z orodji filtra proti zlorabam.",
 	"abusefilter-reautoconfirm-none": "Ta uporabnik nima prekinjenega {{GENDER:$1|svojega}} stanja samodejne potrditve.",
 	"abusefilter-reautoconfirm-notallowed": "Nimate dovoljenja za povrnitev stanja samodejne potrditve.",
