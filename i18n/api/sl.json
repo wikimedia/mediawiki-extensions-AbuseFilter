@@ -5,7 +5,9 @@
 			"Eleassar"
 		]
 	},
+	"apihelp-query+abusefilters-param-prop": "Katere lastnosti naj se pridobijo.",
 	"apihelp-query+abuselog-param-logid": "Pokaži vnos s podano ID številko.",
+	"apihelp-query+abuselog-param-limit": "Največje število vnosov na seznam.",
 	"apihelp-query+abuselog-example-1": "Prikaži nedavne dnevniške zapise",
 	"apihelp-abuselogprivatedetails-param-reason": "Veljaven razlog za izvedbo preverjanja."
 }

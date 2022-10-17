@@ -243,7 +243,7 @@
 	"abusefilter-tools-reautoconfirm": "恢复自动确认状态",
 	"abusefilter-tools-reautoconfirm-user": "用户：",
 	"abusefilter-tools-reautoconfirm-submit": "重新自动确认",
-	"abusefilter-tools-restoreautopromote": "通过滥用过滤器工具恢复自动授予的权限。",
+	"abusefilter-tools-restoreautopromote": "通过滥用过滤器工具恢复自动授权。",
 	"abusefilter-reautoconfirm-none": "该用户的自动确认状态并没有被撤销过。",
 	"abusefilter-reautoconfirm-notallowed": "您不被允许恢复自动确认状态。",
 	"abusefilter-reautoconfirm-done": "该账号的自动确认状态已恢复",
