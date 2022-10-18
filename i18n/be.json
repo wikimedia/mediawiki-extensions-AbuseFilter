@@ -10,7 +10,8 @@
 			"Дзяніс Тутэйшы",
 			"Тест",
 			"ZlyiLev",
-			"No Sleep till Krupki"
+			"No Sleep till Krupki",
+			"Plaga med"
 		]
 	},
 	"abusefilter-desc": "Прымяняе аўтаматычную эўрыстыку да правак.",
@@ -73,7 +74,7 @@
 	"abusefilter-log-detailedentry-local": "фільтр $1",
 	"abusefilter-log-detailslink": "падрабязнасці",
 	"abusefilter-log-diff": "розн.",
-	"abusefilter-log-hidelink": "настроіць бачнасць",
+	"abusefilter-log-hidelink": "рэгуляваць бачнасць",
 	"abusefilter-log-hide-entries": "Змяніць бачнасць выбраных запісаў",
 	"abusefilter-log-description-not-available": "недаступна",
 	"abusefilter-log-details-legend": "Падрабязнасці запісу журнала $1",
