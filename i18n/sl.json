@@ -170,6 +170,7 @@
 	"abusefilter-tools-text": "Tukaj je nekaj orodij, ki so lahko koristna pri oblikovanju in popravljanju napak filtrov zlorab.",
 	"abusefilter-tools-expr": "Preizkuševalec izrazov",
 	"abusefilter-tools-submitexpr": "Ovrednoti",
+	"abusefilter-tools-syntax-error": "Filter ima neveljavno skladnjo.",
 	"abusefilter-tools-reautoconfirm": "Obnovi samodejno potrjeno stanje",
 	"abusefilter-tools-reautoconfirm-user": "Uporabnik:",
 	"abusefilter-tools-reautoconfirm-submit": "Znova samodejno potrdi",
