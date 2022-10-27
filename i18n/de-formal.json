@@ -6,10 +6,11 @@
 			"Kghbln",
 			"MichaelFrey",
 			"The Evil IP address",
+			"ThisCarthing",
 			"Umherirrender"
 		]
 	},
-	"abusefilter-warning": "'''Achtung:''' Diese Aktion wurde als potentiell unkonstruktiv erkannt.\nSolche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.\nWenn Sie meinen, dass diese Aktion sinnvoll ist, können Sie sie zum Bestätigen erneut speichern.\nKurzbeschreibung der verletzten Regel: $1",
+	"abusefilter-warning": "'''Achtung:''' Diese Aktion wurde als potentiell unkonstruktiv erkannt.\nSolche Aktionen werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.\nWenn Sie meinen, dass diese Aktion sinnvoll ist, können Sie sie zum Bestätigen erneut speichern.\nKurzbeschreibung der verletzten Regel: $1",
 	"abusefilter-disallowed": "Diese Aktion wurde automatisch als schädlich erkannt und deshalb nicht ausgeführt.\nSofern Sie denken, dass Ihr Beitrag konstruktiv war, wenden Sie sich bitte an einen Administrator und schildern ihm, was Sie beizutragen versucht haben.\nKurzbeschreibung der verletzten Regel: $1",
 	"abusefilter-blocked-display": "Diese Aktion wurde automatisch als schädlich erkannt und nicht ausgeführt.\nFerner wurden Ihr Benutzerkonto und alle Ihnen zugehörigen IP-Adressen gesperrt.\nWenn Sie denken, dass es sich hierbei um einen Fehler handelt, wenden Sie sich bitte an einen Administrator.\nKurzbeschreibung der verletzten Regel: $1",
 	"abusefilter-degrouped": "Diese Aktion wurde als schädlich erkannt und nicht ausgeführt.\nDa es möglich ist, dass Ihr Benutzerkonto kompromittiert wurde, wurden Ihnen alle gewährten Rechte genommen.\nWenn Sie denken, dass es sich hierbei um einen Fehler handelt, so wenden Sie sich bitte an einen Bürokraten und schilderen ihm, was Sie gerade getan haben, damit Ihre Rechte wiederhergestellt werden können.\nKurzbeschreibung der verletzten Regel: $1",
@@ -17,7 +18,9 @@
 	"abusefilter-blockreason": "Sie wurden durch einen Missbrauchsfilter automatisch gesperrt. Beschreibung der zutreffenden Regel: $1",
 	"abusefilter-degroupreason": "Ihre Berechtigungen wurden durch einen Missbrauchsfilter automatisch beschränkt.\nBeschreibung der Regel: $1",
 	"abusefilter-log-cannot-see-details": "Sie haben nicht die Berechtigung, Einzelheiten zur dieser Eingabe einzusehen.",
+	"abusefilter-log-cannot-see-privatedetails": "Sie haben keine Berechtigung, um private Einzelheiten für diesen Eintrag einzusehen.",
 	"abusefilter-log-details-hidden": "Sie können die Details dieses Eintrags nicht einsehen, da sie vor der Öffentlichkeit verborgen sind.",
+	"abusefilter-log-details-hidden-implicit": "Sie können die Einzelheiten für diesen Eintrag nicht einsehen, da die dazugehörige Version für die öffentliche Einsicht versteckt ist.",
 	"abusefilter-log-hide-forbidden": "Sie haben nicht die Berechtigung, die Einträge des Missbrauchsfilter-Logbuchs auszublenden.",
 	"abusefilter-reautoconfirm-notallowed": "Sie sind nicht berechtigt, Benutzer wieder zu automatisch bestätigten Benutzern zu machen.",
 	"abusefilter-edit-oldwarning": "<strong>Sie bearbeiten nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn Sie speichern, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]",
