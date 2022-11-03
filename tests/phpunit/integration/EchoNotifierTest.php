@@ -73,6 +73,7 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::notifyForFilter
 	 */
 	public function testNotifyForFilter() {
+		$this->markTestSkipped( 'EchoEvent is being renamed' );
 		if ( !class_exists( EchoEvent::class ) ) {
 			$this->markTestSkipped( 'Echo not loaded' );
 		}
