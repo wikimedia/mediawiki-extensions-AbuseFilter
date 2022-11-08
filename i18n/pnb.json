@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Abbas dhothar",
-			"BukhariSaeed"
+			"BukhariSaeed",
+			"Bgo eiu"
 		]
 	},
 	"right-abusefilter-log": "نوشتہ غلط کاری دا مشاہدہ",
@@ -66,7 +67,7 @@
 	"abusefilter-list-options-deleted-hide": "مٹائے فلٹر لُکاؤ",
 	"abusefilter-list-options-deleted-show": "مٹائے فلٹراں سمیت",
 	"abusefilter-list-options-scope": "فلٹر دکھاؤ:",
-	"abusefilter-list-options-further-options": "ہور آپشن:",
+	"abusefilter-list-options-further-options": "ہور چوݨاں:",
 	"abusefilter-list-options-hidedisabled": "ناکارہ فلٹر لُکاؤ",
 	"abusefilter-list-options-hideprivate": "پرائیویٹ فلٹر لُکاؤ",
 	"abusefilter-list-options-searchoptions": "کھوج موڈ:",
