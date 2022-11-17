@@ -233,6 +233,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getShortDescription( string $path = '' ): string {
+		return $this->msg( 'abusefilter-topnav-log' )->text();
+	}
+
+	/**
 	 * Loads parameters from request
 	 */
 	public function loadParameters() {
