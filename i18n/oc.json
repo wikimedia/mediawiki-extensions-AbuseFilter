@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BrennodAloisi",
 			"Cedric31",
 			"Fitoschido",
 			"Guilhelma",
@@ -189,7 +190,7 @@
 	"abusefilter-edit-builder-op-arithmetic-modulo": "Modulo (%)",
 	"abusefilter-edit-builder-op-arithmetic-pow": "Poténcia (**)",
 	"abusefilter-edit-builder-group-op-comparison": "Operators de comparason",
-	"abusefilter-edit-builder-op-comparison-equal": "Egal a (==)",
+	"abusefilter-edit-builder-op-comparison-equal": "Valor egala a (==)",
 	"abusefilter-edit-builder-op-comparison-equal-strict": "Valor e tipe egals a (===)",
 	"abusefilter-edit-builder-op-comparison-notequal": "Valor diferenta de (!=)",
 	"abusefilter-edit-builder-op-comparison-lt": "Inferior a (<)",
