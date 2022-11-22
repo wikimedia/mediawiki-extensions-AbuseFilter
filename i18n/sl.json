@@ -266,7 +266,7 @@
 	"abusefilter-edit-denied": "Ne morete si ogledati podrobnosti filtra, ker je skrit pred javnim pogledom.",
 	"abusefilter-edit-main": "Parametri filtra",
 	"abusefilter-edit-done-subtitle": "Filter je urejen",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Svoje spremembe]] [[Special:AbuseFilter/$1|filtra $3]] ste uspešno shranili.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Vaše spremembe]] [[Special:AbuseFilter/$1|filtra $3]] so shranjene.",
 	"abusefilter-edit-badsyntax": "V navedenem filtru je skladenjska napaka.\nRezultat razčlenjevalnika je bil: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Naslednja polja morajo biti izpolnjena: $1",
 	"abusefilter-edit-deleting-enabled": "Aktivnega filtra ne morete označiti kot izbrisanega.",
