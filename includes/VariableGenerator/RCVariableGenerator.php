@@ -118,6 +118,15 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
 		$this->vars->setVar( 'action', 'move' );
 
+		$this->vars->setLazyLoadVar(
+			'moved_from_last_edit_age',
+			'previous-revision-age',
+			// rc_last_oldid is zero (RecentChange::newLogEntry)
+			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ) ]
+		);
+		// TODO: add moved_to_last_edit_age (is it possible?)
+		// TODO: add old_wikitext etc. (T320347)
+
 		return $this;
 	}
 
@@ -164,6 +173,8 @@ class RCVariableGenerator extends VariableGenerator {
 
 		$this->vars->setVar( 'action', 'delete' );
 		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
+		// TODO: add page_last_edit_age
+		// TODO: add old_wikitext etc. (T173663)
 
 		return $this;
 	}
@@ -180,6 +191,13 @@ class RCVariableGenerator extends VariableGenerator {
 
 		$this->vars->setVar( 'action', 'upload' );
 		$this->vars->setVar( 'summary', $this->rc->getAttribute( 'rc_comment' ) );
+
+		$this->vars->setLazyLoadVar(
+			'page_last_edit_age',
+			'previous-revision-age',
+			// rc_last_oldid is zero (RecentChange::newLogEntry)
+			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ) ]
+		);
 
 		$time = $this->rc->getParam( 'img_timestamp' );
 		$file = $this->repoGroup->findFile(
@@ -237,9 +255,12 @@ class RCVariableGenerator extends VariableGenerator {
 				[ 'revid' => $parentId, 'contextUser' => $this->contextUser ] );
 			$this->vars->setLazyLoadVar( 'old_content_model', 'content-model-by-id',
 				[ 'revid' => $parentId ] );
+			$this->vars->setLazyLoadVar( 'page_last_edit_age', 'revision-age-by-id',
+				[ 'revid' => $parentId, 'asof' => $this->rc->getAttribute( 'rc_timestamp' ) ] );
 		} else {
 			$this->vars->setVar( 'old_wikitext', '' );
 			$this->vars->setVar( 'old_content_model', '' );
+			$this->vars->setVar( 'page_last_edit_age', null );
 		}
 
 		$this->addEditVars(

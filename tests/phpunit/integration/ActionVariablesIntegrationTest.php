@@ -27,6 +27,7 @@ use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MWTimestamp;
 use NullStatsdDataFactory;
 use WikitextContent;
 
@@ -156,6 +157,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'old_links' => [],
 				'added_links' => [ 'https://a.com/' ],
 				'removed_links' => [],
+				'page_last_edit_age' => null,
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary, 'createonly' => true ],
 		];
@@ -186,6 +188,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'all_links' => [ 'https://www.b.com/' ],
 				'removed_links' => [ 'https://a.com/' ],
 				'added_links' => [ 'https://www.b.com/' ],
+				'page_last_edit_age' => 10,
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary ],
 			'oldContent' => new WikitextContent( $old ),
@@ -217,6 +220,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'all_links' => [ 'https://a.com/' ],
 				'removed_links' => [ 'https://www.b.com/' ],
 				'added_links' => [ 'https://a.com/' ],
+				'page_last_edit_age' => 10,
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary ],
 			'oldContent' => new WikitextContent( $old ),
@@ -249,6 +253,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'all_links' => [],
 				'removed_links' => [],
 				'added_links' => [],
+				'page_last_edit_age' => 10,
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary ],
 			'oldContent' => new WikitextContent( $old ),
@@ -263,6 +268,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'new_content_model' => 'wikitext',
 				'old_links' => [],
 				'all_links' => [ 'https://en.wikipedia.org/' ],
+				'page_last_edit_age' => 10,
 			],
 			'params' => [
 				'text' => 'new test https://en.wikipedia.org',
@@ -280,6 +286,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'new_content_model' => 'json',
 				'old_links' => [ 'https://en.wikipedia.org/' ],
 				'all_links' => [],
+				'page_last_edit_age' => 10,
 			],
 			'params' => [
 				'text' => '{"key": "value"}',
@@ -299,6 +306,9 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 	public function testEditVariables(
 		array $expected, array $params, Content $oldContent = null
 	) {
+		$time = time();
+		MWTimestamp::setFakeTime( $time );
+
 		$varHolder = null;
 		$this->prepareServices();
 		$this->setAbuseLoggerFactoryWithEavesdrop( $varHolder );
@@ -324,6 +334,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			true
 		);
 
+		MWTimestamp::setFakeTime( $time + 10 );
 		$ex = null;
 		try {
 			$this->doApiRequestWithToken(

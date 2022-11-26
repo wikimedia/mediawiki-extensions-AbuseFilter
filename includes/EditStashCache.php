@@ -118,8 +118,7 @@ class EditStashCache {
 			'user_age' => true,
 			'timestamp' => true,
 			'page_age' => true,
-			'moved_from_age' => true,
-			'moved_to_age' => true
+			'page_last_edit_age' => true,
 		];
 
 		$inputVars = array_diff_key( $inputVars, $excludedVars );
