@@ -14,6 +14,7 @@
 	"abusefilter-log-hide-show": "Čájet",
 	"abusefilter-log-hide-hide": "Čiega",
 	"abusefilter-deleted": "Sihkkojuvvon",
+	"abusefilter-list-options-deleted": "Sihkkojuvvon sillit:",
 	"abusefilter-edit-new": "Ođđa silli",
 	"abusefilter-edit-throttle-groups-help": "Geahča $1.",
 	"abusefilter-throttle-ip": "IP-čujuhus",
