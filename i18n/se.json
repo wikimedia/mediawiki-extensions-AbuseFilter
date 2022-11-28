@@ -3,15 +3,20 @@
 		"authors": [
 			"Jeblad",
 			"Linnea",
-			"Yupik"
+			"Yupik",
+			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
 	"abuselog": "Boasttogeavahanfiltera logga",
+	"abusefilter-log-search-user": "Geavaheaddji:",
+	"abusefilter-log-search-wiki": "Wiki:",
 	"abusefilter-log-search-submit": "Oza",
 	"abusefilter-deleted": "Sihkkojuvvon",
+	"abusefilter-edit-new": "Ođđa silli",
 	"abusefilter-edit-throttle-groups-help": "Geahča $1.",
 	"abusefilter-throttle-ip": "IP-čujuhus",
 	"abusefilter-history-deleted": "Sihkkojuvvon",
+	"abusefilter-history-filterid": "Silli",
 	"abusefilter-action-block": "Hehtte",
 	"abusefilter-test-load": "Luđe",
 	"abusefilter-examine-submit": "Oza",
