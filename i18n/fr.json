@@ -371,7 +371,7 @@
 	"abusefilter-edit-builder-funcs-ccnorm": "Normaliser les caractères prêtant à confusion (ccnorm)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normaliser et rechercher dans une chaîne de multiples sous-chaînes avec le critère OU (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normaliser et rechercher dans une chaîne des multiples sous-chaînes avec le critère ET (ccnorm_contains_all)",
-	"abusefilter-edit-builder-funcs-rmdoubles": "Enlever les caractères redoublés (rmdoubles)",
+	"abusefilter-edit-builder-funcs-rmdoubles": "Retirer les caractères redoublés (« rmdoubles »)",
 	"abusefilter-edit-builder-funcs-specialratio": "Caractères spéciaux / total des caractères (specialratio)",
 	"abusefilter-edit-builder-funcs-norm": "Normaliser (norm)",
 	"abusefilter-edit-builder-funcs-count": "Nombre d’occurrences de la chaîne de caractères X dans la chaîne Y (count)",
