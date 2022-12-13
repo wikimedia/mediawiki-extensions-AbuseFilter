@@ -20,7 +20,6 @@
 		"grunt-eslint": "24.0.0",
 		"grunt-stylelint": "0.18.0",
 		"stylelint-config-wikimedia": "0.13.1",
-		"wdio-mediawiki": "1.2.0",
-		"webdriverio": "7.4.6"
+		"wdio-mediawiki": "1.2.0"
 	}
 }
