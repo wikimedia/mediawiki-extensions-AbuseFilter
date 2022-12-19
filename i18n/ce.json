@@ -154,7 +154,7 @@
 	"abusefilter-edit-subtitle": "Литтаран хийцам $1",
 	"abusefilter-edit-subtitle-new": "Литтар кхоллар",
 	"abusefilter-edit-status-label": "Статистика:",
-	"abusefilter-edit-status": "{{PLURAL:$1|ТӀеххьара $1 диначух}}, хӀара луьттург цхьаьнайогӀуш йу $2 ($3%).",
+	"abusefilter-edit-status": "{{PLURAL:$1|ТӀаьхьара $1 диначух}}, хӀара луьттург цхьаьнайогӀуш йу $2 ($3%).",
 	"abusefilter-edit-new": "Керла луьттург",
 	"abusefilter-edit-save": "Ӏалашйе луьттург",
 	"abusefilter-edit-id": "Литтаран ID:",
