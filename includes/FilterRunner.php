@@ -225,10 +225,12 @@ class FilterRunner {
 			$this->profileExecution( $runnerData );
 			$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 		} else {
+			// @codeCoverageIgnoreStart
 			DeferredUpdates::addCallableUpdate( function () use ( $runnerData ) {
 				$this->profileExecution( $runnerData );
 				$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 			} );
+			// @codeCoverageIgnoreEnd
 		}
 
 		// TODO: inject the action specifier to avoid this
