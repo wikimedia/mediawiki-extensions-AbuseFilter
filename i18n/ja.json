@@ -42,6 +42,7 @@
 			"Yuukin0248",
 			"おはぐろ蜻蛉",
 			"そらたこ",
+			"春春眠眠",
 			"青子守歌"
 		]
 	},
@@ -528,7 +529,7 @@
 	"abusefilter-revert-periodend": "期間終わり:",
 	"abusefilter-revert-search": "対処操作を選択",
 	"abusefilter-revert-filter": "フィルターID:",
-	"abusefilter-revert-preview-no-results": "クエリは差し戻し対象のアクションを検出しませんでしまい。",
+	"abusefilter-revert-preview-no-results": "クエリは差し戻し対象のアクションを検出しませんでした。",
 	"abusefilter-revert-preview-intro": "以下は、この操作によって差し戻される、不正利用フィルターによる対処操作です。\n注意深く確認し、「{{int:abusefilter-revert-confirm}}」をクリックして選択を確定してください。",
 	"abusefilter-revert-confirm-legend": "巻き戻しを確認",
 	"abusefilter-revert-confirm": "確定",
