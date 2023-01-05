@@ -233,7 +233,8 @@ class RCVariableGenerator extends VariableGenerator {
 
 		$this->addEditVars(
 			$this->wikiPageFactory->newFromTitle( $title ),
-			$this->contextUser
+			$this->contextUser,
+			false
 		);
 
 		return $this;

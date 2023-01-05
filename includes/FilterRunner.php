@@ -176,8 +176,6 @@ class FilterRunner {
 		);
 		$generator = $this->varGeneratorFactory->newGenerator( $this->vars );
 		$this->vars = $generator->addGenericVars()->getVariableHolder();
-
-		$this->vars->forFilter = true;
 		$this->ruleChecker = $this->ruleCheckerFactory->newRuleChecker( $this->vars );
 	}
 
