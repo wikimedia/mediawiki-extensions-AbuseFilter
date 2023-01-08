@@ -20,16 +20,7 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 		return new CheckUserHandler( $filterUser );
 	}
 
-	/**
-	 * @covers ::onCheckUserInsertChangesRow
-	 * @dataProvider provideOnCheckUserInsertChangesRow
-	 */
-	public function testOnCheckUserInsertChangesRow( $user, $shouldChange ) {
-		$checkUserHandler = $this->getCheckUserHandler();
-		$ip = '1.2.3.4';
-		$xff = '1.2.3.5';
-		$row = [];
-		$checkUserHandler->onCheckUserInsertChangesRow( $ip, $xff, $row, $user );
+	private function commonInsertHookAssertions( $shouldChange, $agentField, $ip, $xff, $row ) {
 		if ( $shouldChange ) {
 			$this->assertSame(
 				'127.0.0.1',
@@ -42,7 +33,7 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 			);
 			$this->assertSame(
 				'',
-				$row['cuc_agent'],
+				$row[$agentField],
 				'User agent should have been blanked because the abuse filter is making the action.'
 			);
 		} else {
@@ -57,14 +48,53 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 				'XFF should have not been modified by AbuseFilter handling the checkuser insert row hook.'
 			);
 			$this->assertArrayNotHasKey(
-				'cuc_agent',
+				$agentField,
 				$row,
 				'User agent should have not been modified by AbuseFilter handling the checkuser insert row hook.'
 			);
 		}
 	}
 
-	public function provideOnCheckUserInsertChangesRow() {
+	/**
+	 * @covers ::onCheckUserInsertChangesRow
+	 * @dataProvider provideDataForCheckUserInsertHooks
+	 */
+	public function testOnCheckUserInsertChangesRow( $user, $shouldChange ) {
+		$checkUserHandler = $this->getCheckUserHandler();
+		$ip = '1.2.3.4';
+		$xff = '1.2.3.5';
+		$row = [];
+		$checkUserHandler->onCheckUserInsertChangesRow( $ip, $xff, $row, $user, null );
+		$this->commonInsertHookAssertions( $shouldChange, 'cuc_agent', $ip, $xff, $row );
+	}
+
+	/**
+	 * @covers ::onCheckUserInsertPrivateEventRow
+	 * @dataProvider provideDataForCheckUserInsertHooks
+	 */
+	public function testOnCheckUserInsertPrivateEventRow( $user, $shouldChange ) {
+		$checkUserHandler = $this->getCheckUserHandler();
+		$ip = '1.2.3.4';
+		$xff = '1.2.3.5';
+		$row = [];
+		$checkUserHandler->onCheckUserInsertPrivateEventRow( $ip, $xff, $row, $user, null );
+		$this->commonInsertHookAssertions( $shouldChange, 'cupe_agent', $ip, $xff, $row );
+	}
+
+	/**
+	 * @covers ::onCheckUserInsertLogEventRow
+	 * @dataProvider provideDataForCheckUserInsertHooks
+	 */
+	public function testOnCheckUserInsertLogEventRow( $user, $shouldChange ) {
+		$checkUserHandler = $this->getCheckUserHandler();
+		$ip = '1.2.3.4';
+		$xff = '1.2.3.5';
+		$row = [];
+		$checkUserHandler->onCheckUserInsertLogEventRow( $ip, $xff, $row, $user, 1, null );
+		$this->commonInsertHookAssertions( $shouldChange, 'cule_agent', $ip, $xff, $row );
+	}
+
+	public function provideDataForCheckUserInsertHooks() {
 		return [
 			'Anonymous user' => [ UserIdentityValue::newAnonymous( '127.0.0.1' ), false ],
 			'Registered user' => [ new UserIdentityValue( 2, 'Test' ), false ],
