@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use MediaWiki\CheckUser\Hook\CheckUserInsertChangesRow;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserIdentity;
+use RecentChange;
 
 class CheckUserHandler implements CheckUserInsertChangesRow {
 
@@ -24,7 +25,9 @@ class CheckUserHandler implements CheckUserInsertChangesRow {
 	 *
 	 * @inheritDoc
 	 */
-	public function onCheckUserInsertChangesRow( string &$ip, &$xff, array &$row, UserIdentity $user ) {
+	public function onCheckUserInsertChangesRow(
+		string &$ip, &$xff, array &$row, UserIdentity $user, ?RecentChange $rc = null
+	) {
 		if (
 			$user->isRegistered() &&
 			$this->filterUser->getUserIdentity()->getId() == $user->getId()
