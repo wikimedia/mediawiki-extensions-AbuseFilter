@@ -70,6 +70,7 @@
 	"abusefilter-log-hide-id": "लग इन्ट्री आइडी:",
 	"abusefilter-log-hide-hidden": "सार्वजनिक रुपले हेर्न यस इन्ट्रीलाई लुकाउने",
 	"abusefilter-log-hide-reason": "कारण:",
+	"abusefilter-log-hide-reason-other": "अरू/थप कारण:",
 	"abusefilter-log-hide-forbidden": "तपाईंलाई दुरुपयोग अभिलेखहरू इन्ट्रीहरू लुकाउने अनुमति छैन।",
 	"abusefilter-list": "सबै फिल्टरहरु",
 	"abusefilter-list-id": "फिल्टर परिचय:",
