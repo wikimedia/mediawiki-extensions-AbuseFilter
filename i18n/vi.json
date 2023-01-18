@@ -347,7 +347,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Chuẩn hóa (norm)",
 	"abusefilter-edit-builder-funcs-count": "Số lần chuỗi X xuất hiện trong chuỗi Y (count)",
 	"abusefilter-edit-builder-funcs-rcount": "Số lần biểu thức chính quy X xuất hiện trong chuỗi Y (rcount)",
-	"abusefilter-edit-builder-funcs-get_matches": "Mảng regex khớp trong một văn bản cho mỗi nhóm chụp (get_matches)",
+	"abusefilter-edit-builder-funcs-get_matches": "Mảng chuỗi khớp biểu thức chính quy trong một văn bản cho mỗi nhóm chụp (get_matches)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Dời khoảng cách (rmwhitespace)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Dời ký tự đặc biệt (rmspecials)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "IP có trong dải hay không (ip_in_range)",
