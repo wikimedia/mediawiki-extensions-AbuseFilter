@@ -3,11 +3,13 @@
 		"authors": [
 			"Erdemaslancan",
 			"Patriot Kur",
-			"Гусейн"
+			"Гусейн",
+			"Patriot Kor"
 		]
 	},
 	"abusefilter-list-edit": "Dəqiş karde",
 	"abusefilter-list-options": "Tənziməkon",
+	"abusefilter-list-options-submit": "Bıxovın",
 	"abusefilter-throttle-page": "səhifə",
 	"abusefilter-edit-builder-vars-page-id": "Səhifə ID",
 	"abusefilter-history-comments": "Şərhon"
