@@ -636,6 +636,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		);
 
 		if ( $result && $result->numRows() !== 0 ) {
+			$out->addModuleStyles( 'mediawiki.interface.helpers.styles' );
 			$out->addHTML( $pager->getNavigationBar() . $form . $pager->getNavigationBar() );
 		} else {
 			$out->addWikiMsg( 'abusefilter-log-noresults' );
@@ -752,6 +753,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $this->varManager->dumpAllVars( $vars, true ) );
+		$out->addModuleStyles( 'mediawiki.interface.helpers.styles' );
 
 		// Diff, if available
 		if ( $row->afl_action === 'edit' ) {
