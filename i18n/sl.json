@@ -461,7 +461,7 @@
 	"abusefilter-exception-variablevariable": "set in set_var pričakujeta, da bo prvi argument nizni literal, ki je pri znaku $1.",
 	"abusefilter-action-tag": "označitev",
 	"abusefilter-action-throttle": "Upočasni",
-	"abusefilter-action-warn": "opozorilo",
+	"abusefilter-action-warn": "Opozorilo",
 	"abusefilter-action-blockautopromote": "samodejna izvedba blokiranja",
 	"abusefilter-action-block": "blokiranje",
 	"abusefilter-action-degroup": "odstranitev iz skupin",
