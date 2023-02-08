@@ -477,7 +477,7 @@
 	"abusefilter-parser-warning-match-empty-regex": "Ta regularni izraz se ujema s praznim nizom pri znaku $1",
 	"abusefilter-action-tag": "označitev",
 	"abusefilter-action-throttle": "Upočasni",
-	"abusefilter-action-warn": "opozorilo",
+	"abusefilter-action-warn": "Opozorilo",
 	"abusefilter-action-blockautopromote": "samodejna izvedba blokiranja",
 	"abusefilter-action-block": "blokiranje",
 	"abusefilter-action-degroup": "odstranitev iz skupin",
