@@ -504,6 +504,18 @@
 					$plainTextBox.val( filterEditor.getSession().getValue() );
 				} );
 
+				// Make Ace editor resizable
+				// (uses ResizeObserver, which is not implemented in IE 11)
+				if ( typeof ResizeObserver !== 'undefined' ) {
+					// Make the container resizable
+					$filterBox.css( 'resize', 'both' );
+					// Refresh Ace editor size (notably its scrollbars) when the container
+					// is resized, otherwise it would be refreshed only on window resize
+					new ResizeObserver( function () {
+						filterEditor.resize();
+					} ).observe( $filterBox[ 0 ] );
+				}
+
 				$switchEditorBtn.on( 'click', switchEditor );
 				$switchEditorBtn.show();
 			} );
