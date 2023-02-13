@@ -39,7 +39,12 @@
 			"RYOUMA1117",
 			"Siglite3",
 			"UsagiNeko",
-			"Waki285"
+			"Waki285",
+			"Makoto Asai",
+			"MathXplore",
+			"Ryoya3",
+			"Yamagata Yusuke",
+			"春春眠眠"
 		]
 	},
 	"abusefilter-desc": "編集に対して、自動的な経験則を適用する",
@@ -590,5 +595,5 @@
 	"abusefilter-log-ip-not-available": "参照不可",
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code>タグはAbuseFilterが使用するため予約されています。",
 	"tag-abusefilter-condition-limit": "条件の上限に達しました",
-	"tag-abusefilter-condition-limit-description": "[[Special:AbuseFilter|不正利用フィルター]]（[[mw:Extension:AbuseFilter/Conditions|ヘルプ]]）によって確認できなかった編集やその他のイベント。"
+	"tag-abusefilter-condition-limit-description": "[[Special:AbuseFilter|不正利用フィルター]]によって確認できなかった編集やその他のイベント（[[mw:Extension:AbuseFilter/Conditions|ヘルプ]]）。"
 }
