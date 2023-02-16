@@ -9,7 +9,7 @@
 	"apihelp-abusefiltercheckmatch-summary": "Preveri, ali se AbuseFilter ujema z naborom spremenljivk, urejanjem ali zabeleženim dogodkom AbuseFilter.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Zahtevani so vars, rcid ali logid, vendar se lahko uporabi samo eden od njih.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Celotno besedilo filtra za preverjanje ujemanja.",
-	"apihelp-abusefiltercheckmatch-param-vars": "JSON-kodirano polje spremenljivk za preizkušanje.",
+	"apihelp-abusefiltercheckmatch-param-vars": "JSON-kodirana matrika spremenljivk za preizkušanje.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "Oznaka nedavne spremembe za preverjanje.",
 	"apihelp-abusefiltercheckmatch-param-logid": "Oznaka zapisa v dnevniku filtrov proti zlorabi za preverjanje.",
 	"apihelp-abusefiltercheckmatch-example-1": "Preizkusi, ali se nedavna sprememba z oznako 15 ujema s preprostim filtrom",
