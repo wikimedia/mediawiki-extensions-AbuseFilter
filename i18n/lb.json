@@ -5,7 +5,8 @@
 			"Matma Rex",
 			"Robby",
 			"Soued031",
-			"Talex42"
+			"Talex42",
+			"Volvox"
 		]
 	},
 	"abusefilter-desc": "Applizéiert automatesch Heuristiken op Ännerungen",
@@ -28,7 +29,7 @@
 	"right-abusefilter-privatedetails": "Privat Donnéeën am Mëssbrauchsfilter weisen",
 	"right-abusefilter-modify-restricted": "Mëssbrauchsfiltere mat limitéierten Aktiounen änneren",
 	"right-abusefilter-revert": "All Ännerungen vun engem bestëmmte Mëssbruachsfilter zrécksetzen",
-	"right-abusefilter-view-private": "Mëssbrauchsfilter weisen déi als privat markéiert sinn",
+	"right-abusefilter-view-private": "Mëssbrauchsfilter weisen, déi als privat markéiert sinn",
 	"right-abusefilter-hide-log": "Rubriken am Mëssbrauchsfilter verstoppen",
 	"right-abusefilter-hidden-log": "Verstoppten Androungen an d'Mëssbrauchslogbuch kucken",
 	"right-abusefilter-modify-global": "Global Mëssbrauchsfilteren uleeën oder änneren",
@@ -371,7 +372,7 @@
 	"abusefilter-test-period-start": "Ännerungen nom:",
 	"abusefilter-test-period-end": "Ännerungen déi virdru gemaach goufen:",
 	"abusefilter-test-page": "Ännerungen déi op dëser Säit gemaach goufen",
-	"abusefilter-test-shownegative": "Ännerunge weisen déi net op de Filter passen",
+	"abusefilter-test-shownegative": "Ännerunge weisen, déi net op de Filter passen",
 	"abusefilter-test-syntaxerr": "Am Filter deen Dir aginn hutt ass e Syntaxfeeler.\nDir kënnt eng komplett Erklärung kréie wann Dir op de Knäppche \"{{int:abusefilter-edit-check}}\" klickt.",
 	"abusefilter-test-badtitle": "De Säitentitel deen Dir aginn hutt ass net valabel. Et ka sinn datt een oder méi Buschtawen dra sinn déi an Titelen net benotzt kënne ginn.",
 	"abusefilter-test-search-type-all": "All Aktiounen",
@@ -389,7 +390,7 @@
 	"abusefilter-examine-match": "De Filter erfaasst dës Ännerung.",
 	"abusefilter-examine-nomatch": "De Filter erfaasst dës Ännerung net.",
 	"abusefilter-examine-syntaxerror": "D'Syntax vun dësem Filter ass net valabel",
-	"abusefilter-examine-notfound": "Déi Ännerung déi Dir gefrot hutt gouf net fonnt.",
+	"abusefilter-examine-notfound": "Déi Ännerung, déi Dir gefrot hutt, gouf net fonnt.",
 	"abusefilter-examine-incompatible": "Déi Ännerung déi Dir ugefrot hutt gëtt net vum Mëssbrauchsfilter ënnerstëtzt",
 	"abusefilter-examine-noresults": "Et gouf näischt fonnt mat de Sich-Parameter déi Dir uginn hutt",
 	"abusefilter-topnav": "'''Navigatioun vum Mëssbrauchs-Filter'''",
