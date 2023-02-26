@@ -66,6 +66,7 @@
 		"AbuseLog": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Special\\SpecialAbuseLog",
 			"services": [
+				"DBLoadBalancerFactory",
 				"LinkBatchFactory",
 				"PermissionManager",
 				"UserIdentityLookup",

@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use AbuseFilterConsequencesTest;
 use MediaWiki\Hook\UnitTestsAfterDatabaseSetupHook;
 use MediaWiki\Hook\UnitTestsBeforeDatabaseTeardownHook;
+use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 
 /**
@@ -56,7 +57,8 @@ class TestsHandler implements UnitTestsAfterDatabaseSetupHook, UnitTestsBeforeDa
 	 * @suppress PhanUndeclaredClassStaticProperty AbuseFilterConsequencesTest is in AutoloadClasses
 	 */
 	public function onUnitTestsBeforeDatabaseTeardown() {
-		$db = wfGetDB( DB_PRIMARY );
+		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()
+			->getMaintenanceConnectionRef( DB_PRIMARY );
 		foreach ( AbuseFilterConsequencesTest::$externalTables as $table ) {
 			$db->dropTable( AbuseFilterConsequencesTest::DB_EXTERNAL_PREFIX . $table );
 		}

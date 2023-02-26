@@ -15,7 +15,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiUnitTestCase;
 use Title;
 use User;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory
@@ -34,7 +34,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( VariablesBlobStore::class ),
 			$this->createMock( VariablesManager::class ),
 			$this->createMock( EditRevUpdater::class ),
-			$this->createMock( ILoadBalancer::class ),
+			$this->createMock( LBFactory::class ),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
 				[

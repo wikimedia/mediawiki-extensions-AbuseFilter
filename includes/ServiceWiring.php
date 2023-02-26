@@ -78,7 +78,7 @@ return [
 	},
 	ChangeTagsManager::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagsManager {
 		return new ChangeTagsManager(
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);
@@ -139,7 +139,7 @@ return [
 	EmergencyWatcher::SERVICE_NAME => static function ( MediaWikiServices $services ): EmergencyWatcher {
 		return new EmergencyWatcher(
 			$services->getService( EmergencyCache::SERVICE_NAME ),
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->getService( FilterLookup::SERVICE_NAME ),
 			$services->getService( EchoNotifier::SERVICE_NAME ),
 			new ServiceOptions(
@@ -183,7 +183,7 @@ return [
 	FilterStore::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterStore {
 		return new FilterStore(
 			$services->get( ConsequencesRegistry::SERVICE_NAME ),
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->get( FilterProfiler::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
 			$services->get( ChangeTagsManager::SERVICE_NAME ),
@@ -222,7 +222,7 @@ return [
 	},
 	ConsequencesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesLookup {
 		return new ConsequencesLookup(
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' )
@@ -241,7 +241,7 @@ return [
 			$services->get( VariablesBlobStore::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( EditRevUpdater::SERVICE_NAME ),
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
@@ -252,7 +252,7 @@ return [
 	},
 	UpdateHitCountWatcher::SERVICE_NAME => static function ( MediaWikiServices $services ): UpdateHitCountWatcher {
 		return new UpdateHitCountWatcher(
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
@@ -320,7 +320,7 @@ return [
 			$services->get( TextExtractor::SERVICE_NAME ),
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			$services->getMainWANObjectCache(),
 			$services->getRevisionLookup(),
 			$services->getRevisionStore(),
@@ -357,7 +357,7 @@ return [
 		return new EditRevUpdater(
 			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->getRevisionLookup(),
-			$services->getDBLoadBalancer(),
+			$services->getDBLoadBalancerFactory(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},

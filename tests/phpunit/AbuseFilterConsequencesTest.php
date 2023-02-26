@@ -1544,7 +1544,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		);
 
 		// Check that the hits were logged on the "external" DB
-		$db = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_PRIMARY );
+		$db = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getPrimaryDatabase();
 		$loggedFilters = $db->selectFieldValues(
 			self::DB_EXTERNAL_PREFIX . 'abuse_filter_log',
 			'afl_filter_id',

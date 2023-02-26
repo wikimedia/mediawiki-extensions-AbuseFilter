@@ -26,6 +26,7 @@ use MWException;
 use OOUI;
 use SpecialBlock;
 use SpecialPage;
+use Wikimedia\Rdbms\LBFactory;
 use Xml;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
@@ -35,6 +36,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private $historyID;
 	/** @var int|string */
 	private $filter;
+
+	/** @var LBFactory */
+	private $lbFactory;
 
 	/** @var PermissionManager */
 	private $permissionManager;
@@ -61,6 +65,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private $specsFormatter;
 
 	/**
+	 * @param LBFactory $lbFactory
 	 * @param PermissionManager $permissionManager
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterProfiler $filterProfiler
@@ -76,6 +81,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param array $params
 	 */
 	public function __construct(
+		LBFactory $lbFactory,
 		PermissionManager $permissionManager,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterProfiler $filterProfiler,
@@ -91,6 +97,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->lbFactory = $lbFactory;
 		$this->permissionManager = $permissionManager;
 		$this->filterProfiler = $filterProfiler;
 		$this->filterLookup = $filterLookup;
@@ -121,7 +128,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$filter = $this->filter ? (int)$this->filter : null;
 		$history_id = $this->historyID;
 		if ( $this->historyID ) {
-			$dbr = wfGetDB( DB_REPLICA );
+			$dbr = $this->lbFactory->getReplicaDatabase();
 			$lastID = (int)$dbr->selectField(
 				'abuse_filter_history',
 				'afh_id',
@@ -1055,7 +1062,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$existingSelector->setDisabled( true );
 		} else {
 			// Find other messages.
-			$dbr = wfGetDB( DB_REPLICA );
+			$dbr = $this->lbFactory->getReplicaDatabase();
 			$pageTitlePrefix = "Abusefilter-$action";
 			$titles = $dbr->selectFieldValues(
 				'page',

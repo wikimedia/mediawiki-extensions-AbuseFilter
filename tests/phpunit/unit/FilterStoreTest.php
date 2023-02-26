@@ -11,7 +11,7 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWikiUnitTestCase;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @group Test
@@ -28,7 +28,7 @@ class FilterStoreTest extends MediaWikiUnitTestCase {
 			FilterStore::class,
 			new FilterStore(
 				$this->createMock( ConsequencesRegistry::class ),
-				$this->createMock( ILoadBalancer::class ),
+				$this->createMock( LBFactory::class ),
 				$this->createMock( FilterProfiler::class ),
 				$this->createMock( FilterLookup::class ),
 				$this->createMock( ChangeTagsManager::class ),

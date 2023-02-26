@@ -27,7 +27,7 @@ use Psr\Log\NullLogger;
 use Title;
 use User;
 use WANObjectCache;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
@@ -44,7 +44,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 			$this->createMock( TextExtractor::class ),
 			new AbuseFilterHookRunner( $this->createHookContainer( $hookHandlers ) ),
 			new NullLogger(),
-			$this->createMock( ILoadBalancer::class ),
+			$this->createMock( LBFactory::class ),
 			$this->createMock( WANObjectCache::class ),
 			$services['RevisionLookup'] ?? $this->createMock( RevisionLookup::class ),
 			$this->createMock( RevisionStore::class ),

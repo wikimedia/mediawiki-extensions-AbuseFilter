@@ -7,7 +7,7 @@ use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher
@@ -30,8 +30,8 @@ class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 			[ 'af_hit_count=af_hit_count+1' ],
 			[ 'af_id' => $localFilters ]
 		);
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnectionRef' )->willReturn( $localDB );
+		$lb = $this->createMock( LBFactory::class );
+		$lb->method( 'getPrimaryDatabase' )->willReturn( $localDB );
 
 		$globalDB = $this->createMock( IDatabase::class );
 		$globalDB->expects( $this->once() )->method( 'update' )->with(

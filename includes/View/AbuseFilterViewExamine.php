@@ -23,7 +23,7 @@ use MediaWiki\Revision\RevisionRecord;
 use OOUI;
 use RecentChange;
 use Title;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 use Xml;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
@@ -32,9 +32,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	private $testFilter;
 	/**
-	 * @var ILoadBalancer
+	 * @var LBFactory
 	 */
-	private $loadBalancer;
+	private $lbFactory;
 	/**
 	 * @var FilterLookup
 	 */
@@ -61,7 +61,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	private $varGeneratorFactory;
 
 	/**
-	 * @param ILoadBalancer $loadBalancer
+	 * @param LBFactory $lbFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterLookup $filterLookup
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
@@ -75,7 +75,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param array $params
 	 */
 	public function __construct(
-		ILoadBalancer $loadBalancer,
+		LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterLookup $filterLookup,
 		EditBoxBuilderFactory $boxBuilderFactory,
@@ -89,7 +89,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->loadBalancer = $loadBalancer;
+		$this->lbFactory = $lbFactory;
 		$this->filterLookup = $filterLookup;
 		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->varBlobStore = $varBlobStore;
@@ -170,7 +170,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	public function showResults( array $formData, HTMLForm $form ): bool {
 		$changesList = new AbuseFilterChangesList( $this->getContext(), $this->testFilter );
 
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		$conds = $this->buildVisibilityConditions( $dbr, $this->getAuthority() );
 		$conds[] = $this->buildTestConditions( $dbr );
 
@@ -241,7 +241,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function showExaminerForLogEntry( $logid ) {
 		// Get data
-		$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		$performer = $this->getAuthority();
 		$out = $this->getOutput();
 

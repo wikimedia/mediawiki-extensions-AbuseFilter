@@ -17,6 +17,7 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
 use Title;
+use Wikimedia\Rdbms\LBFactory;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
@@ -53,6 +54,10 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 */
 	public $mTestAction;
 	/**
+	 * @var LBFactory
+	 */
+	private $lbFactory;
+	/**
 	 * @var string The text of the rule to test changes against
 	 */
 	private $testPattern;
@@ -70,6 +75,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	private $varGeneratorFactory;
 
 	/**
+	 * @param LBFactory $lbFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
 	 * @param RuleCheckerFactory $ruleCheckerFactory
@@ -80,6 +86,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 * @param array $params
 	 */
 	public function __construct(
+		LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		EditBoxBuilderFactory $boxBuilderFactory,
 		RuleCheckerFactory $ruleCheckerFactory,
@@ -90,6 +97,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+		$this->lbFactory = $lbFactory;
 		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->varGeneratorFactory = $varGeneratorFactory;
@@ -224,7 +232,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			return;
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		$rcQuery = RecentChange::getQueryInfo();
 		$conds = [];
 
@@ -344,7 +352,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			&& count( $this->mParams ) > 1
 			&& is_numeric( $this->mParams[1] )
 		) {
-			$dbr = wfGetDB( DB_REPLICA );
+			$dbr = $this->lbFactory->getReplicaDatabase();
 			$pattern = $dbr->selectField( 'abuse_filter',
 				'af_pattern',
 				[ 'af_id' => intval( $this->mParams[1] ) ],

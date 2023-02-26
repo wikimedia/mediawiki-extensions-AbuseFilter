@@ -36,6 +36,7 @@ use Status;
 use stdClass;
 use Title;
 use WikiMap;
+use Wikimedia\Rdbms\LBFactory;
 use Xml;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
@@ -101,6 +102,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var string|null The filter group to search, as defined in $wgAbuseFilterValidGroups */
 	protected $mSearchGroup;
 
+	/** @var LBFactory */
+	private $lbFactory;
+
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
@@ -126,6 +130,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	private $varManager;
 
 	/**
+	 * @param LBFactory $lbFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param PermissionManager $permissionManager
 	 * @param UserIdentityLookup $userIdentityLookup
@@ -137,6 +142,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @param VariablesManager $varManager
 	 */
 	public function __construct(
+		LBFactory $lbFactory,
 		LinkBatchFactory $linkBatchFactory,
 		PermissionManager $permissionManager,
 		UserIdentityLookup $userIdentityLookup,
@@ -148,6 +154,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		VariablesManager $varManager
 	) {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
+		$this->lbFactory = $lbFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->permissionManager = $permissionManager;
 		$this->userIdentityLookup = $userIdentityLookup;
@@ -412,6 +419,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 	private function showHideView() {
 		$view = new HideAbuseLog(
+			$this->lbFactory,
 			$this->afPermissionManager,
 			$this->getContext(),
 			$this->getLinkRenderer(),
@@ -442,7 +450,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 		}
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		if ( $this->mSearchPeriodStart ) {
 			$conds[] = 'afl_timestamp >= ' .
 				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mSearchPeriodStart ) ) );
@@ -695,7 +703,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'join_conds' => $join_conds,
 		] = $pager->getQueryInfo();
 
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		$row = $dbr->selectRow(
 			$tables,
 			$fields,
@@ -820,6 +828,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * Helper function to select a row with private details and some more context
 	 * for an AbuseLog entry.
+	 * @todo Create a service for this
 	 *
 	 * @param Authority $authority The user who's trying to view the row
 	 * @param int $id The ID of the log entry
@@ -828,7 +837,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 */
 	public static function getPrivateDetailsRow( Authority $authority, $id ) {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$dbr = wfGetDB( DB_REPLICA );
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getReplicaDatabase();
 
 		$row = $dbr->selectRow(
 			[ 'abuse_filter_log', 'abuse_filter' ],
