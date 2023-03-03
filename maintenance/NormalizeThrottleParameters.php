@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
 use LoggedUpdateMaintenance;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use Wikimedia\Rdbms\IMaintainableDatabase;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -50,7 +51,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 		return 'NormalizeThrottleParameters';
 	}
 
-	/** @var \Wikimedia\Rdbms\Database The primary database */
+	/** @var IMaintainableDatabase The primary database */
 	private $dbw;
 
 	/**
@@ -481,7 +482,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 */
 	public function doDBUpdates() {
 		$dryRun = $this->hasOption( 'dry-run' );
-		$this->dbw = wfGetDB( DB_PRIMARY );
+		$this->dbw = $this->getDB( DB_PRIMARY );
 		$this->beginTransaction( $this->dbw, __METHOD__ );
 
 		$normalized = $this->normalizeParameters();
