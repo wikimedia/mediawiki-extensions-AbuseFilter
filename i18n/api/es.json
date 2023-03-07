@@ -10,6 +10,7 @@
 			"Macofe",
 			"MarcoAurelio",
 			"Ryo567",
+			"The Pro Gamer",
 			"Whytheonlyone"
 		]
 	},
@@ -29,6 +30,7 @@
 	"apihelp-abusefilterevalexpression-description": "Evalúa una expresión del filtro antiabusos.",
 	"apihelp-abusefilterevalexpression-summary": "Evalúa una expresión del filtro antiabusos.",
 	"apihelp-abusefilterevalexpression-param-expression": "La expresión que se evaluará.",
+	"apihelp-abusefilterevalexpression-param-prettyprint": "Si el resultado debe ser bastante impreso.",
 	"apihelp-abusefilterevalexpression-example-1": "Evaluar una expresión simple",
 	"apihelp-abusefilterevalexpression-example-2": "Evaluar una expresión simple, formateando el resultado.",
 	"apihelp-abusefilterunblockautopromote-description": "Desbloquea un usuario de recibir autopromociones como consecuencia del filtro antiabusos.",
