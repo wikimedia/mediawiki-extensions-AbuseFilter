@@ -258,6 +258,7 @@
 	"abusefilter-topnav-recentchanges": "לעצטע פֿילטער־ענדערונגען",
 	"abusefilter-topnav-log": "שלעכט־באניצן לאג",
 	"abusefilter-log-name": "פֿילטער לאגבוך",
+	"abusefilter-logentry-create": "$1 {{GENDER:$2|געשאַפֿן}} $4 ($5)",
 	"abusefilter-log-noresults": "קיין רעזולטאטן",
 	"abusefilter-diff-title": "אונטערשייד צווישן ווערסיעס",
 	"abusefilter-diff-item": "איינהייט",
