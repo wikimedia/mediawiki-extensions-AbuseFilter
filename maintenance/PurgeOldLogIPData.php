@@ -11,7 +11,6 @@ require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
 use Maintenance;
-use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 
 class PurgeOldLogIPData extends Maintenance {
@@ -28,8 +27,7 @@ class PurgeOldLogIPData extends Maintenance {
 	 */
 	public function execute() {
 		$this->output( "Purging old data from abuse_filter_log...\n" );
-		$dbw = wfGetDB( DB_PRIMARY );
-		$factory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
+		$dbw = $this->getDB( DB_PRIMARY );
 		$cutoffUnix = (int)MWTimestamp::now( TS_UNIX ) - $this->getConfig()->get( 'AbuseFilterLogIPMaxAge' );
 
 		$count = 0;
@@ -55,7 +53,7 @@ class PurgeOldLogIPData extends Maintenance {
 				$count += $dbw->affectedRows();
 				$this->output( "$count\n" );
 
-				$factory->waitForReplication();
+				$this->waitForReplication();
 			}
 		} while ( count( $ids ) >= $this->getBatchSize() );
 
