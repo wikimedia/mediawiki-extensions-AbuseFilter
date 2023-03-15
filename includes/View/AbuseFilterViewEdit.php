@@ -310,6 +310,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields['abusefilter-edit-description'] =
 			new OOUI\TextInputWidget( [
 				'name' => 'wpFilterDescription',
+				'id' => 'mw-abusefilter-edit-description-input',
 				'value' => $filterObj->getName(),
 				'readOnly' => $readOnly
 				]
