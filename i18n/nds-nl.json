@@ -110,6 +110,7 @@
 	"abusefilter-edit-main": "Filterparameters",
 	"abusefilter-edit-done-subtitle": "Filter ewiezigd",
 	"abusefilter-edit-history": "Geschiedenisse:",
+	"abusefilter-edit-tools": "Warktügen:",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmiese operatoren",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Uptellen (+)",
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "Aoftrekken (-)",
@@ -179,5 +180,6 @@
 	"abusefilter-revert-filter": "Filternummer:",
 	"abusefilter-revert-confirm": "Bevästigen",
 	"abusefilter-examine-user": "Gebruker:",
+	"abusefilter-topnav-home": "Höyvdmenü",
 	"abusefilter-topnav-log": "Misbruuklogbook"
 }

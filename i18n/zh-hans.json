@@ -89,7 +89,7 @@
 	"abusefilter-blocked-display": "系统已自动将您的操作识别为有害动作，故已阻止该操作。\n除此之外，为了保护{{SITENAME}}，您的用户帐户以及所有相关联的IP地址都被禁止进行编辑。\n如果您认为这是系统误判，请联系管理员。\n与您此次行为所匹配的过滤规则概述如下：$1",
 	"abusefilter-degrouped": "系统已自动将您的操作识别为有害动作，故已阻止该操作。\n另外，由于您的账户疑似遭到盗用，系统已剥夺您的账户的所有权限。\n如果您认为这是系统误判，请联系行政员解释此操作，这样或许能取回权限。\n与您此次行为所匹配的过滤规则概述如下：$1",
 	"abusefilter-autopromote-blocked": "系统已自动将您的操作识别为有害动作，故已阻止该操作。\n此外，为安全起见，您的账户被暂时剥夺了部分例行授予已创建账户的权限。\n与您此次行为所匹配的过滤规则概述如下：$1",
-	"abusefilter-blocker": "防滥用过滤器",
+	"abusefilter-blocker": "滥用过滤器",
 	"abusefilter-blockreason": "被防滥用过滤器自动封禁。\n匹配的规则说明：$1",
 	"abusefilter-degroupreason": "权限被防滥用过滤器自动剥夺。\n规则说明：$1",
 	"abusefilter-blockautopromotereason": "防滥用过滤器已将用户获自动授权的时间推迟。\n规则描述：$1",
