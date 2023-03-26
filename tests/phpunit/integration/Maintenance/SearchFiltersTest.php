@@ -41,6 +41,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 		$defaultRow = [
 			'af_user' => 0,
 			'af_user_text' => 'FilterTester',
+			'af_actor' => 1,
 			'af_timestamp' => $this->db->timestamp( '20190826000000' ),
 			'af_enabled' => 1,
 			'af_comments' => '',

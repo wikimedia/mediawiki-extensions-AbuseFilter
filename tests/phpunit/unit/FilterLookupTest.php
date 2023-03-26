@@ -3,8 +3,10 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use AbuseFilterRowsAndFiltersTestTrait;
+use ActorMigrationBase;
 use Generator;
 use HashBagOStuff;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterActorMigration;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
@@ -17,6 +19,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\User\ActorStoreFactory;
 use MediaWikiUnitTestCase;
 use stdClass;
 use WANObjectCache;
@@ -61,7 +64,15 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 			}
 		);
 		$centralDBManager = new CentralDBManager( $lbFactory, $centralDB, $filterIsCentral );
-		return new FilterLookup( $lb, $cache, $centralDBManager );
+		return new FilterLookup(
+			$lb,
+			$cache,
+			$centralDBManager,
+			new AbuseFilterActorMigration(
+				SCHEMA_COMPAT_READ_OLD | SCHEMA_COMPAT_WRITE_BOTH,
+				$this->createMock( ActorStoreFactory::class )
+			)
+		);
 	}
 
 	/**
@@ -73,11 +84,13 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	private function getDBWithMockRows( array $filterRows, array $actionRows = [] ): DBConnRef {
 		$db = $this->createMock( DBConnRef::class );
 		$db->method( 'selectRow' )->willReturnCallback( static function ( $table ) use ( $filterRows ) {
-			return $table === 'abuse_filter' || $table === 'abuse_filter_history' ? $filterRows[0] : false;
+			$tables = (array)$table;
+			return array_intersect( $tables, [ 'abuse_filter', 'abuse_filter_history' ] ) ? $filterRows[0] : false;
 		} );
 		$db->method( 'select' )->willReturnCallback(
 			static function ( $table, $_, $where ) use ( $filterRows, $actionRows ) {
-				if ( $table === 'abuse_filter_action' ) {
+				$tables = (array)$table;
+				if ( in_array( 'abuse_filter_action', $tables ) ) {
 					$ret = [];
 					foreach ( $actionRows as $row ) {
 						if ( $row->afa_filter === $where['afa_filter'] ) {
@@ -85,7 +98,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 						}
 					}
 					return $ret;
-				} elseif ( $table === 'abuse_filter' || $table === 'abuse_filter_history' ) {
+				} elseif ( array_intersect( $tables, [ 'abuse_filter', 'abuse_filter_history' ] ) ) {
 					return $filterRows;
 				} else {
 					return [];
@@ -374,7 +387,8 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 			new FilterLookup(
 				$this->createMock( ILoadBalancer::class ),
 				$this->createMock( WANObjectCache::class ),
-				$this->createMock( CentralDBManager::class )
+				$this->createMock( CentralDBManager::class ),
+				$this->createMock( ActorMigrationBase::class )
 			)
 		);
 	}

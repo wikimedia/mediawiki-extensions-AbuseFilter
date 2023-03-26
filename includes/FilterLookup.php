@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use ActorMigrationBase;
 use DBAccessObjectUtils;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
@@ -28,27 +29,6 @@ class FilterLookup implements IDBAccessObject {
 	// Used in getClosestVersion
 	public const DIR_PREV = 'prev';
 	public const DIR_NEXT = 'next';
-
-	/**
-	 * @var string[] The FULL list of fields in the abuse_filter table
-	 */
-	private const ALL_ABUSE_FILTER_FIELDS = [
-		'af_id',
-		'af_pattern',
-		'af_user',
-		'af_user_text',
-		'af_timestamp',
-		'af_enabled',
-		'af_comments',
-		'af_public_comments',
-		'af_hidden',
-		'af_hit_count',
-		'af_throttled',
-		'af_deleted',
-		'af_actions',
-		'af_global',
-		'af_group'
-	];
 
 	/**
 	 * @var ExistingFilter[] Individual filters cache. Keys can be integer IDs, or global names
@@ -88,19 +68,25 @@ class FilterLookup implements IDBAccessObject {
 	/** @var CentralDBManager */
 	private $centralDBManager;
 
+	/** @var ActorMigrationBase */
+	private $actorMigration;
+
 	/**
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WANObjectCache $cache
 	 * @param CentralDBManager $centralDBManager
+	 * @param ActorMigrationBase $actorMigration
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer,
 		WANObjectCache $cache,
-		CentralDBManager $centralDBManager
+		CentralDBManager $centralDBManager,
+		ActorMigrationBase $actorMigration
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->wanCache = $cache;
 		$this->centralDBManager = $centralDBManager;
+		$this->actorMigration = $actorMigration;
 	}
 
 	/**
@@ -116,13 +102,15 @@ class FilterLookup implements IDBAccessObject {
 		if ( $flags !== self::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 			$dbr = $this->getDBConnection( $dbIndex, $global );
+			$query = $this->getAbuseFilterQueryInfo();
 
 			$row = $dbr->selectRow(
-				'abuse_filter',
-				self::ALL_ABUSE_FILTER_FIELDS,
+				$query['tables'],
+				$query['fields'],
 				[ 'af_id' => $filterID ],
 				__METHOD__,
-				$dbOptions
+				$dbOptions,
+				$query['joins']
 			);
 			if ( !$row ) {
 				throw new FilterNotFoundException( $filterID, $global );
@@ -185,6 +173,7 @@ class FilterLookup implements IDBAccessObject {
 		[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 		$dbr = $this->getDBConnection( $dbIndex, $global );
 
+		$query = $this->getAbuseFilterQueryInfo();
 		$where = [
 			'af_enabled' => 1,
 			'af_deleted' => 0,
@@ -197,11 +186,12 @@ class FilterLookup implements IDBAccessObject {
 		// Note, excluding individually cached filter now wouldn't help much, so take it as
 		// an occasion to refresh the cache later
 		$rows = $dbr->select(
-			'abuse_filter',
-			self::ALL_ABUSE_FILTER_FIELDS,
+			$query['tables'],
+			$query['fields'],
 			$where,
 			__METHOD__,
-			$dbOptions
+			$dbOptions,
+			$query['joins']
 		);
 
 		$fname = __METHOD__;
@@ -272,13 +262,15 @@ class FilterLookup implements IDBAccessObject {
 		if ( $flags !== self::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 			$dbr = $this->loadBalancer->getConnectionRef( $dbIndex );
+			$query = $this->getAbuseFilterHistoryQueryInfo();
 
 			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				'*',
+				$query['tables'],
+				$query['fields'],
 				[ 'afh_id' => $version ],
 				__METHOD__,
-				$dbOptions
+				$dbOptions,
+				$query['joins']
 			);
 			if ( !$row ) {
 				throw new FilterVersionNotFoundException( $version );
@@ -297,12 +289,14 @@ class FilterLookup implements IDBAccessObject {
 	public function getLastHistoryVersion( int $filterID ): HistoryFilter {
 		if ( !isset( $this->lastVersionCache[$filterID] ) ) {
 			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$query = $this->getAbuseFilterHistoryQueryInfo();
 			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				'*',
+				$query['tables'],
+				$query['fields'],
 				[ 'afh_filter' => $filterID ],
 				__METHOD__,
-				[ 'ORDER BY' => 'afh_id DESC' ]
+				[ 'ORDER BY' => 'afh_id DESC' ],
+				$query['joins']
 			);
 			if ( !$row ) {
 				throw new FilterNotFoundException( $filterID, false );
@@ -326,15 +320,17 @@ class FilterLookup implements IDBAccessObject {
 			$comparison = $direction === self::DIR_PREV ? '<' : '>';
 			$order = $direction === self::DIR_PREV ? 'DESC' : 'ASC';
 			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$query = $this->getAbuseFilterHistoryQueryInfo();
 			$row = $dbr->selectRow(
-				'abuse_filter_history',
-				'*',
+				$query['tables'],
+				$query['fields'],
 				[
 					'afh_filter' => $filterID,
 					"afh_id $comparison" . $dbr->addQuotes( $historyID ),
 				],
 				__METHOD__,
-				[ 'ORDER BY' => "afh_timestamp $order" ]
+				[ 'ORDER BY' => "afh_timestamp $order" ],
+				$query['joins']
 			);
 			if ( !$row ) {
 				throw new ClosestFilterVersionNotFoundException( $filterID, $historyID );
@@ -478,6 +474,54 @@ class FilterLookup implements IDBAccessObject {
 			isset( $row->af_hit_count ) ? (int)$row->af_hit_count : null,
 			isset( $row->af_throttled ) ? (bool)$row->af_throttled : null
 		);
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getAbuseFilterQueryInfo(): array {
+		$actorQuery = $this->actorMigration->getJoin( 'af_user' );
+		return [
+			'tables' => [ 'abuse_filter' ] + $actorQuery['tables'],
+			'fields' => [
+					'af_id',
+					'af_pattern',
+					'af_timestamp',
+					'af_enabled',
+					'af_comments',
+					'af_public_comments',
+					'af_hidden',
+					'af_hit_count',
+					'af_throttled',
+					'af_deleted',
+					'af_actions',
+					'af_global',
+					'af_group'
+				] + $actorQuery['fields'],
+			'joins' => $actorQuery['joins']
+		];
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getAbuseFilterHistoryQueryInfo(): array {
+		$actorQuery = $this->actorMigration->getJoin( 'afh_user' );
+		return [
+			'tables' => [ 'abuse_filter_history' ] + $actorQuery['tables'],
+			'fields' => [
+					'afh_id',
+					'afh_pattern',
+					'afh_timestamp',
+					'afh_filter',
+					'afh_comments',
+					'afh_public_comments',
+					'afh_flags',
+					'afh_actions',
+					'afh_group'
+				] + $actorQuery['fields'],
+			'joins' => $actorQuery['joins']
+		];
 	}
 
 	/**
