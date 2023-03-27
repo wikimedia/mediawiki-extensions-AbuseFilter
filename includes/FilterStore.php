@@ -11,7 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserIdentity;
 use Status;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
 /**
  * @internal
@@ -22,8 +22,8 @@ class FilterStore {
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
+	/** @var LBFactory */
+	private $lbFactory;
 
 	/** @var FilterProfiler */
 	private $filterProfiler;
@@ -48,7 +48,7 @@ class FilterStore {
 
 	/**
 	 * @param ConsequencesRegistry $consequencesRegistry
-	 * @param ILoadBalancer $loadBalancer
+	 * @param LBFactory $lbFactory
 	 * @param FilterProfiler $filterProfiler
 	 * @param FilterLookup $filterLookup
 	 * @param ChangeTagsManager $tagsManager
@@ -59,7 +59,7 @@ class FilterStore {
 	 */
 	public function __construct(
 		ConsequencesRegistry $consequencesRegistry,
-		ILoadBalancer $loadBalancer,
+		LBFactory $lbFactory,
 		FilterProfiler $filterProfiler,
 		FilterLookup $filterLookup,
 		ChangeTagsManager $tagsManager,
@@ -69,7 +69,7 @@ class FilterStore {
 		ActorMigrationBase $actorMigration
 	) {
 		$this->consequencesRegistry = $consequencesRegistry;
-		$this->loadBalancer = $loadBalancer;
+		$this->lbFactory = $lbFactory;
 		$this->filterProfiler = $filterProfiler;
 		$this->filterLookup = $filterLookup;
 		$this->tagsManager = $tagsManager;
@@ -134,7 +134,7 @@ class FilterStore {
 		?int $filterId,
 		bool $wasGlobal
 	): array {
-		$dbw = $this->loadBalancer->getConnectionRef( DB_PRIMARY );
+		$dbw = $this->lbFactory->getPrimaryDatabase();
 		$newRow = $this->filterToDatabaseRow( $newFilter );
 
 		// Set last modifier.

@@ -29,7 +29,7 @@ use UnifiedDiffFormatter;
 use User;
 use WANObjectCache;
 use Wikimedia\Rdbms\Database;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 use WikiPage;
 
 /**
@@ -54,8 +54,8 @@ class LazyVariableComputer {
 	/** @var LoggerInterface */
 	private $logger;
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
+	/** @var LBFactory */
+	private $lbFactory;
 
 	/** @var WANObjectCache */
 	private $wanCache;
@@ -91,7 +91,7 @@ class LazyVariableComputer {
 	 * @param TextExtractor $textExtractor
 	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param LoggerInterface $logger
-	 * @param ILoadBalancer $loadBalancer
+	 * @param LBFactory $lbFactory
 	 * @param WANObjectCache $wanCache
 	 * @param RevisionLookup $revisionLookup
 	 * @param RevisionStore $revisionStore
@@ -107,7 +107,7 @@ class LazyVariableComputer {
 		TextExtractor $textExtractor,
 		AbuseFilterHookRunner $hookRunner,
 		LoggerInterface $logger,
-		ILoadBalancer $loadBalancer,
+		LBFactory $lbFactory,
 		WANObjectCache $wanCache,
 		RevisionLookup $revisionLookup,
 		RevisionStore $revisionStore,
@@ -122,7 +122,7 @@ class LazyVariableComputer {
 		$this->textExtractor = $textExtractor;
 		$this->hookRunner = $hookRunner;
 		$this->logger = $logger;
-		$this->loadBalancer = $loadBalancer;
+		$this->lbFactory = $lbFactory;
 		$this->wanCache = $wanCache;
 		$this->revisionLookup = $revisionLookup;
 		$this->revisionStore = $revisionStore;
@@ -416,7 +416,7 @@ class LazyVariableComputer {
 			return [];
 		}
 
-		$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		return $dbr->selectFieldValues(
 			'externallinks',
 			'el_to',
@@ -442,7 +442,7 @@ class LazyVariableComputer {
 			$this->wanCache->makeKey( 'last-10-authors', 'revision', $title->getLatestRevID() ),
 			WANObjectCache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title, $fname ) {
-				$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+				$dbr = $this->lbFactory->getReplicaDatabase();
 
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)

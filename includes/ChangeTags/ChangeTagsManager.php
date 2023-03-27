@@ -8,7 +8,7 @@ use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use WANObjectCache;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 
 /**
  * Database wrapper class which aids registering and reserving change tags
@@ -20,8 +20,8 @@ class ChangeTagsManager {
 	public const SERVICE_NAME = 'AbuseFilterChangeTagsManager';
 	private const CONDS_LIMIT_TAG = 'abusefilter-condition-limit';
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
+	/** @var LBFactory */
+	private $lbFactory;
 
 	/** @var WANObjectCache */
 	private $cache;
@@ -30,16 +30,16 @@ class ChangeTagsManager {
 	private $centralDBManager;
 
 	/**
-	 * @param ILoadBalancer $loadBalancer
+	 * @param LBFactory $lbFactory
 	 * @param WANObjectCache $cache
 	 * @param CentralDBManager $centralDBManager
 	 */
 	public function __construct(
-		ILoadBalancer $loadBalancer,
+		LBFactory $lbFactory,
 		WANObjectCache $cache,
 		CentralDBManager $centralDBManager
 	) {
-		$this->loadBalancer = $loadBalancer;
+		$this->lbFactory = $lbFactory;
 		$this->cache = $cache;
 		$this->centralDBManager = $centralDBManager;
 	}
@@ -117,7 +117,7 @@ class ChangeTagsManager {
 			$this->getCacheKeyForStatus( $enabled ),
 			WANObjectCache::TTL_MINUTE,
 			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled ) {
-				$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+				$dbr = $this->lbFactory->getReplicaDatabase();
 				try {
 					$globalDbr = $this->centralDBManager->getConnection( DB_REPLICA );
 				} catch ( CentralDBNotAvailableException $_ ) {

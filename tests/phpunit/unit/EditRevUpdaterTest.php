@@ -13,7 +13,7 @@ use Title;
 use TitleValue;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\LBFactory;
 use WikiPage;
 
 /**
@@ -32,7 +32,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 			new EditRevUpdater(
 				$this->createMock( CentralDBManager::class ),
 				$this->createMock( RevisionLookup::class ),
-				$this->createMock( ILoadBalancer::class ),
+				$this->createMock( LBFactory::class ),
 				''
 			)
 		);
@@ -50,15 +50,15 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		RevisionLookup $revLookup = null
 	): EditRevUpdater {
 		$localDB = $localDB ?? $this->createMock( DBConnRef::class );
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnectionRef' )->willReturn( $localDB );
+		$lbFactory = $this->createMock( LBFactory::class );
+		$lbFactory->method( 'getPrimaryDatabase' )->willReturn( $localDB );
 		$centralDB = $centralDB ?? $this->createMock( IDatabase::class );
 		$dbManager = $this->createMock( CentralDBManager::class );
 		$dbManager->method( 'getConnection' )->willReturn( $centralDB );
 		return new EditRevUpdater(
 			$dbManager,
 			$revLookup ?? $this->createMock( RevisionLookup::class ),
-			$lb,
+			$lbFactory,
 			'fake-wiki-id'
 		);
 	}
