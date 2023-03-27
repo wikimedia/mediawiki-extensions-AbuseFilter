@@ -89,7 +89,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 		$this->addFieldsIf( 'af_actions', $fld_actions );
 		$this->addFieldsIf( 'af_comments', $fld_comments );
 		if ( $fld_user ) {
-			$actorQuery = AbuseFilterServices::getAbuseFilterActorMigration()->getJoin( 'af_user' );
+			$actorQuery = AbuseFilterServices::getActorMigration()->getJoin( 'af_user' );
 			$this->addTables( $actorQuery['tables'] );
 			$this->addFields( [ 'af_user_text' => $actorQuery['fields']['af_user_text'] ] );
 			$this->addJoinConds( $actorQuery['joins'] );

@@ -189,7 +189,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
-		$afActorMigration = AbuseFilterServices::getAbuseFilterActorMigration();
+		$afActorMigration = AbuseFilterServices::getActorMigration();
 		$actorQuery = $afActorMigration->getJoin( 'afh_user' );
 		$info = [
 			'tables' => [ 'abuse_filter_history', 'abuse_filter' ] + $actorQuery['tables'],

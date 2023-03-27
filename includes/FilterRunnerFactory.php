@@ -20,7 +20,7 @@ use Title;
 use User;
 
 class FilterRunnerFactory {
-	public const SERVICE_NAME = 'AbuseFilterRunnerFactory';
+	public const SERVICE_NAME = 'AbuseFilterFilterRunnerFactory';
 
 	/** @var AbuseFilterHookRunner */
 	private $hookRunner;

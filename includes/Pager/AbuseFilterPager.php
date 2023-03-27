@@ -96,7 +96,7 @@ class AbuseFilterPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
-		$actorQuery = AbuseFilterServices::getAbuseFilterActorMigration()->getJoin( 'af_user' );
+		$actorQuery = AbuseFilterServices::getActorMigration()->getJoin( 'af_user' );
 		return [
 			'tables' => [ 'abuse_filter' ] + $actorQuery['tables'],
 			'fields' => [

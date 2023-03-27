@@ -149,7 +149,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 */
 	protected function normalizeParameters() {
 		$user = AbuseFilterServices::getFilterUser()->getUserIdentity();
-		$actorMigration = AbuseFilterServices::getAbuseFilterActorMigration();
+		$actorMigration = AbuseFilterServices::getActorMigration();
 		$dryRun = $this->hasOption( 'dry-run' );
 
 		// IDs of filters with invalid rate (count or period)
