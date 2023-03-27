@@ -106,7 +106,7 @@
 	"abusefilter-log-hide-id": "ID unosa:",
 	"abusefilter-log-hide-hidden": "Sakrij ovaj unos od javnog pregleda",
 	"abusefilter-log-hide-reason": "Razlog:",
-	"abusefilter-log-hide-reason-other": "Ostali/dodatni razlog:",
+	"abusefilter-log-hide-reason-other": "Drugi/dodatni razlog:",
 	"abusefilter-log-hide-forbidden": "Nemate dozvolu da sakrivate unose u evidenciji filtera zloupotrebe.",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|ga skrio|skrila}} je $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|ga odkrio|odkrila}} je $3",
