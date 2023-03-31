@@ -34,6 +34,10 @@ class ViewEditPage extends Page {
 	 */
 	async switchEditor() {
 		const button = await $( '#mw-abusefilter-switcheditor' );
+		if ( !await button.isExisting() ) {
+			// CodeEditor not installed, nothing to do here.
+			return;
+		}
 		await button.waitForClickable();
 		await button.click();
 	}
