@@ -20,9 +20,14 @@ describe( 'Filter editing', function () {
 	} );
 
 	describe( 'Trying to open a non-existing filter', function () {
+		before( async function () {
+			await LoginPage.loginAdmin();
+		} );
+
 		it( 'I should receive an error', async function () {
 			await ViewEditPage.open( 1234567 );
 			assert( await ViewEditPage.error.isDisplayed() );
+			assert.strictEqual( await ViewEditPage.error.getText(), 'The filter you specified does not exist' );
 		} );
 	} );
 
@@ -44,6 +49,7 @@ describe( 'Filter editing', function () {
 
 	describe( 'Creating a new filter', function () {
 		before( async function () {
+			await LoginPage.loginAdmin();
 			await ViewEditPage.open( 'new' );
 		} );
 
@@ -67,11 +73,16 @@ describe( 'Filter editing', function () {
 
 		it( 'saved data is retained (1)', async function () {
 			await ViewEditPage.open( filterID );
-			assertFirstVersionSaved();
+			await assertFirstVersionSaved();
 		} );
 	} );
 
 	describe( 'Editing an existing filter', function () {
+		before( async function () {
+			await LoginPage.loginAdmin();
+			await ViewEditPage.open( filterID );
+		} );
+
 		const newName = 'New filter name',
 			newNotes = 'More filter notes';
 
@@ -90,6 +101,10 @@ describe( 'Filter editing', function () {
 	} );
 
 	describe( 'Restoring an old version of a filter', function () {
+		before( async function () {
+			await LoginPage.loginAdmin();
+		} );
+
 		it( 'edit can be saved (3)', async function () {
 			await ViewEditPage.open( 'history/' + filterID + '/item/' + historyID );
 			await ViewEditPage.submit();
@@ -98,11 +113,16 @@ describe( 'Filter editing', function () {
 
 		it( 'saved data is retained (3)', async function () {
 			await ViewEditPage.open( filterID );
-			assertFirstVersionSaved();
+			await assertFirstVersionSaved();
 		} );
 	} );
 
 	describe( 'CSRF protection', function () {
+		before( async function () {
+			await LoginPage.loginAdmin();
+			await ViewEditPage.open( 'new' );
+		} );
+
 		const filterName = 'Testing CSRF';
 
 		it( 'a CSRF token is required to save the filter', async function () {
@@ -118,6 +138,7 @@ describe( 'Filter editing', function () {
 
 	describe( 'Trying to save a filter with bad data', function () {
 		before( async function () {
+			await LoginPage.loginAdmin();
 			await ViewEditPage.open( 'new' );
 		} );
 
@@ -126,7 +147,7 @@ describe( 'Filter editing', function () {
 			assert( await ViewEditPage.error.isDisplayed() );
 		} );
 
-		const rules = 'null';
+		const rules = 'action === "edit"';
 
 		it( 'cannot save a filter with rules but no name', async function () {
 			await ViewEditPage.switchEditor();
@@ -135,8 +156,7 @@ describe( 'Filter editing', function () {
 			assert( await ViewEditPage.error.isDisplayed() );
 		} );
 
-		it.skip( 'data is retained if saving fails', async function () {
-			await ViewEditPage;
+		it( 'data is retained if saving fails', async function () {
 			const rulesValue = await ViewEditPage.rules.getValue();
 			assert.strictEqual( rulesValue, rules + '\n' );
 		} );
