@@ -129,7 +129,11 @@ class VariableGenerator {
 		string $prefix,
 		RecentChange $rc = null
 	): self {
-		$this->vars->setVar( $prefix . '_id', $title->getArticleID() );
+		if ( $rc && $rc->getAttribute( 'rc_type' ) == RC_NEW ) {
+			$this->vars->setVar( $prefix . '_id', 0 );
+		} else {
+			$this->vars->setVar( $prefix . '_id', $title->getArticleID() );
+		}
 		$this->vars->setVar( $prefix . '_namespace', $title->getNamespace() );
 		$this->vars->setVar( $prefix . '_title', $title->getText() );
 		$this->vars->setVar( $prefix . '_prefixedtitle', $title->getPrefixedText() );

@@ -83,7 +83,7 @@ class RCVariableGenerator extends VariableGenerator {
 					return null;
 			}
 		} elseif ( $this->rc->getAttribute( 'rc_this_oldid' ) ) {
-			// It's an edit.
+			// It's an edit (or a page creation).
 			$this->addEditVarsForRow();
 		} elseif (
 			!$this->hookRunner->onAbuseFilterGenerateVarsForRecentChange(
