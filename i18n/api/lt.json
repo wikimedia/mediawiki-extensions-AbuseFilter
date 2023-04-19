@@ -11,6 +11,7 @@
 	"apihelp-abusefilterevalexpression-example-1": "Įvertinti paprastą išraišką",
 	"apihelp-abusefilterunblockautopromote-param-user": "Vartotojo vardas, kurį norite atblokuoti.",
 	"apihelp-query+abusefilters-description": "Rodyti piktnaudžiavimo filtrų detales.",
+	"apihelp-query+abusefilters-summary": "Rodyti informaciją apie piktnaudžiavimo filtrus.",
 	"apihelp-query+abusefilters-param-show": "Rodyti tik filtrus, kurie atitinką kriterijų.",
 	"apihelp-query+abusefilters-param-limit": "Maksimalus numeris filtrų sąraše.",
 	"apihelp-query+abusefilters-param-prop": "Kurias savybes gauti.",
@@ -25,5 +26,7 @@
 	"apihelp-query+abuselog-param-limit": "Maksimalus kiekis įrašų sąraše.",
 	"apihelp-query+abuselog-param-prop": "Kurias savybes gauti.",
 	"apihelp-query+abuselog-example-1": "Rodyti naujus žurnalo įrašus",
-	"apihelp-query+abuselog-example-2": "Rodyti naujus [[API]] žurnalo įrašus"
+	"apihelp-query+abuselog-example-2": "Rodyti naujus [[API]] žurnalo įrašus",
+	"apierror-abusefilter-canttest": "Neturite leidimo išbandyti piktnaudžiavimo filtrus.",
+	"apierror-abusefilter-badsyntax": "Filtro sintaksė neteisinga."
 }
