@@ -141,7 +141,7 @@
 				"class": "MediaWiki\\Extension\\AbuseFilter\\AbuseFilterPreAuthenticationProvider",
 				"services": [
 					"AbuseFilterVariableGeneratorFactory",
-					"AbuseFilterRunnerFactory",
+					"AbuseFilterFilterRunnerFactory",
 					"StatsdDataFactory",
 					"UserFactory"
 				],
@@ -342,7 +342,7 @@
 		},
 		"FilteredActions": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\FilteredActionsHandler",
-			"services": [ "StatsdDataFactory", "AbuseFilterRunnerFactory", "AbuseFilterVariableGeneratorFactory", "AbuseFilterEditRevUpdater" ]
+			"services": [ "StatsdDataFactory", "AbuseFilterFilterRunnerFactory", "AbuseFilterVariableGeneratorFactory", "AbuseFilterEditRevUpdater" ]
 		},
 		"CheckUser": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\CheckUserHandler",

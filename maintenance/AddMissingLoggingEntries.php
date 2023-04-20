@@ -50,7 +50,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 		$legacyParamsLike = $db->buildLike( $logParamsConcat, $db->anyString() );
 		// Non-legacy entries are a serialized array with 'newId' and 'historyId' keys
 		$newLogParamsLike = $db->buildLike( $db->anyString(), 'historyId', $db->anyString() );
-		$actorQuery = AbuseFilterServices::getAbuseFilterActorMigration()->getJoin( 'afh_user' );
+		$actorQuery = AbuseFilterServices::getActorMigration()->getJoin( 'afh_user' );
 		// Find all entries in abuse_filter_history without logging entry of same timestamp
 		$afhResult = $db->select(
 			[ 'abuse_filter_history', 'logging' ] + $actorQuery['tables'],

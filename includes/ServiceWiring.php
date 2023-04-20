@@ -372,6 +372,10 @@ return [
 			$services->getActorStoreFactory(),
 		);
 	},
+	// b/c for extensions
+	'AbuseFilterRunnerFactory' => static function ( MediaWikiServices $services ): FilterRunnerFactory {
+		return $services->get( FilterRunnerFactory::SERVICE_NAME );
+	},
 ];
 
 // @codeCoverageIgnoreEnd
