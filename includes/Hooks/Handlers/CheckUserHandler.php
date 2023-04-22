@@ -2,17 +2,17 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use MediaWiki\CheckUser\Hook\CheckUserInsertChangesRow;
-use MediaWiki\CheckUser\Hook\CheckUserInsertLogEventRow;
-use MediaWiki\CheckUser\Hook\CheckUserInsertPrivateEventRow;
+use MediaWiki\CheckUser\Hook\CheckUserInsertChangesRowHook;
+use MediaWiki\CheckUser\Hook\CheckUserInsertLogEventRowHook;
+use MediaWiki\CheckUser\Hook\CheckUserInsertPrivateEventRowHook;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserIdentity;
 use RecentChange;
 
 class CheckUserHandler implements
-	CheckUserInsertChangesRow,
-	CheckUserInsertPrivateEventRow,
-	CheckUserInsertLogEventRow
+	CheckUserInsertChangesRowHook,
+	CheckUserInsertPrivateEventRowHook,
+	CheckUserInsertLogEventRowHook
 {
 
 	/** @var FilterUser */
