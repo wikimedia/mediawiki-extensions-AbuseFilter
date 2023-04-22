@@ -366,6 +366,8 @@
 		"PageSaveComplete": "PageSave",
 		"RenameUserSQL": "UserRename",
 		"CheckUserInsertChangesRow": "CheckUser",
+		"CheckUserInsertPrivateEventRow": "CheckUser",
+		"CheckUserInsertLogEventRow": "CheckUser",
 		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler::onUserMergeAccountFields",
 		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
 		"ParserOutputStashForEdit": "FilteredActions",
