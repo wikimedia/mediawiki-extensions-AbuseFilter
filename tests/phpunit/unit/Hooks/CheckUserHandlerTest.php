@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Hooks;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\CheckUserHandler;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserNameUtils;
 use MediaWikiUnitTestCase;
 
 /**
@@ -15,9 +16,10 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 
 	private function getCheckUserHandler(): CheckUserHandler {
 		$filterUser = $this->createMock( FilterUser::class );
+		$userNameUtils = $this->createMock( UserNameUtils::class );
 		$filterUser->method( 'getUserIdentity' )
 			->willReturn( new UserIdentityValue( 1, 'Abuse filter' ) );
-		return new CheckUserHandler( $filterUser );
+		return new CheckUserHandler( $filterUser, $userNameUtils );
 	}
 
 	private function commonInsertHookAssertions( $shouldChange, $agentField, $ip, $xff, $row ) {

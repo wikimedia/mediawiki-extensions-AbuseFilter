@@ -214,7 +214,8 @@ return [
 			// TODO: Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain(),
 			$services->getUserEditTracker(),
-			$services->getUserFactory()
+			$services->getUserFactory(),
+			$services->getUserNameUtils()
 		);
 	},
 	EditBoxBuilderFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): EditBoxBuilderFactory {
@@ -275,6 +276,7 @@ return [
 			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->getUserNameUtils(),
 			new ServiceOptions(
 				ConsequencesExecutor::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
