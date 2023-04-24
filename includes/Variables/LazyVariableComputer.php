@@ -8,6 +8,7 @@ use Language;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
+use MediaWiki\ExternalLinks\ExternalLinksLookup;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Permissions\RestrictionStore;
 use MediaWiki\Revision\RevisionLookup;
@@ -410,19 +411,15 @@ class LazyVariableComputer {
 	 * @return array
 	 */
 	private function getLinksFromDB( WikiPage $article ) {
-		// Stolen from ConfirmEdit, SimpleCaptcha::getLinksFromTracker
 		$id = $article->getId();
 		if ( !$id ) {
 			return [];
 		}
 
-		$dbr = $this->lbFactory->getReplicaDatabase();
-		return $dbr->selectFieldValues(
-			'externallinks',
-			'el_to',
-			[ 'el_from' => $id ],
-			__METHOD__,
-			[ 'DISTINCT' ]
+		return ExternalLinksLookup::getExternalLinksForPage(
+			$id,
+			$this->lbFactory->getReplicaDatabase(),
+			__METHOD__
 		);
 	}
 
