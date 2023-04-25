@@ -43,6 +43,7 @@ use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Session\SessionManager;
+use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\Equivset\Equivset;
 
 // This file is actually covered by AbuseFilterServicesTest, but it's not possible to specify a path
