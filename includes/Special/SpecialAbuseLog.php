@@ -30,12 +30,12 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonInputWidget;
 use SpecialPage;
 use Status;
 use stdClass;
 use Title;
-use WikiMap;
 use Wikimedia\Rdbms\LBFactory;
 use Xml;
 

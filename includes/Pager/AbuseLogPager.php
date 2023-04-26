@@ -14,12 +14,12 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\WikiMap\WikiMap;
 use ReverseChronologicalPager;
 use Sanitizer;
 use SpecialPage;
 use stdClass;
 use Title;
-use WikiMap;
 use Wikimedia\Rdbms\IResultWrapper;
 use Xml;
 
