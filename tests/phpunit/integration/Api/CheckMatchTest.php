@@ -22,7 +22,7 @@ class CheckMatchTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_noPermissions() {
-		$this->setExpectedApiException( 'apierror-abusefilter-canttest', 'permissiondenied' );
+		$this->expectApiErrorCode( 'permissiondenied' );
 
 		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory() );
 
@@ -79,7 +79,7 @@ class CheckMatchTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_error() {
-		$this->setExpectedApiException( 'apierror-abusefilter-badsyntax', 'badsyntax' );
+		$this->expectApiErrorCode( 'badsyntax' );
 		$filter = 'sampleFilter';
 		$status = new ParserStatus( $this->createMock( InternalException::class ), [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );

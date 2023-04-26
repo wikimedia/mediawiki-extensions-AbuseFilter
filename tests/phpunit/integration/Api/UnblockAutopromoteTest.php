@@ -19,10 +19,7 @@ class UnblockAutopromoteTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_noPermissions() {
-		$this->setExpectedApiException( [
-			'apierror-permissiondenied',
-			wfMessage( 'action-abusefilter-modify' )
-		] );
+		$this->expectApiErrorCode( 'permissiondenied' );
 
 		$store = $this->createMock( BlockAutopromoteStore::class );
 		$store->expects( $this->never() )->method( 'unblockAutopromote' );
@@ -39,11 +36,7 @@ class UnblockAutopromoteTest extends ApiTestCase {
 	 */
 	public function testExecute_invalidUser() {
 		$invalid = 'invalid#username';
-		$this->setExpectedApiException( [
-			'apierror-baduser',
-			'user',
-			$invalid
-		] );
+		$this->expectApiErrorCode( 'baduser' );
 
 		$store = $this->createMock( BlockAutopromoteStore::class );
 		$store->expects( $this->never() )->method( 'unblockAutopromote' );
@@ -59,7 +52,7 @@ class UnblockAutopromoteTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_blocked() {
-		$this->setExpectedApiException( 'apierror-blocked', 'blocked' );
+		$this->expectApiErrorCode( 'blocked' );
 		$user = self::getTestUser( [ 'sysop' ] )->getUser();
 
 		$store = $this->createMock( BlockAutopromoteStore::class );
@@ -83,7 +76,7 @@ class UnblockAutopromoteTest extends ApiTestCase {
 	public function testExecute_nothingToDo() {
 		$target = 'User';
 		$user = self::getTestUser( [ 'sysop' ] )->getUser();
-		$this->setExpectedApiException( [ 'abusefilter-reautoconfirm-none', $target ] );
+		$this->expectApiErrorCode( 'notsuspended' );
 
 		$store = $this->createMock( BlockAutopromoteStore::class );
 		$store->expects( $this->once() )

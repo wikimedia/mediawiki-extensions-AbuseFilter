@@ -21,7 +21,7 @@ class CheckSyntaxTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_noPermissions() {
-		$this->setExpectedApiException( 'apierror-abusefilter-cantcheck', 'permissiondenied' );
+		$this->expectApiErrorCode( 'permissiondenied' );
 
 		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory() );
 

@@ -20,7 +20,7 @@ class EvalExpressionTest extends ApiTestCase {
 	 * @covers ::execute
 	 */
 	public function testExecute_noPermissions() {
-		$this->setExpectedApiException( 'apierror-abusefilter-canteval', 'permissiondenied' );
+		$this->expectApiErrorCode( 'permissiondenied' );
 
 		$this->setService( RuleCheckerFactory::SERVICE_NAME, $this->getRuleCheckerFactory() );
 
@@ -35,7 +35,7 @@ class EvalExpressionTest extends ApiTestCase {
 	 * @covers ::evaluateExpression
 	 */
 	public function testExecute_error() {
-		$this->setExpectedApiException( 'abusefilter-tools-syntax-error' );
+		$this->expectApiErrorCode( 'abusefilter-tools-syntax-error' );
 		$expression = 'sampleExpression';
 		$status = new ParserStatus( $this->createMock( InternalException::class ), [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
