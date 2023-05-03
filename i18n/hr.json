@@ -479,7 +479,7 @@
 	"abusefilter-topnav-recentchanges": "Nedavne promjene filtra",
 	"abusefilter-topnav-test": "Testiranje",
 	"abusefilter-topnav-examine": "Ispitajte prošla uređivanja",
-	"abusefilter-topnav-log": "Evidencija zlouporaba",
+	"abusefilter-topnav-log": "Evidencija zloporaba",
 	"abusefilter-topnav-tools": "Pomagala",
 	"abusefilter-log-name": "Evidencija filtra zloporaba",
 	"abusefilter-log-header": "Evidencija prikazuje sažetak promjena koje su napravljene filtrima.\nZa detaljnije informacije, vidi [[Special:AbuseFilter/history|popis]] nedavnih izmjena filtara.",
