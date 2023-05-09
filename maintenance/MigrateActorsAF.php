@@ -8,12 +8,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
-if ( getenv( 'MW_INSTALL_PATH' ) ) {
-	$IP = getenv( 'MW_INSTALL_PATH' );
-} else {
-	$IP = __DIR__ . '/../../..';
-}
-
 use LoggedUpdateMaintenance;
 use MediaWiki\MediaWikiServices;
 use stdClass;
@@ -306,5 +300,5 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 
 }
 
-$maintClass = "MigrateActorsAF";
+$maintClass = MigrateActorsAF::class;
 require_once RUN_MAINTENANCE_IF_MAIN;
