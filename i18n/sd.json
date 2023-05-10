@@ -60,6 +60,7 @@
 	"abusefilter-list-options-scope-local": "صرف مقامي اصول",
 	"abusefilter-edit-status-label": "انگ-اکر:",
 	"abusefilter-edit-field-description": "تشريح",
+	"abusefilter-throttle-editcount": "سنوارن جو ڳاڻيٽو",
 	"abusefilter-throttle-page": "صفحو",
 	"abusefilter-throttle-none": "(ڪوبہ نہ)",
 	"abusefilter-edit-warn-actions": "عملَ:",
@@ -79,5 +80,6 @@
 	"abusefilter-topnav-log": "غلط-استعمال لاگ",
 	"abusefilter-log-name": "غلط-استعمال ڇاڻي لاگ",
 	"abusefilter-log-noresults": "نتيجا ناھن",
+	"abusefilter-diff-title": "ورزنن وچ ۾ تفاوت",
 	"abusefilter-diff-item": "جزو"
 }
