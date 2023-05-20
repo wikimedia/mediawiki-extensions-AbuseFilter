@@ -218,7 +218,7 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $profiler->getGroupProfile( $group ) );
 	}
 
-	public function provideRecordStats(): array {
+	public static function provideRecordStats(): array {
 		return [
 			'No overflow' => [
 				100,

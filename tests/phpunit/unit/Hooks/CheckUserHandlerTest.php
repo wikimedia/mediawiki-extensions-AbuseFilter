@@ -94,7 +94,7 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 		$this->commonInsertHookAssertions( $shouldChange, 'cule_agent', $ip, $xff, $row );
 	}
 
-	public function provideDataForCheckUserInsertHooks() {
+	public static function provideDataForCheckUserInsertHooks() {
 		return [
 			'Anonymous user' => [ UserIdentityValue::newAnonymous( '127.0.0.1' ), false ],
 			'Registered user' => [ new UserIdentityValue( 2, 'Test' ), false ],

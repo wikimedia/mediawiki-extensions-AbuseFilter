@@ -83,7 +83,7 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $value, $dbManager->filterIsCentral() );
 	}
 
-	public function provideIsCentral() {
+	public static function provideIsCentral() {
 		return [
 			'central' => [ true ],
 			'not central' => [ false ]

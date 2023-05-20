@@ -844,7 +844,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideFilters() {
+	public static function provideFilters() {
 		return [
 			'Basic test for "edit" action' => [
 				[ 1, 2 ],
@@ -1067,7 +1067,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideThrottleFilters() {
+	public static function provideThrottleFilters() {
 		return [
 			'Basic test for throttling edits' => [
 				[ 11 ],
@@ -1192,7 +1192,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideWarnFilters() {
+	public static function provideWarnFilters() {
 		return [
 			'Basic test for warning and then tag' => [
 				[ 1 ],
@@ -1283,7 +1283,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideFiltersAndVariables() {
+	public static function provideFiltersAndVariables() {
 		return [
 			[
 				[ 1, 2 ],
@@ -1404,7 +1404,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideStashedEdits() {
+	public static function provideStashedEdits() {
 		$sets = [
 			[
 				[ 1, 2 ],
@@ -1567,7 +1567,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideGlobalFilters() {
+	public static function provideGlobalFilters() {
 		return [
 			[
 				[ 18 ],

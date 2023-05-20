@@ -91,7 +91,7 @@ class ParserTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideExpressions() {
+	public static function provideExpressions() {
 		return [
 			[ '1 === 1', true ],
 			[ 'rescape( "abc* (def)" )', 'abc\* \(def\)' ],
@@ -119,7 +119,7 @@ class ParserTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideEmptySyntax() {
+	public static function provideEmptySyntax() {
 		return [
 			[ '' ],
 			[ ';;;;' ]
@@ -763,7 +763,7 @@ class ParserTest extends ParserTestCase {
 	 * Data provider for testCheckArgCountInConditional
 	 * @return array
 	 */
-	public function provideFuncsForConditional() {
+	public static function provideFuncsForConditional() {
 		return [
 			[ 'count()', 'noparams' ],
 			[ 'bool()', 'noparams' ],
@@ -847,7 +847,7 @@ class ParserTest extends ParserTestCase {
 	 *
 	 * @return Generator
 	 */
-	public function provideConsecutiveComparisons() {
+	public static function provideConsecutiveComparisons() {
 		$eqOps = [ '==', '===', '!=', '!==', '=' ];
 		$ordOps = [ '<', '>', '<=', '>=' ];
 		$ops = array_merge( $eqOps, $ordOps );
@@ -887,7 +887,7 @@ class ParserTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideArrayAssignmentShortCircuit() {
+	public static function provideArrayAssignmentShortCircuit() {
 		return [
 			[ 'a := [true]; false & (a[] := 2); a[0]' ],
 			[ 'a := [true]; false & (a[1] := 2); a[0]' ],
@@ -909,7 +909,7 @@ class ParserTest extends ParserTestCase {
 	 * Data provider for testVarDeclarationInSkippedBlock
 	 * @return array
 	 */
-	public function provideVarDeclarationInSkippedBlock() {
+	public static function provideVarDeclarationInSkippedBlock() {
 		return [
 			[ "x := [5]; false & (1 == 1; y := 'b'; x[1] := 'x'; 3 < 4); y != 'b' & x[1] != 'x'" ],
 			[ "false & (set('myvar', 1)); myvar contains 1" ],
@@ -950,7 +950,7 @@ class ParserTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideDUNDEFINED() {
+	public static function provideDUNDEFINED() {
 		return [
 			[ "5 / length( new_wikitext ) !== 3 ** edit_delta & " .
 				"float( timestamp / (user_age + 0.000001) ) !== 0.0" ],
@@ -1004,7 +1004,7 @@ class ParserTest extends ParserTestCase {
 	 * Data provider for testBuiltinArrays
 	 * @return array
 	 */
-	public function provideBuiltinArrays() {
+	public static function provideBuiltinArrays() {
 		return [
 			[ "removed_lines[1] == 2" ],
 			[ "added_lines[0] contains 'x'" ],
@@ -1028,7 +1028,7 @@ class ParserTest extends ParserTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideEmptyOperands() {
+	public static function provideEmptyOperands() {
 		return [
 			[ '(0 |)', 'bool operand' ],
 			[ '(1 |)', 'bool operand' ],
@@ -1081,7 +1081,7 @@ class ParserTest extends ParserTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideDanglingCommasInVariargs() {
+	public static function provideDanglingCommasInVariargs() {
 		return [
 			[ "contains_any('a','b','c',)" ],
 			[ "contains_all(1,1,1,1,1,1,1,)" ],
@@ -1104,7 +1104,7 @@ class ParserTest extends ParserTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideExtraCommas() {
+	public static function provideExtraCommas() {
 		return [
 			[ "norm(,,,)" ],
 			[ "str_replace(,'x','y')" ],
@@ -1132,7 +1132,7 @@ class ParserTest extends ParserTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideArgsErrorsInSyntaxCheck() {
+	public static function provideArgsErrorsInSyntaxCheck() {
 		return [
 			[ 'accountname rlike "("', 'regexfailure' ],
 			[ 'contains_any( new_wikitext, "foo", 3/0 )', 'dividebyzero' ],

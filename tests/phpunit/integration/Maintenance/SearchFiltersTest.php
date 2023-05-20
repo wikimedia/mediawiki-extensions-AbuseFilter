@@ -72,7 +72,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 		return $expected;
 	}
 
-	public function provideSearches(): Generator {
+	public static function provideSearches(): Generator {
 		yield 'single filter' => [ 'page_title', [ 2 ] ];
 		yield 'multiple filters' => [ 'rmspecials', [ 2, 4 ] ];
 		yield 'regex' => [ '[a-z]\(', [ 2, 4 ] ];

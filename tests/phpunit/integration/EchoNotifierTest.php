@@ -32,7 +32,7 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		return $lookup;
 	}
 
-	public function provideDataForEvent(): array {
+	public static function provideDataForEvent(): array {
 		return [
 			[ true, 1, 1 ],
 			[ true, 2, 42 ],

@@ -142,7 +142,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideVariables() {
+	public static function provideVariables() {
 		return [
 			'Only basic variables' => [
 				[

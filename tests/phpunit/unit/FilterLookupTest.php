@@ -125,7 +125,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideFilterVersions(): Generator {
+	public static function provideFilterVersions(): Generator {
 		$version = 163;
 		$filters = [
 			'no actions' => new HistoryFilter(
@@ -315,7 +315,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	 * Provider to account for central vs non-central filter DB
 	 * @return array
 	 */
-	public function provideIsCentral() {
+	public static function provideIsCentral() {
 		return [
 			'central' => [ true ],
 			'not central' => [ false ]

@@ -88,7 +88,7 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideInvalidData() {
+	public static function provideInvalidData() {
 		$cases = [
 			'non-object' => 'foo',
 			'bad top-level keys' => (object)[ 'foo' => 1 ],
@@ -140,7 +140,7 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideRoundTrip(): Generator {
+	public static function provideRoundTrip(): Generator {
 		$actions = [
 			'block' => [],
 			'warn' => []
