@@ -56,7 +56,7 @@ class VariablesFormatterTest extends MediaWikiUnitTestCase {
 	 * Provider for testFormatVar
 	 * @return array
 	 */
-	public function provideFormatVar() {
+	public static function provideFormatVar() {
 		return [
 			'boolean' => [ true, 'true' ],
 			'single-quote string' => [ 'foo', "'foo'" ],

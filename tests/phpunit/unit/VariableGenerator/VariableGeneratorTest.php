@@ -121,7 +121,7 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( $expectedKeys, $lazyVars );
 	}
 
-	public function provideTitleVarsLazy(): Generator {
+	public static function provideTitleVarsLazy(): Generator {
 		$prefixes = [ 'page', 'moved_from', 'moved_to' ];
 		foreach ( $prefixes as $prefix ) {
 			$expectedKeys = [

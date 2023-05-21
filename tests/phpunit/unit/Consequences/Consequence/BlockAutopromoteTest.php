@@ -65,7 +65,7 @@ class BlockAutopromoteTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $success, $blockAutopromote->execute() );
 	}
 
-	public function provideExecute(): array {
+	public static function provideExecute(): array {
 		return [
 			[ true ],
 			[ false ]

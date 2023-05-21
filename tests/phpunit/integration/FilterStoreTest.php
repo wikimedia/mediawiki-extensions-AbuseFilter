@@ -93,7 +93,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public function provideSaveFilter_valid(): array {
+	public static function provideSaveFilter_valid(): array {
 		return [
 			[ SCHEMA_COMPAT_OLD ],
 			[ SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD ],

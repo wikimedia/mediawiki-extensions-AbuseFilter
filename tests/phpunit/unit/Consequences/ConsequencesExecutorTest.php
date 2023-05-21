@@ -131,7 +131,7 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return array
 	 */
-	public function provideConsequences(): array {
+	public static function provideConsequences(): array {
 		return [
 			'warn and throttle exclude other actions' => [
 				[

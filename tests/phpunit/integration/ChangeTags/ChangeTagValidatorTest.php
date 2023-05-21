@@ -30,7 +30,7 @@ class ChangeTagValidatorTest extends MediaWikiIntegrationTestCase {
 	 * Data provider for testValidateTag
 	 * @return array
 	 */
-	public function provideTags() {
+	public static function provideTags() {
 		return [
 			'invalid chars' => [ 'a|b', 'tags-create-invalid-chars' ],
 			'core-reserved tag' => [ 'mw-undo', 'abusefilter-edit-bad-tags' ],

@@ -144,7 +144,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $updater->updateRev( $page, $rev ) );
 	}
 
-	public function provideIDsSuccess(): array {
+	public static function provideIDsSuccess(): array {
 		return [
 			'local only' => [ [ 'local' => [ 1, 2 ], 'global' => [] ] ],
 			'global only' => [ [ 'local' => [], 'global' => [ 1, 2 ] ] ],
@@ -201,7 +201,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$updater->setLogIdsForTarget( new TitleValue( NS_MAIN, 'x' ), $ids );
 	}
 
-	public function provideInvalidIDs(): array {
+	public static function provideInvalidIDs(): array {
 		return [
 			'empty' => [ [] ],
 			'missing key' => [ [ 'local' => [ 1 ] ] ],

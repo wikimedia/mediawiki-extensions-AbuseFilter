@@ -60,7 +60,7 @@ class EmergencyWatcherTest extends MediaWikiUnitTestCase {
 		return $lookup;
 	}
 
-	public function provideFiltersToThrottle(): array {
+	public static function provideFiltersToThrottle(): array {
 		return [
 			'throttled, default group' => [
 				/* timestamp */ '20201016010000',

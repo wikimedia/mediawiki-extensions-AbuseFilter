@@ -186,7 +186,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * Data provider for testGetVarsFromRCRow
 	 * @return array
 	 */
-	public function provideRCRowTypes() {
+	public static function provideRCRowTypes() {
 		return [
 			'edit' => [ 'edit', 'edit' ],
 			'create' => [ 'create', 'edit' ],

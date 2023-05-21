@@ -122,7 +122,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $degroup->execute() );
 	}
 
-	public function provideRevert(): array {
+	public static function provideRevert(): array {
 		return [
 			[ true, [ '*', 'user', 'sysop' ] ],
 			[ true, [ '*', 'user', 'canceled', 'sysop' ] ],

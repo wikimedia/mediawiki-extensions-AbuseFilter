@@ -33,7 +33,7 @@ class CheckMatchTest extends ApiTestCase {
 		], null, null, self::getTestUser()->getUser() );
 	}
 
-	public function provideExecuteOk() {
+	public static function provideExecuteOk() {
 		return [
 			'matched' => [ true ],
 			'no match' => [ false ],

@@ -131,7 +131,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		}
 	}
 
-	public function provideEditVariables(): Generator {
+	public static function provideEditVariables(): Generator {
 		$summary = __METHOD__;
 		$new = '[https://a.com Test] foo';
 
@@ -340,7 +340,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		$this->assertVariables( $expected, $export );
 	}
 
-	public function provideAccountCreationVars(): Generator {
+	public static function provideAccountCreationVars(): Generator {
 		yield 'create account anonymously' => [
 			'expected' => [
 				'action' => 'createaccount',

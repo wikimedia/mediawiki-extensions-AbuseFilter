@@ -45,7 +45,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	 *
 	 * @return Generator|array
 	 */
-	public function provideRevisionToString() {
+	public static function provideRevisionToString() {
 		yield 'no revision' => [ null, false, '' ];
 
 		$page = new PageIdentityValue( 1, NS_MAIN, 'Foo', PageIdentityValue::LOCAL );
@@ -98,7 +98,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @return Generator
 	 */
-	public function provideContentToString(): Generator {
+	public static function provideContentToString(): Generator {
 		$text = 'Some dummy text';
 		yield 'text' => [ new TextContent( $text ), $text ];
 		yield 'wikitext' => [ new WikitextContent( $text ), $text ];

@@ -91,7 +91,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @return Generator|array
 	 */
-	public function provideGenericTests() {
+	public static function provideGenericTests() {
 		$testPath = __DIR__ . "/../../../parserTestsEquivset";
 		$testFiles = glob( $testPath . "/*.t" );
 
