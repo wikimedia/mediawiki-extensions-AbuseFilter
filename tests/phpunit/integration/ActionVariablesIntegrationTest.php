@@ -26,6 +26,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\MainConfigNames;
+use MediaWiki\MediaWikiServices;
 use NullStatsdDataFactory;
 use WikitextContent;
 
@@ -316,7 +317,10 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			new NullStatsdDataFactory(),
 			AbuseFilterServices::getFilterRunnerFactory(),
 			AbuseFilterServices::getVariableGeneratorFactory(),
-			AbuseFilterServices::getEditRevUpdater()
+			AbuseFilterServices::getEditRevUpdater(),
+			AbuseFilterServices::getVariablesManager(),
+			AbuseFilterServices::getBlockedDomainStorage(),
+			MediaWikiServices::getInstance()->getUrlUtils()
 		);
 		$this->setTemporaryHook(
 			'EditFilterMergedContent',

@@ -306,4 +306,12 @@ class AbuseFilterServices {
 	public static function getActorMigration( ContainerInterface $services = null ): AbuseFilterActorMigration {
 		return ( $services ?? MediaWikiServices::getInstance() )->get( AbuseFilterActorMigration::SERVICE_NAME );
 	}
+
+	/**
+	 * @param ContainerInterface|null $services
+	 * @return BlockedDomainStorage
+	 */
+	public static function getBlockedDomainStorage( ContainerInterface $services = null ): BlockedDomainStorage {
+		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainStorage::SERVICE_NAME );
+	}
 }
