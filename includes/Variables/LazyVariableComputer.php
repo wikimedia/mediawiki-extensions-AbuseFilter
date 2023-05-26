@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\ExternalLinks\ExternalLinksLookup;
+use MediaWiki\ExternalLinks\LinkFilter;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Permissions\RestrictionStore;
 use MediaWiki\Revision\RevisionLookup;
@@ -204,7 +205,9 @@ class LazyVariableComputer {
 						null,
 						$parameters['contextUserIdentity']
 					);
-					$result = array_keys( $editInfo->output->getExternalLinks() );
+					$result = LinkFilter::getIndexedUrlsNonReversed(
+						array_keys( $editInfo->output->getExternalLinks() )
+					);
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 					break;
 				}
@@ -230,7 +233,9 @@ class LazyVariableComputer {
 						$article,
 						$parameters['contextUserIdentity']
 					);
-					$links = array_keys( $editInfo->output->getExternalLinks() );
+					$links = LinkFilter::getIndexedUrlsNonReversed(
+						array_keys( $editInfo->output->getExternalLinks() )
+					);
 				} else {
 					// TODO: Get links from Content object. But we don't have the content object.
 					// And for non-text content, $wikitext is usually not going to be a valid
