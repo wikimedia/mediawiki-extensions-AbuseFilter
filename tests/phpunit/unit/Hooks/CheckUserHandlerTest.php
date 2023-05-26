@@ -16,9 +16,13 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 
 	private function getCheckUserHandler(): CheckUserHandler {
 		$filterUser = $this->createMock( FilterUser::class );
-		$userNameUtils = $this->createMock( UserNameUtils::class );
 		$filterUser->method( 'getUserIdentity' )
 			->willReturn( new UserIdentityValue( 1, 'Abuse filter' ) );
+		$userNameUtils = $this->createMock( UserNameUtils::class );
+		$userNameUtils->method( 'isTemp' )
+			->willReturnCallback( static function ( $name ) {
+				return $name === '*12345';
+			} );
 		return new CheckUserHandler( $filterUser, $userNameUtils );
 	}
 
@@ -96,9 +100,10 @@ class CheckUserHandlerTest extends MediaWikiUnitTestCase {
 		$this->commonInsertHookAssertions( $shouldChange, 'cule_agent', $ip, $xff, $row );
 	}
 
-	public function provideDataForCheckUserInsertHooks() {
+	public static function provideDataForCheckUserInsertHooks() {
 		return [
 			'Anonymous user' => [ UserIdentityValue::newAnonymous( '127.0.0.1' ), false ],
+			'Temporary user' => [ new UserIdentityValue( 3, '*12345' ), false ],
 			'Registered user' => [ new UserIdentityValue( 2, 'Test' ), false ],
 			'Abuse filter user' => [ new UserIdentityValue( 1, 'Abuse filter' ), true ],
 		];
