@@ -6,6 +6,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\User\UserNameUtils;
 use Psr\Log\LoggerInterface;
 
 class ConsequencesExecutorFactory {
@@ -21,6 +22,8 @@ class ConsequencesExecutorFactory {
 	private $filterLookup;
 	/** @var LoggerInterface */
 	private $logger;
+	/** @var UserNameUtils */
+	private $userNameUtils;
 	/** @var ServiceOptions */
 	private $options;
 
@@ -30,6 +33,7 @@ class ConsequencesExecutorFactory {
 	 * @param ConsequencesRegistry $consRegistry
 	 * @param FilterLookup $filterLookup
 	 * @param LoggerInterface $logger
+	 * @param UserNameUtils $userNameUtils
 	 * @param ServiceOptions $options
 	 */
 	public function __construct(
@@ -38,6 +42,7 @@ class ConsequencesExecutorFactory {
 		ConsequencesRegistry $consRegistry,
 		FilterLookup $filterLookup,
 		LoggerInterface $logger,
+		UserNameUtils $userNameUtils,
 		ServiceOptions $options
 	) {
 		$this->consLookup = $consLookup;
@@ -45,6 +50,7 @@ class ConsequencesExecutorFactory {
 		$this->consRegistry = $consRegistry;
 		$this->filterLookup = $filterLookup;
 		$this->logger = $logger;
+		$this->userNameUtils = $userNameUtils;
 		$options->assertRequiredOptions( ConsequencesExecutor::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 	}
@@ -61,6 +67,7 @@ class ConsequencesExecutorFactory {
 			$this->consRegistry,
 			$this->filterLookup,
 			$this->logger,
+			$this->userNameUtils,
 			$this->options,
 			$specifier,
 			$vars

@@ -23,6 +23,7 @@ use MediaWiki\Session\Session;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
+use MediaWiki\User\UserNameUtils;
 use MessageLocalizer;
 use Psr\Log\LoggerInterface;
 
@@ -75,6 +76,9 @@ class ConsequencesFactory {
 	/** @var UserFactory */
 	private $userFactory;
 
+	/** @var UserNameUtils */
+	private $userNameUtils;
+
 	/**
 	 * @todo This might drag in unwanted dependencies. The alternative is to use ObjectFactory, but that's harder
 	 *   to understand for humans and static analysis tools, so do that only if the dependencies list starts growing.
@@ -91,6 +95,7 @@ class ConsequencesFactory {
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param UserEditTracker $userEditTracker
 	 * @param UserFactory $userFactory
+	 * @param UserNameUtils $userNameUtils
 	 */
 	public function __construct(
 		ServiceOptions $options,
@@ -105,7 +110,8 @@ class ConsequencesFactory {
 		Session $session,
 		MessageLocalizer $messageLocalizer,
 		UserEditTracker $userEditTracker,
-		UserFactory $userFactory
+		UserFactory $userFactory,
+		UserNameUtils $userNameUtils
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
@@ -121,6 +127,7 @@ class ConsequencesFactory {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->userEditTracker = $userEditTracker;
 		$this->userFactory = $userFactory;
+		$this->userNameUtils = $userNameUtils;
 	}
 
 	// Each class has its factory method for better type inference and static analysis
@@ -179,7 +186,8 @@ class ConsequencesFactory {
 	 * @return BlockAutopromote
 	 */
 	public function newBlockAutopromote( Parameters $params, int $duration ): BlockAutopromote {
-		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore, $this->messageLocalizer );
+		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore, $this->messageLocalizer,
+			$this->userNameUtils );
 	}
 
 	/**

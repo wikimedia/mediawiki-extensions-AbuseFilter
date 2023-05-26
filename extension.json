@@ -366,7 +366,8 @@
 		"CheckUser": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\CheckUserHandler",
 			"services": [
-				"AbuseFilterFilterUser"
+				"AbuseFilterFilterUser",
+				"UserNameUtils"
 			]
 		}
 	},

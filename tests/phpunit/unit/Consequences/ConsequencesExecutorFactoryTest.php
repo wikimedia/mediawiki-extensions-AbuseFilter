@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\User\UserNameUtils;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 
@@ -31,6 +32,7 @@ class ConsequencesExecutorFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( ConsequencesRegistry::class ),
 			$this->createMock( FilterLookup::class ),
 			new NullLogger(),
+			$this->createMock( UserNameUtils::class ),
 			$this->createMock( ServiceOptions::class )
 		);
 		$factory->newExecutor(
