@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Deferred\DeferredUpdatesManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
@@ -77,6 +78,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			$cache,
 			new NullLogger(),
 			$opts,
+			$this->createMock( DeferredUpdatesManager::class ),
 			$user,
 			$this->createMock( Title::class ),
 			$vars ?? VariableHolder::newFromArray( [ 'action' => 'edit' ] ),
