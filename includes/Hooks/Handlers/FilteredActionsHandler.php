@@ -7,9 +7,12 @@ use Content;
 use DeferredUpdates;
 use IBufferingStatsdDataFactory;
 use IContextSource;
+use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\TitleMoveHook;
 use MediaWiki\Hook\UploadStashFileHook;
@@ -18,6 +21,8 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\Hook\ArticleDeleteHook;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\Hook\ParserOutputStashForEditHook;
+use MediaWiki\Utils\UrlUtils;
+use Message;
 use Status;
 use Title;
 use UploadBase;
@@ -43,23 +48,35 @@ class FilteredActionsHandler implements
 	private $variableGeneratorFactory;
 	/** @var EditRevUpdater */
 	private $editRevUpdater;
+	private VariablesManager $variablesManager;
+	private BlockedDomainStorage $blockedDomainStorage;
+	private UrlUtils $urlUtils;
 
 	/**
 	 * @param IBufferingStatsdDataFactory $statsDataFactory
 	 * @param FilterRunnerFactory $filterRunnerFactory
 	 * @param VariableGeneratorFactory $variableGeneratorFactory
 	 * @param EditRevUpdater $editRevUpdater
+	 * @param VariablesManager $variablesManager
+	 * @param BlockedDomainStorage $blockedDomainStorage
+	 * @param UrlUtils $urlUtils
 	 */
 	public function __construct(
 		IBufferingStatsdDataFactory $statsDataFactory,
 		FilterRunnerFactory $filterRunnerFactory,
 		VariableGeneratorFactory $variableGeneratorFactory,
-		EditRevUpdater $editRevUpdater
+		EditRevUpdater $editRevUpdater,
+		VariablesManager $variablesManager,
+		BlockedDomainStorage $blockedDomainStorage,
+		UrlUtils $urlUtils
 	) {
 		$this->statsDataFactory = $statsDataFactory;
 		$this->filterRunnerFactory = $filterRunnerFactory;
 		$this->variableGeneratorFactory = $variableGeneratorFactory;
 		$this->editRevUpdater = $editRevUpdater;
+		$this->variablesManager = $variablesManager;
+		$this->blockedDomainStorage = $blockedDomainStorage;
+		$this->urlUtils = $urlUtils;
 	}
 
 	/**
@@ -144,9 +161,70 @@ class FilteredActionsHandler implements
 			return $filterResult;
 		}
 
+		$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
+		if ( $blockedDomainFilterResult instanceof Status ) {
+			return $blockedDomainFilterResult;
+		}
+
 		$this->editRevUpdater->setLastEditPage( $page );
 
 		return Status::newGood();
+	}
+
+	/**
+	 * @param VariableHolder $vars variables by the action
+	 * @return Status|bool Status if it's a match and false if not
+	 */
+	private function blockedDomainFilter( VariableHolder $vars ) {
+		global $wgAbuseFilterEnableBlockedExternalDomain;
+		if ( !$wgAbuseFilterEnableBlockedExternalDomain ) {
+			return false;
+		}
+		$urls = $this->variablesManager->getVar( $vars, 'added_links', VariablesManager::GET_LAX );
+		$addedDomains = [];
+		foreach ( $urls->toArray() as $addedUrl ) {
+			$parsedUrl = $this->urlUtils->parse( (string)$addedUrl->getData() );
+			if ( !$parsedUrl ) {
+				continue;
+			}
+			$addedDomains[] = $parsedUrl['host'];
+		}
+		if ( !$addedDomains ) {
+			return false;
+		}
+		$blockedDomains = $this->blockedDomainStorage->loadComputed();
+		$blockedDomainsAdded = [];
+		foreach ( $addedDomains as $addedDomain ) {
+			foreach ( $blockedDomains as $blockedDomain ) {
+				// strpos is fast, let it weed out almost all cases
+				if ( strpos( $addedDomain, $blockedDomain ) === false ) {
+					continue;
+				}
+				if ( $blockedDomain[0] !== '.' ) {
+					$dottedBlockedDomain = '.' . $blockedDomain;
+				} else {
+					$dottedBlockedDomain = $blockedDomain;
+				}
+				$length = strlen( $dottedBlockedDomain );
+				if ( $addedDomain[0] !== '.' ) {
+					$addedDomain = '.' . $addedDomain;
+				}
+				// TODO: Switch to str_ends_with once we drop support for php 7
+				if ( substr( $addedDomain, -$length ) === $dottedBlockedDomain ) {
+					$blockedDomainsAdded[] = $blockedDomain;
+					break 2;
+				}
+			}
+		}
+		if ( !$blockedDomainsAdded ) {
+			return false;
+		}
+		$error = Message::newFromSpecifier( 'abusefilter-blocked-domains-attempted' );
+		$error->params( Message::listParam( $blockedDomainsAdded ) );
+
+		$status = Status::newFatal( $error, 'blockeddomain', 'blockeddomain' );
+		$status->value['blockeddomain'] = [ 'disallow' ];
+		return $status;
 	}
 
 	/**
@@ -158,7 +236,7 @@ class FilteredActionsHandler implements
 		$statusForApi = Status::newGood();
 
 		foreach ( $status->getErrors() as $error ) {
-			list( $filterDescription, $filter ) = $error['params'];
+			[ $filterDescription, $filter ] = $error['params'];
 			$actionsTaken = $allActionsTaken[ $filter ];
 
 			$code = ( $actionsTaken === [ 'warn' ] ) ? 'abusefilter-warning' : 'abusefilter-disallowed';
@@ -275,6 +353,12 @@ class FilteredActionsHandler implements
 			$filterResultApi = self::getApiStatus( $filterResult );
 			// @todo Return all errors instead of only the first one
 			$error = $filterResultApi->getErrors()[0]['message'];
+		} else {
+			$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
+			if ( $blockedDomainFilterResult instanceof Status ) {
+				$error = $blockedDomainFilterResult->getErrors()[0]['message'];
+				return $blockedDomainFilterResult->isOK();
+			}
 		}
 
 		return $filterResult->isOK();

@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
@@ -373,6 +374,17 @@ return [
 		return new AbuseFilterActorMigration(
 			$services->getMainConfig()->get( 'AbuseFilterActorTableSchemaMigrationStage' ),
 			$services->getActorStoreFactory(),
+		);
+	},
+	BlockedDomainStorage::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): BlockedDomainStorage {
+		return new BlockedDomainStorage(
+			$services->getLocalServerObjectCache(),
+			$services->getRevisionLookup(),
+			$services->getUserFactory(),
+			$services->getWikiPageFactory(),
+			$services->getUrlUtils()
 		);
 	},
 	// b/c for extensions
