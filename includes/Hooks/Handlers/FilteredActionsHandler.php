@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Hook\EditFilterMergedContentHook;
@@ -161,12 +162,11 @@ class FilteredActionsHandler implements
 			return $filterResult;
 		}
 
+		$this->editRevUpdater->setLastEditPage( $page );
 		$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
 		if ( $blockedDomainFilterResult instanceof Status ) {
 			return $blockedDomainFilterResult;
 		}
-
-		$this->editRevUpdater->setLastEditPage( $page );
 
 		return Status::newGood();
 	}
@@ -180,7 +180,12 @@ class FilteredActionsHandler implements
 		if ( !$wgAbuseFilterEnableBlockedExternalDomain ) {
 			return false;
 		}
-		$urls = $this->variablesManager->getVar( $vars, 'added_links', VariablesManager::GET_LAX );
+		try {
+			$urls = $this->variablesManager->getVar( $vars, 'added_links', VariablesManager::GET_STRICT );
+		} catch ( UnsetVariableException $_ ) {
+			return false;
+		}
+
 		$addedDomains = [];
 		foreach ( $urls->toArray() as $addedUrl ) {
 			$parsedUrl = $this->urlUtils->parse( (string)$addedUrl->getData() );
