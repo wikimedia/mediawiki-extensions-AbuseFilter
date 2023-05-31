@@ -89,6 +89,7 @@
 	"abusefilter-log-diff": "fərq",
 	"abusefilter-log-hidelink": "görünüşü tənzimlə",
 	"abusefilter-log-hide-entries": "Seçilmiş jurnal qeydlərini göstər/gizlət",
+	"abusefilter-log-description-not-available": "mövcud deyil",
 	"abusefilter-log-details-legend": "$1 nömrəli jurnaldakı qeydlərin detalları",
 	"abusefilter-log-details-var": "Dəyişən",
 	"abusefilter-log-details-val": "Əhəmiyyəti",
