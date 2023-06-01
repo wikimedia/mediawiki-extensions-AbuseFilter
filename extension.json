@@ -27,7 +27,8 @@
 		"abusefilter-log-private",
 		"abusefilter-hidden-log",
 		"abusefilter-hide-log",
-		"abusefilter-modify-global"
+		"abusefilter-modify-global",
+		"abusefilter-modify-blocked-external-domains"
 	],
 	"GroupPermissions": {
 		"*": {
@@ -40,7 +41,8 @@
 			"abusefilter-log-private": true,
 			"abusefilter-modify": true,
 			"abusefilter-modify-restricted": true,
-			"abusefilter-revert": true
+			"abusefilter-revert": true,
+			"abusefilter-modify-blocked-external-domains": true
 		},
 		"suppress": {
 			"abusefilter-hidden-log": true,
@@ -349,6 +351,9 @@
 		"UserRename": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserRenameHandler"
 		},
+		"EditPermission": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler"
+		},
 		"PageSave": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\PageSaveHandler",
 			"services": [
@@ -397,6 +402,7 @@
 		"UploadStashFile": "FilteredActions",
 		"PageSaveComplete": "PageSave",
 		"RenameUserSQL": "UserRename",
+		"getUserPermissionsErrors": "EditPermission",
 		"CheckUserInsertChangesRow": "CheckUser",
 		"CheckUserInsertPrivateEventRow": "CheckUser",
 		"CheckUserInsertLogEventRow": "CheckUser",

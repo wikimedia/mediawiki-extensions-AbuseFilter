@@ -44,6 +44,8 @@ use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 class BlockedDomainStorage implements IDBAccessObject {
 	public const SERVICE_NAME = 'AbuseFilterBlockedDomainStorage';
 
+	public const TARGET_PAGE = 'BlockedExternalDomains.json';
+
 	private RevisionLookup $revisionLookup;
 	private BagOStuff $cache;
 	private UserFactory $userFactory;
@@ -279,6 +281,6 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @return TitleValue TitleValue of the config json page
 	 */
 	public function getBlockedDomainPage() {
-		return new TitleValue( NS_MEDIAWIKI, 'BlockedExternalDomains.json' );
+		return new TitleValue( NS_MEDIAWIKI, self::TARGET_PAGE );
 	}
 }

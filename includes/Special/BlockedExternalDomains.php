@@ -72,10 +72,8 @@ class BlockedExternalDomains extends SpecialPage {
 		$out->setPageTitle( $this->msg( 'abusefilter-blocked-domains-title' ) );
 		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-intro' );
 
-		// Since everything is stored as a json page in MediaWiki namespace, if we use any
-		// other right, it could be bypassed by the user simply editing the json directly
-		// so let's make the right the exact same to avoid complications.
-		$userCanManage = $this->getAuthority()->isAllowed( 'editsitejson' );
+		// Direct editing of this page is blocked via EditPermissionHandler
+		$userCanManage = $this->getAuthority()->isAllowed( 'abusefilter-modify-blocked-external-domains' );
 
 		// Show form to add a blocked domain
 		if ( $userCanManage ) {

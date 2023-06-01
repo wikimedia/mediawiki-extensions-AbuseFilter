@@ -593,5 +593,8 @@
 	"notification-header-throttle-filter-actions": "The abuse filter $2 {{GENDER:$1|you}} recently edited had a high rate of matches and the following {{PLURAL:$4|action was|actions were}} automatically disabled: $3.",
 	"notification-header-throttle-filter-no-actions": "The abuse filter $2 {{GENDER:$1|you}} recently edited had a high rate of matches but no actions were automatically disabled.",
 	"notification-subject-throttle-filter": "An abuse filter {{GENDER:$1|you}} edited was throttled on {{SITENAME}}",
-	"notification-link-text-show-filter": "Show filter"
+	"notification-link-text-show-filter": "Show filter",
+	"right-abusefilter-modify-blocked-external-domains": "Create or modify what external domains are blocked from being linked",
+	"action-abusefilter-modify-blocked-external-domains": "create or modify what external domains are blocked from being linked",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Create or modify what external domains are blocked from being linked must be done through [[Special:BlockedExternalDomains|the special page]]."
 }

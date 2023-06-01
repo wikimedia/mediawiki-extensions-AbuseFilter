@@ -635,5 +635,8 @@
 	"notification-header-throttle-filter-actions": "Header text for a notification when an abuse filter was throttled after the user edited it and some actions were automatically disabled. Parameters:\n* $1 - the username of the viewing user, for use in GENDER\n* $2 - filter ID\n* $3 - list of actions that were disabled\n* $4 - number of disabled actions, for PLURAL",
 	"notification-header-throttle-filter-no-actions": "Header text for a notification when an abuse filter was throttled after the user edited it but no actions were automatically disabled. Parameters:\n* $1 - the username of the viewing user, for use in GENDER\n* $2 - filter ID",
 	"notification-subject-throttle-filter": "Email subject line for email notice when an abuse filter was throttled after the user edited it. Parameters:\n* $1 - the username of the receiving user, for use in GENDER",
-	"notification-link-text-show-filter": "Label for button that links to the filter that was throttled."
+	"notification-link-text-show-filter": "Label for button that links to the filter that was throttled.",
+	"right-abusefilter-modify-blocked-external-domains": "{{doc-right|abusefilter-modify-blocked-external-domains}}",
+	"action-abusefilter-modify-blocked-external-domains": "{{doc-action|abusefilter-modify-blocked-external-domains}}",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page."
 }
