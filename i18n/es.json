@@ -642,5 +642,8 @@
 	"notification-header-throttle-filter-actions": "El filtro antiabusos $2 {{GENDER:$1|que}} editaste recientemente tuvo una alta tasa de coincidencias y {{PLURAL:$4|la siguiente acción fue desactivada|las siguientes acciones fueron desactivadas}} automáticamente: $3.",
 	"notification-header-throttle-filter-no-actions": "El filtro antiabusos $2 {{GENDER:$1|que}} editaste recientemente tuvo una alta tasa de coincidencias pero no se desactivó ninguna acción automáticamente.",
 	"notification-subject-throttle-filter": "Un filtro antiabusos que {{GENDER:$1|editastes}} ha sido limitado en {{SITENAME}}",
-	"notification-link-text-show-filter": "Mostrar filtro"
+	"notification-link-text-show-filter": "Mostrar filtro",
+	"right-abusefilter-modify-blocked-external-domains": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados",
+	"action-abusefilter-modify-blocked-external-domains": "crear o modificar qué dominios externos están bloqueados para que no se vinculen",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]]."
 }

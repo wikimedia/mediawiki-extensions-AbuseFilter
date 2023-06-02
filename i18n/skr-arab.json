@@ -49,6 +49,14 @@
 	"abusefilter-view-privatedetails-submit": "ذاتی تفصیلاں ݙیکھو",
 	"abusefilter-view-privatedetails-legend": "ذاتی تفصیلاں ݙیکھو",
 	"abusefilter-log-details-id": "لاگ آئی ڈی",
+	"abusefilter-blocked-domains-notes": "نوٹ",
+	"abusefilter-blocked-domains-add-submit": "جمع کرواؤ",
+	"abusefilter-blocked-domains-domain-header": "ڈومین",
+	"abusefilter-blocked-domains-notes-header": "نوٹ",
+	"abusefilter-blocked-domains-actions-header": "عمل",
+	"abusefilter-blocked-domains-remove": "ہٹاؤ",
+	"abusefilter-blocked-domains-remove-reason": "وجہ",
+	"abusefilter-blocked-domains-remove-submit": "ہٹاؤ",
 	"abusefilter-log-ip-not-available": "دستیاب کائنی",
 	"notification-link-text-show-filter": "چھاݨاں ݙکھاؤ"
 }

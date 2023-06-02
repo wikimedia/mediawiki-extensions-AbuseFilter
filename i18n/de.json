@@ -625,5 +625,8 @@
 	"notification-header-throttle-filter-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|du}} kürzlich bearbeitet hast, hatte eine hohe Trefferquote und {{PLURAL:$4|die folgende Aktion wurde|die folgenden Aktionen wurden}} automatisch deaktiviert: $3.",
 	"notification-header-throttle-filter-no-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|du}} kürzlich bearbeitet hast, hatte eine hohe Trefferquote, aber es wurden keine Aktionen automatisch deaktiviert.",
 	"notification-subject-throttle-filter": "Ein von {{GENDER:$1|dir}} kürzlich bearbeiteter Missbrauchsfilter wurde auf {{SITENAME}} gedrosselt.",
-	"notification-link-text-show-filter": "Zeige Filter"
+	"notification-link-text-show-filter": "Zeige Filter",
+	"right-abusefilter-modify-blocked-external-domains": "Erstellen oder Ändern, welche externen Domänen für die Verknüpfung gesperrt sind",
+	"action-abusefilter-modify-blocked-external-domains": "zu erstellen oder zu ändern, welche externen Domänen für die Verknüpfung gesperrt sind",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen."
 }

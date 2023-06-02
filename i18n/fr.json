@@ -620,12 +620,12 @@
 	"abusefilter-blocked-domains-domain-header": "Domaine",
 	"abusefilter-blocked-domains-notes-header": "Notes",
 	"abusefilter-blocked-domains-actions-header": "Actions",
-	"abusefilter-blocked-domains-remove": "supprimer",
-	"abusefilter-blocked-domains-remove-title": "Supprimer un domaine bloqué",
-	"abusefilter-blocked-domains-remove-explanation-initial": "Sur cette page, vous pouvez supprimer un domaine bloqué",
+	"abusefilter-blocked-domains-remove": "retirer",
+	"abusefilter-blocked-domains-remove-title": "Retirer un domaine bloqué",
+	"abusefilter-blocked-domains-remove-explanation-initial": "Sur cette page, vous pouvez retirer un domaine bloqué",
 	"abusefilter-blocked-domains-remove-reason": "Motif",
-	"abusefilter-blocked-domains-remove-submit": "Supprimer",
-	"abusefilter-blocked-domains-attempted": "Le texte que vous voulez publier a été bloqué par notre filtre. Le domaine suivant est bloqué à l’ajout : $1",
+	"abusefilter-blocked-domains-remove-submit": "Retirer",
+	"abusefilter-blocked-domains-attempted": "Le texte que vous voulez publier a été bloqué par notre filtre. Le domaine suivant est bloqué contre tout ajout : $1",
 	"log-description-abusefilterprivatedetails": "Ce journal affiche une liste des dates et heures où un utilisateur a accédé aux détails confidentiels d’un journal d’abus.",
 	"abusefilter-noreason": "Avertissement : pour voir les détails confidentiels de ce journal, vous devez indiquer un motif.",
 	"abusefilter-log-ip-not-available": "Non disponible",
@@ -636,5 +636,8 @@
 	"notification-header-throttle-filter-actions": "Le filtre anti-abus $2 que {{GENDER:$1|}}vous avez récemment modifié a un taux élevé de correspondances et {{PLURAL:$4|l’action suivante a été automatiquement désactivée|les actions suivantes ont été automatiquement désactivées}} : $3",
 	"notification-header-throttle-filter-no-actions": "Le filtre anti-abus $2 que {{GENDER:$1|}}vous avez récemment modifié a un taux élevé de correspondances mais aucune action n’a été automatiquement désactivée.",
 	"notification-subject-throttle-filter": "Un filtre d’abus que {{GENDER:$1|}}vous avez modifié a été engorgé sur {{SITENAME}}",
-	"notification-link-text-show-filter": "Afficher le filtre"
+	"notification-link-text-show-filter": "Afficher le filtre",
+	"right-abusefilter-modify-blocked-external-domains": "Créer ou modifier la liste des domaines externes vers lesquels les liens sont bloqués",
+	"action-abusefilter-modify-blocked-external-domains": "créer ou modifier la liste des domaines externes vers lesquels les liens sont bloqués",
+	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]]."
 }

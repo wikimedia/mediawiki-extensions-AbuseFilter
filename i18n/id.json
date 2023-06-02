@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AJBot2",
+			"Agam Riyandana",
 			"Akmaie Ajam",
 			"Aldnonymous",
 			"Arifin.wijaya",
@@ -592,6 +593,23 @@
 	"abusefilter-log-details-id": "ID catatan",
 	"abusefilter-invalid-request": "Permintaan tidak sah! Anda harus mengakses detail catatan pribadi lewat formulir di [[Special:AbuseLog/$1]] dan memberikan alasan.",
 	"abusefilter-invalid-request-noid": "Permintaan tidak sah! Anda harus mengakses detail catatan pribadi lewat formulir di halaman rincian catatan penyalahgunaan dan memberikan alasan.",
+	"blockedexternaldomains": "Domain Eksternal yang Diblokir",
+	"abusefilter-blocked-domains-title": "Domain Eksternal yang Diblokir",
+	"abusefilter-blocked-domains-intro": "Tautan eksternal yang cocok dengan daftar ini akan diblokir saat ditambahkan ke halaman",
+	"abusefilter-blocked-domains-add-heading": "Tambahkan domain baru yang diblokir",
+	"abusefilter-blocked-domains-add-explanation": "Di sini Anda dapat menambahkan domain ke daftar domain yang diblokir.",
+	"abusefilter-blocked-domains-domain": "Domain yang akan diblokir, seperti wikipedia.org",
+	"abusefilter-blocked-domains-notes": "Catatan",
+	"abusefilter-blocked-domains-add-submit": "Kirim",
+	"abusefilter-blocked-domains-domain-header": "Domain",
+	"abusefilter-blocked-domains-notes-header": "Catatan",
+	"abusefilter-blocked-domains-actions-header": "Tindakan",
+	"abusefilter-blocked-domains-remove": "Hapus",
+	"abusefilter-blocked-domains-remove-title": "Hapus domain yang diblokir",
+	"abusefilter-blocked-domains-remove-explanation-initial": "Di halaman ini Anda dapat menghapus domain yang diblokir",
+	"abusefilter-blocked-domains-remove-reason": "Alasan",
+	"abusefilter-blocked-domains-remove-submit": "Hapus",
+	"abusefilter-blocked-domains-attempted": "Teks yang ingin Anda publikasikan diblokir oleh filter kami. Domain berikut diblokir agar tidak ditambahkan: $1",
 	"log-description-abusefilterprivatedetails": "Catatan ini menampilkan daftar tiap kali pengguna mengakses rincian pribadi dari catatan penyalahgunaan.",
 	"abusefilter-noreason": "Peringatan: Untuk melihat rincian pibadi catatan ini, Anda harus memberikan alasan.",
 	"abusefilter-log-ip-not-available": "Tidak Tersedia",
@@ -602,5 +620,8 @@
 	"notification-header-throttle-filter-actions": "Filter penyalahgunaan $2 yang {{GENDER:$1|Anda}} baru sunting memiliki tingkat kecocokan yang tinggi dan {{PLURAL:$4|tindakan|tindakan-tindakan}} berikut secara otomatis dimatikan: $3.",
 	"notification-header-throttle-filter-no-actions": "Filter penyalahgunaan $2 yang {{GENDER:$1|Anda}} baru sunting memiliki tingkat kecocokan yang tinggi, tetapi tidak ada tindakan yang berikut secara otomatis dimatikan.",
 	"notification-subject-throttle-filter": "Filter penyalahgunaan {{GENDER:$1|you}} diedit dibatasi {{SITENAME}}",
-	"notification-link-text-show-filter": "Tampilkan filter"
+	"notification-link-text-show-filter": "Tampilkan filter",
+	"right-abusefilter-modify-blocked-external-domains": "Buat atau ubah domain eksternal apa yang diblokir agar tidak ditautkan",
+	"action-abusefilter-modify-blocked-external-domains": "membuat atau memodifikasi domain eksternal apa yang diblokir agar tidak ditautkan",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Membuat atau mengubah domain eksternal apa yang diblokir agar tidak ditautkan harus dilakukan melalui [[Special:BlockedExternalDomains|halaman khusus]]."
 }
