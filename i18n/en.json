@@ -568,7 +568,7 @@
 	"abusefilter-invalid-request-noid": "Invalid request! You must access private log details through the form on the abuse log details page and provide a reason.",
 	"blockedexternaldomains": "Blocked External Domains",
 	"abusefilter-blocked-domains-title": "Blocked External Domains",
-	"abusefilter-blocked-domains-intro": "External links matching this list will be blocked when added to a page",
+	"abusefilter-blocked-domains-intro": "External links matching this list will be blocked when added to a page. These domains are stored in [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "Add a new blocked domain",
 	"abusefilter-blocked-domains-add-explanation": "Here you can add a domain to the list of blocked domains.",
 	"abusefilter-blocked-domains-domain": "Domain to block, such as wikipedia.org",

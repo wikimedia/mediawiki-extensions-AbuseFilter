@@ -27,6 +27,7 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Utils\UrlUtils;
 use PermissionsError;
 use SpecialPage;
+use WANObjectCache;
 use Xml;
 
 /**
@@ -37,11 +38,17 @@ use Xml;
 class BlockedExternalDomains extends SpecialPage {
 	private BlockedDomainStorage $blockedDomainStorage;
 	private UrlUtils $urlUtils;
+	private WANObjectCache $wanCache;
 
-	public function __construct( BlockedDomainStorage $blockedDomainStorage, UrlUtils $urlUtils ) {
+	public function __construct(
+		BlockedDomainStorage $blockedDomainStorage,
+		UrlUtils $urlUtils,
+		WANObjectCache $wanCache
+	) {
 		parent::__construct( 'BlockedExternalDomains' );
 		$this->blockedDomainStorage = $blockedDomainStorage;
 		$this->urlUtils = $urlUtils;
+		$this->wanCache = $wanCache;
 	}
 
 	/** @inheritDoc */
@@ -117,11 +124,25 @@ class BlockedExternalDomains extends SpecialPage {
 				'' );
 		$thead = Xml::tags( 'tr', null, $content );
 
-		$tbody = '';
-
-		foreach ( $res->getValue() as $domain ) {
-			$tbody .= $this->doDomainRow( $domain, $userCanManage );
-		}
+		// Parsing each row is expensive, put it behind WAN cache
+		// with md5 checksum, we make sure changes to the domain list
+		// invalidate the cache
+		$cacheKey = $this->wanCache->makeKey(
+			'abuse-filter-special-blocked-external-domains-rows',
+			md5( json_encode( $res->getValue() ) ),
+			(int)$userCanManage
+		);
+		$tbody = $this->wanCache->getWithSetCallback(
+			$cacheKey,
+			WANObjectCache::TTL_DAY,
+			function () use ( $res, $userCanManage ) {
+				$tbody = '';
+				foreach ( $res->getValue() as $domain ) {
+					$tbody .= $this->doDomainRow( $domain, $userCanManage );
+				}
+				return $tbody;
+			}
+		);
 
 		$out->addModuleStyles( [ 'jquery.tablesorter.styles', 'mediawiki.pager.styles' ] );
 		$out->addModules( 'jquery.tablesorter' );
