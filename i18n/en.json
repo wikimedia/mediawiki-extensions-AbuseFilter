@@ -583,6 +583,8 @@
 	"abusefilter-blocked-domains-remove-reason": "Reason",
 	"abusefilter-blocked-domains-remove-submit": "Remove",
 	"abusefilter-blocked-domains-attempted": "The text you wanted to publish was blocked by our filter. The following domain is blocked from being added: $1",
+	"abusefilter-blocked-domains-json-error": "JSON should be an array",
+	"abusefilter-blocked-domains-invalid-entry": "Entry $1 in JSON is invalid - it should be an object with 'domain' and 'notes' fields only, both being strings",
 	"log-description-abusefilterprivatedetails": "This log shows a list of times when a user accessed the private details of an abuse log.",
 	"abusefilter-noreason": "Warning: To see the private details of this log, you must provide a reason.",
 	"abusefilter-log-ip-not-available": "Not Available",

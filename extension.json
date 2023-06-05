@@ -411,7 +411,8 @@
 		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
 		"ParserOutputStashForEdit": "FilteredActions",
 		"UnitTestsAfterDatabaseSetup": "Tests",
-		"UnitTestsBeforeDatabaseTeardown": "Tests"
+		"UnitTestsBeforeDatabaseTeardown": "Tests",
+		"JsonValidateSave": "EditPermission"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
