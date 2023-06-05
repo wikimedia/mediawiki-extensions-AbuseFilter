@@ -12,7 +12,7 @@
 	"abusefilter": "Rheoli'r hidlydd cam-ddefnydd",
 	"abuselog": "Log hidlydd camddefnydd",
 	"abusefilter-intro": "Croeso i'r rhyngwyneb rheoli'r Hidlydd Camddefnydd.\nMeddalwedd awtomatig sy'n ymateb yn dybiaethol i bobl gweithred yw'r Hildydd Camddefnydd.\nMae'r rhyngwyneb hwn yn arddangos rhestr o hidlyddion penodedig, sy'n eu galluogi i gael eu haddasu.",
-	"abusefilter-warning": "'''Rhybudd:''' Mae'r weithred hon wedi'i dyfarnu'n awtomatig fel gweithred niweidiol.\nBydd golygiadau anadeiladol yn cael eu gwrthdroi'n syth, a bydd cyfrif neu gyfeiriad IP defnyddwyr sy'n parhau i olygu'n anadeiladol yn cael eu blocio.\nOs ydych o'r farn fod y weithred hon yn adeiladol, gallwch ei chyflwyno unwaith eto er mwyn ei chadarnhau.\nDisgrifiad byr o'r rheol camddefnydd y mae'ch gweithred chi yn cyfateb ag ef yw: $1",
+	"abusefilter-warning": "'''Rhybudd''': Mae'r weithred hon wedi'i dyfarnu'n awtomatig fel gweithred niweidiol.\n\nBydd gweithredoedd anadeiladol yn cael eu gwrthdroi'n gyflym, a bydd golygiadau anadeiladol parhaus yn arwain at floc ar eich cyfrif neu gyfeiriad IP.\nOs ydych chi'n credu bod y gweithred hon yn adeiladol, gallwch ei chyflwyno unwaith eto i'w chadarnhau.\nDyma disgrifiad byr o'r rheol camddefnydd y mae'ch gweithred chi wedi torri: $1",
 	"abusefilter-disallowed": "Clustnododd y meddalwedd y weithred hon yn un niweidiol, felly ni weithredwyd hi.\nOs ydych yn meddwl bod y weithred o ddefnydd, rhowch wybod i weinyddwr am ddiben y weithred.\nDyma ddisgrifiad byr o'r rheol camddefnydd yr oedd y weithred yn cyfateb iddi: $1",
 	"abusefilter-blocker": "Hidlydd camddefnydd",
 	"abusefilter-blockreason": "Blociwyd yn awtomatig gan yr hidlydd camddefnydd.\nDisgrifiad o'r rheol sy'n cyfateb: $1",
