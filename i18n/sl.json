@@ -573,7 +573,7 @@
 	"abusefilter-invalid-request-noid": "Neveljavna zahteva! Do zasebnih podrobnosti dnevnika morate dostopati z obrazcem na strani s podrobnostmi dnevnika zlorab in navesti razlog.",
 	"blockedexternaldomains": "Blokirane zunanje domene",
 	"abusefilter-blocked-domains-title": "Blokirane zunanje domene",
-	"abusefilter-blocked-domains-intro": "Zunanje povezave, ki se ujemajo s tem seznamom, bodo blokirane, če bodo dodane na stran",
+	"abusefilter-blocked-domains-intro": "Zunanje povezave, ki se ujemajo s tem seznamom, bodo blokirane, če bodo dodane na stran. Te domene so shranjene v [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "Dodaj novo blokirano domeno",
 	"abusefilter-blocked-domains-add-explanation": "Tu lahko dodate domeno na seznam blokiranih domen",
 	"abusefilter-blocked-domains-domain": "Domena za blokiranje, npr. wikipedia.org",
@@ -598,5 +598,8 @@
 	"notification-header-throttle-filter-actions": "Filter zlorab $2, {{GENDER:$1|ki ste ga}} pred kratkim urejali, je imel visoko stopnjo ujemanj in {{PLURAL:$4|je bilo naslednje dejanje samodejno onemogočeno|sta bili naslednji dejanji samodejno onemogočeni|so bila naslednja dejanja samodejno onemogočena}}: $3 .",
 	"notification-header-throttle-filter-no-actions": "Filter zlorab $2, {{GENDER:$1|ki ste ga}} pred kratkim urejali, je imel visoko stopnjo ujemanj, vendar ni bilo nobeno dejanje samodejno onemogočeno.",
 	"notification-subject-throttle-filter": "Nekatera dejanja filtra zlorab, {{GENDER:$1| ki ste ga}} urejali, so bila v projektu {{SITENAME}} dezaktivirana",
-	"notification-link-text-show-filter": "Prikaži filter"
+	"notification-link-text-show-filter": "Prikaži filter",
+	"right-abusefilter-modify-blocked-external-domains": "Ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati",
+	"action-abusefilter-modify-blocked-external-domains": "ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati, je treba opraviti na [[Special:BlockedExternalDomains|posebni strani]]."
 }

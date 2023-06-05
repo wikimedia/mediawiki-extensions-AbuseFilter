@@ -611,7 +611,7 @@
 	"abusefilter-invalid-request-noid": "Demande non valide ! Vous devez accéder aux détails confidentiels du journal via le formulaire sur la page de détails du journal des abus et indiquer un motif.",
 	"blockedexternaldomains": "Domaines externes bloqués",
 	"abusefilter-blocked-domains-title": "Domaines externes bloqués",
-	"abusefilter-blocked-domains-intro": "Les liens externes correspondant à cette liste seront bloqués quand ils seront ajoutés à une page",
+	"abusefilter-blocked-domains-intro": "Les liens externes correspondant à cette liste seront bloqués quand ils seront ajoutés à une page. Ces domaines sont stockés dans [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "Ajouter un nouveau domaine bloqué",
 	"abusefilter-blocked-domains-add-explanation": "Ici, vous pouvez ajouter un domaine à la liste des domaines bloqués.",
 	"abusefilter-blocked-domains-domain": "Domaine à bloquer, comme wikipedia.org",

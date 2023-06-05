@@ -600,7 +600,7 @@
 	"abusefilter-invalid-request-noid": "Ungültige Anfrage! Du musst auf private Eintragseinzelheiten mit dem Formular auf der Missbrauchsfilter-Einzelheitenseite zugreifen und einen Grund angeben.",
 	"blockedexternaldomains": "Gesperrte externe Domains",
 	"abusefilter-blocked-domains-title": "Gesperrte externe Domains",
-	"abusefilter-blocked-domains-intro": "Externe Links, die dieser Liste entsprechen, werden blockiert, wenn sie zu einer Seite hinzugefügt werden.",
+	"abusefilter-blocked-domains-intro": "Externe Links, die dieser Liste entsprechen, werden blockiert, wenn sie zu einer Seite hinzugefügt werden. Diese Domains werden in [[MediaWiki:BlockedExternalDomains.json]] gespeichert.",
 	"abusefilter-blocked-domains-add-heading": "Hinzufügen einer neuen gesperrten Domäne",
 	"abusefilter-blocked-domains-add-explanation": "Hier kannst du eine Domäne zur Liste der gesperrten Domänen hinzufügen.",
 	"abusefilter-blocked-domains-domain": "Zu sperrende Domäne, wie z. B. wikipedia.org",
