@@ -421,6 +421,10 @@
 	"abusefilter-http-error": "Et ass en HTTP-Feeler geschitt: $1.",
 	"abusefilter-view-privatedetails-submit": "Privat Detailer weisen",
 	"abusefilter-view-privatedetails-legend": "Privat Detailer weisen",
+	"abusefilter-blocked-domains-actions-header": "Aktiounen",
+	"abusefilter-blocked-domains-remove": "ewechhuelen",
+	"abusefilter-blocked-domains-remove-reason": "Grond",
+	"abusefilter-blocked-domains-remove-submit": "Ewechhuelen",
 	"abusefilter-log-ip-not-available": "Net disponibel",
 	"notification-link-text-show-filter": "Filter weisen"
 }

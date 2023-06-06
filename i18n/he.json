@@ -584,7 +584,7 @@
 	"abusefilter-invalid-request-noid": "בקשה בלתי־תקינה! יש לגשת לנתוני היומן הפרטיים באמצעות הטופס שבדף הנתונים של יומן ההשחתות ולהקליד סיבה.",
 	"blockedexternaldomains": "תחומים חיצוניים חסומים",
 	"abusefilter-blocked-domains-title": "תחומים חיצוניים חסומים",
-	"abusefilter-blocked-domains-intro": "קישורים חיצוניים התואמים לרשימה הזאת ייחסמו כאשר יתווספו לדף",
+	"abusefilter-blocked-domains-intro": "קישורים חיצוניים התואמים לרשימה הזאת ייחסמו כאשר יתווספו לדף. התחומים האלה מאוחסנים בדף [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "הוספת תחום חסום חדש",
 	"abusefilter-blocked-domains-add-explanation": "כאן אפשר להוסיף תחום לרשימת התחומים החסומים.",
 	"abusefilter-blocked-domains-domain": "תחום לחסימה, כגון wikipedia.org",
