@@ -192,38 +192,33 @@ class FilteredActionsHandler implements
 			if ( !$parsedUrl ) {
 				continue;
 			}
-			$addedDomains[] = $parsedUrl['host'];
+			// Given that we block subdomains of blocked domains too
+			// pretend that all of higher-level domains are added as well
+			// so for foo.bar.com, you will have three domains to check:
+			// foo.bar.com, bar.com, and com
+			// This saves string search in the large list of blocked domains
+			// making it much faster.
+			$domainString = '';
+			foreach ( array_reverse( explode( '.', $parsedUrl['host'] ) ) as $domainPiece ) {
+				if ( !$domainString ) {
+					$domainString = $domainPiece;
+				} else {
+					$domainString = $domainPiece . '.' . $domainString;
+				}
+				$addedDomains[] = $domainString;
+			}
 		}
 		if ( !$addedDomains ) {
 			return false;
 		}
+		// Turn it into a map, see P48956 for more details
+		$addedDomains = array_flip( $addedDomains );
 		$blockedDomains = $this->blockedDomainStorage->loadComputed();
-		$blockedDomainsAdded = [];
-		foreach ( $addedDomains as $addedDomain ) {
-			foreach ( $blockedDomains as $blockedDomain ) {
-				// strpos is fast, let it weed out almost all cases
-				if ( strpos( $addedDomain, $blockedDomain ) === false ) {
-					continue;
-				}
-				if ( $blockedDomain[0] !== '.' ) {
-					$dottedBlockedDomain = '.' . $blockedDomain;
-				} else {
-					$dottedBlockedDomain = $blockedDomain;
-				}
-				$length = strlen( $dottedBlockedDomain );
-				if ( $addedDomain[0] !== '.' ) {
-					$addedDomain = '.' . $addedDomain;
-				}
-				// TODO: Switch to str_ends_with once we drop support for php 7
-				if ( substr( $addedDomain, -$length ) === $dottedBlockedDomain ) {
-					$blockedDomainsAdded[] = $blockedDomain;
-					break 2;
-				}
-			}
-		}
+		$blockedDomainsAdded = array_intersect_key( $addedDomains, $blockedDomains );
 		if ( !$blockedDomainsAdded ) {
 			return false;
 		}
+		$blockedDomainsAdded = array_keys( $blockedDomainsAdded );
 		$error = Message::newFromSpecifier( 'abusefilter-blocked-domains-attempted' );
 		$error->params( Message::listParam( $blockedDomainsAdded ) );
 
