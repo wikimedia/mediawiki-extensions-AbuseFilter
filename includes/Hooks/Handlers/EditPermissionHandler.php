@@ -54,6 +54,10 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 			return;
 		}
 
+		if ( $services->getPermissionManager()->userHasRight( $user, 'editinterface' ) ) {
+			return;
+		}
+
 		// Prohibit direct actions on our page.
 		$result = [ 'abusefilter-blocked-domains-cannot-edit-directly', BlockedDomainStorage::TARGET_PAGE ];
 		return false;
