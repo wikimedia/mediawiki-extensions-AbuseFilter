@@ -295,7 +295,7 @@
 	"abusefilter-edit-tag-tag": "Field label for a field in which tags can be added for a revision in case the abuse filter applies.",
 	"abusefilter-edit-tag-placeholder": "Placeholder for a field where the user may insert tags.",
 	"abusefilter-edit-tag-hidden-placeholder": "Placeholder for a field where the user may insert tags.",
-	"abusefilter-edit-block-anon-durations": "Field label for select element allowing to select block duration for anonymous users",
+	"abusefilter-edit-block-anon-durations": "Field label for select element allowing to select block duration for anonymous or temporary users",
 	"abusefilter-edit-block-user-durations": "Field label for select element allowing to select block duration for registered users",
 	"abusefilter-block-anon": "Specification for type of block. 'Block' is a verb.\n{{Identical|Block}}",
 	"abusefilter-block-user": "Specification for type of block 'Block' is a verb.",
