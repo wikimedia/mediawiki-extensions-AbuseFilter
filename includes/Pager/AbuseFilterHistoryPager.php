@@ -14,9 +14,9 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserRigorOptions;
-use MWException;
 use TablePager;
 use Title;
+use UnexpectedValueException;
 use Wikimedia\Rdbms\IResultWrapper;
 use Xml;
 
@@ -179,7 +179,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				}
 				break;
 			default:
-				throw new MWException( "Unknown row type $name!" );
+				throw new UnexpectedValueException( "Unknown row type $name!" );
 		}
 
 		return $formatted;

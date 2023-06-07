@@ -19,7 +19,6 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
-use MWException;
 use Parser;
 use ParserOptions;
 use Psr\Log\LoggerInterface;
@@ -27,6 +26,7 @@ use stdClass;
 use StringUtils;
 use TextContent;
 use Title;
+use UnexpectedValueException;
 use UnifiedDiffFormatter;
 use User;
 use WANObjectCache;
@@ -147,7 +147,6 @@ class LazyVariableComputer {
 	 * @param callable $getVarCB
 	 * @phan-param callable(string $name):AFPData $getVarCB
 	 * @return AFPData
-	 * @throws MWException
 	 */
 	public function compute( LazyLoadedVariable $var, VariableHolder $vars, callable $getVarCB ) {
 		$parameters = $var->getParameters();
@@ -404,7 +403,7 @@ class LazyVariableComputer {
 					$parameters,
 					$result
 				) ) {
-					throw new MWException( 'Unknown variable compute type ' . $varMethod );
+					throw new UnexpectedValueException( 'Unknown variable compute type ' . $varMethod );
 				}
 		}
 

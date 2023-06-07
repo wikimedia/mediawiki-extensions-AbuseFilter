@@ -492,7 +492,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$stashContent = $stashText instanceof Content ? $stashText : new WikitextContent( $stashText );
 			$stashResult = $this->stashEdit( $title, $stashContent, $summary );
 			if ( $stashResult !== PageEditStash::ERROR_NONE ) {
-				throw new MWException( "The edit cannot be stashed, got the following error: $stashResult" );
+				throw new RuntimeException( "The edit cannot be stashed, got the following error: $stashResult" );
 			}
 		}
 

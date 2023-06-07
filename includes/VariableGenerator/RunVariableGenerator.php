@@ -12,7 +12,6 @@ use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MimeAnalyzer;
-use MWException;
 use MWFileProps;
 use Title;
 use UploadBase;
@@ -142,7 +141,6 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $oldtext
 	 * @param Content|null $oldcontent
 	 * @return VariableHolder
-	 * @throws MWException
 	 */
 	private function newVariableHolderForEdit(
 		WikiPage $page,
