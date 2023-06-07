@@ -9,11 +9,11 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
-use MWException;
 use OOUI;
 use RecentChange;
 use SpecialPage;
 use Title;
+use UnexpectedValueException;
 use Wikimedia\Rdbms\IDatabase;
 use Xml;
 
@@ -161,7 +161,7 @@ abstract class AbuseFilterView extends ContextSource {
 				// Done later
 				break;
 			default:
-				throw new MWException( __METHOD__ . ' called with invalid action: ' . $action );
+				throw new UnexpectedValueException( __METHOD__ . ' called with invalid action: ' . $action );
 		}
 
 		return $db->makeList( [

@@ -21,10 +21,10 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use MWException;
 use Parser;
 use Psr\Log\NullLogger;
 use Title;
+use UnexpectedValueException;
 use User;
 use WANObjectCache;
 use Wikimedia\Rdbms\LBFactory;
@@ -97,7 +97,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCompute_invalidName() {
 		$computer = $this->getComputer();
-		$this->expectException( MWException::class );
+		$this->expectException( UnexpectedValueException::class );
 		$computer->compute(
 			new LazyLoadedVariable( 'method-does-not-exist', [] ),
 			new VariableHolder(),

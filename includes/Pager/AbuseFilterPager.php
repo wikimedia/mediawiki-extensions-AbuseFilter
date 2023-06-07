@@ -10,10 +10,10 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\LinkRenderer;
-use MWException;
 use SpecialPage;
 use stdClass;
 use TablePager;
+use UnexpectedValueException;
 use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -327,7 +327,7 @@ class AbuseFilterPager extends TablePager {
 			case 'af_group':
 				return $this->specsFormatter->nameGroup( $value );
 			default:
-				throw new MWException( "Unknown row type $name!" );
+				throw new UnexpectedValueException( "Unknown row type $name!" );
 		}
 	}
 

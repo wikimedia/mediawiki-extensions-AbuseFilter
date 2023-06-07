@@ -18,10 +18,10 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\User\UserFactory;
 use Message;
-use MWException;
 use PermissionsError;
 use SpecialPage;
 use TitleValue;
+use UnexpectedValueException;
 use UserBlockedError;
 use Wikimedia\Rdbms\LBFactory;
 use Xml;
@@ -373,7 +373,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @param string $action
 	 * @param array $result
 	 * @return ReversibleConsequence
-	 * @throws MWException
 	 */
 	private function getConsequence( string $action, array $result ): ReversibleConsequence {
 		$params = new Parameters(
@@ -391,7 +390,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			case 'degroup':
 				return $this->consequencesFactory->newDegroup( $params, $result['vars'] );
 			default:
-				throw new MWException( "Invalid action $action" );
+				throw new UnexpectedValueException( "Invalid action $action" );
 		}
 	}
 
@@ -399,7 +398,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @param string $action
 	 * @param array $result
 	 * @return bool
-	 * @throws MWException
 	 */
 	public function revertAction( string $action, array $result ): bool {
 		$message = $this->msg(

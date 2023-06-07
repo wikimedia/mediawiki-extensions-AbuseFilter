@@ -11,7 +11,6 @@ use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserGroupManager;
 use MessageLocalizer;
-use MWException;
 use RequestContext;
 use User;
 
@@ -46,7 +45,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	/**
 	 * @codeCoverageIgnore This is tested by installing or updating MediaWiki
 	 * @param DatabaseUpdater $updater
-	 * @throws MWException
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgAbuseFilterActorTableSchemaMigrationStage;

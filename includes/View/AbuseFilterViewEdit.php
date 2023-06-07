@@ -22,10 +22,10 @@ use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\PermissionManager;
-use MWException;
 use OOUI;
 use SpecialBlock;
 use SpecialPage;
+use UnexpectedValueException;
 use Wikimedia\Rdbms\LBFactory;
 use Xml;
 
@@ -1043,7 +1043,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$formId = 'disallow';
 			$inputName = 'wpFilterDisallowMessage';
 		} else {
-			throw new MWException( "Unexpected action value $action" );
+			throw new UnexpectedValueException( "Unexpected action value $action" );
 		}
 
 		$existingSelector =
