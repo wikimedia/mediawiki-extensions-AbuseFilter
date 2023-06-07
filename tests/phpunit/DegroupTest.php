@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserNameUtils;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup
@@ -47,6 +48,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$params,
 			VariableHolder::newFromArray( [ 'user_groups' => [ '*', 'user', 'sysop' ] ] ),
 			$userGroupManager,
+			$this->createMock( UserNameUtils::class ),
 			$filterUser,
 			$this->getMsgLocalizer()
 		);
@@ -68,6 +70,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$params,
 			VariableHolder::newFromArray( [ 'user_groups' => [ '*', 'user' ] ] ),
 			$userGroupManager,
+			$this->createMock( UserNameUtils::class ),
 			$this->createMock( FilterUser::class ),
 			$this->getMsgLocalizer()
 		);
@@ -95,6 +98,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$params,
 			new VariableHolder(),
 			$userGroupManager,
+			$this->createMock( UserNameUtils::class ),
 			$filterUser,
 			$this->getMsgLocalizer()
 		);
@@ -116,6 +120,32 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$params,
 			$this->createMock( VariableHolder::class ),
 			$userGroupManager,
+			$this->createMock( UserNameUtils::class ),
+			$filterUser,
+			$this->getMsgLocalizer()
+		);
+		$this->assertFalse( $degroup->execute() );
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testExecute_temp() {
+		$user = new UserIdentityValue( 10, '*12345' );
+		$params = $this->provideGetMessageParameters( $user )->current()[0];
+		$userGroupManager = $this->createMock( UserGroupManager::class );
+		$userGroupManager->expects( $this->never() )->method( $this->anything() );
+		$userNameUtils = $this->createMock( UserNameUtils::class );
+		$userNameUtils->method( 'isTemp' )
+			->willReturn( true );
+		$filterUser = $this->createMock( FilterUser::class );
+		$filterUser->expects( $this->never() )->method( $this->anything() );
+
+		$degroup = new Degroup(
+			$params,
+			$this->createMock( VariableHolder::class ),
+			$userGroupManager,
+			$userNameUtils,
 			$filterUser,
 			$this->getMsgLocalizer()
 		);
@@ -152,6 +182,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$params,
 			VariableHolder::newFromArray( [ 'user_groups' => $hadGroups ] ),
 			$userGroupManager,
+			$this->createMock( UserNameUtils::class ),
 			$this->createMock( FilterUser::class ),
 			$this->getMsgLocalizer()
 		);
@@ -172,6 +203,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$params,
 			new VariableHolder(),
 			$this->createMock( UserGroupManager::class ),
+			$this->createMock( UserNameUtils::class ),
 			$this->createMock( FilterUser::class ),
 			$this->getMsgLocalizer()
 		);

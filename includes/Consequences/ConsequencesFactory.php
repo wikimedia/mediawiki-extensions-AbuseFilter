@@ -177,7 +177,14 @@ class ConsequencesFactory {
 	 * @return Degroup
 	 */
 	public function newDegroup( Parameters $params, VariableHolder $vars ): Degroup {
-		return new Degroup( $params, $vars, $this->userGroupManager, $this->filterUser, $this->messageLocalizer );
+		return new Degroup(
+			$params,
+			$vars,
+			$this->userGroupManager,
+			$this->userNameUtils,
+			$this->filterUser,
+			$this->messageLocalizer
+		);
 	}
 
 	/**
