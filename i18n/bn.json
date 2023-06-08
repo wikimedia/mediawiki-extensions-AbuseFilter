@@ -236,7 +236,7 @@
 	"abusefilter-edit-tag-tag": "যোগের জন্য [[Special:Tags|ট্যাগ]]:",
 	"abusefilter-edit-tag-placeholder": "ট্যাগ যুক্ত করুন (একের পর এক অথবা কমা দিয়ে আলাদাকৃত)",
 	"abusefilter-edit-tag-hidden-placeholder": "ট্যাগ যুক্ত করুন (কমা দিয়ে আলাদাকৃত)",
-	"abusefilter-edit-block-anon-durations": "বেনামী ব্যবহারকারীদের অবরুদ্ধ সময়কাল:",
+	"abusefilter-edit-block-anon-durations": "অ-নিবন্ধিত ব্যবহারকারীদের বাধাদানের সময়কাল:",
 	"abusefilter-edit-block-user-durations": "নিবন্ধিত ব্যবহারীদের বাধার সময়কাল:",
 	"abusefilter-block-anon": "বেনামী ব্যবহারকারীদের বাধা দিন",
 	"abusefilter-block-user": "নিবন্ধিত ব্যবহারকারীদের বাধা দিন",

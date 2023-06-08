@@ -11,6 +11,7 @@
 			"Geraki",
 			"Giannaras99",
 			"Glavkos",
+			"Gpbiza",
 			"K sal 15",
 			"KATRINE1992",
 			"Konsnos",
@@ -63,6 +64,7 @@
 	"abusefilter-log-search-filter": "Αναγνωριστικά φίλτρων:",
 	"abusefilter-log-search-title": "Τίτλος:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-impact-all": "Όλες οι ενέργειες",
 	"abusefilter-log-search-impact-saved": "Αποθηκευμένες αλλαγές μόνο",
 	"abusefilter-log-search-impact-not-saved": "Χωρίς τις αποθηκευμένες αλλαγές",
 	"abusefilter-log-search-entries-label": "Ορατότητα:",
@@ -81,6 +83,7 @@
 	"abusefilter-log-detailslink": "λεπτομέρειες",
 	"abusefilter-log-diff": "διαφορά",
 	"abusefilter-log-hidelink": "ρυθμίστε την ορατότητα",
+	"abusefilter-log-description-not-available": "μη διαθέσιμο",
 	"abusefilter-log-details-legend": "Λεπτομέρειες για την καταχώρηση ιστορικού $1",
 	"abusefilter-log-details-var": "Μεταβλητή",
 	"abusefilter-log-details-val": "Τιμή",
@@ -102,6 +105,7 @@
 	"abusefilter-log-hide-hide": "Απόκρυψη",
 	"abusefilter-list": "Όλα τα φίλτρα",
 	"abusefilter-list-id": "Ταυτότητα φίλτρου",
+	"abusefilter-list-pattern": "Μοτίβο",
 	"abusefilter-list-status": "Κατάσταση",
 	"abusefilter-list-public": "Δημόσια περιγραφή",
 	"abusefilter-list-consequences": "Συνέπειες",
@@ -449,5 +453,6 @@
 	"abusefilter-blocked-domains-remove-explanation-initial": "Σε αυτή τη σελίδα μπορείτε να αφαιρέσετε έναν αποκλεισμένο τομέα",
 	"abusefilter-blocked-domains-remove-reason": "Αιτία",
 	"abusefilter-blocked-domains-remove-submit": "Αφαίρεση",
-	"abusefilter-blocked-domains-attempted": "Το κείμενο που θέλατε να δημοσιεύσετε αποκλείστηκε από το φίλτρο μας. Ο ακόλουθος τομέας έχει αποκλειστεί από την προσθήκη: $1"
+	"abusefilter-blocked-domains-attempted": "Το κείμενο που θέλατε να δημοσιεύσετε αποκλείστηκε από το φίλτρο μας. Ο ακόλουθος τομέας έχει αποκλειστεί από την προσθήκη: $1",
+	"abusefilter-log-ip-not-available": "Μη Διαθέσιμο"
 }

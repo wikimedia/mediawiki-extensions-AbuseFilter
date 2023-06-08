@@ -278,7 +278,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Etichette]] da aggiungere:",
 	"abusefilter-edit-tag-placeholder": "Aggiungi delle etichette (una ad una o separate da virgole)",
 	"abusefilter-edit-tag-hidden-placeholder": "Aggiungi delle etichette (separate da virgole)",
-	"abusefilter-edit-block-anon-durations": "Durata del blocco per utenti anonimi:",
+	"abusefilter-edit-block-anon-durations": "Durata del blocco per utenti non registrati:",
 	"abusefilter-edit-block-user-durations": "Durata del blocco per utenti registrati:",
 	"abusefilter-block-anon": "Blocca utenti anonimi",
 	"abusefilter-block-user": "blocca utenti registrati",

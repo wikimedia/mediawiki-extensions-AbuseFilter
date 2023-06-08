@@ -560,6 +560,7 @@
 	"abusefilter-view-privatedetails-legend": "Näytä yksityiskohdat",
 	"abusefilter-view-privatedetails-reason": "Syy yksityiskohtien näyttämiseen:",
 	"abusefilter-log-details-id": "Lokin tunnistenumero",
+	"abusefilter-blocked-domains-remove": "poista",
 	"abusefilter-blocked-domains-remove-reason": "Syy",
 	"abusefilter-blocked-domains-remove-submit": "Poista",
 	"abusefilter-noreason": "Varoitus: Nähdäksesi tämän lokin yksityiset tiedot sinun on annettava syy.",
