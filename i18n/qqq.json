@@ -627,6 +627,8 @@
 	"abusefilter-blocked-domains-attempted": "The error message when adding a blocked domain has been attempted.",
 	"abusefilter-blocked-domains-json-error": "The error message when editing the JSON page to no longer be an array",
 	"abusefilter-blocked-domains-invalid-entry": "The error message when adding an invalid entry to the JSON array. Parameters:\n* $1 - the serial number of the entry which is invalid.",
+	"abusefilter-blocked-domains-domain-added-comment": "Edit summary when a user adds a blocked domain. Parameters\n* $1 - the domain that is blocked \n* $2 - notes and reasoning of the block.",
+	"abusefilter-blocked-domains-domain-removed-comment": "Edit summary when a user removes a domain from the blocked list. Parameters\n* $1 - the domain that is now removed \n* $2 - notes and reasoning of the removal.",
 	"log-description-abusefilterprivatedetails": "The description of the abuse filter private details access log.",
 	"abusefilter-noreason": "Warning message shown when no reasons is given to access the private details of an abuse log.",
 	"abusefilter-log-ip-not-available": "Text shown when IP address is not available.\n{{Identical|Not available}}",
