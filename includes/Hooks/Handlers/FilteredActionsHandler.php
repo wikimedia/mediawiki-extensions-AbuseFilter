@@ -20,6 +20,7 @@ use MediaWiki\Hook\UploadStashFileHook;
 use MediaWiki\Hook\UploadVerifyUploadHook;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\Hook\ArticleDeleteHook;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\Hook\ParserOutputStashForEditHook;
 use MediaWiki\Utils\UrlUtils;
@@ -52,6 +53,7 @@ class FilteredActionsHandler implements
 	private VariablesManager $variablesManager;
 	private BlockedDomainStorage $blockedDomainStorage;
 	private UrlUtils $urlUtils;
+	private PermissionManager $permissionManager;
 
 	/**
 	 * @param IBufferingStatsdDataFactory $statsDataFactory
@@ -61,6 +63,7 @@ class FilteredActionsHandler implements
 	 * @param VariablesManager $variablesManager
 	 * @param BlockedDomainStorage $blockedDomainStorage
 	 * @param UrlUtils $urlUtils
+	 * @param PermissionManager $permissionManager
 	 */
 	public function __construct(
 		IBufferingStatsdDataFactory $statsDataFactory,
@@ -69,7 +72,8 @@ class FilteredActionsHandler implements
 		EditRevUpdater $editRevUpdater,
 		VariablesManager $variablesManager,
 		BlockedDomainStorage $blockedDomainStorage,
-		UrlUtils $urlUtils
+		UrlUtils $urlUtils,
+		PermissionManager $permissionManager
 	) {
 		$this->statsDataFactory = $statsDataFactory;
 		$this->filterRunnerFactory = $filterRunnerFactory;
@@ -78,6 +82,7 @@ class FilteredActionsHandler implements
 		$this->variablesManager = $variablesManager;
 		$this->blockedDomainStorage = $blockedDomainStorage;
 		$this->urlUtils = $urlUtils;
+		$this->permissionManager = $permissionManager;
 	}
 
 	/**
@@ -163,6 +168,10 @@ class FilteredActionsHandler implements
 		}
 
 		$this->editRevUpdater->setLastEditPage( $page );
+
+		if ( $this->permissionManager->userHasRight( $user, 'abusefilter-bypass-blocked-external-domains' ) ) {
+			return Status::newGood();
+		}
 		$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
 		if ( $blockedDomainFilterResult instanceof Status ) {
 			return $blockedDomainFilterResult;
@@ -354,6 +363,9 @@ class FilteredActionsHandler implements
 			// @todo Return all errors instead of only the first one
 			$error = $filterResultApi->getErrors()[0]['message'];
 		} else {
+			if ( $this->permissionManager->userHasRight( $user, 'abusefilter-bypass-blocked-external-domains' ) ) {
+				return true;
+			}
 			$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
 			if ( $blockedDomainFilterResult instanceof Status ) {
 				$error = $blockedDomainFilterResult->getErrors()[0]['message'];

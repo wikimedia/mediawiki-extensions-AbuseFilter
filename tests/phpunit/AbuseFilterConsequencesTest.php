@@ -511,7 +511,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			AbuseFilterServices::getEditRevUpdater(),
 			AbuseFilterServices::getVariablesManager(),
 			AbuseFilterServices::getBlockedDomainStorage(),
-			$services->getUrlUtils()
+			$services->getUrlUtils(),
+			$services->getPermissionManager()
 		);
 		$hooksHandler->onEditFilterMergedContent( $context, $content, $status, $summary,
 			$this->user, false );

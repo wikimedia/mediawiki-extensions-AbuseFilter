@@ -320,7 +320,8 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			AbuseFilterServices::getEditRevUpdater(),
 			AbuseFilterServices::getVariablesManager(),
 			AbuseFilterServices::getBlockedDomainStorage(),
-			MediaWikiServices::getInstance()->getUrlUtils()
+			MediaWikiServices::getInstance()->getUrlUtils(),
+			MediaWikiServices::getInstance()->getPermissionManager()
 		);
 		$this->setTemporaryHook(
 			'EditFilterMergedContent',

@@ -598,5 +598,7 @@
 	"notification-link-text-show-filter": "Show filter",
 	"right-abusefilter-modify-blocked-external-domains": "Create or modify what external domains are blocked from being linked",
 	"action-abusefilter-modify-blocked-external-domains": "create or modify what external domains are blocked from being linked",
+	"right-abusefilter-bypass-blocked-external-domains": "Bypass blocked external domains",
+	"action-abusefilter-bypass-blocked-external-domains": "bypass blocked external domain",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Create or modify what external domains are blocked from being linked must be done through [[Special:BlockedExternalDomains|the special page]]."
 }
