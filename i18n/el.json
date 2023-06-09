@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AProdromou",
 			"Aitolos",
 			"Badseed",
 			"Consta",
@@ -206,6 +207,7 @@
 	"abusefilter-edit-disallow-actions": "Ενέργειες:",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Ετικέτες]] για να επικολληθούν:",
 	"abusefilter-edit-tag-hidden-placeholder": "Προσθήκη ετικετών (το κόμμα χωρίζεται)",
+	"abusefilter-edit-block-anon-durations": "Διάρκεια αποκλεισμού για μη εγγεγραμμένους χρήστες:",
 	"abusefilter-edit-denied": "Δεν μπορείτε να δείτε τις λεπτομέρειες αυτού του φίλτρου, γιατί αυτές έχουν αποκρυφθεί από τη δημόσια θέα.",
 	"abusefilter-edit-main": "Παράμετροι φίλτρου",
 	"abusefilter-edit-done-subtitle": "Επεξεργασμένο φίλτρο",
