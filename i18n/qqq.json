@@ -640,5 +640,7 @@
 	"notification-link-text-show-filter": "Label for button that links to the filter that was throttled.",
 	"right-abusefilter-modify-blocked-external-domains": "{{doc-right|abusefilter-modify-blocked-external-domains}}",
 	"action-abusefilter-modify-blocked-external-domains": "{{doc-action|abusefilter-modify-blocked-external-domains}}",
+	"right-abusefilter-bypass-blocked-external-domains": "{{doc-right|abusefilter-bypass-blocked-external-domains}}",
+	"action-abusefilter-bypass-blocked-external-domains": "{{doc-action|abusefilter-bypass-blocked-external-domains}}",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page."
 }

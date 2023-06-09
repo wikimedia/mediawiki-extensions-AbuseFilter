@@ -28,7 +28,8 @@
 		"abusefilter-hidden-log",
 		"abusefilter-hide-log",
 		"abusefilter-modify-global",
-		"abusefilter-modify-blocked-external-domains"
+		"abusefilter-modify-blocked-external-domains",
+		"abusefilter-bypass-blocked-external-domains"
 	],
 	"GroupPermissions": {
 		"*": {
@@ -47,6 +48,9 @@
 		"suppress": {
 			"abusefilter-hidden-log": true,
 			"abusefilter-hide-log": true
+		},
+		"bot": {
+			"abusefilter-bypass-blocked-external-domains": true
 		}
 	},
 	"GrantPermissions": {
@@ -62,6 +66,9 @@
 			"abusefilter-hidden-log": true,
 			"abusefilter-log-private": true,
 			"abusefilter-view-private": true
+		},
+		"editprotected": {
+			"abusefilter-bypass-blocked-external-domains": true
 		}
 	},
 	"SpecialPages": {
@@ -376,7 +383,8 @@
 				"AbuseFilterEditRevUpdater",
 				"AbuseFilterVariablesManager",
 				"AbuseFilterBlockedDomainStorage",
-				"UrlUtils"
+				"UrlUtils",
+				"PermissionManager"
 			]
 		},
 		"CheckUser": {
