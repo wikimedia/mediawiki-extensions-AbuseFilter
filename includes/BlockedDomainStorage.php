@@ -33,6 +33,7 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\UrlUtils;
+use Message;
 use RecentChange;
 use StatusValue;
 use TitleValue;
@@ -209,7 +210,9 @@ class BlockedDomainStorage implements IDBAccessObject {
 			return $content;
 		}
 		$content[] = [ 'domain' => $domain, 'notes' => $notes ];
-		$comment = 'Add blocked external domain ' . $domain . ' with notes: ' . $notes;
+		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
+			->params( $domain, $notes )
+			->plain();
 		return $this->saveContent( $content, $user, $comment );
 	}
 
@@ -231,7 +234,9 @@ class BlockedDomainStorage implements IDBAccessObject {
 				unset( $content[$key] );
 			}
 		}
-		$comment = 'Remove blocked external domain ' . $domain . ' with notes: ' . $notes;
+		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-removed-comment' )
+			->params( $domain, $notes )
+			->plain();
 		return $this->saveContent( $content, $user, $comment );
 	}
 
