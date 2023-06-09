@@ -122,7 +122,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 			$computedDomains[] = $validatedDomain;
 		}
 		sort( $computedDomains );
-		return $computedDomains;
+		return array_flip( $computedDomains );
 	}
 
 	/**
