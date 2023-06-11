@@ -78,7 +78,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @return string
 	 */
 	private function makeCacheKey() {
-		return $this->cache->makeKey( 'Abusefilter', 'blocked-domains' );
+		return $this->cache->makeKey( 'abusefilter-blocked-domains' );
 	}
 
 	/**
@@ -97,7 +97,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 
 	public function loadComputed() {
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'Abusefilter', 'blocked-domains-computed' ),
+			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
 			ExpirationAwareness::TTL_MINUTE * 5,
 			function ()  {
 				return $this->loadComputedUncached();
@@ -120,10 +120,10 @@ class BlockedDomainStorage implements IDBAccessObject {
 			if ( !$validatedDomain ) {
 				continue;
 			}
-			$computedDomains[] = $validatedDomain;
+			// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
+			$computedDomains[$validatedDomain] = true;
 		}
-		sort( $computedDomains );
-		return array_flip( $computedDomains );
+		return $computedDomains;
 	}
 
 	/**

@@ -99,7 +99,6 @@ class FilteredActionsHandler implements
 		string $slot = SlotRecord::MAIN
 	) {
 		$startTime = microtime( true );
-
 		if ( !$status->isOK() ) {
 			// Investigate what happens if we skip filtering here (T211680)
 			LoggerFactory::getInstance( 'AbuseFilter' )->info(
@@ -214,14 +213,13 @@ class FilteredActionsHandler implements
 				} else {
 					$domainString = $domainPiece . '.' . $domainString;
 				}
-				$addedDomains[] = $domainString;
+				// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
+				$addedDomains[$domainString] = true;
 			}
 		}
 		if ( !$addedDomains ) {
 			return false;
 		}
-		// Turn it into a map, see P48956 for more details
-		$addedDomains = array_flip( $addedDomains );
 		$blockedDomains = $this->blockedDomainStorage->loadComputed();
 		$blockedDomainsAdded = array_intersect_key( $addedDomains, $blockedDomains );
 		if ( !$blockedDomainsAdded ) {
