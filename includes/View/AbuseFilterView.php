@@ -14,7 +14,7 @@ use RecentChange;
 use SpecialPage;
 use Title;
 use UnexpectedValueException;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\Platform\ISQLPlatform;
 use Xml;
 
 abstract class AbuseFilterView extends ContextSource {
@@ -109,11 +109,11 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
-	 * @param IDatabase $db
+	 * @param ISQLPlatform $db
 	 * @param string|false $action 'edit', 'move', 'createaccount', 'delete' or false for all
 	 * @return string
 	 */
-	public function buildTestConditions( IDatabase $db, $action = false ) {
+	public function buildTestConditions( ISQLPlatform $db, $action = false ) {
 		$editSources = [
 			RecentChange::SRC_EDIT,
 			RecentChange::SRC_NEW,
@@ -190,11 +190,11 @@ abstract class AbuseFilterView extends ContextSource {
 
 	/**
 	 * @todo Core should provide a method for this (T233222)
-	 * @param IDatabase $db
+	 * @param ISQLPlatform $db
 	 * @param Authority $authority
 	 * @return array
 	 */
-	public function buildVisibilityConditions( IDatabase $db, Authority $authority ): array {
+	public function buildVisibilityConditions( ISQLPlatform $db, Authority $authority ): array {
 		if ( !$authority->isAllowed( 'deletedhistory' ) ) {
 			$bitmask = RevisionRecord::DELETED_USER;
 		} elseif ( !$authority->isAllowedAny( 'suppressrevision', 'viewsuppressed' ) ) {

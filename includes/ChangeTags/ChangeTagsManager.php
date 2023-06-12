@@ -7,7 +7,7 @@ use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use WANObjectCache;
 use Wikimedia\Rdbms\Database;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
@@ -71,12 +71,12 @@ class ChangeTagsManager {
 	}
 
 	/**
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param bool $enabled
 	 * @param bool $global
 	 * @return string[]
 	 */
-	private function loadTagsFromDb( IDatabase $dbr, bool $enabled, bool $global = false ): array {
+	private function loadTagsFromDb( IReadableDatabase $dbr, bool $enabled, bool $global = false ): array {
 		// This is a pretty awful hack.
 		$where = [
 			'afa_consequence' => 'tag',

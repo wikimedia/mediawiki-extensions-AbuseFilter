@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
@@ -81,12 +81,12 @@ class ConsequencesLookup {
 	}
 
 	/**
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param int[] $filters
 	 * @param string $prefix
 	 * @return array[][]
 	 */
-	private function loadConsequencesFromDB( IDatabase $dbr, array $filters, string $prefix = '' ): array {
+	private function loadConsequencesFromDB( IReadableDatabase $dbr, array $filters, string $prefix = '' ): array {
 		$actionsByFilter = [];
 		foreach ( $filters as $filter ) {
 			$actionsByFilter[$prefix . $filter] = [];

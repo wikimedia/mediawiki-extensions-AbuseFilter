@@ -12,6 +12,7 @@ use LoggedUpdateMaintenance;
 use MediaWiki\MediaWikiServices;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\Platform\ISQLPlatform;
 
 /**
  * Maintenance script that migrates actors from AbuseFilter tables to the 'actor' table.
@@ -101,12 +102,12 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 
 	/**
 	 * Make the subqueries for `actor_id`
-	 * @param IDatabase $dbw
+	 * @param ISQLPlatform $dbw
 	 * @param string $userField User ID field name
 	 * @param string $nameField User name field name
 	 * @return string SQL fragment
 	 */
-	private function makeActorIdSubquery( $dbw, $userField, $nameField ) {
+	private function makeActorIdSubquery( ISQLPlatform $dbw, $userField, $nameField ) {
 		$idSubquery = $dbw->buildSelectSubquery(
 			'actor',
 			'actor_id',

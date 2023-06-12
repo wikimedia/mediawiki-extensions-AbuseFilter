@@ -15,8 +15,8 @@ use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use stdClass;
 use WANObjectCache;
-use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * This class provides read access to the filters stored in the database.
@@ -213,10 +213,10 @@ class FilterLookup implements IDBAccessObject {
 	/**
 	 * @param int $dbIndex
 	 * @param bool $global
-	 * @return IDatabase
+	 * @return IReadableDatabase
 	 * @throws CentralDBNotAvailableException
 	 */
-	private function getDBConnection( int $dbIndex, bool $global ): IDatabase {
+	private function getDBConnection( int $dbIndex, bool $global ): IReadableDatabase {
 		if ( $global ) {
 			return $this->centralDBManager->getConnection( $dbIndex );
 		} else {
@@ -225,12 +225,12 @@ class FilterLookup implements IDBAccessObject {
 	}
 
 	/**
-	 * @param IDatabase $db
+	 * @param IReadableDatabase $db
 	 * @param string $fname
 	 * @param int $id
 	 * @return array
 	 */
-	private function getActionsFromDB( IDatabase $db, string $fname, int $id ): array {
+	private function getActionsFromDB( IReadableDatabase $db, string $fname, int $id ): array {
 		$res = $db->select(
 			'abuse_filter_action',
 			[ 'afa_consequence', 'afa_parameters' ],
