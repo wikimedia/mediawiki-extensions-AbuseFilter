@@ -21,7 +21,10 @@
 			"ZaDiak",
 			"Αντιγόνη",
 			"Giannaras99",
-			"NikosLikomitros"
+			"NikosLikomitros",
+			"AProdromou",
+			"Dogogos123",
+			"Gpbiza"
 		]
 	},
 	"abusefilter-desc": "Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες",
@@ -62,6 +65,7 @@
 	"abusefilter-log-search-filter": "Αναγνωριστικά φίλτρων:",
 	"abusefilter-log-search-title": "Τίτλος:",
 	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-impact-all": "Όλες οι ενέργειες",
 	"abusefilter-log-search-impact-saved": "Αποθηκευμένες αλλαγές μόνο",
 	"abusefilter-log-search-impact-not-saved": "Χωρίς τις αποθηκευμένες αλλαγές",
 	"abusefilter-log-search-entries-label": "Ορατότητα:",
@@ -101,6 +105,7 @@
 	"abusefilter-log-hide-forbidden": "Δεν έχετε άδεια για να κρύψετε τις καταχωρήσεις κατάχρησης του αρχείου καταγραφής",
 	"abusefilter-list": "Όλα τα φίλτρα",
 	"abusefilter-list-id": "Ταυτότητα φίλτρου",
+	"abusefilter-list-pattern": "Μοτίβο",
 	"abusefilter-list-status": "Κατάσταση",
 	"abusefilter-list-public": "Δημόσια περιγραφή",
 	"abusefilter-list-consequences": "Συνέπειες",
@@ -436,5 +441,6 @@
 	"abusefilter-diff-next": "Νεότερη αλλαγή",
 	"abusefilter-import-intro": "Μπορείτε να χρησιμοποιήσετε αυτή την διεπιφάνεια για να εισαγάγετε φίλτρα από άλλα wiki.\nΣτο wiki προέλευσης, κάντε κλικ στο «{{int:abusefilter-edit-export}}» κάτω από το «{{int:abusefilter-edit-tools}}» στην διεπιφάνεια επεξεργασίας.\nΑντιγράψτε από το πλαίσιο κειμένου που εμφανίζεται και επικολλήστε το σε αυτό το πλαίσιο κειμένου και μετά κάντε κλικ στο «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Εισαγωγή δεδομένων",
-	"abusefilter-group-default": "Προεπιλογή"
+	"abusefilter-group-default": "Προεπιλογή",
+	"abusefilter-log-ip-not-available": "Μη Διαθέσιμο"
 }
