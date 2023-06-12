@@ -81,6 +81,7 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 			$groups = [ 'ip', 'user', 'range', 'creationdate', 'editcount', 'site', 'page' ];
 			foreach ( $groups as $group ) {
 				$throttle = $this->getThrottle( [ 'groups' => [ $group ], 'count' => 0 ], null, $global );
+				/** @var Throttle $throttleWr */
 				$throttleWr = TestingAccessWrapper::newFromObject( $throttle );
 				$throttleWr->setThrottled( $group );
 				yield "$group set, $globalStr" => [ $throttle, false ];
@@ -108,7 +109,9 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 	 */
 	public function testExecute( Throttle $throttle, bool $shouldDisable, MockObject $cache = null ) {
 		if ( $cache ) {
-			$groupCount = count( TestingAccessWrapper::newFromObject( $throttle )->throttleParams['groups'] );
+			/** @var Throttle $wrapper */
+			$wrapper = TestingAccessWrapper::newFromObject( $throttle );
+			$groupCount = count( $wrapper->throttleParams['groups'] );
 			$cache->expects( $this->exactly( $groupCount ) )->method( 'incrWithInit' );
 		}
 		$throttle->shouldDisableOtherConsequences();

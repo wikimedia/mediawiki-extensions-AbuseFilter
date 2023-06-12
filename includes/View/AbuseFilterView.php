@@ -101,13 +101,11 @@ abstract class AbuseFilterView extends ContextSource {
 				]
 			);
 		// CSS class for reducing default input field width
-		$loadDiv =
-			Xml::tags(
-				'div',
-				[ 'class' => 'mw-abusefilter-load-filter-id' ],
-				$loadGroup
-			);
-		return $loadDiv;
+		return Xml::tags(
+			'div',
+			[ 'class' => 'mw-abusefilter-load-filter-id' ],
+			$loadGroup
+		);
 	}
 
 	/**

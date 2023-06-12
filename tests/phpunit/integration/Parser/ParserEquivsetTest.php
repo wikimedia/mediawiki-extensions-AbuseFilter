@@ -23,7 +23,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Parser;
 
 use EmptyBagOStuff;
-use Generator;
 use LanguageEn;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
@@ -88,9 +87,6 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 		$this->assertTrue( $this->getParser()->parse( $rule ) );
 	}
 
-	/**
-	 * @return Generator|array
-	 */
 	public static function provideGenericTests() {
 		$testPath = __DIR__ . "/../../../parserTestsEquivset";
 		$testFiles = glob( $testPath . "/*.t" );

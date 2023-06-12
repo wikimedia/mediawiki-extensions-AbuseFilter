@@ -35,13 +35,11 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		'matches' => 0,
 	];
 
-	private function getFilterProfiler( array $options = null, LoggerInterface $logger = null ): FilterProfiler {
-		if ( $options === null ) {
-			$options = [
-				'AbuseFilterConditionLimit' => 1000,
-				'AbuseFilterSlowFilterRuntimeLimit' => 500,
-			];
-		}
+	private function getFilterProfiler( LoggerInterface $logger = null ): FilterProfiler {
+		$options = [
+			'AbuseFilterConditionLimit' => 1000,
+			'AbuseFilterSlowFilterRuntimeLimit' => 500,
+		];
 		return new FilterProfiler(
 			new WRStatsFactory( new BagOStuffStatsStore( new HashBagOStuff() ) ),
 			new ServiceOptions( FilterProfiler::CONSTRUCTOR_OPTIONS, $options ),
@@ -137,7 +135,7 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		$title = $this->createMock( Title::class );
 		$title->method( 'getPrefixedText' )->willReturn( 'title' );
 
-		$profiler = $this->getFilterProfiler( null, $logger );
+		$profiler = $this->getFilterProfiler( $logger );
 		$profiler->recordPerFilterProfiling(
 			$title,
 			[

@@ -56,7 +56,9 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 		$formatter = $this->getFormatter();
 		$ml = $this->createMock( MessageLocalizer::class );
 		$formatter->setMessageLocalizer( $ml );
-		$this->assertSame( $ml, TestingAccessWrapper::newFromObject( $formatter )->messageLocalizer );
+		/** @var SpecsFormatter $wrapper */
+		$wrapper = TestingAccessWrapper::newFromObject( $formatter );
+		$this->assertSame( $ml, $wrapper->messageLocalizer );
 	}
 
 	/**

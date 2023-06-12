@@ -1014,8 +1014,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
 
-		$output = Xml::tags( 'fieldset', null, $output );
-		return $output;
+		return Xml::tags( 'fieldset', null, $output );
 	}
 
 	/**

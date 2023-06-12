@@ -237,12 +237,10 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param int $val The amount to increase the conditions count of.
 	 * @throws ConditionLimitException
 	 */
-	private function raiseCondCount( $val = 1 ) {
-		$this->mCondCount += $val;
-
+	private function raiseCondCount() {
+		$this->mCondCount++;
 		if ( $this->condLimitEnabled && $this->mCondCount > $this->conditionsLimit ) {
 			throw new ConditionLimitException();
 		}

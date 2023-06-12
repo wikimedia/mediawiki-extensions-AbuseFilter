@@ -301,9 +301,8 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$tableHead . $tableBody
 		);
 
-		$html = Html::rawElement( 'h2', [], $this->msg( 'abusefilter-diff-title' )->parse() ) . $table;
-
-		return $html;
+		return Html::rawElement( 'h2', [], $this->msg( 'abusefilter-diff-title' )->parse() ) .
+			$table;
 	}
 
 	/**

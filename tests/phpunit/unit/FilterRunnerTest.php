@@ -34,7 +34,6 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param ChangeTagger|null $changeTagger
 	 * @param EditStashCache|null $cache
-	 * @param array $options
 	 * @param VariableHolder|null $vars
 	 * @param string $group
 	 * @return FilterRunner
@@ -42,13 +41,12 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 	private function getRunner(
 		ChangeTagger $changeTagger = null,
 		EditStashCache $cache = null,
-		$options = [],
 		VariableHolder $vars = null,
 		$group = 'default'
 	): FilterRunner {
 		$opts = new ServiceOptions(
 			FilterRunner::CONSTRUCTOR_OPTIONS,
-			$options + [
+			[
 				'AbuseFilterValidGroups' => [ 'default' ],
 				'AbuseFilterCentralDB' => false,
 				'AbuseFilterIsCentral' => false,
@@ -93,7 +91,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 		$invalidGroup = 'invalid-group';
 		$this->expectException( InvalidArgumentException::class );
 		$this->expectExceptionMessage( $invalidGroup );
-		$this->getRunner( null, null, [], new VariableHolder(), $invalidGroup );
+		$this->getRunner( null, null, new VariableHolder(), $invalidGroup );
 	}
 
 	/**
@@ -102,7 +100,7 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 	public function testConstructor_noAction() {
 		$this->expectException( InvalidArgumentException::class );
 		$this->expectExceptionMessage( 'variable is not set' );
-		$this->getRunner( null, null, [], new VariableHolder() );
+		$this->getRunner( null, null, new VariableHolder() );
 	}
 
 	/**

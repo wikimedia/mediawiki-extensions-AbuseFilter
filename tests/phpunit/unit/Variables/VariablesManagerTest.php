@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use Generator;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
@@ -22,15 +21,11 @@ use MediaWikiUnitTestCase;
 class VariablesManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param LazyVariableComputer|null $lazyComputer
-	 * @param KeywordsManager|null $keywordsManager
 	 * @return VariablesManager
 	 */
-	private function getManager(
-		LazyVariableComputer $lazyComputer = null,
-		KeywordsManager $keywordsManager = null
-	): VariablesManager {
+	private function getManager( LazyVariableComputer $lazyComputer = null ): VariablesManager {
 		return new VariablesManager(
-			$keywordsManager ?? new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
+			new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) ),
 			$lazyComputer ?? $this->createMock( LazyVariableComputer::class )
 		);
 	}
@@ -77,9 +72,6 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expected, $manager->dumpAllVars( $holder, $compute, $includeUser ) );
 	}
 
-	/**
-	 * @return Generator|array
-	 */
 	public function provideDumpAllVars() {
 		$titleVal = 'title';
 		$preftitle = new LazyLoadedVariable( 'preftitle', [] );
@@ -203,9 +195,6 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	/**
-	 * @return Generator|array
-	 */
 	public function provideGetVar() {
 		$vars = new VariableHolder();
 

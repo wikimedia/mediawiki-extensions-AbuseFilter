@@ -83,9 +83,6 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 		$importer->decodeData( $data );
 	}
 
-	/**
-	 * @return array
-	 */
 	public static function provideInvalidData() {
 		$cases = [
 			'non-object' => 'foo',

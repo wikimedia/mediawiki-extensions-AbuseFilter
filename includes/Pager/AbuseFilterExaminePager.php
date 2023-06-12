@@ -56,14 +56,12 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	 */
 	public function getQueryInfo() {
 		$rcQuery = RecentChange::getQueryInfo();
-		$info = [
+		return [
 			'tables' => $rcQuery['tables'],
 			'fields' => $rcQuery['fields'],
 			'conds' => $this->conds,
 			'join_conds' => $rcQuery['joins'],
 		];
-
-		return $info;
 	}
 
 	/**

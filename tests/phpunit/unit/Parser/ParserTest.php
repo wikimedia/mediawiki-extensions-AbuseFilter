@@ -59,9 +59,6 @@ class ParserTest extends ParserTestCase {
 		$this->assertTrue( $this->getParser()->parse( $rule ) );
 	}
 
-	/**
-	 * @return Generator|array
-	 */
 	public function readTests() {
 		$testPath = __DIR__ . "/../../../parserTests";
 		$testFiles = glob( $testPath . "/*.t" );
@@ -812,10 +809,6 @@ class ParserTest extends ParserTestCase {
 		$this->assertTrue( $actual );
 	}
 
-	/**
-	 * Data provider for testDeprecatedVars
-	 * @return Generator|array
-	 */
 	public function provideDeprecatedVars() {
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 		foreach ( $keywordsManager->getDeprecatedVariables() as $old => $new ) {
@@ -1161,22 +1154,26 @@ class ParserTest extends ParserTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::toggleConditionLimit
 	 */
 	public function testToggleConditionLimit() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
+		/** @var FilterEvaluator $wrapper */
+		$parser = $this->getParser();
+		$wrapper = TestingAccessWrapper::newFromObject( $parser );
 
 		$parser->toggleConditionLimit( false );
-		$this->assertFalse( $parser->condLimitEnabled );
+		$this->assertFalse( $wrapper->condLimitEnabled );
 
 		$parser->toggleConditionLimit( true );
-		$this->assertTrue( $parser->condLimitEnabled );
+		$this->assertTrue( $wrapper->condLimitEnabled );
 	}
 
 	/**
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator::setVariables
 	 */
 	public function testSetVariables() {
-		$parser = TestingAccessWrapper::newFromObject( $this->getParser() );
+		$parser = $this->getParser();
 		$vars = new VariableHolder();
 		$parser->setVariables( $vars );
-		$this->assertSame( $vars, $parser->mVariables );
+		/** @var FilterEvaluator $wrapper */
+		$wrapper = TestingAccessWrapper::newFromObject( $parser );
+		$this->assertSame( $vars, $wrapper->mVariables );
 	}
 }

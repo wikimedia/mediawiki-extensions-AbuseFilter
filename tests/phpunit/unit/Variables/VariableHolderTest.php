@@ -22,7 +22,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use Generator;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
@@ -119,9 +118,6 @@ class VariableHolderTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expected, $vars->getVarThrow( $name ) );
 	}
 
-	/**
-	 * @return Generator|array
-	 */
 	public static function provideGetVarThrow() {
 		$vars = new VariableHolder();
 

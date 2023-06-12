@@ -35,8 +35,6 @@ class TableDiffFormatterFullContext extends TableDiffFormatter {
 		// Just render the diff with no preprocessing
 		$this->startDiff();
 		$this->block( 1, $xlen, 1, $ylen, $diff->edits );
-		$end = $this->endDiff();
-
-		return $end;
+		return $this->endDiff();
 	}
 }

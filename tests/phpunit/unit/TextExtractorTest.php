@@ -40,11 +40,6 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $actual );
 	}
 
-	/**
-	 * Data provider for testRevisionToString
-	 *
-	 * @return Generator|array
-	 */
 	public static function provideRevisionToString() {
 		yield 'no revision' => [ null, false, '' ];
 
