@@ -601,6 +601,8 @@
 	"abusefilter-blocked-domains-attempted": "הטקסט שרצית לפרסם נחסם על־ידי המסנן שלנו. התחום הבא חסום מפני הוספה: $1",
 	"abusefilter-blocked-domains-json-error": "JSON צריך להיות מערך",
 	"abusefilter-blocked-domains-invalid-entry": "הערך $1 ב־JSON אינו תקין - זה צריך להיות עצם עם שדות \"domain\" ו־\"notes\" בלבד, שניהם מחרוזות",
+	"abusefilter-blocked-domains-domain-added-comment": "הוספת תחום חיצוני חסום $1 עם הערות: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "הסרת תחום חיצוני חסום $1 עם הערות: $2",
 	"log-description-abusefilterprivatedetails": "היומן הזה מציגה רשימה של הפעמים שבהן משתמש ניגש לנתונים פרטיים של יומן ההשחתות.",
 	"abusefilter-noreason": "אזהרה: כדי לצפות בנתונים פרטיים ביומן הזה, יש להקליד סיבה.",
 	"abusefilter-log-ip-not-available": "לא זמין",
@@ -614,5 +616,7 @@
 	"notification-link-text-show-filter": "הצגת המסנן",
 	"right-abusefilter-modify-blocked-external-domains": "יצירה או שינוי אילו תחומים חיצוניים חסומים לקישור",
 	"action-abusefilter-modify-blocked-external-domains": "ליצור או לשנות אילו תחומים חיצוניים חסומים לקישור",
+	"right-abusefilter-bypass-blocked-external-domains": "מעקף תחומים חיצוניים חסומים",
+	"action-abusefilter-bypass-blocked-external-domains": "לעקוף תחום חיצוני חסום",
 	"abusefilter-blocked-domains-cannot-edit-directly": "יצירה ושינוי של תחומים חיצוניים חסומים לקישור צריכות להיעשות דרך [[Special:BlockedExternalDomains|דף מיוחד]]."
 }

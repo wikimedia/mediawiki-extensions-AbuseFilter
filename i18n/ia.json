@@ -253,7 +253,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiquettas]] a applicar:",
 	"abusefilter-edit-tag-placeholder": "Adder etiquettas (un a un, o separate per commas)",
 	"abusefilter-edit-tag-hidden-placeholder": "Adder etiquettas (separate per commas)",
-	"abusefilter-edit-block-anon-durations": "Duration del blocada pro usatores anonyme:",
+	"abusefilter-edit-block-anon-durations": "Duration del blocada pro usatores non registrate:",
 	"abusefilter-edit-block-user-durations": "Duration del blocada pro usatores registrate:",
 	"abusefilter-block-anon": "Blocar usatores anonyme",
 	"abusefilter-block-user": "blocar usatores registrate",
@@ -582,6 +582,10 @@
 	"abusefilter-blocked-domains-remove-reason": "Motivo",
 	"abusefilter-blocked-domains-remove-submit": "Remover",
 	"abusefilter-blocked-domains-attempted": "Le texto que tu voleva publicar ha essite blocate per nostre filtro. Le sequente dominio es blocate contra addition: $1",
+	"abusefilter-blocked-domains-json-error": "JSON debe esser un array",
+	"abusefilter-blocked-domains-invalid-entry": "Entrata $1 in JSON non es valide; debe esser un objecto con campos 'domain' e 'notas' solmente, ambes essente catenas de characteres",
+	"abusefilter-blocked-domains-domain-added-comment": "Adder un dominio externe blocate $1 con notas: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Remover le dominio externe blocate $1 con notas: $2",
 	"log-description-abusefilterprivatedetails": "Iste registro monstra un lista de accessos de un usator al detalios private de un registro de abusos.",
 	"abusefilter-noreason": "Attention: Pro vider le detalios private de iste registro, tu debe fornir un motivo.",
 	"abusefilter-log-ip-not-available": "Non disponibile",
@@ -595,5 +599,7 @@
 	"notification-link-text-show-filter": "Monstrar filtro",
 	"right-abusefilter-modify-blocked-external-domains": "Crear o modificar le lista de dominios externe al quales le ligamines es blocate",
 	"action-abusefilter-modify-blocked-external-domains": "crear o modificar le lista de dominios externe al quales le ligamines es blocate",
+	"right-abusefilter-bypass-blocked-external-domains": "Contornar dominios externe blocate",
+	"action-abusefilter-bypass-blocked-external-domains": "contornar dominios externe blocate",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Le creation o modification del lista de dominios externe al quales le ligamines es blocate debe esser facite usante [[Special:BlockedExternalDomains|iste pagina special]]."
 }

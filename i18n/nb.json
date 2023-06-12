@@ -604,6 +604,7 @@
 	"abusefilter-blocked-domains-remove-reason": "Årsak",
 	"abusefilter-blocked-domains-remove-submit": "Fjern",
 	"abusefilter-blocked-domains-attempted": "Teksten du ønsket å publisere ble blokkert av filteret vårt. Følgende domene er svartelistet: $1",
+	"abusefilter-blocked-domains-invalid-entry": "Oppføringen $1 i JSON-en er ugyldig – den må være et objekt med kun feltene «domain» og «notes», der begge feltene er strenger",
 	"log-description-abusefilterprivatedetails": "Denne loggen viser en liste over tider en bruker har fått tilgang til private detaljer i en misbrukslogg.",
 	"abusefilter-noreason": "Advarsel: For å se private detaljer i denne loggen må du angi en årsak.",
 	"abusefilter-log-ip-not-available": "Ikke tilgjengelig",
