@@ -5,8 +5,12 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use ApiMessage;
 use Content;
 use DeferredUpdates;
+use ExtensionRegistry;
 use IBufferingStatsdDataFactory;
 use IContextSource;
+use LogPage;
+use ManualLogEntry;
+use MediaWiki\CheckUser\Hooks as CUHooks;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
@@ -171,7 +175,7 @@ class FilteredActionsHandler implements
 		if ( $this->permissionManager->userHasRight( $user, 'abusefilter-bypass-blocked-external-domains' ) ) {
 			return Status::newGood();
 		}
-		$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
+		$blockedDomainFilterResult = $this->blockedDomainFilter( $vars, $user, $title );
 		if ( $blockedDomainFilterResult instanceof Status ) {
 			return $blockedDomainFilterResult;
 		}
@@ -181,9 +185,11 @@ class FilteredActionsHandler implements
 
 	/**
 	 * @param VariableHolder $vars variables by the action
+	 * @param User $user User that tried to add the domain, used for logging
+	 * @param Title $title Title of the page that was attempted on, used for logging
 	 * @return Status|bool Status if it's a match and false if not
 	 */
-	private function blockedDomainFilter( VariableHolder $vars ) {
+	private function blockedDomainFilter( VariableHolder $vars, $user, $title ) {
 		global $wgAbuseFilterEnableBlockedExternalDomain;
 		if ( !$wgAbuseFilterEnableBlockedExternalDomain ) {
 			return false;
@@ -231,7 +237,40 @@ class FilteredActionsHandler implements
 
 		$status = Status::newFatal( $error, 'blockeddomain', 'blockeddomain' );
 		$status->value['blockeddomain'] = [ 'disallow' ];
+		$this->logFilterHit(
+			$user,
+			$title,
+			implode( ' ', $blockedDomainsAdded )
+		);
 		return $status;
+	}
+
+	/**
+	 * Logs the filter hit to Special:Log
+	 *
+	 * @param User $user
+	 * @param Title $title
+	 * @param string $blockedDomain The blocked domain the user attempted to add
+	 */
+	public function logFilterHit( User $user, $title, $blockedDomain ) {
+		$logEntry = new ManualLogEntry( 'abusefilterblockeddomainhit', 'hit' );
+		$logEntry->setPerformer( $user );
+		$logEntry->setTarget( $title );
+		$logEntry->setParameters( [ '4::blocked' => $blockedDomain ] );
+		$logid = $logEntry->insert();
+		$log = new LogPage( 'abusefilterblockeddomainhit' );
+		if ( $log->isRestricted() ) {
+			// Make sure checkusers can see this action if the log is restricted
+			// (which is the default)
+			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
+				$rc = $logEntry->getRecentChange( $logid );
+				CUHooks::updateCheckUserData( $rc );
+			}
+		} else {
+			// If the log is unrestricted, publish normally to RC,
+			// which will also update checkuser
+			$logEntry->publish( $logid, "rc" );
+		}
 	}
 
 	/**
@@ -364,7 +403,7 @@ class FilteredActionsHandler implements
 			if ( $this->permissionManager->userHasRight( $user, 'abusefilter-bypass-blocked-external-domains' ) ) {
 				return true;
 			}
-			$blockedDomainFilterResult = $this->blockedDomainFilter( $vars );
+			$blockedDomainFilterResult = $this->blockedDomainFilter( $vars, $user, $title );
 			if ( $blockedDomainFilterResult instanceof Status ) {
 				$error = $blockedDomainFilterResult->getErrors()[0]['message'];
 				return $blockedDomainFilterResult->isOK();
