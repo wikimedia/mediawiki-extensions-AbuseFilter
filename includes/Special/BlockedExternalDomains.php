@@ -27,6 +27,7 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Utils\UrlUtils;
 use PermissionsError;
 use SpecialPage;
+use StatusValue;
 use WANObjectCache;
 use Xml;
 
@@ -242,7 +243,7 @@ class BlockedExternalDomains extends SpecialPage {
 			$this->getUser()
 		);
 
-		if ( !$rev ) {
+		if ( $rev instanceof StatusValue ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
 			return false;
 		} else {
@@ -339,7 +340,7 @@ class BlockedExternalDomains extends SpecialPage {
 			$this->getUser()
 		);
 
-		if ( !$rev ) {
+		if ( $rev instanceof StatusValue ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
 			return false;
 		} else {
