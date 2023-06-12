@@ -21,6 +21,7 @@ use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\PermissionManager;
 use OOUI;
 use SpecialBlock;
@@ -624,7 +625,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		switch ( $action ) {
 			case 'throttle':
 				// Throttling is only available via object caching
-				if ( $config->get( 'MainCacheType' ) === CACHE_NONE ) {
+				if ( $config->get( MainConfigNames::MainCacheType ) === CACHE_NONE ) {
 					return '';
 				}
 				$throttleSettings =
@@ -956,7 +957,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					] );
 
 				$blockOptions = [];
-				if ( $config->get( 'BlockAllowsUTEdit' ) === true ) {
+				if ( $config->get( MainConfigNames::BlockAllowsUTEdit ) === true ) {
 					$talkCheckbox =
 						new OOUI\FieldLayout(
 							new OOUI\CheckboxInputWidget( [

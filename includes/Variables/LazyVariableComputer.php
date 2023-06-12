@@ -214,7 +214,7 @@ class LazyVariableComputer {
 			case 'links-from-wikitext-or-database':
 				// TODO: use Content object instead, if available!
 				/** @var WikiPage $article */
-				$article = $article ?? $parameters['article'];
+				$article ??= $parameters['article'];
 
 				// this inference is ugly, but the name isn't accessible from here
 				// and we only want this for debugging
@@ -350,12 +350,9 @@ class LazyVariableComputer {
 				if ( !$user->isRegistered() ) {
 					$result = 0;
 				} else {
-					$registration = $user->getRegistration();
 					// HACK: If there's no registration date, assume 2008-01-15, Wikipedia Day
 					// in the year before the new user log was created. See T243469.
-					if ( $registration === null ) {
-						$registration = "20080115000000";
-					}
+					$registration = $user->getRegistration() ?? "20080115000000";
 					$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $registration );
 				}
 				break;

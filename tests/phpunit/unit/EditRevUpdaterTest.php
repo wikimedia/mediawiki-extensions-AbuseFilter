@@ -49,12 +49,14 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		IDatabase $centralDB = null,
 		RevisionLookup $revLookup = null
 	): EditRevUpdater {
-		$localDB = $localDB ?? $this->createMock( DBConnRef::class );
 		$lbFactory = $this->createMock( LBFactory::class );
-		$lbFactory->method( 'getPrimaryDatabase' )->willReturn( $localDB );
-		$centralDB = $centralDB ?? $this->createMock( IDatabase::class );
+		$lbFactory->method( 'getPrimaryDatabase' )
+			->willReturn( $localDB ?? $this->createMock( DBConnRef::class ) );
+
 		$dbManager = $this->createMock( CentralDBManager::class );
-		$dbManager->method( 'getConnection' )->willReturn( $centralDB );
+		$dbManager->method( 'getConnection' )
+			->willReturn( $centralDB ?? $this->createMock( IDatabase::class ) );
+
 		return new EditRevUpdater(
 			$dbManager,
 			$revLookup ?? $this->createMock( RevisionLookup::class ),

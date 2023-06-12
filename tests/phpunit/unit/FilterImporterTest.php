@@ -44,8 +44,6 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 		bool $isCentral = null,
 		array $actions = null
 	): FilterImporter {
-		$groups = $groups ?? [ 'default' ];
-		$isCentral = $isCentral ?? false;
 		$actions = array_fill_keys( $actions ?? [ 'warn', 'disallow', 'block' ], true );
 		$registry = new ConsequencesRegistry(
 			$this->createMock( AbuseFilterHookRunner::class ),
@@ -55,8 +53,8 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 			new ServiceOptions(
 				FilterImporter::CONSTRUCTOR_OPTIONS,
 				[
-					'AbuseFilterValidGroups' => $groups,
-					'AbuseFilterIsCentral' => $isCentral
+					'AbuseFilterValidGroups' => $groups ?? [ 'default' ],
+					'AbuseFilterIsCentral' => $isCentral ?? false,
 				]
 			),
 			$registry

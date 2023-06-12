@@ -220,9 +220,7 @@ class FilterRunner {
 			}
 		}
 
-		if ( $runnerData === null ) {
-			$runnerData = $this->checkAllFiltersInternal();
-		}
+		$runnerData ??= $this->checkAllFiltersInternal();
 
 		$this->deferredUpdatesManager->addCallableUpdate( function () use ( $runnerData ) {
 			$this->profileExecution( $runnerData );

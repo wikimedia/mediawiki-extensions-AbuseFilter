@@ -49,12 +49,9 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		WANObjectCache $cache = null,
 		bool $filterIsCentral = false
 	): FilterLookup {
-		$db = $db ?? $this->createMock( DBConnRef::class );
 		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnectionRef' )->willReturn( $db );
-
-		// Cannot use mocks because final methods aren't mocked and they would error out
-		$cache = $cache ?? new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
+		$lb->method( 'getConnectionRef' )
+			->willReturn( $db ?? $this->createMock( DBConnRef::class ) );
 
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getMainLB' )->willReturnCallback(
@@ -66,7 +63,8 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		$centralDBManager = new CentralDBManager( $lbFactory, $centralDB, $filterIsCentral );
 		return new FilterLookup(
 			$lb,
-			$cache,
+			// Cannot use mocks because final methods aren't mocked and they would error out
+			$cache ?? new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 			$centralDBManager,
 			new AbuseFilterActorMigration(
 				SCHEMA_COMPAT_READ_OLD | SCHEMA_COMPAT_WRITE_BOTH,
