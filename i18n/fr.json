@@ -628,6 +628,8 @@
 	"abusefilter-blocked-domains-attempted": "Le texte que vous voulez publier a été bloqué par notre filtre. Le domaine suivant est bloqué contre tout ajout : $1",
 	"abusefilter-blocked-domains-json-error": "Le JSON doit être un tableau",
 	"abusefilter-blocked-domains-invalid-entry": "L’entrée $1 en JSON n’est pas valide : il devrait s’agir d’un objet avec les champs « domain » (domaine) et « notes » uniquement, les deux étant des chaînes",
+	"abusefilter-blocked-domains-domain-added-comment": "Ajouter un domaine externe bloqué $1 avec des notes : $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Retirer le domaine externe bloqué $1 avec des notes : $2",
 	"log-description-abusefilterprivatedetails": "Ce journal affiche une liste des dates et heures où un utilisateur a accédé aux détails confidentiels d’un journal d’abus.",
 	"abusefilter-noreason": "Avertissement : pour voir les détails confidentiels de ce journal, vous devez indiquer un motif.",
 	"abusefilter-log-ip-not-available": "Non disponible",
@@ -641,5 +643,7 @@
 	"notification-link-text-show-filter": "Afficher le filtre",
 	"right-abusefilter-modify-blocked-external-domains": "Créer ou modifier la liste des domaines externes vers lesquels les liens sont bloqués",
 	"action-abusefilter-modify-blocked-external-domains": "créer ou modifier la liste des domaines externes vers lesquels les liens sont bloqués",
+	"right-abusefilter-bypass-blocked-external-domains": "Contourner les domaines externes bloqués",
+	"action-abusefilter-bypass-blocked-external-domains": "contourner les domaines externes bloqués",
 	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]]."
 }

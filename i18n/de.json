@@ -617,6 +617,8 @@
 	"abusefilter-blocked-domains-attempted": "Der Text, den du veröffentlichen wolltest, wurde von einem Filter gesperrt. Die folgende Domain kann nicht hinzugefügt werden: $1",
 	"abusefilter-blocked-domains-json-error": "JSON muss ein Array sein",
 	"abusefilter-blocked-domains-invalid-entry": "Eintrag $1 in JSON ist ungültig – es muss ein Objekt mit nur den Feldern „domain“ und „notes“ sein, die beide Zeichenfolgen sind",
+	"abusefilter-blocked-domains-domain-added-comment": "Gesperrte externe Domäne $1 mit Notizen hinzufügt: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Gesperrte externe Domäne $1 mit Notizen entfernt: $2",
 	"log-description-abusefilterprivatedetails": "Dieses Logbuch zeigt eine Liste darüber an, wie oft ein Benutzer auf private Einzelheiten eines Missbrauchfiltereintrags zugreift.",
 	"abusefilter-noreason": "Warnung: Um die privaten Einzelheiten dieses Eintrags einzusehen, musst du einen Grund angeben.",
 	"abusefilter-log-ip-not-available": "Nicht verfügbar",
@@ -630,5 +632,7 @@
 	"notification-link-text-show-filter": "Zeige Filter",
 	"right-abusefilter-modify-blocked-external-domains": "Erstellen oder Ändern, welche externen Domänen für die Verknüpfung gesperrt sind",
 	"action-abusefilter-modify-blocked-external-domains": "zu erstellen oder zu ändern, welche externen Domänen für die Verknüpfung gesperrt sind",
+	"right-abusefilter-bypass-blocked-external-domains": "Umgehung gesperrter externer Domains",
+	"action-abusefilter-bypass-blocked-external-domains": "gesperrte externe Domains zu umgehen",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen."
 }

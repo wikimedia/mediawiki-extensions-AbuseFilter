@@ -256,7 +256,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Oznake]] za primjenu:",
 	"abusefilter-edit-tag-placeholder": "Dodaj oznake (jednu po jednu, odvojene zarezima)",
 	"abusefilter-edit-tag-hidden-placeholder": "Dodaj oznake (odvojene zarezima)",
-	"abusefilter-edit-block-anon-durations": "Trajanje bloka za anonimne korisnike:",
+	"abusefilter-edit-block-anon-durations": "Trajanje bloka za neregistrovane korisnike:",
 	"abusefilter-edit-block-user-durations": "Trajanje bloka za registrovane korisnike:",
 	"abusefilter-block-anon": "Blokiraj anonimne korisnike",
 	"abusefilter-block-user": "blokiraj registrovane korisnike",
@@ -559,6 +559,14 @@
 	"abusefilter-log-details-id": "Naznaka dnevnika",
 	"abusefilter-invalid-request": "Nevažeći zahtjev! Morate pristupiti osobnim podacima iz dnevnika putem obrasca na [[Special:AbuseLog/$1]] i navesti razlog.",
 	"abusefilter-invalid-request-noid": "Nevažeći zahtjev! Morate pristupiti osobnim podacima iz dnevnika putem obrasca na odgovarajućoj stranici i navesti razlog.",
+	"abusefilter-blocked-domains-notes": "Bilješke",
+	"abusefilter-blocked-domains-add-submit": "Pošalji",
+	"abusefilter-blocked-domains-domain-header": "Domena",
+	"abusefilter-blocked-domains-notes-header": "Bilješke",
+	"abusefilter-blocked-domains-actions-header": "Radnje",
+	"abusefilter-blocked-domains-remove": "ukloni",
+	"abusefilter-blocked-domains-remove-reason": "Razlog",
+	"abusefilter-blocked-domains-remove-submit": "Ukloni",
 	"log-description-abusefilterprivatedetails": "Ovaj dnevnik prikazuje događaje kada određeni korisnik pristupi osobnim podacima u dnevniku filtera zlouporaba.",
 	"abusefilter-noreason": "Upozorenje: Da biste pregledali osobne podatke iz ovog dnevnika, morate navesti razlog.",
 	"abusefilter-log-ip-not-available": "Nedostupna",
@@ -568,5 +576,7 @@
 	"notification-header-throttle-filter": "Filter zloupotrebe $2 koji {{GENDER:$1|ste}} nedavno uredili je prigušen.",
 	"notification-header-throttle-filter-actions": "Filter zloupotrebe $2 koji {{GENDER:$1|vi ste}} nedavno uredili ima visoku stopu podudaranja, i {{PLURAL:$4|sljedeća radnja je bila automatski onemogućena|sljedeće radnje su bile automatski onemogućene}}: $3.",
 	"notification-header-throttle-filter-no-actions": "Filter zloupotrebe $2 koji {{GENDER:$1|vi ste}} nedavno uredili ima visoku stopu podudaranja, ali nijedna radnja nije bila automatski onemogućena.",
-	"notification-link-text-show-filter": "Prikaži filter"
+	"notification-link-text-show-filter": "Prikaži filter",
+	"right-abusefilter-modify-blocked-external-domains": "Pravljenje ili promjena vanjskih domena za koje je blokirano povezivanje",
+	"action-abusefilter-modify-blocked-external-domains": "pravljenje ili promjena vanjskih domena za koje je blokirano povezivanje"
 }

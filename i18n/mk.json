@@ -589,6 +589,8 @@
 	"abusefilter-blocked-domains-attempted": "Текстот што сакавте да го објавите беше блокиран од нашиот филтер. Причината е тоа што текстот го содржи блокираниот домен $1",
 	"abusefilter-blocked-domains-json-error": "JSON треба да биде строј",
 	"abusefilter-blocked-domains-invalid-entry": "Ставката $1 во JSON е неважечка. Треба да биде објект само со полињата „domain“ и „notes“ — обете низи",
+	"abusefilter-blocked-domains-domain-added-comment": "Додај блокиран надворешен домен $1 со белешките: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Отстрани блокиран надворешен домен $1 со белешките: $2",
 	"log-description-abusefilterprivatedetails": "Во овој дневник се прикажани навратите кога даден корисник пристапил до лични податоци во дневникот на филтерот за злоупотреби.",
 	"abusefilter-noreason": "Предупредување: За да гледате лични податоци од овој дневник, ќе мора да наведете причина.",
 	"abusefilter-log-ip-not-available": "Недостапна",
@@ -602,5 +604,7 @@
 	"notification-link-text-show-filter": "Прикажи филтер",
 	"right-abusefilter-modify-blocked-external-domains": "Поставање и менување на блокираните надворешни домени",
 	"action-abusefilter-modify-blocked-external-domains": "поставање и менување на блокираните надворешни домени",
+	"right-abusefilter-bypass-blocked-external-domains": "Заобиколување на блокирани надворешни домени",
+	"action-abusefilter-bypass-blocked-external-domains": "заобиколување на блокирани надворешни домени",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]]."
 }

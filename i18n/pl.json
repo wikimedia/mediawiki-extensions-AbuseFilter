@@ -616,6 +616,10 @@
 	"abusefilter-blocked-domains-remove-reason": "Powód",
 	"abusefilter-blocked-domains-remove-submit": "Usuń",
 	"abusefilter-blocked-domains-attempted": "Tekst, który próbowano opublikować, został zablokowany przez nasz filtr. Dodawanie następującej domeny jest zablokowane: $1",
+	"abusefilter-blocked-domains-json-error": "JSON powinien być tablicą",
+	"abusefilter-blocked-domains-invalid-entry": "Wpis $1 w JSON jest niepoprawny – powinien to być obiekt zawierający tylko pola „domain” i „notes”, oba będące łańcuchami znaków",
+	"abusefilter-blocked-domains-domain-added-comment": "Dodanie blokady zewnętrznej domeny $1 z powodem: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Usunięcie blokady zewnętrznej domeny $1 z powodem: $2",
 	"log-description-abusefilterprivatedetails": "Ten rejestr przedstawia listę dostępów do prywatnych szczegółów filtru nadużyć.",
 	"abusefilter-noreason": "Uwaga: aby podejrzeć poufne szczegóły tego rejestru, musisz podać powód.",
 	"abusefilter-log-ip-not-available": "Niedostępne",
@@ -629,5 +633,7 @@
 	"notification-link-text-show-filter": "Pokaż filtr",
 	"right-abusefilter-modify-blocked-external-domains": "Dodawanie oraz modyfikowanie zablokowanych zewnętrznych domen",
 	"action-abusefilter-modify-blocked-external-domains": "dodawania oraz modyfikowania zablokowanych zewnętrznych domen",
+	"right-abusefilter-bypass-blocked-external-domains": "Omijanie blokady zewnętrznych domen",
+	"action-abusefilter-bypass-blocked-external-domains": "omijania blokady zewnętrznych domen",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Dodawanie oraz modyfikowanie zablokowanych zewnętrznych domen musi odbywać się poprzez [[Special:BlockedExternalDomains|stronę specjalną]]."
 }

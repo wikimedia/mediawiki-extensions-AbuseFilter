@@ -606,5 +606,6 @@
 	"notification-header-throttle-filter-actions": "Il filtro anti abusi $2 che {{GENDER:$1|hai}} modificato di recente ha avuto un elevato numero di corrispondenze e {{PLURAL:$4|la seguente azione è stata disattivata|le seguenti azioni sono state disattivate}} automaticamente: $3.",
 	"notification-header-throttle-filter-no-actions": "Il filtro anti abusi $2 che {{GENDER:$1|hai}} modificato di recente ha avuto un elevato numero di corrispondenze, ma nessuna azione è stata disattivata automaticamente.",
 	"notification-subject-throttle-filter": "Sono state disattivate alcune azioni di un filtro anti abusi che {{GENDER:$1|hai}} modificato su {{SITENAME}}",
-	"notification-link-text-show-filter": "Mostra filtro"
+	"notification-link-text-show-filter": "Mostra filtro",
+	"right-abusefilter-bypass-blocked-external-domains": "Ignora i blocchi ai domini esterni"
 }

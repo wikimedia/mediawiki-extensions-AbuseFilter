@@ -590,6 +590,8 @@
 	"abusefilter-blocked-domains-attempted": "Besedilo, ki ste ga želeli objaviti, je blokiral naš filter. Naslednje domene ni bilo mogoče dodati: $1.",
 	"abusefilter-blocked-domains-json-error": "JSON mora biti polje",
 	"abusefilter-blocked-domains-invalid-entry": "Vnos $1 v JSON je neveljaven – to bi moral biti objekt, ki bi imel samo polji »domain« in »notes«, pri čemer bi bili obe niza",
+	"abusefilter-blocked-domains-domain-added-comment": "Dodaj blokirano zunanjo domeno $1 z opombami: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Odstrani blokirano zunanjo domeno $1 z opombami: $2",
 	"log-description-abusefilterprivatedetails": "Ta dnevnik prikazuje seznam časov, ko je uporabnik dostopal do zasebnih podrobnosti dnevnika filtrov zlorab.",
 	"abusefilter-noreason": "Opozorilo: Če si želite ogledati zasebne podrobnosti tega dnevnika, morate navesti razlog.",
 	"abusefilter-log-ip-not-available": "Ni na voljo",
@@ -603,5 +605,7 @@
 	"notification-link-text-show-filter": "Prikaži filter",
 	"right-abusefilter-modify-blocked-external-domains": "Ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati",
 	"action-abusefilter-modify-blocked-external-domains": "ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati",
+	"right-abusefilter-bypass-blocked-external-domains": "Zaobidenje blokiranih zunanjih domen",
+	"action-abusefilter-bypass-blocked-external-domains": "zaobidenje blokiranih zunanjih domen",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati, je treba opraviti na [[Special:BlockedExternalDomains|posebni strani]]."
 }
