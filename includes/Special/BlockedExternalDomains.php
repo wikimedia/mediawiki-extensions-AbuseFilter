@@ -241,10 +241,10 @@ class BlockedExternalDomains extends SpecialPage {
 		if ( !$rev ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
 			return false;
-		} else {
-			$out->redirect( $this->getPageTitle()->getLocalURL() );
-			return true;
 		}
+
+		$out->redirect( $this->getPageTitle()->getLocalURL() );
+		return true;
 	}
 
 	/**
@@ -313,10 +313,10 @@ class BlockedExternalDomains extends SpecialPage {
 		if ( !$rev ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
 			return false;
-		} else {
-			$out->redirect( $this->getPageTitle()->getLocalURL() );
-			return true;
 		}
+
+		$out->redirect( $this->getPageTitle()->getLocalURL() );
+		return true;
 	}
 
 	/** @inheritDoc */

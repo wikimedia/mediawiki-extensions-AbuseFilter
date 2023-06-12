@@ -265,8 +265,8 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @codeCoverageIgnore Merely declarative
 	 * @inheritDoc
 	 */
-	public function isFieldSortable( $name ) {
-		return $name === 'afh_timestamp';
+	public function isFieldSortable( $field ) {
+		return $field === 'afh_timestamp';
 	}
 
 	/**

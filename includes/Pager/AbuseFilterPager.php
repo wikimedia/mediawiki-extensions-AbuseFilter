@@ -431,15 +431,16 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
-	 * @param string $name
+	 * @param string $field
+	 *
 	 * @return bool
 	 */
-	public function isFieldSortable( $name ) {
-		if ( ( $name === 'af_hit_count' || $name === 'af_public_comments' )
+	public function isFieldSortable( $field ) {
+		if ( ( $field === 'af_hit_count' || $field === 'af_public_comments' )
 			&& !$this->afPermManager->canSeeLogDetails( $this->getAuthority() )
 		) {
 			return false;
 		}
-		return isset( self::INDEX_FIELDS[$name] );
+		return isset( self::INDEX_FIELDS[$field] );
 	}
 }
