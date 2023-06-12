@@ -202,12 +202,12 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param string $domain domain to be blocked
 	 * @param string $notes User provided notes
 	 * @param \MediaWiki\Permissions\Authority|\MediaWiki\User\UserIdentity $user Performer
-	 * @return RevisionRecord|StatusValue RevisionRecord on success, StatusValue on failure.
+	 * @return RevisionRecord|null
 	 */
-	public function addDomain( string $domain, string $notes, $user ) {
+	public function addDomain( string $domain, string $notes, $user ): ?RevisionRecord {
 		$content = $this->loadConfigContent();
-		if ( $content instanceof StatusValue ) {
-			return $content;
+		if ( !$content ) {
+			return null;
 		}
 		$content[] = [ 'domain' => $domain, 'notes' => $notes ];
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
@@ -222,12 +222,12 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param string $domain domain to be removed from the blocked list
 	 * @param string $notes User provided notes
 	 * @param \MediaWiki\Permissions\Authority|\MediaWiki\User\UserIdentity $user Performer
-	 * @return RevisionRecord|StatusValue RevisionRecord on success, StatusValue on failure.
+	 * @return RevisionRecord|null RevisionRecord on success, StatusValue on failure.
 	 */
-	public function removeDomain( string $domain, string $notes, $user ) {
+	public function removeDomain( string $domain, string $notes, $user ): ?RevisionRecord {
 		$content = $this->loadConfigContent();
-		if ( $content instanceof StatusValue ) {
-			return $content;
+		if ( !$content ) {
+			return null;
 		}
 		foreach ( $content as $key => $value ) {
 			if ( ( $value['domain'] ?? '' ) == $domain ) {
@@ -240,7 +240,10 @@ class BlockedDomainStorage implements IDBAccessObject {
 		return $this->saveContent( $content, $user, $comment );
 	}
 
-	private function loadConfigContent() {
+	/**
+	 * @return array|null
+	 */
+	private function loadConfigContent(): ?array {
 		$configPage = $this->getBlockedDomainPage();
 		$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, self::READ_LATEST );
 		if ( !$revision ) {
@@ -248,11 +251,11 @@ class BlockedDomainStorage implements IDBAccessObject {
 		} else {
 			$revContent = $revision->getContent( SlotRecord::MAIN );
 			if ( !$revContent instanceof JsonContent ) {
-				return StatusValue::newFatal( 'Invalid JSON' );
+				return null;
 			}
 			$status = FormatJson::parse( $revContent->getText(), FormatJson::FORCE_ASSOC );
 			if ( !$status->isOK() ) {
-				return StatusValue::newFatal( 'Invalid JSON' );
+				return null;
 			}
 			$content = $status->getValue();
 		}
@@ -265,7 +268,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param array $content To be turned into JSON
 	 * @param \MediaWiki\Permissions\Authority|\MediaWiki\User\UserIdentity $user Performer
 	 * @param string $comment Save comment
-	 * @return RevisionRecord|StatusValue RevisionRecord on success, StatusValue on failure.
+	 * @return RevisionRecord|null
 	 */
 	private function saveContent( $content, $user, $comment ) {
 		$configPage = $this->getBlockedDomainPage();
