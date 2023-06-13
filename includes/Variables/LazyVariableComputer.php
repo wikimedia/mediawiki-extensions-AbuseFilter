@@ -218,13 +218,13 @@ class LazyVariableComputer {
 
 				// this inference is ugly, but the name isn't accessible from here
 				// and we only want this for debugging
-				$varName = strpos( $parameters['text-var'], 'old_' ) === 0 ? 'old_links' : 'all_links';
+				$textVar = $parameters['text-var'];
+				$varName = strpos( $textVar, 'old_' ) === 0 ? 'old_links' : 'all_links';
 				if ( $parameters['forFilter'] ?? false ) {
 					$this->logger->debug( "Loading $varName from DB" );
 					$links = $this->getLinksFromDB( $article );
 				} elseif ( $article->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 					$this->logger->debug( "Loading $varName from Parser" );
-					$textVar = $parameters['text-var'];
 
 					$wikitext = $getVarCB( $textVar )->toString();
 					$editInfo = $this->parseNonEditWikitext(
@@ -243,6 +243,12 @@ class LazyVariableComputer {
 				}
 
 				$result = $links;
+				break;
+			case 'links-from-database':
+				/** @var WikiPage $article */
+				$article = $parameters['article'];
+				$this->logger->debug( 'Loading old_links from DB' );
+				$result = $this->getLinksFromDB( $article );
 				break;
 			case 'link-diff-added':
 			case 'link-diff-removed':
