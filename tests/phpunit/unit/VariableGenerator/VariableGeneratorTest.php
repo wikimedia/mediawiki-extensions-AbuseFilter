@@ -152,10 +152,16 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( $expectedKeys, array_keys( $actualVars ) );
 	}
 
+	public static function provideForFilter() {
+		yield [ true ];
+		yield [ false ];
+	}
+
 	/**
 	 * @covers ::addEditVars
+	 * @dataProvider provideForFilter
 	 */
-	public function testAddEditVars() {
+	public function testAddEditVars( bool $forFilter ) {
 		$expectedKeys = [
 			'edit_diff',
 			'edit_diff_pst',
@@ -176,7 +182,8 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 		$generator = new VariableGenerator( $this->createMock( AbuseFilterHookRunner::class ) );
 		$actualVars = $generator->addEditVars(
 			$this->createMock( WikiPage::class ),
-			$this->createMock( UserIdentity::class )
+			$this->createMock( UserIdentity::class ),
+			$forFilter
 		)->getVariableHolder()->getVars();
 		$this->assertArrayEquals( $expectedKeys, array_keys( $actualVars ) );
 		$this->assertContainsOnlyInstancesOf( LazyLoadedVariable::class, $actualVars, 'lazy-loaded vars' );

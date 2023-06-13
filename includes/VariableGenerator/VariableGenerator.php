@@ -177,6 +177,7 @@ class VariableGenerator {
 	 * @param bool $forFilter Whether the variables should be computed for an ongoing action
 	 *   being filtered
 	 * @return $this For chaining
+	 * @todo Deliver PreparedUpdate here
 	 */
 	public function addEditVars( WikiPage $page, UserIdentity $userIdentity, bool $forFilter = true ): self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
@@ -211,13 +212,19 @@ class VariableGenerator {
 				'forFilter' => $forFilter,
 				'contextUserIdentity' => $userIdentity
 			] );
-		$this->vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
-			[
-				'article' => $page,
-				'text-var' => 'old_wikitext',
-				'forFilter' => $forFilter,
-				'contextUserIdentity' => $userIdentity
-			] );
+
+		if ( $forFilter ) {
+			$this->vars->setLazyLoadVar( 'old_links', 'links-from-database',
+				[ 'article' => $page ] );
+		} else {
+			$this->vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
+				[
+					'article' => $page,
+					'text-var' => 'old_wikitext',
+					'contextUserIdentity' => $userIdentity
+				] );
+		}
+
 		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
 			[
 				'wikitext-var' => 'new_wikitext',
