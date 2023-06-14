@@ -168,7 +168,8 @@ class RunVariableGenerator extends VariableGenerator {
 
 		try {
 			$update = $page->getCurrentUpdate();
-		} catch ( PreconditionException $ex ) {
+			$update->getParserOutputForMetaData();
+		} catch ( PreconditionException | LogicException $exception ) {
 			// Temporary workaround until this becomes
 			// a hook parameter
 			$update = null;
