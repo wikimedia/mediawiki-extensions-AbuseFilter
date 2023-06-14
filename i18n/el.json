@@ -76,7 +76,7 @@
 	"abusefilter-log-search-group": "Ομάδα φίλτρου:",
 	"abusefilter-log-search-group-any": "Οποιοδήποτε",
 	"abusefilter-log-search-filter": "Αναγνωριστικά φίλτρων:",
-	"abusefilter-log-search-filter-help": "Διαχωρίστε με διασωληνώσεις, προσθέστε πρόθεμα \" $1 \" για καθολικά φίλτρα",
+	"abusefilter-log-search-filter-help": "Διαχωρίστε με διασωληνώσεις, προσθέστε πρόθεμα \"$1\" για καθολικά φίλτρα",
 	"abusefilter-log-search-filter-help-central": "Διαχωρίστε με διασωληνώσεις",
 	"abusefilter-log-search-title": "Τίτλος:",
 	"abusefilter-log-search-wiki": "Wiki:",
