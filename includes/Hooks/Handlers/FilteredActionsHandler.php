@@ -27,7 +27,6 @@ use MediaWiki\Page\Hook\ArticleDeleteHook;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\Hook\ParserOutputStashForEditHook;
-use MediaWiki\Utils\UrlUtils;
 use Message;
 use Status;
 use Title;
@@ -56,7 +55,6 @@ class FilteredActionsHandler implements
 	private $editRevUpdater;
 	private VariablesManager $variablesManager;
 	private BlockedDomainStorage $blockedDomainStorage;
-	private UrlUtils $urlUtils;
 	private PermissionManager $permissionManager;
 
 	/**
@@ -66,7 +64,6 @@ class FilteredActionsHandler implements
 	 * @param EditRevUpdater $editRevUpdater
 	 * @param VariablesManager $variablesManager
 	 * @param BlockedDomainStorage $blockedDomainStorage
-	 * @param UrlUtils $urlUtils
 	 * @param PermissionManager $permissionManager
 	 */
 	public function __construct(
@@ -76,7 +73,6 @@ class FilteredActionsHandler implements
 		EditRevUpdater $editRevUpdater,
 		VariablesManager $variablesManager,
 		BlockedDomainStorage $blockedDomainStorage,
-		UrlUtils $urlUtils,
 		PermissionManager $permissionManager
 	) {
 		$this->statsDataFactory = $statsDataFactory;
@@ -85,7 +81,6 @@ class FilteredActionsHandler implements
 		$this->editRevUpdater = $editRevUpdater;
 		$this->variablesManager = $variablesManager;
 		$this->blockedDomainStorage = $blockedDomainStorage;
-		$this->urlUtils = $urlUtils;
 		$this->permissionManager = $permissionManager;
 	}
 
@@ -202,8 +197,8 @@ class FilteredActionsHandler implements
 
 		$addedDomains = [];
 		foreach ( $urls->toArray() as $addedUrl ) {
-			$parsedUrl = $this->urlUtils->parse( (string)$addedUrl->getData() );
-			if ( !$parsedUrl ) {
+			$parsedHost = parse_url( (string)$addedUrl->getData(), PHP_URL_HOST );
+			if ( !is_string( $parsedHost ) ) {
 				continue;
 			}
 			// Given that we block subdomains of blocked domains too
@@ -213,7 +208,7 @@ class FilteredActionsHandler implements
 			// This saves string search in the large list of blocked domains
 			// making it much faster.
 			$domainString = '';
-			$domainPieces = array_reverse( explode( '.', strtolower( $parsedUrl['host'] ) ) );
+			$domainPieces = array_reverse( explode( '.', strtolower( $parsedHost ) ) );
 			foreach ( $domainPieces as $domainPiece ) {
 				if ( !$domainString ) {
 					$domainString = $domainPiece;
