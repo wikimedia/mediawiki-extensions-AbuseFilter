@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesLookup;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
@@ -22,6 +23,10 @@ use MediaWiki\MediaWikiServices;
 use Psr\Container\ContainerInterface;
 
 class AbuseFilterServices {
+
+	public static function getHookRunner( ContainerInterface $services = null ): AbuseFilterHookRunner {
+		return ( $services ?? MediaWikiServices::getInstance() )->get( AbuseFilterHookRunner::SERVICE_NAME );
+	}
 
 	/**
 	 * @param ContainerInterface|null $services
