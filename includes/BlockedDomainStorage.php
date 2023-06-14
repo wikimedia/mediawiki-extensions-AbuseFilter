@@ -16,7 +16,6 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @ingroup SpecialPage
  */
 namespace MediaWiki\Extension\AbuseFilter;
 
@@ -37,10 +36,11 @@ use Message;
 use RecentChange;
 use StatusValue;
 use TitleValue;
-use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 /**
- * Holds and updates information on blocked external domains
+ * Hold and update information about blocked external domains
+ *
+ * @ingroup SpecialPage
  */
 class BlockedDomainStorage implements IDBAccessObject {
 	public const SERVICE_NAME = 'AbuseFilterBlockedDomainStorage';
@@ -54,7 +54,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	private UrlUtils $urlUtils;
 
 	/**
-	 * @param BagOStuff $cache
+	 * @param BagOStuff $cache Local-server caching
 	 * @param RevisionLookup $revisionLookup
 	 * @param UserFactory $userFactory
 	 * @param WikiPageFactory $wikiPageFactory
@@ -82,48 +82,62 @@ class BlockedDomainStorage implements IDBAccessObject {
 	}
 
 	/**
-	 * Load the configured page, with caching.
+	 * Load the configuration page, with optional local-server caching.
+	 *
 	 * @param int $flags bit field, see self::READ_XXX
 	 * @return StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
-	public function load( int $flags = 0 ) {
+	public function loadConfig( int $flags = 0 ) {
 		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
 			return $this->fetchConfig( $flags );
 		}
 
-		return $this->loadFromCache( $flags );
-	}
-
-	public function loadComputed() {
+		// Load configuration from APCU
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
-			ExpirationAwareness::TTL_MINUTE * 5,
-			function ()  {
-				return $this->loadComputedUncached();
+			$this->makeCacheKey(),
+			BagOStuff::TTL_MINUTE * 5,
+			function ( &$ttl ) use ( $flags ) {
+				$result = $this->fetchConfig( $flags );
+				if ( !$result->isGood() ) {
+					// error should not be cached
+					$ttl = BagOStuff::TTL_UNCACHEABLE;
+				}
+				return $result;
 			}
 		);
 	}
 
-	private function loadComputedUncached() {
-		$domains = $this->loadFromCache();
-		if ( !$domains->isGood() ) {
-			return [];
-		}
-		$domains = $domains->getValue();
-		$computedDomains = [];
-		foreach ( $domains as $domain ) {
-			if ( !isset( $domain['domain'] ) || !$domain['domain'] ) {
-				continue;
+	/**
+	 * Load the computed domain block list
+	 *
+	 * @return array<string,bool>
+	 */
+	public function loadComputed() {
+		return $this->cache->getWithSetCallback(
+			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
+			BagOStuff::TTL_MINUTE * 5,
+			function ()  {
+				$domains = $this->loadConfig();
+				if ( !$domains->isGood() ) {
+					return [];
+				}
+				$domains = $domains->getValue();
+				$computedDomains = [];
+				foreach ( $domains as $domain ) {
+					if ( !isset( $domain['domain'] ) || !$domain['domain'] ) {
+						continue;
+					}
+					$validatedDomain = $this->validateDomain( $domain['domain'] );
+					if ( !$validatedDomain ) {
+						continue;
+					}
+					// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
+					$computedDomains[$validatedDomain] = true;
+				}
+				return $computedDomains;
 			}
-			$validatedDomain = $this->validateDomain( $domain['domain'] );
-			if ( !$validatedDomain ) {
-				continue;
-			}
-			// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
-			$computedDomains[$validatedDomain] = true;
-		}
-		return $computedDomains;
+		);
 	}
 
 	/**
@@ -147,28 +161,6 @@ class BlockedDomainStorage implements IDBAccessObject {
 			return false;
 		}
 		return $parsedUrl['host'];
-	}
-
-	/**
-	 * Load configuration from the WAN cache
-	 *
-	 * @param int $flags bit field, see self::READ_XXX
-	 * @return StatusValue The content of the configuration page (as JSON
-	 *   data in PHP-native format), or a StatusValue on error.
-	 */
-	private function loadFromCache( int $flags = 0 ) {
-		return $this->cache->getWithSetCallback(
-			$this->makeCacheKey(),
-			ExpirationAwareness::TTL_MINUTE * 5,
-			function ( &$ttl ) use ( $flags ) {
-				$result = $this->fetchConfig( $flags );
-				if ( !$result->isGood() ) {
-					// error should not be cached
-					$ttl = ExpirationAwareness::TTL_UNCACHEABLE;
-				}
-				return $result;
-			}
-		);
 	}
 
 	/**
@@ -205,7 +197,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @return RevisionRecord|null
 	 */
 	public function addDomain( string $domain, string $notes, $user ): ?RevisionRecord {
-		$content = $this->loadConfigContent();
+		$content = $this->fetchLatestConfig();
 		if ( !$content ) {
 			return null;
 		}
@@ -225,7 +217,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @return RevisionRecord|null RevisionRecord on success, StatusValue on failure.
 	 */
 	public function removeDomain( string $domain, string $notes, $user ): ?RevisionRecord {
-		$content = $this->loadConfigContent();
+		$content = $this->fetchLatestConfig();
 		if ( !$content ) {
 			return null;
 		}
@@ -243,7 +235,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * @return array|null
 	 */
-	private function loadConfigContent(): ?array {
+	private function fetchLatestConfig(): ?array {
 		$configPage = $this->getBlockedDomainPage();
 		$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, self::READ_LATEST );
 		if ( !$revision ) {
