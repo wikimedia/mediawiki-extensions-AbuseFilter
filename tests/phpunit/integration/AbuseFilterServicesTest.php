@@ -18,4 +18,9 @@ class AbuseFilterServicesTest extends ExtensionServicesTestBase {
 	/** @inheritDoc */
 	protected string $serviceNamePrefix = 'AbuseFilter';
 
+	/** @inheritDoc */
+	protected array $serviceNamesWithoutMethods = [
+		'AbuseFilterRunnerFactory',
+	];
+
 }
