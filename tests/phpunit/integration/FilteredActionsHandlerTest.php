@@ -72,6 +72,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 			'blocked domain with parameters' => [ 'https://foo.com?foo=bar', false ],
 			'blocked domain with path and parameters' => [ 'https://foo.com/foo/?foo=bar', false ],
 			'blocked domain with port' => [ 'https://foo.com:9000', false ],
+			'blocked domain as uppercase' => [ 'https://FOO.com', false ],
 			'unusual protocol' => [ 'ftp://foo.com', false ],
 			'mailto is special' => [ 'mailto://user@foo.com', false ],
 			'domain not blocked' => [ 'https://foo.bar.com', true ],
