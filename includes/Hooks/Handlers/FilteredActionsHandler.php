@@ -213,7 +213,8 @@ class FilteredActionsHandler implements
 			// This saves string search in the large list of blocked domains
 			// making it much faster.
 			$domainString = '';
-			foreach ( array_reverse( explode( '.', $parsedUrl['host'] ) ) as $domainPiece ) {
+			$domainPieces = array_reverse( explode( '.', strtolower( $parsedUrl['host'] ) ) );
+			foreach ( $domainPieces as $domainPiece ) {
 				if ( !$domainString ) {
 					$domainString = $domainPiece;
 				} else {
