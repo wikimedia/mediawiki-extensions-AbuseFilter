@@ -44,7 +44,6 @@ use TitleValue;
  */
 class BlockedDomainStorage implements IDBAccessObject {
 	public const SERVICE_NAME = 'AbuseFilterBlockedDomainStorage';
-
 	public const TARGET_PAGE = 'BlockedExternalDomains.json';
 
 	private RevisionLookup $revisionLookup;
@@ -141,12 +140,12 @@ class BlockedDomainStorage implements IDBAccessObject {
 	}
 
 	/**
-	 * Validate if the entered domain is valid or not
+	 * Validate an input domain
 	 *
-	 * @param string $domain the domain such as foo.wikipedia.org
-	 * @return bool|string false if the domain is invalid, the parsed domain otherwise
+	 * @param string $domain Domain such as foo.wikipedia.org
+	 * @return string|false Parsed domain, or false otherwise
 	 */
-	private function validateDomain( $domain ) {
+	public function validateDomain( $domain ) {
 		$domain = trim( $domain ?? '' );
 		if ( strpos( $domain, '//' ) === false ) {
 			$domain = 'https://' . $domain;

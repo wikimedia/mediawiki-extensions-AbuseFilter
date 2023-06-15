@@ -24,7 +24,6 @@ use Html;
 use HTMLForm;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
-use MediaWiki\Utils\UrlUtils;
 use PermissionsError;
 use SpecialPage;
 use WANObjectCache;
@@ -36,17 +35,14 @@ use WANObjectCache;
  */
 class BlockedExternalDomains extends SpecialPage {
 	private BlockedDomainStorage $blockedDomainStorage;
-	private UrlUtils $urlUtils;
 	private WANObjectCache $wanCache;
 
 	public function __construct(
 		BlockedDomainStorage $blockedDomainStorage,
-		UrlUtils $urlUtils,
 		WANObjectCache $wanCache
 	) {
 		parent::__construct( 'BlockedExternalDomains' );
 		$this->blockedDomainStorage = $blockedDomainStorage;
-		$this->urlUtils = $urlUtils;
 		$this->wanCache = $wanCache;
 	}
 
@@ -230,8 +226,9 @@ class BlockedExternalDomains extends SpecialPage {
 	 */
 	public function processRemoveForm( array $data, HTMLForm $form ) {
 		$out = $form->getContext()->getOutput();
-		$domain = $this->validateDomain( $data['Domain'], $out );
-		if ( !$domain ) {
+		$domain = $this->blockedDomainStorage->validateDomain( $data['Domain'] );
+		if ( $domain === false ) {
+			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
 			return false;
 		}
 
@@ -248,32 +245,6 @@ class BlockedExternalDomains extends SpecialPage {
 			$out->redirect( $this->getPageTitle()->getLocalURL() );
 			return true;
 		}
-	}
-
-	/**
-	 * Validate if the entered domain is valid or not
-	 *
-	 * @param string $domain the domain such as foo.wikipedia.org
-	 * @param \OutputPage $out
-	 * @return bool|string false if the domain is invalid, the parsed domain otherwise
-	 */
-	private function validateDomain( $domain, $out ) {
-		$domain = trim( $domain ?? '' );
-		if ( strpos( $domain, '//' ) === false ) {
-			$domain = 'https://' . $domain;
-		}
-
-		$parsedUrl = $this->urlUtils->parse( $domain );
-		if ( !$parsedUrl ) {
-			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
-			return false;
-		}
-		// ParseUrl returns a valid URL for "foo"
-		if ( strpos( $parsedUrl['host'], '.' ) === false ) {
-			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
-			return false;
-		}
-		return $parsedUrl['host'];
 	}
 
 	/**
@@ -328,8 +299,9 @@ class BlockedExternalDomains extends SpecialPage {
 	private function processAddForm( array $data, HTMLForm $form ) {
 		$out = $form->getContext()->getOutput();
 
-		$domain = $this->validateDomain( $data['Domain'], $out );
-		if ( !$domain ) {
+		$domain = $this->blockedDomainStorage->validateDomain( $data['Domain'] );
+		if ( $domain === false ) {
+			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
 			return false;
 		}
 		$rev = $this->blockedDomainStorage->addDomain(
