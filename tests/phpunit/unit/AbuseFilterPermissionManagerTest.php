@@ -6,6 +6,7 @@ use Generator;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWikiUnitTestCase;
 
@@ -75,12 +76,12 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideCanEditFilter(): Generator {
-		$localFilter = $this->createMock( AbstractFilter::class );
-		$localFilter->method( 'isGlobal' )->willReturn( false );
-		$globalFilter = $this->createMock( AbstractFilter::class );
-		$globalFilter->method( 'isGlobal' )->willReturn( true );
+		$localFilter = MutableFilter::newDefault();
+		$localFilter->setGlobal( false );
+		$globalFilter = MutableFilter::newDefault();
+		$globalFilter->setGlobal( true );
 		foreach ( $this->provideCanEdit() as $name => $editArgs ) {
-			foreach ( $this->provideCanEditGlobal() as $allowed => $globalArgs ) {
+			foreach ( self::provideCanEditGlobal() as $allowed => $globalArgs ) {
 				yield "can edit: $name; can edit global: $allowed; local filter" => [
 					$localFilter,
 					$editArgs[0],

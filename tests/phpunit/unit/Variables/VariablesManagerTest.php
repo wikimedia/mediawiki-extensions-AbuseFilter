@@ -53,7 +53,6 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param VariablesManager $manager
 	 * @param VariableHolder $holder
 	 * @param array|bool $compute
 	 * @param bool $includeUser
@@ -63,35 +62,36 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::dumpAllVars
 	 */
 	public function testDumpAllVars(
-		VariablesManager $manager,
 		VariableHolder $holder,
 		$compute,
 		bool $includeUser,
 		array $expected
 	) {
-		$this->assertEquals( $expected, $manager->dumpAllVars( $holder, $compute, $includeUser ) );
-	}
-
-	public function provideDumpAllVars() {
-		$titleVal = 'title';
-		$preftitle = new LazyLoadedVariable( 'preftitle', [] );
-
-		$linesVal = 'lines';
-		$lines = new LazyLoadedVariable( 'lines', [] );
-
 		$computer = $this->createMock( LazyVariableComputer::class );
 		$computer->method( 'compute' )->willReturnCallback(
-			static function ( LazyLoadedVariable $var ) use ( $titleVal, $linesVal ) {
+			static function ( LazyLoadedVariable $var ) {
 				switch ( $var->getMethod() ) {
 					case 'preftitle':
-						return new AFPData( AFPData::DSTRING, $titleVal );
+						return new AFPData( AFPData::DSTRING, 'title' );
 					case 'lines':
-						return new AFPData( AFPData::DSTRING, $linesVal );
+						return new AFPData( AFPData::DSTRING, 'lines' );
 					default:
 						throw new LogicException( 'Unrecognized value!' );
 				}
 			}
 		);
+
+		$manager = $this->getManager( $computer );
+
+		$this->assertEquals( $expected, $manager->dumpAllVars( $holder, $compute, $includeUser ) );
+	}
+
+	public static function provideDumpAllVars() {
+		$titleVal = 'title';
+		$preftitle = new LazyLoadedVariable( 'preftitle', [] );
+
+		$linesVal = 'lines';
+		$lines = new LazyLoadedVariable( 'lines', [] );
 
 		$pairs = [
 			'page_title' => 'foo',
@@ -102,12 +102,9 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		];
 		$vars = VariableHolder::newFromArray( $pairs );
 
-		$varManager = $this->getManager( $computer );
-
 		$nonLazy = array_fill_keys( [ 'page_title', 'user_name', 'custom-var' ], 1 );
 		$nonLazyExpect = array_intersect_key( $pairs, $nonLazy );
 		yield 'lazy-loaded vars are excluded if not computed' => [
-			$varManager,
 			clone $vars,
 			[],
 			true,
@@ -115,16 +112,15 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		];
 
 		$nonUserExpect = array_diff_key( $nonLazyExpect, [ 'custom-var' => 1 ] );
-		yield 'user-set vars are excluded' => [ $varManager, clone $vars, [], false, $nonUserExpect ];
+		yield 'user-set vars are excluded' => [ clone $vars, [], false, $nonUserExpect ];
 
 		$allExpect = $pairs;
 		$allExpect['page_prefixedtitle'] = $titleVal;
 		$allExpect['added_lines'] = $linesVal;
-		yield 'all vars computed' => [ $varManager, clone $vars, true, true, $allExpect ];
+		yield 'all vars computed' => [ clone $vars, true, true, $allExpect ];
 
 		$titleOnlyComputed = array_merge( $nonLazyExpect, [ 'page_prefixedtitle' => $titleVal ] );
 		yield 'Only a specific var computed' => [
-			$varManager,
 			clone $vars,
 			[ 'page_prefixedtitle' ],
 			true,
@@ -195,6 +191,10 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 		}
 	}
 
+	/**
+	 * @todo make static
+	 * @return Generator|array
+	 */
 	public function provideGetVar() {
 		$vars = new VariableHolder();
 
