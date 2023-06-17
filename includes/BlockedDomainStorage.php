@@ -237,7 +237,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-removed-comment' )
 			->params( $domain, $notes )
 			->plain();
-		return $this->saveContent( $content, $user, $comment );
+		return $this->saveContent( array_values( $content ), $user, $comment );
 	}
 
 	/**
