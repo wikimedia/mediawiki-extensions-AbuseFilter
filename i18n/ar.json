@@ -629,6 +629,8 @@
 	"notification-subject-throttle-filter": "مُرشِّح الإساءة {{GENDER:$1|الذي}} عدلته قد خُنق في {{SITENAME}}.",
 	"notification-link-text-show-filter": "أظهر المرشح",
 	"right-abusefilter-modify-blocked-external-domains": "إنشاء أو تعديل المجالات الخارجية التي تم حظرها من الارتباط",
+	"action-abusefilter-modify-blocked-external-domains": "إنشاء أو تعديل ماذا تم حظر المجالات الخارجية من الارتباط",
 	"right-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية",
-	"action-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية"
+	"action-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية",
+	"abusefilter-blocked-domains-cannot-edit-directly": "إنشاء أو تعديل المجالات الخارجية التي تم حظرها من الارتباط يجب أن يتم من خلال [[Special:BlockedExternalDomains|the special page]]."
 }

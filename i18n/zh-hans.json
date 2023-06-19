@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			")8",
 			"94rain",
 			"A Chinese Wikipedian",
 			"A2093064",
@@ -650,9 +651,11 @@
 	"abusefilter-blocked-domains-notes": "注释",
 	"abusefilter-blocked-domains-add-submit": "提交",
 	"abusefilter-blocked-domains-domain-header": "域名",
+	"abusefilter-blocked-domains-notes-header": "注释",
 	"abusefilter-blocked-domains-actions-header": "操作",
 	"abusefilter-blocked-domains-remove": "移除",
 	"abusefilter-blocked-domains-remove-reason": "原因",
+	"abusefilter-blocked-domains-remove-submit": "移除",
 	"log-description-abusefilterprivatedetails": "此日志显示用户访问私有滥用日志详情的时间列表。",
 	"abusefilter-noreason": "警告：要查看此日志的私有详情，您必须提供原因。",
 	"abusefilter-log-ip-not-available": "不可用",

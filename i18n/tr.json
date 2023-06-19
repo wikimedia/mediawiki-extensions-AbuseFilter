@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Asma",
 			"Ayrıntılı Bilgi",
 			"BaRaN6161 TURK",
 			"By erdo can",
@@ -591,6 +592,13 @@
 	"abusefilter-log-details-id": "Günlük kimliği",
 	"abusefilter-invalid-request": "Geçersiz istek! Özel günlük ayrıntılarına [[Special:AbuseLog/$1]] formundaki formdan erişmeniz ve bir neden belirtmeniz gerekir.",
 	"abusefilter-invalid-request-noid": "Geçersiz istek! Kötüye kullanım günlüğü ayrıntıları sayfasındaki form aracılığıyla özel günlük ayrıntılarına erişmeli ve bir neden belirtmelisiniz.",
+	"abusefilter-blocked-domains-notes": "Notlar",
+	"abusefilter-blocked-domains-add-submit": "Gönder",
+	"abusefilter-blocked-domains-notes-header": "Notlar",
+	"abusefilter-blocked-domains-actions-header": "Eylemler",
+	"abusefilter-blocked-domains-remove": "kaldır",
+	"abusefilter-blocked-domains-remove-reason": "Sebep",
+	"abusefilter-blocked-domains-remove-submit": "Kaldır",
 	"log-description-abusefilterprivatedetails": "Bu günlük, bir kullanıcının kötüye kullanım günlüğünün özel detaylarına eriştiği zamanların bir listesini gösterir.",
 	"abusefilter-noreason": "Uyarı: Bu kaydın özel ayrıntılarını görmek için bir sebep belirtmelisiniz.",
 	"abusefilter-log-ip-not-available": "Mevcut değil",

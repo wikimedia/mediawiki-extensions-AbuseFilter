@@ -192,7 +192,9 @@
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|accedió}} a los detalles privados de $3",
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|bloqueó}} la recepción automática de ciertos permisos de usuario a {{GENDER:$4|$3}} por un periodo de $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|restauró}} la capacidad de recibir ciertos permisos de usuario de manera automática a {{GENDER:$4|$3}}",
+	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} trató de añadir el dominio bloqueado $4 en $3",
 	"abusefilterprivatedetails-log-name": "Registro de acceso a datos privados del filtro antiabusos",
+	"log-name-abusefilterblockeddomainhit": "Registro de intentos de adición de dominios bloqueados",
 	"abusefilter-list": "Todos los filtros",
 	"abusefilter-list-id": "Identificación de filtro",
 	"abusefilter-list-pattern": "Patrón",
@@ -648,7 +650,10 @@
 	"abusefilter-blocked-domains-attempted": "El texto que querías publicar fué bloqueado por nuestro filtro. El siguiente dominio está bloqueado para que no se agregue: $1",
 	"abusefilter-blocked-domains-json-error": "El código JSON debe ser una matriz",
 	"abusefilter-blocked-domains-invalid-entry": "La entrada $1 no es un código JSON correcto. Debe ser un objeto con los campos «dominio» y «notas», siendo, ambos, cadenas.",
+	"abusefilter-blocked-domains-domain-added-comment": "Bloqueó el dominio externo $1 con el siguiente motivo: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Desbloqueó el dominio externo $1 con el siguiente motivo: $2",
 	"log-description-abusefilterprivatedetails": "Este registro muestra un listado de ocasiones en el que un usuario accedió a los datos privados de un registro del filtro antiabusos.",
+	"log-description-abusefilterblockeddomainhit": "Estos eventos representan intentos de añadir enlaces a dominios externos bloqueados.",
 	"abusefilter-noreason": "Aviso: Para ver los datos privados del registro debes proporcionar una razón.",
 	"abusefilter-log-ip-not-available": "No disponible",
 	"abusefilter-tag-reserved": "La etiqueta <code>abusefilter-condition-limit</code> está reservada para uso interno del filtro antiabusos.",
@@ -661,5 +666,7 @@
 	"notification-link-text-show-filter": "Mostrar filtro",
 	"right-abusefilter-modify-blocked-external-domains": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados",
 	"action-abusefilter-modify-blocked-external-domains": "crear o modificar qué dominios externos están bloqueados para que no se vinculen",
+	"right-abusefilter-bypass-blocked-external-domains": "Eludir la lista de dominios externos bloqueados",
+	"action-abusefilter-bypass-blocked-external-domains": "eludir la lista de dominios externos bloqueados",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]]."
 }

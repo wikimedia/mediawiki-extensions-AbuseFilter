@@ -318,7 +318,7 @@
 	"abusefilter-edit-tag-tag": "Применяемые [[Special:Tags|метки]]:",
 	"abusefilter-edit-tag-placeholder": "Добавить метки (разделённые запятыми)",
 	"abusefilter-edit-tag-hidden-placeholder": "Добавить метки (через запятую)",
-	"abusefilter-edit-block-anon-durations": "Длительность блокировки для анонимных пользователей:",
+	"abusefilter-edit-block-anon-durations": "Длительность блокировки для незарегистрированных участников:",
 	"abusefilter-edit-block-user-durations": "Длительность блокировки для зарегистрированных пользователей:",
 	"abusefilter-block-anon": "Блокировать анонимных участников",
 	"abusefilter-block-user": "блокировать зарегистрированных участников",

@@ -609,6 +609,7 @@
 	"abusefilter-log-details-id": "日誌ID",
 	"abusefilter-invalid-request": "無效請求！您必須透過[[Special:AbuseLog/$1]]上的表單提供原因後才能存取非公開日誌詳細資料。",
 	"abusefilter-invalid-request-noid": "無效請求！您必須透過在濫用日誌詳細資料上的表單提供原因後才能訪問非公開日誌詳細資料。",
+	"abusefilter-blocked-domains-json-error": "JSON應為陣列",
 	"log-description-abusefilterprivatedetails": "此日誌顯示用戶存取非公開濫用日誌詳細資料的時間列表。",
 	"abusefilter-noreason": "警告：要查看此日誌的非公開詳細資料，您必須提供原因。",
 	"abusefilter-log-ip-not-available": "不可用",

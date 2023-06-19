@@ -245,7 +245,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Етикети]] за прилагане:",
 	"abusefilter-edit-tag-placeholder": "Добавяне на етикети (един по един или разделени със запетая)",
 	"abusefilter-edit-tag-hidden-placeholder": "Добавяне на етикети (разделени със запетая)",
-	"abusefilter-edit-block-anon-durations": "Продължителност на блокирането за анонимни потребители:",
+	"abusefilter-edit-block-anon-durations": "Продължителност на блокирането за нерегистрирани потребители:",
 	"abusefilter-edit-block-user-durations": "Продължителност на блокирането за регистрирани потребители:",
 	"abusefilter-block-anon": "Блокиране на анонимни потребители",
 	"abusefilter-block-user": "блокиране на регистрирани потребители",
