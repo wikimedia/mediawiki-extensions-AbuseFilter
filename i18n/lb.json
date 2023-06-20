@@ -183,7 +183,7 @@
 	"abusefilter-edit-warn-edit": "De gewielte Systemmessage uleeën/änneren",
 	"abusefilter-edit-disallow-other": "Anere Systemmessage",
 	"abusefilter-edit-disallow-actions": "Aktiounen:",
-	"abusefilter-edit-block-anon-durations": "Dauer vun der Spär fir anonym Benotzer:",
+	"abusefilter-edit-block-anon-durations": "Dauer vun der Spär fir net-registréiert Benotzer:",
 	"abusefilter-edit-block-user-durations": "Dauer vun der Spär fir registréiert Benotzer:",
 	"abusefilter-block-anon": "Anonym Benotzer spären",
 	"abusefilter-block-user": "registréiert Benotzer spären",
@@ -425,6 +425,7 @@
 	"abusefilter-blocked-domains-remove": "ewechhuelen",
 	"abusefilter-blocked-domains-remove-reason": "Grond",
 	"abusefilter-blocked-domains-remove-submit": "Ewechhuelen",
+	"abusefilter-blocked-domains-json-error": "JSON soll een Array sinn",
 	"abusefilter-log-ip-not-available": "Net disponibel",
 	"notification-link-text-show-filter": "Filter weisen"
 }
