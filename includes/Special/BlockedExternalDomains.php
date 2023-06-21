@@ -16,11 +16,11 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @file
- * @ingroup SpecialPage
  */
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use ErrorPageError;
+use Html;
 use HTMLForm;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
@@ -28,10 +28,9 @@ use MediaWiki\Utils\UrlUtils;
 use PermissionsError;
 use SpecialPage;
 use WANObjectCache;
-use Xml;
 
 /**
- * A special page for listing and managing blocked external domains
+ * List and manage blocked external domains
  *
  * @ingroup SpecialPage
  */
@@ -111,18 +110,18 @@ class BlockedExternalDomains extends SpecialPage {
 			}
 		}
 
-		$res = $this->blockedDomainStorage->load( IDBAccessObject::READ_LATEST );
+		$res = $this->blockedDomainStorage->loadConfig( IDBAccessObject::READ_LATEST );
 		if ( !$res->isGood() ) {
 			return;
 		}
 
-		$content = Xml::tags( 'th', null, $this->msg( 'abusefilter-blocked-domains-domain-header' )->parse() ) .
-			Xml::tags( 'th', null, $this->msg( 'abusefilter-blocked-domains-notes-header' )->parse() ) .
-			( ( $userCanManage ) ?
-				Xml::tags( 'th', [ 'class' => 'unsortable' ],
-						   $this->msg( 'abusefilter-blocked-domains-actions-header' )->parse() ) :
+		$content = Html::element( 'th', [], $this->msg( 'abusefilter-blocked-domains-domain-header' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'abusefilter-blocked-domains-notes-header' )->text() ) .
+			( $userCanManage ?
+				Html::element( 'th', [ 'class' => 'unsortable' ],
+						   $this->msg( 'abusefilter-blocked-domains-actions-header' )->text() ) :
 				'' );
-		$thead = Xml::tags( 'tr', null, $content );
+		$thead = Html::rawElement( 'tr', [], $content );
 
 		// Parsing each row is expensive, put it behind WAN cache
 		// with md5 checksum, we make sure changes to the domain list
@@ -146,11 +145,11 @@ class BlockedExternalDomains extends SpecialPage {
 
 		$out->addModuleStyles( [ 'jquery.tablesorter.styles', 'mediawiki.pager.styles' ] );
 		$out->addModules( 'jquery.tablesorter' );
-		$out->addHTML( Xml::tags(
+		$out->addHTML( Html::rawElement(
 			'table',
 			[ 'class' => 'mw-datatable sortable' ],
-			Xml::tags( 'thead', null, $thead ) .
-			Xml::tags( 'tbody', null, $tbody )
+			Html::rawElement( 'thead', [], $thead ) .
+			Html::rawElement( 'tbody', [], $tbody )
 		) );
 	}
 
@@ -163,9 +162,9 @@ class BlockedExternalDomains extends SpecialPage {
 	 */
 	private function doDomainRow( $domain, $showManageActions ) {
 		$newRow = '';
-		$newRow .= Xml::tags( 'td', null, Xml::element( 'code', null, $domain['domain'] ) );
+		$newRow .= Html::rawElement( 'td', [], Html::element( 'code', [], $domain['domain'] ) );
 
-		$newRow .= Xml::tags( 'td', null, $this->getOutput()->parseInlineAsInterface( $domain['notes'] ) );
+		$newRow .= Html::rawElement( 'td', [], $this->getOutput()->parseInlineAsInterface( $domain['notes'] ) );
 
 		if ( $showManageActions ) {
 			$actionLink = $this->getLinkRenderer()->makeKnownLink(
@@ -173,10 +172,10 @@ class BlockedExternalDomains extends SpecialPage {
 				$this->msg( 'abusefilter-blocked-domains-remove' )->text(),
 				[],
 				[ 'domain' => $domain['domain'] ] );
-			$newRow .= Xml::tags( 'td', null, $actionLink );
+			$newRow .= Html::rawElement( 'td', [], $actionLink );
 		}
 
-		return Xml::tags( 'tr', null, $newRow ) . "\n";
+		return Html::rawElement( 'tr', [], $newRow ) . "\n";
 	}
 
 	/**
