@@ -385,7 +385,6 @@
 				"AbuseFilterEditRevUpdater",
 				"AbuseFilterVariablesManager",
 				"AbuseFilterBlockedDomainStorage",
-				"UrlUtils",
 				"PermissionManager"
 			]
 		},

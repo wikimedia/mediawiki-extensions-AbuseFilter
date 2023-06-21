@@ -15,7 +15,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Title\Title;
-use MediaWiki\Utils\UrlUtils;
 use Message;
 use NullStatsdDataFactory;
 use RequestContext;
@@ -120,7 +119,6 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 			$editRevUpdater,
 			$variablesManager,
 			$blockedDomainStorage,
-			new UrlUtils(),
 			$permissionManager
 		);
 	}
