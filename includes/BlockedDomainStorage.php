@@ -206,7 +206,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 */
 	public function addDomain( string $domain, string $notes, $user ): ?RevisionRecord {
 		$content = $this->loadConfigContent();
-		if ( !$content ) {
+		if ( $content === null ) {
 			return null;
 		}
 		$content[] = [ 'domain' => $domain, 'notes' => $notes ];
