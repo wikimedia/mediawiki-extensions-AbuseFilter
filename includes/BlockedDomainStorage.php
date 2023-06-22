@@ -193,7 +193,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param string $domain domain to be blocked
 	 * @param string $notes User provided notes
 	 * @param \MediaWiki\Permissions\Authority|\MediaWiki\User\UserIdentity $user Performer
-	 * @return RevisionRecord|null
+	 * @return RevisionRecord|null Null on failure
 	 */
 	public function addDomain( string $domain, string $notes, $user ): ?RevisionRecord {
 		$content = $this->fetchLatestConfig();
@@ -213,11 +213,11 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param string $domain domain to be removed from the blocked list
 	 * @param string $notes User provided notes
 	 * @param \MediaWiki\Permissions\Authority|\MediaWiki\User\UserIdentity $user Performer
-	 * @return RevisionRecord|null RevisionRecord on success, StatusValue on failure.
+	 * @return RevisionRecord|null Null on failure
 	 */
 	public function removeDomain( string $domain, string $notes, $user ): ?RevisionRecord {
 		$content = $this->fetchLatestConfig();
-		if ( !$content ) {
+		if ( $content === null ) {
 			return null;
 		}
 		foreach ( $content as $key => $value ) {
@@ -232,7 +232,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	}
 
 	/**
-	 * @return array|null
+	 * @return array[]|null Empty array when the page doesn't exist, null on failure
 	 */
 	private function fetchLatestConfig(): ?array {
 		$configPage = $this->getBlockedDomainPage();
@@ -256,12 +256,12 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * Save the provided content into the page
 	 *
-	 * @param array $content To be turned into JSON
+	 * @param array[] $content To be turned into JSON
 	 * @param \MediaWiki\Permissions\Authority|\MediaWiki\User\UserIdentity $user Performer
 	 * @param string $comment Save comment
 	 * @return RevisionRecord|null
 	 */
-	private function saveContent( $content, $user, $comment ) {
+	private function saveContent( array $content, $user, $comment ): ?RevisionRecord {
 		$configPage = $this->getBlockedDomainPage();
 		$page = $this->wikiPageFactory->newFromLinkTarget( $configPage );
 		$updater = $page->newPageUpdater( $user );
