@@ -26,7 +26,9 @@
 			"Dogogos123",
 			"Gpbiza",
 			"MnLsVt",
-			"Pablothecat"
+			"Pablothecat",
+			"Sofia Chiali",
+			"Spyridon Eftychios Kokotos"
 		]
 	},
 	"abusefilter-desc": "Εφαρμόζει αυτόματη ανίχνευση σε επεξεργασίες",
@@ -119,6 +121,7 @@
 	"abusefilter-log-linkonhistory": "εμφάνιση του αρχείου καταχωρήσεων του φίλτρου καταχρήσεων",
 	"abusefilter-log-hidden-implicit": "(κρυφά επειδή αναθεώρηση έχει διαγραφεί)",
 	"abusefilter-log-cannot-see-details": "Δεν έχετε δικαιώματα για να δείτε λεπτομέρειες σχετικά με αυτή την εγγραφή.",
+	"abusefilter-log-cannot-see-privatedetails": "Δεν έχετε άδεια να δείτε προσωπικά στοιχεία αυτής της εγγραφής",
 	"abusefilter-log-details-hidden": "Δεν μπορείτε να δείτε τις λεπτομέρειες για αυτήν την καταχώρηση, διότι είναι κρυμμένες από τη δημόσια θέα.",
 	"abusefilter-log-hide-legend": "Αλλαγή ορατότητας",
 	"abusefilter-log-hide-reason": "Αιτία:",
