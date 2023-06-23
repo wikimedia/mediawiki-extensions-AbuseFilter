@@ -28,31 +28,31 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
 	 * @var bool Whether to show changes that don't trigger the specified pattern
 	 */
-	public $mShowNegative;
+	private $mShowNegative;
 	/**
 	 * @var string The start time of the lookup period
 	 */
-	public $mTestPeriodStart;
+	private $mTestPeriodStart;
 	/**
 	 * @var string The end time of the lookup period
 	 */
-	public $mTestPeriodEnd;
+	private $mTestPeriodEnd;
 	/**
 	 * @var string The page of which edits we're interested in
 	 */
-	public $mTestPage;
+	private $mTestPage;
 	/**
 	 * @var string The user whose actions we want to test
 	 */
-	public $mTestUser;
+	private $mTestUser;
 	/**
 	 * @var bool Whether to exclude bot edits
 	 */
-	public $mExcludeBots;
+	private $mExcludeBots;
 	/**
 	 * @var string The action (performed by the user) we want to search for
 	 */
-	public $mTestAction;
+	private $mTestAction;
 	/**
 	 * @var LBFactory
 	 */

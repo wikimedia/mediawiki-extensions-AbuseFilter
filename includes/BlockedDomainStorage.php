@@ -279,7 +279,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * @return TitleValue TitleValue of the config json page
 	 */
-	public function getBlockedDomainPage() {
+	private function getBlockedDomainPage() {
 		return new TitleValue( NS_MEDIAWIKI, self::TARGET_PAGE );
 	}
 }

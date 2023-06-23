@@ -259,7 +259,7 @@ class FilterEvaluator {
 	 * cache if it is changed.
 	 * @return string
 	 */
-	public static function getCacheVersion() {
+	private static function getCacheVersion() {
 		static $version = null;
 		if ( $version !== null ) {
 			return $version;
@@ -281,7 +281,7 @@ class FilterEvaluator {
 	/**
 	 * Resets the state of the parser
 	 */
-	public function resetState() {
+	private function resetState() {
 		$this->mVariables = new VariableHolder();
 		$this->mCondCount = 0;
 		$this->mAllowShort = true;

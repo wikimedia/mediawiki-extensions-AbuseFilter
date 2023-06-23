@@ -24,11 +24,11 @@ class AFPTreeParser {
 	 * @var array[] Contains the AFPTokens for the code being parsed
 	 * @phan-var array<int,array{0:AFPToken,1:int}>
 	 */
-	public $mTokens;
+	private $mTokens;
 	/**
 	 * @var AFPToken The current token
 	 */
-	public $mCur;
+	private $mCur;
 	/** @var int The position of the current token */
 	private $mPos;
 
