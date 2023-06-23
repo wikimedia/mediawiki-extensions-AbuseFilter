@@ -74,23 +74,23 @@ class FilterRunner {
 	/**
 	 * @var User The user who performed the action being filtered
 	 */
-	protected $user;
+	private $user;
 	/**
 	 * @var Title The title where the action being filtered was performed
 	 */
-	protected $title;
+	private $title;
 	/**
 	 * @var VariableHolder The variables for the current action
 	 */
-	protected $vars;
+	private $vars;
 	/**
 	 * @var string The group of filters to check (as defined in $wgAbuseFilterValidGroups)
 	 */
-	protected $group;
+	private $group;
 	/**
 	 * @var string The action we're filtering
 	 */
-	protected $action;
+	private $action;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
@@ -321,7 +321,7 @@ class FilterRunner {
 	 *
 	 * @return RunnerData
 	 */
-	protected function checkAllFiltersInternal(): RunnerData {
+	private function checkAllFiltersInternal(): RunnerData {
 		// Ensure there's no extra time leftover
 		LazyVariableComputer::$profilingExtraTime = 0;
 
@@ -361,7 +361,7 @@ class FilterRunner {
 	 * @return array [ status, time taken ]
 	 * @phan-return array{0:\MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus,1:float}
 	 */
-	protected function checkFilter( ExistingFilter $filter, bool $global = false ): array {
+	private function checkFilter( ExistingFilter $filter, bool $global = false ): array {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );
 
 		$startTime = microtime( true );
@@ -378,7 +378,7 @@ class FilterRunner {
 	/**
 	 * @param RunnerData $data
 	 */
-	protected function profileExecution( RunnerData $data ) {
+	private function profileExecution( RunnerData $data ) {
 		$allFilters = $data->getAllFilters();
 		$matchedFilters = $data->getMatchedFilters();
 		$this->filterProfiler->recordRuntimeProfilingResult(
@@ -398,7 +398,7 @@ class FilterRunner {
 	/**
 	 * @param bool[] $matches
 	 */
-	protected function updateEmergencyCache( array $matches ): void {
+	private function updateEmergencyCache( array $matches ): void {
 		$filters = $this->emergencyCache->getFiltersToCheckInGroup( $this->group );
 		foreach ( $filters as $filter ) {
 			if ( array_key_exists( "$filter", $matches ) ) {

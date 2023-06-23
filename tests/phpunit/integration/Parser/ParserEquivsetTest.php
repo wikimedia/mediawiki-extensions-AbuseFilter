@@ -50,10 +50,8 @@ use Wikimedia\Equivset\Equivset;
  * @covers \MediaWiki\Extension\AbuseFilter\Parser\SyntaxChecker
  */
 class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
-	/**
-	 * @return FilterEvaluator
-	 */
-	protected function getParser() {
+
+	private function getParser(): FilterEvaluator {
 		// We're not interested in caching or logging; tests should call respectively setCache
 		// and setLogger if they want to test any of those.
 		$contLang = new LanguageEn();

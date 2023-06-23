@@ -129,7 +129,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 *
 	 * @return Language|MockObject
 	 */
-	protected function getLanguageMock() {
+	private function getLanguageMock() {
 		$lang = $this->createMock( LanguageEn::class );
 		$lang->method( 'uc' )
 			->willReturnCallback( static function ( $x ) {

@@ -101,7 +101,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 	// phpcs:disable Generic.Files.LineLength
 	/** @var array Filters that may be created, their key is the ID. */
-	protected static $filters = [
+	private const FILTERS = [
 		1 => [
 			'af_pattern' => 'added_lines irlike "foo"',
 			'af_public_comments' => 'Mock filter for edit',
@@ -381,7 +381,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * Creates new filters with the given ids, referred to self::$filters
+	 * Creates new filters with the given ids, referred to self::FILTERS
 	 *
 	 * @param int[] $ids IDs of the filters to create
 	 * @param bool $external Whether to create filters in the external table
@@ -407,7 +407,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		];
 
 		foreach ( $ids as $id ) {
-			$filter = self::$filters[$id] + $defaultRowSection;
+			$filter = self::FILTERS[$id] + $defaultRowSection;
 			$actions = $filter['actions'];
 			unset( $filter['actions'] );
 			$filter[ 'af_actions' ] = implode( ',', array_keys( $actions ) );
@@ -655,7 +655,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$testErrorMessage = false;
 		foreach ( $expectedConsequences as $consequence => $ids ) {
 			foreach ( $ids as $id ) {
-				$params = self::$filters[$id]['actions'][$consequence];
+				$params = self::FILTERS[$id]['actions'][$consequence];
 				switch ( $consequence ) {
 					case 'warn':
 						// Aborts the hook with the warning message as error.
@@ -839,7 +839,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * Data provider for testFilterConsequences. For every test case, we pass
-	 *   - an array with the IDs of the filters to be created (listed in self::$filters),
+	 *   - an array with the IDs of the filters to be created (listed in self::FILTERS),
 	 *   - an array with details of the action to execute in order to trigger the filters,
 	 *   - an array of expected consequences of the form
 	 *       [ 'consequence name' => [ IDs of the filter to take its parameters from ] ]
@@ -1060,7 +1060,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * Data provider for testThrottle. For every test case, we pass
-	 *   - an array with the IDs of the filters to be created (listed in self::$filters),
+	 *   - an array with the IDs of the filters to be created (listed in self::FILTERS),
 	 *   - an array of array, where every sub-array holds the details of the action to execute in
 	 *       order to trigger the filters, each one like in self::provideFilters
 	 *   - an array of expected consequences for the last action (i.e. after throttling) of the form
@@ -1186,7 +1186,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * Data provider for testWarn. For every test case, we pass
-	 *   - an array with the IDs of the filters to be created (listed in self::$filters),
+	 *   - an array with the IDs of the filters to be created (listed in self::FILTERS),
 	 *   - an array with action parameters, like in self::provideFilters. This will be executed twice.
 	 *   - an array of IDs of the filter which should give a warning
 	 *   - an array of expected consequences for the last action (i.e. after throttling) of the form
