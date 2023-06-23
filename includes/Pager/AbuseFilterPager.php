@@ -39,7 +39,7 @@ class AbuseFilterPager extends TablePager {
 	private $linkBatchFactory;
 
 	/** @var AbuseFilterPermissionManager */
-	protected $afPermManager;
+	private $afPermManager;
 
 	/** @var SpecsFormatter */
 	protected $specsFormatter;
@@ -47,11 +47,11 @@ class AbuseFilterPager extends TablePager {
 	/**
 	 * @var AbuseFilterViewList The associated page
 	 */
-	protected $mPage;
+	private $mPage;
 	/**
 	 * @var array Query WHERE conditions
 	 */
-	protected $conds;
+	private $conds;
 	/**
 	 * @var string|null The pattern being searched
 	 */

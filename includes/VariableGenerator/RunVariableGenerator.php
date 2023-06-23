@@ -27,12 +27,12 @@ class RunVariableGenerator extends VariableGenerator {
 	/**
 	 * @var User
 	 */
-	protected $user;
+	private $user;
 
 	/**
 	 * @var Title
 	 */
-	protected $title;
+	private $title;
 
 	/** @var TextExtractor */
 	private $textExtractor;
@@ -101,7 +101,7 @@ class RunVariableGenerator extends VariableGenerator {
 	 * @param string $slot
 	 * @return array|null
 	 */
-	protected function getEditTextForFiltering( WikiPage $page, Content $content, $slot ): ?array {
+	private function getEditTextForFiltering( WikiPage $page, Content $content, $slot ): ?array {
 		$oldRevRecord = $page->getRevisionRecord();
 		if ( !$oldRevRecord ) {
 			return null;

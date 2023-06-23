@@ -267,7 +267,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param int|null $filter The filter ID, or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
-	protected function buildFilterEditor(
+	private function buildFilterEditor(
 		$error,
 		Filter $filterObj,
 		?int $filter,
@@ -1147,7 +1147,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param string $duration
 	 * @return string|int
 	 */
-	protected static function getAbsoluteBlockDuration( $duration ) {
+	private static function getAbsoluteBlockDuration( $duration ) {
 		if ( wfIsInfinity( $duration ) ) {
 			return 'infinity';
 		}
@@ -1335,7 +1335,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
 	 * Exports the default warning and disallow messages to a JS variable
 	 */
-	protected function exposeMessages() {
+	private function exposeMessages() {
 		$this->getOutput()->addJsConfigVars(
 			'wgAbuseFilterDefaultWarningMessage',
 			$this->getConfig()->get( 'AbuseFilterDefaultWarningMessage' )

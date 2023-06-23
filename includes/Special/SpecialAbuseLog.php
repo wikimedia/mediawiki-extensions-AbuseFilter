@@ -52,55 +52,55 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * @var string|null The user whose AbuseLog entries are being searched
 	 */
-	protected $mSearchUser;
+	private $mSearchUser;
 
 	/**
 	 * @var string The start time of the search period
 	 */
-	protected $mSearchPeriodStart;
+	private $mSearchPeriodStart;
 
 	/**
 	 * @var string The end time of the search period
 	 */
-	protected $mSearchPeriodEnd;
+	private $mSearchPeriodEnd;
 
 	/**
 	 * @var string The page of which AbuseLog entries are being searched
 	 */
-	protected $mSearchTitle;
+	private $mSearchTitle;
 
 	/**
 	 * @var string The action performed by the user
 	 */
-	protected $mSearchAction;
+	private $mSearchAction;
 
 	/**
 	 * @var string The action taken by AbuseFilter
 	 */
-	protected $mSearchActionTaken;
+	private $mSearchActionTaken;
 
 	/**
 	 * @var string The wiki name where we're performing the search
 	 */
-	protected $mSearchWiki;
+	private $mSearchWiki;
 
 	/**
 	 * @var string|null The filter IDs we're looking for. Either a single one, or a pipe-separated list
 	 */
-	protected $mSearchFilter;
+	private $mSearchFilter;
 
 	/**
 	 * @var string The visibility of entries we're interested in
 	 */
-	protected $mSearchEntries;
+	private $mSearchEntries;
 
 	/**
 	 * @var string The impact of the user action, i.e. if the change has been saved
 	 */
-	protected $mSearchImpact;
+	private $mSearchImpact;
 
 	/** @var string|null The filter group to search, as defined in $wgAbuseFilterValidGroups */
-	protected $mSearchGroup;
+	private $mSearchGroup;
 
 	/** @var LBFactory */
 	private $lbFactory;
@@ -879,7 +879,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @param stdClass $row The row, as returned by self::getPrivateDetailsRow()
 	 * @return string The HTML output
 	 */
-	protected function buildPrivateDetailsTable( $row ) {
+	private function buildPrivateDetailsTable( $row ) {
 		$output = Xml::element(
 			'legend',
 			null,

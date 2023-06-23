@@ -59,7 +59,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 *
 	 * @param string $msg The message of the error
 	 */
-	protected function fail( $msg ) {
+	private function fail( $msg ) {
 		$this->rollbackTransaction( $this->dbw, __METHOD__ );
 		$this->fatalError( $msg );
 	}
@@ -147,7 +147,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 *
 	 * @return int Amount of normalized rows
 	 */
-	protected function normalizeParameters() {
+	private function normalizeParameters() {
 		$user = AbuseFilterServices::getFilterUser()->getUserIdentity();
 		$actorMigration = AbuseFilterServices::getActorMigration();
 		$dryRun = $this->hasOption( 'dry-run' );
@@ -410,7 +410,7 @@ class NormalizeThrottleParameters extends LoggedUpdateMaintenance {
 	 *
 	 * @return int Amount of beautified rows
 	 */
-	protected function beautifyHistory() {
+	private function beautifyHistory() {
 		$dryRun = $this->hasOption( 'dry-run' );
 
 		// We need any row containing throttle, but there's no

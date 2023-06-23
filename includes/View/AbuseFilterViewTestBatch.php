@@ -23,7 +23,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
 	 * @var int The limit of changes to test, hard coded for now
 	 */
-	protected static $mChangeLimit = 100;
+	private static $mChangeLimit = 100;
 
 	/**
 	 * @var bool Whether to show changes that don't trigger the specified pattern

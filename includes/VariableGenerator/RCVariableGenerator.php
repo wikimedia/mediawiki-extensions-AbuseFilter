@@ -22,7 +22,7 @@ class RCVariableGenerator extends VariableGenerator {
 	/**
 	 * @var RecentChange
 	 */
-	protected $rc;
+	private $rc;
 
 	/** @var User */
 	private $contextUser;
