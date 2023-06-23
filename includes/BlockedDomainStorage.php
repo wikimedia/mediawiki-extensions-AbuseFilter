@@ -87,7 +87,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @return StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
-	public function loadConfig( int $flags = 0 ) {
+	public function loadConfig( int $flags = 0 ): StatusValue {
 		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
 			return $this->fetchConfig( $flags );
 		}
@@ -110,29 +110,27 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * Load the computed domain block list
 	 *
-	 * @return array<string,bool>
+	 * @return array<string,true> Flipped for performance reasons
 	 */
-	public function loadComputed() {
+	public function loadComputed(): array {
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
 			BagOStuff::TTL_MINUTE * 5,
-			function ()  {
-				$domains = $this->loadConfig();
-				if ( !$domains->isGood() ) {
+			function () {
+				$status = $this->loadConfig();
+				if ( !$status->isGood() ) {
 					return [];
 				}
-				$domains = $domains->getValue();
 				$computedDomains = [];
-				foreach ( $domains as $domain ) {
-					if ( !isset( $domain['domain'] ) || !$domain['domain'] ) {
+				foreach ( $status->getValue() as $domain ) {
+					if ( !( $domain['domain'] ?? null ) ) {
 						continue;
 					}
 					$validatedDomain = $this->validateDomain( $domain['domain'] );
-					if ( !$validatedDomain ) {
-						continue;
+					if ( $validatedDomain ) {
+						// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
+						$computedDomains[$validatedDomain] = true;
 					}
-					// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
-					$computedDomains[$validatedDomain] = true;
 				}
 				return $computedDomains;
 			}
@@ -142,21 +140,22 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * Validate an input domain
 	 *
-	 * @param string $domain Domain such as foo.wikipedia.org
+	 * @param string|null $domain Domain such as foo.wikipedia.org
 	 * @return string|false Parsed domain, or false otherwise
 	 */
 	public function validateDomain( $domain ) {
-		$domain = trim( $domain ?? '' );
-		if ( strpos( $domain, '//' ) === false ) {
+		if ( !$domain ) {
+			return false;
+		}
+
+		$domain = trim( $domain );
+		if ( !str_contains( $domain, '//' ) ) {
 			$domain = 'https://' . $domain;
 		}
 
 		$parsedUrl = $this->urlUtils->parse( $domain );
-		if ( !$parsedUrl ) {
-			return false;
-		}
 		// Parse url returns a valid URL for "foo"
-		if ( strpos( $parsedUrl['host'], '.' ) === false ) {
+		if ( !$parsedUrl || !str_contains( $parsedUrl['host'], '.' ) ) {
 			return false;
 		}
 		return $parsedUrl['host'];
@@ -170,7 +169,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param int $flags bit field, see IDBAccessObject::READ_XXX; do NOT pass READ_UNCACHED
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
 	 */
-	private function fetchConfig( int $flags ) {
+	private function fetchConfig( int $flags ): StatusValue {
 		$revision = $this->revisionLookup->getRevisionByTitle( $this->getBlockedDomainPage(), 0, $flags );
 		if ( !$revision ) {
 			// The configuration page does not exist. Pretend it does not configure anything
@@ -238,19 +237,18 @@ class BlockedDomainStorage implements IDBAccessObject {
 		$configPage = $this->getBlockedDomainPage();
 		$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, self::READ_LATEST );
 		if ( !$revision ) {
-			$content = [];
-		} else {
-			$revContent = $revision->getContent( SlotRecord::MAIN );
-			if ( !$revContent instanceof JsonContent ) {
-				return null;
-			}
-			$status = FormatJson::parse( $revContent->getText(), FormatJson::FORCE_ASSOC );
-			if ( !$status->isOK() ) {
-				return null;
-			}
-			$content = $status->getValue();
+			return [];
 		}
-		return $content;
+
+		$revContent = $revision->getContent( SlotRecord::MAIN );
+		if ( $revContent instanceof JsonContent ) {
+			$status = FormatJson::parse( $revContent->getText(), FormatJson::FORCE_ASSOC );
+			if ( $status->isOK() ) {
+				return $status->getValue();
+			}
+		}
+
+		return null;
 	}
 
 	/**
