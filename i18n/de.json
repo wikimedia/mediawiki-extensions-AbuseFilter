@@ -619,7 +619,7 @@
 	"abusefilter-blocked-domains-attempted": "Der Text, den du veröffentlichen wolltest, wurde von einem Filter gesperrt. Die folgende Domain kann nicht hinzugefügt werden: $1",
 	"abusefilter-blocked-domains-json-error": "JSON muss ein Array sein",
 	"abusefilter-blocked-domains-invalid-entry": "Eintrag $1 in JSON ist ungültig – es muss ein Objekt mit nur den Feldern „domain“ und „notes“ sein, die beide Zeichenfolgen sind",
-	"abusefilter-blocked-domains-domain-added-comment": "Gesperrte externe Domäne $1 mit Notizen hinzufügt: $2",
+	"abusefilter-blocked-domains-domain-added-comment": "Gesperrte externe Domäne $1 mit Notizen hinzugefügt: $2",
 	"abusefilter-blocked-domains-domain-removed-comment": "Gesperrte externe Domäne $1 mit Notizen entfernt: $2",
 	"log-description-abusefilterprivatedetails": "Dieses Logbuch zeigt eine Liste darüber an, wie oft ein Benutzer auf private Einzelheiten eines Missbrauchfiltereintrags zugreift.",
 	"log-description-abusefilterblockeddomainhit": "Diese Ereignisse protokollieren die Zugriffe auf gesperrte Domains.",
