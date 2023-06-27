@@ -77,7 +77,9 @@
 			"铁桶",
 			"飞舞回堂前",
 			"NekoCharm",
-			"ArsenalBastion4093"
+			"ArsenalBastion4093",
+			")8",
+			"U.T."
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -283,7 +285,7 @@
 	"abusefilter-edit-global": "全域过滤器",
 	"abusefilter-edit-rules": "条件：",
 	"abusefilter-edit-field-conditions": "条件",
-	"abusefilter-edit-notes": "注释：",
+	"abusefilter-edit-notes": "备注：",
 	"abusefilter-edit-lastmod": "过滤器最后更改：",
 	"abusefilter-edit-lastmod-text": "$1，$2",
 	"abusefilter-edit-hitcount": "过滤器触发数：",
