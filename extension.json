@@ -151,7 +151,8 @@
 	},
 	"LogRestrictions": {
 		"abusefilter": "abusefilter-view",
-		"abusefilterprivatedetails": "abusefilter-privatedetails-log"
+		"abusefilterprivatedetails": "abusefilter-privatedetails-log",
+		"abusefilterblockeddomainhit": "abusefilter-view"
 	},
 	"AuthManagerAutoConfig": {
 		"preauth": {
