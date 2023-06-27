@@ -205,6 +205,7 @@
 	"logentry-abusefilterprivatedetails-access": "$1{{GENDER:$2|访问了}}$3的私有详情",
 	"logentry-rights-blockautopromote": "$1{{GENDER:$2|禁止}}{{GENDER:$4|$3}}于$5内获得自动授权",
 	"logentry-rights-restoreautopromote": "$1{{GENDER:$2|允许}}{{GENDER:$4|$3}}获自动授权",
+	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}}在$3上试图添加$4，触发了封禁域名列表。",
 	"abusefilterprivatedetails-log-name": "防滥用过滤器私有详情访问日志",
 	"abusefilter-list": "所有过滤器",
 	"abusefilter-list-id": "过滤器ID",
