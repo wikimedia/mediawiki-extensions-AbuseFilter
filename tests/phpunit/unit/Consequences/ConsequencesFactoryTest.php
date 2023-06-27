@@ -39,7 +39,8 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 				'BlockCIDRLimit' => [],
 			]
 		);
-		return new ConsequencesFactory(
+
+		$consequencesFactory = new ConsequencesFactory(
 			$opts,
 			new NullLogger(),
 			$this->createMock( BlockUserFactory::class ),
@@ -49,12 +50,14 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( ChangeTagger::class ),
 			$this->createMock( BlockAutopromoteStore::class ),
 			$this->createMock( FilterUser::class ),
-			$this->createMock( Session::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->createMock( UserEditTracker::class ),
 			$this->createMock( UserFactory::class ),
 			$this->createMock( UserNameUtils::class )
 		);
+		$consequencesFactory->setSession( $this->createMock( Session::class ) );
+
+		return $consequencesFactory;
 	}
 
 	/**
