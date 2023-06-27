@@ -43,7 +43,6 @@ use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Session\SessionManager;
 use MediaWiki\WikiMap\WikiMap;
 use Wikimedia\Equivset\Equivset;
 
@@ -211,7 +210,6 @@ return [
 			$services->get( ChangeTagger::SERVICE_NAME ),
 			$services->get( BlockAutopromoteStore::SERVICE_NAME ),
 			$services->get( FilterUser::SERVICE_NAME ),
-			SessionManager::getGlobalSession(),
 			// TODO: Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain(),
 			$services->getUserEditTracker(),
