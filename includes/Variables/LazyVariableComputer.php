@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Variables;
 
 use ContentHandler;
-use Diff;
 use Language;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
@@ -28,9 +27,10 @@ use StringUtils;
 use TextContent;
 use Title;
 use UnexpectedValueException;
-use UnifiedDiffFormatter;
 use User;
 use WANObjectCache;
+use Wikimedia\Diff\Diff;
+use Wikimedia\Diff\UnifiedDiffFormatter;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\LBFactory;
 use WikiPage;

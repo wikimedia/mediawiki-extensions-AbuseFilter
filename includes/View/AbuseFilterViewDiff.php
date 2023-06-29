@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use Diff;
 use DifferenceEngine;
 use Html;
 use IContextSource;
@@ -18,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\TableDiffFormatterFullContext;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use TextContent;
+use Wikimedia\Diff\Diff;
 
 class AbuseFilterViewDiff extends AbuseFilterView {
 	/**

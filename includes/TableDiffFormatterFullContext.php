@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use Diff;
-use TableDiffFormatter;
+use Wikimedia\Diff\Diff;
+use Wikimedia\Diff\TableDiffFormatter;
 
 /**
  * Like TableDiffFormatter, but will always render the full context (even for empty diffs).
