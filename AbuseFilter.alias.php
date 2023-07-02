@@ -114,6 +114,7 @@ $specialPageAliases['ce'] = [
 $specialPageAliases['cs'] = [
 	'AbuseLog' => [ 'Záznam_filtrů_zneužití' ],
 	'AbuseFilter' => [ 'Filtry_zneužití' ],
+	'BlockedExternalDomains' => [ 'Seznam_blokovaných_domén' ],
 ];
 
 /** German (Deutsch) */
