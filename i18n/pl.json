@@ -586,5 +586,5 @@
 	"abusefilter-log-ip-not-available": "Niedostępne",
 	"abusefilter-tag-reserved": "Tag <code>abusefilter-condition-limit</code> jest zarezerwowany dla wewnętrznego użytku przez Filtr nadużyć.",
 	"tag-abusefilter-condition-limit": "osiągnięto limit warunku",
-	"tag-abusefilter-condition-limit-description": "Edycje lub inne operacje które nie mogły zostać sprzawdzone przez wszystkie aktywne [[Special:AbuseFilter|filtry nadużyć]] ([[mw:Extension:AbuseFilter/Conditions|pomoc]])."
+	"tag-abusefilter-condition-limit-description": "Edycje lub inne operacje które nie mogły zostać sprawdzone przez wszystkie aktywne [[Special:AbuseFilter|filtry nadużyć]] ([[mw:Extension:AbuseFilter/Conditions|pomoc]])."
 }
