@@ -130,6 +130,7 @@
 	"log-action-filter-abusefilter-modify": "уређивање филтера",
 	"log-action-filter-suppress-abuselog": "Сакривање дневника злоупотреба",
 	"log-action-filter-rights-blockautopromote": "Блокирање самоунапређивања",
+	"log-name-abusefilterblockeddomainhit": "Дневник блокаде домена",
 	"abusefilter-list": "Сви филтери",
 	"abusefilter-list-id": "ID филтера",
 	"abusefilter-list-pattern": "Узорак",

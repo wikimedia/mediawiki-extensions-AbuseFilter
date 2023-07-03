@@ -5,6 +5,7 @@
 			"Citadell",
 			"Cocu",
 			"Danmichaelo",
+			"EdoAug",
 			"EvenT",
 			"Event",
 			"Fitoschido",
@@ -606,8 +607,12 @@
 	"abusefilter-blocked-domains-remove-reason": "Årsak",
 	"abusefilter-blocked-domains-remove-submit": "Fjern",
 	"abusefilter-blocked-domains-attempted": "Teksten du ønsket å publisere ble blokkert av filteret vårt. Følgende domene er svartelistet: $1",
+	"abusefilter-blocked-domains-json-error": "JSON bør være en matrise",
 	"abusefilter-blocked-domains-invalid-entry": "Oppføringen $1 i JSON-en er ugyldig – den må være et objekt med kun feltene «domain» og «notes», der begge feltene er strenger",
+	"abusefilter-blocked-domains-domain-added-comment": "Legg til blokkert eksterndomene $1 med kommentar: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Fjern blokkert eksterndomene $1 med kommentar: $2",
 	"log-description-abusefilterprivatedetails": "Denne loggen viser en liste over tider en bruker har fått tilgang til private detaljer i en misbrukslogg.",
+	"log-description-abusefilterblockeddomainhit": "Disse handlingene sporer treff på blokkerte domener.",
 	"abusefilter-noreason": "Advarsel: For å se private detaljer i denne loggen må du angi en årsak.",
 	"abusefilter-log-ip-not-available": "Ikke tilgjengelig",
 	"abusefilter-tag-reserved": "Taggen <code>abusefilter-condition-limit</code> er reservert for intern bruk av misbruksfilteret.",
@@ -620,5 +625,7 @@
 	"notification-link-text-show-filter": "Vis filter",
 	"right-abusefilter-modify-blocked-external-domains": "Opprette eller endre hvilke eksterne domener som er blokkert fra å lenkes til",
 	"action-abusefilter-modify-blocked-external-domains": "opprette eller endre hvilke eksterne domener som er blokkert fra å lenkes til",
+	"right-abusefilter-bypass-blocked-external-domains": "Omgå blokkerte eksterndomener",
+	"action-abusefilter-bypass-blocked-external-domains": "omgå blokkert eksterndomene",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Oppretting eller endring av hvilke domener som er blokkert fra å lenkes til må gjøres via [[Special:BlockedExternalDomains|spesialsiden]]."
 }

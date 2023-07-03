@@ -612,7 +612,7 @@
 	"abusefilter-invalid-request-noid": "無効なリクエスト！ 不正利用ログの詳細ページのフォームからプライベートログの詳細にアクセスし、理由を提示する必要があります。",
 	"blockedexternaldomains": "ブロックされた外部ドメイン",
 	"abusefilter-blocked-domains-title": "ブロックされた外部ドメイン",
-	"abusefilter-blocked-domains-intro": "このリストに一致する外部リンクは、ページに追加されるとブロックされます",
+	"abusefilter-blocked-domains-intro": "このリストに一致する外部リンクは、ページに追加するときにブロックされます。これらのドメインは[[MediaWiki:BlockedExternalDomains.json]]に保存されています。",
 	"abusefilter-blocked-domains-add-heading": "ブロックされたドメインを追加する",
 	"abusefilter-blocked-domains-add-explanation": "ここでブロックされたドメインのリストにドメインを追加できます。",
 	"abusefilter-blocked-domains-domain": "ブロックするドメイン (wikipedia.org など)",

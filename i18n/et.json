@@ -232,7 +232,7 @@
 	"abusefilter-edit-tag-tag": "Rakendatavad [[Special:Tags|märgised]]:",
 	"abusefilter-edit-tag-placeholder": "Lisa märgised (ühekaupa või komaga eraldatud)",
 	"abusefilter-edit-tag-hidden-placeholder": "Lisa märgised (eraldatud komaga)",
-	"abusefilter-edit-block-anon-durations": "Anonüümse kasutaja blokeeringu kestus:",
+	"abusefilter-edit-block-anon-durations": "Registreerimata kasutaja blokeeringu kestus:",
 	"abusefilter-edit-block-user-durations": "Registreeritud kasutaja blokeeringu kestus:",
 	"abusefilter-block-anon": "Blokeeri anonüümsed kasutajad",
 	"abusefilter-block-user": "blokeeri registreeritud kasutajad",
