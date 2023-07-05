@@ -159,6 +159,7 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::addEditVars
+	 * @covers ::addDerivedEditVars
 	 * @dataProvider provideForFilter
 	 */
 	public function testAddEditVars( bool $forFilter ) {

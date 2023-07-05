@@ -200,6 +200,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::addEditVars
+	 * @covers ::addDerivedEditVars
 	 * @covers ::addEditVarsForRow
 	 * @covers ::addGenericVars
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
