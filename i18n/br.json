@@ -416,5 +416,10 @@
 	"abusefilter-import-submit": "Enporzhiañ roadennoù",
 	"abusefilter-group-default": "Dre ziouer",
 	"abusefilter-http-error": "Ur fazi HTTP zo bet : $1",
-	"abusefilter-blocked-domains-domain-added-comment": "Ouzhpennet domani diavaez stanket $1 gant notennoù: $2"
+	"blockedexternaldomains": "Domanioù diavaez stanket",
+	"abusefilter-blocked-domains-intro": "Stanket a vo al liammoù diavaez a glot gant ar roll-mañ pa vint ouzhpennet en ur bajenn. Enrollet eo an domani-mañ e [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-domain-added-comment": "Ouzhpennet domani diavaez stanket $1 gant notennoù: $2",
+	"right-abusefilter-modify-blocked-external-domains": "Krouiñ pe kemmañ pe domanioù diavaez a zo miret ouzh bezañ liammet war o zu",
+	"right-abusefilter-bypass-blocked-external-domains": "Korntroiañ domanioù diavaez stanket",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Krouiñ pe kemmañ pe domanioù diavaez a zo miret ouzh bezañ liammet war o zu a rank bezañ graet dre [[Special:BlockedExternalDomains|ar bajenn a-ratozh]]."
 }
