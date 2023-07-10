@@ -75,7 +75,7 @@
 	"abusefilter-log-noactions": "無",
 	"abusefilter-log-details-diff": "響編輯嘅更動",
 	"abusefilter-log-linkoncontribs": "濫用紀錄",
-	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|爾位用戶}}嘅濫用紀錄",
+	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|呢位用戶}}嘅濫用紀錄",
 	"abusefilter-log-linkonhistory": "去睇濫用過濾器紀錄",
 	"abusefilter-log-linkonhistory-text": "睇呢頁嘅濫用過濾器紀錄",
 	"abusefilter-log-linkonundelete": "去睇濫用紀錄",
