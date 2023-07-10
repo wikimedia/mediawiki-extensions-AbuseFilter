@@ -403,6 +403,7 @@ $specialPageAliases['pa'] = [
 $specialPageAliases['pl'] = [
 	'AbuseLog' => [ 'Rejestr_nadużyć' ],
 	'AbuseFilter' => [ 'Filtr_nadużyć' ],
+	'BlockedExternalDomains' => [ 'Zablokowane_zewnętrzne_domeny', 'Zablokowane_domeny' ],
 ];
 
 /** Brazilian Portuguese (português do Brasil) */
