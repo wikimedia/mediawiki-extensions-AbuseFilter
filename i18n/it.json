@@ -613,7 +613,7 @@
 	"abusefilter-blocked-domains-json-error": "JSON dovrebbe essere un array",
 	"abusefilter-blocked-domains-invalid-entry": "L'elemento $1 in JSON non è valido: dovrebbe essere un oggetto con solo i campi \"dominio\" e \"note\", entrambi stringhe",
 	"abusefilter-blocked-domains-domain-added-comment": "Aggiunto $1 ai domini esterni bloccati con le seguenti note: $2",
-	"abusefilter-blocked-domains-domain-removed-comment": "Rimosso $1 ai domini esterni bloccati con le seguenti note: $2",
+	"abusefilter-blocked-domains-domain-removed-comment": "Rimosso $1 dai domini esterni bloccati con le seguenti note: $2",
 	"log-description-abusefilterprivatedetails": "Questo registro contiene un elenco di accessi ai dettagli privati del registro abusi.",
 	"log-description-abusefilterblockeddomainhit": "Questi eventi tengono traccia dei tentativi di inserimento di domini bloccati.",
 	"abusefilter-noreason": "Avviso: per vedere i dettagli privati di questo registro, devi fornire una motivazione.",
@@ -629,6 +629,6 @@
 	"right-abusefilter-modify-blocked-external-domains": "Crea o modifica quali domini esterni non possono essere aggiunti come collegamento",
 	"action-abusefilter-modify-blocked-external-domains": "creare o modificare quali domini esterni non possono essere aggiunti come collegamento",
 	"right-abusefilter-bypass-blocked-external-domains": "Ignora i blocchi ai domini esterni",
-	"action-abusefilter-bypass-blocked-external-domains": "Non tiene conto dei domini esterni bloccati",
+	"action-abusefilter-bypass-blocked-external-domains": "ignorare i blocchi ai domini esterni",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Creare o modificare la lista dei domini esterni bloccati dall'essere inseriti come collegamento deve essere fatta attraverso [[Special:BlockedExternalDomains|questa pagina speciale]]."
 }
