@@ -469,7 +469,6 @@
 	"abusefilter-test-page": "Промени по страницата:",
 	"abusefilter-test-shownegative": "Показване на промените, които не съвпадат с филтъра",
 	"abusefilter-test-syntaxerr": "Въведеният филтър съдържа синтактична грешка.\nПълно обяснение за грешката е достъпно при щракване на бутона „{{int:abusefilter-edit-check}}“.",
-	"abusefilter-test-badtitle": "Заглавието на страницата, което сте въвели, е невалидно. То може би съдържа един или повече знаци, които не могат да се използват в заглавия.",
 	"abusefilter-test-action": "Тип на действието:",
 	"abusefilter-test-search-type-all": "Всички действия",
 	"abusefilter-test-search-type-edit": "Редактирания",

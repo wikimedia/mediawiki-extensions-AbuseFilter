@@ -473,7 +473,6 @@
 	"abusefilter-test-page": "Muudetud lehekülg:",
 	"abusefilter-test-shownegative": "Näita muudatusi, mis ei vasta filtrile",
 	"abusefilter-test-syntaxerr": "Sisestatud filtris oli süntaksitõrge.\nLisaselgituse jaoks klõpsa nuppu \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "Lehekülje pealkiri, mille sisestasid, oli vigane. Võimalik, et see sisaldab märke, mida ei saa pealkirjades kasutada.",
 	"abusefilter-test-action": "Toimingu tüüp:",
 	"abusefilter-test-search-type-all": "Kõik toimingud",
 	"abusefilter-test-search-type-edit": "Redigeerimised",

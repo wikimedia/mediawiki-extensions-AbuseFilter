@@ -533,7 +533,6 @@
 	"abusefilter-test-page": "바뀌는 문서:",
 	"abusefilter-test-shownegative": "필터와 일치하지 않는 편집을 보이기",
 	"abusefilter-test-syntaxerr": "입력한 구문에 오류가 있습니다.\n\"{{int:abusefilter-edit-check}}\" 버튼을 누르면 자세한 설명을 받을 수 있습니다.",
-	"abusefilter-test-badtitle": "입력하신 문서 제목이 잘못되었습니다. 제목에 사용할 수 없는 하나 이상의 문자를 포함하고 있을 수 있습니다.",
 	"abusefilter-test-action": "조치 유형:",
 	"abusefilter-test-search-type-all": "모든 조치",
 	"abusefilter-test-search-type-edit": "편집",

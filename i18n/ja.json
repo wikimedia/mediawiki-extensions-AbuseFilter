@@ -554,7 +554,6 @@
 	"abusefilter-test-page": "変更されるページ:",
 	"abusefilter-test-shownegative": "フィルターに一致しない変更を表示する",
 	"abusefilter-test-syntaxerr": "あなたが入力したフィルターには構文エラーがあります。\n「{{int:abusefilter-edit-check}}」ボタンをクリックして、完全な説明を得ることができます。",
-	"abusefilter-test-badtitle": "入力したページ名は無効です。ページ名に使用できない文字を含んでいる可能性があります。",
 	"abusefilter-test-action": "操作の種類:",
 	"abusefilter-test-search-type-all": "すべての操作",
 	"abusefilter-test-search-type-edit": "編集",

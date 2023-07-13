@@ -543,7 +543,6 @@
 	"abusefilter-test-page": "Wijzigingen aan pagina:",
 	"abusefilter-test-shownegative": "Wijzigingen weergeven die niet aan het filter voldoen",
 	"abusefilter-test-syntaxerr": "Het filter dat u hebt ingevoerd bevat een syntaxisfout.\nDoor op \"{{int:abusefilter-edit-check}}\" te klikken krijgt u een volledige toelichting.",
-	"abusefilter-test-badtitle": "De paginanaam die u hebt ingevoerd is ongeldig. Deze bevat een of meer tekens die niet kunnen worden gebruikt in paginanamen.",
 	"abusefilter-test-action": "Type handeling:",
 	"abusefilter-test-search-type-all": "Alle handelingen",
 	"abusefilter-test-search-type-edit": "Bewerkingen",

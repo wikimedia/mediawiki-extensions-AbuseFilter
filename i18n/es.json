@@ -575,7 +575,6 @@
 	"abusefilter-test-page": "Cambios hechos en la página:",
 	"abusefilter-test-shownegative": "Mostrar cambios que no coincidan con el filtro",
 	"abusefilter-test-syntaxerr": "El filtro que has introducido contiene un error de sintaxis.\nPuedes recibir una explicación completa haciendo clic en \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "El título de página introducido no era válido. Puede contener uno o más caracteres que no se pueden utilizar en títulos.",
 	"abusefilter-test-action": "Tipo de acción:",
 	"abusefilter-test-search-type-all": "Todas las acciones",
 	"abusefilter-test-search-type-edit": "Ediciones",

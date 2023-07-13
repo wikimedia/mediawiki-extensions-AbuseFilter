@@ -458,7 +458,6 @@
 	"abusefilter-test-page": "Canvis fets a la pàgina:",
 	"abusefilter-test-shownegative": "Mostra els canvis que no coincideixen amb el filtre",
 	"abusefilter-test-syntaxerr": "El filtre que heu escrit conté un error de sintaxi.\nVostè pot rebre una explicació completa fent clic al botó de \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "El títol de la pàgina que heu introduït no era vàlid. Pot contenir un o més caràcters que no es poden utilitzar en els títols.",
 	"abusefilter-test-action": "Tipus d’acció:",
 	"abusefilter-test-search-type-all": "Totes les accions",
 	"abusefilter-test-search-type-edit": "Edicions",

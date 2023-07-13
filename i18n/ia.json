@@ -511,7 +511,6 @@
 	"abusefilter-test-page": "Modificationes facite al pagina:",
 	"abusefilter-test-shownegative": "Monstrar modificationes que non corresponde al filtro",
 	"abusefilter-test-syntaxerr": "Le filtro inserite contine un error de syntaxe.\nPro reciper un explication complete, clicca sur le button \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "Le titulo de pagina specificate non es valide. Illo contine forsan alcun characteres que non pote esser usate in titulos.",
 	"abusefilter-test-action": "Typo de action:",
 	"abusefilter-test-search-type-all": "Tote le actiones",
 	"abusefilter-test-search-type-edit": "Modificationes",

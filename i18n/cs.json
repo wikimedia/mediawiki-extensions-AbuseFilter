@@ -533,7 +533,6 @@
 	"abusefilter-test-page": "Změněná stránka:",
 	"abusefilter-test-shownegative": "Zobrazit i změny, které filtru nevyhovují",
 	"abusefilter-test-syntaxerr": "Zadaný filtr obsahuje syntaktickou chybu.\nPodrobnější vysvětlení můžete získat kliknutím na tlačítko „{{int:abusefilter-edit-check}}“.",
-	"abusefilter-test-badtitle": "Zadaný název stránky je neplatný. Možná obsahuje jeden či více znaků, které nelze v názvech stránek používat.",
 	"abusefilter-test-action": "Typ akce:",
 	"abusefilter-test-search-type-all": "Všechny akce",
 	"abusefilter-test-search-type-edit": "Editace",

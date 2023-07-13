@@ -536,7 +536,6 @@
 	"abusefilter-test-page": "Sayfaya yapılan değişiklikler:",
 	"abusefilter-test-shownegative": "Süzgeçle eşleşmeyen değişiklikleri göster",
 	"abusefilter-test-syntaxerr": "Girdiğiniz filtre sözdizimi hatası içeriyordu.\n\"{{int:abusefilter-edit-check}}\" düğmesine tıklayarak tam bir açıklama alabilirsiniz.",
-	"abusefilter-test-badtitle": "Girdiğiniz sayfa başlığı geçersizdi. Başlıklarda kullanılamayan bir veya daha fazla karakter içerebilir.",
 	"abusefilter-test-action": "Eylem türü:",
 	"abusefilter-test-search-type-all": "Tüm eylemler",
 	"abusefilter-test-search-type-edit": "Düzenlemeler",

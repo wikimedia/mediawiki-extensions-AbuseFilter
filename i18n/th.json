@@ -519,7 +519,6 @@
 	"abusefilter-test-page": "การเปลี่ยนแปลงไปยังหน้า:",
 	"abusefilter-test-shownegative": "แสดงการเปลี่ยนแปลงที่ไม่ตรงกับตัวกรอง",
 	"abusefilter-test-syntaxerr": "ตัวกรองที่คุณกรอกนั้นมีวากยสัมพันธ์ผิดพลาด\nคุณสามารถดูคำอธิบายเต็มได้โดยคลิกปุ่ม \"{{int:abusefilter-edit-check}}\"",
-	"abusefilter-test-badtitle": "ชื่อหน้าที่คุณกรอกไม่สมเหตุสมผล โดยอาจมีอักขระที่ไม่สามารถใช้เป็นชื่อเรื่อง",
 	"abusefilter-test-action": "ประเภทการกระทำ:",
 	"abusefilter-test-search-type-all": "การกระทำทั้งหมด",
 	"abusefilter-test-search-type-edit": "แก้ไข",

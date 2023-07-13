@@ -517,7 +517,6 @@
 	"abusefilter-test-page": "Spremembe na strani:",
 	"abusefilter-test-shownegative": "Prikaži spremembe, ki se ne ujemajo s filtrom",
 	"abusefilter-test-syntaxerr": "Vneseni filter vsebuje skladenjsko napako.\nPopolno pojasnilo lahko pridobite s klikom gumba »{{int:abusefilter-edit-check}}«.",
-	"abusefilter-test-badtitle": "Vneseni naslov strani ni veljaven. Vsebuje enega ali več znakov, ki jih ni mogoče uporabiti v naslovih.",
 	"abusefilter-test-action": "Vrsta dejanja:",
 	"abusefilter-test-search-type-all": "vsa dejanja",
 	"abusefilter-test-search-type-edit": "Urejanja",

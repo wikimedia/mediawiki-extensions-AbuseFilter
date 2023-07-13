@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
+			"Lifeway",
 			"Сай",
 			"Санюн Вадик"
 		]
 	},
-	"abusefilter-log-search-user": "Пайдаланыше:",
-	"abusefilter-tools-reautoconfirm-user": "Пайдаланыше:",
+	"abusefilter-log-search-user": "Ушнышо:",
+	"abusefilter-tools-reautoconfirm-user": "Ушнышо:",
 	"abusefilter-edit-status-label": "Иктешлымаш:",
 	"abusefilter-edit-history": "Историй:",
-	"abusefilter-history-user": "Пайдаланыше",
+	"abusefilter-history-user": "Ушнышо",
 	"abusefilter-revert-filter": "Фильтр:"
 }

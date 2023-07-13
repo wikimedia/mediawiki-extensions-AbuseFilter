@@ -534,7 +534,6 @@
 	"abusefilter-test-page": "Endringer gjort på siden:",
 	"abusefilter-test-shownegative": "Vis endringer som ikke passer med dette filteret",
 	"abusefilter-test-syntaxerr": "Filteret du skrev inn inneholder en syntaksfeil.\nDu kan se en fullstendig forklaring ved å klikke på «{{int:abusefilter-edit-check}}»-knappen.",
-	"abusefilter-test-badtitle": "Sidetittelen du la inn var ugyldig. Den kan inneholde en eller flere karakterer som ikke kan brukes i titler.",
 	"abusefilter-test-action": "Handlingstype:",
 	"abusefilter-test-search-type-all": "Alle handlinger",
 	"abusefilter-test-search-type-edit": "Redigeringer",

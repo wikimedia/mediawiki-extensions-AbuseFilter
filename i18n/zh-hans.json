@@ -588,7 +588,6 @@
 	"abusefilter-test-page": "对页面的更改：",
 	"abusefilter-test-shownegative": "显示不与过滤器匹配的更改",
 	"abusefilter-test-syntaxerr": "您所输入的过滤器有语法错误。请点击“{{int:abusefilter-edit-check}}”按钮进行语法检查，并获取详细解释。",
-	"abusefilter-test-badtitle": "您输入的页面标题无效。它可能包含无法作为标题使用的一个或多个字符。",
 	"abusefilter-test-action": "操作类型：",
 	"abusefilter-test-search-type-all": "所有操作",
 	"abusefilter-test-search-type-edit": "编辑",

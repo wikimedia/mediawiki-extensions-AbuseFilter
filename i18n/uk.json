@@ -538,7 +538,6 @@
 	"abusefilter-test-page": "Зміни на сторінці:",
 	"abusefilter-test-shownegative": "Показувати зміни, які не попадають під фільтр",
 	"abusefilter-test-syntaxerr": "Введений вами фільтр містить синтаксичну помилку.\nВи можете отримати докладне пояснення, натиснувши кнопку «{{int:abusefilter-edit-check}}»",
-	"abusefilter-test-badtitle": "Вами введено хибний заголовок сторінки. Можливо, він містить один або кілька символів, які не можна вживати у назвах.",
 	"abusefilter-test-action": "Тип дії:",
 	"abusefilter-test-search-type-all": "Усі дії",
 	"abusefilter-test-search-type-edit": "Редагування",

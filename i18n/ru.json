@@ -575,7 +575,6 @@
 	"abusefilter-test-page": "Изменения сделаны на странице:",
 	"abusefilter-test-shownegative": "Показывать изменения, не попадающие под фильтр",
 	"abusefilter-test-syntaxerr": "Введённый вами фильтр содержит синтаксическую ошибку.\nВы можете получить подробное объяснение, нажав на кнопку «{{int:abusefilter-edit-check}}».",
-	"abusefilter-test-badtitle": "Заголовок страниц, который вы ввели, некорректен. Возможно, он содержит один или более символов, которые нельзя использовать в названиях.",
 	"abusefilter-test-action": "Тип действия:",
 	"abusefilter-test-search-type-all": "Все действия",
 	"abusefilter-test-search-type-edit": "Правки",

@@ -529,7 +529,6 @@
 	"abusefilter-test-page": "שינויים שבוצעו בדף:",
 	"abusefilter-test-shownegative": "הצגת שינויים שאינם תואמים את המסנן",
 	"abusefilter-test-syntaxerr": "במסנן שהכנסת יש שגיאת תחביר.\nבאפשרותך לקבל הסבר מלא באמצעות לחיצה על הכפתור \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "כותרת הדף שהזנת אינה תקינה. ייתכן שהיא מכילה תו אחד או יותר שלא ניתנים לשימוש בכותרות.",
 	"abusefilter-test-action": "סוג הפעולה:",
 	"abusefilter-test-search-type-all": "כל הפעולות",
 	"abusefilter-test-search-type-edit": "עריכות",

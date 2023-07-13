@@ -519,7 +519,6 @@
 	"abusefilter-test-page": "Зьмены, зробленыя на старонцы:",
 	"abusefilter-test-shownegative": "Паказаць зьмены, якія не супадаюць зь фільтрам",
 	"abusefilter-test-syntaxerr": "Фільтар, які Вы ўвялі, утрымлівае сынтаксычную памылку.\nВы можаце атрымаць поўнае тлумачэньне, калі націсьніце на кнопку «{{int:abusefilter-edit-check}}».",
-	"abusefilter-test-badtitle": "Загаловак старонкі, які вы ўвялі, зьяўляецца няслушным. Магчыма, ён утрымлівае адзін ці некалькі сымбаляў, якія нельга выкарыстоўваць у назвах.",
 	"abusefilter-test-action": "Тып дзеяньня:",
 	"abusefilter-test-search-type-all": "Усе дзеяньні",
 	"abusefilter-test-search-type-edit": "Зьмены",

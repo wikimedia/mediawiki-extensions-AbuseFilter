@@ -491,7 +491,6 @@
 	"abusefilter-test-page": "Schimbări aduse paginii:",
 	"abusefilter-test-shownegative": "Arată schimbările care nu se potrivesc filtrului",
 	"abusefilter-test-syntaxerr": "Filtrul pe care l-ați introdus conține o eroare de sintaxă.\nPuteți primi o explicație completă apăsând butonul „{{int:abusefilter-edit-check}}”.",
-	"abusefilter-test-badtitle": "Titlul paginii introdus nu este valid. Este posibil să conțină unul sau mai multe caractere care nu pot fi folosite în titluri.",
 	"abusefilter-test-action": "Tipul acțiunii:",
 	"abusefilter-test-search-type-all": "Toate acțiunile",
 	"abusefilter-test-search-type-edit": "Modificări",

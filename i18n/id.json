@@ -540,7 +540,6 @@
 	"abusefilter-test-page": "Perubahan dilakukan pada halaman:",
 	"abusefilter-test-shownegative": "Lihat perubahan yang tidak sama dengan penyaringan",
 	"abusefilter-test-syntaxerr": "Penyaringan yang Anda masukkan mengandung kesalahan sintaks.\nAnda dapat menerima penjelasan lengkap dengan menekan tombol \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "Judul halaman yang dimasukkan tidak sah. Ini mungkin juga mengandung satu atau lebih karakter yang tidak dapat digunakan dalam judul.",
 	"abusefilter-test-action": "Jenis tindakan",
 	"abusefilter-test-search-type-all": "Semua tindakan",
 	"abusefilter-test-search-type-edit": "Suntingan",

@@ -388,7 +388,6 @@
 	"abusefilter-test-page": "Perubahan pada laman:",
 	"abusefilter-test-shownegative": "Tunjukkan perubahan yang tidak sepadan dengan penapis",
 	"abusefilter-test-syntaxerr": "Penapis yang anda isikan itu ada ralat sintaks.\nAnda boleh menerima penjelasan penuh dengan mengklik butang \"{{int:abusefilter-edit-check}}\".",
-	"abusefilter-test-badtitle": "Tajuk halaman yang anda isikan itu tidak sah. Ia mungkin mengandungi aksara yang tidak boleh digunakan dalam tajuk.",
 	"abusefilter-test-search-type-all": "Semua tindakan",
 	"abusefilter-test-search-type-edit": "Suntingan",
 	"abusefilter-test-search-type-upload": "Muat naik",

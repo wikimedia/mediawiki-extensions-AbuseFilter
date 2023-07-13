@@ -476,7 +476,6 @@
 	"abusefilter-test-page": "Az oldal változtatásai:",
 	"abusefilter-test-shownegative": "A szűrőn fenn nem akadt változtatások megmutatása",
 	"abusefilter-test-syntaxerr": "A beírt szűrőd szintaktikai hibát tartalmaz.\nA hiba részletes leírásához kattints az „{{int:abusefilter-edit-check}}” gombra.",
-	"abusefilter-test-badtitle": "A megadott cím érvénytelen. Egy vagy több olyan karaktert tartalmaz, amely nem lehet címben.",
 	"abusefilter-test-action": "Művelet típusa:",
 	"abusefilter-test-search-type-all": "Minden művelet",
 	"abusefilter-test-search-type-edit": "Szerkesztések",

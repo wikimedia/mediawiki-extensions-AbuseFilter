@@ -503,7 +503,6 @@
 	"abusefilter-test-page": "Izmjene napravljene na stranici:",
 	"abusefilter-test-shownegative": "Prikaži izmjene koje ne odgovaraju filteru",
 	"abusefilter-test-syntaxerr": "Filter koji ste uneli sadrži sintaksne greške. Da biste dobili detaljno objašnjenje kliknite na dugme „Proveri sintaksu“.",
-	"abusefilter-test-badtitle": "Unesen je naslov stranice nevažeći. Može sadržavati jedan ili više znakova što nisu dopušteni u naslovima.",
 	"abusefilter-test-action": "Vrsta radnje:",
 	"abusefilter-test-search-type-all": "Sve radnje",
 	"abusefilter-test-search-type-edit": "Izmjene",

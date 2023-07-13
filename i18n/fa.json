@@ -547,7 +547,6 @@
 	"abusefilter-test-page": "تغییرات انجام شده در صفحه:",
 	"abusefilter-test-shownegative": "تغییراتی که با پالایه مطابقت ندارد را نشان بده",
 	"abusefilter-test-syntaxerr": "پالایه‌ای که وارد کردید دارای یک خطای نحوی است.\nشما می‌توانید توضیح کاملی را با کلیک کردن روی دکمه «{{int:abusefilter-edit-check}}» ببینید.",
-	"abusefilter-test-badtitle": "عنوان صفحه‌ای که وارد کردید، نامعتبر بود. ممکن است شامل یک یا چند نویسه باشد که نمی‌تواند در عنوان‌ها استفاده شود.",
 	"abusefilter-test-action": "اقدام صورت‌گرفته:",
 	"abusefilter-test-search-type-all": "تمام کنش‌ها",
 	"abusefilter-test-search-type-edit": "ویرایش‌ها",

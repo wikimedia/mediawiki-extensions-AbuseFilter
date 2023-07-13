@@ -525,7 +525,6 @@
 	"abusefilter-test-page": "Các thay đổi tại trang:",
 	"abusefilter-test-shownegative": "Hiển thị thay đổi không trùng với bộ lọc",
 	"abusefilter-test-syntaxerr": "Bộ lọc được nhập vào có lỗi cú pháp. Hãy bấm nút “{{int:abusefilter-edit-check}}” để đọc chi tiết đầy đủ.",
-	"abusefilter-test-badtitle": "Bạn đã nhập một tên trang không hợp lệ. Nó có thể có những ký tự không thể dùng trong tên trang.",
 	"abusefilter-test-action": "Loại hành động:",
 	"abusefilter-test-search-type-all": "Tất cả hành động",
 	"abusefilter-test-search-type-edit": "Sửa đổi",
