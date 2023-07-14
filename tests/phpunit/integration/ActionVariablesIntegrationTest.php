@@ -154,9 +154,9 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'added_lines' => [ $new ],
 				'removed_lines' => [],
 				'added_lines_pst' => [ $new ],
-				'all_links' => [ 'https://a.com' ],
+				'all_links' => [ 'https://a.com/' ],
 				'old_links' => [],
-				'added_links' => [ 'https://a.com' ],
+				'added_links' => [ 'https://a.com/' ],
 				'removed_links' => [],
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary, 'createonly' => true ],
@@ -184,10 +184,10 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'added_lines' => explode( "\n", $new ),
 				'removed_lines' => [ $old ],
 				'added_lines_pst' => [ "'''Random'''.", "Some ''special'' chars: àèìòù 名探偵コナン.", '[[Help:PST|PST]] test, [//www.b.com link]' ],
-				'old_links' => [ 'https://a.com' ],
-				'all_links' => [ '//www.b.com' ],
-				'removed_links' => [ 'https://a.com' ],
-				'added_links' => [ '//www.b.com' ],
+				'old_links' => [ 'https://a.com/' ],
+				'all_links' => [ 'https://www.b.com/' ],
+				'removed_links' => [ 'https://a.com/' ],
+				'added_links' => [ 'https://www.b.com/' ],
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary ],
 			'oldContent' => new WikitextContent( $old ),
@@ -215,10 +215,10 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'added_lines' => [ $new ],
 				'removed_lines' => explode( "\n", $old ),
 				'added_lines_pst' => [ $new ],
-				'old_links' => [ '//www.b.com' ],
-				'all_links' => [ 'https://a.com' ],
-				'removed_links' => [ '//www.b.com' ],
-				'added_links' => [ 'https://a.com' ],
+				'old_links' => [ 'https://www.b.com/' ],
+				'all_links' => [ 'https://a.com/' ],
+				'removed_links' => [ 'https://www.b.com/' ],
+				'added_links' => [ 'https://a.com/' ],
 			],
 			'params' => [ 'text' => $new, 'summary' => $summary ],
 			'oldContent' => new WikitextContent( $old ),
@@ -264,7 +264,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'new_wikitext' => 'new test https://en.wikipedia.org',
 				'new_content_model' => 'wikitext',
 				'old_links' => [],
-				'all_links' => [ 'https://en.wikipedia.org' ],
+				'all_links' => [ 'https://en.wikipedia.org/' ],
 			],
 			'params' => [
 				'text' => 'new test https://en.wikipedia.org',
@@ -280,7 +280,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'old_content_model' => 'wikitext',
 				'new_wikitext' => '{"key": "value"}',
 				'new_content_model' => 'json',
-				'old_links' => [ 'https://en.wikipedia.org' ],
+				'old_links' => [ 'https://en.wikipedia.org/' ],
 				'all_links' => [],
 			],
 			'params' => [
@@ -301,7 +301,6 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 	public function testEditVariables(
 		array $expected, array $params, Content $oldContent = null
 	) {
-		$this->markTestSkipped( 'Temp' );
 		$varHolder = null;
 		$this->prepareServices();
 		$this->setAbuseLoggerFactoryWithEavesdrop( $varHolder );

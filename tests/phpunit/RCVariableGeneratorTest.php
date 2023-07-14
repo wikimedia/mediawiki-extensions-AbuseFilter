@@ -205,7 +205,6 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
 	 */
 	public function testAddEditVarsForRow() {
-		$this->markTestSkipped( 'Temp' );
 		$timestamp = 1514700000;
 		MWTimestamp::setFakeTime( $timestamp );
 
@@ -248,11 +247,11 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			'old_wikitext' => $oldText,
 			'old_size' => strlen( $oldText ),
 			'old_content_model' => 'wikitext',
-			'old_links' => [ $oldLink ],
+			'old_links' => [ "https://wikipedia.org/" ],
 			'new_wikitext' => $newText,
 			'new_size' => strlen( $newText ),
 			'new_content_model' => 'wikitext',
-			'all_links' => [ $newLink ],
+			'all_links' => [ "https://en.wikipedia.org/" ],
 			'timestamp' => (string)$timestamp,
 		];
 		foreach ( $expected as $var => $value ) {
