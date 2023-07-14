@@ -432,7 +432,7 @@
 	"abusefilter-log-details-id": "লগ আইডি",
 	"blockedexternaldomains": "অবরুদ্ধ বহিঃস্থ ডোমেইন",
 	"abusefilter-blocked-domains-title": "অবরুদ্ধ বহিঃস্থ ডোমেইন",
-	"abusefilter-blocked-domains-intro": "এই তালিকার সাথে মিলে যাওয়া বহিঃসংযোগগুলিকে কোনও পাতায় যোগ করা থেকে অবরুদ্ধ করা হবে। এই ডোমেইনগুলি [[MediaWiki:BlockedExternalDomains.json]]-এ সংরক্ষিত আছে।",
+	"abusefilter-blocked-domains-intro": "এই তালিকার সাথে মিলে যাওয়া বহিঃসংযোগগুলিকে যেকোনও পাতায় যোগ করা থেকে অবরুদ্ধ করা হবে। এই ডোমেইনগুলি [[MediaWiki:BlockedExternalDomains.json]]-এ সংরক্ষিত আছে।",
 	"abusefilter-blocked-domains-add-heading": "অবরুদ্ধ করার জন্য একটি নতুন ডোমেইন যোগ করুন",
 	"abusefilter-blocked-domains-add-explanation": "এখানে আপনি অবরুদ্ধ করা ডোমেইনের তালিকায় একটি ডোমেইন যোগ করতে পারেন।",
 	"abusefilter-blocked-domains-domain": "অবরুদ্ধ করার জন্য ডোমেইন, যেমন wikipedia.org",
