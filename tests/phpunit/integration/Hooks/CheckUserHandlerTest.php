@@ -6,13 +6,18 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\CheckUserHandler;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserNameUtils;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\CheckUserHandler
  * @covers ::__construct
  */
-class CheckUserHandlerTest extends MediaWikiUnitTestCase {
+class CheckUserHandlerTest extends MediaWikiIntegrationTestCase {
+
+	protected function setUp(): void {
+		parent::setUp();
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+	}
 
 	private function getCheckUserHandler(): CheckUserHandler {
 		$filterUser = $this->createMock( FilterUser::class );
