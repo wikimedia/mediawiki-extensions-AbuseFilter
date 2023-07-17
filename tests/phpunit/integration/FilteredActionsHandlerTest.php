@@ -22,6 +22,7 @@ use Status;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
+ * @group Database
  */
 class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 

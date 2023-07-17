@@ -18,7 +18,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'abuselog',
-		], null, null, self::getTestUser()->getUser() );
+		] );
 		$this->addToAssertionCount( 1 );
 	}
 

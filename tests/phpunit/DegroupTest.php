@@ -10,9 +10,10 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
 
 /**
+ * @group Database
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup
  * @covers ::__construct
- * @todo Make this a unit test once ManualLogEntry is servicified (T253717)
+ * @todo Make this a unit test once ManualLogEntry is servicified (T253717) and DI is possible for User::newSystemUser
  */
 class DegroupTest extends MediaWikiIntegrationTestCase {
 	use ConsequenceGetMessageTestTrait;
@@ -188,7 +189,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$this->getMsgLocalizer()
 		);
 
-		$performer = $this->getTestUser()->getUser();
+		$performer = new UserIdentityValue( 42, 'Foo' );
 		$this->assertSame(
 			$success,
 			$degroup->revert( $performer, 'reason' )
