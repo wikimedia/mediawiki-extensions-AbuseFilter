@@ -9,32 +9,12 @@
 			"Shirayuki"
 		]
 	},
-	"abusefilter-log-search-filter-help": "Separate with pipes, prefix with '$1' for global filters",
-	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|triggered}} an abuse filter, {{GENDER:$8|performing}} the action '$3' on $4.\nActions taken: $5;\nFilter description: $6",
-	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|triggered}} an abuse filter, {{GENDER:$8|performing}} the action '$3' on $4.\nActions taken: $5;\nFilter description: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|triggered}} $3, {{GENDER:$9|performing}} the action '$4' on $5.\nActions taken: $6;\nFilter description: $7 ($8)",
-	"logentry-abusefilter-hit": "$1 {{GENDER:$2|triggered}} $4, {{GENDER:$2|performing}} the action '$5' on $3. Actions taken: $6 ($7)",
-	"abusefilter-edit-warn-other-label": "Page name of other message:\n:''(without 'MediaWiki:' prefix)''",
-	"abusefilter-edit-disallow-other-label": "Page name of other message:\n:''(without 'MediaWiki:' prefix)''",
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalise confusable characters (ccnorm)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalise and search a string for multiple substrings in OR mode (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-norm": "Normalise (norm)",
 	"abusefilter-edit-builder-funcs-sanitize": "Normalise HTML entities into unicode characters (sanitise)",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per colour channel of the file",
-	"abusefilter-exception-unexpectedatend": "Unexpected '$2' at character $1.",
 	"abusefilter-exception-unrecognisedkeyword": "Unrecognised keyword $2 at character $1.",
-	"abusefilter-exception-unexpectedtoken": "Unexpected token '$3' (of type $2) at character $1.",
-	"abusefilter-exception-invalidoperator": "Invalid operator '$2' at character $1.",
 	"abusefilter-exception-unrecognisedtoken": "Unrecognised token \"$2\" at character $1.",
-	"abusefilter-exception-noparams": "No parameters given to function '$2' at character $1.\nExpected $3 {{PLURAL:$3|argument|arguments}}.",
-	"abusefilter-exception-unrecognisedvar": "Unrecognised variable $2 at character $1",
-	"abusefilter-exception-regexfailure": "Error in regular expression '$2' at character $1.",
-	"abusefilter-exception-overridebuiltin": "Illegal overriding of built-in identifier '$2' at character $1.",
-	"abusefilter-exception-usebuiltin": "Illegal use of built-in identifier '$2' at character $1.",
-	"abusefilter-exception-negativeindex": "Negative indexes are not allowed in arrays. Got index '$2' at character $1.",
-	"abusefilter-exception-invalidiprange": "Invalid IP range '$2' provided at character $1.",
-	"abusefilter-revert-preview-intro": "Below are the actions taken by the abuse filter that will be reverted by this action.\nPlease check them carefully, and click '{{int:abusefilter-revert-confirm}}' to confirm your selection.",
-	"abusefilter-test-intro": "This page allows you to check a filter entered in the box below against the last $1 {{PLURAL:$1|change|changes}}.\nTo load an existing filter, type its filter ID into the box below the edit textbox, and click the '{{int:abusefilter-test-load}}' button.",
-	"abusefilter-test-syntaxerr": "The filter you entered contained a syntax error.\nYou can receive a full explanation by clicking the '{{int:abusefilter-edit-check}}' button.",
-	"abusefilter-import-intro": "You can use this interface to import filters from other wikis.\nOn the source wiki, click '{{int:abusefilter-edit-export}}' under '{{int:abusefilter-edit-tools}}' on the editing interface.\nCopy from the textbox that appears, and paste it into this textbox, then click '{{int:abusefilter-import-submit}}'."
+	"abusefilter-exception-unrecognisedvar": "Unrecognised variable $2 at character $1"
 }
