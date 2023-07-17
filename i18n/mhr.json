@@ -3,14 +3,19 @@
 		"authors": [
 			"Сай",
 			"Санюн Вадик",
-			"Kareyac"
+			"Kareyac",
+			"Lifeway"
 		]
 	},
-	"abusefilter-log-search-user": "Пайдаланыше:",
-	"abusefilter-tools-reautoconfirm-user": "Пайдаланыше:",
+	"abusefilter-log-search-user": "Ушнышо:",
+	"abusefilter-log-search-impact-saved": "Аралыме вашталтыш гына",
+	"abusefilter-log-search-impact-not-saved": "Аралыдыме вашталтыш гына",
+	"abusefilter-tools-reautoconfirm-user": "Ушнышо:",
+	"abusefilter-edit-token-not-match": "Тыйын тӧрлымашетым аралыме огыл! Эше ик гана тӧчен ончо.",
 	"abusefilter-edit-status-label": "Иктешлымаш:",
+	"abusefilter-edit-save": "Фльтрым аралаш",
 	"abusefilter-edit-history": "Историй:",
-	"abusefilter-history-user": "Пайдаланыше",
+	"abusefilter-history-user": "Ушнышо",
 	"abusefilter-revert-filter": "Фильтр:",
 	"abusefilter-examine-user": "Пайдаланыше:"
 }
