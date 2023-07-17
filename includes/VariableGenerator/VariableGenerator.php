@@ -172,20 +172,7 @@ class VariableGenerator {
 		return $this;
 	}
 
-	/**
-	 * @param WikiPage $page
-	 * @param UserIdentity $userIdentity The current user
-	 * @param bool $forFilter Whether the variables should be computed for an ongoing action
-	 *   being filtered
-	 * @param PreparedUpdate|null $update
-	 * @return $this For chaining
-	 */
-	public function addEditVars(
-		WikiPage $page,
-		UserIdentity $userIdentity,
-		bool $forFilter = true,
-		PreparedUpdate $update = null
-	): self {
+	public function addDerivedEditVars(): self {
 		$this->vars->setLazyLoadVar( 'edit_diff', 'diff',
 			[ 'oldtext-var' => 'old_wikitext', 'newtext-var' => 'new_wikitext' ] );
 		$this->vars->setLazyLoadVar( 'edit_diff_pst', 'diff',
@@ -208,8 +195,29 @@ class VariableGenerator {
 			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
 		$this->vars->setLazyLoadVar( 'removed_links', 'link-diff-removed',
 			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
+
+		// Text
 		$this->vars->setLazyLoadVar( 'new_text', 'strip-html',
 			[ 'html-var' => 'new_html' ] );
+
+		return $this;
+	}
+
+	/**
+	 * @param WikiPage $page
+	 * @param UserIdentity $userIdentity The current user
+	 * @param bool $forFilter Whether the variables should be computed for an ongoing action
+	 *   being filtered
+	 * @param PreparedUpdate|null $update
+	 * @return $this For chaining
+	 */
+	public function addEditVars(
+		WikiPage $page,
+		UserIdentity $userIdentity,
+		bool $forFilter = true,
+		PreparedUpdate $update = null
+	): self {
+		$this->addDerivedEditVars();
 
 		if ( $forFilter && $update ) {
 			$this->vars->setLazyLoadVar( 'all_links', 'links-from-update',
