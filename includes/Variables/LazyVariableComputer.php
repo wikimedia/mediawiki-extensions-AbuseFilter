@@ -305,6 +305,14 @@ class LazyVariableComputer {
 					$result = '';
 				}
 				break;
+			case 'html-from-update':
+				/** @var PreparedUpdate $update */
+				$update = $parameters['update'];
+				// Shared with the edit, don't count it in profiling
+				$startTime = microtime( true );
+				$result = $update->getCanonicalParserOutput()->getText();
+				self::$profilingExtraTime += ( microtime( true ) - $startTime );
+				break;
 			case 'strip-html':
 				$htmlVar = $parameters['html-var'];
 				$html = $getVarCB( $htmlVar )->toString();

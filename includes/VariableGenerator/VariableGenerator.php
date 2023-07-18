@@ -252,12 +252,18 @@ class VariableGenerator {
 				'pst' => true,
 				'contextUserIdentity' => $userIdentity
 			] );
-		$this->vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
-			[
-				'wikitext-var' => 'new_wikitext',
-				'article' => $page,
-				'contextUserIdentity' => $userIdentity
-			] );
+
+		if ( $forFilter && $update ) {
+			$this->vars->setLazyLoadVar( 'new_html', 'html-from-update',
+				[ 'update' => $update ] );
+		} else {
+			$this->vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
+				[
+					'wikitext-var' => 'new_wikitext',
+					'article' => $page,
+					'contextUserIdentity' => $userIdentity
+				] );
+		}
 
 		return $this;
 	}
