@@ -85,6 +85,7 @@
 	"abusefilter-log-hide-selected": "Linenn{{PLURAL:$1||où}} ar sil a-enep ar gwallimplij diluzet:",
 	"abusefilter-log-hide-legend": "Cheñch gweluster",
 	"abusefilter-log-hide-reason": "Abeg :",
+	"abusefilter-log-hide-reason-other": "Abeg all/ouzhpenn:",
 	"abusefilter-log-hide-forbidden": "N'hoc'h eus ket ar gwir da guzhat enmontoù e deizlevr ar gwallimplij.",
 	"abusefilter-log-hide-show": "Diskouez",
 	"abusefilter-log-hide-hide": "Kuzhat",
