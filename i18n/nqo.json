@@ -282,6 +282,10 @@
 	"abusefilter-test-submit": "ߞߘߐߓߐߟߌ",
 	"abusefilter-test-load": "ߟߊߢߎ߲߫",
 	"abusefilter-test-user": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߟߊ߬ߓߊ߰ߙߊ߬ߟߊ ߓߟߏ߫:",
+	"abusefilter-test-nobots": "ߡߐ߰ߡߐ߮ ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲߬ߣߐ ߟߎ߬ ߢߡߊߘߏ߲߬",
+	"abusefilter-test-period-start": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߍ߲ ߠߎ߬ ߞߍߣߍ߲߫ ߏ߬ ߞߐ߫:",
+	"abusefilter-test-period-end": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߍ߲ ߠߎ߬ ߞߍߣߴߏ߬ ߢߍ߫:",
+	"abusefilter-test-page": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߡߍ߲ ߠߎ߬ ߞߍߣߍ߲߫ ߦߋ߫ ߞߐߜߍ ߘߐ߫:",
 	"abusefilter-test-action": "ߞߍߟߌ ߛߎ߯ߦߊ:",
 	"abusefilter-test-search-type-all": "ߞߍߟߌ ߟߎ߬ ߓߍ߯",
 	"abusefilter-test-search-type-edit": "ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ ߠߎ߬",
@@ -335,5 +339,6 @@
 	"abusefilter-blocked-domains-remove-reason": "ߊ߬ ߞߎ߲߭",
 	"abusefilter-blocked-domains-remove-submit": "ߊ߬ ߛߋ߲߬ߓߐ߫",
 	"abusefilter-blocked-domains-attempted": "ߌ ߦߋ߫ ߛߓߍߟߌ ߡߍ߲ ߠߊߥߊ߲߬ߞߊ߬ߞߏ ߘߐ߫ ߣߌ߲߬، ߏ߬ ߓߟߏߕߍ߰ߣߍ߲߬ ߦߴߊ߲ ߠߊ߫ ߛߍ߲ߛߍ߲ߟߊ߲ ߓߟߏ߫ ߟߋ߬. ߘߊߞߎ߲ ߢߌ߲߬ ߠߎ߬ ߓߟߏߕߍ߰ߣߍ߲߬ ߦߋ߫ ߟߋ߬߸ ߓߊߏ߬ ߊ߬ߟߎ߬ ߓߘߊ߫: $1 ߝߊ߬ߙߊ߫",
+	"abusefilter-log-ip-not-available": "ߏ߬ ߕߴߦߋ߲߬",
 	"notification-link-text-show-filter": "ߛߍ߲ߛߍ߲ߟߊ߲ ߦߌ߬ߘߊ߬"
 }
