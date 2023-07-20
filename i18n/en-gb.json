@@ -5,11 +5,14 @@
 			"Caliburn",
 			"Chase me ladies, I'm the Cavalry",
 			"Shirayuki",
-			"Piano1forte2"
+			"Piano1forte2",
+			"Reedy"
 		]
 	},
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalise confusable characters (ccnorm)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalise and search a string for multiple substrings in OR mode (ccnorm_contains_any)",
 	"abusefilter-edit-builder-funcs-norm": "Normalise (norm)",
+	"abusefilter-edit-builder-funcs-sanitize": "Normalise HTML entities into unicode characters (sanitise)",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per colour channel of the file",
 	"abusefilter-exception-unrecognisedkeyword": "Unrecognised keyword $2 at character $1.",
 	"abusefilter-exception-unrecognisedtoken": "Unrecognised token \"$2\" at character $1.",

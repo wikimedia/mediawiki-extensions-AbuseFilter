@@ -227,7 +227,7 @@
 	"abusefilter-edit-rules": "תנאים:",
 	"abusefilter-edit-field-conditions": "תנאים",
 	"abusefilter-edit-notes": "הערות:",
-	"abusefilter-edit-lastmod": "המסנן שונה לאחרונה ב:",
+	"abusefilter-edit-lastmod": "המסנן שונה לאחרונה ב־:",
 	"abusefilter-edit-lastmod-text": "$1 על־ידי $2",
 	"abusefilter-edit-hitcount": "פעולות שסוננו:",
 	"abusefilter-edit-consequences": "אילו פעולות לבצע בעת ההתאמה",
