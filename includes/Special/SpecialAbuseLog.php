@@ -820,8 +820,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$output .= $htmlForm->getHTML( false );
 		}
 
-		// TODO Clarify whether TextSlotDiffRenderer::getTextDiff can return unsafe stuff
-		// @phan-suppress-next-line SecurityCheck-XSS
 		$out->addHTML( Xml::tags( 'fieldset', null, $output ) );
 	}
 
