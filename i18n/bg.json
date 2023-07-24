@@ -303,6 +303,7 @@
 	"abusefilter-edit-builder-misc-stringlit": "Низов литерал (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Третичен оператор (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Условен оператор (if X then Y else Z end)",
+	"abusefilter-edit-builder-misc-cond-short": "Кратко условие (if X then Y end)",
 	"abusefilter-edit-builder-group-funcs": "Функции",
 	"abusefilter-edit-builder-funcs-length": "Дължина на низ (length)",
 	"abusefilter-edit-builder-funcs-lcase": "Замяна на всички главни букви с малки (lcase)",
