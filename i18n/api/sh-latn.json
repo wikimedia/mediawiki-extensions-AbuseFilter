@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Winston Sung"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-summary": "Provjerite nalazi li filter za zlouporabu određeni skup varijabli, uređivanje ili zapisan događaj u filteru.",

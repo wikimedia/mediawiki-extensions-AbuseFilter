@@ -1,11 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog",
-			"Daimona Eaytoy",
-			"Kolega2357",
-			"OC Ripper",
-			"Vlad5250"
+			"Winston Sung"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje u izmenama",

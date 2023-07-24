@@ -602,7 +602,7 @@
 	"abusefilter-blocked-domains-remove-submit": "הסרה",
 	"abusefilter-blocked-domains-attempted": "הטקסט שרצית לפרסם נחסם על־ידי המסנן שלנו. התחום הבא חסום מפני הוספה: $1",
 	"abusefilter-blocked-domains-json-error": "JSON צריך להיות מערך",
-	"abusefilter-blocked-domains-invalid-entry": "הערך $1 ב־JSON אינו תקין - זה צריך להיות עצם עם שדות \"domain\" ו־\"notes\" בלבד, שניהם מחרוזות",
+	"abusefilter-blocked-domains-invalid-entry": "הערך $1 ב־JSON אינו תקין – זה צריך להיות עצם עם שדות \"domain\" ו־\"notes\" בלבד, שניהם מחרוזות",
 	"abusefilter-blocked-domains-domain-added-comment": "הוספת תחום חיצוני חסום $1 עם הערות: $2",
 	"abusefilter-blocked-domains-domain-removed-comment": "הסרת תחום חיצוני חסום $1 עם הערות: $2",
 	"log-description-abusefilterprivatedetails": "היומן הזה מציגה רשימה של הפעמים שבהן משתמש ניגש לנתונים פרטיים של יומן ההשחתות.",
