@@ -122,6 +122,7 @@
 	"abusefilter-log-hide-forbidden": "Dəyişiklik süzgəci jurnalındakı qeydləri gizlətmək hüququnuz yoxdur.",
 	"abusefilter-log-hide-show": "Göstər",
 	"abusefilter-log-hide-hide": "Gizlət",
+	"abusefilter-log-hide-no-change": "Seçilmiş identifikatorların hamısı artıq arzu olunan görünürlüyə malikdir.",
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$4|$3}} istifadəçisinin avtomatik hüquq almağını $5 müddətinə {{GENDER:$2|blokladı}}",
 	"abusefilter-list": "Bütün süzgəclər",
 	"abusefilter-list-id": "Süzgəc nömrəsi",
