@@ -214,7 +214,7 @@ return [
 			RequestContext::getMain(),
 			$services->getUserEditTracker(),
 			$services->getUserFactory(),
-			$services->getUserNameUtils()
+			$services->getUserIdentityUtils()
 		);
 	},
 	EditBoxBuilderFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): EditBoxBuilderFactory {
@@ -276,7 +276,7 @@ return [
 			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
-			$services->getUserNameUtils(),
+			$services->getUserIdentityUtils(),
 			new ServiceOptions(
 				ConsequencesExecutor::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()

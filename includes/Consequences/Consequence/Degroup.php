@@ -11,7 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use MessageLocalizer;
 use TitleValue;
 
@@ -28,8 +28,8 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 	/** @var UserGroupManager */
 	private $userGroupManager;
 
-	/** @var UserNameUtils */
-	private $userNameUtils;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 
 	/** @var FilterUser */
 	private $filterUser;
@@ -41,7 +41,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 	 * @param Parameters $params
 	 * @param VariableHolder $vars
 	 * @param UserGroupManager $userGroupManager
-	 * @param UserNameUtils $userNameUtils
+	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param FilterUser $filterUser
 	 * @param MessageLocalizer $messageLocalizer
 	 */
@@ -49,14 +49,14 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 		Parameters $params,
 		VariableHolder $vars,
 		UserGroupManager $userGroupManager,
-		UserNameUtils $userNameUtils,
+		UserIdentityUtils $userIdentityUtils,
 		FilterUser $filterUser,
 		MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct( $params );
 		$this->vars = $vars;
 		$this->userGroupManager = $userGroupManager;
-		$this->userNameUtils = $userNameUtils;
+		$this->userIdentityUtils = $userIdentityUtils;
 		$this->filterUser = $filterUser;
 		$this->messageLocalizer = $messageLocalizer;
 	}
@@ -67,10 +67,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 	public function execute(): bool {
 		$user = $this->parameters->getUser();
 
-		if (
-			!$user->isRegistered() ||
-			$this->userNameUtils->isTemp( $user->getName() )
-		) {
+		if ( !$this->userIdentityUtils->isNamed( $user ) ) {
 			return false;
 		}
 
