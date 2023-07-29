@@ -21,7 +21,7 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use Parser;
+use ParserFactory;
 use Psr\Log\NullLogger;
 use Title;
 use UnexpectedValueException;
@@ -49,7 +49,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 			$services['RevisionLookup'] ?? $this->createMock( RevisionLookup::class ),
 			$this->createMock( RevisionStore::class ),
 			$services['ContentLanguage'] ?? $this->createMock( Language::class ),
-			$this->createMock( Parser::class ),
+			$this->createMock( ParserFactory::class ),
 			$services['UserEditTracker'] ?? $this->createMock( UserEditTracker::class ),
 			$services['UserGroupManager'] ?? $this->createMock( UserGroupManager::class ),
 			$services['PermissionManager'] ?? $this->createMock( PermissionManager::class ),

@@ -332,7 +332,7 @@ return [
 			$services->getRevisionLookup(),
 			$services->getRevisionStore(),
 			$services->getContentLanguage(),
-			$services->getParser(),
+			$services->getParserFactory(),
 			$services->getUserEditTracker(),
 			$services->getUserGroupManager(),
 			$services->getPermissionManager(),

@@ -19,7 +19,7 @@ use MediaWiki\Storage\PreparedUpdate;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
-use Parser;
+use ParserFactory;
 use ParserOptions;
 use Psr\Log\LoggerInterface;
 use stdClass;
@@ -72,8 +72,8 @@ class LazyVariableComputer {
 	/** @var Language */
 	private $contentLanguage;
 
-	/** @var Parser */
-	private $parser;
+	/** @var ParserFactory */
+	private $parserFactory;
 
 	/** @var UserEditTracker */
 	private $userEditTracker;
@@ -99,7 +99,7 @@ class LazyVariableComputer {
 	 * @param RevisionLookup $revisionLookup
 	 * @param RevisionStore $revisionStore
 	 * @param Language $contentLanguage
-	 * @param Parser $parser
+	 * @param ParserFactory $parserFactory
 	 * @param UserEditTracker $userEditTracker
 	 * @param UserGroupManager $userGroupManager
 	 * @param PermissionManager $permissionManager
@@ -115,7 +115,7 @@ class LazyVariableComputer {
 		RevisionLookup $revisionLookup,
 		RevisionStore $revisionStore,
 		Language $contentLanguage,
-		Parser $parser,
+		ParserFactory $parserFactory,
 		UserEditTracker $userEditTracker,
 		UserGroupManager $userGroupManager,
 		PermissionManager $permissionManager,
@@ -130,7 +130,7 @@ class LazyVariableComputer {
 		$this->revisionLookup = $revisionLookup;
 		$this->revisionStore = $revisionStore;
 		$this->contentLanguage = $contentLanguage;
-		$this->parser = $parser;
+		$this->parserFactory = $parserFactory;
 		$this->userEditTracker = $userEditTracker;
 		$this->userGroupManager = $userGroupManager;
 		$this->permissionManager = $permissionManager;
@@ -533,7 +533,7 @@ class LazyVariableComputer {
 		if ( !isset( $cache[$cacheKey] ) ) {
 			$options = ParserOptions::newFromUser( $userIdentity );
 			$cache[$cacheKey] = (object)[
-				'output' => $this->parser->parse( $wikitext, $article->getTitle(), $options )
+				'output' => $this->parserFactory->getInstance()->parse( $wikitext, $article->getTitle(), $options )
 			];
 		}
 
