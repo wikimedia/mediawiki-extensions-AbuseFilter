@@ -8,6 +8,7 @@ use MediaWikiIntegrationTestCase;
 /**
  * @group Test
  * @group AbuseFilter
+ * @group Database
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator
  */
 class ChangeTagValidatorTest extends MediaWikiIntegrationTestCase {

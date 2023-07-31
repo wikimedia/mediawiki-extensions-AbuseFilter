@@ -83,18 +83,11 @@ class CheckSyntaxTest extends ApiTestCase {
 					'status' => 'ok',
 					'warnings' => [
 						[
-							'message' => wfMessage(
-								'abusefilter-parser-warning-exception-1',
-								3
-							)->text(),
+							'message' => '⧼abusefilter-parser-warning-exception-1⧽',
 							'character' => 3,
 						],
 						[
-							'message' => wfMessage(
-								'abusefilter-parser-warning-exception-2',
-								8,
-								'param'
-							)->text(),
+							'message' => '⧼abusefilter-parser-warning-exception-2⧽',
 							'character' => 8,
 						],
 					]
@@ -127,10 +120,7 @@ class CheckSyntaxTest extends ApiTestCase {
 			[
 				'abusefilterchecksyntax' => [
 					'status' => 'error',
-					'message' => wfMessage(
-						'abusefilter-exception-error-id',
-						4
-					)->text(),
+					'message' => '⧼abusefilter-exception-error-id⧽',
 					'character' => 4
 				]
 			],

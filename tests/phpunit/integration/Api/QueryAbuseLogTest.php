@@ -7,6 +7,7 @@ use ApiTestCase;
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\QueryAbuseLog
  * @group medium
+ * @group Database
  * @todo Extend this
  */
 class QueryAbuseLogTest extends ApiTestCase {

@@ -4,6 +4,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\SchemaChangesHandler;
 use MediaWiki\User\UserGroupManager;
 
 /**
+ * @group Database
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\SchemaChangesHandler
  * @todo Make this a unit test once User::newSystemUser is moved to a service
  */

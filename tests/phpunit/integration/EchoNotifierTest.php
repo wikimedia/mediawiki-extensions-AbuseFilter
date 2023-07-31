@@ -11,6 +11,7 @@ use MediaWikiIntegrationTestCase;
 use Title;
 
 /**
+ * @group Database
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EchoNotifier
  */
 class EchoNotifierTest extends MediaWikiIntegrationTestCase {
