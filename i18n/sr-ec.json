@@ -246,6 +246,7 @@
 	"abusefilter-edit-disallow-preview": "Прикажи/сакриј преглед изабране поруке",
 	"abusefilter-edit-disallow-edit": "Направи/уреди изабрану поруку",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Ознаке]] за примену:",
+	"abusefilter-edit-tag-placeholder": "Додај ознаке (једну по једну или одвојено зарезом)",
 	"abusefilter-edit-tag-hidden-placeholder": "Додајте ознаке (одвојене зарезом)",
 	"abusefilter-edit-block-anon-durations": "Дужина блокирања за анонимне кориснике:",
 	"abusefilter-edit-block-user-durations": "Трајање блокирања регистрованих корисника:",
