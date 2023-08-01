@@ -193,6 +193,7 @@
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|доступ к}} личные данные для $3",
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|заблокировал|заблокировала}} автопродвижение {{GENDER:$4|$3}} на срок $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|восстановил|восстановила}} возможность автопродвижения {{GENDER:$4|$3}}",
+	"logentry-abusefilterblockeddomainhit-hit": "$1 {{GENDER:$2|вызвал|вызвала}} срабатывание блокировки домена на странице $3 из-за попытки добавить $4",
 	"abusefilterprivatedetails-log-name": "Журнал доступа к конфиденциальным данным фильтр злоупотребления",
 	"abusefilter-list": "Все фильтры",
 	"abusefilter-list-id": "ID фильтра",

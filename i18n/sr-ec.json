@@ -131,6 +131,7 @@
 	"log-action-filter-abusefilter-modify": "уређивање филтера",
 	"log-action-filter-suppress-abuselog": "Сакривање дневника злоупотреба",
 	"log-action-filter-rights-blockautopromote": "Блокирање самоунапређивања",
+	"logentry-abusefilterprivatedetails-access": "$1 је {{GENDER:$2|приступио|приступила}} приватним детаљима за $3",
 	"log-name-abusefilterblockeddomainhit": "Дневник блокаде домена",
 	"abusefilter-list": "Сви филтери",
 	"abusefilter-list-id": "ID филтера",
