@@ -220,7 +220,7 @@ class FilterLookup implements IDBAccessObject {
 		if ( $global ) {
 			return $this->centralDBManager->getConnection( $dbIndex );
 		} else {
-			return $this->loadBalancer->getConnectionRef( $dbIndex );
+			return $this->loadBalancer->getConnection( $dbIndex );
 		}
 	}
 
@@ -261,7 +261,7 @@ class FilterLookup implements IDBAccessObject {
 	): HistoryFilter {
 		if ( $flags !== self::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
-			$dbr = $this->loadBalancer->getConnectionRef( $dbIndex );
+			$dbr = $this->loadBalancer->getConnection( $dbIndex );
 			$query = $this->getAbuseFilterHistoryQueryInfo();
 
 			$row = $dbr->selectRow(
@@ -288,7 +288,7 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	public function getLastHistoryVersion( int $filterID ): HistoryFilter {
 		if ( !isset( $this->lastVersionCache[$filterID] ) ) {
-			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 			$query = $this->getAbuseFilterHistoryQueryInfo();
 			$row = $dbr->selectRow(
 				$query['tables'],
@@ -319,7 +319,7 @@ class FilterLookup implements IDBAccessObject {
 		if ( !isset( $this->closestVersionsCache[$filterID][$historyID][$direction] ) ) {
 			$comparison = $direction === self::DIR_PREV ? '<' : '>';
 			$order = $direction === self::DIR_PREV ? 'DESC' : 'ASC';
-			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 			$query = $this->getAbuseFilterHistoryQueryInfo();
 			$row = $dbr->selectRow(
 				$query['tables'],
@@ -352,7 +352,7 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	public function getFirstFilterVersionID( int $filterID ): int {
 		if ( !isset( $this->firstVersionCache[$filterID] ) ) {
-			$dbr = $this->loadBalancer->getConnectionRef( DB_REPLICA );
+			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
 			$historyID = $dbr->selectField(
 				'abuse_filter_history',
 				'MIN(afh_id)',

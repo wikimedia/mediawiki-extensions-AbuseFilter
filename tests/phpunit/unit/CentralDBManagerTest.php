@@ -35,7 +35,7 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 	public function testGetConnection() {
 		$expected = $this->createMock( DBConnRef::class );
 		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnectionRef' )->willReturn( $expected );
+		$lb->method( 'getConnection' )->willReturn( $expected );
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getMainLB' )->willReturn( $lb );
 		$dbManager = new CentralDBManager( $lbFactory, 'foo', true );

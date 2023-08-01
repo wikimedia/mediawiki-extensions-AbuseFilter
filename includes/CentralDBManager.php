@@ -41,7 +41,7 @@ class CentralDBManager {
 
 		return $this->loadBalancerFactory
 			->getMainLB( $this->dbName )
-			->getConnectionRef( $index, [], $this->dbName );
+			->getConnection( $index, [], $this->dbName );
 	}
 
 	/**
