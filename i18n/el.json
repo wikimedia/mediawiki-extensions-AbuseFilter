@@ -314,7 +314,7 @@
 	"abusefilter-edit-builder-vars-removedlines": "Γραμμές που αφαιρέθηκαν κατά την επεξεργασία",
 	"abusefilter-edit-builder-vars-summary": "Περίληψη επεξεργασίας/αιτιολογία",
 	"abusefilter-edit-builder-vars-page-id": "Ταυτότητα σελίδας",
-	"abusefilter-edit-builder-vars-page-ns": "Περιοχή ονομάτων της σελίδας",
+	"abusefilter-edit-builder-vars-page-ns": "Ονοματοχώρος σελίδας",
 	"abusefilter-edit-builder-vars-page-title": "Όνομα σελίδας (χωρίς περιοχή ονόματος)",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "Πλἠρης τίτλος σελίδας",
 	"abusefilter-edit-builder-vars-page-age": "Ηλικία σελίδας (σε δευτερόλεπτα)",
