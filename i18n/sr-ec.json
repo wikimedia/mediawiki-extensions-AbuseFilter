@@ -531,5 +531,6 @@
 	"abusefilter-blocked-domains-remove-submit": "Уклони",
 	"abusefilter-log-ip-not-available": "Недоступно",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
+	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]]).",
 	"notification-link-text-show-filter": "Прикажи филтер"
 }
