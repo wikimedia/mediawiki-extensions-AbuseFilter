@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use Content;
+use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
@@ -30,7 +31,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideOnEditFilterMergedContent
 	 * @covers ::onEditFilterMergedContent
-	 * @covers ::blockedDomainFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\BlockedDomainFilter
 	 */
 	public function testOnEditFilterMergedContent( $urlsAdded, $expected ) {
 		$this->setMwGlobals( 'wgAbuseFilterEnableBlockedExternalDomain', true );
@@ -107,6 +108,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 		$blockedDomainStorage = $this->createMock( BlockedDomainStorage::class );
 		$blockedDomainStorage->method( 'loadComputed' )
 			->willReturn( $this->blockedDomains );
+		$blockedDomainFilter = new BlockedDomainFilter( $variablesManager, $blockedDomainStorage );
 
 		$permissionManager = $this->createMock( PermissionManager::class );
 		$permissionManager->method( 'userHasRight' )
@@ -117,8 +119,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 			$filterRunnerFactory,
 			$variableGeneratorFactory,
 			$editRevUpdater,
-			$variablesManager,
-			$blockedDomainStorage,
+			$blockedDomainFilter,
 			$permissionManager
 		);
 	}

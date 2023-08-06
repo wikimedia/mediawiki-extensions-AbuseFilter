@@ -383,8 +383,7 @@
 				"AbuseFilterFilterRunnerFactory",
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterEditRevUpdater",
-				"AbuseFilterVariablesManager",
-				"AbuseFilterBlockedDomainStorage",
+				"AbuseFilterBlockedDomainFilter",
 				"PermissionManager"
 			]
 		},

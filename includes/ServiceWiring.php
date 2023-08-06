@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -385,6 +386,14 @@ return [
 			$services->getUserFactory(),
 			$services->getWikiPageFactory(),
 			$services->getUrlUtils()
+		);
+	},
+	BlockedDomainFilter::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): BlockedDomainFilter {
+		return new BlockedDomainFilter(
+			$services->get( VariablesManager::SERVICE_NAME ),
+			$services->get( BlockedDomainStorage::SERVICE_NAME )
 		);
 	},
 	// b/c for extensions

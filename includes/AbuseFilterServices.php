@@ -319,4 +319,12 @@ class AbuseFilterServices {
 	public static function getBlockedDomainStorage( ContainerInterface $services = null ): BlockedDomainStorage {
 		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainStorage::SERVICE_NAME );
 	}
+
+	/**
+	 * @param ContainerInterface|null $services
+	 * @return BlockedDomainFilter
+	 */
+	public static function getBlockedDomainFilter( ContainerInterface $services = null ): BlockedDomainFilter {
+		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainFilter::SERVICE_NAME );
+	}
 }

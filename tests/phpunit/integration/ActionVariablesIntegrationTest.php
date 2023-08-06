@@ -317,8 +317,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			AbuseFilterServices::getFilterRunnerFactory(),
 			AbuseFilterServices::getVariableGeneratorFactory(),
 			AbuseFilterServices::getEditRevUpdater(),
-			AbuseFilterServices::getVariablesManager(),
-			AbuseFilterServices::getBlockedDomainStorage(),
+			AbuseFilterServices::getBlockedDomainFilter(),
 			MediaWikiServices::getInstance()->getPermissionManager()
 		);
 		$this->setTemporaryHook(
