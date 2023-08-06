@@ -16,7 +16,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
@@ -88,7 +88,7 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 			$consRegistry,
 			$this->createMock( FilterLookup::class ),
 			new NullLogger,
-			$this->createMock( UserNameUtils::class ),
+			$this->createMock( UserIdentityUtils::class ),
 			$options,
 			new ActionSpecifier(
 				'edit',

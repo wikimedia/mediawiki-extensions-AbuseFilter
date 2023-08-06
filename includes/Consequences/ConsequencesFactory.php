@@ -24,7 +24,7 @@ use MediaWiki\Session\SessionManager;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use MessageLocalizer;
 use Psr\Log\LoggerInterface;
 
@@ -74,8 +74,8 @@ class ConsequencesFactory {
 	/** @var UserFactory */
 	private $userFactory;
 
-	/** @var UserNameUtils */
-	private $userNameUtils;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 
 	/** @var ?Session */
 	private $session;
@@ -95,7 +95,7 @@ class ConsequencesFactory {
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param UserEditTracker $userEditTracker
 	 * @param UserFactory $userFactory
-	 * @param UserNameUtils $userNameUtils
+	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
 		ServiceOptions $options,
@@ -110,7 +110,7 @@ class ConsequencesFactory {
 		MessageLocalizer $messageLocalizer,
 		UserEditTracker $userEditTracker,
 		UserFactory $userFactory,
-		UserNameUtils $userNameUtils
+		UserIdentityUtils $userIdentityUtils
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
@@ -125,7 +125,7 @@ class ConsequencesFactory {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->userEditTracker = $userEditTracker;
 		$this->userFactory = $userFactory;
-		$this->userNameUtils = $userNameUtils;
+		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	// Each class has its factory method for better type inference and static analysis
@@ -179,7 +179,7 @@ class ConsequencesFactory {
 			$params,
 			$vars,
 			$this->userGroupManager,
-			$this->userNameUtils,
+			$this->userIdentityUtils,
 			$this->filterUser,
 			$this->messageLocalizer
 		);
@@ -192,7 +192,7 @@ class ConsequencesFactory {
 	 */
 	public function newBlockAutopromote( Parameters $params, int $duration ): BlockAutopromote {
 		return new BlockAutopromote( $params, $duration, $this->blockAutopromoteStore, $this->messageLocalizer,
-			$this->userNameUtils );
+			$this->userIdentityUtils );
 	}
 
 	/**

@@ -12,7 +12,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConseque
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use Psr\Log\LoggerInterface;
 use Status;
 
@@ -34,8 +34,8 @@ class ConsequencesExecutor {
 	private $filterLookup;
 	/** @var LoggerInterface */
 	private $logger;
-	/** @var UserNameUtils */
-	private $userNameUtils;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 	/** @var ServiceOptions */
 	private $options;
 	/** @var ActionSpecifier */
@@ -49,7 +49,7 @@ class ConsequencesExecutor {
 	 * @param ConsequencesRegistry $consRegistry
 	 * @param FilterLookup $filterLookup
 	 * @param LoggerInterface $logger
-	 * @param UserNameUtils $userNameUtils
+	 * @param UserIdentityUtils $userIdentityUtils
 	 * @param ServiceOptions $options
 	 * @param ActionSpecifier $specifier
 	 * @param VariableHolder $vars
@@ -60,7 +60,7 @@ class ConsequencesExecutor {
 		ConsequencesRegistry $consRegistry,
 		FilterLookup $filterLookup,
 		LoggerInterface $logger,
-		UserNameUtils $userNameUtils,
+		UserIdentityUtils $userIdentityUtils,
 		ServiceOptions $options,
 		ActionSpecifier $specifier,
 		VariableHolder $vars
@@ -70,7 +70,7 @@ class ConsequencesExecutor {
 		$this->consRegistry = $consRegistry;
 		$this->filterLookup = $filterLookup;
 		$this->logger = $logger;
-		$this->userNameUtils = $userNameUtils;
+		$this->userIdentityUtils = $userIdentityUtils;
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 		$this->specifier = $specifier;
@@ -161,7 +161,7 @@ class ConsequencesExecutor {
 	 */
 	private function specializeParameters( array $consParams ): array {
 		$user = $this->specifier->getUser();
-		$isNamed = $user->isRegistered() && !$this->userNameUtils->isTemp( $user->getName() );
+		$isNamed = $this->userIdentityUtils->isNamed( $user );
 		foreach ( $consParams as $filter => $actions ) {
 			foreach ( $actions as $name => $parameters ) {
 				if ( $name === 'block' ) {

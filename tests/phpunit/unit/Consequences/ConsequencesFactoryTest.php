@@ -16,7 +16,7 @@ use MediaWiki\Session\Session;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 use Psr\Log\NullLogger;
@@ -53,7 +53,7 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( MessageLocalizer::class ),
 			$this->createMock( UserEditTracker::class ),
 			$this->createMock( UserFactory::class ),
-			$this->createMock( UserNameUtils::class )
+			$this->createMock( UserIdentityUtils::class )
 		);
 		$consequencesFactory->setSession( $this->createMock( Session::class ) );
 

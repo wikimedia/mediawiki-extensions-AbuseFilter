@@ -7,7 +7,7 @@ use MediaWiki\CheckUser\Hook\CheckUserInsertLogEventRowHook;
 use MediaWiki\CheckUser\Hook\CheckUserInsertPrivateEventRowHook;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserIdentityUtils;
 use RecentChange;
 
 class CheckUserHandler implements
@@ -19,19 +19,19 @@ class CheckUserHandler implements
 	/** @var FilterUser */
 	private $filterUser;
 
-	/** @var UserNameUtils */
-	private $userNameUtils;
+	/** @var UserIdentityUtils */
+	private $userIdentityUtils;
 
 	/**
 	 * @param FilterUser $filterUser
-	 * @param UserNameUtils $userNameUtils
+	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
 		FilterUser $filterUser,
-		UserNameUtils $userNameUtils
+		UserIdentityUtils $userIdentityUtils
 	) {
 		$this->filterUser = $filterUser;
-		$this->userNameUtils = $userNameUtils;
+		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	/**
@@ -43,9 +43,8 @@ class CheckUserHandler implements
 	public function onCheckUserInsertChangesRow(
 		string &$ip, &$xff, array &$row, UserIdentity $user, ?RecentChange $rc
 	) {
-		$isTemp = $this->userNameUtils->isTemp( $user->getName() );
 		if (
-			$user->isRegistered() && !$isTemp &&
+			$this->userIdentityUtils->isNamed( $user ) &&
 			$this->filterUser->getUserIdentity()->getId() == $user->getId()
 		) {
 			$ip = '127.0.0.1';
@@ -63,9 +62,8 @@ class CheckUserHandler implements
 	public function onCheckUserInsertLogEventRow(
 		string &$ip, &$xff, array &$row, UserIdentity $user, int $id, ?RecentChange $rc
 	) {
-		$isTemp = $this->userNameUtils->isTemp( $user->getName() );
 		if (
-			$user->isRegistered() && !$isTemp &&
+			$this->userIdentityUtils->isNamed( $user ) &&
 			$this->filterUser->getUserIdentity()->getId() == $user->getId()
 		) {
 			$ip = '127.0.0.1';
@@ -83,9 +81,8 @@ class CheckUserHandler implements
 	public function onCheckUserInsertPrivateEventRow(
 		string &$ip, &$xff, array &$row, UserIdentity $user, ?RecentChange $rc
 	) {
-		$isTemp = $this->userNameUtils->isTemp( $user->getName() );
 		if (
-			$user->isRegistered() && !$isTemp &&
+			$this->userIdentityUtils->isNamed( $user ) &&
 			$this->filterUser->getUserIdentity()->getId() == $user->getId()
 		) {
 			$ip = '127.0.0.1';

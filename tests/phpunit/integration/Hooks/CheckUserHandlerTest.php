@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Hooks;
 
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\CheckUserHandler;
+use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
-use MediaWiki\User\UserNameUtils;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -23,12 +23,12 @@ class CheckUserHandlerTest extends MediaWikiIntegrationTestCase {
 		$filterUser = $this->createMock( FilterUser::class );
 		$filterUser->method( 'getUserIdentity' )
 			->willReturn( new UserIdentityValue( 1, 'Abuse filter' ) );
-		$userNameUtils = $this->createMock( UserNameUtils::class );
-		$userNameUtils->method( 'isTemp' )
+		$userIdentityUtils = $this->createMock( UserIdentityUtils::class );
+		$userIdentityUtils->method( 'isNamed' )
 			->willReturnCallback( static function ( $name ) {
-				return $name === '*12345';
+				return $name !== '*12345';
 			} );
-		return new CheckUserHandler( $filterUser, $userNameUtils );
+		return new CheckUserHandler( $filterUser, $userIdentityUtils );
 	}
 
 	private function commonInsertHookAssertions( $shouldChange, $agentField, $ip, $xff, $row ) {
