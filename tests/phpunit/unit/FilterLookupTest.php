@@ -50,7 +50,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		bool $filterIsCentral = false
 	): FilterLookup {
 		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnectionRef' )
+		$lb->method( 'getConnection' )
 			->willReturn( $db ?? $this->createMock( DBConnRef::class ) );
 
 		$lbFactory = $this->createMock( LBFactory::class );
