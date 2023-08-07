@@ -280,7 +280,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Etiketler]] uygulanacak:",
 	"abusefilter-edit-tag-placeholder": "Etiketleri ekleyin (birer birer veya virgülle ayrılmış)",
 	"abusefilter-edit-tag-hidden-placeholder": "Etiket ekle (virgülle ayrılmış)",
-	"abusefilter-edit-block-anon-durations": "Anonim kullanıcılar için engelleme süresi:",
+	"abusefilter-edit-block-anon-durations": "Kayıt olmamış kullanıcılar için engelleme süresi:",
 	"abusefilter-edit-block-user-durations": "Kayıtlı kullanıcılar için engelleme süresi:",
 	"abusefilter-block-anon": "Anonim kullanıcıları engelle",
 	"abusefilter-block-user": "kayıtlı kullanıcıları engelle",

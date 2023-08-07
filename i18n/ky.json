@@ -91,6 +91,7 @@
 	"abusefilter-revert-confirm": "Ырастоо",
 	"abusefilter-revert-reasonfield": "Себеп:",
 	"abusefilter-examine-submit": "Издөө",
+	"abusefilter-logentry-create": "$1 {{GENDER:$2|түзүлдү}} $4 ($5)",
 	"abusefilter-log-noresults": "Натыйжа жок",
 	"abusefilter-diff-title": "Жоромолдордун айырмасы",
 	"abusefilter-diff-item": "Элемент",
