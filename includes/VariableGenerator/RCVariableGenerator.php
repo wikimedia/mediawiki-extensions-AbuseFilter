@@ -247,13 +247,47 @@ class RCVariableGenerator extends VariableGenerator {
 				'contextUser' => $this->contextUser,
 			] );
 
-		$this->addEditVars(
-			$this->wikiPageFactory->newFromTitle( $title ),
-			$this->contextUser,
-			false
-		);
+		$this->addDerivedVarsForTitle( $title );
 
 		return $this;
+	}
+
+	private function addDerivedVarsForTitle( Title $title ) {
+		$page = $this->wikiPageFactory->newFromTitle( $title );
+		$this->addDerivedEditVars();
+
+		// TODO: all these are legacy methods
+		$this->vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+			[
+				'text-var' => 'new_wikitext',
+				'article' => $page,
+				'forFilter' => false,
+				'contextUserIdentity' => $this->contextUser
+			] );
+
+		// Note: this claims "or database" but it will never reach it
+		$this->vars->setLazyLoadVar( 'old_links', 'links-from-wikitext-or-database',
+			[
+				'article' => $page,
+				'text-var' => 'old_wikitext',
+				'forFilter' => false,
+				'contextUserIdentity' => $this->contextUser
+			] );
+
+		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
+			[
+				'wikitext-var' => 'new_wikitext',
+				'article' => $page,
+				'pst' => true,
+				'contextUserIdentity' => $this->contextUser
+			] );
+
+		$this->vars->setLazyLoadVar( 'new_html', 'parse-wikitext',
+			[
+				'wikitext-var' => 'new_wikitext',
+				'article' => $page,
+				'contextUserIdentity' => $this->contextUser
+			] );
 	}
 
 	/**
@@ -288,11 +322,7 @@ class RCVariableGenerator extends VariableGenerator {
 			$this->vars->setVar( 'page_last_edit_age', null );
 		}
 
-		$this->addEditVars(
-			$this->wikiPageFactory->newFromTitle( $title ),
-			$this->contextUser,
-			false
-		);
+		$this->addDerivedVarsForTitle( $title );
 
 		return $this;
 	}
