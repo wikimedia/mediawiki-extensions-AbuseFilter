@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckSyntax
@@ -16,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
  */
 class CheckSyntaxTest extends ApiTestCase {
 	use AbuseFilterApiTestTrait;
+	use MockAuthorityTrait;
 
 	/**
 	 * @covers ::execute
@@ -28,7 +30,7 @@ class CheckSyntaxTest extends ApiTestCase {
 		$this->doApiRequest( [
 			'action' => 'abusefilterchecksyntax',
 			'filter' => 'sampleFilter',
-		], null, null, self::getTestUser()->getUser() );
+		], null, null, $this->mockRegisteredNullAuthority() );
 	}
 
 	/**
@@ -45,7 +47,7 @@ class CheckSyntaxTest extends ApiTestCase {
 		$result = $this->doApiRequest( [
 			'action' => 'abusefilterchecksyntax',
 			'filter' => $input,
-		], null, null, self::getTestSysop()->getUser() );
+		] );
 
 		$this->assertArrayEquals(
 			[ 'abusefilterchecksyntax' => [ 'status' => 'ok' ] ],
@@ -73,7 +75,7 @@ class CheckSyntaxTest extends ApiTestCase {
 		$result = $this->doApiRequest( [
 			'action' => 'abusefilterchecksyntax',
 			'filter' => $input,
-		], null, null, self::getTestSysop()->getUser() );
+		] );
 
 		$this->assertArrayEquals(
 			[
@@ -119,7 +121,7 @@ class CheckSyntaxTest extends ApiTestCase {
 		$result = $this->doApiRequest( [
 			'action' => 'abusefilterchecksyntax',
 			'filter' => $input,
-		], null, null, self::getTestSysop()->getUser() );
+		] );
 
 		$this->assertArrayEquals(
 			[

@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckMatch
@@ -17,6 +18,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
  */
 class CheckMatchTest extends ApiTestCase {
 	use AbuseFilterApiTestTrait;
+	use MockAuthorityTrait;
 
 	/**
 	 * @covers ::execute
@@ -30,7 +32,7 @@ class CheckMatchTest extends ApiTestCase {
 			'action' => 'abusefiltercheckmatch',
 			'filter' => 'sampleFilter',
 			'vars' => FormatJson::encode( [] ),
-		], null, null, self::getTestUser()->getUser() );
+		], null, null, $this->mockRegisteredNullAuthority() );
 	}
 
 	public static function provideExecuteOk() {
@@ -61,7 +63,7 @@ class CheckMatchTest extends ApiTestCase {
 			'action' => 'abusefiltercheckmatch',
 			'filter' => $filter,
 			'vars' => FormatJson::encode( [] ),
-		], null, null, self::getTestSysop()->getUser() );
+		] );
 
 		$this->assertArrayEquals(
 			[
@@ -92,7 +94,7 @@ class CheckMatchTest extends ApiTestCase {
 			'action' => 'abusefiltercheckmatch',
 			'filter' => $filter,
 			'vars' => FormatJson::encode( [] ),
-		], null, null, self::getTestSysop()->getUser() );
+		] );
 	}
 
 }
