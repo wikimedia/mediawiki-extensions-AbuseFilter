@@ -12,6 +12,7 @@ use MediaWikiIntegrationTestCase;
 /**
  * @group Test
  * @group AbuseFilter
+ * @group Database
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterValidator
  * @covers ::__construct()
  */

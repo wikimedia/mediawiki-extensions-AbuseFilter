@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use ApiTestCase;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\UserIdentityValue;
@@ -12,6 +13,7 @@ use MediaWiki\User\UserIdentityValue;
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\UnblockAutopromote
  * @covers ::__construct
  * @group medium
+ * @group Database
  */
 class UnblockAutopromoteTest extends ApiTestCase {
 	use MockAuthorityTrait;
@@ -55,7 +57,10 @@ class UnblockAutopromoteTest extends ApiTestCase {
 	public function testExecute_blocked() {
 		$this->expectApiErrorCode( 'blocked' );
 
-		$block = new DatabaseBlock( [ 'expiry' => '1 day' ] );
+		$block = $this->createMock( DatabaseBlock::class );
+		$block->method( 'getExpiry' )->willReturn( wfTimestamp( TS_MW, time() + 100000 ) );
+		$block->method( 'isSitewide' )->willReturn( true );
+		$block->method( 'getReasonComment' )->willReturn( CommentStoreComment::newUnsavedComment( 'test' ) );
 		$blockedUser = $this->mockUserAuthorityWithBlock(
 			new UserIdentityValue( 42, 'Blocked user' ),
 			$block,
