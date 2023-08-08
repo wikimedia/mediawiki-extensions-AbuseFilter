@@ -581,6 +581,6 @@
 	"notification-header-throttle-filter": "O filtro de abusos $2 que {{GENDER:$1|editou}} recentemente foi limitado.",
 	"notification-header-throttle-filter-actions": "O filtro de abusos $2 que {{GENDER:$1|editou}} recentemente tivo unha taxa alta de coincidencias e {{PLURAL:$4|a seguinte acción desactivouse|as seguintes accións desactiváronse}} automaticamente: $3.",
 	"notification-header-throttle-filter-no-actions": "O filtro de abusos $2 que {{GENDER:$1|editou}} recentemente tivo unha taxa alta de coincidencias, pero non se desactivou automaticamente ningunha acción.",
-	"notification-subject-throttle-filter": "Un filtro de abusos $2 que {{GENDER:$1|editou}} foi limitado en {{SITENAME}}",
+	"notification-subject-throttle-filter": "Un filtro de abusos que {{GENDER:$1|editou}} foi limitado en {{SITENAME}}",
 	"notification-link-text-show-filter": "Amosar o filtro"
 }

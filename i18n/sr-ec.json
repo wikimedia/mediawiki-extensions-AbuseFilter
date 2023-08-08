@@ -131,6 +131,7 @@
 	"log-action-filter-abusefilter-modify": "уређивање филтера",
 	"log-action-filter-suppress-abuselog": "Сакривање дневника злоупотреба",
 	"log-action-filter-rights-blockautopromote": "Блокирање самоунапређивања",
+	"logentry-abusefilterprivatedetails-access": "$1 је {{GENDER:$2|приступио|приступила}} приватним детаљима за $3",
 	"abusefilter-list": "Сви филтери",
 	"abusefilter-list-id": "ID филтера",
 	"abusefilter-list-pattern": "Узорак",
@@ -519,5 +520,6 @@
 	"abusefilter-log-details-id": "ID дневника",
 	"abusefilter-log-ip-not-available": "Недоступно",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
+	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]]).",
 	"notification-link-text-show-filter": "Прикажи филтер"
 }
