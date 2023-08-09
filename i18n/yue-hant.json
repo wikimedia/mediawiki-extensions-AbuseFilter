@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hello903hello",
 			"Winston Sung"
 		]
 	},
@@ -389,5 +390,6 @@
 	"abusefilter-group-default": "預設",
 	"abusefilter-http-error": "一個HTTP錯誤發生咗: $1",
 	"abusefilter-log-details-id": "日誌ID",
+	"abusefilter-blocked-domains-attempted": "你想發佈嘅文字俾我哋嘅過濾器截住咗。呢個域名封咗唔加得：$1",
 	"abusefilter-log-ip-not-available": "唔適用"
 }
