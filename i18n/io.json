@@ -142,5 +142,8 @@
 	"abusefilter-diff-item": "Elemento",
 	"abusefilter-diff-version": "Versiono ye $1 {{GENDER:$3|da}} $2",
 	"abusefilter-group-default": "Normala",
-	"abusefilter-http-error": "Eventis eroro di HTTP: $1."
+	"abusefilter-http-error": "Eventis eroro di HTTP: $1.",
+	"blockedexternaldomains": "Extera domeni blokusita",
+	"abusefilter-blocked-domains-title": "Extera domeni blokusita",
+	"right-abusefilter-bypass-blocked-external-domains": "Preterpasar extera domeni blokusita"
 }
