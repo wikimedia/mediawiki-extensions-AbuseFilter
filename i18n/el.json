@@ -128,6 +128,8 @@
 	"abusefilter-log-hide-forbidden": "Δεν έχετε άδεια για να κρύψετε τις καταχωρήσεις κατάχρησης του αρχείου καταγραφής",
 	"abusefilter-log-hide-show": "Εμφάνιση",
 	"abusefilter-log-hide-hide": "Απόκρυψη",
+	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|κρυφό}}",
+	"log-action-filter-abusefilter-create": "Δημιουργία νέου φίλτρου",
 	"abusefilter-list": "Όλα τα φίλτρα",
 	"abusefilter-list-id": "Ταυτότητα φίλτρου",
 	"abusefilter-list-pattern": "Μοτίβο",
@@ -218,9 +220,11 @@
 	"abusefilter-throttle-ip": "Διεύθυνση IP",
 	"abusefilter-throttle-user": "λογαριασμός χρήστη",
 	"abusefilter-throttle-range": "Εύρος IP",
+	"abusefilter-throttle-creationdate": "ημερομηνία δημιουργίας λογαριασμού",
 	"abusefilter-throttle-editcount": "καταμέτρηση επεξεργασιών",
 	"abusefilter-throttle-site": "ολόκληρο ιστότοπο",
 	"abusefilter-throttle-page": "σελίδα",
+	"abusefilter-throttle-none": "(κανένα)",
 	"abusefilter-edit-warn-message": "Μήνυμα συστήματος για χρησιμοποίηση για προειδοποίηση:",
 	"abusefilter-edit-warn-other": "Άλλο μήνυμα",
 	"abusefilter-edit-warn-other-label": "Όνομα σελίδας άλλου μηνύματος:\n:''(χωρίς πρόθεμα «MediaWiki:»)''",
@@ -231,6 +235,8 @@
 	"abusefilter-edit-disallow-actions": "Ενέργειες:",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Ετικέτες]] για να επικολληθούν:",
 	"abusefilter-edit-tag-hidden-placeholder": "Προσθήκη ετικετών (το κόμμα χωρίζεται)",
+	"abusefilter-block-anon": "Φραγή ανώνυμων χρηστών",
+	"abusefilter-block-user": "φραγή εγγεγραμμένων χρηστών",
 	"abusefilter-edit-denied": "Δεν μπορείτε να δείτε τις λεπτομέρειες αυτού του φίλτρου, γιατί αυτές έχουν αποκρυφθεί από τη δημόσια θέα.",
 	"abusefilter-edit-main": "Παράμετροι φίλτρου",
 	"abusefilter-edit-done-subtitle": "Επεξεργασμένο φίλτρο",
@@ -462,5 +468,6 @@
 	"abusefilter-import-intro": "Μπορείτε να χρησιμοποιήσετε αυτή την διεπιφάνεια για να εισαγάγετε φίλτρα από άλλα wiki.\nΣτο wiki προέλευσης, κάντε κλικ στο «{{int:abusefilter-edit-export}}» κάτω από το «{{int:abusefilter-edit-tools}}» στην διεπιφάνεια επεξεργασίας.\nΑντιγράψτε από το πλαίσιο κειμένου που εμφανίζεται και επικολλήστε το σε αυτό το πλαίσιο κειμένου και μετά κάντε κλικ στο «{{int:abusefilter-import-submit}}».",
 	"abusefilter-import-submit": "Εισαγωγή δεδομένων",
 	"abusefilter-group-default": "Προεπιλογή",
-	"abusefilter-log-ip-not-available": "Μη Διαθέσιμο"
+	"abusefilter-log-ip-not-available": "Μη Διαθέσιμο",
+	"notification-link-text-show-filter": "Εμφάνιση φίλτρου"
 }
