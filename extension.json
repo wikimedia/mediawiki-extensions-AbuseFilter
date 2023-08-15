@@ -396,6 +396,12 @@
 		},
 		"Echo": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler"
+		},
+		"UserMerge": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"Hooks": {
@@ -418,7 +424,7 @@
 		"CheckUserInsertChangesRow": "CheckUser",
 		"CheckUserInsertPrivateEventRow": "CheckUser",
 		"CheckUserInsertLogEventRow": "CheckUser",
-		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler::onUserMergeAccountFields",
+		"UserMergeAccountFields": "UserMerge",
 		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
 		"UnitTestsAfterDatabaseSetup": "Tests",
