@@ -11,6 +11,7 @@
 	},
 	"abusefilter-edit-builder-funcs-ccnorm": "Normalise confusable characters (ccnorm)",
 	"abusefilter-edit-builder-funcs-ccnorm-contains-any": "Normalise and search a string for multiple substrings in OR mode (ccnorm_contains_any)",
+	"abusefilter-edit-builder-funcs-ccnorm-contains-all": "Normalise and search a string for multiple substrings in AND mode (ccnorm_contains_all)",
 	"abusefilter-edit-builder-funcs-norm": "Normalise (norm)",
 	"abusefilter-edit-builder-funcs-sanitize": "Normalise HTML entities into unicode characters (sanitise)",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Bits per colour channel of the file",
