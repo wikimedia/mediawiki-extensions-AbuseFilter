@@ -6,7 +6,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
-use Title;
+use MediaWiki\Title\Title;
 use User;
 use Wikimedia\Rdbms\LBFactory;
 
