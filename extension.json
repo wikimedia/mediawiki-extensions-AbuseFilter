@@ -393,6 +393,9 @@
 				"AbuseFilterFilterUser",
 				"UserIdentityUtils"
 			]
+		},
+		"Echo": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler"
 		}
 	},
 	"Hooks": {
@@ -416,7 +419,7 @@
 		"CheckUserInsertPrivateEventRow": "CheckUser",
 		"CheckUserInsertLogEventRow": "CheckUser",
 		"UserMergeAccountFields": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler::onUserMergeAccountFields",
-		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
+		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
 		"UnitTestsAfterDatabaseSetup": "Tests",
 		"UnitTestsBeforeDatabaseTeardown": "Tests",
