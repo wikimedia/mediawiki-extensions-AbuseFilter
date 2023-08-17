@@ -19,7 +19,8 @@
 			"Silviubogan",
 			"Stelistcristi",
 			"Strainu",
-			"WebSourceContentRO"
+			"WebSourceContentRO",
+			"Alesaru"
 		]
 	},
 	"abusefilter-desc": "Aplică euristici automate modificărilor.",
@@ -86,7 +87,7 @@
 	"abusefilter-log-entry": "$1: $2 a declanșat un filtru de abuz, {{GENDER:$8|executând}} acțiunea „$3” asupra paginii $4.\nMăsura luată: $5;\nDescrierea filtrului: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 a {{GENDER:$8|declanșat}} un filtru de abuz, {{GENDER:$8|executând}} acțiunea „$3” asupra paginii $4.\nMăsura luată: $5;\nDescrierea filtrului: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|a declanșat}} $3, {{GENDER:$9|executând}} acțiunea „$4” asupra paginii $5.\nMăsura luată: $6;\nDescrierea filtrului: $7 ($8)",
-	"abusefilter-log-detailedentry-global": "filtru global $1",
+	"abusefilter-log-detailedentry-global": "filtrul global $1",
 	"abusefilter-log-detailedentry-local": "filtrul $1",
 	"abusefilter-log-detailslink": "detalii",
 	"abusefilter-log-diff": "dif",
