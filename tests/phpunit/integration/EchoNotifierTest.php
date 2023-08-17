@@ -21,13 +21,13 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		'2' => 42,
 	];
 
-	private function getFilterLookup(): FilterLookup {
+	private function getFilterLookup( int $userID = null ): FilterLookup {
 		$lookup = $this->createMock( FilterLookup::class );
 		$lookup->method( 'getFilter' )
-			->willReturnCallback( function ( $filter, $global ) {
+			->willReturnCallback( function ( $filter, $global ) use ( $userID ) {
+				$userID ??= self::USER_IDS[ $global ? "global-$filter" : $filter ] ?? 0;
 				$filterObj = $this->createMock( ExistingFilter::class );
-				$filterObj->method( 'getUserID' )
-					->willReturn( self::USER_IDS[ $global ? "global-$filter" : $filter ] ?? 0 );
+				$filterObj->method( 'getUserID' )->willReturn( $userID );
 				return $filterObj;
 			} );
 		return $lookup;
@@ -74,11 +74,11 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 	 * @covers ::notifyForFilter
 	 */
 	public function testNotifyForFilter() {
-		if ( !class_exists( Event::class ) ) {
-			$this->markTestSkipped( 'Echo not loaded' );
-		}
+		$this->markTestSkippedIfExtensionNotLoaded( 'Echo' );
+		// Use a real user, or Echo will throw an exception.
+		$user = $this->getTestUser()->getUserIdentity();
 		$notifier = new EchoNotifier(
-			$this->getFilterLookup(),
+			$this->getFilterLookup( $user->getId() ),
 			$this->createMock( ConsequencesRegistry::class ),
 			true
 		);
