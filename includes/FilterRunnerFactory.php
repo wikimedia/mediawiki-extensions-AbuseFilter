@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter;
 use BagOStuff;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Deferred\DeferredUpdatesManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
@@ -57,8 +56,6 @@ class FilterRunnerFactory {
 	private $statsdDataFactory;
 	/** @var ServiceOptions */
 	private $options;
-	/** @var DeferredUpdatesManager */
-	private DeferredUpdatesManager $deferredUpdatesManager;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner
@@ -78,7 +75,6 @@ class FilterRunnerFactory {
 	 * @param LoggerInterface $editStashLogger
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ServiceOptions $options
-	 * @param DeferredUpdatesManager $deferredUpdatesManager
 	 */
 	public function __construct(
 		AbuseFilterHookRunner $hookRunner,
@@ -97,8 +93,7 @@ class FilterRunnerFactory {
 		LoggerInterface $logger,
 		LoggerInterface $editStashLogger,
 		IBufferingStatsdDataFactory $statsdDataFactory,
-		ServiceOptions $options,
-		DeferredUpdatesManager $deferredUpdatesManager
+		ServiceOptions $options
 	) {
 		$this->hookRunner = $hookRunner;
 		$this->filterProfiler = $filterProfiler;
@@ -117,7 +112,6 @@ class FilterRunnerFactory {
 		$this->editStashLogger = $editStashLogger;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->options = $options;
-		$this->deferredUpdatesManager = $deferredUpdatesManager;
 	}
 
 	/**
@@ -158,7 +152,6 @@ class FilterRunnerFactory {
 			),
 			$this->logger,
 			$this->options,
-			$this->deferredUpdatesManager,
 			$user,
 			$title,
 			$vars,

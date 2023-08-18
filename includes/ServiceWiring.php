@@ -258,8 +258,7 @@ return [
 	UpdateHitCountWatcher::SERVICE_NAME => static function ( MediaWikiServices $services ): UpdateHitCountWatcher {
 		return new UpdateHitCountWatcher(
 			$services->getDBLoadBalancerFactory(),
-			$services->get( CentralDBManager::SERVICE_NAME ),
-			$services->getDeferredUpdatesManager()
+			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
 	VariablesBlobStore::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesBlobStore {
@@ -305,8 +304,7 @@ return [
 			new ServiceOptions(
 				FilterRunner::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
-			),
-			$services->getDeferredUpdatesManager()
+			)
 		);
 	},
 	VariablesFormatter::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesFormatter {

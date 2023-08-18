@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use BadMethodCallException;
+use DeferredUpdates;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Deferred\DeferredUpdatesManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
@@ -63,8 +63,6 @@ class FilterRunner {
 	private $varGeneratorFactory;
 	/** @var ServiceOptions */
 	private $options;
-	/** @var DeferredUpdatesManager */
-	private DeferredUpdatesManager $deferredUpdatesManager;
 
 	/**
 	 * @var FilterEvaluator
@@ -107,7 +105,6 @@ class FilterRunner {
 	 * @param EditStashCache $stashCache
 	 * @param LoggerInterface $logger
 	 * @param ServiceOptions $options
-	 * @param DeferredUpdatesManager $deferredUpdatesManager
 	 * @param User $user
 	 * @param Title $title
 	 * @param VariableHolder $vars
@@ -129,7 +126,6 @@ class FilterRunner {
 		EditStashCache $stashCache,
 		LoggerInterface $logger,
 		ServiceOptions $options,
-		DeferredUpdatesManager $deferredUpdatesManager,
 		User $user,
 		Title $title,
 		VariableHolder $vars,
@@ -154,7 +150,6 @@ class FilterRunner {
 			throw new InvalidArgumentException( "Group $group is not a valid group" );
 		}
 		$this->options = $options;
-		$this->deferredUpdatesManager = $deferredUpdatesManager;
 
 		if ( !$vars->varIsSet( 'action' ) ) {
 			throw new InvalidArgumentException( "The 'action' variable is not set." );
@@ -222,7 +217,7 @@ class FilterRunner {
 
 		$runnerData ??= $this->checkAllFiltersInternal();
 
-		$this->deferredUpdatesManager->addCallableUpdate( function () use ( $runnerData ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $runnerData ) {
 			$this->profileExecution( $runnerData );
 			$this->updateEmergencyCache( $runnerData->getMatchesMap() );
 		} );

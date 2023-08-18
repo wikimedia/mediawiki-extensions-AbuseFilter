@@ -1,10 +1,9 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Deferred\DeferredUpdatesManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
@@ -19,7 +18,7 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 use Psr\Log\NullLogger;
 use User;
 use WebRequest;
@@ -30,7 +29,7 @@ use WebRequest;
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterRunner
  * @covers ::__construct
  */
-class FilterRunnerTest extends MediaWikiUnitTestCase {
+class FilterRunnerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @param ChangeTagger|null $changeTagger
 	 * @param EditStashCache|null $cache
@@ -76,7 +75,6 @@ class FilterRunnerTest extends MediaWikiUnitTestCase {
 			$cache,
 			new NullLogger(),
 			$opts,
-			$this->createMock( DeferredUpdatesManager::class ),
 			$user,
 			$this->createMock( Title::class ),
 			$vars ?? VariableHolder::newFromArray( [ 'action' => 'edit' ] ),

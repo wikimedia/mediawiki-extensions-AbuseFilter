@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Watcher;
 
-use MediaWiki\Deferred\DeferredUpdatesManager;
+use DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
@@ -19,22 +19,16 @@ class UpdateHitCountWatcher implements Watcher {
 	/** @var CentralDBManager */
 	private $centralDBManager;
 
-	/** @var DeferredUpdatesManager */
-	private DeferredUpdatesManager $deferredUpdatesManager;
-
 	/**
 	 * @param LBFactory $lbFactory
 	 * @param CentralDBManager $centralDBManager
-	 * @param DeferredUpdatesManager $deferredUpdatesManager
 	 */
 	public function __construct(
 		LBFactory $lbFactory,
-		CentralDBManager $centralDBManager,
-		DeferredUpdatesManager $deferredUpdatesManager
+		CentralDBManager $centralDBManager
 	) {
 		$this->lbFactory = $lbFactory;
 		$this->centralDBManager = $centralDBManager;
-		$this->deferredUpdatesManager = $deferredUpdatesManager;
 	}
 
 	/**
@@ -42,7 +36,7 @@ class UpdateHitCountWatcher implements Watcher {
 	 */
 	public function run( array $localFilters, array $globalFilters, string $group ): void {
 		// Run in a DeferredUpdate to avoid primary database queries on raw/view requests (T274455)
-		$this->deferredUpdatesManager->addCallableUpdate( function () use ( $localFilters, $globalFilters ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $localFilters, $globalFilters ) {
 			if ( $localFilters ) {
 				$this->updateHitCounts( $this->lbFactory->getPrimaryDatabase(), $localFilters );
 			}

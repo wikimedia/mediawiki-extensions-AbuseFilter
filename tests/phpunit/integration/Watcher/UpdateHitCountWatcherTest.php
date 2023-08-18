@@ -1,11 +1,10 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Watcher;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Watcher;
 
-use MediaWiki\Deferred\DeferredUpdatesManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
@@ -14,7 +13,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher
  * @covers ::__construct
  */
-class UpdateHitCountWatcherTest extends MediaWikiUnitTestCase {
+class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers ::run
@@ -42,11 +41,7 @@ class UpdateHitCountWatcherTest extends MediaWikiUnitTestCase {
 		$centralDBManager = $this->createMock( CentralDBManager::class );
 		$centralDBManager->method( 'getConnection' )->willReturn( $globalDB );
 
-		$deferredUpdatesManager = $this->createMock( DeferredUpdatesManager::class );
-		$deferredUpdatesManager->method( 'addCallableUpdate' )
-			->willReturnCallback( static fn ( $cb ) => $cb() );
-
-		$watcher = new UpdateHitCountWatcher( $lb, $centralDBManager, $deferredUpdatesManager );
+		$watcher = new UpdateHitCountWatcher( $lb, $centralDBManager );
 		$watcher->run( $localFilters, $globalFilters, 'default' );
 		// Two soft assertions done above
 		$this->addToAssertionCount( 2 );

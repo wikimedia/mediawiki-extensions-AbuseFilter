@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 use HashBagOStuff;
 use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
-use MediaWiki\Deferred\DeferredUpdatesManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesExecutorFactory;
@@ -63,8 +62,7 @@ class FilterRunnerFactoryTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			new NullLogger(),
 			$this->createMock( IBufferingStatsdDataFactory::class ),
-			$opts,
-			$this->createMock( DeferredUpdatesManager::class )
+			$opts
 		);
 
 		$factory->newRunner(
