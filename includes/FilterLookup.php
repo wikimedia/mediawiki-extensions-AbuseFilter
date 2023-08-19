@@ -13,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use RuntimeException;
 use stdClass;
 use WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -70,6 +71,12 @@ class FilterLookup implements IDBAccessObject {
 
 	/** @var ActorMigrationBase */
 	private $actorMigration;
+
+	/**
+	 * @var bool Flag used in PHPUnit tests to "hide" local filters when testing global ones, so that we can use the
+	 * local database pretending it's not local.
+	 */
+	private bool $localFiltersHiddenForTest = false;
 
 	/**
 	 * @param ILoadBalancer $loadBalancer
@@ -170,6 +177,10 @@ class FilterLookup implements IDBAccessObject {
 	 * @return ExistingFilter[]
 	 */
 	private function getAllActiveFiltersInGroupFromDB( string $group, bool $global, int $flags ): array {
+		if ( $this->localFiltersHiddenForTest && !$global ) {
+			return [];
+		}
+
 		[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 		$dbr = $this->getDBConnection( $dbIndex, $global );
 
@@ -531,5 +542,17 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	private function getCacheKey( int $filterID, bool $global ): string {
 		return GlobalNameUtils::buildGlobalName( $filterID, $global );
+	}
+
+	/**
+	 * "Hides" local filters when testing global ones, so that we can use the
+	 * local database pretending it's not local.
+	 * @codeCoverageIgnore
+	 */
+	public function hideLocalFiltersForTesting(): void {
+		if ( !defined( 'MW_PHPUNIT_TEST' ) ) {
+			throw new RuntimeException( 'Can only be called in tests' );
+		}
+		$this->localFiltersHiddenForTest = true;
 	}
 }
