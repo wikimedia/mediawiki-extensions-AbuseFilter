@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use ActorMigrationBase;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EmergencyCache;
@@ -11,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
+use MediaWiki\User\ActorMigrationBase;
 use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\LBFactory;
 

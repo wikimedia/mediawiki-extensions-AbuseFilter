@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use ActorMigrationBase;
+use MediaWiki\User\ActorMigrationBase;
 use MediaWiki\User\ActorStoreFactory;
 
 /**

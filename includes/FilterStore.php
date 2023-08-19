@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use ActorMigrationBase;
 use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\User\ActorMigrationBase;
 use MediaWiki\User\UserIdentity;
 use Status;
 use Wikimedia\Rdbms\LBFactory;

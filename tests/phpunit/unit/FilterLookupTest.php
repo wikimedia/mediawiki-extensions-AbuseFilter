@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use AbuseFilterRowsAndFiltersTestTrait;
-use ActorMigrationBase;
 use Generator;
 use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterActorMigration;
@@ -19,6 +18,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\User\ActorMigrationBase;
 use MediaWiki\User\ActorStoreFactory;
 use MediaWikiUnitTestCase;
 use stdClass;

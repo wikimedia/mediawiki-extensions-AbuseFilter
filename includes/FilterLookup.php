@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use ActorMigrationBase;
 use DBAccessObjectUtils;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
@@ -13,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWiki\User\ActorMigrationBase;
 use RuntimeException;
 use stdClass;
 use WANObjectCache;
