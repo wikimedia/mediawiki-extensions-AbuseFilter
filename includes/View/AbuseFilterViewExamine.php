@@ -20,9 +20,9 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use OOUI;
 use RecentChange;
-use Title;
 use Wikimedia\Rdbms\LBFactory;
 use Xml;
 

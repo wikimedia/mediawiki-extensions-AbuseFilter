@@ -9,9 +9,9 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
+use MediaWiki\Title\Title;
 use MessageSpecifier;
 use StatusValue;
-use Title;
 use TitleValue;
 use User;
 

@@ -28,6 +28,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\WikiMap\WikiMap;
@@ -35,7 +36,6 @@ use OOUI\ButtonInputWidget;
 use SpecialPage;
 use Status;
 use stdClass;
-use Title;
 use Wikimedia\Rdbms\LBFactory;
 use Xml;
 

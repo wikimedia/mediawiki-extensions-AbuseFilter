@@ -28,7 +28,7 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
-use Title;
+use MediaWiki\Title\Title;
 use Wikimedia\ObjectFactory\ObjectFactory;
 
 class SpecialAbuseFilter extends AbuseFilterSpecialPage {

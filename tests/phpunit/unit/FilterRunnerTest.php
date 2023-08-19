@@ -18,9 +18,9 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Title\Title;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
-use Title;
 use User;
 use WebRequest;
 
