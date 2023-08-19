@@ -15,8 +15,8 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Title\Title;
 use RecentChange;
-use Title;
 use Wikimedia\Rdbms\LBFactory;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {

@@ -15,9 +15,9 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
+use MediaWiki\Title\Title;
 use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
-use Title;
 use User;
 
 class FilterRunnerFactory {

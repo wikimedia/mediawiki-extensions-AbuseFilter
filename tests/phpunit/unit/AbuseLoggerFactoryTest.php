@@ -12,8 +12,8 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Title\Title;
 use MediaWikiUnitTestCase;
-use Title;
 use User;
 use Wikimedia\Rdbms\LBFactory;
 

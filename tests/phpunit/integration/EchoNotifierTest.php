@@ -7,8 +7,8 @@ use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Title\Title;
 use MediaWikiIntegrationTestCase;
-use Title;
 
 /**
  * @group Database

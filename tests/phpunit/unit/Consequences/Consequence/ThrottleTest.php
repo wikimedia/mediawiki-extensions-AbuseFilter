@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedExcepti
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -19,7 +20,6 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
-use Title;
 use Wikimedia\TestingAccessWrapper;
 
 /**

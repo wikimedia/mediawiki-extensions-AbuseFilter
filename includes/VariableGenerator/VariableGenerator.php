@@ -5,10 +5,10 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Storage\PreparedUpdate;
+use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use RecentChange;
-use Title;
 use User;
 use WikiPage;
 
