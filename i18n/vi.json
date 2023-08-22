@@ -147,6 +147,7 @@
 	"logentry-rights-blockautopromote": "$1 {{GENDER:$2|đã cấm}} tự động cấp quyền cho {{GENDER:$4|$3}} trong thời hạn $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|đã phục hồi}} khả năng tự động cấp quyền cho {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Nhật ký truy cập chi tiết riêng tư của AbuseFilter",
+	"log-name-abusefilterblockeddomainhit": "Nhật trình gặp phải tên miền bị cấm",
 	"abusefilter-list": "Các bộ lọc",
 	"abusefilter-list-id": "ID bộ lọc",
 	"abusefilter-list-pattern": "Mẫu",
