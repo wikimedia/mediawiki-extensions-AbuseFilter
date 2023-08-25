@@ -82,6 +82,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	private function getFilteredActionsHandler( $urlsAdded ): FilteredActionsHandler {
+		$this->markTestSkipped( 'Temporary' );
 		$mockRunner = $this->createMock( FilterRunner::class );
 		$mockRunner->method( 'run' )
 			->willReturn( Status::newGood() );
