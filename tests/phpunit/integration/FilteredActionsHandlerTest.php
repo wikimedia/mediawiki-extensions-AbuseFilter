@@ -15,11 +15,11 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use Message;
 use NullStatsdDataFactory;
 use RequestContext;
-use Status;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
@@ -82,7 +82,6 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 	}
 
 	private function getFilteredActionsHandler( $urlsAdded ): FilteredActionsHandler {
-		$this->markTestSkipped( 'Temporary' );
 		$mockRunner = $this->createMock( FilterRunner::class );
 		$mockRunner->method( 'run' )
 			->willReturn( Status::newGood() );

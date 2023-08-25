@@ -17,9 +17,9 @@ use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
+use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use Psr\Log\LoggerInterface;
-use Status;
 use User;
 
 /**
