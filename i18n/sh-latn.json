@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"BadDog"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje u izmenama",
@@ -9,7 +10,7 @@
 	"abuselog": "Evidencija filtera zloupotrebe",
 	"abusefilter-intro": "Dobrodošli u interfejs upravljanja filterom zloupotreba.\nFilter zloupotreba je automatizirani softverski mehanizam za pravljenje automatskih heuristika za sve akcije.\nOvaj interfejs prikazuje spisak napravljenih filtera i omogućuje Vam da ih prilagodite.",
 	"abusefilter-mustviewprivateoredit": "Iz sigurnosnih razloga, ovaj posrednik mogu koristiti samo korisnici s pravom gledanja osobnih filtera za zlouporabu ili izmjenu filtera.",
-	"abusefilter-warning": "'''Upozorenje''': Ova akcija je automatski identificirana kao štetna.\nNekonstruktivne akcije biti će brzo uklonjene,\na prekomjerno ili ponovljeno nekonstruktivno uređivanje će uzrokovati da vaš račun ili IP adresa budu blokirani.\nUkoliko vjerujete da je vaše uređivanje konstruktivno, možete ga ponovo poslati da ga potvrdite.\nKratak opis pravila sprječavanja zloupotreaba koji se podudara s vašim uređivanjem je: $1",
+	"abusefilter-warning": "'''Upozorenje''': Ova radnja automatski je prepoznata kao štetna.\nNekonstruktivne radnje brzo će biti opozvane,\na prekomjerno ili ponovljeno nekonstruktivno uređivanje može dovesti do blokiranja vašeg računa ili IP adrese.\nAko smatrate da ova radnja jeste konstruktivna, ponovo pošaljite obrazac da biste je potvrdili.\nKratak opis pravila o sprječavanju zloupotrebe koji se podudara s vašom radnjom: $1",
 	"abusefilter-disallowed": "Ova akcija je automatski identificirana kao štetna, pa je stoga onemogućena.\nAko vjerujete da je uređivanje konstruktivno, molimo kontaktirajte administratora i obavijestite ga o tome što ste pokušali učiniti.\nKratak opis pravila spriječavanja zloupotrebe koji se podudara s vašim uređivanjem je: $1",
 	"abusefilter-blocked-display": "Ova akcija je automatski identificirana kao opasna,\ni kao takva onemogućena da se izvrši.\nDodatno, da bi se zaštitio {{SITENAME}}, Vaš korisnički račun i sve pripadajuće IP adrese su blokirane za uređivanje.\nAko se desila greška, molimo da kontaktirate administratora.\nKratki opis prekršenih pravila koja odgovaraju Vašoj akciji je: $1",
 	"abusefilter-degrouped": "Ova akcija je automatski prepoznata kao štetna.\nU skladu s tim je onemogućena, a sumnja se da je Vaš račun kompromitovan, sva Vaša prava su povučena.\nAko mislite da je ovo greška, molimo da kontaktirate birokratu sa objašnjenjem ove akcije te će tada Vaša prava biti vraćena.\nKratki opis kršenja pravila koja su prekršena Vašom akcijom je: $1",
