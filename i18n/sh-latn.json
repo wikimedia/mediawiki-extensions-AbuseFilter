@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"BadDog",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje u izmenama",
@@ -9,7 +11,7 @@
 	"abuselog": "Evidencija filtera zloupotrebe",
 	"abusefilter-intro": "Dobrodošli u interfejs upravljanja filterom zloupotreba.\nFilter zloupotreba je automatizirani softverski mehanizam za pravljenje automatskih heuristika za sve akcije.\nOvaj interfejs prikazuje spisak napravljenih filtera i omogućuje Vam da ih prilagodite.",
 	"abusefilter-mustviewprivateoredit": "Iz sigurnosnih razloga, ovaj posrednik mogu koristiti samo korisnici s pravom gledanja osobnih filtera za zlouporabu ili izmjenu filtera.",
-	"abusefilter-warning": "'''Upozorenje''': Ova akcija je automatski identificirana kao štetna.\nNekonstruktivne akcije biti će brzo uklonjene,\na prekomjerno ili ponovljeno nekonstruktivno uređivanje će uzrokovati da vaš račun ili IP adresa budu blokirani.\nUkoliko vjerujete da je vaše uređivanje konstruktivno, možete ga ponovo poslati da ga potvrdite.\nKratak opis pravila sprječavanja zloupotreaba koji se podudara s vašim uređivanjem je: $1",
+	"abusefilter-warning": "'''Upozorenje''': Ova radnja automatski je prepoznata kao štetna.\nNekonstruktivne radnje brzo će biti opozvane,\na prekomjerno ili ponovljeno nekonstruktivno uređivanje može dovesti do blokiranja vašeg računa ili IP adrese.\nAko smatrate da ova radnja jeste konstruktivna, ponovo pošaljite obrazac da biste je potvrdili.\nKratak opis pravila o sprječavanju zloupotrebe koji se podudara s vašom radnjom: $1",
 	"abusefilter-disallowed": "Ova akcija je automatski identificirana kao štetna, pa je stoga onemogućena.\nAko vjerujete da je uređivanje konstruktivno, molimo kontaktirajte administratora i obavijestite ga o tome što ste pokušali učiniti.\nKratak opis pravila spriječavanja zloupotrebe koji se podudara s vašim uređivanjem je: $1",
 	"abusefilter-blocked-display": "Ova akcija je automatski identificirana kao opasna,\ni kao takva onemogućena da se izvrši.\nDodatno, da bi se zaštitio {{SITENAME}}, Vaš korisnički račun i sve pripadajuće IP adrese su blokirane za uređivanje.\nAko se desila greška, molimo da kontaktirate administratora.\nKratki opis prekršenih pravila koja odgovaraju Vašoj akciji je: $1",
 	"abusefilter-degrouped": "Ova akcija je automatski prepoznata kao štetna.\nU skladu s tim je onemogućena, a sumnja se da je Vaš račun kompromitovan, sva Vaša prava su povučena.\nAko mislite da je ovo greška, molimo da kontaktirate birokratu sa objašnjenjem ove akcije te će tada Vaša prava biti vraćena.\nKratki opis kršenja pravila koja su prekršena Vašom akcijom je: $1",
@@ -286,6 +288,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Mora izabrati se barem jednu grupu za isticanje.",
 	"abusefilter-edit-duplicated-throttlegroups": "Grupe isticanja ne mogu imati duplikate.",
 	"abusefilter-edit-invalid-throttlegroups": "Navedene grupe isticanja nisu važeće.",
+	"abusefilter-edit-invalid-group": "Navedena grupa filtera ('$1') je nevažeća.",
 	"abusefilter-edit-builder-select": "Odaberite mogućnost za dodavanje kursoru",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetički operatori",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Sabiranje (+)",
@@ -461,6 +464,8 @@
 	"abusefilter-exception-outofbounds": "Traženje nepostojeće stavke u nizu $2 (veličina niza = $3) kod znaka $1.",
 	"abusefilter-exception-negativeindex": "Negativni indeksi nisu dopušteni u nizovima. Dobio indeks \"$2\" kod znaka $1.",
 	"abusefilter-exception-notarray": "Traženje stavke niza za objekat koji nije niz kod znaka $1.",
+	"abusefilter-exception-unclosedcomment": "Nezatvorena pribilješka kod znaka $1.",
+	"abusefilter-exception-invalidiprange": "Nevažeći IP-opseg \"$2\" naveden na znaku $1.",
 	"abusefilter-exception-variablevariable": "set i set_var očekuju da prvi argument bude string literal, kod znaka $1.",
 	"abusefilter-action-tag": "Tag",
 	"abusefilter-action-throttle": "Uspori",
