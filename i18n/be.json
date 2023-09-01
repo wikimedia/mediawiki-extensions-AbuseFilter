@@ -249,7 +249,7 @@
 	"abusefilter-edit-builder-misc-like": "Супадзенне з рэгулярным выразам (like)",
 	"abusefilter-edit-builder-misc-rlike": "Адпаведнасць рэгулярнаму выразу (rlike)",
 	"abusefilter-edit-builder-misc-irlike": "Адпаведнасць рэгулярнаму выразу, без уліку рэгістра (irlike)",
-	"abusefilter-edit-builder-misc-contains": "Левы радок ўтрымлівае правы радок (contains)",
+	"abusefilter-edit-builder-misc-contains": "Левы радок змяшчае правы радок (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Радок сімвалаў (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Тэрнарны аператар (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Умова (if X then Y else Z end)",
