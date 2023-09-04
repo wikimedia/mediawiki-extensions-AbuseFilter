@@ -123,6 +123,7 @@
 	"log-action-filter-suppress-abuselog": "Сакривање дневника злоупотреба",
 	"log-action-filter-rights-blockautopromote": "Блокирање самоунапређивања",
 	"logentry-abusefilterprivatedetails-access": "$1 је {{GENDER:$2|приступио|приступила}} приватним детаљима за $3",
+	"abusefilterprivatedetails-log-name": "Дневник приступања приватним детаљима Филтера против злоупотребе",
 	"abusefilter-list": "Сви филтери",
 	"abusefilter-list-id": "ID филтера",
 	"abusefilter-list-pattern": "Узорак",
@@ -265,6 +266,8 @@
 	"abusefilter-edit-bad-tags": "Једна или више ознака које сте навели нису валидне.\nОзнака мора бити кратка и не сме садржати специјалне карактере, и они не смеју бити коришћени од стране другог софтвера. Покушајте са бирањем нове ознаке.",
 	"abusefilter-edit-notallowed": "Није вам дозвољено да правите или уређујете филтере злоупотреба",
 	"abusefilter-edit-notallowed-global": "Није вам дозвољено да правите или уређујете глобалне филтере злоупотреба",
+	"abusefilter-edit-invalid-warn-message": "Порука упозорења не може остати празна.",
+	"abusefilter-edit-invalid-disallow-message": "Порука забране не може остати празна.",
 	"abusefilter-edit-invalid-throttlecount": "Број радњи регулатора мора да буде позитиван цео број.",
 	"abusefilter-edit-invalid-throttleperiod": "Период регулатора мора да буде позитиван цео број.",
 	"abusefilter-edit-empty-throttlegroups": "Мора се изабрати најмање једна група регулатора.",
@@ -512,6 +515,7 @@
 	"abusefilter-view-privatedetails-reason": "Разлог за приступање приватним детаљима:",
 	"abusefilter-log-details-id": "ID дневника",
 	"abusefilter-log-ip-not-available": "Недоступно",
+	"abusefilter-tag-reserved": "Ознака <code>abusefilter-condition-limit</code> је резервисана за интерну употребу од стране Филтера против злоупотребе.",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
 	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]])."
 }
