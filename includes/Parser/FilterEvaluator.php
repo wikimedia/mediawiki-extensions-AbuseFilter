@@ -628,7 +628,7 @@ class FilterEvaluator {
 				}
 
 				$offset = $this->evalNode( $offset );
-				// @todo If $array has no elements we could already throw an outofbounds. We don'tan
+				// @todo If $array has no elements we could already throw an outofbounds. We don't
 				// know what the index is, though.
 
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
@@ -1111,7 +1111,7 @@ class FilterEvaluator {
 	/**
 	 * Search for substrings in a string
 	 *
-	 * Use is_any to determine wether to use logic OR (true) or AND (false).
+	 * Use is_any to determine whether to use logic OR (true) or AND (false).
 	 *
 	 * Use normalize = true to make use of ccnorm and
 	 * normalize both sides of the search.

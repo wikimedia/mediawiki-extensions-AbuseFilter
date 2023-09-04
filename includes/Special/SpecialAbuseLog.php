@@ -196,7 +196,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * An array of size 1: either the URL is like Special:AbuseLog/id where
 	 * the id is log identifier, in which case the details of the log except for
 	 * private bits (e.g. IP address) are shown, or Special:AbuseLog/hide for hiding entries,
-	 * or the URL is incomplete as in Special:AbuseLog/private (without speciying id),
+	 * or the URL is incomplete as in Special:AbuseLog/private (without specifying id),
 	 * in which case a warning is shown to the user
 	 *
 	 * An array of size 0 when URL is like Special:AbuseLog or an array of size

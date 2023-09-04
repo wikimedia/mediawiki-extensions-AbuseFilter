@@ -11,7 +11,7 @@ class CentralDBManager {
 
 	/** @var LBFactory */
 	private $loadBalancerFactory;
-	/** @var string|null */
+	/** @var string|false */
 	private $dbName;
 	/** @var bool */
 	private $filterIsCentral;

@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use BadMethodCallException;
 use DeferredUpdates;
 use InvalidArgumentException;
 use MediaWiki\Config\ServiceOptions;
@@ -185,7 +184,6 @@ class FilterRunner {
 	 *
 	 * @param bool $allowStash Whether we are allowed to check the cache to see if there's a cached
 	 *  result of a previous execution for the same edit.
-	 * @throws BadMethodCallException If run() was already called on this instance
 	 * @return Status Good if no action has been taken, a fatal otherwise.
 	 */
 	public function run( $allowStash = true ): Status {

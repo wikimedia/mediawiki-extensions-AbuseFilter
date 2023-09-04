@@ -1205,6 +1205,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$origFilter = $this->loadFilterData( $filter );
 
+		/** @var MutableFilter $newFilter */
 		$newFilter = $origFilter instanceof MutableFilter
 			? clone $origFilter
 			: MutableFilter::newFromParentFilter( $origFilter );

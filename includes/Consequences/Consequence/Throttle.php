@@ -200,9 +200,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				break;
 			default:
 				// Should never happen
-				// @codeCoverageIgnoreStart
 				throw new InvalidArgumentException( "Invalid throttle type $type." );
-				// @codeCoverageIgnoreEnd
 		}
 
 		return "$type-$identifier";
