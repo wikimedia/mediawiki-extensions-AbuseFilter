@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Winston Sung",
-			"BadDog"
+			"BadDog",
+			"Vlad5250"
 		]
 	},
 	"abusefilter-desc": "Izvršava automatsko heurističko filtriranje u izmenama",
@@ -287,6 +288,7 @@
 	"abusefilter-edit-empty-throttlegroups": "Mora izabrati se barem jednu grupu za isticanje.",
 	"abusefilter-edit-duplicated-throttlegroups": "Grupe isticanja ne mogu imati duplikate.",
 	"abusefilter-edit-invalid-throttlegroups": "Navedene grupe isticanja nisu važeće.",
+	"abusefilter-edit-invalid-group": "Navedena grupa filtera ('$1') je nevažeća.",
 	"abusefilter-edit-builder-select": "Odaberite mogućnost za dodavanje kursoru",
 	"abusefilter-edit-builder-group-op-arithmetic": "Aritmetički operatori",
 	"abusefilter-edit-builder-op-arithmetic-addition": "Sabiranje (+)",
@@ -462,6 +464,8 @@
 	"abusefilter-exception-outofbounds": "Traženje nepostojeće stavke u nizu $2 (veličina niza = $3) kod znaka $1.",
 	"abusefilter-exception-negativeindex": "Negativni indeksi nisu dopušteni u nizovima. Dobio indeks \"$2\" kod znaka $1.",
 	"abusefilter-exception-notarray": "Traženje stavke niza za objekat koji nije niz kod znaka $1.",
+	"abusefilter-exception-unclosedcomment": "Nezatvorena pribilješka kod znaka $1.",
+	"abusefilter-exception-invalidiprange": "Nevažeći IP-opseg \"$2\" naveden na znaku $1.",
 	"abusefilter-exception-variablevariable": "set i set_var očekuju da prvi argument bude string literal, kod znaka $1.",
 	"abusefilter-action-tag": "Tag",
 	"abusefilter-action-throttle": "Uspori",
