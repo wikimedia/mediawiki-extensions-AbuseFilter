@@ -243,7 +243,7 @@
 	"abusefilter-edit-tag-placeholder": "Dodaj oznake (jedna po jedna ili odvojene zarezima)",
 	"abusefilter-edit-tag-hidden-placeholder": "Dodaj oznake (odvojene zarezima)",
 	"abusefilter-edit-block-anon-durations": "Trajanje blokade za anonimne suradnike",
-	"abusefilter-edit-block-user-durations": "Trajanje blokade za prijavljene suradnike",
+	"abusefilter-edit-block-user-durations": "Prijavljene suradnike blokirati na",
 	"abusefilter-block-anon": "Blokiraj anonimne suradnike",
 	"abusefilter-block-user": "Blokiraj prijavljene suradnike",
 	"abusefilter-block-talk": "bez uređivanja vlastite stranice za razgovor",

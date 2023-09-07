@@ -16,7 +16,8 @@
 			"Samat",
 			"Tacsipacsi",
 			"Tgr",
-			"Wolf Rex"
+			"Wolf Rex",
+			"Zalán Hári"
 		]
 	},
 	"abusefilter-desc": "Automatikus heurisztikát alkalmaz a szerkesztésekre.",
@@ -219,7 +220,7 @@
 	"abusefilter-edit-throttle-placeholder": "Vesszővel elválasztva összefűzés ÉS-ként, egyenként beillesztve VAGY-ként",
 	"abusefilter-throttle-ip": "IP-címek",
 	"abusefilter-throttle-user": "felhasználói fiók",
-	"abusefilter-throttle-range": "/16-os tartomány",
+	"abusefilter-throttle-range": "IP-tartomány",
 	"abusefilter-throttle-creationdate": "felhasználói fiók létrehozásának dátuma",
 	"abusefilter-throttle-editcount": "szerkesztésszám",
 	"abusefilter-throttle-site": "egész oldal",
