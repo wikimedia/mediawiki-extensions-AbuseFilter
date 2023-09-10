@@ -237,6 +237,22 @@ class RCVariableGenerator extends VariableGenerator {
 		$bits = $mwProps->getPropsFromPath( $file->getLocalRefPath(), true )['bits'];
 		$this->vars->setVar( 'file_bits_per_channel', $bits );
 
+		$this->vars->setLazyLoadVar( 'new_wikitext', 'revision-text',
+			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ), 'contextUser' => $this->contextUser ] );
+		$this->vars->setLazyLoadVar( 'old_wikitext', 'revision-text',
+			[
+				// rc_last_oldid is zero (RecentChange::newLogEntry)
+				'revid' => $this->rc->getAttribute( 'rc_this_oldid' ),
+				'parent' => true,
+				'contextUser' => $this->contextUser,
+			] );
+
+		$this->addEditVars(
+			$this->wikiPageFactory->newFromTitle( $title ),
+			$this->contextUser,
+			false
+		);
+
 		return $this;
 	}
 
