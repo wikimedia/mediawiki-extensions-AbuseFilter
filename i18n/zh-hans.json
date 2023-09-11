@@ -679,6 +679,8 @@
 	"notification-header-throttle-filter-no-actions": "{{GENDER:$1|你}}最近编辑的滥用过滤器$2的匹配率过高，但没有任何操作被自动禁用。",
 	"notification-subject-throttle-filter": "{{GENDER:$1|您}}近期编辑的一个滥用过滤器在{{SITENAME}}被限制",
 	"notification-link-text-show-filter": "显示过滤器",
+	"right-abusefilter-modify-blocked-external-domains": "创建或修改禁止被链接的外部域名",
+	"action-abusefilter-modify-blocked-external-domains": "创建或修改禁止被链接的外部域名",
 	"right-abusefilter-bypass-blocked-external-domains": "绕过被屏蔽的外部域名",
 	"action-abusefilter-bypass-blocked-external-domains": "绕过被屏蔽的外部域名"
 }

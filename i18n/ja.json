@@ -631,7 +631,10 @@
 	"abusefilter-blocked-domains-attempted": "公開しようとしたテキストはフィルターによってブロックされました。次のドメインは追加がブロックされています: $1",
 	"abusefilter-blocked-domains-json-error": "JSON は配列である必要があります",
 	"abusefilter-blocked-domains-invalid-entry": "JSON のエントリ$1は無効です。これは、「domain」フィールドと「notes」フィールドのみを持つオブジェクトである必要があり、両方とも文字列です。",
+	"abusefilter-blocked-domains-domain-added-comment": "ブロックされた外部ドメイン $1 を次のメモと共に追加：$2",
+	"abusefilter-blocked-domains-domain-removed-comment": "ブロックされた外部ドメイン $1 を次のメモと共に除去：$2",
 	"log-description-abusefilterprivatedetails": "以下は不正利用フィルターの非公開記録を調査した日時の一覧です。",
+	"log-description-abusefilterblockeddomainhit": "これらのイベントはブロックされたドメインへの一致を追跡します。",
 	"abusefilter-noreason": "警告: 非公開記録を閲覧するには、理由を入力する必要があります",
 	"abusefilter-log-ip-not-available": "参照不可",
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code>タグはAbuseFilterが使用するため予約されています。",
@@ -644,5 +647,7 @@
 	"notification-link-text-show-filter": "フィルターを表示:",
 	"right-abusefilter-modify-blocked-external-domains": "リンクをブロックする外部ドメインの作成または変更",
 	"action-abusefilter-modify-blocked-external-domains": "リンクをブロックする外部ドメインの作成または変更",
+	"right-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインを回避",
+	"action-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインを回避",
 	"abusefilter-blocked-domains-cannot-edit-directly": "リンクをブロックする外部ドメインの作成または変更は、[[Special:BlockedExternalDomains|対応する特別ページ]]を通じて行う必要があります。"
 }
