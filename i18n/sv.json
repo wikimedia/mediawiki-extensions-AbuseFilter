@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
+			"André Costa (WMSE)",
 			"Anhn",
 			"Bengt B",
 			"Bengtsson96",
@@ -287,7 +288,7 @@
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Märken]] att tillämpa:",
 	"abusefilter-edit-tag-placeholder": "Lägg till märken (en per rad eller separerade med komma)",
 	"abusefilter-edit-tag-hidden-placeholder": "Lägg till taggar (kommaseparerade)",
-	"abusefilter-edit-block-anon-durations": "Varaktighet för blockering av anonyma användare:",
+	"abusefilter-edit-block-anon-durations": "Varaktighet för blockering av icke-registrerade användare:",
 	"abusefilter-edit-block-user-durations": "Varaktighet för blockering av registrerade användare:",
 	"abusefilter-block-anon": "Blockera anonyma användare",
 	"abusefilter-block-user": "blockera registrerade användare",

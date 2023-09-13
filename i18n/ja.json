@@ -173,7 +173,7 @@
 	"logentry-abusefilterprivatedetails-access": "$1 は $3 の非公開記録を{{GENDER:$2|取得しました}}。",
 	"logentry-rights-blockautopromote": "$1 が {{GENDER:$4|$3}} の自動昇格を $5 {{GENDER:$2|ブロック}}しました。",
 	"logentry-rights-restoreautopromote": "$1 が {{GENDER:$4|$3}} の自動昇格条件を{{GENDER:$2|復元}}しました。",
-	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} が $3 に $4 を追加しようとした際にスパムブロックリストが発動しました。",
+	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} が $3 に $4 を追加しようとした際にドメインブロックリストが発動しました。",
 	"abusefilterprivatedetails-log-name": "不正利用フィルター非公開記録の調査記録",
 	"log-name-abusefilterblockeddomainhit": "ブロックされたドメインのヒットログ",
 	"abusefilter-list": "すべてのフィルター",
