@@ -156,6 +156,7 @@
 	"logentry-rights-blockautopromote": "$1, otomatik tanıtım {{GENDER:$4|$3}} bir süre için $5 {{GENDER:$2|engellendi}}",
 	"logentry-rights-restoreautopromote": "$1, {{GENDER:$4|$3}} otomatik terfi yeteneğini {{GENDER:$2|geri getirdi}}",
 	"abusefilterprivatedetails-log-name": "AbuseFilter özel ayrıntılara erişim günlüğü",
+	"log-name-abusefilterblockeddomainhit": "Engellenmiş alan adı ekleme günlüğü",
 	"abusefilter-list": "Tüm süzgeçler",
 	"abusefilter-list-id": "Süzgeç kimliği",
 	"abusefilter-list-pattern": "Desen",
