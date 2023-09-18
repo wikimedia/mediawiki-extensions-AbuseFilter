@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Baloch Afghanistan"
 		]
 	},
@@ -37,7 +38,7 @@
 	"abusefilter-edit-builder-op-comparison-lt": "کمتیر شه (>)",
 	"abusefilter-edit-builder-op-comparison-gt": "گیشتیر شه (<)",
 	"abusefilter-edit-builder-op-comparison-lte": "گونڈتیر یا مساوی (<=)",
-	"abusefilter-edit-builder-op-comparison-gte": "ٹووتیر یا مساوی  (<=)",
+	"abusefilter-edit-builder-op-comparison-gte": "ٹووتیر یا مساوی (<=)",
 	"abusefilter-edit-builder-op-bool-not": "نه (!)",
 	"abusefilter-edit-builder-op-bool-and": "و (&)",
 	"abusefilter-edit-builder-op-bool-or": "یا (|)",

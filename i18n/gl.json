@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"ArenaL5",
 			"Banjo",
 			"Breogan2008",
@@ -490,7 +491,7 @@
 	"abusefilter-action-disallow": "Impedir",
 	"abusefilter-revert-title": "Reverter todos os cambios feitos polo filtro $1",
 	"abusefilter-revert-intro": "Este formulario permítelle reverter todos os cambios feitos polo filtro de abusos $1.\nPor favor, teña coidado con esta ferramenta.",
-	"abusefilter-revert-preview-item": "$1: $2  {{GENDER:$7|fixo}} un $3 en $4. Accións a ser revertidas: $5 ($6)",
+	"abusefilter-revert-preview-item": "$1: $2 {{GENDER:$7|fixo}} un $3 en $4. Accións a ser revertidas: $5 ($6)",
 	"abusefilter-revert-search-legend": "Seleccione as accións do filtro de abusos que quere reverter",
 	"abusefilter-revert-periodstart": "Comezo do período:",
 	"abusefilter-revert-periodend": "Fin do período:",

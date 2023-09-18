@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"BaRaN6161 TURK",
 			"MuratTheTurkish"
 		]
@@ -27,7 +28,7 @@
 	"apihelp-query+abusefilters-summary": "Kötüye kullanım filtrelerinin ayrıntılarını gösterin.",
 	"apihelp-query+abusefilters-param-startid": "Numaralandırmaya başlamak için filtre kimliği.",
 	"apihelp-query+abusefilters-param-endid": "Numaralandırmayı durdurmak için filtre kimliği.",
-	"apihelp-query+abusefilters-param-show": "Yalnızca  bu kriterlere uyan filtreleri göster.",
+	"apihelp-query+abusefilters-param-show": "Yalnızca bu kriterlere uyan filtreleri göster.",
 	"apihelp-query+abusefilters-param-limit": "Listelenecek maksimum filtre sayısı.",
 	"apihelp-query+abusefilters-param-prop": "Hangi özellikleri elde etmek.",
 	"apihelp-query+abusefilters-example-1": "Etkin olan genel filtreleri listele",

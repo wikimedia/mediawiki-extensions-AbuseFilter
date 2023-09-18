@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Bdamokos",
 			"Bencemac",
 			"Bináris",
@@ -283,7 +284,7 @@
 	"abusefilter-edit-builder-op-comparison-equal": "Az érték egyenlő a következővel (==)",
 	"abusefilter-edit-builder-op-comparison-equal-strict": "Az érték és a típus egyenlő a következővel (===)",
 	"abusefilter-edit-builder-op-comparison-notequal": "Az érték nem egyenlő a következővel (!=)",
-	"abusefilter-edit-builder-op-comparison-notequal-strict": "Az érték és  atípus nem egyenlő a következővel (!==)",
+	"abusefilter-edit-builder-op-comparison-notequal-strict": "Az érték és atípus nem egyenlő a következővel (!==)",
 	"abusefilter-edit-builder-op-comparison-lt": "kisebb (<)",
 	"abusefilter-edit-builder-op-comparison-gt": "nagyobb (>)",
 	"abusefilter-edit-builder-op-comparison-lte": "kisebb vagy egyenlő (<=)",

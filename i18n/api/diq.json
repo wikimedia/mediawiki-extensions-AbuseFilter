@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"1917 Ekim Devrimi",
+			"Amire80",
 			"Asmen",
 			"Kumkumuk",
 			"Mirzali",
@@ -26,7 +27,7 @@
 	"apihelp-abusefilterevalexpression-example-2": "Neticey biçım kerdışa ifadey basiti tetkik kerê",
 	"apihelp-abusefilterunblockautopromote-summary": "Seba parzûnê istısmari ra gırewtışê qıseykerdışê otomatiki ra yew karberi kılit keno.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Şıma qayılê ke bloqey kanci bamaey karberi wedarne.",
-	"apihelp-abusefilterunblockautopromote-example-1": "Otomatik  [[User:Example]] bloqey cı wedarnê",
+	"apihelp-abusefilterunblockautopromote-example-1": "Otomatik [[User:Example]] bloqey cı wedarnê",
 	"apihelp-query+abusefilters-summary": "Detayanê parzûnê istısmari bımocne.",
 	"apihelp-query+abusefilters-param-startid": "Kamiya filtre nımre kerdışmra start ke",
 	"apihelp-query+abusefilters-param-endid": "Kamiya filtri nımre kedışi vındarn",
@@ -38,7 +39,7 @@
 	"apihelp-query+abuselog-summary": "Parzûnanê istısmari ra yewo ke weqeyi tepıştê, bımocne.",
 	"apihelp-query+abuselog-param-logid": "Deyaye kamiye roceka yew ronıştış bımocne",
 	"apihelp-query+abuselog-param-start": "Mora zemani nımre kerdışmra start ke",
-	"apihelp-query+abuselog-param-end": "Mora zemani  nımre kedışi vındarn",
+	"apihelp-query+abuselog-param-end": "Mora zemani nımre kedışi vındarn",
 	"apihelp-query+abuselog-param-user": "Teyna qeydé dekerdena grotena IP adresa karberi bıvin",
 	"apihelp-query+abuselog-param-title": "Dekerdenanê perer teyna bıvin",
 	"apihelp-query+abuselog-param-filter": "Teyna dekerdenanê kamiya filtrande tepêştena grotışa bıvin. Pey blokana abırne u parzûnê $1ya verole cıkuye",

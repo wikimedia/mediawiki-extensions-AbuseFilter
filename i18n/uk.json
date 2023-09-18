@@ -4,6 +4,7 @@
 			"AS",
 			"Ahonc",
 			"Alex Khimich",
+			"Amire80",
 			"Andriy.v",
 			"Andriykopanytsia",
 			"Avatar6",
@@ -586,7 +587,7 @@
 	"abusefilter-import-submit": "Імпортувати дані",
 	"abusefilter-import-invalid-data": "Дані, які Ви намагались імпортувати, недійсні",
 	"abusefilter-group-default": "Стандартна",
-	"abusefilter-http-error": "Сталася помилка HTTP:  $1.",
+	"abusefilter-http-error": "Сталася помилка HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Переглянути приватні дані",
 	"abusefilter-view-privatedetails-legend": "Переглянути приватні дані",
 	"abusefilter-view-privatedetails-reason": "Причина доступу до приватних даних:",
@@ -627,8 +628,8 @@
 	"notification-subject-throttle-filter": "Фільтр зловживань, який {{GENDER:$1|ви}} редагували, було обмежено {{GRAMMAR:locative|{{SITENAME}}}}",
 	"notification-link-text-show-filter": "Показати фільтр",
 	"right-abusefilter-modify-blocked-external-domains": "Створення або зміна зовнішніх доменів, для яких заблоковано  можливість на них посилатися",
-	"action-abusefilter-modify-blocked-external-domains": "створення або зміну зовнішніх доменів, для яких заблоковано  можливість на них посилатися",
+	"action-abusefilter-modify-blocked-external-domains": "створення або зміну зовнішніх доменів, для яких заблоковано можливість на них посилатися",
 	"right-abusefilter-bypass-blocked-external-domains": "Обхід заблокованих зовнішніх доменів",
 	"action-abusefilter-bypass-blocked-external-domains": "обхід заблокованого зовнішнього домену",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано  можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]]."
 }

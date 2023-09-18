@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Kaleem Bhatti",
 			"Saraiki"
 		]
@@ -116,7 +117,7 @@
 	"abusefilter-edit-warn-actions": "عمل:",
 	"abusefilter-edit-disallow-other": "ٻیا سنیہا",
 	"abusefilter-edit-disallow-actions": "کم:",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|تہاݙیاں تبدیلیاں]]  [[Special:AbuseFilter/$1|چھاݨاں $3]] وچ محفوظ تھی ڳیاں ہن ـ",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|تہاݙیاں تبدیلیاں]] [[Special:AbuseFilter/$1|چھاݨاں $3]] وچ محفوظ تھی ڳیاں ہن ـ",
 	"abusefilter-edit-history": "تاریخ:",
 	"abusefilter-edit-tools": "اوزار:",
 	"abusefilter-edit-builder-op-arithmetic-addition": "جمع (+)",
