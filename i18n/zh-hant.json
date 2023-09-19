@@ -45,7 +45,8 @@
 			"Zanhsieh",
 			"Zhxy 519",
 			"逆襲的天邪鬼",
-			"捍粵者"
+			"捍粵者",
+			"Amire80"
 		]
 	},
 	"abusefilter-desc": "自動條件判定編輯行為",
@@ -510,7 +511,7 @@
 	"abusefilter-exception-notarray": "於第 $1 個字元處於非陣列中使用了陣列項目。",
 	"abusefilter-exception-unclosedcomment": "在第 $1 字元有未關閉評論。",
 	"abusefilter-exception-invalidiprange": "在字元 $1 提供了無效 IP 範圍 \"$2\"。",
-	"abusefilter-exception-disabledvar": "在 $1 字元上的變數 $2  已不使用。",
+	"abusefilter-exception-disabledvar": "在 $1 字元上的變數 $2 已不使用。",
 	"abusefilter-exception-variablevariable": "set 與 set_var 的第一個參數應為字面常數，在字元 $1 處找到。",
 	"abusefilter-exception-unknownfunction": "於第 $1 個字元的 $2 不是有效函式。",
 	"abusefilter-exception-unusedvars": "未使用以下變數：$2。",
