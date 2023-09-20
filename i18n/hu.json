@@ -4,6 +4,7 @@
 			"Amire80",
 			"Bdamokos",
 			"Bencemac",
+			"Beze",
 			"Bináris",
 			"Csega",
 			"Dani",
@@ -121,6 +122,8 @@
 	"abusefilter-log-hide-reason": "Indoklás:",
 	"abusefilter-log-hide-reason-other": "Más/további ok:",
 	"abusefilter-log-hide-forbidden": "Nincs jogosultságod elrejteni ezeket a tételeket.",
+	"abusefilter-log-hide-show": "Megjelenítés",
+	"abusefilter-log-hide-hide": "Elrejtés",
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|elrejtette}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|láthatóvá tette}} $3",
 	"logentry-abusefilter-hit": "$1 „$5” műveletével {{GENDER:$2|beindította}} a(z) $4 vandálszűrőt a(z) $3 oldalon. Elvégzett intézkedések: $6 ($7)",
@@ -528,10 +531,14 @@
 	"abusefilter-view-privatedetails-legend": "Privát részletek megtekintése",
 	"abusefilter-view-privatedetails-reason": "Privát részletekhez való hozzáférés oka:",
 	"abusefilter-log-details-id": "Naplóazonosító",
+	"abusefilter-blocked-domains-notes": "Megjegyzések",
+	"abusefilter-blocked-domains-actions-header": "Műveletek",
+	"abusefilter-blocked-domains-remove-reason": "Indoklás",
 	"abusefilter-blocked-domains-attempted": "Az általad beküldött szöveg közzétételét blokkolta a szűrőnk. A következő domain van blokkolva: $1",
 	"abusefilter-noreason": "Figyelmeztetés: ezen naplóbejegyzés privát részleteihez való hozzáféréshez indoklást kell megadnod.",
 	"abusefilter-log-ip-not-available": "Nem elérhető",
 	"abusefilter-tag-reserved": "Az <code>abusefilter-condition-limit</code> címke a Vandálszűrő belső használatára van fenntartva.",
 	"tag-abusefilter-condition-limit": "feltételhatár elérve",
-	"tag-abusefilter-condition-limit-description": "Szerkesztések vagy egyéb események, amelyek nem lettek ellenőrizve az összes aktív [[Special:AbuseFilter|Vandálszűrő]] által ([[mw:Extension:AbuseFilter/Conditions|segítség]])."
+	"tag-abusefilter-condition-limit-description": "Szerkesztések vagy egyéb események, amelyek nem lettek ellenőrizve az összes aktív [[Special:AbuseFilter|Vandálszűrő]] által ([[mw:Extension:AbuseFilter/Conditions|segítség]]).",
+	"notification-link-text-show-filter": "Szűrő megjelenítése"
 }
