@@ -119,7 +119,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$request = $this->getRequest();
-		$out->setPageTitle( $this->msg( 'abusefilter-edit' ) );
+		$out->setPageTitleMsg( $this->msg( 'abusefilter-edit' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 
 		if ( !is_numeric( $this->filter ) && $this->filter !== null ) {

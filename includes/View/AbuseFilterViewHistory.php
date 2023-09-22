@@ -85,9 +85,9 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		}
 
 		if ( $filter ) {
-			$out->setPageTitle( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
+			$out->setPageTitleMsg( $this->msg( 'abusefilter-history' )->numParams( $filter ) );
 		} else {
-			$out->setPageTitle( $this->msg( 'abusefilter-filter-log' ) );
+			$out->setPageTitleMsg( $this->msg( 'abusefilter-filter-log' ) );
 		}
 
 		// Useful links

@@ -104,7 +104,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function show() {
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( 'abusefilter-examine' ) );
+		$out->setPageTitleMsg( $this->msg( 'abusefilter-examine' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		if ( $this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {
 			$out->addWikiMsg( 'abusefilter-examine-intro' );

@@ -129,7 +129,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$filter = $this->filter;
 
 		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
-		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter ) );
+		$out->setPageTitleMsg( $this->msg( 'abusefilter-revert-title' )->numParams( $filter ) );
 
 		// First, the search form. Limit dates to avoid huge queries
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );

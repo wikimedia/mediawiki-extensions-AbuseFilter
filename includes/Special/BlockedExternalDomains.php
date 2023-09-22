@@ -71,7 +71,7 @@ class BlockedExternalDomains extends SpecialPage {
 
 	private function showList() {
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( 'abusefilter-blocked-domains-title' ) );
+		$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-title' ) );
 		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-intro' );
 
 		// Direct editing of this page is blocked via EditPermissionHandler
@@ -186,7 +186,7 @@ class BlockedExternalDomains extends SpecialPage {
 		}
 
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( 'abusefilter-blocked-domains-remove-title' ) );
+		$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-remove-title' ) );
 		$out->addBacklinkSubtitle( $this->getPageTitle() );
 
 		$preText = $this->msg( 'abusefilter-blocked-domains-remove-explanation-initial', $domain )->parseAsBlock();
@@ -259,7 +259,7 @@ class BlockedExternalDomains extends SpecialPage {
 		}
 
 		$out = $this->getOutput();
-		$out->setPageTitle( $this->msg( "abusefilter-blocked-domains-add-heading" ) );
+		$out->setPageTitleMsg( $this->msg( "abusefilter-blocked-domains-add-heading" ) );
 		$out->addBacklinkSubtitle( $this->getPageTitle() );
 
 		$preText = $this->msg( "abusefilter-blocked-domains-add-explanation", $domain )->parseAsBlock();
