@@ -28,7 +28,8 @@
 			"DDPAT",
 			"DannyS712",
 			"Kareyac",
-			"Ice bulldog"
+			"Ice bulldog",
+			"Amire80"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -567,7 +568,7 @@
 	"abusefilter-import-submit": "Імпортувати дані",
 	"abusefilter-import-invalid-data": "Дані, які Ви намагались імпортувати, недійсні",
 	"abusefilter-group-default": "Стандартна",
-	"abusefilter-http-error": "Сталася помилка HTTP:  $1.",
+	"abusefilter-http-error": "Сталася помилка HTTP: $1.",
 	"abusefilter-view-privatedetails-submit": "Переглянути приватні дані",
 	"abusefilter-view-privatedetails-legend": "Переглянути приватні дані",
 	"abusefilter-view-privatedetails-reason": "Причина доступу до приватних даних:",

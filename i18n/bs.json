@@ -12,7 +12,8 @@
 			"Sociologist",
 			"Srdjan m",
 			"Vlad5250",
-			"Srđan"
+			"Srđan",
+			"Amire80"
 		]
 	},
 	"abusefilter-desc": "Dodaje automatske heuristike izmjenama.",
@@ -352,7 +353,7 @@
 	"abusefilter-test-period-end": "Izmjene načinjene poslije:",
 	"abusefilter-test-page": "Izmjene napravljene na stranici:",
 	"abusefilter-test-shownegative": "Prikaži promjene koje ne odgovaraju filteru",
-	"abusefilter-test-syntaxerr": "Filter koji ste unijeli sadrži sintaksnu grešku.\nMožete dobiti potpuno objašnjenje klikom na dugme  \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-syntaxerr": "Filter koji ste unijeli sadrži sintaksnu grešku.\nMožete dobiti potpuno objašnjenje klikom na dugme \"{{int:abusefilter-edit-check}}\".",
 	"abusefilter-test-action": "Vrsta radnje:",
 	"abusefilter-changeslist-examine": "ispitaj",
 	"abusefilter-examine": "Ispitaj lične promjene",

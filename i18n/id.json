@@ -27,7 +27,12 @@
 			"Akmaie Ajam",
 			"Daud I.F. Argana",
 			"FBN122645",
-			"Syman51"
+			"Syman51",
+			"Agam Riyandana",
+			"Amire80",
+			"David Wadie Fisher-Freberg",
+			"Ezagren",
+			"Gombang"
 		]
 	},
 	"abusefilter-desc": "Memberlakukan pemeriksaan heuristik otomatis atas kontribusi pengguna.",
@@ -383,7 +388,7 @@
 	"abusefilter-edit-builder-vars-movedfrom-prefixedtitle": "Judul lengkap dari pemindahan halaman sumber",
 	"abusefilter-edit-builder-vars-movedfrom-age": "Pindahkan usia halaman sumber (detik)",
 	"abusefilter-edit-builder-vars-movedto-id": "ID halaman dari pemindahan halaman tujuan",
-	"abusefilter-edit-builder-vars-movedto-ns": "Ruangnama  dari pemindahan halaman tujuan",
+	"abusefilter-edit-builder-vars-movedto-ns": "Ruangnama dari pemindahan halaman tujuan",
 	"abusefilter-edit-builder-vars-movedto-title": "Judul dari pemindahan halaman tujuan",
 	"abusefilter-edit-builder-vars-movedto-prefixedtitle": "Judul lengkap dari pemindahan halaman tujuan",
 	"abusefilter-edit-builder-vars-movedto-age": "Pindahkan usia halaman tujuan (detik)",
