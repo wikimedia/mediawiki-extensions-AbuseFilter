@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Astahar",
 			"Chuvash",
 			"Chuvash2014",
 			"Salam"
 		]
 	},
 	"abuselog": "Фильтрсен журналĕ",
-	"abusefilter-log-search": "Фильтрсен журналĕнче шырани",
+	"abusefilter-log-search": "Фильтрсен журналӗнчи шырав",
 	"abusefilter-log-search-user": "Усă куракан:",
 	"abusefilter-log-search-filter": "Ала идентификаторӗ",
 	"abusefilter-log-search-title": "Ячĕ:",
