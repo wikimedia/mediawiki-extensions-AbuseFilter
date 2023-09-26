@@ -29,6 +29,7 @@
 			"Meno25",
 			"Mormegil",
 			"MuratTheTurkish",
+			"MusikAnimal",
 			"Nemo bis",
 			"Patriot Kur",
 			"Phjtieudoc",
@@ -647,5 +648,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "{{doc-action|abusefilter-modify-blocked-external-domains}}",
 	"right-abusefilter-bypass-blocked-external-domains": "{{doc-right|abusefilter-bypass-blocked-external-domains}}",
 	"action-abusefilter-bypass-blocked-external-domains": "{{doc-action|abusefilter-bypass-blocked-external-domains}}",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page.",
+	"abusefilter-blocked-domains-notif-body": "Warning shown when an editor types a URL to a blocked external domain. Parameters:\n* $1 - the domain name.",
+	"abusefilter-blocked-domains-notif-review-link": "Label for the 'Review link' link in the notification popup. When clicked, the relevant wikitext that links to a blocked domain is selected. The word 'review' in this context is a verb."
 }

@@ -1,0 +1,15 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client-es6",
+		"wikimedia/mediawiki",
+		"wikimedia/jquery"
+	],
+	"env": {
+		"browser": true
+	},
+	"rules": {
+		"no-implicit-globals": "off",
+		"es-x/no-array-prototype-includes": "off"
+	}
+}

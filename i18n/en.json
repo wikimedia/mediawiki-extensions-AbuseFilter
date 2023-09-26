@@ -604,5 +604,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "create or modify what external domains are blocked from being linked",
 	"right-abusefilter-bypass-blocked-external-domains": "Bypass blocked external domains",
 	"action-abusefilter-bypass-blocked-external-domains": "bypass blocked external domain",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Create or modify what external domains are blocked from being linked must be done through [[Special:BlockedExternalDomains|the special page]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Create or modify what external domains are blocked from being linked must be done through [[Special:BlockedExternalDomains|the special page]].",
+	"abusefilter-blocked-domains-notif-body": "You added a link to the domain <strong>$1</strong> which is forbidden from being used on this site. Please remove or replace it with a different URL.",
+	"abusefilter-blocked-domains-notif-review-link": "Review link"
 }
