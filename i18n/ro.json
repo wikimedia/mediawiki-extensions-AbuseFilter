@@ -142,6 +142,7 @@
 	"logentry-rights-blockautopromote": "$1 a {{GENDER:$2|blocat}} promovarea automată a {{GENDER:$4|$3}} pentru o perioadă de $5",
 	"logentry-rights-restoreautopromote": "$1 a {{GENDER:$2|restabilit}} promovarea automată a {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "Jurnal de acces la detaliile private AbuseFilter",
+	"log-name-abusefilterblockeddomainhit": "Jurnal împiedicăre domenii blocate",
 	"abusefilter-list": "Toate filtrele",
 	"abusefilter-list-id": "ID filtru",
 	"abusefilter-list-pattern": "Model",
