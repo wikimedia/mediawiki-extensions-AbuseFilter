@@ -119,6 +119,6 @@ class FilterRunnerTest extends MediaWikiIntegrationTestCase {
 		$changeTagger = $this->createMock( ChangeTagger::class );
 		$changeTagger->expects( $this->once() )->method( 'addConditionsLimitTag' );
 		$runner = $this->getRunner( $changeTagger, $cache );
-		$this->assertTrue( $runner->run()->isGood() );
+		$this->assertStatusGood( $runner->run() );
 	}
 }

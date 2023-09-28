@@ -122,7 +122,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 			$this->getTestSysop()->getUser(), $row['id'], $newFilter, $origFilter
 		);
 
-		$this->assertTrue( $status->isGood(), "Save failed with status: $status" );
+		$this->assertStatusGood( $status );
 		$value = $status->getValue();
 		$this->assertIsArray( $value );
 		$this->assertCount( 2, $value );
@@ -154,9 +154,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		$this->overrideUserPermissions( $user, [ 'abusefilter-modify' ] );
 		$status = AbuseFilterServices::getFilterStore()->saveFilter( $user, $row['id'], $newFilter, $origFilter );
 
-		$this->assertFalse( $status->isGood(), 'The filter validation returned a valid status.' );
-		$actual = $status->getErrors()[0]['message'];
-		$this->assertSame( $expectedError, $actual );
+		$this->assertStatusWarning( $expectedError, $status );
 	}
 
 	public function testSaveFilter_noChange() {
@@ -179,7 +177,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 			$this->getTestSysop()->getUser(), $filter, $newFilter, $origFilter
 		);
 
-		$this->assertTrue( $status->isGood(), "Got a non-good status: $status" );
+		$this->assertStatusGood( $status );
 		$this->assertFalse( $status->getValue(), 'Status value should be false' );
 	}
 }
