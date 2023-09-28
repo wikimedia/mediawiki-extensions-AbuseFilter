@@ -79,7 +79,10 @@
 			"飞舞回堂前",
 			"ArsenalBastion4093",
 			")8",
-			"U.T."
+			"U.T.",
+			"CrownedWharf566",
+			"LittlePaw365",
+			"Vikarna"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -411,7 +414,7 @@
 	"abusefilter-edit-builder-funcs-count": "字符串 X 在字符串 Y 中出现的次数（count）",
 	"abusefilter-edit-builder-funcs-rcount": "正则表达式 X 在字符串 Y 中匹配的次数（rcount）",
 	"abusefilter-edit-builder-funcs-get_matches": "匹配文本中每个捕捉组的正则表达式数组（get_matches）",
-	"abusefilter-edit-builder-funcs-rmwhitespace": "移除空白字符（rmwhitespace）",
+	"abusefilter-edit-builder-funcs-rmwhitespace": "删除空格字符（rmwhitespace）",
 	"abusefilter-edit-builder-funcs-rmspecials": "移除特殊字符（rmspecials）",
 	"abusefilter-edit-builder-funcs-ip_in_range": "IP地址是否在范围内？（ip_in_range）",
 	"abusefilter-edit-builder-funcs-ip_in_ranges": "IP地址是否在任一范围内？（ip_in_ranges）",
