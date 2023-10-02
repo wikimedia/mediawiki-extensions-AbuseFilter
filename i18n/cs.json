@@ -620,8 +620,8 @@
 	"notification-header-throttle-filter": "Filtr zneužití $2, který jste nedávno {{GENDER:$1|upravil|upravila|upravil(a)}}, byl omezen.",
 	"notification-subject-throttle-filter": "Na {{GRAMMAR:6sg|{{SITENAME}}}} byl omezen filtr zneužití, který jste {{GENDER:$1|upravil|upravila|upravil(a)}}",
 	"notification-link-text-show-filter": "Zobrazit filtr",
-	"right-abusefilter-modify-blocked-external-domains": "Vytvořit nebo upravit externí domény, jejichž propojení je blokováno",
-	"action-abusefilter-modify-blocked-external-domains": "vytvořit nebo upravit externí domény, jejichž propojení je blokováno",
+	"right-abusefilter-modify-blocked-external-domains": "Vytvořit nebo upravit seznam externích domén, jejichž odkazování je blokováno",
+	"action-abusefilter-modify-blocked-external-domains": "vytvořit nebo upravit seznam externích domén, jejichž odkazování je blokováno",
 	"right-abusefilter-bypass-blocked-external-domains": "Obejít seznam blokovaných externích domén",
 	"action-abusefilter-bypass-blocked-external-domains": "obejít seznam blokovaných externích domén"
 }
