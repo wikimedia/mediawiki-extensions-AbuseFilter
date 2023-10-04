@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Huuchin"
+			"Huuchin",
+			"Ukhant Erdemt"
 		]
 	},
-	"abusefilter-diff-item": "Махбуд"
+	"abusefilter-history-backedit": "Шүүх ясгч",
+	"abusefilter-diff-item": "Махбуд",
+	"abusefilter-diff-backhistory": "Шүүх түүк"
 }
