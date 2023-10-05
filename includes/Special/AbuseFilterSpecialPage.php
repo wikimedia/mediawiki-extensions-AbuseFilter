@@ -79,7 +79,7 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 
 		$linkStr = $this->msg( 'parentheses' )
 			->rawParams( $this->getLanguage()->pipeList( $links ) )
-			->text();
+			->escaped();
 		$linkStr = $this->msg( 'abusefilter-topnav' )->parse() . " $linkStr";
 
 		$linkStr = Xml::tags( 'div', [ 'class' => 'mw-abusefilter-navigation' ], $linkStr );
