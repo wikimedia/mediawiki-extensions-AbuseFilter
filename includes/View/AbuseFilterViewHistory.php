@@ -117,13 +117,12 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		);
 		if ( $user !== false ) {
 			$out->addSubtitle(
-				$this->msg(
-					'abusefilter-history-foruser',
-					// We don't really need to get a user ID
-					Linker::userLink( 1, $user ),
+				$this->msg( 'abusefilter-history-foruser' )
+					// We don't really need to pass the real user ID
+					->rawParams( Linker::userLink( 1, $user ) )
 					// For GENDER
-					$user
-				)->text()
+					->params( $user )
+					->parse()
 			);
 		} else {
 			$user = null;
