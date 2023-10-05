@@ -129,7 +129,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$filter = $this->filter;
 
 		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
-		$out->setPageTitleMsg( $this->msg( 'abusefilter-revert-title' )->numParams( $filter ) );
+		// Parse wikitext in this message to allow formatting of numero signs (T343994#9209383)
+		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter )->parse() );
 
 		// First, the search form. Limit dates to avoid huge queries
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
