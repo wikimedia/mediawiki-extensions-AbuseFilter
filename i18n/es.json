@@ -65,7 +65,8 @@
 			"Tifinaghes",
 			"Translationista",
 			"Vivaelcelta",
-			"Warming Hearth"
+			"Warming Hearth",
+			"No se"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -254,7 +255,7 @@
 	"abusefilter-edit-oldwarning": "<strong>Estás editando una versión antigua de este filtro.\nLas estadísticas citadas son para la versión más reciente del filtro.\nSi grabas tus cambios, sobrescribirás todos los cambios realizados desde la revisión que estás editando.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Volver al historial de este filtro]].",
 	"abusefilter-edit-oldwarning-view": "<strong>Estás viendo una versión antigua de este filtro.\nLas estadísticas citadas son de la versión más reciente del filtro.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Volver al historial de este filtro]].",
 	"abusefilter-edit-status-label": "Estadísticas:",
-	"abusefilter-edit-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, este filtro ha coincidido con $2 ($3 %).\nComo promedio, su tiempo de ejecución es de $4 y consume $5 {{PLURAL:$5|condición|condiciones}} del límite de condiciones.",
+	"abusefilter-edit-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, este filtro ha coincidido con $2 ($3 %).\nComo promedio, su tiempo de ejecución es de $4 milisegundos y consume $5 condici{{PLURAL:$5|ón|ones}} del límite de condición.",
 	"abusefilter-edit-throttled-warning": "'''Atención:''' Este filtro se marcó automáticamente como dañino. Como medida de seguridad, {{PLURAL:$2|la siguiente acción no se ejecutará|las siguientes acciones no se ejecutarán}}: $1. Compruebe si se espera la alta tasa de coincidencias. Si es así, puede guardar el filtro nuevamente para eliminar esta restricción.",
 	"abusefilter-edit-throttled-warning-no-actions": "'''Advertencia:''' Este filtro fue marcado automáticamente como dañino. No se ha desactivado automáticamente ninguna acción, pero por favor, comprueba si la alta tasa de coincidencias es la esperada. Si es así, puedes ignorar esta advertencia.",
 	"abusefilter-edit-new": "Filtro nuevo",
