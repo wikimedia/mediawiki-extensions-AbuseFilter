@@ -45,7 +45,9 @@
 			"Zetud",
 			"Cantons-de-l'Est",
 			"Golmore",
-			"Cigaryno"
+			"Cigaryno",
+			"Eihel",
+			"Neifu"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -217,9 +219,9 @@
 	"abusefilter-reautoconfirm-notallowed": "Vous n’êtes pas habilité à rétablir l’état autoconfirmé.",
 	"abusefilter-reautoconfirm-done": "L’état autoconfirmé du compte utilisateur a été rétabli",
 	"abusefilter-status": "{{PLURAL:$1|Dans la dernière action|Parmi les $1 dernières actions}}, $2 ($3 %) {{PLURAL:$2|a|ont}} atteint la limite des $4 conditions autorisées. Et $5 ($6 %) {{PLURAL:$5|a été détectée|ont été détectées}} par au moins l’un des filtres actuellement activés.",
-	"abusefilter-edit": "Modifier le filtre anti-abus",
+	"abusefilter-edit": "Modification du filtre anti-abus",
 	"abusefilter-edit-subtitle": "Modification du filtre $1",
-	"abusefilter-edit-subtitle-new": "Créer un filtre",
+	"abusefilter-edit-subtitle-new": "Création d’un filtre",
 	"abusefilter-edit-token-not-match": "Les modifications n’ont pas été enregistrées ! Veuillez les enregistrer à nouveau.",
 	"abusefilter-edit-oldwarning": "<strong>Vous êtes en train de modifier une ancienne version de ce filtre.\nLes statistiques affichées concernent la version la plus récente de celui-ci.\nSi vous enregistrez vos modifications, vous allez écraser tous les changements intervenus depuis la version que vous modifiez.</strong>&nbsp;&bull;\n[[Special:AbuseFilter/history/$2|Revenir à l’historique de ce filtre]]",
 	"abusefilter-edit-oldwarning-view": "<strong>Vous visualisez une ancienne version de ce filtre.\nLes statistiques citées concernent la plus récente version du filtre.</strong>&nbsp;●\n[[Special:AbuseFilter/history/$2|Retour à l’historique de ce filtre]].",
