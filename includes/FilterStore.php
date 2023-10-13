@@ -147,7 +147,7 @@ class FilterStore {
 		// TODO: It might make more sense to check what was actually changed
 		$newRow['af_throttled'] = ( $newRow['af_throttled'] ?? false ) && !$newRow['af_enabled'];
 		// This is null when creating a new filter, but the DB field is NOT NULL
-		$newRow['af_hit_count'] = $newRow['af_hit_count'] ?? 0;
+		$newRow['af_hit_count'] ??= 0;
 		$rowForInsert = array_diff_key( $newRow, [ 'af_id' => true ] );
 
 		$dbw->startAtomic( __METHOD__ );
