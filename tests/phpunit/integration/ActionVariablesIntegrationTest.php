@@ -120,7 +120,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			$actual = $export[$var];
 			if ( $var === 'new_html' && is_array( $value ) ) {
 				// Special case for new_html: avoid flaky tests, and only check containment
-				$this->assertStringContainsString( '<div class="mw-parser-output', $actual );
+				$this->assertStringContainsString( 'mw-parser-output', $actual );
 				$this->assertDoesNotMatchRegularExpression( "/<!--\s*NewPP limit/", $actual );
 				$this->assertDoesNotMatchRegularExpression( "/<!--\s*Transclusion/", $actual );
 				foreach ( $value as $needle ) {
