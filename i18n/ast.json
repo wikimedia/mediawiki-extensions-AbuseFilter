@@ -5,7 +5,8 @@
 			"Fitoschido",
 			"Matma Rex",
 			"Mr.Ajedrez",
-			"Xuacu"
+			"Xuacu",
+			"YoaR"
 		]
 	},
 	"abusefilter-desc": "Aplica heurística automática a les ediciones.",
@@ -302,7 +303,7 @@
 	"abusefilter-edit-builder-misc-like": "Coincide col patrón (like)",
 	"abusefilter-edit-builder-misc-rlike": "Coincide con espresión regular (rlike)",
 	"abusefilter-edit-builder-misc-irlike": "Coincide cola espresión regular, ensin distinguir mayúscules y minúscules (irlike)",
-	"abusefilter-edit-builder-misc-contains": "La cadena izquierda contien la cadena drecha (contains)",
+	"abusefilter-edit-builder-misc-contains": "La cadena izquierda contién la cadena drecha (contains)",
 	"abusefilter-edit-builder-misc-stringlit": "Cadena lliteral (\"\")",
 	"abusefilter-edit-builder-misc-tern": "Operador ternariu (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Condicional (if X then Y else Z end)",
