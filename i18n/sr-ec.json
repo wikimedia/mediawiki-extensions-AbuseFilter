@@ -218,7 +218,7 @@
 	"abusefilter-edit-action-blockautopromote": "Одузми кориснику аутоматски потврђен статус",
 	"abusefilter-edit-action-degroup": "Уклони корисника са свих овлашћених група",
 	"abusefilter-edit-action-block": "Блокирај уређивање кориснику и/или IP адреси",
-	"abusefilter-edit-action-blocktalk": "Блокирај кориснику и/или IP адреси уређивање сопствене сзр",
+	"abusefilter-edit-action-blocktalk": "Блокирај кориснику и/или IP адреси уређивање сопствене странице за разговор",
 	"abusefilter-edit-action-throttle": "Успори корисника ако пређе ограничење учесталости",
 	"abusefilter-edit-action-rangeblock": "Блокирај /16 опсег IP адреса корисника",
 	"abusefilter-edit-action-tag": "Означи измену за будући преглед",
