@@ -168,7 +168,7 @@
 	"abusefilter-list-options-searchpattern": "Уставіць узор",
 	"abusefilter-list-options-searchoptions": "Рэжым пошуку:",
 	"abusefilter-list-options-search-like": "Просты запыт",
-	"abusefilter-list-options-search-rlike": "Звычайны выраз",
+	"abusefilter-list-options-search-rlike": "Рэгулярны выраз",
 	"abusefilter-list-options-search-irlike": "Рэгулярны выраз, адчувальны да рэгістру",
 	"abusefilter-list-invalid-searchmode": "Пазначаны рэжым пошуку недапушчальны.",
 	"abusefilter-list-regexerror": "Падчас пошуку адбылася памылка: сынтаксычная памылка рэгулярнага выразу.",
