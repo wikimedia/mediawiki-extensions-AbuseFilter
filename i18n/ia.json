@@ -603,5 +603,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "crear o modificar le lista de dominios externe al quales le ligamines es blocate",
 	"right-abusefilter-bypass-blocked-external-domains": "Contornar dominios externe blocate",
 	"action-abusefilter-bypass-blocked-external-domains": "contornar dominios externe blocate",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Le creation o modification del lista de dominios externe al quales le ligamines es blocate debe esser facite usante [[Special:BlockedExternalDomains|iste pagina special]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Le creation o modification del lista de dominios externe al quales le ligamines es blocate debe esser facite usante [[Special:BlockedExternalDomains|iste pagina special]].",
+	"abusefilter-blocked-domains-notif-body": "Tu ha addite un ligamine al dominio <strong>$1</strong>. Le uso de iste dominio es prohibite sur iste sito. Per favor remove lo o reimplacia lo per un altere URL.",
+	"abusefilter-blocked-domains-notif-review-link": "Revider ligamine"
 }

@@ -5,6 +5,7 @@
 			"Aftabuzzaman",
 			"Amire80",
 			"Bellayet",
+			"Borhan",
 			"Ehsanulhb",
 			"Greatder",
 			"Leemon2010",
@@ -460,5 +461,6 @@
 	"notification-link-text-show-filter": "ছাঁকনি দেখান",
 	"right-abusefilter-bypass-blocked-external-domains": "অবরুদ্ধ বহিঃস্থ ডোমেইন বাইপাস করা",
 	"action-abusefilter-bypass-blocked-external-domains": "অবরুদ্ধ বহিঃস্থ ডোমেইন বাইপাস করার",
-	"abusefilter-blocked-domains-cannot-edit-directly": "কোনও বহিঃস্থ ডোমেইনকে লিঙ্ক করা থেকে অবরুদ্ধ করতে সেই ডোমেইনটি যোগ বা সংশোধন করার জন্য [[Special:BlockedExternalDomains|এই বিশেষ পাতাটি]] ব্যবহার করতে হবে।"
+	"abusefilter-blocked-domains-cannot-edit-directly": "কোনও বহিঃস্থ ডোমেইনকে লিঙ্ক করা থেকে অবরুদ্ধ করতে সেই ডোমেইনটি যোগ বা সংশোধন করার জন্য [[Special:BlockedExternalDomains|এই বিশেষ পাতাটি]] ব্যবহার করতে হবে।",
+	"abusefilter-blocked-domains-notif-review-link": "সংযোগ পর্যালোচনা করুন"
 }

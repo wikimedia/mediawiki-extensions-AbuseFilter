@@ -444,7 +444,7 @@
 	"abusefilter-history-filter": "Правило на филтерот",
 	"abusefilter-history-comments": "Прибелешки",
 	"abusefilter-history-actions": "Дејства",
-	"abusefilter-history-backedit": "Назад кон уредувањето на филтерот",
+	"abusefilter-history-backedit": "Уредувач на филтерот",
 	"abusefilter-history-deleted": "Избришано",
 	"abusefilter-history-filterid": "Филтер",
 	"abusefilter-history-select-legend": "Прецизирај го пребарувањето",
@@ -557,7 +557,7 @@
 	"abusefilter-diff-info": "Основни податоци",
 	"abusefilter-diff-pattern": "Услови на филтерот",
 	"abusefilter-diff-invalid": "Не можам да ги добијам побараните верзии",
-	"abusefilter-diff-backhistory": "Назад кон историјата на филтерот",
+	"abusefilter-diff-backhistory": "Историја на филтерот",
 	"abusefilter-diff-prev": "Постара промена",
 	"abusefilter-diff-next": "Понова промена",
 	"abusefilter-import-intro": "Овој посредник служи за увезување на филтри од други викија.\nНа изворното вико, стиснете на „{{int:abusefilter-edit-export}}“ под „{{int:abusefilter-edit-tools}}“ во посредникот за уредување.\nКопирајте ја содржината од полето коешто ќе ви се појави, и залепете ја во ова поле, па стиснете на „{{int:abusefilter-import-submit}}“.",
@@ -608,5 +608,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "поставање и менување на блокираните надворешни домени",
 	"right-abusefilter-bypass-blocked-external-domains": "Заобиколување на блокирани надворешни домени",
 	"action-abusefilter-bypass-blocked-external-domains": "заобиколување на блокирани надворешни домени",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]].",
+	"abusefilter-blocked-domains-notif-body": "Ставивте врска до доменот <strong>$1</strong> кој е забранет за употреба на ова мрежно место. Отстранете го или заменете го со друга URL.",
+	"abusefilter-blocked-domains-notif-review-link": "Прегледај врска"
 }

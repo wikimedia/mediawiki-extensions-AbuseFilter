@@ -635,5 +635,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "blokkades van externe domeinen voor koppelingen aan te maken of te wijzigen",
 	"right-abusefilter-bypass-blocked-external-domains": "Geblokkeerde externe domeinen omzeilen",
 	"action-abusefilter-bypass-blocked-external-domains": "geblokkeerde externe domeinen te omzeilen",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Het aanmaken of wijzigen van blokkades van externe domeinen voor koppelingen moet worden gedaan via [[Special:BlockedExternalDomains|de speciale pagina]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Het aanmaken of wijzigen van blokkades van externe domeinen voor koppelingen moet worden gedaan via [[Special:BlockedExternalDomains|de speciale pagina]].",
+	"abusefilter-blocked-domains-notif-body": "U hebt een koppeling toegevoegd naar het domein <strong>$1</strong>, dat niet op deze site mag worden gebruikt. Verwijder of vervang deze door een andere URL.",
+	"abusefilter-blocked-domains-notif-review-link": "Koppeling beoordelen"
 }
