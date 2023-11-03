@@ -462,5 +462,6 @@
 	"right-abusefilter-bypass-blocked-external-domains": "অবরুদ্ধ বহিঃস্থ ডোমেইন বাইপাস করা",
 	"action-abusefilter-bypass-blocked-external-domains": "অবরুদ্ধ বহিঃস্থ ডোমেইন বাইপাস করার",
 	"abusefilter-blocked-domains-cannot-edit-directly": "কোনও বহিঃস্থ ডোমেইনকে লিঙ্ক করা থেকে অবরুদ্ধ করতে সেই ডোমেইনটি যোগ বা সংশোধন করার জন্য [[Special:BlockedExternalDomains|এই বিশেষ পাতাটি]] ব্যবহার করতে হবে।",
+	"abusefilter-blocked-domains-notif-body": "আপনি <strong>$1</strong> ডোমেনে একটি লিঙ্ক যোগ করেছেন যা এই সাইটে ব্যবহার করা নিষিদ্ধ। অনুগ্রহ করে এটি সরান অথবা একটি ভিন্ন ইউআরএল দিয়ে প্রতিস্থাপন করুন।",
 	"abusefilter-blocked-domains-notif-review-link": "সংযোগ পর্যালোচনা করুন"
 }
