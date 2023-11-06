@@ -15,6 +15,7 @@
 			"Nguyenphutrong2",
 			"Nguyễn Mạnh An",
 			"Phjtieudoc",
+			"Pisceskaze",
 			"Thingofme",
 			"Tryvix1509",
 			"Trần Nguyễn Minh Huy",
@@ -601,5 +602,7 @@
 	"notification-header-throttle-filter-actions": "Bộ lọc lạm dụng $2 {{GENDER:$1| bạn}} đã chỉnh sửa gần đây có tỷ lệ trùng khớp cao và {{PLURAL:$4| sau đây hành động bị|hành động bị}} tự động tắt: $3 .",
 	"notification-header-throttle-filter-no-actions": "Bộ lọc lạm dụng $2 {{GENDER:$1| bạn}} đã chỉnh sửa gần đây có tỷ lệ khớp cao nhưng không có hành động nào bị tự động tắt.",
 	"notification-subject-throttle-filter": "Bộ lọc lạm dụng {{GENDER:$1| bạn}} đã chỉnh sửa đã được điều chỉnh trên {{SITENAME}}",
-	"notification-link-text-show-filter": "Xem bộ lọc"
+	"notification-link-text-show-filter": "Xem bộ lọc",
+	"abusefilter-blocked-domains-notif-body": "Bạn đã thêm một liên kết tới tên miền <strong>$1</strong>, tên miền này bị cấm sử dụng trên trang này. Vui lòng xóa hoặc thay thế nó bằng một URL khác.",
+	"abusefilter-blocked-domains-notif-review-link": "Xem lại liên kết"
 }

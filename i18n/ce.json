@@ -234,7 +234,7 @@
 	"abusefilter-edit-throttle-groups": "Гаттайалар тобанашкахь:\n''(могӀан тӀехь цхьаццама, йекъар цӀоьмалгца)''",
 	"abusefilter-edit-throttle-groups-help": "Хьажа $1.",
 	"abusefilter-edit-throttle-groups-help-text": "документаци mediawiki.org тӀехь",
-	"abusefilter-edit-throttle-hidden-placeholder": "Разделите запятыми, чтобы соединить логическим оператором И, и переводами строк, чтобы соединить логическим оператором ИЛИ",
+	"abusefilter-edit-throttle-hidden-placeholder": "ЦӀоьмалгашца йекъа, логически операторца А цхьаьнатохархьама а, могӀаршна гочдаршца а, логически операторца ЙА цхьаьнатохархьама",
 	"abusefilter-edit-throttle-placeholder": "Логикин операторца И цхаьнатоха, цӀоьмалгашца йекъа могӀанаш дехьадохуш, логикин операторца ИЛИ цхьаьнатохархьама",
 	"abusefilter-throttle-ip": "IP-адрес",
 	"abusefilter-throttle-user": "аккаунт",
@@ -434,6 +434,7 @@
 	"abusefilter-history-diff": "Хийцамаш",
 	"abusefilter-exception-unrecognisedkeyword": "Дойзуш доцу оьшуш долу дош $2 оцу меттигца $1.",
 	"abusefilter-exception-unexpectedtoken": "Йевзаш йоцу знак «$3» (тайп: $2) оцу $1 меттигца.",
+	"abusefilter-exception-invalidoperator": "«$2» гӀалате оператор $1 позицехь.",
 	"abusefilter-exception-unrecognisedtoken": "Йевзаш йоцу знак «$2» оцу $1 меттигца.",
 	"abusefilter-action-tag": "Билгало",
 	"abusefilter-action-throttle": "Гатдар",
@@ -530,9 +531,11 @@
 	"abusefilter-blocked-domains-remove-explanation-initial": "ХӀокху агӀонгахь мега блоктоьхна йолу домен дӀайаккха",
 	"abusefilter-blocked-domains-remove-reason": "Бахьана",
 	"abusefilter-blocked-domains-remove-submit": "ДӀайаккха",
+	"abusefilter-blocked-domains-json-error": "JSON алсам хила йеза",
 	"abusefilter-log-ip-not-available": "ТӀекхочехь йац",
 	"tag-abusefilter-condition-limit": "доза тохар",
 	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зуламан литтаршна]] далуш доцург ([[mw:Extension:AbuseFilter/Conditions|гӀо]]).",
 	"notification-subject-throttle-filter": "{{GENDER:$1|ахьа}} хийцам бина зуламан литтаран {{SITENAME}} сайтехь блоктоьхна",
-	"notification-link-text-show-filter": "Гайта литтарг"
+	"notification-link-text-show-filter": "Гайта литтарг",
+	"abusefilter-blocked-domains-notif-review-link": "Хьажа хьажорге"
 }

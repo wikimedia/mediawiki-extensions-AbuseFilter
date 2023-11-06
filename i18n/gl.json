@@ -447,7 +447,7 @@
 	"abusefilter-history-filter": "Regra do filtro",
 	"abusefilter-history-comments": "Comentarios",
 	"abusefilter-history-actions": "Accións",
-	"abusefilter-history-backedit": "Volver ao editor do filtro",
+	"abusefilter-history-backedit": "Editor do filtro",
 	"abusefilter-history-deleted": "Borrado",
 	"abusefilter-history-filterid": "Filtro",
 	"abusefilter-history-select-legend": "Procura refinada",
@@ -560,7 +560,7 @@
 	"abusefilter-diff-info": "Información básica",
 	"abusefilter-diff-pattern": "Condicións do filtro",
 	"abusefilter-diff-invalid": "Non se poden atopar as versións solicitadas",
-	"abusefilter-diff-backhistory": "Volver ao historial do filtro",
+	"abusefilter-diff-backhistory": "Historial do filtro",
 	"abusefilter-diff-prev": "Edición máis vella",
 	"abusefilter-diff-next": "Edición máis nova",
 	"abusefilter-import-intro": "Pode empregar esta interface para importar filtros doutros wikis.\nNo wiki de orixe, prema en \"{{int:abusefilter-edit-export}}\" baixo a opción \"{{int:abusefilter-edit-tools}}\" na interface de edición.\nCopie a caixa de texto que aparece e péguea nestoutra caixa de texto, logo prema en \"{{int:abusefilter-import-submit}}\",",
@@ -611,5 +611,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "crear ou modificar os dominios externos que están bloqueados e non poden ser ligados",
 	"right-abusefilter-bypass-blocked-external-domains": "Eludir os dominios externos bloqueados",
 	"action-abusefilter-bypass-blocked-external-domains": "eludir os dominios externos bloqueados",
-	"abusefilter-blocked-domains-cannot-edit-directly": "A creación ou modificación dos dominios externos que están bloqueados e non poden ser ligados debe facerse a través [[Special:BlockedExternalDomains|da páxina especial]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "A creación ou modificación dos dominios externos que están bloqueados e non poden ser ligados debe facerse a través [[Special:BlockedExternalDomains|da páxina especial]].",
+	"abusefilter-blocked-domains-notif-body": "Engadiu unha ligazón ao dominio <strong>$1</strong>, que está prohibido utilizar neste sitio. Elimíneo ou substitúao por outro enderezo URL.",
+	"abusefilter-blocked-domains-notif-review-link": "Revisar a ligazón"
 }
