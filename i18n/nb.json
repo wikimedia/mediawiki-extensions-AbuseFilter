@@ -626,5 +626,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "opprette eller endre hvilke eksterne domener som er blokkert fra å lenkes til",
 	"right-abusefilter-bypass-blocked-external-domains": "Omgå blokkerte eksterne domener",
 	"action-abusefilter-bypass-blocked-external-domains": "omgå blokkert eksternt domene",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Oppretting eller endring av hvilke domener som er blokkert fra å lenkes til må gjøres via [[Special:BlockedExternalDomains|spesialsiden]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Oppretting eller endring av hvilke domener som er blokkert fra å lenkes til må gjøres via [[Special:BlockedExternalDomains|spesialsiden]].",
+	"abusefilter-blocked-domains-notif-body": "Du la til ei lenke til domenet <strong>$1</strong>, som er blokkert fra å brukes på dette nettstedet. Vennligst fjern den eller erstatt den med en annen URL.",
+	"abusefilter-blocked-domains-notif-review-link": "Gå gjennom lenke"
 }
