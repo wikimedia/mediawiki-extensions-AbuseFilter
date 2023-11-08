@@ -18,7 +18,8 @@
 			"YahyA",
 			"Yahya",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Borhan"
 		]
 	},
 	"abusefilter-desc": "সম্পাদনায় স্বয়ংক্রিয় অনুসন্ধানমূলক পদ্ধতি প্রযোজ্য।",
@@ -214,6 +215,7 @@
 	"abusefilter-edit-action-blocktalk": "এই ব্যবহারকারী ও/বা আইপি ঠিকানাকে নিজের আলাপ পাতা সম্পাদনা করতে বাধা দিন",
 	"abusefilter-edit-action-throttle": "ব্যবহারকারী সীমার হার অতিক্রম করলে কেবল তখনি ক্রিয়াগুলি সক্রিয় করুন",
 	"abusefilter-edit-action-tag": "আরও পর্যালোচনার জন্য সম্পাদনা ট্যাগ করুন",
+	"abusefilter-edit-throttle-count": "অনুমোদনের জন্য কর্মের সংখ্যা:",
 	"abusefilter-edit-throttle-period": "সময়কাল (সেকেন্ডে):",
 	"abusefilter-edit-throttle-groups-help": "$1 দেখুন।",
 	"abusefilter-edit-throttle-groups-help-text": "mediawiki.org সাইটে নথিপত্র",

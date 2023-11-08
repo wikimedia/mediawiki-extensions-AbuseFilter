@@ -8,7 +8,7 @@
 			"Toliño"
 		]
 	},
-	"apihelp-abusefiltercheckmatch-summary": "Verificar se un filtro de abusos coincide cun conxunto de variables, editor gardou evento AbuseFilter.",
+	"apihelp-abusefiltercheckmatch-summary": "Verificar se un filtro de abusos coincide cun conxunto de variables, unha edición ou un evento rexistrado do rexistro de abusos.",
 	"apihelp-abusefiltercheckmatch-extended-description": "É necesario un dos seguintesː vars, rcid ou logid, e só pode usarse un.",
 	"apihelp-abusefiltercheckmatch-param-filter": "O texto completo do filtro para verificar unha correspondencia.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Matriz codificada JSON de variables contra as que facer a proba.",

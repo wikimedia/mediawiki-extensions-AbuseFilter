@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Huuchin",
-			"Ukhant Erdemt"
+			"Ukhant Erdemt",
+			"Алия"
 		]
 	},
+	"abusefilter-edit-builder-vars-wiki-language": "Викиһин келнә код",
 	"abusefilter-history-backedit": "Шүүх ясгч",
 	"abusefilter-diff-item": "Махбуд",
 	"abusefilter-diff-backhistory": "Шүүх түүк"
