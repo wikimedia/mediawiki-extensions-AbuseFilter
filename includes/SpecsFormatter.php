@@ -151,6 +151,11 @@ class SpecsFormatter {
 		] );
 		$flagsDisplay = [];
 		foreach ( $flags as $flag => $_ ) {
+			// The following messages are generated here:
+			// * abusefilter-history-enabled
+			// * abusefilter-history-deleted
+			// * abusefilter-history-hidden
+			// * abusefilter-history-global
 			$flagsDisplay[] = $this->messageLocalizer->msg( "abusefilter-history-$flag" )->escaped();
 		}
 
