@@ -46,6 +46,7 @@
 			"Yuukin0248",
 			"おはぐろ蜻蛉",
 			"そらたこ",
+			"もなー(偽物)",
 			"春春眠眠",
 			"青子守歌"
 		]
@@ -649,5 +650,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "リンクをブロックする外部ドメインの作成または変更",
 	"right-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインを回避",
 	"action-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインを回避",
-	"abusefilter-blocked-domains-cannot-edit-directly": "リンクをブロックする外部ドメインの作成または変更は、[[Special:BlockedExternalDomains|対応する特別ページ]]を通じて行う必要があります。"
+	"abusefilter-blocked-domains-cannot-edit-directly": "リンクをブロックする外部ドメインの作成または変更は、[[Special:BlockedExternalDomains|対応する特別ページ]]を通じて行う必要があります。",
+	"abusefilter-blocked-domains-notif-body": "このサイトでの使用が禁止されているドメイン<strong>$1</strong>へのリンクが追加されました。削除するか、別の URL に置き換えてください。",
+	"abusefilter-blocked-domains-notif-review-link": "リンクを査読する"
 }

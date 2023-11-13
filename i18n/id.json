@@ -634,5 +634,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "membuat atau memodifikasi domain eksternal apa yang diblokir agar tidak ditautkan",
 	"right-abusefilter-bypass-blocked-external-domains": "Abaikan domain eksternal yang diblokir",
 	"action-abusefilter-bypass-blocked-external-domains": "melewati domain eksternal yang diblokir",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Membuat atau mengubah domain eksternal apa yang diblokir agar tidak ditautkan harus dilakukan melalui [[Special:BlockedExternalDomains|halaman khusus]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Membuat atau mengubah domain eksternal apa yang diblokir agar tidak ditautkan harus dilakukan melalui [[Special:BlockedExternalDomains|halaman khusus]].",
+	"abusefilter-blocked-domains-notif-body": "Anda menambahkan tautan ke domain <strong>$1</strong> yang dilarang digunakan di situs ini. Silakan hapus atau ganti dengan URL yang berbeda.",
+	"abusefilter-blocked-domains-notif-review-link": "Tinjau tautan"
 }

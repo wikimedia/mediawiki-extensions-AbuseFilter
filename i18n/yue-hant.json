@@ -3,7 +3,8 @@
 		"authors": [
 			"H78c67c",
 			"Hello903hello",
-			"Winston Sung"
+			"Winston Sung",
+			"Yueman"
 		]
 	},
 	"abusefilter-desc": "應用自動行為到編輯",
@@ -73,6 +74,8 @@
 	"abusefilter-log-linkonundelete": "去睇濫用紀錄",
 	"abusefilter-log-linkonundelete-text": "睇呢頁嘅濫用紀錄",
 	"abusefilter-log-hide-reason": "原因：",
+	"abusefilter-log-hide-show": "顯示",
+	"abusefilter-log-hide-hide": "隱藏",
 	"abusefilter-list": "全部過濾器",
 	"abusefilter-list-id": "過濾器ID",
 	"abusefilter-list-status": "狀態",
