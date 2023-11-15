@@ -21,6 +21,7 @@
 			"LNDDYL",
 			"Laundry Machine",
 			"Liangent",
+			"Lionpancake",
 			"Liuxinyu970226",
 			"Mark85296341",
 			"Matma Rex",
@@ -484,7 +485,7 @@
 	"abusefilter-history-filter": "過濾器規則",
 	"abusefilter-history-comments": "評論",
 	"abusefilter-history-actions": "操作",
-	"abusefilter-history-backedit": "返回過濾器編輯器",
+	"abusefilter-history-backedit": "過濾器編輯器",
 	"abusefilter-history-deleted": "已刪除",
 	"abusefilter-history-filterid": "過濾器",
 	"abusefilter-history-select-legend": "精確搜尋",
@@ -597,7 +598,7 @@
 	"abusefilter-diff-info": "基本資訊",
 	"abusefilter-diff-pattern": "過濾器條件",
 	"abusefilter-diff-invalid": "無法取得請求的版本",
-	"abusefilter-diff-backhistory": "返回過濾器歷史",
+	"abusefilter-diff-backhistory": "過濾器歷史",
 	"abusefilter-diff-prev": "較舊的變更",
 	"abusefilter-diff-next": "較新的變更",
 	"abusefilter-import-intro": "您可以使用此介面匯入來自其他 Wiki 的過濾器。\n在來源的 Wiki，點選於 \"{{int:abusefilter-edit-tools}}\" 下方的 \"{{int:abusefilter-edit-export}}\"。\n複製文字框中顯示的文字，並將該文字貼上至此文字框中，然後點選 \"{{int:abusefilter-import-submit}}\"。",
@@ -648,5 +649,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "建立或修改被禁止連結的外部網域",
 	"right-abusefilter-bypass-blocked-external-domains": "繞過被封鎖的外部網域",
 	"action-abusefilter-bypass-blocked-external-domains": "繞過被封鎖的外部網域",
-	"abusefilter-blocked-domains-cannot-edit-directly": "要建立或修改被禁止連結的外部網域必須透過[[Special:BlockedExternalDomains|特殊頁面]]完成。"
+	"abusefilter-blocked-domains-cannot-edit-directly": "要建立或修改被禁止連結的外部網域必須透過[[Special:BlockedExternalDomains|特殊頁面]]完成。",
+	"abusefilter-blocked-domains-notif-body": "您添加了一個指向域<strong>$1</strong>的鏈接，該域禁止在該網站上使用。請刪除它或將其替換為其他 URL。",
+	"abusefilter-blocked-domains-notif-review-link": "審核連結"
 }
