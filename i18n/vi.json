@@ -20,7 +20,8 @@
 			"Trần Nguyễn Minh Huy",
 			"Vinhtantran",
 			"Withoutaname",
-			"Đỗ Thảo"
+			"Đỗ Thảo",
+			"Pisceskaze"
 		]
 	},
 	"abusefilter-desc": "Áp dụng heuristic tự động vào các sửa đổi",
@@ -588,8 +589,14 @@
 	"abusefilter-blocked-domains-intro": "Các liên kết ngoài trùng với liên kết xuất hiện trong danh sách này sẽ bị chặn khi chúng được thêm vào một trang bất kỳ. Những tên miền dưới đây được lưu trữ tại [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "Thêm tên miền bị cấm mới",
 	"abusefilter-blocked-domains-notes": "Ghi chú",
+	"abusefilter-blocked-domains-add-submit": "Gửi",
+	"abusefilter-blocked-domains-domain-header": "Tên miền",
 	"abusefilter-blocked-domains-notes-header": "Ghi chú",
+	"abusefilter-blocked-domains-actions-header": "Tác vụ",
 	"abusefilter-blocked-domains-remove": "loại bỏ",
+	"abusefilter-blocked-domains-remove-title": "Xóa một tên miền bị chặn",
+	"abusefilter-blocked-domains-remove-explanation-initial": "Trên trang này bạn có thể xóa một tên miền bị chặn",
+	"abusefilter-blocked-domains-remove-reason": "Lý do",
 	"abusefilter-blocked-domains-remove-submit": "Loại bỏ",
 	"log-description-abusefilterprivatedetails": "Nhật ký này hiển thị danh sách các lần người dùng truy cập vào các chi tiết riêng tư của nhật ký lạm dụng.",
 	"abusefilter-noreason": "Cảnh báo: Để xem chi tiết kín của nhật trình này, bạn phải nêu lý do.",
