@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use BadMethodCallException;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBox\AceEditBoxBuiler;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
@@ -87,7 +87,7 @@ class EditBoxBuilderFactoryTest extends MediaWikiUnitTestCase {
 	 * @covers ::newAceBoxBuilder
 	 */
 	public function testNewAceBoxBuilder__invalid() {
-		$this->expectException( BadMethodCallException::class );
+		$this->expectException( LogicException::class );
 		$this->getFactory( false )->newAceBoxBuilder(
 			$this->createMock( MessageLocalizer::class ),
 			$this->createMock( Authority::class ),

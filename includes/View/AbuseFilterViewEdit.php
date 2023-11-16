@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use BadMethodCallException;
 use Html;
 use HtmlArmor;
 use IContextSource;
 use Linker;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
@@ -1200,7 +1200,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
-			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
+			throw new LogicException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
 		$origFilter = $this->loadFilterData( $filter );
@@ -1249,7 +1249,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {
 			// Sanity
-			throw new BadMethodCallException( __METHOD__ . ' called without the request being POSTed.' );
+			throw new LogicException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
 		try {
