@@ -547,5 +547,6 @@
 	"abusefilter-tag-reserved": "Ознака <code>abusefilter-condition-limit</code> је резервисана за интерну употребу од стране Филтера против злоупотребе.",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
 	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]]).",
-	"notification-link-text-show-filter": "Прикажи филтер"
+	"notification-link-text-show-filter": "Прикажи филтер",
+	"abusefilter-blocked-domains-notif-review-link": "Преглед везе"
 }
