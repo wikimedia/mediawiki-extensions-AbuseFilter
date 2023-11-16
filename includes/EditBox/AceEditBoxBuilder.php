@@ -17,14 +17,14 @@ use Xml;
 /**
  * Class responsible for building filter edit boxes with both the Ace and the plain version
  */
-class AceEditBoxBuiler extends EditBoxBuilder {
+class AceEditBoxBuilder extends EditBoxBuilder {
 
-	/** @var PlainEditBoxBuiler */
+	/** @var PlainEditBoxBuilder */
 	private $plainBuilder;
 
 	/**
 	 * @inheritDoc
-	 * @param PlainEditBoxBuiler $plainBuilder
+	 * @param PlainEditBoxBuilder $plainBuilder
 	 */
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
@@ -32,7 +32,7 @@ class AceEditBoxBuiler extends EditBoxBuilder {
 		MessageLocalizer $messageLocalizer,
 		Authority $authority,
 		OutputPage $output,
-		PlainEditBoxBuiler $plainBuilder
+		PlainEditBoxBuilder $plainBuilder
 	) {
 		parent::__construct( $afPermManager, $keywordsManager, $messageLocalizer, $authority, $output );
 		$this->plainBuilder = $plainBuilder;

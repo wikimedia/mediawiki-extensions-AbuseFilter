@@ -7,7 +7,7 @@ use Xml;
 /**
  * Class responsible for building a plain text filter edit box
  */
-class PlainEditBoxBuiler extends EditBoxBuilder {
+class PlainEditBoxBuilder extends EditBoxBuilder {
 	/**
 	 * @inheritDoc
 	 */

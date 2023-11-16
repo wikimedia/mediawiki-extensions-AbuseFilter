@@ -61,14 +61,14 @@ class EditBoxBuilderFactory {
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param Authority $authority
 	 * @param OutputPage $output
-	 * @return PlainEditBoxBuiler
+	 * @return PlainEditBoxBuilder
 	 */
 	public function newPlainBoxBuilder(
 		MessageLocalizer $messageLocalizer,
 		Authority $authority,
 		OutputPage $output
-	): PlainEditBoxBuiler {
-		return new PlainEditBoxBuiler(
+	): PlainEditBoxBuilder {
+		return new PlainEditBoxBuilder(
 			$this->afPermManager,
 			$this->keywordsManager,
 			$messageLocalizer,
@@ -81,17 +81,17 @@ class EditBoxBuilderFactory {
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param Authority $authority
 	 * @param OutputPage $output
-	 * @return AceEditBoxBuiler
+	 * @return AceEditBoxBuilder
 	 */
 	public function newAceBoxBuilder(
 		MessageLocalizer $messageLocalizer,
 		Authority $authority,
 		OutputPage $output
-	): AceEditBoxBuiler {
+	): AceEditBoxBuilder {
 		if ( !$this->isCodeEditorLoaded ) {
 			throw new BadMethodCallException( 'Cannot create Ace box without CodeEditor' );
 		}
-		return new AceEditBoxBuiler(
+		return new AceEditBoxBuilder(
 			$this->afPermManager,
 			$this->keywordsManager,
 			$messageLocalizer,
