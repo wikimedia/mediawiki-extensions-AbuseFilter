@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
-use BadMethodCallException;
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Permissions\Authority;
@@ -89,7 +89,7 @@ class EditBoxBuilderFactory {
 		OutputPage $output
 	): AceEditBoxBuilder {
 		if ( !$this->isCodeEditorLoaded ) {
-			throw new BadMethodCallException( 'Cannot create Ace box without CodeEditor' );
+			throw new LogicException( 'Cannot create Ace box without CodeEditor' );
 		}
 		return new AceEditBoxBuilder(
 			$this->afPermManager,
