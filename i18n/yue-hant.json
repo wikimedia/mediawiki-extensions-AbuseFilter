@@ -1,7 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"H78c67c",
+			"Hello903hello",
+			"Yueman"
 		]
 	},
 	"abusefilter-desc": "應用自動行為到編輯",
@@ -111,7 +114,7 @@
 	"abusefilter-edit-save": "保存過濾器",
 	"abusefilter-edit-id": "過濾器ID:",
 	"abusefilter-edit-switch-editor": "轉編輯器",
-	"abusefilter-edit-description": "描述:\n:''(公共睇得到)''",
+	"abusefilter-edit-description": "描述：\n:''（公開睇得到）''",
 	"abusefilter-edit-field-description": "描述",
 	"abusefilter-edit-group": "過濾器群組：",
 	"abusefilter-edit-flags": "旗:",
@@ -160,7 +163,7 @@
 	"abusefilter-edit-block-user-durations": "註冊用戶封鎖持續時間：",
 	"abusefilter-block-anon": "封鎖匿名用戶",
 	"abusefilter-block-user": "封鎖註冊用戶",
-	"abusefilter-edit-denied": "你唔係以去睇呢個過濾器嘅細節，因為響公共顯示度隱藏咗。",
+	"abusefilter-edit-denied": "你唔睇得呢個過濾器嘅細節，因為佢無公開。",
 	"abusefilter-edit-main": "過濾器參數",
 	"abusefilter-edit-done-subtitle": "改咗嘅過濾器",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|過濾器$3]]經已[[Special:AbuseFilter/history/$1/diff/prev/$2|改咗]]。",
