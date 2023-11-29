@@ -36,7 +36,8 @@
 			"Vlad5250",
 			"Zache",
 			"ZeiP",
-			"Jack Phoenix"
+			"Jack Phoenix",
+			"Pahkiqaz"
 		]
 	},
 	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
@@ -563,6 +564,7 @@
 	"abusefilter-log-details-id": "Lokin tunnistenumero",
 	"abusefilter-blocked-domains-title": "Estetyt ulkoiset domain-nimet",
 	"abusefilter-blocked-domains-intro": "Tässä luettelossa lueteltujen ulkoisten linkkien lisääminen sivuille on estetty. Tämä luettelo domain-nimistä löytyy sivulta [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-notes": "Huomautukset",
 	"abusefilter-blocked-domains-notes-header": "Huomioita",
 	"abusefilter-blocked-domains-remove": "poista",
 	"abusefilter-blocked-domains-remove-reason": "Syy",
