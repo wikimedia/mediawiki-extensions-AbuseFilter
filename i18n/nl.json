@@ -135,7 +135,7 @@
 	"abusefilter-log-hide-id": "Logboekmeldingsnummer:",
 	"abusefilter-log-hide-hidden": "Deze melding verbergen",
 	"abusefilter-log-hide-reason": "Reden:",
-	"abusefilter-log-hide-reason-other": "Overige/additionele reden:",
+	"abusefilter-log-hide-reason-other": "Andere/aanvullende reden:",
 	"abusefilter-log-hide-forbidden": "U hebt niet de juiste rechten om meldingen in het filterlogboek te verbergen.",
 	"abusefilter-log-entry-suppress": "$1 heeft $3 {{GENDER:$2|verborgen}}",
 	"abusefilter-log-entry-unsuppress": "$1 heeft $3 {{GENDER:$2|zichtbaar}} gemaakt",

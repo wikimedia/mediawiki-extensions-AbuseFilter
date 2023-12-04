@@ -19,7 +19,9 @@
 			"Keo010122",
 			"Nguyenphutrong2",
 			"Flyplanevn27",
-			"Tryvix1509"
+			"Tryvix1509",
+			"NguyenHung",
+			"Pisceskaze"
 		]
 	},
 	"abusefilter-desc": "Áp dụng heuristic tự động vào các sửa đổi",
@@ -563,12 +565,12 @@
 	"abusefilter-view-privatedetails-legend": "Xem chi tiết ẩn",
 	"abusefilter-view-privatedetails-reason": "Lý do xem chi tiết ẩn:",
 	"abusefilter-log-details-id": "ID nhật trình",
-	"abusefilter-invalid-request": "Yêu cầu không hợp lệ! Bạn phải truy cập chi tiết nhật ký cá nhân thông qua biểu mẫu trên [[Đặc biệt:Nhật ký lạm dụng/$1 ]] và cung cấp lý do.",
+	"abusefilter-invalid-request": "Yêu cầu không hợp lệ! Bạn phải truy cập chi tiết nhật ký cá nhân thông qua biểu mẫu trên [[Special:AbuseLog/$1]] và cung cấp lý do.",
 	"abusefilter-invalid-request-noid": "Yêu cầu không hợp lệ! Bạn phải truy cập chi tiết nhật ký riêng tư thông qua biểu mẫu trên trang chi tiết nhật ký lạm dụng và cung cấp lý do.",
 	"log-description-abusefilterprivatedetails": "Nhật ký này hiển thị danh sách các lần người dùng truy cập vào các chi tiết riêng tư của nhật ký lạm dụng.",
 	"abusefilter-noreason": "Cảnh báo: Để xem chi tiết kín của nhật trình này, bạn phải nêu lý do.",
 	"abusefilter-log-ip-not-available": "Không tồn tại",
-	"abusefilter-tag-reserved": "Thẻ <code>abusefilter-condition-limit</code> được dành riêng cho sử dụng nội bộ bởi Lạm dụngFilter.",
+	"abusefilter-tag-reserved": "Thẻ <code>abusefilter-condition-limit</code> được dành riêng cho sử dụng nội bộ bởi bộ lọc lạm dụng.",
 	"tag-abusefilter-condition-limit": "đã đạt đến giới hạn điều kiện",
-	"tag-abusefilter-condition-limit-description": "Các chỉnh sửa hoặc sự kiện khác không thể được kiểm tra bởi tất cả [[Đặc biệt:Bộ lọc lạm dụng|bộ lọc lạm dụng]] ([[mw:Phần mở rộng:Bộ lọc lạm dụng/Điều kiện|trợ giúp]])."
+	"tag-abusefilter-condition-limit-description": "Các chỉnh sửa hoặc sự kiện khác không thể được kiểm tra bởi tất cả [[Special:AbuseFilter|bộ lọc lạm dụng]] ([[mw:Extension:AbuseFilter/Conditions|trợ giúp]])."
 }
