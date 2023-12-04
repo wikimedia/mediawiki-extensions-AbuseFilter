@@ -467,7 +467,7 @@
 	"abusefilter-history-filter": "Правила фільтра",
 	"abusefilter-history-comments": "Коментарі",
 	"abusefilter-history-actions": "Дії",
-	"abusefilter-history-backedit": "Назад до редагування фільтра",
+	"abusefilter-history-backedit": "Редактор фільтра",
 	"abusefilter-history-deleted": "Вилучено",
 	"abusefilter-history-filterid": "Фільтр",
 	"abusefilter-history-select-legend": "Уточнити пошук",
@@ -580,7 +580,7 @@
 	"abusefilter-diff-info": "Основні відомості",
 	"abusefilter-diff-pattern": "Умови фільтрації",
 	"abusefilter-diff-invalid": "Не вдається отримати запитані версії",
-	"abusefilter-diff-backhistory": "Повернутися до історії фільтра",
+	"abusefilter-diff-backhistory": "Історія фільтра",
 	"abusefilter-diff-prev": "Попередня зміна",
 	"abusefilter-diff-next": "Наступна зміна",
 	"abusefilter-import-intro": "Ви можете використовувати цей інтерфейс для імпорту фільтрів з інших вікі.\nУ джерельній вікі, натисніть «{{int:abusefilter-edit-export}}» у розділі «{{int:abusefilter-edit-tools}}» інтерфейсу редагування.\nСкопіюйте зміст текстового поля, вставте його у цю сторінку і натисніть «{{int:abusefilter-import-submit}}».",
@@ -631,5 +631,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "створення або зміну зовнішніх доменів, для яких заблоковано можливість на них посилатися",
 	"right-abusefilter-bypass-blocked-external-domains": "Обхід заблокованих зовнішніх доменів",
 	"action-abusefilter-bypass-blocked-external-domains": "обхід заблокованого зовнішнього домену",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]].",
+	"abusefilter-blocked-domains-notif-body": "Ви додали посилання на домен <strong>$1</strong>, який заборонено використовувати на цьому сайті. Будь ласка, вилучіть або замініть його іншою URL-адресою.",
+	"abusefilter-blocked-domains-notif-review-link": "Переглянути посилання"
 }

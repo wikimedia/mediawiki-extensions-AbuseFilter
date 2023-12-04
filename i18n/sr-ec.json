@@ -543,10 +543,12 @@
 	"abusefilter-blocked-domains-attempted": "Текст који сте желели да објавите је блокирао наш филтер. Пратећи домен је блокиран за додавање: $1",
 	"abusefilter-blocked-domains-domain-added-comment": "Додај блокиране спољашње домене $1 са напоменама: $2",
 	"abusefilter-blocked-domains-domain-removed-comment": "Уклони блокиране спољашње домене $1 са напоменама: $2",
+	"log-description-abusefilterblockeddomainhit": "Ови догађаји прате поготке до блокираних домена.",
 	"abusefilter-log-ip-not-available": "Недоступно",
 	"abusefilter-tag-reserved": "Ознака <code>abusefilter-condition-limit</code> је резервисана за интерну употребу од стране Филтера против злоупотребе.",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
 	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]]).",
 	"notification-link-text-show-filter": "Прикажи филтер",
+	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]].",
 	"abusefilter-blocked-domains-notif-review-link": "Преглед везе"
 }
