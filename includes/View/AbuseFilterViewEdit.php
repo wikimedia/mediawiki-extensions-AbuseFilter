@@ -279,9 +279,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$user = $this->getUser();
 		$actions = $filterObj->getActions();
 
+		$isCreatingNewFilter = $filter === null;
 		$out->addSubtitle( $this->msg(
-			$filter === null ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
-			$filter === null ? $filter : $this->getLanguage()->formatNum( $filter ),
+			$isCreatingNewFilter ? 'abusefilter-edit-subtitle-new' : 'abusefilter-edit-subtitle',
+			$isCreatingNewFilter ? $filter : $this->getLanguage()->formatNum( $filter ),
 			$history_id
 		)->parse() );
 
@@ -295,6 +296,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
 		}
+
+		if ( $isCreatingNewFilter ) {
+			$title = $this->msg( 'abusefilter-add' );
+		} elseif ( $this->afPermManager->canEditFilter( $user, $filterObj ) ) {
+			$title = $this->msg( 'abusefilter-edit-specific' )
+				->numParams( $this->filter )
+				->params( $filterObj->getName() );
+		} else {
+			$title = $this->msg( 'abusefilter-view-specific' )
+				->numParams( $this->filter )
+				->params( $filterObj->getName() );
+		}
+		$out->setPageTitleMsg( $title );
 
 		$readOnly = !$this->afPermManager->canEditFilter( $user, $filterObj );
 
@@ -312,7 +326,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$fields = [];
 
 		$fields['abusefilter-edit-id'] =
-			$filter === null ?
+			$isCreatingNewFilter ?
 				$this->msg( 'abusefilter-edit-new' )->escaped() :
 				htmlspecialchars( $lang->formatNum( (string)$filter ) );
 		$fields['abusefilter-edit-description'] =
