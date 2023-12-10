@@ -10,10 +10,10 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleValue;
+use MediaWiki\User\User;
 use MessageSpecifier;
 use StatusValue;
-use TitleValue;
-use User;
 
 /**
  * This hook handler is for very simple checks, rather than the much more advanced ones

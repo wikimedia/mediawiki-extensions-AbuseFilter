@@ -3,11 +3,11 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Permissions\Authority;
+use MediaWiki\User\User;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
 use Psr\Log\LoggerInterface;
-use User;
 
 class FilterUser {
 	public const SERVICE_NAME = 'AbuseFilterFilterUser';

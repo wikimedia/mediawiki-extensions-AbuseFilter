@@ -8,10 +8,10 @@ use MediaWiki\Extension\AbuseFilter\EditBox\AceEditBoxBuilder;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\PlainEditBoxBuilder;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
-use OutputPage;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Editbox\EditBoxBuilderFactory

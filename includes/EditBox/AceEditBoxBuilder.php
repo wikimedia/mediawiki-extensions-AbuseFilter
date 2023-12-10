@@ -6,12 +6,12 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AbuseFilterTokenizer;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
 use OOUI\HorizontalLayout;
 use OOUI\Widget;
-use OutputPage;
 use Xml;
 
 /**

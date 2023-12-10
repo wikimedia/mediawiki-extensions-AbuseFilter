@@ -8,11 +8,11 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use MimeAnalyzer;
 use RecentChange;
 use RepoGroup;
-use User;
 
 /**
  * @group Test

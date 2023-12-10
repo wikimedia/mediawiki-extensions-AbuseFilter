@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
 use MessageLocalizer;
 use OOUI\ButtonWidget;
@@ -11,7 +12,6 @@ use OOUI\DropdownInputWidget;
 use OOUI\FieldLayout;
 use OOUI\FieldsetLayout;
 use OOUI\Widget;
-use OutputPage;
 use Xml;
 
 /**

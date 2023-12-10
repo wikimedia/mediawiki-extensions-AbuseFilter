@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Variables;
 
-use Html;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Html\Html;
 use MessageLocalizer;
 use Xml;
 

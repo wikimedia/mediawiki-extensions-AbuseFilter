@@ -2,15 +2,15 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use DeferredUpdates;
-use Html;
 use HTMLForm;
 use IContextSource;
 use LogEventsList;
 use LogPage;
 use ManualLogEntry;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\LBFactory;

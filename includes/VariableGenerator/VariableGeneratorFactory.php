@@ -7,10 +7,10 @@ use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MimeAnalyzer;
 use RecentChange;
 use RepoGroup;
-use User;
 
 class VariableGeneratorFactory {
 	public const SERVICE_NAME = 'AbuseFilterVariableGeneratorFactory';

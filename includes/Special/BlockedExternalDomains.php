@@ -20,12 +20,12 @@
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use ErrorPageError;
-use Html;
 use HTMLForm;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
+use MediaWiki\Html\Html;
+use MediaWiki\SpecialPage\SpecialPage;
 use PermissionsError;
-use SpecialPage;
 use WANObjectCache;
 
 /**

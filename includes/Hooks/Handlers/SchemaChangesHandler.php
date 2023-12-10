@@ -9,10 +9,10 @@ use MediaWiki\Extension\AbuseFilter\Maintenance\NormalizeThrottleParameters;
 use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\User;
 use MediaWiki\User\UserGroupManager;
 use MessageLocalizer;
 use RequestContext;
-use User;
 
 class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	/** @var MessageLocalizer */

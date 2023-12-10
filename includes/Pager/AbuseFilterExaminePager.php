@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter\Pager;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Pager\ReverseChronologicalPager;
 use MediaWiki\Title\Title;
 use RecentChange;
-use ReverseChronologicalPager;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 

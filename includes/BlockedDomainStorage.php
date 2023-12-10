@@ -30,12 +30,12 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\UrlUtils;
 use Message;
 use RecentChange;
 use StatusValue;
-use TitleValue;
 
 /**
  * Hold and update information about blocked external domains

@@ -12,9 +12,9 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\HookAborterConseque
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Status\Status;
 use MediaWiki\User\UserIdentityUtils;
 use Psr\Log\LoggerInterface;
-use Status;
 
 class ConsequencesExecutor {
 	public const CONSTRUCTOR_OPTIONS = [

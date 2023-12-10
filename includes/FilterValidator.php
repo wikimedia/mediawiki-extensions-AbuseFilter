@@ -8,8 +8,8 @@ use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Status\Status;
 use Message;
-use Status;
 
 /**
  * This class validates filters, e.g. before saving.

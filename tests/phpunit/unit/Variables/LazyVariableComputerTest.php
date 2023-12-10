@@ -18,6 +18,7 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityValue;
@@ -25,7 +26,6 @@ use MediaWikiUnitTestCase;
 use ParserFactory;
 use Psr\Log\NullLogger;
 use UnexpectedValueException;
-use User;
 use WANObjectCache;
 use Wikimedia\Rdbms\LBFactory;
 

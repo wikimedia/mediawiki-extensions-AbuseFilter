@@ -2,18 +2,18 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use DeferredUpdates;
 use ExtensionRegistry;
 use InvalidArgumentException;
 use ManualLogEntry;
 use MediaWiki\CheckUser\Hooks;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityValue;
-use User;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 

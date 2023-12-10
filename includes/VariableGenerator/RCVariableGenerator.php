@@ -8,11 +8,11 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
+use MediaWiki\User\User;
 use MimeAnalyzer;
 use MWFileProps;
 use RecentChange;
 use RepoGroup;
-use User;
 
 /**
  * This class contains the logic used to create variable holders used to

@@ -2,10 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use Html;
 use HtmlArmor;
 use IContextSource;
-use Linker;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
@@ -20,12 +18,14 @@ use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Html\Html;
+use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\PermissionManager;
+use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Specials\SpecialBlock;
 use OOUI;
-use SpecialBlock;
-use SpecialPage;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\LBFactory;
 use Xml;

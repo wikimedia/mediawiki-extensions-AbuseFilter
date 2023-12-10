@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\AbuseFilter\LogFormatter;
 
 use LogFormatter;
+use MediaWiki\SpecialPage\SpecialPage;
 use Message;
-use SpecialPage;
 
 class AbuseFilterModifyLogFormatter extends LogFormatter {
 

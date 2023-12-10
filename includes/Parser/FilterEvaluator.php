@@ -15,8 +15,8 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Parser\Sanitizer;
 use Psr\Log\LoggerInterface;
-use Sanitizer;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\IPUtils;
 
