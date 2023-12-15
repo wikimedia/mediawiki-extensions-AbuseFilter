@@ -188,7 +188,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			}
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
-				$row->af_public_comments );
+				$row->af_public_comments ?? '' );
 			$filter_hidden = $row->af_hidden;
 		}
 
