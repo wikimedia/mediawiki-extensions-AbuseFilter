@@ -20,6 +20,7 @@
 			"Helder.wiki",
 			"HenriqueCrang",
 			"Juan90264",
+			"Juwan",
 			"Luckas",
 			"Luckas Blade",
 			"Luk3",
@@ -639,5 +640,6 @@
 	"action-abusefilter-modify-blocked-external-domains": "criar ou modificar quais domínios externos são bloqueados de se tornarem ligações (''links'')",
 	"right-abusefilter-bypass-blocked-external-domains": "Ignorar quais domínios externos estão bloqueados",
 	"action-abusefilter-bypass-blocked-external-domains": "ignorar quais domínios externos estão bloqueados",
-	"abusefilter-blocked-domains-cannot-edit-directly": "A criação ou modificação de quais domínios externos são bloqueados de se tornarem ligações (''links'') deve ser realizada através da [[Special:BlockedExternalDomains|página especial]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "A criação ou modificação de quais domínios externos são bloqueados de se tornarem ligações (''links'') deve ser realizada através da [[Special:BlockedExternalDomains|página especial]].",
+	"abusefilter-blocked-domains-notif-review-link": "Revisar o link"
 }
