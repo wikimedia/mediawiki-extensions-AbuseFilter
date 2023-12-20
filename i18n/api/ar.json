@@ -4,7 +4,8 @@
 			"Meno25",
 			"SaldırganSincap",
 			"ديفيد",
-			"محمد أحمد عبد الفتاح"
+			"محمد أحمد عبد الفتاح",
+			"علاء"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-summary": "تحقق لمعرفة ما إذا كان مرشح الإساءة يطابق مجموعة من المتغيرات، تحرير حدث مرشح إساءة مسجل.",
@@ -51,9 +52,9 @@
 	"apihelp-abuselogprivatedetails-param-logid": "معرف إدخال سجل الإساءة ليتم التحقق منه.",
 	"apihelp-abuselogprivatedetails-param-reason": "سبب وجيه لأداء التحقق.",
 	"apihelp-abuselogprivatedetails-example-1": "احصل على تفاصيل خاصة لإدخال سجل الإساءة بالمعرف 1، باستخدام السبب \"مثال\".",
-	"apierror-abusefilter-canttest": "ليست لديك الصلاحية لاختبار مرشحات الإساءة.",
-	"apierror-abusefilter-cantcheck": "ليست لديك الصلاحية للتحقق من بناء مرشحات الإساءة.",
-	"apierror-abusefilter-canteval": "ليست لديك صلاحية لتقييم تعبيرات مرشح الإساءة",
+	"apierror-abusefilter-canttest": "ليس لديك الصلاحية لاختبار مرشحات الإساءة.",
+	"apierror-abusefilter-cantcheck": "ليس لديك الصلاحية للتحقق من بناء مرشحات الإساءة.",
+	"apierror-abusefilter-canteval": "ليس لديك صلاحية لتقييم تعبيرات مرشح الإساءة",
 	"apierror-abusefilter-nosuchlogid": "ليس هناك إدخال سجل إساءة بالمعرف $1.",
 	"apierror-abusefilter-badsyntax": "يحتوي المرشح على بنية غير صالحة."
 }
