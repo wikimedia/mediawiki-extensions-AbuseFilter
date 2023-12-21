@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Soumaya"
+			"Soumaya",
+			"Raizkgh"
 		]
 	},
 	"abusefilter-desc": "Yãk-y n tool-y neda Yãk n tool-yã a taab",
@@ -180,8 +181,8 @@
 	"abusefilter-edit-subtitle": "Yãk-y n tool-y neda $1",
 	"abusefilter-edit-subtitle-new": "D rɩkd d sẽn tõe n maan bũmb ning",
 	"abusefilter-edit-token-not-match": "B pa tall-a ye! Bas-y tɩ b le kogl-y-yã.",
-	"abusefilter-edit-oldwarning": "<strong>Yãmb tara filtar-kãngã version sẽn pa sɩngdã. Sõngr ning b sẽn wilgã yaa a sẽn yaa a sẽn lebg n wa n lebg n wa wã. Y sã n tall y toeemã, y na n basa y sẽn toeemã fãa sẽn sɩng ne y sẽn maandã.</strong> [[Special:Abuse Filter/history/$2 = \"Bɩ y lebs n ges filtar kãngã sẽn be zĩig ningã\"]]",
-	"abusefilter-edit-oldwarning-view": "<strong>Yãmb geta filtar kãngã sẽn yaa pĩnd soabã. Sõngr ning b sẽn wilgã yaa a sẽn yaa a sẽn lebg n wa n lebg n wa wã.</strong> [[Special:Abuse Filter/history/$2 = \"Bɩ y lebs n ges filtar kãngã sẽn be zĩig ningã\"]]",
+	"abusefilter-edit-oldwarning": "<strong>Yãmb tara filtar-kãngã version sẽn pa sɩngdã. Sõngr ning b sẽn wilgã yaa a sẽn yaa a sẽn lebg n wa n lebg n wa wã. Y sã n tall y toeemã, y na n basa y sẽn toeemã fãa sẽn sɩng ne y sẽn maandã.</strong> [[Special:AbuseFilter/history/$2|Return to this filter's history]]",
+	"abusefilter-edit-oldwarning-view": "<strong>Yãmb geta filtar kãngã sẽn yaa pĩnd soabã. Sõngr ning b sẽn wilgã yaa a sẽn yaa a sẽn lebg n wa n lebg n wa wã.</strong> [[Special:AbuseFilter/history/$2|Return to this filter's history]]",
 	"abusefilter-edit-status-label": "Bãngr-gomdã:",
 	"abusefilter-edit-new": "Fãrã sã n wa",
 	"abusefilter-edit-save": "Bãng-y tɩ b pa tõe n tall filter ye",
