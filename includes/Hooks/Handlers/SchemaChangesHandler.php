@@ -58,12 +58,14 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 		);
 
 		if ( $dbType === 'mysql' || $dbType === 'sqlite' ) {
+			// 1.34
 			$updater->dropExtensionField(
 				'abuse_filter_log',
 				'afl_log_id',
 				"$dir/$dbType/patch-drop_afl_log_id.sql"
 			);
 
+			// 1.34
 			$updater->addExtensionField(
 				'abuse_filter_log',
 				'afl_filter_id',
@@ -71,6 +73,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			);
 
 			if ( $dbType === 'mysql' ) {
+				// 1.37
 				$updater->renameExtensionIndex(
 					'abuse_filter_log',
 					'ip_timestamp',
@@ -78,6 +81,8 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 					"$dir/mysql/patch-rename-indexes.sql",
 					true
 				);
+
+				// 1.38
 				// This one has its own files because apparently, sometimes this particular index can already
 				// have the correct name (T291725)
 				$updater->renameExtensionIndex(
@@ -87,6 +92,8 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 					"$dir/mysql/patch-rename-wiki-timestamp-index.sql",
 					true
 				);
+
+				// 1.38
 				// This one is also separate to avoid interferences with the afl_filter field removal below.
 				$updater->renameExtensionIndex(
 					'abuse_filter_log',
@@ -96,6 +103,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 					true
 				);
 			}
+			// 1.38
 			$updater->dropExtensionField(
 				'abuse_filter_log',
 				'afl_filter',
@@ -179,28 +187,35 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			] );
 		}
 
+		// 1.41
 		$updater->addExtensionUpdate( [
 			'addField', 'abuse_filter', 'af_actor',
 			"$dir/$dbType/patch-add-af_actor.sql", true
 		] );
 
+		// 1.41
 		$updater->addExtensionUpdate( [
 			'addField', 'abuse_filter_history', 'afh_actor',
 			"$dir/$dbType/patch-add-afh_actor.sql", true
 		] );
 
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
+		// 1.33; backported to 1.32
 		$updater->addPostDatabaseUpdateMaintenance( NormalizeThrottleParameters::class );
+		// 1.34
 		$updater->addPostDatabaseUpdateMaintenance( FixOldLogEntries::class );
+		// 1.35
 		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );
+
 		// Don't launch the script on update.php if the migration stage is not high enough.
 		// This would throw an exception.
 		// Also check if the global is set.
 		// If globals aren't loaded, it's install.php, and not update.php. This is intentional,
-		// see for instance T193855 or T198331.
+		// see for instance, T193855 or T198331.
 		if ( isset( $wgAbuseFilterActorTableSchemaMigrationStage ) &&
 			( $wgAbuseFilterActorTableSchemaMigrationStage & SCHEMA_COMPAT_WRITE_NEW )
 		) {
+			// 1.41
 			$updater->addPostDatabaseUpdateMaintenance( MigrateActorsAF::class );
 		}
 	}
