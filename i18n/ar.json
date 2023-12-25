@@ -125,7 +125,7 @@
 	"abusefilter-log-linkonundelete-text": "عرض سجل إساءة هذه الصفحة",
 	"abusefilter-log-hidden-implicit": "(مخفي لأنه تم حذف مراجعة)",
 	"abusefilter-log-cannot-see-details": "ليس لديك الإذن لمعرفة تفاصيل هذا الإدخال.",
-	"abusefilter-log-cannot-see-privatedetails": "ليست لديك صلاحية لرؤية تفاصيل هذا الإدخال الخاصة.",
+	"abusefilter-log-cannot-see-privatedetails": "ليس لديك صلاحية لرؤية تفاصيل هذا الإدخال الخاصة.",
 	"abusefilter-log-nonexistent": "إدخال مع معرف مقدم غير موجود.",
 	"abusefilter-log-details-hidden": "لا يمكنك رؤية تفاصيل هذا المدخل، لأنه مخفي من العرض العلني",
 	"abusefilter-log-details-hidden-implicit": "لا يمكنك عرض تفاصيل هذا الإدخال لأن النسخة المرتبط بها مخفية عن العرض العام.",
