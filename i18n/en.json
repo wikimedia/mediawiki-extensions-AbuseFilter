@@ -581,6 +581,7 @@
 	"abusefilter-blocked-domains-domain-header": "Domain",
 	"abusefilter-blocked-domains-notes-header": "Notes",
 	"abusefilter-blocked-domains-actions-header": "Actions",
+	"abusefilter-blocked-domains-addedby-header": "Added by",
 	"abusefilter-blocked-domains-remove": "remove",
 	"abusefilter-blocked-domains-remove-title": "Remove a blocked domain",
 	"abusefilter-blocked-domains-remove-explanation-initial": "On this page you can remove a blocked domain",
