@@ -267,7 +267,10 @@
 	"abusefilter-reautoconfirm-notallowed": "您不被允许恢复自动确认状态。",
 	"abusefilter-reautoconfirm-done": "该账号的自动确认状态已恢复",
 	"abusefilter-status": "在最近$1次{{PLURAL:$1|操作}}中，$2（$3%）个过滤器{{PLURAL:$2|已}}达到$4次条件比较上限，至少$5（$6%）次操作{{PLURAL:$5|已}}匹配当前启用的过滤器之一。",
+	"abusefilter-add": "添加滥用过滤器",
 	"abusefilter-edit": "编辑滥用过滤器",
+	"abusefilter-edit-specific": "编辑滥用过滤器$1：$2",
+	"abusefilter-view-specific": "查看滥用过滤器$1：$2",
 	"abusefilter-edit-subtitle": "编辑过滤器$1",
 	"abusefilter-edit-subtitle-new": "创建过滤器",
 	"abusefilter-edit-token-not-match": "编辑尚未保存！请再次尝试保存。",
@@ -686,5 +689,6 @@
 	"right-abusefilter-bypass-blocked-external-domains": "绕过被屏蔽的外部域名",
 	"action-abusefilter-bypass-blocked-external-domains": "绕过被屏蔽的外部域名",
 	"abusefilter-blocked-domains-cannot-edit-directly": "创建或修改被禁止的外部链接域名必须通过[[Special:BlockedExternalDomains|特殊页面]]完成。",
-	"abusefilter-blocked-domains-notif-body": "您添加了一个指向<strong>$1</strong>域名的链接，而该域名禁止在该网站上使用。请删除它或将其替换为其他URL。"
+	"abusefilter-blocked-domains-notif-body": "您添加了一个指向<strong>$1</strong>域名的链接，而该域名禁止在该网站上使用。请删除它或将其替换为其他URL。",
+	"abusefilter-blocked-domains-notif-review-link": "审核链接"
 }
