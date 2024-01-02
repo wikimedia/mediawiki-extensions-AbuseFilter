@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Akakiiri"
+			"Akakiiri",
+			"Baba Ayɛ'ɛra"
 		]
 	},
 	"abusefilter-log-search-user": "Tuntuna:",
@@ -116,6 +117,9 @@
 	"abusefilter-list-options-search-rlike": "'Regular expression'",
 	"abusefilter-list-options-search-irlike": "'Case-insensitive regular expression'",
 	"abusefilter-list-invalid-searchmode": "Yibegerɛ eere 'mode' la ka de 'valid'.",
+	"abusefilter-add": "Pa'asegɔ daaŋɔ zɛ'ɛsega",
+	"abusefilter-edit-specific": "Demesego daaŋɔ zɛ'ɛsega$1: $2",
+	"abusefilter-view-specific": "Bisega daaŋɔ zɛ'ɛsega $1: $2",
 	"abusefilter-edit-new": "Filita paalega",
 	"abusefilter-edit-save": "Seeve filita",
 	"abusefilter-edit-id": "Filita ID:",
