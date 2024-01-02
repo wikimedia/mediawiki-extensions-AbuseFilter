@@ -199,7 +199,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 		if ( $content === null ) {
 			return null;
 		}
-		$content[] = [ 'domain' => $domain, 'notes' => $notes ];
+		$content[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $user->getName() ];
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
 			->params( $domain, $notes )
 			->plain();

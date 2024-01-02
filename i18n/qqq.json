@@ -625,6 +625,7 @@
 	"abusefilter-blocked-domains-domain-header": "Domain header in the table",
 	"abusefilter-blocked-domains-notes-header": "Notes header in the table",
 	"abusefilter-blocked-domains-actions-header": "Actions header in the table",
+	"abusefilter-blocked-domains-addedby-header": "Header for added by username in the table",
 	"abusefilter-blocked-domains-remove": "Link to remove a domain from blocked list",
 	"abusefilter-blocked-domains-remove-title": "Title of the special page on removing the domain from blocked list",
 	"abusefilter-blocked-domains-remove-explanation-initial": "Explanation of the special page on removing the domain from blocked list",
