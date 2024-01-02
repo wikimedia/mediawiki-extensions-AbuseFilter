@@ -126,6 +126,12 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 					$this->assertStringContainsString( $needle, $actual, 'Checking new_html' );
 				}
 			} else {
+				if ( is_string( $actual ) ) {
+					// TODO: remove and fix expected values once
+					// https://gerrit.wikimedia.org/r/c/mediawiki/core/+/987191/ has been merged
+					$actual = str_replace( "\t", '    ', $actual );
+				}
+
 				$this->assertSame( $value, $actual, $var );
 			}
 		}
