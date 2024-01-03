@@ -613,6 +613,7 @@
 	"abusefilter-blocked-domains-domain-header": "Domain",
 	"abusefilter-blocked-domains-notes-header": "Anmerkungen",
 	"abusefilter-blocked-domains-actions-header": "Aktionen",
+	"abusefilter-blocked-domains-addedby-header": "Hinzugefügt von",
 	"abusefilter-blocked-domains-remove": "entfernen",
 	"abusefilter-blocked-domains-remove-title": "Eine gesperrte Domain entfernen",
 	"abusefilter-blocked-domains-remove-explanation-initial": "Auf dieser Seite kannst du eine gesperrte Domain entfernen",

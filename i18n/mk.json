@@ -585,6 +585,7 @@
 	"abusefilter-blocked-domains-domain-header": "Домен",
 	"abusefilter-blocked-domains-notes-header": "Белешки",
 	"abusefilter-blocked-domains-actions-header": "Дејства",
+	"abusefilter-blocked-domains-addedby-header": "Додадено од",
 	"abusefilter-blocked-domains-remove": "отстрани",
 	"abusefilter-blocked-domains-remove-title": "Отстрани блокиран домен",
 	"abusefilter-blocked-domains-remove-explanation-initial": "На оваа страница можете да отстраните блокиран домен",
