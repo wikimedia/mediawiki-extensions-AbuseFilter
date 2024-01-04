@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Strainu",
-			"WebSourceContentRO"
+			"WebSourceContentRO",
+			"Heron702"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Verifică dacă filtrul de abuzuri se aplică unui se de variabile, eveniment logat de Filtrul de abuzuri.\n\nvars, rcid sau logid sunt obligatorii, dar doar una poate fi folosită.",
@@ -22,5 +23,6 @@
 	"apihelp-abusefilterevalexpression-example-1": "Evaluează o expresie simplă",
 	"apihelp-query+abuselog-param-limit": "Numărul maxim de intrări de afișat.",
 	"apihelp-query+abuselog-param-prop": "Ce proprietăți se cer.",
+	"apihelp-abuselogprivatedetails-summary": "Vizualizați detaliile private ale unei intrări AbuseLog.",
 	"apierror-abusefilter-badsyntax": "Filtrul are sintaxă invalidă."
 }
