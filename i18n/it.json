@@ -603,6 +603,7 @@
 	"abusefilter-blocked-domains-domain-header": "Dominio",
 	"abusefilter-blocked-domains-notes-header": "Note",
 	"abusefilter-blocked-domains-actions-header": "Azioni",
+	"abusefilter-blocked-domains-addedby-header": "Aggiunto da",
 	"abusefilter-blocked-domains-remove": "rimuovi",
 	"abusefilter-blocked-domains-remove-title": "Rimuovi un dominio bloccato",
 	"abusefilter-blocked-domains-remove-explanation-initial": "In questa pagina puoi rimuovere un dominio bloccato",

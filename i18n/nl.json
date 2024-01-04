@@ -612,6 +612,7 @@
 	"abusefilter-blocked-domains-domain-header": "Domein",
 	"abusefilter-blocked-domains-notes-header": "Opmerkingen",
 	"abusefilter-blocked-domains-actions-header": "Acties",
+	"abusefilter-blocked-domains-addedby-header": "Toegevoegd door",
 	"abusefilter-blocked-domains-remove": "verwijder",
 	"abusefilter-blocked-domains-remove-title": "Verwijder een geblokkeerd domein",
 	"abusefilter-blocked-domains-remove-explanation-initial": "Op deze pagina kunt u een geblokkeerd domein verwijderen",

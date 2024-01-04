@@ -598,6 +598,7 @@
 	"abusefilter-blocked-domains-domain-header": "תחום",
 	"abusefilter-blocked-domains-notes-header": "הערות",
 	"abusefilter-blocked-domains-actions-header": "פעולות",
+	"abusefilter-blocked-domains-addedby-header": "נוסף על־ידי",
 	"abusefilter-blocked-domains-remove": "הסרה",
 	"abusefilter-blocked-domains-remove-title": "הסרת תחום חסום",
 	"abusefilter-blocked-domains-remove-explanation-initial": "בדף הזה אפשר להסיר תחום חסום",
