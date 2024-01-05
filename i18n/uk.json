@@ -214,6 +214,7 @@
 	"abusefilter-reautoconfirm-done": "Відновлений статус автопідтвердження облікового запису",
 	"abusefilter-status": "Серед $1 {{PLURAL:$1|1=дії|дій}}, $2 ($3%) {{PLURAL:$2|1=досягла|досягли}} межі $4. $5 ($6%) {{PLURAL:$5|1=активізувала|активізували}} один з увімкнених фільтрів.",
 	"abusefilter-edit": "Зміна фільтра зловживань",
+	"abusefilter-edit-specific": "Редагування фільтра зловживань $1: $2",
 	"abusefilter-edit-subtitle": "Редагування фільтра $1",
 	"abusefilter-edit-subtitle-new": "Створення фільтра",
 	"abusefilter-edit-token-not-match": "Ваше редагування не збережене! Будь ласка, збережіть знову.",
