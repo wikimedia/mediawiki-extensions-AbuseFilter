@@ -587,6 +587,7 @@
 	"abusefilter-blocked-domains-domain-header": "Domena",
 	"abusefilter-blocked-domains-notes-header": "Opombe",
 	"abusefilter-blocked-domains-actions-header": "Dejanja",
+	"abusefilter-blocked-domains-addedby-header": "Dodal",
 	"abusefilter-blocked-domains-remove": "odstrani",
 	"abusefilter-blocked-domains-remove-title": "Odstrani blokirano domeno",
 	"abusefilter-blocked-domains-remove-explanation-initial": "Na tej strani lahko odstranite blokirano domeno",
