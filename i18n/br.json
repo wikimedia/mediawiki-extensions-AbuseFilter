@@ -180,6 +180,7 @@
 	"abusefilter-edit-action-blockautopromote": "Disteurel ar stad emkadarn eus ar c'hont implijer",
 	"abusefilter-edit-action-degroup": "Dilemel an implijer eus an holl strolladoù brientekaet",
 	"abusefilter-edit-action-block": "Stankañ an implijer-mañ hag/pe ar chomlec'h IP evit ar c'hemmañ",
+	"abusefilter-edit-action-blocktalk": "Mirout ouzh an implijer ha/pe chomlec’h IP da gemmañ e bajenn gaozeal",
 	"abusefilter-edit-action-throttle": "Deluskañ an oberoù nemet ma za an implijer dreist d'ur feur termen",
 	"abusefilter-edit-action-rangeblock": "Stankañ lijorenn IP orin an implijer",
 	"abusefilter-edit-action-tag": "Balizenniñ ar c'hemm evit un adlenn a-c'houdevezh.",
@@ -398,6 +399,7 @@
 	"abusefilter-test-page": "Kemmoù graet war ar bajenn :",
 	"abusefilter-test-shownegative": "Diskouez ar c'hemmoù ha n'int ket kemeret e kont gant ar sil",
 	"abusefilter-test-syntaxerr": "Ar sil ho peus roet a zo ennañ ur fazi ereadurezh.\nGallout a rit resev un displegadenn glok dre glikañ war ar bouton \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-action": "Seurt oberː",
 	"abusefilter-test-search-type-all": "An holl oberoù",
 	"abusefilter-test-search-type-edit": "Kemmoù",
 	"abusefilter-test-search-type-delete": "Dilamadurioù",
@@ -444,5 +446,7 @@
 	"abusefilter-http-error": "Ur fazi HTTP zo bet : $1",
 	"abusefilter-log-details-id": "ID ar marilh",
 	"abusefilter-log-ip-not-available": "N'eo ket da gaout",
+	"notification-header-throttle-filter-actions": "Ar sil a-enep ar gwallimplij ̯$2 kemmet {{GENDER:$1|ganeoc’h}} n’eus ket pell zo en deus bet ur feur uhel a dizhadennoù ha diweredekaet eo bet an {{PLURAL:$4|ober|oberoù}}-mañː $3.",
+	"notification-header-throttle-filter-no-actions": "Ar sil a-enep ar gwallimplij ̯$2 kemmet {{GENDER:$1|ganeoc’h}} n’eus ket pell zo en deus bet ur feur uhel a dizhadennoù met n’eo ket bet diweredekaet ober ebet.",
 	"notification-link-text-show-filter": "Diskouez ar sil"
 }

@@ -28,7 +28,8 @@
 			"Vitorvicentevalente",
 			"Waldir",
 			"Waldyrious",
-			555
+			555,
+			"Albertoleoncio"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
@@ -387,7 +388,7 @@
 	"abusefilter-edit-builder-vars-new-content-model": "Novo modelo de conteúdo",
 	"abusefilter-edit-builder-vars-removedlines": "Linhas removidas na edição",
 	"abusefilter-edit-builder-vars-summary": "Resumo ou motivo da edição",
-	"abusefilter-edit-builder-vars-page-id": "ID da página",
+	"abusefilter-edit-builder-vars-page-id": "Identificador da página",
 	"abusefilter-edit-builder-vars-page-ns": "Espaço nominal da página",
 	"abusefilter-edit-builder-vars-page-title": "Título da página (sem espaço nominal)",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "Título completo da página",
@@ -468,7 +469,7 @@
 	"abusefilter-history-filterid": "Filtro",
 	"abusefilter-history-select-legend": "Melhorar pesquisa",
 	"abusefilter-history-select-user": "Utilizador:",
-	"abusefilter-history-select-filter": "ID do filtro:",
+	"abusefilter-history-select-filter": "Identificador do filtro:",
 	"abusefilter-history-select-submit": "Melhorar",
 	"abusefilter-history-diff": "Alterações",
 	"abusefilter-history-error-hidden": "O filtro que solicitou está ocultado e não pode ver o seu histórico.",
