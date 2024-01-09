@@ -541,6 +541,7 @@
 	"abusefilter-blocked-domains-domain-header": "Домен",
 	"abusefilter-blocked-domains-notes-header": "Напомене",
 	"abusefilter-blocked-domains-actions-header": "Радње",
+	"abusefilter-blocked-domains-addedby-header": "Додао/ла",
 	"abusefilter-blocked-domains-remove": "уклони",
 	"abusefilter-blocked-domains-remove-title": "Уклони блокирани домен",
 	"abusefilter-blocked-domains-remove-explanation-initial": "На овој страници можете да уклоните блокирани домен",
