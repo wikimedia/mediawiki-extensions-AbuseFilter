@@ -212,6 +212,7 @@
 	"abusefilter-reautoconfirm-done": "계정의 자동 인증 상태가 복구되었습니다",
 	"abusefilter-status": "최근 {{PLURAL:$1|동작}} $1개 중 $2개 ($3%)가 부하 한도 $4에 도달{{PLURAL:$2|했고}} $5개($6%)가 현재 활성화된 필터와 일치{{PLURAL:$5|했습니다}}.",
 	"abusefilter-edit": "편집 필터 편집하기",
+	"abusefilter-edit-specific": "편집 필터 $1: $2 편집하기",
 	"abusefilter-edit-subtitle": "필터 $1 편집하기",
 	"abusefilter-edit-subtitle-new": "필터 만들기",
 	"abusefilter-edit-token-not-match": "편집이 저장되지 않았습니다! 다시 저장해 주십시오.",
