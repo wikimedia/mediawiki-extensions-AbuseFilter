@@ -217,7 +217,7 @@
 	"abusefilter-reautoconfirm-notallowed": "أنت غير مسموح لك باسترجاع حالة التأكيد التلقائي.",
 	"abusefilter-reautoconfirm-done": "حالة التأكيد التلقائي للحساب تمت استعادتها",
 	"abusefilter-status": "من آخر $1 {{PLURAL:$1|فعل|أفعال}}، $2 ($3%) {{PLURAL:$2|قد}} وصل إلى الحد الشرطي البالغ $4، و$5 ($6%) {{PLURAL:$5|قد}} طابق واحدا على الأقل من المرشحات الممكنة حاليا.",
-	"abusefilter-edit": "تحرير مرشح الإساءة",
+	"abusefilter-edit": "تعديل مرشح الإساءة",
 	"abusefilter-edit-subtitle": "تعديل المرشح $1",
 	"abusefilter-edit-subtitle-new": "أنشئ مُرشِّحًا",
 	"abusefilter-edit-token-not-match": "لم يتم حفظ التعديل! يُرجَى الحفظ مرة أخرى.",
