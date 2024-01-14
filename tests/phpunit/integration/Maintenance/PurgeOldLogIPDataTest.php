@@ -18,9 +18,6 @@ class PurgeOldLogIPDataTest extends MaintenanceBaseTestCase {
 	private const FAKE_TIME = '20200115000000';
 	private const MAX_AGE = 3600;
 
-	/** @inheritDoc */
-	protected $tablesUsed = [ 'abuse_filter_log' ];
-
 	/**
 	 * @inheritDoc
 	 */

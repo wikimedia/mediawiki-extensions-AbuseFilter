@@ -37,12 +37,6 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		'group' => 'default'
 	];
 
-	/** @inheritDoc */
-	protected $tablesUsed = [
-		'abuse_filter',
-		'actor',
-	];
-
 	/**
 	 * @param int $id
 	 */

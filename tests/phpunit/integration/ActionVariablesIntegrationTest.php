@@ -39,14 +39,6 @@ use WikitextContent;
 class ActionVariablesIntegrationTest extends ApiTestCase {
 	use AbuseFilterCreateAccountTestTrait;
 
-	public function setUp(): void {
-		parent::setUp();
-
-		$this->tablesUsed[] = 'externallinks';
-		$this->tablesUsed[] = 'page';
-		$this->tablesUsed[] = 'revision';
-	}
-
 	private function prepareServices(): void {
 		$this->setService(
 			FilterProfiler::SERVICE_NAME,

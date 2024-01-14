@@ -16,14 +16,6 @@ use MediaWiki\User\UserIdentityValue;
  */
 class LazyVariableComputerDBTest extends MediaWikiIntegrationTestCase {
 
-	/** @inheritDoc */
-	protected $tablesUsed = [
-		'page',
-		'text',
-		'user',
-		'recentchanges',
-	];
-
 	/**
 	 * Make different users edit a page, so that we can check their names against
 	 * the actual value of a _recent_contributors variable

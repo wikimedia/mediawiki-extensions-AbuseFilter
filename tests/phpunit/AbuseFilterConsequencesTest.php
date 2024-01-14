@@ -75,25 +75,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 */
 	private $user;
 
-	/**
-	 * @var array These tables will be deleted in parent::tearDown
-	 */
-	protected $tablesUsed = [
-		'abuse_filter',
-		'abuse_filter_action',
-		'abuse_filter_history',
-		'abuse_filter_log',
-		'page',
-		'ipblocks',
-		'logging',
-		'change_tag',
-		'user',
-		'text',
-		'image',
-		'oldimage',
-		'actor',
-	];
-
 	// phpcs:disable Generic.Files.LineLength
 	/** @var array Filters that may be created, their key is the ID. */
 	private const FILTERS = [
