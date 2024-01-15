@@ -580,6 +580,7 @@
 	"abusefilter-blocked-domains-domain-header": "Dominio",
 	"abusefilter-blocked-domains-notes-header": "Notas",
 	"abusefilter-blocked-domains-actions-header": "Actiones",
+	"abusefilter-blocked-domains-addedby-header": "Addite per",
 	"abusefilter-blocked-domains-remove": "remover",
 	"abusefilter-blocked-domains-remove-title": "Remover un dominio blocate",
 	"abusefilter-blocked-domains-remove-explanation-initial": "Sur iste pagina tu pote remover un dominio blocate",
