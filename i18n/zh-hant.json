@@ -47,7 +47,8 @@
 			"逆襲的天邪鬼",
 			"捍粵者",
 			"Amire80",
-			"Lionpancake"
+			"Lionpancake",
+			"LuciferianThomas"
 		]
 	},
 	"abusefilter-desc": "自動條件判定編輯行為",
@@ -265,7 +266,7 @@
 	"abusefilter-edit-action-block": "禁止該使用者及／或IP位址編輯",
 	"abusefilter-edit-action-blocktalk": "封鎖使用者和/或IP使用者在封鎖期間編輯自己的討論頁",
 	"abusefilter-edit-action-throttle": "僅在使用者超過頻率限制後觸發動作",
-	"abusefilter-edit-action-rangeblock": "封鎖使用者來源位置的對應子網段區間。",
+	"abusefilter-edit-action-rangeblock": "封鎖使用者來源位置的對應子網段區間",
 	"abusefilter-edit-action-tag": "標記該編輯需要進一步審查",
 	"abusefilter-edit-throttle-count": "允許的操作次數：",
 	"abusefilter-edit-throttle-period": "期間（秒）：",
