@@ -6,7 +6,8 @@
 			"Maxí",
 			"S.Örvarr.S",
 			"Snævar",
-			"Sveinn í Felli"
+			"Sveinn í Felli",
+			"Stefán Örvar Sigmundsson"
 		]
 	},
 	"abusefilter-desc": "Beitir sjálfvirkri brjóstvitsfræði á breytingar.",
@@ -282,7 +283,7 @@
 	"abusefilter-diff-version": "Útgáfa frá $1 {{GENDER:$3|eftir}} $2",
 	"abusefilter-diff-info": "Grunnupplýsingar",
 	"abusefilter-diff-invalid": "Mistókst að sækja þær útgáfur sem þú óskaðir eftir",
-	"abusefilter-diff-backhistory": "Aftur í breytingaskrá síunnar",
+	"abusefilter-diff-backhistory": "Sía breytingaskrá",
 	"abusefilter-diff-next": "Nýlegri breytingar",
 	"abusefilter-import-submit": "Flytja inn gögn",
 	"abusefilter-group-default": "Sjálfgefið",
