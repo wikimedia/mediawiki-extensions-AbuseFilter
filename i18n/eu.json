@@ -15,7 +15,8 @@
 			"Theklan",
 			"Unai Fdz. de Betoño",
 			"Xabier Armendaritz",
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"Atzerritik"
 		]
 	},
 	"abusefilter-desc": "Edizioei heuristika automatikoa aplikatzen die",
@@ -245,7 +246,7 @@
 	"abusefilter-edit-denied": "Agian ezin dituzu iragazki honetako xehetasunak ikusi ikuspegi publikotik ezkutatuta daudelako",
 	"abusefilter-edit-main": "Iragazkiaren parametroak",
 	"abusefilter-edit-done-subtitle": "Iragazia aldatua",
-	"abusefilter-edit-badsyntax": "Sintaxi errore bat dago zuk zehaztutako iragazkian.\nAnalizatzailearen irteera hau izan da: <pre> $ 1 </pre>",
+	"abusefilter-edit-badsyntax": "Sintaxi errore bat dago zuk zehaztutako iragazkian.\nAnalizatzailearen irteera hau izan da: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Hurrengo eremuak beharrezkoak dira eta bete egin behar dira: $1",
 	"abusefilter-edit-deleting-enabled": "Ezin duzu iragazki aktibo bat ezabatu gisa markatu.",
 	"abusefilter-edit-restricted": "Iragazki honek ekintza murrizturen bat dauka eta ezin duzu editatu. Mesedez, eskatu baimena duen erabiltzaile bati aldaketa zure partez egiteko.",

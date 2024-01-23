@@ -268,7 +268,7 @@
 	"abusefilter-edit-disallow-actions": "การกระทำ:",
 	"abusefilter-edit-disallow-preview": "แสดง/ซ่อนตัวอย่างข้อความที่เลือก",
 	"abusefilter-edit-disallow-edit": "สร้าง/แก้ไขข้อความที่เลือก",
-	"abusefilter-edit-tag-tag": "[[Special:Tags|ป้ายกำกับ]]ที่ใช้:",
+	"abusefilter-edit-tag-tag": "[[Special:Tags|ป้ายระบุ]]ที่ใช้:",
 	"abusefilter-edit-tag-placeholder": "เพิ่มป้ายกำกับ (ทีละป้ายหรือคั่นด้วยจุลภาค)",
 	"abusefilter-edit-tag-hidden-placeholder": "เพิ่มป้ายกำกับ (คั่นด้วยจุลภาค)",
 	"abusefilter-edit-block-anon-durations": "ระยะเวลาในการบล็อกสำหรับผู้ใช้นิรนาม:",
