@@ -5,7 +5,7 @@
 	"homepage": "https://www.mediawiki.org/wiki/Extension:AbuseFilter",
 	"license": "GPL-2.0-or-later",
 	"require": {
-		"wikimedia/equivset": "^1.5"
+		"wikimedia/equivset": "^1.6.1"
 	},
 	"require-dev": {
 		"mediawiki/mediawiki-codesniffer": "41.0.0",
