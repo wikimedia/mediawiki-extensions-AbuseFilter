@@ -306,5 +306,19 @@
 	"abusefilter-diff-item": "Element",
 	"abusefilter-diff-version": "$2 adlı {{GENDER:$3|istifadəçinin}} $1 tarixli versiyası",
 	"abusefilter-diff-info": "Əsas məlumatlar",
-	"abusefilter-diff-pattern": "Süzgəcləmə şərtləri"
+	"abusefilter-diff-pattern": "Süzgəcləmə şərtləri",
+	"abusefilter-blocked-domains-title": "Bloklanmış xarici domenlər",
+	"abusefilter-blocked-domains-intro": "Bu siyahıya uyğun gələn xarici keçidlər səhifəyə əlavə edildikdə bloklanacaq. Domenlər [[MediaWiki:BlockedExternalDomains.json]] səhifəsində saxlanılır.",
+	"abusefilter-blocked-domains-add-heading": "Yeni bloklanmış domen əlavə edin",
+	"abusefilter-blocked-domains-add-explanation": "Burada bloklanmış domenlər siyahısına domen əlavə edə bilərsiniz.",
+	"abusefilter-blocked-domains-domain": "Bloklanacaq domen, məsələn wikipedia.org",
+	"abusefilter-blocked-domains-notes": "Qeydlər",
+	"abusefilter-blocked-domains-add-submit": "Əlavə et",
+	"abusefilter-blocked-domains-domain-header": "Domen",
+	"abusefilter-blocked-domains-notes-header": "Qeydlər",
+	"abusefilter-blocked-domains-actions-header": "Əməliyyatlar",
+	"abusefilter-blocked-domains-addedby-header": "Əlavə edən",
+	"abusefilter-blocked-domains-remove": "sil",
+	"abusefilter-blocked-domains-attempted": "Əlavə etmək istədiyiniz mətn filtrimiz tərəfindən bloklandı. Aşağıdakı domenin əlavə edilməsi bloklanıb: $1",
+	"abusefilter-blocked-domains-domain-added-comment": "$1 domeni bloklanmış domenlər siyahısına əlavə edilir: $2"
 }

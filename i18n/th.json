@@ -122,7 +122,7 @@
 	"abusefilter-log-details-hidden-implicit": "คุณไม่สามารถดูรายละเอียดของหน่วยนี้เนื่องจากรุ่นแก้ไขที่เชื่อมโยงถูกซ่อนจากการเข้าชมสาธารณะ",
 	"abusefilter-log-private-not-included": "ไอดีตัวกรองอย่างน้อยหนึ่งไอดีที่คุณระบุเป็นส่วนตัว เนื่องจากคุณไม่ได้รับอนุญาตให้ดูรายละเอียดของตัวกรองส่วนตัว ตัวกรองเหล่านี้จึงไม่ถูกค้นหา",
 	"abusefilter-log-hide-no-selected": "ไม่มีรายการใดถูกเลือก",
-	"abusefilter-log-hide-selected": "{{PLURAL:$1|หน่วยปูมการละเมิดกฎที่เลือก|หน่วยปูมการละเมิดกฎที่เลือก}}:",
+	"abusefilter-log-hide-selected": "{{PLURAL:$1|หน่วยปูมการละเมิดกฎที่เลือก}}:",
 	"abusefilter-log-hide-legend": "เปลี่ยนทัศนวิสัย",
 	"abusefilter-log-hide-set-visibility": "ตั้งค่าการมองเห็นสำหรับรายการที่เลือก:",
 	"abusefilter-log-hide-reason": "สาเหตุ:",
