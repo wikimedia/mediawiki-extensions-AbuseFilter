@@ -113,7 +113,7 @@ class HideAbuseLog extends AbuseFilterView {
 			],
 		];
 
-		$actionURL = $this->getTitle( 'hide' )->getFullURL( [ 'hideids' => array_fill_keys( $this->hideIDs, 1 ) ] );
+		$actionURL = $this->getTitle( 'hide' )->getLocalURL( [ 'hideids' => array_fill_keys( $this->hideIDs, 1 ) ] );
 		HTMLForm::factory( 'ooui', $formInfo, $this->getContext() )
 			->setAction( $actionURL )
 			->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() )
