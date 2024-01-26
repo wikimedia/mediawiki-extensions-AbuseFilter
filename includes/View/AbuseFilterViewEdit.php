@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 
 use HtmlArmor;
 use IContextSource;
+use IDBAccessObject;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
@@ -1181,8 +1182,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$flags = $this->getRequest()->wasPosted()
 			// Load from primary database to avoid unintended reversions where there's replication lag.
-			? FilterLookup::READ_LATEST
-			: FilterLookup::READ_NORMAL;
+			? IDBAccessObject::READ_LATEST
+			: IDBAccessObject::READ_NORMAL;
 
 		return $this->filterLookup->getFilter( $id, false, $flags );
 	}

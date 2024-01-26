@@ -1600,10 +1600,10 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$this->createFilters( [ 24 ] );
 
 		$targetTitle = Title::makeTitle( NS_MAIN, 'TestRevIdSet' );
-		$startingRevId = $targetTitle->getLatestRevID( Title::READ_LATEST );
+		$startingRevId = $targetTitle->getLatestRevID( IDBAccessObject::READ_LATEST );
 
 		$this->doEdit( $targetTitle, 'Old text', 'New text', 'Summary' );
-		$latestRevId = $targetTitle->getLatestRevID( Title::READ_LATEST );
+		$latestRevId = $targetTitle->getLatestRevID( IDBAccessObject::READ_LATEST );
 
 		$this->assertNotSame(
 			$startingRevId,

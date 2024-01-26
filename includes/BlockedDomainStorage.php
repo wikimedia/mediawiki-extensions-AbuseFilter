@@ -83,12 +83,12 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * Load the configuration page, with optional local-server caching.
 	 *
-	 * @param int $flags bit field, see self::READ_XXX
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
 	public function loadConfig( int $flags = 0 ): StatusValue {
-		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+		if ( DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ) {
 			return $this->fetchConfig( $flags );
 		}
 
@@ -235,7 +235,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 */
 	private function fetchLatestConfig(): ?array {
 		$configPage = $this->getBlockedDomainPage();
-		$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, self::READ_LATEST );
+		$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, IDBAccessObject::READ_LATEST );
 		if ( !$revision ) {
 			return [];
 		}

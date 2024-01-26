@@ -99,14 +99,16 @@ class FilterLookup implements IDBAccessObject {
 	/**
 	 * @param int $filterID
 	 * @param bool $global
-	 * @param int $flags One of the self::READ_* constants
+	 * @param int $flags One of the IDBAccessObject::READ_* constants
 	 * @return ExistingFilter
 	 * @throws FilterNotFoundException if the filter doesn't exist
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getFilter( int $filterID, bool $global, int $flags = self::READ_NORMAL ): ExistingFilter {
+	public function getFilter(
+		int $filterID, bool $global, int $flags = IDBAccessObject::READ_NORMAL
+	): ExistingFilter {
 		$cacheKey = $this->getCacheKey( $filterID, $global );
-		if ( $flags !== self::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
+		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 			$dbr = $this->getDBConnection( $dbIndex, $global );
 			$query = $this->getAbuseFilterQueryInfo();
@@ -140,9 +142,11 @@ class FilterLookup implements IDBAccessObject {
 	 * @return ExistingFilter[]
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getAllActiveFiltersInGroup( string $group, bool $global, int $flags = self::READ_NORMAL ): array {
+	public function getAllActiveFiltersInGroup(
+		string $group, bool $global, int $flags = IDBAccessObject::READ_NORMAL
+	): array {
 		$domainKey = $global ? 'global' : 'local';
-		if ( $flags !== self::READ_NORMAL || !isset( $this->groupCache[$domainKey][$group] ) ) {
+		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->groupCache[$domainKey][$group] ) ) {
 			if ( $global ) {
 				$globalRulesKey = $this->getGlobalRulesKey( $group );
 				$ret = $this->wanCache->getWithSetCallback(
@@ -268,9 +272,9 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	public function getFilterVersion(
 		int $version,
-		int $flags = self::READ_NORMAL
+		int $flags = IDBAccessObject::READ_NORMAL
 	): HistoryFilter {
-		if ( $flags !== self::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
+		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
 			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
 			$dbr = $this->loadBalancer->getConnection( $dbIndex );
 			$query = $this->getAbuseFilterHistoryQueryInfo();
