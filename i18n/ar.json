@@ -611,6 +611,7 @@
 	"abusefilter-blocked-domains-domain-header": "النطاق",
 	"abusefilter-blocked-domains-notes-header": "ملاحظات",
 	"abusefilter-blocked-domains-actions-header": "أفعال",
+	"abusefilter-blocked-domains-addedby-header": "أضيف بواسطة",
 	"abusefilter-blocked-domains-remove": "إزالة",
 	"abusefilter-blocked-domains-remove-title": "إزالة المجال المحظور",
 	"abusefilter-blocked-domains-remove-explanation-initial": "في هذه الصفحة يمكنك إزالة المجال المحظور",
