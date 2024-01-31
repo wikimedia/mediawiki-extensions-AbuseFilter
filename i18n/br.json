@@ -101,6 +101,7 @@
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|en|he}} deus kuzhet $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|en|he}} deus diguzhet $3",
 	"logentry-abusefilter-hit": "$1 {{GENDER:$2|en|he}} deus lañset sil gwallimplij $4, e-kerzh an ober \"$5\" war $3. Oberoù graet : $6 ($7)",
+	"log-name-abusefilterblockeddomainhit": "Marilh tizhadennoù an domanioù stanket",
 	"abusefilter-list": "An holl siloù",
 	"abusefilter-list-id": "Niv. ar sil",
 	"abusefilter-list-pattern": "Patrom",
