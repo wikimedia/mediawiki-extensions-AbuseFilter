@@ -110,6 +110,7 @@ return [
 			// TODO We need a proper MessageLocalizer, see T247127
 			RequestContext::getMain(),
 			$services->getUserGroupManager(),
+			$services->getUserNameUtils(),
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
