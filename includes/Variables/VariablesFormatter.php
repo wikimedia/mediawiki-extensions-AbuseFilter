@@ -77,7 +77,6 @@ class VariablesFormatter {
 					Html::element(
 						'code',
 						[],
-						// @phan-suppress-next-line SecurityCheck-XSS Keys are safe
 						$this->messageLocalizer->msg( 'parentheses' )->rawParams( $key )->text()
 					);
 			} else {
