@@ -229,8 +229,7 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 		$this->output(
 			"Beginning migration of $table.$userField and $table.$nameField to $table.$actorField\n"
 		);
-		$lbFactory = MediaWikiServices::getInstance()->getDBLoadBalancerFactory();
-		$lbFactory->waitForReplication();
+		$this->waitForReplication();
 
 		$actorIdSubquery = $this->makeActorIdSubquery( $dbw, $userField, $nameField );
 		$next = '1=1';
@@ -289,7 +288,7 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 
 			list( $next, $display ) = $this->makeNextCond( $dbw, $primaryKey, $lastRow );
 			$this->output( "... $display\n" );
-			$lbFactory->waitForReplication();
+			$this->waitForReplication();
 		}
 
 		$this->output(
