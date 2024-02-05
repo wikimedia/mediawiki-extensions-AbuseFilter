@@ -615,6 +615,7 @@
 	"abusefilter-blocked-domains-domain-header": "Domena",
 	"abusefilter-blocked-domains-notes-header": "Uwagi",
 	"abusefilter-blocked-domains-actions-header": "Działania",
+	"abusefilter-blocked-domains-addedby-header": "Dodane przez",
 	"abusefilter-blocked-domains-remove": "usuń",
 	"abusefilter-blocked-domains-remove-title": "Usuń zablokowaną domenę",
 	"abusefilter-blocked-domains-remove-explanation-initial": "Możesz tu usunąć zablokowaną domenę",
