@@ -509,6 +509,7 @@
 					// Refresh Ace editor size (notably its scrollbars) when the container
 					// is resized, otherwise it would be refreshed only on window resize
 					new ResizeObserver( function () {
+						// eslint-disable-next-line es-x/no-resizable-and-growable-arraybuffers
 						filterEditor.resize();
 					} ).observe( $filterBox[ 0 ] );
 				}
@@ -532,16 +533,24 @@
 		if ( isFilterEditor ) {
 			// Add logic for flags and consequences
 			$( '#mw-abusefilter-warn-preview-button' ).on( 'click',
-				function () { previewMessage( 'warn' ); }
+				function () {
+					previewMessage( 'warn' );
+				}
 			);
 			$( '#mw-abusefilter-disallow-preview-button' ).on( 'click',
-				function () { previewMessage( 'disallow' ); }
+				function () {
+					previewMessage( 'disallow' );
+				}
 			);
 			$( '#mw-abusefilter-warn-edit-button' ).on( 'click',
-				function () { editMessage( 'warn' ); }
+				function () {
+					editMessage( 'warn' );
+				}
 			);
 			$( '#mw-abusefilter-disallow-edit-button' ).on( 'click',
-				function () { editMessage( 'disallow' ); }
+				function () {
+					editMessage( 'disallow' );
+				}
 			);
 			$( '.mw-abusefilter-action-checkbox input' ).on( 'click', hideDeselectedActions );
 			hideDeselectedActions();
