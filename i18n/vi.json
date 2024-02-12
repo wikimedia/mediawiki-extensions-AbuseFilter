@@ -206,6 +206,7 @@
 	"abusefilter-reautoconfirm-done": "Đã phục hồi trạng thái tự xác nhận của tài khoản",
 	"abusefilter-status": "Trong $1 {{PLURAL:}}tác vụ cuối, $2 ($3%) tác vụ đã đạt đến điều kiện giới hạn của $4. $5 ($6%) tác vụ đã trùng với ít nhất một trong những bộ lọc hiện đang kích hoạt.",
 	"abusefilter-edit": "Sửa đổi bộ lọc sai phạm",
+	"abusefilter-view-specific": "Đang xem Bộ lọc sai phạm $1: $2",
 	"abusefilter-edit-subtitle": "Sửa đổi bộ lọc $1",
 	"abusefilter-edit-subtitle-new": "Tạo bộ lọc",
 	"abusefilter-edit-token-not-match": "Sửa đổi chưa được lưu! Xin hãy thử lại.",
