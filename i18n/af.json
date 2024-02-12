@@ -11,6 +11,7 @@
 	"abusefilter": "Misbruik filter bestuur",
 	"abuselog": "Misbruiklogboek",
 	"abusefilter-intro": "Welkom by die misbruik Filter beheer jou.\nDie misbruik Filter is 'n outomatiese sagteware meganisme van die toepassing van outomatiese heuristiek aan alle aksies.\nHierdie koppelvlak toon 'n lys van gedefinieer filters, en kan hulle verander word.",
+	"abusefilter-warning": "'''Waarskuwing:''' Hierdie aksie is outomaties as skadelik geïdentifiseer.\nOnkonstruktiewe aksies sal vinnig teruggekeer word,\nen ernstige of herhaalde onkonstruktiewe redigering sal daartoe lei dat jou rekening of IP-adres geblokkeer word.\nAs jy glo dat hierdie aksie konstruktief is, kan jy dit weer indien om dit te bevestig.\n'n Kort beskrywing van die misbruikreël waarby jou handeling ooreenstem, is: $1",
 	"abusefilter-blocker": "Misbruikfilter",
 	"abusefilter-accountreserved": "Hierdie rekeningnaam is gereserveer vir gebruik deur die misbruikfilter.",
 	"right-abusefilter-modify": "Wysig misbruikfilters",
