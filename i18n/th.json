@@ -142,9 +142,9 @@
 	"log-action-filter-abusefilter-modify": "การปรับเปลี่ยนตัวกรอง",
 	"log-action-filter-suppress-abuselog": "การซ่อนรายการบันทึกการละเมิดกฎ",
 	"log-action-filter-rights-blockautopromote": "การบล็อกการเลื่อนระดับอัตโนมัติ",
-	"log-action-filter-rights-restoreautopromote": "การมอบคืนการได้สิทธิ์ที่ควรได้รับอัตโนมัติ",
+	"log-action-filter-rights-restoreautopromote": "การมอบคืนการได้สิทธิที่ควรได้รับอัตโนมัติ",
 	"logentry-abusefilterprivatedetails-access": "$1 ได้{{GENDER:$2|เข้าถึง}}รายละเอียดส่วนตัวสำหรับ $3",
-	"logentry-rights-blockautopromote": "$1 ได้{{GENDER:$2|งดเว้น}}การมอบสิทธิ์ที่เป็นอัตโนมัติของ {{GENDER:$4|$3}} เป็นระยะเวลา $5",
+	"logentry-rights-blockautopromote": "$1 ได้{{GENDER:$2|งดเว้น}}การมอบสิทธิที่เป็นอัตโนมัติของ {{GENDER:$4|$3}} เป็นระยะเวลา $5",
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|มอบคืน}}ความสามารถในการได้รับสิทธ์อัตโนมัติของ {{GENDER:$4|$3}}",
 	"abusefilterprivatedetails-log-name": "ปูมการเข้าถึงรายละเอียดส่วนตัวของตัวกรองการละเมิด",
 	"abusefilter-list": "ตัวกรองทั้งหมด",
@@ -592,6 +592,6 @@
 	"notification-header-throttle-filter": "ตัวกรองการละเมิดกฎ $2 ที่{{GENDER:$1|คุณ}}เพิ่งแก้ไขถูกจำกัด",
 	"notification-header-throttle-filter-actions": "ตัวกรองการละเมิดกฎ $2 ที่{{GENDER:$1|คุณ}}เพิ่งแก้ไขมีอัตราการตรงกันสูง และ{{PLURAL:$4|การกระทำ}}ต่อไปนี้ถูกปิดใช้โดยอัตโนมัติ: $3",
 	"notification-header-throttle-filter-no-actions": "ตัวกรองการละเมิดกฎ $2 ที่{{GENDER:$1|คุณ}}เพิ่งแก้ไขมีอัตราการตรงกันสูง แต่ไม่มีการกระทำใดที่ถูกปิดใช้โดยอัตโนมัติ",
-	"notification-subject-throttle-filter": "ตัวกรองการละเมิดกฎ $2 ที่{{GENDER:$1|คุณ}}เพิ่งแก้ไขถูกจำกัดบน {{SITENAME}}",
+	"notification-subject-throttle-filter": "ตัวกรองการละเมิดกฎที่{{GENDER:$1|คุณ}}เพิ่งแก้ไขถูกจำกัดบน {{SITENAME}}",
 	"notification-link-text-show-filter": "แสดงตัวกรอง"
 }
