@@ -12,7 +12,8 @@
 			"З. ӘЙЛЕ",
 			"Лилиә",
 			"Ләйсән",
-			"Рустам Нурыев"
+			"Рустам Нурыев",
+			"Bashkorttan"
 		]
 	},
 	"abusefilter-desc": "Төҙәтеүҙәргә автоматик эвристик фильтрҙар ҡуйыу мөмкинлеге бирә.",
@@ -61,7 +62,7 @@
 	"abusefilter-log-detailedentry-global": "$1 глобаль фильтр",
 	"abusefilter-log-detailedentry-local": "$1 фильтрының",
 	"abusefilter-log-detailslink": "нескәлектәре",
-	"abusefilter-log-diff": "айыр.",
+	"abusefilter-log-diff": "айырма",
 	"abusefilter-log-hidelink": "күренеүсәнлекте көйләргә",
 	"abusefilter-log-details-legend": "$1 журнал яҙмаһы тураһында ентекле мәғлүмәт",
 	"abusefilter-log-details-var": "Үҙгәреүсән дәүмәл",

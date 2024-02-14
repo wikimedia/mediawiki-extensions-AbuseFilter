@@ -33,7 +33,8 @@
 			"زكريا",
 			"علاء",
 			"محمد أحمد عبد الفتاح",
-			"وهراني"
+			"وهراني",
+			"Hubaishan"
 		]
 	},
 	"abusefilter-desc": "يطبق قواعد آلية على التعديلات.",
@@ -600,7 +601,7 @@
 	"abusefilter-invalid-request-noid": "طلب غير صالح! يجب عليك الوصول إلى تفاصيل السجل الخاص من خلال النموذج الموجود في صفحة تفاصيل سجل الإساءة وتقديم سبب.",
 	"blockedexternaldomains": "النطاقات الخارجية الممنوعة",
 	"abusefilter-blocked-domains-title": "النطاقات الخارجية الممنوعة",
-	"abusefilter-blocked-domains-intro": "ستحظر الروابط الخارجية المطابقة لهذه القائمة عند إضافتها إلى صفحةٍ ما. تخزن هذه النطاقات في [[[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-intro": "ستحظر الروابط الخارجية المطابقة لهذه القائمة عند إضافتها إلى صفحةٍ ما. تخزن هذه النطاقات في [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "إضافة نطاق ممنوع جديد",
 	"abusefilter-blocked-domains-add-explanation": "هنا يمكنك إضافة نطاق إلى قائمة النطاقات الممنوعة.",
 	"abusefilter-blocked-domains-domain": "نطاق مطلوب منعه، مثل wikipedia.org",
