@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Stefán Örvar Sigmundsson",
 			"Sveinn í Felli"
 		]
 	},
-	"apierror-abusefilter-badsyntax": "Sían er með ranga málskipun."
+	"apierror-abusefilter-badsyntax": "Sían hefur ógilda málskipan."
 }
