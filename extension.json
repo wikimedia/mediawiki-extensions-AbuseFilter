@@ -311,23 +311,6 @@
 		},
 		"ext.abuseFilter.visualEditor": {
 			"scripts": "ve-abusefilter/ve.init.mw.AbuseFilterSaveErrorHandler.js"
-		},
-		"ext.abuseFilter.wikiEditor": {
-			"packageFiles": [
-				"wikieditor/ext.abuseFilter.wikiEditor.js"
-			],
-			"styles": [
-				"wikieditor/ext.abuseFilter.wikiEditor.less"
-			],
-			"dependencies": [
-				"mediawiki.Title",
-				"mediawiki.jqueryMsg",
-				"mediawiki.notification"
-			],
-			"messages": [
-				"abusefilter-blocked-domains-notif-body",
-				"abusefilter-blocked-domains-notif-review-link"
-			]
 		}
 	},
 	"attributes": {
@@ -411,15 +394,6 @@
 			"services": [
 				"MainConfig"
 			]
-		},
-		"EditPage": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPageHandler",
-			"services": [
-				"MainConfig"
-			],
-			"optional_services": [
-				"MobileFrontend.Context"
-			]
 		}
 	},
 	"Hooks": {
@@ -445,8 +419,7 @@
 		"UserMergeAccountFields": "UserMerge",
 		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
-		"JsonValidateSave": "EditPermission",
-		"EditPage::showEditForm:initial": "EditPage"
+		"JsonValidateSave": "EditPermission"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
@@ -593,10 +566,6 @@
 		"AbuseFilterEnableBlockedExternalDomain": {
 			"value": false,
 			"description": "Temporary config value to disable Special:BlockedExternalDomains"
-		},
-		"AbuseFilterBlockedExternalDomainsNotifications": {
-			"value": false,
-			"description": "Feature flag to enable realtime notifications when an editor types a link to a blocked external domain."
 		}
 	},
 	"load_composer_autoloader": true,
