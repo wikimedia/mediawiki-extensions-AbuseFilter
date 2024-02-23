@@ -334,7 +334,6 @@
 		},
 		"AutoPromoteGroups": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\AutoPromoteGroupsHandler",
-			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\AutoPromoteGroupsHandler::factory",
 			"services": [
 				"AbuseFilterConsequencesRegistry",
 				"AbuseFilterBlockAutopromoteStore"
