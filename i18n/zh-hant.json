@@ -653,7 +653,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "建立或修改被禁止連結的外部網域",
 	"right-abusefilter-bypass-blocked-external-domains": "繞過被封鎖的外部網域",
 	"action-abusefilter-bypass-blocked-external-domains": "繞過被封鎖的外部網域",
-	"abusefilter-blocked-domains-cannot-edit-directly": "要建立或修改被禁止連結的外部網域必須透過[[Special:BlockedExternalDomains|特殊頁面]]完成。",
-	"abusefilter-blocked-domains-notif-body": "您添加了一個指向域<strong>$1</strong>的鏈接，該域禁止在該網站上使用。請刪除它或將其替換為其他 URL。",
-	"abusefilter-blocked-domains-notif-review-link": "審核連結"
+	"abusefilter-blocked-domains-cannot-edit-directly": "要建立或修改被禁止連結的外部網域必須透過[[Special:BlockedExternalDomains|特殊頁面]]完成。"
 }

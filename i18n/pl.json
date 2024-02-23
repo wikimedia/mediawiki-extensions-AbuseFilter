@@ -642,7 +642,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "dodawania oraz modyfikowania zablokowanych zewnętrznych domen",
 	"right-abusefilter-bypass-blocked-external-domains": "Omijanie blokady zewnętrznych domen",
 	"action-abusefilter-bypass-blocked-external-domains": "omijania blokady zewnętrznych domen",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Dodawanie oraz modyfikowanie zablokowanych zewnętrznych domen musi odbywać się poprzez [[Special:BlockedExternalDomains|stronę specjalną]].",
-	"abusefilter-blocked-domains-notif-body": "{{GENDER:|Dodałeś|Dodałaś|Dodałeś(-aś)}} link do domeny <strong>$1</strong>, co nie jest dozwolone na niniejszej stronie. Usuń go lub zastąp innym adresem URL.",
-	"abusefilter-blocked-domains-notif-review-link": "Zobacz link"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Dodawanie oraz modyfikowanie zablokowanych zewnętrznych domen musi odbywać się poprzez [[Special:BlockedExternalDomains|stronę specjalną]]."
 }

@@ -632,7 +632,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "створення або зміну зовнішніх доменів, для яких заблоковано можливість на них посилатися",
 	"right-abusefilter-bypass-blocked-external-domains": "Обхід заблокованих зовнішніх доменів",
 	"action-abusefilter-bypass-blocked-external-domains": "обхід заблокованого зовнішнього домену",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]].",
-	"abusefilter-blocked-domains-notif-body": "Ви додали посилання на домен <strong>$1</strong>, який заборонено використовувати на цьому сайті. Будь ласка, вилучіть або замініть його іншою URL-адресою.",
-	"abusefilter-blocked-domains-notif-review-link": "Переглянути посилання"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]]."
 }

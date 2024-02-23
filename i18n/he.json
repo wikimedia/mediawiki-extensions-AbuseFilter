@@ -625,7 +625,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "ליצור או לשנות אילו תחומים חיצוניים חסומים לקישור",
 	"right-abusefilter-bypass-blocked-external-domains": "מעקף תחומים חיצוניים חסומים",
 	"action-abusefilter-bypass-blocked-external-domains": "לעקוף תחום חיצוני חסום",
-	"abusefilter-blocked-domains-cannot-edit-directly": "יצירה ושינוי של תחומים חיצוניים חסומים לקישור צריכות להיעשות דרך [[Special:BlockedExternalDomains|דף מיוחד]].",
-	"abusefilter-blocked-domains-notif-body": "הוספת קישור לתחום <strong>$1</strong> שאסור להשתמש בו באתר הזה. נא להסיר או להחליף אותו בכתובת URL אחרת.",
-	"abusefilter-blocked-domains-notif-review-link": "סקירת קישור"
+	"abusefilter-blocked-domains-cannot-edit-directly": "יצירה ושינוי של תחומים חיצוניים חסומים לקישור צריכות להיעשות דרך [[Special:BlockedExternalDomains|דף מיוחד]]."
 }

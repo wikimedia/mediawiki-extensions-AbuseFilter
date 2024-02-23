@@ -640,7 +640,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "zu erstellen oder zu ändern, welche externen Domänen für die Verknüpfung gesperrt sind",
 	"right-abusefilter-bypass-blocked-external-domains": "Umgehung gesperrter externer Domains",
 	"action-abusefilter-bypass-blocked-external-domains": "gesperrte externe Domains zu umgehen",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen.",
-	"abusefilter-blocked-domains-notif-body": "Du hast einen Link zur Domain <strong>$1</strong> hinzugefügt, dessen Verwendung auf dieser Website verboten ist. Bitte entferne ihn oder ersetze ihn durch eine andere URL.",
-	"abusefilter-blocked-domains-notif-review-link": "Link überprüfen"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen."
 }

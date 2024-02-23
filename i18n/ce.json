@@ -536,6 +536,5 @@
 	"tag-abusefilter-condition-limit": "доза тохар",
 	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зуламан литтаршна]] далуш доцург ([[mw:Extension:AbuseFilter/Conditions|гӀо]]).",
 	"notification-subject-throttle-filter": "{{GENDER:$1|ахьа}} хийцам бина зуламан литтаран {{SITENAME}} сайтехь блоктоьхна",
-	"notification-link-text-show-filter": "Гайта литтарг",
-	"abusefilter-blocked-domains-notif-review-link": "Хьажа хьажорге"
+	"notification-link-text-show-filter": "Гайта литтарг"
 }

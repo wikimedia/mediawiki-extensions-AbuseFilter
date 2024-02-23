@@ -675,7 +675,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "создание или изменение установки блокировки ссылок на внешние домены",
 	"right-abusefilter-bypass-blocked-external-domains": "Обход заблокированных внешних доменов",
 	"action-abusefilter-bypass-blocked-external-domains": "обход заблокированных внешних доменов",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Создать или изменить, ссылки на какие внешние домены блокируются, необходимо через [[Special:BlockedExternalDomains|специальную страницу]].",
-	"abusefilter-blocked-domains-notif-body": "Вы добавили ссылку на домен <strong>$1</strong>, который запрещён на этом сайте. Пожалуйста, удалите его или замените его другим URL.",
-	"abusefilter-blocked-domains-notif-review-link": "Предпросмотр ссылки"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Создать или изменить, ссылки на какие внешние домены блокируются, необходимо через [[Special:BlockedExternalDomains|специальную страницу]]."
 }

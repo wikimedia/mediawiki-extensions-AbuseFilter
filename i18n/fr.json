@@ -655,7 +655,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "créer ou modifier la liste des domaines externes vers lesquels les liens sont bloqués",
 	"right-abusefilter-bypass-blocked-external-domains": "Contourner les domaines externes bloqués",
 	"action-abusefilter-bypass-blocked-external-domains": "contourner les domaines externes bloqués",
-	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]].",
-	"abusefilter-blocked-domains-notif-body": "Vous avez ajouté un lien au domaine <strong>$1</strong> qui est interdit d’utilisation sur ce site. Veuillez le supprimer ou le remplacer par un URL différent.",
-	"abusefilter-blocked-domains-notif-review-link": "Vérifier le lien"
+	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]]."
 }

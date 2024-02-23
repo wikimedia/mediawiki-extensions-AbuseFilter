@@ -670,7 +670,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "crear o modificar qué dominios externos están bloqueados para que no se vinculen",
 	"right-abusefilter-bypass-blocked-external-domains": "Eludir la lista de dominios externos bloqueados",
 	"action-abusefilter-bypass-blocked-external-domains": "eludir la lista de dominios externos bloqueados",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]].",
-	"abusefilter-blocked-domains-notif-body": "Añadiste un enlace al dominio <strong>$1</strong> que está prohibido en este sitio. Retíralo o reemplazálo por otra URL.",
-	"abusefilter-blocked-domains-notif-review-link": "Revisar enlace"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]]."
 }

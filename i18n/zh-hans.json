@@ -690,7 +690,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "创建或修改禁止被链接的外部域名",
 	"right-abusefilter-bypass-blocked-external-domains": "绕过被屏蔽的外部域名",
 	"action-abusefilter-bypass-blocked-external-domains": "绕过被屏蔽的外部域名",
-	"abusefilter-blocked-domains-cannot-edit-directly": "创建或修改被禁止的外部链接域名必须通过[[Special:BlockedExternalDomains|特殊页面]]完成。",
-	"abusefilter-blocked-domains-notif-body": "您添加了一个指向<strong>$1</strong>域名的链接，而该域名禁止在该网站上使用。请删除它或将其替换为其他URL。",
-	"abusefilter-blocked-domains-notif-review-link": "审核链接"
+	"abusefilter-blocked-domains-cannot-edit-directly": "创建或修改被禁止的外部链接域名必须通过[[Special:BlockedExternalDomains|特殊页面]]完成。"
 }

@@ -614,7 +614,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati",
 	"right-abusefilter-bypass-blocked-external-domains": "Zaobidenje blokiranih zunanjih domen",
 	"action-abusefilter-bypass-blocked-external-domains": "zaobidenje blokiranih zunanjih domen",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati, je treba opraviti na [[Special:BlockedExternalDomains|posebni strani]].",
-	"abusefilter-blocked-domains-notif-body": "Dodali ste povezavo do domene <strong>$1</strong> , ki je v tem spletišču ni dovoljeno uporabljati. Odstranite jo ali jo zamenjajte z drugim URL-jem.",
-	"abusefilter-blocked-domains-notif-review-link": "Preglej povezavo"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Ustvarjanje ali spreminjanje konfiguracije zunanjih domen, na katere ni mogoče povezovati, je treba opraviti na [[Special:BlockedExternalDomains|posebni strani]]."
 }

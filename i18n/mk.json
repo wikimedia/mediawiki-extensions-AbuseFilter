@@ -612,7 +612,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "поставање и менување на блокираните надворешни домени",
 	"right-abusefilter-bypass-blocked-external-domains": "Заобиколување на блокирани надворешни домени",
 	"action-abusefilter-bypass-blocked-external-domains": "заобиколување на блокирани надворешни домени",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]].",
-	"abusefilter-blocked-domains-notif-body": "Ставивте врска до доменот <strong>$1</strong> кој е забранет за употреба на ова мрежно место. Отстранете го или заменете го со друга URL.",
-	"abusefilter-blocked-domains-notif-review-link": "Прегледај врска"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]]."
 }

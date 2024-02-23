@@ -634,7 +634,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "criar ou modificar que domínios externos estão impedidos de ser destino de hiperligações",
 	"right-abusefilter-bypass-blocked-external-domains": "Contornar os domínios externos bloqueados",
 	"action-abusefilter-bypass-blocked-external-domains": "contornar os domínios externos bloqueados",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Criar ou modificar que domínios externos estão impedidos de ser destino de hiperligações, tem de ser feito na [[Special:BlockedExternalDomains|página especial]].",
-	"abusefilter-blocked-domains-notif-body": "Adicionou uma hiperligação para o domínio <strong>$1</strong>, cujo uso é proibido neste ''site''. Remova-a ou substitua-a por outra com um URL diferente, por favor.",
-	"abusefilter-blocked-domains-notif-review-link": "Rever hiperligação"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Criar ou modificar que domínios externos estão impedidos de ser destino de hiperligações, tem de ser feito na [[Special:BlockedExternalDomains|página especial]]."
 }

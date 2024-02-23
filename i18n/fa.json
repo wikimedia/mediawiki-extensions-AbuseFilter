@@ -643,7 +643,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "ایجاد یا تغییر دامنه‌های خارجی مسدود شده در برابر ایجاد پیوند",
 	"right-abusefilter-bypass-blocked-external-domains": "دورزدن دامنه‌های خارجی مسدودشده",
 	"action-abusefilter-bypass-blocked-external-domains": "دورزدن دامنه‌های خارجی مسدودشده",
-	"abusefilter-blocked-domains-cannot-edit-directly": "ایجاد یا تغییر دامنه‌های خارجی که از پیونددادن مسدود شده‌اند باید از طریق [[Special:BlockedExternalDomains|صفحه ویژه]] انجام شود.",
-	"abusefilter-blocked-domains-notif-body": "شما پیوند به دامنهٔ <strong>$1</strong> را افزوده‌اید که استفاده از آن در این وبگاه ممنوع است. لطفاً آن را حذف کنید یا آن را با نشانی دیگری جایگزین کنید.",
-	"abusefilter-blocked-domains-notif-review-link": "بازبینی پیوند"
+	"abusefilter-blocked-domains-cannot-edit-directly": "ایجاد یا تغییر دامنه‌های خارجی که از پیونددادن مسدود شده‌اند باید از طریق [[Special:BlockedExternalDomains|صفحه ویژه]] انجام شود."
 }

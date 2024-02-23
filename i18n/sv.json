@@ -643,7 +643,5 @@
 	"action-abusefilter-modify-blocked-external-domains": "skapa eller ändra vilka externa domäner som blockeras från att länkas",
 	"right-abusefilter-bypass-blocked-external-domains": "Kringgå blockerade externa domäner",
 	"action-abusefilter-bypass-blocked-external-domains": "kringgå blockerade externa domäner",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Skapa eller ändra vilka externa domäner som blockeras från att länkas måste göras via [[Special:BlockedExternalDomains|specialsidan]].",
-	"abusefilter-blocked-domains-notif-body": "Du lade till en länk till domänen <strong>$1</strong> som är förbjuden från att användas på denna webbplats. Ta bort eller ersätt den med en annan webbadress.",
-	"abusefilter-blocked-domains-notif-review-link": "Granska länk"
+	"abusefilter-blocked-domains-cannot-edit-directly": "Skapa eller ändra vilka externa domäner som blockeras från att länkas måste göras via [[Special:BlockedExternalDomains|specialsidan]]."
 }

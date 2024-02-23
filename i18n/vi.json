@@ -618,7 +618,5 @@
 	"notification-subject-throttle-filter": "Bộ lọc lạm dụng {{GENDER:$1| bạn}} đã chỉnh sửa đã được điều chỉnh trên {{SITENAME}}",
 	"notification-link-text-show-filter": "Xem bộ lọc",
 	"right-abusefilter-bypass-blocked-external-domains": "bỏ qua tên miền ngoài bị chặn",
-	"action-abusefilter-bypass-blocked-external-domains": "bỏ qua tên miền ngoài bị chặn",
-	"abusefilter-blocked-domains-notif-body": "Bạn đã thêm một liên kết tới tên miền <strong>$1</strong>, tên miền này bị cấm sử dụng trên trang này. Vui lòng xóa hoặc thay thế nó bằng một URL khác.",
-	"abusefilter-blocked-domains-notif-review-link": "Xem lại liên kết"
+	"action-abusefilter-bypass-blocked-external-domains": "bỏ qua tên miền ngoài bị chặn"
 }
