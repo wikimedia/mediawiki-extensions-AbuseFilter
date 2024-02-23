@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Hooks;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Hooks;
 
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\CheckUserHandler;
