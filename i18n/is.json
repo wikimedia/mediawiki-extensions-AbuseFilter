@@ -134,7 +134,7 @@
 	"abusefilter-edit-action-degroup": "Fjarlægja öll réttindi notandans",
 	"abusefilter-edit-action-block": "Hindra notandann og/eða IP-staðfang frá því að gera breytingar",
 	"abusefilter-edit-action-throttle": "Eingöngu virkja aðgerðir ef notandinn fer yfir eftirfarandi hlutfall",
-	"abusefilter-edit-action-rangeblock": "Fjöldabanna vistföng út frá vistfangi notandans",
+	"abusefilter-edit-action-rangeblock": "Hindra viðkomandi IP-sviði sem notandinn kemur frá",
 	"abusefilter-edit-action-tag": "Merkja breytinguna til frekari skoðunar",
 	"abusefilter-edit-throttle-count": "Fjöldi aðgerða sem eru leyfðir:",
 	"abusefilter-edit-throttle-period": "Tímabil (í sekúndum):",
