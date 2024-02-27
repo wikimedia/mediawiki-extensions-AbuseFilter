@@ -188,6 +188,8 @@ class KeywordsManager {
 			'user_age' => 'user-age',
 			// Generates abusefilter-edit-builder-vars-user-name
 			'user_name' => 'user-name',
+			// Generates abusefilter-edit-builder-vars-user-type
+			'user_type' => 'user-type',
 			// Generates abusefilter-edit-builder-vars-user-groups
 			'user_groups' => 'user-groups',
 			// Generates abusefilter-edit-builder-vars-user-rights
