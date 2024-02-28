@@ -248,7 +248,12 @@ class AbuseLogger {
 					$entry->setPerformer( new UserIdentityValue( 0, $this->requestIP ) );
 				}
 				$rc = $entry->getRecentChange();
-				Hooks::updateCheckUserData( $rc );
+				// We need to send the entries on PRESEND to ensure that the user definitely exists.
+				// A temporary account being created through an edit will not exist until after AbuseFilter
+				// processes the edit and attempts to log to CheckUser.
+				DeferredUpdates::addCallableUpdate( static function () use ( $rc ) {
+					Hooks::updateCheckUserData( $rc );
+				}, DeferredUpdates::PRESEND );
 			}
 
 			if ( $this->options->get( 'AbuseFilterNotifications' ) !== false ) {
