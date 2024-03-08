@@ -429,6 +429,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-user-age": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-user-name": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
+	"abusefilter-edit-builder-vars-user-type": "Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-user-groups": "See also:\n* {{msg-mw|Abusefilter-edit-builder-vars-global-user-groups}}",
 	"abusefilter-edit-builder-vars-user-rights": "Paraphrased: List of rights that the user has. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",
 	"abusefilter-edit-builder-vars-user-blocked": "Paraphrased: Boolean value on whether the user is blocked. Abuse filter syntax option in a dropdown from the group {{msg-mw|abusefilter-edit-builder-group-vars}}.",

@@ -337,6 +337,7 @@ return [
 			$services->getUserGroupManager(),
 			$services->getPermissionManager(),
 			$services->getRestrictionStore(),
+			$services->getUserIdentityUtils(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
@@ -357,7 +358,8 @@ return [
 			$services->get( TextExtractor::SERVICE_NAME ),
 			$services->getMimeAnalyzer(),
 			$services->getRepoGroup(),
-			$services->getWikiPageFactory()
+			$services->getWikiPageFactory(),
+			$services->getUserFactory()
 		);
 	},
 	EditRevUpdater::SERVICE_NAME => static function ( MediaWikiServices $services ): EditRevUpdater {
