@@ -354,7 +354,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$options += [ $this->specsFormatter->nameGroup( $group ) => $group ];
 			}
 
-			$options = Xml::listDropDownOptionsOoui( $options );
+			$options = Xml::listDropdownOptionsOoui( $options );
 			$groupSelector->setOptions( $options );
 
 			$fields['abusefilter-edit-group'] = $groupSelector;
@@ -952,7 +952,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				$output .= $checkbox;
 
-				$suggestedBlocks = Xml::listDropDownOptionsOoui( $suggestedBlocks );
+				$suggestedBlocks = Xml::listDropdownOptionsOoui( $suggestedBlocks );
 
 				$anonDuration =
 					new OOUI\DropdownInputWidget( [
@@ -1105,7 +1105,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// abusefilter-edit-warn-other, abusefilter-edit-disallow-other
 		$options[ $this->msg( "abusefilter-edit-$formId-other" )->text() ] = 'other';
 
-		$options = Xml::listDropDownOptionsOoui( $options );
+		$options = Xml::listDropdownOptionsOoui( $options );
 		$existingSelector->setOptions( $options );
 
 		$existingSelector =
