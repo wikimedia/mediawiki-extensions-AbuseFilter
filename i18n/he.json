@@ -402,6 +402,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "מספר העריכות של המשתמש",
 	"abusefilter-edit-builder-vars-user-age": "הזמן שעבר מאז הרשמת המשתמש",
 	"abusefilter-edit-builder-vars-user-name": "שם חשבון המשתמש",
+	"abusefilter-edit-builder-vars-user-type": "סוג חשבון המשתמש",
 	"abusefilter-edit-builder-vars-user-groups": "קבוצות (כולל קבוצות משתמעות) בהן נמצא המשתמש",
 	"abusefilter-edit-builder-vars-user-rights": "הרשאות שיש למשתמש",
 	"abusefilter-edit-builder-vars-user-blocked": "האם המשתמש חסום",

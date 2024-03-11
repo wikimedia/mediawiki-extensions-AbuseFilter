@@ -416,6 +416,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "Aantal bewerkingen gebruiker",
 	"abusefilter-edit-builder-vars-user-age": "Bestaansduur gebruiker",
 	"abusefilter-edit-builder-vars-user-name": "Gebruikersaccountnaam",
+	"abusefilter-edit-builder-vars-user-type": "Type gebruikersaccount",
 	"abusefilter-edit-builder-vars-user-groups": "Groepen (inclusief impliciete) waar gebruiker lid van is",
 	"abusefilter-edit-builder-vars-user-rights": "Rechten die een gebruiker heeft",
 	"abusefilter-edit-builder-vars-user-blocked": "Of de gebruiker geblokkeerd is",

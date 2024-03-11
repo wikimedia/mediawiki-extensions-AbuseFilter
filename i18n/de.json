@@ -417,6 +417,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "Beitragszahl des Benutzers",
 	"abusefilter-edit-builder-vars-user-age": "Alter des Benutzerkontos",
 	"abusefilter-edit-builder-vars-user-name": "Name des Benutzerkontos",
+	"abusefilter-edit-builder-vars-user-type": "Typ des Benutzerkontos",
 	"abusefilter-edit-builder-vars-user-groups": "Gruppen (auch implizite), in denen der Benutzer Mitglied ist",
 	"abusefilter-edit-builder-vars-user-rights": "Rechte, die ein Benutzer hat",
 	"abusefilter-edit-builder-vars-user-blocked": "Ob der Benutzer gesperrt ist",

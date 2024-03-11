@@ -389,6 +389,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "Број на уредувања на корисникот",
 	"abusefilter-edit-builder-vars-user-age": "Старост на корисничката сметка",
 	"abusefilter-edit-builder-vars-user-name": "Име на корисничката сметка",
+	"abusefilter-edit-builder-vars-user-type": "Вид на корисничката сметка",
 	"abusefilter-edit-builder-vars-user-groups": "Групи (вклучувајќи нејавни) во кои членува корисникот",
 	"abusefilter-edit-builder-vars-user-rights": "Права што ги има корисникот",
 	"abusefilter-edit-builder-vars-user-blocked": "Дали корисникот е блокиран",

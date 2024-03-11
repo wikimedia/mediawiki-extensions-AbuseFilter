@@ -370,6 +370,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "Бројач корисничких измена",
 	"abusefilter-edit-builder-vars-user-age": "Старост корисничког налога",
 	"abusefilter-edit-builder-vars-user-name": "Име корисничког налога",
+	"abusefilter-edit-builder-vars-user-type": "Врста корисничког налога",
 	"abusefilter-edit-builder-vars-user-groups": "Групе (укључујући посредне) у којима је корисник",
 	"abusefilter-edit-builder-vars-user-rights": "Права која корисник има",
 	"abusefilter-edit-builder-vars-user-blocked": "Корисник блокиран",
