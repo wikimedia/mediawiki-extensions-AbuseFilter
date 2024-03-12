@@ -14,8 +14,10 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityValue;
+use Profiler;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\ScopedCallback;
 
 class AbuseLogger {
 	public const CONSTRUCTOR_OPTIONS = [
@@ -248,12 +250,15 @@ class AbuseLogger {
 					$entry->setPerformer( new UserIdentityValue( 0, $this->requestIP ) );
 				}
 				$rc = $entry->getRecentChange();
-				// We need to send the entries on PRESEND to ensure that the user definitely exists.
-				// A temporary account being created through an edit will not exist until after AbuseFilter
-				// processes the edit and attempts to log to CheckUser.
+				// We need to send the entries on POSTSEND to ensure that the user definitely exists, as a temporary
+				// account being created by this edit may not exist until after AbuseFilter processes the edit.
 				DeferredUpdates::addCallableUpdate( static function () use ( $rc ) {
+					// Silence the TransactionProfiler warnings for performing write queries (T359648).
+					$trxProfiler = Profiler::instance()->getTransactionProfiler();
+					$scope = $trxProfiler->silenceForScope( $trxProfiler::EXPECTATION_REPLICAS_ONLY );
 					Hooks::updateCheckUserData( $rc );
-				}, DeferredUpdates::PRESEND );
+					ScopedCallback::consume( $scope );
+				} );
 			}
 
 			if ( $this->options->get( 'AbuseFilterNotifications' ) !== false ) {
