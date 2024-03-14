@@ -460,7 +460,7 @@
 	"abusefilter-exception-dividebyzero": "$2 nullával való osztása a(z) $1. karakternél.",
 	"abusefilter-exception-unrecognisedvar": "Ismeretlen változó ($2) a(z) $1. karakternél",
 	"abusefilter-exception-notenoughargs": "A(z) $1 karakternél meghívott $2 függvénynek nincsen elég argumentuma: $3 helyett $4 van.",
-	"abusefilter-exception-toomanyargs": "Túl sok argumentum a(z) $2 függvénynél a(z) $1. karakternél hívva.\nLegfeljebb $3 {{PLURAL:$3|argument|argumentum}}  használható, de $4 lett.",
+	"abusefilter-exception-toomanyargs": "Túl sok argumentum a(z) $2 függvénynél a(z) $1. karakternél hívva.\nLegfeljebb $3 {{PLURAL:$3|argument|argumentum}} használható, de $4 lett.",
 	"abusefilter-exception-regexfailure": "Hiba a reguláris kifejezés $1. karakterénél: „$2”",
 	"abusefilter-exception-overridebuiltin": "A(z) $1. karakternél a(z) „$2” beépített azonosító felülírása nem engedélyezett.",
 	"abusefilter-exception-usebuiltin": "A(z) „$2” beépített azonosító illegális használata a(z) $1. karakternél.",
