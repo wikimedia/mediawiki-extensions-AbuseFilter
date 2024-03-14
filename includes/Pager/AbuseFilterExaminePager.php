@@ -8,7 +8,7 @@ use MediaWiki\Pager\ReverseChronologicalPager;
 use MediaWiki\Title\Title;
 use RecentChange;
 use stdClass;
-use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**
@@ -31,14 +31,14 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**
 	 * @param AbuseFilterChangesList $changesList
 	 * @param LinkRenderer $linkRenderer
-	 * @param IDatabase $dbr
+	 * @param IReadableDatabase $dbr
 	 * @param Title $title
 	 * @param array $conds
 	 */
 	public function __construct(
 		AbuseFilterChangesList $changesList,
 		LinkRenderer $linkRenderer,
-		IDatabase $dbr,
+		IReadableDatabase $dbr,
 		Title $title,
 		array $conds
 	) {
