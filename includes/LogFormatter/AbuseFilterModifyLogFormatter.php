@@ -25,7 +25,7 @@ class AbuseFilterModifyLogFormatter extends LogFormatter {
 	protected function extractParameters() {
 		$parameters = $this->entry->getParameters();
 		if ( $this->entry->isLegacy() ) {
-			list( $historyId, $filterId ) = $parameters;
+			[ $historyId, $filterId ] = $parameters;
 		} else {
 			$historyId = $parameters['historyId'];
 			$filterId = $parameters['newId'];

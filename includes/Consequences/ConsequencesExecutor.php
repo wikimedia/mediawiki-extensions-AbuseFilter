@@ -333,7 +333,7 @@ class ConsequencesExecutor {
 		switch ( $actionName ) {
 			case 'throttle':
 				$throttleId = array_shift( $rawParams );
-				list( $rateCount, $ratePeriod ) = explode( ',', array_shift( $rawParams ) );
+				[ $rateCount, $ratePeriod ] = explode( ',', array_shift( $rawParams ) );
 
 				$throttleParams = [
 					'id' => $throttleId,

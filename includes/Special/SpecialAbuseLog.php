@@ -549,7 +549,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 			$filterConds = [ 'local' => [], 'global' => [] ];
 			foreach ( $searchIDs as $filter ) {
-				list( $filterID, $isGlobal ) = GlobalNameUtils::splitGlobalName( $filter );
+				[ $filterID, $isGlobal ] = GlobalNameUtils::splitGlobalName( $filter );
 				$key = $isGlobal ? 'global' : 'local';
 				$filterConds[$key][] = $filterID;
 			}

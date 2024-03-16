@@ -121,7 +121,7 @@ class AbuseLogger {
 		$loggedGlobalFilters = [];
 
 		foreach ( $actionsTaken as $filter => $actions ) {
-			list( $filterID, $global ) = GlobalNameUtils::splitGlobalName( $filter );
+			[ $filterID, $global ] = GlobalNameUtils::splitGlobalName( $filter );
 			$thisLog = $logTemplate;
 			$thisLog['afl_filter_id'] = $filterID;
 			$thisLog['afl_global'] = (int)$global;

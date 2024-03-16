@@ -226,7 +226,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$out->redirect( $this->getTitle()->getLocalURL() );
 		} else {
 			// Everything went fine!
-			list( $new_id, $history_id ) = $status->getValue();
+			[ $new_id, $history_id ] = $status->getValue();
 			$out->redirect(
 				$this->getTitle()->getLocalURL(
 					[
@@ -661,7 +661,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 				if ( $set ) {
 					// @phan-suppress-next-line PhanTypeArraySuspiciousNullable $parameters is array here
-					list( $throttleCount, $throttlePeriod ) = explode( ',', $parameters[1], 2 );
+					[ $throttleCount, $throttlePeriod ] = explode( ',', $parameters[1], 2 );
 
 					$throttleGroups = array_slice( $parameters, 2 );
 				} else {
@@ -921,7 +921,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			case 'block':
 				if ( $set && count( $parameters ) === 3 ) {
 					// Both blocktalk and custom block durations available
-					list( $blockTalk, $defaultAnonDuration, $defaultUserDuration ) = $parameters;
+					[ $blockTalk, $defaultAnonDuration, $defaultUserDuration ] = $parameters;
 				} else {
 					if ( $set && count( $parameters ) === 1 ) {
 						// Only blocktalk available
