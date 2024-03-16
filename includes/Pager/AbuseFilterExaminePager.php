@@ -42,7 +42,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		Title $title,
 		array $conds
 	) {
-		// Set database before parent constructor to avoid setting it there with wfGetDB
+		// Set database before parent constructor to avoid setting it there
 		$this->mDb = $dbr;
 		parent::__construct( $changesList, $linkRenderer );
 		$this->changesList = $changesList;
