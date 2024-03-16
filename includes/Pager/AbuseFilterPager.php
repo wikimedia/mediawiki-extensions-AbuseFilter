@@ -148,7 +148,7 @@ class AbuseFilterPager extends TablePager {
 			return parent::reallyDoQuery( $offset, $limit, $order );
 		}
 
-		list( $tables, $fields, $conds, $fname, $options, $join_conds ) =
+		[ $tables, $fields, $conds, $fname, $options, $join_conds ] =
 			$this->buildQueryInfo( $offset, $limit, $order );
 
 		unset( $options['LIMIT'] );

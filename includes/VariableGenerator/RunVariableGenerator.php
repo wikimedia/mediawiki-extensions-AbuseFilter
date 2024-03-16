@@ -89,7 +89,7 @@ class RunVariableGenerator extends VariableGenerator {
 		if ( $filterText === null ) {
 			return null;
 		}
-		list( $oldContent, $oldAfText, $text ) = $filterText;
+		[ $oldContent, $oldAfText, $text ] = $filterText;
 		return $this->newVariableHolderForEdit(
 			$page, $summary, $content, $text, $oldAfText, $oldContent
 		);
@@ -202,7 +202,7 @@ class RunVariableGenerator extends VariableGenerator {
 			if ( $filterText === null ) {
 				return null;
 			}
-			list( $oldContent, $oldAfText, $text ) = $filterText;
+			[ $oldContent, $oldAfText, $text ] = $filterText;
 		} else {
 			// Optimization
 			$oldContent = null;

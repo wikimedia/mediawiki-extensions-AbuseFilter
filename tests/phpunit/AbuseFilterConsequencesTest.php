@@ -784,7 +784,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	public function testFilterConsequences( $createIds, $actionParams, $expectedConsequences ) {
 		$this->createFilters( $createIds );
 		$result = $this->doAction( $actionParams );
-		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $expectedConsequences );
+		[ $expected, $actual ] = $this->checkConsequences( $result, $actionParams, $expectedConsequences );
 
 		$this->assertEquals(
 			$expected,
@@ -1007,7 +1007,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$results = $this->doActions( $actionsParams );
 		$res = $this->checkThrottleConsequence( $results );
 		$lastParams = array_pop( $actionsParams );
-		list( $expected, $actual ) = $this->checkConsequences( $res, $lastParams, $consequences );
+		[ $expected, $actual ] = $this->checkConsequences( $res, $lastParams, $consequences );
 
 		$this->assertEquals(
 			$expected,
@@ -1115,9 +1115,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	public function testWarn( $createIds, $actionParams, $warnIDs, $consequences ) {
 		$this->createFilters( $createIds );
 		$params = [ $actionParams, $actionParams ];
-		list( $warnedStatus, $finalStatus ) = $this->doActions( $params );
+		[ $warnedStatus, $finalStatus ] = $this->doActions( $params );
 
-		list( $expectedWarn, $actualWarn ) = $this->checkConsequences(
+		[ $expectedWarn, $actualWarn ] = $this->checkConsequences(
 			$warnedStatus,
 			$actionParams,
 			[ 'warn' => $warnIDs ]
@@ -1129,7 +1129,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			'The error messages for the first action do not match.'
 		);
 
-		list( $expectedFinal, $actualFinal ) = $this->checkConsequences(
+		[ $expectedFinal, $actualFinal ] = $this->checkConsequences(
 			$finalStatus,
 			$actionParams,
 			$consequences
@@ -1351,7 +1351,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$this->fail( "Did not $type the cache as expected for a stashed edit." );
 		}
 
-		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $consequences );
+		[ $expected, $actual ] = $this->checkConsequences( $result, $actionParams, $consequences );
 
 		$this->assertEquals(
 			$expected,
@@ -1494,7 +1494,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		AbuseFilterServices::getFilterLookup( $this->getServiceContainer() )->hideLocalFiltersForTesting();
 		$result = $this->doAction( $actionParams );
 
-		list( $expected, $actual ) = $this->checkConsequences( $result, $actionParams, $consequences );
+		[ $expected, $actual ] = $this->checkConsequences( $result, $actionParams, $consequences );
 
 		// First check that the filters work as expected
 		$this->assertEquals(

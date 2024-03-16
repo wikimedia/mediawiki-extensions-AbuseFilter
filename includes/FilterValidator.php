@@ -223,7 +223,7 @@ class FilterValidator {
 	 * @return Status
 	 */
 	public function checkThrottleParameters( array $params ): Status {
-		list( $throttleCount, $throttlePeriod ) = explode( ',', $params[1], 2 );
+		[ $throttleCount, $throttlePeriod ] = explode( ',', $params[1], 2 );
 		$throttleGroups = array_slice( $params, 2 );
 		$validGroups = [
 			'ip',

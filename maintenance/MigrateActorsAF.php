@@ -265,7 +265,7 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 			// Update the existing rows
 			foreach ( $rows as $row ) {
 				if ( !$row->actor_id ) {
-					list( , $display ) = $this->makeNextCond( $dbw, $primaryKey, $row );
+					[ , $display ] = $this->makeNextCond( $dbw, $primaryKey, $row );
 					$this->error(
 						"Could not make actor for row with $display "
 						. "$userField={$row->$userField} $nameField={$row->$nameField}\n"
@@ -286,7 +286,7 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 				$countUpdated += $dbw->affectedRows();
 			}
 
-			list( $next, $display ) = $this->makeNextCond( $dbw, $primaryKey, $lastRow );
+			[ $next, $display ] = $this->makeNextCond( $dbw, $primaryKey, $lastRow );
 			$this->output( "... $display\n" );
 			$this->waitForReplication();
 		}

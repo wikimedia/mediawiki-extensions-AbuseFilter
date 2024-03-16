@@ -84,7 +84,7 @@ class SpecsFormatter {
 			$displayAction = $lang->commaList( $messages );
 		} elseif ( $action === 'throttle' ) {
 			array_shift( $parameters );
-			list( $actions, $time ) = explode( ',', array_shift( $parameters ) );
+			[ $actions, $time ] = explode( ',', array_shift( $parameters ) );
 
 			// Join comma-separated groups in a commaList with a final "and", and convert to messages.
 			// Messages used here: abusefilter-throttle-ip, abusefilter-throttle-user,
