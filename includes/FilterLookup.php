@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use DBAccessObjectUtils;
 use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
@@ -12,12 +11,12 @@ use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
-use MediaWiki\User\ActorMigrationBase;
 use RuntimeException;
 use stdClass;
 use WANObjectCache;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
  * This class provides read access to the filters stored in the database.
@@ -69,9 +68,6 @@ class FilterLookup implements IDBAccessObject {
 	/** @var CentralDBManager */
 	private $centralDBManager;
 
-	/** @var ActorMigrationBase */
-	private $actorMigration;
-
 	/**
 	 * @var bool Flag used in PHPUnit tests to "hide" local filters when testing global ones, so that we can use the
 	 * local database pretending it's not local.
@@ -82,18 +78,15 @@ class FilterLookup implements IDBAccessObject {
 	 * @param ILoadBalancer $loadBalancer
 	 * @param WANObjectCache $cache
 	 * @param CentralDBManager $centralDBManager
-	 * @param ActorMigrationBase $actorMigration
 	 */
 	public function __construct(
 		ILoadBalancer $loadBalancer,
 		WANObjectCache $cache,
-		CentralDBManager $centralDBManager,
-		ActorMigrationBase $actorMigration
+		CentralDBManager $centralDBManager
 	) {
 		$this->loadBalancer = $loadBalancer;
 		$this->wanCache = $cache;
 		$this->centralDBManager = $centralDBManager;
-		$this->actorMigration = $actorMigration;
 	}
 
 	/**
@@ -109,18 +102,14 @@ class FilterLookup implements IDBAccessObject {
 	): ExistingFilter {
 		$cacheKey = $this->getCacheKey( $filterID, $global );
 		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
-			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
-			$dbr = $this->getDBConnection( $dbIndex, $global );
-			$query = $this->getAbuseFilterQueryInfo();
+			$dbr = ( $flags & IDBAccessObject::READ_LATEST )
+				? $this->getDBConnection( DB_PRIMARY, $global )
+				: $this->getDBConnection( DB_REPLICA, $global );
+			$row = $this->getAbuseFilterQueryBuilder( $dbr )
+				->where( [ 'af_id' => $filterID ] )
+				->recency( $flags )
+				->caller( __METHOD__ )->fetchRow();
 
-			$row = $dbr->selectRow(
-				$query['tables'],
-				$query['fields'],
-				[ 'af_id' => $filterID ],
-				__METHOD__,
-				$dbOptions,
-				$query['joins']
-			);
 			if ( !$row ) {
 				throw new FilterNotFoundException( $filterID, $global );
 			}
@@ -184,30 +173,20 @@ class FilterLookup implements IDBAccessObject {
 		if ( $this->localFiltersHiddenForTest && !$global ) {
 			return [];
 		}
+		$dbr = ( $flags & IDBAccessObject::READ_LATEST )
+			? $this->getDBConnection( DB_PRIMARY, $global )
+			: $this->getDBConnection( DB_REPLICA, $global );
+		$queryBuilder = $this->getAbuseFilterQueryBuilder( $dbr )
+			->where( [ 'af_enabled' => 1, 'af_deleted' => 0, 'af_group' => $group ] )
+			->recency( $flags );
 
-		[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
-		$dbr = $this->getDBConnection( $dbIndex, $global );
-
-		$query = $this->getAbuseFilterQueryInfo();
-		$where = [
-			'af_enabled' => 1,
-			'af_deleted' => 0,
-			'af_group' => $group,
-		];
 		if ( $global ) {
-			$where['af_global'] = 1;
+			$queryBuilder->andWhere( [ 'af_global' => 1 ] );
 		}
 
 		// Note, excluding individually cached filter now wouldn't help much, so take it as
 		// an occasion to refresh the cache later
-		$rows = $dbr->select(
-			$query['tables'],
-			$query['fields'],
-			$where,
-			__METHOD__,
-			$dbOptions,
-			$query['joins']
-		);
+		$rows = $queryBuilder->caller( __METHOD__ )->fetchResultSet();
 
 		$fname = __METHOD__;
 		$ret = [];
@@ -275,18 +254,13 @@ class FilterLookup implements IDBAccessObject {
 		int $flags = IDBAccessObject::READ_NORMAL
 	): HistoryFilter {
 		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
-			[ $dbIndex, $dbOptions ] = DBAccessObjectUtils::getDBOptions( $flags );
-			$dbr = $this->loadBalancer->getConnection( $dbIndex );
-			$query = $this->getAbuseFilterHistoryQueryInfo();
-
-			$row = $dbr->selectRow(
-				$query['tables'],
-				$query['fields'],
-				[ 'afh_id' => $version ],
-				__METHOD__,
-				$dbOptions,
-				$query['joins']
-			);
+			$dbr = ( $flags & IDBAccessObject::READ_LATEST )
+				? $this->loadBalancer->getConnection( DB_PRIMARY )
+				: $this->loadBalancer->getConnection( DB_REPLICA );
+			$row = $this->getAbuseFilterHistoryQueryBuilder( $dbr )
+				->where( [ 'afh_id' => $version ] )
+				->recency( $flags )
+				->caller( __METHOD__ )->fetchRow();
 			if ( !$row ) {
 				throw new FilterVersionNotFoundException( $version );
 			}
@@ -304,15 +278,10 @@ class FilterLookup implements IDBAccessObject {
 	public function getLastHistoryVersion( int $filterID ): HistoryFilter {
 		if ( !isset( $this->lastVersionCache[$filterID] ) ) {
 			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
-			$query = $this->getAbuseFilterHistoryQueryInfo();
-			$row = $dbr->selectRow(
-				$query['tables'],
-				$query['fields'],
-				[ 'afh_filter' => $filterID ],
-				__METHOD__,
-				[ 'ORDER BY' => 'afh_id DESC' ],
-				$query['joins']
-			);
+			$row = $this->getAbuseFilterHistoryQueryBuilder( $dbr )
+				->where( [ 'afh_filter' => $filterID ] )
+				->orderBy( 'afh_id', SelectQueryBuilder::SORT_DESC )
+				->caller( __METHOD__ )->fetchRow();
 			if ( !$row ) {
 				throw new FilterNotFoundException( $filterID, false );
 			}
@@ -335,18 +304,11 @@ class FilterLookup implements IDBAccessObject {
 			$comparison = $direction === self::DIR_PREV ? '<' : '>';
 			$order = $direction === self::DIR_PREV ? 'DESC' : 'ASC';
 			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
-			$query = $this->getAbuseFilterHistoryQueryInfo();
-			$row = $dbr->selectRow(
-				$query['tables'],
-				$query['fields'],
-				[
-					'afh_filter' => $filterID,
-					"afh_id $comparison" . $dbr->addQuotes( $historyID ),
-				],
-				__METHOD__,
-				[ 'ORDER BY' => "afh_timestamp $order" ],
-				$query['joins']
-			);
+			$row = $this->getAbuseFilterHistoryQueryBuilder( $dbr )
+				->where( [ 'afh_filter' => $filterID ] )
+				->andWhere( $dbr->expr( 'afh_id', $comparison, $historyID ) )
+				->orderBy( 'afh_timestamp', $order )
+				->caller( __METHOD__ )->fetchRow();
 			if ( !$row ) {
 				throw new ClosestFilterVersionNotFoundException( $filterID, $historyID );
 			}
@@ -491,52 +453,48 @@ class FilterLookup implements IDBAccessObject {
 		);
 	}
 
-	/**
-	 * @return array
-	 */
-	private function getAbuseFilterQueryInfo(): array {
-		$actorQuery = $this->actorMigration->getJoin( 'af_user' );
-		return [
-			'tables' => [ 'abuse_filter' ] + $actorQuery['tables'],
-			'fields' => [
-					'af_id',
-					'af_pattern',
-					'af_timestamp',
-					'af_enabled',
-					'af_comments',
-					'af_public_comments',
-					'af_hidden',
-					'af_hit_count',
-					'af_throttled',
-					'af_deleted',
-					'af_actions',
-					'af_global',
-					'af_group'
-				] + $actorQuery['fields'],
-			'joins' => $actorQuery['joins']
-		];
+	private function getAbuseFilterQueryBuilder( IReadableDatabase $dbr ): SelectQueryBuilder {
+		return $dbr->newSelectQueryBuilder()
+			->select( [
+				'af_id',
+				'af_pattern',
+				'af_timestamp',
+				'af_enabled',
+				'af_comments',
+				'af_public_comments',
+				'af_hidden',
+				'af_hit_count',
+				'af_throttled',
+				'af_deleted',
+				'af_actions',
+				'af_global',
+				'af_group',
+				'af_user' => 'actor_af_user.actor_user',
+				'af_user_text' => 'actor_af_user.actor_name',
+				'af_actor' => 'af_actor'
+			] )
+			->from( 'abuse_filter' )
+			->join( 'actor', 'actor_af_user', 'actor_af_user.actor_id = af_actor' );
 	}
 
-	/**
-	 * @return array
-	 */
-	private function getAbuseFilterHistoryQueryInfo(): array {
-		$actorQuery = $this->actorMigration->getJoin( 'afh_user' );
-		return [
-			'tables' => [ 'abuse_filter_history' ] + $actorQuery['tables'],
-			'fields' => [
-					'afh_id',
-					'afh_pattern',
-					'afh_timestamp',
-					'afh_filter',
-					'afh_comments',
-					'afh_public_comments',
-					'afh_flags',
-					'afh_actions',
-					'afh_group'
-				] + $actorQuery['fields'],
-			'joins' => $actorQuery['joins']
-		];
+	private function getAbuseFilterHistoryQueryBuilder( IReadableDatabase $dbr ): SelectQueryBuilder {
+		return $dbr->newSelectQueryBuilder()
+			->select( [
+				'afh_id',
+				'afh_pattern',
+				'afh_timestamp',
+				'afh_filter',
+				'afh_comments',
+				'afh_public_comments',
+				'afh_flags',
+				'afh_actions',
+				'afh_group',
+				'afh_user' => 'actor_afh_user.actor_user',
+				'afh_user_text' => 'actor_afh_user.actor_name',
+				'afh_actor' => 'afh_actor'
+			] )
+			->from( 'abuse_filter_history' )
+			->join( 'actor', 'actor_afh_user', 'actor_afh_user.actor_id = afh_actor' );
 	}
 
 	/**

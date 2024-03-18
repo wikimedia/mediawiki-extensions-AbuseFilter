@@ -559,7 +559,7 @@
 			"description": "Whether to include IP in the abuse_filter_log"
 		},
 		"AbuseFilterActorTableSchemaMigrationStage": {
-			"value": 3,
+			"value": 769,
 			"description": "Stage of the migration of af_user/af_user_text to af_actor and afh_user/afh_user_text to afh_actor. Should be one of the following (combinations of) constants: SCHEMA_COMPAT_OLD, SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD, SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_NEW, SCHEMA_COMPAT_NEW. See also \"Schema compatibility flags\" in includes/Defines.php in core. Note: When changing the default here, change it also in unit tests."
 		},
 		"AbuseFilterEnableBlockedExternalDomain": {
