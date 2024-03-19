@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Akakiiri",
-			"Baba Ayɛ'ɛra"
+			"Baba Ayɛ'ɛra",
+			"Amire80"
 		]
 	},
 	"abusefilter-log-search-user": "Tuntuna:",
@@ -329,7 +330,7 @@
 	"abusefilter-topnav-log": "Abuse log",
 	"abusefilter-topnav-tools": "'Debugging tools'",
 	"abusefilter-log-name": "Abuse filita log",
-	"abusefilter-log-header": "Log wa pa'ali la teere  kilesego n tee filita duma la puan.\nSan dɛna gãresegɔ mɔɔnɛ, bisɛ [[Special: AbuseFilter/history|the list]] n de nananawa filita teere duma",
+	"abusefilter-log-header": "Log wa pa'ali la teere kilesego n tee filita duma la puan.\nSan dɛna gãresegɔ mɔɔnɛ, bisɛ [[Special: AbuseFilter/history|the list]] n de nananawa filita teere duma",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|created}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|modified}} $4 ($5)",
 	"abusefilter-log-invalid-filter": "'Specified' filita ID duma la basɛba de la 'invalid'.",
