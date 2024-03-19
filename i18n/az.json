@@ -228,6 +228,7 @@
 	"abusefilter-edit-warn-actions": "Fəaliyyətlər:",
 	"abusefilter-edit-warn-preview": "Seçilmiş mesajın önizləməsini göstər/gizlət",
 	"abusefilter-edit-warn-edit": "Seçilmiş bildirişi yarat/dəyişdir",
+	"abusefilter-edit-denied": "Bu süzgəcin detalları gizlədildiyi üçün ona baxa bilməzsiniz.",
 	"abusefilter-edit-main": "Süzgəcin xüsusiyyətləri",
 	"abusefilter-edit-done-subtitle": "Filtr düzəldilib",
 	"abusefilter-edit-viewhistory": "Bu süzgəcin tarixçəsinə bax",
