@@ -48,7 +48,8 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 			'user_groups',
 			'user_rights',
 			'user_blocked',
-			'user_age'
+			'user_age',
+			'user_unnamed_ip',
 		];
 
 		$variableHolder = new VariableHolder();

@@ -345,6 +345,27 @@ class LazyVariableComputer {
 				$title = $parameters['title'];
 				$result = $this->restrictionStore->getRestrictions( $title, $action );
 				break;
+			case 'user-unnamed-ip':
+				$user = $parameters['user'];
+				$result = null;
+
+				// Don't return an IP for past events (eg. revisions, logs)
+				// This could leak IPs to users who don't have IP viewing rights
+				if ( !$parameters['rc'] &&
+					// Reveal IPs for:
+					// - temporary accounts: temporary account names will replace the IP in the `user_name`
+					//   variable. This variable restores this access.
+					// - logged-out users: This supports the transition to the use of temporary accounts
+					//   so that filter maintainers on pre-transition wikis can migrate `user_name` to `user_unnamed_ip`
+					//   where necessary and see no disruption on transition.
+					//
+					// This variable should only ever be exposed for these use cases and shouldn't be extended
+					// to registered accounts, as that would leak account PII to users without the right to see
+					// that information
+					( $this->userIdentityUtils->isTemp( $user ) || IPUtils::isIPAddress( $user->getName() ) ) ) {
+					$result = $user->getRequest()->getIP();
+				}
+				break;
 			case 'user-type':
 				/** @var UserIdentity $userIdentity */
 				$userIdentity = $parameters['user-identity'];

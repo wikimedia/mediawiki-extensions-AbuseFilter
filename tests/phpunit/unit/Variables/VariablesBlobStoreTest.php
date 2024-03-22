@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Variables;
 
 use FormatJson;
+use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -12,6 +13,7 @@ use MediaWiki\Storage\BlobAccessException;
 use MediaWiki\Storage\BlobStore;
 use MediaWiki\Storage\BlobStoreFactory;
 use MediaWikiUnitTestCase;
+use stdClass;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -67,17 +69,86 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$blob = FormatJson::encode( $vars );
 		$blobStore = $this->createMock( BlobStore::class );
 		$blobStore->expects( $this->once() )->method( 'getBlob' )->willReturn( $blob );
+
+		$row = new stdClass;
+		$row->afl_var_dump = $blob;
+		$row->afl_ip = '';
 		$varBlobStore = $this->getStore( null, $blobStore );
-		$loadedVars = $varBlobStore->loadVarDump( 'foo' )->getVars();
+		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
 		$this->assertArrayHasKey( 'foo-variable', $loadedVars );
 		$this->assertSame( 42, $loadedVars['foo-variable']->toNative() );
+	}
+
+	/**
+	 * @dataProvider provideLoadVarDumpVarTransformation
+	 */
+	public function testLoadVarDumpVarTransformation( $data, $expected ) {
+		$vars = [
+			'user_unnamed_ip' => $data[ 'user_unnamed_ip' ]
+		];
+
+		$manager = $this->createMock( VariablesManager::class );
+		$manager->method( 'getVar' )->willReturn( AFPData::newFromPHPVar( $data['user_unnamed_ip'] ) );
+		$blob = FormatJson::encode( $vars );
+		$blobStore = $this->createMock( BlobStore::class );
+		$blobStore->expects( $this->once() )->method( 'getBlob' )->willReturn( $blob );
+		$row = new stdClass;
+		$row->afl_var_dump = $blob;
+		$row->afl_ip = $data[ 'afl_ip' ];
+		$varBlobStore = new VariablesBlobStore(
+			$manager,
+			$this->createMock( BlobStoreFactory::class ),
+			$blobStore,
+			null
+		);
+		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
+		$this->assertArrayHasKey( 'user_unnamed_ip', $loadedVars );
+		$this->assertSame( $expected, $loadedVars[ 'user_unnamed_ip' ]->toNative() );
+	}
+
+	/**
+	 * Data provider for testLoadVarDumpVarTransformation
+	 *
+	 * @return array
+	 */
+	public static function provideLoadVarDumpVarTransformation() {
+		return [
+			'ip visible, ip available' => [
+				[
+					'user_unnamed_ip' => true,
+					'afl_ip' => '1.2.3.4',
+				],
+				'1.2.3.4'
+			],
+			'ip visible, ip cleared' => [
+				[
+					'user_unnamed_ip' => true,
+					'afl_ip' => '',
+				],
+				''
+			],
+			'ip not visible, ip available' => [
+				[
+					'user_unnamed_ip' => null,
+					'afl_ip' => '1.2.3.4',
+				],
+				null
+			]
+		];
 	}
 
 	public function testLoadVarDump_fail() {
 		$blobStore = $this->createMock( BlobStore::class );
 		$blobStore->expects( $this->once() )->method( 'getBlob' )->willThrowException( new BlobAccessException );
 		$varBlobStore = $this->getStore( null, $blobStore );
-		$this->assertCount( 0, $varBlobStore->loadVarDump( 'foo' )->getVars() );
+		$row = new stdClass;
+		$row->afl_var_dump = '';
+		$row->afl_ip = '';
+		$this->assertCount( 0, $varBlobStore->loadVarDump( $row )->getVars() );
+
+		$row = new stdClass;
+		$this->expectException( InvalidArgumentException::class );
+		$varBlobStore->loadVarDump( $row )->getVars();
 	}
 
 	private function getBlobStore(): BlobStore {
@@ -117,7 +188,10 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 		$storeID = $varBlobStore->storeVarDump( VariableHolder::newFromArray( $toStore ) );
 		$this->assertIsString( $storeID );
-		$loadedVars = $varBlobStore->loadVarDump( $storeID )->getVars();
+		$row = new stdClass;
+		$row->afl_var_dump = $storeID;
+		$row->afl_ip = '';
+		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
 		$nativeLoadedVars = array_map( static function ( AFPData $el ) {
 			return $el->toNative();
 		}, $loadedVars );
@@ -197,7 +271,15 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 					'action' => 'createaccount',
 					'accountname' => 'XXX'
 				]
-			]
+			],
+			'User IP' => [
+				[
+					'user_unnamed_ip' => '1.2.3.4'
+				],
+				[
+					'user_unnamed_ip' => true
+				]
+			],
 		];
 	}
 }

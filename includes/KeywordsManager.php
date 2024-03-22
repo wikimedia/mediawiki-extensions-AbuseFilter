@@ -202,6 +202,8 @@ class KeywordsManager {
 			'user_editcount' => 'user-editcount',
 			// Generates abusefilter-edit-builder-vars-user-age
 			'user_age' => 'user-age',
+			// Generates abusefilter-edit-builder-vars-user-unnamed-ip
+			'user_unnamed_ip' => 'user-unnamed-ip',
 			// Generates abusefilter-edit-builder-vars-user-name
 			'user_name' => 'user-name',
 			// Generates abusefilter-edit-builder-vars-user-type

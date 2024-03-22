@@ -305,7 +305,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			$actions = explode( ',', $row->afl_actions );
 			$currentReversibleActions = array_intersect( $actions, $reversibleActions );
 			if ( count( $currentReversibleActions ) ) {
-				$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
+				$vars = $this->varBlobStore->loadVarDump( $row );
 				try {
 					// The variable is not lazy-loaded
 					$accountName = $vars->getComputedVariable( 'accountname' )->toNative();

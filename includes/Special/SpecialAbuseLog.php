@@ -758,7 +758,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$output .= Xml::tags( 'p', null, $pager->doFormatRow( $row, false ) );
 
 		// Load data
-		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
+		$vars = $this->varBlobStore->loadVarDump( $row );
+
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $this->varManager->dumpAllVars( $vars, true ) );
 		$out->addModuleStyles( 'mediawiki.interface.helpers.styles' );
 

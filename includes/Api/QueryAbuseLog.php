@@ -165,6 +165,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addFields( 'afl_deleted' );
 		$this->addFields( 'afl_filter_id' );
 		$this->addFields( 'afl_global' );
+		$this->addFields( 'afl_ip' );
 		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( [ 'afl_namespace', 'afl_title' ], $fld_title );
@@ -319,7 +320,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( $fld_details ) {
 				$entry['details'] = [];
 				if ( $canSeeDetails ) {
-					$vars = $this->afVariablesBlobStore->loadVarDump( $row->afl_var_dump );
+					$vars = $this->afVariablesBlobStore->loadVarDump( $row );
 					$varManager = $this->afVariablesManager;
 					$entry['details'] = $varManager->exportAllVars( $vars );
 				}

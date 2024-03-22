@@ -89,6 +89,15 @@ class VariableGenerator {
 		$this->vars->setVar( 'user_name', $user->getName() );
 
 		$this->vars->setLazyLoadVar(
+			'user_unnamed_ip',
+			'user-unnamed-ip',
+			[
+				'user' => $user,
+				'rc' => $rc,
+			]
+		);
+
+		$this->vars->setLazyLoadVar(
 			'user_type',
 			'user-type',
 			[ 'user-identity' => $userIdentity ]

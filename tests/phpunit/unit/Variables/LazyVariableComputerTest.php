@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Permissions\RestrictionStore;
+use MediaWiki\Request\WebRequest;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -150,7 +151,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		$getUserVar = static function ( $user, $method ): LazyLoadedVariable {
 			return new LazyLoadedVariable(
 				$method,
-				[ 'user' => $user, 'user-identity' => $user ]
+				[ 'user' => $user, 'user-identity' => $user, 'rc' => null ]
 			);
 		};
 
@@ -194,6 +195,30 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		$user->method( 'getName' )->willReturn( 'Non-existing user 1234' );
 		$var = $getUserVar( $user, 'user-type' );
 		yield 'user_type for unregistered username' => [ $var, 'unknown' ];
+
+		$request = $this->createMock( WebRequest::class );
+		$request->method( 'getIP' )->willReturn( '127.0.0.1' );
+		$user = $this->createMock( User::class );
+		$user->method( 'getRequest' )->willReturn( $request );
+		$user->method( 'getName' )->willReturn( '127.0.0.1' );
+		$var = $getUserVar( $user, 'user-unnamed-ip' );
+		yield 'user_unnamed_ip for an anonymous user' => [ $var, '127.0.0.1' ];
+
+		$user = $this->createMock( User::class );
+		$user->method( 'getName' )->willReturn( 'Test User' );
+		$var = $getUserVar( $user, 'user-unnamed-ip' );
+		yield 'user_unnamed_ip for a user' => [ $var, null ];
+
+		$mockUserIdentityUtils = $this->createMock( UserIdentityUtils::class );
+		$mockUserIdentityUtils->method( 'isTemp' )->with( $user )->willReturn( true );
+		$request = $this->createMock( WebRequest::class );
+		$request->method( 'getIP' )->willReturn( '127.0.0.1' );
+		$user = $this->createMock( User::class );
+		$user->method( 'getRequest' )->willReturn( $request );
+		$var = $getUserVar( $user, 'user-unnamed-ip' );
+		yield 'user_unnamed_ip for a temp user' => [
+			$var, '127.0.0.1', [ 'UserIdentityUtils' => $mockUserIdentityUtils ]
+		];
 
 		$user = $this->createMock( User::class );
 		$groups = [ '*', 'group1', 'group2' ];

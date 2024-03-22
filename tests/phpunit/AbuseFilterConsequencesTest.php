@@ -1215,14 +1215,14 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$this->doAction( $actionParams );
 
 		// We just take a dump from a single filters, as they're all identical for the same action
-		$dumpID = $this->getDb()->newSelectQueryBuilder()
-			->select( 'afl_var_dump' )
+		$row = $this->getDb()->newSelectQueryBuilder()
+			->select( 'afl_var_dump, afl_ip' )
 			->from( 'abuse_filter_log' )
 			->orderBy( 'afl_timestamp', SelectQueryBuilder::SORT_DESC )
 			->caller( __METHOD__ )
-			->fetchField();
+			->fetchRow();
 
-		$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $dumpID )->getVars();
+		$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $row )->getVars();
 
 		$interestingVars = array_intersect_key( $vars, array_fill_keys( $usedVars, true ) );
 

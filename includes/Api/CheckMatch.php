@@ -120,7 +120,7 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'deletedabuselog' );
 			}
 
-			$vars = $this->afVariablesBlobStore->loadVarDump( $row->afl_var_dump );
+			$vars = $this->afVariablesBlobStore->loadVarDump( $row );
 		}
 		if ( $vars === null ) {
 			// @codeCoverageIgnoreStart
