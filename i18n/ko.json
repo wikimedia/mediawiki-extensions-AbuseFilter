@@ -414,6 +414,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "사용자의 편집 수",
 	"abusefilter-edit-builder-vars-user-age": "사용자 계정 만든 후 지난 시간",
 	"abusefilter-edit-builder-vars-user-name": "사용자 계정 이름",
+	"abusefilter-edit-builder-vars-user-type": "사용자 계정 유형",
 	"abusefilter-edit-builder-vars-user-groups": "사용자 권한 그룹 (자동으로 부여된 권한 포함)",
 	"abusefilter-edit-builder-vars-user-rights": "사용자가 가진 권한",
 	"abusefilter-edit-builder-vars-user-blocked": "사용자의 차단 여부",
