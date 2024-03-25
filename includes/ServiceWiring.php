@@ -131,8 +131,7 @@ return [
 		return new FilterLookup(
 			$services->getDBLoadBalancer(),
 			$services->getMainWANObjectCache(),
-			$services->get( CentralDBManager::SERVICE_NAME ),
-			$services->get( AbuseFilterActorMigration::SERVICE_NAME )
+			$services->get( CentralDBManager::SERVICE_NAME )
 		);
 	},
 	EmergencyCache::SERVICE_NAME => static function ( MediaWikiServices $services ): EmergencyCache {
