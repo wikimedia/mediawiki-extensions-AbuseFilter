@@ -10,6 +10,16 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 class KeywordsManager {
 	public const SERVICE_NAME = 'AbuseFilterKeywordsManager';
 
+	/**
+	 * Operators and functions that can be used in AbuseFilter code.
+	 * They are shown in the dropdown in the filter editor.
+	 * Keys of translatable messages with their descriptions are
+	 * based on keys of this array.
+	 * When editing this list or the messages, keep the order
+	 * consistent in both lists.
+	 *
+	 * @var array
+	 */
 	private const BUILDER_VALUES = [
 		'op-arithmetic' => [
 			// Generates abusefilter-edit-builder-op-arithmetic-addition
@@ -277,10 +287,22 @@ class KeywordsManager {
 		],
 	];
 
-	/** @var array Old vars which aren't in use anymore */
+	/**
+	 * Old vars which aren't in use anymore.
+	 * The translatable messages that are based
+	 * on them are not shown in the filter editor,
+	 * but may still be shown in the log descriptions of
+	 * filter actions that were taken by filters
+	 * that used them.
+	 *
+	 * @var array
+	 */
 	private const DISABLED_VARS = [
+		// Generates abusefilter-edit-builder-vars-old-text
 		'old_text' => 'old-text',
+		// Generates abusefilter-edit-builder-vars-old-html
 		'old_html' => 'old-html',
+		// Generates abusefilter-edit-builder-vars-minor-edit
 		'minor_edit' => 'minor-edit'
 	];
 
