@@ -54,6 +54,7 @@
 	"abusefilter-log-details-hidden": "Jy kan nie die besonderhede vir hierdie inskrywing, want dit is weggesteek uit die openbare oog.",
 	"abusefilter-log-hide-legend": "Versteek logboekinskrywing",
 	"abusefilter-log-hide-reason": "Rede:",
+	"abusefilter-log-hide-reason-other": "Ander/addisionele rede:",
 	"abusefilter-log-hide-forbidden": "Jy hoef nie toestemming om misbruik logitems te verberg.",
 	"abusefilter-list": "Alle filters",
 	"abusefilter-list-id": "Filternommer",
