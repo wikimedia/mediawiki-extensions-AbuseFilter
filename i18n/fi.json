@@ -550,7 +550,7 @@
 	"abusefilter-diff-info": "Perustiedot",
 	"abusefilter-diff-pattern": "Suodattimen ehdot",
 	"abusefilter-diff-invalid": "Pyydettyjä versioita ei voitu hakea",
-	"abusefilter-diff-backhistory": "Takaisin suodatinhistoriaan",
+	"abusefilter-diff-backhistory": "Suodatinhistoria",
 	"abusefilter-diff-prev": "Vanhempi muutos",
 	"abusefilter-diff-next": "Uudempi muutos",
 	"abusefilter-import-intro": "Voit käyttää tätä käyttöliittymää suodattimien tuomiseksi muista wikeistä.\nNapsauta ”{{int:abusefilter-edit-export}}” kohdassa ”{{int:abusefilter-edit-tools}}” lähdewikin muokkausnäkymässä.\nKopioi ilmestyvän tekstikentän sisältö ja liitä se tähän tekstikenttään, jonka jälkeen napsauta ”{{int:abusefilter-import-submit}}”.",
