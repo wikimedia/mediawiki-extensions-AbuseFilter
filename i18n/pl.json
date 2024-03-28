@@ -418,6 +418,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "Liczba edycji użytkownika",
 	"abusefilter-edit-builder-vars-user-age": "Wiek konta użytkownika",
 	"abusefilter-edit-builder-vars-user-name": "Nazwa konta użytkownika",
+	"abusefilter-edit-builder-vars-user-type": "Rodzaj konta użytkownika",
 	"abusefilter-edit-builder-vars-user-groups": "Grupy (w tym ukryte), do których należy użytkownik",
 	"abusefilter-edit-builder-vars-user-rights": "Uprawnienia, które ma użytkownik",
 	"abusefilter-edit-builder-vars-user-blocked": "Czy użytkownik jest zablokowany",
