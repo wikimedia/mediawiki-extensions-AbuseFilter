@@ -494,8 +494,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $filter !== null ) {
 			$tools = '';
 			if ( $this->afPermManager->canRevertFilterActions( $user ) ) {
-				$tools .= Xml::tags(
-					'p', null,
+				$tools .= Html::rawElement(
+					'p', [],
 					$this->linkRenderer->makeLink(
 						$this->getTitle( "revert/$filter" ),
 						new HtmlArmor( $this->msg( 'abusefilter-edit-revert' )->parse() )
@@ -505,8 +505,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			if ( $this->afPermManager->canUseTestTools( $user ) ) {
 				// Test link
-				$tools .= Xml::tags(
-					'p', null,
+				$tools .= Html::rawElement(
+					'p', [],
 					$this->linkRenderer->makeLink(
 						$this->getTitle( "test/$filter" ),
 						new HtmlArmor( $this->msg( 'abusefilter-edit-test-link' )->parse() )
@@ -541,7 +541,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display );
 
 			$exportText = $this->filterImporter->encodeData( $filterObj, $actions );
-			$tools .= Xml::tags( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
+			$tools .= Html::rawElement( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
 				$this->msg( 'abusefilter-edit-export' )->parse() );
 			$tools .=
 				new OOUI\MultilineTextInputWidget( [
@@ -554,8 +554,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-tools'] = $tools;
 		}
 
-		$form = Xml::buildForm( $fields );
-		$form = Xml::fieldset( $this->msg( 'abusefilter-edit-main' )->text(), $form );
+		$form = Xml::fieldset(
+			$this->msg( 'abusefilter-edit-main' )->text(),
+			// TODO: deprecated, use OOUI or Codex widgets instead
+			Xml::buildForm( $fields )
+		);
 		$form .= Xml::fieldset(
 			$this->msg( 'abusefilter-edit-consequences' )->text(),
 			$this->buildConsequenceEditor( $filterObj, $actions )
@@ -577,7 +580,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 		}
 
-		$form = Xml::tags( 'form',
+		$form = Html::rawElement( 'form',
 			[
 				'action' => $this->getTitle( $urlFilter )->getFullURL(),
 				'method' => 'post',
@@ -744,7 +747,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$this->getOutput()->addJsConfigVars( 'throttleConfig', $throttleConfig );
 
 				$throttleSettings .=
-					Xml::tags(
+					Html::rawElement(
 						'div',
 						[ 'id' => 'mw-abusefilter-throttle-parameters' ],
 						new OOUI\FieldsetLayout( [ 'items' => $throttleFields ] )
@@ -845,7 +848,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 								] )
 						] );
 				}
-				$previewHolder = Xml::tags(
+				$previewHolder = Html::rawElement(
 					'div',
 					[
 						// mw-abusefilter-warn-preview, mw-abusefilter-disallow-preview
@@ -856,7 +859,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 				$fields[] = $buttonGroup;
 				$output .=
-					Xml::tags(
+					Html::rawElement(
 						'div',
 						// mw-abusefilter-warn-parameters, mw-abusefilter-disallow-parameters
 						[ 'id' => "mw-abusefilter-$action-parameters" ],
@@ -914,7 +917,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						]
 					);
 				$output .=
-					Xml::tags( 'div',
+					Html::rawElement( 'div',
 						[ 'id' => 'mw-abusefilter-tag-parameters' ],
 						$hiddenTags
 					);
@@ -1006,7 +1009,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						]
 					);
 
-				$output .= Xml::tags(
+				$output .= Html::rawElement(
 						'div',
 						[ 'id' => 'mw-abusefilter-block-parameters' ],
 						new OOUI\FieldsetLayout( [ 'items' => $blockOptions ] )

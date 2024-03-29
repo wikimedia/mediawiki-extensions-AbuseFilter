@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
-use Html;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Html\Html;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
 use MessageLocalizer;
@@ -13,7 +13,6 @@ use OOUI\DropdownInputWidget;
 use OOUI\FieldLayout;
 use OOUI\FieldsetLayout;
 use OOUI\Widget;
-use Xml;
 
 /**
  * Base class for classes responsible for building filter edit boxes
@@ -98,7 +97,7 @@ abstract class EditBoxBuilder {
 		}
 
 		if ( $addResultDiv ) {
-			$output .= Xml::element(
+			$output .= Html::element(
 				'div',
 				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ],
 				'&#160;'

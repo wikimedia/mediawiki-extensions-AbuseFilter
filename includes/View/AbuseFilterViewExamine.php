@@ -18,13 +18,13 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use OOUI;
 use RecentChange;
 use Wikimedia\Rdbms\LBFactory;
-use Xml;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	/**
@@ -319,12 +319,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				$output
 			);
 
-			$tester = Xml::tags( 'h2', null, $this->msg( 'abusefilter-examine-test' )->parse() );
+			$tester = Html::rawElement( 'h2', [], $this->msg( 'abusefilter-examine-test' )->parse() );
 			$tester .= $boxBuilder->buildEditBox( $this->testFilter, false, false, false );
 			$tester .= $this->buildFilterLoader();
-			$html .= Xml::tags( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
-			$html .= Xml::tags( 'p',
-				null,
+			$html .= Html::rawElement( 'div', [ 'id' => 'mw-abusefilter-examine-editor' ], $tester );
+			$html .= Html::rawElement( 'p',
+				[],
 				new OOUI\ButtonInputWidget(
 					[
 						'label' => $this->msg( 'abusefilter-examine-test-button' )->text(),
@@ -332,7 +332,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 						'flags' => [ 'primary', 'progressive' ]
 					]
 				) .
-				Xml::element( 'div',
+				Html::element( 'div',
 					[
 						'id' => 'mw-abusefilter-syntaxresult',
 						'style' => 'display: none;'
@@ -342,9 +342,9 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		// Variable dump
-		$html .= Xml::tags(
+		$html .= Html::rawElement(
 			'h2',
-			null,
+			[],
 			$this->msg( 'abusefilter-examine-vars' )->parse()
 		);
 		$html .= $this->variablesFormatter->buildVarDumpTable( $vars );

@@ -14,7 +14,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\LBFactory;
-use Xml;
 
 class HideAbuseLog extends AbuseFilterView {
 
@@ -85,7 +84,7 @@ class HideAbuseLog extends AbuseFilterView {
 				$this->getLanguage()->formatNum( count( $this->hideIDs ) )
 			]
 		);
-		$output->addHTML( Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) );
+		$output->addHTML( Html::rawElement( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) );
 
 		$hideReasonsOther = $this->msg( 'revdelete-reasonotherlist' )->text();
 		$hideReasons = $this->msg( 'revdelete-reason-dropdown-suppress' )->inContentLanguage()->text();

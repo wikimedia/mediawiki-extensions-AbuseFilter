@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter\Variables;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Html\Html;
 use MessageLocalizer;
-use Xml;
 
 /**
  * Pretty-prints the content of a VariableHolder for use e.g. in AbuseLog hit details
@@ -52,17 +51,17 @@ class VariablesFormatter {
 		$output = '';
 
 		$output .=
-			Xml::openElement( 'table', [ 'class' => 'mw-abuselog-details' ] ) .
-			Xml::openElement( 'tbody' ) .
+			Html::openElement( 'table', [ 'class' => 'mw-abuselog-details' ] ) .
+			Html::openElement( 'tbody' ) .
 			"\n";
 
 		$header =
-			Xml::element( 'th', null, $this->messageLocalizer->msg( 'abusefilter-log-details-var' )->text() ) .
-			Xml::element( 'th', null, $this->messageLocalizer->msg( 'abusefilter-log-details-val' )->text() );
-		$output .= Xml::tags( 'tr', null, $header ) . "\n";
+			Html::element( 'th', [], $this->messageLocalizer->msg( 'abusefilter-log-details-var' )->text() ) .
+			Html::element( 'th', [], $this->messageLocalizer->msg( 'abusefilter-log-details-val' )->text() );
+		$output .= Html::rawElement( 'tr', [], $header ) . "\n";
 
 		if ( !count( $vars ) ) {
-			$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+			$output .= Html::closeElement( 'tbody' ) . Html::closeElement( 'table' );
 
 			return $output;
 		}
@@ -90,15 +89,15 @@ class VariablesFormatter {
 			);
 
 			$trow =
-				Xml::tags( 'td', [ 'class' => 'mw-abuselog-var' ], $keyDisplay ) .
-				Xml::tags( 'td', [ 'class' => 'mw-abuselog-var-value' ], $value );
+				Html::rawElement( 'td', [ 'class' => 'mw-abuselog-var' ], $keyDisplay ) .
+				Html::rawElement( 'td', [ 'class' => 'mw-abuselog-var-value' ], $value );
 			$output .=
-				Xml::tags( 'tr',
+				Html::rawElement( 'tr',
 					[ 'class' => "mw-abuselog-details-$key mw-abuselog-value" ], $trow
 				) . "\n";
 		}
 
-		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+		$output .= Html::closeElement( 'tbody' ) . Html::closeElement( 'table' );
 
 		return $output;
 	}

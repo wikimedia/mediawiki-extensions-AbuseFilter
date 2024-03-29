@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MediaWikiServices;
@@ -18,7 +19,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\UserRigorOptions;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\IResultWrapper;
-use Xml;
 
 class AbuseFilterHistoryPager extends TablePager {
 
@@ -148,9 +148,9 @@ class AbuseFilterHistoryPager extends TablePager {
 
 				foreach ( $actions as $action => $parameters ) {
 					$displayAction = $this->specsFormatter->formatAction( $action, $parameters, $lang );
-					$display_actions .= Xml::tags( 'li', null, $displayAction );
+					$display_actions .= Html::rawElement( 'li', [], $displayAction );
 				}
-				$display_actions = Xml::tags( 'ul', null, $display_actions );
+				$display_actions = Html::rawElement( 'ul', [], $display_actions );
 
 				$formatted = $display_actions;
 				break;
