@@ -119,7 +119,7 @@ return [
 		return new RuleCheckerFactory(
 			$services->getContentLanguage(),
 			// We could use $services here, but we need the fallback
-			ObjectCache::getLocalServerInstance( 'hash' ),
+			ObjectCache::getLocalServerInstance( CACHE_HASH ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),

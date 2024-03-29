@@ -328,7 +328,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				'degroup' => true,
 				'tag' => true
 			],
-			'wgMainCacheType' => 'hash',
 		] );
 	}
 
