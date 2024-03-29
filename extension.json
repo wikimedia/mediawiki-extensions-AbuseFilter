@@ -115,7 +115,12 @@
 		"abusefilter": "abusefilter-log-header"
 	},
 	"LogActionsHandlers": {
-		"abusefilter/hit": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseLogHitFormatter",
+		"abusefilter/hit": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseLogHitFormatter",
+			"services": [
+				"AbuseFilterSpecsFormatter"
+			]
+		},
 		"abusefilter/modify": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterModifyLogFormatter",
 		"abusefilter/create": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterModifyLogFormatter",
 		"abusefilterblockeddomainhit/*": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterBlockedDomainHitLogFormatter",
