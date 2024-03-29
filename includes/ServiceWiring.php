@@ -81,6 +81,7 @@ return [
 	},
 	ChangeTagsManager::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagsManager {
 		return new ChangeTagsManager(
+			$services->getChangeTagsStore(),
 			$services->getDBLoadBalancerFactory(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )

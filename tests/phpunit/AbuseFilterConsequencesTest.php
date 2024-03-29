@@ -574,8 +574,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	private function getActionTags( $actionParams ) {
 		$dbw = $this->getDb();
 		$title = Title::newFromTextThrow( $actionParams['target'] );
+		$store = $this->getServiceContainer()->getChangeTagsStore();
 		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
-			return ChangeTags::getTags( $dbw, null, $title->getLatestRevID() );
+			return $store->getTags( $dbw, null, $title->getLatestRevID() );
 		}
 
 		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
@@ -596,7 +597,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		if ( !$id ) {
 			$this->fail( 'Could not find the action in the logging table.' );
 		}
-		return ChangeTags::getTags( $dbw, null, null, (int)$id );
+		return $store->getTags( $dbw, null, null, (int)$id );
 	}
 
 	/**
