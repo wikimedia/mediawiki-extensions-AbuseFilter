@@ -2,8 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\LogFormatter;
 
+use LogEntry;
 use LogFormatter;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\SpecialPage\SpecialPage;
 use Message;
 
@@ -13,6 +14,16 @@ use Message;
  * Uses logentry-abusefilter-hit
  */
 class AbuseLogHitFormatter extends LogFormatter {
+
+	private SpecsFormatter $specsFormatter;
+
+	public function __construct(
+		LogEntry $entry,
+		SpecsFormatter $specsFormatter
+	) {
+		parent::__construct( $entry );
+		$this->specsFormatter = $specsFormatter;
+	}
 
 	/**
 	 * @return array
@@ -52,10 +63,9 @@ class AbuseLogHitFormatter extends LogFormatter {
 			$actions = explode( ',', $actions_takenRaw );
 			$displayActions = [];
 
-			$specsFormatter = AbuseFilterServices::getSpecsFormatter();
-			$specsFormatter->setMessageLocalizer( $this->context );
+			$this->specsFormatter->setMessageLocalizer( $this->context );
 			foreach ( $actions as $action ) {
-				$displayActions[] = $specsFormatter->getActionDisplay( $action );
+				$displayActions[] = $this->specsFormatter->getActionDisplay( $action );
 			}
 			$actions_taken = $this->context->getLanguage()->commaList( $displayActions );
 		}
