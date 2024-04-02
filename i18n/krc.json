@@ -76,7 +76,7 @@
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|чурум болуб}} $3, {{GENDER:$9|этиуню}} \"$4\" $5 юсюнде этиле турады.\nЭтилген ишлеуле: $6;\nФильтрни ачыкълауу: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "глобал фильтр $1",
 	"abusefilter-log-detailedentry-local": "$1 фильтрни",
-	"abusefilter-log-detailslink": "айгъакълаула",
+	"abusefilter-log-detailslink": "толу ачыкълаула",
 	"abusefilter-log-diff": "башх.",
 	"abusefilter-log-hidelink": "кёрюнюуню джарашдырыу",
 	"abusefilter-log-hide-entries": "Сайланнган джазыуланы кёрюнюулерин тюрлендир",
