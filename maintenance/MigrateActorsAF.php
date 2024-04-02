@@ -166,16 +166,16 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 		$rows = array_intersect_key( $rows, $keep );
 
 		if ( $needActors ) {
-			$dbw->insert(
-				'actor',
-				array_map( static function ( $v ) {
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'actor' )
+				->ignore()
+				->rows( array_map( static function ( $v ) {
 					return [
 						'actor_name' => $v,
 					];
-				}, array_keys( $needActors ) ),
-				__METHOD__,
-				[ 'IGNORE' ]
-			);
+				}, array_keys( $needActors ) ) )
+				->caller( __METHOD__ )
+				->execute();
 			$countActors += $dbw->affectedRows();
 
 			$res = $dbw->select(

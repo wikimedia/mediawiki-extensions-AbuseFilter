@@ -370,11 +370,11 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$filter[ 'af_actions' ] = implode( ',', array_keys( $actions ) );
 			$filter[ 'af_id' ] = $id;
 
-			$dbw->insert(
-				"abuse_filter",
-				$filter,
-				__METHOD__
-			);
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'abuse_filter' )
+				->row( $filter )
+				->caller( __METHOD__ )
+				->execute();
 
 			$actionsRows = [];
 			foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
@@ -390,11 +390,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				}
 			}
 
-			$dbw->insert(
-				"abuse_filter_action",
-				$actionsRows,
-				__METHOD__
-			);
+			if ( $actionsRows ) {
+				$dbw->newInsertQueryBuilder()
+					->insertInto( 'abuse_filter_action' )
+					->rows( $actionsRows )
+					->caller( __METHOD__ )
+					->execute();
+			}
 		}
 	}
 

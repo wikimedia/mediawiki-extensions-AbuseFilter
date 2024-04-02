@@ -53,11 +53,11 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 			'af_user',
 			$this->getTestUser()->getUserIdentity()
 		);
-		$this->db->insert(
-			'abuse_filter',
-			$row,
-			__METHOD__
-		);
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'abuse_filter' )
+			->row( $row )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	/**

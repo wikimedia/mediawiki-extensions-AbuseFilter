@@ -57,7 +57,11 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 			[ 'af_id' => 3, 'af_pattern' => 'user_editcount % 3 !== 1' ] + $defaultRow,
 			[ 'af_id' => 4, 'af_pattern' => 'rmspecials(added_lines_pst) !== ""' ] + $defaultRow
 		];
-		$this->db->insert( 'abuse_filter', $rows, __METHOD__ );
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'abuse_filter' )
+			->rows( $rows )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	private function getExpectedOutput( array $ids, bool $withHeader = true ): string {
