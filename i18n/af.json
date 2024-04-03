@@ -56,6 +56,8 @@
 	"abusefilter-log-hide-reason": "Rede:",
 	"abusefilter-log-hide-reason-other": "Ander/addisionele rede:",
 	"abusefilter-log-hide-forbidden": "Jy hoef nie toestemming om misbruik logitems te verberg.",
+	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} het 'n geblokkeerde domeintref op $3 veroorsaak deur te probeer om $4 by te voeg",
+	"log-name-abusefilterblockeddomainhit": "Geblokkeerde domeine treflogboek",
 	"abusefilter-list": "Alle filters",
 	"abusefilter-list-id": "Filternommer",
 	"abusefilter-list-status": "Status",
@@ -284,5 +286,6 @@
 	"abusefilter-diff-pattern": "Filter voorwaardes",
 	"abusefilter-diff-invalid": "Kan nie die versoek weergawes te gaan haal",
 	"abusefilter-diff-backhistory": "Terug na die filtergeskiedenis",
-	"abusefilter-import-submit": "Importeer data"
+	"abusefilter-import-submit": "Importeer data",
+	"log-description-abusefilterblockeddomainhit": "Hierdie gebeurtenisse spoor treffe na geblokkeerde domeine."
 }
