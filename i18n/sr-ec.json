@@ -557,5 +557,6 @@
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
 	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]]).",
 	"notification-link-text-show-filter": "Прикажи филтер",
+	"right-abusefilter-bypass-blocked-external-domains": "заобилажење блокираних спољних домена",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]]."
 }

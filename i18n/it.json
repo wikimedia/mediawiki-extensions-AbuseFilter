@@ -25,6 +25,7 @@
 			"Ricordisamoa",
 			"Salvemm el lombard",
 			"Sarah Bernabei",
+			"Titore",
 			"Valepert",
 			"Wim b",
 			"Ximo17"
@@ -212,6 +213,7 @@
 	"abusefilter-reautoconfirm-done": "Lo stato di autoconvalidato dell'utenza è stato ripristinato",
 	"abusefilter-status": "Fra le ultime $1 {{PLURAL:$1|azione|azioni}}, $2 ($3 %) {{PLURAL:$2|ha|hanno}} raggiunto il limite di $4 condizioni e $5 ($6 %) {{PLURAL:$5|ha|hanno}} attivato almeno uno dei filtri attualmente attivi.",
 	"abusefilter-edit": "Modifica filtro anti abusi",
+	"abusefilter-edit-specific": "Modifica del filtro anti abusi $1: $2",
 	"abusefilter-edit-subtitle": "Modifica del filtro $1",
 	"abusefilter-edit-subtitle-new": "Creazione filtro",
 	"abusefilter-edit-token-not-match": "La modifica non è stata salvata! Per favore, prova di nuovo.",
