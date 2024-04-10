@@ -63,6 +63,7 @@
 	"abusefilter-log-search-group": "Група филтера:",
 	"abusefilter-log-search-group-any": "Било који",
 	"abusefilter-log-search-filter": "ID-јеви филтера:",
+	"abusefilter-log-search-filter-help": "Раздвојено усправним цртама, префикс „$1” за глобалне филтере",
 	"abusefilter-log-search-filter-help-central": "Раздвојено усправним цртама",
 	"abusefilter-log-search-title": "Наслов:",
 	"abusefilter-log-search-wiki": "Пројекат:",
@@ -76,7 +77,7 @@
 	"abusefilter-log-search-entries-visible": "Само видљиве ставке",
 	"abusefilter-log-search-action-label": "Покренута радња:",
 	"abusefilter-log-search-action-other": "други",
-	"abusefilter-log-search-action-any": "Било који",
+	"abusefilter-log-search-action-any": "Било која",
 	"abusefilter-log-search-action-taken-label": "Предузета радња:",
 	"abusefilter-log-search-action-taken-any": "Било која",
 	"abusefilter-log-search-submit": "Претражи",
@@ -552,5 +553,7 @@
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
 	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([[mw:Extension:AbuseFilter/Conditions|помоћ]]).",
 	"notification-link-text-show-filter": "Прикажи филтер",
+	"right-abusefilter-bypass-blocked-external-domains": "заобилажење блокираних спољних домена",
+	"action-abusefilter-bypass-blocked-external-domains": "заобилазите блокиране спољне домене",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]]."
 }

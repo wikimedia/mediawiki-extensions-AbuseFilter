@@ -35,7 +35,8 @@
 			"WikiBayer",
 			"Wikifan",
 			"Wnme",
-			"Xqt"
+			"Xqt",
+			"TomatoCake"
 		]
 	},
 	"abusefilter-desc": "Wendet Heuristiken automatisch auf Bearbeitungen an",
@@ -100,7 +101,7 @@
 	"abusefilter-log-search-action-label": "Auslösende Aktion:",
 	"abusefilter-log-search-action-other": "Andere",
 	"abusefilter-log-search-action-any": "Alle",
-	"abusefilter-log-search-action-taken-label": "Aufgezeichnete Aktion:",
+	"abusefilter-log-search-action-taken-label": "Ausgeführte Aktion:",
 	"abusefilter-log-search-action-taken-any": "Jede",
 	"abusefilter-log-search-submit": "Suchen",
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|löste}} durch die Aktion „$3“ auf der Seite „$4“ einen Missbrauchsfilter aus.\nFilteraktion: „$5“;\nFilterbeschreibung: „$6“",
