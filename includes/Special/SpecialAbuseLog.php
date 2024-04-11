@@ -1053,7 +1053,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$status = self::getPrivateDetailsRow( $user, $id );
 		if ( !$status->isGood() ) {
-			$out->addWikiMsg( $status->getErrors()[0] );
+			$errArray = $status->getErrors()[0];
+			$out->addWikiMsgArray( $errArray['message'], $errArray['params'] );
 			return;
 		}
 		$row = $status->getValue();
