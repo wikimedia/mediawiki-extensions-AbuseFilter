@@ -67,6 +67,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				$expectedValues['page_id'] = 0;
 				$expectedValues['old_wikitext'] = '';
 				$expectedValues['old_content_model'] = '';
+				$expectedValues['page_last_edit_age'] = null;
 			// Fallthrough
 			case 'edit':
 				$status = $this->editPage( $title, 'Some new text for testing RC vars.', $summary, NS_MAIN, $user );
@@ -239,7 +240,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		);
 		$this->assertNotNull( $rc, 'RC item found' );
 
-		// one more tick to reliably test page_age
+		// one more tick to reliably test page_age etc.
 		MWTimestamp::setFakeTime( $timestamp + 10 );
 
 		$generator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator(
@@ -251,6 +252,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 
 		$expected = [
 			'page_age' => 10,
+			'page_last_edit_age' => 10,
 			'old_wikitext' => $oldText,
 			'old_size' => strlen( $oldText ),
 			'old_content_model' => 'wikitext',

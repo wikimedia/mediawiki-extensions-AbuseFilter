@@ -419,6 +419,40 @@ class LazyVariableComputer {
 				$asOf = $parameters['asof'];
 				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $firstRevisionTime );
 				break;
+			case 'revision-age-by-id':
+				$timestamp = $this->revisionLookup->getTimestampFromId( $parameters['revid'] );
+				if ( !$timestamp ) {
+					$result = null;
+					break;
+				}
+				$asOf = $parameters['asof'];
+				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $timestamp );
+				break;
+			case 'revision-age-by-title':
+				/** @var Title $title */
+				$title = $parameters['title'];
+				$revRec = $this->revisionLookup->getRevisionByTitle( $title );
+				if ( !$revRec ) {
+					$result = null;
+					break;
+				}
+				$asOf = $parameters['asof'];
+				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $revRec->getTimestamp() );
+				break;
+			case 'previous-revision-age':
+				$revRec = $this->revisionLookup->getRevisionById( $parameters['revid'] );
+				if ( !$revRec ) {
+					$result = null;
+					break;
+				}
+				$prev = $this->revisionLookup->getPreviousRevision( $revRec );
+				if ( !$prev ) {
+					$result = null;
+					break;
+				}
+				$asOf = $parameters['asof'] ?? $revRec->getTimestamp();
+				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $prev->getTimestamp() );
+				break;
 			case 'length':
 				$s = $getVarCB( $parameters['length-var'] )->toString();
 				$result = strlen( $s );
