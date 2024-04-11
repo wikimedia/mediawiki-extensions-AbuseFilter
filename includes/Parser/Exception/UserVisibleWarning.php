@@ -16,7 +16,7 @@ class UserVisibleWarning extends UserVisibleException {
 		// abusefilter-parser-warning-match-empty-regex
 		return new Message(
 			'abusefilter-parser-warning-' . $this->mExceptionID,
-			array_merge( [ $this->mPosition ], $this->mParams )
+			[ $this->mPosition, ...$this->mParams ]
 		);
 	}
 }

@@ -64,7 +64,7 @@ class UserVisibleException extends ExceptionBase {
 		// abusefilter-exception-unknownfunction, abusefilter-exception-usebuiltin
 		return new Message(
 			'abusefilter-exception-' . $this->mExceptionID,
-			array_merge( [ $this->mPosition ], $this->mParams )
+			[ $this->mPosition, ...$this->mParams ]
 		);
 	}
 
