@@ -200,6 +200,7 @@
 	"abusefilter-edit-builder-vars-page-id": "Síðuauðkennisnúmer",
 	"abusefilter-edit-builder-vars-page-ns": "Síðunafnrými",
 	"abusefilter-edit-builder-vars-page-title": "Síðutitill (án nafnrýmis)",
+	"abusefilter-edit-builder-vars-page-prefixedtitle": "Fullur síðutitill",
 	"abusefilter-edit-builder-vars-user-editcount": "Breytingatal notandans",
 	"abusefilter-edit-builder-vars-user-age": "Aldur notandaaðgangsins",
 	"abusefilter-edit-builder-vars-user-name": "Nafn notandaaðgangs",
