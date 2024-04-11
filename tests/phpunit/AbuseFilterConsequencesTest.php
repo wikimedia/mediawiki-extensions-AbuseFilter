@@ -1362,11 +1362,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$this->assertAbuseLog( $actionParams, $consequences );
 	}
 
-	/**
-	 * Data provider for testStashedEdit
-	 *
-	 * @return array
-	 */
 	public static function provideStashedEdits() {
 		// XXX Need to hardcode the username of $this->user here.
 		$username = 'UTSysop';
@@ -1463,13 +1458,11 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			],
 		];
 
-		$finalSets = [];
 		foreach ( $sets as $set ) {
 			// Test both successfully saving a stashed edit and stashing the edit but re-executing filters
-			$finalSets[] = array_merge( [ 'miss' ], $set );
-			$finalSets[] = array_merge( [ 'hit' ], $set );
+			yield [ 'miss', ...$set ];
+			yield [ 'hit', ...$set ];
 		}
-		return $finalSets;
 	}
 
 	/**

@@ -30,7 +30,7 @@ class UserVisibleExceptionTest extends MediaWikiUnitTestCase {
 		$this->assertStringContainsString( $position, $exc->getMessageForLogs(), 'position in logs message' );
 		$message = $exc->getMessageObj();
 		$this->assertSame( 'abusefilter-exception-' . $excID, $message->getKey(), 'msg key' );
-		$this->assertArrayEquals( array_merge( [ $position ], $params ), $message->getParams(), 'msg params' );
+		$this->assertArrayEquals( [ $position, ...$params ], $message->getParams(), 'msg params' );
 	}
 
 	/**
