@@ -26,7 +26,7 @@ class BlockTest extends MediaWikiUnitTestCase {
 
 	private function getMsgLocalizer(): MessageLocalizer {
 		$ml = $this->createMock( MessageLocalizer::class );
-		$ml->method( 'msg' )->willReturnCallback( function ( $k, $p ) {
+		$ml->method( 'msg' )->willReturnCallback( function ( $k, ...$p ) {
 			return $this->getMockMessage( $k, $p );
 		} );
 		return $ml;
