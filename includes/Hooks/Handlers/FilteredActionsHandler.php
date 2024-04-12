@@ -159,7 +159,7 @@ class FilteredActionsHandler implements
 			return Status::newGood();
 		}
 		$blockedDomainFilterResult = $this->blockedDomainFilter->filter( $vars, $user, $title );
-		if ( $blockedDomainFilterResult instanceof Status ) {
+		if ( !$blockedDomainFilterResult->isOK() ) {
 			return $blockedDomainFilterResult;
 		}
 
@@ -297,7 +297,7 @@ class FilteredActionsHandler implements
 				return true;
 			}
 			$blockedDomainFilterResult = $this->blockedDomainFilter->filter( $vars, $user, $title );
-			if ( $blockedDomainFilterResult instanceof Status ) {
+			if ( !$blockedDomainFilterResult->isOK() ) {
 				$error = $blockedDomainFilterResult->getErrors()[0]['message'];
 				return $blockedDomainFilterResult->isOK();
 			}

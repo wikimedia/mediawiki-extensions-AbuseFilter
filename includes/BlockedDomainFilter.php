@@ -57,17 +57,18 @@ class BlockedDomainFilter {
 	 * @param VariableHolder $vars variables by the action
 	 * @param User $user User that tried to add the domain, used for logging
 	 * @param Title $title Title of the page that was attempted on, used for logging
-	 * @return Status|bool Status if it's a match and false if not
+	 * @return Status Error status if it's a match, good status if not
 	 */
 	public function filter( VariableHolder $vars, $user, $title ) {
 		global $wgAbuseFilterEnableBlockedExternalDomain;
+		$status = Status::newGood();
 		if ( !$wgAbuseFilterEnableBlockedExternalDomain ) {
-			return false;
+			return $status;
 		}
 		try {
 			$urls = $this->variablesManager->getVar( $vars, 'added_links', VariablesManager::GET_STRICT );
 		} catch ( UnsetVariableException $_ ) {
-			return false;
+			return $status;
 		}
 
 		$addedDomains = [];
@@ -95,12 +96,12 @@ class BlockedDomainFilter {
 			}
 		}
 		if ( !$addedDomains ) {
-			return false;
+			return $status;
 		}
 		$blockedDomains = $this->blockedDomainStorage->loadComputed();
 		$blockedDomainsAdded = array_intersect_key( $addedDomains, $blockedDomains );
 		if ( !$blockedDomainsAdded ) {
-			return false;
+			return $status;
 		}
 		$blockedDomainsAdded = array_keys( $blockedDomainsAdded );
 		$error = Message::newFromSpecifier( 'abusefilter-blocked-domains-attempted' );
