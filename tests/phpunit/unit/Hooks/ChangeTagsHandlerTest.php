@@ -24,7 +24,7 @@ class ChangeTagsHandlerTest extends MediaWikiUnitTestCase {
 		$handler = new ChangeTagsHandler( $manager );
 		$tags = $initial = [ 'some-tag' ];
 		$handler->onListDefinedTags( $tags );
-		$this->assertArrayEquals( array_merge( $initial, [ $condsLimitTag ], $filtersTags ), $tags );
+		$this->assertArrayEquals( [ ...$initial, $condsLimitTag, ...$filtersTags ], $tags );
 	}
 
 	/**
@@ -39,6 +39,6 @@ class ChangeTagsHandlerTest extends MediaWikiUnitTestCase {
 		$handler = new ChangeTagsHandler( $manager );
 		$tags = $initial = [ 'some-tag' ];
 		$handler->onChangeTagsListActive( $tags );
-		$this->assertArrayEquals( array_merge( $initial, [ $condsLimitTag ], $activeFiltersTags ), $tags );
+		$this->assertArrayEquals( [ ...$initial, $condsLimitTag, ...$activeFiltersTags ], $tags );
 	}
 }

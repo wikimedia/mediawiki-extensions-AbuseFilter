@@ -23,6 +23,6 @@ class UserVisibleWarningTest extends MediaWikiUnitTestCase {
 		$params = [ 'foo' ];
 		$message = ( new UserVisibleWarning( $excID, $position, $params ) )->getMessageObj();
 		$this->assertSame( 'abusefilter-parser-warning-' . $excID, $message->getKey(), 'msg key' );
-		$this->assertArrayEquals( array_merge( [ $position ], $params ), $message->getParams(), 'msg params' );
+		$this->assertArrayEquals( [ $position, ...$params ], $message->getParams(), 'msg params' );
 	}
 }
