@@ -59,7 +59,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 			// If it's failing, it should report the URL somewhere
 			$this->assertStringContainsString(
 				'foo.com',
-				$status->getErrors()[0]['message']->toString( Message::FORMAT_PLAIN )
+				wfMessage( $status->getMessages()[0] )->toString( Message::FORMAT_PLAIN )
 			);
 		}
 	}

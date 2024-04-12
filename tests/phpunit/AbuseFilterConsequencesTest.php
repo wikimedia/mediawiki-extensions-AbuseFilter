@@ -697,15 +697,10 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			}
 		}
 
-		$errors = $result->getErrors();
-
 		$actual = [];
-		foreach ( $errors as $error ) {
-			// We don't use any of the "API" stuff in ApiMessage here, but this is the most
-			// convenient way to get a Message from a StatusValue error structure.
-			$msg = ApiMessage::create( $error )->getKey();
-			if ( strpos( $msg, 'abusefilter' ) !== false ) {
-				$actual[] = $msg;
+		foreach ( $result->getMessages() as $msg ) {
+			if ( strpos( $msg->getKey(), 'abusefilter' ) !== false ) {
+				$actual[] = $msg->getKey();
 			}
 		}
 

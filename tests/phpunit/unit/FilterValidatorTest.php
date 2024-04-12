@@ -85,10 +85,10 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param array|null $params
 	 */
 	private function assertStatusMessageParams( ?string $expected, Status $actual, array $params = null ): void {
-		$actualError = $actual->isGood() ? null : $actual->getErrors()[0]['message'];
+		$actualError = $actual->isGood() ? null : $actual->getMessages()[0]->getKey();
 		$this->assertSame( $expected, $actualError, 'status message' );
 		if ( $params !== null ) {
-			$this->assertSame( $params, $actual->getErrors()[0]['params'] );
+			$this->assertSame( $params, $actual->getMessages()[0]->getParams() );
 		}
 	}
 
@@ -371,7 +371,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		$origFilter = $this->createMock( AbstractFilter::class );
 
 		$status = $validator->checkAll( $newFilter, $origFilter, $this->createMock( Authority::class ) );
-		$actualError = $status->isGood() ? null : $status->getErrors()[0]['message'];
+		$actualError = $status->isGood() ? null : $status->getMessages()[0]->getKey();
 		$this->assertSame( $expected, $actualError );
 	}
 

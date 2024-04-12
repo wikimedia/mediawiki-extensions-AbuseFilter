@@ -37,7 +37,7 @@ class FilterValidatorTest extends MediaWikiIntegrationTestCase {
 		);
 
 		$status = $validator->checkAllTags( $tags );
-		$actualError = $status->isGood() ? null : $status->getErrors()[0]['message'];
+		$actualError = $status->isGood() ? null : $status->getMessages()[0]->getKey();
 		$this->assertSame( $expected, $actualError );
 	}
 

@@ -83,7 +83,7 @@ class ConsequencesExecutor {
 	 * @param string[] $filters
 	 * @return Status returns the operation's status. $status->isOK() will return true if
 	 *         there were no actions taken, false otherwise. $status->getValue() will return
-	 *         an array listing the actions taken. $status->getErrors() etc. will provide
+	 *         an array listing the actions taken. $status->getMessages() will provide
 	 *         the errors and warnings to be shown to the user to explain the actions.
 	 */
 	public function executeFilterActions( array $filters ): Status {

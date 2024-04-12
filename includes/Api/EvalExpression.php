@@ -56,7 +56,7 @@ class EvalExpression extends ApiBase {
 
 		$status = $this->evaluateExpression( $params['expression'] );
 		if ( !$status->isGood() ) {
-			$this->dieWithError( $status->getErrors()[0] );
+			$this->dieStatus( $status );
 		} else {
 			$res = $status->getValue();
 			$res = $params['prettyprint'] ? VariablesFormatter::formatVar( $res ) : $res;

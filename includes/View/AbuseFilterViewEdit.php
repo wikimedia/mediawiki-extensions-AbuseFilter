@@ -213,11 +213,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$status = $this->filterStore->saveFilter( $user, $filter, $newFilter, $origFilter );
 
 		if ( !$status->isGood() ) {
-			$errors = $status->getErrors();
-			[ 'message' => $msg, 'params' => $params ] = $errors[0];
+			$msg = $status->getMessages()[0];
 			if ( $status->isOK() ) {
 				// Fixable error, show the editing interface
-				$error = Html::errorBox( $this->msg( $msg, $params )->parseAsBlock() );
+				$error = Html::errorBox( $this->msg( $msg )->parseAsBlock() );
 				$this->buildFilterEditor( $error, $newFilter, $filter, $history_id );
 			} else {
 				$this->showUnrecoverableError( $msg );
@@ -241,12 +240,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param string $msgKey
+	 * @param string|\MessageSpecifier $msg
 	 */
-	private function showUnrecoverableError( string $msgKey ): void {
+	private function showUnrecoverableError( $msg ): void {
 		$out = $this->getOutput();
 
-		$out->addHTML( Html::errorBox( $this->msg( $msgKey )->parseAsBlock() ) );
+		$out->addHTML( Html::errorBox( $this->msg( $msg )->parseAsBlock() ) );
 		$href = $this->getTitle()->getFullURL();
 		$btn = new OOUI\ButtonWidget( [
 			'label' => $this->msg( 'abusefilter-return' )->text(),

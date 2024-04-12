@@ -288,7 +288,7 @@ class FilteredActionsHandler implements
 			// Produce a useful error message for API edits
 			$filterResultApi = self::getApiStatus( $filterResult );
 			// @todo Return all errors instead of only the first one
-			$error = $filterResultApi->getErrors()[0]['message'];
+			$error = $filterResultApi->getMessages()[0];
 		} else {
 			if ( $this->permissionManager->userHasRight( $user, 'abusefilter-bypass-blocked-external-domains' ) ) {
 				return true;

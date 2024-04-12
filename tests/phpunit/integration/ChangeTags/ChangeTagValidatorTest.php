@@ -23,7 +23,7 @@ class ChangeTagValidatorTest extends MediaWikiIntegrationTestCase {
 	public function testValidateTag( string $tag, ?string $expectedError ) {
 		$validator = AbuseFilterServices::getChangeTagValidator();
 		$status = $validator->validateTag( $tag );
-		$actualError = $status->isGood() ? null : $status->getErrors()[0]['message'];
+		$actualError = $status->isGood() ? null : $status->getMessages()[0]->getKey();
 		$this->assertSame( $expectedError, $actualError );
 	}
 
