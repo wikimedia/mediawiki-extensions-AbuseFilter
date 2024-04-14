@@ -207,11 +207,11 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 					// Just delete the row!
 					$deleted++;
 					if ( !$this->dryRun ) {
-						$this->dbw->delete(
-							'abuse_filter_log',
-							[ 'afl_id' => $row->afl_id ],
-							__METHOD__
-						);
+						$this->dbw->newDeleteQueryBuilder()
+							->deleteFrom( 'abuse_filter_log' )
+							->where( [ 'afl_id' => $row->afl_id ] )
+							->caller( __METHOD__ )
+							->execute();
 					}
 					continue;
 				}

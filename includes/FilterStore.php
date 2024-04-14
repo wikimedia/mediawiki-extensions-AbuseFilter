@@ -152,7 +152,11 @@ class FilterStore {
 
 		$dbw->startAtomic( __METHOD__ );
 		if ( $filterId === null ) {
-			$dbw->insert( 'abuse_filter', $rowForInsert, __METHOD__ );
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'abuse_filter' )
+				->row( $rowForInsert )
+				->caller( __METHOD__ )
+				->execute();
 			$filterId = $dbw->insertId();
 		} else {
 			$dbw->update( 'abuse_filter', $rowForInsert, [ 'af_id' => $filterId ], __METHOD__ );
@@ -214,16 +218,26 @@ class FilterStore {
 		$afhRow['afh_filter'] = $filterId;
 
 		// Do the update
-		$dbw->insert( 'abuse_filter_history', $afhRow, __METHOD__ );
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'abuse_filter_history' )
+			->row( $afhRow )
+			->caller( __METHOD__ )
+			->execute();
 		$historyID = $dbw->insertId();
 		if ( !$isNew ) {
-			$dbw->delete(
-				'abuse_filter_action',
-				[ 'afa_filter' => $filterId ],
-				__METHOD__
-			);
+			$dbw->newDeleteQueryBuilder()
+				->deleteFrom( 'abuse_filter_action' )
+				->where( [ 'afa_filter' => $filterId ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
-		$dbw->insert( 'abuse_filter_action', $actionsRows, __METHOD__ );
+		if ( $actionsRows ) {
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'abuse_filter_action' )
+				->rows( $actionsRows )
+				->caller( __METHOD__ )
+				->execute();
+		}
 
 		$dbw->endAtomic( __METHOD__ );
 

@@ -229,7 +229,11 @@ class AbuseLogger {
 		$loggedIDs = [];
 		foreach ( $logRows as $data ) {
 			$data['afl_var_dump'] = $varDump;
-			$dbw->insert( 'abuse_filter_log', $data, __METHOD__ );
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'abuse_filter_log' )
+				->row( $data )
+				->caller( __METHOD__ )
+				->execute();
 			$loggedIDs[] = $data['afl_id'] = $dbw->insertId();
 
 			// Send data to CheckUser if installed and we
@@ -291,7 +295,11 @@ class AbuseLogger {
 
 		$loggedIDs = [];
 		foreach ( $centralLogRows as $row ) {
-			$fdb->insert( 'abuse_filter_log', $row, __METHOD__ );
+			$fdb->newInsertQueryBuilder()
+				->insertInto( 'abuse_filter_log' )
+				->row( $row )
+				->caller( __METHOD__ )
+				->execute();
 			$loggedIDs[] = $fdb->insertId();
 		}
 		return $loggedIDs;

@@ -55,7 +55,11 @@ class PurgeOldLogIPDataTest extends MaintenanceBaseTestCase {
 			[ 'afl_id' => 3, 'afl_timestamp' => $this->db->timestamp( self::FAKE_TIME ) ] + $defaultRow,
 			[ 'afl_id' => 4, 'afl_timestamp' => $this->db->timestamp( self::FAKE_TIME ), 'afl_ip' => '' ] + $defaultRow,
 		];
-		$this->db->insert( 'abuse_filter_log', $rows, __METHOD__ );
+		$this->db->newInsertQueryBuilder()
+			->insertInto( 'abuse_filter_log' )
+			->rows( $rows )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function testExecute() {
