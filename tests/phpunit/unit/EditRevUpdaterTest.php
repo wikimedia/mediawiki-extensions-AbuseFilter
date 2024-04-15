@@ -14,6 +14,7 @@ use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\UpdateQueryBuilder;
 use WikiPage;
 
 /**
@@ -137,8 +138,16 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		[ $page, $rev ] = $this->getPageAndRev( $titleValue );
 		$localDB = $this->createMock( DBConnRef::class );
 		$localDB->expects( $ids['local'] ? $this->once() : $this->never() )->method( 'update' );
+		$localDB->expects( $ids['local'] ? $this->once() : $this->never() )->method( 'newUpdateQueryBuilder' )
+			->willReturnCallback( static function () use ( $localDB ) {
+				return new UpdateQueryBuilder( $localDB );
+			} );
 		$centralDB = $this->createMock( IDatabase::class );
 		$centralDB->expects( $ids['global'] ? $this->once() : $this->never() )->method( 'update' );
+		$centralDB->expects( $ids['global'] ? $this->once() : $this->never() )->method( 'newUpdateQueryBuilder' )
+			->willReturnCallback( static function () use ( $centralDB ) {
+				return new UpdateQueryBuilder( $centralDB );
+			} );
 		$updater = $this->getUpdater( $localDB, $centralDB );
 		$updater->setLastEditPage( $page );
 		$updater->setLogIdsForTarget( $titleValue, $ids );
@@ -167,9 +176,12 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$badIDs = [ 'local' => [], 'global' => [ 1, 2 ] ];
 		[ $page, $rev ] = $this->getPageAndRev( $goodTitleValue );
 		$localDB = $this->createMock( DBConnRef::class );
-		$localDB->expects( $this->once() )->method( 'update' );
+		$localDB->expects( $this->once() )->method( 'newUpdateQueryBuilder' )
+			->willReturnCallback( static function () use ( $localDB ) {
+				return new UpdateQueryBuilder( $localDB );
+			} );
 		$centralDB = $this->createMock( IDatabase::class );
-		$centralDB->expects( $this->never() )->method( 'update' );
+		$centralDB->expects( $this->never() )->method( 'newUpdateQueryBuilder' );
 		$updater = $this->getUpdater( $localDB, $centralDB );
 		$updater->setLastEditPage( $page );
 		$updater->setLogIdsForTarget( $goodTitleValue, $goodIDs );

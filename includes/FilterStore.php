@@ -159,7 +159,12 @@ class FilterStore {
 				->execute();
 			$filterId = $dbw->insertId();
 		} else {
-			$dbw->update( 'abuse_filter', $rowForInsert, [ 'af_id' => $filterId ], __METHOD__ );
+			$dbw->newUpdateQueryBuilder()
+				->update( 'abuse_filter' )
+				->set( $rowForInsert )
+				->where( [ 'af_id' => $filterId ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
 		$newRow['af_id'] = $filterId;
 

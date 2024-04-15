@@ -8,6 +8,7 @@ use MediaWikiIntegrationTestCase;
 use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\UpdateQueryBuilder;
 
 /**
  * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher
@@ -29,6 +30,10 @@ class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 			[ 'af_hit_count=af_hit_count+1' ],
 			[ 'af_id' => $localFilters ]
 		);
+		$localDB->method( 'newUpdateQueryBuilder' )
+			->willReturnCallback( static function () use ( $localDB ) {
+				return new UpdateQueryBuilder( $localDB );
+			} );
 		$lb = $this->createMock( LBFactory::class );
 		$lb->method( 'getPrimaryDatabase' )->willReturn( $localDB );
 
@@ -38,6 +43,10 @@ class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 			[ 'af_hit_count=af_hit_count+1' ],
 			[ 'af_id' => $globalFilters ]
 		);
+		$globalDB->method( 'newUpdateQueryBuilder' )
+			->willReturnCallback( static function () use ( $globalDB ) {
+				return new UpdateQueryBuilder( $globalDB );
+			} );
 		$centralDBManager = $this->createMock( CentralDBManager::class );
 		$centralDBManager->method( 'getConnection' )->willReturn( $globalDB );
 

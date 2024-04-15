@@ -44,12 +44,12 @@ class PurgeOldLogIPData extends Maintenance {
 			);
 
 			if ( $ids ) {
-				$dbw->update(
-					'abuse_filter_log',
-					[ 'afl_ip' => '' ],
-					[ 'afl_id' => $ids ],
-					__METHOD__
-				);
+				$dbw->newUpdateQueryBuilder()
+					->update( 'abuse_filter_log' )
+					->set( [ 'afl_ip' => '' ] )
+					->where( [ 'afl_id' => $ids ] )
+					->caller( __METHOD__ )
+					->execute();
 				$count += $dbw->affectedRows();
 				$this->output( "$count\n" );
 

@@ -273,16 +273,16 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 					$countErrors++;
 					continue;
 				}
-				$dbw->update(
-					$table,
-					[
+				$dbw->newUpdateQueryBuilder()
+					->update( $table )
+					->set( [
 						$actorField => $row->actor_id,
-					],
-					array_intersect_key( (array)$row, $pkFilter ) + [
+					] )
+					->where( array_intersect_key( (array)$row, $pkFilter ) + [
 						$actorField => 0
-					],
-					__METHOD__
-				);
+					] )
+					->caller( __METHOD__ )
+					->execute();
 				$countUpdated += $dbw->affectedRows();
 			}
 
