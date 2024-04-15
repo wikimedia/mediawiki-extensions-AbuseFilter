@@ -13,7 +13,7 @@ use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\SpecsFormatter
+ * @covers \MediaWiki\Extension\AbuseFilter\SpecsFormatter
  */
 class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	/**
@@ -38,10 +38,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 		return new SpecsFormatter( $localizer );
 	}
 
-	/**
-	 * @covers ::__construct
-	 * @covers ::setMessageLocalizer
-	 */
 	public function testSetMessageLocalizer() {
 		$formatter = $this->getFormatter();
 		$ml = $this->createMock( MessageLocalizer::class );
@@ -56,16 +52,12 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 * @param bool $msgDisabled
 	 * @param string $expected
 	 * @dataProvider provideActionDisplay
-	 * @covers ::getActionDisplay
 	 */
 	public function testGetActionDisplay( string $action, bool $msgDisabled, string $expected ) {
 		$formatter = $this->getFormatter( $msgDisabled );
 		$this->assertSame( $expected, $formatter->getActionDisplay( $action ) );
 	}
 
-	/**
-	 * @return array[]
-	 */
 	public static function provideActionDisplay(): array {
 		return [
 			'exists' => [ 'foobar', false, 'abusefilter-action-foobar' ],
@@ -73,9 +65,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @return Language
-	 */
 	private function getMockLanguage(): Language {
 		$lang = $this->createMock( Language::class );
 		$lang->method( 'translateBlockExpiry' )->willReturnCallback( static function ( $x ) {
@@ -98,7 +87,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 * @param array $params
 	 * @param string $expected
 	 * @dataProvider provideFormatAction
-	 * @covers ::formatAction
 	 */
 	public function testFormatAction( string $action, array $params, string $expected ) {
 		$formatter = $this->getFormatter();
@@ -131,7 +119,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 * @param string $flags
 	 * @param string $expected
 	 * @dataProvider provideFlags
-	 * @covers ::formatFlags
 	 */
 	public function testFormatFlags( string $flags, string $expected ) {
 		$formatter = $this->getFormatter();
@@ -142,9 +129,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $formatter->formatFlags( $flags, $lang ) );
 	}
 
-	/**
-	 * @return array
-	 */
 	public static function provideFlags(): array {
 		return [
 			'empty' => [ '', '' ],
@@ -157,7 +141,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 * @param AbstractFilter $filter
 	 * @param string $expected
 	 * @dataProvider provideFilterFlags
-	 * @covers ::formatFilterFlags
 	 */
 	public function testFormatFilterFlags( AbstractFilter $filter, string $expected ) {
 		$formatter = $this->getFormatter();
@@ -185,16 +168,12 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 * @param bool $msgDisabled
 	 * @param string $expected
 	 * @dataProvider provideGroup
-	 * @covers ::nameGroup
 	 */
 	public function testNameGroup( string $group, bool $msgDisabled, string $expected ) {
 		$formatter = $this->getFormatter( $msgDisabled );
 		$this->assertSame( $expected, $formatter->nameGroup( $group ) );
 	}
 
-	/**
-	 * @return array[]
-	 */
 	public static function provideGroup(): array {
 		return [
 			'exists' => [ 'foobar', false, 'abusefilter-group-foobar' ],
