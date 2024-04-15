@@ -7,8 +7,8 @@ use Language;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Message\Message;
 use MediaWikiUnitTestCase;
-use Message;
 use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
 
@@ -22,17 +22,16 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 	 */
 	private function getFormatter( bool $msgDisabled = false ): SpecsFormatter {
 		$localizer = $this->createMock( MessageLocalizer::class );
-		$localizer->method( 'msg' )->willReturnCallback( function ( $k, $p = [] ) use ( $msgDisabled ) {
+		$localizer->method( 'msg' )->willReturnCallback( function ( $k ) use ( $msgDisabled ) {
 			if ( $k === 'abusefilter-throttle-details' ) {
 				// Special case
 				$msg = $this->createMock( Message::class );
-				$msg->method( 'params' )->willReturnCallback( function ( ...$p ) use ( $k ) {
-					$text = implode( '|', array_merge( [ $k ], $p ) );
-					return $this->getMockMessage( $text, [] );
-				} );
+				$msg->method( 'params' )->willReturnCallback(
+					fn ( ...$p ) => $this->getMockMessage( $k . '|' . implode( '|', $p ) )
+				);
 				return $msg;
 			}
-			$msg = $this->getMockMessage( $k, $p );
+			$msg = $this->getMockMessage( $k );
 			$msg->method( 'isDisabled' )->willReturn( $msgDisabled );
 			return $msg;
 		} );
@@ -41,15 +40,6 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::__construct
-	 */
-	public function testConstruct() {
-		$this->assertInstanceOf(
-			SpecsFormatter::class,
-			new SpecsFormatter( $this->createMock( MessageLocalizer::class ) )
-		);
-	}
-
-	/**
 	 * @covers ::setMessageLocalizer
 	 */
 	public function testSetMessageLocalizer() {
