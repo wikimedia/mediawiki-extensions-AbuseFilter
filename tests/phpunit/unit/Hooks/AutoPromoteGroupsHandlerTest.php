@@ -10,8 +10,7 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\AutoPromoteGroupsHandler
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\AutoPromoteGroupsHandler
  */
 class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 
@@ -31,7 +30,6 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::onGetAutoPromoteGroups
 	 * @dataProvider provideOnGetAutoPromoteGroups_nothingToDo
 	 */
 	public function testOnGetAutoPromoteGroups_nothingToDo( bool $enabled, array $groups ) {
@@ -56,7 +54,6 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::onGetAutoPromoteGroups
 	 * @dataProvider provideOnGetAutoPromoteGroups
 	 */
 	public function testOnGetAutoPromoteGroups_cacheHit(
@@ -76,7 +73,6 @@ class AutoPromoteGroupsHandlerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::onGetAutoPromoteGroups
 	 * @dataProvider provideOnGetAutoPromoteGroups
 	 */
 	public function testOnGetAutoPromoteGroups_cacheMiss(

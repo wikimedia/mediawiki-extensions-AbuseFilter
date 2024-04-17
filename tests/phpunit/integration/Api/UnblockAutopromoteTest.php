@@ -10,17 +10,13 @@ use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\UserIdentityValue;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\UnblockAutopromote
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Api\UnblockAutopromote
  * @group medium
  * @group Database
  */
 class UnblockAutopromoteTest extends ApiTestCase {
 	use MockAuthorityTrait;
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_noPermissions() {
 		$this->expectApiErrorCode( 'permissiondenied' );
 
@@ -34,9 +30,6 @@ class UnblockAutopromoteTest extends ApiTestCase {
 		], null, $this->mockRegisteredAuthorityWithoutPermissions( [ 'abusefilter-modify' ] ), 'csrf' );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_invalidUser() {
 		$invalid = 'invalid#username';
 		$this->expectApiErrorCode( 'baduser' );
@@ -51,9 +44,6 @@ class UnblockAutopromoteTest extends ApiTestCase {
 		], null, $this->mockRegisteredNullAuthority(), 'csrf' );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_blocked() {
 		$this->expectApiErrorCode( 'blocked' );
 
@@ -77,9 +67,6 @@ class UnblockAutopromoteTest extends ApiTestCase {
 		], null, $blockedUser, 'csrf' );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_nothingToDo() {
 		$target = 'User';
 		$user = $this->mockRegisteredUltimateAuthority();
@@ -97,9 +84,6 @@ class UnblockAutopromoteTest extends ApiTestCase {
 		], null, $user, 'csrf' );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_success() {
 		$target = 'User';
 		$user = $this->mockRegisteredUltimateAuthority();

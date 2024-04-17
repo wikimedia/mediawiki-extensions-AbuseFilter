@@ -18,7 +18,7 @@ use MessageLocalizer;
 use Psr\Log\NullLogger;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockingConsequence
  */
 class BlockTest extends MediaWikiUnitTestCase {
@@ -59,8 +59,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideExecute
-	 * @covers ::__construct
-	 * @covers ::execute
 	 */
 	public function testExecute( UserIdentity $target, bool $result ) {
 		$expiry = '1 day';
@@ -95,7 +93,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getMessage
 	 * @dataProvider provideGetMessageParameters
 	 */
 	public function testGetMessage( Parameters $params ) {
@@ -112,9 +109,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 		$this->doTestGetMessage( $block, $params, 'abusefilter-blocked-display' );
 	}
 
-	/**
-	 * @covers ::revert
-	 */
 	public function testRevert() {
 		$params = $this->createMock( Parameters::class );
 		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar' ) );
@@ -141,9 +135,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $block->revert( $this->createMock( UserIdentity::class ), '' ) );
 	}
 
-	/**
-	 * @covers ::revert
-	 */
 	public function testRevert_notBlocked() {
 		$params = $this->createMock( Parameters::class );
 		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar' ) );
@@ -160,9 +151,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $block->revert( $this->createMock( UserIdentity::class ), '' ) );
 	}
 
-	/**
-	 * @covers ::revert
-	 */
 	public function testRevert_notBlockedByAF() {
 		$params = $this->createMock( Parameters::class );
 		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar' ) );
@@ -187,9 +175,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $block->revert( $this->createMock( UserIdentity::class ), '' ) );
 	}
 
-	/**
-	 * @covers ::revert
-	 */
 	public function testRevert_couldNotUnblock() {
 		$params = $this->createMock( Parameters::class );
 		$params->method( 'getUser' )->willReturn( new UserIdentityValue( 1, 'Foobar' ) );

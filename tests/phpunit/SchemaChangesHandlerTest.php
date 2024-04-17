@@ -5,14 +5,11 @@ use MediaWiki\User\UserGroupManager;
 
 /**
  * @group Database
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\SchemaChangesHandler
+ * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\SchemaChangesHandler
  * @todo Make this a unit test once User::newSystemUser is moved to a service
  */
 class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			SchemaChangesHandler::class,
@@ -23,9 +20,6 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::createAbuseFilterUser
-	 */
 	public function testCreateAbuseFilterUser_invalidUserName() {
 		$noRowUpdater = $this->createMock( DatabaseUpdater::class );
 		$noRowUpdater->method( 'updateRowExists' )->willReturn( false );
@@ -35,9 +29,6 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $handler->createAbuseFilterUser( $noRowUpdater ) );
 	}
 
-	/**
-	 * @covers ::createAbuseFilterUser
-	 */
 	public function testCreateAbuseFilterUser_alreadyCreated() {
 		$rowExistsUpdater = $this->createMock( DatabaseUpdater::class );
 		$rowExistsUpdater->method( 'updateRowExists' )->willReturn( true );
@@ -47,9 +38,6 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $handler->createAbuseFilterUser( $rowExistsUpdater ) );
 	}
 
-	/**
-	 * @covers ::createAbuseFilterUser
-	 */
 	public function testCreateAbuseFilterUser_success() {
 		$noRowUpdater = $this->createMock( DatabaseUpdater::class );
 		$noRowUpdater->method( 'updateRowExists' )->willReturn( false );

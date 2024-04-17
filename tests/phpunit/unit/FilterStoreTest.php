@@ -17,13 +17,10 @@ use Wikimedia\Rdbms\LBFactory;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterStore
+ * @covers \MediaWiki\Extension\AbuseFilter\FilterStore
  * @todo Expand this. FilterStore is tightly bound to a Database, so it's not easy.
  */
 class FilterStoreTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			FilterStore::class,

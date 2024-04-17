@@ -17,24 +17,22 @@ use MediaWiki\MediaWikiServices;
 use SpecialPageTestBase;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter
+ * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter
+ * @covers \MediaWiki\Extension\AbuseFilter\Special\AbuseFilterSpecialPage
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewImport
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools
  */
 class SpecialAbuseFilterTest extends SpecialPageTestBase {
 
 	/**
-	 * @covers ::instantiateView
-	 * @covers ::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\Special\AbuseFilterSpecialPage::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewHistory::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewImport::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch::__construct
-	 * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools::__construct
 	 * @dataProvider provideInstantiateView
 	 */
 	public function testInstantiateView( string $viewClass, array $params = [] ) {

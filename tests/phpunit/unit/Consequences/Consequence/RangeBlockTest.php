@@ -16,7 +16,7 @@ use MessageLocalizer;
 use Psr\Log\NullLogger;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\RangeBlock
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockingConsequence
  */
 class RangeBlockTest extends MediaWikiUnitTestCase {
@@ -83,8 +83,6 @@ class RangeBlockTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideExecute
-	 * @covers ::__construct
-	 * @covers ::execute
 	 */
 	public function testExecute(
 		string $requestIP, array $rangeBlockSize, string $target, bool $result
@@ -126,7 +124,6 @@ class RangeBlockTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getMessage
 	 * @dataProvider provideGetMessageParameters
 	 */
 	public function testGetMessage( Parameters $params ) {

@@ -23,8 +23,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @group Test
  * @group AbuseFilter
  * @group AbuseFilterSave
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterValidator
- * @covers ::__construct()
+ * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
  */
 class FilterValidatorTest extends MediaWikiUnitTestCase {
 
@@ -97,7 +96,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param ExceptionBase|null $excep
 	 * @param string|null $expected
 	 * @param array|null $expParams
-	 * @covers ::checkValidSyntax
 	 * @dataProvider provideSyntax
 	 */
 	public function testCheckValidSyntax( ?ExceptionBase $excep, ?string $expected, ?array $expParams ) {
@@ -131,7 +129,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param string $rules
 	 * @param string $name
 	 * @param string|null $expected
-	 * @covers ::checkRequiredFields
 	 * @dataProvider provideRequiredFields
 	 */
 	public function testCheckRequiredFields( string $rules, string $name, ?string $expected ) {
@@ -154,7 +151,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $actions
 	 * @param string|null $expected
-	 * @covers ::checkEmptyMessages
 	 * @dataProvider provideEmptyMessages
 	 */
 	public function testCheckEmptyMessages( array $actions, ?string $expected ) {
@@ -176,7 +172,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param bool $enabled
 	 * @param bool $deleted
 	 * @param string|null $expected
-	 * @covers ::checkConflictingFields
 	 * @dataProvider provideConflictingFields
 	 */
 	public function testCheckConflictingFields( bool $enabled, bool $deleted, ?string $expected ) {
@@ -197,7 +192,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param bool $canEditNew
 	 * @param bool $canEditOrig
 	 * @param string|null $expected
-	 * @covers ::checkGlobalFilterEditPermission
 	 * @dataProvider provideCheckGlobalFilterEditPermission
 	 */
 	public function testCheckGlobalFilterEditPermission(
@@ -229,7 +223,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param array $actions
 	 * @param bool $isGlobal
 	 * @param string|null $expected
-	 * @covers ::checkMessagesOnGlobalFilters
 	 * @dataProvider provideMessagesOnGlobalFilters
 	 */
 	public function testCheckMessagesOnGlobalFilters( array $actions, bool $isGlobal, ?string $expected ) {
@@ -273,7 +266,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param array $restrictions
 	 * @param AbuseFilterPermissionManager $permManager
 	 * @param string|null $expected
-	 * @covers ::checkRestrictedActions
 	 * @dataProvider provideRestrictedActions
 	 */
 	public function testCheckRestrictedActions(
@@ -320,9 +312,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			[ $unrestricted, $restricted, $restrictions, $canModifyRestrictedPM, null ];
 	}
 
-	/**
-	 * @covers ::checkAllTags
-	 */
 	public function testCheckAllTags_noTags() {
 		$this->assertStatusMessageParams( 'tags-create-no-name', $this->getFilterValidator()->checkAllTags( [] ) );
 	}
@@ -330,7 +319,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $params Throttle parameters
 	 * @param string|null $expectedError The expected error message. Null if validations should pass
-	 * @covers ::checkThrottleParameters
 	 * @dataProvider provideThrottleParameters
 	 */
 	public function testCheckThrottleParameters( array $params, ?string $expectedError ) {
@@ -370,7 +358,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param AbuseFilterPermissionManager|null $permissionManager
 	 * @param FilterEvaluator|null $ruleChecker
 	 * @param array $restrictions
-	 * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator::checkAll
 	 * @dataProvider provideCheckAll
 	 */
 	public function testCheckAll(
@@ -458,7 +445,6 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @param string $group
 	 * @param string[] $validGroups
 	 * @param string|null $expected
-	 * @covers ::checkGroup
 	 * @dataProvider provideGroups
 	 */
 	public function testCheckGroup( string $group, array $validGroups, ?string $expected ) {

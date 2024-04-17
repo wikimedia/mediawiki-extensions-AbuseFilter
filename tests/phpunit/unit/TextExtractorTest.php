@@ -20,8 +20,7 @@ use WikitextContent;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\TextExtractor
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\TextExtractor
  */
 class TextExtractorTest extends MediaWikiUnitTestCase {
 
@@ -29,7 +28,6 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	 * @param RevisionRecord|null $rev The revision being converted
 	 * @param bool $sysop Whether the user should be a sysop (i.e. able to see deleted stuff)
 	 * @param string $expected The expected textual representation of the Revision
-	 * @covers ::revisionToString
 	 * @dataProvider provideRevisionToString
 	 */
 	public function testRevisionToString( ?RevisionRecord $rev, bool $sysop, string $expected ) {
@@ -81,7 +79,6 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param Content $content
 	 * @param string $expected
-	 * @covers ::contentToString
 	 * @dataProvider provideContentToString
 	 */
 	public function testContentToString( Content $content, string $expected ) {
@@ -100,9 +97,6 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 		yield 'non-text' => [ new DummyNonTextContent( $text ), '' ];
 	}
 
-	/**
-	 * @covers ::contentToString
-	 */
 	public function testContentToString__hook() {
 		$expected = 'Text changed by hook';
 		$hookCb = static function ( Content $content, ?string &$text ) use ( $expected ) {

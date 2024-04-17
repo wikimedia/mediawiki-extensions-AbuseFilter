@@ -11,12 +11,9 @@ use Wikimedia\Assert\ParameterTypeException;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter
+ * @covers \MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter
  */
 class AbstractFilterTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct_invalidActions() {
 		$this->expectException( ParameterTypeException::class );
 		new AbstractFilter(
@@ -26,9 +23,6 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct_actionsFormats() {
 		$specs = $this->createMock( Specs::class );
 		$flags = $this->createMock( Flags::class );
@@ -45,18 +39,6 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::__construct
-	 * @covers ::getRules
-	 * @covers ::getComments
-	 * @covers ::getName
-	 * @covers ::getActionsNames
-	 * @covers ::getGroup
-	 * @covers ::isEnabled
-	 * @covers ::isDeleted
-	 * @covers ::isHidden
-	 * @covers ::isGlobal
-	 */
 	public function testValueGetters() {
 		$rules = 'rules';
 		$comments = 'comments';
@@ -84,10 +66,6 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $global, $filter->isGlobal(), 'global' );
 	}
 
-	/**
-	 * @covers ::getSpecs
-	 * @covers ::getFlags
-	 */
 	public function testGetObjects() {
 		$specs = $this->createMock( Specs::class );
 		$flags = $this->createMock( Flags::class );
@@ -103,8 +81,6 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array|callable $value
 	 * @param array $expected
-	 * @covers ::getActions
-	 * @covers ::setActions
 	 * @dataProvider provideActions
 	 */
 	public function testActions( $value, array $expected ) {
@@ -135,10 +111,6 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @covers ::__construct
-	 * @covers ::__clone
-	 */
 	public function testNoWriteableReferences() {
 		$oldRules = 'rules';
 		$specs = new Specs( $oldRules, 'x', 'x', [], 'x' );

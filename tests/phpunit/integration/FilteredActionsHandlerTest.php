@@ -22,7 +22,7 @@ use NullStatsdDataFactory;
 use RequestContext;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
+ * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
  * @group Database
  */
 class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
@@ -31,7 +31,6 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideOnEditFilterMergedContent
-	 * @covers ::onEditFilterMergedContent
 	 * @covers \MediaWiki\Extension\AbuseFilter\BlockedDomainFilter
 	 */
 	public function testOnEditFilterMergedContent( $urlsAdded, $expected ) {

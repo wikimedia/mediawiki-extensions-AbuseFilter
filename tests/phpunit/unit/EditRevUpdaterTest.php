@@ -19,13 +19,10 @@ use WikiPage;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\EditRevUpdater
+ * @covers \MediaWiki\Extension\AbuseFilter\EditRevUpdater
  */
 class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			EditRevUpdater::class,
@@ -80,21 +77,11 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		return [ $wikiPage, new MutableRevisionRecord( $title ) ];
 	}
 
-	/**
-	 * @covers ::updateRev
-	 * @covers ::getCacheKey
-	 */
 	public function testUpdateRev_noIDs() {
 		$titleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater' );
 		$this->assertFalse( $this->getUpdater()->updateRev( ...$this->getPageAndRev( $titleValue ) ) );
 	}
 
-	/**
-	 * @covers ::setLastEditPage
-	 * @covers ::setLogIdsForTarget
-	 * @covers ::updateRev
-	 * @covers ::getCacheKey
-	 */
 	public function testUpdateRev_differentPages() {
 		$titleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater' );
 		$updater = $this->getUpdater();
@@ -105,12 +92,6 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $updater->updateRev( ...$this->getPageAndRev( $titleValue ) ) );
 	}
 
-	/**
-	 * @covers ::setLastEditPage
-	 * @covers ::setLogIdsForTarget
-	 * @covers ::updateRev
-	 * @covers ::getCacheKey
-	 */
 	public function testUpdateRev_nullEdit() {
 		$titleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater' );
 		[ $page, $rev ] = $this->getPageAndRev( $titleValue );
@@ -126,10 +107,6 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param array $ids
-	 * @covers ::setLastEditPage
-	 * @covers ::setLogIdsForTarget
-	 * @covers ::updateRev
-	 * @covers ::getCacheKey
 	 * @dataProvider provideIDsSuccess
 	 */
 	public function testUpdateRev_success( array $ids ) {
@@ -154,12 +131,6 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		];
 	}
 
-	/**
-	 * @covers ::setLastEditPage
-	 * @covers ::setLogIdsForTarget
-	 * @covers ::updateRev
-	 * @covers ::getCacheKey
-	 */
 	public function testUpdateRev_multipleTitles() {
 		$goodTitleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater' );
 		$badTitleValue = new TitleValue( NS_PROJECT, 'These should not be used' );
@@ -178,10 +149,6 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $updater->updateRev( $page, $rev ) );
 	}
 
-	/**
-	 * @covers ::clearLastEditPage
-	 * @covers ::updateRev
-	 */
 	public function testClearLastEditPage() {
 		$titleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater-clear' );
 		[ $page, $revisionRecord ] = $this->getPageAndRev( $titleValue );
@@ -194,7 +161,6 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param array $ids
-	 * @covers ::setLogIdsForTarget
 	 * @dataProvider provideInvalidIDs
 	 */
 	public function testSetLogIdsForTarget_invalid( array $ids ) {

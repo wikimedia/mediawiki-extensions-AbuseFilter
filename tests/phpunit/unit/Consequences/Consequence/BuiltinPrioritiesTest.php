@@ -18,8 +18,8 @@ use Psr\Log\NullLogger;
 class BuiltinPrioritiesTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle::getSort
-	 * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn::getSort
+	 * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle
+	 * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn
 	 */
 	public function testThrottleMoreImportantThanWarn() {
 		$throttle = new Throttle(

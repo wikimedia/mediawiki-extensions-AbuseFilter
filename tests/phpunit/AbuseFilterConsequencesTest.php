@@ -47,9 +47,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  *
  * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner
  * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
- * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator::getDeleteVars
- * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator::getMoveVars
- * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator::getUploadVars
+ * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore

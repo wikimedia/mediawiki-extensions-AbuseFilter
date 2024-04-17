@@ -31,8 +31,7 @@ use WANObjectCache;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
  */
 class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 
@@ -66,9 +65,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		};
 	}
 
-	/**
-	 * @covers ::compute
-	 */
 	public function testWikiNameVar() {
 		$fakeID = 'some-wiki-ID';
 		$var = new LazyLoadedVariable( 'get-wiki-name', [] );
@@ -79,9 +75,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::compute
-	 */
 	public function testWikiLanguageVar() {
 		$fakeCode = 'foobar';
 		$fakeLang = $this->createMock( Language::class );
@@ -94,9 +87,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::compute
-	 */
 	public function testCompute_invalidName() {
 		$computer = $this->getComputer();
 		$this->expectException( UnexpectedValueException::class );
@@ -107,9 +97,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::compute
-	 */
 	public function testInterceptVariableHook() {
 		$expected = new AFPData( AFPData::DSTRING, 'foobar' );
 		$handler = static function ( $method, $vars, $params, &$result ) use ( $expected ) {
@@ -125,9 +112,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $actual );
 	}
 
-	/**
-	 * @covers ::compute
-	 */
 	public function testComputeVariableHook() {
 		$expected = new AFPData( AFPData::DSTRING, 'foobar' );
 		$handler = static function ( $method, $vars, $params, &$result ) use ( $expected ) {
@@ -147,7 +131,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	 * @param LazyLoadedVariable $var
 	 * @param mixed $expected
 	 * @param array $services
-	 * @covers ::compute
 	 * @dataProvider provideUserRelatedVars
 	 */
 	public function testUserRelatedVars(
@@ -263,7 +246,6 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 	 * @param LazyLoadedVariable $var
 	 * @param mixed $expected
 	 * @param array $services
-	 * @covers ::compute
 	 * @dataProvider provideTitleRelatedVars
 	 */
 	public function testTitleRelatedVars(

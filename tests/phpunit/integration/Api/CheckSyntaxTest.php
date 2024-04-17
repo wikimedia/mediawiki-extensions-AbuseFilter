@@ -11,17 +11,13 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckSyntax
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Api\CheckSyntax
  * @group medium
  */
 class CheckSyntaxTest extends ApiTestCase {
 	use AbuseFilterApiTestTrait;
 	use MockAuthorityTrait;
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_noPermissions() {
 		$this->expectApiErrorCode( 'permissiondenied' );
 
@@ -33,9 +29,6 @@ class CheckSyntaxTest extends ApiTestCase {
 		], null, null, $this->mockRegisteredNullAuthority() );
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_Ok() {
 		$input = 'sampleFilter';
 		$status = new ParserStatus( null, [], 1 );
@@ -57,9 +50,6 @@ class CheckSyntaxTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_OkAndWarnings() {
 		$input = 'sampleFilter';
 		$warnings = [
@@ -99,9 +89,6 @@ class CheckSyntaxTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_error() {
 		$input = 'sampleFilter';
 		$exception = new UserVisibleException( 'error-id', 4, [] );

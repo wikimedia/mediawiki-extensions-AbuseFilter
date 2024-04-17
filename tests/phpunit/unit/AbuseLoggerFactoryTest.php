@@ -18,15 +18,11 @@ use MediaWikiUnitTestCase;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
  */
 class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::__construct
-	 * @covers ::newLogger
-	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger::__construct
-	 */
 	public function testNewLogger() {
 		$factory = new AbuseLoggerFactory(
 			$this->createMock( CentralDBManager::class ),

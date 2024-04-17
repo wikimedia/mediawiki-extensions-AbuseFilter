@@ -11,8 +11,7 @@ use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
  */
 class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 
@@ -24,18 +23,12 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::blockAutoPromote
-	 */
 	public function testBlockAutopromote_success() {
 		$store = $this->getStore( new HashBagOStuff() );
 		$target = new UserIdentityValue( 1, 'Blocked user' );
 		$this->assertTrue( $store->blockAutoPromote( $target, '', 1 ) );
 	}
 
-	/**
-	 * @covers ::blockAutoPromote
-	 */
 	public function testBlockAutopromote_cannotSet() {
 		$cache = $this->createMock( BagOStuff::class );
 		$cache->expects( $this->once() )->method( 'set' )->willReturn( false );
@@ -45,9 +38,6 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 		$this->assertFalse( $store->blockAutoPromote( $target, '', 1 ) );
 	}
 
-	/**
-	 * @covers ::unblockAutoPromote
-	 */
 	public function testUnblockAutopromote_success() {
 		$cache = $this->createMock( BagOStuff::class );
 		$cache->expects( $this->once() )->method( 'changeTTL' )->willReturn( true );
@@ -57,21 +47,12 @@ class BlockAutopromoteStoreTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $store->unblockAutoPromote( $target, $target, '' ) );
 	}
 
-	/**
-	 * @covers ::unblockAutoPromote
-	 */
 	public function testUnblockAutopromote_notBlocked() {
 		$store = $this->getStore( new HashBagOStuff() );
 		$target = new UserIdentityValue( 1, 'Blocked user' );
 		$this->assertFalse( $store->unblockAutoPromote( $target, $target, '' ) );
 	}
 
-	/**
-	 * @covers ::blockAutoPromote
-	 * @covers ::getAutoPromoteBlockStatus
-	 * @covers ::unblockAutopromote
-	 * @covers ::getAutoPromoteBlockKey
-	 */
 	public function testRoundTrip() {
 		$cache = new HashBagOStuff();
 		$store = $this->getStore( $cache );

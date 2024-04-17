@@ -20,13 +20,9 @@ use WikiPage;
  * @group AbuseFilter
  * @group AbuseFilterGeneric
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGenerator
  */
 class VariableGeneratorTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::getVariableHolder
-	 */
 	public function testGetVariableHolder() {
 		$holder = new VariableHolder();
 		$generator = new VariableGenerator(
@@ -37,9 +33,6 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $holder, $generator->getVariableHolder() );
 	}
 
-	/**
-	 * @covers ::addUserVars
-	 */
 	public function testAddUserVars() {
 		$user = $this->createMock( User::class );
 		$userName = 'Some user';
@@ -75,7 +68,6 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 	 * @param string $prefix
 	 * @param Title $title
 	 * @param array $expected
-	 * @covers ::addTitleVars
 	 * @dataProvider provideTitleVarsNotLazy
 	 */
 	public function testAddTitleVars_notLazy( string $prefix, Title $title, array $expected ) {
@@ -118,7 +110,6 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $prefix
 	 * @param array $expectedKeys
-	 * @covers ::addTitleVars
 	 * @dataProvider provideTitleVarsLazy
 	 */
 	public function testAddTitleVars_lazy( string $prefix, array $expectedKeys ) {
@@ -153,9 +144,6 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	/**
-	 * @covers ::addGenericVars
-	 */
 	public function testAddGenericVars() {
 		$expectedKeys = [
 			'timestamp',
@@ -177,8 +165,6 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::addEditVars
-	 * @covers ::addDerivedEditVars
 	 * @dataProvider provideForFilter
 	 */
 	public function testAddEditVars( bool $forFilter ) {

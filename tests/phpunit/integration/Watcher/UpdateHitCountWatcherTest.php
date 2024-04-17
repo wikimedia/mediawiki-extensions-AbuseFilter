@@ -10,15 +10,10 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher
  */
 class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 
-	/**
-	 * @covers ::run
-	 * @covers ::updateHitCounts
-	 */
 	public function testRun() {
 		$localFilters = [ 1, 2, 3 ];
 		$globalFilters = [ 4, 5, 6 ];

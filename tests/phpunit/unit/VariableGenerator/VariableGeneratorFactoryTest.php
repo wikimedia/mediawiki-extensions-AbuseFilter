@@ -19,8 +19,7 @@ use RepoGroup;
  * @group Test
  * @group AbuseFilter
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory
  */
 class VariableGeneratorFactoryTest extends MediaWikiUnitTestCase {
 	private function getFactory(): VariableGeneratorFactory {
@@ -34,17 +33,11 @@ class VariableGeneratorFactoryTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::newGenerator
-	 */
 	public function testNewGenerator() {
 		$this->getFactory()->newGenerator( new VariableHolder() );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newRunGenerator
-	 */
 	public function testNewRunGenerator() {
 		$this->getFactory()->newRunGenerator(
 			$this->createMock( User::class ),
@@ -54,9 +47,6 @@ class VariableGeneratorFactoryTest extends MediaWikiUnitTestCase {
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newRCGenerator
-	 */
 	public function testNewRCGenerator() {
 		$this->getFactory()->newRCGenerator(
 			$this->createMock( RecentChange::class ),

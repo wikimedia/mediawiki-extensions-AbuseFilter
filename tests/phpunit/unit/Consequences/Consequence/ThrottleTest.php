@@ -23,8 +23,7 @@ use Psr\Log\NullLogger;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle
  */
 class ThrottleTest extends MediaWikiUnitTestCase {
 
@@ -61,9 +60,6 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_notPrechecked() {
 		$throttle = $this->getThrottle();
 		$this->expectException( ConsequenceNotPrecheckedException::class );
@@ -90,10 +86,6 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::shouldDisableOtherConsequences
-	 * @covers ::isThrottled
-	 * @covers ::throttleKey
-	 * @covers ::throttleIdentifier
 	 * @dataProvider provideThrottle
 	 */
 	public function testShouldDisableOtherConsequences( Throttle $throttle, bool $shouldDisable ) {
@@ -101,10 +93,6 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::execute
-	 * @covers ::setThrottled
-	 * @covers ::throttleKey
-	 * @covers ::throttleIdentifier
 	 * @dataProvider provideThrottle
 	 */
 	public function testExecute( Throttle $throttle, bool $shouldDisable, MockObject $cache = null ) {
@@ -119,7 +107,6 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::throttleIdentifier
 	 * @dataProvider provideThrottleDataForIdentifiers
 	 */
 	public function testThrottleIdentifier(

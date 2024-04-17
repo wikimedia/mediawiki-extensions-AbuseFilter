@@ -7,14 +7,10 @@ use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ChangeTagsHandler;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ChangeTagsHandler
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ChangeTagsHandler
  */
 class ChangeTagsHandlerTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::onListDefinedTags
-	 */
 	public function testOnListDefinedTags() {
 		$condsLimitTag = 'conds-limit';
 		$filtersTags = [ 'foo', 'bar' ];
@@ -27,9 +23,6 @@ class ChangeTagsHandlerTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( [ ...$initial, $condsLimitTag, ...$filtersTags ], $tags );
 	}
 
-	/**
-	 * @covers ::onChangeTagsListActive
-	 */
 	public function testOnChangeTagsListActive() {
 		$condsLimitTag = 'conds-limit';
 		$activeFiltersTags = [ 'foo', 'bar' ];

@@ -10,13 +10,10 @@ use MediaWikiUnitTestCase;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning
  */
 class UserVisibleWarningTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::getMessageObj
-	 */
 	public function testGetMessageObj() {
 		$excID = 'abusefilter-foo';
 		$position = 42;

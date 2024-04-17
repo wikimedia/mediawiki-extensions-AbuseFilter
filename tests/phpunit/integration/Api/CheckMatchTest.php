@@ -12,17 +12,13 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Api\CheckMatch
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Api\CheckMatch
  * @group medium
  */
 class CheckMatchTest extends ApiTestCase {
 	use AbuseFilterApiTestTrait;
 	use MockAuthorityTrait;
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_noPermissions() {
 		$this->expectApiErrorCode( 'permissiondenied' );
 
@@ -44,7 +40,6 @@ class CheckMatchTest extends ApiTestCase {
 
 	/**
 	 * @dataProvider provideExecuteOk
-	 * @covers ::execute
 	 */
 	public function testExecute_Ok( bool $expected ) {
 		$filter = 'sampleFilter';
@@ -77,9 +72,6 @@ class CheckMatchTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::execute
-	 */
 	public function testExecute_error() {
 		$this->expectApiErrorCode( 'badsyntax' );
 		$filter = 'sampleFilter';

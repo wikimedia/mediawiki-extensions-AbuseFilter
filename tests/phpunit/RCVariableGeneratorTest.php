@@ -15,7 +15,7 @@ use MediaWiki\Utils\MWTimestamp;
  * @group AbuseFilter
  * @group AbuseFilterGeneric
  * @group Database
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator
+ * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator
  * @todo Make this a unit test?
  */
 class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
@@ -206,10 +206,6 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::addEditVars
-	 * @covers ::addDerivedEditVars
-	 * @covers ::addEditVarsForRow
-	 * @covers ::addGenericVars
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
 	 */
 	public function testAddEditVarsForRow() {

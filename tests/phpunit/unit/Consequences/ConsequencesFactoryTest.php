@@ -24,8 +24,7 @@ use Psr\Log\NullLogger;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory
  */
 class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 
@@ -60,65 +59,41 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 		return $consequencesFactory;
 	}
 
-	/**
-	 * @covers ::newBlock
-	 */
 	public function testNewBlock() {
 		$this->getFactory()->newBlock( $this->createMock( Parameters::class ), '', false );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newRangeBlock
-	 */
 	public function testNewRangeBlock() {
 		$this->getFactory()->newRangeBlock( $this->createMock( Parameters::class ), '' );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newDegroup
-	 */
 	public function testNewDegroup() {
 		$this->getFactory()->newDegroup( $this->createMock( Parameters::class ), new VariableHolder() );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newBlockAutopromote
-	 */
 	public function testNewBlockAutopromote() {
 		$this->getFactory()->newBlockAutopromote( $this->createMock( Parameters::class ), 42 );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newThrottle
-	 */
 	public function testNewThrottle() {
 		$this->getFactory()->newThrottle( $this->createMock( Parameters::class ), [] );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newWarn
-	 */
 	public function testNewWarn() {
 		$this->getFactory()->newWarn( $this->createMock( Parameters::class ), '' );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newDisallow
-	 */
 	public function testNewDisallow() {
 		$this->getFactory()->newDisallow( $this->createMock( Parameters::class ), '' );
 		$this->addToAssertionCount( 1 );
 	}
 
-	/**
-	 * @covers ::newTag
-	 */
 	public function testNewTag() {
 		$this->getFactory()->newTag( $this->createMock( Parameters::class ), [] );
 		$this->addToAssertionCount( 1 );

@@ -18,13 +18,9 @@ use Wikimedia\Equivset\Equivset;
  * @group AbuseFilter
  * @group AbuseFilterParser
  *
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory
+ * @covers \MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory
  */
 class RuleCheckerFactoryTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::__construct
-	 * @covers ::newRuleChecker
-	 */
 	public function testNewRuleChecker() {
 		$factory = new RuleCheckerFactory(
 			$this->createMock( Language::class ),

@@ -17,8 +17,7 @@ use Wikimedia\TestingAccessWrapper;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore
- * @covers ::__construct
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore
  */
 class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
@@ -53,9 +52,6 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::storeVarDump
-	 */
 	public function testStoreVarDump() {
 		$expectID = 123456;
 		$blobStore = $this->createMock( BlobStore::class );
@@ -66,9 +62,6 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expectID, $varBlobStore->storeVarDump( new VariableHolder() ) );
 	}
 
-	/**
-	 * @covers ::loadVarDump
-	 */
 	public function testLoadVarDump() {
 		$vars = [ 'foo-variable' => 42 ];
 		$blob = FormatJson::encode( $vars );
@@ -80,9 +73,6 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 42, $loadedVars['foo-variable']->toNative() );
 	}
 
-	/**
-	 * @covers ::loadVarDump
-	 */
 	public function testLoadVarDump_fail() {
 		$blobStore = $this->createMock( BlobStore::class );
 		$blobStore->expects( $this->once() )->method( 'getBlob' )->willThrowException( new BlobAccessException );
@@ -117,8 +107,6 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::storeVarDump
-	 * @covers ::loadVarDump
 	 * @dataProvider provideVariables
 	 */
 	public function testRoundTrip( array $toStore, array $expected = null ) {

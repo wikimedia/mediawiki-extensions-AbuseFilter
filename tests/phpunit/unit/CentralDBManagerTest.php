@@ -12,12 +12,9 @@ use Wikimedia\Rdbms\LBFactory;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\CentralDBManager
+ * @covers \MediaWiki\Extension\AbuseFilter\CentralDBManager
  */
 class CentralDBManagerTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::__construct
-	 */
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			CentralDBManager::class,
@@ -29,9 +26,6 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @covers ::getConnection
-	 */
 	public function testGetConnection() {
 		$expected = $this->createMock( DBConnRef::class );
 		$lb = $this->createMock( ILoadBalancer::class );
@@ -42,9 +36,6 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $dbManager->getConnection( DB_REPLICA ) );
 	}
 
-	/**
-	 * @covers ::getConnection
-	 */
 	public function testGetConnection_invalid() {
 		$lbFactory = $this->createMock( LBFactory::class );
 		$dbManager = new CentralDBManager( $lbFactory, null, true );
@@ -52,9 +43,6 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 		$dbManager->getConnection( DB_REPLICA );
 	}
 
-	/**
-	 * @covers ::getCentralDBName
-	 */
 	public function testGetCentralDBName() {
 		$expected = 'foobar';
 		$lbFactory = $this->createMock( LBFactory::class );
@@ -62,9 +50,6 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $expected, $dbManager->getCentralDBName() );
 	}
 
-	/**
-	 * @covers ::getCentralDBName
-	 */
 	public function testGetCentralDBName_invalid() {
 		$lbFactory = $this->createMock( LBFactory::class );
 		$dbManager = new CentralDBManager( $lbFactory, null, true );
@@ -74,7 +59,6 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param bool $value
-	 * @covers ::filterIsCentral
 	 * @dataProvider provideIsCentral
 	 */
 	public function testFilterIsCentral( bool $value ) {

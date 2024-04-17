@@ -11,7 +11,7 @@ use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWikiUnitTestCase;
 
 /**
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager
  */
 class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	use MockAuthorityTrait;
@@ -39,7 +39,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	 * @param ?DatabaseBlock $block
 	 * @param array $rights
 	 * @param bool $expected
-	 * @covers ::canEdit
 	 * @dataProvider provideCanEdit
 	 */
 	public function testCanEdit( ?DatabaseBlock $block, array $rights, bool $expected ) {
@@ -64,7 +63,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canEditGlobal
 	 * @dataProvider provideCanEditGlobal
 	 */
 	public function testCanEditGlobal( array $rights, bool $expected ) {
@@ -103,7 +101,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	 * @param ?DatabaseBlock $block
 	 * @param array $rights
 	 * @param bool $expected
-	 * @covers ::canEditFilter
 	 * @dataProvider provideCanEditFilter
 	 */
 	public function testCanEditFilter(
@@ -135,7 +132,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canViewPrivateFilters
 	 * @dataProvider provideCanViewPrivateFilters
 	 */
 	public function testCanViewPrivateFilters( array $rights, bool $expected ) {
@@ -156,7 +152,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $rights
 	 * @param bool $expected
-	 * @covers ::canViewPrivateFiltersLogs
 	 * @dataProvider provideCanViewPrivateFiltersLogs
 	 */
 	public function testCanViewPrivateFiltersLogs( array $rights, bool $expected ) {
@@ -182,7 +177,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	 * @param bool $filterHidden
 	 * @param array $rights
 	 * @param bool $expected
-	 * @covers ::canSeeLogDetailsForFilter
 	 * @dataProvider provideCanSeeLogDetailsForFilter
 	 */
 	public function testCanSeeLogDetailsForFilter( bool $filterHidden, array $rights, bool $expected ) {
@@ -201,7 +195,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canEditFilterWithRestrictedActions
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanEditFilterWithRestrictedActions( bool $allowed ) {
@@ -214,7 +207,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canViewAbuseLog
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanViewAbuseLog( bool $allowed ) {
@@ -227,7 +219,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canHideAbuseLog
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanHideAbuseLog( bool $allowed ) {
@@ -240,7 +231,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canRevertFilterActions
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanRevertFilterActions( bool $allowed ) {
@@ -253,7 +243,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canSeeLogDetails
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanSeeLogDetails( bool $allowed ) {
@@ -266,7 +255,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canSeePrivateDetails
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanSeePrivateDetails( bool $allowed ) {
@@ -279,7 +267,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canSeeHiddenLogEntries
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanSeeHiddenLogEntries( bool $allowed ) {
@@ -292,7 +279,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::canUseTestTools
 	 * @dataProvider provideSimpleCases
 	 */
 	public function testCanUseTestTools( bool $allowed ) {

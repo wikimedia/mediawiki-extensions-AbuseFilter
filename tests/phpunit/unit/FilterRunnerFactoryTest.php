@@ -28,13 +28,9 @@ use Psr\Log\NullLogger;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\FilterRunnerFactory
+ * @covers \MediaWiki\Extension\AbuseFilter\FilterRunnerFactory
  */
 class FilterRunnerFactoryTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::__construct
-	 * @covers ::newRunner
-	 */
 	public function testNewRunner() {
 		$opts = new ServiceOptions(
 			FilterRunner::CONSTRUCTOR_OPTIONS,

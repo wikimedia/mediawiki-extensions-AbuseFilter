@@ -8,16 +8,9 @@ use MediaWikiUnitTestCase;
 /**
  * @group Test
  * @group AbuseFilter
- * @coversDefaultClass \MediaWiki\Extension\AbuseFilter\Filter\Flags
+ * @covers \MediaWiki\Extension\AbuseFilter\Filter\Flags
  */
 class FlagsTest extends MediaWikiUnitTestCase {
-	/**
-	 * @covers ::__construct
-	 * @covers ::getEnabled
-	 * @covers ::getDeleted
-	 * @covers ::getHidden
-	 * @covers ::getGlobal
-	 */
 	public function testGetters() {
 		$enabled = true;
 		$deleted = false;
@@ -35,10 +28,6 @@ class FlagsTest extends MediaWikiUnitTestCase {
 	 * @param mixed $value
 	 * @param string $setter
 	 * @param string $getter
-	 * @covers ::setEnabled
-	 * @covers ::setDeleted
-	 * @covers ::setHidden
-	 * @covers ::setGlobal
 	 * @dataProvider provideSetters
 	 */
 	public function testSetters( $value, string $setter, string $getter ) {
