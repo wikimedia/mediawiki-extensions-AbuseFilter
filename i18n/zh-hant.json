@@ -48,7 +48,10 @@
 			"捍粵者",
 			"逆襲的天邪鬼",
 			"Lionpancake",
-			"LuciferianThomas"
+			"LuciferianThomas",
+			"Arielyurusova",
+			"Cookai1205",
+			"SupaplexTW"
 		]
 	},
 	"abusefilter-desc": "自動條件判定編輯行為",
@@ -412,7 +415,7 @@
 	"abusefilter-edit-builder-vars-summary": "編輯摘要/原因",
 	"abusefilter-edit-builder-vars-page-id": "頁面 ID",
 	"abusefilter-edit-builder-vars-page-ns": "頁面命名空間",
-	"abusefilter-edit-builder-vars-page-title": "頁面標題 (不含命名空間)",
+	"abusefilter-edit-builder-vars-page-title": "頁面標題（不含命名空間）",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "完整頁面標題",
 	"abusefilter-edit-builder-vars-page-age": "頁面年齡（以秒為單位）",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移動來源頁面的頁面 ID",

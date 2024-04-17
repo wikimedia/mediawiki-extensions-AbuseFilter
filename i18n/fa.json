@@ -630,7 +630,7 @@
 	"abusefilter-tag-reserved": "تگ <code>abusefilter-condition-limit</code> برای استفادهٔ داخلی توسط پالایهٔ ویرایش در نظر گرفته شده.",
 	"tag-abusefilter-condition-limit": "محدودیت تعداد شرایط حاصل شد",
 	"tag-abusefilter-condition-limit-description": "ویرایش‌ها یا عملکردهای دیگری که توسط تمام [[Special:AbuseFilter|پالایه‌های]] فعال بررسی نشدند ([[mw:Extension:AbuseFilter/Conditions|راهنما]]).",
-	"notification-header-throttle-filter": "پالایهٔ ویرایش $2 که {{GENDER:$1|شما}} اخیراً آن را ویرایش کرده‌بودید متوقف شد.",
+	"notification-header-throttle-filter": "پالایهٔ ویرایش $2 که {{GENDER:$1|شما}} اخیراً آن را ویرایش کرده بودید متوقف شد.",
 	"notification-header-throttle-filter-actions": "پالایهٔ ویرایش $2 که اخیراً آن را ویرایش {{GENDER:$1|کرده‌اید}} از نرخ بالای انطباق برخوردار است و {{PLURAL:$4|عمل|عمل‌های}} زیر به‌طور خودکار غیرفعال شدند: $3",
 	"notification-header-throttle-filter-no-actions": "پالایهٔ ویرایش $2 که اخیراً آن را ویرایش {{GENDER:$1|کرده‌اید}} از نرخ بالای انطباق برخوردار است، اما هیچ عملی به‌طور خودکار غیرفعال نشد.",
 	"notification-subject-throttle-filter": "یکی از پالایه‌های ویرایش ویرایش‌شده توسط {{GENDER:$1|شما}} در {{SITENAME}} متوقف شد",

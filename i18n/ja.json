@@ -50,7 +50,8 @@
 			"青子守歌",
 			"Dragoniez",
 			"Tmv",
-			"もなー(偽物)"
+			"もなー(偽物)",
+			"Chqaz"
 		]
 	},
 	"abusefilter-desc": "編集操作の監視機能を追加する",
@@ -66,7 +67,7 @@
 	"abusefilter-blocker": "不正利用フィルター",
 	"abusefilter-blockreason": "不正利用フィルターによる自動的なブロック。\n発動した規則の説明: $1",
 	"abusefilter-degroupreason": "不正利用フィルターによる自動的な権限の剥奪。\n規則の説明: $1",
-	"abusefilter-blockautopromotereason": "不正利用フィルターによる自動承認される権限の承認延長。\n規則の説明: $1",
+	"abusefilter-blockautopromotereason": "不正利用フィルターによる自動承認の延長。\n規則の説明: $1",
 	"abusefilter-accountreserved": "このアカウントは不正利用フィルターによる使用のため予約されています。",
 	"right-abusefilter-modify": "不正利用フィルターを作成/変更",
 	"right-abusefilter-view": "不正利用フィルターを閲覧",
@@ -178,7 +179,7 @@
 	"logentry-rights-restoreautopromote": "$1 が {{GENDER:$4|$3}} の自動昇格条件を{{GENDER:$2|復元}}しました。",
 	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} が $3 に $4 を追加しようとした際にドメインブロックリストが発動しました。",
 	"abusefilterprivatedetails-log-name": "不正利用フィルター非公開記録の調査記録",
-	"log-name-abusefilterblockeddomainhit": "ブロックされたドメインのヒットログ",
+	"log-name-abusefilterblockeddomainhit": "ブロックされたドメインのヒット記録",
 	"abusefilter-list": "すべてのフィルター",
 	"abusefilter-list-id": "フィルターID",
 	"abusefilter-list-pattern": "パターン",
