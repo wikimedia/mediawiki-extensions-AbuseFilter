@@ -400,6 +400,7 @@
 	"abusefilter-edit-builder-vars-page-title": "(이름공간을 뺀) 문서 제목",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "전체 문서 제목",
 	"abusefilter-edit-builder-vars-page-age": "문서의 나이 (단위: 초)",
+	"abusefilter-edit-builder-vars-page-last-edit-age": "마지막 문서 편집 이후의 시간 (단위: 초)",
 	"abusefilter-edit-builder-vars-movedfrom-id": "이동 전 문서의 ID",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "이동 전 문서의 이름공간",
 	"abusefilter-edit-builder-vars-movedfrom-title": "이동 전의 제목",
