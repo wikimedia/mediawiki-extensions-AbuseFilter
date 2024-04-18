@@ -50,7 +50,8 @@
 			"Zanhsieh",
 			"Zhxy 519",
 			"捍粵者",
-			"逆襲的天邪鬼"
+			"逆襲的天邪鬼",
+			"Cookai1205"
 		]
 	},
 	"abusefilter-desc": "自動條件判定編輯行為",
@@ -416,7 +417,7 @@
 	"abusefilter-edit-builder-vars-summary": "編輯摘要/原因",
 	"abusefilter-edit-builder-vars-page-id": "頁面 ID",
 	"abusefilter-edit-builder-vars-page-ns": "頁面命名空間",
-	"abusefilter-edit-builder-vars-page-title": "頁面標題 (不含命名空間)",
+	"abusefilter-edit-builder-vars-page-title": "頁面標題（不含命名空間）",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "完整頁面標題",
 	"abusefilter-edit-builder-vars-page-age": "頁面年齡（以秒為單位）",
 	"abusefilter-edit-builder-vars-movedfrom-id": "移動來源頁面的頁面 ID",
@@ -432,6 +433,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "使用者編輯次數",
 	"abusefilter-edit-builder-vars-user-age": "使用者帳號年齡",
 	"abusefilter-edit-builder-vars-user-name": "使用者帳號名稱",
+	"abusefilter-edit-builder-vars-user-type": "使用者帳號類型",
 	"abusefilter-edit-builder-vars-user-groups": "使用者所在群組（包括隱藏群組）",
 	"abusefilter-edit-builder-vars-user-rights": "使用者擁有的權限",
 	"abusefilter-edit-builder-vars-user-blocked": "使用者是否被封鎖",
