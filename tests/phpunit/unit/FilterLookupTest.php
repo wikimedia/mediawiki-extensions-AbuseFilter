@@ -21,6 +21,7 @@ use MediaWikiUnitTestCase;
 use stdClass;
 use WANObjectCache;
 use Wikimedia\Rdbms\DBConnRef;
+use Wikimedia\Rdbms\FakeResultWrapper;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
@@ -83,19 +84,17 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		$db->method( 'select' )->willReturnCallback(
 			static function ( $table, $_, $where ) use ( $filterRows, $actionRows ) {
 				$tables = (array)$table;
+				$ret = [];
 				if ( in_array( 'abuse_filter_action', $tables ) ) {
-					$ret = [];
 					foreach ( $actionRows as $row ) {
 						if ( $row->afa_filter === $where['afa_filter'] ) {
 							$ret[] = $row;
 						}
 					}
-					return $ret;
 				} elseif ( array_intersect( $tables, [ 'abuse_filter', 'abuse_filter_history' ] ) ) {
-					return $filterRows;
-				} else {
-					return [];
+					$ret = $filterRows;
 				}
+				return new FakeResultWrapper( $ret );
 			}
 		);
 		return $db;
@@ -301,7 +300,11 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		$db = $this->createMock( DBConnRef::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		// Should be called twice: once for the filter, once for the actions
-		$db->expects( $this->exactly( 2 ) )->method( 'select' )->willReturnOnConsecutiveCalls( [ $row ], [] );
+		$db->expects( $this->exactly( 2 ) )->method( 'select' )
+			->willReturnOnConsecutiveCalls(
+				new FakeResultWrapper( [ $row ] ),
+				new FakeResultWrapper( [] )
+			);
 		$filterLookup = $this->getLookup( $db, 'foobar', null, $isCentral );
 
 		// WAN cache is only used for global filters
@@ -325,7 +328,12 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		// 4 calls: row, actions, row, actions
 		$db->expects( $this->exactly( 4 ) )
 			->method( 'select' )
-			->willReturnOnConsecutiveCalls( [ $row ], [], [ $row ], [] );
+			->willReturnOnConsecutiveCalls(
+				new FakeResultWrapper( [ $row ] ),
+				new FakeResultWrapper( [] ),
+				new FakeResultWrapper( [ $row ] ),
+				new FakeResultWrapper( [] )
+			);
 		$cache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
 		$filterLookup = $this->getLookup( $db, 'foobar', $cache );
 
