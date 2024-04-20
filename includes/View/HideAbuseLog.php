@@ -158,12 +158,12 @@ class HideAbuseLog extends AbuseFilterView {
 			return [ 'abusefilter-log-hide-no-change' ];
 		}
 
-		$dbw->update(
-			'abuse_filter_log',
-			[ 'afl_deleted' => $newValue ],
-			[ 'afl_id' => $actualIDs ],
-			__METHOD__
-		);
+		$dbw->newUpdateQueryBuilder()
+			->update( 'abuse_filter_log' )
+			->set( [ 'afl_deleted' => $newValue ] )
+			->where( [ 'afl_id' => $actualIDs ] )
+			->caller( __METHOD__ )
+			->execute();
 
 		// Log in a DeferredUpdates to avoid potential flood
 		DeferredUpdates::addCallableUpdate( function () use ( $fields, $actualIDs ) {

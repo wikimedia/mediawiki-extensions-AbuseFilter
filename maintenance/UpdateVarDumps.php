@@ -240,12 +240,12 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			}
 
 			$storedID = $this->varBlobStore->storeVarDump( $vars );
-			$this->dbw->update(
-				'abuse_filter_log',
-				[ 'afl_var_dump' => $storedID ],
-				[ 'afl_id' => $row->afl_id ],
-				__METHOD__
-			);
+			$this->dbw->newUpdateQueryBuilder()
+				->update( 'abuse_filter_log' )
+				->set( [ 'afl_var_dump' => $storedID ] )
+				->where( [ 'afl_id' => $row->afl_id ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
 		$rebuilt = $brokenRows->numRows() - $deleted;
 		return [ 'rebuilt' => $rebuilt, 'deleted' => $deleted ];
@@ -343,12 +343,12 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$holder = is_array( $stored ) ? VariableHolder::newFromArray( $stored ) : $stored;
 				// Note: this will upgrade to the new JSON format, so we use tt:
 				$newDump = $this->varBlobStore->storeVarDump( $holder );
-				$this->dbw->update(
-					'abuse_filter_log',
-					[ 'afl_var_dump' => $newDump ],
-					[ 'afl_id' => $row->afl_id ],
-					__METHOD__
-				);
+				$this->dbw->newUpdateQueryBuilder()
+					->update( 'abuse_filter_log' )
+					->set( [ 'afl_var_dump' => $newDump ] )
+					->where( [ 'afl_id' => $row->afl_id ] )
+					->caller( __METHOD__ )
+					->execute();
 			}
 		}
 		return [ 'change' => $changeRows, 'truncated' => $truncatedDumps ];
@@ -576,15 +576,15 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				$newFlags[] = 'external';
 			}
 
-			$this->dbw->update(
-				'text',
-				[
+			$this->dbw->newUpdateQueryBuilder()
+				->update( 'text' )
+				->set( [
 					'old_text' => $toStore,
 					'old_flags' => implode( ',', $newFlags )
-				],
-				[ 'old_id' => $row->old_id ],
-				__METHOD__
-			);
+				] )
+				->where( [ 'old_id' => $row->old_id ] )
+				->caller( __METHOD__ )
+				->execute();
 		}
 		if ( $this->printOrphanedFile !== null && $orphaned ) {
 			file_put_contents( $this->printOrphanedFile, implode( ', ', $orphaned ) . "\n", FILE_APPEND );
@@ -670,21 +670,23 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$numRows = 0;
 		do {
 			$this->maybePrintProgress( $prevID );
-			$args = [
-				'abuse_filter_log',
-				[ "afl_var_dump = $newIdSQL" ],
-				[
-					"afl_id > $prevID",
-					"afl_id <= $curID",
-					'afl_var_dump ' . $this->dbr->buildLike( 'stored-text:', $this->dbr->anyString() )
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afl_id ASC' ]
+			$table = 'abuse_filter_log';
+			$var = "afl_var_dump = $newIdSQL";
+			$conds = [
+				"afl_id > $prevID",
+				"afl_id <= $curID",
+				'afl_var_dump ' . $this->dbr->buildLike( 'stored-text:', $this->dbr->anyString() )
 			];
+			$options = [ 'ORDER BY' => 'afl_id ASC' ];
 			if ( $this->dryRun ) {
-				$numRows += $this->dbr->selectRowCount( ...$args );
+				$numRows += $this->dbr->selectRowCount( $table, $var, $conds, __METHOD__, $options );
 			} else {
-				$this->dbw->update( ...$args );
+				$this->dbw->newUpdateQueryBuilder()
+					->update( $table )
+					->set( $var )
+					->where( $conds )
+					->caller( __METHOD__ )
+					->execute();
 				$numRows += $this->dbw->affectedRows();
 				$this->waitForReplication();
 			}
