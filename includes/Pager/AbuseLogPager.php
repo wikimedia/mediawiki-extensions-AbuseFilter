@@ -350,6 +350,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				'afl_user_text',
 				'afl_action',
 				'afl_actions',
+				'afl_var_dump',
 				'afl_timestamp',
 				'afl_namespace',
 				'afl_title',
