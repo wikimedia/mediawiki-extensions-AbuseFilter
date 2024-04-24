@@ -159,6 +159,7 @@
 	"abusefilter-edit-throttle-count": "Broja akcija za dozvolu:",
 	"abusefilter-edit-throttle-period": "Vremenski period (u sekundama):",
 	"abusefilter-edit-throttle-groups": "Grupa ukočena kod:",
+	"abusefilter-throttle-ip": "IP-adresa",
 	"abusefilter-edit-warn-message": "Sistemska poruka koja se koristi za upozorenje:",
 	"abusefilter-edit-warn-other": "ostale poruke",
 	"abusefilter-edit-warn-other-label": "Naslov stranice ostalih poruka:\n:''(bez MediaWiki prefiksa)''",
