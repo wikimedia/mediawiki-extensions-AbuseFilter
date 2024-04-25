@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"David1010",
-			"Narazeni"
+			"Narazeni",
+			"Matma Rex"
 		]
 	},
 	"abusefilter-desc": "ასა-გასას ირზენს რედაქტირაფაშის გჷმირინუას ევრისტიკული ტკიბირეფი",
@@ -98,9 +99,9 @@
 	"abusefilter-status-global": "გლობალური",
 	"abusefilter-list-options": "პარამეტრეფიშ გორუა",
 	"abusefilter-list-options-deleted": "ლასირი ტკიბირეფი:",
-	"abusefilter-list-options-deleted-only": "ქაძირეთ ხვალე ლასირი ტკიბირეფი",
+	"abusefilter-list-options-deleted-only": "Show only deleted filters",
 	"abusefilter-list-options-deleted-hide": "დატობინეთ ლასირი ტკიბირეფი",
-	"abusefilter-list-options-deleted-show": "ქაძირეთ ხვალე ლასირი ტკიბირეფი",
+	"abusefilter-list-options-deleted-show": "Include deleted filters",
 	"abusefilter-list-options-scope": "ტკიბირეფიშ ძირაფა:",
 	"abusefilter-list-options-scope-local": "ხვალე აბანობური წესეფი",
 	"abusefilter-list-options-scope-global": "ხვალე გლობალური წესეფი",
