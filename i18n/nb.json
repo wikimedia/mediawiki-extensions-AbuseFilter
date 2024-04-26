@@ -393,6 +393,7 @@
 	"abusefilter-edit-builder-vars-page-title": "Sidetittel (uten navnerom)",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "Full sidetittel",
 	"abusefilter-edit-builder-vars-page-age": "Sidealder (i sekunder)",
+	"abusefilter-edit-builder-vars-page-last-edit-age": "Tid siden forrige redigering på siden (i antall sekunder)",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Side-ID til kildeside ved flytting",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Navnerom til målside ved flytting",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Tittel til kildeside ved flytting",
