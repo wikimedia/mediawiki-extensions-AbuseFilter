@@ -179,7 +179,12 @@ class RunVariableGenerator extends VariableGenerator {
 			// a hook parameter
 			$update = null;
 		}
-		$this->addEditVars( $page, $this->user, true, $update );
+
+		if ( $update ) {
+			$this->addEditVarsFromUpdate( $update, $this->user );
+		} else {
+			$this->addEditVars( $page, $this->user );
+		}
 
 		return $this->vars;
 	}

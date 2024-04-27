@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\ExternalLinks\ExternalLinksLookup;
 use MediaWiki\ExternalLinks\LinkFilter;
 use MediaWiki\Language\Language;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Parser\ParserFactory;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Permissions\PermissionManager;
@@ -276,7 +277,7 @@ class LazyVariableComputer {
 				self::$profilingExtraTime += ( microtime( true ) - $startTime );
 				break;
 			case 'links-from-database':
-				/** @var WikiPage $article */
+				/** @var PageIdentity $article */
 				$article = $parameters['article'];
 				$this->logger->debug( 'Loading old_links from DB' );
 				$result = $this->getLinksFromDB( $article );
@@ -493,11 +494,11 @@ class LazyVariableComputer {
 	}
 
 	/**
-	 * @param WikiPage $article
+	 * @param PageIdentity $page
 	 * @return array
 	 */
-	private function getLinksFromDB( WikiPage $article ) {
-		$id = $article->getId();
+	private function getLinksFromDB( PageIdentity $page ): array {
+		$id = $page->getId();
 		if ( !$id ) {
 			return [];
 		}
