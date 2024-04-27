@@ -206,10 +206,10 @@ class VariableGenerator {
 			[ 'diff-var' => 'edit_diff_pst', 'line-prefix' => '+' ] );
 
 		// Links
-		$this->vars->setLazyLoadVar( 'added_links', 'link-diff-added',
-			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
-		$this->vars->setLazyLoadVar( 'removed_links', 'link-diff-removed',
-			[ 'oldlink-var' => 'old_links', 'newlink-var' => 'all_links' ] );
+		$this->vars->setLazyLoadVar( 'added_links', 'array-diff',
+			[ 'base-var' => 'all_links', 'minus-var' => 'old_links' ] );
+		$this->vars->setLazyLoadVar( 'removed_links', 'array-diff',
+			[ 'base-var' => 'old_links', 'minus-var' => 'all_links' ] );
 
 		// Text
 		$this->vars->setLazyLoadVar( 'new_text', 'strip-html',
