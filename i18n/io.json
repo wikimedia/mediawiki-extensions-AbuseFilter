@@ -65,6 +65,7 @@
 	"abusefilter-edit-notes": "Noti:",
 	"abusefilter-edit-lastmod-text": "$1 da $2",
 	"abusefilter-edit-action-rangeblock": "Blokusar la serio di IP-adresi de ube l'uzero originis",
+	"abusefilter-throttle-site": "Omna sito*",
 	"abusefilter-edit-warn-other": "Altra mesajo",
 	"abusefilter-edit-warn-actions": "Agadi:",
 	"abusefilter-edit-done-subtitle": "La filtrilo redaktesas",
