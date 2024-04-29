@@ -12,8 +12,10 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use UnexpectedValueException;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IMaintainableDatabase;
 use Wikimedia\Rdbms\IResultWrapper;
+use Wikimedia\Rdbms\LikeValue;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -102,12 +104,11 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$this->dbw = $this->getDB( DB_PRIMARY );
 
 		// Control batching with the primary key to keep the queries performant and allow gaps
-		$this->allRowsCount = (int)$this->dbr->selectField(
-			'abuse_filter_log',
-			'MAX(afl_id)',
-			[],
-			__METHOD__
-		);
+		$this->allRowsCount = (int)$this->dbr->newSelectQueryBuilder()
+			->select( 'MAX(afl_id)' )
+			->from( 'abuse_filter_log' )
+			->caller( __METHOD__ )
+			->fetchField();
 
 		if ( $this->allRowsCount === 0 ) {
 			$this->output( "...the abuse_filter_log table is empty.\n" );
@@ -145,17 +146,17 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$deleted = $rebuilt = 0;
 		do {
 			$this->maybePrintProgress( $prevID );
-			$brokenRows = $this->dbr->select(
-				'abuse_filter_log',
-				'*',
-				[
+			$brokenRows = $this->dbr->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'abuse_filter_log' )
+				->where( [
 					'afl_var_dump' => '',
-					"afl_id > $prevID",
-					"afl_id <= $curID"
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afl_id ASC' ]
-			);
+					$this->dbr->expr( 'afl_id', '>', $prevID ),
+					$this->dbr->expr( 'afl_id', '<=', $curID ),
+				] )
+				->orderBy( 'afl_id' )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 			$prevID = $curID;
 			$curID += $batchSize;
 
@@ -195,13 +196,13 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 				// right before the correct one, so their afl_id should only differ by 1, but let's
 				// play safe and only assume it's greater. Note that the two entries are guaranteed
 				// to have the same timestamp.
-				$findRow[] = 'afl_id > ' . $this->dbr->addQuotes( $row->afl_id );
-				$saneDuplicate = $this->dbr->selectRow(
-					'abuse_filter_log',
-					'1',
-					$findRow,
-					__METHOD__
-				);
+				$findRow[] = $this->dbr->expr( 'afl_id', '>', $row->afl_id );
+				$saneDuplicate = $this->dbr->newSelectQueryBuilder()
+					->select( '1' )
+					->from( 'abuse_filter_log' )
+					->where( $findRow )
+					->caller( __METHOD__ )
+					->fetchRow();
 
 				if ( $saneDuplicate ) {
 					// Just delete the row!
@@ -264,24 +265,24 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 		$changeRows = $truncatedDumps = 0;
 		do {
 			$this->maybePrintProgress( $prevID );
-			$res = $this->dbr->select(
-				'abuse_filter_log',
-				[ 'afl_id', 'afl_var_dump' ],
-				[
-					'afl_var_dump NOT ' . $this->dbr->buildLike(
+			$res = $this->dbr->newSelectQueryBuilder()
+				->select( [ 'afl_id', 'afl_var_dump' ] )
+				->from( 'abuse_filter_log' )
+				->where( [
+					$this->dbr->expr( 'afl_var_dump', IExpression::NOT_LIKE, new LikeValue(
 						'stored-text:',
 						$this->dbr->anyString()
-					),
-					'afl_var_dump NOT ' . $this->dbr->buildLike(
+					) ),
+					$this->dbr->expr( 'afl_var_dump', IExpression::NOT_LIKE, new LikeValue(
 						'tt:',
 						$this->dbr->anyString()
-					),
-					"afl_id > $prevID",
-					"afl_id <= $curID"
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afl_id ASC' ]
-			);
+					) ),
+					$this->dbr->expr( 'afl_id', '>', $prevID ),
+					$this->dbr->expr( 'afl_id', '<=', $curID ),
+				] )
+				->orderBy( 'afl_id' )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			$prevID = $curID;
 			$curID += $batchSize;
@@ -481,22 +482,23 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$this->dbr->addQuotes( '' )
 		) );
 
-		$dumpLike = $this->dbr->buildLike( 'stored-text:', $this->dbr->anyString() );
+		$dumpLike = new LikeValue( 'stored-text:', $this->dbr->anyString() );
 		$esAccess = MediaWikiServices::getInstance()->getExternalStoreAccess();
 		do {
 			$this->maybePrintProgress( $prevID );
-			$res = $this->dbr->select(
-				[ 'text', 'abuse_filter_log' ],
-				[ 'old_id', 'old_text', 'old_flags' ],
-				[
-					"afl_var_dump $dumpLike",
-					"afl_id > $prevID",
-					"afl_id <= $curID"
-				],
-				__METHOD__,
-				[ 'DISTINCT', 'ORDER BY' => 'old_id ASC' ],
-				[ 'abuse_filter_log' => [ 'JOIN', "old_id = $idSQL" ] ]
-			);
+			$res = $this->dbr->newSelectQueryBuilder()
+				->select( [ 'old_id', 'old_text', 'old_flags' ] )
+				->distinct()
+				->from( 'text' )
+				->join( 'abuse_filter_log', null, "old_id = $idSQL" )
+				->where( [
+					$this->dbr->expr( 'afl_var_dump', IExpression::LIKE, $dumpLike ),
+					$this->dbr->expr( 'afl_id', '>', $prevID ),
+					$this->dbr->expr( 'afl_id', '<=', $curID ),
+				] )
+				->orderBy( 'old_id' )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			$prevID = $curID;
 			$curID += $batchSize;
@@ -673,13 +675,18 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			$table = 'abuse_filter_log';
 			$var = "afl_var_dump = $newIdSQL";
 			$conds = [
-				"afl_id > $prevID",
-				"afl_id <= $curID",
-				'afl_var_dump ' . $this->dbr->buildLike( 'stored-text:', $this->dbr->anyString() )
+				$this->dbr->expr( 'afl_id', '>', $prevID ),
+				$this->dbr->expr( 'afl_id', '<=', $curID ),
+				$this->dbr->expr( 'afl_var_dump', IExpression::LIKE,
+					new LikeValue( 'stored-text:', $this->dbr->anyString() ) ),
 			];
 			$options = [ 'ORDER BY' => 'afl_id ASC' ];
 			if ( $this->dryRun ) {
-				$numRows += $this->dbr->selectRowCount( $table, $var, $conds, __METHOD__, $options );
+				$numRows += $this->dbr->newSelectQueryBuilder()
+					->from( $table )
+					->where( $conds )
+					->caller( __METHOD__ )
+					->fetchRowCount();
 			} else {
 				$this->dbw->newUpdateQueryBuilder()
 					->update( $table )

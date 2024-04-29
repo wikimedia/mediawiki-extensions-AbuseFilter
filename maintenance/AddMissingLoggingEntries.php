@@ -15,6 +15,8 @@ use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\User\User;
+use Wikimedia\Rdbms\IExpression;
+use Wikimedia\Rdbms\LikeValue;
 
 /**
  * @codeCoverageIgnore
@@ -47,25 +49,28 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 		$db = $this->getDB( DB_REPLICA, 'vslow' );
 
 		$logParamsConcat = $db->buildConcat( [ 'afh_id', $db->addQuotes( "\n" ) ] );
-		$legacyParamsLike = $db->buildLike( $logParamsConcat, $db->anyString() );
+		$legacyParamsLike = new LikeValue( $logParamsConcat, $db->anyString() );
 		// Non-legacy entries are a serialized array with 'newId' and 'historyId' keys
-		$newLogParamsLike = $db->buildLike( $db->anyString(), 'historyId', $db->anyString() );
+		$newLogParamsLike = new LikeValue( $db->anyString(), 'historyId', $db->anyString() );
 		$actorQuery = AbuseFilterServices::getActorMigration()->getJoin( 'afh_user' );
 		// Find all entries in abuse_filter_history without logging entry of same timestamp
-		$afhResult = $db->select(
-			[ 'abuse_filter_history', 'logging' ] + $actorQuery['tables'],
-			[ 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_deleted' ] + $actorQuery['fields'],
-			[
-				'log_id IS NULL',
-				"NOT log_params $newLogParamsLike"
-			],
-			__METHOD__,
-			[],
-			[ 'logging' => [
-				'LEFT JOIN',
-				"afh_timestamp = log_timestamp AND log_params $legacyParamsLike AND log_type = 'abusefilter'"
-			] ] + $actorQuery['joins']
-		);
+		$afhResult = $db->newSelectQueryBuilder()
+			->select( [ 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_deleted' ] )
+			->fields( $actorQuery['fields'] )
+			->from( 'abuse_filter_history' )
+			->leftJoin( 'logging', null, [
+				'afh_timestamp = log_timestamp',
+				$db->expr( 'log_params', IExpression::LIKE, $legacyParamsLike ),
+				'log_type' => 'abusefilter',
+			] )
+			->tables( $actorQuery['tables'] )
+			->where( [
+				'log_id' => null,
+				$db->expr( 'log_params', IExpression::NOT_LIKE, $newLogParamsLike ),
+			] )
+			->joinConds( $actorQuery['joins'] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
 
 		// Because the timestamp matches aren't exact (sometimes a couple of
 		// seconds off), we need to check all our results and ignore those that
@@ -80,12 +85,12 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 			return !$dryRun;
 		}
 
-		$logResult = $this->getDB( DB_REPLICA )->selectFieldValues(
-			'logging',
-			'log_params',
-			[ 'log_type' => 'abusefilter', 'log_params' => $logParams ],
-			__METHOD__
-		);
+		$logResult = $this->getDB( DB_REPLICA )->newSelectQueryBuilder()
+			->select( 'log_params' )
+			->from( 'logging' )
+			->where( [ 'log_type' => 'abusefilter', 'log_params' => $logParams ] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
 
 		foreach ( $logResult as $params ) {
 			// id . "\n" . filter

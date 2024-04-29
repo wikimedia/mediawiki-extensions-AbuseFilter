@@ -59,13 +59,14 @@ class SearchFilters extends Maintenance {
 		$pattern = $dbr->addQuotes( $this->getOption( 'pattern' ) );
 
 		if ( $dbr->tableExists( 'abuse_filter' ) ) {
-			$rows = $dbr->select(
-				'abuse_filter',
-				[ 'dbname' => 'DATABASE()', 'af_id' ],
-				[
+			$rows = $dbr->newSelectQueryBuilder()
+				->select( [ 'dbname' => 'DATABASE()', 'af_id' ] )
+				->from( 'abuse_filter' )
+				->where( [
 					"af_pattern RLIKE $pattern"
-				]
-			);
+				] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 
 			foreach ( $rows as $row ) {
 				$this->output( $row->dbname . "\t" . $row->af_id . "\n" );

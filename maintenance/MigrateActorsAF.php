@@ -178,12 +178,12 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 				->execute();
 			$countActors += $dbw->affectedRows();
 
-			$res = $dbw->select(
-				'actor',
-				[ 'actor_id', 'actor_name' ],
-				[ 'actor_name' => array_map( 'strval', array_keys( $needActors ) ) ],
-				__METHOD__
-			);
+			$res = $dbw->newSelectQueryBuilder()
+				->select( [ 'actor_id', 'actor_name' ] )
+				->from( 'actor' )
+				->where( [ 'actor_name' => array_map( 'strval', array_keys( $needActors ) ) ] )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 			foreach ( $res as $row ) {
 				$needActors[$row->actor_name] = $row->actor_id;
 			}
@@ -238,19 +238,18 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 		$countErrors = 0;
 		while ( true ) {
 			// Fetch the rows needing update
-			$res = $dbw->select(
-				$table,
-				array_merge( $primaryKey, [ $userField, $nameField, 'actor_id' => $actorIdSubquery ] ),
-				[
+			$res = $dbw->newSelectQueryBuilder()
+				->select( $primaryKey )
+				->fields( [ $userField, $nameField, 'actor_id' => $actorIdSubquery ] )
+				->from( $table )
+				->where( [
 					$actorField => 0,
 					$next,
-				],
-				__METHOD__,
-				[
-					'ORDER BY' => $primaryKey,
-					'LIMIT' => $this->mBatchSize,
-				]
-			);
+				] )
+				->orderBy( $primaryKey )
+				->limit( $this->mBatchSize )
+				->caller( __METHOD__ )
+				->fetchResultSet();
 			if ( !$res->numRows() ) {
 				break;
 			}
