@@ -102,12 +102,12 @@ class CheckMatch extends ApiBase {
 			$varGenerator = $this->afVariableGeneratorFactory->newRCGenerator( $rc, $this->getUser() );
 			$vars = $varGenerator->getVars();
 		} elseif ( $params['logid'] ) {
-			$row = $this->getDB()->selectRow(
-				'abuse_filter_log',
-				'*',
-				[ 'afl_id' => $params['logid'] ],
-				__METHOD__
-			);
+			$row = $this->getDB()->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'abuse_filter_log' )
+				->where( [ 'afl_id' => $params['logid'] ] )
+				->caller( __METHOD__ )
+				->fetchRow();
 
 			if ( !$row ) {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );

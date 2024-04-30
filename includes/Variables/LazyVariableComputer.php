@@ -36,6 +36,7 @@ use Wikimedia\Diff\UnifiedDiffFormatter;
 use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 use WikiPage;
 
 /**
@@ -528,24 +529,23 @@ class LazyVariableComputer {
 				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
 				$revQuery = $this->revisionStore->getQueryInfo();
-				$revAuthors = $dbr->selectFieldValues(
-					$revQuery['tables'],
-					$revQuery['fields']['rev_user_text'],
-					[
+				$revAuthors = $dbr->newSelectQueryBuilder()
+					->tables( $revQuery['tables'] )
+					->field( $revQuery['fields']['rev_user_text'] )
+					->where( [
 						'rev_page' => $title->getArticleID(),
 						// TODO Should deleted names be counted in the 10 authors? If yes, this check should
 						// be moved inside the foreach
 						'rev_deleted' => 0
-					],
-					$fname,
+					] )
+					->caller( $fname )
 					// Some pages have < 10 authors but many revisions (e.g. bot pages)
-					[ 'ORDER BY' => 'rev_timestamp DESC, rev_id DESC',
-						'LIMIT' => 100,
-						// Force index per T116557
-						'USE INDEX' => [ 'revision' => 'rev_page_timestamp' ],
-					],
-					$revQuery['joins']
-				);
+					->orderBy( [ 'rev_timestamp', 'rev_id' ], SelectQueryBuilder::SORT_DESC )
+					->limit( 100 )
+					// Force index per T116557
+					->useIndex( [ 'revision' => 'rev_page_timestamp' ] )
+					->joinConds( $revQuery['joins'] )
+					->fetchFieldValues();
 				// Get the last 10 distinct authors within this set of edits
 				$users = [];
 				foreach ( $revAuthors as $author ) {

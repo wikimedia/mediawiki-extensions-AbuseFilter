@@ -452,13 +452,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$dbr = $this->lbFactory->getReplicaDatabase();
 		if ( $this->mSearchPeriodStart ) {
-			$conds[] = 'afl_timestamp >= ' .
-				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mSearchPeriodStart ) ) );
+			$conds[] = $dbr->expr( 'afl_timestamp', '>=',
+				$dbr->timestamp( strtotime( $this->mSearchPeriodStart ) ) );
 		}
 
 		if ( $this->mSearchPeriodEnd ) {
-			$conds[] = 'afl_timestamp <= ' .
-				$dbr->addQuotes( $dbr->timestamp( strtotime( $this->mSearchPeriodEnd ) ) );
+			$conds[] = $dbr->expr( 'afl_timestamp', '<=',
+				$dbr->timestamp( strtotime( $this->mSearchPeriodEnd ) ) );
 		}
 
 		if ( $this->mSearchWiki ) {
@@ -471,12 +471,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$groupFilters = [];
 		if ( $this->mSearchGroup ) {
-			$groupFilters = $dbr->selectFieldValues(
-				'abuse_filter',
-				'af_id',
-				[ 'af_group' => $this->mSearchGroup ],
-				__METHOD__
-			);
+			$groupFilters = $dbr->newSelectQueryBuilder()
+				->select( 'af_id' )
+				->from( 'abuse_filter' )
+				->where( [ 'af_group' => $this->mSearchGroup ] )
+				->caller( __METHOD__ )
+				->fetchFieldValues();
 		}
 
 		$searchFilters = [];
@@ -704,14 +704,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		] = $pager->getQueryInfo();
 
 		$dbr = $this->lbFactory->getReplicaDatabase();
-		$row = $dbr->selectRow(
-			$tables,
-			$fields,
-			[ 'afl_id' => $id ],
-			__METHOD__,
-			[],
-			$join_conds
-		);
+		$row = $dbr->newSelectQueryBuilder()
+			->tables( $tables )
+			->fields( $fields )
+			->where( [ 'afl_id' => $id ] )
+			->caller( __METHOD__ )
+			->joinConds( $join_conds )
+			->fetchRow();
 
 		$error = null;
 		if ( !$row ) {
@@ -837,15 +836,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getReplicaDatabase();
 
-		$row = $dbr->selectRow(
-			[ 'abuse_filter_log', 'abuse_filter' ],
-			[ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip',
-				'af_id', 'af_public_comments', 'af_hidden' ],
-			[ 'afl_id' => $id ],
-			__METHOD__,
-			[],
-			[ 'abuse_filter' => [ 'LEFT JOIN', [ 'af_id=afl_filter_id', 'afl_global' => 0 ] ] ]
-		);
+		$row = $dbr->newSelectQueryBuilder()
+			->select( [ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip',
+				'af_id', 'af_public_comments', 'af_hidden' ] )
+			->from( 'abuse_filter_log' )
+			->leftJoin( 'abuse_filter', null, [ 'af_id=afl_filter_id', 'afl_global' => 0 ] )
+			->where( [ 'afl_id' => $id ] )
+			->caller( __METHOD__ )
+			->fetchRow();
 
 		$status = Status::newGood();
 		if ( !$row ) {

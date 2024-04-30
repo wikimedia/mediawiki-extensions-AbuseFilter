@@ -28,7 +28,10 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Specials\SpecialBlock;
 use OOUI;
 use UnexpectedValueException;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\LikeValue;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 use Xml;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
@@ -131,15 +134,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$history_id = $this->historyID;
 		if ( $this->historyID ) {
 			$dbr = $this->lbFactory->getReplicaDatabase();
-			$lastID = (int)$dbr->selectField(
-				'abuse_filter_history',
-				'afh_id',
-				[
+			$lastID = (int)$dbr->newSelectQueryBuilder()
+				->select( 'afh_id' )
+				->from( 'abuse_filter_history' )
+				->where( [
 					'afh_filter' => $filter,
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afh_id DESC' ]
-			);
+				] )
+				->orderBy( 'afh_id', SelectQueryBuilder::SORT_DESC )
+				->caller( __METHOD__ )
+				->fetchField();
 			// change $history_id to null if it's current version id
 			if ( $lastID === $this->historyID ) {
 				$history_id = null;
@@ -1080,15 +1083,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Find other messages.
 			$dbr = $this->lbFactory->getReplicaDatabase();
 			$pageTitlePrefix = "Abusefilter-$action";
-			$titles = $dbr->selectFieldValues(
-				'page',
-				'page_title',
-				[
+			$titles = $dbr->newSelectQueryBuilder()
+				->select( 'page_title' )
+				->from( 'page' )
+				->where( [
 					'page_namespace' => 8,
-					'page_title LIKE ' . $dbr->addQuotes( $pageTitlePrefix . '%' )
-				],
-				__METHOD__
-			);
+					$dbr->expr( 'page_title', IExpression::LIKE, new LikeValue( $pageTitlePrefix, $dbr->anyString() ) )
+				] )
+				->caller( __METHOD__ )
+				->fetchFieldValues();
 
 			$lang = $this->getLanguage();
 			foreach ( $titles as $title ) {

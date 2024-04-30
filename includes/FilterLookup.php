@@ -225,12 +225,12 @@ class FilterLookup implements IDBAccessObject {
 	 * @return array
 	 */
 	private function getActionsFromDB( IReadableDatabase $db, string $fname, int $id ): array {
-		$res = $db->select(
-			'abuse_filter_action',
-			[ 'afa_consequence', 'afa_parameters' ],
-			[ 'afa_filter' => $id ],
-			$fname
-		);
+		$res = $db->newSelectQueryBuilder()
+			->select( [ 'afa_consequence', 'afa_parameters' ] )
+			->from( 'abuse_filter_action' )
+			->where( [ 'afa_filter' => $id ] )
+			->caller( $fname )
+			->fetchResultSet();
 
 		$actions = [];
 		foreach ( $res as $actionRow ) {
@@ -330,12 +330,12 @@ class FilterLookup implements IDBAccessObject {
 	public function getFirstFilterVersionID( int $filterID ): int {
 		if ( !isset( $this->firstVersionCache[$filterID] ) ) {
 			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
-			$historyID = $dbr->selectField(
-				'abuse_filter_history',
-				'MIN(afh_id)',
-				[ 'afh_filter' => $filterID ],
-				__METHOD__
-			);
+			$historyID = $dbr->newSelectQueryBuilder()
+				->select( 'MIN(afh_id)' )
+				->from( 'abuse_filter_history' )
+				->where( [ 'afh_filter' => $filterID ] )
+				->caller( __METHOD__ )
+				->fetchField();
 			if ( $historyID === false ) {
 				throw new FilterNotFoundException( $filterID, false );
 			}

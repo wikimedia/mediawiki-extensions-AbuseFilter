@@ -12,6 +12,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -580,19 +581,18 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
 		$logAction = $logType === 'newusers' ? 'create2' : $logType;
-		$id = $dbw->selectField(
-			'logging',
-			'log_id',
-			[
+		$id = $dbw->newSelectQueryBuilder()
+			->select( 'log_id' )
+			->from( 'logging' )
+			->where( [
 				'log_namespace' => $title->getNamespace(),
 				'log_title' => $title->getDBkey(),
 				'log_type' => $logType,
 				'log_action' => $logAction
-			],
-			__METHOD__,
-			[],
-			[ 'ORDER BY' => 'log_id DESC' ]
-		);
+			] )
+			->orderBy( 'log_id', SelectQueryBuilder::SORT_DESC )
+			->caller( __METHOD__ )
+			->fetchField();
 		if ( !$id ) {
 			$this->fail( 'Could not find the action in the logging table.' );
 		}
@@ -733,16 +733,16 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			}
 			$title = Title::newFromTextThrow( $actionParams['target'] );
 
-			$row = $this->getDb()->selectRow(
-				'abuse_filter_log',
-				'*',
-				[
+			$row = $this->getDb()->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'abuse_filter_log' )
+				->where( [
 					'afl_filter_id' => $filter,
 					'afl_global' => 0,
-				],
-				__METHOD__,
-				[ 'ORDER BY' => 'afl_id DESC' ]
-			);
+				] )
+				->orderBy( 'afl_id', SelectQueryBuilder::SORT_DESC )
+				->caller( __METHOD__ )
+				->fetchRow();
 			$this->assertNotFalse( $row );
 
 			$dumpStr = FormatJson::encode( $row );
@@ -1215,13 +1215,12 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$this->doAction( $actionParams );
 
 		// We just take a dump from a single filters, as they're all identical for the same action
-		$dumpID = $this->getDb()->selectField(
-			'abuse_filter_log',
-			'afl_var_dump',
-			'',
-			__METHOD__,
-			[ 'ORDER BY' => 'afl_timestamp DESC' ]
-		);
+		$dumpID = $this->getDb()->newSelectQueryBuilder()
+			->select( 'afl_var_dump' )
+			->from( 'abuse_filter_log' )
+			->orderBy( 'afl_timestamp', SelectQueryBuilder::SORT_DESC )
+			->caller( __METHOD__ )
+			->fetchField();
 
 		$vars = AbuseFilterServices::getVariablesBlobStore()->loadVarDump( $dumpID )->getVars();
 
@@ -1497,12 +1496,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		);
 
 		// Check that the hits were logged on the "external" DB
-		$loggedFilters = $this->getDb()->selectFieldValues(
-			'abuse_filter_log',
-			'afl_filter_id',
-			[ 'afl_wiki IS NOT NULL' ],
-			__METHOD__
-		);
+		$dbr = $this->getDb();
+		$loggedFilters = $dbr->newSelectQueryBuilder()
+			->select( 'afl_filter_id' )
+			->from( 'abuse_filter_log' )
+			->where( $dbr->expr( 'afl_wiki', '!=', null ) )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
 
 		// Use assertEquals because selectFieldValues returns an array of strings
 		$this->assertEquals(
@@ -1607,13 +1607,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		// Check the database for the filter hit
 		// We don't have an easy way to retrieve the afl_id for this relevant hit,
 		// so instead find the latest row for this filter
-		$filterHit = $this->getDb()->selectRow(
-			'abuse_filter_log',
-			'*',
-			[ 'afl_filter_id' => 24 ],
-			__METHOD__,
-			[ 'ORDER BY' => 'afl_id DESC' ]
-		);
+		$filterHit = $this->getDb()->newSelectQueryBuilder()
+			->select( '*' )
+			->from( 'abuse_filter_log' )
+			->where( [ 'afl_filter_id' => 24 ] )
+			->orderBy( 'afl_id', SelectQueryBuilder::SORT_DESC )
+			->caller( __METHOD__ )
+			->fetchRow();
 
 		// Helpful for debugging
 		$filterHitStr = FormatJson::encode( $filterHit );
