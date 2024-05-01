@@ -120,12 +120,6 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 					$this->assertStringContainsString( $needle, $actual, 'Checking new_html' );
 				}
 			} else {
-				if ( is_string( $actual ) ) {
-					// TODO: remove and fix expected values once
-					// https://gerrit.wikimedia.org/r/c/mediawiki/core/+/987191/ has been merged
-					$actual = str_replace( "\t", '    ', $actual );
-				}
-
 				$this->assertSame( $value, $actual, $var );
 			}
 		}
@@ -262,7 +256,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		yield 'content model change to wikitext' => [
 			'expected' => [
 				'action' => 'edit',
-				'old_wikitext' => "{\n    \"key\": \"value\"\n}",
+				'old_wikitext' => "{\n\t\"key\": \"value\"\n}",
 				'old_content_model' => 'json',
 				'new_wikitext' => 'new test https://en.wikipedia.org',
 				'new_content_model' => 'wikitext',
