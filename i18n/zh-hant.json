@@ -445,7 +445,7 @@
 	"abusefilter-edit-builder-vars-added-links": "所有編輯後加入的外部連結",
 	"abusefilter-edit-builder-vars-removed-links": "所有編輯後移除的外部連結",
 	"abusefilter-edit-builder-vars-old-wikitext": "在編輯前舊頁面上的 wikitext",
-	"abusefilter-edit-builder-vars-new-wikitext": "在編後新頁面上的 wikitext",
+	"abusefilter-edit-builder-vars-new-wikitext": "在編輯後新頁面上的 wikitext",
 	"abusefilter-edit-builder-vars-new-pst": "新頁面 Wikitext，於儲存前轉換",
 	"abusefilter-edit-builder-vars-diff-pst": "編輯所做的變更 Unified，儲存前轉換",
 	"abusefilter-edit-builder-vars-addedlines-pst": "編輯加入的行，儲存前轉換",

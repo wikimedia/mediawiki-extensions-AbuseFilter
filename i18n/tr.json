@@ -29,7 +29,8 @@
 			"ToprakM",
 			"Uncitoyen",
 			"Vito Genovese",
-			"Ömer Berkay"
+			"Ömer Berkay",
+			"RuzDD"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -155,6 +156,7 @@
 	"logentry-abusefilterprivatedetails-access": "$1, $3 için özel ayrıntılar {{GENDER:$2|erişildi}}",
 	"logentry-rights-blockautopromote": "$1, otomatik tanıtım {{GENDER:$4|$3}} bir süre için $5 {{GENDER:$2|engellendi}}",
 	"logentry-rights-restoreautopromote": "$1, {{GENDER:$4|$3}} otomatik terfi yeteneğini {{GENDER:$2|geri getirdi}}",
+	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} $4 eklemeye çalışarak bir engellenmiş alan adının $3 üzerine çarpmasına sebep oldu",
 	"abusefilterprivatedetails-log-name": "AbuseFilter özel ayrıntılara erişim günlüğü",
 	"log-name-abusefilterblockeddomainhit": "Engellenmiş alan adı ekleme günlüğü",
 	"abusefilter-list": "Tüm süzgeçler",
