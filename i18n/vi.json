@@ -392,6 +392,7 @@
 	"abusefilter-edit-builder-vars-page-title": "Tựa đề trang (không có không gian tên)",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "Tựa đề trang đầy đủ",
 	"abusefilter-edit-builder-vars-page-age": "Tuổi trang (giây)",
+	"abusefilter-edit-builder-vars-page-last-edit-age": "Thời gian kể từ lần sửa đổi cuối cùng của trang (trong vài giây)",
 	"abusefilter-edit-builder-vars-movedfrom-id": "Mã số của trang định di chuyển",
 	"abusefilter-edit-builder-vars-movedfrom-ns": "Không gian tên của trang định di chuyển",
 	"abusefilter-edit-builder-vars-movedfrom-title": "Tựa đề của trang định di chuyển",
