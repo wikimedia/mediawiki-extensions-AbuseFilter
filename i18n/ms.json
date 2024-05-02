@@ -10,7 +10,8 @@
 			"Kurniasan",
 			"Matma Rex",
 			"Tofeiku",
-			"Zamwan"
+			"Zamwan",
+			"Hakimi97"
 		]
 	},
 	"abusefilter-desc": "Mengenakan heuristik automatik pada suntingan.",
@@ -330,7 +331,7 @@
 	"abusefilter-history-filter": "Hukum penapis",
 	"abusefilter-history-comments": "Ulasan",
 	"abusefilter-history-actions": "Tindakan",
-	"abusefilter-history-backedit": "Kembali ke editor penapis",
+	"abusefilter-history-backedit": "Alat sunting penapis",
 	"abusefilter-history-deleted": "Dihapuskan",
 	"abusefilter-history-filterid": "Penapis",
 	"abusefilter-history-select-legend": "Carian spesifik",
