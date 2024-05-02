@@ -11,7 +11,6 @@ use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\UpdateQueryBuilder;
@@ -37,19 +36,19 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param DBConnRef|null $localDB
+	 * @param IDatabase|null $localDB
 	 * @param IDatabase|null $centralDB
 	 * @param RevisionLookup|null $revLookup
 	 * @return EditRevUpdater
 	 */
 	private function getUpdater(
-		DBConnRef $localDB = null,
+		IDatabase $localDB = null,
 		IDatabase $centralDB = null,
 		RevisionLookup $revLookup = null
 	): EditRevUpdater {
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getPrimaryDatabase' )
-			->willReturn( $localDB ?? $this->createMock( DBConnRef::class ) );
+			->willReturn( $localDB ?? $this->createMock( IDatabase::class ) );
 
 		$dbManager = $this->createMock( CentralDBManager::class );
 		$dbManager->method( 'getConnection' )
@@ -113,7 +112,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 	public function testUpdateRev_success( array $ids ) {
 		$titleValue = new TitleValue( NS_PROJECT, 'EditRevUpdater' );
 		[ $page, $rev ] = $this->getPageAndRev( $titleValue );
-		$localDB = $this->createMock( DBConnRef::class );
+		$localDB = $this->createMock( IDatabase::class );
 		$localDB->expects( $ids['local'] ? $this->once() : $this->never() )->method( 'update' );
 		$localDB->expects( $ids['local'] ? $this->once() : $this->never() )->method( 'newUpdateQueryBuilder' )
 			->willReturnCallback( static function () use ( $localDB ) {
@@ -146,7 +145,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		$goodIDs = [ 'local' => [ 1, 2 ], 'global' => [] ];
 		$badIDs = [ 'local' => [], 'global' => [ 1, 2 ] ];
 		[ $page, $rev ] = $this->getPageAndRev( $goodTitleValue );
-		$localDB = $this->createMock( DBConnRef::class );
+		$localDB = $this->createMock( IDatabase::class );
 		$localDB->expects( $this->once() )->method( 'newUpdateQueryBuilder' )
 			->willReturnCallback( static function () use ( $localDB ) {
 				return new UpdateQueryBuilder( $localDB );

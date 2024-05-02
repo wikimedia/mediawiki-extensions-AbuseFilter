@@ -20,8 +20,8 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWikiUnitTestCase;
 use stdClass;
 use WANObjectCache;
-use Wikimedia\Rdbms\DBConnRef;
 use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
@@ -36,21 +36,21 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	use AbuseFilterRowsAndFiltersTestTrait;
 
 	/**
-	 * @param DBConnRef|null $db
+	 * @param IDatabase|null $db
 	 * @param string|false $centralDB
 	 * @param WANObjectCache|null $cache
 	 * @param bool $filterIsCentral
 	 * @return FilterLookup
 	 */
 	private function getLookup(
-		DBConnRef $db = null,
+		IDatabase $db = null,
 		$centralDB = false,
 		WANObjectCache $cache = null,
 		bool $filterIsCentral = false
 	): FilterLookup {
 		$lb = $this->createMock( ILoadBalancer::class );
 		$lb->method( 'getConnection' )
-			->willReturn( $db ?? $this->createMock( DBConnRef::class ) );
+			->willReturn( $db ?? $this->createMock( IDatabase::class ) );
 
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getMainLB' )->willReturnCallback(
@@ -72,10 +72,10 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	 * Hacky helper to set up the database
 	 * @param stdClass[] $filterRows abuse_filter or abuse_filter_history
 	 * @param stdClass[] $actionRows
-	 * @return DBConnRef
+	 * @return IDatabase
 	 */
-	private function getDBWithMockRows( array $filterRows, array $actionRows = [] ): DBConnRef {
-		$db = $this->createMock( DBConnRef::class );
+	private function getDBWithMockRows( array $filterRows, array $actionRows = [] ): IDatabase {
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$db->method( 'selectRow' )->willReturnCallback( static function ( $table ) use ( $filterRows ) {
 			$tables = (array)$table;
@@ -194,7 +194,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetFilterVersion_notfound() {
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'selectRow' )->willReturn( false );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$filterLookup = $this->getLookup( $db );
@@ -211,7 +211,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetLastHistoryVersion_notfound() {
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'selectRow' )->willReturn( false );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$filterLookup = $this->getLookup( $db );
@@ -228,7 +228,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetClosestVersion_notfound() {
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'selectRow' )->willReturn( false );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$filterLookup = $this->getLookup( $db );
@@ -238,7 +238,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 	public function testGetFirstFilterVersionID() {
 		$versionID = 1234;
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'selectField' )->willReturn( $versionID );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$filterLookup = $this->getLookup( $db );
@@ -246,7 +246,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetFirstFilterVersionID_notfound() {
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'selectField' )->willReturn( false );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$filterLookup = $this->getLookup( $db );
@@ -256,7 +256,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 	public function testLocalCache() {
 		$row = $this->getRowsAndFilters()['no actions']['row'];
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$db->expects( $this->once() )->method( 'selectRow' )->willReturn( $row );
 		$filterLookup = $this->getLookup( $db );
@@ -269,7 +269,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 	public function testClearLocalCache() {
 		$row = $this->getRowsAndFilters()['no actions']['row'];
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$db->expects( $this->exactly( 2 ) )->method( 'selectRow' )->willReturn( $row );
 		$filterLookup = $this->getLookup( $db );
@@ -297,7 +297,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	 */
 	public function testGlobalCache( bool $isCentral ) {
 		$row = $this->getRowsAndFilters()['no actions']['row'];
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		// Should be called twice: once for the filter, once for the actions
 		$db->expects( $this->exactly( 2 ) )->method( 'select' )
@@ -323,7 +323,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 	public function testFilterLookupClearNetworkCache() {
 		$row = $this->getRowsAndFilters()['no actions']['row'];
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		// 4 calls: row, actions, row, actions
 		$db->expects( $this->exactly( 4 ) )
@@ -395,7 +395,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testGetFilter_notfound() {
-		$db = $this->createMock( DBConnRef::class );
+		$db = $this->createMock( IDatabase::class );
 		$db->method( 'newSelectQueryBuilder' )->willReturnCallback( static fn () => new SelectQueryBuilder( $db ) );
 		$db->method( 'selectRow' )->willReturn( false );
 		$filterLookup = $this->getLookup( $db );
