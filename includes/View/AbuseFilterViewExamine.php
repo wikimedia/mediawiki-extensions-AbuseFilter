@@ -245,18 +245,18 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$performer = $this->getAuthority();
 		$out = $this->getOutput();
 
-		$row = $dbr->selectRow(
-			'abuse_filter_log',
-			[
+		$row = $dbr->newSelectQueryBuilder()
+			->select( [
 				'afl_deleted',
 				'afl_var_dump',
 				'afl_rev_id',
 				'afl_filter_id',
 				'afl_global'
-			],
-			[ 'afl_id' => $logid ],
-			__METHOD__
-		);
+			] )
+			->from( 'abuse_filter_log' )
+			->where( [ 'afl_id' => $logid ] )
+			->caller( __METHOD__ )
+			->fetchRow();
 
 		if ( !$row ) {
 			$out->addWikiMsg( 'abusefilter-examine-notfound' );

@@ -24,6 +24,7 @@ use PermissionsError;
 use UnexpectedValueException;
 use UserBlockedError;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\SelectQueryBuilder;
 use Xml;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
@@ -266,15 +267,15 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$conds = [ 'afl_filter_id' => $filter, 'afl_global' => 0 ];
 
 		if ( $periodStart !== null ) {
-			$conds[] = 'afl_timestamp >= ' . $dbr->addQuotes( $dbr->timestamp( $periodStart ) );
+			$conds[] = $dbr->expr( 'afl_timestamp', '>=', $dbr->timestamp( $periodStart ) );
 		}
 		if ( $periodEnd !== null ) {
-			$conds[] = 'afl_timestamp <= ' . $dbr->addQuotes( $dbr->timestamp( $periodEnd ) );
+			$conds[] = $dbr->expr( 'afl_timestamp', '<=', $dbr->timestamp( $periodEnd ) );
 		}
 
 		// Don't revert if there was no action, or the action was global
-		$conds[] = 'afl_actions != ' . $dbr->addQuotes( '' );
-		$conds[] = 'afl_wiki IS NULL';
+		$conds[] = $dbr->expr( 'afl_actions', '!=', '' );
+		$conds['afl_wiki'] = null;
 
 		$selectFields = [
 			'afl_id',
@@ -288,13 +289,13 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			'afl_namespace',
 			'afl_title',
 		];
-		$res = $dbr->select(
-			'abuse_filter_log',
-			$selectFields,
-			$conds,
-			__METHOD__,
-			[ 'ORDER BY' => 'afl_timestamp DESC' ]
-		);
+		$res = $dbr->newSelectQueryBuilder()
+			->select( $selectFields )
+			->from( 'abuse_filter_log' )
+			->where( $conds )
+			->caller( __METHOD__ )
+			->orderBy( 'afl_timestamp', SelectQueryBuilder::SORT_DESC )
+			->fetchResultSet();
 
 		// TODO: get the following from ConsequencesRegistry or sth else
 		static $reversibleActions = [ 'block', 'blockautopromote', 'degroup' ];

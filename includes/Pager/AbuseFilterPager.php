@@ -152,7 +152,14 @@ class AbuseFilterPager extends TablePager {
 			$this->buildQueryInfo( $offset, $limit, $order );
 
 		unset( $options['LIMIT'] );
-		$res = $this->mDb->select( $tables, $fields, $conds, $fname, $options, $join_conds );
+		$res = $this->mDb->newSelectQueryBuilder()
+			->tables( $tables )
+			->fields( $fields )
+			->conds( $conds )
+			->caller( $fname )
+			->options( $options )
+			->joinConds( $join_conds )
+			->fetchResultSet();
 
 		$filtered = [];
 		foreach ( $res as $row ) {

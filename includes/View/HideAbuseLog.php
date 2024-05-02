@@ -148,12 +148,15 @@ class HideAbuseLog extends AbuseFilterView {
 		// Determine which rows actually have to be changed
 		$dbw = $this->lbFactory->getPrimaryDatabase();
 		$newValue = $fields['showorhide'] === 'hide' ? 1 : 0;
-		$actualIDs = $dbw->selectFieldValues(
-			'abuse_filter_log',
-			'afl_id',
-			[ 'afl_id' => $this->hideIDs, "afl_deleted != $newValue" ],
-			__METHOD__
-		);
+		$actualIDs = $dbw->newSelectQueryBuilder()
+			->select( 'afl_id' )
+			->from( 'abuse_filter_log' )
+			->where( [
+				'afl_id' => $this->hideIDs,
+				$dbw->expr( 'afl_deleted', '!=', $newValue ),
+			] )
+			->caller( __METHOD__ )
+			->fetchFieldValues();
 		if ( !count( $actualIDs ) ) {
 			return [ 'abusefilter-log-hide-no-change' ];
 		}
