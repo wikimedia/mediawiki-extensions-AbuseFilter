@@ -106,9 +106,7 @@ class BlockedDomainFilter {
 		$blockedDomainsAdded = array_keys( $blockedDomainsAdded );
 		$error = Message::newFromSpecifier( 'abusefilter-blocked-domains-attempted' );
 		$error->params( Message::listParam( $blockedDomainsAdded ) );
-
-		$status = Status::newFatal( $error, 'blockeddomain', 'blockeddomain' );
-		$status->value['blockeddomain'] = [ 'disallow' ];
+		$status->fatal( $error );
 		$this->logFilterHit(
 			$user,
 			$title,
