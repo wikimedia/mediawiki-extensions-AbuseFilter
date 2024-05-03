@@ -198,6 +198,15 @@ class LazyVariableComputer {
 					}
 				}
 				break;
+			case 'array-diff':
+				$baseVar = $parameters['base-var'];
+				$minusVar = $parameters['minus-var'];
+
+				$baseArray = $getVarCB( $baseVar )->toNative();
+				$minusArray = $getVarCB( $minusVar )->toNative();
+
+				$result = array_diff( $baseArray, $minusArray );
+				break;
 			case 'links-from-wikitext':
 				// This should ONLY be used when sharing a parse operation with the edit.
 
@@ -270,21 +279,6 @@ class LazyVariableComputer {
 				$article = $parameters['article'];
 				$this->logger->debug( 'Loading old_links from DB' );
 				$result = $this->getLinksFromDB( $article );
-				break;
-			case 'link-diff-added':
-			case 'link-diff-removed':
-				$oldLinkVar = $parameters['oldlink-var'];
-				$newLinkVar = $parameters['newlink-var'];
-
-				$oldLinks = $getVarCB( $oldLinkVar )->toNative();
-				$newLinks = $getVarCB( $newLinkVar )->toNative();
-
-				if ( $varMethod === 'link-diff-added' ) {
-					$result = array_diff( $newLinks, $oldLinks );
-				}
-				if ( $varMethod === 'link-diff-removed' ) {
-					$result = array_diff( $oldLinks, $newLinks );
-				}
 				break;
 			case 'parse-wikitext':
 				// Should ONLY be used when sharing a parse operation with the edit.
