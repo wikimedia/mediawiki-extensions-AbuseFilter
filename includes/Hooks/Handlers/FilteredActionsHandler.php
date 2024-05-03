@@ -159,22 +159,6 @@ class FilteredActionsHandler implements
 		}
 		$blockedDomainFilterResult = $this->blockedDomainFilter->filter( $vars, $user, $title );
 		if ( !$blockedDomainFilterResult->isOK() ) {
-			// Produce a useful error message for API edits
-			// FIXME: This is not useful, but it was added by accident :(
-			foreach ( $blockedDomainFilterResult->getMessages() as $msg ) {
-				if ( $msg->getKey() === 'abusefilter-blocked-domains-attempted' ) {
-					$blockedDomainFilterResult->replaceMessage(
-						'abusefilter-blocked-domains-attempted',
-						ApiMessage::create( $msg, 'abusefilter-disallowed', [
-							'abusefilter' => [
-								'id' => 'blockeddomain',
-								'description' => 'blockeddomain',
-								'actions' => 'disallow',
-							],
-						] )
-					);
-				}
-			}
 			$status->merge( $blockedDomainFilterResult );
 		}
 	}
