@@ -349,7 +349,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	public function attemptRevert() {
 		$filter = $this->filter;
 		$token = $this->getRequest()->getVal( 'wpEditToken' );
-		if ( !$this->getUser()->matchEditToken( $token, "abusefilter-revert-$filter" ) ) {
+		if ( !$this->getCsrfTokenSet()->matchToken( $token, "abusefilter-revert-$filter" ) ) {
 			return false;
 		}
 

@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\EditBox;
 
+use Html;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Output\OutputPage;
@@ -137,7 +138,7 @@ abstract class EditBoxBuilder {
 			);
 		}
 
-		$dropdownList = Xml::listDropdownOptionsOoui( $dropdownOptions );
+		$dropdownList = Html::listDropdownOptionsOoui( $dropdownOptions );
 		return new DropdownInputWidget( [
 			'name' => 'wpFilterBuilder',
 			'inputId' => 'wpFilterBuilder',

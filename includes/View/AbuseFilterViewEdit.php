@@ -25,7 +25,6 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Specials\SpecialBlock;
 use OOUI;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\IExpression;
@@ -202,8 +201,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$tokenFilter = $filter === null ? 'new' : (string)$filter;
 		$editToken = $request->getVal( 'wpEditToken' );
-		$tokenMatches = $user->matchEditToken(
-			$editToken, [ 'abusefilter', $tokenFilter ], $request );
+		$tokenMatches = $this->getCsrfTokenSet()->matchToken( $editToken, [ 'abusefilter', $tokenFilter ] );
 
 		if ( !$tokenMatches ) {
 			// Token invalid or expired while the page was open, warn to retry
@@ -357,7 +355,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$options += [ $this->specsFormatter->nameGroup( $group ) => $group ];
 			}
 
-			$options = Xml::listDropdownOptionsOoui( $options );
+			$options = Html::listDropdownOptionsOoui( $options );
 			$groupSelector->setOptions( $options );
 
 			$fields['abusefilter-edit-group'] = $groupSelector;
@@ -575,7 +573,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				] );
 			$form .= Html::hidden(
 				'wpEditToken',
-				$user->getEditToken( [ 'abusefilter', $urlFilter ] )
+				$this->getCsrfTokenSet()->getToken( [ 'abusefilter', $urlFilter ] )->toString()
 			);
 		}
 
@@ -934,7 +932,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$config->get( 'AbuseFilterBlockDuration' );
 					$defaultUserDuration = $config->get( 'AbuseFilterBlockDuration' );
 				}
-				$suggestedBlocks = SpecialBlock::getSuggestedDurations( null, false );
+				$suggestedBlocks = $this->getLanguage()->getBlockDurations( false );
 				$suggestedBlocks = self::normalizeBlocks( $suggestedBlocks );
 
 				$output = '';
@@ -955,7 +953,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 				$output .= $checkbox;
 
-				$suggestedBlocks = Xml::listDropdownOptionsOoui( $suggestedBlocks );
+				$suggestedBlocks = Html::listDropdownOptionsOoui( $suggestedBlocks );
 
 				$anonDuration =
 					new OOUI\DropdownInputWidget( [
@@ -1108,7 +1106,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		// abusefilter-edit-warn-other, abusefilter-edit-disallow-other
 		$options[ $this->msg( "abusefilter-edit-$formId-other" )->text() ] = 'other';
 
-		$options = Xml::listDropdownOptionsOoui( $options );
+		$options = Html::listDropdownOptionsOoui( $options );
 		$existingSelector->setOptions( $options );
 
 		$existingSelector =

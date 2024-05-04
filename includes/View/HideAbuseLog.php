@@ -89,7 +89,7 @@ class HideAbuseLog extends AbuseFilterView {
 
 		$hideReasonsOther = $this->msg( 'revdelete-reasonotherlist' )->text();
 		$hideReasons = $this->msg( 'revdelete-reason-dropdown-suppress' )->inContentLanguage()->text();
-		$hideReasons = Xml::listDropdownOptions( $hideReasons, [ 'other' => $hideReasonsOther ] );
+		$hideReasons = Html::listDropdownOptions( $hideReasons, [ 'other' => $hideReasonsOther ] );
 
 		$formInfo = [
 			'showorhide' => [

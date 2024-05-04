@@ -218,7 +218,8 @@
 				"AbuseFilterFilterLookup",
 				"AbuseFilterPermissionManager",
 				"AbuseFilterVariablesBlobStore",
-				"AbuseFilterVariablesManager"
+				"AbuseFilterVariablesManager",
+				"UserFactory"
 			]
 		},
 		"abusefilters": {

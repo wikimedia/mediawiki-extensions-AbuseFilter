@@ -31,7 +31,7 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\IPUtils;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -60,6 +60,9 @@ class QueryAbuseLog extends ApiQueryBase {
 	/** @var VariablesManager */
 	private $afVariablesManager;
 
+	/** @var UserFactory */
+	private $userFactory;
+
 	/**
 	 * @param ApiQuery $query
 	 * @param string $moduleName
@@ -67,6 +70,7 @@ class QueryAbuseLog extends ApiQueryBase {
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param VariablesBlobStore $afVariablesBlobStore
 	 * @param VariablesManager $afVariablesManager
+	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
 		ApiQuery $query,
@@ -74,13 +78,15 @@ class QueryAbuseLog extends ApiQueryBase {
 		FilterLookup $afFilterLookup,
 		AbuseFilterPermissionManager $afPermManager,
 		VariablesBlobStore $afVariablesBlobStore,
-		VariablesManager $afVariablesManager
+		VariablesManager $afVariablesManager,
+		UserFactory $userFactory
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
 		$this->afFilterLookup = $afFilterLookup;
 		$this->afPermManager = $afPermManager;
 		$this->afVariablesBlobStore = $afVariablesBlobStore;
 		$this->afVariablesManager = $afVariablesManager;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
@@ -195,7 +201,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
 		if ( isset( $params['user'] ) ) {
-			$u = User::newFromName( $params['user'] );
+			$u = $this->userFactory->newFromName( $params['user'] );
 			if ( $u ) {
 				// Username normalisation
 				$params['user'] = $u->getName();
