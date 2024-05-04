@@ -390,6 +390,9 @@
 				"UserIdentityUtils"
 			]
 		},
+		"ConfirmEdit": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ConfirmEditHandler"
+		},
 		"Echo": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler"
 		},
@@ -420,6 +423,7 @@
 		"CheckUserInsertChangesRow": "CheckUser",
 		"CheckUserInsertPrivateEventRow": "CheckUser",
 		"CheckUserInsertLogEventRow": "CheckUser",
+		"ConfirmEditTriggersCaptcha": "ConfirmEdit",
 		"UserMergeAccountFields": "UserMerge",
 		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
