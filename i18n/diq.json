@@ -320,7 +320,6 @@
 	"abusefilter-edit-builder-op-bool-not": "Ne (!)",
 	"abusefilter-edit-builder-op-bool-and": "U (&)",
 	"abusefilter-edit-builder-op-bool-or": "Ya zi (|)",
-	"abusefilter-edit-builder-op-bool-xor": "XOR (^)",
 	"abusefilter-edit-builder-group-misc": "Binan",
 	"abusefilter-edit-builder-misc-in": "rêza de esto (in)",
 	"abusefilter-edit-builder-misc-contains": "Rêza çepe rêza raşte ihtıwa kena (contains)",

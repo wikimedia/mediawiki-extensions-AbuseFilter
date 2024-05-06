@@ -171,7 +171,7 @@
 	"abusefilter-edit-builder-op-bool-not": "ليس (!)",
 	"abusefilter-edit-builder-op-bool-and": "و (&)",
 	"abusefilter-edit-builder-op-bool-or": "أو (|)",
-	"abusefilter-edit-builder-op-bool-xor": "حصرى أو (^)",
+	"abusefilter-edit-builder-op-bool-xor": "حصرى أو ($1)",
 	"abusefilter-edit-builder-group-misc": "منوعات",
 	"abusefilter-edit-builder-misc-in": "موجود فى سلسله (in)",
 	"abusefilter-edit-builder-misc-contains": "السلسله اليسرى تحتوى على السلسله اليمنى (contains)",

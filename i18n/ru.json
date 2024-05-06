@@ -385,7 +385,7 @@
 	"abusefilter-edit-builder-op-bool-not": "НЕ (!)",
 	"abusefilter-edit-builder-op-bool-and": "И (&)",
 	"abusefilter-edit-builder-op-bool-or": "ИЛИ (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Исключающее ИЛИ (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Исключающее ИЛИ ($1)",
 	"abusefilter-edit-builder-group-misc": "Разные",
 	"abusefilter-edit-builder-misc-in": "Содержится в строке (in)",
 	"abusefilter-edit-builder-misc-contains": "Левая строка содержит правую строку (contains)",

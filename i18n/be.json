@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Artsiom91",
 			"Kareyac",
 			"LexArt",
@@ -243,7 +244,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Не (!)",
 	"abusefilter-edit-builder-op-bool-and": "І (&)",
 	"abusefilter-edit-builder-op-bool-or": "Або (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Выключаючае АБО (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Выключаючае АБО ($1)",
 	"abusefilter-edit-builder-group-misc": "Розныя",
 	"abusefilter-edit-builder-misc-in": "знаходзіцца ў радку (in)",
 	"abusefilter-edit-builder-misc-contains": "Левы радок змяшчае правы радок (contains)",

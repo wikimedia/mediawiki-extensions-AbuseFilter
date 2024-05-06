@@ -350,7 +350,6 @@
 	"abusefilter-edit-builder-op-bool-not": "نقیض (!)",
 	"abusefilter-edit-builder-op-bool-and": "و (&)",
 	"abusefilter-edit-builder-op-bool-or": "یا (|)",
-	"abusefilter-edit-builder-op-bool-xor": "XOR (^)",
 	"abusefilter-edit-builder-group-misc": "متفرقه",
 	"abusefilter-edit-builder-misc-in": "موجود در یک رشته (in)",
 	"abusefilter-edit-builder-misc-contains": "رشته چپ شامل رشته راست (contains)",

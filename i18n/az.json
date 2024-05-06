@@ -257,7 +257,6 @@
 	"abusefilter-edit-builder-op-bool-not": "Qeyd (!)",
 	"abusefilter-edit-builder-op-bool-and": "Və (&)",
 	"abusefilter-edit-builder-op-bool-or": "Və ya (|)",
-	"abusefilter-edit-builder-op-bool-xor": "XOR (^)",
 	"abusefilter-edit-builder-group-misc": "Müxtəlif",
 	"abusefilter-edit-builder-misc-in": "Sətirdə var (in)",
 	"abusefilter-edit-builder-misc-like": "Şablona müvafiq (like)",

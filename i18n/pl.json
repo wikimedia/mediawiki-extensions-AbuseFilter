@@ -349,7 +349,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Negacja (!)",
 	"abusefilter-edit-builder-op-bool-and": "Koniunkcja (&)",
 	"abusefilter-edit-builder-op-bool-or": "Alternatywa (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Alternatywa wykluczająca (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Alternatywa wykluczająca ($1)",
 	"abusefilter-edit-builder-group-misc": "Różne",
 	"abusefilter-edit-builder-misc-in": "zawiera ciąg znaków (in)",
 	"abusefilter-edit-builder-misc-contains": "Lewy ciąg znaków zawiera prawy (contains)",

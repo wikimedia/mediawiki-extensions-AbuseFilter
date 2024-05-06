@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alexmar983",
+			"Amire80",
 			"Ankabel",
 			"ArTrix",
 			"Beta16",
@@ -339,7 +340,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Not logico (!)",
 	"abusefilter-edit-builder-op-bool-and": "And logico (&)",
 	"abusefilter-edit-builder-op-bool-or": "Or logico (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Or esclusivo (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Or esclusivo ($1)",
 	"abusefilter-edit-builder-group-misc": "Varie",
 	"abusefilter-edit-builder-misc-in": "contenuto nella stringa (in)",
 	"abusefilter-edit-builder-misc-contains": "La stringa di sinistra contiene quella di destra (contains)",

@@ -302,7 +302,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Не (!)",
 	"abusefilter-edit-builder-op-bool-and": "И (&)",
 	"abusefilter-edit-builder-op-bool-or": "Или (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Изключващо ИЛИ (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Изключващо ИЛИ ($1)",
 	"abusefilter-edit-builder-group-misc": "Разни",
 	"abusefilter-edit-builder-misc-in": "съдържа се в низа (in)",
 	"abusefilter-edit-builder-misc-contains": "Левият низ съдържа десния низ (contains)",

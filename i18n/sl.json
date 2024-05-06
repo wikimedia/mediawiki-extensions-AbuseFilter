@@ -321,7 +321,6 @@
 	"abusefilter-edit-builder-op-bool-not": "Ne (!)",
 	"abusefilter-edit-builder-op-bool-and": "In (&)",
 	"abusefilter-edit-builder-op-bool-or": "Ali (|)",
-	"abusefilter-edit-builder-op-bool-xor": "XOR (^)",
 	"abusefilter-edit-builder-group-misc": "Razno",
 	"abusefilter-edit-builder-misc-in": "vsebovano v nizu (in)",
 	"abusefilter-edit-builder-misc-contains": "Levi niz vsebuje desni niz (contains)",

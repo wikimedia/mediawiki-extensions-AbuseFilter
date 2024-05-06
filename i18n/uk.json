@@ -340,7 +340,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Не (!)",
 	"abusefilter-edit-builder-op-bool-and": "І (&)",
 	"abusefilter-edit-builder-op-bool-or": "Або (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Виключне АБО (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Виключне АБО ($1)",
 	"abusefilter-edit-builder-group-misc": "Різні",
 	"abusefilter-edit-builder-misc-in": "Міститься в рядку (in)",
 	"abusefilter-edit-builder-misc-contains": "Лівий рядок містить правий (contains)",

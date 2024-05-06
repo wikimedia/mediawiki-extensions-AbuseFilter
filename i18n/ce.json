@@ -315,7 +315,7 @@
 	"abusefilter-edit-builder-op-bool-not": "Дац (!)",
 	"abusefilter-edit-builder-op-bool-and": ", (&)",
 	"abusefilter-edit-builder-op-bool-or": "ЙА (|)",
-	"abusefilter-edit-builder-op-bool-xor": "Йукъарайохурш ЙА (^)",
+	"abusefilter-edit-builder-op-bool-xor": "Йукъарайохурш ЙА ($1)",
 	"abusefilter-edit-builder-group-misc": "Тайп-тайпанара",
 	"abusefilter-edit-builder-misc-in": "МогӀан (in) чохь йу",
 	"abusefilter-edit-builder-misc-contains": "Харцахьара могӀан чохь бу бакъахьара могӀа (contains)",

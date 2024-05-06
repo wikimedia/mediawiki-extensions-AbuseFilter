@@ -364,7 +364,7 @@
 	"abusefilter-edit-builder-op-bool-not": "非 (!)",
 	"abusefilter-edit-builder-op-bool-and": "且 (&)",
 	"abusefilter-edit-builder-op-bool-or": "或 (|)",
-	"abusefilter-edit-builder-op-bool-xor": "異或（^）",
+	"abusefilter-edit-builder-op-bool-xor": "異或（$1）",
 	"abusefilter-edit-builder-group-misc": "其他",
 	"abusefilter-edit-builder-misc-in": "於字串中 (in)",
 	"abusefilter-edit-builder-misc-contains": "左邊的字串含有右邊的字串 (contains)",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"H78c67c",
 			"Hello903hello",
 			"Winston Sung",
@@ -210,7 +211,7 @@
 	"abusefilter-edit-builder-op-bool-not": "非/Not (!)",
 	"abusefilter-edit-builder-op-bool-and": "同/And (&)",
 	"abusefilter-edit-builder-op-bool-or": "或/Or (|)",
-	"abusefilter-edit-builder-op-bool-xor": "異/XOR (^)",
+	"abusefilter-edit-builder-op-bool-xor": "異/XOR ($1)",
 	"abusefilter-edit-builder-group-misc": "雜項",
 	"abusefilter-edit-builder-misc-in": "字串有 (in)",
 	"abusefilter-edit-builder-misc-contains": "左字串有右字串 (contains)",
