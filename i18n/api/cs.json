@@ -7,7 +7,8 @@
 			"Mormegil",
 			"Slepi",
 			"Jaroslav Cerny",
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Spotter"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Zkontrolovat, zda filtr zneužití odpovídá sadě proměnných, editaci nebo změně zaznamenané ve filtru.\n\nJe vyžadována právě jedna z následujících možností: vars, rcid nebo logid.",
@@ -27,6 +28,7 @@
 	"apihelp-abusefilterevalexpression-param-expression": "Výraz, který se má vyhodnotit.",
 	"apihelp-abusefilterevalexpression-param-prettyprint": "Zda má být výsledek pěkně vytištěn.",
 	"apihelp-abusefilterevalexpression-example-1": "Vyhodnotit jednoduchý výraz",
+	"apihelp-abusefilterevalexpression-example-2": "Vyhodnoťte jednoduchý výraz, formátování výsledku",
 	"apihelp-abusefilterunblockautopromote-description": "Odblokuje uživateli možnost získat automatické povýšení zablokovanou důsledkem filtru zneužití.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Jméno uživatele, jehož chcete odblokovat.",
 	"apihelp-abusefilterunblockautopromote-example-1": "Zrušit blokování automatického povýšení uživatele [[User:Example]]",
