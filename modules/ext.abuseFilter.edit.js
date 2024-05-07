@@ -478,7 +478,7 @@
 					// server, so this rewrite should suffice.
 					basePath = window.location.protocol + basePath;
 				}
-				ace.config.set( 'basePath', basePath + '/CodeEditor/modules/ace' );
+				ace.config.set( 'basePath', basePath + '/CodeEditor/modules/lib/ace' );
 
 				// Settings for Ace editor box
 				var readOnly = mw.config.get( 'aceConfig' ).aceReadOnly;
