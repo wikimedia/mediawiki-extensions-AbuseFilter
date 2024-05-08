@@ -25,7 +25,8 @@
 			"Teslaton",
 			"TheMatto58",
 			"Urbanecm",
-			"Vks"
+			"Vks",
+			"Spotter"
 		]
 	},
 	"abusefilter-desc": "Podrobuje editace automatickým heuristikám",
@@ -462,7 +463,7 @@
 	"abusefilter-history-filter": "Definice filtru",
 	"abusefilter-history-comments": "Komentáře",
 	"abusefilter-history-actions": "Opatření",
-	"abusefilter-history-backedit": "Zpět na editaci filtru",
+	"abusefilter-history-backedit": "Editor filtrů",
 	"abusefilter-history-deleted": "Smazaný",
 	"abusefilter-history-filterid": "Filtr",
 	"abusefilter-history-select-legend": "Upřesnit hledání",
@@ -575,7 +576,7 @@
 	"abusefilter-diff-info": "Základní informace",
 	"abusefilter-diff-pattern": "Podmínky filtru",
 	"abusefilter-diff-invalid": "Nepodařilo se načíst požadované verze",
-	"abusefilter-diff-backhistory": "Zpět na historii filtru",
+	"abusefilter-diff-backhistory": "Historie filtru",
 	"abusefilter-diff-prev": "Starší změna",
 	"abusefilter-diff-next": "Novější změna",
 	"abusefilter-import-intro": "Pomocí tohoto rozhraní můžete importovat filtry z jiných wiki.\nNa zdrojové wiki klikněte v editačním rozhraní na „{{int:abusefilter-edit-export}}“ v sekci „{{int:abusefilter-edit-tools}}“.\nZkopírujte si text, který se objeví v rámečku, vložte ho do tohoto formuláře a klikněte na „{{int:abusefilter-import-submit}}“.",
