@@ -349,7 +349,7 @@
 	"abusefilter-edit-builder-funcs-ip_in_range": "Проверка дали IP-адресата е во опсегот ($1)",
 	"abusefilter-edit-builder-funcs-ip_in_ranges": "Дали IP-адресата е во некој од опсезите? ($1)",
 	"abusefilter-edit-builder-funcs-contains-any": "Пребарај повеќе поднизи во низата во режимот ИЛИ ($1)",
-	"abusefilter-edit-builder-funcs-contains-all": "Пребарај повеќе поднизи во низата во режим И. ($1)",
+	"abusefilter-edit-builder-funcs-contains-all": "Пребарај повеќе поднизи во низата во режим И ($1)",
 	"abusefilter-edit-builder-funcs-equals-to-any": "Провери дали даден аргумент е еднаков (===) на некој од следниве аргументи ($1)",
 	"abusefilter-edit-builder-funcs-substr": "Подниза ($1)",
 	"abusefilter-edit-builder-funcs-strpos": "Позиција на поднизата во низата ($1)",
