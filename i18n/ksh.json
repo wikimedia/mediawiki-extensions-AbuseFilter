@@ -3,7 +3,8 @@
 		"authors": [
 			"Amire80",
 			"Matma Rex",
-			"Purodha"
+			"Purodha",
+			"DannyS712"
 		]
 	},
 	"abusefilter-desc": "Dä Meßbruchsfelter deit Änderunge aan Sigge met Heurestikke pröfe.",
@@ -371,7 +372,7 @@
 	"abusefilter-log-noresults": "Nix jefonge",
 	"abusefilter-diff-title": "De Ungerscheide zwesche de Versione",
 	"abusefilter-diff-item": "Jääjeschtand",
-	"abusefilter-diff-version": "Väsjohn {{GENDER:$3|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1\n",
+	"abusefilter-diff-version": "Väsjohn {{GENDER:$3|vum|vum|vun dämm Metmaacher|vum|vun dä}} $2 aam/öm $1",
 	"abusefilter-diff-info": "Jrundlääje Aanjabe",
 	"abusefilter-diff-pattern": "De Bedengunge vum Felter",
 	"abusefilter-diff-invalid": "Mer kunnte de jewönschte Versione nit fenge",

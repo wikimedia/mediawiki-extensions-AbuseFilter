@@ -14,7 +14,8 @@
 			"Matma Rex",
 			"Mirzali",
 			"Orbot707",
-			"Xoser"
+			"Xoser",
+			"GolyatGeri"
 		]
 	},
 	"abusefilter-desc": "Vurnayışa rê terzê otomatik vınakari dezge keno",
@@ -157,7 +158,7 @@
 	"abusefilter-enabled": "Feal",
 	"abusefilter-deleted": "Esteriya",
 	"abusefilter-disabled": "Astengın",
-	"abusefilter-throttled": "veng bırna",
+	"abusefilter-throttled": "Berz nisbiya takêşin",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|tay pêyo |tay pêyê }}",
 	"abusefilter-new": "Yew filitreyê newî viraze",
 	"abusefilter-import-button": "Parzûni azere kerê",
@@ -196,6 +197,7 @@
 	"abusefilter-reautoconfirm-notallowed": "desthelatiyê şıma çino şıma otomatik-tesdiqkerdış biyari.",
 	"abusefilter-reautoconfirm-done": "halê otomatik-tesdiqkerdışê hesabi tepiya ameyo",
 	"abusefilter-status": "$1 {{PLURAL:$1|karo|karanê}} peyin de, $2 (%$3) filtre $4 resa sinorê şerti u {{PRULAR:$5|rest limit|testê limita}} (%$6) kar yew filtreya aktif de hemcıt bı.",
+	"abusefilter-add": "Parzûnê tecizi debiyeno",
 	"abusefilter-edit": "Parzûnê tecizi vurniyeno",
 	"abusefilter-edit-subtitle": "Parzûnê $1 vurneno",
 	"abusefilter-edit-subtitle-new": "Parzûn vıraziyeno",
@@ -242,7 +244,7 @@
 	"abusefilter-edit-throttle-placeholder": "Pê AND ya tewr bıyayışi rê virgula u pê OR ya tewr bıyayışi re tek tek heti kerê",
 	"abusefilter-throttle-ip": "Adresa IPy",
 	"abusefilter-throttle-user": "Hesabê karberi",
-	"abusefilter-throttle-range": "/16 sope",
+	"abusefilter-throttle-range": "Mabênê IP",
 	"abusefilter-throttle-creationdate": "Tarixê hesab akerdışi",
 	"abusefilter-throttle-editcount": "hesabi bıvurne",
 	"abusefilter-throttle-site": "pela tame",

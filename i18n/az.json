@@ -12,7 +12,8 @@
 			"Vago",
 			"Vugar 1981",
 			"Wertuose",
-			"Şeyx Şamil"
+			"Şeyx Şamil",
+			"Nemoralis"
 		]
 	},
 	"abusefilter-desc": "Redaktələrə avtomatik evristikanı tətbiq edir",
@@ -204,6 +205,7 @@
 	"abusefilter-edit-subtitle-new": "Filtr yaradılır",
 	"abusefilter-edit-token-not-match": "Redaktə yadda saxlanılmadı! Lütfən, yenidən yadda saxlayın.",
 	"abusefilter-edit-oldwarning": "<strong>Siz bu filtrin köhnə versiyasını redaktə edirsiniz.\nGöstərilən statistikalar filtrin ən son versiyası üçündür.\nDəyişikliklərinizi yadda saxlasanız, redaktə etdiyiniz versiyadan sonra bütün dəyişikliklərin üzərinə yazacaqsınız.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrin tarixçəsinə qayıdın]].",
+	"abusefilter-edit-oldwarning-view": "<strong>Siz bu filtrin köhnə versiyasına baxırsınız.\nGöstərilən statistika filtrin ən son versiyası üçündür.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrin tarixçəsinə qayıdın]].",
 	"abusefilter-edit-status-label": "Statistika:",
 	"abusefilter-edit-status": "Bu süzgəc son $1 {{PLURAL:$1|fəaliyyətdən}} $2 ədədini tuta bilib ($3%).\nİşləmə müddəti ortalama $4 ms-dir və şərt limitinin $5 ədədini sərf edib.",
 	"abusefilter-edit-new": "Yeni süzgəc",
