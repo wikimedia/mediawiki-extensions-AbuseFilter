@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MessageLocalizer;
 use RequestContext;
@@ -17,14 +18,22 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	private $messageLocalizer;
 	/** @var UserGroupManager */
 	private $userGroupManager;
+	/** @var UserFactory */
+	private $userFactory;
 
 	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param UserGroupManager $userGroupManager
+	 * @param UserFactory $userFactory
 	 */
-	public function __construct( MessageLocalizer $messageLocalizer, UserGroupManager $userGroupManager ) {
+	public function __construct(
+		MessageLocalizer $messageLocalizer,
+		UserGroupManager $userGroupManager,
+		UserFactory $userFactory
+	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->userGroupManager = $userGroupManager;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
@@ -36,7 +45,8 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 		return new self(
 			// @todo Use a proper MessageLocalizer once available (T247127)
 			RequestContext::getMain(),
-			MediaWikiServices::getInstance()->getUserGroupManager()
+			MediaWikiServices::getInstance()->getUserGroupManager(),
+			MediaWikiServices::getInstance()->getUserFactory()
 		);
 	}
 
@@ -192,7 +202,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	 */
 	public function createAbuseFilterUser( DatabaseUpdater $updater ): bool {
 		$username = $this->messageLocalizer->msg( 'abusefilter-blocker' )->inContentLanguage()->text();
-		$user = User::newFromName( $username );
+		$user = $this->userFactory->newFromName( $username );
 
 		if ( $user && !$updater->updateRowExists( 'create abusefilter-blocker-user' ) ) {
 			$user = User::newSystemUser( $username, [ 'steal' => true ] );

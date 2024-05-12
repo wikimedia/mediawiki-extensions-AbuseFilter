@@ -118,8 +118,7 @@ return [
 	RuleCheckerFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): RuleCheckerFactory {
 		return new RuleCheckerFactory(
 			$services->getContentLanguage(),
-			// We could use $services here, but we need the fallback
-			ObjectCache::getLocalServerInstance( CACHE_HASH ),
+			$services->getObjectCacheFactory()->getLocalServerInstance( CACHE_HASH ),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),

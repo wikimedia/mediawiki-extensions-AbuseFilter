@@ -1,6 +1,7 @@
 <?php
 
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\SchemaChangesHandler;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 
 /**
@@ -15,7 +16,8 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 			SchemaChangesHandler::class,
 			new SchemaChangesHandler(
 				$this->createMock( MessageLocalizer::class ),
-				$this->createMock( UserGroupManager::class )
+				$this->createMock( UserGroupManager::class ),
+				$this->createMock( UserFactory::class )
 			)
 		);
 	}
@@ -25,7 +27,13 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		$noRowUpdater->method( 'updateRowExists' )->willReturn( false );
 		$invalidML = $this->createMock( MessageLocalizer::class );
 		$invalidML->method( 'msg' )->with( 'abusefilter-blocker' )->willReturn( $this->getMockMessage( '' ) );
-		$handler = new SchemaChangesHandler( $invalidML, $this->createNoOpMock( UserGroupManager::class ) );
+		$userFactory = $this->createMock( UserFactory::class );
+		$userFactory->method( 'newFromName' )->willReturn( null );
+		$handler = new SchemaChangesHandler(
+			$invalidML,
+			$this->createNoOpMock( UserGroupManager::class ),
+			$userFactory
+		);
 		$this->assertFalse( $handler->createAbuseFilterUser( $noRowUpdater ) );
 	}
 
@@ -34,7 +42,13 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		$rowExistsUpdater->method( 'updateRowExists' )->willReturn( true );
 		$validML = $this->createMock( MessageLocalizer::class );
 		$validML->method( 'msg' )->with( 'abusefilter-blocker' )->willReturn( $this->getMockMessage( 'Foo' ) );
-		$handler = new SchemaChangesHandler( $validML, $this->createNoOpMock( UserGroupManager::class ) );
+		$userFactory = $this->createMock( UserFactory::class );
+		$userFactory->method( 'newFromName' )->willReturn( $this->createMock( User::class ) );
+		$handler = new SchemaChangesHandler(
+			$validML,
+			$this->createNoOpMock( UserGroupManager::class ),
+			$userFactory
+		);
 		$this->assertFalse( $handler->createAbuseFilterUser( $rowExistsUpdater ) );
 	}
 
@@ -45,7 +59,9 @@ class SchemaChangesHandlerTest extends MediaWikiIntegrationTestCase {
 		$validML->method( 'msg' )->with( 'abusefilter-blocker' )->willReturn( $this->getMockMessage( 'Foo' ) );
 		$ugm = $this->createMock( UserGroupManager::class );
 		$ugm->expects( $this->once() )->method( 'addUserToGroup' );
-		$okHandler = new SchemaChangesHandler( $validML, $ugm );
+		$userFactory = $this->createMock( UserFactory::class );
+		$userFactory->method( 'newFromName' )->willReturn( $this->createMock( User::class ) );
+		$okHandler = new SchemaChangesHandler( $validML, $ugm, $userFactory );
 		$this->assertTrue( $okHandler->createAbuseFilterUser( $noRowUpdater ) );
 	}
 

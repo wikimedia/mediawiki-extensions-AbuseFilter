@@ -108,7 +108,7 @@ class RCVariableGenerator extends VariableGenerator {
 	private function addMoveVars(): self {
 		$userIdentity = $this->rc->getPerformerIdentity();
 
-		$oldTitle = $this->rc->getTitle();
+		$oldTitle = Title::castFromPageReference( $this->rc->getPage() ) ?: Title::makeTitle( NS_SPECIAL, 'BadTitle' );
 		$newTitle = Title::newFromText( $this->rc->getParam( '4::target' ) );
 
 		$this->addUserVars( $userIdentity, $this->rc )
@@ -141,7 +141,7 @@ class RCVariableGenerator extends VariableGenerator {
 				: 'createaccount'
 		);
 
-		$name = $this->rc->getTitle()->getText();
+		$name = Title::castFromPageReference( $this->rc->getPage() )->getText();
 		// Add user data if the account was created by a registered user
 		$userIdentity = $this->rc->getPerformerIdentity();
 		if ( $userIdentity->isRegistered() && $name !== $userIdentity->getName() ) {
@@ -165,7 +165,7 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addDeleteVars(): self {
-		$title = $this->rc->getTitle();
+		$title = Title::castFromPageReference( $this->rc->getPage() ) ?: Title::makeTitle( NS_SPECIAL, 'BadTitle' );
 		$userIdentity = $this->rc->getPerformerIdentity();
 
 		$this->addUserVars( $userIdentity, $this->rc )
@@ -183,7 +183,7 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addUploadVars(): self {
-		$title = $this->rc->getTitle();
+		$title = Title::castFromPageReference( $this->rc->getPage() ) ?: Title::makeTitle( NS_SPECIAL, 'BadTitle' );
 		$userIdentity = $this->rc->getPerformerIdentity();
 
 		$this->addUserVars( $userIdentity, $this->rc )
@@ -235,7 +235,7 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addEditVarsForRow(): self {
-		$title = $this->rc->getTitle();
+		$title = Title::castFromPageReference( $this->rc->getPage() ) ?: Title::makeTitle( NS_SPECIAL, 'BadTitle' );
 		$userIdentity = $this->rc->getPerformerIdentity();
 
 		$this->addUserVars( $userIdentity, $this->rc )

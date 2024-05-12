@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
+use Html;
 use HtmlArmor;
 use IContextSource;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -288,7 +289,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 
 		if ( $isListItem && !$this->hideEntries && $this->afPermissionManager->canHideAbuseLog( $performer ) ) {
 			// Checkbox for hiding multiple entries, single entries are handled above
-			$description = Xml::check( 'hideids[' . $row->afl_id . ']' ) . ' ' . $description;
+			$description = Html::check( 'hideids[' . $row->afl_id . ']' ) . ' ' . $description;
 		}
 
 		if ( $isListItem ) {
