@@ -875,25 +875,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @return string The HTML output
 	 */
 	private function buildPrivateDetailsTable( $row ) {
-		$output = Html::element(
-			'legend',
-			[],
-			$this->msg( 'abusefilter-log-details-privatedetails' )->text()
-		);
-
-		$header =
-			Html::element( 'th', [], $this->msg( 'abusefilter-log-details-var' )->text() ) .
-			Html::element( 'th', [], $this->msg( 'abusefilter-log-details-val' )->text() );
-
-		$output .=
-			Html::openElement( 'table',
-				[
-					'class' => 'wikitable mw-abuselog-private',
-					'style' => 'width: 80%;'
-				]
-			) .
-			Html::openElement( 'tbody' );
-		$output .= $header;
+		$output = '';
 
 		// Log ID
 		$linkRenderer = $this->getLinkRenderer();
@@ -903,12 +885,10 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-log-details-id' )->text()
 				) .
-				Html::openElement( 'td' ) .
-				$linkRenderer->makeKnownLink(
+				Html::rawElement( 'td', [], $linkRenderer->makeKnownLink(
 					$this->getPageTitle( $row->afl_id ),
 					$this->getLanguage()->formatNum( $row->afl_id )
-				) .
-				Html::closeElement( 'td' )
+				) )
 			);
 
 		// Timestamp
@@ -944,12 +924,10 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-list-id' )->text()
 				) .
-				Html::openElement( 'td' ) .
-				$linkRenderer->makeKnownLink(
+				Html::rawElement( 'td', [], $linkRenderer->makeKnownLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ),
 					$this->getLanguage()->formatNum( $row->af_id )
-				) .
-				Html::closeElement( 'td' )
+				) )
 			);
 
 		// Filter description
@@ -1007,9 +985,28 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				);
 		}
 
-		$output .= Html::closeElement( 'tbody' ) . Html::closeElement( 'table' );
-
-		return Html::rawElement( 'fieldset', [], $output );
+		return Html::rawElement( 'fieldset', [],
+			Html::element( 'legend', [],
+				$this->msg( 'abusefilter-log-details-privatedetails' )->text()
+			) .
+			Html::rawElement( 'table',
+				[
+					'class' => 'wikitable mw-abuselog-private',
+					'style' => 'width: 80%;'
+				],
+				Html::rawElement( 'thead', [],
+					Html::rawElement( 'tr', [],
+						Html::element( 'th', [],
+							$this->msg( 'abusefilter-log-details-var' )->text()
+						) .
+						Html::element( 'th', [],
+							$this->msg( 'abusefilter-log-details-val' )->text()
+						)
+					)
+				) .
+				Html::rawElement( 'tbody', [], $output )
+			)
+		);
 	}
 
 	/**

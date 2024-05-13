@@ -50,22 +50,6 @@ class VariablesFormatter {
 
 		$output = '';
 
-		$output .=
-			Html::openElement( 'table', [ 'class' => 'mw-abuselog-details' ] ) .
-			Html::openElement( 'tbody' ) .
-			"\n";
-
-		$header =
-			Html::element( 'th', [], $this->messageLocalizer->msg( 'abusefilter-log-details-var' )->text() ) .
-			Html::element( 'th', [], $this->messageLocalizer->msg( 'abusefilter-log-details-val' )->text() );
-		$output .= Html::rawElement( 'tr', [], $header ) . "\n";
-
-		if ( !count( $vars ) ) {
-			$output .= Html::closeElement( 'tbody' ) . Html::closeElement( 'table' );
-
-			return $output;
-		}
-
 		// Now, build the body of the table.
 		foreach ( $vars as $key => $value ) {
 			$key = strtolower( $key );
@@ -97,9 +81,19 @@ class VariablesFormatter {
 				) . "\n";
 		}
 
-		$output .= Html::closeElement( 'tbody' ) . Html::closeElement( 'table' );
-
-		return $output;
+		return Html::rawElement( 'table', [ 'class' => 'mw-abuselog-details' ],
+			Html::rawElement( 'thead', [],
+				Html::rawElement( 'tr', [],
+					Html::element( 'th', [],
+						$this->messageLocalizer->msg( 'abusefilter-log-details-var' )->text()
+					) .
+					Html::element( 'th', [],
+						$this->messageLocalizer->msg( 'abusefilter-log-details-val' )->text()
+					)
+				)
+			) .
+			Html::rawElement( 'tbody', [], $output )
+		);
 	}
 
 	/**
