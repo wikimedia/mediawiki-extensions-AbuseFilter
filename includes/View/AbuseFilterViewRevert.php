@@ -25,7 +25,6 @@ use UnexpectedValueException;
 use UserBlockedError;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
-use Xml;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/** @var int */
@@ -223,10 +222,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				)->params(
 					$spec->getUser()->getName()
 				)->parse();
-			$list[] = Xml::tags( 'li', null, $msg );
+			$list[] = Html::rawElement( 'li', [], $msg );
 		}
 
-		$dateForm->addPostHtml( Xml::tags( 'ul', null, implode( "\n", $list ) ) );
+		$dateForm->addPostHtml( Html::rawElement( 'ul', [], implode( "\n", $list ) ) );
 
 		// Add a button down the bottom.
 		$confirmForm = [];

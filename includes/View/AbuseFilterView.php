@@ -6,6 +6,7 @@ use ContextSource;
 use Flow\Data\Listener\RecentChangesListener;
 use IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
@@ -15,7 +16,6 @@ use OOUI;
 use RecentChange;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\Platform\ISQLPlatform;
-use Xml;
 
 abstract class AbuseFilterView extends ContextSource {
 
@@ -101,7 +101,7 @@ abstract class AbuseFilterView extends ContextSource {
 				]
 			);
 		// CSS class for reducing default input field width
-		return Xml::tags(
+		return Html::rawElement(
 			'div',
 			[ 'class' => 'mw-abusefilter-load-filter-id' ],
 			$loadGroup

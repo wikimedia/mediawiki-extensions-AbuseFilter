@@ -15,7 +15,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use StringUtils;
-use Xml;
 
 /**
  * The default view used in Special:AbuseFilter
@@ -167,9 +166,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 			if ( $error !== null ) {
 				$out->addHTML(
-					Xml::tags(
+					Html::rawElement(
 						'p',
-						null,
+						[],
 						Html::errorBox( $this->msg( $error )->escaped() )
 					)
 				);
@@ -202,7 +201,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$centralDB = $config->get( 'AbuseFilterCentralDB' );
 		$dbIsCentral = $config->get( 'AbuseFilterIsCentral' );
 		$this->getOutput()->addHTML(
-			Xml::tags( 'h2', null, $this->msg( 'abusefilter-list' )->parse() )
+			Html::rawElement( 'h2', [], $this->msg( 'abusefilter-list' )->parse() )
 		);
 
 		$deleted = $optarray['deleted'];
@@ -357,7 +356,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 					$matchPercent
 				)->parse();
 
-			$status = Xml::tags( 'p', [ 'class' => 'mw-abusefilter-status' ], $status );
+			$status = Html::rawElement( 'p', [ 'class' => 'mw-abusefilter-status' ], $status );
 			$this->getOutput()->addHTML( $status );
 		}
 	}

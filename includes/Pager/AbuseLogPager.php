@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
-use Html;
 use HtmlArmor;
 use IContextSource;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -10,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
+use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
@@ -22,7 +22,6 @@ use MediaWiki\Title\Title;
 use MediaWiki\WikiMap\WikiMap;
 use stdClass;
 use Wikimedia\Rdbms\IResultWrapper;
-use Xml;
 
 class AbuseLogPager extends ReverseChronologicalPager {
 	/**
@@ -274,13 +273,13 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			)->params( $row->afl_user_text )->parse();
 		}
 
-		$attribs = null;
+		$attribs = [];
 		if (
 			$this->isHidingEntry( $row ) === true ||
 			// If isHidingEntry is false, we've just unhidden the row
 			( $this->isHidingEntry( $row ) === null && $row->afl_deleted )
 		) {
-			$attribs = [ 'class' => 'mw-abusefilter-log-hidden-entry' ];
+			$attribs['class'] = 'mw-abusefilter-log-hidden-entry';
 		}
 		if ( self::entryHasAssociatedDeletedRev( $row ) ) {
 			$description .= ' ' .
@@ -293,9 +292,9 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		}
 
 		if ( $isListItem ) {
-			return Xml::tags( 'li', $attribs, $description );
+			return Html::rawElement( 'li', $attribs, $description );
 		} else {
-			return Xml::tags( 'span', $attribs, $description );
+			return Html::rawElement( 'span', $attribs, $description );
 		}
 	}
 

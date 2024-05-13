@@ -37,7 +37,6 @@ use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonInputWidget;
 use stdClass;
 use Wikimedia\Rdbms\LBFactory;
-use Xml;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public const PAGE_NAME = 'AbuseLog';
@@ -632,14 +631,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$pager->doQuery();
 		$result = $pager->getResult();
 
-		$form = Xml::tags(
+		$form = Html::rawElement(
 			'form',
 			[
 				'method' => 'GET',
 				'action' => $this->getPageTitle( 'hide' )->getLocalURL()
 			],
 			$this->getDeleteButton() . $this->getListToggle() .
-				Xml::tags( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) .
+				Html::rawElement( 'ul', [ 'class' => 'plainlinks' ], $pager->getBody() ) .
 				$this->getListToggle() . $this->getDeleteButton()
 		);
 
@@ -748,14 +747,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return;
 		}
 
-		$output = Xml::element(
+		$output = Html::element(
 			'legend',
-			null,
+			[],
 			$this->msg( 'abusefilter-log-details-legend' )
 				->numParams( $id )
 				->text()
 		);
-		$output .= Xml::tags( 'p', null, $pager->doFormatRow( $row, false ) );
+		$output .= Html::rawElement( 'p', [], $pager->doFormatRow( $row, false ) );
 
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
@@ -787,16 +786,16 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			);
 
 			$output .=
-				Xml::tags(
+				Html::rawElement(
 					'h3',
-					null,
+					[],
 					$this->msg( 'abusefilter-log-details-diff' )->parse()
 				);
 
 			$output .= $formattedDiff;
 		}
 
-		$output .= Xml::element( 'h3', null, $this->msg( 'abusefilter-log-details-vars' )->text() );
+		$output .= Html::element( 'h3', [], $this->msg( 'abusefilter-log-details-vars' )->text() );
 
 		// Build a table.
 		$output .= $this->variablesFormatter->buildVarDumpTable( $vars );
@@ -819,7 +818,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$output .= $htmlForm->getHTML( false );
 		}
 
-		$out->addHTML( Xml::tags( 'fieldset', null, $output ) );
+		$out->addHTML( Html::rawElement( 'fieldset', [], $output ) );
 	}
 
 	/**
@@ -876,92 +875,92 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @return string The HTML output
 	 */
 	private function buildPrivateDetailsTable( $row ) {
-		$output = Xml::element(
+		$output = Html::element(
 			'legend',
-			null,
+			[],
 			$this->msg( 'abusefilter-log-details-privatedetails' )->text()
 		);
 
 		$header =
-			Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-var' )->text() ) .
-			Xml::element( 'th', null, $this->msg( 'abusefilter-log-details-val' )->text() );
+			Html::element( 'th', [], $this->msg( 'abusefilter-log-details-var' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'abusefilter-log-details-val' )->text() );
 
 		$output .=
-			Xml::openElement( 'table',
+			Html::openElement( 'table',
 				[
 					'class' => 'wikitable mw-abuselog-private',
 					'style' => 'width: 80%;'
 				]
 			) .
-			Xml::openElement( 'tbody' );
+			Html::openElement( 'tbody' );
 		$output .= $header;
 
 		// Log ID
 		$linkRenderer = $this->getLinkRenderer();
 		$output .=
-			Xml::tags( 'tr', null,
-				Xml::element( 'td',
+			Html::rawElement( 'tr', [],
+				Html::element( 'td',
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-log-details-id' )->text()
 				) .
-				Xml::openElement( 'td' ) .
+				Html::openElement( 'td' ) .
 				$linkRenderer->makeKnownLink(
 					$this->getPageTitle( $row->afl_id ),
 					$this->getLanguage()->formatNum( $row->afl_id )
 				) .
-				Xml::closeElement( 'td' )
+				Html::closeElement( 'td' )
 			);
 
 		// Timestamp
 		$output .=
-			Xml::tags( 'tr', null,
-				Xml::element( 'td',
+			Html::rawElement( 'tr', [],
+				Html::element( 'td',
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-edit-builder-vars-timestamp-expanded' )->text()
 				) .
-				Xml::element( 'td',
-					null,
+				Html::element( 'td',
+					[],
 					$this->getLanguage()->userTimeAndDate( $row->afl_timestamp, $this->getUser() )
 				)
 			);
 
 		// User
 		$output .=
-			Xml::tags( 'tr', null,
-				Xml::element( 'td',
+			Html::rawElement( 'tr', [],
+				Html::element( 'td',
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-edit-builder-vars-user-name' )->text()
 				) .
-				Xml::element( 'td',
-					null,
+				Html::element( 'td',
+					[],
 					$row->afl_user_text
 				)
 			);
 
 		// Filter ID
 		$output .=
-			Xml::tags( 'tr', null,
-				Xml::element( 'td',
+			Html::rawElement( 'tr', [],
+				Html::element( 'td',
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-list-id' )->text()
 				) .
-				Xml::openElement( 'td' ) .
+				Html::openElement( 'td' ) .
 				$linkRenderer->makeKnownLink(
 					SpecialPage::getTitleFor( 'AbuseFilter', $row->af_id ),
 					$this->getLanguage()->formatNum( $row->af_id )
 				) .
-				Xml::closeElement( 'td' )
+				Html::closeElement( 'td' )
 			);
 
 		// Filter description
 		$output .=
-			Xml::tags( 'tr', null,
-				Xml::element( 'td',
+			Html::rawElement( 'tr', [],
+				Html::element( 'td',
 					[ 'style' => 'width: 30%;' ],
 					$this->msg( 'abusefilter-list-public' )->text()
 				) .
-				Xml::element( 'td',
-					null,
+				Html::element( 'td',
+					[],
 					$row->af_public_comments
 				)
 			);
@@ -982,35 +981,35 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$CULink = '';
 			}
 			$output .=
-				Xml::tags( 'tr', null,
-					Xml::element( 'td',
+				Html::rawElement( 'tr', [],
+					Html::element( 'td',
 						[ 'style' => 'width: 30%;' ],
 						$this->msg( 'abusefilter-log-details-ip' )->text()
 					) .
-					Xml::tags(
+					Html::rawElement(
 						'td',
-						null,
+						[],
 						self::getUserLinks( 0, $row->afl_ip ) . $CULink
 					)
 				);
 		} else {
 			$output .=
-				Xml::tags( 'tr', null,
-					Xml::element( 'td',
+				Html::rawElement( 'tr', [],
+					Html::element( 'td',
 						[ 'style' => 'width: 30%;' ],
 						$this->msg( 'abusefilter-log-details-ip' )->text()
 					) .
-					Xml::element(
+					Html::element(
 						'td',
-						null,
+						[],
 						$this->msg( 'abusefilter-log-ip-not-available' )->text()
 					)
 				);
 		}
 
-		$output .= Xml::closeElement( 'tbody' ) . Xml::closeElement( 'table' );
+		$output .= Html::closeElement( 'tbody' ) . Html::closeElement( 'table' );
 
-		return Xml::tags( 'fieldset', null, $output );
+		return Html::rawElement( 'fieldset', [], $output );
 	}
 
 	/**
@@ -1032,9 +1031,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$token = $request->getVal( 'wpEditToken' );
 		if ( !$request->wasPosted() || !$user->matchEditToken( $token ) ) {
 			$out->addHTML(
-				Xml::tags(
+				Html::rawElement(
 					'p',
-					null,
+					[],
 					Html::errorBox( $this->msg( 'abusefilter-invalid-request' )->params( $id )->parse() )
 				)
 			);
