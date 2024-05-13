@@ -99,8 +99,7 @@ abstract class EditBoxBuilder {
 		if ( $addResultDiv ) {
 			$output .= Html::element(
 				'div',
-				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ],
-				'&#160;'
+				[ 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ]
 			);
 		}
 
