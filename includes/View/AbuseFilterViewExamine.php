@@ -336,7 +336,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 					[
 						'id' => 'mw-abusefilter-syntaxresult',
 						'style' => 'display: none;'
-					], '&#160;'
+					]
 				)
 			);
 		}
