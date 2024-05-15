@@ -602,7 +602,7 @@
 	"abusefilter-log-ip-not-available": "Not Available",
 	"abusefilter-tag-reserved": "The <code>abusefilter-condition-limit</code> tag is reserved for internal use by AbuseFilter.",
 	"tag-abusefilter-condition-limit": "condition limit reached",
-	"tag-abusefilter-condition-limit-description": "Edits or other events that couldn't be checked by all active [[Special:AbuseFilter|abuse filters]] ([[mw:Extension:AbuseFilter/Conditions|help]]).",
+	"tag-abusefilter-condition-limit-description": "Edits or other events that couldn't be checked by all active [[Special:AbuseFilter|abuse filters]] ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions help]).",
 	"notification-header-throttle-filter": "Abuse filter $2 {{GENDER:$1|you}} recently edited was throttled.",
 	"notification-header-throttle-filter-actions": "The abuse filter $2 {{GENDER:$1|you}} recently edited had a high rate of matches and the following {{PLURAL:$4|action was|actions were}} automatically disabled: $3.",
 	"notification-header-throttle-filter-no-actions": "The abuse filter $2 {{GENDER:$1|you}} recently edited had a high rate of matches but no actions were automatically disabled.",
