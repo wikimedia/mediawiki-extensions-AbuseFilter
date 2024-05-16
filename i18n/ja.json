@@ -658,6 +658,6 @@
 	"right-abusefilter-modify-blocked-external-domains": "リンクをブロックする外部ドメインの作成または変更",
 	"action-abusefilter-modify-blocked-external-domains": "リンクをブロックする外部ドメインの作成または変更",
 	"right-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインを回避",
-	"action-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインを回避",
+	"action-abusefilter-bypass-blocked-external-domains": "ブロックされた外部ドメインの回避",
 	"abusefilter-blocked-domains-cannot-edit-directly": "リンクをブロックする外部ドメインの作成または変更は、[[Special:BlockedExternalDomains|対応する特別ページ]]を通じて行う必要があります。"
 }
