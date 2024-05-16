@@ -27,7 +27,7 @@ class MutableFilter extends Filter {
 			new Flags(
 				true,
 				false,
-				false,
+				Flags::FILTER_PUBLIC,
 				false
 			),
 			[],

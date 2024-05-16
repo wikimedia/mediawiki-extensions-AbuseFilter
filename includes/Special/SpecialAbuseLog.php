@@ -13,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
@@ -719,17 +720,17 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 			if ( $global ) {
 				try {
-					$filter_hidden = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global )
-						->isHidden();
+					$privacyLevel = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global )
+						->getPrivacyLevel();
 				} catch ( CentralDBNotAvailableException $_ ) {
 					// Conservatively assume that it's hidden, like in formatRow
-					$filter_hidden = true;
+					$privacyLevel = Flags::FILTER_HIDDEN;
 				}
 			} else {
-				$filter_hidden = $row->af_hidden;
+				$privacyLevel = $row->af_hidden;
 			}
 
-			if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $filter_hidden ) ) {
+			if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
 				$error = 'abusefilter-log-cannot-see-details';
 			} else {
 				$visibility = self::getEntryVisibilityForUser( $row, $performer, $this->afPermissionManager );
@@ -855,12 +856,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		if ( $global ) {
 			$lookup = AbuseFilterServices::getFilterLookup();
-			$filterHidden = $lookup->getFilter( $filterID, $global )->isHidden();
+			$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
 		} else {
-			$filterHidden = $row->af_hidden;
+			$privacyLevel = $row->af_hidden;
 		}
 
-		if ( !$afPermManager->canSeeLogDetailsForFilter( $authority, $filterHidden ) ) {
+		if ( !$afPermManager->canSeeLogDetailsForFilter( $authority, $privacyLevel ) ) {
 			$status->fatal( 'abusefilter-log-cannot-see-details' );
 			return $status;
 		}

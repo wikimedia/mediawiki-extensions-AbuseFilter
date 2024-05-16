@@ -7,6 +7,7 @@ use IContextSource;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
@@ -229,7 +230,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		if ( !$this->canViewPrivateFilters ) {
 			// Hide data the user can't see.
-			$info['conds']['af_hidden'] = 0;
+			$info['conds'][] = $this->mDb->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0';
 		}
 
 		return $info;

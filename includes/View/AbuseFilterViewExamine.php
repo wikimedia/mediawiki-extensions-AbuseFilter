@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
@@ -265,12 +266,12 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		try {
-			$isHidden = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )->isHidden();
+			$privacyLevel = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )->getPrivacyLevel();
 		} catch ( CentralDBNotAvailableException $_ ) {
 			// Conservatively assume that it's hidden, like in SpecialAbuseLog
-			$isHidden = true;
+			$privacyLevel = Flags::FILTER_HIDDEN;
 		}
-		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $isHidden ) ) {
+		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}

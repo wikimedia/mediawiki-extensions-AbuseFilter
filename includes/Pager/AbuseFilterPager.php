@@ -6,6 +6,7 @@ use LogicException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\Linker;
@@ -286,8 +287,14 @@ class AbuseFilterPager extends TablePager {
 
 				return $lang->commaList( $statuses );
 			case 'af_hidden':
-				$msg = $value ? 'abusefilter-hidden' : 'abusefilter-unhidden';
-				return $this->msg( $msg )->parse();
+				$flagMsgs = [];
+				if ( FilterUtils::isHidden( (int)$value ) ) {
+					$flagMsgs[] = $this->msg( 'abusefilter-hidden' )->parse();
+				}
+				if ( !$flagMsgs ) {
+					return $this->msg( 'abusefilter-unhidden' )->parse();
+				}
+				return $lang->commaList( $flagMsgs );
 			case 'af_hit_count':
 				if ( $this->afPermManager->canSeeLogDetailsForFilter( $user, $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )

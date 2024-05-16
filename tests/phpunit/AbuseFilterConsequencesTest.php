@@ -2,6 +2,7 @@
 
 use MediaWiki\Block\BlockUser;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
@@ -92,7 +93,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		2 => [
 			'af_pattern' => 'action = "move" & moved_to_title contains "test" & moved_to_title === moved_to_text',
 			'af_public_comments' => 'Mock filter for move',
-			'af_hidden' => 1,
+			'af_hidden' => Flags::FILTER_HIDDEN,
 			'actions' => [
 				'disallow' => [],
 				'block' => [
@@ -124,7 +125,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		6 => [
 			'af_pattern' => 'edit_delta === 7',
 			'af_public_comments' => 'Mock filter with edit_delta',
-			'af_hidden' => 1,
+			'af_hidden' => Flags::FILTER_HIDDEN,
 			'af_global' => 1,
 			'actions' => [
 				'disallow' => [
@@ -154,7 +155,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		9 => [
 			'af_pattern' => 'new_size > old_size',
 			'af_public_comments' => 'Mock filter with size',
-			'af_hidden' => 1,
+			'af_hidden' => Flags::FILTER_HIDDEN,
 			'actions' => [
 				'disallow' => [],
 				'block' => [
@@ -167,7 +168,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		10 => [
 			'af_pattern' => '1 == 1',
 			'af_public_comments' => 'Mock throttled filter',
-			'af_hidden' => 1,
+			'af_hidden' => Flags::FILTER_HIDDEN,
 			'af_throttled' => 1,
 			'actions' => [
 				'tag' => [
@@ -228,7 +229,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		15 => [
 			'af_pattern' => 'action contains "createaccount"',
 			'af_public_comments' => 'Catch-all for account creations',
-			'af_hidden' => 1,
+			'af_hidden' => Flags::FILTER_HIDDEN,
 			'actions' => [
 				'disallow' => []
 			]
@@ -356,7 +357,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			'af_comments' => '',
 			'af_hit_count' => 0,
 			'af_enabled' => 1,
-			'af_hidden' => 0,
+			'af_hidden' => Flags::FILTER_PUBLIC,
 			'af_throttled' => 0,
 			'af_deleted' => 0,
 			'af_global' => 0
