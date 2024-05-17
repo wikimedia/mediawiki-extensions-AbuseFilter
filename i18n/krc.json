@@ -454,5 +454,13 @@
 	"abusefilter-history-select-user": "Хайырланыучу:",
 	"abusefilter-history-select-filter": "Фильтрни идентификатору:",
 	"abusefilter-history-select-submit": "Кескинлешдир",
-	"abusefilter-history-diff": "Тюрлениуле"
+	"abusefilter-history-diff": "Тюрлениуле",
+	"abusefilter-history-error-hidden": "Излеген фильтригиз джашырылыбды, эмда сиз аны тарихине къараяллыкъ тюлсюз.",
+	"abusefilter-exception-unexpectedatend": "$1 символда сакъланмагъан \"$2\".",
+	"abusefilter-exception-expectednotfound": "$1 символда $2 сакъланмагъанды, табылмады (орнуна $3 $4 табылда).",
+	"abusefilter-exception-unrecognisedkeyword": "$1 символда танылмагъан ачхыч сёз $2.",
+	"abusefilter-exception-unexpectedtoken": "$1 символда сакъланмагъан белги \"$3\" ($2 типде).",
+	"abusefilter-exception-unclosedstring": "$1 символда башланнган джабылмагъан тизгин",
+	"abusefilter-exception-invalidoperator": "$1 символда джараусуз оператор \"$2\".",
+	"abusefilter-exception-unrecognisedtoken": "$1 символда танылмагъан белги $2."
 }
