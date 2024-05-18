@@ -12,7 +12,8 @@ use LoggedUpdateMaintenance;
 use MediaWiki\MediaWikiServices;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\Platform\ISQLPlatform;
+use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\Subquery;
 
 /**
  * Maintenance script that migrates actors from AbuseFilter tables to the 'actor' table.
@@ -102,25 +103,27 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 
 	/**
 	 * Make the subqueries for `actor_id`
-	 * @param ISQLPlatform $dbw
+	 * @param IReadableDatabase $dbw
 	 * @param string $userField User ID field name
 	 * @param string $nameField User name field name
 	 * @return string SQL fragment
 	 */
-	private function makeActorIdSubquery( ISQLPlatform $dbw, $userField, $nameField ) {
-		$idSubquery = $dbw->buildSelectSubquery(
-			'actor',
-			'actor_id',
-			[ "$userField = actor_user" ],
-			__METHOD__
+	private function makeActorIdSubquery( IReadableDatabase $dbw, $userField, $nameField ) {
+		$idSubquery = $dbw->newSelectQueryBuilder()
+			->select( 'actor_id' )
+			->from( 'actor' )
+			->where( [ "$userField = actor_user" ] )
+			->caller( __METHOD__ );
+		$nameSubquery = $dbw->newSelectQueryBuilder()
+			->select( 'actor_id' )
+			->from( 'actor' )
+			->where( [ "$nameField = actor_name" ] )
+			->caller( __METHOD__ );
+		return $dbw->conditional(
+			$dbw->expr( $userField, '=', 0 )->or( $userField, '=', null ),
+			new Subquery( $nameSubquery->getSQL() ),
+			new Subquery( $idSubquery->getSQL() )
 		);
-		$nameSubquery = $dbw->buildSelectSubquery(
-			'actor',
-			'actor_id',
-			[ "$nameField = actor_name" ],
-			__METHOD__
-		);
-		return "CASE WHEN $userField = 0 OR $userField IS NULL THEN $nameSubquery ELSE $idSubquery END";
 	}
 
 	/**
