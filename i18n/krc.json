@@ -462,5 +462,14 @@
 	"abusefilter-exception-unexpectedtoken": "$1 символда сакъланмагъан белги \"$3\" ($2 типде).",
 	"abusefilter-exception-unclosedstring": "$1 символда башланнган джабылмагъан тизгин",
 	"abusefilter-exception-invalidoperator": "$1 символда джараусуз оператор \"$2\".",
-	"abusefilter-exception-unrecognisedtoken": "$1 символда танылмагъан белги $2."
+	"abusefilter-exception-unrecognisedtoken": "$1 символда танылмагъан белги $2.",
+	"abusefilter-test-action": "Этиуню типи:",
+	"abusefilter-test-search-type-all": "Бютеу этиуле",
+	"abusefilter-test-search-type-edit": "Тюзетиуле",
+	"abusefilter-test-search-type-move": "Ташыула",
+	"abusefilter-test-search-type-delete": "Кетериуле",
+	"abusefilter-test-search-type-upload": "Джюклеуле",
+	"abusefilter-test-search-type-createaccount": "Хыйсаб джаратыула",
+	"abusefilter-changeslist-examine": "джокъла",
+	"abusefilter-examine": "Айры тюрлениулени джокъла"
 }
