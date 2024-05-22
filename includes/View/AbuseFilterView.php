@@ -15,9 +15,20 @@ use MediaWiki\Title\Title;
 use OOUI;
 use RecentChange;
 use UnexpectedValueException;
+use Wikimedia\Rdbms\IExpression;
+use Wikimedia\Rdbms\IReadableDatabase;
+use Wikimedia\Rdbms\OrExpressionGroup;
 use Wikimedia\Rdbms\Platform\ISQLPlatform;
 
 abstract class AbuseFilterView extends ContextSource {
+
+	private const MAP_ACTION_TO_LOG_TYPE = [
+		// action => [ rc_log_type, rc_log_action ]
+		'move' => [ 'move', 'move' ],
+		'createaccount' => [ 'newusers', [ 'create', 'autocreate' ] ],
+		'delete' => [ 'delete', 'delete' ],
+		'upload' => [ 'upload', [ 'upload', 'overwrite', 'revert' ] ],
+	];
 
 	/**
 	 * @var AbuseFilterPermissionManager
@@ -109,11 +120,11 @@ abstract class AbuseFilterView extends ContextSource {
 	}
 
 	/**
-	 * @param ISQLPlatform $db
+	 * @param IReadableDatabase $db
 	 * @param string|false $action 'edit', 'move', 'createaccount', 'delete' or false for all
-	 * @return string
+	 * @return IExpression
 	 */
-	public function buildTestConditions( ISQLPlatform $db, $action = false ) {
+	public function buildTestConditions( IReadableDatabase $db, $action = false ) {
 		$editSources = [
 			RecentChange::SRC_EDIT,
 			RecentChange::SRC_NEW,
@@ -124,68 +135,31 @@ abstract class AbuseFilterView extends ContextSource {
 			// @phan-suppress-next-line PhanUndeclaredClassConstant Temporary solution
 			$editSources[] = RecentChangesListener::SRC_FLOW;
 		}
-		// If one of these is true, we're abusefilter compatible.
-		switch ( $action ) {
-			case 'edit':
-				return $db->makeList( [
-					// Actually, this is only one condition, but this way we get it as string
-					'rc_source' => $editSources
-				], LIST_AND );
-			case 'move':
-				return $db->makeList( [
-					'rc_source' => RecentChange::SRC_LOG,
-					'rc_log_type' => 'move',
-					'rc_log_action' => 'move'
-				], LIST_AND );
-			case 'createaccount':
-				return $db->makeList( [
-					'rc_source' => RecentChange::SRC_LOG,
-					'rc_log_type' => 'newusers',
-					'rc_log_action' => [ 'create', 'autocreate' ]
-				], LIST_AND );
-			case 'delete':
-				return $db->makeList( [
-					'rc_source' => RecentChange::SRC_LOG,
-					'rc_log_type' => 'delete',
-					'rc_log_action' => 'delete'
-				], LIST_AND );
-			case 'upload':
-				return $db->makeList( [
-					'rc_source' => RecentChange::SRC_LOG,
-					'rc_log_type' => 'upload',
-					'rc_log_action' => [ 'upload', 'overwrite', 'revert' ]
-				], LIST_AND );
-			case false:
-				// Done later
-				break;
-			default:
+		if ( $action === 'edit' ) {
+			return $db->expr( 'rc_source', '=', $editSources );
+		}
+		if ( $action !== false ) {
+			if ( !isset( self::MAP_ACTION_TO_LOG_TYPE[$action] ) ) {
 				throw new UnexpectedValueException( __METHOD__ . ' called with invalid action: ' . $action );
+			}
+			[ $logType, $logAction ] = self::MAP_ACTION_TO_LOG_TYPE[$action];
+			return $db->expr( 'rc_source', '=', RecentChange::SRC_LOG )
+				->and( 'rc_log_type', '=', $logType )
+				->and( 'rc_log_action', '=', $logAction );
 		}
 
-		return $db->makeList( [
-			'rc_source' => $editSources,
-			$db->makeList( [
-				'rc_source' => RecentChange::SRC_LOG,
-				$db->makeList( [
-					$db->makeList( [
-						'rc_log_type' => 'move',
-						'rc_log_action' => 'move'
-					], LIST_AND ),
-					$db->makeList( [
-						'rc_log_type' => 'newusers',
-						'rc_log_action' => [ 'create', 'autocreate' ]
-					], LIST_AND ),
-					$db->makeList( [
-						'rc_log_type' => 'delete',
-						'rc_log_action' => 'delete'
-					], LIST_AND ),
-					$db->makeList( [
-						'rc_log_type' => 'upload',
-						'rc_log_action' => [ 'upload', 'overwrite', 'revert' ]
-					], LIST_AND ),
-				], LIST_OR ),
-			], LIST_AND ),
-		], LIST_OR );
+		// filter edit and log actions
+		$conds = [];
+		foreach ( self::MAP_ACTION_TO_LOG_TYPE as [ $logType, $logAction ] ) {
+			$conds[] = $db->expr( 'rc_log_type', '=', $logType )
+				->and( 'rc_log_action', '=', $logAction );
+		}
+
+		return $db->expr( 'rc_source', '=', $editSources )
+			->orExpr(
+				$db->expr( 'rc_source', '=', RecentChange::SRC_LOG )
+					->andExpr( new OrExpressionGroup( ...$conds ) )
+			);
 	}
 
 	/**
