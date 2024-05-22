@@ -36,7 +36,9 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonInputWidget;
 use stdClass;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\LikeValue;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public const PAGE_NAME = 'AbuseLog';
@@ -582,28 +584,26 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 		}
 
-		if ( in_array( $this->mSearchImpact, [ '1', '2' ] ) ) {
-			$unsuccessfulActionConds = 'afl_rev_id IS NULL';
-			if ( $this->mSearchImpact === '1' ) {
-				$conds[] = "NOT ( $unsuccessfulActionConds )";
-			} else {
-				$conds[] = $unsuccessfulActionConds;
-			}
+		if ( $this->mSearchImpact === '1' ) {
+			$conds[] = $dbr->expr( 'afl_rev_id', '!=', null );
+		} elseif ( $this->mSearchImpact === '2' ) {
+			$conds[] = $dbr->expr( 'afl_rev_id', '=', null );
 		}
 
 		if ( $this->mSearchActionTaken ) {
 			if ( in_array( $this->mSearchActionTaken, $this->consequencesRegistry->getAllActionNames() ) ) {
-				$list = [ 'afl_actions' => $this->mSearchActionTaken ];
-				$list[] = 'afl_actions' . $dbr->buildLike(
-					$this->mSearchActionTaken, ',', $dbr->anyString() );
-				$list[] = 'afl_actions' . $dbr->buildLike(
-					$dbr->anyString(), ',', $this->mSearchActionTaken );
-				$list[] = 'afl_actions' . $dbr->buildLike(
-					$dbr->anyString(),
-					',', $this->mSearchActionTaken, ',',
-					$dbr->anyString()
-				);
-				$conds[] = $dbr->makeList( $list, LIST_OR );
+				$conds[] = $dbr->expr( 'afl_actions', '=', $this->mSearchActionTaken )
+					->or( 'afl_actions', IExpression::LIKE, new LikeValue(
+						$this->mSearchActionTaken, ',', $dbr->anyString()
+					) )
+					->or( 'afl_actions', IExpression::LIKE, new LikeValue(
+						$dbr->anyString(), ',', $this->mSearchActionTaken
+					) )
+					->or( 'afl_actions', IExpression::LIKE, new LikeValue(
+						$dbr->anyString(),
+						',', $this->mSearchActionTaken, ',',
+						$dbr->anyString()
+					) );
 			} elseif ( $this->mSearchActionTaken === 'noactions' ) {
 				$conds['afl_actions'] = '';
 			}
@@ -614,8 +614,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			if ( in_array( $this->mSearchAction, $filterableActions ) ) {
 				$conds['afl_action'] = $this->mSearchAction;
 			} elseif ( $this->mSearchAction === 'other' ) {
-				$list = $dbr->makeList( [ 'afl_action' => $filterableActions ], LIST_OR );
-				$conds[] = "NOT ( $list )";
+				$conds[] = $dbr->expr( 'afl_action', '!=', $filterableActions );
 			}
 		}
 
