@@ -35,7 +35,8 @@
 			"렌즈",
 			"밝은소년",
 			"아라",
-			"Dr1t jg"
+			"Dr1t jg",
+			"Suleiman the Magnificent Television"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -145,7 +146,7 @@
 	"abusefilter-log-hide-forbidden": "편집 필터 기록 항목을 숨길 권한이 없습니다.",
 	"abusefilter-log-hide-show": "보이기",
 	"abusefilter-log-hide-hide": "숨기기",
-	"abusefilter-log-hide-no-change": "선택된 ID는 모두 이미 원하는 공개 상태를 가지고 있어.",
+	"abusefilter-log-hide-no-change": "이미 선택된 ID들은 모두 원하는 가시성을 가지고 있습니다.",
 	"abusefilter-log-hide-done": "공개 상태 업데이트됨: $1 {{PLURAL:$1|항목|항목들}} $2",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|숨겨짐}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|숨김 해제됨}}",
