@@ -1162,4 +1162,15 @@ class ParserTest extends ParserTestCase {
 		$wrapper = TestingAccessWrapper::newFromObject( $parser );
 		$this->assertSame( $vars, $wrapper->mVariables );
 	}
+
+	/**
+	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator
+	 */
+	public function testGetUsedVars() {
+		$parser = $this->getParser();
+		/** @var FilterEvaluator $wrapper */
+		$wrapper = TestingAccessWrapper::newFromObject( $parser );
+		$this->assertSame( [ 'user_name' ], $wrapper->getUsedVars( 'ip_in_range( user_name, "1.2.3.4" )' ) );
+		$this->assertSame( [ 'user_name' ], $wrapper->getUsedVars( 'ip_in_range( USER_NAME, "1.2.3.4" )' ) );
+	}
 }

@@ -76,6 +76,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 		$fld_time = isset( $prop['lastedittime'] );
 		$fld_status = isset( $prop['status'] );
 		$fld_private = isset( $prop['private'] );
+		$fld_protected = isset( $prop['protected'] );
 
 		$result = $this->getResult();
 
@@ -125,11 +126,20 @@ class QueryAbuseFilters extends ApiQueryBase {
 				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' != 0',
 				isset( $show['private'] )
 			);
+			$this->addWhereIf(
+				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' != 0',
+				isset( $show['!protected'] )
+			);
+			$this->addWhereIf(
+				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0',
+				isset( $show['!protected'] )
+			);
 		}
 
 		$res = $this->select( __METHOD__ );
 
 		$showhidden = $this->afPermManager->canViewPrivateFilters( $this->getAuthority() );
+		$showProtected = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() );
 
 		$count = 0;
 		foreach ( $res as $row ) {
@@ -146,7 +156,11 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( $fld_desc ) {
 				$entry['description'] = $row->af_public_comments;
 			}
-			if ( $fld_pattern && ( !FilterUtils::isHidden( $row->af_hidden ) || $showhidden ) ) {
+			if (
+				$fld_pattern &&
+				( !FilterUtils::isHidden( $row->af_hidden ) || $showhidden ) &&
+				( !FilterUtils::isProtected( $row->af_hidden ) || $showProtected )
+			) {
 				$entry['pattern'] = $row->af_pattern;
 			}
 			if ( $fld_actions ) {
@@ -155,7 +169,11 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( $fld_hits ) {
 				$entry['hits'] = intval( $row->af_hit_count );
 			}
-			if ( $fld_comments && ( !FilterUtils::isHidden( $row->af_hidden ) || $showhidden ) ) {
+			if (
+				$fld_comments &&
+				( !FilterUtils::isHidden( $row->af_hidden ) || $showhidden ) &&
+				( !FilterUtils::isProtected( $row->af_hidden ) || $showProtected )
+			) {
 				$entry['comments'] = $row->af_comments;
 			}
 			if ( $fld_user ) {
@@ -167,6 +185,9 @@ class QueryAbuseFilters extends ApiQueryBase {
 			}
 			if ( $fld_private && FilterUtils::isHidden( $row->af_hidden ) ) {
 				$entry['private'] = '';
+			}
+			if ( $fld_protected && FilterUtils::isProtected( $row->af_hidden ) ) {
+				$entry['protected'] = '';
 			}
 			if ( $fld_status ) {
 				if ( $row->af_enabled ) {
@@ -216,6 +237,8 @@ class QueryAbuseFilters extends ApiQueryBase {
 					'!deleted',
 					'private',
 					'!private',
+					'protected',
+					'!protected',
 				],
 			],
 			'limit' => [
@@ -238,6 +261,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 					'lastedittime',
 					'status',
 					'private',
+					'protected',
 				],
 				ParamValidator::PARAM_ISMULTI => true
 			]

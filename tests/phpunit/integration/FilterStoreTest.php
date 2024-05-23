@@ -44,10 +44,11 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		$row = self::DEFAULT_VALUES;
 		$row['timestamp'] = $this->db->timestamp( $row['timestamp'] );
 		$filter = $this->getFilterFromSpecs( [ 'id' => $id ] + $row );
+		$oldFilter = MutableFilter::newDefault();
 		// Use some black magic to bypass checks
 		/** @var FilterStore $filterStore */
 		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
-		$row = $filterStore->filterToDatabaseRow( $filter );
+		$row = $filterStore->filterToDatabaseRow( $filter, $oldFilter );
 		$row += AbuseFilterServices::getActorMigration()->getInsertValues(
 			$this->db,
 			'af_user',
@@ -171,5 +172,36 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertStatusGood( $status );
 		$this->assertFalse( $status->getValue(), 'Status value should be false' );
+	}
+
+	public function testSaveFilter_usesProtectedVars() {
+		$row = [
+			'id' => '2',
+			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",
+			'name' => 'Mock filter with protected variable used'
+		];
+
+		$origFilter = MutableFilter::newDefault();
+		$newFilter = $this->getFilterFromSpecs( $row );
+
+		// Try to save filter without right to use protected variables
+		$user = $this->getTestUser()->getUser();
+		$status = AbuseFilterServices::getFilterStore()->saveFilter( $user, $row['id'], $newFilter, $origFilter );
+		$expectedError = 'abusefilter-edit-protected-variable';
+		$this->assertStatusWarning( $expectedError, $status );
+
+		// Save filter with right, with 'protected' flag enabled
+		$this->overrideUserPermissions( $user, [ 'abusefilter-access-protected-vars', 'abusefilter-modify' ] );
+		$row = [
+			'id' => '3',
+			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",
+			'name' => 'Mock filter with protected variable used',
+			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+		];
+		$newFilter = $this->getFilterFromSpecs( $row );
+		$status = AbuseFilterServices::getFilterStore()->saveFilter(
+			$user, $row['id'], $newFilter, $origFilter
+		);
+		$this->assertStatusGood( $status );
 	}
 }

@@ -14,13 +14,14 @@ class FlagsTest extends MediaWikiUnitTestCase {
 	public function testGetters() {
 		$enabled = true;
 		$deleted = false;
-		$privacyLevel = Flags::FILTER_HIDDEN;
+		$privacyLevel = Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS;
 		$global = false;
 		$flags = new Flags( $enabled, $deleted, $privacyLevel, $global );
 
 		$this->assertSame( $enabled, $flags->getEnabled(), 'enabled' );
 		$this->assertSame( $deleted, $flags->getDeleted(), 'deleted' );
 		$this->assertSame( true, $flags->getHidden(), 'hidden' );
+		$this->assertSame( true, $flags->getProtected(), 'protected variables' );
 		$this->assertSame( $privacyLevel, $flags->getPrivacyLevel(), 'privacy level' );
 		$this->assertSame( $global, $flags->getGlobal(), 'global' );
 	}
@@ -32,7 +33,7 @@ class FlagsTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideSetters
 	 */
 	public function testSetters( $value, string $setter, string $getter ) {
-		$flags = new Flags( true, true, Flags::FILTER_HIDDEN, true );
+		$flags = new Flags( true, true, Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS, true );
 
 		$flags->$setter( $value );
 		$this->assertSame( $value, $flags->$getter() );
@@ -46,6 +47,7 @@ class FlagsTest extends MediaWikiUnitTestCase {
 			'enabled' => [ true, 'setEnabled', 'getEnabled' ],
 			'deleted' => [ false, 'setDeleted', 'getDeleted' ],
 			'hidden' => [ true, 'setHidden', 'getHidden' ],
+			'protected' => [ true, 'setProtected', 'getProtected' ],
 			'global' => [ false, 'setGlobal', 'getGlobal' ],
 		];
 	}

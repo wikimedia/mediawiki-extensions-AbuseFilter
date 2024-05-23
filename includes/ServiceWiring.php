@@ -71,8 +71,13 @@ return [
 		);
 	},
 	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
-		// No longer has any dependencies
-		return new PermManager();
+		return new PermManager(
+			new ServiceOptions(
+				PermManager::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig(),
+				[ 'AbuseFilterProtectedVariables' => [] ]
+			)
+		);
 	},
 	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagger {
 		return new ChangeTagger(
@@ -166,7 +171,8 @@ return [
 			$services->get( PermManager::SERVICE_NAME ),
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig()
+				$services->getMainConfig(),
+				[ 'AbuseFilterProtectedVariables' => [] ]
 			)
 		);
 	},

@@ -147,6 +147,7 @@ class SpecsFormatter {
 			'enabled' => $filter->isEnabled(),
 			'deleted' => $filter->isDeleted(),
 			'hidden' => $filter->isHidden(),
+			'protected' => $filter->isProtected(),
 			'global' => $filter->isGlobal()
 		] );
 		$flagsDisplay = [];

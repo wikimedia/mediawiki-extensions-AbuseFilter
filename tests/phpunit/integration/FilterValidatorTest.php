@@ -31,7 +31,8 @@ class FilterValidatorTest extends MediaWikiIntegrationTestCase {
 				FilterValidator::CONSTRUCTOR_OPTIONS,
 				[
 					'AbuseFilterActionRestrictions' => [],
-					'AbuseFilterValidGroups' => [ 'default' ]
+					'AbuseFilterValidGroups' => [ 'default' ],
+					'AbuseFilterProtectedVariables' => [],
 				]
 			)
 		);

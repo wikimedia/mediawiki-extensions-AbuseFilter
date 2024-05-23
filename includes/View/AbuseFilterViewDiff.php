@@ -157,6 +157,13 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
+		if ( !$this->afPermManager->canViewProtectedVariables( $this->getAuthority() ) &&
+			( $this->oldVersion->isProtected() || $this->newVersion->isProtected() )
+		) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-protected' );
+			return false;
+		}
+
 		try {
 			$this->nextHistoryId = $this->filterLookup->getClosestVersion(
 				$this->newVersion->getHistoryID(),

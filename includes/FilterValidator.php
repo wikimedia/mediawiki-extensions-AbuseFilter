@@ -19,7 +19,8 @@ class FilterValidator {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterValidGroups',
-		'AbuseFilterActionRestrictions'
+		'AbuseFilterActionRestrictions',
+		'AbuseFilterProtectedVariables',
 	];
 
 	/** @var ChangeTagValidator */
@@ -38,6 +39,11 @@ class FilterValidator {
 	private $validGroups;
 
 	/**
+	 * @var string[] Protected variables defined in config via AbuseFilterProtectedVariables
+	 */
+	private $protectedVariables;
+
+	/**
 	 * @param ChangeTagValidator $changeTagValidator
 	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param AbuseFilterPermissionManager $permManager
@@ -54,6 +60,7 @@ class FilterValidator {
 		$this->permManager = $permManager;
 		$this->restrictedActions = array_keys( array_filter( $options->get( 'AbuseFilterActionRestrictions' ) ) );
 		$this->validGroups = $options->get( 'AbuseFilterValidGroups' );
+		$this->protectedVariables = $options->get( 'AbuseFilterProtectedVariables' );
 	}
 
 	/**
@@ -100,6 +107,11 @@ class FilterValidator {
 			if ( !$throttleStatus->isGood() ) {
 				return $throttleStatus;
 			}
+		}
+
+		$protectedVarsPermissionStatus = $this->checkCanViewProtectedVariables( $performer, $newFilter );
+		if ( !$protectedVarsPermissionStatus->isGood() ) {
+			return $protectedVarsPermissionStatus;
 		}
 
 		$globalPermStatus = $this->checkGlobalFilterEditPermission( $performer, $newFilter, $originalFilter );
@@ -343,6 +355,37 @@ class FilterValidator {
 			$ret->error( 'abusefilter-edit-restricted' );
 		}
 		return $ret;
+	}
+
+	/**
+	 * @param Authority $performer
+	 * @param AbstractFilter $filter
+	 * @return Status
+	 */
+	public function checkCanViewProtectedVariables( Authority $performer, AbstractFilter $filter ): Status {
+		$ret = Status::newGood();
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		$usedVars = $ruleChecker->getUsedVars( $filter->getRules() );
+		$missingRights = $this->permManager->shouldProtectFilter( $performer, $usedVars );
+		if ( is_array( $missingRights ) ) {
+			$ret->error( 'abusefilter-edit-protected-variable', Message::listParam( $missingRights ) );
+		}
+		return $ret;
+	}
+
+	/**
+	 * TODO: Remove this function when T364485 is implemented, as it makes this function obselete
+	 * This is a stop-gap function used to check if a filter should be marked as protected
+	 *
+	 * @param AbstractFilter $filter
+	 * @return bool
+	 */
+	public function usesProtectedVars( AbstractFilter $filter ): bool {
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		$usedVariables = (array)$ruleChecker->getUsedVars( $filter->getRules() );
+		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
+
+		return count( $usedProtectedVariables ) > 0;
 	}
 
 	/**

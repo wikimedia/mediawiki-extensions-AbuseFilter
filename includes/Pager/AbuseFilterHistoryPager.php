@@ -41,6 +41,9 @@ class AbuseFilterHistoryPager extends TablePager {
 	/** @var bool */
 	private $canViewPrivateFilters;
 
+	/** @var bool */
+	private $canViewProtectedVars;
+
 	/**
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
@@ -50,6 +53,7 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @param ?int $filter
 	 * @param ?string $user User name
 	 * @param bool $canViewPrivateFilters
+	 * @param bool $canViewProtectedVars
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -59,7 +63,8 @@ class AbuseFilterHistoryPager extends TablePager {
 		SpecsFormatter $specsFormatter,
 		?int $filter,
 		?string $user,
-		bool $canViewPrivateFilters = false
+		bool $canViewPrivateFilters = false,
+		bool $canViewProtectedVars = false
 	) {
 		// needed by parent's constructor call
 		$this->filter = $filter;
@@ -69,6 +74,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		$this->specsFormatter = $specsFormatter;
 		$this->user = $user;
 		$this->canViewPrivateFilters = $canViewPrivateFilters;
+		$this->canViewProtectedVars = $canViewProtectedVars;
 		$this->mDefaultDirection = true;
 	}
 
@@ -157,17 +163,27 @@ class AbuseFilterHistoryPager extends TablePager {
 				break;
 			case 'afh_id':
 				// Set a link to a diff with the previous version if this isn't the first edit to the filter.
-				// Like in AbuseFilterViewDiff, don't show it if the user cannot see private filters and any
-				// of the versions is hidden.
+				// Like in AbuseFilterViewDiff, don't show it if:
+				// - the user cannot see private filters and any of the versions is hidden
+				// - the user cannot see protected variables and any of the versions is protected
 				$formatted = '';
 				if ( $this->filterLookup->getFirstFilterVersionID( $row->afh_filter ) !== (int)$value ) {
 					// @todo Should we also hide actions?
 					$prevFilter = $this->filterLookup->getClosestVersion(
 						$row->afh_id, $row->afh_filter, FilterLookup::DIR_PREV );
-					if ( $this->canViewPrivateFilters ||
+					if (
+							( $this->canViewPrivateFilters ||
+							(
+								!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
+								!$prevFilter->isHidden()
+							)
+						) &&
 						(
-							!in_array( 'hidden', explode( ',', $row->afh_flags ) ) &&
-							!$prevFilter->isHidden()
+							$this->canViewProtectedVars ||
+							(
+								!in_array( 'protected', explode( ',', $row->afh_flags ) ) &&
+								!$prevFilter->isProtected()
+							)
 						)
 					) {
 						$title = SpecialAbuseFilter::getTitleForSubpage(
@@ -231,6 +247,11 @@ class AbuseFilterHistoryPager extends TablePager {
 		if ( !$this->canViewPrivateFilters ) {
 			// Hide data the user can't see.
 			$info['conds'][] = $this->mDb->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0';
+		}
+
+		if ( !$this->canViewProtectedVars ) {
+			// Hide data the user can't see.
+			$info['conds'][] = 'af_hidden & ' . Flags::FILTER_USES_PROTECTED_VARS . ' = 0';
 		}
 
 		return $info;

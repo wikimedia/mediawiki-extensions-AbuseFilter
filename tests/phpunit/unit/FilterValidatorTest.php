@@ -16,6 +16,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 
@@ -26,6 +27,7 @@ use PHPUnit\Framework\MockObject\MockObject;
  * @covers \MediaWiki\Extension\AbuseFilter\FilterValidator
  */
 class FilterValidatorTest extends MediaWikiUnitTestCase {
+	use MockAuthorityTrait;
 
 	/**
 	 * @param AbuseFilterPermissionManager|null $permissionManager
@@ -45,6 +47,10 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			$ruleChecker->method( 'checkSyntax' )->willReturn(
 				new ParserStatus( null, [], 1 )
 			);
+			$ruleChecker->method( 'getUsedVars' )->willReturnMap( [
+				[ 'user_unnamed_ip', [ 'user_unnamed_ip' ] ],
+				[ 'user_name', [] ]
+			] );
 		}
 		$checkerFactory = $this->createMock( RuleCheckerFactory::class );
 		$checkerFactory->method( 'newRuleChecker' )->willReturn( $ruleChecker );
@@ -60,7 +66,8 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 				FilterValidator::CONSTRUCTOR_OPTIONS,
 				[
 					'AbuseFilterActionRestrictions' => array_fill_keys( $restrictions, true ),
-					'AbuseFilterValidGroups' => $validFilterGroups
+					'AbuseFilterValidGroups' => $validFilterGroups,
+					'AbuseFilterProtectedVariables' => [ 'user_unnamed_ip' ],
 				]
 			)
 		);
@@ -310,6 +317,86 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 
 		yield 'restricted actions in old version, with modify-restricted' =>
 			[ $unrestricted, $restricted, $restrictions, $canModifyRestrictedPM, null ];
+	}
+
+	public function testUsesProtectedVars() {
+		$filterProtectedVarsTrue = $this->createMock( AbstractFilter::class );
+		$filterProtectedVarsTrue->method( 'getRules' )->willReturn( 'user_unnamed_ip' );
+		$this->assertTrue(
+			$this->getFilterValidator()->usesProtectedVars( $filterProtectedVarsTrue )
+		);
+
+		$filterProtectedVarsFalse = $this->createMock( AbstractFilter::class );
+		$filterProtectedVarsFalse->method( 'getRules' )->willReturn( 'user_name' );
+		$this->assertFalse(
+			$this->getFilterValidator()->usesProtectedVars( $filterProtectedVarsFalse )
+		);
+	}
+
+	/**
+	 * @dataProvider provideCheckCanViewProtectedVariables
+	 */
+	public function testCheckCanViewProtectedVariables( $data ) {
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $data[ 'rights' ] );
+		$permManager = $this->createMock( AbuseFilterPermissionManager::class );
+		$permManager->method( 'shouldProtectFilter' )->willReturn( false );
+		$filter = $this->createMock( AbstractFilter::class );
+		$filter->method( 'getRules' )->willReturn( $data[ 'rules' ] );
+		$this->assertStatusGood( $this->getFilterValidator( $permManager )
+			->checkCanViewProtectedVariables( $performer, $filter )
+		);
+	}
+
+	/**
+	 * @dataProvider provideCheckCanViewProtectedVariablesError
+	 */
+	public function testCheckCanViewProtectedVariablesError( $data ) {
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $data[ 'rights' ] );
+		$permManager = $this->createMock( AbuseFilterPermissionManager::class );
+		$permManager->method( 'shouldProtectFilter' )->willReturn( [ 'user_unnamed_ip' ] );
+		$filter = $this->createMock( AbstractFilter::class );
+		$filter->method( 'getRules' )->willReturn( $data[ 'rules' ] );
+		$this->assertStatusMessageParams(
+			'abusefilter-edit-protected-variable',
+			$this->getFilterValidator( $permManager )->checkCanViewProtectedVariables( $performer, $filter )
+		);
+	}
+
+	public static function provideCheckCanViewProtectedVariables(): array {
+		return [
+			'cannot view, no protected vars' => [
+				[
+					'rights' => [],
+					'rules' => 'user_name'
+				],
+				0
+			],
+			'can view, protected vars' => [
+				[
+					'rights' => [ 'abusefilter-access-protected-vars' ],
+					'rules' => 'user_unnamed_ip'
+				],
+				0
+			],
+			'can view, no protected vars' => [
+				[
+					'rights' => [ 'abusefilter-access-protected-vars' ],
+					'rules' => 'user_name'
+				],
+				0
+			]
+		];
+	}
+
+	public static function provideCheckCanViewProtectedVariablesError(): array {
+		return [
+			'cannot view, protected vars' => [
+				[
+					'rights' => [],
+					'rules' => 'user_unnamed_ip'
+				]
+			],
+		];
 	}
 
 	public function testCheckAllTags_noTags() {

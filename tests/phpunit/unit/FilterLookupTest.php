@@ -168,7 +168,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 
 		foreach ( $filters as $filter ) {
 			$flags = [];
-			foreach ( [ 'enabled', 'deleted', 'hidden', 'global' ] as $flag ) {
+			foreach ( [ 'enabled', 'deleted', 'hidden', 'protected', 'global' ] as $flag ) {
 				$method = 'is' . ucfirst( $flag );
 				if ( $filter->$method() ) {
 					$flags[] = $flag;

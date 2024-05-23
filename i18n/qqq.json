@@ -88,6 +88,7 @@
 	"action-abusefilter-revert": "{{doc-action|abusefilter-revert}}",
 	"action-abusefilter-view-private": "{{doc-action|abusefilter-view-private}}",
 	"action-abusefilter-log-private": "{{doc-action|abusefilter-log-private}}",
+	"action-abusefilter-log-protected": "{{doc-action|abusefilter-access-protected-vars}}",
 	"action-abusefilter-hide-log": "{{doc-action|abusefilter-hide-log}}",
 	"action-abusefilter-hidden-log": "{{doc-action|abusefilter-hidden-log}}",
 	"action-abusefilter-modify-global": "{{doc-action|abusefilter-modify-global}}",
@@ -188,6 +189,7 @@
 	"abusefilter-list-lastmodified": "Column header in abuse filter overview for the last modified timestamp for a filter.\n{{Identical|Last modified}}",
 	"abusefilter-list-group": "The filter group the edit filter is in.",
 	"abusefilter-hidden": "Abuse filter status.\n{{Identical|Private}}",
+	"abusefilter-protected": "Abuse filter status.\n{{Identical|Protected}}",
 	"abusefilter-unhidden": "Abuse filter status.\n{{Identical|Public}}",
 	"abusefilter-enabled": "Abuse filter status.\n{{Identical|Enabled}}",
 	"abusefilter-deleted": "Abuse filter status.\n{{Identical|Deleted}}",
@@ -309,6 +311,7 @@
 	"abusefilter-block-user": "Specification for type of block 'Block' is a verb.",
 	"abusefilter-block-talk": "Specification for type of block. See {{msg-mw|Blocklist-nousertalk}}",
 	"abusefilter-edit-denied": "Text used when a user has to access to filter details.",
+	"abusefilter-edit-denied-protected-vars": "Text used when a user is denied access to filter details because they don't have the viewing right.",
 	"abusefilter-edit-main": "Fieldset legend for edit filter form.",
 	"abusefilter-edit-done-subtitle": "Page subtitle when as filter was edited and saved.",
 	"abusefilter-edit-done": "Text displayed to a user after editing a filter. Parameters:\n* $1 - a filter ID\n* $2 - the ID of the change itself\n* $3 - localized filter ID",
@@ -316,6 +319,7 @@
 	"abusefilter-edit-missingfields": "Message to warn a user that a filter could not be edited for a given reason. Parameters:\n* $1 is a list of missing fields.",
 	"abusefilter-edit-deleting-enabled": "Message to warn a user that an active filter can't be marked as deleted",
 	"abusefilter-edit-restricted": "Message to warn a user that a filter could not be edited for a given reason.",
+	"abusefilter-edit-protected-variable": "Message to warn a user that a filter could not be edited for a given reason. Parameters:\n* $1 is the variable that raised the error.",
 	"abusefilter-edit-viewhistory": "Link description for link that leads to a revision overview for a filter.",
 	"abusefilter-edit-history": "Field label for {{msg-mw|abusefilter-edit-viewhistory}}.\n{{Identical|History}}",
 	"abusefilter-edit-check": "Button text for checking abuse filter syntax.\n\nUsed in {{msg-mw|Abusefilter-test-syntaxerr}}.",
@@ -484,6 +488,7 @@
 	"abusefilter-history": "Used as page title.\n\n\"Change history\" is the \"history of changes\"\n\nParameters:\n* $1 - filter ID\n\nIf the filter ID is not specified, {{msg-mw|Abusefilter-filter-log}} will be used.",
 	"abusefilter-history-foruser": "Parameters:\n* $1 - a link to the changing user's page\n* $2 - (Optional) the plain text username",
 	"abusefilter-history-hidden": "{{Identical|Hidden}}",
+	"abusefilter-history-protected": "{{Identical|Protected}}",
 	"abusefilter-history-enabled": "{{Identical|Enabled}}",
 	"abusefilter-history-global": "{{Identical|Global}}",
 	"abusefilter-history-timestamp": "Used as table column header in history page of a filter.\n\nTranslate \"Time\" as \"Timestamp\" (time and date).\n{{Identical|Time}}",
@@ -658,5 +663,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "{{doc-action|abusefilter-modify-blocked-external-domains}}",
 	"right-abusefilter-bypass-blocked-external-domains": "{{doc-right|abusefilter-bypass-blocked-external-domains}}",
 	"action-abusefilter-bypass-blocked-external-domains": "{{doc-action|abusefilter-bypass-blocked-external-domains}}",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page.",
+	"right-abusefilter-access-protected-vars": "{{doc-right|abusefilter-access-protected-vars}}",
+	"action-abusefilter-access-protected-vars": "{{doc-action|abusefilter-access-protected-vars}}"
 }
