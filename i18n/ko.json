@@ -35,7 +35,8 @@
 			"관인생략",
 			"렌즈",
 			"밝은소년",
-			"아라"
+			"아라",
+			"Suleiman the Magnificent Television"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -145,6 +146,7 @@
 	"abusefilter-log-hide-forbidden": "편집 필터 기록 항목을 숨길 권한이 없습니다.",
 	"abusefilter-log-hide-show": "보이기",
 	"abusefilter-log-hide-hide": "숨기기",
+	"abusefilter-log-hide-no-change": "이미 선택된 ID들은 모두 원하는 가시성을 가지고 있습니다.",
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|숨겨짐}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|숨김 해제됨}}",
 	"abusefilter-log-entry-suppress": "$1님이 $3 기록을 {{GENDER:$2|숨겼습니다}}",
