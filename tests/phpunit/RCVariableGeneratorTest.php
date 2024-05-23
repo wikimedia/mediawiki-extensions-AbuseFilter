@@ -5,6 +5,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
@@ -21,6 +22,7 @@ use MediaWiki\Utils\MWTimestamp;
 class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	use AbuseFilterCreateAccountTestTrait;
 	use AbuseFilterUploadTestTrait;
+	use TempUserTestTrait;
 
 	/**
 	 * @inheritDoc
@@ -40,6 +42,10 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideRCRowTypes
 	 */
 	public function testGetVarsFromRCRow( string $type, string $action, UserIdentity $userIdentity = null ) {
+		if ( $userIdentity && !$userIdentity->isRegistered() ) {
+			// If we are testing anonymous user, make sure we disable temp accounts.
+			$this->disableAutoCreateTempUser();
+		}
 		$timestamp = '1514700000';
 		MWTimestamp::setFakeTime( $timestamp );
 		if ( $userIdentity !== null ) {
