@@ -248,6 +248,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$row = $dbr->newSelectQueryBuilder()
 			->select( [
 				'afl_deleted',
+				'afl_ip',
 				'afl_var_dump',
 				'afl_rev_id',
 				'afl_filter_id',
@@ -287,7 +288,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		$vars = $this->varBlobStore->loadVarDump( $row->afl_var_dump );
+		$vars = $this->varBlobStore->loadVarDump( $row );
+
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
 			'abuseFilterExamine' => [ 'type' => 'log', 'id' => $logid ]
