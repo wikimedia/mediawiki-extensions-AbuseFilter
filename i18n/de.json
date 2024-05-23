@@ -635,7 +635,7 @@
 	"abusefilter-log-ip-not-available": "Nicht verfügbar",
 	"abusefilter-tag-reserved": "Das Tag <code>abusefilter-condition-limit</code> ist für die interne Verwendung durch den Missbrauchsfilter reserviert.",
 	"tag-abusefilter-condition-limit": "Bedingungsgrenze erreicht",
-	"tag-abusefilter-condition-limit-description": "Bearbeitungen oder andere Ereignisse, die nicht von allen aktiven [[Special:AbuseFilter|Missbrauchsfiltern]] überprüft werden konnten ([[mw:Extension:AbuseFilter/Conditions|Hilfe]]).",
+	"tag-abusefilter-condition-limit-description": "Bearbeitungen oder andere Ereignisse, die nicht von allen aktiven [[Special:AbuseFilter|Missbrauchsfiltern]] überprüft werden konnten ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions Hilfe]).",
 	"notification-header-throttle-filter": "Der von {{GENDER:$1|dir}} kürzlich bearbeitete Missbrauchsfilter $2 wurde gedrosselt.",
 	"notification-header-throttle-filter-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|du}} kürzlich bearbeitet hast, hatte eine hohe Trefferquote und {{PLURAL:$4|die folgende Aktion wurde|die folgenden Aktionen wurden}} automatisch deaktiviert: $3.",
 	"notification-header-throttle-filter-no-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|du}} kürzlich bearbeitet hast, hatte eine hohe Trefferquote, aber es wurden keine Aktionen automatisch deaktiviert.",
