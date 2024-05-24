@@ -619,7 +619,7 @@
 	"abusefilter-log-ip-not-available": "לא זמין",
 	"abusefilter-tag-reserved": "התגית <code>abusefilter-condition-limit</code> שמורה לשימוש פנימי של מסנן ההשחתות.",
 	"tag-abusefilter-condition-limit": "חריגה מתנאי ההגבלה",
-	"tag-abusefilter-condition-limit-description": "עריכות או פעולות אחרות שלא ניתן היה לבדוק אותן באמצעות כל [[Special:AbuseFilter|מסנני ההשחתות]] הפעילים ([[mw:Extension:AbuseFilter/Conditions|עזרה]]).",
+	"tag-abusefilter-condition-limit-description": "עריכות או פעולות אחרות שלא ניתן היה לבדוק אותן באמצעות כל [[Special:AbuseFilter|מסנני ההשחתות]] הפעילים ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions עזרה]).",
 	"notification-header-throttle-filter": "מסנן השחתות $2 {{GENDER:$1|שערכת}} לאחרונה הוגבל.",
 	"notification-header-throttle-filter-actions": "למסנן ההשחתה $2 {{GENDER:$1|שערכת}} לאחרונה יש קצב התאמות גבוה {{PLURAL:$4|והפעולה הבאה כובתה|והפעולות הבאות כובו}} באופן אוטומטי: $3.",
 	"notification-header-throttle-filter-no-actions": "למסנן ההשחתה $2 {{GENDER:$1|שערכת}} לאחרונה יש קצב התאמות גבוה, אבל לא כובו שום פעולות באופן אוטומטי.",

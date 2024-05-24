@@ -623,7 +623,7 @@
 	"abusefilter-log-ip-not-available": "Non disponibile",
 	"abusefilter-tag-reserved": "L'etichetta <code>abusefilter-condition-limit</code> è riservata per utilizzo interno da parte del filtro anti abusi.",
 	"tag-abusefilter-condition-limit": "limite di condizioni raggiunto",
-	"tag-abusefilter-condition-limit-description": "Modifiche o altri eventi che non sono stati controllati da tutti i [[Special:AbuseFilter|filtri anti abusi]] attivi ([[mw:Extension:AbuseFilter/Conditions|aiuto]]).",
+	"tag-abusefilter-condition-limit-description": "Modifiche o altri eventi che non sono stati controllati da tutti i [[Special:AbuseFilter|filtri anti abusi]] attivi ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions aiuto]).",
 	"notification-header-throttle-filter": "Sono state disattivate alcune azioni del filtro anti abusi $2 che {{GENDER:$1|hai}} modificato recentemente su {{SITENAME}}.",
 	"notification-header-throttle-filter-actions": "Il filtro anti abusi $2 che {{GENDER:$1|hai}} modificato di recente ha avuto un elevato numero di corrispondenze e {{PLURAL:$4|la seguente azione è stata disattivata|le seguenti azioni sono state disattivate}} automaticamente: $3.",
 	"notification-header-throttle-filter-no-actions": "Il filtro anti abusi $2 che {{GENDER:$1|hai}} modificato di recente ha avuto un elevato numero di corrispondenze, ma nessuna azione è stata disattivata automaticamente.",

@@ -601,7 +601,7 @@
 	"abusefilter-log-ip-not-available": "Non disponibile",
 	"abusefilter-tag-reserved": "Le etiquetta <code>abusefilter-condition-limit</code> es reservate pro uso interne per AbuseFilter.",
 	"tag-abusefilter-condition-limit": "limite de conditiones attingite",
-	"tag-abusefilter-condition-limit-description": "Modificationes o altere eventos que non poteva esser verificate per tote le [[Special:AbuseFilter|filtros anti-abuso]] active ([[mw:Extension:AbuseFilter/Conditions|adjuta]]).",
+	"tag-abusefilter-condition-limit-description": "Modificationes o altere eventos que non poteva esser verificate per tote le [[Special:AbuseFilter|filtros anti-abuso]] active ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions adjuta]).",
 	"notification-header-throttle-filter": "Le filtro anti-abuso $2 que {{GENDER:$1|tu}} ha recentemente modificate ha essite inhibite.",
 	"notification-header-throttle-filter-actions": "Le filtro anti-abuso $2 que {{GENDER:$1|tu}} ha recentemente modificate habeva un grande numero de correspondentias. A causa de isto, le sequente action{{PLURAL:$4||es}} ha essite automaticamente disactivate: $3.",
 	"notification-header-throttle-filter-no-actions": "Le filtro anti-abuso $2 que {{GENDER:$1|tu}} ha recentemente modificate habeva un grande numero de correspondentias, ma nulle action ha essite automaticamente disactivate.",

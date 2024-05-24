@@ -419,6 +419,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "Zeit seit der letzten Änderung der Zielseite in Sekunden ($1)",
 	"abusefilter-edit-builder-vars-user-editcount": "Beitragszahl des Benutzers ($1)",
 	"abusefilter-edit-builder-vars-user-age": "Alter des Benutzerkontos ($1)",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "IP-Adresse des Benutzerkontos (nur für abgemeldete Benutzer und temporäre Konten) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "Name des Benutzerkontos ($1)",
 	"abusefilter-edit-builder-vars-user-type": "Typ des Benutzerkontos ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "Gruppen (auch implizite), in denen der Benutzer Mitglied ist ($1)",
