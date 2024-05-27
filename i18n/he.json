@@ -403,6 +403,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "זמן מאז העריכה האחרונה של דף היעד בהעברה בשניות ($1)",
 	"abusefilter-edit-builder-vars-user-editcount": "מספר העריכות של המשתמש ($1)",
 	"abusefilter-edit-builder-vars-user-age": "הזמן שעבר מאז הרשמת המשתמש ($1)",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "כתובת ה־IP של חשבון המשתמש (למשתמשים שיצאו מהחשבון וחשבונות זמניים בלבד) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "שם חשבון המשתמש ($1)",
 	"abusefilter-edit-builder-vars-user-type": "סוג חשבון המשתמש ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "קבוצות (כולל קבוצות משתמעות) שהמשתמש נמצא בהן ($1)",

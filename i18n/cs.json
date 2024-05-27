@@ -407,6 +407,7 @@
 	"abusefilter-edit-builder-vars-movedto-age": "Stáří stránky, na kterou se přesunuje (v sekundách)",
 	"abusefilter-edit-builder-vars-user-editcount": "Počet uživatelových editací",
 	"abusefilter-edit-builder-vars-user-age": "Stáří uživatelského účtu",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "IP adresa uživatelského účtu (pouze odhlášení a dočasné účty) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "Uživatelské jméno",
 	"abusefilter-edit-builder-vars-user-type": "Typ uživatelského účtu ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "Skupiny (včetně implicitních), do kterých uživatel patří",

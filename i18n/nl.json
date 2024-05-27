@@ -417,6 +417,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "Tijd sinds laatste bewerking bestemmingspagina voor hernoemen in seconden ($1)",
 	"abusefilter-edit-builder-vars-user-editcount": "Aantal bewerkingen gebruiker ($1)",
 	"abusefilter-edit-builder-vars-user-age": "Bestaansduur gebruikersaccount ($1)",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "IP-adres van het gebruikersaccount (alleen voor afgemelde gebruikers en tijdelijke accounts) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "Naam gebruikersaccount ($1)",
 	"abusefilter-edit-builder-vars-user-type": "Type gebruikersaccount ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "Groepen (ook impliciete) waar gebruiker lid van is ($1)",

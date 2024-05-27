@@ -385,6 +385,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "Tempore passate depost le ultime modification del pagina de destination del renomination ($1)",
 	"abusefilter-edit-builder-vars-user-editcount": "Numero de modificationes del usator ($1)",
 	"abusefilter-edit-builder-vars-user-age": "Etate del conto de usator ($1)",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "Adresse IP del conto de usator (pro usatores con session claudite e contos temporari solmente) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "Nomine del conto de usator ($1)",
 	"abusefilter-edit-builder-vars-user-type": "Typo del conto de usator ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "Le gruppos (includente gruppos implicite) del quales le usator es membro ($1)",
