@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"apihelp-abusefiltercheckmatch-summary": "Бу AbuseFilter тюрлениучюлени тобламасына, неда журналгъа киргизилген AbuseFilter болуууна келишгенин тинтигиз.",
+	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid неда logid керекди, алай а джангыз бири хайырланырчады.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Бу келишиуню контроль этер ючюн толу фильтр текст.",
+	"apihelp-abusefiltercheckmatch-param-vars": "JSON, тест этиллик тюрлениучю массивни кодланды.",
+	"apihelp-abusefiltercheckmatch-param-rcid": "Тинтиллик ахыр тюрлениуню идентификатору.",
+	"apihelp-abusefiltercheckmatch-param-logid": "Джорукъсуз хайырланыу фильтрни журнал идентификаторуну тинтер ючюн хайырланыгъыз."
+}
