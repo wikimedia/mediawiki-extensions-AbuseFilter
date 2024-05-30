@@ -8,6 +8,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
@@ -179,20 +180,20 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$filterObj = $lookup->getFilter( $filterID, true );
 				$globalDesc = $filterObj->getName();
 				$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $globalDesc );
-				$filter_hidden = $filterObj->isHidden();
+				$privacyLevel = $filterObj->getPrivacyLevel();
 			} catch ( CentralDBNotAvailableException $_ ) {
 				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
 				// either hide all filters, including not hidden, or show all, including hidden
 				// we choose the former
-				$filter_hidden = true;
+				$privacyLevel = Flags::FILTER_HIDDEN;
 			}
 		} else {
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
 				$row->af_public_comments ?? '' );
-			$filter_hidden = $row->af_hidden;
+			$privacyLevel = $row->af_hidden;
 		}
 
-		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $filter_hidden ) ) {
+		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
 			$actionLinks = [];
 
 			if ( $isListItem ) {

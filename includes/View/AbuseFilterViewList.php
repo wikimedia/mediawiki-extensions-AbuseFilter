@@ -7,6 +7,7 @@ use IContextSource;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterPager;
 use MediaWiki\Extension\AbuseFilter\Pager\GlobalAbuseFilterPager;
@@ -145,7 +146,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_enabled'] = 1;
 		}
 		if ( in_array( 'hideprivate', $furtherOptions ) ) {
-			$conds['af_hidden'] = 0;
+			$conds['af_hidden'] = Flags::FILTER_PUBLIC;
 		}
 
 		if ( $scope === 'local' ) {

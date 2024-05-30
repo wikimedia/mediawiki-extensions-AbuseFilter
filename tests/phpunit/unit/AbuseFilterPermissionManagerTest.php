@@ -6,6 +6,7 @@ use Generator;
 use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWikiUnitTestCase;
@@ -165,25 +166,25 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	public static function provideCanSeeLogDetailsForFilter(): Generator {
 		$details = [ 0 => 'abusefilter-log-detail' ];
 		$private = [ 1 => 'abusefilter-log-private' ];
-		yield 'filter hidden, not privileged' => [ true, [], false ];
-		yield 'filter hidden, details only' => [ true, $details, false ];
-		yield 'filter hidden, private logs only' => [ true, $private, false ];
-		yield 'filter hidden, details and private logs' => [ true, $details + $private, true ];
-		yield 'filter visible, not privileged' => [ false, [], false ];
-		yield 'filter visible, privileged' => [ false, $details, true ];
+		yield 'filter hidden, not privileged' => [ Flags::FILTER_HIDDEN, [], false ];
+		yield 'filter hidden, details only' => [ Flags::FILTER_HIDDEN, $details, false ];
+		yield 'filter hidden, private logs only' => [ Flags::FILTER_HIDDEN, $private, false ];
+		yield 'filter hidden, details and private logs' => [ Flags::FILTER_HIDDEN, $details + $private, true ];
+		yield 'filter visible, not privileged' => [ Flags::FILTER_PUBLIC, [], false ];
+		yield 'filter visible, privileged' => [ Flags::FILTER_PUBLIC, $details, true ];
 	}
 
 	/**
-	 * @param bool $filterHidden
+	 * @param int $privacyLevel
 	 * @param array $rights
 	 * @param bool $expected
 	 * @dataProvider provideCanSeeLogDetailsForFilter
 	 */
-	public function testCanSeeLogDetailsForFilter( bool $filterHidden, array $rights, bool $expected ) {
+	public function testCanSeeLogDetailsForFilter( int $privacyLevel, array $rights, bool $expected ) {
 		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
 		$this->assertSame(
 			$expected,
-			$this->getPermMan()->canSeeLogDetailsForFilter( $performer, $filterHidden )
+			$this->getPermMan()->canSeeLogDetailsForFilter( $performer, $privacyLevel )
 		);
 	}
 

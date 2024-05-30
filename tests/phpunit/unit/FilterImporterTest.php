@@ -29,7 +29,7 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 		'actions' => [],
 		'enabled' => true,
 		'deleted' => false,
-		'hidden' => true,
+		'privacyLevel' => true,
 		'global' => false
 	];
 

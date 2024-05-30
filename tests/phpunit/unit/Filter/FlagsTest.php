@@ -14,13 +14,14 @@ class FlagsTest extends MediaWikiUnitTestCase {
 	public function testGetters() {
 		$enabled = true;
 		$deleted = false;
-		$hidden = true;
+		$privacyLevel = Flags::FILTER_HIDDEN;
 		$global = false;
-		$flags = new Flags( $enabled, $deleted, $hidden, $global );
+		$flags = new Flags( $enabled, $deleted, $privacyLevel, $global );
 
 		$this->assertSame( $enabled, $flags->getEnabled(), 'enabled' );
 		$this->assertSame( $deleted, $flags->getDeleted(), 'deleted' );
-		$this->assertSame( $hidden, $flags->getHidden(), 'hidden' );
+		$this->assertSame( true, $flags->getHidden(), 'hidden' );
+		$this->assertSame( $privacyLevel, $flags->getPrivacyLevel(), 'privacy level' );
 		$this->assertSame( $global, $flags->getGlobal(), 'global' );
 	}
 
@@ -31,7 +32,7 @@ class FlagsTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideSetters
 	 */
 	public function testSetters( $value, string $setter, string $getter ) {
-		$flags = new Flags( true, true, true, true );
+		$flags = new Flags( true, true, Flags::FILTER_HIDDEN, true );
 
 		$flags->$setter( $value );
 		$this->assertSame( $value, $flags->$getter() );

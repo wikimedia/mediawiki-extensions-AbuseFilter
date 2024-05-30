@@ -47,11 +47,11 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 		$group = 'group';
 		$enabled = true;
 		$deleted = false;
-		$hidden = true;
+		$privacyLevel = Flags::FILTER_HIDDEN;
 		$global = false;
 		$filter = new AbstractFilter(
 			new Specs( $rules, $comments, $name, $actionsNames, $group ),
-			new Flags( $enabled, $deleted, $hidden, $global ),
+			new Flags( $enabled, $deleted, $privacyLevel, $global ),
 			[ 'foo' => [] ]
 		);
 
@@ -62,7 +62,8 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( $group, $filter->getGroup(), 'group' );
 		$this->assertSame( $enabled, $filter->isEnabled(), 'enabled' );
 		$this->assertSame( $deleted, $filter->isDeleted(), 'deleted' );
-		$this->assertSame( $hidden, $filter->isHidden(), 'hidden' );
+		$this->assertSame( true, $filter->isHidden(), 'hidden' );
+		$this->assertSame( $privacyLevel, $filter->getPrivacyLevel(), 'privacy level' );
 		$this->assertSame( $global, $filter->isGlobal(), 'global' );
 	}
 

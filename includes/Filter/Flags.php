@@ -12,19 +12,25 @@ class Flags {
 	private $deleted;
 	/** @var bool */
 	private $hidden;
+	/** @var int */
+	private $privacyLevel;
 	/** @var bool */
 	private $global;
+
+	public const FILTER_PUBLIC = 0b00;
+	public const FILTER_HIDDEN = 0b01;
 
 	/**
 	 * @param bool $enabled
 	 * @param bool $deleted
-	 * @param bool $hidden
+	 * @param int $hidden
 	 * @param bool $global
 	 */
-	public function __construct( bool $enabled, bool $deleted, bool $hidden, bool $global ) {
+	public function __construct( bool $enabled, bool $deleted, int $hidden, bool $global ) {
 		$this->enabled = $enabled;
 		$this->deleted = $deleted;
-		$this->hidden = $hidden;
+		$this->hidden = (bool)( self::FILTER_HIDDEN & $hidden );
+		$this->privacyLevel = $hidden;
 		$this->global = $global;
 	}
 
@@ -68,6 +74,19 @@ class Flags {
 	 */
 	public function setHidden( bool $hidden ): void {
 		$this->hidden = $hidden;
+		$this->updatePrivacyLevel();
+	}
+
+	private function updatePrivacyLevel() {
+		$hidden = $this->hidden ? self::FILTER_HIDDEN : 0;
+		$this->privacyLevel = $hidden;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getPrivacyLevel(): int {
+		return $this->privacyLevel;
 	}
 
 	/**

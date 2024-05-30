@@ -117,6 +117,13 @@ class AbstractFilter {
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getPrivacyLevel(): int {
+		return $this->flags->getPrivacyLevel();
+	}
+
+	/**
 	 * @return bool
 	 */
 	public function isGlobal(): bool {

@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use Generator;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Maintenance\SearchFilters;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 
@@ -43,7 +44,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 			'af_enabled' => 1,
 			'af_comments' => '',
 			'af_public_comments' => 'Test filter',
-			'af_hidden' => 0,
+			'af_hidden' => Flags::FILTER_PUBLIC,
 			'af_hit_count' => 0,
 			'af_throttled' => 0,
 			'af_deleted' => 0,

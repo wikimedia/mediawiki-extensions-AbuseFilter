@@ -25,6 +25,7 @@ use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
@@ -141,15 +142,15 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( !$this->afPermManager->canViewPrivateFiltersLogs( $performer ) ) {
 				foreach ( $searchFilters as [ $filterID, $global ] ) {
 					try {
-						$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
+						$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
 					} catch ( CentralDBNotAvailableException $_ ) {
 						// Conservatively assume it's hidden, like in SpecialAbuseLog
-						$isHidden = true;
+						$privacyLevel = Flags::FILTER_HIDDEN;
 					} catch ( FilterNotFoundException $_ ) {
-						$isHidden = false;
+						$privacyLevel = Flags::FILTER_PUBLIC;
 						$foundInvalid = true;
 					}
-					if ( $isHidden ) {
+					if ( Flags::FILTER_HIDDEN & $privacyLevel ) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
 						);
@@ -285,8 +286,8 @@ class QueryAbuseLog extends ApiQueryBase {
 			$filterID = $row->afl_filter_id;
 			$global = $row->afl_global;
 			$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
-			$isHidden = $lookup->getFilter( $filterID, $global )->isHidden();
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $isHidden );
+			$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel );
 
 			$entry = [];
 			if ( $fld_ids ) {

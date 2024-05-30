@@ -23,6 +23,8 @@ use ApiQuery;
 use ApiQueryBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
@@ -115,8 +117,14 @@ class QueryAbuseFilters extends ApiQueryBase {
 			$this->addWhereIf( 'af_enabled != 0', isset( $show['enabled'] ) );
 			$this->addWhereIf( 'af_deleted = 0', isset( $show['!deleted'] ) );
 			$this->addWhereIf( 'af_deleted != 0', isset( $show['deleted'] ) );
-			$this->addWhereIf( 'af_hidden = 0', isset( $show['!private'] ) );
-			$this->addWhereIf( 'af_hidden != 0', isset( $show['private'] ) );
+			$this->addWhereIf(
+				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0',
+				isset( $show['!private'] )
+			);
+			$this->addWhereIf(
+				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' != 0',
+				isset( $show['private'] )
+			);
 		}
 
 		$res = $this->select( __METHOD__ );
@@ -138,7 +146,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( $fld_desc ) {
 				$entry['description'] = $row->af_public_comments;
 			}
-			if ( $fld_pattern && ( !$row->af_hidden || $showhidden ) ) {
+			if ( $fld_pattern && ( !FilterUtils::isHidden( $row->af_hidden ) || $showhidden ) ) {
 				$entry['pattern'] = $row->af_pattern;
 			}
 			if ( $fld_actions ) {
@@ -147,7 +155,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( $fld_hits ) {
 				$entry['hits'] = intval( $row->af_hit_count );
 			}
-			if ( $fld_comments && ( !$row->af_hidden || $showhidden ) ) {
+			if ( $fld_comments && ( !FilterUtils::isHidden( $row->af_hidden ) || $showhidden ) ) {
 				$entry['comments'] = $row->af_comments;
 			}
 			if ( $fld_user ) {
@@ -157,7 +165,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 				$ts = new MWTimestamp( $row->af_timestamp );
 				$entry['lastedittime'] = $ts->getTimestamp( TS_ISO_8601 );
 			}
-			if ( $fld_private && $row->af_hidden ) {
+			if ( $fld_private && FilterUtils::isHidden( $row->af_hidden ) ) {
 				$entry['private'] = '';
 			}
 			if ( $fld_status ) {

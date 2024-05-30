@@ -106,12 +106,12 @@ class AbuseFilterPermissionManager {
 
 	/**
 	 * @param Authority $performer
-	 * @param bool|int $filterHidden Whether the filter is hidden
+	 * @param int $privacyLevel Bitmask of privacy flags
 	 * @todo Take a Filter parameter
 	 * @return bool
 	 */
-	public function canSeeLogDetailsForFilter( Authority $performer, $filterHidden ): bool {
-		if ( $filterHidden ) {
+	public function canSeeLogDetailsForFilter( Authority $performer, int $privacyLevel ): bool {
+		if ( FilterUtils::isHidden( $privacyLevel ) ) {
 			return $this->canSeeLogDetails( $performer )
 				&& $this->canViewPrivateFiltersLogs( $performer );
 		}

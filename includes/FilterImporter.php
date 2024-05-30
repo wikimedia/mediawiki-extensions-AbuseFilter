@@ -35,7 +35,7 @@ class FilterImporter {
 		'actions',
 		'enabled',
 		'deleted',
-		'hidden',
+		'privacylevel',
 		'global'
 	];
 
@@ -69,7 +69,7 @@ class FilterImporter {
 			'actions' => $filter->getActions(),
 			'enabled' => $filter->isEnabled(),
 			'deleted' => $filter->isDeleted(),
-			'hidden' => $filter->isHidden(),
+			'privacylevel' => $filter->getPrivacyLevel(),
 			'global' => $filter->isGlobal()
 		];
 		// @codeCoverageIgnoreStart
@@ -108,7 +108,7 @@ class FilterImporter {
 			new Flags(
 				(bool)$filterData['enabled'],
 				(bool)$filterData['deleted'],
-				(bool)$filterData['hidden'],
+				(int)$filterData['privacylevel'],
 				// And also make it global only if global filters are enabled here
 				$filterData['global'] && $globalFiltersEnabled
 			),

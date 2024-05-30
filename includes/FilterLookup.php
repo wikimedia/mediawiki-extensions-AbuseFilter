@@ -384,6 +384,17 @@ class FilterLookup implements IDBAccessObject {
 	}
 
 	/**
+	 * @param array $flags
+	 * @return int
+	 */
+	private function getPrivacyLevelFromFlags( $flags ): int {
+		$hidden = in_array( 'hidden', $flags, true ) ?
+			Flags::FILTER_HIDDEN :
+			0;
+		return $hidden;
+	}
+
+	/**
 	 * Note: this is private because no external caller should access DB rows directly.
 	 * @param stdClass $row
 	 * @return HistoryFilter
@@ -405,7 +416,7 @@ class FilterLookup implements IDBAccessObject {
 			new Flags(
 				in_array( 'enabled', $flags, true ),
 				in_array( 'deleted', $flags, true ),
-				in_array( 'hidden', $flags, true ),
+				$this->getPrivacyLevelFromFlags( $flags ),
 				in_array( 'global', $flags, true )
 			),
 			$actions,
@@ -438,7 +449,7 @@ class FilterLookup implements IDBAccessObject {
 			new Flags(
 				(bool)$row->af_enabled,
 				(bool)$row->af_deleted,
-				(bool)$row->af_hidden,
+				(int)$row->af_hidden,
 				(bool)$row->af_global
 			),
 			$actions,

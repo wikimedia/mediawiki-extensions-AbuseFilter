@@ -205,7 +205,7 @@ class FilterStore {
 		$afhRow['afh_changed_fields'] = implode( ',', $differences );
 
 		$flags = [];
-		if ( $newRow['af_hidden'] ) {
+		if ( FilterUtils::isHidden( $newRow['af_hidden'] ) ) {
 			$flags[] = 'hidden';
 		}
 		if ( $newRow['af_enabled'] ) {
@@ -291,7 +291,7 @@ class FilterStore {
 			'af_actions' => implode( ',', $filter->getActionsNames() ),
 			'af_enabled' => (int)$filter->isEnabled(),
 			'af_deleted' => (int)$filter->isDeleted(),
-			'af_hidden' => (int)$filter->isHidden(),
+			'af_hidden' => $filter->getPrivacyLevel(),
 			'af_global' => (int)$filter->isGlobal(),
 			'af_timestamp' => $filter->getTimestamp(),
 			'af_hit_count' => $filter->getHitCount(),
