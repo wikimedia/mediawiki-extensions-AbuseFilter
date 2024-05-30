@@ -185,11 +185,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		$startTS = strtotime( $formData['SearchPeriodStart'] );
 		if ( $startTS ) {
-			$conds[] = 'rc_timestamp>=' . $dbr->addQuotes( $dbr->timestamp( $startTS ) );
+			$conds[] = $dbr->expr( 'rc_timestamp', '>=', $dbr->timestamp( $startTS ) );
 		}
 		$endTS = strtotime( $formData['SearchPeriodEnd'] );
 		if ( $endTS ) {
-			$conds[] = 'rc_timestamp<=' . $dbr->addQuotes( $dbr->timestamp( $endTS ) );
+			$conds[] = $dbr->expr( 'rc_timestamp', '<=', $dbr->timestamp( $endTS ) );
 		}
 		$pager = new AbuseFilterExaminePager(
 			$changesList,
