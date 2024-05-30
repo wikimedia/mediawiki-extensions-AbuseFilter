@@ -29,7 +29,8 @@
 			"Vlad5250",
 			"Ата",
 			"Максим Підліснюк",
-			"Тест"
+			"Тест",
+			"Keneris"
 		]
 	},
 	"abusefilter-desc": "Застосовує до редагувань автоматичні евристики.",
@@ -216,6 +217,7 @@
 	"abusefilter-add": "Додавання фільтра зловживань",
 	"abusefilter-edit": "Зміна фільтра зловживань",
 	"abusefilter-edit-specific": "Редагування фільтра зловживань $1: $2",
+	"abusefilter-view-specific": "Перегляд Фільтра зловживань $1: $2",
 	"abusefilter-edit-subtitle": "Редагування фільтра $1",
 	"abusefilter-edit-subtitle-new": "Створення фільтра",
 	"abusefilter-edit-token-not-match": "Ваше редагування не збережене! Будь ласка, збережіть знову.",
@@ -607,6 +609,7 @@
 	"abusefilter-blocked-domains-domain-header": "Домен",
 	"abusefilter-blocked-domains-notes-header": "Примітки",
 	"abusefilter-blocked-domains-actions-header": "Дії",
+	"abusefilter-blocked-domains-addedby-header": "Додано",
 	"abusefilter-blocked-domains-remove": "вилучити",
 	"abusefilter-blocked-domains-remove-title": "Вилучити заблокований домен",
 	"abusefilter-blocked-domains-remove-explanation-initial": "На цій сторінці ви можете вилучити заблокований домен",
