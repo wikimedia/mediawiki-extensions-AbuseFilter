@@ -435,5 +435,15 @@
 	"abusefilter-view-privatedetails-reason": "Энчи хапарлаулагъа джетишиу чурум:",
 	"abusefilter-log-details-id": "Журналны идентификатору",
 	"abusefilter-invalid-request": "Джараусуз излем! Энчи журнал хапарлаулагъа [[Special:AbuseLog/$1]] формадагъы формадан джетишиуюгюз эмда чурум белгилеуюгюз керекди.",
-	"abusefilter-invalid-request-noid": "Джараусуз излем! Джорукъсуз хайырланыуну журналыны хапарлаууну энчи бетинде журналны юсюнден хапарлау бетде джетиширге эмда чурумну белгилерге керексиз."
+	"abusefilter-invalid-request-noid": "Джараусуз излем! Джорукъсуз хайырланыуну журналыны хапарлаууну энчи бетинде журналны юсюнден хапарлау бетде джетиширге эмда чурумну белгилерге керексиз.",
+	"log-description-abusefilterprivatedetails": "Бу журнал, хайырланыучуну джорукъсуз хайырланнган журналыны энчи хапарлауларына къарагъан заманларыны тизмесини кёргюз.",
+	"abusefilter-noreason": "Эс бёлюу: Бу журналны энчи хапарлауларын кёрюр ючюн, чурумну белгилерге керексиз.",
+	"abusefilter-log-ip-not-available": "Хайырланырча Тюлдю",
+	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code> тег, AbuseFilter джанындан ич хайырланыу ючюн айрылгъанды.",
+	"tag-abusefilter-condition-limit": "шарт лимитине джетди",
+	"notification-header-throttle-filter": "Кёб болмай {{GENDER:$1|тюзетген}} $2 джорукъсуз хайырланыу фильтр чеклендирилди.",
+	"notification-header-throttle-filter-actions": "Кёб болмай {{GENDER:$1|сиз}} тюзетген $2 джорукъсуз хайырланыу фильтрни келишиу ёлчеми мийик эди эмда бу {{PLURAL:$4|этиу|этиуле}} автомат халда джукълатылды: $3.",
+	"notification-header-throttle-filter-no-actions": "Кёб болмай {{GENDER:$1|сиз}} тюзетген $2 джорукъсуз хайырланыу фильтрни келишиу ёлчеми мийик эди, алай а чырт бир этиу автомат халда джукълатылмады.",
+	"notification-subject-throttle-filter": "{{GENDER:$1|Сиз}} тюзетген джорукъсуз хайырланыу фильтр {{SITENAME}} чайтда чеклендирилди",
+	"notification-link-text-show-filter": "Фильтрни кёргюз"
 }
