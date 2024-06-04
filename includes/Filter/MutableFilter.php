@@ -117,6 +117,13 @@ class MutableFilter extends Filter {
 	}
 
 	/**
+	 * @param bool $protected
+	 */
+	public function setProtected( bool $protected ): void {
+		$this->flags->setProtected( $protected );
+	}
+
+	/**
 	 * @param bool $global
 	 */
 	public function setGlobal( bool $global ): void {

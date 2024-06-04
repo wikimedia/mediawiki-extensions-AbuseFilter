@@ -71,6 +71,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
 		$canViewPrivate = $this->afPermManager->canViewPrivateFilters( $this->getAuthority() );
+		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() );
 
 		if ( $filter ) {
 			try {
@@ -79,6 +80,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 				$filter = null;
 			}
 			if ( isset( $filterObj ) && $filterObj->isHidden() && !$canViewPrivate ) {
+				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
+				return;
+			}
+			if ( isset( $filterObj ) && $filterObj->isProtected() && !$canViewProtectedVars ) {
 				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 				return;
 			}
@@ -162,7 +167,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$this->specsFormatter,
 			$filter,
 			$user,
-			$canViewPrivate
+			$canViewPrivate,
+			$canViewProtectedVars
 		);
 
 		$out->addParserOutputContent( $pager->getFullOutput() );

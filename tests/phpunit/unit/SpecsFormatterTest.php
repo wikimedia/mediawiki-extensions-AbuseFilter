@@ -160,7 +160,11 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 
 		$multiple = MutableFilter::newDefault();
 		$multiple->setHidden( true );
-		yield 'multiple' => [ $multiple, 'abusefilter-history-enabled,abusefilter-history-hidden' ];
+		$multiple->setProtected( true );
+		yield 'multiple' => [
+			$multiple,
+			'abusefilter-history-enabled,abusefilter-history-hidden,abusefilter-history-protected'
+		];
 	}
 
 	/**

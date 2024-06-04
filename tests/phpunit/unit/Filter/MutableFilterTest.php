@@ -49,6 +49,7 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 			'enabled' => [ true, 'setEnabled', 'isEnabled' ],
 			'deleted' => [ false, 'setDeleted', 'isDeleted' ],
 			'hidden' => [ true, 'setHidden', 'isHidden' ],
+			'protected' => [ true, 'setProtected', 'isProtected' ],
 			'global' => [ false, 'setGlobal', 'isGlobal' ],
 			'actions' => [ [ 'foo' => [] ], 'setActions', 'getActions' ],
 			'user ID' => [ 163, 'setUserID', 'getUserID' ],

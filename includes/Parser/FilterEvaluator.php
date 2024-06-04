@@ -190,6 +190,11 @@ class FilterEvaluator {
 	private $equivset;
 
 	/**
+	 * @var array AFPToken::TID values found during node evaluation
+	 */
+	private $usedVars = [];
+
+	/**
 	 * Create a new instance
 	 *
 	 * @param Language $contLang Content language, used for language-dependent function
@@ -287,6 +292,7 @@ class FilterEvaluator {
 		$this->mAllowShort = true;
 		$this->mFilter = null;
 		$this->warnings = [];
+		$this->usedVars = [];
 	}
 
 	/**
@@ -436,6 +442,20 @@ class FilterEvaluator {
 		$ret = $this->evalNode( $root );
 		$this->statsd->timing( 'abusefilter_cachingParser_eval', microtime( true ) - $startTime );
 		return $ret;
+	}
+
+	/**
+	 * Parse a filter and return the variables used.
+	 * All variables are AFPToken::TID and are found during the node stepthrough in evaluation
+	 * and saved to self::usedVars to be returned to the caller in this function.
+	 *
+	 * @param string $filter
+	 * @return array
+	 */
+	public function getUsedVars( $filter ) {
+		$this->resetState();
+		$this->evaluateExpression( $filter );
+		return array_unique( $this->usedVars );
 	}
 
 	/**
@@ -811,6 +831,8 @@ class FilterEvaluator {
 		// already. So we do not error unbound variables at runtime,
 		// allowing it to result in DUNDEFINED.
 		$allowMissingVariables = !$this->varExists( $var ) || $this->allowMissingVariables;
+
+		array_push( $this->usedVars, $var );
 
 		// It's a built-in, non-disabled variable (either set or unset), or a set custom variable
 		$flags = $allowMissingVariables

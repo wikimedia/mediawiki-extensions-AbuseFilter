@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use Generator;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
@@ -18,8 +19,14 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	use MockAuthorityTrait;
 
 	private function getPermMan(): AbuseFilterPermissionManager {
-		// No longer has any dependencies
-		return new AbuseFilterPermissionManager();
+		return new AbuseFilterPermissionManager(
+			new ServiceOptions(
+				AbuseFilterPermissionManager::CONSTRUCTOR_OPTIONS,
+				[
+					'AbuseFilterProtectedVariables' => [ 'user_unnamed_ip' ]
+				]
+			)
+		);
 	}
 
 	public function provideCanEdit(): Generator {
@@ -166,12 +173,92 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	public static function provideCanSeeLogDetailsForFilter(): Generator {
 		$details = [ 0 => 'abusefilter-log-detail' ];
 		$private = [ 1 => 'abusefilter-log-private' ];
+		$protected = [ 2 => 'abusefilter-access-protected-vars' ];
 		yield 'filter hidden, not privileged' => [ Flags::FILTER_HIDDEN, [], false ];
 		yield 'filter hidden, details only' => [ Flags::FILTER_HIDDEN, $details, false ];
 		yield 'filter hidden, private logs only' => [ Flags::FILTER_HIDDEN, $private, false ];
 		yield 'filter hidden, details and private logs' => [ Flags::FILTER_HIDDEN, $details + $private, true ];
+		yield 'filter protected, not privileged' => [ Flags::FILTER_USES_PROTECTED_VARS, [], false ];
+		yield 'filter protected, privileged' => [ Flags::FILTER_USES_PROTECTED_VARS, $protected, true ];
+		yield 'filter hidden and protected, details and private only' => [
+			Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS, $details + $private, false
+		];
+		yield 'filter hidden and protected, protected only' => [
+			Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS, $protected, false
+		];
 		yield 'filter visible, not privileged' => [ Flags::FILTER_PUBLIC, [], false ];
 		yield 'filter visible, privileged' => [ Flags::FILTER_PUBLIC, $details, true ];
+	}
+
+	public function provideCanViewProtectedVariables(): Generator {
+		$block = $this->createMock( DatabaseBlock::class );
+		$block->method( 'isSiteWide' )->willReturn( true );
+		yield 'not privileged, blocked' => [ $block, [], false ];
+		yield 'not privileged, not blocked' => [ null, [], false ];
+		yield 'has right, blocked' => [ $block, [ 'abusefilter-access-protected-vars' ], false ];
+		yield 'has right, not blocked' => [ null, [ 'abusefilter-access-protected-vars' ], true ];
+	}
+
+	/**
+	 * @dataProvider provideCanViewProtectedVariables
+	 */
+	public function testCanViewProtectedVariables( ?DatabaseBlock $block, array $rights, bool $expected ) {
+		if ( $block !== null ) {
+			$performer = $this->mockUserAuthorityWithBlock(
+				$this->mockRegisteredUltimateAuthority()->getUser(),
+				$block,
+				$rights
+			);
+		} else {
+			$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+		}
+
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->canViewProtectedVariables( $performer )
+		);
+	}
+
+	public static function provideShouldProtectFilter(): Generator {
+		yield 'cannot view, protected vars' => [
+			[
+				'rights' => [],
+				'usedVars' => [ 'user_unnamed_ip' ]
+			],
+			[ 'user_unnamed_ip' ]
+		];
+		yield 'cannot view, no protected vars' => [
+			[
+				'rights' => [],
+				'usedVars' => []
+			],
+			false
+		];
+		yield 'can view, protected vars' => [
+			[
+				'rights' => [ 'abusefilter-access-protected-vars' ],
+				'usedVars' => [ 'user_unnamed_ip' ]
+			],
+			true
+		];
+		yield 'can view, no protected vars' => [
+			[
+				'rights' => [ 'abusefilter-access-protected-vars' ],
+				'usedVars' => []
+			],
+			false
+		];
+	}
+
+	/**
+	 * @dataProvider provideShouldProtectFilter
+	 */
+	public function testShouldProtectFilter( array $data, $expected ) {
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $data[ 'rights' ] );
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->shouldProtectFilter( $performer, $data[ 'usedVars' ] )
+		);
 	}
 
 	/**

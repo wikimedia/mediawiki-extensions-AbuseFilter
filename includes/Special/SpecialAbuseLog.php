@@ -723,8 +723,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					$privacyLevel = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global )
 						->getPrivacyLevel();
 				} catch ( CentralDBNotAvailableException $_ ) {
-					// Conservatively assume that it's hidden, like in formatRow
-					$privacyLevel = Flags::FILTER_HIDDEN;
+					// Conservatively assume that it's hidden and protected, like in formatRow
+					$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
 				}
 			} else {
 				$privacyLevel = $row->af_hidden;

@@ -291,6 +291,9 @@ class AbuseFilterPager extends TablePager {
 				if ( FilterUtils::isHidden( (int)$value ) ) {
 					$flagMsgs[] = $this->msg( 'abusefilter-hidden' )->parse();
 				}
+				if ( FilterUtils::isProtected( (int)$value ) ) {
+					$flagMsgs[] = $this->msg( 'abusefilter-protected' )->parse();
+				}
 				if ( !$flagMsgs ) {
 					return $this->msg( 'abusefilter-unhidden' )->parse();
 				}

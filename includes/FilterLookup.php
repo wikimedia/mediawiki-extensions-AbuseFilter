@@ -391,7 +391,10 @@ class FilterLookup implements IDBAccessObject {
 		$hidden = in_array( 'hidden', $flags, true ) ?
 			Flags::FILTER_HIDDEN :
 			0;
-		return $hidden;
+		$protected = in_array( 'protected', $flags, true ) ?
+			Flags::FILTER_USES_PROTECTED_VARS :
+			0;
+		return $hidden | $protected;
 	}
 
 	/**

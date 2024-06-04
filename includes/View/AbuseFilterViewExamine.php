@@ -268,8 +268,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		try {
 			$privacyLevel = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )->getPrivacyLevel();
 		} catch ( CentralDBNotAvailableException $_ ) {
-			// Conservatively assume that it's hidden, like in SpecialAbuseLog
-			$privacyLevel = Flags::FILTER_HIDDEN;
+			// Conservatively assume that it's hidden and protected, like in SpecialAbuseLog
+			$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
 		}
 		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );

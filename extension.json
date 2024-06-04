@@ -29,7 +29,8 @@
 		"abusefilter-hide-log",
 		"abusefilter-modify-global",
 		"abusefilter-modify-blocked-external-domains",
-		"abusefilter-bypass-blocked-external-domains"
+		"abusefilter-bypass-blocked-external-domains",
+		"abusefilter-access-protected-vars"
 	],
 	"GroupPermissions": {
 		"*": {
@@ -575,6 +576,12 @@
 		"AbuseFilterEnableBlockedExternalDomain": {
 			"value": false,
 			"description": "Temporary config value to disable Special:BlockedExternalDomains"
+		},
+		"AbuseFilterProtectedVariables": {
+			"value": [
+				"user_unnamed_ip"
+			],
+			"description": "Array of variables that are be considered protected (limited access) and require the abusefilter-access-protected-vars right to use/view."
 		}
 	},
 	"load_composer_autoloader": true,

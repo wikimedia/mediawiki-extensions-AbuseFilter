@@ -144,8 +144,8 @@ class QueryAbuseLog extends ApiQueryBase {
 					try {
 						$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
 					} catch ( CentralDBNotAvailableException $_ ) {
-						// Conservatively assume it's hidden, like in SpecialAbuseLog
-						$privacyLevel = Flags::FILTER_HIDDEN;
+						// Conservatively assume it's hidden and protected, like in SpecialAbuseLog
+						$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
 					} catch ( FilterNotFoundException $_ ) {
 						$privacyLevel = Flags::FILTER_PUBLIC;
 						$foundInvalid = true;
@@ -153,6 +153,11 @@ class QueryAbuseLog extends ApiQueryBase {
 					if ( Flags::FILTER_HIDDEN & $privacyLevel ) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
+						);
+					}
+					if ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) {
+						$this->dieWithError(
+							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ]
 						);
 					}
 				}

@@ -6,6 +6,8 @@ use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
@@ -104,6 +106,12 @@ class FilterStore {
 			return $validationStatus;
 		}
 
+		// Filter would have thrown an error if the user didn't have permission to use protected variables
+		// We only need to check if the filter is using protected variables and force-set the flag to protected
+		// TODO: T364485 will use a checkbox to set the protected flag. Remove this when that's implemented.
+		$newFilter = MutableFilter::newFromParentFilter( $newFilter );
+		$newFilter->setProtected( $this->filterValidator->usesProtectedVars( $newFilter ) );
+
 		// Check for non-changes
 		$differences = $this->filterCompare->compareVersions( $newFilter, $originalFilter );
 		if ( !$differences ) {
@@ -113,7 +121,7 @@ class FilterStore {
 		// Everything went fine, so let's save the filter
 		$wasGlobal = $originalFilter->isGlobal();
 		[ $newID, $historyID ] = $this->doSaveFilter(
-			$performer->getUser(), $newFilter, $differences, $filterId, $wasGlobal );
+			$performer->getUser(), $newFilter, $originalFilter, $differences, $filterId, $wasGlobal );
 		return Status::newGood( [ $newID, $historyID ] );
 	}
 
@@ -122,6 +130,7 @@ class FilterStore {
 	 *
 	 * @param UserIdentity $userIdentity
 	 * @param Filter $newFilter
+	 * @param Filter $originalFilter
 	 * @param array $differences
 	 * @param int|null $filterId
 	 * @param bool $wasGlobal
@@ -130,12 +139,13 @@ class FilterStore {
 	private function doSaveFilter(
 		UserIdentity $userIdentity,
 		Filter $newFilter,
+		Filter $originalFilter,
 		array $differences,
 		?int $filterId,
 		bool $wasGlobal
 	): array {
 		$dbw = $this->lbFactory->getPrimaryDatabase();
-		$newRow = $this->filterToDatabaseRow( $newFilter );
+		$newRow = $this->filterToDatabaseRow( $newFilter, $originalFilter );
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp();
@@ -207,6 +217,9 @@ class FilterStore {
 		$flags = [];
 		if ( FilterUtils::isHidden( $newRow['af_hidden'] ) ) {
 			$flags[] = 'hidden';
+		}
+		if ( FilterUtils::isProtected( $newRow['af_hidden'] ) ) {
+			$flags[] = 'protected';
 		}
 		if ( $newRow['af_enabled'] ) {
 			$flags[] = 'enabled';
@@ -280,8 +293,16 @@ class FilterStore {
 	 * @param Filter $filter
 	 * @return array
 	 */
-	private function filterToDatabaseRow( Filter $filter ): array {
+	private function filterToDatabaseRow( Filter $filter, Filter $originalFilter ): array {
 		// T67807: integer 1's & 0's might be better understood than booleans
+
+		// If the filter is already protected, it must remain protected even if
+		// the current filter doesn't use a protected variable anymore
+		$privacyLevel = $filter->getPrivacyLevel();
+		if ( $originalFilter->isProtected() ) {
+			$privacyLevel |= Flags::FILTER_USES_PROTECTED_VARS;
+		}
+
 		return [
 			'af_id' => $filter->getID(),
 			'af_pattern' => $filter->getRules(),
@@ -291,7 +312,7 @@ class FilterStore {
 			'af_actions' => implode( ',', $filter->getActionsNames() ),
 			'af_enabled' => (int)$filter->isEnabled(),
 			'af_deleted' => (int)$filter->isDeleted(),
-			'af_hidden' => $filter->getPrivacyLevel(),
+			'af_hidden' => $privacyLevel,
 			'af_global' => (int)$filter->isGlobal(),
 			'af_timestamp' => $filter->getTimestamp(),
 			'af_hit_count' => $filter->getHitCount(),
