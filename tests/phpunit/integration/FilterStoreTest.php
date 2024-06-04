@@ -190,8 +190,13 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		$expectedError = 'abusefilter-edit-protected-variable';
 		$this->assertStatusWarning( $expectedError, $status );
 
-		// Save filter with right, with 'protected' flag enabled
+		// Add right and try to save filter without setting the 'protected' flag
 		$this->overrideUserPermissions( $user, [ 'abusefilter-access-protected-vars', 'abusefilter-modify' ] );
+		$status = AbuseFilterServices::getFilterStore()->saveFilter( $user, $row['id'], $newFilter, $origFilter );
+		$expectedError = 'abusefilter-edit-protected-variable-not-protected';
+		$this->assertStatusWarning( $expectedError, $status );
+
+		// Save filter with right, with 'protected' flag enabled
 		$row = [
 			'id' => '3',
 			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",

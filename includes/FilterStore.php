@@ -7,7 +7,6 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
-use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
@@ -105,12 +104,6 @@ class FilterStore {
 		if ( !$validationStatus->isGood() ) {
 			return $validationStatus;
 		}
-
-		// Filter would have thrown an error if the user didn't have permission to use protected variables
-		// We only need to check if the filter is using protected variables and force-set the flag to protected
-		// TODO: T364485 will use a checkbox to set the protected flag. Remove this when that's implemented.
-		$newFilter = MutableFilter::newFromParentFilter( $newFilter );
-		$newFilter->setProtected( $this->filterValidator->usesProtectedVars( $newFilter ) );
 
 		// Check for non-changes
 		$differences = $this->filterCompare->compareVersions( $newFilter, $originalFilter );
