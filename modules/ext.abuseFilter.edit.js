@@ -509,7 +509,7 @@
 					// Refresh Ace editor size (notably its scrollbars) when the container
 					// is resized, otherwise it would be refreshed only on window resize
 					new ResizeObserver( function () {
-						// eslint-disable-next-line es-x/no-resizable-and-growable-arraybuffers
+
 						filterEditor.resize();
 					} ).observe( $filterBox[ 0 ] );
 				}
