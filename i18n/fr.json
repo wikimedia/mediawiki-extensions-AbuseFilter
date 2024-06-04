@@ -467,7 +467,7 @@
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-upload": "Niveau de protection contre le téléversement du fichier source du déplacement ($1)",
 	"abusefilter-edit-builder-vars-movedfrom-recent-contributors": "Dix derniers utilisateurs ayant contribué à la page source du déplacement ($1)",
 	"abusefilter-edit-builder-vars-movedfrom-first-contributor": "Premier utilisateur ou première utilisatrice à contribuer à la page source du déplacement ($1)",
-	"abusefilter-edit-builder-vars-movedto-restrictions-edit": "Niveau de protection contre la modification de la page de destination du déplacement",
+	"abusefilter-edit-builder-vars-movedto-restrictions-edit": "Niveau de protection de la page de destination du déplacement ($1)",
 	"abusefilter-edit-builder-vars-movedto-restrictions-move": "Niveau de protection contre le déplacement de la page de destination du déplacement ($1)",
 	"abusefilter-edit-builder-vars-movedto-restrictions-create": "Protection contre la création de la page de destination du déplacement ($1)",
 	"abusefilter-edit-builder-vars-movedto-restrictions-upload": "Niveau de protection contre le téléversement du fichier de destination du déplacement ($1)",
