@@ -47,7 +47,15 @@
 			"Wyz",
 			"Zetud",
 			"Eihel",
-			"Neifu"
+			"Neifu",
+			"Alien333",
+			"Funkytoast",
+			"Graineahumus",
+			"Iketsi",
+			"Lofhi",
+			"MacOS Weed",
+			"Melimeli",
+			"U.T."
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -162,7 +170,7 @@
 	"abusefilter-log-hide-done-hide": "masqué{{PLURAL:$1||e}}",
 	"abusefilter-log-hide-done-show": "démasquée{{PLURAL:$1||s}}",
 	"abusefilter-log-entry-suppress": "{{GENDER:$2|}}$1 a masqué $3",
-	"abusefilter-log-entry-unsuppress": "{{GENDER:$2|}}$1 a démasqué $3",
+	"abusefilter-log-entry-unsuppress": "{{GENDER:$2|}}$1 a réaffiché $3",
 	"logentry-abusefilter-hit": "$1{{GENDER:$2|}} a déclenché le filtre $4, en effectuant l’action « $5 » sur $3. Actions entreprises : $6 ($7)",
 	"log-action-filter-abusefilter": "Type de modification de filtre :",
 	"log-action-filter-abusefilter-create": "Création de nouveaux filtres",
