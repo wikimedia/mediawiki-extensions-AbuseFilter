@@ -509,6 +509,7 @@
 	"abusefilter-history-select-submit": "Used as submit button on [[Special:AbuseFilter/history]]",
 	"abusefilter-history-diff": "{{Identical|Change}}",
 	"abusefilter-history-error-hidden": "Error message shown to user if the filter they are trying to view is hidden and they do not have permission to view it.",
+	"abusefilter-history-error-protected": "Error message shown to user if the filter they are trying to view uses protected variables and they do not have permission to view it.",
 	"abusefilter-exception-unexpectedatend": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unexpected code, i.e. <code>else, then, end, :, '</code>",
 	"abusefilter-exception-expectednotfound": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Expected code, i.e. <code>else, then, end, :, '</code>\n* $3 - Type of the found code\n* $4 - Value of the type",
 	"abusefilter-exception-unrecognisedkeyword": "Error message from the abuse filter parser.\nParameters:\n* $1 - Position in the string\n* $2 - Unrecognized keyword",
