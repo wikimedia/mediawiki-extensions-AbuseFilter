@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			555,
 			"Albertoleoncio",
 			"Alchimista",
 			"Athena in Wonderland",
@@ -28,8 +29,7 @@
 			"Sarilho1",
 			"Vitorvicentevalente",
 			"Waldir",
-			"Waldyrious",
-			555
+			"Waldyrious"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",

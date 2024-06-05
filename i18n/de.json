@@ -77,6 +77,7 @@
 	"action-abusefilter-revert": "alle Änderungen durch einen bestimmten Missbrauchsfilter rückgängig zu machen",
 	"action-abusefilter-view-private": "Missbrauchsfilter einzusehen, die als privat markiert wurden",
 	"action-abusefilter-log-private": "Missbrauchsfilter-Logbücher anzusehen, die als privat markiert wurden",
+	"action-abusefilter-log-protected": "Logbücher von Missbrauchsfiltern anzuzeigen, die als geschützt markiert sind",
 	"action-abusefilter-hide-log": "Einträge aus dem Missbrauchsfilter-Logbuch auszublenden",
 	"action-abusefilter-hidden-log": "versteckte Einträge im Missbrauchsfilter-Logbuch einzusehen",
 	"action-abusefilter-modify-global": "globale Missbrauchsfilter zu erstellen oder zu verändern",
@@ -177,6 +178,7 @@
 	"abusefilter-list-lastmodified": "Zuletzt geändert",
 	"abusefilter-list-group": "Filtergruppe",
 	"abusefilter-hidden": "Privat",
+	"abusefilter-protected": "Geschützt",
 	"abusefilter-unhidden": "Öffentlich",
 	"abusefilter-enabled": "Aktiviert",
 	"abusefilter-deleted": "Gelöscht",
@@ -298,6 +300,7 @@
 	"abusefilter-block-user": "Angemeldete Benutzer sperren",
 	"abusefilter-block-talk": "Diskussionsseite gesperrt",
 	"abusefilter-edit-denied": "Du kannst die Einzelheiten zu diesem Filter nicht einsehen, weil sie versteckt sind.",
+	"abusefilter-edit-denied-protected-vars": "{{#FORMAL|Du darfst|Sie dürfen}} die Details dieses Filters nicht sehen, da dieser geschützte Variablen verwendet und nicht öffentlich sichtbar ist.",
 	"abusefilter-edit-main": "Filterparameter",
 	"abusefilter-edit-done-subtitle": "Filter bearbeitet",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Deine Änderungen]] am [[Special:AbuseFilter/$1|Filter „$3“]] wurden erfolgreich gespeichert.",
@@ -305,6 +308,7 @@
 	"abusefilter-edit-missingfields": "Die folgenden Felder sind erforderlich und müssen ausgefüllt werden: $1",
 	"abusefilter-edit-deleting-enabled": "Du kannst keinen aktiven Filter als gelöscht markieren.",
 	"abusefilter-edit-restricted": "Du kannst diesen Filter nicht bearbeiten, weil er eine oder mehrere beschränkte Aktionen enthält.\nBitte einen Benutzer, der beschränkte Aktionen hinzufügen kann, darum, die Änderung für dich vorzunehmen.",
+	"abusefilter-edit-protected-variable": "{{#FORMAL:Du darst|Sie dürfen}} diesen Filter nicht speichern, da {{#FORMAL:du nicht die Berechtigung hast|Sie nicht die Berechtigung haben}}, die folgenden Variablen zu verwenden: $1",
 	"abusefilter-edit-viewhistory": "Versionsgeschichte des Filters ansehen",
 	"abusefilter-edit-history": "Versionsgeschichte:",
 	"abusefilter-edit-check": "Syntaxprüfung",
@@ -472,6 +476,7 @@
 	"abusefilter-history": "Versionsgeschichte für Missbrauchsfilter $1",
 	"abusefilter-history-foruser": "Änderungen von $1",
 	"abusefilter-history-hidden": "Versteckt",
+	"abusefilter-history-protected": "Geschützt",
 	"abusefilter-history-enabled": "aktiviert",
 	"abusefilter-history-global": "Global",
 	"abusefilter-history-timestamp": "Zeit",
@@ -646,5 +651,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "zu erstellen oder zu ändern, welche externen Domänen für die Verknüpfung gesperrt sind",
 	"right-abusefilter-bypass-blocked-external-domains": "Umgehung gesperrter externer Domains",
 	"action-abusefilter-bypass-blocked-external-domains": "gesperrte externe Domains zu umgehen",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen.",
+	"right-abusefilter-access-protected-vars": "Anzeigen und Erstellen von Filtern, die geschützte Variablen verwenden",
+	"action-abusefilter-access-protected-vars": "Filter anzuzeigen und zu erstellen, die geschützte Variablen verwenden"
 }

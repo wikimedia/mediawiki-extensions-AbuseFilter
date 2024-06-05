@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"!Silent",
+			555,
 			"Albertoleoncio",
 			"Amgauna",
 			"Anaclaudiaml",
@@ -37,8 +38,7 @@
 			"Teles",
 			"TheEduGobi",
 			"TheGabrielZaum",
-			"YuriNikolai",
-			555
+			"YuriNikolai"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
