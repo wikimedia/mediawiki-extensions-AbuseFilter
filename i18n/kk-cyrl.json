@@ -8,7 +8,8 @@
 			"Hedeyohu22",
 			"Нұрлан Рахымжанов",
 			"СеніңШешең",
-			"U.ayaao.p"
+			"U.ayaao.p",
+			"Casserium"
 		]
 	},
 	"abusefilter": "Қиянаттауды сүзгілеу сүзгіш басқармасы",
@@ -115,7 +116,7 @@
 	"abusefilter-edit-new": "Жаңа сүзгіш",
 	"abusefilter-edit-save": "Сүзгішті сақтау",
 	"abusefilter-edit-id": "Сүзгіш сәйкестендіргіші:",
-	"abusefilter-edit-description": "Сипаттамасы:\n:''(барлық қатысушыларға көрінулі)''",
+	"abusefilter-edit-description": "Сипаттамасы:\n:''(барлық қатысушыларға көрінеді)''",
 	"abusefilter-edit-group": "Сүзгіш тобы:",
 	"abusefilter-edit-flags": "Жалаушалары:",
 	"abusefilter-edit-enabled": "Бұл сүзгішті қосу",
