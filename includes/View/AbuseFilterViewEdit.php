@@ -416,7 +416,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			] );
 
 		// Build checkboxes
-		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
+		$checkboxes = [ 'hidden', 'enabled', 'protected', 'deleted' ];
 		$flags = '';
 
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
@@ -451,9 +451,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// * abusefilter-edit-enabled
 			// * abusefilter-edit-deleted
 			// * abusefilter-edit-hidden
+			// * abusefilter-edit-protected
 			// * abusefilter-edit-global
 			$message = "abusefilter-edit-$checkboxId";
-			// isEnabled(), isDeleted(), isHidden(), isGlobal()
+			// isEnabled(), isDeleted(), isHidden(), isProtected(), isGlobal()
 			$method = 'is' . ucfirst( $checkboxId );
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
 
@@ -1255,6 +1256,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$newFilter->setDeleted( $request->getCheck( 'wpFilterDeleted' ) );
 		$newFilter->setEnabled( $request->getCheck( 'wpFilterEnabled' ) );
 		$newFilter->setHidden( $request->getCheck( 'wpFilterHidden' ) );
+		$newFilter->setProtected( $request->getCheck( 'wpFilterProtected' ) );
 		$newFilter->setGlobal( $request->getCheck( 'wpFilterGlobal' )
 			&& $this->getConfig()->get( 'AbuseFilterIsCentral' ) );
 

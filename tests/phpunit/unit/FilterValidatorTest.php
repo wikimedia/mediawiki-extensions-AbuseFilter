@@ -319,17 +319,22 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			[ $unrestricted, $restricted, $restrictions, $canModifyRestrictedPM, null ];
 	}
 
-	public function testUsesProtectedVars() {
-		$filterProtectedVarsTrue = $this->createMock( AbstractFilter::class );
-		$filterProtectedVarsTrue->method( 'getRules' )->willReturn( 'user_unnamed_ip' );
-		$this->assertTrue(
-			$this->getFilterValidator()->usesProtectedVars( $filterProtectedVarsTrue )
+	public function testCheckProtectedVariablesGood() {
+		$filter = $this->createMock( AbstractFilter::class );
+		$filter->method( 'getRules' )->willReturn( 'user_unnamed_ip' );
+		$filter->method( 'isProtected' )->willReturn( true );
+		$this->assertStatusGood(
+			$this->getFilterValidator()->checkProtectedVariables( $filter )
 		);
+	}
 
-		$filterProtectedVarsFalse = $this->createMock( AbstractFilter::class );
-		$filterProtectedVarsFalse->method( 'getRules' )->willReturn( 'user_name' );
-		$this->assertFalse(
-			$this->getFilterValidator()->usesProtectedVars( $filterProtectedVarsFalse )
+	public function testCheckProtectedVariablesError() {
+		$filter = $this->createMock( AbstractFilter::class );
+		$filter->method( 'getRules' )->willReturn( 'user_unnamed_ip' );
+		$filter->method( 'isProtected' )->willReturn( false );
+		$this->assertStatusMessageParams(
+			'abusefilter-edit-protected-variable-not-protected',
+			$this->getFilterValidator()->checkProtectedVariables( $filter )
 		);
 	}
 

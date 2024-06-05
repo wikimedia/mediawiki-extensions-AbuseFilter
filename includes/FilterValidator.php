@@ -114,6 +114,11 @@ class FilterValidator {
 			return $protectedVarsPermissionStatus;
 		}
 
+		$protectedVarsStatus = $this->checkProtectedVariables( $newFilter );
+		if ( !$protectedVarsStatus->isGood() ) {
+			return $protectedVarsStatus;
+		}
+
 		$globalPermStatus = $this->checkGlobalFilterEditPermission( $performer, $newFilter, $originalFilter );
 		if ( !$globalPermStatus->isGood() ) {
 			return $globalPermStatus;
@@ -358,6 +363,29 @@ class FilterValidator {
 	}
 
 	/**
+	 * @param AbstractFilter $filter
+	 * @return Status
+	 */
+	public function checkProtectedVariables( AbstractFilter $filter ): Status {
+		$ret = Status::newGood();
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		$usedVariables = (array)$ruleChecker->getUsedVars( $filter->getRules() );
+		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
+
+		if (
+			count( $usedProtectedVariables ) > 0 &&
+			!$filter->isProtected()
+		) {
+			$ret->error(
+				'abusefilter-edit-protected-variable-not-protected',
+				Message::listParam( $usedProtectedVariables )
+			);
+		}
+
+		return $ret;
+	}
+
+	/**
 	 * @param Authority $performer
 	 * @param AbstractFilter $filter
 	 * @return Status
@@ -371,21 +399,6 @@ class FilterValidator {
 			$ret->error( 'abusefilter-edit-protected-variable', Message::listParam( $missingRights ) );
 		}
 		return $ret;
-	}
-
-	/**
-	 * TODO: Remove this function when T364485 is implemented, as it makes this function obselete
-	 * This is a stop-gap function used to check if a filter should be marked as protected
-	 *
-	 * @param AbstractFilter $filter
-	 * @return bool
-	 */
-	public function usesProtectedVars( AbstractFilter $filter ): bool {
-		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
-		$usedVariables = (array)$ruleChecker->getUsedVars( $filter->getRules() );
-		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
-
-		return count( $usedProtectedVariables ) > 0;
 	}
 
 	/**
