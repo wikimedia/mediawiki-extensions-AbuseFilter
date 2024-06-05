@@ -18,7 +18,7 @@
 		"grunt-banana-checker": "0.13.0",
 		"grunt-eslint": "24.3.0",
 		"grunt-stylelint": "0.20.0",
-		"stylelint-config-wikimedia": "0.17.0",
+		"stylelint-config-wikimedia": "0.17.1",
 		"wdio-mediawiki": "2.5.0"
 	}
 }
