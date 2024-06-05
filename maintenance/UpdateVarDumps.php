@@ -277,6 +277,10 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 						'tt:',
 						$this->dbr->anyString()
 					) ),
+					$this->dbr->expr( 'afl_var_dump', IExpression::NOT_LIKE, new LikeValue(
+						'es:DB:',
+						$this->dbr->anyString()
+					) ),
 					$this->dbr->expr( 'afl_id', '>', $prevID ),
 					$this->dbr->expr( 'afl_id', '<=', $curID ),
 				] )
