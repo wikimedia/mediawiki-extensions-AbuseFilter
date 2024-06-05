@@ -473,6 +473,21 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
+			if ( $checkboxId == 'protected' ) {
+				if ( $filterObj->isProtected() ) {
+					$checkboxAttribs['disabled'] = true;
+					$labelAttribs['label'] = $this->msg(
+						'abusefilter-edit-protected-variable-already-protected'
+					)->text();
+				} else {
+					$labelAttribs['label'] = new OOUI\HtmlSnippet(
+						$this->msg( $message )->parse()
+					);
+					$labelAttribs['help'] = $this->msg( 'abusefilter-edit-protected-help-message' )->text();
+					$labelAttribs['helpInline'] = true;
+				}
+			}
+
 			// Set readonly on deleted if the filter isn't disabled
 			if ( $checkboxId === 'deleted' && $filterObj->isEnabled() ) {
 				$checkboxAttribs['disabled'] = 'disabled';

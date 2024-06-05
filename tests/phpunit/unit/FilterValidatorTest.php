@@ -328,6 +328,32 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function testCheckProtectedVariablesUpdatedFilter() {
+		$oldFilterUnprotected = $this->createMock( AbstractFilter::class );
+		$oldFilterUnprotected->method( 'getRules' )->willReturn( 'user_name' );
+		$oldFilterUnprotected->method( 'isProtected' )->willReturn( false );
+
+		$oldFilterProtected = $this->createMock( AbstractFilter::class );
+		$oldFilterProtected->method( 'getRules' )->willReturn( 'user_unnamed_ip' );
+		$oldFilterProtected->method( 'isProtected' )->willReturn( true );
+
+		$newFilterUnprotected = $this->createMock( AbstractFilter::class );
+		$newFilterUnprotected->method( 'getRules' )->willReturn( 'user_name' );
+		$newFilterUnprotected->method( 'isProtected' )->willReturn( false );
+
+		$newFilterProtected = $this->createMock( AbstractFilter::class );
+		$newFilterProtected->method( 'getRules' )->willReturn( 'user_unnamed_ip' );
+		$newFilterProtected->method( 'isProtected' )->willReturn( true );
+
+		$this->assertStatusGood(
+			$this->getFilterValidator()->checkProtectedVariables( $newFilterUnprotected, $oldFilterProtected )
+		);
+
+		$this->assertStatusGood(
+			$this->getFilterValidator()->checkProtectedVariables( $newFilterProtected, $oldFilterUnprotected )
+		);
+	}
+
 	public function testCheckProtectedVariablesError() {
 		$filter = $this->createMock( AbstractFilter::class );
 		$filter->method( 'getRules' )->willReturn( 'user_unnamed_ip' );

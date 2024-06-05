@@ -114,7 +114,7 @@ class FilterValidator {
 			return $protectedVarsPermissionStatus;
 		}
 
-		$protectedVarsStatus = $this->checkProtectedVariables( $newFilter );
+		$protectedVarsStatus = $this->checkProtectedVariables( $newFilter, $originalFilter );
 		if ( !$protectedVarsStatus->isGood() ) {
 			return $protectedVarsStatus;
 		}
@@ -364,10 +364,21 @@ class FilterValidator {
 
 	/**
 	 * @param AbstractFilter $filter
+	 * @param ?AbstractFilter $originalFilter
 	 * @return Status
 	 */
-	public function checkProtectedVariables( AbstractFilter $filter ): Status {
+	public function checkProtectedVariables( AbstractFilter $filter, ?AbstractFilter $originalFilter = null ): Status {
 		$ret = Status::newGood();
+
+		// If an original filter is passed through, check if it's already protected and bypass this check
+		// if so.
+		// T364485 introduces a UX that disables the checkbox for already protected filters and
+		// therefore $filter will always fail the isProtected check but because it's already protected,
+		// FilterStore->filterToDatabaseRow() will ensure it stays protected
+		if ( $originalFilter && $originalFilter->isProtected() ) {
+			return $ret;
+		}
+
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 		$usedVariables = (array)$ruleChecker->getUsedVars( $filter->getRules() );
 		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
