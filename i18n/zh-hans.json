@@ -87,7 +87,9 @@
 			"飞小RAN",
 			"飞舞回堂前",
 			"Amire80",
-			"Kichin"
+			"Kichin",
+			"Key0121",
+			"列维劳德"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -165,7 +167,7 @@
 	"abusefilter-log-hidelink": "调整可见程度",
 	"abusefilter-log-hide-entries": "更改所选条目的可见性",
 	"abusefilter-log-description-not-available": "不可用",
-	"abusefilter-log-details-legend": "日志详情：$1",
+	"abusefilter-log-details-legend": "$1号日志详情",
 	"abusefilter-log-details-var": "变量",
 	"abusefilter-log-details-val": "值",
 	"abusefilter-log-details-vars": "操作参数",
@@ -174,7 +176,7 @@
 	"abusefilter-log-details-checkuser": "用户查核",
 	"abusefilter-log-noactions": "无",
 	"abusefilter-log-noactions-filter": "无",
-	"abusefilter-log-details-diff": "编辑中的更改",
+	"abusefilter-log-details-diff": "编辑时所做的更改",
 	"abusefilter-log-linkoncontribs": "滥用日志",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|此用户}}的滥用日志",
 	"abusefilter-log-linkonhistory": "查看滥用日志",
