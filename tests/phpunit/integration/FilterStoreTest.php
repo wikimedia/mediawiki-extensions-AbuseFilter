@@ -94,20 +94,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
-	public static function provideSaveFilter_valid(): array {
-		return [
-			[ SCHEMA_COMPAT_OLD ],
-			[ SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD ],
-			[ SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_NEW ],
-			[ SCHEMA_COMPAT_NEW ],
-		];
-	}
-
-	/**
-	 * @dataProvider provideSaveFilter_valid
-	 */
-	public function testSaveFilter_valid( int $stage ) {
-		$this->overrideConfigValue( 'AbuseFilterActorTableSchemaMigrationStage', $stage );
+	public function testSaveFilter_valid() {
 		$row = [
 			'id' => null,
 			'rules' => '/* My rules */',

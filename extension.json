@@ -356,9 +356,6 @@
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler",
 			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler::newFromGlobalState"
 		},
-		"UserRename": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserRenameHandler"
-		},
 		"EditPermission": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler"
 		},
@@ -399,10 +396,7 @@
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler"
 		},
 		"UserMerge": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler",
-			"services": [
-				"MainConfig"
-			]
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler"
 		}
 	},
 	"Hooks": {
@@ -420,7 +414,6 @@
 		"UploadVerifyUpload": "FilteredActions",
 		"UploadStashFile": "FilteredActions",
 		"PageSaveComplete": "PageSave",
-		"RenameUserSQL": "UserRename",
 		"getUserPermissionsErrors": "EditPermission",
 		"CheckUserInsertChangesRow": "CheckUser",
 		"CheckUserInsertPrivateEventRow": "CheckUser",
@@ -568,10 +561,6 @@
 		"AbuseFilterLogIP": {
 			"value": true,
 			"description": "Whether to include IP in the abuse_filter_log"
-		},
-		"AbuseFilterActorTableSchemaMigrationStage": {
-			"value": 769,
-			"description": "Stage of the migration of af_user/af_user_text to af_actor and afh_user/afh_user_text to afh_actor. Should be one of the following (combinations of) constants: SCHEMA_COMPAT_OLD, SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD, SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_NEW, SCHEMA_COMPAT_NEW. See also \"Schema compatibility flags\" in includes/Defines.php in core. Note: When changing the default here, change it also in unit tests."
 		},
 		"AbuseFilterEnableBlockedExternalDomain": {
 			"value": false,
