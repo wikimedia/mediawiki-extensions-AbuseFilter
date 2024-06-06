@@ -258,6 +258,8 @@
 	"abusefilter-edit-deleted": "Checkbox label for a filter flag.",
 	"abusefilter-edit-hidden": "Checkbox label for a filter flag.",
 	"abusefilter-edit-protected": "Checkbox label for a filter flag.",
+	"abusefilter-edit-protected-variable-already-protected": "Checkbox label for a filter flag.",
+	"abusefilter-edit-protected-help-message": "Help message for a filter flag",
 	"abusefilter-edit-global": "Checkbox label for a filter flag.",
 	"abusefilter-edit-rules": "Field label for filter rules.\n{{Identical|Condition}}",
 	"abusefilter-edit-field-conditions": "Description for filter rules, to be used in error message.\n{{Identical|Condition}}",
