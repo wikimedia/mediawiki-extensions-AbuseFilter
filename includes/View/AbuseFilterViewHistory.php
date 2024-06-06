@@ -84,7 +84,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 				return;
 			}
 			if ( isset( $filterObj ) && $filterObj->isProtected() && !$canViewProtectedVars ) {
-				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
+				$out->addWikiMsg( 'abusefilter-history-error-protected' );
 				return;
 			}
 		}
