@@ -474,7 +474,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			if ( $checkboxId == 'protected' ) {
-				if ( $filterObj->isProtected() ) {
+				if ( !$this->afPermManager->canViewProtectedVariables( $user ) ) {
+					$checkboxAttribs['classes'] = [ 'oo-ui-element-hidden' ];
+					$labelAttribs['classes'] = [ 'oo-ui-element-hidden' ];
+				} elseif ( $filterObj->isProtected() ) {
 					$checkboxAttribs['disabled'] = true;
 					$labelAttribs['label'] = $this->msg(
 						'abusefilter-edit-protected-variable-already-protected'
