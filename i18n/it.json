@@ -70,6 +70,7 @@
 	"action-abusefilter-revert": "ripristinare tutte le modifiche apportate da un determinato filtro anti abusi",
 	"action-abusefilter-view-private": "visualizzare i filtri anti abusi segnati come privati",
 	"action-abusefilter-log-private": "visualizzare i registri dei filtri anti abusi contrassegnati come privati",
+	"action-abusefilter-log-protected": "visualizzare i registri dei filtri anti abusi contrassegnati come protetti",
 	"action-abusefilter-hide-log": "nascondere voci nel registro del filtro anti abusi",
 	"action-abusefilter-hidden-log": "visualizzare voci nascoste del registro del filtro anti abusi",
 	"action-abusefilter-modify-global": "creare o modificare i filtri anti abusi globali",
@@ -170,6 +171,7 @@
 	"abusefilter-list-lastmodified": "Ultima modifica",
 	"abusefilter-list-group": "Gruppo filtri",
 	"abusefilter-hidden": "Privato",
+	"abusefilter-protected": "Protetto",
 	"abusefilter-unhidden": "Pubblico",
 	"abusefilter-enabled": "Attivato",
 	"abusefilter-deleted": "Cancellato",
@@ -459,6 +461,7 @@
 	"abusefilter-history": "Cronologia delle modifiche al filtro anti abusi n. $1",
 	"abusefilter-history-foruser": "Modifiche apportate da $1",
 	"abusefilter-history-hidden": "Nascosto",
+	"abusefilter-history-protected": "Protetto",
 	"abusefilter-history-enabled": "Attivato",
 	"abusefilter-history-global": "Globale",
 	"abusefilter-history-timestamp": "Data e ora",
@@ -477,6 +480,7 @@
 	"abusefilter-history-select-submit": "Restringi",
 	"abusefilter-history-diff": "Modifiche",
 	"abusefilter-history-error-hidden": "Il filtro richiesto è nascosto, non è possibile visualizzarne la cronologia.",
+	"abusefilter-history-error-protected": "Il filtro richiesto utilizza variabili protette e non puoi visualizzare la cronologia.",
 	"abusefilter-exception-unexpectedatend": "\"$2\" non previsto in corrispondenza del carattere $1.",
 	"abusefilter-exception-expectednotfound": "$2 mancante in corrispondenza del carattere $1, presente invece $3 $4.",
 	"abusefilter-exception-unrecognisedkeyword": "Parola chiave $2 sconosciuta in corrispondenza del carattere $1.",
@@ -633,5 +637,6 @@
 	"action-abusefilter-modify-blocked-external-domains": "creare o modificare quali domini esterni non possono essere aggiunti come collegamento",
 	"right-abusefilter-bypass-blocked-external-domains": "Ignora i blocchi ai domini esterni",
 	"action-abusefilter-bypass-blocked-external-domains": "ignorare i blocchi ai domini esterni",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Creare o modificare la lista dei domini esterni bloccati dall'essere inseriti come collegamento deve essere fatta attraverso [[Special:BlockedExternalDomains|questa pagina speciale]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Creare o modificare la lista dei domini esterni bloccati dall'essere inseriti come collegamento deve essere fatta attraverso [[Special:BlockedExternalDomains|questa pagina speciale]].",
+	"action-abusefilter-access-protected-vars": "visualizzare e creare filtri che utilizzano variabili protette"
 }
