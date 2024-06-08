@@ -2,7 +2,6 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterActorMigration;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -195,13 +194,13 @@ return [
 		return new FilterStore(
 			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			$services->getDBLoadBalancerFactory(),
+			$services->getActorNormalization(),
 			$services->get( FilterProfiler::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME ),
 			$services->get( ChangeTagsManager::SERVICE_NAME ),
 			$services->get( FilterValidator::SERVICE_NAME ),
 			$services->get( FilterCompare::SERVICE_NAME ),
-			$services->get( EmergencyCache::SERVICE_NAME ),
-			$services->get( AbuseFilterActorMigration::SERVICE_NAME )
+			$services->get( EmergencyCache::SERVICE_NAME )
 		);
 	},
 	ConsequencesFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesFactory {
@@ -374,14 +373,6 @@ return [
 			$services->getRevisionLookup(),
 			$services->getDBLoadBalancerFactory(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
-		);
-	},
-	AbuseFilterActorMigration::SERVICE_NAME => static function (
-		MediaWikiServices $services
-	): AbuseFilterActorMigration {
-		return new AbuseFilterActorMigration(
-			SCHEMA_COMPAT_NEW,
-			$services->getActorStoreFactory(),
 		);
 	},
 	BlockedDomainStorage::SERVICE_NAME => static function (

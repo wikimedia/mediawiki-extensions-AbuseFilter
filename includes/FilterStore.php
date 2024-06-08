@@ -10,7 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
-use MediaWiki\User\ActorMigrationBase;
+use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\LBFactory;
 
@@ -25,6 +25,9 @@ class FilterStore {
 
 	/** @var LBFactory */
 	private $lbFactory;
+
+	/** @var ActorNormalization */
+	private $actorNormalization;
 
 	/** @var FilterProfiler */
 	private $filterProfiler;
@@ -44,40 +47,37 @@ class FilterStore {
 	/** @var EmergencyCache */
 	private $emergencyCache;
 
-	/** @var ActorMigrationBase */
-	private $actorMigration;
-
 	/**
 	 * @param ConsequencesRegistry $consequencesRegistry
 	 * @param LBFactory $lbFactory
+	 * @param ActorNormalization $actorNormalization
 	 * @param FilterProfiler $filterProfiler
 	 * @param FilterLookup $filterLookup
 	 * @param ChangeTagsManager $tagsManager
 	 * @param FilterValidator $filterValidator
 	 * @param FilterCompare $filterCompare
 	 * @param EmergencyCache $emergencyCache
-	 * @param ActorMigrationBase $actorMigration
 	 */
 	public function __construct(
 		ConsequencesRegistry $consequencesRegistry,
 		LBFactory $lbFactory,
+		ActorNormalization $actorNormalization,
 		FilterProfiler $filterProfiler,
 		FilterLookup $filterLookup,
 		ChangeTagsManager $tagsManager,
 		FilterValidator $filterValidator,
 		FilterCompare $filterCompare,
-		EmergencyCache $emergencyCache,
-		ActorMigrationBase $actorMigration
+		EmergencyCache $emergencyCache
 	) {
 		$this->consequencesRegistry = $consequencesRegistry;
 		$this->lbFactory = $lbFactory;
+		$this->actorNormalization = $actorNormalization;
 		$this->filterProfiler = $filterProfiler;
 		$this->filterLookup = $filterLookup;
 		$this->tagsManager = $tagsManager;
 		$this->filterValidator = $filterValidator;
 		$this->filterCompare = $filterCompare;
 		$this->emergencyCache = $emergencyCache;
-		$this->actorMigration = $actorMigration;
 	}
 
 	/**
@@ -142,7 +142,7 @@ class FilterStore {
 
 		// Set last modifier.
 		$newRow['af_timestamp'] = $dbw->timestamp();
-		$newRow += $this->actorMigration->getInsertValues( $dbw, 'af_user', $userIdentity );
+		$newRow['af_actor'] = $this->actorNormalization->acquireActorId( $userIdentity, $dbw );
 
 		$isNew = $filterId === null;
 
