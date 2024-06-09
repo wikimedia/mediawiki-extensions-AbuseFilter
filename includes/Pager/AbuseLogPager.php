@@ -372,8 +372,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				'revision' => [
 					'LEFT JOIN',
 					[
-						'afl_wiki IS NULL',
-						'afl_rev_id IS NOT NULL',
+						'afl_wiki' => null,
+						$this->mDb->expr( 'afl_rev_id', '!=', null ),
 						'rev_id=afl_rev_id',
 					]
 				],
@@ -386,9 +386,9 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$info['join_conds']['archive'] = [
 				'LEFT JOIN',
 				[
-					'afl_wiki IS NULL',
-					'afl_rev_id IS NOT NULL',
-					'rev_id IS NULL',
+					'afl_wiki' => null,
+					$this->mDb->expr( 'afl_rev_id', '!=', null ),
+					'rev_id' => null,
 					'ar_rev_id=afl_rev_id',
 				]
 			];
