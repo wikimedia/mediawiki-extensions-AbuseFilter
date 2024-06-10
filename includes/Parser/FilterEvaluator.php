@@ -454,7 +454,13 @@ class FilterEvaluator {
 	 */
 	public function getUsedVars( $filter ) {
 		$this->resetState();
-		$this->evaluateExpression( $filter );
+		$cachedAllowShort = $this->mAllowShort;
+		try {
+			$this->mAllowShort = false;
+			$this->evaluateExpression( $filter );
+		} finally {
+			$this->mAllowShort = $cachedAllowShort;
+		}
 		return array_unique( $this->usedVars );
 	}
 
