@@ -55,8 +55,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	 * @param DatabaseUpdater $updater
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		global $wgAbuseFilterActorTableSchemaMigrationStage;
-
 		$dbType = $updater->getDB()->getType();
 		$dir = __DIR__ . "/../../../db_patches";
 
@@ -178,21 +176,16 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			"$dir/$dbType/patch-add-afh_actor.sql", true
 		] );
 
+		// 1.43
+		$updater->addExtensionUpdate( [
+			'runMaintenance',
+			MigrateActorsAF::class,
+			__DIR__ . '/../../../maintenance/MigrateActorsAF.php',
+		] );
+
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 		// 1.35
 		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );
-
-		// Don't launch the script on update.php if the migration stage is not high enough.
-		// This would throw an exception.
-		// Also check if the global is set.
-		// If globals aren't loaded, it's install.php, and not update.php. This is intentional,
-		// see for instance, T193855 or T198331.
-		if ( isset( $wgAbuseFilterActorTableSchemaMigrationStage ) &&
-			( $wgAbuseFilterActorTableSchemaMigrationStage & SCHEMA_COMPAT_WRITE_NEW )
-		) {
-			// 1.41
-			$updater->addPostDatabaseUpdateMaintenance( MigrateActorsAF::class );
-		}
 	}
 
 	/**

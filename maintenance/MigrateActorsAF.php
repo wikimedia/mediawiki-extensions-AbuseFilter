@@ -52,15 +52,6 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 			$this->tables = explode( ',', $tables );
 		}
 
-		$stage = $this->getConfig()->get( 'AbuseFilterActorTableSchemaMigrationStage' );
-		if ( !( $stage & SCHEMA_COMPAT_WRITE_NEW ) ) {
-			$this->output(
-				'...cannot update while $wgAbuseFilterActorTableSchemaMigrationStage ' .
-				"lacks SCHEMA_COMPAT_WRITE_NEW\n"
-			);
-			return false;
-		}
-
 		$errors = 0;
 		$errors += $this->migrate( 'abuse_filter', 'af_id', 'af_user', 'af_user_text', 'af_actor' );
 		$errors += $this->migrate(

@@ -379,7 +379,7 @@ return [
 		MediaWikiServices $services
 	): AbuseFilterActorMigration {
 		return new AbuseFilterActorMigration(
-			$services->getMainConfig()->get( 'AbuseFilterActorTableSchemaMigrationStage' ),
+			SCHEMA_COMPAT_NEW,
 			$services->getActorStoreFactory(),
 		);
 	},
