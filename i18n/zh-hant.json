@@ -316,6 +316,7 @@
 	"abusefilter-block-user": "封鎖已註冊使用者",
 	"abusefilter-block-talk": "已封鎖對話頁",
 	"abusefilter-edit-denied": "該過濾器已設為不公開，您無法檢視此過濾器的詳細資料。",
+	"abusefilter-edit-denied-protected-vars": "該過濾器受保護並已設為不公開，您無法檢視此過濾器的詳細資料。",
 	"abusefilter-edit-main": "過濾器參數",
 	"abusefilter-edit-done-subtitle": "已編輯過濾器",
 	"abusefilter-edit-done": "您對[[Special:AbuseFilter/$1|過濾器$3]]的[[Special:AbuseFilter/history/$1/diff/prev/$2|變更]]已儲存。",
@@ -667,5 +668,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "建立或修改被禁止連結的外部網域",
 	"right-abusefilter-bypass-blocked-external-domains": "繞過被封鎖的外部網域",
 	"action-abusefilter-bypass-blocked-external-domains": "繞過被封鎖的外部網域",
-	"abusefilter-blocked-domains-cannot-edit-directly": "要建立或修改被禁止連結的外部網域必須透過[[Special:BlockedExternalDomains|特殊頁面]]完成。"
+	"abusefilter-blocked-domains-cannot-edit-directly": "要建立或修改被禁止連結的外部網域必須透過[[Special:BlockedExternalDomains|特殊頁面]]完成。",
+	"right-abusefilter-access-protected-vars": "檢視和建立受保護的過濾器",
+	"action-abusefilter-access-protected-vars": "檢視和建立受保護的過濾器"
 }
