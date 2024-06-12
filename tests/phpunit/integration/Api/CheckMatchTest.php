@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
-use ApiTestCase;
-use FormatJson;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
+use MediaWiki\Json\FormatJson;
+use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 
 /**

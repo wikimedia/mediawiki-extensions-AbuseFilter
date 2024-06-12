@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Hooks;
 
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ToolLinksHandler;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Message\Message;
 use MediaWiki\Request\WebRequest;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
-use Message;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ToolLinksHandler

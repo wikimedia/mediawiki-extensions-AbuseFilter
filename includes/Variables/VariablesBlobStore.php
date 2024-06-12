@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Variables;
 
-use FormatJson;
 use InvalidArgumentException;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\Storage\BlobAccessException;
 use MediaWiki\Storage\BlobStore;
 use MediaWiki\Storage\BlobStoreFactory;

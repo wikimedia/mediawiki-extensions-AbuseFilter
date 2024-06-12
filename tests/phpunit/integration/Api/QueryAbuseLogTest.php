@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
-use ApiTestCase;
+use MediaWiki\Tests\Api\ApiTestCase;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Api\QueryAbuseLog

@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Variables;
 
 use ContentHandler;
 use Language;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
@@ -28,7 +29,6 @@ use ParserOptions;
 use Psr\Log\LoggerInterface;
 use stdClass;
 use StringUtils;
-use TextContent;
 use UnexpectedValueException;
 use WANObjectCache;
 use Wikimedia\Diff\Diff;

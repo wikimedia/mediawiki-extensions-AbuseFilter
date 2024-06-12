@@ -3,12 +3,10 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use AbuseFilterCreateAccountTestTrait;
-use ApiTestCase;
 use ApiUsageException;
 use Content;
-use FormatJson;
 use Generator;
-use JsonContent;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -25,9 +23,11 @@ use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
+use MediaWiki\Json\FormatJson;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
-use MWTimestamp;
+use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\Utils\MWTimestamp;
 use NullStatsdDataFactory;
 use WikitextContent;
 

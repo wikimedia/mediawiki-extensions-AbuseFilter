@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use DatabaseUpdater;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\Maintenance\MigrateActorsAF;
 use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
+use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MessageLocalizer;
-use RequestContext;
 
 class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 	/** @var MessageLocalizer */

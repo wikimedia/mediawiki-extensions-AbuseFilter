@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser\Exception;
 
-use Message;
+use MediaWiki\Message\Message;
 
 /**
  * Exceptions that we might conceivably want to report to ordinary users
