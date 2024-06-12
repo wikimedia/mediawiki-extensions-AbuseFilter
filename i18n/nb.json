@@ -170,7 +170,7 @@
 	"abusefilter-enabled": "Slått på",
 	"abusefilter-deleted": "Slettet",
 	"abusefilter-disabled": "Slått av",
-	"abusefilter-throttled": "Høy grad av tref",
+	"abusefilter-throttled": "Høy grad av treff",
 	"abusefilter-hitcount": "$1 {{PLURAL:$1|treff}}",
 	"abusefilter-new": "Opprett et nytt filter",
 	"abusefilter-import-button": "Importer filter",
