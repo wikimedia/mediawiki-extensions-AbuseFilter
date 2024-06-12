@@ -3,7 +3,8 @@
 namespace MediaWiki\Extension\AbuseFilter\View;
 
 use DifferenceEngine;
-use IContextSource;
+use MediaWiki\Content\TextContent;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\ClosestFilterVersionNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
@@ -16,7 +17,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
-use TextContent;
 use Wikimedia\Diff\Diff;
 
 class AbuseFilterViewDiff extends AbuseFilterView {

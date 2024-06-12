@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 use Content;
 use DummyNonTextContent;
 use Generator;
+use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Page\PageIdentityValue;
@@ -14,7 +15,6 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
-use TextContent;
 use WikitextContent;
 
 /**

@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use ApiMessage;
 use Content;
 use IBufferingStatsdDataFactory;
-use IContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;

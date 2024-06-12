@@ -3,8 +3,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use JsonContent;
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
+use MediaWiki\Content\JsonContent;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;

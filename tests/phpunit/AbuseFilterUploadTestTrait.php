@@ -2,6 +2,7 @@
 
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Api\RandomImageGenerator;
 use MediaWiki\User\User;
 
 /**

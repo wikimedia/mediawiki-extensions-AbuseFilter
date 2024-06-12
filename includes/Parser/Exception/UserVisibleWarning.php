@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Parser\Exception;
 
-use Message;
+use MediaWiki\Message\Message;
 
 /**
  * A variant of user-visible exception that is not fatal.

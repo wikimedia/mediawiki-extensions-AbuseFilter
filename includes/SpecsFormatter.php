@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 use Language;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Language\RawMessage;
-use Message;
+use MediaWiki\Message\Message;
 use MessageLocalizer;
 
 /**

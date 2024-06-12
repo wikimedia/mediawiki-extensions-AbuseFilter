@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use ContextSource;
 use Flow\Data\Listener\RecentChangesListener;
-use IContextSource;
+use MediaWiki\Context\ContextSource;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\LinkRenderer;

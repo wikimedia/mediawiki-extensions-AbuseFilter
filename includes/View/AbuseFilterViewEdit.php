@@ -3,9 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter\View;
 
 use HtmlArmor;
-use IContextSource;
 use IDBAccessObject;
 use LogicException;
+use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
@@ -25,13 +25,13 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Xml\Xml;
 use OOUI;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\LikeValue;
 use Wikimedia\Rdbms\SelectQueryBuilder;
-use Xml;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
