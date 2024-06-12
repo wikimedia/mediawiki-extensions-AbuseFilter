@@ -144,16 +144,13 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 		foreach ( $rows as $index => $row ) {
 			$keep[$index] = true;
 			if ( $row->actor_id === null ) {
-				// All registered users should have an actor_id already. So
-				// if we have a usable name here, it means they didn't run
-				// maintenance/cleanupUsersWithNoId.php
 				$name = $row->$nameField;
 				if ( $userNameUtils->isUsable( $name ) ) {
 					if ( !isset( $complainedAboutUsers[$name] ) ) {
 						$complainedAboutUsers[$name] = true;
 						$this->error(
 							"User name \"$name\" is usable, cannot create an anonymous actor for it."
-							. " Run maintenance/cleanupUsersWithNoId.php to fix this situation.\n"
+							. " Your database has likely been corrupted, and may require manual intervention.\n"
 						);
 					}
 					unset( $keep[$index] );
