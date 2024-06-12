@@ -149,6 +149,7 @@
 	"abusefilter-log-details-hidden": "Message shown instead of log row details when those are hidden.",
 	"abusefilter-log-details-hidden-implicit": "Message shown instead of log row details when their associated revision is hidden.",
 	"abusefilter-log-private-not-included": "Message shown when an unauthorized user searches by ID for private filters.",
+	"abusefilter-log-protected-not-included": "Message shown when an unauthorized user searches by ID for protected filters.",
 	"abusefilter-log-hide-no-selected": "Error message when a user tries to enter the form for changing AbuseLog entries visibility without having selected any entry.",
 	"abusefilter-log-hide-selected": "Legend for a list of selected AbuseLog entries. See also {{msg-mw|logdelete-selected}}.\nParameters:\n* $1 - number of selected AbuseLog entries.",
 	"abusefilter-log-hide-legend": "Legend for a form to hide or show AbuseLog entries.",

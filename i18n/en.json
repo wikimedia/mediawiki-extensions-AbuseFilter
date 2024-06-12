@@ -104,6 +104,7 @@
 	"abusefilter-log-details-hidden": "You cannot view the details for this entry because it is hidden from public view.",
 	"abusefilter-log-details-hidden-implicit": "You cannot view the details for this entry because its associated revision is hidden from public view.",
 	"abusefilter-log-private-not-included": "One or more of the filter IDs you specified are private. Because you are not allowed to view details of private filters, these filters have not been searched for.",
+	"abusefilter-log-protected-not-included": "One or more of the filter IDs you specified are protected. Because you are not allowed to view details of protected filters, these filters have not been searched for.",
 	"abusefilter-log-hide-no-selected": "No entries selected",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|Selected AbuseLog entry|Selected AbuseLog entries}}:",
 	"abusefilter-log-hide-legend": "Change visibility",

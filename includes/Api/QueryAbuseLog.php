@@ -139,7 +139,10 @@ class QueryAbuseLog extends ApiQueryBase {
 					continue;
 				}
 			}
-			if ( !$this->afPermManager->canViewPrivateFiltersLogs( $performer ) ) {
+
+			$canViewPrivate = $this->afPermManager->canViewPrivateFiltersLogs( $performer );
+			$canViewProtected = $this->afPermManager->canViewProtectedVariables( $performer );
+			if ( !$canViewPrivate || !$canViewProtected ) {
 				foreach ( $searchFilters as [ $filterID, $global ] ) {
 					try {
 						$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
@@ -150,12 +153,12 @@ class QueryAbuseLog extends ApiQueryBase {
 						$privacyLevel = Flags::FILTER_PUBLIC;
 						$foundInvalid = true;
 					}
-					if ( Flags::FILTER_HIDDEN & $privacyLevel ) {
+					if ( !$canViewPrivate && ( Flags::FILTER_HIDDEN & $privacyLevel ) ) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
 						);
 					}
-					if ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) {
+					if ( !$canViewProtected && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ]
 						);
