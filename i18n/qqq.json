@@ -46,7 +46,8 @@
 			"Translationista",
 			"Umherirrender",
 			"Verdy p",
-			"Yekrats"
+			"Yekrats",
+			"Chadyka"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -253,7 +254,7 @@
 	"abusefilter-edit-flags": "Field label for abuse filter flags (checkboxes for \"hidden\", \"enabled\" and \"deleted\").\n{{Identical|Flag}}",
 	"abusefilter-edit-enabled": "Checkbox label for a filter flag.",
 	"abusefilter-edit-deleted": "Checkbox label for a filter flag.",
-	"abusefilter-edit-hidden": "Checkbox label for a filter flag.",
+	"abusefilter-edit-hidden": "Checkbox label for a filter flag. Should be formulated consistently with {{msg-mw|Abusefilter-edit-protected}}.",
 	"abusefilter-edit-global": "Checkbox label for a filter flag.",
 	"abusefilter-edit-rules": "Field label for filter rules.\n{{Identical|Condition}}",
 	"abusefilter-edit-field-conditions": "Description for filter rules, to be used in error message.\n{{Identical|Condition}}",

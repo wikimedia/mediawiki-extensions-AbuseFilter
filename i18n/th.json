@@ -576,7 +576,7 @@
 	"abusefilter-diff-backhistory": "ประวัติตัวกรอง",
 	"abusefilter-diff-prev": "การเปลี่ยนแปลงที่เก่ากว่า",
 	"abusefilter-diff-next": "การเปลี่ยนแปลงที่ใหม่กว่า",
-	"abusefilter-import-intro": "คุณสามารถใช้ส่วนติดต่อนี้เพื่อนำเข้าตัวกรองจากวิกิอื่นได้\nบนวิกิต้นฉบับ คลิก \"{{int:abusefilter-edit-export}}\" ภายใต้ \"{{int:abusefilter-edit-tools}}\" บนส่วนติดต่อการแก้ไข\nคัดลอกเนื้อหาจากกล่องข้อความที่ปรากฏ แล้ววางลงในกล่องข้อความนี้ แล้วคลิก \"{{int:abusefilter-import-submit}}\"",
+	"abusefilter-import-intro": "คุณสามารถใช้ส่วนติดต่อนี้เพื่อนำเข้าตัวกรองจากวิกิอื่นได้\nบนวิกิต้นฉบับ กด \"{{int:abusefilter-edit-export}}\" ภายใต้ \"{{int:abusefilter-edit-tools}}\" บนส่วนติดต่อการแก้ไข\nคัดลอกเนื้อหาจากกล่องข้อความที่ปรากฏ แล้ววางลงในกล่องข้อความนี้ แล้วคลิก \"{{int:abusefilter-import-submit}}\"",
 	"abusefilter-import-submit": "นำเข้าข้อมูล",
 	"abusefilter-import-invalid-data": "ข้อมูลที่คุณพยายามนำเข้าไม่ถูกต้อง",
 	"abusefilter-group-default": "ค่าโดยปริยาย",
