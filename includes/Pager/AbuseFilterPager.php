@@ -221,7 +221,10 @@ class AbuseFilterPager extends TablePager {
 			$headers['af_hit_count'] = 'abusefilter-list-hitcount';
 		}
 
-		if ( $this->afPermManager->canViewPrivateFilters( $performer ) && $this->searchMode !== null ) {
+		if (
+				$this->afPermManager->canViewPrivateFilters( $performer ) &&
+				$this->searchMode !== null
+		) {
 			// This is also excluded in the default view
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
 		}
