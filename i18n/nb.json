@@ -624,7 +624,7 @@
 	"abusefilter-log-ip-not-available": "Ikke tilgjengelig",
 	"abusefilter-tag-reserved": "Taggen <code>abusefilter-condition-limit</code> er reservert for intern bruk av misbruksfilteret.",
 	"tag-abusefilter-condition-limit": "vilkårsgrense nådd",
-	"tag-abusefilter-condition-limit-description": "Redigeringer eller andre handlinger som ikke kunne sjekkes av alle aktive [[Special:AbuseFilter|misbruksfiltre]] ([[mw:Extension:AbuseFilter/Conditions|hjelp]]).",
+	"tag-abusefilter-condition-limit-description": "Redigeringer eller andre handlinger som ikke kunne sjekkes av alle aktive [[Special:AbuseFilter|misbruksfiltre]] ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions hjelp]).",
 	"notification-header-throttle-filter": "Misbruksfilteret $2 som {{GENDER:$1|du}} nylig redigerte ble bremset.",
 	"notification-header-throttle-filter-actions": "Misbruksfilteret $2 som {{GENDER:$1|du}} nylig redigerte har et høyt antall treff, og følgende {{PLURAL:$4|handling|handlinger}} ble slått av automatisk: $3.",
 	"notification-header-throttle-filter-no-actions": "Misbruksfilteret $2 som {{GENDER:$1|du}} nylig redigerte har et høyt antall treff, men ingen handlinger ble slått av automatisk.",
