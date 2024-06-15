@@ -15,6 +15,7 @@ use MediaWiki\Title\Title;
 use OOUI;
 use RecentChange;
 use UnexpectedValueException;
+use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\OrExpressionGroup;
@@ -24,29 +25,22 @@ abstract class AbuseFilterView extends ContextSource {
 
 	private const MAP_ACTION_TO_LOG_TYPE = [
 		// action => [ rc_log_type, rc_log_action ]
-		'move' => [ 'move', 'move' ],
-		'createaccount' => [ 'newusers', [ 'create', 'autocreate' ] ],
+		'move' => [ 'move', [ 'move', 'move_redir' ] ],
+		'createaccount' => [ 'newusers', [ 'create', 'create2', 'byemail', 'autocreate' ] ],
 		'delete' => [ 'delete', 'delete' ],
 		'upload' => [ 'upload', [ 'upload', 'overwrite', 'revert' ] ],
 	];
 
-	/**
-	 * @var AbuseFilterPermissionManager
-	 */
-	protected $afPermManager;
+	protected AbuseFilterPermissionManager $afPermManager;
 
 	/**
 	 * @var array The parameters of the current request
 	 */
-	protected $mParams;
+	protected array $mParams;
 
-	/**
-	 * @var LinkRenderer
-	 */
-	protected $linkRenderer;
+	protected LinkRenderer $linkRenderer;
 
-	/** @var string */
-	protected $basePageName;
+	protected string $basePageName;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
@@ -125,6 +119,7 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @return IExpression
 	 */
 	public function buildTestConditions( IReadableDatabase $db, $action = false ) {
+		Assert::parameterType( [ 'string', 'false' ], $action, '$action' );
 		$editSources = [
 			RecentChange::SRC_EDIT,
 			RecentChange::SRC_NEW,
