@@ -235,9 +235,13 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		$varGenerator = $this->varGeneratorFactory->newRCGenerator( $rc, $this->getUser() );
-		$vars = $varGenerator->getVars() ?: new VariableHolder();
+		$vars = $varGenerator->getVars();
+		if ( !$vars ) {
+			$out->addWikiMsg( 'abusefilter-examine-incompatible' );
+			return;
+		}
+
 		$out->addJsConfigVars( [
-			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
 			'abuseFilterExamine' => [ 'type' => 'rc', 'id' => $rcid ]
 		] );
 
@@ -346,27 +350,24 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		$out->addJsConfigVars( [
-			'wgAbuseFilterVariables' => $varsArray,
 			'abuseFilterExamine' => [ 'type' => 'log', 'id' => $logid ]
 		] );
 		$this->showExaminer( $vars );
 	}
 
 	/**
-	 * @param VariableHolder|null $vars
+	 * @param VariableHolder $vars
 	 */
-	public function showExaminer( ?VariableHolder $vars ) {
+	public function showExaminer( VariableHolder $vars ) {
 		$output = $this->getOutput();
 		$output->enableOOUI();
-
-		if ( !$vars ) {
-			$output->addWikiMsg( 'abusefilter-examine-incompatible' );
-			return;
-		}
 
 		$html = '';
 
 		$output->addModules( 'ext.abuseFilter.examine' );
+		$output->addJsConfigVars( [
+			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
+		] );
 
 		// Add test bit
 		if ( $this->afPermManager->canUseTestTools( $this->getAuthority() ) ) {

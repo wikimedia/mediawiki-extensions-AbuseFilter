@@ -87,6 +87,9 @@ class CheckMatch extends ApiBase {
 
 			$varGenerator = $this->afVariableGeneratorFactory->newRCGenerator( $rc, $this->getUser() );
 			$vars = $varGenerator->getVars();
+			if ( $vars === null ) {
+				$this->dieWithError( 'apierror-abusefilter-incompatible' );
+			}
 		} elseif ( $params['logid'] ) {
 			$row = $this->getDB()->newSelectQueryBuilder()
 				->select( '*' )
@@ -119,7 +122,7 @@ class CheckMatch extends ApiBase {
 		}
 		if ( $vars === null ) {
 			// @codeCoverageIgnoreStart
-			throw new LogicException( 'Impossible.' );
+			throw new LogicException( 'Variables were not loaded, this should not happen.' );
 			// @codeCoverageIgnoreEnd
 		}
 
