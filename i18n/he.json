@@ -122,6 +122,7 @@
 	"abusefilter-log-details-hidden": "אין באפשרותך לצפות בפרטים של רשומה זו כי היא הוסתרה מעיני הציבור.",
 	"abusefilter-log-details-hidden-implicit": "אין באפשרותך לצפות בפרטים של רשומה זו משום שהגרסה המשויכת אליה מוסתרת מהציבור.",
 	"abusefilter-log-private-not-included": "חלק ממזהי המסננים שהגדרת פרטיים. מכיוון שאין לך הרשאה להציג נתונים של מסננים פרטיים, לא נעשה חיפוש במסננים האלה.",
+	"abusefilter-log-protected-not-included": "אחד או יותר ממזהי המסננים שציינת מוגנים. מכיוון שאין לך הרשאה להציג נתונים של מסננים מוגנים, לא נעשה חיפוש במסננים האלה.",
 	"abusefilter-log-hide-no-selected": "לא נבחרו רשומות",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|רשומת יומן מסנן השחתה נבחרת|רשומות יומן מסנן השחתה נבחרות}}",
 	"abusefilter-log-hide-legend": "שינוי מצב תצוגה",

@@ -104,6 +104,7 @@
 	"abusefilter-log-details-hidden": "Tu non pote vider le detalios de iste entrata, proque illo es celate al vista del publico.",
 	"abusefilter-log-details-hidden-implicit": "Tu non pote vider le detalios de iste entrata perque su version associate es celate al vista del publico.",
 	"abusefilter-log-private-not-included": "Un o plure IDs de filtro specificate es private. Pois que tu non es autorisate a vider le detalios de filtros private, iste filtros non ha essite cercate.",
+	"abusefilter-log-protected-not-included": "Un o plure IDs de filtro specificate es protegite. Pois que tu non es autorisate a vider le detalios de filtros protegite, iste filtros non ha essite cercate.",
 	"abusefilter-log-hide-no-selected": "Nulle entrata seligite",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|Entrata|Entratas}} seligite de AbuseLog:",
 	"abusefilter-log-hide-legend": "Cambiar visibilitate",

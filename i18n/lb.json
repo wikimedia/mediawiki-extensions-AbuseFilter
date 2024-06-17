@@ -152,6 +152,7 @@
 	"abusefilter-edit-enabled": "Dëse Filter aktivéieren",
 	"abusefilter-edit-deleted": "Als geläscht markéieren",
 	"abusefilter-edit-hidden": "Verstop d'Detailer vun dësem Filter virun der Ëffentlechkeet",
+	"abusefilter-edit-protected-help-message": "Dës Aktioun ass permanent a kann net réckgängeg gemaach ginn",
 	"abusefilter-edit-global": "Globale Filter",
 	"abusefilter-edit-rules": "Konditiounen:",
 	"abusefilter-edit-field-conditions": "Konditiounen",

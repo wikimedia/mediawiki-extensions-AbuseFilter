@@ -470,6 +470,7 @@
 	"abusefilter-history": "Geschiedenis voor het filter #$1",
 	"abusefilter-history-foruser": "Wijzigingen door $1",
 	"abusefilter-history-hidden": "verborgen",
+	"abusefilter-history-protected": "Beveiligd",
 	"abusefilter-history-enabled": "ingeschakeld",
 	"abusefilter-history-global": "Globaal",
 	"abusefilter-history-timestamp": "Tijd",
