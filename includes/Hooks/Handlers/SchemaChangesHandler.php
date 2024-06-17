@@ -183,6 +183,18 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			__DIR__ . '/../../../maintenance/MigrateActorsAF.php',
 		] );
 
+		// 1.43
+		$updater->addExtensionUpdate( [
+			'dropField', 'abuse_filter', 'af_user',
+			"$dir/$dbType/patch-drop-af_user.sql", true
+		] );
+
+		// 1.43
+		$updater->addExtensionUpdate( [
+			'dropField', 'abuse_filter_history', 'afh_user',
+			"$dir/$dbType/patch-drop-afh_user.sql", true
+		] );
+
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 		// 1.35
 		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );

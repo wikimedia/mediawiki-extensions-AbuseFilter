@@ -352,8 +352,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 		$dbw = $this->getDb();
 		$defaultRowSection = [
-			'af_user' => 0,
-			'af_user_text' => 'FilterTester',
 			'af_actor' => 1,
 			'af_timestamp' => $dbw->timestamp(),
 			'af_group' => 'default',
