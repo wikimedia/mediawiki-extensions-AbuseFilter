@@ -180,7 +180,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 		$updater->addExtensionUpdate( [
 			'runMaintenance',
 			MigrateActorsAF::class,
-			__DIR__ . '/../../../maintenance/MigrateActorsAF.php',
 		] );
 
 		// 1.43
