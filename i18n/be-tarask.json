@@ -13,7 +13,8 @@
 			"StasDash",
 			"W",
 			"Wizardist",
-			"Zedlik"
+			"Zedlik",
+			"ElDaredo"
 		]
 	},
 	"abusefilter-desc": "Прыстасоўвае аўтаматычную эўрыстыку да рэдагаваньняў.",
@@ -525,7 +526,7 @@
 	"abusefilter-test-search-type-move": "Пераносы",
 	"abusefilter-test-search-type-delete": "Выдаленьні",
 	"abusefilter-test-search-type-upload": "Загрузкі",
-	"abusefilter-test-search-type-createaccount": "Стварэньне рахункаў",
+	"abusefilter-test-search-type-createaccount": "Стварэньне ўліковых запісаў",
 	"abusefilter-changeslist-examine": "праверыць",
 	"abusefilter-examine": "Праверыць індывідуальныя зьмены",
 	"abusefilter-examine-intro": "Гэтая старонка дазваляе Вам праверыць зьменныя, створаныя фільтрам злоўжываньняў для індывідуальных зьменаў, і праверыць іх на фільтрах.",
