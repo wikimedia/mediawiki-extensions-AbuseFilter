@@ -56,12 +56,15 @@ class VariablesFormatter {
 
 			$varMsgKey = $this->keywordsManager->getMessageKeyForVar( $key );
 			if ( $varMsgKey ) {
-				$keyDisplay = $this->messageLocalizer->msg( $varMsgKey )->parse() . ' ' .
-					Html::element(
-						'code',
-						[],
-						$this->messageLocalizer->msg( 'parentheses' )->rawParams( $key )->text()
-					);
+				$varMsg = $this->messageLocalizer->msg( $varMsgKey );
+				$arg = Html::element( 'code', [], $key );
+				if ( str_contains( $varMsg->plain(), '$1' ) ) {
+					$keyDisplay = $varMsg->params( $arg )->parse();
+				} else {
+					// workaround due to 1904cf8 (temporary?)
+					$keyDisplay = $varMsg->parse() . ' '
+						. $this->messageLocalizer->msg( 'parentheses' )->rawParams( $arg )->escaped();
+				}
 			} else {
 				$keyDisplay = Html::element( 'code', [], $key );
 			}
