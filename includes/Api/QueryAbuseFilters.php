@@ -22,7 +22,6 @@ use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Utils\MWTimestamp;
@@ -92,10 +91,9 @@ class QueryAbuseFilters extends ApiQueryBase {
 		$this->addFieldsIf( 'af_actions', $fld_actions );
 		$this->addFieldsIf( 'af_comments', $fld_comments );
 		if ( $fld_user ) {
-			$actorQuery = AbuseFilterServices::getActorMigration()->getJoin( 'af_user' );
-			$this->addTables( $actorQuery['tables'] );
-			$this->addFields( [ 'af_user_text' => $actorQuery['fields']['af_user_text'] ] );
-			$this->addJoinConds( $actorQuery['joins'] );
+			$this->addTables( 'actor' );
+			$this->addFields( [ 'af_user_text' => 'actor_name' ] );
+			$this->addJoinConds( [ 'actor' => [ 'JOIN', 'actor_id = af_actor' ] ] );
 		}
 		$this->addFieldsIf( 'af_timestamp', $fld_time );
 

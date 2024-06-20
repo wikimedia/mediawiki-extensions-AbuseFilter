@@ -12,9 +12,8 @@ require_once "$IP/maintenance/Maintenance.php";
 
 use LoggedUpdateMaintenance;
 use ManualLogEntry;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LikeValue;
 
@@ -52,23 +51,20 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 		$legacyParamsLike = new LikeValue( $logParamsConcat, $db->anyString() );
 		// Non-legacy entries are a serialized array with 'newId' and 'historyId' keys
 		$newLogParamsLike = new LikeValue( $db->anyString(), 'historyId', $db->anyString() );
-		$actorQuery = AbuseFilterServices::getActorMigration()->getJoin( 'afh_user' );
 		// Find all entries in abuse_filter_history without logging entry of same timestamp
 		$afhResult = $db->newSelectQueryBuilder()
-			->select( [ 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_deleted' ] )
-			->fields( $actorQuery['fields'] )
+			->select( [ 'afh_id', 'afh_filter', 'afh_timestamp', 'afh_deleted', 'actor_user', 'actor_name' ] )
 			->from( 'abuse_filter_history' )
+			->join( 'actor', null, [ 'actor_id = afh_actor' ] )
 			->leftJoin( 'logging', null, [
 				'afh_timestamp = log_timestamp',
 				$db->expr( 'log_params', IExpression::LIKE, $legacyParamsLike ),
 				'log_type' => 'abusefilter',
 			] )
-			->tables( $actorQuery['tables'] )
 			->where( [
 				'log_id' => null,
 				$db->expr( 'log_params', IExpression::NOT_LIKE, $newLogParamsLike ),
 			] )
-			->joinConds( $actorQuery['joins'] )
 			->caller( __METHOD__ )
 			->fetchResultSet();
 
@@ -120,16 +116,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 			if ( $count % 100 === 0 ) {
 				$this->waitForReplication();
 			}
-			$user = User::newFromAnyId(
-				$row->afh_user ?? null,
-				$row->afh_user_text ?? null,
-				$row->afh_actor ?? null
-			);
-
-			if ( $user === null ) {
-				// This isn't supposed to happen.
-				continue;
-			}
+			$user = new UserIdentityValue( (int)( $row->actor_user ?? 0 ), $row->actor_name );
 
 			// This copies the code in FilterStore
 			$logEntry = new ManualLogEntry( 'abusefilter', 'modify' );

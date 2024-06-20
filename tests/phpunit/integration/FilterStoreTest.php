@@ -49,10 +49,9 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		/** @var FilterStore $filterStore */
 		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
 		$row = $filterStore->filterToDatabaseRow( $filter, $oldFilter );
-		$row += AbuseFilterServices::getActorMigration()->getInsertValues(
-			$this->db,
-			'af_user',
-			$this->getTestUser()->getUserIdentity()
+		$row['af_actor'] = $this->getServiceContainer()->getActorNormalization()->acquireActorId(
+			$this->getTestUser()->getUserIdentity(),
+			$this->db
 		);
 		$this->db->newInsertQueryBuilder()
 			->insertInto( 'abuse_filter' )

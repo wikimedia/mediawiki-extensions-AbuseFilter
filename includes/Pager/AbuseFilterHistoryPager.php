@@ -6,7 +6,6 @@ use HtmlArmor;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
@@ -14,10 +13,8 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\Title\Title;
-use MediaWiki\User\UserRigorOptions;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -139,8 +136,8 @@ class AbuseFilterHistoryPager extends TablePager {
 				break;
 			case 'afh_user_text':
 				$formatted =
-					Linker::userLink( $row->afh_user, $row->afh_user_text ) . ' ' .
-					Linker::userToolLinks( $row->afh_user, $row->afh_user_text );
+					Linker::userLink( $row->afh_user ?? 0, $row->afh_user_text ) . ' ' .
+					Linker::userToolLinks( $row->afh_user ?? 0, $row->afh_user_text );
 				break;
 			case 'afh_public_comments':
 				$formatted = htmlspecialchars( $value, ENT_QUOTES, 'UTF-8', false );
@@ -206,15 +203,15 @@ class AbuseFilterHistoryPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
-		$afActorMigration = AbuseFilterServices::getActorMigration();
-		$actorQuery = $afActorMigration->getJoin( 'afh_user' );
 		$info = [
-			'tables' => [ 'abuse_filter_history', 'abuse_filter' ] + $actorQuery['tables'],
+			'tables' => [ 'abuse_filter_history', 'abuse_filter', 'actor' ],
 			// All fields but afh_deleted on abuse_filter_history
 			'fields' => [
 				'afh_filter',
 				'afh_timestamp',
 				'afh_public_comments',
+				'afh_user' => 'actor_user',
+				'afh_user_text' => 'actor_name',
 				'afh_flags',
 				'afh_comments',
 				'afh_actions',
@@ -222,7 +219,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				'afh_changed_fields',
 				'afh_pattern',
 				'af_hidden'
-			] + $actorQuery['fields'],
+			],
 			'conds' => [],
 			'join_conds' => [
 				'abuse_filter' =>
@@ -230,14 +227,12 @@ class AbuseFilterHistoryPager extends TablePager {
 						'LEFT JOIN',
 						'afh_filter=af_id',
 					],
-			] + $actorQuery['joins'],
+				'actor' => [ 'JOIN', 'actor_id = afh_actor' ],
+			]
 		];
 
 		if ( $this->user !== null ) {
-			$user = MediaWikiServices::getInstance()->getUserFactory()
-				->newFromName( $this->user, UserRigorOptions::RIGOR_NONE );
-			$whereQuery = $afActorMigration->getWhere( $this->mDb, 'afh_user', $user );
-			$info['conds'][] = $whereQuery['conds'];
+			$info['conds']['actor_name'] = $this->user;
 		}
 
 		if ( $this->filter ) {
