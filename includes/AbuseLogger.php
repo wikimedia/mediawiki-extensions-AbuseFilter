@@ -241,8 +241,6 @@ class AbuseLogger {
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' )
 				&& strpos( $this->options->get( 'AbuseFilterNotifications' ), 'rc' ) === false
 			) {
-				global $wgCheckUserLogAdditionalRights;
-				$wgCheckUserLogAdditionalRights[] = 'abusefilter-view';
 				$entry = $this->newLocalLogEntryFromData( $data );
 				$user = $entry->getPerformerIdentity();
 				// Invert the hack from ::buildLogTemplate because CheckUser attempts
