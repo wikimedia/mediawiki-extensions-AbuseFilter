@@ -18,6 +18,11 @@ use MediaWikiIntegrationTestCase;
  */
 class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 
+	protected function tearDown(): void {
+		parent::tearDown();
+		Hooks::getInstance()->setForceShowCaptcha( false );
+	}
+
 	public function testOnEditFilterMergedContent() {
 		$this->markTestSkippedIfExtensionNotLoaded( 'ConfirmEdit' );
 		$confirmEditHandler = new ConfirmEditHandler();
