@@ -43,12 +43,8 @@ class ConfirmEditHandler implements EditFilterMergedContentHook {
 		// will run in a narrower scope (not invoking ConfirmEdit's onConfirmEditTriggersCaptcha hook,
 		// for example), and will just make sure that the status is modified to present a CAPTCHA to
 		// the user.
-		// FIXME: Remove phan suppression after I3484d66298bc9f49dfbe003a0605e2ac1a092e10 is merged
-		// @phan-suppress-next-line PhanUndeclaredMethod
 		if ( $simpleCaptcha->shouldForceShowCaptcha() &&
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			!$simpleCaptcha->isCaptchaSolved() &&
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			$simpleCaptcha->editFilterMergedContentHandlerAlreadyInvoked() ) {
 			return $simpleCaptcha->confirmEditMerged(
 				$context,
