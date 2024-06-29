@@ -68,7 +68,7 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return VariableHolder|null
 	 */
 	public function getVars(): ?VariableHolder {
-		if ( $this->rc->getAttribute( 'rc_type' ) == RC_LOG ) {
+		if ( $this->rc->getAttribute( 'rc_source' ) === RecentChange::SRC_LOG ) {
 			switch ( $this->rc->getAttribute( 'rc_log_type' ) ) {
 				case 'move':
 					$this->addMoveVars();
@@ -136,6 +136,7 @@ class RCVariableGenerator extends VariableGenerator {
 	private function addCreateAccountVars(): self {
 		$this->vars->setVar(
 			'action',
+			// XXX: as of 1.43, the following is never true
 			$this->rc->getAttribute( 'rc_log_action' ) === 'autocreate'
 				? 'autocreateaccount'
 				: 'createaccount'
