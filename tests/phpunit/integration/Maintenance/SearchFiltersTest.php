@@ -38,7 +38,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 	public function addDBData() {
 		$defaultRow = [
 			'af_actor' => 1,
-			'af_timestamp' => $this->db->timestamp( '20190826000000' ),
+			'af_timestamp' => $this->getDb()->timestamp( '20190826000000' ),
 			'af_enabled' => 1,
 			'af_comments' => '',
 			'af_public_comments' => 'Test filter',
@@ -56,7 +56,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 			[ 'af_id' => 3, 'af_pattern' => 'user_editcount % 3 !== 1' ] + $defaultRow,
 			[ 'af_id' => 4, 'af_pattern' => 'rmspecials(added_lines_pst) !== ""' ] + $defaultRow
 		];
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'abuse_filter' )
 			->rows( $rows )
 			->caller( __METHOD__ )

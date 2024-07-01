@@ -42,7 +42,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function createFilter( int $id ): void {
 		$row = self::DEFAULT_VALUES;
-		$row['timestamp'] = $this->db->timestamp( $row['timestamp'] );
+		$row['timestamp'] = $this->getDb()->timestamp( $row['timestamp'] );
 		$filter = $this->getFilterFromSpecs( [ 'id' => $id ] + $row );
 		$oldFilter = MutableFilter::newDefault();
 		// Use some black magic to bypass checks
@@ -51,9 +51,9 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		$row = $filterStore->filterToDatabaseRow( $filter, $oldFilter );
 		$row['af_actor'] = $this->getServiceContainer()->getActorNormalization()->acquireActorId(
 			$this->getTestUser()->getUserIdentity(),
-			$this->db
+			$this->getDb()
 		);
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'abuse_filter' )
 			->row( $row )
 			->caller( __METHOD__ )

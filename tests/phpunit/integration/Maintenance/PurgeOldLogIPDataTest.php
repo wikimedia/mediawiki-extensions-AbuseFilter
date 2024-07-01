@@ -50,12 +50,13 @@ class PurgeOldLogIPDataTest extends MaintenanceBaseTestCase {
 			ConvertibleTimestamp::convert( TS_UNIX, self::FAKE_TIME ) - 2 * self::MAX_AGE
 		);
 		$rows = [
-			[ 'afl_id' => 1, 'afl_timestamp' => $this->db->timestamp( $oldTS ) ] + $defaultRow,
-			[ 'afl_id' => 2, 'afl_timestamp' => $this->db->timestamp( $oldTS ), 'afl_ip' => '' ] + $defaultRow,
-			[ 'afl_id' => 3, 'afl_timestamp' => $this->db->timestamp( self::FAKE_TIME ) ] + $defaultRow,
-			[ 'afl_id' => 4, 'afl_timestamp' => $this->db->timestamp( self::FAKE_TIME ), 'afl_ip' => '' ] + $defaultRow,
+			[ 'afl_id' => 1, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ) ] + $defaultRow,
+			[ 'afl_id' => 2, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ), 'afl_ip' => '' ] + $defaultRow,
+			[ 'afl_id' => 3, 'afl_timestamp' => $this->getDb()->timestamp( self::FAKE_TIME ) ] + $defaultRow,
+			[ 'afl_id' => 4, 'afl_timestamp' => $this->getDb()
+				->timestamp( self::FAKE_TIME ), 'afl_ip' => '' ] + $defaultRow,
 		];
-		$this->db->newInsertQueryBuilder()
+		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'abuse_filter_log' )
 			->rows( $rows )
 			->caller( __METHOD__ )
