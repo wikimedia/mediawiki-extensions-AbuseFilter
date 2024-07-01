@@ -189,7 +189,7 @@
 	"abusefilter-log-nonexistent": "指定ID的记录不存在。",
 	"abusefilter-log-details-hidden": "您无法查看详细信息，因为此记录已被从公共范围隐藏。",
 	"abusefilter-log-details-hidden-implicit": "您无法查看此记录的详细信息，因为其与从公开视图中隐藏的修订版本相关联。",
-	"abusefilter-log-private-not-included": "一个或多个您指定的过滤器ID是私有的。因为您不被允许查看非公开过滤器的详情，所以这些过滤器未被寻找。",
+	"abusefilter-log-private-not-included": "一个或多个您指定的过滤器ID是私有的。因为您不被允许查看非公开过滤器的详情，所以这些过滤器未被搜索。",
 	"abusefilter-log-hide-no-selected": "未选择记录",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|被选择的滥用日志记录}}：",
 	"abusefilter-log-hide-legend": "更改可见性",
