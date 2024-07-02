@@ -26,15 +26,15 @@ class Flags {
 	/**
 	 * @param bool $enabled
 	 * @param bool $deleted
-	 * @param int $hidden
+	 * @param int $privacyLevel
 	 * @param bool $global
 	 */
-	public function __construct( bool $enabled, bool $deleted, int $hidden, bool $global ) {
+	public function __construct( bool $enabled, bool $deleted, int $privacyLevel, bool $global ) {
 		$this->enabled = $enabled;
 		$this->deleted = $deleted;
-		$this->hidden = (bool)( self::FILTER_HIDDEN & $hidden );
-		$this->protected = (bool)( self::FILTER_USES_PROTECTED_VARS & $hidden );
-		$this->privacyLevel = $hidden;
+		$this->hidden = (bool)( self::FILTER_HIDDEN & $privacyLevel );
+		$this->protected = (bool)( self::FILTER_USES_PROTECTED_VARS & $privacyLevel );
+		$this->privacyLevel = $privacyLevel;
 		$this->global = $global;
 	}
 

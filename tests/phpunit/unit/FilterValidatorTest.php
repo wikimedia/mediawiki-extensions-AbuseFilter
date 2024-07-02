@@ -47,10 +47,10 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			$ruleChecker->method( 'checkSyntax' )->willReturn(
 				new ParserStatus( null, [], 1 )
 			);
-			$ruleChecker->method( 'getUsedVars' )->willReturnMap( [
-				[ 'user_unnamed_ip', [ 'user_unnamed_ip' ] ],
-				[ 'user_name', [] ]
-			] );
+			$ruleChecker->method( 'getUsedVars' )->willReturnCallback( static function ( string $rules ) {
+				preg_match_all( '/user_\w+/i', $rules, $matches, PREG_PATTERN_ORDER );
+				return array_map( 'strtolower', $matches[0] );
+			} );
 		}
 		$checkerFactory = $this->createMock( RuleCheckerFactory::class );
 		$checkerFactory->method( 'newRuleChecker' )->willReturn( $ruleChecker );
@@ -366,7 +366,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	public function testCheckCanViewProtectedVariables( $data ) {
 		$performer = $this->mockRegisteredAuthorityWithPermissions( $data[ 'rights' ] );
 		$permManager = $this->createMock( AbuseFilterPermissionManager::class );
-		$permManager->method( 'shouldProtectFilter' )->willReturn( false );
+		$permManager->method( 'getForbiddenVariables' )->willReturn( [] );
 		$filter = $this->createMock( AbstractFilter::class );
 		$filter->method( 'getRules' )->willReturn( $data[ 'rules' ] );
 		$this->assertStatusGood( $this->getFilterValidator( $permManager )
@@ -380,7 +380,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	public function testCheckCanViewProtectedVariablesError( $data ) {
 		$performer = $this->mockRegisteredAuthorityWithPermissions( $data[ 'rights' ] );
 		$permManager = $this->createMock( AbuseFilterPermissionManager::class );
-		$permManager->method( 'shouldProtectFilter' )->willReturn( [ 'user_unnamed_ip' ] );
+		$permManager->method( 'getForbiddenVariables' )->willReturn( [ 'user_unnamed_ip' ] );
 		$filter = $this->createMock( AbstractFilter::class );
 		$filter->method( 'getRules' )->willReturn( $data[ 'rules' ] );
 		$this->assertFilterValidatorStatus(

@@ -380,7 +380,7 @@ class FilterValidator {
 		}
 
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
-		$usedVariables = (array)$ruleChecker->getUsedVars( $filter->getRules() );
+		$usedVariables = $ruleChecker->getUsedVars( $filter->getRules() );
 		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
 
 		if (
@@ -405,9 +405,9 @@ class FilterValidator {
 		$ret = Status::newGood();
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 		$usedVars = $ruleChecker->getUsedVars( $filter->getRules() );
-		$missingRights = $this->permManager->shouldProtectFilter( $performer, $usedVars );
-		if ( is_array( $missingRights ) ) {
-			$ret->error( 'abusefilter-edit-protected-variable', Message::listParam( $missingRights ) );
+		$forbiddenVariables = $this->permManager->getForbiddenVariables( $performer, $usedVars );
+		if ( $forbiddenVariables ) {
+			$ret->error( 'abusefilter-edit-protected-variable', Message::listParam( $forbiddenVariables ) );
 		}
 		return $ret;
 	}
