@@ -80,6 +80,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		],
 		AbuseFilterViewList::class => [
 			'LinkBatchFactory',
+			'ConnectionProvider',
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			FilterProfiler::SERVICE_NAME,
 			SpecsFormatter::SERVICE_NAME,
