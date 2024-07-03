@@ -246,7 +246,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 		if ( !$this->canViewProtectedVars ) {
 			// Hide data the user can't see.
-			$info['conds'][] = 'af_hidden & ' . Flags::FILTER_USES_PROTECTED_VARS . ' = 0';
+			$info['conds'][] = $this->mDb->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0';
 		}
 
 		return $info;

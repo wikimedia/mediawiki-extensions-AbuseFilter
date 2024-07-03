@@ -147,7 +147,7 @@ class QueryAbuseLog extends ApiQueryBase {
 					try {
 						$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
 					} catch ( CentralDBNotAvailableException $_ ) {
-						// Conservatively assume it's hidden and protected, like in SpecialAbuseLog
+						// Conservatively assume it's hidden and protected, like in AbuseLogPager::doFormatRow
 						$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
 					} catch ( FilterNotFoundException $_ ) {
 						$privacyLevel = Flags::FILTER_PUBLIC;

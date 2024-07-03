@@ -287,8 +287,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$history_id
 		)->parse() );
 
-		// We use filterHidden() to ensure that if a public filter is made private, the public
-		// revision is also hidden.
+		// Grab the current hidden flag from the DB, in case we're editing an older, public revision of a filter that is
+		// currently hidden, so that we can also hide that public revision.
 		if (
 			( $filterObj->isHidden() || (
 				$filter !== null && $this->filterLookup->getFilter( $filter, false )->isHidden() )

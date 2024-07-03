@@ -156,6 +156,7 @@ class SpecsFormatter {
 			// * abusefilter-history-enabled
 			// * abusefilter-history-deleted
 			// * abusefilter-history-hidden
+			// * abusefilter-history-protected
 			// * abusefilter-history-global
 			$flagsDisplay[] = $this->messageLocalizer->msg( "abusefilter-history-$flag" )->escaped();
 		}

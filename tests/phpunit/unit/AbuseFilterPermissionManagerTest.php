@@ -219,7 +219,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	public static function provideShouldProtectFilter(): Generator {
+	public static function provideGetForbiddenVariables(): Generator {
 		yield 'cannot view, protected vars' => [
 			[
 				'rights' => [],
@@ -232,32 +232,32 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 				'rights' => [],
 				'usedVars' => []
 			],
-			false
+			[]
 		];
 		yield 'can view, protected vars' => [
 			[
 				'rights' => [ 'abusefilter-access-protected-vars' ],
 				'usedVars' => [ 'user_unnamed_ip' ]
 			],
-			true
+			[]
 		];
 		yield 'can view, no protected vars' => [
 			[
 				'rights' => [ 'abusefilter-access-protected-vars' ],
 				'usedVars' => []
 			],
-			false
+			[]
 		];
 	}
 
 	/**
-	 * @dataProvider provideShouldProtectFilter
+	 * @dataProvider provideGetForbiddenVariables
 	 */
-	public function testShouldProtectFilter( array $data, $expected ) {
+	public function testGetForbiddenVariables( array $data, $expected ) {
 		$performer = $this->mockRegisteredAuthorityWithPermissions( $data[ 'rights' ] );
 		$this->assertSame(
 			$expected,
-			$this->getPermMan()->shouldProtectFilter( $performer, $data[ 'usedVars' ] )
+			$this->getPermMan()->getForbiddenVariables( $performer, $data[ 'usedVars' ] )
 		);
 	}
 

@@ -28,7 +28,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		'enabled' => 1,
 		'comments' => '',
 		'name' => 'Mock filter',
-		'hidden' => 0,
+		'privacy' => Flags::FILTER_PUBLIC,
 		'hit_count' => 0,
 		'throttled' => 0,
 		'deleted' => 0,
@@ -78,7 +78,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 			new Flags(
 				$filterSpecs['enabled'],
 				$filterSpecs['deleted'],
-				$filterSpecs['hidden'],
+				$filterSpecs['privacy'],
 				$filterSpecs['global']
 			),
 			$actions,
@@ -187,12 +187,36 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 			'id' => '3',
 			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",
 			'name' => 'Mock filter with protected variable used',
-			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+			'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
 		];
 		$newFilter = $this->getFilterFromSpecs( $row );
 		$status = AbuseFilterServices::getFilterStore()->saveFilter(
 			$user, $row['id'], $newFilter, $origFilter
 		);
 		$this->assertStatusGood( $status );
+	}
+
+	public function testSaveFilter__cannotRemoveProtectedFlag() {
+		$row = [
+			'id' => null,
+			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",
+			'name' => 'Uses protected variable',
+			'enabled' => true,
+			'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
+		];
+
+		$origFilter = $this->getFilterFromSpecs( $row );
+		$newFilter = MutableFilter::newFromParentFilter( $origFilter );
+		$newFilter->setRules( '1 + 1 === 2' );
+		$newFilter->setProtected( false );
+
+		$status = AbuseFilterServices::getFilterStore()->saveFilter(
+			$this->getTestSysop()->getUser(), null, $newFilter, $origFilter
+		);
+
+		$this->assertStatusGood( $status );
+		$filterID = $status->getValue()[0];
+		$storedFilter = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, false );
+		$this->assertTrue( $storedFilter->isProtected() );
 	}
 }

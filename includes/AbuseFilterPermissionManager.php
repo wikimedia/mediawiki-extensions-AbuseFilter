@@ -103,29 +103,20 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
-	 * Check if the filter should be protected:
-	 * - Return false if it uses no protected variables
-	 * - Return true if it uses protected variables and the performer has view permissions
-	 * - Return an array of used protected variables if the performer doesn't have
-	 *   view permissions
+	 * Check if the filter uses variables that the user is not allowed to use (i.e., variables that are protected, if
+	 * the user can't view protected variables), and return them.
 	 *
 	 * @param Authority $performer
 	 * @param string[] $usedVariables
-	 * @return string[]|bool
+	 * @return string[]
 	 */
-	public function shouldProtectFilter( Authority $performer, $usedVariables ) {
+	public function getForbiddenVariables( Authority $performer, array $usedVariables ): array {
 		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
-		// Protected variables aren't used
-		if ( count( $usedProtectedVariables ) === 0 ) {
-			return false;
-		} else {
-			// Check for permissions if they are
-			if ( $this->canViewProtectedVariables( $performer ) ) {
-				return true;
-			} else {
-				return $usedProtectedVariables;
-			}
+		// All good if protected variables aren't used, or the user can view them.
+		if ( count( $usedProtectedVariables ) === 0 || $this->canViewProtectedVariables( $performer ) ) {
+			return [];
 		}
+		return $usedProtectedVariables;
 	}
 
 	/**

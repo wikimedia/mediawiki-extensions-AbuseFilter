@@ -452,7 +452,7 @@ class FilterEvaluator {
 	 * @param string $filter
 	 * @return array
 	 */
-	public function getUsedVars( $filter ) {
+	public function getUsedVars( string $filter ): array {
 		$this->resetState();
 		$cachedAllowShort = $this->mAllowShort;
 		try {
