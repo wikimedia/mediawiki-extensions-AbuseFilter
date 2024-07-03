@@ -131,7 +131,7 @@
 	"abusefilter-edit-deleted": "मेटिएको भनी चिन्ह लगाउने",
 	"abusefilter-edit-global": "विश्वव्यापी फिल्टर",
 	"abusefilter-edit-rules": "शर्तहरु:",
-	"abusefilter-edit-field-conditions": "शर्तहरू",
+	"abusefilter-edit-field-conditions": "सर्तहरू",
 	"abusefilter-edit-notes": "टिप्पणी:",
 	"abusefilter-edit-lastmod": "पछिल्लो संशोधित फिल्टर",
 	"abusefilter-edit-lastmod-text": "$2ले $1लाई",
