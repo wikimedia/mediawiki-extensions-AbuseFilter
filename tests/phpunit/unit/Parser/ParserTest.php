@@ -1163,20 +1163,19 @@ class ParserTest extends ParserTestCase {
 		$this->assertSame( $vars, $wrapper->mVariables );
 	}
 
+	public static function provideGetUsedVars() {
+		yield [ [ 'action', 'user_name' ], 'action = "edit" & ip_in_range( user_name, "1.2.3.4" )' ];
+		yield [ [ 'action', 'user_name' ], 'action = "edit" & ip_in_range( USER_NAME, "1.2.3.4" )' ];
+		yield [ [ 'added_lines' ], "added_lines[0] !== ''" ];
+		yield [ [ 'old_size', 'new_size' ], 'old_size > 0 & new_size / old_size < 0.5' ];
+	}
+
 	/**
 	 * @covers \MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator
+	 * @dataProvider provideGetUsedVars
 	 */
-	public function testGetUsedVars() {
+	public function testGetUsedVars( $expected, $conditions ) {
 		$parser = $this->getParser();
-		/** @var FilterEvaluator $wrapper */
-		$wrapper = TestingAccessWrapper::newFromObject( $parser );
-		$this->assertSame(
-			[ 'action', 'user_name' ],
-			$wrapper->getUsedVars( 'action = "edit" & ip_in_range( user_name, "1.2.3.4" )' )
-		);
-		$this->assertSame(
-			[ 'action', 'user_name' ],
-			$wrapper->getUsedVars( 'action = "edit" & ip_in_range( USER_NAME, "1.2.3.4" )' )
-		);
+		$this->assertSame( $expected, $parser->getUsedVars( $conditions ) );
 	}
 }
