@@ -174,20 +174,51 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$details = [ 0 => 'abusefilter-log-detail' ];
 		$private = [ 1 => 'abusefilter-log-private' ];
 		$protected = [ 2 => 'abusefilter-access-protected-vars' ];
+
 		yield 'filter hidden, not privileged' => [ Flags::FILTER_HIDDEN, [], false ];
 		yield 'filter hidden, details only' => [ Flags::FILTER_HIDDEN, $details, false ];
 		yield 'filter hidden, private logs only' => [ Flags::FILTER_HIDDEN, $private, false ];
 		yield 'filter hidden, details and private logs' => [ Flags::FILTER_HIDDEN, $details + $private, true ];
+
 		yield 'filter protected, not privileged' => [ Flags::FILTER_USES_PROTECTED_VARS, [], false ];
-		yield 'filter protected, privileged' => [ Flags::FILTER_USES_PROTECTED_VARS, $protected, true ];
+		yield 'filter protected, details only' => [ Flags::FILTER_USES_PROTECTED_VARS, $details, false ];
+		yield 'filter protected, protected logs only' => [ Flags::FILTER_USES_PROTECTED_VARS, $protected, false ];
+		yield 'filter protected, privileged' => [ Flags::FILTER_USES_PROTECTED_VARS, $details + $protected, true ];
+
+		$hiddenProtected = Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS;
+		yield 'filter hidden and protected, not privileged' => [ $hiddenProtected, [], false ];
+		yield 'filter hidden and protected, details only' => [ $hiddenProtected, $details, false ];
+		yield 'filter hidden and protected, private only' => [ $hiddenProtected, $private, false ];
+		yield 'filter hidden and protected, protected only' => [ $hiddenProtected, $protected, false ];
 		yield 'filter hidden and protected, details and private only' => [
-			Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS, $details + $private, false
+			$hiddenProtected, $details + $private, false
 		];
-		yield 'filter hidden and protected, protected only' => [
-			Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS, $protected, false
+		yield 'filter hidden and protected, details and protected only' => [
+			$hiddenProtected, $details + $protected, false
 		];
+		yield 'filter hidden and protected, private and protected only' => [
+			$hiddenProtected, $private + $protected, false
+		];
+		yield 'filter hidden and protected, privileged' => [
+			$hiddenProtected, $details + $private + $protected, true
+		];
+
 		yield 'filter visible, not privileged' => [ Flags::FILTER_PUBLIC, [], false ];
 		yield 'filter visible, privileged' => [ Flags::FILTER_PUBLIC, $details, true ];
+	}
+
+	/**
+	 * @param int $privacyLevel
+	 * @param array $rights
+	 * @param bool $expected
+	 * @dataProvider provideCanSeeLogDetailsForFilter
+	 */
+	public function testCanSeeLogDetailsForFilter( int $privacyLevel, array $rights, bool $expected ) {
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->canSeeLogDetailsForFilter( $performer, $privacyLevel )
+		);
 	}
 
 	public function provideCanViewProtectedVariables(): Generator {
@@ -258,20 +289,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame(
 			$expected,
 			$this->getPermMan()->getForbiddenVariables( $performer, $data[ 'usedVars' ] )
-		);
-	}
-
-	/**
-	 * @param int $privacyLevel
-	 * @param array $rights
-	 * @param bool $expected
-	 * @dataProvider provideCanSeeLogDetailsForFilter
-	 */
-	public function testCanSeeLogDetailsForFilter( int $privacyLevel, array $rights, bool $expected ) {
-		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
-		$this->assertSame(
-			$expected,
-			$this->getPermMan()->canSeeLogDetailsForFilter( $performer, $privacyLevel )
 		);
 	}
 
