@@ -576,6 +576,7 @@
 	"abusefilter-test-page": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-shownegative": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-syntaxerr": "Refers to {{msg-mw|Abusefilter-edit-check}}.",
+	"abusefilter-test-protectedvarerr": "Error message shown to the user on [[Special:AbuseFilter/test]] if the filter they are trying to view uses protected variables and they do not have permission to view it.",
 	"abusefilter-test-action": "Used as label on [[Special:AbuseFilter/test]]\n{{Identical|Type of action}}",
 	"abusefilter-test-search-type-all": "Option allowing to show every type of action.",
 	"abusefilter-test-search-type-edit": "Option allowing to only show edits.",
