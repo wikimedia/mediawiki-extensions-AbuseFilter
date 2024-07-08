@@ -156,6 +156,7 @@ describe( 'Filter editing', () => {
 			assert( await ViewEditPage.error.isDisplayed() );
 		} );
 
+		// Skipped on 2023-04-04 in 905717 because of T334001
 		it.skip( 'data is retained if saving fails', async () => {
 			const rulesValue = await ViewEditPage.rules.getValue();
 			assert.strictEqual( rulesValue, rules + '\n' );
