@@ -450,17 +450,10 @@ class FilterEvaluator {
 	 * and saved to self::usedVars to be returned to the caller in this function.
 	 *
 	 * @param string $filter
-	 * @return array
+	 * @return string[]
 	 */
 	public function getUsedVars( string $filter ): array {
-		$this->resetState();
-		$cachedAllowShort = $this->mAllowShort;
-		try {
-			$this->mAllowShort = false;
-			$this->evaluateExpression( $filter );
-		} finally {
-			$this->mAllowShort = $cachedAllowShort;
-		}
+		$this->checkSyntax( $filter );
 		return array_unique( $this->usedVars );
 	}
 
