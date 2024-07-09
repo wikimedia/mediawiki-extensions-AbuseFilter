@@ -42,10 +42,7 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 		$this->assertStatusGood( $status, 'The default is to not show a CAPTCHA' );
 
 		$simpleCaptcha = Hooks::getInstance();
-		// FIXME: Remove this method_exists check after Idc47bdae8007da938f31e1c0f33e9be4813f41d7 is merged
-		if ( method_exists( $simpleCaptcha, 'setEditFilterMergedContentHandlerInvoked' ) ) {
-			$simpleCaptcha->setEditFilterMergedContentHandlerInvoked();
-		}
+		$simpleCaptcha->setEditFilterMergedContentHandlerInvoked();
 		$simpleCaptcha->setAction( 'edit' );
 		$captchaConsequence = new CaptchaConsequence( $this->createMock( Parameters::class ) );
 		$captchaConsequence->execute();
@@ -57,13 +54,10 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( User::class ),
 			false
 		);
-		// FIXME: Remove this method_exists check after Idc47bdae8007da938f31e1c0f33e9be4813f41d7 is merged
-		if ( method_exists( $simpleCaptcha, 'shouldForceShowCaptcha' ) ) {
-			$this->assertStatusError(
-				'captcha-edit-fail',
-				$status,
-				'CaptchaConsequence specifies that a CAPTCHA should be shown'
-			);
-		}
+		$this->assertStatusError(
+			'captcha-edit-fail',
+			$status,
+			'CaptchaConsequence specifies that a CAPTCHA should be shown'
+		);
 	}
 }
