@@ -54,10 +54,10 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 			$this->createMock( User::class ),
 			false
 		);
-		$this->assertStatusError(
-			'captcha-edit-fail',
-			$status,
-			'CaptchaConsequence specifies that a CAPTCHA should be shown'
-		);
+		$message = $status->getMessages( 'error' );
+
+		// FIXME: Change to `$this->assertStatusError( 'captcha-edit' );` after
+		// Ie13181b78b8e2903c6cc0f0f778689bcc8b8ce2e is merged.
+		$this->assertContains( $message[0]->getKey(), [ 'captcha-edit', 'captcha-edit-fail' ] );
 	}
 }
