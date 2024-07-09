@@ -16,6 +16,7 @@ use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
 use OOUI;
 use StringUtils;
+use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
  * The default view used in Special:AbuseFilter
@@ -24,6 +25,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
+
+	/** @var IConnectionProvider */
+	private $dbProvider;
 
 	/** @var FilterProfiler */
 	private $filterProfiler;
@@ -36,6 +40,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 	/**
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param IConnectionProvider $dbProvider
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param FilterProfiler $filterProfiler
 	 * @param SpecsFormatter $specsFormatter
@@ -47,6 +52,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
+		IConnectionProvider $dbProvider,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterProfiler $filterProfiler,
 		SpecsFormatter $specsFormatter,
@@ -58,6 +64,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->dbProvider = $dbProvider;
 		$this->filterProfiler = $filterProfiler;
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $context );
@@ -153,6 +160,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_global'] = 0;
 		} elseif ( $scope === 'global' ) {
 			$conds['af_global'] = 1;
+		}
+
+		if ( !$this->afPermManager->canViewProtectedVariables( $performer ) ) {
+			$dbr = $this->dbProvider->getReplicaDatabase();
+			$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0';
 		}
 
 		if ( $searchmode !== null ) {
