@@ -45,6 +45,55 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	use MockAuthorityTrait;
 
 	/**
+	 * @var SimpleAuthority
+	 */
+	private $authorityCannotViewProtectedVar;
+
+	/**
+	 * @var SimpleAuthority
+	 */
+	private $authorityCanViewProtectedVar;
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		// Add filter to query for
+		$filter = [
+			'id' => '1',
+			'rules' => 'user_unnamed_ip = "1.2.3.4"',
+			'name' => 'Filter with protected variables',
+			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+			'user' => 0,
+			'user_text' => 'FilterTester',
+			'timestamp' => '20190826000000',
+			'enabled' => 1,
+			'comments' => '',
+			'hit_count' => 0,
+			'throttled' => 0,
+			'deleted' => 0,
+			'actions' => [],
+			'global' => 0,
+			'group' => 'default'
+		];
+		$this->createFilter( $filter );
+
+		// Create the user to query for filters
+		$user = $this->getTestSysop()->getUser();
+
+		// Create an authority who can see private filters but not protected variables
+		$this->authorityCannotViewProtectedVar = new SimpleAuthority(
+			$user,
+			[ 'abusefilter-log-private', 'abusefilter-view-private' ]
+		);
+
+		// Create an authority who can see private and protected variables
+		$this->authorityCanViewProtectedVar = new SimpleAuthority(
+			$user,
+			[ 'abusefilter-access-protected-vars', 'abusefilter-log-private', 'abusefilter-view-private' ]
+		);
+	}
+
+	/**
 	 * @dataProvider provideInstantiateView
 	 */
 	public function testInstantiateView( string $viewClass, array $params = [] ) {
@@ -140,42 +189,27 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			->execute();
 	}
 
-	public function testProtectedVarsFilterVisibility() {
-		// Add filter to query for
-		$filter = [
-			'id' => '1',
-			'rules' => 'user_unnamed_ip = 1.2.3.4',
-			'name' => 'Filter with protected variables',
-			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
-			'user' => 0,
-			'user_text' => 'FilterTester',
-			'timestamp' => '20190826000000',
-			'enabled' => 1,
-			'comments' => '',
-			'hit_count' => 0,
-			'throttled' => 0,
-			'deleted' => 0,
-			'actions' => [],
-			'global' => 0,
-			'group' => 'default'
-		];
-		$this->createFilter( $filter );
-
-		// Create the user to query for filters
-		$user = $this->getTestSysop()->getUser();
-
-		// Create an authority who can see private filters but not protected variables
-		$authorityCannotViewProtectedVar = new SimpleAuthority(
-			$user,
-			[ 'abusefilter-log-private', 'abusefilter-view-private' ]
+	public function testViewTestBatchProtectedVarsFilterVisibility() {
+		// Assert that the user who cannot see protected variables cannot load the filter
+		[ $html, ] = $this->executeSpecialPage(
+			'test/1',
+			new FauxRequest(),
+			null,
+			$this->authorityCannotViewProtectedVar
 		);
+		$this->assertStringNotContainsString( '1.2.3.4', $html );
 
-		// Create an authority who can see private and protected variables
-		$authorityCanViewProtectedVar = new SimpleAuthority(
-			$user,
-			[ 'abusefilter-access-protected-vars', 'abusefilter-log-private', 'abusefilter-view-private' ]
+		// Assert that the user who can see protected variables can load the filter
+		[ $html, ] = $this->executeSpecialPage(
+			'test/1',
+			new FauxRequest(),
+			null,
+			$this->authorityCanViewProtectedVar
 		);
+		$this->assertStringContainsString( '1.2.3.4', $html );
+	}
 
+	public function testViewListProtectedVarsFilterVisibility() {
 		// Stub out a page with query results for a filter that uses protected variables
 		// &sort=af_id&limit=50&asc=&desc=1&deletedfilters=hide&querypattern=user_unnamed_ip&searchoption=LIKE
 		$requestWithProtectedVar = new FauxRequest( [
@@ -195,7 +229,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'',
 			$requestWithProtectedVar,
 			null,
-			$authorityCannotViewProtectedVar
+			$this->authorityCannotViewProtectedVar
 		);
 		$this->assertStringContainsString( 'table_pager_empty', $html );
 
@@ -204,7 +238,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'',
 			$requestWithProtectedVar,
 			null,
-			$authorityCanViewProtectedVar
+			$this->authorityCanViewProtectedVar
 		);
 		$this->assertStringContainsString( '1.2.3.4', $html );
 	}

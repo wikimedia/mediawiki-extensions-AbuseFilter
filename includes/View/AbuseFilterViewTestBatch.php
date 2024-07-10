@@ -90,6 +90,22 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$this->loadParameters();
 
+		// Check if a loaded test pattern uses protected variables and if the user has the right
+		// to view protected variables. If they don't and protected variables are present, unset
+		// the test pattern to avoid leaking PII and notify the user.
+		// This is done as early as possible so that a filter with PII the user cannot access is
+		// never loaded.
+		if ( $this->testPattern !== '' ) {
+			$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+			$usedVars = $ruleChecker->getUsedVars( $this->testPattern );
+			if ( $this->afPermManager->getForbiddenVariables( $this->getAuthority(), $usedVars ) ) {
+				$this->testPattern = '';
+				$out->addHtml(
+					Html::errorBox( $this->msg( 'abusefilter-test-protectedvarerr' )->parse() )
+				);
+			}
+		}
+
 		$out->setPageTitleMsg( $this->msg( 'abusefilter-test' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
 		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
