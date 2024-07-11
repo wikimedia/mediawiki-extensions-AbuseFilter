@@ -555,7 +555,7 @@
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|го создаде}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|го измени}} $4 ($5)",
 	"abusefilter-log-invalid-filter": "Некои од наведените филтерски назнаки се неважечки.",
-	"abusefilter-log-noresults": "Нема исход",
+	"abusefilter-log-noresults": "Не најдов ништо",
 	"abusefilter-diff-title": "Разлики помеѓу верзиите",
 	"abusefilter-diff-item": "Елемент",
 	"abusefilter-diff-version": "Верзија од $1, {{GENDER:$3|од}} $2",
