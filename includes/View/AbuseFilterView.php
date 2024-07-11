@@ -18,7 +18,6 @@ use UnexpectedValueException;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\IReadableDatabase;
-use Wikimedia\Rdbms\OrExpressionGroup;
 use Wikimedia\Rdbms\Platform\ISQLPlatform;
 
 abstract class AbuseFilterView extends ContextSource {
@@ -153,7 +152,7 @@ abstract class AbuseFilterView extends ContextSource {
 		return $db->expr( 'rc_source', '=', $editSources )
 			->orExpr(
 				$db->expr( 'rc_source', '=', RecentChange::SRC_LOG )
-					->andExpr( new OrExpressionGroup( ...$conds ) )
+					->andExpr( $db->orExpr( $conds ) )
 			);
 	}
 
