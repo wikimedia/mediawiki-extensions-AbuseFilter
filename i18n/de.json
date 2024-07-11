@@ -564,6 +564,7 @@
 	"abusefilter-test-page": "Änderungen an der Seite:",
 	"abusefilter-test-shownegative": "Änderungen anzeigen, die nicht auf den Filter passen",
 	"abusefilter-test-syntaxerr": "Der eingegebene Filter enthält einen Syntaxfehler.\nWeitere Erläuterungen gibt es bei Klick auf die Schaltfläche „{{int:abusefilter-edit-check}}“.",
+	"abusefilter-test-protectedvarerr": "Der Filter wird nicht angezeigt, da er geschützte Variablen verwendet und vor der öffentlichen Ansicht verborgen ist.",
 	"abusefilter-test-action": "Typ der Aktion:",
 	"abusefilter-test-search-type-all": "Alle Aktionen",
 	"abusefilter-test-search-type-edit": "Bearbeitungen",
