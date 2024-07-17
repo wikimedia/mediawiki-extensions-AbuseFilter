@@ -76,19 +76,14 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 	 * @return array [ string $next, string $display ]
 	 */
 	private function makeNextCond( $dbw, $primaryKey, $row ) {
-		$next = '';
+		$conditions = [];
 		$display = [];
-		for ( $i = count( $primaryKey ) - 1; $i >= 0; $i-- ) {
-			$field = $primaryKey[$i];
+		foreach ( $primaryKey as $field ) {
 			$display[] = $field . '=' . $row->$field;
-			$value = $dbw->addQuotes( $row->$field );
-			if ( $next === '' ) {
-				$next = "$field > $value";
-			} else {
-				$next = "$field > $value OR $field = $value AND ($next)";
-			}
+			$conditions[$field] = $row->$field;
 		}
-		$display = implode( ' ', array_reverse( $display ) );
+		$next = $dbw->buildComparison( '>', $conditions );
+		$display = implode( ' ', $display );
 		return [ $next, $display ];
 	}
 
