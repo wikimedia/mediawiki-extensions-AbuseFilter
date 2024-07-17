@@ -109,6 +109,7 @@
 	"action-abusefilter-revert": "revertir todos los cambios realizados por un determinado filtro antiabusos",
 	"action-abusefilter-view-private": "ver filtros antiabusos marcados como privados",
 	"action-abusefilter-log-private": "ver registros de filtros antiabusos marcados como privados",
+	"action-abusefilter-log-protected": "ver registros de filtros antiabusos marcados como privados",
 	"action-abusefilter-hide-log": "ocultar entradas del registro de abusos",
 	"action-abusefilter-hidden-log": "ver entradas ocultas del registro de abusos",
 	"action-abusefilter-modify-global": "crear o modificar filtros antiabusos globales",
@@ -588,6 +589,7 @@
 	"abusefilter-test-page": "Cambios hechos en la página:",
 	"abusefilter-test-shownegative": "Mostrar cambios que no coincidan con el filtro",
 	"abusefilter-test-syntaxerr": "El filtro que has introducido contiene un error de sintaxis.\nPuedes recibir una explicación completa haciendo clic en \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-protectedvarerr": "El filtro no se muestra porque utiliza variables protegidas y está restringido a la vista del público.",
 	"abusefilter-test-action": "Tipo de acción:",
 	"abusefilter-test-search-type-all": "Todas las acciones",
 	"abusefilter-test-search-type-edit": "Ediciones",
@@ -681,5 +683,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "crear o modificar qué dominios externos están bloqueados para que no se vinculen",
 	"right-abusefilter-bypass-blocked-external-domains": "Eludir la lista de dominios externos bloqueados",
 	"action-abusefilter-bypass-blocked-external-domains": "eludir la lista de dominios externos bloqueados",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]].",
+	"right-abusefilter-access-protected-vars": "Ver y crear filtros que utilizan variables protegidas",
+	"action-abusefilter-access-protected-vars": "ver y crear filtros que utilizan variables protegidas"
 }
