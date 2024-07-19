@@ -327,7 +327,7 @@
 	"abusefilter-edit-builder-misc-contains": "Харцахьара могӀан чохь бу бакъахьара могӀа (contains)",
 	"abusefilter-edit-builder-misc-like": "Кепац (like) ма-доггӀу",
 	"abusefilter-edit-builder-misc-stringlit": "МогӀанан дош (\"\")",
-	"abusefilter-edit-builder-misc-rlike": "Рожера дош (rlike)",
+	"abusefilter-edit-builder-misc-rlike": "Рожера алар ($1)",
 	"abusefilter-edit-builder-misc-irlike": "Регистр (irlike) ца лоруш рожера могӀанца догӀуш",
 	"abusefilter-edit-builder-misc-tern": "Тернаран оператор (X ? Y : Z)",
 	"abusefilter-edit-builder-misc-cond": "Биллам (if X then Y else Z end)",
