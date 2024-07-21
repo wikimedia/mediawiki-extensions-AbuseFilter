@@ -112,24 +112,25 @@ class QueryAbuseFilters extends ApiQueryBase {
 				$this->dieWithError( 'apierror-show' );
 			}
 
-			$this->addWhereIf( 'af_enabled = 0', isset( $show['!enabled'] ) );
-			$this->addWhereIf( 'af_enabled != 0', isset( $show['enabled'] ) );
-			$this->addWhereIf( 'af_deleted = 0', isset( $show['!deleted'] ) );
-			$this->addWhereIf( 'af_deleted != 0', isset( $show['deleted'] ) );
+			$dbr = $this->getDb();
+			$this->addWhereIf( $dbr->expr( 'af_enabled', '=', 0 ), isset( $show['!enabled'] ) );
+			$this->addWhereIf( $dbr->expr( 'af_enabled', '!=', 0 ), isset( $show['enabled'] ) );
+			$this->addWhereIf( $dbr->expr( 'af_deleted', '=', 0 ), isset( $show['!deleted'] ) );
+			$this->addWhereIf( $dbr->expr( 'af_deleted', '!=', 0 ), isset( $show['deleted'] ) );
 			$this->addWhereIf(
-				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0',
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0',
 				isset( $show['!private'] )
 			);
 			$this->addWhereIf(
-				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' != 0',
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' != 0',
 				isset( $show['private'] )
 			);
 			$this->addWhereIf(
-				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' != 0',
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' != 0',
 				isset( $show['!protected'] )
 			);
 			$this->addWhereIf(
-				$this->getDb()->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0',
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0',
 				isset( $show['!protected'] )
 			);
 		}
