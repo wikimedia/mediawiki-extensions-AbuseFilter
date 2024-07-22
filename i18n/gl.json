@@ -538,6 +538,7 @@
 	"abusefilter-test-page": "Cambios feitos na páxina:",
 	"abusefilter-test-shownegative": "Amosar os cambios que non coincidan co filtro",
 	"abusefilter-test-syntaxerr": "O filtro que introduciu contiña un erro na súa sintaxe.\nPode obter unha explicación completa premendo no botón \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-protectedvarerr": "O filtro non se amosa, xa que utiliza variables protexidas e está agochado da vista pública.",
 	"abusefilter-test-action": "Tipo de acción:",
 	"abusefilter-test-search-type-all": "Todas as accións",
 	"abusefilter-test-search-type-edit": "Edicións",
