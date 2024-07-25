@@ -434,7 +434,7 @@
 	"abusefilter-edit-builder-vars-file-height": "Файлан локхалла пикселшца",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "Бесан кӀоргалла файл тӀехь",
 	"abusefilter-edit-builder-vars-wiki-name": "Викин базан цӀе",
-	"abusefilter-edit-builder-vars-wiki-language": "Викин меттан код",
+	"abusefilter-edit-builder-vars-wiki-language": "($1) Викин меттан код",
 	"abusefilter-edit-builder-vars-old-text": "Шира агӀонан текст билгалйаккхар доцуш (кхин лелош йац)",
 	"abusefilter-edit-builder-vars-old-html": "Ширачу агӀонан вики-текст HTML-га хийцина йолу (кхин лелош йац)",
 	"abusefilter-edit-builder-vars-minor-edit": "Хийцам \"жима хийцам\" аьлла билгалбаьккхина бу йа бац (кхин лелош дац)",
