@@ -579,18 +579,20 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 			$filterWhere = [];
 			if ( $filterConds['local'] ) {
-				$filterWhere[] = $dbr->makeList(
-					[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
-					LIST_AND
-				);
+				$filterWhere[] = $dbr->andExpr( [
+					'afl_global' => 0,
+					// @phan-suppress-previous-line PhanTypeMismatchArgument Array is non-empty
+					'afl_filter_id' => $filterConds['local'],
+				] );
 			}
 			if ( $filterConds['global'] ) {
-				$filterWhere[] = $dbr->makeList(
-					[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
-					LIST_AND
-				);
+				$filterWhere[] = $dbr->andExpr( [
+					'afl_global' => 1,
+					// @phan-suppress-previous-line PhanTypeMismatchArgument Array is non-empty
+					'afl_filter_id' => $filterConds['global'],
+				] );
 			}
-			$conds[] = $dbr->makeList( $filterWhere, LIST_OR );
+			$conds[] = $dbr->orExpr( $filterWhere );
 		}
 
 		$searchTitle = Title::newFromText( $this->mSearchTitle );

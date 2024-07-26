@@ -244,22 +244,23 @@ class QueryAbuseLog extends ApiQueryBase {
 				$key = $isGlobal ? 'global' : 'local';
 				$filterConds[$key][] = $filter[0];
 			}
+			$dbr = $this->getDB();
 			$conds = [];
 			if ( $filterConds['local'] ) {
-				$conds[] = $this->getDB()->makeList(
-					[ 'afl_global' => 0, 'afl_filter_id' => $filterConds['local'] ],
-					LIST_AND
-				);
+				$conds[] = $dbr->andExpr( [
+					'afl_global' => 0,
+					// @phan-suppress-previous-line PhanTypeMismatchArgument Array is non-empty
+					'afl_filter_id' => $filterConds['local'],
+				] );
 			}
 			if ( $filterConds['global'] ) {
-				$conds[] = $this->getDB()->makeList(
-					[ 'afl_global' => 1, 'afl_filter_id' => $filterConds['global'] ],
-					LIST_AND
-				);
+				$conds[] = $dbr->andExpr( [
+					'afl_global' => 1,
+					// @phan-suppress-previous-line PhanTypeMismatchArgument Array is non-empty
+					'afl_filter_id' => $filterConds['global'],
+				] );
 			}
-			$conds = $this->getDB()->makeList( $conds, LIST_OR );
-
-			$this->addWhere( $conds );
+			$this->addWhere( $dbr->orExpr( $conds ) );
 		}
 
 		if ( isset( $params['wiki'] ) ) {
