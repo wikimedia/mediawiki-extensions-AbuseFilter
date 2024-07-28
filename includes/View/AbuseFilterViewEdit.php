@@ -240,7 +240,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	}
 
 	/**
-	 * @param string|\MessageSpecifier $msg
+	 * @param string|\Wikimedia\Message\MessageSpecifier $msg
 	 */
 	private function showUnrecoverableError( $msg ): void {
 		$out = $this->getOutput();
