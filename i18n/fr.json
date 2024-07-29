@@ -332,6 +332,7 @@
 	"abusefilter-edit-missingfields": "Les champs suivants sont nécessaires et doivent être remplis : $1",
 	"abusefilter-edit-deleting-enabled": "Vous ne pouvez pas marquer un filtre actif comme supprimé.",
 	"abusefilter-edit-restricted": "Vous ne pouvez pas modifier ce filtre parce qu’il contient une ou plusieurs actions restreintes.\nDemandez à un autre utilisateur, autorisé à ajouter des actions restreintes, d’effectuer la modification pour vous.",
+	"abusefilter-edit-protected-variable": "Vous ne pouvez pas enregistrer ce filtre car vous n'avez pas l'autorisation d'utiliser les variables suivantes : $1",
 	"abusefilter-edit-protected-variable-not-protected": "Votre filtre n'a pas été enregistré car il utilise [https://www.mediawiki.org/wiki/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|la variable protégée suivante|les variables protégées suivantes}}] : $1. Vous reconnaissez que vous comprenez que les détails de ce filtre seront masqués aux utilisateurs qui ne peuvent pas voir les variables protégées.",
 	"abusefilter-edit-viewhistory": "Voir l’historique de ce filtre",
 	"abusefilter-edit-history": "Historique :",
@@ -583,6 +584,7 @@
 	"abusefilter-test-page": "Modifications effectuées à la page :",
 	"abusefilter-test-shownegative": "Afficher les modifications non prises en compte par le filtre",
 	"abusefilter-test-syntaxerr": "Le filtre que vous avez saisi contient une erreur de syntaxe.\nVous pouvez recevoir une explication complète en cliquant sur le bouton « {{int:abusefilter-edit-check}} ».",
+	"abusefilter-test-protectedvarerr": "Le filtre n'est pas affiché, car il utilise des variables protégées et est masqué à la vue du public.",
 	"abusefilter-test-action": "Type d’action :",
 	"abusefilter-test-search-type-all": "Toutes les actions",
 	"abusefilter-test-search-type-edit": "Modifications",
@@ -676,5 +678,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "créer ou modifier la liste des domaines externes vers lesquels les liens sont bloqués",
 	"right-abusefilter-bypass-blocked-external-domains": "Contourner les domaines externes bloqués",
 	"action-abusefilter-bypass-blocked-external-domains": "contourner les domaines externes bloqués",
-	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]].",
+	"right-abusefilter-access-protected-vars": "Voir et créer des filtres qui utilisent des variables protégées",
+	"action-abusefilter-access-protected-vars": "voir et créer des filtres qui utilisent des variables protégées"
 }
