@@ -66,7 +66,14 @@
 			"ЛингвоЧел",
 			"Сrower",
 			"Туллук",
-			"Colt browning"
+			"Colt browning",
+			"Butko",
+			"Dirruw'o",
+			"Köpleres",
+			"Mitte27",
+			"Nikokrat",
+			"SuperYwx9",
+			"Умар"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -637,7 +644,7 @@
 	"tag-abusefilter-condition-limit": "предел условия достигнут",
 	"tag-abusefilter-condition-limit-description": "Правки или другие действия, которые не могут быть проверены всеми активными [[Special:AbuseFilter|фильтрами злоупотреблений]] ([[mw:Extension:AbuseFilter/Conditions|справка]]).",
 	"notification-header-throttle-filter": "Фильтр злоупотреблений $2, который {{GENDER:$1|вы}} недавно редактировали, был ограничен.",
-	"notification-header-throttle-filter-actions": "Фильтр злоупотреблений $2 недавно отредактированный {{GENDER:$1|you}} имел высокий процент совпадений, а следующие {{PLURAL:$4|действие было|действия были}} автоматически отключены: $3.",
+	"notification-header-throttle-filter-actions": "Фильтр злоупотреблений $2 недавно отредактированный {{GENDER:$1|вами}} имел высокий процент совпадений, а следующие {{PLURAL:$4|действие было|действия были}} автоматически отключены: $3.",
 	"notification-header-throttle-filter-no-actions": "Фильтр злоупотреблений $2, который {{GENDER:$1|вы}} недавно редактировали, имел высокий уровень совпадений, но никакие действия не были автоматически отключены.",
 	"notification-subject-throttle-filter": "Отредактированный{{GENDER:$1|вами}} фильтр злоупотреблений был заблокирован на сайте {{SITENAME}}",
 	"notification-link-text-show-filter": "Показать фильтр"
