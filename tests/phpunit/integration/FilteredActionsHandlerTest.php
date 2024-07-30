@@ -34,7 +34,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\BlockedDomainFilter
 	 */
 	public function testOnEditFilterMergedContent( $urlsAdded, $expected ) {
-		$this->setMwGlobals( 'wgAbuseFilterEnableBlockedExternalDomain', true );
+		$this->overrideConfigValue( 'AbuseFilterEnableBlockedExternalDomain', true );
 
 		$filteredActionsHandler = $this->getFilteredActionsHandler( $urlsAdded );
 		$context = RequestContext::getMain();

@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageEditStash;
@@ -318,10 +319,10 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		ConvertibleTimestamp::setFakeTime( time() );
 
 		// Make sure that the config we're using is the one we're expecting
-		$this->setMwGlobals( [
+		$this->overrideConfigValues( [
 			// Exclude noisy creation log
-			'wgPageCreationLog' => false,
-			'wgAbuseFilterActions' => [
+			MainConfigNames::PageCreationLog => false,
+			'AbuseFilterActions' => [
 				'throttle' => true,
 				'warn' => true,
 				'disallow' => true,
@@ -1474,9 +1475,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogger
 	 */
 	public function testGlobalFilters( $createIds, $actionParams, $consequences ) {
-		$this->setMwGlobals( [
-			'wgAbuseFilterCentralDB' => WikiMap::getCurrentWikiId(),
-			'wgAbuseFilterIsCentral' => false,
+		$this->overrideConfigValues( [
+			'AbuseFilterCentralDB' => WikiMap::getCurrentWikiId(),
+			'AbuseFilterIsCentral' => false,
 		] );
 		$this->createFilters( $createIds );
 

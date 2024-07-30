@@ -1,5 +1,6 @@
 <?php
 
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Api\RandomImageGenerator;
@@ -43,7 +44,7 @@ trait AbuseFilterUploadTestTrait {
 	protected function doUpload( User $user, string $fileName, string $pageText, string $summary ): array {
 		global $wgFileExtensions;
 
-		$this->setMwGlobals( [ 'wgFileExtensions' => [ ...$wgFileExtensions, 'svg' ] ] );
+		$this->overrideConfigValue( MainConfigNames::FileExtensions, [ ...$wgFileExtensions, 'svg' ] );
 		$imgGen = new RandomImageGenerator();
 		// Use SVG, since the ImageGenerator doesn't need anything special to create it
 		$format = 'svg';
