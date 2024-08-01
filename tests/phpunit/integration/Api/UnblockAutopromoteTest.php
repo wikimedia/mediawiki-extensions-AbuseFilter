@@ -54,7 +54,7 @@ class UnblockAutopromoteTest extends ApiTestCase {
 		$blockedUser = $this->mockUserAuthorityWithBlock(
 			new UserIdentityValue( 42, 'Blocked user' ),
 			$block,
-			[ 'writeapi', 'abusefilter-modify' ]
+			[ 'abusefilter-modify' ]
 		);
 
 		$store = $this->createMock( BlockAutopromoteStore::class );
