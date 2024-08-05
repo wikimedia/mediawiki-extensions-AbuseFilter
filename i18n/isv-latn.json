@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"IJzeren Jan"
+		]
+	},
+	"abusefilter": "Upravjenje filtrom zloupotrěbjenij",
+	"abuselog": "Dnevnik filtra zloupotrěbjenij",
+	"abusefilter-blocker": "Filtr zloupotrěbjenij",
+	"right-abusefilter-modify": "Tvorjenje ili izměnjanje filtrov zloupotrěbjenij",
+	"right-abusefilter-view": "Prěgledanje filtrov zloupotrěbjenij",
+	"right-abusefilter-modify-global": "Tvorjenje ili izměnjanje globalnyh filtrov zloupotrěbjenij",
+	"action-abusefilter-modify": "Izměnjenje filtrov zloupotrěbjenij",
+	"action-abusefilter-view": "Prěgledanje filtrov zloupotrěbjenij"
+}
