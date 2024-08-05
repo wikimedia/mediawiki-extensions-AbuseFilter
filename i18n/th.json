@@ -413,7 +413,7 @@
 	"abusefilter-edit-builder-vars-new-pst": "ข้อความวิกิหน้าใหม่ แปลงก่อนบันทึก ($1)",
 	"abusefilter-edit-builder-vars-diff-pst": "ผลต่างรวมของการแก้ไขที่ทำโดยการแก้ไข แปลงก่อนบันทึก ($1)",
 	"abusefilter-edit-builder-vars-addedlines-pst": "บรรทัดที่เพิ่มในการแก้ไข แปลงก่อนบันทึก ($1)",
-	"abusefilter-edit-builder-vars-new-text": "ข้อความหน้าใหม่โดยไม่มีอาร์กอัปใด ๆ ($1)",
+	"abusefilter-edit-builder-vars-new-text": "ข้อความหน้าใหม่โดยไม่มีมาร์กอัปใด ๆ ($1)",
 	"abusefilter-edit-builder-vars-new-html": "โค้ดเอชทีเอ็มแอลแจงส่วนของรุ่นใหม่ ($1)",
 	"abusefilter-edit-builder-vars-restrictions-edit": "ระดับการล็อกการแก้ไขหน้า ($1)",
 	"abusefilter-edit-builder-vars-restrictions-move": "ระดับการล็อกย้ายหน้า ($1)",
