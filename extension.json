@@ -257,7 +257,7 @@
 	},
 	"ResourceModules": {
 		"ext.abuseFilter": {
-			"styles": "ext.abuseFilter.css"
+			"styles": "ext.abuseFilter.less"
 		},
 		"ext.abuseFilter.edit": {
 			"scripts": "ext.abuseFilter.edit.js",
