@@ -1,8 +1,10 @@
-/* This code was stolen shamelessly from enwikipedia's Common.css */
+@import 'mediawiki.skin.variables.less';
+
+/* This code initially was stolen shamelessly from enwikipedia's Common.css */
 table.mw-abuselog-details {
 	margin: 1em 1em 1em 0;
-	background: #f9f9f9;
-	border: 1px #aaa solid;
+	background: @background-color-interactive-subtle;
+	border: @border-base;
 	border-collapse: collapse;
 	width: 100%;
 	table-layout: fixed;
@@ -10,12 +12,12 @@ table.mw-abuselog-details {
 
 table.mw-abuselog-details th,
 table.mw-abuselog-details td {
-	border: 1px #aaa solid;
+	border: @border-base;
 	padding: 0.2em;
 }
 
 table.mw-abuselog-details th {
-	background: #f2f2f2;
+	background: @background-color-interactive;
 	text-align: center;
 }
 
@@ -25,12 +27,12 @@ table.mw-abuselog-details caption {
 
 .mw-abusefilter-log-hidden-entry {
 	text-decoration: line-through;
-	color: #72777d;
+	color: @color-disabled;
 	font-style: italic;
 }
 
 body td.mw-abusefilter-history-changed {
-	background: #ffe0e0;
+	background: @background-color-destructive-subtle;
 	font-weight: bold;
 }
 
@@ -74,7 +76,7 @@ table.mw-abusefilter-list-scrollable {
 
 #mw-abusefilter-warn-preview,
 #mw-abusefilter-disallow-preview {
-	border: 1px solid #a2a9b1;
+	border: @border-base;
 	margin: 2em;
 	padding: 1em;
 }
@@ -86,17 +88,17 @@ table.mw-abusefilter-list-scrollable {
 
 tr.mw-abusefilter-list-disabled,
 tr.mw-abusefilter-list-disabled td {
-	color: #666;
+	color: @color-disabled;
 }
 
 tr.mw-abusefilter-list-deleted,
 tr.mw-abusefilter-list-deleted td {
-	color: #aaa;
+	color: @color-subtle;
 }
 
 tr.mw-abusefilter-list-throttled,
 tr.mw-abusefilter-list-throttled td {
-	color: #f00;
+	color: @color-error;
 }
 
 .mw-abusefilter-examine-match,
@@ -126,7 +128,7 @@ div.mw-abusefilter-editor {
 	width: 90%; /* Same as wpFilterRules and mw-abusefilter-notes-editor */
 	height: 30em; /* Similar to wpFilterRules */
 	line-height: 1.5em;
-	border: 1px solid #a2a9b1;
+	border: @border-base;
 	display: none;
 }
 
@@ -196,7 +198,7 @@ fieldset.mw-abusefilter-edit-buttons {
 }
 
 .mw-abusefilter-tools-error {
-	color: #f00;
+	color: @color-error;
 }
 
 /* Ace highlight customisation */
