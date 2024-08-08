@@ -303,7 +303,7 @@
 	"abusefilter-edit-denied": "شما نمی‌توانید جزئیات این پالایه را ببینید، زیرا از دید عموم پنهان شده است.",
 	"abusefilter-edit-main": "پارامترهای پالایه",
 	"abusefilter-edit-done-subtitle": "پالایه ویرایش شد",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/$1|پالایه $3]] ذخیره شده است.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|تغییرات شما]] در [[Special:AbuseFilter/$1|پالایهٔ $3]] ذخیره شده است.",
 	"abusefilter-edit-badsyntax": "یک خطای نحوی در پالایه‌ای که مشخص کردید وجود دارد.\nخروجی تحلیلگر این بود: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "این موارد الزامی هستند و باید پر شوند: $1",
 	"abusefilter-edit-deleting-enabled": "امکان حذف یک پالایه فعال وجود ندارد.",
