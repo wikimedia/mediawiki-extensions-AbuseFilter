@@ -775,7 +775,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			'legend',
 			[],
 			$this->msg( 'abusefilter-log-details-legend' )
-				->numParams( $id )
+				->params( $this->getLanguage()->formatNumNoSeparators( $id ) )
 				->text()
 		);
 		$output .= Html::rawElement( 'p', [], $pager->doFormatRow( $row, false ) );
@@ -912,7 +912,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				) .
 				Html::rawElement( 'td', [], $linkRenderer->makeKnownLink(
 					$this->getPageTitle( $row->afl_id ),
-					$this->getLanguage()->formatNum( $row->afl_id )
+					$this->getLanguage()->formatNumNoSeparators( $row->afl_id )
 				) )
 			);
 
