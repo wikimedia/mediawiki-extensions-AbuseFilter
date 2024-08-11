@@ -858,7 +858,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 */
 	public static function getPrivateDetailsRow( Authority $authority, $id ) {
 		$afPermManager = AbuseFilterServices::getPermissionManager();
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancerFactory()->getReplicaDatabase();
+		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
 
 		$row = $dbr->newSelectQueryBuilder()
 			->select( [ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip',
