@@ -13,7 +13,7 @@ use MediaWiki\User\User;
  * @todo This might be moved to MediaWikiIntegrationTestCase
  *
  * @method string getNewTempDirectory()
- * @method setMwGlobals($pairs)
+ * @method overrideConfigValue( string $key, $value )
  */
 trait AbuseFilterUploadTestTrait {
 	/**
