@@ -70,7 +70,7 @@ class VariablesManager {
 	): AFPData {
 		$varName = strtolower( $varName );
 		if ( $holder->varIsSet( $varName ) ) {
-			/** @var $variable LazyLoadedVariable|AFPData */
+			/** @var LazyLoadedVariable|AFPData $variable */
 			$variable = $holder->getVarThrow( $varName );
 			if ( $variable instanceof LazyLoadedVariable ) {
 				$getVarCB = function ( string $varName ) use ( $holder ): AFPData {

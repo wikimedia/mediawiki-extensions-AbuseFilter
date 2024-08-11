@@ -26,7 +26,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	private $userFactory;
 	/** @var LoggerInterface */
 	private $logger;
-	/** @var $bool */
+	/** @var bool */
 	private $filterIsCentral;
 	/** @var string|null */
 	private $centralDB;
