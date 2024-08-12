@@ -338,7 +338,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			}
 			if ( !is_array( $stored ) && !( $stored instanceof VariableHolder ) ) {
 				$this->fatalError(
-					'...found unexpected data type ( ' . gettype( $stored ) . ' ) in ' .
+					'...found unexpected data type ( ' . get_debug_type( $stored ) . ' ) in ' .
 					"afl_var_dump for afl_id {$row->afl_id}.\n"
 				);
 			}
@@ -564,7 +564,7 @@ class UpdateVarDumps extends LoggedUpdateMaintenance {
 			} elseif ( is_array( $obj ) ) {
 				$varArray = $obj;
 			} else {
-				$type = is_object( $obj ) ? get_class( $obj ) : gettype( $obj );
+				$type = get_debug_type( $obj );
 				throw new UnexpectedValueException( "Unexpected type for stored blob: $type" );
 			}
 			$varArray = $this->updateVariables( $varArray );
