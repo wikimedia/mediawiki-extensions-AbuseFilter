@@ -603,7 +603,7 @@
 	"abusefilter-invalid-request-noid": "Niewłaściwe żądanie! Musisz wejść w szczegóły prywatnego rejestru za pośrednictwem formularza na stronie szczegółów filtra nadużyć i wprowadzić powód.",
 	"blockedexternaldomains": "Zablokowane zewnętrzne domeny",
 	"abusefilter-blocked-domains-title": "Zablokowane zewnętrzne domeny",
-	"abusefilter-blocked-domains-intro": "Linki zewnętrzne pasujące do domen na tej liście zostaną zablokowane po dodaniu do strony. Lista domen znajduje się na [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-intro": "Linki zewnętrzne pasujące do domen z tej listy zostaną zablokowane po dodaniu do strony. Domeny te zapisywane są na [[MediaWiki:BlockedExternalDomains.json]].",
 	"abusefilter-blocked-domains-add-heading": "Dodaj nową domenę",
 	"abusefilter-blocked-domains-add-explanation": "Możesz tu dodać domenę do listy zablokowanych domen.",
 	"abusefilter-blocked-domains-domain": "Domena do zablokowania, np. wikipedia.org",
