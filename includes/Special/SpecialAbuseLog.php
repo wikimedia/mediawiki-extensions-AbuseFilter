@@ -13,10 +13,12 @@ use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -764,6 +766,13 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					$error = 'abusefilter-log-details-hidden-implicit';
 				}
 			}
+
+			if (
+				FilterUtils::isProtected( $privacyLevel ) &&
+				!$this->afPermissionManager->canViewProtectedVariableValues( $performer )
+			) {
+				$error = 'abusefilter-examine-protected-vars-permission';
+			}
 		}
 
 		if ( $error ) {
@@ -782,6 +791,23 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row );
+
+		// If a non-protected filter and a protected filter have overlapping conditions,
+		// it's possible for a hit to contain a protected variable and for that variable
+		// to be dumped and displayed on a detail page that wouldn't be considered
+		// protected (because it caught on the public filter).
+		// We shouldn't block access to the details of an otherwise public filter hit so
+		// instead only check for access to the protected variables and redact them if the user
+		// shouldn't see them.
+		if ( !$this->afPermissionManager->canViewProtectedVariableValues( $performer ) ) {
+			$varsArray = $this->varManager->dumpAllVars( $vars, true );
+			foreach ( $this->afPermissionManager->getProtectedVariables() as $protectedVariable ) {
+				if ( isset( $varsArray[$protectedVariable] ) ) {
+					$varsArray[$protectedVariable] = '';
+				}
+			}
+			$vars = VariableHolder::newFromArray( $varsArray );
+		}
 
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $this->varManager->dumpAllVars( $vars, true ) );
 		$out->addModuleStyles( 'mediawiki.interface.helpers.styles' );

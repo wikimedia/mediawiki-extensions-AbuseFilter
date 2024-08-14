@@ -6,6 +6,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
  * This class simplifies the interactions between the AbuseFilter code and Authority, knowing
@@ -23,13 +24,18 @@ class AbuseFilterPermissionManager {
 	 */
 	private $protectedVariables;
 
+	private UserOptionsLookup $userOptionsLookup;
+
 	/**
 	 * @param ServiceOptions $options
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
-		ServiceOptions $options
+		ServiceOptions $options,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->protectedVariables = $options->get( 'AbuseFilterProtectedVariables' );
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -104,6 +110,20 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * @param Authority $performer
+	 * @return bool
+	 */
+	public function canViewProtectedVariableValues( Authority $performer ) {
+		return (
+			$this->canViewProtectedVariables( $performer ) &&
+			$this->userOptionsLookup->getOption(
+				$performer->getUser(),
+				'abusefilter-protected-vars-view-agreement'
+			)
+		);
+	}
+
+	/**
 	 * Check if the filter uses variables that the user is not allowed to use (i.e., variables that are protected, if
 	 * the user can't view protected variables), and return them.
 	 *
@@ -118,6 +138,15 @@ class AbuseFilterPermissionManager {
 			return [];
 		}
 		return $usedProtectedVariables;
+	}
+
+	/**
+	 * Return an array of protected variables (originally defined in configuration)
+	 *
+	 * @return string[]
+	 */
+	public function getProtectedVariables() {
+		return $this->protectedVariables;
 	}
 
 	/**
