@@ -84,7 +84,7 @@ class VariablesManager {
 			} else {
 				// @codeCoverageIgnoreStart
 				throw new \UnexpectedValueException(
-					"Variable $varName has unexpected type " . gettype( $variable )
+					"Variable $varName has unexpected type " . get_debug_type( $variable )
 				);
 				// @codeCoverageIgnoreEnd
 			}
