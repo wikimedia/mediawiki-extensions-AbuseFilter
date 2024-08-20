@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\LBFactory;
 
 class AbuseLoggerFactory {
@@ -31,6 +32,8 @@ class AbuseLoggerFactory {
 	private $wikiID;
 	/** @var string */
 	private $requestIP;
+	/** @var LoggerInterface */
+	private $logger;
 
 	/**
 	 * @param CentralDBManager $centralDBManager
@@ -42,6 +45,7 @@ class AbuseLoggerFactory {
 	 * @param ServiceOptions $options
 	 * @param string $wikiID
 	 * @param string $requestIP
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		CentralDBManager $centralDBManager,
@@ -52,7 +56,8 @@ class AbuseLoggerFactory {
 		LBFactory $lbFactory,
 		ServiceOptions $options,
 		string $wikiID,
-		string $requestIP
+		string $requestIP,
+		LoggerInterface $logger
 	) {
 		$this->centralDBManager = $centralDBManager;
 		$this->filterLookup = $filterLookup;
@@ -63,6 +68,17 @@ class AbuseLoggerFactory {
 		$this->options = $options;
 		$this->wikiID = $wikiID;
 		$this->requestIP = $requestIP;
+		$this->logger = $logger;
+	}
+
+	/**
+	 * @return ProtectedVarsAccessLogger
+	 */
+	public function getProtectedVarsAccessLogger() {
+		return new ProtectedVarsAccessLogger(
+			$this->logger,
+			$this->lbFactory
+		);
 	}
 
 	/**

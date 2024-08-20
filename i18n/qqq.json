@@ -78,6 +78,7 @@
 	"right-abusefilter-hide-log": "{{doc-right|abusefilter-hide-log}}",
 	"right-abusefilter-hidden-log": "{{doc-right|abusefilter-hidden-log}}",
 	"right-abusefilter-modify-global": "{{doc-right|abusefilter-modify-global}}",
+	"right-abusefilter-protected-vars-log": "{{doc-right|abusefilter-protected-vars-log}}",
 	"action-abusefilter-modify": "{{doc-action|abusefilter-modify}}",
 	"action-abusefilter-view": "{{doc-action|abusefilter-view}}",
 	"action-abusefilter-log": "{{doc-action|abusefilter-log}}",
@@ -93,6 +94,7 @@
 	"action-abusefilter-hide-log": "{{doc-action|abusefilter-hide-log}}",
 	"action-abusefilter-hidden-log": "{{doc-action|abusefilter-hidden-log}}",
 	"action-abusefilter-modify-global": "{{doc-action|abusefilter-modify-global}}",
+	"action-abusefilter-protected-vars-log": "{{doc-action|abusefilter-protected-vars-log}",
 	"abusefilter-log-summary": "This message is displayed at the top of the log overview page for extension AbuseFilter.",
 	"abusefilter-log-search": "Caption of a fieldset for filter definition on [[Special:AbuseLog]]",
 	"abusefilter-log-search-user": "Field label in abuse filter log page.\n{{Identical|User}}",
@@ -676,5 +678,11 @@
 	"right-abusefilter-access-protected-vars": "{{doc-right|abusefilter-access-protected-vars}}",
 	"action-abusefilter-access-protected-vars": "{{doc-action|abusefilter-access-protected-vars}}",
 	"prefs-abusefilter": "Header of the AbuseFilter options on [[Special:Preferences]]",
-	"abusefilter-preference-protected-vars-view-agreement": "Agreement shown on [[Special:Preferences]] that the user can acknowledge via checkbox."
+	"abusefilter-preference-protected-vars-view-agreement": "Agreement shown on [[Special:Preferences]] that the user can acknowledge via checkbox.",
+	"abusefilter-protected-vars-log-name": "{{doc-logpage}}\n\nThe page name of [[Special:Log/abusefilter-protected-vars]]. Appears in the drop down menu of the [[Special:Log]] page and subpages.",
+	"abusefilter-protected-vars-log-header": "Appears on top of [[Special:Log/abusefilter-protected-vars]].",
+	"logentry-abusefilter-protected-vars-change-access-enable": "{{Logentry|[[Special:Log/abusefilter-protected-vars]]}}\n\nUsed if a user's state of access was enabled.",
+	"logentry-abusefilter-protected-vars-change-access-disable": "{{Logentry|[[Special:Log/abusefilter-protected-vars]]}}\n\nUsed if a user's state of access was disabled.",
+	"log-action-filter-abusefilter-protected-vars": "{{doc-log-action-filter-type|abusefilter-protected-vars}}\n{{related|Log-action-filter}}",
+	"log-action-filter-abusefilter-protected-vars-change-access": "{{doc-log-action-filter-action|abusefilter-protected-vars|change-access}}"
 }
