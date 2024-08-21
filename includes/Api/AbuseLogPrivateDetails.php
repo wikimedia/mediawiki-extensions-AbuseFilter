@@ -124,6 +124,7 @@ class AbuseLogPrivateDetails extends ApiBase {
 			'reason' => [
 				ParamValidator::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_REQUIRED => $this->getConfig()->get( 'AbuseFilterPrivateDetailsForceReason' ),
+				ParamValidator::PARAM_DEFAULT => '',
 			]
 		];
 	}
