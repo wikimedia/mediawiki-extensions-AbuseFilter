@@ -64,7 +64,7 @@ class SearchFilters extends Maintenance {
 			$queryBuilder = $dbr->newSelectQueryBuilder()
 				->select( [ 'dbname' => 'DATABASE()', 'af_id' ] )
 				->from( 'abuse_filter' );
-			if ( $pattern ) {
+			if ( $this->getOption( 'pattern' ) ) {
 				$queryBuilder->where( "af_pattern RLIKE $pattern" );
 			}
 			if ( $consequence ) {
