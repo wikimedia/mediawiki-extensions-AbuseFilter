@@ -61,7 +61,7 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 	 */
 	public function testUserForCreation( $user, $autocreate, array $options = [] ): StatusValue {
 		// if this is not an autocreation, testForAccountCreation already handled it
-		if ( $autocreate ) {
+		if ( $autocreate && !( $options['canAlwaysAutocreate'] ?? false ) ) {
 			// Make sure to use an anon as the creator, see T272244
 			return $this->testUser( $user, $this->userFactory->newAnonymous(), true );
 		}
