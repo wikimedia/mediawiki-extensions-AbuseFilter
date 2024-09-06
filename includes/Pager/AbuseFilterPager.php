@@ -6,6 +6,7 @@ use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterUtils;
+use MediaWiki\Extension\AbuseFilter\RegexpUtils;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
 use MediaWiki\Linker\Linker;
@@ -142,8 +143,8 @@ class AbuseFilterPager extends TablePager {
 	private function matchesPattern( $subject ) {
 		$pattern = $this->searchPattern ?? '';
 		return match ( $this->searchMode ) {
-			'RLIKE' => (bool)preg_match( "/$pattern/u", $subject ),
-			'IRLIKE' => (bool)preg_match( "/$pattern/ui", $subject ),
+			'RLIKE' => (bool)preg_match( RegexpUtils::buildPattern( $pattern, false ), $subject ),
+			'IRLIKE' => (bool)preg_match( RegexpUtils::buildPattern( $pattern, true ), $subject ),
 			'LIKE' => mb_stripos( $subject, $pattern ) !== false,
 			default => throw new LogicException( "Unknown search type {$this->searchMode}" ),
 		};
@@ -320,10 +321,9 @@ class AbuseFilterPager extends TablePager {
 			$position = mb_stripos( $row->af_pattern, $searchPattern );
 			$length = mb_strlen( $searchPattern );
 		} else {
-			$regex = '/' . $searchPattern . '/u';
-			if ( $this->searchMode === 'IRLIKE' ) {
-				$regex .= 'i';
-			}
+			$regex = $this->searchMode === 'IRLIKE'
+				? RegexpUtils::buildPattern( $searchPattern, true )
+				: RegexpUtils::buildPattern( $searchPattern, false );
 
 			$matches = [];
 			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged

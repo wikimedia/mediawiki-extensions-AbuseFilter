@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleWarning;
+use MediaWiki\Extension\AbuseFilter\RegexpUtils;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Language\Language;
@@ -897,7 +898,7 @@ class FilterEvaluator {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			$needle = $this->mungeRegexp( $needle );
+			$needle = RegexpUtils::buildPattern( $needle );
 
 			$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
 			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
@@ -947,7 +948,7 @@ class FilterEvaluator {
 		$groupscount = substr_count( $sanitized, '(' ) + 1;
 		$falsy = array_fill( 0, $groupscount, false );
 
-		$needle = $this->mungeRegexp( $needle );
+		$needle = RegexpUtils::buildPattern( $needle );
 
 		$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
 		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
@@ -1321,7 +1322,7 @@ class FilterEvaluator {
 		$this->checkRegexMatchesEmpty( $args[1], $search, $position );
 		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 		$result = @preg_replace(
-			$this->mungeRegexp( $search ),
+			RegexpUtils::buildPattern( $search ),
 			$replace,
 			$subject
 		);
@@ -1424,11 +1425,7 @@ class FilterEvaluator {
 		$str = $str->toString();
 		$pattern = $regex->toString();
 
-		$pattern = $this->mungeRegexp( $pattern );
-
-		if ( $insensitive ) {
-			$pattern .= 'i';
-		}
+		$pattern = RegexpUtils::buildPattern( $pattern, $insensitive );
 
 		$this->checkRegexMatchesEmpty( $regex, $pattern, $pos );
 		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
@@ -1498,18 +1495,6 @@ class FilterEvaluator {
 		if ( !$this->mAllowShort ) {
 			$this->evalNode( $node );
 		}
-	}
-
-	/**
-	 * Given a regexp in the AF syntax, make it PCRE-compliant (i.e. we need to escape slashes, add
-	 * delimiters and modifiers).
-	 *
-	 * @param string $rawRegexp
-	 * @return string
-	 */
-	private function mungeRegexp( string $rawRegexp ): string {
-		$needle = preg_replace( '!((\\\\\\\\)*)(\\\\)?/!', '$1\/', $rawRegexp );
-		return "/$needle/u";
 	}
 
 	/**
