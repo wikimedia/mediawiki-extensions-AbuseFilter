@@ -979,13 +979,18 @@ class FilterEvaluator {
 		// This way we can return a fixed-dimension array, much easier to manage.
 		// ToDo: Find a better way to do this.
 		// First, strip away escaped parentheses
-		$sanitized = preg_replace( '/(\\\\\\\\)*\\\\\(/', '', $needle );
+		$sanitized = preg_replace( '/((\\\\\\\\)*)\\\\\(/', '$1', $needle );
+
 		// Then strip starting parentheses of non-capturing groups, including
 		// atomics, lookaheads and so on, even if not every of them is supported.
-		$sanitized = str_replace( '(?', '', $sanitized );
+		// Avoid stripping named capturing groups: (?P<name>), (?<name>) and (?'name')
+		$sanitized = preg_replace( '/\(\?(?!P?<[a-zA-Z_][a-zA-Z0-9_]*>|\'[a-zA-Z_][a-zA-Z0-9_]*\')/', '', $sanitized );
+
 		// And also strip "(*", used with backtracking verbs like (*FAIL)
 		$sanitized = str_replace( '(*', '', $sanitized );
-		// Finally create an array of falses with dimension = # of capturing groups
+
+		// Finally create an array of falses with dimension = # of capturing groups + 1
+		// (as there is also the 0 element, which contains the whole match)
 		$groupscount = substr_count( $sanitized, '(' ) + 1;
 		$falsy = array_fill( 0, $groupscount, false );
 
@@ -1002,6 +1007,11 @@ class FilterEvaluator {
 				[ $needle ]
 			);
 		}
+
+		// Named capturing groups add the capture twice: with a numeric key and with a string key.
+		// AF doesn't provide associative arrays, thus we have to filter out the elements with string keys,
+		// else AFPData::newFromPHPVar would erroneously insert them into the final array, with numeric keys.
+		$matches = array_filter( $matches, 'is_int', ARRAY_FILTER_USE_KEY );
 
 		// Returned array has non-empty positions identical to the ones returned
 		// by the third parameter of a standard preg_match call ($matches in this case).
