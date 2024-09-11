@@ -60,7 +60,7 @@ class SearchFilters extends Maintenance {
 		$pattern = $dbr->addQuotes( $this->getOption( 'pattern' ) );
 		$consequence = $this->getOption( 'consequence' );
 
-		if ( $dbr->tableExists( 'abuse_filter' ) ) {
+		if ( $dbr->tableExists( 'abuse_filter', __METHOD__ ) ) {
 			$queryBuilder = $dbr->newSelectQueryBuilder()
 				->select( [ 'dbname' => 'DATABASE()', 'af_id' ] )
 				->from( 'abuse_filter' );
