@@ -365,6 +365,8 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			'af_global' => 0
 		];
 
+		$filterRows = [];
+		$actionsRows = [];
 		foreach ( $ids as $id ) {
 			$filter = self::FILTERS[$id] + $defaultRowSection;
 			$actions = $filter['actions'];
@@ -372,13 +374,9 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 			$filter[ 'af_actions' ] = implode( ',', array_keys( $actions ) );
 			$filter[ 'af_id' ] = $id;
 
-			$dbw->newInsertQueryBuilder()
-				->insertInto( 'abuse_filter' )
-				->row( $filter )
-				->caller( __METHOD__ )
-				->execute();
+			ksort( $filter );
+			$filterRows[] = $filter;
 
-			$actionsRows = [];
 			foreach ( array_filter( $wgAbuseFilterActions ) as $action => $_ ) {
 				if ( isset( $actions[$action] ) ) {
 					$parameters = $actions[$action];
@@ -391,14 +389,19 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 					$actionsRows[] = $thisRow;
 				}
 			}
+		}
 
-			if ( $actionsRows ) {
-				$dbw->newInsertQueryBuilder()
-					->insertInto( 'abuse_filter_action' )
-					->rows( $actionsRows )
-					->caller( __METHOD__ )
-					->execute();
-			}
+		$dbw->newInsertQueryBuilder()
+			->insertInto( 'abuse_filter' )
+			->rows( $filterRows )
+			->caller( __METHOD__ )
+			->execute();
+		if ( $actionsRows ) {
+			$dbw->newInsertQueryBuilder()
+				->insertInto( 'abuse_filter_action' )
+				->rows( $actionsRows )
+				->caller( __METHOD__ )
+				->execute();
 		}
 	}
 
