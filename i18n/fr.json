@@ -58,7 +58,8 @@
 			"U.T.",
 			"LD",
 			"Qwrop",
-			"SleaY"
+			"SleaY",
+			"Jules*"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -500,7 +501,7 @@
 	"abusefilter-history-filter": "Règle du filtre",
 	"abusefilter-history-comments": "Commentaires",
 	"abusefilter-history-actions": "Actions",
-	"abusefilter-history-backedit": "Éditeur de filtres",
+	"abusefilter-history-backedit": "Édition du filtre",
 	"abusefilter-history-deleted": "Supprimé",
 	"abusefilter-history-filterid": "Filtre",
 	"abusefilter-history-select-legend": "Affiner la recherche",
