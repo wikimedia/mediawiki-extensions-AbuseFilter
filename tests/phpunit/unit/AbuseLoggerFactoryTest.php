@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
+use MediaWiki\User\ActorStore;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
@@ -33,6 +34,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( VariablesManager::class ),
 			$this->createMock( EditRevUpdater::class ),
 			$this->createMock( LBFactory::class ),
+			$this->createMock( ActorStore::class ),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
 				[

@@ -85,7 +85,8 @@
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterSpecsFormatter",
 				"AbuseFilterVariablesFormatter",
-				"AbuseFilterVariablesManager"
+				"AbuseFilterVariablesManager",
+				"AbuseFilterAbuseLoggerFactory"
 			]
 		},
 		"AbuseFilter": {
@@ -133,7 +134,12 @@
 		"suppress/unhide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
 		"rights/blockautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter",
 		"rights/restoreautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter",
-		"abusefilter-protected-vars/*": "LogFormatter"
+		"abusefilter-protected-vars/*": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\ProtectedVarsAccessLogFormatter",
+			"services": [
+				"UserFactory"
+			]
+		}
 	},
 	"ActionFilteredLogs": {
 		"abusefilter": {
@@ -162,6 +168,9 @@
 			"change-access": [
 				"change-access-enable",
 				"change-access-disable"
+			],
+			"view-protected-variable-value": [
+				"view-protected-variable-value"
 			]
 		}
 	},
@@ -231,7 +240,8 @@
 				"AbuseFilterPermissionManager",
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterVariablesManager",
-				"UserFactory"
+				"UserFactory",
+				"AbuseFilterAbuseLoggerFactory"
 			]
 		},
 		"abusefilters": {

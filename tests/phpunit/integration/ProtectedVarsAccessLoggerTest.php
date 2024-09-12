@@ -117,4 +117,84 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				->fetchField()
 		);
 	}
+
+	public function testDebouncedLogs_CUDisabled() {
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->method( 'isLoaded' )->with( 'CheckUser' )->willReturn( false );
+		$this->setService( 'ExtensionRegistry', $extensionRegistry );
+
+		// Run the same action twice
+		$performer = $this->getTestSysop();
+		AbuseFilterServices::getAbuseLoggerFactory()
+			->getProtectedVarsAccessLogger()
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+		AbuseFilterServices::getAbuseLoggerFactory()
+			->getProtectedVarsAccessLogger()
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+
+		// Assert that the action wasn't inserted into CheckUsers' temp account logging table
+		$this->assertSame(
+			0,
+			(int)$this->getDb()->newSelectQueryBuilder()
+				->select( 'COUNT(*)' )
+				->from( 'logging' )
+				->where( [
+					'log_action' => 'af-view-protected-var-value',
+					'log_type' => TemporaryAccountLogger::LOG_TYPE,
+					] )
+				->fetchField()
+		);
+		// and also that it only inserted once into abusefilter's protected vars logging table
+		$this->assertSame(
+			1,
+			(int)$this->getDb()->newSelectQueryBuilder()
+				->select( 'COUNT(*)' )
+				->from( 'logging' )
+				->where( [
+					'log_action' => 'view-protected-var-value',
+					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+					] )
+				->fetchField()
+		);
+
+		$this->resetServices();
+	}
+
+	public function testDebouncedLogs_CUEnabled() {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
+		// Run the same action twice
+		$performer = $this->getTestSysop();
+		AbuseFilterServices::getAbuseLoggerFactory()
+			->getProtectedVarsAccessLogger()
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+		AbuseFilterServices::getAbuseLoggerFactory()
+			->getProtectedVarsAccessLogger()
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+
+		// Assert that the action only inserted once into CheckUsers' temp account logging table
+		$this->assertSame(
+			1,
+			(int)$this->getDb()->newSelectQueryBuilder()
+				->select( 'COUNT(*)' )
+				->from( 'logging' )
+				->where( [
+					'log_action' => 'af-view-protected-var-value',
+					'log_type' => TemporaryAccountLogger::LOG_TYPE,
+					] )
+				->fetchField()
+		);
+		// and also that it wasn't inserted into abusefilter's protected vars logging table
+		$this->assertSame(
+			0,
+			(int)$this->getDb()->newSelectQueryBuilder()
+				->select( 'COUNT(*)' )
+				->from( 'logging' )
+				->where( [
+					'log_action' => 'view-protected-var-value',
+					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+					] )
+				->fetchField()
+		);
+	}
 }

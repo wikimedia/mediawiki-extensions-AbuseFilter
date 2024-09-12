@@ -683,6 +683,8 @@
 	"abusefilter-protected-vars-log-header": "Appears on top of [[Special:Log/abusefilter-protected-vars]].",
 	"logentry-abusefilter-protected-vars-change-access-enable": "{{Logentry|[[Special:Log/abusefilter-protected-vars]]}}\n\nUsed if a user's state of access was enabled.",
 	"logentry-abusefilter-protected-vars-change-access-disable": "{{Logentry|[[Special:Log/abusefilter-protected-vars]]}}\n\nUsed if a user's state of access was disabled.",
+	"logentry-abusefilter-protected-vars-view-protected-var-value": "{{Logentry|[[Special:Log/abusefilter-protected-vars]]}}\n\nUsed if user viewed the value of a protected variable.",
 	"log-action-filter-abusefilter-protected-vars": "{{doc-log-action-filter-type|abusefilter-protected-vars}}\n{{related|Log-action-filter}}",
-	"log-action-filter-abusefilter-protected-vars-change-access": "{{doc-log-action-filter-action|abusefilter-protected-vars|change-access}}"
+	"log-action-filter-abusefilter-protected-vars-change-access": "{{doc-log-action-filter-action|abusefilter-protected-vars|change-access}}",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "{{doc-log-action-filter-action|abusefilter-protected-vars|view-protected-variable-value}}"
 }

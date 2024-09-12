@@ -254,6 +254,7 @@ return [
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( EditRevUpdater::SERVICE_NAME ),
 			$services->getDBLoadBalancerFactory(),
+			$services->getActorStore(),
 			new ServiceOptions(
 				AbuseLogger::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
