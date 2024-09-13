@@ -44,6 +44,7 @@
 	"action-abusefilter-view-private": "view abuse filters marked as private",
 	"action-abusefilter-log-private": "view logs of abuse filters marked as private",
 	"action-abusefilter-log-protected": "view logs of abuse filters marked as protected",
+	"action-abusefilter-log-protected-access": "view logs with exposed protected variables without having first enabled the option in your preferences",
 	"action-abusefilter-hide-log": "hide entries in the abuse log",
 	"action-abusefilter-hidden-log": "view hidden abuse log entries",
 	"action-abusefilter-modify-global": "create or modify global abuse filters",
@@ -554,6 +555,7 @@
 	"abusefilter-examine-notfound": "The change you requested could not be found.",
 	"abusefilter-examine-incompatible": "The change you requested is not supported by the Abuse Filter",
 	"abusefilter-examine-noresults": "No results were found for the search parameters you provided.",
+	"abusefilter-examine-protected-vars-permission": "To view logs that contain protected variables, please accept the agreement in [[Special:Preferences|your preferences]].",
 	"abusefilter-topnav": "'''Abuse Filter navigation'''",
 	"abusefilter-topnav-home": "Home",
 	"abusefilter-topnav-recentchanges": "Recent filter changes",
@@ -627,5 +629,7 @@
 	"action-abusefilter-bypass-blocked-external-domains": "bypass blocked external domain",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Create or modify what external domains are blocked from being linked must be done through [[Special:BlockedExternalDomains|the special page]].",
 	"right-abusefilter-access-protected-vars": "View and create filters that use protected variables",
-	"action-abusefilter-access-protected-vars": "view and create filters that use protected variables"
+	"action-abusefilter-access-protected-vars": "view and create filters that use protected variables",
+	"prefs-abusefilter": "AbuseFilter",
+	"abusefilter-preference-protected-vars-view-agreement": "Enable revealing IP addresses for temporary accounts in AbuseFilter"
 }

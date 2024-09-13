@@ -76,7 +76,8 @@ return [
 				PermManager::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig(),
 				[ 'AbuseFilterProtectedVariables' => [] ]
-			)
+			),
+			$services->getUserOptionsLookup()
 		);
 	},
 	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagger {

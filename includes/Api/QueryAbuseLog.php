@@ -129,7 +129,6 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( !is_array( $params['filter'] ) ) {
 				$params['filter'] = [ $params['filter'] ];
 			}
-
 			$foundInvalid = false;
 			foreach ( $params['filter'] as $filter ) {
 				try {
@@ -142,7 +141,8 @@ class QueryAbuseLog extends ApiQueryBase {
 
 			$canViewPrivate = $this->afPermManager->canViewPrivateFiltersLogs( $performer );
 			$canViewProtected = $this->afPermManager->canViewProtectedVariables( $performer );
-			if ( !$canViewPrivate || !$canViewProtected ) {
+			$canViewProtectedValues = $this->afPermManager->canViewProtectedVariableValues( $performer );
+			if ( !$canViewPrivate || !$canViewProtected || !$canViewProtectedValues ) {
 				foreach ( $searchFilters as [ $filterID, $global ] ) {
 					try {
 						$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
@@ -161,6 +161,11 @@ class QueryAbuseLog extends ApiQueryBase {
 					if ( !$canViewProtected && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ]
+						);
+					}
+					if ( !$canViewProtectedValues && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
+						$this->dieWithError(
+							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected-access' ) ]
 						);
 					}
 				}
@@ -339,6 +344,14 @@ class QueryAbuseLog extends ApiQueryBase {
 					$vars = $this->afVariablesBlobStore->loadVarDump( $row );
 					$varManager = $this->afVariablesManager;
 					$entry['details'] = $varManager->exportAllVars( $vars );
+
+					if ( !$this->afPermManager->canViewProtectedVariableValues( $performer ) ) {
+						foreach ( $this->afPermManager->getProtectedVariables() as $protectedVariable ) {
+							if ( isset( $entry['details'][$protectedVariable] ) ) {
+								$entry['details'][$protectedVariable] = '';
+							}
+						}
+					}
 				}
 			}
 

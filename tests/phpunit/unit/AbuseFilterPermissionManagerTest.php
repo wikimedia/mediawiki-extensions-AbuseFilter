@@ -10,6 +10,8 @@ use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
+use MediaWiki\User\Options\StaticUserOptionsLookup;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
@@ -19,13 +21,24 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	use MockAuthorityTrait;
 
 	private function getPermMan(): AbuseFilterPermissionManager {
+		$userOptions = new StaticUserOptionsLookup(
+			[
+				'User1' => [
+					'abusefilter-protected-vars-view-agreement' => 1
+				],
+				'User2' => [
+					'abusefilter-protected-vars-view-agreement' => ''
+				],
+			]
+		);
 		return new AbuseFilterPermissionManager(
 			new ServiceOptions(
 				AbuseFilterPermissionManager::CONSTRUCTOR_OPTIONS,
 				[
 					'AbuseFilterProtectedVariables' => [ 'user_unnamed_ip' ]
 				]
-			)
+			),
+			$userOptions
 		);
 	}
 
@@ -250,6 +263,34 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function provideCanViewProtectedVariableValues(): Generator {
+		$userCheckedPreference = new UserIdentityValue( 1, 'User1' );
+		$userUncheckedPreference = new UserIdentityValue( 2, 'User2' );
+		yield 'can view protected variables, has checked preference' => [
+			[ 'abusefilter-access-protected-vars' ], $userCheckedPreference, true
+		];
+		yield 'can view protected variables, has not checked preference' => [
+			[ 'abusefilter-access-protected-vars' ], $userUncheckedPreference, false
+		];
+		yield 'cannot view protected variables, has checked preference' => [
+			[], $userCheckedPreference, false
+		];
+		yield 'cannot view protected variables, has not checked preference' => [
+			[], $userUncheckedPreference, false
+		];
+	}
+
+	/**
+	 * @dataProvider provideCanViewProtectedVariableValues
+	 */
+	public function testCanViewProtectedVariableValues( array $rights, UserIdentityValue $user, bool $expected ) {
+		$performer = $this->mockUserAuthorityWithPermissions( $user, $rights );
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->canViewProtectedVariableValues( $performer )
+		);
+	}
+
 	public static function provideGetForbiddenVariables(): Generator {
 		yield 'cannot view, protected vars' => [
 			[
@@ -289,6 +330,13 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame(
 			$expected,
 			$this->getPermMan()->getForbiddenVariables( $performer, $data[ 'usedVars' ] )
+		);
+	}
+
+	public function testGetProtectedVariables() {
+		$this->assertSame(
+			[ 'user_unnamed_ip' ],
+			$this->getPermMan()->getProtectedVariables()
 		);
 	}
 

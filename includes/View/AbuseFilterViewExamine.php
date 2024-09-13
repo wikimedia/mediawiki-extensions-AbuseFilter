@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
@@ -289,7 +290,35 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
+		// Logs that reveal the values of protected variables are gated behind:
+		// 1. the `abusefilter-access-protected-vars` right
+		// 2. agreement to the `abusefilter-protected-vars-view-agreement` preference
+		$userAuthority = $this->getAuthority();
+		if ( FilterUtils::isProtected( $privacyLevel ) &&
+			!$this->afPermManager->canViewProtectedVariableValues( $userAuthority )
+		) {
+			$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
+			return;
+		}
+
 		$vars = $this->varBlobStore->loadVarDump( $row );
+
+		// If a non-protected filter and a protected filter have overlapping conditions,
+		// it's possible for a hit to contain a protected variable and for that variable
+		// to be dumped and displayed on a detail page that wouldn't be considered
+		// protected (because it caught on the public filter).
+		// We shouldn't block access to the details of an otherwise public filter hit so
+		// instead only check for access to the protected variables and redact them if the
+		// user shouldn't see them.
+		if ( !$this->afPermManager->canViewProtectedVariableValues( $userAuthority ) ) {
+			$varsArray = $this->varManager->dumpAllVars( $vars, true );
+			foreach ( $this->afPermManager->getProtectedVariables() as $protectedVariable ) {
+				if ( isset( $varsArray[$protectedVariable] ) ) {
+					$varsArray[$protectedVariable] = '';
+				}
+			}
+			$vars = VariableHolder::newFromArray( $varsArray );
+		}
 
 		$out->addJsConfigVars( [
 			'wgAbuseFilterVariables' => $this->varManager->dumpAllVars( $vars, true ),
