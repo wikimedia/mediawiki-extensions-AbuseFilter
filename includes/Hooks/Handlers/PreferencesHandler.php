@@ -5,9 +5,10 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\User\Options\Hook\SaveUserOptionsHook;
 use MediaWiki\User\UserIdentity;
 
-class PreferencesHandler implements GetPreferencesHook {
+class PreferencesHandler implements GetPreferencesHook, SaveUserOptionsHook {
 	private PermissionManager $permissionManager;
 
 	private AbuseLoggerFactory $abuseLoggerFactory;
