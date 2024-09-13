@@ -106,14 +106,17 @@
 	"LogTypes": [
 		"abusefilter",
 		"abusefilterblockeddomainhit",
-		"abusefilterprivatedetails"
+		"abusefilterprivatedetails",
+		"abusefilter-protected-vars"
 	],
 	"LogNames": {
 		"abusefilter": "abusefilter-log-name",
-		"abusefilterprivatedetails": "abusefilterprivatedetails-log-name"
+		"abusefilterprivatedetails": "abusefilterprivatedetails-log-name",
+		"abusefilter-protected-vars": "abusefilter-protected-vars-log-name"
 	},
 	"LogHeaders": {
-		"abusefilter": "abusefilter-log-header"
+		"abusefilter": "abusefilter-log-header",
+		"abusefilter-protected-vars": "abusefilter-protected-vars-log-header"
 	},
 	"LogActionsHandlers": {
 		"abusefilter/hit": {
@@ -129,7 +132,8 @@
 		"suppress/hide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
 		"suppress/unhide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
 		"rights/blockautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter",
-		"rights/restoreautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter"
+		"rights/restoreautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter",
+		"abusefilter-protected-vars/*": "LogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"abusefilter": {
@@ -153,12 +157,18 @@
 			"restoreautopromote": [
 				"restoreautopromote"
 			]
+		},
+		"abusefilter-protected-vars": {
+			"change-access": [
+				"change-access"
+			]
 		}
 	},
 	"LogRestrictions": {
 		"abusefilter": "abusefilter-view",
 		"abusefilterprivatedetails": "abusefilter-privatedetails-log",
-		"abusefilterblockeddomainhit": "abusefilter-view"
+		"abusefilterblockeddomainhit": "abusefilter-view",
+		"abusefilter-protected-vars": "abusefilter-protected-vars-log"
 	},
 	"AuthManagerAutoConfig": {
 		"preauth": {
@@ -368,7 +378,8 @@
 		"preferences": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\PreferencesHandler",
 			"services": [
-				"PermissionManager"
+				"PermissionManager",
+				"AbuseFilterAbuseLoggerFactory"
 			]
 		},
 		"RecentChangeSave": {
@@ -428,7 +439,8 @@
 		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
 		"JsonValidateSave": "EditPermission",
-		"GetPreferences": "preferences"
+		"GetPreferences": "preferences",
+		"SaveUserOptions": "preferences"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"

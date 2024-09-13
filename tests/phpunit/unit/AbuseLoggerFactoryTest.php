@@ -9,12 +9,14 @@ use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
+use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\LBFactory;
 
 /**
@@ -40,7 +42,8 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 				]
 			),
 			'wikiID',
-			'1.2.3.4'
+			'1.2.3.4',
+			$this->createMock( LoggerInterface::class )
 		);
 		$logger = $factory->newLogger(
 			$this->createMock( Title::class ),
@@ -48,6 +51,9 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			VariableHolder::newFromArray( [ 'action' => 'edit' ] )
 		);
 		$this->assertInstanceOf( AbuseLogger::class, $logger, 'valid' );
+
+		$protectedVarsLogger = $factory->getProtectedVarsAccessLogger();
+		$this->assertInstanceOf( ProtectedVarsAccessLogger::class, $protectedVarsLogger, 'valid' );
 
 		$this->expectException( InvalidArgumentException::class );
 		$factory->newLogger(
