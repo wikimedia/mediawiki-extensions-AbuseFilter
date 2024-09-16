@@ -55,6 +55,7 @@
 	"action-abusefilter-view-private": "gizli olaraq işarələnmiş dəyişiklik süzgəclərinə baxmaq",
 	"action-abusefilter-log-private": "gizli dəyişiklik süzgəclərinin jurnalına baxmaq",
 	"action-abusefilter-log-protected": "mühafizəli dəyişiklik süzgəclərinin jurnallarına baxmaq",
+	"action-abusefilter-log-protected-access": "nizamlamalarda aktivləşdirmədən mühafizəli dəyişənlər ehtiva edən jurnallara baxmaq",
 	"action-abusefilter-hide-log": "dəyişiklik süzgəci jurnalındakı qeydləri gizlətmək",
 	"action-abusefilter-hidden-log": "dəyişiklik süzgəci jurnalındakı gizli qeydlərə baxmaq",
 	"action-abusefilter-modify-global": "qlobal dəyişiklik süzgəcləri yaratmaq və ya redaktə etmək",
@@ -564,6 +565,7 @@
 	"abusefilter-examine-notfound": "İstədiyiniz dəyişiklik tapılmadı.",
 	"abusefilter-examine-incompatible": "Bu dəyişiklik dəyişiklik süzgəci tərəfindən dəstəklənmir",
 	"abusefilter-examine-noresults": "Təqdim etdiyiniz axtarış parametrləri üçün heç bir nəticə tapılmadı.",
+	"abusefilter-examine-protected-vars-permission": "Mühafizəli dəyişənləri ehtiva edən jurnallara baxmaq üçün [[Special:Preferences|nizamlamalarda]] razılaşmanı qəbul edin.",
 	"abusefilter-topnav": "'''Dəyişiklik süzgəci naviqasiya menyusu'''",
 	"abusefilter-topnav-home": "Əvvələ",
 	"abusefilter-topnav-recentchanges": "Son süzgəc dəyişiklikləri",
@@ -637,5 +639,7 @@
 	"action-abusefilter-bypass-blocked-external-domains": "bloklanmış xarici domen məhdudiyyətindən təsirlənməmək",
 	"abusefilter-blocked-domains-cannot-edit-directly": "bloklanmış xarici domenlərin siyahısını yaratmaq və ya redaktə etmək [[Special:BlockedExternalDomains|xüsusi səhifə]] vasitəsilə edilməlidir.",
 	"right-abusefilter-access-protected-vars": "Mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
-	"action-abusefilter-access-protected-vars": "mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq"
+	"action-abusefilter-access-protected-vars": "mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
+	"prefs-abusefilter": "Dəyişiklik süzgəci",
+	"abusefilter-preference-protected-vars-view-agreement": "Süzgəcdə müvəqqəti hesablar üçün IP ünvanlarının göstərilməsini aktivləşdir"
 }

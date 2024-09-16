@@ -564,5 +564,7 @@
 	"notification-link-text-show-filter": "Прикажи филтер",
 	"right-abusefilter-bypass-blocked-external-domains": "заобилажење блокираних спољних домена",
 	"action-abusefilter-bypass-blocked-external-domains": "заобилазите блокиране спољне домене",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]].",
+	"log-action-filter-abusefilter-protected-vars": "Врста радње:",
+	"log-action-filter-abusefilter-protected-vars-change-access": "Промени приступ"
 }

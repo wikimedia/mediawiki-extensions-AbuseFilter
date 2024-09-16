@@ -70,6 +70,7 @@
 	"action-abusefilter-hide-log": "skrývat záznamy v protokolu zneužití",
 	"action-abusefilter-hidden-log": "prohlížet si skryté záznamy v protokolu zneužití",
 	"action-abusefilter-modify-global": "vytvářet nebo editovat globální filtry zneužití",
+	"action-abusefilter-protected-vars-log": "zobrazit protokoly, které odhalují chráněné proměnné",
 	"abusefilter-log-summary": "Tento protokol obsahuje seznam všech operací zachycených filtry.",
 	"abusefilter-log-search": "Hledat v protokolu zneužití",
 	"abusefilter-log-search-user": "Uživatel:",
@@ -631,5 +632,8 @@
 	"right-abusefilter-modify-blocked-external-domains": "Vytvořit nebo upravit seznam externích domén, jejichž odkazování je blokováno",
 	"action-abusefilter-modify-blocked-external-domains": "vytvořit nebo upravit seznam externích domén, jejichž odkazování je blokováno",
 	"right-abusefilter-bypass-blocked-external-domains": "Obejít seznam blokovaných externích domén",
-	"action-abusefilter-bypass-blocked-external-domains": "obejít seznam blokovaných externích domén"
+	"action-abusefilter-bypass-blocked-external-domains": "obejít seznam blokovaných externích domén",
+	"abusefilter-protected-vars-log-name": "Protokol proměnných chráněných filtrem proti zneužití",
+	"abusefilter-protected-vars-log-header": "Toto je protokol:\n# Zobrazení chráněných proměnných v podrobnostech protokolu\n# Změna úrovní přístupu uživatelů pro prohlížení chráněných proměnných",
+	"log-action-filter-abusefilter-protected-vars": "Typ akce:"
 }

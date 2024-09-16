@@ -94,7 +94,7 @@
 	"action-abusefilter-hide-log": "{{doc-action|abusefilter-hide-log}}",
 	"action-abusefilter-hidden-log": "{{doc-action|abusefilter-hidden-log}}",
 	"action-abusefilter-modify-global": "{{doc-action|abusefilter-modify-global}}",
-	"action-abusefilter-protected-vars-log": "{{doc-action|abusefilter-protected-vars-log}",
+	"action-abusefilter-protected-vars-log": "{{doc-action|abusefilter-protected-vars-log}}",
 	"abusefilter-log-summary": "This message is displayed at the top of the log overview page for extension AbuseFilter.",
 	"abusefilter-log-search": "Caption of a fieldset for filter definition on [[Special:AbuseLog]]",
 	"abusefilter-log-search-user": "Field label in abuse filter log page.\n{{Identical|User}}",

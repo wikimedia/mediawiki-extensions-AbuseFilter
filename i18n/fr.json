@@ -50,6 +50,7 @@
 			"Robby",
 			"Sherbrooke",
 			"SleaY",
+			"Terio legale",
 			"Thibaut120094",
 			"Tititou36",
 			"TomT0m",
@@ -100,6 +101,7 @@
 	"action-abusefilter-revert": "révoquer toutes les modifications d’un filtre anti-abus donné",
 	"action-abusefilter-view-private": "voir les filtres anti-abus marqués comme privés",
 	"action-abusefilter-log-private": "voir les entrées du journal des filtres anti-abus marqués comme privés",
+	"action-abusefilter-log-protected-access": "afficher des journaux avec des variables protégées exposées sans avoir d'abord activé l'option dans vos préférences",
 	"action-abusefilter-hide-log": "masquer des enregistrements dans le journal anti-abus",
 	"action-abusefilter-hidden-log": "voir les enregistrements masqués du journal anti-abus",
 	"action-abusefilter-modify-global": "créer ou modifier des filtres anti-abus globaux",
@@ -609,6 +611,7 @@
 	"abusefilter-examine-notfound": "La modification que vous avez demandée n’a pas été trouvée.",
 	"abusefilter-examine-incompatible": "La modification que vous avez demandée n’est pas prise en charge par le filtre anti-abus.",
 	"abusefilter-examine-noresults": "Aucun résultat n’a été trouvé pour les paramètres de recherche que vous avez fournis.",
+	"abusefilter-examine-protected-vars-permission": "Pour afficher les journaux contenant des variables protégées, veuillez accepter l'accord dans [[Special:Preferences|vos préférences]].",
 	"abusefilter-topnav": "'''Navigation du filtre anti-abus'''",
 	"abusefilter-topnav-home": "Accueil",
 	"abusefilter-topnav-recentchanges": "Modifications récentes des filtres",
@@ -682,5 +685,6 @@
 	"action-abusefilter-bypass-blocked-external-domains": "contourner les domaines externes bloqués",
 	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]].",
 	"right-abusefilter-access-protected-vars": "Voir et créer des filtres qui utilisent des variables protégées",
-	"action-abusefilter-access-protected-vars": "voir et créer des filtres qui utilisent des variables protégées"
+	"action-abusefilter-access-protected-vars": "voir et créer des filtres qui utilisent des variables protégées",
+	"prefs-abusefilter": "Filtre anti-abus"
 }

@@ -212,5 +212,6 @@
 	"abusefilter-blocked-domains-remove-reason": "وجہ",
 	"abusefilter-blocked-domains-remove-submit": "ہٹاؤ",
 	"abusefilter-log-ip-not-available": "دستیاب کائنی",
-	"notification-link-text-show-filter": "چھاݨاں ݙکھاؤ"
+	"notification-link-text-show-filter": "چھاݨاں ݙکھاؤ",
+	"prefs-abusefilter": "غلط چھاݨاں"
 }
