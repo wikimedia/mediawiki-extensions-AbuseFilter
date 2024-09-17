@@ -74,6 +74,7 @@
 	"action-abusefilter-hide-log": "nascondere voci nel registro del filtro anti abusi",
 	"action-abusefilter-hidden-log": "visualizzare voci nascoste del registro del filtro anti abusi",
 	"action-abusefilter-modify-global": "creare o modificare i filtri anti abusi globali",
+	"action-abusefilter-protected-vars-log": "visualizzare i registri che rivelano variabili protette",
 	"abusefilter-log-summary": "Questo registro mostra un elenco di tutte le azioni che hanno attivato uno o più filtri.",
 	"abusefilter-log-search": "Cerca nel registro del filtro anti abusi",
 	"abusefilter-log-search-user": "Utente:",
@@ -638,5 +639,6 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Ignora i blocchi ai domini esterni",
 	"action-abusefilter-bypass-blocked-external-domains": "ignorare i blocchi ai domini esterni",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Creare o modificare la lista dei domini esterni bloccati dall'essere inseriti come collegamento deve essere fatta attraverso [[Special:BlockedExternalDomains|questa pagina speciale]].",
-	"action-abusefilter-access-protected-vars": "visualizzare e creare filtri che utilizzano variabili protette"
+	"action-abusefilter-access-protected-vars": "visualizzare e creare filtri che utilizzano variabili protette",
+	"log-action-filter-abusefilter-protected-vars": "Tipo di azione:"
 }

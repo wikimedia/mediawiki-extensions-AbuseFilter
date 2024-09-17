@@ -44,6 +44,7 @@
 	"right-abusefilter-hide-log": "Dəyişiklik süzgəci jurnalındakı qeydləri gizlətmək",
 	"right-abusefilter-hidden-log": "Dəyişiklik süzgəci jurnalındakı gizli qeydlərə baxmaq",
 	"right-abusefilter-modify-global": "Qlobal dəyişiklik süzgəcləri yaratmaq və ya redaktə etmək",
+	"right-abusefilter-protected-vars-log": "Mühafizəli dəyişən dəyərlərinə giriş jurnallarına baxmaq",
 	"action-abusefilter-modify": "dəyişiklik süzgəclərini redaktə etmək",
 	"action-abusefilter-view": "dəyişiklik süzgəclərinə baxmaq",
 	"action-abusefilter-log": "dəyişiklik süzgəci jurnalına baxmaq",
@@ -59,6 +60,7 @@
 	"action-abusefilter-hide-log": "dəyişiklik süzgəci jurnalındakı qeydləri gizlətmək",
 	"action-abusefilter-hidden-log": "dəyişiklik süzgəci jurnalındakı gizli qeydlərə baxmaq",
 	"action-abusefilter-modify-global": "qlobal dəyişiklik süzgəcləri yaratmaq və ya redaktə etmək",
+	"action-abusefilter-protected-vars-log": "mühafizəli dəyişənləri ehtiva edən jurnallara baxmaq",
 	"abusefilter-log-summary": "Bu jurnalda süzgəclər tərəfindən müəyyən olunmuş bütün fəaliyyətlər təsvir olunub.",
 	"abusefilter-log-search": "Dəyişiklik süzgəci jurnalında axtarış",
 	"abusefilter-log-search-user": "İstifadəçi:",
@@ -641,5 +643,7 @@
 	"right-abusefilter-access-protected-vars": "Mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
 	"action-abusefilter-access-protected-vars": "mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
 	"prefs-abusefilter": "Dəyişiklik süzgəci",
-	"abusefilter-preference-protected-vars-view-agreement": "Süzgəcdə müvəqqəti hesablar üçün IP ünvanlarının göstərilməsini aktivləşdir"
+	"abusefilter-preference-protected-vars-view-agreement": "Süzgəcdə müvəqqəti hesablar üçün IP ünvanlarının göstərilməsini aktivləşdir",
+	"abusefilter-protected-vars-log-name": "Dəyişiklik süzgəcinin mühafizəli dəyişənləri jurnalı",
+	"abusefilter-protected-vars-log-header": "Bu, aşağıdakıların jurnalıdır:\n# Jurnal detallarındakı mühafizəli dəyişənlərə baxmaq\n# Mühafizəli dəyişənlərə baxa bilmək üçün istifadəçi icazə səviyyəsini dəyişdirmək"
 }

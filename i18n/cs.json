@@ -634,6 +634,6 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Obejít seznam blokovaných externích domén",
 	"action-abusefilter-bypass-blocked-external-domains": "obejít seznam blokovaných externích domén",
 	"abusefilter-protected-vars-log-name": "Protokol proměnných chráněných filtrem proti zneužití",
-	"abusefilter-protected-vars-log-header": "Toto je protokol:\n# Zobrazení chráněných proměnných v podrobnostech protokolu\n# Změna úrovní přístupu uživatelů pro prohlížení chráněných proměnných",
+	"abusefilter-protected-vars-log-header": "Toto je protokol:\n# Zobrazení chráněných proměnných v podrobnostech protokolu\n# Změn úrovní přístupu uživatelů pro prohlížení chráněných proměnných",
 	"log-action-filter-abusefilter-protected-vars": "Typ akce:"
 }
