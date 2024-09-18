@@ -590,7 +590,7 @@
 	"abusefilter-examine-notfound": "Die angegebene Änderung konnte nicht gefunden werden.",
 	"abusefilter-examine-incompatible": "Die angegebene Änderung wird vom Missbrauchsfilter nicht unterstützt",
 	"abusefilter-examine-noresults": "Es wurden keine Ergebnisse für die angegebenen Suchparameter gefunden.",
-	"abusefilter-examine-protected-vars-permission": "Um LOgbücher anzuzeigen, die geschützte Variablen enthalten, akzeptiere bitte die Vereinbarung in [[Special:Preferences|deinen Einstellungen]].",
+	"abusefilter-examine-protected-vars-permission": "Um Logbücher einzusehen, die geschützte Variablen enthalten, akzeptiere bitte die Vereinbarung in [[Special:Preferences|deinen Einstellungen]].",
 	"abusefilter-topnav": "'''Missbrauchsfilter-Navigation'''",
 	"abusefilter-topnav-home": "Startseite",
 	"abusefilter-topnav-recentchanges": "Letzte Filteränderungen",
