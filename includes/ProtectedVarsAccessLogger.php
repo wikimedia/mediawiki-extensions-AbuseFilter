@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use ManualLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
@@ -33,7 +34,7 @@ class ProtectedVarsAccessLogger {
 	/**
 	 * @var string
 	 */
-	private const LOG_TYPE = 'abusefilter-protected-vars';
+	public const LOG_TYPE = 'abusefilter-protected-vars';
 
 	private LoggerInterface $logger;
 	private IConnectionProvider $lbFactory;
@@ -80,22 +81,38 @@ class ProtectedVarsAccessLogger {
 		string $action,
 		?array $params = []
 	): void {
-		$logEntry = $this->createManualLogEntry( $action );
-		$logEntry->setPerformer( $performer );
-		$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
-		$logEntry->setParameters( $params );
+		if ( MediaWikiServices::getInstance()->getExtensionRegistry()->isLoaded( 'CheckUser' ) ) {
+			// Add the extension name to the action so that CheckUser has a clearer
+			// reference to the source in the message key
+			$action = 'af-' . $action;
 
-		try {
-			$dbw = $this->lbFactory->getPrimaryDatabase();
-			$logEntry->insert( $dbw );
-		} catch ( DBError $e ) {
-			$this->logger->critical(
-				'AbuseFilter proctected variable log entry was not recorded. ' .
-				'This means access to IPs can occur without being auditable. ' .
-				'Immediate fix required.'
+			$logger = MediaWikiServices::getInstance()
+				->getService( 'CheckUserTemporaryAccountLoggerFactory' )
+				->getLogger();
+			$logger->logFromExternal(
+				$performer,
+				$target,
+				$action,
+				$params
 			);
+		} else {
+			$logEntry = $this->createManualLogEntry( $action );
+			$logEntry->setPerformer( $performer );
+			$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
+			$logEntry->setParameters( $params );
 
-			throw $e;
+			try {
+				$dbw = $this->lbFactory->getPrimaryDatabase();
+				$logEntry->insert( $dbw );
+			} catch ( DBError $e ) {
+				$this->logger->critical(
+					'AbuseFilter proctected variable log entry was not recorded. ' .
+					'This means access to IPs can occur without being auditable. ' .
+					'Immediate fix required.'
+				);
+
+				throw $e;
+			}
 		}
 	}
 
