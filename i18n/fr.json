@@ -686,5 +686,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]].",
 	"right-abusefilter-access-protected-vars": "Voir et créer des filtres qui utilisent des variables protégées",
 	"action-abusefilter-access-protected-vars": "voir et créer des filtres qui utilisent des variables protégées",
-	"prefs-abusefilter": "Filtre anti-abus"
+	"prefs-abusefilter": "Filtre anti-abus",
+	"log-action-filter-abusefilter-protected-vars": "Type d’action :"
 }

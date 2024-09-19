@@ -685,5 +685,6 @@
 	"action-abusefilter-bypass-blocked-external-domains": "eludir la lista de dominios externos bloqueados",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Crear o modificar qué dominios externos están bloqueados para no ser vinculados debe hacerse a través de [[Special:BlockedExternalDomains|la página especial]].",
 	"right-abusefilter-access-protected-vars": "Ver y crear filtros que utilizan variables protegidas",
-	"action-abusefilter-access-protected-vars": "ver y crear filtros que utilizan variables protegidas"
+	"action-abusefilter-access-protected-vars": "ver y crear filtros que utilizan variables protegidas",
+	"log-action-filter-abusefilter-protected-vars": "Tipo de acción:"
 }
