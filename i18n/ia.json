@@ -33,6 +33,7 @@
 	"right-abusefilter-hide-log": "Celar entratas in le registro de abusos",
 	"right-abusefilter-hidden-log": "Vider entratas celate del registro de abusos",
 	"right-abusefilter-modify-global": "Crear o modificar filtros anti-abuso global",
+	"right-abusefilter-protected-vars-log": "Vider le registros associate al accesso al valores de variabiles protegite",
 	"action-abusefilter-modify": "modificar le filtros anti-abuso",
 	"action-abusefilter-view": "vider le filtros anti-abuso",
 	"action-abusefilter-log": "vider le registro de abusos",

@@ -644,5 +644,6 @@
 	"action-abusefilter-modify-blocked-external-domains": "링크를 차단할 외부 도메인을 만들거나 수정할",
 	"right-abusefilter-bypass-blocked-external-domains": "차단된 외부 도메인을 우회하기",
 	"action-abusefilter-bypass-blocked-external-domains": "차단된 외부 도메인을 우회할",
-	"abusefilter-blocked-domains-cannot-edit-directly": "연결이 차단된 외부 도메인을 생성하거나 수정하려면 [[Special:BlockedExternalDomains|특수문서]]를 통해 수행해야 합니다."
+	"abusefilter-blocked-domains-cannot-edit-directly": "연결이 차단된 외부 도메인을 생성하거나 수정하려면 [[Special:BlockedExternalDomains|특수문서]]를 통해 수행해야 합니다.",
+	"abusefilter-preference-protected-vars-view-agreement": "편집 필터에서 임시 계정의 IP 주소 표시 활성화"
 }

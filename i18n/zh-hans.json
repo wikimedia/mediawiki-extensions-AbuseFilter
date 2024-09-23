@@ -46,6 +46,7 @@
 			"Luotiancheng",
 			"Makecat",
 			"Matma Rex",
+			"Midleading",
 			"Mywood",
 			"NekoCharm",
 			"Nervie",
@@ -120,6 +121,7 @@
 	"right-abusefilter-hide-log": "将条目在滥用日志中隐藏",
 	"right-abusefilter-hidden-log": "查看隐藏的滥用日志条目",
 	"right-abusefilter-modify-global": "创建或修改全域滥用过滤器",
+	"right-abusefilter-protected-vars-log": "查看关于访问受保护变量的日志",
 	"action-abusefilter-modify": "修改滥用过滤器",
 	"action-abusefilter-view": "查看滥用过滤器",
 	"action-abusefilter-log": "查看滥用日志",
@@ -715,5 +717,6 @@
 	"right-abusefilter-access-protected-vars": "查看和创建使用受保护变量的过滤器",
 	"action-abusefilter-access-protected-vars": "查看和创建使用受保护变量的过滤器",
 	"prefs-abusefilter": "滥用过滤器",
-	"log-action-filter-abusefilter-protected-vars": "操作类型："
+	"log-action-filter-abusefilter-protected-vars": "操作类型：",
+	"log-action-filter-abusefilter-protected-vars-change-access": "更改权限"
 }
