@@ -41,15 +41,16 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideProtectedVarsLogTypes
 	 */
-	public function testProtectedVarsLoggerNoCUEnabled() {
+	public function testLogs_CUDisabled( $options, $expected ) {
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )->with( 'CheckUser' )->willReturn( false );
 		$this->setService( 'ExtensionRegistry', $extensionRegistry );
 
 		$performer = $this->getTestSysop();
+		$logAction = $options['logAction'];
 		AbuseFilterServices::getAbuseLoggerFactory()
 			->getProtectedVarsAccessLogger()
-			->logAccessEnabled( $performer->getUserIdentity() );
+			->$logAction( $performer->getUserIdentity(), ...$options['params'] );
 
 		// Assert that the action wasn't inserted into CheckUsers' temp account logging table
 		$this->assertSame(
@@ -58,7 +59,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				->select( 'COUNT(*)' )
 				->from( 'logging' )
 				->where( [
-					'log_action' => 'af-change-access-enable',
+					'log_action' => $expected['expectedCULogType'],
 					'log_type' => TemporaryAccountLogger::LOG_TYPE,
 					] )
 				->fetchField()
@@ -70,7 +71,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				->select( 'COUNT(*)' )
 				->from( 'logging' )
 				->where( [
-					'log_action' => 'change-access-enable',
+					'log_action' => $expected['expectedAFLogType'],
 					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
 					] )
 				->fetchField()
@@ -82,7 +83,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 	/**
 	 * @dataProvider provideProtectedVarsLogTypes
 	 */
-	public function testProtectedVarsLoggerSendingLogsToCUTable( $options, $expected ) {
+	public function testLogs_CUEnabled( $options, $expected ) {
 		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
 
 		$performer = $this->getTestSysop();

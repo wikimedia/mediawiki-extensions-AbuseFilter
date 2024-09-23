@@ -160,7 +160,8 @@
 		},
 		"abusefilter-protected-vars": {
 			"change-access": [
-				"change-access"
+				"change-access-enable",
+				"change-access-disable"
 			]
 		}
 	},

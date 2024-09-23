@@ -767,9 +767,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				}
 			}
 
+			// Only show the preference error if another error isn't already set
+			// as this error shouldn't take precedence over a view permission error
 			if (
 				FilterUtils::isProtected( $privacyLevel ) &&
-				!$this->afPermissionManager->canViewProtectedVariableValues( $performer )
+				!$this->afPermissionManager->canViewProtectedVariableValues( $performer ) &&
+				!$error
 			) {
 				$error = 'abusefilter-examine-protected-vars-permission';
 			}
