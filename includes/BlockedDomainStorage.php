@@ -259,7 +259,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param string $comment Save comment
 	 * @return RevisionRecord|null
 	 */
-	private function saveContent( array $content, $user, $comment ): ?RevisionRecord {
+	private function saveContent( array $content, $user, string $comment ): ?RevisionRecord {
 		$configPage = $this->getBlockedDomainPage();
 		$page = $this->wikiPageFactory->newFromLinkTarget( $configPage );
 		$updater = $page->newPageUpdater( $user );
@@ -277,7 +277,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * @return TitleValue TitleValue of the config json page
 	 */
-	private function getBlockedDomainPage() {
+	private function getBlockedDomainPage(): TitleValue {
 		return new TitleValue( NS_MEDIAWIKI, self::TARGET_PAGE );
 	}
 }

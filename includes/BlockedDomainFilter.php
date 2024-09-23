@@ -59,7 +59,7 @@ class BlockedDomainFilter {
 	 * @param Title $title Title of the page that was attempted on, used for logging
 	 * @return Status Error status if it's a match, good status if not
 	 */
-	public function filter( VariableHolder $vars, $user, $title ) {
+	public function filter( VariableHolder $vars, User $user, Title $title ) {
 		global $wgAbuseFilterEnableBlockedExternalDomain;
 		$status = Status::newGood();
 		if ( !$wgAbuseFilterEnableBlockedExternalDomain ) {
@@ -122,7 +122,7 @@ class BlockedDomainFilter {
 	 * @param Title $title
 	 * @param string $blockedDomain The blocked domain the user attempted to add
 	 */
-	private function logFilterHit( User $user, $title, $blockedDomain ) {
+	private function logFilterHit( User $user, Title $title, string $blockedDomain ) {
 		$logEntry = new ManualLogEntry( 'abusefilterblockeddomainhit', 'hit' );
 		$logEntry->setPerformer( $user );
 		$logEntry->setTarget( $title );
