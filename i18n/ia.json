@@ -45,9 +45,11 @@
 	"action-abusefilter-view-private": "vider filtros anti-abuso marcate como private",
 	"action-abusefilter-log-private": "vider registros de filtros anti-abuso marcate como private",
 	"action-abusefilter-log-protected": "vider registros de filtros anti-abuso marcate como protegite",
+	"action-abusefilter-log-protected-access": "vider registros que expone variabiles protegite sin primo haber activate le option in tu preferentias",
 	"action-abusefilter-hide-log": "celar entratas in le registro de abusos",
 	"action-abusefilter-hidden-log": "vider entratas celate del registro de abusos",
 	"action-abusefilter-modify-global": "crear o modificar filtros anti-abuso global",
+	"action-abusefilter-protected-vars-log": "vider registros que revela variabiles protegite",
 	"abusefilter-log-summary": "Iste registro monstra un lista de tote le actiones attrappate per le filtros anti-abuso.",
 	"abusefilter-log-search": "Cercar in le registro de abusos",
 	"abusefilter-log-search-user": "Usator:",
@@ -531,6 +533,7 @@
 	"abusefilter-test-page": "Modificationes facite al pagina:",
 	"abusefilter-test-shownegative": "Monstrar modificationes que non corresponde al filtro",
 	"abusefilter-test-syntaxerr": "Le filtro inserite contine un error de syntaxe.\nPro reciper un explication complete, clicca sur le button \"{{int:abusefilter-edit-check}}\".",
+	"abusefilter-test-protectedvarerr": "Le filtro non es monstrate perque illo usa variabiles protegite e es celate al vista del publico.",
 	"abusefilter-test-action": "Typo de action:",
 	"abusefilter-test-search-type-all": "Tote le actiones",
 	"abusefilter-test-search-type-edit": "Modificationes",
@@ -553,6 +556,7 @@
 	"abusefilter-examine-notfound": "Le modification que tu requestava non pote esser trovate.",
 	"abusefilter-examine-incompatible": "Le modification que tu requestava non es supportate per le filtro anti-abuso.",
 	"abusefilter-examine-noresults": "Nulle resultato ha essite trovate pro le parametros de recerca que tu ha fornite.",
+	"abusefilter-examine-protected-vars-permission": "Pro vider registros que contine variabiles protegite, per favor accepta le accordo in [[Special:Preferences|tu preferentias]].",
 	"abusefilter-topnav": "'''Navigation per le filtro anti-abuso'''",
 	"abusefilter-topnav-home": "Initio",
 	"abusefilter-topnav-recentchanges": "Modificationes recente de filtros",
@@ -626,5 +630,6 @@
 	"action-abusefilter-bypass-blocked-external-domains": "contornar dominios externe blocate",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Le creation o modification del lista de dominios externe al quales le ligamines es blocate debe esser facite usante [[Special:BlockedExternalDomains|iste pagina special]].",
 	"right-abusefilter-access-protected-vars": "Vider e crear filtros que usa variabiles protegite",
-	"action-abusefilter-access-protected-vars": "vider e crear filtros que usa variabiles protegite"
+	"action-abusefilter-access-protected-vars": "vider e crear filtros que usa variabiles protegite",
+	"prefs-abusefilter": "Filtro anti-abuso"
 }
