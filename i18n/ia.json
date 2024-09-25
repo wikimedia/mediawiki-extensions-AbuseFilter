@@ -631,5 +631,12 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Le creation o modification del lista de dominios externe al quales le ligamines es blocate debe esser facite usante [[Special:BlockedExternalDomains|iste pagina special]].",
 	"right-abusefilter-access-protected-vars": "Vider e crear filtros que usa variabiles protegite",
 	"action-abusefilter-access-protected-vars": "vider e crear filtros que usa variabiles protegite",
-	"prefs-abusefilter": "Filtro anti-abuso"
+	"prefs-abusefilter": "Filtro anti-abuso",
+	"abusefilter-preference-protected-vars-view-agreement": "Activar le revelation del adresses IP de contos temporari in AbuseFilter",
+	"abusefilter-protected-vars-log-name": "Registro de variabiles protegite del filtro anti-abuso",
+	"abusefilter-protected-vars-log-header": "Isto es un registro de:\n# Inspection de variabiles protegite in le detalios del registro\n# Cambios de nivellos de accesso de usatores pro le inspection de variabiles protegite",
+	"logentry-abusefilter-protected-vars-change-access-enable": "$1 ha activate {{GENDER:$2|su}} proprie accesso pro inspectar variabiles protegite",
+	"logentry-abusefilter-protected-vars-change-access-disable": "$1 ha disactivate {{GENDER:$2|su}} proprie accesso pro inspectar variabiles protegite",
+	"log-action-filter-abusefilter-protected-vars": "Typo de action:",
+	"log-action-filter-abusefilter-protected-vars-change-access": "Cambiar accesso"
 }
