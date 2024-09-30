@@ -116,9 +116,9 @@ class CheckMatch extends ApiBase {
 
 			// TODO: Replace with dependency injection once security patch is uploaded publicly.
 			$afFilterLookup = AbuseFilterServices::getFilterLookup();
-			$privacyLevel = $afFilterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
-				->getPrivacyLevel();
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel );
+			$hidden = $afFilterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
+				->isHidden();
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $hidden );
 			if ( !$canSeeDetails ) {
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'cannotseedetails' );
 			}

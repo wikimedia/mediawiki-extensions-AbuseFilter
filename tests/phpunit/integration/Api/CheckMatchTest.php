@@ -6,7 +6,6 @@ use ApiTestCase;
 use FormatJson;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
@@ -111,7 +110,7 @@ class CheckMatchTest extends ApiTestCase {
 			->with( 1, false )
 			->willReturnCallback( function () {
 				$filterObj = $this->createMock( ExistingFilter::class );
-				$filterObj->method( 'getPrivacyLevel' )->willReturn( Flags::FILTER_HIDDEN );
+				$filterObj->method( 'isHidden' )->willReturn( true );
 				return $filterObj;
 			} );
 		$this->setService( FilterLookup::SERVICE_NAME, $mockLookup );
