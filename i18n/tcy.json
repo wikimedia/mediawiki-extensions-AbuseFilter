@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
+			"Pragathi. BH",
 			"Ravi Mundkur",
-			"VASANTH S.N."
+			"VASANTH S.N.",
+			"Vinoda mamatharai"
 		]
 	},
+	"right-abusefilter-protected-vars-log": "ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಮೌಲ್ಯೊಲೆನ್ ಪ್ರವೇಶಿಸೆರೆ ಸಂಬಂಧಪಟ್ಟಿನ ಲಾಗ್ ಲೆನ್ ತೂಲೆ",
+	"action-abusefilter-log-protected-access": "ನಿಕ್ಲೆನ ಆದ್ಯತೆಲೆಡ್ ಸುರುಕು ಆಯ್ಕೆನ್ ಸಕ್ರಿಯ ಮಲ್ಪಂದೆ ಒರಿಪಾಯಿನ ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಲೆನೊಟ್ಟುಗು ಲಾಗ್ ಲೆನ್ ತೂಲೆ",
+	"action-abusefilter-protected-vars-log": "ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಲೆನ್ ತೋಜಾವುನ ಲಾಗ್ ಲೆನ್ ತೂಲೆ",
 	"abusefilter-log-search-user": "ಬಳಕೆದಾರೆರ್:",
 	"abusefilter-log-search-title": "ತರೆಬರವು:",
 	"abusefilter-log-search-wiki": "ವಿಕಿಲು:",
@@ -97,9 +102,17 @@
 	"abusefilter-test-submit": "ಪರೀಕ್ಷೆ",
 	"abusefilter-test-load": "ದಿಂಜಾಲೆ",
 	"abusefilter-examine-submit": "ನಾಡ್‍ಲೆ",
+	"abusefilter-examine-protected-vars-permission": "ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಲೆನ್ ಒಟ್ಟು ಮಲ್ಪುನ ಲಾಗ್ ಲೆನ್ ತೂಯೆರೆ, ದಯಮಲ್ತ್ [[Special:Preferences|ನಿಕ್ಲೆನ ಆದ್ಯತೆಲು]] ಡ್ ಒಪ್ಪಂದೊನು ಒಪ್ಪೊಡು.",
 	"abusefilter-topnav-home": "ನಿಲೆ",
 	"abusefilter-topnav-log": "ದುರುಪಯೋಗದ ಅನುಕ್ರಮಣಿಕೆ",
 	"abusefilter-diff-info": "ಪುಟೊದ ಮಾಹಿತಿ",
 	"abusefilter-diff-prev": "ಪರ ಬದಲಾವಣೆ",
-	"abusefilter-diff-next": "ಪೊಸ ಬದಲಾವಣೆ"
+	"abusefilter-diff-next": "ಪೊಸ ಬದಲಾವಣೆ",
+	"prefs-abusefilter": "ದುರುಪಯೋಗ ಫಿಲ್ಟರ್",
+	"abusefilter-preference-protected-vars-view-agreement": "ದುರುಪಯೋಗ ಫಿಲ್ಟರ್ ಡ್ ತಾತ್ಕಾಲಿಕ ಖಾತೆಲೆಗ್ ಐಪಿ ವಿಳಾಸೊಲೆನ್ ತೆರಿಪಾವುನ ಸಕ್ರಿಯ ಮಲ್ಪುಲೆ",
+	"abusefilter-protected-vars-log-name": "ದುರುಪಯೋಗ ಫಿಲ್ಟರ್ ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಲಾಗ್",
+	"abusefilter-protected-vars-log-header": "ಉಂದು ಒಂಜಿ ಲಾಗ್:\n# ಲಾಗ್ ವಿವರೊಲೆಡ್ ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಲೆನ್ ತೂಪುನವು\n# ರಕ್ಷಣೆ ಮಲ್ತಿನ ವೇರಿಯೇಬಲ್ ಲೆನ್ ತೂಯೆರೆ ಬಳಕೆದಾರ ಪ್ರವೇಶ ಮಟ್ಟೊಲೆನ್ ಬದಲಾವಣೆ ಮಲ್ಪುನವು",
+	"logentry-abusefilter-protected-vars-change-access-enable": "$1 ಸಕ್ರಿಯ ಆತ್ಂಡ್ {{GENDER:$2| ರಕ್ಷಣೆ ಮಲ್ತಿನ ಅಸ್ಥಿರೊಲೆನ್ ತೂಯೆರೆ ಅರೆನ|ಅಲೆನ|ಅಕ್ಲೆನ}} ಸ್ವಂತ ಪ್ರವೇಶ",
+	"logentry-abusefilter-protected-vars-change-access-disable": "$1 ನಿಷ್ಕ್ರಿಯ ಆತ್ಂಡ್ {{GENDER:$2| ರಕ್ಷಣೆ ಮಲ್ತಿನ ಅಸ್ಥಿರೊಲೆನ್ ತೂಯೆರೆ ಅರೆನ|ಅಲೆನ|ಅಕ್ಲೆನ}} ಸ್ವಂತ ಪ್ರವೇಶ",
+	"log-action-filter-abusefilter-protected-vars-change-access": "ಪ್ರವೇಶೊನು ಬದಲಾವಣೆ ಮಲ್ಪುಲೆ"
 }
