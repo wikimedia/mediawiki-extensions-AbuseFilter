@@ -6,7 +6,6 @@ use ApiTestCase;
 use FormatJson;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
@@ -105,13 +104,14 @@ class CheckMatchTest extends ApiTestCase {
 	}
 
 	public function testExecuteWhenPerformerCannotSeeLogId() {
+		$this->setExpectedApiException( 'apierror-permissiondenied-generic', 'cannotseedetails' );
 		// Mock the FilterLookup service to return that the filter with the ID 1 is hidden.
 		$mockLookup = $this->createMock( FilterLookup::class );
 		$mockLookup->method( 'getFilter' )
 			->with( 1, false )
 			->willReturnCallback( function () {
 				$filterObj = $this->createMock( ExistingFilter::class );
-				$filterObj->method( 'getPrivacyLevel' )->willReturn( Flags::FILTER_HIDDEN );
+				$filterObj->method( 'isHidden' )->willReturn( true );
 				return $filterObj;
 			} );
 		$this->setService( FilterLookup::SERVICE_NAME, $mockLookup );
@@ -123,7 +123,6 @@ class CheckMatchTest extends ApiTestCase {
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 		// Execute the API using a user with the 'abusefilter-modify' right but without the
 		// 'abusefilter-log-detail' right, while specifying a filter abuse filter log ID of 1
-		$this->expectApiErrorCode( 'cannotseedetails' );
 		$this->doApiRequest(
 			[
 				'action' => 'abusefiltercheckmatch',
