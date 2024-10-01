@@ -38,7 +38,7 @@
 	"abusefilter-deleted": "ਮਿਟਾਇਆ ਹੋਇਆ",
 	"abusefilter-status-global": "ਗਲੋਬਲ",
 	"abusefilter-list-options-scope-local": "ਸਿਰਫ਼ ਸਥਾਨਕ ਨਿਯਮ",
-	"abusefilter-list-options-submit": "ਅੱਪਡੇਟ",
+	"abusefilter-list-options-submit": "ਨਵਿਆਓ",
 	"abusefilter-tools-reautoconfirm-user": "ਵਰਤੋਂਕਾਰ:",
 	"abusefilter-edit-status-label": "ਅੰਕੜੇ",
 	"abusefilter-edit-field-conditions": "ਹਾਲਾਤ",
@@ -111,5 +111,6 @@
 	"abusefilter-history-deleted": "ਮਿਟਾਇਆ ਗਿਆ",
 	"abusefilter-history-filterid": "ਛਾਨਣੀ",
 	"abusefilter-history-select-user": "ਵਰਤੋਂਕਾਰ:",
-	"abusefilter-history-diff": "ਤਬਦੀਲੀਆਂ"
+	"abusefilter-history-diff": "ਤਬਦੀਲੀਆਂ",
+	"log-action-filter-abusefilter-protected-vars": "ਕਾਰਵਾਈ ਦੀ ਕਿਸਮː"
 }
