@@ -124,6 +124,16 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * Return all used protected variables from an array of variables. Ignore user permissions.
+	 *
+	 * @param string[] $usedVariables
+	 * @return string[]
+	 */
+	public function getUsedProtectedVariables( array $usedVariables ): array {
+		return array_intersect( $usedVariables, $this->protectedVariables );
+	}
+
+	/**
 	 * Check if the filter uses variables that the user is not allowed to use (i.e., variables that are protected, if
 	 * the user can't view protected variables), and return them.
 	 *

@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\User\ActorStore;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\TestingAccessWrapper;
@@ -59,6 +60,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			VariableHolder::newFromArray( [
 				'action' => 'edit',
 				'user_unnamed_ip' => '1.2.3.4',
+				'user_name' => 'User1',
 				] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 
@@ -108,6 +110,11 @@ class QueryAbuseLogTest extends ApiTestCase {
 		);
 		$this->setService( 'UserOptionsLookup', $userOptions );
 
+		// Actor store needs to return a valid actor_id for the logs querying generates
+		$actorStore = $this->createMock( ActorStore::class );
+		$actorStore->method( 'acquireActorId' )->willReturn( 1 );
+		$this->setService( 'ActorStore', $actorStore );
+
 		// Assert that the ip is now visible
 		$result = $this->doApiRequest( [
 			'action' => 'query',
@@ -116,6 +123,8 @@ class QueryAbuseLogTest extends ApiTestCase {
 		], null, null, $authorityCanViewProtectedVar );
 		$result = $result[0]['query']['abuselog'];
 		$this->assertSame( '1.2.3.4', $result[0]['details']['user_unnamed_ip'] );
+
+		$this->resetServices();
 	}
 
 	/**

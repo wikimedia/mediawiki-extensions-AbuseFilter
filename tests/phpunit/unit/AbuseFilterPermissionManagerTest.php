@@ -291,6 +291,27 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function provideTestGetUsedProtectedVariables(): Generator {
+		$userCheckedPreference = new UserIdentityValue( 1, 'User1' );
+		$userUncheckedPreference = new UserIdentityValue( 2, 'User2' );
+		yield 'uses protected variables' => [
+			[ 'user_unnamed_ip', 'user_name' ], [ 'user_unnamed_ip' ]
+		];
+		yield 'no protected variables' => [
+			[ 'user_name' ], []
+		];
+	}
+
+	/**
+	 * @dataProvider provideTestGetUsedProtectedVariables
+	 */
+	public function testGetUsedProtectedVariables( array $usedVariables, $expected ) {
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->getUsedProtectedVariables( $usedVariables )
+		);
+	}
+
 	public static function provideGetForbiddenVariables(): Generator {
 		yield 'cannot view, protected vars' => [
 			[
