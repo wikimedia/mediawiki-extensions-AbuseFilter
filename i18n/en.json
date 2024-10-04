@@ -638,7 +638,7 @@
 	"abusefilter-protected-vars-log-header": "This is a log of:\n# Viewing protected variables in log details\n# Changing user access levels for viewing protected variables",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 enabled {{GENDER:$2|his|her|their}} own access to view protected variables",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 disabled {{GENDER:$2|his|her|their}} own access to view protected variables",
-	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 viewed protected variables associated with $3",
+	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|viewed}} protected variables associated with $3",
 	"log-action-filter-abusefilter-protected-vars": "Type of action:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Change access",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "View protected variable values"
