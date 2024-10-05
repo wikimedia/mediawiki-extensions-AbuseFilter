@@ -78,7 +78,7 @@ class BlockedDomainFilter {
 				continue;
 			}
 			// Given that we block subdomains of blocked domains too
-			// pretend that all of higher-level domains are added as well
+			// pretend that all the higher-level domains are added as well
 			// so for foo.bar.com, you will have three domains to check:
 			// foo.bar.com, bar.com, and com
 			// This saves string search in the large list of blocked domains

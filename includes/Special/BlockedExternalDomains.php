@@ -166,8 +166,7 @@ class BlockedExternalDomains extends SpecialPage {
 	 * @return string HTML for the row
 	 */
 	private function doDomainRow( $domain, $showManageActions ) {
-		$newRow = '';
-		$newRow .= Html::rawElement( 'td', [], Html::element( 'code', [], $domain['domain'] ) );
+		$newRow = Html::rawElement( 'td', [], Html::element( 'code', [], $domain['domain'] ) );
 
 		$newRow .= Html::rawElement( 'td', [], $this->getOutput()->parseInlineAsInterface( $domain['notes'] ) );
 
@@ -186,7 +185,8 @@ class BlockedExternalDomains extends SpecialPage {
 				$this->getPageTitle( 'remove' ),
 				$this->msg( 'abusefilter-blocked-domains-remove' )->text(),
 				[],
-				[ 'domain' => $domain['domain'] ] );
+				[ 'domain' => $domain['domain'] ]
+			);
 			$newRow .= Html::rawElement( 'td', [], $actionLink );
 		}
 
@@ -343,6 +343,7 @@ class BlockedExternalDomains extends SpecialPage {
 		return 'spam';
 	}
 
+	/** @inheritDoc */
 	public function isListed() {
 		return $this->getConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' );
 	}
