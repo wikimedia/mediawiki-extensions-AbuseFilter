@@ -588,6 +588,6 @@
 	"abusefilter-log-ip-not-available": "Nem elérhető",
 	"abusefilter-tag-reserved": "Az <code>abusefilter-condition-limit</code> címke a Vandálszűrő belső használatára van fenntartva.",
 	"tag-abusefilter-condition-limit": "feltételhatár elérve",
-	"tag-abusefilter-condition-limit-description": "Szerkesztések vagy egyéb események, amelyek nem lettek ellenőrizve az összes aktív [[Special:AbuseFilter|vandálszűrő]] által ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions súgó]).",
+	"tag-abusefilter-condition-limit-description": "Szerkesztések vagy egyéb események, amelyek nem lettek ellenőrizve az összes aktív [[Special:AbuseFilter|vandálszűrő]] által ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions súgó]).",
 	"notification-link-text-show-filter": "Szűrő megjelenítése"
 }

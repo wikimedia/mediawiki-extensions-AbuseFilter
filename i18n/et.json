@@ -572,7 +572,7 @@
 	"log-description-abusefilterblockeddomainhit": "Siin on logitud blokeeritud domeenide tabamused.",
 	"abusefilter-noreason": "Hoiatus: Selleks et näha selle logi isiklikke üksikasju, pead esitama põhjuse.",
 	"tag-abusefilter-condition-limit": "Tingimuste ülempiir käes",
-	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Special:AbuseFilter|väärtarvitusfiltritega]] kontrollida ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions spikker]).",
+	"tag-abusefilter-condition-limit-description": "Redaktsioonid või muud sündmused, mida polnud võimalik kõigi aktiivsete [[Special:AbuseFilter|väärtarvitusfiltritega]] kontrollida ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions spikker]).",
 	"notification-header-throttle-filter": "Piirati toiminguid väärtarvitusfiltris $2, mida hiljuti {{GENDER:$1|muutsid}}.",
 	"notification-header-throttle-filter-actions": "Väärtarvitusfilter $2, mida hiljuti {{GENDER:$1|muutsid}}, oli suure tabamusmääraga ja  {{PLURAL:$4|järgmine toiming|järgmised toimingud}} keelati automaatselt: $3.",
 	"notification-header-throttle-filter-no-actions": "Väärtarvitusfilter $2, mida hiljuti {{GENDER:$1|muutsid}}, oli suure tabamusmääraga, kuid toiminguid automaatselt ei keelatud.",

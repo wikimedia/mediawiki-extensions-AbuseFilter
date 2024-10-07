@@ -32,6 +32,7 @@
 			"Ltrlg",
 			"MacOS Weed",
 			"Macofe",
+			"Mahabarata",
 			"Manu1400",
 			"Matma Rex",
 			"Matěj Suchánek",
@@ -271,7 +272,7 @@
 	"abusefilter-edit-enabled": "Activer ce filtre",
 	"abusefilter-edit-deleted": "Marquer comme supprimé",
 	"abusefilter-edit-hidden": "Masquer les détails de ce filtre à la vue du public",
-	"abusefilter-edit-protected": "Je comprends que les détails de ce filtre seront masqués aux utilisateurs qui ne peuvent pas voir les [https://www.mediawiki.org/wiki/Extension:AbuseFilter/Rules_format#Protected_variables variables protégées]",
+	"abusefilter-edit-protected": "Je comprends que les détails de ce filtre seront masqués aux utilisateurs qui ne peuvent pas voir les [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables variables protégées]",
 	"abusefilter-edit-protected-variable-already-protected": "Les détails de ce filtre sont masqués aux utilisateurs qui ne peuvent pas voir les variables protégées",
 	"abusefilter-edit-protected-help-message": "Cette action est permanente et ne peut pas être annulée",
 	"abusefilter-edit-global": "Filtre global",
@@ -337,7 +338,7 @@
 	"abusefilter-edit-deleting-enabled": "Vous ne pouvez pas marquer un filtre actif comme supprimé.",
 	"abusefilter-edit-restricted": "Vous ne pouvez pas modifier ce filtre parce qu’il contient une ou plusieurs actions restreintes.\nDemandez à un autre utilisateur, autorisé à ajouter des actions restreintes, d’effectuer la modification pour vous.",
 	"abusefilter-edit-protected-variable": "Vous ne pouvez pas enregistrer ce filtre car vous n'avez pas l'autorisation d'utiliser les variables suivantes : $1",
-	"abusefilter-edit-protected-variable-not-protected": "Votre filtre n'a pas été enregistré car il utilise [https://www.mediawiki.org/wiki/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|la variable protégée suivante|les variables protégées suivantes}}] : $1. Vous reconnaissez que vous comprenez que les détails de ce filtre seront masqués aux utilisateurs qui ne peuvent pas voir les variables protégées.",
+	"abusefilter-edit-protected-variable-not-protected": "Votre filtre n'a pas été enregistré car il utilise [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|la variable protégée suivante|les variables protégées suivantes}}] : $1. Vous reconnaissez que vous comprenez que les détails de ce filtre seront masqués aux utilisateurs qui ne peuvent pas voir les variables protégées.",
 	"abusefilter-edit-viewhistory": "Voir l’historique de ce filtre",
 	"abusefilter-edit-history": "Historique :",
 	"abusefilter-edit-check": "Vérifier la syntaxe",
@@ -673,7 +674,7 @@
 	"abusefilter-log-ip-not-available": "Non disponible",
 	"abusefilter-tag-reserved": "La balise <code>abusefilter-condition-limit</code> est réservée à l’usage interne du filtre anti-abus.",
 	"tag-abusefilter-condition-limit": "Limite de condition atteinte",
-	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui n’ont pas pu être vérifiés par tous les [[Special:AbuseFilter|filtres anti-abus]] actifs ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions aide] (en anglais)).",
+	"tag-abusefilter-condition-limit-description": "Modifications ou autres événements qui n’ont pas pu être vérifiés par tous les [[Special:AbuseFilter|filtres anti-abus]] actifs ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions aide] (en anglais)).",
 	"notification-header-throttle-filter": "Le filtre d’abus $2 que {{GENDER:$1|}}vous avez modifié récemment a été engorgé.",
 	"notification-header-throttle-filter-actions": "Le filtre anti-abus $2 que {{GENDER:$1|}}vous avez récemment modifié a un taux élevé de correspondances et {{PLURAL:$4|l’action suivante a été automatiquement désactivée|les actions suivantes ont été automatiquement désactivées}} : $3",
 	"notification-header-throttle-filter-no-actions": "Le filtre anti-abus $2 que {{GENDER:$1|}}vous avez récemment modifié a un taux élevé de correspondances mais aucune action n’a été automatiquement désactivée.",
@@ -687,5 +688,7 @@
 	"right-abusefilter-access-protected-vars": "Voir et créer des filtres qui utilisent des variables protégées",
 	"action-abusefilter-access-protected-vars": "voir et créer des filtres qui utilisent des variables protégées",
 	"prefs-abusefilter": "Filtre anti-abus",
-	"log-action-filter-abusefilter-protected-vars": "Type d’action :"
+	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 a vu des variables protégées associées à $3",
+	"log-action-filter-abusefilter-protected-vars": "Type d’action :",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Consulter les valeurs de variables protégées"
 }

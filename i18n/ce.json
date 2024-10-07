@@ -613,7 +613,7 @@
 	"abusefilter-log-ip-not-available": "ТӀекхочехь йац",
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code> билгало ларйина йу зедарийн фильтран лело.",
 	"tag-abusefilter-condition-limit": "доза тохар",
-	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зедарийн фильтрашна]] далуш доцург ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions гӀо]).",
+	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зедарийн фильтрашна]] далуш доцург ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions гӀо]).",
 	"notification-header-throttle-filter": "{{GENDER:$1|Ахьа}} дукха хан йоццуш хийцина $2 зедарийн фильтр дозатоьхна йу.",
 	"notification-header-throttle-filter-actions": "Дукха хан йоццуш {{GENDER:$1|ахьа}} хийцам бина $2 зедарийн фильтран, цхьаьнанисдалар лакхара процент йара, ткъа хӀара {{PLURAL:$4|ардам|ардамаш}} авто дӀабайина: $3.",
 	"notification-header-throttle-filter-no-actions": "Дукха хан йоццуш {{GENDER:$1|ахьа}} хийцам бина $2 зедарийн фильтран, цхьаьнанисдалар лакхара процент йара, амма цхьа а ардамаш авто дӀабайина бацара: $3.",

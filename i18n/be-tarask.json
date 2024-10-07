@@ -580,7 +580,7 @@
 	"abusefilter-log-ip-not-available": "Недаступна",
 	"abusefilter-tag-reserved": "Тэг <code>abusefilter-condition-limit</code> зарэзэрваваны для ўнутранага выкарыстаньня AbuseFilter.",
 	"tag-abusefilter-condition-limit": "дасягнутае абмежаваньне ўмовы",
-	"tag-abusefilter-condition-limit-description": "Рэдагаваньні або іншыя падзеі, якія ня могуць быць правераны ўсімі актыўнымі \n[[Special:AbuseFilter|фільтрамі злоўжываньняў]] ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions дапамога]).",
+	"tag-abusefilter-condition-limit-description": "Рэдагаваньні або іншыя падзеі, якія ня могуць быць правераны ўсімі актыўнымі \n[[Special:AbuseFilter|фільтрамі злоўжываньняў]] ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions дапамога]).",
 	"notification-header-throttle-filter": "Фільтар злоўжываньняў $2, які {{GENDER:$1|вы}} нядаўна рэдагавалі, быў абмежаваны.",
 	"notification-header-throttle-filter-actions": "Фільтар злоўжываньняў $2, які {{GENDER:$1|вы}} нядаўна рэдагавалі, меў высокую частасьць супадзеньняў, і {{PLURAL:$4|гэтае дзеяньне было аўтаматычна адключана|гэтыя дзеяньні былі аўтаматычна адключаныя|гэтых дзеяньняў былі аўтаматычна адключаныя}}: $3.",
 	"notification-subject-throttle-filter": "Фільтар злоўжываньняў, які {{GENDER:$1|вы}} рэдагавалі, быў абмежаваны на {{GRAMMAR:locative|{{SITENAME}}}}",

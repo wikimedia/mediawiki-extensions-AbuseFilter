@@ -560,7 +560,7 @@
 	"abusefilter-log-ip-not-available": "Недоступно",
 	"abusefilter-tag-reserved": "Ознака <code>abusefilter-condition-limit</code> је резервисана за интерну употребу од стране Филтера против злоупотребе.",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
-	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions помоћ]).",
+	"tag-abusefilter-condition-limit-description": "Измене или други догађаји које не могу бити проверени [[Special:AbuseFilter|филтерима злоупотребе]] ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions помоћ]).",
 	"notification-link-text-show-filter": "Прикажи филтер",
 	"right-abusefilter-bypass-blocked-external-domains": "заобилажење блокираних спољних домена",
 	"action-abusefilter-bypass-blocked-external-domains": "заобилазите блокиране спољне домене",

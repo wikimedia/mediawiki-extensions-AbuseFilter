@@ -673,7 +673,7 @@
 	"abusefilter-log-ip-not-available": "No disponible",
 	"abusefilter-tag-reserved": "La etiqueta <code>abusefilter-condition-limit</code> está reservada para uso interno del filtro antiabusos.",
 	"tag-abusefilter-condition-limit": "límite de condiciones superado",
-	"tag-abusefilter-condition-limit-description": "Ediciones u otros eventos que no pudieron ser verificados por todos los [[Special:AbuseFilter|filtros antiabusos]] ([https://www.mediawiki.org/wiki/Extension:AbuseFilter/Conditions ayuda en inglés]).",
+	"tag-abusefilter-condition-limit-description": "Ediciones u otros eventos que no pudieron ser verificados por todos los [[Special:AbuseFilter|filtros antiabusos]] ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions ayuda en inglés]).",
 	"notification-header-throttle-filter": "El filtro antiabusos $2 que {{GENDER:$1|editastes}} recientemente ha sido limitado.",
 	"notification-header-throttle-filter-actions": "El filtro antiabusos $2 {{GENDER:$1|que}} editaste recientemente tuvo una alta tasa de coincidencias y {{PLURAL:$4|la siguiente acción fue desactivada|las siguientes acciones fueron desactivadas}} automáticamente: $3.",
 	"notification-header-throttle-filter-no-actions": "El filtro antiabusos $2 {{GENDER:$1|que}} editaste recientemente tuvo una alta tasa de coincidencias pero no se desactivó ninguna acción automáticamente.",

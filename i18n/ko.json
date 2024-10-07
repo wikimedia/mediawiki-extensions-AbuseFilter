@@ -175,6 +175,7 @@
 	"abusefilter-list-lastmodified": "마지막 수정",
 	"abusefilter-list-group": "필터 그룹",
 	"abusefilter-hidden": "비공개",
+	"abusefilter-protected": "보호됨",
 	"abusefilter-unhidden": "공개",
 	"abusefilter-enabled": "활성화됨",
 	"abusefilter-deleted": "삭제됨",
@@ -241,6 +242,7 @@
 	"abusefilter-edit-enabled": "이 필터 활성화하기",
 	"abusefilter-edit-deleted": "삭제된 것으로 표시",
 	"abusefilter-edit-hidden": "일반 사용자가 필터의 세부 사항을 보지 못하도록 숨기기",
+	"abusefilter-edit-protected-help-message": "이 동작은 영구적이며 취소할 수 없습니다",
 	"abusefilter-edit-global": "전역 필터",
 	"abusefilter-edit-rules": "필터 규칙:",
 	"abusefilter-edit-field-conditions": "조건",
@@ -488,6 +490,7 @@
 	"abusefilter-history-select-submit": "필터",
 	"abusefilter-history-diff": "차이",
 	"abusefilter-history-error-hidden": "요청한 필터는 비공개되어 있어 필터의 역사를 볼 수 없습니다.",
+	"abusefilter-history-error-protected": "요청한 필터는 보호된 변수를 사용하므로 필터의 역사를 볼 수 없습니다.",
 	"abusefilter-exception-unexpectedatend": "$1번째 문자에 예상치 못한 \"$2\"가 있습니다.",
 	"abusefilter-exception-expectednotfound": "$1번째 문자에 있어야 할 $2가 발견되지 않았습니다. ($3 $4이(가) 대신 발견되었습니다)",
 	"abusefilter-exception-unrecognisedkeyword": "$1번째 문자에 알 수 없는 키워드 $2가 있습니다.",
@@ -646,5 +649,8 @@
 	"action-abusefilter-bypass-blocked-external-domains": "차단된 외부 도메인을 우회할",
 	"abusefilter-blocked-domains-cannot-edit-directly": "연결이 차단된 외부 도메인을 생성하거나 수정하려면 [[Special:BlockedExternalDomains|특수문서]]를 통해 수행해야 합니다.",
 	"prefs-abusefilter": "편집필터",
-	"abusefilter-preference-protected-vars-view-agreement": "편집 필터에서 임시 계정의 IP 주소 표시 활성화"
+	"abusefilter-preference-protected-vars-view-agreement": "편집 필터에서 임시 계정의 IP 주소 표시 활성화",
+	"abusefilter-protected-vars-log-name": "편집 필터 보호 변수 기록",
+	"log-action-filter-abusefilter-protected-vars": "조치 유형:",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "보호된 변수 값 보기"
 }
