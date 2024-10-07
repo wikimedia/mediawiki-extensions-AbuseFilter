@@ -8,7 +8,8 @@
 			"Metalhead64",
 			"Schmackes",
 			"ToBeFree",
-			"Brettchenweber"
+			"Brettchenweber",
+			"Justman10000"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Prüfen, ob ein Missbrauchsfilter mit einem Satz von Variablen, einer Bearbeitung oder einem protokollierten Missbrauchsfilter-Ereignis übereinstimmt.\n\nvars, rcid oder logid ist erforderlich, es darf jedoch nur eine davon verwendet werden.",
@@ -65,6 +66,6 @@
 	"apierror-abusefilter-canttest": "Du bist nicht berechtigt, Missbrauchsfilter zu testen.",
 	"apierror-abusefilter-cantcheck": "Du hast keine Berechtigung, die Syntax von Missbrauchsfiltern zu überprüfen.",
 	"apierror-abusefilter-canteval": "Du hast keine Berechtigung zum Auswerten von AbuseFilter-Ausdrücken.",
-	"apierror-abusefilter-nosuchlogid": "Es gibt keinen Missbrauchsfilter-Logbuch-Eintrag mit der Kennung $1.",
+	"apierror-abusefilter-nosuchlogid": "Es existiert kein Missbrauchsfilter-Logbuch-Eintrag mit der Kennung $1.",
 	"apierror-abusefilter-badsyntax": "Der Filter hat eine ungültige Syntax."
 }
