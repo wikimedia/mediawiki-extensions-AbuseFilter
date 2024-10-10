@@ -15,7 +15,8 @@
 			"Zoranzoki21",
 			"Жељко Тодоровић",
 			"Михајло Анђелковић",
-			"Сербијана"
+			"Сербијана",
+			"Amire80"
 		]
 	},
 	"abusefilter-desc": "Примењује аутоматске хеуристике изменама",
@@ -534,7 +535,7 @@
 	"abusefilter-log-details-id": "ID дневника",
 	"blockedexternaldomains": "Блокирани спољни домени",
 	"abusefilter-blocked-domains-title": "Блокирани спољни домени",
-	"abusefilter-blocked-domains-intro": "Спољашње везе које се поклапају са овим списком ће бити блокиране када се додају на страницу. Ови домени се чувају у [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-intro": "Спољашње везе које се поклапају са овим списком ће бити блокиране када се додају на страницу. Ови домени се чувају у [[MediaWiki:BlockedExternalDomains.json]]. Покушаји додавања ових линкова се бележи у [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-add-heading": "Додај нови блокиран домен",
 	"abusefilter-blocked-domains-add-explanation": "Овде можете додавати домен на списак блокираних домена.",
 	"abusefilter-blocked-domains-domain": "Домен за блокаду, као што је wikipedia.org",
@@ -552,7 +553,7 @@
 	"abusefilter-blocked-domains-attempted": "Текст који сте желели да објавите је блокирао наш филтер. Пратећи домен је блокиран за додавање: $1",
 	"abusefilter-blocked-domains-domain-added-comment": "Додај блокиране спољашње домене $1 са напоменама: $2",
 	"abusefilter-blocked-domains-domain-removed-comment": "Уклони блокиране спољашње домене $1 са напоменама: $2",
-	"log-description-abusefilterblockeddomainhit": "Списак покушаја додавања блокираних домена.",
+	"log-description-abusefilterblockeddomainhit": "Списак покушаја додавања [[Special:BlockedExternalDomains|блокираних домена]].",
 	"abusefilter-log-ip-not-available": "Недоступно",
 	"abusefilter-tag-reserved": "Ознака <code>abusefilter-condition-limit</code> је резервисана за интерну употребу од стране Филтера против злоупотребе.",
 	"tag-abusefilter-condition-limit": "достигнуто условно ограничење",
