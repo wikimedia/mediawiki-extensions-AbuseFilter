@@ -718,5 +718,6 @@
 	"action-abusefilter-access-protected-vars": "查看和创建使用受保护变量的过滤器",
 	"prefs-abusefilter": "滥用过滤器",
 	"log-action-filter-abusefilter-protected-vars": "操作类型：",
-	"log-action-filter-abusefilter-protected-vars-change-access": "更改权限"
+	"log-action-filter-abusefilter-protected-vars-change-access": "更改权限",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "查看受保护的变量值"
 }
