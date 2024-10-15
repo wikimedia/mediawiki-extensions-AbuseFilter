@@ -30,7 +30,8 @@
 		"abusefilter-modify-global",
 		"abusefilter-modify-blocked-external-domains",
 		"abusefilter-bypass-blocked-external-domains",
-		"abusefilter-access-protected-vars"
+		"abusefilter-access-protected-vars",
+		"abusefilter-protected-vars-log"
 	],
 	"GroupPermissions": {
 		"*": {
@@ -44,7 +45,9 @@
 			"abusefilter-modify": true,
 			"abusefilter-modify-restricted": true,
 			"abusefilter-revert": true,
-			"abusefilter-modify-blocked-external-domains": true
+			"abusefilter-modify-blocked-external-domains": true,
+			"abusefilter-access-protected-vars": true,
+			"abusefilter-protected-vars-log": true
 		},
 		"suppress": {
 			"abusefilter-hidden-log": true,
