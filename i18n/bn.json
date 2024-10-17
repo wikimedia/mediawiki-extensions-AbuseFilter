@@ -20,7 +20,8 @@
 			"YahyA",
 			"Yahya",
 			"আজিজ",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"San1joy23"
 		]
 	},
 	"abusefilter-desc": "সম্পাদনায় স্বয়ংক্রিয় অনুসন্ধানমূলক পদ্ধতি প্রযোজ্য।",
@@ -441,7 +442,7 @@
 	"abusefilter-log-details-id": "লগ আইডি",
 	"blockedexternaldomains": "অবরুদ্ধ বহিঃস্থ ডোমেইন",
 	"abusefilter-blocked-domains-title": "অবরুদ্ধ বহিঃস্থ ডোমেইন",
-	"abusefilter-blocked-domains-intro": "এই তালিকার সাথে মিলে যাওয়া বহিঃসংযোগগুলিকে যেকোনও পাতায় যোগ করা থেকে অবরুদ্ধ করা হবে। এই ডোমেইনগুলি [[MediaWiki:BlockedExternalDomains.json]]-এ সংরক্ষিত আছে।",
+	"abusefilter-blocked-domains-intro": "এই তালিকার সাথে মিলে যাওয়া বহিঃসংযোগগুলিকে যেকোনও পাতায় যোগ করা থেকে অবরুদ্ধ করা হবে। এই ডোমেইনগুলি [[MediaWiki:BlockedExternalDomains.json]]-এ সংরক্ষিত আছে। অবরুদ্ধ লিঙ্ক যোগের প্রচেষ্টাসমূহ [[Special:Log/abusefilterblockeddomainhit]]-এ লিপিবদ্ধ করা আছে।",
 	"abusefilter-blocked-domains-add-heading": "অবরুদ্ধ করার জন্য একটি নতুন ডোমেইন যোগ করুন",
 	"abusefilter-blocked-domains-add-explanation": "এখানে আপনি অবরুদ্ধ করা ডোমেইনের তালিকায় একটি ডোমেইন যোগ করতে পারেন।",
 	"abusefilter-blocked-domains-domain": "অবরুদ্ধ করার জন্য ডোমেইন, যেমন wikipedia.org",
@@ -459,7 +460,7 @@
 	"abusefilter-blocked-domains-json-error": "JSON একটি অ্যারে হওয়া উচিত",
 	"abusefilter-blocked-domains-domain-added-comment": "অবরুদ্ধ বহিঃস্থ ডোমেইন তালিকায় $1 যোগ করা হয়েছে, কারণ: $2",
 	"abusefilter-blocked-domains-domain-removed-comment": "অবরুদ্ধ বহিঃস্থ ডোমেইন তালিকা থেকে $1 সরানো হয়েছে, কারণ: $2",
-	"log-description-abusefilterblockeddomainhit": "এই লগগুলো অবরুদ্ধ ডোমেইন তালিকা সক্রিয়করণের ঘটনা অনুসরণ করে।",
+	"log-description-abusefilterblockeddomainhit": "এই ইভেন্টগুলি [[Special:BlockedExternalDomains|ব্লকড ডোমেইন]]-এ হিট ট্র্যাক করে।",
 	"abusefilter-noreason": "সতর্কীকরণ: এই লগের ব্যক্তিগত বিবরণ দেখতে, আপনাকে অবশ্যই একটি কারণ প্রদান করতে হবে।",
 	"abusefilter-log-ip-not-available": "উপলব্ধ নয়",
 	"tag-abusefilter-condition-limit": "শর্তের সীমায় পৌঁছেছে",

@@ -624,7 +624,7 @@
 	"abusefilter-invalid-request-noid": "無效請求！您必須透過在濫用日誌詳細資料上的表單提供原因後才能訪問非公開日誌詳細資料。",
 	"blockedexternaldomains": "已封鎖的外部網域",
 	"abusefilter-blocked-domains-title": "已封鎖的外部網域",
-	"abusefilter-blocked-domains-intro": "加入符合此清單的外部連結到頁面時會被禁止。這些網域儲存在[[MediaWiki:BlockedExternalDomains.json]]中。嘗試添加封鎖的連結會記錄在 [[Special:Log/abusefilterblockeddomainhit]] 裡。",
+	"abusefilter-blocked-domains-intro": "加入符合此清單的外部連結到頁面時會被禁止。這些網域儲存在[[MediaWiki:BlockedExternalDomains.json]]中。嘗試加入遭封鎖的連結會記錄在[[Special:Log/abusefilterblockeddomainhit]]中。",
 	"abusefilter-blocked-domains-add-heading": "加入新的封鎖網域",
 	"abusefilter-blocked-domains-add-explanation": "在此您可以將網域加入到封鎖網域清單裡。",
 	"abusefilter-blocked-domains-domain": "要封鎖的網域，例如：wikipedia.org",
