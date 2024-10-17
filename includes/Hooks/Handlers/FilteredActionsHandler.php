@@ -15,16 +15,20 @@ use MediaWiki\Hook\TitleMoveHook;
 use MediaWiki\Hook\UploadStashFileHook;
 use MediaWiki\Hook\UploadVerifyUploadHook;
 use MediaWiki\Logger\LoggerFactory;
-use MediaWiki\Page\Hook\ArticleDeleteHook;
+use MediaWiki\Page\Hook\PageDeleteHook;
+use MediaWiki\Page\ProperPageIdentity;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\Hook\ParserOutputStashForEditHook;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\User;
+use MediaWiki\User\UserFactory;
+use StatusValue;
 use UploadBase;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
-use WikiPage;
 
 /**
  * Handler for actions that can be filtered
@@ -32,7 +36,7 @@ use WikiPage;
 class FilteredActionsHandler implements
 	EditFilterMergedContentHook,
 	TitleMoveHook,
-	ArticleDeleteHook,
+	PageDeleteHook,
 	UploadVerifyUploadHook,
 	UploadStashFileHook,
 	ParserOutputStashForEditHook
@@ -47,6 +51,8 @@ class FilteredActionsHandler implements
 	private $editRevUpdater;
 	private PermissionManager $permissionManager;
 	private BlockedDomainFilter $blockedDomainFilter;
+	private TitleFactory $titleFactory;
+	private UserFactory $userFactory;
 
 	/**
 	 * @param IBufferingStatsdDataFactory $statsDataFactory
@@ -55,6 +61,8 @@ class FilteredActionsHandler implements
 	 * @param EditRevUpdater $editRevUpdater
 	 * @param BlockedDomainFilter $blockedDomainFilter
 	 * @param PermissionManager $permissionManager
+	 * @param TitleFactory $titleFactory
+	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
 		IBufferingStatsdDataFactory $statsDataFactory,
@@ -62,7 +70,9 @@ class FilteredActionsHandler implements
 		VariableGeneratorFactory $variableGeneratorFactory,
 		EditRevUpdater $editRevUpdater,
 		BlockedDomainFilter $blockedDomainFilter,
-		PermissionManager $permissionManager
+		PermissionManager $permissionManager,
+		TitleFactory $titleFactory,
+		UserFactory $userFactory
 	) {
 		$this->statsDataFactory = $statsDataFactory;
 		$this->filterRunnerFactory = $filterRunnerFactory;
@@ -70,6 +80,8 @@ class FilteredActionsHandler implements
 		$this->editRevUpdater = $editRevUpdater;
 		$this->blockedDomainFilter = $blockedDomainFilter;
 		$this->permissionManager = $permissionManager;
+		$this->titleFactory = $titleFactory;
+		$this->userFactory = $userFactory;
 	}
 
 	/**
@@ -205,18 +217,21 @@ class FilteredActionsHandler implements
 	/**
 	 * @inheritDoc
 	 */
-	public function onArticleDelete( WikiPage $wikiPage, User $user, &$reason, &$error, Status &$status, $suppress ) {
+	public function onPageDelete(
+		ProperPageIdentity $page, Authority $deleter, string $reason, StatusValue $status, bool $suppress
+	) {
 		if ( $suppress ) {
 			// Don't filter suppressions, T71617
 			return true;
 		}
-		$builder = $this->variableGeneratorFactory->newRunGenerator( $user, $wikiPage->getTitle() );
+		$user = $this->userFactory->newFromAuthority( $deleter );
+		$title = $this->titleFactory->newFromPageIdentity( $page );
+		$builder = $this->variableGeneratorFactory->newRunGenerator( $user, $title );
 		$vars = $builder->getDeleteVars( $reason );
-		$runner = $this->filterRunnerFactory->newRunner( $user, $wikiPage->getTitle(), $vars, 'default' );
+		$runner = $this->filterRunnerFactory->newRunner( $user, $title, $vars, 'default' );
 		$filterResult = $runner->run();
 
 		$status->merge( $filterResult );
-		$error = $filterResult->isOK() ? '' : $filterResult->getHTML();
 
 		return $filterResult->isOK();
 	}

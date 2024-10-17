@@ -410,7 +410,9 @@
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterEditRevUpdater",
 				"AbuseFilterBlockedDomainFilter",
-				"PermissionManager"
+				"PermissionManager",
+				"TitleFactory",
+				"UserFactory"
 			]
 		},
 		"CheckUser": {
@@ -434,7 +436,7 @@
 		"EditFilterMergedContent": [ "FilteredActions", "ConfirmEdit" ],
 		"GetAutoPromoteGroups": "AutoPromoteGroups",
 		"TitleMove": "FilteredActions",
-		"ArticleDelete": "FilteredActions",
+		"PageDelete": "FilteredActions",
 		"RecentChange_save": "RecentChangeSave",
 		"ListDefinedTags": "ChangeTags",
 		"ChangeTagsListActive": "ChangeTags",
