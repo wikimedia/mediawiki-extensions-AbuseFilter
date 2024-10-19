@@ -9,9 +9,9 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MimeAnalyzer;
 use RecentChange;
 use RepoGroup;
+use Wikimedia\Mime\MimeAnalyzer;
 
 class VariableGeneratorFactory {
 	public const SERVICE_NAME = 'AbuseFilterVariableGeneratorFactory';

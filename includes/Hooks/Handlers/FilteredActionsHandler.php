@@ -2,9 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use ApiMessage;
-use Content;
-use IBufferingStatsdDataFactory;
+use MediaWiki\Api\ApiMessage;
+use MediaWiki\Content\Content;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
@@ -24,6 +23,7 @@ use MediaWiki\Storage\Hook\ParserOutputStashForEditHook;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use UploadBase;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use WikiPage;
 
 /**

@@ -22,14 +22,14 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Parser;
 
-use EmptyBagOStuff;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWikiIntegrationTestCase;
-use NullStatsdDataFactory;
 use Wikimedia\Equivset\Equivset;
+use Wikimedia\ObjectCache\EmptyBagOStuff;
+use Wikimedia\Stats\NullStatsdDataFactory;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.

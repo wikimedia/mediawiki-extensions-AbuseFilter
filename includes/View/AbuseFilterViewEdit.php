@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\View;
 
 use HtmlArmor;
-use IDBAccessObject;
 use LogicException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -28,6 +27,7 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Xml\Xml;
 use OOUI;
 use UnexpectedValueException;
+use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\LikeValue;

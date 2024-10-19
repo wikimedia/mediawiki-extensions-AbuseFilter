@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Hooks;
 
+use MediaWiki\Content\Content;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ConfirmEditHandler;
@@ -33,7 +34,7 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 		$context->setTitle( $title );
 		$confirmEditHandler->onEditFilterMergedContent(
 			$context,
-			$this->createMock( \Content::class ),
+			$this->createMock( Content::class ),
 			$status,
 			'',
 			$this->createMock( User::class ),
@@ -48,7 +49,7 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 		$captchaConsequence->execute();
 		$confirmEditHandler->onEditFilterMergedContent(
 			$context,
-			$this->createMock( \Content::class ),
+			$this->createMock( Content::class ),
 			$status,
 			'',
 			$this->createMock( User::class ),

@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use Content;
-use ExtensionRegistry;
+use MediaWiki\Content\Content;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\ConfirmEdit\Hooks;
 use MediaWiki\Hook\EditFilterMergedContentHook;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 

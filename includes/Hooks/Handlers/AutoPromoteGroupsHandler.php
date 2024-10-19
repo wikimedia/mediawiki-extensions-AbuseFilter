@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
-use BagOStuff;
-use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\User\Hook\GetAutoPromoteGroupsHook;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\ObjectCache\BagOStuff;
+use Wikimedia\ObjectCache\HashBagOStuff;
 
 class AutoPromoteGroupsHandler implements GetAutoPromoteGroupsHook {
 

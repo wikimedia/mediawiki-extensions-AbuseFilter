@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWikiUnitTestCase;
+use Wikimedia\ObjectCache\HashBagOStuff;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\EmergencyCache

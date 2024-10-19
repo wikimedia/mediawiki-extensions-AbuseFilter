@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use HashBagOStuff;
 use MediaWiki\Extension\AbuseFilter\EditStashCache;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
@@ -10,8 +9,9 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
-use NullStatsdDataFactory;
 use Psr\Log\LoggerInterface;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\Stats\NullStatsdDataFactory;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\EditStashCache

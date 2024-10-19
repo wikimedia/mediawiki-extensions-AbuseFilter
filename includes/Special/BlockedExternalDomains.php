@@ -20,14 +20,14 @@
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use ErrorPageError;
-use IDBAccessObject;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleValue;
 use PermissionsError;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * List and manage blocked external domains

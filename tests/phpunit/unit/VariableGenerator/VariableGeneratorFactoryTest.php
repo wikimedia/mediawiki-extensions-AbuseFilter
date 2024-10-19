@@ -11,9 +11,9 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWikiUnitTestCase;
-use MimeAnalyzer;
 use RecentChange;
 use RepoGroup;
+use Wikimedia\Mime\MimeAnalyzer;
 
 /**
  * @group Test

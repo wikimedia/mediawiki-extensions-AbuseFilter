@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use BagOStuff;
-use IBufferingStatsdDataFactory;
 use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Linker\LinkTarget;
 use Psr\Log\LoggerInterface;
+use Wikimedia\ObjectCache\BagOStuff;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**
  * Wrapper around cache for storing and retrieving data from edit stash

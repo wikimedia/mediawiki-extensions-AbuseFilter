@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
-use Maintenance;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Maintenance\Maintenance;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LikeValue;
 

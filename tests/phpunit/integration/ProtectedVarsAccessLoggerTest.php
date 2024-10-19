@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
-use ExtensionRegistry;
 use Generator;
 use MediaWiki\CheckUser\Logging\TemporaryAccountLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWikiIntegrationTestCase;
 
 /**

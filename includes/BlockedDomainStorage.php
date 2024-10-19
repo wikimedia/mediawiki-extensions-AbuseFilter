@@ -19,10 +19,7 @@
  */
 namespace MediaWiki\Extension\AbuseFilter;
 
-use ApiRawMessage;
-use BagOStuff;
-use DBAccessObjectUtils;
-use IDBAccessObject;
+use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Json\FormatJson;
@@ -38,6 +35,9 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\UrlUtils;
 use RecentChange;
 use StatusValue;
+use Wikimedia\ObjectCache\BagOStuff;
+use Wikimedia\Rdbms\DBAccessObjectUtils;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * Hold and update information about blocked external domains

@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Parser;
 
-use BagOStuff;
-use Language;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Language\Language;
 use MediaWikiUnitTestCase;
-use NullStatsdDataFactory;
 use Psr\Log\NullLogger;
 use Wikimedia\Equivset\Equivset;
+use Wikimedia\ObjectCache\BagOStuff;
+use Wikimedia\Stats\NullStatsdDataFactory;
 
 /**
  * @group Test

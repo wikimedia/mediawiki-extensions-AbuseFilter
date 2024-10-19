@@ -10,7 +10,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
-use Maintenance;
+use MediaWiki\Maintenance\Maintenance;
 use MediaWiki\Utils\MWTimestamp;
 
 class PurgeOldLogIPData extends Maintenance {

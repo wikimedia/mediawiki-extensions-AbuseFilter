@@ -19,7 +19,6 @@
  */
 namespace MediaWiki\Extension\AbuseFilter;
 
-use ExtensionRegistry;
 use LogPage;
 use ManualLogEntry;
 use MediaWiki\CheckUser\Hooks as CUHooks;
@@ -27,6 +26,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Message\Message;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;

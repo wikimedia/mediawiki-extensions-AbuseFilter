@@ -3,10 +3,11 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use AbuseFilterCreateAccountTestTrait;
-use ApiUsageException;
-use Content;
 use Generator;
+use MediaWiki\Api\ApiUsageException;
+use MediaWiki\Content\Content;
 use MediaWiki\Content\JsonContent;
+use MediaWiki\Content\WikitextContent;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -28,8 +29,7 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Utils\MWTimestamp;
-use NullStatsdDataFactory;
-use WikitextContent;
+use Wikimedia\Stats\NullStatsdDataFactory;
 
 /**
  * @group Database

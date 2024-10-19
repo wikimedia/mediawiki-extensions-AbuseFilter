@@ -2,8 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use HashBagOStuff;
-use IBufferingStatsdDataFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Title\Title;
@@ -11,6 +9,8 @@ use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use TestLogger;
+use Wikimedia\ObjectCache\HashBagOStuff;
+use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\WRStats\BagOStuffStatsStore;
 use Wikimedia\WRStats\WRStatsFactory;
 

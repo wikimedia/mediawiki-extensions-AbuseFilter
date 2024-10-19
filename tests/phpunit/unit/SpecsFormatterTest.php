@@ -3,10 +3,10 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use Generator;
-use Language;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Language\Language;
 use MediaWiki\Message\Message;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;

@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
-use Content;
 use LogicException;
+use MediaWiki\Content\Content;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -14,10 +14,10 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MimeAnalyzer;
 use MWFileProps;
 use UploadBase;
 use Wikimedia\Assert\PreconditionException;
+use Wikimedia\Mime\MimeAnalyzer;
 use WikiPage;
 
 /**

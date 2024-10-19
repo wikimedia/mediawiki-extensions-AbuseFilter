@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
-use BagOStuff;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Config\ServiceOptions;
@@ -26,6 +25,7 @@ use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityUtils;
 use MessageLocalizer;
 use Psr\Log\LoggerInterface;
+use Wikimedia\ObjectCache\BagOStuff;
 
 class ConsequencesFactory {
 	public const SERVICE_NAME = 'AbuseFilterConsequencesFactory';
