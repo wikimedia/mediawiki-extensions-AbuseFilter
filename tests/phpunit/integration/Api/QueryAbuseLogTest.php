@@ -32,7 +32,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->addToAssertionCount( 1 );
 	}
 
-	public function testProtectedVariableValueAcces() {
+	public function testProtectedVariableValueAccess() {
 		// Add filter to query for
 		$filter = [
 			'id' => '1',
@@ -54,14 +54,24 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->createFilter( $filter );
 
 		// Insert a hit on the filter
-		AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
+		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
+		$abuseFilterLoggerFactory->newLogger(
 			$this->getExistingTestPage()->getTitle(),
 			$this->getTestUser()->getUser(),
 			VariableHolder::newFromArray( [
 				'action' => 'edit',
 				'user_unnamed_ip' => '1.2.3.4',
 				'user_name' => 'User1',
-				] )
+			] )
+		)->addLogEntries( [ 1 => [ 'warn' ] ] );
+		$abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$this->getTestUser()->getUser(),
+			VariableHolder::newFromArray( [
+				'action' => 'autocreateaccount',
+				'user_unnamed_ip' => '1.2.3.4',
+				'accountname' => 'User1',
+			] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 
 		// Update afl_ip to a known value that can be used when it's reconstructed in the variable holder
@@ -95,10 +105,13 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$result = $this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'abuselog',
-			'aflprop' => 'details'
+			'aflprop' => 'details',
+			'afldir' => 'older',
 		], null, null, $authorityCanViewProtectedVar );
 		$result = $result[0]['query']['abuselog'];
-		$this->assertSame( '', $result[0]['details']['user_unnamed_ip'] );
+		foreach ( $result as $row ) {
+			$this->assertSame( '', $row['details']['user_unnamed_ip'], 'IP is redacted' );
+		}
 
 		// Enable the preference for the user
 		$userOptions = new StaticUserOptionsLookup(
@@ -119,12 +132,20 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$result = $this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'abuselog',
-			'aflprop' => 'details'
+			'aflprop' => 'details',
+			'afldir' => 'older',
 		], null, null, $authorityCanViewProtectedVar );
 		$result = $result[0]['query']['abuselog'];
-		$this->assertSame( '1.2.3.4', $result[0]['details']['user_unnamed_ip'] );
-
-		$this->resetServices();
+		foreach ( $result as $row ) {
+			$this->assertSame( '1.2.3.4', $row['details']['user_unnamed_ip'] );
+			if ( isset( $row['details']['accountname'] ) ) {
+				$this->assertSame( 'User1', $row['details']['accountname'] );
+				$this->assertArrayNotHasKey( 'user_name', $row['details'] );
+			} else {
+				$this->assertSame( 'User1', $row['details']['user_name'] );
+				$this->assertArrayNotHasKey( 'accountname', $row['details'] );
+			}
+		}
 	}
 
 	/**

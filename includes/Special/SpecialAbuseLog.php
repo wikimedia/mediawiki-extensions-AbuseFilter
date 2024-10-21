@@ -839,7 +839,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue(
 				$userAuthority->getUser(),
-				$varsArray['user_name']
+				$varsArray['user_name'] ?? $varsArray['accountname']
 			);
 		}
 
