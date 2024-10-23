@@ -270,7 +270,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$actions_taken,
 				$escaped_comments,
 				// Passing $7 to 'abusefilter-log-entry' will do nothing, as it's not used.
-				$diffLink
+				$diffLink ?: ''
 			)->params( $row->afl_user_text )->parse();
 		}
 
