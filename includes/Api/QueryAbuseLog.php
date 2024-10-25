@@ -50,36 +50,16 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class QueryAbuseLog extends ApiQueryBase {
 
-	/** @var FilterLookup */
-	private $afFilterLookup;
-
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
-
-	/** @var VariablesBlobStore */
-	private $afVariablesBlobStore;
-
-	/** @var VariablesManager */
-	private $afVariablesManager;
-
-	/** @var UserFactory */
-	private $userFactory;
-
+	private FilterLookup $afFilterLookup;
+	private AbuseFilterPermissionManager $afPermManager;
+	private VariablesBlobStore $afVariablesBlobStore;
+	private VariablesManager $afVariablesManager;
+	private UserFactory $userFactory;
 	private AbuseLoggerFactory $abuseLoggerFactory;
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 * @param FilterLookup $afFilterLookup
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param VariablesBlobStore $afVariablesBlobStore
-	 * @param VariablesManager $afVariablesManager
-	 * @param UserFactory $userFactory
-	 * @param AbuseLoggerFactory $abuseLoggerFactory
-	 */
 	public function __construct(
 		ApiQuery $query,
-		$moduleName,
+		string $moduleName,
 		FilterLookup $afFilterLookup,
 		AbuseFilterPermissionManager $afPermManager,
 		VariablesBlobStore $afVariablesBlobStore,

@@ -22,29 +22,14 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class CheckMatch extends ApiBase {
 
-	/** @var RuleCheckerFactory */
-	private $ruleCheckerFactory;
+	private RuleCheckerFactory $ruleCheckerFactory;
+	private AbuseFilterPermissionManager $afPermManager;
+	private VariablesBlobStore $afVariablesBlobStore;
+	private VariableGeneratorFactory $afVariableGeneratorFactory;
 
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
-
-	/** @var VariablesBlobStore */
-	private $afVariablesBlobStore;
-
-	/** @var VariableGeneratorFactory */
-	private $afVariableGeneratorFactory;
-
-	/**
-	 * @param ApiMain $main
-	 * @param string $action
-	 * @param RuleCheckerFactory $ruleCheckerFactory
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param VariablesBlobStore $afVariablesBlobStore
-	 * @param VariableGeneratorFactory $afVariableGeneratorFactory
-	 */
 	public function __construct(
 		ApiMain $main,
-		$action,
+		string $action,
 		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		VariablesBlobStore $afVariablesBlobStore,

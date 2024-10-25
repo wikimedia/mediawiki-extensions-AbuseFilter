@@ -32,17 +32,11 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class AbuseLogPrivateDetails extends ApiBase {
 
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
+	private AbuseFilterPermissionManager $afPermManager;
 
-	/**
-	 * @param ApiMain $main
-	 * @param string $action
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 */
 	public function __construct(
 		ApiMain $main,
-		$action,
+		string $action,
 		AbuseFilterPermissionManager $afPermManager
 	) {
 		parent::__construct( $main, $action );

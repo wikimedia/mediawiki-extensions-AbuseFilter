@@ -39,17 +39,11 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class QueryAbuseFilters extends ApiQueryBase {
 
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
+	private AbuseFilterPermissionManager $afPermManager;
 
-	/**
-	 * @param ApiQuery $query
-	 * @param string $moduleName
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 */
 	public function __construct(
 		ApiQuery $query,
-		$moduleName,
+		string $moduleName,
 		AbuseFilterPermissionManager $afPermManager
 	) {
 		parent::__construct( $query, $moduleName, 'abf' );
