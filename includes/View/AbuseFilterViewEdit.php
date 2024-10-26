@@ -373,9 +373,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Hit count display
-		if ( $filterObj->getHitCount() !== null && $this->afPermManager->canSeeLogDetails( $user ) ) {
+		$hitCount = $filterObj->getHitCount();
+		if ( $hitCount !== null && $this->afPermManager->canSeeLogDetails( $user ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
-				->numParams( $filterObj->getHitCount() )->text();
+				->numParams( $hitCount )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
 				SpecialPage::getTitleFor( 'AbuseLog' ),
 				$count_display,
