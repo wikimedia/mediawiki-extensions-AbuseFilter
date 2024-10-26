@@ -26,6 +26,9 @@ class CheckMatchTest extends ApiTestCase {
 	use AbuseFilterApiTestTrait;
 	use MockAuthorityTrait;
 
+	/** @inheritDoc */
+	protected $tablesUsed = [ 'abuse_filter_log' ];
+
 	/**
 	 * @covers ::execute
 	 */
