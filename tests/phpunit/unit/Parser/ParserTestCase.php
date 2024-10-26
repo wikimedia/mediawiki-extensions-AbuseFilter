@@ -45,7 +45,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 	 * @param LoggerInterface|null $logger
 	 * @return FilterEvaluator
 	 */
-	protected function getParser( LoggerInterface $logger = null ) {
+	protected function getParser( ?LoggerInterface $logger = null ) {
 		// We're not interested in caching or logging; tests should call respectively setCache
 		// and setLogger if they want to test any of those.
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );

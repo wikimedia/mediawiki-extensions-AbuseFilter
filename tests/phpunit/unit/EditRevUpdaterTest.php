@@ -42,9 +42,9 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 	 * @return EditRevUpdater
 	 */
 	private function getUpdater(
-		IDatabase $localDB = null,
-		IDatabase $centralDB = null,
-		RevisionLookup $revLookup = null
+		?IDatabase $localDB = null,
+		?IDatabase $centralDB = null,
+		?RevisionLookup $revLookup = null
 	): EditRevUpdater {
 		$lbFactory = $this->createMock( LBFactory::class );
 		$lbFactory->method( 'getPrimaryDatabase' )

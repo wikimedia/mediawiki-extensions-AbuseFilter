@@ -41,7 +41,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator
 	 * @dataProvider provideRCRowTypes
 	 */
-	public function testGetVarsFromRCRow( string $type, string $action, UserIdentity $userIdentity = null ) {
+	public function testGetVarsFromRCRow( string $type, string $action, ?UserIdentity $userIdentity = null ) {
 		if ( $userIdentity && !$userIdentity->isRegistered() ) {
 			// If we are testing anonymous user, make sure we disable temp accounts.
 			$this->disableAutoCreateTempUser();

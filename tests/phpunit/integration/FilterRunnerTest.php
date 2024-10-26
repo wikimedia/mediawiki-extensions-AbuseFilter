@@ -37,9 +37,9 @@ class FilterRunnerTest extends MediaWikiIntegrationTestCase {
 	 * @return FilterRunner
 	 */
 	private function getRunner(
-		ChangeTagger $changeTagger = null,
-		EditStashCache $cache = null,
-		VariableHolder $vars = null,
+		?ChangeTagger $changeTagger = null,
+		?EditStashCache $cache = null,
+		?VariableHolder $vars = null,
 		$group = 'default'
 	): FilterRunner {
 		$opts = new ServiceOptions(

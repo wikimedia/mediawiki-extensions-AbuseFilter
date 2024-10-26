@@ -93,7 +93,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		$this->setService( ConsequencesLookup::SERVICE_NAME, $consequencesLookup );
 	}
 
-	private function setAbuseLoggerFactoryWithEavesdrop( VariableHolder &$varHolder = null ): void {
+	private function setAbuseLoggerFactoryWithEavesdrop( ?VariableHolder &$varHolder = null ): void {
 		$factory = $this->createMock( AbuseLoggerFactory::class );
 		$factory->method( 'newLogger' )
 			->willReturnCallback( function ( $title, $user, $vars ) use ( &$varHolder ) {
@@ -298,7 +298,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 	 * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
 	 */
 	public function testEditVariables(
-		array $expected, array $params, Content $oldContent = null
+		array $expected, array $params, ?Content $oldContent = null
 	) {
 		$time = time();
 		MWTimestamp::setFakeTime( $time );
@@ -386,7 +386,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		array $expected,
 		string $accountName = 'New account',
 		bool $autocreate = false,
-		string $creatorName = null
+		?string $creatorName = null
 	) {
 		$varHolder = null;
 		$this->prepareServices();

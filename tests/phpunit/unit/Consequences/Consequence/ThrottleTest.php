@@ -29,12 +29,12 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 
 	private function getThrottle(
 		array $throttleParams = [],
-		BagOStuff $cache = null,
+		?BagOStuff $cache = null,
 		bool $globalFilter = false,
-		UserIdentity $user = null,
-		Title $title = null,
-		UserEditTracker $editTracker = null,
-		string $ip = null
+		?UserIdentity $user = null,
+		?Title $title = null,
+		?UserEditTracker $editTracker = null,
+		?string $ip = null
 	) {
 		$specifier = new ActionSpecifier(
 			'some-action',
@@ -95,7 +95,7 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideThrottle
 	 */
-	public function testExecute( Throttle $throttle, bool $shouldDisable, MockObject $cache = null ) {
+	public function testExecute( Throttle $throttle, bool $shouldDisable, ?MockObject $cache = null ) {
 		if ( $cache ) {
 			/** @var Throttle $wrapper */
 			$wrapper = TestingAccessWrapper::newFromObject( $throttle );
@@ -115,7 +115,7 @@ class ThrottleTest extends MediaWikiUnitTestCase {
 		string $ip,
 		Title $title,
 		UserIdentity $user,
-		UserEditTracker $editTracker = null
+		?UserEditTracker $editTracker = null
 	) {
 		$throttle = $this->getThrottle( [], null, false, $user, $title, $editTracker, $ip );
 		/** @var Throttle $throttleWrapper */

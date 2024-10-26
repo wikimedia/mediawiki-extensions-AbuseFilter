@@ -53,7 +53,7 @@ class RCVariableGenerator extends VariableGenerator {
 		WikiPageFactory $wikiPageFactory,
 		RecentChange $rc,
 		User $contextUser,
-		VariableHolder $vars = null
+		?VariableHolder $vars = null
 	) {
 		parent::__construct( $hookRunner, $userFactory, $vars );
 

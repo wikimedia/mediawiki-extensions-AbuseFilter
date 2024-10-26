@@ -34,7 +34,7 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		'matches' => 0,
 	];
 
-	private function getFilterProfiler( LoggerInterface $logger = null ): FilterProfiler {
+	private function getFilterProfiler( ?LoggerInterface $logger = null ): FilterProfiler {
 		$options = [
 			'AbuseFilterConditionLimit' => 1000,
 			'AbuseFilterSlowFilterRuntimeLimit' => 500,

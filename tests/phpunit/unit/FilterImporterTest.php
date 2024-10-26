@@ -40,9 +40,9 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 	 * @return FilterImporter
 	 */
 	private function getImporter(
-		array $groups = null,
-		bool $isCentral = null,
-		array $actions = null
+		?array $groups = null,
+		?bool $isCentral = null,
+		?array $actions = null
 	): FilterImporter {
 		$actions = array_fill_keys( $actions ?? [ 'warn', 'disallow', 'block' ], true );
 		$registry = new ConsequencesRegistry(

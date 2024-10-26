@@ -24,8 +24,8 @@ use Wikimedia\TestingAccessWrapper;
 class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 	private function getStore(
-		BlobStoreFactory $blobStoreFactory = null,
-		BlobStore $blobStore = null
+		?BlobStoreFactory $blobStoreFactory = null,
+		?BlobStore $blobStore = null
 	): VariablesBlobStore {
 		$manager = $this->createMock( VariablesManager::class );
 		$manager->method( 'dumpAllVars' )->willReturnCallback( static function ( VariableHolder $holder ) {
@@ -180,7 +180,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideVariables
 	 */
-	public function testRoundTrip( array $toStore, array $expected = null ) {
+	public function testRoundTrip( array $toStore, ?array $expected = null ) {
 		$blobStore = $this->getBlobStore();
 		$blobStoreFactory = $this->createMock( BlobStoreFactory::class );
 		$blobStoreFactory->method( 'newBlobStore' )->willReturn( $blobStore );

@@ -22,7 +22,7 @@ trait AbuseFilterCreateAccountTestTrait {
 	protected function createAccount(
 		string $accountName,
 		bool $autocreate = false,
-		User $creator = null
+		?User $creator = null
 	): StatusValue {
 		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
 		$user = $userFactory->newFromName( $accountName );

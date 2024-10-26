@@ -60,7 +60,7 @@ class RunVariableGenerator extends VariableGenerator {
 		WikiPageFactory $wikiPageFactory,
 		User $user,
 		Title $title,
-		VariableHolder $vars = null
+		?VariableHolder $vars = null
 	) {
 		parent::__construct( $hookRunner, $userFactory, $vars );
 		$this->textExtractor = $textExtractor;
@@ -152,7 +152,7 @@ class RunVariableGenerator extends VariableGenerator {
 		Content $newcontent,
 		string $text,
 		string $oldtext,
-		Content $oldcontent = null
+		?Content $oldcontent = null
 	): VariableHolder {
 		$this->addUserVars( $this->user )
 			->addTitleVars( $this->title, 'page' );
