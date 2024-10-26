@@ -216,7 +216,7 @@ class FilterEvaluator {
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		Equivset $equivset,
 		int $conditionsLimit,
-		VariableHolder $vars = null
+		?VariableHolder $vars = null
 	) {
 		$this->contLang = $contLang;
 		$this->cache = $cache;

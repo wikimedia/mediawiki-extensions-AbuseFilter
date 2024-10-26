@@ -21,7 +21,7 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		'2' => 42,
 	];
 
-	private function getFilterLookup( int $userID = null ): FilterLookup {
+	private function getFilterLookup( ?int $userID = null ): FilterLookup {
 		$lookup = $this->createMock( FilterLookup::class );
 		$lookup->method( 'getFilter' )
 			->willReturnCallback( function ( $filter, $global ) use ( $userID ) {

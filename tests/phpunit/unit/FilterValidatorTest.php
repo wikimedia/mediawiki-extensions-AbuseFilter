@@ -37,8 +37,8 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	 * @return FilterValidator
 	 */
 	private function getFilterValidator(
-		AbuseFilterPermissionManager $permissionManager = null,
-		FilterEvaluator $ruleChecker = null,
+		?AbuseFilterPermissionManager $permissionManager = null,
+		?FilterEvaluator $ruleChecker = null,
 		array $restrictions = [],
 		array $validFilterGroups = [ 'default' ]
 	): FilterValidator {
@@ -481,8 +481,8 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	public function testCheckAll(
 		AbstractFilter $newFilter,
 		?string $expectedError,
-		AbuseFilterPermissionManager $permissionManager = null,
-		FilterEvaluator $ruleChecker = null,
+		?AbuseFilterPermissionManager $permissionManager = null,
+		?FilterEvaluator $ruleChecker = null,
 		array $restrictions = [],
 		bool $isFatalError = false
 	) {

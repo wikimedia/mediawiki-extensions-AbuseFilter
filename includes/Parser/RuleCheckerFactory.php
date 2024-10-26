@@ -72,7 +72,7 @@ class RuleCheckerFactory {
 	 * @param VariableHolder|null $vars
 	 * @return FilterEvaluator
 	 */
-	public function newRuleChecker( VariableHolder $vars = null ): FilterEvaluator {
+	public function newRuleChecker( ?VariableHolder $vars = null ): FilterEvaluator {
 		return new FilterEvaluator(
 			$this->contLang,
 			$this->cache,

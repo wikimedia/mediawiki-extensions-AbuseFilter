@@ -34,7 +34,7 @@ class VariableGenerator {
 	public function __construct(
 		AbuseFilterHookRunner $hookRunner,
 		UserFactory $userFactory,
-		VariableHolder $vars = null
+		?VariableHolder $vars = null
 	) {
 		$this->hookRunner = $hookRunner;
 		$this->userFactory = $userFactory;
@@ -56,7 +56,7 @@ class VariableGenerator {
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addGenericVars( RecentChange $rc = null ): self {
+	public function addGenericVars( ?RecentChange $rc = null ): self {
 		$timestamp = $rc
 			? MWTimestamp::convert( TS_UNIX, $rc->getAttribute( 'rc_timestamp' ) )
 			: wfTimestamp( TS_UNIX );
@@ -76,7 +76,7 @@ class VariableGenerator {
 	 *   this is the entry. Null if it's for the current action being filtered.
 	 * @return $this For chaining
 	 */
-	public function addUserVars( UserIdentity $userIdentity, RecentChange $rc = null ): self {
+	public function addUserVars( UserIdentity $userIdentity, ?RecentChange $rc = null ): self {
 		$asOf = $rc ? $rc->getAttribute( 'rc_timestamp' ) : wfTimestampNow();
 		$user = $this->userFactory->newFromUserIdentity( $userIdentity );
 
@@ -148,7 +148,7 @@ class VariableGenerator {
 	public function addTitleVars(
 		Title $title,
 		string $prefix,
-		RecentChange $rc = null
+		?RecentChange $rc = null
 	): self {
 		if ( $rc && $rc->getAttribute( 'rc_type' ) == RC_NEW ) {
 			$this->vars->setVar( $prefix . '_id', 0 );
@@ -239,7 +239,7 @@ class VariableGenerator {
 		WikiPage $page,
 		UserIdentity $userIdentity,
 		bool $forFilter = true,
-		PreparedUpdate $update = null
+		?PreparedUpdate $update = null
 	): self {
 		$this->addDerivedEditVars();
 

@@ -43,9 +43,9 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 	 * @return FilterLookup
 	 */
 	private function getLookup(
-		IDatabase $db = null,
+		?IDatabase $db = null,
 		$centralDB = false,
-		WANObjectCache $cache = null,
+		?WANObjectCache $cache = null,
 		bool $filterIsCentral = false
 	): FilterLookup {
 		$lb = $this->createMock( ILoadBalancer::class );
