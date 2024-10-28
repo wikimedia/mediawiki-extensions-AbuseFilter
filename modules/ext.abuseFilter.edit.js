@@ -560,7 +560,7 @@
 
 			var cbEnabled = OO.ui.infuse( $( '#wpFilterEnabled' ) );
 			var cbDeleted = OO.ui.infuse( $( '#wpFilterDeleted' ) );
-			OO.ui.infuse( $( '#wpFilterDeletedLabel' ) );
+
 			cbEnabled.on( 'change',
 				function () {
 					cbDeleted.setDisabled( cbEnabled.isSelected() );
