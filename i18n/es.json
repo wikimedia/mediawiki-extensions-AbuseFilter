@@ -281,6 +281,7 @@
 	"abusefilter-edit-deleted": "Marcar como eliminado",
 	"abusefilter-edit-hidden": "Ocultar los detalles de este filtro al público",
 	"abusefilter-edit-protected": "Entiendo que los detalles de este filtro serán ocultados de usuarios que no pueden ver [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables variables protegidos]",
+	"abusefilter-edit-protected-variable-already-protected": "Los detalles de este filtro están ocultos para los usuarios que no pueden ver variables protegidos",
 	"abusefilter-edit-protected-help-message": "Este acción será permanente y no se puede deshacer",
 	"abusefilter-edit-global": "Filtro global",
 	"abusefilter-edit-rules": "Condiciones:",
