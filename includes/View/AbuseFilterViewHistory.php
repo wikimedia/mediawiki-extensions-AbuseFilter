@@ -74,16 +74,17 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() );
 
 		if ( $filter ) {
+			$filterObj = null;
 			try {
 				$filterObj = $this->filterLookup->getFilter( $filter, false );
 			} catch ( FilterNotFoundException $_ ) {
 				$filter = null;
 			}
-			if ( isset( $filterObj ) && $filterObj->isHidden() && !$canViewPrivate ) {
+			if ( $filterObj && $filterObj->isHidden() && !$canViewPrivate ) {
 				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
 				return;
 			}
-			if ( isset( $filterObj ) && $filterObj->isProtected() && !$canViewProtectedVars ) {
+			if ( $filterObj && $filterObj->isProtected() && !$canViewProtectedVars ) {
 				$out->addWikiMsg( 'abusefilter-history-error-protected' );
 				return;
 			}
