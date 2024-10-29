@@ -463,6 +463,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$message = "abusefilter-edit-$checkboxId";
 			// isEnabled(), isDeleted(), isHidden(), isProtected(), isGlobal()
 			$method = 'is' . ucfirst( $checkboxId );
+			// wpFilterEnabled, wpFilterDeleted, wpFilterHidden, wpFilterProtected, wpFilterGlobal
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
 
 			$checkboxAttribs = [
@@ -507,6 +508,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			if ( $checkboxId === 'deleted' || $checkboxId === 'enabled' ) {
 				$checkboxAttribs['infusable'] = true;
 				if ( $checkboxId === 'deleted' ) {
+					// wpFilterDeletedLabel
 					$labelAttribs['id'] = $postVar . 'Label';
 					$labelAttribs['infusable'] = true;
 				}
