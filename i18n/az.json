@@ -293,7 +293,7 @@
 	"abusefilter-edit-deleting-enabled": "Siz aktiv filtri silinmiş kimi qeyd edə bilməzsiniz.",
 	"abusefilter-edit-restricted": "Siz bu filtri redaktə edə bilməzsiniz, çünki o, bir və ya bir neçə məhdudlaşdırılmış əməliyyatdan ibarətdir.\nDəyişiklik etmək üçün məhdudlaşdırılmış əməliyyatlar əlavə etmək icazəsi olan istifadəçidən xahiş edin.",
 	"abusefilter-edit-protected-variable": "Bu süzgəci yadda saxlaya bilməzsiniz, çünki aşağıdakı dəyişənlərdən istifadə etmək icazəniz yoxdur: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Süzgəc yadda saxlanılmadı, çünki o, aşağıdakı [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|qorunan dəyişəndən|qorunan dəyişənlərdən}}] istifadə edir: $1. Bu filtrin detallarının mühafizəli dəyişənləri görə bilməyən istifadəçilərdən gizlədiləcəyini başa düşdüyünüzə əmin olun.",
+	"abusefilter-edit-protected-variable-not-protected": "Süzgəc yadda saxlanılmadı, çünki o, aşağıdakı [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|qorunan dəyişəndən|qorunan dəyişənlərdən}}] istifadə edir: $1. Zəhmət olmasa, qorunan dəyişənlərin istifadəsini aktiv edin. Bu hərəkət qorunan dəyişənləri görə bilməyən istifadəçilərdən filtrin təfərrüatlarını həmişəlik gizlədəcək.",
 	"abusefilter-edit-viewhistory": "Bu süzgəcin tarixçəsinə bax",
 	"abusefilter-edit-history": "Tarixçə:",
 	"abusefilter-edit-check": "Sintaksisi yoxla",
