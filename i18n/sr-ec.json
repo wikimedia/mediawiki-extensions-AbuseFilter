@@ -211,7 +211,7 @@
 	"abusefilter-edit-enabled": "Омогући филтер",
 	"abusefilter-edit-deleted": "Означи избрисаним",
 	"abusefilter-edit-hidden": "Сакриј детаље овог филтера из јавног приказа",
-	"abusefilter-edit-protected-help-message": "Ова радња је трајна и не може се поништити",
+	"abusefilter-edit-protected-help-message": "Детаљи овог филтера ће бити скривени од корисника који не могу видети заштићене променљиве. Ова радња је трајна и не може се поништити",
 	"abusefilter-edit-global": "Глобални филтер",
 	"abusefilter-edit-rules": "Услови:",
 	"abusefilter-edit-field-conditions": "услови",
