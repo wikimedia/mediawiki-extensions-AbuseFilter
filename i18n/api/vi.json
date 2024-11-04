@@ -6,7 +6,8 @@
 			"NguoiDungKhongDinhDanh",
 			"Nguyenphutrong2",
 			"Pisceskaze",
-			"NguyenHung"
+			"NguyenHung",
+			"SongNgu.xyz"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Đánh dấu vào đây để kiểm tra xem nếu một AbuseFilter (bộ lọc lạm dụng) có khớp với tập hợp các biến hay không, trình biên tập đã ghi vào sự kiện của AbuseFilter.\n\nvars, rcid hoặc logid được yêu cầu tuy nhiên chỉ một trong số đó có thể sẽ được dùng.",
