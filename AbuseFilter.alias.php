@@ -278,6 +278,7 @@ $specialPageAliases['ja'] = [
 $specialPageAliases['ko'] = [
 	'AbuseLog' => [ '편집필터기록', '부정행위기록' ],
 	'AbuseFilter' => [ '편집필터', '부정행위필터' ],
+	'BlockedExternalDomains' => [ '차단된외부도메인' ],
 ];
 
 /** Colognian (Ripoarisch) */
