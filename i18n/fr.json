@@ -58,7 +58,10 @@
 			"U.T.",
 			"LD",
 			"Qwrop",
-			"SleaY"
+			"SleaY",
+			"Jules*",
+			"Mahabarata",
+			"Terio legale"
 		]
 	},
 	"abusefilter-desc": "Applique des heuristiques automatiques aux modifications",
@@ -305,7 +308,7 @@
 	"abusefilter-edit-disallow-other-label": "Nom de la page d’un autre message :\n: ''(sans le préfixe « MediaWiki: »)''",
 	"abusefilter-edit-disallow-actions": "Actions :",
 	"abusefilter-edit-disallow-preview": "Afficher/masquer l’aperçu du message sélectionné",
-	"abusefilter-edit-disallow-edit": "Créer/Modifier le message sélectionné",
+	"abusefilter-edit-disallow-edit": "Créer/modifier le message sélectionné",
 	"abusefilter-edit-tag-tag": "[[Special:Tags|Balises]] à appliquer :",
 	"abusefilter-edit-tag-placeholder": "Ajouter des balises (une par une ou séparées par une virgule)",
 	"abusefilter-edit-tag-hidden-placeholder": "Ajouter des balises (séparées par des virgules)",

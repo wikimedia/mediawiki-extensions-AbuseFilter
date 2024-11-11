@@ -11,7 +11,7 @@
 			"Casserium"
 		]
 	},
-	"abusefilter": "Қиянаттауды сүзгілеу сүзгіш басқармасы",
+	"abusefilter": "Бұзақылықты сүзгілеуді басқару",
 	"abuselog": "Бұзақылық жасауды сүзгілеу журналы",
 	"abusefilter-intro": "Қиянат жасауды сүзгілеу барлық әрекеттерді автоматты түрде сүзгілейтін автоматтандырылған бағдарламалық жасақтама механизмі. Бұл интерфейс нақты сүзгіштердің тізімін көретуде және оларды өзгеруге мүмкіндік береді.",
 	"abusefilter-blocker": "Қиянат жасауды сүзгілеу",
@@ -112,7 +112,7 @@
 	"abusefilter-reautoconfirm-notallowed": "Өздікті құптау статусыңызды қалпына келтіре алмайсыз.",
 	"abusefilter-reautoconfirm-done": "Тіркеліміңіздің өздікті құптау статусы қалпына келтірілді",
 	"abusefilter-status": "Соңғы $1 әрекеттің, $2 ($3) $4 жағдайы жоғарғы шегіне жеткен, оның $5 ($6 %) қазіргі белсендендірілген сүзгіштердің біріне сәйкес келген.",
-	"abusefilter-edit": "Қиянаттауды қақпайлау сүзгіші өңделуде",
+	"abusefilter-edit": "Бұзақылыққа қарсы сүзгіш өңделуде",
 	"abusefilter-edit-subtitle": "$1 сүзгіші өңделуде",
 	"abusefilter-edit-subtitle-new": "Сүзгішті жасау",
 	"abusefilter-edit-status-label": "Статистика:",
@@ -260,7 +260,7 @@
 	"abusefilter-edit-builder-vars-movedfrom-restrictions-create": "Жылжытылатын бастапқы бетті бастаудан қорғау",
 	"abusefilter-edit-builder-vars-old-links": "Өңдемеден кейінгі бет сілтемелері",
 	"abusefilter-filter-log": "Жуықтағы сүзгіш өзгерістері",
-	"abusefilter-history": "#$1 қиянаттауды сүзгілеу сүзгішінің өзгеріс тарихы",
+	"abusefilter-history": "#$1 бұзақылыққа қарсы сүзгішінің өзгеріс тарихы",
 	"abusefilter-history-foruser": "$1 өзгерткендері",
 	"abusefilter-history-hidden": "Жасырылған",
 	"abusefilter-history-enabled": "Қосылған",
