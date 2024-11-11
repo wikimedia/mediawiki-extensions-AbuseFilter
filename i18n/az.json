@@ -13,7 +13,8 @@
 			"Vago",
 			"Vugar 1981",
 			"Wertuose",
-			"Şeyx Şamil"
+			"Şeyx Şamil",
+			"Əkrəm Cəfər"
 		]
 	},
 	"abusefilter-desc": "Redaktələrə avtomatik evristikanı tətbiq edir",
@@ -227,9 +228,9 @@
 	"abusefilter-edit-enabled": "Bu süzgəci aktivləşdir",
 	"abusefilter-edit-deleted": "Silinmiş kimi qeyd et",
 	"abusefilter-edit-hidden": "Bu süzgəcin detallarını adi istifadəçilərdən gizlə",
-	"abusefilter-edit-protected": "Mən başa düşürəm ki, süzgəcin detalları [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables mühafizəli dəyişənləri] görə bilməyən istifadəçilərdən gizlədiləcək.",
+	"abusefilter-edit-protected": "Bu filtr üçün [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables mühafizəli dəyişənlərdən] istifadəni aktivləşdir",
 	"abusefilter-edit-protected-variable-already-protected": "Bu süzgəcin detalları mühafizəli dəyişənləri görə bilməyən istifadəçilərdən gizlədilir",
-	"abusefilter-edit-protected-help-message": "Bu əməliyyat birdəfəlikdir və geri qaytarıla bilməz",
+	"abusefilter-edit-protected-help-message": "Bu filtr haqqındakı məlumatlar mühafizə edilmiş dəyişənləri görə bilməyən istifadəçilərdən gizlənəcək. Bu əməliyyat birdəfəlikdir və geri qaytarıla bilməz.",
 	"abusefilter-edit-global": "Qlobal süzgəc",
 	"abusefilter-edit-rules": "Şərtlər:",
 	"abusefilter-edit-field-conditions": "şərtlər",
