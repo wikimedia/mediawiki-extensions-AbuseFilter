@@ -3,10 +3,12 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use ManualLogEntry;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserIdentity;
+use Profiler;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Assert\Assert;
 use Wikimedia\Rdbms\DBError;
@@ -104,13 +106,21 @@ class ProtectedVarsAccessLogger {
 		if ( !$timestamp ) {
 			$timestamp = (int)wfTimestamp();
 		}
-		$this->log(
-			$performer,
-			$target,
-			self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE,
-			true,
-			$timestamp
-		);
+		// Create the log on POSTSEND, as this can be called in a context of a GET request through the
+		// QueryAbuseLog API (T379083).
+		DeferredUpdates::addCallableUpdate( function () use ( $performer, $target, $timestamp ) {
+			// We need to create a log entry and PostSend-GET expects no writes are performed, so we need to
+			// silence the warnings created by this.
+			$trxProfiler = Profiler::instance()->getTransactionProfiler();
+			$scope = $trxProfiler->silenceForScope( $trxProfiler::EXPECTATION_REPLICAS_ONLY );
+			$this->log(
+				$performer,
+				$target,
+				self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE,
+				true,
+				$timestamp
+			);
+		} );
 	}
 
 	/**

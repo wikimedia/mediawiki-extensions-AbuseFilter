@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use Generator;
 use MediaWiki\CheckUser\Logging\TemporaryAccountLogger;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -131,6 +132,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		AbuseFilterServices::getAbuseLoggerFactory()
 			->getProtectedVarsAccessLogger()
 			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+		DeferredUpdates::doUpdates();
 
 		// Assert that the action wasn't inserted into CheckUsers' temp account logging table
 		$this->assertSame(
@@ -171,6 +173,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		AbuseFilterServices::getAbuseLoggerFactory()
 			->getProtectedVarsAccessLogger()
 			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+		DeferredUpdates::doUpdates();
 
 		// Assert that the action only inserted once into CheckUsers' temp account logging table
 		$this->assertSame(
