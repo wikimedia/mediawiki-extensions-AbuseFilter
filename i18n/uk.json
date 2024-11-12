@@ -654,5 +654,10 @@
 	"action-abusefilter-bypass-blocked-external-domains": "обхід заблокованого зовнішнього домену",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]].",
 	"right-abusefilter-access-protected-vars": "Перегляд та створення фільтрів, які використовують захищені змінні",
-	"action-abusefilter-access-protected-vars": "перегляд та створення фільтрів, які використовують захищені змінні"
+	"action-abusefilter-access-protected-vars": "перегляд та створення фільтрів, які використовують захищені змінні",
+	"abusefilter-protected-vars-log-name": "Журнал захищених змінних фільтра зловживань",
+	"abusefilter-protected-vars-log-header": "Це журнал наступних дій:\n# Перегляд захищених змінних у деталях журналу\n# Зміна рівнів доступу користувача для перегляду захищених змінних",
+	"log-action-filter-abusefilter-protected-vars": "Тип дії:",
+	"log-action-filter-abusefilter-protected-vars-change-access": "Зміна доступу",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Перегляд значень захищених змінних"
 }
