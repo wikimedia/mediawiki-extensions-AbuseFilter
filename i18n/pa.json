@@ -83,7 +83,7 @@
 	"abusefilter-edit-builder-op-bool-or": "ਜਾਂ ($1)",
 	"abusefilter-edit-builder-group-misc": "ਫੁਟਕਲ",
 	"abusefilter-edit-builder-misc-in": "ਤੰਦ ($1) ਵਿਚ ਮੌਜੂਦ",
-	"abusefilter-edit-builder-misc-like": "ਨਮੂਨੇ (like) ਨਾਲ਼ ਮੇਲ ਖਾਂਦਾ",
+	"abusefilter-edit-builder-misc-like": "ਨਮੂਨੇ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ($1)",
 	"abusefilter-edit-builder-funcs-norm": "ਆਮ ਬਣਾਓ ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "ਸੰਪਾਦਨ ਵਿੱਚ ਜੋੜੀਆਂ ਗਈਆਂ ਲਕੀਰਾਂ ($1)",
 	"abusefilter-edit-builder-vars-delta": "ਸੋਧ ਵਿੱਚ ਅਕਾਰ ਤਬਦੀਲੀ ($1)",

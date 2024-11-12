@@ -1,7 +1,6 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80",
 			"H78c67c",
 			"Hello903hello",
 			"Winston Sung",
@@ -131,6 +130,7 @@
 	"abusefilter-edit-enabled": "開呢個過濾器",
 	"abusefilter-edit-deleted": "標示做刪咗",
 	"abusefilter-edit-hidden": "隱藏呢個過濾器響公共顯示嘅細節",
+	"abusefilter-edit-protected-variable-already-protected": "睇唔到受保護變數嘅用戶睇唔到呢個過濾器嘅細節",
 	"abusefilter-edit-global": "全域過濾器",
 	"abusefilter-edit-rules": "條件:",
 	"abusefilter-edit-field-conditions": "條件",

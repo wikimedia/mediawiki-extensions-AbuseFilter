@@ -2,7 +2,6 @@
 	"@metadata": {
 		"authors": [
 			"Airwolf",
-			"Amire80",
 			"Ankam",
 			"Beau",
 			"BeginaFelicysym",
@@ -67,6 +66,7 @@
 	"right-abusefilter-hide-log": "Ukrywanie wpisów w rejestrze nadużyć",
 	"right-abusefilter-hidden-log": "Podgląd ukrytych wpisów w rejestrze nadużyć",
 	"right-abusefilter-modify-global": "Tworzenie lub modyfikowanie globalnych filtrów nadużyć",
+	"right-abusefilter-protected-vars-log": "Wyświetlanie rejestrów związanych z dostępem do wartości chronionych zmiennych",
 	"action-abusefilter-modify": "modyfikowania filtru nadużyć",
 	"action-abusefilter-view": "przeglądania filtrów nadużyć",
 	"action-abusefilter-log": "przeglądania rejestru nadużyć",
@@ -78,9 +78,11 @@
 	"action-abusefilter-view-private": "wyświetlenia prywatnych filtrów nadużyć",
 	"action-abusefilter-log-private": "wyświetlania rejestrów filtrów nadużyć oznaczonych jako prywatne",
 	"action-abusefilter-log-protected": "wyświetlania rejestru filtrów oznaczonych jako chronione",
+	"action-abusefilter-log-protected-access": "wyświetlania rejestrów z ujawnionymi chronionymi zmiennymi, bez włączania tego w preferencjach",
 	"action-abusefilter-hide-log": "ukrywania wpisów w rejestrze nadużyć",
 	"action-abusefilter-hidden-log": "podglądu ukrytych wpisów w rejestrze nadużyć",
 	"action-abusefilter-modify-global": "tworzenia lub modyfikowania globalnych filtrów nadużyć",
+	"action-abusefilter-protected-vars-log": "wyświetlania rejestrów, które ujawniają chronione zmienne",
 	"abusefilter-log-summary": "Rejestr zawierający spis wszystkich działań wychwyconych przez filtry.",
 	"abusefilter-log-search": "Szukaj w rejestrze nadużyć",
 	"abusefilter-log-search-user": "Użytkownik:",
@@ -588,6 +590,7 @@
 	"abusefilter-examine-notfound": "Żądana zmiana nie została odnaleziona.",
 	"abusefilter-examine-incompatible": "Żądana zmiana nie jest obsługiwana przez filtr nadużyć",
 	"abusefilter-examine-noresults": "Nie znaleziono wyników dla zadanych przez Ciebie parametrów wyszukiwania.",
+	"abusefilter-examine-protected-vars-permission": "Aby wyświetlać rejestry, zawierające chronione zmienne, wyraź odpowiednią zgodę w [[Special:Preferences|preferencjach]].",
 	"abusefilter-topnav": "'''Nawigacja po filtrze nadużyć'''",
 	"abusefilter-topnav-home": "Główna",
 	"abusefilter-topnav-recentchanges": "Ostatnie zmiany filtrów",
@@ -661,5 +664,15 @@
 	"action-abusefilter-bypass-blocked-external-domains": "omijania blokady zewnętrznych domen",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Dodawanie oraz modyfikowanie zablokowanych zewnętrznych domen musi odbywać się poprzez [[Special:BlockedExternalDomains|stronę specjalną]].",
 	"right-abusefilter-access-protected-vars": "Wyświetlanie i tworzenie filtrów, korzystających z chronionych zmiennych",
-	"action-abusefilter-access-protected-vars": "wyświetlania i tworzenia filtrów, korzystających z chronionych zmiennych"
+	"action-abusefilter-access-protected-vars": "wyświetlania i tworzenia filtrów, korzystających z chronionych zmiennych",
+	"prefs-abusefilter": "Filtr nadużyć",
+	"abusefilter-preference-protected-vars-view-agreement": "Włącz ujawnianie adresów IP dla kont tymczasowych w filtrze nadużyć",
+	"abusefilter-protected-vars-log-name": "Rejestr dostępu do chronionych zmiennych filtra nadużyć",
+	"abusefilter-protected-vars-log-header": "Ten rejestr dokumentuje:\n# Wyświetlanie chronionych zmiennych w szczegółach wpisu w rejestrze nadużyć\n# Zmianę poziomu dostępu użytkownika do chronionych zmiennych",
+	"logentry-abusefilter-protected-vars-change-access-enable": "$1 {{GENDER:$2|włączył|włączyła|włączył(-a)}} sobie dostęp do wyświetlania chronionych zmiennych",
+	"logentry-abusefilter-protected-vars-change-access-disable": "$1 {{GENDER:$2|wyłączył|wyłączyła|wyłączył(-a)}} sobie dostęp do wyświetlania chronionych zmiennych",
+	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|wyświetlił|wyświetliła|wyświetlił(-a)}} chronione zmienne, związane z $3",
+	"log-action-filter-abusefilter-protected-vars": "Typ akcji:",
+	"log-action-filter-abusefilter-protected-vars-change-access": "Zmiana dostępu",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Wyświetlenie wartości chronionych zmiennych"
 }
