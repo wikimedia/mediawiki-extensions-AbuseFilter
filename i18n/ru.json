@@ -640,7 +640,7 @@
 	"abusefilter-invalid-request-noid": "Неверный запрос! Вы должны получить доступ к частным данным журнала через форму на странице сведений о журнале злоупотреблений и указать причину.",
 	"blockedexternaldomains": "Заблокированные внешние домены",
 	"abusefilter-blocked-domains-title": "Заблокированные внешние домены",
-	"abusefilter-blocked-domains-intro": "Внешние ссылки, находящиеся в этом списке будут заблокированы при добавлении на страницу. Список этих доменов можно найти на странице [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-intro": "Внешние ссылки в этом списке будут заблокированы при добавлении на страницу. Список этих доменов можно найти на странице [[MediaWiki:BlockedExternalDomains.json]]. Попытки добавить заблокированные ссылки логируются в [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-add-heading": "Добавить новый заблокированный домен",
 	"abusefilter-blocked-domains-add-explanation": "Здесь вы можете добавить домен в список заблокированных.",
 	"abusefilter-blocked-domains-domain": "Домен для блокировки, например, wikipedia.org",
