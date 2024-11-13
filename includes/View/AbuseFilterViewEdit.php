@@ -26,6 +26,7 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Xml\Xml;
 use OOUI;
+use StatusValue;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\IExpression;
@@ -205,21 +206,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( !$tokenMatches ) {
 			// Token invalid or expired while the page was open, warn to retry
-			$error = Html::warningBox( $this->msg( 'abusefilter-edit-token-not-match' )->parseAsBlock() );
-			$this->buildFilterEditor( $error, $newFilter, $filter, $history_id );
+			$status = StatusValue::newGood();
+			$status->warning( 'abusefilter-edit-token-not-match' );
+			$this->buildFilterEditor( $status, $newFilter, $filter, $history_id );
 			return;
 		}
 
 		$status = $this->filterStore->saveFilter( $user, $filter, $newFilter, $origFilter );
 
 		if ( !$status->isGood() ) {
-			$msg = $status->getMessages()[0];
 			if ( $status->isOK() ) {
 				// Fixable error, show the editing interface
-				$error = Html::errorBox( $this->msg( $msg )->parseAsBlock() );
-				$this->buildFilterEditor( $error, $newFilter, $filter, $history_id );
+				$this->buildFilterEditor( $status, $newFilter, $filter, $history_id );
 			} else {
-				$this->showUnrecoverableError( $msg );
+				$this->showUnrecoverableError( $status->getMessages()[0] );
 			}
 		} elseif ( $status->getValue() === false ) {
 			// No change
@@ -263,13 +263,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 *  4 - Load an old version of an existing filter
 	 *  5 - Show the user input again if saving fails after one of the steps above
 	 *
-	 * @param string|null $error An error message to show above the filter box (HTML).
+	 * @param StatusValue|null $status A status for showing warnings or errors above the filter box
 	 * @param Filter $filterObj
 	 * @param int|null $filter The filter ID, or null for a new filter
 	 * @param int|null $history_id The history ID of the filter, if applicable. Otherwise null
 	 */
 	private function buildFilterEditor(
-		$error,
+		?StatusValue $status,
 		Filter $filterObj,
 		?int $filter,
 		$history_id
@@ -332,8 +332,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$out->addWikiMsg( $oldWarningMessage, $history_id, $filter );
 		}
 
-		if ( $error !== null ) {
-			$out->addHTML( $error );
+		if ( $status !== null && !$status->isGood() ) {
+			foreach ( $status->getMessages( 'error' ) as $message ) {
+				$out->addHTML( Html::errorBox( $this->msg( $message )->parseAsBlock() ) );
+			}
+
+			foreach ( $status->getMessages( 'warning' ) as $message ) {
+				$out->addHTML( Html::warningBox( $this->msg( $message )->parseAsBlock() ) );
+			}
 		}
 
 		$fields = [];

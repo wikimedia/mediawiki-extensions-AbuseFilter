@@ -44,12 +44,12 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	/**
 	 * @var SimpleAuthority
 	 */
-	private $authorityCannotViewProtectedVar;
+	private $authorityCannotUseProtectedVar;
 
 	/**
 	 * @var SimpleAuthority
 	 */
-	private $authorityCanViewProtectedVar;
+	private $authorityCanUseProtectedVar;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -78,15 +78,24 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$user = $this->getTestSysop()->getUser();
 
 		// Create an authority who can see private filters but not protected variables
-		$this->authorityCannotViewProtectedVar = new SimpleAuthority(
+		$this->authorityCannotUseProtectedVar = new SimpleAuthority(
 			$user,
-			[ 'abusefilter-log-private', 'abusefilter-view-private' ]
+			[
+				'abusefilter-log-private',
+				'abusefilter-view-private',
+				'abusefilter-modify',
+			]
 		);
 
 		// Create an authority who can see private and protected variables
-		$this->authorityCanViewProtectedVar = new SimpleAuthority(
+		$this->authorityCanUseProtectedVar = new SimpleAuthority(
 			$user,
-			[ 'abusefilter-access-protected-vars', 'abusefilter-log-private', 'abusefilter-view-private' ]
+			[
+				'abusefilter-access-protected-vars',
+				'abusefilter-log-private',
+				'abusefilter-view-private',
+				'abusefilter-modify',
+			]
 		);
 	}
 
@@ -186,13 +195,57 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			->execute();
 	}
 
+	public function testViewEditTokenMismatch() {
+		[ $html, ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest(
+				[
+					'wpFilterDescription' => 'Test filter',
+					'wpFilterRules' => 'user_name = "1.2.3.4"',
+					'wpFilterNotes' => '',
+				],
+				// This was posted
+				true,
+			),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'abusefilter-edit-token-not-match',
+			$html,
+			'The token mismatch warning message was not present.'
+		);
+	}
+
+	public function testViewEditUnrecoverableError() {
+		[ $html, $response ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest(
+				[
+					'wpFilterDescription' => '',
+					'wpFilterRules' => 'user_name = "1.2.3.4"',
+					'wpFilterNotes' => '',
+				],
+				// This was posted
+				true,
+			)
+		);
+
+		$this->assertStringContainsString(
+			'abusefilter-edit-notallowed',
+			$html,
+			'The permission error message was not present.'
+		);
+	}
+
 	public function testViewTestBatchProtectedVarsFilterVisibility() {
 		// Assert that the user who cannot see protected variables cannot load the filter
 		[ $html, ] = $this->executeSpecialPage(
 			'test/1',
 			new FauxRequest(),
 			null,
-			$this->authorityCannotViewProtectedVar
+			$this->authorityCannotUseProtectedVar
 		);
 		$this->assertStringNotContainsString( '1.2.3.4', $html );
 
@@ -201,7 +254,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'test/1',
 			new FauxRequest(),
 			null,
-			$this->authorityCanViewProtectedVar
+			$this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( '1.2.3.4', $html );
 	}
@@ -226,7 +279,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'',
 			$requestWithProtectedVar,
 			null,
-			$this->authorityCannotViewProtectedVar
+			$this->authorityCannotUseProtectedVar
 		);
 		$this->assertStringContainsString( 'table_pager_empty', $html );
 
@@ -235,7 +288,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'',
 			$requestWithProtectedVar,
 			null,
-			$this->authorityCanViewProtectedVar
+			$this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( '1.2.3.4', $html );
 	}
