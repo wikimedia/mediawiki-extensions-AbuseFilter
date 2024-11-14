@@ -22,7 +22,6 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Request\FauxRequest;
-use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use SpecialPageTestBase;
 use Wikimedia\TestingAccessWrapper;
 
@@ -42,8 +41,6 @@ use Wikimedia\TestingAccessWrapper;
  * @group Database
  */
 class SpecialAbuseFilterTest extends SpecialPageTestBase {
-	use MockAuthorityTrait;
-
 	/**
 	 * @var SimpleAuthority
 	 */
