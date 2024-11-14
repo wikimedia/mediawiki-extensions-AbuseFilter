@@ -329,7 +329,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$oldWarningMessage = $readOnly
 				? 'abusefilter-edit-oldwarning-view'
 				: 'abusefilter-edit-oldwarning';
-			$out->addWikiMsg( $oldWarningMessage, $history_id, $filter );
+			$out->addWikiMsg( $oldWarningMessage, $history_id, (string)$filter );
 		}
 
 		if ( $error !== null ) {
