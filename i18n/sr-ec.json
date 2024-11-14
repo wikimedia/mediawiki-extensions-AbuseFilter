@@ -376,6 +376,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "Време од последњег премештања циљне странице у секундама ($1)",
 	"abusefilter-edit-builder-vars-user-editcount": "Бројач корисничких измена ($1)",
 	"abusefilter-edit-builder-vars-user-age": "Старост корисничког налога ($1)",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "IP адреса корисничког налога (само одјављених корисника и привремених налога) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "Име корисничког налога ($1)",
 	"abusefilter-edit-builder-vars-user-type": "Врста корисничког налога ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "Групе (укључујући посредне) у којима је корисник ($1)",
