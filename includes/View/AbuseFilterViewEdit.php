@@ -429,8 +429,20 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			] );
 
 		// Build checkboxes
-		$checkboxes = [ 'hidden', 'enabled', 'protected', 'deleted' ];
+		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
 		$flags = '';
+
+		// Show the 'protected' check box either to indicate that the filter is protected, or
+		// to allow a user to protect the filter, if the filter needs to be protected.
+		if (
+			$filterObj->isProtected() ||
+			(
+				$status !== null &&
+				$status->hasMessage( 'abusefilter-edit-protected-variable-not-protected' )
+			)
+		) {
+			$checkboxes[] = 'protected';
+		}
 
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$checkboxes[] = 'global';
@@ -488,10 +500,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			if ( $checkboxId == 'protected' ) {
-				if ( !$this->afPermManager->canViewProtectedVariables( $user ) ) {
-					$checkboxAttribs['classes'] = [ 'oo-ui-element-hidden' ];
-					$labelAttribs['classes'] = [ 'oo-ui-element-hidden' ];
-				} elseif ( $filterObj->isProtected() ) {
+				if ( $filterObj->isProtected() ) {
 					$checkboxAttribs['disabled'] = true;
 					$labelAttribs['label'] = $this->msg(
 						'abusefilter-edit-protected-variable-already-protected'

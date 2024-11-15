@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -54,26 +55,6 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	protected function setUp(): void {
 		parent::setUp();
 
-		// Add filter to query for
-		$filter = [
-			'id' => '1',
-			'rules' => 'user_unnamed_ip = "1.2.3.4"',
-			'name' => 'Filter with protected variables',
-			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
-			'user' => 0,
-			'user_text' => 'FilterTester',
-			'timestamp' => '20190826000000',
-			'enabled' => 1,
-			'comments' => '',
-			'hit_count' => 0,
-			'throttled' => 0,
-			'deleted' => 0,
-			'actions' => [],
-			'global' => 0,
-			'group' => 'default'
-		];
-		$this->createFilter( $filter );
-
 		// Create the user to query for filters
 		$user = $this->getTestSysop()->getUser();
 
@@ -97,6 +78,53 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				'abusefilter-modify',
 			]
 		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function addDBDataOnce() {
+		// Add filters to query for
+		$filters = [
+			[
+				'id' => '1',
+				'rules' => 'user_unnamed_ip = "1.2.3.4"',
+				'name' => 'Filter with protected variables',
+				'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+				'user' => 0,
+				'user_text' => 'FilterTester',
+				'timestamp' => '20190826000000',
+				'enabled' => 1,
+				'comments' => '',
+				'hit_count' => 0,
+				'throttled' => 0,
+				'deleted' => 0,
+				'actions' => [],
+				'global' => 0,
+				'group' => 'default',
+			],
+			[
+				'id' => '2',
+				'rules' => 'user_name = "1.2.3.4"',
+				'name' => 'Filter without protected variables',
+				'hidden' => Flags::FILTER_PUBLIC,
+				'user' => 0,
+				'user_text' => 'FilterTester',
+				'timestamp' => '20000101000000',
+				'enabled' => 1,
+				'comments' => '',
+				'hit_count' => 0,
+				'throttled' => 0,
+				'deleted' => 0,
+				'actions' => [],
+				'global' => 0,
+				'group' => 'default',
+			],
+		];
+
+		foreach ( $filters as $filter ) {
+			$this->createFilter( $filter );
+		}
 	}
 
 	/**
@@ -239,6 +267,104 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testViewEditProtectedVarsCheckboxPresentForProtectedFilter() {
+		[ $html, ] = $this->executeSpecialPage(
+			'1',
+			new FauxRequest(),
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+		$this->assertStringNotContainsString(
+			'abusefilter-edit-protected-help-message',
+			$html,
+			'The enabled checkbox to protect the filter was not present.'
+		);
+		$this->assertStringContainsString(
+			'abusefilter-edit-protected-variable-already-protected',
+			$html,
+			'The disabled checkbox explaining that the filter is protected was not present.'
+		);
+	}
+
+	public function testViewEditProtectedVarsCheckboxAbsentForUnprotectedFilter() {
+		[ $html, ] = $this->executeSpecialPage(
+			'2',
+			new FauxRequest(),
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+		$this->assertStringNotContainsString(
+			'abusefilter-edit-protected',
+			$html,
+			'Elements related to protected filters were present.'
+		);
+	}
+
+	public function testViewEditProtectedVarsSave() {
+		$authority = $this->authorityCanUseProtectedVar;
+		$user = $authority->getUser();
+
+		// Set the abuse filter editor to the context user, so that the edit token matches
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		[ $html, ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest(
+				[
+					'wpFilterDescription' => 'Uses protected variable',
+					'wpFilterRules' => 'user_unnamed_ip = "1.2.3.4"',
+					'wpFilterNotes' => '',
+					'wpEditToken' => $user->getEditToken( [ 'abusefilter', 'new' ] ),
+				],
+				// This was posted
+				true,
+			),
+			null,
+			$authority
+		);
+
+		$this->assertStringContainsString(
+			'abusefilter-edit-protected-variable-not-protected',
+			$html,
+			'The error message about protecting the filter was not present.'
+		);
+
+		$this->assertStringContainsString(
+			'abusefilter-edit-protected-help-message',
+			$html,
+			'The enabled checkbox to protect the filter was not present.'
+		);
+	}
+
+	public function testViewEditProtectedVarsSaveSuccess() {
+		$authority = $this->authorityCanUseProtectedVar;
+		$user = $authority->getUser();
+
+		// Set the abuse filter editor to the context user, so that the edit token matches
+		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+
+		[ $html, $response ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest(
+				[
+					'wpFilterDescription' => 'Uses protected variable',
+					'wpFilterRules' => 'user_unnamed_ip = "1.2.3.4"',
+					'wpFilterProtected' => '1',
+					'wpFilterNotes' => '',
+					'wpEditToken' => $user->getEditToken( [ 'abusefilter', 'new' ] ),
+				],
+				// This was posted
+				true,
+			),
+			null,
+			$authority
+		);
+
+		// On saving successfully, the page redirects
+		$this->assertSame( '', $html );
+		$this->assertStringContainsString( 'result=success', $response->getHeader( 'location' ) );
+	}
+
 	public function testViewTestBatchProtectedVarsFilterVisibility() {
 		// Assert that the user who cannot see protected variables cannot load the filter
 		[ $html, ] = $this->executeSpecialPage(
@@ -292,5 +418,4 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 		$this->assertStringContainsString( '1.2.3.4', $html );
 	}
-
 }

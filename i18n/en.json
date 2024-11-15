@@ -216,7 +216,7 @@
 	"abusefilter-edit-enabled": "Enable this filter",
 	"abusefilter-edit-deleted": "Mark as deleted",
 	"abusefilter-edit-hidden": "Hide details of this filter from public view",
-	"abusefilter-edit-protected": "Enable the use of [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables protected variables] in this filter",
+	"abusefilter-edit-protected": "<strong>Enable the use of [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables protected variables] in this filter</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "Details of this filter are hidden from users who cannot see protected variables",
 	"abusefilter-edit-protected-help-message": "Details of this filter will be hidden from users who cannot see protected variables. This action is permanent and cannot be undone.",
 	"abusefilter-edit-global": "Global filter",
