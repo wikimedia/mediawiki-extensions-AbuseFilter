@@ -28,9 +28,9 @@
 	 * @return {string} current warning message
 	 */
 	function getCurrentMessage( action ) {
-		let existing = action === 'warn' ? warnMessageExisting : disallowMessageExisting,
-			other = action === 'warn' ? warnMessageOther : disallowMessageOther,
-			message = existing.getValue();
+		const existing = action === 'warn' ? warnMessageExisting : disallowMessageExisting,
+			other = action === 'warn' ? warnMessageOther : disallowMessageOther;
+		let message = existing.getValue();
 
 		if ( message === 'other' ) {
 			message = other.getValue();

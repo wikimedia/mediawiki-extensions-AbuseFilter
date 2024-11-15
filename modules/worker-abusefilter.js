@@ -1447,13 +1447,11 @@ ace.define( 'ace/mode/abusefilter_worker', [ 'require', 'exports', 'module', 'ac
 	oop.inherits( AbuseFilterWorker, Mirror );
 
 	const parseCode = function ( code ) {
-		let xhr, data;
-
 		if ( !self.mwapipath ) {
 			// No API available? Pretend everything is fine.
 			return true;
 		}
-		xhr = new XMLHttpRequest();
+		const xhr = new XMLHttpRequest();
 		xhr.open(
 			'GET',
 			self.mwapipath + '?action=abusefilterchecksyntax&format=json&filter=' + encodeURIComponent( code ),
@@ -1463,6 +1461,7 @@ ace.define( 'ace/mode/abusefilter_worker', [ 'require', 'exports', 'module', 'ac
 		if ( xhr.status !== 200 ) {
 			return true;
 		}
+		let data;
 		try {
 			data = JSON.parse( xhr.responseText );
 		} catch ( e ) {
