@@ -99,7 +99,8 @@
 			if ( useAce ) {
 				filterEditor.focus();
 				// Convert index (used in textareas) in position {row, column} for ace
-				const position = filterEditor.session.getDocument().indexToPosition( data.character );
+				const position = filterEditor.session.getDocument()
+					.indexToPosition( data.character );
 				filterEditor.navigateTo( position.row, position.column );
 				filterEditor.scrollToRow( position.row );
 			} else {
@@ -294,7 +295,7 @@
 	 * Called if the filter group (#mw-abusefilter-edit-group-input select) is changed. Allows
 	 * using different default messages for 'warn' and 'disallow', based on the group.
 	 *
-	 * @this HTMLELement
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterGroupChange() {
@@ -357,7 +358,7 @@
 	/**
 	 * Called if the user presses a key in the load filter field.
 	 *
-	 * @this HTMLELement
+	 * @this HTMLElement
 	 * @param {jQuery.Event} e The event fired when the function is called
 	 */
 	function onFilterKeypress( e ) {
