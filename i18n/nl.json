@@ -249,7 +249,7 @@
 	"abusefilter-edit-enabled": "Dit filter inschakelen",
 	"abusefilter-edit-deleted": "Als verwijderd markeren",
 	"abusefilter-edit-hidden": "Details van dit filter niet openbaar maken",
-	"abusefilter-edit-protected": "Het gebruik van [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables beveiligde variabelen] in dit filter inschakelen",
+	"abusefilter-edit-protected": "<strong>Het gebruik van [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables beveiligde variabelen] in dit filter inschakelen</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "De details van dit filter zijn verborgen voor gebruikers die beveiligde variabelen niet kunnen zien",
 	"abusefilter-edit-protected-help-message": "De details van dit filter worden verborgen voor gebruikers die geen beveiligde variabelen kunnen zien. Deze handeling is definitief en kan niet ongedaan worden gemaakt.",
 	"abusefilter-edit-global": "Globaal filter",
