@@ -131,8 +131,11 @@
 	"log-action-filter-abusefilter-create": "нови филтер",
 	"log-action-filter-abusefilter-modify": "уређивање филтера",
 	"log-action-filter-suppress-abuselog": "Сакривање дневника злоупотреба",
-	"log-action-filter-rights-blockautopromote": "Блокирање самоунапређивања",
+	"log-action-filter-rights-blockautopromote": "блокирање самоунапређивања",
+	"log-action-filter-rights-restoreautopromote": "деблокирање самоунапређивања",
 	"logentry-abusefilterprivatedetails-access": "$1 је {{GENDER:$2|приступио|приступила}} приватним детаљима за $3",
+	"logentry-rights-blockautopromote": "$1 је {{GENDER:$2|блокирао|блокирала}} аутоматско унапређивање {{GENDER:$4|$3}} на период од $5",
+	"logentry-rights-restoreautopromote": "$1 је {{GENDER:$2|деблокирао|деблокирала}} аутоматско унапређивање {{GENDER:$4|$3}}",
 	"logentry-abusefilterblockeddomainhit-hit": "$1 је {{GENDER:$2|покушао|покушала}} да дода блокиран домен $4 на страници $3.",
 	"abusefilterprivatedetails-log-name": "Дневник приступања приватним детаљима Филтера против злоупотребе",
 	"log-name-abusefilterblockeddomainhit": "Дневник блокаде домена",
@@ -373,6 +376,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "Време од последњег премештања циљне странице у секундама ($1)",
 	"abusefilter-edit-builder-vars-user-editcount": "Бројач корисничких измена ($1)",
 	"abusefilter-edit-builder-vars-user-age": "Старост корисничког налога ($1)",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "IP адреса корисничког налога (само одјављених корисника и привремених налога) ($1)",
 	"abusefilter-edit-builder-vars-user-name": "Име корисничког налога ($1)",
 	"abusefilter-edit-builder-vars-user-type": "Врста корисничког налога ($1)",
 	"abusefilter-edit-builder-vars-user-groups": "Групе (укључујући посредне) у којима је корисник ($1)",
@@ -569,6 +573,7 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]].",
 	"prefs-abusefilter": "Филтер злоупотреба",
 	"abusefilter-preference-protected-vars-view-agreement": "Омогућује приказивање IP адресе привремених налога у Филтеру злоупотребе",
+	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 је {{GENDER:$2|видео|видела}} заштићене променљиве повезане са $3",
 	"log-action-filter-abusefilter-protected-vars": "Врста радње:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Промени приступ"
 }

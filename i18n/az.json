@@ -14,7 +14,8 @@
 			"Vugar 1981",
 			"Wertuose",
 			"Şeyx Şamil",
-			"Əkrəm Cəfər"
+			"Əkrəm Cəfər",
+			"Gadir"
 		]
 	},
 	"abusefilter-desc": "Redaktələrə avtomatik evristikanı tətbiq edir",
@@ -607,7 +608,7 @@
 	"abusefilter-blocked-domains-intro": "Bu siyahıya uyğun gələn xarici keçidlər səhifəyə əlavə edildikdə bloklanacaq. Domenlər [[MediaWiki:BlockedExternalDomains.json]] səhifəsində saxlanılır. Bloklanmış linkləri əlavə etmək cəhdləri [[Special:Log/abusefilterblockeddomainhit]] səhifəsində qeyd olunur.",
 	"abusefilter-blocked-domains-add-heading": "Yeni bloklanmış domen əlavə edin",
 	"abusefilter-blocked-domains-add-explanation": "Burada bloklanmış domenlər siyahısına domen əlavə edə bilərsiniz.",
-	"abusefilter-blocked-domains-domain": "Bloklanacaq domen, məsələn wikipedia.org",
+	"abusefilter-blocked-domains-domain": "Bloklanacaq domen, məsələn, wikipedia.org",
 	"abusefilter-blocked-domains-notes": "Qeydlər",
 	"abusefilter-blocked-domains-add-submit": "Əlavə et",
 	"abusefilter-blocked-domains-domain-header": "Domen",

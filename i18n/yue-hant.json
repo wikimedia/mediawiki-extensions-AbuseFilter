@@ -376,6 +376,7 @@
 	"abusefilter-examine-notfound": "你所要求嘅更改搵唔到。",
 	"abusefilter-examine-incompatible": "你所請求嘅修改並未由濫用過濾器支援",
 	"abusefilter-examine-noresults": "你所提供嘅搵嘢參數搵到無結果。",
+	"abusefilter-examine-protected-vars-permission": "想睇有受保護變數嘅記錄嘅話，請去[[Special:Preferences|你嘅喜好設定]]度接受協議內容。",
 	"abusefilter-topnav": "'''濫用過濾器導航'''",
 	"abusefilter-topnav-home": "頭版",
 	"abusefilter-topnav-recentchanges": "最近過濾器改動",
