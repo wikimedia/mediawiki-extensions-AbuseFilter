@@ -238,6 +238,7 @@
 	"abusefilter-edit-enabled": "Attiva questo filtro",
 	"abusefilter-edit-deleted": "Segna come cancellato",
 	"abusefilter-edit-hidden": "Nascondi i dettagli di questo filtro al pubblico",
+	"abusefilter-edit-protected": "<strong>Abilita l'uso di [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables variabili protette] in questo filtro</strong>",
 	"abusefilter-edit-protected-help-message": "I dettagli di questo filtro saranno nascosti agli utenti che non possono vedere le variabili protette. Questa azione è permanente e non può essere annullata.",
 	"abusefilter-edit-global": "Filtro globale",
 	"abusefilter-edit-rules": "Condizioni:",

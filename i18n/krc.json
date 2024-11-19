@@ -217,7 +217,7 @@
 	"abusefilter-edit-enabled": "Бу фильтрни джандыр",
 	"abusefilter-edit-deleted": "Кетерилген деб белгиле",
 	"abusefilter-edit-hidden": "Бу фильтрни толу хапарлауун хар ким кёрюрча этме",
-	"abusefilter-edit-protected": "Бу фильтрде [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables къорууланнган тюрленнгенлени] хайырланыугъа джандыр",
+	"abusefilter-edit-protected": "<strong>Бу фильтрде [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables къорууланнган тюрленнгенлени] хайырланыугъа джандыр</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "Бу фильтрни деталлары, къорууланнган тюрленнгенлени кёрюрге болмагъан хайырланыучуладан джашырылыбдыла",
 	"abusefilter-edit-protected-help-message": "Бу фильтрни деталлары къорууланнган тюрленнгенлени кёрюрге болмагъан хайырланыучуладан джашырыллыкъдыла. Бу этиу дайымды эмда кери алыналмаз.",
 	"abusefilter-edit-global": "Глобал фильтр",

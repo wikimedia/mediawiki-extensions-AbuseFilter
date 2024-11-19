@@ -235,7 +235,7 @@
 	"abusefilter-edit-enabled": "הפעלת המסנן הזה",
 	"abusefilter-edit-deleted": "סימון כמחוק",
 	"abusefilter-edit-hidden": "הסתרת פרטי המסנן הזה מצפייה ציבורית",
-	"abusefilter-edit-protected": "להפעיל שימוש ב[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables משתנים מוגנים] במסנן הזה",
+	"abusefilter-edit-protected": "<strong>להפעיל שימוש ב[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables משתנים מוגנים] במסנן הזה</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "פרטי המסנן הזה מוסתרים ממשתמשים שאינם יכולים לראות משתנים מוגנים",
 	"abusefilter-edit-protected-help-message": "הפרטים של המסנן הזה יוסתרו ממשתמשים שאין להם הרשאה לראות משתנים מוגנים. הפעולה הזאת בלתי־הפיכה ולא ניתן לבטל אותה.",
 	"abusefilter-edit-global": "מסנן גלובלי",
