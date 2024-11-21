@@ -265,7 +265,7 @@
 	"abusefilter-edit-enabled": "このフィルターを有効にする",
 	"abusefilter-edit-deleted": "削除する",
 	"abusefilter-edit-hidden": "このフィルターの詳細を公開しない",
-	"abusefilter-edit-protected": "このフィルターで [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables 保護された変数]の使用を有効にする",
+	"abusefilter-edit-protected": "<strong>このフィルターで [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables 保護された変数]の使用を有効にする</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "保護された変数を表示できない利用者はこのフィルターの詳細を表示できないようにする",
 	"abusefilter-edit-protected-help-message": "このフィルターの詳細は、保護された変数を表示できない利用者には表示されません。この操作は永続的であり、元に戻すことはできません。",
 	"abusefilter-edit-global": "グローバル フィルター",
