@@ -302,7 +302,8 @@ class LazyVariableComputer {
 					} else {
 						// Note: as of core change r727361, the PP limit comments (which we don't want to be here)
 						// are already excluded.
-						$result = $editInfo->getOutput()->getText();
+						$popts = $editInfo->popts;
+						$result = $editInfo->getOutput()->runOutputPipeline( $popts, [] )->getContentHolderText();
 					}
 					self::$profilingExtraTime += ( microtime( true ) - $startTime );
 				} else {
@@ -314,7 +315,8 @@ class LazyVariableComputer {
 				$update = $parameters['update'];
 				// Shared with the edit, don't count it in profiling
 				$startTime = microtime( true );
-				$result = $update->getCanonicalParserOutput()->getText();
+				$popts = $update->getRenderedRevision()->getOptions();
+				$result = $update->getCanonicalParserOutput()->runOutputPipeline( $popts, [] )->getContentHolderText();
 				self::$profilingExtraTime += ( microtime( true ) - $startTime );
 				break;
 			case 'strip-html':
