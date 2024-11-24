@@ -19,6 +19,8 @@ use MediaWiki\Message\Message;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
+use MediaWiki\User\UserFactory;
 use Wikimedia\Stats\NullStatsdDataFactory;
 
 /**
@@ -120,7 +122,9 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 			$variableGeneratorFactory,
 			$editRevUpdater,
 			$blockedDomainFilter,
-			$permissionManager
+			$permissionManager,
+			$this->createMock( TitleFactory::class ),
+			$this->createMock( UserFactory::class )
 		);
 	}
 }
