@@ -249,7 +249,7 @@
 	"abusefilter-edit-enabled": "Włącz ten filtr",
 	"abusefilter-edit-deleted": "Oznacz jako usunięty",
 	"abusefilter-edit-hidden": "Ukryj szczegóły tego filtru przed widokiem publicznym",
-	"abusefilter-edit-protected": "Włącz wykorzystanie [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables chronionych zmiennych] w tym filtrze",
+	"abusefilter-edit-protected": "<strong>Włącz wykorzystanie [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables chronionych zmiennych] w tym filtrze</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "Szczegóły tego filtru są ukryte przed osobami, które nie mogą oglądać chronionych zmiennych",
 	"abusefilter-edit-protected-help-message": "Szczegóły tego filtru zostaną ukryte przed osobami, które nie mogą oglądać chronionych zmiennych. Ta zmiana jest trwała i nie może być cofnięta.",
 	"abusefilter-edit-global": "Filtr globalny",
