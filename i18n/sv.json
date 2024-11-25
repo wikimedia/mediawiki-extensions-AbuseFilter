@@ -36,7 +36,9 @@
 			"Skalman",
 			"Thurs",
 			"Tobulos1",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"André Costa (WMSE)",
+			"Kakan spelar"
 		]
 	},
 	"abusefilter-desc": "Tillämpar automatiska filter på redigeringar",
@@ -77,7 +79,7 @@
 	"action-abusefilter-revert": "återställ alla ändringar av ett angivet missbruksfilter",
 	"action-abusefilter-view-private": "visa missbruksfilter markerade som privata",
 	"action-abusefilter-log-private": "visa loggar över missbruksfilter som är märkta som privata",
-	"action-abusefilter-hide-log": "dölja poster i missbruksloggen",
+	"action-abusefilter-hide-log": "dölj poster i missbruksloggen",
 	"action-abusefilter-hidden-log": "visa dolda poster i missbruksloggen",
 	"action-abusefilter-modify-global": "skapa eller ändra globala missbruksfilter",
 	"abusefilter-log-summary": "Denna logg visar en lista över alla handlingar som fångats upp av filtren.",
