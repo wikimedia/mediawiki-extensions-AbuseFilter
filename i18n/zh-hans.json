@@ -89,7 +89,8 @@
 			"逆襲的天邪鬼",
 			"铁桶",
 			"飞小RAN",
-			"飞舞回堂前"
+			"飞舞回堂前",
+			"Anarkiisto"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -485,7 +486,7 @@
 	"abusefilter-edit-builder-vars-movedto-last-edit-age": "自上次移动目标页面编辑以来的时间（以秒为单位）（$1）",
 	"abusefilter-edit-builder-vars-user-editcount": "用户编辑次数（$1）",
 	"abusefilter-edit-builder-vars-user-age": "用户账号年龄（$1）",
-	"abusefilter-edit-builder-vars-user-unnamed-ip": "用户账号的IP（仅适用于已注销用户和临时账户）（$1）",
+	"abusefilter-edit-builder-vars-user-unnamed-ip": "用户账号的IP（仅适用于未登录用户和临时账户）（$1）",
 	"abusefilter-edit-builder-vars-user-name": "用户账号名称（$1）",
 	"abusefilter-edit-builder-vars-user-type": "账号类型（$1）",
 	"abusefilter-edit-builder-vars-user-groups": "用户所在的组（包括隐藏组）（$1）",
