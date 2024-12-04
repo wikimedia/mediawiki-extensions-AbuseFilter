@@ -604,7 +604,7 @@
 			"value": [
 				"user_unnamed_ip"
 			],
-			"description": "Array of variables that are be considered protected (limited access) and require the abusefilter-access-protected-vars right to use/view."
+			"description": "Array of variables that are be considered protected (limited access) and require the abusefilter-access-protected-vars right to use/view. To access this list, use the AbuseFilterProtectedVariablesLookup service which will also include protected variables provided by other extensions."
 		}
 	},
 	"load_composer_autoloader": true,
