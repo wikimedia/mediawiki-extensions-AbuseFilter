@@ -162,11 +162,6 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_global'] = 1;
 		}
 
-		if ( !$this->afPermManager->canViewProtectedVariables( $performer ) ) {
-			$dbr = $this->dbProvider->getReplicaDatabase();
-			$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0';
-		}
-
 		if ( $searchmode !== null ) {
 			// Check the search pattern. Filtering the results is done in AbuseFilterPager
 			$error = null;
@@ -189,6 +184,16 @@ class AbuseFilterViewList extends AbuseFilterView {
 				// Reset the conditions in case of error
 				$conds = [ 'af_deleted' => 0 ];
 				$searchmode = $querypattern = null;
+			}
+
+			// Viewers with the right to view private filters have access to the search
+			// function, which can query against protected filters and potentially expose PII.
+			// Remove protected filters from the query if the user doesn't have the right to search
+			// against them. This allows protected filters to be visible in the general list of
+			// filters at all other times.
+			if ( !$this->afPermManager->canViewProtectedVariables( $performer ) ) {
+				$dbr = $this->dbProvider->getReplicaDatabase();
+				$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0';
 			}
 		}
 
