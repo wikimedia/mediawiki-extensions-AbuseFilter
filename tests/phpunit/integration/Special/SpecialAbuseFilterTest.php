@@ -386,6 +386,18 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	}
 
 	public function testViewListProtectedVarsFilterVisibility() {
+		// Ensure that even if the user cannot view the details of a protected filter
+		// they can still see the filter in the filter list
+		[ $html, ] = $this->executeSpecialPage(
+			'',
+			new FauxRequest(),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+		$this->assertStringContainsString( 'abusefilter-protected', $html );
+	}
+
+	public function testViewListWithSearchQueryProtectedVarsFilterVisibility() {
 		// Stub out a page with query results for a filter that uses protected variables
 		// &sort=af_id&limit=50&asc=&desc=1&deletedfilters=hide&querypattern=user_unnamed_ip&searchoption=LIKE
 		$requestWithProtectedVar = new FauxRequest( [
@@ -400,7 +412,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'furtheroptions' => []
 		] );
 
-		// Assert that the user who cannot see protected variables sees no filters
+		// Assert that the user who cannot see protected variables sees no filters when searching
 		[ $html, ] = $this->executeSpecialPage(
 			'',
 			$requestWithProtectedVar,
