@@ -338,6 +338,7 @@
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Уклони размаке ($1)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Уклони посебне знакове ($1)",
 	"abusefilter-edit-builder-funcs-ip_in_range": "Да ли је IP у опсегу? ($1)",
+	"abusefilter-edit-builder-funcs-ip_in_ranges": "Да ли је IP у било ком од опсега? ($1)",
 	"abusefilter-edit-builder-funcs-contains-any": "Претражи ниску за више подниски у OR режиму. ($1)",
 	"abusefilter-edit-builder-funcs-substr": "Подниска ($1)",
 	"abusefilter-edit-builder-funcs-strpos": "Положај подниске у нисци ($1)",
