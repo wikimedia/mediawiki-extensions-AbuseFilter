@@ -23,12 +23,6 @@ class ConfirmEditHandler implements EditFilterMergedContentHook {
 			return true;
 		}
 		$simpleCaptcha = Hooks::getInstance();
-		// FIXME: Remove method_exists checks after I3484d66298bc9f49dfbe003a0605e2ac1a092e10 is merged
-		if ( !method_exists( $simpleCaptcha, 'shouldForceShowCaptcha' ) ||
-			!method_exists( $simpleCaptcha, 'isCaptchaSolved' ) ||
-			!method_exists( $simpleCaptcha, 'editFilterMergedContentHandlerAlreadyInvoked' ) ) {
-			return true;
-		}
 		// In WMF production, AbuseFilter is loaded after ConfirmEdit. That means,
 		// Extension:ConfirmEdit's EditFilterMergedContent hook has already run, and that hook
 		// is responsible for deciding whether to show a CAPTCHA via the SimpleCaptcha::confirmEditMerged
