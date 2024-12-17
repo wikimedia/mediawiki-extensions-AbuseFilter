@@ -134,7 +134,7 @@
 	"abusefilter-log-private-not-included": "Uno o più ID filtro che hai indicato sono privati. Poiché non puoi visualizzare i dettagli dei filtri privati, questi filtri non sono stati cercati.",
 	"abusefilter-log-hide-no-selected": "Nessuna voce selezionata",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|Voce del registro abusi selezionata|Voci del registro abusi selezionate}}:",
-	"abusefilter-log-hide-legend": "Cambia visibilità",
+	"abusefilter-log-hide-legend": "Modifica visibilità",
 	"abusefilter-log-hide-set-visibility": "Imposta visibilità per le voci selezionate:",
 	"abusefilter-log-hide-reason": "Motivo:",
 	"abusefilter-log-hide-reason-other": "Altri motivi/dettagli:",

@@ -622,5 +622,7 @@
 	"action-abusefilter-modify-blocked-external-domains": "арахьарчу доменашка хьажоргашна блоктохаран параметр кхолла йа хийца",
 	"right-abusefilter-bypass-blocked-external-domains": "Блоктоьхна арахьара доменашна чекхбовлар",
 	"action-abusefilter-bypass-blocked-external-domains": "блоктоьхна арахьара доменашна чекхбовлар",
-	"abusefilter-blocked-domains-cannot-edit-directly": "Ахьа кхолла йеза йа хийца йеза арахьара доменаш блоктухур йолу хьажоргаш, мега [[Special:BlockedExternalDomains|леррина агӀонан]] чухула."
+	"abusefilter-blocked-domains-cannot-edit-directly": "Ахьа кхолла йеза йа хийца йеза арахьара доменаш блоктухур йолу хьажоргаш, мега [[Special:BlockedExternalDomains|леррина агӀонан]] чухула.",
+	"log-action-filter-abusefilter-protected-vars": "Ардаман тайпа:",
+	"log-action-filter-abusefilter-protected-vars-change-access": "Хийца тӀекхачар"
 }
