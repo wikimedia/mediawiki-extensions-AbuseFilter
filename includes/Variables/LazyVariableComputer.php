@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Variables;
 
+use InvalidArgumentException;
 use MediaWiki\Content\ContentHandler;
 use MediaWiki\Content\TextContent;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
@@ -437,39 +438,14 @@ class LazyVariableComputer {
 				$asOf = $parameters['asof'];
 				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $firstRevisionTime );
 				break;
-			case 'revision-age-by-id':
-				$timestamp = $this->revisionLookup->getTimestampFromId( $parameters['revid'] );
-				if ( !$timestamp ) {
-					$result = null;
-					break;
-				}
-				$asOf = $parameters['asof'];
-				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $timestamp );
-				break;
-			case 'revision-age-by-title':
-				/** @var Title $title */
-				$title = $parameters['title'];
-				$revRec = $this->revisionLookup->getRevisionByTitle( $title );
+			case 'revision-age':
+				$revRec = $this->getRevisionFromParameters( $parameters );
 				if ( !$revRec ) {
 					$result = null;
 					break;
 				}
 				$asOf = $parameters['asof'];
 				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $revRec->getTimestamp() );
-				break;
-			case 'previous-revision-age':
-				$revRec = $this->revisionLookup->getRevisionById( $parameters['revid'] );
-				if ( !$revRec ) {
-					$result = null;
-					break;
-				}
-				$prev = $this->revisionLookup->getPreviousRevision( $revRec );
-				if ( !$prev ) {
-					$result = null;
-					break;
-				}
-				$asOf = $parameters['asof'] ?? $revRec->getTimestamp();
-				$result = (int)wfTimestamp( TS_UNIX, $asOf ) - (int)wfTimestamp( TS_UNIX, $prev->getTimestamp() );
 				break;
 			case 'length':
 				$s = $getVarCB( $parameters['length-var'] )->toString();
@@ -480,12 +456,12 @@ class LazyVariableComputer {
 				$v2 = $getVarCB( $parameters['val2-var'] )->toInt();
 				$result = $v1 - $v2;
 				break;
-			case 'content-model-by-id':
-				$revRec = $this->revisionLookup->getRevisionById( $parameters['revid'] );
+			case 'content-model':
+				$revRec = $this->getRevisionFromParameters( $parameters );
 				$result = $this->getContentModelFromRevision( $revRec );
 				break;
-			case 'revision-text-by-id':
-				$revRec = $this->revisionLookup->getRevisionById( $parameters['revid'] );
+			case 'revision-text':
+				$revRec = $this->getRevisionFromParameters( $parameters );
 				$result = $this->textExtractor->revisionToString( $revRec, $parameters['contextUser'] );
 				break;
 			case 'get-wiki-name':
@@ -575,6 +551,26 @@ class LazyVariableComputer {
 				return array_keys( $users );
 			}
 		);
+	}
+
+	/**
+	 * @param array{revid?:int,title?:Title,parent?:true} $params
+	 * @return ?RevisionRecord
+	 */
+	private function getRevisionFromParameters( array $params ): ?RevisionRecord {
+		if ( isset( $params['revid'] ) ) {
+			$revision = $this->revisionLookup->getRevisionById( $params['revid'] );
+		} elseif ( isset( $params['title'] ) ) {
+			$revision = $this->revisionLookup->getRevisionByTitle( $params['title'] );
+		} else {
+			throw new InvalidArgumentException(
+				"Either 'revid' or 'title' are mandatory revision specifiers"
+			);
+		}
+		if ( ( $params['parent'] ?? false ) && $revision !== null ) {
+			$revision = $this->revisionLookup->getPreviousRevision( $revision );
+		}
+		return $revision;
 	}
 
 	/**

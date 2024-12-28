@@ -231,7 +231,7 @@ class RunVariableGenerator extends VariableGenerator {
 		} elseif ( $from instanceof Title ) {
 			$this->vars->setLazyLoadVar(
 				$varName,
-				'revision-age-by-title',
+				'revision-age',
 				[ 'title' => $from, 'asof' => wfTimestampNow() ]
 			);
 		} else {
