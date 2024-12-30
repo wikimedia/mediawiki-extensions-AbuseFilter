@@ -57,6 +57,7 @@
 	"abusefilter-list-regexerror": "Eventis eroro dum la serchado. Eroro pri sintaxo di regulara frazo.",
 	"abusefilter-list-options-submit": "Aktualigez",
 	"abusefilter-tools-reautoconfirm-user": "Uzero:",
+	"abusefilter-edit-oldwarning": "<strong>Vu esas redaktanta anciena versiono di ca filtrilo.\nStatistiki mencionata hike esas pri la maxim recenta versiono dil filtrilo.\nSe vu konservos vua chanji, vu remplasos omna modifikuri depos la revizo quan vu redaktas.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Retroirez a la historio di ca filtrilo]].",
 	"abusefilter-edit-status-label": "Statistiko:",
 	"abusefilter-edit-new": "Nova filtrilo",
 	"abusefilter-edit-save": "Registragar filtrilo",
