@@ -639,5 +639,6 @@
 	"action-abusefilter-modify-blocked-external-domains": "إنشاء أو تعديل ماذا تم حظر المجالات الخارجية من الارتباط",
 	"right-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية",
 	"action-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية",
-	"abusefilter-blocked-domains-cannot-edit-directly": "إنشاء أو تعديل المجالات الخارجية التي تم حظرها من الارتباط يجب أن يتم من خلال [[Special:BlockedExternalDomains|the special page]]."
+	"abusefilter-blocked-domains-cannot-edit-directly": "إنشاء أو تعديل المجالات الخارجية التي تم حظرها من الارتباط يجب أن يتم من خلال [[Special:BlockedExternalDomains|the special page]].",
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "عرض قيم المتغيرات المحمية"
 }
