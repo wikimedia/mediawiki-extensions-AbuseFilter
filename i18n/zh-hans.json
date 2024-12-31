@@ -90,7 +90,8 @@
 			"铁桶",
 			"飞小RAN",
 			"飞舞回堂前",
-			"Anarkiisto"
+			"Anarkiisto",
+			"Nikki"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -580,7 +581,7 @@
 	"abusefilter-exception-unclosedcomment": "字符$1处有未闭合注释。",
 	"abusefilter-exception-invalidiprange": "字符$1处提供了无效的IP地址段“$2”。",
 	"abusefilter-exception-disabledvar": "字符$1的变量$2不再继续使用。",
-	"abusefilter-exception-variablevariable": "在第$1个字符位置发现set和ser_var变量，它们的第一个参数应为字符串字面量。",
+	"abusefilter-exception-variablevariable": "在第$1个字符位置发现set和set_var变量，它们的第一个参数应为字符串字面量。",
 	"abusefilter-exception-unknownfunction": "字符$1处的$2不是有效的函数。",
 	"abusefilter-exception-unusedvars": "下列变量未使用：$2。",
 	"abusefilter-parser-warning-match-empty-regex": "该正则表达式匹配了空字符串，在字符$1处。",
