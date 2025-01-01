@@ -8,6 +8,7 @@
 			"Asaifm",
 			"Asma",
 			"Bassem JARKAS",
+			"Cigaryno",
 			"Ciphers",
 			"Claw eg",
 			"DRIHEM",
@@ -465,6 +466,7 @@
 	"abusefilter-history": "غير التاريخ لمرشح الإساءة #$1",
 	"abusefilter-history-foruser": "تغييرات من قبل $1",
 	"abusefilter-history-hidden": "مخفي",
+	"abusefilter-history-protected": "محمي",
 	"abusefilter-history-enabled": "مفعل",
 	"abusefilter-history-global": "عام",
 	"abusefilter-history-timestamp": "وقت",
@@ -640,5 +642,7 @@
 	"right-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية",
 	"action-abusefilter-bypass-blocked-external-domains": "تم منع تجاوز المجالات الخارجية",
 	"abusefilter-blocked-domains-cannot-edit-directly": "إنشاء أو تعديل المجالات الخارجية التي تم حظرها من الارتباط يجب أن يتم من خلال [[Special:BlockedExternalDomains|the special page]].",
+	"log-action-filter-abusefilter-protected-vars": "نوع الفعل:",
+	"log-action-filter-abusefilter-protected-vars-change-access": "تغيير الوصول",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "عرض قيم المتغيرات المحمية"
 }
