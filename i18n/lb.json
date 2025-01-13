@@ -323,7 +323,7 @@
 	"abusefilter-edit-builder-vars-first-contributor": "Éischte Benotzer, deen un der Säit geschafft huet ($1)",
 	"abusefilter-edit-builder-vars-old-links": "Linken op der Säit, virun der Ännerung ($1)",
 	"abusefilter-edit-builder-vars-file-sha1": "SHA1-Hash vum Inhalt vum Fichier ($1)",
-	"abusefilter-edit-builder-vars-file-size": "Gréisst vum Fichier a Bytes ($1)",
+	"abusefilter-edit-builder-vars-file-size": "Gréisst vum Fichier a Byte ($1)",
 	"abusefilter-edit-builder-vars-file-mime": "MIME-Typ vum Fichier ($1)",
 	"abusefilter-edit-builder-vars-file-mediatype": "Medientyp vum Fichier ($1)",
 	"abusefilter-edit-builder-vars-file-width": "Breet vum Fichier a Pixelen ($1)",
