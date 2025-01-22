@@ -191,7 +191,7 @@
 	"log-action-filter-rights-restoreautopromote": "Rétablissement d’autopromotion",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|a accédé}} aux détails confidentiels pour $3",
 	"logentry-rights-blockautopromote": "{{GENDER:$2|$1}} a bloqué l’autopromotion de {{GENDER:$4|$3}} pour une période de $5",
-	"logentry-rights-restoreautopromote": "$ {{GENDER:$2|a rétabli}} la possibilité d’autopromotion de {{GENDER:$4|$3}}",
+	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|a rétabli}} la possibilité d’autopromotion de {{GENDER:$4|$3}}",
 	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} a déclenché une correspondance avec un domaine bloqué sur $3 en tentant d’ajouter $4.",
 	"abusefilterprivatedetails-log-name": "Journal d'accès aux détails privés des filtres anti-abus",
 	"log-name-abusefilterblockeddomainhit": "Journal des correspondances avec les domaines bloqués",
