@@ -252,7 +252,7 @@
 	"abusefilter-edit-enabled": "Aktivera detta filter",
 	"abusefilter-edit-deleted": "Markera som raderad",
 	"abusefilter-edit-hidden": "Dölj detaljer om detta filter",
-	"abusefilter-edit-protected": "Aktivera användningen av [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables skyddade variabler] i detta filter",
+	"abusefilter-edit-protected": "<strong>Aktivera användningen av [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables skyddade variabler] i detta filter</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "Detaljer om detta filter döljs för användare som inte kan se skyddade variabler",
 	"abusefilter-edit-protected-help-message": "Detaljer om detta filter kommer döljas från användare som inte kan se skyddade variabler. Denna åtgärd är permanent och kan inte ångras.",
 	"abusefilter-edit-global": "Globalt filter",
