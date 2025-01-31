@@ -142,7 +142,7 @@ class AbstractFilter {
 	 */
 	public function getActions(): array {
 		if ( $this->actions === null ) {
-			$this->setActions( call_user_func( $this->actionsCallback ) );
+			$this->setActions( ( $this->actionsCallback )() );
 			// This is to ease testing
 			$this->actionsCallback = null;
 		}
