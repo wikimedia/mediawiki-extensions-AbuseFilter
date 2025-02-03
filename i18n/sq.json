@@ -11,6 +11,7 @@
 			"Liridon",
 			"Marinari",
 			"Matma Rex",
+			"Olsi",
 			"Vinie007"
 		]
 	},
@@ -65,7 +66,7 @@
 	"abusefilter-log-details-ip": "IP adresa origjinale",
 	"abusefilter-log-noactions": "asnjë",
 	"abusefilter-log-details-diff": "Ndryshimet e bëra në redaktim",
-	"abusefilter-log-linkoncontribs": "Shpërdoro gjurmët e kyçjes",
+	"abusefilter-log-linkoncontribs": "regjistri i abuzimeve",
 	"abusefilter-log-linkoncontribs-text": "Regjistër abuzimesh për {{GENDER:$1|këtë përdorues|këtë përdoruese}}",
 	"abusefilter-log-details-hidden": "Nuk mund të shihni detajet për këtë shenim sepse është e fshehur për vështrim publik",
 	"abusefilter-log-hide-legend": "Ndryshoji dukshmërinë",
