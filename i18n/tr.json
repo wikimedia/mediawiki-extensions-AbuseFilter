@@ -31,7 +31,9 @@
 			"Uncitoyen",
 			"Vito Genovese",
 			"Ömer Berkay",
-			"Wooze"
+			"Wooze",
+			"Brightt11",
+			"Leo"
 		]
 	},
 	"abusefilter-desc": "Değişikliklere otomatik bulucu yöntemler uygular",
@@ -72,6 +74,7 @@
 	"action-abusefilter-revert": "belirli bir kötüye kullanım süzgecindeki tüm değişiklikleri geri al",
 	"action-abusefilter-view-private": "özel olarak işaretlenmiş kötüye kullanım süzgeçlerini gör",
 	"action-abusefilter-log-private": "özel olarak işaretlenmiş kötüye kullanım süzgeci günlüklerini gör",
+	"action-abusefilter-log-protected": "özel olarak işaretlenmiş kötüye kullanım süzgeci günlüklerini görüntüle",
 	"action-abusefilter-hide-log": "kötüye kullanım günlüğündeki girdileri gizle",
 	"action-abusefilter-hidden-log": "gizli kötüye kullanım günlüğü girişlerini görüntüle",
 	"action-abusefilter-modify-global": "küresel kötüye kullanım filtreleri oluşturun veya değiştirin",
@@ -172,6 +175,7 @@
 	"abusefilter-list-lastmodified": "Son değişiklik",
 	"abusefilter-list-group": "Filtre grubu",
 	"abusefilter-hidden": "Özel",
+	"abusefilter-protected": "Koruma altına alındı.",
 	"abusefilter-unhidden": "Genel",
 	"abusefilter-enabled": "Etkin",
 	"abusefilter-deleted": "Silindi",
@@ -629,7 +633,7 @@
 	"abusefilter-log-ip-not-available": "Mevcut değil",
 	"abusefilter-tag-reserved": "<code>abusefilter-condition-limit</code> etiketi, AbuseFilter tarafından dahili kullanım için ayrılmıştır.",
 	"tag-abusefilter-condition-limit": "koşul sınırına ulaşıldı",
-	"tag-abusefilter-condition-limit-description": "Tüm etkin kullanıcılar tarafından kontrol edilemeyen düzenlemeler veya diğer etkinlikler [[Special:AbuseFilter|kötüye kullanım filtreleri]]([[mw:Extension:AbuseFilter/Conditions|yardım]]).",
+	"tag-abusefilter-condition-limit-description": "Tüm etkin [[Special:AbuseFilter|kötüye kullanım filtreleri]] tarafından kontrol edilemeyen düzenlemeler veya diğer olaylar ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions yardım]).",
 	"notification-header-throttle-filter": "Yakın zamanda {{GENDER:$1|düzenlediğiniz}} $2 kötüye kullanım filtresi kısıtlandı.",
 	"notification-header-throttle-filter-actions": "Yakın zamanda {{GENDER:$1|düzenlediğiniz}} $2 kötüye kullanım filtresinin eşleşme oranı yüksekti ve şu {{PLURAL:$4|eylem|eylemler}} otomatik olarak devre dışı bırakıldı: $3.",
 	"notification-header-throttle-filter-no-actions": "Yakın zamanda {{GENDER:$1|düzenlediğiniz}} $2 kötüye kullanım filtresi yüksek bir eşleşme oranına sahipti ancak hiçbir eylem otomatik olarak devre dışı bırakılmadı.",
