@@ -634,7 +634,7 @@
 	"tag-abusefilter-condition-limit-description": "Bütün aktiv [[Special:AbuseFilter|dəyişiklik süzgəcləri]] tərəfindən yoxlana bilməyən redaktələr və ya digər fəaliyyətlər ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions kömək]).",
 	"notification-header-throttle-filter": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəci söndürülüb.",
 	"notification-header-throttle-filter-actions": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəcinin yüksək uyğunlaşma nisbəti olub və aşağıdakı {{PLURAL:$4|fəaliyyət|fəaliyyətlər}} söndürülüb: $3",
-	"notification-header-throttle-filter-no-actions": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəcinin yüksək uyğunlaşma nisbəti olub ancaq heç bir fəaliyyət söndürülməyib.",
+	"notification-header-throttle-filter-no-actions": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəcinin yüksək uyğunlaşma nisbəti olub ancaq heç bir fəaliyyət avtomatik olaraq söndürülmədi.",
 	"notification-subject-throttle-filter": "Az öncə {{SITENAME}} saytında redaktə {{GENDER:$1|etdiyiniz}} süzgəc deaktiv edilib",
 	"notification-link-text-show-filter": "Süzgəci göstər",
 	"right-abusefilter-modify-blocked-external-domains": "Bloklanmış xarici domenlərin siyahısını yaratmaq və ya redaktə etmək",
