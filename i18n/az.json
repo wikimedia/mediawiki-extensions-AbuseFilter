@@ -13,7 +13,9 @@
 			"Vugar 1981",
 			"Wertuose",
 			"Şeyx Şamil",
-			"Nemoralis"
+			"Nemoralis",
+			"Gadir",
+			"Əkrəm Cəfər"
 		]
 	},
 	"abusefilter-desc": "Redaktələrə avtomatik evristikanı tətbiq edir",
@@ -498,7 +500,7 @@
 	"tag-abusefilter-condition-limit": "şərt həddinə çatıb",
 	"notification-header-throttle-filter": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəci söndürülüb.",
 	"notification-header-throttle-filter-actions": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəcinin yüksək uyğunlaşma nisbəti olub və aşağıdakı {{PLURAL:$4|fəaliyyət|fəaliyyətlər}} söndürülüb: $3",
-	"notification-header-throttle-filter-no-actions": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəcinin yüksək uyğunlaşma nisbəti olub ancaq heç bir fəaliyyət söndürülməyib.",
+	"notification-header-throttle-filter-no-actions": "Az öncə redaktə {{GENDER:$1|etdiyiniz}} $2 süzgəcinin yüksək uyğunlaşma nisbəti olub ancaq heç bir fəaliyyət avtomatik olaraq söndürülmədi.",
 	"notification-subject-throttle-filter": "Az öncə {{SITENAME}} saytında redaktə {{GENDER:$1|etdiyiniz}} süzgəc deaktiv edilib",
 	"notification-link-text-show-filter": "Süzgəci göstər"
 }
