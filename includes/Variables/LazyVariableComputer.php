@@ -311,6 +311,14 @@ class LazyVariableComputer {
 					$result = '';
 				}
 				break;
+			case 'pst-from-update':
+				/** @var PreparedUpdate $update */
+				$update = $parameters['update'];
+				$result = $this->textExtractor->revisionToString(
+					$update->getRevision(),
+					$parameters['contextUser']
+				);
+				break;
 			case 'html-from-update':
 				/** @var PreparedUpdate $update */
 				$update = $parameters['update'];

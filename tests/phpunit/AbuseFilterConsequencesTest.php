@@ -22,6 +22,7 @@ use MediaWiki\WikiMap\WikiMap;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\SelectQueryBuilder;
+use Wikimedia\TestingAccessWrapper;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -58,6 +59,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  * @covers \MediaWiki\Extension\AbuseFilter\FilterRunner
  * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
  * @covers \MediaWiki\Extension\AbuseFilter\VariableGenerator\RunVariableGenerator
+ * @covers \MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  * @covers \MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore
@@ -448,6 +450,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				throw new RuntimeException( "Could not create test page. $status" );
 			}
 			$page->clear();
+			TestingAccessWrapper::newFromObject( $page )->derivedDataUpdater = null;
 			$title->resetArticleID( -1 );
 		}
 

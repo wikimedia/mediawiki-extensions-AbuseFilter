@@ -11,7 +11,6 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 use WikiPage;
 
@@ -186,13 +185,15 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 			'new_pst',
 			'new_html',
 		];
+		$mockUserFactory = $this->createMock( UserFactory::class );
+		$mockUserFactory->method( 'newFromUserIdentity' )->willReturnArgument( 0 );
 		$generator = new VariableGenerator(
 			$this->createMock( AbuseFilterHookRunner::class ),
-			$this->createMock( UserFactory::class )
+			$mockUserFactory
 		);
 		$actualVars = $generator->addEditVars(
 			$this->createMock( WikiPage::class ),
-			$this->createMock( UserIdentity::class ),
+			$this->createMock( User::class ),
 			$forFilter
 		)->getVariableHolder()->getVars();
 		$this->assertArrayEquals( $expectedKeys, array_keys( $actualVars ) );

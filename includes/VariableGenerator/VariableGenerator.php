@@ -268,14 +268,21 @@ class VariableGenerator {
 				] );
 		}
 
-		// TODO: the following should use PreparedUpdate, too
-		$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
-			[
-				'wikitext-var' => 'new_wikitext',
-				'article' => $page,
-				'pst' => true,
-				'contextUserIdentity' => $userIdentity
-			] );
+		if ( $forFilter && $update ) {
+			$this->vars->setLazyLoadVar( 'new_pst', 'pst-from-update',
+				[
+					'update' => $update,
+					'contextUser' => $this->userFactory->newFromUserIdentity( $userIdentity )
+				] );
+		} else {
+			$this->vars->setLazyLoadVar( 'new_pst', 'parse-wikitext',
+				[
+					'wikitext-var' => 'new_wikitext',
+					'article' => $page,
+					'pst' => true,
+					'contextUserIdentity' => $userIdentity
+				] );
+		}
 
 		if ( $forFilter && $update ) {
 			$this->vars->setLazyLoadVar( 'new_html', 'html-from-update',
