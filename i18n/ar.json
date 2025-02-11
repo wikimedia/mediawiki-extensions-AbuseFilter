@@ -431,7 +431,7 @@
 	"abusefilter-edit-builder-vars-user-name": "اسم حساب المستخدم ( $1 )",
 	"abusefilter-edit-builder-vars-user-type": "نوع حساب المستخدم ( $1 )",
 	"abusefilter-edit-builder-vars-user-groups": "المجموعات (بما في ذلك المجموعات الضمنية) التي يتواجد فيها المستخدم ( $1 )",
-	"abusefilter-edit-builder-vars-user-rights": "الحقوق التي يتمتع بها المستخدم ( $1 )",
+	"abusefilter-edit-builder-vars-user-rights": "الصلاحيات الممنوحة للمستخدم ( $1 )",
 	"abusefilter-edit-builder-vars-user-blocked": "هل تم حظر المستخدم ( $1 )",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "وقت تأكيد عنوان البريد الإلكتروني ( $1 )",
 	"abusefilter-edit-builder-vars-old-wikitext": "صفحة الويكي القديمة قبل التعديل ( $1 )",
