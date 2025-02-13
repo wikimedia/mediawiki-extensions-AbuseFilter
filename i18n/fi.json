@@ -572,7 +572,7 @@
 	"abusefilter-log-details-id": "Lokin tunnistenumero",
 	"blockedexternaldomains": "Estetyt ulkoiset domain-nimet",
 	"abusefilter-blocked-domains-title": "Estetyt ulkoiset domain-nimet",
-	"abusefilter-blocked-domains-intro": "Tässä luettelossa lueteltujen ulkoisten linkkien lisääminen sivuille on estetty. Tämä luettelo domain-nimistä löytyy sivulta [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-intro": "Tässä luettelossa lueteltujen ulkoisten linkkien lisääminen sivuille on estetty. Tämä luettelo domain-nimistä löytyy sivulta [[MediaWiki:BlockedExternalDomains.json]]. Yritykset lisätä estettyjä linkkejä kirjataan lokisivulle [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-add-heading": "Lisää uusi estetty domain-nimi",
 	"abusefilter-blocked-domains-domain": "Estettävä domain-nimi, esim. wikipedia.org",
 	"abusefilter-blocked-domains-notes": "Huomautukset",
@@ -592,5 +592,7 @@
 	"tag-abusefilter-condition-limit": "ehtojen raja-arvo on saavutettu",
 	"tag-abusefilter-condition-limit-description": "Muokkaukset tai muut tapahtumat, joita ei voitu käydä läpi kaikilla aktiivisilla [[Special:AbuseFilter|väärinkäyttösuodattimilla]] ([[mw:Extension:AbuseFilter/Conditions|ohje]]).",
 	"notification-subject-throttle-filter": "{{GENDER:$1|Muokkaamasi}} väärinkäyttösuodatin estettiin {{GRAMMAR:inessive|{{SITENAME}}}}",
-	"notification-link-text-show-filter": "Näytä suodatin"
+	"notification-link-text-show-filter": "Näytä suodatin",
+	"right-abusefilter-bypass-blocked-external-domains": "Ohittaa estettyjä ulkoisia domain-nimiä",
+	"action-abusefilter-bypass-blocked-external-domains": "ohittaa estettyjä ulkoisia domain-nimiä"
 }
