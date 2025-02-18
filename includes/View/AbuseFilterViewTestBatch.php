@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Message\Message;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use RecentChange;
@@ -108,7 +109,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$out->setPageTitleMsg( $this->msg( 'abusefilter-test' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
-		$out->addWikiMsg( 'abusefilter-test-intro', self::$mChangeLimit );
+		$out->addWikiMsg( 'abusefilter-test-intro', Message::numParam( self::$mChangeLimit ) );
 		$out->enableOOUI();
 
 		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getAuthority(), $out );
