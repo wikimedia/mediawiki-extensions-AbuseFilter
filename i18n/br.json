@@ -447,7 +447,7 @@
 	"abusefilter-http-error": "Ur fazi HTTP zo bet : $1",
 	"abusefilter-log-details-id": "ID ar marilh",
 	"blockedexternaldomains": "Domanioù diavaez stanket",
-	"abusefilter-blocked-domains-intro": "Stanket a vo al liammoù diavaez a glot gant ar roll-mañ pa vint ouzhpennet en ur bajenn. Enrollet eo an domani-mañ e [[MediaWiki:BlockedExternalDomains.json]].",
+	"abusefilter-blocked-domains-intro": "Difennet e vo lakaat liammoù diavaez a glot gant ar roll-mañ en ur bajenn. Enrollet eo an domani-mañ e [[MediaWiki:BlockedExternalDomains.json]]. Enrollet eo ar c’hlaskoù da ouzhpennañ liammoù difennet e [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-notes": "Notennoù",
 	"abusefilter-blocked-domains-add-submit": "Kas",
 	"abusefilter-blocked-domains-domain-header": "Domani",
