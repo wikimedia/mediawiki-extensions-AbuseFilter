@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -32,9 +33,9 @@ class FilterValidatorTest extends MediaWikiIntegrationTestCase {
 				[
 					'AbuseFilterActionRestrictions' => [],
 					'AbuseFilterValidGroups' => [ 'default' ],
-					'AbuseFilterProtectedVariables' => [],
 				]
-			)
+			),
+			$this->createMock( AbuseFilterProtectedVariablesLookup::class )
 		);
 
 		$status = $validator->checkAllTags( $tags );

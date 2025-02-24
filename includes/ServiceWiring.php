@@ -36,6 +36,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
@@ -73,12 +74,8 @@ return [
 	},
 	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
 		return new PermManager(
-			new ServiceOptions(
-				PermManager::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig(),
-				[ 'AbuseFilterProtectedVariables' => [] ]
-			),
-			$services->getUserOptionsLookup()
+			$services->getUserOptionsLookup(),
+			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME )
 		);
 	},
 	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagger {
@@ -173,9 +170,9 @@ return [
 			$services->get( PermManager::SERVICE_NAME ),
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,
-				$services->getMainConfig(),
-				[ 'AbuseFilterProtectedVariables' => [] ]
-			)
+				$services->getMainConfig()
+			),
+			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME )
 		);
 	},
 	FilterCompare::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterCompare {
@@ -396,6 +393,14 @@ return [
 		return new BlockedDomainFilter(
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( BlockedDomainStorage::SERVICE_NAME )
+		);
+	},
+	AbuseFilterProtectedVariablesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ) {
+		return new AbuseFilterProtectedVariablesLookup(
+			new ServiceOptions(
+				AbuseFilterProtectedVariablesLookup::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			)
 		);
 	},
 	// b/c for extensions

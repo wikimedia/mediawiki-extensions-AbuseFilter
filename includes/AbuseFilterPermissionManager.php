@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\Options\UserOptionsLookup;
 
@@ -15,26 +15,18 @@ use MediaWiki\User\Options\UserOptionsLookup;
 class AbuseFilterPermissionManager {
 	public const SERVICE_NAME = 'AbuseFilterPermissionManager';
 
-	public const CONSTRUCTOR_OPTIONS = [
-		'AbuseFilterProtectedVariables',
-	];
-
 	/**
-	 * @var string[] Protected variables defined in config via AbuseFilterProtectedVariables
+	 * @var string[] All protected variables
 	 */
-	private $protectedVariables;
+	private array $protectedVariables;
 
 	private UserOptionsLookup $userOptionsLookup;
 
-	/**
-	 * @param ServiceOptions $options
-	 * @param UserOptionsLookup $userOptionsLookup
-	 */
 	public function __construct(
-		ServiceOptions $options,
-		UserOptionsLookup $userOptionsLookup
+		UserOptionsLookup $userOptionsLookup,
+		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup
 	) {
-		$this->protectedVariables = $options->get( 'AbuseFilterProtectedVariables' );
+		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 

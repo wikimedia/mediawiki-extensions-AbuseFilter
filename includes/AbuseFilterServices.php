@@ -13,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
@@ -318,5 +319,12 @@ class AbuseFilterServices {
 	 */
 	public static function getBlockedDomainFilter( ?ContainerInterface $services = null ): BlockedDomainFilter {
 		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainFilter::SERVICE_NAME );
+	}
+
+	public static function getProtectedVariablesLookup(
+		?ContainerInterface $services = null
+	): AbuseFilterProtectedVariablesLookup {
+		$services ??= MediaWikiServices::getInstance();
+		return $services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME );
 	}
 }

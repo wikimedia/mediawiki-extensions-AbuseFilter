@@ -4,11 +4,11 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
 use Generator;
 use MediaWiki\Block\DatabaseBlock;
-use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
@@ -31,15 +31,10 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 				],
 			]
 		);
-		return new AbuseFilterPermissionManager(
-			new ServiceOptions(
-				AbuseFilterPermissionManager::CONSTRUCTOR_OPTIONS,
-				[
-					'AbuseFilterProtectedVariables' => [ 'user_unnamed_ip' ]
-				]
-			),
-			$userOptions
-		);
+		$protectedVariablesLookup = $this->createMock( AbuseFilterProtectedVariablesLookup::class );
+		$protectedVariablesLookup->method( 'getAllProtectedVariables' )
+			->willReturn( [ 'user_unnamed_ip' ] );
+		return new AbuseFilterPermissionManager( $userOptions, $protectedVariablesLookup );
 	}
 
 	public function provideCanEdit(): Generator {
