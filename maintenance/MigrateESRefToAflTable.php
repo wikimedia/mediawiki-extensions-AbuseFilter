@@ -137,7 +137,7 @@ class MigrateESRefToAflTable extends Maintenance {
 
 				// Skip bad blobs
 				if ( $schema !== 'tt' ) {
-					$this->output( "filerevision id {$row->afl_id} has special stuff: {$row->afl_var_dump}\n" );
+					$this->output( "abuse filter log id {$row->afl_id} has special stuff: {$row->afl_var_dump}\n" );
 					continue;
 				}
 
