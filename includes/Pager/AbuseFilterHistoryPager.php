@@ -15,6 +15,7 @@ use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\Title\Title;
+use MediaWiki\User\UserIdentityValue;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\IResultWrapper;
 
@@ -263,8 +264,7 @@ class AbuseFilterHistoryPager extends TablePager {
 		$lb = $this->linkBatchFactory->newLinkBatch();
 		$lb->setCaller( __METHOD__ );
 		foreach ( $result as $row ) {
-			$lb->add( NS_USER, $row->afh_user_text );
-			$lb->add( NS_USER_TALK, $row->afh_user_text );
+			$lb->addUser( new UserIdentityValue( $row->afh_user ?? 0, $row->afh_user_text ) );
 		}
 		$lb->execute();
 		$result->seek( 0 );

@@ -20,6 +20,7 @@ use MediaWiki\Parser\Sanitizer;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\WikiMap\WikiMap;
 use stdClass;
 use Wikimedia\Rdbms\IResultWrapper;
@@ -415,8 +416,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			// Only for local wiki results
 			if ( !$row->afl_wiki ) {
 				$lb->add( $row->afl_namespace, $row->afl_title );
-				$lb->add( NS_USER, $row->afl_user_text );
-				$lb->add( NS_USER_TALK, $row->afl_user_text );
+				$lb->addUser( new UserIdentityValue( $row->afl_user ?? 0, $row->afl_user_text ) );
 			}
 		}
 		$lb->execute();

@@ -12,6 +12,7 @@ use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\User\UserIdentityValue;
 use stdClass;
 use UnexpectedValueException;
 use Wikimedia\Rdbms\FakeResultWrapper;
@@ -134,8 +135,7 @@ class AbuseFilterPager extends TablePager {
 		$lb = $this->linkBatchFactory->newLinkBatch();
 		$lb->setCaller( __METHOD__ );
 		foreach ( $result as $row ) {
-			$lb->add( NS_USER, $row->af_user_text );
-			$lb->add( NS_USER_TALK, $row->af_user_text );
+			$lb->addUser( new UserIdentityValue( $row->af_user ?? 0, $row->af_user_text ) );
 		}
 		$lb->execute();
 		$result->seek( 0 );
