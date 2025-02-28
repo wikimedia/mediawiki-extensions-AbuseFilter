@@ -245,6 +245,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private function showUnrecoverableError( $msg ): void {
 		$out = $this->getOutput();
 
+		$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 		$out->addHTML( Html::errorBox( $this->msg( $msg )->parseAsBlock() ) );
 		$href = $this->getTitle()->getFullURL();
 		$btn = new OOUI\ButtonWidget( [
@@ -333,6 +334,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		if ( $status !== null && !$status->isGood() ) {
+			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 			foreach ( $status->getMessages( 'error' ) as $message ) {
 				$out->addHTML( Html::errorBox( $this->msg( $message )->parseAsBlock() ) );
 			}

@@ -549,6 +549,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			}
 
 			if ( $foundInvalid ) {
+				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 				// @todo Tell what the invalid IDs are
 				$out->addHTML(
 					Html::rawElement(
@@ -1112,6 +1113,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// Make sure it is a valid request
 		$token = $request->getVal( 'wpEditToken' );
 		if ( !$request->wasPosted() || !$user->matchEditToken( $token ) ) {
+			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 			$out->addHTML(
 				Html::rawElement(
 					'p',

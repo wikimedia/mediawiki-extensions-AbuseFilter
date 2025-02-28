@@ -358,6 +358,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$this->revertAction( $action, $result );
 			}
 		}
+		$this->getOutput()->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 		$this->getOutput()->addHTML( Html::successBox(
 			$this->msg(
 				'abusefilter-revert-success',

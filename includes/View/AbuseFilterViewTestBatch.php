@@ -101,6 +101,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			$usedVars = $ruleChecker->getUsedVars( $this->testPattern );
 			if ( $this->afPermManager->getForbiddenVariables( $this->getAuthority(), $usedVars ) ) {
 				$this->testPattern = '';
+				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 				$out->addHtml(
 					Html::errorBox( $this->msg( 'abusefilter-test-protectedvarerr' )->parse() )
 				);
@@ -183,6 +184,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		} );
 		$allFields = array_merge( $rulesFields, $optionsFields );
 
+		$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 		HTMLForm::factory( 'ooui', $allFields, $this->getContext() )
 			->setTitle( $this->getTitle( 'test' ) )
 			->setId( 'wpFilterForm' )

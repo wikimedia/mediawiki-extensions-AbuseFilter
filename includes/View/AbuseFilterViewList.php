@@ -173,6 +173,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			}
 
 			if ( $error !== null ) {
+				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 				$out->addHTML(
 					Html::rawElement(
 						'p',

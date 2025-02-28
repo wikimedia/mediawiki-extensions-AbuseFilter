@@ -156,6 +156,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			$out->setSubtitle( $this->msg( 'abusefilter-edit-done-subtitle' ) );
 			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
 			$changeId = intval( $request->getVal( 'changeid' ) );
+			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 			$out->addHTML( Html::successBox(
 				$this->msg(
 					'abusefilter-edit-done',

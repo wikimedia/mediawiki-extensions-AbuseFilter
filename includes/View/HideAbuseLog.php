@@ -188,6 +188,7 @@ class HideAbuseLog extends AbuseFilterView {
 		} );
 
 		$count = count( $actualIDs );
+		$this->getOutput()->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 		$this->getOutput()->prependHTML(
 			Html::successBox(
 				$this->msg( 'abusefilter-log-hide-done' )->params(
