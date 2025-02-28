@@ -400,7 +400,8 @@ return [
 			new ServiceOptions(
 				AbuseFilterProtectedVariablesLookup::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
-			)
+			),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME )
 		);
 	},
 	// b/c for extensions

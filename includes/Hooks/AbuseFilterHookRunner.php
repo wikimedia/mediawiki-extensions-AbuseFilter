@@ -20,6 +20,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterComputeVariableHook,
 	AbuseFilterContentToStringHook,
 	AbuseFilterCustomActionsHook,
+	AbuseFilterCustomProtectedVariablesHook,
 	AbuseFilterDeprecatedVariablesHook,
 	AbuseFilterFilterActionHook,
 	AbuseFilterGenerateGenericVarsHook,
@@ -32,12 +33,8 @@ class AbuseFilterHookRunner implements
 {
 	public const SERVICE_NAME = 'AbuseFilterHookRunner';
 
-	/** @var HookContainer */
-	private $hookContainer;
+	private HookContainer $hookContainer;
 
-	/**
-	 * @param HookContainer $hookContainer
-	 */
 	public function __construct( HookContainer $hookContainer ) {
 		$this->hookContainer = $hookContainer;
 	}
@@ -222,6 +219,17 @@ class AbuseFilterHookRunner implements
 		$this->hookContainer->run(
 			'AbuseFilterCustomActions',
 			[ &$actions ],
+			[ 'abortable' => false ]
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onAbuseFilterCustomProtectedVariables( array &$variables ): void {
+		$this->hookContainer->run(
+			'AbuseFilterCustomProtectedVariables',
+			[ &$variables ],
 			[ 'abortable' => false ]
 		);
 	}
