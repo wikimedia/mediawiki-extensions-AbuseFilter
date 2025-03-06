@@ -8,6 +8,7 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Registration\ExtensionRegistry;
+use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -43,6 +44,9 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 	 * @dataProvider provideProtectedVarsLogTypes
 	 */
 	public function testLogs_CUDisabled( $options, $expected ) {
+		// Stop external extensions (CU) from affecting the logger by overriding any modifications
+		$this->clearHook( 'AbuseFilterLogProtectedVariableValueAccess' );
+
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )->with( 'CheckUser' )->willReturn( false );
 		$this->setService( 'ExtensionRegistry', $extensionRegistry );
@@ -54,29 +58,24 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 			->$logAction( $performer->getUserIdentity(), ...$options['params'] );
 
 		// Assert that the action wasn't inserted into CheckUsers' temp account logging table
-		$this->assertSame(
-			0,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => $expected['expectedCULogType'],
-					'log_type' => TemporaryAccountLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => $expected['expectedCULogType'],
+				'log_type' => TemporaryAccountLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 0 );
+
 		// and also that it was inserted into abusefilter's protected vars logging table
-		$this->assertSame(
-			1,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => $expected['expectedAFLogType'],
-					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => $expected['expectedAFLogType'],
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 1 );
 
 		$this->resetServices();
 	}
@@ -94,32 +93,30 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 			->$logAction( $performer->getUserIdentity(), ...$options['params'] );
 
 		// Assert that the action was inserted into CheckUsers' temp account logging table
-		$this->assertSame(
-			1,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => $expected['expectedCULogType'],
-					'log_type' => TemporaryAccountLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => $expected['expectedCULogType'],
+				'log_type' => TemporaryAccountLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 1 );
+
 		// and also that it wasn't inserted into abusefilter's protected vars logging table
-		$this->assertSame(
-			0,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => $expected['expectedAFLogType'],
-					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => $expected['expectedAFLogType'],
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 0 );
 	}
 
 	public function testDebouncedLogs_CUDisabled() {
+		// Stop external extensions (CU) from affecting the logger by overriding any modifications
+		$this->clearHook( 'AbuseFilterLogProtectedVariableValueAccess' );
+
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )->with( 'CheckUser' )->willReturn( false );
 		$this->setService( 'ExtensionRegistry', $extensionRegistry );
@@ -135,29 +132,24 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		DeferredUpdates::doUpdates();
 
 		// Assert that the action wasn't inserted into CheckUsers' temp account logging table
-		$this->assertSame(
-			0,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => 'af-view-protected-var-value',
-					'log_type' => TemporaryAccountLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'af-view-protected-var-value',
+				'log_type' => TemporaryAccountLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 0 );
+
 		// and also that it only inserted once into abusefilter's protected vars logging table
-		$this->assertSame(
-			1,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => 'view-protected-var-value',
-					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 1 );
 
 		$this->resetServices();
 	}
@@ -176,28 +168,52 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		DeferredUpdates::doUpdates();
 
 		// Assert that the action only inserted once into CheckUsers' temp account logging table
-		$this->assertSame(
-			1,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => 'af-view-protected-var-value',
-					'log_type' => TemporaryAccountLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'af-view-protected-var-value',
+				'log_type' => TemporaryAccountLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 1 );
+
 		// and also that it wasn't inserted into abusefilter's protected vars logging table
-		$this->assertSame(
-			0,
-			(int)$this->getDb()->newSelectQueryBuilder()
-				->select( 'COUNT(*)' )
-				->from( 'logging' )
-				->where( [
-					'log_action' => 'view-protected-var-value',
-					'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-					] )
-				->fetchField()
-		);
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 0 );
+	}
+
+	public function testProtecedVarsAccessLogger_HookModification() {
+		$this->setTemporaryHook( 'AbuseFilterLogProtectedVariableValueAccess', static function (
+			UserIdentity $performer,
+			string $target,
+			string $action,
+			bool $shouldDebounce,
+			int $timestamp,
+			array $params
+		) {
+			return false;
+		} );
+
+		// Run a loggable action
+		$performer = $this->getTestSysop();
+		AbuseFilterServices::getAbuseLoggerFactory()
+			->getProtectedVarsAccessLogger()
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+
+		// Assert that the hook abort also aborted AbuseFilter's logging
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 0 );
 	}
 }
