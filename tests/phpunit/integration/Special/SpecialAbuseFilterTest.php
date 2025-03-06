@@ -21,8 +21,9 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Permissions\SimpleAuthority;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use SpecialPageTestBase;
 use Wikimedia\TestingAccessWrapper;
 
@@ -42,40 +43,35 @@ use Wikimedia\TestingAccessWrapper;
  * @group Database
  */
 class SpecialAbuseFilterTest extends SpecialPageTestBase {
-	/**
-	 * @var SimpleAuthority
-	 */
-	private $authorityCannotUseProtectedVar;
+	use MockAuthorityTrait;
 
-	/**
-	 * @var SimpleAuthority
-	 */
-	private $authorityCanUseProtectedVar;
+	private Authority $authorityCannotUseProtectedVar;
+
+	private Authority $authorityCanUseProtectedVar;
 
 	protected function setUp(): void {
 		parent::setUp();
 
-		// Create the user to query for filters
-		$user = $this->getTestSysop()->getUser();
-
 		// Create an authority who can see private filters but not protected variables
-		$this->authorityCannotUseProtectedVar = new SimpleAuthority(
-			$user,
+		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
 			[
 				'abusefilter-log-private',
 				'abusefilter-view-private',
 				'abusefilter-modify',
+				'abusefilter-log-detail',
 			]
 		);
 
 		// Create an authority who can see private and protected variables
-		$this->authorityCanUseProtectedVar = new SimpleAuthority(
-			$user,
+		$this->authorityCanUseProtectedVar = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
 			[
 				'abusefilter-access-protected-vars',
 				'abusefilter-log-private',
 				'abusefilter-view-private',
 				'abusefilter-modify',
+				'abusefilter-log-detail',
 			]
 		);
 	}
@@ -96,7 +92,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				'timestamp' => '20190826000000',
 				'enabled' => 1,
 				'comments' => '',
-				'hit_count' => 0,
+				'hit_count' => 1,
 				'throttled' => 0,
 				'deleted' => 0,
 				'actions' => [],
@@ -267,13 +263,63 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testViewEditForInvalidImport() {
+		[ $html, ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest( [ 'wpImportText' => 'abc' ], true ),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'(abusefilter-import-invalid-data',
+			$html,
+			'An unknown filter ID should cause an error message.'
+		);
+		$this->assertStringContainsString(
+			'(abusefilter-return',
+			$html,
+			'Button to return the filter management was missing.'
+		);
+	}
+
+	/** @dataProvider provideViewEditForBadFilter */
+	public function testViewEditForBadFilter( $subPage ) {
+		[ $html, ] = $this->executeSpecialPage(
+			$subPage, new FauxRequest(), null, $this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'(abusefilter-edit-badfilter',
+			$html,
+			'An unknown filter ID should cause an error message.'
+		);
+		$this->assertStringContainsString(
+			'(abusefilter-return',
+			$html,
+			'Button to return the filter management was missing.'
+		);
+	}
+
+	public static function provideViewEditForBadFilter() {
+		return [
+			'Unknown filter ID' => [ '12345' ],
+			'Unknown history ID for existing filter' => [ 'history/1/item/123456' ],
+		];
+	}
+
 	public function testViewEditProtectedVarsCheckboxPresentForProtectedFilter() {
+		// Xml::buildForm uses the global wfMessage which means we need to set
+		// the language for the user globally too.
+		$this->setUserLang( 'qqx' );
+
 		[ $html, ] = $this->executeSpecialPage(
 			'1',
 			new FauxRequest(),
 			null,
 			$this->authorityCanUseProtectedVar
 		);
+
 		$this->assertStringNotContainsString(
 			'abusefilter-edit-protected-help-message',
 			$html,
@@ -283,6 +329,25 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'abusefilter-edit-protected-variable-already-protected',
 			$html,
 			'The disabled checkbox explaining that the filter is protected was not present.'
+		);
+
+		// Also check that the filter hit count is present and as expected for the protected filter.
+		$this->assertStringContainsString( '(abusefilter-edit-hitcount', $html );
+		$this->assertStringContainsString( '(abusefilter-hitcount: 1', $html );
+	}
+
+	public function testViewEditForProtectedFilterWhenUserLacksAuthority() {
+		[ $html, ] = $this->executeSpecialPage(
+			'1',
+			new FauxRequest(),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'(abusefilter-edit-denied-protected-vars',
+			$html,
+			'The protected filter permission error was not present.'
 		);
 	}
 
@@ -302,7 +367,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 
 	public function testViewEditProtectedVarsSave() {
 		$authority = $this->authorityCanUseProtectedVar;
-		$user = $authority->getUser();
+		$user = $this->getServiceContainer()->getUserFactory()->newFromUserIdentity( $authority->getUser() );
 
 		// Set the abuse filter editor to the context user, so that the edit token matches
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
@@ -338,7 +403,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 
 	public function testViewEditProtectedVarsSaveSuccess() {
 		$authority = $this->authorityCanUseProtectedVar;
-		$user = $authority->getUser();
+		$user = $this->getServiceContainer()->getUserFactory()->newFromUserIdentity( $authority->getUser() );
 
 		// Set the abuse filter editor to the context user, so that the edit token matches
 		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );

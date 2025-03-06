@@ -22,7 +22,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MainConfigNames;
-use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Xml\Xml;
 use OOUI;
@@ -45,9 +44,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/** @var LBFactory */
 	private $lbFactory;
 
-	/** @var PermissionManager */
-	private $permissionManager;
-
 	/** @var FilterProfiler */
 	private $filterProfiler;
 
@@ -69,25 +65,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/** @var SpecsFormatter */
 	private $specsFormatter;
 
-	/**
-	 * @param LBFactory $lbFactory
-	 * @param PermissionManager $permissionManager
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param FilterProfiler $filterProfiler
-	 * @param FilterLookup $filterLookup
-	 * @param FilterImporter $filterImporter
-	 * @param FilterStore $filterStore
-	 * @param EditBoxBuilderFactory $boxBuilderFactory
-	 * @param ConsequencesRegistry $consequencesRegistry
-	 * @param SpecsFormatter $specsFormatter
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
 		LBFactory $lbFactory,
-		PermissionManager $permissionManager,
 		AbuseFilterPermissionManager $afPermManager,
 		FilterProfiler $filterProfiler,
 		FilterLookup $filterLookup,
@@ -103,7 +82,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
 		$this->lbFactory = $lbFactory;
-		$this->permissionManager = $permissionManager;
 		$this->filterProfiler = $filterProfiler;
 		$this->filterLookup = $filterLookup;
 		$this->filterImporter = $filterImporter;
@@ -196,7 +174,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	private function attemptSave( ?int $filter, $history_id ): void {
 		$out = $this->getOutput();
 		$request = $this->getRequest();
-		$user = $this->getUser();
+		$authority = $this->getAuthority();
 
 		[ $newFilter, $origFilter ] = $this->loadRequest( $filter );
 
@@ -212,7 +190,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
-		$status = $this->filterStore->saveFilter( $user, $filter, $newFilter, $origFilter );
+		$status = $this->filterStore->saveFilter( $authority, $filter, $newFilter, $origFilter );
 
 		if ( !$status->isGood() ) {
 			if ( $status->isOK() ) {
@@ -278,7 +256,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$out = $this->getOutput();
 		$out->addJsConfigVars( 'isFilterEditor', true );
 		$lang = $this->getLanguage();
-		$user = $this->getUser();
+		$authority = $this->getAuthority();
 		$actions = $filterObj->getActions();
 
 		$isCreatingNewFilter = $filter === null;
@@ -293,7 +271,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if (
 			( $filterObj->isHidden() || (
 				$filter !== null && $this->filterLookup->getFilter( $filter, false )->isHidden() )
-			) && !$this->afPermManager->canViewPrivateFilters( $user )
+			) && !$this->afPermManager->canViewPrivateFilters( $authority )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied' )->escaped() );
 			return;
@@ -305,7 +283,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$filterObj->isProtected() ||
 				( $filter !== null && $this->filterLookup->getFilter( $filter, false )->isProtected() )
 			) &&
-			!$this->afPermManager->canViewProtectedVariables( $user )
+			!$this->afPermManager->canViewProtectedVariables( $authority )
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied-protected-vars' )->escaped() );
 			return;
@@ -313,7 +291,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $isCreatingNewFilter ) {
 			$title = $this->msg( 'abusefilter-add' );
-		} elseif ( $this->afPermManager->canEditFilter( $user, $filterObj ) ) {
+		} elseif ( $this->afPermManager->canEditFilter( $authority, $filterObj ) ) {
 			$title = $this->msg( 'abusefilter-edit-specific' )
 				->numParams( $this->filter )
 				->params( $filterObj->getName() );
@@ -324,7 +302,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 		$out->setPageTitleMsg( $title );
 
-		$readOnly = !$this->afPermManager->canEditFilter( $user, $filterObj );
+		$readOnly = !$this->afPermManager->canEditFilter( $authority, $filterObj );
 
 		if ( $history_id ) {
 			$oldWarningMessage = $readOnly
@@ -382,7 +360,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		// Hit count display
 		$hitCount = $filterObj->getHitCount();
-		if ( $hitCount !== null && $this->afPermManager->canSeeLogDetails( $user ) ) {
+		if ( $hitCount !== null && $this->afPermManager->canSeeLogDetails( $authority ) ) {
 			$count_display = $this->msg( 'abusefilter-hitcount' )
 				->numParams( $hitCount )->text();
 			$hitCount = $this->linkRenderer->makeKnownLink(
@@ -415,7 +393,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 		}
 
-		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $user, $out );
+		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $authority, $out );
 
 		$fields['abusefilter-edit-rules'] = $boxBuilder->buildEditBox(
 			$filterObj->getRules(),
@@ -497,7 +475,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				'align' => 'inline',
 			];
 
-			if ( $checkboxId === 'global' && !$this->afPermManager->canEditGlobal( $user ) ) {
+			if ( $checkboxId === 'global' && !$this->afPermManager->canEditGlobal( $authority ) ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -543,7 +521,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		if ( $filter !== null ) {
 			$tools = '';
-			if ( $this->afPermManager->canRevertFilterActions( $user ) ) {
+			if ( $this->afPermManager->canRevertFilterActions( $authority ) ) {
 				$tools .= Html::rawElement(
 					'p', [],
 					$this->linkRenderer->makeLink(
@@ -553,7 +531,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				);
 			}
 
-			if ( $this->afPermManager->canUseTestTools( $user ) ) {
+			if ( $this->afPermManager->canUseTestTools( $authority ) ) {
 				// Test link
 				$tools .= Html::rawElement(
 					'p', [],
@@ -563,7 +541,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					)
 				);
 			}
+
 			// Last modification details
+			$user = $this->getUser();
 			$userLink =
 				Linker::userLink( $filterObj->getUserID(), $filterObj->getUserName() ) .
 				Linker::userToolLinks( $filterObj->getUserID(), $filterObj->getUserName() );
@@ -682,13 +662,13 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 */
 	private function buildConsequenceSelector( $action, $set, $filterObj, ?array $parameters ) {
 		$config = $this->getConfig();
-		$user = $this->getUser();
+		$authority = $this->getAuthority();
 		$actions = $this->consequencesRegistry->getAllEnabledActionNames();
 		if ( !in_array( $action, $actions, true ) ) {
 			return '';
 		}
 
-		$readOnly = !$this->afPermManager->canEditFilter( $user, $filterObj );
+		$readOnly = !$this->afPermManager->canEditFilter( $authority, $filterObj );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -877,7 +857,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					);
 
 				$buttonGroup = $previewButton;
-				if ( $this->permissionManager->userHasRight( $user, 'editinterface' ) ) {
+				if ( $authority->isAllowed( 'editinterface' ) ) {
 					$editButton =
 						new OOUI\ButtonInputWidget( [
 							// abusefilter-edit-warn-edit, abusefilter-edit-disallow-edit

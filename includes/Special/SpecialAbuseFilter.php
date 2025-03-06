@@ -49,7 +49,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		],
 		AbuseFilterViewEdit::class => [
 			'DBLoadBalancerFactory',
-			'PermissionManager',
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			FilterProfiler::SERVICE_NAME,
 			FilterLookup::SERVICE_NAME,
