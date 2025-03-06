@@ -283,7 +283,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$filterObj->isProtected() ||
 				( $filter !== null && $this->filterLookup->getFilter( $filter, false )->isProtected() )
 			) &&
-			!$this->afPermManager->canViewProtectedVariables( $authority )
+			!$this->afPermManager->canViewProtectedVariables( $authority )->isGood()
 		) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied-protected-vars' )->escaped() );
 			return;

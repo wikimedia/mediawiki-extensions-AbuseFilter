@@ -252,10 +252,21 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 			$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
 		}
 
-		$this->assertSame(
-			$expected,
-			$this->getPermMan()->canViewProtectedVariables( $performer )
-		);
+		$actualStatus = $this->getPermMan()->canViewProtectedVariables( $performer );
+		if ( $expected ) {
+			$this->assertStatusGood( $actualStatus );
+			$this->assertSame( null, $actualStatus->getBlock() );
+			$this->assertSame( null, $actualStatus->getPermission() );
+		} else {
+			$this->assertStatusNotGood( $actualStatus );
+			if ( $block ) {
+				$this->assertSame( $block, $actualStatus->getBlock() );
+			} elseif ( !in_array( 'abusefilter-access-protected-vars', $rights ) ) {
+				$this->assertSame( 'abusefilter-access-protected-vars', $actualStatus->getPermission() );
+			} else {
+				$this->fail( 'Unsupported test case.' );
+			}
+		}
 	}
 
 	public function provideCanViewProtectedVariableValues(): Generator {
@@ -280,15 +291,23 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCanViewProtectedVariableValues( array $rights, UserIdentityValue $user, bool $expected ) {
 		$performer = $this->mockUserAuthorityWithPermissions( $user, $rights );
-		$this->assertSame(
-			$expected,
-			$this->getPermMan()->canViewProtectedVariableValues( $performer )
-		);
+
+		$actualStatus = $this->getPermMan()->canViewProtectedVariableValues( $performer );
+		if ( $expected ) {
+			$this->assertStatusGood( $actualStatus );
+			$this->assertSame( null, $actualStatus->getBlock() );
+			$this->assertSame( null, $actualStatus->getPermission() );
+		} else {
+			$this->assertStatusNotGood( $actualStatus );
+			if ( !in_array( 'abusefilter-access-protected-vars', $rights ) ) {
+				$this->assertSame( 'abusefilter-access-protected-vars', $actualStatus->getPermission() );
+			} else {
+				$this->assertStatusError( 'abusefilter-examine-protected-vars-permission', $actualStatus );
+			}
+		}
 	}
 
 	public function provideTestGetUsedProtectedVariables(): Generator {
-		$userCheckedPreference = new UserIdentityValue( 1, 'User1' );
-		$userUncheckedPreference = new UserIdentityValue( 2, 'User2' );
 		yield 'uses protected variables' => [
 			[ 'user_unnamed_ip', 'user_name' ], [ 'user_unnamed_ip' ]
 		];

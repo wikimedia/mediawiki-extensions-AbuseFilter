@@ -71,7 +71,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
 		$canViewPrivate = $this->afPermManager->canViewPrivateFilters( $this->getAuthority() );
-		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() );
+		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() )->isGood();
 
 		if ( $filter ) {
 			$filterObj = null;

@@ -107,8 +107,8 @@ class QueryAbuseLog extends ApiQueryBase {
 		}
 
 		$canViewPrivate = $this->afPermManager->canViewPrivateFiltersLogs( $performer );
-		$canViewProtected = $this->afPermManager->canViewProtectedVariables( $performer );
-		$canViewProtectedValues = $this->afPermManager->canViewProtectedVariableValues( $performer );
+		$canViewProtected = $this->afPermManager->canViewProtectedVariables( $performer )->isGood();
+		$canViewProtectedValues = $this->afPermManager->canViewProtectedVariableValues( $performer )->isGood();
 
 		// Map of [ [ id, global ], ... ]
 		$searchFilters = [];

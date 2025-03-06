@@ -132,7 +132,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 		$res = $this->select( __METHOD__ );
 
 		$showhidden = $this->afPermManager->canViewPrivateFilters( $this->getAuthority() );
-		$showProtected = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() );
+		$showProtected = $this->afPermManager->canViewProtectedVariables( $this->getAuthority() )->isGood();
 
 		$count = 0;
 		foreach ( $res as $row ) {

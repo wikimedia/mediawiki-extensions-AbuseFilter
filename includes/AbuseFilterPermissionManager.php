@@ -91,28 +91,40 @@ class AbuseFilterPermissionManager {
 
 	/**
 	 * @param Authority $performer
-	 * @return bool
+	 * @return AbuseFilterPermissionStatus
 	 */
-	public function canViewProtectedVariables( Authority $performer ) {
+	public function canViewProtectedVariables( Authority $performer ): AbuseFilterPermissionStatus {
 		$block = $performer->getBlock();
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$performer->isAllowed( 'abusefilter-access-protected-vars' )
-		);
+		if ( $block && $block->isSitewide() ) {
+			return AbuseFilterPermissionStatus::newBlockedError( $block );
+		}
+
+		if ( !$performer->isAllowed( 'abusefilter-access-protected-vars' ) ) {
+			return AbuseFilterPermissionStatus::newPermissionError( 'abusefilter-access-protected-vars' );
+		}
+
+		return AbuseFilterPermissionStatus::newGood();
 	}
 
 	/**
 	 * @param Authority $performer
-	 * @return bool
+	 * @return AbuseFilterPermissionStatus
 	 */
-	public function canViewProtectedVariableValues( Authority $performer ) {
-		return (
-			$this->canViewProtectedVariables( $performer ) &&
-			$this->userOptionsLookup->getOption(
-				$performer->getUser(),
-				'abusefilter-protected-vars-view-agreement'
-			)
-		);
+	public function canViewProtectedVariableValues( Authority $performer ): AbuseFilterPermissionStatus {
+		$returnStatus = $this->canViewProtectedVariables( $performer );
+
+		if ( !$returnStatus->isGood() ) {
+			return $returnStatus;
+		}
+
+		if ( !$this->userOptionsLookup->getOption(
+			$performer->getUser(),
+			'abusefilter-protected-vars-view-agreement'
+		) ) {
+			return AbuseFilterPermissionStatus::newFatal( 'abusefilter-examine-protected-vars-permission' );
+		}
+
+		return AbuseFilterPermissionStatus::newGood();
 	}
 
 	/**
@@ -134,16 +146,17 @@ class AbuseFilterPermissionManager {
 	 * @return string[]
 	 */
 	public function getForbiddenVariables( Authority $performer, array $usedVariables ): array {
-		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
+		$usedProtectedVariables = $this->getUsedProtectedVariables( $usedVariables );
 		// All good if protected variables aren't used, or the user can view them.
-		if ( count( $usedProtectedVariables ) === 0 || $this->canViewProtectedVariables( $performer ) ) {
+		if ( count( $usedProtectedVariables ) === 0 || $this->canViewProtectedVariables( $performer )->isGood() ) {
 			return [];
 		}
 		return $usedProtectedVariables;
 	}
 
 	/**
-	 * Return an array of protected variables (originally defined in configuration)
+	 * Return an array of protected variables. Convenience method that calls
+	 * {@link AbuseFilterProtectedVariablesLookup::getAllProtectedVariables}.
 	 *
 	 * @return string[]
 	 */
@@ -201,7 +214,7 @@ class AbuseFilterPermissionManager {
 		if ( FilterUtils::isHidden( $privacyLevel ) && !$this->canViewPrivateFiltersLogs( $performer ) ) {
 			return false;
 		}
-		if ( FilterUtils::isProtected( $privacyLevel ) && !$this->canViewProtectedVariables( $performer ) ) {
+		if ( FilterUtils::isProtected( $privacyLevel ) && !$this->canViewProtectedVariables( $performer )->isGood() ) {
 			return false;
 		}
 
