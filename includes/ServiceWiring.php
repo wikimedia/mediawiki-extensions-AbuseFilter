@@ -171,8 +171,7 @@ return [
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
-			),
-			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME )
+			)
 		);
 	},
 	FilterCompare::SERVICE_NAME => static function ( MediaWikiServices $services ): FilterCompare {
