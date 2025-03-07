@@ -7,7 +7,6 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Message\Message;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
@@ -38,24 +37,17 @@ class FilterValidator {
 	/** @var string[] */
 	private $validGroups;
 
-	/**
-	 * @var string[] All protected variables
-	 */
-	private array $protectedVariables;
-
 	public function __construct(
 		ChangeTagValidator $changeTagValidator,
 		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterPermissionManager $permManager,
-		ServiceOptions $options,
-		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup
+		ServiceOptions $options
 	) {
 		$this->changeTagValidator = $changeTagValidator;
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->permManager = $permManager;
 		$this->restrictedActions = array_keys( array_filter( $options->get( 'AbuseFilterActionRestrictions' ) ) );
 		$this->validGroups = $options->get( 'AbuseFilterValidGroups' );
-		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
 	}
 
 	/**
@@ -376,7 +368,7 @@ class FilterValidator {
 
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 		$usedVariables = $ruleChecker->getUsedVars( $filter->getRules() );
-		$usedProtectedVariables = array_intersect( $usedVariables, $this->protectedVariables );
+		$usedProtectedVariables = $this->permManager->getUsedProtectedVariables( $usedVariables );
 
 		if (
 			count( $usedProtectedVariables ) > 0 &&

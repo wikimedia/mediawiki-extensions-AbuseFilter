@@ -14,7 +14,6 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Parser\ParserStatus;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
-use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
@@ -31,7 +30,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 	use MockAuthorityTrait;
 
 	/**
-	 * @param AbuseFilterPermissionManager|null $permissionManager
+	 * @param AbuseFilterPermissionManager&MockObject|null $permissionManager
 	 * @param FilterEvaluator|null $ruleChecker
 	 * @param array $restrictions
 	 * @param array $validFilterGroups
@@ -58,10 +57,11 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		if ( !$permissionManager ) {
 			$permissionManager = $this->createMock( AbuseFilterPermissionManager::class );
 			$permissionManager->method( 'canEditFilter' )->willReturn( true );
+			$permissionManager->method( 'getUsedProtectedVariables' )
+				->willReturnCallback( static function ( $usedVariables ) {
+					return array_intersect( $usedVariables, [ 'user_unnamed_ip' ] );
+				} );
 		}
-		$protectedVariablesLookup = $this->createMock( AbuseFilterProtectedVariablesLookup::class );
-		$protectedVariablesLookup->method( 'getAllProtectedVariables' )
-			->willReturn( [ 'user_unnamed_ip' ] );
 		return new FilterValidator(
 			$this->createMock( ChangeTagValidator::class ),
 			$checkerFactory,
@@ -72,8 +72,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 					'AbuseFilterActionRestrictions' => array_fill_keys( $restrictions, true ),
 					'AbuseFilterValidGroups' => $validFilterGroups,
 				]
-			),
-			$protectedVariablesLookup
+			)
 		);
 	}
 
