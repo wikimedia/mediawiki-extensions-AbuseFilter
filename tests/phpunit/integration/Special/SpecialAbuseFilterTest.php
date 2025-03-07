@@ -25,7 +25,6 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use SpecialPageTestBase;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter
@@ -80,16 +79,47 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	public function addDBDataOnce() {
-		// Add filters to query for
-		$filters = [
+		$filterStore = AbuseFilterServices::getFilterStore();
+		$performer = $this->getTestSysop()->getUserIdentity();
+		$authority = $this->mockUserAuthorityWithPermissions(
+			$performer,
 			[
+				'abusefilter-access-protected-vars',
+				'abusefilter-log-private',
+				'abusefilter-view-private',
+				'abusefilter-modify',
+			]
+		);
+
+		// Create a test filter with two revisions that is protected
+		$firstFilterRevision = $this->getFilterFromSpecs( [
+			'id' => '1',
+			'rules' => 'user_unnamed_ip = "1.2.3.5"',
+			'name' => 'Filter with protected variables',
+			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+			'userIdentity' => $performer,
+			'timestamp' => $this->getDb()->timestamp( '20190826000000' ),
+			'enabled' => 1,
+			'comments' => '',
+			'hit_count' => 0,
+			'throttled' => 0,
+			'deleted' => 0,
+			'actions' => [],
+			'global' => 0,
+			'group' => 'default',
+		] );
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority, null, $firstFilterRevision, MutableFilter::newDefault()
+		) );
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority, 1,
+			$this->getFilterFromSpecs( [
 				'id' => '1',
 				'rules' => 'user_unnamed_ip = "1.2.3.4"',
 				'name' => 'Filter with protected variables',
 				'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
-				'user' => 0,
-				'user_text' => 'FilterTester',
-				'timestamp' => '20190826000000',
+				'userIdentity' => $performer,
+				'timestamp' => $this->getDb()->timestamp( '20190827000000' ),
 				'enabled' => 1,
 				'comments' => '',
 				'hit_count' => 1,
@@ -98,14 +128,19 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				'actions' => [],
 				'global' => 0,
 				'group' => 'default',
-			],
-			[
+			] ),
+			$firstFilterRevision
+		) );
+
+		// Create a second filter which is not public
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority, null,
+			$this->getFilterFromSpecs( [
 				'id' => '2',
 				'rules' => 'user_name = "1.2.3.4"',
 				'name' => 'Filter without protected variables',
 				'hidden' => Flags::FILTER_PUBLIC,
-				'user' => 0,
-				'user_text' => 'FilterTester',
+				'userIdentity' => $performer,
 				'timestamp' => '20000101000000',
 				'enabled' => 1,
 				'comments' => '',
@@ -115,12 +150,9 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				'actions' => [],
 				'global' => 0,
 				'group' => 'default',
-			],
-		];
-
-		foreach ( $filters as $filter ) {
-			$this->createFilter( $filter );
-		}
+			] ),
+			MutableFilter::newDefault()
+		) );
 	}
 
 	/**
@@ -169,6 +201,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	 * @return Filter
 	 */
 	private function getFilterFromSpecs( array $filterSpecs, array $actions = [] ): Filter {
+		$filterSpecs['timestamp'] = $this->getDb()->timestamp( $filterSpecs['timestamp'] );
 		return new Filter(
 			new Specs(
 				$filterSpecs['rules'],
@@ -185,38 +218,14 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			),
 			$actions,
 			new LastEditInfo(
-				$filterSpecs['user'],
-				$filterSpecs['user_text'],
+				$filterSpecs['userIdentity']->getId(),
+				$filterSpecs['userIdentity']->getName(),
 				$filterSpecs['timestamp']
 			),
 			$filterSpecs['id'],
 			$filterSpecs['hit_count'],
 			$filterSpecs['throttled']
 		);
-	}
-
-	/**
-	 * Adapted from FilterStoreTest->createFilter()
-	 *
-	 * @param array $row
-	 */
-	private function createFilter( array $row ): void {
-		$row['timestamp'] = $this->getDb()->timestamp( $row['timestamp'] );
-		$filter = $this->getFilterFromSpecs( $row );
-		$oldFilter = MutableFilter::newDefault();
-		// Use some black magic to bypass checks
-		/** @var FilterStore $filterStore */
-		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
-		$row = $filterStore->filterToDatabaseRow( $filter, $oldFilter );
-		$row['af_actor'] = $this->getServiceContainer()->getActorNormalization()->acquireActorId(
-			$this->getTestUser()->getUserIdentity(),
-			$this->getDb()
-		);
-		$this->getDb()->newInsertQueryBuilder()
-			->insertInto( 'abuse_filter' )
-			->row( $row )
-			->caller( __METHOD__ )
-			->execute();
 	}
 
 	public function testViewEditTokenMismatch() {
@@ -494,5 +503,59 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			$this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( '1.2.3.4', $html );
+	}
+
+	public function testViewHistoryForProtectedFilterWhenUserLacksAuthority() {
+		[ $html, ] = $this->executeSpecialPage(
+			'history/1',
+			new FauxRequest(),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'(abusefilter-history-error-protected)',
+			$html,
+			'The protected filter permission error was not present.'
+		);
+		$this->assertStringNotContainsString(
+			'abusefilter-history-select-user',
+			$html,
+			'The filter history should not be shown if the user cannot see the filter.'
+		);
+	}
+
+	/** @dataProvider provideViewDiffWhenDiffInvalid */
+	public function testViewDiffWhenDiffInvalid( $subPage ) {
+		[ $html, ] = $this->executeSpecialPage(
+			$subPage,
+			new FauxRequest(),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString( '(abusefilter-diff-invalid)', $html );
+	}
+
+	public static function provideViewDiffWhenDiffInvalid() {
+		return [
+			'Filter ID is not numeric' => [ 'history/abc/diff/prev/1' ],
+			'Version IDs do not exist' => [ 'history/1/diff/prev/123456' ],
+		];
+	}
+
+	public function testViewDiffForProtectedFilterWhenUserLacksAuthority() {
+		[ $html, ] = $this->executeSpecialPage(
+			'history/1/diff/next/1',
+			new FauxRequest(),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'(abusefilter-history-error-protected)',
+			$html,
+			'The protected filter permission error was not present.'
+		);
 	}
 }
