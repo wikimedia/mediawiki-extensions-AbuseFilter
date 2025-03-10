@@ -147,12 +147,14 @@ class QueryAbuseLog extends ApiQueryBase {
 					}
 					if ( !$canViewProtected && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
 						$this->dieWithError(
-							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ]
+							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ],
+							'permissiondenied'
 						);
 					}
 					if ( !$canViewProtectedValues && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
 						$this->dieWithError(
-							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected-access' ) ]
+							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected-access' ) ],
+							'permissiondenied'
 						);
 					}
 				}

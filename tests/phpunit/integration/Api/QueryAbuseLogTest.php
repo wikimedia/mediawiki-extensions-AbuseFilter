@@ -9,12 +9,11 @@ use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Api\QueryAbuseLog
@@ -23,6 +22,7 @@ use Wikimedia\TestingAccessWrapper;
  * @todo Extend this
  */
 class QueryAbuseLogTest extends ApiTestCase {
+	use MockAuthorityTrait;
 
 	public function testConstruct() {
 		$this->doApiRequest( [
@@ -32,60 +32,53 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->addToAssertionCount( 1 );
 	}
 
+	public function testFilteringForProtectedFilterWhenUserLacksAccess() {
+		$this->expectApiErrorCode( 'permissiondenied' );
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'abuselog',
+			'aflprop' => 'details',
+			'afldir' => 'older',
+			'aflfilter' => 1,
+		] );
+	}
+
+	public function testFilteringForProtectedFilterWhenUserLacksAccessToValues() {
+		$this->setService(
+			'UserOptionsLookup',
+			new StaticUserOptionsLookup( [], [ 'abusefilter-protected-vars-view-agreement' => 0 ] )
+		);
+		$this->expectApiErrorCode( 'permissiondenied' );
+		$this->doApiRequest(
+			[
+				'action' => 'query',
+				'list' => 'abuselog',
+				'aflprop' => 'details',
+				'afldir' => 'older',
+				'aflfilter' => 1,
+			],
+			null, false,
+			$this->mockRegisteredAuthorityWithPermissions( [
+				'abusefilter-log-detail',
+				'abusefilter-view',
+				'abusefilter-log',
+				'abusefilter-privatedetails',
+				'abusefilter-privatedetails-log',
+				'abusefilter-view-private',
+				'abusefilter-log-private',
+				'abusefilter-hidden-log',
+				'abusefilter-hide-log',
+				'abusefilter-access-protected-vars'
+			] )
+		);
+	}
+
 	public function testProtectedVariableValueAccess() {
-		// Add filter to query for
-		$filter = [
-			'id' => '1',
-			'rules' => 'user_unnamed_ip = "1.2.3.4"',
-			'name' => 'Filter with protected variables',
-			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
-			'user' => 0,
-			'user_text' => 'FilterTester',
-			'timestamp' => '20190826000000',
-			'enabled' => 1,
-			'comments' => '',
-			'hit_count' => 0,
-			'throttled' => 0,
-			'deleted' => 0,
-			'actions' => [],
-			'global' => 0,
-			'group' => 'default'
-		];
-		$this->createFilter( $filter );
-
-		// Insert a hit on the filter
-		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
-		$abuseFilterLoggerFactory->newLogger(
-			$this->getExistingTestPage()->getTitle(),
-			$this->getTestUser()->getUser(),
-			VariableHolder::newFromArray( [
-				'action' => 'edit',
-				'user_unnamed_ip' => '1.2.3.4',
-				'user_name' => 'User1',
-			] )
-		)->addLogEntries( [ 1 => [ 'warn' ] ] );
-		$abuseFilterLoggerFactory->newLogger(
-			$this->getExistingTestPage()->getTitle(),
-			$this->getTestUser()->getUser(),
-			VariableHolder::newFromArray( [
-				'action' => 'autocreateaccount',
-				'user_unnamed_ip' => '1.2.3.4',
-				'accountname' => 'User1',
-			] )
-		)->addLogEntries( [ 1 => [ 'warn' ] ] );
-
-		// Update afl_ip to a known value that can be used when it's reconstructed in the variable holder
-		$this->getDb()->newUpdateQueryBuilder()
-			->update( 'abuse_filter_log' )
-			->set( [ 'afl_ip' => '1.2.3.4' ] )
-			->where( [ 'afl_filter_id' => 1 ] )
-			->caller( __METHOD__ )->execute();
-
 		// Create the user to query for filters
 		$user = new UserIdentityValue( 1, 'User1' );
 
 		// Create an authority who can see protected variables but hasn't checked the preference
-		$authorityCanViewProtectedVar = new SimpleAuthority(
+		$authorityCanViewProtectedVar = $this->mockUserAuthorityWithPermissions(
 			$user,
 			[
 				'abusefilter-log-detail',
@@ -148,28 +141,58 @@ class QueryAbuseLogTest extends ApiTestCase {
 		}
 	}
 
-	/**
-	 * Adapted from FilterStoreTest->createFilter()
-	 *
-	 * @param array $row
-	 */
-	private function createFilter( array $row ): void {
-		$row['timestamp'] = $this->getDb()->timestamp( $row['timestamp'] );
-		$filter = $this->getFilterFromSpecs( $row );
-		$oldFilter = MutableFilter::newDefault();
-		// Use some black magic to bypass checks
-		/** @var FilterStore $filterStore */
-		$filterStore = TestingAccessWrapper::newFromObject( AbuseFilterServices::getFilterStore() );
-		$row = $filterStore->filterToDatabaseRow( $filter, $oldFilter );
-		$row['af_actor'] = $this->getServiceContainer()->getActorNormalization()->acquireActorId(
-			$this->getTestUser()->getUserIdentity(),
-			$this->getDb()
-		);
-		$this->getDb()->newInsertQueryBuilder()
-			->insertInto( 'abuse_filter' )
-			->row( $row )
-			->caller( __METHOD__ )
-			->execute();
+	public function addDBDataOnce() {
+		// Add filter to query for
+		$performer = $this->getTestSysop()->getUser();
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$performer, null,
+			$this->getFilterFromSpecs( [
+				'id' => '1',
+				'rules' => 'user_unnamed_ip = "1.2.3.4"',
+				'name' => 'Filter with protected variables',
+				'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+				'user' => $performer->getId(),
+				'user_text' => $performer->getName(),
+				'timestamp' => $this->getDb()->timestamp( '20190826000000' ),
+				'enabled' => 1,
+				'comments' => '',
+				'hit_count' => 0,
+				'throttled' => 0,
+				'deleted' => 0,
+				'actions' => [],
+				'global' => 0,
+				'group' => 'default'
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		// Insert a hit on the filter
+		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
+		$abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$this->getTestUser()->getUser(),
+			VariableHolder::newFromArray( [
+				'action' => 'edit',
+				'user_unnamed_ip' => '1.2.3.4',
+				'user_name' => 'User1',
+			] )
+		)->addLogEntries( [ 1 => [ 'warn' ] ] );
+		$abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$this->getTestUser()->getUser(),
+			VariableHolder::newFromArray( [
+				'action' => 'autocreateaccount',
+				'user_unnamed_ip' => '1.2.3.4',
+				'accountname' => 'User1',
+			] )
+		)->addLogEntries( [ 1 => [ 'warn' ] ] );
+
+		// Update afl_ip to a known value that can be used when it's reconstructed in the variable holder
+		$this->getDb()->newUpdateQueryBuilder()
+			->update( 'abuse_filter_log' )
+			->set( [ 'afl_ip' => '1.2.3.4' ] )
+			->where( [ 'afl_filter_id' => 1 ] )
+			->caller( __METHOD__ )->execute();
 	}
 
 	/**
