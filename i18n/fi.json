@@ -477,6 +477,7 @@
 	"abusefilter-exception-invalidiprange": "Virheellinen IP-osoiteavaruus ”$2” merkin $1 kohdalla.",
 	"abusefilter-exception-disabledvar": "Muuttuja $2 merkissä $1 ei ole enää käytössä.",
 	"abusefilter-exception-unusedvars": "Seuraavat muuttujat eivät ole käytössä: $2.",
+	"abusefilter-parser-warning-match-empty-regex": "Tämä säännöllinen lauseke täsmää tyhjän merkkijonon kanssa, kohdassa $1",
 	"abusefilter-action-tag": "Merkkaa",
 	"abusefilter-action-throttle": "Rajoita",
 	"abusefilter-action-warn": "Varoita",
