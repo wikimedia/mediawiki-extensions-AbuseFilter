@@ -44,4 +44,23 @@ class AbuseFilterPermissionStatusTest extends MediaWikiUnitTestCase {
 		$this->assertNull( $permStatus->getBlock() );
 		$this->assertNull( $permStatus->getPermission() );
 	}
+
+	public function testSetBlock() {
+		$permStatus = AbuseFilterPermissionStatus::newGood();
+		$block = $this->createMock( Block::class );
+		$permStatus->setBlock( $block );
+
+		$this->assertStatusNotGood( $permStatus );
+		$this->assertSame( $block, $permStatus->getBlock() );
+		$this->assertNull( $permStatus->getPermission() );
+	}
+
+	public function testSetPermission() {
+		$permStatus = AbuseFilterPermissionStatus::newGood();
+		$permStatus->setPermission( 'test' );
+
+		$this->assertStatusNotGood( $permStatus );
+		$this->assertNull( $permStatus->getBlock() );
+		$this->assertSame( 'test', $permStatus->getPermission() );
+	}
 }

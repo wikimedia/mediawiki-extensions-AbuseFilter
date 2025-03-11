@@ -108,7 +108,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertFalse( $status->getValue(), 'Status value should be false' );
 	}
 
-	public function testSaveFilter_usesProtectedVars() {
+	public function testSaveFilter__usesProtectedVarsButUserLacksRight() {
 		$row = [
 			'id' => '2',
 			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",
@@ -124,6 +124,17 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		);
 		$expectedError = 'abusefilter-edit-protected-variable';
 		$this->assertStatusWarning( $expectedError, $status );
+	}
+
+	public function testSaveFilter__usesProtectedVarsButFilterNotConfiguredToBeProtected() {
+		$row = [
+			'id' => '2',
+			'rules' => "ip_in_range( user_unnamed_ip, '1.2.3.4' )",
+			'name' => 'Mock filter with protected variable used'
+		];
+
+		$origFilter = MutableFilter::newDefault();
+		$newFilter = $this->getFilterFromSpecs( $row );
 
 		// Add right and try to save filter without setting the 'protected' flag
 		$status = AbuseFilterServices::getFilterStore()->saveFilter(
@@ -131,7 +142,9 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		);
 		$expectedError = 'abusefilter-edit-protected-variable-not-protected';
 		$this->assertStatusWarning( $expectedError, $status );
+	}
 
+	public function testSaveFilter__usesProtectedVarsAndSaveIsSuccessful() {
 		// Save filter with right, with 'protected' flag enabled
 		$row = [
 			'id' => '3',
@@ -141,7 +154,7 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 		];
 		$newFilter = $this->getFilterFromSpecs( $row );
 		$status = AbuseFilterServices::getFilterStore()->saveFilter(
-			$this->mockRegisteredUltimateAuthority(), $row['id'], $newFilter, $origFilter
+			$this->mockRegisteredUltimateAuthority(), $row['id'], $newFilter, MutableFilter::newDefault()
 		);
 		$this->assertStatusGood( $status );
 	}

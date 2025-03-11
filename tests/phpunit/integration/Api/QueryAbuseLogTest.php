@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\ActorStore;
@@ -33,6 +34,11 @@ class QueryAbuseLogTest extends ApiTestCase {
 
 	protected function setUp(): void {
 		parent::setUp();
+
+		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
+		// define additional restrictions that cause the tests to fail.
+		$this->clearHook( 'AbuseFilterCanViewProtectedVariables' );
+		$this->clearHook( 'AbuseFilterCanViewProtectedVariableValues' );
 
 		$this->authorityCannotViewProtectedVar = $this->mockUserAuthorityWithPermissions(
 			self::$userIdentity,
@@ -219,9 +225,10 @@ class QueryAbuseLogTest extends ApiTestCase {
 	public function addDBDataOnce() {
 		$user = $this->getMutableTestUser()->getUserIdentity();
 		// Add filter to query for
-		$performer = $this->getTestSysop()->getUser();
+		$performer = $this->getTestSysop()->getUserIdentity();
+		$authority = new UltimateAuthority( $performer );
 		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
-			$performer, null,
+			$authority, null,
 			$this->getFilterFromSpecs( [
 				'id' => '1',
 				'rules' => 'user_unnamed_ip = "1.2.3.4"',

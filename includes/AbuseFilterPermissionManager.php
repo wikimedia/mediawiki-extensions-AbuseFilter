@@ -3,7 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use LogicException;
+use MapCacheLRU;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Permissions\Authority;
@@ -21,17 +23,26 @@ class AbuseFilterPermissionManager {
 	 */
 	private array $protectedVariables;
 
+	private MapCacheLRU $canViewProtectedVariablesCache;
+	private MapCacheLRU $canViewProtectedVariableValuesCache;
+
 	private UserOptionsLookup $userOptionsLookup;
 	private RuleCheckerFactory $ruleCheckerFactory;
+	private AbuseFilterHookRunner $hookRunner;
 
 	public function __construct(
 		UserOptionsLookup $userOptionsLookup,
 		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup,
-		RuleCheckerFactory $ruleCheckerFactory
+		RuleCheckerFactory $ruleCheckerFactory,
+		AbuseFilterHookRunner $hookRunner
 	) {
 		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
+		$this->hookRunner = $hookRunner;
+
+		$this->canViewProtectedVariablesCache = new MapCacheLRU( 10 );
+		$this->canViewProtectedVariableValuesCache = new MapCacheLRU( 10 );
 	}
 
 	/**
@@ -116,15 +127,58 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * Returns the cache key used to access the MapCacheLRU instances
+	 * caching the return values of {@link self::canViewProtectedVariables}
+	 * and {@link self::canViewProtectedVariableValues}.
+	 *
+	 * @param Authority $performer
+	 * @param array $variables
+	 * @return string
+	 */
+	private function getCacheKey( Authority $performer, array $variables ): string {
+		// Sort the $variables array as the order of the variables will not affect
+		// the return value from the cached methods.
+		sort( $variables );
+
+		return $performer->getUser()->getId() . '-' . implode( ',', $variables );
+	}
+
+	/**
 	 * Whether the given user can see all of the specified protected variables.
 	 *
 	 * @param Authority $performer
 	 * @param string[] $variables The variables, which do not need to filtered to just protected variables.
 	 * @return AbuseFilterPermissionStatus
 	 */
-	public function canViewProtectedVariables(
-		Authority $performer, array $variables = []
-	): AbuseFilterPermissionStatus {
+	public function canViewProtectedVariables( Authority $performer, array $variables ): AbuseFilterPermissionStatus {
+		$variables = $this->getUsedProtectedVariables( $variables );
+
+		// Check if we have the result in cache, and return it if we do.
+		$cacheKey = $this->getCacheKey( $performer, $variables );
+		if ( $this->canViewProtectedVariablesCache->has( $cacheKey ) ) {
+			return $this->canViewProtectedVariablesCache->get( $cacheKey );
+		}
+
+		$returnStatus = $this->checkCanViewProtectedVariables( $performer );
+		if ( !$returnStatus->isGood() ) {
+			$this->canViewProtectedVariablesCache->set( $cacheKey, $returnStatus );
+			return $returnStatus;
+		}
+
+		$this->hookRunner->onAbuseFilterCanViewProtectedVariables( $performer, $variables, $returnStatus );
+
+		$this->canViewProtectedVariablesCache->set( $cacheKey, $returnStatus );
+		return $returnStatus;
+	}
+
+	/**
+	 * Checks that the user is allowed to see protected variables without
+	 * checking variable specific restrictions.
+	 *
+	 * @param Authority $performer
+	 * @return AbuseFilterPermissionStatus
+	 */
+	private function checkCanViewProtectedVariables( Authority $performer ): AbuseFilterPermissionStatus {
 		$block = $performer->getBlock();
 		if ( $block && $block->isSitewide() ) {
 			return AbuseFilterPermissionStatus::newBlockedError( $block );
@@ -145,11 +199,19 @@ class AbuseFilterPermissionManager {
 	 * @return AbuseFilterPermissionStatus
 	 */
 	public function canViewProtectedVariableValues(
-		Authority $performer, array $variables = []
+		Authority $performer, array $variables
 	): AbuseFilterPermissionStatus {
-		$returnStatus = $this->canViewProtectedVariables( $performer, $variables );
+		$variables = $this->getUsedProtectedVariables( $variables );
 
+		// Check if we have the result in cache, and return it if we do.
+		$cacheKey = $this->getCacheKey( $performer, $variables );
+		if ( $this->canViewProtectedVariableValuesCache->has( $cacheKey ) ) {
+			return $this->canViewProtectedVariableValuesCache->get( $cacheKey );
+		}
+
+		$returnStatus = $this->checkCanViewProtectedVariables( $performer );
 		if ( !$returnStatus->isGood() ) {
+			$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
 			return $returnStatus;
 		}
 
@@ -157,10 +219,15 @@ class AbuseFilterPermissionManager {
 			$performer->getUser(),
 			'abusefilter-protected-vars-view-agreement'
 		) ) {
-			return AbuseFilterPermissionStatus::newFatal( 'abusefilter-examine-protected-vars-permission' );
+			$returnStatus = AbuseFilterPermissionStatus::newFatal( 'abusefilter-examine-protected-vars-permission' );
+			$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
+			return $returnStatus;
 		}
 
-		return AbuseFilterPermissionStatus::newGood();
+		$this->hookRunner->onAbuseFilterCanViewProtectedVariableValues( $performer, $variables, $returnStatus );
+
+		$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
+		return $returnStatus;
 	}
 
 	/**
