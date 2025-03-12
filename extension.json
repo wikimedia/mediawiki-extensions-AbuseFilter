@@ -225,7 +225,8 @@
 				"AbuseFilterRuleCheckerFactory",
 				"AbuseFilterPermissionManager",
 				"AbuseFilterVariablesBlobStore",
-				"AbuseFilterVariableGeneratorFactory"
+				"AbuseFilterVariableGeneratorFactory",
+				"AbuseFilterFilterLookup"
 			]
 		},
 		"abuselogprivatedetails": {

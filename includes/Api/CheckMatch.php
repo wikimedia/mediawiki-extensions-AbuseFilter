@@ -9,7 +9,7 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
@@ -26,6 +26,7 @@ class CheckMatch extends ApiBase {
 	private AbuseFilterPermissionManager $afPermManager;
 	private VariablesBlobStore $afVariablesBlobStore;
 	private VariableGeneratorFactory $afVariableGeneratorFactory;
+	private FilterLookup $filterLookup;
 
 	public function __construct(
 		ApiMain $main,
@@ -33,13 +34,15 @@ class CheckMatch extends ApiBase {
 		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		VariablesBlobStore $afVariablesBlobStore,
-		VariableGeneratorFactory $afVariableGeneratorFactory
+		VariableGeneratorFactory $afVariableGeneratorFactory,
+		FilterLookup $filterLookup
 	) {
 		parent::__construct( $main, $action );
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->afPermManager = $afPermManager;
 		$this->afVariablesBlobStore = $afVariablesBlobStore;
 		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
+		$this->filterLookup = $filterLookup;
 	}
 
 	/**
@@ -102,9 +105,7 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
-			// TODO: Replace with dependency injection once security patch is uploaded publicly.
-			$afFilterLookup = AbuseFilterServices::getFilterLookup();
-			$privacyLevel = $afFilterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
+			$privacyLevel = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
 				->getPrivacyLevel();
 			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel );
 			if ( !$canSeeDetails ) {
