@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\ActorStore;
@@ -50,12 +51,14 @@ class ProtectedVarsAccessLogger {
 	private LoggerInterface $logger;
 	private IConnectionProvider $lbFactory;
 	private ActorStore $actorStore;
+	private AbuseFilterHookRunner $hookRunner;
 	private int $delay;
 
 	/**
 	 * @param LoggerInterface $logger
 	 * @param IConnectionProvider $lbFactory
 	 * @param ActorStore $actorStore
+	 * @param AbuseFilterHookRunner $hookRunner
 	 * @param int $delay The number of seconds after which a duplicate log entry can be
 	 *  created for a debounced log
 	 */
@@ -63,6 +66,7 @@ class ProtectedVarsAccessLogger {
 		LoggerInterface $logger,
 		IConnectionProvider $lbFactory,
 		ActorStore $actorStore,
+		AbuseFilterHookRunner $hookRunner,
 		int $delay
 	) {
 		Assert::parameter( $delay > 0, 'delay', 'delay must be positive' );
@@ -70,6 +74,7 @@ class ProtectedVarsAccessLogger {
 		$this->logger = $logger;
 		$this->lbFactory = $lbFactory;
 		$this->actorStore = $actorStore;
+		$this->hookRunner = $hookRunner;
 		$this->delay = $delay;
 	}
 
@@ -141,6 +146,20 @@ class ProtectedVarsAccessLogger {
 	): void {
 		if ( !$timestamp ) {
 			$timestamp = (int)wfTimestamp();
+		}
+
+		// Allow external extensions to hook into this logger and pass along all known
+		// values. External extensions can abort this hook to stop additional logging
+		if ( !$this->hookRunner->onAbuseFilterLogProtectedVariableValueAccess(
+			$performer,
+			$target,
+			$action,
+			$shouldDebounce,
+			$timestamp,
+			$params
+		) ) {
+			// Don't continue if the hook returns false
+			return;
 		}
 
 		// Log to CheckUser's temporary accounts log if CU is installed

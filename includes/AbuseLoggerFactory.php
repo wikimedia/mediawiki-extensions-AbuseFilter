@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -45,6 +46,8 @@ class AbuseLoggerFactory {
 	private $requestIP;
 	/** @var LoggerInterface */
 	private $logger;
+	/** @var AbuseFilterHookRunner */
+	private $hookRunner;
 
 	/**
 	 * @param CentralDBManager $centralDBManager
@@ -58,6 +61,7 @@ class AbuseLoggerFactory {
 	 * @param string $wikiID
 	 * @param string $requestIP
 	 * @param LoggerInterface $logger
+	 * @param AbuseFilterHookRunner $hookRunner
 	 */
 	public function __construct(
 		CentralDBManager $centralDBManager,
@@ -70,7 +74,8 @@ class AbuseLoggerFactory {
 		ServiceOptions $options,
 		string $wikiID,
 		string $requestIP,
-		LoggerInterface $logger
+		LoggerInterface $logger,
+		AbuseFilterHookRunner $hookRunner
 	) {
 		$this->centralDBManager = $centralDBManager;
 		$this->filterLookup = $filterLookup;
@@ -83,6 +88,7 @@ class AbuseLoggerFactory {
 		$this->wikiID = $wikiID;
 		$this->requestIP = $requestIP;
 		$this->logger = $logger;
+		$this->hookRunner = $hookRunner;
 	}
 
 	/**
@@ -96,6 +102,7 @@ class AbuseLoggerFactory {
 			$this->logger,
 			$this->lbFactory,
 			$this->actorStore,
+			$this->hookRunner,
 			$delay
 		);
 	}

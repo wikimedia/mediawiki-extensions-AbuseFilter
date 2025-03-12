@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 use RecentChange;
 
 /**
@@ -28,6 +29,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterGenerateUserVarsHook,
 	AbuseFilterGenerateVarsForRecentChangeHook,
 	AbuseFilterInterceptVariableHook,
+	AbuseFilterProtectedVarsAccessLoggerHook,
 	AbuseFilterShouldFilterActionHook,
 	AbuseFilterGetDangerousActionsHook
 {
@@ -231,6 +233,24 @@ class AbuseFilterHookRunner implements
 			'AbuseFilterCustomProtectedVariables',
 			[ &$variables ],
 			[ 'abortable' => false ]
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onAbuseFilterLogProtectedVariableValueAccess(
+		UserIdentity $performer,
+		string $target,
+		string $action,
+		bool $shouldDebounce,
+		int $timestamp,
+		array $params
+	) {
+		return $this->hookContainer->run(
+			'AbuseFilterLogProtectedVariableValueAccess',
+			[ $performer, $target, $action, $shouldDebounce, $timestamp, $params ],
+			[ 'abortable' => true ]
 		);
 	}
 }

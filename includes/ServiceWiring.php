@@ -258,7 +258,8 @@ return [
 			),
 			WikiMap::getCurrentWikiDbDomain()->getId(),
 			RequestContext::getMain()->getRequest()->getIP(),
-			LoggerFactory::getInstance( 'AbuseFilter' )
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME )
 		);
 	},
 	UpdateHitCountWatcher::SERVICE_NAME => static function ( MediaWikiServices $services ): UpdateHitCountWatcher {

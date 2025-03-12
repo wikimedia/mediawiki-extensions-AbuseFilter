@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
@@ -45,7 +46,8 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			),
 			'wikiID',
 			'1.2.3.4',
-			$this->createMock( LoggerInterface::class )
+			$this->createMock( LoggerInterface::class ),
+			$this->createMock( AbuseFilterHookRunner::class )
 		);
 		$logger = $factory->newLogger(
 			$this->createMock( Title::class ),
