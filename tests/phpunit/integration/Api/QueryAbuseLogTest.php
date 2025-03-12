@@ -3,11 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
-use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
-use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
@@ -23,6 +21,7 @@ use MediaWiki\User\UserIdentityValue;
  */
 class QueryAbuseLogTest extends ApiTestCase {
 	use MockAuthorityTrait;
+	use FilterFromSpecsTestTrait;
 
 	public function testConstruct() {
 		$this->doApiRequest( [
@@ -102,6 +101,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			'afldir' => 'older',
 		], null, null, $authorityCanViewProtectedVar );
 		$result = $result[0]['query']['abuselog'];
+		$this->assertNotCount( 0, $result, 'abuselog API response should not be empty' );
 		foreach ( $result as $row ) {
 			$this->assertSame( '', $row['details']['user_unnamed_ip'], 'IP is redacted' );
 		}
@@ -150,18 +150,9 @@ class QueryAbuseLogTest extends ApiTestCase {
 				'id' => '1',
 				'rules' => 'user_unnamed_ip = "1.2.3.4"',
 				'name' => 'Filter with protected variables',
-				'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
-				'user' => $performer->getId(),
-				'user_text' => $performer->getName(),
-				'timestamp' => $this->getDb()->timestamp( '20190826000000' ),
-				'enabled' => 1,
-				'comments' => '',
-				'hit_count' => 0,
-				'throttled' => 0,
-				'deleted' => 0,
-				'actions' => [],
-				'global' => 0,
-				'group' => 'default'
+				'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
+				'lastEditor' => $performer,
+				'lastEditTimestamp' => $this->getDb()->timestamp( '20190826000000' ),
 			] ),
 			MutableFilter::newDefault()
 		) );
@@ -193,39 +184,5 @@ class QueryAbuseLogTest extends ApiTestCase {
 			->set( [ 'afl_ip' => '1.2.3.4' ] )
 			->where( [ 'afl_filter_id' => 1 ] )
 			->caller( __METHOD__ )->execute();
-	}
-
-	/**
-	 * Adapted from FilterStoreTest->getFilterFromSpecs()
-	 *
-	 * @param array $filterSpecs
-	 * @param array $actions
-	 * @return Filter
-	 */
-	private function getFilterFromSpecs( array $filterSpecs, array $actions = [] ): Filter {
-		return new Filter(
-			new Specs(
-				$filterSpecs['rules'],
-				$filterSpecs['comments'],
-				$filterSpecs['name'],
-				array_keys( $filterSpecs['actions'] ),
-				$filterSpecs['group']
-			),
-			new Flags(
-				$filterSpecs['enabled'],
-				$filterSpecs['deleted'],
-				$filterSpecs['hidden'],
-				$filterSpecs['global']
-			),
-			$actions,
-			new LastEditInfo(
-				$filterSpecs['user'],
-				$filterSpecs['user_text'],
-				$filterSpecs['timestamp']
-			),
-			$filterSpecs['id'],
-			$filterSpecs['hit_count'],
-			$filterSpecs['throttled']
-		);
 	}
 }

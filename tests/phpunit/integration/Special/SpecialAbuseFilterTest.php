@@ -5,12 +5,10 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
-use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
-use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
+use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewExamine;
@@ -43,6 +41,7 @@ use SpecialPageTestBase;
  */
 class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	use MockAuthorityTrait;
+	use FilterFromSpecsTestTrait;
 
 	private Authority $authorityCannotUseProtectedVar;
 
@@ -96,17 +95,9 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'id' => '1',
 			'rules' => 'user_unnamed_ip = "1.2.3.5"',
 			'name' => 'Filter with protected variables',
-			'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+			'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
 			'userIdentity' => $performer,
 			'timestamp' => $this->getDb()->timestamp( '20190826000000' ),
-			'enabled' => 1,
-			'comments' => '',
-			'hit_count' => 0,
-			'throttled' => 0,
-			'deleted' => 0,
-			'actions' => [],
-			'global' => 0,
-			'group' => 'default',
 		] );
 		$this->assertStatusGood( $filterStore->saveFilter(
 			$authority, null, $firstFilterRevision, MutableFilter::newDefault()
@@ -117,17 +108,10 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				'id' => '1',
 				'rules' => 'user_unnamed_ip = "1.2.3.4"',
 				'name' => 'Filter with protected variables',
-				'hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+				'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
 				'userIdentity' => $performer,
 				'timestamp' => $this->getDb()->timestamp( '20190827000000' ),
-				'enabled' => 1,
-				'comments' => '',
-				'hit_count' => 1,
-				'throttled' => 0,
-				'deleted' => 0,
-				'actions' => [],
-				'global' => 0,
-				'group' => 'default',
+				'hitCount' => 1,
 			] ),
 			$firstFilterRevision
 		) );
@@ -139,17 +123,9 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				'id' => '2',
 				'rules' => 'user_name = "1.2.3.4"',
 				'name' => 'Filter without protected variables',
-				'hidden' => Flags::FILTER_PUBLIC,
+				'privacy' => Flags::FILTER_PUBLIC,
 				'userIdentity' => $performer,
 				'timestamp' => '20000101000000',
-				'enabled' => 1,
-				'comments' => '',
-				'hit_count' => 0,
-				'throttled' => 0,
-				'deleted' => 0,
-				'actions' => [],
-				'global' => 0,
-				'group' => 'default',
 			] ),
 			MutableFilter::newDefault()
 		) );
@@ -191,41 +167,6 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			$services->getLinkRendererFactory()->create()
 		);
 		return $sp;
-	}
-
-	/**
-	 * Adapted from FilterStoreTest->getFilterFromSpecs()
-	 *
-	 * @param array $filterSpecs
-	 * @param array $actions
-	 * @return Filter
-	 */
-	private function getFilterFromSpecs( array $filterSpecs, array $actions = [] ): Filter {
-		$filterSpecs['timestamp'] = $this->getDb()->timestamp( $filterSpecs['timestamp'] );
-		return new Filter(
-			new Specs(
-				$filterSpecs['rules'],
-				$filterSpecs['comments'],
-				$filterSpecs['name'],
-				array_keys( $filterSpecs['actions'] ),
-				$filterSpecs['group']
-			),
-			new Flags(
-				$filterSpecs['enabled'],
-				$filterSpecs['deleted'],
-				$filterSpecs['hidden'],
-				$filterSpecs['global']
-			),
-			$actions,
-			new LastEditInfo(
-				$filterSpecs['userIdentity']->getId(),
-				$filterSpecs['userIdentity']->getName(),
-				$filterSpecs['timestamp']
-			),
-			$filterSpecs['id'],
-			$filterSpecs['hit_count'],
-			$filterSpecs['throttled']
-		);
 	}
 
 	public function testViewEditTokenMismatch() {
