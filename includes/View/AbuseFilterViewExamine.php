@@ -306,7 +306,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// 1. the `abusefilter-access-protected-vars` right
 		// 2. agreement to the `abusefilter-protected-vars-view-agreement` preference
 		$userAuthority = $this->getAuthority();
-		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariableValues( $userAuthority );
+		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariableValues( $userAuthority )->isGood();
 		if ( FilterUtils::isProtected( $privacyLevel ) ) {
 			if ( !$canViewProtectedVars ) {
 				$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
