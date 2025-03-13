@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use LogicException;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -20,13 +22,16 @@ class AbuseFilterPermissionManager {
 	private array $protectedVariables;
 
 	private UserOptionsLookup $userOptionsLookup;
+	private RuleCheckerFactory $ruleCheckerFactory;
 
 	public function __construct(
 		UserOptionsLookup $userOptionsLookup,
-		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup
+		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup,
+		RuleCheckerFactory $ruleCheckerFactory
 	) {
 		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 	}
 
 	/**
@@ -89,10 +94,37 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * Whether the given user can see all of the protected variables used in the given filter.
+	 *
 	 * @param Authority $performer
+	 * @param AbstractFilter $filter
+	 * @return AbuseFilterPermissionStatus
+	 * @throws LogicException If the provided $filter is not protected. Check if the filter is protected using
+	 *   {@link AbstractFilter::isProtected} before calling this method.
+	 */
+	public function canViewProtectedVariablesInFilter(
+		Authority $performer, AbstractFilter $filter
+	): AbuseFilterPermissionStatus {
+		if ( !$filter->isProtected() ) {
+			throw new LogicException(
+				'::canViewProtectedVariablesInFilter should not be called when the provided $filter is not protected'
+			);
+		}
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		$usedVars = $ruleChecker->getUsedVars( $filter->getRules() );
+		return $this->canViewProtectedVariables( $performer, $usedVars );
+	}
+
+	/**
+	 * Whether the given user can see all of the specified protected variables.
+	 *
+	 * @param Authority $performer
+	 * @param string[] $variables The variables, which do not need to filtered to just protected variables.
 	 * @return AbuseFilterPermissionStatus
 	 */
-	public function canViewProtectedVariables( Authority $performer ): AbuseFilterPermissionStatus {
+	public function canViewProtectedVariables(
+		Authority $performer, array $variables = []
+	): AbuseFilterPermissionStatus {
 		$block = $performer->getBlock();
 		if ( $block && $block->isSitewide() ) {
 			return AbuseFilterPermissionStatus::newBlockedError( $block );
@@ -106,11 +138,16 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * Whether the given user can see values for all of the specified protected variables.
+	 *
 	 * @param Authority $performer
+	 * @param string[] $variables The variables, which do not need to filtered to just protected variables.
 	 * @return AbuseFilterPermissionStatus
 	 */
-	public function canViewProtectedVariableValues( Authority $performer ): AbuseFilterPermissionStatus {
-		$returnStatus = $this->canViewProtectedVariables( $performer );
+	public function canViewProtectedVariableValues(
+		Authority $performer, array $variables = []
+	): AbuseFilterPermissionStatus {
+		$returnStatus = $this->canViewProtectedVariables( $performer, $variables );
 
 		if ( !$returnStatus->isGood() ) {
 			return $returnStatus;
@@ -147,7 +184,10 @@ class AbuseFilterPermissionManager {
 	public function getForbiddenVariables( Authority $performer, array $usedVariables ): array {
 		$usedProtectedVariables = $this->getUsedProtectedVariables( $usedVariables );
 		// All good if protected variables aren't used, or the user can view them.
-		if ( count( $usedProtectedVariables ) === 0 || $this->canViewProtectedVariables( $performer )->isGood() ) {
+		if (
+			count( $usedProtectedVariables ) === 0 ||
+			$this->canViewProtectedVariables( $performer, $usedProtectedVariables )->isGood()
+		) {
 			return [];
 		}
 		return $usedProtectedVariables;
@@ -199,6 +239,10 @@ class AbuseFilterPermissionManager {
 	/**
 	 * Checks if a user can see log details associated with a given filter.
 	 *
+	 * If the filter is protected, you should call {@link self::canViewProtectedVariableValues}
+	 * or {@link self::canViewProtectedVariables} as appropriate, providing the variables
+	 * present in the log details.
+	 *
 	 * @param Authority $performer
 	 * @param AbstractFilter $filter
 	 * @return bool
@@ -211,7 +255,12 @@ class AbuseFilterPermissionManager {
 		if ( $filter->isHidden() && !$this->canViewPrivateFiltersLogs( $performer ) ) {
 			return false;
 		}
-		if ( $filter->isProtected() && !$this->canViewProtectedVariables( $performer )->isGood() ) {
+
+		// Callers are expected to check access to the specific protected variables used in the given
+		// log entries. This is because the variables in the logs may be different to the current filter.
+		// We don't want to prevent access to past logs based on the variables currently in the filter,
+		// to avoid hiding logs which the user should be able to see otherwise.
+		if ( $filter->isProtected() && !$this->canViewProtectedVariables( $performer, [] )->isGood() ) {
 			return false;
 		}
 
