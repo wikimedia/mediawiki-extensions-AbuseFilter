@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter;
 use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Title\Title;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserIdentity;
@@ -162,76 +161,57 @@ class ProtectedVarsAccessLogger {
 			return;
 		}
 
-		// Log to CheckUser's temporary accounts log if CU is installed
-		if ( MediaWikiServices::getInstance()->getExtensionRegistry()->isLoaded( 'CheckUser' ) ) {
-			// Add the extension name to the action so that CheckUser has a clearer
-			// reference to the source in the message key
-			$action = 'af-' . $action;
+		$dbw = $this->lbFactory->getPrimaryDatabase();
+		$shouldLog = false;
 
-			$logger = MediaWikiServices::getInstance()
-				->getService( 'CheckUserTemporaryAccountLoggerFactory' )
-				->getLogger();
-			$logger->logFromExternal(
-				$performer,
-				$target,
-				$action,
-				$params,
-				$shouldDebounce,
-				$timestamp
-			);
-		} else {
-			$dbw = $this->lbFactory->getPrimaryDatabase();
-			$shouldLog = false;
-
-			// If the log is debounced, check against the logging table before logging
-			if ( $shouldDebounce ) {
-				$timestampMinusDelay = $timestamp - $this->delay;
-				$actorId = $this->actorStore->findActorId( $performer, $dbw );
-				if ( !$actorId ) {
-					$shouldLog = true;
-				} else {
-					$logline = $dbw->newSelectQueryBuilder()
-						->select( '*' )
-						->from( 'logging' )
-						->where( [
-							'log_type' => self::LOG_TYPE,
-							'log_action' => $action,
-							'log_actor' => $actorId,
-							'log_namespace' => NS_USER,
-							'log_title' => $target,
-							$dbw->expr( 'log_timestamp', '>', $dbw->timestamp( $timestampMinusDelay ) ),
-						] )
-						->caller( __METHOD__ )
-						->fetchRow();
-
-					if ( !$logline ) {
-						$shouldLog = true;
-					}
-				}
-			} else {
-				// If the log isn't debounced then it should always be logged
+		// If the log is debounced, check against the logging table before logging
+		if ( $shouldDebounce ) {
+			$timestampMinusDelay = $timestamp - $this->delay;
+			$actorId = $this->actorStore->findActorId( $performer, $dbw );
+			if ( !$actorId ) {
 				$shouldLog = true;
-			}
+			} else {
+				$logline = $dbw->newSelectQueryBuilder()
+					->select( '*' )
+					->from( 'logging' )
+					->where( [
+						'log_type' => self::LOG_TYPE,
+						'log_action' => $action,
+						'log_actor' => $actorId,
+						'log_namespace' => NS_USER,
+						'log_title' => $target,
+						$dbw->expr( 'log_timestamp', '>', $dbw->timestamp( $timestampMinusDelay ) ),
+					] )
+					->caller( __METHOD__ )
+					->fetchRow();
 
-			// Actually write to logging table
-			if ( $shouldLog ) {
-				$logEntry = $this->createManualLogEntry( $action );
-				$logEntry->setPerformer( $performer );
-				$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
-				$logEntry->setParameters( $params );
-				$logEntry->setTimestamp( wfTimestamp( TS_MW, $timestamp ) );
-
-				try {
-					$logEntry->insert( $dbw );
-				} catch ( DBError $e ) {
-					$this->logger->critical(
-						'AbuseFilter proctected variable log entry was not recorded. ' .
-						'This means access to IPs can occur without being auditable. ' .
-						'Immediate fix required.'
-					);
-
-					throw $e;
+				if ( !$logline ) {
+					$shouldLog = true;
 				}
+			}
+		} else {
+			// If the log isn't debounced then it should always be logged
+			$shouldLog = true;
+		}
+
+		// Actually write to logging table
+		if ( $shouldLog ) {
+			$logEntry = $this->createManualLogEntry( $action );
+			$logEntry->setPerformer( $performer );
+			$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
+			$logEntry->setParameters( $params );
+			$logEntry->setTimestamp( wfTimestamp( TS_MW, $timestamp ) );
+
+			try {
+				$logEntry->insert( $dbw );
+			} catch ( DBError $e ) {
+				$this->logger->critical(
+					'AbuseFilter proctected variable log entry was not recorded. ' .
+					'This means access to IPs can occur without being auditable. ' .
+					'Immediate fix required.'
+				);
+
+				throw $e;
 			}
 		}
 	}
