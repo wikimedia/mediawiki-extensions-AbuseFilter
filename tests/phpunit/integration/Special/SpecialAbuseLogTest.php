@@ -3,21 +3,35 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Special;
 
 use Generator;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
+use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
+use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
 use stdClass;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog
+ * @group Database
  */
 class SpecialAbuseLogTest extends MediaWikiIntegrationTestCase {
+	use FilterFromSpecsTestTrait;
+	use MockAuthorityTrait;
+
+	private static UserIdentity $logPerformer;
+
 	/**
 	 * @param stdClass $row
 	 * @param RevisionRecord $revRec
@@ -91,5 +105,73 @@ class SpecialAbuseLogTest extends MediaWikiIntegrationTestCase {
 			[ $hiddenRow, $allSuppRev, true, true, SpecialAbuseLog::VISIBILITY_VISIBLE ];
 		yield 'Hidden entry, all suppressed rev, cannot see hidden, can see suppressed' =>
 			[ $hiddenRow, $allSuppRev, false, true, SpecialAbuseLog::VISIBILITY_HIDDEN ];
+	}
+
+	/** @dataProvider provideGetPrivateDetailsRowForFatalStatus */
+	public function testGetPrivateDetailsRowForFatalStatus( $id, $authorityHasRights, $expectedErrorMessage ) {
+		if ( $authorityHasRights ) {
+			$authority = $this->mockRegisteredUltimateAuthority();
+		} else {
+			$authority = $this->mockRegisteredNullAuthority();
+		}
+		$this->assertStatusError(
+			$expectedErrorMessage,
+			SpecialAbuseLog::getPrivateDetailsRow( $authority, $id )
+		);
+	}
+
+	public static function provideGetPrivateDetailsRowForFatalStatus() {
+		return [
+			'Filter ID does not exist' => [ 1234, true, 'abusefilter-log-nonexistent' ],
+			'Authority lacks rights' => [ 1, false, 'abusefilter-log-cannot-see-details' ],
+		];
+	}
+
+	public function testGetPrivateDetailsRow() {
+		$actualStatus = SpecialAbuseLog::getPrivateDetailsRow( $this->mockRegisteredUltimateAuthority(), 1 );
+		$this->assertStatusGood( $actualStatus );
+		$this->assertStatusValue(
+			(object)[
+				'afl_id' => '1',
+				'afl_user_text' => self::$logPerformer->getName(),
+				'afl_filter_id' => '1',
+				'afl_global' => '0',
+				'afl_timestamp' => '20240506070809',
+				'afl_ip' => '1.2.3.4',
+				'af_id' => '1',
+				'af_public_comments' => 'Filter with protected variables',
+				'af_hidden' => Flags::FILTER_USES_PROTECTED_VARS,
+			],
+			$actualStatus
+		);
+	}
+
+	public function addDBDataOnce() {
+		ConvertibleTimestamp::setFakeTime( '20240506070809' );
+		// Get a testing filter
+		$performer = $this->getTestSysop()->getUser();
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$performer, null,
+			$this->getFilterFromSpecs( [
+				'id' => '1',
+				'name' => 'Filter with protected variables',
+				'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		// Insert a hit on the filter
+		RequestContext::getMain()->getRequest()->setIP( '1.2.3.4' );
+		$logPerformer = $this->getTestUser();
+		self::$logPerformer = $logPerformer->getUserIdentity();
+		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
+		$abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$logPerformer->getUser(),
+			VariableHolder::newFromArray( [
+				'action' => 'edit',
+				'user_name' => 'User1',
+			] )
+		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 	}
 }
