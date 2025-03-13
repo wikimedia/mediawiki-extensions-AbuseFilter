@@ -1203,7 +1203,11 @@ class FilterEvaluator {
 	 * @return array|string
 	 */
 	protected function rmspecials( $s ) {
-		return preg_replace( '/[^\p{L}\p{N}\s]/u', '', $s );
+		// (T385452) Disable JIT for this call, as it breaks sometimes
+		ini_set( 'pcre.jit', '0' );
+		$res = preg_replace( '/[^\p{L}\p{N}\s]/u', '', $s );
+		ini_restore( 'pcre.jit' );
+		return $res;
 	}
 
 	/**
