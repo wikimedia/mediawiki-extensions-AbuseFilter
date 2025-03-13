@@ -8,7 +8,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
@@ -174,27 +174,21 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		$filterID = $row->afl_filter_id;
 		$global = $row->afl_global;
 
-		if ( $global ) {
-			// Pull global filter description
-			$lookup = AbuseFilterServices::getFilterLookup();
-			try {
-				$filterObj = $lookup->getFilter( $filterID, true );
-				$globalDesc = $filterObj->getName();
-				$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $globalDesc );
-				$privacyLevel = $filterObj->getPrivacyLevel();
-			} catch ( CentralDBNotAvailableException $_ ) {
-				$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
-				// either hide all filters, including not hidden/protected, or show all, including hidden/protected
-				// we choose the former
-				$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
-			}
-		} else {
-			$escaped_comments = Sanitizer::escapeHtmlAllowEntities(
-				$row->af_public_comments ?? '' );
-			$privacyLevel = $row->af_hidden;
+		// Pull global filter description
+		$lookup = AbuseFilterServices::getFilterLookup();
+		try {
+			$filterObj = $lookup->getFilter( $filterID, $global );
+			$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $filterObj->getName() );
+		} catch ( CentralDBNotAvailableException $_ ) {
+			$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
+			// either hide all filters, including not hidden/protected, or show all, including hidden/protected
+			// we choose the former
+			$filterObj = MutableFilter::newDefault();
+			$filterObj->setProtected( true );
+			$filterObj->setHidden( true );
 		}
 
-		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
+		if ( $this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $filterObj ) ) {
 			$actionLinks = [];
 
 			if ( $isListItem ) {
@@ -343,7 +337,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	 */
 	public function getQueryInfo() {
 		$info = [
-			'tables' => [ 'abuse_filter_log', 'abuse_filter', 'revision' ],
+			'tables' => [ 'abuse_filter_log', 'revision' ],
 			'fields' => [
 				'afl_id',
 				'afl_global',
@@ -360,16 +354,10 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				'afl_wiki',
 				'afl_deleted',
 				'afl_rev_id',
-				'af_public_comments',
-				'af_hidden',
 				'rev_id',
 			],
 			'conds' => $this->conds,
 			'join_conds' => [
-				'abuse_filter' => [
-					'LEFT JOIN',
-					[ 'af_id=afl_filter_id', 'afl_global' => 0 ],
-				],
 				'revision' => [
 					'LEFT JOIN',
 					[

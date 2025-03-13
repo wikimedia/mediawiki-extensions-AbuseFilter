@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Pager;
 use LogicException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
@@ -36,14 +37,11 @@ class AbuseFilterPager extends TablePager {
 		'af_public_comments' => [ 'af_public_comments', 'af_id' ],
 	];
 
-	/** @var ?LinkBatchFactory */
-	private $linkBatchFactory;
+	private ?LinkBatchFactory $linkBatchFactory;
+	private AbuseFilterPermissionManager $afPermManager;
+	private FilterLookup $filterLookup;
 
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
-
-	/** @var SpecsFormatter */
-	protected $specsFormatter;
+	protected SpecsFormatter $specsFormatter;
 
 	/**
 	 * @var AbuseFilterViewList The associated page
@@ -68,6 +66,7 @@ class AbuseFilterPager extends TablePager {
 	 * @param ?LinkBatchFactory $linkBatchFactory
 	 * @param AbuseFilterPermissionManager $afPermManager
 	 * @param SpecsFormatter $specsFormatter
+	 * @param FilterLookup $filterLookup
 	 * @param array $conds
 	 * @param ?string $searchPattern Null if no pattern was specified
 	 * @param ?string $searchMode
@@ -78,6 +77,7 @@ class AbuseFilterPager extends TablePager {
 		?LinkBatchFactory $linkBatchFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		SpecsFormatter $specsFormatter,
+		FilterLookup $filterLookup,
 		array $conds,
 		?string $searchPattern,
 		?string $searchMode
@@ -88,6 +88,7 @@ class AbuseFilterPager extends TablePager {
 		parent::__construct( $page->getContext(), $linkRenderer );
 		$this->mPage = $page;
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->filterLookup = $filterLookup;
 		$this->conds = $conds;
 		$this->searchPattern = $searchPattern;
 		$this->searchMode = $searchMode;
@@ -97,30 +98,9 @@ class AbuseFilterPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
-		return [
-			'tables' => [ 'abuse_filter', 'actor' ],
-			'fields' => [
-				// All columns but af_comments
-				'af_id',
-				'af_enabled',
-				'af_deleted',
-				'af_pattern',
-				'af_global',
-				'af_public_comments',
-				'af_user' => 'actor_user',
-				'af_user_text' => 'actor_name',
-				'af_hidden',
-				'af_hit_count',
-				'af_timestamp',
-				'af_actions',
-				'af_group',
-				'af_throttled'
-			],
-			'conds' => $this->conds,
-			'join_conds' => [
-				'actor' => [ 'JOIN', 'actor_id = af_actor' ],
-			]
-		];
+		return $this->filterLookup->getAbuseFilterQueryBuilder( $this->getDatabase() )
+			->andWhere( $this->conds )
+			->getQueryInfo();
 	}
 
 	/**
@@ -304,7 +284,11 @@ class AbuseFilterPager extends TablePager {
 				}
 				return $lang->commaList( $flagMsgs );
 			case 'af_hit_count':
-				if ( $this->afPermManager->canSeeLogDetailsForFilter( $this->getAuthority(), $row->af_hidden ) ) {
+				// FilterLookup::filterFromRow $actions is either an array or callable. We want to provide
+				// an empty array, as we don't need to use actions for this code.
+				// @phan-suppress-next-line PhanTypeInvalidCallableArraySize
+				$filter = $this->filterLookup->filterFromRow( $row, [] );
+				if ( $this->afPermManager->canSeeLogDetailsForFilter( $this->getAuthority(), $filter ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $linkRenderer->makeKnownLink(

@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
@@ -222,10 +223,16 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideCanSeeLogDetailsForFilter
 	 */
 	public function testCanSeeLogDetailsForFilter( int $privacyLevel, array $rights, bool $expected ) {
+		$filter = new AbstractFilter(
+			new Specs( '/**/', '', 'Test filter', [], 'default' ),
+			new Flags( true, true, $privacyLevel, false ),
+			[]
+		);
 		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+
 		$this->assertSame(
 			$expected,
-			$this->getPermMan()->canSeeLogDetailsForFilter( $performer, $privacyLevel )
+			$this->getPermMan()->canSeeLogDetailsForFilter( $performer, $filter )
 		);
 	}
 

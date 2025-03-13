@@ -10,9 +10,8 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterExaminePager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
@@ -277,12 +276,14 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		}
 
 		try {
-			$privacyLevel = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )->getPrivacyLevel();
+			$filter = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global );
 		} catch ( CentralDBNotAvailableException $_ ) {
 			// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow
-			$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
+			$filter = MutableFilter::newDefault();
+			$filter->setProtected( true );
+			$filter->setHidden( true );
 		}
-		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
+		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $filter ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
 			return;
 		}
@@ -307,7 +308,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// 2. agreement to the `abusefilter-protected-vars-view-agreement` preference
 		$userAuthority = $this->getAuthority();
 		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariableValues( $userAuthority )->isGood();
-		if ( FilterUtils::isProtected( $privacyLevel ) ) {
+		if ( $filter->isProtected() ) {
 			if ( !$canViewProtectedVars ) {
 				$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
 				return;
@@ -333,7 +334,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				} else {
 					// Protected variable in protected filters logs access in the general permission check
 					// Log access to non-protected filters that happen to expose protected variables here
-					if ( !FilterUtils::isProtected( $privacyLevel ) ) {
+					if ( !$filter->isProtected() ) {
 						$shouldLogProtectedVarAccess = true;
 					}
 				}

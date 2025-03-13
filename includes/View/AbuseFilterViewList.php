@@ -7,6 +7,7 @@ use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterPager;
 use MediaWiki\Extension\AbuseFilter\Pager\GlobalAbuseFilterPager;
@@ -23,33 +24,13 @@ use Wikimedia\Rdbms\IConnectionProvider;
  */
 class AbuseFilterViewList extends AbuseFilterView {
 
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
+	private LinkBatchFactory $linkBatchFactory;
+	private IConnectionProvider $dbProvider;
+	private FilterProfiler $filterProfiler;
+	private SpecsFormatter $specsFormatter;
+	private CentralDBManager $centralDBManager;
+	private FilterLookup $filterLookup;
 
-	/** @var IConnectionProvider */
-	private $dbProvider;
-
-	/** @var FilterProfiler */
-	private $filterProfiler;
-
-	/** @var SpecsFormatter */
-	private $specsFormatter;
-
-	/** @var CentralDBManager */
-	private $centralDBManager;
-
-	/**
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param IConnectionProvider $dbProvider
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param FilterProfiler $filterProfiler
-	 * @param SpecsFormatter $specsFormatter
-	 * @param CentralDBManager $centralDBManager
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
 		LinkBatchFactory $linkBatchFactory,
 		IConnectionProvider $dbProvider,
@@ -57,6 +38,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		FilterProfiler $filterProfiler,
 		SpecsFormatter $specsFormatter,
 		CentralDBManager $centralDBManager,
+		FilterLookup $filterLookup,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -69,6 +51,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $context );
 		$this->centralDBManager = $centralDBManager;
+		$this->filterLookup = $filterLookup;
 	}
 
 	/**
@@ -237,6 +220,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				$this->afPermManager,
 				$this->specsFormatter,
 				$this->centralDBManager,
+				$this->filterLookup,
 				$conds
 			);
 		} else {
@@ -246,6 +230,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				$this->linkBatchFactory,
 				$this->afPermManager,
 				$this->specsFormatter,
+				$this->filterLookup,
 				$conds,
 				$querypattern,
 				$searchmode

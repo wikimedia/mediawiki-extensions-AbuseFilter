@@ -12,8 +12,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
-use MediaWiki\Extension\AbuseFilter\FilterUtils;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
@@ -746,44 +745,42 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			->fetchRow();
 
 		$error = null;
-		$privacyLevel = Flags::FILTER_PUBLIC;
 		if ( !$row ) {
-			$error = 'abusefilter-log-nonexistent';
+			$out->addWikiMsg( 'abusefilter-log-nonexistent' );
+			return;
+		}
+
+		$filterID = $row->afl_filter_id;
+		$global = $row->afl_global;
+
+		try {
+			$filter = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global );
+		} catch ( CentralDBNotAvailableException $_ ) {
+			// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow
+			$filter = MutableFilter::newDefault();
+			$filter->setHidden( true );
+			$filter->setProtected( true );
+		}
+
+		if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $filter ) ) {
+			$error = 'abusefilter-log-cannot-see-details';
 		} else {
-			$filterID = $row->afl_filter_id;
-			$global = $row->afl_global;
-
-			$privacyLevel = $row->af_hidden;
-			if ( $global ) {
-				try {
-					$privacyLevel = AbuseFilterServices::getFilterLookup()->getFilter( $filterID, $global )
-						->getPrivacyLevel();
-				} catch ( CentralDBNotAvailableException $_ ) {
-					// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow
-					$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
-				}
+			$visibility = self::getEntryVisibilityForUser( $row, $performer, $this->afPermissionManager );
+			if ( $visibility === self::VISIBILITY_HIDDEN ) {
+				$error = 'abusefilter-log-details-hidden';
+			} elseif ( $visibility === self::VISIBILITY_HIDDEN_IMPLICIT ) {
+				$error = 'abusefilter-log-details-hidden-implicit';
 			}
+		}
 
-			if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $performer, $privacyLevel ) ) {
-				$error = 'abusefilter-log-cannot-see-details';
-			} else {
-				$visibility = self::getEntryVisibilityForUser( $row, $performer, $this->afPermissionManager );
-				if ( $visibility === self::VISIBILITY_HIDDEN ) {
-					$error = 'abusefilter-log-details-hidden';
-				} elseif ( $visibility === self::VISIBILITY_HIDDEN_IMPLICIT ) {
-					$error = 'abusefilter-log-details-hidden-implicit';
-				}
-			}
-
-			// Only show the preference error if another error isn't already set
-			// as this error shouldn't take precedence over a view permission error
-			if (
-				FilterUtils::isProtected( $privacyLevel ) &&
-				!$this->afPermissionManager->canViewProtectedVariableValues( $performer )->isGood() &&
-				!$error
-			) {
-				$error = 'abusefilter-examine-protected-vars-permission';
-			}
+		// Only show the preference error if another error isn't already set
+		// as this error shouldn't take precedence over a view permission error
+		if (
+			$filter->isProtected() &&
+			!$this->afPermissionManager->canViewProtectedVariableValues( $performer )->isGood() &&
+			!$error
+		) {
+			$error = 'abusefilter-examine-protected-vars-permission';
 		}
 
 		if ( $error ) {
@@ -821,7 +818,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				} else {
 					// Protected variables in protected filters logs access in the general permission check
 					// Log access to non-protected filters that happen to expose protected variables here
-					if ( !FilterUtils::isProtected( $privacyLevel ) ) {
+					if ( !$filter->isProtected() ) {
 						$shouldLogProtectedVarAccess = true;
 					}
 				}
@@ -830,10 +827,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$vars = VariableHolder::newFromArray( $varsArray );
 
 		// Log if protected variables are accessed
-		if (
-			FilterUtils::isProtected( $privacyLevel ) &&
-			$canViewProtectedVars
-		) {
+		if ( $filter->isProtected() && $canViewProtectedVars ) {
 			$shouldLogProtectedVarAccess = true;
 		}
 
@@ -923,36 +917,28 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
 
 		$row = $dbr->newSelectQueryBuilder()
-			->select( [ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip',
-				'af_id', 'af_public_comments', 'af_hidden' ] )
+			->select( [ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip' ] )
 			->from( 'abuse_filter_log' )
-			->leftJoin( 'abuse_filter', null, [ 'af_id=afl_filter_id', 'afl_global' => 0 ] )
 			->where( [ 'afl_id' => $id ] )
 			->caller( __METHOD__ )
 			->fetchRow();
 
-		$status = Status::newGood();
 		if ( !$row ) {
-			$status->fatal( 'abusefilter-log-nonexistent' );
-			return $status;
+			return Status::newFatal( 'abusefilter-log-nonexistent' );
 		}
 
-		$filterID = $row->afl_filter_id;
-		$global = $row->afl_global;
-
-		if ( $global ) {
-			$lookup = AbuseFilterServices::getFilterLookup();
-			$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
-		} else {
-			$privacyLevel = $row->af_hidden;
+		$filter = AbuseFilterServices::getFilterLookup()->getFilter( $row->afl_filter_id, $row->afl_global );
+		if ( !$afPermissionManager->canSeeLogDetailsForFilter( $authority, $filter ) ) {
+			return Status::newFatal( 'abusefilter-log-cannot-see-details' );
 		}
 
-		if ( !$afPermissionManager->canSeeLogDetailsForFilter( $authority, $privacyLevel ) ) {
-			$status->fatal( 'abusefilter-log-cannot-see-details' );
-			return $status;
-		}
-		$status->setResult( true, $row );
-		return $status;
+		// Because FilterLookup::getFilter gets the data for us, don't duplicate queries and use the data
+		// from the ExistingFilter object to populate information about the filter in the $row.
+		$row->af_id = (string)$filter->getId();
+		$row->af_public_comments = $filter->getName();
+		$row->af_hidden = $filter->getPrivacyLevel();
+
+		return Status::newGood( $row );
 	}
 
 	/**

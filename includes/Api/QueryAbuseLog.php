@@ -289,8 +289,9 @@ class QueryAbuseLog extends ApiQueryBase {
 			$filterID = $row->afl_filter_id;
 			$global = $row->afl_global;
 			$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
-			$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel );
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter(
+				$performer, $lookup->getFilter( $filterID, $global )
+			);
 
 			$entry = [];
 			if ( $fld_ids ) {

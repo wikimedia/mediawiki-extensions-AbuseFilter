@@ -105,9 +105,9 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
-			$privacyLevel = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
-				->getPrivacyLevel();
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $privacyLevel );
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter(
+				$performer, $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
+			);
 			if ( !$canSeeDetails ) {
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'cannotseedetails' );
 			}

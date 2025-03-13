@@ -6,8 +6,10 @@ use Generator;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -297,6 +299,26 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			'1', null, null, $this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( '(abusefilter-examine-protected-vars-permission', $html );
+	}
+
+	public function testViewLogWhenAssociatedFilterIsGlobalAndGlobalFiltersHaveBeenDisabled() {
+		// Mock FilterLookup::getFilter to throw a CentralDBNotAvailableException exception
+		$mockFilterLookup = $this->createMock( FilterLookup::class );
+		$mockFilterLookup->method( 'getFilter' )
+			->willThrowException( new CentralDBNotAvailableException() );
+		$this->setService( 'AbuseFilterFilterLookup', $mockFilterLookup );
+
+		[ $html ] = $this->executeSpecialPage(
+			'1', null, null, $this->authorityCannotUseProtectedVar
+		);
+
+		// Verify that even though the Filter details could not be fetched, the filter is still considered
+		// protected (through assuming the most strict restrictions).
+		$this->assertStringContainsString(
+			'(abusefilter-log-cannot-see-details)',
+			$html,
+			'Missing protected filter access error.'
+		);
 	}
 
 	public function addDBDataOnce() {

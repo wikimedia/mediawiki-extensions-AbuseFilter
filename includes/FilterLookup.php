@@ -115,7 +115,7 @@ class FilterLookup implements IDBAccessObject {
 			}
 			$fname = __METHOD__;
 			$getActionsCB = function () use ( $dbr, $fname, $row ): array {
-				return $this->getActionsFromDB( $dbr, $fname, $row->af_id );
+				return $this->getActionsFromDB( $dbr, $fname, (int)$row->af_id );
 			};
 			$this->cache[$cacheKey] = $this->filterFromRow( $row, $getActionsCB );
 		}
@@ -191,9 +191,9 @@ class FilterLookup implements IDBAccessObject {
 		$fname = __METHOD__;
 		$ret = [];
 		foreach ( $rows as $row ) {
-			$filterKey = $this->getCacheKey( $row->af_id, $global );
+			$filterKey = $this->getCacheKey( (int)$row->af_id, $global );
 			$getActionsCB = function () use ( $dbr, $fname, $row ): array {
-				return $this->getActionsFromDB( $dbr, $fname, $row->af_id );
+				return $this->getActionsFromDB( $dbr, $fname, (int)$row->af_id );
 			};
 			$ret[$filterKey] = $this->filterFromRow(
 				$row,

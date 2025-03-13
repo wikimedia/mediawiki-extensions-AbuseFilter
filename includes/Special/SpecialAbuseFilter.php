@@ -86,6 +86,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			FilterProfiler::SERVICE_NAME,
 			SpecsFormatter::SERVICE_NAME,
 			CentralDBManager::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
 		],
 		AbuseFilterViewRevert::class => [
 			'DBLoadBalancerFactory',

@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\Options\UserOptionsLookup;
@@ -198,23 +197,21 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * Checks if a user can see log details associated with a given filter.
+	 *
 	 * @param Authority $performer
-	 * @param int $privacyLevel Bitmask of privacy flags
-	 * @todo Take a Filter parameter
+	 * @param AbstractFilter $filter
 	 * @return bool
 	 */
-	public function canSeeLogDetailsForFilter( Authority $performer, int $privacyLevel ): bool {
+	public function canSeeLogDetailsForFilter( Authority $performer, AbstractFilter $filter ): bool {
 		if ( !$this->canSeeLogDetails( $performer ) ) {
 			return false;
 		}
 
-		if ( $privacyLevel === Flags::FILTER_PUBLIC ) {
-			return true;
-		}
-		if ( FilterUtils::isHidden( $privacyLevel ) && !$this->canViewPrivateFiltersLogs( $performer ) ) {
+		if ( $filter->isHidden() && !$this->canViewPrivateFiltersLogs( $performer ) ) {
 			return false;
 		}
-		if ( FilterUtils::isProtected( $privacyLevel ) && !$this->canViewProtectedVariables( $performer )->isGood() ) {
+		if ( $filter->isProtected() && !$this->canViewProtectedVariables( $performer )->isGood() ) {
 			return false;
 		}
 
