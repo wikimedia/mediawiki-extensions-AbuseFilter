@@ -304,7 +304,7 @@ class AbuseFilterPager extends TablePager {
 				}
 				return $lang->commaList( $flagMsgs );
 			case 'af_hit_count':
-				if ( $this->afPermManager->canSeeLogDetailsForFilter( $user, $row->af_hidden ) ) {
+				if ( $this->afPermManager->canSeeLogDetailsForFilter( $this->getAuthority(), $row->af_hidden ) ) {
 					$count_display = $this->msg( 'abusefilter-hitcount' )
 						->numParams( $value )->text();
 					$link = $linkRenderer->makeKnownLink(
