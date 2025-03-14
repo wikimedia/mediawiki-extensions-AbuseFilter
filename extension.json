@@ -89,7 +89,8 @@
 				"AbuseFilterSpecsFormatter",
 				"AbuseFilterVariablesFormatter",
 				"AbuseFilterVariablesManager",
-				"AbuseFilterAbuseLoggerFactory"
+				"AbuseFilterAbuseLoggerFactory",
+				"AbuseFilterFilterLookup"
 			]
 		},
 		"AbuseFilter": {
@@ -245,13 +246,15 @@
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterVariablesManager",
 				"UserFactory",
-				"AbuseFilterAbuseLoggerFactory"
+				"AbuseFilterAbuseLoggerFactory",
+				"AbuseFilterRuleCheckerFactory"
 			]
 		},
 		"abusefilters": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\QueryAbuseFilters",
 			"services": [
-				"AbuseFilterPermissionManager"
+				"AbuseFilterPermissionManager",
+				"AbuseFilterFilterLookup"
 			]
 		}
 	},
