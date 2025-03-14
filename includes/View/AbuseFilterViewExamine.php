@@ -301,13 +301,15 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
+		$vars = $this->varBlobStore->loadVarDump( $row );
+		$varsArray = $this->varManager->dumpAllVars( $vars, true );
+
 		$shouldLogProtectedVarAccess = false;
 
-		// Logs that reveal the values of protected variables are gated behind:
-		// 1. the `abusefilter-access-protected-vars` right
-		// 2. agreement to the `abusefilter-protected-vars-view-agreement` preference
+		// Check that the user can see the protected variables that are being examined if the filter is protected.
 		$userAuthority = $this->getAuthority();
-		$canViewProtectedVars = $this->afPermManager->canViewProtectedVariableValues( $userAuthority )->isGood();
+		$canViewProtectedVars = $this->afPermManager
+			->canViewProtectedVariableValues( $userAuthority, array_keys( $varsArray ) )->isGood();
 		if ( $filter->isProtected() ) {
 			if ( !$canViewProtectedVars ) {
 				$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
@@ -324,12 +326,14 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// We shouldn't block access to the details of an otherwise public filter hit so
 		// instead only check for access to the protected variables and redact them if the
 		// user shouldn't see them.
-		$vars = $this->varBlobStore->loadVarDump( $row );
-		$varsArray = $this->varManager->dumpAllVars( $vars, true );
 
 		foreach ( $this->afPermManager->getProtectedVariables() as $protectedVariable ) {
 			if ( isset( $varsArray[$protectedVariable] ) ) {
-				if ( !$canViewProtectedVars ) {
+				// Try each variable at a time, as the user may be able to see some but not all of the values
+				// for the protected variables. We only want to redact what is necessary to redact.
+				$canViewProtectedVariable = $this->afPermManager
+					->canViewProtectedVariableValues( $userAuthority, [ $protectedVariable ] )->isGood();
+				if ( !$canViewProtectedVariable ) {
 					$varsArray[$protectedVariable] = '';
 				} else {
 					// Protected variable in protected filters logs access in the general permission check
