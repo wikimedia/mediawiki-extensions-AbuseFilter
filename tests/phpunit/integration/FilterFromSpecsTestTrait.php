@@ -36,10 +36,9 @@ trait FilterFromSpecsTestTrait {
 	 * Intended for use when creating a test filter in the DB using {@link FilterStore::saveFilter}.
 	 *
 	 * @param array $filterSpecs
-	 * @param array $actions
 	 * @return Filter
 	 */
-	private function getFilterFromSpecs( array $filterSpecs, array $actions = [] ): Filter {
+	private function getFilterFromSpecs( array $filterSpecs ): Filter {
 		$filterSpecs += $this->getDefaultSpecs();
 		return new Filter(
 			new Specs(
@@ -55,7 +54,7 @@ trait FilterFromSpecsTestTrait {
 				$filterSpecs['privacy'],
 				$filterSpecs['global']
 			),
-			$actions,
+			$filterSpecs['actions'],
 			new LastEditInfo(
 				$filterSpecs['lastEditor']->getId(),
 				$filterSpecs['lastEditor']->getName(),

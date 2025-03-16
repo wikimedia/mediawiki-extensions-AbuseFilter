@@ -69,16 +69,16 @@ class FilterStoreTest extends MediaWikiIntegrationTestCase {
 			'id' => null,
 			'rules' => '1==1',
 			'name' => 'Restricted action',
-		];
-		$actions = [
-			'degroup' => []
+			'actions' => [
+				'degroup' => [],
+			]
 		];
 
 		// We use restricted actions because that's the last check
 		$expectedError = 'abusefilter-edit-restricted';
 
 		$origFilter = MutableFilter::newDefault();
-		$newFilter = $this->getFilterFromSpecs( $row, $actions );
+		$newFilter = $this->getFilterFromSpecs( $row );
 
 		$user = $this->getTestUser()->getUser();
 		// Assign -modify and -modify-global, but not -modify-restricted
