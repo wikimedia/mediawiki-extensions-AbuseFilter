@@ -83,7 +83,7 @@
 	"abusefilter-edit-builder-op-arithmetic-subtraction": "ਘਟਾਓ ($1)",
 	"abusefilter-edit-builder-op-arithmetic-multiplication": "ਗੁਣਾ ($1)",
 	"abusefilter-edit-builder-op-arithmetic-divide": "ਤਕਸੀਮ ($1)",
-	"abusefilter-edit-builder-op-arithmetic-pow": "ਘਾਤ ਅੰਕ (**)",
+	"abusefilter-edit-builder-op-arithmetic-pow": "ਘਾਤ ਅੰਕ ($1)",
 	"abusefilter-edit-builder-group-op-comparison": "ਤੁਲਨਾ ਅਪਰੇਟਰ",
 	"abusefilter-edit-builder-op-comparison-equal": "($1) ਦੇ ਬਰਾਬਰ ਮੁੱਲ",
 	"abusefilter-edit-builder-op-comparison-equal-strict": "ਮੁੱਲ ਅਤੇ ਕਿਸਮ ($1) ਦੇ ਬਰਾਬਰ",
