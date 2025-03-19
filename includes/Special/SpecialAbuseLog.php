@@ -422,6 +422,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			->setWrapperLegendMsg( 'abusefilter-log-search' )
 			->setSubmitTextMsg( 'abusefilter-log-search-submit' )
 			->setMethod( 'get' )
+			->setId( 'abusefilter-log-search' )
 			->setCollapsibleOptions( true )
 			->prepareForm()
 			->displayForm( false );
