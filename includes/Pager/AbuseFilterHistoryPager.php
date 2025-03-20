@@ -315,6 +315,11 @@ class AbuseFilterHistoryPager extends TablePager {
 		return $attrs;
 	}
 
+	/** @inheritDoc */
+	protected function getRowClass( $row ) {
+		return 'mw-abusefilter-history-id-' . $row->afh_id;
+	}
+
 	/**
 	 * Title used for self-links.
 	 *
