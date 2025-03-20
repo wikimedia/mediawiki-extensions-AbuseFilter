@@ -12,25 +12,59 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Page\PageIdentityValue;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\UserIdentity;
-use MediaWikiIntegrationTestCase;
+use SpecialPageTestBase;
 use stdClass;
+use Wikimedia\Parsoid\Utils\DOMCompat;
+use Wikimedia\Parsoid\Utils\DOMUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog
+ * @covers \MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager
  * @group Database
  */
-class SpecialAbuseLogTest extends MediaWikiIntegrationTestCase {
+class SpecialAbuseLogTest extends SpecialPageTestBase {
 	use FilterFromSpecsTestTrait;
 	use MockAuthorityTrait;
 
 	private static UserIdentity $logPerformer;
+
+	private Authority $authorityCannotUseProtectedVar;
+	private Authority $authorityCanUseProtectedVar;
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		// Create an authority who can see private filters but not protected variables
+		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[
+				'abusefilter-log-private',
+				'abusefilter-view-private',
+				'abusefilter-modify',
+				'abusefilter-log-detail',
+			]
+		);
+
+		// Create an authority who can see private and protected variables
+		$this->authorityCanUseProtectedVar = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[
+				'abusefilter-access-protected-vars',
+				'abusefilter-log-private',
+				'abusefilter-view-private',
+				'abusefilter-modify',
+				'abusefilter-log-detail',
+			]
+		);
+	}
 
 	/**
 	 * @param stdClass $row
@@ -146,6 +180,125 @@ class SpecialAbuseLogTest extends MediaWikiIntegrationTestCase {
 		);
 	}
 
+	/**
+	 * Calls DOMCompat::getElementById, expects that it returns a valid Element object and then returns
+	 * the HTML of that Element.
+	 *
+	 * @param string $html The HTML to search through
+	 * @param string $id The ID to search for, excluding the "#" character
+	 * @return string
+	 */
+	private function assertAndGetByElementId( string $html, string $id ): string {
+		$specialPageDocument = DOMUtils::parseHTML( $html );
+		$element = DOMCompat::getElementById( $specialPageDocument, $id );
+		$this->assertNotNull( $element, "Could not find element with ID $id in $html" );
+		return DOMCompat::getInnerHTML( $element );
+	}
+
+	/**
+	 * Verifies that the search form is present and that it contains
+	 * the expected form fields.
+	 *
+	 * @param string $html The HTML of the special page
+	 * @param Authority $authority The Authority that was used to generate the HTML of the special page
+	 */
+	private function verifySearchFormFieldsValid( string $html, Authority $authority ) {
+		$formHtml = $this->assertAndGetByElementId( $html, 'abusefilter-log-search' );
+
+		$formFields = [
+			'abusefilter-log-search-user',
+			'abusefilter-test-period-start',
+			'abusefilter-log-search-impact',
+			'abusefilter-log-search-action-label',
+			'abusefilter-log-search-action-taken-label',
+			'abusefilter-log-search-filter',
+		];
+		$formFieldsExpectedToBeMissing = [];
+
+		if ( $authority->isAllowed( 'abusefilter-hidden-log' ) ) {
+			$formFields[] = 'abusefilter-log-search-entries-label';
+		} else {
+			$formFieldsExpectedToBeMissing[] = 'abusefilter-log-search-entries-label';
+		}
+
+		foreach ( $formFields as $field ) {
+			$this->assertStringContainsString(
+				'(' . $field, $formHtml, "Missing field $field from Special:AbuseLog form"
+			);
+		}
+
+		foreach ( $formFieldsExpectedToBeMissing as $field ) {
+			$this->assertStringNotContainsString(
+				'(' . $field, $formHtml, "Field $field should be not present in Special:AbuseLog form"
+			);
+		}
+	}
+
+	public function testViewListOfLogsForUserLackingAccessToTheLog() {
+		// Run the Special page with an authority that cannot see protected variables, as they should
+		// still be able to see the log but not what filter it came from.
+		[ $html ] = $this->executeSpecialPage(
+			'', null, null, $this->authorityCannotUseProtectedVar
+		);
+
+		$this->verifySearchFormFieldsValid( $html, $this->authorityCannotUseProtectedVar );
+
+		// Verify that one log entry is present in the page and that the user cannot see the extended details
+		// as it is for a protected filter
+		$this->assertSame( 1, substr_count( $html, '(abusefilter-log-entry' ) );
+		$this->assertSame( 0, substr_count( $html, '(abusefilter-log-detailedentry-meta' ) );
+
+		// Verify some contents of the log line
+		$this->assertStringContainsString( '(abusefilter-log-noactions', $html );
+	}
+
+	public function testViewListOfLogsForUserWithAccessToTheLog() {
+		// Enable the AbuseFilter protected vars preference for out test user for this test
+		$authority = $this->authorityCanUseProtectedVar;
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption(
+			$authority->getUser(),
+			'abusefilter-protected-vars-view-agreement',
+			1
+		);
+		$userOptionsManager->saveOptions( $authority->getUser() );
+
+		[ $html ] = $this->executeSpecialPage( '', null, null, $authority );
+
+		$this->verifySearchFormFieldsValid( $html, $authority );
+
+		// Verify that one log entry is present in the page and that the user can see the extended details
+		// as they have access to protected variables.
+		$this->assertSame( 1, substr_count( $html, '(abusefilter-log-detailedentry-meta' ) );
+
+		// Verify some contents of the log line
+		$this->assertStringContainsString( '(abusefilter-changeslist-examine', $html );
+		$this->assertStringContainsString( '(abusefilter-log-detailslink', $html );
+		$this->assertStringContainsString( '(abusefilter-log-detailedentry-local', $html );
+		$this->assertStringContainsString( '(abusefilter-log-noactions', $html );
+	}
+
+	public function testShowDetailsForNonExistentLogId() {
+		[ $html ] = $this->executeSpecialPage(
+			'12345', null, null, $this->authorityCannotUseProtectedVar
+		);
+		$this->assertStringContainsString( '(abusefilter-log-nonexistent', $html );
+	}
+
+	public function testShowDetailsWhenUserLacksProtectedVariablesAccess() {
+		[ $html ] = $this->executeSpecialPage(
+			'1', null, null, $this->authorityCannotUseProtectedVar
+		);
+		$this->assertStringContainsString( '(abusefilter-log-cannot-see-details', $html );
+	}
+
+	public function testShowDetailsWhenUserLacksAccessToProtectedVariableValues() {
+		[ $html ] = $this->executeSpecialPage(
+			'1', null, null, $this->authorityCanUseProtectedVar
+		);
+		$this->assertStringContainsString( '(abusefilter-examine-protected-vars-permission', $html );
+	}
+
 	public function addDBDataOnce() {
 		ConvertibleTimestamp::setFakeTime( '20240506070809' );
 		// Get a testing filter
@@ -172,6 +325,10 @@ class SpecialAbuseLogTest extends MediaWikiIntegrationTestCase {
 				'action' => 'edit',
 				'user_name' => 'User1',
 			] )
-		)->addLogEntries( [ 1 => [ 'warn' ] ] );
+		)->addLogEntries( [ 1 => [] ] );
+	}
+
+	protected function newSpecialPage() {
+		return $this->getServiceContainer()->getSpecialPageFactory()->getPage( SpecialAbuseLog::PAGE_NAME );
 	}
 }
