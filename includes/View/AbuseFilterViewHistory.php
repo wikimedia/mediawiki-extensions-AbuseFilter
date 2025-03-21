@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Parser\ParserOptions;
 use MediaWiki\User\UserNameUtils;
 use OOUI;
 
@@ -172,6 +173,9 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$canViewProtectedVars
 		);
 
-		$out->addParserOutputContent( $pager->getFullOutput() );
+		$out->addParserOutputContent(
+			$pager->getFullOutput(),
+			ParserOptions::newFromContext( $this->getContext() )
+		);
 	}
 }
