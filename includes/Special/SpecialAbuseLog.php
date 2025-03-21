@@ -739,13 +739,26 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$varsArray = $this->varManager->dumpAllVars( $vars, true );
 
 		// Prevent users seeing logs which contain protected variables that the user cannot see.
-		if (
-			$filter->isProtected() &&
-			!$this->afPermissionManager->canViewProtectedVariables( $performer, array_keys( $varsArray ) )
-				->isGood()
-		) {
-			$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
-			return;
+		if ( $filter->isProtected() ) {
+			$permStatus = $this->afPermissionManager->canViewProtectedVariables( $performer, array_keys( $varsArray ) );
+			if ( !$permStatus->isGood() ) {
+				if ( $permStatus->getPermission() ) {
+					$out->addWikiMsg( $this->msg(
+						'abusefilter-examine-error-protected-due-to-permission',
+						$this->msg( "action-{$permStatus->getPermission()}" )->plain()
+					) );
+					return;
+				}
+
+				// Add any messages in the status after a generic error message.
+				$additional = '';
+				foreach ( $permStatus->getMessages() as $message ) {
+					$additional .= $this->msg( $message )->parseAsBlock();
+				}
+
+				$out->addWikiMsg( $this->msg( 'abusefilter-examine-error-protected' )->rawParams( $additional ) );
+				return;
+			}
 		}
 
 		$output = Html::element(

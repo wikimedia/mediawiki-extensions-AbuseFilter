@@ -6,6 +6,7 @@ use HtmlArmor;
 use LogicException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
@@ -278,17 +279,40 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Filters that use protected variables should always be hidden from public view
-		$lacksPermissionDueToProtectedVariables = $filterObj->isProtected() &&
-			!$this->afPermManager->canViewProtectedVariablesInFilter( $authority, $filterObj )->isGood();
-
-		if ( $filter !== null && !$lacksPermissionDueToProtectedVariables ) {
-			$currentFilterObj = $this->filterLookup->getFilter( $filter, false );
-			$lacksPermissionDueToProtectedVariables = $currentFilterObj->isProtected() &&
-				!$this->afPermManager->canViewProtectedVariablesInFilter( $authority, $currentFilterObj )->isGood();
+		$protectedVarsPermStatus = AbuseFilterPermissionStatus::newGood();
+		if ( $filterObj->isProtected() ) {
+			$protectedVarsPermStatus = $this->afPermManager
+				->canViewProtectedVariablesInFilter( $authority, $filterObj );
 		}
 
-		if ( $lacksPermissionDueToProtectedVariables ) {
-			$out->addHTML( $this->msg( 'abusefilter-edit-denied-protected-vars' )->escaped() );
+		if ( $filter !== null && $protectedVarsPermStatus->isGood() ) {
+			$currentFilterObj = $this->filterLookup->getFilter( $filter, false );
+			if ( $currentFilterObj->isProtected() ) {
+				$protectedVarsPermStatus = $this->afPermManager
+					->canViewProtectedVariablesInFilter( $authority, $currentFilterObj );
+			}
+		}
+
+		if ( !$protectedVarsPermStatus->isGood() ) {
+			if ( $protectedVarsPermStatus->getPermission() ) {
+				$out->addWikiMsg(
+					$this->msg(
+						'abusefilter-edit-denied-protected-vars-because-of-permission',
+						$this->msg( "action-{$protectedVarsPermStatus->getPermission()}" )->plain()
+					)
+				);
+				return;
+			}
+
+			// Add any messages in the status after a generic error message.
+			$additional = '';
+			foreach ( $protectedVarsPermStatus->getMessages() as $message ) {
+				$additional .= $this->msg( $message )->parseAsBlock();
+			}
+
+			$out->addWikiMsg(
+				$this->msg( 'abusefilter-edit-denied-protected-vars' )->rawParams( $additional )
+			);
 			return;
 		}
 

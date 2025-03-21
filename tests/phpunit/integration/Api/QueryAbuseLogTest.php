@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
+use MediaWiki\Block\Block;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
@@ -79,6 +80,27 @@ class QueryAbuseLogTest extends ApiTestCase {
 			'list' => 'abuselog',
 		] );
 		$this->addToAssertionCount( 1 );
+	}
+
+	public function testFilteringForProtectedFilterWhenUserBlocked() {
+		$mockBlock = $this->createMock( Block::class );
+		$mockBlock->method( 'isSitewide' )
+			->willReturn( true );
+
+		$this->expectApiErrorCode( 'blocked' );
+		$this->doApiRequest(
+			[
+				'action' => 'query',
+				'list' => 'abuselog',
+				'aflprop' => 'details',
+				'afldir' => 'older',
+				'aflfilter' => 1,
+			],
+			null, false,
+			$this->mockUserAuthorityWithBlock(
+				self::$userIdentity, $mockBlock, [ 'abusefilter-log-detail', 'abusefilter-log' ]
+			)
+		);
 	}
 
 	public function testFilteringForProtectedFilterWhenUserLacksAccess() {

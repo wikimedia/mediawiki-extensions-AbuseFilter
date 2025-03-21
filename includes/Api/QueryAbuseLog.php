@@ -157,14 +157,25 @@ class QueryAbuseLog extends ApiQueryBase {
 					);
 				}
 
-				if (
-					$filter->isProtected() &&
-					!$this->afPermManager->canViewProtectedVariables( $performer, $usedVariables )->isGood()
-				) {
-					$this->dieWithError(
-						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ],
-						'permissiondenied'
-					);
+				if ( $filter->isProtected() ) {
+					$protectedVariableAccessStatus = $this->afPermManager
+						->canViewProtectedVariables( $performer, $usedVariables );
+					if ( !$protectedVariableAccessStatus->isGood() ) {
+						if ( $protectedVariableAccessStatus->getBlock() ) {
+							$this->dieWithError( 'apierror-blocked', 'blocked' );
+						}
+						if ( $protectedVariableAccessStatus->getPermission() ) {
+							$this->dieWithError(
+								[
+									'apierror-permissiondenied',
+									$this->msg( "action-{$protectedVariableAccessStatus->getPermission()}" )->plain()
+								],
+								'permissiondenied'
+							);
+						}
+
+						$this->dieStatus( $protectedVariableAccessStatus );
+					}
 				}
 			}
 

@@ -339,7 +339,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		[ $html ] = $this->executeSpecialPage(
 			'1', null, null, $this->authorityCanUseProtectedVar
 		);
-		$this->assertStringContainsString( '(abusefilter-examine-protected-vars-permission', $html );
+		$this->assertStringContainsString( '(abusefilter-examine-error-protected', $html );
 	}
 
 	public function testViewLogWhenAssociatedFilterIsGlobalAndGlobalFiltersHaveBeenDisabled() {

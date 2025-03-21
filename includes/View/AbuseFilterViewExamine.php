@@ -306,12 +306,30 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		// Check that the user can see the protected variables that are being examined if the filter is protected.
 		$userAuthority = $this->getAuthority();
-		if (
-			$filter->isProtected() &&
-			!$this->afPermManager->canViewProtectedVariables( $userAuthority, array_keys( $varsArray ) )->isGood()
-		) {
-			$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
-			return;
+		if ( $filter->isProtected() ) {
+			$permStatus = $this->afPermManager->canViewProtectedVariables( $userAuthority, array_keys( $varsArray ) );
+			if ( !$permStatus->isGood() ) {
+				if ( $permStatus->getPermission() ) {
+					$out->addWikiMsg(
+						$this->msg(
+							'abusefilter-examine-error-protected-due-to-permission',
+							$this->msg( "action-{$permStatus->getPermission()}" )->plain()
+						)
+					);
+					return;
+				}
+
+				// Add any messages in the status after a generic error message.
+				$additional = '';
+				foreach ( $permStatus->getMessages() as $message ) {
+					$additional .= $this->msg( $message )->parseAsBlock();
+				}
+
+				$out->addWikiMsg(
+					$this->msg( 'abusefilter-examine-error-protected' )->rawParams( $additional )
+				);
+				return;
+			}
 		}
 
 		// AbuseFilter logs created before T390086 may have protected variables present in the variable dump
