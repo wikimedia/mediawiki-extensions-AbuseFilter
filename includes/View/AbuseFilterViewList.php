@@ -15,6 +15,7 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Parser\ParserOptions;
 use OOUI;
 use StringUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
@@ -329,7 +330,10 @@ class AbuseFilterViewList extends AbuseFilterView {
 			->prepareForm()
 			->displayForm( false );
 
-		$this->getOutput()->addParserOutputContent( $pager->getFullOutput() );
+		$this->getOutput()->addParserOutputContent(
+			$pager->getFullOutput(),
+			ParserOptions::newFromContext( $this->getContext() )
+		);
 	}
 
 	/**
