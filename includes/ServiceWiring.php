@@ -75,7 +75,8 @@ return [
 	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
 		return new PermManager(
 			$services->getUserOptionsLookup(),
-			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME )
+			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME ),
+			$services->get( RuleCheckerFactory::SERVICE_NAME )
 		);
 	},
 	ChangeTagger::SERVICE_NAME => static function ( MediaWikiServices $services ): ChangeTagger {
