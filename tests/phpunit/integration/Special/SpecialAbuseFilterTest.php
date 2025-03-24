@@ -3,12 +3,14 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
@@ -23,6 +25,7 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use MediaWiki\Html\Html;
+use MediaWiki\Logging\LogEntryBase;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
@@ -151,6 +154,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		) );
 
 		// Add a log on the protected filter which has a hit count of 1
+		RequestContext::getMain()->getRequest()->setIP( '1.2.3.4' );
 		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
 		$abuseFilterLoggerFactory->newLogger(
 			$this->getExistingTestPage()->getTitle(),
@@ -850,6 +854,61 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'(abusefilter-log-cannot-see-details)',
 			$html,
 			'Missing protected filter access error.'
+		);
+	}
+
+	public function testViewExamineForLogEntryWhenUserCanSeeLog() {
+		$this->clearHooks( [
+			'AbuseFilterCanViewProtectedVariables',
+			'AbuseFilterCanViewProtectedVariableValues',
+			'AbuseFilterLogProtectedVariableValueAccess',
+		] );
+		$authority = $this->authorityCanUseProtectedVar;
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption(
+			$authority->getUser(),
+			'abusefilter-protected-vars-view-agreement',
+			1
+		);
+		$userOptionsManager->saveOptions( $authority->getUser() );
+
+		[ $html, ] = $this->executeSpecialPage(
+			'examine/log/1',
+			new FauxRequest(),
+			null,
+			$authority
+		);
+		DeferredUpdates::doUpdates();
+
+		$this->verifyHasExamineIntroMessage( $html );
+
+		// Check that the test tools elements are loaded
+		$this->assertStringContainsString( '(abusefilter-examine-test', $html );
+		$this->assertStringContainsString( '(abusefilter-examine-test-button', $html );
+
+		// Verify that the examiner for the log entry is displayed by checking that the user_unnamed_ip
+		// variable value is present.
+		$this->assertStringContainsString( '(abusefilter-examine-vars', $html );
+		$abuseLogDetailsTableHtml = $this->assertAndGetByElementClass( $html, 'mw-abuselog-details' );
+		$this->assertStringContainsString( '1.2.3.4', $abuseLogDetailsTableHtml );
+
+		// Verify that a protected variable access log was created as protected variable values were viewed.
+		$result = $this->newSelectQueryBuilder()
+			->select( 'log_params' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+		$this->assertSame( 1, $result->numRows() );
+		$result->rewind();
+		$this->assertArrayEquals(
+			[ 'variables' => [ 'user_unnamed_ip' ] ],
+			LogEntryBase::extractParams( $result->fetchRow()['log_params'] ),
+			false,
+			true
 		);
 	}
 }

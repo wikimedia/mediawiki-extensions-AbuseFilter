@@ -304,19 +304,14 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$vars = $this->varBlobStore->loadVarDump( $row );
 		$varsArray = $this->varManager->dumpAllVars( $vars, true );
 
-		$shouldLogProtectedVarAccess = false;
-
 		// Check that the user can see the protected variables that are being examined if the filter is protected.
 		$userAuthority = $this->getAuthority();
-		$canViewProtectedVars = $this->afPermManager
-			->canViewProtectedVariableValues( $userAuthority, array_keys( $varsArray ) )->isGood();
-		if ( $filter->isProtected() ) {
-			if ( !$canViewProtectedVars ) {
-				$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
-				return;
-			} else {
-				$shouldLogProtectedVarAccess = true;
-			}
+		if (
+			$filter->isProtected() &&
+			!$this->afPermManager->canViewProtectedVariableValues( $userAuthority, array_keys( $varsArray ) )->isGood()
+		) {
+			$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
+			return;
 		}
 
 		// AbuseFilter logs created before T390086 may have protected variables present in the variable dump
@@ -326,6 +321,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// We shouldn't block access to the details of an otherwise public filter hit so
 		// instead only check for access to the protected variables and redact them if the user
 		// shouldn't see them.
+		$protectedVariableValuesShown = [];
 		foreach ( $this->afPermManager->getProtectedVariables() as $protectedVariable ) {
 			if ( isset( $varsArray[$protectedVariable] ) ) {
 				// Try each variable at a time, as the user may be able to see some but not all of the values
@@ -335,21 +331,18 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				if ( !$canViewProtectedVariable ) {
 					$varsArray[$protectedVariable] = '';
 				} else {
-					// Protected variable in protected filters logs access in the general permission check
-					// Log access to non-protected filters that happen to expose protected variables here
-					if ( !$filter->isProtected() ) {
-						$shouldLogProtectedVarAccess = true;
-					}
+					$protectedVariableValuesShown[] = $protectedVariable;
 				}
 			}
 		}
 		$vars = VariableHolder::newFromArray( $varsArray );
 
-		if ( $shouldLogProtectedVarAccess ) {
+		if ( count( $protectedVariableValuesShown ) ) {
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue(
 				$userAuthority->getUser(),
-				$varsArray['user_name'] ?? $varsArray['accountname']
+				$varsArray['user_name'] ?? $varsArray['accountname'],
+				$protectedVariableValuesShown
 			);
 		}
 

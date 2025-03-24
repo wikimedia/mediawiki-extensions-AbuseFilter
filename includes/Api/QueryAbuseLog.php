@@ -337,20 +337,20 @@ class QueryAbuseLog extends ApiQueryBase {
 						// Unset the variable if the user can't see protected variables
 						// Additionally, a protected variable is considered used if the key exists
 						// but since it can have a null value, check isset before logging access
-						$shouldLog = false;
+						$protectedVariableValuesShown = [];
 						foreach ( $usedProtectedVars as $protectedVariable ) {
 							if ( isset( $entry['details'][$protectedVariable] ) ) {
 								if ( $this->afPermManager->canViewProtectedVariableValues(
 									$performer, [ $protectedVariable ]
 								)->isGood() ) {
-									$shouldLog = true;
+									$protectedVariableValuesShown[] = $protectedVariable;
 								} else {
 									$entry['details'][$protectedVariable] = '';
 								}
 							}
 						}
 
-						if ( $shouldLog ) {
+						if ( count( $protectedVariableValuesShown ) ) {
 							// user_name or accountname should always exist -- just in case
 							// if it doesn't, unset the protected variables since they shouldn't be accessed if
 							// the access isn't logged
@@ -360,7 +360,8 @@ class QueryAbuseLog extends ApiQueryBase {
 								$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 								$logger->logViewProtectedVariableValue(
 									$performer->getUser(),
-									$entry['details']['user_name'] ?? $entry['details']['accountname']
+									$entry['details']['user_name'] ?? $entry['details']['accountname'],
+									$protectedVariableValuesShown
 								);
 							} else {
 								foreach ( $usedProtectedVars as $protectedVariable ) {

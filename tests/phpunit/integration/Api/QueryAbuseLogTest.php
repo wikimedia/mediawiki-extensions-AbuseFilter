@@ -3,17 +3,18 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
-use MediaWiki\User\ActorStore;
 use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentity;
 
@@ -148,8 +149,13 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->assertCount( 0, $result['query']['abuselog'] );
 	}
 
-	public function testProtectedVariableValueAccess() {
-		// Assert that the ip isn't visible in the result
+	public function testProtectedVariableValueAccessWhenUserHasNotCheckedPreference() {
+		// Make the AbuseLoggerFactory service expect no calls as we shouldn't log if no value was seen.
+		$this->setService(
+			AbuseLoggerFactory::SERVICE_NAME,
+			$this->createNoOpMock( AbuseLoggerFactory::class )
+		);
+
 		$result = $this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'abuselog',
@@ -161,7 +167,14 @@ class QueryAbuseLogTest extends ApiTestCase {
 		foreach ( $result as $row ) {
 			$this->assertSame( '', $row['details']['user_unnamed_ip'], 'IP is redacted' );
 		}
+	}
 
+	public function testProtectedVariableValueAccess() {
+		$this->clearHooks( [
+			'AbuseFilterCanViewProtectedVariables',
+			'AbuseFilterCanViewProtectedVariableValues',
+			'AbuseFilterLogProtectedVariableValueAccess',
+		] );
 		// Enable the preference for the user
 		$userOptions = new StaticUserOptionsLookup(
 			[
@@ -172,12 +185,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 		);
 		$this->setService( 'UserOptionsLookup', $userOptions );
 
-		// Actor store needs to return a valid actor_id for the logs querying generates
-		$actorStore = $this->createMock( ActorStore::class );
-		$actorStore->method( 'acquireActorId' )->willReturn( 1 );
-		$this->setService( 'ActorStore', $actorStore );
-
-		// Assert that the ip is now visible
+		// Assert that the ip is visible
 		$result = $this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'abuselog',
@@ -195,6 +203,17 @@ class QueryAbuseLogTest extends ApiTestCase {
 				$this->assertArrayNotHasKey( 'accountname', $row['details'] );
 			}
 		}
+
+		// Verify that a protected variable value access log was created
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->assertFieldValue( 1 );
 	}
 
 	public function testExecuteWhenRequestingFilterName() {

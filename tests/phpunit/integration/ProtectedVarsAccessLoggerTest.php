@@ -77,10 +77,10 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		$performer = $this->getTestSysop();
 		AbuseFilterServices::getAbuseLoggerFactory()
 			->getProtectedVarsAccessLogger()
-			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', [] );
 		AbuseFilterServices::getAbuseLoggerFactory()
 			->getProtectedVarsAccessLogger()
-			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', [] );
 		DeferredUpdates::doUpdates();
 
 		// Assert that the log is only inserted once into abusefilter's protected vars logging table
@@ -99,10 +99,10 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		$performer = $this->getTestSysop();
 		$protectedVarsAccessLogger = AbuseFilterServices::getAbuseLoggerFactory()->getProtectedVarsAccessLogger();
 		$protectedVarsAccessLogger->logViewProtectedVariableValue(
-			$performer->getUserIdentity(), 'Username with spaces', (int)wfTimestamp()
+			$performer->getUserIdentity(), 'Username with spaces', []
 		);
 		$protectedVarsAccessLogger->logViewProtectedVariableValue(
-			$performer->getUserIdentity(), 'Username with spaces', (int)wfTimestamp()
+			$performer->getUserIdentity(), 'Username with spaces', []
 		);
 		DeferredUpdates::doUpdates();
 
@@ -133,7 +133,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		$performer = $this->getTestSysop();
 		AbuseFilterServices::getAbuseLoggerFactory()
 			->getProtectedVarsAccessLogger()
-			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', (int)wfTimestamp() );
+			->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', [] );
 
 		// Assert that the hook abort also aborted AbuseFilter's logging
 		$this->newSelectQueryBuilder()

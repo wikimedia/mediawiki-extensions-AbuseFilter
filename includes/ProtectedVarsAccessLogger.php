@@ -105,11 +105,14 @@ class ProtectedVarsAccessLogger {
 	 *
 	 * @param UserIdentity $performer
 	 * @param string $target
+	 * @param string[] $viewedVariables The variables associated with the values the user saw. Required,
+	 *   but currently optional to support migration.
 	 * @param int|null $timestamp
 	 */
 	public function logViewProtectedVariableValue(
 		UserIdentity $performer,
 		string $target,
+		array $viewedVariables = [],
 		?int $timestamp = null
 	): void {
 		if ( !$timestamp ) {
@@ -117,7 +120,7 @@ class ProtectedVarsAccessLogger {
 		}
 		// Create the log on POSTSEND, as this can be called in a context of a GET request through the
 		// QueryAbuseLog API (T379083).
-		DeferredUpdates::addCallableUpdate( function () use ( $performer, $target, $timestamp ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $performer, $target, $timestamp, $viewedVariables ) {
 			// We need to create a log entry and PostSend-GET expects no writes are performed, so we need to
 			// silence the warnings created by this.
 			$trxProfiler = Profiler::instance()->getTransactionProfiler();
@@ -127,7 +130,8 @@ class ProtectedVarsAccessLogger {
 				$target,
 				self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE,
 				true,
-				$timestamp
+				$timestamp,
+				[ 'variables' => $viewedVariables ]
 			);
 		} );
 	}
