@@ -105,14 +105,13 @@ class ProtectedVarsAccessLogger {
 	 *
 	 * @param UserIdentity $performer
 	 * @param string $target
-	 * @param string[] $viewedVariables The variables associated with the values the user saw. Required,
-	 *   but currently optional to support migration.
+	 * @param string[] $viewedVariables The variables associated with the values the user saw.
 	 * @param int|null $timestamp
 	 */
 	public function logViewProtectedVariableValue(
 		UserIdentity $performer,
 		string $target,
-		array $viewedVariables = [],
+		array $viewedVariables,
 		?int $timestamp = null
 	): void {
 		if ( !$timestamp ) {
