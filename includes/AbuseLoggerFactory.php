@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
@@ -40,6 +41,7 @@ class AbuseLoggerFactory {
 	private RuleCheckerFactory $ruleCheckerFactory;
 	private LBFactory $lbFactory;
 	private ActorStore $actorStore;
+	private TitleFactory $titleFactory;
 	private ServiceOptions $options;
 	private string $wikiID;
 	private string $requestIP;
@@ -56,6 +58,7 @@ class AbuseLoggerFactory {
 		RuleCheckerFactory $ruleCheckerFactory,
 		LBFactory $lbFactory,
 		ActorStore $actorStore,
+		TitleFactory $titleFactory,
 		ServiceOptions $options,
 		string $wikiID,
 		string $requestIP,
@@ -72,6 +75,7 @@ class AbuseLoggerFactory {
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->lbFactory = $lbFactory;
 		$this->actorStore = $actorStore;
+		$this->titleFactory = $titleFactory;
 		$this->options = $options;
 		$this->wikiID = $wikiID;
 		$this->requestIP = $requestIP;
@@ -85,12 +89,13 @@ class AbuseLoggerFactory {
 	 */
 	public function getProtectedVarsAccessLogger(
 		int $delay = self::DEFAULT_DEBOUNCE_DELAY
-	) {
+	): ProtectedVarsAccessLogger {
 		return new ProtectedVarsAccessLogger(
 			$this->logger,
 			$this->lbFactory,
 			$this->actorStore,
 			$this->hookRunner,
+			$this->titleFactory,
 			$delay
 		);
 	}

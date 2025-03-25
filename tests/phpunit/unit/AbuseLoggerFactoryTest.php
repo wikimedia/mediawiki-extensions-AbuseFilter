@@ -17,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\User;
 use MediaWikiUnitTestCase;
@@ -40,6 +41,7 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( RuleCheckerFactory::class ),
 			$this->createMock( LBFactory::class ),
 			$this->createMock( ActorStore::class ),
+			$this->createMock( TitleFactory::class ),
 			new ServiceOptions(
 				AbuseLoggerFactory::CONSTRUCTOR_OPTIONS,
 				[

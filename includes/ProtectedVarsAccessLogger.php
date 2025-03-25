@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
-use MediaWiki\Title\Title;
+use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserIdentity;
 use Profiler;
@@ -51,6 +51,7 @@ class ProtectedVarsAccessLogger {
 	private IConnectionProvider $lbFactory;
 	private ActorStore $actorStore;
 	private AbuseFilterHookRunner $hookRunner;
+	private TitleFactory $titleFactory;
 	private int $delay;
 
 	/**
@@ -58,14 +59,17 @@ class ProtectedVarsAccessLogger {
 	 * @param IConnectionProvider $lbFactory
 	 * @param ActorStore $actorStore
 	 * @param AbuseFilterHookRunner $hookRunner
+	 * @param TitleFactory $titleFactory
 	 * @param int $delay The number of seconds after which a duplicate log entry can be
 	 *  created for a debounced log
+	 * @internal Use {@link AbuseLoggerFactory::getProtectedVarsAccessLogger} instead
 	 */
 	public function __construct(
 		LoggerInterface $logger,
 		IConnectionProvider $lbFactory,
 		ActorStore $actorStore,
 		AbuseFilterHookRunner $hookRunner,
+		TitleFactory $titleFactory,
 		int $delay
 	) {
 		Assert::parameter( $delay > 0, 'delay', 'delay must be positive' );
@@ -74,6 +78,7 @@ class ProtectedVarsAccessLogger {
 		$this->lbFactory = $lbFactory;
 		$this->actorStore = $actorStore;
 		$this->hookRunner = $hookRunner;
+		$this->titleFactory = $titleFactory;
 		$this->delay = $delay;
 	}
 
@@ -171,6 +176,7 @@ class ProtectedVarsAccessLogger {
 			if ( !$actorId ) {
 				$shouldLog = true;
 			} else {
+				$targetAsTitle = $this->titleFactory->makeTitle( NS_USER, $target );
 				$logline = $dbw->newSelectQueryBuilder()
 					->select( '*' )
 					->from( 'logging' )
@@ -178,8 +184,8 @@ class ProtectedVarsAccessLogger {
 						'log_type' => self::LOG_TYPE,
 						'log_action' => $action,
 						'log_actor' => $actorId,
-						'log_namespace' => NS_USER,
-						'log_title' => $target,
+						'log_namespace' => $targetAsTitle->getNamespace(),
+						'log_title' => $targetAsTitle->getDBkey(),
 						$dbw->expr( 'log_timestamp', '>', $dbw->timestamp( $timestampMinusDelay ) ),
 					] )
 					->caller( __METHOD__ )
@@ -198,7 +204,7 @@ class ProtectedVarsAccessLogger {
 		if ( $shouldLog ) {
 			$logEntry = $this->createManualLogEntry( $action );
 			$logEntry->setPerformer( $performer );
-			$logEntry->setTarget( Title::makeTitle( NS_USER, $target ) );
+			$logEntry->setTarget( $this->titleFactory->makeTitle( NS_USER, $target ) );
 			$logEntry->setParameters( $params );
 			$logEntry->setTimestamp( wfTimestamp( TS_MW, $timestamp ) );
 
