@@ -2,12 +2,14 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
-use Generator;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
+use MediaWiki\User\ActorStore;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
+use Psr\Log\LoggerInterface;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger
@@ -21,52 +23,6 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		// Stop external extensions (CU) from affecting the behaviour of the logger, such as changing where the
 		// logs are sent.
 		$this->clearHook( 'AbuseFilterLogProtectedVariableValueAccess' );
-	}
-
-	public function provideProtectedVarsLogTypes(): Generator {
-		yield 'enable access to protected vars values' => [
-			[
-				'logAction' => 'logAccessEnabled',
-				'params' => [],
-			],
-			[
-				'expectedAFLogType' => 'change-access-enable',
-			]
-		];
-
-		yield 'disable access to protected vars values' => [
-			[
-				'logAction' => 'logAccessDisabled',
-				'params' => []
-			],
-			[
-				'expectedAFLogType' => 'change-access-disable'
-			]
-		];
-	}
-
-	/**
-	 * @dataProvider provideProtectedVarsLogTypes
-	 */
-	public function testLogs_NoHookModifications( $options, $expected ) {
-		// Stop external extensions (CU) from affecting the logger by overriding any modifications
-		$this->clearHook( 'AbuseFilterLogProtectedVariableValueAccess' );
-
-		$performer = $this->getTestSysop();
-		$logAction = $options['logAction'];
-		AbuseFilterServices::getAbuseLoggerFactory()
-			->getProtectedVarsAccessLogger()
-			->$logAction( $performer->getUserIdentity(), ...$options['params'] );
-
-		// Assert that the log was inserted into abusefilter's protected vars logging table
-		$this->newSelectQueryBuilder()
-			->select( 'COUNT(*)' )
-			->from( 'logging' )
-			->where( [
-				'log_action' => $expected['expectedAFLogType'],
-				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-			] )
-			->assertFieldValue( 1 );
 	}
 
 	public function testDebouncedLogs_NoHookModifications() {
@@ -144,5 +100,36 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
 			] )
 			->assertFieldValue( 0 );
+	}
+
+	public function testProtectedVarsAccessLogger_ActorStoreHasNoActorId() {
+		// Create a mock ActorStore that returns that any user provided has no actor ID.
+		// This will cause the code to skip checking for an existing log when debouncing.
+		$mockActorStore = $this->createMock( ActorStore::class );
+		$mockActorStore->method( 'findActorId' )
+			->willReturn( null );
+
+		$protectedVarsAccessLogger = new ProtectedVarsAccessLogger(
+			$this->createMock( LoggerInterface::class ),
+			$this->getServiceContainer()->getConnectionProvider(),
+			$mockActorStore,
+			$this->getServiceContainer()->get( AbuseFilterHookRunner::SERVICE_NAME ),
+			$this->getServiceContainer()->getTitleFactory(),
+			1234
+		);
+		$performer = $this->getTestSysop();
+		$protectedVarsAccessLogger->logViewProtectedVariableValue( $performer->getUserIdentity(), '~2024-01', [] );
+
+		// Assert that a log was created for the access
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+				'log_actor' => $this->getServiceContainer()->getActorStore()
+					->findActorId( $performer->getUserIdentity(), $this->getDb() )
+			] )
+			->assertFieldValue( 1 );
 	}
 }

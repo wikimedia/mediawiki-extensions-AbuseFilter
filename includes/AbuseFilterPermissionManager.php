@@ -9,7 +9,6 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Permissions\Authority;
-use MediaWiki\User\Options\UserOptionsLookup;
 
 /**
  * This class simplifies the interactions between the AbuseFilter code and Authority, knowing
@@ -26,18 +25,15 @@ class AbuseFilterPermissionManager {
 	private MapCacheLRU $canViewProtectedVariablesCache;
 	private MapCacheLRU $canViewProtectedVariableValuesCache;
 
-	private UserOptionsLookup $userOptionsLookup;
 	private RuleCheckerFactory $ruleCheckerFactory;
 	private AbuseFilterHookRunner $hookRunner;
 
 	public function __construct(
-		UserOptionsLookup $userOptionsLookup,
 		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup,
 		RuleCheckerFactory $ruleCheckerFactory,
 		AbuseFilterHookRunner $hookRunner
 	) {
 		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
-		$this->userOptionsLookup = $userOptionsLookup;
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->hookRunner = $hookRunner;
 
@@ -211,15 +207,6 @@ class AbuseFilterPermissionManager {
 
 		$returnStatus = $this->checkCanViewProtectedVariables( $performer );
 		if ( !$returnStatus->isGood() ) {
-			$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
-			return $returnStatus;
-		}
-
-		if ( !$this->userOptionsLookup->getOption(
-			$performer->getUser(),
-			'abusefilter-protected-vars-view-agreement'
-		) ) {
-			$returnStatus = AbuseFilterPermissionStatus::newFatal( 'abusefilter-examine-protected-vars-permission' );
 			$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
 			return $returnStatus;
 		}

@@ -680,8 +680,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Error message shown when someone tries to edit the list of blocked domains directly and bypass the Special page.",
 	"right-abusefilter-access-protected-vars": "{{doc-right|abusefilter-access-protected-vars}}",
 	"action-abusefilter-access-protected-vars": "{{doc-action|abusefilter-access-protected-vars}}",
-	"prefs-abusefilter": "Header of the AbuseFilter options on [[Special:Preferences]]",
-	"abusefilter-preference-protected-vars-view-agreement": "Agreement shown on [[Special:Preferences]] that the user can acknowledge via checkbox.",
 	"abusefilter-protected-vars-log-name": "{{doc-logpage}}\n\nThe page name of [[Special:Log/abusefilter-protected-vars]]. Appears in the drop down menu of the [[Special:Log]] page and subpages.",
 	"abusefilter-protected-vars-log-header": "Appears on top of [[Special:Log/abusefilter-protected-vars]].",
 	"logentry-abusefilter-protected-vars-change-access-enable": "{{Logentry|[[Special:Log/abusefilter-protected-vars]]}}\n\nUsed if a user's state of access was enabled.\n\n{{Doc-singularthey}}",

@@ -15,26 +15,9 @@ use Wikimedia\Rdbms\DBError;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
- * Defines the API for the component responsible for logging the following interactions:
- *
- * - A user enables protected variable viewing
- * - A user disables protected variable viewing
+ * Defines the API for the component responsible for logging when a user views the value of protected variables.
  */
 class ProtectedVarsAccessLogger {
-	/**
-	 * Represents a user enabling their own access to view protected variables
-	 *
-	 * @var string
-	 */
-	public const ACTION_CHANGE_ACCESS_ENABLED = 'change-access-enable';
-
-	/**
-	 * Represents a user disabling their own access to view protected variables
-	 *
-	 * @var string
-	 */
-	public const ACTION_CHANGE_ACCESS_DISABLED = 'change-access-disable';
-
 	/**
 	 * Represents a user viewing the value of a protected variable
 	 *
@@ -83,24 +66,6 @@ class ProtectedVarsAccessLogger {
 	}
 
 	/**
-	 * Log when the user enables their own access
-	 *
-	 * @param UserIdentity $performer
-	 */
-	public function logAccessEnabled( UserIdentity $performer ): void {
-		$this->log( $performer, $performer->getName(), self::ACTION_CHANGE_ACCESS_ENABLED, false );
-	}
-
-	/**
-	 * Log when the user disables their own access
-	 *
-	 * @param UserIdentity $performer
-	 */
-	public function logAccessDisabled( UserIdentity $performer ): void {
-		$this->log( $performer, $performer->getName(), self::ACTION_CHANGE_ACCESS_DISABLED, false );
-	}
-
-	/**
 	 * Log when the user views the values of protected variables
 	 *
 	 * @param UserIdentity $performer
@@ -124,11 +89,9 @@ class ProtectedVarsAccessLogger {
 			// silence the warnings created by this.
 			$trxProfiler = Profiler::instance()->getTransactionProfiler();
 			$scope = $trxProfiler->silenceForScope( $trxProfiler::EXPECTATION_REPLICAS_ONLY );
-			$this->log(
+			$this->createProtectedVariableValueAccessLog(
 				$performer,
 				$target,
-				self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE,
-				true,
 				$timestamp,
 				[ 'variables' => $viewedVariables ]
 			);
@@ -136,32 +99,26 @@ class ProtectedVarsAccessLogger {
 	}
 
 	/**
+	 * Actually creates the log for when a user views the value of protected variables
+	 *
 	 * @param UserIdentity $performer
 	 * @param string $target
-	 * @param string $action
-	 * @param bool $shouldDebounce
-	 * @param int|null $timestamp
-	 * @param array|null $params
+	 * @param int $timestamp
+	 * @param array $params
 	 */
-	private function log(
+	private function createProtectedVariableValueAccessLog(
 		UserIdentity $performer,
 		string $target,
-		string $action,
-		bool $shouldDebounce,
-		?int $timestamp = null,
-		?array $params = []
+		int $timestamp,
+		array $params
 	): void {
-		if ( !$timestamp ) {
-			$timestamp = (int)wfTimestamp();
-		}
-
 		// Allow external extensions to hook into this logger and pass along all known
 		// values. External extensions can abort this hook to stop additional logging
 		if ( !$this->hookRunner->onAbuseFilterLogProtectedVariableValueAccess(
 			$performer,
 			$target,
-			$action,
-			$shouldDebounce,
+			self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE,
+			true,
 			$timestamp,
 			$params
 		) ) {
@@ -172,42 +129,38 @@ class ProtectedVarsAccessLogger {
 		$dbw = $this->lbFactory->getPrimaryDatabase();
 		$shouldLog = false;
 
-		// If the log is debounced, check against the logging table before logging
-		if ( $shouldDebounce ) {
-			$timestampMinusDelay = $timestamp - $this->delay;
-			$actorId = $this->actorStore->findActorId( $performer, $dbw );
-			if ( !$actorId ) {
-				$shouldLog = true;
-			} else {
-				$targetAsTitle = $this->titleFactory->makeTitle( NS_USER, $target );
-				$logline = $dbw->newSelectQueryBuilder()
-					->select( '*' )
-					->from( 'logging' )
-					->where( [
-						'log_type' => self::LOG_TYPE,
-						'log_action' => $action,
-						'log_actor' => $actorId,
-						'log_namespace' => $targetAsTitle->getNamespace(),
-						'log_title' => $targetAsTitle->getDBkey(),
-						$dbw->expr( 'log_timestamp', '>', $dbw->timestamp( $timestampMinusDelay ) ),
-					] )
-					->caller( __METHOD__ )
-					->fetchRow();
-
-				if ( !$logline ) {
-					$shouldLog = true;
-				}
-			}
-		} else {
-			// If the log isn't debounced then it should always be logged
+		// Don't log more than one protected variable access log if the same log was created
+		// within the delay period.
+		$timestampMinusDelay = $timestamp - $this->delay;
+		$actorId = $this->actorStore->findActorId( $performer, $dbw );
+		$targetAsTitle = $this->titleFactory->makeTitle( NS_USER, $target );
+		if ( !$actorId ) {
 			$shouldLog = true;
+		} else {
+			$logline = $dbw->newSelectQueryBuilder()
+				->select( '*' )
+				->from( 'logging' )
+				->where( [
+					'log_type' => self::LOG_TYPE,
+					'log_action' => self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE,
+					'log_actor' => $actorId,
+					'log_namespace' => $targetAsTitle->getNamespace(),
+					'log_title' => $targetAsTitle->getDBkey(),
+					$dbw->expr( 'log_timestamp', '>', $dbw->timestamp( $timestampMinusDelay ) ),
+				] )
+				->caller( __METHOD__ )
+				->fetchRow();
+
+			if ( !$logline ) {
+				$shouldLog = true;
+			}
 		}
 
 		// Actually write to logging table
 		if ( $shouldLog ) {
-			$logEntry = $this->createManualLogEntry( $action );
+			$logEntry = $this->createManualLogEntry( self::ACTION_VIEW_PROTECTED_VARIABLE_VALUE );
 			$logEntry->setPerformer( $performer );
-			$logEntry->setTarget( $this->titleFactory->makeTitle( NS_USER, $target ) );
+			$logEntry->setTarget( $targetAsTitle );
 			$logEntry->setParameters( $params );
 			$logEntry->setTimestamp( wfTimestamp( TS_MW, $timestamp ) );
 
@@ -215,8 +168,8 @@ class ProtectedVarsAccessLogger {
 				$logEntry->insert( $dbw );
 			} catch ( DBError $e ) {
 				$this->logger->critical(
-					'AbuseFilter proctected variable log entry was not recorded. ' .
-					'This means access to IPs can occur without being auditable. ' .
+					'AbuseFilter protected variable log entry was not recorded. ' .
+					'This means access to private data can occur without this being auditable. ' .
 					'Immediate fix required.'
 				);
 

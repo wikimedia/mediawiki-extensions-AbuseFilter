@@ -395,13 +395,6 @@
 				"AbuseFilterEditRevUpdater"
 			]
 		},
-		"preferences": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\PreferencesHandler",
-			"services": [
-				"PermissionManager",
-				"AbuseFilterAbuseLoggerFactory"
-			]
-		},
 		"RecentChangeSave": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RecentChangeSaveHandler",
 			"services": [
@@ -463,9 +456,7 @@
 		"UserMergeAccountFields": "UserMerge",
 		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
-		"JsonValidateSave": "EditPermission",
-		"GetPreferences": "preferences",
-		"SaveUserOptions": "preferences"
+		"JsonValidateSave": "EditPermission"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"

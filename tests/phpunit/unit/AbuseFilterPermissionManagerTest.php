@@ -14,7 +14,6 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
-use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
@@ -26,25 +25,13 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	use GetFilterEvaluatorTestTrait;
 
 	private function getPermMan(): AbuseFilterPermissionManager {
-		$userOptions = new StaticUserOptionsLookup(
-			[
-				'User1' => [
-					'abusefilter-protected-vars-view-agreement' => 1
-				],
-				'User2' => [
-					'abusefilter-protected-vars-view-agreement' => ''
-				],
-			]
-		);
 		$protectedVariablesLookup = $this->createMock( AbuseFilterProtectedVariablesLookup::class );
 		$protectedVariablesLookup->method( 'getAllProtectedVariables' )
 			->willReturn( [ 'user_unnamed_ip' ] );
 		$ruleCheckerFactory = $this->createMock( RuleCheckerFactory::class );
 		$ruleCheckerFactory->method( 'newRuleChecker' )->willReturn( $this->getFilterEvaluator() );
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
-		return new AbuseFilterPermissionManager(
-			$userOptions, $protectedVariablesLookup, $ruleCheckerFactory, $hookRunner
-		);
+		return new AbuseFilterPermissionManager( $protectedVariablesLookup, $ruleCheckerFactory, $hookRunner );
 	}
 
 	public function provideCanEdit(): Generator {
@@ -345,27 +332,15 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideCanViewProtectedVariableValues(): Generator {
-		$userCheckedPreference = new UserIdentityValue( 1, 'User1' );
-		$userUncheckedPreference = new UserIdentityValue( 2, 'User2' );
-		yield 'can view protected variables, has checked preference' => [
-			[ 'abusefilter-access-protected-vars' ], $userCheckedPreference, true,
-		];
-		yield 'can view protected variables, has not checked preference' => [
-			[ 'abusefilter-access-protected-vars' ], $userUncheckedPreference, false,
-		];
-		yield 'cannot view protected variables, has checked preference' => [
-			[], $userCheckedPreference, false,
-		];
-		yield 'cannot view protected variables, has not checked preference' => [
-			[], $userUncheckedPreference, false,
-		];
+		yield 'can view protected variables' => [ [ 'abusefilter-access-protected-vars' ], true ];
+		yield 'cannot view protected variables' => [ [], false ];
 	}
 
 	/**
 	 * @dataProvider provideCanViewProtectedVariableValues
 	 */
-	public function testCanViewProtectedVariableValues( array $rights, UserIdentityValue $user, bool $expected ) {
-		$performer = $this->mockUserAuthorityWithPermissions( $user, $rights );
+	public function testCanViewProtectedVariableValues( array $rights, bool $expected ) {
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
 
 		$actualStatus = $this->getPermMan()->canViewProtectedVariableValues( $performer, [] );
 		if ( $expected ) {
@@ -374,11 +349,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 			$this->assertSame( null, $actualStatus->getPermission() );
 		} else {
 			$this->assertStatusNotGood( $actualStatus );
-			if ( !in_array( 'abusefilter-access-protected-vars', $rights ) ) {
-				$this->assertSame( 'abusefilter-access-protected-vars', $actualStatus->getPermission() );
-			} else {
-				$this->assertStatusError( 'abusefilter-examine-protected-vars-permission', $actualStatus );
-			}
+			$this->assertSame( 'abusefilter-access-protected-vars', $actualStatus->getPermission() );
 		}
 	}
 

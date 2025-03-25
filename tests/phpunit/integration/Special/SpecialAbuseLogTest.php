@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 use Generator;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
@@ -264,16 +265,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	}
 
 	public function testViewListOfLogsForUserWithAccessToTheLog() {
-		// Enable the AbuseFilter protected vars preference for out test user for this test
 		$authority = $this->authorityCanUseProtectedVar;
-		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
-		$userOptionsManager->setOption(
-			$authority->getUser(),
-			'abusefilter-protected-vars-view-agreement',
-			1
-		);
-		$userOptionsManager->saveOptions( $authority->getUser() );
-
 		[ $html ] = $this->executeSpecialPage( '', null, null, $authority );
 
 		$this->verifySearchFormFieldsValid( $html, $authority );
@@ -291,6 +283,13 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 	public function testViewListOfLogsForUserWhoCanSeeFilterButNotLog() {
 		$authority = $this->authorityCanUseProtectedVar;
+		// Mock that all users do not have access to protected variable values for the purposes of this test.
+		$this->setTemporaryHook(
+			'AbuseFilterCanViewProtectedVariableValues',
+			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
+				$returnStatus->fatal( 'test' );
+			}
+		);
 
 		[ $html ] = $this->executeSpecialPage( '', null, null, $authority );
 
@@ -326,6 +325,14 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	}
 
 	public function testShowDetailsWhenUserLacksAccessToProtectedVariableValues() {
+		// Mock that all users do not have access to protected variable values for the purposes of this test.
+		$this->setTemporaryHook(
+			'AbuseFilterCanViewProtectedVariableValues',
+			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
+				$returnStatus->fatal( 'test' );
+			}
+		);
+
 		[ $html ] = $this->executeSpecialPage(
 			'1', null, null, $this->authorityCanUseProtectedVar
 		);

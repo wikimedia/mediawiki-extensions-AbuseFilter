@@ -5,7 +5,6 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
-use MediaWiki\User\Options\StaticUserOptionsLookup;
 use MediaWikiIntegrationTestCase;
 use StatusValue;
 
@@ -41,11 +40,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testCanViewProtectedVariableValuesWhenHookDisallows() {
-		$this->setService(
-			'UserOptionsLookup',
-			new StaticUserOptionsLookup( [], [ 'abusefilter-protected-vars-view-agreement' => 1 ] )
-		);
-
 		// Define the AbuseFilterCanViewProtectedVariableValues hook to make the status a fatal status
 		$this->setTemporaryHook(
 			'AbuseFilterCanViewProtectedVariableValues',

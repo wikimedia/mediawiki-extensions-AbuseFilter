@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
@@ -64,9 +65,12 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		parent::setUp();
 
 		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
-		// define additional restrictions that cause the tests to fail.
-		$this->clearHook( 'AbuseFilterCanViewProtectedVariables' );
-		$this->clearHook( 'AbuseFilterCanViewProtectedVariableValues' );
+		// define additional restrictions or alter logging that cause the tests to fail.
+		$this->clearHooks( [
+			'AbuseFilterCanViewProtectedVariables',
+			'AbuseFilterCanViewProtectedVariableValues',
+			'AbuseFilterLogProtectedVariableValueAccess',
+		] );
 
 		// Create an authority who can see private filters but not protected variables
 		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(
@@ -818,6 +822,14 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	}
 
 	public function testViewExamineForLogEntryWhereUserCannotSeeProtectedVariableValues() {
+		// Mock that all users do not have access to protected variable values for the purposes of this test.
+		$this->setTemporaryHook(
+			'AbuseFilterCanViewProtectedVariableValues',
+			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
+				$returnStatus->fatal( 'test' );
+			}
+		);
+
 		[ $html, ] = $this->executeSpecialPage(
 			'examine/log/1',
 			new FauxRequest(),
@@ -858,25 +870,11 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	}
 
 	public function testViewExamineForLogEntryWhenUserCanSeeLog() {
-		$this->clearHooks( [
-			'AbuseFilterCanViewProtectedVariables',
-			'AbuseFilterCanViewProtectedVariableValues',
-			'AbuseFilterLogProtectedVariableValueAccess',
-		] );
-		$authority = $this->authorityCanUseProtectedVar;
-		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
-		$userOptionsManager->setOption(
-			$authority->getUser(),
-			'abusefilter-protected-vars-view-agreement',
-			1
-		);
-		$userOptionsManager->saveOptions( $authority->getUser() );
-
 		[ $html, ] = $this->executeSpecialPage(
 			'examine/log/1',
 			new FauxRequest(),
 			null,
-			$authority
+			$this->authorityCanUseProtectedVar
 		);
 		DeferredUpdates::doUpdates();
 
