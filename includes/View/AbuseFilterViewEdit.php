@@ -278,13 +278,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		// Filters that use protected variables should always be hidden from public view
-		if (
-			(
-				$filterObj->isProtected() ||
-				( $filter !== null && $this->filterLookup->getFilter( $filter, false )->isProtected() )
-			) &&
-			!$this->afPermManager->canViewProtectedVariables( $authority )->isGood()
-		) {
+		$lacksPermissionDueToProtectedVariables = $filterObj->isProtected() &&
+			!$this->afPermManager->canViewProtectedVariablesInFilter( $authority, $filterObj )->isGood();
+
+		if ( $filter !== null && !$lacksPermissionDueToProtectedVariables ) {
+			$currentFilterObj = $this->filterLookup->getFilter( $filter, false );
+			$lacksPermissionDueToProtectedVariables = $currentFilterObj->isProtected() &&
+				!$this->afPermManager->canViewProtectedVariablesInFilter( $authority, $currentFilterObj )->isGood();
+		}
+
+		if ( $lacksPermissionDueToProtectedVariables ) {
 			$out->addHTML( $this->msg( 'abusefilter-edit-denied-protected-vars' )->escaped() );
 			return;
 		}

@@ -176,7 +176,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 			// Remove protected filters from the query if the user doesn't have the right to search
 			// against them. This allows protected filters to be visible in the general list of
 			// filters at all other times.
-			if ( !$this->afPermManager->canViewProtectedVariables( $performer )->isGood() ) {
+			// Filters with protected variables that have additional restrictions cannot be excluded using SQL
+			// but will be excluded in the AbuseFilterPager.
+			if ( !$this->afPermManager->canViewProtectedVariables( $performer, [] )->isGood() ) {
 				$dbr = $this->dbProvider->getReplicaDatabase();
 				$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0';
 			}

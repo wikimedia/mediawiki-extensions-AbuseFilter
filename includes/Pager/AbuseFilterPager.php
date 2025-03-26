@@ -146,8 +146,23 @@ class AbuseFilterPager extends TablePager {
 
 		$filtered = [];
 		foreach ( $res as $row ) {
-			if ( $this->matchesPattern( $row->af_pattern ) ) {
-				$filtered[$row->af_id] = $row;
+			// FilterLookup::filterFromRow $actions is either an array or callable. We want to provide
+			// an empty array, as we don't need to use actions for this code. Phan detects an empty callable,
+			// which is a bug.
+			// @phan-suppress-next-line PhanTypeInvalidCallableArraySize
+			$filter = $this->filterLookup->filterFromRow( $row, [] );
+
+			// Exclude filters from the search result which include variables the user cannot see to avoid
+			// exposing the pattern when the user cannot see the filter.
+			if (
+				$filter->isProtected() &&
+				!$this->afPermManager->canViewProtectedVariablesInFilter( $this->getAuthority(), $filter )->isGood()
+			) {
+				continue;
+			}
+
+			if ( $this->matchesPattern( $filter->getRules() ) ) {
+				$filtered[$filter->getID()] = $row;
 			}
 		}
 
@@ -158,6 +173,8 @@ class AbuseFilterPager extends TablePager {
 			krsort( $filtered );
 		}
 		$filtered = array_slice( $filtered, 0, $limit );
+		// Phan false positive: FakeResultWrapper requires sequential indexes starting at 0
+		// @phan-suppress-next-line PhanRedundantArrayValuesCall
 		$filtered = array_values( $filtered );
 		return new FakeResultWrapper( $filtered );
 	}
