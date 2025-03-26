@@ -26,9 +26,10 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
-use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -56,6 +57,7 @@ class QueryAbuseLog extends ApiQueryBase {
 	private VariablesManager $afVariablesManager;
 	private UserFactory $userFactory;
 	private AbuseLoggerFactory $abuseLoggerFactory;
+	private RuleCheckerFactory $ruleCheckerFactory;
 
 	public function __construct(
 		ApiQuery $query,
@@ -65,7 +67,8 @@ class QueryAbuseLog extends ApiQueryBase {
 		VariablesBlobStore $afVariablesBlobStore,
 		VariablesManager $afVariablesManager,
 		UserFactory $userFactory,
-		AbuseLoggerFactory $abuseLoggerFactory
+		AbuseLoggerFactory $abuseLoggerFactory,
+		RuleCheckerFactory $ruleCheckerFactory
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
 		$this->afFilterLookup = $afFilterLookup;
@@ -74,6 +77,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->afVariablesManager = $afVariablesManager;
 		$this->userFactory = $userFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
+		$this->ruleCheckerFactory = $ruleCheckerFactory;
 	}
 
 	/**
@@ -107,8 +111,6 @@ class QueryAbuseLog extends ApiQueryBase {
 		}
 
 		$canViewPrivate = $this->afPermManager->canViewPrivateFiltersLogs( $performer );
-		$canViewProtected = $this->afPermManager->canViewProtectedVariables( $performer )->isGood();
-		$canViewProtectedValues = $this->afPermManager->canViewProtectedVariableValues( $performer )->isGood();
 
 		// Map of [ [ id, global ], ... ]
 		$searchFilters = [];
@@ -129,29 +131,43 @@ class QueryAbuseLog extends ApiQueryBase {
 				}
 			}
 
-			if ( !$canViewPrivate || !$canViewProtected || !$canViewProtectedValues ) {
-				foreach ( $searchFilters as [ $filterID, $global ] ) {
-					try {
-						$privacyLevel = $lookup->getFilter( $filterID, $global )->getPrivacyLevel();
-					} catch ( CentralDBNotAvailableException $_ ) {
-						// Conservatively assume it's hidden and protected, like in AbuseLogPager::doFormatRow
-						$privacyLevel = Flags::FILTER_HIDDEN & Flags::FILTER_USES_PROTECTED_VARS;
-					} catch ( FilterNotFoundException $_ ) {
-						$privacyLevel = Flags::FILTER_PUBLIC;
-						$foundInvalid = true;
-					}
-					if ( !$canViewPrivate && ( Flags::FILTER_HIDDEN & $privacyLevel ) ) {
-						$this->dieWithError(
-							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
-						);
-					}
-					if ( !$canViewProtected && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
+			foreach ( $searchFilters as [ $filterID, $global ] ) {
+				try {
+					$filter = $lookup->getFilter( $filterID, $global );
+					$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+					$usedVariables = $ruleChecker->getUsedVars( $filter->getRules() );
+				} catch ( CentralDBNotAvailableException $_ ) {
+					// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow.
+					// Also assume that the filter contains all protected variables for the same reasons.
+					$filter = MutableFilter::newDefault();
+					$filter->setHidden( true );
+					$filter->setProtected( true );
+					$usedVariables = $this->afPermManager->getProtectedVariables();
+				} catch ( FilterNotFoundException $_ ) {
+					// If no filter is found, assume it has no restrictions (is public and uses no protected
+					// variables) because it should be an non-existing filter ID.
+					$filter = MutableFilter::newDefault();
+					$usedVariables = [];
+					$foundInvalid = true;
+				}
+
+				if ( !$canViewPrivate && $filter->isHidden() ) {
+					$this->dieWithError(
+						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-private' ) ]
+					);
+				}
+
+				if ( $filter->isProtected() ) {
+					if ( !$this->afPermManager->canViewProtectedVariables( $performer, $usedVariables )->isGood() ) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ],
 							'permissiondenied'
 						);
 					}
-					if ( !$canViewProtectedValues && ( Flags::FILTER_USES_PROTECTED_VARS & $privacyLevel ) ) {
+
+					if (
+						!$this->afPermManager->canViewProtectedVariableValues( $performer, $usedVariables )->isGood()
+					) {
 						$this->dieWithError(
 							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected-access' ) ],
 							'permissiondenied'
@@ -182,21 +198,6 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addFieldsIf( 'afl_var_dump', $fld_details );
 		$this->addFieldsIf( 'afl_actions', $fld_result );
 		$this->addFieldsIf( 'afl_wiki', $fld_wiki );
-
-		if ( $fld_filter ) {
-			$this->addTables( 'abuse_filter' );
-			$this->addFields( 'af_public_comments' );
-
-			$this->addJoinConds( [
-				'abuse_filter' => [
-					'LEFT JOIN',
-					[
-						'af_id=afl_filter_id',
-						'afl_global' => 0
-					]
-				]
-			] );
-		}
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
@@ -289,9 +290,8 @@ class QueryAbuseLog extends ApiQueryBase {
 			$filterID = $row->afl_filter_id;
 			$global = $row->afl_global;
 			$fullName = GlobalNameUtils::buildGlobalName( $filterID, $global );
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter(
-				$performer, $lookup->getFilter( $filterID, $global )
-			);
+			$filterObj = $lookup->getFilter( $filterID, $global );
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $filterObj );
 
 			$entry = [];
 			if ( $fld_ids ) {
@@ -299,11 +299,7 @@ class QueryAbuseLog extends ApiQueryBase {
 				$entry['filter_id'] = $canSeeDetails ? $fullName : '';
 			}
 			if ( $fld_filter ) {
-				if ( $global ) {
-					$entry['filter'] = $lookup->getFilter( $filterID, true )->getName();
-				} else {
-					$entry['filter'] = $row->af_public_comments;
-				}
+				$entry['filter'] = $filterObj->getName();
 			}
 			if ( $fld_user ) {
 				$entry['user'] = $row->afl_user_text;
@@ -344,7 +340,9 @@ class QueryAbuseLog extends ApiQueryBase {
 						$shouldLog = false;
 						foreach ( $usedProtectedVars as $protectedVariable ) {
 							if ( isset( $entry['details'][$protectedVariable] ) ) {
-								if ( $canViewProtectedValues ) {
+								if ( $this->afPermManager->canViewProtectedVariableValues(
+									$performer, [ $protectedVariable ]
+								)->isGood() ) {
 									$shouldLog = true;
 								} else {
 									$entry['details'][$protectedVariable] = '';
