@@ -3,7 +3,6 @@
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
-use MediaWiki\Extension\AbuseFilter\AbuseLogger;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
@@ -251,10 +250,12 @@ return [
 			$services->get( VariablesBlobStore::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
 			$services->get( EditRevUpdater::SERVICE_NAME ),
+			$services->get( PermManager::SERVICE_NAME ),
+			$services->get( RuleCheckerFactory::SERVICE_NAME ),
 			$services->getDBLoadBalancerFactory(),
 			$services->getActorStore(),
 			new ServiceOptions(
-				AbuseLogger::CONSTRUCTOR_OPTIONS,
+				AbuseLoggerFactory::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()
 			),
 			WikiMap::getCurrentWikiDbDomain()->getId(),
