@@ -406,6 +406,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$this->afPermissionManager,
 			$this->getContext(),
 			$this->getLinkRenderer(),
+			$this->linkBatchFactory,
+			$this->permissionManager,
+			$this->varBlobStore,
 			self::PAGE_NAME
 		);
 		$view->show();
@@ -622,6 +625,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$this->linkBatchFactory,
 			$this->permissionManager,
 			$this->afPermissionManager,
+			$this->varBlobStore,
 			$this->getName()
 		);
 		$pager->doQuery();
@@ -689,6 +693,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			$this->linkBatchFactory,
 			$this->permissionManager,
 			$this->afPermissionManager,
+			$this->varBlobStore,
 			$this->getName()
 		);
 

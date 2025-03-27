@@ -16,6 +16,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\SimpleAuthority;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
@@ -30,6 +31,7 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog
  * @covers \MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager
+ * @covers \MediaWiki\Extension\AbuseFilter\View\HideAbuseLog
  * @group Database
  */
 class SpecialAbuseLogTest extends SpecialPageTestBase {
@@ -280,6 +282,28 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(abusefilter-log-noactions', $html );
 	}
 
+	public function testViewListOfLogsForUserWhoCanSeeFilterButNotLog() {
+		$authority = $this->authorityCanUseProtectedVar;
+
+		[ $html ] = $this->executeSpecialPage( '', null, null, $authority );
+
+		$this->verifySearchFormFieldsValid( $html, $authority );
+
+		// Verify that one log entry is present in the page and that the user can see the extended details
+		// as they have access to protected variables.
+		$this->assertSame(
+			1, substr_count( $html, '(abusefilter-log-detailedentry-meta-without-action-links' )
+		);
+
+		// Assert that the link to the filter and the actions taken are displayed as the user can see that.
+		$this->assertStringContainsString( '(abusefilter-log-detailedentry-local', $html );
+		$this->assertStringContainsString( '(abusefilter-log-noactions', $html );
+
+		// Verify that the action links are not present as the user cannot see the log details.
+		$this->assertStringNotContainsString( '(abusefilter-changeslist-examine', $html );
+		$this->assertStringNotContainsString( '(abusefilter-log-detailslink', $html );
+	}
+
 	public function testShowDetailsForNonExistentLogId() {
 		[ $html ] = $this->executeSpecialPage(
 			'12345', null, null, $this->authorityCannotUseProtectedVar
@@ -321,6 +345,33 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testHideAbuseLogWhenUserLacksPermission() {
+		[ $html ] = $this->executeSpecialPage(
+			'hide', null, null, $this->mockRegisteredNullAuthority()
+		);
+
+		$this->assertStringContainsString( '(abusefilter-log-hide-forbidden)', $html );
+	}
+
+	public function testHideAbuseLogWhenNoLogSelected() {
+		[ $html ] = $this->executeSpecialPage(
+			'hide', null, null,
+			$this->mockRegisteredAuthorityWithPermissions( [ 'abusefilter-hide-log' ] )
+		);
+
+		$this->assertStringContainsString( '(abusefilter-log-hide-no-selected)', $html );
+	}
+
+	public function testHideAbuseLogWhenHideIdIsInvalid() {
+		[ $html ] = $this->executeSpecialPage(
+			'hide',
+			new FauxRequest( [ 'hideids' => '1234' ] ),
+			null, $this->mockRegisteredAuthorityWithPermissions( [ 'abusefilter-hide-log' ] )
+		);
+
+		$this->assertStringContainsString( '(abusefilter-log-hide-no-selected)', $html );
+	}
+
 	public function addDBDataOnce() {
 		ConvertibleTimestamp::setFakeTime( '20240506070809' );
 		// Get a testing filter
@@ -331,6 +382,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 				'id' => '1',
 				'name' => 'Filter with protected variables',
 				'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
+				'rules' => 'user_unnamed_ip = "1.2.3.4"',
 			] ),
 			MutableFilter::newDefault()
 		) );
@@ -345,7 +397,8 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			$logPerformer->getUser(),
 			VariableHolder::newFromArray( [
 				'action' => 'edit',
-				'user_name' => 'User1',
+				'user_name' => '~2024-1',
+				'user_unnamed_ip' => '1.2.3.4',
 			] )
 		)->addLogEntries( [ 1 => [] ] );
 	}
