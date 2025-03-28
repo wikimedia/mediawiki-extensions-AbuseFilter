@@ -774,10 +774,10 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Load data
 
-		// If a non-protected filter and a protected filter have overlapping conditions,
-		// it's possible for a hit to contain a protected variable and for that variable
-		// to be dumped and displayed on a detail page that wouldn't be considered
-		// protected (because it caught on the public filter).
+		// AbuseFilter logs created before T390086 may have protected variables present in the variable dump
+		// when the filter itself isn't protected. This is because a different filter matched against the
+		// a protected variable which caused the value to be added to the var dump for the public filter
+		// match.
 		// We shouldn't block access to the details of an otherwise public filter hit so
 		// instead only check for access to the protected variables and redact them if the user
 		// shouldn't see them.

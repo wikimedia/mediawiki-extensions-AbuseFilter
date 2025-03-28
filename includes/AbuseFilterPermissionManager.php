@@ -167,10 +167,10 @@ class AbuseFilterPermissionManager {
 	 * Return all used protected variables from an array of variables. Ignore user permissions.
 	 *
 	 * @param string[] $usedVariables
-	 * @return string[]
+	 * @return string[] The protected variables in $usedVariables, with any duplicates removed.
 	 */
 	public function getUsedProtectedVariables( array $usedVariables ): array {
-		return array_intersect( $usedVariables, $this->protectedVariables );
+		return array_intersect( $this->protectedVariables, $usedVariables );
 	}
 
 	/**

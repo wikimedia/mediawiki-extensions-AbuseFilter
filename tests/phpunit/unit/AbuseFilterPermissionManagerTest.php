@@ -342,6 +342,10 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		yield 'uses protected variables' => [
 			[ 'user_unnamed_ip', 'user_name' ], [ 'user_unnamed_ip' ]
 		];
+		yield 'uses protected variables with duplicates in parameter' => [
+			[ 'user_unnamed_ip', 'user_name', 'user_unnamed_ip', 'user_name', 'user_unnamed_ip' ],
+			[ 'user_unnamed_ip' ],
+		];
 		yield 'no protected variables' => [
 			[ 'user_name' ], []
 		];
