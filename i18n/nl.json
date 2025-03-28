@@ -110,6 +110,7 @@
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|liet een filter afgaan}} bij het {{GENDER:$8|uitvoeren}} van de handeling \"$3\" op $4.\nGenomen maatregel: $5;\nFilterbeschrijving: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|liet een filter afgaan}} bij het {{GENDER:$8|verrichten}} van de handeling “$3” op $4.\nGenomen maatregelen: $5;\nFilterbeschrijving: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 heeft $3 {{GENDER:$9|laten afgaan}} tijdens het {{GENDER:$9|verrichten}} van de handeling “$4” op $5.\nGenomen maatregelen: $6;\nFilterbeschrijving: $7 ($8)",
+	"abusefilter-log-detailedentry-meta-without-action-links": "$1: $2 heeft $3 {{GENDER:$9|laten afgaan}} tijdens het {{GENDER:$9|verrichten}} van de handeling “$4” op $5.\nGenomen maatregelen: $6;\nFilterbeschrijving: $7",
 	"abusefilter-log-detailedentry-global": "globale filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "details",
