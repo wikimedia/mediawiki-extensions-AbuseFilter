@@ -97,6 +97,13 @@ class AbuseLoggerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function addDBDataOnce() {
+		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
+		// define additional restrictions that cause the tests to fail.
+		$this->clearHooks( [
+			'AbuseFilterCanViewProtectedVariables',
+			'AbuseFilterCanViewProtectedVariableValues',
+		] );
+
 		// Get two testing filters, one with protected variables and one without protected variables
 		$performer = $this->getTestSysop()->getUser();
 		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(

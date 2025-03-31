@@ -60,9 +60,14 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	protected function setUp(): void {
 		parent::setUp();
 
+		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
+		// define additional restrictions that cause the tests to fail.
+		$this->clearHook( 'AbuseFilterCanViewProtectedVariables' );
+		$this->clearHook( 'AbuseFilterCanViewProtectedVariableValues' );
+
 		// Create an authority who can see private filters but not protected variables
 		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(
-			$this->getTestUser()->getUserIdentity(),
+			$this->getMutableTestUser()->getUserIdentity(),
 			[
 				'abusefilter-log-private',
 				'abusefilter-view-private',
@@ -73,7 +78,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 
 		// Create an authority who can see private and protected variables
 		$this->authorityCanUseProtectedVar = $this->mockUserAuthorityWithPermissions(
-			$this->getTestUser()->getUserIdentity(),
+			$this->getMutableTestUser()->getUserIdentity(),
 			[
 				'abusefilter-access-protected-vars',
 				'abusefilter-log-private',

@@ -1,6 +1,6 @@
 <?php
 
-namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Special;
+namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 
 use Generator;
 use MediaWiki\Context\RequestContext;
@@ -45,6 +45,13 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 	protected function setUp(): void {
 		parent::setUp();
+
+		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
+		// define additional restrictions that cause the tests to fail.
+		$this->clearHooks( [
+			'AbuseFilterCanViewProtectedVariables',
+			'AbuseFilterCanViewProtectedVariableValues',
+		] );
 
 		// Create an authority who can see private filters but not protected variables
 		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(
@@ -373,6 +380,13 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	}
 
 	public function addDBDataOnce() {
+		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
+		// define additional restrictions that cause the tests to fail.
+		$this->clearHooks( [
+			'AbuseFilterCanViewProtectedVariables',
+			'AbuseFilterCanViewProtectedVariableValues',
+		] );
+
 		ConvertibleTimestamp::setFakeTime( '20240506070809' );
 		// Get a testing filter
 		$performer = $this->getTestSysop()->getUser();

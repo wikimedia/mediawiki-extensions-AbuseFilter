@@ -66,4 +66,30 @@ class AbuseFilterPermissionStatus extends StatusValue {
 	public function getPermission(): ?string {
 		return $this->permission;
 	}
+
+	/**
+	 * Sets the block that caused the permission check to fail.
+	 *
+	 * Use this method if you are modifying an existing instance of the {@link AbuseFilterPermissionStatus}.
+	 * Otherwise, it is recommended to use {@link AbuseFilterPermissionStatus::newBlockedError}.
+	 *
+	 * @param Block $block
+	 */
+	public function setBlock( Block $block ) {
+		$this->ok = false;
+		$this->block = $block;
+	}
+
+	/**
+	 * Sets the missing permission that caused this check to fail.
+	 *
+	 * Use this method if you are modifying an existing instance of the {@link AbuseFilterPermissionStatus}.
+	 * Otherwise, it is recommended to use {@link AbuseFilterPermissionStatus::newPermissionError}.
+	 *
+	 * @param string $permission
+	 */
+	public function setPermission( string $permission ) {
+		$this->ok = false;
+		$this->permission = $permission;
+	}
 }

@@ -3,9 +3,11 @@
 namespace MediaWiki\Extension\AbuseFilter\Hooks;
 
 use MediaWiki\Content\Content;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\RCVariableGenerator;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\HookContainer\HookContainer;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
@@ -18,6 +20,8 @@ use RecentChange;
 class AbuseFilterHookRunner implements
 	AbuseFilterAlterVariablesHook,
 	AbuseFilterBuilderHook,
+	AbuseFilterCanViewProtectedVariablesHook,
+	AbuseFilterCanViewProtectedVariableValuesHook,
 	AbuseFilterComputeVariableHook,
 	AbuseFilterContentToStringHook,
 	AbuseFilterCustomActionsHook,
@@ -251,6 +255,28 @@ class AbuseFilterHookRunner implements
 			'AbuseFilterLogProtectedVariableValueAccess',
 			[ $performer, $target, $action, $shouldDebounce, $timestamp, $params ],
 			[ 'abortable' => true ]
+		);
+	}
+
+	/** @inheritDoc */
+	public function onAbuseFilterCanViewProtectedVariableValues(
+		Authority $performer, array $variables, AbuseFilterPermissionStatus $status
+	): void {
+		$this->hookContainer->run(
+			'AbuseFilterCanViewProtectedVariableValues',
+			[ $performer, $variables, $status ],
+			[ 'abortable' => false ]
+		);
+	}
+
+	/** @inheritDoc */
+	public function onAbuseFilterCanViewProtectedVariables(
+		Authority $performer, array $variables, AbuseFilterPermissionStatus $status
+	): void {
+		$this->hookContainer->run(
+			'AbuseFilterCanViewProtectedVariables',
+			[ $performer, $variables, $status ],
+			[ 'abortable' => false ]
 		);
 	}
 }
