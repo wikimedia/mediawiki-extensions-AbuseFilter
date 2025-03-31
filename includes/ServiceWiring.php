@@ -255,6 +255,7 @@ return [
 			$services->get( RuleCheckerFactory::SERVICE_NAME ),
 			$services->getDBLoadBalancerFactory(),
 			$services->getActorStore(),
+			$services->getTitleFactory(),
 			new ServiceOptions(
 				AbuseLoggerFactory::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()

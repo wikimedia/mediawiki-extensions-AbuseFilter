@@ -14,6 +14,15 @@ use MediaWikiIntegrationTestCase;
  * @group Database
  */
 class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		// Stop external extensions (CU) from affecting the behaviour of the logger, such as changing where the
+		// logs are sent.
+		$this->clearHook( 'AbuseFilterLogProtectedVariableValueAccess' );
+	}
+
 	public function provideProtectedVarsLogTypes(): Generator {
 		yield 'enable access to protected vars values' => [
 			[
@@ -58,8 +67,6 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
 			] )
 			->assertFieldValue( 1 );
-
-		$this->resetServices();
 	}
 
 	public function testDebouncedLogs_NoHookModifications() {
@@ -85,11 +92,32 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
 			] )
 			->assertFieldValue( 1 );
-
-		$this->resetServices();
 	}
 
-	public function testProtecedVarsAccessLogger_HookModification() {
+	public function testDebouncedLogs_HandlesSpacesInTargetUsername() {
+		// Attempt to create two protected var access logs where the target is a username with spaces.
+		$performer = $this->getTestSysop();
+		$protectedVarsAccessLogger = AbuseFilterServices::getAbuseLoggerFactory()->getProtectedVarsAccessLogger();
+		$protectedVarsAccessLogger->logViewProtectedVariableValue(
+			$performer->getUserIdentity(), 'Username with spaces', (int)wfTimestamp()
+		);
+		$protectedVarsAccessLogger->logViewProtectedVariableValue(
+			$performer->getUserIdentity(), 'Username with spaces', (int)wfTimestamp()
+		);
+		DeferredUpdates::doUpdates();
+
+		// Assert that only one log is created, as it should have been debounced (was not before T389854)
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->assertFieldValue( 1 );
+	}
+
+	public function testProtectedVarsAccessLogger_HookModification() {
 		$this->setTemporaryHook( 'AbuseFilterLogProtectedVariableValueAccess', static function (
 			UserIdentity $performer,
 			string $target,
