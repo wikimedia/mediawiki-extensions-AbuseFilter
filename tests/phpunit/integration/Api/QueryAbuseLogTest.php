@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
-use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
@@ -169,12 +168,6 @@ class QueryAbuseLogTest extends ApiTestCase {
 
 	public function testProtectedVariableValueAccessWhenUserCannotSeeProtectedVariableValues() {
 		$this->mockThatAllUsersLackPermissionToSeeProtectedVariableValues();
-		// Make the AbuseLoggerFactory service expect no calls as we shouldn't log if no value was seen.
-		$this->setService(
-			AbuseLoggerFactory::SERVICE_NAME,
-			$this->createNoOpMock( AbuseLoggerFactory::class )
-		);
-
 		$result = $this->doApiRequest( [
 			'action' => 'query',
 			'list' => 'abuselog',
@@ -186,6 +179,17 @@ class QueryAbuseLogTest extends ApiTestCase {
 		foreach ( $result as $row ) {
 			$this->assertSame( '', $row['details']['user_unnamed_ip'], 'IP is redacted' );
 		}
+
+		// Assert that the attempt to view protected variables is logged
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->assertFieldValue( 1 );
 	}
 
 	public function testProtectedVariableValueAccess() {
