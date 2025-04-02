@@ -150,7 +150,7 @@ class AbuseLogger {
 		$globalLogIDs = [];
 		if ( count( $loggedGlobalFilters ) ) {
 			$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
-			$globalLogIDs = $this->insertGlobalLogEntries( $centralLogRows, $fdb );
+			$globalLogIDs = $this->insertCentralLogEntries( $centralLogRows, $fdb );
 		}
 
 		$this->editRevUpdater->setLogIdsForTarget(
@@ -220,7 +220,7 @@ class AbuseLogger {
 	private function insertLocalLogEntries( array $logRows, IDatabase $dbw ): array {
 		$loggedIDs = [];
 		foreach ( $logRows as $data ) {
-			$data['afl_var_dump'] = $this->storeVarDump( $data['afl_filter_id'], false );
+			$data['afl_var_dump'] = $this->storeVarDump( $data['afl_filter_id'], (bool)$data['afl_global'], false );
 			$dbw->newInsertQueryBuilder()
 				->insertInto( 'abuse_filter_log' )
 				->row( $data )
@@ -276,10 +276,17 @@ class AbuseLogger {
 	 * @param IDatabase $fdb
 	 * @return int[]
 	 */
-	private function insertGlobalLogEntries( array $centralLogRows, IDatabase $fdb ): array {
+	private function insertCentralLogEntries( array $centralLogRows, IDatabase $fdb ): array {
 		$this->varManager->computeDBVars( $this->vars );
 		foreach ( $centralLogRows as $index => $data ) {
-			$centralLogRows[$index]['afl_var_dump'] = $this->storeVarDump( $data['afl_filter_id'], true );
+			$centralLogRows[$index]['afl_var_dump'] = $this->storeVarDump(
+				$data['afl_filter_id'],
+				// All the filters logged centrally are global. Note, this must not use `afl_global`, because that is
+				// in the perspective of the central wiki, hence false: what we consider global on the current wiki is
+				// local to the central wiki.
+				true,
+				true
+			);
 		}
 
 		$loggedIDs = [];
@@ -302,14 +309,15 @@ class AbuseLogger {
 	 * this is possible.
 	 *
 	 * @param int $filterId The filter associated with the AbuseFilter log entry
-	 * @param bool $global If the filter associated with the AbuseFilter log entry is global
+	 * @param bool $isGlobalFilter If the filter associated with the AbuseFilter log entry is global
+	 * @param bool $useCentralDB Whether the dump should be stored in the central database
 	 * @return string
 	 */
-	private function storeVarDump( int $filterId, bool $global ): string {
+	private function storeVarDump( int $filterId, bool $isGlobalFilter, bool $useCentralDB ): string {
 		// Generate a key for the varDumps instance cache used to de-duplicate var dumps where possible.
 		// The key for this cache is the protected variables used in the filter along with whether the
 		// var dump is global.
-		$filter = $this->filterLookup->getFilter( $filterId, $global );
+		$filter = $this->filterLookup->getFilter( $filterId, $isGlobalFilter );
 		$usedVariables = $this->ruleCheckerFactory->newRuleChecker()->getUsedVars( $filter->getRules() );
 		$usedProtectedVariables = $this->afPermissionManager->getUsedProtectedVariables( $usedVariables );
 		if ( count( $usedProtectedVariables ) ) {
@@ -318,12 +326,12 @@ class AbuseLogger {
 		} else {
 			$variablesKey = 0;
 		}
-		$globalKey = (int)$global;
+		$centralDBKey = (int)$useCentralDB;
 
 		// Create a new var dump if the instance cache does not have this key.
 		if (
-			!array_key_exists( $globalKey, $this->varDumps ) ||
-			!array_key_exists( $variablesKey, $this->varDumps[$globalKey] )
+			!array_key_exists( $centralDBKey, $this->varDumps ) ||
+			!array_key_exists( $variablesKey, $this->varDumps[$centralDBKey] )
 		) {
 			// Filter out all protected variables that are not used in the current filter. Any other filter with
 			// the same list of protected filters will also use this var dump
@@ -335,10 +343,13 @@ class AbuseLogger {
 				}
 			}
 
-			$this->varDumps[$globalKey][$variablesKey] = $this->varBlobStore->storeVarDump( $filteredVars, $global );
+			$this->varDumps[$centralDBKey][$variablesKey] = $this->varBlobStore->storeVarDump(
+				$filteredVars,
+				$useCentralDB
+			);
 		}
 
-		return $this->varDumps[$globalKey][$variablesKey];
+		return $this->varDumps[$centralDBKey][$variablesKey];
 	}
 
 	/**
