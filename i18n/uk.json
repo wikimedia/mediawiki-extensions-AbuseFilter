@@ -660,8 +660,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]].",
 	"right-abusefilter-access-protected-vars": "Перегляд та створення фільтрів, які використовують захищені змінні",
 	"action-abusefilter-access-protected-vars": "перегляд та створення фільтрів, які використовують захищені змінні",
-	"prefs-abusefilter": "Фільтр зловживань",
-	"abusefilter-preference-protected-vars-view-agreement": "Увімкніть розкриття IP-адрес тимчасових облікових записів у Фільтрі зловживань",
 	"abusefilter-protected-vars-log-name": "Журнал захищених змінних фільтра зловживань",
 	"abusefilter-protected-vars-log-header": "Це журнал наступних дій:\n# Перегляд захищених змінних у деталях журналу\n# Зміна рівнів доступу користувача для перегляду захищених змінних",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 {{GENDER:$2|увімкнув|увімкнула}} собі доступ до перегляду захищених змінних",

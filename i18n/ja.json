@@ -682,8 +682,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "リンクをブロックする外部ドメインの作成または変更は、[[Special:BlockedExternalDomains|対応する特別ページ]]を通じて行う必要があります。",
 	"right-abusefilter-access-protected-vars": "保護された変数を使用するフィルターを表示および作成",
 	"action-abusefilter-access-protected-vars": "保護された変数を使用するフィルターの表示および作成",
-	"prefs-abusefilter": "不正利用フィルター",
-	"abusefilter-preference-protected-vars-view-agreement": "不正利用フィルターで臨時アカウントのIPアドレス開示を有効にする",
 	"abusefilter-protected-vars-log-name": "不正利用フィルター保護変数記録",
 	"abusefilter-protected-vars-log-header": "ここには\n# 記録の詳細で保護された変数を表示した記録\n# 保護された変数表示用の利用者アクセスレベルの変更記録\nがあります。",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 が保護された変数を表示するための{{GENDER:$2|}}アクセスを有効にしました",

@@ -606,7 +606,5 @@
 	"right-abusefilter-modify-blocked-external-domains": "Luoda tai muokata ulkoisia verkkotunnuksia, joiden linkittäminen on estetty",
 	"action-abusefilter-modify-blocked-external-domains": "luoda tai muokata ulkoisia verkkotunnuksia, joiden linkittäminen on estetty",
 	"right-abusefilter-bypass-blocked-external-domains": "Ohittaa estettyjä ulkoisia domain-nimiä",
-	"action-abusefilter-bypass-blocked-external-domains": "ohittaa estettyjä ulkoisia domain-nimiä",
-	"prefs-abusefilter": "Väärinkäyttösuodatin",
-	"abusefilter-preference-protected-vars-view-agreement": "Ota käyttöön tilapäisten tunnusten IP-osoitteiden paljastaminen väärinkäyttösuodattimessa"
+	"action-abusefilter-bypass-blocked-external-domains": "ohittaa estettyjä ulkoisia domain-nimiä"
 }

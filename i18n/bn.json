@@ -478,8 +478,6 @@
 	"right-abusefilter-bypass-blocked-external-domains": "অবরুদ্ধ বহিঃস্থ ডোমেইন বাইপাস করা",
 	"action-abusefilter-bypass-blocked-external-domains": "অবরুদ্ধ বহিঃস্থ ডোমেইন বাইপাস করার",
 	"abusefilter-blocked-domains-cannot-edit-directly": "কোনও বহিঃস্থ ডোমেইনকে লিঙ্ক করা থেকে অবরুদ্ধ করতে সেই ডোমেইনটি যোগ বা সংশোধন করার জন্য [[Special:BlockedExternalDomains|এই বিশেষ পাতাটি]] ব্যবহার করতে হবে।",
-	"prefs-abusefilter": "অপব্যবহার ছাঁকনি",
-	"abusefilter-preference-protected-vars-view-agreement": "অপব্যবহার ছাঁকনিতে অস্থায়ী অ্যাকাউন্টের জন্য আইপি ঠিকানা প্রকাশ করা সক্রিয় করুন",
 	"abusefilter-protected-vars-log-name": "অপব্যবহার ছাঁকনি সুরক্ষিত চলক লগ",
 	"abusefilter-protected-vars-log-header": "এটি:\n# লগ বিবরণে সুরক্ষিত চলক দেখা লগ\n# সুরক্ষিত চলক দেখার জন্য ব্যবহারকারীর প্রবেশাধিকারের স্তর পরিবর্তনের লগ",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 {{GENDER:$2|সুরক্ষিত চলক দেখার জন্য তার}} নিজস্ব প্রবেশাধিকার সক্রিয় করেছেন",
