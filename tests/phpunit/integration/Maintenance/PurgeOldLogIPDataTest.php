@@ -43,7 +43,6 @@ class PurgeOldLogIPDataTest extends MaintenanceBaseTestCase {
 			'afl_title' => 'Title',
 			'afl_wiki' => null,
 			'afl_deleted' => 0,
-			'afl_patrolled_by' => 0,
 			'afl_rev_id' => 42,
 		];
 		$oldTS = ConvertibleTimestamp::convert(
