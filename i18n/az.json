@@ -646,8 +646,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "bloklanmış xarici domenlərin siyahısını yaratmaq və ya redaktə etmək [[Special:BlockedExternalDomains|xüsusi səhifə]] vasitəsilə edilməlidir.",
 	"right-abusefilter-access-protected-vars": "Mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
 	"action-abusefilter-access-protected-vars": "mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
-	"prefs-abusefilter": "Dəyişiklik süzgəci",
-	"abusefilter-preference-protected-vars-view-agreement": "Süzgəcdə müvəqqəti hesablar üçün IP ünvanlarının göstərilməsini aktivləşdir",
 	"abusefilter-protected-vars-log-name": "Dəyişiklik süzgəcinin mühafizəli dəyişənləri jurnalı",
 	"abusefilter-protected-vars-log-header": "Bu, aşağıdakıların jurnalıdır:\n# Jurnal detallarındakı mühafizəli dəyişənlərə baxmaq\n# Mühafizəli dəyişənlərə baxa bilmək üçün istifadəçi icazə səviyyəsini dəyişdirmək",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 mühafizəli dəyişənlərə baxa bilmək {{GENDER:$2|imkanını}} aktivləşdirdi.",

@@ -600,7 +600,5 @@
 	"action-abusefilter-bypass-blocked-external-domains": "välisdomeenide blokeeringuid eirata",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Välisdomeene, millele linkimine on blokeeritud, tuleb lisada ja muuta [[Special:BlockedExternalDomains|erilehekülje]] kaudu.",
 	"right-abusefilter-access-protected-vars": "Vaadata ja luua filtreid, mis kasutavad kaitstud muutujaid",
-	"action-abusefilter-access-protected-vars": "vaadata ega luua filtreid, mis kasutavad kaitstud muutujaid",
-	"prefs-abusefilter": "Väärtarvitusfilter",
-	"abusefilter-preference-protected-vars-view-agreement": "Luba näidata väärtarvitusfiltris ajutiste kontode IP-aadresse"
+	"action-abusefilter-access-protected-vars": "vaadata ega luua filtreid, mis kasutavad kaitstud muutujaid"
 }

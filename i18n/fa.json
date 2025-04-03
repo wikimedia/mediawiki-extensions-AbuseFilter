@@ -668,8 +668,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "ایجاد یا تغییر دامنه‌های خارجی که از پیونددادن مسدود شده‌اند باید از طریق [[Special:BlockedExternalDomains|صفحه ویژه]] انجام شود.",
 	"right-abusefilter-access-protected-vars": "مشاهده و ایجاد پالایه‌هایی که از متغیرهای محافظت‌شده استفاده می‌کنند",
 	"action-abusefilter-access-protected-vars": "مشاهده و ایجاد پالایه‌هایی که از متغیرهای محافظت‌شده استفاده می‌کنند",
-	"prefs-abusefilter": "پالایهٔ ویرایش",
-	"abusefilter-preference-protected-vars-view-agreement": "فعال کردن آشکارسازی نشانی‌های آی‌پی حساب‌های موقت در پالایهٔ ویرایش",
 	"abusefilter-protected-vars-log-name": "سیاههٔ متغیرهای محافظت‌شدهٔ پالایهٔ ویرایش",
 	"abusefilter-protected-vars-log-header": "این سیاهه حاوی موارد زیر است:\n# مشاهدهٔ متغیرهای محافظت‌شده در جزئیات سیاهه\n# تغییر سطح دسترسی‌های کاربری برای مشاهدهٔ متغیرهای محافظت‌شده",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 دستی {{GENDER:$2|خود}} برای مشاهدهٔ متغیرهای محافظت‌شده را فعال کرد",

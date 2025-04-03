@@ -667,8 +667,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen.",
 	"right-abusefilter-access-protected-vars": "Anzeigen und Erstellen von Filtern, die geschützte Variablen verwenden",
 	"action-abusefilter-access-protected-vars": "Filter anzuzeigen und zu erstellen, die geschützte Variablen verwenden",
-	"prefs-abusefilter": "Bearbeitungsfilter",
-	"abusefilter-preference-protected-vars-view-agreement": "Aktiviere die Offenlegung von IP-Adressen für temporäre Konten im Bearbeitungsfilter",
 	"abusefilter-protected-vars-log-name": "Missbrauchsfilter geschützte Variablen-Logbuch",
 	"abusefilter-protected-vars-log-header": "Dies ist das Logbuch von:\n# Anzeigen geschützter Variablen in den Logbuchdetails\n# Ändern der Benutzerzugriffsebenen zum Anzeigen geschützter Variablen",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 hat {{GENDER:$2|seinen|ihren|den}} eigenen Zugriff zum Anzeigen geschützter Variablen aktiviert",

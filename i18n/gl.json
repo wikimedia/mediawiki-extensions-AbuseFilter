@@ -639,8 +639,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "A creación ou modificación dos dominios externos que están bloqueados e non poden ser ligados debe facerse a través [[Special:BlockedExternalDomains|da páxina especial]].",
 	"right-abusefilter-access-protected-vars": "Consultar e crear filtros que utilizan variables protexidas",
 	"action-abusefilter-access-protected-vars": "consultar e crear filtros que utilizan variables protexidas",
-	"prefs-abusefilter": "Filtro de abusos",
-	"abusefilter-preference-protected-vars-view-agreement": "Activar a revelación de enderezos IP das contas temporais no filtro de abusos",
 	"abusefilter-protected-vars-log-name": "Rexistro de variables protexidas do filtro de abusos",
 	"abusefilter-protected-vars-log-header": "Este é un rexistro de:\n# Visualización de variables protexidas nos detalles do rexistro\n# Cambio dos niveis de acceso dos usuarios para ver variables protexidas",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 activou {{GENDER:$2|o seu}} propio acceso para ver as variables protexidas",

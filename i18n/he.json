@@ -651,8 +651,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "יצירה ושינוי של תחומים חיצוניים חסומים לקישור צריכות להיעשות דרך [[Special:BlockedExternalDomains|דף מיוחד]].",
 	"right-abusefilter-access-protected-vars": "צפייה במסננים שמשתמשים במשתנים מוגנים ועריכתם",
 	"action-abusefilter-access-protected-vars": "לצפות במסננים שמשתמשים במשתנים מוגנים ולערוך אותם",
-	"prefs-abusefilter": "מסנן ההשחתות",
-	"abusefilter-preference-protected-vars-view-agreement": "להפעיל חשיפת כתובות IP עבור חשבונות חולפים במסנן ההשחתות",
 	"abusefilter-protected-vars-log-name": "יומן משתנים מוגנים של מסנן ההשחתות",
 	"abusefilter-protected-vars-log-header": "זהו יומן של:\n# הצגת משתנים מוגנים בפרטי יומן\n# שינוי רמות גישת המשתמש לצפייה במשתנים מוגנים",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 {{GENDER:$2|הפעיל לעצמו|הפעילה לעצמה}} את הגישה לצפייה במשתנים מוגנים",

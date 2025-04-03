@@ -722,8 +722,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "创建或修改被禁止的外部链接域名必须通过[[Special:BlockedExternalDomains|特殊页面]]完成。",
 	"right-abusefilter-access-protected-vars": "查看和创建使用受保护变量的过滤器",
 	"action-abusefilter-access-protected-vars": "查看和创建使用受保护变量的过滤器",
-	"prefs-abusefilter": "滥用过滤器",
-	"abusefilter-preference-protected-vars-view-agreement": "在滥用过滤器中启用显示临时账号的IP地址",
 	"abusefilter-protected-vars-log-name": "滥用过滤器受保护变量日志",
 	"abusefilter-protected-vars-log-header": "此日志是关于：\n# 在日志详细信息中查看受保护的变量\n# 更改查看受保护变量的用户访问级别",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1已启用{{GENDER:$2|其}}自身查看受保护变量的权限",

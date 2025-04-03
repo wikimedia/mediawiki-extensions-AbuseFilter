@@ -667,8 +667,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Skapa eller ändra vilka externa domäner som blockeras från att länkas måste göras via [[Special:BlockedExternalDomains|specialsidan]].",
 	"right-abusefilter-access-protected-vars": "Visa och skapa filter som använder skyddade variabler",
 	"action-abusefilter-access-protected-vars": "visa och skapa filter som använder skyddade variabler",
-	"prefs-abusefilter": "Missbruksfilter",
-	"abusefilter-preference-protected-vars-view-agreement": "Aktivera offentliggörande av IP-adresser för tillfälliga konton i missbruksfiltret",
 	"abusefilter-protected-vars-log-name": "Logg över missbruksfilter för skyddade variabler",
 	"abusefilter-protected-vars-log-header": "Det finns en logg över:\n# Visa skyddade variabler i loggdetaljer\n# Ändra användaråtkomstnivå för att visa skyddade variabler",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 aktiverade {{GENDER:$2|sin}} egen åtkomst för att visa skyddade variabler",

@@ -637,8 +637,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]].",
 	"right-abusefilter-access-protected-vars": "Гледање и создавање на филтри што користат заштитени променливи",
 	"action-abusefilter-access-protected-vars": "гледање и создавање на филтри што користат заштитени променливи",
-	"prefs-abusefilter": "Филтер на злоупотреби",
-	"abusefilter-preference-protected-vars-view-agreement": "Овозможи откривање на IP-адреси за привремени сметки во Филтер на злоупотреби",
 	"abusefilter-protected-vars-log-name": "Дневник на заштитени променливи на Филтерот за злоупотреби",
 	"abusefilter-protected-vars-log-header": "Ова е дневник на:\n# Гледање на заштитени променливи во дневнички поединости\n# Менување на пристап за гледање на заштитени променливи",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 го овозможи {{GENDER:$2|неговиот|нејзиниот|неговиот}} пристап за гледање на заштитени променливи",

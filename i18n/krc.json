@@ -632,8 +632,6 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "тыш доменнге джибериуню блок этилиуюн болдуругъуз неда тюзетиуню [[Special:BlockedExternalDomains|энчи бетни]] юсю бла этерге керекди.",
 	"right-abusefilter-access-protected-vars": "Къорууланнган тюрленнгенлени хайырланнган фильтрлени кёрюу эмда болдуруу",
 	"action-abusefilter-access-protected-vars": "къорууланнган тюрленнгенлени хайырланнган фильтрлени кёрюу эмда болдуруу",
-	"prefs-abusefilter": "Джорукъ бузуу фильтр",
-	"abusefilter-preference-protected-vars-view-agreement": "Джорукъ бузуу фильтрде болджаллы хыйсабла ючюн IP-адреслени ачыкъ болуууну джандыр",
 	"abusefilter-protected-vars-log-name": "Джорукъ бузуу фильтрни къорууланнган тюрленнгенлирини журналы",
 	"abusefilter-protected-vars-log-header": "Бу тюбюндегилени джурналыды:\n# Журнал деталлада къорууланнган тюрленнгенлени кёрюнюую\n# Къорууланнган тюрленнгенлени кёрюр юючн хайырланыучу дараджаланы тюрлендириу",
 	"logentry-abusefilter-protected-vars-change-access-enable": "Къорууланнган тюрленнгенлени кёралыр ючюн $1{{GENDER:$2|кесини}} энчи амалын джандырды",
