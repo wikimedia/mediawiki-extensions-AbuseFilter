@@ -109,6 +109,7 @@
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|فعل}} مرشح إساءة، {{GENDER:$8|مؤديا}} الفعل \"$3\" في $4.\nالأفعال المتخذة: $5،\nوصف المرشح: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|فعل}} مرشح إساءة، {{GENDER:$8|مؤديا}} الفعل \"$3\" في $4.\nالأفعال المتخذة: $5،\nوصف المرشح: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|أطلق}} $3; {{GENDER:$9|مؤديا}} الفعل \"$4\" في $5.\nالأفعال المتخذة: $6;\nوصف المرشح: $7 ($8)",
+	"abusefilter-log-detailedentry-meta-without-action-links": "$1: $2 {{GENDER:$9|تم تشغيله}} $3 ، {{GENDER:$9|يقوم}} بتنفيذ الإجراء \"$4\" على $5.\nالإجراءات المتخذة: $6;\nوصف الفلتر: $7",
 	"abusefilter-log-detailedentry-global": "المرشح العام $1",
 	"abusefilter-log-detailedentry-local": "المرشح $1",
 	"abusefilter-log-detailslink": "التفاصيل",
