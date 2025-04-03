@@ -793,7 +793,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		}
 		$vars = VariableHolder::newFromArray( $varsArray );
 
-		if ( count( $protectedVariableValuesShown ) ) {
+		if ( $filter->isProtected() ) {
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue(
 				$userAuthority->getUser(),

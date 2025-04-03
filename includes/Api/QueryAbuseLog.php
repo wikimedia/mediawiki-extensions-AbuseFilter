@@ -350,7 +350,7 @@ class QueryAbuseLog extends ApiQueryBase {
 							}
 						}
 
-						if ( count( $protectedVariableValuesShown ) ) {
+						if ( $filterObj->isProtected() ) {
 							// user_name or accountname should always exist -- just in case
 							// if it doesn't, unset the protected variables since they shouldn't be accessed if
 							// the access isn't logged
