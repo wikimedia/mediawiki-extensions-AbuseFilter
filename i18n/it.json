@@ -297,7 +297,7 @@
 	"abusefilter-block-user": "blocca utenti registrati",
 	"abusefilter-block-talk": "pagina di discussione bloccata",
 	"abusefilter-edit-denied": "Non è possibile visualizzare i dettagli di questo filtro, in quanto nascosto al pubblico.",
-	"abusefilter-edit-denied-protected-vars": "Non è possibile visualizzare i dettagli di questo filtro, poiché utilizza variabili protette ed è nascosto al pubblico.",
+	"abusefilter-edit-denied-protected-vars": "Non è possibile visualizzare i dettagli di questo filtro perché utilizza variabili protette ed è nascosto al pubblico.",
 	"abusefilter-edit-main": "Parametri del filtro",
 	"abusefilter-edit-done-subtitle": "Filtro modificato",
 	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Le modifiche]] al [[Special:AbuseFilter/$1|filtro $3]] sono state salvate correttamente.",
