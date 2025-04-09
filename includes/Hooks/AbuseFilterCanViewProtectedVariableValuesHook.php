@@ -13,6 +13,7 @@ interface AbuseFilterCanViewProtectedVariableValuesHook {
 	 * variable(s).
 	 *
 	 * @since 1.44
+	 * @unstable Will be removed before 1.44 release
 	 * @param Authority $performer The user viewing the protected variable values.
 	 * @param string[] $variables The protected variables that are being viewed.
 	 * @param AbuseFilterPermissionStatus $status Modify this status to make it fatal if user does
