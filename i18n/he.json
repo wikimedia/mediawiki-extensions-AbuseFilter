@@ -93,7 +93,7 @@
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|הפעיל|הפעילה}} מסנן השחתות {{GENDER:$8|כשביצע|כשביצעה}} את הפעולה \"$3\" בדף $4.\nהפעולות שננקטו: $5;\nתיאור המסנן: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|גרם|גרמה}} להפעלת $3 {{GENDER:$9|כשביצע|כשביצעה}} את הפעולה \"$4\" בדף $5.\nהפעולות שננקטו: $6;\nתיאור המסנן: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "המסנן הגלובלי $1",
-	"abusefilter-log-detailedentry-local": "המסנן $1",
+	"abusefilter-log-detailedentry-local": "מסנן $1",
 	"abusefilter-log-detailslink": "פרטים",
 	"abusefilter-log-diff": "השוואה",
 	"abusefilter-log-hidelink": "שינוי מצב התצוגה",
