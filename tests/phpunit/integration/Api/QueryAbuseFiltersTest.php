@@ -31,7 +31,6 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
 		// define additional restrictions that cause the tests to fail.
 		$this->clearHook( 'AbuseFilterCanViewProtectedVariables' );
-		$this->clearHook( 'AbuseFilterCanViewProtectedVariableValues' );
 
 		// Create an authority who can see private filters but not protected variables
 		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(

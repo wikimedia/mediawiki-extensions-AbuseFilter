@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 
-use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
@@ -39,7 +38,6 @@ class QueryAbuseLogTest extends ApiTestCase {
 		// define additional restrictions or alter logging that cause the tests to fail.
 		$this->clearHooks( [
 			'AbuseFilterCanViewProtectedVariables',
-			'AbuseFilterCanViewProtectedVariableValues',
 			'AbuseFilterLogProtectedVariableValueAccess',
 		] );
 
@@ -97,39 +95,6 @@ class QueryAbuseLogTest extends ApiTestCase {
 		);
 	}
 
-	/**
-	 * Causes all attempts to check if an Authority has access to protected variable values to fail.
-	 *
-	 * Used because AbuseFilter has no permission difference between viewing protected variables
-	 * and protected variable values since T380920, however, other extensions may make a distinction via
-	 * the hook.
-	 *
-	 * @return void
-	 */
-	private function mockThatAllUsersLackPermissionToSeeProtectedVariableValues() {
-		$this->setTemporaryHook(
-			'AbuseFilterCanViewProtectedVariableValues',
-			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
-				$returnStatus->fatal( 'test' );
-			}
-		);
-	}
-
-	public function testFilteringForProtectedFilterWhenUserLacksAccessToValues() {
-		$this->mockThatAllUsersLackPermissionToSeeProtectedVariableValues();
-		$this->expectApiErrorCode( 'permissiondenied' );
-		$this->doApiRequest(
-			[
-				'action' => 'query',
-				'list' => 'abuselog',
-				'aflprop' => 'details',
-				'afldir' => 'older',
-				'aflfilter' => 1,
-			],
-			null, false, $this->authorityCanViewProtectedVar
-		);
-	}
-
 	public function testFilteringForProtectedFilterWhenUserLacksAccessAndCentralDBNotAvailable() {
 		// Mock FilterLookup::getFilter to throw a CentralDBNotAvailableException exception
 		$mockFilterLookup = $this->createMock( FilterLookup::class );
@@ -164,32 +129,6 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->assertArrayHasKey( 'warnings', $result );
 		$this->assertSame( 'abusefilter-log-invalid-filter', $result['warnings'][0]['code'] );
 		$this->assertCount( 0, $result['query']['abuselog'] );
-	}
-
-	public function testProtectedVariableValueAccessWhenUserCannotSeeProtectedVariableValues() {
-		$this->mockThatAllUsersLackPermissionToSeeProtectedVariableValues();
-		$result = $this->doApiRequest( [
-			'action' => 'query',
-			'list' => 'abuselog',
-			'aflprop' => 'details',
-			'afldir' => 'older',
-		], null, null, $this->authorityCanViewProtectedVar );
-		$result = $result[0]['query']['abuselog'];
-		$this->assertNotCount( 0, $result, 'abuselog API response should not be empty' );
-		foreach ( $result as $row ) {
-			$this->assertSame( '', $row['details']['user_unnamed_ip'], 'IP is redacted' );
-		}
-
-		// Assert that the attempt to view protected variables is logged
-		$this->newSelectQueryBuilder()
-			->select( 'COUNT(*)' )
-			->from( 'logging' )
-			->where( [
-				'log_action' => 'view-protected-var-value',
-				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-			] )
-			->caller( __METHOD__ )
-			->assertFieldValue( 1 );
 	}
 
 	public function testProtectedVariableValueAccess() {

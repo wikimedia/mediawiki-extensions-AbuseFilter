@@ -187,7 +187,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 
 			if ( $canSeeLogDetails ) {
 				$vars = $this->varBlobStore->loadVarDump( $row );
-				$canSeeLogDetails = $this->afPermissionManager->canViewProtectedVariableValues(
+				$canSeeLogDetails = $this->afPermissionManager->canViewProtectedVariables(
 					$performer, array_keys( $vars->getVars() )
 				)->isGood();
 			}
