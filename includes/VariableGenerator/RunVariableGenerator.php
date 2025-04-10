@@ -186,6 +186,7 @@ class RunVariableGenerator extends VariableGenerator {
 			$this->addEditVars( $page, $this->user );
 		}
 
+		$this->addGenericVars();
 		return $this->vars;
 	}
 
@@ -264,6 +265,7 @@ class RunVariableGenerator extends VariableGenerator {
 		$this->setLastEditAge( $this->title, 'moved_from' );
 		$this->setLastEditAge( $newTitle, 'moved_to' );
 		// TODO: add old_wikitext etc. (T320347)
+		$this->addGenericVars();
 		return $this->vars;
 	}
 
@@ -285,6 +287,7 @@ class RunVariableGenerator extends VariableGenerator {
 		// the hook and call WikiPage::getRevisionRecord, but then ProofreadPage tests fail
 		$this->setLastEditAge( $this->title, 'page' );
 		// TODO: add old_wikitext etc. (T173663)
+		$this->addGenericVars();
 		return $this->vars;
 	}
 
@@ -359,6 +362,7 @@ class RunVariableGenerator extends VariableGenerator {
 			// TODO: set old_content_model and new_content_model vars, use them
 			$this->addEditVars( $page, $this->user, true );
 		}
+		$this->addGenericVars();
 		return $this->vars;
 	}
 
@@ -388,6 +392,7 @@ class RunVariableGenerator extends VariableGenerator {
 
 		$this->vars->setVar( 'action', $autocreate ? 'autocreateaccount' : 'createaccount' );
 		$this->vars->setVar( 'accountname', $createdUser->getName() );
+		$this->addGenericVars();
 		return $this->vars;
 	}
 }
