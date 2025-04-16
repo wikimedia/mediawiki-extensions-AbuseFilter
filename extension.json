@@ -458,11 +458,6 @@
 		"ParserOutputStashForEdit": "FilteredActions",
 		"JsonValidateSave": "EditPermission"
 	},
-	"DeprecatedHooks": {
-		"AbuseFilter-filterAction": {
-			"deprecatedVersion": "1.34"
-		}
-	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
