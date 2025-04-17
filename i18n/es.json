@@ -256,7 +256,7 @@
 	"abusefilter-add": "Añadir un filtro de abusos",
 	"abusefilter-edit": "Editar el filtro antiabusos",
 	"abusefilter-edit-specific": "Edición del filtro de abusos $1: $2",
-	"abusefilter-view-specific": "Viendo el filtro de abusos $1 : $2",
+	"abusefilter-view-specific": "Viendo el filtro antiabusos $1: $2",
 	"abusefilter-edit-subtitle": "Editando filtro $1",
 	"abusefilter-edit-subtitle-new": "Creando un filtro",
 	"abusefilter-edit-token-not-match": "¡La edición no fue guardada! Por favor vuelve a intentarlo.",
