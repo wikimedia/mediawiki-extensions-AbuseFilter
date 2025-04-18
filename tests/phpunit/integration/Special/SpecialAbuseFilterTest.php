@@ -390,6 +390,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				],
 				// This was posted
 				true,
+				RequestContext::getMain()->getRequest()->getSession()
 			),
 			null,
 			$authority
@@ -427,6 +428,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 				],
 				// This was posted
 				true,
+				RequestContext::getMain()->getRequest()->getSession()
 			),
 			null,
 			$authority
