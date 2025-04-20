@@ -258,7 +258,7 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->addDerivedEditVars();
 
 		// TODO: all these are legacy methods
-		$this->vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+		$this->vars->setLazyLoadVar( 'new_links', 'links-from-wikitext',
 			[
 				'text-var' => 'new_wikitext',
 				'article' => $page,

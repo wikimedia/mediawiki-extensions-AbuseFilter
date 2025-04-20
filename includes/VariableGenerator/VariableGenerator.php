@@ -214,9 +214,9 @@ class VariableGenerator {
 
 		// Links
 		$this->vars->setLazyLoadVar( 'added_links', 'array-diff',
-			[ 'base-var' => 'all_links', 'minus-var' => 'old_links' ] );
+			[ 'base-var' => 'new_links', 'minus-var' => 'old_links' ] );
 		$this->vars->setLazyLoadVar( 'removed_links', 'array-diff',
-			[ 'base-var' => 'old_links', 'minus-var' => 'all_links' ] );
+			[ 'base-var' => 'old_links', 'minus-var' => 'new_links' ] );
 
 		// Text
 		$this->vars->setLazyLoadVar( 'new_text', 'strip-html',
@@ -236,7 +236,7 @@ class VariableGenerator {
 	public function addEditVarsFromUpdate( PreparedUpdate $update, User $contextUser ): self {
 		$this->addDerivedEditVars();
 
-		$this->vars->setLazyLoadVar( 'all_links', 'links-from-update',
+		$this->vars->setLazyLoadVar( 'new_links', 'links-from-update',
 			[ 'update' => $update ] );
 		$this->vars->setLazyLoadVar( 'old_links', 'links-from-database',
 			[ 'article' => $update->getPage() ] );
@@ -267,7 +267,7 @@ class VariableGenerator {
 	): self {
 		$this->addDerivedEditVars();
 
-		$this->vars->setLazyLoadVar( 'all_links', 'links-from-wikitext',
+		$this->vars->setLazyLoadVar( 'new_links', 'links-from-wikitext',
 			[
 				'text-var' => 'new_wikitext',
 				'article' => $page,
