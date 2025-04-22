@@ -75,7 +75,7 @@
 	"abusefilter-log-search-action-taken-label": "Динарш:",
 	"abusefilter-log-search-action-taken-any": "Йерриге",
 	"abusefilter-log-search-submit": "Лахар",
-	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|болх бина}} зуламийн литтаро, кхочуш бина болх «$3» агӀон тӀехь $4.\nДина гӀуллакхаш: $5;\nЛиттарх дийцар: $6",
+	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|болх бина}} зедарийн фильтр, кхочуш бина болх «$3» агӀонан тӀехь $4.\nДина гӀуллакхаш: $5;\nФильтрх дийцар: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|Болх бина}} зедарийн фильтр латаро, кхочушдина гӀуллакх «$3» агӀон тӀехь $4.\nДина гӀуллакх: $5;\nФильтр гайтар: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|Болх бина}} фильтро $3, кхочушдина гӀуллакх «$4» агӀонан тӀехь $5.\nДина гӀуллакхаш: $6.\nФильтр гайтар: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "глобалан фильтр $1",
