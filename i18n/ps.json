@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ahmed-Najib-Biabani-Ibrahimkhel"
+			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"شاه زمان پټان"
 		]
 	},
 	"abuselog": "د ورانکارۍ چاڼگر يادښت",
@@ -113,7 +114,7 @@
 	"abusefilter-revert-periodstart": "د مودې پيل:",
 	"abusefilter-revert-periodend": "د مودې پای:",
 	"abusefilter-revert-search": "چارې ټاکل",
-	"abusefilter-revert-filter": "چاڼگر:",
+	"abusefilter-revert-filter": "چاڼگر پېژند:",
 	"abusefilter-revert-confirm": "تاييد",
 	"abusefilter-revert-reasonfield": "سبب:",
 	"abusefilter-test-legend": "چاڼگر آزموينه",
@@ -134,5 +135,13 @@
 	"abusefilter-diff-item": "توکی",
 	"abusefilter-diff-info": "بنسټيز مالومات",
 	"abusefilter-diff-next": "نوی بدلون",
-	"abusefilter-group-default": "تلواليز"
+	"abusefilter-group-default": "تلواليز",
+	"abusefilter-blocked-domains-notes": "يادښتونه",
+	"abusefilter-blocked-domains-add-submit": "سپارل",
+	"abusefilter-blocked-domains-domain-header": "واک‌سيمه",
+	"abusefilter-blocked-domains-notes-header": "يادښتونه",
+	"abusefilter-blocked-domains-actions-header": "چارې",
+	"abusefilter-blocked-domains-remove": "غورځول",
+	"abusefilter-blocked-domains-remove-reason": "لامل",
+	"abusefilter-blocked-domains-remove-submit": "لرې کول"
 }
