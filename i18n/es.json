@@ -69,7 +69,8 @@
 			"Vivaelcelta",
 			"Warming Hearth",
 			"Codename Noreste",
-			"Qwrop"
+			"Qwrop",
+			"Luigi Nakano"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas a las ediciones",
@@ -255,7 +256,7 @@
 	"abusefilter-status": "De {{PLURAL:$1|la última acción|las últimas $1 acciones}}, $2 ($3&nbsp;%) {{PLURAL:$2|ha|han}} alcanzado el límite de $4 condiciones, y $5 ($6&nbsp;%) {{PLURAL:$5|ha|han}} coincidido con al menos uno de los filtros activados actualmente.",
 	"abusefilter-add": "Añadir un filtro de abusos",
 	"abusefilter-edit": "Editar el filtro antiabusos",
-	"abusefilter-edit-specific": "Edición del filtro de abusos $1: $2",
+	"abusefilter-edit-specific": "Edición del filtro antiabusos $1: $2",
 	"abusefilter-view-specific": "Viendo el filtro antiabusos $1: $2",
 	"abusefilter-edit-subtitle": "Editando filtro $1",
 	"abusefilter-edit-subtitle-new": "Creando un filtro",
