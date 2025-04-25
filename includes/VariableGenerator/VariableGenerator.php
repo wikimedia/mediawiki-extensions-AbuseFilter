@@ -4,14 +4,14 @@ namespace MediaWiki\Extension\AbuseFilter\VariableGenerator;
 
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Page\WikiPage;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Storage\PreparedUpdate;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
-use RecentChange;
-use WikiPage;
 
 /**
  * Class used to generate variables, for instance related to a given user or title.

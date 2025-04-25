@@ -2,9 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use LogEventsList;
-use LogPage;
-use ManualLogEntry;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
@@ -14,6 +11,9 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Logging\LogEventsList;
+use MediaWiki\Logging\LogPage;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Permissions\PermissionManager;
 use Wikimedia\Rdbms\LBFactory;
 

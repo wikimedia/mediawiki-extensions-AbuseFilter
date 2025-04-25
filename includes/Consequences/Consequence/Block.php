@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
-use ManualLogEntry;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Block\DatabaseBlockStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
