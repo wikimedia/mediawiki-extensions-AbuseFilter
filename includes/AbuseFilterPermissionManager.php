@@ -212,6 +212,7 @@ class AbuseFilterPermissionManager {
 		}
 
 		$this->hookRunner->onAbuseFilterCanViewProtectedVariableValues( $performer, $variables, $returnStatus );
+		$this->hookRunner->onAbuseFilterCanViewProtectedVariables( $performer, $variables, $returnStatus );
 
 		$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
 		return $returnStatus;

@@ -40,17 +40,11 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testCanViewProtectedVariableValuesWhenHookDisallows() {
-		// Define the AbuseFilterCanViewProtectedVariableValues hook to make the status a fatal status
-		$this->setTemporaryHook(
-			'AbuseFilterCanViewProtectedVariableValues',
-			static function ( $performer, $variables, StatusValue $status ) {
-				$status->fatal( 'test-error' );
-			}
-		);
+		// Define the AbuseFilterCanViewProtectedVariables hook to make the status a fatal status
 		$this->setTemporaryHook(
 			'AbuseFilterCanViewProtectedVariables',
-			function () {
-				$this->fail( 'The AbuseFilterCanViewProtectedVariables hook was not expected to be called.' );
+			static function ( $performer, $variables, StatusValue $status ) {
+				$status->fatal( 'test-error' );
 			}
 		);
 
