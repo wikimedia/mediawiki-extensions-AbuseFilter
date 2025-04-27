@@ -12,6 +12,7 @@ use MediaWiki\ExternalLinks\ExternalLinksLookup;
 use MediaWiki\ExternalLinks\LinkFilter;
 use MediaWiki\Language\Language;
 use MediaWiki\Page\PageIdentity;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Parser\ParserFactory;
 use MediaWiki\Parser\ParserOptions;
 use MediaWiki\Permissions\PermissionManager;
@@ -39,7 +40,6 @@ use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
-use WikiPage;
 
 /**
  * Service used to compute lazy-loaded variable.

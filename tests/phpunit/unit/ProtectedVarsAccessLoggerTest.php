@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use ManualLogEntry;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\ActorStore;

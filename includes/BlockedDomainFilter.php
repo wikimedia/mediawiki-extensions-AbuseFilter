@@ -19,12 +19,12 @@
  */
 namespace MediaWiki\Extension\AbuseFilter;
 
-use LogPage;
-use ManualLogEntry;
 use MediaWiki\CheckUser\Hooks as CUHooks;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Logging\LogPage;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;

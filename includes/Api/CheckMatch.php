@@ -2,9 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Api;
 
-use LogEventsList;
 use LogicException;
-use LogPage;
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
@@ -16,8 +14,10 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Logging\LogEventsList;
+use MediaWiki\Logging\LogPage;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
-use RecentChange;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class CheckMatch extends ApiBase {

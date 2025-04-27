@@ -2,10 +2,10 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
-use LogPage;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Logging\LogPage;
 use MediaWiki\Status\Status;
 use MessageLocalizer;
 use Psr\Log\LoggerInterface;

@@ -2,13 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 
-use ManualLogEntry;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;

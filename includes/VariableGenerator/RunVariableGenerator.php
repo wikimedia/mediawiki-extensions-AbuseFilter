@@ -7,6 +7,7 @@ use MediaWiki\Content\Content;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Page\WikiPage;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
@@ -18,7 +19,6 @@ use MWFileProps;
 use UploadBase;
 use Wikimedia\Assert\PreconditionException;
 use Wikimedia\Mime\MimeAnalyzer;
-use WikiPage;
 
 /**
  * This class contains the logic used to create variable holders before filtering

@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use ChangesList;
 use LogicException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
@@ -22,10 +21,11 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\RecentChanges\ChangesList;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use OOUI;
-use RecentChange;
 use Wikimedia\Rdbms\LBFactory;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
