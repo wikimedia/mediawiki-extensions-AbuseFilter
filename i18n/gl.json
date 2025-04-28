@@ -10,7 +10,7 @@
 			"Maria zaos",
 			"Matma Rex",
 			"Toliño",
-			"Amire80"
+			"Codename Noreste"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas ás edicións",
@@ -78,9 +78,9 @@
 	"abusefilter-log-search-action-taken-label": "Acción feita:",
 	"abusefilter-log-search-action-taken-any": "Calquera",
 	"abusefilter-log-search-submit": "Procurar",
-	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|accionou}} un filtro de abusos, ao {{GENDER:$8|levar}} a cabo a acción \"$3\" na páxina \"$4\".\nMedidas tomadas: $5.\nDescrición do filtro: $6",
-	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|accionou}} un filtro de abusos, ao {{GENDER:$8|levar}} a cabo a acción \"$3\" na páxina \"$4\".\nMedidas tomadas: $5.\nDescrición do filtro: $6 ($7)",
-	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|accionou}} $3, ao {{GENDER:$9|levar}} a cabo a acción \"$4\" na páxina \"$5\".\nMedidas tomadas: $6.\nDescrición do filtro: $7 ($8)",
+	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|accionou}} un filtro de abusos, ao {{GENDER:$8|levar}} a cabo a acción «$3» na páxina $4.\nMedidas tomadas: $5;\nDescrición do filtro: $6",
+	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|accionou}} un filtro de abusos, ao {{GENDER:$8|levar}} a cabo a acción «$3» na páxina $4.\nMedidas tomadas: $5;\nDescrición do filtro: $6 ($7)",
+	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|accionou}} $3, ao {{GENDER:$9|levar}} a cabo a acción «$4» na páxina $5.\nMedidas tomadas: $6;\nDescrición do filtro: $7 ($8)",
 	"abusefilter-log-detailedentry-global": "filtro global $1",
 	"abusefilter-log-detailedentry-local": "filtro $1",
 	"abusefilter-log-detailslink": "detalles",
