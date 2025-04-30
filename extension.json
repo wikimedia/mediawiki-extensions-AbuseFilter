@@ -574,7 +574,11 @@
 		},
 		"AbuseFilterLogIPMaxAge": {
 			"value": 7776000,
-			"description": "Age used as cutoff when purging old IP log data, defaults to 3 months. Used by maintenance script purgeOldLogIPData.php"
+			"description": "Age used as cutoff when purging old IP log data, defaults to 3 months. Used by maintenance script PurgeOldLogData.php"
+		},
+		"AbuseFilterLogProtectedVariablesMaxAge": {
+			"value": 7776000,
+			"description": "Age used as a cutoff when purging old protected variable values from the variables dump. Defaults to 3 months. Note that the user_unnamed_ip protected variable is purged after $wgAbuseFilterLogIPMaxAge seconds instead. Used by maintenance script PurgeOldLogData.php. If set to 0, then protected variables are never purged."
 		},
 		"AbuseFilterSlowFilterRuntimeLimit": {
 			"value": 500,
