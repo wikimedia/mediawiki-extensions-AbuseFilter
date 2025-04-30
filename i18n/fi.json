@@ -134,7 +134,7 @@
 	"abusefilter-log-linkonundelete-text": "Näytä tämän sivun väärinkäyttöloki",
 	"abusefilter-log-hidden-implicit": "(piilotettu, koska versio on poistettu)",
 	"abusefilter-log-cannot-see-details": "Sinulla ei ole oikeutta nähdä tämän lokimerkinnän tietoja.",
-	"abusefilter-log-cannot-see-privatedetails": "Sinulla ei ole lupaa tarkastella tämän lokimerkinnän yksityisiä tietoja.",
+	"abusefilter-log-cannot-see-privatedetails": "Sinulla ei ole oikeutta tarkastella tämän lokimerkinnän yksityisiä tietoja.",
 	"abusefilter-log-nonexistent": "Annettua tunnistetta sisältävää merkintää ei ole olemassa.",
 	"abusefilter-log-details-hidden": "Et voi nähdä tämän lokimerkinnän tietoja, koska merkintä on piilotettu eikä ole julkisesti näkyvissä.",
 	"abusefilter-log-details-hidden-implicit": "Et voi nähdä tämän lokimerkinnän tietoja, koska siihen liittyvä versio on piilotettu eikä ole julkisesti näkyvissä.",
