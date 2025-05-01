@@ -331,7 +331,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 'abusefilter-access-protected-vars', $statusFromThirdCall->getPermission() );
 	}
 
-	public function provideCanViewProtectedVariableValues(): Generator {
+	public static function provideCanViewProtectedVariableValues(): Generator {
 		yield 'can view protected variables' => [ [ 'abusefilter-access-protected-vars' ], true ];
 		yield 'cannot view protected variables' => [ [], false ];
 	}
@@ -377,7 +377,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 'abusefilter-access-protected-vars', $statusFromThirdCall->getPermission() );
 	}
 
-	public function provideTestGetUsedProtectedVariables(): Generator {
+	public static function provideTestGetUsedProtectedVariables(): Generator {
 		yield 'uses protected variables' => [
 			[ 'user_unnamed_ip', 'user_name' ], [ 'user_unnamed_ip' ]
 		];

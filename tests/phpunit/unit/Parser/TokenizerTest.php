@@ -48,7 +48,7 @@ class TokenizerTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideUnclosedComment() {
+	public static function provideUnclosedComment() {
 		return [
 			[ '     /****    /  *  /', 'nextToken' ],
 		];
@@ -70,7 +70,7 @@ class TokenizerTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideUnrecognisedToken() {
+	public static function provideUnrecognisedToken() {
 		return [
 			[ '#', 'nextToken' ],
 		];
@@ -92,7 +92,7 @@ class TokenizerTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideUnclosedString() {
+	public static function provideUnclosedString() {
 		return [
 			'Simple' => [ '"', 'readStringLiteral' ],
 			'Truncated escape sequence' => [ '"\\', 'readStringLiteral' ],

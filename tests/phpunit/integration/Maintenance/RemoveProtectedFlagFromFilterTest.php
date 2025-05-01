@@ -79,7 +79,7 @@ class RemoveProtectedFlagFromFilterTest extends MaintenanceBaseTestCase {
 		$this->assertFalse( $this->maintenance->execute() );
 	}
 
-	public function provideUnprotectedFilter() {
+	public static function provideUnprotectedFilter() {
 		return [
 			'Fail on public filter' => [
 				'filterId' => 1,
@@ -98,7 +98,7 @@ class RemoveProtectedFlagFromFilterTest extends MaintenanceBaseTestCase {
 		$this->assertTrue( $this->maintenance->execute() );
 	}
 
-	public function provideProtectedFilter() {
+	public static function provideProtectedFilter() {
 		return [
 			'Remove protected flag from protected filter' => [
 				'filterId' => 3,
