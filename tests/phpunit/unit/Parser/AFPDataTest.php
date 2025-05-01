@@ -53,7 +53,7 @@ class AFPDataTest extends ParserTestCase {
 	 *
 	 * @return array
 	 */
-	public function provideDivideByZero() {
+	public static function provideDivideByZero() {
 		return [
 			[ '1/0', 'mulRel' ],
 			[ '1/0.0', 'mulRel' ],
