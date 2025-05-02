@@ -407,6 +407,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		)->inContentLanguage()->text();
 
 		$consequence = $this->getConsequence( $action, $result );
-		return $consequence->revert( $this->getUser(), $message );
+		return $consequence->revert( $this->getAuthority(), $message );
 	}
 }

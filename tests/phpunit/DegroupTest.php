@@ -5,6 +5,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Degroup;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
@@ -172,7 +173,7 @@ class DegroupTest extends MediaWikiIntegrationTestCase {
 			$this->getMsgLocalizer()
 		);
 
-		$performer = new UserIdentityValue( 42, 'Foo' );
+		$performer = new SimpleAuthority( new UserIdentityValue( 42, 'Foo' ), [] );
 		$this->assertSame(
 			$success,
 			$degroup->revert( $performer, 'reason' )
