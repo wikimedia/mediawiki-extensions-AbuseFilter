@@ -91,8 +91,8 @@ abstract class BlockingConsequence extends Consequence implements HookAborterCon
 			]
 		);
 		if (
-			strpos( $this->parameters->getAction(), 'createaccount' ) !== false &&
-			IPUtils::isIPAddress( $target )
+			str_contains( $this->parameters->getAction(), 'createaccount' )
+			&& IPUtils::isIPAddress( $target )
 		) {
 			$blockUser->setLogDeletionFlags( LogPage::SUPPRESSED_ACTION );
 		}

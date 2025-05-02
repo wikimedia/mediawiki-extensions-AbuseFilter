@@ -231,7 +231,7 @@ class AbuseLogger {
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' )
-				&& strpos( $this->options->get( 'AbuseFilterNotifications' ), 'rc' ) === false
+				&& !str_contains( $this->options->get( 'AbuseFilterNotifications' ) ?: '', 'rc' )
 			) {
 				$entry = $this->newLocalLogEntryFromData( $data );
 				$user = $entry->getPerformerIdentity();

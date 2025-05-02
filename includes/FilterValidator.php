@@ -255,7 +255,7 @@ class FilterValidator {
 			$uniqueSubGroups = true;
 			// Every group should be valid, and subgroups should have valid groups inside
 			foreach ( $throttleGroups as $group ) {
-				if ( strpos( $group, ',' ) !== false ) {
+				if ( str_contains( $group, ',' ) ) {
 					$subGroups = explode( ',', $group );
 					// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
 					if ( $subGroups !== array_unique( $subGroups ) ) {

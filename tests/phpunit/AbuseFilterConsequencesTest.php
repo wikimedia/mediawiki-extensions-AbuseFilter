@@ -714,7 +714,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 		$actual = [];
 		foreach ( $result->getMessages() as $msg ) {
-			if ( strpos( $msg->getKey(), 'abusefilter' ) !== false ) {
+			if ( str_contains( $msg->getKey(), 'abusefilter' ) ) {
 				$actual[] = $msg->getKey();
 			}
 		}
