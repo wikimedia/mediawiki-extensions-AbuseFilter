@@ -2,10 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\MainConfigNames;
 use MediaWiki\Maintenance\Maintenance;
-use Wikimedia\Rdbms\IExpression;
-use Wikimedia\Rdbms\LikeValue;
 
 // @codeCoverageIgnoreStart
 $IP = getenv( 'MW_INSTALL_PATH' );
@@ -80,11 +79,7 @@ class SearchFilters extends Maintenance {
 				$queryBuilder->where( "af_pattern RLIKE $pattern" );
 			}
 			if ( $consequence ) {
-				$queryBuilder->where( $dbr->expr(
-					'af_actions',
-					IExpression::LIKE,
-					new LikeValue( $dbr->anyString(), $consequence, $dbr->anyString() )
-				) );
+				$queryBuilder->where( AbuseFilter::findInSet( $dbr, 'af_actions', $consequence ) );
 			}
 			if ( $privacy !== '' ) {
 				if ( $privacy === '0' ) {
