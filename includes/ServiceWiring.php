@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterLogDetailsLookup;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainConfigProvider;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
@@ -47,6 +48,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
+use MediaWiki\Extension\CommunityConfiguration\CommunityConfigurationServices;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
@@ -388,12 +390,25 @@ return [
 	IBlockedDomainStorage::SERVICE_NAME => static function (
 		MediaWikiServices $services
 	): IBlockedDomainStorage {
-		return new CustomBlockedDomainStorage(
-			$services->getLocalServerObjectCache(),
-			$services->getRevisionLookup(),
-			$services->getWikiPageFactory(),
-			$services->get( BlockedDomainValidator::SERVICE_NAME )
-		);
+		if ( $services->getExtensionRegistry()->isLoaded( 'CommunityConfiguration' ) ) {
+			$provider = CommunityConfigurationServices::wrap( $services )
+				->getConfigurationProviderFactory()
+				->newProvider( BlockedDomainConfigProvider::PROVIDER_ID );
+			if ( !$provider instanceof BlockedDomainConfigProvider ) {
+				throw new LogicException(
+					BlockedDomainConfigProvider::PROVIDER_ID . ' is expected to be ' .
+					'an instance of ' . BlockedDomainConfigProvider::class
+				);
+			}
+			return $provider;
+		} else {
+			return new CustomBlockedDomainStorage(
+				$services->getLocalServerObjectCache(),
+				$services->getRevisionLookup(),
+				$services->getWikiPageFactory(),
+				$services->get( BlockedDomainValidator::SERVICE_NAME )
+			);
+		}
 	},
 	BlockedDomainValidator::SERVICE_NAME => static function (
 		MediaWikiServices $services
@@ -405,7 +420,9 @@ return [
 	IBlockedDomainFilter::SERVICE_NAME => static function (
 		MediaWikiServices $services
 	): IBlockedDomainFilter {
-		if ( $services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
+		if (
+			$services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' )
+		) {
 			return new BlockedDomainFilter(
 				$services->get( VariablesManager::SERVICE_NAME ),
 				$services->get( IBlockedDomainStorage::SERVICE_NAME )

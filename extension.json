@@ -358,6 +358,32 @@
 		}
 	},
 	"attributes": {
+		"CommunityConfiguration": {
+			"ProviderClasses": {
+				"BlockedDomain": {
+					"class": "MediaWiki\\Extension\\AbuseFilter\\BlockedDomains\\BlockedDomainConfigProvider",
+					"services": [
+						"LocalServerObjectCache",
+						"AbuseFilterBlockedDomainValidator"
+					]
+				}
+			},
+			"Providers": {
+				"BlockedDomain": {
+					"store": {
+						"type": "wikipage",
+						"args": [ "MediaWiki:BlockedExternalDomains.json" ]
+					},
+					"validator": {
+						"type": "noop"
+					},
+					"type": "BlockedDomain",
+					"options": {
+						"excludeFromUI": true
+					}
+				}
+			}
+		},
 		"Echo": {
 			"Notifications": {
 				"throttled-filter": {
@@ -404,7 +430,10 @@
 			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler::newFromGlobalState"
 		},
 		"EditPermission": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler"
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler",
+			"services": [
+				"CommunityConfiguration.ProviderFactory"
+			]
 		},
 		"RecentChangeSave": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RecentChangeSaveHandler",

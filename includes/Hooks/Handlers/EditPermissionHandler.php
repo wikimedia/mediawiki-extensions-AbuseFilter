@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\User;
@@ -74,8 +75,11 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 	public function onJsonValidateSave( JsonContent $content, PageIdentity $pageIdentity, StatusValue $status ) {
 		$services = MediaWikiServices::getInstance();
 
-		// Only do anything if we're enabled on this wiki.
-		if ( !$services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
+		// Only do anything if we're enabled on this wiki as a standalone tool
+		if (
+			!$services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ||
+			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' )
+		) {
 			return;
 		}
 
