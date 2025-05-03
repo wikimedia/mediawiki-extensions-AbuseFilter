@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 use DifferenceEngine;
 use InvalidArgumentException;
 use MediaWiki\Cache\LinkBatchFactory;
+use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
@@ -40,9 +41,7 @@ use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonInputWidget;
 use stdClass;
-use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
-use Wikimedia\Rdbms\LikeValue;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public const PAGE_NAME = 'AbuseLog';
@@ -592,18 +591,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		if ( $this->mSearchActionTaken ) {
 			if ( in_array( $this->mSearchActionTaken, $this->consequencesRegistry->getAllActionNames() ) ) {
-				$conds[] = $dbr->expr( 'afl_actions', '=', $this->mSearchActionTaken )
-					->or( 'afl_actions', IExpression::LIKE, new LikeValue(
-						$this->mSearchActionTaken, ',', $dbr->anyString()
-					) )
-					->or( 'afl_actions', IExpression::LIKE, new LikeValue(
-						$dbr->anyString(), ',', $this->mSearchActionTaken
-					) )
-					->or( 'afl_actions', IExpression::LIKE, new LikeValue(
-						$dbr->anyString(),
-						',', $this->mSearchActionTaken, ',',
-						$dbr->anyString()
-					) );
+				$conds[] = AbuseFilter::findInSet( $dbr, 'afl_actions', $this->mSearchActionTaken );
 			} elseif ( $this->mSearchActionTaken === 'noactions' ) {
 				$conds['afl_actions'] = '';
 			}

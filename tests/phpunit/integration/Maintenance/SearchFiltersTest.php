@@ -13,6 +13,7 @@ use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
  * @group AbuseFilter
  * @group Database
  * @covers \MediaWiki\Extension\AbuseFilter\Maintenance\SearchFilters
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilter::findInSet
  */
 class SearchFiltersTest extends MaintenanceBaseTestCase {
 	/**
@@ -62,7 +63,13 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 				'af_pattern' => 'rmspecials(added_lines_pst) !== ""',
 				'af_actions' => 'block',
 				'af_hidden' => Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS,
-			] + $defaultRow
+			] + $defaultRow,
+			[
+				'af_id' => 5,
+				'af_pattern' => '1 === 0',
+				'af_actions' => 'blockautopromote',
+				'af_hidden' => Flags::FILTER_PUBLIC
+			] + $defaultRow,
 		];
 		$this->getDb()->newInsertQueryBuilder()
 			->insertInto( 'abuse_filter' )
@@ -111,7 +118,8 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 		yield 'single filter for privacy level search' => [ '', '', '1', [ 4 ] ];
 		yield 'multiple filters for privacy level search' => [ '', '', '2', [ 3, 4 ] ];
 		yield 'search for multiple privacy levels' => [ '', '', '3', [ 4 ] ];
-		yield 'search for public filters (handle zero)' => [ '', '', '0', [ 1, 2 ] ];
+		yield 'search for public filters (handle zero)' => [ '', '', '0', [ 1, 2, 5 ] ];
+		yield 'consequence=block does not select blockautopromote' => [ '', 'block', '', [ 3, 4 ] ];
 	}
 
 	/**
