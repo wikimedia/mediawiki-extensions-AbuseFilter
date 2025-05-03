@@ -78,7 +78,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			// Fallthrough
 			case 'edit':
 				$status = $this->editPage( $title, 'Some new text for testing RC vars.', $summary, NS_MAIN, $user );
-				$this->assertArrayHasKey( 'revision-record', $status->value, 'Edit successed' );
+				$this->assertArrayHasKey( 'revision-record', $status->value, 'Edit succeeded' );
 				/** @var RevisionRecord $revRecord */
 				$revRecord = $status->value['revision-record'];
 				$rcConds['rc_this_oldid'] = $revRecord->getId();
@@ -95,7 +95,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				$mpf = $services->getMovePageFactory();
 				$mp = $mpf->newMovePage( $title, $newTitle );
 				$status = $mp->move( $user, $summary, false );
-				$this->assertArrayHasKey( 'nullRevision', $status->value, 'Move successed' );
+				$this->assertArrayHasKey( 'nullRevision', $status->value, 'Move succeeded' );
 				/** @var RevisionRecord $revRecord */
 				$revRecord = $status->value['nullRevision'];
 				$rcConds['rc_this_oldid'] = $revRecord->getId();
@@ -232,7 +232,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		MWTimestamp::setFakeTime( $timestamp );
 
 		$status = $this->editPage( $title, $newText, 'Editing the test page' );
-		$this->assertArrayHasKey( 'revision-record', $status->value, 'Edit successed' );
+		$this->assertArrayHasKey( 'revision-record', $status->value, 'Edit succeeded' );
 		/** @var RevisionRecord $revRecord */
 		$revRecord = $status->value['revision-record'];
 

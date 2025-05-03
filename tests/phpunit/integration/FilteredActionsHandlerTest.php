@@ -21,13 +21,14 @@ use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
 use MediaWiki\User\UserFactory;
+use MediaWikiIntegrationTestCase;
 use Wikimedia\Stats\NullStatsdDataFactory;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
  * @group Database
  */
-class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
+class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 
 	private array $blockedDomains = [ 'foo.com' => true ];
 
@@ -99,7 +100,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 
 		$variableGeneratorFactory = $this->createMock( VariableGeneratorFactory::class );
 		$variableGeneratorFactory->method( 'newRunGenerator' )
-			 ->willReturn( $variableGenerator );
+			->willReturn( $variableGenerator );
 
 		$editRevUpdater = $this->createMock( EditRevUpdater::class );
 
@@ -114,7 +115,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 
 		$permissionManager = $this->createMock( PermissionManager::class );
 		$permissionManager->method( 'userHasRight' )
-			 ->willReturn( false );
+			->willReturn( false );
 
 		return new FilteredActionsHandler(
 			new NullStatsdDataFactory(),
