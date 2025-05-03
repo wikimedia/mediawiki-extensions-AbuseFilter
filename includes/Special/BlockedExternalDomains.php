@@ -21,7 +21,7 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\PermissionsError;
-use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;

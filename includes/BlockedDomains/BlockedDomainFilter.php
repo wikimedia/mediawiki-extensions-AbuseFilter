@@ -17,7 +17,7 @@
  *
  * @file
  */
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
 use MediaWiki\CheckUser\Hooks as CUHooks;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
@@ -143,3 +143,6 @@ class BlockedDomainFilter {
 		}
 	}
 }
+
+// @deprecated since 1.44
+class_alias( BlockedDomainFilter::class, 'MediaWiki\Extension\AbuseFilter\BlockedDomainFilter' );

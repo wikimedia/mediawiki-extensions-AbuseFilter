@@ -2,6 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;

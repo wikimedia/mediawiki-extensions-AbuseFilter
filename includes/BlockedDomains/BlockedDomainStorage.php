@@ -17,7 +17,7 @@
  *
  * @file
  */
-namespace MediaWiki\Extension\AbuseFilter;
+namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
 use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\CommentStore\CommentStoreComment;
@@ -286,3 +286,6 @@ class BlockedDomainStorage implements IDBAccessObject {
 		return new TitleValue( NS_MEDIAWIKI, self::TARGET_PAGE );
 	}
 }
+
+// @deprecated since 1.44
+class_alias( BlockedDomainStorage::class, 'MediaWiki\Extension\AbuseFilter\BlockedDomainStorage' );

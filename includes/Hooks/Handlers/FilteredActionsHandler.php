@@ -6,7 +6,7 @@ use MediaWiki\Api\ApiMessage;
 use MediaWiki\Content\Content;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;

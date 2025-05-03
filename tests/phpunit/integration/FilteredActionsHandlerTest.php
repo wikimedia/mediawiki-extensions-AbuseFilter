@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use MediaWiki\Content\Content;
 use MediaWiki\Context\RequestContext;
-use MediaWiki\Extension\AbuseFilter\BlockedDomainFilter;
-use MediaWiki\Extension\AbuseFilter\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
@@ -33,7 +33,7 @@ class FilteredActionsHandlerTest extends \MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideOnEditFilterMergedContent
-	 * @covers \MediaWiki\Extension\AbuseFilter\BlockedDomainFilter
+	 * @covers \MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter
 	 */
 	public function testOnEditFilterMergedContent( $urlsAdded, $expected ) {
 		$this->overrideConfigValue( 'AbuseFilterEnableBlockedExternalDomain', true );
