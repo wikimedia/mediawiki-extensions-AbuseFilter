@@ -22,6 +22,7 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -36,14 +37,17 @@ use Wikimedia\Rdbms\IDBAccessObject;
  */
 class BlockedExternalDomains extends SpecialPage {
 	private BlockedDomainStorage $blockedDomainStorage;
+	private BlockedDomainValidator $blockedDomainValidator;
 	private WANObjectCache $wanCache;
 
 	public function __construct(
 		BlockedDomainStorage $blockedDomainStorage,
+		BlockedDomainValidator $blockedDomainValidator,
 		WANObjectCache $wanCache
 	) {
 		parent::__construct( 'BlockedExternalDomains' );
 		$this->blockedDomainStorage = $blockedDomainStorage;
+		$this->blockedDomainValidator = $blockedDomainValidator;
 		$this->wanCache = $wanCache;
 	}
 
@@ -245,7 +249,7 @@ class BlockedExternalDomains extends SpecialPage {
 	 */
 	public function processRemoveForm( array $data, HTMLForm $form ) {
 		$out = $form->getContext()->getOutput();
-		$domain = $this->blockedDomainStorage->validateDomain( $data['Domain'] );
+		$domain = $this->blockedDomainValidator->validateDomain( $data['Domain'] );
 		if ( $domain === false ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
 			return false;
@@ -318,7 +322,7 @@ class BlockedExternalDomains extends SpecialPage {
 	private function processAddForm( array $data, HTMLForm $form ) {
 		$out = $form->getContext()->getOutput();
 
-		$domain = $this->blockedDomainStorage->validateDomain( $data['Domain'] );
+		$domain = $this->blockedDomainValidator->validateDomain( $data['Domain'] );
 		if ( $domain === false ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
 			return false;

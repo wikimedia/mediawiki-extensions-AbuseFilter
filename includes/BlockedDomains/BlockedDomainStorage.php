@@ -52,26 +52,22 @@ class BlockedDomainStorage implements IDBAccessObject {
 	private BagOStuff $cache;
 	private UserFactory $userFactory;
 	private WikiPageFactory $wikiPageFactory;
+	private BlockedDomainValidator $domainValidator;
 	private UrlUtils $urlUtils;
 
-	/**
-	 * @param BagOStuff $cache Local-server caching
-	 * @param RevisionLookup $revisionLookup
-	 * @param UserFactory $userFactory
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param UrlUtils $urlUtils
-	 */
 	public function __construct(
 		BagOStuff $cache,
 		RevisionLookup $revisionLookup,
 		UserFactory $userFactory,
 		WikiPageFactory $wikiPageFactory,
+		BlockedDomainValidator $domainValidator,
 		UrlUtils $urlUtils
 	) {
 		$this->cache = $cache;
 		$this->revisionLookup = $revisionLookup;
 		$this->userFactory = $userFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
+		$this->domainValidator = $domainValidator;
 		$this->urlUtils = $urlUtils;
 	}
 
@@ -128,7 +124,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 					if ( !( $domain['domain'] ?? null ) ) {
 						continue;
 					}
-					$validatedDomain = $this->validateDomain( $domain['domain'] );
+					$validatedDomain = $this->domainValidator->validateDomain( $domain['domain'] );
 					if ( $validatedDomain ) {
 						// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
 						$computedDomains[$validatedDomain] = true;
@@ -142,25 +138,18 @@ class BlockedDomainStorage implements IDBAccessObject {
 	/**
 	 * Validate an input domain
 	 *
+	 * @deprecated since 1.44, use BlockedDomainValidator instead
+	 * @see BlockedDomainValidator
 	 * @param string|null $domain Domain such as foo.wikipedia.org
 	 * @return string|false Parsed domain, or false otherwise
 	 */
 	public function validateDomain( $domain ) {
-		if ( !$domain ) {
+		wfDeprecated( __METHOD__, '1.44' );
+		if ( !is_string( $domain ) && $domain !== null ) {
+			// cannot be passed to BlockedDomainValidator
 			return false;
 		}
-
-		$domain = trim( $domain );
-		if ( !str_contains( $domain, '//' ) ) {
-			$domain = 'https://' . $domain;
-		}
-
-		$parsedUrl = $this->urlUtils->parse( $domain );
-		// Parse url returns a valid URL for "foo"
-		if ( !$parsedUrl || !str_contains( $parsedUrl['host'], '.' ) ) {
-			return false;
-		}
-		return $parsedUrl['host'];
+		return $this->domainValidator->validateDomain( $domain );
 	}
 
 	/**

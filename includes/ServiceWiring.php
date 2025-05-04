@@ -3,10 +3,12 @@
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\NoopBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
@@ -388,6 +390,14 @@ return [
 			$services->getRevisionLookup(),
 			$services->getUserFactory(),
 			$services->getWikiPageFactory(),
+			AbuseFilterServices::getBlockedDomainValidator( $services ),
+			$services->getUrlUtils()
+		);
+	},
+	BlockedDomainValidator::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): BlockedDomainValidator {
+		return new BlockedDomainValidator(
 			$services->getUrlUtils()
 		);
 	},

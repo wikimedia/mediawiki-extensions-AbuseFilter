@@ -104,6 +104,7 @@
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Special\\BlockedExternalDomains",
 			"services": [
 				"AbuseFilterBlockedDomainStorage",
+				"AbuseFilterBlockedDomainValidator",
 				"MainWANObjectCache"
 			]
 		}
