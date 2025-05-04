@@ -7,6 +7,8 @@ use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\NoopBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
@@ -389,13 +391,17 @@ return [
 			$services->getUrlUtils()
 		);
 	},
-	BlockedDomainFilter::SERVICE_NAME => static function (
+	IBlockedDomainFilter::SERVICE_NAME => static function (
 		MediaWikiServices $services
-	): BlockedDomainFilter {
-		return new BlockedDomainFilter(
-			$services->get( VariablesManager::SERVICE_NAME ),
-			$services->get( BlockedDomainStorage::SERVICE_NAME )
-		);
+	): IBlockedDomainFilter {
+		if ( $services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
+			return new BlockedDomainFilter(
+				$services->get( VariablesManager::SERVICE_NAME ),
+				$services->get( BlockedDomainStorage::SERVICE_NAME )
+			);
+		} else {
+			return new NoopBlockedDomainFilter();
+		}
 	},
 	AbuseFilterProtectedVariablesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ) {
 		return new AbuseFilterProtectedVariablesLookup(

@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
-use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagsManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
@@ -317,10 +317,10 @@ class AbuseFilterServices {
 
 	/**
 	 * @param ContainerInterface|null $services
-	 * @return BlockedDomainFilter
+	 * @return IBlockedDomainFilter
 	 */
-	public static function getBlockedDomainFilter( ?ContainerInterface $services = null ): BlockedDomainFilter {
-		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainFilter::SERVICE_NAME );
+	public static function getBlockedDomainFilter( ?ContainerInterface $services = null ): IBlockedDomainFilter {
+		return ( $services ?? MediaWikiServices::getInstance() )->get( IBlockedDomainFilter::SERVICE_NAME );
 	}
 
 	public static function getProtectedVariablesLookup(
