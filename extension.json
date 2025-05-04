@@ -359,6 +359,16 @@
 	},
 	"attributes": {
 		"CommunityConfiguration": {
+			"EditorCapabilities": {
+				"BlockedDomain": {
+					"class": "MediaWiki\\Extension\\AbuseFilter\\BlockedDomains\\EditorCapability",
+					"services": [
+						"MainWANObjectCache",
+						"LinkRenderer",
+						"AbuseFilterBlockedDomainValidator"
+					]
+				}
+			},
 			"ProviderClasses": {
 				"BlockedDomain": {
 					"class": "MediaWiki\\Extension\\AbuseFilter\\BlockedDomains\\BlockedDomainConfigProvider",
@@ -379,7 +389,7 @@
 					},
 					"type": "BlockedDomain",
 					"options": {
-						"excludeFromUI": true
+						"editorCapability": "BlockedDomain"
 					}
 				}
 			}

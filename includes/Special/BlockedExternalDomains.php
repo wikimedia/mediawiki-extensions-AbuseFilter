@@ -19,9 +19,11 @@
  */
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainConfigProvider;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainEditor;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\SpecialPage\SpecialPage;
 use Wikimedia\ObjectCache\WANObjectCache;
 
@@ -48,6 +50,16 @@ class BlockedExternalDomains extends SpecialPage {
 
 	/** @inheritDoc */
 	public function execute( $par ) {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) ) {
+			$this->getOutput()->redirect(
+				$this->getSpecialPageFactory()
+					->getTitleForAlias( 'CommunityConfiguration' )
+					->getSubpage( BlockedDomainConfigProvider::PROVIDER_ID )
+					->getLocalURL()
+			);
+			return;
+		}
+
 		$this->setHeaders();
 		$this->outputHeader();
 
