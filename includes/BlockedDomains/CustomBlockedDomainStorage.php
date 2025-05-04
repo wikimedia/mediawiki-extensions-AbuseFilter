@@ -28,12 +28,10 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionLookup;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\Utils\UrlUtils;
 use StatusValue;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
@@ -44,8 +42,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
  *
  * @ingroup SpecialPage
  */
-class BlockedDomainStorage implements IDBAccessObject {
-	public const SERVICE_NAME = 'AbuseFilterBlockedDomainStorage';
+class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObject {
 	public const TARGET_PAGE = 'BlockedExternalDomains.json';
 
 	private RevisionLookup $revisionLookup;
@@ -53,22 +50,19 @@ class BlockedDomainStorage implements IDBAccessObject {
 	private UserFactory $userFactory;
 	private WikiPageFactory $wikiPageFactory;
 	private BlockedDomainValidator $domainValidator;
-	private UrlUtils $urlUtils;
 
 	public function __construct(
 		BagOStuff $cache,
 		RevisionLookup $revisionLookup,
 		UserFactory $userFactory,
 		WikiPageFactory $wikiPageFactory,
-		BlockedDomainValidator $domainValidator,
-		UrlUtils $urlUtils
+		BlockedDomainValidator $domainValidator
 	) {
 		$this->cache = $cache;
 		$this->revisionLookup = $revisionLookup;
 		$this->userFactory = $userFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->domainValidator = $domainValidator;
-		$this->urlUtils = $urlUtils;
 	}
 
 	/**
@@ -78,13 +72,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 		return $this->cache->makeKey( 'abusefilter-blocked-domains' );
 	}
 
-	/**
-	 * Load the configuration page, with optional local-server caching.
-	 *
-	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
-	 * @return StatusValue The content of the configuration page (as JSON
-	 *   data in PHP-native format), or a StatusValue on error.
-	 */
+	/** @inheritDoc */
 	public function loadConfig( int $flags = 0 ): StatusValue {
 		if ( DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ) {
 			return $this->fetchConfig( $flags );
@@ -105,11 +93,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 		);
 	}
 
-	/**
-	 * Load the computed domain blocklist
-	 *
-	 * @return array<string,true> Flipped for performance reasons
-	 */
+	/** @inheritDoc */
 	public function loadComputed(): array {
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
@@ -144,6 +128,7 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @return string|false Parsed domain, or false otherwise
 	 */
 	public function validateDomain( $domain ) {
+		// NOTE: Can be called on the deprecated class name, see the class_alias in the bottom
 		wfDeprecated( __METHOD__, '1.44' );
 		if ( !is_string( $domain ) && $domain !== null ) {
 			// cannot be passed to BlockedDomainValidator
@@ -177,19 +162,11 @@ class BlockedDomainStorage implements IDBAccessObject {
 		return FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
 	}
 
-	/**
-	 * This doesn't do validation.
-	 *
-	 * @param string $domain domain to be blocked
-	 * @param string $notes User provided notes
-	 * @param Authority|UserIdentity $user Performer
-	 *
-	 * @return RevisionRecord|null Null on failure
-	 */
-	public function addDomain( string $domain, string $notes, $user ): ?RevisionRecord {
+	/** @inheritDoc */
+	public function addDomain( string $domain, string $notes, $user ): StatusValue {
 		$content = $this->fetchLatestConfig();
 		if ( $content === null ) {
-			return null;
+			return StatusValue::newFatal( 'error' );
 		}
 		$content[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $user->getName() ];
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
@@ -198,19 +175,11 @@ class BlockedDomainStorage implements IDBAccessObject {
 		return $this->saveContent( $content, $user, $comment );
 	}
 
-	/**
-	 * This doesn't do validation
-	 *
-	 * @param string $domain domain to be removed from the blocked list
-	 * @param string $notes User provided notes
-	 * @param Authority|UserIdentity $user Performer
-	 *
-	 * @return RevisionRecord|null Null on failure
-	 */
-	public function removeDomain( string $domain, string $notes, $user ): ?RevisionRecord {
+	/** @inheritDoc */
+	public function removeDomain( string $domain, string $notes, $user ): StatusValue {
 		$content = $this->fetchLatestConfig();
 		if ( $content === null ) {
-			return null;
+			return StatusValue::newFatal( 'error' );
 		}
 		foreach ( $content as $key => $value ) {
 			if ( ( $value['domain'] ?? '' ) == $domain ) {
@@ -251,9 +220,9 @@ class BlockedDomainStorage implements IDBAccessObject {
 	 * @param Authority|UserIdentity $user Performer
 	 * @param string $comment Save comment
 	 *
-	 * @return RevisionRecord|null
+	 * @return StatusValue
 	 */
-	private function saveContent( array $content, $user, string $comment ): ?RevisionRecord {
+	private function saveContent( array $content, $user, string $comment ): StatusValue {
 		$configPage = $this->getBlockedDomainPage();
 		$page = $this->wikiPageFactory->newFromLinkTarget( $configPage );
 		$updater = $page->newPageUpdater( $user );
@@ -263,9 +232,10 @@ class BlockedDomainStorage implements IDBAccessObject {
 			$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 		}
 
-		return $updater->saveRevision(
+		$updater->saveRevision(
 			CommentStoreComment::newUnsavedComment( $comment )
 		);
+		return $updater->getStatus();
 	}
 
 	/**
@@ -277,4 +247,4 @@ class BlockedDomainStorage implements IDBAccessObject {
 }
 
 // @deprecated since 1.44
-class_alias( BlockedDomainStorage::class, 'MediaWiki\Extension\AbuseFilter\BlockedDomainStorage' );
+class_alias( CustomBlockedDomainStorage::class, 'MediaWiki\Extension\AbuseFilter\BlockedDomainStorage' );

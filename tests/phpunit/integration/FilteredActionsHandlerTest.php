@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 use MediaWiki\Content\Content;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
-use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunner;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
@@ -108,7 +108,7 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 		$variablesManager->method( 'getVar' )
 			->willReturnCallback( static fn ( $unused, $vars ) => AFPData::newFromPHPVar( $urlsAdded ) );
 
-		$blockedDomainStorage = $this->createMock( BlockedDomainStorage::class );
+		$blockedDomainStorage = $this->createMock( IBlockedDomainStorage::class );
 		$blockedDomainStorage->method( 'loadComputed' )
 			->willReturn( $this->blockedDomains );
 		$blockedDomainFilter = new BlockedDomainFilter( $variablesManager, $blockedDomainStorage );

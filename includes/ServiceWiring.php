@@ -3,13 +3,13 @@
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
-use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
-use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\NoopBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -382,16 +382,15 @@ return [
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},
-	BlockedDomainStorage::SERVICE_NAME => static function (
+	IBlockedDomainStorage::SERVICE_NAME => static function (
 		MediaWikiServices $services
-	): BlockedDomainStorage {
-		return new BlockedDomainStorage(
+	): IBlockedDomainStorage {
+		return new CustomBlockedDomainStorage(
 			$services->getLocalServerObjectCache(),
 			$services->getRevisionLookup(),
 			$services->getUserFactory(),
 			$services->getWikiPageFactory(),
-			AbuseFilterServices::getBlockedDomainValidator( $services ),
-			$services->getUrlUtils()
+			$services->get( BlockedDomainValidator::SERVICE_NAME )
 		);
 	},
 	BlockedDomainValidator::SERVICE_NAME => static function (
@@ -407,7 +406,7 @@ return [
 		if ( $services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
 			return new BlockedDomainFilter(
 				$services->get( VariablesManager::SERVICE_NAME ),
-				$services->get( BlockedDomainStorage::SERVICE_NAME )
+				$services->get( IBlockedDomainStorage::SERVICE_NAME )
 			);
 		} else {
 			return new NoopBlockedDomainFilter();

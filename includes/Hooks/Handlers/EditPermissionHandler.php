@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
 use MediaWiki\Content\JsonContent;
-use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
@@ -51,7 +51,7 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 		if (
 			!( $action == 'create' || $action == 'edit' ) ||
 			!$title->inNamespace( NS_MEDIAWIKI ) ||
-			$title->getDBkey() !== BlockedDomainStorage::TARGET_PAGE
+			$title->getDBkey() !== CustomBlockedDomainStorage::TARGET_PAGE
 		) {
 			return;
 		}
@@ -61,7 +61,7 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 		}
 
 		// Prohibit direct actions on our page.
-		$result = [ 'abusefilter-blocked-domains-cannot-edit-directly', BlockedDomainStorage::TARGET_PAGE ];
+		$result = [ 'abusefilter-blocked-domains-cannot-edit-directly', CustomBlockedDomainStorage::TARGET_PAGE ];
 		return false;
 	}
 
@@ -80,7 +80,7 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 		}
 
 		$title = TitleValue::newFromPage( $pageIdentity );
-		if ( !$title->inNamespace( NS_MEDIAWIKI ) || $title->getText() !== BlockedDomainStorage::TARGET_PAGE ) {
+		if ( !$title->inNamespace( NS_MEDIAWIKI ) || $title->getText() !== CustomBlockedDomainStorage::TARGET_PAGE ) {
 			return;
 		}
 		$data = $content->getData()->getValue();
