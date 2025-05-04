@@ -389,7 +389,6 @@ return [
 		return new CustomBlockedDomainStorage(
 			$services->getLocalServerObjectCache(),
 			$services->getRevisionLookup(),
-			$services->getUserFactory(),
 			$services->getWikiPageFactory(),
 			$services->get( BlockedDomainValidator::SERVICE_NAME )
 		);

@@ -258,7 +258,7 @@ class BlockedExternalDomains extends SpecialPage {
 		$status = $this->blockedDomainStorage->removeDomain(
 			$domain,
 			$data['Notes'] ?? '',
-			$this->getUser()
+			$this->getAuthority()
 		);
 
 		if ( !$status->isGood() ) {
@@ -330,7 +330,7 @@ class BlockedExternalDomains extends SpecialPage {
 		$status = $this->blockedDomainStorage->addDomain(
 			$domain,
 			$data['Notes'] ?? '',
-			$this->getUser()
+			$this->getAuthority()
 		);
 
 		if ( !$status->isGood() ) {
