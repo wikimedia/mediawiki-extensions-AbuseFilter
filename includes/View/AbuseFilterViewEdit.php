@@ -1336,7 +1336,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					// Trim any space, both as an actual group and inside subgroups
 					$throttleGroups = [];
 					foreach ( $rawGroups as $group ) {
-						if ( strpos( $group, ',' ) !== false ) {
+						if ( str_contains( $group, ',' ) ) {
 							$subGroups = explode( ',', $group );
 							$throttleGroups[] = implode( ',', array_map( 'trim', $subGroups ) );
 						} elseif ( trim( $group ) !== '' ) {
