@@ -6,7 +6,7 @@ use MediaWiki\Api\ApiMessage;
 use MediaWiki\Content\Content;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
-use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
 use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
@@ -41,16 +41,12 @@ class FilteredActionsHandler implements
 	UploadStashFileHook,
 	ParserOutputStashForEditHook
 {
-	/** @var IBufferingStatsdDataFactory */
-	private $statsDataFactory;
-	/** @var FilterRunnerFactory */
-	private $filterRunnerFactory;
-	/** @var VariableGeneratorFactory */
-	private $variableGeneratorFactory;
-	/** @var EditRevUpdater */
-	private $editRevUpdater;
+	private IBufferingStatsdDataFactory $statsDataFactory;
+	private FilterRunnerFactory $filterRunnerFactory;
+	private VariableGeneratorFactory $variableGeneratorFactory;
+	private EditRevUpdater $editRevUpdater;
 	private PermissionManager $permissionManager;
-	private BlockedDomainFilter $blockedDomainFilter;
+	private IBlockedDomainFilter $blockedDomainFilter;
 	private TitleFactory $titleFactory;
 	private UserFactory $userFactory;
 
@@ -59,7 +55,7 @@ class FilteredActionsHandler implements
 	 * @param FilterRunnerFactory $filterRunnerFactory
 	 * @param VariableGeneratorFactory $variableGeneratorFactory
 	 * @param EditRevUpdater $editRevUpdater
-	 * @param BlockedDomainFilter $blockedDomainFilter
+	 * @param IBlockedDomainFilter $blockedDomainFilter
 	 * @param PermissionManager $permissionManager
 	 * @param TitleFactory $titleFactory
 	 * @param UserFactory $userFactory
@@ -69,7 +65,7 @@ class FilteredActionsHandler implements
 		FilterRunnerFactory $filterRunnerFactory,
 		VariableGeneratorFactory $variableGeneratorFactory,
 		EditRevUpdater $editRevUpdater,
-		BlockedDomainFilter $blockedDomainFilter,
+		IBlockedDomainFilter $blockedDomainFilter,
 		PermissionManager $permissionManager,
 		TitleFactory $titleFactory,
 		UserFactory $userFactory

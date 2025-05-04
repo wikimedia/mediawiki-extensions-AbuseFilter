@@ -36,8 +36,7 @@ use MediaWiki\User\User;
  *
  * @ingroup SpecialPage
  */
-class BlockedDomainFilter {
-	public const SERVICE_NAME = 'AbuseFilterBlockedDomainFilter';
+class BlockedDomainFilter implements IBlockedDomainFilter {
 	private VariablesManager $variablesManager;
 	private BlockedDomainStorage $blockedDomainStorage;
 
@@ -53,18 +52,11 @@ class BlockedDomainFilter {
 		$this->blockedDomainStorage = $blockedDomainStorage;
 	}
 
-	/**
-	 * @param VariableHolder $vars variables by the action
-	 * @param User $user User that tried to add the domain, used for logging
-	 * @param Title $title Title of the page that was attempted on, used for logging
-	 * @return Status Error status if it's a match, good status if not
-	 */
-	public function filter( VariableHolder $vars, User $user, Title $title ) {
-		global $wgAbuseFilterEnableBlockedExternalDomain;
+	/** @inheritDoc */
+	public function filter( VariableHolder $vars, User $user, Title $title ): Status {
+		// whether the feature is enabled is checked in ServiceWiring
+
 		$status = Status::newGood();
-		if ( !$wgAbuseFilterEnableBlockedExternalDomain ) {
-			return $status;
-		}
 		try {
 			$urls = $this->variablesManager->getVar( $vars, 'added_links', VariablesManager::GET_STRICT );
 		} catch ( UnsetVariableException $_ ) {
