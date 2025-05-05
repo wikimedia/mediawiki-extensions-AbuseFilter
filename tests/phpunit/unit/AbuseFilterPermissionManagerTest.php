@@ -331,52 +331,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 'abusefilter-access-protected-vars', $statusFromThirdCall->getPermission() );
 	}
 
-	public static function provideCanViewProtectedVariableValues(): Generator {
-		yield 'can view protected variables' => [ [ 'abusefilter-access-protected-vars' ], true ];
-		yield 'cannot view protected variables' => [ [], false ];
-	}
-
-	/**
-	 * @dataProvider provideCanViewProtectedVariableValues
-	 */
-	public function testCanViewProtectedVariableValues( array $rights, bool $expected ) {
-		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
-
-		$actualStatus = $this->getPermMan()->canViewProtectedVariableValues( $performer, [] );
-		if ( $expected ) {
-			$this->assertStatusGood( $actualStatus );
-			$this->assertSame( null, $actualStatus->getBlock() );
-			$this->assertSame( null, $actualStatus->getPermission() );
-		} else {
-			$this->assertStatusNotGood( $actualStatus );
-			$this->assertSame( 'abusefilter-access-protected-vars', $actualStatus->getPermission() );
-		}
-	}
-
-	public function testCanViewProtectedVariableValuesWhenResultCached() {
-		$user = new UserIdentityValue( 1, 'User1' );
-		$permManager = $this->getPermMan();
-
-		// Call the method once with a user who can access protected variables, which should set the cache
-		// for these variables and performer.
-		$performer = $this->mockUserAuthorityWithPermissions( $user, [ 'abusefilter-access-protected-vars' ] );
-		$this->assertStatusGood( $permManager->canViewProtectedVariableValues( $performer, [] ) );
-
-		// Call the method once again after changing the performer to no longer have the rights needed,
-		// but still have the same user ID. This is done to test that the cached result is used instead
-		// of checking again. It is fine for this to happen as this is an instance cache, so situation should
-		// not happen in real production code.
-		$performer = $this->mockUserAuthorityWithPermissions( $user, [] );
-		$this->assertStatusGood( $permManager->canViewProtectedVariableValues( $performer, [] ) );
-
-		// Call the method once more, but use a different set of variables, and expect that this causes a cache miss
-		// that then allows the fatal status to appear.
-		$performer = $this->mockUserAuthorityWithPermissions( $user, [] );
-		$statusFromThirdCall = $permManager->canViewProtectedVariableValues( $performer, [ 'user_unnamed_ip' ] );
-		$this->assertStatusNotGood( $statusFromThirdCall );
-		$this->assertSame( 'abusefilter-access-protected-vars', $statusFromThirdCall->getPermission() );
-	}
-
 	public static function provideTestGetUsedProtectedVariables(): Generator {
 		yield 'uses protected variables' => [
 			[ 'user_unnamed_ip', 'user_name' ], [ 'user_unnamed_ip' ]

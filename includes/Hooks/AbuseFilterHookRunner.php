@@ -21,7 +21,6 @@ class AbuseFilterHookRunner implements
 	AbuseFilterAlterVariablesHook,
 	AbuseFilterBuilderHook,
 	AbuseFilterCanViewProtectedVariablesHook,
-	AbuseFilterCanViewProtectedVariableValuesHook,
 	AbuseFilterComputeVariableHook,
 	AbuseFilterContentToStringHook,
 	AbuseFilterCustomActionsHook,
@@ -255,17 +254,6 @@ class AbuseFilterHookRunner implements
 			'AbuseFilterLogProtectedVariableValueAccess',
 			[ $performer, $target, $action, $shouldDebounce, $timestamp, $params ],
 			[ 'abortable' => true ]
-		);
-	}
-
-	/** @inheritDoc */
-	public function onAbuseFilterCanViewProtectedVariableValues(
-		Authority $performer, array $variables, AbuseFilterPermissionStatus $status
-	): void {
-		$this->hookContainer->run(
-			'AbuseFilterCanViewProtectedVariableValues',
-			[ $performer, $variables, $status ],
-			[ 'abortable' => false ]
 		);
 	}
 

@@ -157,22 +157,14 @@ class QueryAbuseLog extends ApiQueryBase {
 					);
 				}
 
-				if ( $filter->isProtected() ) {
-					if ( !$this->afPermManager->canViewProtectedVariables( $performer, $usedVariables )->isGood() ) {
-						$this->dieWithError(
-							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ],
-							'permissiondenied'
-						);
-					}
-
-					if (
-						!$this->afPermManager->canViewProtectedVariableValues( $performer, $usedVariables )->isGood()
-					) {
-						$this->dieWithError(
-							[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected-access' ) ],
-							'permissiondenied'
-						);
-					}
+				if (
+					$filter->isProtected() &&
+					!$this->afPermManager->canViewProtectedVariables( $performer, $usedVariables )->isGood()
+				) {
+					$this->dieWithError(
+						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-protected' ) ],
+						'permissiondenied'
+					);
 				}
 			}
 
@@ -334,13 +326,13 @@ class QueryAbuseLog extends ApiQueryBase {
 					$usedProtectedVars = $this->afPermManager
 						->getUsedProtectedVariables( array_keys( $entry['details'] ) );
 					if ( $usedProtectedVars ) {
-						// Unset the variable if the user can't see protected variables
+						// Unset the variable if the user can't see protected variables.
 						// Additionally, a protected variable is considered used if the key exists
 						// but since it can have a null value, check isset before logging access
 						$protectedVariableValuesShown = [];
 						foreach ( $usedProtectedVars as $protectedVariable ) {
 							if ( isset( $entry['details'][$protectedVariable] ) ) {
-								if ( $this->afPermManager->canViewProtectedVariableValues(
+								if ( $this->afPermManager->canViewProtectedVariables(
 									$performer, [ $protectedVariable ]
 								)->isGood() ) {
 									$protectedVariableValuesShown[] = $protectedVariable;

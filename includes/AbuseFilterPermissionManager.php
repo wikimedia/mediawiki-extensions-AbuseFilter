@@ -23,7 +23,6 @@ class AbuseFilterPermissionManager {
 	private array $protectedVariables;
 
 	private MapCacheLRU $canViewProtectedVariablesCache;
-	private MapCacheLRU $canViewProtectedVariableValuesCache;
 
 	private RuleCheckerFactory $ruleCheckerFactory;
 	private AbuseFilterHookRunner $hookRunner;
@@ -38,7 +37,6 @@ class AbuseFilterPermissionManager {
 		$this->hookRunner = $hookRunner;
 
 		$this->canViewProtectedVariablesCache = new MapCacheLRU( 10 );
-		$this->canViewProtectedVariableValuesCache = new MapCacheLRU( 10 );
 	}
 
 	/**
@@ -123,9 +121,8 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
-	 * Returns the cache key used to access the MapCacheLRU instances
-	 * caching the return values of {@link self::canViewProtectedVariables}
-	 * and {@link self::canViewProtectedVariableValues}.
+	 * Returns the cache key used to access the MapCacheLRU instance that
+	 * caches the return values of {@link self::canViewProtectedVariables}.
 	 *
 	 * @param Authority $performer
 	 * @param array $variables
@@ -185,37 +182,6 @@ class AbuseFilterPermissionManager {
 		}
 
 		return AbuseFilterPermissionStatus::newGood();
-	}
-
-	/**
-	 * Whether the given user can see values for all of the specified protected variables.
-	 *
-	 * @param Authority $performer
-	 * @param string[] $variables The variables, which do not need to filtered to just protected variables.
-	 * @return AbuseFilterPermissionStatus
-	 */
-	public function canViewProtectedVariableValues(
-		Authority $performer, array $variables
-	): AbuseFilterPermissionStatus {
-		$variables = $this->getUsedProtectedVariables( $variables );
-
-		// Check if we have the result in cache, and return it if we do.
-		$cacheKey = $this->getCacheKey( $performer, $variables );
-		if ( $this->canViewProtectedVariableValuesCache->has( $cacheKey ) ) {
-			return $this->canViewProtectedVariableValuesCache->get( $cacheKey );
-		}
-
-		$returnStatus = $this->checkCanViewProtectedVariables( $performer );
-		if ( !$returnStatus->isGood() ) {
-			$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
-			return $returnStatus;
-		}
-
-		$this->hookRunner->onAbuseFilterCanViewProtectedVariableValues( $performer, $variables, $returnStatus );
-		$this->hookRunner->onAbuseFilterCanViewProtectedVariables( $performer, $variables, $returnStatus );
-
-		$this->canViewProtectedVariableValuesCache->set( $cacheKey, $returnStatus );
-		return $returnStatus;
 	}
 
 	/**
@@ -294,8 +260,7 @@ class AbuseFilterPermissionManager {
 	/**
 	 * Checks if a user can see log details associated with a given filter.
 	 *
-	 * If the filter is protected, you should call {@link self::canViewProtectedVariableValues}
-	 * or {@link self::canViewProtectedVariables} as appropriate, providing the variables
+	 * If the filter is protected, you should call {@link self::canViewProtectedVariables} providing the variables
 	 * present in the log details.
 	 *
 	 * @param Authority $performer

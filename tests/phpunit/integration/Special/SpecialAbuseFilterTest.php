@@ -68,7 +68,6 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		// define additional restrictions or alter logging that cause the tests to fail.
 		$this->clearHooks( [
 			'AbuseFilterCanViewProtectedVariables',
-			'AbuseFilterCanViewProtectedVariableValues',
 			'AbuseFilterLogProtectedVariableValueAccess',
 		] );
 
@@ -823,12 +822,15 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
-	public function testViewExamineForLogEntryWhereUserCannotSeeProtectedVariableValues() {
-		// Mock that all users do not have access to protected variable values for the purposes of this test.
+	public function testViewExamineForLogEntryWhereUserCannotSeeSpecificProtectedVariable() {
+		// Mock that all users lack access to user_unnamed_ip only, so we can test denying access based on the
+		// protected variables that are present in the log.
 		$this->setTemporaryHook(
-			'AbuseFilterCanViewProtectedVariableValues',
+			'AbuseFilterCanViewProtectedVariables',
 			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
-				$returnStatus->fatal( 'test' );
+				if ( in_array( 'user_unnamed_ip', $variables ) ) {
+					$returnStatus->fatal( 'test' );
+				}
 			}
 		);
 

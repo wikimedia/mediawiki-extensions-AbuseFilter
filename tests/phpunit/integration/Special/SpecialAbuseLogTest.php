@@ -51,7 +51,6 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		// define additional restrictions that cause the tests to fail.
 		$this->clearHooks( [
 			'AbuseFilterCanViewProtectedVariables',
-			'AbuseFilterCanViewProtectedVariableValues',
 		] );
 
 		// Create an authority who can see private filters but not protected variables
@@ -255,9 +254,9 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 		$this->verifySearchFormFieldsValid( $html, $this->authorityCannotUseProtectedVar );
 
-		// Verify that one log entry is present in the page and that the user cannot see the extended details
-		// as it is for a protected filter
-		$this->assertSame( 1, substr_count( $html, '(abusefilter-log-entry' ) );
+		// Verify that both log entries are displayed, but that no extended details can be seen because the user
+		// lacks access to the log and filter.
+		$this->assertSame( 2, substr_count( $html, '(abusefilter-log-entry' ) );
 		$this->assertSame( 0, substr_count( $html, '(abusefilter-log-detailedentry-meta' ) );
 
 		// Verify some contents of the log line
@@ -270,9 +269,9 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 		$this->verifySearchFormFieldsValid( $html, $authority );
 
-		// Verify that one log entry is present in the page and that the user can see the extended details
-		// as they have access to protected variables.
-		$this->assertSame( 1, substr_count( $html, '(abusefilter-log-detailedentry-meta' ) );
+		// Verify that both log entries are displayed along with links to look at the log, as they can access
+		// the log and filter.
+		$this->assertSame( 2, substr_count( $html, '(abusefilter-log-detailedentry-meta' ) );
 
 		// Verify some contents of the log line
 		$this->assertStringContainsString( '(abusefilter-changeslist-examine', $html );
@@ -283,11 +282,16 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 	public function testViewListOfLogsForUserWhoCanSeeFilterButNotLog() {
 		$authority = $this->authorityCanUseProtectedVar;
-		// Mock that all users do not have access to protected variable values for the purposes of this test.
+
+		// Mock that old_wikitext is a protected variable and that all users with generic protected variable access
+		// can see all protected variables except old_wikitext.
+		$this->overrideConfigValue( 'AbuseFilterProtectedVariables', [ 'old_wikitext' ] );
 		$this->setTemporaryHook(
-			'AbuseFilterCanViewProtectedVariableValues',
+			'AbuseFilterCanViewProtectedVariables',
 			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
-				$returnStatus->fatal( 'test' );
+				if ( in_array( 'old_wikitext', $variables ) ) {
+					$returnStatus->fatal( 'test' );
+				}
 			}
 		);
 
@@ -295,19 +299,16 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 		$this->verifySearchFormFieldsValid( $html, $authority );
 
-		// Verify that one log entry is present in the page and that the user can see the extended details
-		// as they have access to protected variables.
+		// Verify that a log entry is present in the page that indicates the user has access to the filter but
+		// lacks access to the log due to a variable specific restriction.
 		$this->assertSame(
-			1, substr_count( $html, '(abusefilter-log-detailedentry-meta-without-action-links' )
+			1, substr_count( $html, '(abusefilter-log-detailedentry-meta-without-action-links' ),
+			"Unexpected number of abusefilter-log-detailedentry-meta-without-action-links in $html"
 		);
 
 		// Assert that the link to the filter and the actions taken are displayed as the user can see that.
 		$this->assertStringContainsString( '(abusefilter-log-detailedentry-local', $html );
 		$this->assertStringContainsString( '(abusefilter-log-noactions', $html );
-
-		// Verify that the action links are not present as the user cannot see the log details.
-		$this->assertStringNotContainsString( '(abusefilter-changeslist-examine', $html );
-		$this->assertStringNotContainsString( '(abusefilter-log-detailslink', $html );
 	}
 
 	public function testShowDetailsForNonExistentLogId() {
@@ -327,9 +328,11 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	public function testShowDetailsWhenUserLacksAccessToProtectedVariableValues() {
 		// Mock that all users do not have access to protected variable values for the purposes of this test.
 		$this->setTemporaryHook(
-			'AbuseFilterCanViewProtectedVariableValues',
+			'AbuseFilterCanViewProtectedVariables',
 			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
-				$returnStatus->fatal( 'test' );
+				if ( in_array( 'user_unnamed_ip', $variables ) ) {
+					$returnStatus->fatal( 'test' );
+				}
 			}
 		);
 
@@ -391,7 +394,6 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		// define additional restrictions that cause the tests to fail.
 		$this->clearHooks( [
 			'AbuseFilterCanViewProtectedVariables',
-			'AbuseFilterCanViewProtectedVariableValues',
 		] );
 
 		ConvertibleTimestamp::setFakeTime( '20240506070809' );
@@ -408,7 +410,8 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			MutableFilter::newDefault()
 		) );
 
-		// Insert a hit on the filter
+		// Insert two hits on the filter, one with user_unnamed_ip and with old_wikitext. This so that we can
+		// simulate a user having access to the filter but not the log due to a variable specific restriction.
 		RequestContext::getMain()->getRequest()->setIP( '1.2.3.4' );
 		$logPerformer = $this->getTestUser();
 		self::$logPerformer = $logPerformer->getUserIdentity();
@@ -420,6 +423,15 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 				'action' => 'edit',
 				'user_name' => '~2024-1',
 				'user_unnamed_ip' => '1.2.3.4',
+			] )
+		)->addLogEntries( [ 1 => [] ] );
+		$abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$logPerformer->getUser(),
+			VariableHolder::newFromArray( [
+				'action' => 'edit',
+				'user_name' => '~2024-1',
+				'old_wikitext' => 'abc',
 			] )
 		)->addLogEntries( [ 1 => [] ] );
 	}

@@ -308,7 +308,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$userAuthority = $this->getAuthority();
 		if (
 			$filter->isProtected() &&
-			!$this->afPermManager->canViewProtectedVariableValues( $userAuthority, array_keys( $varsArray ) )->isGood()
+			!$this->afPermManager->canViewProtectedVariables( $userAuthority, array_keys( $varsArray ) )->isGood()
 		) {
 			$out->addWikiMsg( 'abusefilter-examine-protected-vars-permission' );
 			return;
@@ -324,10 +324,10 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$protectedVariableValuesShown = [];
 		foreach ( $this->afPermManager->getProtectedVariables() as $protectedVariable ) {
 			if ( isset( $varsArray[$protectedVariable] ) ) {
-				// Try each variable at a time, as the user may be able to see some but not all of the values
-				// for the protected variables. We only want to redact what is necessary to redact.
+				// Try each variable at a time, as the user may be able to see some but not all of the
+				// protected variables. We only want to redact what is necessary to redact.
 				$canViewProtectedVariable = $this->afPermManager
-					->canViewProtectedVariableValues( $userAuthority, [ $protectedVariable ] )->isGood();
+					->canViewProtectedVariables( $userAuthority, [ $protectedVariable ] )->isGood();
 				if ( !$canViewProtectedVariable ) {
 					$varsArray[$protectedVariable] = '';
 				} else {

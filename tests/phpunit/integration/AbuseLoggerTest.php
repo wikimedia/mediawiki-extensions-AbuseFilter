@@ -101,7 +101,6 @@ class AbuseLoggerTest extends MediaWikiIntegrationTestCase {
 		// define additional restrictions that cause the tests to fail.
 		$this->clearHooks( [
 			'AbuseFilterCanViewProtectedVariables',
-			'AbuseFilterCanViewProtectedVariableValues',
 		] );
 
 		// Get two testing filters, one with protected variables and one without protected variables

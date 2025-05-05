@@ -10,7 +10,7 @@ interface AbuseFilterCanViewProtectedVariablesHook {
 	 * Called when determining if the user can view the specified protected variables.
 	 *
 	 * Implement this hook to define additional restrictions viewing any number of protected
-	 * variable(s).
+	 * variable(s). This is also called when viewing the value of these variables.
 	 *
 	 * @since 1.44
 	 * @param Authority $performer The user viewing the protected variable values.
