@@ -30,23 +30,16 @@ class RuleCheckerStatus extends ParserStatus {
 		$this->warmCache = $warmCache;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function getResult(): bool {
 		return $this->result;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function getWarmCache(): bool {
 		return $this->warmCache;
 	}
 
 	/**
 	 * Serialize data for edit stash
-	 * @return array
 	 */
 	public function toArray(): array {
 		return [

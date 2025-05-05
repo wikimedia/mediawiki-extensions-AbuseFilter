@@ -62,10 +62,6 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 		);
 	}
 
-	/**
-	 * @param LinkTarget $target
-	 * @return array
-	 */
 	private function getPageAndRev( LinkTarget $target ): array {
 		$title = Title::newFromLinkTarget( $target );
 		// Legacy code. Yay.

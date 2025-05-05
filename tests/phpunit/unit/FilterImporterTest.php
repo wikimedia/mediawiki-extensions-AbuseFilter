@@ -124,9 +124,6 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expectedFilter, $actualFilter );
 	}
 
-	/**
-	 * @return Generator
-	 */
 	public static function provideRoundTrip(): Generator {
 		$actions = [
 			'block' => [],

@@ -24,44 +24,26 @@ class LastEditInfo {
 		$this->timestamp = $timestamp;
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getUserID(): int {
 		return $this->userID;
 	}
 
-	/**
-	 * @param int $id
-	 */
 	public function setUserID( int $id ): void {
 		$this->userID = $id;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getUserName(): string {
 		return $this->userName;
 	}
 
-	/**
-	 * @param string $name
-	 */
 	public function setUserName( string $name ): void {
 		$this->userName = $name;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getTimestamp(): string {
 		return $this->timestamp;
 	}
 
-	/**
-	 * @param string $timestamp
-	 */
 	public function setTimestamp( string $timestamp ): void {
 		$this->timestamp = $timestamp;
 	}

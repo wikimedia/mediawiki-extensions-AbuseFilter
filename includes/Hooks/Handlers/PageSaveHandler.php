@@ -9,9 +9,6 @@ class PageSaveHandler implements PageSaveCompleteHook {
 	/** @var EditRevUpdater */
 	private $revUpdater;
 
-	/**
-	 * @param EditRevUpdater $revUpdater
-	 */
 	public function __construct( EditRevUpdater $revUpdater ) {
 		$this->revUpdater = $revUpdater;
 	}

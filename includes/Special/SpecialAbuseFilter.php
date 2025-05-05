@@ -110,10 +110,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		],
 	];
 
-	/**
-	 * @param AbuseFilterPermissionManager $afPermissionManager
-	 * @param ObjectFactory $objectFactory
-	 */
 	public function __construct(
 		AbuseFilterPermissionManager $afPermissionManager,
 		ObjectFactory $objectFactory

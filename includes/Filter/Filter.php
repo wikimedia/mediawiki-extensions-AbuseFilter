@@ -42,51 +42,30 @@ class Filter extends AbstractFilter {
 		$this->throttled = $throttled;
 	}
 
-	/**
-	 * @return LastEditInfo
-	 */
 	public function getLastEditInfo(): LastEditInfo {
 		return clone $this->lastEditInfo;
 	}
 
-	/**
-	 * @return int|null
-	 */
 	public function getID(): ?int {
 		return $this->id;
 	}
 
-	/**
-	 * @return int
-	 */
 	public function getUserID(): int {
 		return $this->lastEditInfo->getUserID();
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getUserName(): string {
 		return $this->lastEditInfo->getUserName();
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getTimestamp(): string {
 		return $this->lastEditInfo->getTimestamp();
 	}
 
-	/**
-	 * @return int|null
-	 */
 	public function getHitCount(): ?int {
 		return $this->hitCount;
 	}
 
-	/**
-	 * @return bool|null
-	 */
 	public function isThrottled(): ?bool {
 		return $this->throttled;
 	}

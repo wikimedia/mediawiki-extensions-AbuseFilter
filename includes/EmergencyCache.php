@@ -121,18 +121,10 @@ class EmergencyCache {
 		return $value;
 	}
 
-	/**
-	 * @param string $group
-	 * @return string
-	 */
 	private function createGroupKey( string $group ): string {
 		return $this->stash->makeKey( 'abusefilter', 'emergency', 'group', $group );
 	}
 
-	/**
-	 * @param int $filter
-	 * @return string
-	 */
 	private function createFilterKey( int $filter ): string {
 		return $this->stash->makeKey( 'abusefilter', 'emergency', 'filter', $filter );
 	}

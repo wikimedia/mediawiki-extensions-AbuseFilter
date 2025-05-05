@@ -40,10 +40,6 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 	private VariablesManager $variablesManager;
 	private IBlockedDomainStorage $blockedDomainStorage;
 
-	/**
-	 * @param VariablesManager $variablesManager
-	 * @param IBlockedDomainStorage $blockedDomainStorage
-	 */
 	public function __construct(
 		VariablesManager $variablesManager,
 		IBlockedDomainStorage $blockedDomainStorage

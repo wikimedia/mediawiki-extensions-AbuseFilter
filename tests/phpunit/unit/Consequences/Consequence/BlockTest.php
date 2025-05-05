@@ -38,7 +38,6 @@ class BlockTest extends MediaWikiUnitTestCase {
 	/**
 	 * This helper is needed because for reverts we check that the blocker is our filter user, so we want
 	 * to always use the same object.
-	 * @return FilterUser
 	 */
 	private function getFilterUser(): FilterUser {
 		$filterUser = $this->createMock( FilterUser::class );

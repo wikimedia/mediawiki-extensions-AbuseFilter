@@ -163,8 +163,6 @@ class AbuseLogger {
 
 	/**
 	 * Creates a template to use for logging taken actions
-	 *
-	 * @return array
 	 */
 	private function buildLogTemplate(): array {
 		// If $this->user isn't safe to load (e.g. a failure during
@@ -187,10 +185,6 @@ class AbuseLogger {
 		return $logTemplate;
 	}
 
-	/**
-	 * @param array $data
-	 * @return ManualLogEntry
-	 */
 	private function newLocalLogEntryFromData( array $data ): ManualLogEntry {
 		// Give grep a chance to find the usages:
 		// logentry-abusefilter-hit

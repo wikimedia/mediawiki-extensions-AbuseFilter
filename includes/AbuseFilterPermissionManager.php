@@ -39,10 +39,6 @@ class AbuseFilterPermissionManager {
 		$this->canViewProtectedVariablesCache = new MapCacheLRU( 10 );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canEdit( Authority $performer ): bool {
 		$block = $performer->getBlock();
 		return (
@@ -51,10 +47,6 @@ class AbuseFilterPermissionManager {
 		);
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canEditGlobal( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-modify-global' );
 	}
@@ -83,10 +75,6 @@ class AbuseFilterPermissionManager {
 		return $performer->isAllowed( 'abusefilter-modify-restricted' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canViewPrivateFilters( Authority $performer ): bool {
 		$block = $performer->getBlock();
 		return (
@@ -224,35 +212,19 @@ class AbuseFilterPermissionManager {
 		return $this->protectedVariables;
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canViewPrivateFiltersLogs( Authority $performer ): bool {
 		return $this->canViewPrivateFilters( $performer ) ||
 			$performer->isAllowed( 'abusefilter-log-private' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canViewAbuseLog( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-log' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canHideAbuseLog( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-hide-log' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canRevertFilterActions( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-revert' );
 	}
@@ -287,34 +259,18 @@ class AbuseFilterPermissionManager {
 		return true;
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canSeeLogDetails( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-log-detail' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canSeePrivateDetails( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-privatedetails' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canSeeHiddenLogEntries( Authority $performer ): bool {
 		return $performer->isAllowed( 'abusefilter-hidden-log' );
 	}
 
-	/**
-	 * @param Authority $performer
-	 * @return bool
-	 */
 	public function canUseTestTools( Authority $performer ): bool {
 		// TODO: make independent
 		return $this->canViewPrivateFilters( $performer );

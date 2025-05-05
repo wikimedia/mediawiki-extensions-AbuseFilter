@@ -77,9 +77,6 @@ class AbuseFilterTokenizer {
 	 */
 	private $cache;
 
-	/**
-	 * @param BagOStuff $cache
-	 */
 	public function __construct( BagOStuff $cache ) {
 		$this->cache = $cache;
 	}

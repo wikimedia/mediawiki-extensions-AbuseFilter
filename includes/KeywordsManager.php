@@ -342,23 +342,14 @@ class KeywordsManager {
 	/** @var AbuseFilterHookRunner */
 	private $hookRunner;
 
-	/**
-	 * @param AbuseFilterHookRunner $hookRunner
-	 */
 	public function __construct( AbuseFilterHookRunner $hookRunner ) {
 		$this->hookRunner = $hookRunner;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getDisabledVariables(): array {
 		return self::DISABLED_VARS;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getDeprecatedVariables(): array {
 		if ( $this->deprecatedVars === null ) {
 			$this->deprecatedVars = self::DEPRECATED_VARS;
@@ -367,9 +358,6 @@ class KeywordsManager {
 		return $this->deprecatedVars;
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getBuilderValues(): array {
 		if ( $this->builderValues === null ) {
 			$this->builderValues = self::BUILDER_VALUES;
@@ -378,26 +366,14 @@ class KeywordsManager {
 		return $this->builderValues;
 	}
 
-	/**
-	 * @param string $name
-	 * @return bool
-	 */
 	public function isVarDisabled( string $name ): bool {
 		return array_key_exists( $name, self::DISABLED_VARS );
 	}
 
-	/**
-	 * @param string $name
-	 * @return bool
-	 */
 	public function isVarDeprecated( string $name ): bool {
 		return array_key_exists( $name, $this->getDeprecatedVariables() );
 	}
 
-	/**
-	 * @param string $name
-	 * @return bool
-	 */
 	public function isVarInUse( string $name ): bool {
 		return array_key_exists( $name, $this->getVarsMappings() );
 	}
@@ -433,9 +409,6 @@ class KeywordsManager {
 		return "abusefilter-edit-builder-vars-$key";
 	}
 
-	/**
-	 * @return array
-	 */
 	public function getVarsMappings(): array {
 		return $this->getBuilderValues()['vars'];
 	}

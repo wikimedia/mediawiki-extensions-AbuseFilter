@@ -52,8 +52,6 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 
 	/**
 	 * Get topbar navigation links definitions
-	 *
-	 * @return array
 	 */
 	private function getNavigationLinksInternal(): array {
 		$performer = $this->getAuthority();
