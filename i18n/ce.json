@@ -558,7 +558,7 @@
 	"tag-abusefilter-condition-limit-description": "Массо жигара [[Special:AbuseFilter|зуламан литтаршна]] далуш доцург ([[mw:Extension:AbuseFilter/Conditions|гӀо]]).",
 	"notification-header-throttle-filter": "{{GENDER:$1|Ахьа}} дукха хан йоццуш хийцина $2 зедарийн фильтр дозатоьхна йу.",
 	"notification-header-throttle-filter-actions": "Дукха хан йоццуш {{GENDER:$1|ахьа}} хийцам бина $2 зедарийн фильтран, цхьаьнанисдалар лакхара процент йара, ткъа хӀара {{PLURAL:$4|ардам|ардамаш}} авто дӀабайина: $3.",
-	"notification-header-throttle-filter-no-actions": "Дукха хан йоццуш {{GENDER:$1|ахьа}} хийцам бина $2 зедарийн фильтран, цхьаьнанисдалар лакхара процент йара, амма цхьа а ардамаш авто дӀабайина бацара: $3.",
+	"notification-header-throttle-filter-no-actions": "Дукха хан йоццуш {{GENDER:$1|ахьа}} хийцам бина $2 зедарийн фильтран, цхьаьнанисдалар лакхара процент йара, делахь а цхьа а ардамаш авто дӀабайина бацара:",
 	"notification-subject-throttle-filter": "{{GENDER:$1|ахьа}} хийцам бина зедарийн фильтран  {{SITENAME}} сайтехь блоктоьхна",
 	"notification-link-text-show-filter": "Гайта фильтр"
 }
