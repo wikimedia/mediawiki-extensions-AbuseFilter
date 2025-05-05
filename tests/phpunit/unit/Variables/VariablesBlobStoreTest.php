@@ -13,7 +13,6 @@ use MediaWiki\Storage\BlobAccessException;
 use MediaWiki\Storage\BlobStore;
 use MediaWiki\Storage\BlobStoreFactory;
 use MediaWikiUnitTestCase;
-use stdClass;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -70,9 +69,10 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$blobStore = $this->createMock( BlobStore::class );
 		$blobStore->expects( $this->once() )->method( 'getBlob' )->willReturn( $blob );
 
-		$row = new stdClass;
-		$row->afl_var_dump = $blob;
-		$row->afl_ip = '';
+		$row = (object)[
+			'afl_var_dump' => $blob,
+			'afl_ip' => '',
+		];
 		$varBlobStore = $this->getStore( null, $blobStore );
 		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
 		$this->assertArrayHasKey( 'foo-variable', $loadedVars );
@@ -92,9 +92,10 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$blob = FormatJson::encode( $vars );
 		$blobStore = $this->createMock( BlobStore::class );
 		$blobStore->expects( $this->once() )->method( 'getBlob' )->willReturn( $blob );
-		$row = new stdClass;
-		$row->afl_var_dump = $blob;
-		$row->afl_ip = $data[ 'afl_ip' ];
+		$row = (object)[
+			'afl_var_dump' => $blob,
+			'afl_ip' => $data[ 'afl_ip' ],
+		];
 		$varBlobStore = new VariablesBlobStore(
 			$manager,
 			$this->createMock( BlobStoreFactory::class ),
@@ -141,12 +142,13 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$blobStore = $this->createMock( BlobStore::class );
 		$blobStore->expects( $this->once() )->method( 'getBlob' )->willThrowException( new BlobAccessException );
 		$varBlobStore = $this->getStore( null, $blobStore );
-		$row = new stdClass;
-		$row->afl_var_dump = '';
-		$row->afl_ip = '';
+		$row = (object)[
+			'afl_var_dump' => '',
+			'afl_ip' => '',
+		];
 		$this->assertCount( 0, $varBlobStore->loadVarDump( $row )->getVars() );
 
-		$row = new stdClass;
+		$row = (object)[];
 		$this->expectException( InvalidArgumentException::class );
 		$varBlobStore->loadVarDump( $row )->getVars();
 	}
@@ -188,9 +190,10 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 		$storeID = $varBlobStore->storeVarDump( VariableHolder::newFromArray( $toStore ) );
 		$this->assertIsString( $storeID );
-		$row = new stdClass;
-		$row->afl_var_dump = $storeID;
-		$row->afl_ip = '';
+		$row = (object)[
+			'afl_var_dump' => $storeID,
+			'afl_ip' => '',
+		];
 		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
 		$nativeLoadedVars = array_map( static function ( AFPData $el ) {
 			return $el->toNative();
