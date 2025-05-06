@@ -211,6 +211,7 @@ return [
 			),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getBlockUserFactory(),
+			$services->getUnblockUserFactory(),
 			$services->getDatabaseBlockStore(),
 			$services->getUserGroupManager(),
 			$services->getMainObjectStash(),
