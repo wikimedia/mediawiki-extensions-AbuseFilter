@@ -26,15 +26,14 @@ class AbuseFilterHookRunner implements
 	AbuseFilterCustomActionsHook,
 	AbuseFilterCustomProtectedVariablesHook,
 	AbuseFilterDeprecatedVariablesHook,
-	AbuseFilterFilterActionHook,
 	AbuseFilterGenerateGenericVarsHook,
 	AbuseFilterGenerateTitleVarsHook,
 	AbuseFilterGenerateUserVarsHook,
 	AbuseFilterGenerateVarsForRecentChangeHook,
+	AbuseFilterGetDangerousActionsHook,
 	AbuseFilterInterceptVariableHook,
 	AbuseFilterProtectedVarsAccessLoggerHook,
-	AbuseFilterShouldFilterActionHook,
-	AbuseFilterGetDangerousActionsHook
+	AbuseFilterShouldFilterActionHook
 {
 	public const SERVICE_NAME = 'AbuseFilterHookRunner';
 
@@ -89,19 +88,6 @@ class AbuseFilterHookRunner implements
 		return $this->hookContainer->run(
 			'AbuseFilter-contentToString',
 			[ $content, &$text ]
-		);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function onAbuseFilter_filterAction(
-		VariableHolder &$vars,
-		Title $title
-	) {
-		return $this->hookContainer->run(
-			'AbuseFilter-filterAction',
-			[ &$vars, $title ]
 		);
 	}
 
