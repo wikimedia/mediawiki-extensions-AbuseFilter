@@ -21,8 +21,8 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use MediaWiki\Exception\ErrorPageError;
 use MediaWiki\Exception\PermissionsError;
-use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -36,12 +36,12 @@ use Wikimedia\Rdbms\IDBAccessObject;
  * @ingroup SpecialPage
  */
 class BlockedExternalDomains extends SpecialPage {
-	private BlockedDomainStorage $blockedDomainStorage;
+	private IBlockedDomainStorage $blockedDomainStorage;
 	private BlockedDomainValidator $blockedDomainValidator;
 	private WANObjectCache $wanCache;
 
 	public function __construct(
-		BlockedDomainStorage $blockedDomainStorage,
+		IBlockedDomainStorage $blockedDomainStorage,
 		BlockedDomainValidator $blockedDomainValidator,
 		WANObjectCache $wanCache
 	) {
@@ -255,13 +255,13 @@ class BlockedExternalDomains extends SpecialPage {
 			return false;
 		}
 
-		$rev = $this->blockedDomainStorage->removeDomain(
+		$status = $this->blockedDomainStorage->removeDomain(
 			$domain,
 			$data['Notes'] ?? '',
 			$this->getUser()
 		);
 
-		if ( !$rev ) {
+		if ( !$status->isGood() ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
 			return false;
 		}
@@ -327,13 +327,13 @@ class BlockedExternalDomains extends SpecialPage {
 			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
 			return false;
 		}
-		$rev = $this->blockedDomainStorage->addDomain(
+		$status = $this->blockedDomainStorage->addDomain(
 			$domain,
 			$data['Notes'] ?? '',
 			$this->getUser()
 		);
 
-		if ( !$rev ) {
+		if ( !$status->isGood() ) {
 			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
 			return false;
 		}

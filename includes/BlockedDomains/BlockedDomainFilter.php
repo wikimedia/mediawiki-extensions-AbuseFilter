@@ -38,15 +38,15 @@ use MediaWiki\User\User;
  */
 class BlockedDomainFilter implements IBlockedDomainFilter {
 	private VariablesManager $variablesManager;
-	private BlockedDomainStorage $blockedDomainStorage;
+	private IBlockedDomainStorage $blockedDomainStorage;
 
 	/**
 	 * @param VariablesManager $variablesManager
-	 * @param BlockedDomainStorage $blockedDomainStorage
+	 * @param IBlockedDomainStorage $blockedDomainStorage
 	 */
 	public function __construct(
 		VariablesManager $variablesManager,
-		BlockedDomainStorage $blockedDomainStorage
+		IBlockedDomainStorage $blockedDomainStorage
 	) {
 		$this->variablesManager = $variablesManager;
 		$this->blockedDomainStorage = $blockedDomainStorage;
