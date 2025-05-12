@@ -36,7 +36,7 @@
 	"apihelp-abusefilterunblockautopromote-param-user": "제한을 해제할 사용자의 계정 이름",
 	"apihelp-abusefilterunblockautopromote-example-1": "[[User:Example]]의 자동 인증 제한을 해제하기",
 	"apihelp-query+abusefilters-description": "편집 필터에 관한 세부 사항을 출력합니다.",
-	"apihelp-query+abusefilters-summary": "편집 필터에 관한 세부 사항을 표시합니다.",
+	"apihelp-query+abusefilters-summary": "편집 필터에 관한 세부 사항을 보여줍니다.",
 	"apihelp-query+abusefilters-param-startid": "열거하기 시작할 필터의 ID",
 	"apihelp-query+abusefilters-param-endid": "열거를 마칠 필터의 ID",
 	"apihelp-query+abusefilters-param-show": "이 조건을 만족하는 필터만 출력하기.",
