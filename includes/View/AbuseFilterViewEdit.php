@@ -1336,17 +1336,17 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					// Trim any space, both as an actual group and inside subgroups
 					$throttleGroups = [];
 					foreach ( $rawGroups as $group ) {
-						if ( str_contains( $group, ',' ) ) {
-							$subGroups = explode( ',', $group );
-							$throttleGroups[] = implode( ',', array_map( 'trim', $subGroups ) );
-						} elseif ( trim( $group ) !== '' ) {
-							$throttleGroups[] = trim( $group );
+						$group = preg_replace( '/\s*,\s*/', ',', trim( $group ) );
+						if ( $group !== '' ) {
+							$throttleGroups[] = $group;
 						}
 					}
 
-					$parameters[0] = $this->filter;
-					$parameters[1] = "$throttleCount,$throttlePeriod";
-					$parameters = array_merge( $parameters, $throttleGroups );
+					$parameters = [
+						$this->filter,
+						"$throttleCount,$throttlePeriod",
+						...$throttleGroups,
+					];
 				} elseif ( $action === 'warn' ) {
 					$specMsg = $request->getVal( 'wpFilterWarnMessage' );
 
@@ -1354,13 +1354,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$specMsg = $request->getVal( 'wpFilterWarnMessageOther' );
 					}
 
-					$parameters[0] = $specMsg;
+					$parameters = [ $specMsg ];
 				} elseif ( $action === 'block' ) {
-					// TODO: Should save a boolean
-					$parameters[0] = $request->getCheck( 'wpFilterBlockTalk' ) ?
-						'blocktalk' : 'noTalkBlockSet';
-					$parameters[1] = $request->getVal( 'wpBlockAnonDuration' );
-					$parameters[2] = $request->getVal( 'wpBlockUserDuration' );
+					$parameters = [
+						// TODO: Should save a boolean
+						$request->getCheck( 'wpFilterBlockTalk' )
+							? 'blocktalk' : 'noTalkBlockSet',
+						$request->getVal( 'wpBlockAnonDuration' ),
+						$request->getVal( 'wpBlockUserDuration' ),
+					];
 				} elseif ( $action === 'disallow' ) {
 					$specMsg = $request->getVal( 'wpFilterDisallowMessage' );
 
@@ -1368,14 +1370,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						$specMsg = $request->getVal( 'wpFilterDisallowMessageOther' );
 					}
 
-					$parameters[0] = $specMsg;
+					$parameters = [ $specMsg ];
 				} elseif ( $action === 'tag' ) {
-					$parameters = explode( ',', trim( $request->getText( 'wpFilterTags' ) ) );
-					if ( $parameters === [ '' ] ) {
-						// Since it's not possible to manually add an empty tag, this only happens
-						// if the form is submitted without touching the tag input field.
-						// We pass an empty array so that the widget won't show an empty tag in the topbar
-						$parameters = [];
+					$tags = trim( $request->getText( 'wpFilterTags' ) );
+					// Since it's not possible to manually add an empty tag, this only happens
+					// if the form is submitted without touching the tag input field.
+					// We pass an empty array so that the widget won't show an empty tag in the topbar
+					if ( $tags !== '' ) {
+						$parameters = explode( ',', $tags );
 					}
 				}
 
