@@ -122,15 +122,14 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	/**
 	 * Validate an input domain
 	 *
-	 * @deprecated since 1.44, use BlockedDomainValidator instead
+	 * @deprecated since 1.45, use BlockedDomainValidator instead
 	 * @see BlockedDomainValidator
 	 * @param string|null $domain Domain such as foo.wikipedia.org
 	 * @return string|false Parsed domain, or false otherwise
 	 */
 	public function validateDomain( $domain ) {
 		// NOTE: Can be called on the deprecated class name, see the class_alias in the bottom
-		// (T394267) Do not hard-deprecate until production callers are fixed
-		// wfDeprecated( __METHOD__, '1.44' );
+		wfDeprecated( __METHOD__, '1.45' );
 		if ( !is_string( $domain ) && $domain !== null ) {
 			// cannot be passed to BlockedDomainValidator
 			return false;
