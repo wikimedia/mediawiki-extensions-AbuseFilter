@@ -30,8 +30,6 @@ use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\TitleValue;
-use MediaWiki\User\UserFactory;
-use MediaWiki\User\UserIdentity;
 use StatusValue;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
@@ -47,20 +45,17 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 
 	private RevisionLookup $revisionLookup;
 	private BagOStuff $cache;
-	private UserFactory $userFactory;
 	private WikiPageFactory $wikiPageFactory;
 	private BlockedDomainValidator $domainValidator;
 
 	public function __construct(
 		BagOStuff $cache,
 		RevisionLookup $revisionLookup,
-		UserFactory $userFactory,
 		WikiPageFactory $wikiPageFactory,
 		BlockedDomainValidator $domainValidator
 	) {
 		$this->cache = $cache;
 		$this->revisionLookup = $revisionLookup;
-		$this->userFactory = $userFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->domainValidator = $domainValidator;
 	}
@@ -164,20 +159,20 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	}
 
 	/** @inheritDoc */
-	public function addDomain( string $domain, string $notes, $user ): StatusValue {
+	public function addDomain( string $domain, string $notes, Authority $authority ): StatusValue {
 		$content = $this->fetchLatestConfig();
 		if ( $content === null ) {
 			return StatusValue::newFatal( 'error' );
 		}
-		$content[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $user->getName() ];
+		$content[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $authority->getUser()->getName() ];
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
 			->params( $domain, $notes )
 			->plain();
-		return $this->saveContent( $content, $user, $comment );
+		return $this->saveContent( $content, $authority, $comment );
 	}
 
 	/** @inheritDoc */
-	public function removeDomain( string $domain, string $notes, $user ): StatusValue {
+	public function removeDomain( string $domain, string $notes, Authority $authority ): StatusValue {
 		$content = $this->fetchLatestConfig();
 		if ( $content === null ) {
 			return StatusValue::newFatal( 'error' );
@@ -190,7 +185,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-removed-comment' )
 			->params( $domain, $notes )
 			->plain();
-		return $this->saveContent( array_values( $content ), $user, $comment );
+		return $this->saveContent( array_values( $content ), $authority, $comment );
 	}
 
 	/**
@@ -218,18 +213,18 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	 * Save the provided content into the page
 	 *
 	 * @param array[] $content To be turned into JSON
-	 * @param Authority|UserIdentity $user Performer
+	 * @param Authority $authority Performer
 	 * @param string $comment Save comment
 	 *
 	 * @return StatusValue
 	 */
-	private function saveContent( array $content, $user, string $comment ): StatusValue {
+	private function saveContent( array $content, Authority $authority, string $comment ): StatusValue {
 		$configPage = $this->getBlockedDomainPage();
 		$page = $this->wikiPageFactory->newFromLinkTarget( $configPage );
-		$updater = $page->newPageUpdater( $user );
+		$updater = $page->newPageUpdater( $authority );
 		$updater->setContent( SlotRecord::MAIN, new JsonContent( FormatJson::encode( $content ) ) );
 
-		if ( $this->userFactory->newFromUserIdentity( $user )->isAllowed( 'autopatrol' ) ) {
+		if ( $authority->isAllowed( 'autopatrol' ) ) {
 			$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 		}
 

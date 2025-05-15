@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
 use MediaWiki\Permissions\Authority;
-use MediaWiki\User\UserIdentity;
 use StatusValue;
 
 interface IBlockedDomainStorage {
@@ -30,20 +29,20 @@ interface IBlockedDomainStorage {
 	 *
 	 * @param string $domain domain to be blocked
 	 * @param string $notes User provided notes
-	 * @param Authority|UserIdentity $user Performer
+	 * @param Authority $authority Performer
 	 *
 	 * @return StatusValue
 	 */
-	public function addDomain( string $domain, string $notes, $user ): StatusValue;
+	public function addDomain( string $domain, string $notes, Authority $authority ): StatusValue;
 
 	/**
 	 * This doesn't do validation
 	 *
 	 * @param string $domain domain to be removed from the blocked list
 	 * @param string $notes User provided notes
-	 * @param Authority|UserIdentity $user Performer
+	 * @param Authority $authority Performer
 	 *
 	 * @return StatusValue
 	 */
-	public function removeDomain( string $domain, string $notes, $user ): StatusValue;
+	public function removeDomain( string $domain, string $notes, Authority $authority ): StatusValue;
 }
