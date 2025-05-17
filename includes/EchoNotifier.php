@@ -69,7 +69,7 @@ class EchoNotifier {
 			'type' => self::EVENT_TYPE,
 			'title' => $this->getTitleForFilter( $filter ),
 			'extra' => [
-				'user' => $filterObj->getUserID(),
+				Event::RECIPIENTS_IDX => [ $filterObj->getUserID() ],
 				'throttled-actions' => $throttledActionNames,
 			],
 		];

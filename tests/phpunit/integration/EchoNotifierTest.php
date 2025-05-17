@@ -63,7 +63,10 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( -1, $title->getNamespace() );
 		[ , $subpage ] = explode( '/', $title->getText(), 2 );
 		$this->assertSame( (string)$filter, $subpage );
-		$this->assertSame( [ 'user' => $userID, 'throttled-actions' => $expectedThrottledActions ], $extra );
+		$this->assertSame(
+			[ Event::RECIPIENTS_IDX => [ $userID ], 'throttled-actions' => $expectedThrottledActions ],
+			$extra
+		);
 	}
 
 	public function testNotifyForFilter() {
