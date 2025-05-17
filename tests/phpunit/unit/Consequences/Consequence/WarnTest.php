@@ -96,7 +96,8 @@ class WarnTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideGetMessageParameters
 	 */
-	public function testGetMessage( Parameters $params ) {
+	public function testGetMessage( callable $params ) {
+		$params = $params( $this );
 		$msg = 'some-warning-message';
 		$rangeBlock = new Warn( $params, $msg, $this->createMock( Session::class ) );
 		$this->doTestGetMessage( $rangeBlock, $params, $msg );
