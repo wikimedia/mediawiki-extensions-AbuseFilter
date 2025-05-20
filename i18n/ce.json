@@ -562,7 +562,6 @@
 	"abusefilter-examine-notfound": "Ахьа билгалбина хийцам каро йиш йац.",
 	"abusefilter-examine-incompatible": "Ахьа билгалбина хийцам зуламан литтаро ловш бац",
 	"abusefilter-examine-noresults": "Билгалйинчу параметрашца цхьа а жамӀ ца карийна.",
-	"abusefilter-examine-protected-vars-permission": "Ларбина хийцамаш болу журналаш хьажархьама, дехар ду [[Special:Preferences|хьайн лаамаш]] чохь болу барт тӀеэца.",
 	"abusefilter-topnav": "'''Навигаци йар зедарийн фильтрехула'''",
 	"abusefilter-topnav-home": "Йуьхьиге",
 	"abusefilter-topnav-recentchanges": "Фильтрийн тӀаьххьара бина хийцамаш",

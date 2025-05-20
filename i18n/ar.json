@@ -590,7 +590,6 @@
 	"abusefilter-examine-notfound": "التغيير الذي طلبته لم يمكن إيجاده.",
 	"abusefilter-examine-incompatible": "التغيير الذي طلبته غير مدعوم بواسطة مرشح الإساءة",
 	"abusefilter-examine-noresults": "لا نتائج تم الحصول عليها لمحددات البحث التي وفرتها.",
-	"abusefilter-examine-protected-vars-permission": "لعرض السجلات التي تحتوي على متغيرات محمية، يرجى قبول الاتفاقية في [[Special:Preferences|تفضيلاتك]].",
 	"abusefilter-topnav": "'''تصفح مرشح الإساءة'''",
 	"abusefilter-topnav-home": "الرئيسية",
 	"abusefilter-topnav-recentchanges": "أحدث تغييرات المرشحات",

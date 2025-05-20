@@ -576,7 +576,6 @@
 	"abusefilter-examine-notfound": "לא ניתן לאתר את השינוי המבוקש.",
 	"abusefilter-examine-incompatible": "השינוי המבוקש אינו נתמך על־ידי מסנן ההשחתות",
 	"abusefilter-examine-noresults": "לא נמצאו תוצאות עבור הפרמטרים שסיפקת לחיפוש.",
-	"abusefilter-examine-protected-vars-permission": "כדי לצפות ביומנים המכילים משתנים מוגנים, יש לקבל את ההסכם ב[[Special:Preferences|העדפות שלך]].",
 	"abusefilter-topnav": "'''ניווט במסנן ההשחתות'''",
 	"abusefilter-topnav-home": "דף הבית",
 	"abusefilter-topnav-recentchanges": "שינויים אחרונים במסננים",

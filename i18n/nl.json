@@ -590,7 +590,6 @@
 	"abusefilter-examine-notfound": "De wijziging die {{#FORMAL:u|je}} hebt opgevraagd is niet aangetroffen.",
 	"abusefilter-examine-incompatible": "Het filter ondersteunt de wijziging die {{#FORMAL:u|je}} hebt opgevraagd niet",
 	"abusefilter-examine-noresults": "Er zijn geen resultaten gevonden voor de zoekopdrachtparameters die {{#FORMAL:u|je}} hebt opgegeven.",
-	"abusefilter-examine-protected-vars-permission": "Om logboeken te bekijken die beveiligde variabelen bevatten, moet u de overeenkomst in [[Special:Preferences|uw voorkeuren]] accepteren.",
 	"abusefilter-topnav": "'''Filternavigatie'''",
 	"abusefilter-topnav-home": "Hoofdmenu",
 	"abusefilter-topnav-recentchanges": "Recente filterwijzigingen",

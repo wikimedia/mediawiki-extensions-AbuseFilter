@@ -487,7 +487,6 @@
 	"abusefilter-examine-notfound": "Izmjenu koju ste tražili nije moguće pronaći.",
 	"abusefilter-examine-incompatible": "Izmjena koju ste tražili nije podržana od strane filtra zloporaba",
 	"abusefilter-examine-noresults": "Ništa nije pronađeno za parametre pretraživanja koje ste unijeli.",
-	"abusefilter-examine-protected-vars-permission": "Za pregled zapisa koji sadrže zaštićene varijable potvrdite pristanak u [[Special:Preferences|svojim postavkama]].",
 	"abusefilter-topnav": "'''Navigacija filtra zloporaba'''",
 	"abusefilter-topnav-home": "Početna stranica",
 	"abusefilter-topnav-recentchanges": "Nedavne promjene filtra",

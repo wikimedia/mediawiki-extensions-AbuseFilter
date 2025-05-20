@@ -557,7 +557,6 @@
 	"abusefilter-examine-notfound": "Сиз излеген тюрлениу табылалмады.",
 	"abusefilter-examine-incompatible": "Сиз излеген тюрлениуню Джорукъсуз Хайырланыу Фильтр дагъан этмейди",
 	"abusefilter-examine-noresults": "Белгилеген излеу параметрлеригизге келишген чырт бир эсеб табылалмады.",
-	"abusefilter-examine-protected-vars-permission": "Къорууланнган тюрленнгенлери болгъан журналланы кёрюр ючюн, [[Special:Preferences|джарашдырыуларыгъызда]] разылашыуну къабыл этигиз.",
 	"abusefilter-topnav": "'''Джорукъсуз Хайырланыу Фильтр навигация'''",
 	"abusefilter-topnav-home": "Тамал бет",
 	"abusefilter-topnav-recentchanges": "Кёб болмай фильтр тюрлениуле",

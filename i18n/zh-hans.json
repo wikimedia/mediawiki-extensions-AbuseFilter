@@ -647,7 +647,6 @@
 	"abusefilter-examine-notfound": "未找到您请求的更改。",
 	"abusefilter-examine-incompatible": "滥用过滤器不支持您请求的更改。",
 	"abusefilter-examine-noresults": "您输入的搜索参数未找到任何结果。",
-	"abusefilter-examine-protected-vars-permission": "要查看包含受保护变量的日志，请先接受[[Special:Preferences|您的参数设置]]中的协议。",
 	"abusefilter-topnav": "'''滥用过滤器导航'''",
 	"abusefilter-topnav-home": "首页",
 	"abusefilter-topnav-recentchanges": "最近过滤器更改",

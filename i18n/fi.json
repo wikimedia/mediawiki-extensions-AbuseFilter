@@ -559,7 +559,6 @@
 	"abusefilter-examine-notfound": "Pyytämääsi muutosta ei löytynyt.",
 	"abusefilter-examine-incompatible": "Väärinkäyttösuodatin ei tue pyytämiäsi muutoksia",
 	"abusefilter-examine-noresults": "Antamillasi hakuehdoilla ei löytynyt yhtään tulosta.",
-	"abusefilter-examine-protected-vars-permission": "Katsoaksesi suojattuja muuttujia sisältäviä lokeja sinun on hyväksyttävä sopimus [[Special:Preferences|asetuksissasi]].",
 	"abusefilter-topnav": "'''Väärinkäyttösuodattimen valikko'''",
 	"abusefilter-topnav-home": "Etusivu",
 	"abusefilter-topnav-recentchanges": "Uusimmat muutokset suodattimiin",

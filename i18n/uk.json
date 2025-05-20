@@ -585,7 +585,6 @@
 	"abusefilter-examine-notfound": "Вказану вами зміну не знайдено.",
 	"abusefilter-examine-incompatible": "Фільтр зловживань не підтримує вказану вами зміну",
 	"abusefilter-examine-noresults": "Нічого не знайдено за запитом із заданими параметрами.",
-	"abusefilter-examine-protected-vars-permission": "Щоб переглянути журнали, які містять захищені змінні, погодьтеся з умовами у [[Special:Preferences|ваших налаштуваннях]].",
 	"abusefilter-topnav": "'''Навігація фільтрами зловживань'''",
 	"abusefilter-topnav-home": "Головна",
 	"abusefilter-topnav-recentchanges": "Нові зміни фільтрів",

@@ -565,7 +565,6 @@
 	"abusefilter-examine-notfound": "O cambio que solicitou non puido ser atopado.",
 	"abusefilter-examine-incompatible": "O cambio que solicitou non está soportado polo filtro de abusos",
 	"abusefilter-examine-noresults": "Non se atoparon resultados para os parámetros de procura que facilitou.",
-	"abusefilter-examine-protected-vars-permission": "Para ver os rexistros que conteñen variables protexidas, acepta o acordo [[Special:Preferences|nas túas preferencias]].",
 	"abusefilter-topnav": "'''Navegación do filtro de abusos'''",
 	"abusefilter-topnav-home": "Inicio",
 	"abusefilter-topnav-recentchanges": "Cambios recentes nos filtros",

@@ -579,7 +579,6 @@
 	"abusefilter-examine-notfound": "Endringen du ba om ble ikke funnet.",
 	"abusefilter-examine-incompatible": "Endringen du ba om er ikke støttet av redigeringsfilteret",
 	"abusefilter-examine-noresults": "Fant ingen resultater for søkeparametrene du anga.",
-	"abusefilter-examine-protected-vars-permission": "Godta avtalen i [[Special:Preferences|innstillingene dine]] for å se logger som inneholder beskyttede variabler.",
 	"abusefilter-topnav": "'''Navigasjon for redigeringsfilter'''",
 	"abusefilter-topnav-home": "Hjem",
 	"abusefilter-topnav-recentchanges": "Nylige filterendringer",

@@ -420,7 +420,6 @@
 	"abusefilter-examine-legend": "পরিবর্তন নির্বাচন",
 	"abusefilter-examine-submit": "অনুসন্ধান করুন",
 	"abusefilter-examine-test-button": "ছাঁকনি পরীক্ষা করুন",
-	"abusefilter-examine-protected-vars-permission": "সুরক্ষিত চলক রয়েছে এমন লগগুলি দেখতে, অনুগ্রহ করে [[Special:Preferences|আপনার পছন্দে]] চুক্তিটি গ্রহণ করুন।",
 	"abusefilter-topnav": "'''অপব্যবহার ছাঁকনি পরিভ্রমণ'''",
 	"abusefilter-topnav-home": "প্রধান পাতা",
 	"abusefilter-topnav-recentchanges": "সাম্প্রতিক ছাঁকনি পরিবর্তন",

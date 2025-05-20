@@ -593,7 +593,6 @@
 	"abusefilter-examine-notfound": "تغییری که درخواست کردید پیدا نشد.",
 	"abusefilter-examine-incompatible": "تغییری که درخواست کردید توسط پالایهٔ ویرایش‌ها پشتیبانی نمی‌شود",
 	"abusefilter-examine-noresults": "برای پارامترهای جستجویی که ارائه کردید هیچ نتیجه‌ای یافت نشد.",
-	"abusefilter-examine-protected-vars-permission": "برای مشاهدهٔ سیاهه‌هایی که حاوی متغیرهای محافظت‌شده هستند، لطفاً موافقت‌نامهٔ موجود در [[Special:Preferences|ترجیحات خود]] را پذیرش کنید.",
 	"abusefilter-topnav": "'''ناوبری پالایهٔ ویرایش'''",
 	"abusefilter-topnav-home": "خانه",
 	"abusefilter-topnav-recentchanges": "تغییرات اخیر پالایه‌ها",

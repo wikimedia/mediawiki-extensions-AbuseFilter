@@ -592,7 +592,6 @@
 	"abusefilter-examine-notfound": "Ändringen du efterfrågade kunde inte hittas.",
 	"abusefilter-examine-incompatible": "Ändringen du efterfrågade stöds inte av missbruksfiltret",
 	"abusefilter-examine-noresults": "Inga resultat hittades för de sökparametrar du gav.",
-	"abusefilter-examine-protected-vars-permission": "För att visa loggar som innehåller skyddade variabler, behöver du godkänna avtalet i [[Special:Preferences|dina inställningar]].",
 	"abusefilter-topnav": "'''Navigation'''",
 	"abusefilter-topnav-home": "Huvudsida",
 	"abusefilter-topnav-recentchanges": "Senaste filterändringar",

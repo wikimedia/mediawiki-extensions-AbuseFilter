@@ -607,7 +607,6 @@
 	"abusefilter-examine-notfound": "あなたが要求した変更は見つかりませんでした。",
 	"abusefilter-examine-incompatible": "あなたが要求した変更には不正利用フィルターが対応していません。",
 	"abusefilter-examine-noresults": "指定された検索条件に合致する結果はありませんでした。",
-	"abusefilter-examine-protected-vars-permission": "保護された変数を含む記録を表示するには、[[Special:Preferences|個人設定]]で同意してください。",
 	"abusefilter-topnav": "'''不正利用フィルターのメニュー'''",
 	"abusefilter-topnav-home": "ホーム",
 	"abusefilter-topnav-recentchanges": "フィルターの最近の更新",

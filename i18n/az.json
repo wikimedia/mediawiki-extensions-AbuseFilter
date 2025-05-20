@@ -571,7 +571,6 @@
 	"abusefilter-examine-notfound": "İstədiyiniz dəyişiklik tapılmadı.",
 	"abusefilter-examine-incompatible": "Bu dəyişiklik dəyişiklik süzgəci tərəfindən dəstəklənmir",
 	"abusefilter-examine-noresults": "Təqdim etdiyiniz axtarış parametrləri üçün heç bir nəticə tapılmadı.",
-	"abusefilter-examine-protected-vars-permission": "Mühafizəli dəyişənləri ehtiva edən jurnallara baxmaq üçün [[Special:Preferences|nizamlamalarda]] razılaşmanı qəbul edin.",
 	"abusefilter-topnav": "'''Dəyişiklik süzgəci naviqasiya menyusu'''",
 	"abusefilter-topnav-home": "Əvvələ",
 	"abusefilter-topnav-recentchanges": "Son süzgəc dəyişiklikləri",

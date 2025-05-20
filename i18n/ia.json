@@ -557,7 +557,6 @@
 	"abusefilter-examine-notfound": "Le modification que tu requestava non pote esser trovate.",
 	"abusefilter-examine-incompatible": "Le modification que tu requestava non es supportate per le filtro anti-abuso.",
 	"abusefilter-examine-noresults": "Nulle resultato ha essite trovate pro le parametros de recerca que tu ha fornite.",
-	"abusefilter-examine-protected-vars-permission": "Pro vider registros que contine variabiles protegite, per favor accepta le accordo in [[Special:Preferences|tu preferentias]].",
 	"abusefilter-topnav": "'''Navigation per le filtro anti-abuso'''",
 	"abusefilter-topnav-home": "Initio",
 	"abusefilter-topnav-recentchanges": "Modificationes recente de filtros",

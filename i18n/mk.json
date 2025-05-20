@@ -562,7 +562,6 @@
 	"abusefilter-examine-notfound": "Побараната промена не е пронајдена.",
 	"abusefilter-examine-incompatible": "Промената која ја побаравте не е поддржана од Филтерот за злоупотреби",
 	"abusefilter-examine-noresults": "Не пронајдов ставки за наведените параметри.",
-	"abusefilter-examine-protected-vars-permission": "За да гледате дневници кои содржат заштитени променливи, прифатете ја согласноста во [[Special:Preferences|вашите нагодувања]].",
 	"abusefilter-topnav": "'''Содржини на Филтерот за злоупотреби'''",
 	"abusefilter-topnav-home": "Почеток",
 	"abusefilter-topnav-recentchanges": "Скорешни промени во филтри",

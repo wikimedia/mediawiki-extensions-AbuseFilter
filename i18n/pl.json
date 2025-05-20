@@ -590,7 +590,6 @@
 	"abusefilter-examine-notfound": "Żądana zmiana nie została odnaleziona.",
 	"abusefilter-examine-incompatible": "Żądana zmiana nie jest obsługiwana przez filtr nadużyć",
 	"abusefilter-examine-noresults": "Nie znaleziono wyników dla zadanych przez Ciebie parametrów wyszukiwania.",
-	"abusefilter-examine-protected-vars-permission": "Aby wyświetlać rejestry, zawierające chronione zmienne, wyraź odpowiednią zgodę w [[Special:Preferences|preferencjach]].",
 	"abusefilter-topnav": "'''Nawigacja po filtrze nadużyć'''",
 	"abusefilter-topnav-home": "Główna",
 	"abusefilter-topnav-recentchanges": "Ostatnie zmiany filtrów",
