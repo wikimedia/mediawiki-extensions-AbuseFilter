@@ -269,7 +269,6 @@
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
 	"AutoloadClasses": {
-		"AbuseFilterVariableHolder": "includes/Variables/VariableHolder.php",
 		"MediaWiki\\Extension\\AbuseFilter\\Variables\\VariableHolder": "includes/Variables/VariableHolder.php"
 	},
 	"AutoloadNamespaces": {
