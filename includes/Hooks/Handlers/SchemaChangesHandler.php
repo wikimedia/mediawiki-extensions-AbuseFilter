@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\Maintenance\MigrateActorsAF;
-use MediaWiki\Extension\AbuseFilter\Maintenance\UpdateVarDumps;
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
@@ -201,8 +200,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 		] );
 
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
-		// 1.35
-		$updater->addPostDatabaseUpdateMaintenance( UpdateVarDumps::class );
 	}
 
 	/**
