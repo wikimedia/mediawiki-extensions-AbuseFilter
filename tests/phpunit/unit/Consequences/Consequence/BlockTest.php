@@ -64,7 +64,7 @@ class BlockTest extends MediaWikiUnitTestCase {
 	 */
 	public function testExecute( UserIdentity $target, bool $result ) {
 		$expiry = '1 day';
-		$params = $this->provideGetMessageParameters( $target )->current()[0];
+		$params = $this->getLocalFilterParams( $target );
 		$blockUser = $this->createMock( BlockUser::class );
 		$blockUser->expects( $this->once() )
 			->method( 'placeBlockUnsafe' )
@@ -98,7 +98,8 @@ class BlockTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideGetMessageParameters
 	 */
-	public function testGetMessage( Parameters $params ) {
+	public function testGetMessage( callable $params ) {
+		$params = $params( $this );
 		$block = new Block(
 			$params,
 			'0',
