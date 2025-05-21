@@ -17,9 +17,7 @@ use MediaWikiUnitTestCase;
  * @covers \MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger
  */
 class ChangeTaggerTest extends MediaWikiUnitTestCase {
-	/**
-	 * @return ChangeTagger
-	 */
+
 	private function getTagger(): ChangeTagger {
 		$manager = $this->createMock( ChangeTagsManager::class );
 		$manager->method( 'getCondsLimitTag' )->willReturn( 'tag' );
@@ -43,9 +41,6 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 		return [ $actionSpecifier, $rc ];
 	}
 
-	/**
-	 * @return Generator
-	 */
 	public static function provideActionData(): Generator {
 		$titleText = 'FOO';
 		$title = new TitleValue( NS_MAIN, $titleText );

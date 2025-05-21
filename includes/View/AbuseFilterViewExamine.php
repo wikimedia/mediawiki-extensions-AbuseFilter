@@ -370,9 +370,6 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->showExaminer( $vars );
 	}
 
-	/**
-	 * @param VariableHolder $vars
-	 */
 	public function showExaminer( VariableHolder $vars ) {
 		$output = $this->getOutput();
 		$output->enableOOUI();

@@ -42,9 +42,6 @@ class VariableGenerator {
 		$this->vars = $vars ?? new VariableHolder();
 	}
 
-	/**
-	 * @return VariableHolder
-	 */
 	public function getVariableHolder(): VariableHolder {
 		return $this->vars;
 	}

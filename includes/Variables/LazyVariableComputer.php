@@ -582,10 +582,6 @@ class LazyVariableComputer {
 		return $revision;
 	}
 
-	/**
-	 * @param ?RevisionRecord $revision
-	 * @return string
-	 */
 	private function getContentModelFromRevision( ?RevisionRecord $revision ): string {
 		// this is consistent with what is done on various places in RunVariableGenerator
 		// and RCVariableGenerator

@@ -251,9 +251,6 @@ class FilterEvaluator {
 		}
 	}
 
-	/**
-	 * @param VariableHolder $vars
-	 */
 	public function setVariables( VariableHolder $vars ) {
 		$this->mVariables = $vars;
 	}
@@ -427,10 +424,6 @@ class FilterEvaluator {
 		);
 	}
 
-	/**
-	 * @param AFPSyntaxTree $tree
-	 * @return AFPData
-	 */
 	private function evalTree( AFPSyntaxTree $tree ): AFPData {
 		$startTime = microtime( true );
 		$root = $tree->getRoot();
@@ -1540,8 +1533,6 @@ class FilterEvaluator {
 	 * Given a node that we don't need to evaluate, decide what to do with it.
 	 * The nodes passed in will usually be discarded by short-circuit
 	 * evaluation. If we don't allow it, we fully evaluate the node.
-	 *
-	 * @param AFPTreeNode $node
 	 */
 	private function maybeDiscardNode( AFPTreeNode $node ) {
 		if ( !$this->mAllowShort ) {

@@ -1318,9 +1318,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return [ $newFilter, $origFilter ];
 	}
 
-	/**
-	 * @return Filter|null
-	 */
 	private function loadImportRequest(): ?Filter {
 		$request = $this->getRequest();
 		if ( !$request->wasPosted() ) {

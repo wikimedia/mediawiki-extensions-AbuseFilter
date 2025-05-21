@@ -112,9 +112,6 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		$this->assertEquals( $expected, $filterLookup->getFilterVersion( $version ) );
 	}
 
-	/**
-	 * @return Generator
-	 */
 	public static function provideFilterVersions(): Generator {
 		$version = 163;
 		$filters = [

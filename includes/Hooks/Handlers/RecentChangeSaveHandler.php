@@ -10,9 +10,6 @@ class RecentChangeSaveHandler implements RecentChange_saveHook {
 	/** @var ChangeTagger */
 	private $changeTagger;
 
-	/**
-	 * @param ChangeTagger $changeTagger
-	 */
 	public function __construct( ChangeTagger $changeTagger ) {
 		$this->changeTagger = $changeTagger;
 	}

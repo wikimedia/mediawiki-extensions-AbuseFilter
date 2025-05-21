@@ -64,9 +64,6 @@ class RCVariableGenerator extends VariableGenerator {
 		$this->contextUser = $contextUser;
 	}
 
-	/**
-	 * @return VariableHolder|null
-	 */
 	public function getVars(): ?VariableHolder {
 		if ( $this->rc->getAttribute( 'rc_source' ) === RecentChange::SRC_LOG ) {
 			switch ( $this->rc->getAttribute( 'rc_log_type' ) ) {

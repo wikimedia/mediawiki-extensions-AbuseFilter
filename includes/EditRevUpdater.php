@@ -52,8 +52,6 @@ class EditRevUpdater {
 
 	/**
 	 * Set the WikiPage object used for the ongoing edit
-	 *
-	 * @param WikiPage $page
 	 */
 	public function setLastEditPage( WikiPage $page ): void {
 		$this->wikiPage = $page;
@@ -130,10 +128,6 @@ class EditRevUpdater {
 		return $ret;
 	}
 
-	/**
-	 * @param LinkTarget $target
-	 * @return string
-	 */
 	private function getCacheKey( LinkTarget $target ): string {
 		return $target->getNamespace() . '|' . $target->getText();
 	}

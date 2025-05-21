@@ -16,9 +16,6 @@ class FilterCompare {
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
-	/**
-	 * @param ConsequencesRegistry $consequencesRegistry
-	 */
 	public function __construct( ConsequencesRegistry $consequencesRegistry ) {
 		$this->consequencesRegistry = $consequencesRegistry;
 	}

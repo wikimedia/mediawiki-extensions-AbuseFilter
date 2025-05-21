@@ -85,8 +85,6 @@ class VariableHolder {
 
 	/**
 	 * Merge any number of holders given as arguments into this holder.
-	 *
-	 * @param VariableHolder ...$holders
 	 */
 	public function addHolders( self ...$holders ): void {
 		foreach ( $holders as $addHolder ) {
@@ -94,17 +92,10 @@ class VariableHolder {
 		}
 	}
 
-	/**
-	 * @param string $var
-	 * @return bool
-	 */
 	public function varIsSet( string $var ): bool {
 		return array_key_exists( $var, $this->mVars );
 	}
 
-	/**
-	 * @param string $varName
-	 */
 	public function removeVar( string $varName ): void {
 		unset( $this->mVars[$varName] );
 	}

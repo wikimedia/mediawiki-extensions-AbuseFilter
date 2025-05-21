@@ -129,10 +129,6 @@ class FilterValidator {
 		return Status::newGood();
 	}
 
-	/**
-	 * @param AbstractFilter $filter
-	 * @return Status
-	 */
 	public function checkValidSyntax( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
@@ -147,10 +143,6 @@ class FilterValidator {
 		return $ret;
 	}
 
-	/**
-	 * @param AbstractFilter $filter
-	 * @return Status
-	 */
 	public function checkRequiredFields( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$missing = [];
@@ -169,10 +161,6 @@ class FilterValidator {
 		return $ret;
 	}
 
-	/**
-	 * @param AbstractFilter $filter
-	 * @return Status
-	 */
 	public function checkConflictingFields( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		// Don't allow setting as deleted an active filter
@@ -309,10 +297,6 @@ class FilterValidator {
 		return Status::newGood();
 	}
 
-	/**
-	 * @param AbstractFilter $filter
-	 * @return Status
-	 */
 	public function checkMessagesOnGlobalFilters( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$actions = $filter->getActions();
@@ -399,10 +383,6 @@ class FilterValidator {
 		return $ret;
 	}
 
-	/**
-	 * @param AbstractFilter $filter
-	 * @return Status
-	 */
 	public function checkGroup( AbstractFilter $filter ): Status {
 		$ret = Status::newGood();
 		$group = $filter->getGroup();

@@ -299,8 +299,6 @@ class FilterRunner {
 
 	/**
 	 * Run all filters and return information about matches and profiling
-	 *
-	 * @return RunnerData
 	 */
 	private function checkAllFiltersInternal(): RunnerData {
 		// Ensure there's no extra time leftover
@@ -356,9 +354,6 @@ class FilterRunner {
 		return [ $status, $timeTaken ];
 	}
 
-	/**
-	 * @param RunnerData $data
-	 */
 	private function profileExecution( RunnerData $data ) {
 		$allFilters = $data->getAllFilters();
 		$matchedFilters = $data->getMatchedFilters();

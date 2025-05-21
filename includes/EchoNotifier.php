@@ -38,18 +38,10 @@ class EchoNotifier {
 		$this->isEchoLoaded = $isEchoLoaded;
 	}
 
-	/**
-	 * @param int $filter
-	 * @return Title
-	 */
 	private function getTitleForFilter( int $filter ): Title {
 		return SpecialAbuseFilter::getTitleForSubpage( (string)$filter );
 	}
 
-	/**
-	 * @param int $filter
-	 * @return ExistingFilter
-	 */
 	private function getFilterObject( int $filter ): ExistingFilter {
 		return $this->filterLookup->getFilter( $filter, false );
 	}

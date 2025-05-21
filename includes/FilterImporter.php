@@ -45,10 +45,6 @@ class FilterImporter {
 	/** @var ConsequencesRegistry */
 	private $consequencesRegistry;
 
-	/**
-	 * @param ServiceOptions $options
-	 * @param ConsequencesRegistry $consequencesRegistry
-	 */
 	public function __construct( ServiceOptions $options, ConsequencesRegistry $consequencesRegistry ) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
