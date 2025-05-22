@@ -351,6 +351,16 @@
 		}
 	},
 	"attributes": {
+		"Echo": {
+			"Notifications": {
+				"throttled-filter": {
+					"category": "system",
+					"section": "alert",
+					"group": "negative",
+					"presentation-model": "MediaWiki\\Extension\\AbuseFilter\\ThrottleFilterPresentationModel"
+				}
+			}
+		},
 		"VisualEditor": {
 			"PluginModules": [
 				"ext.abuseFilter.visualEditor"
@@ -424,9 +434,6 @@
 		"ConfirmEdit": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ConfirmEditHandler"
 		},
-		"Echo": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler"
-		},
 		"UserMerge": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler"
 		}
@@ -454,7 +461,6 @@
 		"CheckUserInsertPrivateEventRow": "CheckUser",
 		"CheckUserInsertLogEventRow": "CheckUser",
 		"UserMergeAccountFields": "UserMerge",
-		"BeforeCreateEchoEvent": "Echo",
 		"ParserOutputStashForEdit": "FilteredActions",
 		"JsonValidateSave": "EditPermission"
 	},
