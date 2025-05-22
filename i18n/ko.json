@@ -247,7 +247,7 @@
 	"abusefilter-edit-rules": "필터 규칙:",
 	"abusefilter-edit-field-conditions": "조건",
 	"abusefilter-edit-notes": "참고:",
-	"abusefilter-edit-lastmod": "필터가 마지막으로 수정된 시각",
+	"abusefilter-edit-lastmod": "필터가 마지막으로 수정된 시각:",
 	"abusefilter-edit-lastmod-text": "$1에 $2님이 바꿈",
 	"abusefilter-edit-hitcount": "필터 동작 횟수:",
 	"abusefilter-edit-consequences": "일치할 때 취할 조치",
