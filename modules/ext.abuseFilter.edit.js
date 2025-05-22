@@ -210,10 +210,10 @@
 	 * that don't have checked boxes
 	 */
 	function hideDeselectedActions() {
-		$( '.mw-abusefilter-action-checkbox input' ).each( () => {
+		$( '.mw-abusefilter-action-checkbox input' ).each( ( i, element ) => {
 			// mw-abusefilter-action-checkbox-{$action}
-			const action = this.parentNode.id.slice( 31 );
-			$( '#mw-abusefilter-' + action + '-parameters' ).toggle( this.checked );
+			const action = element.parentNode.id.slice( 31 );
+			$( '#mw-abusefilter-' + action + '-parameters' ).toggle( element.checked );
 		} );
 	}
 
