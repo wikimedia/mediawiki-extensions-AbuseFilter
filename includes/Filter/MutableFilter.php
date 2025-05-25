@@ -88,6 +88,10 @@ class MutableFilter extends Filter {
 		$this->flags->setDeleted( $deleted );
 	}
 
+	public function setSuppressed( bool $suppressed ): void {
+		$this->flags->setSuppressed( $suppressed );
+	}
+
 	public function setHidden( bool $hidden ): void {
 		$this->flags->setHidden( $hidden );
 	}

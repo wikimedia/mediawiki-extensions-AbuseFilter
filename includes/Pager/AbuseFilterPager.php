@@ -239,6 +239,9 @@ class AbuseFilterPager extends TablePager {
 				return $lang->commaList( $statuses );
 			case 'af_hidden':
 				$flagMsgs = [];
+				if ( FilterUtils::isSuppressed( (int)$value ) ) {
+					$flagMsgs[] = $this->msg( 'abusefilter-suppressed' )->parse();
+				}
 				if ( FilterUtils::isHidden( (int)$value ) ) {
 					$flagMsgs[] = $this->msg( 'abusefilter-hidden' )->parse();
 				}

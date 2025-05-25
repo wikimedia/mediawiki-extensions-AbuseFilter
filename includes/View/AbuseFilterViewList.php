@@ -85,6 +85,9 @@ class AbuseFilterViewList extends AbuseFilterView {
 		if ( $request->getBool( 'hideprivate' ) ) {
 			$furtherOptions[] = 'hideprivate';
 		}
+		if ( $request->getBool( 'hidesuppressed' ) ) {
+			$furtherOptions[] = 'hidesuppressed';
+		}
 		$defaultscope = 'all';
 		if ( $config->get( 'AbuseFilterCentralDB' ) !== null
 				&& !$config->get( 'AbuseFilterIsCentral' ) ) {
@@ -123,8 +126,25 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_deleted'] = 0;
 			$conds['af_enabled'] = 1;
 		}
-		if ( in_array( 'hideprivate', $furtherOptions ) ) {
-			$conds['af_hidden'] = Flags::FILTER_PUBLIC;
+
+		$hidePrivate = in_array( 'hideprivate', $furtherOptions );
+		$hideSuppressed = in_array( 'hidesuppressed', $furtherOptions );
+
+		// Don't show private filters if they've been requested to be hidden
+		if ( $hidePrivate ) {
+			$dbr = $this->dbProvider->getReplicaDatabase();
+			$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0';
+		}
+
+		// Don't show suppressed filters if they've been requested to be hidden
+		// or if we're searching with a query pattern and the user cannot view supressed filters
+		// (this would leak the rules of the filter if permitted).
+		if (
+			( $querypattern !== null && !$this->afPermManager->canViewSuppressed( $performer ) )
+			|| $hideSuppressed
+		) {
+			$dbr = $this->dbProvider->getReplicaDatabase();
+			$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_SUPPRESSED ) . ' = 0';
 		}
 
 		if ( $scope === 'local' ) {
@@ -268,6 +288,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 			'label-message' => 'abusefilter-list-options-further-options',
 			'flatlist' => true,
 			'options' => [
+				$this->msg( 'abusefilter-list-options-hidesuppressed' )->parse() => 'hidesuppressed',
 				$this->msg( 'abusefilter-list-options-hideprivate' )->parse() => 'hideprivate',
 				$this->msg( 'abusefilter-list-options-hidedisabled' )->parse() => 'hidedisabled',
 			],

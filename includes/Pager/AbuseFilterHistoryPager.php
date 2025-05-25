@@ -32,7 +32,8 @@ class AbuseFilterHistoryPager extends TablePager {
 		private readonly AbuseFilterPermissionManager $afPermManager,
 		private readonly ?int $filter,
 		private readonly ?string $user,
-		private readonly bool $canViewPrivateFilters = false
+		private readonly bool $canViewPrivateFilters = false,
+		private readonly bool $canViewSuppressedFilters = false
 	) {
 		parent::__construct( $context, $linkRenderer );
 		$this->mDefaultDirection = true;
@@ -134,6 +135,7 @@ class AbuseFilterHistoryPager extends TablePager {
 					$filter = $this->filterLookup->filterFromHistoryRow( $row );
 					$userCanSeeFilterDiff = true;
 
+					// Protected variables permission check
 					if ( $filter->isProtected() ) {
 						$userCanSeeFilterDiff = $this->afPermManager
 							->canViewProtectedVariablesInFilter( $this->getAuthority(), $filter )
@@ -146,8 +148,17 @@ class AbuseFilterHistoryPager extends TablePager {
 							->isGood();
 					}
 
+					// Private filter visibility check
 					if ( !$this->canViewPrivateFilters && $userCanSeeFilterDiff ) {
 						$userCanSeeFilterDiff = !$filter->isHidden() && !$prevFilter->isHidden();
+					}
+
+					// Suppressed filter visibility check
+					if ( $userCanSeeFilterDiff && !$this->canViewSuppressedFilters ) {
+						// Use the filters' own suppressed state rather than parsing flags again
+						if ( $filter->isSuppressed() || $prevFilter->isSuppressed() ) {
+							$userCanSeeFilterDiff = false;
+						}
 					}
 
 					if ( $userCanSeeFilterDiff ) {
@@ -183,8 +194,11 @@ class AbuseFilterHistoryPager extends TablePager {
 			$queryBuilder->andWhere( [ 'afh_filter' => $this->filter ] );
 		}
 
+		// Hide data the user can't see.
+		if ( !$this->canViewSuppressedFilters ) {
+			$queryBuilder->andWhere( $this->mDb->bitAnd( 'af_hidden', Flags::FILTER_SUPPRESSED ) . ' = 0' );
+		}
 		if ( !$this->canViewPrivateFilters ) {
-			// Hide data the user can't see.
 			$queryBuilder->andWhere( $this->mDb->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0' );
 		}
 

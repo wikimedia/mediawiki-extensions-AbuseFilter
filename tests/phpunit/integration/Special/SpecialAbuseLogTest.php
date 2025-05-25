@@ -119,8 +119,8 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	}
 
 	public static function provideEntryAndVisibility(): Generator {
-		$visibleRow = (object)[ 'afl_rev_id' => 1, 'afl_deleted' => 0 ];
-		$hiddenRow = (object)[ 'afl_rev_id' => 1, 'afl_deleted' => 1 ];
+		$visibleRow = (object)[ 'afl_rev_id' => 1, 'afl_deleted' => 0, 'afl_filter_id' => 1, 'afl_global' => 0 ];
+		$hiddenRow = (object)[ 'afl_rev_id' => 1, 'afl_deleted' => 1, 'afl_filter_id' => 1, 'afl_global' => 0 ];
 		$page = new PageIdentityValue( 1, NS_MAIN, 'Foo', PageIdentityValue::LOCAL );
 		$visibleRev = new MutableRevisionRecord( $page );
 
@@ -337,6 +337,99 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			'1', null, null, $this->authorityCannotUseProtectedVar
 		);
 		$this->assertStringContainsString( '(abusefilter-log-cannot-see-details', $html );
+	}
+
+	public function testShowDetailsWhenFilterSuppressed() {
+		// Create authority that can save suppressed filters
+		$authorityCanSuppressFilters = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[
+				'abusefilter-modify',
+				'abusefilter-modify-restricted',
+				'viewsuppressed',
+				'suppressrevision',
+				'abusefilter-log-detail',
+				'abusefilter-log',
+				'abusefilter-view',
+			]
+		);
+
+		$filterSpecsForSuppressed = $this->getFilterFromSpecs( [
+			// Use an ID not present in addDBDataOnce() to avoid colliding with fixture filters
+			'id' => 3,
+			'rules' => 'action = "edit"',
+			'privacy' => Flags::FILTER_SUPPRESSED,
+			'actions' => [ 'log' ],
+			'enabled' => true,
+			'deleted' => false,
+			'global' => false,
+		] );
+
+		$saveStatus = AbuseFilterServices::getFilterStore()->saveFilter(
+			$authorityCanSuppressFilters,
+			null,
+			$filterSpecsForSuppressed,
+			MutableFilter::newDefault( 'Creating test suppressed filter for SpecialAbuseLogTest' )
+		);
+		$this->assertStatusGood( $saveStatus, 'Failed to save the new suppressed filter.' );
+
+		$filterSaveResult = $saveStatus->getValue();
+		$this->assertIsArray( $filterSaveResult, 'Save status value should be an array.' );
+		$filterIdForThisTest = $filterSaveResult[0];
+		$this->assertIsNumeric( $filterIdForThisTest, 'New filter ID must be numeric.' );
+
+		RequestContext::getMain()->getRequest()->setIP( '0.1.0.1' );
+		$logPerformer = $this->getTestUser();
+
+		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
+		$logger = $abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$logPerformer->getUser(),
+			VariableHolder::newFromArray( [
+				'action' => 'edit',
+				'user_name' => $logPerformer->getUser()->getName(),
+			] )
+		);
+
+		$logger->addLogEntries( [ (int)$filterIdForThisTest => [] ] );
+
+		$dbw = $this->getDb();
+		$logRow = $dbw->newSelectQueryBuilder()
+			->select( 'afl_id' )
+			->from( 'abuse_filter_log' )
+			->where( [ 'afl_filter_id' => (int)$filterIdForThisTest ] )
+			->orderBy( 'afl_id', 'DESC' )
+			->limit( 1 )
+			->caller( __METHOD__ )
+			->fetchRow();
+		$this->assertNotNull( $logRow, 'Expected a log row for suppressed filter.' );
+		$logId = (int)$logRow->afl_id;
+
+		[ $html ] = $this->executeSpecialPage(
+			(string)$logId,
+			null,
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+
+		$this->assertStringContainsString( '(abusefilter-log-cannot-see-details', $html );
+
+		// Clean up: remove the log entry and filter so subsequent tests relying on fixed counts aren't affected
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'abuse_filter_log' )
+			->where( [ 'afl_id' => $logId ] )
+			->caller( __METHOD__ )
+			->execute();
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'abuse_filter_action' )
+			->where( [ 'afa_filter' => (int)$filterIdForThisTest ] )
+			->caller( __METHOD__ )
+			->execute();
+		$dbw->newDeleteQueryBuilder()
+			->delete( 'abuse_filter' )
+			->where( [ 'af_id' => (int)$filterIdForThisTest ] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 
 	public function testShowDetailsWhenUserLacksAccessToProtectedVariableValues() {

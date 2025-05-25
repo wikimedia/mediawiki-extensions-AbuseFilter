@@ -235,6 +235,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$history_id
 		)->parse() );
 
+		// Filters that are suppressed should always be hidden from public view
+		if (
+			( $filterObj->isSuppressed() || (
+				$filter !== null && $this->filterLookup->getFilter( $filter, false )->isSuppressed() )
+			) && !$this->afPermManager->canViewSuppressed( $authority )
+		) {
+			$out->addHTML( $this->msg( 'abusefilter-edit-denied-suppressed' )->escaped() );
+			return;
+		}
+
 		// Grab the current hidden flag from the DB, in case we're editing an older, public revision of a filter that is
 		// currently hidden, so that we can also hide that public revision.
 		if (
@@ -404,7 +414,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			] );
 
 		// Build checkboxes
-		$checkboxes = [ 'hidden', 'enabled', 'deleted' ];
+		$checkboxes = [ 'suppressed', 'hidden', 'enabled', 'deleted' ];
 		$flags = '';
 
 		// Show the 'protected' check box either to indicate that the filter is protected, or
@@ -450,13 +460,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Messages that can be used here:
 			// * abusefilter-edit-enabled
 			// * abusefilter-edit-deleted
+			// * abusefitler-edit-suppressed
 			// * abusefilter-edit-hidden
 			// * abusefilter-edit-protected
 			// * abusefilter-edit-global
 			$message = "abusefilter-edit-$checkboxId";
 			// isEnabled(), isDeleted(), isHidden(), isProtected(), isGlobal()
 			$method = 'is' . ucfirst( $checkboxId );
-			// wpFilterEnabled, wpFilterDeleted, wpFilterHidden, wpFilterProtected, wpFilterGlobal
+			// wpFilterEnabled, wpFilterDeleted, wpFilterSuppressed, wpFilterHidden, wpFilterProtected, wpFilterGlobal
 			$postVar = 'wpFilter' . ucfirst( $checkboxId );
 
 			$checkboxAttribs = [
@@ -471,6 +482,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			];
 
 			if ( $checkboxId === 'global' && !$this->afPermManager->canEditGlobal( $authority ) ) {
+				$checkboxAttribs['disabled'] = 'disabled';
+			}
+
+			if ( $checkboxId === 'suppressed' && !$this->afPermManager->canSuppress( $authority ) ) {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
@@ -1273,6 +1288,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$newFilter->setDeleted( $request->getCheck( 'wpFilterDeleted' ) );
 		$newFilter->setEnabled( $request->getCheck( 'wpFilterEnabled' ) );
+		$newFilter->setSuppressed( $request->getCheck( 'wpFilterSuppressed' ) );
 		$newFilter->setHidden( $request->getCheck( 'wpFilterHidden' ) );
 		$newFilter->setProtected( $request->getCheck( 'wpFilterProtected' )
 			|| $origFilter->isProtected() );

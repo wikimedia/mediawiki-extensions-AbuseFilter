@@ -44,6 +44,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 		$out = $this->getOutput();
 		$out->enableOOUI();
 		$filter = $this->getRequest()->getIntOrNull( 'filter' ) ?: $this->filter;
+		$canViewSuppressed = $this->afPermManager->canViewSuppressed( $this->getAuthority() );
 		$canViewPrivate = $this->afPermManager->canViewPrivateFilters( $this->getAuthority() );
 
 		if ( $filter ) {
@@ -52,6 +53,10 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 				$filterObj = $this->filterLookup->getFilter( $filter, false );
 			} catch ( FilterNotFoundException $_ ) {
 				$filter = null;
+			}
+			if ( $filterObj && $filterObj->isSuppressed() && !$canViewSuppressed ) {
+				$out->addWikiMsg( 'abusefilter-history-error-suppressed' );
+				return;
 			}
 			if ( $filterObj && $filterObj->isHidden() && !$canViewPrivate ) {
 				$out->addWikiMsg( 'abusefilter-history-error-hidden' );
@@ -163,7 +168,8 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$this->afPermManager,
 			$filter,
 			$user,
-			$canViewPrivate
+			$canViewPrivate,
+			$canViewSuppressed
 		);
 
 		$out->addParserOutputContent(

@@ -151,6 +151,16 @@ class AbuseLogPager extends ReverseChronologicalPager {
 			$filterObj = MutableFilter::newDefault();
 			$filterObj->setProtected( true );
 			$filterObj->setHidden( true );
+			$filterObj->setSuppressed( true );
+		}
+
+		// If the filter is suppressed, strike through the filter description to indicate this
+		if ( $filterObj->isSuppressed() ) {
+			$escaped_comments = Html::rawElement(
+				'span',
+				[ 'class' => 'mw-abusefilter-log-suppressed-entry' ],
+				$escaped_comments
+			);
 		}
 
 		// Determine if the user has access to the associated filter and also the details of the current log

@@ -132,6 +132,13 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			return false;
 		}
 
+		if ( !$this->afPermManager->canViewSuppressed( $this->getAuthority() ) &&
+			( $this->oldVersion->isSuppressed() || $this->newVersion->isSuppressed() )
+		) {
+			$this->getOutput()->addWikiMsg( 'abusefilter-history-error-suppressed' );
+			return false;
+		}
+
 		if ( !$this->afPermManager->canViewPrivateFilters( $this->getAuthority() ) &&
 			( $this->oldVersion->isHidden() || $this->newVersion->isHidden() )
 		) {

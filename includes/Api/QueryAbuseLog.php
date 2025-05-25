@@ -96,6 +96,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		}
 
 		$canViewPrivate = $this->afPermManager->canViewPrivateFiltersLogs( $performer );
+		$canViewSuppressed = $this->afPermManager->canViewSuppressed( $performer );
 
 		// Map of [ [ id, global ], ... ]
 		$searchFilters = [];
@@ -122,11 +123,13 @@ class QueryAbuseLog extends ApiQueryBase {
 					$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 					$usedVariables = $ruleChecker->getUsedVars( $filter->getRules() );
 				} catch ( CentralDBNotAvailableException $_ ) {
-					// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow.
+					// Conservatively assume that it's suppressed, hidden and protected,
+					// like in AbuseLogPager::doFormatRow.
 					// Also assume that the filter contains all protected variables for the same reasons.
 					$filter = MutableFilter::newDefault();
 					$filter->setHidden( true );
 					$filter->setProtected( true );
+					$filter->setSuppressed( true );
 					$usedVariables = $this->afPermManager->getProtectedVariables();
 				} catch ( FilterNotFoundException $_ ) {
 					// If no filter is found, assume it has no restrictions (is public and uses no protected
@@ -134,6 +137,12 @@ class QueryAbuseLog extends ApiQueryBase {
 					$filter = MutableFilter::newDefault();
 					$usedVariables = [];
 					$foundInvalid = true;
+				}
+
+				if ( !$canViewSuppressed && $filter->isSuppressed() ) {
+					$this->dieWithError(
+						[ 'apierror-permissiondenied', $this->msg( 'action-abusefilter-log-suppressed' ) ]
+					);
 				}
 
 				if ( !$canViewPrivate && $filter->isHidden() ) {

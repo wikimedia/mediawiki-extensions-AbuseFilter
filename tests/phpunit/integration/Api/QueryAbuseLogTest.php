@@ -12,10 +12,12 @@ use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 use Wikimedia\IPUtils;
 
 /**
@@ -186,6 +188,73 @@ class QueryAbuseLogTest extends ApiTestCase {
 			->assertFieldValue( 1 );
 	}
 
+	public function testSuppressedLogEntryAccessDenied() {
+		// Data for suppressed filter 2 and its log is created in addDBDataOnce
+
+		// Create an authority WITHOUT the 'viewsuppressed' right.
+		$user = new UserIdentityValue( 2, 'User2' );
+		$authorityWithoutSuppressed = new SimpleAuthority(
+			$user,
+			[
+				// Notice: 'viewsuppressed' is intentionally omitted.
+				'abusefilter-log-detail',
+				'abusefilter-view',
+				'abusefilter-log',
+				'abusefilter-privatedetails',
+				'abusefilter-view-private',
+				'abusefilter-log-private',
+				'abusefilter-hidden-log',
+				'abusefilter-hide-log',
+				'abusefilter-access-protected-vars'
+			]
+		);
+
+		// Query the abuse log. We expect an error because the suppressed filter should not be accessible.
+		$this->expectApiErrorCode( 'permissiondenied' );
+		$this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'abuselog',
+			'aflprop' => 'details',
+			'afldir' => 'older',
+			'aflfilter' => '2',
+		], null, null, $authorityWithoutSuppressed );
+	}
+
+	public function testSuppressedLogEntryVisible() {
+		// Data for suppressed filter 2 and its log is created in addDBDataOnce
+
+		// This test is identical to ::testSuppressedLogEntryAccessDenied one, except that
+		// here we create an authority WITH the 'viewsuppressed' right, thus also asserting
+		// that the missing permission causing the failure in that test was `viewsuppressed`.
+		$user = new UserIdentityValue( 3, 'User3' );
+		$authorityWithSuppressed = new SimpleAuthority(
+			$user,
+			[
+				'abusefilter-log-detail',
+				'abusefilter-view',
+				'abusefilter-log',
+				'abusefilter-privatedetails',
+				'abusefilter-view-private',
+				'abusefilter-log-private',
+				'abusefilter-hidden-log',
+				'abusefilter-hide-log',
+				'abusefilter-access-protected-vars',
+				'viewsuppressed'
+			]
+		);
+
+		$result = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'abuselog',
+			'aflprop' => 'details',
+			'afldir' => 'older',
+			'aflfilter' => '2',
+		], null, null, $authorityWithSuppressed );
+
+		// Assert that we can see the log entry for the suppressed filter.
+		$this->assertSame( 'edit', $result[0]['query']['abuselog'][0]['details']['action'] );
+	}
+
 	public function testExecuteWhenRequestingFilterName() {
 		[ $result ] = $this->doApiRequest(
 			[
@@ -259,5 +328,27 @@ class QueryAbuseLogTest extends ApiTestCase {
 			->caller( __METHOD__ )->execute();
 
 		self::$userIdentity = $user;
+
+		// Create suppressed filter #2
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$authority, null,
+			$this->getFilterFromSpecs( [
+				'id' => '2',
+				'rules' => '1 == 1',
+				'name' => 'Suppressed Filter',
+				'privacy' => Flags::FILTER_SUPPRESSED,
+				'lastEditor' => $performer,
+				'lastEditTimestamp' => $this->getDb()->timestamp( '20200101000000' ),
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		// Insert a log entry for filter #2
+		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
+		$abuseFilterLoggerFactory->newLogger(
+			$this->getExistingTestPage()->getTitle(),
+			$this->getTestUser()->getUser(),
+			VariableHolder::newFromArray( [ 'action' => 'edit' ] )
+		)->addLogEntries( [ 2 => [ 'warn' ] ] );
 	}
 }

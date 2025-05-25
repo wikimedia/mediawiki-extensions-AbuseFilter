@@ -87,6 +87,26 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
+	 * Can the user view a suppressed filter or log entry?
+	 *
+	 * @param Authority $performer
+	 * @return bool
+	 */
+	public function canViewSuppressed( Authority $performer ): bool {
+		return $performer->isAllowed( 'viewsuppressed' );
+	}
+
+	/**
+	 * Can the user suppress a filter or log entry?
+	 *
+	 * @param Authority $performer
+	 * @return bool
+	 */
+	public function canSuppress( Authority $performer ): bool {
+		return $performer->isAllowed( 'suppressrevision' );
+	}
+
+	/**
 	 * Whether the given user can see all of the protected variables used in the given filter.
 	 *
 	 * @param Authority $performer
@@ -280,6 +300,10 @@ class AbuseFilterPermissionManager {
 	 */
 	public function canSeeLogDetailsForFilter( Authority $performer, AbstractFilter $filter ): bool {
 		if ( !$this->canSeeLogDetails( $performer ) ) {
+			return false;
+		}
+
+		if ( $filter->isSuppressed() && !$this->canViewSuppressed( $performer ) ) {
 			return false;
 		}
 

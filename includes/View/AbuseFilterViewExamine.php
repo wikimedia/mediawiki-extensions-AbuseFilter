@@ -264,10 +264,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		try {
 			$filter = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global );
 		} catch ( CentralDBNotAvailableException $_ ) {
-			// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow
+			// Conservatively assume that it's hidden and protected and suppressed, like in AbuseLogPager::doFormatRow
 			$filter = MutableFilter::newDefault();
 			$filter->setProtected( true );
 			$filter->setHidden( true );
+			$filter->setSuppressed( true );
 		}
 		if ( !$this->afPermManager->canSeeLogDetailsForFilter( $performer, $filter ) ) {
 			$out->addWikiMsg( 'abusefilter-log-cannot-see-details' );
@@ -280,6 +281,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 				$msg = 'abusefilter-log-details-hidden';
 			} elseif ( $visibility === SpecialAbuseLog::VISIBILITY_HIDDEN_IMPLICIT ) {
 				$msg = 'abusefilter-log-details-hidden-implicit';
+			} elseif ( $visibility === SpecialAbuseLog::VISIBILITY_SUPPRESSED ) {
+				$msg = 'abusefilter-log-details-suppressed';
 			} else {
 				throw new LogicException( "Unexpected visibility $visibility" );
 			}

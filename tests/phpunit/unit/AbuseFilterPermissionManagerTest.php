@@ -182,6 +182,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$details = [ 0 => 'abusefilter-log-detail' ];
 		$private = [ 1 => 'abusefilter-log-private' ];
 		$protected = [ 2 => 'abusefilter-access-protected-vars' ];
+		$suppressed = [ 3 => 'viewsuppressed' ];
 
 		yield 'filter hidden, not privileged' => [ Flags::FILTER_HIDDEN, [], false ];
 		yield 'filter hidden, details only' => [ Flags::FILTER_HIDDEN, $details, false ];
@@ -192,6 +193,26 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		yield 'filter protected, details only' => [ Flags::FILTER_USES_PROTECTED_VARS, $details, false ];
 		yield 'filter protected, protected logs only' => [ Flags::FILTER_USES_PROTECTED_VARS, $protected, false ];
 		yield 'filter protected, privileged' => [ Flags::FILTER_USES_PROTECTED_VARS, $details + $protected, true ];
+
+		yield "filter suppressed, not privileged" => [ Flags::FILTER_SUPPRESSED, [], false ];
+		yield "filter suppressed, details only" => [ Flags::FILTER_SUPPRESSED, $details, false ];
+		yield "filter suppressed, private logs only" => [ Flags::FILTER_SUPPRESSED, $private, false ];
+		yield "filter suppressed, protected only" => [ Flags::FILTER_SUPPRESSED, $protected, false ];
+		yield "filter suppressed, details and private logs" => [
+			Flags::FILTER_SUPPRESSED, $details + $private, false
+		];
+		yield "filter suppressed, details and protected logs" => [
+			Flags::FILTER_SUPPRESSED, $details + $protected, false
+		];
+		yield "filter suppressed, private and protected logs" => [
+			Flags::FILTER_SUPPRESSED, $private + $protected, false
+		];
+		yield "filter suppressed, all but viewsuppressed" => [
+			Flags::FILTER_SUPPRESSED, $details + $private + $protected, false
+		];
+		yield "filter suppressed, privileged" => [
+			Flags::FILTER_SUPPRESSED, $details + $private + $protected + $suppressed, true
+		];
 
 		$hiddenProtected = Flags::FILTER_HIDDEN | Flags::FILTER_USES_PROTECTED_VARS;
 		yield 'filter hidden and protected, not privileged' => [ $hiddenProtected, [], false ];
@@ -209,6 +230,30 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		];
 		yield 'filter hidden and protected, privileged' => [
 			$hiddenProtected, $details + $private + $protected, true
+		];
+
+		$hiddenSuppressed = Flags::FILTER_HIDDEN | Flags::FILTER_SUPPRESSED;
+		yield 'filter hidden and suppressed, not privileged' => [ $hiddenSuppressed, [], false ];
+		yield 'filter hidden and suppressed, details only' => [ $hiddenSuppressed, $details, false ];
+		yield 'filter hidden and suppressed, private only' => [ $hiddenSuppressed, $private, false ];
+		yield 'filter hidden and suppressed, protected only' => [ $hiddenSuppressed, $protected, false ];
+		yield 'filter hidden and suppressed, details and private only' => [
+			$hiddenSuppressed, $details + $private, false
+		];
+		yield 'filter hidden and suppressed, details and protected only' => [
+			$hiddenSuppressed, $details + $protected, false
+		];
+		yield 'filter hidden and suppressed, private and protected only' => [
+			$hiddenSuppressed, $private + $protected, false
+		];
+		yield 'filter hidden and suppressed, all but viewsuppressed' => [
+			$hiddenSuppressed, $details + $private + $protected, false
+		];
+		yield 'filter hidden and suppressed, privileged' => [
+			$hiddenSuppressed, $details + $private + $protected + $suppressed, true
+		];
+		yield 'filter hidden and suppressed, suppressor without private access' => [
+			$hiddenSuppressed, $details + $protected + $suppressed, false
 		];
 
 		yield 'filter visible, not privileged' => [ Flags::FILTER_PUBLIC, [], false ];
@@ -510,4 +555,27 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	/**
+	 * @dataProvider provideSimpleCases
+	 */
+	public function testCanViewSuppressed( bool $allowed ) {
+		$rights = $allowed ? [ 'viewsuppressed' ] : [];
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+		$this->assertSame(
+			$allowed,
+			$this->getPermMan()->canViewSuppressed( $performer )
+		);
+	}
+
+	/**
+	 * @dataProvider provideSimpleCases
+	 */
+	public function testCanSuppress( bool $allowed ) {
+		$rights = $allowed ? [ 'suppressrevision' ] : [];
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+		$this->assertSame(
+			$allowed,
+			$this->getPermMan()->canSuppress( $performer )
+		);
+	}
 }

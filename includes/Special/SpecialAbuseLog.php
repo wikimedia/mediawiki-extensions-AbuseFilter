@@ -55,6 +55,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	public const VISIBILITY_HIDDEN = 'hidden';
 	/** Visible entry but the associated revision is hidden */
 	public const VISIBILITY_HIDDEN_IMPLICIT = 'implicit';
+	/** Explicity suppressed entry due to the filter being suppressed */
+	public const VISIBILITY_SUPPRESSED = 'suppressed';
 
 	/**
 	 * @var string|null The user whose AbuseLog entries are being searched
@@ -501,39 +503,68 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				}
 			}
 
-			// If the user cannot see the filter because it's protected or hidden, then
-			// don't show logs associated with it.
-			$canViewPrivateFilters = $this->afPermissionManager->canViewPrivateFiltersLogs( $performer );
-			$searchedForProtectedWhenLacksPermission = false;
-			$searchedForHiddenWhenLacksPermission = false;
+			// Initialize flags for warning messages about filters excluded due to permissions
+			$excludedDueToSuppression = false;
+			$excludedDueToHidden = false;
+			$excludedDueToProtected = false;
+
+			// Evaluate the user's permissions
+			// We can't evaluate their protected variable permissions as it could be different between filter objects
+			$canViewSuppressed = $this->afPermissionManager->canViewSuppressed( $performer );
+			$canViewPrivate = $this->afPermissionManager->canViewPrivateFiltersLogs( $performer );
+
+			// Iterate over the filters the user is searching for.
+			// Remove filters from the list if the user lacks permissions to see their logs
+			// based on suppression, hidden status, or protected status.
 			foreach ( $filtersList as $index => $filterData ) {
 				try {
+					// Use the injected filterLookup service
 					$filter = $this->filterLookup->getFilter( ...$filterData );
 				} catch ( FilterNotFoundException $_ ) {
+					// Filter ID is invalid or filter doesn't exist
 					unset( $filtersList[$index] );
 					$foundInvalid = true;
 					continue;
 				}
 
-				if ( $filter->isHidden() && !$canViewPrivateFilters ) {
+				// 1. Check for suppression
+				if ( $filter->isSuppressed() && !$canViewSuppressed ) {
 					unset( $filtersList[$index] );
-					$searchedForHiddenWhenLacksPermission = true;
+					$excludedDueToSuppression = true;
+					continue;
 				}
+
+				// 2. Check if filter is hidden (private)
+				if ( $filter->isHidden() && !$canViewPrivate ) {
+					unset( $filtersList[$index] );
+					$excludedDueToHidden = true;
+					continue;
+				}
+
+				// 3. Check if filter is protected and user lacks permission for its variables
 				if (
 					$filter->isProtected() &&
 					!$this->afPermissionManager->canViewProtectedVariablesInFilter( $performer, $filter )->isGood()
 				) {
 					unset( $filtersList[$index] );
-					$searchedForProtectedWhenLacksPermission = true;
+					$excludedDueToProtected = true;
+					continue;
 				}
 			}
 
-			if ( $searchedForProtectedWhenLacksPermission ) {
-				$out->addWikiMsg( 'abusefilter-log-protected-not-included' );
+			// Add warning messages if any filters were excluded due to specific permission restrictions
+			if ( $excludedDueToSuppression ) {
+				$out->addWikiMsg( 'abusefilter-log-suppressed-not-included' );
 			}
-			if ( $searchedForHiddenWhenLacksPermission ) {
+			// Note: The message for "hidden" is 'abusefilter-log-private-not-included'
+			if ( $excludedDueToHidden ) {
 				$out->addWikiMsg( 'abusefilter-log-private-not-included' );
 			}
+			if ( $excludedDueToProtected ) {
+				$out->addWikiMsg( 'abusefilter-log-protected-not-included' );
+			}
+
+			// Continue with building the list of filters to search and warning for invalid IDs
 
 			if ( $foundInvalid ) {
 				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
@@ -748,6 +779,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$error = 'abusefilter-log-details-hidden';
 			} elseif ( $visibility === self::VISIBILITY_HIDDEN_IMPLICIT ) {
 				$error = 'abusefilter-log-details-hidden-implicit';
+			} elseif ( $visibility === self::VISIBILITY_SUPPRESSED ) {
+				$error = 'abusefilter-log-details-suppressed';
 			}
 		}
 
@@ -1186,6 +1219,15 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		Authority $authority,
 		AbuseFilterPermissionManager $afPermissionManager
 	): string {
+		// Check if the filter related to the log entry is suppressed.
+		// This check takes precedence over other visibility states.
+		$filter = AbuseFilterServices::getFilterLookup()->getFilter( $row->afl_filter_id, (bool)$row->afl_global );
+		if ( $filter->isSuppressed() ) {
+			if ( !$afPermissionManager->canViewSuppressed( $authority ) ) {
+				return self::VISIBILITY_SUPPRESSED;
+			}
+		}
+
 		if ( $row->afl_deleted && !$afPermissionManager->canSeeHiddenLogEntries( $authority ) ) {
 			return self::VISIBILITY_HIDDEN;
 		}
@@ -1198,6 +1240,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		if ( !$revRec || $revRec->getVisibility() === 0 ) {
 			return self::VISIBILITY_VISIBLE;
 		}
+
+		// Check if this specific revision (not the entire filter) is suppressed or hidden.
 		return $revRec->audienceCan( RevisionRecord::SUPPRESSED_ALL, RevisionRecord::FOR_THIS_USER, $authority )
 			? self::VISIBILITY_VISIBLE
 			: self::VISIBILITY_HIDDEN_IMPLICIT;

@@ -377,7 +377,10 @@ class FilterLookup implements IDBAccessObject {
 		$protected = in_array( 'protected', $flags, true ) ?
 			Flags::FILTER_USES_PROTECTED_VARS :
 			0;
-		return $hidden | $protected;
+		$suppressed = in_array( 'suppressed', $flags, true ) ?
+			Flags::FILTER_SUPPRESSED :
+			0;
+		return $hidden | $protected | $suppressed;
 	}
 
 	/**

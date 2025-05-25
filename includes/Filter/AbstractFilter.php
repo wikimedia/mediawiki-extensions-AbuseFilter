@@ -93,6 +93,10 @@ class AbstractFilter {
 		return $this->flags->getProtected();
 	}
 
+	public function isSuppressed(): bool {
+		return $this->flags->getSuppressed();
+	}
+
 	public function getPrivacyLevel(): int {
 		return $this->flags->getPrivacyLevel();
 	}

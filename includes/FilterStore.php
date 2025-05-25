@@ -158,6 +158,9 @@ class FilterStore {
 		$afhRow['afh_changed_fields'] = implode( ',', $differences );
 
 		$flags = [];
+		if ( FilterUtils::isSuppressed( $newRow['af_hidden'] ) ) {
+			$flags[] = 'suppressed';
+		}
 		if ( FilterUtils::isHidden( $newRow['af_hidden'] ) ) {
 			$flags[] = 'hidden';
 		}
