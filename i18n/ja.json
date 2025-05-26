@@ -52,7 +52,8 @@
 			"Tmv",
 			"もなー(偽物)",
 			"Chqaz",
-			"かしわのはみん"
+			"かしわのはみん",
+			"Foomin10"
 		]
 	},
 	"abusefilter-desc": "編集操作の監視機能を追加する",
@@ -106,7 +107,7 @@
 	"abusefilter-log-search-filter-help-central": "パイプで分離",
 	"abusefilter-log-search-title": "ページ名:",
 	"abusefilter-log-search-wiki": "ウィキ:",
-	"abusefilter-log-search-impact": "影響：",
+	"abusefilter-log-search-impact": "影響:",
 	"abusefilter-log-search-impact-all": "すべての操作",
 	"abusefilter-log-search-impact-saved": "保存した編集のみ",
 	"abusefilter-log-search-impact-not-saved": "未保存の編集のみ",
