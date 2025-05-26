@@ -506,7 +506,7 @@
 	"abusefilter-history-select-submit": "Anwenden",
 	"abusefilter-history-diff": "Änderungen",
 	"abusefilter-history-error-hidden": "Der angeforderte Filter ist versteckt. Seine Versionsgeschichte kann daher nicht eingesehen werden.",
-	"abusefilter-history-error-protected": "Der von {{#FORMAL:dir|Ihnen}} angeforderte Filter verwendet geschützte Variablen und {{#FORMAL:du kannst|Sie können}} seine Versionsgeschichte nicht anzeigen. $1",
+	"abusefilter-history-error-protected": "Der von {{#FORMAL:dir|Ihnen}} angeforderte Filter verwendet geschützte Variablen und {{#FORMAL:du kannst|Sie können}} seine Versionsgeschichte nicht einsehen. $1",
 	"abusefilter-history-error-protected-due-to-permission": "Du kannst die Versionsgeschichte dieses Filters nicht einsehen, da du keine Berechtigung für $1 hast.",
 	"abusefilter-exception-unexpectedatend": "Unerwartetes „$2“ bei Zeichen „$1“.",
 	"abusefilter-exception-expectednotfound": "Auf Position $1 wurde ein „$2“ erwartet. Stattdessen wurde ein „$3“ mit dem Wert „$4“ gefunden.",
