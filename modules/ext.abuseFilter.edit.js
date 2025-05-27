@@ -330,14 +330,14 @@
 		const $warnOptions = $( '#mw-abusefilter-warn-parameters > table' ),
 			$disallowOptions = $( '#mw-abusefilter-disallow-parameters > table' );
 
-		const checked = $( '#wpFilterGlobal' ).is( ':checked' );
-		if ( checked ) {
+		const isGlobalFilter = $( '#wpFilterGlobal' ).is( ':checked' );
+		if ( isGlobalFilter ) {
 			// It's a global filter, so use the default message and hide the option from the user
 			warnMessageExisting.setValue( 'abusefilter-warning' );
 			disallowMessageExisting.setValue( 'abusefilter-disallowed' );
 		}
-		$warnOptions.toggle( !checked );
-		$disallowOptions.toggle( !checked );
+		$warnOptions.toggle( !isGlobalFilter );
+		$disallowOptions.toggle( !isGlobalFilter );
 	}
 
 	/**
