@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Notification\RecipientSet;
 use MediaWiki\Title\Title;
 
 /**
@@ -59,7 +60,6 @@ class EchoNotifier {
 			'type' => self::EVENT_TYPE,
 			'title' => $this->getTitleForFilter( $filterObj->getID() ),
 			'extra' => [
-				Event::RECIPIENTS_IDX => [ $filterObj->getUserID() ],
 				'throttled-actions' => $throttledActionNames,
 			],
 		];
@@ -74,7 +74,10 @@ class EchoNotifier {
 	public function notifyForFilter( int $filter ) {
 		if ( $this->isEchoLoaded ) {
 			$filterObj = $this->getFilterObject( $filter );
-			return Event::create( $this->getDataForEvent( $filterObj ) );
+			return Event::create(
+				$this->getDataForEvent( $filterObj ),
+				new RecipientSet( $filterObj->getUserIdentity() )
+			);
 		}
 		return false;
 	}
