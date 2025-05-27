@@ -40,7 +40,7 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 	/**
 	 * This has to be separate test as the testSetters does the exact check and the LastEditInfo
 	 * still holds userId and userName as separate properties.
-	 * @todo refactor LastEditInfo to hold UserIdentity instead of id/name pair.
+	 * @todo refactor LastEditInfo to hold UserIdentity instead of id/name pair. @see T395323
 	 */
 	public function testUserIdentitySetterAndGetter() {
 		$existingIdentity = UserIdentityValue::newRegistered( 42, 'User' );
