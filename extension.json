@@ -268,9 +268,6 @@
 	"ExtensionMessagesFiles": {
 		"AbuseFilterAliases": "AbuseFilter.alias.php"
 	},
-	"AutoloadClasses": {
-		"MediaWiki\\Extension\\AbuseFilter\\Variables\\VariableHolder": "includes/Variables/VariableHolder.php"
-	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\AbuseFilter\\": "includes/",
 		"MediaWiki\\Extension\\AbuseFilter\\Maintenance\\": "maintenance/"
