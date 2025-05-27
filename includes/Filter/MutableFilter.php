@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Filter;
 
 use LogicException;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Value object representing a filter that can be mutated (i.e. provides setters); this representation can
@@ -107,12 +108,9 @@ class MutableFilter extends Filter {
 		parent::setActions( $actions );
 	}
 
-	public function setUserID( int $id ): void {
-		$this->lastEditInfo->setUserID( $id );
-	}
-
-	public function setUserName( string $name ): void {
-		$this->lastEditInfo->setUserName( $name );
+	public function setUserIdentity( UserIdentity $user ): void {
+		$this->lastEditInfo->setUserID( $user->getId() );
+		$this->lastEditInfo->setUserName( $user->getName() );
 	}
 
 	public function setTimestamp( string $timestamp ): void {

@@ -1293,8 +1293,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$newFilter->setHitCount( $origFilter->getHitCount() );
 			// These are needed if the save fails and the filter is not new
 			$newFilter->setID( $origFilter->getID() );
-			$newFilter->setUserID( $origFilter->getUserID() );
-			$newFilter->setUserName( $origFilter->getUserName() );
+			$newFilter->setUserIdentity( $origFilter->getUserIdentity() );
 			$newFilter->setTimestamp( $origFilter->getTimestamp() );
 		}
 

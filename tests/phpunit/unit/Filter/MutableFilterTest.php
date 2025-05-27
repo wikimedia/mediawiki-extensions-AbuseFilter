@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
@@ -37,6 +38,28 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * This has to be separate test as the testSetters does the exact check and the LastEditInfo
+	 * still holds userId and userName as separate properties.
+	 * @todo refactor LastEditInfo to hold UserIdentity instead of id/name pair.
+	 */
+	public function testUserIdentitySetterAndGetter() {
+		$existingIdentity = UserIdentityValue::newRegistered( 42, 'User' );
+		$updatedIdentity = UserIdentityValue::newRegistered( 12, 'sysop' );
+
+		$fakeActions = 'strlen';
+		$filter = new MutableFilter(
+			new Specs( 'rules', 'comments', 'name', [], 'group' ),
+			new Flags( true, true, true, true ),
+			$fakeActions,
+			new LastEditInfo( 42, 'User', '12345' )
+		);
+
+		$this->assertTrue( $filter->getUserIdentity()->equals( $existingIdentity ) );
+		$filter->setUserIdentity( $updatedIdentity );
+		$this->assertTrue( $filter->getUserIdentity()->equals( $updatedIdentity ) );
+	}
+
+	/**
 	 * @return array
 	 */
 	public static function provideSetters() {
@@ -52,8 +75,6 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 			'protected' => [ true, 'setProtected', 'isProtected' ],
 			'global' => [ false, 'setGlobal', 'isGlobal' ],
 			'actions' => [ [ 'foo' => [] ], 'setActions', 'getActions' ],
-			'user ID' => [ 163, 'setUserID', 'getUserID' ],
-			'username' => [ 'Sysop', 'setUserName', 'getUserName' ],
 			'timestamp' => [ '123456', 'setTimestamp', 'getTimestamp' ],
 			'id' => [ 123, 'setID', 'getID' ],
 			'hit count' => [ 456, 'setHitCount', 'getHitCount' ],
