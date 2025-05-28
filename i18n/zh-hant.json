@@ -52,7 +52,8 @@
 			"Zanhsieh",
 			"Zhxy 519",
 			"捍粵者",
-			"逆襲的天邪鬼"
+			"逆襲的天邪鬼",
+			"Key0121"
 		]
 	},
 	"abusefilter-desc": "自動條件判定編輯行為",
@@ -268,7 +269,7 @@
 	"abusefilter-edit-hidden": "隱藏此過濾器的詳細資料",
 	"abusefilter-edit-protected": "<strong>在此過濾器中啟用[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables 受保護變數]</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "對無法看到受保護變數的使用者來說，此過濾器的詳細資訊是隱藏不可見的。",
-	"abusefilter-edit-protected-help-message": "此操作是永久性且無法撤銷",
+	"abusefilter-edit-protected-help-message": "此過濾器的詳細信息將對無法看到受保護變數的使用者隱藏。此操作是永久性且無法撤銷。",
 	"abusefilter-edit-global": "全域過濾器",
 	"abusefilter-edit-rules": "條件：",
 	"abusefilter-edit-field-conditions": "條件",
