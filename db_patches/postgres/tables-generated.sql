@@ -74,6 +74,8 @@ CREATE INDEX afl_rev_id ON abuse_filter_log (afl_rev_id);
 
 CREATE INDEX afl_wiki_timestamp ON abuse_filter_log (afl_wiki, afl_timestamp);
 
+CREATE INDEX afl_var_dump_timestamp ON abuse_filter_log (afl_var_dump, afl_timestamp);
+
 
 CREATE TABLE abuse_filter_history (
   afh_id BIGSERIAL NOT NULL,

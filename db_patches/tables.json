@@ -229,6 +229,13 @@
 				"name": "afl_wiki_timestamp",
 				"columns": [ "afl_wiki", "afl_timestamp" ],
 				"unique": false
+			},
+			{
+				"name": "afl_var_dump_timestamp",
+				"columns": [ "afl_var_dump", "afl_timestamp" ],
+				"unique": false,
+				"options": { "lengths": [ 4, null ] },
+				"comment": "Used to find rows which have afl_var_dump with JSON objects in them (by looking for the '{' character at the start of the blob). Rows which have this as JSON and are old enough need to be converted to just use a blob store address, because the protected variables need to be purged (T390873)."
 			}
 		],
 		"pk": [ "afl_id" ]

@@ -199,6 +199,12 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			"$dir/$dbType/patch-drop-afl_patrolled_by.sql", true
 		] );
 
+		// 1.45
+		$updater->addExtensionIndex(
+			'abuse_filter_log', 'afl_var_dump_timestamp',
+			"$dir/$dbType/patch-add-index-afl_var_dump_timestamp.sql"
+		);
+
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 	}
 

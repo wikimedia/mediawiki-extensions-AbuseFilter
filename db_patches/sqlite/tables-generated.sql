@@ -72,6 +72,8 @@ CREATE INDEX afl_rev_id ON /*_*/abuse_filter_log (afl_rev_id);
 
 CREATE INDEX afl_wiki_timestamp ON /*_*/abuse_filter_log (afl_wiki, afl_timestamp);
 
+CREATE INDEX afl_var_dump_timestamp ON /*_*/abuse_filter_log (afl_var_dump, afl_timestamp);
+
 
 CREATE TABLE /*_*/abuse_filter_history (
   afh_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
