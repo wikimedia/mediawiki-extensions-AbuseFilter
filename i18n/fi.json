@@ -161,6 +161,7 @@
 	"log-action-filter-suppress-abuselog": "Väärinkäyttölokin häivytys",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|katsoi}} lokin $3 yksityiset tiedot",
 	"abusefilterprivatedetails-log-name": "Väärinkäyttösuodattimen yksityisen tiedon pääsyloki",
+	"log-name-abusefilterblockeddomainhit": "Estettyjen verkkotunnusten osumaloki",
 	"abusefilter-list": "Kaikki suodattimet",
 	"abusefilter-list-id": "Suodatin nro",
 	"abusefilter-list-pattern": "Kuvio",
