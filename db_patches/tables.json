@@ -161,6 +161,7 @@
 			{
 				"name": "afl_var_dump",
 				"type": "blob",
+				"comment": "Either: A blob store address or JSON containing protected variable values along with a blob store address",
 				"options": { "notnull": true, "length": 65530 }
 			},
 			{

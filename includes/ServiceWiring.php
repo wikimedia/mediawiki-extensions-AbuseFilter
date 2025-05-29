@@ -279,6 +279,7 @@ return [
 	VariablesBlobStore::SERVICE_NAME => static function ( MediaWikiServices $services ): VariablesBlobStore {
 		return new VariablesBlobStore(
 			$services->get( VariablesManager::SERVICE_NAME ),
+			$services->get( PermManager::SERVICE_NAME ),
 			$services->getBlobStoreFactory(),
 			$services->getBlobStore(),
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' )

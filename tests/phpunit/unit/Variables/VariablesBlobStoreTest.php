@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\Variables;
 
 use InvalidArgumentException;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -24,7 +25,8 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 	private function getStore(
 		?BlobStoreFactory $blobStoreFactory = null,
-		?BlobStore $blobStore = null
+		?BlobStore $blobStore = null,
+		?AbuseFilterPermissionManager $permissionManager = null
 	): VariablesBlobStore {
 		$manager = $this->createMock( VariablesManager::class );
 		$manager->method( 'dumpAllVars' )->willReturnCallback( static function ( VariableHolder $holder ) {
@@ -45,8 +47,17 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 				}
 			}
 		} );
+		$manager->method( 'getVar' )
+			->willReturnCallback( static function ( VariableHolder $holder, string $varName ) {
+				if ( $holder->varIsSet( $varName ) ) {
+					return $holder->getVarThrow( $varName );
+				} else {
+					return new AFPData( AFPData::DUNDEFINED );
+				}
+			} );
 		return new VariablesBlobStore(
 			$manager,
+			$permissionManager ?? $this->createMock( AbuseFilterPermissionManager::class ),
 			$blobStoreFactory ?? $this->createMock( BlobStoreFactory::class ),
 			$blobStore ?? $this->createMock( BlobStore::class ),
 			null
@@ -64,13 +75,14 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	}
 
 	public function testLoadVarDump() {
-		$vars = [ 'foo-variable' => 42 ];
-		$blob = FormatJson::encode( $vars );
 		$blobStore = $this->createMock( BlobStore::class );
-		$blobStore->expects( $this->once() )->method( 'getBlob' )->willReturn( $blob );
+		$blobStore->expects( $this->once() )
+			->method( 'getBlob' )
+			->with( 'tt:3456' )
+			->willReturn( FormatJson::encode( [ 'foo-variable' => 42 ] ) );
 
 		$row = (object)[
-			'afl_var_dump' => $blob,
+			'afl_var_dump' => 'tt:3456',
 			'afl_ip' => '',
 		];
 		$varBlobStore = $this->getStore( null, $blobStore );
@@ -83,21 +95,22 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideLoadVarDumpVarTransformation
 	 */
 	public function testLoadVarDumpVarTransformation( $data, $expected ) {
-		$vars = [
-			'user_unnamed_ip' => $data[ 'user_unnamed_ip' ]
-		];
+		$blobStore = $this->createMock( BlobStore::class );
+		$blobStore->expects( $this->once() )
+			->method( 'getBlob' )
+			->with( 'tt:3456' )
+			->willReturn( FormatJson::encode( [ 'user_unnamed_ip' => $data[ 'user_unnamed_ip' ] ] ) );
 
 		$manager = $this->createMock( VariablesManager::class );
 		$manager->method( 'getVar' )->willReturn( AFPData::newFromPHPVar( $data['user_unnamed_ip'] ) );
-		$blob = FormatJson::encode( $vars );
-		$blobStore = $this->createMock( BlobStore::class );
-		$blobStore->expects( $this->once() )->method( 'getBlob' )->willReturn( $blob );
+
 		$row = (object)[
-			'afl_var_dump' => $blob,
+			'afl_var_dump' => 'tt:3456',
 			'afl_ip' => $data[ 'afl_ip' ],
 		];
 		$varBlobStore = new VariablesBlobStore(
 			$manager,
+			$this->createMock( AbuseFilterPermissionManager::class ),
 			$this->createMock( BlobStoreFactory::class ),
 			$blobStore,
 			null
@@ -182,17 +195,43 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideVariables
 	 */
-	public function testRoundTrip( array $toStore, ?array $expected = null ) {
+	public function testRoundTrip( array $toStore, ?array $expected = null, string $ip = '' ) {
+		$protectedVariables = [ 'user_unnnamed_ip', 'other_protected_variable' ];
+		$permissionManager = $this->createMock( AbuseFilterPermissionManager::class );
+		$permissionManager->method( 'getUsedProtectedVariables' )
+			->willReturnCallback( static function ( $usedVariables ) use ( $protectedVariables ) {
+				return array_intersect( $protectedVariables, $usedVariables );
+			} );
+
 		$blobStore = $this->getBlobStore();
 		$blobStoreFactory = $this->createMock( BlobStoreFactory::class );
 		$blobStoreFactory->method( 'newBlobStore' )->willReturn( $blobStore );
-		$varBlobStore = $this->getStore( $blobStoreFactory, $blobStore );
+		$varBlobStore = $this->getStore( $blobStoreFactory, $blobStore, $permissionManager );
 
-		$storeID = $varBlobStore->storeVarDump( VariableHolder::newFromArray( $toStore ) );
-		$this->assertIsString( $storeID );
+		$aflVarDumpValue = $varBlobStore->storeVarDump( VariableHolder::newFromArray( $toStore ) );
+		$this->assertIsString( $aflVarDumpValue );
+
+		// Verify that the blob store address is storing no protected variable values
+		// (empty values are expected though).
+		if ( array_intersect_key( $toStore, array_flip( $protectedVariables ) ) ) {
+			$blobId = FormatJson::decode( $aflVarDumpValue, true )['_blob'];
+		} else {
+			$blobId = $aflVarDumpValue;
+		}
+		$blobData = $blobStore->getBlob( $blobId );
+		$this->assertIsString( $blobId );
+		$blobDataAsArray = FormatJson::decode( $blobData, true );
+
+		foreach ( $protectedVariables as $protectedVariable ) {
+			if ( array_key_exists( $protectedVariable, $toStore ) ) {
+				$this->assertArrayHasKey( $protectedVariable, $blobDataAsArray );
+				$this->assertSame( true, $blobDataAsArray[$protectedVariable] );
+			}
+		}
+
 		$row = (object)[
-			'afl_var_dump' => $storeID,
-			'afl_ip' => '',
+			'afl_var_dump' => $aflVarDumpValue,
+			'afl_ip' => $ip,
 		];
 		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
 		$nativeLoadedVars = array_map( static function ( AFPData $el ) {
@@ -275,14 +314,16 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 					'accountname' => 'XXX'
 				]
 			],
-			'User IP' => [
-				[
-					'user_unnamed_ip' => '1.2.3.4'
-				],
-				[
-					'user_unnamed_ip' => true
-				]
+			'Has user_unnamed_ip when afl_ip is empty' => [
+				[ 'user_unnamed_ip' => '1.2.3.4' ],
+				[ 'user_unnamed_ip' => '' ],
 			],
+			'Has user_unnamed_ip when afl_ip is an IP' => [
+				[ 'user_unnamed_ip' => '1.2.3.4' ],
+				null,
+				'1.2.3.4'
+			],
+			'Has other_protected_variable' => [ [ 'other_protected_variable' => 'abc' ] ],
 		];
 	}
 }
