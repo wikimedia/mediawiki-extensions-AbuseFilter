@@ -61,6 +61,10 @@ CREATE TABLE /*_*/abuse_filter_log (
   INDEX afl_ip_timestamp (afl_ip, afl_timestamp),
   INDEX afl_rev_id (afl_rev_id),
   INDEX afl_wiki_timestamp (afl_wiki, afl_timestamp),
+  INDEX afl_var_dump_timestamp (
+    afl_var_dump(4),
+    afl_timestamp
+  ),
   PRIMARY KEY(afl_id)
 ) /*$wgDBTableOptions*/;
 
