@@ -30,13 +30,36 @@ class FilterTest extends MediaWikiUnitTestCase {
 			$hitCount,
 			$throttled
 		);
+		$userIdentity = $filter->getUserIdentity();
 
+		$this->assertSame( $userID, $userIdentity->getId() );
+		$this->assertSame( $userName, $userIdentity->getName() );
+		$this->assertTrue( $userIdentity->isRegistered() );
 		$this->assertSame( $userID, $filter->getUserID(), 'user ID' );
 		$this->assertSame( $userName, $filter->getUserName(), 'username' );
 		$this->assertSame( $timestamp, $filter->getTimestamp(), 'timestamp' );
 		$this->assertSame( $id, $filter->getID(), 'ID' );
 		$this->assertSame( $hitCount, $filter->getHitCount(), 'hit count' );
 		$this->assertSame( $throttled, $filter->isThrottled(), 'throttled' );
+	}
+
+	public function getUserIdentityForAnon() {
+		$userName = 'Anon user';
+
+		$filter = new Filter(
+			$this->createMock( Specs::class ),
+			$this->createMock( Flags::class ),
+			[],
+			new LastEditInfo( 0, $userName, 123 ),
+			164,
+			1000,
+			false
+		);
+
+		$identity = $filter->getUserIdentity();
+		$this->assertSame( $userName, $identity->getId() );
+		$this->assertSame( 0, $identity->getId() );
+		$this->assertNotTrue( $identity->isRegistered() );
 	}
 
 	public function testGetObjects() {
@@ -61,7 +84,7 @@ class FilterTest extends MediaWikiUnitTestCase {
 		$copy = clone $filter;
 
 		$lastEditInfo->setUserName( 'new username' );
-		$this->assertSame( $oldUsername, $filter->getUserName(), 'original' );
-		$this->assertSame( $oldUsername, $copy->getUserName(), 'copy' );
+		$this->assertSame( $oldUsername, $filter->getUserIdentity()->getName(), 'original' );
+		$this->assertSame( $oldUsername, $copy->getUserIdentity()->getName(), 'copy' );
 	}
 }

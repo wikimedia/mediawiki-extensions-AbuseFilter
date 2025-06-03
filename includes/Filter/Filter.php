@@ -2,6 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Filter;
 
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
+
 /**
  * Immutable value object representing a "complete" filter. This can be used to represent filters
  * that already exist in the database, but you should probably use subclasses for that.
@@ -50,12 +53,28 @@ class Filter extends AbstractFilter {
 		return $this->id;
 	}
 
+	/**
+	 * @deprecated since 1.45 Use ::getUserIdentity() instead
+	 */
 	public function getUserID(): int {
 		return $this->lastEditInfo->getUserID();
 	}
 
+	/**
+	 * @deprecated since 1.45 Use ::getUserIdentity() instead
+	 */
 	public function getUserName(): string {
 		return $this->lastEditInfo->getUserName();
+	}
+
+	public function getUserIdentity(): UserIdentity {
+		if ( $this->id === 0 ) {
+			return UserIdentityValue::newAnonymous( $this->lastEditInfo->getUserName() );
+		}
+		return UserIdentityValue::newRegistered(
+			$this->lastEditInfo->getUserID(),
+			$this->lastEditInfo->getUserName()
+		);
 	}
 
 	public function getTimestamp(): string {
