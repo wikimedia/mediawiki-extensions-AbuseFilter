@@ -296,7 +296,8 @@ class AbuseLogger {
 	}
 
 	/**
-	 * Returns the BlobStore address for use as the value of the afl_var_dump column for an AbuseFilter log entry.
+	 * Returns a string to be used as the value of afl_var_dump in an abuse_filter_log row. This may either
+	 * be a BlobStore address or a JSON string (see {@link VariablesBlobStore::storeVarDump} for more detail).
 	 *
 	 * This method removes protected variables from the var dump that are not used in the filter
 	 * associated with the AbuseFilter log to be created. It also de-duplicates var dumps where
