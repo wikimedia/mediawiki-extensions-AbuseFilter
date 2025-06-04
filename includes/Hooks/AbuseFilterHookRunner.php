@@ -29,6 +29,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterGenerateGenericVarsHook,
 	AbuseFilterGenerateTitleVarsHook,
 	AbuseFilterGenerateUserVarsHook,
+	AbuseFilterGenerateAccountCreationVarsHook,
 	AbuseFilterGenerateVarsForRecentChangeHook,
 	AbuseFilterGetDangerousActionsHook,
 	AbuseFilterInterceptVariableHook,
@@ -131,6 +132,20 @@ class AbuseFilterHookRunner implements
 		return $this->hookContainer->run(
 			'AbuseFilter-generateUserVars',
 			[ $vars, $user, $rc ]
+		);
+	}
+
+	/** @inheritDoc */
+	public function onAbuseFilterGenerateAccountCreationVars(
+		VariableHolder $vars,
+		UserIdentity $creator,
+		UserIdentity $createdUser,
+		bool $autocreate,
+		?RecentChange $rc
+	) {
+		return $this->hookContainer->run(
+			'AbuseFilterGenerateAccountCreationVars',
+			[ $vars, $creator, $createdUser, $autocreate, $rc ]
 		);
 	}
 

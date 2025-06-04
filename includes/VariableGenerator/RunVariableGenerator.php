@@ -393,6 +393,10 @@ class RunVariableGenerator extends VariableGenerator {
 		$this->vars->setVar( 'action', $autocreate ? 'autocreateaccount' : 'createaccount' );
 		$this->vars->setVar( 'accountname', $createdUser->getName() );
 		$this->addGenericVars();
+
+		$this->hookRunner->onAbuseFilterGenerateAccountCreationVars(
+			$this->vars, $this->user, $createdUser, $autocreate, null
+		);
 		return $this->vars;
 	}
 }

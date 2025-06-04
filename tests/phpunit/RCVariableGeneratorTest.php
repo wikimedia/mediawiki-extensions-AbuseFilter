@@ -171,6 +171,26 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		$rc = RecentChange::newFromConds( $rcConds, __METHOD__, DB_PRIMARY );
 		$this->assertNotNull( $rc, 'RC item found' );
 
+		$accountCreationHookCalled = false;
+		if ( $type === 'newusers' ) {
+			// Verify that the AbuseFilterGenerateAccountCreationVars hook is called and provides the expected
+			// data to the handlers.
+			$this->setTemporaryHook(
+				'AbuseFilterGenerateAccountCreationVars',
+				function (
+					$actualVars, UserIdentity $actualCreator, UserIdentity $actualCreatedUser, bool $autocreated,
+					?RecentChange $actualRc
+				) use ( &$accountCreationHookCalled, $user, $action, $rc ) {
+					$this->assertTrue( $user->equals( $actualCreator ) );
+					$this->assertSame( 'AbuseFilter dummy user', $actualCreatedUser->getName() );
+					$this->assertSame( $action === 'autocreateaccount', $autocreated );
+					$this->assertSame( $rc, $actualRc );
+
+					$accountCreationHookCalled = true;
+				}
+			);
+		}
+
 		$varGenerator = AbuseFilterServices::getVariableGeneratorFactory()->newRCGenerator(
 			$rc,
 			$this->getTestSysop()->getUser()
@@ -191,6 +211,12 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 
 		// Not assertSame because we're comparing different AFPData objects
 		$this->assertEquals( $expected, $actual );
+
+		$this->assertSame(
+			$type === 'newusers',
+			$accountCreationHookCalled,
+			'AbuseFilterGenerateAccountCreationVars hook should be run only if the type is "newusers"'
+		);
 	}
 
 	/**
