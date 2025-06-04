@@ -47,19 +47,17 @@ class EchoNotifier {
 	}
 
 	/**
-	 * @internal
-	 * @param int $filter
+	 * @param ExistingFilter $filterObj
 	 * @return array
 	 */
-	public function getDataForEvent( int $filter ): array {
-		$filterObj = $this->getFilterObject( $filter );
+	private function getDataForEvent( ExistingFilter $filterObj ): array {
 		$throttledActionNames = array_intersect(
 			$filterObj->getActionsNames(),
 			$this->consequencesRegistry->getDangerousActionNames()
 		);
 		return [
 			'type' => self::EVENT_TYPE,
-			'title' => $this->getTitleForFilter( $filter ),
+			'title' => $this->getTitleForFilter( $filterObj->getID() ),
 			'extra' => [
 				Event::RECIPIENTS_IDX => [ $filterObj->getUserID() ],
 				'throttled-actions' => $throttledActionNames,
@@ -75,7 +73,8 @@ class EchoNotifier {
 	 */
 	public function notifyForFilter( int $filter ) {
 		if ( $this->isEchoLoaded ) {
-			return Event::create( $this->getDataForEvent( $filter ) );
+			$filterObj = $this->getFilterObject( $filter );
+			return Event::create( $this->getDataForEvent( $filterObj ) );
 		}
 		return false;
 	}
