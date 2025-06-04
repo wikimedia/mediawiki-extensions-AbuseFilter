@@ -29,6 +29,7 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 use StatusValue;
 use Wikimedia\ObjectCache\BagOStuff;
@@ -141,7 +142,9 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
 	 */
 	private function fetchConfig( int $flags ): StatusValue {
-		$revision = $this->revisionLookup->getRevisionByTitle( $this->getBlockedDomainPage(), 0, $flags );
+		$revision = $this->revisionLookup->getRevisionByTitle(
+			Title::newFromLinkTarget( $this->getBlockedDomainPage() ), 0, $flags
+		);
 		if ( !$revision ) {
 			// The configuration page does not exist. Pretend it does not configure anything
 			// specific (failure mode and empty-page behaviors are equal).
