@@ -204,6 +204,10 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			'abuse_filter_log', 'afl_var_dump_timestamp',
 			"$dir/$dbType/patch-add-index-afl_var_dump_timestamp.sql"
 		);
+		$updater->addExtensionField(
+			'abuse_filter_log', 'afl_ip_hex',
+			"$dir/$dbType/patch-add-afl_ip_hex.sql"
+		);
 
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 	}
