@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\Notifications\Model\Event;
 use MediaWiki\Title\Title;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -27,7 +28,9 @@ class EchoNotifierTest extends MediaWikiIntegrationTestCase {
 			->willReturnCallback( function ( $filter, $global ) use ( $userID ) {
 				$userID ??= self::USER_IDS[ $global ? "global-$filter" : $filter ] ?? 0;
 				$filterObj = $this->createMock( ExistingFilter::class );
-				$filterObj->method( 'getUserID' )->willReturn( $userID );
+				$filterObj->method( 'getUserIdentity' )->willReturn(
+					UserIdentityValue::newRegistered( $userID, 'Test' )
+				);
 				$filterObj->method( 'getID' )->willReturn( $filter );
 				return $filterObj;
 			} );
