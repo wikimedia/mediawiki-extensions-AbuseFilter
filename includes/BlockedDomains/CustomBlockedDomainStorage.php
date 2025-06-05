@@ -24,13 +24,13 @@ use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Message\Message;
+use MediaWiki\Page\PageIdentity;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
-use MediaWiki\Title\TitleValue;
 use StatusValue;
 use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Rdbms\DBAccessObjectUtils;
@@ -142,9 +142,8 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
 	 */
 	private function fetchConfig( int $flags ): StatusValue {
-		$revision = $this->revisionLookup->getRevisionByTitle(
-			Title::newFromLinkTarget( $this->getBlockedDomainPage() ), 0, $flags
-		);
+		$revision = $this->revisionLookup->getRevisionByTitle( $this->getBlockedDomainPage(), 0,
+			$flags );
 		if ( !$revision ) {
 			// The configuration page does not exist. Pretend it does not configure anything
 			// specific (failure mode and empty-page behaviors are equal).
@@ -222,7 +221,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	 */
 	private function saveContent( array $content, Authority $authority, string $comment ): StatusValue {
 		$configPage = $this->getBlockedDomainPage();
-		$page = $this->wikiPageFactory->newFromLinkTarget( $configPage );
+		$page = $this->wikiPageFactory->newFromTitle( $configPage );
 		$updater = $page->newPageUpdater( $authority );
 		$updater->setContent( SlotRecord::MAIN, new JsonContent( FormatJson::encode( $content ) ) );
 
@@ -237,10 +236,10 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	}
 
 	/**
-	 * @return TitleValue TitleValue of the config JSON page
+	 * @return PageIdentity Title of the config JSON page
 	 */
-	private function getBlockedDomainPage(): TitleValue {
-		return new TitleValue( NS_MEDIAWIKI, self::TARGET_PAGE );
+	private function getBlockedDomainPage(): PageIdentity {
+		return Title::makeTitle( NS_MEDIAWIKI, self::TARGET_PAGE );
 	}
 }
 
