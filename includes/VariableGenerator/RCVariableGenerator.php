@@ -135,13 +135,9 @@ class RCVariableGenerator extends VariableGenerator {
 	 * @return $this
 	 */
 	private function addCreateAccountVars(): self {
-		$this->vars->setVar(
-			'action',
-			// XXX: as of 1.43, the following is never true
-			$this->rc->getAttribute( 'rc_log_action' ) === 'autocreate'
-				? 'autocreateaccount'
-				: 'createaccount'
-		);
+		// XXX: as of 1.43, the following is never true
+		$autocreate = $this->rc->getAttribute( 'rc_log_action' ) === 'autocreate';
+		$this->vars->setVar( 'action', $autocreate ? 'autocreateaccount' : 'createaccount' );
 
 		$name = Title::castFromPageReference( $this->rc->getPage() )->getText();
 		// Add user data if the account was created by a registered user
@@ -159,6 +155,14 @@ class RCVariableGenerator extends VariableGenerator {
 		}
 
 		$this->vars->setVar( 'accountname', $name );
+
+		// $name is a valid title, so should pass the only check for UserFactory::RIGOR_NONE (the title does
+		// not include a "#" character).
+		$createdUser = $this->userFactory->newFromName( $name, UserFactory::RIGOR_NONE );
+		'@phan-var User $createdUser';
+		$this->hookRunner->onAbuseFilterGenerateAccountCreationVars(
+			$this->vars, $userIdentity, $createdUser, $autocreate, $this->rc
+		);
 
 		return $this;
 	}

@@ -27,7 +27,9 @@ use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Tests\Api\ApiTestCase;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Stats\NullStatsdDataFactory;
 
@@ -399,6 +401,34 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			$creator = $this->getServiceContainer()->getUserFactory()->newFromName( $creatorName );
 			$creator->addToDatabase();
 		}
+
+		// Verify that the AbuseFilterGenerateAccountCreationVars hook is called and provides the expected
+		// data to the handlers.
+		$hookCalled = false;
+		$this->setTemporaryHook(
+			'AbuseFilterGenerateAccountCreationVars',
+			function (
+				$actualVars, UserIdentity $actualCreator, UserIdentity $actualCreatedUser, bool $autocreated,
+				?RecentChange $rc
+			) use ( &$hookCalled, $creator, $accountName, $autocreate ) {
+				$this->assertNull( $rc );
+
+				if ( $creator !== null ) {
+					$this->assertTrue( $creator->equals( $actualCreator ) );
+				} elseif ( !$autocreated ) {
+					// When not performed by another user, if the account is not autocreated then the
+					// performer is $accountName otherwise it's the IP.
+					$this->assertSame( $accountName, $actualCreator->getName() );
+				} else {
+					$this->assertSame( '127.0.0.1', $actualCreator->getName() );
+				}
+				$this->assertSame( $accountName, $actualCreatedUser->getName() );
+				$this->assertSame( $autocreate, $autocreated );
+
+				$hookCalled = true;
+			}
+		);
+
 		$status = $this->createAccount( $accountName, $autocreate, $creator );
 		$this->assertStatusNotOK( $status );
 		$this->assertNotNull( $varHolder, 'Variables should be set' );
@@ -407,6 +437,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			array_keys( $expected )
 		);
 		$this->assertVariables( $expected, $export );
+		$this->assertTrue( $hookCalled );
 	}
 
 }
