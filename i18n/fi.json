@@ -41,7 +41,7 @@
 			"ZeiP"
 		]
 	},
-	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
+	"abusefilter-desc": "Mahdollistaa muokkausten suodattamisen automaattisella heuristiikalla.",
 	"abusefilter": "Väärinkäyttösuodattimen hallinta",
 	"abuselog": "Väärinkäyttösuodattimen loki",
 	"abusefilter-intro": "Tervetuloa väärinkäyttösuodattimen hallintakäyttöliittymään.\nVäärinkäyttösuodatin (Abuse Filter) on automaattinen ohjelmistomekanismi, joka soveltaa automaattista heuristiikkaa kaikkiin toimintoihin.\nTämä käyttöliittymä näyttää luettelon määritetyistä suodattimista ja antaa mahdollisuuden muuttaa niiden asetuksia.",
