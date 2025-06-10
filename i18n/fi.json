@@ -41,7 +41,7 @@
 			"Minilammas"
 		]
 	},
-	"abusefilter-desc": "Mahdollistaa muokkauksien suodattamisen automaattisella heuristiikalla.",
+	"abusefilter-desc": "Mahdollistaa muokkausten suodattamisen automaattisella heuristiikalla.",
 	"abusefilter": "Väärinkäyttösuodattimen hallinta",
 	"abuselog": "Väärinkäyttösuodattimen loki",
 	"abusefilter-intro": "Tervetuloa väärinkäyttösuodattimen hallintakäyttöliittymään.\nVäärinkäyttösuodatin (Abuse Filter) on automaattinen ohjelmistomekanismi, joka soveltaa automaattista heuristiikkaa kaikkiin toimintoihin.\nTämä käyttöliittymä näyttää luettelon määritetyistä suodattimista ja antaa mahdollisuuden muuttaa niiden asetuksia.",
@@ -566,6 +566,7 @@
 	"abusefilter-log-header": "Tässä lokissa esitetään yhteenveto suodattimiin tehdyistä muutoksista.\nLisätietoja saat suodattimen [[Special:AbuseFilter/history|viimeisimpien muutosten luettelosta]].",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|loi}} kohteen $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|muutti}} kohdetta $4 ($5)",
+	"abusefilter-log-invalid-filter": "Osa annetuista suodatinnumeroista ovat virheellisiä.",
 	"abusefilter-log-noresults": "Ei tuloksia",
 	"abusefilter-diff-title": "Versioiden välinen ero",
 	"abusefilter-diff-item": "Kohde",
