@@ -19,7 +19,6 @@
  */
 namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
-use MediaWiki\Api\ApiRawMessage;
 use MediaWiki\CommentStore\CommentStoreComment;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Json\FormatJson;
@@ -151,9 +150,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 		}
 		$content = $revision->getContent( SlotRecord::MAIN );
 		if ( !$content instanceof JsonContent ) {
-			return StatusValue::newFatal( new ApiRawMessage(
-				'The configuration title has no content or is not JSON content.',
-				'newcomer-tasks-configuration-loader-content-error' ) );
+			return StatusValue::newFatal( 'modeleditnotsupported-text', $content->getModel() );
 		}
 
 		return FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
@@ -161,10 +158,11 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 
 	/** @inheritDoc */
 	public function addDomain( string $domain, string $notes, Authority $authority ): StatusValue {
-		$content = $this->fetchLatestConfig();
-		if ( $content === null ) {
-			return StatusValue::newFatal( 'error' );
+		$contentStatus = $this->fetchLatestConfig();
+		if ( !$contentStatus->isOK() ) {
+			return $contentStatus;
 		}
+		$content = $contentStatus->getValue();
 		$content[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $authority->getUser()->getName() ];
 		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
 			->params( $domain, $notes )
@@ -174,10 +172,11 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 
 	/** @inheritDoc */
 	public function removeDomain( string $domain, string $notes, Authority $authority ): StatusValue {
-		$content = $this->fetchLatestConfig();
-		if ( $content === null ) {
-			return StatusValue::newFatal( 'error' );
+		$contentStatus = $this->fetchLatestConfig();
+		if ( !$contentStatus->isOK() ) {
+			return $contentStatus;
 		}
+		$content = $contentStatus->getValue();
 		foreach ( $content as $key => $value ) {
 			if ( ( $value['domain'] ?? '' ) == $domain ) {
 				unset( $content[$key] );
@@ -190,24 +189,21 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	}
 
 	/**
-	 * @return array[]|null Empty array when the page doesn't exist, null on failure
+	 * @return StatusValue<array> Good status wrapping parsed JSON config as an array (empty array
+	 *   when the page doesn't exist); error status on invalid JSON
 	 */
-	private function fetchLatestConfig(): ?array {
+	private function fetchLatestConfig(): StatusValue {
 		$configPage = $this->getBlockedDomainPage();
 		$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, IDBAccessObject::READ_LATEST );
 		if ( !$revision ) {
-			return [];
+			return StatusValue::newGood( [] );
 		}
 
 		$revContent = $revision->getContent( SlotRecord::MAIN );
 		if ( $revContent instanceof JsonContent ) {
-			$status = FormatJson::parse( $revContent->getText(), FormatJson::FORCE_ASSOC );
-			if ( $status->isOK() ) {
-				return $status->getValue();
-			}
+			return FormatJson::parse( $revContent->getText(), FormatJson::FORCE_ASSOC );
 		}
-
-		return null;
+		return StatusValue::newFatal( 'modeleditnotsupported-text', $revContent->getModel() );
 	}
 
 	/**
