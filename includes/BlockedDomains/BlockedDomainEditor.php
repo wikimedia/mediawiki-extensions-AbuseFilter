@@ -77,6 +77,7 @@ class BlockedDomainEditor {
 		$out = $this->context->getOutput();
 		$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-title' ) );
 		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-intro' );
+		$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 
 		// Direct editing of this page is blocked via EditPermissionHandler
 		$userCanManage = $this->context->getAuthority()->isAllowed( 'abusefilter-modify-blocked-external-domains' );
@@ -252,7 +253,9 @@ class BlockedDomainEditor {
 		$out = $form->getContext()->getOutput();
 		$domain = $this->blockedDomainValidator->validateDomain( $data['Domain'] );
 		if ( $domain === false ) {
-			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
+			$out->addHTML( Html::errorBox(
+				$this->msg( 'http-invalid-url' )->plaintextParams( $data['Domain'] )->parse()
+			) );
 			return false;
 		}
 
@@ -263,7 +266,9 @@ class BlockedDomainEditor {
 		);
 
 		if ( !$status->isGood() ) {
-			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
+			foreach ( $status->getMessages() as $msg ) {
+				$out->addHTML( Html::errorBox( $this->msg( $msg )->parse() ) );
+			}
 			return false;
 		}
 
@@ -325,7 +330,9 @@ class BlockedDomainEditor {
 
 		$domain = $this->blockedDomainValidator->validateDomain( $data['Domain'] );
 		if ( $domain === false ) {
-			$out->wrapWikiTextAsInterface( 'error', 'Invalid URL' );
+			$out->addHTML( Html::errorBox(
+				$this->msg( 'http-invalid-url' )->plaintextParams( $data['Domain'] )->parse()
+			) );
 			return false;
 		}
 		$status = $this->blockedDomainStorage->addDomain(
@@ -335,7 +342,9 @@ class BlockedDomainEditor {
 		);
 
 		if ( !$status->isGood() ) {
-			$out->wrapWikiTextAsInterface( 'error', 'Save failed' );
+			foreach ( $status->getMessages() as $msg ) {
+				$out->addHTML( Html::errorBox( $this->msg( $msg )->parse() ) );
+			}
 			return false;
 		}
 
