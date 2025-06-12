@@ -24,3 +24,4 @@ project.index
 sublime-*
 sftp-config.json
 /tests/selenium/log
+/.stylelintcache
