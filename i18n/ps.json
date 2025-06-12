@@ -175,8 +175,10 @@
 	"abusefilter-topnav-examine": "وروستني بدلونونه آزمويل",
 	"abusefilter-topnav-log": "د ورانکارۍ يادښت",
 	"abusefilter-log-noresults": "بې پايلو",
+	"abusefilter-diff-title": "بل‌بڼو ترمنځ توپير",
 	"abusefilter-diff-item": "توکی",
 	"abusefilter-diff-info": "بنسټيز مالومات",
+	"abusefilter-diff-backhistory": "چاڼگر پېښليک",
 	"abusefilter-diff-next": "نوی بدلون",
 	"abusefilter-group-default": "تلواليز",
 	"abusefilter-blocked-domains-notes": "يادښتونه",
@@ -188,5 +190,6 @@
 	"abusefilter-blocked-domains-remove": "لرې کول",
 	"abusefilter-blocked-domains-remove-reason": "لامل",
 	"abusefilter-blocked-domains-remove-submit": "لرې کول",
-	"abusefilter-log-ip-not-available": "د لاسرسي وړ نه دی"
+	"abusefilter-log-ip-not-available": "د لاسرسي وړ نه دی",
+	"notification-link-text-show-filter": "چاڼگر ښودل"
 }
