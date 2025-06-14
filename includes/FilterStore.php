@@ -291,6 +291,9 @@ class FilterStore {
 
 		// If the filter is already protected, it must remain protected even if
 		// the current filter doesn't use a protected variable anymore
+		// FIXME: Resposibility for this is currently unclear. It should be
+		// enforced prior to the FilterCompare::compareVersions call to avoid
+		// dummy filter versions.
 		$privacyLevel = $filter->getPrivacyLevel();
 		if ( $originalFilter->isProtected() ) {
 			$privacyLevel |= Flags::FILTER_USES_PROTECTED_VARS;
