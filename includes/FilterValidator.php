@@ -43,6 +43,7 @@ class FilterValidator {
 		AbuseFilterPermissionManager $permManager,
 		ServiceOptions $options
 	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->changeTagValidator = $changeTagValidator;
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->permManager = $permManager;
