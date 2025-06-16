@@ -24,7 +24,8 @@
 			"Pisceskaze",
 			"Doraemonluonbentoi",
 			"Hide on Rosé",
-			"SongNgu.xyz"
+			"SongNgu.xyz",
+			"Ayane Fumihiro"
 		]
 	},
 	"abusefilter-desc": "Áp dụng quy tắc suy luận tự động vào các sửa đổi",
@@ -448,7 +449,7 @@
 	"abusefilter-edit-builder-vars-wiki-name": "Tên cơ sở dữ liệu của wiki",
 	"abusefilter-edit-builder-vars-wiki-language": "Mã ngôn ngữ của wiki",
 	"abusefilter-filter-log": "Thay đổi bộ lọc gần đây",
-	"abusefilter-history": "Lịch sử các thay đổi của Bộ Lọc Vi Phạm $1",
+	"abusefilter-history": "Lịch sử các thay đổi của Bộ Lọc sai phạm $1",
 	"abusefilter-history-foruser": "Thay đổi bởi $1",
 	"abusefilter-history-hidden": "Ẩn",
 	"abusefilter-history-enabled": "Kích hoạt",
@@ -542,7 +543,7 @@
 	"abusefilter-test-search-type-createaccount": "Mở tài khoản",
 	"abusefilter-changeslist-examine": "kiểm tra",
 	"abusefilter-examine": "Kiểm tra từng thay đổi một",
-	"abusefilter-examine-intro": "Trang này cho phép bạn kiểm tra các biến do Bộ lọc Vi phạm tạo ra đối với từng thay đổi cụ thể, và kiểm thử nó với các bộ lọc.",
+	"abusefilter-examine-intro": "Trang này cho phép bạn kiểm tra các biến do Bộ lọc sai phạm tạo ra đối với từng thay đổi cụ thể và kiểm thử nó với các bộ lọc.",
 	"abusefilter-examine-intro-examine-only": "Trang này cho phép bạn kiểm tra các biến do Bộ lọc sai phạm tạo ra đối với một thay đổi đơn lẻ.",
 	"abusefilter-examine-legend": "Chọn thay đổi",
 	"abusefilter-examine-submit": "Tìm kiếm",
@@ -553,7 +554,7 @@
 	"abusefilter-examine-nomatch": "Bộ lọc không trùng với thay đổi này.",
 	"abusefilter-examine-syntaxerror": "Bộ lọc có cú pháp không hợp lệ",
 	"abusefilter-examine-notfound": "Không tìm thấy thay đổi do bạn yêu cầu.",
-	"abusefilter-examine-incompatible": "Thay đổi do bạn yêu cầu không được Bộ lọc Vi phạm hỗ trợ",
+	"abusefilter-examine-incompatible": "Thay đổi do bạn yêu cầu không được bộ lọc sai phạm hỗ trợ",
 	"abusefilter-examine-noresults": "Không tìm thấy kết quả hợp các tham số tìm kiếm được cho vào.",
 	"abusefilter-topnav": "'''Điều hướng Bộ lọc sai phạm'''",
 	"abusefilter-topnav-home": "Trang đầu",
