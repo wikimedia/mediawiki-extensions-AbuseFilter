@@ -69,6 +69,12 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 
 		$wikiPage = $this->createMock( WikiPage::class );
 		$wikiPage->method( 'getTitle' )->willReturn( $title );
+		$wikiPage->method( 'isSamePageAs' )->willReturnCallback(
+			static function ( $other ) use ( $target ) {
+				return $target->getNamespace() === $other->getTitle()->getNamespace()
+					&& $target->getDBkey() === $other->getTitle()->getDBkey();
+			}
+		);
 
 		return [ $wikiPage, new MutableRevisionRecord( $title ) ];
 	}

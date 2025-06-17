@@ -396,12 +396,6 @@
 		"EditPermission": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler"
 		},
-		"PageSave": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\PageSaveHandler",
-			"services": [
-				"AbuseFilterEditRevUpdater"
-			]
-		},
 		"RecentChangeSave": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RecentChangeSaveHandler",
 			"services": [
@@ -452,7 +446,6 @@
 		"UndeletePageToolLinks": "ToolLinks",
 		"UploadVerifyUpload": "FilteredActions",
 		"UploadStashFile": "FilteredActions",
-		"PageSaveComplete": "PageSave",
 		"getUserPermissionsErrors": "EditPermission",
 		"CheckUserInsertChangesRow": "CheckUser",
 		"CheckUserInsertPrivateEventRow": "CheckUser",
@@ -461,6 +454,13 @@
 		"ParserOutputStashForEdit": "FilteredActions",
 		"JsonValidateSave": "EditPermission"
 	},
+	"DomainEventIngresses": [
+		{
+			"events": [ "PageRevisionUpdated" ],
+			"class": "MediaWiki\\Extension\\AbuseFilter\\MediaWikiEventIngress\\PageEventIngress",
+			"services": [ "AbuseFilterEditRevUpdater", "WikiPageFactory" ]
+		}
+	],
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
