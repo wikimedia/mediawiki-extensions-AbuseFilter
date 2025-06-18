@@ -5,10 +5,12 @@ namespace MediaWiki\Extension\AbuseFilter\View;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
@@ -47,6 +49,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 * @var VariableGeneratorFactory
 	 */
 	private $varGeneratorFactory;
+	private VariablesManager $variablesManager;
+	private AbuseLoggerFactory $abuseLoggerFactory;
 
 	/**
 	 * @param LBFactory $lbFactory
@@ -54,6 +58,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	 * @param EditBoxBuilderFactory $boxBuilderFactory
 	 * @param RuleCheckerFactory $ruleCheckerFactory
 	 * @param VariableGeneratorFactory $varGeneratorFactory
+	 * @param VariablesManager $variablesManager
+	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -65,6 +71,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		EditBoxBuilderFactory $boxBuilderFactory,
 		RuleCheckerFactory $ruleCheckerFactory,
 		VariableGeneratorFactory $varGeneratorFactory,
+		VariablesManager $variablesManager,
+		AbuseLoggerFactory $abuseLoggerFactory,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -75,6 +83,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$this->boxBuilderFactory = $boxBuilderFactory;
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
 		$this->varGeneratorFactory = $varGeneratorFactory;
+		$this->variablesManager = $variablesManager;
+		$this->abuseLoggerFactory = $abuseLoggerFactory;
 	}
 
 	/**
@@ -295,6 +305,28 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 			if ( !$vars ) {
 				continue;
+			}
+
+			// If the test filter pattern contains protected variables and this entry had a value set for the
+			// protected variables that were in the pattern, then log that protected variables were accessed.
+			// This is to avoid a user being able to know the value of the variable if they repeatedly try values to
+			// find the actual value through trial-and-error.
+			$usedVars = $ruleChecker->getUsedVars( $this->testPattern );
+			$protectedVariableValuesShown = [];
+			$varsArray = $this->variablesManager->dumpAllVars( $vars, true );
+			foreach ( $this->afPermManager->getUsedProtectedVariables( $usedVars ) as $protectedVariable ) {
+				if ( isset( $varsArray[$protectedVariable] ) ) {
+					$protectedVariableValuesShown[] = $protectedVariable;
+				}
+			}
+
+			if ( count( $protectedVariableValuesShown ) ) {
+				$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
+				$logger->logViewProtectedVariableValue(
+					$this->getUser(),
+					$varsArray['user_name'] ?? $varsArray['accountname'],
+					$protectedVariableValuesShown
+				);
 			}
 
 			$ruleChecker->setVariables( $vars );
