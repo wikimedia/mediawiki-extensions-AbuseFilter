@@ -33,6 +33,8 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
+use MediaWiki\Title\Title;
+use MediaWiki\User\UserIdentity;
 use SpecialPageTestBase;
 use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Parsoid\Utils\DOMUtils;
@@ -61,6 +63,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	private Authority $authorityCannotUseProtectedVar;
 	private Authority $authorityCanUseProtectedVar;
 	private static int $recentChangeId;
+	private static string $userWhoHitFilter;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -96,12 +99,21 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
+	protected function tearDown(): void {
+		parent::tearDown();
+
+		// Clear protected variable access logs between tests to avoid failures, as the
+		// test class does not truncate the 'logging' table between tests.
+		$this->dropProtectedVarAccessLogs();
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function addDBDataOnce() {
 		$filterStore = AbuseFilterServices::getFilterStore();
 		$performer = $this->getTestSysop()->getUserIdentity();
+		$userWhoHitFilter = $this->getTestUser()->getUser();
 		$authority = new UltimateAuthority( $performer );
 
 		// Create a test filter where first revision is public, and the second two are protected.
@@ -162,11 +174,11 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
 		$abuseFilterLoggerFactory->newLogger(
 			$this->getExistingTestPage()->getTitle(),
-			$this->getTestUser()->getUser(),
+			$userWhoHitFilter,
 			VariableHolder::newFromArray( [
 				'action' => 'edit',
 				'user_unnamed_ip' => '1.2.3.4',
-				'user_name' => 'User1',
+				'user_name' => $userWhoHitFilter->getName(),
 			] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 
@@ -189,7 +201,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 
 		// Create a testing recentchanges table row by creating a logging table row that is sent to recentchanges.
 		$logEntry = new ManualLogEntry( 'move', 'move' );
-		$logEntry->setPerformer( $this->getTestUser()->getUserIdentity() );
+		$logEntry->setPerformer( $userWhoHitFilter );
 		$logEntry->setTarget( $this->getExistingTestPage()->getTitle() );
 		$logEntry->setComment( 'A very good reason' );
 		$logEntry->setParameters( [
@@ -208,6 +220,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			->fetchField();
 		$this->assertNotFalse( $recentChangeId );
 		self::$recentChangeId = $recentChangeId;
+		self::$userWhoHitFilter = $userWhoHitFilter->getName();
 	}
 
 	/**
@@ -479,6 +492,60 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			$this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( '1.2.3.4', $html );
+	}
+
+	public function testViewTestBatchWhenSubmittedForProtectedFilter() {
+		$this->addCustomProtectedVariableToGenericVars();
+
+		// Assert that the user who can see protected variables can submit the form for a protected filter
+		// and that this submission causes protected variable access logs to be created
+		[ $html, ] = $this->executeSpecialPage(
+			'test',
+			new FauxRequest( [
+				'wpFilterRules' => "custom_variable = 'custom_variable_value'",
+				'wpTestAction' => 0,
+				'wpTestUser' => '',
+				'wpTestPeriodStart'	=> '',
+				'wpTestPeriodEnd' => '',
+				'wpTestPage' => '',
+				'wpShowNegative' => 1,
+			], true ),
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+
+		$this->assertStringContainsString( 'custom_variable_value', $html );
+
+		// Verify that a protected variable access log was created as protected variable values were viewed.
+		$this->verifyProtectedVariableAccessLogExists(
+			$this->authorityCanUseProtectedVar->getUser(), self::$userWhoHitFilter, [ 'custom_variable' ]
+		);
+	}
+
+	private function verifyProtectedVariableAccessLogExists(
+		UserIdentity $performer, string $target, array $variablesViewed
+	): void {
+		$result = $this->newSelectQueryBuilder()
+			->select( 'log_params' )
+			->from( 'logging' )
+			->join( 'actor', null, 'actor_id=log_actor' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+				'actor_name' => $performer->getName(),
+				'log_title' => Title::newFromText( $target )->getDBkey(),
+				'log_namespace' => NS_USER,
+			] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+		$this->assertSame( 1, $result->numRows() );
+		$result->rewind();
+		$this->assertArrayEquals(
+			[ 'variables' => $variablesViewed ],
+			LogEntryBase::extractParams( $result->fetchRow()['log_params'] ),
+			false,
+			true
+		);
 	}
 
 	/**
@@ -918,25 +985,9 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '1.2.3.4', $abuseLogDetailsTableHtml );
 
 		// Verify that a protected variable access log was created as protected variable values were viewed.
-		$result = $this->newSelectQueryBuilder()
-			->select( 'log_params' )
-			->from( 'logging' )
-			->where( [
-				'log_action' => 'view-protected-var-value',
-				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-			] )
-			->caller( __METHOD__ )
-			->fetchResultSet();
-		$this->assertSame( 1, $result->numRows() );
-		$result->rewind();
-		$this->assertArrayEquals(
-			[ 'variables' => [ 'user_unnamed_ip' ] ],
-			LogEntryBase::extractParams( $result->fetchRow()['log_params'] ),
-			false,
-			true
+		$this->verifyProtectedVariableAccessLogExists(
+			$this->authorityCanUseProtectedVar->getUser(), self::$userWhoHitFilter, [ 'user_unnamed_ip' ]
 		);
-
-		$this->dropProtectedVarAccessLogs();
 	}
 
 	public function testViewExamineForRecentChangeWithMissingId() {
@@ -1011,25 +1062,9 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'custom_variable_value', $customVariableTableRow );
 
 		// Verify that a protected variable access log was created as protected variable values were viewed.
-		$result = $this->newSelectQueryBuilder()
-			->select( 'log_params' )
-			->from( 'logging' )
-			->where( [
-				'log_action' => 'view-protected-var-value',
-				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
-			] )
-			->caller( __METHOD__ )
-			->fetchResultSet();
-		$this->assertSame( 1, $result->numRows() );
-		$result->rewind();
-		$this->assertArrayEquals(
-			[ 'variables' => [ 'custom_variable' ] ],
-			LogEntryBase::extractParams( $result->fetchRow()['log_params'] ),
-			false,
-			true
+		$this->verifyProtectedVariableAccessLogExists(
+			$this->authorityCanUseProtectedVar->getUser(), static::$userWhoHitFilter, [ 'custom_variable' ]
 		);
-
-		$this->dropProtectedVarAccessLogs();
 	}
 
 	/**
