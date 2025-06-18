@@ -1306,7 +1306,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		$newFilter->setDeleted( $request->getCheck( 'wpFilterDeleted' ) );
 		$newFilter->setEnabled( $request->getCheck( 'wpFilterEnabled' ) );
 		$newFilter->setHidden( $request->getCheck( 'wpFilterHidden' ) );
-		$newFilter->setProtected( $request->getCheck( 'wpFilterProtected' ) );
+		$newFilter->setProtected( $request->getCheck( 'wpFilterProtected' )
+			|| $origFilter->isProtected() );
 		$newFilter->setGlobal( $request->getCheck( 'wpFilterGlobal' )
 			&& $this->getConfig()->get( 'AbuseFilterIsCentral' ) );
 
