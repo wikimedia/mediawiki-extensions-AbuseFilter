@@ -289,7 +289,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			'new_wikitext' => $newText,
 			'new_size' => strlen( $newText ),
 			'new_content_model' => 'wikitext',
-			'all_links' => [ "https://en.wikipedia.org/" ],
+			'new_links' => [ "https://en.wikipedia.org/" ],
 			'timestamp' => (string)$timestamp,
 		];
 		foreach ( $expected as $var => $value ) {

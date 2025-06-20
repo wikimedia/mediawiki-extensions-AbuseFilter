@@ -284,7 +284,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 					'action' => 'move',
 					'old_wikitext' => 'Old text',
 					'new_wikitext' => 'New text',
-					'all_links' => [ 'https://en.wikipedia.org' ],
+					'new_links' => [ 'https://en.wikipedia.org' ],
 					'moved_to_id' => 156,
 					'moved_to_prefixedtitle' => 'MediaWiki:Foobar.js',
 					'new_content_model' => CONTENT_MODEL_JAVASCRIPT

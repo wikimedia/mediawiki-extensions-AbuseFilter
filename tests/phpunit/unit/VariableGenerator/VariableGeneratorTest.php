@@ -177,7 +177,7 @@ class VariableGeneratorTest extends MediaWikiUnitTestCase {
 			'added_lines',
 			'removed_lines',
 			'added_lines_pst',
-			'all_links',
+			'new_links',
 			'old_links',
 			'added_links',
 			'removed_links',
