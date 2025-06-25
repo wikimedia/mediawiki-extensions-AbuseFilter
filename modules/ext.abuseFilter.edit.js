@@ -467,7 +467,15 @@
 				// Settings for Ace editor box
 				const readOnly = mw.config.get( 'aceConfig' ).aceReadOnly;
 
-				filterEditor.setTheme( 'ace/theme/textmate' );
+				// Get theme of user and set it for the editor
+				// Copied from CodeEditor extension commit 8b7b17f9ee357d2c789909f452a57fa7b4237384
+				const htmlClasses = document.documentElement.classList;
+				const inDarkMode = htmlClasses.contains( 'skin-theme-clientpref-night' ) || (
+					htmlClasses.contains( 'skin-theme-clientpref-os' ) &&
+					window.matchMedia && window.matchMedia( '( prefers-color-scheme: dark )' ).matches
+				);
+
+				filterEditor.setTheme( inDarkMode ? 'ace/theme/monokai' : 'ace/theme/textmate' );
 				filterEditor.setReadOnly( readOnly );
 				filterEditor.$blockScrolling = Infinity;
 
