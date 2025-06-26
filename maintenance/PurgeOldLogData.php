@@ -22,7 +22,7 @@ class PurgeOldLogData extends Maintenance {
 		parent::__construct();
 		$this->addDescription(
 			'Purges sensitive data in the abuse_filter_log table. This purges the IP address in the afl_ip ' .
-				'column as well as any protected variable values in afl_var_dump.'
+				'and afl_ip_hex columns as well as any protected variable values in afl_var_dump.'
 		);
 		$this->setBatchSize( 200 );
 
@@ -38,11 +38,11 @@ class PurgeOldLogData extends Maintenance {
 	}
 
 	/**
-	 * Purges IP addresses from the afl_ip column if the row was created more than $wgAbuseFilterLogIPMaxAge
-	 * seconds ago.
+	 * Purges IP addresses from the afl_ip and afl_ip_hex column if the row was created more than
+	 * $wgAbuseFilterLogIPMaxAge seconds ago.
 	 */
 	private function purgeIPs(): void {
-		$this->output( "Purging afl_ip column in rows that are expired in abuse_filter_log...\n" );
+		$this->output( "Purging afl_ip and afl_ip_hex columns in rows that are expired in abuse_filter_log...\n" );
 		$dbr = $this->getReplicaDB();
 		$dbw = $this->getPrimaryDB();
 		$ipPurgeCutoff = ConvertibleTimestamp::time() - $this->getConfig()->get( 'AbuseFilterLogIPMaxAge' );
@@ -53,7 +53,8 @@ class PurgeOldLogData extends Maintenance {
 				->select( 'afl_id' )
 				->from( 'abuse_filter_log' )
 				->where( [
-					$dbr->expr( 'afl_ip', '!=', '' ),
+					$dbr->expr( 'afl_ip', '!=', '' )
+						->or( 'afl_ip_hex', '!=', '' ),
 					$dbr->expr( 'afl_timestamp', '<', $dbr->timestamp( $ipPurgeCutoff ) ),
 				] )
 				->limit( $this->getBatchSize() )
@@ -63,7 +64,7 @@ class PurgeOldLogData extends Maintenance {
 			if ( $ids ) {
 				$dbw->newUpdateQueryBuilder()
 					->update( 'abuse_filter_log' )
-					->set( [ 'afl_ip' => '' ] )
+					->set( [ 'afl_ip' => '', 'afl_ip_hex' => '' ] )
 					->where( [ 'afl_id' => $ids ] )
 					->caller( __METHOD__ )
 					->execute();

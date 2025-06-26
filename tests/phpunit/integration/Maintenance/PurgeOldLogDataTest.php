@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Maintenance\PurgeOldLogData;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\MainConfigSchema;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
+use Wikimedia\IPUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
@@ -33,13 +34,14 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 	 */
 	private function addRowsForTest(): void {
 		// Pretend that old_wikitext is a protected variable. This allows testing that protected variable values are
-		// purged when afl_ip is purged.
+		// properly purged.
 		$this->setTemporaryHook( 'AbuseFilterCustomProtectedVariables', static function ( &$variables ) {
 			$variables[] = 'old_wikitext';
 		} );
 
 		$defaultRow = [
 			'afl_ip' => '1.1.1.1',
+			'afl_ip_hex' => IPUtils::toHex( '1.1.1.1' ),
 			'afl_global' => 0,
 			'afl_filter_id' => 1,
 			'afl_user' => 1,
@@ -64,7 +66,7 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 		// One additional expired row has invalid JSON in the afl_var_dump column to test that handling.
 		$rows = [
 			[
-				'afl_id' => 1, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ), 'afl_ip' => '1.3.4.5',
+				'afl_id' => 1, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ),
 				'afl_var_dump' => '{invalidjson}',
 			],
 			[
@@ -74,7 +76,10 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 						[ 'old_wikitext' => 'abc', 'new_wikitext' => 'abcd' ]
 					) ),
 			],
-			[ 'afl_id' => 3, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ), 'afl_ip' => '' ],
+			[
+				'afl_id' => 3, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ), 'afl_ip' => '',
+				'afl_ip_hex' => '',
+			],
 			[
 				'afl_id' => 4,
 				'afl_timestamp' => $this->getDb()->timestamp( self::FAKE_TIME ),
@@ -83,7 +88,10 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 						[ 'old_wikitext' => 'abc', 'new_wikitext' => 'abcd' ]
 					) ),
 			],
-			[ 'afl_id' => 5, 'afl_timestamp' => $this->getDb()->timestamp( self::FAKE_TIME ), 'afl_ip' => '' ],
+			[
+				'afl_id' => 5, 'afl_timestamp' => $this->getDb()->timestamp( self::FAKE_TIME ), 'afl_ip' => '',
+				'afl_ip_hex' => '',
+			],
 		];
 		$rows = array_map( static function ( $row ) use ( $defaultRow ) {
 			$row = $row + $defaultRow;
@@ -102,7 +110,7 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 		$this->addRowsForTest();
 
 		// Pretend that old_wikitext is a protected variable. This allows testing that protected variable values are
-		// purged when afl_ip is purged.
+		// purged.
 		$this->setTemporaryHook( 'AbuseFilterCustomProtectedVariables', static function ( &$variables ) {
 			$variables[] = 'old_wikitext';
 		} );
@@ -117,23 +125,23 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 		$this->maintenance->loadWithArgv( [ '--batch-size', 1 ] );
 		$this->maintenance->execute();
 
-		// Verify that afl_ip has been purged for all but the row that is not expired and had an IP.
+		// Verify that afl_ip and afl_ip_hex has been purged for all but the row that is not expired and had an IP.
 		$this->newSelectQueryBuilder()
-			->select( [ 'afl_id', 'afl_ip' ] )
+			->select( [ 'afl_id', 'afl_ip', 'afl_ip_hex' ] )
 			->from( 'abuse_filter_log' )
 			->caller( __METHOD__ )
 			->assertResultSet( [
-				[ 1, '' ],
-				[ 2, '' ],
-				[ 3, '' ],
-				[ 4, '1.1.1.1' ],
-				[ 5, '' ],
+				[ 1, '', '' ],
+				[ 2, '', '' ],
+				[ 3, '', '' ],
+				[ 4, '1.1.1.1', IPUtils::toHex( '1.1.1.1' ) ],
+				[ 5, '', '' ],
 			] );
 
 		// Verify that the protected variable value the log that was expired has been blanked, but the non-expired
 		// one has been left alone
 		$rows = $this->newSelectQueryBuilder()
-			->select( [ 'afl_id', 'afl_var_dump', 'afl_ip' ] )
+			->select( [ 'afl_id', 'afl_var_dump', 'afl_ip', 'afl_ip_hex' ] )
 			->from( 'abuse_filter_log' )
 			->caller( __METHOD__ )
 			->fetchResultSet();
@@ -174,7 +182,7 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 			'Invalid JSON in afl_var_dump for row with ID 1. Skipping this row', $actualOutput
 		);
 		$this->assertStringContainsString(
-			'Purging afl_ip column in rows that are expired in abuse_filter_log', $actualOutput
+			'Purging afl_ip and afl_ip_hex columns in rows that are expired in abuse_filter_log', $actualOutput
 		);
 		$this->assertStringContainsString( 'Done. Purged 2 IPs', $actualOutput );
 		$this->assertStringContainsString(
@@ -196,7 +204,7 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 		// Verify that the output is as expected
 		$actualOutput = $this->getActualOutputForAssertion();
 		$this->assertStringContainsString(
-			'Purging afl_ip column in rows that are expired in abuse_filter_log', $actualOutput
+			'Purging afl_ip and afl_ip_hex columns in rows that are expired in abuse_filter_log', $actualOutput
 		);
 		$this->assertStringContainsString( 'Done. Purged 0 IPs', $actualOutput );
 

@@ -16,6 +16,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityValue;
 use Profiler;
+use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\ScopedCallback;
@@ -169,6 +170,7 @@ class AbuseLogger {
 		// AbortAutoAccount), create a dummy anonymous user instead.
 		$user = $this->user->isSafeToLoad() ? $this->user : new User;
 		// Create a template
+		$ip = $this->options->get( 'AbuseFilterLogIP' ) ? $this->requestIP : '';
 		$logTemplate = [
 			'afl_user' => $user->getId(),
 			'afl_user_text' => $user->getName(),
@@ -176,7 +178,8 @@ class AbuseLogger {
 			'afl_namespace' => $this->title->getNamespace(),
 			'afl_title' => $this->title->getDBkey(),
 			'afl_action' => $this->action,
-			'afl_ip' => $this->options->get( 'AbuseFilterLogIP' ) ? $this->requestIP : ''
+			'afl_ip' => $ip,
+			'afl_ip_hex' => IPUtils::toHex( $ip ),
 		];
 		// Hack to avoid revealing IPs of people creating accounts
 		if ( ( $this->action === 'createaccount' || $this->action === 'autocreateaccount' ) && !$user->getId() ) {
