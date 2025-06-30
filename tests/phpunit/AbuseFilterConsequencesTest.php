@@ -625,7 +625,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function checkConsequences( $result, $actionParams, $expectedConsequences ) {
 		$expectedErrors = [];
-		$testErrorMessage = false;
 		foreach ( $expectedConsequences as $consequence => $ids ) {
 			foreach ( $ids as $id ) {
 				$params = self::FILTERS[$id]['actions'][$consequence];
@@ -642,31 +641,18 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 						// Aborts the hook with 'abusefilter-blocked-display' error. Should block
 						// the user with expected duration and options.
 						$userBlock = $this->user->getBlock( false );
-
-						if ( !$userBlock ) {
-							$testErrorMessage = "User isn't blocked.";
-							break;
-						}
+						$this->assertNotNull( $userBlock, 'User should be blocked' );
 
 						$shouldPreventTalkEdit = $params[0] === 'blocktalk';
-						$edittalkCheck = $userBlock->appliesToUsertalk( $this->user->getTalkPage() ) ===
-							$shouldPreventTalkEdit;
-						if ( !$edittalkCheck ) {
-							$testErrorMessage = 'The expected block option "edittalk" options does not ' .
-								'match the actual one.';
-							break;
-						}
+						$preventsTalkEdit = $userBlock->appliesToUsertalk( $this->user->getTalkPage() );
+						$this->assertSame( $shouldPreventTalkEdit, $preventsTalkEdit, 'edittalk option should match' );
 
 						$expectedExpiry = BlockUser::parseExpiryInput( $params[2] );
 						$actualExpiry = $userBlock->getExpiry();
 						if ( !wfIsInfinity( $actualExpiry ) ) {
 							$actualExpiry = wfTimestamp( TS_MW, $actualExpiry );
 						}
-						if ( $expectedExpiry === false || $expectedExpiry !== $actualExpiry ) {
-							$testErrorMessage = "The expected block expiry ($expectedExpiry) does not " .
-								"match the actual one ($actualExpiry).";
-							break;
-						}
+						$this->assertSame( $expectedExpiry, $actualExpiry, 'Block expiry' );
 
 						$expectedErrors[] = 'abusefilter-blocked-display';
 						break;
@@ -674,22 +660,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 						// Aborts the hook with 'abusefilter-degrouped' error and degroups the user.
 						$expectedErrors[] = 'abusefilter-degrouped';
 						$ugm = MediaWikiServices::getInstance()->getUserGroupManager();
-						$groupCheck = !in_array( 'sysop', $ugm->getUserEffectiveGroups( $this->user ) );
-						if ( !$groupCheck ) {
-							$testErrorMessage = 'The user was not degrouped.';
-						}
+						$userGroups = $ugm->getUserEffectiveGroups( $this->user );
+						$this->assertNotContains( 'sysop', $userGroups, 'User should be degrouped' );
 						break;
 					case 'tag':
 						// Only adds tags, to be retrieved in change_tag table.
 						$appliedTags = $this->getActionTags( $actionParams );
-						$tagCheck = count( array_diff( $params, $appliedTags ) ) === 0;
-						if ( !$tagCheck ) {
-							$expectedTags = implode( ', ', $params );
-							$actualTags = implode( ', ', $appliedTags );
-
-							$testErrorMessage = "Expected the action to have the following tags: $expectedTags. " .
-								"Got the following instead: $actualTags.";
-						}
+						$this->assertSame( $params, $appliedTags, 'Change tags should match' );
 						break;
 					case 'throttle':
 						throw new UnexpectedValueException( 'Use self::testThrottleConsequence to test throttling' );
@@ -698,16 +675,10 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 						$expectedErrors[] = 'abusefilter-autopromote-blocked';
 						$value = AbuseFilterServices::getBlockAutopromoteStore()
 							->getAutoPromoteBlockStatus( $this->user );
-						if ( !$value ) {
-							$testErrorMessage = "The key for blocking autopromotion wasn't set.";
-						}
+						$this->assertNotSame( 0, $value, 'Blockautopromote should be set' );
 						break;
 					default:
 						throw new UnexpectedValueException( "Consequence not recognized: $consequence." );
-				}
-
-				if ( $testErrorMessage ) {
-					$this->fail( $testErrorMessage );
 				}
 			}
 		}
