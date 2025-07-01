@@ -588,10 +588,15 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 	 */
 	private function getActionTags( $actionParams ) {
 		$dbw = $this->getDb();
+
+		// NOTE: Title::newFromTextThrow() can return a cached object containing
+		//       stale state (T398175). Use getters with IDBAccessObject::READ_LATEST
+		//       to work around that.
 		$title = Title::newFromTextThrow( $actionParams['target'] );
+
 		$store = $this->getServiceContainer()->getChangeTagsStore();
 		if ( $actionParams['action'] === 'edit' || $actionParams['action'] === 'stashedit' ) {
-			return $store->getTags( $dbw, null, $title->getLatestRevID() );
+			return $store->getTags( $dbw, null, $title->getLatestRevID( IDBAccessObject::READ_LATEST ) );
 		}
 
 		$logType = $actionParams['action'] === 'createaccount' ? 'newusers' : $actionParams['action'];
