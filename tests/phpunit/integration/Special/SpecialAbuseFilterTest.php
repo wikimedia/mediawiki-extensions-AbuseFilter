@@ -27,6 +27,7 @@ use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTestBatch;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewTools;
 use MediaWiki\Html\Html;
 use MediaWiki\Logging\LogEntryBase;
+use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
@@ -58,8 +59,8 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	use FilterFromSpecsTestTrait;
 
 	private Authority $authorityCannotUseProtectedVar;
-
 	private Authority $authorityCanUseProtectedVar;
+	private static int $recentChangeId;
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -185,6 +186,28 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			->table( 'abuse_filter_log' )
 			->caller( __METHOD__ )
 			->assertFieldValue( 1 );
+
+		// Create a testing recentchanges table row by creating a logging table row that is sent to recentchanges.
+		$logEntry = new ManualLogEntry( 'move', 'move' );
+		$logEntry->setPerformer( $this->getTestUser()->getUserIdentity() );
+		$logEntry->setTarget( $this->getExistingTestPage()->getTitle() );
+		$logEntry->setComment( 'A very good reason' );
+		$logEntry->setParameters( [
+			'4::target' => wfRandomString(),
+			'5::noredir' => '0'
+		] );
+		$logId = $logEntry->insert();
+		$logEntry->publish( $logId );
+
+		// Check that the recentchanges row for the log entry exists and get the ID for it.
+		$recentChangeId = $this->newSelectQueryBuilder()
+			->select( 'rc_id' )
+			->from( 'recentchanges' )
+			->where( [ 'rc_logid' => $logId ] )
+			->caller( __METHOD__ )
+			->fetchField();
+		$this->assertNotFalse( $recentChangeId );
+		self::$recentChangeId = $recentChangeId;
 	}
 
 	/**
@@ -912,5 +935,119 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			false,
 			true
 		);
+
+		$this->dropProtectedVarAccessLogs();
+	}
+
+	public function testViewExamineForRecentChangeWithMissingId() {
+		[ $html, ] = $this->executeSpecialPage(
+			'examine/1234',
+			new FauxRequest(),
+			null,
+			$this->authorityCannotUseProtectedVar
+		);
+
+		$this->verifyHasExamineIntroMessage( $html );
+		$this->assertStringContainsString(
+			'(abusefilter-examine-notfound)',
+			$html,
+			'Missing error message for unknown AbuseLog ID.'
+		);
+	}
+
+	private function addCustomProtectedVariableToGenericVars() {
+		$this->setTemporaryHook( 'AbuseFilterCustomProtectedVariables', static function ( &$variables ) {
+			$variables[] = 'custom_variable';
+		} );
+		$this->setTemporaryHook( 'AbuseFilter-builder', static function ( array &$realValues ) {
+			$realValues['vars']['custom_variable'] = 'custom-variable-test';
+		} );
+		$this->setTemporaryHook( 'AbuseFilter-generateGenericVars', static function ( VariableHolder $vars ) {
+			$vars->setVar( 'custom_variable', 'custom_variable_value' );
+		} );
+		$this->resetServices();
+	}
+
+	public function testViewExamineForRecentChangeWhereUserCannotSeeSpecificProtectedVariableDueToPermission() {
+		// Mock that all users lack access to the 'custom_variable' variable due to it being a protected variable.
+		$this->addCustomProtectedVariableToGenericVars();
+		$this->setTemporaryHook(
+			'AbuseFilterCanViewProtectedVariables',
+			static function ( Authority $performer, array $variables, AbuseFilterPermissionStatus $returnStatus ) {
+				if ( in_array( 'custom_variable', $variables ) ) {
+					$returnStatus->setPermission( 'test-permission' );
+				}
+			}
+		);
+
+		[ $html, ] = $this->executeSpecialPage(
+			'examine/' . self::$recentChangeId, null, null, $this->authorityCanUseProtectedVar
+		);
+
+		$this->verifyHasExamineIntroMessage( $html );
+		$this->assertStringNotContainsString(
+			'mw-abuselog-details-custom_variable',
+			$html,
+			'The "custom_variable" variable was not unset, but it should ' .
+				'have been because the user cannot see it.'
+		);
+	}
+
+	public function testViewExamineForRecentChangeWhenUserCanSeeRecentChange() {
+		$this->addCustomProtectedVariableToGenericVars();
+		[ $html, ] = $this->executeSpecialPage(
+			'examine/' . self::$recentChangeId, null, null, $this->authorityCanUseProtectedVar
+		);
+		DeferredUpdates::doUpdates();
+
+		$this->verifyHasExamineIntroMessage( $html );
+
+		// Check that the test tools elements are loaded
+		$this->assertStringContainsString( '(abusefilter-examine-test', $html );
+		$this->assertStringContainsString( '(abusefilter-examine-test-button', $html );
+
+		// Verify that the custom_variable variable is shown with it's value.
+		$customVariableTableRow = $this->assertAndGetByElementClass( $html, 'mw-abuselog-details-custom_variable' );
+		$this->assertStringContainsString( 'custom_variable_value', $customVariableTableRow );
+
+		// Verify that a protected variable access log was created as protected variable values were viewed.
+		$result = $this->newSelectQueryBuilder()
+			->select( 'log_params' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+		$this->assertSame( 1, $result->numRows() );
+		$result->rewind();
+		$this->assertArrayEquals(
+			[ 'variables' => [ 'custom_variable' ] ],
+			LogEntryBase::extractParams( $result->fetchRow()['log_params'] ),
+			false,
+			true
+		);
+
+		$this->dropProtectedVarAccessLogs();
+	}
+
+	/**
+	 * Drops the 'view-protected-var-value' logs from the 'logging' table.
+	 *
+	 * This is needed because in {@link self::addDBDataOnce} we added rows to the 'logging' table and so the table is
+	 * not reset between tests.
+	 *
+	 * @return void
+	 */
+	private function dropProtectedVarAccessLogs(): void {
+		$this->getDb()->newDeleteQueryBuilder()
+			->deleteFrom( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->execute();
 	}
 }
