@@ -110,6 +110,7 @@
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|uruchomił|uruchomiła|uruchomił(a)}} filtr nadużyć, {{GENDER:$8|wykonując}} „$3” na $4.\nPodjęte działania: $5;\nOpis filtru: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|uruchomił|uruchomiła|uruchomił(a)}} filtr nadużyć, {{GENDER:$8|wykonując}} „$3” na $4.\nPodjęte działania: $5;\nOpis filtru: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|uruchomił|uruchomił|uruchomił(a)}} $3, {{GENDER:$9|wykonując}} „$4” na $5.\nPodjęte działania: $6;\nOpis filtru: $7 ($8)",
+	"abusefilter-log-detailedentry-meta-without-action-links": "$1: $2 {{GENDER:$9|uruchomił|uruchomił|uruchomił(a)}} $3, {{GENDER:$9|wykonując}} „$4” na $5.\nPodjęte działania: $6;\nOpis filtru: $7",
 	"abusefilter-log-detailedentry-global": "filtr globalny $1",
 	"abusefilter-log-detailedentry-local": "filtr $1",
 	"abusefilter-log-detailslink": "szczegóły",
