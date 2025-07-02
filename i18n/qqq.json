@@ -332,7 +332,7 @@
 	"abusefilter-edit-deleting-enabled": "Message to warn a user that an active filter can't be marked as deleted",
 	"abusefilter-edit-restricted": "Message to warn a user that a filter could not be edited for a given reason.",
 	"abusefilter-edit-protected-variable": "Message to warn a user that a filter could not be edited for a given reason. Parameters:\n* $1 is the variable that raised the error.",
-	"abusefilter-edit-protected-variable-not-protected": "Message to warn a user that a filter could not be edited for a given reason.",
+	"abusefilter-edit-protected-variable-not-protected": "Message to warn a user that a filter could not be edited for a given reason. Parameters:\n* $1 - list of protected variables.\n* $2 - number of those variables",
 	"abusefilter-edit-viewhistory": "Link description for link that leads to a revision overview for a filter.",
 	"abusefilter-edit-history": "Field label for {{msg-mw|abusefilter-edit-viewhistory}}.\n{{Identical|History}}",
 	"abusefilter-edit-check": "Button text for checking abuse filter syntax.\n\nUsed in {{msg-mw|Abusefilter-test-syntaxerr}}.",

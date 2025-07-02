@@ -361,7 +361,8 @@ class FilterValidator {
 		) {
 			$ret->error(
 				'abusefilter-edit-protected-variable-not-protected',
-				Message::listParam( $usedProtectedVariables )
+				Message::listParam( $usedProtectedVariables ),
+				Message::numParam( count( $usedProtectedVariables ) )
 			);
 		}
 
