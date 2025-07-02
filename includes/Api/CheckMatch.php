@@ -7,12 +7,14 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
 use MediaWiki\Api\ApiResult;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
+use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logging\LogEventsList;
 use MediaWiki\Logging\LogPage;
@@ -27,6 +29,8 @@ class CheckMatch extends ApiBase {
 	private VariablesBlobStore $afVariablesBlobStore;
 	private VariableGeneratorFactory $afVariableGeneratorFactory;
 	private FilterLookup $filterLookup;
+	private VariablesManager $afVariablesManager;
+	private AbuseLoggerFactory $abuseLoggerFactory;
 
 	public function __construct(
 		ApiMain $main,
@@ -35,7 +39,9 @@ class CheckMatch extends ApiBase {
 		AbuseFilterPermissionManager $afPermManager,
 		VariablesBlobStore $afVariablesBlobStore,
 		VariableGeneratorFactory $afVariableGeneratorFactory,
-		FilterLookup $filterLookup
+		FilterLookup $filterLookup,
+		VariablesManager $afVariablesManager,
+		AbuseLoggerFactory $abuseLoggerFactory
 	) {
 		parent::__construct( $main, $action );
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
@@ -43,6 +49,8 @@ class CheckMatch extends ApiBase {
 		$this->afVariablesBlobStore = $afVariablesBlobStore;
 		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
 		$this->filterLookup = $filterLookup;
+		$this->afVariablesManager = $afVariablesManager;
+		$this->abuseLoggerFactory = $abuseLoggerFactory;
 	}
 
 	/**
@@ -105,9 +113,8 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-abusefilter-nosuchlogid', $params['logid'] ], 'nosuchlogid' );
 			}
 
-			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter(
-				$performer, $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global )
-			);
+			$filter = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global );
+			$canSeeDetails = $this->afPermManager->canSeeLogDetailsForFilter( $performer, $filter );
 			if ( !$canSeeDetails ) {
 				$this->dieWithError( 'apierror-permissiondenied-generic', 'cannotseedetails' );
 			}
@@ -120,6 +127,18 @@ class CheckMatch extends ApiBase {
 			}
 
 			$vars = $this->afVariablesBlobStore->loadVarDump( $row );
+
+			// Check that the user can see all the protected filters in the abuse_filter_log log.
+			if ( $filter->isProtected() ) {
+				$varsArray = $this->afVariablesManager->dumpAllVars( $vars, true );
+				$permStatus = $this->afPermManager->canViewProtectedVariables(
+					$this->getAuthority(), array_keys( $varsArray )
+				);
+				if ( !$permStatus->isGood() ) {
+					// TODO: Make this error message more specific once this is public and we can add new i18n
+					$this->dieWithError( 'apierror-permissiondenied-generic', 'cannotseedetails' );
+				}
+			}
 		}
 		if ( $vars === null ) {
 			// @codeCoverageIgnoreStart
@@ -130,6 +149,36 @@ class CheckMatch extends ApiBase {
 		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker( $vars );
 		if ( !$ruleChecker->checkSyntax( $params['filter'] )->isValid() ) {
 			$this->dieWithError( 'apierror-abusefilter-badsyntax', 'badsyntax' );
+		}
+
+		// Check if the provided pattern uses protected variables. If it does, then refuse to check the pattern
+		// if the user cannot see the used protected variables. This prevents matching against protected variables
+		// generated when providing 'rcid' and is a fail-safe in the same way for 'logid'.
+		$usedVars = $ruleChecker->getUsedVars( $params['filter'] );
+		if ( $this->afPermManager->getForbiddenVariables( $this->getAuthority(), $usedVars ) ) {
+			// TODO: Make this error message more specific once this is public and we can add new i18n
+			$this->dieWithError( 'apierror-permissiondenied-generic', 'cannotseeprotectedvariables' );
+		}
+
+		// If the test filter pattern contains protected variables and this entry had a value set for the
+		// protected variables that were in the pattern, then log that protected variables were accessed.
+		// This is to avoid a user being able to know the value of the variable if they repeatedly try values to
+		// find the actual value through trial-and-error.
+		$protectedVariableValuesShown = [];
+		$varsArray = $this->afVariablesManager->dumpAllVars( $vars, true );
+		foreach ( $this->afPermManager->getUsedProtectedVariables( $usedVars ) as $protectedVariable ) {
+			if ( isset( $varsArray[$protectedVariable] ) ) {
+				$protectedVariableValuesShown[] = $protectedVariable;
+			}
+		}
+
+		if ( count( $protectedVariableValuesShown ) ) {
+			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
+			$logger->logViewProtectedVariableValue(
+				$this->getUser(),
+				$varsArray['user_name'] ?? $varsArray['accountname'],
+				$protectedVariableValuesShown
+			);
 		}
 
 		$result = [
