@@ -333,7 +333,7 @@
 	"abusefilter-edit-deleting-enabled": "您不能標記啟用的過濾器為已刪除。",
 	"abusefilter-edit-restricted": "該過濾器包含了一個或多個已限制的動作，您無法編輯此過濾器。\n請聯絡擁有新增已限制動作權限的使用者協助您修改。",
 	"abusefilter-edit-protected-variable": "您無法儲存此過濾器，因為您無權使用下列變數：$1",
-	"abusefilter-edit-protected-variable-not-protected": "無法儲存您的過濾器，因為使用了以下[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|受保護變數}}]：$1。請確認您了解此過濾器的詳細資訊對於無法看到受保護變數的使用者為不可見。",
+	"abusefilter-edit-protected-variable-not-protected": "無法儲存您的過濾器，因為使用了以下[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|受保護變數}}]：$1。請確認您了解此過濾器的詳細資訊對於無法看到受保護變數的使用者為不可見。",
 	"abusefilter-edit-viewhistory": "檢視此過濾器歷史",
 	"abusefilter-edit-history": "歷史：",
 	"abusefilter-edit-check": "語法檢查",

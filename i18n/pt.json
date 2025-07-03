@@ -307,7 +307,7 @@
 	"abusefilter-edit-deleting-enabled": "Não pode marcar um filtro ativo como eliminado.",
 	"abusefilter-edit-restricted": "Não pode editar este filtro, porque ele contém uma ou mais ações restritas.\nPor favor, peça a um utilizador com permissão de adicionamento de ações restritas para efetuar a alteração por si.",
 	"abusefilter-edit-protected-variable": "Não pode gravar este filtro porque não tem permissão para usar as seguintes variáveis: $1",
-	"abusefilter-edit-protected-variable-not-protected": "O seu filtro não foi gravado porque usa [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|a seguinte variável protegida|as seguintes variáveis protegidas}}]: $1. Confirme, por favor, que compreende que os detalhes deste filtro serão ocultados dos utilizadores que não podem ver variáveis protegidas.",
+	"abusefilter-edit-protected-variable-not-protected": "O seu filtro não foi gravado porque usa [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|a seguinte variável protegida|as seguintes variáveis protegidas}}]: $1. Confirme, por favor, que compreende que os detalhes deste filtro serão ocultados dos utilizadores que não podem ver variáveis protegidas.",
 	"abusefilter-edit-viewhistory": "Ver o histórico deste filtro",
 	"abusefilter-edit-history": "Histórico:",
 	"abusefilter-edit-check": "Verificar sintaxe",

@@ -276,7 +276,7 @@
 	"abusefilter-edit-deleting-enabled": "Aktiivset filtrit ei saa kustutatuks märkida.",
 	"abusefilter-edit-restricted": "Sa ei saa seda filtrit muuta, sest see sisaldab üht või enamat piiratud ligipääsuga toimingut.\nPalu muudatus teha kasutajal, kellel on õigus lisada piiratud ligipääsuga toiminguid.",
 	"abusefilter-edit-protected-variable": "Sa ei saa seda filtrit salvestada, sest sul pole õigust kasutada {{PLURAL:$1|järgmist muutujat|järgmiseid muutujaid}}: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Sinu filtrit ei salvestatud, sest see kasutab {{PLURAL:$1|järgmist|järgmiseid}} [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables kaitstud {{PLURAL:$1|muutujat|muutujaid}}]: $1. Palun luba kaitstud muutujate kasutamine. See toiming peidab filtri üksikasjad jäädavalt kasutajate eest, kes ei saa kaitstud muutujaid vaadata.",
+	"abusefilter-edit-protected-variable-not-protected": "Sinu filtrit ei salvestatud, sest see kasutab {{PLURAL:$2|järgmist|järgmiseid}} [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables kaitstud {{PLURAL:$2|muutujat|muutujaid}}]: $1. Palun luba kaitstud muutujate kasutamine. See toiming peidab filtri üksikasjad jäädavalt kasutajate eest, kes ei saa kaitstud muutujaid vaadata.",
 	"abusefilter-edit-viewhistory": "Vaata selle filtri ajalugu",
 	"abusefilter-edit-history": "Ajalugu:",
 	"abusefilter-edit-check": "Kontrolli süntaksit",

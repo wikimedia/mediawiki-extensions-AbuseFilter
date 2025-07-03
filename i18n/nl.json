@@ -316,7 +316,7 @@
 	"abusefilter-edit-deleting-enabled": "U kunt een actief filter niet als verwijderd markeren.",
 	"abusefilter-edit-restricted": "{{#FORMAL:U|Je}} kunt dit filter niet bewerken omdat het één of meerdere beperkte handelingen bevat.\nVraag een gebruiker met toestemming om beperkte handelingen toe te voegen om de wijziging voor {{#FORMAL:u|je}} door te voeren.",
 	"abusefilter-edit-protected-variable": "U kunt dit filter niet opslaan omdat u geen toestemming hebt om de volgende variabelen te gebruiken: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Uw filter is niet opgeslagen omdat het de volgende [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables beveiligde variabele{{PLURAL:$1||n}}] gebruikt: $1. Schakel het gebruik van beveiligde variabelen in. Hierdoor worden de details van het filter definitief verborgen voor gebruikers die de beschermde variabelen niet kunnen zien.",
+	"abusefilter-edit-protected-variable-not-protected": "Uw filter is niet opgeslagen omdat het de volgende [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables beveiligde variabele{{PLURAL:$2||n}}] gebruikt: $1. Schakel het gebruik van beveiligde variabelen in. Hierdoor worden de details van het filter definitief verborgen voor gebruikers die de beschermde variabelen niet kunnen zien.",
 	"abusefilter-edit-viewhistory": "Geschiedenis van het filter bekijken",
 	"abusefilter-edit-history": "Geschiedenis:",
 	"abusefilter-edit-check": "Syntaxis controleren",

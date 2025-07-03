@@ -288,7 +288,7 @@
 	"abusefilter-edit-deleting-enabled": "Не можете да означите активен филтер како избришан.",
 	"abusefilter-edit-restricted": "Не можете да го уредувате овој филтер бидејќи содржи еден или повеќе ограничени дејствија.\nПобарајте овие промени за вас да ги направи некој корисник со дозвола за додавање на ограничени дејства.",
 	"abusefilter-edit-protected-variable": "Не можете да го зачувате овој филтер бидејќи немате дозвола да ги користите следниве променливи: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Вашиот филтер не е зачуван бидејќи ги користи следниве [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|protected variable|заштитени променливи}}]: $1. Овозможете ја употребата на заштитени променливи. Ова дејство трајно ќе ги скрие поединостите за филтерот од корисниците што не можат да гледаат заштитени променливи.",
+	"abusefilter-edit-protected-variable-not-protected": "Вашиот филтер не е зачуван бидејќи ги користи следниве [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|protected variable|заштитени променливи}}]: $1. Овозможете ја употребата на заштитени променливи. Ова дејство трајно ќе ги скрие поединостите за филтерот од корисниците што не можат да гледаат заштитени променливи.",
 	"abusefilter-edit-viewhistory": "Преглед на историјата на филтерот",
 	"abusefilter-edit-history": "Историја:",
 	"abusefilter-edit-check": "Проверка на синтакса",

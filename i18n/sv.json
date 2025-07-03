@@ -318,7 +318,7 @@
 	"abusefilter-edit-deleting-enabled": "Du kan inte märka ett aktivt filter som raderat.",
 	"abusefilter-edit-restricted": "Du kan inte ändra detta filter eftersom det innehåller en eller fler begränsade handlingar. Vänligen fråga en användare med behörighet att lägga till begränsade handlingar att göra ändringen åt dig.",
 	"abusefilter-edit-protected-variable": "Du kan inte spara detta filter eftersom du inte har behörighet att använda följande variabler: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Ditt filter sparades inte eftersom det använder följande [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|skyddade variabel|skyddade variabler}}]: $1. Aktivera användningen av skyddade variabler. Denna åtgärd kommer permanent dölja detaljer av filtret för användare som inte kan se skyddade variabler.",
+	"abusefilter-edit-protected-variable-not-protected": "Ditt filter sparades inte eftersom det använder följande [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|skyddade variabel|skyddade variabler}}]: $1. Aktivera användningen av skyddade variabler. Denna åtgärd kommer permanent dölja detaljer av filtret för användare som inte kan se skyddade variabler.",
 	"abusefilter-edit-viewhistory": "Visa det här filtrets historik",
 	"abusefilter-edit-history": "Historik:",
 	"abusefilter-edit-check": "Kontrollera syntax",

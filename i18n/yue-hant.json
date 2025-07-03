@@ -182,7 +182,7 @@
 	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|過濾器$3]]經已[[Special:AbuseFilter/history/$1/diff/prev/$2|改咗]]。",
 	"abusefilter-edit-badsyntax": "你所指定嘅過濾器有語法錯誤。\n個處理器嘅輸出係: <pre>$1</pre>",
 	"abusefilter-edit-restricted": "你唔可以改呢個過濾器，由於佢有一個或者更多限制咗嘅動作。\n問一位有權限嘅用戶去幫你改，去加限制咗嘅動作。",
-	"abusefilter-edit-protected-variable-not-protected": "你嘅過濾器冇儲存到，因為佢用咗以下嘅[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|受保護變數}}]：$1。請啟用受保護變數。呢個動作會將呢個過濾器嘅細節永久收埋，唔畀睇唔到受保護變數嘅用戶睇。",
+	"abusefilter-edit-protected-variable-not-protected": "你嘅過濾器冇儲存到，因為佢用咗以下嘅[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|受保護變數}}]：$1。請啟用受保護變數。呢個動作會將呢個過濾器嘅細節永久收埋，唔畀睇唔到受保護變數嘅用戶睇。",
 	"abusefilter-edit-viewhistory": "睇呢個過濾器嘅歷史",
 	"abusefilter-edit-history": "歷史:",
 	"abusefilter-edit-check": "檢查語法",

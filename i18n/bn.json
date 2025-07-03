@@ -264,7 +264,7 @@
 	"abusefilter-edit-done": "[[Special:AbuseFilter/$1|$3 নং ছাঁকনিতে]] [[Special:AbuseFilter/history/$1/diff/prev/$2|আপনার সম্পাদনা]] সংরক্ষিত হয়েছে।",
 	"abusefilter-edit-deleting-enabled": "আপনি কোনো সক্রিয় ছাঁকনিকে অপসারিত হিসেবে চিহ্নিত করতে পারবেন না।",
 	"abusefilter-edit-protected-variable": "আপনি এই ছাঁকনিটি সংরক্ষণ করতে পারবেন না কারণ আপনার কাছে নিম্নলিখিত চলকগুলি ব্যবহার করার অনুমতি নেই: $1",
-	"abusefilter-edit-protected-variable-not-protected": "আপনার ছাঁকনি সংরক্ষিত হয়নি কারণ এটি নিম্নলিখিত [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|সুরক্ষিত ভেরিয়েবল}}] ব্যবহার করে: $1। অনুগ্রহ করে সম্মতি দিন যে আপনি বুঝতে পরেছেন যে এই ছাঁকনির বিবরণ এমন ব্যবহারকারীদের কাছ থেকে লুকানো হবে যাদের সুরক্ষিত ভেরিয়েবল দেখার অধিকার নেই।",
+	"abusefilter-edit-protected-variable-not-protected": "আপনার ছাঁকনি সংরক্ষিত হয়নি কারণ এটি নিম্নলিখিত [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|সুরক্ষিত ভেরিয়েবল}}] ব্যবহার করে: $1। অনুগ্রহ করে সম্মতি দিন যে আপনি বুঝতে পরেছেন যে এই ছাঁকনির বিবরণ এমন ব্যবহারকারীদের কাছ থেকে লুকানো হবে যাদের সুরক্ষিত ভেরিয়েবল দেখার অধিকার নেই।",
 	"abusefilter-edit-viewhistory": "এই ছাঁকনির ইতিহাস দেখুন",
 	"abusefilter-edit-history": "ইতিহাস:",
 	"abusefilter-edit-check": "শব্দবিন্যাস পরীক্ষা করুন",

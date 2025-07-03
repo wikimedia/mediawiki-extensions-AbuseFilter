@@ -284,7 +284,7 @@
 	"abusefilter-edit-deleting-enabled": "Non es possibile marcar un filtro active como delite.",
 	"abusefilter-edit-restricted": "Tu non pote modificar iste filtro, proque illo contine un o plus actiones restringite.\nPer favor demanda a un usator con le permission de adder actiones restringite de facer le modification pro te.",
 	"abusefilter-edit-protected-variable": "Tu non pote salveguardar iste filtro perque tu non ha le permission de usar le sequente variabiles: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Tu filtro non ha essite salveguardate perque illo usa le sequente [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables variabile{{PLURAL:$1||s}} protegite]: $1. Per favor activa le uso del variabiles protegite. Iste action celara permanentemente le detalios del filtro al usatores que non pote vider le variabiles protegite.",
+	"abusefilter-edit-protected-variable-not-protected": "Tu filtro non ha essite salveguardate perque illo usa le sequente [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables variabile{{PLURAL:$2||s}} protegite]: $1. Per favor activa le uso del variabiles protegite. Iste action celara permanentemente le detalios del filtro al usatores que non pote vider le variabiles protegite.",
 	"abusefilter-edit-viewhistory": "Vider le historia de iste filtro",
 	"abusefilter-edit-history": "Historia:",
 	"abusefilter-edit-check": "Verificar syntaxe",

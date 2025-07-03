@@ -308,7 +308,7 @@
 	"abusefilter-edit-deleting-enabled": "Et voi merkitä aktiivista suodatinta poistetuksi.",
 	"abusefilter-edit-restricted": "Et voi muuttaa tätä suodatinta, koska se sisältää yhden tai useamman rajoitetun toiminnon.\nPyydä rajoitettujen toimintojen lisäämiseen tarvittavien oikeuksien haltijalta, että tämä tekee muutoksen puolestasi.",
 	"abusefilter-edit-protected-variable": "Et voi tallentaa tätä suodatinta, koska sinulla ei ole oikeutta käyttää seuraavia muuttujia: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Suodatintasi ei tallennettu, koska se käyttää {{PLURAL:$1|seuraavaa|seuraavia}} [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|suojattua muuttujaa|suojattuja muuttujia}}]: $1. Ole hyvä ja ota käyttöön suojatut muuttujat. Tämä toiminto piilottaa suodattimen tiedot pysyvästi käyttäjiltä, joilla ei ole oikeutta tarkastella suojattuja muuttujia.",
+	"abusefilter-edit-protected-variable-not-protected": "Suodatintasi ei tallennettu, koska se käyttää {{PLURAL:$2|seuraavaa|seuraavia}} [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|suojattua muuttujaa|suojattuja muuttujia}}]: $1. Ole hyvä ja ota käyttöön suojatut muuttujat. Tämä toiminto piilottaa suodattimen tiedot pysyvästi käyttäjiltä, joilla ei ole oikeutta tarkastella suojattuja muuttujia.",
 	"abusefilter-edit-viewhistory": "Näytä tämän suodattimen historia",
 	"abusefilter-edit-history": "Historia:",
 	"abusefilter-edit-check": "Tarkista syntaksi",

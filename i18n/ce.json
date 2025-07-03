@@ -288,7 +288,7 @@
 	"abusefilter-edit-deleting-enabled": "Хьоьга билгала ца йан ло жигара фильтр дӀадаьккхина долуш санна.",
 	"abusefilter-edit-restricted": "Хьоьга хийцалур дац и фильтр, хӀунда аьлча цуо чохь латтадо цхьаъ йа масех доза туху болх. Дехар до, бакъонаш йолчу декъашхочунга оьшу хийцамаш бан.",
 	"abusefilter-edit-protected-variable": "Хьан йиш йац и фильтр Ӏалашйан, хӀунда аьлча хьан бакъо йац хӀара хийцамаш лело: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Хьан фильтр Ӏалашйина йац, хӀунда аьлча цо лелабо хӀара [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|protected variable|ларбина хийцамаш}}]: $1. Дехар до, ларбеш болу хийцамаш лелор дӀахӀоттаде. Оцу гӀуллакхо гуттаренна а къайлайоккхур йу фильтран детальш ларйина хийцамаш ган йиш йоцчу лелочарех.",
+	"abusefilter-edit-protected-variable-not-protected": "Хьан фильтр Ӏалашйина йац, хӀунда аьлча цо лелабо хӀара [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|protected variable|ларбина хийцамаш}}]: $1. Дехар до, ларбеш болу хийцамаш лелор дӀахӀоттаде. Оцу гӀуллакхо гуттаренна а къайлайоккхур йу фильтран детальш ларйина хийцамаш ган йиш йоцчу лелочарех.",
 	"abusefilter-edit-viewhistory": "ХӀокху фильтран истори гайта",
 	"abusefilter-edit-history": "Истори:",
 	"abusefilter-edit-check": "Синтаксисе хьажа",

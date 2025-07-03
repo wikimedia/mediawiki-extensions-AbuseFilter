@@ -293,7 +293,7 @@
 	"abusefilter-edit-deleting-enabled": "Anda tidak boleh menandakan penapis aktif sebagai dipadamkan.",
 	"abusefilter-edit-restricted": "Anda tidak boleh menyunting penapis ini kerana ia mengandungi tindakan yang tersekat.\nSila minta pengguna yang ada kebenaran untuk menambahkan tindakan tersekat supaya membuat perubahan untuk anda.",
 	"abusefilter-edit-protected-variable": "Anda tidak boleh menyimpan penapis ini kerana anda tidak mempunyai kebenaran untuk menggunakan pembolehubah berikut: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Penapis anda tidak disimpan kerana ia menggunakan [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|pembolehubah yang dilindungi}}] seperti berikut: $1. Sila dayakan penggunaan pembolehubah yang dilindungi. Tindakan ini akan menyembunyikan butiran penapis secara kekal daripada pengguna yang tidak dapat melihat pembolehubah yang dilindungi.",
+	"abusefilter-edit-protected-variable-not-protected": "Penapis anda tidak disimpan kerana ia menggunakan [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|pembolehubah yang dilindungi}}] seperti berikut: $1. Sila dayakan penggunaan pembolehubah yang dilindungi. Tindakan ini akan menyembunyikan butiran penapis secara kekal daripada pengguna yang tidak dapat melihat pembolehubah yang dilindungi.",
 	"abusefilter-edit-viewhistory": "Lihat sejarah penapis ini",
 	"abusefilter-edit-history": "Sejarah:",
 	"abusefilter-edit-check": "Semak sintaks",

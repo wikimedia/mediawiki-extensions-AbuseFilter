@@ -306,7 +306,7 @@
 	"abusefilter-edit-missingfields": "I seguenti campi sono obbligatori e devono essere compilati: $1",
 	"abusefilter-edit-deleting-enabled": "Non è possibile segnare come cancellato un filtro attivo.",
 	"abusefilter-edit-restricted": "Non è possibile modificare questo filtro in quanto contiene delle azioni riservate.\nChiedere a un utente abilitato all'inserimento di azioni riservate di effettuare la modifica.",
-	"abusefilter-edit-protected-variable-not-protected": "Il filtro non è stato salvato perché usa {{PLURAL:$1|la seguente|le seguenti}} [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|variabile protetta|variabili protette}}]: $1. Abilita l'uso di variabili protette. Questa azione nasconderà in modo permanente i dettagli del filtro agli utenti che non possono visualizzare le variabili protette.",
+	"abusefilter-edit-protected-variable-not-protected": "Il filtro non è stato salvato perché usa {{PLURAL:$2|la seguente|le seguenti}} [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|variabile protetta|variabili protette}}]: $1. Abilita l'uso di variabili protette. Questa azione nasconderà in modo permanente i dettagli del filtro agli utenti che non possono visualizzare le variabili protette.",
 	"abusefilter-edit-viewhistory": "Vedi la cronologia di questo filtro",
 	"abusefilter-edit-history": "Cronologia:",
 	"abusefilter-edit-check": "Controlla sintassi",

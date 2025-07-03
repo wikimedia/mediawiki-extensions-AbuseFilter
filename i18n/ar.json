@@ -317,7 +317,7 @@
 	"abusefilter-edit-deleting-enabled": "لا يمكنك تعليم مرشح نشط كمحذوف.",
 	"abusefilter-edit-restricted": "أنت لا يمكنك تعديل هذا المرشح، لأنه يحتوي على واحد أو أكثر من الأفعال المحظورة.\nمن فضلك سل مستخدما ذا سماح إضافة الأفعال المحظورة ليفعل التغيير لك.",
 	"abusefilter-edit-protected-variable": "لا يمكنك حفظ هذا الفلتر لأنك لا تملك الإذن لاستخدام المتغيرات التالية: $1",
-	"abusefilter-edit-protected-variable-not-protected": "لم يتم حفظ الفلتر الخاص بك لأنه يستخدم [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1| protected variable|protected variables}}]: $1 . يرجى تمكين استخدام المتغيرات المحمية. سيؤدي هذا الإجراء إلى إخفاء تفاصيل الفلتر بشكل دائم عن المستخدمين الذين لا يمكنهم رؤية المتغيرات المحمية.",
+	"abusefilter-edit-protected-variable-not-protected": "لم يتم حفظ الفلتر الخاص بك لأنه يستخدم [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2| protected variable|protected variables}}]: $1 . يرجى تمكين استخدام المتغيرات المحمية. سيؤدي هذا الإجراء إلى إخفاء تفاصيل الفلتر بشكل دائم عن المستخدمين الذين لا يمكنهم رؤية المتغيرات المحمية.",
 	"abusefilter-edit-viewhistory": "عرض تاريخ هذا المرشح",
 	"abusefilter-edit-history": "التاريخ:",
 	"abusefilter-edit-check": "تحقق من الصياغة",

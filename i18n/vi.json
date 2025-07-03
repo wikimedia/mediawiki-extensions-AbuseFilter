@@ -308,7 +308,7 @@
 	"abusefilter-edit-deleting-enabled": "Bạn không thể đánh dấu xóa một bộ lọc đang hoạt động.",
 	"abusefilter-edit-restricted": "Bạn không thể sửa đổi bộ lọc này, vì nó có chứa một hoặc nhiều tác vụ bị hạn chế.\nXin hãy yêu cầu một thành viên có quyền thêm các tác vụ hạn chế để thực hiện thay đổi cho bạn.",
 	"abusefilter-edit-protected-variable": "Bạn không thể lưu bộ lọc này vì bạn không có quyền sử dụng các biến sau: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Bộ lọc của bạn không được lưu vì nó sử dụng [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|biến bị khóa}}] sau: $1 . Vui lòng bật tính năng sử dụng biến bị khóa. Hành động này sẽ ẩn vĩnh viễn các chi tiết của bộ lọc khỏi những người dùng không có quyền xem dữ liệu liên quan đến bị khóa.",
+	"abusefilter-edit-protected-variable-not-protected": "Bộ lọc của bạn không được lưu vì nó sử dụng [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|biến bị khóa}}] sau: $1 . Vui lòng bật tính năng sử dụng biến bị khóa. Hành động này sẽ ẩn vĩnh viễn các chi tiết của bộ lọc khỏi những người dùng không có quyền xem dữ liệu liên quan đến bị khóa.",
 	"abusefilter-edit-viewhistory": "Xem lịch sử bộ lọc",
 	"abusefilter-edit-history": "Lịch sử:",
 	"abusefilter-edit-check": "Kiểm tra cú pháp",

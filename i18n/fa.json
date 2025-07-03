@@ -319,7 +319,7 @@
 	"abusefilter-edit-deleting-enabled": "امکان حذف یک پالایه فعال وجود ندارد.",
 	"abusefilter-edit-restricted": "شما نمی‌توانید این پالایه را ویرایش کنید، چون حاوی یک یا چند اقدام محدودشده است.\nلطفاً به منظور انجام تغییر، از یک کاربر با دسترسی اقدام‌های محدودشده درخواست کنید.",
 	"abusefilter-edit-protected-variable": "شما نمی‌توانید این پالایه را ذخیره کنید زیرا مجاز به استفاده از این متغیرها نیستید: $1",
-	"abusefilter-edit-protected-variable-not-protected": "پالایهٔ شما ذخیره نشد، زیرا از این [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|متغیر محافظت‌شده|متغیرهای محافظت‌شده}}] استفاده می‌کند: $1. لطفاً قابلیت استفاده از متغیرهای محافظت‌شده را فعال کنید. این عمل باعث می‌شود که جزئیات پالایه به‌طور دائمی از دید کاربرانی که قادر به دیدن متغیرهای محافظت‌شده نیستند، پنهان شود.",
+	"abusefilter-edit-protected-variable-not-protected": "پالایهٔ شما ذخیره نشد، زیرا از این [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|متغیر محافظت‌شده|متغیرهای محافظت‌شده}}] استفاده می‌کند: $1. لطفاً قابلیت استفاده از متغیرهای محافظت‌شده را فعال کنید. این عمل باعث می‌شود که جزئیات پالایه به‌طور دائمی از دید کاربرانی که قادر به دیدن متغیرهای محافظت‌شده نیستند، پنهان شود.",
 	"abusefilter-edit-viewhistory": "نمایش تاریخچهٔ این پالایه",
 	"abusefilter-edit-history": "تاریخچه:",
 	"abusefilter-edit-check": "بررسی نحوی",

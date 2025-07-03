@@ -317,7 +317,7 @@
 	"abusefilter-edit-deleting-enabled": "Nie można oznaczyć aktywnego filtra jako usuniętego.",
 	"abusefilter-edit-restricted": "Nie możesz zmienić ustawień tego filtru, ponieważ zawiera on jedną lub więcej zastrzeżoną operację. Zwróć się do użytkownika z właściwymi uprawnieniami o wykonanie tej zmiany.",
 	"abusefilter-edit-protected-variable": "Nie możesz zapisać tego filtra, bo nie masz uprawnień do używania następujących zmiennych: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Twój filtr nie został zapisany, bo korzysta z {{PLURAL:$1|następującej [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables chronionej zmiennej]|następujących [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables chronionych zmiennych]}}: $1. Włącz możliwość stosowania chronionych zmiennych. Ukryje to szczegóły tego filtra przed użytkownikami, którzy nie mogą ich oglądać.",
+	"abusefilter-edit-protected-variable-not-protected": "Twój filtr nie został zapisany, bo korzysta z {{PLURAL:$2|następującej [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables chronionej zmiennej]|następujących [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables chronionych zmiennych]}}: $1. Włącz możliwość stosowania chronionych zmiennych. Ukryje to szczegóły tego filtra przed użytkownikami, którzy nie mogą ich oglądać.",
 	"abusefilter-edit-viewhistory": "Zobacz historię tego filtru",
 	"abusefilter-edit-history": "Historia",
 	"abusefilter-edit-check": "Sprawdź składnię",

@@ -303,7 +303,7 @@
 	"abusefilter-edit-deleting-enabled": "לא ניתן לסמן מסנן פעיל כמחוק.",
 	"abusefilter-edit-restricted": "אין באפשרותך לערוך מסנן זה, כי הוא מכיל פעולה מוגבלת אחת או יותר.\nנא לבקש ממשתמש עם הרשאה להוספת פעולות מוגבלות לבצע את השינוי עבורך.",
 	"abusefilter-edit-protected-variable": "אסור לך לשמור את המסנן הזה כי אין לך הרשאה להשתמש במשתנים הבאים: $1",
-	"abusefilter-edit-protected-variable-not-protected": "המסנן שלך לא נשמר כי הוא משתמש ב־[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|משתנה מוגן|משתנים מוגנים}}]: $1. נא להפעיל את השימוש במשתנים מוגנים. הפעולה הזאת תסתיר לצמיתות פרטים של המסנן ממשתמשים שאין להם הרשאה לצפות במשתנים מוגנים.",
+	"abusefilter-edit-protected-variable-not-protected": "המסנן שלך לא נשמר כי הוא משתמש ב־[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|משתנה מוגן|משתנים מוגנים}}]: $1. נא להפעיל את השימוש במשתנים מוגנים. הפעולה הזאת תסתיר לצמיתות פרטים של המסנן ממשתמשים שאין להם הרשאה לצפות במשתנים מוגנים.",
 	"abusefilter-edit-viewhistory": "צפייה בהיסטוריית הגרסאות של מסנן זה",
 	"abusefilter-edit-history": "היסטוריה:",
 	"abusefilter-edit-check": "בדיקת תחביר",

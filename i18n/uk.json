@@ -312,7 +312,7 @@
 	"abusefilter-edit-deleting-enabled": "Ви не можете позначити активний фільтр як вилучений.",
 	"abusefilter-edit-restricted": "Ви не можете змінити цей фільтр, оскільки він містить одну або декілька обмежуючих дій. Будь ласка, попросіть користувача з відповідними правами змінити фільтр для вас.",
 	"abusefilter-edit-protected-variable": "Ви не можете зберегти цей фільтр, оскільки не маєте дозволу використовувати наступні змінні: $1",
-	"abusefilter-edit-protected-variable-not-protected": "Ваш фільтр не було збережено, оскільки він використовує  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$1|таку захищену змінну|такі захищені змінні}}]: $1. Будь ласка, увімкніть використання захищених змінних. Ця дія незворотно приховає деталі фільтра від користувачів, які не можуть переглядати захищені змінні.",
+	"abusefilter-edit-protected-variable-not-protected": "Ваш фільтр не було збережено, оскільки він використовує  [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|таку захищену змінну|такі захищені змінні}}]: $1. Будь ласка, увімкніть використання захищених змінних. Ця дія незворотно приховає деталі фільтра від користувачів, які не можуть переглядати захищені змінні.",
 	"abusefilter-edit-viewhistory": "Показати історію цього фільтра",
 	"abusefilter-edit-history": "Історія:",
 	"abusefilter-edit-check": "Перевірити синтаксис",
