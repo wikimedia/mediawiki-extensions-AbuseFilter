@@ -7,6 +7,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ConfirmEditHandler;
 use MediaWiki\Extension\ConfirmEdit\AbuseFilter\CaptchaConsequence;
+use MediaWiki\Extension\ConfirmEdit\CaptchaTriggers;
 use MediaWiki\Extension\ConfirmEdit\Hooks;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
@@ -48,7 +49,7 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 
 		$simpleCaptcha = Hooks::getInstance();
 		$simpleCaptcha->setEditFilterMergedContentHandlerInvoked();
-		$simpleCaptcha->setAction( 'edit' );
+		$simpleCaptcha->setAction( CaptchaTriggers::EDIT );
 		$captchaConsequence = new CaptchaConsequence( $this->createMock( Parameters::class ) );
 		$captchaConsequence->execute();
 		$confirmEditHandler->onEditFilterMergedContent(
