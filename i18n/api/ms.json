@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Hakimi97"
 		]
 	},
+	"apihelp-abusefiltercheckmatch-summary": "Semak untuk melihat sama ada AbuseFilter bersepadan dengan set pembolehubah, penyunting atau peristiwa AbuseFilter yang dilog.",
+	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid atau logid diperlukan namun hanya satu boleh digunakan.",
+	"apihelp-abusefiltercheckmatch-param-filter": "Teks penapis penuh untuk menyemak padanan.",
+	"apihelp-abusefiltercheckmatch-param-vars": "Tatasusunan pemboleh ubah yang dikodkan JSON untuk diuji.",
+	"apihelp-abusefiltercheckmatch-param-rcid": "ID perubahan terkini untuk disemak.",
+	"apihelp-abusefiltercheckmatch-param-logid": "Penyalahgunaan ID log penapis untuk disemak.",
+	"apihelp-abusefiltercheckmatch-example-1": "Uji sama ada perubahan terkini ID 15 bersepadan dengan penapis mudah",
+	"apihelp-abusefilterchecksyntax-summary": "Semak sintaks penapis AbuseFilter.",
 	"apierror-abusefilter-badsyntax": "Penapis tersebut mempunyai sintaks yang tidak sah."
 }

@@ -645,7 +645,7 @@
 	"abusefilter-protected-vars-log-header": "Este é un rexistro de:\n# Visualización de variables protexidas nos detalles do rexistro\n# Cambio dos niveis de acceso dos usuarios para ver variables protexidas",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 activou {{GENDER:$2|o seu}} propio acceso para ver as variables protexidas",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 desactivou {{GENDER:$2|o seu}} propio acceso para ver as variables protexidas",
-	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|viu}} variables protexidas asociadas a \"$3\"",
+	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|consultou}} as variables protexidas asociadas a \"$3\"",
 	"log-action-filter-abusefilter-protected-vars": "Tipo de acción:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Cambiar o acceso",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Ver os valores das variables protexidas"
