@@ -235,7 +235,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		$searchUsername = trim( $request->getText( 'wpSearchUser' ) );
 		$userTitle = Title::newFromText( $searchUsername, NS_USER );
-		$this->mSearchUser = $userTitle ? $userTitle->getText() : null;
+		$this->mSearchUser = $userTitle?->getText();
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$this->mSearchWiki = $request->getText( 'wpSearchWiki' );
 		}

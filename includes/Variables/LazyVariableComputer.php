@@ -438,7 +438,7 @@ class LazyVariableComputer {
 				$title = $parameters['title'];
 
 				$firstRev = $this->revisionLookup->getFirstRevision( $title );
-				$firstRevisionTime = $firstRev ? $firstRev->getTimestamp() : null;
+				$firstRevisionTime = $firstRev?->getTimestamp();
 				if ( !$firstRevisionTime ) {
 					$result = 0;
 					break;

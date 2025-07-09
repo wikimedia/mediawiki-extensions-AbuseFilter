@@ -187,16 +187,12 @@ class AbuseFilterPager extends TablePager {
 	 */
 	private function matchesPattern( $subject ) {
 		$pattern = $this->searchPattern;
-		switch ( $this->searchMode ) {
-			case 'RLIKE':
-				return (bool)preg_match( "/$pattern/u", $subject );
-			case 'IRLIKE':
-				return (bool)preg_match( "/$pattern/ui", $subject );
-			case 'LIKE':
-				return mb_stripos( $subject, $pattern ) !== false;
-			default:
-				throw new LogicException( "Unknown search type {$this->searchMode}" );
-		}
+		return match ( $this->searchMode ) {
+			'RLIKE' => (bool)preg_match( "/$pattern/u", $subject ),
+			'IRLIKE' => (bool)preg_match( "/$pattern/ui", $subject ),
+			'LIKE' => mb_stripos( $subject, $pattern ) !== false,
+			default => throw new LogicException( "Unknown search type {$this->searchMode}" ),
+		};
 	}
 
 	/**

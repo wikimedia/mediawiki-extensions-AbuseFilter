@@ -45,7 +45,7 @@ class RuleCheckerStatus extends ParserStatus {
 		return [
 			'result' => $this->result,
 			'warmCache' => $this->warmCache,
-			'exception' => $this->excep ? $this->excep->toArray() : null,
+			'exception' => $this->excep?->toArray(),
 			'warnings' => array_map(
 				static function ( $warn ) {
 					return $warn->toArray();

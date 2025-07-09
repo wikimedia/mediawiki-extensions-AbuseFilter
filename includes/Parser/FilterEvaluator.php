@@ -575,16 +575,13 @@ class FilterEvaluator {
 				[ $op, $leftOperand, $rightOperand ] = $node->children;
 				$leftOperand = $this->evalNode( $leftOperand );
 				$rightOperand = $this->evalNode( $rightOperand );
-				switch ( $op ) {
-					case '+':
-						return $leftOperand->sum( $rightOperand );
-					case '-':
-						return $leftOperand->sub( $rightOperand );
-					default:
-						// @codeCoverageIgnoreStart
-						throw new InternalException( "Unknown sum-related operator: {$op}" );
-						// @codeCoverageIgnoreEnd
-				}
+				return match ( $op ) {
+					'+' => $leftOperand->sum( $rightOperand ),
+					'-' => $leftOperand->sub( $rightOperand ),
+					// @codeCoverageIgnoreStart
+					default => throw new InternalException( "Unknown sum-related operator: {$op}" ),
+					// @codeCoverageIgnoreEnd
+				};
 				// Unreachable line
 			case AFPTreeNode::COMPARE:
 				[ $op, $leftOperand, $rightOperand ] = $node->children;
