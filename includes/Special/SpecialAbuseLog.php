@@ -473,7 +473,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			foreach ( $rawFilters as $filter ) {
 				try {
 					$filtersList[] = GlobalNameUtils::splitGlobalName( $filter );
-				} catch ( InvalidArgumentException $e ) {
+				} catch ( InvalidArgumentException ) {
 					$foundInvalid = true;
 					continue;
 				}

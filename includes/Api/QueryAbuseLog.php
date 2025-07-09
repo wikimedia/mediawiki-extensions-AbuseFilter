@@ -125,7 +125,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			foreach ( $params['filter'] as $filter ) {
 				try {
 					$searchFilters[] = GlobalNameUtils::splitGlobalName( $filter );
-				} catch ( InvalidArgumentException $e ) {
+				} catch ( InvalidArgumentException ) {
 					$foundInvalid = true;
 					continue;
 				}

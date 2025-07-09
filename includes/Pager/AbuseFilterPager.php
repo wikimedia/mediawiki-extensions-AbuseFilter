@@ -173,8 +173,7 @@ class AbuseFilterPager extends TablePager {
 			krsort( $filtered );
 		}
 		$filtered = array_slice( $filtered, 0, $limit );
-		// Phan false positive: FakeResultWrapper requires sequential indexes starting at 0
-		// @phan-suppress-next-line PhanRedundantArrayValuesCall
+		// FakeResultWrapper requires sequential indexes starting at 0
 		$filtered = array_values( $filtered );
 		return new FakeResultWrapper( $filtered );
 	}

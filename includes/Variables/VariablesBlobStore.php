@@ -120,7 +120,7 @@ class VariablesBlobStore {
 
 		try {
 			$blob = $this->blobStore->getBlob( $blobStoreAddress );
-		} catch ( BlobAccessException $ex ) {
+		} catch ( BlobAccessException ) {
 			return new VariableHolder;
 		}
 
