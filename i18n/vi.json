@@ -25,7 +25,8 @@
 			"Vinhtantran",
 			"Withoutaname",
 			"Đỗ Thảo",
-			"Ayane Fumihiro"
+			"Ayane Fumihiro",
+			"Nvdtn19"
 		]
 	},
 	"abusefilter-desc": "Áp dụng quy tắc suy luận tự động vào các sửa đổi",
@@ -158,7 +159,7 @@
 	"logentry-rights-restoreautopromote": "$1 {{GENDER:$2|đã phục hồi}} khả năng tự động cấp quyền cho {{GENDER:$4|$3}}",
 	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}} đã bị bộ lọc chặn thêm $4 vào $3",
 	"abusefilterprivatedetails-log-name": "Nhật trình xem chi tiết riêng tư của Bộ lọc sai phạm",
-	"log-name-abusefilterblockeddomainhit": "Nhật trình thêm vào tên miền bị cấm",
+	"log-name-abusefilterblockeddomainhit": "Nhật trình gặp phải tên miền bị cấm",
 	"abusefilter-list": "Các bộ lọc",
 	"abusefilter-list-id": "ID bộ lọc",
 	"abusefilter-list-pattern": "Mẫu",
