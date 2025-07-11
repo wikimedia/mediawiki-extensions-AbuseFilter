@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\Maintenance\MigrateActorsAF;
+use MediaWiki\Extension\AbuseFilter\Maintenance\PopulateAbuseFilterLogIPHex;
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 use MediaWiki\MediaWikiServices;
@@ -208,6 +209,7 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			'abuse_filter_log', 'afl_ip_hex',
 			"$dir/$dbType/patch-add-afl_ip_hex.sql"
 		);
+		$updater->addPostDatabaseUpdateMaintenance( PopulateAbuseFilterLogIPHex::class );
 
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 	}
