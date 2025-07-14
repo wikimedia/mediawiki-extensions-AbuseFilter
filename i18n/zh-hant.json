@@ -46,12 +46,14 @@
 			"Zhxy 519",
 			"逆襲的天邪鬼",
 			"捍粵者",
-			"Amire80",
 			"Lionpancake",
 			"LuciferianThomas",
 			"Arielyurusova",
 			"Cookai1205",
-			"SupaplexTW"
+			"SupaplexTW",
+			"Anterdc99",
+			"Key0121",
+			"WiiUf"
 		]
 	},
 	"abusefilter-desc": "自動條件判定編輯行為",
@@ -124,7 +126,7 @@
 	"abusefilter-log-detailedentry-meta": "$1：$2在$5{{GENDER:$9|執行}}操作「$4」時{{GENDER:$9|觸發}}了$3。採取的動作：$6；過濾器描述：$7（$8）",
 	"abusefilter-log-detailedentry-global": "全域過濾器$1",
 	"abusefilter-log-detailedentry-local": "過濾器$1",
-	"abusefilter-log-detailslink": "詳細資料",
+	"abusefilter-log-detailslink": "詳細資訊",
 	"abusefilter-log-diff": "差異",
 	"abusefilter-log-hidelink": "調整可見性",
 	"abusefilter-log-hide-entries": "變更所選項目的可見性",
