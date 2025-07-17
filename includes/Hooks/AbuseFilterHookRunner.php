@@ -249,11 +249,11 @@ class AbuseFilterHookRunner implements
 		string $action,
 		bool $shouldDebounce,
 		int $timestamp,
-		array $params
+		array &$params
 	) {
 		return $this->hookContainer->run(
 			'AbuseFilterLogProtectedVariableValueAccess',
-			[ $performer, $target, $action, $shouldDebounce, $timestamp, $params ],
+			[ $performer, $target, $action, $shouldDebounce, $timestamp, &$params ],
 			[ 'abortable' => true ]
 		);
 	}
