@@ -111,7 +111,7 @@
 	"abusefilter-log-hide-set-visibility": "Dostupnost izabranih zapisa:",
 	"abusefilter-log-hide-reason": "Razlog:",
 	"abusefilter-log-hide-reason-other": "Drugi/dodatni razlog:",
-	"abusefilter-log-hide-forbidden": "Nemate dopuštenje da sakrivate stavke u dnevniku zloupotreba.",
+	"abusefilter-log-hide-forbidden": "Nemate ovlaštenje da sakrivate stavke u dnevniku zloupotreba.",
 	"abusefilter-log-hide-show": "Prikaži",
 	"abusefilter-log-hide-hide": "Sakrij",
 	"abusefilter-log-hide-no-change": "Svi odabrani filteri već imaju traženu dostupnost.",
