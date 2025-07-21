@@ -58,6 +58,39 @@ class AbuseFilterLogDetailsLookupTest extends MediaWikiIntegrationTestCase {
 		];
 	}
 
+	/** @dataProvider provideGetIPsForAbuseFilterLogs */
+	public function testGetIPsForAbuseFilterLogs( $ids, $expectedReturnArray ) {
+		$actualArray = AbuseFilterServices::getLogDetailsLookup()->getIPsForAbuseFilterLogs(
+			$this->mockRegisteredUltimateAuthority(), $ids
+		);
+		$this->assertArrayEquals( $expectedReturnArray, $actualArray, false, true );
+	}
+
+	public static function provideGetIPsForAbuseFilterLogs(): array {
+		return [
+			'Calling with one afl_id' => [ [ 1 ], [ 1 => '1.2.3.4' ] ],
+			'Calling with multiple afl_id values' => [ [ 1, 2, 3 ], [ 1 => '1.2.3.4', 2 => '', 3 => '' ] ],
+		];
+	}
+
+	public function testGetIPsForAbuseFilterLogsWhenUserLacksAuthority() {
+		$actualArray = AbuseFilterServices::getLogDetailsLookup()->getIPsForAbuseFilterLogs(
+			$this->mockRegisteredNullAuthority(), [ 1, 2, 3 ]
+		);
+
+		// The list of IPs should be false for afl_id values which corresponded to an existing abuse_filter_log row
+		// and empty string if the afl_id does not exist.
+		$this->assertArrayEquals( [ 1 => false, 2 => false, 3 => '' ], $actualArray, false, true );
+	}
+
+	public function testGroupAbuseFilterLogIdsByPerformer() {
+		$actualArray = AbuseFilterServices::getLogDetailsLookup()->groupAbuseFilterLogIdsByPerformer( [ 1, 2, 3, 4 ] );
+
+		// The list of IDs should not include any afl_id values which do not correspond to an existing abuse_filter_log
+		// row and should group the performers for the afl_ids which correspond to existing abuse.
+		$this->assertArrayEquals( [ '~2024-1' => [ 1 ], 'UTSysop' => [ 2 ] ], $actualArray, false, true );
+	}
+
 	public function addDBDataOnce() {
 		$performer = $this->getTestSysop()->getUser();
 		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
