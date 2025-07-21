@@ -2,6 +2,7 @@
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterLogDetailsLookup;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
@@ -420,6 +421,13 @@ return [
 				$services->getMainConfig()
 			),
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME )
+		);
+	},
+	AbuseFilterLogDetailsLookup::SERVICE_NAME => static function ( MediaWikiServices $services ) {
+		return new AbuseFilterLogDetailsLookup(
+			$services->getConnectionProvider(),
+			$services->get( PermManager::SERVICE_NAME ),
+			$services->get( FilterLookup::SERVICE_NAME )
 		);
 	},
 	// b/c for extensions

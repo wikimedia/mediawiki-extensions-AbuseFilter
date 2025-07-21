@@ -334,4 +334,11 @@ class AbuseFilterServices {
 		$services ??= MediaWikiServices::getInstance();
 		return $services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME );
 	}
+
+	public static function getLogDetailsLookup(
+		?ContainerInterface $services = null
+	): AbuseFilterLogDetailsLookup {
+		$services ??= MediaWikiServices::getInstance();
+		return $services->get( AbuseFilterLogDetailsLookup::SERVICE_NAME );
+	}
 }

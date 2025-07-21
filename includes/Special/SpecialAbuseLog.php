@@ -869,19 +869,24 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/**
 	 * Helper function to select a row with private details and some more context
 	 * for an AbuseLog entry.
-	 * @todo Create a service for this
 	 *
+	 * @deprecated Since 1.45. Use {@link AbuseFilterLogDetailsLookup::getIPForAbuseFilterLog} instead.
 	 * @param Authority $authority The user who's trying to view the row
 	 * @param int $id The ID of the log entry
 	 * @return Status A status object with the requested row stored in the value property,
 	 *  or an error and no row.
 	 */
 	public static function getPrivateDetailsRow( Authority $authority, $id ) {
-		$afPermissionManager = AbuseFilterServices::getPermissionManager();
-		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
+		$afLogPrivateDetailsLookup = AbuseFilterServices::getLogDetailsLookup();
 
+		$ipForAbuseFilterLogStatus = $afLogPrivateDetailsLookup->getIPForAbuseFilterLog( $authority, $id );
+		if ( !$ipForAbuseFilterLogStatus->isGood() ) {
+			return Status::wrap( $ipForAbuseFilterLogStatus );
+		}
+
+		$dbr = MediaWikiServices::getInstance()->getConnectionProvider()->getReplicaDatabase();
 		$row = $dbr->newSelectQueryBuilder()
-			->select( [ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp', 'afl_ip' ] )
+			->select( [ 'afl_id', 'afl_user_text', 'afl_filter_id', 'afl_global', 'afl_timestamp' ] )
 			->from( 'abuse_filter_log' )
 			->where( [ 'afl_id' => $id ] )
 			->caller( __METHOD__ )
@@ -891,13 +896,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			return Status::newFatal( 'abusefilter-log-nonexistent' );
 		}
 
-		$filter = AbuseFilterServices::getFilterLookup()->getFilter( $row->afl_filter_id, $row->afl_global );
-		if ( !$afPermissionManager->canSeeLogDetailsForFilter( $authority, $filter ) ) {
-			return Status::newFatal( 'abusefilter-log-cannot-see-details' );
-		}
+		// Append the afl_ip to the row
+		$row->afl_ip = $ipForAbuseFilterLogStatus->getValue();
 
-		// Because FilterLookup::getFilter gets the data for us, don't duplicate queries and use the data
-		// from the ExistingFilter object to populate information about the filter in the $row.
+		// Append details about the filter to the row.
+		$filter = AbuseFilterServices::getFilterLookup()->getFilter( $row->afl_filter_id, $row->afl_global );
 		$row->af_id = (string)$filter->getId();
 		$row->af_public_comments = $filter->getName();
 		$row->af_hidden = $filter->getPrivacyLevel();
