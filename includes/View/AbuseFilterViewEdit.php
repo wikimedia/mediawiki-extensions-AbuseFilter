@@ -1297,9 +1297,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$newFilter->setTimestamp( $origFilter->getTimestamp() );
 		}
 
-		$newFilter->setName( trim( $request->getVal( 'wpFilterDescription' ) ) );
-		$newFilter->setRules( trim( $request->getVal( 'wpFilterRules' ) ) );
-		$newFilter->setComments( trim( $request->getVal( 'wpFilterNotes' ) ) );
+		$newFilter->setName( trim( $request->getVal( 'wpFilterDescription' ) ?? '' ) );
+		$newFilter->setRules( trim( $request->getVal( 'wpFilterRules' ) ?? '' ) );
+		$newFilter->setComments( trim( $request->getVal( 'wpFilterNotes' ) ?? '' ) );
 
 		$newFilter->setGroup( $request->getVal( 'wpFilterGroup', 'default' ) );
 
