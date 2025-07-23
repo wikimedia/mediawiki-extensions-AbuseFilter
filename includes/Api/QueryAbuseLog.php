@@ -193,7 +193,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addFields( 'afl_deleted' );
 		$this->addFields( 'afl_filter_id' );
 		$this->addFields( 'afl_global' );
-		$this->addFields( 'afl_ip' );
+		$this->addFields( 'afl_ip_hex' );
 		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( [ 'afl_namespace', 'afl_title' ], $fld_title );

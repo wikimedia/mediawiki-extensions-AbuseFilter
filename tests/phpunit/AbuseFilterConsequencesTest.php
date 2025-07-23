@@ -1202,7 +1202,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 
 		// We just take a dump from a single filters, as they're all identical for the same action
 		$row = $this->getDb()->newSelectQueryBuilder()
-			->select( 'afl_var_dump, afl_ip' )
+			->select( 'afl_var_dump, afl_ip_hex' )
 			->from( 'abuse_filter_log' )
 			->orderBy( 'afl_timestamp', SelectQueryBuilder::SORT_DESC )
 			->caller( __METHOD__ )

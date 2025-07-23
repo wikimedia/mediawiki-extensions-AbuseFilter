@@ -9,6 +9,7 @@ use MediaWiki\Storage\BlobAccessException;
 use MediaWiki\Storage\BlobStore;
 use MediaWiki\Storage\BlobStoreFactory;
 use stdClass;
+use Wikimedia\IPUtils;
 
 /**
  * This service is used to generate the value of afl_var_dump for an abuse_filter_log row and
@@ -67,7 +68,7 @@ class VariablesBlobStore {
 		}
 
 		// Set the value to something safe here, as by now it's been used in the filter and if
-		// logs later need it, it can be reconstructed from afl_ip.
+		// logs later need it, it can be reconstructed from afl_ip_hex.
 		if ( isset( $varsForBlobStore[ 'user_unnamed_ip' ] ) && $varsForBlobStore[ 'user_unnamed_ip' ] ) {
 			$varsForBlobStore[ 'user_unnamed_ip' ] = true;
 		}
@@ -96,15 +97,15 @@ class VariablesBlobStore {
 	 *
 	 * The entire $row is passed through but only the following columns are actually required:
 	 * - afl_var_dump: the main variable store to load
-	 * - afl_ip: the IP value to use if necessary
+	 * - afl_ip_hex: the IP value to use if necessary
 	 *
 	 * @param stdClass $row
 	 *
 	 * @return VariableHolder
 	 */
 	public function loadVarDump( stdClass $row ): VariableHolder {
-		if ( !isset( $row->afl_var_dump ) || !isset( $row->afl_ip ) ) {
-			throw new InvalidArgumentException( 'Both afl_var_dump and afl_ip must be set' );
+		if ( !isset( $row->afl_var_dump ) || !isset( $row->afl_ip_hex ) ) {
+			throw new InvalidArgumentException( 'Both afl_var_dump and afl_ip_hex must be set' );
 		}
 		$variablesFromDb = [];
 
@@ -129,12 +130,13 @@ class VariablesBlobStore {
 
 		// If user_unnamed_ip was set when afl_var_dump was saved, it was saved as a visibility boolean
 		// and needs to be translated back into an IP
-		// user_unnamed_ip uses afl_ip instead of saving the value because afl_ip gets purged and the blob
+		// user_unnamed_ip uses afl_ip_hex instead of saving the value because afl_ip_hex gets purged and the blob
 		// that contains user_unnamed_ip can't be modified
 		if (
 			$this->varManager->getVar( $obj, 'user_unnamed_ip', VariablesManager::GET_LAX )->toNative()
 		) {
-			$obj->setVar( 'user_unnamed_ip', $row->afl_ip );
+			$formattedIP = $row->afl_ip_hex ? IPUtils::formatHex( $row->afl_ip_hex ) : '';
+			$obj->setVar( 'user_unnamed_ip', $formattedIP );
 		}
 
 		// Add variables from the DB into the returned VariableHolder.

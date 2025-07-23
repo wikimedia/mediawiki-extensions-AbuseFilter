@@ -236,7 +236,10 @@
 		"abuselogprivatedetails": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Api\\AbuseLogPrivateDetails",
 			"services": [
-				"AbuseFilterPermissionManager"
+				"AbuseFilterPermissionManager",
+				"DBLoadBalancerFactory",
+				"AbuseFilterLogDetailsLookup",
+				"AbuseFilterFilterLookup"
 			]
 		}
 	},

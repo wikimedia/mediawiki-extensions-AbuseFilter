@@ -250,11 +250,11 @@ class QueryAbuseLogTest extends ApiTestCase {
 			] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 
-		// Update afl_ip and afl_ip_hex to a known value that can be used when it's reconstructed
+		// Update afl_ip_hex to a known value that can be used when it's reconstructed
 		// in the variable holder
 		$this->getDb()->newUpdateQueryBuilder()
 			->update( 'abuse_filter_log' )
-			->set( [ 'afl_ip' => '1.2.3.4', 'afl_ip_hex' => IPUtils::toHex( '1.2.3.4' ) ] )
+			->set( [ 'afl_ip_hex' => IPUtils::toHex( '1.2.3.4' ) ] )
 			->where( [ 'afl_filter_id' => 1 ] )
 			->caller( __METHOD__ )->execute();
 

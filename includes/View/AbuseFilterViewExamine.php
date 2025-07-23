@@ -294,7 +294,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$row = $dbr->newSelectQueryBuilder()
 			->select( [
 				'afl_deleted',
-				'afl_ip',
+				'afl_ip_hex',
 				'afl_var_dump',
 				'afl_rev_id',
 				'afl_filter_id',

@@ -14,6 +14,7 @@ use MediaWiki\Storage\BlobAccessException;
 use MediaWiki\Storage\BlobStore;
 use MediaWiki\Storage\BlobStoreFactory;
 use MediaWikiUnitTestCase;
+use Wikimedia\IPUtils;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -83,7 +84,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 		$row = (object)[
 			'afl_var_dump' => 'tt:3456',
-			'afl_ip' => '',
+			'afl_ip_hex' => '',
 		];
 		$varBlobStore = $this->getStore( null, $blobStore );
 		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
@@ -106,7 +107,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 		$row = (object)[
 			'afl_var_dump' => 'tt:3456',
-			'afl_ip' => $data[ 'afl_ip' ],
+			'afl_ip_hex' => $data[ 'afl_ip_hex' ],
 		];
 		$varBlobStore = new VariablesBlobStore(
 			$manager,
@@ -130,21 +131,21 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 			'ip visible, ip available' => [
 				[
 					'user_unnamed_ip' => true,
-					'afl_ip' => '1.2.3.4',
+					'afl_ip_hex' => IPUtils::toHex( '1.2.3.4' )
 				],
 				'1.2.3.4'
 			],
 			'ip visible, ip cleared' => [
 				[
 					'user_unnamed_ip' => true,
-					'afl_ip' => '',
+					'afl_ip_hex' => '',
 				],
 				''
 			],
 			'ip not visible, ip available' => [
 				[
 					'user_unnamed_ip' => null,
-					'afl_ip' => '1.2.3.4',
+					'afl_ip_hex' => IPUtils::toHex( '1.2.3.4' )
 				],
 				null
 			]
@@ -157,7 +158,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$varBlobStore = $this->getStore( null, $blobStore );
 		$row = (object)[
 			'afl_var_dump' => '',
-			'afl_ip' => '',
+			'afl_ip_hex' => '',
 		];
 		$this->assertCount( 0, $varBlobStore->loadVarDump( $row )->getVars() );
 
@@ -195,7 +196,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	/**
 	 * @dataProvider provideVariables
 	 */
-	public function testRoundTrip( array $toStore, ?array $expected = null, string $ip = '' ) {
+	public function testRoundTrip( array $toStore, ?array $expected = null, string $ipHex = '' ) {
 		$protectedVariables = [ 'user_unnnamed_ip', 'other_protected_variable' ];
 		$permissionManager = $this->createMock( AbuseFilterPermissionManager::class );
 		$permissionManager->method( 'getUsedProtectedVariables' )
@@ -231,7 +232,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 		$row = (object)[
 			'afl_var_dump' => $aflVarDumpValue,
-			'afl_ip' => $ip,
+			'afl_ip_hex' => $ipHex,
 		];
 		$loadedVars = $varBlobStore->loadVarDump( $row )->getVars();
 		$nativeLoadedVars = array_map( static function ( AFPData $el ) {
@@ -314,14 +315,14 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 					'accountname' => 'XXX'
 				]
 			],
-			'Has user_unnamed_ip when afl_ip is empty' => [
+			'Has user_unnamed_ip when afl_ip_hex is empty' => [
 				[ 'user_unnamed_ip' => '1.2.3.4' ],
 				[ 'user_unnamed_ip' => '' ],
 			],
-			'Has user_unnamed_ip when afl_ip is an IP' => [
+			'Has user_unnamed_ip when afl_ip_hex is an IP' => [
 				[ 'user_unnamed_ip' => '1.2.3.4' ],
 				null,
-				'1.2.3.4'
+				IPUtils::toHex( '1.2.3.4' )
 			],
 			'Has other_protected_variable' => [ [ 'other_protected_variable' => 'abc' ] ],
 		];
