@@ -173,7 +173,7 @@
 	"abusefilter-edit-builder-vars-oldsize": "Ukuran kaca lawas ($1)",
 	"abusefilter-edit-builder-vars-page-id": "ID kaca ($1)",
 	"abusefilter-edit-builder-vars-page-ns": "Kaca genaharan ($1)",
-	"abusefilter-history-foruser": "Kagentosin olih",
+	"abusefilter-history-foruser": "Kagentosin olih $1",
 	"abusefilter-history-hidden": "Kaengkebang",
 	"abusefilter-history-protected": "Kaabihin",
 	"abusefilter-history-enabled": "Kauripang",
