@@ -90,7 +90,9 @@
 				"AbuseFilterVariablesFormatter",
 				"AbuseFilterVariablesManager",
 				"AbuseFilterAbuseLoggerFactory",
-				"AbuseFilterFilterLookup"
+				"AbuseFilterFilterLookup",
+				"TempUserConfig",
+				"ExtensionRegistry"
 			]
 		},
 		"AbuseFilter": {

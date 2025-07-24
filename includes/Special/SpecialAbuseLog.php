@@ -36,11 +36,14 @@ use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
+use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonInputWidget;
 use stdClass;
+use Wikimedia\IPUtils;
+use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
@@ -117,6 +120,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	private VariablesManager $varManager;
 	private AbuseLoggerFactory $abuseLoggerFactory;
 	private FilterLookup $filterLookup;
+	private TempUserConfig $tempUserConfig;
+	private ExtensionRegistry $extensionRegistry;
 
 	public function __construct(
 		LBFactory $lbFactory,
@@ -130,7 +135,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		VariablesFormatter $variablesFormatter,
 		VariablesManager $varManager,
 		AbuseLoggerFactory $abuseLoggerFactory,
-		FilterLookup $filterLookup
+		FilterLookup $filterLookup,
+		TempUserConfig $tempUserConfig,
+		ExtensionRegistry $extensionRegistry
 	) {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
 		$this->lbFactory = $lbFactory;
@@ -146,6 +153,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$this->varManager = $varManager;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 		$this->filterLookup = $filterLookup;
+		$this->tempUserConfig = $tempUserConfig;
+		$this->extensionRegistry = $extensionRegistry;
 	}
 
 	/**
@@ -284,6 +293,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				'label-message' => 'abusefilter-log-search-user',
 				'type' => 'user',
 				'ipallowed' => true,
+				'iprange' => true,
 				'default' => $this->mSearchUser,
 			],
 			'SearchPeriodStart' => [
@@ -422,20 +432,59 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Generate conditions list.
 		$conds = [];
+		$dbr = $this->lbFactory->getReplicaDatabase();
 
 		if ( $this->mSearchUser !== null ) {
-			$searchedUser = $this->userIdentityLookup->getUserIdentityByName( $this->mSearchUser );
-
-			if ( !$searchedUser ) {
-				$conds['afl_user'] = 0;
-				$conds['afl_user_text'] = $this->mSearchUser;
+			// If temporary accounts are enabled and the user can reveal their IP addresses, support:
+			// - lookup of temporary accounts that used the IP via afl_ip_hex
+			// - lookup of temporary accounts that used an IP in a range via afl_ip_hex
+			// - lookup of historical anonymous edits via matches on afl_user_text
+			if (
+				IPUtils::isIPAddress( $this->mSearchUser ) &&
+				$this->extensionRegistry->isLoaded( 'CheckUser' ) &&
+				$this->tempUserConfig->isKnown() &&
+				MediaWikiServices::getInstance()->getService( 'CheckUserPermissionManager' )
+					->canAccessTemporaryAccountIPAddresses( $performer )->isGood()
+			) {
+				[ $rangeStart, $rangeEnd ] = IPUtils::parseRange( $this->mSearchUser );
+				if ( $rangeStart === $rangeEnd ) {
+					// if rangeStart is equal to rangeEnd, target is actually an IP hex
+					// Return temporary accounts or anonymous users that match the IP
+					$conds[] = $dbr->orExpr( [
+						$dbr
+							->expr( 'afl_ip_hex', '=', $rangeStart )
+							->andExpr(
+								$this->tempUserConfig
+									->getMatchCondition( $dbr, 'afl_user_text', IExpression::LIKE )
+							),
+						$dbr
+							->expr( 'afl_user_text', '=', IPUtils::formatHex( $rangeStart ) )
+							->and( 'afl_user', '=', 0 )
+					] );
+				} else {
+					// Otherwise a range was passed through. Only return temporary accounts that
+					// used an IP in that range as range lookups of anonymous edits aren't supported
+					$conds[] = $dbr
+						->expr( 'afl_ip_hex', '>=', $rangeStart )
+						->and( 'afl_ip_hex', '<=', $rangeEnd )
+						->andExpr(
+							$this->tempUserConfig
+								->getMatchCondition( $dbr, 'afl_user_text', IExpression::LIKE )
+						);
+				}
 			} else {
-				$conds['afl_user'] = $searchedUser->getId();
-				$conds['afl_user_text'] = $searchedUser->getName();
+				// Otherwise search only afl_user and afl_user_text
+				$searchedUser = $this->userIdentityLookup->getUserIdentityByName( $this->mSearchUser );
+				if ( !$searchedUser ) {
+					$conds['afl_user'] = 0;
+					$conds['afl_user_text'] = $this->mSearchUser;
+				} else {
+					$conds['afl_user'] = $searchedUser->getId();
+					$conds['afl_user_text'] = $searchedUser->getName();
+				}
 			}
 		}
 
-		$dbr = $this->lbFactory->getReplicaDatabase();
 		if ( $this->mSearchPeriodStart ) {
 			$conds[] = $dbr->expr( 'afl_timestamp', '>=',
 				$dbr->timestamp( strtotime( $this->mSearchPeriodStart ) ) );
@@ -985,7 +1034,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// IP address
 		if ( $row->afl_ip !== '' ) {
-			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) &&
+			if ( $this->extensionRegistry->isLoaded( 'CheckUser' ) &&
 				$this->permissionManager->userHasRight( $this->getUser(), 'checkuser' )
 			) {
 				$CULink = '&nbsp;&middot;&nbsp;' . $linkRenderer->makeKnownLink(
