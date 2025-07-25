@@ -157,7 +157,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 		);
 		DeferredUpdates::doUpdates();
 
-		// Assert that one log is created, as the second variable is in a subset of the first
+		// Assert that two logs are created, as the third access uses variables that were already logged
 		$this->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->from( 'logging' )
