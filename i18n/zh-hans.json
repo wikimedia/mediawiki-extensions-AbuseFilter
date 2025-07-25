@@ -364,6 +364,7 @@
 	"abusefilter-block-talk": "讨论页已禁止使用",
 	"abusefilter-edit-denied": "您无法查看该过滤器的详情，因为它已设定为向公众隐藏。",
 	"abusefilter-edit-denied-protected-vars": "您无法查看该过滤器的详情，因为它使用了受保护变量，并因此向公众隐藏。$1",
+	"abusefilter-edit-denied-protected-vars-because-of-permission": "您无法查看此过滤器详情，因为您并未持有$1的权限。",
 	"abusefilter-edit-main": "过滤器参数",
 	"abusefilter-edit-done-subtitle": "已编辑过滤器",
 	"abusefilter-edit-done": "您已成功保存您对[[Special:AbuseFilter/$1|过滤器$3]]的[[Special:AbuseFilter/history/$1/diff/prev/$2|修改]]。",
