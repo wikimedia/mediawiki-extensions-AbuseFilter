@@ -169,7 +169,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 
 	private function getBlobStore(): BlobStore {
 		return new class implements BlobStore {
-			private $blobs;
+			private array $blobs = [];
 
 			private function getKey( string $data ) {
 				return md5( $data );
