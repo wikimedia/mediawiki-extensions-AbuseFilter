@@ -215,6 +215,7 @@
 	"abusefilter-edit-enabled": "Omogoči ta filter",
 	"abusefilter-edit-deleted": "Označi kot izbrisano",
 	"abusefilter-edit-hidden": "Skrij podrobnosti tega filtra pred javnim vpogledom",
+	"abusefilter-edit-protected-help-message": "Podrobnosti tega filtra bodo skrite pred uporabniki, ki ne morejo videti zaščitenih spremenljivk. To dejanje je trajno in ga ni mogoče razveljaviti.",
 	"abusefilter-edit-global": "Globalni filter",
 	"abusefilter-edit-rules": "Pogoji:",
 	"abusefilter-edit-field-conditions": "pogoji",

@@ -654,6 +654,7 @@
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 mühafizəli dəyişənlərə baxa bilmək {{GENDER:$2|imkanını}} aktivləşdirdi.",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 mühafizəli dəyişənlərə baxa bilmək {{GENDER:$2|imkanını}} söndürdü.",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 $3 ilə əlaqəli mühafizəli dəyişənlərə {{GENDER:$2|baxdı}}",
+	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 $3 ilə əlaqəli mühafizəli {{PLURAL:$4|dəyişənə|dəyişənlərə}} {{GENDER:$2|baxdı}}: $5",
 	"log-action-filter-abusefilter-protected-vars": "Fəaliyyət növü:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "İcazənin dəyişdirilməsi",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Mühafizəli dəyişənlərə baxmaq"
