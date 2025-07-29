@@ -503,9 +503,9 @@ class LazyVariableComputer {
 			return [];
 		}
 
-		return ExternalLinksLookup::getExternalLinksForPage(
+		return ExternalLinksLookup::getExtLinksForPage(
 			$id,
-			$this->lbFactory->getReplicaDatabase(),
+			$this->lbFactory,
 			__METHOD__
 		);
 	}
