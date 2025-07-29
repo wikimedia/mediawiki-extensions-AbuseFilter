@@ -645,6 +645,7 @@
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 го овозможи {{GENDER:$2|неговиот|нејзиниот|неговиот}} пристап за гледање на заштитени променливи",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 го онеовозможи {{GENDER:$2|неговиот|нејзиниот|неговиот}} пристап за гледање на заштитени променливи",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|ги погледа}} заштитените променливи поврзани со $3",
+	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|погледа}} {{PLURAL:$4|заштитена променлива поврзана|заштитени променливи поврзани}} со $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Вид на дејство:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Смени пристап",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Гледање на заштитени променливи"
