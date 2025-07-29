@@ -308,7 +308,7 @@
 	"abusefilter-edit-notallowed-global-custom-msg": "As mensaxes de advertencia ou rexeitamento personalizados no son compatibles cos filtros globais",
 	"abusefilter-edit-invalid-warn-message": "A mensaxe de aviso non pode ficar baleira.",
 	"abusefilter-edit-invalid-disallow-message": "A mensaxe de rexeitamento non pode ficar baleira.",
-	"abusefilter-edit-invalid-throttlecount": "O reconto de accións debe ser un número enteiro positivo.",
+	"abusefilter-edit-invalid-throttlecount": "O número de accións debe ser un número enteiro positivo.",
 	"abusefilter-edit-invalid-throttleperiod": "O período de aceleración debe ser un número enteiro positivo.",
 	"abusefilter-edit-empty-throttlegroups": "Cando menos un grupo de acelerador debe ser seleccionado.",
 	"abusefilter-edit-duplicated-throttlegroups": "Os grupos de acelerador non poden ter duplicados.",
