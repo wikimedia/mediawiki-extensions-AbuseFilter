@@ -15,7 +15,7 @@ use MediaWiki\Language\Language;
 use MediaWiki\Parser\ParserFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Permissions\RestrictionStore;
-use MediaWiki\Request\WebRequest;
+use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
@@ -214,8 +214,8 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 		yield 'user_type for unregistered username' => [ 'unknown', $getMocks ];
 
 		$getMocks = static function ( $testCase ) use ( $getUserVar ) {
-			$request = $testCase->createMock( WebRequest::class );
-			$request->method( 'getIP' )->willReturn( '127.0.0.1' );
+			$request = new FauxRequest();
+			$request->setIP( '127.0.0.1' );
 			$user = $testCase->createMock( User::class );
 			$user->method( 'getRequest' )->willReturn( $request );
 			$user->method( 'getName' )->willReturn( '127.0.0.1' );
@@ -236,8 +236,8 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 			$user = $testCase->createMock( User::class );
 			$mockUserIdentityUtils = $testCase->createMock( UserIdentityUtils::class );
 			$mockUserIdentityUtils->method( 'isTemp' )->with( $user )->willReturn( true );
-			$request = $testCase->createMock( WebRequest::class );
-			$request->method( 'getIP' )->willReturn( '127.0.0.1' );
+			$request = new FauxRequest();
+			$request->setIP( '127.0.0.1' );
 			$user = $testCase->createMock( User::class );
 			$user->method( 'getRequest' )->willReturn( $request );
 			$var = $getUserVar( $user, 'user-unnamed-ip' );
