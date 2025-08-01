@@ -688,6 +688,7 @@
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 が保護された変数を表示するための{{GENDER:$2|}}アクセスを有効にしました",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 が保護された変数を表示するための{{GENDER:$2|}}アクセスを無効にしました",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 が $3 に関連する保護された変数を{{GENDER:$2|閲覧しました}}",
+	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 が $3 に関連する保護された{{PLURAL:$4|変数}}を{{GENDER:$2|閲覧しました}}: $5",
 	"log-action-filter-abusefilter-protected-vars": "操作の種類:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "アクセスを変更",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "保護された変数の表示"
