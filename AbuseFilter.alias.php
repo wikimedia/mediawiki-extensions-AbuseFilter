@@ -552,6 +552,6 @@ $specialPageAliases['zh-hans'] = [
 /** Traditional Chinese (中文（繁體）) */
 $specialPageAliases['zh-hant'] = [
 	'AbuseLog' => [ '濫用日誌' ],
-	'AbuseFilter' => [ '濫用過濾器' ],
+	'AbuseFilter' => [ '防濫用過濾器', '濫用過濾器' ],
 	'BlockedExternalDomains' => [ '已封鎖的外部網域' ],
 ];
