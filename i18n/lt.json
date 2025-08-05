@@ -381,7 +381,7 @@
 	"abusefilter-edit-builder-vars-restrictions-edit": "Keistas puslapio apsaugos lygis",
 	"abusefilter-edit-builder-vars-restrictions-move": "Puslapio pervadinimo apsaugos lygis",
 	"abusefilter-edit-builder-vars-restrictions-create": "Sukurti puslapio apsaugą",
-	"abusefilter-edit-builder-vars-restrictions-upload": "Failo įkėlimo apsauga",
+	"abusefilter-edit-builder-vars-restrictions-upload": "$1 failo įkėlimo apsauga",
 	"abusefilter-edit-builder-vars-recent-contributors": "Paskutiniai dešimt vartotojų, keitusių puslapį",
 	"abusefilter-edit-builder-vars-first-contributor": "Pirmas vartotojas prisidėjęs prie puslapio",
 	"abusefilter-edit-builder-vars-old-links": "Nuorodos puslapyje, prieš redagavimą",
