@@ -30,6 +30,7 @@
 		"abusefilter-modify-global",
 		"abusefilter-modify-blocked-external-domains",
 		"abusefilter-bypass-blocked-external-domains",
+		"abusefilter-blocked-external-domains-log",
 		"abusefilter-access-protected-vars",
 		"abusefilter-protected-vars-log"
 	],
@@ -37,6 +38,9 @@
 		"*": {
 			"abusefilter-view": true,
 			"abusefilter-log": true
+		},
+		"user": {
+			"abusefilter-blocked-external-domains-log": true
 		},
 		"sysop": {
 			"abusefilter-log-detail": true,
@@ -184,7 +188,7 @@
 	"LogRestrictions": {
 		"abusefilter": "abusefilter-view",
 		"abusefilterprivatedetails": "abusefilter-privatedetails-log",
-		"abusefilterblockeddomainhit": "abusefilter-view",
+		"abusefilterblockeddomainhit": "abusefilter-blocked-external-domains-log",
 		"abusefilter-protected-vars": "abusefilter-protected-vars-log"
 	},
 	"AuthManagerAutoConfig": {
