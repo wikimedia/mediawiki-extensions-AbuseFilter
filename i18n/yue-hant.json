@@ -4,7 +4,8 @@
 			"H78c67c",
 			"Hello903hello",
 			"Winston Sung",
-			"Yueman"
+			"Yueman",
+			"Ktchankt"
 		]
 	},
 	"abusefilter-desc": "應用自動行為到編輯",
@@ -402,6 +403,9 @@
 	"abusefilter-group-default": "預設",
 	"abusefilter-http-error": "一個HTTP錯誤發生咗: $1",
 	"abusefilter-log-details-id": "日誌ID",
+	"blockedexternaldomains": "封鎖咗嘅出面域名",
+	"abusefilter-blocked-domains-title": "封鎖咗嘅出面域名",
 	"abusefilter-blocked-domains-attempted": "你想發佈嘅文字俾我哋嘅過濾器截住咗。呢個域名封咗唔加得：$1",
-	"abusefilter-log-ip-not-available": "唔適用"
+	"abusefilter-log-ip-not-available": "唔適用",
+	"right-abusefilter-bypass-blocked-external-domains": "兜過封鎖咗嘅出面域名"
 }
