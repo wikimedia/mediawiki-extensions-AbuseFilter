@@ -14,9 +14,9 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
-use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Revision\RevisionRecord;
 use RecentChange;
@@ -39,9 +39,6 @@ class CheckMatch extends ApiBase {
 	/** @var FilterLookup */
 	private $filterLookup;
 
-	/** @var VariablesManager */
-	private $afVariablesManager;
-
 	/** @var AbuseLoggerFactory */
 	private $abuseLoggerFactory;
 
@@ -53,7 +50,6 @@ class CheckMatch extends ApiBase {
 	 * @param VariablesBlobStore $afVariablesBlobStore
 	 * @param VariableGeneratorFactory $afVariableGeneratorFactory
 	 * @param FilterLookup $filterLookup
-	 * @param VariablesManager $afVariablesManager
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
 	 */
 	public function __construct(
@@ -64,7 +60,6 @@ class CheckMatch extends ApiBase {
 		VariablesBlobStore $afVariablesBlobStore,
 		VariableGeneratorFactory $afVariableGeneratorFactory,
 		FilterLookup $filterLookup,
-		VariablesManager $afVariablesManager,
 		AbuseLoggerFactory $abuseLoggerFactory
 	) {
 		parent::__construct( $main, $action );
@@ -73,7 +68,6 @@ class CheckMatch extends ApiBase {
 		$this->afVariablesBlobStore = $afVariablesBlobStore;
 		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
 		$this->filterLookup = $filterLookup;
-		$this->afVariablesManager = $afVariablesManager;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
 	}
 
@@ -168,31 +162,37 @@ class CheckMatch extends ApiBase {
 			$this->dieWithError( 'apierror-permissiondenied-generic', 'cannotseeprotectedvariables' );
 		}
 
+		$result = [
+			ApiResult::META_BC_BOOLS => [ 'result' ],
+			'result' => $ruleChecker->checkConditions( $params['filter'] )->getResult(),
+		];
+
 		// If the test filter pattern contains protected variables and this entry had a value set for the
 		// protected variables that were in the pattern, then log that protected variables were accessed.
 		// This is to avoid a user being able to know the value of the variable if they repeatedly try values to
 		// find the actual value through trial-and-error.
 		$shouldLogProtectedVarAccess = false;
-		$varsArray = $this->afVariablesManager->dumpAllVars( $vars, true );
 		foreach ( $this->afPermManager->getUsedProtectedVariables( $usedVars ) as $protectedVariable ) {
-			if ( isset( $varsArray[$protectedVariable] ) ) {
-				$shouldLogProtectedVarAccess = true;
-				break;
+			if ( $vars->varIsSet( $protectedVariable ) ) {
+				$protectedVariableValue = $vars->getVarThrow( $protectedVariable );
+				if ( !( $protectedVariableValue instanceof LazyLoadedVariable ) && $protectedVariableValue !== null ) {
+					$shouldLogProtectedVarAccess = true;
+					break;
+				}
 			}
 		}
 
 		if ( $shouldLogProtectedVarAccess ) {
+			// Either 'user_name' or 'accountname' should be set which are not lazily loaded, so get one of
+			// them to use as the target
+			if ( $vars->varIsSet( 'user_name' ) ) {
+				$target = $vars->getComputedVariable( 'user_name' )->toNative();
+			} else {
+				$target = $vars->getComputedVariable( 'accountname' )->toNative();
+			}
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
-			$logger->logViewProtectedVariableValue(
-				$this->getUser(),
-				$varsArray['user_name'] ?? $varsArray['accountname']
-			);
+			$logger->logViewProtectedVariableValue( $this->getUser(), $target );
 		}
-
-		$result = [
-			ApiResult::META_BC_BOOLS => [ 'result' ],
-			'result' => $ruleChecker->checkConditions( $params['filter'] )->getResult(),
-		];
 
 		$this->getResult()->addValue(
 			null,

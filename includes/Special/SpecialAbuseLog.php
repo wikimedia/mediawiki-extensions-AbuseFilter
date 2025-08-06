@@ -800,7 +800,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row );
-		$varsArray = $this->varManager->dumpAllVars( $vars, true );
+		$varsArray = $this->varManager->dumpAllVars( $vars, $this->afPermissionManager->getProtectedVariables() );
 		$shouldLogProtectedVarAccess = false;
 
 		// If a non-protected filter and a protected filter have overlapping conditions,

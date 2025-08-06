@@ -320,7 +320,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		// instead only check for access to the protected variables and redact them if the
 		// user shouldn't see them.
 		$vars = $this->varBlobStore->loadVarDump( $row );
-		$varsArray = $this->varManager->dumpAllVars( $vars, true );
+		$varsArray = $this->varManager->dumpAllVars( $vars, $this->afPermManager->getProtectedVariables() );
 
 		foreach ( $this->afPermManager->getProtectedVariables() as $protectedVariable ) {
 			if ( isset( $varsArray[$protectedVariable] ) ) {
