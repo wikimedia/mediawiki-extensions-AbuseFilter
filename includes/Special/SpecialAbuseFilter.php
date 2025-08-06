@@ -103,7 +103,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			EditBoxBuilderFactory::SERVICE_NAME,
 			RuleCheckerFactory::SERVICE_NAME,
 			VariableGeneratorFactory::SERVICE_NAME,
-			VariablesManager::SERVICE_NAME,
 			AbuseLoggerFactory::SERVICE_NAME,
 		],
 		AbuseFilterViewTools::class => [

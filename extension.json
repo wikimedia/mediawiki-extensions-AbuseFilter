@@ -235,7 +235,6 @@
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterFilterLookup",
-				"AbuseFilterVariablesManager",
 				"AbuseFilterAbuseLoggerFactory"
 			]
 		},

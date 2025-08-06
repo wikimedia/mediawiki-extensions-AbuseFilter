@@ -785,11 +785,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row );
-		$varsArray = $this->varManager->dumpAllVars( $vars, true );
 
 		// Prevent users seeing logs which contain protected variables that the user cannot see.
 		if ( $filter->isProtected() ) {
-			$permStatus = $this->afPermissionManager->canViewProtectedVariables( $performer, array_keys( $varsArray ) );
+			$permStatus = $this->afPermissionManager->canViewProtectedVariables(
+				$performer, array_keys( $vars->getVars() )
+			);
 			if ( !$permStatus->isGood() ) {
 				if ( $permStatus->getPermission() ) {
 					$out->addWikiMsg( $this->msg(
@@ -828,6 +829,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		// shouldn't see them.
 		$userAuthority = $this->getAuthority();
 		$protectedVariableValuesShown = [];
+		$varsArray = $this->varManager->dumpAllVars( $vars, $this->afPermissionManager->getProtectedVariables() );
 		foreach ( $this->afPermissionManager->getProtectedVariables() as $protectedVariable ) {
 			if ( isset( $varsArray[$protectedVariable] ) ) {
 				// Try each variable at a time, as the user may be able to see some but not all of the
