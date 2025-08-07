@@ -669,6 +669,7 @@
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 {{GENDER:$2|увімкнув|увімкнула}} собі доступ до перегляду захищених змінних",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 {{GENDER:$2|вимкнув|вимкнула}} собі доступ до перегляду захищених змінних",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|переглянув|переглянула}} захищені змінні, пов'язані з $3",
+	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|переглянув|переглянула|переглянули}} {{PLURAL:$4|захищену змінну, пов'язану|захищені змінні, пов'язані}} з $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Тип дії:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Зміна доступу",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Перегляд значень захищених змінних"

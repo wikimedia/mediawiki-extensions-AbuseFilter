@@ -696,6 +696,8 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "La création ou la modification de la liste des domaines externes vers lesquels les liens sont bloqués ne peut être réalisée que via la [[Special:BlockedExternalDomains|page spéciale]].",
 	"right-abusefilter-access-protected-vars": "Voir et créer des filtres qui utilisent des variables protégées",
 	"action-abusefilter-access-protected-vars": "voir et créer des filtres qui utilisent des variables protégées",
+	"right-abusefilter-blocked-external-domains-log": "Afficher le journal des hits des domaines externes bloqués",
+	"action-abusefilter-blocked-external-domains-log": "afficher le journal des hits des domaines externes bloqués",
 	"abusefilter-protected-vars-log-name": "Journal des variables protégées par un filtre anti-abus",
 	"abusefilter-protected-vars-log-header": "Il s'agit d'un journal : \n# de l'affichage des variables protégées dans les détails du journal \n# des modifications des niveaux d'accès utilisateur pour la visualisation de variables protégées",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 a activé {{GENDER:$2|son}} propre accès pour afficher les variables protégées",
