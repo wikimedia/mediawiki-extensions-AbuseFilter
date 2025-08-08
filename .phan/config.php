@@ -27,14 +27,4 @@ $cfg['exception_classes_with_optional_throws_phpdoc'] = [
 	\MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase::class,
 ];
 
-// Temporary block until https://gerrit.wikimedia.org/r/c/mediawiki/tools/phan/+/1162102 is released
-if ( in_array( 'PhanPossiblyInfiniteRecursionSameParams', $cfg['suppress_issue_types'], true ) ) {
-	$cfg['suppress_issue_types'] = array_diff(
-		$cfg['suppress_issue_types'],
-		[ 'PhanPossiblyInfiniteRecursionSameParams' ]
-	);
-} else {
-	throw new \Error( "Drop this block when updating phan." );
-}
-
 return $cfg;
