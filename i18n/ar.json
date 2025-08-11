@@ -669,6 +669,8 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "إنشاء أو تعديل المجالات الخارجية التي تم حظرها من الارتباط يجب أن يتم من خلال [[Special:BlockedExternalDomains|the special page]].",
 	"right-abusefilter-access-protected-vars": "عرض وإنشاء مرشحات تستخدم متغيرات محمية",
 	"action-abusefilter-access-protected-vars": "عرض وإنشاء مرشحات تستخدم متغيرات محمية",
+	"right-abusefilter-blocked-external-domains-log": "عرض سجل الوصول إلى المجالات الخارجية المحظورة",
+	"action-abusefilter-blocked-external-domains-log": "عرض سجل الوصول إلى المجالات الخارجية المحظورة",
 	"abusefilter-protected-vars-log-name": "سجل المتغيرات المحمية لمرشح الإساءة",
 	"abusefilter-protected-vars-log-header": "هذا سجل لـ:\n# عرض المتغيرات المحمية في تفاصيل السجل\n# تغيير مستويات وصول المستخدم لعرض المتغيرات المحمية",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 مكّن {{GENDER:$2|الخاص|الخاصة}} من الوصول إلى المتغيرات المحمية",
