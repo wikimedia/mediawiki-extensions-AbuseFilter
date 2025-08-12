@@ -3,6 +3,7 @@
 		"authors": [
 			"H78c67c",
 			"Hello903hello",
+			"JeffreyKim",
 			"Ktchankt",
 			"Winston Sung",
 			"Yueman"
@@ -405,5 +406,7 @@
 	"abusefilter-blocked-domains-title": "封鎖咗嘅出面域名",
 	"abusefilter-blocked-domains-attempted": "你想發佈嘅文字俾我哋嘅過濾器截住咗。呢個域名封咗唔加得：$1",
 	"abusefilter-log-ip-not-available": "唔適用",
-	"right-abusefilter-bypass-blocked-external-domains": "兜過封鎖咗嘅出面域名"
+	"right-abusefilter-bypass-blocked-external-domains": "兜過封鎖咗嘅出面域名",
+	"right-abusefilter-blocked-external-domains-log": "睇返被封鎖嘅外部網域嘅命中記錄",
+	"action-abusefilter-blocked-external-domains-log": "睇返被封鎖嘅外部網域嘅命中記錄"
 }
