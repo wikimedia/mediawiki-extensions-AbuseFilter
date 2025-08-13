@@ -668,6 +668,8 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Het aanmaken of wijzigen van blokkades van externe domeinen voor koppelingen moet worden gedaan via [[Special:BlockedExternalDomains|de speciale pagina]].",
 	"right-abusefilter-access-protected-vars": "Filters bekijken en aanmaken die beveiligde variabelen gebruiken",
 	"action-abusefilter-access-protected-vars": "filters te bekijken en aan te maken die beveiligde variabelen gebruiken",
+	"right-abusefilter-blocked-external-domains-log": "Het logboek met treffers van geblokkeerde eigen domeinen inzien",
+	"action-abusefilter-blocked-external-domains-log": "het logboek met treffers van geblokkeerde eigen domeinen in te zien",
 	"abusefilter-protected-vars-log-name": "Logboek beveiligde variabelen misbruikfilter",
 	"abusefilter-protected-vars-log-header": "Dit is een logboek over het:\n# Bekijken van beveiligde variabelen in logboekdetails\n# Wijzigen van gebruikerstoegangsniveaus voor het bekijken van beveiligde variabelen",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 heeft {{GENDER:$2|zijn|haar|de}} eigen toegang tot het bekijken van beveiligde variabelen ingeschakeld",
