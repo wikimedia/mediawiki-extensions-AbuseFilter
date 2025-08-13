@@ -38,7 +38,7 @@ CREATE TABLE /*_*/abuse_filter_log (
   afl_filter_id BIGINT UNSIGNED NOT NULL,
   afl_user BIGINT UNSIGNED NOT NULL,
   afl_user_text VARBINARY(255) NOT NULL,
-  afl_ip VARCHAR(255) NOT NULL,
+  afl_ip VARCHAR(255) DEFAULT '' NOT NULL,
   afl_ip_hex VARCHAR(255) DEFAULT '' NOT NULL,
   afl_action VARBINARY(255) NOT NULL,
   afl_actions VARBINARY(255) NOT NULL,
