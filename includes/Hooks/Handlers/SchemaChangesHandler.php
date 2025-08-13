@@ -214,6 +214,10 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			'abuse_filter_log', 'afl_ip',
 			"$dir/$dbType/patch-add-default-afl_ip.sql"
 		);
+		$updater->modifyExtensionField(
+			'abuse_filter_log', 'afl_ip_hex',
+			"$dir/$dbType/patch-remove-default-afl_ip_hex.sql"
+		);
 
 		$updater->addExtensionUpdate( [ [ $this, 'createAbuseFilterUser' ] ] );
 	}

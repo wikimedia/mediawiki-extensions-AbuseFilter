@@ -42,7 +42,7 @@ CREATE TABLE abuse_filter_log (
   afl_user BIGINT NOT NULL,
   afl_user_text TEXT NOT NULL,
   afl_ip VARCHAR(255) DEFAULT '' NOT NULL,
-  afl_ip_hex VARCHAR(255) DEFAULT '' NOT NULL,
+  afl_ip_hex VARCHAR(255) NOT NULL,
   afl_action TEXT NOT NULL,
   afl_actions TEXT NOT NULL,
   afl_var_dump TEXT NOT NULL,
