@@ -678,5 +678,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 heeft de volgende met $3 in verband staande beveiligde variabele{{PLURAL:$4||n}} ingezien: $5{{GENDER:$2|}}",
 	"log-action-filter-abusefilter-protected-vars": "Soort handeling:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Toegang wijzigen",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Beveiligde variabelewaarden bekijken"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Beveiligde variabelewaarden bekijken",
+	"communityconfiguration-blockeddomain-title": "Geblokkeerde externe domeinen",
+	"communityconfiguration-blockeddomain-description": "Een lijst met externe domeinen waarnaar niet kan worden gekoppeld."
 }

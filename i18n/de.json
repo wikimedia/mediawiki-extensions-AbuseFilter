@@ -681,5 +681,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|sah}} die {{PLURAL:$4|geschützte Variable|geschützten Variablen}} an, verknüpft mit $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Typ der Aktion:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Zugang ändern",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Anzeige geschützter Variablenwerte"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Anzeige geschützter Variablenwerte",
+	"communityconfiguration-blockeddomain-title": "Blockierte externe Domains",
+	"communityconfiguration-blockeddomain-description": "Eine Liste externer Domains, auf die keine Verknüpfung hergestellt werden kann."
 }
