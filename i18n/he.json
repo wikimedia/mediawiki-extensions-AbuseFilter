@@ -654,12 +654,17 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "יצירה ושינוי של תחומים חיצוניים חסומים לקישור צריכות להיעשות דרך [[Special:BlockedExternalDomains|דף מיוחד]].",
 	"right-abusefilter-access-protected-vars": "צפייה במסננים שמשתמשים במשתנים מוגנים ועריכתם",
 	"action-abusefilter-access-protected-vars": "לצפות במסננים שמשתמשים במשתנים מוגנים ולערוך אותם",
+	"right-abusefilter-blocked-external-domains-log": "צפייה ביומן הגעה לתחומים חיצוניים",
+	"action-abusefilter-blocked-external-domains-log": "לצפות ביומן הגעה לתחומים חיצוניים",
 	"abusefilter-protected-vars-log-name": "יומן משתנים מוגנים של מסנן ההשחתות",
 	"abusefilter-protected-vars-log-header": "זהו יומן של:\n# הצגת משתנים מוגנים בפרטי יומן\n# שינוי רמות גישת המשתמש לצפייה במשתנים מוגנים",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 {{GENDER:$2|הפעיל לעצמו|הפעילה לעצמה}} את הגישה לצפייה במשתנים מוגנים",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 {{GENDER:$2|כיבה לעצמו|כיבתה לעצמה}} את הגישה לצפייה במשתנים מוגנים",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|צפה|צפתה}} במשתנים מוגנים שמשויכים לדף $3",
+	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|צפה|צפתה}} {{PLURAL:$4|במשתנה מוגן|במשתנים מוגנים}} שמשויכים לדף $3, שהם: $5",
 	"log-action-filter-abusefilter-protected-vars": "סוג הפעולה:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "שינוי גישה",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "צפייה בערכים של משתנים מוגנים"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "צפייה בערכים של משתנים מוגנים",
+	"communityconfiguration-blockeddomain-title": "תחומים חיצוניים חסומים",
+	"communityconfiguration-blockeddomain-description": "רשימת תחומים חיצוניים שלא ניתן לקשר אליהם."
 }

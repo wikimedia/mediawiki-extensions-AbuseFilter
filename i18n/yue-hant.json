@@ -410,5 +410,7 @@
 	"abusefilter-log-ip-not-available": "唔適用",
 	"right-abusefilter-bypass-blocked-external-domains": "兜過封鎖咗嘅出面域名",
 	"right-abusefilter-blocked-external-domains-log": "睇返被封鎖嘅外部網域嘅命中記錄",
-	"action-abusefilter-blocked-external-domains-log": "睇返被封鎖嘅外部網域嘅命中記錄"
+	"action-abusefilter-blocked-external-domains-log": "睇返被封鎖嘅外部網域嘅命中記錄",
+	"communityconfiguration-blockeddomain-title": "封鎖咗嘅外部域名",
+	"communityconfiguration-blockeddomain-description": "連結唔到嘅外部域名。"
 }
