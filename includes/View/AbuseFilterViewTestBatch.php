@@ -274,18 +274,18 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		foreach ( $res as $row ) {
 			$rc = RecentChange::newFromRow( $row );
 			if ( !$formData['ShowNegative'] ) {
-				$type = (int)$rc->getAttribute( 'rc_type' );
+				$source = $rc->getAttribute( 'rc_source' );
 				$deletedValue = (int)$rc->getAttribute( 'rc_deleted' );
 				if (
 					(
-						$type === RC_LOG &&
+						$source === RecentChange::SRC_LOG &&
 						!LogEventsList::userCanBitfield(
 							$deletedValue,
 							LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
 							$contextUser
 						)
 					) || (
-						$type !== RC_LOG &&
+						$source !== RecentChange::SRC_LOG &&
 						!RevisionRecord::userCanBitfield( $deletedValue, RevisionRecord::SUPPRESSED_ALL, $contextUser )
 					)
 				) {
