@@ -320,7 +320,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			[
 				'rc_namespace' => $destTitle->getNamespace(),
 				'rc_title' => $destTitle->getDbKey(),
-				'rc_type' => RC_LOG,
+				'rc_source' => RecentChange::SRC_LOG,
 				'rc_log_type' => 'upload',
 				'rc_log_action' => 'upload',
 			],

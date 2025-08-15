@@ -148,7 +148,7 @@ class VariableGenerator {
 		string $prefix,
 		?RecentChange $rc = null
 	): self {
-		if ( $rc && $rc->getAttribute( 'rc_type' ) == RC_NEW ) {
+		if ( $rc && $rc->getAttribute( 'rc_source' ) === RecentChange::SRC_NEW ) {
 			$this->vars->setVar( $prefix . '_id', 0 );
 		} else {
 			$this->vars->setVar( $prefix . '_id', $title->getArticleID() );

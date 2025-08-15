@@ -74,18 +74,18 @@ class CheckMatch extends ApiBase {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );
 			}
 
-			$type = (int)$rc->getAttribute( 'rc_type' );
+			$source = $rc->getAttribute( 'rc_source' );
 			$deletedValue = $rc->getAttribute( 'rc_deleted' );
 			if (
 				(
-					$type === RC_LOG &&
+					$source === RecentChange::SRC_LOG &&
 					!LogEventsList::userCanBitfield(
 						$deletedValue,
 						LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
 						$performer
 					)
 				) || (
-					$type !== RC_LOG &&
+					$source !== RecentChange::SRC_LOG &&
 					!RevisionRecord::userCanBitfield( $deletedValue, RevisionRecord::SUPPRESSED_ALL, $performer )
 				)
 			) {
