@@ -3,7 +3,8 @@
 		"authors": [
 			"Ajeje Brazorf",
 			"Pippinu",
-			"Sarvaturi"
+			"Sarvaturi",
+			"GianAntonucci"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-description": "Cuntrolla si n'AbuseFilter currispunni ôn nzemi di variàbbili, ôn canciamentu o a n'eventu AbuseFilter riggistratu.\n\nS'havi a spicificari pi forza o vars, o rcid, o logid, ma sulu unu di chisti.",
@@ -43,6 +44,6 @@
 	"apihelp-query+abuselog-param-filter": "Ammustra sulu l'azzioni ntircittati di nu filtru cu na certa ID.",
 	"apihelp-query+abuselog-param-limit": "Lu nùmmiru màssimu di vuci di elincari.",
 	"apihelp-query+abuselog-param-prop": "Quali prupità pigghiari.",
-	"apihelp-query+abuselog-example-1": "Ammustra li vuci di riggistru ricenti",
+	"apihelp-query+abuselog-example-1": "Fai vìdiri li vuci di riggistru ricenti",
 	"apihelp-query+abuselog-example-2": "Ammustra li vuci di riggistru ricenti pi [[API]]"
 }
