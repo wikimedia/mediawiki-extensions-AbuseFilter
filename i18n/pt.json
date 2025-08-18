@@ -14,6 +14,7 @@
 			"He7d3r",
 			"Helder.wiki",
 			"Imperadeiro98",
+			"ItsaMeSandy",
 			"Lijealso",
 			"Luckas",
 			"MF-Warburg",
@@ -652,5 +653,7 @@
 	"action-abusefilter-bypass-blocked-external-domains": "contornar os domínios externos bloqueados",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Criar ou modificar que domínios externos estão impedidos de ser destino de hiperligações, tem de ser feito na [[Special:BlockedExternalDomains|página especial]].",
 	"right-abusefilter-access-protected-vars": "Ver e criar filtros que usam variáveis protegidas",
-	"action-abusefilter-access-protected-vars": "ver e criar filtros que usam variáveis protegidas"
+	"action-abusefilter-access-protected-vars": "ver e criar filtros que usam variáveis protegidas",
+	"communityconfiguration-blockeddomain-title": "Domínios externos bloqueados",
+	"communityconfiguration-blockeddomain-description": "Uma lista de domínios externos que não podem ser interligados."
 }

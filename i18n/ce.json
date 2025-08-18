@@ -646,5 +646,6 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|хьаьжна}} ларбина хийцамаш $3 боьзна болу.",
 	"log-action-filter-abusefilter-protected-vars": "Ардаман тайпа:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Хийца тӀекхачар",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Ларбина хийцамийн маьӀна хьажар"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Ларбина хийцамийн маьӀна хьажар",
+	"communityconfiguration-blockeddomain-title": "Блоктоьхна йолу арахьара доменаш"
 }

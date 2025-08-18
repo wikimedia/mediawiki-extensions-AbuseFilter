@@ -650,5 +650,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|погледа}} {{PLURAL:$4|заштитена променлива поврзана|заштитени променливи поврзани}} со $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Вид на дејство:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Смени пристап",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Гледање на заштитени променливи"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Гледање на заштитени променливи",
+	"communityconfiguration-blockeddomain-title": "Блокирани надворешни домени",
+	"communityconfiguration-blockeddomain-description": "Список на надворешни домени кои не можат да се ставаат како врски."
 }

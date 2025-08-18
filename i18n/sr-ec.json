@@ -576,6 +576,8 @@
 	"action-abusefilter-bypass-blocked-external-domains": "заобилазите блокиране спољне домене",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Додавање или мењање блокираних спољашњих веза мора се радити преко [[Special:BlockedExternalDomains|ове посебне стрранице]].",
 	"right-abusefilter-access-protected-vars": "преглед и прављење филтера који користе заштићене променљиве",
+	"right-abusefilter-blocked-external-domains-log": "приступ дневнику блокаде домена",
+	"action-abusefilter-blocked-external-domains-log": "видите дневник блокаде домена",
 	"abusefilter-protected-vars-log-name": "Дневник филтера злоупотребе - заштићене променљиве",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 је {{GENDER:$2|омогућио|омогућила}} себи приступ заштићеним променљивама",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 је {{GENDER:$2|онемогућио|онемогућила}} себи приступ заштићеним променљивама",
