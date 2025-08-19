@@ -459,7 +459,8 @@
 				"AbuseFilterBlockedDomainFilter",
 				"PermissionManager",
 				"TitleFactory",
-				"UserFactory"
+				"UserFactory",
+				"TempUserConfig"
 			]
 		},
 		"CheckUser": {
