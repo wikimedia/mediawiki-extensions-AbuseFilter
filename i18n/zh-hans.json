@@ -737,5 +737,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1{{GENDER:$2|查看}}受保护的{{PLURAL:$4|variable|变量}}与$3相关联：$5",
 	"log-action-filter-abusefilter-protected-vars": "操作类型：",
 	"log-action-filter-abusefilter-protected-vars-change-access": "更改权限",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "查看受保护的变量值"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "查看受保护的变量值",
+	"communityconfiguration-blockeddomain-title": "已封禁的外部域名",
+	"communityconfiguration-blockeddomain-description": "无法链接的外部域名列表。"
 }
