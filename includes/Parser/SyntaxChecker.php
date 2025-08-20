@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Message\Message;
+use Wikimedia\Message\ListType;
 
 /**
  * SyntaxChecker statically analyzes the code without actually running it.
@@ -102,7 +103,7 @@ class SyntaxChecker {
 			throw new UserVisibleException(
 				'unusedvars',
 				self::DUMMYPOS,
-				[ Message::listParam( $unused, 'comma' ) ]
+				[ Message::listParam( $unused, ListType::COMMA ) ]
 			);
 		}
 	}

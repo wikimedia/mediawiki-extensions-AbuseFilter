@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Message\Message;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Status\Status;
+use Wikimedia\Message\ListType;
 
 /**
  * This class validates filters, e.g. before saving.
@@ -156,7 +157,7 @@ class FilterValidator {
 		if ( count( $missing ) !== 0 ) {
 			$ret->error(
 				'abusefilter-edit-missingfields',
-				Message::listParam( $missing, 'comma' )
+				Message::listParam( $missing, ListType::COMMA )
 			);
 		}
 		return $ret;
