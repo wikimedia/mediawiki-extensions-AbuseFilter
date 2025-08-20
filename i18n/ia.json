@@ -645,5 +645,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|ha examinate}} le variabile{{PLURAL:$4||s}} protegite associate a $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Typo de action:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Cambiar accesso",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Vider le valores de variabiles protegite"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Vider le valores de variabiles protegite",
+	"communityconfiguration-blockeddomain-title": "Dominios externe blocate",
+	"communityconfiguration-blockeddomain-description": "Un lista de dominios externe al quales non pote esser ligate."
 }

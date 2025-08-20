@@ -12,7 +12,8 @@
 			"Marinari",
 			"Matma Rex",
 			"Olsi",
-			"Vinie007"
+			"Vinie007",
+			"Xhulianoo"
 		]
 	},
 	"abusefilter-desc": "Zbaton automatikisht deduktimin e redaktimeve",
@@ -297,6 +298,7 @@
 	"abusefilter-revert-filter": "ID Filtri:",
 	"abusefilter-test-submit": "Verifiko",
 	"abusefilter-test-load": "Ngarko",
+	"abusefilter-test-search-type-createaccount": "Redaktimet e llogarive",
 	"abusefilter-changeslist-examine": "ekzamino",
 	"abusefilter-examine-submit": "Kërko",
 	"abusefilter-topnav-home": "Faqja kryesore",

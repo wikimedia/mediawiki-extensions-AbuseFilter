@@ -679,5 +679,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|مشاهدة}} محمية {{PLURAL:$4|متغير|متغيرات}} مرتبطة بـ $3 : $5",
 	"log-action-filter-abusefilter-protected-vars": "نوع الفعل:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "تغيير الوصول",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "عرض قيم المتغيرات المحمية"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "عرض قيم المتغيرات المحمية",
+	"communityconfiguration-blockeddomain-title": "النطاقات الخارجية الممنوعة",
+	"communityconfiguration-blockeddomain-description": "قائمة المجالات الخارجية التي لا يمكن الارتباط بها."
 }
