@@ -60,13 +60,6 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 		$this->domainValidator = $domainValidator;
 	}
 
-	/**
-	 * @return string
-	 */
-	private function makeCacheKey() {
-		return $this->cache->makeKey( 'abusefilter-blocked-domains' );
-	}
-
 	/** @inheritDoc */
 	public function loadConfig( int $flags = 0 ): StatusValue {
 		if ( DBAccessObjectUtils::hasFlags( $flags, IDBAccessObject::READ_LATEST ) ) {
@@ -75,7 +68,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 
 		// Load configuration from APCU
 		return $this->cache->getWithSetCallback(
-			$this->makeCacheKey(),
+			$this->cache->makeKey( 'abusefilter-blockeddomains-config' ),
 			BagOStuff::TTL_MINUTE * 5,
 			function ( &$ttl ) use ( $flags ) {
 				$result = $this->fetchConfig( $flags );
@@ -91,7 +84,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	/** @inheritDoc */
 	public function loadComputed(): array {
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
+			$this->cache->makeKey( 'abusefilter-blockeddomains-computed' ),
 			BagOStuff::TTL_MINUTE * 5,
 			function () {
 				$status = $this->loadConfig();

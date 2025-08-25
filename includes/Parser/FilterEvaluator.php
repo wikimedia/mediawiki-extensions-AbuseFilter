@@ -400,6 +400,7 @@ class FilterEvaluator {
 		$this->fromCache = true;
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeGlobalKey(
+				'abusefilter-tree',
 				__CLASS__,
 				self::getCacheVersion(),
 				hash( 'sha256', $code )

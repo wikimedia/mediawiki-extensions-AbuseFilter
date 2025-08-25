@@ -136,7 +136,7 @@ class BlockedDomainEditor {
 		// with md5 checksum, we make sure changes to the domain list
 		// invalidate the cache
 		$cacheKey = $this->wanCache->makeKey(
-			'abuse-filter-special-blocked-external-domains-rows',
+			'abusefilter-blockeddomains-rows',
 			md5( json_encode( $res->getValue() ) ),
 			(int)$userCanManage
 		);

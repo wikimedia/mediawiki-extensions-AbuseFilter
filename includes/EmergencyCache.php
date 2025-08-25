@@ -122,11 +122,11 @@ class EmergencyCache {
 	}
 
 	private function createGroupKey( string $group ): string {
-		return $this->stash->makeKey( 'abusefilter', 'emergency', 'group', $group );
+		return $this->stash->makeKey( 'abusefilter-emergency', 'group', $group );
 	}
 
 	private function createFilterKey( int $filter ): string {
-		return $this->stash->makeKey( 'abusefilter', 'emergency', 'filter', $filter );
+		return $this->stash->makeKey( 'abusefilter-emergency', 'filter', $filter );
 	}
 
 }

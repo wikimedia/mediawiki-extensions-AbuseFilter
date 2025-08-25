@@ -62,7 +62,7 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 	 */
 	public function loadComputed(): array {
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'abusefilter-blocked-domains-computed' ),
+			$this->cache->makeKey( 'abusefilter-blockeddomains-computed' ),
 			BagOStuff::TTL_MINUTE * 5,
 			function () {
 				$status = $this->loadValidConfiguration();

@@ -373,14 +373,13 @@ class FilterLookup implements IDBAccessObject {
 	private function getGlobalRulesKey( string $group ): string {
 		if ( !$this->centralDBManager->filterIsCentral() ) {
 			return $this->wanCache->makeGlobalKey(
-				'abusefilter',
-				'rules',
+				'abusefilter-rules',
 				$this->centralDBManager->getCentralDBName(),
 				$group
 			);
 		}
 
-		return $this->wanCache->makeKey( 'abusefilter', 'rules', $group );
+		return $this->wanCache->makeKey( 'abusefilter-rules', $group );
 	}
 
 	/**
