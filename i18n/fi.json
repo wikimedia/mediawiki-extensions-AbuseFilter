@@ -622,5 +622,7 @@
 	"right-abusefilter-access-protected-vars": "Katsoa ja luoda suodattimia, jotka käyttävät suojattuja muuttujia",
 	"action-abusefilter-access-protected-vars": "katsoa ja luoda suodattimia, jotka käyttävät suojattuja muuttujia",
 	"abusefilter-protected-vars-log-name": "Väärinkäyttösuodattimen suojattujen muuttujien loki",
-	"log-action-filter-abusefilter-protected-vars": "Toiminnon tyyppi:"
+	"log-action-filter-abusefilter-protected-vars": "Toiminnon tyyppi:",
+	"communityconfiguration-blockeddomain-title": "Estetyt ulkoiset domain-nimet",
+	"communityconfiguration-blockeddomain-description": "Luettelo ulkoisista domain-nimistä, joihin ei voi linkittää."
 }
