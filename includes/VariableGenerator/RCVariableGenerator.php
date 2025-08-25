@@ -119,7 +119,7 @@ class RCVariableGenerator extends VariableGenerator {
 			'moved_from_last_edit_age',
 			'revision-age',
 			[
-				// rc_last_oldid is zero (RecentChange::newLogEntry)
+				// rc_last_oldid is zero (RecentChangeFactory::createLogRecentChange)
 				'revid' => $this->rc->getAttribute( 'rc_this_oldid' ),
 				'parent' => true,
 				'asof' => $this->rc->getAttribute( 'rc_timestamp' ),
@@ -202,7 +202,7 @@ class RCVariableGenerator extends VariableGenerator {
 			'page_last_edit_age',
 			'revision-age',
 			[
-				// rc_last_oldid is zero (RecentChange::newLogEntry)
+				// rc_last_oldid is zero (RecentChangeFactory::createLogRecentChange)
 				'revid' => $this->rc->getAttribute( 'rc_this_oldid' ),
 				'parent' => true,
 				'asof' => $this->rc->getAttribute( 'rc_timestamp' ),
@@ -242,7 +242,7 @@ class RCVariableGenerator extends VariableGenerator {
 			[ 'revid' => $this->rc->getAttribute( 'rc_this_oldid' ), 'contextUser' => $this->contextUser ] );
 		$this->vars->setLazyLoadVar( 'old_wikitext', 'revision-text',
 			[
-				// rc_last_oldid is zero (RecentChange::newLogEntry)
+				// rc_last_oldid is zero (RecentChangeFactory::createLogRecentChange)
 				'revid' => $this->rc->getAttribute( 'rc_this_oldid' ),
 				'parent' => true,
 				'contextUser' => $this->contextUser,

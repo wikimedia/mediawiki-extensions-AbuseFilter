@@ -23,6 +23,7 @@ use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\RecentChanges\ChangesList;
 use MediaWiki\RecentChanges\RecentChange;
+use MediaWiki\RecentChanges\RecentChangeStore;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use OOUI;
@@ -63,6 +64,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	private $varGeneratorFactory;
 
 	private AbuseLoggerFactory $abuseLoggerFactory;
+	private RecentChangeStore $recentChangeStore;
 
 	/**
 	 * @param LBFactory $lbFactory
@@ -74,6 +76,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @param VariablesManager $varManager
 	 * @param VariableGeneratorFactory $varGeneratorFactory
 	 * @param AbuseLoggerFactory $abuseLoggerFactory
+	 * @param RecentChangeStore $recentChangeStore
 	 * @param IContextSource $context
 	 * @param LinkRenderer $linkRenderer
 	 * @param string $basePageName
@@ -89,6 +92,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		VariablesManager $varManager,
 		VariableGeneratorFactory $varGeneratorFactory,
 		AbuseLoggerFactory $abuseLoggerFactory,
+		RecentChangeStore $recentChangeStore,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -104,6 +108,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$this->varManager = $varManager;
 		$this->varGeneratorFactory = $varGeneratorFactory;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
+		$this->recentChangeStore = $recentChangeStore;
 	}
 
 	/**
@@ -201,6 +206,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$pager = new AbuseFilterExaminePager(
 			$changesList,
 			$this->linkRenderer,
+			$this->recentChangeStore,
 			$dbr,
 			$this->getTitle( 'examine' ),
 			$conds
@@ -221,7 +227,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 */
 	public function showExaminerForRC( $rcid ) {
 		// Get data
-		$rc = RecentChange::newFromId( $rcid );
+		$rc = $this->recentChangeStore->getRecentChangeById( $rcid );
 		$out = $this->getOutput();
 		if ( !$rc ) {
 			$out->addWikiMsg( 'abusefilter-examine-notfound' );

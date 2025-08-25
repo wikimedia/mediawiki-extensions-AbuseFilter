@@ -19,6 +19,7 @@ use MediaWiki\Json\FormatJson;
 use MediaWiki\Logging\LogEventsList;
 use MediaWiki\Logging\LogPage;
 use MediaWiki\RecentChanges\RecentChange;
+use MediaWiki\RecentChanges\RecentChangeLookup;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -30,6 +31,7 @@ class CheckMatch extends ApiBase {
 	private VariableGeneratorFactory $afVariableGeneratorFactory;
 	private FilterLookup $filterLookup;
 	private AbuseLoggerFactory $abuseLoggerFactory;
+	private RecentChangeLookup $recentChangeLookup;
 
 	public function __construct(
 		ApiMain $main,
@@ -39,7 +41,8 @@ class CheckMatch extends ApiBase {
 		VariablesBlobStore $afVariablesBlobStore,
 		VariableGeneratorFactory $afVariableGeneratorFactory,
 		FilterLookup $filterLookup,
-		AbuseLoggerFactory $abuseLoggerFactory
+		AbuseLoggerFactory $abuseLoggerFactory,
+		RecentChangeLookup $recentChangeLookup
 	) {
 		parent::__construct( $main, $action );
 		$this->ruleCheckerFactory = $ruleCheckerFactory;
@@ -48,6 +51,7 @@ class CheckMatch extends ApiBase {
 		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
 		$this->filterLookup = $filterLookup;
 		$this->abuseLoggerFactory = $abuseLoggerFactory;
+		$this->recentChangeLookup = $recentChangeLookup;
 	}
 
 	/**
@@ -68,7 +72,7 @@ class CheckMatch extends ApiBase {
 			$pairs = FormatJson::decode( $params['vars'], true );
 			$vars = VariableHolder::newFromArray( $pairs );
 		} elseif ( $params['rcid'] ) {
-			$rc = RecentChange::newFromId( $params['rcid'] );
+			$rc = $this->recentChangeLookup->getRecentChangeById( $params['rcid'] );
 
 			if ( !$rc ) {
 				$this->dieWithError( [ 'apierror-nosuchrcid', $params['rcid'] ] );

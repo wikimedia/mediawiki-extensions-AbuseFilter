@@ -235,7 +235,8 @@
 				"AbuseFilterVariablesBlobStore",
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterFilterLookup",
-				"AbuseFilterAbuseLoggerFactory"
+				"AbuseFilterAbuseLoggerFactory",
+				"RecentChangeLookup"
 			]
 		},
 		"abuselogprivatedetails": {

@@ -67,7 +67,8 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			VariablesFormatter::SERVICE_NAME,
 			VariablesManager::SERVICE_NAME,
 			VariableGeneratorFactory::SERVICE_NAME,
-			AbuseLoggerFactory::SERVICE_NAME
+			AbuseLoggerFactory::SERVICE_NAME,
+			'RecentChangeStore',
 		],
 		AbuseFilterViewHistory::class => [
 			'UserNameUtils',
@@ -104,6 +105,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			RuleCheckerFactory::SERVICE_NAME,
 			VariableGeneratorFactory::SERVICE_NAME,
 			AbuseLoggerFactory::SERVICE_NAME,
+			'RecentChangeFactory',
 		],
 		AbuseFilterViewTools::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,

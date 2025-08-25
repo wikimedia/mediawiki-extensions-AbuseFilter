@@ -168,7 +168,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		}
 
 		DeferredUpdates::doUpdates();
-		$rc = RecentChange::newFromConds( $rcConds, __METHOD__, DB_PRIMARY );
+		$rc = $services->getRecentChangeLookup()->getRecentChangeByConds( $rcConds, __METHOD__, true );
 		$this->assertNotNull( $rc, 'RC item found' );
 
 		$accountCreationHookCalled = false;
@@ -262,10 +262,10 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		/** @var RevisionRecord $revRecord */
 		$revRecord = $status->value['revision-record'];
 
-		$rc = RecentChange::newFromConds(
+		$rc = $this->getServiceContainer()->getRecentChangeLookup()->getRecentChangeByConds(
 			[ 'rc_this_oldid' => $revRecord->getId() ],
 			__METHOD__,
-			DB_PRIMARY
+			true
 		);
 		$this->assertNotNull( $rc, 'RC item found' );
 
@@ -316,7 +316,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 			throw new LogicException( "Cannot upload file:\n$status" );
 		}
 
-		$rc = RecentChange::newFromConds(
+		$rc = $this->getServiceContainer()->getRecentChangeLookup()->getRecentChangeByConds(
 			[
 				'rc_namespace' => $destTitle->getNamespace(),
 				'rc_title' => $destTitle->getDbKey(),
@@ -325,7 +325,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				'rc_log_action' => 'upload',
 			],
 			__METHOD__,
-			DB_PRIMARY
+			true
 		);
 		$this->assertNotNull( $rc, 'RC item found' );
 
