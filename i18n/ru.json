@@ -43,6 +43,7 @@
 			"MaxBioHazard",
 			"MaxSem",
 			"Megakott",
+			"Megitsune-chan",
 			"Meshkov.a",
 			"Mitte27",
 			"Mouse21",
@@ -696,5 +697,7 @@
 	"abusefilter-protected-vars-log-name": "Журнал защищённых переменных фильтра злоупотреблений",
 	"log-action-filter-abusefilter-protected-vars": "Тип действия:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Изменить доступ",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Просмотр значений защищённых переменных"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Просмотр значений защищённых переменных",
+	"communityconfiguration-blockeddomain-title": "Заблокированный внешние домены",
+	"communityconfiguration-blockeddomain-description": "Список внешних доменов, ссылку на которые нельзя установить."
 }
