@@ -659,5 +659,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 $3 ilə əlaqəli mühafizəli {{PLURAL:$4|dəyişənə|dəyişənlərə}} {{GENDER:$2|baxdı}}: $5",
 	"log-action-filter-abusefilter-protected-vars": "Fəaliyyət növü:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "İcazənin dəyişdirilməsi",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Mühafizəli dəyişənlərə baxmaq"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Mühafizəli dəyişənlərə baxmaq",
+	"communityconfiguration-blockeddomain-title": "Bloklanmış xarici domenlər",
+	"communityconfiguration-blockeddomain-description": "Əlaqələndirilməsi mümkün olmayan xarici domenlərin siyahısı."
 }
