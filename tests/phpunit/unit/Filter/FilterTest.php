@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
@@ -25,7 +26,7 @@ class FilterTest extends MediaWikiUnitTestCase {
 			$this->createMock( Specs::class ),
 			$this->createMock( Flags::class ),
 			[],
-			new LastEditInfo( $userID, $userName, $timestamp ),
+			new LastEditInfo( UserIdentityValue::newRegistered( $userID, $userName ), $timestamp ),
 			$id,
 			$hitCount,
 			$throttled
@@ -50,7 +51,7 @@ class FilterTest extends MediaWikiUnitTestCase {
 			$this->createMock( Specs::class ),
 			$this->createMock( Flags::class ),
 			[],
-			new LastEditInfo( 0, $userName, 123 ),
+			new LastEditInfo( UserIdentityValue::newAnonymous( $userName ), 123 ),
 			164,
 			1000,
 			false
@@ -74,7 +75,7 @@ class FilterTest extends MediaWikiUnitTestCase {
 
 	public function testNoWriteableReferences() {
 		$oldUsername = 'User1';
-		$lastEditInfo = new LastEditInfo( 1, $oldUsername, '123' );
+		$lastEditInfo = new LastEditInfo( UserIdentityValue::newRegistered( 1, $oldUsername ), '123' );
 		$filter = new Filter(
 			$this->createMock( Specs::class ),
 			$this->createMock( Flags::class ),
@@ -83,7 +84,7 @@ class FilterTest extends MediaWikiUnitTestCase {
 		);
 		$copy = clone $filter;
 
-		$lastEditInfo->setUserName( 'new username' );
+		$lastEditInfo->setUserIdentity( UserIdentityValue::newAnonymous( "y" ) );
 		$this->assertSame( $oldUsername, $filter->getUserIdentity()->getName(), 'original' );
 		$this->assertSame( $oldUsername, $copy->getUserIdentity()->getName(), 'copy' );
 	}

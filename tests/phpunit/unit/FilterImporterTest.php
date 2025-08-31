@@ -13,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\InvalidImportDataException;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 
 /**
@@ -145,8 +146,7 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 			),
 			$actions,
 			new LastEditInfo(
-				0,
-				'',
+				UserIdentityValue::newAnonymous( '' ),
 				''
 			)
 		);

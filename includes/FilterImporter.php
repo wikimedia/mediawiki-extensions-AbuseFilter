@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\LastEditInfo;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\User\UserIdentityValue;
 
 /**
  * This class allows encoding filters to (and decoding from) a string format that can be used
@@ -110,8 +111,7 @@ class FilterImporter {
 			),
 			$actions,
 			new LastEditInfo(
-				0,
-				'',
+				UserIdentityValue::newAnonymous( '' ),
 				''
 			)
 		);

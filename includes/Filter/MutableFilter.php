@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Filter;
 
 use LogicException;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 
 /**
  * Value object representing a filter that can be mutated (i.e. provides setters); this representation can
@@ -33,8 +34,7 @@ class MutableFilter extends Filter {
 			),
 			[],
 			new LastEditInfo(
-				0,
-				'',
+				UserIdentityValue::newAnonymous( '' ),
 				''
 			)
 		);
@@ -109,8 +109,7 @@ class MutableFilter extends Filter {
 	}
 
 	public function setUserIdentity( UserIdentity $user ): void {
-		$this->lastEditInfo->setUserID( $user->getId() );
-		$this->lastEditInfo->setUserName( $user->getName() );
+		$this->lastEditInfo->setUserIdentity( $user );
 	}
 
 	public function setTimestamp( string $timestamp ): void {

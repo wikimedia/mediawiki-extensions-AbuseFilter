@@ -30,6 +30,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\Stats\NullStatsdDataFactory;
 
@@ -73,7 +74,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			new Specs( '1 === 1', '', 'Test Filter', [ 'disallow' ], 'default' ),
 			new Flags( true, false, false, false ),
 			[ 'disallow' => [ 'abusefilter-disallow' ] ],
-			new LastEditInfo( 1, 'Filter User', '20220713000000' ),
+			new LastEditInfo( UserIdentityValue::newRegistered( 1, 'Filter User' ), '20220713000000' ),
 			1,
 			0,
 			false

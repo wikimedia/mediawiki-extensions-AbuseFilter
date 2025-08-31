@@ -30,7 +30,7 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 			new Specs( 'rules', 'comments', 'name', [], 'group' ),
 			new Flags( true, true, true, true ),
 			$fakeActions,
-			new LastEditInfo( 42, 'User', '12345' )
+			new LastEditInfo( UserIdentityValue::newRegistered( 42, "User" ), '12345' )
 		);
 
 		$filter->$setter( $value );
@@ -51,7 +51,7 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 			new Specs( 'rules', 'comments', 'name', [], 'group' ),
 			new Flags( true, true, true, true ),
 			$fakeActions,
-			new LastEditInfo( 42, 'User', '12345' )
+			new LastEditInfo( UserIdentityValue::newRegistered( 42, "User" ), '12345' )
 		);
 
 		$this->assertTrue( $filter->getUserIdentity()->equals( $existingIdentity ) );
@@ -87,7 +87,7 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 			new Specs( 'rules', 'comments', 'name', [], 'group' ),
 			new Flags( true, true, true, true ),
 			[ 'foo' => [] ],
-			new LastEditInfo( 42, 'User', '12345' )
+			new LastEditInfo( UserIdentityValue::newRegistered( 42, "User" ), '12345' )
 		);
 		$this->expectException( LogicException::class );
 		$filter->setActionsNames( [ 'x' ] );
@@ -98,7 +98,7 @@ class MutableFilterTest extends MediaWikiUnitTestCase {
 			new Specs( 'rules', 'comments', 'name', [ 'x' ], 'group' ),
 			new Flags( true, false, true, false ),
 			[ 'foobar' => [] ],
-			new LastEditInfo( 111, 'User', '4563681' ),
+			new LastEditInfo( UserIdentityValue::newRegistered( 111, "User" ), '4563681' ),
 			42,
 			12345,
 			true

@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Filter;
 
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityValue;
 
 /**
  * Immutable value object representing a "complete" filter. This can be used to represent filters
@@ -68,13 +67,7 @@ class Filter extends AbstractFilter {
 	}
 
 	public function getUserIdentity(): UserIdentity {
-		if ( $this->id === 0 ) {
-			return UserIdentityValue::newAnonymous( $this->lastEditInfo->getUserName() );
-		}
-		return UserIdentityValue::newRegistered(
-			$this->lastEditInfo->getUserID(),
-			$this->lastEditInfo->getUserName()
-		);
+		return $this->lastEditInfo->getUserIdentity();
 	}
 
 	public function getTimestamp(): string {
