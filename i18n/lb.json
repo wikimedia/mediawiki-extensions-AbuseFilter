@@ -75,7 +75,7 @@
 	"abusefilter-log-details-ip": "IP-Adress déi bnotzt gouf",
 	"abusefilter-log-details-checkuser": "Benotzer nokucken",
 	"abusefilter-log-noactions": "keen",
-	"abusefilter-log-details-diff": "Ännerungen déi an der Ännerung gemaach goufen",
+	"abusefilter-log-details-diff": "Ännerungen, déi an der Ännerung gemaach goufen",
 	"abusefilter-log-linkoncontribs": "Logbuch vum Mëssbrauch",
 	"abusefilter-log-linkoncontribs-text": "Logbuch vum Mëssbrauch fir {{GENDER:$1|dëse Benotzer}}",
 	"abusefilter-log-linkonundelete": "Logbuch vum Mëssbrauch weisen",

@@ -583,5 +583,6 @@
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 је {{GENDER:$2|онемогућио|онемогућила}} себи приступ заштићеним променљивама",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 је {{GENDER:$2|видео|видела}} заштићене променљиве повезане са $3",
 	"log-action-filter-abusefilter-protected-vars": "Врста радње:",
-	"log-action-filter-abusefilter-protected-vars-change-access": "Промени приступ"
+	"log-action-filter-abusefilter-protected-vars-change-access": "Промени приступ",
+	"communityconfiguration-blockeddomain-title": "Блокирани спољни домени"
 }
