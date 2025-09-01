@@ -542,7 +542,7 @@
 	"abusefilter-action-tag": "Etiquetar",
 	"abusefilter-action-throttle": "Limitar",
 	"abusefilter-action-warn": "Advertir",
-	"abusefilter-action-blockautopromote": "Bloquear la recepción de permisos de usuario obtenidos automáticamente",
+	"abusefilter-action-blockautopromote": "Bloquear promoción automática",
 	"abusefilter-action-block": "Bloquear",
 	"abusefilter-action-degroup": "Eliminar de los grupos",
 	"abusefilter-action-rangeblock": "Bloqueo por intervalo",
