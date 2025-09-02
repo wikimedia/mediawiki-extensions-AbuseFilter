@@ -363,7 +363,7 @@
 	"abusefilter-edit-builder-vars-new-content-model": "Novi sadržajni model",
 	"abusefilter-edit-builder-vars-old-content-model": "Stari sadržajni model",
 	"abusefilter-edit-builder-vars-removedlines": "Linije uklonjene pri izmjeni",
-	"abusefilter-edit-builder-vars-summary": "Opis/razlog izmjene",
+	"abusefilter-edit-builder-vars-summary": "Sažetak/razlog izmjene ($1)",
 	"abusefilter-edit-builder-vars-page-id": "Naznaka stranice",
 	"abusefilter-edit-builder-vars-page-ns": "Imenski prostor stranice",
 	"abusefilter-edit-builder-vars-page-title": "Naslov stranice (bez imenskog prostora)",
