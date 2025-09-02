@@ -674,5 +674,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|переглянув|переглянула|переглянули}} {{PLURAL:$4|захищену змінну, пов'язану|захищені змінні, пов'язані}} з $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Тип дії:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Зміна доступу",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Перегляд значень захищених змінних"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Перегляд значень захищених змінних",
+	"communityconfiguration-blockeddomain-title": "Заблоковані зовнішні домени",
+	"communityconfiguration-blockeddomain-description": "Список зовнішніх доменів, на які не можна посилатися."
 }
