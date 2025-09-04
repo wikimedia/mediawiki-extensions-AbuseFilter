@@ -644,12 +644,17 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Ciptaan atau ubahsuaian domain luaran yang disekat daripada dipautkan mesti dilakukan melalui [[Special:BlockedExternalDomains|laman khas]].",
 	"right-abusefilter-access-protected-vars": "Lihat dan cipta penapis yang menggunakan pembolehubah dilindungi",
 	"action-abusefilter-access-protected-vars": "lihat dan cipta penapis yang menggunakan pembolehubah yang dilindungi",
+	"right-abusefilter-blocked-external-domains-log": "Lihat log kenaan domain luaran yang disekat",
+	"action-abusefilter-blocked-external-domains-log": "lihat log kenaan domain luaran yang disekat",
 	"abusefilter-protected-vars-log-name": "Log pembolehubah yang dilindungi oleh penapis salah guna",
 	"abusefilter-protected-vars-log-header": "Inilah log untuk:\n# Melihat pembolehubah dilindungi dalam butiran log\n# Menukar tahap akses pengguna untuk melihat pembolehubah yang dilindungi",
 	"logentry-abusefilter-protected-vars-change-access-enable": "$1 telah mendayakan {{GENDER:$2|aksesnya sendiri}} untuk melihat pembolehubah yang dilindungi",
 	"logentry-abusefilter-protected-vars-change-access-disable": "$1 telah melumpuhkan {{GENDER:$2|aksesnya sendiri}} untuk melihat pembolehubah yang dilindungi",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|telah melihat}} pembolehubah dilindungi yang dikaitkan dengan $3",
+	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|telah melihat}} {{PLURAL:$4|pembolehubah}} dilindungi yang dikaitkan dengan $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Jenis tindakan:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Ubah capaian",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Lihat nilai pembolehubah yang dilindungi"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Lihat nilai pembolehubah yang dilindungi",
+	"communityconfiguration-blockeddomain-title": "Domain Luaran Tersekat",
+	"communityconfiguration-blockeddomain-description": "Senarai domain luaran yang tidak boleh dipautkan."
 }
