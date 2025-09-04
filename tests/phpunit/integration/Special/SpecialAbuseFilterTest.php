@@ -1061,6 +1061,10 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$customVariableTableRow = $this->assertAndGetByElementClass( $html, 'mw-abuselog-details-custom_variable' );
 		$this->assertStringContainsString( 'custom_variable_value', $customVariableTableRow );
 
+		// Verify that a lazily loaded non-protected variable is shown (regression testing for T403645)
+		$userTypeVariableTableRow = $this->assertAndGetByElementClass( $html, 'mw-abuselog-details-user_type' );
+		$this->assertStringContainsString( 'user_type', $userTypeVariableTableRow );
+
 		// Verify that a protected variable access log was created as protected variable values were viewed.
 		$this->verifyProtectedVariableAccessLogExists(
 			$this->authorityCanUseProtectedVar->getUser(), static::$userWhoHitFilter, [ 'custom_variable' ]
