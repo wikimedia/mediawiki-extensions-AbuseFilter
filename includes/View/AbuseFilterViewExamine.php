@@ -246,7 +246,8 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		$varsArray = $this->varManager->dumpAllVars( $vars, $this->afPermManager->getProtectedVariables() );
+		// We compute all lazily loaded variables here, because we want to display all variables in ::showExaminer
+		$varsArray = $this->varManager->dumpAllVars( $vars, true );
 
 		// Filter out any protected variables that the user cannot see. Keep any protected variables that the user
 		// can see. This will unconditionally generate log entries when viewing the examiner that contains protected
