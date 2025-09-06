@@ -55,7 +55,6 @@ class VariablesManagerTest extends MediaWikiUnitTestCase {
 	 * @param bool $includeUser
 	 * @param array $expected
 	 * @dataProvider provideDumpAllVars
-	 *
 	 */
 	public function testDumpAllVars(
 		VariableHolder $holder,
