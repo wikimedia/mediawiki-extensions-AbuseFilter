@@ -26,7 +26,8 @@
 			"Withoutaname",
 			"Đỗ Thảo",
 			"Ayane Fumihiro",
-			"Nvdtn19"
+			"Nvdtn19",
+			"Bapham123"
 		]
 	},
 	"abusefilter-desc": "Áp dụng quy tắc suy luận tự động vào các sửa đổi",
@@ -636,7 +637,7 @@
 	"abusefilter-log-ip-not-available": "Không tồn tại",
 	"abusefilter-tag-reserved": "Thẻ <code>abusefilter-condition-limit</code> được dành riêng cho sử dụng nội bộ bởi bộ lọc lạm dụng.",
 	"tag-abusefilter-condition-limit": "đã đạt đến giới hạn điều kiện",
-	"tag-abusefilter-condition-limit-description": "Các sửa ddooir hoặc sự kiện khác không thể được kiểm tra bởi tất cả [[Special:AbuseFilter|bộ lọc sai phạm]] ([[mw:Extension:AbuseFilter/Conditions|trợ giúp]]).",
+	"tag-abusefilter-condition-limit-description": "Các sửa đổi hoặc sự kiện khác không thể được kiểm tra bởi tất cả [[Special:AbuseFilter|bộ lọc sai phạm]] ([[mw:Extension:AbuseFilter/Conditions|trợ giúp]]).",
 	"notification-header-throttle-filter": "Bộ lọc sai phạm “$2” mà {{GENDER:$1|bạn}} sửa đổi gần đây đã được giới hạn tần suất.",
 	"notification-header-throttle-filter-actions": "Bộ lọc sai phạm $2 mà {{GENDER:$1|bạn}} sửa đổi gần đây có tỷ lệ trùng khớp cao và {{PLURAL:$4|hành động sau|những hành động sau}} đã bị tự động tắt: $3.",
 	"notification-header-throttle-filter-no-actions": "Bộ lọc sai phạm $2 mà {{GENDER:$1|bạn}} sửa đổi gần đây có tỷ lệ khớp cao nhưng không có hành động nào bị tự động tắt.",
