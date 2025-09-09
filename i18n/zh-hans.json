@@ -375,7 +375,7 @@
 	"abusefilter-edit-deleting-enabled": "您不能标记应用的过滤器为已删除。",
 	"abusefilter-edit-restricted": "您无法编辑此过滤器，因为其中包含一个或多个受限操作。请寻求拥有相应权限用户的帮助，以协助您作出相应修改。",
 	"abusefilter-edit-protected-variable": "您无法保存此过滤器，因为您无权使用以下变量：$1",
-	"abusefilter-edit-protected-variable-not-protected": "您的过滤器未保存，因为它使用了以下[https://www.mediawiki.org/wiki/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|受保护变量}}]：$1。请确认您了解此过滤器的详情将对无法查看受保护变量的用户隐藏。",
+	"abusefilter-edit-protected-variable-not-protected": "您的过滤器未保存，因为它使用了以下[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|受保护变量}}]：$1。请启用对受保护变量的使用。此操作将对不能查看受保护变量的用户永久性地隐藏过滤器详情。",
 	"abusefilter-edit-viewhistory": "查看过滤器历史",
 	"abusefilter-edit-history": "历史：",
 	"abusefilter-edit-check": "语法检查",
