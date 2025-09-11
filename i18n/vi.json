@@ -217,7 +217,7 @@
 	"abusefilter-reautoconfirm-none": "Thành viên này chưa bị cấm tự động cấp quyền tự xác nhận {{GENDER:$1|của anh ấy|của cô ấy|của họ}}.",
 	"abusefilter-reautoconfirm-notallowed": "Bạn không được phép phục hồi cờ tự xác nhận của thành viên.",
 	"abusefilter-reautoconfirm-done": "Đã phục hồi trạng thái tự xác nhận của tài khoản",
-	"abusefilter-status": "Trong $1 {{PLURAL:}}tác vụ cuối, $2 ($3%) tác vụ đã đạt đến điều kiện giới hạn của $4. Có $5 tác vụ (chiếm $6%) đã trùng với ít nhất một trong những bộ lọc hiện đang kích hoạt.",
+	"abusefilter-status": "Trong số $1 {{PLURAL:}}tác vụ cuối, có $2 ($3%) tác vụ đạt đến mức giới hạn điều kiện $4 và $5 tác vụ ($6%) khớp với ít nhất một trong các bộ lọc đang bật.",
 	"abusefilter-add": "Thêm bộ lọc sai phạm",
 	"abusefilter-edit": "Sửa đổi bộ lọc sai phạm",
 	"abusefilter-edit-specific": "Sửa đổi bộ lọc sai phạm $1: $2",
