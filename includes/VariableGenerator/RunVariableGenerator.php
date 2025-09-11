@@ -283,8 +283,6 @@ class RunVariableGenerator extends VariableGenerator {
 
 		$this->vars->setVar( 'summary', $reason );
 		$this->vars->setVar( 'action', 'delete' );
-		// FIXME: this is an unnecessary round-trip, we could obtain WikiPage from
-		// the hook and call WikiPage::getRevisionRecord, but then ProofreadPage tests fail
 		$this->setLastEditAge( $this->title, 'page' );
 		// TODO: add old_wikitext etc. (T173663)
 		$this->addGenericVars();
