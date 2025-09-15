@@ -6,7 +6,8 @@
 			"Robby",
 			"Soued031",
 			"Talex42",
-			"Volvox"
+			"Volvox",
+			"GilPe"
 		]
 	},
 	"abusefilter-desc": "Applizéiert automatesch Heuristiken op Ännerungen",
@@ -134,7 +135,7 @@
 	"abusefilter-tools-reautoconfirm": "Status \"autoconfirmed\" zrécksetzen",
 	"abusefilter-tools-reautoconfirm-user": "Benotzer:",
 	"abusefilter-tools-reautoconfirm-submit": "Zréck op \"autoconfirmed\" setzen",
-	"abusefilter-reautoconfirm-none": "Dësem Benotzer {{GENDER:$1|säin|hiren}}\"autoconfirmed\"-Status war net opgehuewen.",
+	"abusefilter-reautoconfirm-none": "Dësem Benotzer {{GENDER:$1|säin|hiren}} \"autoconfirmed\"-Status war net opgehuewen.",
 	"abusefilter-reautoconfirm-notallowed": "Dir hutt net déi néideg Rechter fir de Status \"autoconfirmed\" zréckzesetzen.",
 	"abusefilter-reautoconfirm-done": "Dem Benotzerkont säi Status 2autoconfirmed\" gouf zréckgesat",
 	"abusefilter-status": "{{PLURAL:$1|Déi lescht Aktioun|Vun de leschten $1 Aktiounen}} {{PLURAL:$2|huet eng|hunn der $2}} ($3 %) de Grenzwäert vu(n) $4 erreecht.\n{{PLURAL:$5|Eng Aktioun|$5 Aktiounen}} ($6 %) {{PLURAL:$5|gouf|goufe}} mindestens vun engem aktivéierte Filter erkannt.",
@@ -413,7 +414,7 @@
 	"abusefilter-topnav-log": "Logbuch vum Mëssbrauch",
 	"abusefilter-topnav-tools": "Debugg-Geschier",
 	"abusefilter-log-name": "Logbuch vum Mëssbrauchsfilter",
-	"abusefilter-log-header": "Dëst Logbuch weist e Resumé vun Ännerungen déi un de Filtere gemaach goufen.\nFir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de rezenten Filterännerungen.",
+	"abusefilter-log-header": "Dëst Logbuch weist e Resümmee vun Ännerungen déi un de Filtere gemaach goufen.\nFir weider Detailer, kuckt [[Special:AbuseFilter/history|d'Lëscht]] vun de rezenten Filterännerungen.",
 	"abusefilter-logentry-create": "{{GENDER:$2|De(n) $1|D'$1}} huet $4 ugeluecht ($5)",
 	"abusefilter-logentry-modify": "{{GENDER:$2|De(n) $1|D'$1}} huet $4 geännert ($5)",
 	"abusefilter-log-noresults": "Keng Resultater",
