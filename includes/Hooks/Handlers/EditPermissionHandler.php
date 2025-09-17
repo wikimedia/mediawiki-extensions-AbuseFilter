@@ -1,5 +1,4 @@
 <?php
-// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
