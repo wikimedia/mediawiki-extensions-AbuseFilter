@@ -13,9 +13,5 @@
 	"abusefilter-log-private-not-included": "Eine oder mehrere angegebene Filterkennungen sind privat. Da Sie nicht berechtigt sind, die Einzelheiten von privaten Filtern anzusehen, wurde nicht nach solchen Filtern gesucht.",
 	"abusefilter-edit-denied": "Sie können die Einzelheiten zu diesem Filter nicht einsehen, da sie verborgen sind.",
 	"abusefilter-edit-restricted": "Sie können diesen Filter nicht bearbeiten, weil er eine oder mehrere verbotene Aktionen enthält.\nBitten Sie einen Benutzer, der verbotene Aktionen hinzufügen kann, darum, die Änderung für Sie vorzunehmen.",
-	"abusefilter-import-intro": "Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.",
-	"notification-header-throttle-filter": "Der von {{GENDER:$1|Ihnen}} kürzlich bearbeitete Missbrauchsfilter $2 wurde gedrosselt.",
-	"notification-header-throttle-filter-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|Sie}} kürzlich bearbeitet haben, hatte eine hohe Trefferquote und {{PLURAL:$4|die folgende Aktion wurde|die folgenden Aktionen wurden}} automatisch deaktiviert: $3.",
-	"notification-header-throttle-filter-no-actions": "Der Missbrauchsfilter $2, den {{GENDER:$1|Sie}} kürzlich bearbeitet haben, hatte eine hohe Trefferquote, aber es wurden keine Aktionen automatisch deaktiviert.",
-	"notification-subject-throttle-filter": "Ein von {{GENDER:$1|Ihnen}} kürzlich bearbeiteter Missbrauchsfilter wurde auf {{SITENAME}} gedrosselt."
+	"abusefilter-import-intro": "Sie können diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren. Klicken Sie im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“. Kopieren Sie dort den erscheinenden Code, fügen Sie ihn hier ein und klicken Sie dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“."
 }
