@@ -286,10 +286,6 @@
 				"mediawiki.api"
 			]
 		},
-		"ext.abuseFilter.ace": {
-			"scripts": "mode-abusefilter.js",
-			"dependencies": "ext.codeEditor.ace"
-		},
 		"ext.abuseFilter.visualEditor": {
 			"scripts": "ve-abusefilter/ve.init.mw.AbuseFilterSaveErrorHandler.js",
 			"targets": [
@@ -361,6 +357,9 @@
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterEditRevUpdater"
 			]
+		},
+		"ResourceLoader": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ResourceLoaderHandler"
 		}
 	},
 	"Hooks": {
@@ -383,7 +382,8 @@
 		"BeforeCreateEchoEvent": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EchoHandler::onBeforeCreateEchoEvent",
 		"ParserOutputStashForEdit": "FilteredActions",
 		"UnitTestsAfterDatabaseSetup": "Tests",
-		"UnitTestsBeforeDatabaseTeardown": "Tests"
+		"UnitTestsBeforeDatabaseTeardown": "Tests",
+		"ResourceLoaderRegisterModules": "ResourceLoader"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
