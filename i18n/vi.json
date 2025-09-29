@@ -649,6 +649,7 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Việc tạo hoặc sửa đổi những tên miền ngoài bị chặn không cho thêm dưới dạng liên kết phải được thực hiện qua [[Special:BlockedExternalDomains|trang đặc biệt]]",
 	"right-abusefilter-access-protected-vars": "Tạo hoặc xem bộ lọc sử dụng biến bị khóa",
 	"action-abusefilter-access-protected-vars": "tạo hoặc xem bộ lọc sử dụng biến bị khóa",
+	"action-abusefilter-blocked-external-domains-log": "xem nhật trình gặp phải tên miền bị chặn",
 	"abusefilter-protected-vars-log-name": "Nhật trình sai phạm sử dụng biến bị khóa",
 	"abusefilter-protected-vars-log-header": "Đây là nhật trình của:\n# Tác vụ xem các biến bị khóa trong chi tiết nhật trình\n# Thay đổi cấp độ truy cập của người dùng để xem các biến bị khóa",
 	"logentry-abusefilter-protected-vars-change-access-enable": "{{GENDER:$2}}$1 đã tự cho phép quyền truy cập riêng để xem các biến bị khóa",
@@ -656,5 +657,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "{{GENDER:$2}}$1 đã xem các biến bị khóa trên $3",
 	"log-action-filter-abusefilter-protected-vars": "Kiểu tác vụ:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Thay đổi quyền truy cập",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Xem các giá trị biến bị khóa"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Xem các giá trị biến bị khóa",
+	"communityconfiguration-blockeddomain-title": "Tên miền bị chặn",
+	"communityconfiguration-blockeddomain-description": "Danh sách các tên miền không được phép liên kết tới."
 }
