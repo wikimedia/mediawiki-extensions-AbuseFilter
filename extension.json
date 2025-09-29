@@ -338,10 +338,6 @@
 				"mediawiki.api"
 			]
 		},
-		"ext.abuseFilter.ace": {
-			"scripts": "mode-abusefilter.js",
-			"dependencies": "ext.codeEditor.ace"
-		},
 		"ext.abuseFilter.visualEditor": {
 			"scripts": "ve-abusefilter/ve.init.mw.AbuseFilterSaveErrorHandler.js"
 		}
@@ -430,6 +426,9 @@
 		},
 		"UserMerge": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler"
+		},
+		"ResourceLoader": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ResourceLoaderHandler"
 		}
 	},
 	"Hooks": {
@@ -456,7 +455,8 @@
 		"ParserOutputStashForEdit": "FilteredActions",
 		"JsonValidateSave": "EditPermission",
 		"GetPreferences": "preferences",
-		"SaveUserOptions": "preferences"
+		"SaveUserOptions": "preferences",
+		"ResourceLoaderRegisterModules": "ResourceLoader"
 	},
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
