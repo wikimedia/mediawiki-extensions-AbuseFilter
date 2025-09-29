@@ -350,10 +350,6 @@
 				"mediawiki.api"
 			]
 		},
-		"ext.abuseFilter.ace": {
-			"scripts": "mode-abusefilter.js",
-			"dependencies": "ext.codeEditor.ace"
-		},
 		"ext.abuseFilter.visualEditor": {
 			"scripts": "ve-abusefilter/ve.init.mw.AbuseFilterSaveErrorHandler.js"
 		}
@@ -475,6 +471,9 @@
 		},
 		"UserMerge": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler"
+		},
+		"ResourceLoader": {
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ResourceLoaderHandler"
 		}
 	},
 	"Hooks": {
@@ -500,7 +499,8 @@
 		"CheckUserInsertLogEventRow": "CheckUser",
 		"UserMergeAccountFields": "UserMerge",
 		"ParserOutputStashForEdit": "FilteredActions",
-		"JsonValidateSave": "EditPermission"
+		"JsonValidateSave": "EditPermission",
+		"ResourceLoaderRegisterModules": "ResourceLoader"
 	},
 	"DomainEventIngresses": [
 		{
