@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
 use MediaWiki\Extension\CommunityConfiguration\Provider\AbstractProvider;
+use MediaWiki\Extension\CommunityConfiguration\Provider\ProviderServicesContainer;
 use MediaWiki\Extension\CommunityConfiguration\Store\IConfigurationStore;
 use MediaWiki\Extension\CommunityConfiguration\Validation\IValidator;
 use MediaWiki\Message\Message;
@@ -18,6 +19,7 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 	private BlockedDomainValidator $domainValidator;
 
 	public function __construct(
+		ProviderServicesContainer $providerServicesContainer,
 		string $providerId,
 		array $options,
 		IConfigurationStore $store,
@@ -25,7 +27,7 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 		BagOStuff $cache,
 		BlockedDomainValidator $domainValidator
 	) {
-		parent::__construct( $providerId, $options, $store, $validator );
+		parent::__construct( $providerServicesContainer, $providerId, $options, $store, $validator );
 
 		$this->cache = $cache;
 		$this->domainValidator = $domainValidator;
