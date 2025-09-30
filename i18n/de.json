@@ -619,7 +619,7 @@
 	"abusefilter-diff-backhistory": "Versionsgeschichte des Filters",
 	"abusefilter-diff-prev": "Ältere Änderung",
 	"abusefilter-diff-next": "Neuere Änderung",
-	"abusefilter-import-intro": "Du kannst diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren.\nKlicke im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“.\nKopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.",
+	"abusefilter-import-intro": "{{#FORMAL:Du kannst|Sie können}} diese Schnittstelle verwenden, um Filter aus anderen Wikis zu importieren.\n{{#FORMAL:Klicke|Klicken Sie}} im Quellwiki auf die Schaltfläche „{{int:abusefilter-edit-export}}“ innerhalb von „{{int:abusefilter-edit-tools}}“.\n{{#FORMAL:Kopiere|Kopieren Sie}} den dort erscheinenden Code, {{#FORMAL:füge|fügen Sie}} ihn hier ein und {{#FORMAL:licke|klicken Sie}} dann auf die Schaltfläche „{{int:abusefilter-import-submit}}“.",
 	"abusefilter-import-submit": "Daten importieren",
 	"abusefilter-import-invalid-data": "Die Daten, die {{#FORMAL:du|Sie}} versucht {{#FORMAL:hast|haben}} zu importieren, sind nicht gültig",
 	"abusefilter-group-default": "Standard",
