@@ -40,7 +40,7 @@ class AbuseFilterLogDetailsLookup {
 	 */
 	public function getIPForAbuseFilterLog( Authority $authority, int $id ): StatusValue {
 		$row = $this->dbProvider->getReplicaDatabase()->newSelectQueryBuilder()
-			->select( [ 'afl_filter_id', 'afl_global', 'afl_ip_hex' ] )
+			->select( [ 'afl_filter_id', 'afl_global', 'afl_ip_hex', 'afl_user_text' ] )
 			->from( 'abuse_filter_log' )
 			->where( [ 'afl_id' => $id ] )
 			->caller( __METHOD__ )
@@ -51,7 +51,7 @@ class AbuseFilterLogDetailsLookup {
 		}
 
 		$filter = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global );
-		if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $authority, $filter ) ) {
+		if ( !$this->afPermissionManager->canSeeIPForFilterLog( $authority, $filter, $row->afl_user_text ) ) {
 			return StatusValue::newFatal( 'abusefilter-log-cannot-see-details' );
 		}
 
@@ -62,7 +62,8 @@ class AbuseFilterLogDetailsLookup {
 	 * Returns the IP addresses associated with given abuse_filter_log rows identified by their afl_id.
 	 *
 	 * This method does NOT check whether the given {@link Authority} has the right to see IP
-	 * addresses in general, but does check if the user can see each associated abuse_filter_log row.
+	 * addresses in general, except for temporary account IPs, but does check if the user can see
+	 * each associated abuse_filter_log row.
 	 *
 	 * Callers are expected to log the access if the given {@link Authority} actually does view
 	 * the IP address that was returned.
@@ -79,7 +80,7 @@ class AbuseFilterLogDetailsLookup {
 	 */
 	public function getIPsForAbuseFilterLogs( Authority $authority, array $ids ): array {
 		$rows = $this->dbProvider->getReplicaDatabase()->newSelectQueryBuilder()
-			->select( [ 'afl_filter_id', 'afl_global', 'afl_ip_hex', 'afl_id' ] )
+			->select( [ 'afl_filter_id', 'afl_global', 'afl_ip_hex', 'afl_id', 'afl_user_text' ] )
 			->from( 'abuse_filter_log' )
 			->where( [ 'afl_id' => $ids ] )
 			->caller( __METHOD__ )
@@ -88,7 +89,7 @@ class AbuseFilterLogDetailsLookup {
 		$returnArray = array_fill_keys( $ids, '' );
 		foreach ( $rows as $row ) {
 			$filter = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global );
-			if ( !$this->afPermissionManager->canSeeLogDetailsForFilter( $authority, $filter ) ) {
+			if ( !$this->afPermissionManager->canSeeIPForFilterLog( $authority, $filter, $row->afl_user_text ) ) {
 				$returnArray[$row->afl_id] = false;
 			} else {
 				$returnArray[$row->afl_id] = $row->afl_ip_hex ? IPUtils::formatHex( $row->afl_ip_hex ) : '';

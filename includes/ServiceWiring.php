@@ -80,6 +80,8 @@ return [
 	},
 	PermManager::SERVICE_NAME => static function ( MediaWikiServices $services ): PermManager {
 		return new PermManager(
+			$services->getTempUserConfig(),
+			$services->getExtensionRegistry(),
 			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME ),
 			$services->get( RuleCheckerFactory::SERVICE_NAME ),
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME )
