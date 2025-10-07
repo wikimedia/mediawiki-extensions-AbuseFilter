@@ -386,6 +386,16 @@ class RunVariableGenerator extends VariableGenerator {
 				'user-type',
 				[ 'user-identity' => $this->user ]
 			);
+
+			// Extra security layer to make user_unnamed_ip accessible only for temp account creation
+			// See also LazyVariableComputer::compute(), which conditionally exposes the source IP
+			if ( $autocreate && $createdUser->isTemp() ) {
+				$this->vars->setLazyLoadVar(
+					'user_unnamed_ip',
+					'user-unnamed-ip',
+					[ 'user' => $this->user, 'rc' => null ]
+				);
+			}
 		}
 
 		$this->vars->setVar( 'action', $autocreate ? 'autocreateaccount' : 'createaccount' );
