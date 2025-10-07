@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Jose77",
-			"Protostar"
+			"Protostar",
+			"AmazingJus"
 		]
 	},
 	"abusefilter-log-search-submit": "Sarch",
-	"abusefilter-edit-history": "Istri"
+	"abusefilter-edit-history": "Istri:"
 }

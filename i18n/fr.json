@@ -188,7 +188,7 @@
 	"log-action-filter-abusefilter": "Type de modification de filtre :",
 	"log-action-filter-abusefilter-create": "Création de nouveaux filtres",
 	"log-action-filter-abusefilter-modify": "Modification de filtre",
-	"log-action-filter-suppress-abuselog": "Suppression du journal anti-abus",
+	"log-action-filter-suppress-abuselog": "Masquage du journal anti-abus",
 	"log-action-filter-rights-blockautopromote": "Blocage d’autopromotion",
 	"log-action-filter-rights-restoreautopromote": "Rétablissement d’autopromotion",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|a accédé}} aux détails confidentiels pour $3",
