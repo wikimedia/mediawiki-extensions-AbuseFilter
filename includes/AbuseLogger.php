@@ -177,7 +177,6 @@ class AbuseLogger {
 			'afl_namespace' => $this->title->getNamespace(),
 			'afl_title' => $this->title->getDBkey(),
 			'afl_action' => $this->action,
-			'afl_ip' => $this->options->get( 'AbuseFilterLogIP' ) ? $this->requestIP : '',
 			'afl_ip_hex' => $this->options->get( 'AbuseFilterLogIP' ) ? IPUtils::toHex( $this->requestIP ) : '',
 		];
 		// Hack to avoid revealing IPs of people creating accounts
