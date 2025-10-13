@@ -257,7 +257,7 @@
 	"abusefilter-edit-tag-placeholder": "Додај ознаке (једну по једну или одвојено зарезом)",
 	"abusefilter-edit-tag-hidden-placeholder": "Додајте ознаке (одвојене зарезом)",
 	"abusefilter-edit-block-anon-durations": "Дужина блокирања за анонимне кориснике:",
-	"abusefilter-edit-block-user-durations": "Трајање блокирања регистрованих корисника:",
+	"abusefilter-edit-block-user-durations": "Дужина блокаде за регистроване кориснике:",
 	"abusefilter-block-anon": "Блокирај анонимне кориснике",
 	"abusefilter-block-user": "блокирај регистроване кориснике",
 	"abusefilter-block-talk": "блокирана страница за разговор",
