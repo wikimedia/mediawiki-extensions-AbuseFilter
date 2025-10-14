@@ -647,5 +647,5 @@
 	"prefs-abusefilter": "Filtro anti abusi",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|ha visualizzato}} variabili protette associate a $3",
 	"log-action-filter-abusefilter-protected-vars": "Tipo di azione:",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Visualizza i valori delle variabili protette"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Visualizzazione dei valori delle variabili protette"
 }

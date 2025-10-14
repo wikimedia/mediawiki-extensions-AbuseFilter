@@ -75,7 +75,8 @@
 			"Туллук",
 			"Умар",
 			"Yurina Tatiana",
-			"Megitsune-chan"
+			"Megitsune-chan",
+			"Ivan-r"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -629,7 +630,7 @@
 	"abusefilter-topnav-tools": "Средства отладки",
 	"abusefilter-log-name": "Журнал фильтра злоупотреблений",
 	"abusefilter-log-header": "В этот журнал записываются описания изменений, произведённых в фильтрах.\nПодробности можно найти в [[Special:AbuseFilter/history|списке]] последних изменений фильтров.",
-	"abusefilter-logentry-create": "$1 {{GENDER:$2|создано}} $4 ($5)",
+	"abusefilter-logentry-create": "$1 создал{{GENDER:$2||а}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|изменил|изменила}} $4 ($5)",
 	"abusefilter-log-invalid-filter": "Некоторые из указанных идентификаторов фильтров являются недопустимыми.",
 	"abusefilter-log-noresults": "Ничего не найдено",

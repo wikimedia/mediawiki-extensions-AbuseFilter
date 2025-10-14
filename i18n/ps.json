@@ -191,7 +191,7 @@
 	"abusefilter-edit-builder-vars-user-editcount": "د کارن سمون شمېر ($1)",
 	"abusefilter-edit-builder-vars-user-age": "د کارن گڼون عمر ($1)",
 	"abusefilter-edit-builder-vars-user-name": "د گڼون نوم ($1)",
-	"abusefilter-edit-builder-vars-user-rights": "هغه رښتې چې کارن يې لري",
+	"abusefilter-edit-builder-vars-user-rights": "هغه رښتې چې کارن يې لري ($1)",
 	"abusefilter-edit-builder-vars-user-blocked": "که په کارن بنديز دی ($1)",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "برېښليک پته تاييدشوې ($1)",
 	"abusefilter-edit-builder-vars-recent-contributors": "وروستي لس کارنان چې مخ کې يې ونډه اخيستې ($1)",
