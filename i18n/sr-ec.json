@@ -548,7 +548,7 @@
 	"blockedexternaldomains": "Блокирани спољни домени",
 	"abusefilter-blocked-domains-title": "Блокирани спољни домени",
 	"abusefilter-blocked-domains-intro": "Спољашње везе које се поклапају са овим списком ће бити блокиране када се додају на страницу. Ови домени се чувају у [[MediaWiki:BlockedExternalDomains.json]]. Покушаји додавања ових линкова се бележи у [[Special:Log/abusefilterblockeddomainhit]].",
-	"abusefilter-blocked-domains-add-heading": "Додај нови блокиран домен",
+	"abusefilter-blocked-domains-add-heading": "Додај нови домен за блокаду",
 	"abusefilter-blocked-domains-add-explanation": "Овде можете додавати домен на списак блокираних домена.",
 	"abusefilter-blocked-domains-domain": "Домен за блокаду, као што је wikipedia.org",
 	"abusefilter-blocked-domains-notes": "Напомене",
