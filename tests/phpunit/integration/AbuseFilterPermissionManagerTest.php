@@ -4,10 +4,12 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWikiIntegrationTestCase;
 use StatusValue;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager
@@ -46,8 +48,13 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 		bool $checkUserResult,
 		bool $canSeeLogDetails,
 		bool $isTemp,
-		bool $expected
+		bool $expected,
+		bool $withCheckUser = false,
 	) {
+		if ( $withCheckUser ) {
+			$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+		}
+
 		$this->enableAutoCreateTempUser();
 
 		$permissions = [];
@@ -63,6 +70,14 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 
 		/** @var AbuseFilterPermissionManager $permissionManager */
 		$permissionManager = $this->getPermissionManager();
+
+		// When CheckUser is loaded, simulate it is not loaded
+		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
+		$extensionRegistry->method( 'isLoaded' )
+				->willReturn( $withCheckUser );
+		$wrapPermissionManager = TestingAccessWrapper::newFromObject( $permissionManager )
+			->extensionRegistry = $extensionRegistry;
+
 		$this->assertSame(
 			$expected,
 			$permissionManager->CanSeeIPForFilterLog( $performer, $filter, $userName )
@@ -77,11 +92,19 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 				'logUserIsTemp' => true,
 				'expected' => true,
 			],
-			'Only has IP viewer permissions, temp account log' => [
+			'Only has IP viewer permissions, temp account log (with CheckUser)' => [
 				'canViewTempIPs' => true,
 				'canSeeLogDetails' => false,
 				'logUserIsTemp' => true,
 				'expected' => true,
+				'withCheckUser' => true,
+			],
+			'Only has IP viewer permissions, temp account log (without CheckUser)' => [
+				'canViewTempIPs' => true,
+				'canSeeLogDetails' => false,
+				'logUserIsTemp' => true,
+				'expected' => false,
+				'withCheckUser' => false,
 			],
 			'Only has IP viewer permissions, non-temp account log' => [
 				'canViewTempIPs' => true,
