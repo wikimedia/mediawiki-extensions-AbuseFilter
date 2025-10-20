@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ConfirmEditHandler;
 use MediaWiki\Extension\ConfirmEdit\AbuseFilter\CaptchaConsequence;
 use MediaWiki\Extension\ConfirmEdit\Hooks;
+use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
@@ -25,7 +26,9 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	protected function tearDown(): void {
-		Hooks::getInstance()->setForceShowCaptcha( false );
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ) ) {
+			Hooks::getInstance()->setForceShowCaptcha( false );
+		}
 		parent::tearDown();
 	}
 
