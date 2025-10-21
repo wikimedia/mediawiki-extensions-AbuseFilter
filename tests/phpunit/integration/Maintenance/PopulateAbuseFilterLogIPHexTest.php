@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\Maintenance\PopulateAbuseFilterLogIPHex;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Wikimedia\IPUtils;
+use Wikimedia\Rdbms\IMaintainableDatabase;
 
 /**
  * @group Test
@@ -153,5 +154,18 @@ class PopulateAbuseFilterLogIPHexTest extends MaintenanceBaseTestCase {
 				false, true
 			);
 		}
+	}
+
+	protected function getSchemaOverrides( IMaintainableDatabase $db ): array {
+		// Create the afl_ip column in abuse_filter_log using the SQL patch file associated with the current
+		// DB type.
+		if ( $db->fieldExists( 'abuse_filter_log', 'afl_ip' ) ) {
+			return [];
+		}
+
+		return [
+			'scripts' => [ __DIR__ . '/patches/' . $db->getType() . '/patch-abuse_filter_log-add-afl_ip.sql' ],
+			'alter' => [ 'abuse_filter_log' ],
+		];
 	}
 }

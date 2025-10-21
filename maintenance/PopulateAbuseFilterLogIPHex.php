@@ -42,6 +42,13 @@ class PopulateAbuseFilterLogIPHex extends LoggedUpdateMaintenance {
 	public function doDBUpdates() {
 		$this->output( "Populating afl_ip_hex in abuse_filter_log with value from afl_ip...\n" );
 
+		$mainLb = $this->getServiceContainer()->getDBLoadBalancerFactory()->getMainLB();
+		$maintainableDb = $mainLb->getMaintenanceConnectionRef( DB_PRIMARY );
+		if ( !$maintainableDb->fieldExists( 'abuse_filter_log', 'afl_ip' ) ) {
+			$this->output( "Nothing to do as afl_ip does not exist in abuse_filter_log.\n" );
+			return true;
+		}
+
 		$dbr = $this->getReplicaDB();
 		$dbw = $this->getPrimaryDB();
 
