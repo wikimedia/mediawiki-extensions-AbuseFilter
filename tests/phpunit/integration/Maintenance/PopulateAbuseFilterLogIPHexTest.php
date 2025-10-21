@@ -159,10 +159,6 @@ class PopulateAbuseFilterLogIPHexTest extends MaintenanceBaseTestCase {
 	protected function getSchemaOverrides( IMaintainableDatabase $db ): array {
 		// Create the afl_ip column in abuse_filter_log using the SQL patch file associated with the current
 		// DB type.
-		if ( $db->fieldExists( 'abuse_filter_log', 'afl_ip' ) ) {
-			return [];
-		}
-
 		return [
 			'scripts' => [ __DIR__ . '/patches/' . $db->getType() . '/patch-abuse_filter_log-add-afl_ip.sql' ],
 			'alter' => [ 'abuse_filter_log' ],

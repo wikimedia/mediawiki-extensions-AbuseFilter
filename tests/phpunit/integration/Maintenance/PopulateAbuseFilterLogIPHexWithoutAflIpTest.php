@@ -26,7 +26,6 @@ class PopulateAbuseFilterLogIPHexWithoutAflIpTest extends MaintenanceBaseTestCas
 	}
 
 	public function testMigrationWhenAflIpColumnDoesNotExist() {
-		$this->markTestSkipped( 'Will not work until afl_ip has actually been dropped' );
 		$this->maintenance->execute();
 
 		$actualOutput = $this->getActualOutputForAssertion();
