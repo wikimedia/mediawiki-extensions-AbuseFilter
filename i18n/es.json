@@ -664,7 +664,7 @@
 	"abusefilter-invalid-request-noid": "¡Solicitud no válida! Debes acceder a los detalles privados del registro a través del formulario en el registro del filtro antiabusos y proporcionar una razón.",
 	"blockedexternaldomains": "Dominios externos bloqueados",
 	"abusefilter-blocked-domains-title": "Dominios externos bloqueados",
-	"abusefilter-blocked-domains-intro": "Los enlaces externos que coincidan con esta lista se bloquearán cuando se agreguen a una página. Esos dominios se almacenan en [[MediaWiki:BlockedExternalDomains.json]]. Intentos para agregar enlaces bloqueados se registran en [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-intro": "Los enlaces externos que coincidan con esta lista se bloquearán cuando se agreguen a una página. Esos dominios se almacenan en [[MediaWiki:BlockedExternalDomains.json]]. Los intentos de agregar enlaces bloqueados se registran en [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-add-heading": "Agregar un nuevo dominio bloqueado",
 	"abusefilter-blocked-domains-add-explanation": "Aquí puedes agregar un dominio a la lista de dominios bloqueados.",
 	"abusefilter-blocked-domains-domain": "Dominio a bloquear, por ejemplo: wikipedia.org",
@@ -713,5 +713,7 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value-varnames": "$1 {{GENDER:$2|vio}} {{PLURAL:$4|una variable protegida asociada|variables protegidas asociado}} con $3: $5",
 	"log-action-filter-abusefilter-protected-vars": "Tipo de acción:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Cambiar el acceso",
-	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Ver valores de variables protegidas"
+	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Ver valores de variables protegidas",
+	"communityconfiguration-blockeddomain-title": "Dominios externos bloqueados",
+	"communityconfiguration-blockeddomain-description": "Una lista de dominios externos a los que no se puede enlazar."
 }
