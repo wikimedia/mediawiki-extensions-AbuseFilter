@@ -9,7 +9,6 @@ use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWikiIntegrationTestCase;
 use StatusValue;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager
@@ -68,15 +67,15 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 		$filter = MutableFilter::newDefault();
 		$userName = $isTemp ? '~12345' : 'Test';
 
-		/** @var AbuseFilterPermissionManager $permissionManager */
-		$permissionManager = $this->getPermissionManager();
-
-		// When CheckUser is loaded, simulate it is not loaded
+		// Mock ExtensionRegistry service to say whether the CheckUser extension is loaded,
+		// so we can mock it isn't loaded when it actually is
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$extensionRegistry->method( 'isLoaded' )
-				->willReturn( $withCheckUser );
-		$wrapPermissionManager = TestingAccessWrapper::newFromObject( $permissionManager )
-			->extensionRegistry = $extensionRegistry;
+			->willReturn( $withCheckUser );
+		$this->setService( 'ExtensionRegistry', $extensionRegistry );
+
+		/** @var AbuseFilterPermissionManager $permissionManager */
+		$permissionManager = $this->getPermissionManager();
 
 		$this->assertSame(
 			$expected,
