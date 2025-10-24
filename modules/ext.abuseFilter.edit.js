@@ -442,6 +442,15 @@
 			disallowMessageExisting = OO.ui.infuse( $( '#mw-abusefilter-disallow-message-existing' ) );
 			disallowMessageOther = OO.ui.infuse( $( '#mw-abusefilter-disallow-message-other' ) );
 			setWarnOnLeave();
+
+			// Force-select "other" when typing in the other fields
+			warnMessageOther.on( 'change', () => {
+				warnMessageExisting.setValue( 'other' );
+			} );
+
+			disallowMessageOther.on( 'change', () => {
+				disallowMessageExisting.setValue( 'other' );
+			} );
 		}
 
 		$plainTextBox = $( '#wpFilterRules' );
