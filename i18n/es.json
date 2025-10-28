@@ -660,7 +660,7 @@
 	"abusefilter-invalid-request-noid": "¡Solicitud no válida! Debes acceder a los detalles privados del registro a través del formulario en el registro del filtro antiabusos y proporcionar una razón.",
 	"blockedexternaldomains": "Dominios externos bloqueados",
 	"abusefilter-blocked-domains-title": "Dominios externos bloqueados",
-	"abusefilter-blocked-domains-intro": "Los enlaces externos que coincidan con esta lista se bloquearán cuando se agreguen a una página. Esos dominios se almacenan en [[MediaWiki:BlockedExternalDomains.json]]. Intentos para agregar enlaces bloqueados se registran en [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-intro": "Los enlaces externos que coincidan con esta lista se bloquearán cuando se agreguen a una página. Esos dominios se almacenan en [[MediaWiki:BlockedExternalDomains.json]]. Los intentos de agregar enlaces bloqueados se registran en [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-add-heading": "Agregar un nuevo dominio bloqueado",
 	"abusefilter-blocked-domains-add-explanation": "Aquí puedes agregar un dominio a la lista de dominios bloqueados.",
 	"abusefilter-blocked-domains-domain": "Dominio a bloquear, por ejemplo: wikipedia.org",
