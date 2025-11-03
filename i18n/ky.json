@@ -6,7 +6,7 @@
 			"Элдин беги"
 		]
 	},
-	"abusefilter-desc": "Түзөтүүлөргө автоматтык аныктоо ыкмаларын колдонот",
+	"abusefilter-desc": "Түзөтмөлөргө автоматтык эвристикалык чыпкаларды колдонот",
 	"abusefilter": "Кыянат чыпкаларды башкаруу",
 	"abusefilter-log-search-user": "Колдонуучу:",
 	"abusefilter-log-search-title": "Аталыш:",
@@ -39,7 +39,7 @@
 	"abusefilter-list-options": "Параметрлер",
 	"abusefilter-list-options-deleted": "Өчүрүлгөн чыпкалар:",
 	"abusefilter-list-options-deleted-only": "Өчүрүлгөн чыпкаларды гана көрсөт",
-	"abusefilter-list-options-deleted-hide": "Өчүрүлгөн чыпкаларды жашыр",
+	"abusefilter-list-options-deleted-hide": "Алынып салынган чыпкаларды жашыруу",
 	"abusefilter-list-options-submit": "Жаңыртуу",
 	"abusefilter-tools-reautoconfirm-user": "Колдонуучу:",
 	"abusefilter-edit-subtitle": "$1 чыпкасын түзөтүү",
