@@ -600,7 +600,7 @@
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|أنشأ}} $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|عدل|عدلت}} $4 ($5)",
 	"abusefilter-log-invalid-filter": "بعض معرفات المرشحات المحددة غير صالحة.",
-	"abusefilter-log-noresults": "لا توجد نتائج.",
+	"abusefilter-log-noresults": "لا توجد نتائج",
 	"abusefilter-diff-title": "فروقات بين النسخ",
 	"abusefilter-diff-item": "عنصر",
 	"abusefilter-diff-version": "نسخة من $1 {{GENDER:$3|بواسطة}} $2",
