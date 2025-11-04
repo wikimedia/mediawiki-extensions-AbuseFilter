@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
-use DummyNonTextContent;
 use Generator;
 use MediaWiki\Content\Content;
 use MediaWiki\Content\TextContent;
@@ -14,6 +13,7 @@ use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Tests\Mocks\Content\DummyNonTextContent;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
 
