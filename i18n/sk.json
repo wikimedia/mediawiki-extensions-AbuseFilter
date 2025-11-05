@@ -543,5 +543,7 @@
 	"abusefilter-view-privatedetails-legend": "Zobraziť súkromné detaily",
 	"abusefilter-view-privatedetails-reason": "Dôvod prístupu k súkromným detailom:",
 	"abusefilter-log-details-id": "ID záznamu",
+	"blockedexternaldomains": "Blokované externé domény",
+	"abusefilter-blocked-domains-title": "Blokované externé domény",
 	"abusefilter-log-ip-not-available": "Nedostupné"
 }
