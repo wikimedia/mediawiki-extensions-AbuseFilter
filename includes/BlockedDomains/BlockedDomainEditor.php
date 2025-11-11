@@ -220,9 +220,7 @@ class BlockedDomainEditor {
 
 		HTMLForm::factory( 'ooui', $fields, $this->context )
 			->setAction( $this->getPageTitle( 'remove' )->getLocalURL() )
-			->setSubmitCallback( function ( $data, $form ) {
-				return $this->processRemoveForm( $data, $form );
-			} )
+			->setSubmitCallback( $this->processRemoveForm( ... ) )
 			->setSubmitTextMsg( 'abusefilter-blocked-domains-remove-submit' )
 			->setSubmitDestructive()
 			->addPreHtml( $preText )
@@ -297,9 +295,7 @@ class BlockedDomainEditor {
 
 		HTMLForm::factory( 'ooui', $fields, $this->context )
 			->setAction( $this->getPageTitle( 'add' )->getLocalURL() )
-			->setSubmitCallback( function ( $data, $form ) {
-				return $this->processAddForm( $data, $form );
-			} )
+			->setSubmitCallback( $this->processAddForm( ... ) )
 			->setSubmitTextMsg( "abusefilter-blocked-domains-add-submit" )
 			->addPreHtml( $preText )
 			->show();
