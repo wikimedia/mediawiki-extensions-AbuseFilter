@@ -95,7 +95,7 @@
 	"abusefilter-log-linkoncontribs": "dnevnik zloupotreba",
 	"abusefilter-log-linkoncontribs-text": "Dnevnik zloupotreba {{GENDER:$1|ovog korisnika|ove korisnice}}",
 	"abusefilter-log-linkonhistory": "dnevnik zloupotreba",
-	"abusefilter-log-linkonhistory-text": "Pogledajte dnevnik zloupotrebe ove stranice",
+	"abusefilter-log-linkonhistory-text": "Pogledajte dnevnik zloupotrebe za ovu stranicu",
 	"abusefilter-log-linkonundelete": "dnevnik zloupotreba",
 	"abusefilter-log-linkonundelete-text": "Pogledajte dnevnik zloupotrebe ove stranice",
 	"abusefilter-log-hidden-implicit": "(sakriveno jer je izmjena obrisana)",
