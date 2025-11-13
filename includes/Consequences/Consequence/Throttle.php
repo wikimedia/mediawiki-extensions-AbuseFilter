@@ -6,8 +6,8 @@ use InvalidArgumentException;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequenceNotPrecheckedException;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Title\Title;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserFactory;
 use Psr\Log\LoggerInterface;
 use Wikimedia\IPUtils;
 use Wikimedia\ObjectCache\BagOStuff;
@@ -22,8 +22,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	private $mainStash;
 	/** @var UserEditTracker */
 	private $userEditTracker;
-	/** @var UserFactory */
-	private $userFactory;
+	private UserRegistrationLookup $userRegistrationLookup;
 	/** @var LoggerInterface */
 	private $logger;
 	/** @var bool */
@@ -43,7 +42,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	 * @phan-param array{groups:string[],id:int|string,count:int,period:int} $throttleParams
 	 * @param BagOStuff $mainStash
 	 * @param UserEditTracker $userEditTracker
-	 * @param UserFactory $userFactory
+	 * @param UserRegistrationLookup $userRegistrationLookup
 	 * @param LoggerInterface $logger
 	 * @param bool $filterIsCentral
 	 * @param string|null $centralDB
@@ -53,7 +52,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 		array $throttleParams,
 		BagOStuff $mainStash,
 		UserEditTracker $userEditTracker,
-		UserFactory $userFactory,
+		UserRegistrationLookup $userRegistrationLookup,
 		LoggerInterface $logger,
 		bool $filterIsCentral,
 		?string $centralDB
@@ -62,7 +61,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 		$this->throttleParams = $throttleParams;
 		$this->mainStash = $mainStash;
 		$this->userEditTracker = $userEditTracker;
-		$this->userFactory = $userFactory;
+		$this->userRegistrationLookup = $userRegistrationLookup;
 		$this->logger = $logger;
 		$this->filterIsCentral = $filterIsCentral;
 		$this->centralDB = $centralDB;
@@ -173,8 +172,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 				$identifier = IPUtils::sanitizeRange( "{$requestIP}/$range" );
 				break;
 			case 'creationdate':
-				// TODO Inject a proper service, not UserFactory, once getRegistration is moved away from User
-				$reg = (int)$this->userFactory->newFromUserIdentity( $user )->getRegistration();
+				$reg = (int)$this->userRegistrationLookup->getRegistration( $user );
 				$identifier = $reg - ( $reg % 86400 );
 				break;
 			case 'editcount':

@@ -13,8 +13,8 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Session\Session;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWikiUnitTestCase;
@@ -53,7 +53,7 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 			$this->createMock( FilterUser::class ),
 			$this->createMock( MessageLocalizer::class ),
 			$this->createMock( UserEditTracker::class ),
-			$this->createMock( UserFactory::class ),
+			$this->createMock( UserRegistrationLookup::class ),
 			$this->createMock( UserIdentityUtils::class )
 		);
 		$consequencesFactory->setSession( $this->createMock( Session::class ) );

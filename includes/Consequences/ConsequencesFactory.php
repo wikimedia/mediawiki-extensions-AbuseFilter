@@ -20,8 +20,8 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Session\Session;
 use MediaWiki\Session\SessionManager;
+use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityUtils;
 use MessageLocalizer;
@@ -74,8 +74,7 @@ class ConsequencesFactory {
 	/** @var UserEditTracker */
 	private $userEditTracker;
 
-	/** @var UserFactory */
-	private $userFactory;
+	private UserRegistrationLookup $userRegistrationLookup;
 
 	/** @var UserIdentityUtils */
 	private $userIdentityUtils;
@@ -98,7 +97,7 @@ class ConsequencesFactory {
 	 * @param FilterUser $filterUser
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param UserEditTracker $userEditTracker
-	 * @param UserFactory $userFactory
+	 * @param UserRegistrationLookup $userRegistrationLookup
 	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
@@ -114,7 +113,7 @@ class ConsequencesFactory {
 		FilterUser $filterUser,
 		MessageLocalizer $messageLocalizer,
 		UserEditTracker $userEditTracker,
-		UserFactory $userFactory,
+		UserRegistrationLookup $userRegistrationLookup,
 		UserIdentityUtils $userIdentityUtils
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
@@ -130,7 +129,7 @@ class ConsequencesFactory {
 		$this->filterUser = $filterUser;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->userEditTracker = $userEditTracker;
-		$this->userFactory = $userFactory;
+		$this->userRegistrationLookup = $userRegistrationLookup;
 		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
@@ -212,7 +211,7 @@ class ConsequencesFactory {
 			$throttleParams,
 			$this->mainStash,
 			$this->userEditTracker,
-			$this->userFactory,
+			$this->userRegistrationLookup,
 			$this->logger,
 			$this->options->get( 'AbuseFilterIsCentral' ),
 			$this->options->get( 'AbuseFilterCentralDB' )
