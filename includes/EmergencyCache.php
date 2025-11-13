@@ -12,19 +12,10 @@ class EmergencyCache {
 
 	public const SERVICE_NAME = 'AbuseFilterEmergencyCache';
 
-	/** @var BagOStuff */
-	private $stash;
-
-	/** @var int[] */
-	private $ttlPerGroup;
-
-	/**
-	 * @param BagOStuff $stash
-	 * @param int[] $ttlPerGroup
-	 */
-	public function __construct( BagOStuff $stash, array $ttlPerGroup ) {
-		$this->stash = $stash;
-		$this->ttlPerGroup = $ttlPerGroup;
+	public function __construct(
+		private readonly BagOStuff $stash,
+		private readonly array $ttlPerGroup
+	) {
 	}
 
 	/**

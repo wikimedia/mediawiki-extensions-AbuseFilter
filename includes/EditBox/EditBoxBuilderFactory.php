@@ -16,28 +16,11 @@ class EditBoxBuilderFactory {
 
 	public const SERVICE_NAME = 'AbuseFilterEditBoxBuilderFactory';
 
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
-
-	/** @var KeywordsManager */
-	private $keywordsManager;
-
-	/** @var bool */
-	private $isCodeEditorLoaded;
-
-	/**
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param KeywordsManager $keywordsManager
-	 * @param bool $isCodeEditorLoaded
-	 */
 	public function __construct(
-		AbuseFilterPermissionManager $afPermManager,
-		KeywordsManager $keywordsManager,
-		bool $isCodeEditorLoaded
+		private readonly AbuseFilterPermissionManager $afPermManager,
+		private readonly KeywordsManager $keywordsManager,
+		private readonly bool $isCodeEditorLoaded
 	) {
-		$this->afPermManager = $afPermManager;
-		$this->keywordsManager = $keywordsManager;
-		$this->isCodeEditorLoaded = $isCodeEditorLoaded;
 	}
 
 	/**

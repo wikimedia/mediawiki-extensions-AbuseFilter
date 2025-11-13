@@ -60,34 +60,17 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	private $closestVersionsCache = [];
 
-	/** @var ILoadBalancer */
-	private $loadBalancer;
-
-	/** @var WANObjectCache */
-	private $wanCache;
-
-	/** @var CentralDBManager */
-	private $centralDBManager;
-
 	/**
 	 * @var bool Flag used in PHPUnit tests to "hide" local filters when testing global ones, so that we can use the
 	 * local database pretending it's not local.
 	 */
 	private bool $localFiltersHiddenForTest = false;
 
-	/**
-	 * @param ILoadBalancer $loadBalancer
-	 * @param WANObjectCache $cache
-	 * @param CentralDBManager $centralDBManager
-	 */
 	public function __construct(
-		ILoadBalancer $loadBalancer,
-		WANObjectCache $cache,
-		CentralDBManager $centralDBManager
+		private readonly ILoadBalancer $loadBalancer,
+		private readonly WANObjectCache $wanCache,
+		private readonly CentralDBManager $centralDBManager
 	) {
-		$this->loadBalancer = $loadBalancer;
-		$this->wanCache = $cache;
-		$this->centralDBManager = $centralDBManager;
 	}
 
 	/**

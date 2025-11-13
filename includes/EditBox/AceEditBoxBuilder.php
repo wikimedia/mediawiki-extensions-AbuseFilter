@@ -19,9 +19,6 @@ use OOUI\Widget;
  */
 class AceEditBoxBuilder extends EditBoxBuilder {
 
-	/** @var PlainEditBoxBuilder */
-	private $plainBuilder;
-
 	/**
 	 * @inheritDoc
 	 * @param PlainEditBoxBuilder $plainBuilder
@@ -32,10 +29,9 @@ class AceEditBoxBuilder extends EditBoxBuilder {
 		MessageLocalizer $messageLocalizer,
 		Authority $authority,
 		OutputPage $output,
-		PlainEditBoxBuilder $plainBuilder
+		private readonly PlainEditBoxBuilder $plainBuilder
 	) {
 		parent::__construct( $afPermManager, $keywordsManager, $messageLocalizer, $authority, $output );
-		$this->plainBuilder = $plainBuilder;
 	}
 
 	/**

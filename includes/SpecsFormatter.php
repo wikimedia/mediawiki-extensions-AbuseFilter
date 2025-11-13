@@ -14,11 +14,7 @@ use MessageLocalizer;
 class SpecsFormatter {
 	public const SERVICE_NAME = 'AbuseFilterSpecsFormatter';
 
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
-	public function __construct( MessageLocalizer $messageLocalizer ) {
-		$this->messageLocalizer = $messageLocalizer;
+	public function __construct( private MessageLocalizer $messageLocalizer ) {
 	}
 
 	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {

@@ -9,23 +9,21 @@ use Wikimedia\Rdbms\LBFactory;
 class CentralDBManager {
 	public const SERVICE_NAME = 'AbuseFilterCentralDBManager';
 
-	/** @var LBFactory */
-	private $loadBalancerFactory;
 	/** @var string|false */
 	private $dbName;
-	/** @var bool */
-	private $filterIsCentral;
 
 	/**
 	 * @param LBFactory $loadBalancerFactory
 	 * @param string|false|null $dbName
 	 * @param bool $filterIsCentral
 	 */
-	public function __construct( LBFactory $loadBalancerFactory, $dbName, bool $filterIsCentral ) {
-		$this->loadBalancerFactory = $loadBalancerFactory;
+	public function __construct(
+		private readonly LBFactory $loadBalancerFactory,
+		$dbName,
+		private readonly bool $filterIsCentral
+	) {
 		// Use false to agree with LoadBalancer
 		$this->dbName = $dbName ?: false;
-		$this->filterIsCentral = $filterIsCentral;
 	}
 
 	/**

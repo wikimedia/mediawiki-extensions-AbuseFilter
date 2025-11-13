@@ -11,38 +11,18 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 class RunnerData {
 
 	/**
-	 * @var array<string,RuleCheckerStatus>
-	 */
-	private $matchedFilters;
-
-	/**
 	 * @var array[]
 	 * @phan-var array<string,array{time:float,conds:int,result:bool}>
 	 */
 	private $profilingData;
 
-	/** @var float */
-	private $totalRuntime;
-
-	/** @var int */
-	private $totalConditions;
-
-	/**
-	 * @param RuleCheckerStatus[] $matchedFilters
-	 * @param array[] $profilingData
-	 * @param float $totalRuntime
-	 * @param int $totalConditions
-	 */
 	public function __construct(
-		array $matchedFilters = [],
+		private array $matchedFilters = [],
 		array $profilingData = [],
-		float $totalRuntime = 0.0,
-		int $totalConditions = 0
+		private float $totalRuntime = 0.0,
+		private int $totalConditions = 0
 	) {
-		$this->matchedFilters = $matchedFilters;
 		$this->profilingData = $profilingData;
-		$this->totalRuntime = $totalRuntime;
-		$this->totalConditions = $totalConditions;
 	}
 
 	/**

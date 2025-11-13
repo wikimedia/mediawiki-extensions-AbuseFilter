@@ -23,15 +23,6 @@ class FilterValidator {
 		'AbuseFilterActionRestrictions',
 	];
 
-	/** @var ChangeTagValidator */
-	private $changeTagValidator;
-
-	/** @var RuleCheckerFactory */
-	private $ruleCheckerFactory;
-
-	/** @var AbuseFilterPermissionManager */
-	private $permManager;
-
 	/** @var string[] */
 	private $restrictedActions;
 
@@ -39,15 +30,12 @@ class FilterValidator {
 	private $validGroups;
 
 	public function __construct(
-		ChangeTagValidator $changeTagValidator,
-		RuleCheckerFactory $ruleCheckerFactory,
-		AbuseFilterPermissionManager $permManager,
+		private readonly ChangeTagValidator $changeTagValidator,
+		private readonly RuleCheckerFactory $ruleCheckerFactory,
+		private readonly AbuseFilterPermissionManager $permManager,
 		ServiceOptions $options
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->changeTagValidator = $changeTagValidator;
-		$this->ruleCheckerFactory = $ruleCheckerFactory;
-		$this->permManager = $permManager;
 		$this->restrictedActions = array_keys( array_filter( $options->get( 'AbuseFilterActionRestrictions' ) ) );
 		$this->validGroups = $options->get( 'AbuseFilterValidGroups' );
 	}

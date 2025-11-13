@@ -44,15 +44,15 @@ class FilteredActionsHandler implements
 {
 
 	public function __construct(
-		private IBufferingStatsdDataFactory $statsDataFactory,
-		private FilterRunnerFactory $filterRunnerFactory,
-		private VariableGeneratorFactory $variableGeneratorFactory,
-		private EditRevUpdater $editRevUpdater,
-		private IBlockedDomainFilter $blockedDomainFilter,
-		private PermissionManager $permissionManager,
-		private TitleFactory $titleFactory,
-		private UserFactory $userFactory,
-		private TempUserConfig $tempUserConfig,
+		private readonly IBufferingStatsdDataFactory $statsDataFactory,
+		private readonly FilterRunnerFactory $filterRunnerFactory,
+		private readonly VariableGeneratorFactory $variableGeneratorFactory,
+		private readonly EditRevUpdater $editRevUpdater,
+		private readonly IBlockedDomainFilter $blockedDomainFilter,
+		private readonly PermissionManager $permissionManager,
+		private readonly TitleFactory $titleFactory,
+		private readonly UserFactory $userFactory,
+		private readonly TempUserConfig $tempUserConfig,
 	) {
 	}
 

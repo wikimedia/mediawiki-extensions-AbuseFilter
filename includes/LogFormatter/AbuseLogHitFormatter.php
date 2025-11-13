@@ -15,14 +15,11 @@ use MediaWiki\SpecialPage\SpecialPage;
  */
 class AbuseLogHitFormatter extends LogFormatter {
 
-	private SpecsFormatter $specsFormatter;
-
 	public function __construct(
 		LogEntry $entry,
-		SpecsFormatter $specsFormatter
+		private readonly SpecsFormatter $specsFormatter
 	) {
 		parent::__construct( $entry );
-		$this->specsFormatter = $specsFormatter;
 	}
 
 	/**

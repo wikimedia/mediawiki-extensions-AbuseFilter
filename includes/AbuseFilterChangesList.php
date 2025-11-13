@@ -16,11 +16,6 @@ use MediaWiki\Title\TitleValue;
 class AbuseFilterChangesList extends OldChangesList {
 
 	/**
-	 * @var string
-	 */
-	private $testFilter;
-
-	/**
 	 * @var array<int,bool> Maps RC IDs to a boolean indicating whether the RC would match a filter that is being tested
 	 */
 	private array $rcResults = [];
@@ -29,9 +24,8 @@ class AbuseFilterChangesList extends OldChangesList {
 	 * @param IContextSource $context
 	 * @param string $testFilter
 	 */
-	public function __construct( IContextSource $context, $testFilter ) {
+	public function __construct( IContextSource $context, private readonly string $testFilter ) {
 		parent::__construct( $context );
-		$this->testFilter = $testFilter;
 	}
 
 	/**
@@ -42,7 +36,7 @@ class AbuseFilterChangesList extends OldChangesList {
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		if ( (int)$rc->getAttribute( 'rc_deleted' ) !== 0 ) {
 			$s .= ' ' . $this->msg( 'abusefilter-log-hidden-implicit' )->parse();
-			if ( !$this->userCan( $rc, RevisionRecord::SUPPRESSED_ALL ) ) {
+			if ( !self::userCan( $rc, RevisionRecord::SUPPRESSED_ALL ) ) {
 				// Remember to keep this in sync with the CheckMatch API
 				return;
 			}

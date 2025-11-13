@@ -42,44 +42,16 @@ class FilterProfiler {
 
 	private const KEY_PREFIX = 'abusefilter-profile';
 
-	/** @var WRStatsFactory */
-	private $statsFactory;
-
-	/** @var ServiceOptions */
-	private $options;
-
-	/** @var string */
-	private $localWikiID;
-
-	/** @var IBufferingStatsdDataFactory */
-	private $statsd;
-
-	/** @var LoggerInterface */
-	private $logger;
-
 	/** @var array */
 	private $statsSpecs;
 
-	/**
-	 * @param WRStatsFactory $statsFactory
-	 * @param ServiceOptions $options
-	 * @param string $localWikiID
-	 * @param IBufferingStatsdDataFactory $statsd
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
-		WRStatsFactory $statsFactory,
-		ServiceOptions $options,
-		string $localWikiID,
-		IBufferingStatsdDataFactory $statsd,
-		LoggerInterface $logger
+		private readonly WRStatsFactory $statsFactory,
+		private readonly ServiceOptions $options,
+		private readonly string $localWikiID,
+		private readonly IBufferingStatsdDataFactory $statsd,
+		private readonly LoggerInterface $logger
 	) {
-		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->statsFactory = $statsFactory;
-		$this->options = $options;
-		$this->localWikiID = $localWikiID;
-		$this->statsd = $statsd;
-		$this->logger = $logger;
 		$this->statsSpecs = [
 			'count' => self::STATS_TEMPLATE,
 			'total' => self::STATS_TEMPLATE,

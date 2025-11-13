@@ -11,14 +11,11 @@ use MediaWiki\User\UserFactory;
 
 class ProtectedVarsAccessLogFormatter extends LogFormatter {
 
-	private UserFactory $userFactory;
-
 	public function __construct(
 		LogEntry $entry,
-		UserFactory $userFactory
+		private readonly UserFactory $userFactory
 	) {
 		parent::__construct( $entry );
-		$this->userFactory = $userFactory;
 	}
 
 	/**

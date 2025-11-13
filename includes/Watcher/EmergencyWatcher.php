@@ -27,41 +27,14 @@ class EmergencyWatcher implements Watcher {
 		'AbuseFilterEmergencyDisableThreshold',
 	];
 
-	/** @var EmergencyCache */
-	private $cache;
-
-	/** @var LBFactory */
-	private $lbFactory;
-
-	/** @var FilterLookup */
-	private $filterLookup;
-
-	/** @var EchoNotifier */
-	private $notifier;
-
-	/** @var ServiceOptions */
-	private $options;
-
-	/**
-	 * @param EmergencyCache $cache
-	 * @param LBFactory $lbFactory
-	 * @param FilterLookup $filterLookup
-	 * @param EchoNotifier $notifier
-	 * @param ServiceOptions $options
-	 */
 	public function __construct(
-		EmergencyCache $cache,
-		LBFactory $lbFactory,
-		FilterLookup $filterLookup,
-		EchoNotifier $notifier,
-		ServiceOptions $options
+		private readonly EmergencyCache $cache,
+		private readonly LBFactory $lbFactory,
+		private readonly FilterLookup $filterLookup,
+		private readonly EchoNotifier $notifier,
+		private readonly ServiceOptions $options
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->cache = $cache;
-		$this->lbFactory = $lbFactory;
-		$this->filterLookup = $filterLookup;
-		$this->notifier = $notifier;
-		$this->options = $options;
 	}
 
 	/**

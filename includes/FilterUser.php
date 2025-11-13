@@ -13,27 +13,12 @@ use Psr\Log\LoggerInterface;
 class FilterUser {
 	public const SERVICE_NAME = 'AbuseFilterFilterUser';
 
-	private MessageLocalizer $messageLocalizer;
-	private UserGroupManager $userGroupManager;
-	private UserNameUtils $userNameUtils;
-	private LoggerInterface $logger;
-
-	/**
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param UserGroupManager $userGroupManager
-	 * @param UserNameUtils $userNameUtils
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
-		MessageLocalizer $messageLocalizer,
-		UserGroupManager $userGroupManager,
-		UserNameUtils $userNameUtils,
-		LoggerInterface $logger
+		private readonly MessageLocalizer $messageLocalizer,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly UserNameUtils $userNameUtils,
+		private readonly LoggerInterface $logger
 	) {
-		$this->messageLocalizer = $messageLocalizer;
-		$this->userGroupManager = $userGroupManager;
-		$this->userNameUtils = $userNameUtils;
-		$this->logger = $logger;
 	}
 
 	public function getAuthority(): Authority {

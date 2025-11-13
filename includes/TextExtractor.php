@@ -17,11 +17,7 @@ use MediaWiki\Revision\RevisionRecord;
 class TextExtractor {
 	public const SERVICE_NAME = 'AbuseFilterTextExtractor';
 
-	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
-
-	public function __construct( AbuseFilterHookRunner $hookRunner ) {
-		$this->hookRunner = $hookRunner;
+	public function __construct( private readonly AbuseFilterHookRunner $hookRunner ) {
 	}
 
 	/**

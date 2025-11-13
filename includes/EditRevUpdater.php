@@ -15,15 +15,6 @@ use Wikimedia\Rdbms\LBFactory;
 class EditRevUpdater {
 	public const SERVICE_NAME = 'AbuseFilterEditRevUpdater';
 
-	/** @var CentralDBManager */
-	private $centralDBManager;
-	/** @var RevisionLookup */
-	private $revisionLookup;
-	/** @var LBFactory */
-	private $lbFactory;
-	/** @var string */
-	private $wikiID;
-
 	/** @var WikiPage|null */
 	private $wikiPage;
 	/**
@@ -32,22 +23,12 @@ class EditRevUpdater {
 	 */
 	private $logIds = [];
 
-	/**
-	 * @param CentralDBManager $centralDBManager
-	 * @param RevisionLookup $revisionLookup
-	 * @param LBFactory $lbFactory
-	 * @param string $wikiID
-	 */
 	public function __construct(
-		CentralDBManager $centralDBManager,
-		RevisionLookup $revisionLookup,
-		LBFactory $lbFactory,
-		string $wikiID
+		private readonly CentralDBManager $centralDBManager,
+		private readonly RevisionLookup $revisionLookup,
+		private readonly LBFactory $lbFactory,
+		private readonly string $wikiID
 	) {
-		$this->centralDBManager = $centralDBManager;
-		$this->revisionLookup = $revisionLookup;
-		$this->lbFactory = $lbFactory;
-		$this->wikiID = $wikiID;
 	}
 
 	/**

@@ -6,11 +6,8 @@ use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
 use MediaWiki\Hook\RecentChange_saveHook;
 
 class RecentChangeSaveHandler implements RecentChange_saveHook {
-	/** @var ChangeTagger */
-	private $changeTagger;
 
-	public function __construct( ChangeTagger $changeTagger ) {
-		$this->changeTagger = $changeTagger;
+	public function __construct( private readonly ChangeTagger $changeTagger ) {
 	}
 
 	/**

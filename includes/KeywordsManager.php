@@ -340,11 +340,7 @@ class KeywordsManager {
 	/** @var string[] Final list of deprecated vars */
 	private $deprecatedVars;
 
-	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
-
-	public function __construct( AbuseFilterHookRunner $hookRunner ) {
-		$this->hookRunner = $hookRunner;
+	public function __construct( private readonly AbuseFilterHookRunner $hookRunner ) {
 	}
 
 	public function getDisabledVariables(): array {

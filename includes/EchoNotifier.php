@@ -17,26 +17,11 @@ class EchoNotifier {
 	public const SERVICE_NAME = 'AbuseFilterEchoNotifier';
 	public const EVENT_TYPE = 'throttled-filter';
 
-	/** @var FilterLookup */
-	private $filterLookup;
-	/** @var ConsequencesRegistry */
-	private $consequencesRegistry;
-	/** @var bool */
-	private $isEchoLoaded;
-
-	/**
-	 * @param FilterLookup $filterLookup
-	 * @param ConsequencesRegistry $consequencesRegistry
-	 * @param bool $isEchoLoaded
-	 */
 	public function __construct(
-		FilterLookup $filterLookup,
-		ConsequencesRegistry $consequencesRegistry,
-		bool $isEchoLoaded
+		private readonly FilterLookup $filterLookup,
+		private readonly ConsequencesRegistry $consequencesRegistry,
+		private readonly bool $isEchoLoaded
 	) {
-		$this->filterLookup = $filterLookup;
-		$this->consequencesRegistry = $consequencesRegistry;
-		$this->isEchoLoaded = $isEchoLoaded;
 	}
 
 	private function getTitleForFilter( int $filter ): Title {

@@ -40,16 +40,11 @@ class FilterImporter {
 		'global'
 	];
 
-	/** @var ServiceOptions */
-	private $options;
-
-	/** @var ConsequencesRegistry */
-	private $consequencesRegistry;
-
-	public function __construct( ServiceOptions $options, ConsequencesRegistry $consequencesRegistry ) {
+	public function __construct(
+		private readonly ServiceOptions $options,
+		private readonly ConsequencesRegistry $consequencesRegistry
+	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
-		$this->consequencesRegistry = $consequencesRegistry;
 	}
 
 	/**

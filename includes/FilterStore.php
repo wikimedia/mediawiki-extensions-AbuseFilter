@@ -20,64 +20,17 @@ use Wikimedia\Rdbms\LBFactory;
 class FilterStore {
 	public const SERVICE_NAME = 'AbuseFilterFilterStore';
 
-	/** @var ConsequencesRegistry */
-	private $consequencesRegistry;
-
-	/** @var LBFactory */
-	private $lbFactory;
-
-	/** @var ActorNormalization */
-	private $actorNormalization;
-
-	/** @var FilterProfiler */
-	private $filterProfiler;
-
-	/** @var FilterLookup */
-	private $filterLookup;
-
-	/** @var ChangeTagsManager */
-	private $tagsManager;
-
-	/** @var FilterValidator */
-	private $filterValidator;
-
-	/** @var FilterCompare */
-	private $filterCompare;
-
-	/** @var EmergencyCache */
-	private $emergencyCache;
-
-	/**
-	 * @param ConsequencesRegistry $consequencesRegistry
-	 * @param LBFactory $lbFactory
-	 * @param ActorNormalization $actorNormalization
-	 * @param FilterProfiler $filterProfiler
-	 * @param FilterLookup $filterLookup
-	 * @param ChangeTagsManager $tagsManager
-	 * @param FilterValidator $filterValidator
-	 * @param FilterCompare $filterCompare
-	 * @param EmergencyCache $emergencyCache
-	 */
 	public function __construct(
-		ConsequencesRegistry $consequencesRegistry,
-		LBFactory $lbFactory,
-		ActorNormalization $actorNormalization,
-		FilterProfiler $filterProfiler,
-		FilterLookup $filterLookup,
-		ChangeTagsManager $tagsManager,
-		FilterValidator $filterValidator,
-		FilterCompare $filterCompare,
-		EmergencyCache $emergencyCache
+		private readonly ConsequencesRegistry $consequencesRegistry,
+		private readonly LBFactory $lbFactory,
+		private readonly ActorNormalization $actorNormalization,
+		private readonly FilterProfiler $filterProfiler,
+		private readonly FilterLookup $filterLookup,
+		private readonly ChangeTagsManager $tagsManager,
+		private readonly FilterValidator $filterValidator,
+		private readonly FilterCompare $filterCompare,
+		private readonly EmergencyCache $emergencyCache
 	) {
-		$this->consequencesRegistry = $consequencesRegistry;
-		$this->lbFactory = $lbFactory;
-		$this->actorNormalization = $actorNormalization;
-		$this->filterProfiler = $filterProfiler;
-		$this->filterLookup = $filterLookup;
-		$this->tagsManager = $tagsManager;
-		$this->filterValidator = $filterValidator;
-		$this->filterCompare = $filterCompare;
-		$this->emergencyCache = $emergencyCache;
 	}
 
 	/**

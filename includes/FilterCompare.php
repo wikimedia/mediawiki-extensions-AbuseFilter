@@ -13,11 +13,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 class FilterCompare {
 	public const SERVICE_NAME = 'AbuseFilterFilterCompare';
 
-	/** @var ConsequencesRegistry */
-	private $consequencesRegistry;
-
-	public function __construct( ConsequencesRegistry $consequencesRegistry ) {
-		$this->consequencesRegistry = $consequencesRegistry;
+	public function __construct( private readonly ConsequencesRegistry $consequencesRegistry ) {
 	}
 
 	/**

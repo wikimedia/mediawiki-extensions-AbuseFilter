@@ -13,18 +13,10 @@ use Wikimedia\Rdbms\LBFactory;
 class UpdateHitCountWatcher implements Watcher {
 	public const SERVICE_NAME = 'AbuseFilterUpdateHitCountWatcher';
 
-	/** @var LBFactory */
-	private $lbFactory;
-
-	/** @var CentralDBManager */
-	private $centralDBManager;
-
 	public function __construct(
-		LBFactory $lbFactory,
-		CentralDBManager $centralDBManager
+		private readonly LBFactory $lbFactory,
+		private readonly CentralDBManager $centralDBManager
 	) {
-		$this->lbFactory = $lbFactory;
-		$this->centralDBManager = $centralDBManager;
 	}
 
 	/**

@@ -27,23 +27,14 @@ class AbuseFilterPermissionManager {
 
 	private MapCacheLRU $canViewProtectedVariablesCache;
 
-	private TempUserConfig $tempUserConfig;
-	private ExtensionRegistry $extensionRegistry;
-	private RuleCheckerFactory $ruleCheckerFactory;
-	private AbuseFilterHookRunner $hookRunner;
-
 	public function __construct(
-		TempUserConfig $tempUserConfig,
-		ExtensionRegistry $extensionRegistry,
+		private readonly TempUserConfig $tempUserConfig,
+		private readonly ExtensionRegistry $extensionRegistry,
 		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup,
-		RuleCheckerFactory $ruleCheckerFactory,
-		AbuseFilterHookRunner $hookRunner
+		private readonly RuleCheckerFactory $ruleCheckerFactory,
+		private readonly AbuseFilterHookRunner $hookRunner
 	) {
-		$this->tempUserConfig = $tempUserConfig;
-		$this->extensionRegistry = $extensionRegistry;
 		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
-		$this->ruleCheckerFactory = $ruleCheckerFactory;
-		$this->hookRunner = $hookRunner;
 
 		$this->canViewProtectedVariablesCache = new MapCacheLRU( 10 );
 	}

@@ -5,6 +5,9 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
+use MediaWiki\Hook\ContributionsToolLinksHook;
+use MediaWiki\Hook\HistoryPageToolLinksHook;
+use MediaWiki\Hook\UndeletePageToolLinksHook;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -13,19 +16,11 @@ use MediaWiki\Title\TitleValue;
 use Wikimedia\IPUtils;
 
 class ToolLinksHandler implements
-	\MediaWiki\Hook\ContributionsToolLinksHook,
-	\MediaWiki\Hook\HistoryPageToolLinksHook,
-	\MediaWiki\Hook\UndeletePageToolLinksHook
+	ContributionsToolLinksHook,
+	HistoryPageToolLinksHook,
+	UndeletePageToolLinksHook
 {
-
-	/** @var AbuseFilterPermissionManager */
-	private $afPermManager;
-
-	/**
-	 * ToolLinksHandler constructor.
-	 */
-	public function __construct( AbuseFilterPermissionManager $afPermManager ) {
-		$this->afPermManager = $afPermManager;
+	public function __construct( private readonly AbuseFilterPermissionManager $afPermManager ) {
 	}
 
 	/**

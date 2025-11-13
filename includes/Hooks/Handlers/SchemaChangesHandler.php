@@ -14,26 +14,11 @@ use MediaWiki\User\UserGroupManager;
 use MessageLocalizer;
 
 class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-	/** @var UserGroupManager */
-	private $userGroupManager;
-	/** @var UserFactory */
-	private $userFactory;
-
-	/**
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param UserGroupManager $userGroupManager
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
-		MessageLocalizer $messageLocalizer,
-		UserGroupManager $userGroupManager,
-		UserFactory $userFactory
+		private readonly MessageLocalizer $messageLocalizer,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly UserFactory $userFactory
 	) {
-		$this->messageLocalizer = $messageLocalizer;
-		$this->userGroupManager = $userGroupManager;
-		$this->userFactory = $userFactory;
 	}
 
 	/**
