@@ -17,26 +17,15 @@ class ConsequencesRegistry {
 		'rangeblock'
 	];
 
-	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
-	/** @var bool[] */
-	private $configActions;
-
 	/** @var string[]|null */
 	private $dangerousActionsCache;
 	/** @var callable[]|null */
 	private $customActionsCache;
 
-	/**
-	 * @param AbuseFilterHookRunner $hookRunner
-	 * @param bool[] $configActions
-	 */
 	public function __construct(
-		AbuseFilterHookRunner $hookRunner,
-		array $configActions
+		private readonly AbuseFilterHookRunner $hookRunner,
+		private readonly array $configActions
 	) {
-		$this->hookRunner = $hookRunner;
-		$this->configActions = $configActions;
 	}
 
 	/**

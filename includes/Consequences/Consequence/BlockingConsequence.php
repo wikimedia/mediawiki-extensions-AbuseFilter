@@ -15,43 +15,16 @@ use Wikimedia\IPUtils;
  * Base class for consequences that block a user
  */
 abstract class BlockingConsequence extends Consequence implements HookAborterConsequence {
-	/** @var BlockUserFactory */
-	private $blockUserFactory;
 
-	/** @var FilterUser */
-	protected $filterUser;
-
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var string Expiry of the block */
-	protected $expiry;
-
-	/**
-	 * @param Parameters $params
-	 * @param string $expiry
-	 * @param BlockUserFactory $blockUserFactory
-	 * @param FilterUser $filterUser
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param LoggerInterface $logger
-	 */
 	public function __construct(
 		Parameters $params,
-		string $expiry,
-		BlockUserFactory $blockUserFactory,
-		FilterUser $filterUser,
-		MessageLocalizer $messageLocalizer,
-		LoggerInterface $logger
+		protected readonly string $expiry,
+		private readonly BlockUserFactory $blockUserFactory,
+		protected readonly FilterUser $filterUser,
+		private readonly MessageLocalizer $messageLocalizer,
+		private readonly LoggerInterface $logger
 	) {
 		parent::__construct( $params );
-		$this->expiry = $expiry;
-		$this->blockUserFactory = $blockUserFactory;
-		$this->filterUser = $filterUser;
-		$this->messageLocalizer = $messageLocalizer;
-		$this->logger = $logger;
 	}
 
 	/**

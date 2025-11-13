@@ -38,99 +38,30 @@ class ConsequencesFactory {
 		'BlockCIDRLimit',
 	];
 
-	/** @var ServiceOptions */
-	private $options;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var BlockUserFactory */
-	private $blockUserFactory;
-
-	/** @var UnblockUserFactory */
-	private $unblockUserFactory;
-
-	/** @var DatabaseBlockStore */
-	private $databaseBlockStore;
-
-	/** @var UserGroupManager */
-	private $userGroupManager;
-
-	/** @var BagOStuff */
-	private $mainStash;
-
-	/** @var ChangeTagger */
-	private $changeTagger;
-
-	/** @var BlockAutopromoteStore */
-	private $blockAutopromoteStore;
-
-	/** @var FilterUser */
-	private $filterUser;
-
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
-	/** @var UserEditTracker */
-	private $userEditTracker;
-
-	private UserRegistrationLookup $userRegistrationLookup;
-
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
-
 	/** @var ?Session */
 	private $session;
 
 	/**
 	 * @todo This might drag in unwanted dependencies. The alternative is to use ObjectFactory, but that's harder
 	 *   to understand for humans and static analysis tools, so do that only if the dependencies list starts growing.
-	 * @param ServiceOptions $options
-	 * @param LoggerInterface $logger
-	 * @param BlockUserFactory $blockUserFactory
-	 * @param UnblockUserFactory $unblockUserFactory
-	 * @param DatabaseBlockStore $databaseBlockStore
-	 * @param UserGroupManager $userGroupManager
-	 * @param BagOStuff $mainStash
-	 * @param ChangeTagger $changeTagger
-	 * @param BlockAutopromoteStore $blockAutopromoteStore
-	 * @param FilterUser $filterUser
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param UserEditTracker $userEditTracker
-	 * @param UserRegistrationLookup $userRegistrationLookup
-	 * @param UserIdentityUtils $userIdentityUtils
 	 */
 	public function __construct(
-		ServiceOptions $options,
-		LoggerInterface $logger,
-		BlockUserFactory $blockUserFactory,
-		UnblockUserFactory $unblockUserFactory,
-		DatabaseBlockStore $databaseBlockStore,
-		UserGroupManager $userGroupManager,
-		BagOStuff $mainStash,
-		ChangeTagger $changeTagger,
-		BlockAutopromoteStore $blockAutopromoteStore,
-		FilterUser $filterUser,
-		MessageLocalizer $messageLocalizer,
-		UserEditTracker $userEditTracker,
-		UserRegistrationLookup $userRegistrationLookup,
-		UserIdentityUtils $userIdentityUtils
+		private readonly ServiceOptions $options,
+		private readonly LoggerInterface $logger,
+		private readonly BlockUserFactory $blockUserFactory,
+		private readonly UnblockUserFactory $unblockUserFactory,
+		private readonly DatabaseBlockStore $databaseBlockStore,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly BagOStuff $mainStash,
+		private readonly ChangeTagger $changeTagger,
+		private readonly BlockAutopromoteStore $blockAutopromoteStore,
+		private readonly FilterUser $filterUser,
+		private readonly MessageLocalizer $messageLocalizer,
+		private readonly UserEditTracker $userEditTracker,
+		private readonly UserRegistrationLookup $userRegistrationLookup,
+		private readonly UserIdentityUtils $userIdentityUtils
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
-		$this->logger = $logger;
-		$this->blockUserFactory = $blockUserFactory;
-		$this->unblockUserFactory = $unblockUserFactory;
-		$this->databaseBlockStore = $databaseBlockStore;
-		$this->userGroupManager = $userGroupManager;
-		$this->mainStash = $mainStash;
-		$this->changeTagger = $changeTagger;
-		$this->blockAutopromoteStore = $blockAutopromoteStore;
-		$this->filterUser = $filterUser;
-		$this->messageLocalizer = $messageLocalizer;
-		$this->userEditTracker = $userEditTracker;
-		$this->userRegistrationLookup = $userRegistrationLookup;
-		$this->userIdentityUtils = $userIdentityUtils;
 	}
 
 	// Each class has its factory method for better type inference and static analysis

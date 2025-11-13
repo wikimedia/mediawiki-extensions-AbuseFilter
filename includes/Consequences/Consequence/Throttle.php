@@ -16,19 +16,6 @@ use Wikimedia\ObjectCache\BagOStuff;
  * Consequence that delays executing other actions until certain conditions are met
  */
 class Throttle extends Consequence implements ConsequencesDisablerConsequence {
-	/** @var array */
-	private $throttleParams;
-	/** @var BagOStuff */
-	private $mainStash;
-	/** @var UserEditTracker */
-	private $userEditTracker;
-	private UserRegistrationLookup $userRegistrationLookup;
-	/** @var LoggerInterface */
-	private $logger;
-	/** @var bool */
-	private $filterIsCentral;
-	/** @var string|null */
-	private $centralDB;
 
 	/** @var bool|null */
 	private $hitThrottle;
@@ -37,34 +24,19 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	private const IPV6_RANGE = '64';
 
 	/**
-	 * @param Parameters $parameters
-	 * @param array $throttleParams
 	 * @phan-param array{groups:string[],id:int|string,count:int,period:int} $throttleParams
-	 * @param BagOStuff $mainStash
-	 * @param UserEditTracker $userEditTracker
-	 * @param UserRegistrationLookup $userRegistrationLookup
-	 * @param LoggerInterface $logger
-	 * @param bool $filterIsCentral
-	 * @param string|null $centralDB
 	 */
 	public function __construct(
 		Parameters $parameters,
-		array $throttleParams,
-		BagOStuff $mainStash,
-		UserEditTracker $userEditTracker,
-		UserRegistrationLookup $userRegistrationLookup,
-		LoggerInterface $logger,
-		bool $filterIsCentral,
-		?string $centralDB
+		private readonly array $throttleParams,
+		private readonly BagOStuff $mainStash,
+		private readonly UserEditTracker $userEditTracker,
+		private readonly UserRegistrationLookup $userRegistrationLookup,
+		private readonly LoggerInterface $logger,
+		private readonly bool $filterIsCentral,
+		private readonly ?string $centralDB
 	) {
 		parent::__construct( $parameters );
-		$this->throttleParams = $throttleParams;
-		$this->mainStash = $mainStash;
-		$this->userEditTracker = $userEditTracker;
-		$this->userRegistrationLookup = $userRegistrationLookup;
-		$this->logger = $logger;
-		$this->filterIsCentral = $filterIsCentral;
-		$this->centralDB = $centralDB;
 	}
 
 	/**
@@ -149,7 +121,7 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 		// TODO: Migration strategy to abusefilter-throttle keygroup
 		if ( $this->parameters->getIsGlobalFilter() && !$this->filterIsCentral ) {
 			return $this->mainStash->makeGlobalKey(
-				'abusefilter', 'throttle', $this->centralDB, $this->throttleParams['id'], $identifier
+				'abusefilter', 'throttle', (string)$this->centralDB, $this->throttleParams['id'], $identifier
 			);
 		}
 

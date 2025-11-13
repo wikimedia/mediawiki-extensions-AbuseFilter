@@ -25,57 +25,18 @@ class ConsequencesExecutor {
 		'AbuseFilterBlockAutopromoteDuration',
 	];
 
-	/** @var ConsequencesLookup */
-	private $consLookup;
-	/** @var ConsequencesFactory */
-	private $consFactory;
-	/** @var ConsequencesRegistry */
-	private $consRegistry;
-	/** @var FilterLookup */
-	private $filterLookup;
-	/** @var LoggerInterface */
-	private $logger;
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
-	/** @var ServiceOptions */
-	private $options;
-	/** @var ActionSpecifier */
-	private $specifier;
-	/** @var VariableHolder */
-	private $vars;
-
-	/**
-	 * @param ConsequencesLookup $consLookup
-	 * @param ConsequencesFactory $consFactory
-	 * @param ConsequencesRegistry $consRegistry
-	 * @param FilterLookup $filterLookup
-	 * @param LoggerInterface $logger
-	 * @param UserIdentityUtils $userIdentityUtils
-	 * @param ServiceOptions $options
-	 * @param ActionSpecifier $specifier
-	 * @param VariableHolder $vars
-	 */
 	public function __construct(
-		ConsequencesLookup $consLookup,
-		ConsequencesFactory $consFactory,
-		ConsequencesRegistry $consRegistry,
-		FilterLookup $filterLookup,
-		LoggerInterface $logger,
-		UserIdentityUtils $userIdentityUtils,
-		ServiceOptions $options,
-		ActionSpecifier $specifier,
-		VariableHolder $vars
+		private readonly ConsequencesLookup $consLookup,
+		private readonly ConsequencesFactory $consFactory,
+		private readonly ConsequencesRegistry $consRegistry,
+		private readonly FilterLookup $filterLookup,
+		private readonly LoggerInterface $logger,
+		private readonly UserIdentityUtils $userIdentityUtils,
+		private readonly ServiceOptions $options,
+		private readonly ActionSpecifier $specifier,
+		private readonly VariableHolder $vars
 	) {
-		$this->consLookup = $consLookup;
-		$this->consFactory = $consFactory;
-		$this->consRegistry = $consRegistry;
-		$this->filterLookup = $filterLookup;
-		$this->logger = $logger;
-		$this->userIdentityUtils = $userIdentityUtils;
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
-		$this->specifier = $specifier;
-		$this->vars = $vars;
 	}
 
 	/**

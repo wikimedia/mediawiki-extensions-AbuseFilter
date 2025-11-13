@@ -14,21 +14,7 @@ use Wikimedia\IPUtils;
  * Consequence that blocks an IP range (retrieved from the current request for both anons and registered users).
  */
 class RangeBlock extends BlockingConsequence {
-	/** @var int[] */
-	private $rangeBlockSize;
-	/** @var int[] */
-	private $blockCIDRLimit;
 
-	/**
-	 * @param Parameters $parameters
-	 * @param string $expiry
-	 * @param BlockUserFactory $blockUserFactory
-	 * @param FilterUser $filterUser
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param LoggerInterface $logger
-	 * @param array $rangeBlockSize
-	 * @param array $blockCIDRLimit
-	 */
 	public function __construct(
 		Parameters $parameters,
 		string $expiry,
@@ -36,12 +22,10 @@ class RangeBlock extends BlockingConsequence {
 		FilterUser $filterUser,
 		MessageLocalizer $messageLocalizer,
 		LoggerInterface $logger,
-		array $rangeBlockSize,
-		array $blockCIDRLimit
+		private readonly array $rangeBlockSize,
+		private readonly array $blockCIDRLimit
 	) {
 		parent::__construct( $parameters, $expiry, $blockUserFactory, $filterUser, $messageLocalizer, $logger );
-		$this->rangeBlockSize = $rangeBlockSize;
-		$this->blockCIDRLimit = $blockCIDRLimit;
 	}
 
 	/**
@@ -59,8 +43,8 @@ class RangeBlock extends BlockingConsequence {
 			$this->parameters->getFilter()->getID(),
 			$target,
 			$this->expiry,
-			$autoblock = false,
-			$preventTalk = false
+			false,
+			false
 		);
 		return $status->isOK();
 	}

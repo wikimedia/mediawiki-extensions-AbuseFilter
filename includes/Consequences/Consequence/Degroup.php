@@ -19,46 +19,15 @@ use MessageLocalizer;
  * Consequence that removes all user groups from a user.
  */
 class Degroup extends Consequence implements HookAborterConsequence, ReversibleConsequence {
-	/**
-	 * @var VariableHolder
-	 * @todo This dependency is subpar
-	 */
-	private $vars;
-
-	/** @var UserGroupManager */
-	private $userGroupManager;
-
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
-
-	/** @var FilterUser */
-	private $filterUser;
-
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
-	/**
-	 * @param Parameters $params
-	 * @param VariableHolder $vars
-	 * @param UserGroupManager $userGroupManager
-	 * @param UserIdentityUtils $userIdentityUtils
-	 * @param FilterUser $filterUser
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function __construct(
 		Parameters $params,
-		VariableHolder $vars,
-		UserGroupManager $userGroupManager,
-		UserIdentityUtils $userIdentityUtils,
-		FilterUser $filterUser,
-		MessageLocalizer $messageLocalizer
+		private readonly VariableHolder $vars,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly UserIdentityUtils $userIdentityUtils,
+		private readonly FilterUser $filterUser,
+		private readonly MessageLocalizer $messageLocalizer
 	) {
 		parent::__construct( $params );
-		$this->vars = $vars;
-		$this->userGroupManager = $userGroupManager;
-		$this->userIdentityUtils = $userIdentityUtils;
-		$this->filterUser = $filterUser;
-		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	/**
