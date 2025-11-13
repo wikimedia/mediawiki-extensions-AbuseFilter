@@ -19,17 +19,10 @@ class VariablesManager {
 	public const GET_STRICT = 1;
 	public const GET_BC = 2;
 
-	/** @var KeywordsManager */
-	private $keywordsManager;
-	/** @var LazyVariableComputer */
-	private $lazyComputer;
-
 	public function __construct(
-		KeywordsManager $keywordsManager,
-		LazyVariableComputer $lazyComputer
+		private readonly KeywordsManager $keywordsManager,
+		private readonly LazyVariableComputer $lazyComputer
 	) {
-		$this->keywordsManager = $keywordsManager;
-		$this->lazyComputer = $lazyComputer;
 	}
 
 	/**

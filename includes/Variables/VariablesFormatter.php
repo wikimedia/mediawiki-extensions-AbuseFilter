@@ -12,26 +12,11 @@ use MessageLocalizer;
 class VariablesFormatter {
 	public const SERVICE_NAME = 'AbuseFilterVariablesFormatter';
 
-	/** @var KeywordsManager */
-	private $keywordsManager;
-	/** @var VariablesManager */
-	private $varManager;
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
-	/**
-	 * @param KeywordsManager $keywordsManager
-	 * @param VariablesManager $variablesManager
-	 * @param MessageLocalizer $messageLocalizer
-	 */
 	public function __construct(
-		KeywordsManager $keywordsManager,
-		VariablesManager $variablesManager,
-		MessageLocalizer $messageLocalizer
+		private readonly KeywordsManager $keywordsManager,
+		private readonly VariablesManager $varManager,
+		private MessageLocalizer $messageLocalizer
 	) {
-		$this->keywordsManager = $keywordsManager;
-		$this->varManager = $variablesManager;
-		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {

@@ -34,9 +34,6 @@ class SyntaxChecker {
 	 */
 	private $treeRoot;
 
-	/** @var KeywordsManager */
-	private $keywordsManager;
-
 	public const MCONSERVATIVE = 'MODE_CONSERVATIVE';
 	public const MLIBERAL = 'MODE_LIBERAL';
 	public const DUMMYPOS = 0;
@@ -63,27 +60,14 @@ class SyntaxChecker {
 	 */
 	private $mode;
 
-	/**
-	 * @var bool Whether we want to check for unused variables
-	 */
-	private $checkUnusedVars;
-
-	/**
-	 * @param AFPSyntaxTree $tree
-	 * @param KeywordsManager $keywordsManager
-	 * @param string $mode
-	 * @param bool $checkUnusedVars
-	 */
 	public function __construct(
 		AFPSyntaxTree $tree,
-		KeywordsManager $keywordsManager,
+		private readonly KeywordsManager $keywordsManager,
 		string $mode = self::MCONSERVATIVE,
-		bool $checkUnusedVars = false
+		private readonly bool $checkUnusedVars = false
 	) {
 		$this->treeRoot = $tree->getRoot();
-		$this->keywordsManager = $keywordsManager;
 		$this->mode = $mode;
-		$this->checkUnusedVars = $checkUnusedVars;
 	}
 
 	/**

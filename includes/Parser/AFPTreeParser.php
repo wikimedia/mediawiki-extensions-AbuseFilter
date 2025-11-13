@@ -38,32 +38,11 @@ class AFPTreeParser {
 
 	public const CACHE_VERSION = 2;
 
-	/**
-	 * @var LoggerInterface Used for debugging
-	 */
-	private $logger;
-
-	/**
-	 * @var IBufferingStatsdDataFactory
-	 */
-	private $statsd;
-
-	/** @var KeywordsManager */
-	private $keywordsManager;
-
-	/**
-	 * @param LoggerInterface $logger Used for debugging
-	 * @param IBufferingStatsdDataFactory $statsd
-	 * @param KeywordsManager $keywordsManager
-	 */
 	public function __construct(
-		LoggerInterface $logger,
-		IBufferingStatsdDataFactory $statsd,
-		KeywordsManager $keywordsManager
+		private readonly LoggerInterface $logger,
+		private readonly IBufferingStatsdDataFactory $statsd,
+		private readonly KeywordsManager $keywordsManager
 	) {
-		$this->logger = $logger;
-		$this->statsd = $statsd;
-		$this->keywordsManager = $keywordsManager;
 		$this->resetState();
 	}
 

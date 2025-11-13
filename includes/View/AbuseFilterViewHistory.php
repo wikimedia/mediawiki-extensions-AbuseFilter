@@ -21,45 +21,18 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 	/** @var int|null */
 	private $filter;
 
-	/** @var FilterLookup */
-	private $filterLookup;
-
-	/** @var SpecsFormatter */
-	private $specsFormatter;
-
-	/** @var UserNameUtils */
-	private $userNameUtils;
-
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/**
-	 * @param UserNameUtils $userNameUtils
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param FilterLookup $filterLookup
-	 * @param SpecsFormatter $specsFormatter
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
-		UserNameUtils $userNameUtils,
-		LinkBatchFactory $linkBatchFactory,
+		private readonly UserNameUtils $userNameUtils,
+		private readonly LinkBatchFactory $linkBatchFactory,
 		AbuseFilterPermissionManager $afPermManager,
-		FilterLookup $filterLookup,
-		SpecsFormatter $specsFormatter,
+		private readonly FilterLookup $filterLookup,
+		private readonly SpecsFormatter $specsFormatter,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->userNameUtils = $userNameUtils;
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->filterLookup = $filterLookup;
-		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $context );
 		$this->filter = $this->mParams['filter'] ?? null;
 	}

@@ -42,64 +42,21 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @var string|null The reason provided for the revert
 	 */
 	private $reason;
-	/**
-	 * @var LBFactory
-	 */
-	private $lbFactory;
-	/**
-	 * @var UserFactory
-	 */
-	private $userFactory;
-	/**
-	 * @var FilterLookup
-	 */
-	private $filterLookup;
-	/**
-	 * @var ConsequencesFactory
-	 */
-	private $consequencesFactory;
-	/**
-	 * @var VariablesBlobStore
-	 */
-	private $varBlobStore;
-	/**
-	 * @var SpecsFormatter
-	 */
-	private $specsFormatter;
 
-	/**
-	 * @param LBFactory $lbFactory
-	 * @param UserFactory $userFactory
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param FilterLookup $filterLookup
-	 * @param ConsequencesFactory $consequencesFactory
-	 * @param VariablesBlobStore $varBlobStore
-	 * @param SpecsFormatter $specsFormatter
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
-		LBFactory $lbFactory,
-		UserFactory $userFactory,
+		private readonly LBFactory $lbFactory,
+		private readonly UserFactory $userFactory,
 		AbuseFilterPermissionManager $afPermManager,
-		FilterLookup $filterLookup,
-		ConsequencesFactory $consequencesFactory,
-		VariablesBlobStore $varBlobStore,
-		SpecsFormatter $specsFormatter,
+		private readonly FilterLookup $filterLookup,
+		private readonly ConsequencesFactory $consequencesFactory,
+		private readonly VariablesBlobStore $varBlobStore,
+		private readonly SpecsFormatter $specsFormatter,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->lbFactory = $lbFactory;
-		$this->userFactory = $userFactory;
-		$this->filterLookup = $filterLookup;
-		$this->consequencesFactory = $consequencesFactory;
-		$this->varBlobStore = $varBlobStore;
-		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
 	}
 

@@ -9,17 +9,14 @@ use MediaWiki\Page\Event\PageRevisionUpdatedListener;
 use MediaWiki\Page\WikiPageFactory;
 
 class PageEventIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
-	private EditRevUpdater $revUpdater;
-	private WikiPageFactory $wikiPageFactory;
 
-	public function __construct( EditRevUpdater $revUpdater, WikiPageFactory $wikiPageFactory ) {
-		$this->revUpdater = $revUpdater;
-		$this->wikiPageFactory = $wikiPageFactory;
+	public function __construct(
+		private readonly EditRevUpdater $revUpdater,
+		private readonly WikiPageFactory $wikiPageFactory
+	) {
 	}
 
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
 		$latestRevisionRecord = $event->getLatestRevisionAfter();
 		$wikiPage = $this->wikiPageFactory->newFromTitle(

@@ -54,100 +54,23 @@ class LazyVariableComputer {
 	 */
 	public static $profilingExtraTime = 0;
 
-	/** @var TextExtractor */
-	private $textExtractor;
-
-	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
-
-	/** @var LoggerInterface */
-	private $logger;
-
-	/** @var LBFactory */
-	private $lbFactory;
-
-	/** @var WANObjectCache */
-	private $wanCache;
-
-	/** @var RevisionLookup */
-	private $revisionLookup;
-
-	/** @var RevisionStore */
-	private $revisionStore;
-
-	/** @var Language */
-	private $contentLanguage;
-
-	/** @var ParserFactory */
-	private $parserFactory;
-
-	/** @var UserEditTracker */
-	private $userEditTracker;
-
-	/** @var UserGroupManager */
-	private $userGroupManager;
-
-	/** @var PermissionManager */
-	private $permissionManager;
-
-	/** @var RestrictionStore */
-	private $restrictionStore;
-
-	/** @var UserIdentityUtils */
-	private $userIdentityUtils;
-
-	/** @var string */
-	private $wikiID;
-
-	/**
-	 * @param TextExtractor $textExtractor
-	 * @param AbuseFilterHookRunner $hookRunner
-	 * @param LoggerInterface $logger
-	 * @param LBFactory $lbFactory
-	 * @param WANObjectCache $wanCache
-	 * @param RevisionLookup $revisionLookup
-	 * @param RevisionStore $revisionStore
-	 * @param Language $contentLanguage
-	 * @param ParserFactory $parserFactory
-	 * @param UserEditTracker $userEditTracker
-	 * @param UserGroupManager $userGroupManager
-	 * @param PermissionManager $permissionManager
-	 * @param RestrictionStore $restrictionStore
-	 * @param UserIdentityUtils $userIdentityUtils
-	 * @param string $wikiID
-	 */
 	public function __construct(
-		TextExtractor $textExtractor,
-		AbuseFilterHookRunner $hookRunner,
-		LoggerInterface $logger,
-		LBFactory $lbFactory,
-		WANObjectCache $wanCache,
-		RevisionLookup $revisionLookup,
-		RevisionStore $revisionStore,
-		Language $contentLanguage,
-		ParserFactory $parserFactory,
-		UserEditTracker $userEditTracker,
-		UserGroupManager $userGroupManager,
-		PermissionManager $permissionManager,
-		RestrictionStore $restrictionStore,
-		UserIdentityUtils $userIdentityUtils,
-		string $wikiID
+		private readonly TextExtractor $textExtractor,
+		private readonly AbuseFilterHookRunner $hookRunner,
+		private readonly LoggerInterface $logger,
+		private readonly LBFactory $lbFactory,
+		private readonly WANObjectCache $wanCache,
+		private readonly RevisionLookup $revisionLookup,
+		private readonly RevisionStore $revisionStore,
+		private readonly Language $contentLanguage,
+		private readonly ParserFactory $parserFactory,
+		private readonly UserEditTracker $userEditTracker,
+		private readonly UserGroupManager $userGroupManager,
+		private readonly PermissionManager $permissionManager,
+		private readonly RestrictionStore $restrictionStore,
+		private readonly UserIdentityUtils $userIdentityUtils,
+		private readonly string $wikiID
 	) {
-		$this->textExtractor = $textExtractor;
-		$this->hookRunner = $hookRunner;
-		$this->logger = $logger;
-		$this->lbFactory = $lbFactory;
-		$this->wanCache = $wanCache;
-		$this->revisionLookup = $revisionLookup;
-		$this->revisionStore = $revisionStore;
-		$this->contentLanguage = $contentLanguage;
-		$this->parserFactory = $parserFactory;
-		$this->userEditTracker = $userEditTracker;
-		$this->userGroupManager = $userGroupManager;
-		$this->permissionManager = $permissionManager;
-		$this->restrictionStore = $restrictionStore;
-		$this->userIdentityUtils = $userIdentityUtils;
-		$this->wikiID = $wikiID;
 	}
 
 	/**

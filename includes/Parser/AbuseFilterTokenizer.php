@@ -72,13 +72,7 @@ class AbuseFilterTokenizer {
 		'rlike', 'irlike', 'regex', 'if', 'then', 'else', 'end',
 	];
 
-	/**
-	 * @var BagOStuff
-	 */
-	private $cache;
-
-	public function __construct( BagOStuff $cache ) {
-		$this->cache = $cache;
+	public function __construct( private readonly BagOStuff $cache ) {
 	}
 
 	/**

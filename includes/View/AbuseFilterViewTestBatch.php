@@ -31,61 +31,24 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	private static $mChangeLimit = 100;
 
 	/**
-	 * @var LBFactory
-	 */
-	private $lbFactory;
-	/**
 	 * @var string The text of the rule to test changes against
 	 */
 	private $testPattern;
-	/**
-	 * @var EditBoxBuilderFactory
-	 */
-	private $boxBuilderFactory;
-	/**
-	 * @var RuleCheckerFactory
-	 */
-	private $ruleCheckerFactory;
-	/**
-	 * @var VariableGeneratorFactory
-	 */
-	private $varGeneratorFactory;
-	private AbuseLoggerFactory $abuseLoggerFactory;
-	private RecentChangeFactory $recentChangeFactory;
 
-	/**
-	 * @param LBFactory $lbFactory
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param EditBoxBuilderFactory $boxBuilderFactory
-	 * @param RuleCheckerFactory $ruleCheckerFactory
-	 * @param VariableGeneratorFactory $varGeneratorFactory
-	 * @param AbuseLoggerFactory $abuseLoggerFactory
-	 * @param RecentChangeFactory $recentChangeFactory
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
-		LBFactory $lbFactory,
+		private readonly LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
-		EditBoxBuilderFactory $boxBuilderFactory,
-		RuleCheckerFactory $ruleCheckerFactory,
-		VariableGeneratorFactory $varGeneratorFactory,
-		AbuseLoggerFactory $abuseLoggerFactory,
-		RecentChangeFactory $recentChangeFactory,
+		private readonly EditBoxBuilderFactory $boxBuilderFactory,
+		private readonly RuleCheckerFactory $ruleCheckerFactory,
+		private readonly VariableGeneratorFactory $varGeneratorFactory,
+		private readonly AbuseLoggerFactory $abuseLoggerFactory,
+		private readonly RecentChangeFactory $recentChangeFactory,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->lbFactory = $lbFactory;
-		$this->boxBuilderFactory = $boxBuilderFactory;
-		$this->ruleCheckerFactory = $ruleCheckerFactory;
-		$this->varGeneratorFactory = $varGeneratorFactory;
-		$this->abuseLoggerFactory = $abuseLoggerFactory;
-		$this->recentChangeFactory = $recentChangeFactory;
 	}
 
 	/**

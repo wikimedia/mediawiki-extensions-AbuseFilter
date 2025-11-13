@@ -25,34 +25,21 @@ use Wikimedia\Rdbms\IConnectionProvider;
  */
 class AbuseFilterViewList extends AbuseFilterView {
 
-	private LinkBatchFactory $linkBatchFactory;
-	private IConnectionProvider $dbProvider;
-	private FilterProfiler $filterProfiler;
-	private SpecsFormatter $specsFormatter;
-	private CentralDBManager $centralDBManager;
-	private FilterLookup $filterLookup;
-
 	public function __construct(
-		LinkBatchFactory $linkBatchFactory,
-		IConnectionProvider $dbProvider,
+		private readonly LinkBatchFactory $linkBatchFactory,
+		private readonly IConnectionProvider $dbProvider,
 		AbuseFilterPermissionManager $afPermManager,
-		FilterProfiler $filterProfiler,
-		SpecsFormatter $specsFormatter,
-		CentralDBManager $centralDBManager,
-		FilterLookup $filterLookup,
+		private readonly FilterProfiler $filterProfiler,
+		private readonly SpecsFormatter $specsFormatter,
+		private readonly CentralDBManager $centralDBManager,
+		private readonly FilterLookup $filterLookup,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->dbProvider = $dbProvider;
-		$this->filterProfiler = $filterProfiler;
-		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $context );
-		$this->centralDBManager = $centralDBManager;
-		$this->filterLookup = $filterLookup;
 	}
 
 	/**

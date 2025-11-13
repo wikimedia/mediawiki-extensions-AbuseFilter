@@ -34,81 +34,25 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * @var string The rules of the filter we're examining
 	 */
 	private $testFilter;
-	/**
-	 * @var LBFactory
-	 */
-	private $lbFactory;
-	/**
-	 * @var FilterLookup
-	 */
-	private $filterLookup;
-	/**
-	 * @var EditBoxBuilderFactory
-	 */
-	private $boxBuilderFactory;
-	/**
-	 * @var VariablesBlobStore
-	 */
-	private $varBlobStore;
-	/**
-	 * @var VariablesFormatter
-	 */
-	private $variablesFormatter;
-	/**
-	 * @var VariablesManager
-	 */
-	private $varManager;
-	/**
-	 * @var VariableGeneratorFactory
-	 */
-	private $varGeneratorFactory;
 
-	private AbuseLoggerFactory $abuseLoggerFactory;
-	private RecentChangeStore $recentChangeStore;
-
-	/**
-	 * @param LBFactory $lbFactory
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param FilterLookup $filterLookup
-	 * @param EditBoxBuilderFactory $boxBuilderFactory
-	 * @param VariablesBlobStore $varBlobStore
-	 * @param VariablesFormatter $variablesFormatter
-	 * @param VariablesManager $varManager
-	 * @param VariableGeneratorFactory $varGeneratorFactory
-	 * @param AbuseLoggerFactory $abuseLoggerFactory
-	 * @param RecentChangeStore $recentChangeStore
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
-		LBFactory $lbFactory,
+		private readonly LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
-		FilterLookup $filterLookup,
-		EditBoxBuilderFactory $boxBuilderFactory,
-		VariablesBlobStore $varBlobStore,
-		VariablesFormatter $variablesFormatter,
-		VariablesManager $varManager,
-		VariableGeneratorFactory $varGeneratorFactory,
-		AbuseLoggerFactory $abuseLoggerFactory,
-		RecentChangeStore $recentChangeStore,
+		private readonly FilterLookup $filterLookup,
+		private readonly EditBoxBuilderFactory $boxBuilderFactory,
+		private readonly VariablesBlobStore $varBlobStore,
+		private readonly VariablesFormatter $variablesFormatter,
+		private readonly VariablesManager $varManager,
+		private readonly VariableGeneratorFactory $varGeneratorFactory,
+		private readonly AbuseLoggerFactory $abuseLoggerFactory,
+		private readonly RecentChangeStore $recentChangeStore,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->lbFactory = $lbFactory;
-		$this->filterLookup = $filterLookup;
-		$this->boxBuilderFactory = $boxBuilderFactory;
-		$this->varBlobStore = $varBlobStore;
-		$this->variablesFormatter = $variablesFormatter;
 		$this->variablesFormatter->setMessageLocalizer( $context );
-		$this->varManager = $varManager;
-		$this->varGeneratorFactory = $varGeneratorFactory;
-		$this->abuseLoggerFactory = $abuseLoggerFactory;
-		$this->recentChangeStore = $recentChangeStore;
 	}
 
 	/**

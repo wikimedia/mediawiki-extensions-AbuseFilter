@@ -42,54 +42,22 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	/** @var int|string */
 	private $filter;
 
-	/** @var LBFactory */
-	private $lbFactory;
-
-	/** @var FilterProfiler */
-	private $filterProfiler;
-
-	/** @var FilterLookup */
-	private $filterLookup;
-
-	/** @var FilterImporter */
-	private $filterImporter;
-
-	/** @var FilterStore */
-	private $filterStore;
-
-	/** @var EditBoxBuilderFactory */
-	private $boxBuilderFactory;
-
-	/** @var ConsequencesRegistry */
-	private $consequencesRegistry;
-
-	/** @var SpecsFormatter */
-	private $specsFormatter;
-
 	public function __construct(
-		LBFactory $lbFactory,
+		private readonly LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
-		FilterProfiler $filterProfiler,
-		FilterLookup $filterLookup,
-		FilterImporter $filterImporter,
-		FilterStore $filterStore,
-		EditBoxBuilderFactory $boxBuilderFactory,
-		ConsequencesRegistry $consequencesRegistry,
-		SpecsFormatter $specsFormatter,
+		private readonly FilterProfiler $filterProfiler,
+		private readonly FilterLookup $filterLookup,
+		private readonly FilterImporter $filterImporter,
+		private readonly FilterStore $filterStore,
+		private readonly EditBoxBuilderFactory $boxBuilderFactory,
+		private readonly ConsequencesRegistry $consequencesRegistry,
+		private readonly SpecsFormatter $specsFormatter,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->lbFactory = $lbFactory;
-		$this->filterProfiler = $filterProfiler;
-		$this->filterLookup = $filterLookup;
-		$this->filterImporter = $filterImporter;
-		$this->filterStore = $filterStore;
-		$this->boxBuilderFactory = $boxBuilderFactory;
-		$this->consequencesRegistry = $consequencesRegistry;
-		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
 		$this->filter = $this->mParams['filter'];
 		$this->historyID = $this->mParams['history'] ?? null;

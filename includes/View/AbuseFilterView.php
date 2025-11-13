@@ -30,16 +30,10 @@ abstract class AbuseFilterView extends ContextSource {
 		'upload' => [ 'upload', [ 'upload', 'overwrite', 'revert' ] ],
 	];
 
-	protected AbuseFilterPermissionManager $afPermManager;
-
 	/**
 	 * @var array The parameters of the current request
 	 */
 	protected array $mParams;
-
-	protected LinkRenderer $linkRenderer;
-
-	protected string $basePageName;
 
 	/**
 	 * @param AbuseFilterPermissionManager $afPermManager
@@ -49,17 +43,14 @@ abstract class AbuseFilterView extends ContextSource {
 	 * @param array $params
 	 */
 	public function __construct(
-		AbuseFilterPermissionManager $afPermManager,
-		IContextSource $context,
-		LinkRenderer $linkRenderer,
-		string $basePageName,
+		protected readonly AbuseFilterPermissionManager $afPermManager,
+		protected readonly IContextSource $context,
+		protected readonly LinkRenderer $linkRenderer,
+		protected readonly string $basePageName,
 		array $params
 	) {
 		$this->mParams = $params;
 		$this->setContext( $context );
-		$this->linkRenderer = $linkRenderer;
-		$this->basePageName = $basePageName;
-		$this->afPermManager = $afPermManager;
 	}
 
 	/**

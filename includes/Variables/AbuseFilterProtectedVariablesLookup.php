@@ -15,16 +15,11 @@ class AbuseFilterProtectedVariablesLookup {
 		'AbuseFilterProtectedVariables',
 	];
 
-	private ServiceOptions $options;
-	private AbuseFilterHookRunner $hookRunner;
-
 	public function __construct(
-		ServiceOptions $options,
-		AbuseFilterHookRunner $hookRunner
+		private readonly ServiceOptions $options,
+		private readonly AbuseFilterHookRunner $hookRunner
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->options = $options;
-		$this->hookRunner = $hookRunner;
 	}
 
 	/**

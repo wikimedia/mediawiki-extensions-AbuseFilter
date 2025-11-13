@@ -37,37 +37,18 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 	 * @var int|null The ID of the filter
 	 */
 	private $filter;
-	/**
-	 * @var SpecsFormatter
-	 */
-	private $specsFormatter;
-	/**
-	 * @var FilterLookup
-	 */
-	private $filterLookup;
 
-	/**
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param SpecsFormatter $specsFormatter
-	 * @param FilterLookup $filterLookup
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param string $basePageName
-	 * @param array $params
-	 */
 	public function __construct(
 		AbuseFilterPermissionManager $afPermManager,
-		SpecsFormatter $specsFormatter,
-		FilterLookup $filterLookup,
+		private readonly SpecsFormatter $specsFormatter,
+		private readonly FilterLookup $filterLookup,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
-		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
-		$this->filterLookup = $filterLookup;
 	}
 
 	/**

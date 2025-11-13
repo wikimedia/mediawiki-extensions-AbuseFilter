@@ -18,25 +18,13 @@ use Wikimedia\IPUtils;
 class VariablesBlobStore {
 	public const SERVICE_NAME = 'AbuseFilterVariablesBlobStore';
 
-	private VariablesManager $varManager;
-	private BlobStoreFactory $blobStoreFactory;
-	private BlobStore $blobStore;
-	private AbuseFilterPermissionManager $permissionManager;
-
-	private ?string $centralDB;
-
 	public function __construct(
-		VariablesManager $varManager,
-		AbuseFilterPermissionManager $permissionManager,
-		BlobStoreFactory $blobStoreFactory,
-		BlobStore $blobStore,
-		?string $centralDB
+		private readonly VariablesManager $varManager,
+		private readonly AbuseFilterPermissionManager $permissionManager,
+		private readonly BlobStoreFactory $blobStoreFactory,
+		private readonly BlobStore $blobStore,
+		private readonly ?string $centralDB
 	) {
-		$this->varManager = $varManager;
-		$this->blobStoreFactory = $blobStoreFactory;
-		$this->blobStore = $blobStore;
-		$this->permissionManager = $permissionManager;
-		$this->centralDB = $centralDB;
 	}
 
 	/**

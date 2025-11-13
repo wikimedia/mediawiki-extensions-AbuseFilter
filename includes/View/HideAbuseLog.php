@@ -19,29 +19,20 @@ use Wikimedia\Rdbms\LBFactory;
 
 class HideAbuseLog extends AbuseFilterView {
 
-	private LBFactory $lbFactory;
-	private LinkBatchFactory $linkBatchFactory;
-	private PermissionManager $permissionManager;
-	private VariablesBlobStore $variablesBlobStore;
-
 	/** @var int[] */
 	private $hideIDs;
 
 	public function __construct(
-		LBFactory $lbFactory,
+		private readonly LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
-		LinkBatchFactory $linkBatchFactory,
-		PermissionManager $permissionManager,
-		VariablesBlobStore $variablesBlobStore,
+		private readonly LinkBatchFactory $linkBatchFactory,
+		private readonly PermissionManager $permissionManager,
+		private readonly VariablesBlobStore $variablesBlobStore,
 		string $basePageName
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, [] );
-		$this->lbFactory = $lbFactory;
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->permissionManager = $permissionManager;
-		$this->variablesBlobStore = $variablesBlobStore;
 
 		$this->hideIDs = array_keys( $this->getRequest()->getArray( 'hideids', [] ) );
 	}
