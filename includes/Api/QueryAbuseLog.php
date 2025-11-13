@@ -51,33 +51,18 @@ use Wikimedia\ParamValidator\TypeDef\IntegerDef;
  */
 class QueryAbuseLog extends ApiQueryBase {
 
-	private FilterLookup $afFilterLookup;
-	private AbuseFilterPermissionManager $afPermManager;
-	private VariablesBlobStore $afVariablesBlobStore;
-	private VariablesManager $afVariablesManager;
-	private UserFactory $userFactory;
-	private AbuseLoggerFactory $abuseLoggerFactory;
-	private RuleCheckerFactory $ruleCheckerFactory;
-
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		FilterLookup $afFilterLookup,
-		AbuseFilterPermissionManager $afPermManager,
-		VariablesBlobStore $afVariablesBlobStore,
-		VariablesManager $afVariablesManager,
-		UserFactory $userFactory,
-		AbuseLoggerFactory $abuseLoggerFactory,
-		RuleCheckerFactory $ruleCheckerFactory
+		private readonly FilterLookup $afFilterLookup,
+		private readonly AbuseFilterPermissionManager $afPermManager,
+		private readonly VariablesBlobStore $afVariablesBlobStore,
+		private readonly VariablesManager $afVariablesManager,
+		private readonly UserFactory $userFactory,
+		private readonly AbuseLoggerFactory $abuseLoggerFactory,
+		private readonly RuleCheckerFactory $ruleCheckerFactory
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
-		$this->afFilterLookup = $afFilterLookup;
-		$this->afPermManager = $afPermManager;
-		$this->afVariablesBlobStore = $afVariablesBlobStore;
-		$this->afVariablesManager = $afVariablesManager;
-		$this->userFactory = $userFactory;
-		$this->abuseLoggerFactory = $abuseLoggerFactory;
-		$this->ruleCheckerFactory = $ruleCheckerFactory;
 	}
 
 	/**

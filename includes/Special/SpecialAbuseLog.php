@@ -109,52 +109,25 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	/** @var string|null The filter group to search, as defined in $wgAbuseFilterValidGroups */
 	private $mSearchGroup;
 
-	private LBFactory $lbFactory;
-	private LinkBatchFactory $linkBatchFactory;
-	private PermissionManager $permissionManager;
-	private UserIdentityLookup $userIdentityLookup;
-	private ConsequencesRegistry $consequencesRegistry;
-	private VariablesBlobStore $varBlobStore;
-	private SpecsFormatter $specsFormatter;
-	private VariablesFormatter $variablesFormatter;
-	private VariablesManager $varManager;
-	private AbuseLoggerFactory $abuseLoggerFactory;
-	private FilterLookup $filterLookup;
-	private TempUserConfig $tempUserConfig;
-	private ExtensionRegistry $extensionRegistry;
-
 	public function __construct(
-		LBFactory $lbFactory,
-		LinkBatchFactory $linkBatchFactory,
-		PermissionManager $permissionManager,
-		UserIdentityLookup $userIdentityLookup,
+		private readonly LBFactory $lbFactory,
+		private readonly LinkBatchFactory $linkBatchFactory,
+		private readonly PermissionManager $permissionManager,
+		private readonly UserIdentityLookup $userIdentityLookup,
 		AbuseFilterPermissionManager $afPermissionManager,
-		ConsequencesRegistry $consequencesRegistry,
-		VariablesBlobStore $varBlobStore,
-		SpecsFormatter $specsFormatter,
-		VariablesFormatter $variablesFormatter,
-		VariablesManager $varManager,
-		AbuseLoggerFactory $abuseLoggerFactory,
-		FilterLookup $filterLookup,
-		TempUserConfig $tempUserConfig,
-		ExtensionRegistry $extensionRegistry
+		private readonly ConsequencesRegistry $consequencesRegistry,
+		private readonly VariablesBlobStore $varBlobStore,
+		private readonly SpecsFormatter $specsFormatter,
+		private readonly VariablesFormatter $variablesFormatter,
+		private readonly VariablesManager $varManager,
+		private readonly AbuseLoggerFactory $abuseLoggerFactory,
+		private readonly FilterLookup $filterLookup,
+		private readonly TempUserConfig $tempUserConfig,
+		private readonly ExtensionRegistry $extensionRegistry
 	) {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
-		$this->lbFactory = $lbFactory;
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->permissionManager = $permissionManager;
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->consequencesRegistry = $consequencesRegistry;
-		$this->varBlobStore = $varBlobStore;
-		$this->specsFormatter = $specsFormatter;
 		$this->specsFormatter->setMessageLocalizer( $this );
-		$this->variablesFormatter = $variablesFormatter;
 		$this->variablesFormatter->setMessageLocalizer( $this );
-		$this->varManager = $varManager;
-		$this->abuseLoggerFactory = $abuseLoggerFactory;
-		$this->filterLookup = $filterLookup;
-		$this->tempUserConfig = $tempUserConfig;
-		$this->extensionRegistry = $extensionRegistry;
 	}
 
 	/**

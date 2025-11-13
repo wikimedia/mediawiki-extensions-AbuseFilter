@@ -39,18 +39,13 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
  */
 class QueryAbuseFilters extends ApiQueryBase {
 
-	private AbuseFilterPermissionManager $afPermManager;
-	private FilterLookup $filterLookup;
-
 	public function __construct(
 		ApiQuery $query,
 		string $moduleName,
-		AbuseFilterPermissionManager $afPermManager,
-		FilterLookup $filterLookup
+		private readonly AbuseFilterPermissionManager $afPermManager,
+		private readonly FilterLookup $filterLookup
 	) {
 		parent::__construct( $query, $moduleName, 'abf' );
-		$this->afPermManager = $afPermManager;
-		$this->filterLookup = $filterLookup;
 	}
 
 	/**

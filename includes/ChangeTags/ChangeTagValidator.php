@@ -14,11 +14,7 @@ class ChangeTagValidator {
 
 	public const SERVICE_NAME = 'AbuseFilterChangeTagValidator';
 
-	/** @var ChangeTagsManager */
-	private $changeTagsManager;
-
-	public function __construct( ChangeTagsManager $changeTagsManager ) {
-		$this->changeTagsManager = $changeTagsManager;
+	public function __construct( private readonly ChangeTagsManager $changeTagsManager ) {
 	}
 
 	/**

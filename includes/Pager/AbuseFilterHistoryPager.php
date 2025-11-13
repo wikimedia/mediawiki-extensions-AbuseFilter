@@ -23,51 +23,18 @@ use Wikimedia\Rdbms\IResultWrapper;
 
 class AbuseFilterHistoryPager extends TablePager {
 
-	private LinkBatchFactory $linkBatchFactory;
-	private FilterLookup $filterLookup;
-	private SpecsFormatter $specsFormatter;
-	private AbuseFilterPermissionManager $afPermManager;
-
-	/** @var int|null The filter ID */
-	private $filter;
-
-	/** @var string|null The user whose changes we're looking up for */
-	private $user;
-
-	/** @var bool */
-	private $canViewPrivateFilters;
-
-	/**
-	 * @param IContextSource $context
-	 * @param LinkRenderer $linkRenderer
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param FilterLookup $filterLookup
-	 * @param SpecsFormatter $specsFormatter
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param ?int $filter
-	 * @param ?string $user User name
-	 * @param bool $canViewPrivateFilters
-	 */
 	public function __construct(
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
-		LinkBatchFactory $linkBatchFactory,
-		FilterLookup $filterLookup,
-		SpecsFormatter $specsFormatter,
-		AbuseFilterPermissionManager $afPermManager,
-		?int $filter,
-		?string $user,
-		bool $canViewPrivateFilters = false
+		private readonly LinkBatchFactory $linkBatchFactory,
+		private readonly FilterLookup $filterLookup,
+		private readonly SpecsFormatter $specsFormatter,
+		private readonly AbuseFilterPermissionManager $afPermManager,
+		private readonly ?int $filter,
+		private readonly ?string $user,
+		private readonly bool $canViewPrivateFilters = false
 	) {
-		// needed by parent's constructor call
-		$this->filter = $filter;
 		parent::__construct( $context, $linkRenderer );
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->filterLookup = $filterLookup;
-		$this->specsFormatter = $specsFormatter;
-		$this->afPermManager = $afPermManager;
-		$this->user = $user;
-		$this->canViewPrivateFilters = $canViewPrivateFilters;
 		$this->mDefaultDirection = true;
 	}
 

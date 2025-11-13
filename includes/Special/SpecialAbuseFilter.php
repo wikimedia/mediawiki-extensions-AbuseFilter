@@ -36,11 +36,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
 	private const PAGE_NAME = 'AbuseFilter';
 
-	/**
-	 * @var ObjectFactory
-	 */
-	private $objectFactory;
-
 	private const SERVICES_PER_VIEW = [
 		AbuseFilterViewDiff::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,
@@ -115,10 +110,9 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
 	public function __construct(
 		AbuseFilterPermissionManager $afPermissionManager,
-		ObjectFactory $objectFactory
+		private readonly ObjectFactory $objectFactory
 	) {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-view', $afPermissionManager );
-		$this->objectFactory = $objectFactory;
 	}
 
 	/**

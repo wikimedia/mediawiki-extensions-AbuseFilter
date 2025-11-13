@@ -12,10 +12,6 @@ use MediaWiki\Title\TitleValue;
  * Parent class for AbuseFilter special pages.
  */
 abstract class AbuseFilterSpecialPage extends SpecialPage {
-
-	/** @var AbuseFilterPermissionManager */
-	protected $afPermissionManager;
-
 	/**
 	 * @param string $name
 	 * @param string $restriction
@@ -24,10 +20,9 @@ abstract class AbuseFilterSpecialPage extends SpecialPage {
 	public function __construct(
 		$name,
 		$restriction,
-		AbuseFilterPermissionManager $afPermissionManager
+		protected readonly AbuseFilterPermissionManager $afPermissionManager
 	) {
 		parent::__construct( $name, $restriction );
-		$this->afPermissionManager = $afPermissionManager;
 	}
 
 	/**

@@ -8,10 +8,7 @@ class BlockedDomainValidator {
 
 	public const SERVICE_NAME = 'AbuseFilterBlockedDomainValidator';
 
-	private UrlUtils $urlUtils;
-
-	public function __construct( UrlUtils $urlUtils ) {
-		$this->urlUtils = $urlUtils;
+	public function __construct( private readonly UrlUtils $urlUtils ) {
 	}
 
 	/**

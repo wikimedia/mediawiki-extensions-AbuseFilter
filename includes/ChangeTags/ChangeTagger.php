@@ -17,13 +17,7 @@ class ChangeTagger {
 	/** @var array (Persistent) map of (action ID => string[]) */
 	private static $tagsToSet = [];
 
-	/**
-	 * @var ChangeTagsManager
-	 */
-	private $changeTagsManager;
-
-	public function __construct( ChangeTagsManager $changeTagsManager ) {
-		$this->changeTagsManager = $changeTagsManager;
+	public function __construct( private readonly ChangeTagsManager $changeTagsManager ) {
 	}
 
 	/**

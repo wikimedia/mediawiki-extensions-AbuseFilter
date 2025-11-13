@@ -18,27 +18,14 @@ use Wikimedia\Rdbms\IDBAccessObject;
 
 class BlockedDomainEditor {
 
-	private IContextSource $context;
-	private Title $rootTitle;
-	private WANObjectCache $wanCache;
-	private LinkRenderer $linkRenderer;
-	private IBlockedDomainStorage $blockedDomainStorage;
-	private BlockedDomainValidator $blockedDomainValidator;
-
 	public function __construct(
-		IContextSource $context,
-		Title $rootTitle,
-		WANObjectCache $wanCache,
-		LinkRenderer $linkRenderer,
-		IBlockedDomainStorage $blockedDomainStorage,
-		BlockedDomainValidator $blockedDomainValidator
+		private readonly IContextSource $context,
+		private readonly Title $rootTitle,
+		private readonly WANObjectCache $wanCache,
+		private readonly LinkRenderer $linkRenderer,
+		private readonly IBlockedDomainStorage $blockedDomainStorage,
+		private readonly BlockedDomainValidator $blockedDomainValidator
 	) {
-		$this->context = $context;
-		$this->rootTitle = $rootTitle;
-		$this->wanCache = $wanCache;
-		$this->linkRenderer = $linkRenderer;
-		$this->blockedDomainStorage = $blockedDomainStorage;
-		$this->blockedDomainValidator = $blockedDomainValidator;
 	}
 
 	/**

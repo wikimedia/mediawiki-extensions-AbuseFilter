@@ -25,33 +25,18 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class CheckMatch extends ApiBase {
 
-	private RuleCheckerFactory $ruleCheckerFactory;
-	private AbuseFilterPermissionManager $afPermManager;
-	private VariablesBlobStore $afVariablesBlobStore;
-	private VariableGeneratorFactory $afVariableGeneratorFactory;
-	private FilterLookup $filterLookup;
-	private AbuseLoggerFactory $abuseLoggerFactory;
-	private RecentChangeLookup $recentChangeLookup;
-
 	public function __construct(
 		ApiMain $main,
 		string $action,
-		RuleCheckerFactory $ruleCheckerFactory,
-		AbuseFilterPermissionManager $afPermManager,
-		VariablesBlobStore $afVariablesBlobStore,
-		VariableGeneratorFactory $afVariableGeneratorFactory,
-		FilterLookup $filterLookup,
-		AbuseLoggerFactory $abuseLoggerFactory,
-		RecentChangeLookup $recentChangeLookup
+		private readonly RuleCheckerFactory $ruleCheckerFactory,
+		private readonly AbuseFilterPermissionManager $afPermManager,
+		private readonly VariablesBlobStore $afVariablesBlobStore,
+		private readonly VariableGeneratorFactory $afVariableGeneratorFactory,
+		private readonly FilterLookup $filterLookup,
+		private readonly AbuseLoggerFactory $abuseLoggerFactory,
+		private readonly RecentChangeLookup $recentChangeLookup
 	) {
 		parent::__construct( $main, $action );
-		$this->ruleCheckerFactory = $ruleCheckerFactory;
-		$this->afPermManager = $afPermManager;
-		$this->afVariablesBlobStore = $afVariablesBlobStore;
-		$this->afVariableGeneratorFactory = $afVariableGeneratorFactory;
-		$this->filterLookup = $filterLookup;
-		$this->abuseLoggerFactory = $abuseLoggerFactory;
-		$this->recentChangeLookup = $recentChangeLookup;
 	}
 
 	/**

@@ -37,61 +37,18 @@ class AbuseFilterPager extends TablePager {
 		'af_public_comments' => [ 'af_public_comments', 'af_id' ],
 	];
 
-	private ?LinkBatchFactory $linkBatchFactory;
-	private AbuseFilterPermissionManager $afPermManager;
-	private FilterLookup $filterLookup;
-
-	protected SpecsFormatter $specsFormatter;
-
-	/**
-	 * @var AbuseFilterViewList The associated page
-	 */
-	private $mPage;
-	/**
-	 * @var array Query WHERE conditions
-	 */
-	private $conds;
-	/**
-	 * @var string|null The pattern being searched
-	 */
-	private $searchPattern;
-	/**
-	 * @var string|null The pattern search mode (LIKE, RLIKE or IRLIKE)
-	 */
-	private $searchMode;
-
-	/**
-	 * @param AbuseFilterViewList $page
-	 * @param LinkRenderer $linkRenderer
-	 * @param ?LinkBatchFactory $linkBatchFactory
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param SpecsFormatter $specsFormatter
-	 * @param FilterLookup $filterLookup
-	 * @param array $conds
-	 * @param ?string $searchPattern Null if no pattern was specified
-	 * @param ?string $searchMode
-	 */
 	public function __construct(
-		AbuseFilterViewList $page,
+		private readonly AbuseFilterViewList $page,
 		LinkRenderer $linkRenderer,
-		?LinkBatchFactory $linkBatchFactory,
-		AbuseFilterPermissionManager $afPermManager,
-		SpecsFormatter $specsFormatter,
-		FilterLookup $filterLookup,
-		array $conds,
-		?string $searchPattern,
-		?string $searchMode
+		private readonly ?LinkBatchFactory $linkBatchFactory,
+		private readonly AbuseFilterPermissionManager $afPermManager,
+		protected readonly SpecsFormatter $specsFormatter,
+		private readonly FilterLookup $filterLookup,
+		private readonly array $conds,
+		private readonly ?string $searchPattern,
+		private readonly ?string $searchMode
 	) {
-		// needed by parent's constructor call
-		$this->afPermManager = $afPermManager;
-		$this->specsFormatter = $specsFormatter;
 		parent::__construct( $page->getContext(), $linkRenderer );
-		$this->mPage = $page;
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->filterLookup = $filterLookup;
-		$this->conds = $conds;
-		$this->searchPattern = $searchPattern;
-		$this->searchMode = $searchMode;
 	}
 
 	/**
@@ -183,7 +140,7 @@ class AbuseFilterPager extends TablePager {
 	 * @throws LogicException
 	 */
 	private function matchesPattern( $subject ) {
-		$pattern = $this->searchPattern;
+		$pattern = $this->searchPattern ?? '';
 		return match ( $this->searchMode ) {
 			'RLIKE' => (bool)preg_match( "/$pattern/u", $subject ),
 			'IRLIKE' => (bool)preg_match( "/$pattern/ui", $subject ),
@@ -195,7 +152,7 @@ class AbuseFilterPager extends TablePager {
 	/**
 	 * Note: this method is called by parent::__construct
 	 * @return array
-	 * @see MediaWiki\Pager\Pager::getFieldNames()
+	 * @see \MediaWiki\Pager\Pager::getFieldNames()
 	 */
 	public function getFieldNames() {
 		$headers = [
@@ -213,8 +170,8 @@ class AbuseFilterPager extends TablePager {
 		}
 
 		if (
-				$this->afPermManager->canViewPrivateFilters( $performer ) &&
-				$this->searchMode !== null
+			$this->searchMode !== null &&
+			$this->afPermManager->canViewPrivateFilters( $performer )
 		) {
 			// This is also excluded in the default view
 			$headers['af_pattern'] = 'abusefilter-list-pattern';
@@ -321,16 +278,16 @@ class AbuseFilterPager extends TablePager {
 
 				return $this->msg( 'abusefilter-edit-lastmod-text' )
 					->rawParams(
-						$this->mPage->getLinkToLatestDiff(
+						$this->page->getLinkToLatestDiff(
 							$row->af_id,
 							$lang->userTimeAndDate( $value, $user )
 						),
 						$userLink,
-						$this->mPage->getLinkToLatestDiff(
+						$this->page->getLinkToLatestDiff(
 							$row->af_id,
 							$lang->userDate( $value, $user )
 						),
-						$this->mPage->getLinkToLatestDiff(
+						$this->page->getLinkToLatestDiff(
 							$row->af_id,
 							$lang->userTime( $value, $user )
 						)
@@ -355,11 +312,12 @@ class AbuseFilterPager extends TablePager {
 			throw new LogicException( 'Cannot search without a mode.' );
 		}
 		$maxLen = 50;
+		$searchPattern = $this->searchPattern ?? '';
 		if ( $this->searchMode === 'LIKE' ) {
-			$position = mb_stripos( $row->af_pattern, $this->searchPattern );
-			$length = mb_strlen( $this->searchPattern );
+			$position = mb_stripos( $row->af_pattern, $searchPattern );
+			$length = mb_strlen( $searchPattern );
 		} else {
-			$regex = '/' . $this->searchPattern . '/u';
+			$regex = '/' . $searchPattern . '/u';
 			if ( $this->searchMode === 'IRLIKE' ) {
 				$regex .= 'i';
 			}

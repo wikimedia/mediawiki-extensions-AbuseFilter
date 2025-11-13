@@ -20,27 +20,12 @@ class ChangeTagsManager {
 	public const SERVICE_NAME = 'AbuseFilterChangeTagsManager';
 	private const CONDS_LIMIT_TAG = 'abusefilter-condition-limit';
 
-	private ChangeTagsStore $changeTagsStore;
-	private LBFactory $lbFactory;
-	private WANObjectCache $cache;
-	private CentralDBManager $centralDBManager;
-
-	/**
-	 * @param ChangeTagsStore $changeTagsStore
-	 * @param LBFactory $lbFactory
-	 * @param WANObjectCache $cache
-	 * @param CentralDBManager $centralDBManager
-	 */
 	public function __construct(
-		ChangeTagsStore $changeTagsStore,
-		LBFactory $lbFactory,
-		WANObjectCache $cache,
-		CentralDBManager $centralDBManager
+		private readonly ChangeTagsStore $changeTagsStore,
+		private readonly LBFactory $lbFactory,
+		private readonly WANObjectCache $cache,
+		private readonly CentralDBManager $centralDBManager
 	) {
-		$this->changeTagsStore = $changeTagsStore;
-		$this->lbFactory = $lbFactory;
-		$this->cache = $cache;
-		$this->centralDBManager = $centralDBManager;
 	}
 
 	/**

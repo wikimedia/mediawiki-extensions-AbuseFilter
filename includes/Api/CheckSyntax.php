@@ -11,18 +11,13 @@ use Wikimedia\ParamValidator\ParamValidator;
 
 class CheckSyntax extends ApiBase {
 
-	private RuleCheckerFactory $ruleCheckerFactory;
-	private AbuseFilterPermissionManager $afPermManager;
-
 	public function __construct(
 		ApiMain $main,
 		string $action,
-		RuleCheckerFactory $ruleCheckerFactory,
-		AbuseFilterPermissionManager $afPermManager
+		private readonly RuleCheckerFactory $ruleCheckerFactory,
+		private readonly AbuseFilterPermissionManager $afPermManager
 	) {
 		parent::__construct( $main, $action );
-		$this->ruleCheckerFactory = $ruleCheckerFactory;
-		$this->afPermManager = $afPermManager;
 	}
 
 	/**

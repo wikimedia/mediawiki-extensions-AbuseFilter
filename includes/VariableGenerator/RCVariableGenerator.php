@@ -20,48 +20,18 @@ use Wikimedia\Mime\MimeAnalyzer;
  * examine a RecentChanges row.
  */
 class RCVariableGenerator extends VariableGenerator {
-	/**
-	 * @var RecentChange
-	 */
-	private $rc;
 
-	/** @var User */
-	private $contextUser;
-
-	/** @var MimeAnalyzer */
-	private $mimeAnalyzer;
-	/** @var RepoGroup */
-	private $repoGroup;
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-
-	/**
-	 * @param AbuseFilterHookRunner $hookRunner
-	 * @param UserFactory $userFactory
-	 * @param MimeAnalyzer $mimeAnalyzer
-	 * @param RepoGroup $repoGroup
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param RecentChange $rc
-	 * @param User $contextUser
-	 * @param VariableHolder|null $vars
-	 */
 	public function __construct(
 		AbuseFilterHookRunner $hookRunner,
 		UserFactory $userFactory,
-		MimeAnalyzer $mimeAnalyzer,
-		RepoGroup $repoGroup,
-		WikiPageFactory $wikiPageFactory,
-		RecentChange $rc,
-		User $contextUser,
+		private readonly MimeAnalyzer $mimeAnalyzer,
+		private readonly RepoGroup $repoGroup,
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly RecentChange $rc,
+		private readonly User $contextUser,
 		?VariableHolder $vars = null
 	) {
 		parent::__construct( $hookRunner, $userFactory, $vars );
-
-		$this->mimeAnalyzer = $mimeAnalyzer;
-		$this->repoGroup = $repoGroup;
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->rc = $rc;
-		$this->contextUser = $contextUser;
 	}
 
 	public function getVars(): ?VariableHolder {

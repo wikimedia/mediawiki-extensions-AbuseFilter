@@ -37,15 +37,10 @@ use MediaWiki\User\User;
  * @ingroup SpecialPage
  */
 class BlockedDomainFilter implements IBlockedDomainFilter {
-	private VariablesManager $variablesManager;
-	private IBlockedDomainStorage $blockedDomainStorage;
-
 	public function __construct(
-		VariablesManager $variablesManager,
-		IBlockedDomainStorage $blockedDomainStorage
+		private readonly VariablesManager $variablesManager,
+		private readonly IBlockedDomainStorage $blockedDomainStorage
 	) {
-		$this->variablesManager = $variablesManager;
-		$this->blockedDomainStorage = $blockedDomainStorage;
 	}
 
 	/** @inheritDoc */
