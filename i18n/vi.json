@@ -194,7 +194,7 @@
 	"abusefilter-list-options-searchoptions": "Chế độ tìm kiếm:",
 	"abusefilter-list-options-search-like": "Truy vấn đơn thuần",
 	"abusefilter-list-options-search-rlike": "Biểu thức chính quy",
-	"abusefilter-list-options-search-irlike": "Biểu thức chính quy không phân biệt dạng chữ",
+	"abusefilter-list-options-search-irlike": "Biểu thức chính quy không phân biệt hoa thường",
 	"abusefilter-list-invalid-searchmode": "Chế độ tìm kiếm được chỉ định không hợp lệ.",
 	"abusefilter-list-regexerror": "Một lỗi đã xảy ra trong khi tìm kiếm: Lỗi cú pháp biểu thức chính quy.",
 	"abusefilter-list-options-submit": "Cập nhật",
