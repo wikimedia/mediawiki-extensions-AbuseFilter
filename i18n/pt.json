@@ -34,10 +34,10 @@
 			"Waldyrious"
 		]
 	},
-	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
-	"abusefilter": "Administração do filtro de abusos",
+	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
+	"abusefilter": "Gestão do filtro de abusos",
 	"abuselog": "Registo do filtro de abusos",
-	"abusefilter-intro": "Bem-vindo à interface de gestão do Filtro de Abusos.\nO Filtro de Abusos é um mecanismo de software automatizado de aplicação de heurísticas automáticas a todas as operações.\nEsta interface mostra uma lista dos filtros definidos e permite que estes sejam modificados.",
+	"abusefilter-intro": "Bem-vindo à interface da gestão do 'Filtro de Abusos'.\nEste filtro é um mecanismo de programa automatizado de aplicação de heurísticas automáticas para todas as ações.\nEsta interface mostra uma lista dos filtros definidos, e permite que estes sejam modificados.",
 	"abusefilter-mustviewprivateoredit": "Por razões de segurança, só os utilizadores com o direito de ver filtros de abuso privados ou de modificar filtros podem usar esta interface.",
 	"abusefilter-warning": "'''Aviso:''' esta operação foi identificada de forma automática como prejudicial.\nAs operações não construtivas serão revertidas rapidamente,\ne a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.\nSe crê que esta operação é construtiva, pode enviar novamente para confirmá-la.\nSegue-se uma breve descrição da regra de prevenção de abusos que detetou a sua operação: $1",
 	"abusefilter-disallowed": "Esta operação foi identificada automaticamente como prejudicial,\ne foi consequentemente desautorizada.\nSe crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que estava a tentar fazer.\nSegue-se uma breve descrição da regra de prevenção de abusos que detetou a sua ação: $1",
@@ -133,7 +133,7 @@
 	"abusefilter-log-details-hidden": "Não pode ver os detalhes desta entrada porque estes estão ocultados ao público.",
 	"abusefilter-log-details-hidden-implicit": "Não pode ver os detalhes desta entrada porque a revisão associada está ocultada do público.",
 	"abusefilter-log-private-not-included": "Um ou mais ID do(s) filtro(s) especificado(s) são particular(es). Por você não ter permissão para ver detalhes de filtros particulares, estes filtros não foram adicionados ao resultado da busca.",
-	"abusefilter-log-protected-not-included": "Um ou vários dos identificadores de filtros que especificou estão protegidos. Por não ter permissão para ver detalhes de filtros protegidos, estes filtros não foram incluídos na pesquisa.",
+	"abusefilter-log-protected-not-included": "Um ou vários dos identificadores de filtro que especificou estão protegidos. Porque você não está autorizado para ver os detalhes dos filtros protegidos ou estes filtros não foram incluídos na procura.",
 	"abusefilter-log-hide-no-selected": "Não foi selecionada nenhuma entrada",
 	"abusefilter-log-hide-selected": "{{PLURAL:$1|Entrada selecionada|Entradas selecionadas}} do registo de abusos:",
 	"abusefilter-log-hide-legend": "Alterar visibilidade",

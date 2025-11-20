@@ -238,7 +238,7 @@
 	"abusefilter-edit-builder-vars-user-age": "Âjo du compto usanciér",
 	"abusefilter-edit-builder-vars-user-name": "Nom du compto usanciér",
 	"abusefilter-edit-builder-vars-user-groups": "Tropes (emplicites avouéc) que l’usanciér est membro",
-	"abusefilter-edit-builder-vars-user-blocked": "Se l’utilisator est blocâ",
+	"abusefilter-edit-builder-vars-user-blocked": "Se l’utilisator est blocâ ($1)",
 	"abusefilter-edit-builder-vars-user-emailconfirm": "Temps dês la confirmacion de l’adrèce èlèctronica",
 	"abusefilter-edit-builder-vars-old-wikitext": "Viely vouiquitèxto de la pâge, devant lo changement",
 	"abusefilter-edit-builder-vars-new-wikitext": "Vouiquitèxto de la pâge novél, aprés lo changement",
