@@ -593,7 +593,7 @@
 	"abusefilter-examine-noresults": "제공한 검색 변수에서 결과가 없습니다.",
 	"abusefilter-examine-protected-vars-permission": "보호된 변수가 포함된 기록을 보려면 [[Special:Preferences|환경 설정]]에서 관련 동의를 수락해 주십시오.",
 	"abusefilter-topnav": "'''편집 필터 둘러보기'''",
-	"abusefilter-topnav-home": "처음",
+	"abusefilter-topnav-home": "대문",
 	"abusefilter-topnav-recentchanges": "최근 필터의 바뀜",
 	"abusefilter-topnav-test": "필터 시험하기",
 	"abusefilter-topnav-examine": "과거의 편집 검토하기",
