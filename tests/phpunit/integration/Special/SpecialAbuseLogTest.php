@@ -495,6 +495,8 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		$expectedResultCount,
 		$tempAccountsKnown
 	) {
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
 		if ( $tempAccountsKnown ) {
 			$this->enableAutoCreateTempUser();
 		} else {
