@@ -226,7 +226,7 @@
 	"abusefilter-view-specific": "Tarkastellaan väärinkäyttösuodatinta $1: $2",
 	"abusefilter-edit-subtitle": "Muokataan suodatinta $1",
 	"abusefilter-edit-subtitle-new": "Luodaan suodatinta",
-	"abusefilter-edit-token-not-match": "Muokkausta ei tallennettu! Ole hyvä ja tallenna uudestaan.",
+	"abusefilter-edit-token-not-match": "Muokkausta ei tallennettu! Ole hyvä ja tallenna uudelleen.",
 	"abusefilter-edit-oldwarning": "<strong>Muokkaat tämän suodattimen vanhaa versiota.\nAnnetut tilastot ovat suodattimen uusimmalle versiolle.\nJos tallennat muutoksesi, tuhoat samalla kaikki tämän version jälkeen tehdyt muutokset.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Palaa suodattimen historiaan]].",
 	"abusefilter-edit-oldwarning-view": "<strong>Tarkastelet tämän suodattimen vanhaa versiota.\nAnnetut tilastot ovat suodattimen uusimmalle versiolle.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Palaa suodattimen historiaan]].",
 	"abusefilter-edit-status-label": "Tilastot:",
