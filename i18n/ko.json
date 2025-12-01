@@ -35,7 +35,8 @@
 			"밝은소년",
 			"아라",
 			"Dr1t jg",
-			"Suleiman the Magnificent Television"
+			"Suleiman the Magnificent Television",
+			"YeBoy371"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -567,7 +568,7 @@
 	"abusefilter-examine-incompatible": "요청한 바뀜은 부정 행위 방지 필터에서 지원하지 않습니다.",
 	"abusefilter-examine-noresults": "제공한 검색 변수에서 결과가 없습니다.",
 	"abusefilter-topnav": "'''편집 필터 둘러보기'''",
-	"abusefilter-topnav-home": "처음",
+	"abusefilter-topnav-home": "대문",
 	"abusefilter-topnav-recentchanges": "최근 필터의 바뀜",
 	"abusefilter-topnav-test": "필터 시험하기",
 	"abusefilter-topnav-examine": "과거의 편집 검토하기",
