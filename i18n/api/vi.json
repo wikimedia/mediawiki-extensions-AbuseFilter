@@ -11,14 +11,14 @@
 			"Nvdtn19"
 		]
 	},
-	"apihelp-abusefiltercheckmatch-summary": "Kiểm tra xem liệu một bộ lọc lạm dụng có khớp với một tập hợp các biến, một chỉnh sửa hoặc một sự kiện lạm dụng đã ghi hay không.",
+	"apihelp-abusefiltercheckmatch-summary": "Kiểm tra xem bộ lọc sai phạm có khớp với một tập hợp các biến, một sửa đổi hoặc một mục nhật trình sai phạm hay không.",
 	"apihelp-abusefiltercheckmatch-extended-description": "vars, rcid hoặc logid là bắt buộc, nhưng chỉ cần sử dụng một cái.",
 	"apihelp-abusefiltercheckmatch-param-filter": "Văn bản đầy đủ để kiểm tra sự ăn khớp của bộ lọc.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Mảng mã hóa JSON của các biến để kiểm tra lại.",
 	"apihelp-abusefiltercheckmatch-param-rcid": "ID thay đổi gần đây để kiểm tra lại.",
 	"apihelp-abusefiltercheckmatch-param-logid": "ID đăng nhập bộ lọc lạm dụng để kiểm tra lại.",
 	"apihelp-abusefiltercheckmatch-example-1": "Kiểm tra nếu thay đổi gần đây ID 15 có ăn khớp với một bộ lọc đơn giản",
-	"apihelp-abusefilterchecksyntax-summary": "Kiểm tra cú pháp của Bộ lọc lạm dụng.",
+	"apihelp-abusefilterchecksyntax-summary": "Kiểm tra cú pháp của bộ lọc sai phạm.",
 	"apihelp-abusefilterchecksyntax-param-filter": "Văn bản lọc đầy đủ để kiểm tra cú pháp trên.",
 	"apihelp-abusefilterchecksyntax-example-1": "Kiểm tra cú pháp của một bộ lọc hợp lệ",
 	"apihelp-abusefilterchecksyntax-example-2": "Kiểm tra cú pháp của một bộ lọc không hợp lệ",

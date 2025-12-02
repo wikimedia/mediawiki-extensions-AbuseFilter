@@ -31,13 +31,14 @@
 			"Vitorvicentevalente",
 			"Waldir",
 			"Waldyrious",
-			"ItsaMeSandy"
+			"ItsaMeSandy",
+			"BraunOBruno"
 		]
 	},
-	"abusefilter-desc": "Aplica heurísticas automáticas às edições.",
+	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
 	"abusefilter": "Administração do filtro de abusos",
 	"abuselog": "Registo do filtro de abusos",
-	"abusefilter-intro": "Bem-vindo à interface de gestão do Filtro de Abusos.\nO Filtro de Abusos é um mecanismo de software automatizado de aplicação de heurísticas automáticas a todas as operações.\nEsta interface mostra uma lista dos filtros definidos e permite que estes sejam modificados.",
+	"abusefilter-intro": "Bem-vindo à interface da gestão do 'Filtro de Abusos'.\nEste filtro é um mecanismo de programa automatizado de aplicação de heurísticas automáticas para todas as ações.\nEsta interface mostra uma lista dos filtros definidos, e permite que estes sejam modificados.",
 	"abusefilter-mustviewprivateoredit": "Por razões de segurança, só os utilizadores com o direito de ver filtros de abuso privados ou de modificar filtros podem usar esta interface.",
 	"abusefilter-warning": "'''Aviso:''' esta operação foi identificada de forma automática como prejudicial.\nAs operações não construtivas serão revertidas rapidamente,\ne a repetição destas edições resultará no bloqueio da sua conta ou do seu endereço IP.\nSe crê que esta operação é construtiva, pode enviar novamente para confirmá-la.\nSegue-se uma breve descrição da regra de prevenção de abusos que detetou a sua operação: $1",
 	"abusefilter-disallowed": "Esta operação foi identificada automaticamente como prejudicial,\ne foi consequentemente desautorizada.\nSe crê que a sua edição foi construtiva, por favor contacte um administrador, e informe-o do que estava a tentar fazer.\nSegue-se uma breve descrição da regra de prevenção de abusos que detetou a sua ação: $1",
