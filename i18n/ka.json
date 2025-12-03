@@ -9,7 +9,8 @@
 			"Otogi",
 			"Temuri rajavi",
 			"გიორგიმელა",
-			"Გიო ოქრო"
+			"Გიო ოქრო",
+			"Mehman97"
 		]
 	},
 	"abusefilter-desc": "საშუალებას იძლევა რედაქტირებისას გამოიყენოს ევრისტიკული ფილტრები",
@@ -394,5 +395,6 @@
 	"abusefilter-import-intro": "თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.\nვიკის წყაროში, დააჭირეთ „{{int:abusefilter-edit-export}}“ რედაქტირების ინტერფეისის „{{int:abusefilter-edit-tools}}“ განყოფილებაში.\nდააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ „{{int:abusefilter-import-submit}}“.",
 	"abusefilter-import-submit": "მონაცემების იმპორტირება",
 	"abusefilter-group-default": "სტანდარტული",
-	"abusefilter-http-error": "მოხდა HTTP-ის შეცდომა: $1."
+	"abusefilter-http-error": "მოხდა HTTP-ის შეცდომა: $1.",
+	"blockedexternaldomains": "გარე დომენის დაბლოკვა"
 }
