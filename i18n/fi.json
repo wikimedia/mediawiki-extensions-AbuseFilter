@@ -378,7 +378,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Muunna HTML-entiteetit Unicode-merkeiksi ($1)",
 	"abusefilter-edit-builder-group-vars": "Muuttujat",
 	"abusefilter-edit-builder-vars-timestamp": "Muutoksen Unix-aikaleima ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Käyttäjätunnus tiliä luotaessa ($1)",
+	"abusefilter-edit-builder-vars-accountname": "Käyttäjänimi käyttäjätunnusta luotaessa ($1)",
 	"abusefilter-edit-builder-vars-action": "Toiminto ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Muokkauksessa lisättyjen rivien määrä ($1)",
 	"abusefilter-edit-builder-vars-delta": "Koon muutos muokkauksessa ($1)",
