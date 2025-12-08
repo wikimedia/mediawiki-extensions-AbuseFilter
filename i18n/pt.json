@@ -32,11 +32,12 @@
 			"Albertoleoncio",
 			"Vinickw",
 			"ItsaMeSandy",
-			"BraunOBruno"
+			"BraunOBruno",
+			"Maria Manuela Silva"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
-	"abusefilter": "Administração do filtro de abusos",
+	"abusefilter": "Gestão do filtro de abusos",
 	"abuselog": "Registo do filtro de abusos",
 	"abusefilter-intro": "Bem-vindo à interface da gestão do 'Filtro de Abusos'.\nEste filtro é um mecanismo de programa automatizado de aplicação de heurísticas automáticas para todas as ações.\nEsta interface mostra uma lista dos filtros definidos, e permite que estes sejam modificados.",
 	"abusefilter-mustviewprivateoredit": "Por razões de segurança, só os utilizadores com o direito de ver filtros de abuso privados ou de modificar filtros podem usar esta interface.",
