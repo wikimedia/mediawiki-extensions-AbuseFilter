@@ -700,5 +700,5 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "アクセスを変更",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "保護された変数の表示",
 	"communityconfiguration-blockeddomain-title": "ブロックされた外部ドメイン",
-	"communityconfiguration-blockeddomain-description": "リンクすることができない外部ドメインのリスト。"
+	"communityconfiguration-blockeddomain-description": "リンクできない外部ドメインの一覧。"
 }
