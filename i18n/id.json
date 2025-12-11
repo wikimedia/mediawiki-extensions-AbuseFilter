@@ -198,7 +198,7 @@
 	"abusefilter-list-options-scope-global": "Hanya peraturan global",
 	"abusefilter-list-options-scope-all": "Aturan-aturan setempat dan global",
 	"abusefilter-list-options-further-options": "Opsi lanjutan:",
-	"abusefilter-list-options-hidedisabled": "Sembunyikan filter yang dinon-aktifkan",
+	"abusefilter-list-options-hidedisabled": "Sembunyikan filter yang dimatikan",
 	"abusefilter-list-options-hideprivate": "Sembunyikan penyaring pribadi",
 	"abusefilter-list-options-searchfield": "Cari dalam peraturan:",
 	"abusefilter-list-options-searchpattern": "Masukkan pola",
