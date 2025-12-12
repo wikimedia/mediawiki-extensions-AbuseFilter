@@ -13,7 +13,6 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
-use Wikimedia\IPUtils;
 
 class ToolLinksHandler implements
 	ContributionsToolLinksHook,
@@ -31,9 +30,8 @@ class ToolLinksHandler implements
 	 */
 	public function onContributionsToolLinks( $id, Title $nt, array &$tools, SpecialPage $sp ) {
 		$username = $nt->getText();
-		if ( $this->afPermManager->canViewAbuseLog( $sp->getAuthority() )
-			&& !IPUtils::isValidRange( $username )
-		) {
+
+		if ( $this->afPermManager->canViewAbuseLog( $sp->getAuthority() ) ) {
 			$linkRenderer = $sp->getLinkRenderer();
 			$tools['abuselog'] = $linkRenderer->makeLink(
 				$this->getSpecialPageTitle(),
