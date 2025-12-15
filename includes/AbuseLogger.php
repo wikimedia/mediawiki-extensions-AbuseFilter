@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use InvalidArgumentException;
-use MediaWiki\CheckUser\Hooks;
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
@@ -201,7 +202,11 @@ class AbuseLogger {
 					// Silence the TransactionProfiler warnings for performing write queries (T359648).
 					$trxProfiler = Profiler::instance()->getTransactionProfiler();
 					$scope = $trxProfiler->silenceForScope( $trxProfiler::EXPECTATION_REPLICAS_ONLY );
-					Hooks::updateCheckUserData( $rc );
+
+					/** @var CheckUserInsert $checkUserInsert */
+					$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+					$checkUserInsert->updateCheckUserData( $rc );
+
 					ScopedCallback::consume( $scope );
 				} );
 			}

@@ -19,12 +19,13 @@
  */
 namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
-use MediaWiki\CheckUser\Hooks as CUHooks;
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Logging\LogPage;
 use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
@@ -116,7 +117,9 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 			// (which is the default)
 			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' ) ) {
 				$rc = $logEntry->getRecentChange( $logid );
-				CUHooks::updateCheckUserData( $rc );
+				/** @var CheckUserInsert $checkUserInsert */
+				$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
+				$checkUserInsert->updateCheckUserData( $rc );
 			}
 		} else {
 			// If the log is unrestricted, publish normally to RC,
