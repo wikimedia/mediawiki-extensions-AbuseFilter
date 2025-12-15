@@ -40,6 +40,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
+use MediaWiki\Extension\AbuseFilter\TemporaryAccountIPsViewerSpecification;
 use MediaWiki\Extension\AbuseFilter\TextExtractor;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
@@ -455,7 +456,17 @@ return [
 	): AbuseLogConditionFactory {
 		return new AbuseLogConditionFactory(
 			$services->getConnectionProvider(),
+			$services->getTempUserConfig()
+		);
+	},
+	TemporaryAccountIPsViewerSpecification::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): TemporaryAccountIPsViewerSpecification {
+		return new TemporaryAccountIPsViewerSpecification(
 			$services->getTempUserConfig(),
+			$services->hasService( 'CheckUserPermissionManager' ) ?
+				$services->get( 'CheckUserPermissionManager' ) :
+				null
 		);
 	},
 	// b/c for extensions

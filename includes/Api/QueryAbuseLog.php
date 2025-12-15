@@ -32,10 +32,13 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
+use MediaWiki\Extension\AbuseFilter\TemporaryAccountIPsViewerSpecification;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Permissions\Authority;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\IPUtils;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -62,7 +65,8 @@ class QueryAbuseLog extends ApiQueryBase {
 		private readonly UserFactory $userFactory,
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
 		private readonly RuleCheckerFactory $ruleCheckerFactory,
-		private readonly AbuseLogConditionFactory $abuseLogConditionFactory
+		private readonly AbuseLogConditionFactory $abuseLogConditionFactory,
+		private readonly TemporaryAccountIPsViewerSpecification $tempAccountIPsViewerSpecification,
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
 	}
@@ -205,7 +209,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
 		if ( isset( $params['user'] ) ) {
-			$this->addUserFilter( $params['user'] );
+			$this->addUserFilter( $performer, $params['user'] );
 		}
 
 		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$this->afPermManager->canSeeHiddenLogEntries( $performer ) );
@@ -372,28 +376,51 @@ class QueryAbuseLog extends ApiQueryBase {
 	}
 
 	/**
-	 * Updates the internal query builder to include the parameters and clauses
-	 * required for filtering out entries not associated with the provided
-	 * username.
+	 * Updates the query params and the internal query builder to include the
+	 * parameters and clauses required for filtering out entries not associated
+	 * with the provided username, IP or IP range.
 	 *
+	 * @param Authority $performer The authority listing the AF logs.
 	 * @param string $userName Username or IP address to filter for.
 	 * @return void
 	 */
-	private function addUserFilter( string $userName ): void {
-		$user = $this->userFactory->newFromName( $userName );
-		if ( $user ) {
-			$expression = $this->abuseLogConditionFactory
-				->getUserFilterByUserIdentity( $user );
+	private function addUserFilter( Authority $performer, string $userName ): void {
+		if ( IPUtils::isIPAddress( $userName ) ) {
+			$cleanIP = IPUtils::sanitizeIP( $userName );
+			$canAccessTempAccountIPs =
+				$this->tempAccountIPsViewerSpecification->isSatisfiedBy(
+					$performer
+				);
 
-			if ( $expression ) {
-				$this->addWhere( $expression );
+			if ( !$canAccessTempAccountIPs ) {
+				// Gets entries associated with anonymous users identified by
+				// their IPs (i.e. filter by afl_user_text; legacy behaviour).
+				$expression = $this->abuseLogConditionFactory
+					->getUserFilterByUserIdentity(
+						new UserIdentityValue( 0, $cleanIP )
+					);
+			} else {
+				// Gets entries associated with anonymous users identified by
+				// their IPs (i.e. filter by afl_user_text; legacy behavior) as
+				// well as entries associated with temp accounts under the
+				// provided IP (i.e. filter by afl_ip_hex).
+				$expression = $this->abuseLogConditionFactory
+					->getUserFilterByIPAddress( $cleanIP );
 			}
-		} elseif ( IPUtils::isIPAddress( $userName ) ) {
-			$expression = $this->abuseLogConditionFactory
-				->getUserFilterByIPAddress( $userName );
 
 			if ( $expression ) {
-				$this->addWhere( $expression );
+				$this->getQueryBuilder()->conds( $expression );
+			}
+		} else {
+			$user = $this->userFactory->newFromName( $userName );
+
+			if ( $user ) {
+				$expression = $this->abuseLogConditionFactory
+					->getUserFilterByUserIdentity( $user );
+
+				if ( $expression ) {
+					$this->addWhere( $expression );
+				}
 			}
 		}
 	}

@@ -7,6 +7,9 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\User\TempUser\TempUserConfig;
 
 class TemporaryAccountIPsViewerSpecification {
+
+	public const SERVICE_NAME = 'TemporaryAccountIPsViewerSpecification';
+
 	public function __construct(
 		private readonly TempUserConfig $tempUserConfig,
 		private readonly ?CheckUserPermissionManager $checkUserPermissionManager,

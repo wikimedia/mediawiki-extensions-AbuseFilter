@@ -26,7 +26,7 @@ class AbuseLogConditionFactoryTest extends MediaWikiIntegrationTestCase {
 
 		$this->sut = new AbuseLogConditionFactory(
 			$services->getConnectionProvider(),
-			$services->getTempUserConfig(),
+			$services->getTempUserConfig()
 		);
 	}
 
@@ -66,8 +66,7 @@ class AbuseLogConditionFactoryTest extends MediaWikiIntegrationTestCase {
 				'expectedSql' => '(' .
 					"(afl_ip_hex = '01020304'" .
 					" AND afl_user_text LIKE '~%' ESCAPE '`') OR " .
-					"(afl_user_text = '1.2.3.4' AND afl_user = 0)" .
-					')',
+					"(afl_user_text = '1.2.3.4' AND afl_user = 0))",
 				'value' => '1.2.3.4',
 			],
 			'Valid IP range' => [
@@ -76,8 +75,7 @@ class AbuseLogConditionFactoryTest extends MediaWikiIntegrationTestCase {
 				'expectedSql' => '(' .
 					"afl_ip_hex >= 'AC100000'" .
 					" AND afl_ip_hex <= 'AC1FFFFF' AND " .
-					"afl_user_text LIKE '~%' ESCAPE '`'" .
-					')',
+					"afl_user_text LIKE '~%' ESCAPE '`')",
 				'value' => '172.16.0.0/12',
 			],
 			'Malformed IP range' => [
