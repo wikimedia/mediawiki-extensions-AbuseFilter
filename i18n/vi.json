@@ -539,7 +539,7 @@
 	"abusefilter-test-intro": "Trang này cho phép bạn kiểm tra một bộ lọc được gõ vào hộp dưới đây trên $1 sửa đổi cuối.\nĐể tải một bộ lọc hiện có, hãy gõ mã bộ lọc vào hộp phía dưới hộp sửa đổi, và nhấn nút “{{int:abusefilter-test-load}}”.",
 	"abusefilter-test-rules-section": "Quy tắc để kiểm thử",
 	"abusefilter-test-options-section": "Tùy chọn tìm kiếm",
-	"abusefilter-test-legend": "Đang kiểm thử bộ lọc",
+	"abusefilter-test-legend": "Kiểm thử bộ lọc",
 	"abusefilter-test-load-filter": "Tải mã bộ lọc:",
 	"abusefilter-test-submit": "Kiểm thử",
 	"abusefilter-test-load": "Tải",

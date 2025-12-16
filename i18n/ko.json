@@ -221,7 +221,7 @@
 	"abusefilter-tools-reautoconfirm": "자동 인증 상태를 복구",
 	"abusefilter-tools-reautoconfirm-user": "사용자:",
 	"abusefilter-tools-reautoconfirm-submit": "자동 인증 상태 복구",
-	"abusefilter-tools-restoreautopromote": "자동 승진은 AbuseFilter 도구를 통해 복구됨.",
+	"abusefilter-tools-restoreautopromote": "편집필터 도구를 통해 자동 승격 복구됨.",
 	"abusefilter-reautoconfirm-none": "이 사용자는 {{GENDER:$1}}자동 인증 상태가 중단된 적이 없습니다.",
 	"abusefilter-reautoconfirm-notallowed": "자동 인증 상태를 복구할 권한이 없습니다.",
 	"abusefilter-reautoconfirm-done": "계정의 자동 인증 상태가 복구되었습니다",

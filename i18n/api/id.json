@@ -6,7 +6,8 @@
 			"Hidayatsrf",
 			"Rachmat04",
 			"Robfirstname",
-			"Veracious"
+			"Veracious",
+			"Penyuwangi"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-summary": "Melihat apakah sebuah Filter Penyalahgunaan sesuai dengan seperangkat variabel, sebuah suntingan, atau sebuah kejadian yang dicatat Filter Penyalahgunaan.",
@@ -28,7 +29,7 @@
 	"apihelp-abusefilterunblockautopromote-summary": "Membebaskan pengguna dari menerima promosi otomatis karena konsekuensi penyaring penyalahgunaan.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Nama pengguna dari pengguna yang ingin Anda buka pemblokirannya",
 	"apihelp-abusefilterunblockautopromote-example-1": "Hapus blokir pada promosi otomatis [[User:Example]].",
-	"apihelp-query+abusefilters-summary": "Tampilkan detail filter penyalahgunaan.",
+	"apihelp-query+abusefilters-summary": "Tampilkan rincian filter penyalahgunaan.",
 	"apihelp-query+abusefilters-param-startid": "ID filter untuk mulai menghitung.",
 	"apihelp-query+abusefilters-param-endid": "ID filter untuk berhenti menghitung.",
 	"apihelp-query+abusefilters-param-show": "Hanya tampilkan filter yang memenuhi kriteria ini.",
@@ -49,10 +50,10 @@
 	"apihelp-query+abuselog-param-wiki": "Wiki untuk menampilkan hits dari.",
 	"apihelp-query+abuselog-example-1": "Tampilkan entri log terkini",
 	"apihelp-query+abuselog-example-2": "Lihat catatan terbaru untuk [[API]]",
-	"apihelp-abuselogprivatedetails-summary": "Lihat detail pribadi dari entri AbuseLog.",
+	"apihelp-abuselogprivatedetails-summary": "Lihat rincian pribadi dari entri LogPenyalahgunaan.",
 	"apihelp-abuselogprivatedetails-param-logid": "ID entri AbuseLog yang akan diperiksa.",
 	"apihelp-abuselogprivatedetails-param-reason": "Alasan yang sah untuk melakukan pemeriksaan.",
-	"apihelp-abuselogprivatedetails-example-1": "Dapatkan detail pribadi untuk entri AbuseLog dengan ID 1, menggunakan alasan \"contoh\".",
+	"apihelp-abuselogprivatedetails-example-1": "Dapatkan rincian pribadi untuk entri LogPenyalahgunaan dengan ID 1, menggunakan alasan \"contoh\".",
 	"apierror-abusefilter-canttest": "Anda tidak memiliki izin untuk menguji filter penyalahgunaan",
 	"apierror-abusefilter-cantcheck": "Anda tidak memiliki izin untuk memeriksa sintaksis filter penyalahgunaan",
 	"apierror-abusefilter-canteval": "Anda tidak memiliki izin untuk mengevaluasi ekspresi AbuseFilter.",

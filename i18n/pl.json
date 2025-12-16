@@ -237,7 +237,7 @@
 	"abusefilter-edit-status-label": "Statystyki:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Dla ostatniej $1 akcji|W ostatnich $1 akcjach}} ten filtr pasował do $2 ($3%).\nŚredni czas wykonania wyniósł $4 ms. Wykorzystano $5 {{PLURAL:$5|warunek|warunki|warunków}} z limitu.",
 	"abusefilter-edit-throttled-warning": "'''Uwaga:''' Ten filtr został automatyczne oznaczony jako groźny. Ze względu bezpieczeństwa, {{PLURAL:$2|ta akcja nie zostanie wykonana|te akcje nie zostaną wykonane}}: $1. Sprawdź, czy wysoka częstość dopasowań jest oczekiwana. Jeśli tak, zapisz filtr ponownie, by usunąć to ograniczenie.",
-	"abusefilter-edit-throttled-warning-no-actions": "'''Uwaga:''' Ten filtr został automatycznie oznaczony jako szkodliwy. Żadne akcje nie zostały zablokowane, ale upewnij się, że wysoka częstość dopasowań jest oczekiwana. Jeśli tak, zignoruj to ostrzeżenie.",
+	"abusefilter-edit-throttled-warning-no-actions": "'''Uwaga:''' Ten filtr został automatycznie oznaczony jako niebezpieczny. Wprawdzie, żadne jego reakcje nie zostały zablokowane, ale upewnij się, że wysoka częstość dopasowań jest oczekiwana. Jeśli tak, zignoruj to ostrzeżenie.",
 	"abusefilter-edit-new": "Nowy filtr",
 	"abusefilter-edit-save": "Zapisz filtr",
 	"abusefilter-edit-id": "ID filtru",
