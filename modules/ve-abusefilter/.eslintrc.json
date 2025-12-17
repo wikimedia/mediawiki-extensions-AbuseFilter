@@ -1,9 +1,5 @@
 {
 	"globals": {
 		"ve": "readonly"
-	},
-	"rules": {
-		"es-x/no-iterator-prototype-some": "warn",
-		"es-x/no-iterator-prototype-every": "warn"
 	}
 }
