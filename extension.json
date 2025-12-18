@@ -259,7 +259,8 @@
 				"AbuseFilterVariablesManager",
 				"UserFactory",
 				"AbuseFilterAbuseLoggerFactory",
-				"AbuseFilterRuleCheckerFactory"
+				"AbuseFilterRuleCheckerFactory",
+				"AbuseLogConditionFactory"
 			]
 		},
 		"abusefilters": {

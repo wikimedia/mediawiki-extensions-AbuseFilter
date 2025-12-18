@@ -4,6 +4,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterLogDetailsLookup;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
+use MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainConfigProvider;
@@ -448,6 +449,9 @@ return [
 			$services->get( PermManager::SERVICE_NAME ),
 			$services->get( FilterLookup::SERVICE_NAME )
 		);
+	},
+	AbuseLogConditionFactory::SERVICE_NAME => static function (): AbuseLogConditionFactory {
+		return new AbuseLogConditionFactory();
 	},
 	// b/c for extensions
 	'AbuseFilterRunnerFactory' => static function ( MediaWikiServices $services ): FilterRunnerFactory {

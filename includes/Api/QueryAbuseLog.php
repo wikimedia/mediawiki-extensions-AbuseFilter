@@ -23,6 +23,7 @@ use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiQuery;
 use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
@@ -60,7 +61,8 @@ class QueryAbuseLog extends ApiQueryBase {
 		private readonly VariablesManager $afVariablesManager,
 		private readonly UserFactory $userFactory,
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
-		private readonly RuleCheckerFactory $ruleCheckerFactory
+		private readonly RuleCheckerFactory $ruleCheckerFactory,
+		private readonly AbuseLogConditionFactory $abuseLogConditionFactory
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
 	}
@@ -203,27 +205,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
 
 		if ( isset( $params['user'] ) ) {
-			$u = $this->userFactory->newFromName( $params['user'] );
-			if ( $u ) {
-				// Username normalisation
-				$params['user'] = $u->getName();
-				$userId = $u->getId();
-			} elseif ( IPUtils::isIPAddress( $params['user'] ) ) {
-				// It's an IP, sanitize it
-				$params['user'] = IPUtils::sanitizeIP( $params['user'] );
-				$userId = 0;
-			}
-
-			if ( isset( $userId ) ) {
-				// Only add the WHERE for user in case it's either a valid user
-				// (but not necessary an existing one) or an IP.
-				$this->addWhere(
-					[
-						'afl_user' => $userId,
-						'afl_user_text' => $params['user']
-					]
-				);
-			}
+			$this->addUserFilter( $params['user'] );
 		}
 
 		$this->addWhereIf( [ 'afl_deleted' => 0 ], !$this->afPermManager->canSeeHiddenLogEntries( $performer ) );
@@ -387,6 +369,33 @@ class QueryAbuseLog extends ApiQueryBase {
 			}
 		}
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], 'item' );
+	}
+
+	/**
+	 * Updates the internal query builder to include the parameters and clauses
+	 * required for filtering out entries not associated with the provided
+	 * username.
+	 *
+	 * @param string $userName Username or IP address to filter for.
+	 * @return void
+	 */
+	private function addUserFilter( string $userName ): void {
+		$user = $this->userFactory->newFromName( $userName );
+		if ( $user ) {
+			$expression = $this->abuseLogConditionFactory
+				->getUserFilterByUserIdentity( $user );
+
+			if ( $expression ) {
+				$this->addWhere( $expression );
+			}
+		} elseif ( IPUtils::isIPAddress( $userName ) ) {
+			$expression = $this->abuseLogConditionFactory
+				->getUserFilterByIPAddress( $userName );
+
+			if ( $expression ) {
+				$this->addWhere( $expression );
+			}
+		}
 	}
 
 	/**
