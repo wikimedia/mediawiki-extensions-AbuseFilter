@@ -3,44 +3,88 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory;
+use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiIntegrationTestCase;
 
 /**
  * @group AbuseFilter
+ * @group Database
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory
  */
 class AbuseLogConditionFactoryTest extends MediaWikiIntegrationTestCase {
 
+	use TempUserTestTrait;
+
 	private AbuseLogConditionFactory $sut;
 
 	public function setUp(): void {
-		$this->sut = new AbuseLogConditionFactory();
-	}
+		$services = $this->getServiceContainer();
 
-	/**
-	 * @dataProvider getUserFilterForIPAddressDataProvider
-	 */
-	public function testGetUserFilterForIPAddress(
-		array $expected,
-		string $value,
-	): void {
-		$this->assertEquals(
-			$expected,
-			$this->sut->getUserFilterByIPAddress( $value )
+		// Set it to a known state
+		$this->enableAutoCreateTempUser();
+
+		$this->sut = new AbuseLogConditionFactory(
+			$services->getConnectionProvider(),
+			$services->getTempUserConfig(),
 		);
 	}
 
-	public static function getUserFilterForIPAddressDataProvider(): array {
+	/**
+	 * @dataProvider getUserFilterByIPAddressDataProvider
+	 */
+	public function testGetUserFilterByIPAddress(
+		?string $expectedGeneralizedSql,
+		?string $expectedSql,
+		string $value
+	): void {
+		$expression = $this->sut->getUserFilterByIPAddress( $value );
+
+		if ( $expectedGeneralizedSql === null ) {
+			$this->assertNull( $expression );
+		} else {
+			$this->assertEquals(
+				$expectedGeneralizedSql,
+				$expression->toGeneralizedSql()
+			);
+			$this->assertEquals(
+				$expectedSql,
+				$expression->toSql( $this->getDb() )
+			);
+		}
+	}
+
+	public static function getUserFilterByIPAddressDataProvider(): array {
+		// The lookup is made by IP in afl_ip_hex, while also looking up
+		// for legacy anonymous users for that IP.
+
 		return [
 			'single IP' => [
-				'expected' => [
-					'afl_user' => 0,
-					'afl_user_text' => '1.2.3.4'
-				],
+				'expectedGeneralizedSql' =>
+					'((afl_ip_hex = ? AND afl_user_text LIKE ?) OR ' .
+					'(afl_user_text = ? AND afl_user = ?))',
+				'expectedSql' => '(' .
+					"(afl_ip_hex = '01020304'" .
+					" AND afl_user_text LIKE '~%' ESCAPE '`') OR " .
+					"(afl_user_text = '1.2.3.4' AND afl_user = 0)" .
+					')',
 				'value' => '1.2.3.4',
 			],
-			// @todo Extend this test once we add support for IP ranges (T412339)
+			'Valid IP range' => [
+				'expectedGeneralizedSql' =>
+					'(afl_ip_hex >= ? AND afl_ip_hex <= ? AND afl_user_text LIKE ?)',
+				'expectedSql' => '(' .
+					"afl_ip_hex >= 'AC100000'" .
+					" AND afl_ip_hex <= 'AC1FFFFF' AND " .
+					"afl_user_text LIKE '~%' ESCAPE '`'" .
+					')',
+				'value' => '172.16.0.0/12',
+			],
+			'Malformed IP range' => [
+				'expectedGeneralizedSql' => null,
+				'expectedSql' => null,
+				'value' => '172.16.0.0/12/13',
+			],
 		];
 	}
 

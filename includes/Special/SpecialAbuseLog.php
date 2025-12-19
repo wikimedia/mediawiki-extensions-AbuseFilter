@@ -8,6 +8,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
@@ -39,11 +40,11 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\WikiMap\WikiMap;
 use OOUI\ButtonInputWidget;
 use stdClass;
 use Wikimedia\IPUtils;
-use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;
 
 class SpecialAbuseLog extends AbuseFilterSpecialPage {
@@ -125,7 +126,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
 		private readonly FilterLookup $filterLookup,
 		private readonly TempUserConfig $tempUserConfig,
-		private readonly ExtensionRegistry $extensionRegistry
+		private readonly ExtensionRegistry $extensionRegistry,
+		private readonly AbuseLogConditionFactory $abuseLogConditionFactory
 	) {
 		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
 		$this->specsFormatter->setMessageLocalizer( $this );
@@ -406,59 +408,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$performer = $this->getAuthority();
 
 		// Generate conditions list.
-		$conds = [];
 		$dbr = $this->lbFactory->getReplicaDatabase();
-
-		if ( $this->mSearchUser !== null ) {
-			// If temporary accounts are enabled and the user can reveal their IP addresses, support:
-			// - lookup of temporary accounts that used the IP via afl_ip_hex
-			// - lookup of temporary accounts that used an IP in a range via afl_ip_hex
-			// - lookup of historical anonymous edits via matches on afl_user_text
-			if (
-				IPUtils::isIPAddress( $this->mSearchUser ) &&
-				$this->extensionRegistry->isLoaded( 'CheckUser' ) &&
-				$this->tempUserConfig->isKnown() &&
-				MediaWikiServices::getInstance()->getService( 'CheckUserPermissionManager' )
-					->canAccessTemporaryAccountIPAddresses( $performer )->isGood()
-			) {
-				[ $rangeStart, $rangeEnd ] = IPUtils::parseRange( $this->mSearchUser );
-				if ( $rangeStart === $rangeEnd ) {
-					// if rangeStart is equal to rangeEnd, target is actually an IP hex
-					// Return temporary accounts or anonymous users that match the IP
-					$conds[] = $dbr->orExpr( [
-						$dbr
-							->expr( 'afl_ip_hex', '=', $rangeStart )
-							->andExpr(
-								$this->tempUserConfig
-									->getMatchCondition( $dbr, 'afl_user_text', IExpression::LIKE )
-							),
-						$dbr
-							->expr( 'afl_user_text', '=', IPUtils::formatHex( $rangeStart ) )
-							->and( 'afl_user', '=', 0 )
-					] );
-				} else {
-					// Otherwise a range was passed through. Only return temporary accounts that
-					// used an IP in that range as range lookups of anonymous edits aren't supported
-					$conds[] = $dbr
-						->expr( 'afl_ip_hex', '>=', $rangeStart )
-						->and( 'afl_ip_hex', '<=', $rangeEnd )
-						->andExpr(
-							$this->tempUserConfig
-								->getMatchCondition( $dbr, 'afl_user_text', IExpression::LIKE )
-						);
-				}
-			} else {
-				// Otherwise search only afl_user and afl_user_text
-				$searchedUser = $this->userIdentityLookup->getUserIdentityByName( $this->mSearchUser );
-				if ( !$searchedUser ) {
-					$conds['afl_user'] = 0;
-					$conds['afl_user_text'] = $this->mSearchUser;
-				} else {
-					$conds['afl_user'] = $searchedUser->getId();
-					$conds['afl_user_text'] = $searchedUser->getName();
-				}
-			}
-		}
+		$conds = $this->getUserFilter( $performer, $this->mSearchUser );
 
 		if ( $this->mSearchPeriodStart ) {
 			$conds[] = $dbr->expr( 'afl_timestamp', '>=',
@@ -1161,6 +1112,66 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	}
 
 	/**
+	 * Returns an array with the conditions required for filtering out entries
+	 * not associated with the provided username.
+	 *
+	 * If temporary accounts are enabled and the user can reveal their IP
+	 * addresses, the filter returned allows to:
+	 *
+	 * - Lookup temporary accounts that used the IP via afl_ip_hex
+	 * - Lookup temporary accounts that used an IP in a range via afl_ip_hex
+	 * - Lookup historical anonymous edits via matches on afl_user_text
+	 *
+	 * Otherwise, if the provided username corresponds to an existing account,
+	 * this method lists entries by the given user (using both its ID and name);
+	 * if it doesn't (i.e. "IP users"), this lists entries where the name matches
+	 * the account and the user ID is zero.
+	 *
+	 * @param Authority $performer Authority accessing the AbuseLog.
+	 * @param ?string $userName Username or IP address to filter for.
+	 */
+	private function getUserFilter(
+		Authority $performer,
+		?string $userName
+	): array {
+		if ( $userName === null ) {
+			return [];
+		}
+
+		$conditions = [];
+
+		if (
+			IPUtils::isIPAddress( $userName ) &&
+			$this->tempUserConfig->isKnown() &&
+			$this->canAccessTemporaryAccountIPAddresses( $performer )
+		) {
+			$expression = $this->abuseLogConditionFactory
+				->getUserFilterByIPAddress( $userName );
+
+			if ( $expression ) {
+				$conditions[] = $expression;
+			}
+		} else {
+			// Otherwise search only afl_user and afl_user_text
+			$searchedUser = $this->userIdentityLookup
+				->getUserIdentityByName( $userName );
+
+			if ( !$searchedUser ) {
+				$searchedUser = new UserIdentityValue( 0, $userName );
+			}
+
+			$conditions = array_merge(
+				$conditions,
+				$this->abuseLogConditionFactory->getUserFilterByUserIdentity(
+					$searchedUser
+				)
+			);
+		}
+
+		return $conditions;
+	}
+
+	/**
 	 * If specifying a reason for viewing private details of abuse log is required
 	 * then it makes sure that a reason is provided.
 	 *
@@ -1245,5 +1256,18 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		return $revRec->audienceCan( RevisionRecord::SUPPRESSED_ALL, RevisionRecord::FOR_THIS_USER, $authority )
 			? self::VISIBILITY_VISIBLE
 			: self::VISIBILITY_HIDDEN_IMPLICIT;
+	}
+
+	private function canAccessTemporaryAccountIPAddresses(
+		Authority $performer
+	): bool {
+		if ( !$this->extensionRegistry->isLoaded( 'CheckUser' ) ) {
+			return false;
+		}
+
+		return MediaWikiServices::getInstance()
+			->getService( 'CheckUserPermissionManager' )
+			->canAccessTemporaryAccountIPAddresses( $performer )
+			->isGood();
 	}
 }

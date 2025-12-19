@@ -450,8 +450,13 @@ return [
 			$services->get( FilterLookup::SERVICE_NAME )
 		);
 	},
-	AbuseLogConditionFactory::SERVICE_NAME => static function (): AbuseLogConditionFactory {
-		return new AbuseLogConditionFactory();
+	AbuseLogConditionFactory::SERVICE_NAME => static function (
+		MediaWikiServices $services
+	): AbuseLogConditionFactory {
+		return new AbuseLogConditionFactory(
+			$services->getConnectionProvider(),
+			$services->getTempUserConfig(),
+		);
 	},
 	// b/c for extensions
 	'AbuseFilterRunnerFactory' => static function ( MediaWikiServices $services ): FilterRunnerFactory {

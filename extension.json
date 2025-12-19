@@ -96,7 +96,8 @@
 				"AbuseFilterAbuseLoggerFactory",
 				"AbuseFilterFilterLookup",
 				"TempUserConfig",
-				"ExtensionRegistry"
+				"ExtensionRegistry",
+				"AbuseLogConditionFactory"
 			]
 		},
 		"AbuseFilter": {
