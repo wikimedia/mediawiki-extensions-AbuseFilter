@@ -19,7 +19,6 @@ use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
-use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
@@ -745,6 +744,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		// Load data
 		$vars = $this->varBlobStore->loadVarDump( $row );
+		$varsArray = $this->varManager->dumpAllVars( $vars, $this->afPermissionManager->getProtectedVariables() );
 
 		// Prevent users seeing logs which contain protected variables that the user cannot see.
 		if ( $filter->isProtected() ) {
@@ -769,6 +769,20 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				$out->addWikiMsg( $this->msg( 'abusefilter-examine-error-protected' )->rawParams( $additional ) );
 				return;
 			}
+
+			$userAuthority = $this->getAuthority();
+			$protectedVariableValuesShown = [];
+			foreach ( $this->afPermissionManager->getProtectedVariables() as $protectedVariable ) {
+				if ( isset( $varsArray[$protectedVariable] ) ) {
+					$protectedVariableValuesShown[] = $protectedVariable;
+				}
+			}
+			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
+			$logger->logViewProtectedVariableValue(
+				$userAuthority->getUser(),
+				$varsArray['user_name'] ?? $varsArray['accountname'],
+				$protectedVariableValuesShown
+			);
 		}
 
 		$output = Html::element(
@@ -779,41 +793,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				->text()
 		);
 		$output .= Html::rawElement( 'p', [], $pager->doFormatRow( $row, false ) );
-
-		// AbuseFilter logs created before T390086 may have protected variables present in the variable dump
-		// when the filter itself isn't protected. This is because a different filter matched against the
-		// a protected variable which caused the value to be added to the var dump for the public filter
-		// match.
-		// We shouldn't block access to the details of an otherwise public filter hit so
-		// instead only check for access to the protected variables and redact them if the user
-		// shouldn't see them.
-		$userAuthority = $this->getAuthority();
-		$protectedVariableValuesShown = [];
-		$varsArray = $this->varManager->dumpAllVars( $vars, $this->afPermissionManager->getProtectedVariables() );
-		foreach ( $this->afPermissionManager->getProtectedVariables() as $protectedVariable ) {
-			if ( isset( $varsArray[$protectedVariable] ) ) {
-				// Try each variable at a time, as the user may be able to see some but not all of the
-				// protected variables. We only want to redact what is necessary to redact.
-				$canViewProtectedVariable = $this->afPermissionManager
-					->canViewProtectedVariables( $userAuthority, [ $protectedVariable ] )->isGood();
-				if ( !$canViewProtectedVariable ) {
-					$varsArray[$protectedVariable] = '';
-				} else {
-					$protectedVariableValuesShown[] = $protectedVariable;
-				}
-			}
-		}
-		$vars = VariableHolder::newFromArray( $varsArray );
-
-		if ( $filter->isProtected() ) {
-			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
-			$logger->logViewProtectedVariableValue(
-				$userAuthority->getUser(),
-				$varsArray['user_name'] ?? $varsArray['accountname'],
-				$protectedVariableValuesShown
-			);
-		}
-
 		$out->addJsConfigVars( 'wgAbuseFilterVariables', $varsArray );
 		$out->addModuleStyles( 'mediawiki.interface.helpers.styles' );
 
