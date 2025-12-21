@@ -60,7 +60,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				->from( 'logging' )
 				->where( [
 					'log_action' => $expected['expectedCULogType'],
-					'log_type' => TemporaryAccountLogger::LOG_TYPE,
+					'log_type' => 'checkuser-temporary-account',
 					] )
 				->fetchField()
 		);
@@ -140,7 +140,7 @@ class ProtectedVarsAccessLoggerTest extends MediaWikiIntegrationTestCase {
 				->from( 'logging' )
 				->where( [
 					'log_action' => 'af-view-protected-var-value',
-					'log_type' => TemporaryAccountLogger::LOG_TYPE,
+					'log_type' => 'checkuser-temporary-account',
 					] )
 				->fetchField()
 		);
