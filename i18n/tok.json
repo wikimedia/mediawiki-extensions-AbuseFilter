@@ -4,5 +4,18 @@
 			"Tamzin"
 		]
 	},
+	"right-abusefilter-modify": "ona li ken pali anu ante e ilo pi weka ike",
+	"right-abusefilter-view": "ona li ken lukin e ilo pi weka ike",
+	"right-abusefilter-log": "ilo pi weka kule la ona li ken lukin e pini",
+	"right-abusefilter-log-detail": "ilo pi weka kule la ona li ken lukin e sona mute lon pini",
+	"right-abusefilter-privatedetails": "ilo pi weka kule la ona li ken lukin e sona len lon pini",
+	"right-abusefilter-privatedetails-log": "ilo pi weka kule la ona li ken sona e lukin pi sona len lon pini",
+	"right-abusefilter-modify-restricted": "ilo pi weka ike li kepeken nasin pi ken lili la, ona li ken ante e ilo ni",
+	"right-abusefilter-revert": "ilo wan pi weka ike la ona li ken weka e pali ale",
+	"right-abusefilter-view-private": "ona li ken lukin e ilo len pi weka ike",
+	"right-abusefilter-log-private": "ilo len pi weka ike la ona li ken lukin e pini",
+	"right-abusefilter-hide-log": "ilo pi weka ike la ona li ken len e sona lon pini",
+	"right-abusefilter-hidden-log": "ilo pi weka ike la ona li ken lukin e pini len",
+	"right-abusefilter-modify-global": "ona li ken pali anu ante e ilo pi weka ike lon ma ale",
 	"abusefilter-log-linkoncontribs": "pini pi ike ken"
 }
