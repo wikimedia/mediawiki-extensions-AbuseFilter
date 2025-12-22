@@ -445,6 +445,74 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public static function provideCanViewSuppressed(): Generator {
+		yield 'blocked sitewide' => [ true, [], false ];
+
+		yield 'partially blocked' => [ false, [], false ];
+
+		yield 'unblocked, no right' => [ null, [], false ];
+
+		yield 'blocked sitewide with right' => [ true, [ 'viewsuppressed' ], false ];
+
+		yield 'success' => [ null, [ 'viewsuppressed' ], true ];
+	}
+
+	/**
+	 * @dataProvider provideCanViewSuppressed
+	 */
+	public function testCanViewSuppressed( $block, array $rights, bool $expected ) {
+		if ( $block !== null ) {
+			$siteWide = $block;
+			$block = $this->createMock( DatabaseBlock::class );
+			$block->method( 'isSiteWide' )->willReturn( $siteWide );
+			$performer = $this->mockUserAuthorityWithBlock(
+				$this->mockRegisteredUltimateAuthority()->getUser(),
+				$block,
+				$rights
+			);
+		} else {
+			$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+		}
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->canViewSuppressed( $performer )
+		);
+	}
+
+	public static function provideCanSuppress(): Generator {
+		yield 'blocked sitewide' => [ true, [], false ];
+
+		yield 'partially blocked' => [ false, [], false ];
+
+		yield 'unblocked, no right' => [ null, [], false ];
+
+		yield 'blocked sitewide with right' => [ true, [ 'suppressrevision' ], false ];
+
+		yield 'success' => [ null, [ 'suppressrevision' ], true ];
+	}
+
+	/**
+	 * @dataProvider provideCanSuppress
+	 */
+	public function testCanSuppress( $block, array $rights, bool $expected ) {
+		if ( $block !== null ) {
+			$siteWide = $block;
+			$block = $this->createMock( DatabaseBlock::class );
+			$block->method( 'isSiteWide' )->willReturn( $siteWide );
+			$performer = $this->mockUserAuthorityWithBlock(
+				$this->mockRegisteredUltimateAuthority()->getUser(),
+				$block,
+				$rights
+			);
+		} else {
+			$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+		}
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->canSuppress( $performer )
+		);
+	}
+
 	public function testGetProtectedVariables() {
 		$this->assertSame(
 			[ 'user_unnamed_ip' ],
@@ -552,30 +620,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$this->assertSame(
 			$allowed,
 			$this->getPermMan()->canUseTestTools( $performer )
-		);
-	}
-
-	/**
-	 * @dataProvider provideSimpleCases
-	 */
-	public function testCanViewSuppressed( bool $allowed ) {
-		$rights = $allowed ? [ 'viewsuppressed' ] : [];
-		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
-		$this->assertSame(
-			$allowed,
-			$this->getPermMan()->canViewSuppressed( $performer )
-		);
-	}
-
-	/**
-	 * @dataProvider provideSimpleCases
-	 */
-	public function testCanSuppress( bool $allowed ) {
-		$rights = $allowed ? [ 'suppressrevision' ] : [];
-		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
-		$this->assertSame(
-			$allowed,
-			$this->getPermMan()->canSuppress( $performer )
 		);
 	}
 }

@@ -93,7 +93,11 @@ class AbuseFilterPermissionManager {
 	 * @return bool
 	 */
 	public function canViewSuppressed( Authority $performer ): bool {
-		return $performer->isAllowed( 'viewsuppressed' );
+		$block = $performer->getBlock();
+		return (
+			!( $block && $block->isSitewide() ) &&
+			$performer->isAllowed( 'viewsuppressed' )
+		);
 	}
 
 	/**
@@ -103,7 +107,11 @@ class AbuseFilterPermissionManager {
 	 * @return bool
 	 */
 	public function canSuppress( Authority $performer ): bool {
-		return $performer->isAllowed( 'suppressrevision' );
+		$block = $performer->getBlock();
+		return (
+			!( $block && $block->isSitewide() ) &&
+			$performer->isAllowed( 'suppressrevision' )
+		);
 	}
 
 	/**
