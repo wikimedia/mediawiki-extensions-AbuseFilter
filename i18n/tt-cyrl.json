@@ -17,7 +17,7 @@
 	"abusefilter-status-global": "Глобаль",
 	"abusefilter-list-options-submit": "Яңарту",
 	"abusefilter-edit-builder-vars-page-ns": "Битнең исемарасы",
-	"abusefilter-edit-builder-vars-page-title": "Битнең атамасы (исемнәр киңлегесез)",
+	"abusefilter-edit-builder-vars-page-title": "Битнең атамасы (исемарасыз) ($1)",
 	"abusefilter-edit-builder-vars-page-prefixedtitle": "Битнең тулы атамасы",
 	"abusefilter-edit-builder-vars-page-age": "Битнең яше (секунд)",
 	"abusefilter-history-global": "Глобаль",
