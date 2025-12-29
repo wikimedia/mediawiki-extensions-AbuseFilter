@@ -92,7 +92,9 @@
 			"Anarkiisto",
 			"Midleading",
 			"Nikki",
-			"XtexChooser"
+			"XtexChooser",
+			"Nvdtn19",
+			"Peterxy12"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -278,8 +280,8 @@
 	"abusefilter-edit-subtitle": "编辑过滤器$1",
 	"abusefilter-edit-subtitle-new": "创建过滤器",
 	"abusefilter-edit-token-not-match": "编辑尚未保存！请再次尝试保存。",
-	"abusefilter-edit-oldwarning": "<strong>你正在编辑该过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果你保存你的编辑，所编辑版本之后的所有更改均会被覆盖。</strong> &bull; [[Special:AbuseFilter/history/$2|返回该过滤器的历史记录]]。",
-	"abusefilter-edit-oldwarning-view": "<strong>您正在查看的是此过滤器的旧版本。\n引用的统计数据是适用于此过滤器的最新版本。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回到此过滤器的历史记录]]。",
+	"abusefilter-edit-oldwarning": "<strong>您正在编辑此过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果您保存编辑，您所编辑版本之后的所有更改均会被覆盖。</strong> &bull; [[Special:AbuseFilter/history/$2|返回此过滤器的历史记录]]。",
+	"abusefilter-edit-oldwarning-view": "<strong>您正在查看此过滤器的旧版本。统计中引用的是该过滤器的最新版本。</strong> &bull; [[Special:AbuseFilter/history/$2|返回此过滤器的历史记录]]。",
 	"abusefilter-edit-status-label": "统计：",
 	"abusefilter-edit-status": "在最近的$1次{{PLURAL:$1|操作}}中，有$2（$3%）次触发了本过滤器。\n其平均运行时间为$4毫秒，消耗了$5{{PLURAL:$5|条}}限制。",
 	"abusefilter-edit-throttled-warning": "'''警告：'''该过滤器已自动标示为有害。作为安全措施，以下{{PLURAL:$2|操作}}将不会执行：$1。请检查高匹配率是否符合预期。如果是的话，您可以再次保存过滤器以移除此限制。",
