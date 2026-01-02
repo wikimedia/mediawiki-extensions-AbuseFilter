@@ -98,7 +98,7 @@ class RunVariableGenerator extends VariableGenerator {
 		// Don't treat content model change as null edit though.
 		if (
 			$content->equals( $oldContent ) ||
-			( $oldContent->getModel() === $content->getModel() && strcmp( $oldAfText, $text ) === 0 )
+			( $oldContent->getModel() === $content->getModel() && $oldAfText === $text )
 		) {
 			return null;
 		}
