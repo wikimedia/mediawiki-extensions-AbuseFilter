@@ -54,14 +54,12 @@ class ConsequencesExecutor {
 
 		$messages = [];
 		foreach ( $actionsToTake as $filter => $actions ) {
-			foreach ( $actions as $action => $info ) {
-				[ $executed, $newMsg ] = $this->takeConsequenceAction( $info );
-
-				if ( $newMsg !== null ) {
-					$messages[] = $newMsg;
-				}
-				if ( $executed ) {
+			foreach ( $actions as $action => $consequence ) {
+				if ( $consequence->execute() ) {
 					$actionsTaken[$filter][] = $action;
+					if ( $consequence instanceof HookAborterConsequence ) {
+						$messages[] = Message::newFromSpecifier( $consequence->getMessage() );
+					}
 				}
 			}
 		}
@@ -333,20 +331,6 @@ class ConsequencesExecutor {
 					return null;
 				}
 		}
-	}
-
-	/**
-	 * @param Consequence $consequence
-	 * @return array [ executed (bool), message (?Message) ]
-	 * @phan-return array{0:bool, 1:?Message}
-	 */
-	private function takeConsequenceAction( Consequence $consequence ): array {
-		$res = $consequence->execute();
-		if ( $res && $consequence instanceof HookAborterConsequence ) {
-			$message = Message::newFromSpecifier( $consequence->getMessage() );
-		}
-
-		return [ $res, $message ?? null ];
 	}
 
 	/**
