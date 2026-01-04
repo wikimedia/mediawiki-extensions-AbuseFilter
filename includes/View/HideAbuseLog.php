@@ -6,6 +6,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Html\Html;
@@ -29,6 +30,7 @@ class HideAbuseLog extends AbuseFilterView {
 		LinkRenderer $linkRenderer,
 		private readonly LinkBatchFactory $linkBatchFactory,
 		private readonly PermissionManager $permissionManager,
+		private readonly FilterLookup $filterLookup,
 		private readonly VariablesBlobStore $variablesBlobStore,
 		string $basePageName
 	) {
@@ -61,6 +63,7 @@ class HideAbuseLog extends AbuseFilterView {
 			$this->linkBatchFactory,
 			$this->permissionManager,
 			$this->afPermManager,
+			$this->filterLookup,
 			$this->variablesBlobStore,
 			$this->basePageName,
 			array_fill_keys( $this->hideIDs, $this->getRequest()->getVal( 'wpshoworhide' ) )

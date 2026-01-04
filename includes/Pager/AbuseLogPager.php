@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Html\Html;
@@ -35,6 +36,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		private readonly LinkBatchFactory $linkBatchFactory,
 		private readonly PermissionManager $permissionManager,
 		private readonly AbuseFilterPermissionManager $afPermissionManager,
+		private readonly FilterLookup $filterLookup,
 		private readonly VariablesBlobStore $varBlobStore,
 		private readonly string $basePageName,
 		private array $hideEntries = []
@@ -140,9 +142,8 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		$global = $row->afl_global;
 
 		// Pull global filter description
-		$lookup = AbuseFilterServices::getFilterLookup();
 		try {
-			$filterObj = $lookup->getFilter( $filterID, $global );
+			$filterObj = $this->filterLookup->getFilter( $filterID, $global );
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $filterObj->getName() );
 		} catch ( CentralDBNotAvailableException $_ ) {
 			$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();

@@ -98,6 +98,7 @@ class AbuseLogPagerTest extends MediaWikiIntegrationTestCase {
 			$services->getLinkBatchFactory(),
 			$services->getPermissionManager(),
 			AbuseFilterServices::getPermissionManager( $services ),
+			AbuseFilterServices::getFilterLookup( $services ),
 			AbuseFilterServices::getVariablesBlobStore( $services ),
 			$this->page->getTitle(),
 			[]
