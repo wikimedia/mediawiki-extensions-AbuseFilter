@@ -594,15 +594,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$fields['abusefilter-edit-tools'] = $tools;
 		}
 
-		$form = Xml::fieldset(
-			$this->msg( 'abusefilter-edit-main' )->text(),
+		$form = Html::openElement( 'fieldset' ) . "\n" .
+			Html::element( 'legend', [], $this->msg( 'abusefilter-edit-main' )->text() ) . "\n" .
 			// TODO: deprecated, use OOUI or Codex widgets instead
-			Xml::buildForm( $fields )
-		);
-		$form .= Xml::fieldset(
-			$this->msg( 'abusefilter-edit-consequences' )->text(),
-			$this->buildConsequenceEditor( $filterObj, $actions )
-		);
+			Xml::buildForm( $fields ) . "\n" .
+			Html::closeElement( 'fieldset' ) . "\n";
+		$form .= Html::openElement( 'fieldset' ) . "\n" .
+			Html::element( 'legend', [], $this->msg( 'abusefilter-edit-consequences' )->text() ) . "\n" .
+			$this->buildConsequenceEditor( $filterObj, $actions ) . "\n" .
+			Html::closeElement( 'fieldset' );
 
 		$urlFilter = $filter === null ? 'new' : (string)$filter;
 		if ( !$readOnly ) {
