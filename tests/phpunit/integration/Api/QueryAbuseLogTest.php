@@ -311,6 +311,15 @@ class QueryAbuseLogTest extends ApiTestCase {
 		// since it is evaluated before the test user it refers to is created.
 		$params['afluser'] = $params['afluser']();
 
+		if ( IPUtils::isIPAddress( $params['afluser'] ) ) {
+			// Checking if the current authority has permissions to view IPs is
+			// delegated CheckUserPermissionManager based on
+			// checkuser-temporary-account-* permissions. Therefore, this test
+			// requires that service to be present in order to produce the
+			// expected results.
+			$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+		}
+
 		[ $result ] = $this->doApiRequest(
 			$params,
 			null,
@@ -416,6 +425,13 @@ class QueryAbuseLogTest extends ApiTestCase {
 	}
 
 	public function testExecuteByAFLUserWithNoPermissionToSeeIPAddresses(): void {
+		// Checking if the current authority has permissions to view IPs for
+		// temp accounts is delegated CheckUserPermissionManager based on
+		// checkuser-temporary-account-* permissions. Therefore, this test
+		// requires that service to be present in order to produce the expected
+		// results.
+		$this->markTestSkippedIfExtensionNotLoaded( 'CheckUser' );
+
 		$entryForAnonymousUser = [
 			'filter' => self::FILTER_NAME_172_19_0_X,
 			'user' => '172.19.0.4',
