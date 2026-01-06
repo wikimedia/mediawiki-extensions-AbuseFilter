@@ -275,7 +275,7 @@
 	"abusefilter-edit-denied": "Не можете видети детаље овог филтера јер је сакривен из јавног приказа.",
 	"abusefilter-edit-main": "Параметри филтера",
 	"abusefilter-edit-done-subtitle": "Филтер је уређен",
-	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Ваше промене]] [[Special:AbuseFilter/$1|филтера $3]] су сачуване.",
+	"abusefilter-edit-done": "[[Special:AbuseFilter/history/$1/diff/prev/$2|Ваше измене]] [[Special:AbuseFilter/$1|филтера $3]] су сачуване.",
 	"abusefilter-edit-badsyntax": "Наведени филтер има синтаксну грешку.\nИзлаз из рашчлањивача био је: <pre>$1</pre>",
 	"abusefilter-edit-missingfields": "Следећа поља су обавезна и морају бити попуњена: $1",
 	"abusefilter-edit-deleting-enabled": "Не можете означити активан филтер обрисаним.",
