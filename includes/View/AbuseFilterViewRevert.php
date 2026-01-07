@@ -266,7 +266,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				try {
 					// The variable is not lazy-loaded
 					$accountName = $vars->getComputedVariable( 'accountname' )->toNative();
-				} catch ( UnsetVariableException $_ ) {
+				} catch ( UnsetVariableException ) {
 					$accountName = null;
 				}
 

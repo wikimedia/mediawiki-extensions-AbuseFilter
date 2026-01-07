@@ -51,7 +51,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			$filterObj = null;
 			try {
 				$filterObj = $this->filterLookup->getFilter( $filter, false );
-			} catch ( FilterNotFoundException $_ ) {
+			} catch ( FilterNotFoundException ) {
 				$filter = null;
 			}
 			if ( $filterObj && $filterObj->isSuppressed() && !$canViewSuppressed ) {

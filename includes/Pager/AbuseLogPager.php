@@ -145,7 +145,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 		try {
 			$filterObj = $this->filterLookup->getFilter( $filterID, $global );
 			$escaped_comments = Sanitizer::escapeHtmlAllowEntities( $filterObj->getName() );
-		} catch ( CentralDBNotAvailableException $_ ) {
+		} catch ( CentralDBNotAvailableException ) {
 			$escaped_comments = $this->msg( 'abusefilter-log-description-not-available' )->escaped();
 			// either hide all filters, including not hidden/protected, or show all, including hidden/protected
 			// we choose the former

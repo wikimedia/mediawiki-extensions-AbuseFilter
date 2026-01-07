@@ -46,7 +46,7 @@ class Degroup extends Consequence implements HookAborterConsequence, ReversibleC
 		try {
 			// No point in triggering a lazy-load, instead we compute it here if necessary
 			$groupsVar = $this->vars->getVarThrow( 'user_groups' );
-		} catch ( UnsetVariableException $_ ) {
+		} catch ( UnsetVariableException ) {
 			$groupsVar = null;
 		}
 		if ( $groupsVar === null || $groupsVar instanceof LazyLoadedVariable ) {

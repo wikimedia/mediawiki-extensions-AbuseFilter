@@ -263,7 +263,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 
 		try {
 			$filter = $this->filterLookup->getFilter( $row->afl_filter_id, $row->afl_global );
-		} catch ( CentralDBNotAvailableException $_ ) {
+		} catch ( CentralDBNotAvailableException ) {
 			// Conservatively assume that it's hidden and protected and suppressed, like in AbuseLogPager::doFormatRow
 			$filter = MutableFilter::newDefault();
 			$filter->setProtected( true );

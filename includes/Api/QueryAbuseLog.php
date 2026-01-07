@@ -128,7 +128,7 @@ class QueryAbuseLog extends ApiQueryBase {
 					$filter = $lookup->getFilter( $filterID, $global );
 					$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
 					$usedVariables = $ruleChecker->getUsedVars( $filter->getRules() );
-				} catch ( CentralDBNotAvailableException $_ ) {
+				} catch ( CentralDBNotAvailableException ) {
 					// Conservatively assume that it's suppressed, hidden and protected,
 					// like in AbuseLogPager::doFormatRow.
 					// Also assume that the filter contains all protected variables for the same reasons.
@@ -137,7 +137,7 @@ class QueryAbuseLog extends ApiQueryBase {
 					$filter->setProtected( true );
 					$filter->setSuppressed( true );
 					$usedVariables = $this->afPermManager->getProtectedVariables();
-				} catch ( FilterNotFoundException $_ ) {
+				} catch ( FilterNotFoundException ) {
 					// If no filter is found, assume it has no restrictions (is public and uses no protected
 					// variables) because it should be an non-existing filter ID.
 					$filter = MutableFilter::newDefault();

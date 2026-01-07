@@ -51,7 +51,7 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 		$status = Status::newGood();
 		try {
 			$urls = $this->variablesManager->getVar( $vars, 'added_links', VariablesManager::GET_STRICT );
-		} catch ( UnsetVariableException $_ ) {
+		} catch ( UnsetVariableException ) {
 			return $status;
 		}
 

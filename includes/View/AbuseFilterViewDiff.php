@@ -202,7 +202,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				$this->filter,
 				FilterLookup::DIR_NEXT
 			)->getHistoryID();
-		} catch ( ClosestFilterVersionNotFoundException $_ ) {
+		} catch ( ClosestFilterVersionNotFoundException ) {
 			$this->nextHistoryId = null;
 		}
 
@@ -233,7 +233,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			$dir = $spec === 'prev' ? FilterLookup::DIR_PREV : FilterLookup::DIR_NEXT;
 			try {
 				$filterObj = $this->filterLookup->getClosestVersion( $other->getHistoryID(), $this->filter, $dir );
-			} catch ( ClosestFilterVersionNotFoundException $_ ) {
+			} catch ( ClosestFilterVersionNotFoundException ) {
 				$t = $this->getTitle( "history/$this->filter/item/" . $other->getHistoryID() );
 				$this->getOutput()->redirect( $t->getFullURL() );
 				return null;
@@ -247,7 +247,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 				} elseif ( $spec === 'cur' ) {
 					$filterObj = $this->filterLookup->getLastHistoryVersion( $this->filter );
 				}
-			} catch ( FilterNotFoundException | FilterVersionNotFoundException $_ ) {
+			} catch ( FilterNotFoundException | FilterVersionNotFoundException ) {
 			}
 		}
 

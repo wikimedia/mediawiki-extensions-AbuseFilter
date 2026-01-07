@@ -471,7 +471,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				try {
 					// Use the injected filterLookup service
 					$filter = $this->filterLookup->getFilter( ...$filterData );
-				} catch ( FilterNotFoundException $_ ) {
+				} catch ( FilterNotFoundException ) {
 					// Filter ID is invalid or filter doesn't exist
 					unset( $filtersList[$index] );
 					$foundInvalid = true;
@@ -717,7 +717,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 
 		try {
 			$filter = $this->filterLookup->getFilter( $filterID, $global );
-		} catch ( CentralDBNotAvailableException $_ ) {
+		} catch ( CentralDBNotAvailableException ) {
 			// Conservatively assume that it's hidden and protected, like in AbuseLogPager::doFormatRow
 			$filter = MutableFilter::newDefault();
 			$filter->setHidden( true );
@@ -802,12 +802,12 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 			// No need to lazy-load as these come from a DB dump.
 			try {
 				$old_wikitext = $vars->getComputedVariable( 'old_wikitext' )->toString();
-			} catch ( UnsetVariableException $_ ) {
+			} catch ( UnsetVariableException ) {
 				$old_wikitext = '';
 			}
 			try {
 				$new_wikitext = $vars->getComputedVariable( 'new_wikitext' )->toString();
-			} catch ( UnsetVariableException $_ ) {
+			} catch ( UnsetVariableException ) {
 				$new_wikitext = '';
 			}
 

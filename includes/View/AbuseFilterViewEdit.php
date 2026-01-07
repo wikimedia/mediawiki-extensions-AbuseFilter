@@ -124,7 +124,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// The request wasn't posted (i.e. just viewing the filter) or the user cannot edit
 			try {
 				$filterObj = $this->loadFromDatabase( $filter, $history_id );
-			} catch ( FilterNotFoundException $_ ) {
+			} catch ( FilterNotFoundException ) {
 				$filterObj = null;
 			}
 			if ( $filterObj === null || ( $history_id && (int)$filterObj->getID() !== $filter ) ) {
@@ -1241,7 +1241,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		if ( $history_id ) {
 			try {
 				return $this->filterLookup->getFilterVersion( $history_id );
-			} catch ( FilterVersionNotFoundException $_ ) {
+			} catch ( FilterVersionNotFoundException ) {
 				return null;
 			}
 		} else {
@@ -1311,7 +1311,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		try {
 			$filter = $this->filterImporter->decodeData( $request->getVal( 'wpImportText' ) );
-		} catch ( InvalidImportDataException $_ ) {
+		} catch ( InvalidImportDataException ) {
 			return null;
 		}
 
