@@ -147,6 +147,32 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		yield 'both' => [ [ 'abusefilter-modify', 'abusefilter-view-private' ], true ];
 	}
 
+	/** @dataProvider provideCanEditFilterWhenFilterIsSuppressed */
+	public function testCanEditFilterWhenFilterIsSuppressed( array $rights, bool $expected ) {
+		$filter = MutableFilter::newDefault();
+		$filter->setSuppressed( true );
+		$performer = $this->mockRegisteredAuthorityWithPermissions( $rights );
+
+		$this->assertSame(
+			$expected,
+			$this->getPermMan()->canEditFilter( $performer, $filter )
+		);
+	}
+
+	public static function provideCanEditFilterWhenFilterIsSuppressed(): array {
+		return [
+			'User has both viewsuppressed and suppressrevision' => [
+				[ 'abusefilter-modify', 'viewsuppressed', 'suppressrevision' ], true,
+			],
+			'User has suppressrevision' => [
+				[ 'abusefilter-modify', 'suppressrevision' ], true,
+			],
+			'User has viewsuppressed' => [
+				[ 'abusefilter-modify', 'viewsuppressed' ], false,
+			],
+		];
+	}
+
 	/**
 	 * @dataProvider provideCanViewPrivateFilters
 	 */

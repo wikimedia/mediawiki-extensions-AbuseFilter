@@ -59,6 +59,12 @@ class AbuseFilterPermissionManager {
 	 * @return bool
 	 */
 	public function canEditFilter( Authority $performer, AbstractFilter $filter ): bool {
+		// A user with viewsuppressed can view suppressed filters but if they lack
+		// the suppressrevision right then they shouldn't be able to edit it (T414011)
+		if ( $filter->isSuppressed() && !$this->canSuppress( $performer ) ) {
+			return false;
+		}
+
 		return (
 			$this->canEdit( $performer ) &&
 			!( $filter->isGlobal() && !$this->canEditGlobal( $performer ) )
