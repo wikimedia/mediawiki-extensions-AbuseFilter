@@ -6,40 +6,26 @@ namespace MediaWiki\Extension\AbuseFilter\Filter;
  * (Mutable) value object to represent flags that can be *manually* set on a filter.
  */
 class Flags {
-	/** @var bool */
-	private $enabled;
-	/** @var bool */
-	private $deleted;
-	/** @var bool */
-	private $suppressed;
-	/** @var bool */
-	private $hidden;
-	/** @var bool */
-	private $protected;
-	/** @var int */
-	private $privacyLevel;
-	/** @var bool */
-	private $global;
+	private bool $suppressed;
+
+	private bool $hidden;
+
+	private bool $protected;
 
 	public const FILTER_PUBLIC = 0b000;
 	public const FILTER_SUPPRESSED = 0b100;
 	public const FILTER_HIDDEN = 0b001;
 	public const FILTER_USES_PROTECTED_VARS = 0b010;
 
-	/**
-	 * @param bool $enabled
-	 * @param bool $deleted
-	 * @param int $privacyLevel
-	 * @param bool $global
-	 */
-	public function __construct( bool $enabled, bool $deleted, int $privacyLevel, bool $global ) {
-		$this->enabled = $enabled;
-		$this->deleted = $deleted;
+	public function __construct(
+		private bool $enabled,
+		private bool $deleted,
+		private int $privacyLevel,
+		private bool $global
+	) {
 		$this->suppressed = (bool)( self::FILTER_SUPPRESSED & $privacyLevel );
 		$this->hidden = (bool)( self::FILTER_HIDDEN & $privacyLevel );
 		$this->protected = (bool)( self::FILTER_USES_PROTECTED_VARS & $privacyLevel );
-		$this->privacyLevel = $privacyLevel;
-		$this->global = $global;
 	}
 
 	public function getEnabled(): bool {
