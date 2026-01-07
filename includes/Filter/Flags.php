@@ -11,6 +11,8 @@ class Flags {
 	/** @var bool */
 	private $deleted;
 	/** @var bool */
+	private $suppressed;
+	/** @var bool */
 	private $hidden;
 	/** @var bool */
 	private $protected;
