@@ -131,9 +131,9 @@ class FilterRunner {
 		} );
 
 		// TODO: inject the action specifier to avoid this
-		$accountname = $this->varManager->getVar(
+		$accountName = $this->varManager->getVar(
 			$this->vars,
-			'accountname',
+			'account_name',
 			VariablesManager::GET_BC
 		)->toNative();
 		$spec = new ActionSpecifier(
@@ -141,7 +141,7 @@ class FilterRunner {
 			$this->title,
 			$this->user,
 			$this->user->getRequest()->getIP(),
-			$accountname
+			$accountName
 		);
 
 		// Tag the action if the condition limit was hit

@@ -197,12 +197,12 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$result = $result[0]['query']['abuselog'];
 		foreach ( $result as $row ) {
 			$this->assertSame( '1.2.3.4', $row['details']['user_unnamed_ip'] );
-			if ( isset( $row['details']['accountname'] ) ) {
-				$this->assertSame( self::$userIdentity->getName(), $row['details']['accountname'] );
+			if ( isset( $row['details']['account_name'] ) ) {
+				$this->assertSame( self::$userIdentity->getName(), $row['details']['account_name'] );
 				$this->assertArrayNotHasKey( 'user_name', $row['details'] );
 			} else {
 				$this->assertSame( self::$userIdentity->getName(), $row['details']['user_name'] );
-				$this->assertArrayNotHasKey( 'accountname', $row['details'] );
+				$this->assertArrayNotHasKey( 'account_name', $row['details'] );
 			}
 		}
 
@@ -550,7 +550,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			VariableHolder::newFromArray( [
 				'action' => 'autocreateaccount',
 				'user_unnamed_ip' => '1.2.3.4',
-				'accountname' => self::$userIdentity->getName(),
+				'account_name' => self::$userIdentity->getName(),
 			] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
 
@@ -600,7 +600,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			$this->getIpUser( '172.19.0.4' ),
 			VariableHolder::newFromArray( [
 				'action' => 'autocreateaccount',
-				'accountname' => '172.19.0.4',
+				'account_name' => '172.19.0.4',
 			] )
 		)->addLogEntries( [ 2 => [ 'warn' ] ] );
 

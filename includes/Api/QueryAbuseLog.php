@@ -334,16 +334,16 @@ class QueryAbuseLog extends ApiQueryBase {
 						}
 
 						if ( $filterObj->isProtected() ) {
-							// user_name or accountname should always exist -- just in case
+							// user_name or account_name should always exist -- just in case
 							// if it doesn't, unset the protected variables since they shouldn't be accessed if
 							// the access isn't logged
 							if ( isset( $entry['details']['user_name'] ) ||
-								isset( $entry['details']['accountname'] )
+								isset( $entry['details']['account_name'] )
 							) {
 								$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 								$logger->logViewProtectedVariableValue(
 									$performer->getUser(),
-									$entry['details']['user_name'] ?? $entry['details']['accountname'],
+									$entry['details']['user_name'] ?? $entry['details']['account_name'],
 									$protectedVariableValuesShown
 								);
 							} else {

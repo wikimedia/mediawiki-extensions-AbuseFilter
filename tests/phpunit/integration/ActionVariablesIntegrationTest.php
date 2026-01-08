@@ -357,7 +357,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		yield 'create account anonymously' => [
 			'expected' => [
 				'action' => 'createaccount',
-				'accountname' => 'New account',
+				'account_name' => 'New account',
 				'account_type' => 'named',
 			],
 			'accountName' => 'New account',
@@ -366,7 +366,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		yield 'create account by an existing user' => [
 			'expected' => [
 				'action' => 'createaccount',
-				'accountname' => 'New account',
+				'account_name' => 'New account',
 				'account_type' => 'named',
 				'user_name' => 'Account creator',
 				'user_editcount' => 0,
@@ -379,7 +379,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		yield 'autocreate an account' => [
 			'expected' => [
 				'action' => 'autocreateaccount',
-				'accountname' => 'New account',
+				'account_name' => 'New account',
 				'account_type' => 'named',
 			],
 			'accountName' => 'New account',

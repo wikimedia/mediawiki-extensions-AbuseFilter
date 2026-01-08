@@ -221,7 +221,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue(
 				$this->getUser(),
-				$varsArray['user_name'] ?? $varsArray['accountname'],
+				$varsArray['user_name'] ?? $varsArray['account_name'],
 				$protectedVariableValuesShown
 			);
 		}
@@ -331,7 +331,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue(
 				$userAuthority->getUser(),
-				$varsArray['user_name'] ?? $varsArray['accountname'],
+				$varsArray['user_name'] ?? $varsArray['account_name'],
 				$protectedVariableValuesShown
 			);
 		}

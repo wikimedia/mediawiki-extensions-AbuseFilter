@@ -166,12 +166,12 @@ class CheckMatch extends ApiBase {
 		}
 
 		if ( count( $protectedVariableValuesShown ) ) {
-			// Either 'user_name' or 'accountname' should be set which are not lazily loaded, so get one of
+			// Either 'user_name' or 'account_name' should be set which are not lazily loaded, so get one of
 			// them to use as the target
 			if ( $vars->varIsSet( 'user_name' ) ) {
 				$target = $vars->getComputedVariable( 'user_name' )->toNative();
 			} else {
-				$target = $vars->getComputedVariable( 'accountname' )->toNative();
+				$target = $vars->getComputedVariable( 'account_name' )->toNative();
 			}
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue( $this->getUser(), $target, $protectedVariableValuesShown );

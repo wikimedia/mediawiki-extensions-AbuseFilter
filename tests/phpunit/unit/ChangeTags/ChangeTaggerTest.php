@@ -36,7 +36,7 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 			$actionSpecs['target'],
 			new UserIdentityValue( 42, $actionSpecs['username'] ),
 			$actionSpecs['ip'],
-			$actionSpecs['accountname'] ?? null
+			$actionSpecs['accountName'] ?? null
 		);
 		return [ $actionSpecifier, $rc ];
 	}
@@ -62,13 +62,13 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 
 		$rcAttribs = [ 'rc_log_type' => 'newusers', 'rc_log_action' => 'create2' ] + $baseAttribs;
 		yield 'createaccount' => [
-			'specifier' => [ 'action' => 'createaccount', 'accountname' => $userName ] + $baseSpecs,
+			'specifier' => [ 'action' => 'createaccount', 'accountName' => $userName ] + $baseSpecs,
 			'recentchange' => $rcAttribs
 		];
 
 		$rcAttribs = [ 'rc_log_type' => 'newusers', 'rc_log_action' => 'autocreate' ] + $baseAttribs;
 		yield 'autocreate' => [
-			'specifier' => [ 'action' => 'autocreateaccount', 'accountname' => $userName ] + $baseSpecs,
+			'specifier' => [ 'action' => 'autocreateaccount', 'accountName' => $userName ] + $baseSpecs,
 			'recentchange' => $rcAttribs
 		];
 	}

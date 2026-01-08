@@ -265,7 +265,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$vars = $this->varBlobStore->loadVarDump( $row );
 				try {
 					// The variable is not lazy-loaded
-					$accountName = $vars->getComputedVariable( 'accountname' )->toNative();
+					$accountName = $vars->getComputedVariable( 'account_name' )->toNative();
 				} catch ( UnsetVariableException ) {
 					$accountName = null;
 				}

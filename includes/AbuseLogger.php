@@ -138,7 +138,7 @@ class AbuseLogger {
 		];
 		// Hack to avoid revealing IPs of people creating accounts
 		if ( ( $this->action === 'createaccount' || $this->action === 'autocreateaccount' ) && !$user->getId() ) {
-			$logTemplate['afl_user_text'] = $this->vars->getComputedVariable( 'accountname' )->toString();
+			$logTemplate['afl_user_text'] = $this->vars->getComputedVariable( 'account_name' )->toString();
 		}
 		return $logTemplate;
 	}

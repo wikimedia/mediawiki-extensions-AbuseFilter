@@ -140,9 +140,11 @@ class KeywordsManager {
 		'vars' => [
 			// Generates abusefilter-edit-builder-vars-timestamp
 			'timestamp' => 'timestamp',
+			// Generates abusefilter-edit-builder-vars-account-name
+			'account_name' => 'account-name',
 			// Generates abusefilter-edit-builder-vars-account-type
 			'account_type' => 'account-type',
-			// Generates abusefilter-edit-builder-vars-accountname
+			// TODO: Remove this once CentralAuth stops referencing this var
 			'accountname' => 'accountname',
 			// Generates abusefilter-edit-builder-vars-action
 			'action' => 'action',
@@ -334,6 +336,7 @@ class KeywordsManager {
 		'moved_to_prefixedtext' => 'moved_to_prefixedtitle',
 		'moved_to_articleid' => 'moved_to_id',
 		'all_links' => 'new_links',
+		'accountname' => 'account_name',
 	];
 
 	/** @var string[][] Final list of builder values */
