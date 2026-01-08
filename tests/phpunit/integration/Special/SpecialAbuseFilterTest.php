@@ -563,6 +563,42 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testViewTestBatchWhenSubmittedWithAllNullProtectedValues() {
+		$this->addCustomProtectedVariableToGenericVars( null );
+
+		// Assert that the user who can see protected variables can submit the form for a protected filter
+		// and that this submission causes protected variable access logs to be created
+		[ $html, ] = $this->executeSpecialPage(
+			'test',
+			new FauxRequest( [
+				'wpFilterRules' => "custom_variable = 'custom_variable_value'",
+				'wpTestAction' => 0,
+				'wpTestUser' => '',
+				'wpTestPeriodStart'	=> '',
+				'wpTestPeriodEnd' => '',
+				'wpTestPage' => '',
+				'wpShowNegative' => 1,
+			], true ),
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+
+		$this->assertStringContainsString( 'custom_variable_value', $html );
+
+		// Verify that a protected variable access log was not created created
+		// as the value was null and so nothing was viewed that was protected
+		$this->newSelectQueryBuilder()
+			->select( '1' )
+			->from( 'logging' )
+			->join( 'actor', null, 'actor_id=log_actor' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->assertEmptyResult();
+	}
+
 	/**
 	 * Common test code used by tests which load the list of AbuseFilters,
 	 * used to verify that the headings on the table of AbuseFilters are
@@ -1083,16 +1119,21 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
-	private function addCustomProtectedVariableToGenericVars() {
+	private function addCustomProtectedVariableToGenericVars(
+		?string $variableValue = 'custom_variable_value'
+	): void {
 		$this->setTemporaryHook( 'AbuseFilterCustomProtectedVariables', static function ( &$variables ) {
 			$variables[] = 'custom_variable';
 		} );
 		$this->setTemporaryHook( 'AbuseFilter-builder', static function ( array &$realValues ) {
 			$realValues['vars']['custom_variable'] = 'custom-variable-test';
 		} );
-		$this->setTemporaryHook( 'AbuseFilter-generateGenericVars', static function ( VariableHolder $vars ) {
-			$vars->setVar( 'custom_variable', 'custom_variable_value' );
-		} );
+		$this->setTemporaryHook(
+			'AbuseFilter-generateGenericVars',
+			static function ( VariableHolder $vars ) use ( $variableValue ) {
+				$vars->setVar( 'custom_variable', $variableValue );
+			}
+		);
 		$this->resetServices();
 	}
 

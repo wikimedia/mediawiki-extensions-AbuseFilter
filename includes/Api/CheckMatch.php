@@ -156,7 +156,10 @@ class CheckMatch extends ApiBase {
 		foreach ( $this->afPermManager->getUsedProtectedVariables( $usedVars ) as $protectedVariable ) {
 			if ( $vars->varIsSet( $protectedVariable ) ) {
 				$protectedVariableValue = $vars->getVarThrow( $protectedVariable );
-				if ( !( $protectedVariableValue instanceof LazyLoadedVariable ) && $protectedVariableValue !== null ) {
+				if (
+					!( $protectedVariableValue instanceof LazyLoadedVariable ) &&
+					$protectedVariableValue->toNative() !== null
+				) {
 					$protectedVariableValuesShown[] = $protectedVariable;
 				}
 			}

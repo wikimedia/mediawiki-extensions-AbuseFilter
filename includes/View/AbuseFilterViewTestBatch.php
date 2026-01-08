@@ -285,7 +285,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 					$protectedVariableValue = $vars->getVarThrow( $protectedVariable );
 					if (
 						!( $protectedVariableValue instanceof LazyLoadedVariable ) &&
-						$protectedVariableValue !== null
+						$protectedVariableValue->toNative() !== null
 					) {
 						$protectedVariableValuesShown[] = $protectedVariable;
 					}
