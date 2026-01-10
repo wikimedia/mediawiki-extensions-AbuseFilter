@@ -358,6 +358,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			'expected' => [
 				'action' => 'createaccount',
 				'accountname' => 'New account',
+				'account_type' => 'named',
 			],
 			'accountName' => 'New account',
 		];
@@ -366,6 +367,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			'expected' => [
 				'action' => 'createaccount',
 				'accountname' => 'New account',
+				'account_type' => 'named',
 				'user_name' => 'Account creator',
 				'user_editcount' => 0,
 			],
@@ -378,6 +380,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			'expected' => [
 				'action' => 'autocreateaccount',
 				'accountname' => 'New account',
+				'account_type' => 'named',
 			],
 			'accountName' => 'New account',
 			'autocreate' => true,
@@ -386,6 +389,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		yield 'autocreate a temporary account' => [
 			'expected' => [
 				'action' => 'autocreateaccount',
+				'account_type' => 'temp',
 				'user_unnamed_ip' => '127.0.0.1',
 			],
 			'accountName' => null,

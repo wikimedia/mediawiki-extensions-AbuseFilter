@@ -30,6 +30,7 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityUtils;
+use MediaWiki\User\UserNameUtils;
 use Psr\Log\LoggerInterface;
 use stdClass;
 use StringUtils;
@@ -70,6 +71,7 @@ class LazyVariableComputer {
 		private readonly PermissionManager $permissionManager,
 		private readonly RestrictionStore $restrictionStore,
 		private readonly UserIdentityUtils $userIdentityUtils,
+		private readonly UserNameUtils $userNameUtils,
 		private readonly string $wikiID
 	) {
 	}
@@ -280,6 +282,26 @@ class LazyVariableComputer {
 				/** @var Title $title */
 				$title = $parameters['title'];
 				$result = $this->restrictionStore->getRestrictions( $title, $action );
+				break;
+			case 'account-type':
+				/** @var User $createdUser */
+				$createdUser = $parameters['createdUser'];
+				$isTemp = $this->userIdentityUtils->isTemp( $createdUser );
+				if ( $parameters['autocreate'] && $isTemp ) {
+					$result = 'temp';
+				} elseif ( !$isTemp && $this->userNameUtils->isCreatable( $createdUser->getName() ) ) {
+					// At this point the account hasn't been written to the DB yet, so:
+					// - User::getId() is still 0
+					// - User::isRegistered() will always be false
+					// - and User::isNamed() can't be trusted here
+					//
+					// That means the only thing we can really rely on during pre-auth/pre-creation
+					// is the username itself. If it's not a temporary account and the username is
+					// creatable, then this is effectively a named account creation attempt.
+					$result = 'named';
+				} else {
+					$result = 'unknown';
+				}
 				break;
 			case 'user-unnamed-ip':
 				/** @var User $user */

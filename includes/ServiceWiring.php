@@ -359,6 +359,7 @@ return [
 			$services->getPermissionManager(),
 			$services->getRestrictionStore(),
 			$services->getUserIdentityUtils(),
+			$services->getUserNameUtils(),
 			WikiMap::getCurrentWikiDbDomain()->getId()
 		);
 	},

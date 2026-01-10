@@ -140,6 +140,8 @@ class KeywordsManager {
 		'vars' => [
 			// Generates abusefilter-edit-builder-vars-timestamp
 			'timestamp' => 'timestamp',
+			// Generates abusefilter-edit-builder-vars-account-type
+			'account_type' => 'account-type',
 			// Generates abusefilter-edit-builder-vars-accountname
 			'accountname' => 'accountname',
 			// Generates abusefilter-edit-builder-vars-action

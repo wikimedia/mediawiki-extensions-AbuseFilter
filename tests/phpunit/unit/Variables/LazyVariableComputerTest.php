@@ -26,6 +26,7 @@ use MediaWiki\User\UserEditTracker;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserIdentityValue;
+use MediaWiki\User\UserNameUtils;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use UnexpectedValueException;
@@ -57,6 +58,7 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 			$services['PermissionManager'] ?? $this->createMock( PermissionManager::class ),
 			$services['RestrictionStore'] ?? $this->createMock( RestrictionStore::class ),
 			$services['UserIdentityUtils'] ?? $this->createMock( UserIdentityUtils::class ),
+			$services['UserNameUtils'] ?? $this->createMock( UserNameUtils::class ),
 			$wikiID
 		);
 	}
@@ -458,4 +460,63 @@ class LazyVariableComputerTest extends MediaWikiUnitTestCase {
 
 		// TODO _recent_contributors is tested in LazyVariableComputerDBTest
 	}
+
+	public static function provideAccountCreationRelatedVars() {
+		return [
+			'Create a named account' => [
+				'accountName' => 'Foo',
+				'autocreate' => false,
+				'expected' => 'named'
+			],
+			'Auto-create a named account' => [
+				'accountName' => 'Foo',
+				'autocreate' => true,
+				'expected' => 'named'
+			],
+			'Create a temporary account' => [
+				'accountName' => '~1',
+				'autocreate' => false,
+				'expected' => 'unknown'
+			],
+			'Auto-create a temporary account' => [
+				'accountName' => '~1',
+				'autocreate' => true,
+				'expected' => 'temp'
+			],
+			'Create an unknown account' => [
+				'accountName' => '1.2.3.4',
+				'autocreate' => false,
+				'expected' => 'unknown'
+			],
+			'Auto-create an unknown account' => [
+				'accountName' => '1.2.3.4',
+				'autocreate' => true,
+				'expected' => 'unknown'
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider provideAccountCreationRelatedVars
+	 */
+	public function testAccountCreationRelatedVars( string $accountName, bool $autocreate, string $expected ) {
+		$createdUser = $this->createMock( User::class );
+		$createdUser->method( 'getName' )->willReturn( $accountName );
+		$userIdentityUtils = $this->createMock( UserIdentityUtils::class );
+		$userIdentityUtils->method( 'isTemp' )->willReturn( $accountName === '~1' );
+		$userNameUtils = $this->createMock( UserNameUtils::class );
+		$userNameUtils->method( 'isCreatable' )->willReturn( $accountName === 'Foo' );
+
+		$computer = $this->getComputer( [
+			'UserIdentityUtils' => $userIdentityUtils,
+			'UserNameUtils' => $userNameUtils
+		] );
+		$var = new LazyLoadedVariable(
+			'account-type',
+			[ 'autocreate' => $autocreate, 'createdUser' => $createdUser ]
+		);
+		$actual = $computer->compute( $var, new VariableHolder(), $this->getForbidComputeCB() )->toNative();
+		$this->assertSame( $expected, $actual );
+	}
+
 }

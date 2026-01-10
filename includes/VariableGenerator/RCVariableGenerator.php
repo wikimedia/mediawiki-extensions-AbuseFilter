@@ -124,12 +124,17 @@ class RCVariableGenerator extends VariableGenerator {
 			);
 		}
 
-		$this->vars->setVar( 'accountname', $name );
-
 		// $name is a valid title, so should pass the only check for UserFactory::RIGOR_NONE (the title does
 		// not include a "#" character).
 		$createdUser = $this->userFactory->newFromName( $name, UserFactory::RIGOR_NONE );
 		'@phan-var User $createdUser';
+		$this->vars->setVar( 'accountname', $name );
+		$this->vars->setLazyLoadVar(
+			'account_type',
+			'account-type',
+			[ 'autocreate' => $autocreate, 'createdUser' => $createdUser ]
+		);
+
 		$this->hookRunner->onAbuseFilterGenerateAccountCreationVars(
 			$this->vars, $userIdentity, $createdUser, $autocreate, $this->rc
 		);
