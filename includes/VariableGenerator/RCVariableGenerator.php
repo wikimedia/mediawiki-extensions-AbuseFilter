@@ -128,8 +128,6 @@ class RCVariableGenerator extends VariableGenerator {
 		// not include a "#" character).
 		$createdUser = $this->userFactory->newFromName( $name, UserFactory::RIGOR_NONE );
 		'@phan-var User $createdUser';
-		// TODO: Remove this once CentralAuth stops referencing this var
-		$this->vars->setVar( 'accountname', $name );
 		$this->vars->setVar( 'account_name', $name );
 		$this->vars->setLazyLoadVar(
 			'account_type',

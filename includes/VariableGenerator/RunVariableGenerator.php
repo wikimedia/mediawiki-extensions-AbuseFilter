@@ -368,8 +368,6 @@ class RunVariableGenerator extends VariableGenerator {
 		}
 
 		$this->vars->setVar( 'action', $autocreate ? 'autocreateaccount' : 'createaccount' );
-		// TODO: Remove this once CentralAuth stops referencing this var
-		$this->vars->setVar( 'accountname', $createdUser->getName() );
 		$this->vars->setVar( 'account_name', $createdUser->getName() );
 		$this->vars->setLazyLoadVar(
 			'account_type',

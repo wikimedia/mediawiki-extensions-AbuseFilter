@@ -130,8 +130,6 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 				$expectedValues = [
 					'action' => $action,
 					'account_name' => $accountName,
-					// TODO: Remove this once CentralAuth stops referencing this var
-					'accountname' => $accountName,
 					'timestamp' => $timestamp
 				];
 				if ( $user->isRegistered() ) {

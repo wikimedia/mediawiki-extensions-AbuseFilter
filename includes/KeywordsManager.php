@@ -144,8 +144,6 @@ class KeywordsManager {
 			'account_name' => 'account-name',
 			// Generates abusefilter-edit-builder-vars-account-type
 			'account_type' => 'account-type',
-			// TODO: Remove this once CentralAuth stops referencing this var
-			'accountname' => 'accountname',
 			// Generates abusefilter-edit-builder-vars-action
 			'action' => 'action',
 			// Generates abusefilter-edit-builder-vars-addedlines
