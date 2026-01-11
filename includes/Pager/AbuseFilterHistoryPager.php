@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Pager;
 
 use HtmlArmor;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -14,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Html\Html;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Pager\TablePager;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentityValue;

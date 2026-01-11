@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
@@ -15,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Parser\ParserOptions;
 use OOUI;
 use StringUtils;

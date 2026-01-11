@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use DifferenceEngine;
 use InvalidArgumentException;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
@@ -29,6 +28,7 @@ use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\Linker;
 use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Registration\ExtensionRegistry;

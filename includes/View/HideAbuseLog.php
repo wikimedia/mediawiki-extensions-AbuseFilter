@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -15,6 +14,7 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Logging\LogEventsList;
 use MediaWiki\Logging\LogPage;
 use MediaWiki\Logging\ManualLogEntry;
+use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Permissions\PermissionManager;
 use Wikimedia\Rdbms\LBFactory;
 
