@@ -307,6 +307,7 @@
 	"abusefilter-block-user": "등록된 사용자 차단",
 	"abusefilter-block-talk": "토론 문서 차단됨",
 	"abusefilter-edit-denied": "이 필터는 비공개로 설정되었기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.",
+	"abusefilter-edit-denied-suppressed": "이 필터는 감춰져 있기 때문에 이 필터의 자세한 사항을 볼 수 없습니다.",
 	"abusefilter-edit-denied-protected-vars": "이 필터는 보호된 변수를 사용하고 비공개되어 있으므로 세부 정보를 볼 수 없습니다.",
 	"abusefilter-edit-main": "필터 변수",
 	"abusefilter-edit-done-subtitle": "필터 편집됨",
