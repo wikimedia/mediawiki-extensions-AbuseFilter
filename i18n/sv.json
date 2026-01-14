@@ -114,6 +114,7 @@
 	"abusefilter-log-entry": "$1: $2 {{GENDER:$8|utlöste}} ett missbruksfilter genom att {{GENDER:$8|göra}} handlingen \"$3\" på $4.\nUtförd handling: $5;\nFilterbeskrivning: $6",
 	"abusefilter-log-entry-withdiff": "$1: $2 {{GENDER:$8|utlöste}} ett missbruksfilter genom att {{GENDER:$8|utföra}} handlingen \"$3\" på $4.\nUtförd handling: $5;\nFilterbeskrivning: $6 ($7)",
 	"abusefilter-log-detailedentry-meta": "$1: $2 {{GENDER:$9|utlöste}} $3, genom att {{GENDER:$9|göra}} handlingen \"$4\" på $5.\nUtförd handling: $6;\nFilterbeskrivning: $7 ($8)",
+	"abusefilter-log-detailedentry-meta-without-action-links": "$1: $2 {{GENDER:$9|utlöste}} $3, {{GENDER:$9|utförde}} åtgärden \"$4\" på $5.\nUtförda åtgärder: $6;\nFilterbeskrivning: $7",
 	"abusefilter-log-detailedentry-global": "globalt filter $1",
 	"abusefilter-log-detailedentry-local": "filter $1",
 	"abusefilter-log-detailslink": "detaljer",
