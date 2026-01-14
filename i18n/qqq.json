@@ -722,5 +722,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "{{doc-log-action-filter-action|abusefilter-protected-vars|change-access}}",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "{{doc-log-action-filter-action|abusefilter-protected-vars|view-protected-variable-value}}",
 	"communityconfiguration-blockeddomain-title": "Title of the Community Configuration tile for blocked external domains at Special:CommunityConfiguration",
-	"communityconfiguration-blockeddomain-description": "Description of the Community Configuration tile for blocked external domains at Special:CommunityConfiguration"
+	"communityconfiguration-blockeddomain-description": "Description of the Community Configuration tile for blocked external domains at Special:CommunityConfiguration",
+	"grant-access-protected-vars": "Name for grant \"access-protected-vars\".\n{{Related|Grant}}"
 }

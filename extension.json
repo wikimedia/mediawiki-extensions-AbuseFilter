@@ -77,6 +77,9 @@
 		},
 		"editprotected": {
 			"abusefilter-bypass-blocked-external-domains": true
+		},
+		"access-protected-vars": {
+			"abusefilter-access-protected-vars": true
 		}
 	},
 	"SpecialPages": {
