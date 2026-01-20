@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Winston Sung"
+			"Winston Sung",
+			"Aca"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-summary": "Provjerite nalazi li filter za zlouporabu određeni skup varijabli, uređivanje ili zapisan događaj u filteru.",
@@ -23,15 +24,15 @@
 	"apihelp-abusefilterunblockautopromote-summary": "Uklanja blok na autounapređivanje određenog korisnika, dobiven zbog posljedice filtra za zlouporabu.",
 	"apihelp-abusefilterunblockautopromote-param-user": "Korisničko ime korisnika kojog želite deblokirati.",
 	"apihelp-abusefilterunblockautopromote-example-1": "Ukloni blok autounapređivanja za [[User:Example]]",
-	"apihelp-query+abusefilters-summary": "Prikaži podrobnosti filtara za zlouporabu.",
+	"apihelp-query+abusefilters-summary": "Prikaži detalje filtera zloupotreba.",
 	"apihelp-query+abusefilters-param-startid": "Naznaka filtra odakle počinje brojanje.",
 	"apihelp-query+abusefilters-param-endid": "Naznaka filtra gdje će se brojanje zaustaviti.",
 	"apihelp-query+abusefilters-param-show": "Prikaži samo filtre što zadovoljavaju ove kriterije.",
-	"apihelp-query+abusefilters-param-limit": "Dopušteni broj filtara za unos na popisu.",
+	"apihelp-query+abusefilters-param-limit": "Dopušteni broj filtera za unos na listu.",
 	"apihelp-query+abusefilters-param-prop": "Koja svojstva dati.",
 	"apihelp-query+abusefilters-example-1": "Ispiši uključene javne filtre",
-	"apihelp-query+abusefilters-example-2": "Prikazivaj neke podrobnosti filtara",
-	"apihelp-query+abuselog-summary": "Prikaži događaje koje je uhvatio jedan od filtara.",
+	"apihelp-query+abusefilters-example-2": "Prikazuj neke detalje o filterima",
+	"apihelp-query+abuselog-summary": "Prikaži događaje koje je uhvatio jedan od filtera.",
 	"apihelp-query+abuselog-param-logid": "Prikaži stavku s danim dnevničkom naznakom.",
 	"apihelp-query+abuselog-param-start": "Od kojeg datuma i vremena počinje brojanje.",
 	"apihelp-query+abuselog-param-end": "Na koji datum i vrijeme zaustaviti brojanje.",
@@ -49,7 +50,7 @@
 	"apihelp-abuselogprivatedetails-param-reason": "Važeći razlog za provjeru.",
 	"apihelp-abuselogprivatedetails-example-1": "Daj osobne podatke za unos u Evidenciji zloupotreba s naznakom 1, koristeći razlog",
 	"apierror-abusefilter-canttest": "Nemate dopuštenje da isprobate filtre za zlouporabu.",
-	"apierror-abusefilter-cantcheck": "Nemate dopuštenje da provjerite sintaksu filtara za zlouporabu.",
+	"apierror-abusefilter-cantcheck": "Nemate dopuštenje da provjerite sintaksu filtera zloupotreba.",
 	"apierror-abusefilter-canteval": "Nemate dozvolu za procjenu izraza Filtera zloupotrebe.",
 	"apierror-abusefilter-nosuchlogid": "Nema unosa u zapisniku zlouporabe s naznakom $1.",
 	"apierror-abusefilter-badsyntax": "Filter nema valjanu sintaksu."
