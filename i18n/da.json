@@ -284,7 +284,7 @@
 	"abusefilter-edit-builder-funcs-set_var": "Sæt variabel (set_var)",
 	"abusefilter-edit-builder-group-vars": "Variabler",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-tidsstempel ved ændring",
-	"abusefilter-edit-builder-vars-accountname": "Kontonavn (on account creation)",
+	"abusefilter-edit-builder-vars-account-name": "Kontonavn (on account creation)",
 	"abusefilter-edit-builder-vars-action": "Handling",
 	"abusefilter-edit-builder-vars-addedlines": "Linjer tilføjet i redigering",
 	"abusefilter-edit-builder-vars-delta": "Størrelse ændret i redigering",

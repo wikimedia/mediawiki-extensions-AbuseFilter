@@ -435,7 +435,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Нормализация символов HTML в юникод ($1)",
 	"abusefilter-edit-builder-group-vars": "Переменные",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-время изменения ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Имя учётной записи (при создании учётной записи) ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Имя учётной записи (при создании учётной записи) ($1)",
 	"abusefilter-edit-builder-vars-action": "Действие ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Добавленные в правке строки ($1)",
 	"abusefilter-edit-builder-vars-delta": "Изменение размера в правке ($1)",

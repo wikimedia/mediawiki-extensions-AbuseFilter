@@ -407,7 +407,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizar as entidades de HTML em caracteres Unicode ($1)",
 	"abusefilter-edit-builder-group-vars": "Variáveis",
 	"abusefilter-edit-builder-vars-timestamp": "Carimbo de data/hora Unix da alteração ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Nome de conta ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Nome de conta ($1)",
 	"abusefilter-edit-builder-vars-action": "Ação ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Linhas adicionadas na edição ($1)",
 	"abusefilter-edit-builder-vars-delta": "Alteração de tamanho na edição ($1)",

@@ -409,7 +409,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizuj jednostki HTML do znaków unicode ($1)",
 	"abusefilter-edit-builder-group-vars": "Zmienne",
 	"abusefilter-edit-builder-vars-timestamp": "Unixowy znacznik czasu „timestamp” dla zmiany ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Nazwa konta przy tworzeniu ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Nazwa konta przy tworzeniu ($1)",
 	"abusefilter-edit-builder-vars-action": "Akcja ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Linie dodane podczas edycji ($1)",
 	"abusefilter-edit-builder-vars-delta": "Rozmiar zmiany podczas edycji ($1)",

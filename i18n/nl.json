@@ -408,7 +408,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "HTML-entiteiten normaliseren tot Unicode-tekens ($1)",
 	"abusefilter-edit-builder-group-vars": "Variabelen",
 	"abusefilter-edit-builder-vars-timestamp": "UNIX-tijdstempel van wijziging ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Accountnaam tijdens aanmaken ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Accountnaam tijdens aanmaken ($1)",
 	"abusefilter-edit-builder-vars-action": "Handeling ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Regels toegevoegd in bewerking ($1)",
 	"abusefilter-edit-builder-vars-delta": "Groottewijziging in bewerking ($1)",

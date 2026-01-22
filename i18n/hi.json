@@ -266,7 +266,7 @@
 	"abusefilter-edit-builder-funcs-set_var": "प्राचल सॅट करें (set_var)",
 	"abusefilter-edit-builder-group-vars": "प्राचल",
 	"abusefilter-edit-builder-vars-timestamp": "बदलाव की Unix timestamp",
-	"abusefilter-edit-builder-vars-accountname": "खाता नाम (खाता निर्माण समय में)",
+	"abusefilter-edit-builder-vars-account-name": "खाता नाम (खाता निर्माण समय में)",
 	"abusefilter-edit-builder-vars-action": "कार्य",
 	"abusefilter-edit-builder-vars-addedlines": "सम्पादन में जोड़ी गई लाइनें",
 	"abusefilter-edit-builder-vars-delta": "संपादन में आकार बदलाव",

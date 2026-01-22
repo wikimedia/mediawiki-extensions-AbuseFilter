@@ -444,7 +444,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizar entidades HTML en caracteres unicode ($1)",
 	"abusefilter-edit-builder-group-vars": "Variables",
 	"abusefilter-edit-builder-vars-timestamp": "Cronomarcador Unix del cambio ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Nombre de usuario en la creación de la cuenta ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Nombre de usuario en la creación de la cuenta ($1)",
 	"abusefilter-edit-builder-vars-action": "Acción ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Líneas añadidas en la edición ($1)",
 	"abusefilter-edit-builder-vars-delta": "Cambio de tamaño en la edición ($1)",

@@ -358,7 +358,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normaliseeri HTML-olemid Unicode'i märkideks ($1)",
 	"abusefilter-edit-builder-group-vars": "Muutujad",
 	"abusefilter-edit-builder-vars-timestamp": "Muudatuse Unix-ajatempel ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Kontonimi konto loomisel ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Kontonimi konto loomisel ($1)",
 	"abusefilter-edit-builder-vars-action": "Toiming ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Muudatusega lisatud read ($1)",
 	"abusefilter-edit-builder-vars-delta": "Muudatusega kaasnev suuruse muutus ($1)",

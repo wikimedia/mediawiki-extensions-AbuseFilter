@@ -354,7 +354,7 @@
 	"abusefilter-edit-builder-funcs-set_var": "Постави променљиву ($1)",
 	"abusefilter-edit-builder-group-vars": "Променљиве",
 	"abusefilter-edit-builder-vars-timestamp": "Јуниксов временски потпис измене ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Име налога у тренутку отварања ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Име налога у тренутку отварања ($1)",
 	"abusefilter-edit-builder-vars-action": "Радња ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Додати редови у измени ($1)",
 	"abusefilter-edit-builder-vars-delta": "Промена величине у измени ($1)",

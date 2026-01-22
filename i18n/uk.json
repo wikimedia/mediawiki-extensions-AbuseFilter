@@ -404,7 +404,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Нормалізувати HTML-сутності в Unicode-символи ($1)",
 	"abusefilter-edit-builder-group-vars": "Змінні",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-час редагування ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Ім'я облікового запису при його створенні ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Ім'я облікового запису при його створенні ($1)",
 	"abusefilter-edit-builder-vars-action": "Дія ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Додані у редагуванні рядки ($1)",
 	"abusefilter-edit-builder-vars-delta": "Зміна розміру після редагування ($1)",

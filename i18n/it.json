@@ -394,7 +394,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalizza le entità HTML in caratteri Unicode ($1)",
 	"abusefilter-edit-builder-group-vars": "Variabili",
 	"abusefilter-edit-builder-vars-timestamp": "Timestamp UNIX della modifica ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Nome dell'account al momento della creazione ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Nome dell'account al momento della creazione ($1)",
 	"abusefilter-edit-builder-vars-action": "Azione ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Righe aggiunte dalla modifica ($1)",
 	"abusefilter-edit-builder-vars-delta": "Cambiamento di dimensione della modifica ($1)",

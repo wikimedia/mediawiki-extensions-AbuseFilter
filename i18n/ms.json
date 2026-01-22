@@ -377,7 +377,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalkan entiti HTML menjadi aksara unicode ($1)",
 	"abusefilter-edit-builder-group-vars": "Pemboleh ubah",
 	"abusefilter-edit-builder-vars-timestamp": "Cap masa perubahan Unix ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Nama akaun ketika akaun dibuka ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Nama akaun ketika akaun dibuka ($1)",
 	"abusefilter-edit-builder-vars-action": "Tindakan ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Baris yang diisikan dalam suntingan ($1)",
 	"abusefilter-edit-builder-vars-delta": "Perubahan saiz dalam suntingan ($1)",

@@ -367,7 +367,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Нармалізацыя HTML-аб’ектаў у сымбалі юнікоду ($1)",
 	"abusefilter-edit-builder-group-vars": "Зьменныя",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-час зьмены ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Назва ўліковага запісу пры стварэньні ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Назва ўліковага запісу пры стварэньні ($1)",
 	"abusefilter-edit-builder-vars-action": "Дзеяньне ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Колькасьць радкоў, дададзеных пры рэдагаваньні ($1)",
 	"abusefilter-edit-builder-vars-delta": "Зьмена памеру падчас рэдагаваньня ($1)",

@@ -312,7 +312,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Κανονικοποίηση οντοτήτων HTML σε χαρακτήρες unicode ($1)",
 	"abusefilter-edit-builder-group-vars": "Μεταβλητές",
 	"abusefilter-edit-builder-vars-timestamp": "Χρονική σφραγίδα Unix της επεξεργασίας ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Όνομα λογαριασμού κατά την δημιουργία λογαριασμού ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Όνομα λογαριασμού κατά την δημιουργία λογαριασμού ($1)",
 	"abusefilter-edit-builder-vars-action": "Ενέργεια ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Γραμμές που προστέθηκαν στην επεξεργασία ($1)",
 	"abusefilter-edit-builder-vars-delta": "Αλλαγή μεγέθους κατά την επεξεργασία ($1)",

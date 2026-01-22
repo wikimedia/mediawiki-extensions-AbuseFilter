@@ -421,7 +421,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "HTMLエンティティをUnicode文字に正規化 ($1)",
 	"abusefilter-edit-builder-group-vars": "変数",
 	"abusefilter-edit-builder-vars-timestamp": "変更のUnixタイムスタンプ ($1)",
-	"abusefilter-edit-builder-vars-accountname": "アカウント名 (アカウント作成時のみ) ($1)",
+	"abusefilter-edit-builder-vars-account-name": "アカウント名 (アカウント作成時のみ) ($1)",
 	"abusefilter-edit-builder-vars-action": "操作 ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "編集で追加された行 ($1)",
 	"abusefilter-edit-builder-vars-delta": "編集による変更サイズ ($1)",

@@ -412,7 +412,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normalisera HTML-entiteter till Unicode-tecken ($1)",
 	"abusefilter-edit-builder-group-vars": "Variabler",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-tidsstämpel från förändringen ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Kontonamn vid kontots skapande ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Kontonamn vid kontots skapande ($1)",
 	"abusefilter-edit-builder-vars-action": "Åtgärd ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Rader tillagda i redigering ($1)",
 	"abusefilter-edit-builder-vars-delta": "Storleksändring i redigering ($1)",

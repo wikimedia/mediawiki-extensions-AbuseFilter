@@ -390,7 +390,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "HTML varlıklarını unicode karakterlerle normalize et ($1)",
 	"abusefilter-edit-builder-group-vars": "Değişkenler",
 	"abusefilter-edit-builder-vars-timestamp": "Değişikliğin Unix zaman damgası ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Hesap oluşturma sırasında hesap adı ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Hesap oluşturma sırasında hesap adı ($1)",
 	"abusefilter-edit-builder-vars-action": "Eylem ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Değişiklikte eklenen satırlar ($1)",
 	"abusefilter-edit-builder-vars-delta": "Değişiklikteki boyut değişimi ($1)",

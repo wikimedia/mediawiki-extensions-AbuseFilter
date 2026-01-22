@@ -313,7 +313,7 @@
 	"abusefilter-edit-builder-funcs-set_var": "চলক নির্ধারণ ($1)",
 	"abusefilter-edit-builder-group-vars": "চলক",
 	"abusefilter-edit-builder-vars-timestamp": "পরিবর্তনের ইউনিক্স সময়বার্তা ($1)",
-	"abusefilter-edit-builder-vars-accountname": "অ্যাকাউন্টের নাম (অ্যাকাউন্ট তৈরির সময়) ($1)",
+	"abusefilter-edit-builder-vars-account-name": "অ্যাকাউন্টের নাম (অ্যাকাউন্ট তৈরির সময়) ($1)",
 	"abusefilter-edit-builder-vars-action": "কার্য ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "সম্পাদনায় লাইন যোগ করা হয়েছে ($1)",
 	"abusefilter-edit-builder-vars-delta": "সম্পাদনায় আকৃতির পরিবর্তন ($1)",

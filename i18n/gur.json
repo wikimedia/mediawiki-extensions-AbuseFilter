@@ -198,7 +198,7 @@
 	"abusefilter-edit-builder-funcs-norm": "'Normalize' (norm)",
 	"abusefilter-edit-builder-group-vars": "Tɔka tɔka",
 	"abusefilter-edit-builder-vars-timestamp": "'Unix timestamp of change'",
-	"abusefilter-edit-builder-vars-accountname": "Akanti yu'urɛ (on account creation)",
+	"abusefilter-edit-builder-vars-account-name": "Akanti yu'urɛ (on account creation)",
 	"abusefilter-edit-builder-vars-action": "Itegɔ",
 	"abusefilter-edit-builder-vars-addedlines": "Nɛɛna n pa'asɛ demesego la puan",
 	"abusefilter-edit-builder-vars-delta": "Kãtɛ n tee demesego la puan",

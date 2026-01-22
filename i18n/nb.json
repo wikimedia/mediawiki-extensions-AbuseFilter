@@ -391,7 +391,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "Normaliser HTML-entiteter til Unicode-tegn ($1)",
 	"abusefilter-edit-builder-group-vars": "Variabler",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-tidsstempel ved endring ($1)",
-	"abusefilter-edit-builder-vars-accountname": "Kontonavn ved kontoopprettelse ($1)",
+	"abusefilter-edit-builder-vars-account-name": "Kontonavn ved kontoopprettelse ($1)",
 	"abusefilter-edit-builder-vars-action": "Handling ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Linjer lagt til i redigering ($1)",
 	"abusefilter-edit-builder-vars-delta": "Størrelsesendring i redigering ($1)",

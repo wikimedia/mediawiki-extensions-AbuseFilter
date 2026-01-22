@@ -387,7 +387,7 @@
 	"abusefilter-edit-builder-funcs-sanitize": "נרמול ישויות HTML לתווי יוניקוד ($1)",
 	"abusefilter-edit-builder-group-vars": "משתנים",
 	"abusefilter-edit-builder-vars-timestamp": "זמן השינוי בתסדיר יוניקס ($1)",
-	"abusefilter-edit-builder-vars-accountname": "שם החשבון בעת יצירת חשבון ($1)",
+	"abusefilter-edit-builder-vars-account-name": "שם החשבון בעת יצירת חשבון ($1)",
 	"abusefilter-edit-builder-vars-action": "פעולה ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "שורות שנוספו בעריכה ($1)",
 	"abusefilter-edit-builder-vars-delta": "שינוי הגודל בעריכה ($1)",

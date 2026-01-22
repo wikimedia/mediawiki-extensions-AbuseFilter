@@ -227,7 +227,7 @@
 	"abusefilter-edit-builder-group-misc": "بېلابېل",
 	"abusefilter-edit-builder-funcs-set_var": "اوښتونکی اوڼل ($1)",
 	"abusefilter-edit-builder-group-vars": "اوښتونکي",
-	"abusefilter-edit-builder-vars-accountname": "گڼون نوم د گڼون جوړېدنې په وخت ($1)",
+	"abusefilter-edit-builder-vars-account-name": "گڼون نوم د گڼون جوړېدنې په وخت ($1)",
 	"abusefilter-edit-builder-vars-action": "چاره ($1)",
 	"abusefilter-edit-builder-vars-newsize": "د نوي مخ کچه ($1)",
 	"abusefilter-edit-builder-vars-oldsize": "د زوړ مخ کچه ($1)",
