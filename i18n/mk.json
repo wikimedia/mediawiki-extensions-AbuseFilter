@@ -381,6 +381,7 @@
 	"abusefilter-edit-builder-group-vars": "Променливи",
 	"abusefilter-edit-builder-vars-timestamp": "Unix-датум и време на промената ($1)",
 	"abusefilter-edit-builder-vars-account-name": "Име на сметката ($1)",
+	"abusefilter-edit-builder-vars-account-type": "Вид на сметка при создавање ($1)",
 	"abusefilter-edit-builder-vars-action": "Дејство ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Додадени редови во уредувањето ($1)",
 	"abusefilter-edit-builder-vars-delta": "Големинска промена со уредувањето ($1)",
