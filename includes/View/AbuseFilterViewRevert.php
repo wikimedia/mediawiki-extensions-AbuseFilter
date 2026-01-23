@@ -172,10 +172,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 					$lang->commaList( $displayActions )
 				)->rawParams(
 					$this->linkRenderer->makeLink(
-						SpecialPage::getTitleFor( 'AbuseLog' ),
-						$this->msg( 'abusefilter-log-detailslink' )->text(),
-						[],
-						[ 'details' => $result['id'] ]
+						SpecialPage::getTitleFor( 'AbuseLog', $result['id'] ),
+						$this->msg( 'abusefilter-log-detailslink' )->text()
 					)
 				)->params(
 					$spec->getUser()->getName()
