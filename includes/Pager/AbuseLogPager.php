@@ -107,8 +107,11 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$diffUrl = wfAppendQuery( $diffUrl,
 					[ 'diff' => 'prev', 'oldid' => $row->afl_rev_id ] );
 
-				$diffLink = Linker::makeExternalLink( $diffUrl,
-					$this->msg( 'abusefilter-log-diff' )->text() );
+				$diffLink = $linkRenderer->makeExternalLink(
+					$diffUrl,
+					new HtmlArmor( $this->msg( 'abusefilter-log-diff' )->parse() ),
+					SpecialPage::getTitleFor( $this->basePageName )
+				);
 			}
 		}
 
@@ -225,11 +228,14 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				$linkMsg = $this->msg( 'abusefilter-log-detailedentry-global' )
 					->numParams( $filterID );
 				if ( $centralDb !== null ) {
-					$globalURL = WikiMap::getForeignURL(
-						$centralDb,
-						'Special:AbuseFilter/' . $filterID
+					$filterLink = $linkRenderer->makeExternalLink(
+						WikiMap::getForeignURL(
+							$centralDb,
+							'Special:AbuseFilter/' . $filterID
+						),
+						$linkMsg->text(),
+						SpecialPage::getTitleFor( $this->basePageName )
 					);
-					$filterLink = Linker::makeExternalLink( $globalURL, $linkMsg->text() );
 				} else {
 					$filterLink = $linkMsg->escaped();
 				}
