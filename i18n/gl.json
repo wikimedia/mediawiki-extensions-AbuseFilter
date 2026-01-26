@@ -384,6 +384,7 @@
 	"abusefilter-edit-builder-group-vars": "Variables",
 	"abusefilter-edit-builder-vars-timestamp": "Marca temporal Unix do cambio ($1)",
 	"abusefilter-edit-builder-vars-account-name": "Nome da conta na creación de contas ($1)",
+	"abusefilter-edit-builder-vars-account-type": "Tipo da conta na creación de contas ($1)",
 	"abusefilter-edit-builder-vars-action": "Acción ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Liñas engadidas na edición ($1)",
 	"abusefilter-edit-builder-vars-delta": "Cambio do tamaño na edición ($1)",
