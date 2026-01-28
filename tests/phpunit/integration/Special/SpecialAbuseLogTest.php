@@ -26,8 +26,8 @@ use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\User\UserIdentity;
 use SpecialPageTestBase;
 use stdClass;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Core\DOMCompat;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**

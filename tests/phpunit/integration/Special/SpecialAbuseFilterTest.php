@@ -37,8 +37,8 @@ use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
 use SpecialPageTestBase;
-use Wikimedia\Parsoid\Utils\DOMCompat;
-use Wikimedia\Parsoid\Utils\DOMUtils;
+use Wikimedia\Parsoid\Core\DOMCompat;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter
