@@ -66,17 +66,13 @@ class ViewEditPage extends Page {
 	 * the hidden textarea isn't great (sendKeys is not processed)
 	 */
 	async switchEditor() {
-		// Upgrading to wdio 8 we did this hack when switching to Chromedriver
-		await browser.execute( () => {
-			// eslint-disable-next-line no-undef
-			const button = document.querySelector( '#mw-abusefilter-switcheditor' );
-			if ( !button ) {
-				// CodeEditor not installed, nothing to do here.
-				return;
-			}
-			button.click();
-		} );
-
+		const button = await $( '#mw-abusefilter-switcheditor' );
+		if ( !await button.isExisting() ) {
+			// CodeEditor not installed, nothing to do here.
+			return;
+		}
+		await button.waitForClickable();
+		await button.click();
 	}
 
 	async setWarningMessage( msg ) {

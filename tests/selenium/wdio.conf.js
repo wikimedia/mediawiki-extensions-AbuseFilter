@@ -8,5 +8,5 @@ exports.config = { ...config,
 	//
 	// Example:
 	// logLevel: 'info',
-	maxInstances: 4
+	maxInstances: 1
 };
