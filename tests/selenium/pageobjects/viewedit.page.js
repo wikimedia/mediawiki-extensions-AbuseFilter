@@ -1,5 +1,4 @@
 'use strict';
-
 const Page = require( 'wdio-mediawiki/Page' );
 
 class ViewEditPage extends Page {
@@ -67,22 +66,34 @@ class ViewEditPage extends Page {
 	 * the hidden textarea isn't great (sendKeys is not processed)
 	 */
 	async switchEditor() {
-		const button = await $( '#mw-abusefilter-switcheditor' );
-		if ( !await button.isExisting() ) {
-			// CodeEditor not installed, nothing to do here.
-			return;
-		}
-		await button.waitForClickable();
-		await button.click();
+		// Upgrading to wdio 8 we did this hack when switching to Chromedriver
+		await browser.execute( () => {
+			// eslint-disable-next-line no-undef
+			const button = document.querySelector( '#mw-abusefilter-switcheditor' );
+			if ( !button ) {
+				// CodeEditor not installed, nothing to do here.
+				return;
+			}
+			button.click();
+		} );
+
 	}
 
 	async setWarningMessage( msg ) {
-		await $( 'select[name="wpFilterWarnMessage"]' ).selectByAttribute( 'value', 'other' );
+		// Upgrading to wdio 8 we did this hack when switching to Chromedriver
+		await browser.execute( () => {
+			// eslint-disable-next-line no-undef
+			document.querySelector( 'select[name="wpFilterWarnMessage"]' ).value = 'other';
+		} );
 		await this.warnOtherMessage.setValue( msg );
 	}
 
 	async invalidateToken() {
-		await $( '#mw-abusefilter-editing-form input[name="wpEditToken"]' ).setValue( '' );
+		// Upgrading to wdio 8 we did this hack when switching to Chromedriver
+		await browser.execute( () => {
+			// eslint-disable-next-line no-undef
+			document.querySelector( '#mw-abusefilter-editing-form input[name="wpEditToken"]' ).value = '';
+		} );
 	}
 
 	async open( subpage ) {

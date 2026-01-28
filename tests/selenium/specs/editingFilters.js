@@ -96,7 +96,7 @@ describe( 'Filter editing', () => {
 		it( 'saved data is retained (2)', async () => {
 			await ViewEditPage.open( filterID );
 			assert.strictEqual( await ViewEditPage.name.getValue(), newName );
-			assert.strictEqual( await ViewEditPage.comments.getValue(), newNotes + filterSpecs.comments + '\n' );
+			assert.strictEqual( await ViewEditPage.comments.getValue(), filterSpecs.comments + '\n' + newNotes + '\n' );
 		} );
 	} );
 
