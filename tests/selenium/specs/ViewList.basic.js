@@ -1,8 +1,6 @@
-'use strict';
-
-const assert = require( 'assert' ),
-	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
-	ViewListPage = require( '../pageobjects/viewlist.page' );
+import assert from 'node:assert/strict';
+import LoginPage from 'wdio-mediawiki/LoginPage';
+import { viewListPage as ViewListPage } from '../pageobjects/viewlist.page.js';
 
 describe( 'Special:AbuseFilter', () => {
 	it( 'page should exist on installation', async () => {

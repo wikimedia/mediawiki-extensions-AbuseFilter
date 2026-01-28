@@ -1,10 +1,8 @@
-'use strict';
-
-const assert = require( 'assert' ),
-	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
-	ViewEditPage = require( '../pageobjects/viewedit.page' ),
-	ViewListPage = require( '../pageobjects/viewlist.page' ),
-	ViewImportPage = require( '../pageobjects/viewimport.page' );
+import assert from 'node:assert/strict';
+import LoginPage from 'wdio-mediawiki/LoginPage';
+import { viewEditPage as ViewEditPage } from '../pageobjects/viewedit.page.js';
+import { viewListPage as ViewListPage } from '../pageobjects/viewlist.page.js';
+import { viewImportPage as ViewImportPage } from '../pageobjects/viewimport.page.js';
 
 describe( 'When importing a filter', () => {
 	const filterSpecs = {
