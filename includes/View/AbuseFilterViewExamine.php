@@ -21,9 +21,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\RecentChanges\ChangesList;
 use MediaWiki\RecentChanges\RecentChange;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use OOUI;
 use Wikimedia\Rdbms\LBFactory;
@@ -228,7 +226,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 			return;
 		}
 
-		if ( !ChangesList::userCan( $rc, RevisionRecord::SUPPRESSED_ALL ) ) {
+		if ( !$this->afPermManager::hasRCEntryAccess( $rc, $this->getAuthority() ) ) {
 			$out->addWikiMsg( 'abusefilter-log-details-hidden-implicit' );
 			return;
 		}
