@@ -2,8 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use LogEventsList;
-use LogPage;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -14,7 +12,6 @@ use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Title\Title;
 use RecentChange;
 use Wikimedia\Rdbms\LBFactory;
@@ -240,7 +237,8 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$action = $formData['TestAction'] !== '0' ? $formData['TestAction'] : false;
 		$conds[] = $this->buildTestConditions( $dbr, $action );
-		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $this->getAuthority() ) );
+		$authority = $this->getAuthority();
+		$conds = array_merge( $conds, $this->buildVisibilityConditions( $dbr, $authority ) );
 
 		$res = $dbr->newSelectQueryBuilder()
 			->tables( $rcQuery['tables'] )
@@ -264,27 +262,13 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$ruleChecker->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
 			$rc = RecentChange::newFromRow( $row );
-			if ( !$formData['ShowNegative'] ) {
-				$source = $rc->getAttribute( 'rc_source' );
-				$deletedValue = (int)$rc->getAttribute( 'rc_deleted' );
-				if (
-					(
-						$source === RecentChange::SRC_LOG &&
-						!LogEventsList::userCanBitfield(
-							$deletedValue,
-							LogPage::SUPPRESSED_ACTION | LogPage::SUPPRESSED_USER,
-							$contextUser
-						)
-					) || (
-						$source !== RecentChange::SRC_LOG &&
-						!RevisionRecord::userCanBitfield( $deletedValue, RevisionRecord::SUPPRESSED_ALL, $contextUser )
-					)
-				) {
-					// If the RC is deleted, the user can't see it, and we're only showing matches,
-					// always skip this row. If ShowNegative is true, we can still show the row
-					// because we won't tell whether it matches the given filter.
-					continue;
-				}
+			if ( !$formData['ShowNegative'] &&
+				!$this->afPermManager::hasRCEntryAccess( $rc, $authority )
+			) {
+				// If the RC is deleted, the user can't see it, and we're only showing matches,
+				// always skip this row. If ShowNegative is true, we can still show the row
+				// because we won't tell whether it matches the given filter.
+				continue;
 			}
 
 			$varGenerator = $this->varGeneratorFactory->newRCGenerator( $rc, $contextUser );
