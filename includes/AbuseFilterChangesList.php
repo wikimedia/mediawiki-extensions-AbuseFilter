@@ -36,7 +36,7 @@ class AbuseFilterChangesList extends OldChangesList {
 	public function insertExtra( &$s, &$rc, &$classes ) {
 		if ( (int)$rc->getAttribute( 'rc_deleted' ) !== 0 ) {
 			$s .= ' ' . $this->msg( 'abusefilter-log-hidden-implicit' )->parse();
-			if ( !self::userCan( $rc, RevisionRecord::SUPPRESSED_ALL ) ) {
+			if ( !AbuseFilterPermissionManager::hasRCEntryAccess( $rc, $this->getAuthority() ) ) {
 				// Remember to keep this in sync with the CheckMatch API
 				return;
 			}
