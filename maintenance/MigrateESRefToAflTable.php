@@ -167,12 +167,7 @@ class MigrateESRefToAflTable extends Maintenance {
 					continue;
 				}
 
-				$newFlags = implode( ',', array_filter(
-					$flags,
-					static function ( $v ) {
-						return $v !== 'external';
-					}
-				) );
+				$newFlags = implode( ',', array_diff( $flags, [ 'external' ] ) );
 				$newBlobAddress = 'es:' . $textRow->old_text . '?flags=' . $newFlags;
 
 				if ( !$dryRun ) {

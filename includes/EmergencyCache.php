@@ -33,9 +33,7 @@ class EmergencyCache {
 		$time = (int)round( $this->stash->getCurrentTime() );
 		return array_keys( array_filter(
 			$filterToExpiry,
-			static function ( $exp ) use ( $time ) {
-				return $exp > $time;
-			}
+			static fn ( $exp ) => $exp > $time
 		) );
 	}
 

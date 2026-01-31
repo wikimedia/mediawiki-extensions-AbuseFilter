@@ -538,11 +538,8 @@ class LazyVariableComputer {
 	private function getContentModelFromRevision( ?RevisionRecord $revision ): string {
 		// this is consistent with what is done on various places in RunVariableGenerator
 		// and RCVariableGenerator
-		if ( $revision !== null ) {
-			$content = $revision->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
-			return $content->getModel();
-		}
-		return '';
+		return $revision?->getContent( SlotRecord::MAIN, RevisionRecord::RAW )
+			->getModel() ?? '';
 	}
 
 	/**

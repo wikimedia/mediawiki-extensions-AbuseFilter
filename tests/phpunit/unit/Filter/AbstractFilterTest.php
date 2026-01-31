@@ -106,9 +106,7 @@ class AbstractFilterTest extends MediaWikiUnitTestCase {
 				[ 'foo' => [] ]
 			],
 			'callable' => [
-				static function () {
-					return [ 'bar' => [] ];
-				},
+				static fn () => [ 'bar' => [] ],
 				[ 'bar' => [] ]
 			]
 		];

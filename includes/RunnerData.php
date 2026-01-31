@@ -117,7 +117,7 @@ class RunnerData {
 	 */
 	public static function fromArray( array $value ): self {
 		return new self(
-			array_map( [ RuleCheckerStatus::class, 'fromArray' ], $value['matches'] ),
+			array_map( RuleCheckerStatus::fromArray( ... ), $value['matches'] ),
 			$value['profiling'],
 			$value['runtime'],
 			$value['condCount']

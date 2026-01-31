@@ -59,13 +59,9 @@ trait GetFilterEvaluatorTestTrait {
 	private function getLanguageMock() {
 		$lang = $this->createMock( LanguageEn::class );
 		$lang->method( 'uc' )
-			->willReturnCallback( static function ( $x ) {
-				return mb_strtoupper( $x );
-			} );
+			->willReturnCallback( static fn ( $str, $first ) => mb_strtoupper( $str ) );
 		$lang->method( 'lc' )
-			->willReturnCallback( static function ( $x ) {
-				return mb_strtolower( $x );
-			} );
+			->willReturnCallback( static fn ( $str, $first ) => mb_strtolower( $str ) );
 		return $lang;
 	}
 }
