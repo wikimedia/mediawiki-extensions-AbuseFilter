@@ -80,9 +80,7 @@ class SyntaxChecker {
 			return;
 		}
 		$bound = $this->check( $this->desugar( $this->treeRoot ), [] );
-		$unused = array_keys( array_filter( $bound, static function ( $v ) {
-			return !$v;
-		} ) );
+		$unused = array_keys( $bound, false, true );
 		if ( $this->checkUnusedVars && $unused ) {
 			throw new UserVisibleException(
 				'unusedvars',
@@ -515,9 +513,9 @@ class SyntaxChecker {
 	}
 
 	/**
-	 * @param array $left
-	 * @param array $right
-	 * @return array
+	 * @param array<string,bool> $left
+	 * @param array<string,bool> $right
+	 * @return array<string,bool>
 	 */
 	private function mapUnion( array $left, array $right ): array {
 		foreach ( $right as $key => $val ) {
@@ -531,9 +529,9 @@ class SyntaxChecker {
 	}
 
 	/**
-	 * @param array $left
-	 * @param array $right
-	 * @return array
+	 * @param array<string,bool> $left
+	 * @param array<string,bool> $right
+	 * @return array<string,bool>
 	 */
 	private function mapIntersect( array $left, array $right ): array {
 		$keys = array_intersect_key( $left, $right );
@@ -547,8 +545,8 @@ class SyntaxChecker {
 	/**
 	 * @param string $var
 	 * @param int $pos
-	 * @param array $bound
-	 * @return array
+	 * @param array<string,bool> $bound
+	 * @return array<string,bool>
 	 */
 	private function assignVar( string $var, int $pos, array $bound ): array {
 		$var = strtolower( $var );
@@ -566,8 +564,8 @@ class SyntaxChecker {
 	/**
 	 * @param string $var
 	 * @param int $pos
-	 * @param array $bound
-	 * @return array
+	 * @param array<string,bool> $bound
+	 * @return array<string,bool>
 	 */
 	private function lookupVar( string $var, int $pos, array $bound ): array {
 		$var = strtolower( $var );

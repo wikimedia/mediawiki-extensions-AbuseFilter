@@ -198,12 +198,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 */
 	public function getViewClassAndPageType( $subpage ): array {
 		// Filter by removing blanks.
-		$params = array_values( array_filter(
-			explode( '/', $subpage ?: '' ),
-			static function ( $value ) {
-				return $value !== '';
-			}
-		) );
+		$params = preg_split( '{/+}', $subpage ?: '' );
 
 		if ( $subpage === 'tools' ) {
 			return [ AbuseFilterViewTools::class, 'tools', [] ];
