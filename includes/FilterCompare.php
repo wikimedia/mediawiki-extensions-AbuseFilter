@@ -19,7 +19,7 @@ class FilterCompare {
 	/**
 	 * @param Filter $firstFilter
 	 * @param Filter $secondFilter
-	 * @return array Fields that are different
+	 * @return string[] Fields that are different
 	 */
 	public function compareVersions( Filter $firstFilter, Filter $secondFilter ): array {
 		// TODO: Avoid DB references here, re-add when saving the filter

@@ -11,17 +11,17 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 class RunnerData {
 
 	/**
-	 * @var array<string,array{time:float,conds:int,result:bool}>
+	 * @param array<string,RuleCheckerStatus> $matchedFilters
+	 * @param array<string,array{time: float, conds: int, result: bool}> $profilingData
+	 * @param float $totalRuntime
+	 * @param int $totalConditions
 	 */
-	private $profilingData;
-
 	public function __construct(
 		private array $matchedFilters = [],
-		array $profilingData = [],
+		private array $profilingData = [],
 		private float $totalRuntime = 0.0,
 		private int $totalConditions = 0
 	) {
-		$this->profilingData = $profilingData;
 	}
 
 	/**
@@ -53,9 +53,7 @@ class RunnerData {
 	 */
 	public function getMatchesMap(): array {
 		return array_map(
-			static function ( $status ) {
-				return $status->getResult();
-			},
+			static fn ( RuleCheckerStatus $status ) => $status->getResult(),
 			$this->matchedFilters
 		);
 	}
@@ -96,9 +94,7 @@ class RunnerData {
 	public function toArray(): array {
 		return [
 			'matches' => array_map(
-				static function ( $status ) {
-					return $status->toArray();
-				},
+				static fn ( RuleCheckerStatus $status ) => $status->toArray(),
 				$this->matchedFilters
 			),
 			'profiling' => $this->profilingData,

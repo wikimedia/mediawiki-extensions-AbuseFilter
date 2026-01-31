@@ -155,12 +155,12 @@ class FilterEvaluator {
 	private $warnings = [];
 
 	/**
-	 * @var array Cached results of functions
+	 * @var array<string,mixed> Cached results of functions
 	 */
 	private $funcCache = [];
 
 	/**
-	 * @var array AFPToken::TID values found during node evaluation
+	 * @var string[] AFPToken::TID values found during node evaluation
 	 */
 	private $usedVars = [];
 
@@ -784,7 +784,7 @@ class FilterEvaluator {
 		// allowing it to result in DUNDEFINED.
 		$allowMissingVariables = !$this->varExists( $var ) || $this->allowMissingVariables;
 
-		array_push( $this->usedVars, $var );
+		$this->usedVars[] = $var;
 
 		// It's a built-in, non-disabled variable (either set or unset), or a set custom variable
 		$flags = $allowMissingVariables

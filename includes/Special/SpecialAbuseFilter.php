@@ -193,7 +193,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 *      - type of page for addNavigationLinks
 	 *      - array of parameters for the class
 	 */
-	public function getViewClassAndPageType( $subpage ): array {
+	public function getViewClassAndPageType( ?string $subpage ): array {
 		// Filter by removing blanks.
 		$params = preg_split( '{/+}', $subpage ?: '' );
 

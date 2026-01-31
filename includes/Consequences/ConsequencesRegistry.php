@@ -17,13 +17,17 @@ class ConsequencesRegistry {
 	];
 
 	/** @var string[]|null */
-	private $dangerousActionsCache;
-	/** @var callable[]|null */
-	private $customActionsCache;
+	private ?array $dangerousActionsCache = null;
+	/** @var array<string,callable>|null */
+	private ?array $customActionsCache = null;
 
+	/**
+	 * @param AbuseFilterHookRunner $hookRunner
+	 * @param array<string,bool> $configActions
+	 */
 	public function __construct(
 		private readonly AbuseFilterHookRunner $hookRunner,
-		private readonly array $configActions
+		private readonly array $configActions,
 	) {
 	}
 

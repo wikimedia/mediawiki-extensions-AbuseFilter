@@ -50,7 +50,7 @@ class ChangeTagger {
 	/**
 	 * @param string $id
 	 * @param bool $clear
-	 * @return array
+	 * @return string[]
 	 */
 	private function getTagsForID( string $id, bool $clear = true ): array {
 		$val = self::$tagsToSet[$id] ?? [];
@@ -63,7 +63,7 @@ class ChangeTagger {
 	/**
 	 * @param RecentChange $recentChange
 	 * @param bool $clear
-	 * @return array
+	 * @return string[]
 	 */
 	public function getTagsForRecentChange( RecentChange $recentChange, bool $clear = true ): array {
 		$id = $this->getIDFromRecentChange( $recentChange );

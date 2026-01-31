@@ -41,7 +41,7 @@ class AbuseFilterHistoryPager extends TablePager {
 
 	/**
 	 * Note: this method is called by parent::__construct
-	 * @return array
+	 * @return array<string,string>
 	 * @see MediaWiki\Pager\Pager::getFieldNames()
 	 */
 	public function getFieldNames() {

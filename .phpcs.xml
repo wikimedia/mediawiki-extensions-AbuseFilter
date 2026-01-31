@@ -2,11 +2,11 @@
 <ruleset>
 	<rule ref="./vendor/mediawiki/mediawiki-codesniffer/MediaWiki" />
 	<rule ref="Generic.Files.LineLength">
-		<exclude-pattern>AbuseFilter\.alias\.php</exclude-pattern>
+		<exclude-pattern>/AbuseFilter\.alias\.php</exclude-pattern>
 	</rule>
 	<rule ref="MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName">
 		<!-- Many hooks have a dash in their name -->
-		<exclude-pattern>*includes/Hooks</exclude-pattern>
+		<exclude-pattern>/includes/Hooks/AbuseFilter*Hook*\.php</exclude-pattern>
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php"/>

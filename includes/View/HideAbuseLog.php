@@ -114,7 +114,7 @@ class HideAbuseLog extends AbuseFilterView {
 		HTMLForm::factory( 'ooui', $formInfo, $this->getContext() )
 			->setAction( $actionURL )
 			->setWrapperLegend( $this->msg( 'abusefilter-log-hide-legend' )->text() )
-			->setSubmitCallback( [ $this, 'saveHideForm' ] )
+			->setSubmitCallback( $this->saveHideForm( ... ) )
 			->showAlways();
 
 		// Show suppress log for this entry. Hack: since every suppression is performed on a

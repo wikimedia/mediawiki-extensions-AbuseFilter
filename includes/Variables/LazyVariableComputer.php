@@ -447,7 +447,7 @@ class LazyVariableComputer {
 
 	/**
 	 * @param PageIdentity $page
-	 * @return array
+	 * @return string[]
 	 */
 	private function getLinksFromDB( PageIdentity $page ): array {
 		$id = $page->getId();
