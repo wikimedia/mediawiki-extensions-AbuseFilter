@@ -121,7 +121,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	public static function provideEntryAndVisibility(): Generator {
 		$visibleRow = (object)[ 'afl_rev_id' => 1, 'afl_deleted' => 0, 'afl_filter_id' => 1, 'afl_global' => 0 ];
 		$hiddenRow = (object)[ 'afl_rev_id' => 1, 'afl_deleted' => 1, 'afl_filter_id' => 1, 'afl_global' => 0 ];
-		$page = new PageIdentityValue( 1, NS_MAIN, 'Foo', PageIdentityValue::LOCAL );
+		$page = PageIdentityValue::localIdentity( 1, NS_MAIN, 'Foo' );
 		$visibleRev = new MutableRevisionRecord( $page );
 
 		yield 'Visible entry and rev, cannot see hidden, cannot see suppressed' =>

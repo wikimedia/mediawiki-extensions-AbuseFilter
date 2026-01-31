@@ -41,7 +41,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 	public static function provideRevisionToString() {
 		yield 'no revision' => [ null, false, '' ];
 
-		$page = new PageIdentityValue( 1, NS_MAIN, 'Foo', PageIdentityValue::LOCAL );
+		$page = PageIdentityValue::localIdentity( 1, NS_MAIN, 'Foo' );
 		$revRec = new MutableRevisionRecord( $page );
 		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
 
