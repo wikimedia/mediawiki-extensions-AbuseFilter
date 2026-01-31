@@ -94,29 +94,29 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
 		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
 		$max = wfTimestampNow();
-		$filterLink =
-			$this->linkRenderer->makeLink(
-				$this->getTitle( $filter ),
-				$lang->formatNum( $filter )
-			);
-		$searchFields = [];
-		$searchFields['filterid'] = [
-			'type' => 'info',
-			'default' => $filterLink,
-			'raw' => true,
-			'label-message' => 'abusefilter-revert-filter'
-		];
-		$searchFields['PeriodStart'] = [
-			'type' => 'datetime',
-			'label-message' => 'abusefilter-revert-periodstart',
-			'min' => $min,
-			'max' => $max
-		];
-		$searchFields['PeriodEnd'] = [
-			'type' => 'datetime',
-			'label-message' => 'abusefilter-revert-periodend',
-			'min' => $min,
-			'max' => $max
+		$filterLink = $this->linkRenderer->makeLink(
+			$this->getTitle( $filter ),
+			$lang->formatNum( $filter )
+		);
+		$searchFields = [
+			'filterid' => [
+				'type' => 'info',
+				'default' => $filterLink,
+				'raw' => true,
+				'label-message' => 'abusefilter-revert-filter',
+			],
+			'PeriodStart' => [
+				'type' => 'datetime',
+				'label-message' => 'abusefilter-revert-periodstart',
+				'min' => $min,
+				'max' => $max,
+			],
+			'PeriodEnd' => [
+				'type' => 'datetime',
+				'label-message' => 'abusefilter-revert-periodend',
+				'min' => $min,
+				'max' => $max,
+			],
 		];
 
 		HTMLForm::factory( 'ooui', $searchFields, $this->getContext() )
@@ -186,17 +186,18 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$dateForm->addPostHtml( Html::rawElement( 'ul', [], implode( "\n", $list ) ) );
 
 		// Add a button down the bottom.
-		$confirmForm = [];
-		$confirmForm['PeriodStart'] = [
-			'type' => 'hidden',
-		];
-		$confirmForm['PeriodEnd'] = [
-			'type' => 'hidden',
-		];
-		$confirmForm['Reason'] = [
-			'type' => 'text',
-			'label-message' => 'abusefilter-revert-reasonfield',
-			'id' => 'wpReason',
+		$confirmForm = [
+			'PeriodStart' => [
+				'type' => 'hidden',
+			],
+			'PeriodEnd' => [
+				'type' => 'hidden',
+			],
+			'Reason' => [
+				'type' => 'text',
+				'label-message' => 'abusefilter-revert-reasonfield',
+				'id' => 'wpReason',
+			],
 		];
 
 		$revertForm = HTMLForm::factory( 'ooui', $confirmForm, $this->getContext() )
