@@ -391,8 +391,8 @@ class SyntaxChecker {
 	 *	   a literal string.
 	 *
 	 * @param AFPTreeNode $node
-	 * @param bool[] $bound Map of [ variable_name => used ]
-	 * @return bool[] Map of [ variable_name => used ]
+	 * @param array<string,bool> $bound Map of [ variable_name => used ]
+	 * @return array<string,bool> Map of [ variable_name => used ]
 	 * @throws UserVisibleException
 	 * @throws InternalException
 	 */

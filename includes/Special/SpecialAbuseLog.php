@@ -863,7 +863,7 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 	 * @deprecated Since 1.45. Use {@link AbuseFilterLogDetailsLookup::getIPForAbuseFilterLog} instead.
 	 * @param Authority $authority The user who's trying to view the row
 	 * @param int $id The ID of the log entry
-	 * @return Status A status object with the requested row stored in the value property,
+	 * @return Status<stdClass> A status object with the requested row stored in the value property,
 	 *  or an error and no row.
 	 */
 	public static function getPrivateDetailsRow( Authority $authority, $id ) {

@@ -42,7 +42,7 @@ class FilterProfiler {
 
 	private const KEY_PREFIX = 'abusefilter-profile';
 
-	/** @var array */
+	/** @var array<string,array> */
 	private $statsSpecs;
 
 	public function __construct(

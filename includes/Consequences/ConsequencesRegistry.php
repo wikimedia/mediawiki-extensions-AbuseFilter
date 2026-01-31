@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Consequence;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use RuntimeException;

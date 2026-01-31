@@ -305,7 +305,7 @@ class KeywordsManager {
 	 * filter actions that were taken by filters
 	 * that used them.
 	 *
-	 * @var array
+	 * @var array<string,string>
 	 */
 	private const DISABLED_VARS = [
 		// Generates abusefilter-edit-builder-vars-old-text

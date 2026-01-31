@@ -224,7 +224,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			'params' => [ 'text' => $new, 'summary' => $summary ],
 			'oldContent' => new WikitextContent( $old ),
 		];
-		// phpcs:enable Generic.Files.LineLength
+		// phpcs:enable
 
 		$old = 'This edit will be pretty smal';
 		$new = $old . 'l';

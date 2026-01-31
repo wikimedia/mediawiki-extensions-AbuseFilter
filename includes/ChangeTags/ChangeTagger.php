@@ -14,7 +14,7 @@ use MediaWiki\User\UserIdentityValue;
 class ChangeTagger {
 	public const SERVICE_NAME = 'AbuseFilterChangeTagger';
 
-	/** @var array (Persistent) map of (action ID => string[]) */
+	/** @var array<string,string[]> (Persistent) map of (action ID => string[]) */
 	private static $tagsToSet = [];
 
 	public function __construct( private readonly ChangeTagsManager $changeTagsManager ) {
