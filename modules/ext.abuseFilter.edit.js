@@ -558,8 +558,10 @@
 			$( '#wpFilterGlobal' ).on( 'change', toggleCustomMessages );
 			toggleCustomMessages();
 
+			// For cbDeleted, reconstruct the container FieldLayout since the label
+			// belongs to that container, not to the checkbox itself (T392104)
 			const cbEnabled = OO.ui.infuse( $( '#wpFilterEnabled' ) );
-			const cbDeleted = OO.ui.infuse( $( '#wpFilterDeleted' ) );
+			const cbDeleted = OO.ui.infuse( $( '#wpFilterDeleted' ).closest( '.oo-ui-fieldLayout' ) ).getField();
 
 			cbEnabled.on( 'change',
 				() => {

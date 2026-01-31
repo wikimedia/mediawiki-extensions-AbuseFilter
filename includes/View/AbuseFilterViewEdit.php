@@ -510,13 +510,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 
 			// Add infusable where needed
-			if ( $checkboxId === 'deleted' || $checkboxId === 'enabled' ) {
+			if ( $checkboxId === 'deleted' ) {
+				// wpFilterDeletedLabel
+				$labelAttribs['id'] = $postVar . 'Label';
+				$labelAttribs['infusable'] = true;
+			} elseif ( $checkboxId === 'enabled' ) {
 				$checkboxAttribs['infusable'] = true;
-				if ( $checkboxId === 'deleted' ) {
-					// wpFilterDeletedLabel
-					$labelAttribs['id'] = $postVar . 'Label';
-					$labelAttribs['infusable'] = true;
-				}
 			}
 
 			$checkbox =
