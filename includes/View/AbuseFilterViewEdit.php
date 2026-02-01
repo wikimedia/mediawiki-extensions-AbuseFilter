@@ -158,6 +158,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
+		if ( !$request->getBool( 'wpMakePublic' ) && !$newFilter->isHidden() && $origFilter->isHidden() ) {
+			// Warn if the user attempts to make a private filter public
+			$request->setVal( 'wpMakePublic', 1 );
+			$status = StatusValue::newGood();
+			$status->warning( 'abusefilter-edit-makepublic' );
+			$this->buildFilterEditor( $status, $newFilter, $filter, $history_id );
+			return;
+		}
+
 		$status = $this->filterStore->saveFilter( $authority, $filter, $newFilter, $origFilter );
 
 		if ( !$status->isGood() ) {
@@ -690,6 +699,11 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$form .= Html::hidden(
 				'wpEditToken',
 				$this->getCsrfTokenSet()->getToken( [ 'abusefilter', $urlFilter ] )->toString()
+			);
+			// Whether the abusefilter-edit-makepublic warning is currently shown
+			$form .= Html::hidden(
+				'wpMakePublic',
+				$this->getRequest()->getInt( 'wpMakePublic' )
 			);
 		}
 

@@ -285,6 +285,60 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
+	/**
+	 * @dataProvider provideViewEditMakePublic
+	 */
+	public function testViewEditMakePublic( int $isNewFilterHidden ) {
+		// Create a private filter
+		$performer = $this->getTestSysop();
+		$name = 'Hidden filter';
+		$rules = '1 = 0';
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$performer->getAuthority(),
+			null,
+			$this->getFilterFromSpecs( [
+				// Use an ID that is not used in ::addDBDataOnce
+				'id' => '3',
+				'name' => $name,
+				'rules' => $rules,
+				'privacy' => Flags::FILTER_HIDDEN,
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		$request = new FauxRequest( [
+			// Avoid the abusefilter-edit-missingfields error (see FilterValidator::checkRequiredFields)
+			'wpFilterDescription' => $name,
+			'wpFilterRules' => $rules,
+		], true );
+		if ( $isNewFilterHidden ) {
+			// Checkbox checked: keep the filter private
+			$request->setVal( 'wpFilterHidden', 1 );
+		}
+
+		// Make sure wpEditToken is set, because wpMakePublic is evaluated after token mismatches
+		$context = RequestContext::getMain();
+		$context->setAuthority( $performer->getAuthority() );
+		$token = $context->getCsrfTokenSet()->getToken( [ 'abusefilter', '3' ] )->toString();
+		$request->setVal( 'wpEditToken', $token );
+
+		[ $html ] = $this->executeSpecialPage( '3', $request );
+
+		$msgFragment = $isNewFilterHidden ? 'shown unexpectedly' : 'not shown';
+		$this->assertSame(
+			!$isNewFilterHidden,
+			str_contains( $html, '(abusefilter-edit-makepublic)' ),
+			"The warning for making a private filter public was $msgFragment"
+		);
+	}
+
+	public static function provideViewEditMakePublic() {
+		return [
+			'Keeping a private filter private' => [ 1 ],
+			'Making a private filter public' => [ 0 ]
+		];
+	}
+
 	public function testViewEditUnrecoverableError() {
 		[ $html, ] = $this->executeSpecialPage(
 			'new',

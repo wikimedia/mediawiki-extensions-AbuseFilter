@@ -205,6 +205,7 @@
 	"abusefilter-edit-subtitle": "Editing filter $1",
 	"abusefilter-edit-subtitle-new": "Creating filter",
 	"abusefilter-edit-token-not-match": "The edit wasn't saved! Please save again.",
+	"abusefilter-edit-makepublic": "'''You are about to make a private filter public.''' Please confirm that this is intended and press \"{{int:abusefilter-edit-save}}\" again to proceed.",
 	"abusefilter-edit-oldwarning": "<strong>You are editing an old version of this filter.\nThe statistics quoted are for the most recent version of the filter.\nIf you save your changes, you will overwrite all changes since the revision you are editing.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Return to this filter's history]].",
 	"abusefilter-edit-oldwarning-view": "<strong>You are viewing an old version of this filter.\nThe statistics quoted are for the most recent version of the filter.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Return to this filter's history]].",
 	"abusefilter-edit-status-label": "Statistics:",
