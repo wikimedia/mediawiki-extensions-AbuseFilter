@@ -14,15 +14,13 @@ use MediaWiki\Title\TitleValue;
 abstract class AbuseFilterSpecialPage extends SpecialPage {
 	/**
 	 * @param string $name
-	 * @param string $restriction
 	 * @param AbuseFilterPermissionManager $afPermissionManager
 	 */
 	public function __construct(
 		$name,
-		$restriction,
 		protected readonly AbuseFilterPermissionManager $afPermissionManager
 	) {
-		parent::__construct( $name, $restriction );
+		parent::__construct( $name );
 	}
 
 	/**

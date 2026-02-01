@@ -112,7 +112,12 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		AbuseFilterPermissionManager $afPermissionManager,
 		private readonly ObjectFactory $objectFactory
 	) {
-		parent::__construct( self::PAGE_NAME, 'abusefilter-view', $afPermissionManager );
+		parent::__construct( self::PAGE_NAME, $afPermissionManager );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'abusefilter-view';
 	}
 
 	/**

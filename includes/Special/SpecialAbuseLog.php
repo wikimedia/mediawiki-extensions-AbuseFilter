@@ -127,9 +127,14 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		private readonly ExtensionRegistry $extensionRegistry,
 		private readonly AbuseLogConditionFactory $abuseLogConditionFactory
 	) {
-		parent::__construct( self::PAGE_NAME, 'abusefilter-log', $afPermissionManager );
+		parent::__construct( self::PAGE_NAME, $afPermissionManager );
 		$this->specsFormatter->setMessageLocalizer( $this );
 		$this->variablesFormatter->setMessageLocalizer( $this );
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'abusefilter-log';
 	}
 
 	/**
