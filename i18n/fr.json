@@ -438,6 +438,7 @@
 	"abusefilter-edit-builder-group-vars": "Variables",
 	"abusefilter-edit-builder-vars-timestamp": "Horodatage Unix de la modification ($1)",
 	"abusefilter-edit-builder-vars-account-name": "Nom du compte (lors de la création du compte) ($1)",
+	"abusefilter-edit-builder-vars-account-type": "Type du compte à sa création ($1)",
 	"abusefilter-edit-builder-vars-action": "Action ($1)",
 	"abusefilter-edit-builder-vars-addedlines": "Lignes ajoutées par la modification ($1)",
 	"abusefilter-edit-builder-vars-delta": "Différence de taille lors de la modification ($1)",
