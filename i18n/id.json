@@ -157,7 +157,7 @@
 	"log-action-filter-abusefilter": "Jenis perubahan filter:",
 	"log-action-filter-abusefilter-create": "Pembuatan filter baru",
 	"log-action-filter-abusefilter-modify": "Modifikasi filter",
-	"log-action-filter-suppress-abuselog": "Penyembunyian catatan penyalahgunaan",
+	"log-action-filter-suppress-abuselog": "Pemberedelan catatan penyalahgunaan",
 	"log-action-filter-rights-blockautopromote": "Pemblokiran promosi otomatis",
 	"log-action-filter-rights-restoreautopromote": "Pengembalian promosi otomatis",
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|mengakses}} rincian pribadi dari $3",
