@@ -76,7 +76,8 @@
 			"Туллук",
 			"Умар",
 			"Megitsune-chan",
-			"Ivan-r"
+			"Ivan-r",
+			"1233qwer1234qwer4"
 		]
 	},
 	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
@@ -687,7 +688,7 @@
 	"notification-header-throttle-filter": "Фильтр злоупотреблений $2, который {{GENDER:$1|вы}} недавно редактировали, был ограничен.",
 	"notification-header-throttle-filter-actions": "Фильтр злоупотреблений $2 недавно отредактированный {{GENDER:$1|вами}} имел высокий процент совпадений, а следующие {{PLURAL:$4|действие было|действия были}} автоматически отключены: $3.",
 	"notification-header-throttle-filter-no-actions": "Фильтр злоупотреблений $2, который {{GENDER:$1|вы}} недавно редактировали, имел высокий уровень совпадений, но никакие действия не были автоматически отключены.",
-	"notification-subject-throttle-filter": "Отредактированный{{GENDER:$1|вами}} фильтр злоупотреблений был заблокирован на сайте {{SITENAME}}",
+	"notification-subject-throttle-filter": "Отредактированный {{GENDER:$1|вами}} фильтр злоупотреблений был заблокирован на сайте {{SITENAME}}",
 	"notification-link-text-show-filter": "Показать фильтр",
 	"right-abusefilter-modify-blocked-external-domains": "Создание или изменение установки блокировки ссылок на внешние домены",
 	"action-abusefilter-modify-blocked-external-domains": "создание или изменение установки блокировки ссылок на внешние домены",

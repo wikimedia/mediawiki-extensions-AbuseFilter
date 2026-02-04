@@ -49,7 +49,10 @@
 			"Translationista",
 			"Umherirrender",
 			"Verdy p",
-			"Yekrats"
+			"Yekrats",
+			"Aca",
+			"Marcin Szwarc",
+			"Ильгиз"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -498,9 +501,9 @@
 	"abusefilter-filter-log": "Used as page title.",
 	"abusefilter-history": "Used as page title.\n\n\"Change history\" is the \"history of changes\"\n\nParameters:\n* $1 - filter ID\n\nIf the filter ID is not specified, {{msg-mw|Abusefilter-filter-log}} will be used.",
 	"abusefilter-history-foruser": "Parameters:\n* $1 - a link to the changing user's page\n* $2 - (Optional) the plain text username",
-	"abusefilter-history-hidden": "{{Identical|Hidden}}",
-	"abusefilter-history-protected": "{{Identical|Protected}}",
-	"abusefilter-history-enabled": "{{Identical|Enabled}}",
+	"abusefilter-history-hidden": "Appears in the table on the abuse filter history page in the {{mw-msg|abusefilter-history-flags}} column.",
+	"abusefilter-history-protected": "Appears in the table on the abuse filter history page in the {{mw-msg|abusefilter-history-flags}} column.",
+	"abusefilter-history-enabled": "Appears in the table on the abuse filter history page in the {{mw-msg|abusefilter-history-flags}} column.",
 	"abusefilter-history-global": "{{Identical|Global}}",
 	"abusefilter-history-timestamp": "Used as table column header in history page of a filter.\n\nTranslate \"Time\" as \"Timestamp\" (time and date).\n{{Identical|Time}}",
 	"abusefilter-history-user": "{{Identical|User}}",
