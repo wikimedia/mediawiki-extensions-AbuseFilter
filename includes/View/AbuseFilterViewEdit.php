@@ -24,7 +24,6 @@ use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\MainConfigNames;
 use MediaWiki\SpecialPage\SpecialPage;
-use MediaWiki\Xml\Xml;
 use OOUI;
 use StatusValue;
 use UnexpectedValueException;
@@ -329,18 +328,28 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 		$fields = [];
 
-		$fields['abusefilter-edit-id'] =
-			$isCreatingNewFilter ?
-				$this->msg( 'abusefilter-edit-new' )->escaped() :
-				htmlspecialchars( $lang->formatNum( (string)$filter ) );
-		$fields['abusefilter-edit-description'] =
+		$fields[] = new OOUI\FieldLayout(
+			new OOUI\LabelWidget( [
+				'label' => $isCreatingNewFilter
+					? $this->msg( 'abusefilter-edit-new' )->text()
+					: $lang->formatNum( (string)$filter ),
+			] ),
+			[
+				'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-id' )->parse() ),
+				'id' => 'mw-abusefilter-edit-id',
+			]
+		);
+		$fields[] = new OOUI\FieldLayout(
 			new OOUI\TextInputWidget( [
 				'name' => 'wpFilterDescription',
 				'id' => 'mw-abusefilter-edit-description-input',
 				'value' => $filterObj->getName(),
 				'readOnly' => $readOnly
-				]
-			);
+			] ),
+			[
+				'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-description' )->parse() ),
+			]
+		);
 
 		$validGroups = $this->getConfig()->get( 'AbuseFilterValidGroups' );
 		if ( count( $validGroups ) > 1 ) {
@@ -360,7 +369,12 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$options = Html::listDropdownOptionsOoui( $options );
 			$groupSelector->setOptions( $options );
 
-			$fields['abusefilter-edit-group'] = $groupSelector;
+			$fields[] = new OOUI\FieldLayout(
+				$groupSelector,
+				[
+					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-group' )->parse() ),
+				]
+			);
 		}
 
 		// Hit count display
@@ -375,7 +389,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				[ 'wpSearchFilter' => $filterObj->getID() ]
 			);
 
-			$fields['abusefilter-edit-hitcount'] = $hitCount;
+			$fields[] = new OOUI\FieldLayout(
+				new OOUI\LabelWidget( [
+					'label' => new OOUI\HtmlSnippet( $hitCount ),
+				] ),
+				[
+					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-hitcount' )->parse() ),
+				]
+			);
 		}
 
 		if ( $filter !== null && $filterObj->isEnabled() ) {
@@ -392,26 +413,44 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$avgTime = round( $curTotalTime / $totalCount, 2 );
 				$avgCond = round( $curTotalConds / $totalCount, 1 );
 
-				$fields['abusefilter-edit-status-label'] = $this->msg( 'abusefilter-edit-status' )
-					->numParams( $totalCount, $matchesCount, $matchesPercent, $avgTime, $avgCond )
-					->parse();
+				$fields[] = new OOUI\FieldLayout(
+					new OOUI\LabelWidget( [
+						'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-status' )
+							->numParams( $totalCount, $matchesCount, $matchesPercent, $avgTime, $avgCond )
+							->parse() ),
+					] ),
+					[
+						'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-status-label' )->parse() ),
+					]
+				);
 			}
 		}
 
 		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $authority, $out );
 
-		$fields['abusefilter-edit-rules'] = $boxBuilder->buildEditBox(
-			$filterObj->getRules(),
-			true
+		$fields[] = new OOUI\FieldLayout(
+			new OOUI\LabelWidget( [
+				'label' => new OOUI\HtmlSnippet( $boxBuilder->buildEditBox(
+					$filterObj->getRules(),
+					true
+				) ),
+			] ),
+			[
+				'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-rules' )->parse() ),
+			]
 		);
-		$fields['abusefilter-edit-notes'] =
+		$fields[] = new OOUI\FieldLayout(
 			new OOUI\MultilineTextInputWidget( [
 				'name' => 'wpFilterNotes',
 				'value' => $filterObj->getComments() . "\n",
 				'rows' => 15,
 				'readOnly' => $readOnly,
 				'id' => 'mw-abusefilter-notes-editor'
-			] );
+			] ),
+			[
+				'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-notes' )->parse() ),
+			]
+		);
 
 		// Build checkboxes
 		$checkboxes = [ 'suppressed', 'hidden', 'enabled', 'deleted' ];
@@ -453,7 +492,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning-no-actions' )
 					->parseAsBlock();
 			}
-			$flags .= Html::warningBox( $throttledMsg );
+			$fields[] = new OOUI\FieldLayout(
+				new OOUI\MessageWidget( [
+					'type' => 'warning',
+					'label' => new OOUI\HtmlSnippet( $throttledMsg ),
+				] ),
+				[
+					'label' => ' ',
+				]
+			);
 		}
 
 		foreach ( $checkboxes as $checkboxId ) {
@@ -526,7 +573,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$flags .= $checkbox;
 		}
 
-		$fields['abusefilter-edit-flags'] = $flags;
+		$fields[] = new OOUI\FieldLayout(
+			new OOUI\LabelWidget( [
+				'label' => new OOUI\HtmlSnippet( $flags ),
+			] ),
+			[
+				'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-flags' )->parse() ),
+			]
+		);
 
 		if ( $filter !== null ) {
 			$tools = '';
@@ -556,28 +610,42 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$userLink =
 				Linker::userLink( $filterObj->getUserID(), $filterObj->getUserName() ) .
 				Linker::userToolLinks( $filterObj->getUserID(), $filterObj->getUserName() );
-			$fields['abusefilter-edit-lastmod'] =
-				$this->msg( 'abusefilter-edit-lastmod-text' )
-				->rawParams(
-					$this->getLinkToLatestDiff(
-						$filter,
-						$lang->userTimeAndDate( $filterObj->getTimestamp(), $user )
-					),
-					$userLink,
-					$this->getLinkToLatestDiff(
-						$filter,
-						$lang->userDate( $filterObj->getTimestamp(), $user )
-					),
-					$this->getLinkToLatestDiff(
-						$filter,
-						$lang->userTime( $filterObj->getTimestamp(), $user )
-					)
-				)->params(
-					wfEscapeWikiText( $filterObj->getUserName() )
-				)->parse();
+			$fields[] = new OOUI\FieldLayout(
+				new OOUI\LabelWidget( [
+					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-lastmod-text' )
+						->rawParams(
+							$this->getLinkToLatestDiff(
+								$filter,
+								$lang->userTimeAndDate( $filterObj->getTimestamp(), $user )
+							),
+							$userLink,
+							$this->getLinkToLatestDiff(
+								$filter,
+								$lang->userDate( $filterObj->getTimestamp(), $user )
+							),
+							$this->getLinkToLatestDiff(
+								$filter,
+								$lang->userTime( $filterObj->getTimestamp(), $user )
+							)
+						)->params(
+							wfEscapeWikiText( $filterObj->getUserName() )
+						)->parse() ),
+				] ),
+				[
+					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-lastmod' )->parse() ),
+				]
+			);
 			$history_display = new HtmlArmor( $this->msg( 'abusefilter-edit-viewhistory' )->parse() );
-			$fields['abusefilter-edit-history'] =
-				$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display );
+			$fields[] = new OOUI\FieldLayout(
+				new OOUI\LabelWidget( [
+					'label' => new OOUI\HtmlSnippet(
+						$this->linkRenderer->makeKnownLink( $this->getTitle( 'history/' . $filter ), $history_display )
+					),
+				] ),
+				[
+					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-history' )->parse() ),
+				]
+			);
 
 			$exportText = $this->filterImporter->encodeData( $filterObj, $actions );
 			$tools .= Html::rawElement( 'a', [ 'href' => '#', 'id' => 'mw-abusefilter-export-link' ],
@@ -590,13 +658,19 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					'rows' => 10
 				] );
 
-			$fields['abusefilter-edit-tools'] = $tools;
+			$fields[] = new OOUI\FieldLayout(
+				new OOUI\LabelWidget( [
+					'label' => new OOUI\HtmlSnippet( $tools ),
+				] ),
+				[
+					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-tools' )->parse() ),
+				]
+			);
 		}
 
 		$form = Html::openElement( 'fieldset' ) . "\n" .
 			Html::element( 'legend', [], $this->msg( 'abusefilter-edit-main' )->text() ) . "\n" .
-			// TODO: deprecated, use OOUI or Codex widgets instead
-			Xml::buildForm( $fields ) . "\n" .
+			implode( '', $fields ) . "\n" .
 			Html::closeElement( 'fieldset' ) . "\n";
 		$form .= Html::openElement( 'fieldset' ) . "\n" .
 			Html::element( 'legend', [], $this->msg( 'abusefilter-edit-consequences' )->text() ) . "\n" .

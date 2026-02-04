@@ -236,7 +236,7 @@
 			const api = new mw.Api();
 			const args = [
 				'<nowiki>' + $( 'input[name=wpFilterDescription]' ).val() + '</nowiki>',
-				$( '#mw-abusefilter-edit-id' ).children().last().text()
+				$( '#mw-abusefilter-edit-id div' ).children().last().text()
 			];
 			const message = getCurrentMessage( action );
 

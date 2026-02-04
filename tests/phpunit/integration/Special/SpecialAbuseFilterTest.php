@@ -352,10 +352,6 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	}
 
 	public function testViewEditProtectedVarsCheckboxPresentForProtectedFilter() {
-		// Xml::buildForm uses the global wfMessage which means we need to set
-		// the language for the user globally too.
-		$this->setUserLang( 'qqx' );
-
 		[ $html, ] = $this->executeSpecialPage(
 			'1',
 			new FauxRequest(),

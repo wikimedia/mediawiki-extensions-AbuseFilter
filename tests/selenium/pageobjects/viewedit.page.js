@@ -3,7 +3,7 @@ import Page from 'wdio-mediawiki/Page';
 class ViewEditPage extends Page {
 	// Here we avoid things depending on the config, e.g. group and global
 	get filterId() {
-		return $( '#mw-abusefilter-edit-id .mw-input' );
+		return $( '#mw-abusefilter-edit-id .oo-ui-labelWidget' );
 	}
 
 	get name() {
