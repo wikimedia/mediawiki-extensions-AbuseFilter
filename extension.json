@@ -494,6 +494,7 @@
 		"ContributionsToolLinks": "ToolLinks",
 		"HistoryPageToolLinks": "ToolLinks",
 		"UndeletePageToolLinks": "ToolLinks",
+		"HtmlPageLinkRendererEnd": "ToolLinks",
 		"UploadVerifyUpload": "FilteredActions",
 		"UploadStashFile": "FilteredActions",
 		"getUserPermissionsErrors": "EditPermission",

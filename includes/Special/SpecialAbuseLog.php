@@ -997,7 +997,9 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					Html::rawElement(
 						'td',
 						[],
-						self::getUserLinks( 0, $row->afl_ip ) . $CULink
+						$linkRenderer->makeUserLink( new UserIdentityValue( 0, $row->afl_ip ), $this->getContext() )
+							. Linker::userToolLinks( 0, $row->afl_ip, true )
+							. $CULink
 					)
 				);
 		} else {
@@ -1183,22 +1185,6 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 		$logEntry->setComment( $reason );
 
 		$logEntry->insert();
-	}
-
-	/**
-	 * @param int $userId
-	 * @param string $userName
-	 * @return string
-	 */
-	public static function getUserLinks( $userId, $userName ) {
-		static $cache = [];
-
-		if ( !isset( $cache[$userName][$userId] ) ) {
-			$cache[$userName][$userId] = Linker::userLink( $userId, $userName ) .
-				Linker::userToolLinks( $userId, $userName, true );
-		}
-
-		return $cache[$userName][$userId];
 	}
 
 	/**

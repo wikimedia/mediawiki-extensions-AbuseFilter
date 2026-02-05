@@ -21,6 +21,7 @@ use MediaWiki\Request\FauxRequest;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\User\UserIdentity;
@@ -31,6 +32,7 @@ use Wikimedia\Parsoid\Ext\DOMUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
+ * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ToolLinksHandler
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog
  * @covers \MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager
  * @covers \MediaWiki\Extension\AbuseFilter\View\HideAbuseLog
@@ -45,6 +47,12 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	private Authority $authorityCanUseProtectedVar;
 	private static Authority $authorityCanRevealTempAccountIPs;
 	private static Authority $authorityNoRights;
+	/**
+	 * This property should not be set directly. Use ::setFilterIdsForTearDown.
+	 *
+	 * @var array{ids?:int[],preserve?:string[]}
+	 */
+	private array $tearDownDbCleanerMap = [];
 
 	protected function setUp(): void {
 		parent::setUp();
@@ -87,7 +95,53 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 		);
 
 		// Create an authority who has no additional rights
-		self::$authorityNoRights = $this->getTestUser()->getAuthority();
+		self::$authorityNoRights = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[
+				'abusefilter-log'
+			]
+		);
+	}
+
+	/**
+	 * Set filter IDs whose associated rows should be cleaned up in ::tearDown.
+	 *
+	 * @param int|int[] $ids IDs of the filters
+	 * @param string[] $preserve Prevent clearing the specified tables
+	 * @return void
+	 */
+	private function setFilterIdsForTearDown( int|array $ids, array $preserve = [] ) {
+		$this->tearDownDbCleanerMap = [
+			'ids' => is_array( $ids ) ? $ids : [ $ids ],
+			'preserve' => $preserve
+		];
+	}
+
+	protected function tearDown(): void {
+		if ( isset( $this->tearDownDbCleanerMap['ids'] ) ) {
+			$fieldMap = [
+				'abuse_filter' => 'af_id',
+				'abuse_filter_action' => 'afa_filter',
+				'abuse_filter_log' => 'afl_filter_id',
+				'abuse_filter_history' => 'afh_filter',
+			];
+			$dbw = $this->getDb();
+			$preserve = $this->tearDownDbCleanerMap['preserve'] ?? [];
+			foreach ( $fieldMap as $table => $field ) {
+				if ( in_array( $table, $preserve, true ) ) {
+					continue;
+				}
+				$dbw->newDeleteQueryBuilder()
+					->table( $table )
+					->where( [ $field => $this->tearDownDbCleanerMap['ids'] ] )
+					->caller( __METHOD__ )
+					->execute();
+			}
+		}
+		$this->tearDownDbCleanerMap = [];
+
+		RequestContext::getMain()->resetMain();
+		parent::tearDown();
 	}
 
 	/**
@@ -163,6 +217,78 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			[ $hiddenRow, $allSuppRev, true, true, SpecialAbuseLog::VISIBILITY_VISIBLE ];
 		yield 'Hidden entry, all suppressed rev, cannot see hidden, can see suppressed' =>
 			[ $hiddenRow, $allSuppRev, false, true, SpecialAbuseLog::VISIBILITY_HIDDEN ];
+	}
+
+	/**
+	 * @dataProvider provideGetUserLinks
+	 */
+	public function testGetUserLinks( bool $isUserAttached ) {
+		$account = $isUserAttached
+			? $this->getTestUser()->getUser()
+			: $this->getServiceContainer()->getUserFactory()->newFromName( 'NonAttachedUser ' . __FUNCTION__ );
+		$this->assertSame( $isUserAttached, $account->isRegistered() );
+		$accountName = $account->getName();
+
+		$loginSpecialPage = SpecialPage::getTitleFor( 'Userlogin' );
+		AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
+			$loginSpecialPage,
+			$account,
+			VariableHolder::newFromArray( [
+				'action' => 'autocreateaccount',
+				'account_name' => $accountName,
+			] )
+		)->addLogEntries( [ 3 => [ 'disallow' ] ] );
+		$this->setFilterIdsForTearDown( 3, [
+			'abuse_filter',
+			'abuse_filter_action',
+			'abuse_filter_history',
+		] );
+
+		// Context must be set because LinkRenderer::makeUserLink reads it
+		$context = RequestContext::getMain();
+		$request = new FauxRequest( [
+			'wpSearchUser' => $accountName,
+			'wpSearchTitle' => $loginSpecialPage->getPrefixedText(),
+			'wpSearchAction' => 'autocreateaccount',
+		] );
+		$context->setUser( $this->getTestSysop()->getUser() );
+		$context->setRequest( $request );
+		$context->setLanguage( 'qqx' );
+
+		[ $html ] = $this->executeSpecialPage( '', null, null, null, false, $context );
+
+		$actual = substr_count( $html, '<li data-afl-log-id=' );
+		$this->assertSame(
+			1, $actual,
+			"Expected 1 abuse log entry, but got $actual"
+		);
+
+		$expected = (int)$isUserAttached;
+		$actual = substr_count( $html, '(blocklink)' );
+		$this->assertSame(
+			$expected, $actual,
+			"Expected $expected block link(s), but got $actual"
+		);
+
+		$expected = (int)!$isUserAttached;
+		$actual = substr_count( $html, 'mw-abusefilter-log-missinguserlink' );
+		$this->assertSame(
+			$expected, $actual,
+			"Expected $expected mw-abusefilter-log-missinguserlink class attribute(s), but got $actual"
+		);
+
+		$actual = substr_count( $html, 'title="(abusefilter-log-missinguserlink-title:' );
+		$this->assertSame(
+			$expected, $actual,
+			"Expected $expected \"(account does not exist)\" title attribute(s), but got $actual"
+		);
+	}
+
+	public static function provideGetUserLinks() {
+		return [
+			'An abuse log entry for an attached user' => [ true ],
+			'An abuse log entry for an unattached user' => [ false ],
+		];
 	}
 
 	/** @dataProvider provideGetPrivateDetailsRowForFatalStatus */
@@ -356,7 +482,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 		$filterSpecsForSuppressed = $this->getFilterFromSpecs( [
 			// Use an ID not present in addDBDataOnce() to avoid colliding with fixture filters
-			'id' => 3,
+			'id' => 4,
 			'rules' => 'action = "edit"',
 			'privacy' => Flags::FILTER_SUPPRESSED,
 			'actions' => [ 'log' ],
@@ -369,9 +495,10 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			$authorityCanSuppressFilters,
 			null,
 			$filterSpecsForSuppressed,
-			MutableFilter::newDefault( 'Creating test suppressed filter for SpecialAbuseLogTest' )
+			MutableFilter::newDefault()
 		);
 		$this->assertStatusGood( $saveStatus, 'Failed to save the new suppressed filter.' );
+		$this->setFilterIdsForTearDown( 4 );
 
 		$filterSaveResult = $saveStatus->getValue();
 		$this->assertIsArray( $filterSaveResult, 'Save status value should be an array.' );
@@ -393,43 +520,23 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 
 		$logger->addLogEntries( [ (int)$filterIdForThisTest => [] ] );
 
-		$dbw = $this->getDb();
-		$logRow = $dbw->newSelectQueryBuilder()
+		$logId = $this->getDb()->newSelectQueryBuilder()
 			->select( 'afl_id' )
 			->from( 'abuse_filter_log' )
 			->where( [ 'afl_filter_id' => (int)$filterIdForThisTest ] )
 			->orderBy( 'afl_id', 'DESC' )
-			->limit( 1 )
 			->caller( __METHOD__ )
-			->fetchRow();
-		$this->assertNotNull( $logRow, 'Expected a log row for suppressed filter.' );
-		$logId = (int)$logRow->afl_id;
+			->fetchField();
+		$this->assertNotNull( $logId, 'Expected an abuse log ID for suppressed filter.' );
 
 		[ $html ] = $this->executeSpecialPage(
-			(string)$logId,
+			$logId,
 			null,
 			null,
 			$this->authorityCanUseProtectedVar
 		);
 
 		$this->assertStringContainsString( '(abusefilter-log-cannot-see-details', $html );
-
-		// Clean up: remove the log entry and filter so subsequent tests relying on fixed counts aren't affected
-		$dbw->newDeleteQueryBuilder()
-			->delete( 'abuse_filter_log' )
-			->where( [ 'afl_id' => $logId ] )
-			->caller( __METHOD__ )
-			->execute();
-		$dbw->newDeleteQueryBuilder()
-			->delete( 'abuse_filter_action' )
-			->where( [ 'afa_filter' => (int)$filterIdForThisTest ] )
-			->caller( __METHOD__ )
-			->execute();
-		$dbw->newDeleteQueryBuilder()
-			->delete( 'abuse_filter' )
-			->where( [ 'af_id' => (int)$filterIdForThisTest ] )
-			->caller( __METHOD__ )
-			->execute();
 	}
 
 	public function testShowDetailsWhenUserLacksAccessToProtectedVariableValues() {
@@ -724,6 +831,18 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 				'user_unnamed_ip' => '6.7.8.9',
 			] )
 		)->addLogEntries( [ 2 => [] ] );
+
+		// Create a catch-all filter for account creation
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$performer, null,
+			$this->getFilterFromSpecs( [
+				'id' => '3',
+				'name' => 'Catch-all for account creation',
+				'rules' => 'action contains "createaccount"',
+				'actions' => [ 'disallow' ],
+			] ),
+			MutableFilter::newDefault()
+		) );
 	}
 
 	protected function newSpecialPage() {

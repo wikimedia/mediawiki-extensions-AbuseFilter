@@ -114,7 +114,11 @@ class AbuseLogPager extends ReverseChronologicalPager {
 
 		if ( !$row->afl_wiki ) {
 			// Local user
-			$userLink = SpecialAbuseLog::getUserLinks( $row->afl_user, $row->afl_user_text );
+			$userLink = $this->getUserLinks(
+				$row->user_id ?? $row->afl_user,
+				$row->afl_user_text,
+				in_array( $row->afl_action, [ 'createaccount', 'autocreateaccount' ], true )
+			);
 		} else {
 			$userLink = WikiMap::foreignUserLink( $row->afl_wiki, $row->afl_user_text ) . ' ' .
 				$this->msg( 'parentheses', WikiMap::getWikiName( $row->afl_wiki ) )->escaped();
@@ -337,11 +341,50 @@ class AbuseLogPager extends ReverseChronologicalPager {
 	}
 
 	/**
+	 * @param int $userId
+	 * @param string $userName
+	 * @param bool $isAccountCreation If true, suppress the block link when the username
+	 * is not registered locally.
+	 * @return string
+	 */
+	private function getUserLinks( $userId, string $userName, bool $isAccountCreation = false ): string {
+		static $cache = [];
+
+		// Use a single string key for simpler and faster cache lookups
+		$cacheKey = implode( '|', [ $userId, $userName, (int)$isAccountCreation ] );
+		if ( isset( $cache[$cacheKey] ) ) {
+			return $cache[$cacheKey];
+		}
+
+		$attributes = [];
+		$flags = 0;
+
+		// If the account does not exist locally, don't generate a block link since it can't be blocked
+		// Also make it visually explicit that the account does not exist
+		if ( !$userId && $isAccountCreation ) {
+			$attributes['class'] = 'mw-abusefilter-log-missinguserlink';
+			$flags |= Linker::TOOL_LINKS_NOBLOCK;
+			$this->getContext()->getOutput()->addModuleStyles( 'ext.abuseFilter' );
+		}
+
+		$userLink = $this->getLinkRenderer()->makeUserLink(
+			new UserIdentityValue( $userId, $userName ),
+			$this->getContext(),
+			null,
+			$attributes
+		);
+		$userToolLinks = Linker::userToolLinks( $userId, $userName, true, $flags );
+
+		$cache[$cacheKey] = $userLink . $userToolLinks;
+		return $cache[$cacheKey];
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getQueryInfo() {
 		$info = [
-			'tables' => [ 'abuse_filter_log', 'revision' ],
+			'tables' => [ 'abuse_filter_log', 'revision', 'user' ],
 			'fields' => [
 				'afl_id',
 				'afl_global',
@@ -359,6 +402,7 @@ class AbuseLogPager extends ReverseChronologicalPager {
 				'afl_deleted',
 				'afl_rev_id',
 				'rev_id',
+				'user_id',
 			],
 			'conds' => $this->conds,
 			'join_conds' => [
@@ -368,6 +412,14 @@ class AbuseLogPager extends ReverseChronologicalPager {
 						'afl_wiki' => null,
 						$this->mDb->expr( 'afl_rev_id', '!=', null ),
 						'rev_id=afl_rev_id',
+					]
+				],
+				'user' => [
+					'LEFT JOIN',
+					[
+						'afl_wiki' => null,
+						'afl_action' => [ 'createaccount', 'autocreateaccount' ],
+						'afl_user_text=user_name',
 					]
 				],
 			],

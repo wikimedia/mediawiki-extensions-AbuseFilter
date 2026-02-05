@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
 use MediaWiki\Hook\ContributionsToolLinksHook;
 use MediaWiki\Hook\HistoryPageToolLinksHook;
 use MediaWiki\Hook\UndeletePageToolLinksHook;
+use MediaWiki\Linker\Hook\HtmlPageLinkRendererEndHook;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\SpecialPage\SpecialPage;
@@ -17,7 +18,8 @@ use MediaWiki\Title\TitleValue;
 class ToolLinksHandler implements
 	ContributionsToolLinksHook,
 	HistoryPageToolLinksHook,
-	UndeletePageToolLinksHook
+	UndeletePageToolLinksHook,
+	HtmlPageLinkRendererEndHook
 {
 	public function __construct( private readonly AbuseFilterPermissionManager $afPermManager ) {
 	}
@@ -88,4 +90,16 @@ class ToolLinksHandler implements
 			? new TitleValue( NS_SPECIAL, SpecialAbuseLog::PAGE_NAME )
 			: SpecialPage::getTitleFor( SpecialAbuseLog::PAGE_NAME );
 	}
+
+	/** @inheritDoc */
+	public function onHtmlPageLinkRendererEnd( $linkRenderer, $target, $isKnown, &$text, &$attribs, &$ret ) {
+		if ( str_contains( $attribs['class'], 'mw-abusefilter-log-missinguserlink' ) ) {
+			$attribs['title'] = wfMessage(
+				'abusefilter-log-missinguserlink-title',
+				Title::newFromLinkTarget( $target )->getPrefixedText()
+			)->inUserLanguage()->text();
+		}
+		return true;
+	}
+
 }

@@ -96,6 +96,7 @@
 	"abusefilter-log-noactions": "none",
 	"abusefilter-log-noactions-filter": "None",
 	"abusefilter-log-details-diff": "Changes made in edit",
+	"abusefilter-log-missinguserlink-title": "$1 (account does not exist)",
 	"abusefilter-log-linkoncontribs": "abuse log",
 	"abusefilter-log-linkoncontribs-text": "Abuse log for {{GENDER:$1|this user}}",
 	"abusefilter-log-linkonhistory": "view abuse log",
