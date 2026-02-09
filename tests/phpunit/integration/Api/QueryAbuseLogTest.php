@@ -15,6 +15,7 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\User;
@@ -24,6 +25,7 @@ use MediaWiki\User\UserIdentityValue;
 use Wikimedia\IPUtils;
 
 /**
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory
  * @covers \MediaWiki\Extension\AbuseFilter\Api\QueryAbuseLog
  * @group medium
  * @group Database
@@ -37,10 +39,14 @@ class QueryAbuseLogTest extends ApiTestCase {
 		'Filter with protected variables for 1.2.3.4';
 	private const FILTER_NAME_172_19_0_X =
 		'Filter with protected variables for 172.19.0.x';
+	private const FILTER_NAME_CREATEACCOUNT =
+		'Catch-all filter for account creation';
 
 	private static UserIdentity $userIdentity;
 	private static string $testUserName;
 	private static string $tempAccountName = '~2025-1';
+	private static string $unattachedCreatorName = 'Unattached account creator';
+	private static string $attachedCreatorName;
 
 	private Authority $authorityCanViewProtectedVar;
 	private Authority $authorityCannotViewProtectedVar;
@@ -231,7 +237,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			'aflfilter' => 1,
 			'aflprop' => 'details',
 			'afldir' => 'older',
-		], null, null, $this->authorityCanViewProtectedVar );
+		], null, false, $this->authorityCanViewProtectedVar );
 		$result = $result[0]['query']['abuselog'];
 		foreach ( $result as $row ) {
 			$this->assertSame( '1.2.3.4', $row['details']['user_unnamed_ip'] );
@@ -273,7 +279,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			'aflprop' => 'details',
 			'afldir' => 'older',
 			'aflfilter' => '3',
-		], null, null, $authorityWithoutSuppressed );
+		], null, false, $authorityWithoutSuppressed );
 	}
 
 	public function testSuppressedLogEntryVisible() {
@@ -305,7 +311,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 			'aflprop' => 'details',
 			'afldir' => 'older',
 			'aflfilter' => '3',
-		], null, null, $authorityWithSuppressed );
+		], null, false, $authorityWithSuppressed );
 
 		// Assert that we can see the log entry for the suppressed filter.
 		$this->assertSame( 'tag', $result[0]['query']['abuselog'][0]['details']['action'] );
@@ -319,7 +325,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 				'aflprop' => 'filter',
 				'afldir' => 'older',
 			],
-			null, null, $this->authorityCanViewProtectedVar
+			null, false, $this->authorityCanViewProtectedVar
 		);
 
 		// Expect that the API returns the filter names associated with the log
@@ -333,6 +339,8 @@ class QueryAbuseLogTest extends ApiTestCase {
 				[ 'filter' => self::FILTER_NAME_172_19_0_X ],
 				[ 'filter' => self::FILTER_NAME_1_2_3_4 ],
 				[ 'filter' => self::FILTER_NAME_1_2_3_4 ],
+				[ 'filter' => self::FILTER_NAME_CREATEACCOUNT ],
+				[ 'filter' => self::FILTER_NAME_CREATEACCOUNT ],
 			],
 			$result['query']['abuselog']
 		);
@@ -361,7 +369,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 		[ $result ] = $this->doApiRequest(
 			$params,
 			null,
-			null,
+			false,
 			$this->authorityCanViewProtectedVar
 		);
 
@@ -506,7 +514,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 		[ $result ] = $this->doApiRequest(
 			$request,
 			null,
-			null,
+			false,
 			$this->authorityCanViewProtectedVar
 		);
 
@@ -520,7 +528,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 		[ $result ] = $this->doApiRequest(
 			$request,
 			null,
-			null,
+			false,
 			$this->authorityCannotViewTempAccountIpAddresses
 		);
 
@@ -543,9 +551,42 @@ class QueryAbuseLogTest extends ApiTestCase {
 		}
 	}
 
+	/**
+	 * @dataProvider provideExecuteForAccountCreationLogsByUsernameEvenWhenUserIdWasZero
+	 */
+	public function testExecuteForAccountCreationLogsByUsernameEvenWhenUserIdWasZero( callable $getCreatorName ) {
+		$creatorName = $getCreatorName();
+
+		[ $result ] = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'abuselog',
+			'afluser' => $creatorName,
+			'aflprop' => 'filter|user|action',
+		] );
+
+		$this->assertSame(
+			[
+				[
+					'filter' => self::FILTER_NAME_CREATEACCOUNT,
+					'user' => $creatorName,
+					'action' => 'autocreateaccount'
+				]
+			],
+			$result['query']['abuselog']
+		);
+	}
+
+	public static function provideExecuteForAccountCreationLogsByUsernameEvenWhenUserIdWasZero() {
+		return [
+			'Search abuse logs by an unattached username' => [ static fn () => self::$unattachedCreatorName ],
+			'Search abuse logs by an attached username' => [ static fn () => self::$attachedCreatorName ],
+		];
+	}
+
 	public function addDBDataOnce() {
 		$timestamp = '20190826000000';
-		$tempUserCreator = $this->getServiceContainer()->getTempUserCreator();
+		$services = $this->getServiceContainer();
+		$tempUserCreator = $services->getTempUserCreator();
 
 		self::$userIdentity = $this->getMutableTestUser()->getUserIdentity();
 		$tempUser = $tempUserCreator
@@ -669,17 +710,63 @@ class QueryAbuseLogTest extends ApiTestCase {
 		);
 
 		// Insert a log entry for filter #3
-		$abuseFilterLoggerFactory = AbuseFilterServices::getAbuseLoggerFactory();
 		$abuseFilterLoggerFactory->newLogger(
 			$this->getExistingTestPage()->getTitle(),
 			$this->getTestUser()->getUser(),
 			VariableHolder::newFromArray( [ 'action' => 'tag' ] )
 		)->addLogEntries( [ 3 => [ 'warn' ] ] );
 
+		// Create a filter for account creation #4
+		$this->createFilter(
+			$authority,
+			[
+				'id' => '4',
+				'rules' => 'action contains "createaccount"',
+				'name' => self::FILTER_NAME_CREATEACCOUNT,
+				'lastEditor' => $performer,
+				'lastEditTimestamp' => $timestamp,
+			]
+		);
+
+		$loginSpecialPage = SpecialPage::getSafeTitleFor( 'Userlogin' );
+		$this->assertNotNull( $loginSpecialPage );
+
+		// Insert an account creation attempt of an unattached user for filter #4
+		$abuseFilterLoggerFactory->newLogger(
+			$loginSpecialPage,
+			$services->getUserFactory()->newFromName( self::$unattachedCreatorName ),
+			VariableHolder::newFromArray( [
+				'action' => 'autocreateaccount',
+				'account_name' => self::$unattachedCreatorName,
+			] )
+		)->addLogEntries( [ 4 => [ 'disallow' ] ] );
+
+		// Insert an account creation attempt of an attached user for filter #4
+		// Force a unique test user by using a dedicated group
+		$attachedCreator = $this->getTestUser( [ 'accountcreator' ] )->getUserIdentity();
+		$this->assertTrue( $attachedCreator->isRegistered() );
+		self::$attachedCreatorName = $attachedCreator->getName();
+
+		// Force getId() to return 0 to simulate a historical log entry written before
+		// the account existed (later the account was created with the same username)
+		$attachedCreator = $this->createMock( User::class );
+		$attachedCreator->method( 'getId' )->willReturn( 0 );
+		$attachedCreator->method( 'getName' )->willReturn( self::$attachedCreatorName );
+
+		$abuseFilterLoggerFactory->newLogger(
+			$loginSpecialPage,
+			$attachedCreator,
+			VariableHolder::newFromArray( [
+				'action' => 'autocreateaccount',
+				'account_name' => self::$attachedCreatorName,
+			] )
+		)->addLogEntries( [ 4 => [ 'disallow' ] ] );
+
 		// Verify that the expected number of DB rows were created
 		$this->assertNumberOfEntriesMatch( 2, 1 );
 		$this->assertNumberOfEntriesMatch( 4, 2 );
 		$this->assertNumberOfEntriesMatch( 1, 3 );
+		$this->assertNumberOfEntriesMatch( 2, 4 );
 	}
 
 	private function createFilter(

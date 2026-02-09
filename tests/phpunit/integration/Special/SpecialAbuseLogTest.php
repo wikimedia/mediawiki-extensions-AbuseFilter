@@ -26,11 +26,13 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
+use MediaWiki\User\User;
 use MediaWiki\User\UserIdentity;
 use stdClass;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
+ * @covers \MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory
  * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ToolLinksHandler
  * @covers \MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog
  * @covers \MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager
@@ -227,6 +229,12 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			: $this->getServiceContainer()->getUserFactory()->newFromName( 'NonAttachedUser ' . __FUNCTION__ );
 		$this->assertSame( $isUserAttached, $account->isRegistered() );
 		$accountName = $account->getName();
+
+		// Force getId() to return 0 to simulate a historical log entry written before
+		// the account existed (later the account was created with the same username)
+		$account = $this->createMock( User::class );
+		$account->method( 'getId' )->willReturn( 0 );
+		$account->method( 'getName' )->willReturn( $accountName );
 
 		$loginSpecialPage = SpecialPage::getTitleFor( 'Userlogin' );
 		AbuseFilterServices::getAbuseLoggerFactory()->newLogger(

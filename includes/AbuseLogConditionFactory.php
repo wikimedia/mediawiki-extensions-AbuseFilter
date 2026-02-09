@@ -101,9 +101,26 @@ class AbuseLogConditionFactory {
 	public function getUserFilterByUserIdentity(
 		UserIdentity $userIdentity
 	): array {
-		return [
-			'afl_user' => $userIdentity->getId(),
-			'afl_user_text' => $userIdentity->getName(),
-		];
+		if ( IPUtils::isIPAddress( $userIdentity->getName() ) ) {
+			return [
+				'afl_user' => $userIdentity->getId(),
+				'afl_user_text' => $userIdentity->getName(),
+			];
+		} else {
+			// afl_user is always 0 for unsaved account creation attempts (T213982).
+			// Include such logs even if the account has already been created after
+			// the trigger, as long as the username matches.
+			$dbr = $this->dbProvider->getReplicaDatabase();
+			return [
+				$dbr->orExpr( [
+					'afl_user' => $userIdentity->getId(),
+					$dbr->andExpr( [
+						'afl_user' => 0,
+						'afl_action' => [ 'createaccount', 'autocreateaccount' ],
+					] ),
+				] ),
+				'afl_user_text' => $userIdentity->getName(),
+			];
+		}
 	}
 }
