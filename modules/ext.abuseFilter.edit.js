@@ -386,6 +386,8 @@
 			inputPosition: 'outline',
 			allowArbitrary: true,
 			allowEditTags: true,
+			// T230066: In readonly set tag limit to value length to get disabled-styling
+			tagLimit: config.disabled ? config.values.length : 0,
 
 			selected: config.values,
 			// The following messages are used here:

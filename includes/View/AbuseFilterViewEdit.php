@@ -794,7 +794,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'type' => 'number',
 							'name' => 'wpFilterThrottleCount',
 							'value' => $throttleCount,
-							'readOnly' => $readOnly
+							'disabled' => $readOnly
 							]
 						),
 						[
@@ -807,7 +807,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							'type' => 'number',
 							'name' => 'wpFilterThrottlePeriod',
 							'value' => $throttlePeriod,
-							'readOnly' => $readOnly
+							'disabled' => $readOnly
 							]
 						),
 						[
@@ -917,7 +917,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 							// mw-abusefilter-warn-message-other, mw-abusefilter-disallow-message-other
 							'id' => "mw-abusefilter-$action-message-other",
 							'infusable' => true,
-							'readOnly' => $readOnly
+							'disabled' => $readOnly
 							]
 						),
 						[
