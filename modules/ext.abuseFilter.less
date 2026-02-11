@@ -122,6 +122,16 @@ li.mw-abusefilter-changeslist-nomatch {
 	background-image: url( red_x.png );
 }
 
+/* Increase the width of the editbox, mostly for read-only view */
+#mw-abusefilter-edit-rules .oo-ui-labelElement-label {
+	width: 100%; /* So that we can use relative width for mw-abusefilter-editor */
+}
+
+#mw-abusefilter-editing-main .oo-ui-fieldLayout.oo-ui-labelElement.oo-ui-fieldLayout-align-left > .oo-ui-fieldLayout-body > .oo-ui-fieldLayout-field,
+#mw-abusefilter-editing-main .oo-ui-fieldLayout.oo-ui-labelElement.oo-ui-fieldLayout-align-right > .oo-ui-fieldLayout-body > .oo-ui-fieldLayout-field {
+	width: 80%;
+}
+
 div.mw-abusefilter-editor {
 	width: 90%; /* Same as wpFilterRules and mw-abusefilter-notes-editor */
 	height: 30em; /* Similar to wpFilterRules */

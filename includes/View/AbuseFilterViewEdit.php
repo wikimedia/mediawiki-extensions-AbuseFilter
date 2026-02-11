@@ -446,6 +446,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			] ),
 			[
 				'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-rules' )->parse() ),
+				'id' => 'mw-abusefilter-edit-rules',
 			]
 		);
 		$fields[] = new OOUI\FieldLayout(
@@ -677,7 +678,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			);
 		}
 
-		$form = Html::openElement( 'fieldset' ) . "\n" .
+		$form = Html::openElement( 'fieldset', [ 'id' => 'mw-abusefilter-editing-main' ] ) . "\n" .
 			Html::element( 'legend', [], $this->msg( 'abusefilter-edit-main' )->text() ) . "\n" .
 			implode( '', $fields ) . "\n" .
 			Html::closeElement( 'fieldset' ) . "\n";
