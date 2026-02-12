@@ -506,7 +506,7 @@ class QueryAbuseLogTest extends ApiTestCase {
 	}
 
 	public function addDBDataOnce() {
-		$timestamp = $this->getDb()->timestamp( '20190826000000' );
+		$timestamp = '20190826000000';
 		$tempUserCreator = $this->getServiceContainer()->getTempUserCreator();
 
 		self::$userIdentity = $this->getMutableTestUser()->getUserIdentity();

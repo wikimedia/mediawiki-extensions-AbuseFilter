@@ -170,7 +170,7 @@ class AbuseLogPrivateDetailsTest extends ApiTestCase {
 				'name' => 'Hidden filter',
 				'privacy' => Flags::FILTER_HIDDEN,
 				'lastEditor' => $performer,
-				'lastEditTimestamp' => $this->getDb()->timestamp( '20250701000000' ),
+				'lastEditTimestamp' => '20250701000000',
 			] ),
 			MutableFilter::newDefault()
 		) );

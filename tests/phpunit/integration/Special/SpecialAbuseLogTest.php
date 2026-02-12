@@ -320,7 +320,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 				'afl_user_text' => '~2024-01',
 				'afl_filter_id' => '1',
 				'afl_global' => '0',
-				'afl_timestamp' => '20240506070809',
+				'afl_timestamp' => $this->getDb()->timestamp( '20240506070809' ),
 				'afl_ip' => '1.2.3.4',
 				'af_id' => '1',
 				'af_public_comments' => 'Filter with protected variables',

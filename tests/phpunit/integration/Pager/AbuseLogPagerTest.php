@@ -37,8 +37,8 @@ class AbuseLogPagerTest extends MediaWikiIntegrationTestCase {
 			'rules' => 'user_name = "1.2.3.5"',
 			'name' => 'Filter 1',
 			'privacy' => Flags::FILTER_PUBLIC,
-			'userIdentity' => $performer,
-			'timestamp' => $this->getDb()->timestamp( '20190825000000' ),
+			'lastEditor' => $performer,
+			'lastEditTimestamp' => '20190825000000',
 		] );
 
 		$sysOpsAuthority = new UltimateAuthority( $performer );
