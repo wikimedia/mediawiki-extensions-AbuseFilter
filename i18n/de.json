@@ -242,6 +242,7 @@
 	"abusefilter-edit-subtitle": "Bearbeite Filter $1",
 	"abusefilter-edit-subtitle-new": "Filter erstellen",
 	"abusefilter-edit-token-not-match": "Die Bearbeitung wurde nicht gespeichert! Bitte erneut versuchen.",
+	"abusefilter-edit-makepublic": "'''{{#FORMAL:Du bist|Sie sind}} im Begriff, einen privaten Filter öffentlich zu machen.''' Bitte {{#FORMAL:bestätige|bestätigen Sie}}, dass dies beabsichtigt ist, und {{#FORMAL:drücke|drücken Sie}} erneut „{{int:abusefilter-edit-save}}“, um fortzufahren.",
 	"abusefilter-edit-oldwarning": "<strong>{{#FORMAL:Du bearbeitest|Sie bearbeiten}} nicht die aktuelle, sondern eine ältere Version dieses Filters. Die Statistik gilt nur für die letzte Version des Filters. Wenn {{#FORMAL:du speicherst|Sie speichern}}, wird diese als aktuelle Version neu gespeichert. </strong> &bull; [[Special:AbuseFilter/history/$2|Zurück zur Versionsgeschichte des Filters]]",
 	"abusefilter-edit-oldwarning-view": "<strong>{{#FORMAL:Du siehst|Sie sehen}} eine alte Version dieses Filters. Die angeführten Statistiken beziehen sich auf die neueste Version des Filters.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Zurück zu der Versionsgeschichte des Filters]].",
 	"abusefilter-edit-status-label": "Statistik:",

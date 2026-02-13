@@ -219,6 +219,7 @@
 	"abusefilter-edit-subtitle": "$1 süzgəcinin redaktəsi",
 	"abusefilter-edit-subtitle-new": "Filtr yaradılır",
 	"abusefilter-edit-token-not-match": "Redaktə yadda saxlanılmadı! Lütfən, yenidən yadda saxlayın.",
+	"abusefilter-edit-makepublic": "'''Gizli süzgəci ictimai etmək üzrəsiniz.''' Zəhmət olmasa həqiqətən bunu etmək istədiyinizi yoxlayın və davam etmək üçün \"{{int:abusefilter-edit-save}}\" düyməsinə klikləyin.",
 	"abusefilter-edit-oldwarning": "<strong>Siz bu filtrin köhnə versiyasını redaktə edirsiniz.\nGöstərilən statistikalar filtrin ən son versiyası üçündür.\nDəyişikliklərinizi yadda saxlasanız, redaktə etdiyiniz versiyadan sonra bütün dəyişikliklərin üzərinə yazacaqsınız.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrin tarixçəsinə qayıdın]].",
 	"abusefilter-edit-oldwarning-view": "<strong>Siz bu filtrin köhnə versiyasına baxırsınız.\nGöstərilən statistika filtrin ən son versiyası üçündür.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Bu filtrin tarixçəsinə qayıdın]].",
 	"abusefilter-edit-status-label": "Statistika:",

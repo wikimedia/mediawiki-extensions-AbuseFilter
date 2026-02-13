@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			")8",
+			"0x48fe75df30",
 			"94rain",
 			"A Chinese Wikipedian",
 			"A2093064",
@@ -297,6 +298,7 @@
 	"abusefilter-edit-subtitle": "编辑过滤器$1",
 	"abusefilter-edit-subtitle-new": "创建过滤器",
 	"abusefilter-edit-token-not-match": "编辑尚未保存！请再次尝试保存。",
+	"abusefilter-edit-makepublic": "'''您将公开一个私有筛选条件。'''请确认这是您的计划做的，并再次按下\"{{int:abusefilter-edit-save}}\"以继续。",
 	"abusefilter-edit-oldwarning": "<strong>您正在编辑此过滤器的旧版本。统计中引用的是该过滤器的最新版本。如果您保存编辑，您所编辑版本之后的所有更改均会被覆盖。</strong> &bull; [[Special:AbuseFilter/history/$2|返回此过滤器的历史记录]]。",
 	"abusefilter-edit-oldwarning-view": "<strong>您正在查看此过滤器的旧版本。统计中引用的是该过滤器的最新版本。</strong> &bull; [[Special:AbuseFilter/history/$2|返回此过滤器的历史记录]]。",
 	"abusefilter-edit-status-label": "统计：",

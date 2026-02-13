@@ -258,6 +258,7 @@
 	"abusefilter-edit-subtitle": "正在編輯過濾器 $1",
 	"abusefilter-edit-subtitle-new": "正在建立過濾器",
 	"abusefilter-edit-token-not-match": "這筆編輯還沒被儲存！請再儲存一次看看。",
+	"abusefilter-edit-makepublic": "'''您將把私有過濾器給公開。'''請確認這是您本人的意圖，然後按下「{{int:abusefilter-edit-save}}」繼續。",
 	"abusefilter-edit-oldwarning": "<strong>你正在編輯該過濾器的舊版本。統計中引用的是該過濾器的最新版本。如果你保存你的編輯，所編輯版本之後的所有更改均會被覆蓋。</strong> &bull; [[Special:AbuseFilter/history/$2|返回該過濾器的歷史記錄]]。",
 	"abusefilter-edit-oldwarning-view": "<strong>您正檢視此過濾器的舊版本。\n引用的統計內容是適用於最新版本的過濾器。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回到此過濾器的歷史紀錄]]。",
 	"abusefilter-edit-status-label": "統計資訊：",
