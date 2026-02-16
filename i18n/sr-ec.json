@@ -106,6 +106,7 @@
 	"abusefilter-log-noactions": "ништа",
 	"abusefilter-log-noactions-filter": "Ништа",
 	"abusefilter-log-details-diff": "Промене направљене при уређивању",
+	"abusefilter-log-missinguserlink-title": "$1 (налог не постоји)",
 	"abusefilter-log-linkoncontribs": "дневник злоупотреба",
 	"abusefilter-log-linkoncontribs-text": "Дневник злоупотреба {{GENDER:$1|овог корисника|ове кориснице}}",
 	"abusefilter-log-linkonhistory": "дневник злоупотребa",

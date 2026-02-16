@@ -84,6 +84,7 @@
 	"abusefilter-log-noactions": "keng",
 	"abusefilter-log-noactions-filter": "Keng",
 	"abusefilter-log-details-diff": "Ännerungen, déi an der Ännerung gemaach goufen",
+	"abusefilter-log-missinguserlink-title": "$1 (Kont gëtt et net)",
 	"abusefilter-log-linkoncontribs": "Logbuch vum Mëssbrauch",
 	"abusefilter-log-linkoncontribs-text": "Logbuch vum Mëssbrauch fir {{GENDER:$1|dëse Benotzer}}",
 	"abusefilter-log-linkonundelete": "Logbuch vum Mëssbrauch weisen",

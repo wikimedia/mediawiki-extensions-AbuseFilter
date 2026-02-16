@@ -130,6 +130,7 @@
 	"abusefilter-log-noactions": "ei mitään",
 	"abusefilter-log-noactions-filter": "Ei mitään",
 	"abusefilter-log-details-diff": "Muutokset, jotka tehtiin muokkauksessa",
+	"abusefilter-log-missinguserlink-title": "$1 (tunnusta ei ole olemassa)",
 	"abusefilter-log-linkoncontribs": "väärinkäyttöloki",
 	"abusefilter-log-linkoncontribs-text": "Väärinkäyttöloki {{GENDER:$1|tälle käyttäjälle}}",
 	"abusefilter-log-linkonhistory": "näytä väärinkäyttöloki",

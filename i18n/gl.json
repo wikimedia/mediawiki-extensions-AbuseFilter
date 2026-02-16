@@ -104,6 +104,7 @@
 	"abusefilter-log-noactions": "ningunha",
 	"abusefilter-log-noactions-filter": "Ningunha",
 	"abusefilter-log-details-diff": "Cambios feitos na edición",
+	"abusefilter-log-missinguserlink-title": "$1 (a conta non existe)",
 	"abusefilter-log-linkoncontribs": "rexistro de abusos",
 	"abusefilter-log-linkoncontribs-text": "Rexistro de abusos para {{GENDER:$1|este usuario}}",
 	"abusefilter-log-linkonhistory": "ver o rexistro de abusos",

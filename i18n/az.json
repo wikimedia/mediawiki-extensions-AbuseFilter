@@ -110,6 +110,7 @@
 	"abusefilter-log-noactions": "heç biri",
 	"abusefilter-log-noactions-filter": "Heç biri",
 	"abusefilter-log-details-diff": "Redaktə zamanı edilən dəyişikliklər",
+	"abusefilter-log-missinguserlink-title": "$1 (hesab mövcud deyil)",
 	"abusefilter-log-linkoncontribs": "dəyişiklik süzgəci jurnalı",
 	"abusefilter-log-linkoncontribs-text": "Bu {{GENDER:$1|istifadəçi}} üçün dəyişiklik süzgəci jurnalındakı qeydlər",
 	"abusefilter-log-linkonhistory": "dəyişiklik süzgəci jurnalına bax",

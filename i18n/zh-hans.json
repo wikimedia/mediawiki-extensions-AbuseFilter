@@ -189,6 +189,7 @@
 	"abusefilter-log-noactions": "无",
 	"abusefilter-log-noactions-filter": "无",
 	"abusefilter-log-details-diff": "编辑时所做的更改",
+	"abusefilter-log-missinguserlink-title": "$1（账号不存在）",
 	"abusefilter-log-linkoncontribs": "滥用日志",
 	"abusefilter-log-linkoncontribs-text": "{{GENDER:$1|此用户}}的滥用日志",
 	"abusefilter-log-linkonhistory": "查看滥用日志",
