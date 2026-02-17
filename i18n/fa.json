@@ -539,7 +539,7 @@
 	"abusefilter-action-disallow": "جلوگیری",
 	"abusefilter-revert-title": "واگردانی تمام تغییرهای انجام شده توسط پالایهٔ $1",
 	"abusefilter-revert-intro": "این فرم به شما اجازهٔ واگردانی همهٔ تغییرات انجام شده توسط پالایهٔ ویرایش به دلیل پالایهٔ $1 را می‌دهد.\nلطفاً در استفاده از این ابزار دقت کنید.",
-	"abusefilter-revert-preview-item": "$1: $2 یک $3 بر $4 {{GENDER:$7|انجام داد}}.\nاقداماتی که واگردانی خواهند شد: $5 ($6)",
+	"abusefilter-revert-preview-item": "$1: $2 یک $3 بر $4 {{GENDER:$7|انجام داد}}.\nاقداماتی که برگردانی خواهند شد: $5 ($6)",
 	"abusefilter-revert-search-legend": "اقدامات پالایهٔ ویرایش را که می‌خواهید واگردانی کنید برگزینید",
 	"abusefilter-revert-periodstart": "شروع بازه زمانی:",
 	"abusefilter-revert-periodend": "پایان بازه زمانی:",
