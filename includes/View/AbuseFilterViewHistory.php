@@ -114,7 +114,7 @@ class AbuseFilterViewHistory extends AbuseFilterView {
 			new OOUI\HorizontalLayout( [
 				'items' => array_values( $links )
 			] );
-		$out->addHTML( $backlinks );
+		$out->addHTML( (string)$backlinks );
 
 		// For user
 		$user = $this->userNameUtils->getCanonical(

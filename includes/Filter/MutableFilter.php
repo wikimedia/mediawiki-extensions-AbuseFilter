@@ -44,7 +44,6 @@ class MutableFilter extends Filter {
 		return new self(
 			$filter->getSpecs(),
 			$filter->getFlags(),
-			// @phan-suppress-next-line PhanTypeMismatchArgumentNullable One is guaranteed to be set
 			$filter->actions ?? $filter->actionsCallback,
 			$filter->getLastEditInfo(),
 			$filter->getID(),

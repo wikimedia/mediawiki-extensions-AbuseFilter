@@ -207,7 +207,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			'label' => $this->msg( 'abusefilter-return' )->text(),
 			'href' => $href
 		] );
-		$out->addHTML( $btn );
+		$out->addHTML( (string)$btn );
 	}
 
 	/**
@@ -878,7 +878,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 					Html::rawElement(
 						'div',
 						[ 'id' => 'mw-abusefilter-throttle-parameters' ],
-						new OOUI\FieldsetLayout( [ 'items' => $throttleFields ] )
+						(string)new OOUI\FieldsetLayout( [ 'items' => $throttleFields ] )
 					);
 				return $throttleSettings;
 			case 'disallow':
@@ -991,7 +991,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						'div',
 						// mw-abusefilter-warn-parameters, mw-abusefilter-disallow-parameters
 						[ 'id' => "mw-abusefilter-$action-parameters" ],
-						new OOUI\FieldsetLayout( [ 'items' => $fields ] )
+						(string)new OOUI\FieldsetLayout( [ 'items' => $fields ] )
 					) . $previewHolder;
 
 				return $output;
@@ -1047,7 +1047,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$output .=
 					Html::rawElement( 'div',
 						[ 'id' => 'mw-abusefilter-tag-parameters' ],
-						$hiddenTags
+						(string)$hiddenTags
 					);
 				return $output;
 			case 'block':
@@ -1140,7 +1140,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$output .= Html::rawElement(
 						'div',
 						[ 'id' => 'mw-abusefilter-block-parameters' ],
-						new OOUI\FieldsetLayout( [ 'items' => $blockOptions ] )
+						(string)new OOUI\FieldsetLayout( [ 'items' => $blockOptions ] )
 					);
 
 				return $output;

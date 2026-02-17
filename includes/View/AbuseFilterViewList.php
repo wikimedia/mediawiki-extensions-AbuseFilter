@@ -71,7 +71,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 					] )
 				]
 			] );
-			$out->addHTML( $buttons );
+			$out->addHTML( (string)$buttons );
 		}
 
 		$conds = [];

@@ -172,8 +172,6 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	/**
 	 * Instantiate the view class
 	 *
-	 * @suppress PhanTypeInvalidCallableArraySize
-	 *
 	 * @param class-string<AbuseFilterView> $viewClass
 	 * @param array $params
 	 * @return AbuseFilterView

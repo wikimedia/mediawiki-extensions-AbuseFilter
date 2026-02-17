@@ -687,8 +687,7 @@ class AFPTreeParser {
 		}
 
 		$this->move();
-		// @phan-suppress-next-next-line PhanPossiblyUndeclaredVariable
-		// @phan-suppress-next-line PhanTypeMismatchReturnNullable Until phan can understand the switch
+		// @phan-suppress-next-line PhanPossiblyUndeclaredVariable
 		return $result;
 	}
 

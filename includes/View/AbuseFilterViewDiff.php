@@ -73,7 +73,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 			] );
 		}
 
-		$backlinks = new OOUI\HorizontalLayout( [ 'items' => array_values( $links ) ] );
+		$backlinks = (string)new OOUI\HorizontalLayout( [ 'items' => array_values( $links ) ] );
 		$out->addHTML( $backlinks );
 
 		if ( $show ) {
@@ -106,7 +106,7 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 					'items' => $buttons,
 					'classes' => [ 'mw-abusefilter-history-buttons' ]
 				] );
-				$out->addHTML( $buttons );
+				$out->addHTML( (string)$buttons );
 			}
 		}
 	}

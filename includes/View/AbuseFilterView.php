@@ -99,7 +99,7 @@ abstract class AbuseFilterView extends ContextSource {
 		return Html::rawElement(
 			'div',
 			[ 'class' => 'mw-abusefilter-load-filter-id' ],
-			$loadGroup
+			(string)$loadGroup
 		);
 	}
 

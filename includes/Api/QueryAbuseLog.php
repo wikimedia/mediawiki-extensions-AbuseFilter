@@ -227,14 +227,12 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( $filterConds['local'] ) {
 				$conds[] = $dbr->andExpr( [
 					'afl_global' => 0,
-					// @phan-suppress-previous-line PhanTypeMismatchArgument Array is non-empty
 					'afl_filter_id' => $filterConds['local'],
 				] );
 			}
 			if ( $filterConds['global'] ) {
 				$conds[] = $dbr->andExpr( [
 					'afl_global' => 1,
-					// @phan-suppress-previous-line PhanTypeMismatchArgument Array is non-empty
 					'afl_filter_id' => $filterConds['global'],
 				] );
 			}
