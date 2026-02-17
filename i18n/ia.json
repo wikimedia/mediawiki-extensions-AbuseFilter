@@ -96,6 +96,7 @@
 	"abusefilter-log-noactions": "nihil",
 	"abusefilter-log-noactions-filter": "Nulle",
 	"abusefilter-log-details-diff": "Modificationes effectuate",
+	"abusefilter-log-missinguserlink-title": "$1 (conto non existe)",
 	"abusefilter-log-linkoncontribs": "registro de abusos",
 	"abusefilter-log-linkoncontribs-text": "Registro del abusos de {{GENDER:$1|iste usator}}",
 	"abusefilter-log-linkonhistory": "vider le registro de abusos",

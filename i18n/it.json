@@ -121,6 +121,7 @@
 	"abusefilter-log-noactions": "nessuna",
 	"abusefilter-log-noactions-filter": "Nessuna",
 	"abusefilter-log-details-diff": "Modifiche effettuate",
+	"abusefilter-log-missinguserlink-title": "$1 (utenza non esiste)",
 	"abusefilter-log-linkoncontribs": "filtro anti abusi",
 	"abusefilter-log-linkoncontribs-text": "Registro del filtro anti abusi relativo a {{GENDER:$1|questo utente}}",
 	"abusefilter-log-linkonhistory": "visualizza il registro del filtro anti abusi",
