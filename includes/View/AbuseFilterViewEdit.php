@@ -786,7 +786,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-action-throttle' )->text(),
-							'align' => 'inline'
+							'align' => 'inline',
+							'help' => $this->msg( 'abusefilter-edit-action-throttle-help' )->text(),
+							'helpInline' => true,
 						]
 					);
 				$throttleFields = [];
@@ -899,7 +901,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						[
 							// abusefilter-edit-action-warn, abusefilter-edit-action-disallow
 							'label' => $this->msg( "abusefilter-edit-action-$action" )->text(),
-							'align' => 'inline'
+							'align' => 'inline',
+							// abusefilter-edit-action-warn-help, abusefilter-edit-action-disallow-help
+							'help' => $this->msg( "abusefilter-edit-action-$action-help" )->text(),
+							'helpInline' => true,
 						]
 					);
 				$output .= $checkbox;
@@ -1012,7 +1017,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-action-tag' )->text(),
-							'align' => 'inline'
+							'align' => 'inline',
+							'help' => $this->msg( 'abusefilter-edit-action-tag-help' )->text(),
+							'helpInline' => true,
 						]
 					);
 				$output .= $checkbox;
@@ -1079,7 +1086,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						),
 						[
 							'label' => $this->msg( 'abusefilter-edit-action-block' )->text(),
-							'align' => 'inline'
+							'align' => 'inline',
+							'help' => $this->msg( 'abusefilter-edit-action-block-help' )->text(),
+							'helpInline' => true,
 						]
 					);
 				$output .= $checkbox;
@@ -1147,11 +1156,15 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			default:
 				// Give grep a chance to find the usages:
-				// abusefilter-edit-action-disallow,
 				// abusefilter-edit-action-blockautopromote,
 				// abusefilter-edit-action-degroup,
 				// abusefilter-edit-action-rangeblock,
 				$message = 'abusefilter-edit-action-' . $action;
+				// Give grep a chance to find the usages:
+				// abusefilter-edit-action-blockautopromote-help,
+				// abusefilter-edit-action-degroup-help,
+				// abusefilter-edit-action-rangeblock-help,
+				$helpMessage = $this->msg( 'abusefilter-edit-action-' . $action . '-help' );
 				$form_field = 'wpFilterAction' . ucfirst( $action );
 				$status = $set;
 
@@ -1167,7 +1180,9 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 						),
 						[
 							'label' => $this->msg( $message )->text(),
-							'align' => 'inline'
+							'align' => 'inline',
+							'help' => $helpMessage->exists() ? $helpMessage->text() : '',
+							'helpInline' => true,
 						]
 					);
 				return $thisAction;
