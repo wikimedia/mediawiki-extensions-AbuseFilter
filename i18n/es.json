@@ -165,6 +165,7 @@
 	"abusefilter-log-noactions": "ninguna",
 	"abusefilter-log-noactions-filter": "Ninguno",
 	"abusefilter-log-details-diff": "Cambios hechos en la edición",
+	"abusefilter-log-missinguserlink-title": "$1 (la cuenta no existe)",
 	"abusefilter-log-linkoncontribs": "registro del filtro antiabusos",
 	"abusefilter-log-linkoncontribs-text": "Registro del filtro antiabusos de {{GENDER:$1|este usuario|esta usuaria}}",
 	"abusefilter-log-linkonhistory": "ver registro de abusos",
