@@ -224,7 +224,7 @@
 	"abusefilter-edit-subtitle": "עריכת מסנן $1",
 	"abusefilter-edit-subtitle-new": "יצירת מסנן",
 	"abusefilter-edit-token-not-match": "העריכה לא נשמרה! נא לשמור שוב.",
-	"abusefilter-edit-makepublic": "'''פעולה זו הופכת מסנן פרטי לציבורי.''' יש לאשר שפעולה זו מכוונת, וללחוץ שוב על \"{{int:abusefilter-edit-save}}\" כדי להמשיך.",
+	"abusefilter-edit-makepublic": "'''הפעולה הזאת הופכת מסנן פרטי לציבורי.''' נא לאשר שהפעולה מכוונת וללחוץ שוב על \"{{int:abusefilter-edit-save}}\" כדי להמשיך.",
 	"abusefilter-edit-oldwarning": "<strong>זוהי גרסה ישנה של מסנן זה.\nהסטטיסטיקות המופיעות הן עבור הגרסה העדכנית ביותר של המסנן.\nשמירת השינויים שלך תדרוס את כל השינויים מאז הגרסה הזאת.</strong> &bull; [[Special:AbuseFilter/history/$2|חזרה להיסטוריית הגרסאות של מסנן זה]].",
 	"abusefilter-edit-oldwarning-view": "<strong>מוצגת לך גרסה ישנה של המסנן הזה.\nהסטטיסטיקה מתייחסת לגרסה האחרונה של המסנן.</strong> &bull;\n[[Special:AbuseFilter/history/$2|חזרה להיסטוריה של המסנן הזה]].",
 	"abusefilter-edit-status-label": "סטטיסטיקות:",
