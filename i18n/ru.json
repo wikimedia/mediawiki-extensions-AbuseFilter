@@ -77,10 +77,11 @@
 			"Сrower",
 			"Туллук",
 			"Умар",
-			"1233qwer1234qwer4"
+			"1233qwer1234qwer4",
+			"Lvova"
 		]
 	},
-	"abusefilter-desc": "Позволяет применять автоматические эвристические фильтры к правкам",
+	"abusefilter-desc": "Позволяет применять к правкам автоматические эвристические фильтры",
 	"abusefilter": "Управление фильтром злоупотреблений",
 	"abuselog": "Журнал фильтра злоупотреблений",
 	"abusefilter-intro": "Добро пожаловать на страницу управления фильтром злоупотреблений.\nФильтр злоупотреблений представляет собой автоматизированный механизм применения эвристик к действиям участников.\nНиже приведён список всех установленных фильтров.",
@@ -700,6 +701,6 @@
 	"log-action-filter-abusefilter-protected-vars": "Тип действия:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Изменить доступ",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Просмотр значений защищённых переменных",
-	"communityconfiguration-blockeddomain-title": "Заблокированный внешние домены",
-	"communityconfiguration-blockeddomain-description": "Список внешних доменов, ссылку на которые нельзя установить."
+	"communityconfiguration-blockeddomain-title": "Заблокированные внешние домены",
+	"communityconfiguration-blockeddomain-description": "Список внешних доменов, на которые нельзя установить ссылку."
 }
