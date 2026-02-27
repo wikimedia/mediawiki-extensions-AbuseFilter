@@ -115,6 +115,7 @@
 	"abusefilter-log-noactions": "אין",
 	"abusefilter-log-noactions-filter": "ללא",
 	"abusefilter-log-details-diff": "שינויים שבוצעו בעריכה",
+	"abusefilter-log-missinguserlink-title": "$1 (החשבון לא קיים)",
 	"abusefilter-log-linkoncontribs": "יומן מסנן ההשחתות",
 	"abusefilter-log-linkoncontribs-text": "יומן ההשחתות עבור {{GENDER:$1|משתמש זה|משתמשת זו}}",
 	"abusefilter-log-linkonhistory": "הצגת יומן ההשחתות",
