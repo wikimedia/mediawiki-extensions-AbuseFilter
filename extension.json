@@ -141,7 +141,7 @@
 		"abusefilter/modify": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterModifyLogFormatter",
 		"abusefilter/create": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterModifyLogFormatter",
 		"abusefilterblockeddomainhit/*": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterBlockedDomainHitLogFormatter",
-		"abusefilterprivatedetails/access": "LogFormatter",
+		"abusefilterprivatedetails/access": "MediaWiki\\Logging\\LogFormatter",
 		"suppress/hide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
 		"suppress/unhide-afl": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterSuppressLogFormatter",
 		"rights/blockautopromote": "MediaWiki\\Extension\\AbuseFilter\\LogFormatter\\AbuseFilterRightsLogFormatter",
