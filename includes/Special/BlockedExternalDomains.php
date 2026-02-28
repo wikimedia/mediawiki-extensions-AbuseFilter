@@ -43,6 +43,11 @@ class BlockedExternalDomains extends SpecialPage {
 	}
 
 	/** @inheritDoc */
+	public function doesWrites() {
+		return !ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' );
+	}
+
+	/** @inheritDoc */
 	public function execute( $par ) {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' ) ) {
 			$this->getOutput()->redirect(
