@@ -92,8 +92,7 @@ class AbuseFilterTokenizer {
 	 * Get the tokens for the given code.
 	 *
 	 * @param string $code
-	 * @return array[]
-	 * @phan-return array<int,array{0:AFPToken,1:int}>
+	 * @return array<int,array{0:AFPToken,1:int}>
 	 */
 	public function getTokens( string $code ): array {
 		return $this->cache->getWithSetCallback(
@@ -107,8 +106,7 @@ class AbuseFilterTokenizer {
 
 	/**
 	 * @param string $code
-	 * @return array[]
-	 * @phan-return array<int,array{0:AFPToken,1:int}>
+	 * @return array<int,array{0:AFPToken,1:int}>
 	 */
 	private function tokenize( string $code ): array {
 		$tokens = [];

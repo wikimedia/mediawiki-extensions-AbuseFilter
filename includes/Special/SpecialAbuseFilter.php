@@ -188,11 +188,10 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 * Determine the view class to instantiate
 	 *
 	 * @param string|null $subpage
-	 * @return array A tuple of three elements:
+	 * @return array{0:class-string,1:string,2:array} A tuple of three elements:
 	 *      - a subclass of AbuseFilterView
 	 *      - type of page for addNavigationLinks
 	 *      - array of parameters for the class
-	 * @phan-return array{0:class-string,1:string,2:array}
 	 */
 	public function getViewClassAndPageType( $subpage ): array {
 		// Filter by removing blanks.

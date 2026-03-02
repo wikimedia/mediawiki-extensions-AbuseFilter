@@ -259,8 +259,7 @@ class FilterRunner {
 	 *
 	 * @param ExistingFilter $filter
 	 * @param bool $global
-	 * @return array [ status, time taken ]
-	 * @phan-return array{0:\MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus,1:float}
+	 * @return array{0:\MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus,1:float}
 	 */
 	private function checkFilter( ExistingFilter $filter, bool $global = false ): array {
 		$filterName = GlobalNameUtils::buildGlobalName( $filter->getID(), $global );

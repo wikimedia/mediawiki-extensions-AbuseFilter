@@ -20,8 +20,7 @@ use Wikimedia\Stats\IBufferingStatsdDataFactory;
  */
 class AFPTreeParser {
 	/**
-	 * @var array[] Contains the AFPTokens for the code being parsed
-	 * @phan-var array<int,array{0:AFPToken,1:int}>
+	 * @var array<int,array{0:AFPToken,1:int}> Contains the AFPTokens for the code being parsed
 	 */
 	private $mTokens;
 	/**
@@ -101,8 +100,7 @@ class AFPTreeParser {
 	/**
 	 * Parse the supplied filter source code into a tree.
 	 *
-	 * @param array[] $tokens
-	 * @phan-param array<int,array{0:AFPToken,1:int}> $tokens
+	 * @param array<int,array{0:AFPToken,1:int}> $tokens
 	 * @return AFPSyntaxTree
 	 * @throws UserVisibleException
 	 */

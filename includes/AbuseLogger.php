@@ -57,8 +57,7 @@ class AbuseLogger {
 	 * Create and publish log entries for taken actions
 	 *
 	 * @param array[] $actionsTaken
-	 * @return array Shape is [ 'local' => int[], 'global' => int[] ], IDs of logged filters
-	 * @phan-return array{local:int[],global:int[]}
+	 * @return array{local:int[],global:int[]} IDs of logged filters
 	 */
 	public function addLogEntries( array $actionsTaken ): array {
 		$dbw = $this->lbFactory->getPrimaryDatabase();

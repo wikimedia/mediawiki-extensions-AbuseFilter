@@ -1001,8 +1001,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 				return $output;
 			case 'tag':
-				$tags = $set ? $parameters : [];
-				'@phan-var string[] $parameters';
+				$tags = $set ? ( $parameters ?? [] ) : [];
 				$output = '';
 
 				$checkbox =

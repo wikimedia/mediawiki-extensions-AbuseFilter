@@ -46,7 +46,9 @@ class FilterUser {
 	 */
 	private function getUser(): User {
 		$user = User::newSystemUser( $this->getFilterUserName(), [ 'steal' => true ] );
-		'@phan-var User $user';
+		if ( $user === null ) {
+			throw new \UnexpectedValueException( 'Failed to create AbuseFilter system user' );
+		}
 
 		// Promote user to 'sysop' so it doesn't look
 		// like an unprivileged account is blocking users

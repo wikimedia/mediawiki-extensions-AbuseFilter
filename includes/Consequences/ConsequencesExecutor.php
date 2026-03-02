@@ -189,11 +189,12 @@ class ConsequencesExecutor {
 	 */
 	private function applyConsequenceDisablers( array $consequencesByFilter ): array {
 		foreach ( $consequencesByFilter as $filter => $actions ) {
-			/** @var ConsequencesDisablerConsequence[] $consequenceDisablers */
-			$consequenceDisablers = array_filter( $actions, static function ( $el ) {
-				return $el instanceof ConsequencesDisablerConsequence;
-			} );
-			'@phan-var ConsequencesDisablerConsequence[] $consequenceDisablers';
+			$consequenceDisablers = [];
+			foreach ( $actions as $name => $action ) {
+				if ( $action instanceof ConsequencesDisablerConsequence ) {
+					$consequenceDisablers[$name] = $action;
+				}
+			}
 			uasort(
 				$consequenceDisablers,
 				static function ( ConsequencesDisablerConsequence $x, ConsequencesDisablerConsequence $y ) {
@@ -224,8 +225,11 @@ class ConsequencesExecutor {
 		foreach ( $consByFilter as $filter => $actions ) {
 			foreach ( $actions as $name => $cons ) {
 				if ( $name === 'block' ) {
-					/** @var Block $cons */
-					'@phan-var Block $cons';
+					if ( !( $cons instanceof Block ) ) {
+						throw new \TypeError(
+							'Expected Block consequence for "block" action'
+						);
+					}
 					$expiry = $cons->getExpiry();
 					$parsedExpiry = BlockUser::parseExpiryInput( $expiry );
 					if (

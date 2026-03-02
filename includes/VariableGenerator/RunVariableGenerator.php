@@ -312,7 +312,9 @@ class RunVariableGenerator extends VariableGenerator {
 
 				$this->setLastEditAge( $revRec, 'page' );
 				$oldcontent = $revRec->getContent( SlotRecord::MAIN, RevisionRecord::RAW );
-				'@phan-var Content $oldcontent';
+				if ( $oldcontent === null ) {
+					throw new \UnexpectedValueException( 'Failed to retrieve the old page content' );
+				}
 				$oldtext = $this->textExtractor->contentToString( $oldcontent );
 
 				// Page text is ignored for uploads when the page already exists

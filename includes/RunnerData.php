@@ -11,8 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerStatus;
 class RunnerData {
 
 	/**
-	 * @var array[]
-	 * @phan-var array<string,array{time:float,conds:int,result:bool}>
+	 * @var array<string,array{time:float,conds:int,result:bool}>
 	 */
 	private $profilingData;
 
@@ -50,8 +49,7 @@ class RunnerData {
 
 	/**
 	 * Get information about filter matches in backwards compatible format
-	 * @return bool[]
-	 * @phan-return array<string,bool>
+	 * @return array<string,bool>
 	 */
 	public function getMatchesMap(): array {
 		return array_map(
@@ -93,8 +91,7 @@ class RunnerData {
 
 	/**
 	 * Serialize data for edit stash
-	 * @return array
-	 * @phan-return array{matches:array<string,array>,runtime:float,condCount:int,profiling:array}
+	 * @return array{matches:array<string,array>,runtime:float,condCount:int,profiling:array}
 	 */
 	public function toArray(): array {
 		return [

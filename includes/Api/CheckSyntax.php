@@ -50,10 +50,12 @@ class CheckSyntax extends ApiBase {
 			// Everything went better than expected :)
 			$r['status'] = 'ok';
 		} else {
-			// TODO: Improve the type here.
-			/** @var UserVisibleException $excep */
 			$excep = $result->getException();
-			'@phan-var UserVisibleException $excep';
+			if ( !( $excep instanceof UserVisibleException ) ) {
+				throw new \UnexpectedValueException(
+					'Non-user-visible exception returned from syntax check'
+				);
+			}
 			$r = [
 				'status' => 'error',
 				'message' => $this->msg( $excep->getMessageObj() )->text(),

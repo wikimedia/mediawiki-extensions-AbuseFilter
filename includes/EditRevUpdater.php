@@ -18,8 +18,8 @@ class EditRevUpdater {
 	/** @var WikiPage|null */
 	private $wikiPage;
 	/**
-	 * @var int[][][] IDs of logged filters like [ page title => [ 'local' => [ids], 'global' => [ids] ] ].
-	 * @phan-var array<string,array{local:int[],global:int[]}>
+	 * @var array<string,array{local:int[],global:int[]}> IDs of logged filters
+	 * like [ page title => [ 'local' => [ids], 'global' => [ids] ] ].
 	 */
 	private $logIds = [];
 
@@ -47,8 +47,7 @@ class EditRevUpdater {
 
 	/**
 	 * @param LinkTarget $target
-	 * @param int[][] $logIds
-	 * @phan-param array{local:int[],global:int[]} $logIds
+	 * @param array{local:int[],global:int[]} $logIds
 	 */
 	public function setLogIdsForTarget( LinkTarget $target, array $logIds ): void {
 		if ( count( $logIds ) !== 2 || array_diff( array_keys( $logIds ), [ 'local', 'global' ] ) ) {

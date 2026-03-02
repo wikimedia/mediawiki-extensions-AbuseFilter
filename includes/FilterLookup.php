@@ -55,8 +55,7 @@ class FilterLookup implements IDBAccessObject {
 	private $lastVersionCache = [];
 
 	/**
-	 * @var int[][] [ filter => [ historyID => [ prev, next ] ] ]
-	 * @phan-var array<int,array<int,array{prev?:int,next?:int}>>
+	 * @var array<int,array<int,array{prev?:int,next?:int}>> [ filter => [ historyID => [ prev, next ] ] ]
 	 */
 	private $closestVersionsCache = [];
 

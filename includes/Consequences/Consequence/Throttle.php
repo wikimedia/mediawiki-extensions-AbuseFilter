@@ -24,7 +24,8 @@ class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 	private const IPV6_RANGE = '64';
 
 	/**
-	 * @phan-param array{groups:string[],id:int|string,count:int,period:int} $throttleParams
+	 * @param Parameters $parameters
+	 * @param array{groups:string[],id:int|string,count:int,period:int} $throttleParams
 	 */
 	public function __construct(
 		Parameters $parameters,

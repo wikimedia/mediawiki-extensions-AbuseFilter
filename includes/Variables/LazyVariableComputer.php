@@ -83,8 +83,7 @@ class LazyVariableComputer {
 	 *
 	 * @param LazyLoadedVariable $var
 	 * @param VariableHolder $vars
-	 * @param callable $getVarCB
-	 * @phan-param callable(string $name):AFPData $getVarCB
+	 * @param callable(string $name):AFPData $getVarCB
 	 * @return AFPData
 	 */
 	public function compute( LazyLoadedVariable $var, VariableHolder $vars, callable $getVarCB ) {

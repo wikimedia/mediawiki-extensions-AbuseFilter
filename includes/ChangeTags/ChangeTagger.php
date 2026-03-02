@@ -111,7 +111,11 @@ class ChangeTagger {
 		if ( str_contains( $specifier->getAction(), 'createaccount' ) ) {
 			// TODO Move this to ActionSpecifier?
 			$username = $specifier->getAccountName();
-			'@phan-var string $username';
+			if ( $username === null ) {
+				throw new \UnexpectedValueException(
+					'Expected string from ActionSpecifier::getAccountName()'
+				);
+			}
 			$title = new TitleValue( NS_USER, $username );
 		}
 

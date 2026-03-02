@@ -127,7 +127,9 @@ class RCVariableGenerator extends VariableGenerator {
 		// $name is a valid title, so should pass the only check for UserFactory::RIGOR_NONE (the title does
 		// not include a "#" character).
 		$createdUser = $this->userFactory->newFromName( $name, UserFactory::RIGOR_NONE );
-		'@phan-var User $createdUser';
+		if ( $createdUser === null ) {
+			throw new \UnexpectedValueException( 'Failed to retrieve the created user' );
+		}
 		$this->vars->setVar( 'account_name', $name );
 		$this->vars->setLazyLoadVar(
 			'account_type',

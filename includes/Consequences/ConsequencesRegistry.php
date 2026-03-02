@@ -56,8 +56,7 @@ class ConsequencesRegistry {
 	}
 
 	/**
-	 * @return callable[]
-	 * @phan-return array<string,callable(Parameters,array):Consequence>
+	 * @return array<string,callable(Parameters,array):Consequence>
 	 */
 	public function getCustomActions(): array {
 		if ( $this->customActionsCache === null ) {

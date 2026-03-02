@@ -14,8 +14,7 @@ interface AbuseFilterCustomActionsHook {
 	 * Allows specifying custom actions. Callers should append to $actions, using the action name as (string) key,
 	 * and the value should be a callable with the signature documented below.
 	 *
-	 * @param callable[] &$actions
-	 * @phan-param array<string,callable(Parameters,array):Consequence> &$actions
+	 * @param array<string,callable(Parameters,array):Consequence> &$actions
 	 */
 	public function onAbuseFilterCustomActions( array &$actions );
 }

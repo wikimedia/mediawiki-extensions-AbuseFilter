@@ -132,8 +132,7 @@ class ConsequencesFactory {
 
 	/**
 	 * @param Parameters $params
-	 * @param array $throttleParams
-	 * @phan-param array{id:int|string,count:int,period:int,groups:string[]} $throttleParams
+	 * @param array{id:int|string,count:int,period:int,groups:string[]} $throttleParams
 	 * @return Throttle
 	 */
 	public function newThrottle( Parameters $params, array $throttleParams ): Throttle {
