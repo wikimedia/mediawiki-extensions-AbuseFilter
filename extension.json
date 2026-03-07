@@ -509,7 +509,7 @@
 	"DomainEventIngresses": [
 		{
 			"events": [
-				"PageRevisionUpdated"
+				"PageLatestRevisionChanged"
 			],
 			"class": "MediaWiki\\Extension\\AbuseFilter\\MediaWikiEventIngress\\PageEventIngress",
 			"services": [

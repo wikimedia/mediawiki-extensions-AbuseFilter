@@ -4,11 +4,14 @@ namespace MediaWiki\Extension\AbuseFilter\MediaWikiEventIngress;
 
 use MediaWiki\DomainEvent\DomainEventIngress;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
-use MediaWiki\Page\Event\PageRevisionUpdatedEvent;
-use MediaWiki\Page\Event\PageRevisionUpdatedListener;
+use MediaWiki\Page\Event\PageLatestRevisionChangedEvent;
+use MediaWiki\Page\Event\PageLatestRevisionChangedListener;
 use MediaWiki\Page\WikiPageFactory;
 
-class PageEventIngress extends DomainEventIngress implements PageRevisionUpdatedListener {
+/**
+ * @noinspection PhpUnused
+ */
+class PageEventIngress extends DomainEventIngress implements PageLatestRevisionChangedListener {
 
 	public function __construct(
 		private readonly EditRevUpdater $revUpdater,
@@ -17,7 +20,9 @@ class PageEventIngress extends DomainEventIngress implements PageRevisionUpdated
 	}
 
 	/** @inheritDoc */
-	public function handlePageRevisionUpdatedEvent( PageRevisionUpdatedEvent $event ): void {
+	public function handlePageLatestRevisionChangedEvent(
+		PageLatestRevisionChangedEvent $event
+	): void {
 		$latestRevisionRecord = $event->getLatestRevisionAfter();
 		$wikiPage = $this->wikiPageFactory->newFromTitle(
 			$latestRevisionRecord->getPage()
