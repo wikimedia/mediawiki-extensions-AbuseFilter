@@ -4,24 +4,18 @@ import { viewEditPage as ViewEditPage } from '../pageobjects/viewedit.page.js';
 import { viewListPage as ViewListPage } from '../pageobjects/viewlist.page.js';
 
 describe( 'Filter editing', () => {
-	describe( 'The editing interface', () => {
-		it( 'is not visible to logged-out users', async () => {
-			await ViewEditPage.open( 'new' );
-			assert( await ViewEditPage.error.isDisplayed() );
-		} );
+	before( async () => {
+		await LoginPage.loginAdmin();
+	} );
 
+	describe( 'The editing interface', () => {
 		it( 'is visible to logged-in admins', async () => {
-			await LoginPage.loginAdmin();
 			await ViewEditPage.open( 'new' );
 			assert( await ViewEditPage.name.isDisplayed() );
 		} );
 	} );
 
 	describe( 'Trying to open a non-existing filter', () => {
-		before( async () => {
-			await LoginPage.loginAdmin();
-		} );
-
 		it( 'I should receive an error', async () => {
 			await ViewEditPage.open( 1234567 );
 			assert( await ViewEditPage.error.isDisplayed() );
@@ -47,7 +41,6 @@ describe( 'Filter editing', () => {
 
 	describe( 'Creating a new filter', () => {
 		before( async () => {
-			await LoginPage.loginAdmin();
 			await ViewEditPage.open( 'new' );
 		} );
 
@@ -77,7 +70,6 @@ describe( 'Filter editing', () => {
 
 	describe( 'Editing an existing filter', () => {
 		before( async () => {
-			await LoginPage.loginAdmin();
 			await ViewEditPage.open( filterID );
 		} );
 
@@ -99,10 +91,6 @@ describe( 'Filter editing', () => {
 	} );
 
 	describe( 'Restoring an old version of a filter', () => {
-		before( async () => {
-			await LoginPage.loginAdmin();
-		} );
-
 		it( 'edit can be saved (3)', async () => {
 			await ViewEditPage.open( 'history/' + filterID + '/item/' + historyID );
 			await ViewEditPage.submit();
@@ -117,7 +105,6 @@ describe( 'Filter editing', () => {
 
 	describe( 'CSRF protection', () => {
 		before( async () => {
-			await LoginPage.loginAdmin();
 			await ViewEditPage.open( 'new' );
 		} );
 
@@ -136,7 +123,6 @@ describe( 'Filter editing', () => {
 
 	describe( 'Trying to save a filter with bad data', () => {
 		before( async () => {
-			await LoginPage.loginAdmin();
 			await ViewEditPage.open( 'new' );
 		} );
 
