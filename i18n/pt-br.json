@@ -133,6 +133,7 @@
 	"abusefilter-log-noactions": "nenhum",
 	"abusefilter-log-noactions-filter": "Nenhum",
 	"abusefilter-log-details-diff": "Alterações feitas na edição",
+	"abusefilter-log-missinguserlink-title": "$1 (conta não existe)",
 	"abusefilter-log-linkoncontribs": "registro de abusos",
 	"abusefilter-log-linkoncontribs-text": "Registro de abuso para {{GENDER:$1|este usuário}}",
 	"abusefilter-log-linkonhistory": "ver o registro de abusos",
