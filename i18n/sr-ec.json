@@ -531,7 +531,7 @@
 	"abusefilter-topnav-log": "дневник злоупотреба",
 	"abusefilter-topnav-tools": "отклони грешке",
 	"abusefilter-log-name": "Дневник филтера злоупотреба",
-	"abusefilter-log-header": "Овде је приказан сажетак измена начињених над филтерима.\nЗа више информација погледајте [[Special:AbuseFilter/history|преглед]] скорашњих измена.",
+	"abusefilter-log-header": "Овде је приказан сажетак измена начињених над филтерима.\nЗа више информација погледајте [[Special:AbuseFilter/history|скорашње измене]].",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|направио|направила}} је $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|уредио|уредила}} је $4 ($5)",
 	"abusefilter-log-noresults": "Нема резултата",
