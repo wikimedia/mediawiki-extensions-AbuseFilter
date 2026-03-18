@@ -235,10 +235,12 @@ return [
 		);
 	},
 	EditBoxBuilderFactory::SERVICE_NAME => static function ( MediaWikiServices $services ): EditBoxBuilderFactory {
+		$config = $services->getMainConfig();
 		return new EditBoxBuilderFactory(
 			$services->get( PermManager::SERVICE_NAME ),
 			$services->get( KeywordsManager::SERVICE_NAME ),
-			ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' )
+			$config->get( 'AbuseFilterUseCodeEditor' ) && ExtensionRegistry::getInstance()->isLoaded( 'CodeEditor' ),
+			$config->get( 'AbuseFilterUseCodeMirror' ) && ExtensionRegistry::getInstance()->isLoaded( 'CodeMirror' )
 		);
 	},
 	ConsequencesLookup::SERVICE_NAME => static function ( MediaWikiServices $services ): ConsequencesLookup {

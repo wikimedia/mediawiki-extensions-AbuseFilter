@@ -11,12 +11,14 @@
 
 	// @var {jQuery} Filter editor for JS and jQuery handling
 	let $filterBox,
-		// Filter editor for Ace specific functions
+		// Filter editor for CodeMirror/Ace specific functions
 		filterEditor,
 		// @var {jQuery} Hidden textarea for submitting form
 		$plainTextBox,
+		// @var {boolean} To determine whether to use CodeMirror
+		useCodeMirror = false,
 		// @var {boolean} To determine what editor to use
-		useAce = false,
+		useAdvanced = false,
 		// Infused OOUI elements
 		toggleWarnPreviewButton, warnMessageExisting, warnMessageOther,
 		toggleDisallowPreviewButton, disallowMessageExisting, disallowMessageOther;
@@ -58,14 +60,20 @@
 	}
 
 	/**
-	 * Switch between Ace Editor and classic textarea
+	 * Switch between CodeMirror/Ace Editor and classic textarea
 	 */
 	function switchEditor() {
-		useAce = !useAce;
-		$filterBox.toggle( useAce );
-		$plainTextBox.toggle( !useAce );
-		if ( useAce ) {
-			filterEditor.session.setValue( $plainTextBox.val() );
+		useAdvanced = !useAdvanced;
+		$filterBox.toggle( useAdvanced );
+		$plainTextBox.toggle( !useAdvanced );
+		if ( useAdvanced ) {
+			if ( useCodeMirror ) {
+				if ( filterEditor ) {
+					filterEditor.textSelection.setContents( $plainTextBox.val() );
+				}
+			} else {
+				filterEditor.session.setValue( $plainTextBox.val() );
+			}
 		}
 	}
 
@@ -92,13 +100,18 @@
 				false
 			);
 
-			if ( useAce ) {
+			if ( useAdvanced ) {
 				filterEditor.focus();
-				// Convert index (used in textareas) in position {row, column} for ace
-				const position = filterEditor.session.getDocument()
-					.indexToPosition( data.character );
-				filterEditor.navigateTo( position.row, position.column );
-				filterEditor.scrollToRow( position.row );
+				if ( useCodeMirror ) {
+					filterEditor.textSelection.setSelection( { start: data.character } );
+					filterEditor.textSelection.scrollToCaretPosition();
+				} else {
+					// Convert index (used in textareas) in position {row, column} for ace
+					const position = filterEditor.session.getDocument()
+						.indexToPosition( data.character );
+					filterEditor.navigateTo( position.row, position.column );
+					filterEditor.scrollToRow( position.row );
+				}
 			} else {
 				$plainTextBox
 					.trigger( 'focus' )
@@ -156,9 +169,16 @@
 			return;
 		}
 
-		if ( useAce ) {
-			filterEditor.insert( $filterBuilder.val() + ' ' );
-			$plainTextBox.val( filterEditor.getSession().getValue() );
+		if ( useAdvanced ) {
+			if ( useCodeMirror ) {
+				filterEditor.textSelection.encapsulateSelection( {
+					pre: $filterBuilder.val() + ' '
+				} );
+				$plainTextBox.val( filterEditor.view.state.doc.toString() );
+			} else {
+				filterEditor.insert( $filterBuilder.val() + ' ' );
+				$plainTextBox.val( filterEditor.getSession().getValue() );
+			}
 			filterEditor.focus();
 		} else {
 			$plainTextBox.textSelection(
@@ -197,8 +217,12 @@
 			} )
 			.done( ( data ) => {
 				if ( data.query.abusefilters[ 0 ] !== undefined ) {
-					if ( useAce ) {
-						filterEditor.setValue( data.query.abusefilters[ 0 ].pattern );
+					if ( useAdvanced ) {
+						if ( useCodeMirror ) {
+							filterEditor.textSelection.setContents( data.query.abusefilters[ 0 ].pattern );
+						} else {
+							filterEditor.setValue( data.query.abusefilters[ 0 ].pattern );
+						}
 					}
 					$plainTextBox.val( data.query.abusefilters[ 0 ].pattern );
 				}
@@ -515,6 +539,42 @@
 						filterEditor.resize();
 					} ).observe( $filterBox[ 0 ] );
 				}
+
+				$switchEditorBtn.on( 'click', switchEditor ).show();
+			} );
+		} else if ( $( '#wpCodeMirrorFilterEditor' ).length ) {
+			useCodeMirror = true;
+
+			// CodeMirror is installed.
+			mw.loader.using( [ 'ext.CodeMirror.v6', 'ext.CodeMirror.v6.abusefilter' ] ).then( ( require ) => {
+				const CodeMirror = require( 'ext.CodeMirror.v6' );
+				const abusefilter = require( 'ext.CodeMirror.v6.abusefilter' );
+
+				$filterBox = $( '#wpCodeMirrorFilterEditor' );
+				const $textarea = $( '<textarea>' ).val( $filterBox.text() );
+				$filterBox.empty().append( $textarea );
+
+				// Settings for CodeMirror editor box
+				const readOnly = mw.config.get( 'abuseFilterHighlighterConfig' ).cmReadOnly;
+				$textarea.prop( 'readonly', readOnly );
+
+				// Display CodeMirror editor
+				switchEditor();
+
+				filterEditor = new CodeMirror( $textarea, abusefilter() );
+				filterEditor.initialize();
+				$filterBox.css( 'height', 'auto' );
+
+				// Hide the syntax ok message when the text changes and sync dummy box
+				mw.hook( 'ext.CodeMirror.input' ).add( () => {
+					const $el = $( '#mw-abusefilter-syntaxresult' );
+
+					if ( $el.data( 'syntaxOk' ) ) {
+						$el.hide();
+					}
+
+					$plainTextBox.val( filterEditor.view.state.doc.toString() );
+				} );
 
 				$switchEditorBtn.on( 'click', switchEditor ).show();
 			} );
