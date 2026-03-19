@@ -221,6 +221,8 @@
 	"abusefilter-edit-enabled": "Омогући филтер",
 	"abusefilter-edit-deleted": "Означи избрисаним",
 	"abusefilter-edit-hidden": "Сакриј детаље овог филтера из јавног приказа",
+	"abusefilter-edit-protected": "<strong>Омогући употребу [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables заштићених променљивих] у овом филтеру</strong>",
+	"abusefilter-edit-protected-variable-already-protected": "Детаљи овог филтера су скривени од корисника који не могу видети заштићене променљиве.",
 	"abusefilter-edit-protected-help-message": "Детаљи овог филтера ће бити скривени од корисника који не могу видети заштићене променљиве. Ова радња је трајна и не може се поништити",
 	"abusefilter-edit-global": "Глобални филтер",
 	"abusefilter-edit-rules": "Услови:",
@@ -281,6 +283,7 @@
 	"abusefilter-edit-missingfields": "Следећа поља су обавезна и морају бити попуњена: $1",
 	"abusefilter-edit-deleting-enabled": "Не можете означити активан филтер обрисаним.",
 	"abusefilter-edit-restricted": "Не можете уређивати овај филтер јер садржи једну или више ограничених радњи.\nЗамолите корисника с одређеним овлашћењем да направи измене уместо вас.",
+	"abusefilter-edit-protected-variable-not-protected": "Ваш филтер није сачуван зато што користи [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables {{PLURAL:$2|следећу заштићену променљиву|следеће заштићене променљиве}}]: $1. Молимо омогућите употребу заштићених променљивих. Ова радња ће трајно сакрити детаље филтера од корисника који не могу видети заштићене променљиве.",
 	"abusefilter-edit-viewhistory": "Прикажи историју",
 	"abusefilter-edit-history": "Историја:",
 	"abusefilter-edit-check": "Провери синтаксу",
@@ -526,7 +529,7 @@
 	"abusefilter-topnav-log": "дневник злоупотреба",
 	"abusefilter-topnav-tools": "отклони грешке",
 	"abusefilter-log-name": "Дневник филтера злоупотреба",
-	"abusefilter-log-header": "Овде је приказан сажетак измена начињених над филтерима.\nЗа више информација погледајте [[Special:AbuseFilter/history|преглед]] скорашњих измена.",
+	"abusefilter-log-header": "Овде је приказан сажетак измена начињених над филтерима.\nЗа више информација погледајте [[Special:AbuseFilter/history|скорашње измене]].",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|направио|направила}} је $4 ($5)",
 	"abusefilter-logentry-modify": "$1 {{GENDER:$2|уредио|уредила}} је $4 ($5)",
 	"abusefilter-log-noresults": "Нема резултата",
@@ -588,5 +591,6 @@
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 је {{GENDER:$2|видео|видела}} заштићене променљиве повезане са $3",
 	"log-action-filter-abusefilter-protected-vars": "Врста радње:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Промени приступ",
-	"communityconfiguration-blockeddomain-title": "Блокирани спољни домени"
+	"communityconfiguration-blockeddomain-title": "Блокирани спољни домени",
+	"communityconfiguration-blockeddomain-description": "Списак спољашњих веза које не могу бити додате."
 }
