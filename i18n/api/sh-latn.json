@@ -5,7 +5,7 @@
 			"Winston Sung"
 		]
 	},
-	"apihelp-abusefiltercheckmatch-summary": "Provjerite nalazi li filter za zlouporabu određeni skup varijabli, uređivanje ili zapisan događaj u filteru.",
+	"apihelp-abusefiltercheckmatch-summary": "Provjerite nalazi li filter zloupotreba određeni skup varijabli, uređivanje ili zapisan događaj u filteru.",
 	"apihelp-abusefiltercheckmatch-extended-description": "Zahtjeva vars, rcid iili logid (može se koristiti samo jedno od njih).",
 	"apihelp-abusefiltercheckmatch-param-filter": "Puni tekst filtera što ga filter provjerava.",
 	"apihelp-abusefiltercheckmatch-param-vars": "Niz varijabli kodiranih u JSON što se treba provjeriti.",
@@ -16,7 +16,7 @@
 	"apihelp-abusefilterchecksyntax-param-filter": "Puni tekst čiju sintaksu provjerava filter.",
 	"apihelp-abusefilterchecksyntax-example-1": "Provjeri sintaksu ispravnog filtera",
 	"apihelp-abusefilterchecksyntax-example-2": "Provjeri sintaksu neispravnog filtera",
-	"apihelp-abusefilterevalexpression-summary": "Ocjenjuje izraz u Filtru za zloupotrebe.",
+	"apihelp-abusefilterevalexpression-summary": "Ocjenjuje izraz u Filteru zloupotreba.",
 	"apihelp-abusefilterevalexpression-param-expression": "Izraz što se treba procjeniti.",
 	"apihelp-abusefilterevalexpression-param-prettyprint": "Treba li rezultat biti lijepo ispisan.",
 	"apihelp-abusefilterevalexpression-example-1": "Ocijeni jednostavan izraz",
@@ -40,7 +40,7 @@
 	"apihelp-query+abuselog-param-title": "Prikaži samo stavke što se odnose na datu stranicu.",
 	"apihelp-query+abuselog-param-filter": "Prikaži samo stavke za događaje uhvaćene danom filterskom naznakom. Odijelite pravim crtima; i prefiksom \"$1\" za globalne filtere.",
 	"apihelp-query+abuselog-param-filter-central": "Prikaži samo unose koje su uhvatili dane naznake filtera. Odvojite cijevima.",
-	"apihelp-query+abuselog-param-limit": "Najviše stavki u popisima.",
+	"apihelp-query+abuselog-param-limit": "Najveći broj stavki na listi.",
 	"apihelp-query+abuselog-param-prop": "Koja svojstva dati.",
 	"apihelp-query+abuselog-param-wiki": "Od kojog wikija se prikazuju pogodci.",
 	"apihelp-query+abuselog-example-1": "Prikaži nedavne zapisničke stavke",
@@ -49,9 +49,9 @@
 	"apihelp-abuselogprivatedetails-param-logid": "Naznaka unosa u Evidenciji zloupotreba koja treba da se provijeri.",
 	"apihelp-abuselogprivatedetails-param-reason": "Važeći razlog za provjeru.",
 	"apihelp-abuselogprivatedetails-example-1": "Daj osobne podatke za unos u Evidenciji zloupotreba s naznakom 1, koristeći razlog",
-	"apierror-abusefilter-canttest": "Nemate ovlaštenje da testirate filtere zloupotreba.",
+	"apierror-abusefilter-canttest": "Nemate dopuštenje da testirate filtere zloupotreba.",
 	"apierror-abusefilter-cantcheck": "Nemate dopuštenje da provjerite sintaksu filtera zloupotreba.",
 	"apierror-abusefilter-canteval": "Nemate dozvolu za procjenu izraza Filtera zloupotrebe.",
-	"apierror-abusefilter-nosuchlogid": "Nema unosa u zapisniku zlouporabe s naznakom $1.",
+	"apierror-abusefilter-nosuchlogid": "Nema stavke u dnevniku zloupotreba s ID-jem $1.",
 	"apierror-abusefilter-badsyntax": "Filter ima neispravnu sintaksu."
 }
