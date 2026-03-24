@@ -690,7 +690,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 	 * @dataProvider provideIPLookups
 	 */
 	public function testTempAccountIPLookup(
-		$performerProvider,
+		$performer,
 		$target,
 		$expectedResultCount,
 		$tempAccountsKnown
@@ -706,7 +706,7 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			'',
 			new FauxRequest( [ 'wpSearchUser' => $target ] ),
 			null,
-			$performerProvider()
+			$performer()
 		);
 		if ( $expectedResultCount ) {
 			$this->assertStringNotContainsString( '(abusefilter-log-noresults)', $html );

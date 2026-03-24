@@ -56,20 +56,20 @@ class ChangeTaggerTest extends MediaWikiUnitTestCase {
 
 		$rcAttribs = [ 'rc_log_type' => null ] + $baseAttribs;
 		yield 'edit' => [
-			'specifier' => [ 'action' => 'edit' ] + $baseSpecs,
-			'recentchange' => $rcAttribs
+			'actionSpecs' => [ 'action' => 'edit' ] + $baseSpecs,
+			'rcAttribs' => $rcAttribs
 		];
 
 		$rcAttribs = [ 'rc_log_type' => 'newusers', 'rc_log_action' => 'create2' ] + $baseAttribs;
 		yield 'createaccount' => [
-			'specifier' => [ 'action' => 'createaccount', 'accountName' => $userName ] + $baseSpecs,
-			'recentchange' => $rcAttribs
+			'actionSpecs' => [ 'action' => 'createaccount', 'accountName' => $userName ] + $baseSpecs,
+			'rcAttribs' => $rcAttribs
 		];
 
 		$rcAttribs = [ 'rc_log_type' => 'newusers', 'rc_log_action' => 'autocreate' ] + $baseAttribs;
 		yield 'autocreate' => [
-			'specifier' => [ 'action' => 'autocreateaccount', 'accountName' => $userName ] + $baseSpecs,
-			'recentchange' => $rcAttribs
+			'actionSpecs' => [ 'action' => 'autocreateaccount', 'accountName' => $userName ] + $baseSpecs,
+			'rcAttribs' => $rcAttribs
 		];
 	}
 
