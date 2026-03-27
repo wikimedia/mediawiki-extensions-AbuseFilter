@@ -289,6 +289,22 @@ class CheckMatchTest extends ApiTestCase {
 		);
 	}
 
+	public function testExecuteWhenProvidedTestPatternUsesProtectedVariablesButInReadOnlyMode(): void {
+		$this->addCustomProtectedVariable();
+
+		$this->getServiceContainer()->getReadOnlyMode()->setReason( 'test' );
+
+		$this->expectApiErrorCode( 'readonly' );
+		$this->doApiRequest(
+			[
+				'action' => 'abusefiltercheckmatch',
+				'rcid' => self::$recentChangeId,
+				'filter' => 'custom_variable = 1',
+			],
+			null, false, $this->mockRegisteredUltimateAuthority()
+		);
+	}
+
 	public function testExecuteWhenProvidedTestPatternUsesProtectedVariables() {
 		$this->addCustomProtectedVariable();
 		$this->setTemporaryHook(

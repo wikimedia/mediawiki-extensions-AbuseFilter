@@ -64,6 +64,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			VariableGeneratorFactory::SERVICE_NAME,
 			AbuseLoggerFactory::SERVICE_NAME,
 			'RecentChangeStore',
+			'ReadOnlyMode',
 		],
 		AbuseFilterViewHistory::class => [
 			'UserNameUtils',
@@ -101,6 +102,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			VariableGeneratorFactory::SERVICE_NAME,
 			AbuseLoggerFactory::SERVICE_NAME,
 			'RecentChangeFactory',
+			'ReadOnlyMode',
 		],
 		AbuseFilterViewTools::class => [
 			AbuseFilterPermissionManager::SERVICE_NAME,

@@ -43,6 +43,7 @@ use MediaWiki\Utils\MWTimestamp;
 use Wikimedia\IPUtils;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
+use Wikimedia\Rdbms\ReadOnlyMode;
 
 /**
  * Query module to list abuse log entries.
@@ -67,6 +68,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		private readonly RuleCheckerFactory $ruleCheckerFactory,
 		private readonly AbuseLogConditionFactory $abuseLogConditionFactory,
 		private readonly TemporaryAccountIPsViewerSpecification $tempAccountIPsViewerSpecification,
+		private readonly ReadOnlyMode $readOnlyMode,
 	) {
 		parent::__construct( $query, $moduleName, 'afl' );
 	}
@@ -332,11 +334,15 @@ class QueryAbuseLog extends ApiQueryBase {
 						}
 
 						if ( $filterObj->isProtected() ) {
-							// user_name or account_name should always exist -- just in case
-							// if it doesn't, unset the protected variables since they shouldn't be accessed if
-							// the access isn't logged
-							if ( isset( $entry['details']['user_name'] ) ||
-								isset( $entry['details']['account_name'] )
+							// We need to log any access of protected variable values. If the site is
+							// in read only or user_name or account_name don't exist, then just blank
+							// the protected variable values because we cannot create a log
+							if (
+								!$this->readOnlyMode->isReadOnly() &&
+								(
+									isset( $entry['details']['user_name'] ) ||
+									isset( $entry['details']['account_name'] )
+								)
 							) {
 								$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 								$logger->logViewProtectedVariableValue(

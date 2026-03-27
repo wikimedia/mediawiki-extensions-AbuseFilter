@@ -565,6 +565,33 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '1.2.3.4', $html );
 	}
 
+	public function testViewTestBatchWhenSubmittedForProtectedFilterButReadOnlyEnabled(): void {
+		$this->addCustomProtectedVariableToGenericVars();
+		$this->clearHook( 'ChangesListInitRows' );
+
+		$this->getServiceContainer()->getReadOnlyMode()->setReason( 'test' );
+		[ $html, ] = $this->executeSpecialPage(
+			'test',
+			new FauxRequest( [
+				'wpFilterRules' => "custom_variable = 'custom_variable_value'",
+				'wpTestAction' => 0,
+				'wpTestUser' => '',
+				'wpTestPeriodStart'	=> '',
+				'wpTestPeriodEnd' => '',
+				'wpTestPage' => '',
+				'wpShowNegative' => 1,
+			], true ),
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+
+		$this->assertStringContainsString(
+			'(readonlytext: test',
+			$html,
+			'Read only mode warning should be shown if in read only mode'
+		);
+	}
+
 	/**
 	 * @dataProvider provideIsLogSourceForRCAccessControl
 	 */
@@ -1225,6 +1252,35 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 	}
 
+	public function testViewExamineForLogEntryWhenProtectedVariablesUsedButReadOnly(): void {
+		$this->getServiceContainer()->getReadOnlyMode()->setReason( 'test' );
+
+		[ $html, ] = $this->executeSpecialPage(
+			'examine/log/1',
+			new FauxRequest(),
+			null,
+			$this->authorityCanUseProtectedVar
+		);
+		DeferredUpdates::doUpdates();
+
+		$this->assertStringContainsString(
+			'(readonlytext: test',
+			$html,
+			'A read only error should be displayed instead of showing protected variables'
+		);
+
+		// Assert no log is created (because the site is in read only mode)
+		$this->newSelectQueryBuilder()
+			->select( '1' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->assertEmptyResult();
+	}
+
 	public function testViewExamineForLogEntryWhenUserCanSeeLog() {
 		[ $html, ] = $this->executeSpecialPage(
 			'examine/log/1',
@@ -1356,6 +1412,33 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			'The "custom_variable" variable was not unset, but it should ' .
 				'have been because the user cannot see it.'
 		);
+	}
+
+	public function testViewExamineForRecentChangeForProtectedVariablesButReadOnly(): void {
+		$this->addCustomProtectedVariableToGenericVars();
+
+		$this->getServiceContainer()->getReadOnlyMode()->setReason( 'test' );
+		[ $html, ] = $this->executeSpecialPage(
+			'examine/' . self::$recentChangeId, null, null, $this->authorityCanUseProtectedVar
+		);
+		DeferredUpdates::doUpdates();
+
+		$this->assertStringContainsString(
+			'(readonlytext: test',
+			$html,
+			'A read only error should be displayed instead of showing protected variables'
+		);
+
+		// Assert no log is created (because the site is in read only mode)
+		$this->newSelectQueryBuilder()
+			->select( '1' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->assertEmptyResult();
 	}
 
 	public function testViewExamineForRecentChangeWhenUserCanSeeRecentChange() {

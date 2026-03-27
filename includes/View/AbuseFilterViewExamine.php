@@ -26,6 +26,7 @@ use MediaWiki\RecentChanges\RecentChangeStore;
 use MediaWiki\Title\Title;
 use OOUI;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\ReadOnlyMode;
 
 class AbuseFilterViewExamine extends AbuseFilterView {
 	/**
@@ -44,6 +45,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		private readonly VariableGeneratorFactory $varGeneratorFactory,
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
 		private readonly RecentChangeStore $recentChangeStore,
+		private readonly ReadOnlyMode $readOnlyMode,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -216,6 +218,11 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 		$vars = VariableHolder::newFromArray( $varsArray );
 
 		if ( count( $protectedVariableValuesShown ) ) {
+			if ( $this->readOnlyMode->isReadOnly() ) {
+				$out->addWikiMsg( 'readonlytext', $this->readOnlyMode->getReason() );
+				return;
+			}
+
 			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
 			$logger->logViewProtectedVariableValue(
 				$this->getUser(),
@@ -326,12 +333,20 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 					$protectedVariableValuesShown[] = $protectedVariable;
 				}
 			}
-			$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
-			$logger->logViewProtectedVariableValue(
-				$userAuthority->getUser(),
-				$varsArray['user_name'] ?? $varsArray['account_name'],
-				$protectedVariableValuesShown
-			);
+
+			if ( count( $protectedVariableValuesShown ) ) {
+				if ( $this->readOnlyMode->isReadOnly() ) {
+					$out->addWikiMsg( 'readonlytext', $this->readOnlyMode->getReason() );
+					return;
+				}
+
+				$logger = $this->abuseLoggerFactory->getProtectedVarsAccessLogger();
+				$logger->logViewProtectedVariableValue(
+					$userAuthority->getUser(),
+					$varsArray['user_name'] ?? $varsArray['account_name'],
+					$protectedVariableValuesShown
+				);
+			}
 		}
 
 		$out->addJsConfigVars( [

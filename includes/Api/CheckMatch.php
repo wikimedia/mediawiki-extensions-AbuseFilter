@@ -18,6 +18,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\RecentChanges\RecentChangeLookup;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Rdbms\ReadOnlyMode;
 
 class CheckMatch extends ApiBase {
 
@@ -30,7 +31,8 @@ class CheckMatch extends ApiBase {
 		private readonly VariableGeneratorFactory $afVariableGeneratorFactory,
 		private readonly FilterLookup $filterLookup,
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
-		private readonly RecentChangeLookup $recentChangeLookup
+		private readonly RecentChangeLookup $recentChangeLookup,
+		private readonly ReadOnlyMode $readOnlyMode,
 	) {
 		parent::__construct( $main, $action );
 	}
@@ -148,6 +150,10 @@ class CheckMatch extends ApiBase {
 		}
 
 		if ( count( $protectedVariableValuesShown ) ) {
+			if ( $this->readOnlyMode->isReadOnly() ) {
+				$this->dieReadOnly();
+			}
+
 			// Either 'user_name' or 'account_name' should be set which are not lazily loaded, so get one of
 			// them to use as the target
 			if ( $vars->varIsSet( 'user_name' ) ) {

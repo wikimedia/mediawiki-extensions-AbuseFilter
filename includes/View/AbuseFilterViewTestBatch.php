@@ -19,6 +19,7 @@ use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\RecentChanges\RecentChangeFactory;
 use MediaWiki\Title\Title;
 use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\ReadOnlyMode;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class AbuseFilterViewTestBatch extends AbuseFilterView {
@@ -40,6 +41,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		private readonly VariableGeneratorFactory $varGeneratorFactory,
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
 		private readonly RecentChangeFactory $recentChangeFactory,
+		private readonly ReadOnlyMode $readOnlyMode,
 		IContextSource $context,
 		LinkRenderer $linkRenderer,
 		string $basePageName,
@@ -235,6 +237,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$counter = 1;
 
+		$readOnlyErrorShown = false;
 		$contextUser = $this->getUser();
 		$ruleChecker->toggleConditionLimit( false );
 		foreach ( $res as $row ) {
@@ -277,6 +280,16 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			}
 
 			if ( count( $protectedVariableValuesShown ) ) {
+				if ( $this->readOnlyMode->isReadOnly() ) {
+					if ( !$readOnlyErrorShown ) {
+						$form->addPreHtml( Html::errorBox(
+							$this->msg( 'readonlytext', $this->readOnlyMode->getReason() )->parse()
+						) );
+						$readOnlyErrorShown = true;
+					}
+					continue;
+				}
+
 				// Either 'user_name' or 'account_name' should be set which are not lazily loaded, so get one of
 				// them to use as the target
 				if ( $vars->varIsSet( 'user_name' ) ) {

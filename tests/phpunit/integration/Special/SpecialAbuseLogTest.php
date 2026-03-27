@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Special;
 
 use Generator;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Exception\ReadOnlyError;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
@@ -554,6 +555,15 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			'1', null, null, $this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( '(abusefilter-examine-error-protected', $html );
+	}
+
+	public function testShowDetailsForProtectedVariableValuesAccessButInReadOnly() {
+		$this->getServiceContainer()->getReadOnlyMode()->setReason( 'test' );
+
+		$this->expectException( ReadOnlyError::class );
+		$this->executeSpecialPage(
+			'1', null, null, $this->authorityCanUseProtectedVar
+		);
 	}
 
 	public function testViewLogWhenAssociatedFilterIsGlobalAndGlobalFiltersHaveBeenDisabled() {

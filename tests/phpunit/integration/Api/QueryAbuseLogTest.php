@@ -184,6 +184,44 @@ class QueryAbuseLogTest extends ApiTestCase {
 		$this->assertCount( 0, $result['query']['abuselog'] );
 	}
 
+	public function testProtectedVariableValueAccessWhenReadOnly(): void {
+		$this->getServiceContainer()->getReadOnlyMode()->setReason( 'test' );
+
+		$result = $this->doApiRequest(
+			[
+				'action' => 'query',
+				'list' => 'abuselog',
+				// Only get entries for the first filter (i.e. FILTER_NAME_1_2_3_4)
+				'aflfilter' => 1,
+				'aflprop' => 'details',
+				'afldir' => 'older',
+			],
+			null,
+			null,
+			$this->authorityCanViewProtectedVar
+		);
+		$result = $result[0]['query']['abuselog'];
+		foreach ( $result as $row ) {
+			$this->assertSame(
+				'',
+				$row['details']['user_unnamed_ip'],
+				'Protected variables should be unset when in read only mode'
+			);
+		}
+
+		// Verify that a protected variable value access log was not created
+		// as we are in read only
+		$this->newSelectQueryBuilder()
+			->select( 'COUNT(*)' )
+			->from( 'logging' )
+			->where( [
+				'log_action' => 'view-protected-var-value',
+				'log_type' => ProtectedVarsAccessLogger::LOG_TYPE,
+			] )
+			->caller( __METHOD__ )
+			->assertFieldValue( 0 );
+	}
+
 	public function testProtectedVariableValueAccess() {
 		// Assert that the IP is visible
 		$result = $this->doApiRequest( [

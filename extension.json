@@ -237,7 +237,8 @@
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterFilterLookup",
 				"AbuseFilterAbuseLoggerFactory",
-				"RecentChangeLookup"
+				"RecentChangeLookup",
+				"ReadOnlyMode"
 			]
 		},
 		"abuselogprivatedetails": {
@@ -262,7 +263,8 @@
 				"AbuseFilterAbuseLoggerFactory",
 				"AbuseFilterRuleCheckerFactory",
 				"AbuseLogConditionFactory",
-				"TemporaryAccountIPsViewerSpecification"
+				"TemporaryAccountIPsViewerSpecification",
+				"ReadOnlyMode"
 			]
 		},
 		"abusefilters": {
