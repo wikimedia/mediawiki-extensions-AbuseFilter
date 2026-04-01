@@ -78,20 +78,16 @@ class VariablesManager {
 		}
 
 		// The variable is not set.
-		switch ( $mode ) {
-			case self::GET_STRICT:
-				throw new UnsetVariableException( $varName );
-			case self::GET_LAX:
-				return new AFPData( AFPData::DUNDEFINED );
-			case self::GET_BC:
-				// Old behaviour, which can sometimes lead to unexpected results (e.g.
-				// `edit_delta < -5000` will match any non-edit action).
-				return new AFPData( AFPData::DNULL );
-			default:
-				// @codeCoverageIgnoreStart
-				throw new LogicException( "Mode '$mode' not recognized." );
-				// @codeCoverageIgnoreEnd
-		}
+		return match ( $mode ) {
+			self::GET_STRICT => throw new UnsetVariableException( $varName ),
+			self::GET_LAX => new AFPData( AFPData::DUNDEFINED ),
+			// Old behaviour, which can sometimes lead to unexpected results (e.g.
+			// `edit_delta < -5000` will match any non-edit action).
+			self::GET_BC => new AFPData( AFPData::DNULL ),
+			// @codeCoverageIgnoreStart
+			default => throw new LogicException( "Mode '$mode' not recognized." )
+			// @codeCoverageIgnoreEnd
+		};
 	}
 
 	/**

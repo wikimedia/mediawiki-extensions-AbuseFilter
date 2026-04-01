@@ -47,17 +47,11 @@ class BlockedDomainEditor {
 		$this->context->getOutput()->addHelpLink( 'Manual:BlockedExternalDomains' );
 
 		$request = $this->context->getRequest();
-		switch ( $par ) {
-			case 'remove':
-				$this->showRemoveForm( $request->getVal( 'domain' ) );
-				break;
-			case 'add':
-				$this->showAddForm( $request->getVal( 'domain' ) );
-				break;
-			default:
-				$this->showList();
-				break;
-		}
+		match ( $par ) {
+			'remove' => $this->showRemoveForm( $request->getVal( 'domain' ) ),
+			'add' => $this->showAddForm( $request->getVal( 'domain' ) ),
+			default => $this->showList(),
+		};
 	}
 
 	private function showList() {
