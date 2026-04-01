@@ -341,8 +341,8 @@ class ConsequencesExecutor {
 	 * Constructs a Status object as returned by executeFilterActions() from the list of
 	 * actions taken and the corresponding list of messages.
 	 *
-	 * @param array[] $actionsTaken associative array mapping each filter to the list if
-	 *                actions taken because of that filter.
+	 * @param array[] $actionsTaken associative array mapping each filter to the list of
+	 *   actions taken because of that filter.
 	 * @param Message[] $messages a list of Message objects
 	 *
 	 * @return Status

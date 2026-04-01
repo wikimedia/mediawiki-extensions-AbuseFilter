@@ -100,7 +100,7 @@ class EmergencyWatcher implements Watcher {
 	}
 
 	/**
-	 * Determine which a filters must be throttled and apply the throttling
+	 * Determine which filters must be throttled and apply the throttling
 	 *
 	 * @inheritDoc
 	 */

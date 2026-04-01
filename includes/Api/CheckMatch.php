@@ -96,7 +96,7 @@ class CheckMatch extends ApiBase {
 
 			$vars = $this->afVariablesBlobStore->loadVarDump( $row );
 
-			// Check that the user can see all the protected filters in the abuse_filter_log log.
+			// Check that the user can see all the protected variables in the abuse_filter_log log.
 			if ( $filter->isProtected() ) {
 				$permStatus = $this->afPermManager->canViewProtectedVariables(
 					$this->getAuthority(), array_keys( $vars->getVars() )

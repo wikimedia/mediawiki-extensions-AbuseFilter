@@ -517,7 +517,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			// Messages that can be used here:
 			// * abusefilter-edit-enabled
 			// * abusefilter-edit-deleted
-			// * abusefitler-edit-suppressed
+			// * abusefilter-edit-suppressed
 			// * abusefilter-edit-hidden
 			// * abusefilter-edit-protected
 			// * abusefilter-edit-global
@@ -546,7 +546,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				$checkboxAttribs['disabled'] = 'disabled';
 			}
 
-			if ( $checkboxId == 'protected' ) {
+			if ( $checkboxId === 'protected' ) {
 				if ( $filterObj->isProtected() ) {
 					$checkboxAttribs['disabled'] = true;
 					$labelAttribs['label'] = $this->msg(
@@ -1230,7 +1230,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				->select( 'page_title' )
 				->from( 'page' )
 				->where( [
-					'page_namespace' => 8,
+					'page_namespace' => NS_MEDIAWIKI,
 					$dbr->expr( 'page_title', IExpression::LIKE, new LikeValue( $pageTitlePrefix, $dbr->anyString() ) )
 				] )
 				->caller( __METHOD__ )
