@@ -101,7 +101,7 @@ class AbuseFilterChangesList extends OldChangesList {
 				Linker::userToolLinks( $rc->getAttribute( 'rc_user' ), $rc->getAttribute( 'rc_user_text' ) );
 
 		if ( $this->isDeleted( $rc, RevisionRecord::DELETED_USER ) ) {
-			if ( $this->userCan( $rc, RevisionRecord::DELETED_USER ) ) {
+			if ( self::userCan( $rc, RevisionRecord::DELETED_USER, $this->getAuthority() ) ) {
 				$s .= ' <span class="history-deleted">' . $links . '</span>';
 			} else {
 				$s .= ' <span class="history-deleted">' .
@@ -119,7 +119,7 @@ class AbuseFilterChangesList extends OldChangesList {
 	 */
 	public function insertComment( $rc ) {
 		if ( $this->isDeleted( $rc, RevisionRecord::DELETED_COMMENT ) ) {
-			if ( $this->userCan( $rc, RevisionRecord::DELETED_COMMENT ) ) {
+			if ( self::userCan( $rc, RevisionRecord::DELETED_COMMENT, $this->getAuthority() ) ) {
 				return ' <span class="history-deleted">' .
 					MediaWikiServices::getInstance()->getCommentFormatter()
 						->formatBlock(
