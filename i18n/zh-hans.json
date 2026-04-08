@@ -94,11 +94,13 @@
 			"飞小RAN",
 			"飞舞回堂前",
 			"Peterxy12",
-			"Nvdtn19"
+			"Nvdtn19",
+			"0x48fe75df30",
+			"臺灣象象"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
-	"abusefilter": "滥用过滤器管理",
+	"abusefilter": "防滥用过滤器管理",
 	"abuselog": "滥用过滤器日志",
 	"abusefilter-intro": "欢迎访问滥用过滤器管理界面。滥用过滤器是一个可以针对所有最近编辑动作进行自动化判断的软件系统。此界面显示已定义过滤器的列表，并允许对其进行修改。",
 	"abusefilter-mustviewprivateoredit": "出于安全考虑，只有拥有查看非公开滥用过滤器或修改过滤器权限的用户方可使用本界面。",
