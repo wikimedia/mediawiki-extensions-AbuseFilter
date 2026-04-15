@@ -546,9 +546,9 @@
 			useCodeMirror = true;
 
 			// CodeMirror is installed.
-			mw.loader.using( [ 'ext.CodeMirror.v6', 'ext.CodeMirror.v6.abusefilter' ] ).then( ( require ) => {
-				const CodeMirror = require( 'ext.CodeMirror.v6' );
-				const abusefilter = require( 'ext.CodeMirror.v6.abusefilter' );
+			mw.loader.using( [ 'ext.CodeMirror', 'ext.CodeMirror.abusefilter' ] ).then( ( require ) => {
+				const CodeMirror = require( 'ext.CodeMirror' );
+				const abusefilter = require( 'ext.CodeMirror.abusefilter' );
 
 				$filterBox = $( '#wpCodeMirrorFilterEditor' );
 				const $textarea = $( '<textarea>' ).val( $filterBox.text() );
