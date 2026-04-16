@@ -698,6 +698,8 @@
 	"abusefilter-blocked-domains-cannot-edit-directly": "Создать или изменить, ссылки на какие внешние домены блокируются, необходимо через [[Special:BlockedExternalDomains|специальную страницу]].",
 	"right-abusefilter-access-protected-vars": "Просмотр и создание фильтров с использованием защищённых переменных",
 	"action-abusefilter-access-protected-vars": "просмотр и создание фильтров, использующих защищённые переменные",
+	"right-abusefilter-blocked-external-domains-log": "Просмотр журнала срабатываний заблокированных внешних доменов",
+	"action-abusefilter-blocked-external-domains-log": "просмотр журнала срабатываний заблокированных внешних доменов",
 	"abusefilter-protected-vars-log-name": "Журнал защищённых переменных фильтра злоупотреблений",
 	"log-action-filter-abusefilter-protected-vars": "Тип действия:",
 	"log-action-filter-abusefilter-protected-vars-change-access": "Изменить доступ",
