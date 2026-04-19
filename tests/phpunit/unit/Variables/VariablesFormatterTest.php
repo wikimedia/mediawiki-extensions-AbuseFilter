@@ -6,8 +6,8 @@ use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
 
 /**

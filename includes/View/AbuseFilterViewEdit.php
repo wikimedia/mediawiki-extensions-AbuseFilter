@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\AbuseFilter\View;
 
-use HtmlArmor;
 use LogicException;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
@@ -27,6 +26,7 @@ use MediaWiki\SpecialPage\SpecialPage;
 use OOUI;
 use StatusValue;
 use UnexpectedValueException;
+use Wikimedia\HtmlArmor\HtmlArmor;
 use Wikimedia\Rdbms\IDBAccessObject;
 use Wikimedia\Rdbms\IExpression;
 use Wikimedia\Rdbms\LBFactory;

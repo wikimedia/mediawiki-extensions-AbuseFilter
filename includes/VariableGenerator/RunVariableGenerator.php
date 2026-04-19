@@ -13,10 +13,10 @@ use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Title\Title;
+use MediaWiki\Upload\UploadBase;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MWFileProps;
-use UploadBase;
+use MediaWiki\Utils\MWFileProps;
 use Wikimedia\Assert\PreconditionException;
 use Wikimedia\Mime\MimeAnalyzer;
 

@@ -8,8 +8,8 @@ use MediaWiki\Block\UnblockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Permissions\Authority;
-use MessageLocalizer;
 use Psr\Log\LoggerInterface;
 
 /**

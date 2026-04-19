@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use LogicException;
-use MapCacheLRU;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
@@ -16,6 +15,7 @@ use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\TempUser\TempUserConfig;
+use Wikimedia\ObjectCache\MapCacheLRU;
 
 /**
  * This class simplifies the interactions between the AbuseFilter code and Authority, knowing

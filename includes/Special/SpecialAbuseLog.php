@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
-use DifferenceEngine;
 use InvalidArgumentException;
+use MediaWiki\Diff\DifferenceEngine;
 use MediaWiki\Extension\AbuseFilter\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;

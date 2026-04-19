@@ -9,10 +9,10 @@ use MediaWiki\Extension\AbuseFilter\EditBox\CodeMirrorEditBoxBuilder;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\PlainEditBoxBuilder;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Editbox\EditBoxBuilderFactory

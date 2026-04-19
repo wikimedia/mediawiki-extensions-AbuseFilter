@@ -4,6 +4,8 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Api\RandomImageGenerator;
+use MediaWiki\Upload\UploadBase;
+use MediaWiki\Upload\UploadFromFile;
 use MediaWiki\User\User;
 
 /**

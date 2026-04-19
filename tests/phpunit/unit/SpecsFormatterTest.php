@@ -7,9 +7,9 @@ use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Language\Language;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Message\Message;
 use MediaWikiUnitTestCase;
-use MessageLocalizer;
 use Wikimedia\TestingAccessWrapper;
 
 /**

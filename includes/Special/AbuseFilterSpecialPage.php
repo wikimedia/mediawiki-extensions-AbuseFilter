@@ -2,11 +2,11 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
-use HtmlArmor;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Html\Html;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleValue;
+use Wikimedia\HtmlArmor\HtmlArmor;
 
 /**
  * Parent class for AbuseFilter special pages.

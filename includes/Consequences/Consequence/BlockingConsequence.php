@@ -5,9 +5,9 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Logging\LogPage;
 use MediaWiki\Status\Status;
-use MessageLocalizer;
 use Psr\Log\LoggerInterface;
 use Wikimedia\IPUtils;
 

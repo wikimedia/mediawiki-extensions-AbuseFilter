@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Variables;
 
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Html\Html;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 
 /**
  * Pretty-prints the content of a VariableHolder for use e.g. in AbuseLog hit details

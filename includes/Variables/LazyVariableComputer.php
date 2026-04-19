@@ -33,7 +33,6 @@ use MediaWiki\User\UserIdentityUtils;
 use MediaWiki\User\UserNameUtils;
 use Psr\Log\LoggerInterface;
 use stdClass;
-use StringUtils;
 use UnexpectedValueException;
 use Wikimedia\Diff\Diff;
 use Wikimedia\Diff\UnifiedDiffFormatter;
@@ -42,6 +41,7 @@ use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
+use Wikimedia\StringUtils\StringUtils;
 
 /**
  * Service used to compute lazy-loaded variable.

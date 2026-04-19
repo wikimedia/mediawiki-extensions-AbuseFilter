@@ -17,8 +17,8 @@ use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Parser\ParserOptions;
 use OOUI;
-use StringUtils;
 use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\StringUtils\StringUtils;
 
 /**
  * The default view used in Special:AbuseFilter

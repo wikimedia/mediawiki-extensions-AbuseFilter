@@ -12,8 +12,6 @@ use MediaWiki\Extension\AbuseFilter\FilterRunnerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\TitleMoveHook;
-use MediaWiki\Hook\UploadStashFileHook;
-use MediaWiki\Hook\UploadVerifyUploadHook;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Page\Hook\PageDeleteHook;
 use MediaWiki\Page\ProperPageIdentity;
@@ -24,11 +22,13 @@ use MediaWiki\Status\Status;
 use MediaWiki\Storage\Hook\ParserOutputStashForEditHook;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleFactory;
+use MediaWiki\Upload\Hook\UploadStashFileHook;
+use MediaWiki\Upload\Hook\UploadVerifyUploadHook;
+use MediaWiki\Upload\UploadBase;
 use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use StatusValue;
-use UploadBase;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 /**

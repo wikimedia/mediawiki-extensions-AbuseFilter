@@ -2,12 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\User;
 use MediaWiki\User\UserGroupManager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserNameUtils;
-use MessageLocalizer;
 use Psr\Log\LoggerInterface;
 
 class FilterUser {

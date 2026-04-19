@@ -2,16 +2,16 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
+use MediaWiki\Actions\Hook\HistoryPageToolLinksHook;
 use MediaWiki\Context\IContextSource;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseLog;
-use MediaWiki\Hook\ContributionsToolLinksHook;
-use MediaWiki\Hook\HistoryPageToolLinksHook;
-use MediaWiki\Hook\UndeletePageToolLinksHook;
 use MediaWiki\Linker\Hook\HtmlPageLinkRendererEndHook;
 use MediaWiki\Linker\LinkRenderer;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Skin\Hook\UndeletePageToolLinksHook;
 use MediaWiki\SpecialPage\SpecialPage;
+use MediaWiki\Specials\Hook\ContributionsToolLinksHook;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
 

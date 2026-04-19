@@ -5,9 +5,9 @@ namespace MediaWiki\Extension\AbuseFilter\EditBox;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
-use MessageLocalizer;
 
 /**
  * Factory for EditBoxBuilder objects

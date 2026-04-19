@@ -5,9 +5,9 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences\Consequence;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\User\UserIdentityUtils;
-use MessageLocalizer;
 
 /**
  * Consequence that blocks/delays autopromotion of a registered user.

@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
-use MediaWiki\Hook\RecentChange_saveHook;
+use MediaWiki\RecentChanges\Hook\RecentChange_saveHook;
 
 class RecentChangeSaveHandler implements RecentChange_saveHook {
 

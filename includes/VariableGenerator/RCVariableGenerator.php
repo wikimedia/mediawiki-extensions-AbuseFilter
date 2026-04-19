@@ -12,7 +12,7 @@ use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
-use MWFileProps;
+use MediaWiki\Utils\MWFileProps;
 use Wikimedia\Mime\MimeAnalyzer;
 
 /**

@@ -6,7 +6,7 @@ use MediaWiki\Block\BlockUserFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
-use MessageLocalizer;
+use MediaWiki\Language\MessageLocalizer;
 use Psr\Log\LoggerInterface;
 use Wikimedia\IPUtils;
 
