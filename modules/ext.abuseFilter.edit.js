@@ -552,6 +552,7 @@
 
 				$filterBox = $( '#wpCodeMirrorFilterEditor' );
 				const $textarea = $( '<textarea>' ).val( $filterBox.text() );
+				$textarea[ 0 ].setSelectionRange( 0, 0 );
 				$filterBox.empty().append( $textarea );
 
 				// Settings for CodeMirror editor box
