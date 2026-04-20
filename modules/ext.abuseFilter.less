@@ -231,8 +231,13 @@ span.ace_support.ace_function { /* stylelint-disable-line selector-class-pattern
 #wpCodeMirrorFilterEditor {
 	border: 0;
 	cursor: auto;
-}
 
-#wpCodeMirrorFilterEditor textarea {
-	height: 100%;
+	textarea {
+		height: 100%;
+	}
+
+	.cm-editor { /* stylelint-disable-line selector-class-pattern */
+		resize: both;
+		background-color: var( --background-color-base, #fff );
+	}
 }
