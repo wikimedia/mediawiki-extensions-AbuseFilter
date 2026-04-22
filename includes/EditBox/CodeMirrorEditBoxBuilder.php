@@ -95,6 +95,7 @@ class CodeMirrorEditBoxBuilder extends EditBoxBuilder {
 			'keywords' => $builderKeywords,
 			'deprecated' => $deprecatedVariables,
 			'disabled' => $disabledVariables,
+			'dropdownOptions' => array_slice( $this->getDropdownOptions(), 1 ),
 			'cmReadOnly' => !$canEdit
 		];
 	}
