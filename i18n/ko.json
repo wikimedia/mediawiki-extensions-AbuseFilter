@@ -38,7 +38,8 @@
 			"아라",
 			"YeBoy371",
 			"Bisang",
-			"Minejango2"
+			"Minejango2",
+			"Tensama0415"
 		]
 	},
 	"abusefilter-desc": "사용자 편집을 규칙에 따라 자동으로 검사합니다",
@@ -254,7 +255,7 @@
 	"abusefilter-edit-hidden": "일반 사용자가 필터의 세부 사항을 보지 못하도록 숨기기",
 	"abusefilter-edit-protected": "[https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables 보호 변수]를 볼 수 없는 사용자에게는 이 필터의 세부 정보가 보이지 않음을 이해합니다.",
 	"abusefilter-edit-protected-variable-already-protected": "이 필터의 세부 정보는 보호된 변수를 볼 수 없는 사용자에게는 숨겨져 있습니다",
-	"abusefilter-edit-protected-help-message": "이 동작은 영구적이며 취소할 수 없습니다",
+	"abusefilter-edit-protected-help-message": "이 필터에 대한 세부 정보는 보호된 변수를 볼 수 없는 사용자에게는 숨겨집니다. 이 동작은 영구적이며 취소할 수 없습니다",
 	"abusefilter-edit-global": "전역 필터",
 	"abusefilter-edit-rules": "필터 규칙:",
 	"abusefilter-edit-field-conditions": "조건",
