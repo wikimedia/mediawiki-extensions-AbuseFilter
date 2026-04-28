@@ -12,7 +12,7 @@
 	"license-name": "GPL-2.0-or-later",
 	"type": "antispam",
 	"requires": {
-		"MediaWiki": ">= 1.46"
+		"MediaWiki": ">= 1.47.0"
 	},
 	"AvailableRights": [
 		"abusefilter-modify",
@@ -385,7 +385,9 @@
 				"BlockedDomain": {
 					"store": {
 						"type": "wikipage",
-						"args": [ "MediaWiki:BlockedExternalDomains.json" ]
+						"args": [
+							"MediaWiki:BlockedExternalDomains.json"
+						]
 					},
 					"validator": {
 						"type": "noop"
