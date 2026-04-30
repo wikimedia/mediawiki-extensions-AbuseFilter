@@ -90,8 +90,6 @@ class AFPTreeNode {
 	// control flow.
 	public const BINOP = 'BINOP';
 
-	/** @var string Type of the node, one of the constants above */
-	public $type;
 	/**
 	 * Parameters of the value. Typically it is an array of children nodes,
 	 * which might be either strings (for parametrization of the node) or another
@@ -100,18 +98,17 @@ class AFPTreeNode {
 	 */
 	public $children;
 
-	/** @var int Position used for error reporting. */
-	public $position;
-
 	/**
-	 * @param string $type
+	 * @param string $type Type of the node, one of the constants above
 	 * @param (self|null)[]|string[]|AFPToken $children
-	 * @param int $position
+	 * @param int $position Position used for error reporting.
 	 */
-	public function __construct( $type, $children, $position ) {
-		$this->type = $type;
+	public function __construct(
+		public readonly string $type,
+		$children,
+		public readonly int $position,
+	) {
 		$this->children = $children;
-		$this->position = $position;
 	}
 
 	/**

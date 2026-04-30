@@ -32,7 +32,7 @@ class SyntaxChecker {
 	/**
 	 * @var AFPTreeNode|null Root of the AST to check
 	 */
-	private $treeRoot;
+	private readonly ?AFPTreeNode $treeRoot;
 
 	public const MCONSERVATIVE = 'MODE_CONSERVATIVE';
 	public const MLIBERAL = 'MODE_LIBERAL';
@@ -40,7 +40,9 @@ class SyntaxChecker {
 	public const CACHE_VERSION = 1;
 
 	/**
-	 * @var string The mode of checking. The value should be either
+	 * @param AFPSyntaxTree $tree
+	 * @param KeywordsManager $keywordsManager
+	 * @param string $mode The mode of checking. The value should be either
 	 *
 	 *	 - MLIBERAL: which guarantees that all user-defined variables
 	 *	   will be bound, but incompatible with what the evaluator currently
@@ -57,17 +59,15 @@ class SyntaxChecker {
 	 *	   if false then (a := 1) else null end; a
 	 *
 	 *	   is accepted in this mode, even though `a` is in fact always unbound.
+	 * @param bool $checkUnusedVars
 	 */
-	private $mode;
-
 	public function __construct(
 		AFPSyntaxTree $tree,
 		private readonly KeywordsManager $keywordsManager,
-		string $mode = self::MCONSERVATIVE,
+		private readonly string $mode = self::MCONSERVATIVE,
 		private readonly bool $checkUnusedVars = false
 	) {
 		$this->treeRoot = $tree->getRoot();
-		$this->mode = $mode;
 	}
 
 	/**
@@ -435,8 +435,7 @@ class SyntaxChecker {
 					) {
 						throw new UserVisibleException(
 							'variablevariable',
-							$node->position,
-							[]
+							$node->position
 						);
 					}
 

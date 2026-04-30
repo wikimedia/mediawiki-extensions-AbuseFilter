@@ -588,7 +588,7 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 			'isEnabled' => true,
 		];
 
-		$syntaxStatus = new ParserStatus( new UserVisibleException( 'test', 1, [] ), [], 1 );
+		$syntaxStatus = new ParserStatus( new UserVisibleException( 'test', 1 ), [], 1 );
 
 		yield 'invalid syntax' => [ $noopFilterSpec, 'abusefilter-edit-badsyntax', true, $syntaxStatus ];
 

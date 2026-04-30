@@ -9,10 +9,10 @@ use Wikimedia\Assert\Assert;
  * filters that do not necessarily exist in the database. You'll usually want to use subclasses.
  */
 class AbstractFilter {
-	/** @var Specs */
-	protected $specs;
-	/** @var Flags */
-	protected $flags;
+
+	protected Specs $specs;
+	protected Flags $flags;
+
 	/**
 	 * @var array[]|null Actions and parameters, can be lazy-loaded with $actionsCallback
 	 */

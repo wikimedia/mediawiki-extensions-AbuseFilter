@@ -13,8 +13,8 @@ class UserVisibleWarning extends UserVisibleException {
 		// Give grep a chance to find the usages:
 		// abusefilter-parser-warning-match-empty-regex
 		return new Message(
-			'abusefilter-parser-warning-' . $this->mExceptionID,
-			[ $this->mPosition, ...$this->mParams ]
+			'abusefilter-parser-warning-' . $this->exceptionId,
+			[ $this->position, ...$this->params ]
 		);
 	}
 }

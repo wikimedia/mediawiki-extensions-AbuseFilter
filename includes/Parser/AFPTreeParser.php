@@ -23,18 +23,18 @@ class AFPTreeParser {
 	/**
 	 * @var array<int,array{0:AFPToken,1:int}> Contains the AFPTokens for the code being parsed
 	 */
-	private $mTokens;
+	private array $mTokens;
 	/**
 	 * @var AFPToken The current token
 	 */
 	private $mCur;
 	/** @var int The position of the current token */
-	private $mPos;
+	private int $mPos;
 
 	/**
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
-	private $mFilter;
+	private ?string $mFilter;
 
 	public const CACHE_VERSION = 2;
 

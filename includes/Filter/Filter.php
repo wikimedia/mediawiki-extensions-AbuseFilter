@@ -9,38 +9,29 @@ use MediaWiki\User\UserIdentity;
  * that already exist in the database, but you should probably use subclasses for that.
  */
 class Filter extends AbstractFilter {
-	/** @var LastEditInfo */
-	protected $lastEditInfo;
-	/** @var int|null Can be null if not specified */
-	protected $id;
-	/** @var int|null Can be null if the filter is not current */
-	protected $hitCount;
-	/** @var bool|null Can be null if the filter is not current */
-	protected $throttled;
+
+	protected LastEditInfo $lastEditInfo;
 
 	/**
 	 * @param Specs $specs
 	 * @param Flags $flags
 	 * @param array[]|callable():array[] $actions Array with params or callable that will return them
 	 * @param LastEditInfo $lastEditInfo
-	 * @param int|null $id
-	 * @param int|null $hitCount
-	 * @param bool|null $throttled
+	 * @param int|null $id Can be null if not specified
+	 * @param int|null $hitCount Can be null if the filter is not current
+	 * @param bool|null $throttled Can be null if the filter is not current
 	 */
 	public function __construct(
 		Specs $specs,
 		Flags $flags,
 		$actions,
 		LastEditInfo $lastEditInfo,
-		?int $id = null,
-		?int $hitCount = null,
-		?bool $throttled = null
+		protected ?int $id = null,
+		protected ?int $hitCount = null,
+		protected ?bool $throttled = null
 	) {
 		parent::__construct( $specs, $flags, $actions );
 		$this->lastEditInfo = clone $lastEditInfo;
-		$this->id = $id;
-		$this->hitCount = $hitCount;
-		$this->throttled = $throttled;
 	}
 
 	public function getLastEditInfo(): LastEditInfo {

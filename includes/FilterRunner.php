@@ -41,7 +41,7 @@ class FilterRunner {
 	/**
 	 * @var string The action we're filtering
 	 */
-	private $action;
+	private readonly string $action;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner

@@ -65,7 +65,7 @@ abstract class ParserTestCase extends MediaWikiUnitTestCase {
 				$parser->parse( $expr );
 			}
 		} catch ( UserVisibleException $e ) {
-			$this->assertEquals( $excep, $e->mExceptionID, $msg . " Got instead:\n$e" );
+			$this->assertEquals( $excep, $e->exceptionId, $msg . " Got instead:\n$e" );
 			return;
 		}
 		$this->fail( $msg );

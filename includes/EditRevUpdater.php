@@ -15,13 +15,13 @@ use Wikimedia\Rdbms\LBFactory;
 class EditRevUpdater {
 	public const SERVICE_NAME = ServiceNames::EditRevUpdater;
 
-	/** @var WikiPage|null */
-	private $wikiPage;
+	private ?WikiPage $wikiPage = null;
+
 	/**
 	 * @var array<string,array{local:int[],global:int[]}> IDs of logged filters
 	 * like [ page title => [ 'local' => [ids], 'global' => [ids] ] ].
 	 */
-	private $logIds = [];
+	private array $logIds = [];
 
 	public function __construct(
 		private readonly CentralDBManager $centralDBManager,

@@ -21,43 +21,16 @@ use Wikimedia\Codex\Utility\Codex;
  * Base class for classes responsible for building filter edit boxes
  */
 abstract class EditBoxBuilder {
-	/** @var AbuseFilterPermissionManager */
-	protected $afPermManager;
 
-	/** @var KeywordsManager */
-	protected $keywordsManager;
+	private ?array $dropdownOptions = null;
 
-	/** @var MessageLocalizer */
-	protected $localizer;
-
-	/** @var Authority */
-	protected $authority;
-
-	/** @var OutputPage */
-	protected $output;
-
-	/** @var array */
-	private $dropdownOptions;
-
-	/**
-	 * @param AbuseFilterPermissionManager $afPermManager
-	 * @param KeywordsManager $keywordsManager
-	 * @param MessageLocalizer $messageLocalizer
-	 * @param Authority $authority
-	 * @param OutputPage $output
-	 */
 	public function __construct(
-		AbuseFilterPermissionManager $afPermManager,
-		KeywordsManager $keywordsManager,
-		MessageLocalizer $messageLocalizer,
-		Authority $authority,
-		OutputPage $output
+		protected readonly AbuseFilterPermissionManager $afPermManager,
+		protected readonly KeywordsManager $keywordsManager,
+		protected readonly MessageLocalizer $localizer,
+		protected readonly Authority $authority,
+		protected readonly OutputPage $output,
 	) {
-		$this->afPermManager = $afPermManager;
-		$this->keywordsManager = $keywordsManager;
-		$this->localizer = $messageLocalizer;
-		$this->authority = $authority;
-		$this->output = $output;
 	}
 
 	/**

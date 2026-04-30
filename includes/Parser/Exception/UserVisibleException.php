@@ -9,35 +9,29 @@ use MediaWiki\Message\Message;
  * (i.e. exceptions that don't represent bugs in the extension itself)
  */
 class UserVisibleException extends ExceptionBase {
-	/** @var string */
-	public $mExceptionID;
-	/** @var int */
-	protected $mPosition;
-	/** @var array */
-	protected $mParams;
 
 	/**
-	 * @param string $exception_id
+	 * @param string $exceptionId
 	 * @param int $position
 	 * @param array $params
 	 */
-	public function __construct( $exception_id, $position, $params ) {
-		$this->mExceptionID = $exception_id;
-		$this->mPosition = $position;
-		$this->mParams = $params;
-
-		parent::__construct( $exception_id );
+	public function __construct(
+		public readonly string $exceptionId,
+		protected readonly int $position,
+		protected readonly array $params = [],
+	) {
+		parent::__construct( $exceptionId );
 	}
 
 	public function getPosition(): int {
-		return $this->mPosition;
+		return $this->position;
 	}
 
 	/**
 	 * Returns the error message for use in logs
 	 */
 	public function getMessageForLogs(): string {
-		return "ID: {$this->mExceptionID}; position: {$this->mPosition}; params: " . implode( ', ', $this->mParams );
+		return "ID: $this->exceptionId; position: $this->position; params: " . implode( ', ', $this->params );
 	}
 
 	public function getMessageObj(): Message {
@@ -55,8 +49,8 @@ class UserVisibleException extends ExceptionBase {
 		// abusefilter-exception-negativeoffset, abusefilter-exception-unusedvars
 		// abusefilter-exception-unknownfunction, abusefilter-exception-usebuiltin
 		return new Message(
-			'abusefilter-exception-' . $this->mExceptionID,
-			[ $this->mPosition, ...$this->mParams ]
+			'abusefilter-exception-' . $this->exceptionId,
+			[ $this->position, ...$this->params ]
 		);
 	}
 
@@ -66,9 +60,9 @@ class UserVisibleException extends ExceptionBase {
 	public function toArray(): array {
 		return [
 			'class' => static::class,
-			'exceptionID' => $this->mExceptionID,
-			'position' => $this->mPosition,
-			'params' => $this->mParams,
+			'exceptionID' => $this->exceptionId,
+			'position' => $this->position,
+			'params' => $this->params,
 		];
 	}
 

@@ -127,46 +127,43 @@ class FilterEvaluator {
 	/**
 	 * @var bool Are we allowed to use short-circuit evaluation?
 	 */
-	private $mAllowShort;
+	private bool $mAllowShort;
 
-	/**
-	 * @var VariableHolder
-	 */
-	private $mVariables;
+	private VariableHolder $mVariables;
 	/**
 	 * @var int The current amount of conditions being consumed
 	 */
-	private $mCondCount;
+	private int $mCondCount;
 	/**
 	 * @var bool Whether the condition limit is enabled.
 	 */
-	private $condLimitEnabled = true;
+	private bool $condLimitEnabled = true;
 	/**
 	 * @var string|null The ID of the filter being parsed, if available. Can also be "global-$ID"
 	 */
-	private $mFilter;
+	private ?string $mFilter;
 	/**
 	 * @var bool Whether we can allow retrieving _builtin_ variables not included in $this->mVariables
 	 */
-	private $allowMissingVariables = false;
+	private bool $allowMissingVariables = false;
 
 	/**
 	 * @var bool Whether the AST was retrieved from cache
 	 */
-	private $fromCache = false;
+	private bool $fromCache = false;
 
 	/** @var UserVisibleWarning[] */
-	private $warnings = [];
+	private array $warnings = [];
 
 	/**
 	 * @var array<string,mixed> Cached results of functions
 	 */
-	private $funcCache = [];
+	private array $funcCache = [];
 
 	/**
 	 * @var string[] AFPToken::TID values found during node evaluation
 	 */
-	private $usedVars = [];
+	private array $usedVars = [];
 
 	/**
 	 * Create a new instance
@@ -500,7 +497,7 @@ class FilterEvaluator {
 				}
 
 				if ( $array->getType() !== AFPData::DARRAY ) {
-					throw new UserVisibleException( 'notarray', $node->position, [] );
+					throw new UserVisibleException( 'notarray', $node->position );
 				}
 
 				$array = $array->toArray();
@@ -606,7 +603,7 @@ class FilterEvaluator {
 				$array = $this->getVarValue( $varName );
 
 				if ( $array->getType() !== AFPData::DARRAY && $array->getType() !== AFPData::DUNDEFINED ) {
-					throw new UserVisibleException( 'notarray', $node->position, [] );
+					throw new UserVisibleException( 'notarray', $node->position );
 				}
 
 				$offset = $this->evalNode( $offset );
@@ -647,7 +644,7 @@ class FilterEvaluator {
 				if ( $array->getType() !== AFPData::DUNDEFINED ) {
 					// If it's a DUNDEFINED, leave it as is
 					if ( $array->getType() !== AFPData::DARRAY ) {
-						throw new UserVisibleException( 'notarray', $node->position, [] );
+						throw new UserVisibleException( 'notarray', $node->position );
 					}
 
 					$array = $array->toArray();

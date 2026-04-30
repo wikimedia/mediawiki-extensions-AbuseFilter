@@ -17,41 +17,14 @@ use Wikimedia\Mime\MimeAnalyzer;
 class VariableGeneratorFactory {
 	public const SERVICE_NAME = ServiceNames::VariableGeneratorFactory;
 
-	/** @var AbuseFilterHookRunner */
-	private $hookRunner;
-	/** @var TextExtractor */
-	private $textExtractor;
-	/** @var MimeAnalyzer */
-	private $mimeAnalyzer;
-	/** @var RepoGroup */
-	private $repoGroup;
-	/** @var WikiPageFactory */
-	private $wikiPageFactory;
-	/** @var UserFactory */
-	private $userFactory;
-
-	/**
-	 * @param AbuseFilterHookRunner $hookRunner
-	 * @param TextExtractor $textExtractor
-	 * @param MimeAnalyzer $mimeAnalyzer
-	 * @param RepoGroup $repoGroup
-	 * @param WikiPageFactory $wikiPageFactory
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
-		AbuseFilterHookRunner $hookRunner,
-		TextExtractor $textExtractor,
-		MimeAnalyzer $mimeAnalyzer,
-		RepoGroup $repoGroup,
-		WikiPageFactory $wikiPageFactory,
-		UserFactory $userFactory
+		private readonly AbuseFilterHookRunner $hookRunner,
+		private readonly TextExtractor $textExtractor,
+		private readonly MimeAnalyzer $mimeAnalyzer,
+		private readonly RepoGroup $repoGroup,
+		private readonly WikiPageFactory $wikiPageFactory,
+		private readonly UserFactory $userFactory,
 	) {
-		$this->hookRunner = $hookRunner;
-		$this->textExtractor = $textExtractor;
-		$this->mimeAnalyzer = $mimeAnalyzer;
-		$this->repoGroup = $repoGroup;
-		$this->wikiPageFactory = $wikiPageFactory;
-		$this->userFactory = $userFactory;
 	}
 
 	/**

@@ -11,7 +11,7 @@ class VariableHolder {
 	/**
 	 * @var (AFPData|LazyLoadedVariable)[]
 	 */
-	private $mVars = [];
+	private array $mVars = [];
 
 	/**
 	 * Utility function to translate an array with shape [ varname => value ] into a self instance

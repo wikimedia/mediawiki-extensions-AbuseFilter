@@ -91,7 +91,7 @@ class CheckSyntaxTest extends ApiTestCase {
 
 	public function testExecute_error() {
 		$input = 'sampleFilter';
-		$exception = new UserVisibleException( 'error-id', 4, [] );
+		$exception = new UserVisibleException( 'error-id', 4 );
 		$status = new ParserStatus( $exception, [], 1 );
 		$ruleChecker = $this->createMock( FilterEvaluator::class );
 		$ruleChecker->method( 'checkSyntax' )->with( $input )

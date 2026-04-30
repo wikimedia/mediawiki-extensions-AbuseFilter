@@ -8,19 +8,11 @@ use MediaWiki\User\UserIdentity;
  * (Mutable) value object that holds information about the last edit to a filter.
  */
 class LastEditInfo {
-	/** @var UserIdentity */
-	private $userIdentity;
 
-	/** @var string */
-	private $timestamp;
-
-	/**
-	 * @param UserIdentity $identity
-	 * @param string $timestamp
-	 */
-	public function __construct( UserIdentity $identity, string $timestamp ) {
-		$this->userIdentity = $identity;
-		$this->timestamp = $timestamp;
+	public function __construct(
+		private UserIdentity $userIdentity,
+		private string $timestamp,
+	) {
 	}
 
 	/**

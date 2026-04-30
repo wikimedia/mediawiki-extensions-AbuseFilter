@@ -6,8 +6,6 @@ namespace MediaWiki\Extension\AbuseFilter\Filter;
  * Variant of ExistingFilters for past versions of filters
  */
 class HistoryFilter extends ExistingFilter {
-	/** @var int */
-	private $historyID;
 
 	/**
 	 * @param Specs $specs
@@ -23,10 +21,9 @@ class HistoryFilter extends ExistingFilter {
 		$actions,
 		LastEditInfo $lastEditInfo,
 		int $id,
-		int $historyID
+		private readonly int $historyID,
 	) {
 		parent::__construct( $specs, $flags, $actions, $lastEditInfo, $id );
-		$this->historyID = $historyID;
 	}
 
 	public function getHistoryID(): int {

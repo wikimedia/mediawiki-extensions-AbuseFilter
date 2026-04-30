@@ -11,15 +11,11 @@ use Wikimedia\ObjectCache\HashBagOStuff;
 
 class AutoPromoteGroupsHandler implements GetAutoPromoteGroupsHook {
 
-	/** @var BagOStuff */
-	private $cache;
-
 	public function __construct(
 		private readonly ConsequencesRegistry $consequencesRegistry,
 		private readonly BlockAutopromoteStore $blockAutopromoteStore,
-		?BagOStuff $cache = null
+		private readonly BagOStuff $cache = new HashBagOStuff(),
 	) {
-		$this->cache = $cache ?? new HashBagOStuff();
 	}
 
 	/**

@@ -21,7 +21,7 @@ use Wikimedia\Rdbms\LBFactory;
 class HideAbuseLog extends AbuseFilterView {
 
 	/** @var int[] */
-	private $hideIDs;
+	private array $hideIDs;
 
 	public function __construct(
 		private readonly LBFactory $lbFactory,

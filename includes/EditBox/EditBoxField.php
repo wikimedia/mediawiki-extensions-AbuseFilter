@@ -10,8 +10,8 @@ use MediaWiki\HTMLForm\HTMLFormField;
  * @unstable
  */
 class EditBoxField extends HTMLFormField {
-	/** @var string */
-	private $html;
+
+	private string $html;
 
 	public function __construct( array $params ) {
 		parent::__construct( $params );

@@ -754,7 +754,7 @@ class ParserTest extends ParserTestCase {
 			$parser->parse( $code );
 			$this->fail( 'No exception was thrown.' );
 		} catch ( UserVisibleException $e ) {
-			$this->assertSame( $exceptionCode, $e->mExceptionID );
+			$this->assertSame( $exceptionCode, $e->exceptionId );
 		}
 	}
 

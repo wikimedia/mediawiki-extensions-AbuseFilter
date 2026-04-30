@@ -30,7 +30,7 @@ class FilterValidator {
 	private const MAX_RULE_LENGTH = 65530;
 
 	/** @var string[] */
-	private $validGroups;
+	private array $validGroups;
 
 	public function __construct(
 		private readonly ChangeTagValidator $changeTagValidator,

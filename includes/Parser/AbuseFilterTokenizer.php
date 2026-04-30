@@ -135,7 +135,7 @@ class AbuseFilterTokenizer {
 		while ( preg_match( self::COMMENT_START_RE, $code, $matches, 0, $offset ) ) {
 			$pos = strpos( $code, '*/', $offset );
 			if ( $pos === false ) {
-				throw new UserVisibleException( 'unclosedcomment', $offset, [] );
+				throw new UserVisibleException( 'unclosedcomment', $offset );
 			}
 			$offset = $pos + 2;
 		}
@@ -226,7 +226,7 @@ class AbuseFilterTokenizer {
 			} elseif ( $code[$offset] === '\\' ) {
 				if ( !isset( $code[$offset + 1] ) ) {
 					// Unterminated escape sequence, hence unterminated string. (T390416)
-					throw new UserVisibleException( 'unclosedstring', $offset + 1, [] );
+					throw new UserVisibleException( 'unclosedstring', $offset + 1 );
 				}
 
 				switch ( $code[$offset + 1] ) {
@@ -270,6 +270,6 @@ class AbuseFilterTokenizer {
 				// @codeCoverageIgnoreEnd
 			}
 		}
-		throw new UserVisibleException( 'unclosedstring', $offset, [] );
+		throw new UserVisibleException( 'unclosedstring', $offset );
 	}
 }

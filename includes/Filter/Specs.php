@@ -6,16 +6,6 @@ namespace MediaWiki\Extension\AbuseFilter\Filter;
  * (Mutable) value object that represents the "specs" of a filter.
  */
 class Specs {
-	/** @var string */
-	private $rules;
-	/** @var string */
-	private $comments;
-	/** @var string */
-	private $name;
-	/** @var string[] */
-	private $actionsNames;
-	/** @var string */
-	private $group;
 
 	/**
 	 * @param string $rules
@@ -24,12 +14,13 @@ class Specs {
 	 * @param string[] $actionsNames
 	 * @param string $group
 	 */
-	public function __construct( string $rules, string $comments, string $name, array $actionsNames, string $group ) {
-		$this->rules = $rules;
-		$this->comments = $comments;
-		$this->name = $name;
-		$this->actionsNames = $actionsNames;
-		$this->group = $group;
+	public function __construct(
+		private string $rules,
+		private string $comments,
+		private string $name,
+		private array $actionsNames,
+		private string $group,
+	) {
 	}
 
 	public function getRules(): string {

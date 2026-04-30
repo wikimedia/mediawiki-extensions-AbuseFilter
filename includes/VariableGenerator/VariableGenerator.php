@@ -17,8 +17,8 @@ use MediaWiki\Utils\MWTimestamp;
  * Class used to generate variables, for instance related to a given user or title.
  */
 class VariableGenerator {
-	/** @var VariableHolder */
-	protected $vars;
+
+	protected readonly VariableHolder $vars;
 
 	/**
 	 * @param AbuseFilterHookRunner $hookRunner

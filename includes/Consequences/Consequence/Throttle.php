@@ -17,8 +17,7 @@ use Wikimedia\ObjectCache\BagOStuff;
  */
 class Throttle extends Consequence implements ConsequencesDisablerConsequence {
 
-	/** @var bool|null */
-	private $hitThrottle;
+	private ?bool $hitThrottle = null;
 
 	private const IPV4_RANGE = '16';
 	private const IPV6_RANGE = '64';

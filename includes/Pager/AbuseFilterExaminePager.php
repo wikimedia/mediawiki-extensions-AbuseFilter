@@ -15,7 +15,7 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 	/**
 	 * @var int Line number of the row, see RecentChange::$counter
 	 */
-	private $rcCounter;
+	private int $rcCounter = 1;
 
 	public function __construct(
 		private readonly AbuseFilterChangesList $changesList,
@@ -28,7 +28,6 @@ class AbuseFilterExaminePager extends ReverseChronologicalPager {
 		// Set database before parent constructor to avoid setting it there
 		$this->mDb = $dbr;
 		parent::__construct( $changesList, $linkRenderer );
-		$this->rcCounter = 1;
 	}
 
 	/**

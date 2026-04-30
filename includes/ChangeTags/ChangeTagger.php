@@ -16,7 +16,7 @@ class ChangeTagger {
 	public const SERVICE_NAME = ServiceNames::ChangeTagger;
 
 	/** @var array<string,string[]> (Persistent) map of (action ID => string[]) */
-	private static $tagsToSet = [];
+	private static array $tagsToSet = [];
 
 	public function __construct( private readonly ChangeTagsManager $changeTagsManager ) {
 	}

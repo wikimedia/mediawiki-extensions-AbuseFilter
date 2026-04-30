@@ -73,7 +73,7 @@ class SyntaxCheckerTest extends MediaWikiUnitTestCase {
 			$checker->start();
 		} catch ( UserVisibleException $e ) {
 			if ( $expectException ) {
-				$this->assertEquals( $excep, $e->mExceptionID, "Got wrong exception type: $info" );
+				$this->assertEquals( $excep, $e->exceptionId, "Got wrong exception type: $info" );
 				return;
 			}
 			$this->fail( "Unexpected exception $e thrown: $info" );

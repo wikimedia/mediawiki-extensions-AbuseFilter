@@ -11,13 +11,13 @@ use MediaWiki\Session\Session;
  * Consequence that warns the user once, allowing the action on the second attempt.
  */
 class Warn extends Consequence implements HookAborterConsequence, ConsequencesDisablerConsequence {
-	/** @var bool|null */
-	private $shouldWarn;
+
+	private ?bool $shouldWarn = null;
 
 	public function __construct(
 		Parameters $parameters,
 		private readonly string $message,
-		private Session $session
+		private readonly Session $session,
 	) {
 		parent::__construct( $parameters );
 	}

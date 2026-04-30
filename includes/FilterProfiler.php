@@ -43,7 +43,7 @@ class FilterProfiler {
 	private const KEY_PREFIX = 'abusefilter-profile';
 
 	/** @var array<string,array> */
-	private $statsSpecs;
+	private array $statsSpecs;
 
 	public function __construct(
 		private readonly WRStatsFactory $statsFactory,

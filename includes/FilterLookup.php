@@ -35,7 +35,7 @@ class FilterLookup implements IDBAccessObject {
 	/**
 	 * @var ExistingFilter[] Individual filters cache. Keys can be integer IDs, or global names
 	 */
-	private $cache = [];
+	private array $cache = [];
 
 	/**
 	 * @var ExistingFilter[][][] Cache of all active filters in each group. This is not related to
@@ -44,21 +44,21 @@ class FilterLookup implements IDBAccessObject {
 	 * where the cache for each group has the same format as $this->cache
 	 * Note that the keys are also in the form 'global-ID' for filters in 'global', although redundant.
 	 */
-	private $groupCache = [ 'local' => [], 'global' => [] ];
+	private array $groupCache = [ 'local' => [], 'global' => [] ];
 
 	/** @var HistoryFilter[] */
-	private $historyCache = [];
+	private array $historyCache = [];
 
 	/** @var int[] */
-	private $firstVersionCache = [];
+	private array $firstVersionCache = [];
 
 	/** @var int[] */
-	private $lastVersionCache = [];
+	private array $lastVersionCache = [];
 
 	/**
 	 * @var array<int,array<int,array{prev?:int,next?:int}>> [ filter => [ historyID => [ prev, next ] ] ]
 	 */
-	private $closestVersionsCache = [];
+	private array $closestVersionsCache = [];
 
 	/**
 	 * @var bool Flag used in PHPUnit tests to "hide" local filters when testing global ones, so that we can use the

@@ -40,8 +40,7 @@ class ConsequencesFactory {
 		MainConfigNames::BlockCIDRLimit,
 	];
 
-	/** @var ?Session */
-	private $session;
+	private ?Session $session = null;
 
 	/**
 	 * @todo This might drag in unwanted dependencies. The alternative is to use ObjectFactory, but that's harder

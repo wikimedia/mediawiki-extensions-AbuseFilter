@@ -54,7 +54,7 @@ class LazyVariableComputer {
 	 * @var float The amount of time to subtract from profiling
 	 * @todo This is a hack
 	 */
-	public static $profilingExtraTime = 0;
+	public static float $profilingExtraTime = 0;
 
 	public function __construct(
 		private readonly TextExtractor $textExtractor,
