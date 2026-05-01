@@ -227,7 +227,7 @@
 	"abusefilter-edit-action-rangeblock": "Blokiraj respektivni opseg IP adresa korisnika odakle korisnik radi",
 	"abusefilter-edit-action-tag": "Označi izmenu za dalji pregled",
 	"abusefilter-edit-throttle-count": "Broj dozvoljenih radnji:",
-	"abusefilter-edit-throttle-period": "Vremenski period (u sekundama):",
+	"abusefilter-edit-throttle-period": "Period (u sekundama):",
 	"abusefilter-edit-throttle-groups": "Istisak prema skupinama:",
 	"abusefilter-edit-throttle-groups-help": "Pogledajte $1.",
 	"abusefilter-edit-throttle-groups-help-text": "dokumentaciju na mediawiki.org",
