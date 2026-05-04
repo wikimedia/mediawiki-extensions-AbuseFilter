@@ -37,7 +37,6 @@
 				$.removeSpinner( 'abusefilter-expr' );
 				$( '#mw-abusefilter-expr-result' )
 					// Message keys are listed above
-					// eslint-disable-next-line mediawiki/msg-doc
 					.text( mw.msg( msg, details.exception ) )
 					.addClass( 'mw-abusefilter-tools-error' )
 					.show();
