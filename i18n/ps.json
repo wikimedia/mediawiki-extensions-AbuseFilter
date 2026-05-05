@@ -330,6 +330,7 @@
 	"abusefilter-blocked-domains-remove-reason": "لامل",
 	"abusefilter-blocked-domains-remove-submit": "لرې کول",
 	"abusefilter-blocked-domains-json-error": "جی‌اېس‌او‌اېن بايد يو کتار وي",
+	"abusefilter-blocked-domains-invalid-entry": "په جی‌او‌اېس‌اېن کې $1 ننوتنه ناسمه ده - دا بايد په 'واک‌سيمه' او 'يادښتونو' کې يو شان وي، دواړه تارونه لري",
 	"abusefilter-blocked-domains-domain-removed-comment": "باندنۍ بنديز لگېدلې واک‌سيمه $1 يادښتونو سره  لرې‌کول: $2",
 	"log-description-abusefilterblockeddomainhit": "دا پېښې د [[Special:BlockedExternalDomains|بنديزلگېدلې واک‌سيمو]] چلند څاري.",
 	"abusefilter-log-ip-not-available": "د لاسرسي وړ نه دی",
