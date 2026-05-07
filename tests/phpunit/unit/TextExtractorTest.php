@@ -12,7 +12,6 @@ use MediaWiki\Page\PageIdentityValue;
 use MediaWiki\Permissions\SimpleAuthority;
 use MediaWiki\Revision\MutableRevisionRecord;
 use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Tests\Mocks\Content\DummyNonTextContent;
 use MediaWiki\User\UserIdentity;
 use MediaWikiUnitTestCase;
@@ -42,8 +41,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 		yield 'no revision' => [ null, false, '' ];
 
 		$page = PageIdentityValue::localIdentity( 1, NS_MAIN, 'Foo' );
-		$revRec = new MutableRevisionRecord( $page );
-		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
+		$revRec = MutableRevisionRecord::newFromContent( $page, new TextContent( 'Main slot text.' ) );
 
 		yield 'RevisionRecord instance' => [
 			$revRec,
@@ -51,8 +49,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 			'Main slot text.'
 		];
 
-		$revRec = new MutableRevisionRecord( $page );
-		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
+		$revRec = MutableRevisionRecord::newFromContent( $page, new TextContent( 'Main slot text.' ) );
 		$revRec->setContent( 'aux', new TextContent( 'Aux slot content.' ) );
 		yield 'Multi-slot' => [
 			$revRec,
@@ -60,8 +57,7 @@ class TextExtractorTest extends MediaWikiUnitTestCase {
 			"Main slot text.\n\nAux slot content."
 		];
 
-		$revRec = new MutableRevisionRecord( $page );
-		$revRec->setContent( SlotRecord::MAIN, new TextContent( 'Main slot text.' ) );
+		$revRec = MutableRevisionRecord::newFromContent( $page, new TextContent( 'Main slot text.' ) );
 		$revRec->setVisibility( RevisionRecord::DELETED_TEXT );
 		yield 'Suppressed revision, unprivileged' => [
 			$revRec,
