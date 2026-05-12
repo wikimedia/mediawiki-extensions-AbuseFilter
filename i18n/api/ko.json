@@ -36,7 +36,7 @@
 	"apihelp-query+abusefilters-param-endid": "나열을 중단할 필터의 ID입니다.",
 	"apihelp-query+abusefilters-param-show": "이 조건을 만족하는 필터만 출력하기.",
 	"apihelp-query+abusefilters-param-limit": "열거할 필터의 최대 개수",
-	"apihelp-query+abusefilters-param-prop": "얻고자 하는 속성",
+	"apihelp-query+abusefilters-param-prop": "가져올 속성입니다.",
 	"apihelp-query+abusefilters-example-1": "사용 중인 공개 필터 나열",
 	"apihelp-query+abusefilters-example-2": "필터에 관한 더 자세한 정보 표시",
 	"apihelp-query+abuselog-summary": "편집 필터에 감지된 행위를 보여줍니다.",
