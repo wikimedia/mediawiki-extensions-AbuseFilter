@@ -335,6 +335,7 @@
 	"abusefilter-blocked-domains-domain-removed-comment": "باندنۍ بنديز لگېدلې واک‌سيمه $1 يادښتونو سره  لرې‌کول: $2",
 	"log-description-abusefilterblockeddomainhit": "دا پېښې د [[Special:BlockedExternalDomains|بنديزلگېدلې واک‌سيمو]] چلند څاري.",
 	"abusefilter-log-ip-not-available": "د لاسرسي وړ نه دی",
+	"tag-abusefilter-condition-limit-description": "هغه سمونونه يا نورې پېښې چې د ټولو کارنده [[Special:AbuseFilter|ورانکارۍ چاڼگرو]] له خوا نه‌شي کتل کېدی ([https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Conditions لارښود])",
 	"notification-link-text-show-filter": "چاڼگر ښودل",
 	"right-abusefilter-modify-blocked-external-domains": "هغه باندنۍ واک‌سيمې جوړول يا بدلول چې د تړوني کېدو بنديز پرې لگېدلی وي",
 	"right-abusefilter-bypass-blocked-external-domains": "له باندنيو بنديزلگېدلو واک‌سيمو نه ډډه کول",
