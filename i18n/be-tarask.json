@@ -483,7 +483,7 @@
 	"abusefilter-exception-overridebuiltin": "Недазволенае перавызначэньне ўбудаванай зьменнай «$2» ў пазыцыі $1.",
 	"abusefilter-exception-usebuiltin": "Недазволены ўжытак інтэґраванага ідэнтыфікатару \"$2\" ў сымбалі $1.",
 	"abusefilter-exception-outofbounds": "Запыт няіснага элемэнту сьпісу $2 (памер сьпісу = $3) у пазыцыі $1.",
-	"abusefilter-exception-negativeindex": "Адмоўныя індэксы ў масівах не дапускаюцца. Атрыманы індэкс «$2» на пазыцыі $1.",
+	"abusefilter-exception-negativeindex": "Нэґатыўныя індэксы ў масівах не дапускаюцца. Атрыманы індэкс «$2» на пазыцыі $1.",
 	"abusefilter-exception-notarray": "Запыт элемэнту масіву для аб’екту, які не зьяўляецца масівам, у пазыцыі $1.",
 	"abusefilter-exception-unclosedcomment": "Незакрыты камэнтар на пазыцыі $1.",
 	"abusefilter-exception-invalidiprange": "Няслушны IP-дыяпазон «$2», пададзены на пазыцыі $1.",
