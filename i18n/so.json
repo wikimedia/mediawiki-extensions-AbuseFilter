@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Abshirdheere",
-			"Maax"
+			"Maax",
+			"AhmedG612"
 		]
 	},
 	"abusefilter-log-search-submit": "Raadi",
 	"abusefilter-log-noactions": "Waxba",
-	"abusefilter-examine-submit": "Raadi"
+	"abusefilter-examine-submit": "Raadi",
+	"abusefilter-blocked-domains-domain-added-comment": "Ku dar domain dibadda oo la xannibay $1 oo leh faallo: $2"
 }
