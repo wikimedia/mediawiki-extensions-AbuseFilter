@@ -12,7 +12,7 @@ use MediaWiki\Message\Message;
  * @todo Improve this once DI around Message objects is improved in MW core.
  */
 class SpecsFormatter {
-	public const SERVICE_NAME = 'AbuseFilterSpecsFormatter';
+	public const SERVICE_NAME = ServiceNames::SpecsFormatter;
 
 	public function __construct( private MessageLocalizer $messageLocalizer ) {
 	}

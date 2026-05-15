@@ -5,12 +5,13 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\User\UserIdentityUtils;
 use Psr\Log\LoggerInterface;
 
 class ConsequencesExecutorFactory {
-	public const SERVICE_NAME = 'AbuseFilterConsequencesExecutorFactory';
+	public const SERVICE_NAME = ServiceNames::ConsequencesExecutorFactory;
 
 	public function __construct(
 		private readonly ConsequencesLookup $consLookup,

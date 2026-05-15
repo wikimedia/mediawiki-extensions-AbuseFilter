@@ -16,7 +16,7 @@ use Wikimedia\Rdbms\IExpression;
  */
 class AbuseLogConditionFactory {
 
-	public const SERVICE_NAME = 'AbuseLogConditionFactory';
+	public const SERVICE_NAME = ServiceNames::AbuseLogConditionFactory;
 
 	public function __construct(
 		private readonly IConnectionProvider $dbProvider,

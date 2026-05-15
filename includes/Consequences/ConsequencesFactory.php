@@ -17,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Tag;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Throttle;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Warn;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Session\Session;
@@ -29,7 +30,7 @@ use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\BagOStuff;
 
 class ConsequencesFactory {
-	public const SERVICE_NAME = 'AbuseFilterConsequencesFactory';
+	public const SERVICE_NAME = ServiceNames::ConsequencesFactory;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterCentralDB',

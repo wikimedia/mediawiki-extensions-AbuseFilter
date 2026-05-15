@@ -7,7 +7,7 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
 class CentralDBManager {
-	public const SERVICE_NAME = 'AbuseFilterCentralDBManager';
+	public const SERVICE_NAME = ServiceNames::CentralDBManager;
 
 	/** @var string|false */
 	private $dbName;

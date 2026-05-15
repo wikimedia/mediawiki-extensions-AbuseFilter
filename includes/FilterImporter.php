@@ -21,7 +21,7 @@ use MediaWiki\User\UserIdentityValue;
  * @note Callers should NOT rely on the output format, as it may vary
  */
 class FilterImporter {
-	public const SERVICE_NAME = 'AbuseFilterFilterImporter';
+	public const SERVICE_NAME = ServiceNames::FilterImporter;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterValidGroups',

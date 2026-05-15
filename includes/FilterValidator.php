@@ -16,7 +16,7 @@ use Wikimedia\Message\ListType;
  * This class validates filters, e.g. before saving.
  */
 class FilterValidator {
-	public const SERVICE_NAME = 'AbuseFilterFilterValidator';
+	public const SERVICE_NAME = ServiceNames::FilterValidator;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterValidGroups',

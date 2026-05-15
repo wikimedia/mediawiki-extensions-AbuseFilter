@@ -25,7 +25,7 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
  * @todo Cache exceptions
  */
 class FilterLookup implements IDBAccessObject {
-	public const SERVICE_NAME = 'AbuseFilterFilterLookup';
+	public const SERVICE_NAME = ServiceNames::FilterLookup;
 
 	// Used in getClosestVersion
 	public const DIR_PREV = 'prev';

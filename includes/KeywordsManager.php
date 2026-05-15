@@ -8,7 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
  * This service can be used to manage the list of keywords recognized by the Parser
  */
 class KeywordsManager {
-	public const SERVICE_NAME = 'AbuseFilterKeywordsManager';
+	public const SERVICE_NAME = ServiceNames::KeywordsManager;
 
 	/**
 	 * Operators and functions that can be used in AbuseFilter code.

@@ -18,7 +18,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @internal
  */
 class FilterStore {
-	public const SERVICE_NAME = 'AbuseFilterFilterStore';
+	public const SERVICE_NAME = ServiceNames::FilterStore;
 
 	public function __construct(
 		private readonly ConsequencesRegistry $consequencesRegistry,
