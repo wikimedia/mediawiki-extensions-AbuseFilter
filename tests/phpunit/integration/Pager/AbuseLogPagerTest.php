@@ -11,7 +11,6 @@ use MediaWiki\Extension\AbuseFilter\FilterStore;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseLogPager;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\Page\WikiPage;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWikiIntegrationTestCase;
@@ -26,10 +25,8 @@ class AbuseLogPagerTest extends MediaWikiIntegrationTestCase {
 	use FilterFromSpecsTestTrait;
 	use MockAuthorityTrait;
 
-	private WikiPage $page;
-
 	public function addDBDataOnce(): void {
-		$this->page = $this->getExistingTestPage( 'AbuseLogPagerTest' );
+		$page = $this->getExistingTestPage( 'AbuseLogPagerTest' );
 
 		$performer = $this->getTestSysop()->getUserIdentity();
 		$filter1 = $this->getFilterFromSpecs( [
@@ -58,7 +55,7 @@ class AbuseLogPagerTest extends MediaWikiIntegrationTestCase {
 		$userWhoHitFilter = $this->getTestUser()->getUser();
 
 		$logger = AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
-			$this->page->getTitle(),
+			$page->getTitle(),
 			$userWhoHitFilter,
 			VariableHolder::newFromArray( [
 				'action' => 'edit',
@@ -89,6 +86,7 @@ class AbuseLogPagerTest extends MediaWikiIntegrationTestCase {
 
 	public function testLogEntriesContainLogIdsAsDataAttributes(): void {
 		$this->setUserLang( 'qqx' );
+		$page = $this->getExistingTestPage( 'AbuseLogPagerTest' );
 
 		$services = $this->getServiceContainer();
 		$pager = new AbuseLogPager(
@@ -100,14 +98,14 @@ class AbuseLogPagerTest extends MediaWikiIntegrationTestCase {
 			AbuseFilterServices::getPermissionManager( $services ),
 			AbuseFilterServices::getFilterLookup( $services ),
 			AbuseFilterServices::getVariablesBlobStore( $services ),
-			$this->page->getTitle(),
+			$page->getTitle(),
 			[]
 		);
 
 		// Disabling 'abusefilter-log-detail' for the accessing authority prevents
 		// running the logic for populating action links in the pager, which in
 		// turn makes the pager skip a call to SpecialPage::getTitleFor() for
-		// $this->page, which would fail unless we add additional setup logic to
+		// $page, which would fail unless we add additional setup logic to
 		// this test.
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setAuthority(
