@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\ChangeTags;
 
 use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Title\TitleValue;
 use MediaWiki\User\UserIdentityValue;
@@ -12,7 +13,7 @@ use MediaWiki\User\UserIdentityValue;
  * @internal This interface should be improved and is not ready for external use
  */
 class ChangeTagger {
-	public const SERVICE_NAME = 'AbuseFilterChangeTagger';
+	public const SERVICE_NAME = ServiceNames::ChangeTagger;
 
 	/** @var array<string,string[]> (Persistent) map of (action ID => string[]) */
 	private static $tagsToSet = [];

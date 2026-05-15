@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\ChangeTags;
 use MediaWiki\ChangeTags\ChangeTagsStore;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -17,7 +18,7 @@ use Wikimedia\Rdbms\LBFactory;
  */
 class ChangeTagsManager {
 
-	public const SERVICE_NAME = 'AbuseFilterChangeTagsManager';
+	public const SERVICE_NAME = ServiceNames::ChangeTagsManager;
 	private const CONDS_LIMIT_TAG = 'abusefilter-condition-limit';
 
 	public function __construct(

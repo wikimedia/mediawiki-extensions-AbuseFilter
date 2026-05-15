@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Parser;
 
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Language\Language;
@@ -12,7 +13,7 @@ use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\Stats\IBufferingStatsdDataFactory;
 
 class RuleCheckerFactory {
-	public const SERVICE_NAME = 'AbuseFilterRuleCheckerFactory';
+	public const SERVICE_NAME = ServiceNames::RuleCheckerFactory;
 
 	public function __construct(
 		private readonly Language $contLang,

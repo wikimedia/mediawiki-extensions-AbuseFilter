@@ -14,7 +14,7 @@ use MediaWiki\Title\Title;
  * @todo DI not possible due to Echo
  */
 class EchoNotifier {
-	public const SERVICE_NAME = 'AbuseFilterEchoNotifier';
+	public const SERVICE_NAME = ServiceNames::EchoNotifier;
 	public const EVENT_TYPE = 'throttled-filter';
 
 	public function __construct(

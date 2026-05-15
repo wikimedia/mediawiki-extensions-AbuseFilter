@@ -15,7 +15,7 @@ use MediaWiki\Revision\RevisionRecord;
  * @internal No external code should rely on this representation
  */
 class TextExtractor {
-	public const SERVICE_NAME = 'AbuseFilterTextExtractor';
+	public const SERVICE_NAME = ServiceNames::TextExtractor;
 
 	public function __construct( private readonly AbuseFilterHookRunner $hookRunner ) {
 	}

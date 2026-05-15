@@ -16,7 +16,7 @@ use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\LBFactory;
 
 class AbuseLoggerFactory {
-	public const SERVICE_NAME = 'AbuseFilterAbuseLoggerFactory';
+	public const SERVICE_NAME = ServiceNames::AbuseLoggerFactory;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterLogIP',

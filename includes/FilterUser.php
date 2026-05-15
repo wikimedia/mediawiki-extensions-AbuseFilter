@@ -11,7 +11,7 @@ use MediaWiki\User\UserNameUtils;
 use Psr\Log\LoggerInterface;
 
 class FilterUser {
-	public const SERVICE_NAME = 'AbuseFilterFilterUser';
+	public const SERVICE_NAME = ServiceNames::FilterUser;
 
 	public function __construct(
 		private readonly MessageLocalizer $messageLocalizer,

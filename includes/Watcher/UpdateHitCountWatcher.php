@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Watcher;
 
 use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
@@ -11,7 +12,7 @@ use Wikimedia\Rdbms\LBFactory;
  * Watcher that updates hit counts of filters
  */
 class UpdateHitCountWatcher implements Watcher {
-	public const SERVICE_NAME = 'AbuseFilterUpdateHitCountWatcher';
+	public const SERVICE_NAME = ServiceNames::UpdateHitCountWatcher;
 
 	public function __construct(
 		private readonly LBFactory $lbFactory,

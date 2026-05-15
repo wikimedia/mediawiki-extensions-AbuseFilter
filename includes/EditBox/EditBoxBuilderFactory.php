@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\EditBox;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Language\MessageLocalizer;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\Permissions\Authority;
@@ -14,7 +15,7 @@ use MediaWiki\Permissions\Authority;
  */
 class EditBoxBuilderFactory {
 
-	public const SERVICE_NAME = 'AbuseFilterEditBoxBuilderFactory';
+	public const SERVICE_NAME = ServiceNames::EditBoxBuilderFactory;
 
 	public function __construct(
 		private readonly AbuseFilterPermissionManager $afPermManager,

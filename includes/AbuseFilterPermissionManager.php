@@ -22,7 +22,7 @@ use Wikimedia\ObjectCache\MapCacheLRU;
  * what rights are required to perform AF-related actions.
  */
 class AbuseFilterPermissionManager {
-	public const SERVICE_NAME = 'AbuseFilterPermissionManager';
+	public const SERVICE_NAME = ServiceNames::PermManager;
 
 	/**
 	 * @var string[] All protected variables

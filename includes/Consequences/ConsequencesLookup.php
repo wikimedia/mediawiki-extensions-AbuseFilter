@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Consequences;
 
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\GlobalNameUtils;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LBFactory;
@@ -13,7 +14,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @todo Can we better integrate this with FilterLookup?
  */
 class ConsequencesLookup {
-	public const SERVICE_NAME = 'AbuseFilterConsequencesLookup';
+	public const SERVICE_NAME = ServiceNames::ConsequencesLookup;
 
 	public function __construct(
 		private readonly LBFactory $lbFactory,

@@ -9,6 +9,7 @@ use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\EchoNotifier;
 use MediaWiki\Extension\AbuseFilter\EmergencyCache;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
@@ -19,7 +20,7 @@ use Wikimedia\Rdbms\LBFactory;
  * @todo We should log throttling somewhere
  */
 class EmergencyWatcher implements Watcher {
-	public const SERVICE_NAME = 'AbuseFilterEmergencyWatcher';
+	public const SERVICE_NAME = ServiceNames::EmergencyWatcher;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterEmergencyDisableAge',

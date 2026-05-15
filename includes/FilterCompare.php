@@ -11,7 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\Filter;
  * @internal
  */
 class FilterCompare {
-	public const SERVICE_NAME = 'AbuseFilterFilterCompare';
+	public const SERVICE_NAME = ServiceNames::FilterCompare;
 
 	public function __construct( private readonly ConsequencesRegistry $consequencesRegistry ) {
 	}

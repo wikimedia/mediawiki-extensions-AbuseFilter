@@ -13,7 +13,7 @@ use Wikimedia\Rdbms\LBFactory;
  * This service allows "linking" the edit filter hook and the page save hook
  */
 class EditRevUpdater {
-	public const SERVICE_NAME = 'AbuseFilterEditRevUpdater';
+	public const SERVICE_NAME = ServiceNames::EditRevUpdater;
 
 	/** @var WikiPage|null */
 	private $wikiPage;

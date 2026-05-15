@@ -19,7 +19,7 @@ use Wikimedia\Stats\IBufferingStatsdDataFactory;
 use Wikimedia\Stats\NullStatsdDataFactory;
 
 class FilterRunnerFactory {
-	public const SERVICE_NAME = 'AbuseFilterFilterRunnerFactory';
+	public const SERVICE_NAME = ServiceNames::FilterRunnerFactory;
 
 	public function __construct(
 		private readonly AbuseFilterHookRunner $hookRunner,

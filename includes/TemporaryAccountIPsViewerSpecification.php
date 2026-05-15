@@ -8,7 +8,7 @@ use MediaWiki\User\TempUser\TempUserConfig;
 
 class TemporaryAccountIPsViewerSpecification {
 
-	public const SERVICE_NAME = 'TemporaryAccountIPsViewerSpecification';
+	public const SERVICE_NAME = ServiceNames::TemporaryAccountIPsViewerSpecification;
 
 	public function __construct(
 		private readonly TempUserConfig $tempUserConfig,

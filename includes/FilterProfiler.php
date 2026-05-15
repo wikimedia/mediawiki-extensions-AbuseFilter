@@ -17,7 +17,7 @@ use Wikimedia\WRStats\WRStatsFactory;
  * @internal
  */
 class FilterProfiler {
-	public const SERVICE_NAME = 'AbuseFilterFilterProfiler';
+	public const SERVICE_NAME = ServiceNames::FilterProfiler;
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterConditionLimit',

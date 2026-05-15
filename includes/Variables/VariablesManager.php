@@ -5,12 +5,13 @@ namespace MediaWiki\Extension\AbuseFilter\Variables;
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 
 /**
  * Service that allows manipulating a VariableHolder
  */
 class VariablesManager {
-	public const SERVICE_NAME = 'AbuseFilterVariablesManager';
+	public const SERVICE_NAME = ServiceNames::VariablesManager;
 	/**
 	 * Used in self::getVar() to determine what to do if the requested variable is missing. See
 	 * the docs of that method for an explanation.
