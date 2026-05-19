@@ -9,7 +9,10 @@
 	"abusefilter-blocked-display": "Ficilkan si otomaatig ah ayaa loo aqoonsaday inuu waxyeello leeyahay, sidaas darteed waa lagaa hor istaagay inaad fuliso. Intaa waxaa dheer, si loo ilaaliyo {{SITENAME}}, akoonkaaga isticmaalaha iyo dhammaan cinwaannada IP-ga ee la xiriira waa la xanibay wax ka beddelka. Haddii tani ay khalad tahay, fadlan la xiriir maamule. Sharaxaad kooban oo ku saabsan xeerka xadgudubka ee ficilkaagu la jaanqaaday waa: $1",
 	"abusefilter-log-search-submit": "Raadi",
 	"abusefilter-log-noactions": "Waxba",
+	"abusefilter-log-linkoncontribs": "Diiwaanka xadgudubka",
+	"abusefilter-log-linkoncontribs-text": "Diiwaanka xadgudubka ee {{GENDER:$1|isticmaalahan}}",
 	"abusefilter-log-linkonhistory": "Eeg diiwaanka xadgudubka",
+	"abusefilter-log-linkonhistory-text": "Fiiri diiwaanka xadgudubka ee boggaan",
 	"abusefilter-log-linkonundelete": "Eeg diiwaanka xadgudubka",
 	"abusefilter-log-linkonundelete-text": "Eeg diiwaanka xadgudubka ee boggan",
 	"abusefilter-log-hide-reason": "Sababta:",
@@ -58,6 +61,7 @@
 	"abusefilter-edit-id": "Aqoonsiga shaandhada:",
 	"abusefilter-edit-switch-editor": "Beddel tifaftiraha",
 	"abusefilter-edit-description": "Sharaxaad:\n:''(dadweyne ahaan la arki karo)''",
+	"abusefilter-edit-field-description": "Sharaxaad",
 	"abusefilter-examine-submit": "Raadi",
 	"abusefilter-blocked-domains-intro": "Xiriirrada dibadda ee u dhigma liiskan waa la xannibi doonaa marka lagu daro bogga. Domain-yadan waxaa lagu kaydiyaa [[MediaWiki:BlockedExternalDomains.json]]. Isku dayga lagu daro xiriirro la xannibay waxaa lagu diiwaangeliyaa [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-domain-added-comment": "Ku dar domain dibadda oo la xannibay $1 oo leh faallo: $2"
