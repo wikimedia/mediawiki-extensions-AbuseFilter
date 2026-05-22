@@ -4,30 +4,29 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
 use MediaWiki\Content\Content;
 use MediaWiki\Context\IContextSource;
-use MediaWiki\Extension\ConfirmEdit\CaptchaTriggers;
-use MediaWiki\Extension\ConfirmEdit\Hooks;
+use MediaWiki\Extension\ConfirmEdit\Services\CaptchaFactory;
 use MediaWiki\Hook\EditFilterMergedContentHook;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
 
 /**
  * Integration with Extension:ConfirmEdit, if loaded.
  */
-class ConfirmEditHandler implements EditFilterMergedContentHook {
+readonly class ConfirmEditHandler implements EditFilterMergedContentHook {
+
+	public function __construct(
+		private ?CaptchaFactory $captchaFactory,
+	) {
+	}
 
 	/** @inheritDoc */
 	public function onEditFilterMergedContent(
 		IContextSource $context, Content $content, Status $status, $summary, User $user, $minoredit
 	) {
-		if ( !ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ) ) {
+		if ( !$this->captchaFactory ) {
 			return true;
 		}
-		$action = CaptchaTriggers::EDIT;
-		if ( !$context->getWikiPage()->exists() ) {
-			$action = CaptchaTriggers::CREATE;
-		}
-		$simpleCaptcha = Hooks::getInstance( $action );
+		$simpleCaptcha = $this->captchaFactory->getGlobalInstanceFromContext( $context );
 		// In WMF production, AbuseFilter is loaded after ConfirmEdit. That means,
 		// Extension:ConfirmEdit's EditFilterMergedContent hook has already run, and that hook
 		// is responsible for deciding whether to show a CAPTCHA via the SimpleCaptcha::confirmEditMerged

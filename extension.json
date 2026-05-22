@@ -475,7 +475,10 @@
 			]
 		},
 		"ConfirmEdit": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ConfirmEditHandler"
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\ConfirmEditHandler",
+			"optional_services": [
+				"ConfirmEditCaptchaFactory"
+			]
 		},
 		"UserMerge": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\UserMergeHandler"

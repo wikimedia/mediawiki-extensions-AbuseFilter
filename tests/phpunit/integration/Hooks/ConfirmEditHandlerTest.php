@@ -8,7 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\ConfirmEditHandler;
 use MediaWiki\Extension\ConfirmEdit\AbuseFilter\CaptchaConsequence;
 use MediaWiki\Extension\ConfirmEdit\CaptchaTriggers;
-use MediaWiki\Extension\ConfirmEdit\Hooks;
+use MediaWiki\Extension\ConfirmEdit\Services\CaptchaFactory;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
 use MediaWiki\User\User;
@@ -27,7 +27,9 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 
 	protected function tearDown(): void {
 		if ( ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ) ) {
-			Hooks::getInstance()->setForceShowCaptcha( false );
+			/** @var CaptchaFactory $captchaFactory */
+			$captchaFactory = $this->getServiceContainer()->get( 'ConfirmEditCaptchaFactory' );
+			$captchaFactory->unsetGlobalInstancesForTests();
 		}
 		parent::tearDown();
 	}
@@ -41,7 +43,9 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 			] ]
 		);
 		$this->editPage( 'Test', 'Foo' );
-		$confirmEditHandler = new ConfirmEditHandler();
+		$confirmEditHandler = new ConfirmEditHandler(
+			$this->getServiceContainer()->get( 'ConfirmEditCaptchaFactory' )
+		);
 		$status = Status::newGood();
 		$title = $this->getServiceContainer()->getTitleFactory()->newFromText( 'Test' );
 		$context = RequestContext::getMain();
@@ -56,7 +60,9 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 		);
 		$this->assertStatusGood( $status, 'The default is to not show a CAPTCHA' );
 
-		$simpleCaptcha = Hooks::getInstance( CaptchaTriggers::EDIT );
+		/** @var CaptchaFactory $captchaFactory */
+		$captchaFactory = $this->getServiceContainer()->get( 'ConfirmEditCaptchaFactory' );
+		$simpleCaptcha = $captchaFactory->getGlobalInstance( CaptchaTriggers::EDIT );
 		$simpleCaptcha->setEditFilterMergedContentHandlerInvoked();
 		$simpleCaptcha->setAction( CaptchaTriggers::EDIT );
 		$parameters = $this->createMock( Parameters::class );
