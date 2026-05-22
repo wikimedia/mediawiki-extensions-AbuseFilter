@@ -62,6 +62,8 @@
 	"abusefilter-edit-switch-editor": "Beddel tifaftiraha",
 	"abusefilter-edit-description": "Sharaxaad:\n:''(dadweyne ahaan la arki karo)''",
 	"abusefilter-edit-field-description": "Sharaxaad",
+	"abusefilter-edit-warn-other-label": "Magaca bogga farriinta kale:\n:''(iyada oo aan lahayn horgalaha \"MediaWiki:\")''",
+	"abusefilter-edit-disallow-other-label": "Magaca bogga farriinta kale:\n:''(iyada oo aan lahayn horgalaha \"MediaWiki:\")''",
 	"abusefilter-examine-submit": "Raadi",
 	"abusefilter-blocked-domains-intro": "Xiriirrada dibadda ee u dhigma liiskan waa la xannibi doonaa marka lagu daro bogga. Domain-yadan waxaa lagu kaydiyaa [[MediaWiki:BlockedExternalDomains.json]]. Isku dayga lagu daro xiriirro la xannibay waxaa lagu diiwaangeliyaa [[Special:Log/abusefilterblockeddomainhit]].",
 	"abusefilter-blocked-domains-domain-added-comment": "Ku dar domain dibadda oo la xannibay $1 oo leh faallo: $2"
