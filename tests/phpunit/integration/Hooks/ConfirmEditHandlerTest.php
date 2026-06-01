@@ -35,6 +35,7 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testOnEditFilterMergedContent() {
+		$this->clearHook( 'ConfirmEditBeforeForceShowCaptcha' );
 		$this->overrideConfigValue(
 			'CaptchaTriggers',
 			[ 'edit' => [
@@ -67,7 +68,11 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 		$simpleCaptcha->setAction( CaptchaTriggers::EDIT );
 		$parameters = $this->createMock( Parameters::class );
 		$parameters->method( 'getAction' )->willReturn( 'edit' );
-		$captchaConsequence = new CaptchaConsequence( $parameters );
+		$captchaConsequence = new CaptchaConsequence(
+			$parameters,
+			$this->getServiceContainer()->getHookContainer(),
+			$captchaFactory
+		);
 		$captchaConsequence->execute();
 		$confirmEditHandler->onEditFilterMergedContent(
 			$context,
