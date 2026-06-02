@@ -53,7 +53,7 @@
 	"apihelp-query+abuselog-example-1": "최근 기록 보기",
 	"apihelp-query+abuselog-example-2": "[[API]]의 최근 기록 보기",
 	"apihelp-abuselogprivatedetails-summary": "악용 기록 항목의 비공개 세부 사항을 봅니다.",
-	"apihelp-abuselogprivatedetails-param-logid": "검사할 악용 기록 항목의 ID입니다.\nThe ID of the AbuseLog entry to be checked.",
+	"apihelp-abuselogprivatedetails-param-logid": "검사할 악용 기록 항목의 ID입니다.",
 	"apihelp-abuselogprivatedetails-param-reason": "검사 수행을 위한 유효한 이유입니다.",
 	"apihelp-abuselogprivatedetails-example-1": "\"example\"이라는 이유를 사용하여 ID 1의 악용 기록 항목에 대한 비공개 상세 정보를 가져옵니다.",
 	"apierror-abusefilter-canttest": "편집 필터를 테스트할 권한이 없습니다.",
