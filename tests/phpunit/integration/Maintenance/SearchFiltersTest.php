@@ -111,15 +111,16 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 	}
 
 	public static function provideSearches(): Generator {
-		yield 'single filter for pattern search' => [ 'page_title', '', '', [ 2 ] ];
-		yield 'multiple filters for pattern search' => [ 'rmspecials', '', '', [ 2, 4 ] ];
+		yield 'single filter for pattern search' => [ 'page_title', null, '', [ 2 ] ];
+		yield 'multiple filters for pattern search' => [ 'rmspecials', null, '', [ 2, 4 ] ];
 		yield 'single filter when consequence specified' => [ 'rmspecials', 'block', '', [ 4 ] ];
-		yield 'regex for pattern' => [ '[a-z]\(', '', '', [ 2, 4 ] ];
-		yield 'single filter for privacy level search' => [ '', '', '1', [ 4 ] ];
-		yield 'multiple filters for privacy level search' => [ '', '', '2', [ 3, 4 ] ];
-		yield 'search for multiple privacy levels' => [ '', '', '3', [ 4 ] ];
-		yield 'search for public filters (handle zero)' => [ '', '', '0', [ 1, 2, 5 ] ];
+		yield 'regex for pattern' => [ '[a-z]\(', null, '', [ 2, 4 ] ];
+		yield 'single filter for privacy level search' => [ '', null, '1', [ 4 ] ];
+		yield 'multiple filters for privacy level search' => [ '', null, '2', [ 3, 4 ] ];
+		yield 'search for multiple privacy levels' => [ '', null, '3', [ 4 ] ];
+		yield 'search for public filters (handle zero)' => [ '', null, '0', [ 1, 2, 5 ] ];
 		yield 'consequence=block does not select blockautopromote' => [ '', 'block', '', [ 3, 4 ] ];
+		yield 'consequence=empty matches filters with no consequences' => [ '', '', '', [ 1 ] ];
 	}
 
 	/**
@@ -131,7 +132,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 	 */
 	public function testExecute_singleWiki(
 		string $pattern,
-		string $consequence,
+		?string $consequence,
 		string $privacy,
 		array $expectedIDs
 	) {
@@ -139,11 +140,14 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 			$this->markTestSkipped( 'The script only works on MySQL' );
 		}
 		$this->setMwGlobals( [ 'wgConf' => (object)[ 'wikis' => [] ] ] );
-		$this->maintenance->loadParamsAndArgs( null, [
+		$args = [
 			'pattern' => $pattern,
-			'consequence' => $consequence,
 			'privacy' => $privacy,
-		] );
+		];
+		if ( $consequence !== null ) {
+			$args['consequence'] = $consequence;
+		}
+		$this->maintenance->loadParamsAndArgs( null, $args );
 		$this->expectOutputString( $this->getExpectedOutput( $expectedIDs ) );
 		$this->maintenance->execute();
 	}
@@ -157,7 +161,7 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 	 */
 	public function testExecute_multipleWikis(
 		string $pattern,
-		string $consequence,
+		?string $consequence,
 		string $privacy,
 		array $expectedIDs
 	) {
@@ -166,11 +170,14 @@ class SearchFiltersTest extends MaintenanceBaseTestCase {
 		}
 		global $wgDBname;
 		$this->setMwGlobals( [ 'wgConf' => (object)[ 'wikis' => [ $wgDBname, $wgDBname ] ] ] );
-		$this->maintenance->loadParamsAndArgs( null, [
+		$args = [
 			'pattern' => $pattern,
-			'consequence' => $consequence,
 			'privacy' => $privacy,
-		] );
+		];
+		if ( $consequence !== null ) {
+			$args['consequence'] = $consequence;
+		}
+		$this->maintenance->loadParamsAndArgs( null, $args );
 		$expectedText = $this->getExpectedOutput( $expectedIDs ) . $this->getExpectedOutput( $expectedIDs, false );
 		$this->expectOutputString( $expectedText );
 		$this->maintenance->execute();

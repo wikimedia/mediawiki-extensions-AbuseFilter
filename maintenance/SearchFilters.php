@@ -22,7 +22,12 @@ class SearchFilters extends Maintenance {
 			'consequence and/or privacy level'
 		);
 		$this->addOption( 'pattern', 'Regular expression pattern', false, true );
-		$this->addOption( 'consequence', 'The consequence that the filter should have', false, true );
+		$this->addOption(
+			'consequence',
+			'The consequence that the filter should have. Pass an empty string to match filters with no consequences.',
+			false,
+			true
+		);
 		$this->addOption(
 			'privacy',
 			'The privacy level that the filter should include (a constant from Flags)',
@@ -45,7 +50,7 @@ class SearchFilters extends Maintenance {
 
 		if (
 			!$this->getOption( 'pattern' ) &&
-			!$this->getOption( 'consequence' ) &&
+			$this->getOption( 'consequence' ) === null &&
 			$this->getOption( 'privacy' ) === null
 		) {
 			$this->fatalError( 'One of --consequence, --pattern or --privacy should be specified.' );
@@ -78,8 +83,12 @@ class SearchFilters extends Maintenance {
 			if ( $this->getOption( 'pattern' ) ) {
 				$queryBuilder->where( "af_pattern RLIKE $pattern" );
 			}
-			if ( $consequence ) {
-				$queryBuilder->where( AbuseFilter::findInSet( $dbr, 'af_actions', $consequence ) );
+			if ( $consequence !== null ) {
+				if ( $consequence === '' ) {
+					$queryBuilder->where( $dbr->expr( 'af_actions', '=', '' ) );
+				} else {
+					$queryBuilder->where( AbuseFilter::findInSet( $dbr, 'af_actions', $consequence ) );
+				}
 			}
 			if ( $privacy !== '' ) {
 				if ( $privacy === '0' ) {
