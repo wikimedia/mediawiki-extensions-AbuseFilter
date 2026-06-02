@@ -358,7 +358,7 @@
 	"abusefilter-edit-builder-funcs-ip_in_ranges": "Ці знаходзіцца ІП у якім-небудзь з дыяпазонаў? ($1)",
 	"abusefilter-edit-builder-funcs-contains-any": "Радок пошуку для шматлікіх падрадкоў у OR-рэжыме. ($1)",
 	"abusefilter-edit-builder-funcs-contains-all": "Радок пошуку для мноства падрадкоў у рэжыме AND. ($1)",
-	"abusefilter-edit-builder-funcs-equals-to-any": "Праверце, ці роўны дадзены аргумэнт (===) кожнаму з наступных арґумэнтаў ($1)",
+	"abusefilter-edit-builder-funcs-equals-to-any": "Праверце, ці роўны дадзены аргумэнт (===) кожнаму з наступных аргумэнтаў ($1)",
 	"abusefilter-edit-builder-funcs-substr": "Падрадок ($1)",
 	"abusefilter-edit-builder-funcs-strpos": "Пазыцыя падрадку ў радку ($1)",
 	"abusefilter-edit-builder-funcs-str_replace": "Замена падрадку ў радку ($1)",
