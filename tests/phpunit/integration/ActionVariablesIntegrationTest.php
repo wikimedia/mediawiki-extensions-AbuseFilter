@@ -33,7 +33,7 @@ use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\Utils\MWTimestamp;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @group Database
@@ -320,7 +320,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		}
 
 		$handler = new FilteredActionsHandler(
-			new NullStatsdDataFactory(),
+			StatsFactory::newNull(),
 			AbuseFilterServices::getFilterRunnerFactory(),
 			AbuseFilterServices::getVariableGeneratorFactory(),
 			AbuseFilterServices::getEditRevUpdater(),

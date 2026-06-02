@@ -8,7 +8,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Linker\LinkTarget;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\BagOStuff;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Wrapper around cache for storing and retrieving data from edit stash
@@ -19,7 +19,7 @@ class EditStashCache {
 
 	public function __construct(
 		private readonly BagOStuff $cache,
-		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
+		private readonly StatsFactory $statsFactory,
 		private readonly VariablesManager $variablesManager,
 		private readonly LoggerInterface $logger,
 		private readonly LinkTarget $target,
@@ -68,7 +68,10 @@ class EditStashCache {
 			__METHOD__ . ": cache {logtype} for '{target}' (key {key}).",
 			[ 'logtype' => $type, 'target' => $this->target, 'key' => $key ]
 		);
-		$this->statsdDataFactory->increment( "abusefilter.check-stash.$type" );
+		$this->statsFactory->withComponent( 'AbuseFilter' )
+			->getCounter( 'check_stash_total' )
+			->setLabel( 'result', $type )
+			->increment();
 	}
 
 	/**

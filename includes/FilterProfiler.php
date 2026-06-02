@@ -6,7 +6,7 @@ use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Title\Title;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\BagOStuff;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 use Wikimedia\WRStats\LocalEntityKey;
 use Wikimedia\WRStats\WRStatsFactory;
 
@@ -49,7 +49,7 @@ class FilterProfiler {
 		private readonly WRStatsFactory $statsFactory,
 		private readonly ServiceOptions $options,
 		private readonly string $localWikiID,
-		private readonly IBufferingStatsdDataFactory $statsd,
+		private readonly StatsFactory $stats,
 		private readonly LoggerInterface $logger
 	) {
 		$this->statsSpecs = [
@@ -167,15 +167,19 @@ class FilterProfiler {
 	 *
 	 * @param int $totalFilters
 	 * @param int $totalConditions
-	 * @param float $runtime
-	 * @codeCoverageIgnore
+	 * @param float $runtime Total runtime, in milliseconds
 	 */
 	public function recordRuntimeProfilingResult( int $totalFilters, int $totalConditions, float $runtime ): void {
-		$keyPrefix = 'abusefilter.runtime-profile.' . $this->localWikiID . '.';
-
-		$this->statsd->timing( $keyPrefix . 'runtime', $runtime );
-		$this->statsd->timing( $keyPrefix . 'total_filters', $totalFilters );
-		$this->statsd->timing( $keyPrefix . 'total_conditions', $totalConditions );
+		$stats = $this->stats->withComponent( 'AbuseFilter' );
+		$stats->getTiming( 'evaluation_duration_seconds' )
+			->setLabel( 'wiki', $this->localWikiID )
+			->observeSeconds( $runtime / 1000 );
+		$stats->getCounter( 'filters_evaluated_total' )
+			->setLabel( 'wiki', $this->localWikiID )
+			->incrementBy( $totalFilters );
+		$stats->getCounter( 'conditions_evaluated_total' )
+			->setLabel( 'wiki', $this->localWikiID )
+			->incrementBy( $totalConditions );
 	}
 
 	/**

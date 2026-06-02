@@ -10,7 +10,7 @@ use MediaWiki\Language\Language;
 use Psr\Log\LoggerInterface;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\ObjectCache\BagOStuff;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 class RuleCheckerFactory {
 	public const SERVICE_NAME = ServiceNames::RuleCheckerFactory;
@@ -21,7 +21,7 @@ class RuleCheckerFactory {
 		private readonly LoggerInterface $logger,
 		private readonly KeywordsManager $keywordsManager,
 		private readonly VariablesManager $varManager,
-		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
+		private readonly StatsFactory $statsFactory,
 		private readonly Equivset $equivset,
 		private readonly int $conditionsLimit
 	) {
@@ -38,7 +38,7 @@ class RuleCheckerFactory {
 			$this->logger,
 			$this->keywordsManager,
 			$this->varManager,
-			$this->statsdDataFactory,
+			$this->statsFactory,
 			$this->equivset,
 			$this->conditionsLimit,
 			$vars

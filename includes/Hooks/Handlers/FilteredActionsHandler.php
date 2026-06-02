@@ -29,7 +29,8 @@ use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use StatusValue;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * Handler for actions that can be filtered
@@ -44,7 +45,7 @@ class FilteredActionsHandler implements
 {
 
 	public function __construct(
-		private readonly IBufferingStatsdDataFactory $statsDataFactory,
+		private readonly StatsFactory $statsFactory,
 		private readonly FilterRunnerFactory $filterRunnerFactory,
 		private readonly VariableGeneratorFactory $variableGeneratorFactory,
 		private readonly EditRevUpdater $editRevUpdater,
@@ -69,7 +70,7 @@ class FilteredActionsHandler implements
 		$minoredit,
 		string $slot = SlotRecord::MAIN
 	) {
-		$startTime = microtime( true );
+		$startTime = ConvertibleTimestamp::hrtime();
 		if ( !$status->isOK() ) {
 			// Investigate what happens if we skip filtering here (T211680)
 			LoggerFactory::getInstance( 'AbuseFilter' )->info(
@@ -80,7 +81,10 @@ class FilteredActionsHandler implements
 
 		$this->filterEdit( $context, $user, $content, $summary, $slot, $status );
 
-		$this->statsDataFactory->timing( 'timing.editAbuseFilter', microtime( true ) - $startTime );
+		$this->statsFactory->withComponent( 'AbuseFilter' )
+			->getTiming( 'filter_run_duration_seconds' )
+			->setLabel( 'action', 'edit' )
+			->observeNanoseconds( ConvertibleTimestamp::hrtime() - $startTime );
 
 		return $status->isOK();
 	}
@@ -316,7 +320,7 @@ class FilteredActionsHandler implements
 				$content,
 				$slot
 			) {
-				$startTime = microtime( true );
+				$startTime = ConvertibleTimestamp::hrtime();
 				$generator = $this->variableGeneratorFactory->newRunGenerator( $user, $page->getTitle() );
 				$vars = $generator->getStashEditVars( $content, $summary, $slot, $page );
 				if ( !$vars ) {
@@ -324,8 +328,10 @@ class FilteredActionsHandler implements
 				}
 				$runner = $this->filterRunnerFactory->newRunner( $user, $page->getTitle(), $vars, 'default' );
 				$runner->runForStash();
-				$totalTime = microtime( true ) - $startTime;
-				$this->statsDataFactory->timing( 'timing.stashAbuseFilter', $totalTime );
+				$this->statsFactory->withComponent( 'AbuseFilter' )
+					->getTiming( 'filter_run_duration_seconds' )
+					->setLabel( 'action', 'stash' )
+					->observeNanoseconds( ConvertibleTimestamp::hrtime() - $startTime );
 			},
 			DeferredUpdates::PRESEND
 		);

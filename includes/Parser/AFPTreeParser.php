@@ -13,7 +13,8 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
 use MediaWiki\Extension\AbuseFilter\KeywordsManager;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use Psr\Log\LoggerInterface;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * A parser that transforms the text of the filter into a parse tree.
@@ -39,7 +40,7 @@ class AFPTreeParser {
 
 	public function __construct(
 		private readonly LoggerInterface $logger,
-		private readonly IBufferingStatsdDataFactory $statsd,
+		private readonly StatsFactory $statsFactory,
 		private readonly KeywordsManager $keywordsManager
 	) {
 		$this->resetState();
@@ -112,9 +113,12 @@ class AFPTreeParser {
 	}
 
 	private function buildSyntaxTree(): AFPSyntaxTree {
-		$startTime = microtime( true );
+		$startTime = ConvertibleTimestamp::hrtime();
 		$root = $this->doLevelEntry();
-		$this->statsd->timing( 'abusefilter_cachingParser_buildtree', microtime( true ) - $startTime );
+		$this->statsFactory->withComponent( 'AbuseFilter' )
+			->getTiming( 'parser_duration_seconds' )
+			->setLabel( 'phase', 'buildtree' )
+			->observeNanoseconds( ConvertibleTimestamp::hrtime() - $startTime );
 		return new AFPSyntaxTree( $root );
 	}
 

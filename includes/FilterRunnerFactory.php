@@ -15,8 +15,7 @@ use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use Psr\Log\LoggerInterface;
 use Wikimedia\ObjectCache\BagOStuff;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 class FilterRunnerFactory {
 	public const SERVICE_NAME = ServiceNames::FilterRunnerFactory;
@@ -36,7 +35,7 @@ class FilterRunnerFactory {
 		private readonly BagOStuff $localCache,
 		private readonly LoggerInterface $logger,
 		private readonly LoggerInterface $editStashLogger,
-		private readonly IBufferingStatsdDataFactory $statsdDataFactory,
+		private readonly StatsFactory $statsFactory,
 		private readonly ServiceOptions $options
 	) {
 	}
@@ -70,7 +69,7 @@ class FilterRunnerFactory {
 			new EditStashCache(
 				$this->localCache,
 				// Bots do not use edit stashing, so avoid distorting the stats
-				$user->isBot() ? new NullStatsdDataFactory() : $this->statsdDataFactory,
+				$user->isBot() ? StatsFactory::newNull() : $this->statsFactory,
 				$this->varManager,
 				$this->editStashLogger,
 				$title,

@@ -9,7 +9,8 @@ use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use StatusValue;
-use Wikimedia\Stats\IBufferingStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * AuthenticationProvider used to filter account creations. This runs after normal preauth providers
@@ -17,16 +18,10 @@ use Wikimedia\Stats\IBufferingStatsdDataFactory;
  */
 class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProvider {
 
-	/**
-	 * @param VariableGeneratorFactory $variableGeneratorFactory
-	 * @param FilterRunnerFactory $filterRunnerFactory
-	 * @param IBufferingStatsdDataFactory $statsd
-	 * @param UserFactory $userFactory
-	 */
 	public function __construct(
 		private readonly VariableGeneratorFactory $variableGeneratorFactory,
 		private readonly FilterRunnerFactory $filterRunnerFactory,
-		private readonly IBufferingStatsdDataFactory $statsd,
+		private readonly StatsFactory $statsFactory,
 		private readonly UserFactory $userFactory
 	) {
 	}
@@ -63,7 +58,7 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 	 * @return StatusValue
 	 */
 	private function testUser( $user, $creator, $autocreate ): StatusValue {
-		$startTime = microtime( true );
+		$startTime = ConvertibleTimestamp::hrtime();
 		if ( $user->getName() === wfMessage( 'abusefilter-blocker' )->inContentLanguage()->text() ) {
 			return StatusValue::newFatal( 'abusefilter-accountreserved' );
 		}
@@ -76,7 +71,10 @@ class AbuseFilterPreAuthenticationProvider extends AbstractPreAuthenticationProv
 		$runner = $this->filterRunnerFactory->newRunner( $creator, $title, $vars, 'default' );
 		$status = $runner->run();
 
-		$this->statsd->timing( 'timing.createaccountAbuseFilter', microtime( true ) - $startTime );
+		$this->statsFactory->withComponent( 'AbuseFilter' )
+			->getTiming( 'filter_run_duration_seconds' )
+			->setLabel( 'action', 'createaccount' )
+			->observeNanoseconds( ConvertibleTimestamp::hrtime() - $startTime );
 
 		return $status->getStatusValue();
 	}

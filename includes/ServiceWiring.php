@@ -77,7 +77,7 @@ return [
 				$services->getMainConfig()
 			),
 			WikiMap::getCurrentWikiDbDomain()->getId(),
-			$services->getStatsdDataFactory(),
+			$services->getStatsFactory(),
 			LoggerFactory::getInstance( 'AbuseFilter' )
 		);
 	},
@@ -140,7 +140,7 @@ return [
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			$services->getService( KeywordsManager::SERVICE_NAME ),
 			$services->get( VariablesManager::SERVICE_NAME ),
-			$services->getStatsdDataFactory(),
+			$services->getStatsFactory(),
 			new Equivset(),
 			$services->getMainConfig()->get( 'AbuseFilterConditionLimit' )
 		);
@@ -330,7 +330,7 @@ return [
 			$services->getObjectCacheFactory()->getLocalClusterInstance(),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
 			LoggerFactory::getInstance( 'StashEdit' ),
-			$services->getStatsdDataFactory(),
+			$services->getStatsFactory(),
 			new ServiceOptions(
 				FilterRunner::CONSTRUCTOR_OPTIONS,
 				$services->getMainConfig()

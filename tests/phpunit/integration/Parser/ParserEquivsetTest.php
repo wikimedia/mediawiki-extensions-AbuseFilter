@@ -30,7 +30,7 @@ use MediaWikiIntegrationTestCase;
 use Psr\Log\NullLogger;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Tests that require Equivset, separated from the parser unit tests.
@@ -69,7 +69,7 @@ class ParserEquivsetTest extends MediaWikiIntegrationTestCase {
 			$logger,
 			$keywordsManager,
 			$varManager,
-			new NullStatsdDataFactory(),
+			StatsFactory::newNull(),
 			new Equivset(),
 			1000
 		);

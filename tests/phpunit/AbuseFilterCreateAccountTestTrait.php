@@ -7,7 +7,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageReferenceValue;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * This trait can be used to create accounts in integration tests.
@@ -44,7 +44,7 @@ trait AbuseFilterCreateAccountTestTrait {
 		$provider = new AbuseFilterPreAuthenticationProvider(
 			AbuseFilterServices::getVariableGeneratorFactory(),
 			AbuseFilterServices::getFilterRunnerFactory(),
-			new NullStatsdDataFactory(),
+			StatsFactory::newNull(),
 			$userFactory
 		);
 		if ( $autocreate ) {

@@ -11,7 +11,7 @@ use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\ObjectCache\BagOStuff;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @group Test
@@ -28,7 +28,7 @@ class RuleCheckerFactoryTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			$this->createMock( KeywordsManager::class ),
 			$this->createMock( VariablesManager::class ),
-			new NullStatsdDataFactory(),
+			StatsFactory::newNull(),
 			$this->createMock( Equivset::class ),
 			1000
 		);

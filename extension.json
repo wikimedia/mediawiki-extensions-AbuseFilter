@@ -199,7 +199,7 @@
 				"services": [
 					"AbuseFilterVariableGeneratorFactory",
 					"AbuseFilterFilterRunnerFactory",
-					"StatsdDataFactory",
+					"StatsFactory",
 					"UserFactory"
 				],
 				"sort": 5
@@ -460,7 +460,7 @@
 		"FilteredActions": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\FilteredActionsHandler",
 			"services": [
-				"StatsdDataFactory",
+				"StatsFactory",
 				"AbuseFilterFilterRunnerFactory",
 				"AbuseFilterVariableGeneratorFactory",
 				"AbuseFilterEditRevUpdater",

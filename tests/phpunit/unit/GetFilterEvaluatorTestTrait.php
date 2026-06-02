@@ -14,7 +14,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Wikimedia\Equivset\Equivset;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * Trait used to get an instance of the {@link FilterEvaluator} class which can be used in unit tests.
@@ -26,7 +26,10 @@ trait GetFilterEvaluatorTestTrait {
 	 * @param LoggerInterface|null $logger
 	 * @return FilterEvaluator
 	 */
-	protected function getFilterEvaluator( ?LoggerInterface $logger = null ): FilterEvaluator {
+	protected function getFilterEvaluator(
+		?LoggerInterface $logger = null,
+		?StatsFactory $stats = null
+	): FilterEvaluator {
 		// We're not interested in caching or logging; tests should call respectively setCache
 		// and setLogger if they want to test any of those.
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
@@ -43,7 +46,7 @@ trait GetFilterEvaluatorTestTrait {
 			$logger ?? new NullLogger(),
 			$keywordsManager,
 			$varManager,
-			new NullStatsdDataFactory(),
+			$stats ?? StatsFactory::newNull(),
 			$equivset,
 			1000
 		);

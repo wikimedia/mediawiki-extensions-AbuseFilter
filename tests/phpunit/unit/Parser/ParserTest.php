@@ -30,6 +30,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\FilterEvaluator;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use TestLogger;
+use Wikimedia\Stats\StatsFactory;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -56,6 +57,17 @@ class ParserTest extends ParserTestCase {
 	 */
 	public function testParser( $rule ) {
 		$this->assertTrue( $this->getParser()->parse( $rule ) );
+	}
+
+	public function testParserDurationMetricsAreRecorded(): void {
+		$statsHelper = StatsFactory::newUnitTestingHelper()->withComponent( 'AbuseFilter' );
+		$evaluator = $this->getFilterEvaluator( null, $statsHelper->getStatsFactory() );
+
+		$evaluator->checkConditions( '1 === 1' );
+
+		$this->assertSame( 1, $statsHelper->count( 'parser_duration_seconds{phase="full"}' ) );
+		$this->assertSame( 1, $statsHelper->count( 'parser_duration_seconds{phase="buildtree"}' ) );
+		$this->assertSame( 1, $statsHelper->count( 'parser_duration_seconds{phase="eval"}' ) );
 	}
 
 	public static function provideTests() {

@@ -10,8 +10,10 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Title\TitleValue;
 use MediaWikiUnitTestCase;
 use Psr\Log\LoggerInterface;
+use Wikimedia\ObjectCache\BagOStuff;
 use Wikimedia\ObjectCache\HashBagOStuff;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
+use Wikimedia\Stats\UnitTestingHelper;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\EditStashCache
@@ -23,6 +25,22 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 			$this->createMock( KeywordsManager::class ),
 			$this->createMock( LazyVariableComputer::class )
 		);
+	}
+
+	/**
+	 * @return array{0:EditStashCache,1:UnitTestingHelper}
+	 */
+	private function newStashCache( BagOStuff $cache, LoggerInterface $logger, TitleValue $title ): array {
+		$statsHelper = StatsFactory::newUnitTestingHelper()->withComponent( 'AbuseFilter' );
+		$stash = new EditStashCache(
+			$cache,
+			$statsHelper->getStatsFactory(),
+			$this->getVariablesManager(),
+			$logger,
+			$title,
+			'default'
+		);
+		return [ $stash, $statsHelper ];
 	}
 
 	public function testStore() {
@@ -38,18 +56,11 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 				unset( $args['key'] );
 				$this->assertSame( [ 'logtype' => 'store', 'target' => $title ], $args );
 			} );
-		$stash = new EditStashCache(
-			$cache,
-			new NullStatsdDataFactory(),
-			$this->getVariablesManager(),
-			$logger,
-			$title,
-			'default'
-		);
+		[ $stash, $statsHelper ] = $this->newStashCache( $cache, $logger, $title );
 		$vars = VariableHolder::newFromArray( [ 'page_title' => 'Title' ] );
 		$data = [ 'foo' => 'bar' ];
 		$stash->store( $vars, $data );
-		$this->addToAssertionCount( 1 );
+		$this->assertSame( 1, $statsHelper->count( 'check_stash_total{result="store"}' ) );
 	}
 
 	public static function provideRoundTrip() {
@@ -88,14 +99,7 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 					$this->assertSame( [ 'logtype' => 'hit', 'target' => $title ], $args );
 				}
 			} );
-		$stash = new EditStashCache(
-			$cache,
-			new NullStatsdDataFactory(),
-			$this->getVariablesManager(),
-			$logger,
-			$title,
-			'default'
-		);
+		[ $stash, $statsHelper ] = $this->newStashCache( $cache, $logger, $title );
 		$storeHolder = VariableHolder::newFromArray( $storeVars );
 		$data = [ 'foo' => 'bar' ];
 		$stash->store( $storeHolder, $data );
@@ -103,6 +107,8 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 		$seekHolder = VariableHolder::newFromArray( $seekVars );
 		$value = $stash->seek( $seekHolder );
 		$this->assertArrayEquals( $data, $value );
+		$this->assertSame( 1, $statsHelper->count( 'check_stash_total{result="store"}' ) );
+		$this->assertSame( 1, $statsHelper->count( 'check_stash_total{result="hit"}' ) );
 	}
 
 	public function testSeek_miss() {
@@ -115,17 +121,11 @@ class EditStashCacheTest extends MediaWikiUnitTestCase {
 				unset( $args['key'] );
 				$this->assertSame( [ 'logtype' => 'miss', 'target' => $title ], $args );
 			} );
-		$stash = new EditStashCache(
-			$cache,
-			new NullStatsdDataFactory(),
-			$this->getVariablesManager(),
-			$logger,
-			$title,
-			'default'
-		);
+		[ $stash, $statsHelper ] = $this->newStashCache( $cache, $logger, $title );
 		$vars = VariableHolder::newFromArray( [ 'page_title' => 'Title' ] );
 		$value = $stash->seek( $vars );
 		$this->assertFalse( $value );
+		$this->assertSame( 1, $statsHelper->count( 'check_stash_total{result="miss"}' ) );
 	}
 
 }

@@ -31,7 +31,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\SyntaxChecker;
 use MediaWikiUnitTestCase;
 use Psr\Log\NullLogger;
 use Wikimedia\ObjectCache\EmptyBagOStuff;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @group Test
@@ -61,12 +61,12 @@ class SyntaxCheckerTest extends MediaWikiUnitTestCase {
 
 		$cache = new EmptyBagOStuff();
 		$logger = new NullLogger();
-		$statsd = new NullStatsdDataFactory();
+		$statsFactory = StatsFactory::newNull();
 		$keywordsManager = new KeywordsManager( $this->createMock( AbuseFilterHookRunner::class ) );
 
 		$tokenizer = new AbuseFilterTokenizer( $cache );
 		$tokens = $tokenizer->getTokens( $expr );
-		$parser = new AFPTreeParser( $logger, $statsd, $keywordsManager );
+		$parser = new AFPTreeParser( $logger, $statsFactory, $keywordsManager );
 		$tree = $parser->parse( $tokens );
 		$checker = new SyntaxChecker( $tree, $keywordsManager, $mode, $checkUnusedVars );
 		try {

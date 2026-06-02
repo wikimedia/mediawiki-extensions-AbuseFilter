@@ -10,7 +10,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use TestLogger;
 use Wikimedia\ObjectCache\HashBagOStuff;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 use Wikimedia\WRStats\BagOStuffStatsStore;
 use Wikimedia\WRStats\WRStatsFactory;
 
@@ -34,7 +34,10 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 		'matches' => 0,
 	];
 
-	private function getFilterProfiler( ?LoggerInterface $logger = null ): FilterProfiler {
+	private function getFilterProfiler(
+		?LoggerInterface $logger = null,
+		?StatsFactory $stats = null
+	): FilterProfiler {
 		$options = [
 			'AbuseFilterConditionLimit' => 1000,
 			'AbuseFilterSlowFilterRuntimeLimit' => 500,
@@ -43,7 +46,7 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 			new WRStatsFactory( new BagOStuffStatsStore( new HashBagOStuff() ) ),
 			new ServiceOptions( FilterProfiler::CONSTRUCTOR_OPTIONS, $options ),
 			'wiki',
-			new NullStatsdDataFactory(),
+			$stats ?? StatsFactory::newNull(),
 			$logger ?: new NullLogger()
 		);
 	}
@@ -142,6 +145,19 @@ class FilterProfilerTest extends MediaWikiUnitTestCase {
 			$found,
 			"Test that FilterProfiler logs the slow filter."
 		);
+	}
+
+	public function testRecordRuntimeProfilingResult(): void {
+		$statsHelper = StatsFactory::newUnitTestingHelper()->withComponent( 'AbuseFilter' );
+		$profiler = $this->getFilterProfiler( null, $statsHelper->getStatsFactory() );
+
+		$profiler->recordRuntimeProfilingResult( 5, 120, 250.0 );
+
+		$this->assertSame( 1, $statsHelper->count( 'evaluation_duration_seconds{wiki="wiki"}' ) );
+		// observeSeconds() stores milliseconds, so 0.25s reads back as 250.0.
+		$this->assertSame( 250.0, $statsHelper->sum( 'evaluation_duration_seconds{wiki="wiki"}' ) );
+		$this->assertSame( 5.0, $statsHelper->sum( 'filters_evaluated_total{wiki="wiki"}' ) );
+		$this->assertSame( 120.0, $statsHelper->sum( 'conditions_evaluated_total{wiki="wiki"}' ) );
 	}
 
 	public function testResetFilterProfile() {

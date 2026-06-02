@@ -477,7 +477,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		$context->setWikiPage( $page );
 
 		$hooksHandler = new FilteredActionsHandler(
-			$services->getStatsdDataFactory(),
+			$services->getStatsFactory(),
 			AbuseFilterServices::getFilterRunnerFactory(),
 			AbuseFilterServices::getVariableGeneratorFactory(),
 			AbuseFilterServices::getEditRevUpdater(),

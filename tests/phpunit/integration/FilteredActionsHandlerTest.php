@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use MediaWiki\Content\Content;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Deferred\DeferredUpdates;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\EditRevUpdater;
@@ -27,7 +28,7 @@ use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\User;
 use MediaWiki\User\UserFactory;
 use MediaWikiIntegrationTestCase;
-use Wikimedia\Stats\NullStatsdDataFactory;
+use Wikimedia\Stats\StatsFactory;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler
@@ -44,7 +45,8 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 	public function testOnEditFilterMergedContent( $urlsAdded, $expected ) {
 		$this->overrideConfigValue( 'AbuseFilterEnableBlockedExternalDomain', true );
 
-		$filteredActionsHandler = $this->getFilteredActionsHandler( $urlsAdded );
+		$statsHelper = StatsFactory::newUnitTestingHelper()->withComponent( 'AbuseFilter' );
+		$filteredActionsHandler = $this->getFilteredActionsHandler( $urlsAdded, $statsHelper->getStatsFactory() );
 		$context = RequestContext::getMain();
 		$context->setTitle( Title::makeTitle( NS_MAIN, 'TestPage' ) );
 		$content = $this->createMock( Content::class );
@@ -62,6 +64,7 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 		);
 		$this->assertSame( $expected, $res );
 		$this->assertSame( $expected, $status->isOK() );
+		$this->assertSame( 1, $statsHelper->count( 'filter_run_duration_seconds{action="edit"}' ) );
 
 		if ( !$expected ) {
 			// If it's failing, it should report the URL somewhere
@@ -88,7 +91,10 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 		];
 	}
 
-	private function getFilteredActionsHandler( $urlsAdded ): FilteredActionsHandler {
+	private function getFilteredActionsHandler(
+		$urlsAdded,
+		?StatsFactory $statsFactory = null
+	): FilteredActionsHandler {
 		$mockRunner = $this->createMock( FilterRunner::class );
 		$mockRunner->method( 'run' )
 			->willReturn( Status::newGood() );
@@ -123,7 +129,7 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 			->willReturn( false );
 
 		return new FilteredActionsHandler(
-			new NullStatsdDataFactory(),
+			$statsFactory ?? StatsFactory::newNull(),
 			$filterRunnerFactory,
 			$variableGeneratorFactory,
 			$editRevUpdater,
@@ -179,8 +185,9 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 		$tempUserConfig->method( 'isEnabled' )
 			->willReturn( $tempAccountsEnabled );
 
+		$statsHelper = StatsFactory::newUnitTestingHelper()->withComponent( 'AbuseFilter' );
 		$handler = new FilteredActionsHandler(
-			new NullStatsdDataFactory(),
+			$statsHelper->getStatsFactory(),
 			$filterRunnerFactory,
 			$variableGeneratorFactory,
 			$this->createNoOpMock( EditRevUpdater::class ),
@@ -198,6 +205,14 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 			$summary,
 			$user
 		);
+		DeferredUpdates::doUpdates();
+
+		// count() throws on zero matches; scan samples to also cover the no-timing case.
+		$stashTimings = array_filter(
+			$statsHelper->getAllFormatted(),
+			static fn ( string $sample ) => str_contains( $sample, 'filter_run_duration_seconds' )
+		);
+		$this->assertCount( $shouldRunFilters ? 1 : 0, $stashTimings );
 	}
 
 	public static function provideParserOutputStashForEdit(): iterable {
