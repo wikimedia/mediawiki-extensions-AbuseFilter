@@ -7,6 +7,7 @@
 		]
 	},
 	"abusefilter-blocked-display": "Ficilkan si otomaatig ah ayaa loo aqoonsaday inuu waxyeello leeyahay, sidaas darteed waa lagaa hor istaagay inaad fuliso. Intaa waxaa dheer, si loo ilaaliyo {{SITENAME}}, akoonkaaga isticmaalaha iyo dhammaan cinwaannada IP-ga ee la xiriira waa la xanibay wax ka beddelka. Haddii tani ay khalad tahay, fadlan la xiriir maamule. Sharaxaad kooban oo ku saabsan xeerka xadgudubka ee ficilkaagu la jaanqaaday waa: $1",
+	"abusefilter-blocker": "Shaandhada xadgudubka",
 	"abusefilter-log-search-submit": "Raadi",
 	"abusefilter-log-noactions": "Waxba",
 	"abusefilter-log-linkoncontribs": "Diiwaanka xadgudubka",
