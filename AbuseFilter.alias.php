@@ -431,6 +431,7 @@ $specialPageAliases['ro'] = [
 $specialPageAliases['ru'] = [
 	'AbuseLog' => [ 'Журнал_злоупотреблений' ],
 	'AbuseFilter' => [ 'Фильтр_злоупотреблений' ],
+	'BlockedExternalDomains' => [ 'Заблокированные_внешние_домены' ],
 ];
 
 /** Sanskrit (संस्कृतम्) */
