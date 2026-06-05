@@ -3,16 +3,15 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use LogicException;
+use MediaWiki\CheckUser\Services\CheckUserPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\Logging\LogPage;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\RecentChanges\RCCacheEntry;
 use MediaWiki\RecentChanges\RecentChange;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\TempUser\TempUserConfig;
 use Wikimedia\ObjectCache\MapCacheLRU;
@@ -33,10 +32,10 @@ class AbuseFilterPermissionManager {
 
 	public function __construct(
 		private readonly TempUserConfig $tempUserConfig,
-		private readonly ExtensionRegistry $extensionRegistry,
 		AbuseFilterProtectedVariablesLookup $protectedVariablesLookup,
 		private readonly RuleCheckerFactory $ruleCheckerFactory,
-		private readonly AbuseFilterHookRunner $hookRunner
+		private readonly AbuseFilterHookRunner $hookRunner,
+		private readonly ?CheckUserPermissionManager $checkUserPermissionManager
 	) {
 		$this->protectedVariables = $protectedVariablesLookup->getAllProtectedVariables();
 
@@ -273,8 +272,8 @@ class AbuseFilterPermissionManager {
 	 * on seeing IP addresses due to not having the necessary AbuseFilter permissions.
 	 */
 	private function canViewTemporaryAccountIPs( Authority $performer ): bool {
-		return $this->extensionRegistry->isLoaded( 'CheckUser' ) &&
-			MediaWikiServices::getInstance()->getService( 'CheckUserPermissionManager' )
+		return $this->checkUserPermissionManager !== null &&
+			$this->checkUserPermissionManager
 				->canAccessTemporaryAccountIPAddresses( $performer )->isGood();
 	}
 

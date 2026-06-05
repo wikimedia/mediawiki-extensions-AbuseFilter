@@ -13,7 +13,6 @@ use MediaWiki\Extension\AbuseFilter\Filter\Specs;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\TempUser\TempUserConfig;
 use MediaWiki\User\UserIdentityValue;
@@ -28,7 +27,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 
 	private function getPermMan(): AbuseFilterPermissionManager {
 		$tempUserConfig = $this->createMock( TempUserConfig::class );
-		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$protectedVariablesLookup = $this->createMock( AbuseFilterProtectedVariablesLookup::class );
 		$protectedVariablesLookup->method( 'getAllProtectedVariables' )
 			->willReturn( [ 'user_unnamed_ip' ] );
@@ -37,10 +35,10 @@ class AbuseFilterPermissionManagerTest extends MediaWikiUnitTestCase {
 		$hookRunner = $this->createMock( AbuseFilterHookRunner::class );
 		return new AbuseFilterPermissionManager(
 			$tempUserConfig,
-			$extensionRegistry,
 			$protectedVariablesLookup,
 			$ruleCheckerFactory,
-			$hookRunner
+			$hookRunner,
+			null
 		);
 	}
 

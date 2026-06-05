@@ -4,8 +4,10 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
+use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
+use MediaWiki\Extension\AbuseFilter\Variables\AbuseFilterProtectedVariablesLookup;
 use MediaWiki\RecentChanges\RecentChange;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWikiIntegrationTestCase;
@@ -69,12 +71,17 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 		$filter = MutableFilter::newDefault();
 		$userName = $logUserIsTemp ? '~12345' : 'Test';
 
-		// Mock ExtensionRegistry service to say whether the CheckUser extension is loaded,
-		// so we can mock it isn't loaded when it actually is
-		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
-		$extensionRegistry->method( 'isLoaded' )
-			->willReturn( $withCheckUser );
-		$this->setService( 'ExtensionRegistry', $extensionRegistry );
+		// Build the permission manager directly so we control whether CheckUser is
+		// wired in, independent of which extensions CI actually has loaded.
+		$services = $this->getServiceContainer();
+		$permissionManager = new AbuseFilterPermissionManager(
+			$services->getTempUserConfig(),
+			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME ),
+			$services->get( RuleCheckerFactory::SERVICE_NAME ),
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
+			$withCheckUser ? $services->get( 'CheckUserPermissionManager' ) : null
+		);
+		$this->setService( AbuseFilterPermissionManager::SERVICE_NAME, $permissionManager );
 
 		/** @var AbuseFilterPermissionManager $permissionManager */
 		$permissionManager = $this->getPermissionManager();

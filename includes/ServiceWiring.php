@@ -84,10 +84,12 @@ return [
 	ServiceNames::PermManager => static function ( MediaWikiServices $services ): PermManager {
 		return new PermManager(
 			$services->getTempUserConfig(),
-			$services->getExtensionRegistry(),
 			$services->get( AbuseFilterProtectedVariablesLookup::SERVICE_NAME ),
 			$services->get( RuleCheckerFactory::SERVICE_NAME ),
-			$services->get( AbuseFilterHookRunner::SERVICE_NAME )
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
+			$services->has( 'CheckUserPermissionManager' )
+				? $services->get( 'CheckUserPermissionManager' )
+				: null
 		);
 	},
 	ServiceNames::ChangeTagger => static function ( MediaWikiServices $services ): ChangeTagger {
