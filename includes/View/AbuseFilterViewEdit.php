@@ -617,9 +617,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 
 			// Last modification details
 			$user = $this->getUser();
+			$userIdentity = $filterObj->getUserIdentity();
 			$userLink =
-				Linker::userLink( $filterObj->getUserID(), $filterObj->getUserName() ) .
-				Linker::userToolLinks( $filterObj->getUserID(), $filterObj->getUserName() );
+				Linker::userLink( $userIdentity->getId(), $userIdentity->getName() ) .
+				Linker::userToolLinks( $userIdentity->getId(), $userIdentity->getName() );
 			$fields[] = new OOUI\FieldLayout(
 				new OOUI\LabelWidget( [
 					'label' => new OOUI\HtmlSnippet( $this->msg( 'abusefilter-edit-lastmod-text' )
@@ -638,7 +639,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 								$lang->userTime( $filterObj->getTimestamp(), $user )
 							)
 						)->params(
-							wfEscapeWikiText( $filterObj->getUserName() )
+							wfEscapeWikiText( $userIdentity->getName() )
 						)->parse() ),
 				] ),
 				[

@@ -268,16 +268,17 @@ class AbuseFilterViewDiff extends AbuseFilterView {
 		$title = $this->getTitle( "history/$this->filter/item/$history_id" );
 
 		$versionLink = $this->linkRenderer->makeLink( $title, $text );
+		$userIdentity = $filterVersion->getUserIdentity();
 		$userLink = Linker::userLink(
-			$filterVersion->getUserID(),
-			$filterVersion->getUserName()
+			$userIdentity->getId(),
+			$userIdentity->getName()
 		);
 		return Html::rawElement(
 			'th',
 			[],
 			$this->msg( 'abusefilter-diff-version' )
 				->rawParams( $versionLink, $userLink )
-				->params( $filterVersion->getUserName() )
+				->params( $userIdentity->getName() )
 				->parse()
 		);
 	}
