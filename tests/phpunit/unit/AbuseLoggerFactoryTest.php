@@ -53,7 +53,8 @@ class AbuseLoggerFactoryTest extends MediaWikiUnitTestCase {
 			'wikiID',
 			'1.2.3.4',
 			new NullLogger(),
-			$this->createMock( AbuseFilterHookRunner::class )
+			$this->createMock( AbuseFilterHookRunner::class ),
+			null
 		);
 		$logger = $factory->newLogger(
 			$this->createMock( Title::class ),

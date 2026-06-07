@@ -11,9 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Logging\ManualLogEntry;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Profiler\Profiler;
-use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
 use MediaWiki\User\UserIdentityValue;
@@ -45,7 +43,8 @@ class AbuseLogger {
 		private readonly string $requestIP,
 		private readonly Title $title,
 		private readonly User $user,
-		private readonly VariableHolder $vars
+		private readonly VariableHolder $vars,
+		private readonly ?CheckUserInsert $checkUserInsert
 	) {
 		if ( !$vars->varIsSet( 'action' ) ) {
 			throw new InvalidArgumentException( "The 'action' variable is not set." );
@@ -181,7 +180,7 @@ class AbuseLogger {
 
 			// Send data to CheckUser if installed and we
 			// aren't already sending a notification to recentchanges
-			if ( ExtensionRegistry::getInstance()->isLoaded( 'CheckUser' )
+			if ( $this->checkUserInsert !== null
 				&& !str_contains( $this->options->get( 'AbuseFilterNotifications' ) ?: '', 'rc' )
 			) {
 				$entry = $this->newLocalLogEntryFromData( $data );
@@ -195,15 +194,14 @@ class AbuseLogger {
 					$entry->setPerformer( new UserIdentityValue( 0, $this->requestIP ) );
 				}
 				$rc = $entry->getRecentChange();
+				$checkUserInsert = $this->checkUserInsert;
 				// We need to send the entries on POSTSEND to ensure that the user definitely exists, as a temporary
 				// account being created by this edit may not exist until after AbuseFilter processes the edit.
-				DeferredUpdates::addCallableUpdate( static function () use ( $rc ) {
+				DeferredUpdates::addCallableUpdate( static function () use ( $rc, $checkUserInsert ) {
 					// Silence the TransactionProfiler warnings for performing write queries (T359648).
 					$trxProfiler = Profiler::instance()->getTransactionProfiler();
 					$scope = $trxProfiler->silenceForScope( $trxProfiler::EXPECTATION_REPLICAS_ONLY );
 
-					/** @var CheckUserInsert $checkUserInsert */
-					$checkUserInsert = MediaWikiServices::getInstance()->get( 'CheckUserInsert' );
 					$checkUserInsert->updateCheckUserData( $rc );
 
 					ScopedCallback::consume( $scope );

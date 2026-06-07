@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter;
 
+use MediaWiki\CheckUser\Services\CheckUserInsert;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
@@ -47,7 +48,8 @@ class AbuseLoggerFactory {
 		private readonly string $wikiID,
 		private readonly string $requestIP,
 		private readonly LoggerInterface $logger,
-		private readonly AbuseFilterHookRunner $hookRunner
+		private readonly AbuseFilterHookRunner $hookRunner,
+		private readonly ?CheckUserInsert $checkUserInsert
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 	}
@@ -94,7 +96,8 @@ class AbuseLoggerFactory {
 			$this->requestIP,
 			$title,
 			$user,
-			$vars
+			$vars,
+			$this->checkUserInsert
 		);
 	}
 }

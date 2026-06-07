@@ -279,7 +279,10 @@ return [
 			WikiMap::getCurrentWikiDbDomain()->getId(),
 			RequestContext::getMain()->getRequest()->getIP(),
 			LoggerFactory::getInstance( 'AbuseFilter' ),
-			$services->get( AbuseFilterHookRunner::SERVICE_NAME )
+			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
+			$services->has( 'CheckUserInsert' )
+				? $services->get( 'CheckUserInsert' )
+				: null
 		);
 	},
 	ServiceNames::UpdateHitCountWatcher => static function ( MediaWikiServices $services ): UpdateHitCountWatcher {
