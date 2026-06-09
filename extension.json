@@ -445,7 +445,11 @@
 			"factory": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\SchemaChangesHandler::newFromGlobalState"
 		},
 		"EditPermission": {
-			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler"
+			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\EditPermissionHandler",
+			"services": [
+				"MainConfig",
+				"PermissionManager"
+			]
 		},
 		"RecentChangeSave": {
 			"class": "MediaWiki\\Extension\\AbuseFilter\\Hooks\\Handlers\\RecentChangeSaveHandler",

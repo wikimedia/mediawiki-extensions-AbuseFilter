@@ -2,12 +2,13 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 
+use MediaWiki\Config\Config;
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
 use MediaWiki\Content\JsonContent;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Title\Title;
 use MediaWiki\Title\TitleValue;
@@ -29,6 +30,12 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 
 	private const JSON_OPTIONAL_FIELDS = [ 'addedBy' ];
 
+	public function __construct(
+		private readonly Config $config,
+		private readonly PermissionManager $permissionManager
+	) {
+	}
+
 	/**
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/getUserPermissionsErrors
 	 *
@@ -39,10 +46,8 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 	 * @return bool|void
 	 */
 	public function onGetUserPermissionsErrors( $title, $user, $action, &$result ) {
-		$services = MediaWikiServices::getInstance();
-
 		// Only do anything if we're enabled on this wiki.
-		if ( !$services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
+		if ( !$this->config->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
 			return;
 		}
 
@@ -56,7 +61,7 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 			return;
 		}
 
-		if ( $services->getPermissionManager()->userHasRight( $user, 'editinterface' ) ) {
+		if ( $this->permissionManager->userHasRight( $user, 'editinterface' ) ) {
 			return;
 		}
 
@@ -72,11 +77,9 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 	 * @return bool|void
 	 */
 	public function onJsonValidateSave( JsonContent $content, PageIdentity $pageIdentity, StatusValue $status ) {
-		$services = MediaWikiServices::getInstance();
-
 		// Only do anything if we're enabled on this wiki as a standalone tool
 		if (
-			!$services->getMainConfig()->get( 'AbuseFilterEnableBlockedExternalDomain' ) ||
+			!$this->config->get( 'AbuseFilterEnableBlockedExternalDomain' ) ||
 			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' )
 		) {
 			return;
