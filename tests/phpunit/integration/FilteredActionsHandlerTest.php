@@ -46,7 +46,7 @@ class FilteredActionsHandlerTest extends MediaWikiIntegrationTestCase {
 
 		$filteredActionsHandler = $this->getFilteredActionsHandler( $urlsAdded );
 		$context = RequestContext::getMain();
-		$context->setTitle( Title::newFromText( 'TestPage' ) );
+		$context->setTitle( Title::makeTitle( NS_MAIN, 'TestPage' ) );
 		$content = $this->createMock( Content::class );
 		$user = $this->getTestUser()->getUser();
 

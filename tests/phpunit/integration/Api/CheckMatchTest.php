@@ -186,7 +186,7 @@ class CheckMatchTest extends ApiTestCase {
 		$this->setService( FilterLookup::SERVICE_NAME, $mockLookup );
 		// Create an AbuseFilter log entry for the hidden filter
 		AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
-			Title::newFromText( 'Testing' ),
+			Title::makeTitle( NS_MAIN, 'Testing' ),
 			$this->getTestUser()->getUser(),
 			VariableHolder::newFromArray( [ 'action' => 'edit' ] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
@@ -247,7 +247,7 @@ class CheckMatchTest extends ApiTestCase {
 
 		// Create an AbuseFilter log entry for the protected filter that has a protected variable the user cannot see.
 		AbuseFilterServices::getAbuseLoggerFactory()->newLogger(
-			Title::newFromText( 'Testing' ),
+			Title::makeTitle( NS_MAIN, 'Testing' ),
 			$this->getTestUser()->getUser(),
 			VariableHolder::newFromArray( [ 'action' => 'edit', 'custom_variable' => 'abc' ] )
 		)->addLogEntries( [ 1 => [ 'warn' ] ] );
