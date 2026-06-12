@@ -1508,7 +1508,7 @@ class FilterEvaluator {
 	 * @return string
 	 */
 	private function mungeRegexp( string $rawRegexp ): string {
-		$needle = preg_replace( '!(\\\\\\\\)*(\\\\)?/!', '$1\/', $rawRegexp );
+		$needle = preg_replace( '!((\\\\\\\\)*)(\\\\)?/!', '$1\/', $rawRegexp );
 		return "/$needle/u";
 	}
 
