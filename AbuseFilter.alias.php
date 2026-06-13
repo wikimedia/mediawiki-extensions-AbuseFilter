@@ -129,6 +129,7 @@ $specialPageAliases['cs'] = [
 $specialPageAliases['de'] = [
 	'AbuseLog' => [ 'Missbrauchsfilter-Logbuch' ],
 	'AbuseFilter' => [ 'Missbrauchsfilter' ],
+	'BlockedExternalDomains' => [ 'Gesperrte_externe_Domains' ],
 ];
 
 /** Zazaki (Zazaki) */
