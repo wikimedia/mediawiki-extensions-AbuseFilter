@@ -274,7 +274,7 @@ $specialPageAliases['is'] = [
 $specialPageAliases['it'] = [
 	'AbuseLog' => [ 'RegistroAbusi' ],
 	'AbuseFilter' => [ 'FiltroAntiAbusi' ],
-	'BlockedExternalDomains' => [ 'Domini esterni bloccati' ],
+	'BlockedExternalDomains' => [ 'Domini_esterni_bloccati' ],
 ];
 
 /** Japanese (日本語) */
