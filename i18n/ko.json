@@ -170,7 +170,7 @@
 	"log-action-filter-rights-restoreautopromote": "자동 승격 복원",
 	"logentry-abusefilterprivatedetails-access": "$1님이 $3의 비공개 상세 정보에 {{GENDER:$2|접근하였습니다}}",
 	"logentry-rights-blockautopromote": "$1님이 {{GENDER:$4|$3}}님의 자동 권한 상승을 $5 {{GENDER:$2|차단했습니다}}",
-	"logentry-rights-restoreautopromote": "$1은 {{GENDER:$4|$3}}의 자동 승진 기능을 {{GENDER:$2|복원}}함",
+	"logentry-rights-restoreautopromote": "$1님이 {{GENDER:$4|$3}}의 자동 승진 기능을 {{GENDER:$2|복원}}했습니다",
 	"logentry-abusefilterblockeddomainhit-hit": "{{GENDER:$2|$1}}님이 $3 문서에 $4 항목 추가를 시도함으로써 차단된 도메인 히트를 일으켰습니다",
 	"abusefilterprivatedetails-log-name": "편집 필터 비공개 상세 정보 접근 기록",
 	"log-name-abusefilterblockeddomainhit": "차단된 도메인 히트 기록",
