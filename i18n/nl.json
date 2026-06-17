@@ -616,7 +616,7 @@
 	"abusefilter-diff-next": "Nieuwere wijziging",
 	"abusefilter-import-intro": "Met deze interface {{#FORMAL:kunt u|kun je}} filters van andere wiki’s importeren.\nKlik op “{{int:abusefilter-edit-export}}” onder “{{int:abusefilter-edit-tools}}” op de bewerkingsinterface.\nKopieer de tekst uit het tekstvak dat dan verschijnt, plak deze in dit tekstvak, en klik dan op “{{int:abusefilter-import-submit}}”.",
 	"abusefilter-import-submit": "Filtergegevens importeren",
-	"abusefilter-import-invalid-data": "De data die u probeerde te importeren is niet geldig",
+	"abusefilter-import-invalid-data": "De gegevens die u probeerde te importeren zijn niet correct",
 	"abusefilter-group-default": "Standaard",
 	"abusefilter-http-error": "Er is een HTTP-fout opgetreden: $1.",
 	"abusefilter-view-privatedetails-submit": "Beperkt zichtbare gegevens bekijken",
