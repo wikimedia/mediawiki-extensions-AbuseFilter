@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\AbuseFilter\BlockedDomains;
 
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
+use MediaWiki\Page\PageReference;
 use MediaWiki\Status\Status;
-use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 
 interface IBlockedDomainFilter {
 
@@ -18,9 +18,9 @@ interface IBlockedDomainFilter {
 	 * This function logs any hits under Special:Log.
 	 *
 	 * @param VariableHolder $vars variables by the action
-	 * @param User $user User that tried to add the domain, used for logging
-	 * @param Title $title Title of the page that was attempted on, used for logging
+	 * @param UserIdentity $user User that tried to add the domain, used for logging
+	 * @param PageReference $title Title of the page that was attempted on, used for logging
 	 * @return Status Error status if it's a match, good status if not
 	 */
-	public function filter( VariableHolder $vars, User $user, Title $title ): Status;
+	public function filter( VariableHolder $vars, UserIdentity $user, PageReference $title ): Status;
 }

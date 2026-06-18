@@ -27,10 +27,10 @@ use MediaWiki\Logging\LogPage;
 use MediaWiki\Logging\ManualLogEntry;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
+use MediaWiki\Page\PageReference;
 use MediaWiki\Registration\ExtensionRegistry;
 use MediaWiki\Status\Status;
-use MediaWiki\Title\Title;
-use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
 
 /**
  * Filters blocked domains
@@ -45,7 +45,7 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 	}
 
 	/** @inheritDoc */
-	public function filter( VariableHolder $vars, User $user, Title $title ): Status {
+	public function filter( VariableHolder $vars, UserIdentity $user, PageReference $title ): Status {
 		// whether the feature is enabled is checked in ServiceWiring
 
 		$status = Status::newGood();
@@ -101,11 +101,11 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 	/**
 	 * Logs the filter hit to Special:Log
 	 *
-	 * @param User $user
-	 * @param Title $title
+	 * @param UserIdentity $user
+	 * @param PageReference $title
 	 * @param string $blockedDomain The blocked domain the user attempted to add
 	 */
-	private function logFilterHit( User $user, Title $title, string $blockedDomain ) {
+	private function logFilterHit( UserIdentity $user, PageReference $title, string $blockedDomain ) {
 		$logEntry = new ManualLogEntry( 'abusefilterblockeddomainhit', 'hit' );
 		$logEntry->setPerformer( $user );
 		$logEntry->setTarget( $title );

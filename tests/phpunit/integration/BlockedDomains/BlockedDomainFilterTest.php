@@ -7,7 +7,7 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
-use MediaWiki\Title\Title;
+use MediaWiki\Page\PageReference;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -34,8 +34,8 @@ class BlockedDomainFilterTest extends MediaWikiIntegrationTestCase {
 		$filter = new BlockedDomainFilter( $manager, $storage );
 		$status = $filter->filter(
 			new VariableHolder(),
-			$this->getTestUser()->getUser(),
-			$this->createMock( Title::class )
+			$this->getTestUser()->getUserIdentity(),
+			$this->createMock( PageReference::class )
 		);
 
 		if ( $expectedError ) {
