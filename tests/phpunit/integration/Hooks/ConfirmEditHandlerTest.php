@@ -36,7 +36,6 @@ class ConfirmEditHandlerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	public function testOnEditFilterMergedContent() {
-		$this->markTestSkipped( 'Disable while updating CaptchaConsequence parameters' );
 		$this->clearHook( 'ConfirmEditBeforeForceShowCaptcha' );
 		$this->overrideConfigValue(
 			'CaptchaTriggers',
