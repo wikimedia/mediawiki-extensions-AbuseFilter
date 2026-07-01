@@ -449,7 +449,7 @@
 	"abusefilter-edit-builder-vars-added-links": "편집 중 추가된 모든 외부 링크 ($1)",
 	"abusefilter-edit-builder-vars-removed-links": "편집 중 제거된 모든 외부 링크 ($1)",
 	"abusefilter-edit-builder-vars-all-links": "바뀐 글에 포함된 모든 외부 링크 ($1)",
-	"abusefilter-edit-builder-vars-new-pst": "새 문서 위키 텍스트, 변환을 미리 저장 ($1)",
+	"abusefilter-edit-builder-vars-new-pst": "새 문서 위키텍스트, 변환을 미리 저장 ($1)",
 	"abusefilter-edit-builder-vars-diff-pst": "편집으로 인한 바뀐 내용의 차이가 통합됨, 미리 저장 변형됨 ($1)",
 	"abusefilter-edit-builder-vars-addedlines-pst": "줄이 편집 중 추가됨, 미리 저장 변형됨 ($1)",
 	"abusefilter-edit-builder-vars-new-text": "편집 후 마크업을 제거한 문서 내용 ($1)",
