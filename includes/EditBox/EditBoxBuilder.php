@@ -12,7 +12,9 @@ use OOUI\ButtonWidget;
 use OOUI\DropdownInputWidget;
 use OOUI\FieldLayout;
 use OOUI\FieldsetLayout;
+use OOUI\HtmlSnippet;
 use OOUI\Widget;
+use Wikimedia\Codex\Utility\Codex;
 
 /**
  * Base class for classes responsible for building filter edit boxes
@@ -84,10 +86,29 @@ abstract class EditBoxBuilder {
 		$output = $this->getEditBox( $rules, $isUserAllowed, $externalForm );
 
 		if ( $isUserAllowed ) {
+			// Load the styles up front so the placeholder input below never appears unstyled.
+			$this->output->addModuleStyles( 'ext.abuseFilter.conditionBuilder.styles' );
+			$this->output->addModules( 'ext.abuseFilter.conditionBuilder' );
+
+			// Shown until the picker loads: same markup as the picker's own input so
+			// nothing shifts, disabled so typed text can't get lost in the swap.
+			$pickerPlaceholder = ( new Codex() )->textInput()
+				->setPlaceholder( $this->localizer->msg( 'abusefilter-edit-builder-select' )->text() )
+				->setDisabled( true )
+				->build()
+				->getHtml();
+			$conditionBuilder = new Widget( [
+				'content' => new HtmlSnippet( $pickerPlaceholder ),
+				'classes' => [ 'mw-abusefilter-condition-builder' ]
+			] );
+
 			$dropdown = $this->getSuggestionsDropdown();
 
 			$formElements = [
-				new FieldLayout( $dropdown ),
+				new FieldLayout( $conditionBuilder ),
+				new FieldLayout( $dropdown, [
+					'classes' => [ 'mw-abusefilter-condition-builder-fallback' ]
+				] ),
 				new FieldLayout( $this->getEditorControls() )
 			];
 

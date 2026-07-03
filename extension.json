@@ -324,6 +324,31 @@
 				"oojs-ui-widgets"
 			]
 		},
+		"ext.abuseFilter.conditionBuilder": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"localBasePath": "modules/ext.abuseFilter.conditionBuilder",
+			"remoteExtPath": "AbuseFilter/modules/ext.abuseFilter.conditionBuilder",
+			"packageFiles": [
+				"init.js",
+				"components/ConditionBuilder.vue"
+			],
+			"codexComponents": [
+				"CdxField",
+				"CdxLookup"
+			],
+			"codexScriptOnly": true,
+			"dependencies": [
+				"ext.abuseFilter.edit"
+			]
+		},
+		"ext.abuseFilter.conditionBuilder.styles": {
+			"class": "MediaWiki\\ResourceLoader\\CodexModule",
+			"codexStyleOnly": true,
+			"codexComponents": [
+				"CdxField",
+				"CdxLookup"
+			]
+		},
 		"ext.abuseFilter.tools": {
 			"scripts": "ext.abuseFilter.tools.js",
 			"messages": [

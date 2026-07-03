@@ -8,5 +8,23 @@
 	"rules": {
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-done-fail": "warn"
-	}
+	},
+	"overrides": [
+		{
+			"files": "**/*.vue",
+			"extends": [
+				"wikimedia/client/common",
+				"wikimedia/vue3/es2017"
+			],
+			"rules": {
+				"max-len": "off",
+				"vue/component-name-in-template-casing": [ "error", "kebab-case" ],
+				"vue/max-len": [ "error", {
+					"code": 120,
+					"template": 120,
+					"comments": 120
+				} ]
+			}
+		}
+	]
 }

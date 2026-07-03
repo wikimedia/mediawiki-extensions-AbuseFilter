@@ -74,6 +74,28 @@ table.mw-abusefilter-list-scrollable {
 	display: none;
 }
 
+// Hidden from the start so the dropdown never shows before the picker replaces it.
+.client-js .mw-abusefilter-condition-builder-fallback {
+	display: none;
+}
+
+.mw-abusefilter-condition-builder {
+	width: 90%; /* Same as mw-abusefilter-editor */
+
+	// Drop the top margin so the picker sits exactly where the placeholder input was.
+	.cdx-field {
+		margin-top: 0;
+	}
+
+	// The placeholder input is disabled only to block typing before the
+	// picker loads; keep the enabled look.
+	.cdx-text-input__input:disabled {
+		background-color: @background-color-base;
+		border-color: @border-color-interactive;
+		-webkit-text-fill-color: @color-placeholder;
+	}
+}
+
 #mw-abusefilter-throttle-parameters,
 #mw-abusefilter-warn-parameters,
 #mw-abusefilter-disallow-parameters,
