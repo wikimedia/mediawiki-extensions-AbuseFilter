@@ -13,6 +13,7 @@ class ServiceNames {
 	public const string AbuseFilterHookRunner = 'AbuseFilterHookRunner';
 	public const string AbuseLogConditionFactory = 'AbuseLogConditionFactory';
 	public const string AbuseLoggerFactory = 'AbuseFilterAbuseLoggerFactory';
+	public const string AbuseLogLookup = 'AbuseFilterAbuseLogLookup';
 	public const string BlockAutopromoteStore = 'AbuseFilterBlockAutopromoteStore';
 	public const string BlockedDomainFilter = 'AbuseFilterBlockedDomainFilter';
 	public const string BlockedDomainStorage = 'AbuseFilterBlockedDomainStorage';

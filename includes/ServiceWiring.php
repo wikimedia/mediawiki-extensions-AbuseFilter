@@ -6,6 +6,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterLogDetailsLookup;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager as PermManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
+use MediaWiki\Extension\AbuseFilter\AbuseLogLookup;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainConfigProvider;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
@@ -466,6 +467,14 @@ return [
 		return new AbuseLogConditionFactory(
 			$services->getConnectionProvider(),
 			$services->getTempUserConfig()
+		);
+	},
+	ServiceNames::AbuseLogLookup => static function (
+		MediaWikiServices $services
+	): AbuseLogLookup {
+		return new AbuseLogLookup(
+			$services->getConnectionProvider(),
+			$services->get( PermManager::SERVICE_NAME )
 		);
 	},
 	ServiceNames::TemporaryAccountIPsViewerSpecification => static function (
