@@ -751,12 +751,6 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 	}
 
 	public function testFormValuesPassedDown() {
-		// FIXME: The confirmation form does not preserve the selected period. `showRevertableActions()`
-		// creates hidden `PeriodStart` and `PeriodEnd` fields without propagating the submitted values,
-		// so the confirmation request loses the selected date range. Remove this skip after fixing
-		// the confirmation form to preserve those values.
-		$this->markTestSkipped();
-
 		$consequence = 'block';
 		$filterId = self::getFilterIdFromConsequence( $consequence );
 

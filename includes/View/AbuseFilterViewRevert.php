@@ -184,9 +184,11 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$confirmForm = [
 			'PeriodStart' => [
 				'type' => 'hidden',
+				'default' => $formData['PeriodStart'],
 			],
 			'PeriodEnd' => [
 				'type' => 'hidden',
+				'default' => $formData['PeriodEnd'],
 			],
 			'Reason' => [
 				'type' => 'text',
