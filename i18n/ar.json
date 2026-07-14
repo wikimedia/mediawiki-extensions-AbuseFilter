@@ -35,7 +35,8 @@
 			"محمد أحمد عبد الفتاح",
 			"وهراني",
 			"Cigaryno",
-			"Mohammed Qays"
+			"Mohammed Qays",
+			"Gerges"
 		]
 	},
 	"abusefilter-desc": "يطبق قواعد آلية على التعديلات.",
@@ -589,7 +590,7 @@
 	"abusefilter-examine-noresults": "لا نتائج تم الحصول عليها لمحددات البحث التي وفرتها.",
 	"abusefilter-examine-protected-vars-permission": "لعرض السجلات التي تحتوي على متغيرات محمية، يرجى قبول الاتفاقية في [[Special:Preferences|تفضيلاتك]].",
 	"abusefilter-topnav": "'''تصفح مرشح الإساءة'''",
-	"abusefilter-topnav-home": "الرئيسية",
+	"abusefilter-topnav-home": "الرئيسة",
 	"abusefilter-topnav-recentchanges": "أحدث تغييرات المرشحات",
 	"abusefilter-topnav-test": "اختبار الباتش",
 	"abusefilter-topnav-examine": "افحص التعديلات الماضية",
