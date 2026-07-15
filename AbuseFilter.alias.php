@@ -270,6 +270,13 @@ $specialPageAliases['is'] = [
 	'AbuseFilter' => [ 'Misnotkunarsía' ],
 ];
 
+/** Interslavic Latin (medžuslovjansky latinica) */
+$specialPageAliases['isv-latn'] = [
+	'AbuseLog' => [ 'Dnevnik_filtra_zloupotrěbjenij' ],
+	'AbuseFilter' => [ 'Filtr_zloupotrěbjenij' ],
+	'BlockedExternalDomains' => [ 'Zablokovane_vněšnje_domeny' ]
+];
+
 /** Italian (italiano) */
 $specialPageAliases['it'] = [
 	'AbuseLog' => [ 'RegistroAbusi' ],
