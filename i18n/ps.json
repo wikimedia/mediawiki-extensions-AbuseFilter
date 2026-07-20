@@ -149,7 +149,7 @@
 	"abusefilter-list-options-search-like": "ساده پوښتنه",
 	"abusefilter-list-options-search-rlike": "دوديز څرگندون",
 	"abusefilter-list-options-search-irlike": "لوی‌والي او کوچني‌والي سره باقاعده حساسې گړنې",
-	"abusefilter-list-options-submit": "اوسمهالول",
+	"abusefilter-list-options-submit": "هم‌مهالول",
 	"abusefilter-tools-submitexpr": "ارزول",
 	"abusefilter-tools-reautoconfirm-user": "کارن:",
 	"abusefilter-status": "د {{PLURAL:$1|تېرې $1 چارې|تېرو $1 چارو}} څخه، $2 ($3%) يې د $4 بريد ته {{PLURAL:$2|رسېدلې ده|رسېدلې دي}} او لږترلږه $5 ($6%) يې د وسمهال چارن شوو چاڼگرو سره {{PLURAL:$5|سمون لري}}.",
