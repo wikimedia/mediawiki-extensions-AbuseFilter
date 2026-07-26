@@ -117,19 +117,12 @@ class AbuseFilterPager extends TablePager {
 			}
 
 			if ( $this->matchesPattern( $filter->getRules() ) ) {
-				$filtered[$filter->getID()] = $row;
+				$filtered[] = $row;
 			}
 		}
 
-		// sort results and enforce limit like ContribsPager
-		if ( $order === self::QUERY_ASCENDING ) {
-			ksort( $filtered );
-		} else {
-			krsort( $filtered );
-		}
+		// enforce limit like ContribsPager
 		$filtered = array_slice( $filtered, 0, $limit );
-		// FakeResultWrapper requires sequential indexes starting at 0
-		$filtered = array_values( $filtered );
 		return new FakeResultWrapper( $filtered );
 	}
 

@@ -931,6 +931,32 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$this->assertSame( '<b>user_unnamed_ip = "1</b>.2.3.4"', $patternCellHtml );
 	}
 
+	public function testViewListWithSearchQueryHonoursSortColumn() {
+		$request = new FauxRequest( [
+			'sort' => 'af_hit_count',
+			'limit' => 50,
+			'asc' => 1,
+			'desc' => '',
+			'deletedfilters' => 'hide',
+			'querypattern' => '1.2.3.4',
+			'searchoption' => 'LIKE',
+			'rulescope' => 'all',
+			'furtheroptions' => []
+		] );
+
+		[ $html, ] = $this->executeSpecialPage( '', $request, null, $this->authorityCanUseProtectedVar );
+
+		$positionOfFilterWithoutProtectedVars = strpos( $html, 'Filter without protected variables' );
+		$positionOfFilterWithProtectedVars = strpos( $html, 'Filter with protected variables' );
+
+		$this->assertLessThan(
+			$positionOfFilterWithProtectedVars,
+			$positionOfFilterWithoutProtectedVars,
+			'Filter without protected variables (0 hits) should appear before ' .
+			'Filter with protected variables (1 hit) when sorting by af_hit_count ascending'
+		);
+	}
+
 	public function testViewHistoryForProtectedFilterWhenUserLacksAuthority() {
 		[ $html, ] = $this->executeSpecialPage(
 			'history/1',
