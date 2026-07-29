@@ -39,7 +39,8 @@
 			"Teles",
 			"TheEduGobi",
 			"TheGabrielZaum",
-			"YuriNikolai"
+			"YuriNikolai",
+			"NenhumaFênix"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
@@ -133,7 +134,7 @@
 	"abusefilter-log-noactions-filter": "Nenhum",
 	"abusefilter-log-details-diff": "Alterações feitas na edição",
 	"abusefilter-log-linkoncontribs": "registro de abusos",
-	"abusefilter-log-linkoncontribs-text": "Registro de abuso para {{GENDER:$1|este usuário}}",
+	"abusefilter-log-linkoncontribs-text": "Registro de abuso para {{GENDER:$1|este usuário|esta usuária|este(a) usuário(a)}}",
 	"abusefilter-log-linkonhistory": "ver o registro de abusos",
 	"abusefilter-log-linkonhistory-text": "Ver o registro de abusos para esta página",
 	"abusefilter-log-linkonundelete": "ver o registro de abusos",
