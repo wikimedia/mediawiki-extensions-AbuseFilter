@@ -17,6 +17,7 @@ use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Logging\DatabaseLogEntry;
 use MediaWiki\MainConfigNames;
+use MediaWiki\Message\Message;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
@@ -25,6 +26,8 @@ use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Specials\SpecialPageExecutor;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\User\User;
+use MediaWiki\User\UserIdentity;
+use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\Timestamp\TimestampFormat as TS;
 
 /**
@@ -691,6 +694,16 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 		return $context;
 	}
 
+	private function getLogsByActor( UserIdentity $actorIdentity ): IResultWrapper {
+		return DatabaseLogEntry::newSelectQueryBuilder( $this->getDb() )
+			->where( [
+				'actor_user' => $actorIdentity->getId(),
+				$this->getDb()->expr( 'log_type', '!=', 'abusefilter' ),
+			] )
+			->caller( __METHOD__ )
+			->fetchResultSet();
+	}
+
 	/**
 	 * @dataProvider provideAttemptRevert
 	 * @param 'block'|'blockautopromote'|'degroup' $consequence
@@ -702,10 +715,7 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 
 		$this->triggerFilter( $consequence, $triggerer->getAuthority() );
 
-		$reason = 'A very good revert reason';
-		$context = $this->createRevertRequestContext( $filterId, [
-			'wpReason' => $reason,
-		] );
+		$context = $this->createRevertRequestContext( $filterId );
 		[ $html ] = $this->executeSpecialPage( "revert/$filterId", context: $context );
 
 		$this->assertNotAffectedByConsequence( $consequence, $triggerer->getAuthority() );
@@ -716,20 +726,14 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 			return;
 		}
 
-		$performer = $context->getAuthority();
-		$rows = DatabaseLogEntry::newSelectQueryBuilder( $this->getDb() )
-			->where( [
-				'actor_user' => $performer->getUser()->getId(),
-				$this->getDb()->expr( 'log_type', '!=', 'abusefilter' ),
-			] )
-			->caller( __METHOD__ )
-			->fetchResultSet();
-		$this->assertCount( 1, $rows );
+		$performerIdentity = $context->getAuthority()->getUser();
+		$result = $this->getLogsByActor( $performerIdentity );
+		$this->assertSame( 1, $result->numRows() );
 
-		$entry = DatabaseLogEntry::newFromRow( $rows->fetchObject() );
+		$entry = DatabaseLogEntry::newFromRow( $result->fetchObject() );
 
 		$this->assertSame(
-			$performer->getUser()->getId(),
+			$performerIdentity->getId(),
 			$entry->getPerformerIdentity()->getId()
 		);
 		$this->assertSame(
@@ -737,7 +741,7 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 			$entry->getTarget()->getText()
 		);
 		$this->assertSame(
-			wfMessage( 'abusefilter-revert-reason', $filterId, $reason )->inContentLanguage()->text(),
+			wfMessage( 'abusefilter-revert-reason' )->numParams( $filterId )->inContentLanguage()->text(),
 			$entry->getComment()
 		);
 	}
@@ -747,6 +751,58 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 			'Revert a block consequence' => [ 'block' ],
 			'Revert a blockautopromote consequence' => [ 'blockautopromote' ],
 			'Revert a degroup consequence' => [ 'degroup' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideRevertActionWithReasons
+	 */
+	public function testRevertActionWithReasons( string $reason, string $expectedReason ) {
+		$this->overrideConfigValue( MainConfigNames::LanguageCode, 'qqx' );
+
+		$consequence = 'block';
+		$filterId = self::getFilterIdFromConsequence( $consequence );
+		$triggerer = $this->getMutableTestUser( 'dummy-group', 'TestUser ' . __FUNCTION__ );
+		$triggerer->getUser()->addToDatabase();
+
+		$this->triggerFilter( $consequence, $triggerer->getAuthority() );
+
+		$context = $this->createRevertRequestContext( $filterId, [
+			'wpReason' => $reason,
+		] );
+		$this->executeSpecialPage( "revert/$filterId", context: $context );
+
+		$this->assertNotAffectedByConsequence( $consequence, $triggerer->getAuthority() );
+
+		$result = $this->getLogsByActor( $context->getAuthority()->getUser() );
+		$this->assertSame( 1, $result->numRows() );
+
+		$expectedSummary = '(abusefilter-revert-reason: ' . Message::numParam( $filterId )->getValue() . ')';
+		if ( $expectedReason !== '' ) {
+			$expectedSummary .= '(colon-separator)';
+		}
+		$expectedSummary .= $expectedReason;
+
+		$this->assertSame(
+			$expectedSummary,
+			DatabaseLogEntry::newFromRow( $result->fetchObject() )->getComment()
+		);
+	}
+
+	public static function provideRevertActionWithReasons(): array {
+		return [
+			'Revert with a non-empty reason' => [
+				'reason' => 'A revert reason',
+				'expectedReason' => 'A revert reason',
+			],
+			'Revert with an empty reason' => [
+				'reason' => '',
+				'expectedReason' => '',
+			],
+			'Revert with a whitespace-only reason' => [
+				'reason' => '   ',
+				'expectedReason' => '',
+			],
 		];
 	}
 

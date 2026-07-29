@@ -351,12 +351,18 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return bool
 	 */
 	private function revertAction( string $action, array $result ): bool {
-		$reason = $this->getRequest()->getText( 'wpReason' );
-		$message = $this->msg(
-			'abusefilter-revert-reason', $this->filter, $reason
-		)->inContentLanguage()->text();
+		$summary = $this->msg( 'abusefilter-revert-reason' )
+			->numParams( $this->filter )
+			->inContentLanguage()
+			->text();
+
+		$reason = trim( $this->getRequest()->getText( 'wpReason' ) );
+		if ( $reason !== '' ) {
+			$summary .= $this->msg( 'colon-separator' )->inContentLanguage()->text();
+			$summary .= $reason;
+		}
 
 		$consequence = $this->getConsequence( $action, $result );
-		return $consequence->revert( $this->getAuthority(), $message );
+		return $consequence->revert( $this->getAuthority(), $summary );
 	}
 }
