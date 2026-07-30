@@ -17,8 +17,8 @@ use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
-use MediaWiki\Linker\Linker;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Title\TitleValue;
@@ -27,6 +27,7 @@ use UnexpectedValueException;
 use Wikimedia\IPUtils;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
+use Wikimedia\Timestamp\TimestampFormat as TS;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
 	/**
@@ -88,8 +89,8 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
 
 		// First, the search form. Limit dates to avoid huge queries
-		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
-		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
+		$RCMaxAge = $this->getConfig()->get( MainConfigNames::RCMaxAge );
+		$min = wfTimestamp( TS::ISO_8601, time() - $RCMaxAge );
 		$max = wfTimestampNow();
 		$filterLink = $this->linkRenderer->makeLink(
 			$this->getTitle( $filter ),
@@ -154,13 +155,12 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 				$displayActions[] = $this->specsFormatter->getActionDisplay( $action );
 			}
 
-			/** @var ActionSpecifier $spec */
 			$spec = $result['spec'];
 			$msg = $this->msg( 'abusefilter-revert-preview-item' )
 				->params(
 					$lang->userTimeAndDate( $result['timestamp'], $user )
 				)->rawParams(
-					Linker::userLink( $spec->getUser()->getId(), $spec->getUser()->getName() )
+					$this->linkRenderer->makeUserLink( $spec->getUser(), $this->getContext() )
 				)->params(
 					$spec->getAction()
 				)->rawParams(
@@ -208,9 +208,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	}
 
 	/**
-	 * @return array[]
+	 * @phpcs:ignore Generic.Files.LineLength
+	 * @return array{id:string,actions:string[],vars:\MediaWiki\Extension\AbuseFilter\Variables\VariableHolder,spec:ActionSpecifier,timestamp:string}[]
 	 */
-	public function doLookup() {
+	private function doLookup(): array {
 		$request = $this->getRequest();
 
 		/** @var int|null */
@@ -291,10 +292,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		return $results;
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function attemptRevert() {
+	private function attemptRevert(): bool {
 		$filter = $this->filter;
 		$token = $this->getRequest()->getVal( 'wpEditToken' );
 		if ( !$this->getCsrfTokenSet()->matchToken( $token, "abusefilter-revert-$filter" ) ) {
@@ -322,7 +320,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	/**
 	 * Helper method for typing
 	 * @param string $action
-	 * @param array $result
+	 * @param array $result See `::doLookup()`
 	 * @return ReversibleConsequence
 	 */
 	private function getConsequence( string $action, array $result ): ReversibleConsequence {
@@ -347,10 +345,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 	/**
 	 * @param string $action
-	 * @param array $result
+	 * @param array $result See `::doLookup()`
 	 * @return bool
 	 */
-	public function revertAction( string $action, array $result ): bool {
+	private function revertAction( string $action, array $result ): bool {
 		$reason = $this->getRequest()->getText( 'wpReason' );
 		$message = $this->msg(
 			'abusefilter-revert-reason', $this->filter, $reason
