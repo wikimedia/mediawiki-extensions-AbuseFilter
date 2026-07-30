@@ -62,7 +62,7 @@ class SpecialAbuseFilterTest extends MediaWikiUnitTestCase {
 			[ 'test', AbuseFilterViewTestBatch::class, 'test', [ 'test' ] ],
 			[ 'test/1', AbuseFilterViewTestBatch::class, 'test', [ 'test', '1' ] ],
 			[ 'revert', AbuseFilterViewList::class, 'home' ],
-			[ 'revert/1', AbuseFilterViewRevert::class, 'revert', [ 'revert', 1 ] ],
+			[ 'revert/1', AbuseFilterViewRevert::class, 'revert', [ 'filter' => 1 ] ],
 			[ 'revert/1/foo', AbuseFilterViewList::class, 'home' ],
 			[ 'revert/0', AbuseFilterViewList::class, 'home' ],
 			[ 'revert/1.1', AbuseFilterViewList::class, 'home' ],

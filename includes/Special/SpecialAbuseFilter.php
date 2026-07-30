@@ -225,8 +225,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 				count( $params ) === 2 && $params[0] === 'revert' &&
 				self::isPositiveInteger( $params[1] )
 			) {
-				$params[1] = (int)$params[1];
-				return [ AbuseFilterViewRevert::class, 'revert', $params ];
+				return [ AbuseFilterViewRevert::class, 'revert', [ 'filter' => (int)$params[1] ] ];
 			}
 
 			if ( $params[0] === 'test' ) {

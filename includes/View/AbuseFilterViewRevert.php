@@ -29,20 +29,10 @@ use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class AbuseFilterViewRevert extends AbuseFilterView {
-	/** @var int */
-	private $filter;
 	/**
-	 * @var string|null The start time of the lookup period
+	 * The ID of the filter to revert actions for.
 	 */
-	private $periodStart;
-	/**
-	 * @var string|null The end time of the lookup period
-	 */
-	private $periodEnd;
-	/**
-	 * @var string|null The reason provided for the revert
-	 */
-	private $reason;
+	private readonly int $filter;
 
 	public function __construct(
 		private readonly LBFactory $lbFactory,
@@ -58,7 +48,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		array $params
 	) {
 		parent::__construct( $afPermManager, $context, $linkRenderer, $basePageName, $params );
+
 		$this->specsFormatter->setMessageLocalizer( $this->getContext() );
+		$this->filter = $this->mParams['filter'];
 	}
 
 	/**
@@ -75,7 +67,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 			throw new UserBlockedError( $block );
 		}
 
-		$this->loadParameters();
 		$filter = $this->filter;
 
 		$out = $this->getOutput();
@@ -220,8 +211,13 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return array[]
 	 */
 	public function doLookup() {
-		$periodStart = $this->periodStart;
-		$periodEnd = $this->periodEnd;
+		$request = $this->getRequest();
+
+		/** @var int|null */
+		$periodStart = strtotime( $request->getText( 'wpPeriodStart' ) ) ?: null;
+		/** @var int|null */
+		$periodEnd = strtotime( $request->getText( 'wpPeriodEnd' ) ) ?: null;
+
 		$filter = $this->filter;
 		$dbr = $this->lbFactory->getReplicaDatabase();
 
@@ -296,18 +292,6 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	}
 
 	/**
-	 * Loads parameters from request
-	 */
-	public function loadParameters() {
-		$request = $this->getRequest();
-
-		$this->filter = (int)$this->mParams[1];
-		$this->periodStart = strtotime( $request->getText( 'wpPeriodStart' ) ) ?: null;
-		$this->periodEnd = strtotime( $request->getText( 'wpPeriodEnd' ) ) ?: null;
-		$this->reason = $request->getVal( 'wpReason' );
-	}
-
-	/**
 	 * @return bool
 	 */
 	public function attemptRevert() {
@@ -367,8 +351,9 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * @return bool
 	 */
 	public function revertAction( string $action, array $result ): bool {
+		$reason = $this->getRequest()->getText( 'wpReason' );
 		$message = $this->msg(
-			'abusefilter-revert-reason', $this->filter, $this->reason
+			'abusefilter-revert-reason', $this->filter, $reason
 		)->inContentLanguage()->text();
 
 		$consequence = $this->getConsequence( $action, $result );

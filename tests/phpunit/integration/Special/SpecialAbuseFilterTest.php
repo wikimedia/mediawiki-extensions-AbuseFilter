@@ -247,7 +247,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			[ AbuseFilterViewHistory::class ],
 			[ AbuseFilterViewImport::class ],
 			[ AbuseFilterViewList::class ],
-			[ AbuseFilterViewRevert::class ],
+			[ AbuseFilterViewRevert::class, [ 'filter' => 1 ] ],
 			[ AbuseFilterViewTestBatch::class ],
 			[ AbuseFilterViewTools::class ],
 		];
