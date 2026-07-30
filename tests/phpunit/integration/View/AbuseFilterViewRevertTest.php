@@ -32,6 +32,7 @@ use Wikimedia\Timestamp\TimestampFormat as TS;
  * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewRevert
  *
  * Indirectly covers:
+ * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView::showUnrecoverableError
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\Block
  * @covers \MediaWiki\Extension\AbuseFilter\Consequences\Consequence\BlockAutopromote
@@ -253,6 +254,15 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 		[ $html ] = $this->executeSpecialPage( 'revert/1', performer: $performer, fullHtml: true );
 
 		$this->assertStringContainsString( '(abusefilter-revert-title: 1)', $html );
+	}
+
+	public function testShowForNonexistingFilter() {
+		$performer = $this->getTestSysop()->getAuthority();
+
+		[ $html ] = $this->executeSpecialPage( 'revert/999', performer: $performer );
+
+		$this->assertStringContainsString( '(abusefilter-edit-badfilter)', $html );
+		$this->assertStringContainsString( '(abusefilter-return)', $html );
 	}
 
 	public function testShowForSearchForm() {

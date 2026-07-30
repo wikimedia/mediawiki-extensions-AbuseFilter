@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\ActionSpecifier;
 use MediaWiki\Extension\AbuseFilter\Consequences\Consequence\ReversibleConsequence;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
 use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\Variables\UnsetVariableException;
@@ -64,11 +65,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 	 * Shows the page
 	 */
 	public function show() {
-		$lang = $this->getLanguage();
-
 		$performer = $this->getAuthority();
-		$out = $this->getOutput();
-
 		if ( !$this->afPermManager->canRevertFilterActions( $performer ) ) {
 			throw new PermissionsError( 'abusefilter-revert' );
 		}
@@ -79,16 +76,25 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		}
 
 		$this->loadParameters();
+		$filter = $this->filter;
+
+		$out = $this->getOutput();
+		// Parse wikitext in this message to allow formatting of numero signs (T343994#9209383)
+		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter )->parse() );
+
+		try {
+			// Note: Global filter actions cannot be reverted unless T413694 is addressed
+			$this->filterLookup->getFilter( $filter, false );
+		} catch ( FilterNotFoundException ) {
+			$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
+			return;
+		}
 
 		if ( $this->attemptRevert() ) {
 			return;
 		}
 
-		$filter = $this->filter;
-
 		$out->addWikiMsg( 'abusefilter-revert-intro', Message::numParam( $filter ) );
-		// Parse wikitext in this message to allow formatting of numero signs (T343994#9209383)
-		$out->setPageTitle( $this->msg( 'abusefilter-revert-title' )->numParams( $filter )->parse() );
 
 		// First, the search form. Limit dates to avoid huge queries
 		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
@@ -96,7 +102,7 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$max = wfTimestampNow();
 		$filterLink = $this->linkRenderer->makeLink(
 			$this->getTitle( $filter ),
-			$lang->formatNum( $filter )
+			$this->getLanguage()->formatNum( $filter )
 		);
 		$searchFields = [
 			'filterid' => [
