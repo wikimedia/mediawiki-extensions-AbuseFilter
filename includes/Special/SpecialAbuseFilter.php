@@ -221,7 +221,10 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		}
 
 		if ( $params ) {
-			if ( count( $params ) === 2 && $params[0] === 'revert' && is_numeric( $params[1] ) ) {
+			if (
+				count( $params ) === 2 && $params[0] === 'revert' &&
+				self::isPositiveInteger( $params[1] )
+			) {
 				$params[1] = (int)$params[1];
 				return [ AbuseFilterViewRevert::class, 'revert', $params ];
 			}
@@ -254,6 +257,20 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 		}
 
 		return [ AbuseFilterViewList::class, 'home', [] ];
+	}
+
+	/**
+	 * Checks whether the given value represents a positive integer.
+	 *
+	 * @param string|int $num
+	 * @return bool
+	 * @todo Use this method throughout the module.
+	 */
+	private static function isPositiveInteger( string|int $num ): bool {
+		if ( is_string( $num ) && !ctype_digit( $num ) ) {
+			return false;
+		}
+		return (int)$num > 0;
 	}
 
 	/**
