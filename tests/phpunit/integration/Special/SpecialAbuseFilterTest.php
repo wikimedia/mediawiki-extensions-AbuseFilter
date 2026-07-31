@@ -40,6 +40,8 @@ use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Title\Title;
 use MediaWiki\User\UserIdentity;
+use Wikimedia\Parsoid\DOM\Document;
+use Wikimedia\Parsoid\Ext\DOMUtils;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList
@@ -778,15 +780,15 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	 * used to verify that the headings on the table of AbuseFilters are
 	 * as expected.
 	 *
-	 * @param string $html The HTML of the special page
+	 * @param Document $doc The HTML document of the special page
 	 * @param Authority $authority The Authority who viewed the special page
 	 * @param bool $searchModeEnabled Whether the special page request included searching
 	 *   for filters with a specific substring in their pattern.
 	 */
 	private function verifyViewListHeadingsPresent(
-		string $html, Authority $authority, bool $searchModeEnabled = false
+		Document $doc, Authority $authority, bool $searchModeEnabled = false
 	) {
-		$tableHtml = $this->assertSelectorMatchesOneElement( $html, '.mw-datatable' );
+		$tableHtml = $this->assertSelectorMatchesOneElementInNode( $doc, '.mw-datatable', true );
 
 		$expectedTableHeadings = [
 			'abusefilter-list-id',
@@ -828,18 +830,19 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			null,
 			$this->authorityCanUseProtectedVar
 		);
+		$htmlDoc = DOMUtils::parseHTML( $html );
 
 		// Verify the structure of one row in the table, ensuring the correct flags are set.
-		$this->verifyViewListHeadingsPresent( $html, $this->authorityCanUseProtectedVar );
+		$this->verifyViewListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar );
 
 		$this->assertStringContainsString(
 			'AbuseFilter/1',
-			$this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_id' ),
+			$this->assertSelectorMatchesOneElementInNode( $htmlDoc, '.TablePager_col_af_id', true ),
 			'Missing the URL to the filter'
 		);
 		$this->assertStringContainsString(
 			'Filter with protected variables',
-			$this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_public_comments' )
+			$this->assertSelectorMatchesOneElementInNode( $htmlDoc, '.TablePager_col_af_public_comments', true )
 		);
 
 		$cellClassesToExpectedText = [
@@ -850,16 +853,24 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		foreach ( $cellClassesToExpectedText as $class => $expectedText ) {
 			$this->assertSame(
 				"<td class=\"$class\">" . $expectedText . '</td>',
-				$this->assertSelectorMatchesOneElement( $html, '.' . $class )
+				$this->assertSelectorMatchesOneElementInNode( $htmlDoc, '.' . $class, true )
 			);
 		}
 
 		$this->assertStringContainsString(
 			'abusefilter-hitcount: 1',
-			$this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_hit_count' )
+			$this->assertSelectorMatchesOneElementInNode(
+				$htmlDoc,
+				'.TablePager_col_af_hit_count',
+				true
+			)
 		);
 
-		$timestampCellHtml = $this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_timestamp' );
+		$timestampCellHtml = $this->assertSelectorMatchesOneElementInNode(
+			$htmlDoc,
+			'.TablePager_col_af_timestamp',
+			true
+		);
 		$this->assertStringContainsString( 'abusefilter-edit-lastmod-text', $timestampCellHtml );
 		$this->assertStringContainsString( 'UTSysop', $timestampCellHtml, 'Missing last editor of filter' );
 	}
@@ -874,7 +885,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			$this->authorityCannotUseProtectedVar
 		);
 		$this->assertStringContainsString( 'abusefilter-protected', $html );
-		$this->verifyViewListHeadingsPresent( $html, $this->authorityCannotUseProtectedVar );
+		$this->verifyViewListHeadingsPresent( DOMUtils::parseHTML( $html ), $this->authorityCannotUseProtectedVar );
 	}
 
 	public function testViewListWithSearchQueryProtectedVarsFilterVisibility() {
@@ -899,8 +910,9 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			null,
 			$this->authorityCannotUseProtectedVar
 		);
+		$htmlDoc = DOMUtils::parseHTML( $html );
 		$this->assertStringContainsString( 'table_pager_empty', $html );
-		$this->verifyViewListHeadingsPresent( $html, $this->authorityCannotUseProtectedVar, true );
+		$this->verifyViewListHeadingsPresent( $htmlDoc, $this->authorityCannotUseProtectedVar, true );
 
 		// Assert that the user who can see protected variables sees the filter from the db
 		[ $html, ] = $this->executeSpecialPage(
@@ -910,7 +922,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			$this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( 'Filter with protected variables', $html );
-		$this->verifyViewListHeadingsPresent( $html, $this->authorityCanUseProtectedVar, true );
+		$this->verifyViewListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar, true );
 
 		// Check that the search found one result and that the pattern is bolded to show the text match
 		$patternCellHtml = $this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_pattern' );
@@ -993,10 +1005,10 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 	 * Common test code used by tests which load the history of AbuseFilter filters,
 	 * used to verify that the headings on the table on the page is as expected
 	 *
-	 * @param string $html The HTML of the special page
+	 * @param Document $doc The HTML document of the special page
 	 */
-	private function verifyHistoryHeadingsPresent( string $html ) {
-		$tableHtml = $this->assertSelectorMatchesOneElement( $html, '.mw-datatable' );
+	private function verifyHistoryHeadingsPresent( Document $doc ) {
+		$tableHtml = $this->assertSelectorMatchesOneElementInNode( $doc, '.mw-datatable', true );
 
 		$expectedTableHeadings = [
 			'abusefilter-history-timestamp',
@@ -1033,19 +1045,21 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 			null,
 			$this->authorityCanUseProtectedVar
 		);
+		$htmlDoc = DOMUtils::parseHTML( $html );
 
 		// Verify the structure of the form fields and items near the form.
 		$this->verifyHistorySearchFormFields( $html );
 		$this->assertStringContainsString( '(abusefilter-history-backedit)', $html );
 
 		// Verify the structure of the table
-		$this->verifyHistoryHeadingsPresent( $html );
+		$this->verifyHistoryHeadingsPresent( $htmlDoc );
 
 		// Get the HTML for the most recent edit to the filter we are filtering for
-		$rowHtml = Html::rawElement( 'table', [], $this->assertSelectorMatchesOneElement(
-			$html,
-			'.mw-abusefilter-history-id-3'
-		) );
+		$rowHtml = Html::rawElement(
+			'table',
+			[],
+			$this->assertSelectorMatchesOneElementInNode( $htmlDoc, '.mw-abusefilter-history-id-3', true )
+		);
 
 		// Verify the structure of the row we have found
 		$this->assertStringContainsString(
@@ -1088,7 +1102,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		);
 
 		$this->verifyHistorySearchFormFields( $html );
-		$this->verifyHistoryHeadingsPresent( $html );
+		$this->verifyHistoryHeadingsPresent( DOMUtils::parseHTML( $html ) );
 
 		// Verify that the only filter versions shown is the one without protected variables, including
 		// versions of the filter which is now protected.
@@ -1463,6 +1477,7 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		[ $html, ] = $this->executeSpecialPage(
 			'examine/' . self::$recentChangeId, null, null, $this->authorityCanUseProtectedVar
 		);
+		$htmlDoc = DOMUtils::parseHTML( $html );
 		DeferredUpdates::doUpdates();
 
 		$this->verifyHasExamineIntroMessage( $html );
@@ -1472,14 +1487,19 @@ class SpecialAbuseFilterTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( '(abusefilter-examine-test-button', $html );
 
 		// Verify that the custom_variable variable is shown with it's value.
-		$customVariableTableRow = $this->assertSelectorMatchesOneElement(
-			$html,
-			'.mw-abuselog-details-custom_variable'
+		$customVariableTableRow = $this->assertSelectorMatchesOneElementInNode(
+			$htmlDoc,
+			'.mw-abuselog-details-custom_variable',
+			true
 		);
 		$this->assertStringContainsString( 'custom_variable_value', $customVariableTableRow );
 
 		// Verify that a lazily loaded non-protected variable is shown (regression testing for T403645)
-		$userTypeVariableTableRow = $this->assertSelectorMatchesOneElement( $html, '.mw-abuselog-details-user_type' );
+		$userTypeVariableTableRow = $this->assertSelectorMatchesOneElementInNode(
+			$htmlDoc,
+			'.mw-abuselog-details-user_type',
+			true
+		);
 		$this->assertStringContainsString( 'user_type', $userTypeVariableTableRow );
 
 		// Verify that a protected variable access log was created as protected variable values were viewed.
