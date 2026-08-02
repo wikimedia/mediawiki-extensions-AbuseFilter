@@ -191,42 +191,80 @@
 	/**
 	 * Fetches a filter from the API and inserts it into the filter box.
 	 *
-	 * @this HTMLElement
-	 * @param {jQuery.Event} e The event fired when the function is called
+	 * @param {mw.Api} api
+	 * @param {OO.ui.TextInputWidget} idInput
+	 * @param {OO.ui.ActionFieldLayout} layout
+	 * @return {jQuery.Promise}
 	 */
-	function fetchFilter() {
-		const filterId = $( '#mw-abusefilter-load-filter input' ).val().trim();
+	function loadFilter( api, idInput, layout ) {
+		api.abort();
+		setFilterLoaderError( null, layout );
 
+		const filterId = idInput.getValue().trim();
 		if ( filterId === '' ) {
-			return;
+			return $.Deferred().resolve().promise();
 		}
 
-		$( this ).injectSpinner( { id: 'fetch-spinner', size: 'large' } );
+		// Note: Don't call .popPending() in .always(), as that would be subject
+		// to race conditions and incorrectly remove the pending state if a new
+		// request has already been issued after aborting an older one
+		idInput.pushPending();
 
-		// We just ignore errors or unexisting filters over here
-		new mw.Api().get( {
+		return api.get( {
 			action: 'query',
 			list: 'abusefilters',
 			abfprop: 'pattern',
 			abfstartid: filterId,
 			abfendid: filterId,
-			abflimit: 1
+			abflimit: 1,
+			errorformat: 'html',
+			errorlang: mw.config.get( 'wgUserLanguage' ),
+			errorsuselocal: true
 		} )
-			.always( () => {
-				$.removeSpinner( 'fetch-spinner' );
-			} )
-			.done( ( data ) => {
-				if ( data.query.abusefilters[ 0 ] !== undefined ) {
+			.then( ( data ) => {
+				const filter = data.query.abusefilters[ 0 ];
+				if ( filter !== undefined ) {
+					if ( 'patternredacted' in filter ) {
+						const err = mw.msg( 'abusefilter-test-loadfilter-restricted', filterId );
+						setFilterLoaderError( err, layout );
+						idInput.popPending();
+						return;
+					}
 					if ( useAdvanced ) {
 						if ( useCodeMirror ) {
-							filterEditor.textSelection.setContents( data.query.abusefilters[ 0 ].pattern );
+							filterEditor.textSelection.setContents( filter.pattern );
 						} else {
-							filterEditor.setValue( data.query.abusefilters[ 0 ].pattern );
+							filterEditor.setValue( filter.pattern );
 						}
 					}
-					$plainTextBox.val( data.query.abusefilters[ 0 ].pattern );
+					$plainTextBox.val( filter.pattern );
+				} else {
+					const err = mw.msg( 'abusefilter-test-loadfilter-notfound', filterId );
+					setFilterLoaderError( err, layout );
 				}
+				idInput.popPending();
+			} )
+			.catch( ( code, error ) => {
+				if ( code === 'http' && error.exception === 'abort' ) {
+					// A subsequent request already started (stale)
+					return;
+				}
+				const msg = api.getErrorMessage( error ).prop( 'outerHTML' );
+				setFilterLoaderError( msg, layout );
+				idInput.popPending();
 			} );
+	}
+
+	/**
+	 * @param {?string} errorHtml
+	 * @param {OO.ui.ActionFieldLayout} layout
+	 */
+	function setFilterLoaderError( errorHtml, layout ) {
+		const errors = [];
+		if ( errorHtml !== null ) {
+			errors.push( new OO.ui.HtmlSnippet( errorHtml ) );
+		}
+		layout.setErrors( errors );
 	}
 
 	/**
@@ -362,19 +400,6 @@
 		}
 		$warnOptions.toggle( !isGlobalFilter );
 		$disallowOptions.toggle( !isGlobalFilter );
-	}
-
-	/**
-	 * Called if the user presses a key in the load filter field.
-	 *
-	 * @this HTMLElement
-	 * @param {jQuery.Event} e The event fired when the function is called
-	 */
-	function onFilterKeypress( e ) {
-		if ( e.type === 'keypress' && e.which === OO.ui.Keys.ENTER ) {
-			e.preventDefault();
-			$( '#mw-abusefilter-load' ).trigger( 'click' );
-		}
 	}
 
 	/**
@@ -594,8 +619,28 @@
 			}
 		} );
 
-		$( '#mw-abusefilter-load' ).on( 'click', fetchFilter );
-		$( '#mw-abusefilter-load-filter' ).on( 'keypress', onFilterKeypress );
+		const $filterLoaderLayout = $( '#mw-abusefilter-load-layout' );
+		if ( $filterLoaderLayout.length ) {
+			const filterLoaderLayout = OO.ui.infuse( $filterLoaderLayout );
+
+			const filterLoaderInput = filterLoaderLayout.getField();
+			const filterLoaderApi = new mw.Api();
+			const callback = ( e ) => {
+				if ( e && e.which === OO.ui.Keys.ENTER ) {
+					// Prevent form submission
+					e.preventDefault();
+					e.stopPropagation();
+				}
+				loadFilter( filterLoaderApi, filterLoaderInput, filterLoaderLayout );
+			};
+
+			// Infuse the existing button instead of accessing the private
+			// `buttonWidget` property of `filterLoaderLayout`
+			const filterLoaderButton = OO.ui.infuse( $( '#mw-abusefilter-load' ) );
+
+			filterLoaderInput.on( 'enter', callback );
+			filterLoaderButton.on( 'click', callback );
+		}
 
 		if ( isFilterEditor ) {
 			// Add logic for flags and consequences

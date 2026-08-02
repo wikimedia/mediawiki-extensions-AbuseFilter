@@ -27,6 +27,7 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat as TS;
 
 /**
  * Query module to list abuse filter details.
@@ -153,8 +154,12 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( $fld_desc ) {
 				$entry['description'] = $filter->getName();
 			}
-			if ( $fld_pattern && $canViewExtendedDetailsAboutFilter ) {
-				$entry['pattern'] = $filter->getRules();
+			if ( $fld_pattern ) {
+				if ( $canViewExtendedDetailsAboutFilter ) {
+					$entry['pattern'] = $filter->getRules();
+				} else {
+					$entry['patternredacted'] = '';
+				}
 			}
 			if ( $fld_actions ) {
 				$entry['actions'] = implode( ',', $filter->getActionsNames() );
@@ -162,6 +167,8 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( $fld_hits ) {
 				if ( $this->afPermManager->canSeeLogDetailsForFilter( $this->getAuthority(), $filter ) ) {
 					$entry['hits'] = $filter->getHitCount();
+				} else {
+					$entry['hitsredacted'] = '';
 				}
 			}
 			if ( $fld_comments && $canViewExtendedDetailsAboutFilter ) {
@@ -172,7 +179,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 			}
 			if ( $fld_time ) {
 				$entry['lastedittime'] = ConvertibleTimestamp::convert(
-					TS_ISO_8601, $filter->getLastEditInfo()->getTimestamp()
+					TS::ISO_8601, $filter->getLastEditInfo()->getTimestamp()
 				);
 			}
 			if ( $fld_suppressed && $filter->isSuppressed() ) {

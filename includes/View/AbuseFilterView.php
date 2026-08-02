@@ -84,8 +84,9 @@ abstract class AbuseFilterView extends ContextSource {
 		$loadButton =
 			new OOUI\ButtonWidget(
 				[
-					'label' => $this->msg( 'abusefilter-test-load' )->text(),
-					'id' => 'mw-abusefilter-load'
+					'label' => $this->msg( 'abusefilter-test-loadfilter-load' )->text(),
+					'id' => 'mw-abusefilter-load',
+					'infusable' => true,
 				]
 			);
 		$loadGroup =
@@ -93,7 +94,9 @@ abstract class AbuseFilterView extends ContextSource {
 				$loadText,
 				$loadButton,
 				[
-					'label' => $this->msg( 'abusefilter-test-load-filter' )->text()
+					'label' => $this->msg( 'abusefilter-test-loadfilter' )->text(),
+					'id' => 'mw-abusefilter-load-layout',
+					'infusable' => true,
 				]
 			);
 		// CSS class for reducing default input field width

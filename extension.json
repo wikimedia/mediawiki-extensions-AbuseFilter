@@ -309,6 +309,8 @@
 			"messages": [
 				"abusefilter-edit-syntaxok",
 				"abusefilter-edit-syntaxerr",
+				"abusefilter-test-loadfilter-notfound",
+				"abusefilter-test-loadfilter-restricted",
 				"abusefilter-http-error",
 				"abusefilter-edit-throttle-placeholder",
 				"abusefilter-edit-tag-placeholder",

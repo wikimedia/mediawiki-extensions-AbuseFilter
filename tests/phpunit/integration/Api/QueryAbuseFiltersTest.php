@@ -145,10 +145,13 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 		$filters = $result['query']['abusefilters'];
 		// User with protected var access should see hits for all filters
 		$this->assertSame( 1, $filters[0]['id'] );
+		$this->assertIsString( $filters[0]['pattern'] );
 		$this->assertSame( 1, $filters[0]['hits'] );
 		$this->assertSame( 2, $filters[1]['id'] );
+		$this->assertIsString( $filters[1]['pattern'] );
 		$this->assertSame( 0, $filters[1]['hits'] );
 		$this->assertSame( 3, $filters[2]['id'] );
+		$this->assertIsString( $filters[2]['pattern'] );
 		$this->assertSame( 42, $filters[2]['hits'] );
 	}
 
@@ -160,15 +163,19 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 				'lasteditor|lastedittime|status|private|protected',
 		], null, false, $this->authorityCannotUseProtectedVar );
 		$filters = $result['query']['abusefilters'];
-		// User without protected var access should NOT see hits for the protected filter
+		// User without protected var access should NOT see pattern or hits for the protected filter
 		$this->assertSame( 1, $filters[0]['id'] );
+		$this->assertArrayHasKey( 'patternredacted', $filters[0] );
 		$this->assertArrayNotHasKey( 'hits', $filters[0],
 			'Hit count for protected filter should be hidden from users without protected var access' );
-		// But should still see hits for the public filter
+		$this->assertArrayHasKey( 'hitsredacted', $filters[0] );
+		// But should still see pattern and hits for the public filter
 		$this->assertSame( 2, $filters[1]['id'] );
+		$this->assertIsString( $filters[1]['pattern'] );
 		$this->assertSame( 0, $filters[1]['hits'] );
-		// And should see hits for hidden filter (this user has abusefilter-log-private)
+		// And should see pattern and hits for hidden filter (this user has abusefilter-log-private)
 		$this->assertSame( 3, $filters[2]['id'] );
+		$this->assertIsString( $filters[2]['pattern'] );
 		$this->assertSame( 42, $filters[2]['hits'] );
 	}
 
@@ -194,6 +201,7 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 		foreach ( $filters as $filter ) {
 			$this->assertArrayNotHasKey( 'hits', $filter,
 				"Hit count for filter {$filter['id']} should be hidden from users without log-detail" );
+			$this->assertArrayHasKey( 'hitsredacted', $filter );
 		}
 	}
 }
