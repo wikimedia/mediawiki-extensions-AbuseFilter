@@ -40,7 +40,8 @@
 			"TheEduGobi",
 			"TheGabrielZaum",
 			"YuriNikolai",
-			"NenhumaFênix"
+			"NenhumaFênix",
+			"BraunOBruno"
 		]
 	},
 	"abusefilter-desc": "Aplica heurísticas automáticas às edições",
@@ -54,7 +55,7 @@
 	"abusefilter-degrouped": "Esta ação foi identificada automaticamente como prejudicial.\nEm consequência, foi bloqueada e, já que se suspeita que a sua conta esteja comprometida, todas as permissões foram removidas.\nSe você crê que isto ocorreu por engano, por favor contate um burocrata indicando uma justificação desta ação e as suas permissões poderão ser repostas.\nUma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1",
 	"abusefilter-autopromote-blocked": "Esta ação foi identificada automaticamente como prejudicial, e foi bloqueada.\nAlém disso, como medida de segurança, alguns privilégios automaticamente concedidos a contas estabelecidas foram temporariamente removidos da sua conta.\nUma breve descrição da regra de abuso com a qual a sua ação coincidiu é: $1",
 	"abusefilter-blocker": "Filtro de abusos",
-	"abusefilter-blockreason": "Automaticamente bloqueado pelo filtro de abusos.\nDescrição da regra correspondida: $1",
+	"abusefilter-blockreason": "Automaticamente bloqueado pelo filtro de abusos. \nDescrição da regra correspondida: $1",
 	"abusefilter-degroupreason": "Direitos automaticamente retirados pelo filtro de abusos.\nDescrição da regra: $1",
 	"abusefilter-blockautopromotereason": "Autopromoção automaticamente atrasado pelo filtro de abuso.\nDescrição da regra: $1",
 	"abusefilter-accountreserved": "Este nome de conta está reservado para uso pelo filtro de abusos.",
@@ -255,6 +256,7 @@
 	"abusefilter-edit-deleted": "Marcar como eliminado",
 	"abusefilter-edit-hidden": "Ocultar detalhes deste filtro do visionamento público",
 	"abusefilter-edit-protected-variable-already-protected": "Detalhes deste filtro são ocultados dos usuários que não podem ver variáveis protegidas",
+	"abusefilter-edit-protected-help-message": "Os detalhes desse filtro ficarão ocultos para os usuários que não têm permissão para visualizar variáveis protegidas. Essa ação é permanente e não pode ser revertida.",
 	"abusefilter-edit-global": "Filtro global",
 	"abusefilter-edit-rules": "Condições:",
 	"abusefilter-edit-field-conditions": "condições",
@@ -567,6 +569,7 @@
 	"abusefilter-test-page": "Alterações à página:",
 	"abusefilter-test-shownegative": "Mostrar alterações que não correspondam ao filtro",
 	"abusefilter-test-syntaxerr": "O filtro que introduziu continha um erro de sintaxe.\nPara ver uma explicação completa clique o botão \"Verificar sintaxe\".",
+	"abusefilter-test-protectedvarerr": "O filtro não é exibido, pois utiliza variáveis protegidas e está oculto ao público.",
 	"abusefilter-test-action": "Tipo de ação:",
 	"abusefilter-test-search-type-all": "Todas as ações",
 	"abusefilter-test-search-type-edit": "Edições",
