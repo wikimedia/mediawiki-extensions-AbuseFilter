@@ -10,6 +10,7 @@ use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
+use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
 use MediaWiki\Language\RawMessage;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
@@ -312,7 +313,8 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 		$user = $this->getServiceContainer()->getUserFactory()->newFromUserIdentity( $authority->getUser() );
 
 		// Set the abuse filter editor to the context user, so that the edit token matches
-		RequestContext::getMain()->getRequest()->getSession()->setUser( $user );
+		$session = RequestContext::getMain()->getRequest()->getSession();
+		$session->setUser( $user );
 
 		[ $html, $response ] = $this->executeSpecialPage(
 			'new',
@@ -326,7 +328,7 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 				],
 				// This was posted
 				true,
-				RequestContext::getMain()->getRequest()->getSession()
+				$session
 			),
 			null,
 			$authority
@@ -334,6 +336,18 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 
 		// On saving successfully, the page redirects
 		$this->assertSame( '', $html );
-		$this->assertStringContainsString( 'result=success', $response->getHeader( 'location' ) );
+
+		$builder = $this->getDb()->newSelectQueryBuilder();
+		$filterId = $builder
+			->field( 'af_id' )
+			->from( 'abuse_filter' )
+			->orderBy( 'af_id', $builder::SORT_DESC )
+			->caller( __METHOD__ )
+			->fetchField();
+		$this->assertNotNull( $filterId );
+
+		$successData = $session->get( AbuseFilterViewEdit::EDIT_SUCCESS_SESSION_KEY );
+		$this->assertSame( $successData['changedFilter'], (int)$filterId );
+		$this->assertIsInt( $successData['changeId'] );
 	}
 }

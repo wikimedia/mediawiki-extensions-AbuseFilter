@@ -143,19 +143,23 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 	 */
 	public function execute( $subpage ) {
 		$out = $this->getOutput();
-		$request = $this->getRequest();
 
 		$out->addModuleStyles( 'ext.abuseFilter' );
-
 		$this->setHeaders();
 		$this->addHelpLink( 'Extension:AbuseFilter' );
 
 		$this->checkPermissions();
 
-		if ( $request->getVal( 'result' ) === 'success' ) {
+		$session = $this->getContext()->getRequest()->getSession();
+		$successData = $session->get( AbuseFilterViewEdit::EDIT_SUCCESS_SESSION_KEY );
+		if ( $successData !== null ) {
+			// Remove session data for the success message
+			$session->remove( AbuseFilterViewEdit::EDIT_SUCCESS_SESSION_KEY );
+
+			$changedFilter = $successData['changedFilter'];
+			$changeId = $successData['changeId'];
+
 			$out->setSubtitle( $this->msg( 'abusefilter-edit-done-subtitle' ) );
-			$changedFilter = intval( $request->getVal( 'changedfilter' ) );
-			$changeId = intval( $request->getVal( 'changeid' ) );
 			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 			$out->addHTML( Html::successBox(
 				$this->msg(

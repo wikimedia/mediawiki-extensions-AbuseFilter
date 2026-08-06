@@ -35,6 +35,12 @@ use Wikimedia\Rdbms\SelectQueryBuilder;
 
 class AbuseFilterViewEdit extends AbuseFilterView {
 	/**
+	 * Session key used to store edit success information between the POST
+	 * request and the redirected GET request.
+	 */
+	public const EDIT_SUCCESS_SESSION_KEY = 'abuseFilterEditSuccess';
+
+	/**
 	 * @var int|null The history ID of the current filter
 	 */
 	private $historyID;
@@ -182,15 +188,14 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		} else {
 			// Everything went fine!
 			[ $new_id, $history_id ] = $status->getValue();
-			$out->redirect(
-				$this->getTitle()->getLocalURL(
-					[
-						'result' => 'success',
-						'changedfilter' => $new_id,
-						'changeid' => $history_id,
-					]
-				)
-			);
+
+			// Set session data for the success message
+			$this->getContext()->getRequest()->setSessionData( self::EDIT_SUCCESS_SESSION_KEY, [
+				'changedFilter' => $new_id,
+				'changeId' => $history_id,
+			] );
+
+			$out->redirect( $this->getTitle()->getLocalURL() );
 		}
 	}
 
