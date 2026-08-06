@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Permissions\Authority;
+use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IConnectionProvider;
 
 /**
@@ -25,7 +26,7 @@ class AbuseLogLookup {
 	 * Fetches the number of abuse log entries triggered by the users and viewable by the specified authority.
 	 *
 	 * @param Authority $authority
-	 * @param int[] $userIds
+	 * @param int[]|UserIdentity[] $userIds
 	 * @return array<int,int> Map of user ID => hit count. All requested keys will be present in this array
 	 *     (i.e. user with no hits will have explicit zero), provided that the authority has permissions to
 	 *     view the abuse log.
@@ -34,6 +35,11 @@ class AbuseLogLookup {
 		if ( !$this->afPermissionManager->canViewAbuseLog( $authority ) ) {
 			return [];
 		}
+
+		$userIds = array_map(
+			static fn ( $id ) => $id instanceof UserIdentity ? $id->getId() : $id,
+			$userIds
+		);
 
 		$canSeeHidden = $this->afPermissionManager->canSeeHiddenLogEntries( $authority );
 		$dbr = $this->dbProvider->getReplicaDatabase();

@@ -31,7 +31,7 @@ class AbuseLogLookupTest extends MediaWikiIntegrationTestCase {
 		$authority = $this->mockRegisteredAuthorityWithPermissions( [ 'abusefilter-log' ] );
 		$counts = $this->getSubjectUnderTest()->getHitCountsForUsers(
 			$authority,
-			[ $userWithHits->getId(), $userWithOneHit->getId(), $userWithoutHits->getId() ]
+			[ $userWithHits, $userWithOneHit, $userWithoutHits ]
 		);
 
 		$this->assertSame(
@@ -50,25 +50,25 @@ class AbuseLogLookupTest extends MediaWikiIntegrationTestCase {
 		$authority = $this->mockRegisteredAuthorityWithPermissions(
 			[ 'abusefilter-log', 'abusefilter-hidden-log' ]
 		);
-		$counts = $this->getSubjectUnderTest()->getHitCountsForUsers( $authority, [ $userWithHits->getId() ] );
+		$counts = $this->getSubjectUnderTest()->getHitCountsForUsers( $authority, [ $userWithHits ] );
 
 		$this->assertSame( [ $userWithHits->getId() => 3 ], $counts );
 	}
 
 	public function testGetHitCountForUserWithoutHits(): void {
 		$authority = $this->mockRegisteredAuthorityWithPermissions( [ 'abusefilter-log' ] );
-		$userId = $this->getMutableTestUser()->getUserIdentity()->getId();
+		$user = $this->getMutableTestUser()->getUserIdentity();
 		$this->assertSame(
-			[ $userId => 0 ],
-			$this->getSubjectUnderTest()->getHitCountsForUsers( $authority, [ $userId ] )
+			[ $user->getId() => 0 ],
+			$this->getSubjectUnderTest()->getHitCountsForUsers( $authority, [ $user ] )
 		);
 	}
 
 	public function testReturnsZeroCountsWithoutViewAbuseLogPermission(): void {
-		$userId = $this->getMutableTestUser()->getUserIdentity()->getId();
+		$user = $this->getMutableTestUser()->getUserIdentity();
 		$authority = $this->mockRegisteredAuthorityWithoutPermissions( [ 'abusefilter-log' ] );
 		$sut = $this->getSubjectUnderTest();
-		$this->assertSame( [], $sut->getHitCountsForUsers( $authority, [ $userId ] ) );
+		$this->assertSame( [], $sut->getHitCountsForUsers( $authority, [ $user ] ) );
 	}
 
 	/**
