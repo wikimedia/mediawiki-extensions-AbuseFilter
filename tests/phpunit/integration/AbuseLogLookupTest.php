@@ -36,9 +36,9 @@ class AbuseLogLookupTest extends MediaWikiIntegrationTestCase {
 
 		$this->assertSame(
 			[
-				$userWithHits->getId() => 2,
-				$userWithOneHit->getId() => 1,
-				$userWithoutHits->getId() => 0,
+				$userWithHits->getName() => 2,
+				$userWithOneHit->getName() => 1,
+				$userWithoutHits->getName() => 0,
 			],
 			$counts
 		);
@@ -52,14 +52,14 @@ class AbuseLogLookupTest extends MediaWikiIntegrationTestCase {
 		);
 		$counts = $this->getSubjectUnderTest()->getHitCountsForUsers( $authority, [ $userWithHits ] );
 
-		$this->assertSame( [ $userWithHits->getId() => 3 ], $counts );
+		$this->assertSame( [ $userWithHits->getName() => 3 ], $counts );
 	}
 
 	public function testGetHitCountForUserWithoutHits(): void {
 		$authority = $this->mockRegisteredAuthorityWithPermissions( [ 'abusefilter-log' ] );
 		$user = $this->getMutableTestUser()->getUserIdentity();
 		$this->assertSame(
-			[ $user->getId() => 0 ],
+			[ $user->getName() => 0 ],
 			$this->getSubjectUnderTest()->getHitCountsForUsers( $authority, [ $user ] )
 		);
 	}

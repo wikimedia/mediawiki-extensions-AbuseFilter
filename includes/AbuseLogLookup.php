@@ -19,6 +19,7 @@ class AbuseLogLookup {
 	public function __construct(
 		private readonly IConnectionProvider $dbProvider,
 		private readonly AbuseFilterPermissionManager $afPermissionManager,
+		private readonly AbuseLogConditionFactory $afConditionFactory,
 	) {
 	}
 
@@ -26,34 +27,36 @@ class AbuseLogLookup {
 	 * Fetches the number of abuse log entries triggered by the users and viewable by the specified authority.
 	 *
 	 * @param Authority $authority
-	 * @param int[]|UserIdentity[] $userIds
-	 * @return array<int,int> Map of user ID => hit count. All requested keys will be present in this array
+	 * @param UserIdentity[] $userIdentities
+	 * @return array<string,int> Map of username => hit count. All requested keys will be present in this array
 	 *     (i.e. user with no hits will have explicit zero), provided that the authority has permissions to
 	 *     view the abuse log.
 	 */
-	public function getHitCountsForUsers( Authority $authority, array $userIds ): array {
+	public function getHitCountsForUsers( Authority $authority, array $userIdentities ): array {
 		if ( !$this->afPermissionManager->canViewAbuseLog( $authority ) ) {
 			return [];
 		}
 
-		$userIds = array_map(
-			static fn ( $id ) => $id instanceof UserIdentity ? $id->getId() : $id,
-			$userIds
-		);
+		$userNames = array_map( static fn ( UserIdentity $user ) => $user->getName(), $userIdentities );
 
 		$canSeeHidden = $this->afPermissionManager->canSeeHiddenLogEntries( $authority );
 		$dbr = $this->dbProvider->getReplicaDatabase();
 
-		$counts = array_fill_keys( $userIds, 0 );
-		foreach ( array_chunk( $userIds, 100 ) as $userIdBatch ) {
+		$counts = array_fill_keys( $userNames, 0 );
+		foreach ( array_chunk( $userIdentities, 100 ) as $userBatch ) {
 			$queryBuilder = $dbr->newSelectQueryBuilder()
-				->select( [ 'afl_user', 'count' => 'COUNT(*)' ] )
+				->select( [ 'afl_user_text', 'count' => 'COUNT(*)' ] )
 				->from( 'abuse_filter_log' )
-				->where( [
-					'afl_user' => $userIdBatch
-				] )
-				->groupBy( 'afl_user' )
+				->groupBy( 'afl_user_text' )
 				->caller( __METHOD__ );
+
+			$alternatives = [];
+			foreach ( $userBatch as $user ) {
+				$cond = $this->afConditionFactory->getUserFilterByUserIdentity( $user );
+				// We have to explicitly call andExpr, because it'll be a part of the big OR condition
+				$alternatives[] = $dbr->andExpr( $cond );
+			}
+			$queryBuilder->where( $dbr->orExpr( $alternatives ) );
 
 			// Suppressed (hidden) entries are only counted for viewers allowed to see them
 			if ( !$canSeeHidden ) {
@@ -61,7 +64,7 @@ class AbuseLogLookup {
 			}
 
 			foreach ( $queryBuilder->fetchResultSet() as $row ) {
-				$counts[(int)$row->afl_user] = (int)$row->count;
+				$counts[$row->afl_user_text] = (int)$row->count;
 			}
 		}
 
