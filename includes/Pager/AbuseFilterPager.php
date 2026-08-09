@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Pager;
 use LogicException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewList;
@@ -96,6 +97,27 @@ class AbuseFilterPager extends TablePager {
 	 * @return array
 	 */
 	public function getQueryInfo() {
+		$dbr = $this->getDatabase();
+
+		// If sorting by hit count, exclude filters the user cannot see (T434372)
+		if ( $this->mSort === 'af_hit_count' ) {
+			$disallowedBitMask = 0;
+			$performer = $this->getAuthority();
+
+			// Keep these permission checks in sync with ::canSeeLogDetailsForFilter()
+			// in AbuseFilterPermissionManager
+			if ( !$this->afPermManager->canViewPrivateFilters( $performer ) ) {
+				$disallowedBitMask |= Flags::FILTER_HIDDEN;
+			}
+			if ( !$this->afPermManager->canViewProtectedVariables( $performer, [] )->isGood() ) {
+				$disallowedBitMask |= Flags::FILTER_USES_PROTECTED_VARS;
+			}
+
+			if ( $disallowedBitMask !== 0 ) {
+				$this->conds[] = $dbr->bitAnd( 'af_hidden', $disallowedBitMask ) . ' = 0';
+			}
+		}
+
 		return [
 			'tables' => [ 'abuse_filter', 'actor' ],
 			'fields' => [
