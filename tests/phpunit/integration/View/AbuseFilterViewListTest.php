@@ -2,14 +2,20 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\View;
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
 use MediaWiki\Permissions\Authority;
+use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use Wikimedia\Parsoid\DOM\Document;
 use Wikimedia\Parsoid\Ext\DOMUtils;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 
 /**
  * @group Database
@@ -21,6 +27,7 @@ use Wikimedia\Parsoid\Ext\DOMUtils;
  * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView
  */
 class AbuseFilterViewListTest extends SpecialPageTestBase {
+	use MockAuthorityTrait;
 	use ProtectedVarsTestTrait;
 
 	private Authority $authorityCannotUseProtectedVar;
@@ -56,6 +63,39 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 	 */
 	public function addDBDataOnce() {
 		$this->createFiltersWithProtectedVariables();
+
+		$filterStore = AbuseFilterServices::getFilterStore();
+		$performer = $this->getTestSysop()->getUserIdentity();
+		$authority = new UltimateAuthority( $performer );
+
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '3',
+				'rules' => '1 = 0',
+				'name' => 'Private filter with a blockautopromote consequence',
+				'privacy' => Flags::FILTER_HIDDEN,
+				'lastEditor' => $performer,
+				'hitCount' => 10,
+				'actions' => [ 'blockautopromote' => [] ]
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '4',
+				'rules' => '1 = 0',
+				'name' => 'Suppressed filter',
+				'privacy' => Flags::FILTER_SUPPRESSED,
+				'lastEditor' => $performer,
+				'hitCount' => 5,
+			] ),
+			MutableFilter::newDefault()
+		) );
 	}
 
 	/**
@@ -239,5 +279,140 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			'Filter without protected variables (0 hits) should appear before ' .
 			'Filter with protected variables (1 hit) when sorting by af_hit_count ascending'
 		);
+	}
+
+	/**
+	 * @dataProvider provideViewListSortByHitCount
+	 * @param string[] $perms
+	 * @param int[] $expectedOrderAsc
+	 * @param int[] $expectedOrderDesc
+	 */
+	public function testViewListSortByHitCount(
+		array $perms,
+		array $expectedOrderAsc,
+		array $expectedOrderDesc
+	) {
+		$performer = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			$perms
+		);
+
+		foreach ( [
+			'asc' => $expectedOrderAsc,
+			'desc' => $expectedOrderDesc,
+		] as $dir => $expectedOrder ) {
+			$requestParams = [
+				'sort' => 'af_hit_count',
+				'limit' => 50,
+				'deletedfilters' => 'hide',
+				'asc' => $dir === 'asc' ? '1' : '',
+				'desc' => $dir === 'desc' ? '1' : '',
+			];
+
+			[ $html ] = $this->executeSpecialPage(
+				request: new FauxRequest( $requestParams ),
+				performer: $performer
+			);
+
+			$anchors = DOMCompat::querySelectorAll( DOMUtils::parseHTML( $html ), '.TablePager_col_af_id > a' );
+			$actualOrder = [];
+
+			foreach ( $anchors as $anchor ) {
+				$actualOrder[] = (int)trim( $anchor->textContent );
+			}
+
+			$this->assertSame(
+				$expectedOrder,
+				$actualOrder,
+				"Unexpected filter order when sorting by hit count $dir"
+			);
+		}
+	}
+
+	public static function provideViewListSortByHitCount(): iterable {
+		$viewLogDetails = 'abusefilter-log-detail';
+		$viewPrivate = 'abusefilter-view-private';
+		$viewProtected = 'abusefilter-access-protected-vars';
+		$viewSuppressed = 'viewsuppressed';
+
+		// Filter 1 (protected)  -  1 hit
+		// Filter 2 (public)     -  0 hits
+		// Filter 3 (private)    - 10 hits
+		// Filter 4 (suppressed) -  5 hits
+		yield 'can view everything' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewPrivate,
+				$viewProtected,
+				$viewSuppressed,
+			],
+			'expectedOrderAsc' => [ 2, 1, 4, 3 ],
+			'expectedOrderDesc' => [ 3, 4, 1, 2 ],
+		];
+		yield 'cannot view protected variables' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewPrivate,
+				$viewSuppressed,
+			],
+			// Filter 1 is excluded
+			'expectedOrderAsc' => [ 2, 4, 3 ],
+			'expectedOrderDesc' => [ 3, 4, 2 ],
+		];
+		yield 'cannot view private filters' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewProtected,
+				$viewSuppressed,
+			],
+			// Filter 3 is excluded
+			'expectedOrderAsc' => [ 2, 1, 4 ],
+			'expectedOrderDesc' => [ 4, 1, 2 ],
+		];
+		yield 'cannot view suppressed filters' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewPrivate,
+				$viewProtected,
+			],
+			// Filter 4 is excluded
+			'expectedOrderAsc' => [ 2, 1, 3 ],
+			'expectedOrderDesc' => [ 3, 1, 2 ],
+		];
+		yield 'cannot view protected or private filters' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewSuppressed,
+			],
+			// Filters 1 and 3 are excluded
+			'expectedOrderAsc' => [ 2, 4 ],
+			'expectedOrderDesc' => [ 4, 2 ],
+		];
+		yield 'cannot view protected or suppressed filters' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewPrivate,
+			],
+			// Filters 1 and 4 are excluded
+			'expectedOrderAsc' => [ 2, 3 ],
+			'expectedOrderDesc' => [ 3, 2 ],
+		];
+		yield 'cannot view private or suppressed filters' => [
+			'perms' => [
+				$viewLogDetails,
+				$viewProtected,
+			],
+			// Filters 3 and 4 are excluded
+			'expectedOrderAsc' => [ 2, 1 ],
+			'expectedOrderDesc' => [ 1, 2 ],
+		];
+		yield 'cannot view protected, private, or suppressed filters' => [
+			'perms' => [
+				$viewLogDetails,
+			],
+			// Filters 1, 3, and 4 are excluded
+			'expectedOrderAsc' => [ 2 ],
+			'expectedOrderDesc' => [ 2 ],
+		];
 	}
 }
