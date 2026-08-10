@@ -39,7 +39,6 @@ use Wikimedia\Diff\Diff;
 use Wikimedia\Diff\UnifiedDiffFormatter;
 use Wikimedia\IPUtils;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 use Wikimedia\StringUtils\StringUtils;
@@ -478,10 +477,8 @@ class LazyVariableComputer {
 		return $this->wanCache->getWithSetCallback(
 			$this->wanCache->makeKey( 'last-10-authors', 'revision', $title->getLatestRevID() ),
 			WANObjectCache::TTL_MINUTE,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $title, $fname ) {
+			function () use ( $title, $fname ) {
 				$dbr = $this->lbFactory->getReplicaDatabase();
-
-				$setOpts += Database::getCacheSetOptions( $dbr );
 				// Get the last 100 edit authors with a trivial query (avoid T116557)
 				$revQuery = $this->revisionStore->getQueryInfo();
 				$revAuthors = $dbr->newSelectQueryBuilder()

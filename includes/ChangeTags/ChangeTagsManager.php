@@ -7,7 +7,6 @@ use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use Wikimedia\ObjectCache\WANObjectCache;
-use Wikimedia\Rdbms\Database;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\LBFactory;
 
@@ -100,7 +99,7 @@ class ChangeTagsManager {
 		return $this->cache->getWithSetCallback(
 			$this->getCacheKeyForStatus( $enabled ),
 			WANObjectCache::TTL_MINUTE,
-			function ( $oldValue, &$ttl, array &$setOpts ) use ( $enabled ) {
+			function () use ( $enabled ) {
 				$dbr = $this->lbFactory->getReplicaDatabase();
 				try {
 					$globalDbr = $this->centralDBManager->getConnection( DB_REPLICA );
@@ -109,14 +108,11 @@ class ChangeTagsManager {
 				}
 
 				if ( $globalDbr !== null ) {
-					// Account for any snapshot/replica DB lag
-					$setOpts += Database::getCacheSetOptions( $dbr, $globalDbr );
 					$tags = array_merge(
 						$this->loadTagsFromDb( $dbr, $enabled ),
 						$this->loadTagsFromDb( $globalDbr, $enabled, true )
 					);
 				} else {
-					$setOpts += Database::getCacheSetOptions( $dbr );
 					$tags = $this->loadTagsFromDb( $dbr, $enabled );
 				}
 
