@@ -96,7 +96,7 @@
 	"abusefilter-revert-filter": "Фильтр:",
 	"abusefilter-revert-confirm": "Ырастоо",
 	"abusefilter-revert-reasonfield": "Себеп:",
-	"abusefilter-test-load": "Жүктөө",
+	"abusefilter-test-loadfilter-load": "Жүктөө",
 	"abusefilter-examine-submit": "Издөө",
 	"abusefilter-logentry-create": "$1 {{GENDER:$2|түзүлдү}} $4 ($5)",
 	"abusefilter-log-noresults": "Натыйжа жок",
