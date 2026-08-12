@@ -568,7 +568,7 @@
 	"abusefilter-revert-reason": "Handelingen die door filter $1 zijn uitgevoerd, zijn teruggedraaid",
 	"abusefilter-revert-reasonfield": "Reden:",
 	"abusefilter-test": "Filter tegen eerdere bewerkingen testen",
-	"abusefilter-test-intro": "Op deze pagina {{#FORMAL:kunt u|kun je}} een filter, ingevoerd in het vak eronder, controleren aan de hand van de laatste {{PLURAL:$1|wijzing|$1 wijzingen}}.\nOm een bestaand filter te laden {{#FORMAL:typt u|typ je}} het filter-ID in het vak onder het tekstvak en {{#FORMAL:klikt u|klik je}} op de knop “{{int:abusefilter-test-loadfilter-load}}”.",
+	"abusefilter-test-intro": "Op deze pagina {{#FORMAL:kunt u|kun je}} een filter, ingevoerd in het vak eronder, controleren aan de hand van de laatste {{PLURAL:$1|wijziging|$1 wijzigingen}}.\nOm een bestaand filter te laden {{#FORMAL:typt u|typ je}} het filter-ID in het vak onder het tekstvak en {{#FORMAL:klikt u|klik je}} op de knop “{{int:abusefilter-test-loadfilter-load}}”.",
 	"abusefilter-test-rules-section": "Te testen regels",
 	"abusefilter-test-options-section": "Zoekopties",
 	"abusefilter-test-legend": "Filter testen",
