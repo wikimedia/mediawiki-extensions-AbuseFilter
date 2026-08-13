@@ -14,6 +14,7 @@ use OOUI\FieldLayout;
 use OOUI\FieldsetLayout;
 use OOUI\HtmlSnippet;
 use OOUI\Widget;
+use Wikimedia\Codex\Localization\MediaWikiLocalization;
 use Wikimedia\Codex\Utility\Codex;
 
 /**
@@ -92,7 +93,8 @@ abstract class EditBoxBuilder {
 
 			// Shown until the picker loads: same markup as the picker's own input so
 			// nothing shifts, disabled so typed text can't get lost in the swap.
-			$pickerPlaceholder = ( new Codex() )->textInput()
+			$codex = new Codex( new MediaWikiLocalization( $this->localizer ) );
+			$pickerPlaceholder = $codex->textInput()
 				->setPlaceholder( $this->localizer->msg( 'abusefilter-edit-builder-select' )->text() )
 				->setDisabled( true )
 				->build()
