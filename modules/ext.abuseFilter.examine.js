@@ -30,7 +30,6 @@
 		$syntaxResult
 			.attr( 'class', exClass )
 			// Messages listed above
-			// eslint-disable-next-line mediawiki/msg-doc
 			.text( mw.msg( msg ) )
 			.show();
 	}
@@ -64,7 +63,6 @@
 
 		$syntaxResult
 			// Messages listed above
-			// eslint-disable-next-line mediawiki/msg-doc
 			.text( mw.msg( msg, details && details.exception ) )
 			.show();
 	}
