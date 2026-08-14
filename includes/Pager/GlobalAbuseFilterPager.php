@@ -26,10 +26,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 	) {
 		// Set database before parent constructor to avoid setting it there
 		$this->mDb = $centralDBManager->getReplicaDatabase();
-		parent::__construct(
-			$page, $linkRenderer, null, $afPermManager, $specsFormatter,
-			$filterLookup, $conds, null, null, 'rules'
-		);
+		parent::__construct( $page, $linkRenderer, null, $afPermManager, $specsFormatter, $filterLookup, $conds );
 	}
 
 	/**
