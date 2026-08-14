@@ -136,6 +136,13 @@ tr.mw-abusefilter-list-throttled td {
 	color: @color-error;
 }
 
+.mw-abusefilter-list-matched-zerolength::after {
+	content: '';
+	border-inline-end: 3px dotted @border-color-destructive;
+	padding-inline-end: 2px;
+	margin-inline-end: 2px;
+}
+
 .mw-abusefilter-examine-match,
 .mw-abusefilter-syntaxresult-ok,
 li.mw-abusefilter-changeslist-match {

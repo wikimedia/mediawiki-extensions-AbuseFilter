@@ -10,6 +10,8 @@ use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterProfiler;
 use MediaWiki\Extension\AbuseFilter\Pager\AbuseFilterPager;
 use MediaWiki\Extension\AbuseFilter\Pager\GlobalAbuseFilterPager;
+use MediaWiki\Extension\AbuseFilter\Pager\PatternMatcher;
+use MediaWiki\Extension\AbuseFilter\Pager\SearchMode;
 use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
@@ -18,7 +20,6 @@ use MediaWiki\Page\LinkBatchFactory;
 use MediaWiki\Parser\ParserOptions;
 use OOUI;
 use Wikimedia\Rdbms\IConnectionProvider;
-use Wikimedia\StringUtils\StringUtils;
 
 /**
  * The default view used in Special:AbuseFilter
@@ -74,8 +75,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$out->addHTML( (string)$buttons );
 		}
 
-		$conds = [];
 		$deleted = $request->getVal( 'deletedfilters' );
+		/** @var string[] $furtherOptions */
 		$furtherOptions = $request->getArray( 'furtheroptions' ) ?? [];
 		// Backward compatibility with old links
 		if ( $request->getBool( 'hidedisabled' ) ) {
@@ -93,27 +94,55 @@ class AbuseFilterViewList extends AbuseFilterView {
 			// Show on remote wikis as default only local filters
 			$defaultscope = 'local';
 		}
-		$scope = $request->getVal( 'rulescope', $defaultscope );
+		$scope = $request->getText( 'rulescope', $defaultscope );
 
 		$searchEnabled = $this->afPermManager->canViewPrivateFilters( $performer ) && !(
 			$config->get( 'AbuseFilterCentralDB' ) !== null &&
 			!$config->get( 'AbuseFilterIsCentral' ) &&
 			$scope === 'global' );
+		$searchOptions = null;
 
 		if ( $searchEnabled ) {
-			$querypattern = $request->getVal( 'querypattern', '' );
+			$querypattern = $request->getText( 'querypattern' );
 			$searchmode = $request->getVal( 'searchoption', null );
-			$searchfields = $request->getVal( 'searchfields', 'rules' );
-			if ( $querypattern === '' ) {
-				// Not specified or empty, that would error out
-				$querypattern = $searchmode = null;
+			// BC: Support older links without the "searchfields" query parameter (non-null fallback)
+			$searchfields = $request->getVal( 'searchfields' ) ?? (string)PatternMatcher::SEARCH_RULES;
+
+			if ( $querypattern !== '' && $searchmode !== null ) {
+				// Validate the search options. Filtering the results is done in AbuseFilterPager
+				$error = null;
+				$searchmode = SearchMode::tryFrom( $searchmode );
+				if ( $searchmode === null ) {
+					$error = 'abusefilter-list-invalid-searchmode';
+				} elseif ( !PatternMatcher::isValidSearchTarget( $searchfields ) ) {
+					$error = 'abusefilter-list-invalid-searchfields';
+				} elseif (
+					$searchmode->requiresRegexMatching() &&
+					!PatternMatcher::isValidRegexPattern( $querypattern )
+				) {
+					$error = 'abusefilter-list-regexerror';
+				} else {
+					$searchOptions = [
+						'pattern' => $querypattern,
+						'mode' => $searchmode,
+						'target' => (int)$searchfields,
+					];
+				}
+
+				if ( $error !== null ) {
+					$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
+					$out->addHTML(
+						Html::rawElement(
+							'p',
+							[],
+							Html::errorBox( $this->msg( $error )->escaped() )
+						)
+					);
+				}
 			}
-		} else {
-			$querypattern = null;
-			$searchmode = null;
-			$searchfields = 'rules';
 		}
 
+		$conds = [];
 		if ( $deleted === 'show' ) {
 			// Nothing
 		} elseif ( $deleted === 'only' ) {
@@ -130,22 +159,40 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$hidePrivate = in_array( 'hideprivate', $furtherOptions );
 		$hideSuppressed = in_array( 'hidesuppressed', $furtherOptions );
+		$hiddenFlags = 0;
 
 		// Don't show private filters if they've been requested to be hidden
 		if ( $hidePrivate ) {
-			$dbr = $this->dbProvider->getReplicaDatabase();
-			$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_HIDDEN ) . ' = 0';
+			$hiddenFlags |= Flags::FILTER_HIDDEN;
 		}
 
 		// Don't show suppressed filters if they've been requested to be hidden
 		// or if we're searching with a query pattern and the user cannot view supressed filters
 		// (this would leak the rules of the filter if permitted).
 		if (
-			( $querypattern !== null && !$this->afPermManager->canViewSuppressed( $performer ) )
-			|| $hideSuppressed
+			$hideSuppressed ||
+			( $searchOptions !== null && !$this->afPermManager->canViewSuppressed( $performer ) )
 		) {
+			$hiddenFlags |= Flags::FILTER_SUPPRESSED;
+		}
+
+		// Viewers with the right to view private filters have access to the search
+		// function, which can query against protected filters and potentially expose PII.
+		// Remove protected filters from the query if the user doesn't have the right to search
+		// against them. This allows protected filters to be visible in the general list of
+		// filters at all other times.
+		// Filters with protected variables that have additional restrictions cannot be excluded using SQL
+		// but will be excluded in the AbuseFilterPager.
+		if (
+			$searchOptions !== null &&
+			!$this->afPermManager->canViewProtectedVariables( $performer, [] )->isGood()
+		) {
+			$hiddenFlags |= Flags::FILTER_USES_PROTECTED_VARS;
+		}
+
+		if ( $hiddenFlags !== 0 ) {
 			$dbr = $this->dbProvider->getReplicaDatabase();
-			$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_SUPPRESSED ) . ' = 0';
+			$conds[] = $dbr->bitAnd( 'af_hidden', $hiddenFlags ) . ' = 0';
 		}
 
 		if ( $scope === 'local' ) {
@@ -154,54 +201,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$conds['af_global'] = 1;
 		}
 
-		if ( $searchmode !== null ) {
-			// Check the search pattern. Filtering the results is done in AbuseFilterPager
-			$error = null;
-			if ( !in_array( $searchmode, [ 'LIKE', 'RLIKE', 'IRLIKE' ] ) ) {
-				$error = 'abusefilter-list-invalid-searchmode';
-			} elseif ( !in_array( $searchfields, [ 'rules', 'notes', 'both' ] ) ) {
-				$error = 'abusefilter-list-invalid-searchfields';
-			} elseif ( $searchmode !== 'LIKE' && !StringUtils::isValidPCRERegex( "/$querypattern/" ) ) {
-				// @phan-suppress-previous-line SecurityCheck-ReDoS Yes, I know...
-				$error = 'abusefilter-list-regexerror';
-			}
-
-			if ( $error !== null ) {
-				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
-				$out->addHTML(
-					Html::rawElement(
-						'p',
-						[],
-						Html::errorBox( $this->msg( $error )->escaped() )
-					)
-				);
-
-				// Reset the conditions in case of error
-				$conds = [ 'af_deleted' => 0 ];
-				$searchmode = $querypattern = null;
-				$searchfields = 'rules';
-			}
-
-			// Viewers with the right to view private filters have access to the search
-			// function, which can query against protected filters and potentially expose PII.
-			// Remove protected filters from the query if the user doesn't have the right to search
-			// against them. This allows protected filters to be visible in the general list of
-			// filters at all other times.
-			// Filters with protected variables that have additional restrictions cannot be excluded using SQL
-			// but will be excluded in the AbuseFilterPager.
-			if ( !$this->afPermManager->canViewProtectedVariables( $performer, [] )->isGood() ) {
-				$dbr = $this->dbProvider->getReplicaDatabase();
-				$conds[] = $dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0';
-			}
-		}
-
 		$this->showList(
 			[
 				'deleted' => $deleted,
 				'furtherOptions' => $furtherOptions,
-				'querypattern' => $querypattern,
-				'searchmode' => $searchmode,
-				'searchfields' => $searchfields,
+				'searchOptions' => $searchOptions,
 				'scope' => $scope,
 			],
 			$conds
@@ -209,7 +213,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 	}
 
 	/**
-	 * @param array $optarray
+	 * @phpcs:ignore Generic.Files.LineLength
+	 * @param array{deleted:'show'|'only'|'hide',furtherOptions:string[],searchOptions:array{pattern:string,mode:SearchMode,target:int}|null,scope:'all'|'local'|'global'} $optarray
 	 * @param array $conds
 	 */
 	private function showList( array $optarray, array $conds = [ 'af_deleted' => 0 ] ) {
@@ -223,10 +228,18 @@ class AbuseFilterViewList extends AbuseFilterView {
 
 		$deleted = $optarray['deleted'];
 		$furtherOptions = $optarray['furtherOptions'];
+		$searchOptions = $optarray['searchOptions'];
 		$scope = $optarray['scope'];
-		$querypattern = $optarray['querypattern'];
-		$searchmode = $optarray['searchmode'];
-		$searchfields = $optarray['searchfields'];
+
+		if ( $searchOptions !== null ) {
+			$patternMatcher = new PatternMatcher(
+				$searchOptions['pattern'],
+				$searchOptions['mode'],
+				$searchOptions['target'],
+			);
+		} else {
+			$patternMatcher = null;
+		}
 
 		if ( $centralDB !== null && !$dbIsCentral && $scope === 'global' ) {
 			// TODO: remove the circular dependency
@@ -248,9 +261,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				$this->specsFormatter,
 				$this->filterLookup,
 				$conds,
-				$querypattern,
-				$searchmode,
-				$searchfields
+				$patternMatcher,
 			);
 		}
 
@@ -310,7 +321,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'hide-if' => $globalEnabled ? [ '===', 'rulescope', 'global' ] : [],
 				'label-message' => 'abusefilter-list-options-searchquery',
 				'placeholder' => $this->msg( 'abusefilter-list-options-searchpattern' )->text(),
-				'default' => $querypattern
+				'default' => $searchOptions !== null ? $searchOptions['pattern'] : '',
 			];
 
 			$formDescriptor['searchoption'] = [
@@ -322,11 +333,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 					[ 'OR', [ '===', 'querypattern', '' ], $formDescriptor['querypattern']['hide-if'] ] :
 					[ '===', 'querypattern', '' ],
 				'options-messages' => [
-					'abusefilter-list-options-search-like' => 'LIKE',
-					'abusefilter-list-options-search-rlike' => 'RLIKE',
-					'abusefilter-list-options-search-irlike' => 'IRLIKE',
+					'abusefilter-list-options-search-like' => SearchMode::LIKE->value,
+					'abusefilter-list-options-search-rlike' => SearchMode::RLIKE->value,
+					'abusefilter-list-options-search-irlike' => SearchMode::IRLIKE->value,
 				],
-				'default' => $searchmode
+				'default' => $searchOptions !== null ? $searchOptions['mode']->value : SearchMode::LIKE->value,
 			];
 
 			$formDescriptor['searchfields'] = [
@@ -336,11 +347,11 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'label-message' => 'abusefilter-list-options-searchfields',
 				'hide-if' => $formDescriptor['searchoption']['hide-if'],
 				'options-messages' => [
-					'abusefilter-list-options-searchfields-rules' => 'rules',
-					'abusefilter-list-options-searchfields-notes' => 'notes',
-					'abusefilter-list-options-searchfields-both' => 'both',
+					'abusefilter-list-options-searchfields-rules' => PatternMatcher::SEARCH_RULES,
+					'abusefilter-list-options-searchfields-notes' => PatternMatcher::SEARCH_NOTES,
+					'abusefilter-list-options-searchfields-both' => PatternMatcher::SEARCH_ALL,
 				],
-				'default' => $searchfields,
+				'default' => $searchOptions !== null ? $searchOptions['target'] : PatternMatcher::SEARCH_RULES,
 			];
 		}
 

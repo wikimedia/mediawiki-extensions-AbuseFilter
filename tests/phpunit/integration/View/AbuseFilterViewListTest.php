@@ -2,9 +2,12 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\View;
 
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
+use MediaWiki\Extension\AbuseFilter\Pager\PatternMatcher;
+use MediaWiki\Extension\AbuseFilter\Pager\SearchMode;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
@@ -69,6 +72,28 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		$performer = $this->getTestSysop()->getUserIdentity();
 		$authority = new UltimateAuthority( $performer );
 
+		// Update the public filter #2
+		$filter2 = AbuseFilterServices::getFilterLookup()->getFilter( 2, false );
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			2,
+			$this->getFilterFromSpecs( [
+				'id' => '2',
+				'rules' => implode( "\n", [
+					$filter2->getRules(),
+					'/* AlphaRule */',
+					'/* Gamma */',
+					'/* fooxxx foobar */',
+					'/* Visit https://example.org */',
+					'/* abc */',
+				] ),
+				'comments' => 'Documented as BetaNote /* Gamma */',
+				'name' => $filter2->getName(),
+				'privacy' => Flags::FILTER_PUBLIC,
+			] ),
+			$filter2
+		) );
+
 		$this->assertStatusGood( $filterStore->saveFilter(
 			$authority,
 			null,
@@ -97,22 +122,6 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			] ),
 			MutableFilter::newDefault()
 		) );
-
-		// Give the existing public filter 2 rules and notes with deliberately different
-		// tokens, so a match in one cannot be mistaken for a match in the other, plus a
-		// token shared by both.
-		$this->assertStatusGood( $filterStore->saveFilter(
-			$authority,
-			2,
-			$this->getFilterFromSpecs( [
-				'id' => '2',
-				'rules' => 'user_name = "1.2.3.4" & user_name != "AlphaRule" /* Gamma */',
-				'comments' => 'Documented as BetaNote /* Gamma */',
-				'name' => 'Filter without protected variables',
-				'privacy' => Flags::FILTER_PUBLIC,
-			] ),
-			AbuseFilterServices::getFilterLookup()->getFilter( 2, false )
-		) );
 	}
 
 	/**
@@ -134,6 +143,72 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		return [
 			'new filter button' => [ 'new', '(abusefilter-new)' ],
 			'import filter button' => [ 'import', '(abusefilter-import-button)' ],
+		];
+	}
+
+	public function testShowForSearchModeErrorMessage(): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'rulescope' => 'local',
+				'deletedfilters' => 'hide',
+				'querypattern' => 'foo',
+				'searchoption' => 'INVALID',
+				'searchfields' => (string)PatternMatcher::SEARCH_RULES,
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+
+		$this->assertStringContainsString( '(abusefilter-list-invalid-searchmode)', $html );
+	}
+
+	public function testShowForSearchTargetErrorMessage(): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'rulescope' => 'local',
+				'deletedfilters' => 'hide',
+				'querypattern' => 'foo',
+				'searchoption' => SearchMode::RLIKE->value,
+				'searchfields' => 'bar',
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+
+		$this->assertStringContainsString( '(abusefilter-list-invalid-searchfields)', $html );
+	}
+
+	/**
+	 * @dataProvider provideShowForRegexErrorMessage
+	 */
+	public function testShowForRegexErrorMessage( string $pattern, bool $isValid ): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'rulescope' => 'local',
+				'deletedfilters' => 'hide',
+				'querypattern' => $pattern,
+				'searchoption' => SearchMode::RLIKE->value,
+				'searchfields' => (string)PatternMatcher::SEARCH_RULES,
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+
+		if ( $isValid ) {
+			$this->assertStringNotContainsString(
+				'(abusefilter-list-regexerror)', $html,
+				"\"$pattern\" is a valid regex pattern, but a regex error message is displayed"
+			);
+		} else {
+			$this->assertStringContainsString(
+				'(abusefilter-list-regexerror)', $html,
+				"\"$pattern\" is an invalid regex pattern, but no regex error message is displayed"
+			);
+		}
+	}
+
+	public static function provideShowForRegexErrorMessage(): array {
+		return [
+			'invalid regex pattern' => [ '(', false ],
+			'valid regex pattern' => [ '(?:foo)', true ],
+			'slash in pattern' => [ 'https://', true ],
 		];
 	}
 
@@ -261,7 +336,8 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			'desc' => 1,
 			'deletedfilters' => 'hide',
 			'querypattern' => 'user_unnamed_ip = "1',
-			'searchoption' => 'LIKE',
+			'searchoption' => SearchMode::LIKE->value,
+			'searchfields' => (string)PatternMatcher::SEARCH_RULES,
 			'rulescope' => 'all',
 			'furtheroptions' => []
 		] );
@@ -304,7 +380,8 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			'desc' => '',
 			'deletedfilters' => 'hide',
 			'querypattern' => '1.2.3.4',
-			'searchoption' => 'LIKE',
+			'searchoption' => SearchMode::LIKE->value,
+			'searchfields' => (string)PatternMatcher::SEARCH_RULES,
 			'rulescope' => 'all',
 			'furtheroptions' => []
 		] );
@@ -320,6 +397,85 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			'Filter without protected variables (0 hits) should appear before ' .
 			'Filter with protected variables (1 hit) when sorting by af_hit_count ascending'
 		);
+	}
+
+	public function testShowListWithSearchQueryLinksNextPageAfterLastShownFilter(): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'limit' => 1,
+				'querypattern' => '=',
+				'searchoption' => SearchMode::LIKE->value,
+				'searchfields' => (string)PatternMatcher::SEARCH_RULES,
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+
+		$doc = DOMUtils::parseHTML( $html );
+		$this->assertSame(
+			'1',
+			$this->assertSelectorMatchesOneElementInNode( $doc, '.TablePager_col_af_id > a' )->textContent,
+			'Only the first matching filter is shown'
+		);
+		$nextLink = DOMCompat::querySelector( $doc, '.TablePager-button-next > a' );
+		parse_str( parse_url( $nextLink->getAttribute( 'href' ), PHP_URL_QUERY ), $nextPageQuery );
+		$this->assertSame( '1', $nextPageQuery['offset'], 'The next page must start after the only filter shown' );
+	}
+
+	/**
+	 * @dataProvider provideShowListWithRegexSearchQuery
+	 */
+	public function testShowListWithRegexSearchQuery( string $mode, string $pattern, string $expectedHighlight ) {
+		$context = RequestContext::getMain();
+		$context->setAuthority( $this->authorityCanUseProtectedVar );
+		$context->setRequest( new FauxRequest( [
+			'rulescope' => 'local',
+			'deletedfilters' => 'hide',
+			'querypattern' => $pattern,
+			'searchoption' => SearchMode::from( $mode )->value,
+			'searchfields' => (string)PatternMatcher::SEARCH_RULES,
+		] ) );
+		$context->setLanguage( 'qqx' );
+
+		[ $html ] = $this->executeSpecialPage( context: $context );
+
+		$htmlDoc = DOMUtils::parseHTML( $html );
+		$this->assertListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar, true );
+		$this->assertStringContainsString( $expectedHighlight, $html );
+
+		// PatternMatcher references .mw-abusefilter-list-matched-zerolength
+		$this->assertArrayContains(
+			[ 'ext.abuseFilter' ],
+			$context->getOutput()->getModuleStyles(),
+			'AbuseFilterViewList requires the "ext.abuseFilter" style module'
+		);
+	}
+
+	public static function provideShowListWithRegexSearchQuery(): iterable {
+		$testData = [
+			'zero-length lookahead uses the actual regex match' => [
+				'pattern' => 'foo(?=bar)',
+				'expectedHighlight' => 'fooxxx <b>foo</b>bar',
+			],
+			'zero-length match is highlighted' => [
+				'pattern' => '\b(?=abc)',
+				'expectedHighlight' =>
+					'<span class="mw-abusefilter-list-matched-zerolength"></span>abc',
+			],
+			'unescaped slashes are searchable' => [
+				'pattern' => 'https://',
+				'expectedHighlight' => '<b>https://</b>example.org',
+			],
+			'escaped slashes are searchable' => [
+				'pattern' => 'https?:\/\/',
+				'expectedHighlight' => '<b>https://</b>example.org',
+			],
+		];
+
+		foreach ( [ 'RLIKE', 'IRLIKE' ] as $mode ) {
+			foreach ( $testData as $key => $value ) {
+				yield "$mode: $key" => [ 'mode' => $mode, ...$value ];
+			}
+		}
 	}
 
 	/**
@@ -459,7 +615,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 
 	public function testShowListSearchWithoutSearchFieldsSearchesOnlyRules(): void {
 		[ $html ] = $this->executeSpecialPage(
-			request: new FauxRequest( [ 'querypattern' => 'BetaNote', 'searchoption' => 'LIKE' ] ),
+			request: new FauxRequest( [ 'querypattern' => 'BetaNote', 'searchoption' => SearchMode::LIKE->value ] ),
 			performer: $this->authorityCanUseProtectedVar
 		);
 		$this->assertStringContainsString( 'table_pager_empty', $html );
@@ -480,7 +636,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 				'desc' => 1,
 				'deletedfilters' => 'hide',
 				'querypattern' => $pattern,
-				'searchoption' => 'LIKE',
+				'searchoption' => SearchMode::LIKE->value,
 				'searchfields' => $searchFields,
 				'rulescope' => 'all',
 				'furtheroptions' => []
@@ -499,33 +655,27 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		return [
 			'notes match when searching notes' => [
 				'pattern' => 'BetaNote',
-				'searchFields' => 'notes',
+				'searchFields' => (string)PatternMatcher::SEARCH_NOTES,
 				'shouldContain' => 'Special:AbuseFilter/2',
 				'shouldNotContain' => 'AlphaRule',
 			],
 			'notes do not match when searching rules' => [
 				'pattern' => 'BetaNote',
-				'searchFields' => 'rules',
+				'searchFields' => (string)PatternMatcher::SEARCH_RULES,
 				'shouldContain' => null,
 				'shouldNotContain' => 'Special:AbuseFilter/2',
 			],
 			'notes match when searching both' => [
 				'pattern' => 'BetaNote',
-				'searchFields' => 'both',
+				'searchFields' => (string)PatternMatcher::SEARCH_ALL,
 				'shouldContain' => 'Special:AbuseFilter/2',
 				'shouldNotContain' => 'AlphaRule',
 			],
 			'rules win when both fields match' => [
 				'pattern' => 'Gamma',
-				'searchFields' => 'both',
+				'searchFields' => (string)PatternMatcher::SEARCH_ALL,
 				'shouldContain' => 'AlphaRule',
 				'shouldNotContain' => 'BetaNote',
-			],
-			'an unrecognised value shows an error' => [
-				'pattern' => 'BetaNote',
-				'searchFields' => 'garbage',
-				'shouldContain' => '(abusefilter-list-invalid-searchfields',
-				'shouldNotContain' => null,
 			],
 		];
 	}
@@ -535,8 +685,8 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		[ $html ] = $this->executeSpecialPage(
 			request: new FauxRequest( [
 				'querypattern' => $pattern,
-				'searchoption' => $mode,
-				'searchfields' => 'notes',
+				'searchoption' => SearchMode::from( $mode )->value,
+				'searchfields' => (string)PatternMatcher::SEARCH_NOTES,
 			] ),
 			performer: $this->authorityCanUseProtectedVar
 		);
@@ -559,8 +709,8 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		[ $html ] = $this->executeSpecialPage(
 			request: new FauxRequest( [
 				'querypattern' => 'a(?=N)',
-				'searchoption' => 'RLIKE',
-				'searchfields' => 'notes',
+				'searchoption' => SearchMode::RLIKE->value,
+				'searchfields' => (string)PatternMatcher::SEARCH_NOTES,
 			] ),
 			performer: $this->authorityCanUseProtectedVar
 		);
