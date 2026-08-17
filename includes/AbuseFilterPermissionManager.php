@@ -10,6 +10,7 @@ use MediaWiki\Permissions\Authority;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\User\Options\UserOptionsLookup;
 use RCCacheEntry;
+use RecentChange;
 
 /**
  * This class simplifies the interactions between the AbuseFilter code and Authority, knowing
