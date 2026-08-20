@@ -109,7 +109,7 @@ class AddMissingLoggingEntries extends LoggedUpdateMaintenance {
 			return false;
 		}
 
-		$dbw = $this->getDB( DB_PRIMARY );
+		$dbw = $this->getPrimaryDB();
 
 		$count = 0;
 		foreach ( $afhRows as $row ) {
