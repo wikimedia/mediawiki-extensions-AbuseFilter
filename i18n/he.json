@@ -559,7 +559,7 @@
 	"abusefilter-test-legend": "בדיקת מסנן",
 	"abusefilter-test-loadfilter": "טעינת מסנן לפי מזהה:",
 	"abusefilter-test-loadfilter-load": "טעינה",
-	"abusefilter-test-loadfilter-notfound": "מסנן $1 אינו קיים.",
+	"abusefilter-test-loadfilter-notfound": "המסנן $1 אינו קיים.",
 	"abusefilter-test-submit": "בדיקה",
 	"abusefilter-test-user": "שינויים שבוצעו על־ידי המשתמש:",
 	"abusefilter-test-nobots": "הסתרת עריכות של בוטים",
