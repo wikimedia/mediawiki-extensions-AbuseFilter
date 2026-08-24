@@ -171,8 +171,12 @@ class QueryAbuseFilters extends ApiQueryBase {
 					$entry['hitsredacted'] = '';
 				}
 			}
-			if ( $fld_comments && $canViewExtendedDetailsAboutFilter ) {
-				$entry['comments'] = $filter->getComments();
+			if ( $fld_comments ) {
+				if ( $canViewExtendedDetailsAboutFilter ) {
+					$entry['comments'] = $filter->getComments();
+				} else {
+					$entry['commentsredacted'] = '';
+				}
 			}
 			if ( $fld_user ) {
 				$entry['lasteditor'] = $filter->getLastEditInfo()->getUserName();
