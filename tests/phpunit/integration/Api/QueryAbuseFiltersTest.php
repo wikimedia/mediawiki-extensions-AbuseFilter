@@ -5,203 +5,478 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\Api;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
-use MediaWiki\Extension\AbuseFilter\Tests\Integration\FilterFromSpecsTestTrait;
+use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
-use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\Api\QueryAbuseFilters
- * @group medium
+ * @group API
  * @group Database
  */
 class QueryAbuseFiltersTest extends ApiTestCase {
 	use MockAuthorityTrait;
-	use FilterFromSpecsTestTrait;
+	use ProtectedVarsTestTrait;
 
-	private Authority $authorityCannotUseProtectedVar;
+	private static Authority $authorityCanViewPublic;
+	private static Authority $authorityCanViewPrivate;
+	private static Authority $authorityCanViewProtected;
+	private static Authority $authorityCanViewSuppressed;
+	private static Authority $authorityCanViewAll;
 
-	private Authority $authorityCanUseProtectedVar;
-
+	/**
+	 * @inheritDoc
+	 */
 	protected function setUp(): void {
 		parent::setUp();
-
-		// Clear the protected access hooks, as in CI other extensions (such as CheckUser) may attempt to
-		// define additional restrictions that cause the tests to fail.
-		$this->clearHook( 'AbuseFilterCanViewProtectedVariables' );
-
-		// Create an authority who can see private filters but not protected variables
-		$this->authorityCannotUseProtectedVar = $this->mockUserAuthorityWithPermissions(
-			$this->getTestUser()->getUserIdentity(),
-			[
-				'abusefilter-log-private',
-				'abusefilter-view-private',
-				'abusefilter-modify',
-				'abusefilter-log-detail',
-				'abusefilter-view',
-			]
-		);
-
-		// Create an authority who can see private and protected variables
-		$this->authorityCanUseProtectedVar = $this->mockUserAuthorityWithPermissions(
-			$this->getTestUser()->getUserIdentity(),
-			[
-				'abusefilter-access-protected-vars',
-				'abusefilter-log-private',
-				'abusefilter-view-private',
-				'abusefilter-modify',
-				'abusefilter-log-detail',
-				'abusefilter-view',
-			]
-		);
+		$this->clearProtectedVarRelatedHooks();
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function addDBDataOnce() {
+	public function addDBDataOnce(): void {
+		$this->createFiltersWithProtectedVariables();
+
 		$filterStore = AbuseFilterServices::getFilterStore();
 		$performer = $this->getTestSysop()->getUserIdentity();
 		$authority = new UltimateAuthority( $performer );
 
-		// Create a test filter that is protected
-		ConvertibleTimestamp::setFakeTime( '20190827000000' );
+		// Create a third filter which is private and deleted
 		$this->assertStatusGood( $filterStore->saveFilter(
-			$authority, null,
-			$this->getFilterFromSpecs( [
-				'id' => '1',
-				'rules' => 'user_unnamed_ip = "1.2.3.4"',
-				'name' => 'Filter with protected variables',
-				'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
-				'lastEditor' => $performer,
-				'lastEditTimestamp' => '20190827000000',
-				'hitCount' => 1,
-				'actions' => [ 'tags' => [ 'test' ] ],
-			] ),
-			MutableFilter::newDefault()
-		) );
-
-		// Create a second filter which is public
-		ConvertibleTimestamp::setFakeTime( '20000101000000' );
-		$this->assertStatusGood( $filterStore->saveFilter(
-			$authority, null,
-			$this->getFilterFromSpecs( [
-				'id' => '2',
-				'rules' => 'user_name = "1.2.3.4"',
-				'name' => 'Filter without protected variables',
-				'privacy' => Flags::FILTER_PUBLIC,
-				'lastEditor' => $performer,
-				'lastEditTimestamp' => '20000101000000',
-			] ),
-			MutableFilter::newDefault()
-		) );
-
-		// Create a third filter which is private (hidden)
-		ConvertibleTimestamp::setFakeTime( '20100601000000' );
-		$this->assertStatusGood( $filterStore->saveFilter(
-			$authority, null,
+			$authority,
+			null,
 			$this->getFilterFromSpecs( [
 				'id' => '3',
 				'rules' => 'action = "edit"',
-				'name' => 'Hidden filter',
+				'name' => 'Private filter',
 				'privacy' => Flags::FILTER_HIDDEN,
-				'lastEditor' => $performer,
-				'lastEditTimestamp' => '20100601000000',
 				'hitCount' => 42,
+				'enabled' => 0,
+				'deleted' => 1,
 			] ),
 			MutableFilter::newDefault()
 		) );
 
-		// Verify that the expected number of DB rows were created
-		$this->newSelectQueryBuilder()
-			->select( 'COUNT(*)' )
-			->table( 'abuse_filter' )
-			->caller( __METHOD__ )
-			->assertFieldValue( 3 );
-		$this->newSelectQueryBuilder()
-			->select( 'COUNT(*)' )
-			->table( 'abuse_filter_history' )
-			->caller( __METHOD__ )
-			->assertFieldValue( 3 );
-	}
+		// Create a fourth filter which is suppressed
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '4',
+				'rules' => 'action = "edit"',
+				'name' => 'Suppressed filter',
+				'privacy' => Flags::FILTER_SUPPRESSED,
+				'hitCount' => 9,
+			] ),
+			MutableFilter::newDefault()
+		) );
 
-	public function testExecuteWhenUserMissingPermissionToSeeFilters() {
-		$this->expectApiErrorCode( 'permissiondenied' );
-		$this->doApiRequest( [
-			'action' => 'query',
-			'list' => 'abusefilters',
-		], null, false, $this->mockRegisteredNullAuthority() );
-	}
+		$basicPerms = [
+			'abusefilter-view',
+			'abusefilter-log',
+			'abusefilter-log-detail',
+		];
 
-	public function testExecuteForUserWhoCanSeeProtectedVariables() {
-		[ $result ] = $this->doApiRequest( [
-			'action' => 'query',
-			'list' => 'abusefilters',
-			'abfprop' => 'id|description|pattern|actions|hits|comments|' .
-				'lasteditor|lastedittime|status|private|protected',
-		], null, false, $this->authorityCanUseProtectedVar );
-		$filters = $result['query']['abusefilters'];
-		// User with protected var access should see hits for all filters
-		$this->assertSame( 1, $filters[0]['id'] );
-		$this->assertIsString( $filters[0]['pattern'] );
-		$this->assertSame( 1, $filters[0]['hits'] );
-		$this->assertSame( 2, $filters[1]['id'] );
-		$this->assertIsString( $filters[1]['pattern'] );
-		$this->assertSame( 0, $filters[1]['hits'] );
-		$this->assertSame( 3, $filters[2]['id'] );
-		$this->assertIsString( $filters[2]['pattern'] );
-		$this->assertSame( 42, $filters[2]['hits'] );
-	}
-
-	public function testExecuteForUserWhoCannotSeeProtectedVariables() {
-		[ $result ] = $this->doApiRequest( [
-			'action' => 'query',
-			'list' => 'abusefilters',
-			'abfprop' => 'id|description|pattern|actions|hits|comments|' .
-				'lasteditor|lastedittime|status|private|protected',
-		], null, false, $this->authorityCannotUseProtectedVar );
-		$filters = $result['query']['abusefilters'];
-		// User without protected var access should NOT see pattern or hits for the protected filter
-		$this->assertSame( 1, $filters[0]['id'] );
-		$this->assertArrayHasKey( 'patternredacted', $filters[0] );
-		$this->assertArrayNotHasKey( 'hits', $filters[0],
-			'Hit count for protected filter should be hidden from users without protected var access' );
-		$this->assertArrayHasKey( 'hitsredacted', $filters[0] );
-		// But should still see pattern and hits for the public filter
-		$this->assertSame( 2, $filters[1]['id'] );
-		$this->assertIsString( $filters[1]['pattern'] );
-		$this->assertSame( 0, $filters[1]['hits'] );
-		// And should see pattern and hits for hidden filter (this user has abusefilter-log-private)
-		$this->assertSame( 3, $filters[2]['id'] );
-		$this->assertIsString( $filters[2]['pattern'] );
-		$this->assertSame( 42, $filters[2]['hits'] );
+		self::$authorityCanViewPublic = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[ 'abusefilter-view' ]
+		);
+		self::$authorityCanViewPrivate = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[ ...$basicPerms, 'abusefilter-view-private' ]
+		);
+		self::$authorityCanViewProtected = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[ ...$basicPerms, 'abusefilter-access-protected-vars' ]
+		);
+		self::$authorityCanViewSuppressed = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[ ...$basicPerms, 'viewsuppressed' ]
+		);
+		self::$authorityCanViewAll = $this->mockUserAuthorityWithPermissions(
+			$this->getTestUser()->getUserIdentity(),
+			[
+				...$basicPerms,
+				'abusefilter-view-private',
+				'abusefilter-access-protected-vars',
+				'viewsuppressed',
+			]
+		);
 	}
 
 	/**
-	 * Test that hit count is hidden for hidden (private) filters
-	 * from users who lack the abusefilter-log-detail permission.
-	 * This is the scenario described in T406954.
+	 * @return array{0:array,1:array} `[ $filters, $response ]`
 	 */
-	public function testHitCountHiddenForPrivateFiltersFromUnprivilegedUser() {
-		$authorityBasic = $this->mockUserAuthorityWithPermissions(
-			$this->getTestUser()->getUserIdentity(),
-			[
-				'abusefilter-view',
-			]
-		);
-		[ $result ] = $this->doApiRequest( [
+	private function doQuery( Authority $performer, array $params = [] ): array {
+		$params += [
 			'action' => 'query',
 			'list' => 'abusefilters',
-			'abfprop' => 'id|hits',
-		], null, false, $authorityBasic );
-		$filters = $result['query']['abusefilters'];
-		// User without abusefilter-log-detail should not see hits for any filter
-		foreach ( $filters as $filter ) {
-			$this->assertArrayNotHasKey( 'hits', $filter,
-				"Hit count for filter {$filter['id']} should be hidden from users without log-detail" );
-			$this->assertArrayHasKey( 'hitsredacted', $filter );
+			'abfprop' => 'id|description|pattern|actions|hits|comments|' .
+				'lasteditor|lastedittime|status|suppressed|private|protected',
+		];
+
+		[ $result ] = $this->doApiRequest( $params, performer: $performer );
+
+		$this->assertArrayContains( [ 'query' => [ 'abusefilters' => [] ] ], $result );
+
+		return [ $result['query']['abusefilters'], $result ];
+	}
+
+	public function testExecuteAsUnauthorizedUser(): void {
+		$this->expectApiErrorCode( 'permissiondenied' );
+		$this->doQuery( $this->mockRegisteredNullAuthority() );
+	}
+
+	/**
+	 * @dataProvider provideExecuteWithRangeSpecifications
+	 */
+	public function testExecuteWithRangeSpecifications(
+		string $dir,
+		?int $startId,
+		?int $endId,
+		array $expectedIds
+	): void {
+		[ $filters ] = $this->doQuery(
+			self::$authorityCanViewAll,
+			[ 'abfprop' => 'id' ] + array_filter( [
+				'abfdir' => $dir,
+				'abfstartid' => $startId,
+				'abfendid' => $endId,
+			], static fn ( $value ) => $value !== null )
+		);
+
+		$this->assertSame( $expectedIds, array_column( $filters, 'id' ) );
+	}
+
+	public static function provideExecuteWithRangeSpecifications(): array {
+		return [
+			'newer, no range' => [
+				'dir' => 'newer',
+				'startId' => null,
+				'endId' => null,
+				'expectedIds' => [ 1, 2, 3, 4 ],
+			],
+			'newer, startid only' => [
+				'dir' => 'newer',
+				'startId' => 2,
+				'endId' => null,
+				'expectedIds' => [ 2, 3, 4 ],
+			],
+			'newer, endid only' => [
+				'dir' => 'newer',
+				'startId' => null,
+				'endId' => 2,
+				'expectedIds' => [ 1, 2 ],
+			],
+			'newer, startid and endid' => [
+				'dir' => 'newer',
+				'startId' => 1,
+				'endId' => 3,
+				'expectedIds' => [ 1, 2, 3 ],
+			],
+			// TODO: This should not return an empty array (T435833)
+			'newer, startid greater than endid' => [
+				'dir' => 'newer',
+				'startId' => 4,
+				'endId' => 1,
+				'expectedIds' => [],
+			],
+			'older, no range' => [
+				'dir' => 'older',
+				'startId' => null,
+				'endId' => null,
+				'expectedIds' => [ 4, 3, 2, 1 ],
+			],
+			'older, startid only' => [
+				'dir' => 'older',
+				'startId' => 2,
+				'endId' => null,
+				'expectedIds' => [ 2, 1 ],
+			],
+			'older, endid only' => [
+				'dir' => 'older',
+				'startId' => null,
+				'endId' => 2,
+				'expectedIds' => [ 4, 3, 2 ],
+			],
+			'older, startid and endid' => [
+				'dir' => 'older',
+				'startId' => 3,
+				'endId' => 1,
+				'expectedIds' => [ 3, 2, 1 ],
+			],
+			// TODO: This should not return an empty array (T435833)
+			'older, startid less than endid' => [
+				'dir' => 'older',
+				'startId' => 1,
+				'endId' => 4,
+				'expectedIds' => [],
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider provideExecuteWithConflictingShowParameters
+	 */
+	public function testExecuteWithConflictingShowParameters( string $show ): void {
+		$this->expectApiErrorCode( 'show' );
+		$this->doQuery( self::$authorityCanViewAll, [
+			'abfprop' => '',
+			'abfshow' => $show,
+		] );
+	}
+
+	public static function provideExecuteWithConflictingShowParameters(): array {
+		return [
+			'enabled and !enabled' => [ 'enabled|!enabled' ],
+			'deleted and !deleted' => [ 'deleted|!deleted' ],
+			'private and !private' => [ 'private|!private' ],
+			'protected and !protected' => [ 'protected|!protected' ],
+		];
+	}
+
+	/**
+	 * @dataProvider provideExecuteWithShowParameters
+	 */
+	public function testExecuteWithShowParameters( string $show, array $expectedIds ): void {
+		[ $filters ] = $this->doQuery( self::$authorityCanViewAll, [
+			'abfprop' => 'id',
+			'abfshow' => $show,
+		] );
+
+		$this->assertSame( $expectedIds, array_column( $filters, 'id' ) );
+	}
+
+	public static function provideExecuteWithShowParameters(): array {
+		return [
+			'request enabled filters' => [
+				'show' => 'enabled',
+				'expectedIds' => [ 1, 2, 4 ],
+			],
+			'request non-enabled filters' => [
+				'show' => '!enabled',
+				'expectedIds' => [ 3 ],
+			],
+			'request deleted filters' => [
+				'show' => 'deleted',
+				'expectedIds' => [ 3 ],
+			],
+			'request non-deleted filters' => [
+				'show' => '!deleted',
+				'expectedIds' => [ 1, 2, 4 ],
+			],
+			'request private filters' => [
+				'show' => 'private',
+				'expectedIds' => [ 3 ],
+			],
+			'request non-private filters' => [
+				'show' => '!private',
+				'expectedIds' => [ 1, 2, 4 ],
+			],
+			'request protected filters' => [
+				'show' => 'protected',
+				'expectedIds' => [ 1 ],
+			],
+			'request non-protected filters' => [
+				'show' => '!protected',
+				'expectedIds' => [ 2, 3, 4 ],
+			],
+		];
+	}
+
+	public function testExecuteWithLimit(): void {
+		[ $filters, $result ] = $this->doQuery( self::$authorityCanViewAll, [
+			'abfprop' => 'id',
+			'abflimit' => 1,
+		] );
+
+		$this->assertArrayContains(
+			[ 'continue' => [ 'abfstartid' => 2 ] ],
+			$result
+		);
+		$this->assertCount( 1, $filters );
+	}
+
+	public function testExecuteReturnsBasicProperties(): void {
+		[ $filters ] = $this->doQuery( self::$authorityCanViewAll );
+
+		$propMap = [
+			1 => [
+				'suppressed' => false,
+				'private' => false,
+				'protected' => true,
+				'enabled' => true,
+				'deleted' => false,
+			],
+			2 => [
+				'suppressed' => false,
+				'private' => false,
+				'protected' => false,
+				'enabled' => true,
+				'deleted' => false,
+			],
+			3 => [
+				'suppressed' => false,
+				'private' => true,
+				'protected' => false,
+				'enabled' => false,
+				'deleted' => true,
+			],
+			4 => [
+				'suppressed' => true,
+				'private' => false,
+				'protected' => false,
+				'enabled' => true,
+				'deleted' => false,
+			],
+		];
+
+		foreach ( $filters as $index => $filter ) {
+			$id = $index + 1;
+
+			$this->assertSame( $id, $filter['id'] );
+			$this->assertIsString( $filter['description'] );
+			$this->assertIsString( $filter['actions'] );
+			$this->assertIsString( $filter['lasteditor'] );
+			$this->assertIsString( $filter['lastedittime'] );
+
+			foreach ( [ 'suppressed', 'private', 'protected', 'enabled', 'deleted' ] as $prop ) {
+				$expected = $propMap[$id][$prop];
+				$this->assertSame(
+					$expected,
+					array_key_exists( $prop, $filter ),
+					$expected
+						? "Filter $id is $prop, but the object does not contain the key"
+						: "Filter $id is not $prop, but the object contains the key"
+				);
+			}
 		}
+	}
+
+	/**
+	 * @dataProvider provideExecuteRedactsPatternBasedOnAuthority
+	 */
+	public function testExecuteRedactsPatternBasedOnAuthority(
+		callable $getAuthority,
+		array $expectedViewableIds
+	): void {
+		[ $filters ] = $this->doQuery( $getAuthority(), [ 'abfprop' => 'id|pattern' ] );
+
+		foreach ( $filters as $index => $filter ) {
+			$id = $index + 1;
+
+			$this->assertSame( $id, $filter['id'] );
+
+			if ( in_array( $id, $expectedViewableIds, true ) ) {
+				$this->assertArrayHasKey( 'pattern', $filter );
+				$this->assertArrayNotHasKey( 'patternredacted', $filter );
+			} else {
+				$this->assertArrayNotHasKey( 'pattern', $filter );
+				$this->assertArrayHasKey( 'patternredacted', $filter );
+			}
+		}
+	}
+
+	public static function provideExecuteRedactsPatternBasedOnAuthority(): array {
+		return [
+			'performer can view public filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewPublic,
+				'expectedViewableIds' => [ 2 ],
+			],
+			'performer can view private filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewPrivate,
+				'expectedViewableIds' => [ 2, 3 ],
+			],
+			'performer can view protected filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewProtected,
+				'expectedViewableIds' => [ 1, 2 ],
+			],
+			'performer can view suppressed filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewSuppressed,
+				'expectedViewableIds' => [ 2, 4 ],
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider provideExecuteRedactsPatternBasedOnAuthority
+	 */
+	public function testExecuteRedactsCommentsBasedOnAuthority(
+		callable $getAuthority,
+		array $expectedViewableIds
+	): void {
+		[ $filters ] = $this->doQuery( $getAuthority(), [ 'abfprop' => 'id|comments' ] );
+
+		foreach ( $filters as $index => $filter ) {
+			$id = $index + 1;
+
+			$this->assertSame( $id, $filter['id'] );
+
+			if ( in_array( $id, $expectedViewableIds, true ) ) {
+				$this->assertArrayHasKey( 'comments', $filter );
+				$this->assertArrayNotHasKey( 'commentsredacted', $filter );
+			} else {
+				$this->assertArrayNotHasKey( 'comments', $filter );
+				$this->assertArrayHasKey( 'commentsredacted', $filter );
+			}
+		}
+	}
+
+	/**
+	 * @dataProvider provideExecuteRedactsHitsBasedOnAuthority
+	 */
+	public function testExecuteRedactsHitsBasedOnAuthority(
+		callable $getAuthority,
+		array $expectedHitCounts
+	): void {
+		[ $filters ] = $this->doQuery( $getAuthority(), [ 'abfprop' => 'id|hits' ] );
+
+		foreach ( $filters as $index => $filter ) {
+			$id = $index + 1;
+
+			$this->assertSame( $id, $filter['id'] );
+
+			if ( array_key_exists( $id, $expectedHitCounts ) ) {
+				$this->assertSame( $expectedHitCounts[$id], $filter['hits'] );
+				$this->assertArrayNotHasKey( 'hitsredacted', $filter );
+			} else {
+				$this->assertArrayNotHasKey( 'hits', $filter );
+				$this->assertArrayHasKey( 'hitsredacted', $filter );
+			}
+		}
+	}
+
+	public static function provideExecuteRedactsHitsBasedOnAuthority(): array {
+		return [
+			// Hit counts cannot be viewed without abusefilter-log-detail
+			'performer can view public filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewPublic,
+				'expectedHitCounts' => [],
+			],
+			'performer can view private filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewPrivate,
+				'expectedHitCounts' => [
+					2 => 0,
+					3 => 42,
+				],
+			],
+			'performer can view protected filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewProtected,
+				'expectedHitCounts' => [
+					1 => 1,
+					2 => 0,
+				],
+			],
+			'performer can view suppressed filters' => [
+				'getAuthority' => static fn () => self::$authorityCanViewSuppressed,
+				'expectedHitCounts' => [
+					2 => 0,
+					4 => 9,
+				],
+			],
+		];
 	}
 }

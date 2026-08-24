@@ -90,6 +90,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 			if ( ( isset( $show['enabled'] ) && isset( $show['!enabled'] ) )
 				|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
 				|| ( isset( $show['private'] ) && isset( $show['!private'] ) )
+				|| ( isset( $show['protected'] ) && isset( $show['!protected'] ) )
 			) {
 				$this->dieWithError( 'apierror-show' );
 			}
@@ -108,12 +109,12 @@ class QueryAbuseFilters extends ApiQueryBase {
 				isset( $show['private'] )
 			);
 			$this->addWhereIf(
-				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' != 0',
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0',
 				isset( $show['!protected'] )
 			);
 			$this->addWhereIf(
-				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' = 0',
-				isset( $show['!protected'] )
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' != 0',
+				isset( $show['protected'] )
 			);
 		}
 
@@ -267,6 +268,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 					'lasteditor',
 					'lastedittime',
 					'status',
+					'suppressed',
 					'private',
 					'protected',
 				],
