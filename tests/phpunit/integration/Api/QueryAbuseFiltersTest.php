@@ -235,6 +235,7 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 			'deleted and !deleted' => [ 'deleted|!deleted' ],
 			'private and !private' => [ 'private|!private' ],
 			'protected and !protected' => [ 'protected|!protected' ],
+			'suppressed and !suppressed' => [ 'suppressed|!suppressed' ],
 		];
 	}
 
@@ -283,6 +284,14 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 			'request non-protected filters' => [
 				'show' => '!protected',
 				'expectedIds' => [ 2, 3, 4 ],
+			],
+			'request suppressed filters' => [
+				'show' => 'suppressed',
+				'expectedIds' => [ 4 ],
+			],
+			'request non-suppressed filters' => [
+				'show' => '!suppressed',
+				'expectedIds' => [ 1, 2, 3 ],
 			],
 		];
 	}

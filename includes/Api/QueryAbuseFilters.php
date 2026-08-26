@@ -91,6 +91,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 				|| ( isset( $show['deleted'] ) && isset( $show['!deleted'] ) )
 				|| ( isset( $show['private'] ) && isset( $show['!private'] ) )
 				|| ( isset( $show['protected'] ) && isset( $show['!protected'] ) )
+				|| ( isset( $show['suppressed'] ) && isset( $show['!suppressed'] ) )
 			) {
 				$this->dieWithError( 'apierror-show' );
 			}
@@ -115,6 +116,14 @@ class QueryAbuseFilters extends ApiQueryBase {
 			$this->addWhereIf(
 				$dbr->bitAnd( 'af_hidden', Flags::FILTER_USES_PROTECTED_VARS ) . ' != 0',
 				isset( $show['protected'] )
+			);
+			$this->addWhereIf(
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_SUPPRESSED ) . ' = 0',
+				isset( $show['!suppressed'] )
+			);
+			$this->addWhereIf(
+				$dbr->bitAnd( 'af_hidden', Flags::FILTER_SUPPRESSED ) . ' != 0',
+				isset( $show['suppressed'] )
 			);
 		}
 
@@ -247,6 +256,8 @@ class QueryAbuseFilters extends ApiQueryBase {
 					'!private',
 					'protected',
 					'!protected',
+					'suppressed',
+					'!suppressed',
 				],
 			],
 			'limit' => [
