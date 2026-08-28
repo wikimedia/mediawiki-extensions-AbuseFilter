@@ -57,6 +57,7 @@
 	"action-abusefilter-modify-restricted": "зьмяніць фільтры злоўжываньняў з абмежаванымі дзеяньнямі",
 	"action-abusefilter-revert": "скасаваць усе зьмены, зробленыя пазначаным фільтрам злоўжываньняў",
 	"action-abusefilter-view-private": "паказаць фільтры злоўжываньняў пазначаныя як прыватныя",
+	"action-abusefilter-log-suppressed": "прагляд журналаў фільтраў злоўжываньняў, пазначаных прыхаванымі",
 	"action-abusefilter-log-private": "прагляд журналаў фільтраў злоўжываньняў, пазначаных як прыватныя",
 	"action-abusefilter-log-protected": "прагляд журналаў фільтраў злоўжываньняў, пазначаных як абароненыя",
 	"action-abusefilter-hide-log": "схаваць запісы ў журнале злоўжываньняў",
