@@ -47,13 +47,10 @@ describe( 'When importing a filter', () => {
 		await expect( ViewImportPage.importData ).toBeDisplayed();
 	} );
 
-	it( 'it should redirect to ViewEdit after submission', async () => {
+	it( 'bad data results in an error on ViewEdit', async () => {
 		await ViewImportPage.importText( 'SOME INVALID GIBBERISH' );
-		expect( await browser.getUrl() ).toMatch( /\/new$/ );
-	} );
-
-	it( 'bad data results in an error', async () => {
 		await expect( ViewEditPage.error ).toBeDisplayed();
+		expect( await browser.getUrl() ).toMatch( /\/new$/ );
 	} );
 
 	it( 'valid data shows the editing interface', async () => {
