@@ -202,7 +202,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	private function saveContent( array $content, Authority $authority, string $comment ): StatusValue {
 		$configPage = $this->getBlockedDomainPage();
 		$page = $this->wikiPageFactory->newFromTitle( $configPage );
-		$updater = $page->newPageUpdater( $authority );
+		$updater = $page->newPageUpdater( $authority->getUser() );
 		$updater->setContent( SlotRecord::MAIN, new JsonContent( FormatJson::encode( $content ) ) );
 
 		if ( $authority->isAllowed( 'autopatrol' ) ) {
