@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ahmed-Najib-Biabani-Ibrahimkhel",
+			"باران",
 			"شاه زمان پټان"
 		]
 	},
@@ -99,7 +100,7 @@
 	"abusefilter-log-cannot-see-privatedetails": "تاسو د دې ننوتنې د ځانگړو سپيناويو ليدلو پرېښولی نه لرئ.",
 	"abusefilter-log-nonexistent": "ورکړل شوي پېژند سره هيڅ ورته ننوتنه نشته.",
 	"abusefilter-log-hide-no-selected": "هيڅ ننوتنې نه دي ټاکل شوي",
-	"abusefilter-log-hide-legend": "ښکارېدنه بدلول",
+	"abusefilter-log-hide-legend": "څرگندتيا بدلول",
 	"abusefilter-log-hide-set-visibility": "د ټاکل‌شوو ننوتنو لپاره ښکارېدنې اوڼل:",
 	"abusefilter-log-hide-reason": "لامل:",
 	"abusefilter-log-hide-reason-other": "بل/زياتي لامل:",
@@ -110,14 +111,14 @@
 	"abusefilter-log-entry-suppress": "$1 {{GENDER:$2|پټ}} $3",
 	"abusefilter-log-entry-unsuppress": "$1 {{GENDER:$2|ښکاره}} $3",
 	"log-action-filter-abusefilter-create": "نوی چاڼگر جوړول",
-	"log-action-filter-abusefilter-modify": "چانگر بدلول",
+	"log-action-filter-abusefilter-modify": "چاڼگر بدلول",
 	"log-name-abusefilterblockeddomainhit": "د بنديزلگېدلو واک‌سيمو چلند يادښت",
 	"abusefilter-list": "ټول چاڼگران",
 	"abusefilter-list-id": "د چاڼگر پېژند",
 	"abusefilter-list-status": "دريځ",
 	"abusefilter-list-public": "ټوليز څرگنداوی",
 	"abusefilter-list-consequences": "عواقب",
-	"abusefilter-list-visibility": "ښکارېدنه",
+	"abusefilter-list-visibility": "څرگندتيا",
 	"abusefilter-list-hitcount": "ورته‌وهنو شمېر",
 	"abusefilter-list-limit": "په هر مخ کې شمېر:",
 	"abusefilter-list-lastmodified": "تېرځل بدل شوی",
