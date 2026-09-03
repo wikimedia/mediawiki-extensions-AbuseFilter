@@ -5,13 +5,13 @@ namespace MediaWiki\Extension\AbuseFilter;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
-use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Notification\NotificationService;
 use MediaWiki\Notification\RecipientSet;
+use MediaWiki\Notification\Types\TitleNotification;
 use MediaWiki\Title\Title;
 
 /**
  * Helper service for EmergencyWatcher to notify filter maintainers of throttled filters
- * @todo DI not possible due to Echo
  */
 class EchoNotifier {
 	public const SERVICE_NAME = ServiceNames::EchoNotifier;
@@ -20,7 +20,7 @@ class EchoNotifier {
 	public function __construct(
 		private readonly FilterLookup $filterLookup,
 		private readonly ConsequencesRegistry $consequencesRegistry,
-		private readonly bool $isEchoLoaded
+		private readonly NotificationService $notifications,
 	) {
 	}
 
@@ -32,39 +32,26 @@ class EchoNotifier {
 		return $this->filterLookup->getFilter( $filter, false );
 	}
 
-	/**
-	 * @param ExistingFilter $filterObj
-	 * @return array
-	 */
-	private function getDataForEvent( ExistingFilter $filterObj ): array {
-		$throttledActionNames = array_intersect(
+	private function getThrottledActionNames( ExistingFilter $filterObj ): array {
+		return array_intersect(
 			$filterObj->getActionsNames(),
 			$this->consequencesRegistry->getDangerousActionNames()
 		);
-		return [
-			'type' => self::EVENT_TYPE,
-			'title' => $this->getTitleForFilter( $filterObj->getID() ),
-			'extra' => [
-				'throttled-actions' => $throttledActionNames,
-			],
-		];
 	}
 
 	/**
 	 * Send notification about a filter being throttled
-	 *
-	 * @param int $filter
-	 * @return Event|false
 	 */
-	public function notifyForFilter( int $filter ) {
-		if ( $this->isEchoLoaded ) {
-			$filterObj = $this->getFilterObject( $filter );
-			return Event::create(
-				$this->getDataForEvent( $filterObj ),
-				new RecipientSet( $filterObj->getUserIdentity() )
-			);
-		}
-		return false;
+	public function notifyForFilter( int $filter ): void {
+		$filterObj = $this->getFilterObject( $filter );
+		$this->notifications->notify(
+			new TitleNotification(
+				self::EVENT_TYPE,
+				$this->getTitleForFilter( $filter ),
+				[ 'throttled-actions' => $this->getThrottledActionNames( $filterObj ) ]
+			),
+			new RecipientSet( $filterObj->getUserIdentity() )
+		);
 	}
 
 }

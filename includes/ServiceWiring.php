@@ -176,7 +176,7 @@ return [
 		return new EchoNotifier(
 			$services->getService( FilterLookup::SERVICE_NAME ),
 			$services->getService( ConsequencesRegistry::SERVICE_NAME ),
-			ExtensionRegistry::getInstance()->isLoaded( 'Echo' )
+			$services->getNotificationService(),
 		);
 	},
 	ServiceNames::FilterValidator => static function ( MediaWikiServices $services ): FilterValidator {
