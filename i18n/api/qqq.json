@@ -66,6 +66,19 @@
 	"apihelp-query+abusefilters-param-show": "{{doc-apihelp-param|query+abusefilters|show}}",
 	"apihelp-query+abusefilters-param-limit": "{{doc-apihelp-param|query+abusefilters|limit}}",
 	"apihelp-query+abusefilters-param-prop": "{{doc-apihelp-param|query+abusefilters|prop}}",
+	"apihelp-query+abusefilters-paramvalue-prop-id": "{{doc-apihelp-paramvalue|query+abusefilters|prop|id}}",
+	"apihelp-query+abusefilters-paramvalue-prop-description": "{{doc-apihelp-paramvalue|query+abusefilters|prop|description}}",
+	"apihelp-query+abusefilters-paramvalue-prop-pattern": "{{doc-apihelp-paramvalue|query+abusefilters|prop|pattern}}",
+	"apihelp-query+abusefilters-paramvalue-prop-actions": "{{doc-apihelp-paramvalue|query+abusefilters|prop|actions}}",
+	"apihelp-query+abusefilters-paramvalue-prop-hits": "{{doc-apihelp-paramvalue|query+abusefilters|prop|hits}}",
+	"apihelp-query+abusefilters-paramvalue-prop-comments": "{{doc-apihelp-paramvalue|query+abusefilters|prop|comments}}",
+	"apihelp-query+abusefilters-paramvalue-prop-lasteditor": "{{doc-apihelp-paramvalue|query+abusefilters|prop|lasteditor}}",
+	"apihelp-query+abusefilters-paramvalue-prop-lastedittime": "{{doc-apihelp-paramvalue|query+abusefilters|prop|lastedittime}}",
+	"apihelp-query+abusefilters-paramvalue-prop-flags": "{{doc-apihelp-paramvalue|query+abusefilters|prop|flags}}",
+	"apihelp-query+abusefilters-paramvalue-prop-status": "{{doc-apihelp-paramvalue|query+abusefilters|prop|status}}",
+	"apihelp-query+abusefilters-paramvalue-prop-suppressed": "{{doc-apihelp-paramvalue|query+abusefilters|prop|suppressed}}",
+	"apihelp-query+abusefilters-paramvalue-prop-private": "{{doc-apihelp-paramvalue|query+abusefilters|prop|private}}",
+	"apihelp-query+abusefilters-paramvalue-prop-protected": "{{doc-apihelp-paramvalue|query+abusefilters|prop|protected}}",
 	"apihelp-query+abusefilters-example-1": "{{doc-apihelp-example|query+abusefilters}}",
 	"apihelp-query+abusefilters-example-2": "{{doc-apihelp-example|query+abusefilters}}",
 	"apihelp-query+abuselog-summary": "{{doc-apihelp-summary|query+abuselog}}",
@@ -90,5 +103,6 @@
 	"apierror-abusefilter-canteval": "{{doc-apierror}}",
 	"apierror-abusefilter-nosuchlogid": "{{doc-apierror}}\n\nParameters:\n* $1 - AbuseFilter log ID number.",
 	"apierror-abusefilter-incompatible": "{{doc-apierror}}",
-	"apierror-abusefilter-badsyntax": "{{doc-apierror}}"
+	"apierror-abusefilter-badsyntax": "{{doc-apierror}}",
+	"apiwarn-deprecation-query+abusefilters-paramvalue-prop-flags": "{{doc-important|Do not translate \"flags\".}}{{doc-apierror}}"
 }

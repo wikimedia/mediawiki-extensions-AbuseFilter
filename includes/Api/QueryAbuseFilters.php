@@ -25,6 +25,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\ParamValidator\TypeDef\EnumDef;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 use Wikimedia\Timestamp\TimestampFormat as TS;
@@ -66,10 +67,9 @@ class QueryAbuseFilters extends ApiQueryBase {
 		$fld_comments = isset( $prop['comments'] );
 		$fld_user = isset( $prop['lasteditor'] );
 		$fld_time = isset( $prop['lastedittime'] );
-		$fld_status = isset( $prop['status'] );
-		$fld_suppressed = isset( $prop['suppressed'] );
-		$fld_private = isset( $prop['private'] );
-		$fld_protected = isset( $prop['protected'] );
+		$fld_flags = (bool)array_intersect_key( $prop, array_flip( [
+			'flags', 'status', 'suppressed', 'private', 'protected'
+		] ) );
 
 		$result = $this->getResult();
 
@@ -201,17 +201,16 @@ class QueryAbuseFilters extends ApiQueryBase {
 					TS::ISO_8601, $filter->getLastEditInfo()->getTimestamp()
 				);
 			}
-			if ( $fld_suppressed && $filter->isSuppressed() ) {
-				$entry['suppressed'] = '';
-			}
-
-			if ( $fld_private && $filter->isHidden() ) {
-				$entry['private'] = '';
-			}
-			if ( $fld_protected && $filter->isProtected() ) {
-				$entry['protected'] = '';
-			}
-			if ( $fld_status ) {
+			if ( $fld_flags ) {
+				if ( $filter->isSuppressed() ) {
+					$entry['suppressed'] = '';
+				}
+				if ( $filter->isHidden() ) {
+					$entry['private'] = '';
+				}
+				if ( $filter->isProtected() ) {
+					$entry['protected'] = '';
+				}
 				if ( $filter->isEnabled() ) {
 					$entry['enabled'] = '';
 				}
@@ -279,7 +278,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 				IntegerDef::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			],
 			'prop' => [
-				ParamValidator::PARAM_DEFAULT => 'id|description|actions|status',
+				ParamValidator::PARAM_DEFAULT => 'id|description|actions|flags',
 				ParamValidator::PARAM_TYPE => [
 					'id',
 					'description',
@@ -289,12 +288,20 @@ class QueryAbuseFilters extends ApiQueryBase {
 					'comments',
 					'lasteditor',
 					'lastedittime',
+					'flags',
+					// Deprecated
 					'status',
 					'suppressed',
 					'private',
 					'protected',
 				],
-				ParamValidator::PARAM_ISMULTI => true
+				ParamValidator::PARAM_ISMULTI => true,
+				EnumDef::PARAM_DEPRECATED_VALUES => array_fill_keys(
+					// Deprecated since 1.47
+					[ 'status', 'suppressed', 'private', 'protected' ],
+					'apiwarn-deprecation-query+abusefilters-paramvalue-prop-flags'
+				),
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			]
 		];
 	}

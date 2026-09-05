@@ -114,8 +114,7 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 		$params += [
 			'action' => 'query',
 			'list' => 'abusefilters',
-			'abfprop' => 'id|description|pattern|actions|hits|comments|' .
-				'lasteditor|lastedittime|status|suppressed|private|protected',
+			'abfprop' => 'id|description|pattern|actions|hits|comments|lasteditor|lastedittime|flags',
 		];
 
 		[ $result ] = $this->doApiRequest( $params, performer: $performer );
