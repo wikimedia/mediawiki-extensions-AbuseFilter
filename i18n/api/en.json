@@ -29,6 +29,8 @@
 	"apihelp-query+abusefilters-summary": "Show details of the abuse filters.",
 	"apihelp-query+abusefilters-param-startid": "The filter ID to start enumerating from.",
 	"apihelp-query+abusefilters-param-endid": "The filter ID to stop enumerating at.",
+	"apihelp-query+abusefilters-paramvalue-dir-ascending": "Enumerate filters in ascending order.",
+	"apihelp-query+abusefilters-paramvalue-dir-descending": "Enumerate filters in descending order.",
 	"apihelp-query+abusefilters-param-show": "Show only filters which meet these criteria.",
 	"apihelp-query+abusefilters-param-limit": "The maximum number of filters to list.",
 	"apihelp-query+abusefilters-param-prop": "Which properties to get.",

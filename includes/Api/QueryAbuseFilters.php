@@ -81,7 +81,12 @@ class QueryAbuseFilters extends ApiQueryBase {
 
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 
-		$this->addWhereRange( 'af_id', $params['dir'], $params['startid'], $params['endid'] );
+		$dir = match ( $params['dir'] ) {
+			'ascending' => 'newer',
+			'descending' => 'older',
+			default => $params['dir'],
+		};
+		$this->addWhereRange( 'af_id', $dir, $params['startid'], $params['endid'] );
 
 		if ( $params['show'] !== null ) {
 			$show = array_fill_keys( $params['show'], true );
@@ -238,12 +243,18 @@ class QueryAbuseFilters extends ApiQueryBase {
 				ParamValidator::PARAM_TYPE => 'integer',
 			],
 			'dir' => [
-				ParamValidator::PARAM_TYPE => [
-					'older',
-					'newer'
-				],
-				ParamValidator::PARAM_DEFAULT => 'newer',
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-direction',
+				ParamValidator::PARAM_TYPE => [
+					'ascending',
+					'descending',
+					'newer',
+					'older',
+				],
+				ParamValidator::PARAM_DEFAULT => 'ascending',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [
+					'newer' => 'apihelp-query+abusefilters-paramvalue-dir-ascending',
+					'older' => 'apihelp-query+abusefilters-paramvalue-dir-descending',
+				],
 			],
 			'show' => [
 				ParamValidator::PARAM_ISMULTI => true,

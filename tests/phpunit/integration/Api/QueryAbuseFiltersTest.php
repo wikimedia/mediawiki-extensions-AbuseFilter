@@ -153,53 +153,65 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 
 	public static function provideExecuteWithRangeSpecifications(): array {
 		return [
-			'newer, no range' => [
+			'ascending, no range' => [
+				'dir' => 'ascending',
+				'startId' => null,
+				'endId' => null,
+				'expectedIds' => [ 1, 2, 3, 4 ],
+			],
+			'ascending, startid only' => [
+				'dir' => 'ascending',
+				'startId' => 2,
+				'endId' => null,
+				'expectedIds' => [ 2, 3, 4 ],
+			],
+			'ascending, endid only' => [
+				'dir' => 'ascending',
+				'startId' => null,
+				'endId' => 2,
+				'expectedIds' => [ 1, 2 ],
+			],
+			'ascending, startid and endid' => [
+				'dir' => 'ascending',
+				'startId' => 1,
+				'endId' => 3,
+				'expectedIds' => [ 1, 2, 3 ],
+			],
+			'descending, no range' => [
+				'dir' => 'descending',
+				'startId' => null,
+				'endId' => null,
+				'expectedIds' => [ 4, 3, 2, 1 ],
+			],
+			'descending, startid only' => [
+				'dir' => 'descending',
+				'startId' => 2,
+				'endId' => null,
+				'expectedIds' => [ 2, 1 ],
+			],
+			'descending, endid only' => [
+				'dir' => 'descending',
+				'startId' => null,
+				'endId' => 2,
+				'expectedIds' => [ 4, 3, 2 ],
+			],
+			'descending, startid and endid' => [
+				'dir' => 'descending',
+				'startId' => 3,
+				'endId' => 1,
+				'expectedIds' => [ 3, 2, 1 ],
+			],
+			'newer, same as ascending' => [
 				'dir' => 'newer',
 				'startId' => null,
 				'endId' => null,
 				'expectedIds' => [ 1, 2, 3, 4 ],
 			],
-			'newer, startid only' => [
-				'dir' => 'newer',
-				'startId' => 2,
-				'endId' => null,
-				'expectedIds' => [ 2, 3, 4 ],
-			],
-			'newer, endid only' => [
-				'dir' => 'newer',
-				'startId' => null,
-				'endId' => 2,
-				'expectedIds' => [ 1, 2 ],
-			],
-			'newer, startid and endid' => [
-				'dir' => 'newer',
-				'startId' => 1,
-				'endId' => 3,
-				'expectedIds' => [ 1, 2, 3 ],
-			],
-			'older, no range' => [
+			'older, same as descending' => [
 				'dir' => 'older',
 				'startId' => null,
 				'endId' => null,
 				'expectedIds' => [ 4, 3, 2, 1 ],
-			],
-			'older, startid only' => [
-				'dir' => 'older',
-				'startId' => 2,
-				'endId' => null,
-				'expectedIds' => [ 2, 1 ],
-			],
-			'older, endid only' => [
-				'dir' => 'older',
-				'startId' => null,
-				'endId' => 2,
-				'expectedIds' => [ 4, 3, 2 ],
-			],
-			'older, startid and endid' => [
-				'dir' => 'older',
-				'startId' => 3,
-				'endId' => 1,
-				'expectedIds' => [ 3, 2, 1 ],
 			],
 		];
 	}

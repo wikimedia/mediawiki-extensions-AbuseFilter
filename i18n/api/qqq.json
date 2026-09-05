@@ -61,6 +61,8 @@
 	"apihelp-query+abusefilters-summary": "{{doc-apihelp-summary|query+abusefilters}}",
 	"apihelp-query+abusefilters-param-startid": "{{doc-apihelp-param|query+abusefilters|startid}}",
 	"apihelp-query+abusefilters-param-endid": "{{doc-apihelp-param|query+abusefilters|endid}}",
+	"apihelp-query+abusefilters-paramvalue-dir-ascending": "{{doc-apihelp-paramvalue|query+globalusers|dir|ascending}}",
+	"apihelp-query+abusefilters-paramvalue-dir-descending": "{{doc-apihelp-paramvalue|query+globalusers|dir|descending}}",
 	"apihelp-query+abusefilters-param-show": "{{doc-apihelp-param|query+abusefilters|show}}",
 	"apihelp-query+abusefilters-param-limit": "{{doc-apihelp-param|query+abusefilters|limit}}",
 	"apihelp-query+abusefilters-param-prop": "{{doc-apihelp-param|query+abusefilters|prop}}",
