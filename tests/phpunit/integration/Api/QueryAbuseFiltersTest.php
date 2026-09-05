@@ -345,20 +345,10 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 
 			$this->assertSame( $id, $filter['id'] );
 			$this->assertIsString( $filter['description'] );
-			$this->assertIsString( $filter['actions'] );
+			$this->assertSame( $id === 1 ? [ 'tags' ] : [], $filter['actions'] );
 			$this->assertIsString( $filter['lasteditor'] );
 			$this->assertIsString( $filter['lastedittime'] );
-
-			foreach ( [ 'suppressed', 'private', 'protected', 'enabled', 'deleted' ] as $prop ) {
-				$expected = $propMap[$id][$prop];
-				$this->assertSame(
-					$expected,
-					array_key_exists( $prop, $filter ),
-					$expected
-						? "Filter $id is $prop, but the object does not contain the key"
-						: "Filter $id is not $prop, but the object contains the key"
-				);
-			}
+			$this->assertArrayContains( $propMap[$id], $filter );
 		}
 	}
 
@@ -382,6 +372,7 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 			} else {
 				$this->assertArrayNotHasKey( 'pattern', $filter );
 				$this->assertArrayHasKey( 'patternredacted', $filter );
+				$this->assertTrue( $filter['patternredacted'] );
 			}
 		}
 	}
@@ -427,6 +418,7 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 			} else {
 				$this->assertArrayNotHasKey( 'comments', $filter );
 				$this->assertArrayHasKey( 'commentsredacted', $filter );
+				$this->assertTrue( $filter['commentsredacted'] );
 			}
 		}
 	}
@@ -451,6 +443,7 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 			} else {
 				$this->assertArrayNotHasKey( 'hits', $filter );
 				$this->assertArrayHasKey( 'hitsredacted', $filter );
+				$this->assertTrue( $filter['hitsredacted'] );
 			}
 		}
 	}

@@ -142,7 +142,7 @@ class QueryAbuseFilters extends ApiQueryBase {
 			// FilterLookup::filterFromRow will override af_actions, so we need to define the callback to generate
 			// the data. We do not need to define anything other than the names because we only call
 			// AbstractFilter::getActionNames.
-			$actions = array_flip( explode( ',', $row->af_actions ) );
+			$actions = $row->af_actions ? array_flip( explode( ',', $row->af_actions ) ) : [];
 			$filter = $this->filterLookup->filterFromRow( $row, $actions );
 			if ( ++$count > $params['limit'] ) {
 				// We've had enough
@@ -173,24 +173,24 @@ class QueryAbuseFilters extends ApiQueryBase {
 				if ( $canViewExtendedDetailsAboutFilter ) {
 					$entry['pattern'] = $filter->getRules();
 				} else {
-					$entry['patternredacted'] = '';
+					$entry['patternredacted'] = true;
 				}
 			}
 			if ( $fld_actions ) {
-				$entry['actions'] = implode( ',', $filter->getActionsNames() );
+				$entry['actions'] = $filter->getActionsNames();
 			}
 			if ( $fld_hits ) {
 				if ( $this->afPermManager->canSeeLogDetailsForFilter( $this->getAuthority(), $filter ) ) {
 					$entry['hits'] = $filter->getHitCount();
 				} else {
-					$entry['hitsredacted'] = '';
+					$entry['hitsredacted'] = true;
 				}
 			}
 			if ( $fld_comments ) {
 				if ( $canViewExtendedDetailsAboutFilter ) {
 					$entry['comments'] = $filter->getComments();
 				} else {
-					$entry['commentsredacted'] = '';
+					$entry['commentsredacted'] = true;
 				}
 			}
 			if ( $fld_user ) {
@@ -202,21 +202,11 @@ class QueryAbuseFilters extends ApiQueryBase {
 				);
 			}
 			if ( $fld_flags ) {
-				if ( $filter->isSuppressed() ) {
-					$entry['suppressed'] = '';
-				}
-				if ( $filter->isHidden() ) {
-					$entry['private'] = '';
-				}
-				if ( $filter->isProtected() ) {
-					$entry['protected'] = '';
-				}
-				if ( $filter->isEnabled() ) {
-					$entry['enabled'] = '';
-				}
-				if ( $filter->isDeleted() ) {
-					$entry['deleted'] = '';
-				}
+				$entry['suppressed'] = $filter->isSuppressed();
+				$entry['private'] = $filter->isHidden();
+				$entry['protected'] = $filter->isProtected();
+				$entry['enabled'] = $filter->isEnabled();
+				$entry['deleted'] = $filter->isDeleted();
 			}
 			if ( $entry ) {
 				$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $entry );
