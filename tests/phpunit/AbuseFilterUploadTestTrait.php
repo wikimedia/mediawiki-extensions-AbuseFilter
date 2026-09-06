@@ -1,7 +1,6 @@
 <?php
 
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Api\RandomImageGenerator;
 use MediaWiki\Upload\UploadBase;
@@ -28,7 +27,7 @@ trait AbuseFilterUploadTestTrait {
 	 */
 	protected function clearUploads(): void {
 		if ( $this->clearPath ) {
-			$backend = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->getBackend();
+			$backend = $this->getServiceContainer()->getRepoGroup()->getLocalRepo()->getBackend();
 			$backend->delete( [ 'src' => $this->clearPath ], [ 'force' => 1 ] );
 			$this->clearPath = null;
 		}

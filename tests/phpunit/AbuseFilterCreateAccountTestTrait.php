@@ -3,7 +3,6 @@
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPreAuthenticationProvider;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Logging\ManualLogEntry;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\PageReferenceValue;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\User\User;
@@ -27,7 +26,7 @@ trait AbuseFilterCreateAccountTestTrait {
 		bool $autocreate = false,
 		?User $creator = null
 	): StatusValue {
-		$services = MediaWikiServices::getInstance();
+		$services = $this->getServiceContainer();
 		$userFactory = $services->getUserFactory();
 		if ( $accountName === null && $services->getTempUserConfig()->isEnabled() ) {
 			$user = $services->getTempUserCreator()->create( null, new FauxRequest() )->getUser();

@@ -26,7 +26,6 @@ use MediaWiki\Extension\AbuseFilter\Watcher\EmergencyWatcher;
 use MediaWiki\Extension\AbuseFilter\Watcher\UpdateHitCountWatcher;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Tests\Api\ApiTestCase;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
@@ -319,16 +318,17 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 			$this->assertStatusGood( $status );
 		}
 
+		$services = $this->getServiceContainer();
 		$handler = new FilteredActionsHandler(
 			StatsFactory::newNull(),
-			AbuseFilterServices::getFilterRunnerFactory(),
-			AbuseFilterServices::getVariableGeneratorFactory(),
-			AbuseFilterServices::getEditRevUpdater(),
-			AbuseFilterServices::getBlockedDomainFilter(),
-			MediaWikiServices::getInstance()->getPermissionManager(),
-			MediaWikiServices::getInstance()->getTitleFactory(),
-			MediaWikiServices::getInstance()->getUserFactory(),
-			MediaWikiServices::getInstance()->getTempUserConfig()
+			AbuseFilterServices::getFilterRunnerFactory( $services ),
+			AbuseFilterServices::getVariableGeneratorFactory( $services ),
+			AbuseFilterServices::getEditRevUpdater( $services ),
+			AbuseFilterServices::getBlockedDomainFilter( $services ),
+			$services->getPermissionManager(),
+			$services->getTitleFactory(),
+			$services->getUserFactory(),
+			$services->getTempUserConfig()
 		);
 		$this->setTemporaryHook(
 			'EditFilterMergedContent',
@@ -346,7 +346,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 		}
 		$this->assertNotNull( $ex, 'Exception should be thrown' );
 		$this->assertNotNull( $varHolder, 'Variables should be set' );
-		$export = AbuseFilterServices::getVariablesManager()->dumpAllVars(
+		$export = AbuseFilterServices::getVariablesManager( $services )->dumpAllVars(
 			$varHolder,
 			array_keys( $expected )
 		);

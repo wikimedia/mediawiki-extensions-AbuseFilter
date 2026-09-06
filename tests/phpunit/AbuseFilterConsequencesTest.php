@@ -13,7 +13,6 @@ use MediaWiki\Extension\AbuseFilter\Hooks\Handlers\FilteredActionsHandler;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\MainConfigNames;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\Status\Status;
 use MediaWiki\Storage\PageEditStash;
 use MediaWiki\Title\Title;
@@ -665,7 +664,7 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 					case 'degroup':
 						// Aborts the hook with 'abusefilter-degrouped' error and degroups the user.
 						$expectedErrors[] = 'abusefilter-degrouped';
-						$ugm = MediaWikiServices::getInstance()->getUserGroupManager();
+						$ugm = $this->getServiceContainer()->getUserGroupManager();
 						$userGroups = $ugm->getUserEffectiveGroups( $this->user );
 						$this->assertNotContains( 'sysop', $userGroups, 'User should be degrouped' );
 						break;
