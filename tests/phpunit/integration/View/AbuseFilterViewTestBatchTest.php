@@ -2,6 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\View;
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
+use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\ProtectedVarsAccessLogger;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
@@ -13,6 +16,7 @@ use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 
 /**
  * @group Database
@@ -25,6 +29,7 @@ use MediaWiki\Tests\Specials\SpecialPageTestBase;
  */
 class AbuseFilterViewTestBatchTest extends SpecialPageTestBase {
 	use AbuseFilterPermissionManagerTestTrait;
+	use MockAuthorityTrait;
 	use ProtectedVarsTestTrait;
 
 	private Authority $authorityCannotUseProtectedVar;
@@ -83,11 +88,57 @@ class AbuseFilterViewTestBatchTest extends SpecialPageTestBase {
 			->fetchField();
 		$this->assertNotFalse( $recentChangeId );
 		self::$userWhoHitFilter = $userWhoHitFilter->getName();
+
+		// Create a third filter which is suppressed
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$this->mockRegisteredUltimateAuthority(),
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '3',
+				'rules' => '1 = 0 /* SUPPRESSED FILTER RULES */',
+				'name' => 'Suppressed filter',
+				'privacy' => Flags::FILTER_SUPPRESSED,
+			] ),
+			MutableFilter::newDefault()
+		) );
 	}
 
 	protected function tearDown(): void {
 		parent::tearDown();
 		$this->dropProtectedVarAccessLogs();
+	}
+
+	/**
+	 * @dataProvider providePreloadTestPatternForSuppressedFilter
+	 */
+	public function testPreloadTestPatternForSuppressedFilter( bool $canViewSuppressed ): void {
+		$perms = [ 'abusefilter-modify' ];
+		if ( $canViewSuppressed ) {
+			$perms[] = 'viewsuppressed';
+		}
+
+		[ $html ] = $this->executeSpecialPage(
+			'test/3',
+			performer: $this->mockRegisteredAuthorityWithPermissions( $perms )
+		);
+
+		$rules = '1 = 0 /* SUPPRESSED FILTER RULES */';
+		$errorMsg = '(abusefilter-test-loadfilter-restricted: 3)';
+
+		if ( $canViewSuppressed ) {
+			$this->assertStringContainsString( $rules, $html );
+			$this->assertStringNotContainsString( $errorMsg, $html );
+		} else {
+			$this->assertStringNotContainsString( $rules, $html );
+			$this->assertStringContainsString( $errorMsg, $html );
+		}
+	}
+
+	public static function providePreloadTestPatternForSuppressedFilter(): array {
+		return [
+			'suppressor preloading a suppressed filter' => [ true ],
+			'non-suppressor preloading a suppressed filter' => [ false ],
+		];
 	}
 
 	public function testViewTestBatchProtectedVarsFilterVisibility() {

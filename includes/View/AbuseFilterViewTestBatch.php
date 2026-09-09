@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
+use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
@@ -62,24 +63,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			return;
 		}
 
-		$this->loadParameters();
-
-		// Check if a loaded test pattern uses protected variables and if the user has the right
-		// to view protected variables. If they don't and protected variables are present, unset
-		// the test pattern to avoid leaking PII and notify the user.
-		// This is done as early as possible so that a filter with PII the user cannot access is
-		// never loaded.
-		if ( $this->testPattern !== '' ) {
-			$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
-			$usedVars = $ruleChecker->getUsedVars( $this->testPattern );
-			if ( $this->afPermManager->getForbiddenVariables( $this->getAuthority(), $usedVars ) ) {
-				$this->testPattern = '';
-				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
-				$out->addHtml(
-					Html::errorBox( $this->msg( 'abusefilter-test-protectedvarerr' )->parse() )
-				);
-			}
-		}
+		$this->testPattern = $this->preloadTestPattern();
 
 		$out->setPageTitleMsg( $this->msg( 'abusefilter-test' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
@@ -315,28 +299,65 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		return true;
 	}
 
-	/**
-	 * Loads parameters from request
-	 */
-	public function loadParameters() {
-		$request = $this->getRequest();
+	private function preloadTestPattern(): string {
+		$testPattern = $this->getRequest()->getText( 'wpFilterRules' );
+		$row = false;
 
-		$this->testPattern = $request->getText( 'wpFilterRules' );
-
-		if ( $this->testPattern === ''
-			&& count( $this->mParams ) > 1
-			&& is_numeric( $this->mParams[1] )
+		// If wpFilterRules is empty and a positive filter ID is given,
+		// load the filter's rules
+		if (
+			$testPattern === '' &&
+			// TODO: Handle this in SpecialAbuseFilter via ::isPositiveInteger
+			ctype_digit( $this->mParams[1] ?? '' ) &&
+			(int)$this->mParams[1] > 0
 		) {
-			$dbr = $this->lbFactory->getReplicaDatabase();
-			$pattern = $dbr->newSelectQueryBuilder()
-				->select( 'af_pattern' )
+			// TODO: We could use FilterLookup here rather than hardcoding the query
+			$row = $this->lbFactory->getReplicaDatabase()->newSelectQueryBuilder()
+				->select( [ 'af_id', 'af_pattern', 'af_hidden' ] )
 				->from( 'abuse_filter' )
-				->where( [ 'af_id' => intval( $this->mParams[1] ) ] )
+				->where( [ 'af_id' => (int)$this->mParams[1] ] )
 				->caller( __METHOD__ )
-				->fetchField();
-			if ( $pattern !== false ) {
-				$this->testPattern = $pattern;
-			}
+				->fetchRow();
+
+			$testPattern = $row !== false ? $row->af_pattern : '';
 		}
+
+		if ( $testPattern === '' ) {
+			return '';
+		}
+
+		// Do not load the test pattern if the user doesn't have the required
+		// permissions to view it. Private filters don't need a guard here since
+		// users who cannot view private filters cannot use the test tools
+		$authority = $this->getAuthority();
+		$out = $this->getOutput();
+
+		// Do not expose the test pattern if the associated filter is suppressed
+		// and the user cannot view suppressed filters
+		if (
+			$row !== false &&
+			FilterUtils::isSuppressed( (int)$row->af_hidden ) &&
+			!$this->afPermManager->canViewSuppressed( $authority )
+		) {
+			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
+			$out->addHtml( Html::errorBox(
+				$this->msg( 'abusefilter-test-loadfilter-restricted' )->numParams( $row->af_id )->parse()
+			) );
+			return '';
+		}
+
+		// Do not expose the test pattern if it contains protected variables
+		// that the user cannot view
+		$ruleChecker = $this->ruleCheckerFactory->newRuleChecker();
+		$usedVars = $ruleChecker->getUsedVars( $testPattern );
+		if ( $this->afPermManager->getForbiddenVariables( $authority, $usedVars ) ) {
+			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
+			$out->addHtml( Html::errorBox(
+				$this->msg( 'abusefilter-test-protectedvarerr' )->parse()
+			) );
+			return '';
+		}
+
+		return $testPattern;
 	}
 }

@@ -601,6 +601,7 @@
 	"abusefilter-test-options-section": "Used as label on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-legend": "Caption of the fieldset on [[Special:AbuseFilter/test]]",
 	"abusefilter-test-load-filter": "Used as label on [[Special:AbuseFilter/test]]",
+	"abusefilter-test-loadfilter-restricted": "Error shown when attempting to load the content of a restricted filter without sufficient permissions.\n\nParameters:\n* $1 - the filter ID",
 	"abusefilter-test-submit": "Caption of the submit button on [[Special:AbuseFilter/test]].\n{{Identical|Test}}",
 	"abusefilter-test-load": "Text on a button, and referred to in {{msg-mw|abusefilter-test-intro}}\n{{Identical|Load}}",
 	"abusefilter-test-user": "Used as label on [[Special:AbuseFilter/test]]",
