@@ -19,7 +19,7 @@
 		"@wdio/mocha-framework": "9.31.6",
 		"@wdio/spec-reporter": "9.30.1",
 		"@wikimedia/codex": "2.6.2",
-		"eslint-config-wikimedia": "0.32.5",
+		"eslint-config-wikimedia": "0.32.6",
 		"grunt": "1.6.3",
 		"grunt-banana-checker": "0.13.0",
 		"grunt-eslint": "24.3.0",
