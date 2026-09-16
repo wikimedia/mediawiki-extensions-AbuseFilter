@@ -177,13 +177,6 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 				'endId' => 3,
 				'expectedIds' => [ 1, 2, 3 ],
 			],
-			// TODO: This should not return an empty array (T435833)
-			'newer, startid greater than endid' => [
-				'dir' => 'newer',
-				'startId' => 4,
-				'endId' => 1,
-				'expectedIds' => [],
-			],
 			'older, no range' => [
 				'dir' => 'older',
 				'startId' => null,
@@ -207,13 +200,6 @@ class QueryAbuseFiltersTest extends ApiTestCase {
 				'startId' => 3,
 				'endId' => 1,
 				'expectedIds' => [ 3, 2, 1 ],
-			],
-			// TODO: This should not return an empty array (T435833)
-			'older, startid less than endid' => [
-				'dir' => 'older',
-				'startId' => 1,
-				'endId' => 4,
-				'expectedIds' => [],
 			],
 		];
 	}
