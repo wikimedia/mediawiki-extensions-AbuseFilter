@@ -110,7 +110,7 @@ class AbuseFilterHistoryPager extends TablePager {
 				$formatted = $this->specsFormatter->formatFlags( $value, $lang );
 				break;
 			case 'afh_actions':
-				$actions = unserialize( $value );
+				$actions = unserialize( $value, [ 'allowed_classes' => false ] );
 
 				$display_actions = '';
 

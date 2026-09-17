@@ -404,7 +404,7 @@ class FilterLookup implements IDBAccessObject {
 	 * @return HistoryFilter
 	 */
 	public function filterFromHistoryRow( stdClass $row ): HistoryFilter {
-		$actionsRaw = unserialize( $row->afh_actions );
+		$actionsRaw = unserialize( $row->afh_actions, [ 'allowed_classes' => false ] );
 		$actions = is_array( $actionsRaw ) ? $actionsRaw : [];
 		$flags = $row->afh_flags ? explode( ',', $row->afh_flags ) : [];
 
