@@ -29,6 +29,8 @@
 	"apihelp-query+abusefilters-summary": "Details weergeven van de misbruikfilters.",
 	"apihelp-query+abusefilters-param-startid": "Het filter-ID waar de opsomming begint.",
 	"apihelp-query+abusefilters-param-endid": "Het filter-ID waar de opsomming eindigt.",
+	"apihelp-query+abusefilters-paramvalue-dir-ascending": "Filters weergeven in oplopende volgorde.",
+	"apihelp-query+abusefilters-paramvalue-dir-descending": "Filters weergeven in aflopende volgorde.",
 	"apihelp-query+abusefilters-param-show": "Alleen filters weergeven die voldoen aan deze criteria.",
 	"apihelp-query+abusefilters-param-limit": "Het maximale aantal weer te geven filters.",
 	"apihelp-query+abusefilters-param-prop": "Welke eigenschappen op te vragen.",
