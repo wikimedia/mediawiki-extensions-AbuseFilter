@@ -648,8 +648,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Ka gudub domains-ka dibadda ee la xannibay",
 	"action-abusefilter-bypass-blocked-external-domains": "Ka gudub domain-ka dibadda ee la xannibay",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Abuur ama wax ka beddel domains-ka dibadda ee laga xannibay in la isku xiro waa in lagu sameeyaa [[Special:BlockedExternalDomains|bogga gaarka ah]].",
-	"right-abusefilter-access-protected-vars": "Eeg oo abuuro shaandhooyin isticmaala doorsoomayaal la ilaaliyay",
-	"action-abusefilter-access-protected-vars": "Eeg oo abuuro shaandhooyin isticmaala doorsoomayaal la ilaaliyay",
+	"right-abusefilter-access-protected-vars": "Geli doorsoomayaasha la ilaaliyey ee ku jira shaandheeyayaasha xadgudubka iyo gelinnada diiwaanka xadgudubka",
+	"action-abusefilter-access-protected-vars": "Geli doorsoomayaasha la ilaaliyey ee ku jira shaandheeyayaasha xadgudubka iyo gelinnada diiwaanka xadgudubka",
 	"right-abusefilter-blocked-external-domains-log": "Eeg diiwaanka hits-ka domains-ka dibadda ee la xannibay",
 	"action-abusefilter-blocked-external-domains-log": "Eeg diiwaanka hits-ka ee domains-ka dibadda ee la xannibay",
 	"abusefilter-protected-vars-log-name": "Diiwaanka doorsoomayaasha la ilaaliyay ee Shaandhada Xadgudubka",
@@ -662,5 +662,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Beddel gelitaanka",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Eeg qiimayaasha doorsoomayaasha la ilaaliyay",
 	"communityconfiguration-blockeddomain-title": "Domains-ka dibadda ee la xannibay",
-	"communityconfiguration-blockeddomain-description": "Liiska domains-ka dibadda ee aan la xiriirin karin."
+	"communityconfiguration-blockeddomain-description": "Liiska domains-ka dibadda ee aan la xiriirin karin.",
+	"grant-access-protected-vars": "Geli doorsoomayaasha la ilaaliyey ee ku jira Shaandheeyayaasha Xadgudubka"
 }

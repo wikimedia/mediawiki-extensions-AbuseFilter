@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Func",
+			"GuoPC",
 			"Lakejason0",
 			"LittlePaw365",
 			"Liuxinyu970226",
@@ -36,9 +37,24 @@
 	"apihelp-query+abusefilters-summary": "显示滥用过滤器的详细说明。",
 	"apihelp-query+abusefilters-param-startid": "枚举的起始过滤器ID。",
 	"apihelp-query+abusefilters-param-endid": "枚举的结束过滤器ID。",
+	"apihelp-query+abusefilters-paramvalue-dir-ascending": "按升序枚举过滤器。",
+	"apihelp-query+abusefilters-paramvalue-dir-descending": "按降序枚举过滤器。",
 	"apihelp-query+abusefilters-param-show": "只显示符合这些标准的过滤器。",
 	"apihelp-query+abusefilters-param-limit": "过滤器列表的最大数量。",
-	"apihelp-query+abusefilters-param-prop": "要获取的属性。",
+	"apihelp-query+abusefilters-param-prop": "要包含哪些信息：",
+	"apihelp-query+abusefilters-paramvalue-prop-id": "添加过滤器ID。",
+	"apihelp-query+abusefilters-paramvalue-prop-description": "添加过滤器描述。",
+	"apihelp-query+abusefilters-paramvalue-prop-pattern": "添加过滤器规则。",
+	"apihelp-query+abusefilters-paramvalue-prop-actions": "添加为过滤器启用的操作。",
+	"apihelp-query+abusefilters-paramvalue-prop-hits": "添加过滤器触发数。",
+	"apihelp-query+abusefilters-paramvalue-prop-comments": "添加过滤器注释（又称说明）。",
+	"apihelp-query+abusefilters-paramvalue-prop-lasteditor": "添加最后编辑过滤器的用户的名称。",
+	"apihelp-query+abusefilters-paramvalue-prop-lastedittime": "添加代表最后编辑过滤器日期的时间戳。",
+	"apihelp-query+abusefilters-paramvalue-prop-flags": "添加过滤器状态信息。",
+	"apihelp-query+abusefilters-paramvalue-prop-status": "添加过滤器是否已启用或删除的信息。",
+	"apihelp-query+abusefilters-paramvalue-prop-suppressed": "添加过滤器是否受监督的信息。",
+	"apihelp-query+abusefilters-paramvalue-prop-private": "添加过滤器是否为非公开的信息。",
+	"apihelp-query+abusefilters-paramvalue-prop-protected": "添加过滤器是否受保护的信息。",
 	"apihelp-query+abusefilters-example-1": "列出启用的公开过滤器",
 	"apihelp-query+abusefilters-example-2": "显示有关过滤器的一些详细说明",
 	"apihelp-query+abuselog-summary": "显示一个滥用过滤器的捕获事件。",
@@ -63,5 +79,6 @@
 	"apierror-abusefilter-canteval": "您没有计算 AbuseFilter 表达式的权限。",
 	"apierror-abusefilter-nosuchlogid": "没有id为$1的滥用日志记录。",
 	"apierror-abusefilter-incompatible": "滥用过滤器不支持请求的更改。",
-	"apierror-abusefilter-badsyntax": "过滤器存在语法错误。"
+	"apierror-abusefilter-badsyntax": "过滤器存在语法错误。",
+	"apiwarn-deprecation-query+abusefilters-paramvalue-prop-flags": "请改用“flags”。"
 }

@@ -682,8 +682,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Omijanie blokady zewnętrznych domen",
 	"action-abusefilter-bypass-blocked-external-domains": "omijania blokady zewnętrznych domen",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Dodawanie oraz modyfikowanie zablokowanych zewnętrznych domen musi odbywać się poprzez [[Special:BlockedExternalDomains|stronę specjalną]].",
-	"right-abusefilter-access-protected-vars": "Wyświetlanie i tworzenie filtrów, korzystających z chronionych zmiennych",
-	"action-abusefilter-access-protected-vars": "wyświetlania i tworzenia filtrów, korzystających z chronionych zmiennych",
+	"right-abusefilter-access-protected-vars": "Dostęp do chronionych zmiennych w filtrach nadużyć i rejestrze nadużyć",
+	"action-abusefilter-access-protected-vars": "dostępu do chronionych zmiennych w filtrach nadużyć i rejestrze nadużyć",
 	"right-abusefilter-blocked-external-domains-log": "Wyświetl rejestr wykryć zablokowanych domen zewnętrznych",
 	"action-abusefilter-blocked-external-domains-log": "wyświetlania rejestru wykryć zablokowanych domen zewnętrznych",
 	"abusefilter-protected-vars-log-name": "Rejestr dostępu do chronionych zmiennych filtra nadużyć",
@@ -696,5 +696,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Zmiana dostępu",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Wyświetlenie wartości chronionych zmiennych",
 	"communityconfiguration-blockeddomain-title": "Zablokowane domeny zewnętrzne",
-	"communityconfiguration-blockeddomain-description": "Lista domen zewnętrznych, do których nie można linkować."
+	"communityconfiguration-blockeddomain-description": "Lista domen zewnętrznych, do których nie można linkować.",
+	"grant-access-protected-vars": "Dostęp do chronionych zmiennych w filtrach nadużyć"
 }

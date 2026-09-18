@@ -655,8 +655,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Eludir os dominios externos bloqueados",
 	"action-abusefilter-bypass-blocked-external-domains": "eludir os dominios externos bloqueados",
 	"abusefilter-blocked-domains-cannot-edit-directly": "A creación ou modificación dos dominios externos que están bloqueados e non poden ser ligados debe facerse a través [[Special:BlockedExternalDomains|da páxina especial]].",
-	"right-abusefilter-access-protected-vars": "Consultar e crear filtros que utilizan variables protexidas",
-	"action-abusefilter-access-protected-vars": "consultar e crear filtros que utilizan variables protexidas",
+	"right-abusefilter-access-protected-vars": "Acceder a variables protexidas nos filtros de abusos e nas entradas do rexistro de abusos",
+	"action-abusefilter-access-protected-vars": "acceder a variables protexidas nos filtros de abusos e nas entradas do rexistro de abusos",
 	"right-abusefilter-blocked-external-domains-log": "Ver o rexistro de activación de bloqueo de dominios externos",
 	"action-abusefilter-blocked-external-domains-log": "ver o rexistro de activación de bloqueo de dominios externos",
 	"abusefilter-protected-vars-log-name": "Rexistro de variables protexidas do filtro de abusos",
@@ -669,5 +669,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Cambiar o acceso",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Ver os valores das variables protexidas",
 	"communityconfiguration-blockeddomain-title": "Dominios externos bloqueados",
-	"communityconfiguration-blockeddomain-description": "Unha lista de dominios externos que non poden ser o destino das ligazóns."
+	"communityconfiguration-blockeddomain-description": "Unha lista de dominios externos que non poden ser o destino das ligazóns.",
+	"grant-access-protected-vars": "Acceder a variables protexidas nos filtros de abusos"
 }

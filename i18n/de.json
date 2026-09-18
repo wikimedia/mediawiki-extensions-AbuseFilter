@@ -685,8 +685,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Umgehung gesperrter externer Domains",
 	"action-abusefilter-bypass-blocked-external-domains": "gesperrte externe Domains zu umgehen",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Das Erstellen oder Ändern der externen Domains, deren Verknüpfung gesperrt wird, muss über die [[Special:BlockedExternalDomains|Spezialseite]] erfolgen.",
-	"right-abusefilter-access-protected-vars": "Anzeigen und Erstellen von Filtern, die geschützte Variablen verwenden",
-	"action-abusefilter-access-protected-vars": "Filter anzuzeigen und zu erstellen, die geschützte Variablen verwenden",
+	"right-abusefilter-access-protected-vars": "Zugriff auf geschützte Variablen in Missbrauchsfiltern und Einträgen im Missbrauchslogbuch",
+	"action-abusefilter-access-protected-vars": "auf geschützte Variablen in Missbrauchsfiltern und Einträgen im Missbrauchslogbuch zuzugreifen",
 	"right-abusefilter-blocked-external-domains-log": "Logbuch der Treffer gesperrter externer Domains anzeigen",
 	"action-abusefilter-blocked-external-domains-log": "Logbuch der Treffer gesperrter externer Domains anzuzeigen",
 	"abusefilter-protected-vars-log-name": "Missbrauchsfilter geschützte Variablen-Logbuch",
@@ -699,5 +699,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Zugang ändern",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Anzeige geschützter Variablenwerte",
 	"communityconfiguration-blockeddomain-title": "Blockierte externe Domains",
-	"communityconfiguration-blockeddomain-description": "Eine Liste externer Domains, auf die keine Verknüpfung hergestellt werden kann."
+	"communityconfiguration-blockeddomain-description": "Eine Liste externer Domains, auf die keine Verknüpfung hergestellt werden kann.",
+	"grant-access-protected-vars": "Auf geschützte Variablen in Missbrauchsfiltern zugreifen"
 }

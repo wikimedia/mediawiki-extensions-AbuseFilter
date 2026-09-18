@@ -660,7 +660,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Ignora i blocchi ai domini esterni",
 	"action-abusefilter-bypass-blocked-external-domains": "ignorare i blocchi ai domini esterni",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Creare o modificare la lista dei domini esterni bloccati dall'essere inseriti come collegamento deve essere fatta attraverso [[Special:BlockedExternalDomains|questa pagina speciale]].",
-	"action-abusefilter-access-protected-vars": "visualizzare e creare filtri che utilizzano variabili protette",
+	"right-abusefilter-access-protected-vars": "Accede alle variabili protette nei filtri anti-abuso e nelle voci del registro degli abusi.",
+	"action-abusefilter-access-protected-vars": "accedere alle variabili protette nei filtri anti-abuso e nelle voci del registro degli abusi.",
 	"logentry-abusefilter-protected-vars-view-protected-var-value": "$1 {{GENDER:$2|ha visualizzato}} variabili protette associate a $3",
 	"log-action-filter-abusefilter-protected-vars": "Tipo di azione:",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Visualizzazione dei valori delle variabili protette"

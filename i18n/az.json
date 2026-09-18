@@ -661,8 +661,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Bloklanmış xarici domen məhdudiyyətindən təsirlənməmək",
 	"action-abusefilter-bypass-blocked-external-domains": "bloklanmış xarici domen məhdudiyyətindən təsirlənməmək",
 	"abusefilter-blocked-domains-cannot-edit-directly": "bloklanmış xarici domenlərin siyahısını yaratmaq və ya redaktə etmək [[Special:BlockedExternalDomains|xüsusi səhifə]] vasitəsilə edilməlidir.",
-	"right-abusefilter-access-protected-vars": "Mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
-	"action-abusefilter-access-protected-vars": "mühafizəli dəyişənlərdən istifadə edən süzgəclərə baxmaq və yaratmaq",
+	"right-abusefilter-access-protected-vars": "Dəyişiklik süzgəclərindəki və süzgəc jurnallarındakı mühafizəli dəyişənlərə baxmaq",
+	"action-abusefilter-access-protected-vars": "dəyişiklik süzgəclərindəki və süzgəc jurnallarındakı mühafizəli dəyişənlərə baxmaq",
 	"right-abusefilter-blocked-external-domains-log": "Bloklanmış xarici domenlərin jurnalına baxmaq",
 	"action-abusefilter-blocked-external-domains-log": "bloklanmış xarici domenlərin jurnalına baxmaq",
 	"abusefilter-protected-vars-log-name": "Dəyişiklik süzgəcinin mühafizəli dəyişənləri jurnalı",
@@ -675,5 +675,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "İcazənin dəyişdirilməsi",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Mühafizəli dəyişənlərə baxmaq",
 	"communityconfiguration-blockeddomain-title": "Bloklanmış xarici domenlər",
-	"communityconfiguration-blockeddomain-description": "Əlaqələndirilməsi mümkün olmayan xarici domenlərin siyahısı."
+	"communityconfiguration-blockeddomain-description": "Əlaqələndirilməsi mümkün olmayan xarici domenlərin siyahısı.",
+	"grant-access-protected-vars": "Dəyişiklik süzgəclərindəki mühafizəli dəyişənlərə baxmaq"
 }
