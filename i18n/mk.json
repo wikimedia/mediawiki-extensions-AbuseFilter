@@ -31,7 +31,7 @@
 	"right-abusefilter-privatedetails": "Прегледување на лични податоци во дневникот на злоупотреби",
 	"right-abusefilter-privatedetails-log": "Преглед на пристап до лични дневнички податоци од Филтерот на злоупотреби",
 	"right-abusefilter-modify-restricted": "Менување на филтри за злоупотреби со ограничени можности за дејствување",
-	"right-abusefilter-revert": "Отповикување на сите промени на даден филтер на злоупотреби",
+	"right-abusefilter-revert": "Отповикување на дејства преземени од филтри на злоупотреби",
 	"right-abusefilter-view-private": "Прегледување на филтри за злоупотреби означени како лични",
 	"right-abusefilter-log-private": "Преглед на дневнички записи за филтри на злоупотреба означени како лични",
 	"right-abusefilter-hide-log": "Криење записи во дневникот на злоупотреби",
@@ -45,7 +45,7 @@
 	"action-abusefilter-privatedetails": "прегледување на лични податоци во дневникот на злоупотреби",
 	"action-abusefilter-privatedetails-log": "преглед на пристап до лични дневнички податоци од Филтерот на злоупотреби",
 	"action-abusefilter-modify-restricted": "менување на филтри за злоупотреби со ограничени можности за дејствување",
-	"action-abusefilter-revert": "отповикување на сите промени извршени од даден филтер на злоупотреби",
+	"action-abusefilter-revert": "отповикување на дејства преземени од филтри на злоупотреби",
 	"action-abusefilter-view-private": "прегледување на филтри за злоупотреби означени како лични",
 	"action-abusefilter-log-suppressed": "гледање на дневници на филтри на злоупотреба означени како притаени",
 	"action-abusefilter-log-private": "преглед на дневници на филтрите на злоупотреба означени како приватни",
@@ -652,8 +652,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Заобиколување на блокирани надворешни домени",
 	"action-abusefilter-bypass-blocked-external-domains": "заобиколување на блокирани надворешни домени",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Поставањето и менувањето на блокирани надворешни домени мора да се прави преку [[Special:BlockedExternalDomains|службената страница]].",
-	"right-abusefilter-access-protected-vars": "Гледање и создавање на филтри што користат заштитени променливи",
-	"action-abusefilter-access-protected-vars": "гледање и создавање на филтри што користат заштитени променливи",
+	"right-abusefilter-access-protected-vars": "Пристап до заштитени променливи во дневничките ставки на филтрите на злоупотреби",
+	"action-abusefilter-access-protected-vars": "пристап до заштитени променливи во дневничките ставки на филтрите на злоупотреби",
 	"right-abusefilter-blocked-external-domains-log": "Гледање на дневникот на погодоци за блокирани надворешни домени",
 	"action-abusefilter-blocked-external-domains-log": "гледање на дневникот на погодоци за блокирани надворешни домени",
 	"abusefilter-protected-vars-log-name": "Дневник на заштитени променливи на Филтерот на злоупотреби",
@@ -666,5 +666,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Смени пристап",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Гледање на заштитени променливи",
 	"communityconfiguration-blockeddomain-title": "Блокирани надворешни домени",
-	"communityconfiguration-blockeddomain-description": "Список на надворешни домени кои не можат да се ставаат како врски."
+	"communityconfiguration-blockeddomain-description": "Список на надворешни домени кои не можат да се ставаат како врски.",
+	"grant-access-protected-vars": "Пристап до заштитени променливи на филтрите на злоупотреби"
 }

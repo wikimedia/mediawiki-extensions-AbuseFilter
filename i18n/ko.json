@@ -686,8 +686,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "차단된 외부 도메인을 우회하기",
 	"action-abusefilter-bypass-blocked-external-domains": "차단된 외부 도메인을 우회하기",
 	"abusefilter-blocked-domains-cannot-edit-directly": "연결이 차단된 외부 도메인을 생성하거나 수정하려면 [[Special:BlockedExternalDomains|특수문서]]를 통해 수행해야 합니다.",
-	"right-abusefilter-access-protected-vars": "보호된 변수를 사용하는 필터 보기 및 생성",
-	"action-abusefilter-access-protected-vars": "보호된 변수를 사용하는 필터 보기 및 생성",
+	"right-abusefilter-access-protected-vars": "편집 필터 및 편집 필터 로그 항목에서 접근 보호된 변수에 접근",
+	"action-abusefilter-access-protected-vars": "편집 필터 및 편집 필터 로그 항목에서 접근 보호된 변수에 접근",
 	"right-abusefilter-blocked-external-domains-log": "차단된 외부 도메인을 입력하려고 시도한 기록 보기",
 	"action-abusefilter-blocked-external-domains-log": "차단된 외부 도메인을 입력하려고 시도한 기록 보기",
 	"abusefilter-protected-vars-log-name": "편집 필터 보호 변수 기록",
@@ -700,5 +700,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "접근 권한 변경",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "보호된 변수 값 보기",
 	"communityconfiguration-blockeddomain-title": "차단된 외부 도메인",
-	"communityconfiguration-blockeddomain-description": "링크될 수 없는 외부 도메인 목록입니다."
+	"communityconfiguration-blockeddomain-description": "링크될 수 없는 외부 도메인 목록입니다.",
+	"grant-access-protected-vars": "편집 필터에서 접근 보호된 변수에 접근"
 }
