@@ -9,7 +9,6 @@
 namespace MediaWiki\Extension\AbuseFilter\Maintenance;
 
 use MediaWiki\Maintenance\LoggedUpdateMaintenance;
-use MediaWiki\MediaWikiServices;
 use stdClass;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IReadableDatabase;
@@ -127,7 +126,7 @@ class MigrateActorsAF extends LoggedUpdateMaintenance {
 	) {
 		$needActors = [];
 		$countActors = 0;
-		$userNameUtils = MediaWikiServices::getInstance()->getUserNameUtils();
+		$userNameUtils = $this->getServiceContainer()->getUserNameUtils();
 
 		$keep = [];
 		foreach ( $rows as $index => $row ) {
