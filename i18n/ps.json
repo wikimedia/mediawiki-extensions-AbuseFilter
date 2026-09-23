@@ -356,7 +356,7 @@
 	"right-abusefilter-bypass-blocked-external-domains": "له باندنيو بنديزلگېدلو واک‌سيمو نه ډډه کول",
 	"action-abusefilter-bypass-blocked-external-domains": "له باندنيو بنديزلگېدلو واک‌سيمو نه ډډه کول",
 	"abusefilter-blocked-domains-cannot-edit-directly": "د هغه باندنۍ واک‌سيمې جوړول يا بدلول چې د تړوني ورکولو بنديز پرې لگېدلی، بايد د [[Special:BlockedExternalDomains|ځانگړي مخ]] له لارې ترسره شي.",
-	"right-abusefilter-access-protected-vars": "هغه چاڼگر کتل او جوړول چې خوندي شوي اوښتنې کاروي",
+	"right-abusefilter-access-protected-vars": "د ناوړه‌گټه‌اخيستنې چاڼگرونو او د ناوړه‌گټه‌اخيستنې يادښت ننوتلو کې ژغورل شويو اوښتنو ته لاسرسی ومومئ",
 	"right-abusefilter-blocked-external-domains-log": "د باندنيو بنديزلگېدلو واک‌سيمو د ننوتلو چلند کتل",
 	"action-abusefilter-blocked-external-domains-log": "د باندنيو بنديزلگېدلو واک‌سيمو د ننوتلو چلند کتل",
 	"abusefilter-protected-vars-log-name": "د ورانکارۍ چانگر ژغورل شوي اوښتونکو يادښت",
@@ -365,5 +365,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "لاسرسي بدلول",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "ژغورل شوي اوښتون ارزښتونه کتل",
 	"communityconfiguration-blockeddomain-title": "بنديز لگېدلې بهرنۍ واک‌سيمې",
-	"communityconfiguration-blockeddomain-description": "د بهرنيو واک‌سيمو نوملړ چې ورسره تړونی نشې کېدای."
+	"communityconfiguration-blockeddomain-description": "د بهرنيو واک‌سيمو نوملړ چې ورسره تړونی نشې کېدای.",
+	"grant-access-protected-vars": "د ناوړه گټه اخيستنې چاڼگرونو کې ژغورل شويو اوښتنو ته لاسرسی ومومئ"
 }

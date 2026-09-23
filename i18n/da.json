@@ -667,8 +667,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Omgå blokerede eksterne domæner",
 	"action-abusefilter-bypass-blocked-external-domains": "omgå blokeret eksternt domæne",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Oprettelse eller ændring af, hvilke eksterne domæner der er blokeret fra at blive henvist til, skal gøres via [[Special:BlockedExternalDomains|specialsiden]].",
-	"right-abusefilter-access-protected-vars": "Vis og opret filtre, der bruger beskyttede variabler",
-	"action-abusefilter-access-protected-vars": "se og opret filtre, der bruger beskyttede variabler",
+	"right-abusefilter-access-protected-vars": "Få adgang til beskyttede variabler i misbrugsfiltre og misbrugslogposter",
+	"action-abusefilter-access-protected-vars": "adgang til beskyttede variabler i misbrugsfiltre og misbrugslogposter",
 	"right-abusefilter-blocked-external-domains-log": "Se log for træf af blokerede eksterne domæner",
 	"action-abusefilter-blocked-external-domains-log": "se træflog for blokerede eksterne domæner",
 	"abusefilter-protected-vars-log-name": "Log af beskyttede variabler fra misbrugsfiltret",
@@ -681,5 +681,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Skift adgang",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Se værdier for beskyttede variable",
 	"communityconfiguration-blockeddomain-title": "Blokerede eksterne domæner",
-	"communityconfiguration-blockeddomain-description": "En liste over eksterne domæner, der ikke kan henvises til."
+	"communityconfiguration-blockeddomain-description": "En liste over eksterne domæner, der ikke kan henvises til.",
+	"grant-access-protected-vars": "Adgang til beskyttede variabler i misbrugsfiltre"
 }
