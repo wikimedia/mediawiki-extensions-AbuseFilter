@@ -33,7 +33,7 @@
 	"apihelp-query+abusefilters-paramvalue-dir-descending": "Filters weergeven in aflopende volgorde.",
 	"apihelp-query+abusefilters-param-show": "Alleen filters weergeven die voldoen aan deze criteria.",
 	"apihelp-query+abusefilters-param-limit": "Het maximale aantal weer te geven filters.",
-	"apihelp-query+abusefilters-param-prop": "Welke eigenschappen op te vragen.",
+	"apihelp-query+abusefilters-param-prop": "Welke gegevens moeten worden opgenomen:",
 	"apihelp-query+abusefilters-example-1": "Ingeschakelde openbare filters weergeven",
 	"apihelp-query+abusefilters-example-2": "Enige details over filters weergeven",
 	"apihelp-query+abuselog-summary": "Gebeurtenissen weergeven die zijn afgevangen door een van de misbruikfilters.",
