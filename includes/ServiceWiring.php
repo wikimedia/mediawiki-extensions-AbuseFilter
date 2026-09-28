@@ -12,6 +12,7 @@ use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainConfigProvider;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\GlobalBlockedDomainLookup;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\NoopBlockedDomainFilter;
@@ -431,6 +432,22 @@ return [
 			$services->getUrlUtils()
 		);
 	},
+	ServiceNames::GlobalBlockedDomainLookup => static function (
+		MediaWikiServices $services
+	): GlobalBlockedDomainLookup {
+		$centralWiki = $services->getMainConfig()->get( 'AbuseFilterGlobalBlockedExternalDomainsDB' );
+		if ( !$centralWiki || WikiMap::isCurrentWikiDbDomain( $centralWiki ) ) {
+			// The local list of the central wiki is the global list, don't load it twice
+			$centralWiki = false;
+		}
+		return new GlobalBlockedDomainLookup(
+			$services->getLocalServerObjectCache(),
+			$services->getRevisionStoreFactory(),
+			$services->get( BlockedDomainValidator::SERVICE_NAME ),
+			LoggerFactory::getInstance( 'AbuseFilter' ),
+			$centralWiki
+		);
+	},
 	ServiceNames::BlockedDomainFilter => static function (
 		MediaWikiServices $services
 	): IBlockedDomainFilter {
@@ -439,7 +456,8 @@ return [
 		) {
 			return new BlockedDomainFilter(
 				$services->get( VariablesManager::SERVICE_NAME ),
-				$services->get( IBlockedDomainStorage::SERVICE_NAME )
+				$services->get( IBlockedDomainStorage::SERVICE_NAME ),
+				$services->get( GlobalBlockedDomainLookup::SERVICE_NAME )
 			);
 		} else {
 			return new NoopBlockedDomainFilter();

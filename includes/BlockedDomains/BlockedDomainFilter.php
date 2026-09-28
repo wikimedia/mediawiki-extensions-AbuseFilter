@@ -40,7 +40,8 @@ use MediaWiki\User\UserIdentity;
 class BlockedDomainFilter implements IBlockedDomainFilter {
 	public function __construct(
 		private readonly VariablesManager $variablesManager,
-		private readonly IBlockedDomainStorage $blockedDomainStorage
+		private readonly IBlockedDomainStorage $blockedDomainStorage,
+		private readonly ?GlobalBlockedDomainLookup $globalBlockedDomainLookup = null
 	) {
 	}
 
@@ -82,6 +83,9 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 			return $status;
 		}
 		$blockedDomains = $this->blockedDomainStorage->loadComputed();
+		if ( $this->globalBlockedDomainLookup ) {
+			$blockedDomains += $this->globalBlockedDomainLookup->loadComputed();
+		}
 		$blockedDomainsAdded = array_intersect_key( $addedDomains, $blockedDomains );
 		if ( !$blockedDomainsAdded ) {
 			return $status;

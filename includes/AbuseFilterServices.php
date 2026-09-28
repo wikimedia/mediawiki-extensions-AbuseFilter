@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\GlobalBlockedDomainLookup;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagger;
@@ -326,6 +327,12 @@ class AbuseFilterServices {
 
 	public static function getBlockedDomainValidator( ?ContainerInterface $services = null ): BlockedDomainValidator {
 		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainValidator::SERVICE_NAME );
+	}
+
+	public static function getGlobalBlockedDomainLookup(
+		?ContainerInterface $services = null
+	): GlobalBlockedDomainLookup {
+		return ( $services ?? MediaWikiServices::getInstance() )->get( GlobalBlockedDomainLookup::SERVICE_NAME );
 	}
 
 	public static function getProtectedVariablesLookup(

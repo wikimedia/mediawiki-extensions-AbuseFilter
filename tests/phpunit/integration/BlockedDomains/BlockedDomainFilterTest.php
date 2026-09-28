@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit\BlockedDomains;
 
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\GlobalBlockedDomainLookup;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\IBlockedDomainStorage;
 use MediaWiki\Extension\AbuseFilter\Parser\AFPData;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
@@ -31,7 +32,12 @@ class BlockedDomainFilterTest extends MediaWikiIntegrationTestCase {
 			'bad.tld',
 		] ) );
 
-		$filter = new BlockedDomainFilter( $manager, $storage );
+		$globalLookup = $this->createMock( GlobalBlockedDomainLookup::class );
+		$globalLookup->method( 'loadComputed' )->willReturn( array_flip( [
+			'global.tld',
+		] ) );
+
+		$filter = new BlockedDomainFilter( $manager, $storage, $globalLookup );
 		$status = $filter->filter(
 			new VariableHolder(),
 			$this->getTestUser()->getUserIdentity(),
@@ -60,6 +66,10 @@ class BlockedDomainFilterTest extends MediaWikiIntegrationTestCase {
 			[ 'also.bad.tld', 'abusefilter-blocked-domains-attempted' ],
 			[ '.bad.tld', 'abusefilter-blocked-domains-attempted' ],
 			[ 'bad.tld.not', null ],
+
+			[ 'global.tld', 'abusefilter-blocked-domains-attempted' ],
+			[ 'also.global.tld', 'abusefilter-blocked-domains-attempted' ],
+			[ 'global.tld.not', null ],
 		];
 	}
 

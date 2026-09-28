@@ -38,6 +38,7 @@ class ServiceNames {
 	public const string FilterRunnerFactory = 'AbuseFilterFilterRunnerFactory';
 	public const string FilterStore = 'AbuseFilterFilterStore';
 	public const string FilterUser = 'AbuseFilterFilterUser';
+	public const string GlobalBlockedDomainLookup = 'AbuseFilterGlobalBlockedDomainLookup';
 	public const string FilterValidator = 'AbuseFilterFilterValidator';
 	public const string KeywordsManager = 'AbuseFilterKeywordsManager';
 	public const string LazyVariableComputer = 'AbuseFilterLazyVariableComputer';

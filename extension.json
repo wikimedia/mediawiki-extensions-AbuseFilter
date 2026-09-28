@@ -707,6 +707,10 @@
 			"value": false,
 			"description": "Temporary config value to disable Special:BlockedExternalDomains"
 		},
+		"AbuseFilterGlobalBlockedExternalDomainsDB": {
+			"value": null,
+			"description": "Database domain of a central wiki (e.g. metawiki) whose MediaWiki:BlockedExternalDomains.json is used as a global list of blocked external domains, in addition to the local list. Null to disable. Requires $wgAbuseFilterEnableBlockedExternalDomain."
+		},
 		"AbuseFilterProtectedVariables": {
 			"value": [
 				"user_unnamed_ip"
