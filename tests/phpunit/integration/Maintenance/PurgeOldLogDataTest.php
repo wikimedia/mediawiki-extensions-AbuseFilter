@@ -6,7 +6,6 @@ use MediaWiki\Config\HashConfig;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Extension\AbuseFilter\Maintenance\PurgeOldLogData;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
-use MediaWiki\MainConfigSchema;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Wikimedia\IPUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
@@ -119,7 +118,6 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 		$this->maintenance->setConfig( new HashConfig( [
 			'AbuseFilterLogIPMaxAge' => self::MAX_AGE,
 			'AbuseFilterLogProtectedVariablesMaxAge' => self::MAX_AGE,
-			'StatsdServer' => MainConfigSchema::getDefaultValue( 'StatsdServer' )
 		] ) );
 		$this->maintenance->loadWithArgv( [ '--batch-size', 1 ] );
 		$this->maintenance->execute();
@@ -196,7 +194,6 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 		$this->maintenance->setConfig( new HashConfig( [
 			'AbuseFilterLogIPMaxAge' => 1234,
 			'AbuseFilterLogProtectedVariablesMaxAge' => $protectedVariablesMaxAge,
-			'StatsdServer' => MainConfigSchema::getDefaultValue( 'StatsdServer' )
 		] ) );
 		$this->maintenance->execute();
 
