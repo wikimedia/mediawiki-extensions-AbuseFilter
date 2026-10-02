@@ -111,22 +111,36 @@ class EmergencyWatcher implements Watcher {
 			return;
 		}
 
+		$filtersForNotif = [];
+
 		DeferredUpdates::addUpdate(
 			new AutoCommitUpdate(
 				$this->lbFactory->getPrimaryDatabase(),
 				__METHOD__,
-				static function ( IDatabase $dbw, $fname ) use ( $throttleFilters ) {
-					$dbw->newUpdateQueryBuilder()
-						->update( 'abuse_filter' )
-						->set( [ 'af_throttled' => 1 ] )
-						->where( [ 'af_id' => $throttleFilters ] )
-						->caller( $fname )
-						->execute();
+				static function ( IDatabase $dbw, $fname ) use ( $throttleFilters, &$filtersForNotif ) {
+					foreach ( $throttleFilters as $filter ) {
+						$dbw->newUpdateQueryBuilder()
+							->update( 'abuse_filter' )
+							->set( [ 'af_throttled' => 1 ] )
+							->where( [
+								'af_id' => $filter,
+								'af_throttled' => 0,
+							] )
+							->caller( $fname )
+							->execute();
+
+						if ( $dbw->affectedRows() > 0 ) {
+							$filtersForNotif[] = $filter;
+						}
+					}
 				}
 			)
 		);
-		DeferredUpdates::addCallableUpdate( function () use ( $throttleFilters ) {
-			foreach ( $throttleFilters as $filter ) {
+
+		// Keep the write registered before the notification. Deferred updates run in
+		// registration order, which is why $filtersForNotif is populated in time.
+		DeferredUpdates::addCallableUpdate( function () use ( &$filtersForNotif ) {
+			foreach ( $filtersForNotif as $filter ) {
 				$this->notifier->notifyForFilter( $filter );
 			}
 		} );
