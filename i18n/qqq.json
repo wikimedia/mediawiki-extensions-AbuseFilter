@@ -54,7 +54,8 @@
 			"Verdy p",
 			"Warudo",
 			"Yekrats",
-			"Ильгиз"
+			"Ильгиз",
+			"Ookap"
 		]
 	},
 	"abusefilter-desc": "{{desc|name=Abuse Filter|url=https://www.mediawiki.org/wiki/Extension:AbuseFilter}}",
@@ -641,7 +642,7 @@
 	"abusefilter-topnav-examine": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseFilter/examine]].",
 	"abusefilter-topnav-log": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseFilter/history]].\n{{Identical|Abuse log}}",
 	"abusefilter-topnav-tools": "Used as link text in the navigation toolbar.",
-	"abusefilter-log-name": "{{doc-logpage}}",
+	"abusefilter-log-name": "{{doc-logpage}}\n\nlipu ni li toki e ni: jan li ante seme e ilo pi weka jaki. lipu \"weka jaki la pini\" li toki e ni: pali seme la ilo pi weka jaki li lukin e jaki.",
 	"abusefilter-log-header": "Used as description on [[Special:Log/abusefilter]]",
 	"abusefilter-logentry-create": "Parameters:\n* $1 - a link to a user page with a username as link text, followed by a series of related links\n* $2 - raw username, for GENDER support\n* $3 - (unused)\n* $4 - text {{msg-mw|abusefilter-log-detailedentry-local}} linked to the filter created\n* $5 - text {{msg-mw|abusefilter-log-detailslink}} linked to the filter change details\n{{Identical|Created}}",
 	"abusefilter-logentry-modify": "Parameters:\n* $1 - a link to a user page with a username as link text, followed by a series of related links\n* $2 - raw username, for GENDER support\n* $3 - (unused)\n* $4 - text {{msg-mw|abusefilter-log-detailedentry-local}} linked to the modified filter\n* $5 - text {{msg-mw|abusefilter-log-detailslink}} linked to the filter change details",
