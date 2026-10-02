@@ -28,7 +28,7 @@ class GlobalAbuseFilterPager extends AbuseFilterPager {
 		$this->mDb = $centralDBManager->getReplicaDatabase();
 		parent::__construct(
 			$page, $linkRenderer, null, $afPermManager, $specsFormatter,
-			$filterLookup, $conds, null, null
+			$filterLookup, $conds, null, null, 'rules'
 		);
 	}
 

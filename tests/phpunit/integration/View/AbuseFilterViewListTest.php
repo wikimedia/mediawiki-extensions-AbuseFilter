@@ -97,6 +97,22 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			] ),
 			MutableFilter::newDefault()
 		) );
+
+		// Give the existing public filter 2 rules and notes with deliberately different
+		// tokens, so a match in one cannot be mistaken for a match in the other, plus a
+		// token shared by both.
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			2,
+			$this->getFilterFromSpecs( [
+				'id' => '2',
+				'rules' => 'user_name = "1.2.3.4" & user_name != "AlphaRule" /* Gamma */',
+				'comments' => 'Documented as BetaNote /* Gamma */',
+				'name' => 'Filter without protected variables',
+				'privacy' => Flags::FILTER_PUBLIC,
+			] ),
+			AbuseFilterServices::getFilterLookup()->getFilter( 2, false )
+		) );
 	}
 
 	/**
@@ -155,9 +171,10 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		$canViewPrivateFilters = $this->getServiceContainer()->get( ServiceNames::PermManager )
 			->canViewPrivateFilters( $authority );
 		if ( $canViewPrivateFilters && $searchModeEnabled ) {
-			$expectedTableHeadings[] = 'abusefilter-list-pattern';
+			// The search view shows whichever field matched, rules or notes.
+			$expectedTableHeadings[] = 'abusefilter-list-matchedtext';
 		} else {
-			$expectedTableHeadingsToBeMissing[] = 'abusefilter-list-pattern';
+			$expectedTableHeadingsToBeMissing[] = 'abusefilter-list-matchedtext';
 		}
 
 		foreach ( $expectedTableHeadings as $heading ) {
@@ -439,4 +456,118 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			'expectedOrderDesc' => [ 2 ],
 		];
 	}
+
+	public function testShowListSearchWithoutSearchFieldsSearchesOnlyRules(): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [ 'querypattern' => 'BetaNote', 'searchoption' => 'LIKE' ] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+		$this->assertStringContainsString( 'table_pager_empty', $html );
+	}
+
+	/** @dataProvider provideShowListSearchFields */
+	public function testShowListSearchFields(
+		string $pattern,
+		string $searchFields,
+		?string $shouldContain,
+		?string $shouldNotContain
+	): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'sort' => 'af_id',
+				'limit' => 50,
+				'asc' => '',
+				'desc' => 1,
+				'deletedfilters' => 'hide',
+				'querypattern' => $pattern,
+				'searchoption' => 'LIKE',
+				'searchfields' => $searchFields,
+				'rulescope' => 'all',
+				'furtheroptions' => []
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+		if ( $shouldContain !== null ) {
+			$this->assertStringContainsString( $shouldContain, $html );
+		}
+		if ( $shouldNotContain !== null ) {
+			$this->assertStringNotContainsString( $shouldNotContain, $html );
+		}
+	}
+
+	public static function provideShowListSearchFields(): array {
+		return [
+			'notes match when searching notes' => [
+				'pattern' => 'BetaNote',
+				'searchFields' => 'notes',
+				'shouldContain' => 'Special:AbuseFilter/2',
+				'shouldNotContain' => 'AlphaRule',
+			],
+			'notes do not match when searching rules' => [
+				'pattern' => 'BetaNote',
+				'searchFields' => 'rules',
+				'shouldContain' => null,
+				'shouldNotContain' => 'Special:AbuseFilter/2',
+			],
+			'notes match when searching both' => [
+				'pattern' => 'BetaNote',
+				'searchFields' => 'both',
+				'shouldContain' => 'Special:AbuseFilter/2',
+				'shouldNotContain' => 'AlphaRule',
+			],
+			'rules win when both fields match' => [
+				'pattern' => 'Gamma',
+				'searchFields' => 'both',
+				'shouldContain' => 'AlphaRule',
+				'shouldNotContain' => 'BetaNote',
+			],
+			'an unrecognised value shows an error' => [
+				'pattern' => 'BetaNote',
+				'searchFields' => 'garbage',
+				'shouldContain' => '(abusefilter-list-invalid-searchfields',
+				'shouldNotContain' => null,
+			],
+		];
+	}
+
+	/** @dataProvider provideShowListSearchNotesHighlightsTheMatch */
+	public function testShowListSearchNotesHighlightsTheMatch( string $mode, string $pattern ): void {
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'querypattern' => $pattern,
+				'searchoption' => $mode,
+				'searchfields' => 'notes',
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+		$this->assertSame(
+			'<td class="TablePager_col_af_pattern">Documented as <b>BetaNote</b> /* Gamma */</td>',
+			$this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_pattern' )
+		);
+	}
+
+	public static function provideShowListSearchNotesHighlightsTheMatch(): array {
+		return [
+			'plain query' => [ 'mode' => 'LIKE', 'pattern' => 'BetaNote' ],
+			'regular expression' => [ 'mode' => 'RLIKE', 'pattern' => 'Beta\w+' ],
+			'case-insensitive regular expression' => [ 'mode' => 'IRLIKE', 'pattern' => 'betanote' ],
+		];
+	}
+
+	public function testShowListSearchHighlightsTheActualRegexMatch(): void {
+		// The first "a" is in "as", but the regex only matches the one before "N"
+		[ $html ] = $this->executeSpecialPage(
+			request: new FauxRequest( [
+				'querypattern' => 'a(?=N)',
+				'searchoption' => 'RLIKE',
+				'searchfields' => 'notes',
+			] ),
+			performer: $this->authorityCanUseProtectedVar
+		);
+		$this->assertSame(
+			'<td class="TablePager_col_af_pattern">Documented as Bet<b>a</b>Note /* Gamma */</td>',
+			$this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_pattern' )
+		);
+	}
+
 }
