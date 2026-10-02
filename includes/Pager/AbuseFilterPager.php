@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter\Pager;
 
 use LogicException;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\Filter\ExistingFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\FilterUtils;
@@ -39,6 +40,9 @@ class AbuseFilterPager extends TablePager {
 		'af_public_comments' => [ 'af_public_comments', 'af_id' ],
 	];
 
+	/** @var array<int,string> Filter ID => name of the field the search matched. */
+	private array $matchedFields = [];
+
 	public function __construct(
 		private readonly AbuseFilterViewList $page,
 		LinkRenderer $linkRenderer,
@@ -48,7 +52,8 @@ class AbuseFilterPager extends TablePager {
 		private readonly FilterLookup $filterLookup,
 		private array $conds,
 		private readonly ?string $searchPattern,
-		private readonly ?string $searchMode
+		private readonly ?string $searchMode,
+		private readonly string $searchFields
 	) {
 		parent::__construct( $page->getContext(), $linkRenderer );
 	}
@@ -141,7 +146,11 @@ class AbuseFilterPager extends TablePager {
 				continue;
 			}
 
-			if ( $this->matchesPattern( $filter->getRules() ) ) {
+			$matchedField = $this->getMatchedFieldName( $filter );
+			if ( $matchedField !== null ) {
+				// getHighlightedPattern() only sees the row, so remember which field
+				// matched in order to decide what the column displays.
+				$this->matchedFields[$filter->getID()] = $matchedField;
 				$filtered[] = $row;
 			}
 		}
@@ -169,6 +178,28 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
+	 * Which of the searched fields matches the pattern, if any.
+	 *
+	 * @param ExistingFilter $filter
+	 * @return string|null 'rules', 'notes', or null when nothing matched
+	 * @throws LogicException
+	 */
+	private function getMatchedFieldName( ExistingFilter $filter ): ?string {
+		$checkRules = $this->searchFields === 'rules' || $this->searchFields === 'both';
+		$checkNotes = $this->searchFields === 'notes' || $this->searchFields === 'both';
+		if ( !$checkRules && !$checkNotes ) {
+			throw new LogicException( "Unknown search field {$this->searchFields}" );
+		}
+		if ( $checkRules && $this->matchesPattern( $filter->getRules() ) ) {
+			return 'rules';
+		}
+		if ( $checkNotes && $this->matchesPattern( $filter->getComments() ) ) {
+			return 'notes';
+		}
+		return null;
+	}
+
+	/**
 	 * Note: this method is called by parent::__construct
 	 * @return array<string,string>
 	 * @see \MediaWiki\Pager\Pager::getFieldNames()
@@ -192,8 +223,9 @@ class AbuseFilterPager extends TablePager {
 			$this->searchMode !== null &&
 			$this->afPermManager->canViewPrivateFilters( $performer )
 		) {
-			// This is also excluded in the default view
-			$headers['af_pattern'] = 'abusefilter-list-pattern';
+			// This is also excluded in the default view. The column shows whichever field
+			// the search matched, so it is not tied to af_pattern despite the key.
+			$headers['af_pattern'] = 'abusefilter-list-matchedtext';
 		}
 
 		if ( count( $this->getConfig()->get( 'AbuseFilterValidGroups' ) ) > 1 ) {
@@ -324,7 +356,7 @@ class AbuseFilterPager extends TablePager {
 	}
 
 	/**
-	 * Get the filter pattern with <b> elements surrounding the searched pattern
+	 * Get the matched rules or notes with <b> elements surrounding the searched pattern
 	 *
 	 * @param stdClass $row
 	 * @return string
@@ -333,10 +365,13 @@ class AbuseFilterPager extends TablePager {
 		if ( $this->searchMode === null ) {
 			throw new LogicException( 'Cannot search without a mode.' );
 		}
+		$subject = $this->matchedFields[$row->af_id] === 'notes'
+			? (string)$row->af_comments
+			: $row->af_pattern;
 		$maxLen = 50;
 		$searchPattern = $this->searchPattern ?? '';
 		if ( $this->searchMode === 'LIKE' ) {
-			$position = mb_stripos( $row->af_pattern, $searchPattern );
+			$position = mb_stripos( $subject, $searchPattern );
 			$length = mb_strlen( $searchPattern );
 		} else {
 			$regex = $this->searchMode === 'IRLIKE'
@@ -347,28 +382,31 @@ class AbuseFilterPager extends TablePager {
 			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 			$check = @preg_match(
 				$regex,
-				$row->af_pattern,
-				$matches
+				$subject,
+				$matches,
+				PREG_OFFSET_CAPTURE
 			);
+			[ $match, $byteOffset ] = $matches[0] ?? [ '', 0 ];
 			// This may happen in case of catastrophic backtracking, or regexps matching
 			// the empty string.
-			if ( $check === false || strlen( $matches[0] ) === 0 ) {
-				return htmlspecialchars( mb_substr( $row->af_pattern, 0, 50 ) );
+			if ( $check === false || $match === '' ) {
+				return htmlspecialchars( mb_substr( $subject, 0, 50 ) );
 			}
 
-			$length = mb_strlen( $matches[0] );
-			$position = mb_strpos( $row->af_pattern, $matches[0] );
+			$length = mb_strlen( $match );
+			$position = mb_strlen( substr( $subject, 0, $byteOffset ) );
+
 		}
 
 		$remaining = $maxLen - $length;
 		if ( $remaining <= 0 ) {
 			$pattern = '<b>' .
-				htmlspecialchars( mb_substr( $row->af_pattern, $position, $maxLen ) ) .
+				htmlspecialchars( mb_substr( $subject, $position, $maxLen ) ) .
 				'</b>';
 		} else {
 			// Center the snippet on the matched string
 			$minoffset = max( $position - round( $remaining / 2 ), 0 );
-			$pattern = mb_substr( $row->af_pattern, $minoffset, $maxLen );
+			$pattern = mb_substr( $subject, $minoffset, $maxLen );
 			$pattern =
 				htmlspecialchars( mb_substr( $pattern, 0, $position - $minoffset ) ) .
 				'<b>' .

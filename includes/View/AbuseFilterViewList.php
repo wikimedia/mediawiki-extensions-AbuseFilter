@@ -103,6 +103,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		if ( $searchEnabled ) {
 			$querypattern = $request->getVal( 'querypattern', '' );
 			$searchmode = $request->getVal( 'searchoption', null );
+			$searchfields = $request->getVal( 'searchfields', 'rules' );
 			if ( $querypattern === '' ) {
 				// Not specified or empty, that would error out
 				$querypattern = $searchmode = null;
@@ -110,6 +111,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		} else {
 			$querypattern = null;
 			$searchmode = null;
+			$searchfields = 'rules';
 		}
 
 		if ( $deleted === 'show' ) {
@@ -157,6 +159,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 			$error = null;
 			if ( !in_array( $searchmode, [ 'LIKE', 'RLIKE', 'IRLIKE' ] ) ) {
 				$error = 'abusefilter-list-invalid-searchmode';
+			} elseif ( !in_array( $searchfields, [ 'rules', 'notes', 'both' ] ) ) {
+				$error = 'abusefilter-list-invalid-searchfields';
 			} elseif ( $searchmode !== 'LIKE' && !StringUtils::isValidPCRERegex( "/$querypattern/" ) ) {
 				// @phan-suppress-previous-line SecurityCheck-ReDoS Yes, I know...
 				$error = 'abusefilter-list-regexerror';
@@ -175,6 +179,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				// Reset the conditions in case of error
 				$conds = [ 'af_deleted' => 0 ];
 				$searchmode = $querypattern = null;
+				$searchfields = 'rules';
 			}
 
 			// Viewers with the right to view private filters have access to the search
@@ -196,6 +201,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'furtherOptions' => $furtherOptions,
 				'querypattern' => $querypattern,
 				'searchmode' => $searchmode,
+				'searchfields' => $searchfields,
 				'scope' => $scope,
 			],
 			$conds
@@ -220,6 +226,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 		$scope = $optarray['scope'];
 		$querypattern = $optarray['querypattern'];
 		$searchmode = $optarray['searchmode'];
+		$searchfields = $optarray['searchfields'];
 
 		if ( $centralDB !== null && !$dbIsCentral && $scope === 'global' ) {
 			// TODO: remove the circular dependency
@@ -242,7 +249,8 @@ class AbuseFilterViewList extends AbuseFilterView {
 				$this->filterLookup,
 				$conds,
 				$querypattern,
-				$searchmode
+				$searchmode,
+				$searchfields
 			);
 		}
 
@@ -300,7 +308,7 @@ class AbuseFilterViewList extends AbuseFilterView {
 				'name' => 'querypattern',
 				'type' => 'text',
 				'hide-if' => $globalEnabled ? [ '===', 'rulescope', 'global' ] : [],
-				'label-message' => 'abusefilter-list-options-searchfield',
+				'label-message' => 'abusefilter-list-options-searchquery',
 				'placeholder' => $this->msg( 'abusefilter-list-options-searchpattern' )->text(),
 				'default' => $querypattern
 			];
@@ -319,6 +327,20 @@ class AbuseFilterViewList extends AbuseFilterView {
 					'abusefilter-list-options-search-irlike' => 'IRLIKE',
 				],
 				'default' => $searchmode
+			];
+
+			$formDescriptor['searchfields'] = [
+				'name' => 'searchfields',
+				'type' => 'radio',
+				'flatlist' => true,
+				'label-message' => 'abusefilter-list-options-searchfields',
+				'hide-if' => $formDescriptor['searchoption']['hide-if'],
+				'options-messages' => [
+					'abusefilter-list-options-searchfields-rules' => 'rules',
+					'abusefilter-list-options-searchfields-notes' => 'notes',
+					'abusefilter-list-options-searchfields-both' => 'both',
+				],
+				'default' => $searchfields,
 			];
 		}
 
