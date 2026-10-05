@@ -369,6 +369,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Normalize ($1)",
 	"abusefilter-edit-builder-funcs-count": "Number of times string X appears in string Y ($1)",
 	"abusefilter-edit-builder-funcs-rcount": "Number of times regex X appears in string Y ($1)",
+	"abusefilter-edit-builder-funcs-ircount": "Number of times case-insensitive regex X appears in string Y ($1)",
 	"abusefilter-edit-builder-funcs-get_matches": "Array of regex matches within a text for each capturing group ($1)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Remove whitespace ($1)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Remove special characters ($1)",

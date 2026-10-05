@@ -51,6 +51,7 @@ class FilterEvaluator {
 		'rmwhitespace' => 'funcRMWhitespace',
 		'count' => 'funcCount',
 		'rcount' => 'funcRCount',
+		'ircount' => 'funcIRCount',
 		'get_matches' => 'funcGetMatches',
 		'ip_in_range' => 'funcIPInRange',
 		'ip_in_ranges' => 'funcIPInRanges',
@@ -90,6 +91,7 @@ class FilterEvaluator {
 		'rmwhitespace' => [ 1, 1 ],
 		'count' => [ 1, 2 ],
 		'rcount' => [ 1, 2 ],
+		'ircount' => [ 1, 2 ],
 		'get_matches' => [ 2, 2 ],
 		'ip_in_range' => [ 2, 2 ],
 		'ip_in_ranges' => [ 2, INF ],
@@ -902,13 +904,34 @@ class FilterEvaluator {
 	 * @throws UserVisibleException
 	 */
 	private function funcRCount( $args, int $position ) {
+		return $this->regexCount( $args, $position, false );
+	}
+
+	/**
+	 * @param AFPData[] $args
+	 * @param int $position
+	 * @return AFPData
+	 * @throws UserVisibleException
+	 */
+	private function funcIRCount( $args, int $position ) {
+		return $this->regexCount( $args, $position, true );
+	}
+
+	/**
+	 * @param AFPData[] $args
+	 * @param int $position
+	 * @param bool $caseInsensitive
+	 * @return AFPData
+	 * @throws UserVisibleException
+	 */
+	private function regexCount( $args, int $position, bool $caseInsensitive ) {
 		if ( count( $args ) === 1 ) {
 			$count = count( explode( ',', $args[0]->toString() ) );
 		} else {
 			$needle = $args[0]->toString();
 			$haystack = $args[1]->toString();
 
-			$needle = RegexpUtils::buildPattern( $needle );
+			$needle = RegexpUtils::buildPattern( $needle, $caseInsensitive );
 
 			$this->checkRegexMatchesEmpty( $args[0], $needle, $position );
 			// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged

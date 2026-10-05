@@ -106,6 +106,8 @@ class KeywordsManager {
 			'count(needle,haystack)' => 'count',
 			// Generates abusefilter-edit-builder-funcs-rcount
 			'rcount(needle,haystack)' => 'rcount',
+			// Generates abusefilter-edit-builder-funcs-ircount
+			'ircount(needle,haystack)' => 'ircount',
 			// Generates abusefilter-edit-builder-funcs-get_matches
 			'get_matches(needle,haystack)' => 'get_matches',
 			// Generates abusefilter-edit-builder-funcs-rmwhitespace
