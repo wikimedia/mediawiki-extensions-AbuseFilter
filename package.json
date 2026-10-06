@@ -27,7 +27,7 @@
 		"jest": "29.7.0",
 		"jest-environment-jsdom": "29.7.0",
 		"stylelint-config-wikimedia": "0.19.4",
-		"vue": "3.5.13",
+		"vue": "3.5.43",
 		"wdio-mediawiki": "6.5.2"
 	}
 }
