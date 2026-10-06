@@ -97,7 +97,10 @@
 			"Peterxy12",
 			"0x48fe75df30",
 			"臺灣象象",
-			"Srapoj"
+			"Srapoj",
+			"Ouclie",
+			"Peterxy",
+			"Quaff5353"
 		]
 	},
 	"abusefilter-desc": "对编辑行为进行自动化条件判定",
@@ -536,8 +539,8 @@
 	"abusefilter-edit-builder-vars-file-width": "文件宽度（以像素为单位）（$1）",
 	"abusefilter-edit-builder-vars-file-height": "文件高度（以像素为单位）（$1）",
 	"abusefilter-edit-builder-vars-file-bits-per-channel": "文件每个颜色通道的位数（$1）",
-	"abusefilter-edit-builder-vars-wiki-name": "Wiki的数据库名称（$1）",
-	"abusefilter-edit-builder-vars-wiki-language": "Wiki的语言代码（$1）",
+	"abusefilter-edit-builder-vars-wiki-name": "维基的数据库名称（$1）",
+	"abusefilter-edit-builder-vars-wiki-language": "维基的语言代码（$1）",
 	"abusefilter-edit-builder-vars-old-text": "编辑前的旧页面，去除所有标记（不再使用）",
 	"abusefilter-edit-builder-vars-old-html": "旧页面的wikitext，解析为HTML（不再使用）",
 	"abusefilter-edit-builder-vars-minor-edit": "编辑是否被标记为小编辑（不再使用）",
