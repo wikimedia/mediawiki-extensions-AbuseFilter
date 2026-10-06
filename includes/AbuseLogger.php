@@ -105,7 +105,7 @@ class AbuseLogger {
 
 		$globalLogIDs = [];
 		if ( count( $loggedGlobalFilters ) ) {
-			$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
+			$fdb = $this->centralDBManager->getPrimaryDatabase();
 			$globalLogIDs = $this->insertCentralLogEntries( $centralLogRows, $fdb );
 		}
 

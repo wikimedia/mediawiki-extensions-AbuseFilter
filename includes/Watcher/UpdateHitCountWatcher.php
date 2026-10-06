@@ -31,7 +31,7 @@ class UpdateHitCountWatcher implements Watcher {
 			}
 
 			if ( $globalFilters ) {
-				$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
+				$fdb = $this->centralDBManager->getPrimaryDatabase();
 				$this->updateHitCounts( $fdb, $globalFilters );
 			}
 		} );

@@ -100,7 +100,7 @@ class EditRevUpdater {
 		}
 
 		if ( $logs[ 'global' ] ) {
-			$fdb = $this->centralDBManager->getConnection( DB_PRIMARY );
+			$fdb = $this->centralDBManager->getPrimaryDatabase();
 			$fdb->newUpdateQueryBuilder()
 				->update( 'abuse_filter_log' )
 				->set( [ 'afl_rev_id' => $revisionRecord->getId() ] )

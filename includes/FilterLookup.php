@@ -14,8 +14,9 @@ use MediaWiki\User\UserIdentityValue;
 use RuntimeException;
 use stdClass;
 use Wikimedia\ObjectCache\WANObjectCache;
+use Wikimedia\Rdbms\IConnectionProvider;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\IDBAccessObject;
-use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\IReadableDatabase;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
@@ -66,7 +67,7 @@ class FilterLookup implements IDBAccessObject {
 	private bool $localFiltersHiddenForTest = false;
 
 	public function __construct(
-		private readonly ILoadBalancer $loadBalancer,
+		private readonly IConnectionProvider $connectionProvider,
 		private readonly WANObjectCache $wanCache,
 		private readonly CentralDBManager $centralDBManager
 	) {
@@ -86,8 +87,8 @@ class FilterLookup implements IDBAccessObject {
 		$cacheKey = $this->getCacheKey( $filterID, $global );
 		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->cache[$cacheKey] ) ) {
 			$dbr = ( $flags & IDBAccessObject::READ_LATEST )
-				? $this->getDBConnection( DB_PRIMARY, $global )
-				: $this->getDBConnection( DB_REPLICA, $global );
+				? $this->getPrimaryDatabase( $global )
+				: $this->getReplicaDatabase( $global );
 			$row = $this->getAbuseFilterQueryBuilder( $dbr )
 				->where( [ 'af_id' => $filterID ] )
 				->recency( $flags )
@@ -157,8 +158,8 @@ class FilterLookup implements IDBAccessObject {
 			return [];
 		}
 		$dbr = ( $flags & IDBAccessObject::READ_LATEST )
-			? $this->getDBConnection( DB_PRIMARY, $global )
-			: $this->getDBConnection( DB_REPLICA, $global );
+			? $this->getPrimaryDatabase( $global )
+			: $this->getReplicaDatabase( $global );
 		$queryBuilder = $this->getAbuseFilterQueryBuilder( $dbr )
 			->where( [ 'af_enabled' => 1, 'af_deleted' => 0, 'af_group' => $group ] )
 			->recency( $flags );
@@ -188,16 +189,28 @@ class FilterLookup implements IDBAccessObject {
 	}
 
 	/**
-	 * @param int $dbIndex
+	 * @param bool $global
+	 * @return IDatabase
+	 * @throws CentralDBNotAvailableException
+	 */
+	private function getPrimaryDatabase( bool $global ): IDatabase {
+		if ( $global ) {
+			return $this->centralDBManager->getPrimaryDatabase();
+		} else {
+			return $this->connectionProvider->getPrimaryDatabase();
+		}
+	}
+
+	/**
 	 * @param bool $global
 	 * @return IReadableDatabase
 	 * @throws CentralDBNotAvailableException
 	 */
-	private function getDBConnection( int $dbIndex, bool $global ): IReadableDatabase {
+	private function getReplicaDatabase( bool $global ): IReadableDatabase {
 		if ( $global ) {
-			return $this->centralDBManager->getConnection( $dbIndex );
+			return $this->centralDBManager->getReplicaDatabase();
 		} else {
-			return $this->loadBalancer->getConnection( $dbIndex );
+			return $this->connectionProvider->getReplicaDatabase();
 		}
 	}
 
@@ -238,8 +251,8 @@ class FilterLookup implements IDBAccessObject {
 	): HistoryFilter {
 		if ( $flags !== IDBAccessObject::READ_NORMAL || !isset( $this->historyCache[$version] ) ) {
 			$dbr = ( $flags & IDBAccessObject::READ_LATEST )
-				? $this->loadBalancer->getConnection( DB_PRIMARY )
-				: $this->loadBalancer->getConnection( DB_REPLICA );
+				? $this->connectionProvider->getPrimaryDatabase()
+				: $this->connectionProvider->getReplicaDatabase();
 			$row = $this->getAbuseFilterHistoryQueryBuilder( $dbr )
 				->where( [ 'afh_id' => $version ] )
 				->recency( $flags )
@@ -260,7 +273,7 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	public function getLastHistoryVersion( int $filterID ): HistoryFilter {
 		if ( !isset( $this->lastVersionCache[$filterID] ) ) {
-			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+			$dbr = $this->connectionProvider->getReplicaDatabase();
 			$row = $this->getAbuseFilterHistoryQueryBuilder( $dbr )
 				->where( [ 'afh_filter' => $filterID ] )
 				->orderBy( 'afh_id', SelectQueryBuilder::SORT_DESC )
@@ -286,7 +299,7 @@ class FilterLookup implements IDBAccessObject {
 		if ( !isset( $this->closestVersionsCache[$filterID][$historyID][$direction] ) ) {
 			$comparison = $direction === self::DIR_PREV ? '<' : '>';
 			$order = $direction === self::DIR_PREV ? 'DESC' : 'ASC';
-			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+			$dbr = $this->connectionProvider->getReplicaDatabase();
 			$row = $this->getAbuseFilterHistoryQueryBuilder( $dbr )
 				->where( [ 'afh_filter' => $filterID ] )
 				->andWhere( $dbr->expr( 'afh_id', $comparison, $historyID ) )
@@ -312,7 +325,7 @@ class FilterLookup implements IDBAccessObject {
 	 */
 	public function getFirstFilterVersionID( int $filterID ): int {
 		if ( !isset( $this->firstVersionCache[$filterID] ) ) {
-			$dbr = $this->loadBalancer->getConnection( DB_REPLICA );
+			$dbr = $this->connectionProvider->getReplicaDatabase();
 			$historyID = $dbr->newSelectQueryBuilder()
 				->select( 'MIN(afh_id)' )
 				->from( 'abuse_filter_history' )

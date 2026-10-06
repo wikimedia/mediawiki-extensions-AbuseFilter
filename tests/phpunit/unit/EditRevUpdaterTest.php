@@ -51,7 +51,7 @@ class EditRevUpdaterTest extends MediaWikiUnitTestCase {
 			->willReturn( $localDB ?? $this->createMock( IDatabase::class ) );
 
 		$dbManager = $this->createMock( CentralDBManager::class );
-		$dbManager->method( 'getConnection' )
+		$dbManager->method( 'getPrimaryDatabase' )
 			->willReturn( $centralDB ?? $this->createMock( IDatabase::class ) );
 
 		return new EditRevUpdater(

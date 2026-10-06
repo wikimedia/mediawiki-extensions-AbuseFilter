@@ -22,9 +22,8 @@ use stdClass;
 use Wikimedia\ObjectCache\HashBagOStuff;
 use Wikimedia\ObjectCache\WANObjectCache;
 use Wikimedia\Rdbms\FakeResultWrapper;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\LBFactory;
 use Wikimedia\Rdbms\SelectQueryBuilder;
 
 /**
@@ -49,20 +48,22 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		?WANObjectCache $cache = null,
 		bool $filterIsCentral = false
 	): FilterLookup {
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnection' )
+		$localConnectionProvider = $this->createMock( IConnectionProvider::class );
+		$localConnectionProvider->method( 'getPrimaryDatabase' )
+			->willReturn( $db ?? $this->createMock( IDatabase::class ) );
+		$localConnectionProvider->method( 'getReplicaDatabase' )
 			->willReturn( $db ?? $this->createMock( IDatabase::class ) );
 
-		$lbFactory = $this->createMock( LBFactory::class );
-		$lbFactory->method( 'getMainLB' )->willReturnCallback(
-			static function ( $domain ) use ( $lb, $centralDB ) {
-				// Return null for sanity
-				return $domain === $centralDB ? $lb : null;
-			}
-		);
-		$centralDBManager = new CentralDBManager( $lbFactory, $centralDB, $filterIsCentral );
+		$getCentralDB = function ( $domain ) use ( $db, $centralDB ) {
+			$this->assertSame( $centralDB, $domain );
+			return $db ?? $this->createMock( IDatabase::class );
+		};
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$connectionProvider->method( 'getPrimaryDatabase' )->willReturnCallback( $getCentralDB );
+		$connectionProvider->method( 'getReplicaDatabase' )->willReturnCallback( $getCentralDB );
+		$centralDBManager = new CentralDBManager( $connectionProvider, $centralDB, $filterIsCentral );
 		return new FilterLookup(
-			$lb,
+			$localConnectionProvider,
 			// Cannot use mocks because final methods aren't mocked and they would error out
 			$cache ?? new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 			$centralDBManager
@@ -351,7 +352,7 @@ class FilterLookupTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			FilterLookup::class,
 			new FilterLookup(
-				$this->createMock( ILoadBalancer::class ),
+				$this->createMock( IConnectionProvider::class ),
 				$this->createMock( WANObjectCache::class ),
 				$this->createMock( CentralDBManager::class )
 			)

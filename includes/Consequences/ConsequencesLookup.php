@@ -53,7 +53,7 @@ class ConsequencesLookup {
 
 		if ( count( $globalFilters ) ) {
 			$consequences += $this->loadConsequencesFromDB(
-				$this->centralDBManager->getConnection( DB_REPLICA ),
+				$this->centralDBManager->getReplicaDatabase(),
 				$globalFilters,
 				GlobalNameUtils::GLOBAL_FILTER_PREFIX
 			);

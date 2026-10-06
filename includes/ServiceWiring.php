@@ -114,7 +114,7 @@ return [
 	},
 	ServiceNames::CentralDBManager => static function ( MediaWikiServices $services ): CentralDBManager {
 		return new CentralDBManager(
-			$services->getDBLoadBalancerFactory(),
+			$services->getConnectionProvider(),
 			$services->getMainConfig()->get( 'AbuseFilterCentralDB' ),
 			$services->getMainConfig()->get( 'AbuseFilterIsCentral' )
 		);
@@ -149,7 +149,7 @@ return [
 	},
 	ServiceNames::FilterLookup => static function ( MediaWikiServices $services ): FilterLookup {
 		return new FilterLookup(
-			$services->getDBLoadBalancer(),
+			$services->getConnectionProvider(),
 			$services->getMainWANObjectCache(),
 			$services->get( CentralDBManager::SERVICE_NAME )
 		);

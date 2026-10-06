@@ -3,8 +3,9 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use Wikimedia\Rdbms\DBError;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 class CentralDBManager {
 	public const SERVICE_NAME = ServiceNames::CentralDBManager;
@@ -13,12 +14,12 @@ class CentralDBManager {
 	private $dbName;
 
 	/**
-	 * @param LBFactory $loadBalancerFactory
+	 * @param IConnectionProvider $connectionProvider
 	 * @param string|false|null $dbName
 	 * @param bool $filterIsCentral
 	 */
 	public function __construct(
-		private readonly LBFactory $loadBalancerFactory,
+		private readonly IConnectionProvider $connectionProvider,
 		$dbName,
 		private readonly bool $filterIsCentral
 	) {
@@ -27,19 +28,21 @@ class CentralDBManager {
 	}
 
 	/**
-	 * @param int $index DB_PRIMARY/DB_REPLICA
 	 * @return IDatabase
 	 * @throws DBError
 	 * @throws CentralDBNotAvailableException
 	 */
-	public function getConnection( int $index ): IDatabase {
-		if ( !is_string( $this->dbName ) ) {
-			throw new CentralDBNotAvailableException( '$wgAbuseFilterCentralDB is not configured' );
-		}
+	public function getPrimaryDatabase(): IDatabase {
+		return $this->connectionProvider->getPrimaryDatabase( $this->getCentralDBName() );
+	}
 
-		return $this->loadBalancerFactory
-			->getMainLB( $this->dbName )
-			->getConnection( $index, [], $this->dbName );
+	/**
+	 * @return IReadableDatabase
+	 * @throws DBError
+	 * @throws CentralDBNotAvailableException
+	 */
+	public function getReplicaDatabase(): IReadableDatabase {
+		return $this->connectionProvider->getReplicaDatabase( $this->getCentralDBName() );
 	}
 
 	/**

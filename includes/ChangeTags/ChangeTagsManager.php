@@ -102,7 +102,7 @@ class ChangeTagsManager {
 			function () use ( $enabled ) {
 				$dbr = $this->lbFactory->getReplicaDatabase();
 				try {
-					$globalDbr = $this->centralDBManager->getConnection( DB_REPLICA );
+					$globalDbr = $this->centralDBManager->getReplicaDatabase();
 				} catch ( CentralDBNotAvailableException ) {
 					$globalDbr = null;
 				}

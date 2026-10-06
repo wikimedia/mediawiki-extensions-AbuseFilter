@@ -5,9 +5,9 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 use MediaWiki\Extension\AbuseFilter\CentralDBManager;
 use MediaWiki\Extension\AbuseFilter\CentralDBNotAvailableException;
 use MediaWikiUnitTestCase;
+use Wikimedia\Rdbms\IConnectionProvider;
 use Wikimedia\Rdbms\IDatabase;
-use Wikimedia\Rdbms\ILoadBalancer;
-use Wikimedia\Rdbms\LBFactory;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * @group Test
@@ -19,40 +19,59 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 		$this->assertInstanceOf(
 			CentralDBManager::class,
 			new CentralDBManager(
-				$this->createMock( LBFactory::class ),
+				$this->createMock( IConnectionProvider::class ),
 				'foo',
 				true
 			)
 		);
 	}
 
-	public function testGetConnection() {
+	public function testGetPrimaryDatabase() {
 		$expected = $this->createMock( IDatabase::class );
-		$lb = $this->createMock( ILoadBalancer::class );
-		$lb->method( 'getConnection' )->willReturn( $expected );
-		$lbFactory = $this->createMock( LBFactory::class );
-		$lbFactory->method( 'getMainLB' )->willReturn( $lb );
-		$dbManager = new CentralDBManager( $lbFactory, 'foo', true );
-		$this->assertSame( $expected, $dbManager->getConnection( DB_REPLICA ) );
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$connectionProvider->expects( $this->once() )
+			->method( 'getPrimaryDatabase' )
+			->with( 'foo' )
+			->willReturn( $expected );
+		$dbManager = new CentralDBManager( $connectionProvider, 'foo', true );
+		$this->assertSame( $expected, $dbManager->getPrimaryDatabase() );
 	}
 
-	public function testGetConnection_invalid() {
-		$lbFactory = $this->createMock( LBFactory::class );
-		$dbManager = new CentralDBManager( $lbFactory, null, true );
+	public function testGetPrimaryDatabase_invalid() {
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$dbManager = new CentralDBManager( $connectionProvider, null, true );
 		$this->expectException( CentralDBNotAvailableException::class );
-		$dbManager->getConnection( DB_REPLICA );
+		$dbManager->getPrimaryDatabase();
+	}
+
+	public function testGetReplicaDatabase() {
+		$expected = $this->createMock( IReadableDatabase::class );
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$connectionProvider->expects( $this->once() )
+			->method( 'getReplicaDatabase' )
+			->with( 'foo' )
+			->willReturn( $expected );
+		$dbManager = new CentralDBManager( $connectionProvider, 'foo', true );
+		$this->assertSame( $expected, $dbManager->getReplicaDatabase() );
+	}
+
+	public function testGetReplicaDatabase_invalid() {
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$dbManager = new CentralDBManager( $connectionProvider, null, true );
+		$this->expectException( CentralDBNotAvailableException::class );
+		$dbManager->getReplicaDatabase();
 	}
 
 	public function testGetCentralDBName() {
 		$expected = 'foobar';
-		$lbFactory = $this->createMock( LBFactory::class );
-		$dbManager = new CentralDBManager( $lbFactory, $expected, true );
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$dbManager = new CentralDBManager( $connectionProvider, $expected, true );
 		$this->assertSame( $expected, $dbManager->getCentralDBName() );
 	}
 
 	public function testGetCentralDBName_invalid() {
-		$lbFactory = $this->createMock( LBFactory::class );
-		$dbManager = new CentralDBManager( $lbFactory, null, true );
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$dbManager = new CentralDBManager( $connectionProvider, null, true );
 		$this->expectException( CentralDBNotAvailableException::class );
 		$dbManager->getCentralDBName();
 	}
@@ -62,8 +81,8 @@ class CentralDBManagerTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideIsCentral
 	 */
 	public function testFilterIsCentral( bool $value ) {
-		$lbFactory = $this->createMock( LBFactory::class );
-		$dbManager = new CentralDBManager( $lbFactory, 'foo', $value );
+		$connectionProvider = $this->createMock( IConnectionProvider::class );
+		$dbManager = new CentralDBManager( $connectionProvider, 'foo', $value );
 		$this->assertSame( $value, $dbManager->filterIsCentral() );
 	}
 

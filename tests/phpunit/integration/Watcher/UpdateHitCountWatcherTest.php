@@ -42,7 +42,7 @@ class UpdateHitCountWatcherTest extends MediaWikiIntegrationTestCase {
 				return new UpdateQueryBuilder( $globalDB );
 			} );
 		$centralDBManager = $this->createMock( CentralDBManager::class );
-		$centralDBManager->method( 'getConnection' )->willReturn( $globalDB );
+		$centralDBManager->method( 'getPrimaryDatabase' )->willReturn( $globalDB );
 
 		$watcher = new UpdateHitCountWatcher( $lb, $centralDBManager );
 		$watcher->run( $localFilters, $globalFilters, 'default' );
