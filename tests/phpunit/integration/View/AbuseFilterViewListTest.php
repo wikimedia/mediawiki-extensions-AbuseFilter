@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
 use MediaWiki\Permissions\Authority;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use Wikimedia\Parsoid\DOM\Document;
@@ -99,6 +100,28 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 	}
 
 	/**
+	 * @dataProvider provideShowForTopButtons
+	 */
+	public function testShowForTopButtons(
+		string $buttonSubpage,
+		string $buttonText,
+	): void {
+		[ $html ] = $this->executeSpecialPage( performer: $this->authorityCanUseProtectedVar );
+
+		$doc = DOMUtils::parseHTML( $html );
+		$url = SpecialPage::getTitleFor( 'AbuseFilter', $buttonSubpage )->getFullURL();
+		$button = $this->assertSelectorMatchesOneElementInNode( $doc, "a[href=\"$url\"]" );
+		$this->assertSame( $buttonText, $button->textContent );
+	}
+
+	public static function provideShowForTopButtons(): array {
+		return [
+			'new filter button' => [ 'new', '(abusefilter-new)' ],
+			'import filter button' => [ 'import', '(abusefilter-import-button)' ],
+		];
+	}
+
+	/**
 	 * Common test code used by tests which load the list of AbuseFilters,
 	 * used to verify that the headings on the table of AbuseFilters are
 	 * as expected.
@@ -108,7 +131,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 	 * @param bool $searchModeEnabled Whether the special page request included searching
 	 *   for filters with a specific substring in their pattern.
 	 */
-	private function verifyViewListHeadingsPresent(
+	private function assertListHeadingsPresent(
 		Document $doc, Authority $authority, bool $searchModeEnabled = false
 	) {
 		$tableHtml = $this->assertSelectorMatchesOneElementInNode( $doc, '.mw-datatable', true );
@@ -146,7 +169,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		}
 	}
 
-	public function testViewListWhenLimitIsOne() {
+	public function testShowListWhenLimitIsOne() {
 		[ $html, ] = $this->executeSpecialPage(
 			'',
 			new FauxRequest( [ 'limit' => 1 ] ),
@@ -156,7 +179,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		$htmlDoc = DOMUtils::parseHTML( $html );
 
 		// Verify the structure of one row in the table, ensuring the correct flags are set.
-		$this->verifyViewListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar );
+		$this->assertListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar );
 
 		$this->assertStringContainsString(
 			'AbuseFilter/1',
@@ -198,7 +221,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		$this->assertStringContainsString( 'UTSysop', $timestampCellHtml, 'Missing last editor of filter' );
 	}
 
-	public function testViewListProtectedVarsFilterVisibility() {
+	public function testShowListProtectedVarsFilterVisibility() {
 		// Ensure that even if the user cannot view the details of a protected filter
 		// they can still see the filter in the filter list
 		[ $html, ] = $this->executeSpecialPage(
@@ -208,10 +231,10 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			$this->authorityCannotUseProtectedVar
 		);
 		$this->assertStringContainsString( 'abusefilter-protected', $html );
-		$this->verifyViewListHeadingsPresent( DOMUtils::parseHTML( $html ), $this->authorityCannotUseProtectedVar );
+		$this->assertListHeadingsPresent( DOMUtils::parseHTML( $html ), $this->authorityCannotUseProtectedVar );
 	}
 
-	public function testViewListWithSearchQueryProtectedVarsFilterVisibility() {
+	public function testShowListWithSearchQueryProtectedVarsFilterVisibility() {
 		// Stub out a page with query results for a filter that uses protected variables
 		// &sort=af_id&limit=50&asc=&desc=1&deletedfilters=hide&querypattern=user_unnamed_ip&searchoption=LIKE
 		$requestWithProtectedVar = new FauxRequest( [
@@ -235,7 +258,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		);
 		$htmlDoc = DOMUtils::parseHTML( $html );
 		$this->assertStringContainsString( 'table_pager_empty', $html );
-		$this->verifyViewListHeadingsPresent( $htmlDoc, $this->authorityCannotUseProtectedVar, true );
+		$this->assertListHeadingsPresent( $htmlDoc, $this->authorityCannotUseProtectedVar, true );
 
 		// Assert that the user who can see protected variables sees the filter from the db
 		[ $html, ] = $this->executeSpecialPage(
@@ -244,8 +267,9 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 			null,
 			$this->authorityCanUseProtectedVar
 		);
+		$htmlDoc = DOMUtils::parseHTML( $html );
 		$this->assertStringContainsString( 'Filter with protected variables', $html );
-		$this->verifyViewListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar, true );
+		$this->assertListHeadingsPresent( $htmlDoc, $this->authorityCanUseProtectedVar, true );
 
 		// Check that the search found one result and that the pattern is bolded to show the text match
 		$patternCellHtml = $this->assertSelectorMatchesOneElement( $html, '.TablePager_col_af_pattern' );
@@ -255,7 +279,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		);
 	}
 
-	public function testViewListWithSearchQueryHonoursSortColumn() {
+	public function testShowListWithSearchQueryHonoursSortColumn() {
 		$request = new FauxRequest( [
 			'sort' => 'af_hit_count',
 			'limit' => 50,
@@ -282,12 +306,12 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * @dataProvider provideViewListSortByHitCount
+	 * @dataProvider provideShowListSortByHitCount
 	 * @param string[] $perms
 	 * @param int[] $expectedOrderAsc
 	 * @param int[] $expectedOrderDesc
 	 */
-	public function testViewListSortByHitCount(
+	public function testShowListSortByHitCount(
 		array $perms,
 		array $expectedOrderAsc,
 		array $expectedOrderDesc
@@ -329,7 +353,7 @@ class AbuseFilterViewListTest extends SpecialPageTestBase {
 		}
 	}
 
-	public static function provideViewListSortByHitCount(): iterable {
+	public static function provideShowListSortByHitCount(): iterable {
 		$viewLogDetails = 'abusefilter-log-detail';
 		$viewPrivate = 'abusefilter-view-private';
 		$viewProtected = 'abusefilter-access-protected-vars';
