@@ -55,7 +55,7 @@
 	"right-abusefilter-privatedetails": "Перегляд приватних даних у журналі зловживань",
 	"right-abusefilter-privatedetails-log": "Перегляд журналу доступу до приватних деталей фільтрів зловживань",
 	"right-abusefilter-modify-restricted": "Зміна фільтрів з обмежувальними діями",
-	"right-abusefilter-revert": "Відкіт усіх змін, зроблених окремим фільтром зловживань",
+	"right-abusefilter-revert": "Відкотити усі дії, зроблені фільтром зловживань",
 	"right-abusefilter-view-private": "Перегляд приватних фільтрів зловживань",
 	"right-abusefilter-log-private": "Перегляд записів журналу зловживань, позначених як приватні",
 	"right-abusefilter-hide-log": "Приховування записів у журналі зловживань",
@@ -69,7 +69,7 @@
 	"action-abusefilter-privatedetails": "перегляд приватних даних у журналі зловживань",
 	"action-abusefilter-privatedetails-log": "перегляд журналу доступу до приватних деталей фільтрів зловживань",
 	"action-abusefilter-modify-restricted": "зміну фільтрів зловживань із обмежувальними діями",
-	"action-abusefilter-revert": "відкіт усіх змін, зроблених окремим фільтром зловживань",
+	"action-abusefilter-revert": "відкотити усі дії, зроблені фільтром зловживань",
 	"action-abusefilter-view-private": "перегляд приватних фільтрів зловживань",
 	"action-abusefilter-log-suppressed": "перегляд записів журналу тих фільтрів зловживань, які позначені як приховані",
 	"action-abusefilter-log-private": "перегляд записів журналу тих фільтрів зловживань, які позначені як приватні",
@@ -676,8 +676,8 @@
 	"right-abusefilter-bypass-blocked-external-domains": "Обхід заблокованих зовнішніх доменів",
 	"action-abusefilter-bypass-blocked-external-domains": "обхід заблокованого зовнішнього домену",
 	"abusefilter-blocked-domains-cannot-edit-directly": "Створення або зміна зовнішніх доменів, для яких заблоковано можливість на них посилатися, має здійснюватися на [[Special:BlockedExternalDomains|спеціальній сторінці]].",
-	"right-abusefilter-access-protected-vars": "Перегляд та створення фільтрів, які використовують захищені змінні",
-	"action-abusefilter-access-protected-vars": "перегляд та створення фільтрів, які використовують захищені змінні",
+	"right-abusefilter-access-protected-vars": "Доступ до захищених змінних у фільтрах зловживань та записах журналу зловживань",
+	"action-abusefilter-access-protected-vars": "доступ до захищених змінних у фільтрах зловживань та записах журналу зловживань",
 	"right-abusefilter-blocked-external-domains-log": "Перегляд журналу звернень до заблокованих зовнішніх доменів",
 	"action-abusefilter-blocked-external-domains-log": "перегляд журналу звернень до заблокованих зовнішніх доменів",
 	"abusefilter-protected-vars-log-name": "Журнал захищених змінних фільтра зловживань",
@@ -690,5 +690,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Зміна доступу",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Перегляд значень захищених змінних",
 	"communityconfiguration-blockeddomain-title": "Заблоковані зовнішні домени",
-	"communityconfiguration-blockeddomain-description": "Список зовнішніх доменів, на які не можна посилатися."
+	"communityconfiguration-blockeddomain-description": "Список зовнішніх доменів, на які не можна посилатися.",
+	"grant-access-protected-vars": "Доступ до захищених змінних у фільтрах зловживань"
 }

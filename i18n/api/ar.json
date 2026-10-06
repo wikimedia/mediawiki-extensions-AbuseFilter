@@ -32,7 +32,7 @@
 	"apihelp-query+abusefilters-param-endid": "معرف المرشح لإيقاف التعداد فيه.",
 	"apihelp-query+abusefilters-param-show": "عرض المرشحات التي تستوفي هذه المعايير فقط.",
 	"apihelp-query+abusefilters-param-limit": "الحد الأقصى لعدد المرشحات للقائمة.",
-	"apihelp-query+abusefilters-param-prop": "أي خصائص للحصول عليها.",
+	"apihelp-query+abusefilters-param-prop": "ما هي المعلومات التي يجب تضمينها؟",
 	"apihelp-query+abusefilters-example-1": "سرد المرشحات العامة المفعلة",
 	"apihelp-query+abusefilters-example-2": "عرض بعض التفاصيل عن المرشحات",
 	"apihelp-query+abuselog-summary": "عرض الأحداث التي تم التقاطها بواسطة أحد مرشحات الإساءة.",
