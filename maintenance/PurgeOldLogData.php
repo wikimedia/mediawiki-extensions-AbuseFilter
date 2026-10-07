@@ -10,6 +10,7 @@ if ( $IP === false ) {
 require_once "$IP/maintenance/Maintenance.php";
 // @codeCoverageIgnoreEnd
 
+use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Maintenance\Maintenance;
@@ -22,7 +23,8 @@ class PurgeOldLogData extends Maintenance {
 		parent::__construct();
 		$this->addDescription(
 			'Purges sensitive data in the abuse_filter_log table. This purges the IP address in the' .
-				'afl_ip_hex column as well as any protected variable values in afl_var_dump.'
+				'afl_ip_hex column as well as any protected variable values in afl_var_dump. Rows which contain ' .
+				'protected variables defined by the AbuseFilterProtectedVariablesDeleteLogEntries hook are deleted.'
 		);
 		$this->setBatchSize( 200 );
 
@@ -80,6 +82,9 @@ class PurgeOldLogData extends Maintenance {
 	/**
 	 * Purges protected variable values from the afl_var_dump column for rows where the log was created more than
 	 * $wgAbuseFilterLogProtectedVariablesMaxAge seconds ago.
+	 *
+	 * Rows which contain a variable defined by the AbuseFilterProtectedVariablesDeleteLogEntries hook
+	 * are deleted instead.
 	 */
 	private function purgeProtectedVariables(): void {
 		// Return early if protected variable values are not purged.
@@ -93,8 +98,12 @@ class PurgeOldLogData extends Maintenance {
 		$dbw = $this->getPrimaryDB();
 		$logger = LoggerFactory::getInstance( 'AbuseFilter' );
 		$protectedVariablesPurgeCutoff = ConvertibleTimestamp::time() - $protectedVariablesMaxAge;
+		$variablesThatDeleteLogEntries = AbuseFilterServices::getProtectedVariablesLookup(
+			$this->getServiceContainer()
+		)->getProtectedVariablesThatDeleteLogEntries();
 
 		$count = 0;
+		$deletedCount = 0;
 		$skippedIds = [];
 		do {
 			// Find a batch of rows where afl_var_dump contains JSON and therefore by extension protected variable
@@ -116,6 +125,7 @@ class PurgeOldLogData extends Maintenance {
 				->limit( $this->getBatchSize() )
 				->fetchResultSet();
 
+			$rowIdsToDelete = [];
 			foreach ( $rowsToProcess as $row ) {
 				// Convert the afl_var_dump JSON to a PHP array. If this fails log a warning and skip the row.
 				$varDumpArray = FormatJson::decode( $row->afl_var_dump, true );
@@ -131,6 +141,13 @@ class PurgeOldLogData extends Maintenance {
 					continue;
 				}
 
+				// The fact that the filter matched can reveal private data for these variables,
+				// so delete the entire row
+				if ( array_intersect( $variablesThatDeleteLogEntries, array_keys( $varDumpArray ) ) ) {
+					$rowIdsToDelete[] = $row->afl_id;
+					continue;
+				}
+
 				// All values in the array except in the key '_blob' are protected variables that should be purged,
 				// so replace the JSON array with the data in '_blob'.
 				$dbw->newUpdateQueryBuilder()
@@ -141,12 +158,22 @@ class PurgeOldLogData extends Maintenance {
 					->execute();
 				$count += $dbw->affectedRows();
 			}
-			$this->output( "... $count\n" );
+
+			if ( count( $rowIdsToDelete ) ) {
+				$dbw->newDeleteQueryBuilder()
+					->deleteFrom( 'abuse_filter_log' )
+					->where( [ 'afl_id' => $rowIdsToDelete ] )
+					->caller( __METHOD__ )
+					->execute();
+				$deletedCount += $dbw->affectedRows();
+			}
+
+			$this->output( "... updated: $count, deleted: $deletedCount\n" );
 
 			$this->waitForReplication();
 		} while ( $rowsToProcess->numRows() >= $this->getBatchSize() );
 
-		$this->output( "Done. Purged $count var dumps.\n" );
+		$this->output( "Done. Purged $count var dumps and deleted $deletedCount log entries.\n" );
 	}
 }
 

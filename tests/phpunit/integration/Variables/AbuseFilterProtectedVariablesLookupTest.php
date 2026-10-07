@@ -24,4 +24,26 @@ class AbuseFilterProtectedVariablesLookupTest extends MediaWikiIntegrationTestCa
 			$objectUnderTest->getAllProtectedVariables()
 		);
 	}
+
+	public function testGetProtectedVariablesThatDeleteLogEntries(): void {
+		$this->overrideConfigValue( 'AbuseFilterProtectedVariables', [ 'user_unnamed_ip' ] );
+		$this->setTemporaryHook( 'AbuseFilterCustomProtectedVariables', static function ( &$variables ) {
+			$variables[] = 'custom_variable';
+		} );
+		$this->setTemporaryHook(
+			'AbuseFilterProtectedVariablesDeleteLogEntries',
+			static function ( &$variables ) {
+				$variables[] = 'custom_variable';
+				$variables[] = 'custom_variable';
+				$variables[] = 'not_protected_variable';
+			}
+		);
+
+		$objectUnderTest = AbuseFilterServices::getProtectedVariablesLookup( $this->getServiceContainer() );
+		$this->assertSame(
+			[ 'custom_variable' ],
+			$objectUnderTest->getProtectedVariablesThatDeleteLogEntries(),
+			'Only unique protected variables should be returned'
+		);
+	}
 }

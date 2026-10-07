@@ -34,6 +34,7 @@ class AbuseFilterHookRunner implements
 	AbuseFilterGenerateVarsForRecentChangeHook,
 	AbuseFilterGetDangerousActionsHook,
 	AbuseFilterInterceptVariableHook,
+	AbuseFilterProtectedVariablesDeleteLogEntriesHook,
 	AbuseFilterProtectedVarsAccessLoggerHook,
 	AbuseFilterShouldFilterActionHook
 {
@@ -236,6 +237,17 @@ class AbuseFilterHookRunner implements
 	public function onAbuseFilterCustomProtectedVariables( array &$variables ): void {
 		$this->hookContainer->run(
 			'AbuseFilterCustomProtectedVariables',
+			[ &$variables ],
+			[ 'abortable' => false ]
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onAbuseFilterProtectedVariablesDeleteLogEntries( array &$variables ): void {
+		$this->hookContainer->run(
+			'AbuseFilterProtectedVariablesDeleteLogEntries',
 			[ &$variables ],
 			[ 'abortable' => false ]
 		);

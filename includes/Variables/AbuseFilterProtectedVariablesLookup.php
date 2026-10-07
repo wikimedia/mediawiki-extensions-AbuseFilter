@@ -36,4 +36,17 @@ class AbuseFilterProtectedVariablesLookup {
 			$protectedVariables, $this->options->get( 'AbuseFilterProtectedVariables' )
 		) );
 	}
+
+	/**
+	 * Returns an array of protected variables that are considered sensitive enough to require
+	 * deletion of any abuse_filter_log row that contains the variable instead of just purging
+	 * the value of the variable.
+	 *
+	 * @return string[]
+	 */
+	public function getProtectedVariablesThatDeleteLogEntries(): array {
+		$variables = [];
+		$this->hookRunner->onAbuseFilterProtectedVariablesDeleteLogEntries( $variables );
+		return array_values( array_intersect( array_unique( $variables ), $this->getAllProtectedVariables() ) );
+	}
 }

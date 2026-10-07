@@ -9,6 +9,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Tests\Maintenance\MaintenanceBaseTestCase;
 use Wikimedia\IPUtils;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
+use Wikimedia\Timestamp\TimestampFormat;
 
 /**
  * @group Test
@@ -186,6 +187,86 @@ class PurgeOldLogDataTest extends MaintenanceBaseTestCase {
 			'Purging protected variables from afl_var_dump', $actualOutput
 		);
 		$this->assertStringContainsString( 'Done. Purged 1 var dumps', $actualOutput );
+	}
+
+	public function testExecuteDeletesLogEntriesForVariables(): void {
+		// Pretend that old_wikitext and new_wikitext are protected variables, and that the
+		// log entries that contain old_wikitext should be deleted instead of purged
+		$this->setTemporaryHook( 'AbuseFilterCustomProtectedVariables', static function ( &$variables ) {
+			$variables[] = 'old_wikitext';
+			$variables[] = 'new_wikitext';
+		} );
+		$this->setTemporaryHook(
+			'AbuseFilterProtectedVariablesDeleteLogEntries',
+			static function ( &$variables ) {
+				$variables[] = 'old_wikitext';
+			}
+		);
+
+		$blobStore = AbuseFilterServices::getVariablesBlobStore();
+		$oldTS = ConvertibleTimestamp::convert(
+			TimestampFormat::UNIX,
+			ConvertibleTimestamp::convert( TimestampFormat::UNIX, self::FAKE_TIME ) - 2 * self::MAX_AGE
+		);
+		$defaultRow = [
+			'afl_ip_hex' => '', 'afl_global' => 0, 'afl_filter_id' => 1, 'afl_user' => 1, 'afl_user_text' => 'User',
+			'afl_action' => 'edit', 'afl_actions' => '', 'afl_namespace' => 0, 'afl_title' => 'Title',
+			'afl_wiki' => null, 'afl_deleted' => 0, 'afl_rev_id' => 42,
+		];
+		$purgedRowVarDump = $blobStore->storeVarDump( VariableHolder::newFromArray( [ 'new_wikitext' => 'abcd' ] ) );
+		$rows = [
+			// Expired, and contains a variable that causes deletion
+			[
+				'afl_id' => 1, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ),
+				'afl_var_dump' => $blobStore->storeVarDump( VariableHolder::newFromArray(
+					[ 'old_wikitext' => 'abc', 'new_wikitext' => 'abcd' ]
+				) ),
+			],
+			// Expired, but only contains a variable that causes the value to be purged
+			[
+				'afl_id' => 2, 'afl_timestamp' => $this->getDb()->timestamp( $oldTS ),
+				'afl_var_dump' => $purgedRowVarDump,
+			],
+			// Not expired, and contains a variable that causes deletion
+			[
+				'afl_id' => 3, 'afl_timestamp' => $this->getDb()->timestamp( self::FAKE_TIME ),
+				'afl_var_dump' => $blobStore->storeVarDump( VariableHolder::newFromArray(
+					[ 'old_wikitext' => 'abc' ]
+				) ),
+			],
+		];
+		$this->getDb()->newInsertQueryBuilder()
+			->insertInto( 'abuse_filter_log' )
+			->rows( array_map( static fn ( $row ) => $row + $defaultRow, $rows ) )
+			->caller( __METHOD__ )
+			->execute();
+
+		ConvertibleTimestamp::setFakeTime( self::FAKE_TIME );
+		$this->maintenance->setConfig( new HashConfig( [
+			'AbuseFilterLogIPMaxAge' => self::MAX_AGE,
+			'AbuseFilterLogProtectedVariablesMaxAge' => self::MAX_AGE,
+		] ) );
+		$this->maintenance->loadWithArgv( [ '--batch-size', 1 ] );
+		$this->maintenance->execute();
+
+		$this->newSelectQueryBuilder()
+			->select( 'afl_id' )
+			->from( 'abuse_filter_log' )
+			->orderBy( 'afl_id' )
+			->caller( __METHOD__ )
+			->assertFieldValues( [ '2', '3' ] );
+		$this->newSelectQueryBuilder()
+			->select( 'afl_var_dump' )
+			->from( 'abuse_filter_log' )
+			->where( [ 'afl_id' => 2 ] )
+			->caller( __METHOD__ )
+			->assertFieldValue( json_decode( $purgedRowVarDump, true )['_blob'] );
+
+		$this->assertStringContainsString(
+			'Done. Purged 1 var dumps and deleted 1 log entries',
+			$this->getActualOutputForAssertion(),
+			'Output of the maintenance script is not as expected'
+		);
 	}
 
 	/** @dataProvider provideExecuteForNoRows */
