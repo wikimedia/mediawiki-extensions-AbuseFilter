@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\View;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
@@ -12,8 +13,10 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
 use MediaWiki\Language\RawMessage;
+use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
+use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
  * @group Database
@@ -41,11 +44,28 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 		return $sp;
 	}
 
+	private function enableAllFilterActions(): void {
+		$this->overrideConfigValue(
+			'AbuseFilterActions',
+			[
+				'throttle' => true,
+				'warn' => true,
+				'disallow' => true,
+				'blockautopromote' => true,
+				'block' => true,
+				'rangeblock' => true,
+				'degroup' => true,
+				'tag' => true,
+			]
+		);
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	protected function setUp(): void {
 		parent::setUp();
+		$this->enableAllFilterActions();
 		$this->clearProtectedVarRelatedHooks();
 	}
 
@@ -53,7 +73,33 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	public function addDBDataOnce() {
+		$this->enableAllFilterActions();
 		$this->createFiltersWithProtectedVariables();
+
+		$filterStore = AbuseFilterServices::getFilterStore();
+		$performer = $this->getTestSysop()->getAuthority();
+		$authority = new UltimateAuthority( $performer->getUser() );
+
+		// Create a private filter #3
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '3',
+				'name' => 'Private filter',
+				'rules' => '1 = 0',
+				'privacy' => Flags::FILTER_HIDDEN,
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		// Create a throttled filter #4
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$this->getSpecsForThrottledFilter( [] ),
+			MutableFilter::newDefault()
+		) );
 	}
 
 	public function testViewEditTokenMismatch() {
@@ -83,28 +129,10 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 	 * @dataProvider provideViewEditMakePublic
 	 */
 	public function testViewEditMakePublic( int $isNewFilterHidden ) {
-		// Create a private filter
-		$performer = $this->getTestSysop();
-		$name = 'Hidden filter';
-		$rules = '1 = 0';
-		// Use an ID that is not used in ::addDBDataOnce
-		$filterId = '3';
-		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
-			$performer->getAuthority(),
-			null,
-			$this->getFilterFromSpecs( [
-				'id' => $filterId,
-				'name' => $name,
-				'rules' => $rules,
-				'privacy' => Flags::FILTER_HIDDEN,
-			] ),
-			MutableFilter::newDefault()
-		) );
-
 		$request = new FauxRequest( [
 			// Avoid the abusefilter-edit-missingfields error (see FilterValidator::checkRequiredFields)
-			'wpFilterDescription' => $name,
-			'wpFilterRules' => $rules,
+			'wpFilterDescription' => 'Hidden filter',
+			'wpFilterRules' => '1 = 0',
 		], true );
 		if ( $isNewFilterHidden ) {
 			// Checkbox checked: keep the filter private
@@ -113,11 +141,11 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 
 		// Make sure wpEditToken is set, because wpMakePublic is evaluated after token mismatches
 		$context = RequestContext::getMain();
-		$context->setAuthority( $performer->getAuthority() );
-		$token = $context->getCsrfTokenSet()->getToken( [ 'abusefilter', $filterId ] )->toString();
+		$context->setAuthority( $this->getTestSysop()->getAuthority() );
+		$token = $context->getCsrfTokenSet()->getToken( [ 'abusefilter', '3' ] )->toString();
 		$request->setVal( 'wpEditToken', $token );
 
-		[ $html ] = $this->executeSpecialPage( $filterId, $request );
+		[ $html ] = $this->executeSpecialPage( '3', $request );
 
 		$msgFragment = $isNewFilterHidden ? 'shown unexpectedly' : 'not shown';
 		$this->assertSame(
@@ -349,5 +377,69 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 		$successData = $session->get( AbuseFilterViewEdit::EDIT_SUCCESS_SESSION_KEY );
 		$this->assertSame( $successData['changedFilter'], (int)$filterId );
 		$this->assertIsInt( $successData['changeId'] );
+	}
+
+	/**
+	 * @dataProvider provideBuildFilterEditorThrottleWarning
+	 */
+	public function testBuildFilterEditorThrottleWarning( array $rawActions, string $expected ): void {
+		$performer = $this->getTestSysop()->getAuthority();
+		$filterLookup = AbuseFilterServices::getFilterLookup();
+		$filterId = 4;
+
+		// Update the throttled filter's actions
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			new UltimateAuthority( $performer->getUser() ),
+			$filterId,
+			$this->getSpecsForThrottledFilter( $rawActions ),
+			$filterLookup->getFilter( $filterId, false )
+		) );
+
+		// ::saveFilter resets af_throttled to 0
+		$this->getDb()->newUpdateQueryBuilder()
+			->table( 'abuse_filter' )
+			->set( [ 'af_throttled' => 1 ] )
+			->where( [ 'af_id' => $filterId ] )
+			->caller( __METHOD__ )
+			->execute();
+
+		$filterObj = $filterLookup->getFilter( $filterId, false, IDBAccessObject::READ_LATEST );
+		$this->assertSame( $rawActions, $filterObj->getActions() );
+		$this->assertTrue( $filterObj->isThrottled() );
+
+		[ $html ] = $this->executeSpecialPage( (string)$filterId, performer: $performer );
+
+		$this->assertStringContainsString( $expected, $html, 'Could not find the expected throttle warning' );
+	}
+
+	public static function provideBuildFilterEditorThrottleWarning(): array {
+		return [
+			'no dangerous actions configured' => [
+				'rawActions' => [
+					'disallow' => [ 'abusefilter-disallowed' ],
+				],
+				'expected' => '(abusefilter-edit-throttled-warning-no-actions)',
+			],
+			'dangerous actions configured' => [
+				'rawActions' => [
+					'degroup' => [],
+				],
+				'expected' => '(abusefilter-edit-throttled-warning-actions: (abusefilter-action-degroup), 1)',
+			],
+		];
+	}
+
+	private function getSpecsForThrottledFilter( array $actions ): Filter {
+		return $this->getFilterFromSpecs( [
+			'id' => '4',
+			'name' => 'Throttled filter',
+			'rules' => '1 = 0',
+			'privacy' => Flags::FILTER_PUBLIC,
+			'enabled' => 1,
+			'hitCount' => 2,
+			'throttled' => 1,
+			'deleted' => 0,
+			'actions' => $actions,
+		] );
 	}
 }

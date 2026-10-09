@@ -3,54 +3,69 @@
 namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Extension\Notifications\Formatters\EchoEventPresentationModel;
+use MediaWiki\Extension\Notifications\Model\Event;
+use MediaWiki\Language\Language;
 use MediaWiki\Message\Message;
+use MediaWiki\User\User;
 
 class ThrottleFilterPresentationModel extends EchoEventPresentationModel {
+
+	private readonly int $filter;
+	/** @var string[] */
+	private readonly array $disabledActions;
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function __construct( Event $event, Language $language, User $user, $distributionType ) {
+		parent::__construct( $event, $language, $user, $distributionType );
+
+		// Extract the filter ID from Special:AbuseFilter/<filter>
+		$afTitleText = $this->event->getTitle()->getText();
+		$this->filter = (int)explode( '/', $afTitleText, 2 )[1];
+
+		// BC: Default to an empty array for events created before Id989fb1
+		$this->disabledActions = $this->event->getExtraParam( 'throttled-actions' ) ?? [];
+	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getIconType() {
-		return 'placeholder';
+		return $this->disabledActions !== [] ? 'alert' : 'placeholder';
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getHeaderMessage() {
-		$text = $this->event->getTitle()->getText();
-		[ , $filter ] = explode( '/', $text, 2 );
-		$disabledActions = $this->event->getExtraParam( 'throttled-actions' );
-		if ( $disabledActions === null ) {
-			// BC for when we didn't include the actions here.
-			return $this->msg( 'notification-header-throttle-filter' )
-				->params( $this->getViewingUserForGender() )
-				->numParams( $filter );
-		}
-		if ( $disabledActions ) {
+		if ( $this->disabledActions !== [] ) {
 			$specsFormatter = AbuseFilterServices::getSpecsFormatter();
 			$specsFormatter->setMessageLocalizer( $this );
 			$disabledActionsLocalized = [];
-			foreach ( $disabledActions as $action ) {
+			foreach ( $this->disabledActions as $action ) {
 				$disabledActionsLocalized[] = $specsFormatter->getActionMessage( $action )->text();
 			}
 			return $this->msg( 'notification-header-throttle-filter-actions' )
 				->params( $this->getViewingUserForGender() )
-				->numParams( $filter )
+				->numParams( $this->filter )
 				->params( Message::listParam( $disabledActionsLocalized ) )
 				->params( count( $disabledActionsLocalized ) );
 		}
+
 		return $this->msg( 'notification-header-throttle-filter-no-actions' )
 			->params( $this->getViewingUserForGender() )
-			->numParams( $filter );
+			->numParams( $this->filter );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function getSubjectMessage() {
-		return $this->msg( 'notification-subject-throttle-filter' )
-			->params( $this->getViewingUserForGender() );
+		$msgKey = $this->disabledActions !== []
+			? 'notification-subject-throttle-filter-actions'
+			: 'notification-subject-throttle-filter-no-actions';
+		return $this->msg( $msgKey )->numParams( $this->filter );
 	}
 
 	/**

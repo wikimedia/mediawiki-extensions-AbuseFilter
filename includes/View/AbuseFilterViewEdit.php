@@ -475,24 +475,24 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			$throttledActionNames = $this->consequencesRegistry
 				->filterDangerousActionNames( $filterObj->getActionsNames() );
 
-			if ( $throttledActionNames ) {
+			if ( $throttledActionNames !== [] ) {
 				$throttledActionsLocalized = [];
 				foreach ( $throttledActionNames as $actionName ) {
 					$throttledActionsLocalized[] = $this->specsFormatter->getActionMessage( $actionName )->text();
 				}
 
-				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning' )
+				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning-actions' )
 					->plaintextParams( $lang->commaList( $throttledActionsLocalized ) )
-					->params( count( $throttledActionsLocalized ) )
-					->parseAsBlock();
+					->params( count( $throttledActionsLocalized ) );
+				$msgType = 'error';
 			} else {
-				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning-no-actions' )
-					->parseAsBlock();
+				$throttledMsg = $this->msg( 'abusefilter-edit-throttled-warning-no-actions' );
+				$msgType = 'warning';
 			}
 			$fields[] = new OOUI\FieldLayout(
 				new OOUI\MessageWidget( [
-					'type' => 'warning',
-					'label' => new OOUI\HtmlSnippet( $throttledMsg ),
+					'type' => $msgType,
+					'label' => new OOUI\HtmlSnippet( $throttledMsg->parse() ),
 				] ),
 				[
 					'label' => ' ',
