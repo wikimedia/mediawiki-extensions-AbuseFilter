@@ -121,7 +121,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				$this->assertDoesNotMatchRegularExpression( "/<!--\s*NewPP limit/", $actual );
 				$this->assertDoesNotMatchRegularExpression( "/<!--\s*Transclusion/", $actual );
 				foreach ( $value as $needle ) {
-					$this->assertStringContainsString( $needle, $actual, 'Checking new_html' );
+					$this->assertMatchesRegularExpression( $needle, $actual, 'Checking new_html' );
 				}
 			} else {
 				$this->assertSame( $value, $actual, $var );
@@ -203,7 +203,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'new_wikitext' => $new,
 				'new_content_model' => 'wikitext',
 				'summary' => $summary,
-				'new_html' => [ 'Test</a>' ],
+				'new_html' => [ '#Test</a>#' ],
 				'new_pst' => '[https://a.com Test] foo',
 				'new_text' => 'Test foo',
 				'edit_diff' => "@@ -1,3 +1,1 @@\n-'''Random'''.\n-Some ''special'' chars: àèìòù 名探偵コナン.\n-[[Help:PST|PST]] test, [//www.b.com link]\n+[https://a.com Test] foo\n",
@@ -236,7 +236,7 @@ class ActionVariablesIntegrationTest extends ApiTestCase {
 				'new_wikitext' => $new,
 				'new_content_model' => 'wikitext',
 				'summary' => $summary,
-				'new_html' => [ "<p>This edit will be pretty small\n</p>" ],
+				'new_html' => [ "#<p[^>]*>This edit will be pretty small\s*</p>#" ],
 				'new_pst' => $new,
 				'new_text' => $new,
 				'edit_diff' => "@@ -1,1 +1,1 @@\n-$old\n+$new\n",
