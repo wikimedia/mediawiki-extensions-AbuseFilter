@@ -49,6 +49,18 @@ class ConsequencesRegistry {
 	}
 
 	/**
+	 * Filter a list of action names to include only dangerous actions.
+	 *
+	 * @param string[] $actionNames
+	 * @return string[]
+	 */
+	public function filterDangerousActionNames( array $actionNames ): array {
+		return array_values(
+			array_intersect( $actionNames, $this->getDangerousActionNames() )
+		);
+	}
+
+	/**
 	 * @return string[]
 	 */
 	public function getAllActionNames(): array {

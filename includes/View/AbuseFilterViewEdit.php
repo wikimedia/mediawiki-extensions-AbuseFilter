@@ -472,10 +472,8 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		if ( $filterObj->isThrottled() ) {
-			$throttledActionNames = array_intersect(
-				$filterObj->getActionsNames(),
-				$this->consequencesRegistry->getDangerousActionNames()
-			);
+			$throttledActionNames = $this->consequencesRegistry
+				->filterDangerousActionNames( $filterObj->getActionsNames() );
 
 			if ( $throttledActionNames ) {
 				$throttledActionsLocalized = [];

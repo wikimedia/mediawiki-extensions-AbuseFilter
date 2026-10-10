@@ -263,13 +263,11 @@ class ConsequencesExecutor {
 	 * @return Consequence[][]
 	 */
 	private function removeRedundantConsequences( array $consByFilter ): array {
-		$dangerousActions = $this->consRegistry->getDangerousActionNames();
-
 		foreach ( $consByFilter as $filter => $actions ) {
 			// Don't show the disallow message if a blocking action is executed
 			if (
 				isset( $actions['disallow'] ) &&
-				array_intersect( array_keys( $actions ), $dangerousActions )
+				$this->consRegistry->filterDangerousActionNames( array_keys( $actions ) ) !== []
 			) {
 				unset( $consByFilter[$filter]['disallow'] );
 			}

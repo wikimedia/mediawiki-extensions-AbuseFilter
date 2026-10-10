@@ -75,7 +75,13 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 		);
 		$consRegistry = $this->createMock( ConsequencesRegistry::class );
 		$dangerousActions = TestingAccessWrapper::constant( ConsequencesRegistry::class, 'DANGEROUS_ACTIONS' );
-		$consRegistry->method( 'getDangerousActionNames' )->willReturn( $dangerousActions );
+		$consRegistry
+			->method( 'filterDangerousActionNames' )
+			->willReturnCallback(
+				static fn ( array $actionNames ): array => array_intersect(
+					$actionNames, $dangerousActions
+				)
+			);
 		$consLookup = $this->createMock( ConsequencesLookup::class );
 		$consLookup->expects( $this->atLeastOnce() )
 			->method( 'getConsequencesForFilters' )

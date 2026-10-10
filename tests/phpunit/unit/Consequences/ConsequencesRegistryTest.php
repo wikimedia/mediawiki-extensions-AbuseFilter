@@ -73,6 +73,15 @@ class ConsequencesRegistryTest extends MediaWikiUnitTestCase {
 		$this->assertContains( $extraDangerous, $registry->getDangerousActionNames() );
 	}
 
+	public function testFilterDangerousActionNames() {
+		$regReflection = new ReflectionClass( ConsequencesRegistry::class );
+		$expected = $regReflection->getConstant( 'DANGEROUS_ACTIONS' );
+		$inputActions = array_merge( [ 'tag', 'throttle', 'warn', 'disallow' ], $expected );
+
+		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), [] );
+		$this->assertSame( $expected, $registry->filterDangerousActionNames( $inputActions ) );
+	}
+
 	public function testGetCustomActions() {
 		$customActionName = 'rickroll';
 		$customAction = 'strlen';

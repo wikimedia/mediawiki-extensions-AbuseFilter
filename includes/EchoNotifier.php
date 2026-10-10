@@ -32,23 +32,17 @@ class EchoNotifier {
 		return $this->filterLookup->getFilter( $filter, false );
 	}
 
-	private function getThrottledActionNames( ExistingFilter $filterObj ): array {
-		return array_intersect(
-			$filterObj->getActionsNames(),
-			$this->consequencesRegistry->getDangerousActionNames()
-		);
-	}
-
 	/**
 	 * Send notification about a filter being throttled
 	 */
 	public function notifyForFilter( int $filter ): void {
 		$filterObj = $this->getFilterObject( $filter );
+		$throttledActions = $this->consequencesRegistry->filterDangerousActionNames( $filterObj->getActionsNames() );
 		$this->notifications->notify(
 			new TitleNotification(
 				self::EVENT_TYPE,
 				$this->getTitleForFilter( $filter ),
-				[ 'throttled-actions' => $this->getThrottledActionNames( $filterObj ) ]
+				[ 'throttled-actions' => $throttledActions ]
 			),
 			new RecipientSet( $filterObj->getUserIdentity() )
 		);
