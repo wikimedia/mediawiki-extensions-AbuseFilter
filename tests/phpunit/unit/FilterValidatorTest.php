@@ -164,6 +164,29 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		];
 	}
 
+	/** @dataProvider provideRuleLength */
+	public function testCheckRuleLength( string $rules, ?string $expectedError ) {
+		$filter = $this->createMock( AbstractFilter::class );
+		$filter->method( 'getRules' )->willReturn( $rules );
+		$actual = $this->getFilterValidator()->checkRuleLength( $filter );
+		$this->assertFilterValidatorStatus( $expectedError, $actual );
+	}
+
+	public static function provideRuleLength(): array {
+		return [
+			'under the limit' => [ 'rules' => str_repeat( 'a', 65529 ), 'expectedError' => null ],
+			'exactly at the limit' => [ 'rules' => str_repeat( 'a', 65530 ), 'expectedError' => null ],
+			'one byte over' => [
+				'rules' => str_repeat( 'a', 65531 ),
+				'expectedError' => 'abusefilter-edit-rule-length',
+			],
+			'Cyrillic' => [
+				'rules' => str_repeat( 'д', 40000 ),
+				'expectedError' => 'abusefilter-edit-rule-length',
+			],
+		];
+	}
+
 	/**
 	 * @param array $actions
 	 * @param string|null $expectedError
@@ -555,6 +578,14 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		];
 
 		yield 'missing required fields' => [ $missingFieldsFilterSpec, 'abusefilter-edit-missingfields' ];
+
+		$rulesTooLongSpec = [
+			'getRules' => str_repeat( 'a', 65531 ),
+			'getName' => 'Foo',
+			'isEnabled' => true,
+		];
+
+		yield 'rules too long' => [ $rulesTooLongSpec, 'abusefilter-edit-rule-length' ];
 
 		$conflictFieldsFilterSpec = [
 			'getRules' => '1',
