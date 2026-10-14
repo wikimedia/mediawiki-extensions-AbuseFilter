@@ -503,6 +503,7 @@ return [
 	): AbuseLogLookup {
 		return new AbuseLogLookup(
 			$services->getConnectionProvider(),
+			$services->get( CentralDBManager::SERVICE_NAME ),
 			$services->get( PermManager::SERVICE_NAME ),
 			$services->get( AbuseLogConditionFactory::SERVICE_NAME ),
 		);
