@@ -23,6 +23,12 @@ class FilterValidator {
 		'AbuseFilterActionRestrictions',
 	];
 
+	/**
+	 * Maximum rule length in bytes, matching the af_pattern column
+	 * defined in db_patches/tables.json.
+	 */
+	private const MAX_RULE_LENGTH = 65530;
+
 	/** @var string[] */
 	private $restrictedActions;
 
@@ -54,6 +60,11 @@ class FilterValidator {
 		$syntaxStatus = $this->checkValidSyntax( $newFilter );
 		if ( !$syntaxStatus->isGood() ) {
 			return $syntaxStatus;
+		}
+
+		$ruleLengthStatus = $this->checkRuleLength( $newFilter );
+		if ( !$ruleLengthStatus->isGood() ) {
+			return $ruleLengthStatus;
 		}
 
 		$requiredFieldsStatus = $this->checkRequiredFields( $newFilter );
@@ -148,6 +159,21 @@ class FilterValidator {
 				Message::listParam( $missing, ListType::COMMA )
 			);
 		}
+		return $ret;
+	}
+
+	public function checkRuleLength( AbstractFilter $filter ): Status {
+		$ret = Status::newGood();
+		$ruleLength = strlen( $filter->getRules() );
+
+		if ( $ruleLength > self::MAX_RULE_LENGTH ) {
+			$ret->error(
+				'abusefilter-edit-rule-length',
+				Message::numParam( $ruleLength ),
+				Message::numParam( self::MAX_RULE_LENGTH )
+			);
+		}
+
 		return $ret;
 	}
 
