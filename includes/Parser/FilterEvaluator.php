@@ -1323,13 +1323,13 @@ class FilterEvaluator {
 	 */
 	private function funcStrReplaceRegexp( $args, int $position ) {
 		$subject = $args[0]->toString();
-		$search = $args[1]->toString();
+		$search = RegexpUtils::buildPattern( $args[1]->toString() );
 		$replace = $args[2]->toString();
 
 		$this->checkRegexMatchesEmpty( $args[1], $search, $position );
 		// phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
 		$result = @preg_replace(
-			RegexpUtils::buildPattern( $search ),
+			$search,
 			$replace,
 			$subject
 		);
