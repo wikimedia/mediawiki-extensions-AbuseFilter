@@ -620,6 +620,7 @@
 	"blockedexternaldomains": "Blocked External Domains",
 	"abusefilter-blocked-domains-title": "Blocked External Domains",
 	"abusefilter-blocked-domains-intro": "External links matching this list will be blocked when added to a page. These domains are stored in [[MediaWiki:BlockedExternalDomains.json]]. Attempts to add blocked links are logged to [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-allowlist-intro": "Links to a domain (including its subdomains) or to a full URL listed in [[MediaWiki:BlockedExternalDomainsAllowList.json]] are exempt from this list and from the global list of blocked domains.",
 	"abusefilter-blocked-domains-add-heading": "Add a new blocked domain",
 	"abusefilter-blocked-domains-add-explanation": "Here you can add a domain to the list of blocked domains.",
 	"abusefilter-blocked-domains-domain": "Domain to block, such as wikipedia.org",

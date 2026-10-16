@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Hooks\Handlers;
 use MediaWiki\Config\Config;
 use MediaWiki\Content\Hook\JsonValidateSaveHook;
 use MediaWiki\Content\JsonContent;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainAllowListLookup;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\CustomBlockedDomainStorage;
 use MediaWiki\Page\PageIdentity;
 use MediaWiki\Permissions\Hook\GetUserPermissionsErrorsHook;
@@ -77,16 +78,19 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 	 * @return bool|void
 	 */
 	public function onJsonValidateSave( JsonContent $content, PageIdentity $pageIdentity, StatusValue $status ) {
-		// Only do anything if we're enabled on this wiki as a standalone tool
-		if (
-			!$this->config->get( 'AbuseFilterEnableBlockedExternalDomain' ) ||
-			ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' )
-		) {
+		// Only do anything if we're enabled on this wiki
+		if ( !$this->config->get( 'AbuseFilterEnableBlockedExternalDomain' ) ) {
 			return;
 		}
 
 		$title = TitleValue::newFromPage( $pageIdentity );
-		if ( !$title->inNamespace( NS_MEDIAWIKI ) || $title->getText() !== CustomBlockedDomainStorage::TARGET_PAGE ) {
+		if ( !$title->inNamespace( NS_MEDIAWIKI ) ) {
+			return;
+		}
+		$isAllowList = $title->getText() === BlockedDomainAllowListLookup::TARGET_PAGE;
+		$isBlockList = $title->getText() === CustomBlockedDomainStorage::TARGET_PAGE &&
+			!ExtensionRegistry::getInstance()->isLoaded( 'CommunityConfiguration' );
+		if ( !$isAllowList && !$isBlockList ) {
 			return;
 		}
 		$data = $content->getData()->getValue();

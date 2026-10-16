@@ -673,6 +673,7 @@
 	"blockedexternaldomains": "Link to the special page that lets users see and edit what domains are blocked.",
 	"abusefilter-blocked-domains-title": "Title of the special page that lets users see and edit what domains are blocked.",
 	"abusefilter-blocked-domains-intro": "Basic explanation of the special page",
+	"abusefilter-blocked-domains-allowlist-intro": "Explanation of the allow list on [[Special:BlockedExternalDomains]], shown after {{msg-mw|abusefilter-blocked-domains-intro}}.",
 	"abusefilter-blocked-domains-add-heading": "Heading when the user can add a domain to the blocked list",
 	"abusefilter-blocked-domains-add-explanation": "Explanationwhen the user can add a domain to the blocked list",
 	"abusefilter-blocked-domains-domain": "Label for domain to be blocked",

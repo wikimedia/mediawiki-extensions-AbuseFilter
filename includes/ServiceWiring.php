@@ -8,6 +8,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseLogConditionFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\AbuseLogLookup;
 use MediaWiki\Extension\AbuseFilter\BlockAutopromoteStore;
+use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainAllowListLookup;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainConfigProvider;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainFilter;
 use MediaWiki\Extension\AbuseFilter\BlockedDomains\BlockedDomainValidator;
@@ -448,6 +449,15 @@ return [
 			$centralWiki
 		);
 	},
+	ServiceNames::BlockedDomainAllowListLookup => static function (
+		MediaWikiServices $services
+	): BlockedDomainAllowListLookup {
+		return new BlockedDomainAllowListLookup(
+			$services->getLocalServerObjectCache(),
+			$services->getRevisionLookup(),
+			$services->get( BlockedDomainValidator::SERVICE_NAME )
+		);
+	},
 	ServiceNames::BlockedDomainFilter => static function (
 		MediaWikiServices $services
 	): IBlockedDomainFilter {
@@ -457,7 +467,8 @@ return [
 			return new BlockedDomainFilter(
 				$services->get( VariablesManager::SERVICE_NAME ),
 				$services->get( IBlockedDomainStorage::SERVICE_NAME ),
-				$services->get( GlobalBlockedDomainLookup::SERVICE_NAME )
+				$services->get( GlobalBlockedDomainLookup::SERVICE_NAME ),
+				$services->get( BlockedDomainAllowListLookup::SERVICE_NAME )
 			);
 		} else {
 			return new NoopBlockedDomainFilter();

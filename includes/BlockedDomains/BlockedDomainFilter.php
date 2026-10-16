@@ -41,7 +41,8 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 	public function __construct(
 		private readonly VariablesManager $variablesManager,
 		private readonly IBlockedDomainStorage $blockedDomainStorage,
-		private readonly ?GlobalBlockedDomainLookup $globalBlockedDomainLookup = null
+		private readonly ?GlobalBlockedDomainLookup $globalBlockedDomainLookup = null,
+		private readonly ?BlockedDomainAllowListLookup $allowListLookup = null
 	) {
 	}
 
@@ -56,14 +57,16 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 			return $status;
 		}
 
+		$addedUrls = [];
 		$addedDomains = [];
 		foreach ( $urls->toArray() as $addedUrl ) {
-			$parsedHost = parse_url( (string)$addedUrl->getData(), PHP_URL_HOST );
+			$addedUrl = (string)$addedUrl->getData();
+			$parsedHost = parse_url( $addedUrl, PHP_URL_HOST );
 			if ( !is_string( $parsedHost ) ) {
 				continue;
 			}
 			$parsedHost = strtolower( $parsedHost );
-			$addedDomains[$parsedHost] = true;
+			$urlDomains = [ $parsedHost => true ];
 			// Given that we block subdomains of blocked domains too
 			// pretend that all the higher-level domains are added as well
 			// so for foo.bar.com, you will have three domains to check:
@@ -76,8 +79,10 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 				// Skip the dot we just found
 				$pos++;
 				// It should be a map, benchmark at https://phabricator.wikimedia.org/P48956
-				$addedDomains[ substr( $parsedHost, $pos ) ] = true;
+				$urlDomains[ substr( $parsedHost, $pos ) ] = true;
 			}
+			$addedUrls[$addedUrl] = $urlDomains;
+			$addedDomains += $urlDomains;
 		}
 		if ( !$addedDomains ) {
 			return $status;
@@ -87,6 +92,9 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 			$blockedDomains += $this->globalBlockedDomainLookup->loadComputed();
 		}
 		$blockedDomainsAdded = array_intersect_key( $addedDomains, $blockedDomains );
+		if ( $blockedDomainsAdded && $this->allowListLookup ) {
+			$blockedDomainsAdded = $this->removeAllowed( $addedUrls, $blockedDomains );
+		}
 		if ( !$blockedDomainsAdded ) {
 			return $status;
 		}
@@ -100,6 +108,34 @@ class BlockedDomainFilter implements IBlockedDomainFilter {
 			implode( ' ', $blockedDomainsAdded )
 		);
 		return $status;
+	}
+
+	/**
+	 * Compute the blocked domains that were added, ignoring URLs that are exempt
+	 * because the exact URL or its domain (or a higher-level domain) is allow-listed
+	 *
+	 * @param array<string,array<string,true>> $addedUrls Map of added URLs to their
+	 *   domain and higher-level domains
+	 * @param array<string,true> $blockedDomains
+	 * @return array<string,true> Blocked domains that were added
+	 */
+	private function removeAllowed( array $addedUrls, array $blockedDomains ): array {
+		$allowList = $this->allowListLookup->loadComputed();
+		$blockedDomainsAdded = [];
+		foreach ( $addedUrls as $url => $urlDomains ) {
+			$urlBlockedDomains = array_intersect_key( $urlDomains, $blockedDomains );
+			if ( !$urlBlockedDomains || array_intersect_key( $urlDomains, $allowList['domains'] ) ) {
+				continue;
+			}
+			if ( $allowList['urls'] ) {
+				$normalizedUrl = $this->allowListLookup->normalizeUrl( (string)$url );
+				if ( $normalizedUrl && isset( $allowList['urls'][$normalizedUrl] ) ) {
+					continue;
+				}
+			}
+			$blockedDomainsAdded += $urlBlockedDomains;
+		}
+		return $blockedDomainsAdded;
 	}
 
 	/**

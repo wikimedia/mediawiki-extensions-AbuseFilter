@@ -35,4 +35,34 @@ class BlockedDomainValidator {
 		}
 		return $parsedUrl['host'];
 	}
+
+	/**
+	 * Normalize a full URL so that it can be compared against other URLs.
+	 *
+	 * The scheme and fragment are ignored, the host is lowercased and an empty path is
+	 * treated as "/", so https://Example.org and http://example.org/#foo are equal.
+	 *
+	 * @param string|null $url URL such as https://foo.wikipedia.org/wiki/Bar
+	 * @return string|false Normalized URL, or false if it is not a valid URL with a host
+	 */
+	public function normalizeUrl( ?string $url ) {
+		if ( !$url ) {
+			return false;
+		}
+
+		$parsedUrl = $this->urlUtils->parse( trim( $url ) );
+		if ( !$parsedUrl || !str_contains( $parsedUrl['host'], '.' ) ) {
+			return false;
+		}
+
+		$normalized = strtolower( $parsedUrl['host'] );
+		if ( isset( $parsedUrl['port'] ) ) {
+			$normalized .= ':' . $parsedUrl['port'];
+		}
+		$normalized .= ( $parsedUrl['path'] ?? '' ) ?: '/';
+		if ( ( $parsedUrl['query'] ?? '' ) !== '' ) {
+			$normalized .= '?' . $parsedUrl['query'];
+		}
+		return $normalized;
+	}
 }

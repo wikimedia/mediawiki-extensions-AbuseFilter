@@ -58,6 +58,7 @@ class BlockedDomainEditor {
 		$out = $this->context->getOutput();
 		$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-title' ) );
 		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-intro' );
+		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-allowlist-intro' );
 		$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 
 		// Direct editing of this page is blocked via EditPermissionHandler
