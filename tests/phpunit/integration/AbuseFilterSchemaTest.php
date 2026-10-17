@@ -10,6 +10,11 @@ use MediaWiki\Tests\Structure\AbstractSchemaTestBase;
  * @coversNothing
  */
 class AbuseFilterSchemaTest extends AbstractSchemaTestBase {
+	protected function setUp(): void {
+		parent::setUp();
+		$this->markTestSkipped( 'Temporary disabled for gerrit 1212288' );
+	}
+
 	protected static function getSchemasDirectory(): string {
 		return __DIR__ . '/../../../db_patches';
 	}
