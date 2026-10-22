@@ -8,7 +8,8 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
-use MediaWiki\Extension\AbuseFilter\FilterUtils;
+use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
+use MediaWiki\Extension\AbuseFilter\FilterLookup;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
@@ -39,6 +40,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		private readonly LBFactory $lbFactory,
 		AbuseFilterPermissionManager $afPermManager,
 		private readonly EditBoxBuilderFactory $boxBuilderFactory,
+		private readonly FilterLookup $filterLookup,
 		private readonly RuleCheckerFactory $ruleCheckerFactory,
 		private readonly VariableGeneratorFactory $varGeneratorFactory,
 		private readonly AbuseLoggerFactory $abuseLoggerFactory,
@@ -302,25 +304,22 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 	private function preloadTestPattern(): string {
 		$testPattern = $this->getRequest()->getText( 'wpFilterRules' );
-		$row = false;
+		$filter = null;
 
 		// If wpFilterRules is empty and a positive filter ID is given,
-		// load the filter's rules
+		// load the filter for its rules
 		if (
 			$testPattern === '' &&
 			// TODO: Handle this in SpecialAbuseFilter via ::isPositiveInteger
 			ctype_digit( $this->mParams[1] ?? '' ) &&
 			(int)$this->mParams[1] > 0
 		) {
-			// TODO: We could use FilterLookup here rather than hardcoding the query
-			$row = $this->lbFactory->getReplicaDatabase()->newSelectQueryBuilder()
-				->select( [ 'af_id', 'af_pattern', 'af_hidden' ] )
-				->from( 'abuse_filter' )
-				->where( [ 'af_id' => (int)$this->mParams[1] ] )
-				->caller( __METHOD__ )
-				->fetchRow();
+			try {
+				$filter = $this->filterLookup->getFilter( (int)$this->mParams[1], false );
+			} catch ( FilterNotFoundException ) {
+			}
 
-			$testPattern = $row !== false ? $row->af_pattern : '';
+			$testPattern = $filter !== null ? $filter->getRules() : '';
 		}
 
 		if ( $testPattern === '' ) {
@@ -333,16 +332,21 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 		$authority = $this->getAuthority();
 		$out = $this->getOutput();
 
-		// Do not expose the test pattern if the associated filter is suppressed
-		// and the user cannot view suppressed filters
+		// Do not expose the test pattern if the user cannot view the loaded filter
 		if (
-			$row !== false &&
-			FilterUtils::isSuppressed( (int)$row->af_hidden ) &&
-			!$this->afPermManager->canViewSuppressed( $authority )
+			$filter !== null && (
+				(
+					$filter->isSuppressed() &&
+					!$this->afPermManager->canViewSuppressed( $authority )
+				) || (
+					$filter->isProtected() &&
+					!$this->afPermManager->canViewProtectedVariablesInFilter( $authority, $filter )->isGood()
+				)
+			)
 		) {
 			$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 			$out->addHtml( Html::errorBox(
-				$this->msg( 'abusefilter-test-loadfilter-restricted' )->numParams( $row->af_id )->parse()
+				$this->msg( 'abusefilter-test-loadfilter-restricted' )->numParams( $filter->getID() )->parse()
 			) );
 			return '';
 		}

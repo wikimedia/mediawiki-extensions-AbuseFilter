@@ -101,6 +101,19 @@ class AbuseFilterViewTestBatchTest extends SpecialPageTestBase {
 			] ),
 			MutableFilter::newDefault()
 		) );
+
+		// Create a fourth filter which is protected but does not contain protected variables
+		$this->assertStatusGood( AbuseFilterServices::getFilterStore()->saveFilter(
+			$this->mockRegisteredUltimateAuthority(),
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '4',
+				'rules' => '1 = 0 /* PROTECTED FILTER RULES */',
+				'name' => 'Protected filter without protected variables',
+				'privacy' => Flags::FILTER_USES_PROTECTED_VARS,
+			] ),
+			MutableFilter::newDefault()
+		) );
 	}
 
 	protected function tearDown(): void {
@@ -109,23 +122,27 @@ class AbuseFilterViewTestBatchTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * @dataProvider providePreloadTestPatternForSuppressedFilter
+	 * @dataProvider providePreloadTestPatternFromRestrictedFilter
 	 */
-	public function testPreloadTestPatternForSuppressedFilter( bool $canViewSuppressed ): void {
+	public function testPreloadTestPatternFromRestrictedFilter(
+		int $filterId,
+		?string $additionalPerm,
+		bool $shouldPreload,
+	): void {
 		$perms = [ 'abusefilter-modify' ];
-		if ( $canViewSuppressed ) {
-			$perms[] = 'viewsuppressed';
+		if ( $additionalPerm !== null ) {
+			$perms[] = $additionalPerm;
 		}
 
 		[ $html ] = $this->executeSpecialPage(
-			'test/3',
+			"test/$filterId",
 			performer: $this->mockRegisteredAuthorityWithPermissions( $perms )
 		);
 
-		$rules = '1 = 0 /* SUPPRESSED FILTER RULES */';
-		$errorMsg = '(abusefilter-test-loadfilter-restricted: 3)';
+		$rules = AbuseFilterServices::getFilterLookup()->getFilter( $filterId, false )->getRules();
+		$errorMsg = "(abusefilter-test-loadfilter-restricted: $filterId)";
 
-		if ( $canViewSuppressed ) {
+		if ( $shouldPreload ) {
 			$this->assertStringContainsString( $rules, $html );
 			$this->assertStringNotContainsString( $errorMsg, $html );
 		} else {
@@ -134,10 +151,38 @@ class AbuseFilterViewTestBatchTest extends SpecialPageTestBase {
 		}
 	}
 
-	public static function providePreloadTestPatternForSuppressedFilter(): array {
+	public static function providePreloadTestPatternFromRestrictedFilter(): array {
 		return [
-			'suppressor preloading a suppressed filter' => [ true ],
-			'non-suppressor preloading a suppressed filter' => [ false ],
+			'suppressor preloading a suppressed filter' => [
+				'filterId' => 3,
+				'additionalPerm' => 'viewsuppressed',
+				'shouldPreload' => true,
+			],
+			'non-suppressor preloading a suppressed filter' => [
+				'filterId' => 3,
+				'additionalPerm' => null,
+				'shouldPreload' => false,
+			],
+			'authorized user preloading a protected filter with protected variables' => [
+				'filterId' => 1,
+				'additionalPerm' => 'abusefilter-access-protected-vars',
+				'shouldPreload' => true,
+			],
+			'unauthorized user preloading a protected filter with protected variables' => [
+				'filterId' => 1,
+				'additionalPerm' => null,
+				'shouldPreload' => false,
+			],
+			'authorized user preloading a protected filter without protected variables' => [
+				'filterId' => 4,
+				'additionalPerm' => 'abusefilter-access-protected-vars',
+				'shouldPreload' => true,
+			],
+			'unauthorized user preloading a protected filter without protected variables' => [
+				'filterId' => 4,
+				'additionalPerm' => null,
+				'shouldPreload' => false,
+			],
 		];
 	}
 
