@@ -7,6 +7,7 @@ use MediaWiki\Extension\AbuseFilter\AbuseFilterChangesList;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxField;
+use MediaWiki\Extension\AbuseFilter\FilterUtils;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
 use MediaWiki\Html\Html;
@@ -308,14 +309,26 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			&& is_numeric( $this->mParams[1] )
 		) {
 			$dbr = $this->lbFactory->getReplicaDatabase();
-			$pattern = $dbr->newSelectQueryBuilder()
-				->select( 'af_pattern' )
+			$row = $dbr->newSelectQueryBuilder()
+				->select( [ 'af_pattern', 'af_hidden' ] )
 				->from( 'abuse_filter' )
 				->where( [ 'af_id' => intval( $this->mParams[1] ) ] )
 				->caller( __METHOD__ )
-				->fetchField();
-			if ( $pattern !== false ) {
-				$this->testPattern = $pattern;
+				->fetchRow();
+			if ( $row !== false ) {
+				// Do not load the rules of a protected filter if the user cannot view
+				// protected variables. The rules can be protected also when they do not
+				// contain protected variables now (T442018).
+				if (
+					FilterUtils::isProtected( (int)$row->af_hidden ) &&
+					!$this->afPermManager->canViewProtectedVariables( $this->getAuthority() )
+				) {
+					$this->getOutput()->addHtml(
+						Html::errorBox( $this->msg( 'abusefilter-test-protectedvarerr' )->parse() )
+					);
+				} else {
+					$this->testPattern = $row->af_pattern;
+				}
 			}
 		}
 	}
