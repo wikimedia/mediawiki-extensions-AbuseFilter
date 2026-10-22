@@ -98,6 +98,7 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 			'DBLoadBalancerFactory',
 			AbuseFilterPermissionManager::SERVICE_NAME,
 			EditBoxBuilderFactory::SERVICE_NAME,
+			FilterLookup::SERVICE_NAME,
 			RuleCheckerFactory::SERVICE_NAME,
 			VariableGeneratorFactory::SERVICE_NAME,
 			AbuseLoggerFactory::SERVICE_NAME,
