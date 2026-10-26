@@ -84,9 +84,14 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 
 		try {
 			// Note: Global filter actions cannot be reverted unless T413694 is addressed
-			$this->filterLookup->getFilter( $filter, false );
+			$filterObj = $this->filterLookup->getFilter( $filter, false );
 		} catch ( FilterNotFoundException ) {
 			$this->showUnrecoverableError( 'abusefilter-edit-badfilter' );
+			return;
+		}
+
+		if ( $filterObj->isSuppressed() && !$this->afPermManager->canViewSuppressed( $performer ) ) {
+			$this->showUnrecoverableError( 'abusefilter-edit-denied-suppressed' );
 			return;
 		}
 
@@ -238,6 +243,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		// Don't revert if there was no action, or the action was global
 		$conds[] = $dbr->expr( 'afl_actions', '!=', '' );
 		$conds['afl_wiki'] = null;
+
+		if ( !$this->afPermManager->canSeeHiddenLogEntries( $this->getAuthority() ) ) {
+			$conds['afl_deleted'] = 0;
+		}
 
 		$selectFields = [
 			'afl_id',
