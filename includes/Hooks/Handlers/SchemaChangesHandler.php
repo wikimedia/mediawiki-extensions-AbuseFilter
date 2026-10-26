@@ -150,18 +150,6 @@ class SchemaChangesHandler implements LoadExtensionSchemaUpdatesHook {
 			] );
 		}
 
-		// 1.41
-		$updater->addExtensionUpdate( [
-			'addField', 'abuse_filter', 'af_actor',
-			"$dir/$dbType/patch-add-af_actor.sql", true
-		] );
-
-		// 1.41
-		$updater->addExtensionUpdate( [
-			'addField', 'abuse_filter_history', 'afh_actor',
-			"$dir/$dbType/patch-add-afh_actor.sql", true
-		] );
-
 		// 1.43
 		$updater->addExtensionUpdate( [
 			'runMaintenance',
