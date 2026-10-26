@@ -10,6 +10,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Exception\PermissionsError;
 use MediaWiki\Exception\UserBlockedError;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Filter\Flags;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
@@ -50,6 +51,8 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 		'blockautopromote' => 2,
 		'degroup' => 3,
 	];
+
+	private const SUPPRESSED_FILTER_ID = 4;
 
 	/**
 	 * @param string $subPage
@@ -195,12 +198,36 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 			)
 		);
 
+		$this->assertStatusGood(
+			$filterStore->saveFilter(
+				$authority,
+				null,
+				$this->getFilterFromSpecs( [
+					'id' => (string)self::SUPPRESSED_FILTER_ID,
+					'rules' => 'action = "edit" & summary = "suppressed"',
+					'name' => 'Suppressed filter with a block consequence',
+					'privacy' => Flags::FILTER_SUPPRESSED,
+					'lastEditor' => $performer,
+					'lastEditTimestamp' => '20260101030000',
+					'actions' => [
+						'disallow' => [ 'abusefilter-disallowed' ],
+						'block' => [
+							'noTalkBlockSet',
+							'1 hour',
+							'1 hour',
+						],
+					],
+				] ),
+				MutableFilter::newDefault()
+			)
+		);
+
 		$this->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
 			->table( 'abuse_filter' )
 			->where( [ 'af_enabled' => 1 ] )
 			->caller( __METHOD__ )
-			->assertFieldValue( 3 );
+			->assertFieldValue( 4 );
 	}
 
 	protected function tearDown(): void {
@@ -266,6 +293,40 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 
 		$this->assertStringContainsString( '(abusefilter-edit-badfilter)', $html );
 		$this->assertStringContainsString( '(abusefilter-return)', $html );
+	}
+
+	public function testShowForSuppressedFilterWithoutPermission() {
+		$filterId = self::SUPPRESSED_FILTER_ID;
+		$this->addAbuseLog( 'block', $this->getTestUser()->getUser(), null, $filterId );
+
+		[ $html ] = $this->executeSpecialPage(
+			"revert/$filterId",
+			self::createSearchRequest( $filterId ),
+			null,
+			$this->getTestSysop()->getAuthority()
+		);
+
+		$this->assertStringContainsString( '(abusefilter-edit-denied-suppressed)', $html );
+		$this->assertStringNotContainsString( '(abusefilter-revert-intro', $html );
+		$this->assertStringNotContainsString( '(abusefilter-revert-preview-item', $html );
+		$this->assertStringNotContainsString( $this->getTestUser()->getUser()->getName(), $html );
+	}
+
+	public function testShowForSuppressedFilterWithPermission() {
+		$this->setGroupPermissions( 'sysop', 'viewsuppressed', true );
+		$filterId = self::SUPPRESSED_FILTER_ID;
+		$this->addAbuseLog( 'block', $this->getTestUser()->getUser(), null, $filterId );
+
+		[ $html ] = $this->executeSpecialPage(
+			"revert/$filterId",
+			self::createSearchRequest( $filterId ),
+			null,
+			$this->getTestSysop()->getAuthority()
+		);
+
+		$this->assertStringNotContainsString( '(abusefilter-edit-denied-suppressed)', $html );
+		$this->assertStringContainsString( '(abusefilter-revert-preview-item', $html );
+		$this->assertStringContainsString( $this->getTestUser()->getUser()->getName(), $html );
 	}
 
 	public function testShowForSearchForm() {
@@ -383,14 +444,16 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 	 * @param 'block'|'blockautopromote'|'degroup' $consequence
 	 * @param User $performer
 	 * @param string[]|null $consequenceOverride
+	 * @param int|null $filterId Use this filter instead of the one with the given consequence
 	 * @return int The triggered filter's ID.
 	 */
 	private function addAbuseLog(
 		string $consequence,
 		User $performer,
-		?array $consequenceOverride = null
+		?array $consequenceOverride = null,
+		?int $filterId = null
 	): int {
-		$filterId = self::getFilterIdFromConsequence( $consequence );
+		$filterId ??= self::getFilterIdFromConsequence( $consequence );
 		$actions = $consequenceOverride ?? [ 'disallow', $consequence ];
 
 		AbuseFilterServices::getAbuseLoggerFactory()
@@ -899,5 +962,65 @@ class AbuseFilterViewRevertTest extends ApiTestCase {
 		// Only the first (older) consequence should have been reverted
 		$this->assertNotAffectedByConsequence( $consequence, $firstTriggerer->getAuthority() );
 		$this->assertAffectedByConsequence( $consequence, $secondTriggerer->getAuthority() );
+	}
+
+	private function hideAbuseLogEntries( UserIdentity $user ): void {
+		$this->getDb()->newUpdateQueryBuilder()
+			->table( 'abuse_filter_log' )
+			->set( [ 'afl_deleted' => 1 ] )
+			->where( [ 'afl_user' => $user->getId() ] )
+			->caller( __METHOD__ )
+			->execute();
+		$this->assertSame( 1, $this->getDb()->affectedRows() );
+	}
+
+	/**
+	 * @dataProvider provideShowRevertableActionsWithHiddenEntry
+	 */
+	public function testShowRevertableActionsWithHiddenEntry( bool $canSeeHidden ) {
+		$this->setGroupPermissions( 'sysop', 'abusefilter-hidden-log', $canSeeHidden );
+		$filterId = self::getFilterIdFromConsequence( 'block' );
+		$triggerer = $this->getMutableTestUser()->getUser();
+
+		$this->addAbuseLog( 'block', $triggerer );
+		$this->hideAbuseLogEntries( $triggerer );
+
+		[ $html ] = $this->executeSpecialPage(
+			"revert/$filterId",
+			self::createSearchRequest( $filterId ),
+			null,
+			$this->getTestSysop()->getAuthority()
+		);
+
+		if ( $canSeeHidden ) {
+			$this->assertStringContainsString( '(abusefilter-revert-preview-item', $html );
+			$this->assertStringContainsString( $triggerer->getName(), $html );
+		} else {
+			$this->assertStringContainsString( '(abusefilter-revert-preview-no-results)', $html );
+			$this->assertStringNotContainsString( $triggerer->getName(), $html );
+		}
+	}
+
+	public static function provideShowRevertableActionsWithHiddenEntry(): array {
+		return [
+			'User can see hidden entries' => [ true ],
+			'User cannot see hidden entries' => [ false ],
+		];
+	}
+
+	public function testAttemptRevertSkipsHiddenEntryWithoutPermission() {
+		$this->setGroupPermissions( 'sysop', 'abusefilter-hidden-log', false );
+		$consequence = 'block';
+		$filterId = self::getFilterIdFromConsequence( $consequence );
+		$triggerer = $this->getMutableTestUser( [], 'TestUser ' . __FUNCTION__ );
+		$triggerer->getUser()->addToDatabase();
+
+		$this->triggerFilter( $consequence, $triggerer->getAuthority() );
+		$this->hideAbuseLogEntries( $triggerer->getUser() );
+
+		$context = $this->createRevertRequestContext( $filterId );
+		$this->executeSpecialPage( "revert/$filterId", context: $context );
+
+		$this->assertAffectedByConsequence( $consequence, $triggerer->getAuthority() );
 	}
 }
