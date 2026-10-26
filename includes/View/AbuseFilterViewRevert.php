@@ -283,6 +283,10 @@ class AbuseFilterViewRevert extends AbuseFilterView {
 		$conds[] = $dbr->expr( 'afl_actions', '!=', '' );
 		$conds['afl_wiki'] = null;
 
+		if ( !$this->afPermManager->canSeeHiddenLogEntries( $this->getAuthority() ) ) {
+			$conds['afl_deleted'] = 0;
+		}
+
 		$selectFields = [
 			'afl_id',
 			'afl_user',
