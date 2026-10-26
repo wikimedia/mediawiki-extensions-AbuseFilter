@@ -619,6 +619,7 @@
 	"blockedexternaldomains": "Dominios externos bloqueados",
 	"abusefilter-blocked-domains-title": "Dominios externos bloqueados",
 	"abusefilter-blocked-domains-intro": "As ligazóns externas que coincidan con esta lista bloquearanse cando se engadan a unha páxina. Estes dominios almacénanse en [[MediaWiki:BlockedExternalDomains.json]]. Os intentos de engadir ligazóns bloqueadas rexístranse en [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-allowlist-intro": "As ligazóns a un dominio (incluíndo os seus subdominios) ou a un enderezo URL completo listado en [[MediaWiki:BlockedExternalDomainsAllowList.json]] están exentas desta lista e da lista global de dominios bloqueados.",
 	"abusefilter-blocked-domains-add-heading": "Engadir un novo dominio bloqueado",
 	"abusefilter-blocked-domains-add-explanation": "Aquí pode engadir un dominio á lista de dominios bloqueados.",
 	"abusefilter-blocked-domains-domain": "Dominio a bloquear, como wikipedia.org",

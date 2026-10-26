@@ -645,6 +645,7 @@
 	"blockedexternaldomains": "Geblokkeerde externe domeinen",
 	"abusefilter-blocked-domains-title": "Geblokkeerde externe domeinen",
 	"abusefilter-blocked-domains-intro": "Externe koppelingen die overeenkomen met deze lijst worden geblokkeerd wanneer ze aan een pagina worden toegevoegd. Deze domeinen worden opgeslagen in [[MediaWiki:BlockedExternalDomains.json]]. Pogingen om geblokkeerde koppelingen toe te voegen worden geregistreerd in [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-allowlist-intro": "Koppleingen naar een domein (inclusief de subdomeinen ervan) of naar een volledige url die vermeld staat in [[MediaWiki:BlockedExternalDomainsAllowList.json]] zijn uitgezonderd van deze lijst en van de wereldwijde lijst met geblokkeerde domeinen.",
 	"abusefilter-blocked-domains-add-heading": "Een nieuw geblokkeerd domein toevoegen",
 	"abusefilter-blocked-domains-add-explanation": "Hier kunt u een domein toevoegen aan de lijst met geblokkeerde domeinen.",
 	"abusefilter-blocked-domains-domain": "Domein om te blokkeren, zoals wikipedia.org",

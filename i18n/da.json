@@ -631,6 +631,7 @@
 	"blockedexternaldomains": "Blokerede eksterne domæner",
 	"abusefilter-blocked-domains-title": "Blokerede eksterne domæner",
 	"abusefilter-blocked-domains-intro": "Eksterne links, der matcher denne liste vil blive blokeret, når de tilføjes til en side. Disse domæner gemmes i [[MediaWiki:BlockedExternalDomains.json]]. Forsøg på at tilføje blokerede links logges på [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-allowlist-intro": "Links til et domæne (inklusive dets underdomæner) eller til en fuld URL, der er angivet i [[MediaWiki:BlockedExternalDomainsAllowList.json]], er undtaget fra denne liste og fra den globale liste over blokerede domæner.",
 	"abusefilter-blocked-domains-add-heading": "Tilføj et nyt blokeret domæne",
 	"abusefilter-blocked-domains-add-explanation": "Her kan du tilføje et domæne til listen over blokerede domæner.",
 	"abusefilter-blocked-domains-domain": "Domæne, der skal blokeres, f.eks. wikipedia.org",

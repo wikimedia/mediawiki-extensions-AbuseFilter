@@ -612,6 +612,7 @@
 	"blockedexternaldomains": "Domains-ka dibadda ee la xannibay",
 	"abusefilter-blocked-domains-title": "Domains-ka dibadda ee la xannibay",
 	"abusefilter-blocked-domains-intro": "Xiriirrada dibadda ee u dhigma liiskan waa la xannibi doonaa marka lagu daro bogga. Domain-yadan waxaa lagu kaydiyaa [[MediaWiki:BlockedExternalDomains.json]]. Isku dayga lagu daro xiriirro la xannibay waxaa lagu diiwaangeliyaa [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-allowlist-intro": "Xiriirrada ku socda domain (oo ay ku jiraan domain-yada hoose) ama URL buuxa oo ku qoran [[MediaWiki:BlockedExternalDomainsAllowList.json]] waa laga dhaafay liiskan iyo liiska guud ee domain-yada la xannibay.",
 	"abusefilter-blocked-domains-add-heading": "Ku dar domain cusub oo la xannibay",
 	"abusefilter-blocked-domains-add-explanation": "Halkan waxaad ku dari kartaa domain liiska domains-ka la xannibay.",
 	"abusefilter-blocked-domains-domain": "Domain la xannibayo, sida wikipedia.org",

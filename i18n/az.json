@@ -625,6 +625,7 @@
 	"blockedexternaldomains": "Bloklanmış Xarici Domenlər",
 	"abusefilter-blocked-domains-title": "Bloklanmış xarici domenlər",
 	"abusefilter-blocked-domains-intro": "Bu siyahıya uyğun gələn xarici keçidlər səhifəyə əlavə edildikdə bloklanacaq. Domenlər [[MediaWiki:BlockedExternalDomains.json]] səhifəsində saxlanılır. Bloklanmış linkləri əlavə etmək cəhdləri [[Special:Log/abusefilterblockeddomainhit]] səhifəsində qeyd olunur.",
+	"abusefilter-blocked-domains-allowlist-intro": "[[MediaWiki:BlockedExternalDomainsAllowList.json]] səhifəsində göstərilən domenə (onun alt domenləri də daxil olmaqla) və ya tam URL-ə keçidlər bu siyahıdan və bloklanmış domenlərin qlobal siyahısından azaddır.",
 	"abusefilter-blocked-domains-add-heading": "Yeni bloklanmış domen əlavə edin",
 	"abusefilter-blocked-domains-add-explanation": "Burada bloklanmış domenlər siyahısına domen əlavə edə bilərsiniz.",
 	"abusefilter-blocked-domains-domain": "Bloklanacaq domen, məsələn, wikipedia.org",
