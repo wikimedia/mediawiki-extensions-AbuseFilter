@@ -646,6 +646,7 @@
 	"blockedexternaldomains": "Zablokowane zewnętrzne domeny",
 	"abusefilter-blocked-domains-title": "Zablokowane zewnętrzne domeny",
 	"abusefilter-blocked-domains-intro": "Linki zewnętrzne pasujące do domen z tej listy zostaną zablokowane po dodaniu do strony. Domeny te zapisywane są na [[MediaWiki:BlockedExternalDomains.json]]. Próby dodania zablokowanych linków są rejestrowane w [[Special:Log/abusefilterblockeddomainhit|rejestrze]].",
+	"abusefilter-blocked-domains-allowlist-intro": "Linki do domeny (uwzględnia jej subdomeny) lub do pełnego adresu URL wymienione w [[MediaWiki:BlockedExternalDomainsAllowList.json]] będą traktowane jako wyjątki od zawartości niniejszej listy oraz globalnej listy zablokowanych domen.",
 	"abusefilter-blocked-domains-add-heading": "Dodaj nową domenę",
 	"abusefilter-blocked-domains-add-explanation": "Możesz tu dodać domenę do listy zablokowanych domen.",
 	"abusefilter-blocked-domains-domain": "Domena do zablokowania, np. wikipedia.org",

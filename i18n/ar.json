@@ -646,6 +646,7 @@
 	"blockedexternaldomains": "النطاقات الخارجية الممنوعة",
 	"abusefilter-blocked-domains-title": "النطاقات الخارجية الممنوعة",
 	"abusefilter-blocked-domains-intro": "سيتم حظر الروابط الخارجية المطابقة لهذه القائمة عند إضافتها إلى صفحة. يتم تخزين هذه المجالات في [[MediaWiki:BlockedExternalDomains.json]]. يتم تسجيل محاولات إضافة الروابط المحظورة في [[Special:Log/abusefilterblockeddomainhit]].",
+	"abusefilter-blocked-domains-allowlist-intro": "الروابط إلى نطاق (بما في ذلك نطاقاته الفرعية) أو إلى عنوان URL كامل مدرج في [[MediaWiki:BlockedExternalDomainsAllowList.json]] مستثناة من هذه القائمة ومن القائمة العالمية للنطاقات المحظورة.",
 	"abusefilter-blocked-domains-add-heading": "إضافة نطاق ممنوع جديد",
 	"abusefilter-blocked-domains-add-explanation": "هنا يمكنك إضافة نطاق إلى قائمة النطاقات الممنوعة.",
 	"abusefilter-blocked-domains-domain": "نطاق مطلوب منعه، مثل wikipedia.org",
