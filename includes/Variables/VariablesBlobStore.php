@@ -47,7 +47,7 @@ class VariablesBlobStore {
 		$usedProtectedVariables = $this->permissionManager->getUsedProtectedVariables(
 			array_keys( $varsForBlobStore )
 		);
-		unset( $usedProtectedVariables['user_unnamed_ip'] );
+		$usedProtectedVariables = array_diff( $usedProtectedVariables, [ 'user_unnamed_ip' ] );
 
 		// Store the values of protected variables in the DB instead of the append-only external storage.
 		// Leave a reference to these variables so that they display nothing when the data is purged.

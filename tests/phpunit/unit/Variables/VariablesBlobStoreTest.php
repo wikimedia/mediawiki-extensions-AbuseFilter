@@ -197,7 +197,7 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideVariables
 	 */
 	public function testRoundTrip( array $toStore, ?array $expected = null, string $ipHex = '' ) {
-		$protectedVariables = [ 'user_unnnamed_ip', 'other_protected_variable' ];
+		$protectedVariables = [ 'user_unnamed_ip', 'other_protected_variable' ];
 		$permissionManager = $this->createMock( AbuseFilterPermissionManager::class );
 		$permissionManager->method( 'getUsedProtectedVariables' )
 			->willReturnCallback( static function ( $usedVariables ) use ( $protectedVariables ) {
@@ -213,9 +213,13 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 		$this->assertIsString( $aflVarDumpValue );
 
 		// Verify that the blob store address is storing no protected variable values
-		// (empty values are expected though).
-		if ( array_intersect_key( $toStore, array_flip( $protectedVariables ) ) ) {
-			$blobId = FormatJson::decode( $aflVarDumpValue, true )['_blob'];
+		// (empty values are expected though). user_unnamed_ip is never stored in the DB,
+		// as it is reconstructed from afl_ip_hex.
+		$protectedVariablesInDb = array_diff( $protectedVariables, [ 'user_unnamed_ip' ] );
+		if ( array_intersect_key( $toStore, array_flip( $protectedVariablesInDb ) ) ) {
+			$varsInDb = FormatJson::decode( $aflVarDumpValue, true );
+			$this->assertArrayNotHasKey( 'user_unnamed_ip', $varsInDb );
+			$blobId = $varsInDb['_blob'];
 		} else {
 			$blobId = $aflVarDumpValue;
 		}
@@ -325,6 +329,11 @@ class VariablesBlobStoreTest extends MediaWikiUnitTestCase {
 				IPUtils::toHex( '1.2.3.4' )
 			],
 			'Has other_protected_variable' => [ [ 'other_protected_variable' => 'abc' ] ],
+			'Has user_unnamed_ip and other_protected_variable' => [
+				[ 'user_unnamed_ip' => '1.2.3.4', 'other_protected_variable' => 'abc' ],
+				null,
+				IPUtils::toHex( '1.2.3.4' )
+			],
 		];
 	}
 }
