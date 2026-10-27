@@ -26,7 +26,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 	/**
 	 * @var int The limit of changes to test, hard coded for now
 	 */
-	private static $mChangeLimit = 100;
+	private const CHANGE_LIMIT = 100;
 
 	/**
 	 * @var string The text of the rule to test changes against
@@ -83,7 +83,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 
 		$out->setPageTitleMsg( $this->msg( 'abusefilter-test' ) );
 		$out->addHelpLink( 'Extension:AbuseFilter/Rules format' );
-		$out->addWikiMsg( 'abusefilter-test-intro', Message::numParam( self::$mChangeLimit ) );
+		$out->addWikiMsg( 'abusefilter-test-intro', Message::numParam( self::CHANGE_LIMIT ) );
 		$out->enableOOUI();
 
 		$boxBuilder = $this->boxBuilderFactory->newEditBoxBuilder( $this, $this->getAuthority(), $out );
@@ -224,7 +224,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			->fields( $rcQuery['fields'] )
 			->conds( $conds )
 			->caller( __METHOD__ )
-			->limit( self::$mChangeLimit )
+			->limit( self::CHANGE_LIMIT )
 			->orderBy( 'rc_timestamp', SelectQueryBuilder::SORT_DESC )
 			->joinConds( $rcQuery['joins'] )
 			->fetchResultSet();
