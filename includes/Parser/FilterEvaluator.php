@@ -688,12 +688,15 @@ class FilterEvaluator {
 		}
 
 		$funcHandler = self::FUNCTIONS[$fname];
-		$funcHash = md5( $funcHandler . serialize( $args ) );
+		// Prepend the handler name to the hashed arguments instead of
+		// concatenating the large serialized payload directly, preventing
+		// heavy memory allocation and copying.
+		$cacheKey = $funcHandler . hash( 'xxh128', serialize( $args ), true );
 
-		if ( isset( $this->funcCache[$funcHash] ) &&
+		if ( isset( $this->funcCache[$cacheKey] ) &&
 			!in_array( $funcHandler, self::ACTIVE_FUNCTIONS )
 		) {
-			$result = $this->funcCache[$funcHash];
+			$result = $this->funcCache[$cacheKey];
 		} else {
 			$this->raiseCondCount();
 
@@ -716,7 +719,7 @@ class FilterEvaluator {
 				// @phan-suppress-next-line PhanParamTooMany Not every function needs the position
 				$result = $this->$funcHandler( $args, $position );
 			}
-			$this->funcCache[$funcHash] = $result;
+			$this->funcCache[$cacheKey] = $result;
 		}
 
 		if ( count( $this->funcCache ) > 1000 ) {
