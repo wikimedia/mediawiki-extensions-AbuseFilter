@@ -20,6 +20,7 @@ use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Language\MessageLocalizer;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Session\Session;
 use MediaWiki\Session\SessionManager;
 use MediaWiki\User\Registration\UserRegistrationLookup;
@@ -36,7 +37,7 @@ class ConsequencesFactory {
 		'AbuseFilterCentralDB',
 		'AbuseFilterIsCentral',
 		'AbuseFilterRangeBlockSize',
-		'BlockCIDRLimit',
+		MainConfigNames::BlockCIDRLimit,
 	];
 
 	/** @var ?Session */
@@ -101,7 +102,7 @@ class ConsequencesFactory {
 			$this->messageLocalizer,
 			$this->logger,
 			$this->options->get( 'AbuseFilterRangeBlockSize' ),
-			$this->options->get( 'BlockCIDRLimit' )
+			$this->options->get( MainConfigNames::BlockCIDRLimit )
 		);
 	}
 

@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\LazyLoadedVariable;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Message\Message;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\RecentChanges\RecentChangeFactory;
@@ -101,7 +102,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 			]
 		];
 
-		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
+		$RCMaxAge = $this->getConfig()->get( MainConfigNames::RCMaxAge );
 		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
 		$max = wfTimestampNow();
 

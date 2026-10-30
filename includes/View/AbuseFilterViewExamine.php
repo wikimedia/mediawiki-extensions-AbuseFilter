@@ -21,6 +21,7 @@ use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
 use MediaWiki\Html\Html;
 use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Linker\LinkRenderer;
+use MediaWiki\MainConfigNames;
 use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\RecentChanges\RecentChangeStore;
 use MediaWiki\Title\Title;
@@ -87,7 +88,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 	 * Shows the search form
 	 */
 	public function showSearch() {
-		$RCMaxAge = $this->getConfig()->get( 'RCMaxAge' );
+		$RCMaxAge = $this->getConfig()->get( MainConfigNames::RCMaxAge );
 		$min = wfTimestamp( TS_ISO_8601, time() - $RCMaxAge );
 		$max = wfTimestampNow();
 		$formDescriptor = [

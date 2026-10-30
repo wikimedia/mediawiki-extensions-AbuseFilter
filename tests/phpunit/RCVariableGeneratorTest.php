@@ -145,7 +145,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 					throw new LogicException( "Cannot upload file:\n$status" );
 				}
 				$rcConds['rc_namespace'] = $destTitle->getNamespace();
-				$rcConds['rc_title'] = $destTitle->getDbKey();
+				$rcConds['rc_title'] = $destTitle->getDBkey();
 
 				// Since the SVG is randomly generated, we need to read some properties live
 				$file = $services->getRepoGroup()->getLocalRepo()->newFile( $destTitle );
@@ -319,7 +319,7 @@ class RCVariableGeneratorTest extends MediaWikiIntegrationTestCase {
 		$rc = $this->getServiceContainer()->getRecentChangeLookup()->getRecentChangeByConds(
 			[
 				'rc_namespace' => $destTitle->getNamespace(),
-				'rc_title' => $destTitle->getDbKey(),
+				'rc_title' => $destTitle->getDBkey(),
 				'rc_source' => RecentChange::SRC_LOG,
 				'rc_log_type' => 'upload',
 				'rc_log_action' => 'upload',

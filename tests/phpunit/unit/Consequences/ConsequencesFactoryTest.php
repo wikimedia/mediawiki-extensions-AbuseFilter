@@ -13,6 +13,7 @@ use MediaWiki\Extension\AbuseFilter\Consequences\Parameters;
 use MediaWiki\Extension\AbuseFilter\FilterUser;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Language\MessageLocalizer;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Session\Session;
 use MediaWiki\User\Registration\UserRegistrationLookup;
 use MediaWiki\User\UserEditTracker;
@@ -36,7 +37,7 @@ class ConsequencesFactoryTest extends MediaWikiUnitTestCase {
 				'AbuseFilterCentralDB' => false,
 				'AbuseFilterIsCentral' => false,
 				'AbuseFilterRangeBlockSize' => [],
-				'BlockCIDRLimit' => [],
+				MainConfigNames::BlockCIDRLimit => [],
 			]
 		);
 
