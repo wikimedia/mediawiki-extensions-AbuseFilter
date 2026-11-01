@@ -21,7 +21,7 @@ module.exports = function ( grunt ) {
 				cache: true
 			},
 			all: [
-				'**/*.{css,less}',
+				'**/*.{css,less,vue}',
 				'!coverage/**',
 				'!node_modules/**',
 				'!vendor/**'
