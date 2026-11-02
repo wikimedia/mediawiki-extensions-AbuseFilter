@@ -5,6 +5,7 @@
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Felipe L. Ewald",
+			"Fúlvio",
 			"HenriqueCrang",
 			"Pedrofariasm"
 		]
@@ -31,9 +32,24 @@
 	"apihelp-query+abusefilters-summary": "Mostrar detalhes dos filtros de abuso.",
 	"apihelp-query+abusefilters-param-startid": "O ID do filtro para começar a enumeração.",
 	"apihelp-query+abusefilters-param-endid": "O ID do filtro para parar a enumeração.",
+	"apihelp-query+abusefilters-paramvalue-dir-ascending": "Enumera os filtros em ordem crescente.",
+	"apihelp-query+abusefilters-paramvalue-dir-descending": "Enumera os filtros em ordem decrescente.",
 	"apihelp-query+abusefilters-param-show": "Mostrar apenas filtros que atendam a esses critérios.",
 	"apihelp-query+abusefilters-param-limit": "O número máximo de filtros para listar.",
-	"apihelp-query+abusefilters-param-prop": "Que propriedades obter.",
+	"apihelp-query+abusefilters-param-prop": "Quais informações incluir:",
+	"apihelp-query+abusefilters-paramvalue-prop-id": "Adiciona o ID do filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-description": "Adiciona a descrição do filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-pattern": "Adiciona as regras do filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-actions": "Adiciona as ações habilitadas para o filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-hits": "Adiciona as contagens de ocorrências do filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-comments": "Adiciona comentários (ou notas) para o filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-lasteditor": "Adiciona o nome do usuário que editou o filtro pela última vez.",
+	"apihelp-query+abusefilters-paramvalue-prop-lastedittime": "Adiciona um registro de data e hora representando a data em que o filtro foi editado pela última vez.",
+	"apihelp-query+abusefilters-paramvalue-prop-flags": "Adiciona informações sobre o status do filtro.",
+	"apihelp-query+abusefilters-paramvalue-prop-status": "Adiciona informações sobre se o filtro está habilitado e/ou eliminado.",
+	"apihelp-query+abusefilters-paramvalue-prop-suppressed": "Adiciona informações sobre se o filtro está suprimido.",
+	"apihelp-query+abusefilters-paramvalue-prop-private": "Adiciona informações sobre se o filtro é privado.",
+	"apihelp-query+abusefilters-paramvalue-prop-protected": "Adiciona informações sobre se o filtro está protegido.",
 	"apihelp-query+abusefilters-example-1": "Lista de filtros públicos habilitados",
 	"apihelp-query+abusefilters-example-2": "Mostrar alguns detalhes sobre os filtros",
 	"apihelp-query+abuselog-summary": "Mostrar os eventos que foram detectados por um dos filtros de abuso.",
@@ -58,5 +74,6 @@
 	"apierror-abusefilter-canteval": "Você não tem permissão para avaliar expressões do AbuseFilter.",
 	"apierror-abusefilter-nosuchlogid": "Não há entrada no registro de abusos com o id $1.",
 	"apierror-abusefilter-incompatible": "A alteração solicitada não é suportada pelo Filtro de Abuso.",
-	"apierror-abusefilter-badsyntax": "O filtro tem sintaxe inválida."
+	"apierror-abusefilter-badsyntax": "O filtro tem sintaxe inválida.",
+	"apiwarn-deprecation-query+abusefilters-paramvalue-prop-flags": "Use \"flags\" em vez disso."
 }
