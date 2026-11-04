@@ -560,6 +560,7 @@
 	"abusefilter-test-loadfilter": "טעינת מסנן לפי מזהה:",
 	"abusefilter-test-loadfilter-load": "טעינה",
 	"abusefilter-test-loadfilter-notfound": "המסנן $1 אינו קיים.",
+	"abusefilter-test-loadfilter-restricted": "מסנן $1 מוגבל ולא ניתן לטעון את תוכנו.",
 	"abusefilter-test-submit": "בדיקה",
 	"abusefilter-test-user": "שינויים שבוצעו על־ידי המשתמש:",
 	"abusefilter-test-nobots": "הסתרת עריכות של בוטים",
@@ -679,5 +680,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "שינוי גישה",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "צפייה בערכים של משתנים מוגנים",
 	"communityconfiguration-blockeddomain-title": "תחומים חיצוניים חסומים",
-	"communityconfiguration-blockeddomain-description": "רשימת תחומים חיצוניים שלא ניתן לקשר אליהם."
+	"communityconfiguration-blockeddomain-description": "רשימת תחומים חיצוניים שלא ניתן לקשר אליהם.",
+	"grant-access-protected-vars": "גישה למשתנים מוגנים במסנני השחתות"
 }
