@@ -6,7 +6,6 @@ namespace MediaWiki\Extension\AbuseFilter\Parser;
  * Abuse filter parser.
  * Copyright © Victor Vasiliev, 2008.
  * Based on ideas by Andrew Garrett
- * Distributed under GNU GPL v2 terms.
  *
  * Types of token:
  * * T_NONE - special-purpose token
