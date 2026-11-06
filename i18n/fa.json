@@ -237,7 +237,7 @@
 	"abusefilter-view-specific": "مشاهدهٔ پالایهٔ ویرایش $1: $2",
 	"abusefilter-edit-subtitle": "ویرایش پالایهٔ $1",
 	"abusefilter-edit-subtitle-new": "ایجاد پالایه",
-	"abusefilter-edit-token-not-match": "ویرایش قابل ذخیره شدن نیست! لطفاً دوباره سعی کنید.",
+	"abusefilter-edit-token-not-match": "ویرایش ذخیره نشد! لطفاً دوباره ذخیره کنید.",
 	"abusefilter-edit-oldwarning": "<strong>شما مشغول ویرایش کردن بر روی نسخهٔ قدیمی از پالایه هستید.\nآمار نقل شده بر اساس آخرین نسخهٔ پالایه است.\nاگر دکمه ذخیره را بفشارید تمام تغییرات بعد از نسخه‌ای که ویرایش می‌کنید را رونویسی خواهید کرد.</strong> &bull;\n[[Special:AbuseFilter/history/$2|بازگشت به تاریخچهٔ این پالایه]].",
 	"abusefilter-edit-oldwarning-view": "<strong>شما در حال مشاهدهٔ یک نسخهٔ قدیمی از این پالایه هستید.\nآمارهای ذکر شده مربوط به جدیدترین نسخهٔ پالایه هستند.</strong> &bull;\n[[Special:AbuseFilter/history/$2|بازگشت به تاریخچهٔ این پالایه]].",
 	"abusefilter-edit-status-label": "آمار:",
