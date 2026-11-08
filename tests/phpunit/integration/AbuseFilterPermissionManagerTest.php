@@ -2,7 +2,9 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 
+use MediaWiki\Block\DatabaseBlock;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
+use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
@@ -11,7 +13,6 @@ use MediaWiki\RecentChanges\RecentChange;
 use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
 use MediaWiki\Tests\User\TempUser\TempUserTestTrait;
 use MediaWikiIntegrationTestCase;
-use StatusValue;
 
 /**
  * @covers \MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager
@@ -21,7 +22,7 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 	use MockAuthorityTrait;
 	use TempUserTestTrait;
 
-	private function getPermissionManager() {
+	private function getPermissionManager(): AbuseFilterPermissionManager {
 		return $this->getServiceContainer()->get( AbuseFilterPermissionManager::SERVICE_NAME );
 	}
 
@@ -29,14 +30,13 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 		// Define the AbuseFilterCanViewProtectedVariables hook to make the status a fatal status
 		$this->setTemporaryHook(
 			'AbuseFilterCanViewProtectedVariables',
-			static function ( $performer, $variables, StatusValue $status ) {
+			static function ( $performer, $variables, AbuseFilterPermissionStatus $status ) {
 				$status->fatal( 'test-error' );
 			}
 		);
 
 		$filter = MutableFilter::newDefault();
 		$filter->setProtected( true );
-		/** @var AbuseFilterPermissionManager $permissionManager */
 		$permissionManager = $this->getPermissionManager();
 		$actualStatus = $permissionManager->canViewProtectedVariablesInFilter(
 			$this->mockRegisteredUltimateAuthority(),
@@ -44,6 +44,34 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 		);
 
 		$this->assertStatusError( 'test-error', $actualStatus );
+	}
+
+	public function testCanViewProtectedVariablesPrioritizesPermissionErrorsFromHook(): void {
+		$this->setTemporaryHook(
+			'AbuseFilterCanViewProtectedVariables',
+			static function ( $performer, $variables, AbuseFilterPermissionStatus $status ) {
+				$status->setPermission( 'missing-permission' );
+			}
+		);
+
+		$permissionManager = $this->getPermissionManager();
+		$filter = MutableFilter::newDefault();
+		$filter->setProtected( true );
+		$block = $this->createMock( DatabaseBlock::class );
+		$block->method( 'isSitewide' )->willReturn( true );
+
+		$status = $permissionManager->canViewProtectedVariablesInFilter(
+			$this->mockUserAuthorityWithBlock(
+				$this->mockRegisteredNullAuthority()->getUser(),
+				$block,
+				[ 'abusefilter-access-protected-vars' ]
+			),
+			$filter
+		);
+
+		$this->assertStatusNotGood( $status );
+		$this->assertSame( 'missing-permission', $status->getPermission() );
+		$this->assertNull( $status->getBlock() );
 	}
 
 	/** @dataProvider provideCanSeeIPForFilterLog */
@@ -83,7 +111,6 @@ class AbuseFilterPermissionManagerTest extends MediaWikiIntegrationTestCase {
 		);
 		$this->setService( AbuseFilterPermissionManager::SERVICE_NAME, $permissionManager );
 
-		/** @var AbuseFilterPermissionManager $permissionManager */
 		$permissionManager = $this->getPermissionManager();
 
 		$this->assertSame(

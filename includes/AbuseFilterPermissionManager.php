@@ -42,16 +42,46 @@ class AbuseFilterPermissionManager {
 		$this->canViewProtectedVariablesCache = new MapCacheLRU( 10 );
 	}
 
-	public function canEdit( Authority $performer ): bool {
-		$block = $performer->getBlock();
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$performer->isAllowed( 'abusefilter-modify' )
-		);
+	/**
+	 * Checks whether the given authority is sitewide-blocked.
+	 *
+	 * @param Authority $performer
+	 * @param bool $check Whether to perform the check. If false, the method
+	 * immediately returns false.
+	 * @return bool
+	 */
+	private static function isSitewideBlocked( Authority $performer, bool $check ): bool {
+		return $check && $performer->getBlock()?->isSitewide();
 	}
 
-	public function canEditGlobal( Authority $performer ): bool {
-		return $performer->isAllowed( 'abusefilter-modify-global' );
+	/**
+	 * Checks whether the given authority can edit basic filters.
+	 *
+	 * @param Authority $performer
+	 * @param bool $checkBlocks Whether to check for sitewide blocks that would
+	 * prevent the authority from exercising this permission. Defaults to true.
+	 *
+	 * Set to false **only if** the caller independently checks for sitewide blocks.
+	 * @return bool
+	 */
+	public function canEdit( Authority $performer, bool $checkBlocks = true ): bool {
+		return $performer->isAllowed( 'abusefilter-modify' )
+			&& !self::isSitewideBlocked( $performer, $checkBlocks );
+	}
+
+	/**
+	 * Checks whether the given authority can edit global filters.
+	 *
+	 * @param Authority $performer
+	 * @param bool $checkBlocks Whether to check for sitewide blocks that would
+	 * prevent the authority from exercising this permission. Defaults to true.
+	 *
+	 * Set to false **only if** the caller independently checks for sitewide blocks.
+	 * @return bool
+	 */
+	public function canEditGlobal( Authority $performer, bool $checkBlocks = true ): bool {
+		return $performer->isAllowed( 'abusefilter-modify-global' )
+			&& !self::isSitewideBlocked( $performer, $checkBlocks );
 	}
 
 	/**
@@ -75,52 +105,69 @@ class AbuseFilterPermissionManager {
 	}
 
 	/**
-	 * Whether the user can edit a filter with restricted actions enabled.
+	 * Checks whether the given authority can edit filters with restricted actions.
 	 *
 	 * @param Authority $performer
+	 * @param bool $checkBlocks Whether to check for sitewide blocks that would
+	 * prevent the authority from exercising this permission. Defaults to true.
+	 *
+	 * Set to false **only if** the caller independently checks for sitewide blocks.
 	 * @return bool
 	 */
-	public function canEditFilterWithRestrictedActions( Authority $performer ): bool {
-		return $performer->isAllowed( 'abusefilter-modify-restricted' );
-	}
-
-	public function canViewPrivateFilters( Authority $performer ): bool {
-		$block = $performer->getBlock();
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$performer->isAllowedAny(
-				'abusefilter-modify',
-				'abusefilter-view-private'
-			)
-		);
+	public function canEditFilterWithRestrictedActions( Authority $performer, bool $checkBlocks = true ): bool {
+		return $performer->isAllowed( 'abusefilter-modify-restricted' )
+			&& !self::isSitewideBlocked( $performer, $checkBlocks );
 	}
 
 	/**
-	 * Can the user view a suppressed filter or log entry?
+	 * Checks whether the given authority can view private filters.
 	 *
 	 * @param Authority $performer
+	 * @param bool $checkBlocks Whether to check for sitewide blocks that would
+	 * prevent the authority from exercising this permission. Defaults to true.
+	 *
+	 * Set to false **only if** the caller independently checks for sitewide blocks.
 	 * @return bool
 	 */
-	public function canViewSuppressed( Authority $performer ): bool {
-		$block = $performer->getBlock();
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$performer->isAllowed( 'viewsuppressed' )
-		);
+	public function canViewPrivateFilters( Authority $performer, bool $checkBlocks = true ): bool {
+		return $performer->isAllowedAny(
+			'abusefilter-modify',
+			'abusefilter-view-private'
+		)
+		&& !self::isSitewideBlocked( $performer, $checkBlocks );
 	}
 
 	/**
-	 * Can the user suppress a filter or log entry?
+	 * Checks whether the given authority can view suppressed filters or their
+	 * log entries.
 	 *
 	 * @param Authority $performer
+	 * @param bool $checkBlocks Whether to check for sitewide blocks that would
+	 * prevent the authority from exercising this permission. Defaults to true.
+	 *
+	 * Set to false **only if** the caller independently checks for sitewide blocks.
 	 * @return bool
 	 */
-	public function canSuppress( Authority $performer ): bool {
-		$block = $performer->getBlock();
-		return (
-			!( $block && $block->isSitewide() ) &&
-			$performer->isAllowed( 'suppressrevision' )
-		);
+	public function canViewSuppressed( Authority $performer, bool $checkBlocks = true ): bool {
+		return $performer->isAllowed( 'viewsuppressed' )
+			&& !self::isSitewideBlocked( $performer, $checkBlocks );
+	}
+
+	/**
+	 * Checks whether the given authority can edit suppressed filters.
+	 *
+	 * @param Authority $performer
+	 * @param bool $checkBlocks Whether to check for sitewide blocks that would
+	 * prevent the authority from exercising this permission. Defaults to true.
+	 *
+	 * Set to false **only if** the caller independently checks for sitewide blocks.
+	 * @return bool
+	 */
+	public function canSuppress( Authority $performer, bool $checkBlocks = true ): bool {
+		// To edit suppressed filters, the user must first be able to view them
+		return $this->canViewSuppressed( $performer, false )
+			&& $performer->isAllowed( 'suppressrevision' )
+			&& !self::isSitewideBlocked( $performer, $checkBlocks );
 	}
 
 	/**
@@ -177,36 +224,24 @@ class AbuseFilterPermissionManager {
 			return $this->canViewProtectedVariablesCache->get( $cacheKey );
 		}
 
-		$returnStatus = $this->checkCanViewProtectedVariables( $performer );
-		if ( !$returnStatus->isGood() ) {
+		$returnStatus = AbuseFilterPermissionStatus::newGood();
+		if ( !$performer->isAllowed( 'abusefilter-access-protected-vars' ) ) {
+			$returnStatus->setPermission( 'abusefilter-access-protected-vars' );
 			$this->canViewProtectedVariablesCache->set( $cacheKey, $returnStatus );
 			return $returnStatus;
 		}
 
 		$this->hookRunner->onAbuseFilterCanViewProtectedVariables( $performer, $variables, $returnStatus );
 
+		if ( $returnStatus->isGood() ) {
+			$block = $performer->getBlock();
+			if ( $block && $block->isSitewide() ) {
+				$returnStatus->setBlock( $block );
+			}
+		}
+
 		$this->canViewProtectedVariablesCache->set( $cacheKey, $returnStatus );
 		return $returnStatus;
-	}
-
-	/**
-	 * Checks that the user is allowed to see protected variables without
-	 * checking variable specific restrictions.
-	 *
-	 * @param Authority $performer
-	 * @return AbuseFilterPermissionStatus
-	 */
-	private function checkCanViewProtectedVariables( Authority $performer ): AbuseFilterPermissionStatus {
-		$block = $performer->getBlock();
-		if ( $block && $block->isSitewide() ) {
-			return AbuseFilterPermissionStatus::newBlockedError( $block );
-		}
-
-		if ( !$performer->isAllowed( 'abusefilter-access-protected-vars' ) ) {
-			return AbuseFilterPermissionStatus::newPermissionError( 'abusefilter-access-protected-vars' );
-		}
-
-		return AbuseFilterPermissionStatus::newGood();
 	}
 
 	/**

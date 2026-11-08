@@ -135,6 +135,29 @@ class QueryAbuseLogTest extends ApiTestCase {
 			],
 			null, false,
 			$this->mockUserAuthorityWithBlock(
+				self::$userIdentity,
+				$mockBlock,
+				[ 'abusefilter-log-detail', 'abusefilter-log', 'abusefilter-access-protected-vars' ]
+			)
+		);
+	}
+
+	public function testFilteringForProtectedFilterWhenUserBlockedAndLacksAccess(): void {
+		$mockBlock = $this->createMock( Block::class );
+		$mockBlock->method( 'isSitewide' )
+			->willReturn( true );
+
+		$this->expectApiErrorCode( 'permissiondenied' );
+		$this->doApiRequest(
+			[
+				'action' => 'query',
+				'list' => 'abuselog',
+				'aflprop' => 'details',
+				'afldir' => 'older',
+				'aflfilter' => 1,
+			],
+			null, false,
+			$this->mockUserAuthorityWithBlock(
 				self::$userIdentity, $mockBlock, [ 'abusefilter-log-detail', 'abusefilter-log' ]
 			)
 		);

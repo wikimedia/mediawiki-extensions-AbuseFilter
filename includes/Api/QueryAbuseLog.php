@@ -163,9 +163,6 @@ class QueryAbuseLog extends ApiQueryBase {
 					$protectedVariableAccessStatus = $this->afPermManager
 						->canViewProtectedVariables( $performer, $usedVariables );
 					if ( !$protectedVariableAccessStatus->isGood() ) {
-						if ( $protectedVariableAccessStatus->getBlock() ) {
-							$this->dieWithError( 'apierror-blocked', 'blocked' );
-						}
 						if ( $protectedVariableAccessStatus->getPermission() ) {
 							$this->dieWithError(
 								[
@@ -174,6 +171,9 @@ class QueryAbuseLog extends ApiQueryBase {
 								],
 								'permissiondenied'
 							);
+						}
+						if ( $protectedVariableAccessStatus->getBlock() ) {
+							$this->dieWithError( 'apierror-blocked', 'blocked' );
 						}
 
 						$this->dieStatus( $protectedVariableAccessStatus );
