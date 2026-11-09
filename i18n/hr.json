@@ -195,7 +195,6 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Gledate staru inačicu ovog filtra.\nIskazane su statistike za najnoviju inačicu filtra.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Povratak na povijest ovog filtra]].",
 	"abusefilter-edit-status-label": "Statistike:",
 	"abusefilter-edit-status": "Od {{PLURAL:$1|posljednje akcije|posljednje $1 akcije|posljednjih $1 akcija}}, ovaj se filtar poklopio s njih $2 ($3 %). Prosječno vrijeme izvršavanja je $4 ms, a filter koristi $5 {{PLURAL:$5|uvjet|uvjeta}}.",
-	"abusefilter-edit-throttled-warning": "'''Upozorenje:''' Ovaj je filter automatski označen štetnim. Kao mjera predostrožnosti, {{PLURAL:$2|sljedeća radnja neće biti izvršena|sljedeće radnje neće biti izvršene}}: ($1).\nAko je velik broj podudaranja očekivan, ponovo sačuvajte filter kako biste uklonili ograničenja.",
 	"abusefilter-edit-new": "Novi filtar",
 	"abusefilter-edit-save": "Snimi filtar",
 	"abusefilter-edit-id": "ID filtra:",

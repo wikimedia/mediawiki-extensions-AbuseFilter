@@ -192,7 +192,6 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Prezeráte si starú verziu tohto filtra.\nUvedené štatistiky sú pre aktuálnu verziu filtra.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Vrátiť sa na históriu tohto filtra]].",
 	"abusefilter-edit-status-label": "Štatistika:",
 	"abusefilter-edit-status": "{{PLURAL:$1|Z posledných $1 operácií}} tomuto filtru {{PLURAL:$2|zodpovedala|zodpovedali|zodpovedalo}} $2 ($3 %).\nPriemerná doba jeho činnosti je $4 ms a potrebuje $5 {{PLURAL:$5|podmienku|podmienky|podmienok}} z povoleného limitu.",
-	"abusefilter-edit-throttled-warning": "'''Upozornenie:''' Tento filter bol automaticky označený ako škodlivý. Z bezpečnostných dôvodov sa {{PLURAL:$2|nevykoná nasledovná akcia|nevykonajú nasledovné akcie}}: $1. Skontrolujte prosím, či je vysoká miera zhôd očakávaná. Ak áno, môžete filter znova uložiť a toto obmedzenie odstrániť.",
 	"abusefilter-edit-new": "Nový filter",
 	"abusefilter-edit-save": "Uložiť filter",
 	"abusefilter-edit-id": "ID filtra:",

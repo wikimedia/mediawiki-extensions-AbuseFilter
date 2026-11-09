@@ -195,7 +195,6 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Estàs veient una versió antiga d'aquest filtre.\nLes estadístiques citades són de la versió més recent de l'filtre.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Torna a l'historial d'aquest filtre]].",
 	"abusefilter-edit-status-label": "Estadístiques:",
 	"abusefilter-edit-status": "Des de {{PLURAL:$1|la darrera acció|les darreres accions}} aquest filtre n'ha detectat $2 ($3%).\nDe promedi, el seu temps d'execució és de $4 ms, i consumeix $5 {{PLURAL:$5| condició | condicions}} del límit de la condició.",
-	"abusefilter-edit-throttled-warning": "ATENCIó! Aquest filtre s'ha marcat automàticament com a nociu. Com a mesura de seguretat, no s'executaran les accions següents ($1). Reviseu i [[mw:Extension:AbuseFilter/Conditions|optimitzeu]] les vostres condicions per eliminar aquesta restricció",
 	"abusefilter-edit-new": "Nou filtre",
 	"abusefilter-edit-save": "Desa filtre",
 	"abusefilter-edit-id": "Núm. del filtre:",
@@ -508,7 +507,6 @@
 	"abusefilter-log-details-id": "ID de registre",
 	"abusefilter-noreason": "Atenció: heu d’indicar un motiu per a veure els detalls privats d’aquest registre.",
 	"abusefilter-log-ip-not-available": "No disponible",
-	"notification-header-throttle-filter": "El filtre d'abús $2 {{GENDER:$1| }}que heu editat recentment s'ha vist afectat.",
 	"notification-link-text-show-filter": "Mostra el filtre",
 	"right-abusefilter-modify-blocked-external-domains": "Crear o modificar els dominis externs blocats d'aparèixer en enllaços"
 }

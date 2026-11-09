@@ -305,7 +305,5 @@
 	"abusefilter-view-privatedetails-legend": "وردەکارییە تایبەتییەکان ببینە",
 	"abusefilter-log-ip-not-available": "بەردەست نییە",
 	"tag-abusefilter-condition-limit": "گەیشتە سنووری مەرج",
-	"notification-header-throttle-filter": "پاڵوێنەی کەڵکاوەژووی $2 کە {{GENDER:$1|تۆ}} بەم دوایییە دەستکاریت کردبوو خنکاوە.",
-	"notification-subject-throttle-filter": "پاڵوێنەیەکی کەڵکاوەژوو کە {{GENDER:$1|تۆ}} لە {{SITENAME}} دەستکاریت کردووە خنکاوە",
 	"notification-link-text-show-filter": "پاڵوێنە نیشان بدە"
 }

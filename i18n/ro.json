@@ -209,7 +209,6 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Vizualizați o versiune veche a acestui filtru.\nStatisticile citate sunt pentru cea mai recentă versiune a filtrului.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Reveniți la istoricul acestui filtru]].",
 	"abusefilter-edit-status-label": "Statistici:",
 	"abusefilter-edit-status": "Din {{PLURAL:$1|ultima acțiune|ultimele $1 acțiuni| ultimele $1 de acțiuni}}, acest filtru a găsit $2 ($3%).\nÎn medie, timpul său de rulare este de $4 ms, și consumă $5 {{PLURAL:$5|condiție|condiții}} din limita de condiții",
-	"abusefilter-edit-throttled-warning": "'''Atenție:''' Acest filtru a fost marcat automat ca dăunător. Ca măsură de siguranță, următoarele acțiuni nu se vor executa ($1). Vă rugăm să revedeți și să [[mw:Extension:AbuseFilter/Conditions|optimizați]] condițiile pentru a înlătura această restricție",
 	"abusefilter-edit-new": "Filtru nou",
 	"abusefilter-edit-save": "Salvează filtru",
 	"abusefilter-edit-id": "ID filtru:",
