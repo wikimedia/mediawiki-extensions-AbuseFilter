@@ -22,7 +22,7 @@ class PurgeOldLogData extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->addDescription(
-			'Purges sensitive data in the abuse_filter_log table. This purges the IP address in the' .
+			'Purges sensitive data in the abuse_filter_log table. This purges the IP address in the ' .
 				'afl_ip_hex column as well as any protected variable values in afl_var_dump. Rows which contain ' .
 				'protected variables defined by the AbuseFilterProtectedVariablesDeleteLogEntries hook are deleted.'
 		);
