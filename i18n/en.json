@@ -616,6 +616,7 @@
 	"abusefilter-import-intro": "You can use this interface to import filters from other wikis.\nOn the source wiki, click \"{{int:abusefilter-edit-export}}\" under \"{{int:abusefilter-edit-tools}}\" on the editing interface.\nCopy from the textbox that appears, and paste it into this textbox, then click \"{{int:abusefilter-import-submit}}\".",
 	"abusefilter-import-submit": "Import data",
 	"abusefilter-import-invalid-data": "The data you tried to import is not valid",
+	"abusefilter-import-actions-removed": "The following {{PLURAL:$2|action was|actions were}} removed from the imported filter because you do not have permission to {{int:action-abusefilter-modify-restricted}}: $1",
 	"abusefilter-group-default": "Default",
 	"abusefilter-http-error": "An HTTP error occurred: $1.",
 	"abusefilter-view-privatedetails-submit": "View private details",

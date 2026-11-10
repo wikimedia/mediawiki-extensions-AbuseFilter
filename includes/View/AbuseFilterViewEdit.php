@@ -11,6 +11,7 @@ use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterNotFoundException;
 use MediaWiki\Extension\AbuseFilter\Filter\FilterVersionNotFoundException;
+use MediaWiki\Extension\AbuseFilter\Filter\HistoryFilter;
 use MediaWiki\Extension\AbuseFilter\Filter\MutableFilter;
 use MediaWiki\Extension\AbuseFilter\FilterImporter;
 use MediaWiki\Extension\AbuseFilter\FilterLookup;
@@ -112,17 +113,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
-		$isImport = $request->wasPosted() && $request->getRawVal( 'wpImportText' ) !== null;
+		$importText = $request->wasPosted() ? $request->getRawVal( 'wpImportText' ) : null;
 
-		if ( !$isImport && $request->wasPosted() && $canEdit ) {
+		if ( $importText === null && $request->wasPosted() && $canEdit ) {
 			$this->attemptSave( $filter, $history_id );
 			return;
 		}
 
-		if ( $isImport ) {
-			$filterObj = $this->loadImportRequest();
+		if ( $importText !== null ) {
+			$filterObj = $this->importFilter( $importText );
 			if ( $filterObj === null ) {
-				$this->showUnrecoverableError( 'abusefilter-import-invalid-data' );
 				return;
 			}
 		} else {
@@ -291,9 +291,23 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			return;
 		}
 
+		// Set the editor to read-only if the user cannot edit the filter or
+		// if it has restricted actions that the user cannot modify
+		$readOnly = !$this->afPermManager->canEditFilter( $authority, $filterObj );
+		if ( !$readOnly && !$this->afPermManager->canEditFilterWithRestrictedActions( $authority ) ) {
+			$actionNames = $filterObj->getActionsNames();
+			if ( $filter !== null && $filterObj instanceof HistoryFilter ) {
+				// When viewing a historical version, editability also depends on
+				// the restricted actions enabled in the current version of the filter
+				$currentFilter = $this->filterLookup->getFilter( $filter, false );
+				$actionNames = array_merge( $actionNames, $currentFilter->getActionsNames() );
+			}
+			$readOnly = $this->consequencesRegistry->filterRestrictedActionNames( $actionNames ) !== [];
+		}
+
 		if ( $isCreatingNewFilter ) {
 			$title = $this->msg( 'abusefilter-add' );
-		} elseif ( $this->afPermManager->canEditFilter( $authority, $filterObj ) ) {
+		} elseif ( !$readOnly ) {
 			$title = $this->msg( 'abusefilter-edit-specific' )
 				->numParams( $this->filter )
 				->params( $filterObj->getName() );
@@ -303,8 +317,6 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 				->params( $filterObj->getName() );
 		}
 		$out->setPageTitleMsg( $title );
-
-		$readOnly = !$this->afPermManager->canEditFilter( $authority, $filterObj );
 
 		if ( $history_id ) {
 			$oldWarningMessage = $readOnly
@@ -673,7 +685,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			Html::closeElement( 'fieldset' ) . "\n";
 		$form .= Html::openElement( 'fieldset' ) . "\n" .
 			Html::element( 'legend', [], $this->msg( 'abusefilter-edit-consequences' )->text() ) . "\n" .
-			$this->buildConsequenceEditor( $filterObj, $actions ) . "\n" .
+			$this->buildConsequenceEditor( $filterObj, $actions, $readOnly ) . "\n" .
 			Html::closeElement( 'fieldset' );
 
 		$urlFilter = $filter === null ? 'new' : (string)$filter;
@@ -719,9 +731,10 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param Filter $filterObj
 	 * @param array[] $actions Array of rows from the abuse_filter_action table
 	 *  corresponding to the filter object
+	 * @param bool $readOnly
 	 * @return string HTML text for an action editor.
 	 */
-	private function buildConsequenceEditor( Filter $filterObj, array $actions ) {
+	private function buildConsequenceEditor( Filter $filterObj, array $actions, bool $readOnly ): string {
 		$enabledActions = $this->consequencesRegistry->getAllEnabledActionNames();
 
 		$setActions = [];
@@ -730,11 +743,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		}
 
 		$output = '';
+		$canEditRestricted = $this->afPermManager->canEditFilterWithRestrictedActions( $this->getAuthority() );
 
 		foreach ( $enabledActions as $action ) {
 			$params = $actions[$action] ?? null;
+			$unconfigurable = $readOnly || (
+				!$canEditRestricted && $this->consequencesRegistry->isRestrictedActionName( $action )
+			);
 			$output .= $this->buildConsequenceSelector(
-				$action, $setActions[$action], $filterObj, $params );
+				$action, $setActions[$action], $filterObj, $params, $unconfigurable
+			);
 		}
 
 		return $output;
@@ -745,17 +763,16 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 	 * @param bool $set Whether or not the action is activated
 	 * @param Filter $filterObj
 	 * @param string[]|null $parameters Action parameters. Null iff $set is false.
+	 * @param bool $readOnly
 	 * @return string|\OOUI\FieldLayout
 	 */
-	private function buildConsequenceSelector( $action, $set, $filterObj, ?array $parameters ) {
+	private function buildConsequenceSelector( $action, $set, $filterObj, ?array $parameters, bool $readOnly ) {
 		$config = $this->getConfig();
 		$authority = $this->getAuthority();
 		$actions = $this->consequencesRegistry->getAllEnabledActionNames();
 		if ( !in_array( $action, $actions, true ) ) {
 			return '';
 		}
-
-		$readOnly = !$this->afPermManager->canEditFilter( $authority, $filterObj );
 
 		switch ( $action ) {
 			case 'throttle':
@@ -1393,17 +1410,40 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 		return [ $newFilter, $origFilter ];
 	}
 
-	private function loadImportRequest(): ?Filter {
-		$request = $this->getRequest();
-		if ( !$request->wasPosted() ) {
+	private function importFilter( string $importText ): ?Filter {
+		if ( !$this->getRequest()->wasPosted() ) {
 			// Sanity
 			throw new LogicException( __METHOD__ . ' called without the request being POSTed.' );
 		}
 
 		try {
-			$filter = $this->filterImporter->decodeData( $request->getVal( 'wpImportText' ) );
+			$filter = $this->filterImporter->decodeData( $importText );
 		} catch ( InvalidImportDataException ) {
+			$this->showUnrecoverableError( 'abusefilter-import-invalid-data' );
 			return null;
+		}
+
+		// Remove actions that the user cannot enable
+		if ( !$this->afPermManager->canEditFilterWithRestrictedActions( $this->getAuthority() ) ) {
+			$actions = $filter->getActions();
+			$removedActions = [];
+			foreach ( $actions as $action => $params ) {
+				if ( $this->consequencesRegistry->isRestrictedActionName( $action ) ) {
+					unset( $actions[$action] );
+					$removedActions[] = $this->specsFormatter->getActionMessage( $action );
+				}
+			}
+			if ( $removedActions !== [] ) {
+				$filter->setActions( $actions );
+				$out = $this->getOutput();
+				$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
+				$out->addHTML( Html::warningBox(
+					$this->msg( 'abusefilter-import-actions-removed' )
+						->plaintextParams( $this->getLanguage()->commaList( $removedActions ) )
+						->params( count( $removedActions ) )
+						->parseAsBlock()
+				) );
+			}
 		}
 
 		return $filter;

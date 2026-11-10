@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Integration\View;
 
+use Generator;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionStatus;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
@@ -13,9 +14,13 @@ use MediaWiki\Extension\AbuseFilter\Special\SpecialAbuseFilter;
 use MediaWiki\Extension\AbuseFilter\Tests\Integration\ProtectedVarsTestTrait;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
 use MediaWiki\Language\RawMessage;
+use MediaWiki\MainConfigNames;
 use MediaWiki\Permissions\UltimateAuthority;
 use MediaWiki\Request\FauxRequest;
 use MediaWiki\Tests\Specials\SpecialPageTestBase;
+use MediaWiki\Tests\Unit\Permissions\MockAuthorityTrait;
+use Wikimedia\Parsoid\Ext\DOMUtils;
+use Wikimedia\Parsoid\Utils\DOMCompat;
 use Wikimedia\Rdbms\IDBAccessObject;
 
 /**
@@ -27,6 +32,7 @@ use Wikimedia\Rdbms\IDBAccessObject;
  * @covers \MediaWiki\Extension\AbuseFilter\View\AbuseFilterView
  */
 class AbuseFilterViewEditTest extends SpecialPageTestBase {
+	use MockAuthorityTrait;
 	use ProtectedVarsTestTrait;
 
 	/**
@@ -66,6 +72,18 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 	protected function setUp(): void {
 		parent::setUp();
 		$this->enableAllFilterActions();
+		$this->overrideConfigValues( [
+			'AbuseFilterActionRestrictions' => [
+				'throttle' => false,
+				'warn' => false,
+				'disallow' => false,
+				'blockautopromote' => true,
+				'block' => true,
+				'rangeblock' => true,
+				'degroup' => true,
+				'tag' => false,
+			],
+		] );
 		$this->clearProtectedVarRelatedHooks();
 	}
 
@@ -99,6 +117,49 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 			null,
 			$this->getSpecsForThrottledFilter( [] ),
 			MutableFilter::newDefault()
+		) );
+
+		// Create a suppressed filter #5
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$this->getFilterFromSpecs( [
+				'id' => '5',
+				'name' => 'Suppressed filter',
+				'rules' => '1 = 0',
+				'privacy' => Flags::FILTER_SUPPRESSED,
+			] ),
+			MutableFilter::newDefault()
+		) );
+
+		// Create a public filter #6 where the first revision has no restricted
+		// actions enabled and the second revision has one restricted action enabled
+		$restrictedFilterFirstRev = $this->getFilterFromSpecs( [
+			'id' => '6',
+			'name' => 'Filter to be converted',
+			'rules' => '1 = 0',
+			'privacy' => Flags::FILTER_PUBLIC,
+		] );
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			null,
+			$restrictedFilterFirstRev,
+			MutableFilter::newDefault()
+		) );
+		$this->assertStatusGood( $filterStore->saveFilter(
+			$authority,
+			6,
+			$this->getFilterFromSpecs( [
+				'id' => '6',
+				'name' => 'Filter with restricted actions',
+				'rules' => '1 = 0',
+				'privacy' => Flags::FILTER_PUBLIC,
+				'actions' => [
+					'disallow' => [ 'abusefilter-disallowed' ],
+					'blockautopromote' => [],
+				],
+			] ),
+			$restrictedFilterFirstRev
 		) );
 	}
 
@@ -208,26 +269,6 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 			'abusefilter-edit-notallowed',
 			$html,
 			'The permission error message was not present.'
-		);
-	}
-
-	public function testViewEditForInvalidImport() {
-		[ $html, ] = $this->executeSpecialPage(
-			'new',
-			new FauxRequest( [ 'wpImportText' => 'abc' ], true ),
-			null,
-			$this->getTestSysop()->getAuthority()
-		);
-
-		$this->assertStringContainsString(
-			'(abusefilter-import-invalid-data',
-			$html,
-			'An unknown filter ID should cause an error message.'
-		);
-		$this->assertStringContainsString(
-			'(abusefilter-return',
-			$html,
-			'Button to return the filter management was missing.'
 		);
 	}
 
@@ -469,5 +510,228 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 			'deleted' => 0,
 			'actions' => $actions,
 		] );
+	}
+
+	/**
+	 * @dataProvider provideBuildFilterEditorReadOnly
+	 * @param string|array{int,int} $subPage Subpage name as a string or `[ $filterId, $nthRevFromCurrent ]`
+	 * @param array $rights
+	 * @param bool $readOnly
+	 * @param array $readOnlyOverrideMap
+	 */
+	public function testBuildFilterEditorReadOnly(
+		string|array $subPage, array $rights, bool $readOnly, array $readOnlyOverrideMap
+	): void {
+		$this->overrideConfigValues( [
+			'AbuseFilterUseCodeEditor' => false,
+			'AbuseFilterUseCodeMirror' => false,
+			'AbuseFilterCentralDB' => $this->getConfVar( MainConfigNames::DBname ),
+			'AbuseFilterIsCentral' => true,
+		] );
+
+		if ( is_array( $subPage ) ) {
+			[ $filterId, $nthRevFromCurrent ] = $subPage;
+			$builder = $this->getDb()->newSelectQueryBuilder();
+			$historyId = $builder
+				->field( 'afh_id' )
+				->table( 'abuse_filter_history' )
+				->where( [ 'afh_filter' => $filterId ] )
+				->orderBy( 'afh_id', $builder::SORT_DESC )
+				->limit( $nthRevFromCurrent )
+				->offset( $nthRevFromCurrent - 1 )
+				->caller( __METHOD__ )
+				->fetchField();
+			$this->assertNotFalse( $historyId );
+			$subPage = "history/$filterId/item/$historyId";
+		}
+
+		[ $html ] = $this->executeSpecialPage(
+			$subPage,
+			performer: $this->mockRegisteredAuthorityWithPermissions( $rights ),
+			fullHtml: true,
+		);
+		$dom = DOMUtils::parseHTML( $html );
+
+		$heading = DOMCompat::querySelector( $dom, 'h1' );
+		$this->assertNotNull( $heading );
+		if ( $readOnly ) {
+			$this->assertStringContainsString(
+				'(abusefilter-view-specific:', $heading->textContent
+			);
+		} else {
+			$this->assertStringContainsString(
+				'(abusefilter-edit-specific:', $heading->textContent
+			);
+		}
+
+		$textInputs = DOMCompat::querySelectorAll( $dom, implode( ', ', [
+			'input[name="wpFilterDescription"]',
+			'textarea[name="wpFilterRules"]',
+			'textarea[name="wpFilterNotes"]',
+		] ) );
+		$this->assertCount( 3, $textInputs );
+
+		foreach ( $textInputs as $input ) {
+			$name = $input->getAttribute( 'name' );
+			$expected = $readOnlyOverrideMap[$name] ?? $readOnly;
+			$this->assertSame(
+				$expected, $input->hasAttribute( 'readonly' ),
+				"$name should " . ( $expected ? 'be' : 'not be' ) . ' read-only'
+			);
+		}
+
+		$flagCheckboxes = DOMCompat::querySelectorAll( $dom, implode( ', ', [
+			'input[name="wpFilterSuppressed"]',
+			'input[name="wpFilterHidden"]',
+			'input[name="wpFilterEnabled"]',
+			// 'input[name="wpFilterDeleted"]', // This is always disabled for enabled filters
+			'input[name="wpFilterGlobal"]',
+		] ) );
+		$this->assertCount( 4, $flagCheckboxes );
+
+		$actionCheckboxes = DOMCompat::querySelectorAll(
+			$dom, '.mw-abusefilter-action-checkbox > input[type="checkbox"][name^="wpFilterAction"]'
+		);
+		$checkboxCount = count( $actionCheckboxes );
+		$actionCount = count( $this->getConfVar( 'AbuseFilterActions' ) );
+		$this->assertGreaterThanOrEqual(
+			$actionCount, $checkboxCount,
+			"$actionCount actions defined, but only found $checkboxCount action checkboxes"
+		);
+
+		foreach ( array_merge( $flagCheckboxes, $actionCheckboxes ) as $cb ) {
+			$name = $cb->getAttribute( 'name' );
+			$expected = $readOnlyOverrideMap[$name] ?? $readOnly;
+			$this->assertSame(
+				$expected, $cb->hasAttribute( 'disabled' ),
+				"$name should " . ( $expected ? 'be' : 'not be' ) . ' disabled'
+			);
+		}
+	}
+
+	public static function provideBuildFilterEditorReadOnly(): Generator {
+		$editRights = [ 'abusefilter-modify', 'abusefilter-modify-global' ];
+
+		foreach ( [
+			'public' => [ '2', [] ],
+			'private' => [ '3', [ 'abusefilter-view-private' ] ],
+			'protected' => [ '1', [ 'abusefilter-access-protected-vars' ] ],
+			'suppressed' => [ '5', [ 'viewsuppressed', 'suppressrevision' ] ],
+		] as $privacy => [ $subPage, $viewRights ] ) {
+			$baseRights = array_merge(
+				[ 'abusefilter-view', 'abusefilter-modify-restricted' ],
+				$viewRights
+			);
+
+			$readOnlyOverrideMap = [];
+			if ( !in_array( 'suppressrevision', $baseRights, true ) ) {
+				// wpFilterSuppressed is disabled on a non-suppressor view
+				$readOnlyOverrideMap['wpFilterSuppressed'] = true;
+			}
+
+			yield "$privacy filter, no edit rights" => [
+				'subPage' => $subPage,
+				'rights' => $baseRights,
+				'readOnly' => true,
+				'readOnlyOverrideMap' => $readOnlyOverrideMap,
+			];
+			yield "$privacy filter, has edit rights" => [
+				'subPage' => $subPage,
+				'rights' => array_merge( $baseRights, $editRights ),
+				'readOnly' => false,
+				'readOnlyOverrideMap' => $readOnlyOverrideMap,
+			];
+		}
+
+		yield 'has edit rights but cannot edit filters with restricted actions' => [
+			'subPage' => '3',
+			'rights' => $editRights,
+			'readOnly' => false,
+			'readOnlyOverrideMap' => [
+				'wpFilterSuppressed' => true,
+				'wpFilterActionBlockautopromote' => true,
+				'wpFilterActionBlock' => true,
+				'wpFilterActionRangeblock' => true,
+				'wpFilterActionDegroup' => true,
+			],
+		];
+
+		yield 'has edit rights but cannot edit filters with restricted actions, viewing an older revision' => [
+			// Second-most-recent revision of filter #6
+			'subPage' => [ 6, 2 ],
+			'rights' => $editRights,
+			'readOnly' => true,
+			'readOnlyOverrideMap' => [
+				// The rules edit box remains editable as long as AbuseFilterPermissionManager::canEdit
+				// returns true in EditBoxBuilder::buildEditBox, regardless of whether restricted actions
+				// are enabled.
+				'wpFilterRules' => false,
+			],
+		];
+	}
+
+	public function testGetFilterFromImportTextInvalid(): void {
+		[ $html, ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest( [ 'wpImportText' => 'abc' ], true ),
+			null,
+			$this->getTestSysop()->getAuthority()
+		);
+
+		$this->assertStringContainsString(
+			'(abusefilter-import-invalid-data)',
+			$html,
+			'Invalid import data should cause an error message.'
+		);
+		$this->assertStringContainsString(
+			'(abusefilter-return)',
+			$html,
+			'Button to return to the filter management was missing.'
+		);
+	}
+
+	public function testGetFilterFromImportTextRemovesRestrictedActions(): void {
+		[ $html ] = $this->executeSpecialPage(
+			'new',
+			new FauxRequest( [
+				'wpImportText' => AbuseFilterServices::getFilterImporter()->encodeData(
+					$this->getFilterFromSpecs( [ 'id' => 999 ] ),
+					[
+						'disallow' => [ 'abusefilter-disallow' ],
+						'blockautopromote' => [],
+						'block' => [ 'blocktalk', '2 hours', '2 hours' ],
+						'rangeblock' => [],
+						'degroup' => [],
+					]
+				)
+			], true ),
+			null,
+			$this->mockRegisteredAuthorityWithPermissions( [
+				'abusefilter-view', 'abusefilter-modify'
+			] )
+		);
+
+		$this->assertStringContainsString( '(abusefilter-import-actions-removed:', $html );
+
+		$actionCheckboxes = DOMCompat::querySelectorAll(
+			DOMUtils::parseHTML( $html ),
+			'.mw-abusefilter-action-checkbox > input[type="checkbox"][name^="wpFilterAction"]'
+		);
+		$checkboxCount = count( $actionCheckboxes );
+		$actionCount = count( $this->getConfVar( 'AbuseFilterActions' ) );
+		$this->assertGreaterThanOrEqual(
+			$actionCount, $checkboxCount,
+			"$actionCount actions defined, but only found $checkboxCount action checkboxes"
+		);
+
+		foreach ( $actionCheckboxes as $cb ) {
+			$name = $cb->getAttribute( 'name' );
+			// Disallow is the only non-restricted action included in the import data
+			$expected = $name === 'wpFilterActionDisallow';
+			$this->assertSame(
+				$expected, $cb->hasAttribute( 'checked' ),
+				"$name should " . ( $expected ? 'be' : 'not be' ) . ' checked'
+			);
+		}
 	}
 }

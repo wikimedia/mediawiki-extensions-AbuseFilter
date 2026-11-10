@@ -75,10 +75,10 @@ class FilterImporter {
 
 	/**
 	 * @param string $rawData
-	 * @return Filter
+	 * @return MutableFilter
 	 * @throws InvalidImportDataException
 	 */
-	public function decodeData( string $rawData ): Filter {
+	public function decodeData( string $rawData ): MutableFilter {
 		$validGroups = $this->options->get( 'AbuseFilterValidGroups' );
 		$globalFiltersEnabled = $this->options->get( 'AbuseFilterIsCentral' );
 
