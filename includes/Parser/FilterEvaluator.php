@@ -814,7 +814,7 @@ class FilterEvaluator {
 	// Built-in functions
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcLc( $args ) {
@@ -824,7 +824,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcUc( $args ) {
@@ -834,7 +834,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcLen( $args ) {
@@ -849,7 +849,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcSpecialRatio( $args ) {
@@ -867,7 +867,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcCount( $args ) {
@@ -893,7 +893,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @param int $position
 	 * @return AFPData
 	 * @throws UserVisibleException
@@ -927,7 +927,7 @@ class FilterEvaluator {
 	 * Returns an array of matches of needle in the haystack, the first one for the whole regex,
 	 * the other ones for every capturing group.
 	 *
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @param int $position
 	 * @return AFPData An array of matches.
 	 * @throws UserVisibleException
@@ -981,7 +981,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @param int $position
 	 * @return AFPData
 	 * @throws UserVisibleException
@@ -1004,7 +1004,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @param int $position
 	 * @return AFPData
 	 * @throws UserVisibleException
@@ -1031,7 +1031,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcCCNorm( $args ) {
@@ -1044,7 +1044,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcSanitize( $args ) {
@@ -1057,7 +1057,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcContainsAny( $args ) {
@@ -1067,7 +1067,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcContainsAll( $args ) {
@@ -1079,7 +1079,7 @@ class FilterEvaluator {
 	/**
 	 * Normalize and search a string for multiple substrings in OR mode
 	 *
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcCCNormContainsAny( $args ) {
@@ -1091,7 +1091,7 @@ class FilterEvaluator {
 	/**
 	 * Normalize and search a string for multiple substrings in AND mode
 	 *
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcCCNormContainsAll( $args ) {
@@ -1151,7 +1151,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcEqualsToAny( $args ) {
@@ -1188,7 +1188,7 @@ class FilterEvaluator {
 
 	/**
 	 * @param string $s
-	 * @return array|string
+	 * @return string
 	 */
 	private function rmspecials( $s ) {
 		// (T385452) Disable JIT for this call, as it breaks sometimes
@@ -1200,7 +1200,7 @@ class FilterEvaluator {
 
 	/**
 	 * @param string $s
-	 * @return array|string
+	 * @return string
 	 */
 	private function rmdoubles( $s ) {
 		// (T385452) Disable JIT for this call, as it breaks sometimes
@@ -1212,14 +1212,14 @@ class FilterEvaluator {
 
 	/**
 	 * @param string $s
-	 * @return array|string
+	 * @return string
 	 */
 	private function rmwhitespace( $s ) {
 		return preg_replace( '/\s+/u', '', $s );
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcRMSpecials( $args ) {
@@ -1229,7 +1229,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcRMWhitespace( $args ) {
@@ -1239,7 +1239,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcRMDoubles( $args ) {
@@ -1249,7 +1249,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcNorm( $args ) {
@@ -1264,7 +1264,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcSubstr( $args ) {
@@ -1278,7 +1278,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcStrPos( $args ) {
@@ -1305,7 +1305,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcStrReplace( $args ) {
@@ -1317,7 +1317,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @param int $position
 	 * @return AFPData
 	 */
@@ -1346,7 +1346,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function funcStrRegexEscape( $args ) {
@@ -1358,7 +1358,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return mixed
 	 */
 	private function funcSetVar( $args ) {
@@ -1462,7 +1462,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function castString( $args ) {
@@ -1470,7 +1470,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function castInt( $args ) {
@@ -1478,7 +1478,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function castFloat( $args ) {
@@ -1486,7 +1486,7 @@ class FilterEvaluator {
 	}
 
 	/**
-	 * @param array $args
+	 * @param AFPData[] $args
 	 * @return AFPData
 	 */
 	private function castBool( $args ) {

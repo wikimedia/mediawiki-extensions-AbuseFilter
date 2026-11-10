@@ -484,7 +484,7 @@ class AFPData {
 	}
 
 	/**
-	 * @return array
+	 * @return self[]
 	 */
 	public function toArray() {
 		return self::castTypes( $this, self::DARRAY )->data;

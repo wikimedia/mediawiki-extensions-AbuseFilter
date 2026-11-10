@@ -14,6 +14,7 @@ use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWiki\Extension\AbuseFilter\Variables\LazyVariableComputer;
 use MediaWiki\Extension\AbuseFilter\Variables\VariableHolder;
 use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\Watcher\Watcher;
 use MediaWiki\Status\Status;
 use MediaWiki\Title\Title;
 use MediaWiki\User\User;
@@ -43,6 +44,23 @@ class FilterRunner {
 	private $action;
 
 	/**
+	 * @param AbuseFilterHookRunner $hookRunner
+	 * @param FilterProfiler $filterProfiler
+	 * @param ChangeTagger $changeTagger
+	 * @param FilterLookup $filterLookup
+	 * @param RuleCheckerFactory $ruleCheckerFactory
+	 * @param ConsequencesExecutorFactory $consExecutorFactory
+	 * @param AbuseLoggerFactory $abuseLoggerFactory
+	 * @param VariablesManager $varManager
+	 * @param EmergencyCache $emergencyCache
+	 * @param Watcher[] $watchers
+	 * @param EditStashCache $stashCache
+	 * @param LoggerInterface $logger
+	 * @param ServiceOptions $options
+	 * @param User $user
+	 * @param Title $title
+	 * @param VariableHolder $vars
+	 * @param string $group
 	 * @throws InvalidArgumentException If $group is invalid or the 'action' variable is unset
 	 */
 	public function __construct(
