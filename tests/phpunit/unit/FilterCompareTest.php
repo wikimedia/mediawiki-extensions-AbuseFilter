@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\AbuseFilter\Tests\Unit;
 
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\Filter;
 use MediaWiki\Extension\AbuseFilter\Filter\Flags;
@@ -33,7 +34,16 @@ class FilterCompareTest extends MediaWikiUnitTestCase {
 			'throttle', 'warn', 'disallow', 'blockautopromote', 'block', 'rangeblock', 'degroup', 'tag'
 		];
 		$allActions = array_fill_keys( $allActions, true );
-		$registry = new ConsequencesRegistry( $this->createMock( AbuseFilterHookRunner::class ), $allActions );
+		$registry = new ConsequencesRegistry(
+			$this->createMock( AbuseFilterHookRunner::class ),
+			new ServiceOptions(
+				ConsequencesRegistry::CONSTRUCTOR_OPTIONS,
+				[
+					'AbuseFilterActions' => $allActions,
+					'AbuseFilterActionRestrictions' => [],
+				]
+			)
+		);
 		$compare = new FilterCompare( $registry );
 
 		$this->assertSame( $expected, $compare->compareVersions( $firstVersion, $secondVersion ) );

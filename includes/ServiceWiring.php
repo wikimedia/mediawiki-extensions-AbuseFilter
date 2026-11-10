@@ -260,7 +260,10 @@ return [
 	ServiceNames::ConsequencesRegistry => static function ( MediaWikiServices $services ): ConsequencesRegistry {
 		return new ConsequencesRegistry(
 			$services->get( AbuseFilterHookRunner::SERVICE_NAME ),
-			$services->getMainConfig()->get( 'AbuseFilterActions' )
+			new ServiceOptions(
+				ConsequencesRegistry::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			),
 		);
 	},
 	ServiceNames::AbuseLoggerFactory => static function ( MediaWikiServices $services ): AbuseLoggerFactory {

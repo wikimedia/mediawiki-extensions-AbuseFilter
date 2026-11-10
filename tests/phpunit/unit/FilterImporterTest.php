@@ -48,7 +48,13 @@ class FilterImporterTest extends MediaWikiUnitTestCase {
 		$actions = array_fill_keys( $actions ?? [ 'warn', 'disallow', 'block' ], true );
 		$registry = new ConsequencesRegistry(
 			$this->createMock( AbuseFilterHookRunner::class ),
-			$actions
+			new ServiceOptions(
+				ConsequencesRegistry::CONSTRUCTOR_OPTIONS,
+				[
+					'AbuseFilterActions' => $actions,
+					'AbuseFilterActionRestrictions' => [],
+				]
+			)
 		);
 		return new FilterImporter(
 			new ServiceOptions(
