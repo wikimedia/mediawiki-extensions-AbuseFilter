@@ -249,7 +249,7 @@
 	"abusefilter-edit-oldwarning-view": "<strong>{{#FORMAL:Du siehst|Sie sehen}} eine alte Version dieses Filters. Die angeführten Statistiken beziehen sich auf die neueste Version des Filters.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Zurück zu der Versionsgeschichte des Filters]].",
 	"abusefilter-edit-status-label": "Statistik:",
 	"abusefilter-edit-status": "Von {{PLURAL:$1|der letzten Aktion|den letzten $1 Aktionen}} {{PLURAL:$2|wurde eine|wurden $2}} ($3 %) von diesem Filter erkannt.\nIm Durchschnitt beträgt ihre Ausführungszeit $4 ms und sie verbraucht {{PLURAL:$5|eine Bedingung|$5 Bedingungen}} des Bedingungskontingents.",
-	"abusefilter-edit-throttled-warning-actions": "Aufgrund einer hohen Trefferquote {{PLURAL:$2|wurde die folgende Aktion wurde|wurden die folgende Aktionen}} automatisch deaktiviert: '''$1'''. Bitte überprüfe, ob der Filter wie erwartet funktioniert. Um die Einschränkung aufzuheben, bearbeite den Filter erneut und nimm eine Änderung vor.",
+	"abusefilter-edit-throttled-warning-actions": "Aufgrund einer hohen Trefferquote {{PLURAL:$2|wurde die folgende Aktion|wurden die folgenden Aktionen}} automatisch deaktiviert: '''$1'''. Bitte überprüfe, ob der Filter wie erwartet funktioniert. Um die Einschränkung aufzuheben, bearbeite den Filter erneut und nimm eine Änderung vor.",
 	"abusefilter-edit-throttled-warning-no-actions": "Dieser Filter liefert eine hohe Trefferquote. Bitte überprüfe, ob er wie erwartet funktioniert.",
 	"abusefilter-edit-new": "Neuer Filter",
 	"abusefilter-edit-save": "Filter speichern",
