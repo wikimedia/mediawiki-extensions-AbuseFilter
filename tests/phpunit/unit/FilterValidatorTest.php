@@ -6,8 +6,10 @@ use Generator;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
+use MediaWiki\Extension\AbuseFilter\Hooks\AbuseFilterHookRunner;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\ExceptionBase;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\InternalException;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
@@ -44,6 +46,25 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		array $restrictions = [],
 		array $validFilterGroups = [ 'default' ]
 	): FilterValidator {
+		$consRegistry = new ConsequencesRegistry(
+			$this->createMock( AbuseFilterHookRunner::class ),
+			new ServiceOptions(
+				ConsequencesRegistry::CONSTRUCTOR_OPTIONS,
+				[
+					'AbuseFilterActions' => [
+						'throttle' => true,
+						'warn' => true,
+						'disallow' => true,
+						'blockautopromote' => true,
+						'block' => true,
+						'rangeblock' => true,
+						'degroup' => true,
+						'tag' => true,
+					],
+					'AbuseFilterActionRestrictions' => array_fill_keys( $restrictions, true ),
+				]
+			)
+		);
 		if ( !$ruleChecker ) {
 			$ruleChecker = $this->createMock( FilterEvaluator::class );
 			$ruleChecker->method( 'checkSyntax' )->willReturn(
@@ -66,12 +87,12 @@ class FilterValidatorTest extends MediaWikiUnitTestCase {
 		}
 		return new FilterValidator(
 			$this->createMock( ChangeTagValidator::class ),
+			$consRegistry,
 			$checkerFactory,
 			$permissionManager,
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,
 				[
-					'AbuseFilterActionRestrictions' => array_fill_keys( $restrictions, true ),
 					'AbuseFilterValidGroups' => $validFilterGroups,
 				]
 			)

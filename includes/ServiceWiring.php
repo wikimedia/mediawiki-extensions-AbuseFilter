@@ -183,6 +183,7 @@ return [
 	ServiceNames::FilterValidator => static function ( MediaWikiServices $services ): FilterValidator {
 		return new FilterValidator(
 			$services->get( ChangeTagValidator::SERVICE_NAME ),
+			$services->get( ConsequencesRegistry::SERVICE_NAME ),
 			$services->get( RuleCheckerFactory::SERVICE_NAME ),
 			$services->get( PermManager::SERVICE_NAME ),
 			new ServiceOptions(

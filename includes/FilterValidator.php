@@ -4,6 +4,7 @@ namespace MediaWiki\Extension\AbuseFilter;
 
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\ChangeTags\ChangeTagValidator;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\Filter\AbstractFilter;
 use MediaWiki\Extension\AbuseFilter\Parser\Exception\UserVisibleException;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
@@ -20,7 +21,6 @@ class FilterValidator {
 
 	public const CONSTRUCTOR_OPTIONS = [
 		'AbuseFilterValidGroups',
-		'AbuseFilterActionRestrictions',
 	];
 
 	/**
@@ -30,19 +30,16 @@ class FilterValidator {
 	private const MAX_RULE_LENGTH = 65530;
 
 	/** @var string[] */
-	private $restrictedActions;
-
-	/** @var string[] */
 	private $validGroups;
 
 	public function __construct(
 		private readonly ChangeTagValidator $changeTagValidator,
+		private readonly ConsequencesRegistry $consRegistry,
 		private readonly RuleCheckerFactory $ruleCheckerFactory,
 		private readonly AbuseFilterPermissionManager $permManager,
 		ServiceOptions $options
 	) {
 		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
-		$this->restrictedActions = array_keys( array_filter( $options->get( 'AbuseFilterActionRestrictions' ) ) );
 		$this->validGroups = $options->get( 'AbuseFilterValidGroups' );
 	}
 
@@ -338,9 +335,9 @@ class FilterValidator {
 		AbstractFilter $originalFilter
 	): Status {
 		$ret = Status::newGood();
-		$allEnabledActions = $newFilter->getActions() + $originalFilter->getActions();
+		$enabledActionNames = array_keys( $newFilter->getActions() + $originalFilter->getActions() );
 		if (
-			array_intersect_key( array_fill_keys( $this->restrictedActions, true ), $allEnabledActions )
+			$this->consRegistry->filterRestrictedActionNames( $enabledActionNames ) !== []
 			&& !$this->permManager->canEditFilterWithRestrictedActions( $performer )
 		) {
 			$ret->error( 'abusefilter-edit-restricted' );

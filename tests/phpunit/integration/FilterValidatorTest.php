@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\AbuseFilter\Tests\Integration;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
 use MediaWiki\Extension\AbuseFilter\AbuseFilterServices;
+use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
 use MediaWiki\Extension\AbuseFilter\FilterValidator;
 use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
 use MediaWikiIntegrationTestCase;
@@ -25,12 +26,12 @@ class FilterValidatorTest extends MediaWikiIntegrationTestCase {
 	public function testCheckAllTags( array $tags, ?string $expected ) {
 		$validator = new FilterValidator(
 			AbuseFilterServices::getChangeTagValidator(),
+			$this->createMock( ConsequencesRegistry::class ),
 			$this->createMock( RuleCheckerFactory::class ),
 			$this->createMock( AbuseFilterPermissionManager::class ),
 			new ServiceOptions(
 				FilterValidator::CONSTRUCTOR_OPTIONS,
 				[
-					'AbuseFilterActionRestrictions' => [],
 					'AbuseFilterValidGroups' => [ 'default' ],
 				]
 			)
