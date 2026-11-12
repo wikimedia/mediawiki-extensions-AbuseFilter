@@ -207,7 +207,7 @@
 	"abusefilter-enabled": "Abuse filter status.\n{{Identical|Enabled}}",
 	"abusefilter-deleted": "Abuse filter status.\n{{Identical|Deleted}}",
 	"abusefilter-disabled": "Abuse filter status.\n{{Identical|Disabled}}",
-	"abusefilter-throttled": "Abuse filter status where the filter is matching many edits. See {{msg-mw|abusefilter-edit-throttled-warning}} and {{msg-mw|abusefilter-edit-throttled-warning-no-actions}}.",
+	"abusefilter-throttled": "Abuse filter status where a filter is matching many actions. See also:\n* {{msg-mw|abusefilter-edit-throttled-warning-actions}}\n* {{msg-mw|abusefilter-edit-throttled-warning-no-actions}}",
 	"abusefilter-hitcount": "Indicates number of times an abuse filter was triggered. Parameters:\n* $1 is the number of hits.",
 	"abusefilter-new": "Button text for creating a new abuse filter.",
 	"abusefilter-import-button": "Used as link text in the navigation toolbar.\n\nThe link points to [[Special:AbuseLog]].",
