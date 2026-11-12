@@ -3,21 +3,7 @@
 namespace MediaWiki\Extension\AbuseFilter\Special;
 
 use MediaWiki\Extension\AbuseFilter\AbuseFilterPermissionManager;
-use MediaWiki\Extension\AbuseFilter\AbuseLoggerFactory;
-use MediaWiki\Extension\AbuseFilter\CentralDBManager;
-use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesFactory;
-use MediaWiki\Extension\AbuseFilter\Consequences\ConsequencesRegistry;
-use MediaWiki\Extension\AbuseFilter\EditBox\EditBoxBuilderFactory;
-use MediaWiki\Extension\AbuseFilter\FilterImporter;
-use MediaWiki\Extension\AbuseFilter\FilterLookup;
-use MediaWiki\Extension\AbuseFilter\FilterProfiler;
-use MediaWiki\Extension\AbuseFilter\FilterStore;
-use MediaWiki\Extension\AbuseFilter\Parser\RuleCheckerFactory;
-use MediaWiki\Extension\AbuseFilter\SpecsFormatter;
-use MediaWiki\Extension\AbuseFilter\VariableGenerator\VariableGeneratorFactory;
-use MediaWiki\Extension\AbuseFilter\Variables\VariablesBlobStore;
-use MediaWiki\Extension\AbuseFilter\Variables\VariablesFormatter;
-use MediaWiki\Extension\AbuseFilter\Variables\VariablesManager;
+use MediaWiki\Extension\AbuseFilter\ServiceNames;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterView;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewDiff;
 use MediaWiki\Extension\AbuseFilter\View\AbuseFilterViewEdit;
@@ -38,75 +24,75 @@ class SpecialAbuseFilter extends AbuseFilterSpecialPage {
 
 	private const SERVICES_PER_VIEW = [
 		AbuseFilterViewDiff::class => [
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			SpecsFormatter::SERVICE_NAME,
-			FilterLookup::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::SpecsFormatter,
+			ServiceNames::FilterLookup,
 		],
 		AbuseFilterViewEdit::class => [
 			'DBLoadBalancerFactory',
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			FilterProfiler::SERVICE_NAME,
-			FilterLookup::SERVICE_NAME,
-			FilterImporter::SERVICE_NAME,
-			FilterStore::SERVICE_NAME,
-			EditBoxBuilderFactory::SERVICE_NAME,
-			ConsequencesRegistry::SERVICE_NAME,
-			SpecsFormatter::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::FilterProfiler,
+			ServiceNames::FilterLookup,
+			ServiceNames::FilterImporter,
+			ServiceNames::FilterStore,
+			ServiceNames::EditBoxBuilderFactory,
+			ServiceNames::ConsequencesRegistry,
+			ServiceNames::SpecsFormatter,
 		],
 		AbuseFilterViewExamine::class => [
 			'DBLoadBalancerFactory',
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			FilterLookup::SERVICE_NAME,
-			EditBoxBuilderFactory::SERVICE_NAME,
-			VariablesBlobStore::SERVICE_NAME,
-			VariablesFormatter::SERVICE_NAME,
-			VariablesManager::SERVICE_NAME,
-			VariableGeneratorFactory::SERVICE_NAME,
-			AbuseLoggerFactory::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::FilterLookup,
+			ServiceNames::EditBoxBuilderFactory,
+			ServiceNames::VariablesBlobStore,
+			ServiceNames::VariablesFormatter,
+			ServiceNames::VariablesManager,
+			ServiceNames::VariableGeneratorFactory,
+			ServiceNames::AbuseLoggerFactory,
 			'RecentChangeStore',
 			'ReadOnlyMode',
 		],
 		AbuseFilterViewHistory::class => [
 			'UserNameUtils',
 			'LinkBatchFactory',
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			FilterLookup::SERVICE_NAME,
-			SpecsFormatter::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::FilterLookup,
+			ServiceNames::SpecsFormatter,
 		],
 		AbuseFilterViewImport::class => [
-			AbuseFilterPermissionManager::SERVICE_NAME,
+			ServiceNames::PermManager,
 		],
 		AbuseFilterViewList::class => [
 			'LinkBatchFactory',
 			'ConnectionProvider',
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			FilterProfiler::SERVICE_NAME,
-			SpecsFormatter::SERVICE_NAME,
-			CentralDBManager::SERVICE_NAME,
-			FilterLookup::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::FilterProfiler,
+			ServiceNames::SpecsFormatter,
+			ServiceNames::CentralDBManager,
+			ServiceNames::FilterLookup,
 		],
 		AbuseFilterViewRevert::class => [
 			'DBLoadBalancerFactory',
 			'UserFactory',
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			FilterLookup::SERVICE_NAME,
-			ConsequencesFactory::SERVICE_NAME,
-			VariablesBlobStore::SERVICE_NAME,
-			SpecsFormatter::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::FilterLookup,
+			ServiceNames::ConsequencesFactory,
+			ServiceNames::VariablesBlobStore,
+			ServiceNames::SpecsFormatter,
 		],
 		AbuseFilterViewTestBatch::class => [
 			'DBLoadBalancerFactory',
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			EditBoxBuilderFactory::SERVICE_NAME,
-			RuleCheckerFactory::SERVICE_NAME,
-			VariableGeneratorFactory::SERVICE_NAME,
-			AbuseLoggerFactory::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::EditBoxBuilderFactory,
+			ServiceNames::RuleCheckerFactory,
+			ServiceNames::VariableGeneratorFactory,
+			ServiceNames::AbuseLoggerFactory,
 			'RecentChangeFactory',
 			'ReadOnlyMode',
 		],
 		AbuseFilterViewTools::class => [
-			AbuseFilterPermissionManager::SERVICE_NAME,
-			EditBoxBuilderFactory::SERVICE_NAME,
+			ServiceNames::PermManager,
+			ServiceNames::EditBoxBuilderFactory,
 		],
 	];
 
