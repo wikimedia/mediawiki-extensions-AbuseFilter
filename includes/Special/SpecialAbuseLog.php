@@ -358,10 +358,11 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 					'options' => $options
 				];
 			}
-			$helpmsg = $this->getConfig()->get( 'AbuseFilterIsCentral' )
-				? $this->msg( 'abusefilter-log-search-filter-help-central' )->escaped()
-				: $this->msg( 'abusefilter-log-search-filter-help' )
-					->params( GlobalNameUtils::GLOBAL_FILTER_PREFIX )->escaped();
+			$helpmsg =
+				$this->getConfig()->get( 'AbuseFilterIsCentral' ) || !$this->getConfig()->get( 'AbuseFilterCentralDB' )
+					? $this->msg( 'abusefilter-log-search-filter-help-central' )->escaped()
+					: $this->msg( 'abusefilter-log-search-filter-help' )
+						->params( GlobalNameUtils::GLOBAL_FILTER_PREFIX )->escaped();
 			$formDescriptor['SearchFilter'] = [
 				'label-message' => 'abusefilter-log-search-filter',
 				'type' => 'text',
@@ -475,8 +476,8 @@ class SpecialAbuseLog extends AbuseFilterSpecialPage {
 				try {
 					// Use the injected filterLookup service
 					$filter = $this->filterLookup->getFilter( ...$filterData );
-				} catch ( FilterNotFoundException ) {
-					// Filter ID is invalid or filter doesn't exist
+				} catch ( FilterNotFoundException | CentralDBNotAvailableException ) {
+					// Filter ID is invalid or filter doesn't exist, or $wgAbuseFilterCentralDB is not configured
 					unset( $filtersList[$index] );
 					$foundInvalid = true;
 					continue;
