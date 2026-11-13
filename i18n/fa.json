@@ -253,7 +253,7 @@
 	"abusefilter-edit-group": "گروه پالایه:",
 	"abusefilter-edit-flags": "پرچم‌ها:",
 	"abusefilter-edit-enabled": "فعال کردن این پالایه",
-	"abusefilter-edit-deleted": "علامت زدن به عنوان حذف‌شده",
+	"abusefilter-edit-deleted": "نشانه‌گذاری به‌عنوان حذف‌شده",
 	"abusefilter-edit-hidden": "پنهان کردن جزئیات این پالایه از دید عموم",
 	"abusefilter-edit-protected": "<strong>فعال‌سازی کاربرد [https://www.mediawiki.org/wiki/Special:MyLanguage/Extension:AbuseFilter/Rules_format#Protected_variables متغیرهای محافظت‌شده] در این پالایه</strong>",
 	"abusefilter-edit-protected-variable-already-protected": "جزئیات این پالایه برای کاربرانی که قادر به دیدن متغیرهای محافظت‌شده نیستند، پنهان است",
