@@ -249,7 +249,7 @@
 	"abusefilter-edit-oldwarning-view": "<strong>이 필터의 오래된 판을 보고 있습니다.\n인용된 통계는 최근 판의 필터에 대한 것입니다.</strong> &bull;\n[[Special:AbuseFilter/history/$2|이 필터의 역사로 돌아갑니다]].",
 	"abusefilter-edit-status-label": "통계:",
 	"abusefilter-edit-status": "최근 {{PLURAL:$1|작업}} $1개 중 $2건($3%)이 이 필터와 일치하였습니다.\n평균적으로 필터의 작동 시간은 $4밀리초이며, $5만큼의 {{PLURAL:$5|부하}}가 걸리고 있습니다.",
-	"abusefilter-edit-throttled-warning-no-actions": "'''경고:''' 이 필터는 자동으로 유해한 것으로 표시되었습니다. 자동으로 비활성화된 조치는 없지만 높은 일치율이 의도된 것인지 확인해 주세요. 의도된 것이라면 이 경고를 무시해도 됩니다.",
+	"abusefilter-edit-throttled-warning-no-actions": "이 필터는 일치율이 높습니다. 예상대로 작동하는지 확인해 주세요.",
 	"abusefilter-edit-new": "새 필터",
 	"abusefilter-edit-save": "필터 저장하기",
 	"abusefilter-edit-id": "필터 ID:",
