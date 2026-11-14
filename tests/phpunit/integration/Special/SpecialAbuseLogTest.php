@@ -844,6 +844,8 @@ class SpecialAbuseLogTest extends SpecialPageTestBase {
 			] ),
 			MutableFilter::newDefault()
 		) );
+
+		ConvertibleTimestamp::setFakeTime( false );
 	}
 
 	protected function newSpecialPage() {

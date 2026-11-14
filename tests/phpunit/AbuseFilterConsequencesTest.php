@@ -319,10 +319,6 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 		parent::setUp();
 		// Ensure that our user is a sysop
 		$this->user = $this->getTestSysop()->getUser();
-
-		// Pin time to avoid time shifts on relative block duration
-		ConvertibleTimestamp::setFakeTime( time() );
-
 		// Make sure that the config we're using is the one we're expecting
 		$this->overrideConfigValues( [
 			// Exclude noisy creation log
@@ -338,6 +334,13 @@ class AbuseFilterConsequencesTest extends MediaWikiIntegrationTestCase {
 				'tag' => true
 			],
 		] );
+	}
+
+	/** @before */
+	protected function fakeTimestampSetUp() {
+		parent::fakeTimestampSetUp();
+		// Pin time to avoid time shifts on relative block duration
+		ConvertibleTimestamp::setFakeTime( time() );
 	}
 
 	/**
