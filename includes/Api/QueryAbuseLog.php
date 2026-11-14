@@ -190,13 +190,13 @@ class QueryAbuseLog extends ApiQueryBase {
 		$result = $this->getResult();
 
 		$this->addTables( 'abuse_filter_log' );
+		$this->addFields( 'afl_id' );
 		$this->addFields( 'afl_timestamp' );
 		$this->addFields( 'afl_rev_id' );
 		$this->addFields( 'afl_deleted' );
 		$this->addFields( 'afl_filter_id' );
 		$this->addFields( 'afl_global' );
 		$this->addFields( 'afl_ip_hex' );
-		$this->addFieldsIf( 'afl_id', $fld_ids );
 		$this->addFieldsIf( 'afl_user_text', $fld_user );
 		$this->addFieldsIf( [ 'afl_namespace', 'afl_title' ], $fld_title );
 		$this->addFieldsIf( 'afl_action', $fld_action );
@@ -208,7 +208,23 @@ class QueryAbuseLog extends ApiQueryBase {
 
 		$this->addWhereIf( [ 'afl_id' => $params['logid'] ], isset( $params['logid'] ) );
 
-		$this->addWhereRange( 'afl_timestamp', $params['dir'], $params['start'], $params['end'] );
+		$this->addTimestampWhereRange(
+			'afl_timestamp',
+			$params['dir'],
+			$params['start'],
+			$params['end']
+		);
+		// Include in ORDER BY for uniqueness
+		$this->addWhereRange( 'afl_id', $params['dir'], null, null );
+
+		if ( $params['continue'] !== null ) {
+			$cont = $this->parseContinueParamOrDie( $params['continue'], [ 'timestamp', 'int' ] );
+			$op = ( $params['dir'] === 'newer' ? '>=' : '<=' );
+			$this->addWhere( $this->getDB()->buildComparison( $op, [
+				'afl_timestamp' => $this->getDB()->timestamp( $cont[0] ),
+				'afl_id' => (int)$cont[1],
+			] ) );
+		}
 
 		if ( isset( $params['user'] ) ) {
 			$this->addUserFilter( $performer, $params['user'] );
@@ -261,8 +277,7 @@ class QueryAbuseLog extends ApiQueryBase {
 		foreach ( $res as $row ) {
 			if ( ++$count > $params['limit'] ) {
 				// We've had enough
-				$ts = new MWTimestamp( $row->afl_timestamp );
-				$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
+				$this->setContinueEnumParameter( 'continue', "$row->afl_timestamp|$row->afl_id" );
 				break;
 			}
 			$visibility = SpecialAbuseLog::getEntryVisibilityForUser( $row, $performer, $this->afPermManager );
@@ -370,8 +385,7 @@ class QueryAbuseLog extends ApiQueryBase {
 			if ( $entry ) {
 				$fit = $result->addValue( [ 'query', $this->getModuleName() ], null, $entry );
 				if ( !$fit ) {
-					$ts = new MWTimestamp( $row->afl_timestamp );
-					$this->setContinueEnumParameter( 'start', $ts->getTimestamp( TS_ISO_8601 ) );
+					$this->setContinueEnumParameter( 'continue', "$row->afl_timestamp|$row->afl_id" );
 					break;
 				}
 			}
@@ -484,7 +498,10 @@ class QueryAbuseLog extends ApiQueryBase {
 					'revid',
 				],
 				ParamValidator::PARAM_ISMULTI => true
-			]
+			],
+			'continue' => [
+				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+			],
 		];
 		if ( $this->getConfig()->get( 'AbuseFilterIsCentral' ) ) {
 			$params['wiki'] = [

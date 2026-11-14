@@ -262,6 +262,40 @@ class QueryAbuseLogTest extends ApiTestCase {
 			->assertFieldValue( 1 );
 	}
 
+	public function testPaginationContinuation(): void {
+		// Test pagination with limit and continuation
+		[ $res1 ] = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'abuselog',
+			'aflfilter' => 2,
+			'afllimit' => 2,
+			'afldir' => 'older',
+		], null, false, $this->authorityCanViewProtectedVar );
+
+		$this->assertArrayHasKey( 'continue', $res1 );
+		$this->assertArrayHasKey( 'aflcontinue', $res1['continue'] );
+		$this->assertCount( 2, $res1['query']['abuselog'] );
+
+		// Follow continuation parameter
+		[ $res2 ] = $this->doApiRequest( [
+			'action' => 'query',
+			'list' => 'abuselog',
+			'aflfilter' => 2,
+			'afllimit' => 2,
+			'afldir' => 'older',
+			'aflcontinue' => $res1['continue']['aflcontinue'],
+			'continue' => $res1['continue']['continue'],
+		], null, false, $this->authorityCanViewProtectedVar );
+
+		$this->assertCount( 2, $res2['query']['abuselog'] );
+
+		// Ensure entries across pages are distinct and ordered
+		$ids1 = array_column( $res1['query']['abuselog'], 'id' );
+		$ids2 = array_column( $res2['query']['abuselog'], 'id' );
+		$this->assertSame( [], array_intersect( $ids1, $ids2 ) );
+		$this->assertLessThan( min( $ids1 ), max( $ids2 ) );
+	}
+
 	public function testSuppressedLogEntryAccessDenied() {
 		// Data for suppressed filter 3 and its log is created in addDBDataOnce
 
