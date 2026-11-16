@@ -79,8 +79,6 @@ class AbuseFilterHistoryPagerTest extends MediaWikiIntegrationTestCase {
 			MutableFilter::newDefault()
 		) );
 
-		ConvertibleTimestamp::setFakeTime( false );
-
 		// Verify that the expected number of DB rows were created
 		$this->newSelectQueryBuilder()
 			->select( 'COUNT(*)' )
