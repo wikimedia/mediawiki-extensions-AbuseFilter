@@ -4,6 +4,10 @@
 			"شاه زمان پټان"
 		]
 	},
+	"apihelp-query+abusefilters-paramvalue-prop-id": "چاڼ پېژند ورگډوي.",
+	"apihelp-query+abusefilters-paramvalue-prop-description": "چاڼ څرگنداوی ورگډوي.",
+	"apihelp-query+abusefilters-paramvalue-prop-pattern": "د چاڼ قواعد ورگډوي.",
+	"apihelp-query+abusefilters-paramvalue-prop-actions": "چاڼ ته چارن‌شوې چارې ورگډوي.",
 	"apihelp-query+abuselog-example-1": "وروستۍ يادښت ننوتنې ښودل",
 	"apierror-abusefilter-canttest": "تاسو د ناوړه گټه اخيستنې چاڼگرونو ازمويلو اجازه نلرئ.",
 	"apierror-abusefilter-badsyntax": "چاڼگر ناسمه غونډلپوهه لري."
