@@ -1,13 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mucalexx"
+			"Mucalexx",
+			"WikiBayer"
 		]
 	},
 	"abusefilter-desc": "Wendt autómaatiche \"Heuristiken\" auf Änderrungen å",
+	"abusefilter": "Missbrauchsfuita-Vawoitn",
+	"abuselog": "Missbrauchsfuita-logbuach",
 	"abusefilter-intro": "Griass Enk auf da Missbrauchsfüterter-Management-Ówerflächen.\nDa Missbrauchsfüter is a autómaatischer Mechanismus, der autómaatische Heiristiken auf olle Änderrungen auhwendt.\nDé Ówerflächen zoagt a Listen voh olle definierden Füter und dalaabts, dé z' vaändern.",
+	"abusefilter-blocker": "Missbrauchsfuita",
+	"right-abusefilter-log": "Missbrauchsfuitalogbuach oschaun",
 	"abusefilter-log-search-user": "Benutzer:",
 	"abusefilter-log-search-title": "Titel:",
+	"abusefilter-log-search-wiki": "Wiki:",
+	"abusefilter-log-search-action-other": "Andare",
 	"abusefilter-log-search-submit": "Suachen",
 	"abusefilter-log-linkoncontribs": "Missbrauchsfüter-Lógbiaché",
 	"abusefilter-log-hide-reason": "Grund:"
