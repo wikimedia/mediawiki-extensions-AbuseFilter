@@ -491,6 +491,7 @@ class AbuseFilterViewEdit extends AbuseFilterView {
 			}
 			$fields[] = new OOUI\FieldLayout(
 				new OOUI\MessageWidget( [
+					'id' => 'mw-abusefilter-edit-throttled-warning',
 					'type' => $msgType,
 					'label' => new OOUI\HtmlSnippet( $throttledMsg->parse() ),
 				] ),
