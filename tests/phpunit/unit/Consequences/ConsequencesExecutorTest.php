@@ -107,6 +107,15 @@ class ConsequencesExecutorTest extends MediaWikiUnitTestCase {
 		);
 	}
 
+	public function testBlockWithExtraParameterKeepsDurations(): void {
+		// A parameter added later must not turn this into a legacy block with the default expiry
+		$consequences = [ 1 => [ 'block' => [ 'blocktalk', '1 day', '1 week', 'autoblock' ] ] ];
+		$executor = $this->getConsExecutor( $consequences );
+		$actual = $executor->getActualConsequencesToExecute( array_keys( $consequences ) );
+
+		$this->assertSame( '1 day', $actual[1]['block']->getExpiry() );
+	}
+
 	/**
 	 * @param array $rawConsequences A raw, unfiltered list of consequences
 	 * @param array $expectedKeys

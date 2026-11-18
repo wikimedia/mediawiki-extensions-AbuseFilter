@@ -52,7 +52,7 @@ class SpecsFormatter {
 	 * @return string
 	 */
 	public function formatAction( string $action, array $parameters, Language $lang ): string {
-		if ( count( $parameters ) === 0 || ( $action === 'block' && count( $parameters ) !== 3 ) ) {
+		if ( count( $parameters ) === 0 || ( $action === 'block' && count( $parameters ) < 3 ) ) {
 			$displayAction = $this->getActionDisplay( $action );
 		} elseif ( $action === 'block' ) {
 			// Needs to be treated separately since the message is more complex

@@ -96,7 +96,7 @@ class ConsequencesExecutor {
 		$anonBlockDuration = $this->options->get( 'AbuseFilterAnonBlockDuration' ) ?? $registeredBlockDuration;
 		foreach ( $consParams as $filter => $actions ) {
 			foreach ( $actions as $name => $parameters ) {
-				if ( $name === 'block' && count( $parameters ) !== 3 ) {
+				if ( $name === 'block' && count( $parameters ) < 3 ) {
 					// Old type with fixed expiry
 					$blockTalk = in_array( 'blocktalk', $parameters, true );
 

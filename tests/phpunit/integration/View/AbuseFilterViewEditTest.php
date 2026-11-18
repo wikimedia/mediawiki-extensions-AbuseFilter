@@ -162,6 +162,34 @@ class AbuseFilterViewEditTest extends SpecialPageTestBase {
 		];
 	}
 
+	public function testViewEditKeepsBlockDurationsWithExtraParameter() {
+		// T394592: the editing form used the number of stored block parameters to decide how to
+		// read them, so a filter carrying an extra parameter fell through to the site defaults.
+		// Opening such a filter showed the wrong durations, and saving would have persisted them.
+		$performer = $this->getTestSysop()->getAuthority();
+		$status = AbuseFilterServices::getFilterStore()->saveFilter(
+			$performer,
+			null,
+			$this->getFilterFromSpecs( [
+				// Ignored on creation, since saveFilter() is passed null, but the trait needs the key.
+				'id' => '4',
+				'name' => 'Filter with a block',
+				'rules' => '1 = 0',
+				'actions' => [ 'block' => [ 'blocktalk', '3 hours', '9 days', 'autoblock' ] ],
+			] ),
+			MutableFilter::newDefault()
+		);
+		$this->assertStatusGood( $status );
+		[ $filterId ] = $status->getValue();
+
+		[ $html ] = $this->executeSpecialPage( (string)$filterId, performer: $performer );
+
+		// The durations themselves cannot be asserted here: the test runs in qqx, so the
+		// dropdown options come from the unexpanded ipboptions message. The talk page checkbox
+		// is filled in by the same parsing, so assert on that instead.
+		$this->assertSelectorMatchesOneElement( $html, 'input[name="wpFilterBlockTalk"][checked]' );
+	}
+
 	public function testViewEditUnrecoverableError() {
 		[ $html, ] = $this->executeSpecialPage(
 			'new',

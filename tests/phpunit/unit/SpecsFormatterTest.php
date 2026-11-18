@@ -102,6 +102,11 @@ class SpecsFormatterTest extends MediaWikiUnitTestCase {
 			[ 'blocktalk', '1 day', '1 week' ],
 			"$baseBlock,abusefilter-block-talk"
 		];
+		yield 'new block, with an extra parameter' => [
+			'block',
+			[ 'blocktalk', '1 day', '1 week', 'autoblock' ],
+			"$baseBlock,abusefilter-block-talk"
+		];
 		yield 'throttle' => [
 			'throttle',
 			[ 'ignored', '42,163', 'ip,user', 'site' ],
