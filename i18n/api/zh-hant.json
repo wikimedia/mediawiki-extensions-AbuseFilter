@@ -7,7 +7,8 @@
 			"Lakejason0",
 			"Laundry Machine",
 			"Xiplus",
-			"Z423x5c6"
+			"Z423x5c6",
+			"LowensteinYang"
 		]
 	},
 	"apihelp-abusefiltercheckmatch-summary": "檢查防濫用過濾器是否符合變數集、編輯、或是所記錄的防濫用過濾器事件。",
@@ -18,7 +19,7 @@
 	"apihelp-abusefiltercheckmatch-param-logid": "要檢查的防濫用過濾器日誌 ID。",
 	"apihelp-abusefiltercheckmatch-example-1": "測試近期更改的 ID 15 是否符合簡易過濾器",
 	"apihelp-abusefilterchecksyntax-summary": "檢查一個防濫用過濾器的語法。",
-	"apihelp-abusefilterchecksyntax-param-filter": "要檢查語法的完整過濾器文字。",
+	"apihelp-abusefilterchecksyntax-param-filter": "用於檢查語法的完整過濾器文字。",
 	"apihelp-abusefilterchecksyntax-example-1": "檢查有效過濾器的語法",
 	"apihelp-abusefilterchecksyntax-example-2": "檢查無效過濾器的語法",
 	"apihelp-abusefilterevalexpression-summary": "評估防濫用過濾器的表達式。",

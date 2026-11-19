@@ -60,7 +60,7 @@
 			"Addonian1123"
 		]
 	},
-	"abusefilter-desc": "自動條件判定編輯行為",
+	"abusefilter-desc": "對編輯內容套用自動啟發式演算法",
 	"abusefilter": "防濫用過濾器管理",
 	"abuselog": "防濫用過濾器日誌",
 	"abusefilter-intro": "歡迎使用防濫用過濾器管理介面。防濫用過濾器是針對所有編輯動作進行自動化判斷的軟體機制。本介面包含了現有的過濾器清單並允許修改。",
@@ -254,9 +254,9 @@
 	"abusefilter-view-specific": "查看防濫用過濾器$1：$2",
 	"abusefilter-edit-subtitle": "正在編輯過濾器 $1",
 	"abusefilter-edit-subtitle-new": "正在建立過濾器",
-	"abusefilter-edit-token-not-match": "這筆編輯還沒被儲存！請再儲存一次看看。",
-	"abusefilter-edit-oldwarning": "<strong>你正在編輯該過濾器的舊版本。統計中引用的是該過濾器的最新版本。如果你保存你的編輯，所編輯版本之後的所有更改均會被覆蓋。</strong> &bull; [[Special:AbuseFilter/history/$2|返回該過濾器的歷史記錄]]。",
-	"abusefilter-edit-oldwarning-view": "<strong>您正檢視此過濾器的舊版本。\n引用的統計內容是適用於最新版本的過濾器。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回到此過濾器的歷史紀錄]]。",
+	"abusefilter-edit-token-not-match": "這筆編輯還沒被儲存！請再儲存一次。",
+	"abusefilter-edit-oldwarning": "<strong>你正在編輯該過濾器的舊版本。統計中所引用的是該過濾器的最新版本。如果你儲存你的變更，你所編輯的版本之後的所有變更均會被覆蓋。</strong> &bull; [[Special:AbuseFilter/history/$2|返回該過濾器的歷史記錄]]。",
+	"abusefilter-edit-oldwarning-view": "<strong>您正在檢視此過濾器的舊版本。\n引用的統計內容是適用於最新版本的過濾器。</strong> &bull;\n[[Special:AbuseFilter/history/$2|返回到此過濾器的歷史紀錄]]。",
 	"abusefilter-edit-status-label": "統計資訊：",
 	"abusefilter-edit-status": "在最近$1次{{PLURAL:$1|操作}}中，此過濾器已觸發$2（$3%）次。其平均執行時間為$4 ms，且使用了條件限制中$5個{{PLURAL:$5|條件}}。",
 	"abusefilter-edit-throttled-warning": "'''警告：'''該過濾器已自動標示為有害。作為安全措施，以下{{PLURAL:$2|操作}}將不會執行：$1。請檢查是否預期高匹配率。如果是這樣，您可以再次儲存過濾器以移除此限制。",
@@ -703,5 +703,5 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "更改存取",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "查看受保護的變數值",
 	"communityconfiguration-blockeddomain-title": "已封鎖的外部網域",
-	"communityconfiguration-blockeddomain-description": "無法連結的外部網域清單"
+	"communityconfiguration-blockeddomain-description": "無法被連結的外部網域清單"
 }
