@@ -109,7 +109,7 @@ class AbuseFilterPager extends TablePager {
 			if ( !$this->afPermManager->canViewPrivateFilters( $performer ) ) {
 				$disallowedBitMask |= Flags::FILTER_HIDDEN;
 			}
-			if ( !$this->afPermManager->canViewProtectedVariables( $performer, [] )->isGood() ) {
+			if ( !$this->afPermManager->canViewProtectedVariables( $performer ) ) {
 				$disallowedBitMask |= Flags::FILTER_USES_PROTECTED_VARS;
 			}
 
