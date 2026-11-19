@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"A100Star",
 			"Amire80",
 			"Esh77",
 			"Guycn2",
@@ -29,6 +30,8 @@
 	"apihelp-query+abusefilters-summary": "הצגת פרטים על מסנני השחתות.",
 	"apihelp-query+abusefilters-param-startid": "מזהה המסנן שהמנייה תתחיל ממנו.",
 	"apihelp-query+abusefilters-param-endid": "מזהה המסנן שבו תסתיים המנייה.",
+	"apihelp-query+abusefilters-paramvalue-dir-ascending": "הצגת רשימת המסננים בסדר עולה.",
+	"apihelp-query+abusefilters-paramvalue-dir-descending": "הצגת רשימת המסננים בסדר יורד.",
 	"apihelp-query+abusefilters-param-show": "הצגת מסננים שמתאימים לאמות המידה האלו.",
 	"apihelp-query+abusefilters-param-limit": "המספר המרבי של מסננים שיירשמו.",
 	"apihelp-query+abusefilters-param-prop": "אילו פריטי מידע לכלול:",

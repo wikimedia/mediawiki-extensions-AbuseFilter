@@ -365,6 +365,7 @@
 	"abusefilter-edit-builder-funcs-norm": "Нормализирај ($1)",
 	"abusefilter-edit-builder-funcs-count": "Број на јавувања на низата X во низата Y ($1)",
 	"abusefilter-edit-builder-funcs-rcount": "Број на јавувања на регуларнот израз X во низата Y ($1)",
+	"abusefilter-edit-builder-funcs-ircount": "Колку пати големинскоразликувачкиот регуларен израз X се јавува во низата Y ($1)",
 	"abusefilter-edit-builder-funcs-get_matches": "Строј совпаѓања во регуларните изрази во рамките на текстот за секоја зафатна група ($1)",
 	"abusefilter-edit-builder-funcs-rmwhitespace": "Отстрани празни простори ($1)",
 	"abusefilter-edit-builder-funcs-rmspecials": "Отстрани посебни знаци ($1)",
