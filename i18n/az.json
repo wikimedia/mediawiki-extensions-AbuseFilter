@@ -553,6 +553,7 @@
 	"abusefilter-test-options-section": "Axtarış seçimləri",
 	"abusefilter-test-legend": "Süzgəcin yoxlanılması",
 	"abusefilter-test-load-filter": "Bu ID-yə malik süzgəci yüklə:",
+	"abusefilter-test-loadfilter-restricted": "$1 filtri məhdudlaşdırılıb və onun məzmunu yüklənə bilməz.",
 	"abusefilter-test-submit": "Test",
 	"abusefilter-test-load": "Yüklə",
 	"abusefilter-test-user": "Dəyişikliyi edən istifadəçi:",

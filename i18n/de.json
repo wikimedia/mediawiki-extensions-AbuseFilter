@@ -577,6 +577,7 @@
 	"abusefilter-test-options-section": "Suchoptionen",
 	"abusefilter-test-legend": "Filter testen",
 	"abusefilter-test-load-filter": "Filter-ID laden:",
+	"abusefilter-test-loadfilter-restricted": "Filter $1 ist eingeschränkt und sein Inhalt kann nicht geladen werden.",
 	"abusefilter-test-submit": "Testen",
 	"abusefilter-test-load": "Laden",
 	"abusefilter-test-user": "Änderungen von Benutzer:",

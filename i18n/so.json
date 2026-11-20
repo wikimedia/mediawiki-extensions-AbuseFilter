@@ -540,6 +540,7 @@
 	"abusefilter-test-options-section": "Xulashooyinka raadinta",
 	"abusefilter-test-legend": "Tijaabinta shaandhada",
 	"abusefilter-test-load-filter": "Soo shub aqoonsiga shaandhada:",
+	"abusefilter-test-loadfilter-restricted": "Shaandhada $1 waa xaddidan tahay, nuxurkeedana lama soo rari karo.",
 	"abusefilter-test-submit": "Tijaabo",
 	"abusefilter-test-load": "Soo shub",
 	"abusefilter-test-user": "Isbeddellada uu sameeyay isticmaalaha:",

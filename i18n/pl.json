@@ -574,6 +574,7 @@
 	"abusefilter-test-options-section": "Opcje wyszukiwania",
 	"abusefilter-test-legend": "Testowanie filtru",
 	"abusefilter-test-load-filter": "Załaduj filtr o identyfikatorze:",
+	"abusefilter-test-loadfilter-restricted": "Filtr $1 ma ograniczoną widoczność, w związku z tym nie można załadować jego zawartości.",
 	"abusefilter-test-submit": "Testuj",
 	"abusefilter-test-load": "Załaduj",
 	"abusefilter-test-user": "Zmiany wykonane przez użytkownika",

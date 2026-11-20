@@ -544,6 +544,7 @@
 	"abusefilter-test-options-section": "Можности за пребарување",
 	"abusefilter-test-legend": "Испробување на филтерот",
 	"abusefilter-test-load-filter": "Вчитај филтер со ID:",
+	"abusefilter-test-loadfilter-restricted": "Филтерот $1 е огранчен и неговата содржина не може да се вчита.",
 	"abusefilter-test-submit": "Испробај",
 	"abusefilter-test-load": "Вчитај",
 	"abusefilter-test-user": "Промени од корисникот:",

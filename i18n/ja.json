@@ -593,6 +593,7 @@
 	"abusefilter-test-options-section": "検索オプション",
 	"abusefilter-test-legend": "フィルターのテスト",
 	"abusefilter-test-load-filter": "読み込むフィルターのID:",
+	"abusefilter-test-loadfilter-restricted": "フィルター $1 には権限上の制限があるため内容を読み込めません。",
 	"abusefilter-test-submit": "テスト",
 	"abusefilter-test-load": "読み込み",
 	"abusefilter-test-user": "変更した利用者:",

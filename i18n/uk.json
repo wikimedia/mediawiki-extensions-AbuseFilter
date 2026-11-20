@@ -568,6 +568,7 @@
 	"abusefilter-test-options-section": "Параметри пошуку",
 	"abusefilter-test-legend": "Перевірка фільтра",
 	"abusefilter-test-load-filter": "Завантажити фільтр з ID:",
+	"abusefilter-test-loadfilter-restricted": "Фільтр $1 обмежений і його вміст неможливо завантажити.",
 	"abusefilter-test-submit": "Перевірити",
 	"abusefilter-test-load": "Завантажити",
 	"abusefilter-test-user": "Зміни користувача:",

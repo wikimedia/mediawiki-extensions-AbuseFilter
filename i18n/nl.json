@@ -573,6 +573,7 @@
 	"abusefilter-test-options-section": "Zoekopties",
 	"abusefilter-test-legend": "Filter testen",
 	"abusefilter-test-load-filter": "Filternummer laden:",
+	"abusefilter-test-loadfilter-restricted": "Filter $1 is beperkt en de inhoud ervan kan niet worden geladen.",
 	"abusefilter-test-submit": "Testen",
 	"abusefilter-test-load": "Laden",
 	"abusefilter-test-user": "Wijzigingen door gebruiker:",

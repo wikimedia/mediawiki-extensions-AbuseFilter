@@ -578,6 +578,7 @@
 	"abusefilter-test-options-section": "Opções de pesquisa",
 	"abusefilter-test-legend": "Teste de filtro",
 	"abusefilter-test-load-filter": "Carregar filtro com ID:",
+	"abusefilter-test-loadfilter-restricted": "O filtro $1 está restrito e seu conteúdo não pode ser carregado.",
 	"abusefilter-test-submit": "Testar",
 	"abusefilter-test-load": "Carregar",
 	"abusefilter-test-user": "Alterações pelo usuário:",

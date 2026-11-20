@@ -21,7 +21,8 @@
 			"חיים",
 			"מקף",
 			"ערן",
-			"פוילישער"
+			"פוילישער",
+			"A100Star"
 		]
 	},
 	"abusefilter-desc": "החלת בדיקות אוטומטיות על עריכות",
@@ -558,6 +559,7 @@
 	"abusefilter-test-options-section": "אפשרויות חיפוש",
 	"abusefilter-test-legend": "בדיקת מסנן",
 	"abusefilter-test-load-filter": "טעינת מסנן מספר:",
+	"abusefilter-test-loadfilter-restricted": "מסנן $1 מוגבל ולא ניתן לטעון את תוכנו.",
 	"abusefilter-test-submit": "בדיקה",
 	"abusefilter-test-load": "טעינה",
 	"abusefilter-test-user": "שינויים שבוצעו על־ידי המשתמש:",

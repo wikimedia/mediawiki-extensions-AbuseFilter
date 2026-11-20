@@ -574,6 +574,7 @@
 	"abusefilter-test-options-section": "خيارات البحث",
 	"abusefilter-test-legend": "اختبار المرشح",
 	"abusefilter-test-load-filter": "تحميل رمز تعريف المرشح:",
+	"abusefilter-test-loadfilter-restricted": "الفلتر $1 مقيد ولا يمكن تحميل محتواه.",
 	"abusefilter-test-submit": "اختبار",
 	"abusefilter-test-load": "تحميل",
 	"abusefilter-test-user": "التغييرات بواسطة المستخدم:",
