@@ -145,7 +145,7 @@ class FilterValidator {
 		$ret = Status::newGood();
 		$missing = [];
 		if ( $filter->getRules() === '' ) {
-			$missing[] = new Message( 'abusefilter-edit-field-conditions' );
+			$missing[] = new Message( 'abusefilter-edit-field-rules' );
 		}
 		if ( trim( $filter->getName() ) === '' ) {
 			$missing[] = new Message( 'abusefilter-edit-field-description' );
