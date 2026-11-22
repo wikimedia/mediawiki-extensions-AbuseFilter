@@ -28,6 +28,37 @@ class BlockedDomainEditor {
 	) {
 	}
 
+	private function isAllowList(): bool {
+		return $this->blockedDomainStorage->isAllowList();
+	}
+
+	/**
+	 * Validate an input domain or URL depending on mode
+	 *
+	 * @param string|null $input
+	 * @return string|false Validated domain or URL string to store, or false if invalid
+	 */
+	private function validateInput( ?string $input ) {
+		if ( !$input ) {
+			return false;
+		}
+		$input = trim( $input );
+
+		if ( $this->isAllowList() ) {
+			// If input contains a slash (path) or scheme or query, it is intended to be a URL
+			if ( str_contains( $input, '/' ) || str_contains( $input, '?' ) ) {
+				$urlToTest = str_contains( $input, '//' ) ? $input : 'https://' . $input;
+				if ( $this->blockedDomainValidator->normalizeUrl( $urlToTest ) === false ) {
+					return false;
+				}
+				// Always store with scheme so that BlockedDomainAllowListLookup detects it via '//'
+				return $urlToTest;
+			}
+		}
+
+		return $this->blockedDomainValidator->validateDomain( $input );
+	}
+
 	/**
 	 * Wrapper around wfMessage that sets the current context.
 	 *
@@ -56,20 +87,40 @@ class BlockedDomainEditor {
 
 	private function showList() {
 		$out = $this->context->getOutput();
-		$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-title' ) );
-		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-intro' );
-		$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-allowlist-intro' );
+		$isAllowList = $this->isAllowList();
+
+		if ( $isAllowList ) {
+			$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-allowlist-title' ) );
+			$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-allowlist-intro' );
+		} else {
+			$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-title' ) );
+			$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-intro' );
+			$out->wrapWikiMsg( "$1", 'abusefilter-blocked-domains-allowlist-intro' );
+		}
 		$out->addModuleStyles( 'mediawiki.codex.messagebox.styles' );
 
 		// Direct editing of this page is blocked via EditPermissionHandler
 		$userCanManage = $this->context->getAuthority()->isAllowed( 'abusefilter-modify-blocked-external-domains' );
 
-		// Show form to add a blocked domain
+		// Show form to add a blocked/allowed domain
 		if ( $userCanManage ) {
+			$domainLabelMsg = $isAllowList
+				? 'abusefilter-blocked-domains-allowlist-domain'
+				: 'abusefilter-blocked-domains-domain';
+			$addHeadingMsg = $isAllowList
+				? 'abusefilter-blocked-domains-allowlist-add-heading'
+				: 'abusefilter-blocked-domains-add-heading';
+			$addExplanationMsg = $isAllowList
+				? 'abusefilter-blocked-domains-allowlist-add-explanation'
+				: 'abusefilter-blocked-domains-add-explanation';
+			$addSubmitMsg = $isAllowList
+				? 'abusefilter-blocked-domains-allowlist-add-submit'
+				: 'abusefilter-blocked-domains-add-submit';
+
 			$fields = [
 				'Domain' => [
 					'type' => 'text',
-					'label' => $this->msg( 'abusefilter-blocked-domains-domain' )->plain(),
+					'label' => $this->msg( $domainLabelMsg )->plain(),
 					'required' => true,
 				],
 				'Notes' => [
@@ -82,10 +133,10 @@ class BlockedDomainEditor {
 
 			HTMLForm::factory( 'ooui', $fields, $this->context )
 				->setAction( $this->getPageTitle( 'add' )->getLocalURL() )
-				->setWrapperLegendMsg( 'abusefilter-blocked-domains-add-heading' )
-				->setHeaderHtml( $this->msg( 'abusefilter-blocked-domains-add-explanation' )->parseAsBlock() )
+				->setWrapperLegendMsg( $addHeadingMsg )
+				->setHeaderHtml( $this->msg( $addExplanationMsg )->parseAsBlock() )
 				->setSubmitCallback( [ $this, 'processAddForm' ] )
-				->setSubmitTextMsg( 'abusefilter-blocked-domains-add-submit' )
+				->setSubmitTextMsg( $addSubmitMsg )
 				->show();
 
 			if ( $out->getRedirect() !== '' ) {
@@ -98,7 +149,10 @@ class BlockedDomainEditor {
 			return;
 		}
 
-		$content = Html::element( 'th', [], $this->msg( 'abusefilter-blocked-domains-domain-header' )->text() ) .
+		$domainHeaderMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-domain-header'
+			: 'abusefilter-blocked-domains-domain-header';
+		$content = Html::element( 'th', [], $this->msg( $domainHeaderMsg )->text() ) .
 			Html::element( 'th', [], $this->msg( 'abusefilter-blocked-domains-notes-header' )->text() );
 		if ( $userCanManage ) {
 			$content .= Html::element(
@@ -193,15 +247,29 @@ class BlockedDomainEditor {
 		}
 
 		$out = $this->context->getOutput();
-		$out->setPageTitleMsg( $this->msg( 'abusefilter-blocked-domains-remove-title' ) );
+		$isAllowList = $this->isAllowList();
+		$titleMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-remove-title'
+			: 'abusefilter-blocked-domains-remove-title';
+		$out->setPageTitleMsg( $this->msg( $titleMsg ) );
 		$out->addBacklinkSubtitle( $this->getPageTitle() );
 
-		$preText = $this->msg( 'abusefilter-blocked-domains-remove-explanation-initial', $domain )->parseAsBlock();
+		$explanationMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-remove-explanation-initial'
+			: 'abusefilter-blocked-domains-remove-explanation-initial';
+		$preText = $this->msg( $explanationMsg, $domain )->parseAsBlock();
+
+		$domainLabelMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-domain'
+			: 'abusefilter-blocked-domains-domain';
+		$removeSubmitMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-remove-submit'
+			: 'abusefilter-blocked-domains-remove-submit';
 
 		$fields = [
 			'Domain' => [
 				'type' => 'text',
-				'label' => $this->msg( 'abusefilter-blocked-domains-domain' )->plain(),
+				'label' => $this->msg( $domainLabelMsg )->plain(),
 				'required' => true,
 				'default' => $domain,
 			],
@@ -216,7 +284,7 @@ class BlockedDomainEditor {
 		HTMLForm::factory( 'ooui', $fields, $this->context )
 			->setAction( $this->getPageTitle( 'remove' )->getLocalURL() )
 			->setSubmitCallback( $this->processRemoveForm( ... ) )
-			->setSubmitTextMsg( 'abusefilter-blocked-domains-remove-submit' )
+			->setSubmitTextMsg( $removeSubmitMsg )
 			->setSubmitDestructive()
 			->addPreHtml( $preText )
 			->show();
@@ -231,7 +299,7 @@ class BlockedDomainEditor {
 	 */
 	public function processRemoveForm( array $data, HTMLForm $form ) {
 		$out = $form->getContext()->getOutput();
-		$domain = $this->blockedDomainValidator->validateDomain( $data['Domain'] );
+		$domain = $this->validateInput( $data['Domain'] );
 		if ( $domain === false ) {
 			$out->addHTML( Html::errorBox(
 				$this->msg( 'http-invalid-url' )->plaintextParams( $data['Domain'] )->parse()
@@ -268,15 +336,29 @@ class BlockedDomainEditor {
 		}
 
 		$out = $this->context->getOutput();
-		$out->setPageTitleMsg( $this->msg( "abusefilter-blocked-domains-add-heading" ) );
+		$isAllowList = $this->isAllowList();
+		$addHeadingMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-add-heading'
+			: 'abusefilter-blocked-domains-add-heading';
+		$out->setPageTitleMsg( $this->msg( $addHeadingMsg ) );
 		$out->addBacklinkSubtitle( $this->getPageTitle() );
 
-		$preText = $this->msg( "abusefilter-blocked-domains-add-explanation", $domain )->parseAsBlock();
+		$addExplanationMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-add-explanation'
+			: 'abusefilter-blocked-domains-add-explanation';
+		$preText = $this->msg( $addExplanationMsg, $domain )->parseAsBlock();
+
+		$domainLabelMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-domain'
+			: 'abusefilter-blocked-domains-domain';
+		$addSubmitMsg = $isAllowList
+			? 'abusefilter-blocked-domains-allowlist-add-submit'
+			: 'abusefilter-blocked-domains-add-submit';
 
 		$fields = [
 			'Domain' => [
 				'type' => 'text',
-				'label' => $this->msg( 'abusefilter-blocked-domains-domain' )->plain(),
+				'label' => $this->msg( $domainLabelMsg )->plain(),
 				'required' => true,
 				'default' => $domain,
 			],
@@ -291,7 +373,7 @@ class BlockedDomainEditor {
 		HTMLForm::factory( 'ooui', $fields, $this->context )
 			->setAction( $this->getPageTitle( 'add' )->getLocalURL() )
 			->setSubmitCallback( $this->processAddForm( ... ) )
-			->setSubmitTextMsg( "abusefilter-blocked-domains-add-submit" )
+			->setSubmitTextMsg( $addSubmitMsg )
 			->addPreHtml( $preText )
 			->show();
 	}
@@ -306,7 +388,7 @@ class BlockedDomainEditor {
 	private function processAddForm( array $data, HTMLForm $form ) {
 		$out = $form->getContext()->getOutput();
 
-		$domain = $this->blockedDomainValidator->validateDomain( $data['Domain'] );
+		$domain = $this->validateInput( $data['Domain'] );
 		if ( $domain === false ) {
 			$out->addHTML( Html::errorBox(
 				$this->msg( 'http-invalid-url' )->plaintextParams( $data['Domain'] )->parse()

@@ -430,6 +430,30 @@ return [
 			);
 		}
 	},
+	ServiceNames::BlockedDomainAllowListStorage => static function (
+		MediaWikiServices $services
+	): IBlockedDomainStorage {
+		if ( $services->getExtensionRegistry()->isLoaded( 'CommunityConfiguration' ) ) {
+			$provider = CommunityConfigurationServices::wrap( $services )
+				->getConfigurationProviderFactory()
+				->newProvider( BlockedDomainConfigProvider::ALLOWLIST_PROVIDER_ID );
+			if ( !$provider instanceof BlockedDomainConfigProvider ) {
+				throw new LogicException(
+					BlockedDomainConfigProvider::ALLOWLIST_PROVIDER_ID . ' is expected to be ' .
+					'an instance of ' . BlockedDomainConfigProvider::class
+				);
+			}
+			return $provider;
+		} else {
+			return new CustomBlockedDomainStorage(
+				$services->getLocalServerObjectCache(),
+				$services->getRevisionLookup(),
+				$services->getWikiPageFactory(),
+				$services->get( BlockedDomainValidator::SERVICE_NAME ),
+				BlockedDomainAllowListLookup::TARGET_PAGE
+			);
+		}
+	},
 	ServiceNames::BlockedDomainValidator => static function (
 		MediaWikiServices $services
 	): BlockedDomainValidator {

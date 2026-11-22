@@ -14,6 +14,7 @@ use Wikimedia\ObjectCache\BagOStuff;
 class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDomainStorage {
 
 	public const PROVIDER_ID = 'BlockedDomain';
+	public const ALLOWLIST_PROVIDER_ID = 'BlockedDomainAllowList';
 
 	public function __construct(
 		ProviderServicesContainer $providerServicesContainer,
@@ -25,6 +26,10 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 		private readonly BlockedDomainValidator $domainValidator
 	) {
 		parent::__construct( $providerServicesContainer, $providerId, $options, $store, $validator );
+	}
+
+	public function isAllowList(): bool {
+		return $this->getId() === self::ALLOWLIST_PROVIDER_ID;
 	}
 
 	/** @inheritDoc */
@@ -58,7 +63,10 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 	 */
 	public function loadComputed(): array {
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'abusefilter-blockeddomains-computed' ),
+			$this->cache->makeKey(
+				'abusefilter-blockeddomains-computed',
+				$this->isAllowList() ? 'allowlist' : 'blocklist'
+			),
 			BagOStuff::TTL_MINUTE * 5,
 			function () {
 				$status = $this->loadValidConfiguration();
@@ -97,7 +105,10 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 		}
 		$config = $config->getValue();
 		$config[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $authority->getUser()->getName() ];
-		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
+		$msgKey = $this->isAllowList()
+			? 'abusefilter-blocked-domains-allowlist-domain-added-comment'
+			: 'abusefilter-blocked-domains-domain-added-comment';
+		$comment = Message::newFromSpecifier( $msgKey )
 			->params( $domain, $notes )
 			->plain();
 		return $this->storeValidConfiguration( $config, $authority, $comment );
@@ -125,7 +136,10 @@ class BlockedDomainConfigProvider extends AbstractProvider implements IBlockedDo
 			}
 		}
 
-		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-removed-comment' )
+		$msgKey = $this->isAllowList()
+			? 'abusefilter-blocked-domains-allowlist-domain-removed-comment'
+			: 'abusefilter-blocked-domains-domain-removed-comment';
+		$comment = Message::newFromSpecifier( $msgKey )
 			->params( $domain, $notes )
 			->plain();
 		return $this->storeValidConfiguration( array_values( $config ), $authority, $comment );

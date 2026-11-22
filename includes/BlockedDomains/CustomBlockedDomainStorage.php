@@ -47,8 +47,13 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 		private readonly BagOStuff $cache,
 		private readonly RevisionLookup $revisionLookup,
 		private readonly WikiPageFactory $wikiPageFactory,
-		private readonly BlockedDomainValidator $domainValidator
+		private readonly BlockedDomainValidator $domainValidator,
+		private readonly string $targetPage = self::TARGET_PAGE
 	) {
+	}
+
+	public function isAllowList(): bool {
+		return $this->targetPage === BlockedDomainAllowListLookup::TARGET_PAGE;
 	}
 
 	/** @inheritDoc */
@@ -59,7 +64,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 
 		// Load configuration from APCU
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'abusefilter-blockeddomains-config' ),
+			$this->cache->makeKey( 'abusefilter-blockeddomains-config', $this->targetPage ),
 			BagOStuff::TTL_MINUTE * 5,
 			function ( &$ttl ) use ( $flags ) {
 				$result = $this->fetchConfig( $flags );
@@ -75,7 +80,10 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	/** @inheritDoc */
 	public function loadComputed(): array {
 		return $this->cache->getWithSetCallback(
-			$this->cache->makeKey( 'abusefilter-blockeddomains-computed' ),
+			$this->cache->makeKey(
+				'abusefilter-blockeddomains-computed',
+				$this->isAllowList() ? 'allowlist' : 'blocklist'
+			),
 			BagOStuff::TTL_MINUTE * 5,
 			function () {
 				$status = $this->loadConfig();
@@ -148,7 +156,10 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 		}
 		$content = $contentStatus->getValue();
 		$content[] = [ 'domain' => $domain, 'notes' => $notes, 'addedBy' => $authority->getUser()->getName() ];
-		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-added-comment' )
+		$msgKey = $this->isAllowList()
+			? 'abusefilter-blocked-domains-allowlist-domain-added-comment'
+			: 'abusefilter-blocked-domains-domain-added-comment';
+		$comment = Message::newFromSpecifier( $msgKey )
 			->params( $domain, $notes )
 			->plain();
 		return $this->saveContent( $content, $authority, $comment );
@@ -166,7 +177,10 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 				unset( $content[$key] );
 			}
 		}
-		$comment = Message::newFromSpecifier( 'abusefilter-blocked-domains-domain-removed-comment' )
+		$msgKey = $this->isAllowList()
+			? 'abusefilter-blocked-domains-allowlist-domain-removed-comment'
+			: 'abusefilter-blocked-domains-domain-removed-comment';
+		$comment = Message::newFromSpecifier( $msgKey )
 			->params( $domain, $notes )
 			->plain();
 		return $this->saveContent( array_values( $content ), $authority, $comment );
@@ -219,7 +233,7 @@ class CustomBlockedDomainStorage implements IBlockedDomainStorage, IDBAccessObje
 	 * @return PageIdentity Title of the config JSON page
 	 */
 	private function getBlockedDomainPage(): PageIdentity {
-		return Title::makeTitle( NS_MEDIAWIKI, self::TARGET_PAGE );
+		return Title::makeTitle( NS_MEDIAWIKI, $this->targetPage );
 	}
 }
 

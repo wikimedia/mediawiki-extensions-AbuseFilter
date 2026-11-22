@@ -46,4 +46,11 @@ interface IBlockedDomainStorage {
 	 * @return StatusValue
 	 */
 	public function removeDomain( string $domain, string $notes, Authority $authority ): StatusValue;
+
+	/**
+	 * Whether this storage instance manages the allow list
+	 *
+	 * @return bool
+	 */
+	public function isAllowList(): bool;
 }

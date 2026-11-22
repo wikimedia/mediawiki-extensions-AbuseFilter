@@ -336,6 +336,12 @@ class AbuseFilterServices {
 		return ( $services ?? MediaWikiServices::getInstance() )->get( BlockedDomainAllowListLookup::SERVICE_NAME );
 	}
 
+	public static function getBlockedDomainAllowListStorage(
+		?ContainerInterface $services = null
+	): IBlockedDomainStorage {
+		return ( $services ?? MediaWikiServices::getInstance() )->get( ServiceNames::BlockedDomainAllowListStorage );
+	}
+
 	public static function getGlobalBlockedDomainLookup(
 		?ContainerInterface $services = null
 	): GlobalBlockedDomainLookup {

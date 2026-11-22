@@ -16,6 +16,7 @@ class ServiceNames {
 	public const string AbuseLogLookup = 'AbuseFilterAbuseLogLookup';
 	public const string BlockAutopromoteStore = 'AbuseFilterBlockAutopromoteStore';
 	public const string BlockedDomainAllowListLookup = 'AbuseFilterBlockedDomainAllowListLookup';
+	public const string BlockedDomainAllowListStorage = 'AbuseFilterBlockedDomainAllowListStorage';
 	public const string BlockedDomainFilter = 'AbuseFilterBlockedDomainFilter';
 	public const string BlockedDomainStorage = 'AbuseFilterBlockedDomainStorage';
 	public const string BlockedDomainValidator = 'AbuseFilterBlockedDomainValidator';

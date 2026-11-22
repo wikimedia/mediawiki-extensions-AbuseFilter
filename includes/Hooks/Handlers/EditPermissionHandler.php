@@ -53,11 +53,14 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 		}
 
 		// Ignore all actions and pages except MediaWiki: edits (and creates)
-		// to the page we care about
+		// to the pages we care about
 		if (
 			!( $action == 'create' || $action == 'edit' ) ||
 			!$title->inNamespace( NS_MEDIAWIKI ) ||
-			$title->getDBkey() !== CustomBlockedDomainStorage::TARGET_PAGE
+			!in_array( $title->getDBkey(), [
+				CustomBlockedDomainStorage::TARGET_PAGE,
+				BlockedDomainAllowListLookup::TARGET_PAGE
+			], true )
 		) {
 			return;
 		}
@@ -67,7 +70,7 @@ class EditPermissionHandler implements GetUserPermissionsErrorsHook, JsonValidat
 		}
 
 		// Prohibit direct actions on our page.
-		$result = [ 'abusefilter-blocked-domains-cannot-edit-directly', CustomBlockedDomainStorage::TARGET_PAGE ];
+		$result = [ 'abusefilter-blocked-domains-cannot-edit-directly', $title->getDBkey() ];
 		return false;
 	}
 

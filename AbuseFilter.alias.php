@@ -13,6 +13,7 @@ $specialPageAliases['en'] = [
 	'AbuseLog' => [ 'AbuseLog' ],
 	'AbuseFilter' => [ 'AbuseFilter' ],
 	'BlockedExternalDomains' => [ 'BlockedExternalDomains' ],
+	'BlockedExternalDomainsAllowList' => [ 'BlockedExternalDomainsAllowList' ],
 ];
 
 /** Arabic (العربية) */
