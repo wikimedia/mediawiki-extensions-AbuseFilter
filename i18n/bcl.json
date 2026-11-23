@@ -100,7 +100,6 @@
 	"logentry-abusefilterprivatedetails-access": "$1 {{GENDER:$2|hilingon}}an pribadong mga detalye para sa $3",
 	"abusefilter-list": "Gabos na mga saraan",
 	"abusefilter-list-id": "ID kan Saraan",
-	"abusefilter-list-pattern": "Pangarugan",
 	"abusefilter-list-status": "Estado",
 	"abusefilter-list-public": "Pampublikong paglaladawan",
 	"abusefilter-list-consequences": "Mga kaaabtan",

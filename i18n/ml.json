@@ -94,7 +94,6 @@
 	"logentry-abusefilter-hit": "$3 താളിൽ $1 {{GENDER:$2|നടത്തിയ}} \"$5\" പ്രവൃത്തി $4 അരിപ്പയെ {{GENDER:$2|ഉണർത്തി}}.\nഎടുത്ത നടപടി: $6 ($7)",
 	"abusefilter-list": "എല്ലാ അരിപ്പകളും",
 	"abusefilter-list-id": "അരിപ്പയുടെ ഐ.ഡി.",
-	"abusefilter-list-pattern": "ശ്രേണി",
 	"abusefilter-list-status": "സ്ഥിതി",
 	"abusefilter-list-public": "പൊതു വിവരണം",
 	"abusefilter-list-consequences": "പരിണതഫലങ്ങൾ",

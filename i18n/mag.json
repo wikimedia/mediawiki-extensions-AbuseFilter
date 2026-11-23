@@ -53,7 +53,6 @@
 	"abusefilter-log-hide-done-hide": "{{PLURAL:$1|लुकाएल}}",
 	"abusefilter-log-hide-done-show": "{{PLURAL:$1|लौकैत}}",
 	"abusefilter-list-id": "फिल्टर आइडि",
-	"abusefilter-list-pattern": "प्रतिमान",
 	"abusefilter-list-status": "स्थिति",
 	"abusefilter-list-public": "सार्वजनिक बिवरण",
 	"abusefilter-list-consequences": "परिणाम",
