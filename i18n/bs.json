@@ -380,7 +380,6 @@
 	"abusefilter-diff-item": "Stavka",
 	"abusefilter-diff-version": "Verzija od $1 {{GENDER:$3|od strane}} $2",
 	"abusefilter-diff-info": "Osnovne informacije",
-	"abusefilter-diff-pattern": "Uslovi filtera",
 	"abusefilter-diff-invalid": "Tražene vezije nisu mogle biti učitane",
 	"abusefilter-diff-backhistory": "Nazad na historiju filtera",
 	"abusefilter-diff-prev": "Starije uređivanje",

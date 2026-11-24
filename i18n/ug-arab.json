@@ -353,7 +353,6 @@
 	"abusefilter-diff-item": "تۈر",
 	"abusefilter-diff-version": "$1 {{GENDER:$3|تەرىپىدىن}} $2 ئۆزگەرتكەن تۈزىتىلگەن نەشرى",
 	"abusefilter-diff-info": "ئاساسىي ئۇچۇر",
-	"abusefilter-diff-pattern": "سۈزگۈچ ھالىتى",
 	"abusefilter-diff-invalid": "ئىلتىماس قىلغان نەشرىگە ئېرىشەلمەيدۇ",
 	"abusefilter-diff-backhistory": "سۈزگۈچ تارىخ بېتىگە قايت",
 	"abusefilter-diff-prev": "ئىلگىركى ئۆزگەرتىشلەر",

@@ -96,7 +96,6 @@
 	"abusefilter-edit-hidden": "លាក់ព័ត៌មានលំអិតអំពី​តម្រងនេះ មិនឱ្យមើលជាសាធារណៈ",
 	"abusefilter-edit-global": "តម្រងសាកល",
 	"abusefilter-edit-rules": "លក្ខខណ្ឌ:",
-	"abusefilter-edit-field-conditions": "លក្ខខណ្ឌ",
 	"abusefilter-edit-notes": "សម្គាល់:",
 	"abusefilter-edit-lastmod": "តម្រងដែលត្រូវបានកែប្រែចុងក្រោយ:",
 	"abusefilter-edit-lastmod-text": "$1 ដោយ $2",
@@ -212,6 +211,5 @@
 	"abusefilter-diff-item": "វត្ថុ​",
 	"abusefilter-diff-version": "កំណែពី $1 {{GENDER:$3|ដោយ}} $2",
 	"abusefilter-diff-info": "ព័ត៌មាន​មូលដ្ឋាន​",
-	"abusefilter-diff-pattern": "លក្ខខណ្ឌ​តម្រង",
 	"abusefilter-import-submit": "នាំចូល​ទិន្នន័យ​"
 }

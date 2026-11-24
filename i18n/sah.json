@@ -350,7 +350,6 @@
 	"abusefilter-diff-item": "Элэмиэн",
 	"abusefilter-diff-version": "Баччатааҕы $1, $2 барыл",
 	"abusefilter-diff-info": "Сүрүн сибидиэнньэлэр",
-	"abusefilter-diff-pattern": "Сиидэ туруоруулара",
 	"abusefilter-diff-invalid": "Көрдөөбүт барыллары көрөр табыллыбата",
 	"abusefilter-diff-backhistory": "Сиидэ устуоруйатыгар төннүү",
 	"abusefilter-import-intro": "Бу үнүстүрүмүөнү туһанан сиидэлэри атын биикилэртэн импортыаххын сөп.\nЫлар биикигэр \"{{int:abusefilter-edit-tools}}\" салааҕа киириэҥҥин \"{{int:abusefilter-edit-export}}\" диэни баттаа.\nТиэкис хонуутуттан иһинээҕитин бу сирэйгэ көһөр уонна \"{{int:abusefilter-import-submit}}\" диэни баттаа.",

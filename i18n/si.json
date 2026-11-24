@@ -330,7 +330,6 @@
 	"abusefilter-diff-item": "අයිතමය",
 	"abusefilter-diff-version": "$1 ගෙන් අනුවාදය $2 විසින්",
 	"abusefilter-diff-info": "මූලික තොරතුරු",
-	"abusefilter-diff-pattern": "පෙරහනේ කොන්දේසි",
 	"abusefilter-diff-invalid": "අයැදූ අනුවාදයන් පමුණුවීමට නොහැක",
 	"abusefilter-diff-backhistory": "පෙරහන් ඉතිහාසය වෙත නැවතත්",
 	"abusefilter-import-submit": "දත්ත ආයාත කරන්න",

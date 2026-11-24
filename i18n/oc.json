@@ -394,7 +394,6 @@
 	"abusefilter-diff-item": "Article",
 	"abusefilter-diff-version": "Version del $1 {{GENDER:$3|per}} $2",
 	"abusefilter-diff-info": "Informacions basicas",
-	"abusefilter-diff-pattern": "Condicions del filtre",
 	"abusefilter-diff-invalid": "Impossible de tornar trobar las versions demandadas",
 	"abusefilter-diff-backhistory": "Retorn a l'istoric del filtre",
 	"abusefilter-diff-prev": "Cambiament anterior",

@@ -171,7 +171,6 @@
 	"abusefilter-diff-item": "Barang",
 	"abusefilter-diff-version": "Versi sekang $1 {{GENDER:$3|nang}} $2",
 	"abusefilter-diff-info": "Informasi dhasar",
-	"abusefilter-diff-pattern": "Kahanan saringan",
 	"abusefilter-diff-invalid": "Ora teyeng njikot versi sing dejaluk",
 	"abusefilter-diff-backhistory": "Mbalik ming riwayat saringan",
 	"abusefilter-import-intro": "Rika teyeng nganggo antarmuka kiye nggo ngimpor saringan sekang wiki liyane.\nNang wiki sumber, klik \"{{int:abusefilter-edit-export}}\" nang ngisore \"{{int:abusefilter-edit-tools}}\" nang antarmuka panyuntingan.\nSalin sekang kothak teks sing nongol, lan templekna kuwe ming kothak teks kiye, banjur klik \"{{int:abusefilter-import-submit}}\".",

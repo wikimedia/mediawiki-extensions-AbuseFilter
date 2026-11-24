@@ -360,7 +360,6 @@
 	"abusefilter-diff-item": "Елемент",
 	"abusefilter-diff-version": "Верзія {{GENDER:$3|од}} $1, $2",
 	"abusefilter-diff-info": "Основны інформації",
-	"abusefilter-diff-pattern": "Подмінкы філтрів",
 	"abusefilter-diff-invalid": "Не подарило ся обтримати пожадовны верзії",
 	"abusefilter-diff-backhistory": "Назад на історію філтру",
 	"abusefilter-import-intro": "За помочі того інтерфейсу можете імпортовати філтры з іншых вікі.\nНа жрідловій вікі клікните в інтерфейсї едітованя на „{{int:abusefilter-edit-export}}“ в секції „{{int:abusefilter-edit-tools}}“.\nЗкопіруйте текст, котрый ся укаже в рамику, вложте го до того формуларя і клікните на „{{int:abusefilter-import-submit}}“.",

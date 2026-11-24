@@ -384,7 +384,6 @@
 	"abusefilter-diff-item": "ელემენტი",
 	"abusefilter-diff-version": "ვერსია $1-დან $2-ის {{GENDER:$3|მიერ}}",
 	"abusefilter-diff-info": "ძირითადი ინფორმაცია",
-	"abusefilter-diff-pattern": "ფილტრის პირობები",
 	"abusefilter-diff-invalid": "ვერ მიიღებთ მოთხოვნილ ვერსიას",
 	"abusefilter-diff-backhistory": "ფილტრის ისტორიაში დაბრუნება",
 	"abusefilter-diff-prev": "ძველი ცვლილება",

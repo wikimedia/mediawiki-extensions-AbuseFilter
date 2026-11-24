@@ -359,7 +359,6 @@
 	"abusefilter-diff-item": "Element",
 	"abusefilter-diff-version": "Version dël $1 {{GENDER:$3|ëd}} $2",
 	"abusefilter-diff-info": "Anformassion ëd base",
-	"abusefilter-diff-pattern": "Condission dël filtr",
 	"abusefilter-diff-invalid": "Impossìbil trové le version ciamà",
 	"abusefilter-diff-backhistory": "André a la stòria dël filtr",
 	"abusefilter-import-intro": "A peul dovré costa antërfacia për amporté dij filtr da d'àutre wiki.\nAn sla wiki sorgiss, ch'a sgnaca \"{{int:abusefilter-edit-export}}\" sota \"{{int:abusefilter-edit-tools}}\" an sl'antërfacia ëd modìfica.\nCh'a còpia la casela ëd test ch'a compariss, e ch'a l'ancòla an costa casela ëd test, peui ch'a sgnaca \"{{int:abusefilter-import-submit}}\".",

@@ -353,7 +353,6 @@
 	"abusefilter-diff-item": "Yytrag",
 	"abusefilter-diff-version": "Version vum $1 {{GENDER:$3|vum|vur dr|vu}} $2",
 	"abusefilter-diff-info": "Basisinformatione",
-	"abusefilter-diff-pattern": "Filterbedingige",
 	"abusefilter-diff-invalid": "Cha di aagforderete Versione nit finde",
 	"abusefilter-diff-backhistory": "Zruck zue dr Filtergschicht",
 	"abusefilter-import-intro": "Du chasch die Schnittstell bruche go Filter vu andere Wikis importiere.\nDruck im Quällwiki bim Bearbeite uf „{{int:abusefilter-edit-export}}“ unter „{{int:abusefilter-edit-tools}}“.\nKopier de Kode, wu det erschynt, un fieg en do yy, derno druck „{{int:abusefilter-import-submit}}“.",

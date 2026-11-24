@@ -324,7 +324,6 @@
 	"abusefilter-diff-item": "Indrag",
 	"abusefilter-diff-version": "Version vun $1 vun $2",
 	"abusefilter-diff-info": "Basisinformatschoon",
-	"abusefilter-diff-pattern": "Filterregeln",
 	"abusefilter-diff-invalid": "Kunn de angeven Versionen nich halen",
 	"abusefilter-diff-backhistory": "Trüch na de Versionsgeschicht von’n Filter",
 	"abusefilter-import-intro": "Du kannst disse Siet bruken, Filters ut annere Wikis to importeren.\nKlick op dat Utgangswiki op „{{int:abusefilter-edit-export}}“ ünner „{{int:abusefilter-edit-tools}}“ bi dat Afänner-Finster.\nKopeer de Textbox, de dor wiest warrt, un föög den Text in disse Textbox in, klick denn op „{{int:abusefilter-import-submit}}“.",

@@ -50,7 +50,6 @@
 	"abusefilter-edit-new": "Nov filtre",
 	"abusefilter-edit-field-description": "descrition",
 	"abusefilter-edit-rules": "Conditiones:",
-	"abusefilter-edit-field-conditions": "conditiones",
 	"abusefilter-edit-lastmod-text": "ye $1 de $2",
 	"abusefilter-edit-throttle-groups-help": "Vi $1.",
 	"abusefilter-throttle-ip": "Adresse IP",
@@ -110,7 +109,6 @@
 	"abusefilter-log-noresults": "Nequant resultates",
 	"abusefilter-diff-item": "Element",
 	"abusefilter-diff-version": "Version ye $1 {{GENDER:$3|de}} $2",
-	"abusefilter-diff-pattern": "Conditiones de filtre",
 	"abusefilter-group-default": "Predefinit",
 	"abusefilter-log-ip-not-available": "Índisponibil"
 }

@@ -351,7 +351,6 @@
 	"abusefilter-diff-item": "Element",
 	"abusefilter-diff-version": "Verżjoni tal-$1, {{GENDER:$3|minn}} $2",
 	"abusefilter-diff-info": "Informazzjoni bażika",
-	"abusefilter-diff-pattern": "Kondizzjonijiet tal-filtru",
 	"abusefilter-diff-invalid": "Ma setgħux jittelgħu l-verżjoni rikjesti",
 	"abusefilter-diff-backhistory": "Lura għall-kronoloġija tal-filtru",
 	"abusefilter-diff-prev": "Bidla ta' qabel",

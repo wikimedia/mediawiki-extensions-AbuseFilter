@@ -71,7 +71,6 @@
 	"abusefilter-diff-item": "Artikull",
 	"abusefilter-diff-version": "Version nga $1 nga $2",
 	"abusefilter-diff-info": "informata themelore",
-	"abusefilter-diff-pattern": "Kushtet Filter",
 	"abusefilter-diff-invalid": "Në pamundësi për të shkoj të marr versionet e kërkuar",
 	"abusefilter-diff-backhistory": "Kthehu në filtër historisë",
 	"abusefilter-import-intro": "Ju mund të përdorni këtë ndërfaqe për të importuar filtra nga wikis tjera. Në burimi wiki, klikoni \"{{int:abusefilter-edit-export}}\" nën \"{{int:abusefilter-edit-tools}}\" në interface redaktimi. Kopje nga textbox që duket, dhe ngjitur në këtë textbox, pastaj kliko \"{{int:abusefilter-import-submit}}\".",

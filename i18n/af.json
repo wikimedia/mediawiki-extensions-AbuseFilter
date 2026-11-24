@@ -336,7 +336,6 @@
 	"abusefilter-diff-item": "Item",
 	"abusefilter-diff-version": "Weergawe van $1 {{GENDER:$3|deur}} $2",
 	"abusefilter-diff-info": "Basiese inligting",
-	"abusefilter-diff-pattern": "Filter voorwaardes",
 	"abusefilter-diff-invalid": "Kan nie die versoek weergawes te gaan haal",
 	"abusefilter-diff-backhistory": "Filtergeskiedenis",
 	"abusefilter-import-intro": "Jy kan hierdie koppelvlak gebruik om filters van ander wiki's in te voer.\nOp die bron wiki, klik \"{{int:abusefilter-edit-export}}\" onder \"{{int:abusefilter-edit-tools}}\" op die redigeringskoppelvlak.\nKopieer dit vanaf die tekskassie wat verskyn, plak dit in hierdie tekskassie en klik dan \"{{int:abusefilter-import-submit}}\".",

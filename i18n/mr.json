@@ -355,7 +355,6 @@
 	"abusefilter-diff-item": "बाब",
 	"abusefilter-diff-version": "आवृत्ती $1 पासून {{GENDER:$3|कडून}} $2",
 	"abusefilter-diff-info": "मूलभूत माहिती",
-	"abusefilter-diff-pattern": "गाळणीच्या शर्ती",
 	"abusefilter-diff-invalid": "विनंती केलेल्या आवृत्त्या शेंदण्यात असफल",
 	"abusefilter-diff-backhistory": "गाळणी इतिहासाकडे परत",
 	"abusefilter-diff-prev": "जुने बदल",
