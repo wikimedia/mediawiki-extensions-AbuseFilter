@@ -41,6 +41,16 @@
 	"apihelp-query+abusefilters-paramvalue-prop-id": "新增過濾器ID。",
 	"apihelp-query+abusefilters-paramvalue-prop-description": "新增過濾器的描述。",
 	"apihelp-query+abusefilters-paramvalue-prop-pattern": "新增過濾器的規則。",
+	"apihelp-query+abusefilters-paramvalue-prop-actions": "新增該篩選器所支援的動作。",
+	"apihelp-query+abusefilters-paramvalue-prop-hits": "加總篩選器的命中次數。",
+	"apihelp-query+abusefilters-paramvalue-prop-comments": "為篩選器新增註解（亦稱備註）。",
+	"apihelp-query+abusefilters-paramvalue-prop-lasteditor": "新增最後一次編輯此篩選條件的使用者名稱。",
+	"apihelp-query+abusefilters-paramvalue-prop-lastedittime": "新增一個時間戳記，用以表示該篩選器最後一次編輯的日期。",
+	"apihelp-query+abusefilters-paramvalue-prop-flags": "新增有關篩選器狀態的資訊。",
+	"apihelp-query+abusefilters-paramvalue-prop-status": "新增有關篩選器是否已啟用及／或已刪除的資訊。",
+	"apihelp-query+abusefilters-paramvalue-prop-suppressed": "新增有關濾波器是否被抑制的資訊。",
+	"apihelp-query+abusefilters-paramvalue-prop-private": "新增關於該篩選器是否為私有篩選器的資訊。",
+	"apihelp-query+abusefilters-paramvalue-prop-protected": "新增有關篩選器是否被保護的資訊。",
 	"apihelp-query+abusefilters-example-1": "列出啟用的公開過濾器",
 	"apihelp-query+abusefilters-example-2": "顯示一些關於過濾器的詳細內容。",
 	"apihelp-query+abuselog-summary": "顯示由防濫用過濾器之一偵測到的事件。",
@@ -65,5 +75,6 @@
 	"apierror-abusefilter-canteval": "您沒有權限來評估 AbuseFilter 表達式。",
 	"apierror-abusefilter-nosuchlogid": "沒有 ID 為 $1 的濫用日誌項目。",
 	"apierror-abusefilter-incompatible": "濫用過濾器不支援請求的變更。",
-	"apierror-abusefilter-badsyntax": "此過濾器含有無效語法。"
+	"apierror-abusefilter-badsyntax": "此過濾器含有無效語法。",
+	"apiwarn-deprecation-query+abusefilters-paramvalue-prop-flags": "請改用「flags」。"
 }

@@ -136,7 +136,6 @@
 	"log-name-abusefilterblockeddomainhit": "Archivije de le tendative de sckaffamende de le dominie bloccate",
 	"abusefilter-list": "Tutte le filtre",
 	"abusefilter-list-id": "ID d'u filtre",
-	"abusefilter-list-pattern": "Pattern",
 	"abusefilter-list-status": "State",
 	"abusefilter-list-public": "Descriziona pubbleche",
 	"abusefilter-list-consequences": "Conseguenze",
@@ -168,7 +167,6 @@
 	"abusefilter-list-options-further-options": "Otre opziune",
 	"abusefilter-list-options-hidedisabled": "Scunne le filtre disabbilitate",
 	"abusefilter-list-options-hideprivate": "Scunne le filtre private",
-	"abusefilter-list-options-searchfield": "Cirche 'mbrà le regole:",
 	"abusefilter-list-options-searchpattern": "Mitte 'nu pattern",
 	"abusefilter-list-options-searchoptions": "Mode de recerche:",
 	"abusefilter-list-options-search-like": "'Nderrogazione semblice",
@@ -200,7 +198,6 @@
 	"abusefilter-edit-oldwarning-view": "<strong>Ste 'ndruche 'na versiona vecchie de stu filtre.\nLe statisteche elengate sò d'a versione cchiù nove d'u filtre.</strong> &bull;\n[[Special:AbuseFilter/history/$2|Tuèrne a 'u cunde de stu filtre]].",
 	"abusefilter-edit-status-label": "Statisteche:",
 	"abusefilter-edit-status": "De le urteme $1 {{PLURAL:$1|azione|aziune}}, stu filtre ave accocchiate $2 ($3%).\nJndr'à medie, 'u tiembe sue jè de $4ms, e cunzume $5 {{PLURAL:$5|condizione|condiziune}} d'u limite de condiziune.",
-	"abusefilter-edit-throttled-warning": "'''Attenziò:''' Stu filtre ha state signate automaticamende cumme pericolose. Cumme mesure de securezze, {{PLURAL:$2|l'azione|le aziune}} seguende non ge avénene eseguite: $1. Pe piacere condrolle ce 'u tasse ierte de accocchiamende jè attese. Ce none, puè reggistrà 'u filtre pe luà sta restrizzione",
 	"abusefilter-edit-new": "Filtre nueve",
 	"abusefilter-edit-save": "Reggistre 'u filtre",
 	"abusefilter-edit-id": "ID d'u filtre:",
@@ -582,7 +579,5 @@
 	"abusefilter-tag-reserved": "'U tag <code>abusefilter-condition-limit</code> jè riservate pe l'ause inderne da AbuseFilter.",
 	"tag-abusefilter-condition-limit": "limite de condiziune raggiunde",
 	"tag-abusefilter-condition-limit-description": "Cangiaminde o otre avveneminde ca non ge onne state condrollate da tutte le [[Special:AbuseFilter|filtre anti abbuse]] attive ([[mw:Extension:AbuseFilter/Conditions|aijute]]).",
-	"notification-header-throttle-filter": "Filtre d'abbuse $2 {{GENDER:$1|ca tu}} è cangiate urtemamende ha state limitate.",
-	"notification-subject-throttle-filter": "'Nu filtre d'abbuse {{GENDER:$1|ca tu}} è cangiate ha state limitate sus a {{SITENAME}}",
 	"notification-link-text-show-filter": "'Ndruche 'u filtre"
 }
