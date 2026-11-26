@@ -105,7 +105,7 @@
 	"right-abusefilter-privatedetails": "Просмотр частных сведений в журнале злоупотреблений",
 	"right-abusefilter-privatedetails-log": "Просмотр журнала доступа к личной информации фильтров злоупотребления",
 	"right-abusefilter-modify-restricted": "Изменение фильтров злоупотреблений с ограничивающими действиями",
-	"right-abusefilter-revert": "Откат изменений, произведённых фильтром злоупотреблений",
+	"right-abusefilter-revert": "Отмена действий, произведённых фильтрами правок",
 	"right-abusefilter-view-private": "Просмотр частных фильтров злоупотреблений",
 	"right-abusefilter-log-private": "Просмотр записей для частных фильтров в журнале фильтра злоупотреблений",
 	"right-abusefilter-hide-log": "Сокрытие записей в журнале злоупотреблений",
@@ -119,7 +119,7 @@
 	"action-abusefilter-privatedetails": "просмотр личных данных в журнале злоупотреблений",
 	"action-abusefilter-privatedetails-log": "просмотреть журнал доступа к личной информации фильтр злоупотребления",
 	"action-abusefilter-modify-restricted": "изменение фильтров злоупотреблений с ограничивающими действиями",
-	"action-abusefilter-revert": "отмена всех действий, выполненных фильтром злоупотреблений",
+	"action-abusefilter-revert": "отмена действий, выполненных фильтрами правок",
 	"action-abusefilter-view-private": "просмотр фильтров злоупотреблений, отмеченных как скрытые",
 	"action-abusefilter-log-private": "просмотр частных журналов фильтра злоупотреблений",
 	"action-abusefilter-log-protected": "просмотр журналов фильтров злоупотреблений, отмеченных как защищённые",
@@ -297,6 +297,7 @@
 	"abusefilter-edit-protected-help-message": "Подробности этого фильтра будут скрыты от участников, которые не могут видеть защищённые переменные. Это действие является постоянным и не может быть отменено.",
 	"abusefilter-edit-global": "Глобальный фильтр",
 	"abusefilter-edit-rules": "Условия:",
+	"abusefilter-edit-field-rules": "правила",
 	"abusefilter-edit-notes": "Примечания:",
 	"abusefilter-edit-lastmod": "Последнее изменение фильтра:",
 	"abusefilter-edit-lastmod-text": "$1 — $2",
@@ -704,5 +705,6 @@
 	"log-action-filter-abusefilter-protected-vars-change-access": "Изменить доступ",
 	"log-action-filter-abusefilter-protected-vars-view-protected-variable-value": "Просмотр значений защищённых переменных",
 	"communityconfiguration-blockeddomain-title": "Заблокированные внешние домены",
-	"communityconfiguration-blockeddomain-description": "Список внешних доменов, на которые нельзя установить ссылку."
+	"communityconfiguration-blockeddomain-description": "Список внешних доменов, на которые нельзя установить ссылку.",
+	"grant-access-protected-vars": "Доступ к защищённым переменным в фильтрах правок"
 }
