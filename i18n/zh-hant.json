@@ -595,6 +595,7 @@
 	"abusefilter-test-options-section": "搜尋選項",
 	"abusefilter-test-legend": "過濾器測試中",
 	"abusefilter-test-load-filter": "讀取過濾器 ID：",
+	"abusefilter-test-loadfilter-restricted": "篩選器 $1 已受限，其內容無法載入。",
 	"abusefilter-test-submit": "測試",
 	"abusefilter-test-load": "讀取",
 	"abusefilter-test-user": "變更的使用者：",

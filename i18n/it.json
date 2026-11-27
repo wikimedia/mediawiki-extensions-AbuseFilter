@@ -30,7 +30,8 @@
 			"Titore",
 			"Valepert",
 			"Wim b",
-			"Ximo17"
+			"Ximo17",
+			"Selven"
 		]
 	},
 	"abusefilter-desc": "Applica un'euristica automatica alle modifiche.",
@@ -61,6 +62,7 @@
 	"right-abusefilter-hide-log": "Nasconde voci nel registro del filtro anti abusi",
 	"right-abusefilter-hidden-log": "Visualizza voci nascoste del registro del filtro anti abusi",
 	"right-abusefilter-modify-global": "Crea o modifica i filtri anti abusi globali",
+	"right-abusefilter-protected-vars-log": "Visualizza i log relativi all'accesso ai valori delle variabili protette",
 	"action-abusefilter-modify": "modificare i filtri anti abusi",
 	"action-abusefilter-view": "visualizzare i filtri anti abusi",
 	"action-abusefilter-log": "visualizzare il registro del filtro anti abusi",

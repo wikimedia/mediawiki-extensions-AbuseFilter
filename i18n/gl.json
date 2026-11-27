@@ -192,7 +192,7 @@
 	"abusefilter-list-options-search-like": "Consulta sinxela",
 	"abusefilter-list-options-search-rlike": "Expresión corrente",
 	"abusefilter-list-options-search-irlike": "Expresión corrente insensíbel ó emprego de letras maiúsculas",
-	"abusefilter-list-invalid-searchmode": "O modo de procura especificado non é válido",
+	"abusefilter-list-invalid-searchmode": "O modo de procura especificado non é válido.",
 	"abusefilter-list-regexerror": "Ocorreu un erro durante a procura: Erro de sintaxe na expresión regular.",
 	"abusefilter-list-options-submit": "Actualizar",
 	"abusefilter-tools-text": "Aquí hai algunhas ferramentas que poden ser de utilidade na formulación e depuración dos filtros de abusos.",
